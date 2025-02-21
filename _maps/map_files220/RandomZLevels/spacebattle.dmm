@@ -41,10 +41,6 @@
 	},
 /turf/space,
 /area/space)
-"ag" = (
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear/gateway,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/space_battle/syndicate)
 "ah" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo9"
@@ -60,6 +56,7 @@
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate4)
 "ak" = (
@@ -386,6 +383,9 @@
 	},
 /obj/structure/table/tray,
 /obj/item/storage/firstaid/surgery,
+/obj/machinery/defibrillator_mount/loaded/locked{
+	pixel_x = -32
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -1045,6 +1045,7 @@
 /obj/item/food/meat,
 /obj/item/food/meat,
 /obj/item/food/meat,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/food_mixed,
 /turf/simulated/floor/plasteel/freezer,
 /area/awaymission/space_battle/kitchen)
 "dA" = (
@@ -1468,6 +1469,12 @@
 	dir = 8
 	},
 /area/awaymission/space_battle/hallway1)
+"fb" = (
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/space{
+	id = "LeftBridge"
+	},
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate1)
 "fc" = (
 /obj/machinery/light_construct/directional/south,
 /obj/effect/mapping_helpers/turfs/damage,
@@ -1620,7 +1627,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/trash/tray,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/food_mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "blueyellowfull"
 	},
@@ -1648,12 +1655,7 @@
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/hallway11)
 "fD" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "LeftTurret"
 	},
@@ -1684,6 +1686,7 @@
 /obj/item/clothing/under/retro/security,
 /obj/item/clothing/under/retro/security,
 /obj/machinery/light/small/directional/west,
+/obj/item/storage/belt/security/webbing,
 /turf/simulated/floor/plasteel{
 	icon_state = "red";
 	dir = 8
@@ -1913,12 +1916,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/prhallway3)
 "gx" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "RightTurret"
 	},
@@ -2848,7 +2846,7 @@
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
-/obj/item/coin/antagtoken/syndicate,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "jh" = (
@@ -3368,7 +3366,7 @@
 	},
 /area/awaymission/space_battle/hallway8)
 "kP" = (
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob,
+/obj/effect/spawner/random/pool/gatewayloot/syndie_mob/space,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway1)
 "kQ" = (
@@ -4437,6 +4435,10 @@
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob/space,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/living)
+"oy" = (
+/obj/effect/spawner/random/pool/gatewayloot/syndie_mob,
+/turf/simulated/floor/mineral/plastitanium,
+/area/awaymission/space_battle/syndicate)
 "oz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -4695,12 +4697,7 @@
 /turf/simulated/floor/plating/airless,
 /area/space)
 "pt" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "LeftTurret"
 	},
@@ -4913,7 +4910,7 @@
 /area/awaymission/space_battle/hallway3)
 "qk" = (
 /obj/structure/closet/crate,
-/obj/item/storage/belt/security/webbing,
+/obj/item/storage/box/syndie_kit,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate)
 "ql" = (
@@ -5075,6 +5072,15 @@
 /obj/structure/rack,
 /obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/plating,
+/area/awaymission/space_battle/cruiser)
+"qP" = (
+/obj/effect/spawner/window/shuttle,
+/obj/effect/mapping_helpers/damaged_window,
+/obj/machinery/door/poddoor/impassable{
+	layer = 3.1;
+	id_tag = "GATE"
+	},
+/turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "qQ" = (
 /obj/machinery/suit_storage_unit{
@@ -5427,17 +5433,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway2)
 "sb" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "Syndicate Defence Laser Turret";
-	attacked = 1;
-	reqpower = 0;
-	syndicate = 1;
-	faction = "syndicate";
-	color = "grey";
-	active_power_consumption = 0;
-	idle_power_consumption = 0
-	},
+/obj/machinery/porta_turret/spacebattle,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate)
@@ -5468,6 +5464,12 @@
 	dir = 8
 	},
 /area/awaymission/space_battle/hallway4)
+"sh" = (
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/space{
+	id = "LeftBridge"
+	},
+/turf/simulated/floor/plating/airless,
+/area/awaymission/space_battle/syndicate/syndicate1)
 "si" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
@@ -5555,6 +5557,13 @@
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
+"sx" = (
+/obj/structure/table/reinforced{
+	color = "#444444"
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate3)
 "sy" = (
 /obj/machinery/door/airlock/security,
 /obj/structure/cable{
@@ -5631,6 +5640,9 @@
 /area/awaymission/space_battle/sec_storage)
 "sK" = (
 /obj/effect/decal/cleanable/glass,
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/space{
+	id = "hangar"
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/hallway5)
 "sL" = (
@@ -5647,12 +5659,29 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
+"sN" = (
+/obj/machinery/door/airlock/hatch{
+	color = "grey"
+	},
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
+	id = "LeftBridge"
+	},
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate1)
 "sO" = (
 /obj/effect/decal/cleanable/shreds,
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
 	},
 /area/awaymission/space_battle/kitchen)
+"sP" = (
+/obj/effect/spawner/window/shuttle,
+/obj/machinery/door/poddoor/impassable{
+	layer = 3.1;
+	id_tag = "GATE"
+	},
+/turf/simulated/floor/plating/airless,
+/area/awaymission/space_battle/cruiser)
 "sQ" = (
 /obj/effect/turf_decal/caution/stand_clear,
 /turf/simulated/floor/plasteel,
@@ -5694,12 +5723,7 @@
 	},
 /area/awaymission/space_battle/server)
 "sZ" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "RightTurret"
 	},
@@ -5884,6 +5908,7 @@
 /obj/item/food/meat,
 /obj/item/food/meat,
 /obj/machinery/light/small/directional/south,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/food_mixed,
 /turf/simulated/floor/plasteel/freezer,
 /area/awaymission/space_battle/kitchen)
 "tI" = (
@@ -6389,17 +6414,7 @@
 /turf/space,
 /area/awaymission/space_battle/syndicate)
 "vs" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "Syndicate Defence Laser Turret";
-	attacked = 1;
-	reqpower = 0;
-	syndicate = 1;
-	faction = "syndicate";
-	color = "grey";
-	active_power_consumption = 0;
-	idle_power_consumption = 0
-	},
+/obj/machinery/porta_turret/spacebattle,
 /obj/structure/window/full/plastitanium,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate)
@@ -6641,9 +6656,6 @@
 "wh" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo15"
-	},
-/obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
-	id = "LeftBridge"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
@@ -6939,12 +6951,7 @@
 	},
 /area/awaymission/space_battle/hallway9)
 "xc" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "RightTurret"
 	},
@@ -7560,17 +7567,7 @@
 /turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/cruiser)
 "zi" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "Syndicate Defence Laser Turret";
-	attacked = 1;
-	reqpower = 0;
-	syndicate = 1;
-	faction = "syndicate";
-	color = "grey";
-	active_power_consumption = 0;
-	idle_power_consumption = 0
-	},
+/obj/machinery/porta_turret/spacebattle,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate)
 "zj" = (
@@ -9301,12 +9298,7 @@
 	},
 /area/awaymission/space_battle/prhallway2)
 "EL" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "RightTurret"
 	},
@@ -9391,12 +9383,7 @@
 	},
 /area/awaymission/space_battle/hallway2)
 "EX" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "LeftTurret"
 	},
@@ -10684,6 +10671,13 @@
 /obj/structure/mineral_door/wood,
 /turf/simulated/floor/wood/cherry,
 /area/awaymission/space_battle)
+"Jb" = (
+/obj/structure/table/reinforced{
+	color = "#444444"
+	},
+/obj/item/storage/box/syndie_kit,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate)
 "Jc" = (
 /obj/effect/spawner/window/plastitanium,
 /obj/machinery/door/poddoor/impassable{
@@ -10694,17 +10688,7 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Jd" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "Syndicate Defence Laser Turret";
-	attacked = 1;
-	reqpower = 0;
-	syndicate = 1;
-	faction = "syndicate";
-	color = "grey";
-	active_power_consumption = 0;
-	idle_power_consumption = 0
-	},
+/obj/machinery/porta_turret/spacebattle,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Je" = (
@@ -11733,6 +11717,7 @@
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "Mr" = (
@@ -12697,6 +12682,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/space{
+	id = "turret4"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 8
@@ -12955,6 +12943,7 @@
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate5)
 "Qq" = (
@@ -13051,16 +13040,6 @@
 	icon_state = "titanium_white"
 	},
 /area/awaymission/space_battle/syndicate)
-"QB" = (
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/space{
-	id = "hangar"
-	},
-/turf/space,
-/area/space)
-"QC" = (
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear/gateway,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/space_battle/syndicate/syndicate1)
 "QE" = (
 /obj/structure/engineeringcart,
 /turf/simulated/floor/plasteel{
@@ -13532,6 +13511,7 @@
 	health = 80;
 	maxHealth = 80
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Sg" = (
@@ -13989,6 +13969,9 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
+	id = "dorms"
+	},
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/living)
 "TL" = (
@@ -14373,6 +14356,9 @@
 "Va" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_y = -32
+	},
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/space{
+	id = "RightBridge"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -15285,12 +15271,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "XW" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "LeftTurret"
 	},
@@ -15396,12 +15377,7 @@
 	},
 /area/awaymission/space_battle/hallway8)
 "Yn" = (
-/obj/machinery/porta_turret{
-	lethal = 1;
-	name = "ship defense turret";
-	attacked = 1;
-	faction = "hostile"
-	},
+/obj/machinery/porta_turret/meatpacker_ship,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "LeftTurret"
 	},
@@ -32979,7 +32955,7 @@ yG
 yG
 yG
 yG
-yG
+Rt
 uF
 uF
 uF
@@ -33248,7 +33224,7 @@ yG
 yG
 yG
 yG
-Rt
+yG
 yG
 yG
 yG
@@ -34006,8 +33982,8 @@ uF
 yG
 yG
 yG
-yG
-uF
+ps
+xG
 uF
 me
 wN
@@ -35028,7 +35004,7 @@ go
 JF
 uF
 gv
-gF
+fb
 cL
 xG
 gF
@@ -35308,7 +35284,7 @@ xG
 uF
 eb
 eb
-eb
+sh
 uF
 uF
 yG
@@ -35800,7 +35776,7 @@ bl
 uF
 jo
 gF
-QC
+gF
 xG
 gF
 le
@@ -35919,7 +35895,7 @@ eo
 eo
 eo
 PI
-oj
+sx
 rd
 vo
 vo
@@ -36063,7 +36039,7 @@ gF
 gF
 gF
 gF
-dU
+sN
 gF
 kl
 jg
@@ -36320,7 +36296,7 @@ gF
 gF
 gF
 gF
-dU
+sN
 gF
 yT
 Ir
@@ -37107,7 +37083,7 @@ xG
 uF
 eb
 eb
-eb
+sh
 uF
 uF
 yG
@@ -37341,7 +37317,7 @@ go
 qI
 uF
 gv
-gF
+fb
 cL
 xG
 gF
@@ -38375,8 +38351,8 @@ uF
 yG
 yG
 zf
-yG
-uF
+ps
+xG
 uF
 US
 iB
@@ -38633,7 +38609,7 @@ yG
 yG
 yG
 yG
-Rt
+yG
 uF
 uF
 uF
@@ -39147,7 +39123,7 @@ yG
 yG
 yG
 yG
-yG
+Rt
 go
 eb
 ON
@@ -39158,7 +39134,7 @@ yG
 yG
 yG
 yG
-Rt
+yG
 yG
 yG
 yG
@@ -39399,7 +39375,7 @@ yG
 yG
 yG
 yG
-yG
+Rt
 yG
 yG
 yG
@@ -46062,7 +46038,7 @@ QL
 QL
 LM
 LM
-Zg
+Jb
 Us
 KP
 Mm
@@ -47599,7 +47575,7 @@ yG
 QL
 kv
 kv
-LM
+MR
 MR
 jp
 LM
@@ -47607,7 +47583,7 @@ LM
 LM
 LM
 nf
-LM
+cZ
 LM
 pN
 QL
@@ -48125,7 +48101,7 @@ LM
 FL
 QL
 pN
-ag
+pN
 pN
 QL
 tW
@@ -48646,7 +48622,7 @@ aY
 wF
 hy
 QL
-Zg
+nB
 qK
 JA
 yG
@@ -49912,9 +49888,9 @@ yG
 kv
 kv
 QL
-fi
+bL
 Zg
-Zg
+qK
 Zg
 Be
 uL
@@ -51212,7 +51188,7 @@ BA
 Wl
 Vz
 QL
-yB
+oy
 yB
 yB
 QL
@@ -52482,7 +52458,7 @@ yG
 QL
 kv
 kv
-LM
+Qb
 Qb
 jp
 LM
@@ -52490,7 +52466,7 @@ LM
 LM
 LM
 ep
-LM
+mO
 LM
 pN
 QL
@@ -54542,7 +54518,7 @@ yG
 yG
 QL
 QL
-Zg
+Jb
 cp
 Us
 KP
@@ -55664,13 +55640,13 @@ KB
 rz
 pL
 nO
-wH
+qP
 yG
 Dg
 yG
 Dg
 yG
-Mn
+sP
 YX
 hC
 ZE
@@ -55921,13 +55897,13 @@ KB
 Bs
 xs
 VG
-Mn
+sP
 yG
 Dg
 yG
 Dg
 yG
-Mn
+sP
 Ld
 Ip
 Tr
@@ -56178,13 +56154,13 @@ Wf
 KB
 Df
 PM
-wH
+qP
 yG
 Dg
 Fh
 Dg
 NJ
-Mn
+sP
 Rj
 HR
 vR
@@ -58491,13 +58467,13 @@ cf
 Oj
 kH
 po
-Mn
+sP
 yG
 Dg
 yG
 Dg
 yG
-Mn
+sP
 CT
 dJ
 vF
@@ -58748,13 +58724,13 @@ VF
 Lu
 or
 po
-Mn
+sP
 yG
 Dg
 yG
 Dg
 NJ
-Mn
+sP
 CT
 An
 JK
@@ -59005,13 +58981,13 @@ cf
 IZ
 kH
 po
-Mn
+sP
 yG
 Dg
 yG
 Dg
 yG
-Mn
+sP
 CT
 Xn
 eA
@@ -60290,13 +60266,13 @@ VC
 HD
 eV
 po
-Mn
+sP
 yG
 Dg
 yG
 Dg
 yG
-Mn
+sP
 nA
 Xn
 eA
@@ -60547,13 +60523,13 @@ VC
 jH
 Pd
 Qq
-Mn
+sP
 yG
 Dg
 yG
 qz
 yG
-Mn
+sP
 IO
 WS
 ht
@@ -60804,13 +60780,13 @@ VC
 IZ
 CU
 Qg
-Mn
+sP
 Fh
 Dg
 yG
 Dg
 yG
-wH
+qP
 CT
 yJ
 eA
@@ -61837,7 +61813,7 @@ yG
 yG
 yG
 yG
-QB
+yG
 rF
 fp
 Dg
@@ -63030,7 +63006,7 @@ Pv
 QX
 gK
 BN
-BN
+em
 ix
 BN
 BN
@@ -66885,7 +66861,7 @@ Pv
 QX
 gK
 BN
-BN
+em
 ix
 BN
 BN
@@ -73409,7 +73385,7 @@ yG
 yG
 yG
 yG
-ye
+yG
 yG
 yG
 yG
@@ -75458,7 +75434,7 @@ yG
 yG
 yG
 yG
-yG
+ye
 yG
 mD
 Nu
@@ -75472,7 +75448,7 @@ Nu
 Nu
 mD
 yG
-yG
+ye
 yG
 ol
 yG
@@ -79577,7 +79553,7 @@ yG
 yG
 yG
 yG
-yG
+ye
 yG
 yG
 yG

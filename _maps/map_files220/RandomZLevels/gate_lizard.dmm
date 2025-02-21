@@ -1219,7 +1219,6 @@
 /area/awaymission/jungle_planet/inside/complex)
 "bEz" = (
 /obj/effect/decal/remains/human,
-/obj/item/clothing/suit/sovietcoat,
 /obj/item/clothing/shoes/jackboots,
 /turf/simulated/floor/engine/cult,
 /area/awaymission/jungle_planet/outside/cave)
@@ -1493,7 +1492,7 @@
 /area/awaymission/jungle_planet/outside)
 "bXF" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear/gateway,
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
 "bYg" = (
@@ -4381,6 +4380,11 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
+"fNz" = (
+/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/outside/cave/pirate)
 "fNF" = (
 /obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
@@ -4938,10 +4942,6 @@
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
-"gIo" = (
-/obj/machinery/porta_turret/syndicate,
-/turf/simulated/wall/indestructible/syndishuttle,
-/area/awaymission/jungle_planet/outside/abandoned)
 "gIY" = (
 /obj/structure/chair/sofa/right{
 	dir = 1
@@ -5887,6 +5887,15 @@
 /obj/item/food/grown/mushroom/chanterelle,
 /turf/simulated/floor/engine/cult,
 /area/awaymission/jungle_planet/outside/cave)
+"hPs" = (
+/obj/structure{
+	icon = 'icons/obj/pipes/disposal.dmi';
+	icon_state = "pipe-s";
+	name = "pipe"
+	},
+/obj/effect/spawner/random/pool/gatewayloot/ussp_major,
+/turf/simulated/floor/engine/cult,
+/area/awaymission/jungle_planet/outside/cave)
 "hPx" = (
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
@@ -6291,6 +6300,10 @@
 	water_overlay_image = null
 	},
 /area/awaymission/jungle_planet/outside)
+"iqS" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/outside/abandoned)
 "irF" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/color/black,
@@ -6941,7 +6954,7 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/waterfall)
 "jfu" = (
-/obj/item/pickaxe,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plating/asteroid/ancient{
 	name = "ground"
 	},
@@ -7628,7 +7641,6 @@
 /area/awaymission/jungle_planet/outside/cave)
 "jXL" = (
 /obj/structure/closet/cabinet,
-/obj/item/melee/energy/sword/pirate,
 /obj/item/clothing/suit/hgpirate,
 /obj/item/clothing/glasses/eyepatch,
 /obj/item/clothing/head/hgpiratecap,
@@ -8885,8 +8897,8 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside/river)
 "lwg" = (
-/obj/structure/closet/crate/secure/loot,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/loot/crate,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "lwj" = (
@@ -9538,6 +9550,7 @@
 	icon_state = "cobweb1"
 	},
 /obj/effect/spawner/random/dirt/frequent,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/food_mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -11802,6 +11815,7 @@
 /obj/machinery/light/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/closet/crate/wooden,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "pjT" = (
@@ -12353,6 +12367,7 @@
 "qcZ" = (
 /obj/structure/table/wood,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/cultural_mixed,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/small)
 "qdL" = (
@@ -12412,6 +12427,7 @@
 /obj/item/reagent_containers/condiment/milk,
 /obj/item/storage/fancy/egg_box,
 /obj/item/reagent_containers/drinks/bottle/cream,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/food_mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -16148,6 +16164,17 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside/river)
+"uGn" = (
+/obj/structure{
+	icon = 'icons/obj/turrets.dmi';
+	icon_state = "syndieturret2";
+	name = "destroyed turret";
+	desc = "Technological communication device";
+	density = 1;
+	anchored = 1
+	},
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/outside/abandoned)
 "uGp" = (
 /obj/effect/landmark/awaymissions/gate_lizard/mob_spawn/melee_axe{
 	id = "pathway13"
@@ -16324,8 +16351,8 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "uQQ" = (
-/obj/structure/closet/crate/secure/loot,
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/loot/crate,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "uRs" = (
@@ -17838,6 +17865,7 @@
 /area/awaymission/jungle_planet/inside)
 "wMk" = (
 /obj/structure/table/wood,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "wME" = (
@@ -18575,6 +18603,10 @@
 	water_overlay_image = null
 	},
 /area/awaymission/jungle_planet/outside/river)
+"xHu" = (
+/obj/effect/spawner/random/pool/gatewayloot/ussp_minor,
+/turf/simulated/floor/engine/cult,
+/area/awaymission/jungle_planet/outside/cave)
 "xJH" = (
 /obj/effect/spawner/random/dirt/maybe,
 /obj/structure/largecrate,
@@ -38508,9 +38540,9 @@ gpG
 miM
 miM
 myZ
-aPj
-aPj
-aPj
+fNz
+fNz
+fNz
 myZ
 myZ
 qkp
@@ -53013,7 +53045,7 @@ qeW
 mTn
 xsI
 uXf
-gIo
+pzZ
 uXf
 hKK
 uXf
@@ -53198,7 +53230,7 @@ hux
 hux
 qeW
 lWL
-uXf
+iqS
 kfu
 kfu
 kfu
@@ -53206,7 +53238,7 @@ dLI
 kfu
 kfu
 kfu
-uXf
+uGn
 xsI
 hux
 hux
@@ -56051,7 +56083,7 @@ miM
 mog
 tBJ
 xmJ
-kWD
+xHu
 xKX
 eSa
 nai
@@ -56236,7 +56268,7 @@ sbr
 miM
 miM
 mog
-bse
+hPs
 bse
 etK
 bEz

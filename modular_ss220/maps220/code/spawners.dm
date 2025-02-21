@@ -56,6 +56,27 @@
 		/obj/item/borg/upgrade/modkit/aoe/turfs,
 	)
 
+/obj/effect/spawner/random/loot/mining_tool
+	name = "random mining tool"
+	loot = list(
+		// total of 21
+		/obj/item/pickaxe = 7,
+		/obj/item/pickaxe/safety = 7,
+		/obj/item/pickaxe/mini = 7,
+
+		/obj/item/pickaxe/silver = 10,
+		/obj/item/pickaxe/gold = 9,
+		/obj/item/pickaxe/diamond = 7,
+		/obj/item/pickaxe/drill = 15,
+		/obj/item/pickaxe/drill/diamonddrill = 5,
+		/obj/item/pickaxe/drill/jackhammer = 3,
+		/obj/item/gun/energy/plasmacutter = 5,
+		/obj/item/gun/energy/plasmacutter/adv = 3,
+		/obj/item/kinetic_crusher = 3,
+		/obj/item/gun/energy/kinetic_accelerator = 3,
+		/obj/item/gun/energy/kinetic_accelerator/pistol = 3,
+	)
+
 /obj/effect/spawner/random/loot/laser
 	name = "laser 60pc"
 	icon_state = "stetchkin"

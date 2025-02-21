@@ -55,12 +55,19 @@
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 	)
 
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear
-	name = "blood mod 30pc"
+/obj/effect/spawner/random/pool/spaceloot/mod
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 	icon_state = "mod"
+
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie
+	name = "blood mod 40pc"
+	loot = list(
+		/obj/machinery/suit_storage_unit/syndicate/empty = 3,
+		/obj/effect/spawner/random/pool/spaceloot/mod/nuclear = 2,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/mod/nuclear
 	point_value = 110
-	spawn_loot_chance = 40
 	loot = list(/obj/machinery/suit_storage_unit/syndicate)
 
 /obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/corpse
@@ -83,25 +90,14 @@
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/mining_tool
-	point_value = 15
 	loot = list(
-		// total of 21
-		/obj/item/pickaxe = 7,
-		/obj/item/pickaxe/safety = 7,
-		/obj/item/pickaxe/mini = 7,
+		/obj/effect/spawner/random/loot/mining_tool = 99,
+		/obj/effect/spawner/random/pool/spaceloot/eka,
+	)
 
-		/obj/item/pickaxe/silver = 10,
-		/obj/item/pickaxe/gold = 9,
-		/obj/item/pickaxe/diamond = 7,
-		/obj/item/pickaxe/drill = 15,
-		/obj/item/pickaxe/drill/diamonddrill = 5,
-		/obj/item/pickaxe/drill/jackhammer = 3,
-		/obj/item/gun/energy/plasmacutter = 5,
-		/obj/item/gun/energy/plasmacutter/adv = 3,
-		/obj/item/kinetic_crusher = 3,
-		/obj/item/gun/energy/kinetic_accelerator = 3,
-		/obj/item/gun/energy/kinetic_accelerator/pistol = 3,
-
+/obj/effect/spawner/random/pool/spaceloot/eka
+	point_value = 65
+	loot = list(
 		/obj/item/gun/energy/kinetic_accelerator/experimental,
 	)
 
@@ -133,6 +129,10 @@
 	SSblackbox.record_feedback("tally", "gatewayloot_loot_spawns", 1, "[type_path_to_make]")
 
 /obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway
+	spawn_pool_id = "gateway_spawn_pool"
+	record_spawn = FALSE
+
+/obj/effect/spawner/random/pool/spaceloot/eka/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
 
@@ -196,11 +196,12 @@
 		/obj/item/clothing/suit/hooded/cultrobes,
 		/obj/item/reagent_containers/drinks/bottle/holywater/hell,
 		/obj/item/soulstone/anybody,
+		/obj/item/blank_tarot_card,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/cult/valuable
 	name = "valuable cult alike item"
-	point_value = 75
+	point_value = 60
 	spawn_loot_chance = 100
 	loot = list(
 		/obj/item/book_of_babel,
@@ -208,7 +209,6 @@
 		/obj/item/organ/internal/heart/cursed/wizard,
 		/obj/item/nullrod/scythe/talking,
 		/obj/item/nullrod/armblade/mining,
-		/obj/item/blank_tarot_card,
 		/obj/item/tarot_card_pack,
 		/obj/item/tarot_card_pack/jumbo,
 		/obj/item/tarot_card_pack/mega,
@@ -217,7 +217,7 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/rsg
-	name = "rsg 50pc"
+	name = "rsg 60pc"
 	icon_state = "stetchkin"
 	point_value = 80
 	spawn_loot_chance = 60
@@ -238,7 +238,7 @@
 /obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
-	point_value = 5
+	point_value = -1
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/rare/gateway
 	spawn_pool_id = "gateway_spawn_pool"
@@ -270,7 +270,6 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/lockbox
-	guaranteed = TRUE
 	point_value = 180
 	loot = list(/obj/item/storage/lockbox/experimental_weapon/gateway)
 
@@ -284,9 +283,8 @@
 /obj/effect/spawner/random/pool/gatewayloot/speedloader
 	point_value = 25
 	loot = list(
-		/obj/item/ammo_box/shotgun/buck = 3,
+		/obj/item/ammo_box/shotgun/buck = 4,
 		/obj/item/ammo_box/shotgun,
-		/obj/item/ammo_box/shotgun/confetti,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/proto_egun
@@ -294,7 +292,6 @@
 	loot = list(/obj/item/gun/energy/e_gun/old)
 
 /obj/effect/spawner/random/pool/gatewayloot/claymore
-	guaranteed = TRUE
 	point_value = 50
 	loot = list(
 		/obj/item/claymore/ceremonial = 6,
@@ -343,16 +340,15 @@
 // syndie mob loot
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot
 	loot = list(
-		/obj/item/ammo_casing/c10mm = 64,
-		/obj/item/food/syndicake = 5,
-		/obj/item/tank/internals/emergency_oxygen/engi/syndi = 5,
-		/obj/item/clothing/glasses/night = 5,
+		/obj/item/ammo_casing/c10mm = 63,
+		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 15,
 		/obj/item/reagent_containers/patch/styptic = 5,
 		/obj/item/reagent_containers/patch/silver_sulf = 5,
+		/obj/item/food/syndicake = 5,
 		/obj/item/food/donkpocket = 5,
-		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 5,
 
 		// always least chance
+		/obj/item/clothing/mask/holo_cigar, // ~1/100
 		/obj/item/card/id/syndicate, // ~1/100
 	)
 
@@ -398,14 +394,16 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
-	point_value = 155
+	point_value = 75
+	spawn_loot_chance = 50
 	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie)
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha
 	icon_state = "durand_old"
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha/mauler
-	point_value = 160
+	point_value = 80
+	spawn_loot_chance = 50
 	loot = list(/obj/mecha/combat/marauder/mauler/spacebattle)
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha/ripley_emagged
@@ -413,19 +411,42 @@
 	loot = list(/obj/mecha/working/ripley/emagged)
 
 /obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_mixed
+	loot = list(
+		/obj/effect/spawner/random/bluespace_tap/organic_common = 6,
+		/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_uncommon = 3,
+		/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_rare,
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_uncommon
 	point_value = 25
 	loot = list(
-		/obj/effect/spawner/random/bluespace_tap/organic_common = 13,
-		/obj/effect/spawner/random/bluespace_tap/organic_uncommon = 6,
+		/obj/effect/spawner/random/bluespace_tap/organic_uncommon,
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_rare
+	point_value = 50
+	loot = list(
 		/obj/effect/spawner/random/bluespace_tap/organic_rare,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/cultural_mixed
-	point_value = 25
 	loot = list(
-		/obj/effect/spawner/random/bluespace_tap/cultural_common = 13,
-		/obj/effect/spawner/random/bluespace_tap/cultural_uncommon = 6,
+		/obj/effect/spawner/random/bluespace_tap/cultural_common = 6,
+		/obj/effect/spawner/random/bluespace_tap/cultural_uncommon = 3,
+		/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/cultural_rare,
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/cultural_rare
+	point_value = 60
+	loot = list(
 		/obj/effect/spawner/random/bluespace_tap/cultural_rare,
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/food_mixed
+	loot = list(
+		/obj/effect/spawner/random/bluespace_tap/food_common = 6,
+		/obj/effect/spawner/random/bluespace_tap/food_uncommon = 3,
+		/obj/effect/spawner/random/bluespace_tap/food_rare,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security
@@ -440,4 +461,31 @@
 	loot = list(
 		/obj/machinery/wish_granter_dark,
 		/obj/item/dice/d20/fate/one_use,
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/ussp_major
+	point_value = 100
+	loot = list(
+		/obj/item/gun/projectile/shotgun/boltaction = 54,
+		/obj/item/clothing/suit/space/hardsuit/soviet = 30,
+		/obj/item/clothing/mask/holo_cigar = 10,
+		/obj/item/clothing/glasses/thermal/eyepatch = 5,
+
+		// always least chance
+		/obj/item/gun/projectile/revolver/nagant, // ~1/100
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/ussp_minor
+	spawn_scatter_radius = 1
+	spawn_loot_count = 6
+	spawn_loot_double = FALSE
+	loot = list(
+		/obj/item/clothing/under/new_soviet = 50,
+		/obj/item/clothing/suit/sovietcoat = 50,
+		/obj/item/clothing/head/ushanka = 50,
+		/obj/item/food/grown/potato = 50,
+		/obj/item/reagent_containers/drinks/bottle/vodka/badminka = 50,
+		/obj/item/clothing/head/sovietsidecap = 50,
+		/obj/item/flag/ussp = 30,
+		/obj/item/ammo_box/a762,
 	)

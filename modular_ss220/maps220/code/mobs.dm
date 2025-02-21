@@ -1515,3 +1515,6 @@
 
 /mob/living/simple_animal/hostile/hellhound/tear/ww
 	faction = list("wildwest")
+
+/mob/living/simple_animal/hostile/hellhound/greater/ww
+	faction = list("wildwest")
