@@ -113,7 +113,8 @@
 		/obj/item/ammo_box/speed_loader_mm127,
 		/obj/item/ammo_box/speed_loader_mm127,
 		/obj/item/ammo_box/speed_loader_mm127,
-		/obj/item/clothing/mask/bandana/red
+		/obj/item/clothing/mask/bandana/red,
+		/obj/item/clothing/accessory/holster
 	)
 	suit_store = /obj/item/ammo_box/box_mm127
 
