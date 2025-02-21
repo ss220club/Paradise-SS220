@@ -179,6 +179,10 @@
 		/obj/item/gun/projectile/automatic/pistol/m1911,
 	)
 
+/obj/effect/spawner/random/pool/gatewayloot/tsf/hardsuit
+	point_value = 70
+	loot = list(/obj/item/clothing/suit/space/hardsuit/ert/solgov)
+
 /obj/effect/spawner/random/pool/gatewayloot/tsf/mixed
 	loot = list(
 		/obj/effect/spawner/random/pool/gatewayloot/tsf/marine = 9,
@@ -393,9 +397,14 @@
 		/obj/item/melee/energy/sword/saber, // ~1/100
 	)
 
+/obj/effect/spawner/random/pool/gatewayloot/syndie_boss
+	loot = list(
+		/obj/item/toy/hampter/syndicate,
+		/obj/effect/spawner/random/pool/gatewayloot/griefsky,
+	)
+
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
 	point_value = 75
-	spawn_loot_chance = 50
 	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie)
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha
@@ -442,13 +451,6 @@
 		/obj/effect/spawner/random/bluespace_tap/cultural_rare,
 	)
 
-/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/food_mixed
-	loot = list(
-		/obj/effect/spawner/random/bluespace_tap/food_common = 6,
-		/obj/effect/spawner/random/bluespace_tap/food_uncommon = 3,
-		/obj/effect/spawner/random/bluespace_tap/food_rare,
-	)
-
 /obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security
 	point_value = 30
 	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security)
@@ -473,19 +475,4 @@
 
 		// always least chance
 		/obj/item/gun/projectile/revolver/nagant, // ~1/100
-	)
-
-/obj/effect/spawner/random/pool/gatewayloot/ussp_minor
-	spawn_scatter_radius = 1
-	spawn_loot_count = 6
-	spawn_loot_double = FALSE
-	loot = list(
-		/obj/item/clothing/under/new_soviet = 50,
-		/obj/item/clothing/suit/sovietcoat = 50,
-		/obj/item/clothing/head/ushanka = 50,
-		/obj/item/food/grown/potato = 50,
-		/obj/item/reagent_containers/drinks/bottle/vodka/badminka = 50,
-		/obj/item/clothing/head/sovietsidecap = 50,
-		/obj/item/flag/ussp = 30,
-		/obj/item/ammo_box/a762,
 	)

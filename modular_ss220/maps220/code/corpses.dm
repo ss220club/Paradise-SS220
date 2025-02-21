@@ -254,3 +254,13 @@
 			/obj/item/assembly/signaler/anomaly/bluespace,
 			/obj/item/assembly/signaler/anomaly/vortex,
 			)
+
+/obj/effect/mob_spawn/human/corpse/spacebattle/scientist/mc16
+	outfit = /datum/outfit/spacebattle/scientist/mc16
+
+/datum/outfit/spacebattle/scientist/mc16
+	id = /obj/item/card/id/away/old/sci/mc16
+
+/obj/item/card/id/away/old/sci/mc16
+	name = "MC-16 multicard"
+	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."

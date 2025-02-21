@@ -98,11 +98,33 @@
 /obj/effect/spawner/random/loot/docs/syndie
 	name = "syndie documents"
 	loot = list(
-		/obj/item/documents/syndicate,
-		/obj/item/documents/syndicate/red,
-		/obj/item/documents/syndicate/blue,
-		/obj/item/documents/syndicate/yellow,
-		/obj/item/documents/syndicate/mining,
+		/obj/item/folder/syndicate,
+		/obj/item/folder/syndicate/red,
+		/obj/item/folder/syndicate/blue,
+		/obj/item/folder/syndicate/yellow,
+		/obj/item/folder/syndicate/mining,
+	)
+
+/obj/effect/spawner/random/loot/ussp_minor
+	spawn_scatter_radius = 1
+	spawn_loot_count = 6
+	spawn_loot_double = FALSE
+	loot = list(
+		/obj/item/clothing/under/new_soviet = 50,
+		/obj/item/clothing/suit/sovietcoat = 50,
+		/obj/item/clothing/head/ushanka = 50,
+		/obj/item/food/grown/potato = 50,
+		/obj/item/reagent_containers/drinks/bottle/vodka/badminka = 50,
+		/obj/item/clothing/head/sovietsidecap = 50,
+		/obj/item/flag/ussp = 30,
+		/obj/item/ammo_box/a762,
+	)
+
+/obj/effect/spawner/random/loot/bluespace_tap/food_mixed
+	loot = list(
+		/obj/effect/spawner/random/bluespace_tap/food_common = 6,
+		/obj/effect/spawner/random/bluespace_tap/food_uncommon = 3,
+		/obj/effect/spawner/random/bluespace_tap/food_rare,
 	)
 
 /obj/effect/spawner/random/maintenance
@@ -148,14 +170,22 @@
 	icon_state = "Carp"
 	spawn_loot_chance = 65
 	loot = list(
-		/mob/living/simple_animal/hostile/faithless/ww = 30,
-		/mob/living/simple_animal/hostile/creature/ww = 20,
-		/mob/living/simple_animal/hostile/netherworld/ww = 10,
-		/mob/living/simple_animal/hostile/netherworld/migo/ww = 10,
-		/mob/living/simple_animal/hostile/hellhound/ww = 5,
+		/mob/living/simple_animal/hostile/faithless/wildwest = 30,
+		/mob/living/simple_animal/hostile/creature/wildwest = 20,
+		/mob/living/simple_animal/hostile/netherworld/wildwest = 10,
+		/mob/living/simple_animal/hostile/netherworld/migo/wildwest = 10,
+		/mob/living/simple_animal/hostile/hellhound/wildwest = 5,
 
 		// always least chance
-		/mob/living/simple_animal/hostile/hellhound/tear/ww,
+		/mob/living/simple_animal/hostile/hellhound/tear/wildwest,
+	)
+
+/obj/effect/spawner/random/hostile_fauna/spider
+	name = "hostile spider spawner"
+	loot = list(
+		/mob/living/simple_animal/hostile/poison/giant_spider/caves = 6,
+		/mob/living/simple_animal/hostile/poison/giant_spider/hunter/caves = 3,
+		/mob/living/simple_animal/hostile/poison/giant_spider/nurse/caves,
 	)
 
 // MARK: Misc

@@ -1407,9 +1407,7 @@
 	name = "Syndicate Commander"
 	armour_penetration_flat = 20
 	armour_penetration_percentage = 80
-	loot = list(
-		/obj/effect/decal/cleanable/ash,
-	)
+	loot = list(/obj/effect/decal/cleanable/ash)
 	speed = 2
 	health = 600
 	maxHealth = 600
@@ -1498,23 +1496,33 @@
 		icon_state = "wisewill-Combat"
 
 // MARK: Wildwest
-/mob/living/simple_animal/hostile/faithless/ww
+/mob/living/simple_animal/hostile/faithless/wildwest
 	faction = list("wildwest")
 
-/mob/living/simple_animal/hostile/creature/ww
+/mob/living/simple_animal/hostile/creature/wildwest
 	faction = list("wildwest")
 
-/mob/living/simple_animal/hostile/netherworld/ww
+/mob/living/simple_animal/hostile/netherworld/wildwest
 	faction = list("wildwest")
 
-/mob/living/simple_animal/hostile/netherworld/migo/ww
+/mob/living/simple_animal/hostile/netherworld/migo/wildwest
 	faction = list("wildwest")
 
-/mob/living/simple_animal/hostile/hellhound/ww
+/mob/living/simple_animal/hostile/hellhound/wildwest
 	faction = list("wildwest")
 
-/mob/living/simple_animal/hostile/hellhound/tear/ww
+/mob/living/simple_animal/hostile/hellhound/tear/wildwest
 	faction = list("wildwest")
 
-/mob/living/simple_animal/hostile/hellhound/greater/ww
+/mob/living/simple_animal/hostile/hellhound/greater/wildwest
 	faction = list("wildwest")
+
+// MARK: Caves
+/mob/living/simple_animal/hostile/poison/giant_spider/caves
+	maxbodytemp = 1500
+
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter/caves
+	maxbodytemp = 1500
+
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/caves
+	maxbodytemp = 1500

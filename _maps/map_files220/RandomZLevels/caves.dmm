@@ -75,11 +75,10 @@
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build)
-"ap" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter{
-	maxbodytemp = 1500
-	},
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+"aq" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "as" = (
 /obj/effect/mapping_helpers/turfs/rust/probably,
@@ -1070,8 +1069,7 @@
 "fa" = (
 /obj/structure/table,
 /obj/effect/spawner/random/dirt/often,
-/obj/item/stack/medical/splint,
-/obj/item/stack/medical/splint,
+/obj/item/storage/firstaid/adv,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "white"
 	},
@@ -1174,8 +1172,8 @@
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "fw" = (
-/obj/item/storage/firstaid/brute/empty,
 /obj/effect/spawner/random/dirt/often,
+/obj/item/storage/firstaid/o2,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
 "fz" = (
@@ -1564,10 +1562,7 @@
 /area/awaymission/caves)
 "hQ" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "hS" = (
@@ -1772,13 +1767,6 @@
 	icon_state = "bcircuit"
 	},
 /area/awaymission/caves/build/reqpower_build)
-"iH" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
 "iM" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
@@ -2121,11 +2109,8 @@
 /area/awaymission/caves/build)
 "kR" = (
 /obj/item/reagent_containers/spray,
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "white"
 	},
@@ -2401,11 +2386,8 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "mn" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "white"
 	},
@@ -2684,6 +2666,7 @@
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/item/stack/rods,
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "nQ" = (
@@ -2701,6 +2684,14 @@
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
+"nV" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/structure/safe/floor,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
+/obj/item/clothing/mask/balaclava,
+/obj/item/toy/hampter/syndicate,
+/turf/simulated/floor/plating,
+/area/awaymission/caves/build/reqpower_build)
 "nW" = (
 /obj/effect/decal/cleanable/glass,
 /obj/item/stack/rods,
@@ -3487,6 +3478,16 @@
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
+"sW" = (
+/obj/effect/turf_decal/arrows{
+	dir = 4
+	},
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plasteel/lavaland_air{
+	icon_state = "dark"
+	},
+/area/awaymission/caves/build)
 "sY" = (
 /obj/structure/cult/pylon,
 /obj/effect/decal/cleanable/dust,
@@ -3940,6 +3941,7 @@
 "vg" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light_construct/small/east,
+/obj/effect/decal/remains/human,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "vh" = (
@@ -4008,6 +4010,7 @@
 "vE" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/loot/bluespace_tap/food_mixed,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -4394,12 +4397,7 @@
 "xJ" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/structure/closet/crate/freezer/iv_storage,
-/obj/item/reagent_containers/iv_bag/blood/vox,
-/obj/item/reagent_containers/iv_bag/salglu,
-/obj/item/reagent_containers/iv_bag/salglu,
 /obj/effect/spawner/random/dirt/often,
-/obj/item/reagent_containers/iv_bag/blood/o_minus,
-/obj/item/reagent_containers/iv_bag/blood/o_plus,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "white"
 	},
@@ -4427,10 +4425,6 @@
 "xV" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/firstaid/regular/empty{
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /obj/machinery/light/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel/lavaland_air{
@@ -4857,11 +4851,6 @@
 /obj/machinery/igniter,
 /turf/simulated/floor/engine,
 /area/awaymission/caves/build/reqpower_build)
-"AD" = (
-/obj/structure/cult/altar,
-/obj/effect/spawner/random/pool/gatewayloot/immortality_ring,
-/turf/simulated/floor/engine/cult/lavaland_air,
-/area/awaymission/caves)
 "AE" = (
 /obj/effect/spawner/random/blood/often,
 /mob/living/simple_animal/hostile/clown/mutant{
@@ -5419,6 +5408,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
+"DG" = (
+/obj/structure/cult/altar,
+/obj/effect/spawner/random/pool/gatewayloot/immortality_ring,
+/obj/effect/spawner/random/blood/often,
+/turf/simulated/floor/engine/cult/lavaland_air,
+/area/awaymission/caves)
 "DH" = (
 /obj/structure/cult/pylon,
 /obj/effect/decal/cleanable/dust,
@@ -6126,10 +6121,6 @@
 "Hr" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/brute,
-/obj/item/storage/firstaid/brute{
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "white"
 	},
@@ -6319,6 +6310,10 @@
 /obj/structure/closet/critter/fox,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
+"Iy" = (
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/awaymission/caves)
 "ID" = (
 /obj/structure/cult/altar,
 /obj/item/clothing/gloves/ring/plasma,
@@ -6705,6 +6700,7 @@
 	},
 /obj/structure/closet/cabinet,
 /obj/effect/spawner/random/pool/gatewayloot/tsf/mixed,
+/obj/effect/spawner/random/pool/gatewayloot/tsf/hardsuit,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -6770,11 +6766,8 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "KP" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
 "KQ" = (
@@ -7540,13 +7533,6 @@
 /obj/effect/spawner/random/blood/often,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
-"PF" = (
-/obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter{
-	maxbodytemp = 1500
-	},
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
 "PG" = (
 /obj/item/clothing/mask/breath,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
@@ -7975,7 +7961,6 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Sr" = (
-/mob/living/simple_animal/hostile/hellhound/tear,
 /obj/effect/gibspawner/human,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
@@ -8099,6 +8084,13 @@
 /obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
+"Ta" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plasteel/lavaland_air{
+	icon_state = "dark"
+	},
+/area/awaymission/caves)
 "Tc" = (
 /obj/effect/spawner/random/maintenance,
 /obj/structure/rack,
@@ -8887,9 +8879,8 @@
 /area/awaymission/caves)
 "WG" = (
 /obj/structure/table,
-/obj/item/reagent_containers/applicator/brute,
-/obj/item/reagent_containers/applicator/burn,
 /obj/effect/spawner/random/dirt/often,
+/obj/item/storage/firstaid/machine,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "white"
 	},
@@ -9272,10 +9263,7 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Yw" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
+/obj/effect/spawner/random/hostile_fauna/spider,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
@@ -9499,6 +9487,12 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
+"ZV" = (
+/obj/machinery/light_construct/small/south,
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/wood/lavaland_air,
+/area/awaymission/caves)
 "ZZ" = (
 /obj/effect/decal/cleanable/shreds,
 /obj/effect/spawner/random/dirt/often,
@@ -12419,7 +12413,7 @@ dX
 Te
 TK
 dX
-PF
+hQ
 sr
 dX
 sr
@@ -12429,7 +12423,7 @@ dX
 TK
 TK
 TK
-PF
+hQ
 sr
 sr
 sr
@@ -13818,7 +13812,7 @@ dX
 sr
 sr
 dX
-PF
+hQ
 sr
 sr
 sr
@@ -14497,13 +14491,13 @@ TK
 dX
 dX
 dX
-iH
+Iy
 dX
 va
 dX
 sr
 sr
-PF
+hQ
 sr
 sr
 sr
@@ -14972,7 +14966,7 @@ sr
 sr
 sr
 sr
-PF
+hQ
 dX
 dX
 sr
@@ -16201,7 +16195,7 @@ se
 kG
 Lr
 kD
-VD
+aq
 dX
 Pb
 mc
@@ -16381,7 +16375,7 @@ TK
 Te
 dX
 TK
-PF
+hQ
 TK
 sr
 TK
@@ -16599,7 +16593,7 @@ sr
 dX
 TK
 dX
-dX
+Iy
 TK
 TK
 TK
@@ -17052,7 +17046,7 @@ TK
 TK
 sr
 sr
-PF
+hQ
 sr
 TK
 TK
@@ -17274,7 +17268,7 @@ sr
 sr
 sr
 sr
-PF
+hQ
 sr
 sr
 sr
@@ -17284,7 +17278,7 @@ TK
 TK
 TK
 sr
-PF
+hQ
 sr
 TK
 TK
@@ -17292,16 +17286,16 @@ sr
 sr
 sr
 sr
-TK
-TK
-dX
-TK
-TK
 TK
 TK
 dX
+TK
+TK
+TK
+TK
 dX
 dX
+Iy
 TK
 TK
 TK
@@ -17380,7 +17374,7 @@ TK
 TK
 dX
 dX
-dX
+Iy
 dX
 TK
 TK
@@ -17526,7 +17520,7 @@ fp
 sr
 TK
 TK
-ap
+Iy
 dX
 TK
 TK
@@ -17539,7 +17533,7 @@ TK
 TK
 TK
 TK
-PF
+hQ
 sr
 dX
 sr
@@ -17601,7 +17595,7 @@ Aq
 kG
 PJ
 tW
-ts
+sW
 tW
 tW
 kG
@@ -17745,7 +17739,7 @@ TK
 TK
 TK
 dX
-iH
+Iy
 TK
 dX
 dX
@@ -17824,7 +17818,7 @@ kD
 kD
 kD
 kD
-kD
+Ta
 kD
 kD
 kD
@@ -17986,7 +17980,7 @@ sr
 TK
 sr
 sr
-PF
+hQ
 sr
 TK
 sr
@@ -18200,7 +18194,7 @@ TK
 TK
 TK
 aT
-PF
+hQ
 dX
 sr
 nx
@@ -18670,7 +18664,7 @@ TK
 TK
 TK
 dX
-dX
+Iy
 TK
 dX
 TK
@@ -19151,7 +19145,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 dX
 dX
 dX
@@ -19162,7 +19156,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 TK
 TK
 TK
@@ -19372,7 +19366,7 @@ dX
 dX
 TK
 dX
-dX
+Iy
 dX
 TK
 TK
@@ -19400,7 +19394,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 TK
 LU
 LU
@@ -19464,7 +19458,7 @@ gc
 dX
 dX
 dX
-dX
+Iy
 dX
 dX
 dX
@@ -20317,7 +20311,7 @@ dX
 nx
 dX
 dX
-iH
+Iy
 dX
 va
 dX
@@ -20526,7 +20520,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 dX
 dX
 sr
@@ -20752,7 +20746,7 @@ TK
 TK
 TK
 dX
-ap
+Iy
 dX
 TK
 TK
@@ -20788,7 +20782,7 @@ sr
 TK
 TK
 dX
-PF
+hQ
 sr
 TK
 dX
@@ -20975,7 +20969,7 @@ TK
 TK
 TK
 dX
-PF
+hQ
 dX
 dX
 Aq
@@ -21015,7 +21009,7 @@ TK
 TK
 TK
 sr
-PF
+hQ
 sr
 sr
 sr
@@ -21233,7 +21227,7 @@ dX
 dX
 TK
 TK
-ap
+Iy
 dX
 dX
 Aq
@@ -22368,7 +22362,7 @@ TK
 dX
 dX
 dX
-PF
+hQ
 sr
 dX
 dX
@@ -22397,7 +22391,7 @@ dX
 TK
 TK
 TK
-dX
+Iy
 dX
 TK
 TK
@@ -22619,7 +22613,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 sr
 sr
 dX
@@ -22842,7 +22836,7 @@ TK
 TK
 TK
 dX
-dX
+Iy
 TK
 TK
 TK
@@ -23311,7 +23305,7 @@ dX
 dX
 dX
 dX
-ap
+Iy
 dX
 dX
 Aq
@@ -23374,7 +23368,7 @@ gc
 gc
 gc
 zT
-ow
+ZV
 gc
 EI
 tP
@@ -23553,11 +23547,11 @@ TK
 TK
 TK
 dX
-dX
+Iy
 TK
 TK
 TK
-dX
+Iy
 dX
 TK
 TK
@@ -24222,7 +24216,7 @@ LU
 TK
 TK
 TK
-dX
+Iy
 dX
 TK
 TK
@@ -24466,7 +24460,7 @@ TK
 TK
 TK
 dX
-PF
+hQ
 dX
 TK
 dX
@@ -24690,7 +24684,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 TK
 TK
 TK
@@ -25399,7 +25393,7 @@ sr
 dX
 sr
 dX
-PF
+hQ
 sr
 sr
 dX
@@ -30756,7 +30750,7 @@ LU
 as
 Uj
 vg
-dP
+nV
 as
 yb
 zf
@@ -37593,7 +37587,7 @@ BH
 BH
 BH
 mz
-AD
+cj
 GF
 GF
 bg
@@ -37825,7 +37819,7 @@ BH
 BH
 BH
 mz
-cj
+DG
 GF
 GF
 Vt
@@ -46800,7 +46794,7 @@ TK
 TK
 aT
 dX
-iH
+Iy
 sr
 TK
 TK
@@ -47497,7 +47491,7 @@ dX
 dX
 dX
 dX
-dX
+Iy
 dX
 dX
 sr
