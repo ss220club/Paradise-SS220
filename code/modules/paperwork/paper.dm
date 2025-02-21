@@ -843,24 +843,10 @@
 	7. DRAG the nuclear device to the closest opening to SPACE, and PUSH it away from the station."
 
 /obj/item/paper/central_command
-	name = "Бумага с ЦК"
+	name = "paper"
+	header ="<p><img style='display: block; margin-left: auto; margin-right: auto;' src='ntlogo.png' alt='' width='220' height='135' /></p><hr /><h3 style='text-align: center;font-family: Verdana;'><b> Nanotrasen Central Command</h3><p style='text-align: center;font-family:Verdana;'>Official Expedited Memorandum</p></b><hr />"
 	info = ""
-
-/obj/item/paper/central_command/New(mob/user)
-	..()
-	var/SS220_pen_code_header = "\[grid\]\[row\]\[cell\]     \[logo\]\[cell\]\[small\]Форма Nano Trasen NT-\[b\]CC\[/b\]-RES\[/small\]ᅠᅠᅠᅠᅠ\[small\]Время: \[time\]\[/small\] \
-										\[small\]Станция — \[b\]Центральное командование\[/b\]\[/small\]ᅠᅠ ᅠ\[small\]Год: 2569\[/small\] \
-										\[br\]\[i\]\[large\]\[b\] ᅠ\[field\] \[b\]\[/large\]\[/i\]\[/grid\]\[hr\] \
-										\[center\]Приветствую экипаж и руководство \[station\]!\[/center\]\[br\]\[br\]"
-
-	header = pencode_to_html(SS220_pen_code_header, user)
-	if(ishuman(user))
-		var/SS220_pen_code_footer = "\[br\]\[small\]\[i\]\[br\]Подпись: \[sign\]\[/i\],   в должности: \[i\]Nanotrasen Navy Officer\[field\].\[/i\]\[/small\]\[br\]\[hr\]\[small\] *Несоблюдение указаний, содержащихся в данном документе, считается нарушением политики компании; Дисциплинарное взыскание за нарушения может быть применено на месте или в конце смены в Центральном командовании;\[br\]*Получатель(и) данного меморандума подтверждает(ют), что он(она/они) несут ответственность за любой ущерб, который может возникнуть в результате игнорирования приведенных здесь директив или рекомендаций;\[br\]*Все отчеты должны храниться конфиденциально их предполагаемым получателем и любой соответствующей стороной. Несанкционированное распространение данного меморандума может привести к дисциплинарным взысканиям.\[/small\]"
-		footer = pencode_to_html(SS220_pen_code_footer, user)
-	else
-		var/SS220_pen_code_footer = "\[br\]\[small\]\[i\]\[br\]Подпись: \[signfont\]Стэнди Мэроу\[/signfont\]\[/i\],   в должности: \[i\]Nanotrasen Navy Officer\[field\].\[/i\]\[/small\]\[br\]\[hr\]\[small\] *Несоблюдение указаний, содержащихся в данном документе, считается нарушением политики компании; Дисциплинарное взыскание за нарушения может быть применено на месте или в конце смены в Центральном командовании;\[br\]*Получатель(и) данного меморандума подтверждает(ют), что он(она/они) несут ответственность за любой ущерб, который может возникнуть в результате игнорирования приведенных здесь директив или рекомендаций;\[br\]*Все отчеты должны храниться конфиденциально их предполагаемым получателем и любой соответствующей стороной. Несанкционированное распространение данного меморандума может привести к дисциплинарным взысканиям.\[/small\]"
-		footer = pencode_to_html(SS220_pen_code_footer, user)
-
+	footer = "<hr /><p style='font-family:Verdana;'><em>Failure to adhere appropriately to orders that may be contained herein is in violation of Space Law, and punishments may be administered appropriately upon return to Central Command.</em><br /><em>The recipient(s) of this memorandum acknowledge by reading it that they are liable for any and all damages to crew or station that may arise from ignoring suggestions or advice given herein.</em></p>"
 
 /obj/item/paper/seed_vault
 	name = "Seed Vault Objective"
