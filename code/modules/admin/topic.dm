@@ -2516,7 +2516,10 @@
 		var/use_letterheard = alert("Use letterhead? If so, do not add your own header or a footer. Type and format only your actual message.", null,"Nanotrasen","Syndicate", "No")
 		switch(use_letterheard)
 			if("Nanotrasen")
-				P = new /obj/item/paper/central_command(usr) // SS220 EDIT - Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
+				// SS220 EDIT START Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
+				var/sign_name = tgui_input_text(usr, "Введите, от чьего лица отправить факс. Оставьте пустым, чтобы использовать стандартное имя.", "Выбор имени отправителя факса", max_length = MAX_NAME_LEN)
+				P = new /obj/item/paper/central_command(usr, sign_name)
+				// SS220 EDIT END
 			if("Syndicate")
 				P = new /obj/item/paper/syndicate(null)
 			if("No")
