@@ -2518,7 +2518,9 @@
 			if("Nanotrasen")
 				// SS220 EDIT START Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
 				var/sign_name = tgui_input_text(usr, "Введите, от чьего лица отправить факс. Оставьте пустым, чтобы использовать стандартное имя.", "Выбор имени отправителя факса", max_length = MAX_NAME_LEN)
-				P = new /obj/item/paper/central_command(usr, sign_name)
+				if(sign_name == "")
+					sign_name = null
+				P = new /obj/item/paper/central_command(sign_name)
 				// SS220 EDIT END
 			if("Syndicate")
 				P = new /obj/item/paper/syndicate(null)
