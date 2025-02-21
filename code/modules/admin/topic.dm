@@ -2516,7 +2516,7 @@
 		var/use_letterheard = alert("Use letterhead? If so, do not add your own header or a footer. Type and format only your actual message.", null,"Nanotrasen","Syndicate", "No")
 		switch(use_letterheard)
 			if("Nanotrasen")
-				P = new /obj/item/paper/central_command(null)
+				P = new /obj/item/paper/central_command(usr) // SS220 EDIT - Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
 			if("Syndicate")
 				P = new /obj/item/paper/syndicate(null)
 			if("No")
