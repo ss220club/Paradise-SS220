@@ -170,22 +170,41 @@
 	icon_state = "Carp"
 	spawn_loot_chance = 65
 	loot = list(
-		/mob/living/simple_animal/hostile/faithless/wildwest = 30,
-		/mob/living/simple_animal/hostile/creature/wildwest = 20,
-		/mob/living/simple_animal/hostile/netherworld/wildwest = 10,
-		/mob/living/simple_animal/hostile/netherworld/migo/wildwest = 10,
-		/mob/living/simple_animal/hostile/hellhound/wildwest = 5,
+		/mob/living/simple_animal/hostile/faithless = 30,
+		/mob/living/simple_animal/hostile/creature = 20,
+		/mob/living/simple_animal/hostile/netherworld = 10,
+		/mob/living/simple_animal/hostile/netherworld/migo = 10,
+		/mob/living/simple_animal/hostile/hellhound = 5,
 
 		// always least chance
-		/mob/living/simple_animal/hostile/hellhound/tear/wildwest,
+		/mob/living/simple_animal/hostile/hellhound/tear,
+	)
+
+/obj/effect/spawner/random/hostile_fauna/wildwest
+	loot = list(
+		/mob/living/simple_animal/hostile/faithless{faction = list("wildwest")} = 30,
+		/mob/living/simple_animal/hostile/creature{faction = list("wildwest")} = 20,
+		/mob/living/simple_animal/hostile/netherworld{faction = list("wildwest")} = 10,
+		/mob/living/simple_animal/hostile/netherworld/migo{faction = list("wildwest")} = 10,
+		/mob/living/simple_animal/hostile/hellhound{faction = list("wildwest")} = 5,
+
+		// always least chance
+		/mob/living/simple_animal/hostile/hellhound/tear{faction = list("wildwest")},
 	)
 
 /obj/effect/spawner/random/hostile_fauna/spider
 	name = "hostile spider spawner"
 	loot = list(
-		/mob/living/simple_animal/hostile/poison/giant_spider/caves = 6,
-		/mob/living/simple_animal/hostile/poison/giant_spider/hunter/caves = 3,
-		/mob/living/simple_animal/hostile/poison/giant_spider/nurse/caves,
+		/mob/living/simple_animal/hostile/poison/giant_spider = 6,
+		/mob/living/simple_animal/hostile/poison/giant_spider/hunter = 3,
+		/mob/living/simple_animal/hostile/poison/giant_spider/nurse,
+	)
+
+/obj/effect/spawner/random/hostile_fauna/spider/caves
+	loot = list(
+		/mob/living/simple_animal/hostile/poison/giant_spider{maxbodytemp = 1500} = 6,
+		/mob/living/simple_animal/hostile/poison/giant_spider/hunter{maxbodytemp = 1500} = 3,
+		/mob/living/simple_animal/hostile/poison/giant_spider/nurse{maxbodytemp = 1500},
 	)
 
 // MARK: Misc

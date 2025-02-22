@@ -77,7 +77,7 @@
 /area/awaymission/caves/build)
 "aq" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "as" = (
@@ -1562,7 +1562,7 @@
 /area/awaymission/caves)
 "hQ" = (
 /obj/structure/spider/stickyweb,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "hS" = (
@@ -2110,7 +2110,7 @@
 "kR" = (
 /obj/item/reagent_containers/spray,
 /obj/effect/spawner/random/dirt/often,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "white"
 	},
@@ -2387,7 +2387,7 @@
 /area/awaymission/caves)
 "mn" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "white"
 	},
@@ -2666,7 +2666,7 @@
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/item/stack/rods,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "nQ" = (
@@ -3483,7 +3483,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "dark"
 	},
@@ -6311,7 +6311,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Iy" = (
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "ID" = (
@@ -6673,6 +6673,12 @@
 	icon_state = "dark"
 	},
 /area/awaymission/caves)
+"Ko" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/hostile_fauna,
+/turf/simulated/floor/wood/lavaland_air,
+/area/awaymission/caves)
 "Kp" = (
 /obj/structure/flora/rock/pile,
 /turf/simulated/floor/plating/lavaland_air,
@@ -6767,7 +6773,7 @@
 /area/awaymission/caves/build/reqpower_build)
 "KP" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
 "KQ" = (
@@ -6837,10 +6843,8 @@
 /area/awaymission/caves)
 "Lj" = (
 /obj/structure/cult/altar,
-/obj/item/stack/sheet/runed_metal{
-	amount = 10
-	},
 /obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/random/pool/gatewayloot/cult/valuable,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Ll" = (
@@ -8086,7 +8090,7 @@
 /area/awaymission/caves/build)
 "Ta" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "dark"
 	},
@@ -8520,6 +8524,11 @@
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "necro3"
 	},
+/area/awaymission/caves)
+"UR" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna,
+/turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "US" = (
 /obj/effect/spawner/random/blood/often,
@@ -9263,7 +9272,7 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Yw" = (
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
@@ -9490,7 +9499,7 @@
 "ZV" = (
 /obj/machinery/light_construct/small/south,
 /obj/effect/spawner/random/dirt/often,
-/obj/effect/spawner/random/hostile_fauna/spider,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "ZZ" = (
@@ -11637,7 +11646,7 @@ En
 En
 gl
 UH
-zA
+Ko
 UH
 Bn
 En
@@ -11863,11 +11872,11 @@ LU
 En
 UH
 cg
-UH
+UR
 zA
 bB
 zA
-zA
+Ko
 UH
 Sr
 XS
@@ -12336,7 +12345,7 @@ ry
 En
 En
 En
-UH
+UR
 zA
 mI
 zl

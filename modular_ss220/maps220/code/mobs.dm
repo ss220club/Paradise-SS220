@@ -1494,35 +1494,3 @@
 		icon_state = "wisewill-Combat-roll"
 	else if(health / maxHealth < 0.5)
 		icon_state = "wisewill-Combat"
-
-// MARK: Wildwest
-/mob/living/simple_animal/hostile/faithless/wildwest
-	faction = list("wildwest")
-
-/mob/living/simple_animal/hostile/creature/wildwest
-	faction = list("wildwest")
-
-/mob/living/simple_animal/hostile/netherworld/wildwest
-	faction = list("wildwest")
-
-/mob/living/simple_animal/hostile/netherworld/migo/wildwest
-	faction = list("wildwest")
-
-/mob/living/simple_animal/hostile/hellhound/wildwest
-	faction = list("wildwest")
-
-/mob/living/simple_animal/hostile/hellhound/tear/wildwest
-	faction = list("wildwest")
-
-/mob/living/simple_animal/hostile/hellhound/greater/wildwest
-	faction = list("wildwest")
-
-// MARK: Caves
-/mob/living/simple_animal/hostile/poison/giant_spider/caves
-	maxbodytemp = 1500
-
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter/caves
-	maxbodytemp = 1500
-
-/mob/living/simple_animal/hostile/poison/giant_spider/nurse/caves
-	maxbodytemp = 1500

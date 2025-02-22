@@ -527,6 +527,11 @@
 /obj/item/mod/construction/broken_core,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
+"aMf" = (
+/obj/effect/spawner/random/dirt/maybe,
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plasteel,
+/area/awaymission/jungle_planet/outside)
 "aMI" = (
 /obj/effect/turf_decal/stripes/corner,
 /turf/simulated/floor/plasteel,
@@ -3429,6 +3434,12 @@
 /obj/effect/spawner/random/pool/gatewayloot/lockbox,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
+"eDe" = (
+/obj/machinery/light_construct/small/west,
+/obj/effect/spawner/random/dirt/frequent,
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/inside/complex)
 "eDn" = (
 /obj/structure/machine_frame,
 /obj/item/stack/cable_coil{
@@ -3962,6 +3973,7 @@
 "fnP" = (
 /obj/structure/spider/stickyweb,
 /obj/effect/spawner/random/dirt/maybe,
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "fpm" = (
@@ -4879,7 +4891,6 @@
 /area/awaymission/jungle_planet/outside)
 "gDE" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "gDF" = (
@@ -7096,6 +7107,7 @@
 	dir = 5
 	},
 /obj/effect/spawner/random/dirt/frequent,
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "jps" = (
@@ -9377,6 +9389,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/outside)
+"mgm" = (
+/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/inside/complex)
 "mgq" = (
 /obj/effect/baseturf_helper/beach/sand,
 /turf/simulated/wall/indestructible/rock/mineral,
@@ -10372,7 +10389,7 @@
 /area/awaymission/jungle_planet/inside)
 "njH" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider,
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/abandoned)
 "njL" = (
@@ -10442,6 +10459,10 @@
 /obj/machinery/floodlight,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside/river)
+"nto" = (
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/outside)
 "nub" = (
 /obj/item/airlock_electronics,
 /obj/structure/railing{
@@ -11067,6 +11088,7 @@
 	dir = 4
 	},
 /obj/machinery/light_construct/small/south,
+/obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "onB" = (
@@ -15820,11 +15842,6 @@
 /obj/structure/closet/crate/wooden,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
-"ulv" = (
-/obj/effect/spawner/random/oil/maybe,
-/mob/living/simple_animal/hostile/poison/giant_spider,
-/turf/simulated/floor/plating,
-/area/awaymission/jungle_planet/inside/complex)
 "ulP" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -17376,11 +17393,6 @@
 	icon_state = "darkneutralfull"
 	},
 /area/awaymission/jungle_planet/inside)
-"wbT" = (
-/obj/effect/spawner/random/dirt/maybe,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
-/turf/simulated/floor/plating,
-/area/awaymission/jungle_planet/inside/complex)
 "wcv" = (
 /obj/structure/bed/mattress,
 /obj/effect/mapping_helpers/turfs/damage,
@@ -18827,6 +18839,11 @@
 	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
+/area/awaymission/jungle_planet/inside/complex)
+"xUu" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/spawner/random/hostile_fauna/spider,
+/turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "xVk" = (
 /obj/structure/bed,
@@ -21232,7 +21249,7 @@ miM
 omz
 ifJ
 pHo
-eAh
+eDe
 pYs
 wmO
 jHd
@@ -21265,7 +21282,7 @@ qfJ
 jcp
 ina
 fhz
-fhz
+nto
 fhz
 lWL
 aHl
@@ -21619,7 +21636,7 @@ jHd
 xWT
 rUV
 wXR
-kuK
+xUu
 gDE
 pGk
 gaK
@@ -21811,7 +21828,7 @@ wXR
 pUX
 koU
 ohf
-fEq
+aMf
 oFY
 xZy
 rvr
@@ -21990,11 +22007,11 @@ nBO
 grU
 vcV
 mYn
-wbT
+vmE
 koU
 mAT
-ulv
-vgF
+wXR
+mgm
 wDF
 koU
 kzC
