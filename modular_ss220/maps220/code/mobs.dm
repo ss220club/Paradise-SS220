@@ -452,9 +452,9 @@
 	var/jungle_mob = null
 
 /obj/effect/landmark/awaymissions/gate_lizard/mine_spawner/on_atom_entered(datum/source, atom/movable/entered)
-	if(!isliving(source))
+	if(!isliving(entered))
 		return
-	var/mob/living/M = source
+	var/mob/living/M = entered
 	if(faction && (faction in M.faction))
 		return
 	triggerlandmark(M)
@@ -1297,9 +1297,9 @@
 	var/syndi_mob = null
 
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner/on_atom_entered(datum/source, atom/movable/entered)
-	if(!isliving(source))
+	if(!isliving(entered))
 		return
-	var/mob/living/M = source
+	var/mob/living/M = entered
 	if(faction && (faction in M.faction))
 		return
 	triggerlandmark(M)
@@ -1340,6 +1340,9 @@
 	name = "drone"
 	icon_state = "drone"
 	syndi_mob = /mob/living/simple_animal/hostile/malf_drone/spacebattle
+
+/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/spacebattle
+	loot = list(/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle)
 
 //Enemies
 /mob/living/simple_animal/hostile/syndicate
@@ -1477,7 +1480,6 @@
 /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle/Initialize(mapload)
 	. = ..()
 	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynRange, SynSpace)
-	return .
 
 /mob/living/simple_animal/hostile/malf_drone/spacebattle
 	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'

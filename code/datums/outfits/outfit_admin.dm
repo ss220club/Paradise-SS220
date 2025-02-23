@@ -769,9 +769,9 @@
 		return
 
 	if(is_solgov_lieutenant)
-		H.real_name = "Lieutenant [pick(GLOB.last_names)]"
+		H.real_name = "Лейтенант [pick(GLOB.last_names)]"
 	else
-		H.real_name = "[pick("Corporal", "Sergeant", "Staff Sergeant", "Sergeant First Class", "Master Sergeant", "Sergeant Major")] [pick(GLOB.last_names)]"
+		H.real_name = "[pick("Капрал", "Сержант", "Старший Сержант", "Сержант 1-го Класса", "Мастер-Сержант", "Сержант-Майор")] [pick(GLOB.last_names)]"
 	H.name = H.real_name
 	var/obj/item/card/id/I = H.wear_id
 	I.assignment = name
@@ -888,6 +888,12 @@
 	suit = /obj/item/clothing/suit/sovietcoat
 	head = /obj/item/clothing/head/ushanka
 	box = /obj/item/storage/box/soviet
+
+/datum/outfit/admin/trader/commie/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+	H.add_language("Zvezhan")
 
 /datum/outfit/admin/trader/unathi
 	name = "Glint-Scales Trader"
@@ -1451,7 +1457,7 @@
 		backpack_contents.Add(/obj/item/gun/throw/piecannon)
 		backpack_contents[/obj/item/gun/throw/piecannon] = 1
 
-	var/clown_rank = pick("Trickster First Class", "Master Clown", "Major Prankster")
+	var/clown_rank = pick("Приколист 1-го Класса", "Мастер-Пранкстер", "Майор Клоун")
 	var/clown_name = pick(GLOB.clown_names)
 	H.real_name = "[clown_rank] [clown_name]"
 
@@ -1605,7 +1611,8 @@
 	H.update_fhair()
 	H.update_dna()
 
-	H.wear_mask.adjustmask(H) // push it back on the head
+	var/obj/item/clothing/mask/worn_mask = H.wear_mask
+	worn_mask.adjustmask(H) // push it back on the head
 	equip_item(H, /obj/item/clothing/mask/cigarette/cigar, ITEM_SLOT_MASK) // get them their cigar
 	if(istype(H.glasses, /obj/item/clothing/glasses)) // this is gonna be always true
 		var/obj/item/clothing/glasses/glassass = H.glasses

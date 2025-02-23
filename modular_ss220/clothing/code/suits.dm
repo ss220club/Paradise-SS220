@@ -217,6 +217,21 @@
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
 		)
 
+/obj/item/clothing/suit/storage/paramedic/pmed_jacket_new
+	name = "Светоотражающая куртка парамедика"
+	desc = "Ярко-жёлтая куртка парамедика со светоотражающими элементами, нарукавной мигалкой и множеством карманов. Изготовлена из плотного материала и хорошо заметна с большого расстояния. "
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "pmed_new_jacket_open"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	ignore_suitadjust = FALSE
+	suit_adjusted = TRUE
+	actions_types = list(/datum/action/item_action/toggle)
+	adjust_flavour = "unpin нарукавная мигалка"
+	sprite_sheets = list(
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/suits.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
+		)
+
 // MARK: Space Battle
 /obj/item/clothing/suit/space/hardsuit/security
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
@@ -437,3 +452,37 @@
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 
+/* Security */
+/obj/item/clothing/suit/armor/cop
+	name = "grey overcoat"
+	desc = "Не забудьте про шлем любителя свежего воздуха."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	icon_state = "armored_coat"
+	item_state = "armored_coat"
+	armor = list(MELEE = 25, BULLET = 25, LASER = 15, ENERGY = 5, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
+	body_parts_covered = UPPER_TORSO | LOWER_TORSO | ARMS
+	cold_protection = UPPER_TORSO | LOWER_TORSO | ARMS
+	heat_protection = UPPER_TORSO | LOWER_TORSO | ARMS
+	sprite_sheets = list(
+		"Abductor" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Ancient Skeleton" 	= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/suits.dmi',
+		"Golem" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/species/grey/suits.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/suits.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Monkey" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Shadow" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
+		)

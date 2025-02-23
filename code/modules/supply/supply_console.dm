@@ -389,7 +389,7 @@
 						update_static_data(user) // pack is going to be disabled, need to update pack data
 					SStgui.update_uis(src)
 					return TRUE
-				atom_say("ERROR: Account tied to order cannot pay, auto-denying order")
+				atom_say("ОШИБКА: Счет, связанный с заказом, не может быть использован для оплаты. Заказ автоматически отклонен.")
 				SSeconomy.request_list -= order //just remove order at this poin
 			else
 				return TRUE
@@ -413,7 +413,7 @@
 					investigate_log("| [key_name(user)] has authorized an order for [pack.name]. Remaining Cargo Balance: [cargo_account.credit_balance].", "cargo")
 					SSblackbox.record_feedback("tally", "cargo_shuttle_order", 1, pack.name)
 				else
-					atom_say("ERROR: Account tied to order cannot pay, auto-denying order")
+					atom_say("ОШИБКА: Счет, связанный с заказом, не может быть использован для оплаты. Заказ автоматически отклонен.")
 					SSeconomy.request_list -= order
 		break
 
@@ -462,7 +462,7 @@
 	var/attempt_pin = pin
 	if(customer_account.security_level != ACCOUNT_SECURITY_ID && !attempt_pin)
 		//if pin is not given, we'll prompt them here
-		attempt_pin = tgui_input_number(user, "Enter pin code", "Vendor transaction", max_value = 99999)
+		attempt_pin = tgui_input_number(user, "Enter pin code", "Vendor transaction", max_value = BANK_PIN_MAX, min_value = BANK_PIN_MIN)
 		if(!Adjacent(user) || !attempt_pin)
 			return FALSE
 	var/is_admin = is_admin(user)

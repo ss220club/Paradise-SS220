@@ -183,7 +183,7 @@
 		/obj/item/food/meatsteak,
 		/obj/item/food/meatsteak,
 		/obj/item/food/grown/cabbage,
-		/obj/item/food/onion_slice,
+		/obj/item/food/sliced/onion_slice,
 		/obj/item/food/grown/tomato,
 		/obj/item/food/grown/carrot,
 		/obj/item/food/sliceable/flatdough)
@@ -204,8 +204,8 @@
 	items = list(
 		/obj/item/food/meatsteak,
 		/obj/item/food/meatsteak,
-		/obj/item/food/cheesewedge,
-		/obj/item/food/cheesewedge,
+		/obj/item/food/sliced/cheesewedge,
+		/obj/item/food/sliced/cheesewedge,
 		/obj/item/food/grown/cabbage,
 		/obj/item/food/grown/tomato,
 		/obj/item/food/sliceable/flatdough)
@@ -229,7 +229,7 @@
 		/obj/item/food/grown/mushroom,
 		/obj/item/food/grown/mushroom,
 		/obj/item/food/grown/cabbage,
-		/obj/item/food/onion_slice,
+		/obj/item/food/sliced/onion_slice,
 		/obj/item/food/grown/tomato,
 		/obj/item/food/grown/carrot,
 		/obj/item/food/sliceable/flatdough)
@@ -249,8 +249,8 @@
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
 	items = list(
 		/obj/item/food/grown/cabbage,
-		/obj/item/food/onion_slice,
-		/obj/item/food/onion_slice,
+		/obj/item/food/sliced/onion_slice,
+		/obj/item/food/sliced/onion_slice,
 		/obj/item/food/grown/tomato,
 		/obj/item/food/grown/tomato,
 		/obj/item/food/grown/carrot,
@@ -386,7 +386,7 @@
 		/obj/item/food/dough,
 		/obj/item/food/meat,
 		/obj/item/organ/internal/liver/vulpkanin,
-		/obj/item/food/cheesewedge)
+		/obj/item/food/sliced/cheesewedge)
 	result = /obj/item/food/vulpix/cheese
 
 // Bacon Vulpixes
@@ -449,7 +449,7 @@
 	reagents = list("herbsmix" = 1, "garlic_sauce" = 1)
 	items = list(
 		/obj/item/food/sliceable/flatdough,
-		/obj/item/food/cheesewedge,
+		/obj/item/food/sliced/cheesewedge,
 		/obj/item/food/salmonmeat,
 		/obj/item/food/salmonmeat,
 		/obj/item/food/boiled_shrimp,
@@ -479,7 +479,7 @@
 	reagents = list("mushroom_sauce" = 1)
 	items = list(
 		/obj/item/food/sliceable/flatdough,
-		/obj/item/food/cheesewedge,
+		/obj/item/food/sliced/cheesewedge,
 		/obj/item/food/grown/mushroom,
 		/obj/item/food/grown/mushroom,
 		/obj/item/food/raw_bacon,
@@ -509,8 +509,8 @@
 	reagents = list("herbsmix" = 1, "tomato_sauce" = 1, "blackpepper" = 1)
 	items = list(
 		/obj/item/food/sliceable/flatdough,
-		/obj/item/food/cheesewedge,
-		/obj/item/food/cheesewedge,
+		/obj/item/food/sliced/cheesewedge,
+		/obj/item/food/sliced/cheesewedge,
 		/obj/item/food/tajaroni,
 		/obj/item/food/grown/olive,)
 	result = /obj/item/food/sliceable/pizza/tajaroni
@@ -538,7 +538,7 @@
 	reagents = list("herbsmix" = 1, "diablo_sauce" = 1)
 	items = list(
 		/obj/item/food/sliceable/flatdough,
-		/obj/item/food/cheesewedge,
+		/obj/item/food/sliced/cheesewedge,
 		/obj/item/food/grown/tomato,
 		/obj/item/food/grown/chili,
 		/obj/item/food/meatball,
@@ -626,7 +626,7 @@
 	items = list(
 		/obj/item/food/grown/cherries,
 		/obj/item/food/grown/banana,
-		/obj/item/food/doughslice)
+		/obj/item/food/sliced/dough)
 	result = /obj/item/food/sundae
 
 // Bun-Bun
@@ -695,7 +695,7 @@
 	reagents = list("sodiumchloride" = 1)
 	items = list(
 		/obj/item/food/tortilla,
-		/obj/item/food/cheesewedge)
+		/obj/item/food/sliced/cheesewedge)
 	result = /obj/item/food/cheesenachos
 
 // Cuban Nachos
@@ -750,8 +750,8 @@
 /datum/recipe/microwave/cheeseburrito
 	items = list(
 		/obj/item/food/tortilla,
-		/obj/item/food/cheesewedge,
-		/obj/item/food/cheesewedge)
+		/obj/item/food/sliced/cheesewedge,
+		/obj/item/food/sliced/cheesewedge)
 	result = /obj/item/food/cheeseburrito
 
 // Plasma Buritto
@@ -784,7 +784,7 @@
 	bitesize = 2
 	tastes = list("сырое мясо" = 1, "сырое тесто" = 1)
 
-/obj/item/food/doughslice/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/food/sliced/dough/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/food/rawcutlet))
 		new /obj/item/food/pelmeni(src)
 		to_chat(user, "Вы сделали немного пельменей.")

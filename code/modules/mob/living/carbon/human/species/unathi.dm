@@ -9,9 +9,9 @@
 	unarmed_type = /datum/unarmed_attack/claws
 	primitive_form = /datum/species/monkey/unathi
 
-	blurb = "Unathi are a scaled species of reptilian beings from the desert world of Moghes, within the Uuosa-Eso system. \
-	Organizing themselves in highly competitive feudal kingdoms, the Unathi lack any sort of wide-scale unification, and their culture and history consist of centuries of internal conflict and struggle.<br/><br/> \
-	Despite clans having a sizeable military force, inter-clan rivalries and constant civil war prevent the Unathi from achieving much more in the wider galactic scene."
+	blurb = "Унатхи - чешуйчатый вид рептилий с тропической планеты Могес, расположенной в системе Узул. \
+	Организовавшись в высококонкурентные феодальные королевства, не заимели какого-либо широкомасштабного объединения.<br/><br/> \
+	Хоть и установлена Имперская гегемония, однако из-за консерватизма управляющих, ограничены родным сектором."
 
 	species_traits = list(LIPS)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_REPTILE
@@ -90,9 +90,11 @@
 		to_chat(user, "<span class='warning'>Your throat hurts too much to do it right now. Wait [round((cooldown - world.time) / 10)] seconds and try again.</span>")
 		return
 	if(!welding_fuel_used || user.reagents.has_reagent("fuel", welding_fuel_used))
-		if((user.head?.flags_cover & HEADCOVERSMOUTH) || (user.wear_mask?.flags_cover & MASKCOVERSMOUTH) && !user.wear_mask?.up)
-			to_chat(user, "<span class='warning'>Your mouth is covered.</span>")
-			return
+		if(ismask(user.wear_mask))
+			var/obj/item/clothing/mask/worn_mask = user.wear_mask
+			if((user.head?.flags_cover & HEADCOVERSMOUTH) || (worn_mask.flags_cover & MASKCOVERSMOUTH) && !worn_mask.up)
+				to_chat(user, "<span class='warning'>Your mouth is covered.</span>")
+				return
 		var/obj/item/match/unathi/fire = new(user.loc, src)
 		if(user.put_in_hands(fire))
 			to_chat(user, "<span class='notice'>You ignite a small flame in your mouth.</span>")
@@ -113,8 +115,8 @@
 	sprite_sheet_name = "Unathi" // We have the same sprite sheets as unathi
 	article_override = null
 
-	blurb = "These reptillian creatures appear to be related to the Unathi, but seem significantly less evolved. \
-	They roam the wastes of Lavaland, worshipping a dead city and capturing unsuspecting miners."
+	blurb = "Эти рептилоидные существа, похоже, родственны Унатхам, но выглядят значительно менее развитыми. \
+	Они скитаются по пустошам Лаваленда, поклоняются мертвому городу и похищают ничего не подозревающих шахтеров."
 
 	language = "Sinta'unathi"
 	default_language = "Sinta'unathi"

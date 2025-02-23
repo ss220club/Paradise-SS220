@@ -18,7 +18,7 @@
 	var/area/randomarea = pick(availableareas)
 	var/list/turf/simulated/floor/turfs = list()
 	for(var/turf/simulated/floor/F in randomarea)
-		if(turf_clear(F))
+		if(!is_blocked_turf(F))
 			turfs += F
 	var/list/spawn_types = list()
 	var/max_number
@@ -58,7 +58,7 @@
 		new /obj/structure/spawner/headcrab(T)
 
 /datum/event/headcrabs/announce()
-	GLOB.major_announcement.Announce("Биосканеры фиксируют размножение хедкрабов на борту станции. Избавьтесь от них, прежде чем это начнет влиять на продуктивность станции", "ВНИМАНИЕ: НЕОПОЗНАННЫЕ ФОРМЫ ЖИЗНИ.")
+	GLOB.major_announcement.Announce("Биосканеры фиксируют размножение хедкрабов на борту станции. Избавьтесь от них, прежде чем это начнет влиять на продуктивность станции", "ВНИМАНИЕ: Неопознанные формы жизни.")
 
 /datum/event_container/mundane/New()
 	. = ..()

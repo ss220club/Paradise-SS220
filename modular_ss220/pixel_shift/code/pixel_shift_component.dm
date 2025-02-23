@@ -12,7 +12,7 @@
 
 /datum/component/pixel_shift/Initialize(...)
 	. = ..()
-	if(!isliving(parent) || isAI(parent))
+	if(!isliving(parent) || is_ai(parent))
 		return COMPONENT_INCOMPATIBLE
 
 /datum/component/pixel_shift/RegisterWithParent()
@@ -63,7 +63,7 @@
 
 /datum/component/pixel_shift/proc/pixel_shift(mob/target, direction)
 	var/mob/living/owner = parent
-	if(HAS_TRAIT(owner, TRAIT_RESTRAINED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED) || length(owner.grabbed_by) || owner.stat != CONSCIOUS)
+	if(HAS_TRAIT(owner, TRAIT_RESTRAINED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED) || length(owner.grabbed_by) || owner.stat != CONSCIOUS || owner.isCarrying())
 		return
 	passthroughable = NONE
 	switch(direction)

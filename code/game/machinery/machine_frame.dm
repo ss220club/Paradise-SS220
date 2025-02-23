@@ -317,7 +317,9 @@ to destroy them and players will be able to make replacements.
 		"BarDrobe" =							/obj/machinery/economy/vending/bardrobe,
 		"HydroDrobe" =							/obj/machinery/economy/vending/hydrodrobe,
 		"JaniDrobe" =							/obj/machinery/economy/vending/janidrobe,
-		"LawDrobe" =							/obj/machinery/economy/vending/lawdrobe)
+		"LawDrobe" =							/obj/machinery/economy/vending/lawdrobe,
+		"TrainDrobe" =							/obj/machinery/economy/vending/traindrobe,
+		"CrewVend 3000" =						/obj/machinery/economy/vending/custom)
 	var/static/list/unique_vendors = list(
 		"ShadyCigs Ultra" =						/obj/machinery/economy/vending/cigarette/beach,
 		"SyndiMed Plus" =						/obj/machinery/economy/vending/wallmed/syndicate)
@@ -337,7 +339,10 @@ to destroy them and players will be able to make replacements.
 	build_path = typepath
 	board_name = "[type] Vendor"
 	format_board_name()
-	req_components = list(initial(typepath.refill_canister) = 1)
+	if(initial(typepath.refill_canister))
+		req_components = list(initial(typepath.refill_canister) = 1)
+	else
+		req_components = list()
 
 /obj/item/circuitboard/slot_machine
 	board_name = "Slot Machine"

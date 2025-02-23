@@ -33,7 +33,7 @@
 // The explosion cannot insta-kill anyone with 30% or more health.
 /obj/item/lightreplacer
 	name = "light replacer"
-	desc = "A device to automatically replace lights. Refill with broken or working light bulbs, or sheets of glass."
+	desc = "Устройство для автоматической замены ламп. Заправьте его сломанными или рабочими лампочками, либо листами стекла."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
 	item_state = "electronic"
@@ -77,7 +77,7 @@
 		return
 
 	if(istype(I, /obj/item/shard))
-		if(!user.unEquip(I))
+		if(!user.drop_item_to_ground(I))
 			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
 			return
 
@@ -88,7 +88,7 @@
 
 	if(istype(I, /obj/item/light))
 		var/obj/item/light/L = I
-		if(!user.unEquip(L))
+		if(!user.drop_item_to_ground(L))
 			to_chat(user, "<span class='warning'>[L] is stuck to your hand!</span>")
 			return
 

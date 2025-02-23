@@ -6,7 +6,7 @@
 /datum/game_mode/cult
 	name = "cult"
 	config_tag = "cult"
-	restricted_jobs = list("Chaplain", "AI", "Cyborg", "Internal Affairs Agent", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Blueshield", "Nanotrasen Representative", "Magistrate", "Nanotrasen Navy Officer", "Special Operations Officer", "Syndicate Officer", "Trans-Solar Federation General")
+	restricted_jobs = list("Chaplain", "AI", "Cyborg", "Internal Affairs Agent", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Blueshield", "Nanotrasen Representative", "Magistrate", "Nanotrasen Career Trainer", "Nanotrasen Navy Officer", "Special Operations Officer", "Syndicate Officer", "Trans-Solar Federation General", "Research Director", "Chief Medical Officer", "Chief Engineer", "Quartermaster")
 	protected_jobs = list()
 	required_players = 30
 	required_enemies = 3
@@ -25,7 +25,7 @@
 	if(GLOB.configuration.gamemode.prevent_mindshield_antags)
 		restricted_jobs += protected_jobs
 
-	var/list/cultists_possible = get_players_for_role(ROLE_CULTIST)
+	var/list/cultists_possible = get_players_for_role(ROLE_CULTIST, species_exclude = list("Serpentids")) // SS220 EDIT - SERPENTIDS
 	for(var/cultists_number = 1 to max_cultists_to_start)
 		if(!length(cultists_possible))
 			break
