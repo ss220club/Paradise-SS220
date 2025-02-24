@@ -167,7 +167,7 @@
 
 /obj/machinery/economy/vending/nta/janitor
 	name = "NT ERT Janitor Gear"
-	desc = "A ERT ccleaning equipment vendor."
+	desc = "A ERT cleaning equipment vendor."
 	ads_list = list("Чисть станцию от рук синдиката!","Не забывай, чистить - полезно!","Вилкой чисти!.","Помыть, постирать, оттереть!","Стоять, снарядись клинерами!")
 	products = list(
 		/obj/item/storage/belt/janitor/full = 5,
