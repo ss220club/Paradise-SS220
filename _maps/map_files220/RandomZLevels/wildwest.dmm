@@ -4436,7 +4436,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wildwest/wildwest_refine)
 "RM" = (
-/mob/living/simple_animal/hostile/hellhound/tear,
+/mob/living/simple_animal/hostile/hellhound/tear{
+	faction = list("wildwest")
+	},
 /turf/simulated/floor{
 	icon_state = "necro3"
 	},
@@ -4795,7 +4797,9 @@
 	},
 /area/awaymission/wildwest/wildwest_refine)
 "Vf" = (
-/mob/living/simple_animal/hostile/hellhound,
+/mob/living/simple_animal/hostile/hellhound{
+	faction = list("wildwest")
+	},
 /turf/simulated/floor{
 	icon_state = "necro1"
 	},

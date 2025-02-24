@@ -344,8 +344,8 @@
 // syndie mob loot
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot
 	loot = list(
-		/obj/item/ammo_casing/c10mm = 63,
-		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 15,
+		/obj/item/ammo_casing/c10mm = 73,
+		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 5,
 		/obj/item/reagent_containers/patch/styptic = 5,
 		/obj/item/reagent_containers/patch/silver_sulf = 5,
 		/obj/item/food/syndicake = 5,
