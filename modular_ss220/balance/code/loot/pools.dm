@@ -351,7 +351,6 @@
 		/obj/item/food/syndicake = 5,
 		/obj/item/food/donkpocket = 5,
 
-		// always least chance
 		/obj/item/clothing/mask/holo_cigar, // ~1/100
 		/obj/item/card/id/syndicate, // ~1/100
 	)
@@ -374,7 +373,6 @@
 		/obj/item/clothing/accessory/holster = 15,
 		/obj/item/ammo_box/magazine/m10mm = 9,
 
-		// always least chance
 		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/handgun,
 	)
 
@@ -383,7 +381,6 @@
 		/obj/item/gun/projectile/automatic/pistol = 8,
 		/obj/item/gun/projectile/revolver/fake,
 
-		// always least chance
 		/obj/item/gun/projectile/revolver, // ~1/1000
 	)
 
@@ -392,7 +389,6 @@
 	loot = list(
 		/obj/item/ammo_casing/c10mm = 98,
 
-		// always least chance
 		/obj/item/shield/energy, // ~1/100
 		/obj/item/melee/energy/sword/saber, // ~1/100
 	)
@@ -473,6 +469,5 @@
 		/obj/item/clothing/mask/holo_cigar = 10,
 		/obj/item/clothing/glasses/thermal/eyepatch = 5,
 
-		// always least chance
 		/obj/item/gun/projectile/revolver/nagant, // ~1/100
 	)

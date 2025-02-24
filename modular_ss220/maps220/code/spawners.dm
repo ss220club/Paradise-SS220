@@ -176,7 +176,6 @@
 		/mob/living/simple_animal/hostile/netherworld/migo = 10,
 		/mob/living/simple_animal/hostile/hellhound = 5,
 
-		// always least chance
 		/mob/living/simple_animal/hostile/hellhound/tear,
 	)
 
@@ -188,8 +187,18 @@
 		/mob/living/simple_animal/hostile/netherworld/migo{faction = list("wildwest")} = 10,
 		/mob/living/simple_animal/hostile/hellhound{faction = list("wildwest")} = 5,
 
-		// always least chance
 		/mob/living/simple_animal/hostile/hellhound/tear{faction = list("wildwest")},
+	)
+
+/obj/effect/spawner/random/hostile_fauna/caves
+	loot = list(
+		/mob/living/simple_animal/hostile/faithless{maxbodytemp = 1500} = 30,
+		/mob/living/simple_animal/hostile/creature{maxbodytemp = 1500} = 20,
+		/mob/living/simple_animal/hostile/netherworld{maxbodytemp = 1500} = 10,
+		/mob/living/simple_animal/hostile/netherworld/migo{maxbodytemp = 1500} = 10,
+		/mob/living/simple_animal/hostile/hellhound{maxbodytemp = 1500} = 5,
+
+		/mob/living/simple_animal/hostile/hellhound/tear{maxbodytemp = 1500},
 	)
 
 /obj/effect/spawner/random/hostile_fauna/spider
