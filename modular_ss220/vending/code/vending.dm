@@ -10,9 +10,13 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	refill_canister = /obj/item/vending_refill/nta
 	products = list(
-		/obj/item/flashlight/seclite = 5,
-		/obj/item/restraints/legcuffs/bola/energy = 5,
+		/obj/item/grenade/barrier/dropwall = 10,
+		/obj/item/flashlight/seclite = 10,
+		/obj/item/restraints/legcuffs/bola/energy = 10,
 		/obj/item/ammo_box/magazine/laser = 10,
+		/obj/item/ammo_box/magazine/beretta/mm919 = 10,
+		/obj/item/ammo_box/magazine/beretta/mmap919 = 10,
+		/obj/item/ammo_box/magazine/beretta/mmbsp919 = 10,
 		/obj/item/ammo_box/magazine/wt550m9/wtap = 10,
 		/obj/item/ammo_box/magazine/wt550m9/wtic = 10,
 		/obj/item/ammo_box/magazine/wt550m9/wttx = 10,
@@ -44,6 +48,8 @@
 		/obj/item/gun/energy/arc_revolver = 5,
 		/obj/item/gun/energy/plasma_pistol = 5,
 		/obj/item/gun/energy/sparker = 5,
+		/obj/item/gun/projectile/automatic/pistol/beretta = 5,
+		/obj/item/ammo_box/magazine/beretta = 10,
 		/obj/item/gun/energy/temperature = 5,
 		/obj/item/gun/energy/ionrifle/carbine = 5,
 		/obj/item/gun/energy/immolator = 5,
@@ -155,7 +161,7 @@
 		/obj/item/extinguisher/mini = 3,
 		/obj/item/multitool = 3,
 		/obj/item/rcd/preloaded = 2,
-		/obj/item/rcd_ammo = 4,
+		/obj/item/rcd_ammo/large = 2,
 		/obj/item/stack/cable_coil = 5,
 	)
 
