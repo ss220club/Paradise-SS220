@@ -38,7 +38,7 @@
 	)
 
 // Улучшения голопроектора //
-/obj/item/borg/upgrade/atmos_holofan/better
+/obj/item/borg/upgrade/atmos_holofan_better
 	name = "Улучшение модульного ATMOS голопроектора"
 	desc = "Повышает энергоэффективность проектора, позволяя создавать до 3 голопроекций."
 	icon_state = "cyborg_upgrade2"
@@ -49,7 +49,7 @@
 			/obj/item/holosign_creator/atmos/robot = /obj/item/holosign_creator/atmos/robot/better
 	)
 
-/obj/item/borg/upgrade/atmos_holofan/best
+/obj/item/borg/upgrade/atmos_holofan_best
 	name = "Оптимизация модульного ATMOS голопроектора"
 	desc = "Оптимизирует энергоэффективность проектора и заменяет микросхемы на продвинутые, позволяя создавать до 5 голопроекций."
 	icon_state = "cyborg_upgrade5"
