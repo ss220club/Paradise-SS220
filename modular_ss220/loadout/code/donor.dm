@@ -183,7 +183,7 @@
 	donator_tier = 3
 	cost = 1
 /datum/gear/donor/jackbootstall
-	display_name = "Высокие берцы"
+	display_name = "Берцы ветерана"
 	path = /obj/item/clothing/shoes/jackboots/noisy/long
 	donator_tier = 3
 	cost = 1

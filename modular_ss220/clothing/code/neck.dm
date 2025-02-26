@@ -10,7 +10,7 @@
 
 /obj/item/clothing/neck/necklace/holocollar
 	name = "Голографический ошейник"
-	desc = "Стильный ошейник с голографической биркой"
+	desc = "Ошейник бережно сделанный вручную с огранённым кварцевым камнем голубого оттенка с чёрной кожанной привязью и магнитным закреплением. На правой части привязи выгравированы три слова BODY. MIND. SOUL., в то время как на левой написано тёмно-фиолетовым курсивом LiteCore"
 	icon = 'modular_ss220/clothing/icons/object/neck.dmi'
 	icon_state = "collarholo_s"
 	icon_override = 'modular_ss220/clothing/icons/mob/neck.dmi'
