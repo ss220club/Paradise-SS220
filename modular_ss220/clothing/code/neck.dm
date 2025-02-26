@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/necklace/collarspike
-	name = "Шипованный ошейник"
-	desc = "кожаный шипованный ошейник с металлическими шипами"
+	name = "Шипованый ошейник"
+	desc = "Стильный кожаный ошейник с стальными шипами. На внутренней стороне ошейника выжженно слово Rerro."
 	icon = 'modular_ss220/clothing/icons/object/neck.dmi'
 	icon_state = "collarspike_s"
 	icon_override = 'modular_ss220/clothing/icons/mob/neck.dmi'
