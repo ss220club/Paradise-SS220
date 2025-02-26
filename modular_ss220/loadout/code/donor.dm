@@ -177,6 +177,12 @@
 	display_name = "Рок гитара"
 	path = /obj/item/instrument/soundhand_rock_guitar
 
+/datum/gear/donor/collarspike
+	display_name = "Шипованный кожаный ошейник"
+	path = /obj/item/clothing/neck/necklace/collarspike
+	donator_tier = 3
+	cost = 1
+
 // ID Skins
 /datum/gear/donor/id_decal_colored
 	display_name = "Наклейка на карту (Голографическая)"
