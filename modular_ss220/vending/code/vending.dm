@@ -60,6 +60,7 @@
 		/obj/item/gun/projectile/shotgun/automatic/combat = 5,
 		/obj/item/storage/fancy/shell/holy = 5,
 		/obj/item/storage/fancy/shell/dragonsbreath = 5,
+		/obj/item/grenade/plastic/c4/x4 = 5,
 	)
 
 /obj/machinery/economy/vending/nta/red
@@ -110,8 +111,13 @@
 		/obj/item/gun/projectile/automatic/gyropistol = 10,
 		/obj/item/ammo_box/magazine/m75 = 20,
 		/obj/item/gun/projectile/automatic/l6_saw = 10,
+		/obj/item/ammo_box/magazine/mm556x45 = 20,
+		/obj/item/ammo_box/magazine/mm556x45/incen = 20,
 		/obj/item/ammo_box/magazine/mm556x45/ap = 20,
+		/obj/item/ammo_box/magazine/mm556x45/hollow = 20,
+		/obj/item/ammo_box/magazine/mm556x45/bleeding = 20,
 		/obj/item/gun/projectile/automatic/sniper_rifle = 10,
+		/obj/item/ammo_box/magazine/sniper_rounds = 20,
 		/obj/item/ammo_box/magazine/sniper_rounds/antimatter = 20,
 		/obj/item/ammo_box/magazine/sniper_rounds/soporific = 20,
 		/obj/item/ammo_box/magazine/sniper_rounds/haemorrhage = 20,
@@ -161,7 +167,7 @@
 		/obj/item/extinguisher/mini = 3,
 		/obj/item/multitool = 3,
 		/obj/item/rcd/preloaded = 2,
-		/obj/item/rcd_ammo/large = 2,
+		/obj/item/rcd_ammo/large = 6,
 		/obj/item/stack/cable_coil = 5,
 	)
 
