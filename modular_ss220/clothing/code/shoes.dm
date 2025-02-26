@@ -195,3 +195,12 @@
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/shoes.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/shoes.dmi',
 	)
+
+/obj/item/clothing/shoes/jackboots/noisy/long
+	name = "Высокие берцы"
+	desc = "Высокие берцы."
+	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
+	icon_state = "jackbootstall_s"
+	item_state = "jackbootstall"
+	icon_override = 'modular_ss220/clothing/icons/mob/shoes.dmi'
+	sprite_sheets = null

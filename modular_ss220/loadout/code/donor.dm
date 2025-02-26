@@ -182,6 +182,11 @@
 	path = /obj/item/clothing/neck/necklace/collarspike
 	donator_tier = 3
 	cost = 1
+/datum/gear/donor/jackbootstall
+	display_name = "Высокие берцы"
+	path = /obj/item/clothing/shoes/jackboots/noisy/long
+	donator_tier = 3
+	cost = 1
 
 // ID Skins
 /datum/gear/donor/id_decal_colored
