@@ -191,10 +191,10 @@
 		return
 	var/obj/item/organ/external/head/head_organ = user.get_organ("head")
 
-	mob = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = icon_state)
+	mob = new/icon("icon" = 'modular_ss220/jobs/icons/clothing/mob/head.dmi', "icon_state" = icon_state)
 	mob.Blend(head_organ.hair_colour, ICON_ADD)
 
-	var/icon/earbit = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = "[icon_state]inner")
+	var/icon/earbit = new/icon("icon" = 'modular_ss220/jobs/icons/clothing/mob/head.dmi', "icon_state" = "[icon_state]inner")
 	mob.Blend(earbit, ICON_OVERLAY)
 
 	icon_override = mob
@@ -205,6 +205,7 @@
 		update_icon(NONE, M)
 
 /obj/item/clothing/head/kitty/mouse
+	icon_override = 'modular_ss220/jobs/icons/clothing/mob/head.dmi'
 	name = "mouse ears"
 	desc = "A pair of mouse ears. Squeak!"
 	icon_state = "mousey"
