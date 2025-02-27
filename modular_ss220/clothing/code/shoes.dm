@@ -201,6 +201,5 @@
 	desc = "Тяжёлые кожаные ботинки с вшитыми, в носок и подошву, стальными пластинами. Отлично защищают ноги и прекрасно подходят для того, что бы раздавить чей-то череп.Тот кто их носит, имеет явно сильные ноги...На подошвах выбита надпись Rerro."
 	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
 	icon_state = "jackbootstall_s"
-	item_state = "jackbootstall"
 	icon_override = 'modular_ss220/clothing/icons/mob/shoes.dmi'
 	sprite_sheets = null
