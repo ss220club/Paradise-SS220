@@ -1886,7 +1886,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/security/evidence,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -3312,7 +3312,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/mapping_helpers/airlock/windoor/access/any/security/general{
+/obj/effect/mapping_helpers/airlock/windoor/access/all/security/evidence{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -4225,7 +4225,7 @@
 /obj/machinery/door/window/reinforced/normal{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/windoor/access/any/security/general{
+/obj/effect/mapping_helpers/airlock/windoor/access/all/security/evidence{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -25124,6 +25124,9 @@
 	pixel_y = -4;
 	pixel_x = 6
 	},
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/masks,
+/obj/item/storage/box/bodybags,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -64938,7 +64941,7 @@
 	dir = 4
 	},
 /obj/machinery/camera{
-	c_tag = "AI Satellite Exterior South";
+	c_tag = "AI Core North";
 	network = list("SS13","MiniSat")
 	},
 /turf/simulated/floor/plasteel{
@@ -70143,7 +70146,7 @@
 /area/station/security/permabrig)
 "nFg" = (
 /obj/machinery/camera{
-	c_tag = "Mini Satellite Teleporter";
+	c_tag = "AI Core South";
 	dir = 1;
 	network = list("SS13","MiniSat")
 	},
@@ -72588,12 +72591,10 @@
 /area/station/maintenance/fsmaint)
 "ozX" = (
 /obj/structure/shelf/science,
-/obj/item/storage/box/bodybags,
-/obj/item/storage/box/masks,
-/obj/item/storage/box/gloves,
 /obj/item/tank/internals/anesthetic,
-/obj/item/stack/medical/bruise_pack/advanced,
 /obj/item/clothing/mask/breath/medical,
+/obj/item/reagent_containers/glass/bottle/morphine,
+/obj/item/stack/medical/bruise_pack/advanced,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -81447,7 +81448,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/security/evidence,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -90400,7 +90401,7 @@
 	pixel_x = 9
 	},
 /obj/machinery/camera{
-	c_tag = "AI Satellite Exterior South";
+	c_tag = "AI Core";
 	network = list("SS13","MiniSat")
 	},
 /obj/machinery/turretid/lethal{

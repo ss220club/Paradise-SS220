@@ -20,6 +20,7 @@
 		ACCESS_COURT,
 		ACCESS_ENGINE,
 		ACCESS_EVA,
+		ACCESS_EVIDENCE,
 		ACCESS_EXPEDITION,
 		ACCESS_FORENSICS_LOCKERS,
 		ACCESS_HEADS,
@@ -39,7 +40,7 @@
 	)
 	minimal_player_age = 21
 	exp_map = list(EXP_TYPE_SECURITY = 1200)
-	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
+	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/hos
 	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Охранных), базовых должностных обязанностей и профессиональных действий."
@@ -83,6 +84,7 @@
 		ACCESS_ARMORY,
 		ACCESS_BRIG,
 		ACCESS_COURT,
+		ACCESS_EVIDENCE,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_SEC_DOORS,
 		ACCESS_SECURITY,
@@ -90,7 +92,7 @@
 	)
 	minimal_player_age = 21
 	exp_map = list(EXP_TYPE_SECURITY = 600)
-	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
+	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/warden
 
@@ -133,6 +135,7 @@
 	access = list(
 		ACCESS_BRIG,
 		ACCESS_COURT,
+		ACCESS_EVIDENCE,
 		ACCESS_FORENSICS_LOCKERS,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MORGUE,
@@ -142,7 +145,7 @@
 	)
 	minimal_player_age = 14
 	exp_map = list(EXP_TYPE_CREW = 600)
-	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
+	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/detective
 	important_information = "Расследуйте, исследуйте и выглядите при этом круто."
@@ -199,6 +202,7 @@
 	access = list(
 		ACCESS_BRIG,
 		ACCESS_COURT,
+		ACCESS_EVIDENCE,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_SEC_DOORS,
 		ACCESS_SECURITY,
@@ -206,7 +210,7 @@
 	)
 	minimal_player_age = 14
 	exp_map = list(EXP_TYPE_CREW = 600)
-	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
+	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/officer
 	important_information = "Космический Закон - это необходимость, а не рекомендация."
