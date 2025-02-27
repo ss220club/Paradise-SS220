@@ -178,7 +178,7 @@
 	path = /obj/item/instrument/soundhand_rock_guitar
 
 /datum/gear/donor/collarspike
-	display_name = "Шипованый кожаный ошейник"
+	display_name = "Шипованный кожаный ошейник"
 	path = /obj/item/clothing/neck/necklace/collarspike
 	donator_tier = 2
 	cost = 2
