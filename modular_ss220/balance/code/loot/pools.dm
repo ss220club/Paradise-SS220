@@ -131,6 +131,10 @@
 /obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
+	loot = list(
+		/obj/effect/spawner/random/loot/mining_tool = 99,
+		/obj/effect/spawner/random/pool/spaceloot/eka/gateway,
+	)
 
 /obj/effect/spawner/random/pool/spaceloot/eka/gateway
 	spawn_pool_id = "gateway_spawn_pool"
@@ -331,7 +335,7 @@
 		/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle = 25,
 		/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle = 25,
 
-		// let the massacre begin; always least chance
+		// let the massacre begin
 		/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/gateway,
 	)
 
