@@ -14,7 +14,7 @@ SLIME SCANNER
 ////////////////////////////////////////
 /obj/item/t_scanner
 	name = "\improper T-ray scanner"
-	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
+	desc = "Излучатель и сканер терагерцового излучения, используемый для обнаружения скрытых инженерных коммуникаций под полом, таких как трубы и провода."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "t-ray0"
 	var/on = FALSE
@@ -1254,5 +1254,7 @@ SLIME SCANNER
 		dat += "<font color='red'>Photoreceptor abnormalities detected.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_NEARSIGHT))
 		dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
+	if(HAS_TRAIT(target, TRAIT_PARAPLEGIC))
+		dat += "<font color='red'>Lumbar nerves damaged.</font><BR>"
 
 	return dat
