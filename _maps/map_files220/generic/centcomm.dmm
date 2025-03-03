@@ -2195,7 +2195,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "bsC" = (
-/obj/machinery/light/spot,
+/obj/structure/chair/comfy/shuttle,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
 "bsH" = (
@@ -2649,12 +2649,12 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/centcom/ss220/general)
 "bKL" = (
-/obj/structure/closet/crate,
-/obj/machinery/light/spot{
-	dir = 1
+/obj/effect/turf_decal/box/white,
+/turf/simulated/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkbluealtstrip"
 	},
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/transport)
+/area/centcom/ss220/supply)
 "bLl" = (
 /obj/effect/turf_decal/miscellaneous/goldensiding{
 	dir = 10
@@ -4857,8 +4857,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "dai" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
+/obj/machinery/computer/shuttle/ferry/request{
+	dir = 4
 	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/transport)
@@ -5145,10 +5145,10 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/court)
 "dhg" = (
-/obj/machinery/computer/shuttle/ferry/request{
-	dir = 4
+/obj/machinery/light/spot{
+	dir = 1
 	},
-/turf/simulated/floor/mineral/titanium/blue,
+/turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
 "dhi" = (
 /obj/structure/chair/sofa/corp/left{
@@ -6246,10 +6246,22 @@
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/outside)
 "dMg" = (
-/obj/machinery/light/spot{
-	dir = 1
+/obj/machinery/door/airlock/titanium{
+	id_tag = "s_docking_airlock"
 	},
-/turf/simulated/floor/mineral/titanium,
+/obj/docking_port/mobile/ferry{
+	dir = 8;
+	dwidth = 16
+	},
+/obj/docking_port/stationary{
+	dwidth = 16;
+	height = 12;
+	id = "ferry_away";
+	name = "centcom bay 2";
+	width = 5;
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/shuttle/transport)
 "dMr" = (
 /obj/machinery/door/airlock/hatch/syndicate{
@@ -10071,8 +10083,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
 "fXB" = (
-/obj/structure/closet/crate,
-/obj/machinery/light/spot,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
 "fYj" = (
@@ -10898,10 +10912,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "gCN" = (
-/obj/structure/shuttle/engine/propulsion/burst{
-	dir = 4
-	},
-/turf/simulated/wall/mineral/titanium,
+/obj/machinery/light/spot,
+/turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
 "gDb" = (
 /obj/structure/light_fake/small,
@@ -20257,13 +20269,6 @@
 	icon_state = "darkgreenfull"
 	},
 /area/centcom/ss220/command)
-"lVw" = (
-/obj/machinery/light/spot{
-	dir = 1
-	},
-/obj/structure/chair/comfy/shuttle,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/transport)
 "lVy" = (
 /obj/structure/light_fake/small{
 	dir = 1;
@@ -21600,6 +21605,13 @@
 "mPw" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/centcom/ss220/court)
+"mQn" = (
+/obj/machinery/light/spot,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/transport)
 "mQq" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo13"
@@ -25437,12 +25449,12 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "pfz" = (
-/obj/effect/turf_decal/box/white,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkbluealtstrip"
+/obj/structure/closet/crate,
+/obj/machinery/light/spot{
+	dir = 1
 	},
-/area/centcom/ss220/supply)
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/transport)
 "pfZ" = (
 /turf/simulated/floor/plasteel{
 	color = "gray";
@@ -26499,10 +26511,8 @@
 	},
 /area/centcom/ss220/admin3)
 "pRy" = (
+/obj/structure/closet/crate,
 /obj/machinery/light/spot,
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
 "pSf" = (
@@ -27636,7 +27646,9 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/centcom/ss220/admin2)
 "qCW" = (
-/obj/structure/chair/comfy/shuttle,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
 "qDb" = (
@@ -32318,9 +32330,9 @@
 /area/centcom/ss220/admin3)
 "tgd" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 1
+	dir = 8
 	},
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/transport)
 "tgL" = (
 /turf/simulated/floor/plating{
@@ -35267,21 +35279,10 @@
 	},
 /area/centcom/ss220/medbay)
 "vbN" = (
-/obj/machinery/door/airlock/titanium{
-	id_tag = "s_docking_airlock"
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 4
 	},
-/obj/docking_port/mobile/ferry{
-	dir = 8
-	},
-/obj/docking_port/stationary{
-	dwidth = 2;
-	height = 12;
-	id = "ferry_away";
-	name = "centcom bay 2";
-	width = 5;
-	dir = 8
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/wall/mineral/titanium,
 /area/shuttle/transport)
 "vce" = (
 /turf/simulated/wall/indestructible/fakeglass,
@@ -46512,7 +46513,7 @@ adJ
 adJ
 ajH
 eTi
-dhg
+dai
 eTi
 ajH
 adJ
@@ -46768,9 +46769,9 @@ adJ
 adJ
 adJ
 ajH
-dMg
-dai
-bsC
+dhg
+tgd
+gCN
 ajH
 adJ
 adJ
@@ -47025,9 +47026,9 @@ adJ
 adJ
 adJ
 jlp
-qCW
+bsC
 dFl
-tgd
+qCW
 jlp
 adJ
 adJ
@@ -47282,9 +47283,9 @@ adJ
 adJ
 adJ
 ajH
-qCW
+bsC
 dFl
-tgd
+qCW
 ajH
 adJ
 adJ
@@ -47539,9 +47540,9 @@ adJ
 adJ
 adJ
 ajH
-lVw
+fXB
 dFl
-pRy
+mQn
 ajH
 adJ
 adJ
@@ -47796,9 +47797,9 @@ adJ
 adJ
 adJ
 ajH
-qCW
+bsC
 dFl
-tgd
+qCW
 ajH
 adJ
 adJ
@@ -48053,9 +48054,9 @@ adJ
 adJ
 adJ
 jlp
-qCW
+bsC
 dFl
-tgd
+qCW
 jlp
 adJ
 adJ
@@ -48310,9 +48311,9 @@ adJ
 adJ
 adJ
 ajH
-qCW
+bsC
 dFl
-tgd
+qCW
 ajH
 adJ
 rzI
@@ -48567,9 +48568,9 @@ adJ
 adJ
 adJ
 ajH
-qCW
+bsC
 dFl
-tgd
+qCW
 ajH
 adJ
 rzI
@@ -48824,9 +48825,9 @@ adJ
 adJ
 adJ
 ajH
-bKL
+pfz
 dFl
-fXB
+pRy
 ajH
 adJ
 rzI
@@ -49080,11 +49081,11 @@ adJ
 adJ
 adJ
 adJ
-gCN
-ajH
 vbN
 ajH
-gCN
+dMg
+ajH
+vbN
 adJ
 rzI
 cZg
@@ -50104,7 +50105,7 @@ otb
 oVq
 mkt
 rzI
-pfz
+bKL
 lsI
 egO
 oCk
@@ -50618,7 +50619,7 @@ otb
 oVq
 mkt
 rzI
-pfz
+bKL
 lsI
 egO
 egO
@@ -50875,7 +50876,7 @@ otb
 nEU
 oVq
 rzI
-pfz
+bKL
 lsI
 egO
 umW
@@ -51132,7 +51133,7 @@ rzI
 rzI
 rzI
 rzI
-pfz
+bKL
 lsI
 egO
 umW
@@ -51389,7 +51390,7 @@ mLN
 fdF
 fdF
 rzI
-pfz
+bKL
 lsI
 egO
 umW
@@ -51646,7 +51647,7 @@ uxt
 uxt
 cdn
 rzI
-pfz
+bKL
 lsI
 egO
 egO
@@ -52160,7 +52161,7 @@ rzI
 lld
 fpZ
 rzI
-pfz
+bKL
 lsI
 egO
 oCk
