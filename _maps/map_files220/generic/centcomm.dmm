@@ -5203,10 +5203,13 @@
 /area/centcom/ss220/admin2)
 "dhs" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
-/obj/machinery/door/airlock/centcom{
-	name = "Шаттл"
-	},
 /obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external{
+	aiControlDisabled = 1;
+	hackProof = 1;
+	id_tag = "emergency_away";
+	name = "Ferry Shuttle"
+	},
 /turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
 "diL" = (
@@ -6315,6 +6318,7 @@
 	width = 5;
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/shuttle/transport)
 "dMr" = (

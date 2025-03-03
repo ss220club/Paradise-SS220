@@ -111,7 +111,7 @@
 
 /obj/docking_port/mobile/ferry
 	dir = WEST
-	port_direction = SOUTH
+	port_direction = NORTH
 	preferred_direction = WEST
 	width = 12
 	height = 5
