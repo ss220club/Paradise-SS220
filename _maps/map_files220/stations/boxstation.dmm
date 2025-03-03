@@ -74,12 +74,11 @@
 /area/station/supply/qm)
 "aaQ" = (
 /obj/docking_port/stationary/whiteship{
-	dir = 8;
 	id = "whiteship_cyberiad";
 	name = "North of Cyberiad";
-	dwidth = 8;
-	height = 31;
-	width = 21
+	dwidth = 22;
+	height = 17;
+	width = 31
 	},
 /turf/space,
 /area/space)
@@ -5642,11 +5641,11 @@
 "ays" = (
 /obj/docking_port/stationary{
 	dir = 8;
-	dwidth = 3;
 	height = 5;
 	id = "sst_home";
 	name = "Near Cyberiad Arrivals";
-	width = 11
+	width = 11;
+	dwidth = 3
 	},
 /turf/space,
 /area/space)
@@ -25124,6 +25123,9 @@
 	pixel_y = -4;
 	pixel_x = 6
 	},
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/masks,
+/obj/item/storage/box/bodybags,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -64938,7 +64940,7 @@
 	dir = 4
 	},
 /obj/machinery/camera{
-	c_tag = "AI Satellite Exterior South";
+	c_tag = "AI Core North";
 	network = list("SS13","MiniSat")
 	},
 /turf/simulated/floor/plasteel{
@@ -70143,7 +70145,7 @@
 /area/station/security/permabrig)
 "nFg" = (
 /obj/machinery/camera{
-	c_tag = "Mini Satellite Teleporter";
+	c_tag = "AI Core South";
 	dir = 1;
 	network = list("SS13","MiniSat")
 	},
@@ -72588,12 +72590,10 @@
 /area/station/maintenance/fsmaint)
 "ozX" = (
 /obj/structure/shelf/science,
-/obj/item/storage/box/bodybags,
-/obj/item/storage/box/masks,
-/obj/item/storage/box/gloves,
 /obj/item/tank/internals/anesthetic,
-/obj/item/stack/medical/bruise_pack/advanced,
 /obj/item/clothing/mask/breath/medical,
+/obj/item/reagent_containers/glass/bottle/morphine,
+/obj/item/stack/medical/bruise_pack/advanced,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -90400,7 +90400,7 @@
 	pixel_x = 9
 	},
 /obj/machinery/camera{
-	c_tag = "AI Satellite Exterior South";
+	c_tag = "AI Core";
 	network = list("SS13","MiniSat")
 	},
 /obj/machinery/turretid/lethal{

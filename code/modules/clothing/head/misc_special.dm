@@ -24,7 +24,7 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = INFINITY, ACID = 75)
 	flags_inv = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 	actions_types = list(/datum/action/item_action/toggle)
-	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE
+	visor_flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	resistance_flags = FIRE_PROOF
 
 	sprite_sheets = list(
@@ -191,10 +191,10 @@
 		return
 	var/obj/item/organ/external/head/head_organ = user.get_organ("head")
 
-	mob = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = icon_state)
+	mob = new/icon("icon" = icon_override, "icon_state" = icon_state) // SS220 EDIT - Заменил хард код пути на, icon_override
 	mob.Blend(head_organ.hair_colour, ICON_ADD)
 
-	var/icon/earbit = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = "[icon_state]inner")
+	var/icon/earbit = new/icon("icon" = icon_override, "icon_state" = "[icon_state]inner") // SS220 EDIT - Заменил хард код пути на, icon_override
 	mob.Blend(earbit, ICON_OVERLAY)
 
 	icon_override = mob

@@ -43405,27 +43405,22 @@
 /area/station/hallway/primary/aft)
 "dCZ" = (
 /obj/structure/shelf/science,
-/obj/item/mmi{
-	pixel_x = -6;
-	pixel_y = -4
-	},
-/obj/item/mmi{
-	pixel_y = -4
-	},
-/obj/item/mmi{
-	pixel_y = -4;
-	pixel_x = 6
-	},
 /obj/item/stack/medical/bruise_pack/advanced{
 	pixel_x = -8;
 	pixel_y = 10
 	},
-/obj/item/mmi{
-	pixel_y = 8
-	},
 /obj/item/stack/medical/bruise_pack/advanced{
 	pixel_x = 8;
 	pixel_y = 10
+	},
+/obj/item/reagent_containers/glass/bottle/morphine,
+/obj/item/tank/internals/anesthetic{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/clothing/mask/breath/medical{
+	pixel_x = -8;
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -43798,6 +43793,9 @@
 	pixel_y = 6
 	},
 /obj/item/robotanalyzer,
+/obj/item/roller{
+	pixel_y = 14
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -47107,18 +47105,6 @@
 	icon_state = "solarpanel"
 	},
 /area/station/maintenance/solar_maintenance/aft_port)
-"dWf" = (
-/obj/docking_port/stationary{
-	dheight = 9;
-	dir = 2;
-	dwidth = 5;
-	height = 22;
-	id = "syndicate_s";
-	name = "south of station";
-	width = 18
-	},
-/turf/space,
-/area/space)
 "dWg" = (
 /obj/effect/landmark/spawner/nukedisc_respawn,
 /turf/simulated/floor/plasteel{
@@ -58997,12 +58983,11 @@
 /area/station/maintenance/apmaint)
 "hDZ" = (
 /obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 8;
-	height = 31;
+	dwidth = 22;
+	height = 17;
 	id = "whiteship_home";
 	name = "north of Kerberos";
-	width = 21
+	width = 31
 	},
 /turf/space,
 /area/space)
@@ -66606,16 +66591,16 @@
 	pixel_x = 8;
 	pixel_y = -6
 	},
-/obj/item/clothing/mask/breath/medical{
-	pixel_x = -8;
-	pixel_y = 6
+/obj/item/mmi{
+	pixel_x = -6;
+	pixel_y = -4
 	},
-/obj/item/roller{
-	pixel_y = 14
+/obj/item/mmi{
+	pixel_y = -4
 	},
-/obj/item/tank/internals/anesthetic{
-	pixel_x = 8;
-	pixel_y = 6
+/obj/item/mmi{
+	pixel_y = -4;
+	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -74913,6 +74898,17 @@
 	},
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
+"mBy" = (
+/obj/docking_port/stationary{
+	dir = 2;
+	height = 5;
+	id = "sit_arrivals";
+	name = "Near Kerberos Test Area";
+	width = 11;
+	dwidth = 7
+	},
+/turf/space,
+/area/space)
 "mBB" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/turf_decal/delivery/hollow,
@@ -126890,7 +126886,7 @@ abj
 aaa
 abj
 aaa
-aaa
+mBy
 aaa
 aaa
 aaa
@@ -146718,7 +146714,7 @@ aaa
 aaa
 aaa
 aaa
-dWf
+aaa
 aaa
 aaa
 aaa
