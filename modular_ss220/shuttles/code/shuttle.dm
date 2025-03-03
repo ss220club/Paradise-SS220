@@ -115,5 +115,5 @@
 	preferred_direction = WEST
 	width = 5
 	height = 12
-	dwidth = 0
-	dheight = 2
+	dwidth = 2
+	dheight = 0
