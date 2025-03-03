@@ -109,12 +109,11 @@
 	dheight = 0
 	timid = TRUE
 
-// TODO: rotate it in centcomm.dmm to make custom ferries able to load properly
 /obj/docking_port/mobile/ferry
-	dir = NORTH
-	port_direction = SOUTH
-	preferred_direction = NORTH
-	width = 5
-	height = 12
-	dwidth = 2
-	dheight = 0
+    dir = WEST
+    port_direction = SOUTH
+	preferred_direction = WEST
+    width = 12
+    height = 5
+    dwidth = 2
+    dheight = 0
