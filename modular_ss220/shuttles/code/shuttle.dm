@@ -113,7 +113,7 @@
 	dir = WEST
 	port_direction = SOUTH
 	preferred_direction = WEST
-	width = 12
-	height = 5
-	dwidth = 2
-	dheight = 0
+	width = 5
+	height = 12
+	dwidth = 0
+	dheight = 2
