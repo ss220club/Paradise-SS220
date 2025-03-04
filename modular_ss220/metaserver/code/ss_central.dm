@@ -175,7 +175,7 @@ SUBSYSTEM_DEF(central)
 		return
 
 	var/list/data = json_decode(response.body)
-	if(data["total"] != 0)
+	if(length(data["items"]))
 		player.donator_level = data["items"][1]["tier"]
 
 /datum/controller/subsystem/central/proc/get_player_donate_tier_blocking(client/player)
@@ -186,5 +186,5 @@ SUBSYSTEM_DEF(central)
 		return 0
 
 	var/list/data = json_decode(response.body)
-	if(data["total"] != 0)
+	if(length(data["items"]))
 		return data["items"][1]["tier"]
