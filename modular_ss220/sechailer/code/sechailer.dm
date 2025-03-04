@@ -95,6 +95,13 @@ GLOBAL_LIST_EMPTY(sechailers)
 	if(actiontype == /datum/action/item_action/dispatch)
 		dispatch(user)
 
+// Removes radial menu when mask is dropped
+/obj/item/dropped(mob/user)
+	var/menu_uniqueID = "defmenu_[user.UID()]_[src.UID()]"
+	qdel(GLOB.radial_menus[menu_uniqueID])
+	GLOB.radial_menus -= menu_uniqueID
+	..()
+
 /obj/item/clothing/mask/gas/sechailer/emp_act(severity)
 	if(on_cooldown)
 		return
