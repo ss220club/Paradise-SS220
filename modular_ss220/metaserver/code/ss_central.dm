@@ -187,4 +187,4 @@ SUBSYSTEM_DEF(central)
 
 	var/list/data = json_decode(response.body)
 	if(data["total"] != 0)
-		return data["items"][0]["tier"]
+		return data["items"][1]["tier"]
