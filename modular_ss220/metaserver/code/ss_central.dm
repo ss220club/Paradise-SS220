@@ -128,11 +128,11 @@ SUBSYSTEM_DEF(central)
 		if(201)
 			. = . // noop
 		if(404)
-			message_admins("Не удалось добавить в вайтлист: Игрок не найден")
+			message_admins("Не удалось добавить [ckey] в вайтлист: Игрок не найден")
 			return
 
 		if(409)
-			message_admins("Не удалось добавить в вайтлист: Игрок выписан")
+			message_admins("Не удалось добавить [ckey] в вайтлист: Игрок выписан")
 			return
 
 		else

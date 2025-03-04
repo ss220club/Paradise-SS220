@@ -62,5 +62,3 @@
 	R.error = null
 
 	return R
-
-
