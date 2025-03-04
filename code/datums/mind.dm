@@ -1767,7 +1767,7 @@
 
 /datum/mind/proc/get_ghost(even_if_they_cant_reenter)
 	for(var/mob/dead/observer/G in GLOB.dead_mob_list)
-		if(G.mind == src && G.mind.key == G.key)
+		if(G.mind == src && G.mind.key == G.key && G.client)
 			if(G.can_reenter_corpse || even_if_they_cant_reenter)
 				return G
 			break
