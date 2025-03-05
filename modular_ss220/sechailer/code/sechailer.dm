@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(sechailers)
 /obj/item/clothing/mask/gas/sechailer/proc/dispatch(mob/user)
 	for(var/option in available_dispatch_messages)
 		available_dispatch_messages[option] = image(icon = 'modular_ss220/sechailer/icons/menu.dmi', icon_state = option)
-	var/message = show_radial_menu(user, src, available_dispatch_messages)
+	var/message = show_radial_menu(user, src, available_dispatch_messages,require_near = TRUE)
 	var/location_name = get_location_name(src, TRUE) // get_location_name works better as Affected says
 
 	if(!message)
@@ -94,13 +94,6 @@ GLOBAL_LIST_EMPTY(sechailers)
 	. = ..()
 	if(actiontype == /datum/action/item_action/dispatch)
 		dispatch(user)
-
-// Removes radial menu when mask is dropped
-/obj/item/dropped(mob/user)
-	var/menu_uniqueID = "defmenu_[user.UID()]_[src.UID()]"
-	qdel(GLOB.radial_menus[menu_uniqueID])
-	GLOB.radial_menus -= menu_uniqueID
-	..()
 
 /obj/item/clothing/mask/gas/sechailer/emp_act(severity)
 	if(on_cooldown)
