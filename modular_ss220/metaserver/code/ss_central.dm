@@ -28,6 +28,7 @@ SUBSYSTEM_DEF(central)
 	if(!(GLOB.configuration.central.api_url && GLOB.configuration.central.api_token))
 		return
 	load_whitelist()
+	// TODO: Preload links
 
 /datum/controller/subsystem/central/stat_entry(msg)
 	if(!initialized)
