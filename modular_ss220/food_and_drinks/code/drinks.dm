@@ -885,7 +885,7 @@
 	id = "five_year_plan"
 	description = "Высокая в небе звезда зовет меня в путь."
 	color = "#1e1009"
-	taste_description = "Переработки во имя светлого будущего"
+	taste_description = "переработки во имя светлого будущего"
 	drink_icon = "five_year_plan"
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_desc = "Ударная доза кофеина и чего-то горючего для повышения Нашей эффективности!"
@@ -905,10 +905,10 @@
 	id = "galactional"
 	description = "Пролетарии Галактики - объединяйтесь!"
 	color = "#53133e"
-	taste_description = "Переработки во имя светлого будущего"
+	taste_description = "галактическое единство близко"
 	drink_icon = "galactional"
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
-	drink_desc = "Ударная доза кофеина и чего-то горючего для повышения Нашей эффективности!"
+	drink_desc = "Этот напиток дает веру в светлое будущее под знаменами коммунизма"
 	drink_name = "Galactional"
 
 /datum/chemical_reaction/galactional
@@ -917,5 +917,5 @@
 	result = "galactional"
 	result_amount = 5
 	required_reagents = list("vodka" = 1, "bitter" = 1, "wine" = 1, "champagne" = 1, "spacecola" = 1)
-	mix_message = "Из сосуда начинает валить дым."
+	mix_message = "Красный свет из сосуда заполняет всё вокруг."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
