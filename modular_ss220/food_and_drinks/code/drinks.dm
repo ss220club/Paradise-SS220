@@ -865,7 +865,7 @@
 	color = "#bb2020"
 	alcohol_perc = 0.3
 	dizzy_adj = 4 SECONDS
-	taste_description = "Кровь капитализма"
+	taste_description = "кровь капитализма"
 	drink_icon = "red_january"
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_desc = "От этого напитка так и пахнет Революцией. Скоро она хватит всю Галактику!"
@@ -877,7 +877,7 @@
 	result = "red_january"
 	result_amount = 5
 	required_reagents = list("absinthe" = 2, "rum" = 1, "ice" = 1,"orangejuice" = 1)
-	mix_message = "Вы слышите призывы к кровавой революции."
+	mix_message = "Призывы к кровавой революции."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
 /datum/reagent/consumable/five_year_plan
@@ -916,6 +916,6 @@
 	id = "galactional"
 	result = "galactional"
 	result_amount = 5
-	required_reagents = list("vodka" = 1, "bitters" = 1, "wine" = 1, "champagne" = 1, "spacecola" = 1)
-	mix_message = "Вы видите, как из сосуда начинает валить дым."
+	required_reagents = list("vodka" = 1, "bitter" = 1, "wine" = 1, "champagne" = 1, "spacecola" = 1)
+	mix_message = "Из сосуда начинает валить дым."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
