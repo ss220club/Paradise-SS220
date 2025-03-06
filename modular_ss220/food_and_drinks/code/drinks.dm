@@ -841,6 +841,8 @@
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_desc = "Коктейль, придуманный СССП, который убедит вас в том, что скандировать лозунги коммунизма - это правильно!"
 	drink_name = "Communism On The Beach"
+	var/say_probability = 10
+	var/phrases_to_shout = list("За СССП!", "Равенство для всех!", "Революция вперед!", "К черту власть капитализма!")
 
 /datum/chemical_reaction/communism_beach
 	name = "Communism On The Beach"
@@ -853,9 +855,8 @@
 
 /datum/reagent/consumable/ethanol/communism_beach/on_mob_life(mob/living/M)
 	. = ..()
-	var/value = rand(1,10)
-	if(value == 10)
-		M.say(pick("За СССП!", "Равенство для всех!", "Революция вперед!", "К черту власть капитализма!"))
+	if(prob(say_probability))
+		M.say(pick(phrases_to_shout))
 
 /datum/reagent/consumable/ethanol/red_january
 	name = "Red January"
