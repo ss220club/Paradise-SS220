@@ -868,7 +868,7 @@
 	taste_description = "кровь капитализма"
 	drink_icon = "red_january"
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
-	drink_desc = "От этого напитка так и пахнет Революцией. Скоро она хватит всю Галактику!"
+	drink_desc = "От этого напитка так и пахнет Революцией. Скоро она охватит всю Галактику!"
 	drink_name = "Red January"
 
 /datum/chemical_reaction/red_january
