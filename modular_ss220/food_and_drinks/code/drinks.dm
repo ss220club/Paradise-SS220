@@ -877,7 +877,7 @@
 	result = "red_january"
 	result_amount = 5
 	required_reagents = list("absinthe" = 2, "rum" = 1, "ice" = 1,"orangejuice" = 1)
-	mix_message = "Призывы к кровавой революции."
+	mix_message = "Звучат призывы к кровавой революции."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
 /datum/reagent/consumable/five_year_plan
