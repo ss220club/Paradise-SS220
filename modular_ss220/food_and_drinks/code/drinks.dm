@@ -916,6 +916,6 @@
 	id = "galactional"
 	result = "galactional"
 	result_amount = 5
-	required_reagents = list("vodka" = 1, "bitter" = 1, "wine" = 1, "lager" = 1, "spacecola" = 1)
+	required_reagents = list("vodka" = 1, "bitter" = 1, "wine" = 1, "lager" = 1, "cola" = 1)
 	mix_message = "Красный свет из сосуда заполняет всё вокруг."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
