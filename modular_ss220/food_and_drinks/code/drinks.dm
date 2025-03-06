@@ -836,7 +836,7 @@
 	color = "#bb2020"
 	alcohol_perc = 0.4
 	dizzy_adj = 4 SECONDS
-	taste_description = "Равенство"
+	taste_description = "равенство"
 	drink_icon = "communism_beach"
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_desc = "Коктейль, придуманный СССП, который убедит вас в том, что скандировать лозунги коммунизма - это правильно!"
@@ -848,10 +848,10 @@
 	result = "communism_beach"
 	result_amount = 5
 	required_reagents = list("vodka" = 2, "silicon" = 1, "berryjuice" = 2)
-	mix_message = "Из сосуда вы видите красный свет, что заполяет всё вокруг."
+	mix_message = "Красный свет из сосуда заполняет всё вокруг."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
-/datum/reagent/consumable/ethanol/communism_beach/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/ethanol/communism_beach/on_mob_life(mob/living/M)
 	. = ..()
 	var/value = rand(1,10)
 	if(value == 10)
@@ -896,7 +896,7 @@
 	result = "five_year_plan"
 	result_amount = 5
 	required_reagents = list("coffee" = 2, "fuel" = 3)
-	mix_message = "Вы видите, как из сосуда начинает валить дым."
+	mix_message = "Из сосуда начинает валить дым."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
 /datum/reagent/consumable/galactional
@@ -908,7 +908,7 @@
 	drink_icon = "galactional"
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_desc = "Ударная доза кофеина и чего-то горючего для повышения Нашей эффективности!"
-	drink_name = "Five Year Plan"
+	drink_name = "Galactional"
 
 /datum/chemical_reaction/galactional
 	name = "Galactional"
