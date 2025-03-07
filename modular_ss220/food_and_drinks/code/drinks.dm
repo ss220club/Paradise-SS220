@@ -927,7 +927,8 @@
 	id = "carotene"
 	description = "Оздоровительный микс из моркови, томата и цитрусовых."
 	color = "#ffcb3b"
-	drink_icon = "triplecitrus"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "carotene"
 	drink_name = "Glass of Carotene"
 	drink_desc = "Как Окулин, но цветастее и вкуснее!"
 	taste_description = "прилив витамина A"
@@ -952,7 +953,8 @@
 	id = "orangade"
 	description = "Освежающий напиток из апельсина и моркови."
 	color = "#ffa600"
-	drink_icon = "triplecitrus"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "orangade"
 	drink_name = "Glass of Orangade"
 	drink_desc = "Шипучая оранжевая радость, что заставляет улыбиться лишь при взгляде на неё!"
 	taste_description = "апельсин с привкусом моркови"
@@ -968,12 +970,13 @@
 /datum/reagent/consumable/ethanol/carrotmary
 	name = "Carrot Mary"
 	id = "carrotmary"
-	description = "Популярный новогодний неорусский коктейль."
+	description = "Густоватая смесь моркови и водки. Пахнет солёно."
 	color = "#e69e42"
 	alcohol_perc = 0.4
-	drink_icon = "stoutglass"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "carrotmary"
 	drink_name = "Carrot Mary"
-	drink_desc = "Густоватая смесь моркови и водки. Пахнет солёно."
+	drink_desc = "Популярный новогодний неорусский коктейль."
 	taste_description = "солёность"
 
 /datum/chemical_reaction/carrotmary
@@ -984,40 +987,42 @@
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
-/datum/reagent/consumable/ethanol/pineapplecarrotshrub
+/datum/reagent/consumable/ethanol/pineapple_carrot_shrub
 	name = "Pineapple Carrot Shrub"
-	id = "pineapplecarrotshrub"
-	description = "Коктейль, сочетающий в себе вкусы тропиков и средиземья."
+	id = "pineapple_carrot_shrub"
+	description = "Пузырящийся коктейль из джина, ананаса и моркови."
 	color = "#e67e42"
 	alcohol_perc = 0.4
-	drink_icon = "stoutglass"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "pineapple_carrot_shrub"
 	drink_name = "Pineapple Carrot Shrub"
-	drink_desc = "Пузырящийся коктейль из джина, ананаса и моркови. Выглядит сладко и освежающе."
+	drink_desc = "Коктейль, сочетающий в себе вкусы тропиков и средиземья. Выглядит сладко и освежающе."
 	taste_description = "джин со сладостью моркови и ананаса"
 
-/datum/chemical_reaction/pineapplecarrotshrub
+/datum/chemical_reaction/pineapple_carrot_shrub
 	name = "Pineapple Carrot Shrub"
-	id = "pineapplecarrotshrub"
-	result = "pineapplecarrotshrub"
+	id = "pineapple_carrot_shrub"
+	result = "pineapple_carrot_shrub"
 	required_reagents = list("gin" = 2, "carrotjuice" = 1, "pineapplejuice" = 1, "ice" = 1)
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
-/datum/reagent/consumable/ethanol/maidenindungeon
+/datum/reagent/consumable/ethanol/maiden_in_dungeon
 	name = "Maiden in Dungeon"
-	id = "maidenindungeon"
-	description = "Напиток, что был придуман заядлыми игроками в DnD."
+	id = "maiden_in_dungeon"
+	description = "Текила с морковным соком и острым соусом."
 	color = "#e45238"
 	alcohol_perc = 0.4
-	drink_icon = "stoutglass"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "maiden_in_dungeon"
 	drink_name = "Maiden in Dungeon"
-	drink_desc = "Текила с морковным соком и острым соусом. Запах напитка почти что заставляет Вас чихать."
-	taste_description = "жгучесть, чуть разбавленную сладостью"
+	drink_desc = "Напиток, что был придуман заядлыми игроками в DnD. Его почти что заставляет Вас чихать."
+	taste_description = "жгучее драконье дыхание"
 
-/datum/chemical_reaction/maidenindungeon
+/datum/chemical_reaction/maiden_in_dungeon
 	name = "Maiden in Dungeon"
-	id = "maidenindungeon"
-	result = "maidenindungeon"
-	required_reagents = list("tequila" = 1, "carrotjuice" = 2, "lemonjuice" = 1, "capsaicin" = 1)
+	id = "maiden_in_dungeon"
+	result = "maiden_in_dungeon"
+	required_reagents = list("ale" = 1, "carrotjuice" = 2, "lemonjuice" = 1, "capsaicin" = 1)
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
