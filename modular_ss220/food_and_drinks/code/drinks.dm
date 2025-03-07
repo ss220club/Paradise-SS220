@@ -1011,7 +1011,7 @@
 /datum/reagent/consumable/ethanol/maiden_in_dungeon
 	name = "Maiden in Dungeon"
 	id = "maiden_in_dungeon"
-	description = "Текила с морковным соком и острым соусом."
+	description = "Эль с морковным соком и острым соусом."
 	color = "#e45238"
 	alcohol_perc = 0.4
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
