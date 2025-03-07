@@ -921,3 +921,103 @@
 	required_reagents = list("vodka" = 1, "bitter" = 1, "wine" = 1, "lager" = 1, "cola" = 1)
 	mix_message = "Красный свет из сосуда заполняет всё вокруг."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/drink/carotene
+	name = "Carotene"
+	id = "carotene"
+	description = "Оздоровительный микс из моркови, томата и цитрусовых."
+	color = "#ffcb3b"
+	drink_icon = "triplecitrus"
+	drink_name = "Glass of Carotene"
+	drink_desc = "Как Окулин, но цветастее и вкуснее!"
+	taste_description = "прилив витамина A"
+
+/datum/reagent/consumable/drink/carotene/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	M.AdjustEyeBlurry(-2 SECONDS)
+	if(current_cycle > 20 && prob(current_cycle - 10))
+		update_flags |= M.cure_nearsighted(EYE_DAMAGE, FALSE)
+	return ..() | update_flags
+
+/datum/chemical_reaction/carotene
+	name = "Carotene"
+	id = "carotene"
+	result = "carotene"
+	required_reagents = list("doctorsdelight" = 1, "carrotjuice" = 2, "lemonade" = 1, "ice" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/drink/orangade
+	name = "Orangade"
+	id = "orangade"
+	description = "Освежающий напиток из апельсина и моркови."
+	color = "#ffa600"
+	drink_icon = "triplecitrus"
+	drink_name = "Glass of Orangade"
+	drink_desc = "Шипучая оранжевая радость, что заставляет улыбиться лишь при взгляде на неё!"
+	taste_description = "апельсин с привкусом моркови"
+
+/datum/chemical_reaction/orangade
+	name = "Orangade"
+	id = "orangade"
+	result = "orangade"
+	required_reagents = list("carrotjuice" = 2, "orangejuice" = 2, "tonic" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/carrotmary
+	name = "Carrot Mary"
+	id = "carrotmary"
+	description = "Популярный новогодний неорусский коктейль."
+	color = "#e69e42"
+	alcohol_perc = 0.4
+	drink_icon = "stoutglass"
+	drink_name = "Carrot Mary"
+	drink_desc = "Густоватая смесь моркови и водки. Пахнет солёно."
+	taste_description = "солёность"
+
+/datum/chemical_reaction/carrotmary
+	name = "Carrot Mary"
+	id = "carrotmary"
+	result = "carrotmary"
+	required_reagents = list("vodka" = 2, "carrotjuice" = 2, "limejuice" = 1, "sodiumchloride" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/pineapplecarrotshrub
+	name = "Pineapple Carrot Shrub"
+	id = "pineapplecarrotshrub"
+	description = "Коктейль, сочетающий в себе вкусы тропиков и средиземья."
+	color = "#e67e42"
+	alcohol_perc = 0.4
+	drink_icon = "stoutglass"
+	drink_name = "Pineapple Carrot Shrub"
+	drink_desc = "Пузырящийся коктейль из джина, ананаса и моркови. Выглядит сладко и освежающе."
+	taste_description = "джин со сладостью моркови и ананаса"
+
+/datum/chemical_reaction/pineapplecarrotshrub
+	name = "Pineapple Carrot Shrub"
+	id = "pineapplecarrotshrub"
+	result = "pineapplecarrotshrub"
+	required_reagents = list("gin" = 2, "carrotjuice" = 1, "pineapplejuice" = 1, "ice" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/maidenindungeon
+	name = "Maiden in Dungeon"
+	id = "maidenindungeon"
+	description = "Напиток, что был придуман заядлыми игроками в DnD."
+	color = "#e45238"
+	alcohol_perc = 0.4
+	drink_icon = "stoutglass"
+	drink_name = "Maiden in Dungeon"
+	drink_desc = "Текила с морковным соком и острым соусом. Запах напитка почти что заставляет Вас чихать."
+	taste_description = "жгучесть, чуть разбавленную сладостью"
+
+/datum/chemical_reaction/maidenindungeon
+	name = "Maiden in Dungeon"
+	id = "maidenindungeon"
+	result = "maidenindungeon"
+	required_reagents = list("tequila" = 1, "carrotjuice" = 2, "lemonjuice" = 1, "capsaicin" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
