@@ -973,8 +973,8 @@
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_icon = "carrotmary"
 	drink_name = "Carrot Mary"
-	drink_desc = "Популярный новогодний неорусский коктейль."
-	taste_description = "солёность"
+	drink_desc = "Популярный неорусский коктейль, обычно приготавливаемый к новогоднему столу."
+	taste_description = "засоленную в водке морковь"
 
 /datum/chemical_reaction/carrotmary
 	name = "Carrot Mary"
