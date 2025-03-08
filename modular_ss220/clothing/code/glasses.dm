@@ -26,7 +26,6 @@
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/eyes.dmi',
 	)
 	prescription_upgradable = FALSE
-	var/base_icon
 	var/flipped = FALSE
 
 /obj/item/clothing/glasses/hud/security/eyepatch/update_icon_state()
@@ -34,12 +33,12 @@
 		item_state = "[replacetext("[item_state]", "_flipped", "")][flipped ? "_flipped" : ""]"
 
 /obj/item/clothing/glasses/hud/security/eyepatch/attack_self__legacy__attackchain(mob/user)
-	if(!base_icon)
-		base_icon = icon_state
+	if(!initial(icon_state))
+		icon_state = initial(icon_state)
 
 	flipped = !flipped
 	to_chat(user, "You flip [src] [flipped ? "left" : "right"].")
 	if(flipped)
-		icon_state = "[base_icon]_flipped"
+		icon_state = "[initial(icon_state)]_flipped"
 	else
-		icon_state = "[base_icon]"
+		icon_state = "[initial(icon_state)]"
