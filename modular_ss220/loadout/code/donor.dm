@@ -196,16 +196,9 @@
 	cost = 2
 
 /datum/gear/donor/seceyepatch
-	display_name = "Повязка secHUD на правый глаз"
+	display_name = "Повязка secHUD на глаз"
 	path = /obj/item/clothing/glasses/hud/security/sunglasses/seceyepatch
 	allowed_roles = list("Head of Security", "Warden", "Detective", "Security Officer", "Adjutant", "Адъютант", "Butler", "Дворецкий", "Maid", "Горничная", "Internal Affairs Agent", "Security Cadet", "Magistrate")
-	donator_tier = 3
-	cost = 2
-
-/datum/gear/donor/seceyepatchleft
-	display_name = "Повязка secHUD на левый глаз"
-	path = /obj/item/clothing/glasses/hud/security/sunglasses/seceyepatchleft
-	allowed_roles = list("Head of Security", "Warden", "Detective", "Security Officer", "Security Cadet", "Adjutant", "Адъютант", "Butler", "Дворецкий", "Maid", "Горничная", "Internal Affairs Agent", "Magistrate")
 	donator_tier = 3
 	cost = 2
 
