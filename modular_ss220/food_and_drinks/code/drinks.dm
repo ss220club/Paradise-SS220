@@ -957,7 +957,7 @@
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_icon = "orangade"
 	drink_name = "Glass of Orangade"
-	drink_desc = "Шипучая оранжевая радость, что заставляет улыбиться лишь при взгляде на неё!"
+	drink_desc = "Шипучая оранжевая радость, что заставляет улыбаться лишь при взгляде на неё!"
 	taste_description = "апельсин с привкусом моркови"
 
 /datum/chemical_reaction/orangade
