@@ -1,8 +1,3 @@
-// Добавляем морковный сок в раздатчик содовых
-/obj/machinery/chem_dispenser/soda/Initialize(mapload)
-	dispensable_reagents += list("carrotjuice")
-	return ..()
-
 /obj/item/reagent_containers/drinks/drinkingglass
 	name = "drinking glass"
 
