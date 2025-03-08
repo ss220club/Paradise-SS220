@@ -945,7 +945,7 @@
 	name = "Carotene"
 	id = "carotene"
 	result = "carotene"
-	required_reagents = list("doctorsdelight" = 1, "carrotjuice" = 2, "lemonade" = 1, "ice" = 1)
+	required_reagents = list("doctorsdelight" = 1, "carrotjuice" = 3, "lemonade" = 1)
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
@@ -964,7 +964,7 @@
 	name = "Orangade"
 	id = "orangade"
 	result = "orangade"
-	required_reagents = list("carrotjuice" = 2, "orangejuice" = 2, "tonic" = 1)
+	required_reagents = list("carrotjuice" = 2, "orangejuice" = 2, "sodawater" = 1)
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
