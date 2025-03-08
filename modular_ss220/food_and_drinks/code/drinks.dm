@@ -935,11 +935,7 @@
 
 /datum/reagent/consumable/drink/carotene/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
-	M.AdjustEyeBlurry(-2 SECONDS)
-	M.AdjustEyeBlind(-2 SECONDS)
-	if(current_cycle > 20 && prob(current_cycle - 10))
-		update_flags |= M.cure_nearsighted(EYE_DAMAGE, FALSE)
-	return ..() | update_flags
+	M.AdjustEyeBlurry(-3 SECONDS)
 
 /datum/chemical_reaction/carotene
 	name = "Carotene"
