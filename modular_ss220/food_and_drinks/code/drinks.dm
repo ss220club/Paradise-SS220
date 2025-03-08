@@ -934,7 +934,6 @@
 	taste_description = "прилив витамина A"
 
 /datum/reagent/consumable/drink/carotene/on_mob_life(mob/living/M)
-	var/update_flags = STATUS_UPDATE_NONE
 	M.AdjustEyeBlurry(-3 SECONDS)
 
 /datum/chemical_reaction/carotene
