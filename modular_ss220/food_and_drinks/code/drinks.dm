@@ -934,6 +934,7 @@
 	taste_description = "прилив витамина A"
 
 /datum/reagent/consumable/drink/carotene/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
 	M.AdjustEyeBlurry(-3 SECONDS)
 
 /datum/chemical_reaction/carotene
@@ -1022,3 +1023,15 @@
 	required_reagents = list("ale" = 1, "carrotjuice" = 2, "lemonjuice" = 1, "capsaicin" = 1)
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/obj/item/reagent_containers/drinks/bottle/carrotjuice_carton
+	name = "carrot juice"
+	desc = "Упаковка морковного сока. Полезен для зрения и, если верить некоторым слухам, для роста."
+	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	icon_state = "carrotjuice_carton"
+	item_state = "carton"
+	list_reagents = list("carrotjuice" = 50)
+
+/obj/machinery/economy/vending/boozeomat/Initialize(mapload)
+	products += list(/obj/item/reagent_containers/drinks/bottle/carrotjuice_carton = 2)
+	return ..()
