@@ -1029,6 +1029,7 @@
 /obj/item/reagent_containers/drinks/bottle/carrotjuice_carton
 	name = "carrot juice"
 	desc = "Упаковка морковного сока. Полезен для зрения и, если верить некоторым слухам, для роста."
+	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "carrotjuice_carton"
 	item_state = "carton"
 	is_glass = FALSE
