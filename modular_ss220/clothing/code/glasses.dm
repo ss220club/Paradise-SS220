@@ -35,7 +35,4 @@
 /obj/item/clothing/glasses/hud/security/eyepatch/attack_self__legacy__attackchain(mob/user)
 	flipped = !flipped
 	to_chat(user, "You flip [src] [flipped ? "left" : "right"].")
-	if(flipped)
-		icon_state = "[initial(icon_state)]_flipped"
-	else
-		icon_state = initial(icon_state)
+	update_icon(UPDATE_ICON_STATE)
