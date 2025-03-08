@@ -25,8 +25,8 @@
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/eyes.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/eyes.dmi',
 	)
-var/base_icon
-var/flipped = FALSE
+	var/base_icon
+	var/flipped = FALSE
 
 /obj/item/clothing/glasses/hud/security/sunglasses/seceyepatch/update_icon_state()
 	if(..())
