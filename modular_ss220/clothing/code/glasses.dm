@@ -29,8 +29,8 @@
 	var/flipped = FALSE
 
 /obj/item/clothing/glasses/hud/security/eyepatch/update_icon_state()
-	if(..())
-		item_state = "[replacetext("[item_state]", "_flipped", "")][flipped ? "_flipped" : ""]"
+	item_state = flipped ? "[initial(item_state)]_flipped" : initial(item_state)
+	icon_state = flipped ? "[initial(icon_state)]_flipped" : initial(icon_state)
 
 /obj/item/clothing/glasses/hud/security/eyepatch/attack_self__legacy__attackchain(mob/user)
 	flipped = !flipped
