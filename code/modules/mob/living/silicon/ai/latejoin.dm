@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 /mob/living/silicon/ai/verb/wipe_core()
 	set name = "Очистка ядра"
 	set category = "OOC"
-	set desc = "Очищает ваше ядро. функционально такое же, как робо и криохранилище, освобождая слот работы."
+	set desc = "Очищает ваше ядро. Функционально такое же, как робо и криохранилище, освобождая слот работы."
 
 	// Guard against misclicks, this isn't the sort of thing we want happening accidentally
 	if(tgui_alert(usr, "ВНИМАНИЕ: Это действие незамедлительно очистит ваше ядро и превратит вас в призрака, удаляя вашего персонажа из раунда (похоже на крио и робохранилище). Вы уверены, что хотите это сделать?", "Очистка ядра", list("Нет", "Да")) != "Да")
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 					continue
 				loc_landmark = tripai
 	if(!loc_landmark)
-		to_chat(src, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.") //lol what is this message
+		to_chat(src, "Господи прости нас, мы не смогли найти незанятое место спавна ИИ, поэтому ты заспавним тебя над кем-то.") //lol what is this message
 		for(var/obj/effect/landmark/start/ai/A in GLOB.landmarks_list)
 			loc_landmark = A
 

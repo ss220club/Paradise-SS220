@@ -1,5 +1,5 @@
 /datum/ui_module/botcall
-	name = "Access Robot Control"
+	name = "Доступ к контролю роботов"
 
 	var/mob/living/simple_animal/bot/bot
 	var/mob/living/silicon/ai/AI
@@ -38,4 +38,4 @@
 		if("call")
 			AI.Bot = bot
 			AI.waypoint_mode = TRUE
-			to_chat(AI, "<span class='notice'>Set your waypoint by clicking on a valid location free of obstructions.</span>")
+			to_chat(AI, "<span class='notice'>Поставь точку назначения нажатием в правильном месте без препятствий.</span>")
