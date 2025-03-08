@@ -1,6 +1,6 @@
-/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
+/obj/item/clothing/glasses/hud/security/eyepatch
 	name = "повязка на глаз с secHUD"
-	desc = "Устаревший вариант размещения secHUD с защитой глаз от вспышек, от подобного исполнения давно отказались в пользу более удобного и легковесного размещения в солнцезащитных очках, однако многие продолжают пользваться старым вариантом в угоду стилю. Данную повязку можно носить как на правом, так и на левом глазу."
+	desc = "Прототип повязки на глаз с интегрированным secHUD. От этого исполнения отказались в пользу более удобного и легковесного размещения в очках, однако на устройство все еще спрос среди ценителей. Данную повязку можно носить как на правом, так и на левом глазу."
 	icon = 'modular_ss220/clothing/icons/object/eyes.dmi'
 	icon_state = "hudpatch"
 	item_state = "hudpatch"
@@ -29,11 +29,11 @@
 	var/base_icon
 	var/flipped = FALSE
 
-/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/update_icon_state()
+/obj/item/clothing/glasses/hud/security/eyepatch/update_icon_state()
 	if(..())
 		item_state = "[replacetext("[item_state]", "_flipped", "")][flipped ? "_flipped" : ""]"
 
-/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/attack_self__legacy__attackchain(mob/user)
+/obj/item/clothing/glasses/hud/security/eyepatch/attack_self__legacy__attackchain(mob/user)
 	if(!base_icon)
 		base_icon = icon_state
 
@@ -43,8 +43,3 @@
 		icon_state = "[base_icon]_flipped"
 	else
 		icon_state = "[base_icon]"
-
-/datum/crafting_recipe/hudsunsecremoval
-	blacklist = list(
-		/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
-	)
