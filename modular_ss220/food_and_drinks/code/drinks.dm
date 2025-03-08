@@ -1017,7 +1017,7 @@
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_icon = "maiden_in_dungeon"
 	drink_name = "Maiden in Dungeon"
-	drink_desc = "Напиток, что был придуман заядлыми игроками в DnD. Его почти что заставляет Вас чихать."
+	drink_desc = "Напиток, что был придуман заядлыми игроками в DnD. Его запах почти что заставляет Вас чихать."
 	taste_description = "жгучее драконье дыхание"
 
 /datum/chemical_reaction/maiden_in_dungeon
