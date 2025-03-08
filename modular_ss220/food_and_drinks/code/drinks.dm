@@ -1,3 +1,8 @@
+// Добавляем морковный сок в раздатчик содовых
+/obj/machinery/chem_dispenser/soda/Initialize(mapload)
+	dispensable_reagents += list("carrotjuice")
+	return ..()
+
 /obj/item/reagent_containers/drinks/drinkingglass
 	name = "drinking glass"
 
@@ -922,26 +927,23 @@
 	mix_message = "Красный свет из сосуда заполняет всё вокруг."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
-/datum/reagent/consumable/drink/carotene
+/datum/reagent/consumable/ethanol/carotene
 	name = "Carotene"
 	id = "carotene"
-	description = "Оздоровительный микс из моркови, томата и цитрусовых."
+	description = "Коктейль из моркови, вина и винограда."
 	color = "#ffcb3b"
+	alcohol_perc = 0.4
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_icon = "carotene"
-	drink_name = "Glass of Carotene"
-	drink_desc = "Как Окулин, но цветастее и вкуснее!"
-	taste_description = "прилив витамина A"
-
-/datum/reagent/consumable/drink/carotene/on_mob_life(mob/living/M)
-	var/update_flags = STATUS_UPDATE_NONE
-	M.AdjustEyeBlurry(-3 SECONDS)
+	drink_name = "Carotene"
+	drink_desc = "Несмотря на название, таким коктейлем намного более вероятно убить печень, чем вылечить плохое зрение."
+	taste_description = "виноград, морковь и небольшую кислинку"
 
 /datum/chemical_reaction/carotene
 	name = "Carotene"
 	id = "carotene"
 	result = "carotene"
-	required_reagents = list("doctorsdelight" = 1, "carrotjuice" = 3, "lemonade" = 1)
+	required_reagents = list("grapejuice" = 1, "carrotjuice" = 1, "sugar" = 1, "lemonjuice" = 1, "wine" = 1)
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
@@ -952,7 +954,7 @@
 	color = "#ffa600"
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_icon = "orangade"
-	drink_name = "Glass of Orangade"
+	drink_name = "Orangade"
 	drink_desc = "Шипучая оранжевая радость, что заставляет улыбаться лишь при взгляде на неё!"
 	taste_description = "апельсин с привкусом моркови"
 
@@ -987,20 +989,20 @@
 /datum/reagent/consumable/ethanol/pineapple_carrot_shrub
 	name = "Pineapple Carrot Shrub"
 	id = "pineapple_carrot_shrub"
-	description = "Пузырящийся коктейль из джина, ананаса и моркови."
+	description = "Коктейль из джина, ананаса и моркови."
 	color = "#e67e42"
 	alcohol_perc = 0.4
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_icon = "pineapple_carrot_shrub"
 	drink_name = "Pineapple Carrot Shrub"
-	drink_desc = "Коктейль, сочетающий в себе вкусы тропиков и средиземья. Выглядит сладко и освежающе."
+	drink_desc = "Коктейль, сочетающий в себе вкусы разных климатов. Выглядит сладко и освежающе."
 	taste_description = "джин со сладостью моркови и ананаса"
 
 /datum/chemical_reaction/pineapple_carrot_shrub
 	name = "Pineapple Carrot Shrub"
 	id = "pineapple_carrot_shrub"
 	result = "pineapple_carrot_shrub"
-	required_reagents = list("gin" = 2, "carrotjuice" = 1, "pineapplejuice" = 1, "ice" = 1)
+	required_reagents = list("gin" = 2, "carrotjuice" = 1, "pineapplejuice" = 1, "sugar" = 1)
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
@@ -1027,9 +1029,10 @@
 /obj/item/reagent_containers/drinks/bottle/carrotjuice_carton
 	name = "carrot juice"
 	desc = "Упаковка морковного сока. Полезен для зрения и, если верить некоторым слухам, для роста."
-	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "carrotjuice_carton"
 	item_state = "carton"
+	is_glass = FALSE
+	gender = PLURAL
 	list_reagents = list("carrotjuice" = 50)
 
 /obj/machinery/economy/vending/boozeomat/Initialize(mapload)
