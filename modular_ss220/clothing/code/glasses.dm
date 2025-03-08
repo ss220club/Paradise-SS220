@@ -33,12 +33,10 @@
 		item_state = "[replacetext("[item_state]", "_flipped", "")][flipped ? "_flipped" : ""]"
 
 /obj/item/clothing/glasses/hud/security/eyepatch/attack_self__legacy__attackchain(mob/user)
-	if(!initial(icon_state))
-		icon_state = initial(icon_state)
 
 	flipped = !flipped
 	to_chat(user, "You flip [src] [flipped ? "left" : "right"].")
 	if(flipped)
 		icon_state = "[initial(icon_state)]_flipped"
 	else
-		icon_state = "[initial(icon_state)]"
+		icon_state = initial(icon_state)
