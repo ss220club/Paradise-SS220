@@ -1,5 +1,5 @@
 /obj/item/reagent_containers/drinks/bottle
-	var/broken_bottle_icon = 'icons/obj/drink.dmi'
+	var/broken_bottle_icon = 'icons/obj/drinks.dmi'
 
 /obj/item/reagent_containers/drinks/drinkingglass
 	name = "drinking glass"
