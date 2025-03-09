@@ -1035,5 +1035,5 @@
 	list_reagents = list("carrotjuice" = 50)
 
 /obj/machinery/economy/vending/boozeomat/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/reagent_containers/drinks/bottle/carrotjuice = 2)
-	return ..()
