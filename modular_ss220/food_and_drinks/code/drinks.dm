@@ -1030,6 +1030,7 @@
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "carrotjuice_carton"
 	item_state = "carton"
+	broken_bottle_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	is_glass = FALSE
 	gender = PLURAL
 	list_reagents = list("carrotjuice" = 50)
