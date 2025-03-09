@@ -1,3 +1,6 @@
+/obj/item/reagent_containers/drinks/bottle
+	var/broken_bottle_icon = 'icons/obj/drink.dmi'
+
 /obj/item/reagent_containers/drinks/drinkingglass
 	name = "drinking glass"
 
@@ -932,7 +935,7 @@
 	drink_icon = "carotene"
 	drink_name = "Carotene"
 	drink_desc = "Несмотря на название, таким коктейлем намного более вероятно убить печень, чем вылечить плохое зрение."
-	taste_description = "виноград, морковь и небольшую кислинку"
+	taste_description = "кислый виноград и морковь"
 
 /datum/chemical_reaction/carotene
 	name = "Carotene"
@@ -951,7 +954,7 @@
 	drink_icon = "orangade"
 	drink_name = "Orangade"
 	drink_desc = "Шипучая оранжевая радость, что заставляет улыбаться лишь при взгляде на неё!"
-	taste_description = "апельсин с привкусом моркови"
+	taste_description = "апельсин и морковь"
 
 /datum/chemical_reaction/orangade
 	name = "Orangade"
@@ -971,7 +974,7 @@
 	drink_icon = "carrotmary"
 	drink_name = "Carrot Mary"
 	drink_desc = "Популярный неорусский коктейль, обычно приготавливаемый к новогоднему столу."
-	taste_description = "засоленную в водке морковь"
+	taste_description = "солёная морковь"
 
 /datum/chemical_reaction/carrotmary
 	name = "Carrot Mary"
@@ -1021,7 +1024,7 @@
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
-/obj/item/reagent_containers/drinks/bottle/carrotjuice_carton
+/obj/item/reagent_containers/drinks/bottle/carrotjuice
 	name = "carrot juice"
 	desc = "Упаковка морковного сока. Полезен для зрения и, если верить некоторым слухам, для роста."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
@@ -1032,5 +1035,5 @@
 	list_reagents = list("carrotjuice" = 50)
 
 /obj/machinery/economy/vending/boozeomat/Initialize(mapload)
-	products += list(/obj/item/reagent_containers/drinks/bottle/carrotjuice_carton = 2)
+	products += list(/obj/item/reagent_containers/drinks/bottle/carrotjuice = 2)
 	return ..()
