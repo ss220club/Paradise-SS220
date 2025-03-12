@@ -112,7 +112,7 @@
 	// cant use hands for 2 seconds
 	if(A.zone_selected == "r_hand" || A.zone_selected == "l_hand")
 		ADD_TRAIT(D, TRAIT_HANDS_BLOCKED, "cqc harm act")
-		addtimer(CALLBACK(PROC_REF(off_hand_pain), D), 2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(off_hand_pain), D), 2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 	// extra damage if has knife
 	if(istype(A.get_inactive_hand(), /obj/item/kitchen/knife))
 		D.apply_damage(25, BRUTE, A.zone_selected)
@@ -140,11 +140,11 @@
 	var/obj/item/shield = D.get_best_shield()
 
 	if(!IS_HORIZONTAL(D) || !restraining)
+		playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 5, TRUE, -1)
 		if(shield && shield.hit_reaction(D, A, "strike", 100))
 			return TRUE // blocked by shield
 		D.visible_message("<span class='warning'>[A] strikes [D]'s jaw with their hand!</span>", \
 							"<span class='userdanger'>[A] strikes your jaw, disorienting you!</span>")
-		playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 5, TRUE, -1)
 		D.drop_item()
 		D.apply_damage(5, STAMINA)
 	//SS220 EDIT END

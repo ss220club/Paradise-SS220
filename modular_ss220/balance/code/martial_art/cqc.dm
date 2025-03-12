@@ -6,7 +6,7 @@
 /datum/martial_art/cqc/proc/off_hand_pain(mob/defender)
 	if(!defender)
 		return
-	REMOVE_TRAIT(defender, TRAIT_BLOCKED_HANDS, "cqc_harm_act")
+	REMOVE_TRAIT(defender, TRAIT_HANDS_BLOCKED, "cqc harm act")
 
 /// attack for combo with same name and attack from horizontal position
 /datum/martial_art/cqc/proc/takedown(mob/living/carbon/human/attacker, mob/living/carbon/human/defender)
