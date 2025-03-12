@@ -9,3 +9,6 @@
 
 /// called by /datum/component/mob_overlay_shift/proc/get_list(mob/component_holder, overlay, list/info_data) : (/datum/component/mob_overlay_shift)
 #define COMSIG_CMA_TRANSFORM "cma_transform"
+
+/// called by /obj/item/grab/Destroy() : (mob/affecting, mob/assailant)
+#define COMSIG_GRAB_RELEASE "grab_release"
