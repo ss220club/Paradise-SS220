@@ -109,6 +109,8 @@
 		break_neck(D, A)
 		return TRUE
 	var/picked_hit_type = pick("CQC'd", "neck chopped", "gut punched", "Big Bossed")
+	if(IS_HORIZONTAL(D))
+		picked_hit_type = "stomps on"
 	// cant use hands for 2 seconds
 	if(A.zone_selected == "r_hand" || A.zone_selected == "l_hand")
 		ADD_TRAIT(D, TRAIT_HANDS_BLOCKED, "cqc harm act")
