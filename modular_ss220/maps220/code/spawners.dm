@@ -127,6 +127,10 @@
 		/obj/effect/spawner/random/bluespace_tap/food_rare,
 	)
 
+/obj/effect/spawner/random/loot/gateway_chainsaw
+	spawn_loot_chance = 20
+	loot = list(/obj/item/butcher_chainsaw/gateway)
+
 /obj/effect/spawner/random/maintenance
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 

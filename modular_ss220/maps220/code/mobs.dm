@@ -1358,11 +1358,10 @@
 
 //Enemies
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle
-	damage_coeff = list("brute" = 1, "fire" = 0.6, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0.5)
-	melee_damage_type = BURN
+	damage_coeff = list("brute" = 0.8, "fire" = 0.9, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
 	attack_sound = 'sound/weapons/saberon.ogg'
-	maxHealth = 160
-	health = 160
+	maxHealth = 200
+	health = 200
 	loot = list(
 		/obj/effect/decal/cleanable/ash,
 		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot,
@@ -1370,8 +1369,7 @@
 	)
 
 /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle
-	damage_coeff = list("brute" = 1, "fire" = 0.8, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0)
-	melee_damage_type = BURN
+	damage_coeff = list("brute" = 0.6, "fire" = 0.8, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
 	attack_sound = 'sound/weapons/saberon.ogg'
 	maxHealth = 200
 	health = 200
@@ -1383,9 +1381,9 @@
 	)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle
-	damage_coeff = list("brute" = 1, "fire" = 0.6, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0.5)
-	maxHealth = 150
-	health = 150
+	damage_coeff = list("brute" = 0.8, "fire" = 0.9, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
+	maxHealth = 200
+	health = 200
 	loot = list(
 		/obj/effect/decal/cleanable/ash,
 		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot,
@@ -1393,8 +1391,9 @@
 	)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle
-	maxHealth = 180
-	health = 180
+	damage_coeff = list("brute" = 0.6, "fire" = 0.8, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
+	maxHealth = 200
+	health = 200
 	loot = list(
 		/obj/effect/decal/cleanable/ash,
 		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot,
@@ -1405,21 +1404,18 @@
 // Spacebattle QM
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle
 	name = "Syndicate Commander"
-	armour_penetration_flat = 20
-	armour_penetration_percentage = 80
-	loot = list(/obj/effect/decal/cleanable/ash)
-	speed = 2
-	health = 600
-	maxHealth = 600
-	var/mob = /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle
-
-/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/Initialize(mapload)
-	. = ..()
-	if(prob(20))
-		loot += list(/obj/item/butcher_chainsaw/gateway)
+	damage_coeff = list("brute" = 0.4, "fire" = 0.5, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
+	health = 300
+	maxHealth = 300
+	armour_penetration_flat = 20 // HE'S KILLING ME! HELP!!!
+	loot = list(
+		/obj/effect/decal/cleanable/ash,
+		/obj/effect/spawner/random/loot/gateway_chainsaw,
+	)
+	var/spacebattle_boss = TRUE
 
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/death()
-	if(type == mob)
+	if(spacebattle_boss)
 		for(var/obj/machinery/door/poddoor/P in GLOB.airlocks)
 			if(P.density && (P.id_tag == "Spacebattle_exit" || P.id_tag == "1ShipLock"))
 				spawn(0)
@@ -1428,12 +1424,13 @@
 
 // Spacebattle QM used at pools.dm
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/gateway
+	spacebattle_boss = FALSE
 	loot = list(
 		/obj/effect/decal/cleanable/ash,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/depot/centcomm,
 	)
 
-// syndie griefsky
+// Syndie griefsky
 /mob/living/simple_animal/bot/secbot/griefsky/syndie
 	desc = "Is that a smoke around access panel?..."
 	faction = list("syndicate")
