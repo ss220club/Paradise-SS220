@@ -104,7 +104,7 @@
 		playsound(loc, shovel.usesound, 50, TRUE)
 		if(do_after(user, 50 * shovel.toolspeed, target = src))
 			user.visible_message("<span class='notice'>[user] clears away [src]!</span>", "<span class='notice'>You clear away [src]!</span>")
-			qdel(src)	
+			qdel(src)
 		return ITEM_INTERACT_COMPLETE
 
 /obj/effect/snow/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, global_overlay = TRUE)

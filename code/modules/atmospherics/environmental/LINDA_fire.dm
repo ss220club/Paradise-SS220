@@ -237,7 +237,7 @@
 			if(!link)
 				continue
 			// Check if it wasn't already visited and if you can get to that turf
-			if(!closed[link] && T.CanAtmosPass(direction) && link.CanAtmosPass(turn(direction, 180)))
+			if(!closed[link] && T.CanAtmosPassBidirectional(direction))
 				var/dx = link.x - Ce.x
 				var/dy = link.y - Ce.y
 				var/target_dist = max((dist + 1 + sqrt(dx * dx + dy * dy)) / 2, dist)

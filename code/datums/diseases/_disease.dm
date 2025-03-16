@@ -156,10 +156,9 @@ GLOBAL_LIST_INIT(diseases, subtypesof(/datum/disease))
 						C.ContractDisease(src)
 						break
 					var/direction = get_dir(current, target)
-					var/turf/next = get_step(current, direction)
-					if(!current.CanAtmosPass(direction) || !next.CanAtmosPass(turn(direction, 180)))
+					if(!current.CanAtmosPassBidirectional(direction))
 						break
-					current = next
+					current = get_step(current, direction)
 
 
 /datum/disease/proc/cure()

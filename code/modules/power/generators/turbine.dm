@@ -275,7 +275,7 @@
 	if(compressor)
 		compressor.locate_machinery()
 
-/obj/machinery/power/turbine/CanAtmosPass(turf/T)
+/obj/machinery/power/turbine/CanAtmosPass(direction)
 	return !density
 
 /obj/machinery/power/turbine/process()
