@@ -5,6 +5,15 @@
 #define BLOOD_HANDS "bloodyhands"
 #define BLOOD_SHOES "shoeblood"
 
+#define MELEE_WEAPON_NONE "slapper"
+#define MELEE_WEAPON_ESWORD "sword"
+#define MELEE_WEAPON_DSWORD "dsword"
+
+#define RANGED_WEAPON_PISTOL "gun"
+#define RANGED_WEAPON_C20R "c20r"
+#define RANGED_WEAPON_M90 "m90"
+#define RANGED_WEAPON_SR "sr"
+
 //////////////////////////////
 // MARK: ESWORD
 //////////////////////////////
@@ -45,28 +54,28 @@
 		/obj/effect/gibspawner/generic,
 		/obj/effect/gibspawner/generic,
 	)
+	// What do we perform melee attacks with
+	var/melee_type = MELEE_WEAPON_ESWORD
+	// What do we perform ranged attacks with
+	var/ranged_type
 	// Corpse we spawn on death()
 	var/corpse = /obj/effect/mob_spawn/human/corpse/syndicate
 	// Weapon icon overlay we add when we have a target to attack
-	var/weapon = "swordred"
+	var/weapon
 	// Should we add weapon icon when there is no target to attack? Uses "-idle" state of weapon (Depot QM with SR as an example)
-	var/weapon_idle = FALSE
+	var/weapon_idle
 	// Overlay for our swat mask/armor booster visor
 	var/visor_overlay = "mask"
-	// Do we attack with an esword?
-	var/esword = TRUE
-	// Same as above, but adds eshield ability and deflect chance
-	var/dsword = FALSE
 	// Whether we play activation/deactivation sound of e/dsword
 	var/sword_active = FALSE
 	// %Chance to reflect a projectile
 	var/reflect_chance = 10
-	// %Chance to deflect a melee hit. Used alongside `dsword = TRUE` only
+	// %Chance to deflect a melee hit. Used alongside `MELEE_WEAPON_DSWORD` only
 	var/deflect_chance = 15
 	// %Chance of fully block a hit
 	var/parry_chance = 10
 	// Icon we display on melee attack/parry
-	var/attack_icon = "sword1"
+	var/attack_icon
 	// Do we have an energy shield in our hands that will reflect any energy projectiles?
 	var/eshield = FALSE
 	// Do we wear a modsuit?
@@ -77,6 +86,15 @@
 	var/bloody = FALSE
 	// Which masks to apply on apply_blood()
 	var/list/static/bloody_parts
+	// Color of our blade
+	var/sword_color
+	// Colors for our blade
+	var/list/static/colormap = list(
+		1 = LIGHT_COLOR_GREEN,
+		2 = LIGHT_COLOR_RED,
+		3 = LIGHT_COLOR_LIGHTBLUE,
+		4 = LIGHT_COLOR_PURPLE,
+	)
 
 /mob/living/simple_animal/hostile/syndicate/Initialize(mapload)
 	. = ..()
@@ -102,34 +120,62 @@
 			BLOOD_HANDS,
 			BLOOD_SHOES,
 		)
+
 	for(var/bloody_part in bloody_parts)
 		var/mutable_appearance/bloodsies = mutable_appearance('icons/effects/blood.dmi', icon_state = bloody_part)
 		bloodsies.color = bloody
 		add_overlay(bloodsies)
+
+	// Other overlays should be always above blood
+	cut_overlay(weapon)
+	cut_overlay(weapon_idle)
+	cut_overlay("eshield")
+
 	update_icon(UPDATE_OVERLAYS)
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_visor()
-	cut_overlay(visor_overlay)
-	cut_overlay("[visor_overlay]-off")
 	if(!modsuit || armor_booster)
+		cut_overlay("[visor_overlay]-off")
 		add_overlay(visor_overlay)
 	else if(modsuit && !armor_booster)
+		cut_overlay(visor_overlay)
 		add_overlay("[visor_overlay]-off")
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_weapon()
-	cut_overlay(weapon)
-	cut_overlay("[weapon]-idle")
-	if(target && weapon)
-		add_overlay(weapon)
-		if((dsword || esword) && !sword_active)
-			sword_active = TRUE
-	else if(weapon_idle)
-		add_overlay("[weapon]-idle")
-	else if(sword_active)
-		sword_active = FALSE
+	if(!attack_icon)
+		if(melee_type == MELEE_WEAPON_NONE)
+			attack_icon = MELEE_WEAPON_NONE
+		else
+			sword_color = rand(1,4)
+			attack_icon = "[melee_type][sword_color]"
+
+	if(target)
+		if(weapon_idle)
+			cut_overlay(weapon_idle)
+		if(ranged)
+			if(!weapon)
+				weapon = ranged_type
+			add_overlay(weapon)
+		else
+			if(melee_type != MELEE_WEAPON_NONE)
+				if(!weapon)
+					weapon = "[sword_color][melee_type]"
+				add_overlay(weapon)
+				if(sword_color)
+					set_light(2, l_color = colormap[sword_color])
+				if(!sword_active)
+					sword_active = TRUE
+	else
+		if(sword_color)
+			set_light(0)
+		if(weapon)
+			cut_overlay(weapon)
+		if(weapon_idle)
+			add_overlay(weapon_idle)
+		if(sword_active)
+			sword_active = FALSE
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_eshield()
-	cut_overlay("eshield")
 	if(eshield)
 		add_overlay("eshield")
 
@@ -167,7 +213,7 @@
 	. = ..()
 	if(target)
 		playsound(src, 'sound/misc/for_the_syndicate.ogg', 70, TRUE)
-		if((esword || dsword) && !sword_active)
+		if((melee_type != MELEE_WEAPON_NONE) && !sword_active)
 			playsound(src, 'sound/weapons/saberon.ogg', 35, TRUE)
 	update_icon(UPDATE_OVERLAYS)
 
@@ -177,16 +223,17 @@
 			OpenFire(target)
 		return
 	. = ..()
-	if(!ranged && !bloody && ishuman(target) && melee_damage_upper)
-		var/mob/living/carbon/human/victim = target
-		bloody = victim.dna.species.blood_color
-		apply_blood()
-	if(dsword && prob(50))
-		jedi_spin()
+	if(.)
+		if(!ranged && !bloody && ishuman(target) && melee_damage_upper)
+			var/mob/living/carbon/human/victim = target
+			bloody = victim.dna.species.blood_color
+			apply_blood()
+		if(melee_type == MELEE_WEAPON_DSWORD && prob(50))
+			jedi_spin()
 
 /mob/living/simple_animal/hostile/syndicate/LoseTarget()
 	. = ..()
-	if((esword || dsword) && sword_active)
+	if(sword_active && melee_type != MELEE_WEAPON_NONE)
 		playsound(src, 'sound/weapons/saberoff.ogg', 35, TRUE)
 	update_icon(UPDATE_OVERLAYS)
 
@@ -266,12 +313,12 @@
 // Huge copypaste ends
 
 /mob/living/simple_animal/hostile/syndicate/attack_hand(mob/living/user)
-	var/sound_to_play = 'sound/weapons/parry.ogg'
-	if(dsword && prob(deflect_chance))
+	if(melee_type == MELEE_WEAPON_DSWORD && prob(deflect_chance))
 		visible_message("<span class='boldwarning'>[src] deflects [user]'s punch with its dualsaber!</span>")
+		do_attack_animation(src)
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.attack_animal(src)
-		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
+		playsound(src, 'sound/weapons/parry.ogg', clamp(maxHealth-health, 40, 120))
 		return FINISH_ATTACK
 
 	if(prob(parry_chance))
@@ -279,18 +326,18 @@
 		do_attack_animation(src)
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.do_attack_animation(src)
-		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
+		playsound(src, 'sound/weapons/parry.ogg', clamp(maxHealth-health, 40, 120))
 		return FINISH_ATTACK
 
 	return ..()
 
 /mob/living/simple_animal/hostile/syndicate/attack_by(obj/item/O, mob/living/user, params)
-	var/sound_to_play = 'sound/weapons/parry.ogg'
-	if(dsword && prob(deflect_chance))
+	if(melee_type == MELEE_WEAPON_DSWORD && prob(deflect_chance))
 		visible_message("<span class='boldwarning'>[src] deflects [O] with its dualsaber!</span>")
+		do_attack_animation(src)
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.attack_animal(src)
-		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
+		playsound(src, 'sound/weapons/parry.ogg', clamp(maxHealth-health, 40, 120))
 		return FINISH_ATTACK
 
 	if(prob(parry_chance))
@@ -298,7 +345,7 @@
 		do_attack_animation(src)
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.do_attack_animation(src)
-		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
+		playsound(src, 'sound/weapons/parry.ogg', clamp(maxHealth-health, 40, 120))
 		return FINISH_ATTACK
 
 	return ..()
@@ -307,9 +354,9 @@
 	if(!Proj)
 		return
 	var/sound_to_play = pick('sound/weapons/effects/ric1.ogg', 'sound/weapons/effects/ric2.ogg', 'sound/weapons/effects/ric3.ogg', 'sound/weapons/effects/ric4.ogg', 'sound/weapons/effects/ric5.ogg')
-	if(((dsword || eshield) && Proj.is_reflectable(REFLECTABILITY_ENERGY)))
+	if((melee_type == MELEE_WEAPON_DSWORD || eshield) && Proj.is_reflectable(REFLECTABILITY_ENERGY))
 		Proj.reflect_back(src)
-		visible_message("<span class='danger'>[src] reflects [Proj] with its [dsword ? "double-bladed sword" : "shield"]!</span>")
+		visible_message("<span class='danger'>[src] reflects [Proj] with its [eshield ? "shield" : "double-bladed sword"]!</span>")
 		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
 		return -1
 
@@ -320,7 +367,7 @@
 		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
 		return -1
 
-	if((esword || dsword) && prob(parry_chance))
+	if(melee_type != MELEE_WEAPON_NONE && prob(parry_chance))
 		do_attack_animation(src)
 		visible_message("<span class='danger'>[src] parries [Proj]!</span>")
 		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
@@ -338,9 +385,8 @@
 // MARK: RANGED
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/ranged
-	weapon = "c20r"
-	attack_icon = "slapper"
 	ranged = TRUE
+	ranged_type = RANGED_WEAPON_C20R
 	parry_chance = 20
 	rapid = 2
 	retreat_distance = 5
@@ -359,8 +405,6 @@
 	minbodytemp = 0
 	icon_state = "syndicate_space"
 	icon_living = "syndicate_space"
-	weapon = "swordgreen"
-	attack_icon = "sword2"
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	visor_overlay = "armor_booster"
 	eshield = TRUE
@@ -374,10 +418,9 @@
 // MARK: MODSUIT RANGED
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/modsuit/ranged
-	weapon = "c20r"
-	attack_icon = "slapper"
 	ranged = TRUE
-	esword = FALSE
+	ranged_type = RANGED_WEAPON_C20R
+	melee_type = MELEE_WEAPON_NONE
 	parry_chance = 20
 	rapid = 2
 	retreat_distance = 5
@@ -394,11 +437,8 @@
 	icon_state = "syndicate_elite"
 	icon_living = "syndicate_elite"
 	visor_overlay = "elite_armor_booster"
-	weapon = "dualsaberpurple"
-	attack_icon = "dualsaber1"
 	eshield = FALSE
-	esword = FALSE
-	dsword = TRUE
+	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
 	melee_damage_upper = 34
 	reflect_chance = 0
@@ -407,11 +447,10 @@
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/Initialize(mapload)
 	. = ..()
 	if(prob(50))
-		weapon = "sr"
-		attack_icon = "slapper"
 		ranged = TRUE
-		dsword = FALSE
-		weapon_idle = TRUE
+		ranged_type = RANGED_WEAPON_SR
+		melee_type = MELEE_WEAPON_NONE
+		weapon_idle = "sr-idle"
 		parry_chance = 25
 		retreat_distance = 2
 		minimum_distance = 2
@@ -424,7 +463,6 @@
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/depot
 	force_threshold = 6 // Prevents people using punches
-	esword = TRUE
 	var/area/syndicate_depot/core/depotarea
 	var/raised_alert = FALSE
 	var/alert_on_death = FALSE
@@ -566,8 +604,6 @@
 	minbodytemp = 0
 	icon_state = "syndicate_space"
 	icon_living = "syndicate_space"
-	weapon = "swordgreen"
-	attack_icon = "sword2"
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	visor_overlay = "armor_booster"
 	eshield = TRUE
@@ -605,10 +641,9 @@
 	. = ..()
 	if(prob(50))
 		// 50% chance of switching to ranged variant.
-		weapon = "m90"
-		attack_icon = "slapper"
 		ranged = TRUE
-		esword = FALSE
+		ranged_type = RANGED_WEAPON_M90
+		melee_type = MELEE_WEAPON_NONE
 		parry_chance = 20
 		rapid = 3
 		retreat_distance = 5
@@ -625,12 +660,9 @@
 	icon_state = "syndicate_elite"
 	icon_living = "syndicate_elite"
 	visor_overlay = "elite_armor_booster"
-	weapon = "dualsaberpurple"
-	attack_icon = "dualsaber1"
 	alert_on_shield_breach = TRUE
 	eshield = FALSE
-	esword = FALSE
-	dsword = TRUE
+	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
 	melee_damage_upper = 34
 	reflect_chance = 0
@@ -640,11 +672,10 @@
 	. = ..()
 	if(prob(50))
 		// 50% chance of switching to extremely dangerous ranged variant
-		weapon = "sr"
-		attack_icon = "slapper"
 		ranged = TRUE
-		dsword = FALSE
-		weapon_idle = TRUE
+		ranged_type = RANGED_WEAPON_SR
+		melee_type = MELEE_WEAPON_NONE
+		weapon_idle = "sr-idle"
 		parry_chance = 25
 		retreat_distance = 2
 		minimum_distance = 2
@@ -710,3 +741,10 @@
 #undef BLOOD_SUIT
 #undef BLOOD_HANDS
 #undef BLOOD_SHOES
+#undef MELEE_WEAPON_NONE
+#undef MELEE_WEAPON_ESWORD
+#undef MELEE_WEAPON_DSWORD
+#undef RANGED_WEAPON_PISTOL
+#undef RANGED_WEAPON_C20R
+#undef RANGED_WEAPON_M90
+#undef RANGED_WEAPON_SR
