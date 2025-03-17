@@ -112,15 +112,27 @@
 		new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
 		new /obj/item/flashlight/flare/glowstick/emergency(src)
 
-/obj/item/storage/box/survival_syndi
-	icon_state = "syndi_box"
+/obj/item/storage/box/survival_syndie
+	icon_state = "syndie_box"
 
-/obj/item/storage/box/survival_syndi/populate_contents()
+/obj/item/storage/box/survival_syndie/populate_contents()
 	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/tank/internals/emergency_oxygen/engi/syndi(src)
 	new /obj/item/crowbar/small(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
 	new /obj/item/reagent_containers/pill/initropidril(src)
+	new /obj/item/flashlight/flare/glowstick/red(src)
+
+/obj/item/storage/box/survival_syndie/traitor/populate_contents()
+	new /obj/item/clothing/mask/gas/syndicate(src)
+	new /obj/item/tank/internals/emergency_oxygen/engi/syndi(src)
+	new /obj/item/crowbar/small(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
+	new /obj/item/flashlight/flare/glowstick/red(src)
+
+/obj/item/storage/box/survival_syndie/traitor/loot/populate_contents()
+	new /obj/item/crowbar/small(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
 	new /obj/item/flashlight/flare/glowstick/red(src)
 
 //////////////////

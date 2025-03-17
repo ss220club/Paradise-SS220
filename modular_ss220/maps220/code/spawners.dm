@@ -131,6 +131,28 @@
 	spawn_loot_chance = 20
 	loot = list(/obj/item/butcher_chainsaw/gateway)
 
+/obj/effect/spawner/random/syndie_mob_loot
+	spawn_loot_chance = 27
+	loot = list(
+		/obj/item/reagent_containers/patch/styptic = 5,
+		/obj/item/reagent_containers/patch/silver_sulf = 5,
+		/obj/item/food/syndicake = 5,
+		/obj/item/food/donkpocket = 5,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed = 5, // 5%
+
+		/obj/item/clothing/mask/holo_cigar, // 1%
+		/obj/item/card/id/syndicate, // 1%
+	)
+
+/obj/effect/spawner/random/syndie_mob_loot/ranged
+	spawn_loot_chance = 1
+	loot = list(
+		/obj/item/gun/projectile/automatic/pistol = 8,
+		/obj/item/gun/projectile/revolver/fake,
+
+		/obj/item/gun/projectile/revolver, // 0.1%
+	)
+
 /obj/effect/spawner/random/maintenance
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 

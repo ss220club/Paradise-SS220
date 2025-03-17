@@ -70,9 +70,6 @@
 	point_value = 110
 	loot = list(/obj/machinery/suit_storage_unit/syndicate)
 
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/corpse
-	loot = list(/obj/effect/mob_spawn/human/corpse/syndicatecommando)
-
 /obj/effect/spawner/random/pool/spaceloot/syndicate/common_rare
 	loot = list(
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 3,
@@ -330,71 +327,19 @@
 	icon_state = "syndie_depot"
 	point_value = 5 // perfect value for current loot list
 	loot = list(
-		/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle = 25,
-		/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle = 25,
-		/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle = 25,
-		/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle = 25,
+		/mob/living/simple_animal/hostile/syndicate = 25,
+		/mob/living/simple_animal/hostile/syndicate/ranged = 25,
+		/mob/living/simple_animal/hostile/syndicate/modsuit = 25,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged = 25,
 
 		// let the massacre begin
-		/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/gateway,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/elite,
 	)
 
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob/space
+/obj/effect/spawner/random/pool/gatewayloot/syndie_mob/modsuit
 	loot = list(
-		/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle,
-		/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle,
-	)
-
-// syndie mob loot
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot
-	loot = list(
-		/obj/item/ammo_casing/c10mm = 73,
-		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 5,
-		/obj/item/reagent_containers/patch/styptic = 5,
-		/obj/item/reagent_containers/patch/silver_sulf = 5,
-		/obj/item/food/syndicake = 5,
-		/obj/item/food/donkpocket = 5,
-
-		/obj/item/clothing/mask/holo_cigar, // ~1/100
-		/obj/item/card/id/syndicate, // ~1/100
-	)
-
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space
-	loot = list(
-		/obj/item/ammo_casing/c10mm = 99,
-		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space/modsuit,
-	)
-
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space/modsuit
-	loot = list(
-		/obj/item/mod/control/pre_equipped/traitor = 3, // ~1/100
-		/obj/item/mod/control/pre_equipped/nuclear, // ~1/400
-	)
-
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged
-	loot = list(
-		/obj/item/ammo_casing/c10mm = 75,
-		/obj/item/clothing/accessory/holster = 15,
-		/obj/item/ammo_box/magazine/m10mm = 9,
-
-		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/handgun,
-	)
-
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/handgun
-	loot = list(
-		/obj/item/gun/projectile/automatic/pistol = 8,
-		/obj/item/gun/projectile/revolver/fake,
-
-		/obj/item/gun/projectile/revolver, // ~1/1000
-	)
-
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/melee
-	icon_state = "stetchkin"
-	loot = list(
-		/obj/item/ammo_casing/c10mm = 98,
-
-		/obj/item/shield/energy, // ~1/100
-		/obj/item/melee/energy/sword/saber, // ~1/100
+		/mob/living/simple_animal/hostile/syndicate/modsuit,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_boss

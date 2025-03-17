@@ -262,6 +262,26 @@
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory = 1,
 	)
 
+/obj/effect/spawner/random/pool/spaceloot/syndicate/syndie_mob
+	icon = 'icons/effects/spawner_icons.dmi'
+	icon_state = "syndie_depot"
+	point_value = 5
+	loot = list(
+		/mob/living/simple_animal/hostile/syndicate = 25,
+		/mob/living/simple_animal/hostile/syndicate/ranged = 25,
+		/mob/living/simple_animal/hostile/syndicate/modsuit = 25,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged = 25,
+
+		// let the massacre begin
+		/mob/living/simple_animal/hostile/syndicate/modsuit/elite,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/syndicate/syndie_mob/modsuit
+	loot = list(
+		/mob/living/simple_animal/hostile/syndicate/modsuit,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged,
+	)
+
 // Only two of these
 /obj/effect/spawner/random/pool/spaceloot/zoo
 	unique_picks = TRUE
@@ -271,11 +291,6 @@
 		/obj/item/gun/energy/floragun,
 		/obj/item/gun/energy/temperature,
 	)
-
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie
-	point_value = 100
-	spawn_loot_chance = 50
-	loot = list(/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib)
 
 /obj/effect/spawner/random/pool/spaceloot/moonoutpost19
 	name = "moon outpost 19 loot spawner"
@@ -337,4 +352,3 @@
 
 /obj/effect/spawner/random/pool/spaceloot/mechtransport/storage4
 	loot = list(/obj/item/mecha_parts/core)
-

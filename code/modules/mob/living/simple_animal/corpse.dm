@@ -1,64 +1,74 @@
 //List of different corpse types
-/obj/effect/mob_spawn/human/corpse/syndicatesoldier
+// MARK: Syndicate
+/obj/effect/mob_spawn/human/corpse/syndicate
 	name = "Syndicate Operative"
 	mob_name = "Syndicate Operative"
-	hair_style = "bald"
-	facial_hair_style = "shaved"
-	id_job = "Operative"
+	id_job = "err#unkwn"
+	hair_colour = "#000000"
+	facial_hair_colour = "#000000"
 	id_access_list = list(ACCESS_SYNDICATE)
-	outfit = /datum/outfit/syndicatesoldiercorpse
+	outfit = /datum/outfit/syndicate
+	del_types = list()
+	disable_pda = TRUE
 
-/datum/outfit/syndicatesoldiercorpse
+/obj/effect/mob_spawn/human/corpse/syndicate/Initialize(mapload)
+	mob_name = "[mob_name] [pick(GLOB.last_names)]"
+	brute_damage = rand(0, 200)
+	skin_tone = rand(40,120)
+	return ..()
+
+/datum/outfit/syndicate
 	name = "Corpse of a Syndicate Operative"
 	uniform = /obj/item/clothing/under/syndicate
-	suit = /obj/item/clothing/suit/armor/vest
+	suit = /obj/item/clothing/suit/jacket/bomber/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	l_ear = /obj/item/radio/headset
-	mask = /obj/item/clothing/mask/gas
-	head = /obj/item/clothing/head/helmet/swat
-	back = /obj/item/storage/backpack
+	l_ear = /obj/item/radio/headset/syndicate_fake
+	mask = /obj/item/clothing/mask/gas/syndicate
+	head = /obj/item/clothing/head/helmet/swat/syndicate
+	back = /obj/item/storage/backpack/satchel
+	box = /obj/item/storage/box/survival_syndie/traitor/loot
+	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi/syndi
 	id = /obj/item/card/id
+	pda = /obj/item/pda/syndicate_fake
+	internals_slot = ITEM_SLOT_LEFT_POCKET
+	var/modsuit = FALSE
 
+/datum/outfit/syndicate/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(prob(1) && modsuit)
+		back = modsuit
+		box = null
+		head = null
+		suit = null
 
-/obj/effect/mob_spawn/human/corpse/syndicatecommando
+/datum/outfit/syndicate/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(H?.w_uniform)
+		var/obj/item/clothing/under/U = H.w_uniform
+		var/obj/item/clothing/accessory/holster/W = new /obj/item/clothing/accessory/holster(U)
+		U.accessories += W
+		W.on_attached(U)
+
+// MARK: Syndicate modsuit
+/obj/effect/mob_spawn/human/corpse/syndicate/modsuit
 	name = "Syndicate Commando"
 	mob_name = "Syndicate Commando"
-	hair_style = "bald"
-	facial_hair_style = "shaved"
-	id_job = "Operative"
-	id_access_list = list(ACCESS_SYNDICATE)
-	outfit = /datum/outfit/syndicatecommandocorpse
+	outfit = /datum/outfit/syndicate/modsuit
 
-/datum/outfit/syndicatecommandocorpse
+/datum/outfit/syndicate/modsuit
 	name = "Corpse of a Syndicate Commando"
-	uniform = /obj/item/clothing/under/syndicate
-	shoes = /obj/item/clothing/shoes/combat
-	gloves = /obj/item/clothing/gloves/combat
-	l_ear = /obj/item/radio/headset
-	mask = /obj/item/clothing/mask/gas/syndicate
-	back = /obj/item/mod/control/pre_equipped/traitor
-	r_pocket = /obj/item/tank/internals/emergency_oxygen
-	id = /obj/item/card/id
+	modsuit = /obj/item/mod/control/pre_equipped/traitor
 
-/obj/effect/mob_spawn/human/corpse/syndicatequartermaster
+// MARK: Syndicate elite modsuit
+/obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 	name = "Syndicate Quartermaster"
 	mob_name = "Syndicate Quartermaster"
-	hair_style = "bald"
-	facial_hair_style = "shaved"
-	id_job = "Operative"
-	id_access_list = list(ACCESS_SYNDICATE)
-	outfit = /datum/outfit/syndicatequartermastercorpse
+	outfit = /datum/outfit/syndicate/modsuit/elite
 
-/datum/outfit/syndicatequartermastercorpse
+/datum/outfit/syndicate/modsuit/elite
 	name = "Corpse of a Syndicate Quartermaster"
-	uniform = /obj/item/clothing/under/syndicate
-	shoes = /obj/item/clothing/shoes/combat
-	gloves = /obj/item/clothing/gloves/combat
-	l_ear = /obj/item/radio/headset
-	mask = /obj/item/clothing/mask/gas/syndicate
-	r_pocket = /obj/item/tank/internals/emergency_oxygen
-	id = /obj/item/card/id
+	modsuit = /obj/item/mod/control/pre_equipped/traitor_elite
 
 /obj/effect/mob_spawn/human/corpse/clown/corpse
 	roundstart = TRUE
