@@ -560,17 +560,19 @@
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit
 	name = "Syndicate Commando"
+	damage_coeff = list(BRUTE = 0.7, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	maxbodytemp = FIRE_SUIT_MAX_TEMP_PROTECT
 	minbodytemp = 0
 	icon_state = "syndicate_space"
 	icon_living = "syndicate_space"
-	death_sound = 'sound/mecha/mechmove03.ogg'
 	weapon = "swordgreen"
 	attack_icon = "sword2"
+	death_sound = 'sound/mecha/mechmove03.ogg'
+	visor_overlay = "armor_booster"
 	eshield = TRUE
 	modsuit = TRUE
-	visor_overlay = "armor_booster"
+	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	return TRUE
