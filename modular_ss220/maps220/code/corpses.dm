@@ -147,8 +147,6 @@
 	mob_name = "Bridge Officer"
 	outfit = /datum/outfit/spacebattle/security/bridge
 
-/obj/effect/mob_spawn/human/corpse/spacebattle/bridgeofficer
-
 /datum/outfit/spacebattle/security/bridge
 	uniform = /obj/item/clothing/under/rank/procedure/blueshield
 	shoes = /obj/item/clothing/shoes/combat

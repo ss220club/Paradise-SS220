@@ -1358,7 +1358,7 @@
 
 //Enemies
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle
-	damage_coeff = list("brute" = 0.8, "fire" = 0.9, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
+	damage_coeff = list(BRUTE = 0.8, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	attack_sound = 'sound/weapons/saberon.ogg'
 	maxHealth = 200
 	health = 200
@@ -1369,7 +1369,7 @@
 	)
 
 /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle
-	damage_coeff = list("brute" = 0.6, "fire" = 0.8, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
+	damage_coeff = list(BRUTE = 0.6, BURN = 0.8, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	attack_sound = 'sound/weapons/saberon.ogg'
 	maxHealth = 200
 	health = 200
@@ -1381,7 +1381,7 @@
 	)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle
-	damage_coeff = list("brute" = 0.8, "fire" = 0.9, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
+	damage_coeff = list(BRUTE = 0.8, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	maxHealth = 200
 	health = 200
 	loot = list(
@@ -1391,7 +1391,7 @@
 	)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle
-	damage_coeff = list("brute" = 0.6, "fire" = 0.8, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
+	damage_coeff = list(BRUTE = 0.6, BURN = 0.8, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	maxHealth = 200
 	health = 200
 	loot = list(
@@ -1404,10 +1404,9 @@
 // Spacebattle QM
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle
 	name = "Syndicate Commander"
-	damage_coeff = list("brute" = 0.4, "fire" = 0.5, "tox" = 0, "clone" = 0, "stamina" = 0, "oxy" = 0)
+	damage_coeff = list(BRUTE = 0.5, BURN = 0.6, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	health = 300
 	maxHealth = 300
-	armour_penetration_flat = 20 // HE'S KILLING ME! HELP!!!
 	loot = list(
 		/obj/effect/decal/cleanable/ash,
 		/obj/effect/spawner/random/loot/gateway_chainsaw,
