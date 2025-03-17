@@ -7,7 +7,7 @@
 	hair_colour = "#000000"
 	facial_hair_colour = "#000000"
 	id_access_list = list(ACCESS_SYNDICATE)
-	outfit = /datum/outfit/syndicate
+	outfit = /datum/outfit/syndicatecorpse
 	del_types = list()
 	disable_pda = TRUE
 
@@ -17,7 +17,7 @@
 	skin_tone = rand(40,120)
 	return ..()
 
-/datum/outfit/syndicate
+/datum/outfit/syndicatecorpse
 	name = "Corpse of a Syndicate Operative"
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/jacket/bomber/syndicate
@@ -34,15 +34,15 @@
 	internals_slot = ITEM_SLOT_LEFT_POCKET
 	var/modsuit = FALSE
 
-/datum/outfit/syndicate/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/syndicatecorpse/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
-	if(prob(1) && modsuit)
+	if(modsuit && prob(1))
 		back = modsuit
 		box = null
 		head = null
 		suit = null
 
-/datum/outfit/syndicate/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/syndicatecorpse/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H?.w_uniform)
 		var/obj/item/clothing/under/U = H.w_uniform
@@ -54,9 +54,9 @@
 /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
 	name = "Syndicate Commando"
 	mob_name = "Syndicate Commando"
-	outfit = /datum/outfit/syndicate/modsuit
+	outfit = /datum/outfit/syndicatecorpse/modsuit
 
-/datum/outfit/syndicate/modsuit
+/datum/outfit/syndicatecorpse/modsuit
 	name = "Corpse of a Syndicate Commando"
 	modsuit = /obj/item/mod/control/pre_equipped/traitor
 
@@ -64,9 +64,9 @@
 /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 	name = "Syndicate Quartermaster"
 	mob_name = "Syndicate Quartermaster"
-	outfit = /datum/outfit/syndicate/modsuit/elite
+	outfit = /datum/outfit/syndicatecorpse/modsuit/elite
 
-/datum/outfit/syndicate/modsuit/elite
+/datum/outfit/syndicatecorpse/modsuit/elite
 	name = "Corpse of a Syndicate Quartermaster"
 	modsuit = /obj/item/mod/control/pre_equipped/traitor_elite
 
