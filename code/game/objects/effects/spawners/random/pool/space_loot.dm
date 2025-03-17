@@ -262,21 +262,23 @@
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory = 1,
 	)
 
-/obj/effect/spawner/random/pool/spaceloot/syndicate/syndie_mob
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob
 	icon = 'icons/effects/spawner_icons.dmi'
 	icon_state = "syndie_depot"
-	point_value = 5
+	point_value = 5 // Perfect value for current mob loot list
 	loot = list(
-		/mob/living/simple_animal/hostile/syndicate = 25,
-		/mob/living/simple_animal/hostile/syndicate/ranged = 25,
-		/mob/living/simple_animal/hostile/syndicate/modsuit = 25,
-		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged = 25,
+		/mob/living/simple_animal/hostile/syndicate = 40,
+		/mob/living/simple_animal/hostile/syndicate/ranged = 40,
+		/mob/living/simple_animal/hostile/syndicate/shield = 10,
+		/mob/living/simple_animal/hostile/syndicate/modsuit = 5,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged = 5,
 
-		// let the massacre begin
-		/mob/living/simple_animal/hostile/syndicate/modsuit/elite,
+		// Let the massacre begin
+		/mob/living/simple_animal/hostile/syndicate/modsuit/elite, // ~1%
 	)
 
-/obj/effect/spawner/random/pool/spaceloot/syndicate/syndie_mob/modsuit
+// Used when we want our mob to be protected from environment pressure/gas mixture
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit
 	loot = list(
 		/mob/living/simple_animal/hostile/syndicate/modsuit,
 		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged,

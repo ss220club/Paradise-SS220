@@ -260,6 +260,14 @@
 	record_spawn = FALSE
 	point_value = 100
 
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway
+	spawn_pool_id = "gateway_spawn_pool"
+	record_spawn = FALSE
+
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway
+	spawn_pool_id = "gateway_spawn_pool"
+	record_spawn = FALSE
+
 /obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed
 	loot = list(
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway = 30,
@@ -321,26 +329,6 @@
 /obj/effect/spawner/random/pool/gatewayloot/enforcer/mag
 	point_value = 15
 	loot = list(/obj/item/ammo_box/magazine/enforcer/lethal)
-
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob
-	icon = 'icons/effects/spawner_icons.dmi'
-	icon_state = "syndie_depot"
-	point_value = 5 // perfect value for current loot list
-	loot = list(
-		/mob/living/simple_animal/hostile/syndicate = 25,
-		/mob/living/simple_animal/hostile/syndicate/ranged = 25,
-		/mob/living/simple_animal/hostile/syndicate/modsuit = 25,
-		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged = 25,
-
-		// let the massacre begin
-		/mob/living/simple_animal/hostile/syndicate/modsuit/elite,
-	)
-
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob/modsuit
-	loot = list(
-		/mob/living/simple_animal/hostile/syndicate/modsuit,
-		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged,
-	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_boss
 	loot = list(

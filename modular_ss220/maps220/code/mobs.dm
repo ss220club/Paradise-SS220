@@ -1344,12 +1344,12 @@
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie
 	name = "melee/ranged"
 	icon_state = "melee"
-	syndi_mob = /obj/effect/spawner/random/pool/gatewayloot/syndie_mob
+	syndi_mob = /obj/effect/spawner/random/pool/spaceloot/syndicate/mob
 
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/modsuit
 	name = "space melee/ranged"
 	icon_state = "space_melee"
-	syndi_mob = /obj/effect/spawner/random/pool/gatewayloot/syndie_mob/modsuit
+	syndi_mob = /obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit
 
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/drone
 	name = "drone"
