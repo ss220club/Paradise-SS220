@@ -197,20 +197,20 @@
 /mob/living/simple_animal/hostile/syndicate/proc/react_sound()
 	if(last_react > world.time)
 		return
-	if(prob(round(100-(health/maxHealth*100))/2))
+	if(prob(round(100-(health/maxHealth*100))/4))
 		last_react = world.time + 10 SECONDS
 		if(health >= maxHealth*0.75)
 			playsound(src, pick('modular_ss220/emotes/audio/male/yawn_male_1.ogg', 'modular_ss220/emotes/audio/male/yawn_male_2.ogg'), 50, TRUE)
-			custom_emote(EMOTE_VISIBLE, "yawns.")
+			custom_emote(EMOTE_VISIBLE, "зевает.")
 		else if(health >= maxHealth*0.375)
 			playsound(src, 'modular_ss220/emotes/audio/male/sigh_male.ogg', 50, TRUE)
-			custom_emote(EMOTE_VISIBLE, "sighs.")
+			custom_emote(EMOTE_VISIBLE, "вздыхает.")
 		else if(health >= maxHealth*0.125)
 			playsound(src, pick('modular_ss220/emotes/audio/male/choke_male_1.ogg', 'modular_ss220/emotes/audio/male/choke_male_2.ogg', 'modular_ss220/emotes/audio/male/choke_male_3.ogg'), 50, TRUE)
-			custom_emote(EMOTE_VISIBLE, "chokes!")
+			custom_emote(EMOTE_VISIBLE, "подавился!")
 		else
 			playsound(src, pick('modular_ss220/emotes/audio/male/moan_male_1.ogg', 'modular_ss220/emotes/audio/male/moan_male_2.ogg', 'modular_ss220/emotes/audio/male/moan_male_3.ogg'), 50, TRUE)
-			custom_emote(EMOTE_VISIBLE, "moans!")
+			custom_emote(EMOTE_VISIBLE, "стонет!")
 
 /mob/living/simple_animal/hostile/syndicate/proc/jedi_spin()
 	for(var/i in list(NORTH, SOUTH, EAST, WEST, EAST, SOUTH, NORTH, SOUTH, EAST, WEST, EAST, SOUTH))
@@ -448,6 +448,7 @@
 /mob/living/simple_animal/hostile/syndicate/ranged
 	ranged = TRUE
 	ranged_type = RANGED_WEAPON_C20R
+	melee_type = MELEE_WEAPON_NONE
 	parry_chance = 20
 	rapid = 2
 	retreat_distance = 5
