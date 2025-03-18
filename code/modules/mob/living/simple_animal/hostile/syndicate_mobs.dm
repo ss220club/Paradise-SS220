@@ -90,6 +90,8 @@
 	var/regen_cycle = 0
 	// Are we currently healing ourselves?
 	var/healing = FALSE
+	// Last time when we reacted
+	var/last_react = 0
 	// Color of our blade
 	var/sword_color
 	// Colors for our blade
@@ -183,6 +185,32 @@
 	if(eshield)
 		add_overlay("eshield")
 
+/mob/living/simple_animal/hostile/syndicate/proc/apply_heal()
+	adjustHealth(-8)
+	playsound(src, pick('sound/goonstation/items/mender.ogg', 'sound/goonstation/items/mender2.ogg'), 50, TRUE)
+	if(health == maxHealth)
+		healing = FALSE
+		regen_cycle = 0
+	react_sound()
+
+/mob/living/simple_animal/hostile/syndicate/proc/react_sound()
+	if(last_react > world.time)
+		return
+	if(prob(round(100-(health/maxHealth*100))/2))
+		last_react = world.time + 10 SECONDS
+		if(health >= maxHealth*0.75)
+			playsound(src, pick('modular_ss220/emotes/audio/male/yawn_male_1.ogg', 'modular_ss220/emotes/audio/male/yawn_male_2.ogg'), 50, TRUE)
+			custom_emote(EMOTE_VISIBLE, "yawns.")
+		else if(health >= maxHealth*0.375)
+			playsound(src, 'modular_ss220/emotes/audio/male/sigh_male.ogg', 50, TRUE)
+			custom_emote(EMOTE_VISIBLE, "sighs.")
+		else if(health >= maxHealth*0.125)
+			playsound(src, pick('modular_ss220/emotes/audio/male/choke_male_1.ogg', 'modular_ss220/emotes/audio/male/choke_male_2.ogg', 'modular_ss220/emotes/audio/male/choke_male_3.ogg'), 50, TRUE)
+			custom_emote(EMOTE_VISIBLE, "chokes!")
+		else
+			playsound(src, pick('modular_ss220/emotes/audio/male/moan_male_1.ogg', 'modular_ss220/emotes/audio/male/moan_male_2.ogg', 'modular_ss220/emotes/audio/male/moan_male_3.ogg'), 50, TRUE)
+			custom_emote(EMOTE_VISIBLE, "moans!")
+
 /mob/living/simple_animal/hostile/syndicate/proc/jedi_spin()
 	for(var/i in list(NORTH, SOUTH, EAST, WEST, EAST, SOUTH, NORTH, SOUTH, EAST, WEST, EAST, SOUTH))
 		setDir(i)
@@ -246,18 +274,7 @@
 	if(stat != DEAD && !target && maxHealth > health && !healing)
 		if(regen_cycle >= 15)
 			healing = TRUE
-			if(health >= 150)
-				playsound(src, pick('modular_ss220/emotes/audio/male/yawn_male_1.ogg', 'modular_ss220/emotes/audio/male/yawn_male_2.ogg'), 50, TRUE)
-				custom_emote(EMOTE_VISIBLE, "yawns.")
-			else if(health >= 75)
-				playsound(src, 'modular_ss220/emotes/audio/male/sigh_male.ogg', 50, TRUE)
-				custom_emote(EMOTE_VISIBLE, "sighs.")
-			else if(health >= 25)
-				playsound(src, pick('modular_ss220/emotes/audio/male/choke_male_1.ogg', 'modular_ss220/emotes/audio/male/choke_male_2.ogg', 'modular_ss220/emotes/audio/male/choke_male_3.ogg'), 50, TRUE)
-				custom_emote(EMOTE_VISIBLE, "chokes!")
-			else
-				playsound(src, pick('modular_ss220/emotes/audio/male/moan_male_1.ogg', 'modular_ss220/emotes/audio/male/moan_male_2.ogg', 'modular_ss220/emotes/audio/male/moan_male_3.ogg'), 50, TRUE)
-				custom_emote(EMOTE_VISIBLE, "moans!")
+			react_sound()
 		else
 			regen_cycle++
 	else if(target)
@@ -266,18 +283,20 @@
 		if(regen_cycle > 0)
 			regen_cycle = 0
 	else if(healing)
-		adjustHealth(-8)
-		playsound(src, pick('sound/goonstation/items/mender.ogg', 'sound/goonstation/items/mender2.ogg'), 50, TRUE)
-		if(health == maxHealth)
-			healing = FALSE
-			regen_cycle = 0
+		var/datum/callback/cb = CALLBACK(src, PROC_REF(apply_heal))
+		var/delay = SSnpcpool.wait / 2
+		for(var/i in 1 to 2)
+			addtimer(cb, (i - 1)*delay)
 
 /mob/living/simple_animal/hostile/syndicate/adjustHealth(damage, updating_health = TRUE)
 	. = ..()
-	if(healing)
-		healing = FALSE
-	if(regen_cycle > 0)
-		regen_cycle = 0
+	if(damage > 0)
+		if(healing)
+			healing = FALSE
+		if(regen_cycle > 0)
+			regen_cycle = 0
+	if(!healing && health < maxHealth*0.4)
+		react_sound()
 
 // Huge copypaste starts
 /mob/living/simple_animal/hostile/syndicate/do_attack_animation(atom/A, visual_effect_icon, used_item = attack_icon, no_effect)
