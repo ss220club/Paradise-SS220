@@ -387,12 +387,10 @@
 /obj/effect/mob_spawn/human/corpse/skeleton/security_officer
 	outfit = /datum/outfit/job/officer
 	id_access = "Assistant" //no brig access for explorers
-	disable_sensors = TRUE
 
 /obj/effect/mob_spawn/human/corpse/skeleton/prisoner
 	uniform = /obj/item/clothing/under/color/orange/prison
 	shoes = /obj/item/clothing/shoes/orange
-	disable_sensors = TRUE
 
 /obj/effect/mob_spawn/human/corpse/skeleton/prisoner/equip(mob/living/carbon/human/prisoner) //put cuffs on the corpse
 	. = ..()
