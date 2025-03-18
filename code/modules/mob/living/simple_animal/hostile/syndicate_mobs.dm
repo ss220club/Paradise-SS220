@@ -472,8 +472,8 @@
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	maxbodytemp = FIRE_SUIT_MAX_TEMP_PROTECT
 	minbodytemp = 0
-	icon_state = "syndicate_space"
-	icon_living = "syndicate_space"
+	icon_state = "syndicate_mod"
+	icon_living = "syndicate_mod"
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	visor_overlay = "armor_booster"
 	eshield = TRUE
@@ -661,8 +661,8 @@
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	maxbodytemp = FIRE_SUIT_MAX_TEMP_PROTECT
 	minbodytemp = 0
-	icon_state = "syndicate_space"
-	icon_living = "syndicate_space"
+	icon_state = "syndicate_mod"
+	icon_living = "syndicate_mod"
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	visor_overlay = "armor_booster"
 	eshield = TRUE
