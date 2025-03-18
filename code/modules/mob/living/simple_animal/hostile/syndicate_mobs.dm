@@ -15,7 +15,7 @@
 #define RANGED_WEAPON_SR "sr"
 
 //////////////////////////////
-// MARK: ESWORD
+// MARK: SYNDICATE MOB
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate
 	name = "Syndicate Operative"
@@ -68,11 +68,11 @@
 	var/visor_overlay = "mask"
 	// Whether we play activation/deactivation sound of e/dsword
 	var/sword_active = FALSE
-	// %Chance to reflect a projectile
+	// %Chance to reflect an energy projectile. Used alongside `MELEE_WEAPON_ESWORD` only
 	var/reflect_chance = 10
 	// %Chance to deflect a melee hit. Used alongside `MELEE_WEAPON_DSWORD` only
 	var/deflect_chance = 15
-	// %Chance of fully block a hit
+	// %Chance to fully block a hit
 	var/parry_chance = 10
 	// Icon we display on melee attack/parry
 	var/attack_icon
@@ -86,6 +86,10 @@
 	var/bloody = FALSE
 	// Which masks to apply on apply_blood()
 	var/list/static/bloody_parts
+	// For how long we are not being triggered
+	var/regen_cycle = 0
+	// Are we currently healing ourselves?
+	var/healing = FALSE
 	// Color of our blade
 	var/sword_color
 	// Colors for our blade
@@ -213,7 +217,7 @@
 	. = ..()
 	if(target)
 		playsound(src, 'sound/misc/for_the_syndicate.ogg', 70, TRUE)
-		if((melee_type != MELEE_WEAPON_NONE) && !sword_active)
+		if(melee_type != MELEE_WEAPON_NONE && !sword_active)
 			playsound(src, 'sound/weapons/saberon.ogg', 35, TRUE)
 	update_icon(UPDATE_OVERLAYS)
 
@@ -236,6 +240,44 @@
 	if(sword_active && melee_type != MELEE_WEAPON_NONE)
 		playsound(src, 'sound/weapons/saberoff.ogg', 35, TRUE)
 	update_icon(UPDATE_OVERLAYS)
+
+/mob/living/simple_animal/hostile/syndicate/Life(seconds, times_fired)
+	. = ..()
+	if(stat != DEAD && !target && maxHealth > health && !healing)
+		if(regen_cycle >= 15)
+			healing = TRUE
+			if(health >= 150)
+				playsound(src, pick('modular_ss220/emotes/audio/male/yawn_male_1.ogg', 'modular_ss220/emotes/audio/male/yawn_male_2.ogg'), 50, TRUE)
+				custom_emote(EMOTE_VISIBLE, "yawns.")
+			else if(health >= 75)
+				playsound(src, 'modular_ss220/emotes/audio/male/sigh_male.ogg', 50, TRUE)
+				custom_emote(EMOTE_VISIBLE, "sighs.")
+			else if(health >= 25)
+				playsound(src, pick('modular_ss220/emotes/audio/male/choke_male_1.ogg', 'modular_ss220/emotes/audio/male/choke_male_2.ogg', 'modular_ss220/emotes/audio/male/choke_male_3.ogg'), 50, TRUE)
+				custom_emote(EMOTE_VISIBLE, "chokes!")
+			else
+				playsound(src, pick('modular_ss220/emotes/audio/male/moan_male_1.ogg', 'modular_ss220/emotes/audio/male/moan_male_2.ogg', 'modular_ss220/emotes/audio/male/moan_male_3.ogg'), 50, TRUE)
+				custom_emote(EMOTE_VISIBLE, "moans!")
+		else
+			regen_cycle++
+	else if(target)
+		if(healing)
+			healing = FALSE
+		if(regen_cycle > 0)
+			regen_cycle = 0
+	else if(healing)
+		adjustHealth(-8)
+		playsound(src, pick('sound/goonstation/items/mender.ogg', 'sound/goonstation/items/mender2.ogg'), 50, TRUE)
+		if(health == maxHealth)
+			healing = FALSE
+			regen_cycle = 0
+
+/mob/living/simple_animal/hostile/syndicate/adjustHealth(damage, updating_health = TRUE)
+	. = ..()
+	if(healing)
+		healing = FALSE
+	if(regen_cycle > 0)
+		regen_cycle = 0
 
 // Huge copypaste starts
 /mob/living/simple_animal/hostile/syndicate/do_attack_animation(atom/A, visual_effect_icon, used_item = attack_icon, no_effect)
@@ -314,7 +356,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/attack_hand(mob/living/user)
 	if(melee_type == MELEE_WEAPON_DSWORD && prob(deflect_chance))
-		visible_message("<span class='boldwarning'>[src] deflects [user]'s punch with its dualsaber!</span>")
+		visible_message("<span class='boldwarning'>[src] deflects [user]'s punch with its double-bladed sword!</span>")
 		do_attack_animation(src)
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.attack_animal(src)
@@ -333,7 +375,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/attack_by(obj/item/O, mob/living/user, params)
 	if(melee_type == MELEE_WEAPON_DSWORD && prob(deflect_chance))
-		visible_message("<span class='boldwarning'>[src] deflects [O] with its dualsaber!</span>")
+		visible_message("<span class='boldwarning'>[src] deflects [O] with its double-bladed sword!</span>")
 		do_attack_animation(src)
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.attack_animal(src)
@@ -353,24 +395,18 @@
 /mob/living/simple_animal/hostile/syndicate/bullet_act(obj/item/projectile/Proj)
 	if(!Proj)
 		return
-	var/sound_to_play = pick('sound/weapons/effects/ric1.ogg', 'sound/weapons/effects/ric2.ogg', 'sound/weapons/effects/ric3.ogg', 'sound/weapons/effects/ric4.ogg', 'sound/weapons/effects/ric5.ogg')
-	if((melee_type == MELEE_WEAPON_DSWORD || eshield) && Proj.is_reflectable(REFLECTABILITY_ENERGY))
+	if(((melee_type == MELEE_WEAPON_DSWORD || eshield) || (melee_type == MELEE_WEAPON_ESWORD && prob(reflect_chance))) && Proj.is_reflectable(REFLECTABILITY_ENERGY))
+		if(melee_type == MELEE_WEAPON_ESWORD)
+			do_attack_animation(src)
+			playsound(src, 'sound/weapons/effects/ric3.ogg', clamp(maxHealth-health, 40, 120), TRUE)
 		Proj.reflect_back(src)
-		visible_message("<span class='danger'>[src] reflects [Proj] with its [eshield ? "shield" : "double-bladed sword"]!</span>")
-		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
-		return -1
-
-	if(prob(reflect_chance))
-		Proj.reflect_back(src)
-		do_attack_animation(src)
-		visible_message("<span class='danger'>[src] reflects [Proj] with its energy sword!</span>")
-		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
+		visible_message("<span class='danger'>[src] reflects [Proj] with its [eshield ? "shield" : "sword"]!</span>")
 		return -1
 
 	if(melee_type != MELEE_WEAPON_NONE && prob(parry_chance))
 		do_attack_animation(src)
 		visible_message("<span class='danger'>[src] parries [Proj]!</span>")
-		playsound(src, sound_to_play, clamp(maxHealth-health, 40, 120))
+		playsound(src, 'sound/weapons/parry.ogg', clamp(maxHealth-health, 40, 120))
 		return
 
 	return ..()
@@ -441,7 +477,6 @@
 	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
 	melee_damage_upper = 34
-	reflect_chance = 0
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/Initialize(mapload)
@@ -665,7 +700,6 @@
 	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
 	melee_damage_upper = 34
-	reflect_chance = 0
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/elite/Initialize(mapload)
