@@ -106,9 +106,10 @@
 /mob/living/simple_animal/hostile/syndicate/Initialize(mapload)
 	. = ..()
 	update_icon(UPDATE_OVERLAYS)
-	if(prob(50))
-		loot |= /obj/item/salvage/loot/syndicate
-	loot |= corpse
+	if(loot) // Prevents us from adding loot if there is none yet
+		if(prob(50))
+			loot |= /obj/item/salvage/loot/syndicate
+		loot |= corpse
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_blood()
 	var/list/static/bloody_parts
@@ -513,6 +514,8 @@
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/Initialize(mapload)
+	loot ^= list(/obj/effect/spawner/random/syndie_mob_loot) // No Billy, you can't get two elite modsuits from a single mob
+	loot |= list(/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite) // Random armory tier loot
 	if(prob(50))
 		ranged = TRUE
 		ranged_type = RANGED_WEAPON_SR
@@ -530,7 +533,6 @@
 // MARK: DEPOT
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/depot
-	force_threshold = 6 // Prevents people using punches
 	var/area/syndicate_depot/core/depotarea
 	var/raised_alert
 	var/alert_on_death

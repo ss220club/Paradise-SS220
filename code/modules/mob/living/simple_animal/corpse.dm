@@ -36,7 +36,7 @@
 
 /datum/outfit/syndicatecorpse/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
-	if(modsuit && prob(1))
+	if(modsuit && prob(5))
 		back = modsuit
 		box = null
 		head = null

@@ -232,6 +232,10 @@
 		/obj/item/mod/module/stealth,
 	)
 
+/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite/Initialize(mapload)
+	loot ^= list(/obj/item/mod/control/pre_equipped/traitor_elite)
+	. = ..()
+
 /obj/effect/spawner/random/pool/spaceloot/syndicate/armory/depot
 	guaranteed = TRUE
 	spawn_inside = /obj/structure/closet/secure_closet/depot/armory
