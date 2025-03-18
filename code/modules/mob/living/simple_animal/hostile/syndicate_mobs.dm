@@ -247,6 +247,14 @@
 	else if(!enough_pressure)
 		adjustHealth(unsuitable_atmos_damage)
 
+/mob/living/simple_animal/hostile/syndicate/ListTargetsLazy()
+	// The normal ListTargetsLazy ignores walls, which is very bad. So we override it.
+	return ListTargets()
+
+/mob/living/simple_animal/hostile/syndicate/AIShouldSleep(list/possible_targets)
+	FindTarget(possible_targets, TRUE)
+	return FALSE
+
 /mob/living/simple_animal/hostile/syndicate/Aggro()
 	. = ..()
 	if(target)
@@ -505,7 +513,6 @@
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/Initialize(mapload)
-	. = ..()
 	if(prob(50))
 		ranged = TRUE
 		ranged_type = RANGED_WEAPON_SR
@@ -517,6 +524,7 @@
 		speed = 2
 		casingtype = /obj/item/ammo_casing/penetrator
 		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
+	. = ..()
 
 //////////////////////////////
 // MARK: DEPOT
@@ -541,10 +549,6 @@
 	. = ..()
 	depotarea = get_area(src)
 	spawn_turf = get_turf(src)
-
-/mob/living/simple_animal/hostile/syndicate/depot/ListTargetsLazy()
-	// The normal ListTargetsLazy ignores walls, which is very bad in the case of depot mobs. So we override it.
-	return ListTargets()
 
 /mob/living/simple_animal/hostile/syndicate/depot/Aggro()
 	. = ..()
@@ -612,10 +616,6 @@
 			depotarea.list_add(body, depotarea.dead_list)
 	else
 		scan_cycles++
-
-/mob/living/simple_animal/hostile/syndicate/depot/AIShouldSleep(list/possible_targets)
-	FindTarget(possible_targets, TRUE)
-	return FALSE
 
 /mob/living/simple_animal/hostile/syndicate/depot/proc/raise_alert(reason)
 	if(istype(depotarea) && (!raised_alert || seen_revived_enemy) && !depotarea.used_self_destruct)
@@ -697,7 +697,6 @@
 	alert_on_death = TRUE
 
 /mob/living/simple_animal/hostile/syndicate/depot/officer/Initialize(mapload)
-	. = ..()
 	if(prob(50))
 		// 50% chance of switching to ranged variant.
 		ranged = TRUE
@@ -709,6 +708,7 @@
 		minimum_distance = 3
 		casingtype = /obj/item/ammo_casing/a556
 		projectilesound = 'sound/weapons/gunshots/gunshot_rifle.ogg'
+	. = ..()
 
 //////////////////////////////
 // MARK: DEPOT QM
@@ -727,7 +727,6 @@
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/elite/Initialize(mapload)
-	. = ..()
 	if(prob(50))
 		// 50% chance of switching to extremely dangerous ranged variant
 		ranged = TRUE
@@ -740,6 +739,7 @@
 		speed = 2
 		casingtype = /obj/item/ammo_casing/penetrator // Ignores cover.
 		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
+	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/elite/LateInitialize()

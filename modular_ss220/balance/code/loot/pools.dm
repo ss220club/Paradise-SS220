@@ -40,6 +40,20 @@
 	)
 
 // MARK: Space loot pool
+/obj/effect/spawner/random/pool/spaceloot/syndicate/officer/depot/Initialize(mapload)
+	loot |= list(
+		/obj/item/clothing/mask/holo_cigar,
+		/obj/item/card/id/syndicate,
+	)
+	. = ..()
+
+/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/Initialize(mapload)
+	loot |= list(
+		/obj/item/clothing/mask/holo_cigar,
+		/obj/item/card/id/syndicate,
+	)
+	. = ..()
+
 /obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha
 	icon_state = "durand_old"
 	point_value = 100

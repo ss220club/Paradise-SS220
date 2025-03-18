@@ -132,16 +132,13 @@
 	loot = list(/obj/item/butcher_chainsaw/gateway)
 
 /obj/effect/spawner/random/syndie_mob_loot
-	spawn_loot_chance = 27
+	spawn_loot_chance = 25
 	loot = list(
-		/obj/item/reagent_containers/patch/styptic = 5,
-		/obj/item/reagent_containers/patch/silver_sulf = 5,
-		/obj/item/food/syndicake = 5,
-		/obj/item/food/donkpocket = 5,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed = 5, // 5%
-
-		/obj/item/clothing/mask/holo_cigar, // 1%
-		/obj/item/card/id/syndicate, // 1%
+		/obj/item/reagent_containers/patch/styptic,
+		/obj/item/reagent_containers/patch/silver_sulf,
+		/obj/item/food/syndicake,
+		/obj/item/food/donkpocket,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 	)
 
 /obj/effect/spawner/random/syndie_mob_loot/ranged
