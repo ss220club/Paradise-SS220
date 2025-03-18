@@ -1356,22 +1356,6 @@
 	icon_state = "drone"
 	syndi_mob = /mob/living/simple_animal/hostile/malf_drone/spacebattle
 
-// Spacebattle QM
-/mob/living/simple_animal/hostile/syndicate/modsuit/elite/spacebattle
-	var/spacebattle_boss = TRUE
-
-/mob/living/simple_animal/hostile/syndicate/modsuit/elite/spacebattle/Initialize(mapload)
-	. = ..()
-	loot |= /obj/effect/spawner/random/loot/gateway_chainsaw
-
-/mob/living/simple_animal/hostile/syndicate/modsuit/elite/spacebattle/death()
-	if(spacebattle_boss)
-		for(var/obj/machinery/door/poddoor/P in GLOB.airlocks)
-			if(P.density && (P.id_tag == "Spacebattle_exit" || P.id_tag == "1ShipLock"))
-				spawn(0)
-					P.open()
-	return ..()
-
 // Syndie griefsky
 /mob/living/simple_animal/bot/secbot/griefsky/syndie
 	desc = "Is that a smoke around access panel?..."
@@ -1439,3 +1423,19 @@
 	. = ..()
 	if(ranged)
 		loot |= /obj/effect/spawner/random/syndie_mob_loot/ranged
+
+// Spacebattle QM
+/mob/living/simple_animal/hostile/syndicate/modsuit/elite/spacebattle
+	var/spacebattle_boss = TRUE
+
+/mob/living/simple_animal/hostile/syndicate/modsuit/elite/spacebattle/Initialize(mapload)
+	. = ..()
+	loot |= /obj/effect/spawner/random/loot/gateway_chainsaw
+
+/mob/living/simple_animal/hostile/syndicate/modsuit/elite/spacebattle/death()
+	if(spacebattle_boss)
+		for(var/obj/machinery/door/poddoor/P in GLOB.airlocks)
+			if(P.density && (P.id_tag == "Spacebattle_exit" || P.id_tag == "1ShipLock"))
+				spawn(0)
+					P.open()
+	return ..()

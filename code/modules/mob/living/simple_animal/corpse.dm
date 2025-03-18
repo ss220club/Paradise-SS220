@@ -32,7 +32,7 @@
 	id = /obj/item/card/id
 	pda = /obj/item/pda/syndicate_fake
 	internals_slot = ITEM_SLOT_LEFT_POCKET
-	var/modsuit = FALSE
+	var/modsuit
 
 /datum/outfit/syndicatecorpse/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()

@@ -277,7 +277,7 @@
 		/mob/living/simple_animal/hostile/syndicate/modsuit/elite, // ~1%
 	)
 
-// Used when we want our mob to be protected from environment pressure/gas mixture
+// Used when we want our mob to be protected from environment pressure
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit
 	loot = list(
 		/mob/living/simple_animal/hostile/syndicate/modsuit,

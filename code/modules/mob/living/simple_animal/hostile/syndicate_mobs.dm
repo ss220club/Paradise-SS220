@@ -68,7 +68,7 @@
 	// Overlay for our swat mask/armor booster visor
 	var/visor_overlay = "mask"
 	// Whether we play activation/deactivation sound of e/dsword
-	var/sword_active = FALSE
+	var/sword_active
 	// %Chance to reflect an energy projectile. Used alongside `MELEE_WEAPON_ESWORD` only
 	var/reflect_chance = 10
 	// %Chance to deflect a melee hit. Used alongside `MELEE_WEAPON_DSWORD` only
@@ -78,19 +78,19 @@
 	// Icon we display on melee attack/parry
 	var/attack_icon
 	// Do we have an energy shield in our hands that will reflect any energy projectiles?
-	var/eshield = FALSE
+	var/eshield
 	// Do we wear a modsuit?
-	var/modsuit = FALSE
+	var/modsuit
 	// If our armor booster currently active. Affects `damage_coeff` and overlay, used alongside `modsuit` only
-	var/armor_booster = FALSE
+	var/armor_booster
 	// Should we apply bloody mask? Used in AttackingTarget()
-	var/bloody = FALSE
+	var/bloody
 	// Which masks to apply on apply_blood()
 	var/list/static/bloody_parts
 	// For how long we are not being triggered
 	var/regen_cycle = 0
 	// Are we currently healing ourselves?
-	var/healing = FALSE
+	var/healing
 	// Last time when we reacted
 	var/last_react = 0
 	// Color of our blade
@@ -523,17 +523,17 @@
 /mob/living/simple_animal/hostile/syndicate/depot
 	force_threshold = 6 // Prevents people using punches
 	var/area/syndicate_depot/core/depotarea
-	var/raised_alert = FALSE
-	var/alert_on_death = FALSE
+	var/raised_alert
+	var/alert_on_death
 	var/alert_on_timeout = TRUE
 	var/alert_on_spacing = TRUE
-	var/alert_on_shield_breach = FALSE
-	var/seen_enemy = FALSE
-	var/seen_enemy_name = null
-	var/seen_revived_enemy = FALSE
+	var/alert_on_shield_breach
+	var/seen_enemy
+	var/seen_enemy_name
+	var/seen_revived_enemy
 	var/aggro_cycles = 0
 	var/scan_cycles = 0
-	var/shield_key = FALSE
+	var/shield_key
 	var/turf/spawn_turf
 
 /mob/living/simple_animal/hostile/syndicate/depot/Initialize(mapload)
