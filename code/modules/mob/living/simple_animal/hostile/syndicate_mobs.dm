@@ -28,6 +28,7 @@
 	response_help = "pokes the"
 	response_disarm = "shoves the"
 	response_harm = "hits the"
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0) // We know how to use gasmasks
 	faction = list("syndicate")
 	del_on_death = TRUE
 	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
@@ -42,8 +43,8 @@
 	speed = 0
 	maxHealth = 200
 	health = 200
-	unsuitable_atmos_damage = 4
-	damage_coeff = list(BRUTE = 0.9, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
+	unsuitable_atmos_damage = 2 // 4 actually
+	damage_coeff = list(BRUTE = 0.9, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0) // Imitates our armor
 	melee_damage_lower = 30
 	melee_damage_upper = 30
 	armour_penetration_percentage = 50
@@ -80,7 +81,7 @@
 	var/eshield = FALSE
 	// Do we wear a modsuit?
 	var/modsuit = FALSE
-	// If we have an armor booster. Used along with a modsuit
+	// If our armor booster currently active. Affects `damage_coeff` and overlay, used alongside `modsuit` only
 	var/armor_booster = FALSE
 	// Should we apply bloody mask? Used in AttackingTarget()
 	var/bloody = FALSE
@@ -226,20 +227,25 @@
 
 /mob/living/simple_animal/hostile/syndicate/handle_environment(datum/gas_mixture/readonly_environment)
 	. = ..()
+	var/pressure = readonly_environment.return_pressure()
+	var/enough_pressure = FALSE
+	if(pressure > HAZARD_LOW_PRESSURE && pressure < HAZARD_HIGH_PRESSURE)
+		enough_pressure = TRUE
 	if(modsuit)
-		var/pressure = readonly_environment.return_pressure()
-		if((pressure <= HAZARD_LOW_PRESSURE || pressure >= HAZARD_HIGH_PRESSURE) && armor_booster)
+		if(!enough_pressure && armor_booster)
 			armor_booster = FALSE
 			damage_coeff[BRUTE] += 0.2
 			damage_coeff[BURN] += 0.1
 			playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE)
 			apply_visor()
-		else if(pressure > HAZARD_LOW_PRESSURE && pressure < HAZARD_HIGH_PRESSURE && !armor_booster)
+		else if(enough_pressure && !armor_booster)
 			armor_booster = TRUE
 			damage_coeff[BRUTE] -= 0.2
 			damage_coeff[BURN] -= 0.1
 			playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE)
 			apply_visor()
+	else if(!enough_pressure)
+		adjustHealth(unsuitable_atmos_damage)
 
 /mob/living/simple_animal/hostile/syndicate/Aggro()
 	. = ..()
@@ -455,7 +461,6 @@
 /mob/living/simple_animal/hostile/syndicate/modsuit
 	name = "Syndicate Commando"
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	maxbodytemp = FIRE_SUIT_MAX_TEMP_PROTECT
 	minbodytemp = 0
 	icon_state = "syndicate_space"
@@ -653,7 +658,6 @@
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit
 	name = "Syndicate Commando"
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	maxbodytemp = FIRE_SUIT_MAX_TEMP_PROTECT
 	minbodytemp = 0
 	icon_state = "syndicate_space"
@@ -774,7 +778,6 @@
 	attacktext = "cuts"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	faction = list("syndicate")
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	mob_size = MOB_SIZE_TINY
 	bubble_icon = "syndibot"
