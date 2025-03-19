@@ -2,7 +2,6 @@
 // MARK: Syndicate
 /obj/effect/mob_spawn/human/corpse/syndicate
 	name = "Syndicate Operative"
-	mob_name = "Syndicate Operative"
 	id_job = "err#unkwn"
 	hair_colour = "#000000"
 	facial_hair_colour = "#000000"
@@ -10,11 +9,18 @@
 	outfit = /datum/outfit/syndicatecorpse
 	del_types = list()
 	disable_pda = TRUE
+	var/name_changed
+	var/name_to_add
+	var/num_to_add
 
 /obj/effect/mob_spawn/human/corpse/syndicate/Initialize(mapload)
-	mob_name = "[mob_name] [pick(GLOB.last_names)]"
+	if(!name_changed)
+		name_to_add = pick("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu")
+		num_to_add = rand(1, 1337)
+		mob_name = "[syndicate_name()] [name_to_add] #[num_to_add]"
+		name_changed = TRUE
 	brute_damage = rand(0, 200)
-	skin_tone = rand(40,120)
+	skin_tone = rand(40, 120)
 	return ..()
 
 /datum/outfit/syndicatecorpse
@@ -29,7 +35,7 @@
 	back = /obj/item/storage/backpack/satchel
 	box = /obj/item/storage/box/survival_syndie/traitor/loot
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi/syndi
-	id = /obj/item/card/id
+	id = /obj/item/card/id/syndicate_fake
 	pda = /obj/item/pda/syndicate_fake
 	internals_slot = ITEM_SLOT_LEFT_POCKET
 	var/modsuit
@@ -53,8 +59,16 @@
 // MARK: Syndicate modsuit
 /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
 	name = "Syndicate Commando"
-	mob_name = "Syndicate Commando"
 	outfit = /datum/outfit/syndicatecorpse/modsuit
+
+/obj/effect/mob_spawn/human/corpse/syndicate/modsuit/Initialize(mapload)
+	if(!name_changed)
+		name_to_add = pick("Aries", "Leo", "Sagittarius", "Taurus", "Virgo", "Capricorn", "Gemini", "Libra", "Aquarius", "Cancer", "Scorpio", "Pisces", "Rose", "Peony", "Lily", "Daisy", "Zinnia", "Ivy", "Iris", "Petunia", "Violet", "Lilac", "Orchid")
+		if(prob(95))
+			num_to_add = pick("II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX")
+		mob_name = num_to_add ? "[syndicate_name()] [name_to_add] [num_to_add]" : "[syndicate_name()] [name_to_add]"
+		name_changed = TRUE
+	return ..()
 
 /datum/outfit/syndicatecorpse/modsuit
 	name = "Corpse of a Syndicate Commando"
@@ -63,8 +77,14 @@
 // MARK: Syndicate elite modsuit
 /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 	name = "Syndicate Quartermaster"
-	mob_name = "Syndicate Quartermaster"
 	outfit = /datum/outfit/syndicatecorpse/modsuit/elite
+
+/obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite/Initialize(mapload)
+	if(!name_changed)
+		name_to_add = pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord", "Berzerk", "Reaper", "Beast", "Hellwalker", "Slayer", "Oathbreaker", "Supreme Commander", "Overseer", "Butcher", "Executioner", "Judge", "Head of Shitcurity", "Unchained Predator", "Outlander", "DM1-5", "Scourge of Hell", "DOOM")
+		mob_name = "[syndicate_name()] [name_to_add]"
+		name_changed = TRUE
+	return ..()
 
 /datum/outfit/syndicatecorpse/modsuit/elite
 	name = "Corpse of a Syndicate Quartermaster"
