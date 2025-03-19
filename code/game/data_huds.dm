@@ -209,10 +209,10 @@
 			revivable_state = "dead"
 		else if(ismachineperson(src) || (timeofdeath && is_revivable()))
 			revivable_state = "flatline"
-		else if(!mind)
-			revivable_state = "dead"
 		else if(get_ghost() || key)
 			revivable_state = "hassoul"
+		else if(!mind)
+			revivable_state = "dead"
 
 		holder.icon_state = "hud[revivable_state]"
 
