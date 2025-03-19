@@ -1767,10 +1767,15 @@
 
 /datum/mind/proc/get_ghost(even_if_they_cant_reenter)
 	for(var/mob/dead/observer/G in GLOB.dead_mob_list)
-		if(G.mind == src && G.mind.key == G.key && (G in GLOB.player_list))
+		if(G.mind == src && G.mind.key == G.key)
 			if(G.can_reenter_corpse || even_if_they_cant_reenter)
 				return G
 			break
+
+/datum/mind/proc/check_ghost_client()
+	var/mob/dead/observer/G = get_ghost()
+	if(G.client)
+		return TRUE
 
 /datum/mind/proc/grab_ghost(force)
 	var/mob/dead/observer/G = get_ghost(even_if_they_cant_reenter = force)

@@ -206,9 +206,9 @@
 	if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
 		var/revivable_state = "dead"
 		if(ghost_can_reenter()) // Not DNR or AntagHUD
-			if((ismachineperson(src) && get_ghost()) || (timeofdeath && is_revivable()))
+			if((ismachineperson(src)) && check_ghost_client() || (timeofdeath && is_revivable()))
 				revivable_state = "flatline"
-			else if(ismachineperson(src) || get_ghost()  || key)
+			else if(get_ghost() || key)
 				revivable_state = "hassoul"
 
 		holder.icon_state = "hud[revivable_state]"
