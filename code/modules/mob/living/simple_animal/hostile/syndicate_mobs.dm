@@ -30,6 +30,7 @@
 	response_harm = "hits the"
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0) // We know how to use gasmasks
 	faction = list("syndicate")
+	move_to_delay = 2.99 // Faster than human by 0.01
 	del_on_death = TRUE
 	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
 	footstep_type = FOOTSTEP_MOB_SHOE
@@ -93,6 +94,12 @@
 	var/healing
 	// Last time when we reacted
 	var/last_react = 0
+	// Do we have an (eternal) adrenal chip?
+	var/adrenal
+	// Are we affected by adrenal?
+	var/adrenal_active
+	// For how long we have been under adrenal effect?
+	var/adrenal_cycle = 0
 	// Color of our blade
 	var/sword_color
 	// Colors for our blade
@@ -187,22 +194,33 @@
 	if(eshield)
 		add_overlay("eshield")
 
-/mob/living/simple_animal/hostile/syndicate/proc/apply_heal()
-	adjustHealth(-8)
-	playsound(src, pick('sound/goonstation/items/mender.ogg', 'sound/goonstation/items/mender2.ogg'), 50, TRUE)
-	if(health == maxHealth)
+/mob/living/simple_animal/hostile/syndicate/proc/apply_heal(amount, heal_sound)
+	adjustHealth(-amount)
+	if(heal_sound)
+		playsound(src, pick('sound/goonstation/items/mender.ogg', 'sound/goonstation/items/mender2.ogg'), 50, TRUE)
+	if(health == maxHealth && healing)
 		healing = FALSE
 		regen_cycle = 0
 	react_sound()
+
+/mob/living/simple_animal/hostile/syndicate/proc/use_adrenal()
+	if(!adrenal_active)
+		adrenal_active = TRUE
+		move_to_delay = ranged ? 2.5 : 1.8
+		if(!ranged)
+			dodging = FALSE
 
 /mob/living/simple_animal/hostile/syndicate/proc/react_sound()
 	if(last_react > world.time)
 		return
 	if(prob(round(100-(health/maxHealth*100))/4))
 		last_react = world.time + 10 SECONDS
-		if(health >= maxHealth*0.75)
+		if(adrenal_active)
+			playsound(src, 'sound/effects/mob_effects/knuckles.ogg', 50, TRUE)
+			custom_emote(EMOTE_VISIBLE, "хрустит пальцами.")
+		else if(health >= maxHealth*0.75)
 			playsound(src, pick('modular_ss220/emotes/audio/male/yawn_male_1.ogg', 'modular_ss220/emotes/audio/male/yawn_male_2.ogg'), 50, TRUE)
-			custom_emote(EMOTE_VISIBLE, "зевает.")
+			custom_emote(EMOTE_VISIBLE, "зевает...")
 		else if(health >= maxHealth*0.375)
 			playsound(src, 'modular_ss220/emotes/audio/male/sigh_male.ogg', 50, TRUE)
 			custom_emote(EMOTE_VISIBLE, "вздыхает.")
@@ -286,32 +304,46 @@
 
 /mob/living/simple_animal/hostile/syndicate/Life(seconds, times_fired)
 	. = ..()
-	if(stat != DEAD && !target && maxHealth > health && !healing)
-		if(regen_cycle >= 15)
-			healing = TRUE
-			react_sound()
-		else
-			regen_cycle++
-	else if(target)
-		if(healing)
-			healing = FALSE
-		if(regen_cycle > 0)
-			regen_cycle = 0
-	else if(healing)
-		var/datum/callback/cb = CALLBACK(src, PROC_REF(apply_heal))
-		var/delay = SSnpcpool.wait / 2
-		for(var/i in 1 to 2)
-			addtimer(cb, (i - 1)*delay)
+	if(stat != DEAD)
+		if(adrenal_active)
+			adrenal_cycle++
+			apply_heal(2) // Second breath
+			if(adrenal_cycle >= 15)
+				adrenal_active = FALSE
+				adrenal_cycle = 0
+				move_to_delay = initial(move_to_delay)
+				if(!ranged)
+					dodging = TRUE
+		if(!target && maxHealth > health && !healing)
+			if(regen_cycle >= 15)
+				healing = TRUE
+				react_sound()
+			else
+				regen_cycle++
+
+		else if(target)
+			if(healing)
+				healing = FALSE
+			if(regen_cycle > 0)
+				regen_cycle = 0
+
+		else if(healing)
+			var/datum/callback/cb = CALLBACK(src, PROC_REF(apply_heal), 8, TRUE)
+			var/delay = SSnpcpool.wait / 2
+			for(var/i in 1 to 2)
+				addtimer(cb, (i - 1)*delay)
 
 /mob/living/simple_animal/hostile/syndicate/adjustHealth(damage, updating_health = TRUE)
 	. = ..()
 	if(damage > 0)
+		if(adrenal && prob(clamp(round(100-(health/maxHealth*100)),0,25)))
+			use_adrenal()
 		if(healing)
 			healing = FALSE
 		if(regen_cycle > 0)
 			regen_cycle = 0
-	if(!healing && health < maxHealth*0.4)
-		react_sound()
+		if(health < maxHealth*0.4)
+			react_sound()
 
 // Huge copypaste starts
 /mob/living/simple_animal/hostile/syndicate/do_attack_animation(atom/A, visual_effect_icon, used_item = attack_icon, no_effect)
@@ -507,6 +539,7 @@
 	icon_state = "syndicate_elite"
 	icon_living = "syndicate_elite"
 	visor_overlay = "elite_armor_booster"
+	adrenal = TRUE
 	eshield = FALSE
 	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
@@ -524,7 +557,6 @@
 		parry_chance = 25
 		retreat_distance = 2
 		minimum_distance = 2
-		speed = 2
 		casingtype = /obj/item/ammo_casing/penetrator
 		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
 	. = ..()
@@ -722,6 +754,7 @@
 	icon_living = "syndicate_elite"
 	visor_overlay = "elite_armor_booster"
 	alert_on_shield_breach = TRUE
+	adrenal = TRUE
 	eshield = FALSE
 	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
@@ -738,7 +771,6 @@
 		parry_chance = 25
 		retreat_distance = 2
 		minimum_distance = 2
-		speed = 2
 		casingtype = /obj/item/ammo_casing/penetrator // Ignores cover.
 		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
 	. = ..()
