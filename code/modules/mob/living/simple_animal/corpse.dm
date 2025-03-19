@@ -81,7 +81,7 @@
 
 /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite/Initialize(mapload)
 	if(!name_changed)
-		name_to_add = pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord", "Berzerk", "Reaper", "Beast", "Hellwalker", "Slayer", "Oathbreaker", "Supreme Commander", "Overseer", "Butcher", "Executioner", "Judge", "Head of Shitcurity", "Unchained Predator", "Outlander", "DM1-5", "Scourge of Hell", "DOOM")
+		name_to_add = pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord", "Berzerk", "Reaper", "Beast", "Hellwalker", "Slayer", "Oathbreaker", "Supreme Commander", "Overseer", "Butcher", "Executioner", "Judge", "Head of Shitcurity", "Unchained Predator", "Outlander", "DM1-5", "Scourge of Hell", "Doom")
 		mob_name = "[syndicate_name()] [name_to_add]"
 		name_changed = TRUE
 	return ..()
