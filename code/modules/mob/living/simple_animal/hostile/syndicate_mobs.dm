@@ -296,6 +296,41 @@
 		if(melee_type == MELEE_WEAPON_DSWORD && prob(50))
 			jedi_spin()
 
+/mob/living/simple_animal/hostile/syndicate/Shoot(atom/targeted_atom)
+	if(QDELETED(targeted_atom) || targeted_atom == targets_from.loc || targeted_atom == targets_from)
+		return
+	var/turf/startloc = get_turf(targets_from)
+	if(projectiletype)
+		if(casingtype)
+			new casingtype(startloc)
+		var/turf/target_turf = get_turf(targeted_atom)
+		if(!target_turf)
+			return
+		if(target_turf.x > startloc.x)
+			target_turf.pixel_x = 15
+		else if(target_turf.x < startloc.x)
+			target_turf.pixel_x = -15
+		if(target_turf.y > startloc.y)
+			target_turf.pixel_y = -15
+		else if(target_turf.y < startloc.y)
+			target_turf.pixel_y = 15
+		var/obj/item/projectile/P = new projectiletype(startloc)
+		playsound(src, projectilesound, 100, TRUE)
+		P.current = startloc
+		P.starting = startloc
+		P.firer = src
+		P.firer_source_atom = src
+		P.yo = targeted_atom.y - startloc.y
+		P.xo = targeted_atom.x - startloc.x
+		if(AIStatus != AI_ON)//Don't want mindless mobs to have their movement screwed up firing in space
+			newtonian_move(get_dir(targeted_atom, targets_from))
+		P.original = targeted_atom
+		P.preparePixelProjectile(targeted_atom, startloc)
+		P.fire()
+		target_turf.pixel_x = initial(target_turf.pixel_x)
+		target_turf.pixel_y = initial(target_turf.pixel_y)
+		return P
+
 /mob/living/simple_animal/hostile/syndicate/LoseTarget()
 	. = ..()
 	if(sword_active && melee_type != MELEE_WEAPON_NONE)
@@ -494,7 +529,8 @@
 	rapid = 2
 	retreat_distance = 5
 	minimum_distance = 5
-	casingtype = /obj/item/ammo_casing/c45
+	casingtype = /obj/item/trash/spentcasing/bullet
+	projectiletype = /obj/item/projectile/bullet/midbullet
 	projectilesound = 'sound/weapons/gunshots/gunshot_smg.ogg'
 
 //////////////////////////////
@@ -532,7 +568,8 @@
 	rapid = 2
 	retreat_distance = 5
 	minimum_distance = 5
-	casingtype = /obj/item/ammo_casing/c45
+	casingtype = /obj/item/trash/spentcasing/bullet
+	projectiletype = /obj/item/projectile/bullet/midbullet
 	projectilesound = 'sound/weapons/gunshots/gunshot_smg.ogg'
 
 //////////////////////////////
@@ -554,7 +591,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/Initialize(mapload)
 	loot ^= list(/obj/effect/spawner/random/syndie_mob_loot) // No Billy, you can't get two elite modsuits from a single mob
-	loot |= list(/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite) // Random armory tier loot
+	loot |= list(/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite) // Random armory tier loot instead. Excluding elite mod itself.
 	if(prob(50))
 		ranged = TRUE
 		ranged_type = RANGED_WEAPON_SR
@@ -563,7 +600,8 @@
 		parry_chance = 25
 		retreat_distance = 2
 		minimum_distance = 2
-		casingtype = /obj/item/ammo_casing/penetrator
+		casingtype = /obj/item/trash/spentcasing/bullet/large
+		projectiletype = /obj/item/projectile/bullet/sniper/penetrator
 		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
 	. = ..()
 
@@ -751,7 +789,8 @@
 		rapid = 3
 		retreat_distance = 5
 		minimum_distance = 3
-		casingtype = /obj/item/ammo_casing/a556
+		casingtype = /obj/item/trash/spentcasing/bullet
+		projectiletype = /obj/item/projectile/bullet/heavybullet
 		projectilesound = 'sound/weapons/gunshots/gunshot_rifle.ogg'
 	. = ..()
 
@@ -782,7 +821,8 @@
 		parry_chance = 25
 		retreat_distance = 2
 		minimum_distance = 2
-		casingtype = /obj/item/ammo_casing/penetrator // Ignores cover.
+		casingtype = /obj/item/trash/spentcasing/bullet/large // Ignores cover.
+		projectiletype = /obj/item/projectile/bullet/heavybullet
 		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
