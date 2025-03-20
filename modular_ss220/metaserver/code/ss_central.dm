@@ -23,6 +23,7 @@
 SUBSYSTEM_DEF(central)
 	var/list/discord_links = list()
 	flags = SS_NO_FIRE
+	init_order = INIT_ORDER_DBCORE
 
 /datum/controller/subsystem/central/Initialize()
 	if(!(GLOB.configuration.central.api_url && GLOB.configuration.central.api_token))
