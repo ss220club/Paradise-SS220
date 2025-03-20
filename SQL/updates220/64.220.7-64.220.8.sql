@@ -1,2 +1,2 @@
-DROP TABLE IF EXISTS `discord_links`;
-DROP TABLE IF EXISTS `budget`;
+DROP TABLE `discord_links`;
+DROP TABLE `budget`;
