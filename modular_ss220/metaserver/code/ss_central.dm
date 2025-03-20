@@ -25,6 +25,9 @@ SUBSYSTEM_DEF(central)
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_DBCORE
 
+/datum/controller/subsystem/http
+	init_order = INIT_ORDER_DBCORE
+
 /datum/controller/subsystem/central/Initialize()
 	if(!(GLOB.configuration.central.api_url && GLOB.configuration.central.api_token))
 		return
