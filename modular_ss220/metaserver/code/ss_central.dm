@@ -180,8 +180,7 @@ SUBSYSTEM_DEF(central)
 		return
 
 	var/list/data = json_decode(response.body)
-	if(length(data["items"]))
-		player.donator_level = data["items"][1]["tier"]
+	player.donator_level = get_max_donation_tier_from_response_data(data)
 
 /datum/controller/subsystem/central/proc/get_player_donate_tier_blocking(client/player)
 	var/endpoint = "[GLOB.configuration.central.api_url]/donates?ckey=[player.ckey]&active_only=true&page=1&page_size=1"
@@ -191,5 +190,14 @@ SUBSYSTEM_DEF(central)
 		return 0
 
 	var/list/data = json_decode(response.body)
-	if(length(data["items"]))
-		return data["items"][1]["tier"]
+	return get_max_donation_tier_from_response_data(data)
+
+/datum/controller/subsystem/central/proc/get_max_donation_tier_from_response_data(list/data)
+	if(!length(data["items"]))
+		return 0
+
+	var/list/tiers = list()
+	for(var/list/item in data["items"])
+		tiers += item["tier"]
+
+	return max(tiers)
