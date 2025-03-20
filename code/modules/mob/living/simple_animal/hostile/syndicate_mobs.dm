@@ -509,9 +509,14 @@
 	icon_living = "syndicate_mod"
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	visor_overlay = "armor_booster"
-	eshield = TRUE
 	modsuit = TRUE
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
+	var/eshield_prob = 15 // Chance to be spawned with an eshield
+
+/mob/living/simple_animal/hostile/syndicate/modsuit/Initialize(mapload)
+	if(prob(eshield_prob))
+		eshield = TRUE
+	. = ..()
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	return TRUE
@@ -534,13 +539,14 @@
 // MARK: ELITE MODSUIT
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite
-	name = "Syndicate Quartermaster"
+	name = "Syndicate Overseer"
 	damage_coeff = list(BRUTE = 0.6, BURN = 0.6, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	icon_state = "syndicate_elite"
 	icon_living = "syndicate_elite"
 	visor_overlay = "elite_armor_booster"
 	adrenal = TRUE
 	eshield = FALSE
+	eshield_prob = 0
 	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
 	melee_damage_upper = 34
@@ -699,9 +705,14 @@
 	icon_living = "syndicate_mod"
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	visor_overlay = "armor_booster"
-	eshield = TRUE
 	modsuit = TRUE
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
+	var/eshield_prob = 75 // Chance to be spawned with an eshield
+
+/mob/living/simple_animal/hostile/syndicate/modsuit/Initialize(mapload)
+	if(prob(eshield_prob))
+		eshield = TRUE
+	. = ..()
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	return TRUE
@@ -755,7 +766,7 @@
 	visor_overlay = "elite_armor_booster"
 	alert_on_shield_breach = TRUE
 	adrenal = TRUE
-	eshield = FALSE
+	eshield_prob = 0
 	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
 	melee_damage_upper = 34

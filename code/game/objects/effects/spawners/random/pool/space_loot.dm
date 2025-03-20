@@ -269,13 +269,13 @@
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mob
 	icon = 'icons/effects/spawner_icons.dmi'
 	icon_state = "syndie_depot"
-	point_value = 5 // Perfect value for current mob loot list
+	point_value = 3
 	loot = list(
 		/mob/living/simple_animal/hostile/syndicate = 40,
-		/mob/living/simple_animal/hostile/syndicate/ranged = 40,
+		/mob/living/simple_animal/hostile/syndicate/ranged = 30,
 		/mob/living/simple_animal/hostile/syndicate/shield = 10,
-		/mob/living/simple_animal/hostile/syndicate/modsuit = 5,
-		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged = 5,
+		/mob/living/simple_animal/hostile/syndicate/modsuit = 10,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged = 10,
 
 		// Let the massacre begin
 		/mob/living/simple_animal/hostile/syndicate/modsuit/elite, // ~1%
