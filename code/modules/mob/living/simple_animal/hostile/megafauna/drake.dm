@@ -613,7 +613,7 @@ Difficulty: Medium
 	melee_damage_lower = 35
 	speed = 0
 	mouse_opacity = MOUSE_OPACITY_ICON
-	move_to_delay = 2.8
+	move_to_delay = 2.95
 	rapid = 2
 	crusher_loot = list()
 	loot = list(
