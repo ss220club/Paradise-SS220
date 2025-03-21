@@ -114,6 +114,7 @@
 
 /obj/item/storage/box/survival_syndie
 	icon_state = "syndie_box"
+	desc = "A sleek, sturdy box."
 
 /obj/item/storage/box/survival_syndie/populate_contents()
 	new /obj/item/clothing/mask/gas/syndicate(src)

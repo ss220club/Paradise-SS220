@@ -27,12 +27,14 @@
 	name = "Corpse of a Syndicate Operative"
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/jacket/bomber/syndicate
+	glasses = /obj/item/clothing/glasses/night/syndicate_fake
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	l_ear = /obj/item/radio/headset/syndicate_fake
 	mask = /obj/item/clothing/mask/gas/syndicate
 	head = /obj/item/clothing/head/helmet/swat/syndicate
 	back = /obj/item/storage/backpack/satchel
+	belt = /obj/item/storage/belt/utility/syndi_researcher
 	box = /obj/item/storage/box/survival_syndie/traitor/loot
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi/syndi
 	id = /obj/item/card/id/syndicate_fake
@@ -47,6 +49,11 @@
 		box = null
 		head = null
 		suit = null
+		l_pocket = null
+		suit_store = /obj/item/tank/internals/oxygen/red
+		internals_slot = ITEM_SLOT_SUIT_STORE
+	if(prob(25))
+		backpack_contents |= /obj/item/storage/box/syndie_kit
 
 /datum/outfit/syndicatecorpse/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()

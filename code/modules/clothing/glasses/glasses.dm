@@ -211,6 +211,11 @@
 		"Kidan" = 'icons/mob/clothing/species/kidan/eyes.dmi'
 		)
 
+/obj/item/clothing/glasses/night/syndicate_fake
+	name = "suspicious night vision goggles"
+	desc = "A dark red tacticool goggles anyone would go operate with."
+	icon_state = "securityhudnight"
+
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
 	desc = "Yarr."
