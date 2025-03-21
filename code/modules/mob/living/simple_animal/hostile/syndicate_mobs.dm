@@ -13,6 +13,27 @@
 #define RANGED_WEAPON_C20R "c20r"
 #define RANGED_WEAPON_M90 "m90"
 #define RANGED_WEAPON_SR "sr"
+#define RANGED_WEAPON_SR_IDLE "sr-idle"
+
+#define SOUND_SMG 'sound/weapons/gunshots/gunshot_smg.ogg'
+#define SOUND_AR 'sound/weapons/gunshots/gunshot_rifle.ogg'
+#define SOUND_SR 'sound/weapons/gunshots/gunshot_sniper.ogg'
+
+#define SYNDICATE "syndicate"
+#define RAIDER "syndicate_mod"
+#define JAEGER "syndicate_elite"
+
+#define VISOR_MASK "mask"
+#define VISOR_RAIDER "armor_booster"
+#define VISOR_JAEGER "elite_armor_booster"
+
+#define ESHIELD			(1 << 0) // Do we have an energy shield in our hands that will reflect any energy projectiles?
+#define SWORD			(1 << 1) // Whether we play activation/deactivation sound of e/dsword
+#define MODSUIT			(1 << 2) // Do we wear a modsuit?
+#define ARMOR_BOOSTER	(1 << 3) // If our armor booster currently active. Affects `damage_coeff` and overlay, used alongside `modsuit` only
+#define HEALING			(1 << 4) // Are we currently healing ourselves?
+#define CRITICAL		(1 << 5) // Are we in a critical condition?
+#define ADRENAL			(1 << 6) // Do we have an adrenal bio-chip?
 
 //////////////////////////////
 // MARK: SYNDICATE MOB
@@ -21,18 +42,19 @@
 	name = "Syndicate Operative"
 	desc = "Death to Nanotrasen."
 	icon = 'icons/mob/simple_human.dmi'
-	icon_state = "syndicate"
-	icon_living = "syndicate"
-	attack_sound = 'sound/weapons/blade1.ogg'
+	icon_state = SYNDICATE
+	icon_living = SYNDICATE
 	attacktext = "slashes"
 	response_help = "pokes the"
 	response_disarm = "shoves the"
 	response_harm = "hits the"
+	attack_sound = 'sound/weapons/blade1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0) // We know how to use gasmasks
-	faction = list("syndicate")
+	faction = list(SYNDICATE)
 	move_to_delay = 2.99 // Faster than human by 0.01
 	del_on_death = TRUE
 	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
+	move_resist = MOVE_FORCE_STRONG
 	footstep_type = FOOTSTEP_MOB_SHOE
 	sentience_type = SENTIENCE_OTHER
 	a_intent = INTENT_HARM
@@ -56,6 +78,8 @@
 		/obj/effect/gibspawner/generic,
 		/obj/effect/gibspawner/generic,
 	)
+	// Bitflags!
+	var/syndie_flags = 0
 	// What do we perform melee attacks with
 	var/melee_type = MELEE_WEAPON_ESWORD
 	// What do we perform ranged attacks with
@@ -64,12 +88,10 @@
 	var/corpse = /obj/effect/mob_spawn/human/corpse/syndicate
 	// Weapon icon overlay we add when we have a target to attack
 	var/weapon
-	// Should we add weapon icon when there is no target to attack? Uses "-idle" state of weapon (Depot QM with SR as an example)
+	// Idle icon of our weapon (See elite mob with SR for example)
 	var/weapon_idle
 	// Overlay for our swat mask/armor booster visor
-	var/visor_overlay = "mask"
-	// Whether we play activation/deactivation sound of e/dsword
-	var/sword_active
+	var/visor = VISOR_MASK
 	// %Chance to reflect an energy projectile. Used alongside `MELEE_WEAPON_ESWORD` only
 	var/reflect_chance = 10
 	// %Chance to deflect a melee hit. Used alongside `MELEE_WEAPON_DSWORD` only
@@ -78,28 +100,12 @@
 	var/parry_chance = 10
 	// Icon we display on melee attack/parry
 	var/attack_icon
-	// Do we have an energy shield in our hands that will reflect any energy projectiles?
-	var/eshield
-	// Do we wear a modsuit?
-	var/modsuit
-	// If our armor booster currently active. Affects `damage_coeff` and overlay, used alongside `modsuit` only
-	var/armor_booster
-	// Should we apply bloody mask? Used in AttackingTarget()
+	// For how long we do nothing
+	var/idle_cycle = 0
+	// Should we apply bloody mask? Used in AttackingTarget(), contains target's blood color
 	var/bloody
-	// Which masks to apply on apply_blood()
-	var/list/static/bloody_parts
-	// For how long we are not being triggered
-	var/regen_cycle = 0
-	// Are we currently healing ourselves?
-	var/healing
-	// Last time when we reacted
-	var/last_react = 0
-	// Do we have an (eternal) adrenal chip?
-	var/adrenal
-	// Are we affected by adrenal?
-	var/adrenal_active
-	// For how long we have been under adrenal effect?
-	var/adrenal_cycle = 0
+	// For how long we have been under emergency effect?
+	var/emergency_cycle = 0
 	// Color of our blade
 	var/sword_color
 	// Colors for our blade
@@ -109,9 +115,13 @@
 		3 = LIGHT_COLOR_LIGHTBLUE,
 		4 = LIGHT_COLOR_PURPLE,
 	)
+	COOLDOWN_DECLARE(emergency_heal_cooldown)
+	COOLDOWN_DECLARE(emote_react)
 
 /mob/living/simple_animal/hostile/syndicate/Initialize(mapload)
 	. = ..()
+	if(syndie_flags & MODSUIT)
+		death_sound = 'sound/mecha/mechmove03.ogg'
 	update_icon(UPDATE_OVERLAYS)
 	if(loot) // Prevents us from adding loot if there is none yet
 		if(prob(50))
@@ -120,7 +130,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_blood()
 	var/list/static/bloody_parts
-	if(modsuit)
+	if(syndie_flags & MODSUIT)
 		bloody_parts = list(
 			BLOOD_HELMET,
 			BLOOD_ARMOR,
@@ -149,12 +159,12 @@
 	update_icon(UPDATE_OVERLAYS)
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_visor()
-	if(!modsuit || armor_booster)
-		cut_overlay("[visor_overlay]-off")
-		add_overlay(visor_overlay)
-	else if(modsuit && !armor_booster)
-		cut_overlay(visor_overlay)
-		add_overlay("[visor_overlay]-off")
+	if(!(syndie_flags & MODSUIT) || syndie_flags & ARMOR_BOOSTER)
+		cut_overlay("[visor]-off")
+		add_overlay(visor)
+	else if(syndie_flags & MODSUIT && !(syndie_flags & ARMOR_BOOSTER))
+		cut_overlay(visor)
+		add_overlay("[visor]-off")
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_weapon()
 	if(!attack_icon)
@@ -178,8 +188,8 @@
 				add_overlay(weapon)
 				if(sword_color)
 					set_light(2, l_color = colormap[sword_color])
-				if(!sword_active)
-					sword_active = TRUE
+				if(!(syndie_flags & SWORD))
+					syndie_flags |= SWORD
 	else
 		if(sword_color)
 			set_light(0)
@@ -187,35 +197,37 @@
 			cut_overlay(weapon)
 		if(weapon_idle)
 			add_overlay(weapon_idle)
-		if(sword_active)
-			sword_active = FALSE
+		if(syndie_flags & SWORD)
+			syndie_flags &= ~SWORD
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_eshield()
-	if(eshield)
+	if(syndie_flags & ESHIELD)
 		add_overlay("eshield")
 
 /mob/living/simple_animal/hostile/syndicate/proc/apply_heal(amount, heal_sound)
 	adjustHealth(-amount)
 	if(heal_sound)
 		playsound(src, pick('sound/goonstation/items/mender.ogg', 'sound/goonstation/items/mender2.ogg'), 50, TRUE)
-	if(health == maxHealth && healing)
-		healing = FALSE
-		regen_cycle = 0
+	if(health == maxHealth && syndie_flags & HEALING)
+		syndie_flags &= ~HEALING
+		idle_cycle = 0
 	react_sound()
 
-/mob/living/simple_animal/hostile/syndicate/proc/use_adrenal()
-	if(!adrenal_active)
-		adrenal_active = TRUE
-		move_to_delay = ranged ? 2.5 : 1.8
-		if(!ranged)
-			dodging = FALSE
+/mob/living/simple_animal/hostile/syndicate/proc/emergency_heal()
+	if(!(syndie_flags & CRITICAL) && COOLDOWN_FINISHED(src, emergency_heal_cooldown))
+		syndie_flags |= CRITICAL
+		COOLDOWN_START(src, emergency_heal_cooldown, 60 SECONDS)
+		if(syndie_flags & ADRENAL)
+			move_to_delay = ranged ? 2.5 : 1.8
+			if(!ranged)
+				dodging = FALSE
 
 /mob/living/simple_animal/hostile/syndicate/proc/react_sound()
-	if(last_react > world.time)
+	if(!COOLDOWN_FINISHED(src, emote_react))
 		return
-	if(prob(round(100-(health/maxHealth*100))/4))
-		last_react = world.time + 10 SECONDS
-		if(adrenal_active)
+	if(prob(round(100-(health/maxHealth*100))*0.25))
+		COOLDOWN_START(src, emote_react, 10 SECONDS)
+		if(syndie_flags & CRITICAL && syndie_flags & ADRENAL)
 			playsound(src, 'sound/effects/mob_effects/knuckles.ogg', 50, TRUE)
 			custom_emote(EMOTE_VISIBLE, "хрустит пальцами.")
 		else if(health >= maxHealth*0.75)
@@ -250,15 +262,15 @@
 	var/enough_pressure = FALSE
 	if(pressure > HAZARD_LOW_PRESSURE && pressure < HAZARD_HIGH_PRESSURE)
 		enough_pressure = TRUE
-	if(modsuit)
-		if(!enough_pressure && armor_booster)
-			armor_booster = FALSE
+	if(syndie_flags & MODSUIT)
+		if(!enough_pressure && syndie_flags & ARMOR_BOOSTER)
+			syndie_flags &= ~ARMOR_BOOSTER
 			damage_coeff[BRUTE] += 0.2
 			damage_coeff[BURN] += 0.1
 			playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE)
 			apply_visor()
-		else if(enough_pressure && !armor_booster)
-			armor_booster = TRUE
+		else if(enough_pressure && !(syndie_flags & ARMOR_BOOSTER))
+			syndie_flags |= ARMOR_BOOSTER
 			damage_coeff[BRUTE] -= 0.2
 			damage_coeff[BURN] -= 0.1
 			playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE)
@@ -272,13 +284,12 @@
 
 /mob/living/simple_animal/hostile/syndicate/AIShouldSleep(list/possible_targets)
 	FindTarget(possible_targets, TRUE)
-	return ..()
-
+	return FALSE
 /mob/living/simple_animal/hostile/syndicate/Aggro()
 	. = ..()
 	if(target)
 		playsound(src, 'sound/misc/for_the_syndicate.ogg', 70, TRUE)
-		if(melee_type != MELEE_WEAPON_NONE && !sword_active)
+		if(melee_type != MELEE_WEAPON_NONE && !(syndie_flags & SWORD))
 			playsound(src, 'sound/weapons/saberon.ogg', 35, TRUE)
 	update_icon(UPDATE_OVERLAYS)
 
@@ -289,7 +300,7 @@
 		return
 	. = ..()
 	if(.)
-		if(!ranged && !bloody && ishuman(target) && melee_damage_upper)
+		if(!ranged && !bloody && ishuman(target) && melee_damage_upper && prob(25))
 			var/mob/living/carbon/human/victim = target
 			bloody = victim.dna.species.blood_color
 			apply_blood()
@@ -320,36 +331,37 @@
 
 /mob/living/simple_animal/hostile/syndicate/LoseTarget()
 	. = ..()
-	if(sword_active && melee_type != MELEE_WEAPON_NONE)
+	if(syndie_flags & SWORD && melee_type != MELEE_WEAPON_NONE)
 		playsound(src, 'sound/weapons/saberoff.ogg', 35, TRUE)
 	update_icon(UPDATE_OVERLAYS)
 
 /mob/living/simple_animal/hostile/syndicate/Life(seconds, times_fired)
 	. = ..()
 	if(stat != DEAD)
-		if(adrenal_active)
-			adrenal_cycle++
-			apply_heal(2) // Second breath
-			if(adrenal_cycle >= 15)
-				adrenal_active = FALSE
-				adrenal_cycle = 0
-				move_to_delay = initial(move_to_delay)
-				if(!ranged)
-					dodging = TRUE
-		if(!target && maxHealth > health && !healing)
-			if(regen_cycle >= 15)
-				healing = TRUE
+		if(syndie_flags & CRITICAL)
+			emergency_cycle++
+			apply_heal(syndie_flags & ADRENAL ? 2 : 1) // Second breath
+			if(emergency_cycle >= 15)
+				syndie_flags &= ~CRITICAL
+				emergency_cycle = 0
+				if(syndie_flags & ADRENAL)
+					move_to_delay = initial(move_to_delay)
+					if(!ranged)
+						dodging = TRUE
+		if(!target && maxHealth > health && !(syndie_flags & HEALING))
+			if(idle_cycle >= 15)
+				syndie_flags |= HEALING
 				react_sound()
 			else
-				regen_cycle++
+				idle_cycle++
 
 		else if(target)
-			if(healing)
-				healing = FALSE
-			if(regen_cycle > 0)
-				regen_cycle = 0
+			if(syndie_flags & HEALING)
+				syndie_flags &= ~HEALING
+			if(idle_cycle > 0)
+				idle_cycle = 0
 
-		else if(healing)
+		else if(syndie_flags & HEALING)
 			var/datum/callback/cb = CALLBACK(src, PROC_REF(apply_heal), 8, TRUE)
 			var/delay = SSnpcpool.wait / 2
 			for(var/i in 1 to 2)
@@ -358,12 +370,12 @@
 /mob/living/simple_animal/hostile/syndicate/adjustHealth(damage, updating_health = TRUE)
 	. = ..()
 	if(damage > 0)
-		if(adrenal && prob(clamp(round(100-(health/maxHealth*100)),0,25)))
-			use_adrenal()
-		if(healing)
-			healing = FALSE
-		if(regen_cycle > 0)
-			regen_cycle = 0
+		if(prob(round(100-(health/maxHealth*100))) && health <= maxHealth*0.25)
+			emergency_heal()
+		if(syndie_flags & HEALING)
+			syndie_flags &= ~HEALING
+		if(idle_cycle > 0)
+			idle_cycle = 0
 		if(health < maxHealth*0.4)
 			react_sound()
 
@@ -483,12 +495,12 @@
 /mob/living/simple_animal/hostile/syndicate/bullet_act(obj/item/projectile/Proj)
 	if(!Proj)
 		return
-	if(((melee_type == MELEE_WEAPON_DSWORD || eshield) || (melee_type == MELEE_WEAPON_ESWORD && prob(reflect_chance))) && Proj.is_reflectable(REFLECTABILITY_ENERGY))
+	if(((melee_type == MELEE_WEAPON_DSWORD || syndie_flags & ESHIELD) || (melee_type == MELEE_WEAPON_ESWORD && prob(reflect_chance))) && Proj.is_reflectable(REFLECTABILITY_ENERGY))
 		if(melee_type == MELEE_WEAPON_ESWORD)
 			do_attack_animation(src)
 			playsound(src, 'sound/weapons/effects/ric3.ogg', clamp(maxHealth-health, 40, 120), TRUE)
 		Proj.reflect_back(src)
-		visible_message("<span class='danger'>[src] reflects [Proj] with its [eshield ? "shield" : "sword"]!</span>")
+		visible_message("<span class='danger'>[src] reflects [Proj] with its [syndie_flags & ESHIELD ? "shield" : "sword"]!</span>")
 		return -1
 
 	if(melee_type != MELEE_WEAPON_NONE && prob(parry_chance))
@@ -503,21 +515,21 @@
 // MARK: ESHIELD
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/shield
-	eshield = TRUE
+	syndie_flags = ESHIELD
 
 //////////////////////////////
 // MARK: RANGED
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/ranged
+	melee_type = MELEE_WEAPON_NONE
 	ranged = TRUE
 	ranged_type = RANGED_WEAPON_C20R
-	melee_type = MELEE_WEAPON_NONE
-	parry_chance = 20
+	projectilesound = SOUND_SMG
+	casingtype = /obj/item/ammo_casing/c45/nostamina
 	rapid = 2
 	retreat_distance = 5
 	minimum_distance = 5
-	casingtype = /obj/item/ammo_casing/c45/nostamina
-	projectilesound = 'sound/weapons/gunshots/gunshot_smg.ogg'
+	parry_chance = 20
 
 //////////////////////////////
 // MARK: MODSUIT
@@ -527,11 +539,10 @@
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	maxbodytemp = FIRE_SUIT_MAX_TEMP_PROTECT
 	minbodytemp = 0
-	icon_state = "syndicate_mod"
-	icon_living = "syndicate_mod"
-	death_sound = 'sound/mecha/mechmove03.ogg'
-	visor_overlay = "armor_booster"
-	modsuit = TRUE
+	icon_state = RAIDER
+	icon_living = RAIDER
+	visor = VISOR_RAIDER
+	syndie_flags = MODSUIT
 	reflect_chance = 15
 	parry_chance = 15
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
@@ -539,7 +550,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/Initialize(mapload)
 	if(prob(eshield_prob))
-		eshield = TRUE
+		syndie_flags |= ESHIELD
 	. = ..()
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
@@ -549,15 +560,15 @@
 // MARK: MODSUIT RANGED
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/modsuit/ranged
+	melee_type = MELEE_WEAPON_NONE
 	ranged = TRUE
 	ranged_type = RANGED_WEAPON_C20R
-	melee_type = MELEE_WEAPON_NONE
-	parry_chance = 20
+	projectilesound = SOUND_SMG
+	casingtype = /obj/item/ammo_casing/c45/nostamina
 	rapid = 3
 	retreat_distance = 5
 	minimum_distance = 5
-	casingtype = /obj/item/ammo_casing/c45/nostamina
-	projectilesound = 'sound/weapons/gunshots/gunshot_smg.ogg'
+	parry_chance = 20
 
 //////////////////////////////
 // MARK: ELITE MODSUIT
@@ -565,30 +576,30 @@
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite
 	name = "Syndicate Overseer"
 	damage_coeff = list(BRUTE = 0.6, BURN = 0.6, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
-	icon_state = "syndicate_elite"
-	icon_living = "syndicate_elite"
-	visor_overlay = "elite_armor_booster"
-	adrenal = TRUE
-	eshield = FALSE
+	maxbodytemp = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	icon_state = JAEGER
+	icon_living = JAEGER
+	visor = VISOR_JAEGER
+	syndie_flags = MODSUIT | ADRENAL
 	eshield_prob = 0
 	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
 	melee_damage_upper = 34
+	parry_chance = 30
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/Initialize(mapload)
 	loot ^= list(/obj/effect/spawner/random/syndie_mob_loot) // No Billy, you can't get two elite modsuits from a single mob
 	loot |= list(/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite) // Random armory tier loot instead. Excluding elite mod itself.
 	if(prob(50))
+		melee_type = MELEE_WEAPON_NONE
 		ranged = TRUE
 		ranged_type = RANGED_WEAPON_SR
-		melee_type = MELEE_WEAPON_NONE
-		weapon_idle = "sr-idle"
-		parry_chance = 25
+		weapon_idle = RANGED_WEAPON_SR_IDLE
+		projectilesound = SOUND_SR
+		casingtype = /obj/item/ammo_casing/penetrator
 		retreat_distance = 2
 		minimum_distance = 2
-		casingtype = /obj/item/ammo_casing/penetrator
-		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
 	. = ..()
 
 //////////////////////////////
@@ -725,11 +736,10 @@
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.9, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	maxbodytemp = FIRE_SUIT_MAX_TEMP_PROTECT
 	minbodytemp = 0
-	icon_state = "syndicate_mod"
-	icon_living = "syndicate_mod"
-	death_sound = 'sound/mecha/mechmove03.ogg'
-	visor_overlay = "armor_booster"
-	modsuit = TRUE
+	icon_state = RAIDER
+	icon_living = RAIDER
+	visor = VISOR_RAIDER
+	syndie_flags = MODSUIT
 	reflect_chance = 15
 	parry_chance = 15
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
@@ -737,7 +747,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/Initialize(mapload)
 	if(prob(eshield_prob))
-		eshield = TRUE
+		syndie_flags |= ESHIELD
 	. = ..()
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
@@ -764,21 +774,22 @@
 //////////////////////////////
 /mob/living/simple_animal/hostile/syndicate/depot/officer
 	name = "Syndicate Officer"
-	eshield = TRUE
+	syndie_flags = ESHIELD
 	alert_on_death = TRUE
+	parry_chance = 20
+
 
 /mob/living/simple_animal/hostile/syndicate/depot/officer/Initialize(mapload)
 	if(prob(50))
 		// 50% chance of switching to ranged variant.
+		melee_type = MELEE_WEAPON_NONE
 		ranged = TRUE
 		ranged_type = RANGED_WEAPON_M90
-		melee_type = MELEE_WEAPON_NONE
-		parry_chance = 20
+		projectilesound = SOUND_AR
+		casingtype = /obj/item/ammo_casing/a556
 		rapid = 3
 		retreat_distance = 5
 		minimum_distance = 3
-		casingtype = /obj/item/ammo_casing/a556
-		projectilesound = 'sound/weapons/gunshots/gunshot_rifle.ogg'
 	. = ..()
 
 //////////////////////////////
@@ -787,29 +798,30 @@
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/elite
 	name = "Syndicate Quartermaster"
 	damage_coeff = list(BRUTE = 0.6, BURN = 0.6, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
-	icon_state = "syndicate_elite"
-	icon_living = "syndicate_elite"
-	visor_overlay = "elite_armor_booster"
+	maxbodytemp = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	icon_state = JAEGER
+	icon_living = JAEGER
+	visor = VISOR_JAEGER
 	alert_on_shield_breach = TRUE
-	adrenal = TRUE
+	syndie_flags = MODSUIT | ADRENAL
 	eshield_prob = 0
 	melee_type = MELEE_WEAPON_DSWORD
 	melee_damage_lower = 34
 	melee_damage_upper = 34
+	parry_chance = 30
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/elite/Initialize(mapload)
 	if(prob(50))
 		// 50% chance of switching to extremely dangerous ranged variant
+		melee_type = MELEE_WEAPON_NONE
 		ranged = TRUE
 		ranged_type = RANGED_WEAPON_SR
-		melee_type = MELEE_WEAPON_NONE
-		weapon_idle = "sr-idle"
-		parry_chance = 25
+		weapon_idle = RANGED_WEAPON_SR_IDLE
+		projectilesound = SOUND_SR
+		casingtype = /obj/item/ammo_casing/penetrator // Ignores cover.
 		retreat_distance = 2
 		minimum_distance = 2
-		casingtype = /obj/item/ammo_casing/penetrator // Ignores cover.
-		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -849,7 +861,7 @@
 	melee_damage_upper = 15
 	attacktext = "cuts"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	faction = list("syndicate")
+	faction = list(SYNDICATE)
 	minbodytemp = 0
 	mob_size = MOB_SIZE_TINY
 	bubble_icon = "syndibot"

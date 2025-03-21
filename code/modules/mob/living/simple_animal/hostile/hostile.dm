@@ -120,12 +120,12 @@
 		return FINISH_ATTACK
 
 	if(stat == CONSCIOUS && !target && AIStatus != AI_OFF && !client && user)
-		FindTarget(list(user), 1)
+		FindTarget(list(user), TRUE)
 
 /mob/living/simple_animal/hostile/bullet_act(obj/item/projectile/P)
 	if(stat == CONSCIOUS && !target && AIStatus != AI_OFF && !client)
 		if(P.firer && get_dist(src, P.firer) <= aggro_vision_range)
-			FindTarget(list(P.firer), 1)
+			FindTarget(list(P.firer), TRUE)
 		Goto(P.starting, move_to_delay, 3)
 	return ..()
 
@@ -143,7 +143,7 @@
 	else
 		. = oview(vision_range, targets_from)
 
-/mob/living/simple_animal/hostile/proc/FindTarget(list/possible_targets, HasTargetsList = 0)//Step 2, filter down possible targets to things we actually care about
+/mob/living/simple_animal/hostile/proc/FindTarget(list/possible_targets, HasTargetsList)//Step 2, filter down possible targets to things we actually care about
 	. = list()
 	if(!HasTargetsList)
 		possible_targets = ListTargets()
@@ -508,10 +508,7 @@
 				. = FALSE
 
 /mob/living/simple_animal/hostile/proc/AIShouldSleep(list/possible_targets)
-	var/turf/T = get_turf(src)
-	if(!T)
-		return TRUE
-	return (!FindTarget(possible_targets, TRUE) || !length(SSmobs.clients_by_zlevel[T.z])) // Allows us to react a bit faster
+	return !FindTarget(possible_targets, TRUE)
 
 //These two procs handle losing our target if we've failed to attack them for
 //more than lose_patience_timeout deciseconds, which probably means we're stuck
@@ -557,7 +554,7 @@
 	else
 		tlist = ListTargets()
 
-	if(AIStatus == AI_IDLE && FindTarget(tlist, 1))
+	if(AIStatus == AI_IDLE && FindTarget(tlist, TRUE))
 		if(cheap_search) //Try again with full effort
 			FindTarget()
 		toggle_ai(AI_ON)
