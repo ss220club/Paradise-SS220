@@ -272,7 +272,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/AIShouldSleep(list/possible_targets)
 	FindTarget(possible_targets, TRUE)
-	return FALSE
+	return ..()
 
 /mob/living/simple_animal/hostile/syndicate/Aggro()
 	. = ..()
@@ -300,12 +300,10 @@
 	if(QDELETED(targeted_atom) || targeted_atom == targets_from.loc || targeted_atom == targets_from)
 		return
 	var/turf/startloc = get_turf(targets_from)
-	if(projectiletype)
-		if(casingtype)
-			new casingtype(startloc)
-		var/turf/target_turf = get_turf(targeted_atom)
-		if(!target_turf)
-			return
+	var/turf/target_turf = get_turf(targeted_atom)
+	if(!target_turf)
+		return
+	if(casingtype)
 		if(target_turf.x > startloc.x)
 			target_turf.pixel_x = 15
 		else if(target_turf.x < startloc.x)
@@ -314,22 +312,11 @@
 			target_turf.pixel_y = -15
 		else if(target_turf.y < startloc.y)
 			target_turf.pixel_y = 15
-		var/obj/item/projectile/P = new projectiletype(startloc)
-		playsound(src, projectilesound, 100, TRUE)
-		P.current = startloc
-		P.starting = startloc
-		P.firer = src
-		P.firer_source_atom = src
-		P.yo = targeted_atom.y - startloc.y
-		P.xo = targeted_atom.x - startloc.x
-		if(AIStatus != AI_ON)//Don't want mindless mobs to have their movement screwed up firing in space
-			newtonian_move(get_dir(targeted_atom, targets_from))
-		P.original = targeted_atom
-		P.preparePixelProjectile(targeted_atom, startloc)
-		P.fire()
+		var/obj/item/ammo_casing/casing = new casingtype(startloc)
+		playsound(src, projectilesound, 100, 1)
+		casing.fire(targeted_atom, src, zone_override = ran_zone(), firer_source_atom = src)
 		target_turf.pixel_x = initial(target_turf.pixel_x)
 		target_turf.pixel_y = initial(target_turf.pixel_y)
-		return P
 
 /mob/living/simple_animal/hostile/syndicate/LoseTarget()
 	. = ..()
@@ -529,8 +516,7 @@
 	rapid = 2
 	retreat_distance = 5
 	minimum_distance = 5
-	casingtype = /obj/item/trash/spentcasing/bullet
-	projectiletype = /obj/item/projectile/bullet/midbullet
+	casingtype = /obj/item/ammo_casing/c45/nostamina
 	projectilesound = 'sound/weapons/gunshots/gunshot_smg.ogg'
 
 //////////////////////////////
@@ -546,6 +532,8 @@
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	visor_overlay = "armor_booster"
 	modsuit = TRUE
+	reflect_chance = 15
+	parry_chance = 15
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
 	var/eshield_prob = 15 // Chance to be spawned with an eshield
 
@@ -565,11 +553,10 @@
 	ranged_type = RANGED_WEAPON_C20R
 	melee_type = MELEE_WEAPON_NONE
 	parry_chance = 20
-	rapid = 2
+	rapid = 3
 	retreat_distance = 5
 	minimum_distance = 5
-	casingtype = /obj/item/trash/spentcasing/bullet
-	projectiletype = /obj/item/projectile/bullet/midbullet
+	casingtype = /obj/item/ammo_casing/c45/nostamina
 	projectilesound = 'sound/weapons/gunshots/gunshot_smg.ogg'
 
 //////////////////////////////
@@ -600,8 +587,7 @@
 		parry_chance = 25
 		retreat_distance = 2
 		minimum_distance = 2
-		casingtype = /obj/item/trash/spentcasing/bullet/large
-		projectiletype = /obj/item/projectile/bullet/sniper/penetrator
+		casingtype = /obj/item/ammo_casing/penetrator
 		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
 	. = ..()
 
@@ -744,10 +730,12 @@
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	visor_overlay = "armor_booster"
 	modsuit = TRUE
+	reflect_chance = 15
+	parry_chance = 15
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit
 	var/eshield_prob = 75 // Chance to be spawned with an eshield
 
-/mob/living/simple_animal/hostile/syndicate/modsuit/Initialize(mapload)
+/mob/living/simple_animal/hostile/syndicate/depot/modsuit/Initialize(mapload)
 	if(prob(eshield_prob))
 		eshield = TRUE
 	. = ..()
@@ -789,8 +777,7 @@
 		rapid = 3
 		retreat_distance = 5
 		minimum_distance = 3
-		casingtype = /obj/item/trash/spentcasing/bullet
-		projectiletype = /obj/item/projectile/bullet/heavybullet
+		casingtype = /obj/item/ammo_casing/a556
 		projectilesound = 'sound/weapons/gunshots/gunshot_rifle.ogg'
 	. = ..()
 
@@ -821,8 +808,7 @@
 		parry_chance = 25
 		retreat_distance = 2
 		minimum_distance = 2
-		casingtype = /obj/item/trash/spentcasing/bullet/large // Ignores cover.
-		projectiletype = /obj/item/projectile/bullet/heavybullet
+		casingtype = /obj/item/ammo_casing/penetrator // Ignores cover.
 		projectilesound = 'sound/weapons/gunshots/gunshot_sniper.ogg'
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD

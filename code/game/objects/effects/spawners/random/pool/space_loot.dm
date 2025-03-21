@@ -106,7 +106,6 @@
 		/obj/item/clothing/mask/chameleon/voice_change,
 		/obj/item/flash/cameraflash,
 		/obj/item/gun/projectile/automatic/toy/pistol/riot,
-		/obj/item/lighter/zippo/gonzofist,
 		/obj/item/mod/module/chameleon,
 		/obj/item/mod/module/holster/hidden,
 		/obj/item/mod/module/noslip,
@@ -114,11 +113,6 @@
 		/obj/item/mod/module/plate_compression,
 		/obj/item/reagent_containers/hypospray/autoinjector/hyper_medipen,
 		/obj/item/reagent_containers/hypospray/autoinjector/nanocalcium,
-		/obj/item/stack/sheet/mineral/gold{amount = 20},
-		/obj/item/stack/sheet/mineral/plasma{amount = 20},
-		/obj/item/stack/sheet/mineral/silver{amount = 20},
-		/obj/item/stack/sheet/mineral/uranium{amount = 20},
-		/obj/item/stamp/chameleon,
 		/obj/item/storage/backpack/duffel/syndie/med/surgery,
 		/obj/item/storage/backpack/satchel_flat,
 		/obj/item/storage/belt/military,
@@ -141,7 +135,6 @@
 		/obj/item/clothing/mask/chameleon/voice_change,
 		/obj/item/flash/cameraflash,
 		/obj/item/gun/projectile/automatic/toy/pistol/riot,
-		/obj/item/lighter/zippo/gonzofist,
 		/obj/item/mod/module/chameleon,
 		/obj/item/mod/module/holster/hidden,
 		/obj/item/mod/module/noslip,
@@ -149,17 +142,15 @@
 		/obj/item/mod/module/plate_compression,
 		/obj/item/reagent_containers/hypospray/autoinjector/hyper_medipen,
 		/obj/item/reagent_containers/hypospray/autoinjector/nanocalcium,
-		/obj/item/stack/sheet/mineral/gold{amount = 20},
-		/obj/item/stack/sheet/mineral/plasma{amount = 20},
-		/obj/item/stack/sheet/mineral/silver{amount = 20},
-		/obj/item/stack/sheet/mineral/uranium{amount = 20},
-		/obj/item/stamp/chameleon,
 		/obj/item/storage/backpack/duffel/syndie/med/surgery,
 		/obj/item/storage/backpack/satchel_flat,
 		/obj/item/storage/belt/military,
 		/obj/item/storage/box/syndie_kit/camera_bug,
 		/obj/item/storage/box/syndie_kit/chameleon,
 		/obj/item/storage/box/syndie_kit/space,
+
+		// Only in depot for rare-tier
+		/obj/item/borg/upgrade/syndicate,
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/officer
@@ -167,7 +158,6 @@
 	point_value = 110
 	// Primarily utility items with occasional low damage weaponry, and a blood-red, because that's too good for rare-tier.
 	loot = list(
-		/obj/item/borg/upgrade/syndicate,
 		/obj/item/clothing/glasses/hud/security/chameleon,
 		/obj/item/clothing/glasses/thermal,
 		/obj/item/clothing/shoes/magboots/elite,
@@ -178,18 +168,19 @@
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/pen/edagger,
 		/obj/item/pinpointer/advpinpointer,
-		/obj/item/stack/sheet/mineral/diamond{amount = 10},
 		/obj/item/storage/belt/sheath/snakesfang,
 		/obj/item/storage/box/syndidonkpockets,
 		/obj/item/storage/box/syndie_kit/stechkin,
 		/obj/item/mod/control/pre_equipped/traitor,
+
+		// rare -> officer tier for ruins
+		/obj/item/borg/upgrade/syndicate,
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/officer/depot
 	spawn_inside = /obj/structure/closet/secure_closet/depot
 	spawn_loot_chance = 40
 	loot = list(
-		/obj/item/borg/upgrade/syndicate,
 		/obj/item/clothing/glasses/hud/security/chameleon,
 		/obj/item/clothing/glasses/thermal,
 		/obj/item/clothing/shoes/magboots/elite,
@@ -200,7 +191,6 @@
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/pen/edagger,
 		/obj/item/pinpointer/advpinpointer,
-		/obj/item/stack/sheet/mineral/diamond{amount = 10},
 		/obj/item/storage/belt/sheath/snakesfang,
 		/obj/item/storage/box/syndidonkpockets,
 		/obj/item/storage/box/syndie_kit/stechkin,
