@@ -41,19 +41,22 @@
 	pda = /obj/item/pda/syndicate_fake
 	internals_slot = ITEM_SLOT_LEFT_POCKET
 	var/modsuit
+	var/armory_loot
 
 /datum/outfit/syndicatecorpse/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(modsuit && prob(5))
-		back = modsuit
 		box = null
 		head = null
 		suit = null
 		l_pocket = null
+		back = modsuit
 		suit_store = /obj/item/tank/internals/oxygen/red
 		internals_slot = ITEM_SLOT_SUIT_STORE
-	if(prob(25))
-		backpack_contents |= /obj/item/storage/box/syndie_kit
+	if(armory_loot)
+		backpack_contents |= /obj/item/storage/box/syndie_kit/loot/elite
+	else if(prob(25))
+		backpack_contents |= /obj/item/storage/box/syndie_kit/loot
 
 /datum/outfit/syndicatecorpse/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
@@ -83,7 +86,7 @@
 
 // MARK: Syndicate elite modsuit
 /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
-	name = "Syndicate Quartermaster"
+	name = "Syndicate Overseer"
 	outfit = /datum/outfit/syndicatecorpse/modsuit/elite
 
 /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite/Initialize(mapload)
@@ -94,8 +97,19 @@
 	return ..()
 
 /datum/outfit/syndicatecorpse/modsuit/elite
-	name = "Corpse of a Syndicate Quartermaster"
+	name = "Corpse of a Syndicate Overseer"
 	modsuit = /obj/item/mod/control/pre_equipped/traitor_elite
+	armory_loot = TRUE
+
+// MARK: Syndicate depot QM
+/obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite/depot
+	name = "Syndicate Quartermaster"
+	outfit = /datum/outfit/syndicatecorpse/modsuit/elite/depot
+
+/datum/outfit/syndicatecorpse/modsuit/elite/depot
+	name = "Corpse of a Syndicate Quartermaster"
+	armory_loot = FALSE
+
 
 /obj/effect/mob_spawn/human/corpse/clown/corpse
 	roundstart = TRUE

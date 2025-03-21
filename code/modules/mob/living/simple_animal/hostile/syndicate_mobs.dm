@@ -72,7 +72,6 @@
 	melee_damage_upper = 30
 	armour_penetration_percentage = 50
 	loot = list(
-		/obj/effect/spawner/random/syndie_mob_loot,
 		/obj/effect/decal/cleanable/blood/innards,
 		/obj/effect/decal/cleanable/blood,
 		/obj/effect/gibspawner/generic,
@@ -589,8 +588,6 @@
 	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/Initialize(mapload)
-	loot ^= list(/obj/effect/spawner/random/syndie_mob_loot) // No Billy, you can't get two elite modsuits from a single mob
-	loot |= list(/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite) // Random armory tier loot instead. Excluding elite mod itself.
 	if(prob(50))
 		melee_type = MELEE_WEAPON_NONE
 		ranged = TRUE
@@ -808,11 +805,11 @@
 	melee_damage_lower = 34
 	melee_damage_upper = 34
 	parry_chance = 30
-	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite
+	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite/depot
 
 /mob/living/simple_animal/hostile/syndicate/depot/modsuit/elite/Initialize(mapload)
 	if(prob(50))
-		// 50% chance of switching to extremely dangerous ranged variant
+		// 50% chance of switching to ranged variant.
 		melee_type = MELEE_WEAPON_NONE
 		ranged = TRUE
 		ranged_type = RANGED_WEAPON_SR

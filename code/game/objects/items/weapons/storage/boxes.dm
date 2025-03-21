@@ -1349,6 +1349,12 @@
 	new /obj/item/clothing/under/plasmaman/tacticool(src)
 	new /obj/item/clothing/head/helmet/space/plasmaman/tacticool(src)
 
+/obj/item/storage/box/syndie_kit/loot/populate_contents()
+	new /obj/effect/spawner/random/syndie_mob_loot(src)
+
+/obj/item/storage/box/syndie_kit/loot/elite/populate_contents()
+	new /obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite(src)
+
 #undef NODESIGN
 #undef NANOTRASEN
 #undef SYNDI
