@@ -27,13 +27,13 @@
 #define VISOR_RAIDER "armor_booster"
 #define VISOR_JAEGER "elite_armor_booster"
 
-#define ESHIELD			(1 << 0) // Do we have an energy shield in our hands that will reflect any energy projectiles?
-#define SWORD			(1 << 1) // Whether we play activation/deactivation sound of e/dsword
-#define MODSUIT			(1 << 2) // Do we wear a modsuit?
+#define ESHIELD		(1 << 0) // Do we have an energy shield in our hands that will reflect any energy projectiles?
+#define SWORD		(1 << 1) // Whether we play activation/deactivation sound of e/dsword
+#define MODSUIT		(1 << 2) // Do we wear a modsuit?
 #define ARMOR_BOOSTER	(1 << 3) // If our armor booster currently active. Affects `damage_coeff` and overlay, used alongside `modsuit` only
-#define HEALING			(1 << 4) // Are we currently healing ourselves?
-#define CRITICAL		(1 << 5) // Are we in a critical condition?
-#define ADRENAL			(1 << 6) // Do we have an adrenal bio-chip?
+#define HEALING		(1 << 4) // Are we currently healing ourselves?
+#define CRITICAL	(1 << 5) // Are we in a critical condition?
+#define ADRENAL		(1 << 6) // Do we have an adrenal bio-chip?
 
 //////////////////////////////
 // MARK: SYNDICATE MOB
@@ -778,7 +778,6 @@
 	alert_on_death = TRUE
 	parry_chance = 20
 
-
 /mob/living/simple_animal/hostile/syndicate/depot/officer/Initialize(mapload)
 	if(prob(50))
 		// 50% chance of switching to ranged variant.
@@ -868,7 +867,6 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	del_on_death = TRUE
 	deathmessage = "is smashed into pieces!"
-
 	initial_traits = list(TRAIT_FLYING)
 
 /mob/living/simple_animal/hostile/viscerator/Initialize(mapload)
@@ -881,10 +879,33 @@
 #undef BLOOD_SUIT
 #undef BLOOD_HANDS
 #undef BLOOD_SHOES
+
 #undef MELEE_WEAPON_NONE
 #undef MELEE_WEAPON_ESWORD
 #undef MELEE_WEAPON_DSWORD
+
 #undef RANGED_WEAPON_PISTOL
 #undef RANGED_WEAPON_C20R
 #undef RANGED_WEAPON_M90
 #undef RANGED_WEAPON_SR
+#undef RANGED_WEAPON_SR_IDLE
+
+#undef SOUND_SMG
+#undef SOUND_AR
+#undef SOUND_SR
+
+#undef SYNDICATE
+#undef RAIDER
+#undef JAEGER
+
+#undef VISOR_MASK
+#undef VISOR_RAIDER
+#undef VISOR_JAEGER
+
+#undef ESHIELD
+#undef SWORD
+#undef MODSUIT
+#undef ARMOR_BOOSTER
+#undef HEALING
+#undef CRITICAL
+#undef ADRENAL
