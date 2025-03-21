@@ -577,8 +577,8 @@ GLOBAL_LIST_EMPTY(turret_icons)
 
 /obj/machinery/porta_turret/proc/in_faction(mob/living/target)
 	if(!(faction in target.faction))
-		return FALSE
-	return TRUE
+		return 0
+	return 1
 
 /obj/machinery/porta_turret/proc/assess_and_assign(atom/movable/AM, list/targets, list/secondarytargets)
 	var/target_priority
@@ -662,13 +662,13 @@ GLOBAL_LIST_EMPTY(turret_icons)
 
 /obj/machinery/porta_turret/proc/tryToShootAt(list/mob/living/targets)
 	if(length(targets) && last_target && (last_target in targets) && target(last_target))
-		return TRUE
+		return 1
 
 	while(length(targets) > 0)
 		var/mob/living/M = pick(targets)
 		targets -= M
 		if(target(M))
-			return TRUE
+			return 1
 
 /obj/machinery/porta_turret/proc/check_pop_up()
 	/// Whitelist to determine what objects can be put over turrets while letting them deploy
@@ -794,17 +794,7 @@ GLOBAL_LIST_EMPTY(turret_icons)
 		A.yo = U.y - T.y
 		A.xo = U.x - T.x
 		A.starting = loc
-		if(U.x > T.x)
-			U.pixel_x = 12
-		else if(U.x < T.x)
-			U.pixel_x = -12
-		if(U.y > T.y)
-			U.pixel_y = -12
-		else if(U.y < T.y)
-			U.pixel_y = 12
 		A.fire()
-		U.pixel_x = initial(U.pixel_x)
-		U.pixel_y = initial(U.pixel_y)
 	else
 		A.throw_at(target, scan_range, 1)
 	return A
