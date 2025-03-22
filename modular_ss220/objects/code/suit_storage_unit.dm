@@ -13,8 +13,8 @@
 	suit_type = null
 	state_open = TRUE
 
-/obj/machinery/suit_storage_unit/syndicate/traitor
+/obj/machinery/suit_storage_unit/syndicate/secure/traitor
 	suit_type = /obj/item/mod/control/pre_equipped/traitor
 
-/obj/machinery/suit_storage_unit/syndicate/traitor_elite
+/obj/machinery/suit_storage_unit/syndicate/secure/traitor_elite
 	suit_type = /obj/item/mod/control/pre_equipped/traitor_elite

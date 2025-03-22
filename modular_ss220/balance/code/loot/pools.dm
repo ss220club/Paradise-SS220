@@ -85,11 +85,11 @@
 
 /obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor
 	point_value = 110
-	loot = list(/obj/machinery/suit_storage_unit/syndicate/traitor)
+	loot = list(/obj/machinery/suit_storage_unit/syndicate/secure/traitor)
 
 /obj/effect/spawner/random/pool/spaceloot/mod/syndie/elite
 	point_value = 200
-	loot = list(/obj/machinery/suit_storage_unit/syndicate/traitor_elite)
+	loot = list(/obj/machinery/suit_storage_unit/syndicate/secure/traitor_elite)
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/common_rare
 	loot = list(
