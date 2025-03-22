@@ -136,6 +136,12 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
 	new /obj/item/flashlight/flare/glowstick/red(src)
 
+/obj/item/storage/box/syndie_kit/loot/populate_contents()
+	new /obj/effect/spawner/random/syndie_mob_loot(src)
+
+/obj/item/storage/box/syndie_kit/loot/elite/populate_contents()
+	new /obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite(src)
+
 //////////////////
 /* Common Boxes */
 //////////////////
@@ -1348,12 +1354,6 @@
 /obj/item/storage/box/tacticool_envirosuit/populate_contents()
 	new /obj/item/clothing/under/plasmaman/tacticool(src)
 	new /obj/item/clothing/head/helmet/space/plasmaman/tacticool(src)
-
-/obj/item/storage/box/syndie_kit/loot/populate_contents()
-	new /obj/effect/spawner/random/syndie_mob_loot(src)
-
-/obj/item/storage/box/syndie_kit/loot/elite/populate_contents()
-	new /obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite(src)
 
 #undef NODESIGN
 #undef NANOTRASEN

@@ -7,6 +7,8 @@
 	icon_state = "giftbox"
 	spawn_pool_id = "space_loot_spawn_pool"
 	record_spawn = TRUE
+	spawn_random_offset = TRUE // static things are boring!
+	spawn_random_offset_max_pixels = 12
 
 /obj/effect/spawner/random/pool/spaceloot/record_item(type_path_to_make)
 	if(ispath(type_path_to_make, /obj/effect))
@@ -200,7 +202,6 @@
 		/obj/item/mod/module/stealth,
 	)
 
-
 /obj/effect/spawner/random/pool/spaceloot/syndicate/armory
 	name = "syndicate depot loot, armory"
 	// Combat orientated items that could give the player an advantage if an antag messes with them.
@@ -246,7 +247,6 @@
 		/obj/item/storage/box/syndie_kit/teleporter,
 		/obj/item/cqc_manual,
 	)
-
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed
 	loot = list(
@@ -325,9 +325,6 @@
 	guaranteed = TRUE
 	point_value = 20
 	spawn_all_loot = TRUE
-	spawn_random_offset = TRUE
-	spawn_random_offset_max_pixels = 8
-
 
 /obj/effect/spawner/random/pool/spaceloot/mechtransport/storage1
 	loot = list(

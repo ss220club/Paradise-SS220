@@ -15,6 +15,7 @@
 #define RANGED_WEAPON_SR "sr"
 #define RANGED_WEAPON_SR_IDLE "sr-idle"
 
+#define SOUND_MOD 'sound/mecha/mechmove03.ogg'
 #define SOUND_SMG 'sound/weapons/gunshots/gunshot_smg.ogg'
 #define SOUND_AR 'sound/weapons/gunshots/gunshot_rifle.ogg'
 #define SOUND_SR 'sound/weapons/gunshots/gunshot_sniper.ogg'
@@ -120,7 +121,7 @@
 /mob/living/simple_animal/hostile/syndicate/Initialize(mapload)
 	. = ..()
 	if(syndie_flags & MODSUIT)
-		death_sound = 'sound/mecha/mechmove03.ogg'
+		death_sound = SOUND_MOD
 	update_icon(UPDATE_OVERLAYS)
 	if(loot) // Prevents us from adding loot if there is none yet
 		if(prob(50))
@@ -266,13 +267,13 @@
 			syndie_flags &= ~ARMOR_BOOSTER
 			damage_coeff[BRUTE] += 0.2
 			damage_coeff[BURN] += 0.1
-			playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE)
+			playsound(src, SOUND_MOD, 25, TRUE)
 			apply_visor()
 		else if(enough_pressure && !(syndie_flags & ARMOR_BOOSTER))
 			syndie_flags |= ARMOR_BOOSTER
 			damage_coeff[BRUTE] -= 0.2
 			damage_coeff[BURN] -= 0.1
-			playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE)
+			playsound(src, SOUND_MOD, 25, TRUE)
 			apply_visor()
 	else if(!enough_pressure)
 		adjustHealth(unsuitable_atmos_damage)
@@ -314,14 +315,36 @@
 	if(!target_turf)
 		return
 	if(casingtype)
-		if(target_turf.x > startloc.x)
-			target_turf.pixel_x = 15
-		else if(target_turf.x < startloc.x)
-			target_turf.pixel_x = -15
-		if(target_turf.y > startloc.y)
-			target_turf.pixel_y = -15
-		else if(target_turf.y < startloc.y)
-			target_turf.pixel_y = 15
+		var/dx = abs(target_turf.x - startloc.x)
+		var/dy = abs(target_turf.y - startloc.y)
+		if(target_turf.x < startloc.x && target_turf.y > startloc.y)
+			if(dy > dx)
+				target_turf.pixel_x = 14
+				target_turf.pixel_y = 14
+			else if(dy < dx)
+				target_turf.pixel_x = -14
+				target_turf.pixel_y = -14
+		else if(target_turf.x < startloc.x && target_turf.y < startloc.y)
+			if(dy > dx)
+				target_turf.pixel_x = 14
+				target_turf.pixel_y = -14
+			else if(dy < dx)
+				target_turf.pixel_x = -14
+				target_turf.pixel_y = 14
+		else if(target_turf.x > startloc.x && target_turf.y > startloc.y)
+			if(dy > dx)
+				target_turf.pixel_x = -14
+				target_turf.pixel_y = 14
+			else if(dy < dx)
+				target_turf.pixel_x = 14
+				target_turf.pixel_y = -14
+		else if(target_turf.x > startloc.x && target_turf.y < startloc.y)
+			if(dy > dx)
+				target_turf.pixel_x = -14
+				target_turf.pixel_y = -14
+			else if(dy < dx)
+				target_turf.pixel_x = 14
+				target_turf.pixel_y = 14
 		var/obj/item/ammo_casing/casing = new casingtype(startloc)
 		playsound(src, projectilesound, 100, 1)
 		casing.fire(targeted_atom, src, zone_override = ran_zone(), firer_source_atom = src)
@@ -858,6 +881,7 @@
 	attacktext = "cuts"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	faction = list(SYNDICATE)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	mob_size = MOB_SIZE_TINY
 	bubble_icon = "syndibot"
@@ -887,6 +911,7 @@
 #undef RANGED_WEAPON_SR
 #undef RANGED_WEAPON_SR_IDLE
 
+#undef SOUND_MOD
 #undef SOUND_SMG
 #undef SOUND_AR
 #undef SOUND_SR
