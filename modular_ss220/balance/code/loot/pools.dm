@@ -80,14 +80,14 @@
 	loot = list(
 		/obj/machinery/suit_storage_unit/syndicate/empty = 90,
 		/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor = 9,
-		/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor_elite = 1,
+		/obj/effect/spawner/random/pool/spaceloot/mod/syndie/elite = 1,
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor
 	point_value = 110
 	loot = list(/obj/machinery/suit_storage_unit/syndicate/traitor)
 
-/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor_elite
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie/elite
 	point_value = 200
 	loot = list(/obj/machinery/suit_storage_unit/syndicate/traitor_elite)
 
@@ -265,12 +265,17 @@
 /obj/effect/spawner/random/pool/spaceloot/mod/syndie/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
+	loot = list(
+		/obj/machinery/suit_storage_unit/syndicate/empty = 90,
+		/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor/gateway = 9,
+		/obj/effect/spawner/random/pool/spaceloot/mod/syndie/elite/gateway = 1,
+	)
 
 /obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
 
-/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor_elite/gateway
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie/elite/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
 
@@ -372,7 +377,7 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
 	spawn_random_offset = FALSE
-	point_value = 75
+	point_value = 150
 	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie)
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha
@@ -380,12 +385,11 @@
 	spawn_random_offset = FALSE
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha/mauler
-	point_value = 80
-	spawn_loot_chance = 50
+	point_value = 160
 	loot = list(/obj/mecha/combat/marauder/mauler/spacebattle)
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha/ripley_emagged
-	point_value = 55
+	point_value = 75
 	loot = list(/obj/mecha/working/ripley/emagged)
 
 /obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_mixed
