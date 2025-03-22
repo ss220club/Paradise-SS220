@@ -57,6 +57,7 @@
 /obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha
 	icon_state = "durand_old"
 	point_value = 100
+	spawn_random_offset = FALSE
 	loot = list(/obj/mecha/combat/durand/old/mechtransport_new)
 
 /obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha_equipment
@@ -74,15 +75,21 @@
 	icon_state = "mod"
 
 /obj/effect/spawner/random/pool/spaceloot/mod/syndie
-	name = "blood mod 40pc"
+	name = "syndie mod 10pc"
+	spawn_random_offset = FALSE
 	loot = list(
-		/obj/machinery/suit_storage_unit/syndicate/empty = 3,
-		/obj/effect/spawner/random/pool/spaceloot/mod/nuclear = 2,
+		/obj/machinery/suit_storage_unit/syndicate/empty = 90,
+		/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor = 9,
+		/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor_elite = 1,
 	)
 
-/obj/effect/spawner/random/pool/spaceloot/mod/nuclear
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor
 	point_value = 110
-	loot = list(/obj/machinery/suit_storage_unit/syndicate)
+	loot = list(/obj/machinery/suit_storage_unit/syndicate/traitor)
+
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor_elite
+	point_value = 200
+	loot = list(/obj/machinery/suit_storage_unit/syndicate/traitor_elite)
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/common_rare
 	loot = list(
@@ -116,6 +123,7 @@
 	name = "sec mod 75pc"
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 	icon_state = "mod"
+	spawn_random_offset = FALSE
 	point_value = 75
 	spawn_loot_chance = 75
 	loot = list(
@@ -132,6 +140,8 @@
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "giftbox"
 	spawn_pool_id = "gateway_spawn_pool"
+	spawn_random_offset = TRUE
+	spawn_random_offset_max_pixels = 12
 
 /obj/effect/spawner/random/pool/gatewayloot/record_item(type_path_to_make)
 	if(ispath(type_path_to_make, /obj/effect))
@@ -169,6 +179,7 @@
 	loot = list(/obj/item/wisp_lantern)
 
 /obj/effect/spawner/random/pool/gatewayloot/wizard
+	spawn_random_offset = FALSE
 	point_value = 150
 	loot = list(/mob/living/simple_animal/hostile/deadwizard)
 
@@ -245,12 +256,21 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/immortality_ring
+	spawn_random_offset = FALSE
 	point_value = 185
 	loot = list(
 		/obj/item/clothing/gloves/ring/immortality_ring
 	)
 
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear/gateway
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie/gateway
+	spawn_pool_id = "gateway_spawn_pool"
+	record_spawn = FALSE
+
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor/gateway
+	spawn_pool_id = "gateway_spawn_pool"
+	record_spawn = FALSE
+
+/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor_elite/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
 
@@ -351,11 +371,13 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
+	spawn_random_offset = FALSE
 	point_value = 75
 	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie)
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha
 	icon_state = "durand_old"
+	spawn_random_offset = FALSE
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha/mauler
 	point_value = 80
@@ -399,6 +421,7 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security
+	spawn_random_offset = FALSE
 	point_value = 30
 	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security)
 
@@ -406,6 +429,7 @@
 	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security/bridge)
 
 /obj/effect/spawner/random/pool/gatewayloot/wish_granter
+	spawn_random_offset = FALSE
 	point_value = 100
 	loot = list(
 		/obj/machinery/wish_granter_dark,

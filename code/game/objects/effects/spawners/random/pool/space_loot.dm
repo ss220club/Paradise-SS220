@@ -259,6 +259,7 @@
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mob
 	icon = 'icons/effects/spawner_icons.dmi'
 	icon_state = "syndie_depot"
+	spawn_random_offset = FALSE
 	point_value = 3
 	loot = list(
 		/mob/living/simple_animal/hostile/syndicate = 40,
