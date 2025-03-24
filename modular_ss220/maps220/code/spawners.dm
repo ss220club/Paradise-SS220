@@ -131,16 +131,6 @@
 	spawn_loot_chance = 20
 	loot = list(/obj/item/butcher_chainsaw/gateway)
 
-/obj/effect/spawner/random/syndie_mob_loot
-	spawn_loot_chance = 25
-	loot = list(
-		/obj/item/reagent_containers/patch/styptic,
-		/obj/item/reagent_containers/patch/silver_sulf,
-		/obj/item/food/syndicake,
-		/obj/item/food/donkpocket,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
-	)
-
 /obj/effect/spawner/random/syndie_mob_loot/ranged
 	spawn_loot_chance = 1
 	loot = list(

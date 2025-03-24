@@ -58,7 +58,7 @@
 		internals_slot = ITEM_SLOT_SUIT_STORE
 	if(armory_loot)
 		backpack_contents |= /obj/item/storage/box/syndie_kit/loot/elite
-	else if(prob(25))
+	else if(prob(50))
 		backpack_contents |= /obj/item/storage/box/syndie_kit/loot
 
 /datum/outfit/syndicatecorpse/post_equip(mob/living/carbon/human/H, visualsOnly)
