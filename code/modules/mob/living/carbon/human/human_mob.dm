@@ -1,5 +1,6 @@
 /mob/living/carbon/human/Initialize(mapload, datum/species/new_species = /datum/species/human)
-	icon = null // This is now handled by overlays -- we just keep an icon for the sake of the map editor.
+	if(new_species != /datum/species/human_doll) //SS220 EDIT - EVENT DOLL
+		icon = null // This is now handled by overlays -- we just keep an icon for the sake of the map editor.
 	create_dna()
 
 	. = ..()
@@ -603,7 +604,7 @@
 					for(var/datum/data/record/R in GLOB.data_core.medical)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr, EXAMINE_HUD_MEDICAL_READ))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
+								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["blood_type"]]")
 								to_chat(usr, "<b>DNA:</b> [R.fields["b_dna"]]")
 								to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
