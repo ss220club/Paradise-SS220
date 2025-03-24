@@ -110,7 +110,7 @@ WOODEN_FLOOR_HELPER(/turf/simulated/floor/wood, /obj/item/stack/tile/wood)
 	floor_tile = /obj/item/stack/tile/wood/fancy
 
 /turf/simulated/floor/wood/fancy/get_broken_states()
-	return list("wood_fancy-broken", "wood_fancy-broken2", "wood_fancy-broken3")
+	return list("wood_fancy-broken", "wood_fancy-broken2", "wood_fancy-broken3", "wood_fancy-broken4", "wood_fancy-broken5", "wood_fancy-broken6", "wood_fancy-broken7")
 
 WOODEN_FLOOR_HELPER(/turf/simulated/floor/wood/fancy, /obj/item/stack/tile/wood/fancy)
 
