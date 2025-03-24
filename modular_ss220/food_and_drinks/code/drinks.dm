@@ -1036,5 +1036,5 @@
 	broken_bottle_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 
 /obj/machinery/economy/vending/boozeomat/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/reagent_containers/drinks/bottle/carrotjuice = 2)
-	return ..()
