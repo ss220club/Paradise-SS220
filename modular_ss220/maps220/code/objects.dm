@@ -3,7 +3,6 @@
 /obj/structure/light_fake
 	name = "light fixture"
 	desc = "A lighting fixture."
-	icon = 'modular_ss220/aesthetics/lights/icons/lights.dmi'
 	icon_state = "tube1"
 	anchored = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
