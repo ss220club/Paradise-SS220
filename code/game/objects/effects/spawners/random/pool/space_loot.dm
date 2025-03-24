@@ -8,7 +8,7 @@
 	spawn_pool_id = "space_loot_spawn_pool"
 	record_spawn = TRUE
 	spawn_random_offset = TRUE // static things are boring!
-	spawn_random_offset_max_pixels = 12
+	spawn_random_offset_max_pixels = 8
 
 /obj/effect/spawner/random/pool/spaceloot/record_item(type_path_to_make)
 	if(ispath(type_path_to_make, /obj/effect))
