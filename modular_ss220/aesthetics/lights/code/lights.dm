@@ -1,5 +1,3 @@
-/atom
-
 /obj/machinery/light
 	brightness_color = "#FFF7F2"
 	nightshift_light_color = "#FFDDCC"
