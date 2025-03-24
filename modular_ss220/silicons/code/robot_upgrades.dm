@@ -57,5 +57,5 @@
 	require_module = TRUE
 	module_type = /obj/item/robot_module/engineering
 	items_to_replace = list(
-			/obj/item/holosign_creator/atmos/robot/better = /obj/item/holosign_creator/atmos/robot/best
+			/obj/item/holosign_creator/atmos/robot = /obj/item/holosign_creator/atmos/robot/best
 	)
