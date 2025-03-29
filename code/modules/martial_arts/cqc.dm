@@ -3,7 +3,7 @@
 	weight = 6
 	has_explaination_verb = TRUE
 	can_parry = TRUE
-	combos = list(/datum/martial_combo/cqc/restrain, /datum/martial_combo/cqc/punch, /datum/martial_combo/cqc/takedown, /datum/martial_combo/cqc/adaptive, /datum/martial_combo/cqc/advanced) //SS220 EDIT
+	combos = list(/datum/martial_combo/cqc/slam, /datum/martial_combo/cqc/kick, /datum/martial_combo/cqc/restrain, /datum/martial_combo/cqc/pressure, /datum/martial_combo/cqc/consecutive)
 	var/restraining = FALSE //used in cqc's disarm_act to check if the disarmed is being restrained and so whether they should be put in a chokehold or not
 	var/chokehold_active = FALSE //Then uses this to determine if the restrain actually goes anywhere
 	var/static/list/areas_under_siege = typecacheof(list(/area/station/service/kitchen,
@@ -83,19 +83,9 @@
 /datum/martial_art/cqc/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	MARTIAL_ARTS_ACT_CHECK
 	var/obj/item/grab/G = D.grabbedby(A, 1)
-	//SS220 EDIT START
-	if(!G)
-		return FALSE
-	if(A.dir == D.dir)
-		G.last_upgrade = world.time
-		G.state = GRAB_AGGRESSIVE
-		G.icon_state = "grabbed1"
-		G.hud.icon_state = "reinforce1"
-		G.adjust_position()
-		add_attack_logs(D, A, "Aggressively grabbed", ATKLOG_ALL)
-	//SS220 EDIT END
-	D.Immobilize(1 SECONDS) //Catch them off guard, but not long enough to do too much nonsense
-	add_attack_logs(A, D, "Melee attacked with martial-art [src] : grabbed", ATKLOG_ALL)
+	if(G)
+		D.Immobilize(1 SECONDS) //Catch them off guard, but not long enough to do too much nonsense
+		add_attack_logs(A, D, "Melee attacked with martial-art [src] : grabbed", ATKLOG_ALL)
 
 	return TRUE
 
@@ -103,53 +93,45 @@
 	MARTIAL_ARTS_ACT_CHECK
 	add_attack_logs(A, D, "Melee attacked with martial-art [src]", ATKLOG_ALL)
 	A.do_attack_animation(D)
-	//SS220 EDIT START
-	//finish of grab, grab, harm combo
-	if(restraining && !break_neck_cd)
-		break_neck(D, A)
-		return TRUE
 	var/picked_hit_type = pick("CQC'd", "neck chopped", "gut punched", "Big Bossed")
+	var/bonus_damage = 20
 	if(IS_HORIZONTAL(D))
+		bonus_damage += 10 //Being stomped on doesn't feel good.
 		picked_hit_type = "stomps on"
-	// cant use hands for 2 seconds
-	if(A.zone_selected == "r_hand" || A.zone_selected == "l_hand")
-		ADD_TRAIT(D, TRAIT_HANDS_BLOCKED, "cqc harm act")
-		addtimer(CALLBACK(src, PROC_REF(off_hand_pain), D), 2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
-	// extra damage if has knife
-	if(istype(A.get_inactive_hand(), /obj/item/kitchen/knife))
-		D.apply_damage(25, BRUTE, A.zone_selected)
-		D.apply_damage(10, STAMINA)
+	D.apply_damage(bonus_damage, STAMINA)
+	if(picked_hit_type == "kicks" || picked_hit_type == "stomps on")
+		playsound(get_turf(D), 'sound/weapons/cqchit2.ogg', 10, TRUE, -1)
 	else
-		D.apply_damage(1, BRUTE, A.zone_selected)
-		D.apply_damage(15, STAMINA)
-	playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 10, TRUE, -1)
+		playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 10, TRUE, -1)
 	D.visible_message("<span class='danger'>[A] [picked_hit_type] [D]!</span>", \
 						"<span class='userdanger'>[A] [picked_hit_type] you!</span>")
 	add_attack_logs(A, D, "Melee attacked with martial-art [src] : [picked_hit_type]", ATKLOG_ALL)
 	if(IS_HORIZONTAL(A) && !IS_HORIZONTAL(D))
-		takedown(A, D)
-	//SS220 EDIT END
+		D.visible_message("<span class='warning'>[A] leg sweeps [D]!", \
+							"<span class='userdanger'>[A] leg sweeps you!</span>")
+		playsound(get_turf(A), 'sound/effects/hit_kick.ogg', 10, TRUE, -1)
+		D.KnockDown(5 SECONDS)
+		A.SetKnockDown(0 SECONDS)
+		A.resting = FALSE
+		A.stand_up() //Quickly get up like the cool dude you are.
+		add_attack_logs(A, D, "Melee attacked with martial-art [src] : Leg sweep", ATKLOG_ALL)
 	return TRUE
 
 /datum/martial_art/cqc/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	MARTIAL_ARTS_ACT_CHECK
 	var/obj/item/grab/G = A.get_inactive_hand()
-	//SS220 EDIT START
-	//finish of grab, grab, harm combo
-	if(restraining && istype(G) && G.affecting == D)
-		artery_smash(D, A)
-
-	var/obj/item/shield = D.get_best_shield()
+	if(restraining && istype(G) && G.affecting == D && !chokehold_active)
+		start_chokehold(A, D)
+		return TRUE
+	else
+		drop_restraining()
 
 	if(!IS_HORIZONTAL(D) || !restraining)
-		playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 5, TRUE, -1)
-		if(shield && shield.hit_reaction(D, A, "strike", 100))
-			return TRUE // blocked by shield
 		D.visible_message("<span class='warning'>[A] strikes [D]'s jaw with their hand!</span>", \
 							"<span class='userdanger'>[A] strikes your jaw, disorienting you!</span>")
-		D.drop_item()
-		D.apply_damage(5, STAMINA)
-	//SS220 EDIT END
+		playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 5, TRUE, -1)
+		D.SetSlur(4 SECONDS)
+		D.apply_damage(15, STAMINA)
 	else
 		D.visible_message("<span class='danger'>[A] attempted to disarm [D]!</span>", "<span class='userdanger'>[A] attempted to disarm [D]!</span>")
 		playsound(D, 'sound/weapons/punchmiss.ogg', 5, TRUE, -1)
