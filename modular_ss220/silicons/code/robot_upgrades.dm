@@ -38,7 +38,7 @@
 	)
 
 // Улучшения голопроектора //
-/obj/item/borg/upgrade/atmos_holofan_better
+/obj/item/borg/upgrade/atmos_holofan/better
 	name = "Улучшение модульного ATMOS голопроектора"
 	desc = "Повышает энергоэффективность проектора, позволяя создавать до 3 голопроекций."
 	icon_state = "cyborg_upgrade2"
@@ -49,13 +49,59 @@
 			/obj/item/holosign_creator/atmos/robot = /obj/item/holosign_creator/atmos/robot/better
 	)
 
-/obj/item/borg/upgrade/atmos_holofan_best
+/obj/item/borg/upgrade/atmos_holofan/best
 	name = "Оптимизация модульного ATMOS голопроектора"
 	desc = "Оптимизирует энергоэффективность проектора и заменяет микросхемы на продвинутые, позволяя создавать до 5 голопроекций."
 	icon_state = "cyborg_upgrade5"
 	origin_tech = "materials=6;engineering=6;magnets=6;programming=6"
 	require_module = TRUE
 	module_type = /obj/item/robot_module/engineering
+	required_upgrades = list(/obj/item/borg/upgrade/atmos_holofan/better)
 	items_to_replace = list(
 			/obj/item/holosign_creator/atmos/robot = /obj/item/holosign_creator/atmos/robot/best
 	)
+
+// Очистка проекций при установке улучшений //
+/obj/item/holosign_creator/proc/clean_signs(mob/user)
+	if(length(signs) > 0)
+		for(var/A in signs)
+			qdel(A)
+		to_chat(user, span_notice("Все активные голограммы были отключены."))
+
+/obj/item/borg/upgrade/atmos_holofan/after_install(mob/user, mob/living/silicon/robot/R)
+	. = ..()
+	if(!.)
+		return
+
+	for(var/obj/item/holosign_creator/target in R)
+		target.clean_signs()
+		break
+
+	return TRUE
+
+// Проверка наличия необходимых улучшений //
+/obj/item/borg/upgrade
+	var/required_upgrades = list()
+
+/obj/item/borg/upgrade/pre_install_checks(mob/user, mob/living/silicon/robot/R)
+	. = ..()
+	if(!.)
+		return
+
+	var/list/missing_upgrades = list()
+
+	for(var/item in required_upgrades)
+		var/atom/required_upgrade = item
+		var/upgrade_found = FALSE
+
+		for(var/obj/item/borg/upgrade/installed_upgrade in R)
+			if(istype(installed_upgrade,required_upgrade))
+				upgrade_found = TRUE
+				break
+
+		if(!upgrade_found)
+			missing_upgrades += required_upgrade::name
+
+	if(length(missing_upgrades) > 0)
+		to_chat(user, span_notice("Ошибка: отсутствуют необходимые улучшения: [missing_upgrades.Join(", ")]."))
+		return FALSE

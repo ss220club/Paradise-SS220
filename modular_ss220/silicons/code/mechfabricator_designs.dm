@@ -19,23 +19,23 @@
 	category = list("Cyborg Upgrade Modules")
 
 // Улучшения голопроектора //
-/datum/design/borg_upgrade_atmos_better
+/datum/design/borg_upgrade_atmos/better
 	name = "Engineer Cyborg Upgrade (Upgraded ATMOS holofan projector)"
 	desc = "Увеличивает количество создаваемых голопроекций до трёх."
 	id = "borg_upgrade_atmos_holofan_better"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/atmos_holofan_better
+	build_path = /obj/item/borg/upgrade/atmos_holofan/better
 	req_tech = list("materials" = 5, "engineering" = 5, "magnets" = 5)
 	materials = list(MAT_METAL=5000, MAT_SILVER=2500, MAT_GOLD=2500, MAT_GLASS=2500)
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
-/datum/design/borg_upgrade_atmos_best
+/datum/design/borg_upgrade_atmos/best
 	name = "Engineer Cyborg Upgrade (Advanced ATMOS holofan projector)"
 	desc = "Увеличивает количество создаваемых голопроекций до пяти."
 	id = "borg_upgrade_atmos_holofan_best"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/atmos_holofan_best
+	build_path = /obj/item/borg/upgrade/atmos_holofan/best
 	req_tech = list("materials" = 7, "engineering" = 7, "magnets" = 7, "programming" = 7)
 	materials = list(MAT_TITANIUM=5000, MAT_SILVER=5000, MAT_GOLD = 5000, MAT_GLASS=2500, MAT_DIAMOND=1500)
 	construction_time = 120
