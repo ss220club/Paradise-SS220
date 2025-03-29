@@ -401,7 +401,7 @@
 		//Expand to each dir
 		for(var/direction in GLOB.cardinal)
 			var/turf/target_turf = get_step(source_turf, direction)
-			if(processed[target_turf] || !source_turf.CanAtmosPass(direction) || !target_turf.CanAtmosPass(turn(direction, 180)))
+			if(processed[target_turf] || !source_turf.CanAtmosPassBidirectional(direction))
 				continue
 			create_blob(target_turf)
 			expand_queue += target_turf
