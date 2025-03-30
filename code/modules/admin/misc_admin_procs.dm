@@ -516,7 +516,7 @@ GLOBAL_VAR_INIT(disable_explosions, FALSE)
 	if(!check_rights(R_SERVER))
 		return
 
-	if(!SSticker)
+	if(SSticker.current_state < GAME_STATE_PREGAME)
 		alert("Unable to start the game as it is not set up.")
 		return
 
@@ -604,7 +604,7 @@ GLOBAL_VAR_INIT(disable_explosions, FALSE)
 	if(!check_rights(R_SERVER))
 		return
 
-	if(!SSticker)
+	if(SSticker.current_state < GAME_STATE_STARTUP)
 		alert("Slow down a moment, let the ticker start first!")
 		return
 
@@ -1007,9 +1007,11 @@ GLOBAL_VAR_INIT(gamma_ship_location, 1) // 0 = station , 1 = space
 		if(rank_mask && !check_rights_for(X, rank_mask))
 			result[2]++
 			continue
-		if(X.holder.fakekey)
-			result[2]++
-			continue
+		// SS220 EDIT START - ignore stealth mode when counting active staff
+		// if(X.holder.fakekey)
+		// 	result[2]++
+		// 	continue
+		// SS220 EDIT END
 		if(X.is_afk())
 			result[3]++
 			continue

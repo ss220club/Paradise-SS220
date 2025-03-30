@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(mapping)
 	// Makes a blank space level for the sake of randomness
 	GLOB.space_manager.add_new_zlevel("Empty Area", linkage = CROSSLINKED, traits = empty_z_traits)
 	// Add a reserved z-level
-	// add_reservation_zlevel() // CURRENTLY DISABLED, AS NOTHING USES IT. IF YOU WANT TO ADD LAZYLOADING TO ANYTHING, MAKE SURE TO REIMPLEMENT THIS
+	add_reservation_zlevel()
 
 	// Setup the Z-level linkage
 	GLOB.space_manager.do_transition_setup()
@@ -201,8 +201,8 @@ SUBSYSTEM_DEF(mapping)
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_HANGOVER))
 		generate_themed_messes(list(/obj/effect/spawner/themed_mess/party))
 
-/datum/controller/subsystem/mapping/proc/seed_space_salvage(space_z_levels)
-	log_startup_progress("Seeding space salvage...")
+/datum/controller/subsystem/mapping/proc/seed_space_salvage(space_z_levels, space = TRUE) // SS220 EDIT
+	log_startup_progress("Seeding [space ? "space" : "away mission"] salvage...") // SS220 EDIT
 	var/space_salvage_timer = start_watch()
 	var/seeded_salvage_surfaces = list()
 	var/seeded_salvage_closets = list()
@@ -221,7 +221,7 @@ SUBSYSTEM_DEF(mapping)
 		for(var/z_level_turf in z_level_turfs)
 			var/turf/T = z_level_turf
 			var/area/A = get_area(T)
-			if(istype(A, /area/ruin/space))
+			if((istype(A, /area/ruin/space) && space) || (istype(A, /area/awaymission) && !space)) // SS220 EDIT
 							// cardboard boxes are blacklisted otherwise deepstorage.dmm ends up hogging all the loot
 				var/list/closet_blacklist = list(/obj/structure/closet/cardboard, /obj/structure/closet/fireaxecabinet, /obj/structure/closet/walllocker/emerglocker, /obj/structure/closet/crate/can, /obj/structure/closet/body_bag, /obj/structure/closet/coffin)
 				for(var/obj/structure/closet/closet in T)
@@ -235,6 +235,8 @@ SUBSYSTEM_DEF(mapping)
 					if(table.flipped)
 						continue // Looks very silly
 					seeded_salvage_surfaces |= table
+				for(var/obj/structure/rack/rack in T) // SS220 EDIT
+					seeded_salvage_surfaces |= rack // SS220 EDIT
 
 	var/max_salvage_attempts = rand(10, 15)
 	while(max_salvage_attempts > 0 && length(seeded_salvage_closets) > 0)
@@ -252,7 +254,7 @@ SUBSYSTEM_DEF(mapping)
 		salvage_item.scatter_atom()
 		max_salvage_attempts -= 1
 
-	log_startup_progress("Successfully seeded space salvage in [stop_watch(space_salvage_timer)]s.")
+	log_startup_progress("Successfully seeded [space ? "space" : "away mission"] salvage in [stop_watch(space_salvage_timer)]s.") // SS220 EDIT
 
 // Do not confuse with seedRuins()
 /datum/controller/subsystem/mapping/proc/handleRuins()
@@ -369,10 +371,12 @@ SUBSYSTEM_DEF(mapping)
 	return used_turfs[T]
 
 /// Requests a /datum/turf_reservation based on the given width, height.
-/datum/controller/subsystem/mapping/proc/request_turf_block_reservation(width, height)
+/datum/controller/subsystem/mapping/proc/request_turf_block_reservation(width, height, reservation_type = /datum/turf_reservation, turf_type_override)
 	UNTIL(!clearing_reserved_turfs)
 	log_debug("Reserving [width]x[height] turf reservation")
-	var/datum/turf_reservation/reserve = new /datum/turf_reservation
+	var/datum/turf_reservation/reserve = new reservation_type
+	if(!isnull(turf_type_override))
+		reserve.turf_type = turf_type_override
 	for(var/i in levels_by_trait(Z_FLAG_RESERVED))
 		if(reserve.reserve(width, height, i))
 			return reserve
@@ -418,6 +422,7 @@ SUBSYSTEM_DEF(mapping)
 	unused_turfs["[z]"] = block
 	clearing_reserved_turfs = FALSE
 
+// TODO: Firing in a non-fire folder... Someone needs to move this file someday.
 /datum/controller/subsystem/mapping/fire(resumed)
 	// Cache for sonic speed
 	var/list/list/turf/unused_turfs = src.unused_turfs
@@ -448,8 +453,7 @@ SUBSYSTEM_DEF(mapping)
 	lists_to_reserve.Cut(1, index)
 
 /**
- * Lazy loads a template on a lazy-loaded z-level
- * If you want to use this as non-debug, make sure to uncomment add_reservation_zlevel in /datum/controller/subsystem/mapping/Initialize()
+ * Lazy loads a template on a lazy-loaded z-level.
  */
 /datum/controller/subsystem/mapping/proc/lazy_load_template(datum/map_template/template)
 	RETURN_TYPE(/datum/turf_reservation)
