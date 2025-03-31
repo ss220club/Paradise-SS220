@@ -26037,9 +26037,7 @@
 /area/station/engineering/atmos)
 "jHm" = (
 /obj/machinery/light/directional/east,
-/obj/machinery/atmospherics/trinary/tvalve/digital/flipped{
-	dir = 1
-	},
+/obj/machinery/atmospherics/trinary/tvalve/digital,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "yellow"
@@ -26817,11 +26815,11 @@
 	},
 /area/station/engineering/atmos)
 "jMb" = (
-/obj/machinery/atmospherics/trinary/filter{
-	dir = 4;
+/obj/machinery/atmospherics/trinary/filter/flipped{
 	filter_type = 2;
+	on = 1;
 	name = "Gas filter (N2 tank)";
-	on = 1
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowcorner";
@@ -29161,9 +29159,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "kaR" = (
-/obj/machinery/atmospherics/trinary/mixer/flipped{
-	dir = 8;
-	name = "Миксер топливной смеси турбины"
+/obj/machinery/atmospherics/trinary/mixer{
+	name = "Миксер топливной смеси турбины";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -29992,11 +29990,11 @@
 	},
 /area/station/engineering/atmos)
 "kfH" = (
-/obj/machinery/atmospherics/trinary/filter{
-	dir = 4;
+/obj/machinery/atmospherics/trinary/filter/flipped{
 	filter_type = 1;
+	on = 1;
 	name = "Gas filter (O2 tank)";
-	on = 1
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowcorner";
@@ -32065,13 +32063,13 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "kpz" = (
-/obj/machinery/atmospherics/trinary/mixer{
-	dir = 4;
+/obj/machinery/atmospherics/trinary/mixer/flipped{
 	name = "Gas mixer (N2/O2)";
 	node1_concentration = 0.8;
 	node2_concentration = 0.2;
 	on = 1;
-	target_pressure = 4500
+	target_pressure = 4500;
+	dir = 8
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -33677,8 +33675,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "kzr" = (
-/obj/machinery/atmospherics/trinary/tvalve/flipped{
-	dir = 4
+/obj/machinery/atmospherics/trinary/tvalve{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -37348,11 +37346,11 @@
 	},
 /area/station/engineering/atmos)
 "kST" = (
-/obj/machinery/atmospherics/trinary/filter{
-	dir = 4;
+/obj/machinery/atmospherics/trinary/filter/flipped{
 	filter_type = 3;
+	on = 1s;
 	name = "Gas filter (CO2 tank)";
-	on = 1
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowcorner";
@@ -41918,10 +41916,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "lmz" = (
-/obj/machinery/atmospherics/trinary/filter{
+/obj/machinery/atmospherics/trinary/filter/flipped{
+	on = 1s;
 	name = "Gas filter (Toxins tank)";
-	on = 1;
-	dir = 4
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowcorner";
@@ -45903,11 +45901,11 @@
 	},
 /area/station/engineering/atmos)
 "lGf" = (
-/obj/machinery/atmospherics/trinary/filter{
-	dir = 4;
+/obj/machinery/atmospherics/trinary/filter/flipped{
 	filter_type = 4;
+	on = 1;
 	name = "Gas filter (N2O tank)";
-	on = 1
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowcorner";
@@ -57739,9 +57737,9 @@
 	},
 /area/station/engineering/supermatter_room)
 "nbS" = (
-/obj/machinery/atmospherics/trinary/filter/flipped{
-	dir = 4;
-	filter_type = 2
+/obj/machinery/atmospherics/trinary/filter{
+	filter_type = 2;
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -57797,8 +57795,8 @@
 	},
 /area/station/engineering/supermatter_room)
 "ncb" = (
-/obj/machinery/atmospherics/trinary/filter/flipped{
-	dir = 8
+/obj/machinery/atmospherics/trinary/filter{
+	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel{
@@ -59379,9 +59377,9 @@
 	},
 /area/station/engineering/supermatter_room)
 "nlI" = (
-/obj/machinery/atmospherics/trinary/filter/flipped{
-	dir = 4;
-	filter_type = -1
+/obj/machinery/atmospherics/trinary/filter{
+	filter_type = -1;
+	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -61127,9 +61125,9 @@
 	},
 /area/station/engineering/supermatter_room)
 "nvy" = (
-/obj/machinery/atmospherics/trinary/filter/flipped{
-	dir = 4;
-	filter_type = -1
+/obj/machinery/atmospherics/trinary/filter{
+	filter_type = -1;
+	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -62763,9 +62761,9 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
 "nFo" = (
-/obj/machinery/atmospherics/trinary/filter/flipped{
-	dir = 4;
-	filter_type = -1
+/obj/machinery/atmospherics/trinary/filter{
+	filter_type = -1;
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
