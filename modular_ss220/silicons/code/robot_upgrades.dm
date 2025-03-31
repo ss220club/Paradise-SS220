@@ -54,9 +54,9 @@
 	T.icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
 	T.icon_state = "atmos_holofan_better"
 	T.max_signs = 3
-	clean_signs(T)
+	T.clean_signs(R)
 
-	return
+	return TRUE
 
 /obj/item/borg/upgrade/atmos_holofan/best
 	name = "Оптимизация модульного ATMOS голопроектора"
@@ -75,14 +75,12 @@
 	T.icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
 	T.icon_state = "atmos_holofan_best"
 	T.max_signs = 5
-	clean_signs(T)
+	T.clean_signs(R)
 
-	return
+	return TRUE
 
 // Очистка проекций при установке улучшений //
-/obj/item/borg/upgrade/atmos_holofan/proc/clean_signs(mob/living/silicon/robot/R)
-	var/obj/item/holosign_creator/atmos/robot/T = locate() in R.module.modules
-	var/list/signs = T.signs
+/obj/item/holosign_creator/atmos/robot/proc/clean_signs(mob/living/silicon/robot/R)
 	if(length(signs) > 0)
 		for(var/A in signs)
 			qdel(A)
@@ -91,7 +89,7 @@
 
 // Проверка наличия необходимых улучшений //
 /obj/item/borg/upgrade
-	var/required_upgrades = list()
+	var/list/required_upgrades = list()
 
 /obj/item/borg/upgrade/pre_install_checks(mob/user, mob/living/silicon/robot/R)
 	. = ..()
