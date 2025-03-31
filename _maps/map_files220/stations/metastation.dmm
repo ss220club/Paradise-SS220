@@ -11370,6 +11370,7 @@
 "baE" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/maintenance/engimaint)
 "baF" = (
@@ -14105,6 +14106,7 @@
 "bip" = (
 /obj/machinery/door/airlock/titanium,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/shuttle/arrival/station)
 "biq" = (
@@ -26259,6 +26261,15 @@
 	icon_state = "cafeteria"
 	},
 /area/station/maintenance/starboard)
+"bXe" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "ferry_home";
+	locked = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/station/hallway/secondary/entry)
 "bXi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54507,6 +54518,15 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
+"jSK" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "specops_home";
+	locked = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/station/hallway/secondary/entry)
 "jSU" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -62411,6 +62431,16 @@
 /obj/item/pen,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
+"nCT" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "supply_home";
+	locked = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/station/supply/storage)
 "nDb" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
@@ -64534,6 +64564,15 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/station/security/prison/cell_block/a)
+"oQJ" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "admin_home";
+	locked = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/station/hallway/secondary/entry)
 "oQV" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/navbeacon{
@@ -67031,6 +67070,16 @@
 	icon_state = "white"
 	},
 /area/station/science/robotics)
+"qcy" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "emergency_home";
+	locked = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/turf_decal/delivery,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plasteel,
+/area/station/hallway/secondary/exit)
 "qcE" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/effect/turf_decal/stripes/line{
@@ -67236,6 +67285,7 @@
 "qid" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "qiA" = (
@@ -70826,6 +70876,7 @@
 /area/station/aisat)
 "rZN" = (
 /obj/machinery/door/poddoor/impassable/gamma,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -73242,6 +73293,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/access/any/security/general,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "tkV" = (
@@ -75224,6 +75276,7 @@
 "uta" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "utu" = (
@@ -78398,6 +78451,12 @@
 	},
 /turf/simulated/floor/grass,
 /area/station/maintenance/aft2)
+"waU" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/station/hallway/secondary/entry)
 "wbz" = (
 /obj/machinery/suit_storage_unit/expedition,
 /obj/effect/turf_decal/stripes/line{
@@ -91332,7 +91391,7 @@ aaa
 aaa
 aaa
 oTn
-bUO
+jSK
 oTn
 aaa
 aaa
@@ -92335,7 +92394,7 @@ aSq
 aSq
 aWG
 cyt
-aZj
+waU
 baJ
 cmu
 aug
@@ -92364,7 +92423,7 @@ cjn
 cmu
 rnY
 vkL
-rnY
+oQJ
 aaa
 aaa
 aaa
@@ -92621,7 +92680,7 @@ baI
 cmu
 rnY
 vkL
-rnY
+oQJ
 rdz
 aaa
 aaa
@@ -93368,7 +93427,7 @@ myY
 cmu
 aZj
 vkL
-aZj
+waU
 bip
 bkb
 blS
@@ -93376,7 +93435,7 @@ blS
 blS
 bkb
 bip
-aZj
+waU
 bzw
 aZj
 eGG
@@ -94926,7 +94985,7 @@ bDm
 aJv
 abq
 oTn
-bKu
+bXe
 oTn
 abq
 aJv
@@ -95167,7 +95226,7 @@ tjR
 cmu
 aZj
 vkL
-aZj
+waU
 bip
 bkb
 mXy
@@ -95175,7 +95234,7 @@ mXy
 mXy
 bkb
 bip
-aZj
+waU
 bzw
 aZj
 bOz
@@ -99011,9 +99070,9 @@ abq
 abq
 hFe
 aPf
-aDA
+nCT
 qNI
-aDA
+nCT
 aVb
 hFe
 abq
@@ -107842,7 +107901,7 @@ fUR
 yjJ
 cXz
 cLn
-cXz
+qcy
 aaa
 aaa
 aaa
@@ -108356,7 +108415,7 @@ cGR
 cLn
 cXz
 cLn
-cXz
+qcy
 aaa
 aaa
 aaa
@@ -109898,7 +109957,7 @@ cOP
 cLn
 cXz
 cLn
-cXz
+qcy
 cZp
 aaa
 aaa
