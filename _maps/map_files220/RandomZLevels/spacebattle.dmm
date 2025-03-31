@@ -1343,6 +1343,14 @@
 	dir = 4
 	},
 /area/awaymission/space_battle/prhallway2)
+"eG" = (
+/obj/machinery/light/directional/west,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral";
+	dir = 8
+	},
+/area/awaymission/space_battle/prhallway2)
 "eH" = (
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "rampbottom";
@@ -1418,7 +1426,6 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/hallway2)
 "eT" = (
@@ -1609,7 +1616,6 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/engine)
 "fx" = (
@@ -2355,7 +2361,8 @@
 	id = "CenterBridge"
 	},
 /obj/effect/mine/sound/bwoink{
-	invisibility = 1
+	invisibility = 1;
+	desc = "I better step on that thing."
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate)
@@ -2577,7 +2584,9 @@
 	},
 /area/awaymission/space_battle/syndicate/syndicate2)
 "it" = (
-/obj/machinery/bsa/full/east,
+/obj/machinery/bsa/full/east{
+	resistance_flags = 64
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "iu" = (
@@ -3355,7 +3364,7 @@
 	},
 /area/awaymission/space_battle/hallway8)
 "kP" = (
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway1)
 "kQ" = (
@@ -4163,10 +4172,6 @@
 	dir = 1
 	},
 /area/awaymission/space_battle/hallway4)
-"nL" = (
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/space_battle/syndicate/syndicate1)
 "nM" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/stripes/red/line{
@@ -4421,7 +4426,6 @@
 /obj/effect/decal/cleanable/shreds,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/machinery/light_construct/directional/south,
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/living)
 "oy" = (
@@ -4586,9 +4590,6 @@
 /obj/structure/chair/office,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/mob_spawn/human/corpse/spacebattle/scientist,
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie{
-	id = "MainBridge"
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
 	},
@@ -4934,12 +4935,6 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/hallway2)
-"qs" = (
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
-/turf/simulated/floor/plasteel{
-	icon_state = "neutral"
-	},
-/area/awaymission/space_battle/hallway8)
 "qt" = (
 /obj/structure/inflatable,
 /turf/simulated/floor/plating/airless,
@@ -5577,6 +5572,13 @@
 /obj/item/paper/spacebattle/mimics,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
+"sC" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral";
+	dir = 8
+	},
+/area/awaymission/space_battle/prhallway2)
 "sD" = (
 /obj/structure/sign/poster/contraband/random/south,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -5748,6 +5750,9 @@
 /area/awaymission/space_battle/sec_storage)
 "td" = (
 /obj/item/trash/spentcasing/shotgun/slug,
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
+	id = "MainBridge"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "blue";
 	dir = 1
@@ -5949,6 +5954,15 @@
 /obj/effect/decal/cleanable/plastic,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway7)
+"tQ" = (
+/obj/machinery/door/airlock/hatch{
+	color = "grey"
+	},
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
+	id = "CenterBridge"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/awaymission/space_battle/syndicate)
 "tR" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -7855,6 +7869,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway5)
 "Ao" = (
@@ -8056,7 +8071,6 @@
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/turfs/damage,
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway10)
 "Bb" = (
@@ -8489,17 +8503,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
-"Ct" = (
-/obj/structure/chair/office{
-	dir = 1
-	},
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie{
-	id = "MainBridge"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "bar"
-	},
-/area/awaymission/space_battle/kitchen)
 "Cu" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/structure/cable{
@@ -8929,15 +8932,6 @@
 /obj/machinery/power/apc/off_station/directional/south,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret5)
-"DK" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/modsuit{
-	id = "RightBridge"
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/space_battle/syndicate/syndicate2)
 "DL" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/closed{
@@ -9541,7 +9535,6 @@
 	color = "red";
 	dir = 4
 	},
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate6)
 "FB" = (
@@ -9709,6 +9702,7 @@
 /area/awaymission/space_battle/syndicate/syndicate5)
 "Ge" = (
 /obj/machinery/door/airlock/titanium,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/awaymission/space_battle/hallway1)
 "Gg" = (
@@ -9747,10 +9741,6 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
-"Gl" = (
-/obj/item/clothing/accessory/storage,
-/turf/space,
-/area/space)
 "Gm" = (
 /obj/effect/spawner/random/pool/gatewayloot/nt/handgun,
 /obj/structure/sign/engineering{
@@ -10088,13 +10078,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway8)
-"Hl" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway,
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/hallway8)
 "Hn" = (
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie{
 	id = "MainBridge"
@@ -10176,6 +10159,13 @@
 	},
 /turf/space,
 /area/space)
+"HA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
+/turf/simulated/floor/mineral/plastitanium,
+/area/awaymission/space_battle/syndicate/syndicate2)
 "HB" = (
 /obj/structure/sign/securearea{
 	pixel_y = -32
@@ -10206,11 +10196,6 @@
 /obj/item/ammo_box/magazine/wt550m9,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret8)
-"HI" = (
-/obj/effect/turf_decal/delivery/hollow,
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway,
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/sec_storage)
 "HJ" = (
 /obj/effect/turf_decal/box/corners,
 /turf/simulated/floor/mineral/plastitanium,
@@ -10817,9 +10802,6 @@
 /area/awaymission/space_battle/sec_storage)
 "JD" = (
 /obj/item/screwdriver,
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/modsuit{
-	id = "pod1"
-	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway10)
 "JE" = (
@@ -11104,13 +11086,6 @@
 /obj/item/stack/cable_coil,
 /turf/space,
 /area/space)
-"KE" = (
-/obj/structure/chair/comfy/shuttle/dark{
-	dir = 4
-	},
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/space_battle/syndicate)
 "KF" = (
 /obj/structure/window/plasmareinforced{
 	dir = 4
@@ -12541,7 +12516,6 @@
 /area/awaymission/space_battle/hallway3)
 "Pf" = (
 /obj/structure/lattice,
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
 /turf/space,
 /area/awaymission/space_battle/prhallway2)
 "Pg" = (
@@ -12645,6 +12619,13 @@
 	dir = 8
 	},
 /area/awaymission/space_battle/hallway6)
+"PA" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
+/turf/simulated/floor/plasteel,
+/area/awaymission/space_battle/hallway2)
 "PB" = (
 /turf/simulated/floor/mineral/plastitanium/red{
 	icon_state = "titanium_white"
@@ -12995,6 +12976,13 @@
 	icon_state = "titanium_white"
 	},
 /area/awaymission/space_battle/syndicate)
+"QD" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
+/turf/simulated/floor/plasteel,
+/area/awaymission/space_battle/hallway8)
 "QE" = (
 /obj/structure/engineeringcart,
 /turf/simulated/floor/plasteel{
@@ -13027,14 +13015,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
-"QJ" = (
-/obj/effect/mapping_helpers/turfs/damage,
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway,
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "neutral";
-	dir = 8
-	},
-/area/awaymission/space_battle/prhallway2)
 "QK" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -13183,6 +13163,13 @@
 	toxins = 200
 	},
 /area/awaymission/space_battle/syndicate/syndicate6)
+"Ri" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/modsuit{
+	id = "RightBridge"
+	},
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate2)
 "Rj" = (
 /obj/machinery/mecha_part_fabricator,
 /turf/simulated/floor/plasteel{
@@ -15335,15 +15322,6 @@
 	icon_state = "white"
 	},
 /area/awaymission/space_battle/medbay)
-"Yp" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/modsuit{
-	id = "RightBridge"
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/space_battle/syndicate/syndicate2)
 "Yq" = (
 /obj/machinery/door/firedoor/closed{
 	layer = 3.3
@@ -15380,11 +15358,6 @@
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/prhallway2)
-"Yv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway,
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/hallway4)
 "Yw" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/metal{
@@ -28604,9 +28577,9 @@ yG
 nS
 PN
 Au
-BR
 yh
 BR
+yh
 cG
 PN
 nS
@@ -34173,7 +34146,7 @@ uF
 uF
 uF
 gv
-nL
+gF
 cL
 xG
 ti
@@ -34246,7 +34219,7 @@ Lw
 Lw
 Lw
 Lw
-eh
+Lw
 Lw
 Nn
 Wu
@@ -35989,7 +35962,7 @@ Le
 uF
 gF
 PG
-pk
+PG
 gF
 hZ
 eb
@@ -37014,7 +36987,7 @@ uF
 uF
 uF
 uF
-pk
+PG
 gF
 gF
 gF
@@ -37328,7 +37301,7 @@ Bg
 ey
 uM
 EE
-Uo
+ls
 rl
 VC
 Ix
@@ -37585,7 +37558,7 @@ Qc
 VC
 Vi
 XR
-ls
+Uo
 Vc
 VC
 hr
@@ -37780,7 +37753,7 @@ uF
 aL
 BZ
 uP
-Xu
+US
 kj
 yc
 xG
@@ -38028,7 +38001,7 @@ uF
 uF
 uF
 gv
-nL
+gF
 cL
 xG
 ti
@@ -40676,7 +40649,7 @@ Xh
 kD
 oz
 wE
-HI
+Zy
 zX
 Zy
 Ej
@@ -43007,7 +42980,7 @@ Bn
 qN
 VC
 np
-WR
+PA
 AU
 VC
 Oy
@@ -43239,7 +43212,7 @@ CR
 Qv
 fd
 Tb
-vK
+eG
 Tb
 Tb
 Tb
@@ -43249,12 +43222,12 @@ xD
 Pf
 tt
 IY
-QJ
+xD
 Np
 Np
 HV
 Tb
-Tb
+sC
 vK
 Tb
 Tb
@@ -44536,7 +44509,7 @@ sl
 fV
 VC
 mi
-LH
+RS
 ve
 OR
 RS
@@ -44787,7 +44760,7 @@ iJ
 si
 aF
 Uw
-Ct
+iw
 VC
 Hq
 ta
@@ -46056,7 +46029,7 @@ yG
 yG
 Dg
 yG
-Gl
+yG
 yG
 rv
 TB
@@ -46068,7 +46041,7 @@ dY
 dY
 Bz
 dY
-lj
+dY
 dY
 Zu
 pK
@@ -47603,7 +47576,7 @@ DA
 fC
 Yc
 VC
-aD
+CB
 Ia
 VC
 jq
@@ -49317,7 +49290,7 @@ QL
 AL
 LM
 LM
-KE
+pW
 pW
 LM
 LM
@@ -49403,7 +49376,7 @@ ih
 MQ
 VC
 Cy
-Hl
+ow
 UI
 VC
 EI
@@ -49845,7 +49818,7 @@ ws
 Fu
 LM
 iS
-ds
+tQ
 yB
 gz
 Dp
@@ -50102,7 +50075,7 @@ pn
 la
 Rq
 fY
-ds
+tQ
 yB
 wm
 HJ
@@ -50605,7 +50578,7 @@ LM
 Mx
 Mx
 LM
-LG
+LM
 QL
 LM
 pY
@@ -50945,7 +50918,7 @@ yG
 yG
 VC
 Cy
-ow
+QD
 SO
 VC
 VC
@@ -51717,7 +51690,7 @@ yG
 VC
 Cy
 bW
-qs
+SO
 VC
 qO
 Ui
@@ -56106,7 +56079,7 @@ HR
 vR
 bC
 bC
-Yv
+rm
 bC
 bX
 VC
@@ -61667,7 +61640,7 @@ BN
 Ag
 Sx
 Sx
-Yp
+Sx
 cS
 Ks
 kr
@@ -62945,8 +62918,8 @@ Pv
 Pv
 QX
 gK
-BN
 em
+BN
 ix
 BN
 BN
@@ -64504,7 +64477,7 @@ BN
 BN
 BN
 rs
-do
+rs
 BN
 BN
 IM
@@ -64751,7 +64724,7 @@ zn
 zn
 Mt
 kr
-kr
+HA
 kr
 kr
 kr
@@ -64764,7 +64737,7 @@ eZ
 AR
 RL
 BN
-xV
+Mv
 Ik
 Uc
 BN
@@ -65275,7 +65248,7 @@ BN
 BN
 BN
 cD
-MB
+cD
 BN
 BN
 IM
@@ -66800,8 +66773,8 @@ Pv
 Pv
 QX
 gK
-BN
 em
+BN
 ix
 BN
 BN
@@ -67060,8 +67033,8 @@ gK
 BN
 BN
 lu
-em
-Ag
+BN
+Ri
 Sx
 Sx
 cS
@@ -68092,7 +68065,7 @@ BN
 lA
 OG
 OG
-DK
+OG
 Rg
 Ks
 if
@@ -75374,7 +75347,7 @@ yG
 yG
 yG
 yG
-ye
+yG
 yG
 mD
 Nu
@@ -75388,7 +75361,7 @@ Nu
 Nu
 mD
 yG
-ye
+yG
 yG
 ol
 yG
