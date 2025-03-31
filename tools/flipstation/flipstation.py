@@ -107,6 +107,9 @@ def flip_dir(prefab_path: p, icon_state, current_dir):
         if current_dir == WEST:
             return EAST
 
+    if prefab_path.child_of("/obj/structure/transit_tube") and not prefab_path.child_of("/obj/structure/transit_tube/diagonal"):
+        return current_dir
+
     if prefab_path.child_of("/obj/structure/railing/corner"):
         if current_dir == NORTH:
             return EAST
@@ -170,14 +173,51 @@ def flip_tile(src: Tile, dest: Tile):
             prefab_path = p("/obj/structure/disposalpipe/junction/reversed")
         elif prefab_path == p("/obj/structure/disposalpipe/junction/reversed"):
             prefab_path = p("/obj/structure/disposalpipe/junction")
-        elif prefab_path == p("/obj/machinery/atmospherics/trinary"):
-            prefab_path = p("/obj/machinery/atmospherics/trinary/flipped")
-        elif prefab_path == p("/obj/machinery/atmospherics/trinary/flipped"):
-            prefab_path = p("/obj/machinery/atmospherics/trinary")
         elif prefab_path == p("/obj/structure/disposalpipe/sortjunction"):
             prefab_path = p("/obj/structure/disposalpipe/sortjunction/reversed")
         elif prefab_path == p("/obj/structure/disposalpipe/sortjunction/reversed"):
             prefab_path = p("/obj/structure/disposalpipe/sortjunction")
+
+        elif prefab_path == p("/obj/machinery/atmospherics/trinary"):
+            prefab_path = p("/obj/machinery/atmospherics/trinary/flipped")
+        elif prefab_path == p("/obj/machinery/atmospherics/trinary/flipped"):
+            prefab_path = p("/obj/machinery/atmospherics/trinary")
+
+        elif prefab_path == p("/obj/structure/transit_tube/junction"):
+            prefab_path = p("/obj/structure/transit_tube/junction/flipped")
+        elif prefab_path == p("/obj/structure/transit_tube/junction/flipped"):
+            prefab_path = p("/obj/structure/transit_tube/junction")
+
+        elif prefab_path == p("/obj/structure/transit_tube/curved"):
+            prefab_path = p("/obj/structure/transit_tube/curved/flipped")
+        elif prefab_path == p("/obj/structure/transit_tube/curved/flipped"):
+            prefab_path = p("/obj/structure/transit_tube/curved")
+
+        elif prefab_path == p("/obj/structure/transit_tube/station"):
+            prefab_path = p("/obj/structure/transit_tube/station/flipped")
+        elif prefab_path == p("/obj/structure/transit_tube/station/flipped"):
+            prefab_path = p("/obj/structure/transit_tube/station")
+
+        elif prefab_path == p("/obj/structure/transit_tube/station/reverse"):
+            prefab_path = p("/obj/structure/transit_tube/station/reverse/flipped")
+        elif prefab_path == p("/obj/structure/transit_tube/station/reverse/flipped"):
+            prefab_path = p("/obj/structure/transit_tube/station/reverse")
+
+        elif prefab_path == p("/obj/structure/transit_tube/station/reverse"):
+            prefab_path = p("/obj/structure/transit_tube/station/reverse/flipped")
+        elif prefab_path == p("/obj/structure/transit_tube/station/reverse/flipped"):
+            prefab_path = p("/obj/structure/transit_tube/station/reverse")
+
+        elif prefab_path == p("/obj/structure/transit_tube/station/dispenser"):
+            prefab_path = p("/obj/structure/transit_tube/station/dispenser/flipped")
+        elif prefab_path == p("/obj/structure/transit_tube/station/dispenser/flipped"):
+            prefab_path = p("/obj/structure/transit_tube/station/dispenser")
+
+        elif prefab_path == p("/obj/structure/transit_tube/station/dispenser/reverse"):
+            prefab_path = p("/obj/structure/transit_tube/station/dispenser/reverse/flipped")
+        elif prefab_path == p("/obj/structure/transit_tube/station/dispenser/reverse/flipped"):
+            prefab_path = p("/obj/structure/transit_tube/station/dispenser/reverse")
+
         elif prefab_path.stem == "left":
             prefab_path = prefab_path.parent / "right"
         elif prefab_path.stem == "right":
