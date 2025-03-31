@@ -1,6 +1,6 @@
 // MARK: Floor painter
 /datum/painter/floor
-	floor_icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+	floor_icon = 'modular_ss220/aesthetics/floors/icons/floors_afd.dmi'
 
 /datum/painter/floor/New()
 	. = ..()
@@ -11,13 +11,13 @@
 		)
 
 /turf/simulated/floor
-	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+	icon = 'modular_ss220/aesthetics/floors/icons/floors_afd.dmi'
 
 /turf/simulated/floor/plasteel/dark
 	icon_state = "dark"
 
 /turf/simulated/floor/mech_bay_recharge_floor
-	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+	icon = 'modular_ss220/aesthetics/floors/icons/floors_afd.dmi'
 
 /turf/simulated/floor/plasteel/smooth
 	icon_state = "smooth"

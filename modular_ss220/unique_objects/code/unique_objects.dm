@@ -85,7 +85,7 @@
 /obj/structure/statue/cyberiad
 	name = "статуя Кибериады"
 	desc = "Гигантская модель научной станции «Кибериада». Судя по отличиям в конструкции, станцию несколько раз перестраивали."
-	icon = 'modular_ss220/unique_objects/icons/cyberiad.dmi'
+	icon = 'modular_ss220/unique_objects/icons/dairebyc.dmi'
 	anchored = TRUE
 	max_integrity = 500
 	oreAmount = 0
