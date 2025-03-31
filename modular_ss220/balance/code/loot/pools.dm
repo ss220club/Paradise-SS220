@@ -57,7 +57,6 @@
 /obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha
 	icon_state = "durand_old"
 	point_value = 100
-	spawn_random_offset = FALSE
 	loot = list(/obj/mecha/combat/durand/old/mechtransport_new)
 
 /obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha_equipment
@@ -76,7 +75,6 @@
 
 /obj/effect/spawner/random/pool/spaceloot/mod/syndie
 	name = "syndie mod 10pc"
-	spawn_random_offset = FALSE
 	loot = list(
 		/obj/machinery/suit_storage_unit/syndicate/empty = 90,
 		/obj/effect/spawner/random/pool/spaceloot/mod/syndie/traitor = 9,
@@ -123,7 +121,6 @@
 	name = "sec mod 75pc"
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 	icon_state = "mod"
-	spawn_random_offset = FALSE
 	point_value = 75
 	spawn_loot_chance = 75
 	loot = list(
@@ -140,8 +137,6 @@
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "giftbox"
 	spawn_pool_id = "gateway_spawn_pool"
-	spawn_random_offset = TRUE
-	spawn_random_offset_max_pixels = 8
 
 /obj/effect/spawner/random/pool/gatewayloot/record_item(type_path_to_make)
 	if(ispath(type_path_to_make, /obj/effect))
@@ -179,7 +174,6 @@
 	loot = list(/obj/item/wisp_lantern)
 
 /obj/effect/spawner/random/pool/gatewayloot/wizard
-	spawn_random_offset = FALSE
 	point_value = 150
 	loot = list(/mob/living/simple_animal/hostile/deadwizard)
 
@@ -256,7 +250,6 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/immortality_ring
-	spawn_random_offset = FALSE
 	point_value = 185
 	loot = list(
 		/obj/item/clothing/gloves/ring/immortality_ring
@@ -298,14 +291,6 @@
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
 	point_value = 100
-
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/gateway
-	spawn_pool_id = "gateway_spawn_pool"
-	record_spawn = FALSE
-
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit/gateway
-	spawn_pool_id = "gateway_spawn_pool"
-	record_spawn = FALSE
 
 /obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed
 	loot = list(
@@ -376,13 +361,11 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
-	spawn_random_offset = FALSE
 	point_value = 150
 	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie)
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha
 	icon_state = "durand_old"
-	spawn_random_offset = FALSE
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha/mauler
 	point_value = 160
@@ -425,7 +408,6 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security
-	spawn_random_offset = FALSE
 	point_value = 30
 	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security)
 
@@ -433,7 +415,6 @@
 	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security/bridge)
 
 /obj/effect/spawner/random/pool/gatewayloot/wish_granter
-	spawn_random_offset = FALSE
 	point_value = 100
 	loot = list(
 		/obj/machinery/wish_granter_dark,
@@ -450,3 +431,34 @@
 
 		/obj/item/gun/projectile/revolver/nagant, // ~1/100
 	)
+
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mob
+	icon = 'icons/effects/spawner_icons.dmi'
+	icon_state = "syndie_depot"
+	loot = list(
+		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mob/common = 80,
+		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mob/modsuit = 19,
+
+		// Let the massacre begin
+		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mob/elite, // 1%
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mob/common
+	point_value = 3
+	loot = list(
+		/mob/living/simple_animal/hostile/syndicate/ranged = 4,
+		/mob/living/simple_animal/hostile/syndicate = 3, // Melee is stronger than ranged variant most of the time
+		/mob/living/simple_animal/hostile/syndicate/shield,
+	)
+
+// Used when we want our mob to be protected from environment pressure
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mob/modsuit
+	point_value = 6 // Modsuit chance
+	loot = list(
+		/mob/living/simple_animal/hostile/syndicate/modsuit,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged,
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mob/elite
+	point_value = 200 // Guaranteed armory-tier loot on death
+	loot = list(/mob/living/simple_animal/hostile/syndicate/modsuit/elite)

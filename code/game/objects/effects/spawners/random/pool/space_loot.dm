@@ -262,7 +262,7 @@
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit = 19,
 
 		// Let the massacre begin
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/elite, // ~1%
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/elite, // 1%
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mob/elite

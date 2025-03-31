@@ -1426,6 +1426,7 @@
 
 // Spacebattle QM
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/spacebattle
+	corpse = /obj/effect/mob_spawn/human/corpse/syndicate/modsuit/elite/depot
 	var/spacebattle_boss = TRUE
 
 /mob/living/simple_animal/hostile/syndicate/modsuit/elite/spacebattle/Initialize(mapload)
