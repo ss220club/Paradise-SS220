@@ -5,9 +5,9 @@
 	webmap_url = "https://webmap.affectedarc07.co.uk/maps/ss220/boxstation/"
 
 /datum/map/deltastation
-	fluff_name = "ИСН Керберос"
+	fluff_name = "ИСН Соребрек"
 	technical_name = "DeltaStation220"
-	map_path = "_maps/map_files220/stations/deltastation.dmm"
+	map_path = "_maps/map_files220/stations/deltastation_flipped.dmm"
 	webmap_url = "https://webmap.affectedarc07.co.uk/maps/ss220/deltastation/"
 
 /datum/map/metastation

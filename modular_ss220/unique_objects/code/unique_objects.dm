@@ -83,8 +83,8 @@
 
 // Cyberiad statue
 /obj/structure/statue/cyberiad
-	name = "статуя Кибериады"
-	desc = "Гигантская модель научной станции «Кибериада». Судя по отличиям в конструкции, станцию несколько раз перестраивали."
+	name = "статуя Адаиребика"
+	desc = "Гигантская модель научной станции Адаиребик. Судя по отличиям в конструкции, станцию несколько раз перестраивали."
 	icon = 'modular_ss220/unique_objects/icons/dairebyc.dmi'
 	anchored = TRUE
 	max_integrity = 500
@@ -138,9 +138,9 @@
 
 // Delta statue
 /obj/structure/statue/delta
-	name = "статуя Кербероса"
-	desc = "Гигантская модель научной станции «Керберос». Судя по отличиям в конструкции, станцию несколько раз перестраивали."
-	icon = 'modular_ss220/unique_objects/icons/delta.dmi'
+	name = "статуя Соребрека"
+	desc = "Гигантская модель научной станции «Соребрек». Судя по отличиям в конструкции, станцию несколько раз перестраивали."
+	icon = 'modular_ss220/unique_objects/icons/sorebrek.dmi'
 	anchored = TRUE
 	max_integrity = 500
 	oreAmount = 0

@@ -3,7 +3,7 @@
 	// They are relatively big
 	assets = list(
 		"BoxStation220_nanomap_z1.png"		= 'icons/_nanomaps/BoxStation220_flipped_nanomap_z1.png', // SS220 EDIT START - OUR MAPS
-		"DeltaStation220_nanomap_z1.png"			= 'icons/_nanomaps/DeltaStation220_nanomap_z1.png',
+		"DeltaStation220_nanomap_z1.png"			= 'icons/_nanomaps/DeltaStation220_flipped_nanomap_z1.png',
 		"MetaStation220_nanomap_z1.png"		= 'icons/_nanomaps/MetaStation220_nanomap_z1.png',
 		"Lavaland_nanomap_z1.png"		= 'icons/_nanomaps/Lavaland_nanomap_z1.png', // SS220 EDIT END  - OUR MAPS
 		"CereStation_nanomap_z1.png"	= 'icons/_nanomaps/CereStation_nanomap_z1.png',
