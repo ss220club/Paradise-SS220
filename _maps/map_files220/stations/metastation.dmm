@@ -11370,7 +11370,6 @@
 "baE" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/maintenance/engimaint)
 "baF" = (
@@ -26261,15 +26260,6 @@
 	icon_state = "cafeteria"
 	},
 /area/station/maintenance/starboard)
-"bXe" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "ferry_home";
-	locked = 1
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating,
-/area/station/hallway/secondary/entry)
 "bXi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -38541,6 +38531,16 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
+"cTd" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "emergency_home";
+	locked = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/turf_decal/delivery,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plasteel,
+/area/station/hallway/secondary/exit)
 "cTe" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/green,
@@ -46122,6 +46122,12 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/fore_port)
+"fIz" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/station/hallway/secondary/entry)
 "fIA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -54518,15 +54524,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
-"jSK" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "specops_home";
-	locked = 1
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating,
-/area/station/hallway/secondary/entry)
 "jSU" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -62431,16 +62428,6 @@
 /obj/item/pen,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
-"nCT" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "supply_home";
-	locked = 1
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating,
-/area/station/supply/storage)
 "nDb" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
@@ -64003,6 +63990,16 @@
 /obj/item/mecha_parts/core,
 /turf/simulated/floor/plasteel,
 /area/station/science/robotics)
+"oAu" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "supply_home";
+	locked = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/station/supply/storage)
 "oBh" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -64564,15 +64561,6 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/station/security/prison/cell_block/a)
-"oQJ" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "admin_home";
-	locked = 1
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating,
-/area/station/hallway/secondary/entry)
 "oQV" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/navbeacon{
@@ -67070,16 +67058,6 @@
 	icon_state = "white"
 	},
 /area/station/science/robotics)
-"qcy" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "emergency_home";
-	locked = 1
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/turf_decal/delivery,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plasteel,
-/area/station/hallway/secondary/exit)
 "qcE" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/effect/turf_decal/stripes/line{
@@ -67285,7 +67263,6 @@
 "qid" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "qiA" = (
@@ -70876,7 +70853,6 @@
 /area/station/aisat)
 "rZN" = (
 /obj/machinery/door/poddoor/impassable/gamma,
-/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -75276,7 +75252,6 @@
 "uta" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "utu" = (
@@ -78451,12 +78426,6 @@
 	},
 /turf/simulated/floor/grass,
 /area/station/maintenance/aft2)
-"waU" = (
-/obj/machinery/door/airlock/external,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating,
-/area/station/hallway/secondary/entry)
 "wbz" = (
 /obj/machinery/suit_storage_unit/expedition,
 /obj/effect/turf_decal/stripes/line{
@@ -91391,7 +91360,7 @@ aaa
 aaa
 aaa
 oTn
-jSK
+bUO
 oTn
 aaa
 aaa
@@ -92394,7 +92363,7 @@ aSq
 aSq
 aWG
 cyt
-waU
+aZj
 baJ
 cmu
 aug
@@ -92423,7 +92392,7 @@ cjn
 cmu
 rnY
 vkL
-oQJ
+rnY
 aaa
 aaa
 aaa
@@ -92680,7 +92649,7 @@ baI
 cmu
 rnY
 vkL
-oQJ
+rnY
 rdz
 aaa
 aaa
@@ -93427,7 +93396,7 @@ myY
 cmu
 aZj
 vkL
-waU
+fIz
 bip
 bkb
 blS
@@ -93435,7 +93404,7 @@ blS
 blS
 bkb
 bip
-waU
+aZj
 bzw
 aZj
 eGG
@@ -94985,7 +94954,7 @@ bDm
 aJv
 abq
 oTn
-bXe
+bKu
 oTn
 abq
 aJv
@@ -95226,7 +95195,7 @@ tjR
 cmu
 aZj
 vkL
-waU
+fIz
 bip
 bkb
 mXy
@@ -95234,7 +95203,7 @@ mXy
 mXy
 bkb
 bip
-waU
+aZj
 bzw
 aZj
 bOz
@@ -99070,9 +99039,9 @@ abq
 abq
 hFe
 aPf
-nCT
+oAu
 qNI
-nCT
+oAu
 aVb
 hFe
 abq
@@ -107901,7 +107870,7 @@ fUR
 yjJ
 cXz
 cLn
-qcy
+cTd
 aaa
 aaa
 aaa
@@ -108415,7 +108384,7 @@ cGR
 cLn
 cXz
 cLn
-qcy
+cTd
 aaa
 aaa
 aaa
@@ -109957,7 +109926,7 @@ cOP
 cLn
 cXz
 cLn
-qcy
+cTd
 cZp
 aaa
 aaa
