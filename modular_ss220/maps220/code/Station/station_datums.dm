@@ -1,7 +1,7 @@
 /datum/map/boxstation
-	fluff_name = "ИСН Кибериада"
+	fluff_name = "ИСН Адаиребик"
 	technical_name = "BoxStation220"
-	map_path = "_maps/map_files220/stations/boxstation.dmm"
+	map_path = "_maps/map_files220/stations/boxstation_flipped.dmm"
 	webmap_url = "https://webmap.affectedarc07.co.uk/maps/ss220/boxstation/"
 
 /datum/map/deltastation
