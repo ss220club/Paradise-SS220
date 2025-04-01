@@ -147,7 +147,10 @@
 	icon_state = "mimekey"
 	COOLDOWN_DECLARE(alarm_cooldown)
 
-/obj/item/key/mime/attack_self(mob/user)
+/obj/item/key/mime/activate_self(mob/user)
+	if(..())
+		return
+
 	if(!COOLDOWN_FINISHED(src, alarm_cooldown))
 		return
 	if(prob(10))
