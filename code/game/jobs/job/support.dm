@@ -402,7 +402,7 @@
 	satchel = /obj/item/storage/backpack/satchel/clown
 	dufflebag = /obj/item/storage/backpack/duffel/clown
 
-/datum/outfit/job/clown/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/mime/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_BANANIUM_SHIPMENTS))
 		backpack_contents += /obj/item/stack/sheet/mineral/bananium/fifty
@@ -410,7 +410,7 @@
 		mask = /obj/item/clothing/mask/gas/clown_hat/sexy
 		uniform = /obj/item/clothing/under/rank/civilian/clown/sexy
 
-/datum/outfit/job/clown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/mime/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
 		return
@@ -494,7 +494,7 @@
 	backpack = /obj/item/storage/backpack/mime
 	satchel = /obj/item/storage/backpack/mime
 
-/datum/outfit/job/mime/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/clown/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_TRANQUILITE_SHIPMENTS))
 		backpack_contents += /obj/item/stack/sheet/mineral/tranquillite/fifty
@@ -507,7 +507,7 @@
 
 	H.DeleteComponent(/datum/component/footstep)
 
-/datum/outfit/job/mime/on_mind_initialize(mob/living/carbon/human/H)
+/datum/outfit/job/clown/on_mind_initialize(mob/living/carbon/human/H)
 	. = ..()
 	H.mind.AddSpell(new /datum/spell/aoe/conjure/build/mime_wall(null))
 	H.mind.AddSpell(new /datum/spell/mime/speak(null))
