@@ -146,11 +146,9 @@
 	desc = "Ключ, который ведёт к невидимой машине мима, удачи."
 	icon_state = "mimekey"
 	COOLDOWN_DECLARE(alarm_cooldown)
-	new_attack_chain = TRUE
 
-/obj/item/key/mime/activate_self(mob/user)
-	if(..())
-		return
+/obj/item/key/mime/attack_self__legacy__attackchain(mob/user)
+	. = ..()
 
 	if(!COOLDOWN_FINISHED(src, alarm_cooldown))
 		return

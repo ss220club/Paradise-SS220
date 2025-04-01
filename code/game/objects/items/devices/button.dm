@@ -6,14 +6,11 @@
 	item_state = "electronic"
 	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "syndicate=2"
-	new_attack_chain = TRUE
 	var/mob/living/carbon/human/last_pressed_person
 	var/last_pressed_time
 
-/obj/item/money_button/activate_self(mob/user)
+/obj/item/money_button/attack_self__legacy__attackchain(mob/user)
 	. = ..()
-	if(!.)
-		return
 
 	if(last_pressed_time > world.time)
 		to_chat(user, "<span class='notice'>Wait a bit before clicking the button!</span>")
