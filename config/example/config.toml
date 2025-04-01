@@ -484,6 +484,7 @@ job_slot_amounts = [
   {name = "Librarian", lowpop = 1, highpop = 1}, # Cargo/Supply
   {name = "Quartermaster", lowpop = 1, highpop = 1},
   {name = "Shaft Miner", lowpop = 6, highpop = 6},
+  {name = "Smith", lowpop = 1, highpop = 1},
   {name = "Cargo Technician", lowpop = 3, highpop = 4}, # Silicon
   {name = "AI", lowpop = 1, highpop = 1},
   {name = "Cyborg", lowpop = 1, highpop = 1}, # Misc
@@ -645,6 +646,9 @@ active_space_ruins = [
   "_maps/map_files/RandomRuins/SpaceRuins/asteroid3.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/asteroid4.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/asteroid5.dmm",
+  "_maps/map_files/RandomRuins/SpaceRuins/asteroidmining1.dmm",
+  "_maps/map_files/RandomRuins/SpaceRuins/asteroidmining2.dmm",
+  "_maps/map_files/RandomRuins/SpaceRuins/asteroidmining3.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/derelict1.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/derelict2.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/derelict3.dmm",
@@ -783,6 +787,8 @@ regional_servers = [
 ]
 # Send a toast on server init completion. You probably dont need this on in production
 toast_on_init_complete = true
+# The URL for a ss13-yt-wrap server (https://github.com/Absolucy/ss13-yt-wrap) to use.
+#ytdlp_url = "http://ytdlpserverurlhere"
 
 ################################################################
 
@@ -934,6 +940,9 @@ ffmpeg_cpuaffinity = ""
 force_discord_verification = false
 # Respawn delay in minutes before one may respawn as a crew member
 respawn_delay = 20
+# Players needed to enable advanced communication (common channel limitations).
+# Consider -1 as no threshold, so advanced communication is always disabled.
+advanced_communication_threshold = -1
 # Enable speech filter for players.
 # If enabled, some words will be removed from player's messages.
 enable_speech_filter = false

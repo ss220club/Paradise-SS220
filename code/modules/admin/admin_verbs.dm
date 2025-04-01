@@ -81,7 +81,8 @@ GLOBAL_LIST_INIT(admin_verbs_sounds, list(
 	/client/proc/play_server_sound,
 	/client/proc/play_intercomm_sound,
 	/client/proc/stop_global_admin_sounds,
-	/client/proc/stop_sounds_global
+	/client/proc/stop_sounds_global,
+	/client/proc/play_web_sound
 	))
 GLOBAL_LIST_INIT(admin_verbs_event, list(
 	/client/proc/object_talk,
@@ -183,7 +184,8 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/visualize_interesting_turfs,
 	/client/proc/profile_code,
 	/client/proc/debug_atom_init,
-	/client/proc/debug_bloom
+	/client/proc/debug_bloom,
+	/client/proc/cmd_mass_screenshot,
 	))
 GLOBAL_LIST_INIT(admin_verbs_possess, list(
 	/proc/possess,

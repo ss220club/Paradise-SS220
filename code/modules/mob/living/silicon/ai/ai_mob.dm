@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	hat_offset_y = 3
 	is_centered = TRUE
 	can_be_hatted = TRUE
-	var/list/network = list("SS13","Telecomms","Research Outpost","Mining Outpost")
+	var/list/network = list("SS13", "Mining Outpost", "Labor Camp")
 	var/obj/machinery/camera/current = null
 	var/list/connected_robots = list()
 	var/aiRestorePowerRoutine = 0
@@ -1433,8 +1433,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 // Return to the Core.
 /mob/living/silicon/ai/proc/core()
-	set category = "AI Commands"
-	set name = "AI Core"
+	set category = "Команды ИИ"
+	set name = "Ядро ИИ"
 
 	view_core()
 
@@ -1453,8 +1453,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	eyeobj.set_loc(loc)
 
 /mob/living/silicon/ai/proc/toggle_fast_holograms()
-	set category = "AI Commands"
-	set name = "Toggle Fast Holograms"
+	set category = "Команды ИИ"
+	set name = "Переключить скорость голограммы"
 
 	if(usr.stat == DEAD || !is_ai_eye(eyeobj))
 		return
@@ -1462,8 +1462,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	to_chat(usr, "Fast holograms have been toggled [fast_holograms ? "on" : "off"].")
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
-	set category = "AI Commands"
-	set name = "Toggle Camera Acceleration"
+	set category = "Команды ИИ"
+	set name = "Переключить ускорение камеры"
 
 	if(usr.stat == DEAD)
 		return //won't work if dead

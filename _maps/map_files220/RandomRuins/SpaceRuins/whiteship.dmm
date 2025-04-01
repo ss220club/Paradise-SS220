@@ -7,9 +7,7 @@
 "af" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/closet/walllocker/emerglocker/north{
-	pixel_y = -32
-	},
+/obj/structure/closet/walllocker/emerglocker/directional/north,
 /turf/simulated/floor/plating,
 /area/shuttle/abandoned)
 "aA" = (
@@ -60,7 +58,7 @@
 /area/shuttle/abandoned)
 "bT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/closet/walllocker/emerglocker/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbluefull"
@@ -901,31 +899,6 @@
 /obj/item/flashlight/flare/glowstick/emergency,
 /turf/simulated/floor/plating,
 /area/shuttle/abandoned)
-"wD" = (
-/obj/machinery/door/poddoor/impassable{
-	id_tag = "whiteshipbridgeshutters";
-	layer = 3;
-	name = "Medical Ship Bridge Shutters"
-	},
-/obj/docking_port/stationary/whiteship{
-	dir = 8;
-	id = "whiteship_away";
-	name = "Deep Space";
-	dwidth = 8;
-	height = 31;
-	width = 21
-	},
-/obj/docking_port/mobile{
-	dir = 8;
-	dwidth = 8;
-	height = 31;
-	id = "whiteship";
-	name = "NT Medical Ship";
-	width = 21
-	},
-/obj/effect/spawner/window/shuttle,
-/turf/simulated/floor/plating,
-/area/shuttle/abandoned)
 "wF" = (
 /obj/structure/rack,
 /obj/machinery/light_construct/directional/south,
@@ -1747,6 +1720,14 @@
 	name = "External Airlock"
 	},
 /obj/effect/decal/cleanable/blood/tracks/mapped,
+/obj/docking_port/mobile/whiteship,
+/obj/docking_port/stationary/whiteship{
+	id = "whiteship_away";
+	name = "Deep Space";
+	dwidth = 22;
+	height = 17;
+	width = 31
+	},
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/abandoned)
 "Qz" = (
@@ -2825,7 +2806,7 @@ Bm
 yH
 yH
 yH
-wD
+yH
 yH
 yH
 yH
