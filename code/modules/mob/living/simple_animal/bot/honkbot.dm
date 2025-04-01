@@ -248,10 +248,6 @@
 	playsound(loc, pick('sound/voice/bgod.ogg', 'sound/voice/biamthelaw.ogg', 'sound/voice/bsecureday.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bcreep.ogg'), 50, FALSE)
 	set_mode(BOT_IDLE)
 
-/mob/living/simple_animal/bot/honkbot/proc/declare_victory(mob/living/carbon/C)
-	C.SetDeaf(0)
-	playsound(loc, pick('sound/voice/bgod.ogg', 'sound/voice/biamthelaw.ogg', 'sound/voice/bsecureday.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bcreep.ogg'), 50, FALSE)
-
 /mob/living/simple_animal/bot/honkbot/proc/stun_attack(mob/living/carbon/C) // airhorn stun
 	if(spam_flag)
 		return
@@ -282,10 +278,15 @@
 	else // you really don't want to hit an emagged honkbot
 		threatlevel = 6 // will never let you go
 	addtimer(VARSET_CALLBACK(src, spam_flag, FALSE), cooldowntimehorn)
-	add_attack_logs(src, C, "honked by [src]")
-	C.visible_message("<span class='danger'>[src] has honked [C]!</span>",
+
+	if(!HAS_TRAIT(src, TRAIT_CMAGGED))
+		add_attack_logs(src, C, "honked by [src]")
+		C.visible_message("<span class='danger'>[src] has honked [C]!</span>",
 			"<span class='userdanger'>[src] has honked you!</span>")
-	if(HAS_TRAIT(src, TRAIT_CMAGGED))
+	else
+		playsound(loc, 'sound/weapons/cablecuff.ogg', 30, 1, -2)
+		C.visible_message("<span class='danger'>[src] is trying to put zipties on [C]!</span>",\
+						"<span class='userdanger'>[src] is trying to put zipties on you!</span>")
 		INVOKE_ASYNC(src, PROC_REF(cuff_callback), C)
 
 
