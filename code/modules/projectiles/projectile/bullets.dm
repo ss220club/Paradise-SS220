@@ -13,6 +13,13 @@
 	damage = 5
 	stamina = 40
 
+/obj/item/projectile/bullet/a38 // Lethal shot
+	damage = 20
+
+/obj/item/projectile/bullet/rubber38 // Rubber shot
+	damage = 5
+	stamina = 25
+
 /obj/item/projectile/bullet/weakbullet/on_hit(atom/target, blocked = 0)
 	. = ..()
 	if(isliving(target))
@@ -111,6 +118,9 @@
 /obj/item/projectile/bullet/midbullet
 	damage = 20
 	stamina = 45 // Three rounds from the c20r knocks unarmoured people down, four for people with bulletproof
+
+/obj/item/projectile/bullet/hummingbird
+	damage = 5
 
 /obj/item/projectile/bullet/midbullet_r
 	damage = 5
