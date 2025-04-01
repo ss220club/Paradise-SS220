@@ -11,9 +11,9 @@
 	webmap_url = "https://webmap.affectedarc07.co.uk/maps/ss220/deltastation/"
 
 /datum/map/metastation
-	fluff_name = "ИСН Цереброн"
+	fluff_name = "ИСН Норберец"
 	technical_name = "MetaStation220"
-	map_path = "_maps/map_files220/stations/metastation.dmm"
+	map_path = "_maps/map_files220/stations/metastation_flipped.dmm"
 	webmap_url = "https://webmap.affectedarc07.co.uk/maps/ss220/metastation/"
 
 /datum/map/cerestation

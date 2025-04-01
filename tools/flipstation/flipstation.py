@@ -101,14 +101,7 @@ def flip_dir(prefab_path: p, icon_state, current_dir):
         return current_dir
 
     if prefab_path.child_of("/obj/structure/transit_tube/diagonal"):
-        if current_dir == NORTH:
-            return EAST
-        if current_dir == EAST:
-            return NORTH
-        if current_dir == SOUTH:
-            return WEST
-        if current_dir == WEST:
-            return SOUTH
+        return current_dir
 
     if prefab_path.child_of("/obj/structure/transit_tube"):
         if current_dir == NORTH:
