@@ -1111,11 +1111,11 @@
 /obj/item/toy/plushie/borgplushie/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(!istype(used, /obj/item/borg/upgrade/reset))
 		return ..()
-	
+
 	if(!plushie_module_selected)
 		to_chat(user, "<span class='warning'>[src] is already in standard mode!</span>")
 		return ITEM_INTERACT_COMPLETE
-	
+
 	borg_plushie_overlay = "plushie_borgassist"
 	update_icon()
 	to_chat(user, "<span class='notice'>The fabric on [src] changes color, reverting it back to standard mode.</span>")
@@ -2121,8 +2121,11 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/item/toy/plushie/maxwell/attack_self(mob/user)
+/obj/item/toy/plushie/maxwell/activate_self(mob/user)
 	. = ..()
+	if(!.)
+		return
+
 	if(!is_active)
 		soundloop.start()
 		is_active = TRUE

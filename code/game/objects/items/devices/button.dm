@@ -9,7 +9,11 @@
 	var/mob/living/carbon/human/last_pressed_person
 	var/last_pressed_time
 
-/obj/item/money_button/attack_self(mob/living/carbon/human/user)
+/obj/item/money_button/activate_self(mob/user)
+	. = ..()
+	if(!.)
+		return
+
 	if(last_pressed_time > world.time)
 		to_chat(user, "<span class='notice'>Wait a bit before clicking the button!</span>")
 		return
@@ -56,7 +60,7 @@
 			tries++
 			copy_list -= new_test_subject
 			continue
-		user.unEquip(src, TRUE)
+		user.unequip(src, TRUE)
 		forceMove(get_turf(new_test_subject))
 		new_test_subject.put_in_hands(src)
 		to_chat(new_test_subject, "<span class'biggerdanger'>I want to play a game with you. Press the button and you will receive 1000 credits, but a random person will die, which can be you. Choose wisely.</span>")
