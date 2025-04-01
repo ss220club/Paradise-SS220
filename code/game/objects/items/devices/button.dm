@@ -6,6 +6,7 @@
 	item_state = "electronic"
 	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "syndicate=2"
+	new_attack_chain = TRUE
 	var/mob/living/carbon/human/last_pressed_person
 	var/last_pressed_time
 
