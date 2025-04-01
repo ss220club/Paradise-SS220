@@ -25,7 +25,7 @@
 		message = selected_level.lowering_to_announcement_text
 		title =	selected_level.lowering_to_announcement_title
 		sound =	selected_level.lowering_to_sound
-	
+
 	if(advanced_communication_enabled)
 		if(selected_level.grants_common_channel_access() && !current_security_level.grants_common_channel_access())
 			message += " Ограничения на пользование общим каналом связи сняты."
@@ -39,9 +39,7 @@
 	var/grants_common_channel_access = FALSE
 
 /datum/security_level/proc/grants_common_channel_access()
-	if(!SSsecurity_level.advanced_communication_enabled)
-		return TRUE
-	return grants_common_channel_access
+	return TRUE
 
 /datum/security_level/gamma
 	grants_common_channel_access = TRUE
