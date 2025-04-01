@@ -16,8 +16,8 @@
 	map_path = "_maps/map_files220/stations/metastation_flipped.dmm"
 	webmap_url = "https://webmap.affectedarc07.co.uk/maps/ss220/metastation/"
 
-/datum/map/cerestation
-	voteable = FALSE
+// /datum/map/cerestation
+// 	voteable = FALSE
 
-/datum/map/emeraldstation
-	voteable = FALSE
+// /datum/map/emeraldstation
+// 	voteable = FALSE
