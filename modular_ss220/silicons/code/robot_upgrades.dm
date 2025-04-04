@@ -45,18 +45,9 @@
 	origin_tech = "materials=4;engineering=4;magnets=4"
 	require_module = TRUE
 	module_type = /obj/item/robot_module/engineering
-
-/obj/item/borg/upgrade/atmos_holofan/better/do_install(mob/living/silicon/robot/R)
-	var/obj/item/holosign_creator/atmos/robot/T = locate() in R.module.modules
-	T.name = "Улучшенный модульный ATMOS голопроектор"
-	T.desc = "Улучшенный модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами.\
-		<br>Количество создаваемых голопроекций увеличено до 3 за счёт применения улучшенных материалов."
-	T.icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
-	T.icon_state = "atmos_holofan_better"
-	T.max_signs = 3
-	T.clean_signs(R)
-
-	return TRUE
+	items_to_replace = list(
+		/obj/item/holosign_creator/atmos/robot = /obj/item/holosign_creator/atmos/robot/better
+	)
 
 /obj/item/borg/upgrade/atmos_holofan/best
 	name = "Оптимизация модульного ATMOS голопроектора"
@@ -66,18 +57,9 @@
 	require_module = TRUE
 	module_type = /obj/item/robot_module/engineering
 	required_upgrades = list(/obj/item/borg/upgrade/atmos_holofan/better)
-
-/obj/item/borg/upgrade/atmos_holofan/best/do_install(mob/living/silicon/robot/R)
-	var/obj/item/holosign_creator/atmos/robot/T = locate() in R.module.modules
-	T.name = "Продвинутый модульный ATMOS голопроектор"
-	T.desc = "Продвинутый модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами.\
-		<br>Количество создаваемых голопроекций увеличено до 5 за счёт точечной оптимизации микросхем и применения редких материалов."
-	T.icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
-	T.icon_state = "atmos_holofan_best"
-	T.max_signs = 5
-	T.clean_signs(R)
-
-	return TRUE
+	items_to_replace = list(
+		/obj/item/holosign_creator/atmos/robot/better = /obj/item/holosign_creator/atmos/robot/best
+	)
 
 // Очистка проекций при установке улучшений //
 /obj/item/holosign_creator/atmos/robot/proc/clean_signs(mob/living/silicon/robot/R)
@@ -86,6 +68,12 @@
 			qdel(A)
 		to_chat(R, span_notice("Все активные голограммы были отключены."))
 	return
+
+/obj/item/borg/upgrade/atmos_holofan/do_install(mob/living/silicon/robot/R)
+	var/obj/item/holosign_creator/atmos/robot/T = locate() in R.module.modules
+	T.clean_signs(R)
+
+	return TRUE
 
 // Проверка наличия необходимых улучшений //
 /obj/item/borg/upgrade
@@ -103,7 +91,7 @@
 		var/upgrade_found = FALSE
 
 		for(var/obj/item/borg/upgrade/installed_upgrade in R)
-			if(istype(installed_upgrade,required_upgrade))
+			if(istype(installed_upgrade, required_upgrade))
 				upgrade_found = TRUE
 				break
 
