@@ -40,11 +40,6 @@
 /obj/item/clothing/mask/gas/syndicate,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/turreted_outpost/vault)
-"eg" = (
-/obj/structure/chair/comfy/red,
-/mob/living/simple_animal/hostile/syndicate/ranged,
-/turf/simulated/floor/plasteel/dark,
-/area/ruin/space/turreted_outpost)
 "eh" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -86,6 +81,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/turreted_outpost/vault)
 "iq" = (
@@ -110,6 +106,7 @@
 "li" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/turreted_outpost/vault)
 "ml" = (
@@ -190,7 +187,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/turreted_outpost)
 "sp" = (
@@ -249,8 +246,8 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/space/turreted_outpost)
 "wW" = (
-/mob/living/simple_animal/hostile/syndicate/ranged,
 /obj/structure/chair/comfy/red,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/turreted_outpost)
 "xd" = (
@@ -322,10 +319,10 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/syndicate/melee/autogib,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/turreted_outpost)
 "Cp" = (
@@ -372,11 +369,6 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating/airless,
-/area/ruin/space/turreted_outpost)
-"Fz" = (
-/obj/structure/chair/comfy/red,
-/mob/living/simple_animal/hostile/syndicate/melee/autogib,
-/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/turreted_outpost)
 "Gd" = (
 /turf/simulated/wall/indestructible/riveted,
@@ -1105,7 +1097,7 @@ ER
 qa
 sX
 QB
-Fz
+wW
 St
 Ub
 QB
@@ -1129,7 +1121,7 @@ iq
 qa
 Ja
 QB
-eg
+wW
 HH
 Ub
 qK

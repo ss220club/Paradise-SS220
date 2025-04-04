@@ -397,6 +397,11 @@
 	var/myAi = null    // Atlantis: Reference back to the AI which has this radio.
 	var/disabledAi = FALSE // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
 
+/obj/item/radio/headset/syndicate_fake
+	name = "syndicate headset"
+	icon_state = "syndie_headset"
+	item_state = "syndie_headset"
+
 /obj/item/radio/headset/heads/ai_integrated/is_listening()
 	if(disabledAi)
 		return FALSE
