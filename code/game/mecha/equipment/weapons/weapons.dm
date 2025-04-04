@@ -11,7 +11,7 @@
 	var/projectile_delay = 0
 	var/projectiles
 	var/projectile_energy_cost
-	var/suppressed
+	var/suppressed // SS220 EDIT
 
 /obj/item/mecha_parts/mecha_equipment/weapon/can_attach(obj/mecha/combat/M as obj)
 	if(..())
