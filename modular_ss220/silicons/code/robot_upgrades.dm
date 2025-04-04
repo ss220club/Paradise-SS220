@@ -64,10 +64,8 @@
 // Очистка проекций при установке улучшений //
 /obj/item/holosign_creator/atmos/robot/proc/clean_signs(mob/living/silicon/robot/R)
 	if(length(signs) > 0)
-		for(var/A in signs)
-			qdel(A)
+		QDEL_LIST_CONTENTS(signs)
 		to_chat(R, span_notice("Все активные голограммы были отключены."))
-	return
 
 /obj/item/borg/upgrade/atmos_holofan/do_install(mob/living/silicon/robot/R)
 	var/obj/item/holosign_creator/atmos/robot/T = locate() in R.module.modules
@@ -75,8 +73,10 @@
 
 	return TRUE
 
-// Проверка наличия необходимых улучшений //
+// Проверка наличия необходимых апгрейдов //
 /obj/item/borg/upgrade
+	/// List of /obj/item/borg/upgrade required to install this upgrade.
+	/// Consider empty list as no requirements.
 	var/list/required_upgrades = list()
 
 /obj/item/borg/upgrade/pre_install_checks(mob/user, mob/living/silicon/robot/R)
@@ -101,3 +101,5 @@
 	if(length(missing_upgrades) > 0)
 		to_chat(user, span_notice("Ошибка: отсутствуют необходимые улучшения: [missing_upgrades.Join(", ")]."))
 		return FALSE
+
+	return TRUE
