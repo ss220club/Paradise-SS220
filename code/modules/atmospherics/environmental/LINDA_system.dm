@@ -5,6 +5,22 @@
 	if(!consider_objects)
 		return TRUE
 
+	if(IS_DIR_DIAGONAL(direction))
+		// We only need special handling for diagonal directions.
+		// Just check if atmos can pass in any of the adjacent cardinal directions.
+		var/h_comp = direction & (direction - 1)
+		var/v_comp = direction ^ h_comp
+
+		var/turf/h_turf = get_step(src, h_comp)
+		var/turf/v_turf = get_step(src, v_comp)
+
+		var/can_pass_adjacent = \
+			h_turf && CanAtmosPass(h_comp, consider_objects) && h_turf.CanAtmosPass(v_comp, consider_objects) \
+			|| v_turf && CanAtmosPass(v_comp, consider_objects) && v_turf.CanAtmosPass(h_comp, consider_objects)
+
+		if(!can_pass_adjacent)
+			return FALSE
+
 	for(var/obj/O in contents)
 		if(istype(O, /obj/item))
 			// Items can't block atmos.
@@ -15,7 +31,17 @@
 
 	return TRUE
 
-/atom/movable/proc/CanAtmosPass()
+/turf/proc/CanAtmosPassBidirectional(direction, consider_objects = TRUE)
+	var/turf/target = get_step(src, direction)
+	if(!target)
+		return FALSE
+	if(!CanAtmosPass(direction, consider_objects))
+		return FALSE
+	if(!target.CanAtmosPass(REVERSE_DIR(direction), consider_objects))
+		return FALSE
+	return TRUE
+
+/atom/movable/proc/CanAtmosPass(direction)
 	return TRUE
 
 /atom/proc/CanPass(atom/movable/mover, border_dir)
@@ -62,42 +88,17 @@
 		return list()
 
 	var/adjacent_turfs = list()
-	for(var/turf/T in RANGE_EDGE_TURFS(1, src))
+	var/range_edge_turfs = RANGE_EDGE_TURFS(1, src)
+	for(var/turf/T in range_edge_turfs)
 		var/direction = get_dir(src, T)
 		if(!CanAtmosPass(direction))
 			continue
-		if(!T.CanAtmosPass(turn(direction, 180)))
+		if(!T.CanAtmosPass(REVERSE_DIR(direction)))
 			continue
 		adjacent_turfs += T
 
-	if(!alldir)
-		return adjacent_turfs
-
-	for(var/turf/T in RANGE_TURFS(1, src))
-		var/direction = get_dir(src, T)
-		if(IS_DIR_CARDINAL(direction))
-			continue
-		// check_direction is the first way we move, from src
-		for(var/check_direction in GLOB.cardinal)
-			if(!(check_direction & direction))
-				// Wrong way.
-				continue
-
-			var/turf/intermediate = get_step(src, check_direction)
-			if(!(intermediate in adjacent_turfs))
-				continue
-
-			// other_direction is the second way we move, from intermediate.
-			var/other_direction = direction & ~check_direction
-
-			// We already know we can reach intermediate, so now we just need to check the second step.
-			if(!intermediate.CanAtmosPass(other_direction))
-				continue
-			if(!T.CanAtmosPass(turn(other_direction, 180)))
-				continue
-
-			adjacent_turfs += T
-			break
+	if(alldir)
+		adjacent_turfs += src
 
 	return adjacent_turfs
 
