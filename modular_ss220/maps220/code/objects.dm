@@ -142,9 +142,10 @@
 // Mecha equipment
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/syndi
 	name = "\improper SA-9 \"Tacit\""
-	equip_cooldown = 0.8 SECONDS
+	equip_cooldown = 0.75 SECONDS
 	projectile = /obj/item/projectile/bullet/midbullet
-	projectile_delay = 1.5
+	projectiles_per_shot = 2
+	projectile_delay = 1.2
 	projectile_energy_cost = 14
 	suppressed = TRUE
 	fire_sound = 'sound/weapons/gunshots/gunshot_silenced.ogg'
