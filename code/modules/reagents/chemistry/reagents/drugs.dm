@@ -260,7 +260,6 @@
 
 /datum/reagent/pump_up/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
-	var/recent_consumption = holder.cycle_used[type] // SS220 EDIT
 	update_flags |= M.adjustStaminaLoss(-21) // one cycle to get out of stam crit ~2 second
 	M.AdjustParalysis(-2 SECONDS)
 	M.AdjustStunned(-2 SECONDS)
@@ -268,6 +267,7 @@
 	M.AdjustKnockDown(-2 SECONDS)
 	// SS220 EDIT START
 	if(ishuman(M))
+		var/recent_consumption = holder.cycle_used[type]
 		var/mob/living/carbon/human/H = M
 		var/datum/organ/heart/datum_heart = H.get_int_organ_datum(ORGAN_DATUM_HEART)
 		if(datum_heart)
