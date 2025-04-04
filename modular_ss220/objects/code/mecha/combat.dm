@@ -53,8 +53,8 @@
 
 // NT Special Gygax wreckage
 /obj/structure/mecha_wreckage/gygax/gygax_nt
-	name = "\improper Обломки Специального Гигакса НТ"
-	desc = "Видимо козырь был плохим..."
+	name = "обломки Специального Гигакса НТ"
+	desc = "Видимо, козырь был плохим..."
 	icon = 'modular_ss220/objects/icons/mecha.dmi'
 	icon_state = "ntgygax-broken"
 
@@ -105,7 +105,7 @@
 
 // Rover's wreckage
 /obj/structure/mecha_wreckage/durand/rover
-	name = "\improper Обломки Ровера"
+	name = "обломки Ровера"
 	desc = "И как такой гигант пал?"
 	icon = 'modular_ss220/objects/icons/mecha.dmi'
 	icon_state = "darkdurand-broken"
