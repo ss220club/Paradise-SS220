@@ -33,6 +33,7 @@
 	var/temperature_max = 10000
 	var/list/datum/reagent/addiction_list = list()
 	var/list/addiction_threshold_accumulated = list()
+	var/list/cycle_used = list() // SS220 EDIT
 	var/flags
 
 /datum/reagents/New(maximum = 100, temperature_minimum, temperature_maximum)
@@ -305,6 +306,14 @@
 		addiction_threshold_accumulated[R] -= initial(R.addiction_decay_rate) // Otherwise very slowly deplete the buildup (defaults to 0.01)
 		if(addiction_threshold_accumulated[R] <= 0)
 			addiction_threshold_accumulated -= R
+	// SS220 EDIT START
+	for(var/datum/reagent/R as anything in cycle_used)
+		if(has_reagent(initial(R.id)))
+			continue
+		cycle_used[R] -= initial(R.cycle_decay_rate)
+		if(cycle_used[R] <= 0)
+			cycle_used -= R
+	// SS220 EDIT END
 
 	// a bitfield filled in by each reagent's `on_mob_life` to find out which states to update
 	var/update_flags = STATUS_UPDATE_NONE
