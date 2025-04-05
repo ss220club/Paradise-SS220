@@ -14328,15 +14328,6 @@
 	icon_state = "brown"
 	},
 /area/station/supply/lobby)
-"blv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/turf/simulated/floor/transparent/glass,
-/area/station/aisat)
 "blw" = (
 /obj/item/kirbyplants/large,
 /obj/machinery/light/directional/south,
@@ -14448,12 +14439,6 @@
 /obj/item/storage/toolbox/fakesyndi,
 /turf/simulated/floor/plating,
 /area/station/security/podpilot)
-"blO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/transparent/glass,
-/area/station/aisat)
 "blP" = (
 /obj/structure/cable,
 /obj/effect/spawner/window/reinforced/polarized/grilled{
@@ -22990,16 +22975,13 @@
 	},
 /turf/space,
 /area/space/nearstation)
-"bRr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/transparent/glass,
-/area/station/aisat)
 "bRs" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/machinery/light/small/directional/east,
 /obj/machinery/firealarm/directional/east,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel/dark,
 /area/station/aisat)
 "bRt" = (
@@ -23452,11 +23434,11 @@
 	},
 /area/station/command/office/hos)
 "bTs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/aisat)
@@ -24179,6 +24161,9 @@
 	c_tag = "AI Minisatellite Power Station Access";
 	dir = 8;
 	network = list("SS13","Minisat")
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/aisat)
@@ -115577,9 +115562,9 @@ cqK
 lYB
 lYB
 lYB
-bRr
-blv
-blO
+cqK
+cqK
+cqK
 lYB
 lYB
 lYB
