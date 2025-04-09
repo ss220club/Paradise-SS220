@@ -709,6 +709,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/reagent_containers/cooking/oven,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -2243,7 +2244,6 @@
 	},
 /area/ruin/ancientstation/kitchen)
 "gF" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/alarm/all_access/directional/north{
 	report_danger_level = 0
@@ -2273,16 +2273,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/machinery/cooking/stovetop,
+/obj/item/reagent_containers/cooking/pan{
+	pixel_x = 7;
+	pixel_y = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
 /area/ruin/ancientstation/kitchen)
 "gL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/machinery/reagentgrinder{
-	pixel_y = 10
-	},
+/obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -2603,6 +2604,10 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/reagent_containers/cooking/deep_basket{
+	pixel_x = 3
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -4372,7 +4377,10 @@
 "pW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/obj/item/reagent_containers/cooking/oven,
+/obj/item/reagent_containers/cooking/pot{
+	pixel_x = -1;
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -6956,6 +6964,10 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/table,
+/obj/machinery/reagentgrinder{
+	pixel_y = 10
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -9073,7 +9085,7 @@ cS
 fL
 gs
 gE
-gG
+gL
 eo
 gG
 vJ
@@ -9217,8 +9229,8 @@ rn
 gs
 Iw
 gG
-VR
 gG
+VR
 gG
 hZ
 ha
@@ -9265,7 +9277,7 @@ fO
 gs
 gt
 gG
-sY
+gG
 gG
 gG
 ia
@@ -9313,8 +9325,8 @@ fS
 gs
 zp
 kx
-gL
 gG
+sY
 gG
 hY
 ha
