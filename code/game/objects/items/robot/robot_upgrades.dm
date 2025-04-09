@@ -79,14 +79,20 @@
  * * R - the cyborg that we've applied the upgrade to.
  */
 /obj/item/borg/upgrade/proc/after_install(mob/living/silicon/robot/R)
-	for(var/item in items_to_replace)
-		var/replacement_type = items_to_replace[item]
-		var/obj/item/replacement = new replacement_type(R.module)
-		R.module.remove_item_from_lists(item)
-		R.module.basic_modules += replacement
+	for(var/obj/item/installed_item in R.module.basic_modules.Copy())
+		for(var/item in items_to_replace)
+			if(!istype(installed_item, item))
+				continue
+			var/replacement_type = items_to_replace[item]
+			var/obj/item/replacement = new replacement_type(R.module)
+			R.module.remove_item_from_lists(item)
+			R.module.basic_modules += replacement
 
-		if(replacement_type in special_rechargables)
-			R.module.special_rechargables += replacement
+			if(replacement_type in special_rechargables)
+				R.module.special_rechargables += replacement
+
+			// Item is replaced, no need to continue
+			break
 
 	for(var/item in items_to_add)
 		var/obj/item/replacement = new item(R.module)
@@ -318,7 +324,7 @@
 	require_module = TRUE
 	module_type = /obj/item/robot_module/miner
 	items_to_replace = list(
-		/obj/item/storage/bag/ore/cyborg = /obj/item/storage/bag/ore/holding
+		/obj/item/storage/bag/ore/cyborg = /obj/item/storage/bag/ore/cyborg/holding
 	)
 
 /obj/item/borg/upgrade/lavaproof
@@ -481,7 +487,7 @@
 	require_module = TRUE
 	module_type = /obj/item/robot_module/medical
 	items_to_replace = list(
-		/obj/item/scalpel/laser/laser1 = /obj/item/scalpel/laser/laser3, // No abductor laser scalpel, so next best thing.
+		/obj/item/scalpel/laser/laser1 = /obj/item/scalpel/laser/alien,
 		/obj/item/hemostat = /obj/item/hemostat/alien,
 		/obj/item/retractor = /obj/item/retractor/alien,
 		/obj/item/bonegel = /obj/item/bonegel/alien,

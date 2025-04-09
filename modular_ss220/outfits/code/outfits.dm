@@ -309,7 +309,7 @@
 
 // MARK: ERT
 /* Commander */
-/datum/outfit/job/centcom/response_team/commander/amber
+/datum/outfit/job/response_team/commander/amber
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 
 /datum/outfit/job/response_team/commander/red
@@ -348,7 +348,7 @@
 	)
 
 /* Engineer */
-/datum/outfit/job/centcom/response_team/engineer/amber
+/datum/outfit/job/response_team/engineer/amber
 	suit = /obj/item/clothing/suit/space/ert_engineer
 	head = /obj/item/clothing/head/helmet/space/ert_engineer
 
@@ -557,3 +557,9 @@
 	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
 	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
 	new /obj/item/restraints/legcuffs/bola/energy(src)
+
+// MARK: Jobs
+/datum/outfit/job/nct/New()
+	backpack_contents += list(
+		/obj/item/stamp/nct = 1
+	)

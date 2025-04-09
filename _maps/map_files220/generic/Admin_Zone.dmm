@@ -189,7 +189,7 @@
 /turf/simulated/floor/grass/no_creep,
 /area/ghost_bar/outdoor)
 "aJ" = (
-/obj/structure/bonfire/lit/dense,
+/obj/structure/lightable/bonfire/lit/dense,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "aK" = (
@@ -217,13 +217,7 @@
 	},
 /area/ghost_bar/indoor)
 "aO" = (
-/obj/docking_port/mobile{
-	dwidth = 13;
-	height = 18;
-	id = "vox_shuttle";
-	name = "scavenger shuttle";
-	width = 19;
-	dir = 2;
+/obj/docking_port/mobile/scavenger{
 	pixel_y = -5
 	},
 /obj/docking_port/stationary{
@@ -502,14 +496,14 @@
 "bS" = (
 /obj/structure/table/abductor,
 /obj/item/hemostat/alien,
-/obj/item/scalpel/alien,
+/obj/item/scalpel/laser/alien,
 /obj/item/circular_saw/alien,
 /obj/item/retractor/alien,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "bV" = (
 /obj/effect/turf_decal/delivery/hollow,
-/obj/effect/spawner/random/loot/crate,
+/obj/effect/spawner/random/loot_crate/rarely,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium{
@@ -642,8 +636,7 @@
 "cv" = (
 /obj/structure/table/abductor,
 /obj/item/paper/abductor,
-/obj/item/scalpel/alien,
-/obj/item/cautery/alien,
+/obj/item/scalpel/laser/alien,
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
 "cw" = (
@@ -1437,7 +1430,7 @@
 	},
 /area/ninja/holding)
 "eT" = (
-/mob/living/simple_animal/cow,
+/mob/living/basic/cow,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "eU" = (
@@ -3660,7 +3653,8 @@
 	},
 /area/holodeck/source_thunderdomecourt)
 "mx" = (
-/obj/machinery/kitchen_machine/grill/upgraded,
+/obj/structure/table,
+/obj/machinery/cooking/grill/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
@@ -3979,7 +3973,7 @@
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "nQ" = (
-/obj/machinery/kitchen_machine/oven/upgraded,
+/obj/machinery/cooking/oven/upgraded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -4774,7 +4768,7 @@
 	},
 /area/shuttle/vox)
 "qJ" = (
-/obj/machinery/cooker/deepfryer/upgraded,
+/obj/machinery/cooking/deepfryer/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
@@ -4783,7 +4777,7 @@
 /area/vox_base)
 "qL" = (
 /obj/effect/turf_decal/delivery/hollow,
-/obj/effect/spawner/random/loot/crate,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -5309,14 +5303,6 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_emptycourt)
-"ss" = (
-/obj/structure/shuttle/engine/large{
-	dir = 4;
-	pixel_x = -33;
-	pixel_y = -32
-	},
-/turf/simulated/floor/indestructible/transparent_floor,
-/area/shuttle/trade/sol)
 "su" = (
 /obj/item/gun/grenadelauncher,
 /obj/structure/table/wood,
@@ -5908,7 +5894,7 @@
 /obj/structure/light_fake,
 /obj/item/surgical_drapes,
 /obj/item/surgicaldrill/alien,
-/obj/item/cautery/alien,
+/obj/item/scalpel/laser/alien,
 /obj/item/bonesetter,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
@@ -5991,6 +5977,16 @@
 /obj/item/gun/energy/gun/nuclear,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"uM" = (
+/obj/structure/shuttle/engine/platform{
+	layer = 2.9;
+	dir = 8
+	},
+/obj/structure/shuttle/engine/large{
+	dir = 4
+	},
+/turf/simulated/floor/plating/airless,
+/area/shuttle/trade/sol)
 "uN" = (
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/beer/upgraded{
@@ -8695,7 +8691,7 @@
 /turf/simulated/floor/indestructible/cobble,
 /area/ghost_bar/outdoor)
 "DF" = (
-/obj/structure/bonfire/lit/dense,
+/obj/structure/lightable/bonfire/lit/dense,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -9791,7 +9787,8 @@
 	},
 /area/trader_station/sol)
 "Ht" = (
-/obj/machinery/kitchen_machine/grill/upgraded,
+/obj/structure/table,
+/obj/machinery/cooking/grill/upgraded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -11241,7 +11238,7 @@
 /turf/simulated/floor/indestructible/cobble/side,
 /area/ghost_bar/outdoor)
 "Mv" = (
-/obj/machinery/kitchen_machine/oven/upgraded,
+/obj/machinery/cooking/oven/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
@@ -11424,7 +11421,7 @@
 /area/space/nearstation/centcom)
 "Nr" = (
 /obj/effect/turf_decal/delivery/hollow,
-/obj/effect/spawner/random/loot/crate,
+/obj/effect/spawner/random/loot_crate/rarely,
 /obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
@@ -11530,7 +11527,7 @@
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
 "NK" = (
-/obj/machinery/cooker/deepfryer/upgraded,
+/obj/machinery/cooking/deepfryer/upgraded,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "NL" = (
@@ -11782,8 +11779,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2.9
+	dir = 1
 	},
 /obj/structure/chair/stool,
 /obj/item/clothing/under/misc/bluehawaiianshirt,
@@ -13069,15 +13065,7 @@
 	width = 15;
 	dheight = 1
 	},
-/obj/docking_port/mobile{
-	dir = 8;
-	dwidth = 7;
-	height = 18;
-	id = "trade_sol";
-	name = "sol trade shuttle";
-	width = 15;
-	dheight = 1
-	},
+/obj/docking_port/mobile/trade_sol,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/shuttle/trade/sol)
 "SU" = (
@@ -13127,7 +13115,7 @@
 	},
 /area/vox_base)
 "Td" = (
-/obj/machinery/cooker/deepfryer/upgraded,
+/obj/machinery/cooking/deepfryer/upgraded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -13403,7 +13391,7 @@
 /area/shuttle/trade/sol)
 "TU" = (
 /obj/effect/turf_decal/delivery/hollow,
-/obj/effect/spawner/random/loot/crate,
+/obj/effect/spawner/random/loot_crate/rarely,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
@@ -13865,7 +13853,7 @@
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "VE" = (
-/obj/machinery/kitchen_machine/oven/upgraded,
+/obj/machinery/cooking/oven/upgraded,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "VF" = (
@@ -13962,7 +13950,8 @@
 /obj/structure/light_fake{
 	dir = 8
 	},
-/obj/machinery/kitchen_machine/grill/upgraded,
+/obj/structure/table,
+/obj/machinery/cooking/grill/upgraded,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "VR" = (
@@ -76748,7 +76737,7 @@ kH
 OC
 vQ
 JZ
-JZ
+uM
 Ch
 ix
 pi
@@ -76758,7 +76747,7 @@ sx
 Aa
 Ch
 JZ
-JZ
+uM
 vQ
 Vx
 us
@@ -77004,7 +76993,7 @@ kH
 kH
 OC
 eZ
-ss
+pU
 pU
 vQ
 Ch
@@ -77014,7 +77003,7 @@ ST
 Ch
 Ch
 vQ
-ss
+pU
 pU
 eZ
 Vx

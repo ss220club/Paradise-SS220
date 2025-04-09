@@ -129,6 +129,12 @@
 	donator_tier = 2
 	cost = 1
 
+/datum/gear/donor/mouse_ears
+	display_name = "Мышиные ушки"
+	path = /obj/item/clothing/head/kitty/mouse
+	donator_tier = 2
+	cost = 1
+
 /datum/gear/donor/driver
 	display_name = "Driver jacket"
 	path = /obj/item/clothing/suit/jacket/driver
@@ -187,6 +193,13 @@
 	display_name = "Берцы ветерана"
 	path = /obj/item/clothing/shoes/jackboots/noisy/long
 	donator_tier = 2
+	cost = 2
+
+/datum/gear/donor/seceyepatch
+	display_name = "Повязка secHUD на глаз"
+	path = /obj/item/clothing/glasses/hud/security/eyepatch
+	allowed_roles = list("Head of Security", "Warden", "Detective", "Security Officer", "Adjutant")
+	donator_tier = 3
 	cost = 2
 
 // ID Skins
