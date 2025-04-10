@@ -36,7 +36,7 @@
 	steps = list(
 		PCWJ_ADD_REAGENT("water", 5),
 		PCWJ_ADD_REAGENT("buckwheat", 10),
-		PCWJ_USE_STOVE(20 SECONDS),
+		PCWJ_USE_STOVE(J_MED, 20 SECONDS),
 	)
 
 // Merchant Buckwheat
@@ -53,14 +53,14 @@
 /datum/cooking/recipe/buckwheat_merchant
 	container_type = /obj/item/reagent_containers/cooking/pot
 	product_type = /obj/item/food/buckwheat_merchant
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_SIDES
 	steps = list(
 		PCWJ_ADD_REAGENT("water", 5),
 		PCWJ_ADD_REAGENT("buckwheat", 10),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/carrot),
 		PCWJ_ADD_ITEM(/obj/item/food/meat),
-		PCWJ_USE_STOVE(20 SECONDS),
+		PCWJ_USE_STOVE(J_MED, 20 SECONDS),
 	)
 
 // Olivier Salad
@@ -193,7 +193,7 @@
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cucumber),
 		PCWJ_ADD_REAGENT("water", 10),
 		PCWJ_ADD_REAGENT("rice", 5),
-		PCWJ_USE_STOVE(10 SECONDS),
+		PCWJ_USE_STOVE(J_MED, 10 SECONDS),
 	)
 
 // Doner
@@ -209,7 +209,7 @@
 /datum/cooking/recipe/shawarma
 	container_type = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/shawarma
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/meatsteak),
 		PCWJ_ADD_ITEM(/obj/item/food/meatsteak),
@@ -220,7 +220,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
 		PCWJ_ADD_REAGENT("sodiumchloride", 1),
 		PCWJ_ADD_REAGENT("blackpepper", 1),
-		PCWJ_USE_GRILL(10 SECONDS),
+		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
 // Doner - Cheese
@@ -236,7 +236,7 @@
 /datum/cooking/recipe/doner_cheese
 	container_type = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/doner_cheese
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/meatsteak),
 		PCWJ_ADD_ITEM(/obj/item/food/meatsteak),
@@ -247,7 +247,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
 		PCWJ_ADD_REAGENT("sodiumchloride", 1),
 		PCWJ_ADD_REAGENT("blackpepper", 1),
-		PCWJ_USE_GRILL(10 SECONDS),
+		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
 // Doner - Mushroom
@@ -260,11 +260,10 @@
 	list_reagents = list("protein" = 4, "nutriment" = 4, "plantmatter" = 2, "vitamin" = 2, "tomatojuice" = 4)
 	tastes = list("счастье" = 3, "мясо" = 2, "овощи" = 2, "томат" = 1)
 
-/
 /datum/cooking/recipe/doner_mushroom
 	container_type = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/doner_mushroom
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/meatsteak),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/mushroom),
@@ -277,7 +276,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
 		PCWJ_ADD_REAGENT("sodiumchloride", 1),
 		PCWJ_ADD_REAGENT("blackpepper", 1),
-		PCWJ_USE_GRILL(10 SECONDS),
+		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
 // Doner - Vegetable
@@ -293,7 +292,7 @@
 /datum/cooking/recipe/doner_vegan
 	container_type = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/doner_vegan
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cabbage),
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/onion_slice),
@@ -305,7 +304,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
 		PCWJ_ADD_REAGENT("sodiumchloride", 1),
 		PCWJ_ADD_REAGENT("blackpepper", 1),
-		PCWJ_USE_GRILL(10 SECONDS),
+		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
 // Slime Pie
@@ -354,7 +353,7 @@
 /datum/cooking/recipe/kidan_ragu
 	container_type = /obj/item/reagent_containers/cooking/pot
 	product_type = /obj/item/food/kidanragu
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/organ/internal/heart/kidan),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/potato),
@@ -364,11 +363,27 @@
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/chili),
 		PCWJ_ADD_REAGENT("water", 10),
 		PCWJ_ADD_REAGENT("sodiumchloride", 1),
-		PCWJ_USE_STOVE(30 SECONDS),
+		PCWJ_USE_STOVE(J_LO, 30 SECONDS),
 	)
 
 // Fried Unathi Meat
 /obj/item/food/sliceable/lizard
+	name = "жареное мясо унатха"
+	desc = "Сочный стейк из мяса крупной ящерицы, вызывающий желание полежать на теплых камнях. Можно нарезать."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "lizard_steak"
+	slice_path = /obj/item/food/lizardslice
+	slices_num = 5
+	list_reagents = list("protein" = 20, "nutriment" = 10, "vitamin" = 5)
+	tastes = list("мясо ящерицы" = 4, "курятина" = 2)
+
+/obj/item/food/lizardslice
+	name = "стейк из унатха"
+	desc = "Порция мяса унатхи."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "lizard_slice"
+	trash = /obj/item/trash/plate
+	filling_color = "#a55f3a"
 	tastes = list("мясо ящерицы" = 2, "курятина" = 1)
 
 /datum/cooking/recipe_step/add_item/lizardslice
@@ -803,7 +818,7 @@
 	steps = list(
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/corn),
 		PCWJ_ADD_REAGENT("flour", 10),
-		PCWJ_USE_GRILL(10 SECONDS),
+		PCWJ_USE_GRILL(J_MED, 5 SECONDS),
 	)
 
 // Nachos
@@ -825,7 +840,7 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/tortilla),
 		PCWJ_ADD_REAGENT("sodiumchloride", 1),
-		PCWJ_USE_OVEN(10 SECONDS),
+		PCWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)
 
 // Cheese Nachos
@@ -848,7 +863,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/tortilla),
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		PCWJ_ADD_REAGENT("sodiumchloride", 1),
-		PCWJ_USE_OVEN(10 SECONDS),
+		PCWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)
 
 // Cuban Nachos
@@ -871,7 +886,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/tortilla),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/chili),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/chili),
-		PCWJ_USE_OVEN(10 SECONDS),
+		PCWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)
 
 // Carne Buritto
@@ -888,13 +903,13 @@
 /datum/cooking/recipe/carneburrito
 	container_type = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/carneburrito
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/tortilla),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/soybeans),
 		PCWJ_ADD_ITEM(/obj/item/food/cutlet),
 		PCWJ_ADD_ITEM(/obj/item/food/cutlet),
-		PCWJ_USE_GRILL(10 SECONDS),
+		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
 // Cheese Buritto
@@ -911,12 +926,12 @@
 /datum/cooking/recipe/cheeseburrito
 	container_type = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/cheeseburrito
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/tortilla),
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
-		PCWJ_USE_GRILL(10 SECONDS),
+		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
 // Plasma Buritto
@@ -933,13 +948,13 @@
 /datum/cooking/recipe/plasmaburrito
 	container_type = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/plasmaburrito
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/tortilla),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/soybeans),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/chili),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/chili),
-		PCWJ_USE_GRILL(10 SECONDS),
+		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
 // Pelmeni
@@ -976,11 +991,11 @@
 /datum/cooking/recipe/pelmeni
 	container_type = /obj/item/reagent_containers/cooking/pot
 	product_type = /obj/item/food/boiledpelmeni
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/pelmeni),
 		PCWJ_ADD_REAGENT("water", 5),
-		PCWJ_USE_STOVE(10 SECONDS),
+		PCWJ_USE_STOVE(J_MED, 10 SECONDS),
 	)
 
 // Smoked Sausage
@@ -1111,13 +1126,13 @@
 /datum/cooking/recipe/chowmein
 	container_type = /obj/item/reagent_containers/cooking/pan
 	product_type = /obj/item/food/chowmein
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledspaghetti),
 		PCWJ_ADD_ITEM(/obj/item/food/cutlet),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cabbage),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/carrot),
-		PCWJ_USE_STOVE(10 SECONDS),
+		PCWJ_USE_STOVE(J_HI, 10 SECONDS),
 	)
 
 // Beef Noodles
@@ -1134,13 +1149,13 @@
 /datum/cooking/recipe/beefnoodles
 	container_type = /obj/item/reagent_containers/cooking/pot
 	product_type = /obj/item/food/beefnoodles
-	catalog_category = COOKBOOK_CATEGORY_MEALS
+	catalog_category = COOKBOOK_CATEGORY_MEAT
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledspaghetti),
 		PCWJ_ADD_ITEM(/obj/item/food/cutlet),
 		PCWJ_ADD_ITEM(/obj/item/food/cutlet),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cabbage),
-		PCWJ_USE_STOVE(10 SECONDS),
+		PCWJ_USE_STOVE(J_MED, 10 SECONDS),
 	)
 
 // Father's Soup
@@ -1205,7 +1220,8 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/stack/sheet/wood),
 		PCWJ_ADD_REAGENT("water", 20),
-		PCWJ_USE_STOVE(J_MED, 10 SECONDS), // жарим до дыма //
+		PCWJ_USE_STOVE(J_MED, 10 SECONDS),
+	)
 
 /obj/item/food/soup/sawdust_soup/On_Consume(mob/M, mob/user)
 	. = ..()
