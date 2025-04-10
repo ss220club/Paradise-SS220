@@ -265,6 +265,16 @@
 	M.AdjustStunned(-2 SECONDS)
 	M.AdjustWeakened(-2 SECONDS)
 	M.AdjustKnockDown(-2 SECONDS)
+	// SS220 EDIT START
+	if(ishuman(M))
+		var/recent_consumption = holder.cycle_used[type]
+		var/mob/living/carbon/human/H = M
+		var/datum/organ/heart/datum_heart = H.get_int_organ_datum(ORGAN_DATUM_HEART)
+		if(datum_heart)
+			var/heart_damage = 0.05 + 0.75 / 100 * recent_consumption // 0.05 at 1st cycle, 0.8 at 100th. Death in 120 (127 for slime people) cycles without treatment
+			var/obj/item/organ/internal/heart/our_heart = datum_heart.linked_organ
+			our_heart.receive_damage(heart_damage, TRUE)
+	// SS220 EDIT END
 	return ..() | update_flags
 
 /datum/reagent/pump_up/overdose_process(mob/living/M, severity)
