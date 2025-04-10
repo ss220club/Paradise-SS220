@@ -21659,12 +21659,15 @@
 	},
 /area/station/hallway/secondary/entry)
 "bKs" = (
-/obj/machinery/requests_console/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "brown"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/area/station/supply/smith_office)
+/obj/effect/spawner/random/barrier/grille_maybe,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/apmaint)
 "bKt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/spawner/window/reinforced/tinted/grilled,
@@ -36235,15 +36238,12 @@
 	},
 /area/station/engineering/smes)
 "cSz" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/machinery/requests_console/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "brown"
 	},
-/obj/effect/spawner/random/barrier/grille_maybe,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/apmaint)
+/area/station/supply/smith_office)
 "cSA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 9
@@ -123467,7 +123467,7 @@ cGI
 qaq
 trR
 kwV
-bKs
+cSz
 fVP
 fVP
 qMC
@@ -125014,7 +125014,7 @@ bIG
 pbl
 lDW
 bUp
-cSz
+bKs
 nBs
 hyx
 pgV
