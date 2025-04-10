@@ -21658,16 +21658,6 @@
 	icon_state = "arrival"
 	},
 /area/station/hallway/secondary/entry)
-"bKs" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/spawner/random/barrier/grille_maybe,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/apmaint)
 "bKt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/spawner/window/reinforced/tinted/grilled,
@@ -25052,9 +25042,15 @@
 	},
 /area/station/public/vacant_store)
 "cap" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/wall,
-/area/station/public/vacant_store)
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random/barrier/grille_maybe,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/apmaint)
 "caq" = (
 /obj/item/flag/nt,
 /turf/simulated/floor/wood/oak,
@@ -36238,11 +36234,12 @@
 	},
 /area/station/engineering/smes)
 "cSz" = (
-/obj/machinery/requests_console/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "brown"
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
+/obj/effect/landmark/start/smith,
+/turf/simulated/floor/plasteel,
 /area/station/supply/smith_office)
 "cSA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -45956,12 +45953,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
 "ewa" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
+/obj/machinery/requests_console/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "brown"
 	},
-/obj/effect/landmark/start/smith,
-/turf/simulated/floor/plasteel,
 /area/station/supply/smith_office)
 "ewf" = (
 /obj/machinery/firealarm/directional/west,
@@ -123209,7 +123205,7 @@ gNX
 cGI
 nrk
 fpB
-ewa
+cSz
 rPi
 oFK
 fpB
@@ -123467,7 +123463,7 @@ cGI
 qaq
 trR
 kwV
-cSz
+ewa
 fVP
 fVP
 qMC
@@ -124242,7 +124238,7 @@ bUp
 bUp
 bUp
 bUp
-cap
+bUp
 coL
 cqs
 lNb
@@ -124756,7 +124752,7 @@ jmQ
 smS
 ktN
 vEy
-cap
+bUp
 mFO
 lNb
 cyg
@@ -125014,7 +125010,7 @@ bIG
 pbl
 lDW
 bUp
-bKs
+cap
 nBs
 hyx
 pgV
