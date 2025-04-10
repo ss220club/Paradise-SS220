@@ -73,7 +73,7 @@
 
 /mob/living/simple_animal/hostile/handle_automated_action()
 	if(AIStatus == AI_OFF)
-		return 0
+		return FALSE
 	var/list/possible_targets = ListTargets() //we look around for potential targets and make it a list for later use.
 
 	if(environment_smash)
@@ -85,7 +85,7 @@
 		if(!MoveToTarget(possible_targets))     //if we lose our target
 			if(AIShouldSleep(possible_targets))	// we try to acquire a new one
 				toggle_ai(AI_IDLE)				// otherwise we go idle
-	return 1
+	return TRUE
 
 /mob/living/simple_animal/hostile/handle_automated_movement()
 	. = ..()
@@ -120,12 +120,12 @@
 		return FINISH_ATTACK
 
 	if(stat == CONSCIOUS && !target && AIStatus != AI_OFF && !client && user)
-		FindTarget(list(user), 1)
+		FindTarget(list(user), TRUE)
 
 /mob/living/simple_animal/hostile/bullet_act(obj/item/projectile/P)
 	if(stat == CONSCIOUS && !target && AIStatus != AI_OFF && !client)
 		if(P.firer && get_dist(src, P.firer) <= aggro_vision_range)
-			FindTarget(list(P.firer), 1)
+			FindTarget(list(P.firer), TRUE)
 		Goto(P.starting, move_to_delay, 3)
 	return ..()
 
@@ -143,7 +143,7 @@
 	else
 		. = oview(vision_range, targets_from)
 
-/mob/living/simple_animal/hostile/proc/FindTarget(list/possible_targets, HasTargetsList = 0)//Step 2, filter down possible targets to things we actually care about
+/mob/living/simple_animal/hostile/proc/FindTarget(list/possible_targets, HasTargetsList)//Step 2, filter down possible targets to things we actually care about
 	. = list()
 	if(!HasTargetsList)
 		possible_targets = ListTargets()
@@ -243,7 +243,7 @@
 	if(target != null)
 		GainPatience()
 		Aggro()
-		return 1
+		return TRUE
 
 //What we do after closing in
 /mob/living/simple_animal/hostile/proc/MeleeAction(patience = TRUE)
@@ -265,19 +265,19 @@
 	stop_automated_movement = TRUE
 	if(!target || !CanAttack(target))
 		LoseTarget()
-		return 0
+		return FALSE
 	if(target in possible_targets)
 		var/turf/T = get_turf(src)
 		if(target.z != T.z)
 			LoseTarget()
-			return 0
+			return FALSE
 		var/target_distance = get_dist(targets_from,target)
 		if(ranged) //We ranged? Shoot at em
 			if(!target.Adjacent(targets_from) && ranged_cooldown <= world.time) //But make sure they're not in range for a melee attack and our range attack is off cooldown
 				OpenFire(target)
 		if(!Process_Spacemove()) //Drifting
 			walk(src,0)
-			return 1
+			return TRUE
 		if(retreat_distance != null) //If we have a retreat distance, check if we need to run from our target
 			if(target_distance <= retreat_distance) //If target's closer than our retreat distance, run
 				walk_away(src,target,retreat_distance,move_to_delay)
@@ -292,8 +292,8 @@
 				if(rapid_melee > 1 && target_distance <= melee_queue_distance)
 					MeleeAction(FALSE)
 				in_melee = FALSE //If we're just preparing to strike do not enter sidestep mode
-			return 1
-		return 0
+			return TRUE
+		return FALSE
 	if(environment_smash)
 		if(target.loc != null && get_dist(targets_from, target.loc) <= vision_range) //We can't see our target, but he's in our vision range still
 			if(ranged_ignores_vision && ranged_cooldown <= world.time) //we can't see our target... but we can fire at them!
@@ -301,12 +301,12 @@
 			if((environment_smash & ENVIRONMENT_SMASH_WALLS) || (environment_smash & ENVIRONMENT_SMASH_RWALLS)) //If we're capable of smashing through walls, forget about vision completely after finding our target
 				Goto(target,move_to_delay,minimum_distance)
 				FindHidden()
-				return 1
+				return TRUE
 			else
 				if(FindHidden())
-					return 1
+					return TRUE
 	LoseTarget()
-	return 0
+	return FALSE
 
 /mob/living/simple_animal/hostile/proc/Goto(target, delay, minimum_distance)
 	if(target == src.target)
@@ -495,23 +495,20 @@
 		OpenFire(A)
 	..()
 
-
-
 ////// AI Status ///////
 /mob/living/simple_animal/hostile/proc/AICanContinue(list/possible_targets)
 	switch(AIStatus)
 		if(AI_ON)
-			. = 1
+			. = TRUE
 		if(AI_IDLE)
-			if(FindTarget(possible_targets, 1))
-				. = 1
+			if(FindTarget(possible_targets, TRUE))
+				. = TRUE
 				toggle_ai(AI_ON) //Wake up for more than one Life() cycle.
 			else
-				. = 0
+				. = FALSE
 
 /mob/living/simple_animal/hostile/proc/AIShouldSleep(list/possible_targets)
-	return !FindTarget(possible_targets, 1)
-
+	return !FindTarget(possible_targets, TRUE)
 
 //These two procs handle losing our target if we've failed to attack them for
 //more than lose_patience_timeout deciseconds, which probably means we're stuck
@@ -557,7 +554,7 @@
 	else
 		tlist = ListTargets()
 
-	if(AIStatus == AI_IDLE && FindTarget(tlist, 1))
+	if(AIStatus == AI_IDLE && FindTarget(tlist, TRUE))
 		if(cheap_search) //Try again with full effort
 			FindTarget()
 		toggle_ai(AI_ON)
