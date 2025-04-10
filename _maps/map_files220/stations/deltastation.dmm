@@ -1826,7 +1826,6 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 10;
 	icon_state = "brown"
 	},
 /area/station/supply/miningdock)
@@ -13453,11 +13452,8 @@
 	},
 /obj/item/stack/sheet/metal/ten,
 /obj/item/radio/intercom/directional/north,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
 /turf/simulated/floor/plasteel{
-	dir = 1;
+	dir = 5;
 	icon_state = "brown"
 	},
 /area/station/supply/smith_office)
@@ -13914,7 +13910,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
-	icon_state = "purple"
+	icon_state = "brown"
 	},
 /area/station/supply/smith_office)
 "bjH" = (
@@ -13948,7 +13944,9 @@
 /area/station/public/locker)
 "bjL" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel{
+	icon_state = "browncorner"
+	},
 /area/station/supply/smith_office)
 "bjM" = (
 /obj/effect/turf_decal/siding/wood/oak/corner{
@@ -14388,8 +14386,15 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/smith_office)
 "blF" = (
-/obj/machinery/light,
-/turf/simulated/floor/plasteel,
+/obj/structure/shelf/supply,
+/obj/item/hammer,
+/obj/item/hammer,
+/obj/item/hammer,
+/obj/item/storage/belt/utility,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "brown"
+	},
 /area/station/supply/smith_office)
 "blG" = (
 /obj/structure/cable{
@@ -48232,6 +48237,11 @@
 /area/station/maintenance/port)
 "egS" = (
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 2;
+	id_tag = "smithdesk";
+	name = "Smith's Office Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/station/supply/smith_office)
 "ehj" = (
@@ -69593,13 +69603,6 @@
 	icon_state = "darkred"
 	},
 /area/station/security/lobby)
-"kUe" = (
-/obj/structure/closet/secure_closet/smith,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "brown"
-	},
-/area/station/supply/smith_office)
 "kUk" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -70010,7 +70013,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 10;
+	dir = 8;
 	icon_state = "brown"
 	},
 /area/station/supply/miningdock)
@@ -71083,12 +71086,11 @@
 	},
 /area/station/security/lobby)
 "lsC" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "brown"
+	dir = 10;
+	icon_state = "purple"
 	},
-/area/station/supply/smith_office)
+/area/station/supply/miningdock)
 "lsG" = (
 /obj/machinery/camera{
 	c_tag = "Restoraunt South";
@@ -82543,9 +82545,6 @@
 	icon_state = "dark_large"
 	},
 /area/station/security/interrogation)
-"oUt" = (
-/turf/simulated/floor/plasteel,
-/area/station/supply/smith_office)
 "oUB" = (
 /obj/structure/chair/comfy/brown{
 	dir = 8
@@ -86998,9 +86997,11 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/atmos/distribution)
 "qnq" = (
-/obj/item/kirbyplants/large,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/obj/structure/closet/secure_closet/smith,
 /turf/simulated/floor/plasteel{
-	dir = 6;
+	dir = 4;
 	icon_state = "brown"
 	},
 /area/station/supply/smith_office)
@@ -96122,10 +96123,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "purplecorner"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "tcQ" = (
 /obj/structure/disposalpipe/segment,
@@ -107009,18 +107007,13 @@
 	},
 /area/station/security/permabrig)
 "wGq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/camera{
 	c_tag = "Mining Access"
 	},
 /obj/machinery/alarm/directional/north,
-/obj/structure/shelf/supply,
-/obj/item/hammer,
-/obj/item/hammer,
-/obj/item/hammer,
-/obj/item/storage/belt/utility,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
@@ -153545,7 +153538,7 @@ hKC
 pKK
 lbP
 wGq
-oUt
+bjJ
 bjL
 egS
 bov
@@ -153802,7 +153795,7 @@ nsC
 bfB
 lbP
 bie
-bjJ
+qnq
 blF
 lbP
 bov
@@ -154057,10 +154050,10 @@ bbe
 bbe
 bbi
 bio
+bbe
+bbe
 lbP
-kUe
-lsC
-qnq
+lbP
 lbP
 bov
 aCO
@@ -154314,11 +154307,11 @@ xff
 bbe
 bei
 lcj
-lbP
-lbP
-lbP
-lbP
-lbP
+lsC
+bbe
+abj
+abj
+cGk
 cGk
 nPZ
 cGk
@@ -154574,8 +154567,8 @@ tcm
 anB
 bbi
 aaa
-abj
 aaa
+abj
 dMH
 nDu
 dMH
