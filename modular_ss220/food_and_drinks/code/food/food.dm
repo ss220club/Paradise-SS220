@@ -92,9 +92,9 @@
 // Weird Olivier Salad
 /obj/item/food/weirdoliviersalad
 	name = "странный салат оливье"
-	desc = "Не трогай, это на новый год!"
+	desc = "Что ты сделал с этим оливье, чудовище?"
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
-	icon_state = "weirdoliviersalad"
+	icon_state = "oliviersalad"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#C2CFAB"
 	bitesize = 3
