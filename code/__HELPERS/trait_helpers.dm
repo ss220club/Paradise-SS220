@@ -387,6 +387,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define HOLO_CIGAR "holo_cigar"
 #define GLADIATOR "gladiator"
 #define PULSEDEMON_TRAIT "pulse_demon"
+#define CQC_HARM_ACT_TRAIT "cqc_harm_act"
 /// Mentor observing
 #define MENTOR_OBSERVING "mobserving"
 #define TIPPED_OVER "tipped_over"

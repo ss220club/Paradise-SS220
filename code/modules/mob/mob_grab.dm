@@ -73,6 +73,7 @@
 			affecting.pixel_y = 0 //used to be an animate, not quick enough for qdel'ing
 			affecting.layer = initial(affecting.layer)
 		affecting.grabbed_by -= src
+		SEND_SIGNAL(affecting, COMSIG_GRAB_RELEASE, affecting, assailant) // SS220 EDIT
 		affecting = null
 	if(assailant)
 		UnregisterSignal(assailant, list(
