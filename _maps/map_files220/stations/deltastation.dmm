@@ -23980,9 +23980,13 @@
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
 "bUS" = (
-/obj/machinery/power/apc/directional/east,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
-	icon_state = "0-8"
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
@@ -80283,17 +80287,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/supply/warehouse)
-"ohc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plasteel,
-/area/station/supply/miningdock)
 "ohp" = (
 /obj/machinery/door/airlock,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -103491,7 +103484,7 @@
 	},
 /area/station/science/break_room)
 "vyp" = (
-/obj/machinery/economy/vending/cola,
+/obj/machinery/economy/vending/cart,
 /turf/simulated/floor/plasteel/dark,
 /area/station/hallway/primary/central/west)
 "vyK" = (
@@ -107940,11 +107933,12 @@
 /turf/simulated/floor/plating,
 /area/station/security/interrogation/observation)
 "wVi" = (
-/obj/machinery/economy/vending/cart,
-/turf/simulated/floor/plasteel{
-	icon_state = "brown"
+/obj/machinery/power/apc/directional/east,
+/obj/structure/cable{
+	icon_state = "0-8"
 	},
-/area/station/supply/lobby)
+/turf/simulated/floor/plasteel,
+/area/station/supply/miningdock)
 "wVq" = (
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel,
@@ -151967,7 +151961,7 @@ bfu
 bgG
 toB
 bfu
-wVi
+blt
 bfq
 bov
 hMM
@@ -153246,7 +153240,7 @@ dsH
 pnw
 wOC
 iYD
-ohc
+bUS
 bry
 wDz
 blE
@@ -153503,7 +153497,7 @@ wXc
 bbj
 bfA
 beg
-bUS
+wVi
 hKC
 pKK
 lbP
