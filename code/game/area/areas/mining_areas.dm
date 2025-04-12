@@ -98,7 +98,7 @@
 	icon_state = "storage"
 
 /area/mine/outpost/smith_workshop
-	name = "Smith's Workshop"
+	name = "Мастерская Кузнеца"
 	icon_state = "smith"
 
 /area/mine/outpost/maintenance
@@ -126,7 +126,7 @@
 	icon_state = "mining_production"
 
 /area/mine/outpost/quartermaster
-	name = "Офис Квартирмейстера Шахтерского Аванпоста"
+	name = "Кабинет Квартирмейстера Шахтерского Аванпоста"
 	icon_state = "qm"
 	request_console_flags = RC_ASSIST | RC_INFO
 	request_console_name = "Quartermaster's Desk"
@@ -159,6 +159,10 @@
 	ambientsounds = MINING_SOUNDS
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
+
+/area/lavaland/surface/gulag_rock
+	name = "Lavaland Wastes"
+	outdoors = TRUE
 
 /area/lavaland/surface/outdoors
 	name = "Пустоши Лаваленда"
