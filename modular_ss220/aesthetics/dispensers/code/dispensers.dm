@@ -15,5 +15,4 @@
 	icon_state = "fuel"
 
 /obj/structure/reagent_dispensers/fueltank/chem
-	icon = 'icons/obj/objects.dmi' // Без этого настенный фуфелтанк невидим
-	icon_state = "fuel_chem"
+	icon = 'icons/obj/objects.dmi'
