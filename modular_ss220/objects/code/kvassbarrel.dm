@@ -23,7 +23,7 @@
 /obj/structure/reagent_dispensers/kvassbarrel/alcohol/examine(mob/user)
 	. = ..()
 	if(user.Adjacent(src))
-		to_chat(user, span_notice("От этой веет спиртным запахом..."))
+		. += span_notice("От этой веет спиртным запахом...")
 
 /datum/supply_packs/organic/kvassbarrel/alcohol
 	name = "Бочка алкогольного кваса"
