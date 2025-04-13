@@ -84,6 +84,9 @@
 /proc/get_milla_tick_time()
 	return RUSTLIB_CALL(milla_get_tick_time)
 
+/proc/get_available_cpu_cores()
+	return RUSTLIB_CALL(milla_get_available_cpu_cores)
+
 /proc/get_interesting_atmos_tiles()
 	return RUSTLIB_CALL(milla_get_interesting_tiles)
 

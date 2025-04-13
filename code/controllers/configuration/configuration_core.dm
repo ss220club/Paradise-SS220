@@ -34,6 +34,8 @@ GLOBAL_DATUM_INIT(configuration, /datum/server_configuration, new())
 	var/datum/configuration_section/mc_configuration/mc
 	/// Holder for the metrics configuration datum
 	var/datum/configuration_section/metrics_configuration/metrics
+	/// Holder for the MILLA configuration datum
+	var/datum/configuration_section/milla_configuration/milla
 	/// Holder for the movement configuration datum
 	var/datum/configuration_section/movement_configuration/movement
 	/// Holder for the overflow configuration datum
@@ -85,6 +87,7 @@ GLOBAL_DATUM_INIT(configuration, /datum/server_configuration, new())
 	gamemode = new()
 	general = new()
 	lighting_effects = new()
+	milla = new()
 	ipintel = new()
 	jobs = new()
 	logging = new()
@@ -124,6 +127,7 @@ GLOBAL_DATUM_INIT(configuration, /datum/server_configuration, new())
 	safe_load(gamemode, "gamemode_configuration")
 	safe_load(general, "general_configuration")
 	safe_load(lighting_effects, "lighting_effects_configuration")
+	safe_load(milla, "milla_configuration")
 	safe_load(ipintel, "ipintel_configuration")
 	safe_load(jobs, "job_configuration")
 	safe_load(logging, "logging_configuration")

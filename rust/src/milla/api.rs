@@ -9,6 +9,7 @@ use byondapi::global_call::call_global;
 use byondapi::map::byond_block;
 use byondapi::map::byond_xyz;
 use byondapi::prelude::*;
+use core_affinity::{CoreId, set_for_current};
 use eyre::eyre;
 use eyre::Result;
 use std::env;
@@ -685,10 +686,58 @@ fn internal_get_tracked_pressure_tiles() -> eyre::Result<Vec<f32>> {
     Ok(tracked_pressures)
 }
 
+/// BYOND API for getting a list of available CPU cores.
+#[byondapi::bind]
+fn milla_get_available_cpu_cores() -> eyre::Result<ByondValue> {
+    let core_ids = match core_affinity::get_core_ids() {
+        Some(ids) => ids,
+        None => return Ok(ByondValue::from_list(&[])?),
+    };
+
+    let core_numbers: Vec<ByondValue> = core_ids.iter()
+        .map(|id| ByondValue::from(id.id as f32))
+        .collect();
+
+    Ok(ByondValue::from_list(&core_numbers)?)
+}
+
 /// BYOND API for starting an atmos tick.
 #[byondapi::bind]
-fn milla_spawn_tick_thread() -> eyre::Result<ByondValue> {
-    thread::spawn(|| -> Result<(), eyre::Error> {
+fn milla_spawn_tick_thread(cores_arg: ByondValue) -> eyre::Result<ByondValue> {
+    let cpu_cores = if !cores_arg.is_null() {
+        if cores_arg.is_list() {
+            let mut cores = Vec::new();
+            let list_values = cores_arg.get_list_values()?;
+
+            for value in list_values {
+                if let Ok(core_id) = usize::try_from(value) {
+                    cores.push(core_id);
+                }
+            }
+
+            cores
+        } else {
+            let err = format!("MILLA CPU cores error: expected list, got {:?}", cores_arg);
+            call_global("log_debug", &[ByondValue::new_str(err)?])?;
+            Vec::new() // Default to all cores
+        }
+    } else {
+        Vec::new() // Default to all cores
+    };
+
+    thread::spawn(move || -> Result<(), eyre::Error> {
+        if !cpu_cores.is_empty() {
+            if let Some(core_ids) = core_affinity::get_core_ids() {
+                if let Some(core_id) = cpu_cores.iter()
+                    .filter_map(|&core_num| core_ids.iter().find(|id| id.id == core_num))
+                    .next()
+                    .cloned()
+                {
+                    core_affinity::set_for_current(core_id);
+                }
+            }
+        }
+
         let now = Instant::now();
         let buffers = BUFFERS.get_or_init(Buffers::new);
         let result = tick::tick(buffers);

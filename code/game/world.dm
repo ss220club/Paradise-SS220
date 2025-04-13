@@ -32,6 +32,13 @@ GLOBAL_DATUM(test_runner, /datum/test_runner)
 	GLOB.configuration.load_overrides("config/tests/config_[TEST_CONFIG_OVERRIDE].toml")
 	#endif
 
+	// Validate CPU cores for MILLA
+	GLOB.configuration.milla.validate_cpu_cores()
+	if(GLOB.configuration.milla.error_message)
+		DIRECT_OUTPUT(world.log, "ERROR: [GLOB.configuration.milla.error_message]. Server will now exit.")
+		del(world)
+
+
 	// Right off the bat, load up the DB
 	SSdbcore.CheckSchemaVersion() // This doesnt just check the schema version, it also connects to the db! This needs to happen super early! I cannot stress this enough!
 	SSdbcore.SetRoundID() // Set the round ID here
