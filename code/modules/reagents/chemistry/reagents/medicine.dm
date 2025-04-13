@@ -1088,10 +1088,10 @@
 /datum/reagent/medicine/mannitol/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	// SS220 EDIT START
-	var/heal_modifier = 3
+	var/heal_amount = 3
 	if(isslimeperson(M) && (M.reagents.has_reagent("mephedrone") || M.reagents.has_reagent("pump_up"))) // so these 2 drugs deal more brain damage than we can heal using mannitol
-		heal_modifier = 0.1 // sadge
-	update_flags |= M.adjustBrainLoss(-heal_modifier, FALSE)
+		heal_amount = 0.1 // sadge
+	update_flags |= M.adjustBrainLoss(-heal_amount, FALSE)
 	// SS220 EDIT END
 	return ..() | update_flags
 

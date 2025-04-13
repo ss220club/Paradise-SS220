@@ -38,8 +38,6 @@
 	var/taste_description = "metaphorical salt"
 	/// how quickly the addiction threshold var decays
 	var/addiction_decay_rate = 0.01
-	// SS220 EDIT - how quickly the used cycle var decays - 0.5 means 33% uptime
-	var/cycle_decay_rate = 0.5
 
 	// Which department's (if any) reagent goals this is eligible for.
 	// Must match the values used by request consoles.
@@ -143,7 +141,6 @@
 	if(!addiction_chance)
 		return
 	M.reagents.addiction_threshold_accumulated[type] += consumption_rate
-	M.reagents.cycle_used[type]++ // SS220 EDIT
 	if(is_type_in_list(src, M.reagents.addiction_list))
 		return
 	var/current_threshold_accumulated = M.reagents.addiction_threshold_accumulated[type]
