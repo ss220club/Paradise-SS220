@@ -688,17 +688,18 @@ fn internal_get_tracked_pressure_tiles() -> eyre::Result<Vec<f32>> {
 
 /// BYOND API for getting a list of available CPU cores.
 #[byondapi::bind]
-fn milla_get_available_cpu_cores() -> eyre::Result<ByondValue> {
+fn milla_get_available_cpu_cores(list: ByondValue) -> eyre::Result<ByondValue> {
     let core_ids = match core_affinity::get_core_ids() {
         Some(ids) => ids,
-        None => return Ok(ByondValue::from_list(&[])?),
+        None => return Ok(ByondValue::new_list().unwrap()),
     };
 
     let core_numbers: Vec<ByondValue> = core_ids.iter()
         .map(|id| ByondValue::from(id.id as f32))
         .collect();
 
-    Ok(ByondValue::from_list(&core_numbers)?)
+    list.write_list(core_numbers.as_slice())?;
+    Ok(ByondValue::null())
 }
 
 /// BYOND API for starting an atmos tick.

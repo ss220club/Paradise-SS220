@@ -16,7 +16,8 @@
 	if(!length(cpu_cores))
 		return
 
-	var/list/available_cores = get_available_cpu_cores()
+	var/list/available_cores = list()
+	get_available_cpu_cores(available_cores)
 	if(!length(available_cores))
 		error_message = "MILLA could not retrieve the list of available CPU cores"
 		return
