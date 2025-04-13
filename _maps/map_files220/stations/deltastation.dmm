@@ -64383,7 +64383,9 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "enginen_door_ext"
+	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
@@ -89666,6 +89668,22 @@
 	},
 /turf/simulated/floor/engine/o2,
 /area/station/engineering/atmos)
+"qXa" = (
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "enginen_door_int"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/control)
 "qXy" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -93522,7 +93540,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "engines_door_int"
+	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
@@ -106392,7 +106412,9 @@
 	req_access = list(10)
 	},
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "engines_door_ext"
+	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
@@ -134431,7 +134453,7 @@ bUm
 bGz
 bXU
 cdd
-siP
+qXa
 bXU
 ceV
 cic
