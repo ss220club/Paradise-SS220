@@ -531,7 +531,6 @@
 /area/station/maintenance/fore)
 "agj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/radiation,
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -648,14 +647,6 @@
 /obj/machinery/light/small/directional/east,
 /obj/structure/sign/fire{
 	pixel_x = 32
-	},
-/obj/machinery/access_button{
-	layer = 3.1;
-	autolink_id = "turbine_btn_int";
-	name = "Gas Turbine Airlock Control";
-	pixel_x = -5;
-	pixel_y = -23;
-	req_access = list(24)
 	},
 /obj/machinery/atmospherics/binary/pump/on,
 /turf/simulated/floor/engine,
@@ -18070,6 +18061,14 @@
 	pixel_x = -8;
 	req_access = list(24)
 	},
+/obj/machinery/access_button{
+	layer = 3.1;
+	autolink_id = "turbine_btn_int";
+	name = "Gas Turbine Airlock Control";
+	pixel_x = 8;
+	pixel_y = -24;
+	req_access = list(24)
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "bum" = (
@@ -30520,7 +30519,6 @@
 /area/station/engineering/atmos/control)
 "cmF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/radiation,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -31010,6 +31008,16 @@
 	req_access = list(24)
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/airlock_controller/access_controller{
+	name = "Turbine Access Console";
+	pixel_x = 8;
+	pixel_y = -24;
+	ext_door_link_id = "turbine_door_ext";
+	int_door_link_id = "turbine_door_int";
+	ext_button_link_id = "turbine_btn_ext";
+	int_button_link_id = "turbine_btn_int";
+	req_access = list(24)
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "cov" = (
@@ -41311,25 +41319,15 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /obj/machinery/door/airlock/public/glass{
 	autoclose = 0;
 	heat_proof = 1;
-	id_tag = "turbine_door_ext";
+	id_tag = "turbine_door_int";
 	locked = 1;
 	superconductivity = 0
 	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/airlock_controller/access_controller{
-	name = "Turbine Access Console";
-	pixel_x = 40;
-	pixel_y = 8;
-	ext_door_link_id = "turbine_door_ext";
-	int_door_link_id = "turbine_door_int";
-	ext_button_link_id = "turbine_btn_ext";
-	int_button_link_id = "turbine_btn_int";
-	req_access = list(24)
-	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "dmr" = (
@@ -42089,6 +42087,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/station/command/office/hos)
+"dHG" = (
+/obj/structure/closet/radiation,
+/turf/simulated/floor/plating,
+/area/station/maintenance/fsmaint)
 "dHU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -52735,15 +52737,15 @@
 /obj/structure/sign/fire{
 	pixel_x = -32
 	},
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 1
+	},
 /obj/machinery/access_button{
 	autolink_id = "turbine_btn_ext";
 	name = "Gas Turbine Airlock Control";
-	pixel_x = 5;
-	pixel_y = 23;
+	pixel_x = 8;
+	pixel_y = -24;
 	req_access = list(24)
-	},
-/obj/machinery/atmospherics/binary/pump/on{
-	dir = 1
 	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
@@ -52934,6 +52936,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/station/legal/courtroom)
+"iUw" = (
+/obj/effect/mapping_helpers/turfs/rust/probably,
+/obj/structure/sign/radiation/rad_area,
+/turf/simulated/wall/r_wall,
+/area/station/engineering/transmission_laser)
 "iUC" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -57107,18 +57114,18 @@
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "lee" = (
-/obj/machinery/door/airlock/public/glass{
-	autoclose = 0;
-	heat_proof = 1;
-	id_tag = "turbine_door_int";
-	locked = 1;
-	superconductivity = 0
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/machinery/door/airlock/public/glass{
+	autoclose = 0;
+	heat_proof = 1;
+	id_tag = "turbine_door_ext";
+	locked = 1;
+	superconductivity = 0
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "leh" = (
@@ -60012,8 +60019,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft2)
 "mtB" = (
-/obj/structure/sign/radiation/rad_area,
-/turf/simulated/wall/r_wall,
+/obj/structure/closet/radiation,
+/obj/machinery/light/small/directional/south,
+/turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "mtV" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -61590,19 +61598,6 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/station/public/construction)
-"nfj" = (
-/obj/structure/closet,
-/obj/item/reagent_containers/drinks/bottle/beer{
-	desc = "Takes you to a whole new level of thinking.";
-	name = "Meta-Cider"
-	},
-/obj/effect/spawner/random/maintenance,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/catwalk,
-/area/station/maintenance/fsmaint)
 "nfk" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/atmospherics/binary/pump/on{
@@ -65282,6 +65277,12 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/closet,
+/obj/item/reagent_containers/drinks/bottle/beer{
+	desc = "Takes you to a whole new level of thinking.";
+	name = "Meta-Cider"
+	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "pfh" = (
@@ -77208,7 +77209,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 9
 	},
-/obj/machinery/light/small/directional/south,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -127837,7 +127837,7 @@ atX
 aul
 avM
 ayA
-nfj
+dKL
 hAn
 afY
 aCg
@@ -128096,7 +128096,7 @@ asU
 jlM
 dKL
 bfb
-cbc
+dHG
 aCg
 nZj
 nYI
@@ -128354,7 +128354,7 @@ kmb
 blA
 vmv
 mtB
-aaa
+aBZ
 aaa
 aef
 szY
@@ -128610,8 +128610,8 @@ uJn
 uJn
 vnQ
 vAN
-ksb
-aaa
+iUw
+aBZ
 aaa
 aef
 aef

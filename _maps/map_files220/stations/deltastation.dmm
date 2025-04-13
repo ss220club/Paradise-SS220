@@ -80226,6 +80226,22 @@
 	icon_state = "neutral"
 	},
 /area/station/maintenance/aft)
+"odb" = (
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/machinery/door/airlock/public/glass{
+	autoclose = 0;
+	heat_proof = 1;
+	id_tag = "turbine_door_int";
+	locked = 1;
+	superconductivity = 0
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/turbine)
 "odQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -131806,7 +131822,7 @@ aLr
 aGY
 leZ
 jJU
-vRj
+odb
 huh
 leZ
 aZY

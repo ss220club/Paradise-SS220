@@ -33788,7 +33788,8 @@
 /obj/machinery/door_control/shutter/south{
 	desc = "A remote control-switch for the SM Radiation Security Shutters";
 	id = "engsm2";
-	name = "SM Door Radiation Shutters Control"
+	name = "SM Door Radiation Shutters Control";
+	req_access = list(10)
 	},
 /obj/item/clothing/gloves/color/black{
 	pixel_x = -6;
@@ -37161,6 +37162,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /turf/simulated/floor/plating,
 /area/station/engineering/break_room)
 "cVM" = (
@@ -48568,7 +48570,7 @@
 	id = "smstorage";
 	name = "Supermatter Storage";
 	pixel_x = 24;
-	req_access = list(32)
+	req_access = list(10)
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -50461,7 +50463,8 @@
 /obj/machinery/door_control/shutter/north{
 	desc = "A remote control-switch for the SM Radiation Security Shutters";
 	id = "engsm2";
-	name = "SM Door Radiation Shutters Control"
+	name = "SM Door Radiation Shutters Control";
+	req_access = list(10)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -51901,7 +51904,8 @@
 /obj/machinery/door_control/shutter/south{
 	desc = "A remote control-switch for the SM Radiation Security Shutters";
 	id = "engsm2";
-	name = "SM Door Radiation Shutters Control"
+	name = "SM Door Radiation Shutters Control";
+	req_access = list(10)
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow"
@@ -61131,7 +61135,8 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door_control/shutter/east{
 	id = "Singularity";
-	name = "Containment Blast Doors"
+	name = "Containment Blast Doors";
+	req_access = list(10)
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
@@ -65809,7 +65814,8 @@
 	desc = "A remote control-switch for the SM Radiation Security Shutters";
 	id = "engsm2";
 	name = "SM Door Radiation Shutters Control";
-	pixel_y = 5
+	pixel_y = 5;
+	req_access = list(10)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -69328,7 +69334,8 @@
 /obj/machinery/ignition_switch{
 	id = "Turbine_igniter";
 	pixel_x = 8;
-	pixel_y = -38
+	pixel_y = -38;
+	req_access = list(24)
 	},
 /obj/machinery/computer/security/telescreen/turbine{
 	dir = 8;
@@ -69340,13 +69347,13 @@
 	name = "Turbine Vent Control";
 	pixel_x = -8;
 	pixel_y = -38;
-	req_access = list(12)
+	req_access = list(24)
 	},
 /obj/machinery/door_control/shutter/south{
 	id = "auxincineratorvent";
 	name = "Auxiliary Vent Control";
 	pixel_x = -8;
-	req_access = list(12)
+	req_access = list(24)
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
@@ -69354,6 +69361,16 @@
 /obj/machinery/computer/turbine_computer{
 	dir = 1;
 	id = "incineratorturbine"
+	},
+/obj/machinery/airlock_controller/access_controller{
+	ext_button_link_id = "turbine_btn_ext";
+	ext_door_link_id = "turbine_door_ext";
+	int_button_link_id = "turbine_btn_int";
+	int_door_link_id = "turbine_door_int";
+	name = "Turbine Access Console";
+	pixel_x = 8;
+	pixel_y = -24;
+	req_access = list(24)
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -74599,22 +74616,18 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "pcu" = (
-/obj/machinery/door/airlock/public/glass{
-	autoclose = 0;
-	heat_proof = 1;
-	id_tag = "turbine_door_int";
-	locked = 1;
-	superconductivity = 0
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/access_button/west{
-	autolink_id = "turbine_btn_int";
-	name = "Gas Turbine Airlock Control"
-	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/machinery/door/airlock/public/glass{
+	autoclose = 0;
+	heat_proof = 1;
+	id_tag = "turbine_door_ext";
+	locked = 1;
+	superconductivity = 0
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "pcF" = (
@@ -81156,6 +81169,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold4w/visible,
 /obj/machinery/light/small/directional/south,
+/obj/machinery/access_button/west{
+	autolink_id = "turbine_btn_int";
+	name = "Gas Turbine Airlock Control";
+	pixel_x = 8;
+	pixel_y = -24;
+	req_access = list(24)
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "rzA" = (
@@ -81763,7 +81783,8 @@
 	},
 /obj/machinery/door_control/shutter/east{
 	id = "Singularity";
-	name = "Containment Blast Doors"
+	name = "Containment Blast Doors";
+	req_access = list(10)
 	},
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -84418,7 +84439,8 @@
 	},
 /obj/machinery/door_control/shutter/south{
 	id = "engsm";
-	name = "Radiation Shutters Control"
+	name = "Radiation Shutters Control";
+	req_access = list(10)
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow"
@@ -93782,6 +93804,13 @@
 	pixel_x = -32
 	},
 /obj/machinery/atmospherics/binary/valve,
+/obj/machinery/access_button/west{
+	autolink_id = "turbine_btn_ext";
+	name = "Gas Turbine Airlock Control";
+	pixel_x = 8;
+	pixel_y = -24;
+	req_access = list(24)
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "wiG" = (
@@ -96882,28 +96911,15 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /obj/machinery/door/airlock/public/glass{
 	autoclose = 0;
 	heat_proof = 1;
-	id_tag = "turbine_door_ext";
+	id_tag = "turbine_door_int";
 	locked = 1;
 	superconductivity = 0
 	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/airlock_controller/access_controller{
-	ext_button_link_id = "turbine_btn_ext";
-	ext_door_link_id = "turbine_door_ext";
-	int_button_link_id = "turbine_btn_int";
-	int_door_link_id = "turbine_door_int";
-	name = "Turbine Access Console";
-	pixel_x = 40;
-	pixel_y = 6
-	},
-/obj/machinery/access_button/west{
-	autolink_id = "turbine_btn_ext";
-	name = "Gas Turbine Airlock Control"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "xqa" = (
