@@ -5,11 +5,11 @@ use crate::milla::model::*;
 use crate::milla::simulate;
 use crate::milla::statics::*;
 use crate::milla::tick;
+use crate::core_affinity;
 use byondapi::global_call::call_global;
 use byondapi::map::byond_block;
 use byondapi::map::byond_xyz;
 use byondapi::prelude::*;
-use core_affinity::{CoreId, set_for_current};
 use eyre::eyre;
 use eyre::Result;
 use std::env;
@@ -710,12 +710,16 @@ fn milla_spawn_tick_thread(cores_arg: ByondValue) -> eyre::Result<ByondValue> {
             let mut cores = Vec::new();
             let list_values = cores_arg.get_list_values()?;
 
-            for value in list_values {
-                if let Ok(core_id) = usize::try_from(value) {
-                    cores.push(core_id);
-                }
-            }
+			for value in list_values {
+				if let Ok(num) = f32::try_from(value) {
+					let unum = num.abs().floor();
+					if unum >= 0.0 && unum <= usize::MAX as f32 {
+						cores.push(unum as usize);
+					}
+				}
+			}
 
+            cores.dedup();
             cores
         } else {
             let err = format!("MILLA CPU cores error: expected list, got {:?}", cores_arg);
