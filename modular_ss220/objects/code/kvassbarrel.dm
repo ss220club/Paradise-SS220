@@ -2,7 +2,7 @@
 /obj/structure/reagent_dispensers/kvassbarrel
 	name = "бочка кваса"
 	desc = "Бочка кваса. Такие в СССП можно встретить повсюду жарким летом."
-	icon = 'modular_ss220/objects/icons/kvassbarrel.dmi'
+	icon = 'modular_ss220/aesthetics/dispensers/icons/dispensers.dmi'
 	icon_state = "kvassbarrel"
 	reagent_id = "kvass"
 	tank_volume = 1000
