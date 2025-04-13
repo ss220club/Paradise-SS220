@@ -14017,12 +14017,9 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
 "bkb" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "BS"
-	},
-/obj/structure/cable,
+/obj/effect/spawner/window/reinforced/polarized/grilled,
 /turf/simulated/floor/plating,
-/area/station/command/office/blueshield)
+/area/station/public/vacant_office/secondary)
 "bkd" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin/nanotrasen{
@@ -26969,10 +26966,7 @@
 "cfK" = (
 /obj/effect/turf_decal/siding/wood/oak,
 /obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
@@ -28204,7 +28198,9 @@
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "NT"
 	},
-/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/plating,
 /area/station/command/office/ntrep)
 "cku" = (
@@ -30031,11 +30027,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/command/teleporter)
 "csN" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/carpet,
-/area/station/command/office/hop)
+/obj/effect/spawner/window/reinforced/grilled,
+/turf/simulated/floor/plating,
+/area/station/hallway/secondary/bridge)
 "csO" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel{
@@ -30878,6 +30872,9 @@
 	icon_state = "dark_large"
 	},
 /area/station/ai_monitored/storage/eva)
+"cxa" = (
+/turf/simulated/wall,
+/area/station/public/vacant_office/secondary)
 "cxc" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -50159,23 +50156,6 @@
 	icon_state = "caution"
 	},
 /area/station/public/fitness)
-"eKN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/hallway/primary/central)
 "eKO" = (
 /obj/structure/table/reinforced,
 /obj/structure/cable{
@@ -54974,10 +54954,6 @@
 /obj/effect/turf_decal/stripes/end,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
-"gqa" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/simulated/floor/plating,
-/area/station/hallway/secondary/bridge)
 "gqn" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/iv_bag/salglu{
@@ -55835,15 +55811,6 @@
 	icon_state = "neutralfull"
 	},
 /area/station/engineering/hallway)
-"gEI" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "CMO_Bedroom"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/plating,
-/area/station/command/office/cmo)
 "gFm" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -56738,17 +56705,14 @@
 	},
 /area/station/security/brig)
 "gTk" = (
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 8
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "CMO_Bedroom"
 	},
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "0-4"
 	},
-/turf/simulated/floor/wood/oak,
-/area/station/command/office/hop)
+/turf/simulated/floor/plating,
+/area/station/command/office/cmo)
 "gTt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -59750,6 +59714,14 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/central/north)
+"hQk" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/engineering/break_room)
 "hQq" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -61824,6 +61796,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/engineering/atmos/control)
+"iys" = (
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "NT"
+	},
+/obj/structure/cable,
+/turf/simulated/floor/plating,
+/area/station/command/office/ntrep)
 "iyA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/trash,
@@ -64023,12 +64002,12 @@
 	},
 /area/station/maintenance/port)
 "jiy" = (
-/obj/effect/turf_decal/siding/wood/oak,
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "BS"
 	},
-/turf/simulated/floor/wood/oak,
-/area/station/command/office/ntrep)
+/obj/structure/cable,
+/turf/simulated/floor/plating,
+/area/station/command/office/blueshield)
 "jiB" = (
 /obj/machinery/computer/card/minor/hos{
 	dir = 8
@@ -80133,21 +80112,13 @@
 	},
 /area/station/hallway/secondary/exit/maintenance)
 "oeY" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
-	id_tag = "chemdesk";
-	name = "Chemistry Desk Shutters"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Biohazard_medi";
-	name = "Quarantine Lockdown"
-	},
 /obj/structure/cable{
-	icon_state = "0-2"
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
-/area/station/medical/chemistry)
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/engineering/break_room)
 "oeZ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable{
@@ -83976,12 +83947,10 @@
 /area/station/maintenance/starboard2)
 "prk" = (
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/engineering/break_room)
+/turf/simulated/floor/carpet,
+/area/station/command/office/hop)
 "prt" = (
 /obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
@@ -86646,8 +86615,17 @@
 	},
 /area/station/medical/cloning)
 "qih" = (
-/turf/simulated/wall,
-/area/station/public/vacant_office/secondary)
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/oak,
+/area/station/command/office/hop)
 "qin" = (
 /obj/structure/closet/crate/medical,
 /obj/item/storage/box/beakers{
@@ -91529,14 +91507,6 @@
 	icon_state = "red"
 	},
 /area/station/security/processing)
-"rIO" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/engineering/break_room)
 "rIU" = (
 /obj/effect/turf_decal/siding/white,
 /turf/simulated/floor/plasteel{
@@ -100686,6 +100656,23 @@
 "uDR" = (
 /turf/simulated/floor/plasteel/dark,
 /area/station/aisat)
+"uEi" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/hallway/primary/central)
 "uEu" = (
 /obj/machinery/newscaster/directional/east,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -103652,10 +103639,6 @@
 /obj/effect/decal/remains/mouse/pinkie,
 /turf/simulated/floor/engine,
 /area/station/science/toxins/mixing)
-"vBU" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
-/turf/simulated/floor/plating,
-/area/station/public/vacant_office/secondary)
 "vCf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -104678,6 +104661,16 @@
 /obj/effect/mapping_helpers/airlock/polarized,
 /turf/simulated/floor/carpet,
 /area/station/public/vacant_office/secondary)
+"vTJ" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/wood/oak,
+/area/station/command/office/ntrep)
 "vTK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -106823,6 +106816,22 @@
 /obj/item/storage/fancy/candle_box/full,
 /turf/simulated/floor/carpet/black,
 /area/station/service/chapel/bedroom)
+"wFa" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id_tag = "chemdesk";
+	name = "Chemistry Desk Shutters"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Biohazard_medi";
+	name = "Quarantine Lockdown"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/station/medical/chemistry)
 "wFd" = (
 /obj/effect/spawner/window,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -107021,15 +107030,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/central/north)
-"wHF" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "NT"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/plating,
-/area/station/command/office/ntrep)
 "wHH" = (
 /obj/machinery/atmospherics/unary/portables_connector{
 	dir = 8
@@ -137559,8 +137559,8 @@ kIs
 kur
 gVE
 bIA
-rIO
-prk
+hQk
+oeY
 ffq
 bWx
 bwP
@@ -146046,7 +146046,7 @@ bUQ
 bWR
 bWR
 bWR
-gTk
+qih
 bWR
 vol
 lEd
@@ -146303,7 +146303,7 @@ bUR
 chi
 chi
 chi
-csN
+prk
 tkK
 chi
 nMT
@@ -146560,7 +146560,7 @@ tpv
 bWT
 chi
 chi
-csN
+prk
 oVE
 chi
 chi
@@ -147850,21 +147850,21 @@ cdK
 cfH
 cfH
 cfL
-ckt
+iys
 abj
 abj
-gqa
+csN
 xYR
 cvE
-gqa
+csN
 abj
 abj
-vBU
+bkb
 cyh
 czJ
 cBn
 cCL
-vBU
+bkb
 cEL
 ngp
 bIG
@@ -148108,20 +148108,20 @@ cfH
 chl
 ciH
 bYv
-gqa
-gqa
+csN
+csN
 euc
 cpX
 cvE
 euc
-gqa
-gqa
-qih
+csN
+csN
+cxa
 eEL
 ifD
 iJd
 cCM
-qih
+cxa
 cEL
 lmt
 bIG
@@ -148620,7 +148620,7 @@ oMy
 hwf
 drp
 bYv
-wHF
+ckt
 bYv
 ckv
 ckv
@@ -148630,12 +148630,12 @@ ckv
 ckv
 cub
 bVz
-vBU
+bkb
 cBo
 czM
 cBp
 cCN
-qih
+cxa
 cEL
 lmt
 cHH
@@ -148875,8 +148875,8 @@ bOZ
 caf
 cca
 oLl
-cfK
-ckt
+vTJ
+iys
 bHm
 bac
 csW
@@ -148887,12 +148887,12 @@ csQ
 csT
 cuc
 bbE
-qih
+cxa
 cyl
 czO
 cBr
 cCO
-vBU
+bkb
 cEL
 lmt
 bIG
@@ -149132,7 +149132,7 @@ bOZ
 cag
 ccb
 cdN
-jiy
+cfK
 bYv
 ciL
 crE
@@ -149144,12 +149144,12 @@ crF
 csR
 ihR
 cvF
-qih
+cxa
 rUS
 czN
 cBq
 cCP
-vBU
+bkb
 pSM
 cGA
 iQj
@@ -149390,7 +149390,7 @@ cah
 ccc
 cdO
 bwV
-ckt
+iys
 csP
 egA
 czY
@@ -149401,12 +149401,12 @@ csS
 crG
 cue
 crH
-qih
+cxa
 cyn
 czQ
 cBt
 cCQ
-vBU
+bkb
 cFa
 lmt
 bWM
@@ -149658,14 +149658,14 @@ ckv
 ckv
 euq
 bVz
-vBU
+bkb
 cBo
 czP
 cBs
 cCR
-qih
+cxa
 sDh
-eKN
+uEi
 cHL
 uWn
 ppu
@@ -150164,20 +150164,20 @@ kMn
 tAH
 ciP
 bYx
-gqa
-gqa
+csN
+csN
 euc
 cqe
 cvG
 euc
-gqa
-gqa
-qih
+csN
+csN
+cxa
 cyi
 wlf
 gRO
 cCS
-qih
+cxa
 cFa
 lmt
 bWM
@@ -150420,21 +150420,21 @@ cdR
 cfO
 cfN
 cai
-bkb
+jiy
 abj
 abj
-gqa
+csN
 jDw
 cvG
-gqa
+csN
 abj
 abj
-vBU
+bkb
 cyp
 czT
 cBu
 cCT
-vBU
+bkb
 cFa
 frk
 hxq
@@ -153780,7 +153780,7 @@ cVK
 cGD
 bIX
 liC
-oeY
+wFa
 jIf
 hFh
 vzd
@@ -157402,7 +157402,7 @@ dhe
 nSC
 nSC
 nSC
-gEI
+gTk
 nSC
 nSC
 omV
