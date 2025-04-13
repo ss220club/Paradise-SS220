@@ -25128,7 +25128,9 @@
 /turf/simulated/floor/plating/airless,
 /area/station/engineering/control)
 "bZp" = (
-/obj/structure/curtain/open/shower/engineering,
+/obj/structure/curtain/open/shower/engineering{
+	anchored = 1
+	},
 /obj/effect/turf_decal/miscellaneous/plumbing{
 	dir = 1
 	},
@@ -32575,7 +32577,9 @@
 /obj/effect/turf_decal/miscellaneous/plumbing{
 	dir = 1
 	},
-/obj/structure/curtain/open/shower/engineering,
+/obj/structure/curtain/open/shower/engineering{
+	anchored = 1
+	},
 /obj/effect/turf_decal/siding/yellow/end{
 	dir = 1
 	},
@@ -64386,6 +64390,7 @@
 	id_tag = "enginen_door_ext"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "jkP" = (
@@ -80245,9 +80250,9 @@
 	autoclose = 0;
 	heat_proof = 1;
 	id_tag = "turbine_door_int";
-	locked = 1;
 	superconductivity = 0
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "odQ" = (
@@ -89687,6 +89692,7 @@
 	id_tag = "enginen_door_int"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "qXy" = (
@@ -93548,6 +93554,7 @@
 	id_tag = "engines_door_int"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "siY" = (
@@ -104985,9 +104992,9 @@
 	autoclose = 0;
 	heat_proof = 1;
 	id_tag = "turbine_door_ext";
-	locked = 1;
 	superconductivity = 0
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "vRk" = (
@@ -106412,6 +106419,7 @@
 	id_tag = "engines_door_ext"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "woQ" = (
