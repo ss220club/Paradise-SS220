@@ -14010,10 +14010,6 @@
 "bka" = (
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
-"bkb" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
-/turf/simulated/floor/plating,
-/area/station/public/vacant_office/secondary)
 "bkd" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin/nanotrasen{
@@ -26960,7 +26956,10 @@
 "cfK" = (
 /obj/effect/turf_decal/siding/wood/oak,
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
@@ -30018,6 +30017,13 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/command/teleporter)
+"csN" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/oak,
+/area/station/command/office/ntrep)
 "csO" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel{
@@ -30860,6 +30866,9 @@
 	icon_state = "dark_large"
 	},
 /area/station/ai_monitored/storage/eva)
+"cxa" = (
+/turf/simulated/wall,
+/area/station/public/vacant_office/secondary)
 "cxc" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -41851,16 +41860,6 @@
 	icon_state = "whitepurple"
 	},
 /area/station/science/misc_lab)
-"due" = (
-/obj/effect/turf_decal/siding/wood/oak,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/wood/oak,
-/area/station/command/office/ntrep)
 "duf" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
@@ -52432,6 +52431,12 @@
 /obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
+"fwX" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet,
+/area/station/command/office/hop)
 "fxa" = (
 /obj/structure/holohoop{
 	layer = 5
@@ -54963,12 +54968,22 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "gqa" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "BS"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/obj/structure/cable,
-/turf/simulated/floor/plating,
-/area/station/command/office/blueshield)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/hallway/primary/central)
 "gqn" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/iv_bag/salglu{
@@ -55827,17 +55842,17 @@
 	},
 /area/station/engineering/hallway)
 "gEI" = (
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 8
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "1-4"
 	},
-/turf/simulated/floor/wood/oak,
-/area/station/command/office/hop)
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "whiteyellow"
+	},
+/area/station/medical/chemistry)
 "gFm" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -58964,9 +58979,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "hFh" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/simulated/floor/plating,
-/area/station/hallway/secondary/bridge)
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/engineering/break_room)
 "hFj" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -59724,18 +59743,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/central/north)
-"hQk" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whiteyellow"
-	},
-/area/station/medical/chemistry)
 "hQq" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -59843,14 +59850,13 @@
 	},
 /area/station/hallway/secondary/entry)
 "hSL" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "CMO_Bedroom"
-	},
 /obj/structure/cable{
-	icon_state = "0-4"
+	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating,
-/area/station/command/office/cmo)
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/engineering/break_room)
 "hSW" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 1;
@@ -68145,6 +68151,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/legal/courtroom)
+"kvm" = (
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "CMO_Bedroom"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/station/command/office/cmo)
 "kvx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -77023,14 +77038,6 @@
 	icon_state = "whitepurplefull"
 	},
 /area/station/science/robotics/chargebay)
-"nnM" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/engineering/break_room)
 "nnZ" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/ausbushes/brflowers,
@@ -80135,23 +80142,6 @@
 	icon_state = "green"
 	},
 /area/station/hallway/secondary/exit/maintenance)
-"oeY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/hallway/primary/central)
 "oeZ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable{
@@ -83978,6 +83968,22 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/maintenance/starboard2)
+"prk" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id_tag = "chemdesk";
+	name = "Chemistry Desk Shutters"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Biohazard_medi";
+	name = "Quarantine Lockdown"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/station/medical/chemistry)
 "prt" = (
 /obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
@@ -86650,9 +86656,6 @@
 	icon_state = "whiteblue"
 	},
 /area/station/medical/cloning)
-"qih" = (
-/turf/simulated/wall,
-/area/station/public/vacant_office/secondary)
 "qin" = (
 /obj/structure/closet/crate/medical,
 /obj/item/storage/box/beakers{
@@ -100406,6 +100409,10 @@
 /obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
+"uxq" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/turf/simulated/floor/plating,
+/area/station/hallway/secondary/bridge)
 "uxu" = (
 /obj/machinery/light/small/directional/north,
 /obj/effect/landmark/spawner/xeno,
@@ -103658,21 +103665,17 @@
 /turf/simulated/floor/engine,
 /area/station/science/toxins/mixing)
 "vBU" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
-	id_tag = "chemdesk";
-	name = "Chemistry Desk Shutters"
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
 	},
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Biohazard_medi";
-	name = "Quarantine Lockdown"
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-2"
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
-/area/station/medical/chemistry)
+/turf/simulated/floor/wood/oak,
+/area/station/command/office/hop)
 "vCf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -104695,12 +104698,6 @@
 /obj/effect/mapping_helpers/airlock/polarized,
 /turf/simulated/floor/carpet,
 /area/station/public/vacant_office/secondary)
-"vTJ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/carpet,
-/area/station/command/office/hop)
 "vTK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -106847,13 +106844,12 @@
 /turf/simulated/floor/carpet/black,
 /area/station/service/chapel/bedroom)
 "wFa" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "BS"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/engineering/break_room)
+/obj/structure/cable,
+/turf/simulated/floor/plating,
+/area/station/command/office/blueshield)
 "wFd" = (
 /obj/effect/spawner/window,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -107052,6 +107048,10 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/central/north)
+"wHF" = (
+/obj/effect/spawner/window/reinforced/polarized/grilled,
+/turf/simulated/floor/plating,
+/area/station/public/vacant_office/secondary)
 "wHH" = (
 /obj/machinery/atmospherics/unary/portables_connector{
 	dir = 8
@@ -137581,8 +137581,8 @@ kIs
 kur
 gVE
 bIA
-nnM
-wFa
+hSL
+hFh
 ffq
 bWx
 bwP
@@ -146068,7 +146068,7 @@ bUQ
 bWR
 bWR
 bWR
-gEI
+vBU
 bWR
 vol
 lEd
@@ -146325,7 +146325,7 @@ bUR
 chi
 chi
 chi
-vTJ
+fwX
 tkK
 chi
 nMT
@@ -146582,7 +146582,7 @@ tpv
 bWT
 chi
 chi
-vTJ
+fwX
 oVE
 chi
 chi
@@ -147875,18 +147875,18 @@ cfL
 ckt
 abj
 abj
-hFh
+uxq
 xYR
 cvE
-hFh
+uxq
 abj
 abj
-bkb
+wHF
 cyh
 czJ
 cBn
 cCL
-bkb
+wHF
 cEL
 ngp
 bIG
@@ -148130,20 +148130,20 @@ cfH
 chl
 ciH
 bYv
-hFh
-hFh
+uxq
+uxq
 euc
 cpX
 cvE
 euc
-hFh
-hFh
-qih
+uxq
+uxq
+cxa
 eEL
 ifD
 iJd
 cCM
-qih
+cxa
 cEL
 lmt
 bIG
@@ -148652,12 +148652,12 @@ ckv
 ckv
 cub
 bVz
-bkb
+wHF
 cBo
 czM
 cBp
 cCN
-qih
+cxa
 cEL
 lmt
 cHH
@@ -148897,7 +148897,7 @@ bOZ
 caf
 cca
 oLl
-due
+cfK
 ckt
 bHm
 bac
@@ -148909,12 +148909,12 @@ csQ
 csT
 cuc
 bbE
-qih
+cxa
 cyl
 czO
 cBr
 cCO
-bkb
+wHF
 cEL
 lmt
 bIG
@@ -149154,7 +149154,7 @@ bOZ
 cag
 ccb
 cdN
-cfK
+csN
 bYv
 ciL
 crE
@@ -149166,12 +149166,12 @@ crF
 csR
 ihR
 cvF
-qih
+cxa
 rUS
 czN
 cBq
 cCP
-bkb
+wHF
 pSM
 cGA
 iQj
@@ -149423,12 +149423,12 @@ csS
 crG
 cue
 crH
-qih
+cxa
 cyn
 czQ
 cBt
 cCQ
-bkb
+wHF
 cFa
 lmt
 bWM
@@ -149680,14 +149680,14 @@ ckv
 ckv
 euq
 bVz
-bkb
+wHF
 cBo
 czP
 cBs
 cCR
-qih
+cxa
 sDh
-oeY
+gqa
 cHL
 uWn
 ppu
@@ -150186,20 +150186,20 @@ kMn
 tAH
 ciP
 bYx
-hFh
-hFh
+uxq
+uxq
 euc
 cqe
 cvG
 euc
-hFh
-hFh
-qih
+uxq
+uxq
+cxa
 cyi
 wlf
 gRO
 cCS
-qih
+cxa
 cFa
 lmt
 bWM
@@ -150442,21 +150442,21 @@ cdR
 cfO
 cfN
 cai
-gqa
+wFa
 abj
 abj
-hFh
+uxq
 jDw
 cvG
-hFh
+uxq
 abj
 abj
-bkb
+wHF
 cyp
 czT
 cBu
 cCT
-bkb
+wHF
 cFa
 frk
 hxq
@@ -153802,9 +153802,9 @@ cVK
 cGD
 bIX
 liC
-vBU
+prk
 jIf
-hQk
+gEI
 vzd
 raR
 muR
@@ -157424,7 +157424,7 @@ dhe
 nSC
 nSC
 nSC
-hSL
+kvm
 nSC
 nSC
 omV
