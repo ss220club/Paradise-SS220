@@ -23394,7 +23394,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "vault"
+	},
 /area/station/aisat)
 "bTt" = (
 /obj/machinery/door/firedoor,
@@ -26572,7 +26575,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/prison/cell_block/a)
 "ceL" = (
-/obj/machinery/light/directional/east,
 /obj/machinery/firealarm/directional/east,
 /turf/simulated/floor/bluegrid,
 /area/station/telecomms/chamber)
@@ -91875,7 +91877,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable,
-/obj/effect/turf_decal/delivery/hollow,
+/obj/effect/turf_decal/arrows/red,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralcorner";
 	dir = 1
@@ -103540,7 +103542,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/vacant_store)
 "vzz" = (
-/obj/machinery/light/directional/west,
 /turf/simulated/floor/bluegrid,
 /area/station/telecomms/chamber)
 "vzB" = (
@@ -109048,6 +109049,16 @@
 	icon_state = "brown"
 	},
 /area/station/supply/storage)
+"xmQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/north,
+/turf/simulated/floor/transparent/glass,
+/area/station/aisat)
 "xnf" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
@@ -112228,7 +112239,9 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/effect/turf_decal/delivery/hollow,
+/obj/effect/turf_decal/arrows/red{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/aisat)
 "yku" = (
@@ -115241,7 +115254,7 @@ rvz
 rvz
 rvz
 jCu
-brs
+bLR
 aaa
 aaa
 aaa
@@ -115484,7 +115497,7 @@ aaa
 aaa
 aaa
 aaa
-bkt
+ops
 bpo
 cqK
 lYB
@@ -115985,7 +115998,7 @@ aaa
 aaa
 aaa
 aaa
-bkt
+ops
 jwC
 rvz
 rvz
@@ -120897,7 +120910,7 @@ sja
 bpq
 orz
 bpu
-bms
+oMO
 bms
 bms
 bms
@@ -121125,7 +121138,7 @@ aaa
 aaa
 aaa
 aaa
-bkt
+ops
 suB
 lYB
 lYB
@@ -121149,8 +121162,8 @@ wUn
 bNM
 bNM
 bNM
-bku
-sja
+bNM
+xmQ
 bpq
 bLR
 aaa
@@ -121382,7 +121395,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+abj
 bpu
 oMO
 oMO
@@ -122179,7 +122192,7 @@ bLV
 bpu
 oMO
 oMO
-bms
+oMO
 abj
 aaa
 aaa
