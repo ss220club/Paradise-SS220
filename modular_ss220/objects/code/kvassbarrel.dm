@@ -30,4 +30,4 @@
 	contains = list(/obj/structure/reagent_dispensers/kvassbarrel/alcohol)
 	cost = 500
 	containername = "бочка алкогольного кваса"
-	contraband = TRUE // Для заказа требуется взлом консоли
+	contraband = TRUE
