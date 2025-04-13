@@ -38,11 +38,13 @@
 	width = 31
 	height = 17
 	dwidth = 22
+	dheight = 0
 
 /obj/docking_port/stationary/whiteship
 	width = 31
 	height = 17
 	dwidth = 22
+	dheight = 0
 
 /obj/docking_port/mobile/scavenger
 	id = "vox_shuttle"
