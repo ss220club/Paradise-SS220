@@ -144,65 +144,7 @@
 	. = ..()
 	skins["corporate"][MOD_ICON_OVERRIDE] = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 
-//MARK: ERT Red MODsuit
-/datum/mod_theme/responsory/red
-	name = "\improper 'Rhino' responsory"
-	desc = "Высокотехнологичный боевой MODsuit 'Носорог', разработанный и произведенный Нанотрейзен. Хорошо бронированный, герметичный и оснащенный всевозможными полезными приспособлениями. \
-		Лучшее корпоративное оборудование для обеспечения безопасности."
-	extended_desc = "Костюм быстрого реагирования NS-20 'Носорог' - один из самых лучших в категории 'цена и качество' из всех боевых костюмов на рынке. \
-		Внутри NS-20 установлена система NTOS-11, что позволяет использовать несравненные возможности настройки в сочетании с \
-		необычайно щедрыми техническими характеристиками 'Носорога'. NS-20 можно встретить только в отряде быстрого реагирования Нанотрейзен."
-	default_skin = "rhino"
-	armor_type_1 = /obj/item/mod/armor/mod_theme_responsory/red
-	resistance_flags = FIRE_PROOF
-	flag_2_flags = RAD_PROTECT_CONTENTS_2
-	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	siemens_coefficient = 0
-	slowdown_inactive = 0.75
-	slowdown_active = 0.25
-	complexity_max = DEFAULT_MAX_COMPLEXITY + 5
-	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
-		/obj/item/restraints/handcuffs,
-		/obj/item/flash,
-		/obj/item/melee/baton,
-		/obj/item/gun,
-	)
-	species_allowed = list("Human")
-	skins = list(
-		"rhino" = list(
-			MOD_ICON_OVERRIDE = 'modular_ss220/mod/icons/object/mod_clothing.dmi',
-			HELMET_FLAGS = list(
-				UNSEALED_LAYER = COLLAR_LAYER,
-
-				SEALED_CLOTHING = THICKMATERIAL | STOPSPRESSUREDMAGE | BLOCK_GAS_SMOKE_EFFECT | BLOCKHAIR,
-				UNSEALED_INVISIBILITY = HIDEFACE,
-				SEALED_INVISIBILITY = HIDEMASK | HIDEEYES | HIDEEARS | HIDEFACE,
-				SEALED_COVER = HEADCOVERSMOUTH | HEADCOVERSEYES,
-			),
-			CHESTPLATE_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
-				SEALED_INVISIBILITY = HIDEJUMPSUIT | HIDETAIL,
-			),
-			GAUNTLETS_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
-				CAN_OVERSLOT = TRUE,
-			),
-			BOOTS_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
-				CAN_OVERSLOT = TRUE,
-			),
-		),
-	)
-
-/obj/item/mod/armor/mod_theme_responsory/red
-	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 15, BOMB = 40, RAD = 25, FIRE = INFINITY, ACID = 150)
-
-// MARK:ERT Gamma MODsuit
+//MARK: ERT Gamma MODsuit
 /datum/mod_theme/responsory
 	name = "\improper 'Knight' responsory"
 	desc = "Высокотехнологичный MODsuit 'Рыцарь' разработанный и произведенный Нанотрейзен. Явялется эксперементальной разработкой"
@@ -285,6 +227,64 @@
 
 /obj/item/mod/armor/mod_theme_responsory
 	armor = list(MELEE = 70, BULLET = 60, LASER = 45, ENERGY = 25, BOMB = 80, RAD = INFINITY, FIRE = 200, ACID = 200)
+
+//MARK: ERT Red MODsuit
+/datum/mod_theme/responsory/red
+	name = "\improper 'Rhino' responsory"
+	desc = "Высокотехнологичный боевой MODsuit 'Носорог', разработанный и произведенный Нанотрейзен. Хорошо бронированный, герметичный и оснащенный всевозможными полезными приспособлениями. \
+		Лучшее корпоративное оборудование для обеспечения безопасности."
+	extended_desc = "Костюм быстрого реагирования NS-20 'Носорог' - один из самых лучших в категории 'цена и качество' из всех боевых костюмов на рынке. \
+		Внутри NS-20 установлена система NTOS-11, что позволяет использовать несравненные возможности настройки в сочетании с \
+		необычайно щедрыми техническими характеристиками 'Носорога'. NS-20 можно встретить только в отряде быстрого реагирования Нанотрейзен."
+	default_skin = "rhino"
+	armor_type_1 = /obj/item/mod/armor/mod_theme_responsory/red
+	resistance_flags = FIRE_PROOF
+	flag_2_flags = RAD_PROTECT_CONTENTS_2
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	siemens_coefficient = 0
+	slowdown_inactive = 0.75
+	slowdown_active = 0.25
+	complexity_max = DEFAULT_MAX_COMPLEXITY + 5
+	allowed_suit_storage = list(
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+		/obj/item/restraints/handcuffs,
+		/obj/item/flash,
+		/obj/item/melee/baton,
+		/obj/item/gun,
+	)
+	species_allowed = list("Human")
+	skins = list(
+		"rhino" = list(
+			MOD_ICON_OVERRIDE = 'modular_ss220/mod/icons/object/mod_clothing.dmi',
+			HELMET_FLAGS = list(
+				UNSEALED_LAYER = COLLAR_LAYER,
+
+				SEALED_CLOTHING = THICKMATERIAL | STOPSPRESSUREDMAGE | BLOCK_GAS_SMOKE_EFFECT | BLOCKHAIR,
+				UNSEALED_INVISIBILITY = HIDEFACE,
+				SEALED_INVISIBILITY = HIDEMASK | HIDEEYES | HIDEEARS | HIDEFACE,
+				SEALED_COVER = HEADCOVERSMOUTH | HEADCOVERSEYES,
+			),
+			CHESTPLATE_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT | HIDETAIL,
+			),
+			GAUNTLETS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+			BOOTS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+		),
+	)
+
+/obj/item/mod/armor/mod_theme_responsory/red
+	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 15, BOMB = 40, RAD = 25, FIRE = INFINITY, ACID = 150)
 
 // MARK: Misc modsuits
 /datum/mod_theme/prototype/spacebattle
