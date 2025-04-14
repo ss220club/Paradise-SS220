@@ -756,7 +756,7 @@ fn milla_spawn_tick_thread(cores_arg: ByondValue) -> eyre::Result<ByondValue> {
                 &[ByondValue::new_str(format!(
                     "MILLA tick finished on thread {}",
                     std::thread::current().id()
-                ))],
+                ))?],
             )?;
             call_global("milla_tick_finished", &[])?;
         } else {
