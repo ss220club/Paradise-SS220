@@ -702,6 +702,16 @@ fn milla_get_available_cpu_cores(list: ByondValue) -> eyre::Result<ByondValue> {
     Ok(ByondValue::null())
 }
 
+#[cfg(target_os = "linux")]
+fn current_cpu() -> i32 {
+    unsafe { libc::sched_getcpu() }
+}
+
+#[cfg(target_os = "windows")]
+fn current_cpu() -> u32 {
+    unsafe { winapi::um::processthreadsapi::GetCurrentProcessorNumber() }
+}
+
 /// BYOND API for starting an atmos tick.
 #[byondapi::bind]
 fn milla_spawn_tick_thread(cores_arg: ByondValue) -> eyre::Result<ByondValue> {
@@ -754,8 +764,9 @@ fn milla_spawn_tick_thread(cores_arg: ByondValue) -> eyre::Result<ByondValue> {
             call_global(
                 "log_debug",
                 &[ByondValue::new_str(format!(
-                    "MILLA tick finished on thread {:?}",
-                    std::thread::current().id()
+                    "MILLA tick finished on thread {:?}, core {:?}",
+                    std::thread::current().id(),
+                    current_cpu()
                 ))?],
             )?;
             call_global("milla_tick_finished", &[])?;
