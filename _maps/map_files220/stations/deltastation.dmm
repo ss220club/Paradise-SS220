@@ -2380,7 +2380,8 @@
 /obj/machinery/access_button{
 	autolink_id = "turbine_btn_int";
 	name = "Gas Turbine Access Button";
-	pixel_y = 24
+	pixel_y = 24;
+	req_access = list(24)
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/engine,
@@ -6382,7 +6383,8 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door_control/bolt_control/west{
-	id = "smint"
+	id = "smint";
+	req_access = list(10)
 	},
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id_tag = "engsm"
@@ -8106,7 +8108,8 @@
 "aJs" = (
 /obj/machinery/door_control/shutter/north{
 	id = "engsm";
-	name = "Radiation Shutters Control"
+	name = "Radiation Shutters Control";
+	req_access = list(10)
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/structure/cable/yellow{
@@ -8282,7 +8285,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "aKa" = (
@@ -8594,7 +8596,6 @@
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/fore_port)
 "aLs" = (
@@ -9129,7 +9130,6 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "aOk" = (
@@ -9151,7 +9151,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "aOo" = (
@@ -12129,9 +12128,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/access/any/science/minisat,
+/obj/effect/mapping_helpers/airlock/access/all/science/minisat,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/ai_transit_tube)
 "bcq" = (
@@ -16572,7 +16570,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "bvO" = (
@@ -17211,7 +17208,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/hallway)
 "byy" = (
@@ -18310,8 +18306,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/highsecurity,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/tech_storage,
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/ce,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/gravitygenerator)
 "bDe" = (
@@ -18484,7 +18479,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room/secondary)
 "bDu" = (
@@ -24377,7 +24372,7 @@
 	id = "transitlock";
 	name = "Transit Tube Lockdown Control";
 	pixel_y = -8;
-	req_access = list(11)
+	req_access = list(75)
 	},
 /obj/machinery/computer/security/engineering{
 	dir = 4
@@ -27479,7 +27474,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "cib" = (
@@ -28396,7 +28391,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "clp" = (
@@ -28417,7 +28412,7 @@
 /obj/machinery/door_control/shutter/east{
 	id = "Singularity";
 	name = "Containment Blast Doors";
-	req_access = list(32)
+	req_access = list(10)
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -37383,7 +37378,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/fore_port)
 "cYP" = (
@@ -46895,17 +46890,16 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/machinery/access_button/south{
 	autolink_id = "enginen_btn_int";
-	req_access = list(10, 13);
+	req_access = list(10);
 	name = "interior access button"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "dVX" = (
@@ -52237,7 +52231,6 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/effect/mapping_helpers/airlock/access/any/science/minisat,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/ai_transit_tube)
@@ -59404,7 +59397,7 @@
 	int_door_link_id = "enginen_door_int";
 	pixel_y = -25;
 	vent_link_id = "enginen_vent";
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -64267,14 +64260,13 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/machinery/access_button/north{
 	autolink_id = "enginen_btn_ext";
 	name = "exterior access button";
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "jkP" = (
@@ -64329,7 +64321,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "jmD" = (
@@ -68463,7 +68454,6 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "kAK" = (
@@ -75479,24 +75469,26 @@
 	name = "Turbine Access Console";
 	pixel_x = 8;
 	pixel_y = -26;
-	req_access = list(12)
+	req_access = list(24)
 	},
 /obj/machinery/ignition_switch{
 	id = "Incinerator";
 	pixel_x = 8;
-	pixel_y = -36
+	pixel_y = -36;
+	req_access = list(24)
 	},
 /obj/machinery/door_control/shutter{
 	id = "turbinevent";
 	name = "Turbine Vent Control";
 	pixel_x = -8;
 	pixel_y = -36;
-	req_access = list(12)
+	req_access = list(24)
 	},
 /obj/machinery/door_control/shutter/south{
 	id = "auxincineratorvent";
 	name = "Auxiliary Vent Control";
-	pixel_x = -8
+	pixel_x = -8;
+	req_access = list(24)
 	},
 /obj/machinery/computer/turbine_computer{
 	dir = 1;
@@ -87208,9 +87200,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/access/any/science/minisat,
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/access/all/science/minisat,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/ai_transit_tube)
 "qrT" = (
@@ -88275,7 +88267,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/port)
 "qIl" = (
@@ -92832,8 +92824,8 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/mechanic)
 "sdr" = (
-/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/gravitygenerator)
 "sdI" = (
@@ -93178,11 +93170,10 @@
 /obj/machinery/access_button/south{
 	autolink_id = "engines_btn_int";
 	name = "interior access button";
-	req_access = list(10,13)
+	req_access = list(10)
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "siY" = (
@@ -100075,6 +100066,9 @@
 /obj/effect/mapping_helpers/airlock/windoor/access/any/engineering/atmos{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/mule_bot{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/control)
 "uqn" = (
@@ -101943,7 +101937,7 @@
 	int_door_link_id = "engines_door_int";
 	pixel_y = 25;
 	vent_link_id = "engines_vent";
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -103970,7 +103964,6 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "vHE" = (
@@ -104568,7 +104561,8 @@
 /obj/machinery/access_button{
 	autolink_id = "turbine_btn_ext";
 	name = "Gas Turbine Access Button";
-	pixel_y = 24
+	pixel_y = 24;
+	req_access = list(24)
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/simulated/floor/engine,
@@ -105972,11 +105966,10 @@
 /obj/machinery/access_button/north{
 	autolink_id = "engines_btn_ext";
 	name = "exterior access button";
-	req_access = list(10,13)
+	req_access = list(10)
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "woQ" = (
@@ -112094,7 +112087,7 @@
 /obj/machinery/door_control/shutter/north{
 	id = "transitlock";
 	name = "Transit Tube Lockdown Control";
-	req_access = list(11)
+	req_access = list(75)
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
