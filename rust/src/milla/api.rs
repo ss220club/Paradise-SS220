@@ -5,7 +5,6 @@ use crate::milla::model::*;
 use crate::milla::simulate;
 use crate::milla::statics::*;
 use crate::milla::tick;
-use crate::core_affinity;
 use byondapi::global_call::call_global;
 use byondapi::map::byond_block;
 use byondapi::map::byond_xyz;
@@ -694,7 +693,8 @@ fn milla_get_available_cpu_cores(list: ByondValue) -> eyre::Result<ByondValue> {
         None => return Ok(ByondValue::new_list().unwrap()),
     };
 
-    let core_numbers: Vec<ByondValue> = core_ids.iter()
+    let core_numbers: Vec<ByondValue> = core_ids
+        .iter()
         .map(|id| ByondValue::from(id.id as f32))
         .collect();
 
@@ -710,14 +710,14 @@ fn milla_spawn_tick_thread(cores_arg: ByondValue) -> eyre::Result<ByondValue> {
             let mut cores = Vec::new();
             let list_values = cores_arg.get_list_values()?;
 
-			for value in list_values {
-				if let Ok(num) = f32::try_from(value) {
-					let unum = num.abs().floor();
-					if unum >= 0.0 && unum <= usize::MAX as f32 {
-						cores.push(unum as usize);
-					}
-				}
-			}
+            for value in list_values {
+                if let Ok(num) = f32::try_from(value) {
+                    let unum = num.abs().floor();
+                    if unum >= 0.0 && unum <= usize::MAX as f32 {
+                        cores.push(unum as usize);
+                    }
+                }
+            }
 
             cores.dedup();
             cores
@@ -733,12 +733,12 @@ fn milla_spawn_tick_thread(cores_arg: ByondValue) -> eyre::Result<ByondValue> {
     thread::spawn(move || -> Result<(), eyre::Error> {
         if !cpu_cores.is_empty() {
             if let Some(core_ids) = core_affinity::get_core_ids() {
-                if let Some(core_id) = cpu_cores.iter()
+                if let Some(core_id) = cpu_cores
+                    .iter()
                     .filter_map(|&core_num| core_ids.iter().find(|id| id.id == core_num))
                     .next()
-                    .cloned()
                 {
-                    core_affinity::set_for_current(core_id);
+                    core_affinity::set_for_current(*core_id);
                 }
             }
         }
