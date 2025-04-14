@@ -43,12 +43,13 @@
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 
-// MARK: ERT RED MODsuit
-/obj/item/mod/control/pre_equipped/responsory/red
+// MARK: ERT MODsuit
+/obj/item/mod/control/pre_equipped/responsory // Gamma MODsuit
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
+	insignia_type = /obj/item/mod/module/insignia
+/obj/item/mod/control/pre_equipped/responsory/red
 	theme = /datum/mod_theme/responsory/red
-	req_access = list(ACCESS_CENT_GENERAL)
 	applied_modules = list(
 		/obj/item/mod/module/storage/syndicate,
 		/obj/item/mod/module/welding,
