@@ -751,6 +751,13 @@ fn milla_spawn_tick_thread(cores_arg: ByondValue) -> eyre::Result<ByondValue> {
             std::sync::atomic::Ordering::Relaxed,
         );
         if result.is_ok() {
+            call_global(
+                "log_debug",
+                &[ByondValue::new_str(format!(
+                    "MILLA tick finished on thread {}",
+                    std::thread::current().id()
+                ))],
+            )?;
             call_global("milla_tick_finished", &[])?;
         } else {
             let err = format!("MILLA tick error:\n----\n{:#?}\n----", result);
