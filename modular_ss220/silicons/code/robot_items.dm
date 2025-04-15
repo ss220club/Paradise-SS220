@@ -29,8 +29,8 @@
 
 /* Medical */
 /obj/item/reagent_containers/borghypo/basic/Initialize(mapload)
-	. = ..()
 	reagent_ids |= list("sal_acid", "charcoal")
+	return ..()
 
 /obj/item/reagent_containers/borghypo/basic/upgraded
 	name = "Upgraded Medical Hypospray"
