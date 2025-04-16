@@ -10,7 +10,7 @@
 		M.reagents.cycle_used[type]++
 	return ..()
 
-/datum/reagent/proc/calculate_heart_damage()
+/datum/reagent/pump_up/proc/calculate_heart_damage()
 	var/heart_damage = DEFAULT_DAMAGE
 	var/recent_consumption = holder.cycle_used[type]
 	heart_damage += ADDITIONAL_DAMAGE * recent_consumption // 0.05 at 1st cycle, 0.8 at 100th. Death in 120 (127 for slime people) cycles without treatment
