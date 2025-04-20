@@ -146,14 +146,13 @@
 
 //MARK: ERT Gamma MODsuit
 /datum/mod_theme/responsory
-	name = "\improper 'Knight' responsory"
-	desc = "Высокотехнологичный MODsuit 'Рыцарь' разработанный и произведенный Нанотрейзен. Явялется эксперементальной разработкой"
-	extended_desc = "A streamlined suit of powered armor produced entirely in-house by the Nanotrasen Corporation, the NA-22 'Ward' rapid response suit is one of the finest combat modsuits available on the market today. \
-		Equipped with a fire-resistant polybenzimidazole bodyglove and lightweight nano-polymer impact panels underneath a steel armored shell, the NA-22 offers reliable protection \
-		while retaining combat mobility. Internally, the NA-22 comes pre-loaded with NTOS-11 on a five-year subscription, which enables unparallelled customization options in conjunction \
-		with the Ward's unusually generous design specifications. Naturally, the NA-22 has a price tag to match its quality, and is thus only found within Nanotrasen's \
-		personal response units, as well as among the wealthiest of Sector PMCs and mercenary groups."
-	default_skin = "knight"
+	name = "\improper 'Paladin' responsory"
+	desc = "Комплекс брони-экзоскелета \"Паладин\", парадоксально сочетающий в себе невероятные показатели защищенности, мобильности и надежности.\
+Используется бойцами ОБР в исключительных случаях, зачастую - только на стратегически важных объектах Корпорации. "
+	extended_desc = "Экспериментальная тяжелая броня NS-83 \"Паладин\" - новая веха в истории развития оборонной промышленности Компании Нанотрейзен. Данный образец является прямым наследником защитных костюмов на основе системы МОД, однако инженеры и ученые концерна SecTech напрочь отказались от прежней философии компактной архитектуры и методов развертывания частей костюма в угоду повышенной защиты и сепарации бойцов ОБР от постоянной необходимости в источниках зарядки.\
+NS-83, в виду спецификации своего употребления, делает упор на монолитный экзоскелет с дополнительными слоем пластитановых пластин, что в купе к развертывающимися поверх модулями \"умной\" брони создает эффект композитной защиты от любого типа враждебного воздействия.\
+Этот факт позволяет использовать его боевые свойства даже без участия интегративных процессорных систем NTOS-11, представленных в виде привычного наспинного блока, дающего в активном состоянии полный симбиоз со всеми системами личного снаряжения бойца. "
+	default_skin = "paladin"
 	armor_type_1 = /obj/item/mod/armor/mod_theme_responsory
 
 	resistance_flags = FIRE_PROOF
@@ -173,7 +172,7 @@
 	)
 	species_allowed = list("Human")
 	skins = list(
-		"knight" = list(
+		"paladin" = list(
 			MOD_ICON_OVERRIDE = 'modular_ss220/mod/icons/object/mod_clothing.dmi',
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = COLLAR_LAYER,

@@ -1,4 +1,8 @@
 /* ERT OUTFIT DATUMS */
+/datum/outfit/job/response_team/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+
+	ADD_TRAIT(H, TRAIT_FLASH_PROTECTION, ROUNDSTART_TRAIT)
 
 /datum/outfit/job/response_team/imprint_idcard(mob/living/carbon/human/H)
 	var/obj/item/card/id/W = H.wear_id
