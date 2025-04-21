@@ -24,5 +24,5 @@
 	)
 
 	GLOB.cardboard_recipes += list(
-		new /datum/stack_recipe("cigarette packet", /obj/item/storage/fancy/cigarettes/cigpack_diy)
+		new /datum/stack_recipe("cigarette packet", /obj/item/storage/fancy/cigarettes/cigpack_diy/empty)
 	)

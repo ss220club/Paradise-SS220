@@ -26,6 +26,9 @@
 	item_state = "diypacket"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/newcigs_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/newcigs_righthand.dmi'
-	cigarette_type = null
 	foldable = /obj/item/stack/sheet/cardboard
 	foldable_amt = 1
+
+/obj/item/storage/fancy/cigarettes/cigpack_diy/empty/populate_contents()
+	update_icon(UPDATE_OVERLAYS)
+	return
