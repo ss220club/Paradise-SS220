@@ -8,7 +8,7 @@
 
 /datum/job/explorer/New()
 	. = ..()
-	access ^= list(ACCESS_TELEPORTER)
+	access -= list(ACCESS_TELEPORTER)
 	access |= list(ACCESS_MAILSORTING)
 
 /datum/job/bartender/New()
