@@ -27,7 +27,7 @@
 	log_data += "\t[uppertext(req.method)] [req.url]"
 	log_data += "\tRequest body: [req.body]"
 	log_data += "\tRequest headers: [req.headers]"
-	rustg_log_write(GLOB.http_log, log_data.Join("\n[GLOB.log_end]"))
+	rustlibs_log_write(GLOB.http_log, log_data.Join("\n[GLOB.log_end]"))
 
 /datum/controller/subsystem/http/proc/log_response(datum/http_response/res, id)
 	if(!logging_enabled)
@@ -42,7 +42,7 @@
 		log_data += "\tResponse status code: [res.status_code]"
 		log_data += "\tResponse body: [res.body]"
 		log_data += "\tResponse headers: [json_encode(res.headers)]"
-	rustg_log_write(GLOB.http_log, log_data.Join("\n[GLOB.log_end]"))
+	rustlibs_log_write(GLOB.http_log, log_data.Join("\n[GLOB.log_end]"))
 
 
 /datum/http_request/into_response()
