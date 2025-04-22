@@ -310,7 +310,6 @@
 // MARK: ERT
 /datum/outfit/job/response_team/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-
 	ADD_TRAIT(H, TRAIT_FLASH_PROTECTION, ROUNDSTART_TRAIT)
 
 /* Commander */
