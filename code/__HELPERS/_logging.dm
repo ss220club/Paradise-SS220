@@ -226,7 +226,7 @@ GLOBAL_PROTECT(log_end)
 	rustlibs_log_write(GLOB.chat_debug_log, "[text][GLOB.log_end]")
 
 /proc/log_jobs(text)
-	rustg_log_write(GLOB.jobs_log, "[text][GLOB.log_end]")
+	rustlibs_log_write(GLOB.jobs_log, "[text][GLOB.log_end]")
 
 // A logging proc that only outputs after setup is done, to
 // help devs test initialization stuff that happens a lot
