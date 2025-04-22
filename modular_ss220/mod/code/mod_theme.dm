@@ -139,12 +139,13 @@
 /obj/item/mod/armor/mod_theme_skrell_sardaukars
 	armor = list(MELEE = 120, BULLET = 120, LASER = 100, ENERGY = 50, BOMB = 100, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
 
-//MARK: Corporate MODsuit
+// MARK: Corporate MODsuit
 /datum/mod_theme/corporate/New()
 	. = ..()
 	skins["corporate"][MOD_ICON_OVERRIDE] = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 
-//MARK: ERT Gamma MODsuit
+// MARK: ERT MODsuit
+// Gamma
 /datum/mod_theme/responsory
 	name = "\improper 'Paladin' responsory"
 	desc = "Комплекс брони-экзоскелета \"Паладин\", парадоксально сочетающий в себе невероятные показатели защищенности, мобильности и надежности.\
@@ -227,7 +228,7 @@ NS-83, в виду спецификации своего употреблени�
 /obj/item/mod/armor/mod_theme_responsory
 	armor = list(MELEE = 70, BULLET = 60, LASER = 45, ENERGY = 25, BOMB = 80, RAD = INFINITY, FIRE = 200, ACID = 200)
 
-//MARK: ERT Red MODsuit
+// Red
 /datum/mod_theme/responsory/red
 	name = "\improper 'Rhino' responsory"
 	desc = "Высокотехнологичный боевой MODsuit 'Носорог', разработанный и произведенный Нанотрейзен. Хорошо бронированный, герметичный и оснащенный всевозможными полезными приспособлениями. \
