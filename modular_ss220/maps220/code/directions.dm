@@ -1,6 +1,8 @@
 /* Intercom */
 MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom, 28, 28)
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/locked/prison, 28, 28)
+
 /* Nanotrasen WallMed */
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed/emergency_ntmed, 32, 32)
 

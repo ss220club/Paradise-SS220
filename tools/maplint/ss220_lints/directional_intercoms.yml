@@ -7,3 +7,12 @@ help: "Use directional subtype for this intercom."
    - dir
 =/obj/item/radio/intercom/directional:
   banned: true
+
+=/obj/item/radio/intercom/locked/prison:
+  banned_variables:
+   - dir
+/obj/item/radio/intercom/locked/prison/directional:
+  banned_variables:
+   - dir
+=/obj/item/radio/intercom/locked/prison/directional:
+  banned: true

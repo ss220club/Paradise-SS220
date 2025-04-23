@@ -3940,10 +3940,7 @@
 "asg" = (
 /obj/item/bikehorn/rubberducky,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -13675,7 +13672,6 @@
 /obj/machinery/door/airlock/public/glass{
 	id_tag = "vipbar_bolt"
 	},
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/siding/wood/cherry,
 /obj/effect/turf_decal/siding/wood/cherry{
@@ -19797,7 +19793,8 @@
 /area/station/turret_protected/ai_upload)
 "bCL" = (
 /obj/item/radio/intercom/private{
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /obj/machinery/computer/borgupload{
 	dir = 1
@@ -33159,12 +33156,8 @@
 	},
 /area/station/hallway/primary/aft)
 "cHL" = (
-/obj/item/radio/intercom/locked/prison{
-	dir = 8;
-	name = "Prison Intercom (General)";
-	pixel_x = 22
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/radio/intercom/locked/prison/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
 	},
@@ -47160,8 +47153,8 @@
 	dir = 1
 	},
 /obj/item/radio/intercom/locked/confessional{
-	dir = 8;
-	pixel_x = 22
+	dir = 4;
+	pixel_x = 28
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -47803,7 +47796,8 @@
 /obj/item/radio/intercom/locked/ai_private{
 	broadcasting = 1;
 	listening = 0;
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -53663,10 +53657,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 28
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
@@ -55251,10 +55242,7 @@
 "hUX" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small/directional/west,
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 28
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -60500,11 +60488,7 @@
 /area/station/maintenance/fsmaint)
 "kcW" = (
 /obj/structure/flora/grass/jungle,
-/obj/item/radio/intercom/locked/prison{
-	dir = 8;
-	name = "Prison Intercom (General)";
-	pixel_x = 22
-	},
+/obj/item/radio/intercom/locked/prison/directional/east,
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
 "kdh" = (
@@ -61359,10 +61343,11 @@
 /area/station/science/break_room)
 "ktF" = (
 /obj/item/radio/intercom/custom{
-	pixel_y = 22
+	pixel_y = 28
 	},
 /obj/item/radio/intercom/private{
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /obj/item/radio/intercom/directional/west,
 /obj/effect/landmark{
@@ -63068,10 +63053,7 @@
 "laL" = (
 /obj/structure/table,
 /obj/item/camera,
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/wood/oak,
 /area/station/security/permabrig)
 "laP" = (
@@ -69158,10 +69140,11 @@
 /area/station/security/brig)
 "npm" = (
 /obj/item/radio/intercom/custom{
-	pixel_y = 22
+	pixel_y = 28
 	},
 /obj/item/radio/intercom/private{
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /obj/item/radio/intercom/directional/east,
 /obj/effect/landmark{
@@ -74075,10 +74058,9 @@
 /obj/machinery/computer/secure_data{
 	dir = 8
 	},
-/obj/item/radio/intercom/locked/prison{
-	dir = 8;
-	name = "Prison Intercom (General)";
-	pixel_x = 22
+/obj/item/radio/intercom/department/security{
+	pixel_x = 28;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -76925,12 +76907,9 @@
 	},
 /area/station/maintenance/fore)
 "qen" = (
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
 /obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/portable/scrubber/huge/stationary,
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
 "qeI" = (
@@ -80623,7 +80602,7 @@
 "rxX" = (
 /obj/structure/filingcabinet,
 /obj/item/radio/intercom/private{
-	dir = 4;
+	dir = 8;
 	pixel_x = -37
 	},
 /obj/item/radio/intercom/directional/west{
@@ -81465,11 +81444,8 @@
 	},
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 28
-	},
 /obj/effect/landmark/start/prisoner,
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -85871,10 +85847,7 @@
 /obj/structure/bed{
 	dir = 4
 	},
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
@@ -89360,7 +89333,6 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "secmaint_door_ext"
 	},
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /obj/effect/mapping_helpers/airlock/locked,
@@ -91307,10 +91279,7 @@
 /area/station/maintenance/apmaint)
 "vxy" = (
 /obj/structure/bed,
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -91725,11 +91694,7 @@
 "vEA" = (
 /obj/structure/sink/kitchen/east,
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/radio/intercom/locked/prison{
-	dir = 8;
-	name = "Prison Intercom (General)";
-	pixel_x = 22
-	},
+/obj/item/radio/intercom/locked/prison/directional/east,
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
 "vEL" = (
@@ -92554,8 +92519,8 @@
 "vTz" = (
 /obj/structure/chair,
 /obj/item/radio/intercom/locked/confessional{
-	dir = 8;
-	pixel_x = 22
+	dir = 4;
+	pixel_x = 28
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -94427,11 +94392,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/radio/intercom/locked/prison{
-	dir = 4;
-	name = "Prison Intercom (General)";
-	pixel_x = -28
-	},
+/obj/item/radio/intercom/locked/prison/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "wHh" = (

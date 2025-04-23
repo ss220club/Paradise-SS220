@@ -28245,7 +28245,7 @@
 /obj/structure/chair,
 /obj/item/radio/intercom/locked/confessional{
 	pixel_x = -28;
-	dir = 4
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -31624,7 +31624,7 @@
 	},
 /obj/item/radio/intercom/locked/confessional{
 	pixel_x = 28;
-	dir = 8
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -32286,7 +32286,6 @@
 "cuF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical,
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/holosign/surgery{
 	id = "surgery2"
@@ -52562,7 +52561,8 @@
 /area/station/engineering/controlroom)
 "iTG" = (
 /obj/item/radio/intercom/department/security{
-	pixel_y = -28
+	pixel_y = -28;
+	dir = 2
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
@@ -55749,10 +55749,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_x = 25
-	},
+/obj/item/radio/intercom/locked/prison/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -60540,6 +60537,9 @@
 	},
 /area/station/security/permabrig)
 "mTD" = (
+/obj/machinery/computer/operating{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -66657,7 +66657,8 @@
 /obj/structure/table,
 /obj/item/radio/intercom/department/security{
 	pixel_x = 2;
-	pixel_y = 6
+	pixel_y = 6;
+	dir = 2
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -69174,7 +69175,7 @@
 	},
 /obj/item/radio/intercom/department/security{
 	pixel_x = -37;
-	dir = 4
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/carpet,
@@ -69399,7 +69400,7 @@
 "ruH" = (
 /obj/item/radio/intercom/department/security{
 	pixel_x = 28;
-	dir = 8
+	dir = 4
 	},
 /obj/machinery/flasher/portable,
 /turf/simulated/floor/plasteel{
@@ -73064,13 +73065,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_x = 25
-	},
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
+/obj/item/radio/intercom/locked/prison/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -77663,7 +77661,7 @@
 	},
 /obj/item/radio/intercom/department/security{
 	pixel_x = 37;
-	dir = 8
+	dir = 4
 	},
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/wood,
@@ -80300,10 +80298,7 @@
 /area/station/security/main)
 "xjJ" = (
 /obj/machinery/light/directional/north,
-/obj/item/radio/intercom/locked/prison{
-	name = "Prison Intercom (General)";
-	pixel_y = 28
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "green"

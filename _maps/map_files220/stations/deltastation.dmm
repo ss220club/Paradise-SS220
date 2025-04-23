@@ -18094,11 +18094,11 @@
 "bCT" = (
 /obj/item/radio/intercom/directional/south,
 /obj/item/radio/intercom/private{
-	pixel_x = -22;
-	dir = 4
+	pixel_x = -28;
+	dir = 8
 	},
 /obj/item/radio/intercom/custom{
-	pixel_y = 22
+	pixel_y = 28
 	},
 /obj/effect/landmark{
 	icon = 'icons/effects/spawner_icons.dmi';
@@ -18170,8 +18170,8 @@
 "bDa" = (
 /obj/item/radio/intercom/directional/south,
 /obj/item/radio/intercom/private{
-	pixel_x = 22;
-	dir = 8
+	pixel_x = 28;
+	dir = 4
 	},
 /obj/effect/landmark{
 	icon = 'icons/effects/spawner_icons.dmi';
@@ -18179,7 +18179,7 @@
 	name = "tripai"
 	},
 /obj/item/radio/intercom/custom{
-	pixel_y = 22
+	pixel_y = 28
 	},
 /turf/simulated/floor/greengrid,
 /area/station/turret_protected/ai)
@@ -23110,13 +23110,13 @@
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai_upload)
 "bSO" = (
-/obj/machinery/keycard_auth/directional/north{
-	pixel_x = -24
-	},
 /obj/machinery/computer/card{
 	dir = 4
 	},
 /obj/machinery/requests_console/directional/west,
+/obj/machinery/keycard_auth/directional/west{
+	pixel_y = 24
+	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/office/captain)
 "bSP" = (
@@ -45424,7 +45424,7 @@
 	dir = 4
 	},
 /obj/item/radio/intercom/locked/confessional{
-	pixel_y = 22
+	pixel_y = 28
 	},
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel/dark,
@@ -86534,7 +86534,8 @@
 	dir = 8
 	},
 /obj/item/radio/intercom/locked/confessional{
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel/dark,
