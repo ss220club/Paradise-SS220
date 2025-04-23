@@ -6446,6 +6446,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "aJv" = (
@@ -17880,12 +17881,10 @@
 /area/station/command/office/captain)
 "buh" = (
 /obj/machinery/ai_status_display/directional/north,
-/obj/machinery/keycard_auth{
-	pixel_x = 26
-	},
 /obj/machinery/computer/communications{
 	dir = 8
 	},
+/obj/machinery/keycard_auth/directional/east,
 /turf/simulated/floor/wood,
 /area/station/command/office/captain)
 "bui" = (
@@ -33957,6 +33956,7 @@
 "cBh" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/directional/south,
+/obj/machinery/status_display/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "cBj" = (
@@ -35448,6 +35448,7 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "cGz" = (
@@ -35487,9 +35488,8 @@
 /obj/item/aicard,
 /obj/item/paicard,
 /obj/item/circuitboard/aicore,
-/obj/machinery/keycard_auth{
-	pixel_x = -5;
-	pixel_y = 26
+/obj/machinery/keycard_auth/directional/north{
+	pixel_x = -5
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -38658,10 +38658,6 @@
 /obj/machinery/power/apc/directional/north,
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
-"cUz" = (
-/obj/machinery/status_display,
-/turf/simulated/wall,
-/area/station/hallway/secondary/exit)
 "cUA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -39298,10 +39294,6 @@
 	icon_state = "dark"
 	},
 /area/station/medical/medbay)
-"cXs" = (
-/obj/machinery/ai_status_display,
-/turf/simulated/wall,
-/area/station/hallway/secondary/exit)
 "cXt" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -42329,6 +42321,7 @@
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/meter,
+/obj/machinery/status_display/directional/south,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "dXu" = (
@@ -47148,10 +47141,6 @@
 	icon_state = "white"
 	},
 /area/station/science/xenobiology)
-"gpj" = (
-/obj/machinery/status_display,
-/turf/simulated/wall/r_wall,
-/area/station/engineering/engine/supermatter)
 "gpT" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -52573,8 +52562,7 @@
 /area/station/engineering/controlroom)
 "iTG" = (
 /obj/item/radio/intercom/department/security{
-	pixel_y = -28;
-	dir = 1
+	pixel_y = -28
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
@@ -59854,11 +59842,10 @@
 	pixel_x = -7;
 	req_access = list(40)
 	},
-/obj/machinery/keycard_auth{
-	pixel_x = 7;
-	pixel_y = -25
-	},
 /obj/machinery/firealarm/directional/west,
+/obj/machinery/keycard_auth/directional/south{
+	pixel_x = 7
+	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "whiteblue"
@@ -66670,7 +66657,6 @@
 /obj/structure/table,
 /obj/item/radio/intercom/department/security{
 	pixel_x = 2;
-	dir = 1;
 	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel{
@@ -68357,6 +68343,16 @@
 	icon_state = "darkneutralfull"
 	},
 /area/station/science/toxins/launch)
+"qTB" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/ai_status_display/directional/west,
+/turf/simulated/floor/plasteel,
+/area/station/hallway/secondary/exit)
 "qTF" = (
 /obj/machinery/newscaster/directional/north,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -69093,6 +69089,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/status_display/directional/south,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "rmg" = (
@@ -70552,10 +70549,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/roller,
 /obj/item/bedsheet/medical,
-/obj/machinery/light_construct{
-	dir = 1
-	},
 /obj/machinery/economy/vending/wallmed/directional/north,
+/obj/machinery/light_construct/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -73590,6 +73585,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "tAy" = (
@@ -108910,11 +108906,11 @@ cPL
 cQM
 cRx
 cBh
-cUz
+cVk
 cTR
-cXs
+cVk
 cVf
-cUz
+cVk
 cGy
 cTr
 cAB
@@ -109169,7 +109165,7 @@ cRx
 cTt
 pjA
 pjA
-pjA
+qTB
 pjA
 pjA
 dbc
@@ -126298,7 +126294,7 @@ ntU
 wky
 ftb
 rlJ
-gpj
+kez
 aRa
 aOe
 aPv
@@ -126306,7 +126302,7 @@ peF
 huo
 aOe
 tVw
-gpj
+kez
 tAn
 bbC
 nEU
@@ -127326,7 +127322,7 @@ aFY
 aOa
 edK
 dXb
-gpj
+kez
 kez
 kez
 oTM
@@ -127334,7 +127330,7 @@ vjL
 hWr
 kez
 kez
-gpj
+kez
 aJt
 kBa
 hFV
