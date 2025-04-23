@@ -7,7 +7,11 @@ from . import dmm, lint
 from .error import MaplintError
 from .__main__ import process_dmm, print_maplint_error, print_error, green, red
 
-def main(args):
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--github", action="store_true")
+    args = parser.parse_args()
+
     github_error_style = args.github
     any_failed = False
 
@@ -45,19 +49,5 @@ def main(args):
     if any_failed:
         exit(1)
 
-if __name__ == "ss220_linter":
-    parser = argparse.ArgumentParser(
-        prog = "maplint",
-        description = "Checks for common errors in maps.",
-    )
-
-    parser.add_argument("maps", nargs = "*")
-    parser.add_argument("--lints", nargs = "*")
-    parser.add_argument("--github", action='store_true')
-
-    args = parser.parse_args()
-
-    main(args)
-
 if __name__ == "__main__":
-    main(args)
+    main()
