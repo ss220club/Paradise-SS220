@@ -29,19 +29,31 @@ def main(args):
         print(map_filename, end = " ")
 
         success = True
+        all_failures: list[MaplintError] = []
+
         try:
             problems = process_dmm(map_filename, lints)
-            if problems:
+            if len(problems) > 0:
                 success = False
-                for p in problems:
-                    print_maplint_error(p, github_error_style)
+                all_failures.extend(problems)
+        except KeyboardInterrupt:
+            raise
         except Exception:
             success = False
-            print_error("Exception occurred in maplint", map_filename, 1, github_error_style)
-            traceback.print_exc()
 
-        print(green("OK") if success else red("X"))
-        any_failed = any_failed or not success
+            all_failures.append(MaplintError(
+                f"An exception occurred, this is either a bug in maplint or a bug in a lint.' {traceback.format_exc()}",
+                map_filename,
+            ))
+
+        if success:
+            print(green("OK"))
+        else:
+            print(red("X"))
+            any_failed = True
+
+        for failure in all_failures:
+            print_maplint_error(failure, github_error_style)
 
     if any_failed:
         exit(1)
