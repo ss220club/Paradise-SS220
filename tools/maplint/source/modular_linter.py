@@ -1,9 +1,9 @@
 import glob
 import pathlib
-import yaml
 import traceback
+import yaml
 
-from . import lint, dmm
+from . import dmm, lint
 from .error import MaplintError
 from .__main__ import process_dmm, print_maplint_error, print_error, green, red
 
@@ -13,7 +13,7 @@ def main():
 
     lints: dict[str, lint.Lint] = {}
 
-    lint_base = pathlib.Path(__file__).parent.parent / "modular_lints"
+    lint_base = pathlib.Path(__file__).parent.parent / "ss220_lints"
     lint_filenames = lint_base.glob("*.yml")
 
     for lint_filename in lint_filenames:
@@ -25,7 +25,7 @@ def main():
             any_failed = True
 
     for map_filename in glob.glob("_maps/map_files220/**/*.dmm", recursive=True):
-        print(map_filename, end=" ")
+        print(map_filename, end = " ")
 
         success = True
         try:
