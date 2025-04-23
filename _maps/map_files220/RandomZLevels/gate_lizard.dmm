@@ -50,7 +50,7 @@
 	},
 /area/awaymission/jungle_planet/outside)
 "adt" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
@@ -2971,7 +2971,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "dXw" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -3399,7 +3399,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside)
 "eAh" = (
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -3435,7 +3435,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "eDe" = (
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/effect/spawner/random/dirt/frequent,
 /obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plating,
@@ -4820,7 +4820,7 @@
 	},
 /area/awaymission/jungle_planet/inside/complex)
 "gys" = (
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -5283,9 +5283,8 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside)
 "heb" = (
-/obj/structure/extinguisher_cabinet{
-	name = "north extinguisher cabinet";
-	pixel_y = 30
+/obj/structure/extinguisher_cabinet/directional/north{
+	name = "north extinguisher cabinet"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -5742,9 +5741,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "hFi" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 25
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -10228,9 +10225,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "mZK" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
-	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -10572,9 +10567,7 @@
 /obj/item/clothing/head/helmet/old,
 /obj/effect/decal/cleanable/generic,
 /obj/machinery/firealarm/directional/south,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 25
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -10730,9 +10723,8 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "nOE" = (
-/obj/structure/extinguisher_cabinet{
-	name = "south extinguisher cabinet";
-	pixel_y = -30
+/obj/structure/extinguisher_cabinet/directional/south{
+	name = "south extinguisher cabinet"
 	},
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel{
@@ -11083,7 +11075,7 @@
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 4
 	},
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/hostile_fauna/spider,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -15264,7 +15256,7 @@
 	},
 /area/awaymission/jungle_planet/inside)
 "tAY" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -16367,10 +16359,7 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "uRs" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 6;
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -16692,7 +16681,7 @@
 /obj/effect/decal/remains/human,
 /obj/item/ammo_casing/caseless/arrow,
 /obj/effect/spawner/random/blood/often,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -17316,7 +17305,7 @@
 /obj/item/scalpel{
 	pixel_y = -1
 	},
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/effect/spawner/random/dirt/maybe,
 /obj/effect/turf_decal/grass{
 	icon_state = "grass_edge_medium";
@@ -18008,7 +17997,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /mob/living/simple_animal/hostile/poison_snake{
 	wander = 0
 	},
