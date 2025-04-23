@@ -1,9 +1,13 @@
 /obj/machinery/door/airlock/@SUBTYPES{locked=1} : /obj/machinery/door/airlock/@SUBTYPES{@OLD;locked=@SKIP}, /obj/effect/mapping_helpers/airlock/locked
 
 /obj/machinery/keycard_auth/south : /obj/machinery/keycard_auth/directional/south{@OLD;dir=@SKIP}
-/obj/machinery/keycard_auth/north : /obj/machinery/keycard_auth/directional/south{@OLD;dir=@SKIP}
-/obj/machinery/keycard_auth/east : /obj/machinery/keycard_auth/directional/south{@OLD;dir=@SKIP}
-/obj/machinery/keycard_auth/west : /obj/machinery/keycard_auth/directional/south{@OLD;dir=@SKIP}
+/obj/machinery/keycard_auth/north : /obj/machinery/keycard_auth/directional/north{@OLD;dir=@SKIP}
+/obj/machinery/keycard_auth/east : /obj/machinery/keycard_auth/directional/east{@OLD;dir=@SKIP}
+/obj/machinery/keycard_auth/west : /obj/machinery/keycard_auth/directional/west{@OLD;dir=@SKIP}
+
+/obj/item/radio/intercom/syndicate{dir=1} : /obj/item/radio/intercom/syndicate{@OLD;dir=2}
+/obj/item/radio/intercom/syndicate{dir=4} : /obj/item/radio/intercom/syndicate{@OLD;dir=8}
+/obj/item/radio/intercom/syndicate{dir=8} : /obj/item/radio/intercom/syndicate{@OLD;dir=4}
 
 /obj/machinery/light{@dir=1} : /obj/machinery/light/directional/north{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
 /obj/machinery/light{@dir=4} : /obj/machinery/light/directional/east{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
@@ -40,10 +44,26 @@
 /obj/machinery/light_construct/small/east : /obj/machinery/light_construct/small/directional/east{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
 /obj/machinery/light_construct/small/west : /obj/machinery/light_construct/small/directional/west{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
 
-/obj/structure/extinguisher_cabinet/empty/south : /obj/machinery/light_construct/small/directional/north{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
-/obj/structure/extinguisher_cabinet/empty/north : /obj/machinery/light_construct/small/directional/south{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
-/obj/structure/extinguisher_cabinet/empty/east : /obj/machinery/light_construct/small/directional/west{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
-/obj/structure/extinguisher_cabinet/empty/west : /obj/machinery/light_construct/small/directional/east{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_y=-32} : /obj/machinery/light_construct/small/directional/south{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_y=-30} : /obj/machinery/light_construct/small/directional/south{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_y=-28} : /obj/machinery/light_construct/small/directional/south{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_y=32} : /obj/machinery/light_construct/small/directional/north{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_y=31} : /obj/machinery/light_construct/small/directional/north{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_y=30} : /obj/machinery/light_construct/small/directional/north{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_x=32} : /obj/machinery/light_construct/small/directional/east{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_x=25} : /obj/machinery/light_construct/small/directional/east{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet{pixel_x=-32} : /obj/machinery/light_construct/small/directional/west{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+
+/obj/structure/extinguisher_cabinet/empty/south : /obj/structure/extinguisher_cabinet/empty/directional/south{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet/empty/north : /obj/structure/extinguisher_cabinet/empty/directional/north{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet/empty/east : /obj/structure/extinguisher_cabinet/empty/directional/east{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet/empty/west : /obj/structure/extinguisher_cabinet/empty/west{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+
+/obj/structure/extinguisher_cabinet/empty{pixel_y=-32} : /obj/structure/extinguisher_cabinet/empty/directional/south{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet/empty{pixel_y=32} : /obj/structure/extinguisher_cabinet/empty/directional/north{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet/empty{pixel_x=32} : /obj/structure/extinguisher_cabinet/empty/directional/east{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+/obj/structure/extinguisher_cabinet/empty{pixel_x=-32} : /obj/structure/extinguisher_cabinet/empty/directional/west{@OLD;dir=@SKIP;pixel_x=@SKIP;pixel_y=@SKIP}
+
 
 /obj/machinery/access_button/south : /obj/machinery/access_button/directional/south{@OLD}
 /obj/machinery/access_button/north : /obj/machinery/access_button/directional/north{@OLD}

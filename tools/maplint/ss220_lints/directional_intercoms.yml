@@ -1,5 +1,8 @@
-help: "Specify direction for this intercom."
-/obj/item/radio/intercom:
+help: "Use directional subtype for this intercom."
+=/obj/item/radio/intercom:
+  banned_variables:
+   - dir
+/obj/item/radio/intercom/directional:
   banned_variables:
    - dir
 =/obj/item/radio/intercom/directional:
