@@ -7,7 +7,7 @@ from . import dmm, lint
 from .error import MaplintError
 from .__main__ import process_dmm, print_maplint_error, print_error, green, red
 
-def main():
+def main(args):
     github_error_style = args.github
     any_failed = False
 
@@ -24,7 +24,7 @@ def main():
             traceback.print_exc()
             any_failed = True
 
-    for map_filename in glob.glob("_maps/map_files220/**/*.dmm", recursive=True):
+    for map_filename in glob.glob("_maps/map_files220/**/*.dmm", recursive = True):
         print(map_filename, end = " ")
 
         success = True
@@ -60,4 +60,4 @@ if __name__ == "ss220_linter":
     main(args)
 
 if __name__ == "__main__":
-    main()
+    main(args)
