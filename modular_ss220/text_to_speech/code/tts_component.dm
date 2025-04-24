@@ -103,6 +103,15 @@
 		var/mob/living/carbon/carbon = being_changed
 		carbon.dna?.tts_seed_dna = tts_seed
 
+/datum/component/tts_component/proc/randomise_tts(atom/being_changed)
+	var/datum/tts_seed/new_tts_seed = get_random_tts_seed_by_gender()
+	if(!new_tts_seed)
+		return null
+	tts_seed = new_tts_seed
+	if(iscarbon(being_changed))
+		var/mob/living/carbon/carbon = being_changed
+		carbon.dna?.tts_seed_dna = tts_seed
+
 /datum/component/tts_component/proc/get_random_tts_seed_by_gender()
 	var/tts_gender = get_converted_tts_seed_gender()
 	var/list/tts_seeds = SStts220.tts_seeds_by_gender[tts_gender]
@@ -169,7 +178,7 @@
 		if(piece == "")
 			continue
 
-		if(say_piece.speaking?.flags & INNATE) // TTS should not read emotes like "laughts"
+		if(say_piece.speaking?.flags & INNATE) // TTS should not read emotes like "laughs"
 			return ""
 
 		if(iteration_count == 1)
@@ -208,11 +217,11 @@
 	return FALSE
 
 // Component usage
-
 /client/create_response_team_part_1(new_gender, new_species, role, turf/spawn_location)
 	. = ..()
 	var/mob/living/ert_member = .
-	ert_member.change_tts_seed(src.mob)
+	var/datum/component/tts_component/tts_component = ert_member.GetComponent(/datum/component/tts_component)
+	tts_component?.randomise_tts(ert_member)
 
 /mob/living/silicon/verb/synth_change_voice()
 	set name = "Смена голоса"
