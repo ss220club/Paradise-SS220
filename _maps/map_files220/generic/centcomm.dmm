@@ -1559,7 +1559,7 @@
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/jail)
 "aNn" = (
-/obj/machinery/gibber,
+/obj/machinery/gibber/upgraded,
 /turf/simulated/floor/plating{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "elevatorshaft";
@@ -2066,10 +2066,8 @@
 /area/admin)
 "aZj" = (
 /obj/structure/table,
-/obj/machinery/kitchen_machine/microwave/upgraded{
-	pixel_x = -1;
-	pixel_y = 7
-	},
+/obj/machinery/cooking/grill/upgraded,
+/obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkbluefull"
 	},
@@ -6384,7 +6382,7 @@
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/centcom/ss220/admin1)
 "cPQ" = (
-/obj/machinery/cooking/ice_cream_mixer,
+/obj/machinery/cooking/ice_cream_mixer/upgraded,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -11217,12 +11215,11 @@
 /area/centcom/ss220/admin3)
 "eQZ" = (
 /obj/structure/table,
-/obj/machinery/reagentgrinder{
-	pixel_x = -1;
-	pixel_y = 9
-	},
 /obj/item/reagent_containers/glass/beaker/large{
 	pixel_y = 3
+	},
+/obj/machinery/reagentgrinder/upgraded{
+	pixel_y = 10
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkbluefull"
@@ -14990,8 +14987,8 @@
 /area/shuttle/administration)
 "gyh" = (
 /obj/structure/table,
-/obj/machinery/kitchen_machine/microwave{
-	pixel_y = 6
+/obj/machinery/kitchen_machine/microwave/upgraded{
+	pixel_y = 5
 	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
@@ -17190,8 +17187,7 @@
 "hsh" = (
 /obj/structure/table,
 /obj/machinery/kitchen_machine/microwave/upgraded{
-	pixel_x = -1;
-	pixel_y = 7
+	pixel_y = 5
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
@@ -17662,9 +17658,8 @@
 /area/ghost_bar/outdoor)
 "hFn" = (
 /obj/structure/table/reinforced,
-/obj/machinery/kitchen_machine/microwave{
-	pixel_x = -1;
-	pixel_y = 7
+/obj/machinery/kitchen_machine/microwave/upgraded{
+	pixel_y = 5
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin1)
@@ -21883,7 +21878,7 @@
 	},
 /area/admin)
 "jqV" = (
-/obj/machinery/processor,
+/obj/structure/closet/crate/cookware,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "jrf" = (
@@ -24322,12 +24317,9 @@
 /turf/simulated/floor/plasteel/goonplaque/nosey,
 /area/wizard_station)
 "kxN" = (
-/obj/structure/table,
 /obj/structure/light_fake,
-/obj/item/reagent_containers/glass/beaker/bluespace,
-/obj/item/reagent_containers/glass/beaker/bluespace,
-/obj/item/reagent_containers/condiment/enzyme,
 /obj/structure/sign/poster/official/fruit_bowl/directional/south,
+/obj/machinery/processor/upgraded,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "kxZ" = (
@@ -25449,12 +25441,12 @@
 /area/ghost_bar/indoor)
 "kUd" = (
 /obj/structure/table/reinforced,
-/obj/machinery/processor{
-	pixel_y = 10;
-	dir = 8
-	},
 /obj/structure/light_fake{
 	dir = 4
+	},
+/obj/machinery/processor/upgraded{
+	dir = 8;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plating{
 	icon = 'icons/turf/floors.dmi';
@@ -26342,9 +26334,18 @@
 /area/syndicate_mothership/jail)
 "loT" = (
 /obj/structure/table,
-/obj/machinery/reagentgrinder{
-	pixel_y = 8;
-	pixel_x = 6
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/condiment/enzyme,
+/obj/machinery/reagentgrinder/upgraded{
+	pixel_x = 6;
+	pixel_y = 8
 	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
@@ -31167,6 +31168,30 @@
 	color = "#f63d3d"
 	},
 /area/syndicate_mothership)
+"nwt" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/turf_decal/delivery/white,
+/obj/item/food/meat,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/obj/item/food/pelmeni,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkbluefull"
+	},
+/area/centcom/ss220/bar)
 "nwK" = (
 /obj/item/kirbyplants/large,
 /turf/simulated/floor/plasteel{
@@ -34168,7 +34193,7 @@
 /area/admin)
 "oQT" = (
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/cooking/oven,
+/obj/machinery/cooking/oven/upgraded,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkbluefull"
 	},
@@ -35842,8 +35867,8 @@
 /obj/structure/table/reinforced{
 	color = "#996633"
 	},
-/obj/machinery/reagentgrinder{
-	pixel_y = 9
+/obj/machinery/reagentgrinder/upgraded{
+	pixel_y = 10
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
@@ -46575,28 +46600,10 @@
 /turf/simulated/floor/plating,
 /area/centcom/ss220/admin3)
 "ups" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/turf_decal/delivery/white,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
 /obj/structure/light_fake/spot{
 	dir = 1
 	},
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
-/obj/item/food/pelmeni,
+/obj/item/kirbyplants/large,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkbluefull"
 	},
@@ -49121,9 +49128,8 @@
 /area/centcom/ss220/admin1)
 "vuz" = (
 /obj/structure/table/reinforced,
-/obj/machinery/reagentgrinder{
-	pixel_x = -1;
-	pixel_y = 9
+/obj/machinery/reagentgrinder/upgraded{
+	pixel_y = 10
 	},
 /turf/simulated/floor/plating{
 	icon = 'icons/turf/floors.dmi';
@@ -52684,8 +52690,8 @@
 /area/centcom/ss220/bar)
 "wUs" = (
 /obj/structure/table/wood,
-/obj/machinery/reagentgrinder{
-	pixel_y = 8
+/obj/machinery/reagentgrinder/upgraded{
+	pixel_y = 7
 	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
@@ -55510,7 +55516,7 @@
 "yhF" = (
 /obj/structure/table/wood,
 /obj/machinery/reagentgrinder/upgraded{
-	pixel_y = 8
+	pixel_y = 10
 	},
 /turf/simulated/floor/wood/cherry,
 /area/ghost_bar/indoor)
@@ -74918,8 +74924,8 @@ tTm
 nmP
 osb
 ups
-sxi
-qws
+nwt
+usQ
 gTb
 hfn
 kQR
@@ -75174,7 +75180,7 @@ mmG
 tTm
 lvt
 osb
-sIl
+sxi
 sIl
 sIl
 uXl
@@ -75431,7 +75437,7 @@ dYf
 tTm
 nmP
 osb
-usQ
+aZj
 sIl
 sIl
 sbf
@@ -75691,7 +75697,7 @@ osb
 oQT
 sIl
 sIl
-aZj
+qws
 eRY
 xYo
 isT
@@ -116817,10 +116823,10 @@ qti
 qBw
 kna
 qLz
-kOI
+jqV
 dmY
 dhQ
-jqV
+kOI
 oiV
 pvB
 hbZ
