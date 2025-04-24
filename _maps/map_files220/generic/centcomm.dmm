@@ -205,7 +205,7 @@
 	},
 /area/syndicate_mothership/cargo)
 "agu" = (
-/obj/machinery/biogenerator,
+/obj/machinery/biogenerator/upgraded,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "agv" = (
@@ -11916,6 +11916,7 @@
 /obj/machinery/door_control/shutter/south{
 	id = "ghostcafekitchen"
 	},
+/obj/structure/closet/crate/cookware,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -12564,10 +12565,8 @@
 	},
 /area/centcom/ss220/supply)
 "fqd" = (
-/obj/structure/closet/secure_closet/freezer/meat/open,
-/turf/simulated/floor/plasteel{
-	icon_state = "tranquillite"
-	},
+/obj/machinery/hydroponics/constructable/upgraded,
+/turf/simulated/floor/plating/dirt,
 /area/ghost_bar/indoor)
 "fqn" = (
 /turf/simulated/floor/carpet,
@@ -17190,8 +17189,9 @@
 /area/syndicate_mothership)
 "hsh" = (
 /obj/structure/table,
-/obj/machinery/kitchen_machine/microwave{
-	pixel_y = 6
+/obj/machinery/kitchen_machine/microwave/upgraded{
+	pixel_x = -1;
+	pixel_y = 7
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
@@ -23987,11 +23987,7 @@
 /area/ghost_bar/indoor)
 "kpo" = (
 /obj/structure/table,
-/obj/machinery/reagentgrinder{
-	desc = "Used to grind things up into raw materials and liquids.";
-	pixel_x = -5;
-	pixel_y = 5
-	},
+/obj/machinery/reagentgrinder/upgraded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -25665,7 +25661,7 @@
 	},
 /area/trader_station/sol)
 "kYd" = (
-/obj/machinery/seed_extractor,
+/obj/machinery/seed_extractor/upgraded,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "kYh" = (
@@ -27700,8 +27696,8 @@
 /turf/simulated/floor/beach/away/sand_alternative,
 /area/ninja/holding)
 "lQA" = (
-/obj/machinery/hydroponics/constructable,
 /obj/structure/light_fake,
+/obj/machinery/hydroponics/constructable/upgraded,
 /turf/simulated/floor/plating/dirt,
 /area/ghost_bar/indoor)
 "lQF" = (
@@ -31171,10 +31167,6 @@
 	color = "#f63d3d"
 	},
 /area/syndicate_mothership)
-"nwt" = (
-/obj/machinery/hydroponics/constructable,
-/turf/simulated/floor/plating/dirt,
-/area/ghost_bar/indoor)
 "nwK" = (
 /obj/item/kirbyplants/large,
 /turf/simulated/floor/plasteel{
@@ -35746,10 +35738,10 @@
 	},
 /area/centcom/ss220/medbay)
 "pBx" = (
-/obj/machinery/processor,
 /obj/structure/light_fake{
 	dir = 8
 	},
+/obj/machinery/processor/upgraded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -39770,10 +39762,8 @@
 /area/vox_base)
 "rro" = (
 /obj/structure/table/wood,
-/obj/machinery/reagentgrinder{
-	pixel_y = 8
-	},
 /obj/item/reagent_containers/glass/beaker/large,
+/obj/machinery/reagentgrinder/upgraded,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "rrp" = (
@@ -42735,10 +42725,10 @@
 	},
 /area/syndicate_mothership/cargo)
 "sBa" = (
-/obj/machinery/hydroponics/constructable,
 /obj/structure/light_fake{
 	dir = 1
 	},
+/obj/machinery/hydroponics/constructable/upgraded,
 /turf/simulated/floor/plating/dirt,
 /area/ghost_bar/indoor)
 "sBm" = (
@@ -52738,7 +52728,7 @@
 	},
 /area/vox_base)
 "wVl" = (
-/obj/machinery/plantgenes,
+/obj/machinery/plantgenes/upgraded,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "wVR" = (
@@ -55519,7 +55509,7 @@
 /area/admin)
 "yhF" = (
 /obj/structure/table/wood,
-/obj/machinery/reagentgrinder{
+/obj/machinery/reagentgrinder/upgraded{
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood/cherry,
@@ -101882,7 +101872,7 @@ xgE
 kpo
 daG
 pBx
-wjY
+yhV
 goa
 nPM
 uwE
@@ -102396,7 +102386,7 @@ mrx
 jSo
 kpf
 mrx
-fqd
+mrx
 jZh
 hrL
 cQl
@@ -102910,7 +102900,7 @@ mrx
 mrx
 mrx
 mrx
-yhV
+wjY
 jZh
 xHy
 uwE
@@ -103670,12 +103660,12 @@ tXi
 tXi
 tXi
 goa
-nwt
+fqd
 oVW
 oNq
 oNq
 mlc
-nwt
+fqd
 goa
 peG
 yeK
@@ -104183,13 +104173,13 @@ adJ
 tXi
 goa
 goa
-nwt
-nwt
+fqd
+fqd
 fdm
 wVl
 bFy
 fdm
-nwt
+fqd
 goa
 yhF
 yeK
@@ -104446,7 +104436,7 @@ iGA
 kYd
 kPU
 fdm
-nwt
+fqd
 goa
 vDw
 yeK
@@ -104703,7 +104693,7 @@ ckg
 ltq
 ltq
 vfe
-nwt
+fqd
 goa
 tpZ
 yeK
@@ -104954,13 +104944,13 @@ adJ
 tXi
 goa
 goa
-nwt
-nwt
+fqd
+fqd
 fdm
 xyh
 agu
 fdm
-nwt
+fqd
 goa
 kZs
 yeK
@@ -105469,12 +105459,12 @@ tXi
 tXi
 tXi
 goa
-nwt
+fqd
 jnU
 rlr
 rlr
 vsI
-nwt
+fqd
 goa
 gym
 iNd
