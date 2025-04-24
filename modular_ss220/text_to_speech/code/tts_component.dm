@@ -220,7 +220,7 @@
 /client/create_response_team_part_1(new_gender, new_species, role, turf/spawn_location)
 	. = ..()
 	var/mob/living/ert_member = .
-	var/datum/component/tts_component/tts_component = ert_member.GetComponent(/datum/component/tts_component)
+	var/datum/component/tts_component/tts_component = ert_member?.GetComponent(/datum/component/tts_component)
 	tts_component?.randomise_tts(ert_member)
 
 /mob/living/silicon/verb/synth_change_voice()
