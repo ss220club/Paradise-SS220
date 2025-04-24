@@ -94,17 +94,12 @@
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(set_tts_seed), being_changed, chooser, override, fancy_voice_input_tgui, new_traits)
 
-/datum/component/tts_component/proc/set_tts_seed(atom/being_changed, mob/chooser, override = FALSE, fancy_voice_input_tgui = FALSE, list/new_traits = null)
-	var/datum/tts_seed/new_tts_seed = select_tts_seed(chooser = chooser, override = override, fancy_voice_input_tgui = fancy_voice_input_tgui, new_traits = new_traits)
-	if(!new_tts_seed)
-		return null
-	tts_seed = new_tts_seed
-	if(iscarbon(being_changed))
-		var/mob/living/carbon/carbon = being_changed
-		carbon.dna?.tts_seed_dna = tts_seed
-
-/datum/component/tts_component/proc/randomise_tts(atom/being_changed)
-	var/datum/tts_seed/new_tts_seed = get_random_tts_seed_by_gender()
+/datum/component/tts_component/proc/set_tts_seed(atom/being_changed, mob/chooser, override = FALSE, fancy_voice_input_tgui = FALSE, list/new_traits = null, random = FALSE)
+	var/datum/tts_seed/new_tts_seed
+	if(random)
+		new_tts_seed = get_random_tts_seed_by_gender()
+	else
+		new_tts_seed = select_tts_seed(chooser = chooser, override = override, fancy_voice_input_tgui = fancy_voice_input_tgui, new_traits = new_traits)
 	if(!new_tts_seed)
 		return null
 	tts_seed = new_tts_seed
@@ -221,7 +216,7 @@
 	. = ..()
 	var/mob/living/ert_member = .
 	var/datum/component/tts_component/tts_component = ert_member?.GetComponent(/datum/component/tts_component)
-	tts_component?.randomise_tts(ert_member)
+	tts_component?.set_tts_seed(ert_member, random = TRUE)
 
 /mob/living/silicon/verb/synth_change_voice()
 	set name = "Смена голоса"
