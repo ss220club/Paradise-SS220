@@ -18583,6 +18583,12 @@
 /area/station/service/library)
 "brD" = (
 /obj/item/kirbyplants/large,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/red/corner{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkred"
@@ -19291,14 +19297,9 @@
 /turf/simulated/floor/light/purple,
 /area/station/service/bar/atrium)
 "buE" = (
+/obj/machinery/hologram/holopad,
 /obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -19518,6 +19519,15 @@
 "bvR" = (
 /obj/structure/chair/office{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredcorners"
@@ -46898,20 +46908,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
-"edQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/hallway/secondary/exit)
 "edS" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/light/small/directional/west,
@@ -71685,10 +71681,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "mHO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -72442,14 +72442,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/electrical)
-"mYv" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/hallway/secondary/exit)
 "mYy" = (
 /obj/machinery/camera{
 	c_tag = "Bridge Lounge Zone East";
@@ -73108,11 +73100,10 @@
 /area/station/hallway/primary/aft)
 "nkk" = (
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/red/line,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -82704,20 +82695,6 @@
 	icon_state = "caution"
 	},
 /area/station/public/fitness)
-"qtJ" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/hallway/secondary/exit)
 "qtQ" = (
 /obj/effect/spawner/random/blood/often,
 /obj/structure/chair,
@@ -85808,6 +85785,14 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/stripes/red/corner,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkredcorners"
@@ -93243,6 +93228,15 @@
 "ucS" = (
 /obj/structure/chair/office{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
@@ -160364,7 +160358,7 @@ aaa
 bEG
 gnG
 bol
-qtJ
+bol
 mHO
 bvP
 bzx
@@ -160620,8 +160614,8 @@ aaa
 aaa
 lXA
 xeG
+bol
 jza
-edQ
 bvR
 bEG
 bzD
@@ -161134,8 +161128,8 @@ aaa
 aaa
 kWu
 iIA
+bol
 pAU
-nkk
 rxW
 bjR
 bol
@@ -161392,8 +161386,8 @@ aaa
 bEG
 rLo
 ecV
-mYv
-goN
+bol
+nkk
 btp
 wSB
 ihY
