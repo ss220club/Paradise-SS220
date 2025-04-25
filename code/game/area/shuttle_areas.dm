@@ -90,7 +90,7 @@
 	icon_state = "shuttle"
 
 /area/shuttle/administration
-	name = "Корпоративный Судно НТ"
+	name = "Корпоративное Судно НТ"
 	icon_state = "shuttlered"
 	parallax_move_direction = EAST
 
