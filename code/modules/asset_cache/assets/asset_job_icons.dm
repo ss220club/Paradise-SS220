@@ -3,7 +3,7 @@
 	name = "job_icons"
 
 /datum/asset/spritesheet/job_icons/create_spritesheets()
-	var/list/states = GLOB.joblist + "prisoner" + "centcom" + "solgov" + "soviet" + "unknown"
+	var/list/states = GLOB.joblist + "centcom" + "solgov" + "soviet" + "unknown" // SS220 EDIT
 	for(var/state in states)
 		Insert(ckey(state), 'icons/mob/hud/job_assets.dmi', ckey(state))
 
