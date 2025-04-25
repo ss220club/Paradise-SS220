@@ -8417,9 +8417,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 1
-	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "aGA" = (
@@ -10091,8 +10088,9 @@
 /obj/structure/chair/stool{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/black{
-	dir = 4
+/obj/effect/turf_decal/siding/blue{
+	dir = 4;
+	color = "#26729C"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
@@ -11839,7 +11837,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/siding/black/corner,
+/obj/effect/turf_decal/siding/blue/end{
+	color = "#26729C"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
 "aTE" = (
@@ -12025,8 +12025,9 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/artist,
-/obj/effect/turf_decal/siding/black{
-	dir = 6
+/obj/effect/turf_decal/siding/blue{
+	dir = 6;
+	color = "#26729C"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
@@ -19129,6 +19130,9 @@
 	},
 /obj/structure/rack,
 /obj/item/wrench,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
 "bua" = (
@@ -21856,6 +21860,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
 "bGt" = (
@@ -26400,15 +26405,10 @@
 	},
 /area/station/public/vacant_store)
 "cap" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/spawner/random/barrier/grille_maybe,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/effect/spawner/random/maintenance,
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plating,
-/area/station/maintenance/apmaint)
+/area/station/maintenance/aft)
 "caq" = (
 /obj/item/flag/nt,
 /obj/effect/turf_decal/siding/wood/oak{
@@ -44794,7 +44794,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet,
+/obj/effect/turf_decal/siding/wood/cherry{
+	dir = 5
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain/bedroom)
 "dtH" = (
 /obj/structure/closet/radiation,
@@ -49687,16 +49690,14 @@
 /turf/simulated/floor/carpet/black,
 /area/station/legal/courtroom)
 "fdb" = (
-/obj/machinery/door/airlock/command/cap,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/airlock/access/any/command/captain,
-/turf/simulated/floor/plasteel{
-	icon_state = "floorgrime"
-	},
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
 /area/station/command/office/captain)
 "fdd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -55653,7 +55654,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/carpet,
+/obj/effect/turf_decal/siding/wood/cherry/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/cherry/corner{
+	dir = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain/bedroom)
 "hbb" = (
 /obj/machinery/atmospherics/unary/portables_connector,
@@ -60957,8 +60964,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 1
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
@@ -66079,11 +66086,13 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/siding/black{
-	dir = 8
+/obj/effect/turf_decal/siding/blue{
+	dir = 8;
+	color = "#26729C"
 	},
-/obj/effect/turf_decal/siding/black/corner{
-	dir = 5
+/obj/effect/turf_decal/siding/blue/corner{
+	color = "#26729C";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
@@ -66175,7 +66184,8 @@
 /obj/machinery/button/windowtint/west{
 	id = "arcade"
 	},
-/obj/effect/turf_decal/siding/black/corner{
+/obj/effect/turf_decal/siding/blue/end{
+	color = "#26729C";
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
@@ -71414,7 +71424,7 @@
 	icon_state = "1-8"
 	},
 /obj/effect/turf_decal/siding/wood/oak{
-	dir = 9
+	dir = 8
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
@@ -76112,9 +76122,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "floorgrime"
-	},
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/plating,
 /area/station/command/office/captain)
 "omI" = (
 /obj/effect/landmark/start/assistant,
@@ -77621,9 +77630,10 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "floorgrime"
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
+/turf/simulated/floor/plating,
 /area/station/command/office/captain)
 "oND" = (
 /obj/machinery/light/directional/west,
@@ -77682,8 +77692,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/siding/black{
-	dir = 8
+/obj/effect/turf_decal/siding/blue{
+	dir = 8;
+	color = "#26729C"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
@@ -79180,11 +79191,12 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/siding/black{
-	dir = 8
+/obj/effect/turf_decal/siding/blue{
+	dir = 8;
+	color = "#26729C"
 	},
-/obj/effect/turf_decal/siding/black/corner{
-	dir = 6
+/obj/effect/turf_decal/siding/blue/corner{
+	color = "#26729C"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
@@ -82042,7 +82054,10 @@
 /obj/item/clothing/head/towel/blue{
 	pixel_y = 5
 	},
-/turf/simulated/floor/carpet,
+/obj/effect/turf_decal/siding/wood/cherry{
+	dir = 9
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain/bedroom)
 "qmX" = (
 /obj/effect/spawner/window/reinforced/grilled,
@@ -86187,9 +86202,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "floorgrime"
-	},
+/turf/simulated/floor/plating,
 /area/station/command/office/captain)
 "rLy" = (
 /obj/effect/decal/cleanable/dirt,
@@ -87346,6 +87359,13 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/theatre)
+"shT" = (
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/aft)
 "sim" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -95838,16 +95858,14 @@
 /obj/structure/sign/securearea{
 	pixel_x = -32
 	},
-/obj/machinery/door/airlock/command,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/airlock/access/any/command/teleporter,
-/turf/simulated/floor/plasteel{
-	icon_state = "floorgrime"
-	},
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
 /area/station/command/teleporter)
 "vbB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -100727,6 +100745,7 @@
 	},
 /obj/machinery/atmospherics/portable/scrubber,
 /obj/machinery/light_switch/south,
+/obj/effect/turf_decal/stripes/corner,
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
 "wJT" = (
@@ -101260,8 +101279,9 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/assistant,
-/obj/effect/turf_decal/siding/black{
-	dir = 5
+/obj/effect/turf_decal/siding/blue{
+	dir = 5;
+	color = "#26729C"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
@@ -118517,9 +118537,9 @@ aaa
 aaa
 aaa
 aaa
+qgC
 aaa
-aaa
-aaa
+qgC
 aaa
 aaa
 aaa
@@ -118774,9 +118794,9 @@ aaa
 aaa
 aaa
 aaa
+aab
 aaa
-aaa
-aaa
+aab
 aaa
 aaa
 aaa
@@ -119031,9 +119051,9 @@ aab
 aab
 aaa
 aaa
+aab
 aaa
-aaa
-aaa
+aab
 aaa
 aaa
 aaa
@@ -119288,9 +119308,9 @@ cng
 aab
 aaa
 aaa
+qgC
 aaa
-aaa
-aaa
+qgC
 aaa
 aaa
 aaa
@@ -119545,9 +119565,9 @@ skl
 doE
 aaa
 aaa
+aab
 aaa
-aaa
-aaa
+aab
 aaa
 aaa
 aaa
@@ -119802,9 +119822,9 @@ gYs
 cgQ
 cgQ
 cgQ
+aab
 aaa
-aaa
-aaa
+aab
 aaa
 aaa
 aaa
@@ -131104,7 +131124,7 @@ bIG
 pbl
 lDW
 bUp
-cap
+mFO
 nBs
 hyx
 pgV
@@ -138578,7 +138598,7 @@ cBN
 dmJ
 diJ
 cep
-cxA
+cap
 tlR
 dcj
 dcj
@@ -138835,7 +138855,7 @@ niH
 cep
 cAv
 czq
-cPc
+shT
 cPs
 dtn
 cFG
