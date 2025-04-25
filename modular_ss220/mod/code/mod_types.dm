@@ -47,7 +47,6 @@
 // Gamma
 /obj/item/mod/control/pre_equipped/responsory/New()
 	. = ..()
-
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 
