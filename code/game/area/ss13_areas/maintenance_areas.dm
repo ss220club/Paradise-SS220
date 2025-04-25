@@ -270,5 +270,5 @@
 	icon_state = "sec_maint_as"
 
 /area/station/engineering/atmos/asteroid_maint
-	name = "Технические Тоннели Атмосферного Отдела Астероида"
+	name = "Технические Тоннели Атмосферного Отсека Астероида"
 	icon_state = "asteroid_maint"
