@@ -161,7 +161,7 @@
 	max_ambience_cooldown = 220 SECONDS
 
 /area/lavaland/surface/gulag_rock
-	name = "Каторга"
+	name = "Пустоши Лаваленда"
 	outdoors = TRUE
 
 /area/lavaland/surface/outdoors
