@@ -26,7 +26,7 @@
 	icon_state = "cargowarehouse"
 
 /area/station/supply/break_room
-	name = "Зона Отдыха Карго"
+	name = "Комната Отдыха Карго"
 	icon_state = "cargobreak"
 
 /area/station/supply/storage

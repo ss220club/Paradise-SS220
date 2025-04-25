@@ -29,7 +29,7 @@
 	apc_starts_off = TRUE
 
 /area/station/engineering/atmos/asteroid_filtering
-	name = "Астероидный Атмосферный Отдел"
+	name = "Атмосферный Отдел Астероида"
 	icon_state = "asteroid_atmos"
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 

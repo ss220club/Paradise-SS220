@@ -80,7 +80,7 @@
 	parallax_move_direction = SOUTH
 
 /area/shuttle/syndicate_sit
-	name = "Транспортный Шаттл Синдиката"
+	name = "Шаттл Внедрения Синдиката"
 	icon_state = "shuttlered"
 	nad_allowed = TRUE
 	parallax_move_direction = SOUTH
@@ -90,16 +90,16 @@
 	icon_state = "shuttle"
 
 /area/shuttle/administration
-	name = "Корпоративный Шаттл НТ"
+	name = "Корпоративный Судно НТ"
 	icon_state = "shuttlered"
 	parallax_move_direction = EAST
 
 /area/shuttle/administration/centcom
-	name = "Корпоративный Шаттл НТ"
+	name = "Корпоративное Судно ЦК НТ"
 	icon_state = "shuttlered"
 
 /area/shuttle/administration/station
-	name = "Корпоративный Шаттл НТ"
+	name = "Корпоративный Судно НТ"
 	icon_state = "shuttlered2"
 
 // === Trying to remove these areas:

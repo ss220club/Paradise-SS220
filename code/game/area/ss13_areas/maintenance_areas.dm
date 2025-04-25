@@ -229,7 +229,7 @@
 	name = "Внешний Юго-Восточный Мусоропровод"
 
 /area/station/maintenance/disposal/external/north
-	name = "Внешний Южный Мусоропровод"
+	name = "Внешний Северный Мусоропровод"
 
 // Emerald Station
 
@@ -270,5 +270,5 @@
 	icon_state = "sec_maint_as"
 
 /area/station/engineering/atmos/asteroid_maint
-	name = "Технические Тоннели Астероидного Атмосферного Отдела"
+	name = "Технические Тоннели Атмосферного Отдела Астероида"
 	icon_state = "asteroid_maint"

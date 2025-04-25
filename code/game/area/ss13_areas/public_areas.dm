@@ -101,31 +101,31 @@
 	name = "Южный Мост Службы Безопасности"
 
 /area/station/hallway/spacebridge/dockmed
-	name = "Мост Прибытия И Медицинского Отдела"
+	name = "Мост Прибытие-Медбей"
 
 /area/station/hallway/spacebridge/scidock
-	name = "Мост Прибытия И Научного Отдела"
+	name = "Мост РНД-Прибытие"
 
 /area/station/hallway/spacebridge/servsci
-	name = "Мост Научного И Научного Отделов"
+	name = "Мост Сервис-РНД"
 
 /area/station/hallway/spacebridge/serveng
-	name = "Мост Инженерного И Сервисного Отделов"
+	name = "Мост Сервис-Инженерия"
 
 /area/station/hallway/spacebridge/engmed
-	name = "Мост Инженерного И Медицинского Отделов"
+	name = "Мост Медбей-Инженерия"
 
 /area/station/hallway/spacebridge/medcargo
-	name = "Мост Карго И Медицинского Отдела"
+	name = "Мост Медбей-Карго"
 
 /area/station/hallway/spacebridge/cargocom
-	name = "Мост Аплоуда ИИ"
+	name = "Мост Карго-Спутник-Командование"
 
 /area/station/hallway/spacebridge/sercom
-	name = "Мост Командного И Сервисного Отделов"
+	name = "Мост Сервис-Командование"
 
 /area/station/hallway/spacebridge/comeng
-	name = "Мост Командного И Инженерного Отделов"
+	name = "Мост Командование-Инженерия"
 
 /area/station/hallway/secondary/exit
 	name = "Коридор Эвакуационного Шаттла"
@@ -263,10 +263,10 @@
 	name = "Телепортерный Узел Сервисного Отдела"
 
 /area/station/public/quantum/medbay
-	name = "Телепортерный Узел Медицинского Отсека"
+	name = "Телепортерный Узел Медицинского Отдела"
 
 /area/station/public/park
-	name = "Общий Парк"
+	name = "Общественный Парк"
 	icon_state = "park"
 
 /area/station/public/shops
