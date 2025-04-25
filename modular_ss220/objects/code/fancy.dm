@@ -31,4 +31,3 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_diy/empty/populate_contents()
 	update_icon(UPDATE_OVERLAYS)
-	return
