@@ -99,7 +99,7 @@
 	icon_state = "shuttlered"
 
 /area/shuttle/administration/station
-	name = "Корпоративный Судно НТ"
+	name = "Корпоративное Судно НТ"
 	icon_state = "shuttlered2"
 
 // === Trying to remove these areas:
