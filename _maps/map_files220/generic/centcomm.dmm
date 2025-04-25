@@ -205,7 +205,7 @@
 	},
 /area/syndicate_mothership/cargo)
 "agu" = (
-/obj/machinery/biogenerator/upgraded,
+/obj/machinery/biogenerator,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "agv" = (
@@ -5413,10 +5413,10 @@
 /area/syndicate_mothership/control)
 "crw" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/soda/upgraded{
+/obj/structure/sign/poster/official/fruit_bowl/directional/north,
+/obj/machinery/chem_dispenser/soda{
 	pixel_y = 8
 	},
-/obj/structure/sign/poster/official/fruit_bowl/directional/north,
 /turf/simulated/floor/wood/parquet/tile,
 /area/ghost_bar/indoor)
 "crx" = (
@@ -6402,7 +6402,8 @@
 	},
 /area/vox_base)
 "cQh" = (
-/obj/machinery/cooking/deepfryer/upgraded,
+/obj/structure/table,
+/obj/machinery/cooking/stovetop/loaded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -7220,8 +7221,7 @@
 /obj/structure/light_fake{
 	dir = 8
 	},
-/obj/structure/table,
-/obj/machinery/cooking/grill/upgraded,
+/obj/structure/sink/kitchen/west,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "diA" = (
@@ -7418,7 +7418,8 @@
 	},
 /area/vox_base)
 "dmY" = (
-/obj/structure/sink/kitchen/west,
+/obj/structure/table,
+/obj/machinery/cooking/stovetop/loaded,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "dnj" = (
@@ -11552,9 +11553,9 @@
 /area/centcom/ss220/supply)
 "eYk" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/soda/upgraded{
-	pixel_y = 6;
-	dir = 1
+/obj/machinery/chem_dispenser/soda{
+	dir = 1;
+	pixel_y = 6
 	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
@@ -11913,7 +11914,6 @@
 /obj/machinery/door_control/shutter/south{
 	id = "ghostcafekitchen"
 	},
-/obj/structure/closet/crate/cookware,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -12562,7 +12562,7 @@
 	},
 /area/centcom/ss220/supply)
 "fqd" = (
-/obj/machinery/hydroponics/constructable/upgraded,
+/obj/machinery/hydroponics/constructable,
 /turf/simulated/floor/plating/dirt,
 /area/ghost_bar/indoor)
 "fqn" = (
@@ -14987,8 +14987,8 @@
 /area/shuttle/administration)
 "gyh" = (
 /obj/structure/table,
-/obj/machinery/kitchen_machine/microwave/upgraded{
-	pixel_y = 5
+/obj/machinery/kitchen_machine/microwave{
+	pixel_y = 6
 	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
@@ -15533,6 +15533,13 @@
 	name = "floor"
 	},
 /area/syndicate_mothership/elite_squad)
+"gKl" = (
+/obj/structure/table/wood,
+/obj/item/storage/box/donkpockets{
+	pixel_y = 6
+	},
+/turf/simulated/floor/wood/fancy/birch,
+/area/ghost_bar/outdoor/beach)
 "gKr" = (
 /obj/structure/closet/crate/medical,
 /obj/item/storage/firstaid/regular,
@@ -16729,6 +16736,11 @@
 /obj/machinery/chem_master,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"hie" = (
+/obj/structure/rack,
+/obj/item/storage/part_replacer/bluespace/tier4,
+/turf/simulated/floor/plasteel/freezer,
+/area/ghost_bar/indoor)
 "hii" = (
 /obj/structure/window/reinforced{
 	color = "red";
@@ -17186,8 +17198,8 @@
 /area/syndicate_mothership)
 "hsh" = (
 /obj/structure/table,
-/obj/machinery/kitchen_machine/microwave/upgraded{
-	pixel_y = 5
+/obj/machinery/kitchen_machine/microwave{
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
@@ -18801,6 +18813,16 @@
 /obj/item/gun/projectile/shotgun/toy/crossbow,
 /turf/simulated/floor/carpet/arcade,
 /area/admin)
+"hZF" = (
+/obj/structure/rack,
+/obj/item/storage/part_replacer/bluespace/tier4{
+	pixel_y = -3
+	},
+/obj/item/storage/part_replacer/bluespace/tier4{
+	pixel_y = 11
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/ghost_bar/indoor)
 "hZP" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo5"
@@ -21575,7 +21597,7 @@
 /area/centcom/ss220/admin1)
 "jkn" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/beer/upgraded{
+/obj/machinery/chem_dispenser/beer{
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood,
@@ -21878,7 +21900,8 @@
 	},
 /area/admin)
 "jqV" = (
-/obj/structure/closet/crate/cookware,
+/obj/structure/table,
+/obj/machinery/cooking/grill/loaded,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "jrf" = (
@@ -23982,7 +24005,10 @@
 /area/ghost_bar/indoor)
 "kpo" = (
 /obj/structure/table,
-/obj/machinery/reagentgrinder/upgraded,
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
+	pixel_y = 5
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -24319,7 +24345,7 @@
 "kxN" = (
 /obj/structure/light_fake,
 /obj/structure/sign/poster/official/fruit_bowl/directional/south,
-/obj/machinery/processor/upgraded,
+/obj/machinery/processor,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "kxZ" = (
@@ -25219,7 +25245,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/assault_pod/nanotrasen)
 "kOI" = (
-/obj/machinery/cooking/oven/upgraded,
+/obj/machinery/cooking/oven/loaded,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "kOR" = (
@@ -25653,7 +25679,7 @@
 	},
 /area/trader_station/sol)
 "kYd" = (
-/obj/machinery/seed_extractor/upgraded,
+/obj/machinery/seed_extractor,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "kYh" = (
@@ -25696,11 +25722,11 @@
 /area/centcom/ss220/supply)
 "kZs" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/soda/upgraded{
-	pixel_y = 8
-	},
 /obj/structure/light_fake{
 	dir = 1
+	},
+/obj/machinery/chem_dispenser/soda{
+	pixel_y = 8
 	},
 /turf/simulated/floor/wood/cherry,
 /area/ghost_bar/indoor)
@@ -26334,18 +26360,9 @@
 /area/syndicate_mothership/jail)
 "loT" = (
 /obj/structure/table,
-/obj/item/reagent_containers/glass/beaker/bluespace{
-	pixel_x = -3;
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
 	pixel_y = 5
-	},
-/obj/item/reagent_containers/glass/beaker/bluespace{
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/item/reagent_containers/condiment/enzyme,
-/obj/machinery/reagentgrinder/upgraded{
-	pixel_x = 6;
-	pixel_y = 8
 	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
@@ -26991,7 +27008,7 @@
 "lzM" = (
 /obj/structure/table/wood,
 /obj/structure/sign/poster/contraband/red_rum/directional/north,
-/obj/machinery/chem_dispenser/beer/upgraded{
+/obj/machinery/chem_dispenser/beer{
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood/cherry,
@@ -27698,7 +27715,7 @@
 /area/ninja/holding)
 "lQA" = (
 /obj/structure/light_fake,
-/obj/machinery/hydroponics/constructable/upgraded,
+/obj/machinery/hydroponics/constructable,
 /turf/simulated/floor/plating/dirt,
 /area/ghost_bar/indoor)
 "lQF" = (
@@ -28662,10 +28679,10 @@
 	},
 /area/syndicate_mothership)
 "mmX" = (
-/obj/machinery/gibber,
 /obj/structure/light_fake{
 	dir = 1
 	},
+/obj/machinery/cooking/deepfryer/loaded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -32035,7 +32052,7 @@
 /area/syndicate_mothership/outside)
 "nPL" = (
 /obj/structure/table,
-/obj/machinery/cooking/grill/upgraded,
+/obj/machinery/cooking/grill/loaded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -32738,7 +32755,7 @@
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership)
 "oiV" = (
-/obj/machinery/cooking/deepfryer/upgraded,
+/obj/machinery/cooking/deepfryer/loaded,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "oja" = (
@@ -35766,7 +35783,9 @@
 /obj/structure/light_fake{
 	dir = 8
 	},
-/obj/machinery/processor/upgraded,
+/obj/machinery/processor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -35860,7 +35879,7 @@
 /turf/simulated/floor/wood/parquet,
 /area/ghost_bar/indoor)
 "pEL" = (
-/obj/structure/kitchenspike,
+/obj/machinery/gibber,
 /turf/simulated/floor/plasteel/freezer,
 /area/ghost_bar/indoor)
 "pEP" = (
@@ -39770,7 +39789,7 @@
 /area/syndicate_mothership)
 "rrh" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/beer/upgraded{
+/obj/machinery/chem_dispenser/beer{
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood/parquet/tile,
@@ -39788,7 +39807,10 @@
 "rro" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/machinery/reagentgrinder/upgraded,
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
+	pixel_y = 5
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "rrp" = (
@@ -41266,7 +41288,7 @@
 /area/syndicate_mothership/jail)
 "rTR" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/beer/upgraded{
+/obj/machinery/chem_dispenser/beer{
 	dir = 1;
 	pixel_y = 6
 	},
@@ -42381,12 +42403,17 @@
 /area/ninja/holding)
 "spE" = (
 /obj/structure/table,
-/obj/item/storage/box/donkpockets{
-	pixel_y = 6
-	},
 /obj/item/reagent_containers/condiment/rice,
 /obj/item/reagent_containers/condiment/rice,
 /obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/enzyme{
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_x = -6;
+	pixel_y = 11
+	},
 /obj/item/reagent_containers/condiment/flour,
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
@@ -42753,7 +42780,7 @@
 /obj/structure/light_fake{
 	dir = 1
 	},
-/obj/machinery/hydroponics/constructable/upgraded,
+/obj/machinery/hydroponics/constructable,
 /turf/simulated/floor/plating/dirt,
 /area/ghost_bar/indoor)
 "sBm" = (
@@ -45893,7 +45920,7 @@
 /area/ghost_bar/indoor)
 "tWp" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/soda/upgraded{
+/obj/machinery/chem_dispenser/soda{
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood,
@@ -46338,10 +46365,10 @@
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "ujg" = (
-/obj/structure/janitorialcart{
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/obj/structure/janitorialcart/full{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/blue/opposingcorners,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -51711,7 +51738,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "wzF" = (
-/obj/machinery/cooking/oven/upgraded,
+/obj/machinery/cooking/oven/loaded,
 /turf/simulated/floor/plasteel{
 	icon_state = "tranquillite"
 	},
@@ -52690,8 +52717,9 @@
 /area/centcom/ss220/bar)
 "wUs" = (
 /obj/structure/table/wood,
-/obj/machinery/reagentgrinder/upgraded{
-	pixel_y = 7
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
+	pixel_y = 5
 	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
@@ -52734,7 +52762,7 @@
 	},
 /area/vox_base)
 "wVl" = (
-/obj/machinery/plantgenes/upgraded,
+/obj/machinery/plantgenes,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "wVR" = (
@@ -55515,8 +55543,9 @@
 /area/admin)
 "yhF" = (
 /obj/structure/table/wood,
-/obj/machinery/reagentgrinder/upgraded{
-	pixel_y = 10
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
+	pixel_y = 5
 	},
 /turf/simulated/floor/wood/cherry,
 /area/ghost_bar/indoor)
@@ -106755,7 +106784,7 @@ goa
 fWs
 cSj
 cUg
-vkc
+hZF
 rZi
 kaM
 goa
@@ -116319,7 +116348,7 @@ tXi
 tXi
 tXi
 tXi
-adJ
+tXi
 adJ
 adJ
 adJ
@@ -116575,8 +116604,8 @@ pvB
 pvB
 pvB
 pvB
+pvB
 tXi
-adJ
 adJ
 adJ
 adJ
@@ -116831,9 +116860,9 @@ oiV
 pvB
 hbZ
 xoG
+god
 pvB
 tXi
-adJ
 adJ
 adJ
 adJ
@@ -117088,9 +117117,9 @@ vYn
 eAA
 vRD
 vRD
+vRD
 pvB
 tXi
-adJ
 adJ
 adJ
 adJ
@@ -117343,11 +117372,11 @@ spE
 dXL
 kuL
 pvB
-god
+vRD
+vRD
 wvr
 pvB
 tXi
-adJ
 adJ
 adJ
 adJ
@@ -117600,11 +117629,11 @@ vYn
 vYn
 kxN
 pvB
-jAO
+vRD
+vRD
 vRD
 pvB
 tXi
-adJ
 adJ
 adJ
 adJ
@@ -117858,10 +117887,10 @@ vYn
 loT
 pvB
 qmj
-vRD
+jAO
+hie
 pvB
 tXi
-adJ
 adJ
 adJ
 adJ
@@ -118110,15 +118139,15 @@ gvE
 qLz
 qLz
 xiV
-lQF
+gKl
 vYn
 qLz
 pvB
 pvB
 pvB
 pvB
+pvB
 tXi
-adJ
 adJ
 adJ
 adJ
@@ -118375,7 +118404,7 @@ vYn
 ami
 qLz
 tXi
-adJ
+tXi
 adJ
 adJ
 adJ
