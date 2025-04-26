@@ -5,12 +5,12 @@
 #define MIN_FEADING_TIME 3 SECONDS
 // Сколько нутриентов должно быть в мыше, перед тем как мы её гибнем
 #define GIB_FEED_LEVEL NUTRITION_LEVEL_FULL * 1.35
-#define STATUS_FAT 0
-#define STATUS_FULL 1
-#define STATUS_WELL_FED 2
-#define STATUS_FED 3
-#define STATUS_HUNGRY 4
-#define STATUS_STARVING 5
+#define STATUS_FAT "fat"
+#define STATUS_FULL "full"
+#define STATUS_WELL_FED "well_fed"
+#define STATUS_FED "fed"
+#define STATUS_HUNGRY "hungry"
+#define STATUS_STARVING "starving"
 
 /datum/hud/simple_animal_mouse/New(mob/user)
 	..()
@@ -34,7 +34,6 @@
 	user.overlay_fullscreen("see_through_darkness", /atom/movable/screen/fullscreen/stretch/see_through_darkness)
 
 /mob/living/simple_animal/mouse
-	var/non_standard = FALSE // for no "mouse_" with mouse_color
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	death_sound = 'modular_ss220/mobs/sound/creatures/rat_death.ogg'
 	talk_sound = list('modular_ss220/mobs/sound/creatures/rat_talk.ogg')
@@ -45,13 +44,13 @@
 	hud_type = /datum/hud/simple_animal_mouse
 	// Стартовый уровень голода
 	nutrition = NUTRITION_LEVEL_HUNGRY + 10
-	// Скорость с которой снижается наш голод
+	// Скорость, с которой снижается наш голод
 	// Мышка тратит 1800 nutrition в час, при hunger_drain = 1. Одно блюдо восполняет где-то 100-200 nutrition
 	hunger_drain = HUNGER_FACTOR * 1.66
-
 	var/const/bitesize = 2
 	var/previous_status
 	var/busy = FALSE
+	var/non_standard = FALSE // for no "mouse_" with mouse_color
 
 /mob/living/simple_animal/mouse/Initialize(mapload)
 	. = ..()
@@ -104,7 +103,7 @@
 	remains.pixel_x = pixel_x
 	remains.pixel_y = pixel_y
 
-// Вызывается цикилически из модуля live. Отвечает за обработку голода
+// Вызывается циклически из прока `Life`. Отвечает за обработку голода
 /mob/living/simple_animal/mouse/handle_chemicals_in_body()
 	var/new_status
 	adjust_nutrition(-hunger_drain)
@@ -112,28 +111,29 @@
 	switch(nutrition)
 		if(GIB_FEED_LEVEL to INFINITY)
 			visible_message("[src] разорвало от обжорства!", "Ваши внутренности не выдерживают и лопаются!")
-			src.gib()
+			gib()
+			return
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
-			nutrition_display.icon_state = "fat"
+			nutrition_display.icon_state = STATUS_FAT
 			new_status = STATUS_FAT
 		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
-			nutrition_display.icon_state = "full"
+			nutrition_display.icon_state = STATUS_FULL
 			new_status = STATUS_FULL
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
-			nutrition_display.icon_state = "well_fed"
+			nutrition_display.icon_state = STATUS_WELL_FED
 			new_status = STATUS_WELL_FED
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
-			nutrition_display.icon_state = "fed"
+			nutrition_display.icon_state = STATUS_FED
 			new_status = STATUS_FED
 		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
-			nutrition_display.icon_state = "hungry"
+			nutrition_display.icon_state = STATUS_HUNGRY
 			new_status = STATUS_HUNGRY
 		if(NUTRITION_LEVEL_HYPOGLYCEMIA to NUTRITION_LEVEL_STARVING)
-			nutrition_display.icon_state = "starving"
+			nutrition_display.icon_state = STATUS_STARVING
 			new_status = STATUS_STARVING
 			adjustHealth(0.02)
 		else
-			// we are below 0 that's realy bad. Let's kill us
+			// we are below 0 that's really bad. Let's kill us
 			adjustHealth(0.05)
 
 	if(previous_status == new_status)
@@ -166,11 +166,11 @@
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
 	if(busy)
-		to_chat(src, span_warning("Сначала доешь, то что уже жуёшь."))
+		to_chat(src, span_warning("Сначала доешь то, что уже жуёшь."))
 		return
 
 	busy = TRUE
-	// liniar scale from (MIN_FEADING_TIME, to MAX_FEADING_TIME)
+	// linear scale from (MIN_FEADING_TIME, to MAX_FEADING_TIME)
 	var/eat_time = MIN_FEADING_TIME + (MAX_FEADING_TIME - MIN_FEADING_TIME) * (nutrition / GIB_FEED_LEVEL)
 	to_chat(src, span_notice("Ты начинаешь употреблять [F]."))
 	if(!do_after_once(src, eat_time, target = F, needhand = FALSE))
@@ -181,7 +181,7 @@
 	busy = FALSE
 	playsound(loc, 'sound/items/eatfood.ogg', 30, FALSE, frequency = 1.5)
 	var/nutriment = F.reagents.get_reagent_amount("nutriment")
-	// Добовляю только нутриенты т.к. яды и другие вещества не обрабатываются по умолчанию.
+	// Добавляю только нутриенты т.к. яды и другие вещества не обрабатываются по умолчанию.
 
 	if(istype(F, /obj/item/food/sliced/cheesewedge) || istype(F, /obj/item/food/sliceable/cheesewheel))
 		Druggy(2 SECONDS)
