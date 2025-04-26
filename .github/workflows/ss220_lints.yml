@@ -22,11 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up BYOND
-        run: |
-          tools/ci/install_byond.sh
-          source $HOME/BYOND/byond/bin/byondsetup
-
       - name: Run Modular Map Linter
         run: |
           python -m tools.maplint.source.ss220_linter --github
