@@ -48,7 +48,7 @@
 	// Мышка тратит 1800 nutrition в час, при hunger_drain = 1. Одно блюдо восполняет где-то 100-200 nutrition
 	hunger_drain = HUNGER_FACTOR * 1.66
 	var/const/bitesize = 2
-	var/previous_status
+	var/hunger_status
 	var/busy = FALSE
 	var/non_standard = FALSE // for no "mouse_" with mouse_color
 
@@ -105,7 +105,6 @@
 
 // Вызывается циклически из прока `Life`. Отвечает за обработку голода
 /mob/living/simple_animal/mouse/handle_chemicals_in_body()
-	var/new_status
 	adjust_nutrition(-hunger_drain)
 
 	switch(nutrition)
@@ -114,54 +113,40 @@
 			gib()
 			return
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
-			nutrition_display.icon_state = STATUS_FAT
-			new_status = STATUS_FAT
-		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
-			nutrition_display.icon_state = STATUS_FULL
-			new_status = STATUS_FULL
-		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
-			nutrition_display.icon_state = STATUS_WELL_FED
-			new_status = STATUS_WELL_FED
-		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
-			nutrition_display.icon_state = STATUS_FED
-			new_status = STATUS_FED
-		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
-			nutrition_display.icon_state = STATUS_HUNGRY
-			new_status = STATUS_HUNGRY
-		if(NUTRITION_LEVEL_HYPOGLYCEMIA to NUTRITION_LEVEL_STARVING)
-			nutrition_display.icon_state = STATUS_STARVING
-			new_status = STATUS_STARVING
-			adjustHealth(0.02)
-		else
-			// we are below 0 that's really bad. Let's kill us
-			adjustHealth(0.05)
-
-	if(previous_status == new_status)
-		return
-
-	previous_status = new_status
-	if(!isnull(new_status))
-		switch(new_status)
-			if(STATUS_FAT)
+			if(hunger_status != STATUS_FAT)
+				hunger_status = STATUS_FAT
+				nutrition_display.icon_state = STATUS_FAT
 				name = "жирная [initial(name)]" // Мешаем англиский с русским
-				desc = "[initial(desc)] Господи! Она же огромная!"
+				desc = "[initial(desc)] [pick("Господи", "Божечки", "Мать честная")]! Она же огромная!"
 				to_chat(src, span_userdanger("Ты чувствуешь, что в тебя больше не влезет и кусочка"))
-			if(STATUS_FULL)
+		if(NUTRITION_LEVEL_WELL_FED to GIB_FEED_LEVEL)
+			if(hunger_status != STATUS_FULL)
+				hunger_status = STATUS_FULL
+				nutrition_display.icon_state = STATUS_FULL
 				name = initial(name)
 				desc = initial(desc)
-			if(STATUS_WELL_FED)
+		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
+			if(hunger_status != STATUS_WELL_FED)
+				hunger_status = STATUS_WELL_FED
+				nutrition_display.icon_state = STATUS_WELL_FED
 				to_chat(src, span_notice("Ты чувствуешь себя превосходно!"))
-			if(STATUS_FED)
-				name = initial(name)
-				desc = initial(desc)
-			if(STATUS_HUNGRY)
+		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
+			if(hunger_status != STATUS_FED)
+				hunger_status = STATUS_FED
+				nutrition_display.icon_state = STATUS_FED
+		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+			if(hunger_status != STATUS_HUNGRY)
+				hunger_status = STATUS_HUNGRY
+				nutrition_display.icon_state = STATUS_HUNGRY
 				name = "костлявая [initial(name)]"
-				desc = "[initial(desc)] Вы можете видеть рёбра через кожу."
+				desc = "[initial(desc)] Вы можете увидеть рёбра через её кожу."
 				to_chat(src, span_warning("Твой живот угрюмо урчит, лучше найти что-то поесть"))
-			if(STATUS_STARVING)
+		else
+			if(hunger_status != STATUS_STARVING)
+				hunger_status = STATUS_STARVING
+				nutrition_display.icon_state = STATUS_STARVING
 				to_chat(src, span_userdanger("Ты смертельно голоден!"))
-			else
-				CRASH("Unknown status: [new_status]")
+			adjustHealth(nutrition > NUTRITION_LEVEL_HYPOGLYCEMIA ? 0.02 : 0.05)
 
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
