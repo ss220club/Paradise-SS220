@@ -140,27 +140,28 @@
 		return
 
 	previous_status = new_status
-	switch(new_status)
-		if(STATUS_FAT)
-			name = "жирная [initial(name)]" // Мешаем англиский с русским
-			desc = "[initial(desc)] Господи! Она же огромная!"
-			to_chat(src, span_userdanger("Ты чувствуешь, что в тебя больше не влезет и кусочка"))
-		if(STATUS_FULL)
-			name = initial(name)
-			desc = initial(desc)
-		if(STATUS_WELL_FED)
-			to_chat(src, span_notice("Ты чувствуешь себя превосходно!"))
-		if(STATUS_FED)
-			name = initial(name)
-			desc = initial(desc)
-		if(STATUS_HUNGRY)
-			name = "костлявая [initial(name)]"
-			desc = "[initial(desc)] Вы можете видеть рёбра через кожу."
-			to_chat(src, span_warning("Твой живот угрюмо урчит, лучше найти что-то поесть"))
-		if(STATUS_STARVING)
-			to_chat(src, span_userdanger("Ты смертельно голоден!"))
-		else
-			CRASH("Unknown status: [new_status]")
+	if(!isnull(new_status))
+		switch(new_status)
+			if(STATUS_FAT)
+				name = "жирная [initial(name)]" // Мешаем англиский с русским
+				desc = "[initial(desc)] Господи! Она же огромная!"
+				to_chat(src, span_userdanger("Ты чувствуешь, что в тебя больше не влезет и кусочка"))
+			if(STATUS_FULL)
+				name = initial(name)
+				desc = initial(desc)
+			if(STATUS_WELL_FED)
+				to_chat(src, span_notice("Ты чувствуешь себя превосходно!"))
+			if(STATUS_FED)
+				name = initial(name)
+				desc = initial(desc)
+			if(STATUS_HUNGRY)
+				name = "костлявая [initial(name)]"
+				desc = "[initial(desc)] Вы можете видеть рёбра через кожу."
+				to_chat(src, span_warning("Твой живот угрюмо урчит, лучше найти что-то поесть"))
+			if(STATUS_STARVING)
+				to_chat(src, span_userdanger("Ты смертельно голоден!"))
+			else
+				CRASH("Unknown status: [new_status]")
 
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
