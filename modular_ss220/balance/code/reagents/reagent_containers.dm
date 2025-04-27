@@ -1,70 +1,46 @@
 #define BORGHYPO_REFILL_VALUE 10
-#define SYNDICATE_NANITES_LIMIT 250 // прок..
+#define SYNDICATE_NANITES_LIMIT 250
 
 /obj/item/reagent_containers/borghypo
-	var/list/reagents_stored = list() // stores all reagents we have
 	var/list/reagents_produced = list() // stores all reagents we've produced
+	var/list/reagents_limit = list() // stores limited reagents
 
-/obj/item/reagent_containers/borghypo/Initialize(mapload)
-	. = ..()
-	refill_borghypo(loc, TRUE) // start with a full hypo
-
-/obj/item/reagent_containers/borghypo/process()
-	if(reagents_stored[choosen_reagent] >= maximum_reagents) // no need to refill
+/obj/item/reagent_containers/borghypo/refill_hypo(mob/living/silicon/robot/user, quick = FALSE)
+	if(quick) // keep it above istype() since initialize/new are too slow to send a proper `user`
+		for(var/reagent as anything in reagent_ids)
+			if(reagent_ids[reagent] < volume)
+				var/reagents_to_add = min(volume - reagent_ids[reagent], volume)
+				reagent_ids[reagent] = (reagent_ids[reagent] || 0) + reagents_to_add
+				reagents_produced[reagent] = (reagents_produced[reagent] || 0) + reagents_to_add
+		return
+	if(user?.cell?.use(charge_cost)) // we are a robot, we have a cell and enough charge? let's refill now
 		if(charge_tick)
 			charge_tick = 0
-		return
-	charge_tick++
-	if(charge_tick < recharge_time) // not ready to refill
-		return
-	charge_tick = 0
-	refill_borghypo(loc)
-
-/obj/item/reagent_containers/borghypo/refill_borghypo(mob/living/silicon/robot/user, roundstart = FALSE)
-	if(roundstart)
 		for(var/reagent as anything in reagent_ids)
-			reagents_stored[reagent] = maximum_reagents
-			reagents_produced[reagent] = maximum_reagents
-		return
-	if(!istype(user)) // in case if someone shitspawns it
-		return
-	if(choosen_reagent == "syndicate_nanites" && reagents_produced["syndicate_nanites"] >= SYNDICATE_NANITES_LIMIT && !user.admin_spawned) // allow adminbuse
-		to_chat(loc, span_warning("Nanite synthesizer is empty!"))
-		return
-	if(user.cell.use(charge_cost))
-		var/reagents_to_add = min(maximum_reagents - reagents_stored[choosen_reagent], BORGHYPO_REFILL_VALUE)
-		reagents_stored[choosen_reagent] += reagents_to_add
-		reagents_produced[choosen_reagent] += reagents_to_add
+			if(reagent_ids[reagent] < volume)
+				var/produced = (reagents_produced[reagent] || 0)
+				var/produced_limit = (reagents_limit[reagent] || INFINITY)
+				var/reagents_to_add = min(
+					volume - reagent_ids[reagent],
+					BORGHYPO_REFILL_VALUE,
+					max(produced_limit - produced, 0)
+				)
+				if(reagents_to_add > 0) // better safe than sorry
+					reagent_ids[reagent] = (reagent_ids[reagent] || 0) + reagents_to_add // in case if it's null somehow, set it to 0
+					reagents_produced[reagent] = produced + reagents_to_add
 
-// copypaste mostly
-/obj/item/reagent_containers/borghypo/interact_with_atom(atom/target, mob/living/user, list/modifiers)
-	if(ishuman(target))
-		var/mob/living/carbon/human/mob = target
-		if(reagents_stored[choosen_reagent] < 5)
-			to_chat(user, "<span class='warning'>The injector [reagents_stored[choosen_reagent] ? "lacks reagents" : "is empty"].</span>")
-			return ITEM_INTERACT_COMPLETE
-		if(!mob.can_inject(user, TRUE, user.zone_selected, penetrate_thick))
-			return ITEM_INTERACT_COMPLETE
+/obj/item/reagent_containers/borghypo/should_refill()
+	for(var/reagent as anything in reagent_ids)
+		var/reagent_volume = reagent_ids[reagent] || 0
+		var/produced = reagents_produced[reagent] || 0
+		var/produced_limit = reagents_limit[reagent]
 
-		to_chat(user, "<span class='notice'>You inject [mob] with the injector.</span>")
-		to_chat(mob, "<span class='notice'>You feel a tiny prick!</span>")
-		mob.reagents.add_reagent(choosen_reagent, 5)
-		reagents_stored[choosen_reagent] -= 5
-		user.changeNext_move(CLICK_CD_MELEE)
-		if(mob.reagents)
-			var/datum/reagent/injected = GLOB.chemical_reagents_list[choosen_reagent]
-			var/contained = injected.name
-			add_attack_logs(user, mob, "Injected with [name] containing [contained], transfered [5] units", injected.harmless ? ATKLOG_ALMOSTALL : null)
-			to_chat(user, "<span class='notice'>[5] units injected. [reagents_stored[choosen_reagent]] units remaining.</span>")
-		return ITEM_INTERACT_COMPLETE
+		if(reagent_volume < volume && (isnull(produced_limit) || produced < produced_limit))
+			return TRUE
+	return FALSE
 
-	if(isliving(target)) // ignore non-human mobs
-		return ITEM_INTERACT_COMPLETE
-
-/obj/item/reagent_containers/borghypo/examine(mob/user)
-	. = ..()
-	var/datum/reagent/get_reagent_name = GLOB.chemical_reagents_list[choosen_reagent]
-	. |= "<span class='notice'>It is currently dispensing [get_reagent_name.name]. Contains [reagents_stored[choosen_reagent]] units of various reagents.</span>" // We couldn't care less what actual reagent is in the container, just if there IS reagent in it
+/obj/item/reagent_containers/borghypo/syndicate
+	reagents_limit = list("syndicate_nanites" = SYNDICATE_NANITES_LIMIT)
 
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT

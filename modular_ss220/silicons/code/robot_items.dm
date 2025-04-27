@@ -27,19 +27,6 @@
 	icon_state = "atmos_holofan_best"
 	max_signs = 5
 
-/* Medical */
-/obj/item/reagent_containers/borghypo/basic/Initialize(mapload)
-	reagent_ids |= list("sal_acid", "charcoal")
-	return ..()
-
-/obj/item/reagent_containers/borghypo/basic/upgraded
-	name = "Upgraded Medical Hypospray"
-	desc = "Upgraded medical hypospray, capable of providing standart medical treatment."
-	reagent_ids = list("salglu_solution", "epinephrine", "spaceacillin", "sal_acid",
-	"charcoal", "hydrocodone", "mannitol", "salbutamol", "styptic_powder")
-	total_reagents = 60
-	maximum_reagents = 60
-
 /* Service */
 /obj/item/rsf/attack_self__legacy__attackchain(mob/user)
 	if(..() && power_mode >= 3000)
