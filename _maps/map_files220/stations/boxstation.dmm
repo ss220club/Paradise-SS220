@@ -4548,9 +4548,13 @@
 	},
 /area/station/security/permabrig)
 "aui" = (
-/obj/machinery/status_display,
-/turf/simulated/wall,
-/area/station/security/storage)
+/obj/machinery/light/directional/west,
+/obj/machinery/ai_status_display/directional/west,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/station/medical/medbay2)
 "auj" = (
 /obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel{
@@ -18119,9 +18123,9 @@
 	pixel_y = 8;
 	req_access = list(19)
 	},
-/obj/machinery/keycard_auth{
-	pixel_x = -6;
-	pixel_y = 8
+/obj/machinery/keycard_auth/directional/north{
+	pixel_x = -5;
+	pixel_y = 7
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -78130,12 +78134,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
-"oTy" = (
-/obj/machinery/ai_status_display{
-	layer = 4
-	},
-/turf/simulated/wall/r_wall,
-/area/station/medical/storage)
 "oTG" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -136618,7 +136616,7 @@ anA
 anA
 anA
 anA
-aui
+apS
 opa
 aoC
 apS
@@ -144163,7 +144161,7 @@ rNv
 cpC
 bNK
 cGw
-oTy
+cpC
 vOE
 bNK
 cpC
@@ -144420,7 +144418,7 @@ cCW
 ule
 cGL
 cnY
-cjz
+aui
 cyK
 dRz
 czh
