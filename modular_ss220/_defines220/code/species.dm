@@ -20,7 +20,8 @@
 	var/atom/movable/loaded = null
 	var/mob/living/passenger = null
 
-/mob/living/carbon/human/proc/iscarrying()
-	if(loaded || passenger)
-		return TRUE
+/mob/living/proc/iscarrying()
 	return FALSE
+
+/mob/living/carbon/human/iscarrying()
+	return loaded || passenger
