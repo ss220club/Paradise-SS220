@@ -5603,12 +5603,10 @@
 /area/station/security/processing)
 "axQ" = (
 /obj/item/radio/intercom/custom{
-	dir = 1;
 	pixel_y = -37
 	},
 /obj/item/radio/intercom/department/security{
-	pixel_y = -24;
-	dir = 1
+	pixel_y = -24
 	},
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -17146,20 +17144,17 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/port)
 "blY" = (
-/obj/machinery/status_display,
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "bridge blast north";
-	name = "Bridge Blast Doors"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
+/obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
-/area/station/command/bridge)
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/machinery/ai_status_display/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkyellowcorners"
+	},
+/area/station/engineering/hallway)
 "bmb" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -17696,6 +17691,7 @@
 	pixel_y = 4
 	},
 /obj/item/storage/box/ids,
+/obj/machinery/status_display/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -17779,6 +17775,7 @@
 /obj/item/assembly/timer,
 /obj/item/assembly/signaler,
 /obj/item/assembly/signaler,
+/obj/machinery/status_display/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -20976,8 +20973,7 @@
 /area/station/turret_protected/ai_upload)
 "bCL" = (
 /obj/item/radio/intercom/private{
-	pixel_y = -22;
-	dir = 1
+	pixel_y = -22
 	},
 /obj/machinery/computer/borgupload{
 	dir = 1
@@ -37123,6 +37119,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellow"
@@ -42053,6 +42050,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -43515,6 +43513,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/machinery/ai_status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -44023,8 +44022,8 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/machinery/status_display/directional/south,
 /obj/effect/turf_decal/delivery,
+/obj/machinery/ai_status_display/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -44371,9 +44370,16 @@
 /turf/simulated/wall/r_wall,
 /area/station/turret_protected/ai)
 "drg" = (
-/obj/machinery/status_display,
-/turf/simulated/wall/r_wall,
-/area/station/turret_protected/ai)
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 1
+	},
+/obj/machinery/atmospherics/portable/canister/nitrogen,
+/obj/machinery/status_display/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/engineering/supermatter_room)
 "drh" = (
 /obj/effect/spawner/random/maintenance,
 /obj/structure/sink/kitchen/north,
@@ -44391,6 +44397,7 @@
 	pixel_y = 7
 	},
 /obj/item/pen/multi,
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -50288,7 +50295,6 @@
 /obj/machinery/porta_turret/ai_turret,
 /obj/item/radio/intercom/locked/ai_private{
 	broadcasting = 1;
-	dir = 1;
 	listening = 0;
 	pixel_y = -22
 	},
@@ -59411,10 +59417,6 @@
 	icon_state = "darkbluefull"
 	},
 /area/station/medical/morgue)
-"irJ" = (
-/obj/machinery/status_display,
-/turf/simulated/wall/r_wall,
-/area/station/command/office/ce)
 "irV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/binary/pump{
@@ -65006,7 +65008,6 @@
 	pixel_y = 22
 	},
 /obj/item/radio/intercom/private{
-	dir = 1;
 	pixel_y = -22
 	},
 /obj/item/radio/intercom/directional/west,
@@ -66802,6 +66803,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellow"
@@ -73423,7 +73425,6 @@
 	pixel_y = 22
 	},
 /obj/item/radio/intercom/private{
-	dir = 1;
 	pixel_y = -22
 	},
 /obj/item/radio/intercom/directional/east,
@@ -78455,9 +78456,15 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "oYb" = (
-/obj/machinery/ai_status_display,
-/turf/simulated/wall/r_wall,
-/area/station/engineering/hallway)
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 1
+	},
+/obj/machinery/status_display/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/engineering/supermatter_room)
 "oYe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -97538,21 +97545,6 @@
 /obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/station/security/warden)
-"vBK" = (
-/obj/machinery/status_display,
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "bridge blast north";
-	name = "Bridge Blast Doors"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/station/command/bridge)
 "vBN" = (
 /obj/structure/window/plasmareinforced{
 	dir = 8
@@ -100678,10 +100670,6 @@
 /obj/machinery/ai_status_display/directional/north,
 /turf/simulated/floor/carpet,
 /area/station/command/office/captain)
-"wGJ" = (
-/obj/machinery/status_display,
-/turf/simulated/wall/r_wall,
-/area/station/engineering/engine/supermatter)
 "wGR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -133849,7 +133837,7 @@ dix
 bha
 bne
 mdi
-vBK
+blU
 bnW
 bpt
 nFP
@@ -135391,7 +135379,7 @@ dje
 biO
 bnk
 gTQ
-blY
+krb
 brS
 bpt
 bsy
@@ -136751,7 +136739,7 @@ cYa
 rLa
 cXO
 cRR
-irJ
+cRR
 dhv
 uiI
 djR
@@ -139571,8 +139559,8 @@ oLk
 cPs
 cPs
 dkK
-cZU
-oYb
+blY
+cOi
 dfG
 uUy
 wIO
@@ -141119,12 +141107,12 @@ dfN
 dgj
 tYm
 dhJ
-rKe
-wGJ
+oYb
+omz
 eew
 khK
 pJh
-wGJ
+omz
 lax
 rWr
 cYW
@@ -143175,12 +143163,12 @@ nSv
 cXX
 dms
 cRj
-ddx
-wGJ
+drg
+omz
 dmQ
 dmQ
 dKq
-wGJ
+omz
 cPS
 dmR
 ssU
@@ -146294,7 +146282,7 @@ vTD
 cBl
 wCk
 vdo
-drg
+drf
 dro
 drt
 drv
@@ -147322,7 +147310,7 @@ tYh
 oER
 dpK
 vdo
-drg
+drf
 dnh
 drA
 drv
