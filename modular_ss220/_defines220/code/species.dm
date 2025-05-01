@@ -21,4 +21,6 @@
 	var/mob/living/passenger = null
 
 /mob/living/carbon/human/proc/iscarrying()
-	return loaded || passenger
+	if(loaded || passenger)
+		return TRUE
+	return FALSE
