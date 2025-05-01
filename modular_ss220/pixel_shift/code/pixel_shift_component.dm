@@ -63,8 +63,12 @@
 
 /datum/component/pixel_shift/proc/pixel_shift(mob/target, direction)
 	var/mob/living/owner = parent
-	if(HAS_TRAIT(owner, TRAIT_RESTRAINED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED) || length(owner.grabbed_by) || owner.stat != CONSCIOUS || owner.isCarrying())
+	if(HAS_TRAIT(owner, TRAIT_RESTRAINED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED) || length(owner.grabbed_by) || owner.stat != CONSCIOUS)
 		return
+	if(iscarbon(owner))
+		var/mob/living/carbon/human/owner_carbon = owner
+		if(owner_carbon.iscarrying())
+			return
 	passthroughable = NONE
 	switch(direction)
 		if(NORTH)
