@@ -3,7 +3,7 @@
 	name = "job_icons"
 
 /datum/asset/spritesheet/job_icons/create_spritesheets()
-	var/list/states = GLOB.joblist + "centcom" + "solgov" + "soviet" + "unknown"
+	var/list/states = GLOB.joblist + "centcom" + "solgov" + "soviet" + "unknown" // "prisoner" already exists in GLOB.joblist - modular job
 	var/default = 'icons/mob/hud/job_assets.dmi'
 	var/custom = 'modular_ss220/jobs/icons/job_assets.dmi'
 	for(var/state in states)
