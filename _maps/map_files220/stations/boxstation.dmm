@@ -17516,12 +17516,12 @@
 	},
 /area/station/hallway/primary/central/north)
 "bno" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "bluecorner"
 	},
-/area/station/hallway/primary/central/ne)
+/area/station/hallway/primary/central/east)
 "bnq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -21801,12 +21801,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "bFW" = (
-/obj/machinery/firealarm/directional/east,
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "neutralcorner"
+	dir = 8;
+	icon_state = "bluecorner"
 	},
-/area/station/hallway/primary/central/se)
+/area/station/hallway/primary/central/east)
 "bFX" = (
 /obj/structure/morgue,
 /obj/effect/turf_decal/delivery/blue,
@@ -51236,6 +51235,7 @@
 /area/station/hallway/primary/starboard/west)
 "fCh" = (
 /obj/machinery/status_display/directional/west,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "bluecorner"
@@ -64901,6 +64901,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/command/bridge)
+"kri" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/hallway/primary/central/ne)
 "krv" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -75058,14 +75067,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "nTf" = (
-/obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
-/area/station/hallway/primary/central/ne)
+/area/station/hallway/primary/central/east)
 "nTk" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
 	autolink_id = "air_in"
@@ -81019,6 +81027,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
+"pQQ" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/hallway/primary/central/se)
 "pRf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old{
@@ -91249,6 +91269,16 @@
 	icon_state = "whiteblue"
 	},
 /area/station/medical/storage)
+"tsX" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutralcorner"
+	},
+/area/station/hallway/primary/central/se)
 "ttf" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -104515,7 +104545,6 @@
 	},
 /area/station/public/locker)
 "xQF" = (
-/obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -104525,7 +104554,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
-/area/station/hallway/primary/central/se)
+/area/station/hallway/primary/central/east)
 "xQL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
@@ -138690,8 +138719,8 @@ bno
 bAl
 bBF
 bCY
+bFW
 bEw
-bFU
 nis
 rvX
 bOz
@@ -138942,13 +138971,13 @@ bRm
 bRm
 pwD
 gJF
-gJF
+kri
 nTf
 bFi
 ftl
 bIR
 xQF
-wsq
+pQQ
 iQu
 wsq
 wsq
@@ -139199,14 +139228,14 @@ gEd
 bvL
 mjZ
 gEd
-gEd
 bzb
+odh
 odh
 nRN
 bAf
+odh
 bEn
-bFW
-kxL
+tsX
 bFO
 bFO
 bRg
