@@ -18573,10 +18573,11 @@
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/public/vacant_office)
 "brx" = (
-/obj/structure/flora/grass/jungle,
-/obj/item/radio/intercom/locked/prison/directional/north,
-/turf/simulated/floor/grass,
-/area/station/security/permabrig)
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/parquet/oak,
+/area/station/service/library)
 "bry" = (
 /obj/structure/chair/comfy/black,
 /turf/simulated/floor/wood/parquet/oak,
@@ -19513,11 +19514,12 @@
 	},
 /area/station/service/chapel/office)
 "bvO" = (
-/obj/machinery/hologram/holopad{
-	pixel_x = 16
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "chapel"
 	},
-/turf/simulated/floor/wood/parquet/oak,
-/area/station/service/library)
+/area/station/service/chapel)
 "bvP" = (
 /obj/machinery/door/airlock/security/glass,
 /obj/machinery/door/firedoor,
@@ -35024,11 +35026,14 @@
 	},
 /area/station/science/break_room)
 "cHA" = (
-/obj/machinery/hologram/holopad{
-	pixel_y = 16
+/obj/item/radio/intercom/department/security{
+	pixel_y = -28;
+	dir = 2
 	},
-/turf/simulated/floor/carpet,
-/area/station/service/library)
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/security/interrogation/observation)
 "cHC" = (
 /obj/machinery/computer/arcade,
 /turf/simulated/floor/plasteel,
@@ -35064,12 +35069,11 @@
 	},
 /area/station/hallway/primary/aft)
 "cHL" = (
-/obj/machinery/economy/vending/scidrobe,
-/obj/effect/turf_decal/delivery,
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
+/obj/machinery/hologram/holopad{
+	pixel_x = 16
 	},
-/area/station/science/break_room)
+/turf/simulated/floor/wood/parquet/oak,
+/area/station/service/library)
 "cHM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -46821,8 +46825,12 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
 "ecH" = (
-/turf/simulated/wall,
-/area/station/engineering/ai_transit_tube)
+/obj/machinery/economy/vending/scidrobe,
+/obj/effect/turf_decal/delivery,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/station/science/break_room)
 "ecI" = (
 /obj/machinery/light/small/directional/south,
 /obj/structure/chair/office/dark{
@@ -47190,9 +47198,13 @@
 	},
 /area/station/maintenance/fsmaint)
 "egW" = (
-/obj/effect/spawner/random/fungus/maybe,
-/turf/simulated/wall/r_wall,
-/area/station/maintenance/aft)
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/chair/comfy/brown{
+	dir = 1
+	},
+/obj/machinery/newscaster/directional/south,
+/turf/simulated/floor/wood/fancy/oak,
+/area/station/service/chapel)
 "ehb" = (
 /obj/machinery/door/airlock/command/glass{
 	id_tag = "nct"
@@ -50102,11 +50114,10 @@
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
 "fjE" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/wood/parquet/oak,
-/area/station/service/library)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/station/maintenance/aft)
 "fjM" = (
 /obj/machinery/hydroponics/constructable{
 	desc = "These are connected with an irrigation tube. You see a little pipe connecting the trays.";
@@ -53244,9 +53255,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "gom" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/wood/parquet/oak,
-/area/station/service/library)
+/obj/structure/flora/grass/jungle,
+/obj/item/radio/intercom/locked/prison/directional/north,
+/turf/simulated/floor/grass,
+/area/station/security/permabrig)
 "goq" = (
 /obj/structure/largecrate,
 /obj/effect/turf_decal/delivery,
@@ -58384,6 +58396,13 @@
 	icon_state = "hydrofloor"
 	},
 /area/station/maintenance/asmaint)
+"hWv" = (
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/science/research,
+/obj/machinery/door/airlock/research/glass,
+/turf/simulated/floor/plasteel,
+/area/station/science/hallway)
 "hWI" = (
 /obj/machinery/disposal,
 /obj/machinery/light_switch/west,
@@ -60622,13 +60641,9 @@
 /turf/simulated/floor/wood/oak,
 /area/station/security/permabrig)
 "iPF" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/bag/tray,
-/obj/item/radio/intercom/locked/prison/directional/west,
-/turf/simulated/floor/plasteel{
-	icon_state = "bar"
-	},
-/area/station/security/permabrig)
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/wood/parquet/oak,
+/area/station/service/library)
 "iPH" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
@@ -63277,13 +63292,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
-"jMQ" = (
-/obj/structure/extinguisher_cabinet/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "chapel"
-	},
-/area/station/service/chapel)
 "jMX" = (
 /obj/structure/filingcabinet,
 /obj/effect/turf_decal/delivery/white,
@@ -75880,7 +75888,7 @@
 /area/station/maintenance/aft)
 "ogH" = (
 /obj/effect/mapping_helpers/turfs/rust/maybe,
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/station/engineering/ai_transit_tube)
 "ogI" = (
 /turf/simulated/wall/r_wall,
@@ -81894,14 +81902,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "qhq" = (
-/obj/item/radio/intercom/department/security{
-	pixel_y = -28;
-	dir = 2
+/obj/machinery/hologram/holopad{
+	pixel_y = 16
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/security/interrogation/observation)
+/turf/simulated/floor/carpet,
+/area/station/service/library)
 "qhr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -90235,13 +90240,6 @@
 /obj/machinery/door/airlock/engineering,
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
-"tcG" = (
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/science/research,
-/obj/machinery/door/airlock/research/glass,
-/turf/simulated/floor/plasteel,
-/area/station/science/hallway)
 "tcI" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -91471,13 +91469,12 @@
 	},
 /area/station/service/chapel/funeral)
 "txJ" = (
-/obj/effect/turf_decal/siding/wood/oak,
-/obj/structure/chair/comfy/brown{
-	dir = 1
+/obj/machinery/economy/vending/wallmed/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutralcorner"
 	},
-/obj/machinery/newscaster/directional/south,
-/turf/simulated/floor/wood/fancy/oak,
-/area/station/service/chapel)
+/area/station/hallway/primary/starboard/east)
 "txR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -96164,12 +96161,13 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet/unisex)
 "vcb" = (
-/obj/machinery/economy/vending/wallmed/directional/north,
+/obj/structure/table/reinforced,
+/obj/item/storage/bag/tray,
+/obj/item/radio/intercom/locked/prison/directional/west,
 /turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "neutralcorner"
+	icon_state = "bar"
 	},
-/area/station/hallway/primary/starboard/east)
+/area/station/security/permabrig)
 "vcm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -122803,7 +122801,7 @@ abN
 qXR
 qQy
 uFC
-iPF
+vcb
 lXd
 vSi
 esV
@@ -125386,7 +125384,7 @@ anf
 ado
 asj
 lKq
-brx
+gom
 hAh
 xBl
 aEO
@@ -138579,9 +138577,9 @@ cNP
 cNP
 cNP
 cNP
-cxO
-cxO
-cxO
+chf
+chf
+chf
 cPs
 cPs
 cQU
@@ -138755,7 +138753,7 @@ axS
 azc
 azX
 aBi
-qhq
+cHA
 aBs
 ogL
 awl
@@ -139608,8 +139606,8 @@ cep
 cKc
 ctZ
 cOU
-cxO
-cxO
+chf
+chf
 cPs
 cPs
 cPs
@@ -139864,8 +139862,8 @@ ctZ
 cAu
 tWL
 cep
-cxO
-cxO
+chf
+chf
 aab
 aab
 cPs
@@ -140121,7 +140119,7 @@ csp
 cep
 cKg
 cep
-cxO
+chf
 aab
 aab
 aaa
@@ -141149,7 +141147,7 @@ cyJ
 czr
 gYr
 cep
-cxO
+chf
 aaa
 aaa
 aaa
@@ -141406,7 +141404,7 @@ cyJ
 cyJ
 uzL
 cep
-cxO
+chf
 aaa
 aaa
 aaa
@@ -141663,7 +141661,7 @@ ahA
 cyJ
 cKi
 cep
-cxO
+chf
 aaa
 bFC
 bFC
@@ -141920,7 +141918,7 @@ csK
 cyJ
 uzL
 bWb
-egW
+cDm
 aaa
 bFC
 jYu
@@ -142177,7 +142175,7 @@ cpC
 cpC
 bZn
 bWb
-cxO
+chf
 aab
 bFC
 olG
@@ -142434,7 +142432,7 @@ xBf
 cpC
 dUm
 gJa
-cxO
+chf
 aaa
 bFC
 cSs
@@ -143462,7 +143460,7 @@ ciQ
 cpC
 uzL
 cep
-cxO
+chf
 aaa
 bFC
 upI
@@ -143719,7 +143717,7 @@ tsO
 cpC
 oym
 ctZ
-cxO
+chf
 aab
 bFC
 bOs
@@ -143976,7 +143974,7 @@ bZw
 cpC
 azK
 bWb
-cxO
+chf
 aab
 bFC
 pua
@@ -144233,7 +144231,7 @@ cpC
 cpC
 bTP
 cep
-cxO
+chf
 aaa
 bFC
 bSk
@@ -144243,10 +144241,10 @@ bLi
 cRr
 bFC
 aaa
-cxO
+chf
 lHQ
 hmq
-ecH
+nvN
 xgm
 cCp
 gYM
@@ -144490,7 +144488,7 @@ czh
 sYT
 smW
 cep
-cxO
+chf
 aaa
 bFC
 bFE
@@ -144747,7 +144745,7 @@ czj
 wTf
 cqw
 gUh
-cxO
+chf
 aab
 bFC
 bFE
@@ -145004,7 +145002,7 @@ bXI
 pAi
 iZz
 gyA
-cxO
+chf
 aaa
 bFC
 bFC
@@ -145017,7 +145015,7 @@ aaa
 cAe
 wHh
 bWb
-ecH
+nvN
 nvN
 rxp
 nvN
@@ -145261,7 +145259,7 @@ npM
 pAi
 cux
 gyA
-cxO
+chf
 aaa
 aaa
 aab
@@ -145271,11 +145269,11 @@ aaa
 aab
 aaa
 aaa
-cxO
+chf
 eZo
 chf
+fjE
 chf
-cxO
 doE
 nvN
 kLp
@@ -145518,21 +145516,21 @@ pOK
 pAi
 daB
 aoA
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
+chf
+chf
+chf
+chf
+chf
+chf
+chf
+chf
+chf
+chf
+chf
 bOH
 chf
 pOt
-cxO
+chf
 doE
 nvN
 ojt
@@ -145788,8 +145786,8 @@ chf
 dgm
 wHh
 cep
-cep
-cxO
+cyJ
+chf
 doE
 doE
 doE
@@ -146046,8 +146044,8 @@ cbR
 cUh
 cUN
 sjM
-cxO
-cxO
+chf
+chf
 aab
 aab
 aab
@@ -146304,10 +146302,10 @@ cep
 cep
 nhc
 cep
-cxO
-cxO
-cxO
-cxO
+chf
+chf
+chf
+chf
 aaa
 aab
 aab
@@ -146564,16 +146562,16 @@ cjd
 cjd
 dRk
 kcx
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
-cxO
+chf
+chf
+chf
+chf
+chf
+chf
+chf
+chf
+chf
+chf
 aab
 rfB
 aab
@@ -147601,9 +147599,9 @@ usZ
 cyJ
 cep
 cep
-cxO
-cxO
-cxO
+chf
+chf
+chf
 aaa
 aaa
 aab
@@ -147860,7 +147858,7 @@ cep
 cyJ
 cyJ
 cyJ
-cxO
+chf
 aaa
 aab
 aab
@@ -149316,7 +149314,7 @@ stX
 bau
 bco
 lhg
-fjE
+brx
 prt
 prt
 boG
@@ -149832,7 +149830,7 @@ bch
 bem
 bfY
 bkn
-bvO
+cHL
 blj
 blj
 kEV
@@ -150868,7 +150866,7 @@ qSL
 prt
 prt
 cIp
-cHA
+qhq
 bCO
 bau
 bFs
@@ -151379,7 +151377,7 @@ bkX
 bmE
 bau
 bqc
-gom
+iPF
 btb
 jmZ
 nrd
@@ -151681,7 +151679,7 @@ twv
 wtm
 cGz
 sdD
-cHL
+ecH
 cod
 vSH
 bGG
@@ -153985,7 +153983,7 @@ lvJ
 xdy
 rKV
 gLu
-tcG
+hWv
 gLu
 rKV
 cAP
@@ -154210,7 +154208,7 @@ iWF
 rhp
 boJ
 boJ
-txJ
+egW
 aYP
 bFB
 xmu
@@ -154462,7 +154460,7 @@ hfu
 blm
 bmO
 bmK
-jMQ
+bvO
 nAS
 tXf
 wsy
@@ -155240,7 +155238,7 @@ aaa
 aab
 aaa
 bte
-vcb
+txJ
 aAR
 cXh
 eiJ
