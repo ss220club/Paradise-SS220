@@ -115,38 +115,62 @@
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
 			if(hunger_status != STATUS_FAT)
 				hunger_status = STATUS_FAT
-				nutrition_display.icon_state = STATUS_FAT
-				name = "жирная [initial(name)]" // Мешаем англиский с русским
-				desc = "[initial(desc)] [pick("Господи", "Божечки", "Мать честная")]! Она же огромная!"
 				to_chat(src, span_userdanger("Ты чувствуешь, что в тебя больше не влезет и кусочка"))
 		if(NUTRITION_LEVEL_WELL_FED to GIB_FEED_LEVEL)
 			if(hunger_status != STATUS_FULL)
 				hunger_status = STATUS_FULL
-				nutrition_display.icon_state = STATUS_FULL
 				name = initial(name)
-				desc = initial(desc)
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
 			if(hunger_status != STATUS_WELL_FED)
 				hunger_status = STATUS_WELL_FED
-				nutrition_display.icon_state = STATUS_WELL_FED
 				to_chat(src, span_notice("Ты чувствуешь себя превосходно!"))
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
 			if(hunger_status != STATUS_FED)
 				hunger_status = STATUS_FED
-				nutrition_display.icon_state = STATUS_FED
 		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
 			if(hunger_status != STATUS_HUNGRY)
 				hunger_status = STATUS_HUNGRY
-				nutrition_display.icon_state = STATUS_HUNGRY
-				name = "костлявая [initial(name)]"
-				desc = "[initial(desc)] Вы можете увидеть рёбра через её кожу."
 				to_chat(src, span_warning("Твой живот угрюмо урчит, лучше найти что-то поесть"))
 		else
 			if(hunger_status != STATUS_STARVING)
 				hunger_status = STATUS_STARVING
-				nutrition_display.icon_state = STATUS_STARVING
 				to_chat(src, span_userdanger("Ты смертельно голоден!"))
 			adjustHealth(nutrition > NUTRITION_LEVEL_HYPOGLYCEMIA ? 0.02 : 0.05)
+
+	handle_nutrition_alerts()
+	update_appearance(UPDATE_NAME|UPDATE_DESC)
+
+/mob/living/simple_animal/mouse/proc/handle_nutrition_alerts()
+	switch(nutrition)
+		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
+			nutrition_display.icon_state = STATUS_FAT
+		if(NUTRITION_LEVEL_WELL_FED to GIB_FEED_LEVEL)
+			nutrition_display.icon_state = STATUS_FULL
+		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
+			nutrition_display.icon_state = STATUS_WELL_FED
+		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
+			nutrition_display.icon_state = STATUS_FED
+		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+			nutrition_display.icon_state = STATUS_HUNGRY
+		else
+			nutrition_display.icon_state = STATUS_STARVING
+
+/mob/living/simple_animal/mouse/update_name()
+	. = ..()
+	var/tag
+	if(nutrition >= NUTRITION_LEVEL_FULL)
+		tag = "жирная " // Мешаем англиский с русским
+	if(nutrition <= NUTRITION_LEVEL_HUNGRY)
+		tag = "костлявая "
+	name = "[tag][initial(name)]"
+
+/mob/living/simple_animal/mouse/update_desc()
+	. = ..()
+	desc = "It's a small [mouse_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
+	if(nutrition >= NUTRITION_LEVEL_FULL)
+		desc += " [pick("Господи", "Божечки", "Мать честная")]! Она же огромная!"
+	if(nutrition <= NUTRITION_LEVEL_HUNGRY)
+		desc += " Вы можете увидеть рёбра через её кожу."
 
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
