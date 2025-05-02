@@ -119,7 +119,6 @@
 		if(NUTRITION_LEVEL_WELL_FED to GIB_FEED_LEVEL)
 			if(hunger_status != STATUS_FULL)
 				hunger_status = STATUS_FULL
-				name = initial(name)
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
 			if(hunger_status != STATUS_WELL_FED)
 				hunger_status = STATUS_WELL_FED
