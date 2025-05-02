@@ -116,7 +116,7 @@
 			if(hunger_status != STATUS_FAT)
 				hunger_status = STATUS_FAT
 				to_chat(src, span_userdanger("Ты чувствуешь, что в тебя больше не влезет и кусочка"))
-		if(NUTRITION_LEVEL_WELL_FED to GIB_FEED_LEVEL)
+		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			if(hunger_status != STATUS_FULL)
 				hunger_status = STATUS_FULL
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
@@ -143,7 +143,7 @@
 	switch(nutrition)
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
 			nutrition_display.icon_state = STATUS_FAT
-		if(NUTRITION_LEVEL_WELL_FED to GIB_FEED_LEVEL)
+		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			nutrition_display.icon_state = STATUS_FULL
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
 			nutrition_display.icon_state = STATUS_WELL_FED
@@ -167,7 +167,7 @@
 	. = ..()
 	desc = "It's a small [mouse_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 	if(nutrition >= NUTRITION_LEVEL_FULL)
-		desc += " [pick("Господи", "Божечки", "Мать честная")]! Она же огромная!"
+		desc += " Господи! Она же огромная!"
 	if(nutrition <= NUTRITION_LEVEL_HUNGRY)
 		desc += " Вы можете увидеть рёбра через её кожу."
 
