@@ -77,12 +77,6 @@
 
 	prefs.max_save_slots = MAX_SAVE_SLOTS_SS220 + 5 * donator_level
 
-	switch(donator_level)
-		if(LITTLE_WORKER_LEVEL)
-			prefs.max_save_slots = 7
-		if(BIG_WORKER_LEVEL)
-			prefs.max_save_slots = 10
-
 	prefs.character_saves.len = prefs.max_save_slots
 
 /client/proc/is_donor_allowed(required_donator_level)
