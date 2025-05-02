@@ -13504,13 +13504,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/public/dorms)
-"aYw" = (
-/obj/structure/extinguisher_cabinet/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "chapel"
-	},
-/area/station/service/chapel)
 "aYx" = (
 /obj/effect/landmark/spawner/rev,
 /obj/effect/turf_decal/delivery/white,
@@ -19521,9 +19514,9 @@
 /area/station/service/chapel/office)
 "bvO" = (
 /obj/machinery/hologram/holopad{
-	pixel_y = 16
+	pixel_x = 16
 	},
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/service/library)
 "bvP" = (
 /obj/machinery/door/airlock/security/glass,
@@ -35031,12 +35024,11 @@
 	},
 /area/station/science/break_room)
 "cHA" = (
-/obj/machinery/economy/vending/wallmed/directional/north,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "neutralcorner"
+/obj/machinery/hologram/holopad{
+	pixel_y = 16
 	},
-/area/station/hallway/primary/starboard/east)
+/turf/simulated/floor/carpet,
+/area/station/service/library)
 "cHC" = (
 /obj/machinery/computer/arcade,
 /turf/simulated/floor/plasteel,
@@ -35072,9 +35064,12 @@
 	},
 /area/station/hallway/primary/aft)
 "cHL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/wood/parquet/oak,
-/area/station/service/library)
+/obj/machinery/economy/vending/scidrobe,
+/obj/effect/turf_decal/delivery,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/station/science/break_room)
 "cHM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -50107,12 +50102,11 @@
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
 "fjE" = (
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/science/research,
-/obj/machinery/door/airlock/research/glass,
-/turf/simulated/floor/plasteel,
-/area/station/science/hallway)
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/parquet/oak,
+/area/station/service/library)
 "fjM" = (
 /obj/machinery/hydroponics/constructable{
 	desc = "These are connected with an irrigation tube. You see a little pipe connecting the trays.";
@@ -53250,13 +53244,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "gom" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/bag/tray,
-/obj/item/radio/intercom/locked/prison/directional/west,
-/turf/simulated/floor/plasteel{
-	icon_state = "bar"
-	},
-/area/station/security/permabrig)
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/wood/parquet/oak,
+/area/station/service/library)
 "goq" = (
 /obj/structure/largecrate,
 /obj/effect/turf_decal/delivery,
@@ -60632,13 +60622,13 @@
 /turf/simulated/floor/wood/oak,
 /area/station/security/permabrig)
 "iPF" = (
-/obj/effect/turf_decal/siding/wood/oak,
-/obj/structure/chair/comfy/brown{
-	dir = 1
+/obj/structure/table/reinforced,
+/obj/item/storage/bag/tray,
+/obj/item/radio/intercom/locked/prison/directional/west,
+/turf/simulated/floor/plasteel{
+	icon_state = "bar"
 	},
-/obj/machinery/newscaster/directional/south,
-/turf/simulated/floor/wood/fancy/oak,
-/area/station/service/chapel)
+/area/station/security/permabrig)
 "iPH" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
@@ -63287,6 +63277,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
+"jMQ" = (
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "chapel"
+	},
+/area/station/service/chapel)
 "jMX" = (
 /obj/structure/filingcabinet,
 /obj/effect/turf_decal/delivery/white,
@@ -70985,12 +70982,6 @@
 /obj/item/seeds/banana,
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
-"msH" = (
-/obj/machinery/hologram/holopad{
-	pixel_x = 16
-	},
-/turf/simulated/floor/wood/parquet/oak,
-/area/station/service/library)
 "msN" = (
 /obj/effect/landmark/start/doctor,
 /obj/structure/chair/sofa/left{
@@ -81903,11 +81894,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "qhq" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/item/radio/intercom/department/security{
+	pixel_y = -28;
+	dir = 2
 	},
-/turf/simulated/floor/wood/parquet/oak,
-/area/station/service/library)
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/security/interrogation/observation)
 "qhr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -90241,6 +90235,13 @@
 /obj/machinery/door/airlock/engineering,
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
+"tcG" = (
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/science/research,
+/obj/machinery/door/airlock/research/glass,
+/turf/simulated/floor/plasteel,
+/area/station/science/hallway)
 "tcI" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -91470,14 +91471,13 @@
 	},
 /area/station/service/chapel/funeral)
 "txJ" = (
-/obj/item/radio/intercom/department/security{
-	pixel_y = -28;
-	dir = 2
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/chair/comfy/brown{
+	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/security/interrogation/observation)
+/obj/machinery/newscaster/directional/south,
+/turf/simulated/floor/wood/fancy/oak,
+/area/station/service/chapel)
 "txR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -96164,12 +96164,12 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet/unisex)
 "vcb" = (
-/obj/machinery/economy/vending/scidrobe,
-/obj/effect/turf_decal/delivery,
+/obj/machinery/economy/vending/wallmed/directional/north,
 /turf/simulated/floor/plasteel{
-	icon_state = "white"
+	dir = 1;
+	icon_state = "neutralcorner"
 	},
-/area/station/science/break_room)
+/area/station/hallway/primary/starboard/east)
 "vcm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -122803,7 +122803,7 @@ abN
 qXR
 qQy
 uFC
-gom
+iPF
 lXd
 vSi
 esV
@@ -136515,13 +136515,13 @@ hct
 nfe
 oZP
 pLa
-cvx
-cvx
-cvx
+cNP
+cNP
+cNP
 dpp
-cvx
-cvx
-cvx
+cNP
+cNP
+cNP
 cNP
 uZx
 cOi
@@ -136772,7 +136772,7 @@ chc
 chc
 cAT
 chc
-cvx
+cNP
 xCH
 kJT
 cHv
@@ -137029,7 +137029,7 @@ cmR
 cDa
 cBZ
 cCJ
-cvx
+cNP
 lVk
 cwO
 fvi
@@ -137286,7 +137286,7 @@ fSV
 cxf
 cmG
 cCa
-cvx
+cNP
 dmV
 cwO
 lnQ
@@ -137543,7 +137543,7 @@ cmR
 osE
 cBZ
 cCL
-cvx
+cNP
 cvx
 dtw
 hOq
@@ -137800,7 +137800,7 @@ cmR
 piL
 qTF
 cCK
-cvx
+cNP
 cSb
 cwO
 eKz
@@ -138057,7 +138057,7 @@ cmR
 cmR
 cmR
 cmR
-cvx
+cNP
 dsJ
 cwO
 cIY
@@ -138314,7 +138314,7 @@ cyJ
 cep
 cep
 cxA
-cvx
+cNP
 bmv
 cvu
 cyQ
@@ -138571,13 +138571,13 @@ cep
 ctZ
 bWb
 cuE
-cvx
-cvx
-cvx
-cvx
-cvx
-cvx
-cvx
+cNP
+cNP
+cNP
+cNP
+cNP
+cNP
+cNP
 cNP
 cxO
 cxO
@@ -138755,7 +138755,7 @@ axS
 azc
 azX
 aBi
-txJ
+qhq
 aBs
 ogL
 awl
@@ -149316,7 +149316,7 @@ stX
 bau
 bco
 lhg
-qhq
+fjE
 prt
 prt
 boG
@@ -149832,7 +149832,7 @@ bch
 bem
 bfY
 bkn
-msH
+bvO
 blj
 blj
 kEV
@@ -150868,7 +150868,7 @@ qSL
 prt
 prt
 cIp
-bvO
+cHA
 bCO
 bau
 bFs
@@ -151379,7 +151379,7 @@ bkX
 bmE
 bau
 bqc
-cHL
+gom
 btb
 jmZ
 nrd
@@ -151681,7 +151681,7 @@ twv
 wtm
 cGz
 sdD
-vcb
+cHL
 cod
 vSH
 bGG
@@ -153985,7 +153985,7 @@ lvJ
 xdy
 rKV
 gLu
-fjE
+tcG
 gLu
 rKV
 cAP
@@ -154210,7 +154210,7 @@ iWF
 rhp
 boJ
 boJ
-iPF
+txJ
 aYP
 bFB
 xmu
@@ -154462,7 +154462,7 @@ hfu
 blm
 bmO
 bmK
-aYw
+jMQ
 nAS
 tXf
 wsy
@@ -155240,7 +155240,7 @@ aaa
 aab
 aaa
 bte
-cHA
+vcb
 aAR
 cXh
 eiJ
