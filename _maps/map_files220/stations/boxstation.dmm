@@ -17506,20 +17506,12 @@
 	},
 /area/station/hallway/primary/central/north)
 "bno" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	desc = "Lube off, pal.";
-	icon_state = "open";
-	id_tag = "imnotmakingyoulubepissoff";
-	name = "Chemistry Privacy Shutter";
-	opacity = 0;
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
 /area/station/medical/chemistry)
 "bnq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21102,7 +21094,12 @@
 /area/station/hallway/primary/starboard/west)
 "bDc" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /obj/machinery/door/poddoor/shutters{
 	density = 0;
 	desc = "Lube off, pal.";
@@ -21797,24 +21794,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "bFW" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	desc = "Lube off, pal.";
-	icon_state = "open";
-	id_tag = "imnotmakingyoulubepissoff";
-	name = "Chemistry Privacy Shutter";
-	opacity = 0;
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/station/medical/chemistry)
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutralcorner"
+	},
+/area/station/hallway/primary/central/east)
 "bFX" = (
 /obj/structure/morgue,
 /obj/effect/turf_decal/delivery/blue,
@@ -24470,24 +24457,11 @@
 	},
 /area/station/medical/morgue)
 "bRg" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	icon_state = "2-4"
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "bluecorner"
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	desc = "Lube off, pal.";
-	icon_state = "open";
-	id_tag = "imnotmakingyoulubepissoff";
-	name = "Chemistry Privacy Shutter";
-	opacity = 0;
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/station/medical/chemistry)
+/area/station/hallway/primary/central/east)
 "bRj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light/directional/west,
@@ -24544,14 +24518,19 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "bRt" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "neutralcorner"
+	icon_state = "neutralfull"
 	},
-/area/station/hallway/primary/central/east)
+/area/station/hallway/primary/central/se)
 "bRy" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/belt/utility,
@@ -50219,12 +50198,21 @@
 	},
 /area/station/maintenance/aft)
 "fkF" = (
-/obj/machinery/ai_slipper,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
-/area/station/turret_protected/ai_upload)
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	desc = "Lube off, pal.";
+	icon_state = "open";
+	id_tag = "imnotmakingyoulubepissoff";
+	name = "Chemistry Privacy Shutter";
+	opacity = 0;
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/station/medical/chemistry)
 "fkT" = (
 /obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/bluegrid,
@@ -53573,8 +53561,10 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/machinery/ai_slipper,
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/station/turret_protected/ai_upload)
 "grC" = (
@@ -54094,17 +54084,6 @@
 	icon_state = "bar"
 	},
 /area/station/security/permabrig)
-"gAz" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/hallway/primary/central/se)
 "gAF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/watertank,
@@ -56266,20 +56245,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
-"hjJ" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/hallway/primary/central/se)
 "hjO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -63446,6 +63411,15 @@
 	icon_state = "vault"
 	},
 /area/station/maintenance/apmaint)
+"jOU" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/hallway/primary/central/ne)
 "jPb" = (
 /obj/machinery/ai_status_display/directional/east,
 /obj/machinery/atmospherics/unary/thermomachine/freezer/on/server{
@@ -65812,15 +65786,6 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/central/se)
-"kFL" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/hallway/primary/central/ne)
 "kGb" = (
 /obj/machinery/status_display/directional/west,
 /turf/simulated/floor/mineral/titanium,
@@ -65993,6 +65958,25 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/port)
+"kJG" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	desc = "Lube off, pal.";
+	icon_state = "open";
+	id_tag = "imnotmakingyoulubepissoff";
+	name = "Chemistry Privacy Shutter";
+	opacity = 0;
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/station/medical/chemistry)
 "kJJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -70072,14 +70056,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
-"mcG" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
-	},
-/area/station/medical/chemistry)
 "mcH" = (
 /obj/item/storage/box/prisoner,
 /obj/structure/table,
@@ -77140,6 +77116,20 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
+"ozL" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	desc = "Lube off, pal.";
+	icon_state = "open";
+	id_tag = "imnotmakingyoulubepissoff";
+	name = "Chemistry Privacy Shutter";
+	opacity = 0;
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/station/medical/chemistry)
 "ozS" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -91577,12 +91567,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/starboard/east)
-"txL" = (
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "bluecorner"
-	},
-/area/station/hallway/primary/central/east)
 "txR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -101733,6 +101717,17 @@
 	icon_state = "hydrofloor"
 	},
 /area/station/maintenance/asmaint)
+"wUW" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/hallway/primary/central/se)
 "wVf" = (
 /obj/machinery/atmospherics/unary/portables_connector{
 	dir = 1
@@ -134927,7 +134922,7 @@ fRt
 tsK
 tnu
 grw
-fkF
+byP
 bCJ
 beE
 qwU
@@ -138783,7 +138778,7 @@ bOz
 bAl
 bBF
 bCY
-txL
+bRg
 bFU
 nis
 rvX
@@ -139035,7 +139030,7 @@ bRm
 bRm
 pwD
 gJF
-kFL
+jOU
 nTf
 bFi
 ftl
@@ -139047,8 +139042,8 @@ xQF
 xQF
 czd
 wsq
-gAz
-hjJ
+wUW
+bRt
 cdU
 mac
 cse
@@ -139299,7 +139294,7 @@ nRN
 bAf
 odh
 odh
-bRt
+bFW
 odh
 odh
 bEn
@@ -139557,11 +139552,11 @@ bkC
 ogI
 ogI
 ogI
-bno
-bFW
+fkF
+kJG
 ogI
-bRg
 bDc
+ozL
 ogI
 ogI
 ogI
@@ -140590,7 +140585,7 @@ srv
 vxo
 bSn
 bSn
-mcG
+bno
 gYk
 bSv
 xCd
