@@ -867,12 +867,12 @@
 	dir = 8
 	},
 /obj/item/radio/intercom/custom{
-	dir = 8;
-	pixel_x = 37
+	dir = 4;
+	pixel_x = 38
 	},
 /obj/item/radio/intercom/department/security{
-	pixel_x = 24;
-	dir = 8
+	pixel_x = 25;
+	dir = 4
 	},
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
@@ -1240,7 +1240,7 @@
 /area/station/science/toxins/mixing)
 "ahD" = (
 /obj/item/radio/intercom/department/security{
-	pixel_y = 22
+	pixel_y = 28
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -3286,12 +3286,12 @@
 /obj/item/pen,
 /obj/machinery/requests_console/directional/south,
 /obj/item/radio/intercom/department/security{
-	pixel_x = -24;
-	dir = 4
+	pixel_x = -25;
+	dir = 8
 	},
 /obj/item/radio/intercom/custom{
-	dir = 4;
-	pixel_x = -37
+	dir = 8;
+	pixel_x = -38
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -4038,10 +4038,7 @@
 "asg" = (
 /obj/item/bikehorn/rubberducky,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/radio/intercom/locked/prison/directional/south{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -4631,6 +4628,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -5607,10 +5605,12 @@
 /area/station/security/processing)
 "axQ" = (
 /obj/item/radio/intercom/custom{
-	pixel_y = -37
+	pixel_y = -38;
+	dir = 2
 	},
 /obj/item/radio/intercom/department/security{
-	pixel_y = -24
+	pixel_y = -25;
+	dir = 2
 	},
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -6622,12 +6622,12 @@
 	dir = 4
 	},
 /obj/item/radio/intercom/custom{
-	dir = 4;
-	pixel_x = -36
+	dir = 8;
+	pixel_x = -38
 	},
 /obj/item/radio/intercom/department/security{
-	pixel_x = -22;
-	dir = 4
+	pixel_x = -25;
+	dir = 8
 	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
@@ -8396,6 +8396,7 @@
 "aGq" = (
 /obj/structure/chair,
 /obj/machinery/light/small/directional/north,
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -8750,7 +8751,6 @@
 "aHx" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/drinks/drinkingglass,
-/obj/item/radio/intercom/directional/west,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -8787,6 +8787,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/wood/fancy,
 /area/station/legal/courtroom/gallery)
 "aHC" = (
@@ -10836,8 +10837,8 @@
 /obj/structure/chair/sofa/pew/right{
 	dir = 8
 	},
-/obj/machinery/ai_status_display/directional/south,
 /obj/effect/turf_decal/siding/wood,
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/wood/fancy,
 /area/station/legal/courtroom/gallery)
 "aPC" = (
@@ -10852,12 +10853,12 @@
 	},
 /area/station/legal/courtroom/gallery)
 "aPE" = (
-/obj/item/radio/intercom/directional/south,
 /obj/machinery/light/directional/south,
 /obj/structure/chair/sofa/pew/right{
 	dir = 8
 	},
 /obj/effect/turf_decal/siding/wood,
+/obj/machinery/ai_status_display/directional/south,
 /turf/simulated/floor/wood/fancy,
 /area/station/legal/courtroom/gallery)
 "aPF" = (
@@ -13237,13 +13238,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/checkpoint/secondary)
 "aXE" = (
-/obj/item/radio/intercom/department/security{
-	pixel_x = 22;
-	dir = 8
-	},
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/item/radio/intercom/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "red"
@@ -20989,7 +20987,8 @@
 /area/station/turret_protected/ai_upload)
 "bCL" = (
 /obj/item/radio/intercom/private{
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /obj/machinery/computer/borgupload{
 	dir = 1
@@ -34205,6 +34204,8 @@
 /obj/machinery/firealarm/directional/south,
 /obj/structure/closet/jcloset,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "purple"
@@ -35051,15 +35052,14 @@
 	},
 /area/station/hallway/primary/aft)
 "cHL" = (
-/obj/item/radio/intercom/locked/prison/directional/west{
-	name = "Prison Intercom (General)";
-	pixel_x = 22
+/obj/item/radio/intercom/department/security{
+	pixel_y = -28;
+	dir = 2
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
-	icon_state = "bar"
+	icon_state = "dark"
 	},
-/area/station/security/permabrig)
+/area/station/security/interrogation/observation)
 "cHM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -35772,22 +35772,22 @@
 /area/station/science/xenobiology)
 "cJM" = (
 /obj/item/radio/intercom/private{
-	pixel_x = 28;
-	pixel_y = 4
-	},
-/obj/item/radio/intercom/custom{
-	pixel_x = -28;
-	pixel_y = 4
-	},
-/obj/item/radio/intercom/custom{
-	pixel_y = 34
+	pixel_x = 32;
+	pixel_y = 6
 	},
 /obj/machinery/door_control/shutter/north{
-	pixel_x = null;
 	name = "AI Core Shutters";
-	id = "AI Core Shutters"
+	id = "AI Core Shutters";
+	pixel_y = 38
 	},
 /obj/effect/landmark/start/ai,
+/obj/item/radio/intercom/custom{
+	pixel_x = -32;
+	pixel_y = 6
+	},
+/obj/item/radio/intercom/custom{
+	pixel_y = 28
+	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "cJO" = (
@@ -43754,9 +43754,11 @@
 	},
 /area/station/engineering/solar/starboard)
 "doi" = (
-/obj/item/radio/intercom/directional/north,
 /obj/machinery/light/directional/north,
 /obj/machinery/computer/card,
+/obj/item/radio/intercom/department/security{
+	pixel_y = 28
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -50305,7 +50307,8 @@
 /obj/item/radio/intercom/locked/ai_private{
 	broadcasting = 1;
 	listening = 0;
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -54802,6 +54805,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
+"gNP" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/bag/tray,
+/obj/item/radio/intercom/locked/prison/directional/west,
+/turf/simulated/floor/plasteel{
+	icon_state = "bar"
+	},
+/area/station/security/permabrig)
 "gNQ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -55790,12 +55801,10 @@
 	},
 /area/station/hallway/primary/central/nw)
 "hct" = (
-/obj/structure/janitorialcart,
 /obj/machinery/light/directional/east,
-/obj/item/reagent_containers/glass/bucket,
-/obj/item/mop,
 /obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/janitorialcart/full,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "purple"
@@ -58335,10 +58344,7 @@
 "hUX" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small/directional/west,
-/obj/item/radio/intercom/locked/prison/directional/south{
-	name = "Prison Intercom (General)";
-	pixel_y = 28
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -65043,10 +65049,11 @@
 /area/station/science/break_room)
 "ktF" = (
 /obj/item/radio/intercom/custom{
-	pixel_y = 22
+	pixel_y = 28
 	},
 /obj/item/radio/intercom/private{
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /obj/item/radio/intercom/directional/west,
 /obj/effect/landmark{
@@ -66863,10 +66870,7 @@
 "laL" = (
 /obj/structure/table,
 /obj/item/camera,
-/obj/item/radio/intercom/locked/prison/directional/south{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/wood/oak,
 /area/station/security/permabrig)
 "laP" = (
@@ -67139,6 +67143,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -68885,6 +68890,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/wood/fancy,
 /area/station/legal/courtroom/gallery)
 "lKO" = (
@@ -73463,10 +73469,11 @@
 /area/station/security/brig)
 "npm" = (
 /obj/item/radio/intercom/custom{
-	pixel_y = 22
+	pixel_y = 28
 	},
 /obj/item/radio/intercom/private{
-	pixel_y = -22
+	pixel_y = -28;
+	dir = 2
 	},
 /obj/item/radio/intercom/directional/east,
 /obj/effect/landmark{
@@ -81756,10 +81763,6 @@
 	},
 /area/station/maintenance/fore)
 "qen" = (
-/obj/item/radio/intercom/locked/prison/directional/south{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
 /obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/portable/scrubber/huge/stationary,
 /turf/simulated/floor/grass,
@@ -86692,11 +86695,8 @@
 	},
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/radio/intercom/locked/prison/directional/south{
-	name = "Prison Intercom (General)";
-	pixel_y = 28
-	},
 /obj/effect/landmark/start/prisoner,
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -89927,6 +89927,11 @@
 	icon_state = "neutralfull"
 	},
 /area/station/security/lobby)
+"sVi" = (
+/obj/structure/flora/grass/jungle,
+/obj/item/radio/intercom/locked/prison/directional/north,
+/turf/simulated/floor/grass,
+/area/station/security/permabrig)
 "sVr" = (
 /obj/structure/morgue,
 /obj/effect/landmark/spawner/rev,
@@ -91404,10 +91409,6 @@
 "twL" = (
 /obj/structure/bed{
 	dir = 4
-	},
-/obj/item/radio/intercom/locked/prison/directional/south{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -92951,6 +92952,7 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/item/radio/intercom/locked/prison/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -97318,10 +97320,6 @@
 /area/station/maintenance/apmaint)
 "vxy" = (
 /obj/structure/bed,
-/obj/item/radio/intercom/locked/prison/directional/south{
-	name = "Prison Intercom (General)";
-	pixel_y = 22
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -97799,10 +97797,6 @@
 "vEA" = (
 /obj/structure/sink/kitchen/east,
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/radio/intercom/locked/prison/directional/west{
-	name = "Prison Intercom (General)";
-	pixel_x = 22
-	},
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
 "vEL" = (
@@ -100735,10 +100729,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/radio/intercom/locked/prison/directional/east{
-	name = "Prison Intercom (General)";
-	pixel_x = -28
-	},
+/obj/item/radio/intercom/locked/prison/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "wHh" = (
@@ -104182,6 +104173,7 @@
 "xNV" = (
 /obj/machinery/biogenerator,
 /obj/machinery/light/directional/south,
+/obj/item/radio/intercom/locked/prison/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "xOn" = (
@@ -122794,7 +122786,7 @@ abN
 qXR
 qQy
 uFC
-vSi
+gNP
 lXd
 vSi
 esV
@@ -123306,7 +123298,7 @@ aaa
 aaa
 abN
 tXG
-cHL
+lxO
 tia
 lxO
 eGU
@@ -125377,7 +125369,7 @@ anf
 ado
 asj
 lKq
-fMM
+sVi
 hAh
 xBl
 aEO
@@ -138746,7 +138738,7 @@ axS
 azc
 azX
 aBi
-aHU
+cHL
 aBs
 ogL
 awl
