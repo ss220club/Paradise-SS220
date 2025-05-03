@@ -1105,12 +1105,13 @@
 	},
 /area/station/security/brig)
 "agp" = (
-/obj/machinery/light/directional/south,
+/obj/machinery/hologram/holopad,
+/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
-	dir = 8;
+	dir = 4;
 	icon_state = "darkredcorners"
 	},
-/area/station/security/brig)
+/area/station/security/main)
 "agq" = (
 /obj/machinery/camera{
 	c_tag = "Brig Main Hall West 2"
@@ -1983,18 +1984,20 @@
 	},
 /area/station/security/storage)
 "akD" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "Processing"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "Secure Gate";
 	name = "Security Blast Door"
 	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "Brig Desk Shutters";
+	id_tag = "brigdesk"
+	},
 /turf/simulated/floor/plating,
-/area/station/security/processing)
+/area/station/security/brig)
 "akF" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/carpet,
@@ -2710,14 +2713,16 @@
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/public/vacant_office)
 "amO" = (
-/obj/structure/chair/office/dark,
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "0-4"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred"
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Secure Gate";
+	name = "Security Blast Door"
 	},
-/area/station/security/brig)
+/turf/simulated/floor/plating,
+/area/station/security/prisonlockers)
 "amP" = (
 /obj/effect/landmark/start/head_of_security,
 /obj/structure/chair/comfy/black{
@@ -4666,18 +4671,44 @@
 	},
 /area/station/security/prisonershuttle)
 "auD" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
-	name = "Brig Desk Shutters";
-	id_tag = "brigdesk"
+/obj/structure/table/reinforced,
+/obj/machinery/door_control/normal/east{
+	pixel_y = 7;
+	name = "Brig Foyer Left Doors";
+	req_access = list(63);
+	desc = "A remote control switch for the brig foyer.";
+	id = "BrigLeft";
+	pixel_x = -6
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/door_control/normal/east{
+	id = "BrigRight";
+	name = "Brig Foyer Right Doors";
+	req_access = list(63);
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/machinery/door_control/normal/east{
+	pixel_y = -2;
+	desc = "A remote control switch for the brig foyer.";
+	id = "BrigEast";
+	name = "Brig Foyer East Doors";
+	req_access = list(63);
+	pixel_x = 6
+	},
+/obj/machinery/door_control/shutter/north{
+	id = "brigdesk";
+	name = "\improper Brig Desk Shutters Control";
+	pixel_x = -6;
+	pixel_y = -2;
+	req_access = list(1)
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkred"
+	},
 /area/station/security/brig)
 "auE" = (
 /obj/effect/spawner/window/reinforced/polarized/grilled{
@@ -16146,9 +16177,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plating,
 /area/station/service/hydroponics)
 "bhv" = (
 /obj/structure/chair/comfy/beige{
@@ -29725,7 +29754,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 4;
+	icon_state = "darkpurple"
 	},
 /area/station/command/office/rd)
 "cmj" = (
@@ -36556,22 +36586,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
-"cMZ" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
-	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
-	name = "Brig Desk Shutters";
-	id_tag = "brigdesk"
-	},
-/turf/simulated/floor/plating,
-/area/station/security/brig)
 "cNh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -40568,17 +40582,6 @@
 /obj/item/newspaper,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
-"dbj" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
-	},
-/turf/simulated/floor/plating,
-/area/station/security/prisonlockers)
 "dbo" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/organ/internal/heart/vox,
@@ -45700,45 +45703,18 @@
 	},
 /area/station/engineering/atmos/control)
 "dEj" = (
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "Processing"
+	},
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "0-8"
 	},
-/obj/structure/table/reinforced,
-/obj/machinery/door_control/normal/east{
-	pixel_y = 7;
-	name = "Brig Foyer Left Doors";
-	req_access = list(63);
-	desc = "A remote control switch for the brig foyer.";
-	id = "BrigLeft";
-	pixel_x = -6
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Secure Gate";
+	name = "Security Blast Door"
 	},
-/obj/machinery/door_control/normal/east{
-	id = "BrigRight";
-	name = "Brig Foyer Right Doors";
-	req_access = list(63);
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/machinery/door_control/normal/east{
-	pixel_y = -2;
-	desc = "A remote control switch for the brig foyer.";
-	id = "BrigEast";
-	name = "Brig Foyer East Doors";
-	req_access = list(63);
-	pixel_x = 6
-	},
-/obj/machinery/door_control/shutter/north{
-	id = "brigdesk";
-	name = "\improper Brig Desk Shutters Control";
-	pixel_x = -6;
-	pixel_y = -2;
-	req_access = list(1)
-	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkred"
-	},
-/area/station/security/brig)
+/turf/simulated/floor/plating,
+/area/station/security/processing)
 "dEq" = (
 /obj/structure/rack,
 /obj/item/reagent_containers/drinks/bottle/whiskey{
@@ -46554,6 +46530,18 @@
 	icon_state = "darkred"
 	},
 /area/station/security/main)
+"dTr" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "whitepurple"
+	},
+/area/station/command/office/rd)
 "dTF" = (
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -53457,6 +53445,28 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
+"gmf" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Secure Gate";
+	name = "Security Blast Door"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	name = "Brig Desk Shutters";
+	id_tag = "brigdesk"
+	},
+/turf/simulated/floor/plating,
+/area/station/security/brig)
 "gmn" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -55314,7 +55324,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "white"
+	dir = 8;
+	icon_state = "whitepurple"
 	},
 /area/station/command/office/rd)
 "gQK" = (
@@ -58783,6 +58794,7 @@
 "hXp" = (
 /obj/effect/turf_decal/siding/wood/cherry,
 /obj/machinery/newscaster/directional/south,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/bar/atrium)
 "hXB" = (
@@ -62387,7 +62399,8 @@
 /area/station/science/xenobiology)
 "jpy" = (
 /turf/simulated/floor/plasteel{
-	icon_state = "white"
+	dir = 10;
+	icon_state = "whitepurple"
 	},
 /area/station/command/office/rd)
 "jpG" = (
@@ -62762,6 +62775,7 @@
 	c_tag = "Bar East";
 	dir = 8
 	},
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/bar/atrium)
 "jwb" = (
@@ -66869,15 +66883,7 @@
 	id_tag = "Secure Gate";
 	name = "Security Blast Door"
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/preopen{
 	name = "Brig Desk Shutters";
 	id_tag = "brigdesk"
@@ -67224,6 +67230,20 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_starboard)
+"kYz" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Secure Gate";
+	name = "Security Blast Door"
+	},
+/obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	name = "Brig Desk Shutters";
+	id_tag = "brigdesk"
+	},
+/turf/simulated/floor/plating,
+/area/station/security/brig)
 "kYC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -67884,6 +67904,17 @@
 	icon_state = "white"
 	},
 /area/station/science/xenobiology)
+"llP" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Secure Gate";
+	name = "Security Blast Door"
+	},
+/turf/simulated/floor/plating,
+/area/station/security/warden)
 "llV" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -70794,17 +70825,6 @@
 	},
 /turf/simulated/floor/light/purple,
 /area/station/service/bar)
-"mhP" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
-	},
-/turf/simulated/floor/plating,
-/area/station/security/prisonlockers)
 "mhQ" = (
 /obj/structure/railing/cap/reversed{
 	dir = 4
@@ -72121,14 +72141,6 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/service/bar)
-"mGp" = (
-/obj/machinery/hologram/holopad,
-/obj/effect/turf_decal/delivery/red/hollow,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkredcorners"
-	},
-/area/station/security/main)
 "mGG" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/preopen{
@@ -82000,6 +82012,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/port)
+"pZy" = (
+/obj/structure/chair/office/dark,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkred"
+	},
+/area/station/security/brig)
 "pZA" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -83482,19 +83503,6 @@
 	icon_state = "whiteblue"
 	},
 /area/station/medical/storage)
-"qxQ" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
-	},
-/obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	name = "Brig Desk Shutters";
-	id_tag = "brigdesk"
-	},
-/turf/simulated/floor/plating,
-/area/station/security/brig)
 "qxW" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -91990,17 +91998,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
-"tuU" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
-	},
-/turf/simulated/floor/plating,
-/area/station/security/warden)
 "tuZ" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/maintenance,
@@ -94377,6 +94374,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
 	name = "Brig Desk Shutters";
 	id_tag = "brigdesk"
 	},
@@ -94691,6 +94689,13 @@
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/service/library)
+"uoA" = (
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkredcorners"
+	},
+/area/station/security/brig)
 "uoH" = (
 /obj/machinery/alarm/directional/west,
 /obj/structure/disposalpipe/segment,
@@ -100350,28 +100355,6 @@
 	icon_state = "red"
 	},
 /area/station/security/permabrig)
-"wjY" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
-	name = "Brig Desk Shutters";
-	id_tag = "brigdesk"
-	},
-/turf/simulated/floor/plating,
-/area/station/security/brig)
 "wkg" = (
 /obj/machinery/hydroponics/constructable{
 	desc = "These are connected with an irrigation tube. You see a little pipe connecting the trays.";
@@ -104743,7 +104726,6 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/bar/atrium)
 "xIi" = (
@@ -105711,6 +105693,27 @@
 /obj/item/trash/chips,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
+"xWo" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Secure Gate";
+	name = "Security Blast Door"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "Brig Desk Shutters";
+	id_tag = "brigdesk"
+	},
+/turf/simulated/floor/plating,
+/area/station/security/brig)
 "xWI" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp{
@@ -106025,6 +106028,17 @@
 	icon_state = "darkblue"
 	},
 /area/station/medical/morgue)
+"yar" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Secure Gate";
+	name = "Security Blast Door"
+	},
+/turf/simulated/floor/plating,
+/area/station/security/prisonlockers)
 "yaK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
@@ -132486,7 +132500,7 @@ aaa
 aaa
 aaa
 aaa
-mhP
+amO
 lgS
 xRT
 ydz
@@ -133000,7 +133014,7 @@ aaa
 aaa
 aaa
 aaa
-dbj
+yar
 lgS
 esN
 xue
@@ -134038,9 +134052,9 @@ arD
 axw
 atg
 aqI
-cMZ
-wjY
-auD
+ujD
+gmf
+kYz
 aqI
 wxn
 sVZ
@@ -134542,7 +134556,7 @@ ahF
 ahF
 ahF
 aaa
-tuU
+llP
 amz
 qIL
 amy
@@ -134554,7 +134568,7 @@ asR
 umw
 anX
 ark
-amO
+pZy
 egl
 axZ
 axz
@@ -134810,7 +134824,7 @@ axw
 akx
 aqI
 jeS
-dEj
+auD
 asY
 auJ
 axZ
@@ -135066,9 +135080,9 @@ rHa
 tgF
 iZR
 aqI
-ujD
+akD
+xWo
 kSz
-qxQ
 aqI
 gfo
 cBD
@@ -138927,7 +138941,7 @@ avA
 aAF
 aAF
 jZQ
-akD
+dEj
 azW
 aBb
 aCw
@@ -139940,7 +139954,7 @@ sqZ
 noA
 adX
 pSs
-mGp
+agp
 bCO
 hRm
 bmt
@@ -140461,7 +140475,7 @@ rhp
 apT
 wyJ
 uAG
-agp
+uoA
 aFL
 aFL
 aFL
@@ -153377,7 +153391,7 @@ uvM
 mjP
 rvf
 cdf
-dAw
+dTr
 dAw
 qbX
 uoQ
