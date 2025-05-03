@@ -2261,7 +2261,7 @@
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
 	},
-/obj/structure/filingcabinet/security,
+/obj/structure/filingcabinet,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
 "alL" = (
@@ -2472,11 +2472,7 @@
 /area/space/nearstation)
 "amm" = (
 /obj/structure/table/reinforced,
-/obj/machinery/button/windowtint/south{
-	id = "briefing";
-	req_access = list(63);
-	pixel_y = 3
-	},
+/obj/item/storage/fancy/donut_box,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkredcorners"
@@ -3067,7 +3063,15 @@
 	},
 /area/station/security/lobby)
 "aom" = (
-/obj/item/kirbyplants/large,
+/obj/item/storage/fancy/donut_box{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/structure/table/reinforced,
+/obj/item/radio/security{
+	pixel_x = -9;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkred"
@@ -3631,31 +3635,40 @@
 	},
 /area/station/security/main)
 "apU" = (
-/obj/structure/table/wood,
 /obj/machinery/power/apc/directional/south,
 /obj/machinery/camera{
 	c_tag = "Brig Head of Security's Office";
 	dir = 1
 	},
-/obj/item/folder/red,
-/obj/item/folder/red,
-/obj/item/cartridge/detective,
-/obj/item/megaphone,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
 /obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/bed/dogbed{
+	desc = "A comfy-looking spider bed. You can even strap your pet in, just in case the gravity turns off.";
+	name = "spider bed"
+	},
+/mob/living/simple_animal/hostile/retaliate/araneus,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
 "apV" = (
-/obj/structure/table/wood,
-/obj/item/taperecorder{
-	pixel_x = -3
-	},
-/obj/item/radio/security{
-	pixel_x = 8
-	},
 /obj/effect/turf_decal/siding/wood/oak,
+/obj/item/storage/fancy/donut_box{
+	pixel_x = -9;
+	pixel_y = 2
+	},
+/obj/structure/table/wood,
+/obj/item/folder/red{
+	pixel_x = 7
+	},
+/obj/item/folder/red{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/cartridge/detective{
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
 "apW" = (
@@ -8263,14 +8276,8 @@
 "aFB" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/detective{
-	pixel_y = 3
-	},
-/obj/item/clothing/glasses/sunglasses{
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/drinks/flask/detflask{
-	pixel_x = 16;
-	pixel_y = 4
+	pixel_y = 3;
+	pixel_x = -6
 	},
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -8278,21 +8285,31 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/obj/item/reagent_containers/drinks/flask/detflask{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/storage/fancy/cigarettes/dromedaryco{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/clothing/glasses/sunglasses{
+	pixel_y = 6;
+	pixel_x = -4
+	},
 /turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "aFD" = (
 /obj/structure/table/wood,
-/obj/item/storage/fancy/cigarettes/dromedaryco{
-	pixel_x = -16;
-	pixel_y = 2
-	},
 /obj/item/ashtray/bronze{
-	pixel_x = -16
+	pixel_x = -11;
+	pixel_y = 9
 	},
 /obj/item/flashlight/lamp/green{
-	pixel_y = 8
+	pixel_y = 16;
+	pixel_x = 7
 	},
-/obj/item/id_skin/donut,
+/obj/item/storage/fancy/donut_box,
 /turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "aFE" = (
@@ -22693,6 +22710,11 @@
 "bIA" = (
 /obj/structure/closet/radiation,
 /obj/effect/turf_decal/delivery/blue,
+/obj/machinery/camera{
+	c_tag = "Research Hallway Center";
+	dir = 1;
+	network = list("Research","SS13")
+	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "whiteblue"
@@ -66763,7 +66785,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/arcade,
+/obj/effect/turf_decal/siding/blue{
+	color = "#26729C";
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
 "kPV" = (
 /obj/structure/disposalpipe/segment/corner{
@@ -67026,9 +67052,17 @@
 	},
 /area/station/public/dorms)
 "kTA" = (
-/obj/machinery/photocopier,
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 10
+	},
+/obj/structure/table/wood,
+/obj/item/taperecorder{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/radio/security{
+	pixel_x = 8;
+	pixel_y = 5
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
@@ -70482,8 +70516,10 @@
 /area/station/maintenance/aft)
 "mbb" = (
 /obj/structure/table/reinforced,
-/obj/item/taperecorder{
-	pixel_y = 4
+/obj/machinery/button/windowtint/south{
+	id = "briefing";
+	req_access = list(63);
+	pixel_y = 3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -73312,11 +73348,11 @@
 	},
 /obj/item/camera_film{
 	pixel_y = 5;
-	pixel_x = 10
+	pixel_x = 9
 	},
 /obj/item/camera_film{
 	pixel_y = -1;
-	pixel_x = 10
+	pixel_x = 9
 	},
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/wood/parquet/oak,
@@ -74970,6 +75006,10 @@
 "nEA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/camera{
+	c_tag = "Medbay Hallway Center";
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whiteblue"
@@ -78551,7 +78591,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/arcade,
+/obj/effect/turf_decal/siding/blue{
+	color = "#26729C";
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
 "oPu" = (
 /obj/machinery/requests_console/directional/north,
@@ -80042,7 +80086,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/arcade,
+/obj/effect/turf_decal/siding/blue{
+	color = "#26729C";
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
 "pnz" = (
 /obj/effect/decal/cleanable/blood/old{
@@ -84912,8 +84960,15 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/structure/table,
+/obj/item/flash{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/obj/item/taperecorder{
+	pixel_x = -6;
+	pixel_y = 3
+	},
 /obj/item/restraints/handcuffs,
-/obj/item/flash,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkred"
@@ -95480,14 +95535,10 @@
 	},
 /area/station/maintenance/aft)
 "uAu" = (
-/obj/structure/bed/dogbed{
-	desc = "A comfy-looking spider bed. You can even strap your pet in, just in case the gravity turns off.";
-	name = "spider bed"
-	},
-/mob/living/simple_animal/hostile/retaliate/araneus,
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 1
 	},
+/obj/machinery/photocopier,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
 "uAw" = (
@@ -96654,7 +96705,7 @@
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 10
 	},
-/obj/structure/filingcabinet/chestdrawer,
+/obj/structure/filingcabinet/security,
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "uVH" = (
@@ -102656,6 +102707,7 @@
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
 	},
+/obj/item/megaphone,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
 "wXg" = (
