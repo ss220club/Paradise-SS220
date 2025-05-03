@@ -8313,7 +8313,6 @@
 /area/station/hallway/primary/fore)
 "aFG" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "Secure Gate";
@@ -8328,6 +8327,10 @@
 /obj/effect/mapping_helpers/airlock/access/any/security/forensics,
 /obj/structure/cable{
 	icon_state = "2-4"
+	},
+/obj/machinery/door/airlock/security/glass,
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "Detective"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
@@ -14905,9 +14908,10 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
 "bcB" = (
-/turf/simulated/floor/plasteel/stairs{
-	color = "#888888";
-	dir = 4
+/obj/item/kirbyplants/large,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkneutralcorner";
+	dir = 8
 	},
 /area/station/service/chapel/office)
 "bcC" = (
@@ -17533,9 +17537,10 @@
 /area/station/public/dorms)
 "bmU" = (
 /obj/item/kirbyplants/large,
+/obj/structure/railing,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralcorner";
-	dir = 8
+	dir = 1
 	},
 /area/station/service/chapel/office)
 "bmW" = (
@@ -25134,10 +25139,7 @@
 	},
 /area/station/medical/medbay2)
 "bSW" = (
-/obj/structure/railing/cap/normal{
-	dir = 8
-	},
-/obj/structure/railing/cap/reversed,
+/obj/structure/railing/cap/normal,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -53369,7 +53371,10 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
 "gkj" = (
-/obj/structure/railing/cap/normal,
+/obj/structure/railing/cap/normal{
+	dir = 8
+	},
+/obj/structure/railing/cap/reversed,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -64341,6 +64346,12 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
+"jVQ" = (
+/turf/simulated/floor/plasteel/stairs{
+	color = "#888888";
+	dir = 4
+	},
+/area/station/service/chapel/office)
 "jWy" = (
 /obj/structure/table/wood,
 /obj/item/storage/lockbox/medal,
@@ -72712,14 +72723,6 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/fsmaint)
-"mSO" = (
-/obj/item/kirbyplants/large,
-/obj/structure/railing,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkneutralcorner";
-	dir = 1
-	},
-/area/station/service/chapel/office)
 "mTh" = (
 /obj/structure/shelf/service,
 /obj/item/storage/box/disks_plantgene{
@@ -154749,10 +154752,10 @@ bhA
 aYA
 baA
 baz
-mSO
-bcB
-tzj
 bmU
+jVQ
+tzj
+bcB
 baz
 bjI
 pfL
@@ -155008,7 +155011,7 @@ bgi
 cXt
 bcF
 bgi
-bSW
+gkj
 vFw
 bhA
 nZN
@@ -155779,7 +155782,7 @@ baC
 aZm
 lZq
 bfS
-gkj
+bSW
 bhZ
 bhA
 bjp
