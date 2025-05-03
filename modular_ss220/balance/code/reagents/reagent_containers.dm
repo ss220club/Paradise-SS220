@@ -6,14 +6,14 @@
 	var/list/reagents_limit = list() // stores limited reagents
 
 /obj/item/reagent_containers/borghypo/refill_hypo(mob/living/silicon/robot/user, quick = FALSE)
-	if(quick) // keep it above istype() since initialize/new are too slow to send a proper `user`
+	if(quick) // gives us a hypo full of reagents no matter what
 		for(var/reagent as anything in reagent_ids)
 			if(reagent_ids[reagent] < volume)
 				var/reagents_to_add = min(volume - reagent_ids[reagent], volume)
 				reagent_ids[reagent] = (reagent_ids[reagent] || 0) + reagents_to_add
 				reagents_produced[reagent] = (reagents_produced[reagent] || 0) + reagents_to_add
 		return
-	if(user?.cell?.use(charge_cost)) // we are a robot, we have a cell and enough charge? let's refill now
+	if(istype(user) && user.cell && user.cell.use(charge_cost)) // we are a robot, we have a cell and enough charge? let's refill now
 		if(charge_tick)
 			charge_tick = 0
 		for(var/reagent as anything in reagent_ids)
