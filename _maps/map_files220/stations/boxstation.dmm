@@ -19663,8 +19663,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkredcorners"
+	icon_state = "dark"
 	},
 /area/station/hallway/secondary/exit)
 "bvR" = (
@@ -31871,6 +31870,9 @@
 "cuA" = (
 /obj/machinery/ai_status_display/directional/south,
 /obj/effect/turf_decal/siding/wood/birch,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/station/command/office/cmo)
 "cuB" = (
@@ -32190,10 +32192,7 @@
 /area/station/medical/virology)
 "cvP" = (
 /obj/machinery/newscaster/directional/north,
-/obj/effect/turf_decal/siding/wood/birch{
-	dir = 1
-	},
-/turf/simulated/floor/wood/fancy/birch,
+/turf/simulated/floor/carpet/cyan,
 /area/station/command/office/cmo)
 "cvQ" = (
 /obj/effect/spawner/random/oil/maybe,
@@ -32430,10 +32429,7 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/secure_storage)
 "cwY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/wood/fancy/birch,
+/turf/simulated/floor/carpet/cyan,
 /area/station/command/office/cmo)
 "cxb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -34658,10 +34654,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /obj/effect/landmark/start/chief_medical_officer,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/station/command/office/cmo)
 "cFA" = (
@@ -54628,18 +54624,6 @@
 	},
 /turf/simulated/floor/wood/fancy,
 /area/station/legal/courtroom/gallery)
-"gFd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/station/public/storage/tools)
 "gFm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -70526,8 +70510,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "mcx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
 /turf/simulated/floor/wood/fancy/birch,
 /area/station/command/office/cmo)
@@ -81579,8 +81566,7 @@
 /area/station/science/xenobiology)
 "pPr" = (
 /obj/machinery/status_display/directional/south,
-/obj/effect/turf_decal/siding/wood/birch,
-/turf/simulated/floor/wood/fancy/birch,
+/turf/simulated/floor/carpet/cyan,
 /area/station/command/office/cmo)
 "pPw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -96953,6 +96939,18 @@
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/medical/psych)
+"vbF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/station/public/storage/tools)
 "vbI" = (
 /obj/machinery/atmospherics/binary/volume_pump/on{
 	dir = 8;
@@ -104538,6 +104536,7 @@
 /obj/effect/turf_decal/siding/wood/birch{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/wood/fancy/birch,
 /area/station/command/office/cmo)
 "xDr" = (
@@ -125655,7 +125654,7 @@ aLu
 jKr
 aVi
 aWr
-gFd
+vbF
 bFv
 pMe
 aNv
