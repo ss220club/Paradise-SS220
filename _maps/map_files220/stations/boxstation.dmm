@@ -260,7 +260,12 @@
 "acy" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/donut_box{
-	pixel_y = 3
+	pixel_y = 5;
+	pixel_x = 4
+	},
+/obj/item/storage/fancy/donut_box{
+	pixel_y = -1;
+	pixel_x = -11
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/security/restroom)
@@ -6315,11 +6320,16 @@
 	dir = 8
 	},
 /obj/structure/table/wood,
-/obj/item/pizzabox/hawaiian{
-	pixel_y = 10
-	},
 /obj/item/kitchen/knife/pizza_cutter{
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_x = -7;
 	pixel_y = 6
+	},
+/obj/item/food/sliced/hawaiian_pizza{
+	pixel_x = 4
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
@@ -14895,21 +14905,20 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
 "bcB" = (
+/turf/simulated/floor/plasteel/stairs{
+	color = "#888888";
+	dir = 4
+	},
+/area/station/service/chapel/office)
+"bcC" = (
+/obj/structure/sign/poster/contraband/soulless_figures/directional/north,
+/obj/item/kirbyplants/large,
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 5
 	},
-/obj/item/kirbyplants/large,
-/turf/simulated/floor/wood/fancy/oak,
-/area/station/service/chapel/office)
-"bcC" = (
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 1
-	},
-/obj/structure/sign/poster/contraband/soulless_figures/directional/north,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/service/chapel/office)
 "bcD" = (
-/obj/structure/railing/cap/normal,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -14918,6 +14927,9 @@
 	},
 /area/station/service/chapel/funeral)
 "bcF" = (
+/obj/structure/railing/cap/reversed{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralcorner";
 	dir = 1
@@ -15515,7 +15527,14 @@
 /area/station/service/chapel/office)
 "ber" = (
 /obj/structure/table/wood,
-/obj/item/lighter/zippo/black,
+/obj/item/lighter/zippo/black{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/eftpos{
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /turf/simulated/floor/carpet/grimey,
 /area/station/service/chapel/office)
 "bes" = (
@@ -15818,7 +15837,15 @@
 /area/station/service/library)
 "bga" = (
 /obj/structure/table/wood,
-/obj/item/eftpos,
+/obj/item/stack/tile/carpet/black{
+	amount = 10;
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/storage/fancy/crayons{
+	pixel_x = -2;
+	pixel_y = 2
+	},
 /turf/simulated/floor/carpet/grimey,
 /area/station/service/chapel/office)
 "bgb" = (
@@ -16368,6 +16395,9 @@
 	dir = 1
 	},
 /obj/machinery/status_display/directional/south,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralcorner"
 	},
@@ -17502,11 +17532,12 @@
 	},
 /area/station/public/dorms)
 "bmU" = (
-/obj/structure/railing/cap/reversed,
+/obj/item/kirbyplants/large,
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	icon_state = "darkneutralcorner";
+	dir = 8
 	},
-/area/station/service/chapel/funeral)
+/area/station/service/chapel/office)
 "bmW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25103,8 +25134,14 @@
 	},
 /area/station/medical/medbay2)
 "bSW" = (
-/turf/simulated/floor/wood/fancy/oak,
-/area/station/service/chapel/office)
+/obj/structure/railing/cap/normal{
+	dir = 8
+	},
+/obj/structure/railing/cap/reversed,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/service/chapel/funeral)
 "bSZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -46162,15 +46199,14 @@
 	},
 /area/station/medical/medbay2)
 "dKH" = (
-/obj/effect/turf_decal/siding/wood/oak,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/machinery/light_switch/south,
-/obj/item/wrench,
-/obj/structure/table/wood,
 /obj/item/crowbar,
 /obj/item/screwdriver,
+/obj/item/wrench,
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/service/chapel/office)
 "dKK" = (
@@ -51417,10 +51453,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "fAL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/turf_decal/siding/wood/oak,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/service/chapel/office)
 "fAN" = (
@@ -53333,21 +53369,11 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
 "gkj" = (
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 6
+/obj/structure/railing/cap/normal,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
 	},
-/obj/structure/table/wood,
-/obj/item/stack/tile/carpet/black{
-	amount = 10;
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/obj/item/storage/fancy/crayons{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/turf/simulated/floor/wood/fancy/oak,
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "gkm" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -54250,9 +54276,6 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/public/toilet/unisex)
 "gxW" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -72689,6 +72712,14 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/fsmaint)
+"mSO" = (
+/obj/item/kirbyplants/large,
+/obj/structure/railing,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkneutralcorner";
+	dir = 1
+	},
+/area/station/service/chapel/office)
 "mTh" = (
 /obj/structure/shelf/service,
 /obj/item/storage/box/disks_plantgene{
@@ -86215,9 +86246,6 @@
 	},
 /area/station/supply/warehouse)
 "rrJ" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plasteel/stairs/left{
 	color = "#888888";
 	dir = 1
@@ -92259,11 +92287,17 @@
 	},
 /area/station/engineering/hallway)
 "tzj" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkneutral";
+	icon_state = "darkneutralcorner";
 	dir = 8
 	},
-/area/station/service/chapel/funeral)
+/area/station/service/chapel/office)
 "tzm" = (
 /obj/effect/mapping_helpers/turfs/rust/maybe,
 /turf/simulated/wall/r_wall,
@@ -98721,8 +98755,13 @@
 /turf/simulated/floor/plasteel/white/side,
 /area/station/public/locker)
 "vFw" = (
-/obj/item/kirbyplants/large,
 /obj/machinery/light_switch/south,
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralcorner";
 	dir = 8
@@ -153940,8 +153979,8 @@ aXk
 hju
 baI
 bMV
-bSW
-bSW
+pYS
+nCv
 fAL
 nCM
 lxi
@@ -154197,8 +154236,8 @@ aYx
 aXe
 baz
 bcC
-pYS
-nCv
+bcz
+bcz
 dKH
 baz
 qPx
@@ -154453,10 +154492,10 @@ bhA
 bhA
 nQu
 baz
-bcB
-bcz
-bcz
-gkj
+nCM
+bvN
+nCM
+baz
 baz
 bjA
 bpM
@@ -154710,10 +154749,10 @@ bhA
 aYA
 baA
 baz
-nCM
-bvN
-nCM
-baz
+mSO
+bcB
+tzj
+bmU
 baz
 bjI
 pfL
@@ -154968,8 +155007,8 @@ aYz
 bgi
 cXt
 bcF
-tzj
-baA
+bgi
+bSW
 vFw
 bhA
 nZN
@@ -155483,7 +155522,7 @@ baB
 lIV
 bdY
 cBU
-bmU
+bgi
 rrJ
 uIG
 hfu
@@ -155740,7 +155779,7 @@ baC
 aZm
 lZq
 bfS
-bgi
+gkj
 bhZ
 bhA
 bjp
