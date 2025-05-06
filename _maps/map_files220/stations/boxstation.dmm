@@ -7599,8 +7599,15 @@
 "aDk" = (
 /obj/machinery/light/directional/north,
 /obj/structure/table,
-/obj/item/beacon,
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/item/gps{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/beacon{
+	pixel_x = -5;
+	pixel_y = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 1
@@ -12849,8 +12856,7 @@
 	},
 /obj/item/gps{
 	pixel_x = -8;
-	pixel_y = -2;
-	on = 0
+	pixel_y = -2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 7;
@@ -40255,10 +40261,9 @@
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/obj/item/gps{
-	pixel_x = 6;
-	pixel_y = 2;
-	on = 0
+/obj/item/assembly/signaler{
+	pixel_x = 7;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -67795,12 +67800,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/prison/cell_block/a)
 "lcl" = (
-/obj/structure/rack,
-/obj/item/tank/internals/oxygen,
-/obj/item/clothing/mask/gas,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/shieldwallgen,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue"
 	},
@@ -77802,6 +77806,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -95954,7 +95959,9 @@
 /area/station/service/clown)
 "uAU" = (
 /obj/machinery/firealarm/directional/north,
-/obj/machinery/hologram/holopad,
+/obj/structure/rack,
+/obj/item/tank/internals/oxygen,
+/obj/item/clothing/mask/gas,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 1
@@ -101058,14 +101065,8 @@
 	},
 /area/station/medical/storage)
 "wnh" = (
-/obj/structure/closet/crate,
-/obj/effect/turf_decal/delivery,
-/obj/item/gps{
-	on = 0
-	},
-/obj/item/gps{
-	on = 0
-	},
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/shieldwallgen,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue"
 	},
