@@ -1619,6 +1619,9 @@
 	},
 /area/station/security/armory/secure)
 "aiU" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluecorner"
 	},
@@ -2060,9 +2063,6 @@
 	},
 /obj/effect/turf_decal/siding/wood/oak/corner{
 	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
 	},
 /obj/structure/disposalpipe/segment/corner{
 	dir = 4
@@ -5339,6 +5339,9 @@
 /obj/effect/mapping_helpers/airlock/windoor/access/any/security/forensics{
 	dir = 8
 	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -5937,6 +5940,9 @@
 	},
 /area/station/security/execution)
 "ayA" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "ayB" = (
@@ -9100,7 +9106,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -9110,6 +9116,9 @@
 /turf/simulated/wall,
 /area/station/service/clown)
 "aIg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -22765,9 +22774,6 @@
 	},
 /area/station/science/genetics)
 "bIC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -22776,6 +22782,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
@@ -31504,6 +31513,9 @@
 /obj/effect/mapping_helpers/airlock/windoor/access/any/security/forensics{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -39993,7 +40005,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "cYq" = (
-/obj/machinery/light/directional/east,
 /obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel/stairs/left{
 	color = "#888888";
@@ -41369,6 +41380,7 @@
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -46792,6 +46804,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -66587,14 +66600,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_port)
-"kIk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/security/detective)
 "kIR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -69169,14 +69174,14 @@
 /area/station/engineering/controlroom)
 "lBr" = (
 /obj/machinery/hologram/holopad,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
@@ -72489,7 +72494,6 @@
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "mFa" = (
@@ -78626,11 +78630,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "oJZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
 /obj/structure/chair/office/dark{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -81934,9 +81938,6 @@
 /area/station/maintenance/aft)
 "pOw" = (
 /obj/structure/chair/office/dark,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -86695,9 +86696,6 @@
 	},
 /area/station/science/genetics)
 "rtU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -96162,7 +96160,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "uES" = (
-/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel/stairs/right{
 	color = "#888888"
 	},
@@ -139004,7 +139001,7 @@ aAx
 usw
 axe
 aGF
-kIk
+aIb
 qvP
 iKi
 axe
