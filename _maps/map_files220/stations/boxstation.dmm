@@ -11537,7 +11537,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
 "aRf" = (
-/obj/structure/extinguisher_cabinet/directional/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -14208,7 +14207,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/light_switch/south,
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "red"
@@ -15009,9 +15008,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/sign/electricshock{
-	pixel_y = 32
-	},
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry/lounge)
 "bcL" = (
@@ -16051,13 +16048,15 @@
 	},
 /area/station/hallway/secondary/entry/lounge)
 "bgw" = (
-/obj/item/radio/intercom/directional/north,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/sign/electricshock{
+	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry/lounge)
@@ -17628,7 +17627,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm/directional/south,
+/obj/structure/sign/electricshock{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry/lounge)
 "bnd" = (
@@ -19380,6 +19381,7 @@
 /area/station/maintenance/asmaint)
 "btF" = (
 /obj/item/kirbyplants/large,
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkgreen"
@@ -24309,6 +24311,7 @@
 /obj/structure/chair/plastic{
 	dir = 1
 	},
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "arrival"
 	},
@@ -51304,6 +51307,22 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/central/nw)
+"fuA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "arrival"
+	},
+/area/station/hallway/secondary/entry)
 "fuH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -56295,6 +56314,7 @@
 	tank_volume = 1000
 	},
 /obj/effect/decal/cleanable/dust,
+/obj/effect/turf_decal/stripes/corner,
 /turf/simulated/floor/plating,
 /area/station/service/bar)
 "hag" = (
@@ -57905,7 +57925,6 @@
 "hCn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/extinguisher_cabinet/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner"
 	},
@@ -58840,6 +58859,9 @@
 /obj/item/folder/yellow,
 /obj/item/folder/yellow,
 /obj/effect/spawner/random/maintenance,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "hRN" = (
@@ -73233,7 +73255,7 @@
 /obj/machinery/door/airlock,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/white,
-/area/station/public/toilet/unisex)
+/area/station/maintenance/fsmaint)
 "mUh" = (
 /obj/machinery/light_switch/north,
 /obj/structure/disposalpipe/segment{
@@ -85295,7 +85317,7 @@
 /obj/effect/turf_decal/delivery/white/hollow{
 	color = "#a7a3a6"
 	},
-/obj/machinery/firealarm/directional/south,
+/obj/structure/sign/poster/official/random/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgreen"
 	},
@@ -86794,7 +86816,7 @@
 /obj/effect/turf_decal/delivery/white/hollow{
 	color = "#a7a3a6"
 	},
-/obj/machinery/light_switch/south,
+/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgreen"
 	},
@@ -96349,12 +96371,10 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/sign/electricshock{
-	pixel_y = -32
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry/lounge)
 "uDJ" = (
@@ -100559,7 +100579,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "vYh" = (
-/obj/item/radio/intercom/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "bluecorner"
 	},
@@ -103459,7 +103478,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/radio/intercom/directional/east,
+/obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry/lounge)
 "wZZ" = (
@@ -119968,7 +119987,7 @@ aII
 aLB
 oGl
 aGn
-aPY
+fuA
 aSf
 bhQ
 aMf
