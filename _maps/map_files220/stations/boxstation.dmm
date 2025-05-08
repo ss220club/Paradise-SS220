@@ -12157,6 +12157,7 @@
 	},
 /obj/machinery/chem_dispenser,
 /obj/machinery/status_display/directional/north,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/engine,
 /area/station/medical/chemistry)
 "aTT" = (
@@ -12181,7 +12182,6 @@
 	dir = 5
 	},
 /obj/machinery/chem_heater,
-/obj/machinery/light/directional/north,
 /turf/simulated/floor/engine,
 /area/station/medical/chemistry)
 "aTW" = (
@@ -22204,7 +22204,6 @@
 /obj/item/storage/bag/chemistry{
 	pixel_x = -7
 	},
-/obj/structure/extinguisher_cabinet/directional/south,
 /obj/item/lighter/zippo{
 	name = "Ash Generator 3000";
 	pixel_x = 7;
@@ -22215,6 +22214,7 @@
 	pixel_x = 7;
 	pixel_y = 6
 	},
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteyellow"
 	},
@@ -25367,7 +25367,6 @@
 	},
 /area/station/hallway/primary/central/se)
 "bTI" = (
-/obj/machinery/light/directional/west,
 /obj/structure/table/glass,
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -57235,7 +57234,8 @@
 	},
 /obj/item/radio/intercom/locked/prison/directional/south{
 	name = "Prison Intercom (General)";
-	pixel_y = 28
+	pixel_y = 28;
+	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -58376,11 +58376,11 @@
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "hKc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "hKe" = (
@@ -79835,8 +79835,8 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/machinery/light/directional/east,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteyellow"
@@ -85804,11 +85804,11 @@
 	},
 /area/station/security/permabrig)
 "qYn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/prisoner,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/prisoner,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "qYr" = (
@@ -102350,6 +102350,7 @@
 	},
 /obj/machinery/chem_dispenser,
 /obj/machinery/status_display/directional/west,
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/engine,
 /area/station/medical/chemistry)
 "wGj" = (
@@ -105284,10 +105285,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "xDw" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "xDA" = (
@@ -105551,15 +105552,15 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "xJa" = (
-/obj/effect/turf_decal/stripes/white/line{
-	dir = 6
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
