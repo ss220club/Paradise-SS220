@@ -238,8 +238,8 @@
 /datum/ruleset/traitor
 	banned_species = list("Serpentid")
 
-/datum/ruleset/mindflayer
-	banned_species = list("Serpentid")
+/datum/ruleset/implied/mindflayer
+	banned_species = list("Machine","Serpentid")
 
 /datum/ruleset/vampire
 	banned_species = list("Machine","Serpentid")
