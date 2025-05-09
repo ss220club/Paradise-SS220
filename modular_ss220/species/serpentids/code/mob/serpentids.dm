@@ -229,9 +229,6 @@
 /datum/antag_scenario/traitor
 	restricted_species = list("Serpentid")
 
-/datum/antag_scenario/mindflayer
-	restricted_species = list("Serpentid")
-
 /datum/antag_scenario/team/blood_brothers
 	restricted_species = list("Serpentid")
 
