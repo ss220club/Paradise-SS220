@@ -17,17 +17,12 @@
 /turf/simulated/wall/mineral/titanium/nodiagonal,
 /area/shuttle/abandoned)
 "aI" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -5;
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/unary/passive_vent,
 /obj/structure/filingcabinet/chestdrawer/autopsy,
 /obj/machinery/light/directional/west,
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_x = -32
-	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkblue"
@@ -91,9 +86,7 @@
 /obj/structure/closet/crate/can,
 /obj/item/reagent_containers/glass/beaker/waterbottle/large/empty,
 /obj/item/trash/pistachios,
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_x = 32
-	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "darkblue"
@@ -205,9 +198,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_x = 32
-	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkblue"
@@ -349,10 +340,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -4;
-	pixel_y = 32
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
 	},
@@ -444,6 +432,7 @@
 "jt" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -475,6 +464,7 @@
 /obj/machinery/atmospherics/unary/tank/air{
 	dir = 1
 	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -669,10 +659,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/shuttle/abandoned)
-"pG" = (
-/obj/structure/sign/poster/official/nanotrasen_logo,
-/turf/simulated/wall/mineral/titanium,
-/area/shuttle/abandoned)
 "qi" = (
 /obj/machinery/door/airlock/medical/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -716,9 +702,7 @@
 	scrub_Toxins = 1
 	},
 /obj/item/retractor,
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
 	},
@@ -880,7 +864,7 @@
 	scrub_N2O = 1;
 	scrub_Toxins = 1
 	},
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -997,9 +981,7 @@
 /obj/item/clothing/under/rank/medical/paramedic,
 /obj/item/clothing/shoes/black,
 /obj/item/surgical_drapes,
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_x = 32
-	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "darkblue"
@@ -1063,7 +1045,7 @@
 	},
 /obj/structure/curtain/open,
 /obj/machinery/atmospherics/unary/passive_vent,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/machinery/door_control/shutter/east{
 	id = "whiteshiproom1";
 	name = "Room 1 Shutters Control";
@@ -1139,7 +1121,7 @@
 /area/shuttle/abandoned)
 "DH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
@@ -1181,7 +1163,7 @@
 "Fw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/wood,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbluefull"
@@ -1272,7 +1254,7 @@
 	},
 /obj/structure/curtain/open,
 /obj/machinery/atmospherics/unary/passive_vent,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/machinery/door_control/shutter/east{
 	id = "whiteshiproom2";
 	name = "Room 2 Shutters Control";
@@ -1452,7 +1434,7 @@
 /area/shuttle/abandoned)
 "Mx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /turf/simulated/floor/plating,
 /area/shuttle/abandoned)
 "Mz" = (
@@ -1526,9 +1508,9 @@
 	},
 /obj/machinery/door/airlock/command{
 	id_tag = "whiteshipbridgeairlock";
-	locked = 1;
 	name = "Medical Shuttle Bridge airlock"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbluefull"
@@ -1585,10 +1567,7 @@
 	dir = 1;
 	initialize_directions = 11
 	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 5;
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /obj/machinery/door_control/bolt_control/north{
 	id = "whiteshipinnerairlock2";
 	in_use = 1;
@@ -1601,9 +1580,7 @@
 /area/shuttle/abandoned)
 "PU" = (
 /obj/machinery/light/directional/south,
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/south,
 /obj/machinery/atmospherics/unary/thermomachine/freezer{
 	dir = 1
 	},
@@ -1621,12 +1598,10 @@
 	scrub_N2O = 1;
 	scrub_Toxins = 1
 	},
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_y = 32
-	},
 /obj/item/storage/firstaid/surgery{
 	pixel_y = 8
 	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
 	},
@@ -1775,9 +1750,7 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -28
-	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1899,7 +1872,7 @@
 	},
 /area/shuttle/abandoned)
 "Vj" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /obj/structure/toilet{
 	dir = 4
 	},
@@ -2363,7 +2336,7 @@ Bm
 (13,1,1) = {"
 Bm
 Bm
-pG
+Ts
 jt
 Mz
 qE
@@ -2375,7 +2348,7 @@ Qz
 dy
 sZ
 kn
-pG
+Ts
 Bm
 Bm
 "}
