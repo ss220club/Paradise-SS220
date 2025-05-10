@@ -18253,10 +18253,6 @@
 	dir = 1
 	},
 /area/station/public/locker)
-"bpb" = (
-/obj/structure/lattice,
-/turf/space,
-/area/space)
 "bpc" = (
 /obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/plasteel{
@@ -20929,16 +20925,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
-"bAV" = (
-/obj/machinery/light/small/directional/north,
-/obj/machinery/camera{
-	c_tag = "Medbay Morgue North"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkblue"
-	},
-/area/station/medical/morgue)
 "bAW" = (
 /obj/structure/table/wood,
 /obj/item/clipboard{
@@ -24528,8 +24514,11 @@
 /turf/simulated/floor/wood/fancy/birch,
 /area/station/maintenance/fsmaint)
 "bPT" = (
-/obj/structure/sign/vacuum/external,
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'KEEP CLEAR OF DOCKING AREA'.";
+	name = "KEEP CLEAR: DOCKING AREA"
+	},
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "bPV" = (
@@ -65923,6 +65912,12 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
+"ktN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/public/vacant_store)
 "ktP" = (
 /obj/structure/bed,
 /obj/effect/spawner/random/cobweb/right/frequent,
@@ -67068,11 +67063,6 @@
 	icon_state = "dark"
 	},
 /area/station/science/robotics/chargebay)
-"kOa" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/space/nearstation)
 "kOq" = (
 /obj/machinery/computer/communications{
 	dir = 8
@@ -70051,13 +70041,15 @@
 	},
 /area/station/science/genetics)
 "lNG" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'KEEP CLEAR OF DOCKING AREA'.";
-	name = "KEEP CLEAR: DOCKING AREA";
-	pixel_y = 32
+/obj/machinery/light/small/directional/north,
+/obj/machinery/camera{
+	c_tag = "Medbay Morgue North"
 	},
-/turf/space,
-/area/space)
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "darkblue"
+	},
+/area/station/medical/morgue)
 "lNS" = (
 /obj/machinery/disposal,
 /obj/machinery/door_control/shutter/west{
@@ -79884,12 +79876,6 @@
 /obj/item/toy/plushie/robo_corgi,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
-"pbl" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/public/vacant_store)
 "pbo" = (
 /obj/structure/railing{
 	dir = 10
@@ -123433,7 +123419,7 @@ bnw
 bnK
 svp
 cyj
-cjc
+nqv
 aaa
 aaa
 aaa
@@ -123690,8 +123676,8 @@ vgM
 bnK
 bnK
 bMd
-bKw
-lNG
+blQ
+aaa
 aaa
 aaa
 aaa
@@ -123947,7 +123933,7 @@ bvs
 bnw
 svp
 sTY
-bKw
+blQ
 aaa
 aaa
 aaa
@@ -124204,7 +124190,7 @@ bvs
 cRE
 bnw
 qhr
-cjc
+nqv
 aaa
 aaa
 aaa
@@ -124461,7 +124447,7 @@ bvs
 bym
 bvF
 qhr
-bKw
+blQ
 aaa
 aaa
 aaa
@@ -124718,8 +124704,8 @@ ciC
 bvs
 bnK
 qiX
-cjc
-lNG
+nqv
+aaa
 aaa
 aaa
 aaa
@@ -124975,7 +124961,7 @@ bJx
 bvs
 bnw
 qhr
-cjc
+nqv
 aaa
 aaa
 aaa
@@ -125235,13 +125221,13 @@ tSN
 blQ
 aaa
 aaa
-bPT
+bKB
 bRI
 sft
 peF
 sft
 bUg
-bPT
+bKB
 aaa
 aaa
 aaa
@@ -125492,13 +125478,13 @@ kJs
 mBl
 aaa
 aaa
-bKB
+bPT
 bRK
 bTq
 bxb
 xSH
 bYw
-bKB
+bPT
 aaa
 aaa
 aaa
@@ -132957,7 +132943,7 @@ eJL
 cfi
 iDu
 smS
-pbl
+ktN
 vEy
 bUp
 qqi
@@ -133214,7 +133200,7 @@ eJL
 cfi
 iDu
 bIG
-pbl
+ktN
 lDW
 bUp
 mFO
@@ -149130,7 +149116,7 @@ bAr
 wzx
 jZB
 bEu
-bAV
+lNG
 ttj
 aZT
 bFT
@@ -163800,13 +163786,13 @@ aaa
 aaa
 aaa
 dQR
-bpb
+aab
 qgC
 aaa
 qgC
-bpb
+aab
 rPK
-bpb
+aab
 aQU
 aaa
 aaa
@@ -168421,7 +168407,7 @@ aaa
 aaa
 aaa
 aaa
-kOa
+aab
 aab
 cic
 cic
