@@ -14,6 +14,10 @@
 	var/clients
 	/// Assoc list of players and their types
 	var/list/players = list(PLAYER = list(), PLAYED = list(), GHOST = list(), LOBBY = list())
+	/// Holder for blackbox
+	var/list/player_data
+	/// Holder for blackbox
+	var/list/vote_data
 	/// Assoc list for evac
 	var/list/voted_for = list(
 		YES = list(PLAYER = 0, PLAYED = 0, GHOST = 0, LOBBY = 0),
@@ -32,14 +36,14 @@
 /datum/vote/crew_transfer/handle_result(result)
 	if(result == "Инициировать эвакуацию")
 		init_shift_change(null, TRUE)
-	assign_votes()
-	SSblackbox.record_feedback("associative", "crew_transfer", 1, list(
-		"clients" = clients,
-		"player_types" = player_data,
-		"voted_for" = vote_data,
-		"total_votes" = total_votes,
-		"didnt_vote" = didnt_vote,
-	), ignore_seal = TRUE)
+	if(assign_votes())
+		SSblackbox.record_feedback("associative", "crew_transfer", 1, list(
+			"clients" = clients,
+			"player_types" = player_data,
+			"voted_for" = vote_data,
+			"total_votes" = total_votes,
+			"didnt_vote" = didnt_vote,
+		), ignore_seal = TRUE)
 
 /datum/vote/crew_transfer/start()
 	..()
@@ -53,10 +57,14 @@
 			players[PLAYER] |= mob.ckey
 
 	for(var/mob/mob in GLOB.dead_mob_list)
+		var/assigned = FALSE
 		if(mob.client)
-			if(isobserver(mob) && mob.started_as_observer)
-				players[GHOST] |= mob.ckey
-			else
+			if(isobserver(mob))
+				var/mob/dead/observer/ghost = mob
+				if(ghost.started_as_observer)
+					players[GHOST] |= ghost.ckey
+					assigned = TRUE
+			if(!assigned)
 				players[PLAYED] |= mob.ckey
 
 	for(var/mob/mob in GLOB.new_player_mobs)
@@ -65,7 +73,7 @@
 
 /datum/vote/crew_transfer/proc/assign_votes()
 	if(!length(voted))
-		return
+		return FALSE
 
 	var/list/player_types = list(PLAYER, PLAYED, GHOST, LOBBY)
 	for(var/ckey in voted)
@@ -76,30 +84,31 @@
 					voted_for[vote][type]++
 					break
 
-	var/list/player_data = list(
+	player_data = list(
 		"player" = length(players[PLAYER]),
 		"played" = length(players[PLAYED]),
 		"ghost" = length(players[GHOST]),
 		"lobby" = length(players[LOBBY]),
 	)
 
-	var/list/vote_data = list(
+	vote_data = list(
 		"yes" = list(
 			"player" = voted_for[YES][PLAYER],
 			"played" = voted_for[YES][PLAYED],
 			"ghost" = voted_for[YES][GHOST],
-			"lobby" = voted_for[YES][LOBBY]
+			"lobby" = voted_for[YES][LOBBY],
 		),
 		"no" = list(
 			"player" = voted_for[NO][PLAYER],
 			"played" = voted_for[NO][PLAYED],
 			"ghost" = voted_for[NO][GHOST],
-			"lobby" = voted_for[NO][LOBBY]
+			"lobby" = voted_for[NO][LOBBY],
 		),
 	)
 
 	total_votes = length(voted)
 	didnt_vote = clients - total_votes
+	return TRUE
 
 // Map vote
 /datum/vote/map
