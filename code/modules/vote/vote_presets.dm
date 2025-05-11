@@ -1,7 +1,8 @@
-#define PLAYER "player"
-#define PLAYED "played"
+#define PLAYER "playing"
+#define PLAYED "dead"
 #define GHOST "ghost"
-#define LOBBY "lobby"
+#define LOBBY "in lobby"
+#define UNKNOWN "unknown"
 #define YES "Инициировать эвакуацию"
 #define NO "Продолжить раунд"
 
@@ -10,19 +11,12 @@
 	question = "Окончание смены"
 	choices = list("Инициировать эвакуацию", "Продолжить раунд")
 	vote_type_text = "эвакуацию"
-	/// Players on the server
+	/// Amount of players on the server
 	var/clients
-	/// Assoc list of players and their types
-	var/list/players = list(PLAYER = list(), PLAYED = list(), GHOST = list(), LOBBY = list())
-	/// Holder for blackbox
-	var/list/player_data
-	/// Holder for blackbox
-	var/list/vote_data
-	/// Assoc list for evac
-	var/list/voted_for = list(
-		YES = list(PLAYER = 0, PLAYED = 0, GHOST = 0, LOBBY = 0),
-		NO = list(PLAYER = 0, PLAYED = 0, GHOST = 0, LOBBY = 0),
-	)
+	/// Assoc list of clients and their types
+	var/list/client_types = list(PLAYER = list(), PLAYED = list(), GHOST = list(), LOBBY = list(), UNKNOWN = list())
+	/// Holder for blackbox. Contains ckey, client type and vote. Doesn't include those who didn't vote
+	var/list/player_data = list()
 	/// Players that voted
 	var/total_votes = 0
 	/// Players that didn't vote
@@ -39,10 +33,9 @@
 	if(assign_votes())
 		SSblackbox.record_feedback("associative", "crew_transfer", 1, list(
 			"clients" = clients,
-			"player_types" = player_data,
-			"voted_for" = vote_data,
 			"total_votes" = total_votes,
 			"didnt_vote" = didnt_vote,
+			"player_data" = player_data,
 		), ignore_seal = TRUE)
 
 /datum/vote/crew_transfer/start()
@@ -52,59 +45,35 @@
 /datum/vote/crew_transfer/proc/assign_players()
 	clients = length(GLOB.clients)
 
-	for(var/mob/mob in GLOB.alive_mob_list)
-		if(mob.client)
-			players[PLAYER] |= mob.ckey
-
-	for(var/mob/mob in GLOB.dead_mob_list)
-		var/assigned = FALSE
-		if(mob.client)
-			if(isobserver(mob))
-				var/mob/dead/observer/ghost = mob
+	for(var/client/client in GLOB.clients)
+		if(client.mob in GLOB.alive_mob_list)
+			client_types[PLAYER] |= client.ckey
+		else if(client.mob in GLOB.new_player_mobs)
+			client_types[LOBBY] |= client.ckey
+		else if(client.mob in GLOB.dead_mob_list)
+			if(isobserver(client.mob))
+				var/mob/dead/observer/ghost = client.mob
 				if(ghost.started_as_observer)
-					players[GHOST] |= ghost.ckey
-					assigned = TRUE
-			if(!assigned)
-				players[PLAYED] |= mob.ckey
-
-	for(var/mob/mob in GLOB.new_player_mobs)
-		if(mob.client)
-			players[LOBBY] |= mob.ckey
+					client_types[GHOST] |= client.ckey
+				else
+					client_types[PLAYED] |= client.ckey
+			else
+				client_types[PLAYED] |= client.ckey
+		else // shouldn't happen
+			client_types[UNKNOWN] |= client.ckey
 
 /datum/vote/crew_transfer/proc/assign_votes()
 	if(!length(voted))
 		return FALSE
 
-	var/list/player_types = list(PLAYER, PLAYED, GHOST, LOBBY)
+	var/list/player_types = list(PLAYER, PLAYED, GHOST, LOBBY, UNKNOWN)
 	for(var/ckey in voted)
-		var/vote = voted[ckey]
-		if(vote == "Инициировать эвакуацию" || vote == "Продолжить раунд")
-			for(var/type in player_types)
-				if(ckey in players[type])
-					voted_for[vote][type]++
-					break
-
-	player_data = list(
-		"player" = length(players[PLAYER]),
-		"played" = length(players[PLAYED]),
-		"ghost" = length(players[GHOST]),
-		"lobby" = length(players[LOBBY]),
-	)
-
-	vote_data = list(
-		"yes" = list(
-			"player" = voted_for[YES][PLAYER],
-			"played" = voted_for[YES][PLAYED],
-			"ghost" = voted_for[YES][GHOST],
-			"lobby" = voted_for[YES][LOBBY],
-		),
-		"no" = list(
-			"player" = voted_for[NO][PLAYER],
-			"played" = voted_for[NO][PLAYED],
-			"ghost" = voted_for[NO][GHOST],
-			"lobby" = voted_for[NO][LOBBY],
-		),
-	)
+		var/client_type
+		for(var/type in player_types)
+			if(ckey in client_types[type])
+				client_type = type
+				break
+		player_data[ckey] = list("status" = client_type, "vote" = voted[ckey])
 
 	total_votes = length(voted)
 	didnt_vote = clients - total_votes
@@ -154,3 +123,4 @@
 #undef LOBBY
 #undef YES
 #undef NO
+#undef UNKNOWN
