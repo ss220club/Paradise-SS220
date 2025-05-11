@@ -10,20 +10,22 @@
 	display_name = "Старое коричневое пальто"
 	path = /obj/item/clothing/suit/storage/browntrenchcoat
 
-/datum/gear/suit/detective_blue_jacket
+/datum/gear/suit/det
+	main_typepath = /datum/gear/suit/det
+	allowed_roles = list("Detective", "Head of Security")
+
+/datum/gear/suit/det/blue
 	display_name = "Синяя куртка детектива"
 	path = /obj/item/clothing/suit/storage/det_suit/forensics/blue
-	allowed_roles = list("Detective")
-	cost = 1
 
-/datum/gear/suit/detective_red_jacket
+/datum/gear/suit/det/red
 	display_name = "Красная куртка детектива"
 	path = /obj/item/clothing/suit/storage/det_suit/forensics/red
-	allowed_roles = list("Detective")
-	cost = 1
 
-/datum/gear/suit/detective_black_jacket
+/datum/gear/suit/det/black
 	display_name = "Черная куртка детектива"
 	path = /obj/item/clothing/suit/storage/det_suit/forensics/black
-	allowed_roles = list("Detective")
-	cost = 1
+
+/datum/gear/suit/det/armor
+	display_name = "Бронежилет детектива"
+	path = /obj/item/clothing/suit/armor/vest/det_suit
