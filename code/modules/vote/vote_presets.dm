@@ -1,5 +1,5 @@
 #define PLAYER "playing"
-#define PLAYED "dead"
+#define DEAD_PLAYER "dead"
 #define GHOST "ghost"
 #define LOBBY "in lobby"
 #define UNKNOWN "unknown"
@@ -14,7 +14,7 @@
 	/// Amount of players on the server
 	var/clients
 	/// Assoc list of clients and their types
-	var/list/client_types = list(PLAYER = list(), PLAYED = list(), GHOST = list(), LOBBY = list(), UNKNOWN = list())
+	var/list/client_types = list(PLAYER = list(), DEAD_PLAYER = list(), GHOST = list(), LOBBY = list(), UNKNOWN = list())
 	/// Holder for blackbox. Contains ckey, client type and vote. Doesn't include those who didn't vote
 	var/list/player_data = list()
 	/// Players that voted
@@ -56,9 +56,9 @@
 				if(ghost.started_as_observer)
 					client_types[GHOST] |= client.ckey
 				else
-					client_types[PLAYED] |= client.ckey
+					client_types[DEAD_PLAYER] |= client.ckey
 			else
-				client_types[PLAYED] |= client.ckey
+				client_types[DEAD_PLAYER] |= client.ckey
 		else // shouldn't happen
 			client_types[UNKNOWN] |= client.ckey
 
@@ -66,7 +66,7 @@
 	if(!length(voted))
 		return FALSE
 
-	var/list/player_types = list(PLAYER, PLAYED, GHOST, LOBBY, UNKNOWN)
+	var/list/player_types = list(PLAYER, DEAD_PLAYER, GHOST, LOBBY, UNKNOWN)
 	for(var/ckey in voted)
 		var/client_type
 		for(var/type in player_types)
@@ -118,9 +118,9 @@
 	SSmapping.next_map = new top_voted_map
 
 #undef PLAYER
-#undef PLAYED
+#undef DEAD_PLAYER
 #undef GHOST
 #undef LOBBY
+#undef UNKNOWN
 #undef YES
 #undef NO
-#undef UNKNOWN
