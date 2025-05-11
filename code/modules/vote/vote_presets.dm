@@ -13,14 +13,14 @@
 	vote_type_text = "эвакуацию"
 	/// Amount of players on the server
 	var/clients
+	/// Amount of players that voted
+	var/total_votes
+	/// Amount of players that didn't vote
+	var/didnt_vote
 	/// Assoc list of clients and their types
 	var/list/client_types = list(PLAYER = list(), DEAD_PLAYER = list(), GHOST = list(), LOBBY = list(), UNKNOWN = list())
 	/// Holder for blackbox. Contains ckey, client type and vote. Doesn't include those who didn't vote
 	var/list/player_data = list()
-	/// Players that voted
-	var/total_votes = 0
-	/// Players that didn't vote
-	var/didnt_vote = 0
 
 /datum/vote/crew_transfer/New()
 	if(SSticker.current_state < GAME_STATE_PLAYING)
