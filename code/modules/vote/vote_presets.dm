@@ -60,6 +60,7 @@
 			else
 				client_types[DEAD_PLAYER] |= client.ckey
 		else // shouldn't happen
+			log_debug("Someone received unknown client type. mob type: [client.mob.type]")
 			client_types[UNKNOWN] |= client.ckey
 
 /datum/vote/crew_transfer/proc/assign_votes()
