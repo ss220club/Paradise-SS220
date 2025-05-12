@@ -3,8 +3,6 @@
 #define GHOST "ghost"
 #define LOBBY "in lobby"
 #define UNKNOWN "unknown"
-#define YES "Инициировать эвакуацию"
-#define NO "Продолжить раунд"
 
 // Crew transfer vote
 /datum/vote/crew_transfer
@@ -123,5 +121,3 @@
 #undef GHOST
 #undef LOBBY
 #undef UNKNOWN
-#undef YES
-#undef NO
