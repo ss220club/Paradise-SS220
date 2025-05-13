@@ -87,6 +87,12 @@
 	allow_floor_mounting = FALSE
 
 /obj/item/mounted/frame/wall_locker/do_build(turf/on_wall, mob/user)
-	var/obj/structure/closet/walllocker/generic/A = new/obj/structure/closet/walllocker/generic(get_turf(user), get_dir(user, on_wall))
-	A.update_icon()
+	new/obj/structure/closet/walllocker/generic(get_turf(user), get_dir(user, on_wall))
 	qdel(src)
+
+/obj/structure/closet/walllocker/generic/set_pixel_offsets_from_dir(pixel_north, pixel_south, pixel_east, pixel_west)
+	. = ..()
+	pixel_north = 32
+	pixel_south = -32
+	pixel_east = 32
+	pixel_west = -32

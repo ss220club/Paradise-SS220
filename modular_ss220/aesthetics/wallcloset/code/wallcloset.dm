@@ -52,6 +52,7 @@
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/clothing/head/hardhat/red(src)
+	new /obj/item/crowbar/red(src)
 
 /obj/structure/closet/walllocker/medlocker
 	icon_state = "medcloset"
