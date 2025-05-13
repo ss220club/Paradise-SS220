@@ -86,6 +86,14 @@
 	metal_sheets_refunded = 2
 	allow_floor_mounting = FALSE
 
+/obj/item/mounted/frame/wall_locker/try_build(turf/on_wall, mob/user)
+	if(!..())
+		return
+	if(locate(/obj/structure/closet/walllocker) in get_turf(user))
+		to_chat(user, "<span class='warning'>There is another wall locker here!</span>")
+		return
+	return TRUE
+
 /obj/item/mounted/frame/wall_locker/do_build(turf/on_wall, mob/user)
 	new /obj/structure/closet/walllocker(get_turf(src), get_dir(user, on_wall), 1)
 	qdel(src)
