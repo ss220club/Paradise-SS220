@@ -74,3 +74,29 @@
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/clothing/glasses/hud/health(src)
 	new /obj/item/clothing/shoes/sandal/white(src)
+
+// MARK: Wall Locker Frame
+/obj/item/mounted/frame/wall_locker
+	name = "wall locker frame"
+	desc = "Used for building lockers on the walls, so they won't bother you from walking around. Impressive."
+	icon = 'modular_ss220/objects/icons/closets.dmi'
+	icon_state = "wall_locker_frame"
+	mount_requirements = MOUNTED_FRAME_SIMFLOOR | MOUNTED_FRAME_NOSPACE
+	metal_sheets_refunded = 2
+	allow_floor_mounting = FALSE
+
+/obj/item/mounted/frame/wall_locker/try_build(turf/on_wall, mob/user)
+	if(!..())
+		return
+	var/turf/T = get_turf(user)
+
+	for(var/obj/structure/closet/walllocker/E in T)
+		if(E.master)
+			to_chat(user, "<span class='warning'>There is another wall locker here!</span>")
+			return
+	return TRUE
+
+/obj/item/mounted/frame/wall_locker/do_build(turf/on_wall, mob/user)
+	var/obj/structure/closet/walllocker/A = new/obj/structure/closet/walllocker/generic(get_turf(user), get_dir(user, on_wall))
+	A.update_icon()
+	qdel(src)

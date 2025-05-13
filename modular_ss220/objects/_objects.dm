@@ -7,7 +7,8 @@
 /datum/modpack/objects/initialize()
 	GLOB.metal_recipes += list(
 		new /datum/stack_recipe("metal platform", /obj/structure/platform, 4, time = 3 SECONDS,one_per_turf = TRUE, on_floor = TRUE),
-		new /datum/stack_recipe("metal platform corner", /obj/structure/platform/corner, 2, time = 20, one_per_turf = TRUE, on_floor = TRUE)
+		new /datum/stack_recipe("metal platform corner", /obj/structure/platform/corner, 2, time = 20, one_per_turf = TRUE, on_floor = TRUE),
+		new /datum/stack_recipe("wall locker frame", /obj/item/mounted/frame/wall_locker, 2,  time = 3 SECONDS)
 	)
 
 	GLOB.plasteel_recipes += list(

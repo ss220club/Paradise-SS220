@@ -3,6 +3,26 @@
 	door_anim_time = 2.0
 	enable_door_overlay = TRUE
 
+/obj/structure/closet/walllocker/generic
+	icon_state = "generic"
+	door_anim_time = 2.0
+
+/obj/structure/closet/walllocker/generic/north
+	pixel_y = 32
+	dir = SOUTH
+
+/obj/structure/closet/walllocker/generic/south
+	pixel_y = -32
+	dir = NORTH
+
+/obj/structure/closet/walllocker/generic/west
+	pixel_x = -32
+	dir = WEST
+
+/obj/structure/closet/walllocker/generic/east
+	pixel_x = 32
+	dir = EAST
+
 /obj/structure/closet/walllocker/emerglocker
 	door_anim_time = 2.0
 
