@@ -7,22 +7,7 @@
 	icon_state = "generic"
 	door_anim_time = 2.0
 
-/obj/structure/closet/walllocker/generic/north
-	pixel_y = 32
-	dir = SOUTH
-
-/obj/structure/closet/walllocker/generic/south
-	pixel_y = -32
-	dir = NORTH
-
-/obj/structure/closet/walllocker/generic/west
-	pixel_x = -32
-	dir = WEST
-
-/obj/structure/closet/walllocker/generic/east
-	pixel_x = 32
-	dir = EAST
-
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/walllocker, 32, 32)
 /obj/structure/closet/walllocker/emerglocker
 	door_anim_time = 2.0
 
