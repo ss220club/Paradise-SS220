@@ -147,7 +147,7 @@
 	..()
 	var/datum/data/pda/app/messenger/M = find_program(/datum/data/pda/app/messenger)
 	if(M)
-		M.m_hidden = TRUE
+		M.m_hidden = 1
 
 /obj/item/pda/syndicate_fake
 	icon_state = "pda-syndi"
