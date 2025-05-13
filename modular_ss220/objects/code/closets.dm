@@ -78,7 +78,7 @@
 // MARK: Wall Locker Frame
 /obj/item/mounted/frame/wall_locker
 	name = "wall locker frame"
-	desc = "Used for building lockers on the walls, so they won't bother you from walking around. Impressive."
+	desc = "Used for building lockers on the walls, so they won't bother you from walking around. Amazing."
 	icon = 'modular_ss220/objects/icons/closets.dmi'
 	icon_state = "wall_locker_frame"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -87,12 +87,12 @@
 	allow_floor_mounting = FALSE
 
 /obj/item/mounted/frame/wall_locker/do_build(turf/on_wall, mob/user)
-	new/obj/structure/closet/walllocker/generic(get_turf(user), get_dir(user, on_wall))
+	new /obj/structure/closet/walllocker(get_turf(src), get_dir(user, on_wall), 1)
 	qdel(src)
 
-/obj/structure/closet/walllocker/generic/set_pixel_offsets_from_dir(pixel_north, pixel_south, pixel_east, pixel_west)
+/obj/structure/closet/walllocker/Initialize(mapload, direction, building)
 	. = ..()
-	pixel_north = 32
-	pixel_south = -32
-	pixel_east = 32
-	pixel_west = -32
+
+	if(building)
+		setDir(direction)
+		set_pixel_offsets_from_dir(32, -32, 32, -32)
