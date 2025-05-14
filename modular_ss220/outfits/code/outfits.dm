@@ -308,6 +308,10 @@
 	update_icon()
 
 // MARK: ERT
+/datum/outfit/job/response_team/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H, TRAIT_FLASH_PROTECTION, ROUNDSTART_TRAIT)
+
 /* Commander */
 /datum/outfit/job/response_team/commander/amber
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
@@ -557,3 +561,9 @@
 	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
 	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
 	new /obj/item/restraints/legcuffs/bola/energy(src)
+
+// MARK: Jobs
+/datum/outfit/job/nct/New()
+	backpack_contents += list(
+		/obj/item/stamp/nct = 1
+	)

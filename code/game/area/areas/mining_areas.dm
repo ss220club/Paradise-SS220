@@ -19,28 +19,28 @@
 	max_ambience_cooldown = 220 SECONDS
 
 /area/mine/unexplored/cere/ai
-	name = "AI Asteroid"
+	name = "Астероид Спутника ИИ"
 
 /area/mine/unexplored/cere/cargo
-	name = "Cargo Asteroid"
+	name = "Астероид Карго"
 
 /area/mine/unexplored/cere/civilian
-	name = "Civilian Asteroid"
+	name = "Астероид Сервисного Отдела"
 
 /area/mine/unexplored/cere/command
-	name = "Command Asteroid"
+	name = "Астероид Командного Отдела"
 
 /area/mine/unexplored/cere/engineering
-	name = "Engineering Asteroid"
+	name = "Астероид Инженерного Отдела"
 
 /area/mine/unexplored/cere/medical
-	name = "Medical Asteroid"
+	name = "Астероид Медицинского Отдела"
 
 /area/mine/unexplored/cere/research
-	name = "Research Asteroid"
+	name = "Астероид Исследовательского Отдела"
 
 /area/mine/unexplored/cere/orbiting
-	name = "Near Station Asteroids"
+	name = "Околостанционные Астероиды"
 
 /**********************Outpost areas**************************/
 
@@ -97,6 +97,10 @@
 	name = "Хранилище Шахтерского Аванпоста"
 	icon_state = "storage"
 
+/area/mine/outpost/smith_workshop
+	name = "Мастерская Кузнеца"
+	icon_state = "smith"
+
 /area/mine/outpost/maintenance
 	name = "Технические Тоннели Шахтерского Аванпоста"
 	icon_state = "maintcentral"
@@ -122,7 +126,7 @@
 	icon_state = "mining_production"
 
 /area/mine/outpost/quartermaster
-	name = "Офис Квартирмейстера Шахтерского Аванпоста"
+	name = "Кабинет Квартирмейстера Шахтерского Аванпоста"
 	icon_state = "qm"
 	request_console_flags = RC_ASSIST | RC_INFO
 	request_console_name = "Quartermaster's Desk"
@@ -156,12 +160,16 @@
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
 
+/area/lavaland/surface/gulag_rock
+	name = "Пустоши Лаваленда"
+	outdoors = TRUE
+
 /area/lavaland/surface/outdoors
 	name = "Пустоши Лаваленда"
 	outdoors = TRUE
 
 /area/lavaland/surface/outdoors/legion_arena
-	name = "Legion Arena"
+	name = "Арена Легиона"
 
 /// monsters and ruins spawn here
 /area/lavaland/surface/outdoors/unexplored

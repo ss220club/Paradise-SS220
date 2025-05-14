@@ -636,7 +636,7 @@
 /area/awaymission/black_mesa/employee_dorm_room)
 "aTL" = (
 /obj/machinery/chem_dispenser,
-/obj/structure/reagent_dispensers/fueltank/chem/north,
+/obj/structure/reagent_dispensers/fueltank/chem/directional/north,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark"
 	},
@@ -1446,7 +1446,7 @@
 /area/awaymission/black_mesa/security_outpost)
 "bNS" = (
 /obj/structure/table,
-/obj/item/flashlight/flare/glowstick/random,
+/obj/effect/spawner/random/glowstick,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -1797,7 +1797,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/black_mesa/xen/vortigaunt_village_nihilanth)
 "ckl" = (
-/obj/machinery/access_button/north,
+/obj/machinery/access_button/directional/north,
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/black_mesa/black_ops_entrance)
 "ckq" = (
@@ -4188,7 +4188,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
 "fgh" = (
@@ -4212,7 +4213,7 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_chem)
 "fgI" = (
-/obj/machinery/access_button/west{
+/obj/machinery/access_button/directional/west{
 	name = "Elevator Button"
 	},
 /turf/simulated/floor/mineral/titanium,
@@ -4512,7 +4513,7 @@
 	},
 /area/awaymission/black_mesa/xen/acid_lake_hallway)
 "fAH" = (
-/obj/structure/sign/poster/official/random/north,
+/obj/structure/sign/poster/official/random/directional/north,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -5370,7 +5371,7 @@
 /area/awaymission/black_mesa/deep_sci_feesh)
 "gBb" = (
 /obj/structure/table,
-/obj/item/scalpel/alien,
+/obj/item/scalpel/laser/alien,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark"
 	},
@@ -5530,10 +5531,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
-"gNo" = (
-/obj/item/book/manual/wiki/chef_recipes,
-/turf/simulated/floor/plating/ironsand,
-/area/awaymission/black_mesa)
 "gOd" = (
 /obj/effect/mob_spawn/human/corpse/scientist{
 	pickable_species = list("Human");
@@ -6198,9 +6195,7 @@
 	layer = 4.1
 	},
 /obj/effect/turf_decal/siding/blue,
-/obj/structure/window/reinforced{
-	layer = 4.2
-	},
+/obj/structure/window/reinforced,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
 "hHT" = (
@@ -6788,7 +6783,7 @@
 "ivZ" = (
 /obj/structure/table,
 /obj/item/retractor/alien,
-/obj/item/cautery/alien,
+/obj/item/scalpel/laser/alien,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark"
 	},
@@ -6893,9 +6888,7 @@
 /obj/effect/turf_decal/siding/blue{
 	dir = 10
 	},
-/obj/structure/window/reinforced{
-	layer = 4.2
-	},
+/obj/structure/window/reinforced,
 /obj/structure/table,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
@@ -9033,9 +9026,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_lobby)
 "leY" = (
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/high_security_hallway)
 "lgH" = (
@@ -9349,7 +9340,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
 "lxB" = (
-/obj/machinery/light/small/built/east,
+/obj/machinery/light/small/built/directional/east,
 /obj/structure/largecrate,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/entrance_tunnel)
@@ -9399,7 +9390,7 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/lambda_hallway)
 "lAx" = (
-/obj/structure/sign/poster/official/random/south,
+/obj/structure/sign/poster/official/random/directional/south,
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
@@ -10054,7 +10045,7 @@
 /area/awaymission/black_mesa/xen/freeman_hallway)
 "mpX" = (
 /obj/machinery/chem_master,
-/obj/structure/reagent_dispensers/fueltank/chem/north,
+/obj/structure/reagent_dispensers/fueltank/chem/directional/north,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_chem)
 "mqa" = (
@@ -10295,7 +10286,7 @@
 /area/awaymission/black_mesa/hecu_zone_infirmary)
 "mJy" = (
 /obj/machinery/economy/vending/coffee/free,
-/obj/structure/sign/poster/official/random/north,
+/obj/structure/sign/poster/official/random/directional/north,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -10564,7 +10555,7 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/cryo_room)
 "mXp" = (
-/obj/structure/sign/poster/official/random/south,
+/obj/structure/sign/poster/official/random/directional/south,
 /obj/item/flag/species/human,
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel/dark,
@@ -11308,7 +11299,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
 "nSi" = (
@@ -12031,9 +12022,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/science_labs)
 "oIV" = (
-/obj/structure/sign/poster/official/science{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/official/science/directional/north,
 /obj/structure/fluff/empty_sleeper{
 	icon_state = "bodyscanner"
 	},
@@ -12900,9 +12889,7 @@
 	layer = 4.1
 	},
 /obj/effect/turf_decal/siding/blue,
-/obj/structure/window/reinforced{
-	layer = 4.2
-	},
+/obj/structure/window/reinforced,
 /obj/effect/mob_spawn/human/corpse/doctor{
 	id = null;
 	pickable_species = list("Human")
@@ -13061,7 +13048,7 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/black_ops_armory)
 "pUT" = (
-/obj/machinery/access_button/west{
+/obj/machinery/access_button/directional/west{
 	name = "Elevator Button"
 	},
 /turf/simulated/floor/mineral/titanium,
@@ -13317,9 +13304,7 @@
 /obj/effect/turf_decal/siding/blue{
 	dir = 6
 	},
-/obj/structure/window/reinforced{
-	layer = 4.2
-	},
+/obj/structure/window/reinforced,
 /obj/structure/table,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
@@ -13444,7 +13429,7 @@
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/vortigaunt_village_nihilanth)
 "qvj" = (
-/obj/structure/bonfire/lit,
+/obj/structure/lightable/bonfire/lit,
 /turf/simulated/floor/plating/dirt/xen_dirt,
 /area/awaymission/black_mesa/xen/vortigaunt_village)
 "qwo" = (
@@ -14370,7 +14355,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/black_mesa/employee_dorm_room)
 "rBp" = (
-/obj/structure/bonfire/lit,
+/obj/structure/lightable/bonfire/lit,
 /turf/simulated/floor/plating/dirt/xen_dirt,
 /area/awaymission/black_mesa/xen/vortigaunt_village_nihilanth)
 "rBw" = (
@@ -15150,7 +15135,7 @@
 	pixel_y = 8;
 	list_reagents = list("coffee" = 0)
 	},
-/obj/structure/sign/poster/official/random/north,
+/obj/structure/sign/poster/official/random/directional/north,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -17773,7 +17758,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
 "vPi" = (
-/obj/machinery/light/small/built/west,
+/obj/machinery/light/small/built/directional/west,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/entrance_tunnel)
 "vPl" = (
@@ -17934,7 +17919,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_large_office)
 "wap" = (
-/obj/machinery/access_button/north,
+/obj/machinery/access_button/directional/north,
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/black_mesa/black_ops_downstairs_atrium)
 "waR" = (
@@ -18300,7 +18285,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/cooker/deepfryer,
+/obj/machinery/cooking/deepfryer,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -19452,9 +19437,7 @@
 /area/awaymission/black_mesa/hecu_zone_towards_facility)
 "xUT" = (
 /obj/machinery/r_n_d/circuit_imprinter,
-/obj/structure/sign/poster/official/science{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/official/science/directional/south,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark"
 	},
@@ -65531,7 +65514,7 @@ hQh
 hhE
 aCT
 kWk
-gNo
+hhE
 aPO
 uNL
 uNL

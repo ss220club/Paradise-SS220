@@ -1,5 +1,6 @@
 /mob/living/carbon/human/Initialize(mapload, datum/species/new_species = /datum/species/human)
-	icon = null // This is now handled by overlays -- we just keep an icon for the sake of the map editor.
+	if(new_species != /datum/species/human_doll) //SS220 EDIT - EVENT DOLL
+		icon = null // This is now handled by overlays -- we just keep an icon for the sake of the map editor.
 	create_dna()
 
 	. = ..()
@@ -92,6 +93,10 @@
 /mob/living/carbon/human/vox/Initialize(mapload)
 	. = ..(mapload, /datum/species/vox)
 
+/mob/living/carbon/human/vox/compressor_grind(turf/location)
+	new /obj/item/food/fried_vox(loc)
+	return ..()
+
 /mob/living/carbon/human/skeleton/Initialize(mapload)
 	. = ..(mapload, /datum/species/skeleton)
 
@@ -119,6 +124,10 @@
 /mob/living/carbon/human/diona/Initialize(mapload)
 	. = ..(mapload, /datum/species/diona)
 
+/mob/living/carbon/human/diona/compressor_grind()
+	new /obj/item/food/salad(loc)
+	return ..()
+
 /mob/living/carbon/human/pod_diona/Initialize(mapload)
 	. = ..(mapload, /datum/species/diona/pod)
 
@@ -127,6 +136,10 @@
 
 /mob/living/carbon/human/machine/created
 	name = "Integrated Robotic Chassis"
+
+/mob/living/carbon/human/machine/compressor_grind()
+	new /obj/item/stack/sheet/mineral/titanium(loc)
+	return ..()
 
 /mob/living/carbon/human/machine/created/Initialize(mapload)
 	. = ..()
@@ -149,6 +162,10 @@
 
 /mob/living/carbon/human/drask/Initialize(mapload)
 	. = ..(mapload, /datum/species/drask)
+
+/mob/living/carbon/human/drask/compressor_grind(turf/location)
+	new /obj/item/soap(loc)
+	return ..()
 
 /mob/living/carbon/human/monkey/Initialize(mapload)
 	. = ..(mapload, /datum/species/monkey)
@@ -603,7 +620,7 @@
 					for(var/datum/data/record/R in GLOB.data_core.medical)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr, EXAMINE_HUD_MEDICAL_READ))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
+								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["blood_type"]]")
 								to_chat(usr, "<b>DNA:</b> [R.fields["b_dna"]]")
 								to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
@@ -2035,12 +2052,6 @@ Eyes need to have significantly high darksight to shine unless the mob has the X
 		if(recipe.check_reagents_assoc_list(available_reagents) != INGREDIENT_CHECK_FAILURE && recipe.check_items_assoc_list(available_ingredients) != INGREDIENT_CHECK_FAILURE)
 			if(istype(recipe, /datum/recipe/microwave))
 				possible_recipes[recipe] = RECIPE_MICROWAVE
-			else if(istype(recipe, /datum/recipe/oven))
-				possible_recipes[recipe] = RECIPE_OVEN
-			else if(istype(recipe, /datum/recipe/grill))
-				possible_recipes[recipe] = RECIPE_GRILL
-			else if(istype(recipe, /datum/recipe/candy))
-				possible_recipes[recipe] = RECIPE_CANDY
 			else
 				possible_recipes[recipe] = "something? This shouldn't happen, make a bug report"
 
