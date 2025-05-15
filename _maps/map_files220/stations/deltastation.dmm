@@ -409,9 +409,11 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 32
 	},
-/obj/machinery/computer/sm_monitor{
-	dir = 1
+/obj/machinery/computer/monitor{
+	dir = 1;
+	name = "Engine Power Monitoring Computer"
 	},
+/obj/structure/cable/yellow,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -16870,6 +16872,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellow"
@@ -16877,6 +16882,9 @@
 /area/station/command/bridge)
 "bxv" = (
 /obj/machinery/computer/atmos_alert,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellow"
@@ -16884,6 +16892,9 @@
 /area/station/command/bridge)
 "bxw" = (
 /obj/machinery/computer/monitor,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellow"
@@ -36369,7 +36380,6 @@
 	dir = 6
 	},
 /obj/structure/curtain/open/shower/security{
-	icon_state = "closed";
 	opacity = 1
 	},
 /turf/simulated/floor/carpet/arcade,
@@ -52816,9 +52826,7 @@
 	},
 /area/station/science/lobby)
 "fKW" = (
-/obj/structure/curtain/open/shower/security{
-	icon_state = "closed"
-	},
+/obj/structure/curtain/open/shower/security,
 /turf/simulated/floor/wood/fancy,
 /area/station/service/theatre)
 "fLx" = (
@@ -58123,6 +58131,11 @@
 	id_tag = "rndstorage";
 	name = "Secure Storage Blast Doors"
 	},
+/obj/machinery/door_control/shutter/south{
+	id = "rndstorage";
+	name = "RnD Secure Storage Control";
+	req_access = list(8)
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "blackcorner"
@@ -60834,7 +60847,7 @@
 	},
 /area/station/medical/medbay)
 "ioK" = (
-/obj/structure/closet/walllocker/medlocker/west,
+/obj/structure/closet/walllocker/medlocker/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whiteblue"
@@ -68950,13 +68963,11 @@
 /area/station/science/misc_lab)
 "kNF" = (
 /obj/machinery/status_display/directional/south,
-/obj/machinery/computer/monitor{
-	dir = 1;
-	name = "Engineering Power Monitoring Console"
-	},
-/obj/structure/cable,
 /obj/structure/cable{
 	icon_state = "1-4"
+	},
+/obj/machinery/computer/sm_monitor{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -69774,9 +69785,7 @@
 "lds" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/curtain/open/shower/security{
-	icon_state = "closed"
-	},
+/obj/structure/curtain/open/shower/security,
 /turf/simulated/floor/wood/fancy,
 /area/station/service/theatre)
 "ldv" = (
@@ -74510,7 +74519,7 @@
 	},
 /area/station/maintenance/fore2)
 "mAW" = (
-/obj/structure/closet/walllocker/medlocker/west,
+/obj/structure/closet/walllocker/medlocker/directional/west,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -74694,7 +74703,7 @@
 /area/station/maintenance/fore)
 "mEV" = (
 /obj/machinery/light/directional/east,
-/obj/structure/closet/walllocker/medlocker/east,
+/obj/structure/closet/walllocker/medlocker/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -78928,6 +78937,9 @@
 	icon_state = "0-8"
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "nRz" = (
@@ -85933,6 +85945,9 @@
 	dir = 6
 	},
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "qbb" = (
@@ -97921,11 +97936,6 @@
 /turf/simulated/wall,
 /area/station/medical/reception)
 "tJj" = (
-/obj/machinery/door_control/shutter/west{
-	id = "rndstorage";
-	name = "RnD Secure Storage Control";
-	req_access = list(8)
-	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
@@ -111345,7 +111355,6 @@
 /area/station/security/main)
 "xYL" = (
 /obj/structure/curtain/open/shower/security{
-	icon_state = "closed";
 	opacity = 1
 	},
 /obj/effect/turf_decal/siding/blue{
