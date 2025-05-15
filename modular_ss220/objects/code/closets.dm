@@ -75,6 +75,45 @@
 	new /obj/item/clothing/glasses/hud/health(src)
 	new /obj/item/clothing/shoes/sandal/white(src)
 
+// MARK: Wall Lockers
+/obj/structure/closet/walllocker
+	icon = 'modular_ss220/objects/icons/closets.dmi'
+	icon_state = "generic"
+	door_anim_time = 2.0
+	enable_door_overlay = TRUE
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/walllocker, 32, 32)
+
+/obj/structure/closet/walllocker/emerglocker
+	door_anim_time = 2
+
+/obj/structure/closet/walllocker/firelocker
+	name = "fire-safety locker"
+	icon_state = "firecloset"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/walllocker/firelocker, 32, 32)
+
+/obj/structure/closet/walllocker/firelocker/populate_contents()
+	new /obj/item/extinguisher(src)
+	new /obj/item/clothing/suit/fire/firefighter(src)
+	new /obj/item/clothing/mask/gas(src)
+	new /obj/item/tank/internals/oxygen/red(src)
+	new /obj/item/clothing/head/hardhat/red(src)
+	new /obj/item/crowbar/red(src)
+
+/obj/structure/closet/walllocker/medlocker
+	name = "medicine locker"
+	icon_state = "medcloset"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/walllocker/medlocker, 32, 32)
+
+/obj/structure/closet/walllocker/medlocker/populate_contents()
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/reagent_containers/syringe/charcoal(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
+
 // MARK: Wall Locker Frame
 /obj/item/mounted/frame/wall_locker
 	name = "wall locker frame"
@@ -85,14 +124,6 @@
 	mount_requirements = MOUNTED_FRAME_SIMFLOOR | MOUNTED_FRAME_NOSPACE
 	metal_sheets_refunded = 2
 	allow_floor_mounting = FALSE
-
-/obj/item/mounted/frame/wall_locker/try_build(turf/on_wall, mob/user)
-	if(!..())
-		return
-	if(locate(/obj/structure/closet/walllocker) in get_turf(user))
-		to_chat(user, "<span class='warning'>There is another wall locker here!</span>")
-		return
-	return TRUE
 
 /obj/item/mounted/frame/wall_locker/do_build(turf/on_wall, mob/user)
 	new /obj/structure/closet/walllocker(get_turf(src), get_dir(user, on_wall), 1)
