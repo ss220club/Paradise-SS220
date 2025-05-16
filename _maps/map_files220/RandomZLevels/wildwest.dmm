@@ -23,7 +23,6 @@
 /area/awaymission/wildwest/wildwest_mines)
 "al" = (
 /obj/structure/curtain/medical{
-	icon_state = "open";
 	opacity = 0
 	},
 /obj/effect/mine/dnascramble,
@@ -450,6 +449,26 @@
 	icon_state = "dark"
 	},
 /area/awaymission/wildwest/wildwest_mines)
+"eF" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/effect/mine/dnascramble,
+/obj/item/trash/chips,
+/obj/structure/curtain/black,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/curtain/black{
+	opacity = 0
+	},
+/obj/effect/mine/dnascramble,
+/obj/item/trash/chips,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/carpet/purple,
+/area/awaymission/wildwest/wildwest_mines)
 "eH" = (
 /obj/structure/table/holotable/wood,
 /obj/item/kitchen/utensil/spoon,
@@ -631,9 +650,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wildwest/wildwest_mines)
 "go" = (
-/obj/structure/reagent_dispensers/fueltank/chem{
-	pixel_y = -30
-	},
+/obj/structure/reagent_dispensers/fueltank/chem/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkyellowfull"
@@ -880,7 +897,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating,
 /area/awaymission/wildwest/wildwest_refine)
 "iG" = (
@@ -2072,7 +2089,9 @@
 "tQ" = (
 /obj/effect/mine/dnascramble,
 /obj/item/dice/d6,
-/obj/structure/curtain/black,
+/obj/structure/curtain/black{
+	opacity = 0
+	},
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
 "tW" = (
@@ -2464,9 +2483,8 @@
 /turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "xM" = (
-/obj/machinery/door/airlock/vault{
-	locked = 1
-	},
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor{
 	icon_state = "necro1"
 	},
@@ -2570,7 +2588,9 @@
 "zy" = (
 /obj/effect/mine/dnascramble,
 /obj/item/stack/tile/wood,
-/obj/structure/curtain/black,
+/obj/structure/curtain/black{
+	opacity = 0
+	},
 /turf/simulated/floor/carpet/green,
 /area/awaymission/wildwest/wildwest_mines)
 "zC" = (
@@ -2911,9 +2931,8 @@
 /turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "CE" = (
-/obj/machinery/door/airlock/vault{
-	locked = 1
-	},
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor{
 	icon_state = "cult"
 	},
@@ -2928,7 +2947,9 @@
 "CQ" = (
 /obj/effect/mine/dnascramble,
 /obj/item/trash/chips,
-/obj/structure/curtain/black,
+/obj/structure/curtain/black{
+	opacity = 0
+	},
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/wildwest/wildwest_mines)
 "CW" = (
@@ -3092,6 +3113,26 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/wildwest/wildwest_refine)
+"Ef" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/effect/mine/dnascramble,
+/obj/item/stack/tile/wood,
+/obj/structure/curtain/black,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/curtain/black{
+	opacity = 0
+	},
+/obj/effect/mine/dnascramble,
+/obj/item/stack/tile/wood,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/carpet/green,
+/area/awaymission/wildwest/wildwest_mines)
 "Eg" = (
 /obj/structure/barricade/sandbags,
 /turf/simulated/floor/wood/oak,
@@ -3191,6 +3232,26 @@
 	icon_state = "dark"
 	},
 /area/awaymission/wildwest/wildwest_refine)
+"EZ" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/effect/mine/dnascramble,
+/obj/item/dice/d6,
+/obj/structure/curtain/black,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/curtain/black{
+	opacity = 0
+	},
+/obj/effect/mine/dnascramble,
+/obj/item/dice/d6,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/carpet,
+/area/awaymission/wildwest/wildwest_mines)
 "Fb" = (
 /obj/structure/chair/wood{
 	dir = 4
@@ -4575,6 +4636,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/wildwest/wildwest_refine)
+"TB" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/curtain/black,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/curtain/black{
+	opacity = 0
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/carpet/orange,
+/area/awaymission/wildwest/wildwest_mines)
 "TD" = (
 /obj/effect/mine/dnascramble,
 /obj/structure/mineral_door/wood,
@@ -10675,7 +10752,7 @@ wK
 hk
 Jm
 dI
-tQ
+EZ
 JS
 ln
 hk
@@ -11110,7 +11187,7 @@ rF
 hk
 Xn
 cd
-CQ
+eF
 JV
 lo
 hk
@@ -13524,7 +13601,7 @@ oK
 hk
 Pt
 Pt
-zy
+Ef
 lR
 YP
 hk

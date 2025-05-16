@@ -131,16 +131,11 @@
 
 /datum/outfit/job/admin/ntnavyofficer/field
 	name = "Nanotrasen Navy Field Officer"
-
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field
 	head = /obj/item/clothing/head/helmet/space/deathsquad/beret/field
 	l_pocket = /obj/item/melee/baseball_bat/homerun/central_command
-
-	bio_chips = list(
-		/obj/item/bio_chip/mindshield,
-		/obj/item/bio_chip/dust,
-		/obj/item/organ/internal/cyberimp/brain/anti_sleep/hardened,
+	cybernetic_implants = list(
 		/obj/item/organ/internal/cyberimp/chest/reviver/hardened,
 		/obj/item/organ/internal/cyberimp/eyes/hud/medical,
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
@@ -308,6 +303,10 @@
 	update_icon()
 
 // MARK: ERT
+/datum/outfit/job/response_team/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H, TRAIT_FLASH_PROTECTION, ROUNDSTART_TRAIT)
+
 /* Commander */
 /datum/outfit/job/response_team/commander/amber
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
