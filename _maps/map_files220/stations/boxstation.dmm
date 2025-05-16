@@ -15159,18 +15159,8 @@
 	},
 /area/station/public/storage/tools)
 "bdi" = (
-/obj/structure/sign/securearea{
-	pixel_x = 32
-	},
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "bridge blast west";
-	name = "Bridge Blast Doors"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
-/area/station/command/bridge)
+/turf/simulated/wall/r_wall,
+/area/station/command/office/captain/bedroom)
 "bdj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -15398,12 +15388,12 @@
 	},
 /area/station/hallway/secondary/entry)
 "bdP" = (
-/obj/structure/sign/securearea{
-	pixel_x = -32
-	},
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "bridge blast east";
 	name = "Bridge Blast Doors"
+	},
+/obj/structure/sign/securearea{
+	pixel_x = -32
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -17926,13 +17916,15 @@
 /area/station/maintenance/apmaint)
 "bnU" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/secure/briefcase,
-/obj/item/storage/box/pdas{
-	pixel_x = 4;
+/obj/machinery/status_display/directional/west,
+/obj/machinery/cell_charger{
+	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/storage/box/ids,
-/obj/machinery/status_display/directional/west,
+/obj/item/stock_parts/cell/high/plus{
+	pixel_x = 1;
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -18010,12 +18002,19 @@
 /area/station/service/kitchen)
 "boh" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/emergency,
-/obj/item/wrench,
-/obj/item/assembly/timer,
-/obj/item/assembly/signaler,
-/obj/item/assembly/signaler,
 /obj/machinery/status_display/directional/east,
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/megaphone{
+	pixel_x = 4;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -18335,9 +18334,12 @@
 	pixel_y = 8;
 	req_access = list(19)
 	},
-/obj/machinery/keycard_auth/directional/north{
-	pixel_x = -5;
-	pixel_y = 7
+/obj/machinery/door_control/shutter{
+	id = "bridge blast south";
+	name = "South Bridge Blast Door Control";
+	pixel_x = -6;
+	pixel_y = 8;
+	req_access = list(19)
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
@@ -18600,10 +18602,9 @@
 "bqK" = (
 /obj/structure/table,
 /obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/tape_roll,
 /obj/item/stack/tape_roll,
 /obj/machinery/firealarm/directional/south,
+/obj/item/stack/tape_roll,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "yellow"
@@ -18624,6 +18625,7 @@
 "bqO" = (
 /obj/machinery/computer/prisoner,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/ai_status_display/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkred"
@@ -18692,6 +18694,7 @@
 "bra" = (
 /obj/machinery/computer/security/mining,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/ai_status_display/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkbrown"
@@ -19019,7 +19022,11 @@
 /turf/simulated/floor/plasteel/airless,
 /area/station/science/toxins/test)
 "bsv" = (
-/obj/machinery/light/directional/west,
+/obj/machinery/door_control/shutter/west{
+	id = "bridge blast west";
+	req_access = list(19);
+	name = "West Bridge Blast Door Control"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkredcorners"
@@ -19112,7 +19119,11 @@
 	},
 /area/station/command/bridge)
 "bsG" = (
-/obj/machinery/light/directional/east,
+/obj/machinery/door_control/shutter/east{
+	id = "bridge blast east";
+	name = "East Bridge Blast Door Control";
+	req_access = list(19)
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkbrowncorners"
@@ -19811,6 +19822,7 @@
 /obj/machinery/light_switch/south,
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/delivery/red/hollow,
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue"
 	},
@@ -20167,7 +20179,7 @@
 	},
 /area/station/command/bridge)
 "bxw" = (
-/obj/structure/extinguisher_cabinet/directional/south,
+/obj/machinery/newscaster/security_unit/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners";
 	dir = 8
@@ -20178,10 +20190,8 @@
 /turf/simulated/floor/grass,
 /area/station/hallway/secondary/exit)
 "bxA" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = -32
-	},
 /obj/machinery/light/directional/south,
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue"
 	},
@@ -20195,14 +20205,16 @@
 	c_tag = "Bridge Central";
 	dir = 1
 	},
-/obj/machinery/requests_console/directional/south,
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners";
 	dir = 8
 	},
 /area/station/command/bridge)
 "bxK" = (
-/obj/machinery/ai_status_display/directional/south,
+/obj/machinery/requests_console/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners"
 	},
@@ -20312,8 +20324,8 @@
 	},
 /area/station/science/rnd)
 "bxY" = (
-/obj/machinery/newscaster/security_unit/directional/south,
 /obj/machinery/light/directional/south,
+/obj/machinery/keycard_auth/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue"
 	},
@@ -48084,6 +48096,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/security/prison/cell_block/a)
+"eqC" = (
+/obj/structure/sign/securearea{
+	pixel_y = 32
+	},
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "bridge blast south";
+	name = "Bridge Blast Doors"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/station/command/bridge)
 "eqJ" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
 	dir = 4;
@@ -48826,6 +48851,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/security/storage)
+"eEz" = (
+/obj/machinery/door_control/shutter/south{
+	id = "bridge blast south";
+	name = "South Bridge Blast Door Control";
+	req_access = list(19)
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "navybluecorners"
+	},
+/area/station/command/bridge)
 "eEE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -49464,6 +49499,7 @@
 	pixel_x = -2;
 	pixel_y = 2
 	},
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 4
@@ -51866,6 +51902,7 @@
 	c_tag = "Bridge South";
 	dir = 4
 	},
+/obj/item/kirbyplants/large,
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners";
 	dir = 8
@@ -60731,14 +60768,14 @@
 	},
 /area/station/security/detective)
 "iHh" = (
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "bridge blast west";
-	name = "Bridge Blast Doors"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "bridge blast south";
+	name = "Bridge Blast Doors"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -62165,8 +62202,7 @@
 /obj/structure/railing{
 	dir = 6
 	},
-/obj/structure/flora/rock/jungle,
-/obj/item/flag/command,
+/obj/structure/flora/junglebush,
 /turf/simulated/floor/grass,
 /area/station/command/bridge)
 "jhj" = (
@@ -64236,8 +64272,8 @@
 "jSf" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/light_switch/south,
-/obj/machinery/ai_status_display/directional/west,
 /obj/effect/turf_decal/delivery/blue/hollow,
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue"
 	},
@@ -66842,8 +66878,9 @@
 /area/station/maintenance/assembly_line)
 "kNX" = (
 /obj/structure/statue/cyberiad/ne,
-/obj/structure/flora/junglebush,
 /obj/structure/railing,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/biolumini/flower/weaklight,
 /turf/simulated/floor/grass,
 /area/station/command/bridge)
 "kNY" = (
@@ -66987,8 +67024,8 @@
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 10
 	},
-/obj/item/kirbyplants/large,
 /obj/item/radio/intercom/directional/south,
+/obj/item/kirbyplants/medium,
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/command/office/hop)
 "kQw" = (
@@ -67425,7 +67462,6 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/structure/marker_beacon/spotlight/yellow,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -68566,6 +68602,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/light/floor,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -73782,6 +73819,13 @@
 	icon_state = "whitepurple"
 	},
 /area/station/science/toxins/mixing)
+"nhu" = (
+/obj/machinery/firealarm/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "navybluecorners";
+	dir = 8
+	},
+/area/station/command/bridge)
 "nhw" = (
 /obj/effect/decal/cleanable/dust,
 /obj/effect/decal/cleanable/cobweb,
@@ -75453,7 +75497,7 @@
 /area/station/science/toxins/test)
 "nJq" = (
 /obj/machinery/status_display/directional/north,
-/obj/machinery/economy/vending/cigarette/free,
+/obj/machinery/economy/vending/coffee,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 5
@@ -76794,6 +76838,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/machinery/light/floor,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -76872,6 +76917,7 @@
 	pixel_x = 7;
 	pixel_y = 1
 	},
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 8
@@ -78211,6 +78257,19 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/aisat/hall)
+"oET" = (
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "bridge blast west";
+	name = "Bridge Blast Doors"
+	},
+/obj/structure/sign/securearea{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/station/command/bridge)
 "oFj" = (
 /obj/machinery/door/window/reinforced/normal{
 	dir = 1
@@ -79598,8 +79657,7 @@
 /area/station/security/permabrig)
 "paO" = (
 /obj/machinery/status_display/directional/north,
-/obj/structure/table/glass,
-/obj/item/storage/secure/briefcase,
+/obj/machinery/economy/vending/cigarette/free,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 9
@@ -80118,6 +80176,7 @@
 	},
 /area/station/maintenance/asmaint)
 "pkG" = (
+/obj/item/flag/command,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 1
@@ -81346,13 +81405,30 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "pET" = (
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_x = -3;
+/obj/machinery/alarm/directional/south,
+/obj/structure/shelf/command,
+/obj/item/storage/box/pdas{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/box/ids{
+	pixel_y = 8
+	},
+/obj/item/storage/secure/briefcase{
+	pixel_x = 9;
 	pixel_y = 7
 	},
-/obj/item/pen,
-/obj/machinery/alarm/directional/south,
+/obj/item/storage/toolbox/emergency{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = -4
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 6;
+	pixel_y = -4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 6
@@ -83846,10 +83922,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
 "qwU" = (
-/obj/machinery/light/directional/north,
 /obj/structure/statue/cyberiad/north,
 /obj/structure/railing,
-/obj/structure/flora/biolumini/mine/weaklight,
+/obj/structure/flora/rock/jungle,
 /turf/simulated/floor/grass,
 /area/station/command/bridge)
 "qwV" = (
@@ -86436,7 +86511,6 @@
 	dir = 10
 	},
 /obj/structure/flora/junglebush,
-/obj/item/flag/command,
 /turf/simulated/floor/grass,
 /area/station/command/bridge)
 "rnK" = (
@@ -87788,6 +87862,7 @@
 /area/station/engineering/atmos)
 "rRU" = (
 /obj/machinery/light/small/directional/east,
+/obj/item/kirbyplants/large,
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners"
 	},
@@ -89038,7 +89113,7 @@
 /area/station/hallway/primary/central/se)
 "sou" = (
 /obj/machinery/door/poddoor/preopen{
-	id_tag = "bridge blast west";
+	id_tag = "bridge blast south";
 	name = "Bridge Blast Doors"
 	},
 /obj/structure/sign/securearea{
@@ -92562,8 +92637,9 @@
 	c_tag = "Bridge Lounge Zone Center"
 	},
 /obj/structure/statue/cyberiad/nw,
-/obj/structure/flora/rock/jungle,
 /obj/structure/railing,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/biolumini/mine/weaklight,
 /turf/simulated/floor/grass,
 /area/station/command/bridge)
 "twL" = (
@@ -133693,9 +133769,9 @@ bmb
 aaa
 aaa
 bmc
-bdi
-hhk
 bkR
+hhk
+oET
 gaY
 nOD
 ulC
@@ -135763,7 +135839,7 @@ rnu
 weg
 lsI
 uvB
-bxZ
+nhu
 bKJ
 upp
 upp
@@ -136537,7 +136613,7 @@ oca
 bxu
 rRU
 bmc
-sou
+eqC
 rQs
 cgq
 cey
@@ -136791,7 +136867,7 @@ jgY
 opf
 oid
 bQj
-bxu
+eEz
 lsh
 lsh
 lsh
@@ -137820,8 +137896,8 @@ qFt
 eOH
 iWZ
 iWZ
-iWZ
-iWZ
+bdi
+bdi
 bBB
 bBB
 bBB
@@ -138833,9 +138909,9 @@ bmi
 aaa
 aaa
 bmc
-bdP
-xWT
 dLF
+xWT
+bdP
 rys
 qsl
 etL
