@@ -19814,7 +19814,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
-/obj/machinery/door/airlock/multi_tile/command/glass,
+/obj/machinery/door/airlock/multi_tile/command,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 8
@@ -25386,10 +25386,9 @@
 	},
 /area/station/medical/chemistry)
 "bTN" = (
-/obj/effect/spawner/random/maintenance,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/utility)
+/obj/effect/mapping_helpers/turfs/rust/maybe,
+/turf/simulated/wall,
+/area/station/engineering/break_room)
 "bTP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -33789,6 +33788,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "yellow"
@@ -36951,7 +36951,7 @@
 /area/station/engineering/supermatter_room)
 "cOk" = (
 /obj/effect/mapping_helpers/turfs/rust/maybe,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/station/engineering/hallway)
 "cOl" = (
 /obj/structure/shelf/command,
@@ -68715,7 +68715,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
-/obj/machinery/door/airlock/multi_tile/command/glass,
+/obj/machinery/door/airlock/multi_tile/command,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 8
@@ -81422,6 +81422,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
+/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 6
@@ -93579,6 +93580,7 @@
 "tOs" = (
 /obj/effect/spawner/random/cobweb/right/frequent,
 /obj/structure/table,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/station/engineering/utility)
 "tOE" = (
@@ -141274,11 +141276,11 @@ cPs
 cVL
 cPs
 oLk
-oLk
+bTN
 cZW
-oLk
-cPs
-cPs
+bTN
+cHQ
+cHQ
 dkK
 blY
 cZS
@@ -141534,8 +141536,8 @@ dbN
 wYi
 cZY
 cNY
-bTN
-cOi
+cZY
+vaH
 dlU
 cOI
 cZS
@@ -142049,7 +142051,7 @@ mQf
 dDZ
 daV
 vQZ
-cOi
+vaH
 dau
 dtv
 dmz
@@ -142306,7 +142308,7 @@ anp
 cZY
 xjB
 cdo
-cOi
+vaH
 kBF
 dtv
 pUX
