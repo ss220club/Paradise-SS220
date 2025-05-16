@@ -128,9 +128,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/walllocker/medlocker, 32, 32)
 /obj/item/mounted/frame/wall_locker/try_build(turf/on_wall, mob/user)
 	if(!..())
 		return
-	if(locate(/obj/structure/closet/walllocker) in get_turf(user))
-		to_chat(user, "<span class='warning'>There is another wall locker here!</span>")
-		return
+	for(var/obj/structure/closet/walllocker/locker in get_turf(user))
+		if(locker.dir == user.dir)
+			to_chat(user, "<span class='warning'>There is another wall locker here!</span>")
+       		return
 	return TRUE
 
 /obj/item/mounted/frame/wall_locker/do_build(turf/on_wall, mob/user)
