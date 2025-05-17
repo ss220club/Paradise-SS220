@@ -135,7 +135,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/walllocker/medlocker, 32, 32)
 	return TRUE
 
 /obj/item/mounted/frame/wall_locker/do_build(turf/on_wall, mob/user)
-	new /obj/structure/closet/walllocker(get_turf(src), get_dir(user, on_wall), 1)
+	new /obj/structure/closet/walllocker(get_turf(src), get_dir(user, on_wall), TRUE)
 	qdel(src)
 
 /obj/structure/closet/walllocker/Initialize(mapload, direction, building)
