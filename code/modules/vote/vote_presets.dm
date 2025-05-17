@@ -1,8 +1,24 @@
+#define PLAYER "playing"
+#define DEAD_PLAYER "dead"
+#define GHOST "ghost"
+#define LOBBY "in lobby"
+#define UNKNOWN "unknown"
+
 // Crew transfer vote
 /datum/vote/crew_transfer
 	question = "Окончание смены"
 	choices = list("Инициировать эвакуацию", "Продолжить раунд")
 	vote_type_text = "эвакуацию"
+	/// Amount of players on the server
+	var/clients
+	/// Amount of players that voted
+	var/total_votes
+	/// Amount of players that didn't vote
+	var/didnt_vote
+	/// Assoc list of clients and their types
+	var/list/client_types = list(PLAYER = list(), DEAD_PLAYER = list(), GHOST = list(), LOBBY = list(), UNKNOWN = list())
+	/// Holder for blackbox. Contains ckey, client type and vote. Doesn't include those who didn't vote
+	var/list/player_data = list()
 
 /datum/vote/crew_transfer/New()
 	if(SSticker.current_state < GAME_STATE_PLAYING)
@@ -12,6 +28,55 @@
 /datum/vote/crew_transfer/handle_result(result)
 	if(result == "Инициировать эвакуацию")
 		init_shift_change(null, TRUE)
+	if(assign_votes())
+		SSblackbox.record_feedback("associative", "crew_transfer", 1, list(
+			"clients" = clients,
+			"total_votes" = total_votes,
+			"didnt_vote" = didnt_vote,
+			"player_data" = player_data,
+		), ignore_seal = TRUE)
+
+/datum/vote/crew_transfer/start()
+	..()
+	assign_players()
+
+/datum/vote/crew_transfer/proc/assign_players()
+	clients = length(GLOB.clients)
+
+	for(var/client/client in GLOB.clients)
+		if(client.mob in GLOB.alive_mob_list)
+			client_types[PLAYER] |= client.ckey
+		else if(client.mob in GLOB.new_player_mobs)
+			client_types[LOBBY] |= client.ckey
+		else if(client.mob in GLOB.dead_mob_list)
+			if(isobserver(client.mob))
+				var/mob/dead/observer/ghost = client.mob
+				if(ghost.started_as_observer)
+					client_types[GHOST] |= client.ckey
+				else
+					client_types[DEAD_PLAYER] |= client.ckey
+			else
+				client_types[DEAD_PLAYER] |= client.ckey
+		else // shouldn't happen
+			log_debug("Someone received unknown client type. mob type: [client.mob.type]")
+			client_types[UNKNOWN] |= client.ckey
+
+/datum/vote/crew_transfer/proc/assign_votes()
+	if(!length(voted))
+		return FALSE
+
+	var/list/player_types = list(PLAYER, DEAD_PLAYER, GHOST, LOBBY, UNKNOWN)
+	for(var/ckey in voted)
+		var/client_type
+		for(var/type in player_types)
+			if(ckey in client_types[type])
+				client_type = type
+				break
+		player_data[ckey] = list("status" = client_type, "vote" = voted[ckey])
+
+	total_votes = length(voted)
+	didnt_vote = clients - total_votes
+	return TRUE
 
 // Map vote
 /datum/vote/map
@@ -50,3 +115,9 @@
 				top_voted_map = M
 	to_chat(world, "<span class='interface'>Карта следующего раунда: [initial(top_voted_map.fluff_name)] ([initial(top_voted_map.technical_name)])</span>")
 	SSmapping.next_map = new top_voted_map
+
+#undef PLAYER
+#undef DEAD_PLAYER
+#undef GHOST
+#undef LOBBY
+#undef UNKNOWN
