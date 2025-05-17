@@ -104,7 +104,6 @@
 		/obj/item/clothing/mask/chameleon/voice_change,
 		/obj/item/flash/cameraflash,
 		/obj/item/gun/projectile/automatic/toy/pistol/riot,
-		/obj/item/lighter/zippo/gonzofist,
 		/obj/item/mod/module/chameleon,
 		/obj/item/mod/module/holster/hidden,
 		/obj/item/mod/module/noslip,
@@ -112,11 +111,6 @@
 		/obj/item/mod/module/plate_compression,
 		/obj/item/reagent_containers/hypospray/autoinjector/hyper_medipen,
 		/obj/item/reagent_containers/hypospray/autoinjector/nanocalcium,
-		/obj/item/stack/sheet/mineral/gold{amount = 20},
-		/obj/item/stack/sheet/mineral/plasma{amount = 20},
-		/obj/item/stack/sheet/mineral/silver{amount = 20},
-		/obj/item/stack/sheet/mineral/uranium{amount = 20},
-		/obj/item/stamp/chameleon,
 		/obj/item/storage/backpack/duffel/syndie/med/surgery,
 		/obj/item/storage/backpack/satchel_flat,
 		/obj/item/storage/belt/military,
@@ -139,7 +133,6 @@
 		/obj/item/clothing/mask/chameleon/voice_change,
 		/obj/item/flash/cameraflash,
 		/obj/item/gun/projectile/automatic/toy/pistol/riot,
-		/obj/item/lighter/zippo/gonzofist,
 		/obj/item/mod/module/chameleon,
 		/obj/item/mod/module/holster/hidden,
 		/obj/item/mod/module/noslip,
@@ -147,17 +140,15 @@
 		/obj/item/mod/module/plate_compression,
 		/obj/item/reagent_containers/hypospray/autoinjector/hyper_medipen,
 		/obj/item/reagent_containers/hypospray/autoinjector/nanocalcium,
-		/obj/item/stack/sheet/mineral/gold{amount = 20},
-		/obj/item/stack/sheet/mineral/plasma{amount = 20},
-		/obj/item/stack/sheet/mineral/silver{amount = 20},
-		/obj/item/stack/sheet/mineral/uranium{amount = 20},
-		/obj/item/stamp/chameleon,
 		/obj/item/storage/backpack/duffel/syndie/med/surgery,
 		/obj/item/storage/backpack/satchel_flat,
 		/obj/item/storage/belt/military,
 		/obj/item/storage/box/syndie_kit/camera_bug,
 		/obj/item/storage/box/syndie_kit/chameleon,
 		/obj/item/storage/box/syndie_kit/space,
+
+		// Only in depot for rare-tier
+		/obj/item/borg/upgrade/syndicate,
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/officer
@@ -165,7 +156,6 @@
 	point_value = 110
 	// Primarily utility items with occasional low damage weaponry, and a blood-red, because that's too good for rare-tier.
 	loot = list(
-		/obj/item/borg/upgrade/syndicate,
 		/obj/item/clothing/glasses/hud/security/chameleon,
 		/obj/item/clothing/glasses/thermal,
 		/obj/item/clothing/shoes/magboots/elite,
@@ -176,18 +166,19 @@
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/pen/edagger,
 		/obj/item/pinpointer/advpinpointer,
-		/obj/item/stack/sheet/mineral/diamond{amount = 10},
 		/obj/item/storage/belt/sheath/snakesfang,
 		/obj/item/storage/box/syndidonkpockets,
 		/obj/item/storage/box/syndie_kit/stechkin,
 		/obj/item/mod/control/pre_equipped/traitor,
+
+		// rare -> officer tier for ruins
+		/obj/item/borg/upgrade/syndicate,
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/officer/depot
 	spawn_inside = /obj/structure/closet/secure_closet/depot
 	spawn_loot_chance = 40
 	loot = list(
-		/obj/item/borg/upgrade/syndicate,
 		/obj/item/clothing/glasses/hud/security/chameleon,
 		/obj/item/clothing/glasses/thermal,
 		/obj/item/clothing/shoes/magboots/elite,
@@ -198,7 +189,6 @@
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/pen/edagger,
 		/obj/item/pinpointer/advpinpointer,
-		/obj/item/stack/sheet/mineral/diamond{amount = 10},
 		/obj/item/storage/belt/sheath/snakesfang,
 		/obj/item/storage/box/syndidonkpockets,
 		/obj/item/storage/box/syndie_kit/stechkin,
@@ -207,7 +197,6 @@
 		// only in depot for officer-tier
 		/obj/item/mod/module/stealth,
 	)
-
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/armory
 	name = "syndicate depot loot, armory"
@@ -230,6 +219,10 @@
 		/obj/item/mod/module/stealth,
 	)
 
+/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/elite/Initialize(mapload)
+	loot ^= list(/obj/item/mod/control/pre_equipped/traitor_elite)
+	. = ..()
+
 /obj/effect/spawner/random/pool/spaceloot/syndicate/armory/depot
 	guaranteed = TRUE
 	spawn_inside = /obj/structure/closet/secure_closet/depot/armory
@@ -251,13 +244,43 @@
 		/obj/item/cqc_manual,
 	)
 
-
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed
 	loot = list(
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 30,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 20,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer = 5,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory = 1,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob
+	icon = 'icons/effects/spawner_icons.dmi'
+	icon_state = "syndie_depot"
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/common = 80,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit = 19,
+
+		// Let the massacre begin
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/elite, // 1%
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/elite
+	point_value = 200 // Guaranteed armory-tier loot on death
+	loot = list(/mob/living/simple_animal/hostile/syndicate/modsuit/elite)
+
+// Used when we want our mob to be protected from environment pressure
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit
+	point_value = 6 // Modsuit chance
+	loot = list(
+		/mob/living/simple_animal/hostile/syndicate/modsuit,
+		/mob/living/simple_animal/hostile/syndicate/modsuit/ranged,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob/common
+	point_value = 3
+	loot = list(
+		/mob/living/simple_animal/hostile/syndicate/ranged = 4,
+		/mob/living/simple_animal/hostile/syndicate = 3, // Melee is stronger than ranged variant most of the time
+		/mob/living/simple_animal/hostile/syndicate/shield,
 	)
 
 // Only two of these
@@ -269,11 +292,6 @@
 		/obj/item/gun/energy/floragun,
 		/obj/item/gun/energy/temperature,
 	)
-
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie
-	point_value = 100
-	spawn_loot_chance = 50
-	loot = list(/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib)
 
 /obj/effect/spawner/random/pool/spaceloot/moonoutpost19
 	name = "moon outpost 19 loot spawner"
@@ -315,7 +333,6 @@
 	spawn_random_offset = TRUE
 	spawn_random_offset_max_pixels = 8
 
-
 /obj/effect/spawner/random/pool/spaceloot/mechtransport/storage1
 	loot = list(
 		/obj/item/mecha_parts/mecha_equipment/repair_droid,
@@ -335,4 +352,3 @@
 
 /obj/effect/spawner/random/pool/spaceloot/mechtransport/storage4
 	loot = list(/obj/item/mecha_parts/core)
-

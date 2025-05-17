@@ -149,6 +149,11 @@
 	if(M)
 		M.m_hidden = 1
 
+/obj/item/pda/syndicate_fake
+	icon_state = "pda-syndi"
+	name = "Military PDA"
+	default_pen = /obj/item/pen/multi/syndicate
+
 /obj/item/pda/chaplain
 	icon_state = "pda-chaplain"
 	ttone = "holy"
