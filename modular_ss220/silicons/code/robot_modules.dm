@@ -18,11 +18,9 @@
 
 /obj/item/robot_module/medical/Initialize(mapload)
 	. = ..()
-	basic_modules.Remove(/obj/item/reagent_containers/borghypo)
 	basic_modules |= list(
 		/obj/item/gps/cyborg,
 		/obj/item/rlf,
-		/obj/item/reagent_containers/borghypo/basic,
 		)
 
 /obj/item/robot_module/butler/Initialize(mapload)
