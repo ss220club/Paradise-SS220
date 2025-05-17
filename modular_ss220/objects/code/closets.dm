@@ -125,15 +125,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/walllocker/medlocker, 32, 32)
 	metal_sheets_refunded = 2
 	allow_floor_mounting = FALSE
 
-/obj/item/mounted/frame/wall_locker/try_build(turf/on_wall, mob/user)
-	if(!..())
-		return
-	for(var/obj/structure/closet/walllocker/locker in get_turf(user))
-		if(locker.dir == user.dir)
-			to_chat(user, "<span class='warning'>There is another wall locker here!</span>")
-			return
-	return TRUE
-
 /obj/item/mounted/frame/wall_locker/do_build(turf/on_wall, mob/user)
 	new /obj/structure/closet/walllocker(get_turf(src), get_dir(user, on_wall), TRUE)
 	qdel(src)
