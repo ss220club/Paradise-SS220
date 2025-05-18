@@ -60,7 +60,6 @@
 
 /obj/item/eftpos/ui_act(action, list/params, datum/tgui/ui)
 	var/mob/living/user = ui.user
-
 	switch(action)
 		if("toggle_lock")
 			if(transaction_locked)
