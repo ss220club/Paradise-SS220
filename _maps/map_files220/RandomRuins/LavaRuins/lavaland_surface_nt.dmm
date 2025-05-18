@@ -1310,10 +1310,12 @@
 /turf/simulated/floor/plating,
 /area/mine/outpost/production)
 "iD" = (
-/obj/machinery/door/airlock/mining/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
+/obj/machinery/door/airlock/multi_tile/supply/glass{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkpurplecorners"
 	},
@@ -2159,7 +2161,7 @@
 	},
 /area/mine/outpost/mechbay)
 "nY" = (
-/obj/effect/spawner/window/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/cafeteria)
 "of" = (
@@ -2450,7 +2452,7 @@
 	},
 /area/mine/outpost/hallway/east)
 "pL" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/storage)
 "pU" = (
@@ -3698,8 +3700,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/mining/glass,
-/obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -3710,7 +3710,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgreencorners";
 	dir = 4
@@ -3814,7 +3813,7 @@
 /turf/simulated/wall,
 /area/mine/outpost/maintenance/east)
 "yj" = (
-/obj/effect/spawner/window/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/maintenance/south)
 "yl" = (
@@ -4742,7 +4741,7 @@
 	},
 /area/mine/outpost/hallway/west)
 "Eg" = (
-/obj/effect/spawner/window/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/medbay)
 "Ei" = (
@@ -6129,7 +6128,6 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/explored)
 "Mn" = (
-/obj/machinery/door/airlock/mining/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6141,6 +6139,9 @@
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/machinery/door/airlock/multi_tile/supply/glass{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -8160,13 +8161,10 @@
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
 "Yw" = (
-/obj/machinery/door/airlock/mining/glass,
-/obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
