@@ -3708,9 +3708,11 @@
 /area/station/security/warden)
 "aqy" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/security/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/general,
+/obj/machinery/door/airlock/multi_tile/security/glass{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -5209,9 +5211,6 @@
 /area/station/security/prison/cell_block/a)
 "awf" = (
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/polarized{
-	id = "Processing"
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -5373,11 +5372,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/multi_tile/security/glass{
-	id_tag = "BrigEast"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
+/obj/machinery/door/airlock/multi_tile/security/glass{
+	id_tag = "BrigEast";
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -5590,9 +5590,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/airlock/multi_tile/security/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
+/obj/machinery/door/airlock/multi_tile/security/glass{
+	id_tag = "BrigEast";
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -5673,7 +5676,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
-/obj/machinery/door/airlock/multi_tile/security/glass,
+/obj/machinery/door/airlock/multi_tile/security/glass{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -31464,7 +31469,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
-/obj/machinery/door/airlock/multi_tile/medical/glass,
+/obj/machinery/door/airlock/multi_tile/medical/glass{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -57270,7 +57277,8 @@
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/siding/wood/cherry,
 /obj/machinery/door/airlock/multi_tile/command{
-	id_tag = "captainofficedoor"
+	id_tag = "captainofficedoor";
+	dir = 1
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
@@ -97048,11 +97056,13 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/multi_tile/security/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/general,
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "briefing"
+	},
+/obj/machinery/door/airlock/multi_tile/security/glass{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"

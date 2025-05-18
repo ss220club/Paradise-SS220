@@ -22826,7 +22826,9 @@
 "bKN" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "neutralcorner"
@@ -34937,7 +34939,9 @@
 	id = "clon"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
-/obj/machinery/door/airlock/multi_tile/medical/glass,
+/obj/machinery/door/airlock/multi_tile/medical/glass{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},

@@ -18627,19 +18627,6 @@
 	icon_state = "darkblue"
 	},
 /area/station/command/bridge)
-"bEk" = (
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/command/general,
-/obj/machinery/door/airlock/multi_tile/command/glass,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
-/area/station/command/bridge)
 "bEm" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -44853,7 +44840,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
-/obj/machinery/door/airlock/multi_tile/medical/glass,
+/obj/machinery/door/airlock/multi_tile/medical/glass{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
@@ -79142,7 +79131,6 @@
 	},
 /area/station/medical/medbay2)
 "nUC" = (
-/obj/machinery/door/airlock/multi_tile/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79157,6 +79145,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 1
+	},
 /turf/simulated/floor/carpet,
 /area/station/service/bar/atrium)
 "nUQ" = (
@@ -144839,7 +144830,7 @@ bxi
 bwf
 mTB
 gEj
-bEk
+xRz
 asz
 bHj
 bHj
@@ -145610,7 +145601,7 @@ aaa
 bwf
 mTB
 gEj
-bEk
+xRz
 asz
 bHj
 bQG
