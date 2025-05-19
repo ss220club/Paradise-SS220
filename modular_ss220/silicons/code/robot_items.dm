@@ -31,7 +31,7 @@
 /obj/item/reagent_containers/borghypo/basic
 	name = "Basic Cyborg Hypospray"
 	desc = "A very basic cyborg hypospray, capable of providing simple medical treatment in emergencies."
-	reagent_ids = list("salglu_solution", "epinephrine", "spaceacillin", "charcoal", "sal_acid", "mannitol")
+	reagent_ids = list("salglu_solution", "epinephrine", "charcoal", "sal_acid")
 	volume = 30
 
 /obj/item/reagent_containers/borghypo
