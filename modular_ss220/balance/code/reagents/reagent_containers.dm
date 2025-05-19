@@ -30,6 +30,8 @@
 					reagents_produced[reagent] = produced + reagents_to_add
 
 /obj/item/reagent_containers/borghypo/should_refill()
+	if(cyborg.admin_spawned && length(reagents_limit)) // adminbuse
+		reagents_limit = list()
 	for(var/reagent as anything in reagent_ids)
 		var/reagent_volume = reagent_ids[reagent] || 0
 		var/produced = reagents_produced[reagent] || 0
