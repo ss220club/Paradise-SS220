@@ -40,7 +40,7 @@
 
 /obj/item/mod/control/deploy(mob/user, obj/item/part, mass)
 	if(part.loc == src)
-		if(!isnull(user) && !theme.is_species_allowed(user.dna.species))
+		if(user && !theme.is_species_allowed(user.dna.species))
 			to_chat(user, span_warning("Ошибка видовой принадлежности! Развертывание недоступно."))
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE
