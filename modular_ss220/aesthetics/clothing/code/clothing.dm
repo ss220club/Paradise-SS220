@@ -84,6 +84,9 @@
 /obj/item/clothing/under/rank/rnd/rd/skirt
 	icon = 'modular_ss220/aesthetics/clothing/icons/clothing.dmi'
 
+/obj/item/clothing/under/rank/rnd/rd/dress
+	icon = 'icons/obj/clothing/under/rnd.dmi'
+
 //Procedure
 /obj/item/clothing/under/rank/procedure/nct
 	icon = 'modular_ss220/aesthetics/clothing/icons/clothing.dmi'
