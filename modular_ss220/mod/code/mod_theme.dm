@@ -4,8 +4,7 @@
 	var/list/species_allowed = list()
 
 /datum/mod_theme/proc/is_species_allowed(datum/species/species)
-	if(!length(species_allowed) || (species.name in species_allowed))
-		return TRUE
+	return !length(species_allowed) || (species.name in species_allowed)
 
 /mob/living/carbon/human/change_dna(datum/dna/new_dna, include_species_change)
 	if(istype(back, /obj/item/mod/control))
