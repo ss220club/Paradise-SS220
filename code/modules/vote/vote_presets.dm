@@ -33,8 +33,8 @@
 			"clients" = clients,
 			"total_votes" = total_votes,
 			"didnt_vote" = didnt_vote,
-			"player_data" = player_data,
-		), ignore_seal = TRUE)
+			"player_data" = json_encode(player_data),
+		))
 
 /datum/vote/crew_transfer/start()
 	..()
@@ -65,10 +65,9 @@
 	if(!length(voted))
 		return FALSE
 
-	var/list/player_types = list(PLAYER, DEAD_PLAYER, GHOST, LOBBY, UNKNOWN)
 	for(var/ckey in voted)
 		var/client_type
-		for(var/type in player_types)
+		for(var/type in client_types)
 			if(ckey in client_types[type])
 				client_type = type
 				break

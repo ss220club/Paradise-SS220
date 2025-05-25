@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(blackbox)
 	/// List of highest tech levels attained that isn't lost lost by destruction of RD computers
 	var/list/research_levels = list()
 	/// Associative list of any feedback variables that have had their format changed since creation and their current version, remember to update this
-	var/list/versions = list()
+	var/list/versions = list("crew_transfer" = 2)
 
 /datum/controller/subsystem/blackbox/Initialize()
 	if(!SSdbcore.IsConnected())
