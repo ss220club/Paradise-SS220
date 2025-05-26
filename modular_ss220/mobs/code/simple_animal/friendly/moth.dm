@@ -16,7 +16,7 @@
 	see_in_dark = 100
 	friendly = "nudges"
 	density = 0
-	flying = TRUE
+	initial_traits = list(TRAIT_FLYING)
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	ventcrawler = 2
 	mob_size = MOB_SIZE_TINY
@@ -24,6 +24,6 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 	holder_type = /obj/item/holder/moth
 
-/mob/living/simple_animal/nian_caterpillar/Initialize()
+/mob/living/simple_animal/nian_caterpillar/Initialize(mapload)
 	. = ..()
 	butcher_results |= list(/obj/item/stack/sheet/animalhide/mothroach = 1)

@@ -13,7 +13,8 @@ GLOBAL_DATUM_INIT(ghost_hud_panel, /datum/ui_module/ghost_hud_panel, new)
 	var/list/hud_type_lookup = list(
 		"medical" = DATA_HUD_MEDICAL_ADVANCED,
 		"security" = DATA_HUD_SECURITY_ADVANCED,
-		"diagnostic" = DATA_HUD_DIAGNOSTIC_ADVANCED
+		"diagnostic" = DATA_HUD_DIAGNOSTIC_ADVANCED,
+		"pressure" = DATA_HUD_PRESSURE
 	)
 
 /datum/ui_module/ghost_hud_panel/ui_state(mob/user)
@@ -88,6 +89,8 @@ GLOBAL_DATUM_INIT(ghost_hud_panel, /datum/ui_module/ghost_hud_panel, new)
 			ghost.antagHUD = TRUE
 			for(var/datum/atom_hud/antag/H in GLOB.huds)
 				H.add_hud_to(ghost)
+			var/datum/atom_hud/data/human/malf_ai/H = GLOB.huds[DATA_HUD_MALF_AI]
+			H.add_hud_to(ghost)
 
 			// SS220 LAZARUS EDIT - START
 			var/datum/atom_hud/treacherous_flesh/tf_hud = locate(/datum/atom_hud/treacherous_flesh) in GLOB.huds
@@ -98,8 +101,11 @@ GLOBAL_DATUM_INIT(ghost_hud_panel, /datum/ui_module/ghost_hud_panel, new)
 			ghost.antagHUD = FALSE
 			for(var/datum/atom_hud/antag/H in GLOB.huds)
 				H.remove_hud_from(ghost)
-
 			// SS220 LAZARUS EDIT - START
 			var/datum/atom_hud/treacherous_flesh/tf_hud = locate(/datum/atom_hud/treacherous_flesh) in GLOB.huds
 			tf_hud.remove_hud_from(ghost)
 			// SS220 LAZARUS EDIT - END
+
+			var/datum/atom_hud/data/human/malf_ai/H = GLOB.huds[DATA_HUD_MALF_AI]
+			H.remove_hud_from(ghost)
+

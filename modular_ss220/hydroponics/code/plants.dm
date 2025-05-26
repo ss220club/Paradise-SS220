@@ -4,6 +4,11 @@
 		/obj/item/seeds/cucumber = 3,)
 	. = ..()
 
+// Unsorted seeds
+/obj/item/unsorted_seeds/New(obj/item/seeds/template, mutation_level, list/mutation_focus, seed_data_in = null)
+	. = ..()
+	icon = template.icon
+
 // Buckwheat
 /obj/item/seeds/wheat/oat
 	mutatelist = list(/obj/item/seeds/wheat/buckwheat)
@@ -132,11 +137,11 @@
 	. = ..()
 	trash = /obj/item/ammo_casing/peas_shooter
 
-/obj/item/food/grown/soybeans/attack_self(mob/user)
+/obj/item/food/grown/soybeans/attack_self__legacy__attackchain(mob/user)
 	. = ..()
 	if(!do_after(user, 1.5 SECONDS, target = user))
 		return
-	user.unEquip(src)
+	user.unequip(src)
 	if(trash)
 		var/obj/item/trash = generate_trash()
 		user.put_in_hands(trash)

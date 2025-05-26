@@ -1,3 +1,9 @@
+/obj/item/reagent_containers/drinks/bottle
+	var/broken_bottle_icon = 'icons/obj/drinks.dmi'
+
+/obj/item/reagent_containers/drinks/drinkingglass
+	name = "drinking glass"
+
 /obj/item/reagent_containers/drinks/drinkingglass/on_reagent_change()
 	. = ..()
 	if(!reagents.reagent_list.len)
@@ -653,7 +659,7 @@
 	qdel(I)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, TRUE)
 
-/obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
+/obj/structure/fermenting_barrel/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/food/sliceable/bread))
 		if(!user.drop_item())
 			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
@@ -792,3 +798,243 @@
 	drink_name = "Citrus Beer"
 	drink_desc = "Обычное пиво оранжевого оттенка, пахнет апельсинами."
 	taste_description = "кисленькое пиво"
+
+// MARK: NT Food Drinks
+/obj/item/reagent_containers/drinks/cans/nt_iced_black_tea
+	name = "iced black tea"
+	desc = "Холодный чёрный чай, натуральный и полезный."
+	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	icon_state = "tea_bottle_grey"
+	item_state = "beer"
+	list_reagents = list("icetea" = 30)
+
+/obj/item/reagent_containers/drinks/cans/nt_iced_green_tea
+	name = "iced green tea"
+	desc = "Холодный зелёный чай, натуральный и полезный."
+	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	icon_state = "tea_bottle"
+	item_state = "beer"
+	list_reagents = list("icetea" = 30)
+
+/obj/item/reagent_containers/drinks/cans/nt_iced_mint_tea
+	name = "iced mint tea"
+	desc = "Освежающий холодный чай с листьями мяты."
+	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	icon_state = "tea_bottle_blue"
+	item_state = "beer"
+	list_reagents = list("icetea" = 30)
+
+/obj/item/reagent_containers/drinks/cans/nt_iced_berry_tea
+	name = "iced berry tea"
+	desc = "Холодный чай с натуральными ягодами без сахара."
+	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	icon_state = "tea_bottle_pink"
+	item_state = "beer"
+	list_reagents = list("icetea" = 30)
+
+/datum/reagent/consumable/ethanol/communism_beach
+	name = "Communism On The Beach"
+	id = "communism_beach"
+	description = "Этот пляж принадлежит всем в равной степени."
+	color = "#bb2020"
+	alcohol_perc = 0.4
+	dizzy_adj = 4 SECONDS
+	taste_description = "равенство"
+	drink_icon = "communism_beach"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_desc = "Коктейль, придуманный СССП, который убедит вас в том, что скандировать лозунги коммунизма - это правильно!"
+	drink_name = "Communism On The Beach"
+	var/say_probability = 10
+	var/phrases_to_shout = list("За СССП!", "Равенство для всех!", "Революция вперед!", "К черту власть капитализма!")
+
+/datum/chemical_reaction/communism_beach
+	name = "Communism On The Beach"
+	id = "communism_beach"
+	result = "communism_beach"
+	result_amount = 5
+	required_reagents = list("vodka" = 2, "silicon" = 1, "berryjuice" = 2)
+	mix_message = "Красный свет из сосуда заполняет всё вокруг."
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/communism_beach/on_mob_life(mob/living/M)
+	. = ..()
+	if(prob(say_probability))
+		M.say(pick(phrases_to_shout))
+
+/datum/reagent/consumable/ethanol/red_january
+	name = "Red January"
+	id = "red_january"
+	description = "От этого напитка так и пахнет Революцией."
+	color = "#bb2020"
+	alcohol_perc = 0.3
+	dizzy_adj = 4 SECONDS
+	taste_description = "кровь капитализма"
+	drink_icon = "red_january"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_desc = "От этого напитка так и пахнет Революцией. Скоро она охватит всю Галактику!"
+	drink_name = "Red January"
+
+/datum/chemical_reaction/red_january
+	name = "Red January"
+	id = "red_january"
+	result = "red_january"
+	result_amount = 5
+	required_reagents = list("absinthe" = 2, "rum" = 1, "ice" = 1,"orangejuice" = 1)
+	mix_message = "Звучат призывы к кровавой революции."
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/five_year_plan
+	name = "Five Year Plan"
+	id = "five_year_plan"
+	description = "Высокая в небе звезда зовет меня в путь."
+	color = "#1e1009"
+	taste_description = "переработки во имя светлого будущего"
+	drink_icon = "five_year_plan"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_desc = "Ударная доза кофеина и чего-то горючего для повышения Нашей эффективности!"
+	drink_name = "Five Year Plan"
+
+/datum/chemical_reaction/five_year_plan
+	name = "Five Year Plan"
+	id = "five_year_plan"
+	result = "five_year_plan"
+	result_amount = 5
+	required_reagents = list("coffee" = 2, "fuel" = 3)
+	mix_message = "Из сосуда начинает валить дым."
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/galactional
+	name = "Galactional"
+	id = "galactional"
+	description = "Пролетарии Галактики - объединяйтесь!"
+	color = "#53133e"
+	alcohol_perc = 0.5
+	dizzy_adj = 5 SECONDS
+	taste_description = "галактическое единство близко"
+	drink_icon = "galactional"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_desc = "Этот напиток дает веру в светлое будущее под знаменами коммунизма"
+	drink_name = "Galactional"
+
+/datum/chemical_reaction/galactional
+	name = "Galactional"
+	id = "galactional"
+	result = "galactional"
+	result_amount = 5
+	required_reagents = list("vodka" = 1, "bitter" = 1, "wine" = 1, "lager" = 1, "cola" = 1)
+	mix_message = "Красный свет из сосуда заполняет всё вокруг."
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/carotene
+	name = "Carotene"
+	id = "carotene"
+	description = "Коктейль из моркови, вина и винограда."
+	color = "#ffcb3b"
+	alcohol_perc = 0.4
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "carotene"
+	drink_name = "Carotene"
+	drink_desc = "Несмотря на название, таким коктейлем намного более вероятно убить печень, чем вылечить плохое зрение."
+	taste_description = "кислый виноград и морковь"
+
+/datum/chemical_reaction/carotene
+	name = "Carotene"
+	id = "carotene"
+	result = "carotene"
+	required_reagents = list("grapejuice" = 1, "carrotjuice" = 1, "sugar" = 1, "lemonjuice" = 1, "wine" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/drink/orangade
+	name = "Orangade"
+	id = "orangade"
+	description = "Освежающий напиток из апельсина и моркови."
+	color = "#ffa600"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "orangade"
+	drink_name = "Orangade"
+	drink_desc = "Шипучая оранжевая радость, что заставляет улыбаться лишь при взгляде на неё!"
+	taste_description = "апельсин и морковь"
+
+/datum/chemical_reaction/orangade
+	name = "Orangade"
+	id = "orangade"
+	result = "orangade"
+	required_reagents = list("carrotjuice" = 2, "orangejuice" = 2, "sodawater" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/carrotmary
+	name = "Carrot Mary"
+	id = "carrotmary"
+	description = "Густоватая смесь моркови и водки. Пахнет солёно."
+	color = "#e69e42"
+	alcohol_perc = 0.4
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "carrotmary"
+	drink_name = "Carrot Mary"
+	drink_desc = "Популярный неорусский коктейль, обычно приготавливаемый к новогоднему столу."
+	taste_description = "солёная морковь"
+
+/datum/chemical_reaction/carrotmary
+	name = "Carrot Mary"
+	id = "carrotmary"
+	result = "carrotmary"
+	required_reagents = list("vodka" = 2, "carrotjuice" = 2, "limejuice" = 1, "sodiumchloride" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/pineapple_carrot_shrub
+	name = "Pineapple Carrot Shrub"
+	id = "pineapple_carrot_shrub"
+	description = "Коктейль из джина, ананаса и моркови."
+	color = "#e67e42"
+	alcohol_perc = 0.4
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "pineapple_carrot_shrub"
+	drink_name = "Pineapple Carrot Shrub"
+	drink_desc = "Коктейль, сочетающий в себе вкусы разных климатов. Выглядит сладко и освежающе."
+	taste_description = "джин со сладостью моркови и ананаса"
+
+/datum/chemical_reaction/pineapple_carrot_shrub
+	name = "Pineapple Carrot Shrub"
+	id = "pineapple_carrot_shrub"
+	result = "pineapple_carrot_shrub"
+	required_reagents = list("gin" = 2, "carrotjuice" = 1, "pineapplejuice" = 1, "sugar" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/maiden_in_dungeon
+	name = "Maiden in Dungeon"
+	id = "maiden_in_dungeon"
+	description = "Эль с морковным соком и острым соусом."
+	color = "#e45238"
+	alcohol_perc = 0.4
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "maiden_in_dungeon"
+	drink_name = "Maiden in Dungeon"
+	drink_desc = "Напиток, что был придуман заядлыми игроками в DnD. Его запах почти что заставляет Вас чихать."
+	taste_description = "жгучее драконье дыхание"
+
+/datum/chemical_reaction/maiden_in_dungeon
+	name = "Maiden in Dungeon"
+	id = "maiden_in_dungeon"
+	result = "maiden_in_dungeon"
+	required_reagents = list("ale" = 1, "carrotjuice" = 2, "lemonjuice" = 1, "capsaicin" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/obj/item/reagent_containers/drinks/bottle/carrotjuice
+	name = "carrot juice"
+	desc = "Упаковка морковного сока. Полезен для зрения и, если верить некоторым слухам, для роста."
+	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	icon_state = "carrotjuice_carton"
+	item_state = "carton"
+	is_glass = FALSE
+	gender = PLURAL
+	list_reagents = list("carrotjuice" = 50)
+	broken_bottle_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+
+/obj/machinery/economy/vending/boozeomat/Initialize(mapload)
+	products += list(/obj/item/reagent_containers/drinks/bottle/carrotjuice = 2)
+	return ..()

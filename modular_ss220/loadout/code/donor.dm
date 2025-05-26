@@ -63,17 +63,17 @@
 	path = /obj/item/storage/wallet
 	cost = 12
 
-/datum/gear/donor/Wallet_NT
+/datum/gear/donor/wallet_nt
 	display_name = "Бумажник NT"
 	path = /obj/item/storage/wallet/wallet_NT
 	cost = 12
 
-/datum/gear/donor/Wallet_USSP
+/datum/gear/donor/wallet_ussp
 	display_name = "Бумажник СССП"
 	path = /obj/item/storage/wallet/wallet_USSP_2
 	cost = 12
 
-/datum/gear/donor/Wallet_WYCI
+/datum/gear/donor/wallet_wyci
 	display_name = "Бумажник W.Y.C.I."
 	path = /obj/item/storage/wallet/wallet_wyci
 	cost = 12
@@ -129,6 +129,12 @@
 	donator_tier = 2
 	cost = 1
 
+/datum/gear/donor/mouse_ears
+	display_name = "Мышиные ушки"
+	path = /obj/item/clothing/head/kitty/mouse
+	donator_tier = 2
+	cost = 1
+
 /datum/gear/donor/driver
 	display_name = "Driver jacket"
 	path = /obj/item/clothing/suit/jacket/driver
@@ -156,6 +162,13 @@
 	donator_tier = 5
 	cost = 2
 
+/datum/gear/donor/welding_redflame
+	display_name = "Red flame decal welding helmet"
+	path = /obj/item/clothing/head/welding/flamedecal
+	allowed_roles = list("Chief Engineer", "Station Engineer", "Life Support Specialist", "Roboticist")
+	donator_tier = 2
+	cost = 2
+
 /datum/gear/donor/soundhand_metal_guitar
 	display_name = "Электро-гитара Арии"
 	path = /obj/item/instrument/soundhand_metal_guitar
@@ -169,6 +182,25 @@
 /datum/gear/instrument/soundhand_rock_guitar
 	display_name = "Рок гитара"
 	path = /obj/item/instrument/soundhand_rock_guitar
+
+/datum/gear/donor/collarspike
+	display_name = "Шипованный кожаный ошейник"
+	path = /obj/item/clothing/neck/necklace/collarspike
+	donator_tier = 2
+	cost = 2
+
+/datum/gear/donor/jackbootstall
+	display_name = "Берцы ветерана"
+	path = /obj/item/clothing/shoes/jackboots/noisy/long
+	donator_tier = 2
+	cost = 2
+
+/datum/gear/donor/seceyepatch
+	display_name = "Повязка secHUD на глаз"
+	path = /obj/item/clothing/glasses/hud/security/eyepatch
+	allowed_roles = list("Head of Security", "Warden", "Detective", "Security Officer", "Adjutant")
+	donator_tier = 3
+	cost = 2
 
 // ID Skins
 /datum/gear/donor/id_decal_colored
@@ -320,3 +352,58 @@
 	path = /obj/item/id_skin/boykisser
 	donator_tier = 4
 	cost = 5
+
+// MARK: EI clothes
+/datum/gear/donor/ei_cloak
+	display_name = "Плащ Gold On Black"
+	path = /obj/item/clothing/suit/hooded/ei_cloak
+	donator_tier = 2
+	cost = 2
+
+/datum/gear/donor/ei_gloves
+	display_name = "Перчатки Gold On Black"
+	path = /obj/item/clothing/gloves/color/ei_gloves
+	donator_tier = 1
+	cost = 1
+
+/datum/gear/donor/ei_mask
+	display_name = "Дыхательная маска от EI"
+	path = /obj/item/clothing/mask/breath/ei_mask
+	donator_tier = 3
+	cost = 3
+
+/datum/gear/donor/ei_shoes
+	display_name = "Ботинки Gold On Black"
+	path = /obj/item/clothing/shoes/ei_shoes
+	donator_tier = 1
+	cost = 1
+
+/datum/gear/donor/ei_jacket
+	display_name = "Кожаная куртка Rock on Black"
+	path = /obj/item/clothing/suit/storage/ei_jacket
+	donator_tier = 2
+	cost = 1
+
+/datum/gear/donor/ei_coat
+	display_name = "Офицерский плащ EI"
+	path = /obj/item/clothing/suit/storage/ei_coat
+	donator_tier = 4
+	cost = 4
+
+/datum/gear/donor/ei_combat
+	display_name = "Тактическая водолазка Gold on Black"
+	path = /obj/item/clothing/under/ei_combat
+	donator_tier = 1
+	cost = 1
+
+/datum/gear/donor/ei_skirt
+	display_name = "Блузка с юбкой Gold on Black"
+	path = /obj/item/clothing/under/ei_skirt
+	donator_tier = 1
+	cost = 1
+
+/datum/gear/donor/ei_skirt_alt
+	display_name = "Юбка «Солнце» от EI"
+	path = /obj/item/clothing/under/ei_skirt_alt
+	donator_tier = 1
+	cost = 1

@@ -33,6 +33,8 @@
 /obj/machinery/economy/atm/Initialize(mapload)
 	. = ..()
 	update_icon()
+	if(mapload)
+		new /obj/effect/turf_decal/delivery/green/hollow(loc)
 
 /obj/machinery/economy/atm/update_icon_state()
 	. = ..()
@@ -77,17 +79,15 @@
 /obj/machinery/economy/atm/attack_ghost(mob/user)
 	ui_interact(user)
 
-/obj/machinery/economy/atm/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/card/id))
+/obj/machinery/economy/atm/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/card/id))
 		if(has_power())
-			handle_id_insert(I, user)
-			return TRUE
+			handle_id_insert(used, user)
+			return ITEM_INTERACT_COMPLETE
 	else if(authenticated_account)
-		if(istype(I, /obj/item/stack/spacecash))
-			if(!has_power())
-				return
-			insert_cash(I, user)
-			return TRUE
+		if(istype(used, /obj/item/stack/spacecash) && has_power())
+			insert_cash(used, user)
+			return ITEM_INTERACT_COMPLETE
 
 	return ..()
 
@@ -237,7 +237,7 @@
 		RegisterSignal(authenticated_account, COMSIG_PARENT_QDELETING, PROC_REF(clear_account))
 		if(HAS_TRAIT(src, TRAIT_CMAGGED))
 			var/shoutname = uppertext(user_account.account_name)
-			atom_say("HELLO '[shoutname]'! YOU'VE SUCCESSFULLY LOGGED IN WITH ACCOUNT NUMBER '[user_account.account_number]' AND PIN NUMBER '[user_account.account_pin]'! HAVE A PARADISE DAY!")
+			atom_say("ЗДРАВСТВУЙТЕ, '[shoutname]'! ВЫ УСПЕШНО АВТОРИЗОВАНЫ С НОМЕРОМ АККАУНТА '[user_account.account_number]' И ПИН-КОДОМ '[user_account.account_pin]'! ЖЕЛАЕМ ВАМ ДНЯ КАК В РАЮ!")
 			playsound(loc, 'sound/machines/honkbot_evil_laugh.ogg', 25, TRUE, ignore_walls = FALSE)
 		return TRUE
 
@@ -315,10 +315,11 @@
 
 /obj/machinery/economy/atm/cmag_act(mob/user)
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
-		return
+		return FALSE
 	playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	to_chat(user, "<span class='warning'>Yellow ooze seeps into the [src]'s card slot...</span>")
 	ADD_TRAIT(src, TRAIT_CMAGGED, CLOWN_EMAG)
+	return TRUE
 
 /obj/machinery/economy/atm/examine(mob/user)
 	. = ..()

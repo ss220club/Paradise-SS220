@@ -26,6 +26,7 @@ SUBSYSTEM_DEF(garbage)
 
 	//Queue
 	var/list/queues
+	var/static/list/hard_del_enjoyers = list(/client, /obj/item/disk/nuclear) // SS220 EDIT - disable hard del (performance tweak)
 
 	#ifdef REFERENCE_TRACKING
 	var/list/reference_find_on_fail = list()
@@ -251,7 +252,14 @@ SUBSYSTEM_DEF(garbage)
 	var/type = D.type
 	var/refID = text_ref(D)
 
+	// SS220 EDIT START - disable hard del (performance tweak)
+#ifdef GAME_TESTS
 	del(D)
+#else
+	if(is_type_in_list(D, hard_del_enjoyers))
+		del(D)
+#endif
+	// SS220 EDIT END
 
 	tick = (TICK_USAGE - tick + ((world.time - ticktime) / world.tick_lag * 100))
 
@@ -272,6 +280,7 @@ SUBSYSTEM_DEF(garbage)
 	if(time > 10)
 		log_game("Error: [type]([refID]) took longer than 1 second to delete (took [time / 10] seconds to delete)")
 		message_admins("Error: [type]([refID]) took longer than 1 second to delete (took [time / 10] seconds to delete).")
+		log_debug("Error: [type]([refID]) took longer than 1 second to delete (took [time / 10] seconds to delete).")
 		postpone(time)
 
 /datum/controller/subsystem/garbage/Recover()

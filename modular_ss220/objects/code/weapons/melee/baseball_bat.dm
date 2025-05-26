@@ -5,7 +5,7 @@
 	В официальных документах эта бита проходит под элегантным названием \"Высокоскоростная система доставки СРП\". \
 	Выдаваясь только самым верным и эффективным офицерам Nanotrasen, это оружие является одновременно символом статуса \
 	и инструментом высшего правосудия."
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
 
 	var/on = FALSE
@@ -36,7 +36,7 @@
 	. = ..()
 	if(!(user.mind.offstation_role))
 		user.Weaken(10 SECONDS)
-		user.unEquip(src, force, silent = FALSE)
+		user.drop_item_to_ground(src, force = TRUE, silent = FALSE)
 		to_chat(user, span_userdanger("Это - оружие истинного правосудия. Тебе не дано обуздать его мощь."))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -44,7 +44,7 @@
 		else
 			user.adjustBruteLoss(rand(force/2, force))
 
-/obj/item/melee/baseball_bat/homerun/central_command/attack_self(mob/user)
+/obj/item/melee/baseball_bat/homerun/central_command/attack_self__legacy__attackchain(mob/user)
 	on = !on
 
 	if(on)
@@ -71,7 +71,7 @@
 	playsound(loc, extend_sound, 50, TRUE)
 	add_fingerprint(user)
 
-/obj/item/melee/baseball_bat/homerun/central_command/attack(mob/living/target, mob/living/user)
+/obj/item/melee/baseball_bat/homerun/central_command/attack__legacy__attackchain(mob/living/target, mob/living/user)
 	if(on)
 		homerun_ready = TRUE
 	. = ..()

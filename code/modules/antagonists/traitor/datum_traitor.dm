@@ -19,6 +19,9 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	blurb_r = 200
 	blurb_a = 0.75
 
+	/// Have we / are we sending a backstab message at this time. If we are, do not send another.
+	var/sending_backstab = FALSE
+
 /datum/antagonist/traitor/on_gain()
 	// Create this in case the traitor wants to mindslaves someone.
 	if(!owner.som)
@@ -41,7 +44,7 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 
 /datum/antagonist/traitor/Destroy(force, ...)
 	// Remove all associated malf AI abilities.
-	if(isAI(owner.current))
+	if(is_ai(owner.current))
 		var/mob/living/silicon/ai/A = owner.current
 		A.clear_zeroth_law()
 		var/obj/item/radio/headset/heads/ai_integrated/radio = A.get_radio()
@@ -50,6 +53,10 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		A.show_laws()
 		A.remove_malf_abilities()
 		QDEL_NULL(A.malf_picker)
+		var/datum/atom_hud/data/human/malf_ai/H = GLOB.huds[DATA_HUD_MALF_AI]
+		H.remove_hud_from(usr)
+		for(var/mob/living/silicon/robot/borg in A.connected_robots)
+			H.remove_hud_from(borg)
 
 	// Leave the mindslave hud.
 	if(owner.som)
@@ -80,6 +87,16 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 
 	return ..()
 
+/datum/antagonist/traitor/select_organization()
+	if(is_ai(owner.current))
+		return
+	var/chaos = pickweight(list(ORG_CHAOS_HUNTER = ORG_PROB_HUNTER, ORG_CHAOS_MILD = ORG_PROB_MILD, ORG_CHAOS_AVERAGE = ORG_PROB_AVERAGE, ORG_CHAOS_HIJACK = ORG_PROB_HIJACK))
+	for(var/org_type in shuffle(subtypesof(/datum/antag_org/syndicate)))
+		var/datum/antag_org/org = org_type
+		if(initial(org.chaos_level) == chaos)
+			organization = new org_type(src)
+			return
+
 /datum/antagonist/traitor/add_owner_to_gamemode()
 	SSticker.mode.traitors |= owner
 
@@ -95,7 +112,7 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	return ..()
 
 /datum/antagonist/traitor/give_objectives()
-	if(isAI(owner.current))
+	if(is_ai(owner.current))
 		forge_ai_objectives()
 	else
 		forge_human_objectives()
@@ -104,23 +121,31 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
  * Create and assign a full set of randomized human traitor objectives.
  */
 /datum/antagonist/traitor/proc/forge_human_objectives()
-	// Hijack objective.
-	if(prob(2) && !(locate(/datum/objective/hijack) in owner.get_all_objectives())) // SS220 EDIT prob(10 -> 2)
-		add_antag_objective(/datum/objective/hijack)
-		return // Hijack should be their only objective (normally), so return.
+	var/iteration = 1
+	var/can_succeed_if_dead = TRUE
+	// If our org has forced objectives, give them to us guaranteed.
+	if(organization && length(organization.forced_objectives))
+		for(var/forced_objectives in organization.forced_objectives)
+			var/datum/objective/forced_obj = forced_objectives
+			if(!ispath(forced_obj, /datum/objective/hijack) && delayed_objectives) // Hijackers know their objective immediately
+				forced_obj = new /datum/objective/delayed(forced_obj)
+			add_antag_objective(forced_obj)
+			iteration++
 
-	// Will give normal steal/kill/etc. type objectives.
-	for(var/i in 1 to GLOB.configuration.gamemode.traitor_objectives_amount)
+	if(locate(/datum/objective/hijack) in owner.get_all_objectives())
+		return //Hijackers only get hijack.
+
+	// Will give objectives from our org or random objectives.
+	for(var/i in iteration to GLOB.configuration.gamemode.traitor_objectives_amount)
 		forge_single_human_objective()
 
-	var/can_succeed_if_dead = TRUE
 	for(var/objective in owner.get_all_objectives())
 		var/datum/objective/O = objective
-		if(!O.martyr_compatible) // Check if our current objectives can co-exist with martyr.
+		if(!O.martyr_compatible) // Check if we need to stay alive in order to accomplish our objectives (Steal item, etc)
 			can_succeed_if_dead  = FALSE
 			break
 
-	// Give them an escape objective if they don't have one already.
+	// Give them an escape objective if they don't have one. 20 percent chance not to have escape if we can greentext without staying alive.
 	if(!(locate(/datum/objective/escape) in owner.get_all_objectives()) && (!can_succeed_if_dead || prob(80)))
 		add_antag_objective(/datum/objective/escape)
 
@@ -132,42 +157,17 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	add_antag_objective(/datum/objective/assassinate)
 	add_antag_objective(/datum/objective/survive)
 
-/**
- * Create and assign a single randomized human traitor objective.
- */
-/datum/antagonist/traitor/proc/forge_single_human_objective()
-	var/datum/objective/objective_to_add
-
-	if(prob(50))
-		if(length(active_ais()) && prob(100 / length(GLOB.player_list)))
-			objective_to_add = /datum/objective/destroy
-
-		else if(prob(5))
-			objective_to_add = /datum/objective/debrain
-
-		else if(prob(30))
-			objective_to_add = /datum/objective/maroon
-
-		else if(prob(30))
-			objective_to_add = /datum/objective/assassinateonce
-
-		else
-			objective_to_add = /datum/objective/assassinate
-	else
-		objective_to_add = /datum/objective/steal
-
-	if(delayed_objectives)
-		objective_to_add = new /datum/objective/delayed(objective_to_add)
-	add_antag_objective(objective_to_add)
 
 /**
  * Give human traitors their uplink, and AI traitors their law 0. Play the traitor an alert sound.
  */
 /datum/antagonist/traitor/finalize_antag()
 	var/list/messages = list()
+	if(organization)
+		antag_memory += "<b>Organization</b>: [organization.name]<br>"
 	if(give_codewords)
 		messages.Add(give_codewords())
-	if(isAI(owner.current))
+	if(is_ai(owner.current))
 		add_law_zero()
 		owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 		var/mob/living/silicon/ai/A = owner.current
@@ -189,15 +189,15 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 	var/list/messages = list()
-	messages.Add("<u><b>The Syndicate have provided you with the following codewords to identify fellow agents:</b></u>")
-	messages.Add("<span class='bold body'>Code Phrase: <span class='codephrases'>[phrases]</span></span>")
-	messages.Add("<span class='bold body'>Code Response: <span class='coderesponses'>[responses]</span></span>")
+	messages.Add("<u><b>Синдикат предоставил вам следующие формулировки для идентификации агентов:</b></u>")
+	messages.Add("<span class='bold body'>Кодовые фразы: <span class='codephrases'>[phrases]</span></span>")
+	messages.Add("<span class='bold body'>Кодовые ответы: <span class='coderesponses'>[responses]</span></span>")
 
-	antag_memory += "<b>Code Phrase</b>: <span class='red'>[phrases]</span><br>"
-	antag_memory += "<b>Code Response</b>: <span class='red'>[responses]</span><br>"
+	antag_memory += "<b>Кодовые фразы</b>: <span class='red'>[phrases]</span><br>"
+	antag_memory += "<b>Кодовые ответы</b>: <span class='red'>[responses]</span><br>"
 
-	messages.Add("Use the codewords during regular conversation to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
-	messages.Add("<b><font color=red>You memorize the codewords, allowing you to recognize them when heard.</font></b>")
+	messages.Add("Используйте эти слова для идентификации других агентов. Действуйте аккуратно, поскольку каждый человек - потенциальный враг.")
+	messages.Add("<b><font color=red>Вы запоминаете кодовые формулировки, определяя их в речи.</font></b>")
 
 	return messages
 
@@ -206,16 +206,20 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
  */
 /datum/antagonist/traitor/proc/add_law_zero()
 	var/mob/living/silicon/ai/killer = owner.current
-	killer.set_zeroth_law("Accomplish your objectives at all costs.", "Accomplish your AI's objectives at all costs.")
+	killer.set_zeroth_law("Выполните свои цели любой ценой.", "Выполните задачи вашего ИИ любой ценой.")
 	killer.set_syndie_radio()
-	to_chat(killer, "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!")
+	to_chat(killer, "Ваша гарнитура была улучшена! Используйте :t для общения по зашифорванному каналу с другими агентами синдиката")
 	killer.add_malf_picker()
+	var/datum/atom_hud/data/human/malf_ai/H = GLOB.huds[DATA_HUD_MALF_AI]
+	H.add_hud_to(killer)
+	for(var/mob/living/silicon/robot/borg in killer.connected_robots)
+		H.add_hud_to(borg)
 
 /**
  * Gives a traitor human their uplink, and uplink code.
  */
 /datum/antagonist/traitor/proc/give_uplink()
-	if(isAI(owner.current))
+	if(is_ai(owner.current))
 		return FALSE
 
 	var/mob/living/carbon/human/traitor_mob = owner.current
@@ -226,7 +230,7 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		R = locate(/obj/item/radio) in traitor_mob.contents
 
 	if(!R)
-		to_chat(traitor_mob, "<span class='warning'>Unfortunately, the Syndicate wasn't able to give you an uplink.</span>")
+		to_chat(traitor_mob, "<span class='warning'>К сожалению, Синдикат не смог предоставить вам аплинк.</span>")
 		return FALSE // They had no PDA or radio for whatever reason.
 
 	if(isradio(R))
@@ -238,7 +242,7 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 			if(freq < 1451 || freq > 1459)
 				freqlist += freq
 			freq += 2
-			if((freq % 2) == 0)
+			if(ISEVEN(freq))
 				freq += 1
 		freq = pick(freqlist)
 
@@ -246,8 +250,8 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		target_radio.hidden_uplink = T
 		T.uplink_owner = "[traitor_mob.key]"
 		target_radio.traitor_frequency = freq
-		to_chat(traitor_mob, "<span class='notice'>The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(freq)] to unlock its hidden features.</span>")
-		antag_memory += "<B>Radio Freq:</B> [format_frequency(freq)] ([R.name])."
+		to_chat(traitor_mob, "<span class='notice'>Синдикат хитро замаскировал ваш алпинк в виде [R.name]. Просто наберите частоту [format_frequency(freq)] для разблокировки скрытых функций.</span>")
+		antag_memory += "<B>Радиочастота:</B> [format_frequency(freq)] ([R.name])."
 		return TRUE
 
 	else if(istype(R, /obj/item/pda))
@@ -260,8 +264,8 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		var/obj/item/pda/P = R
 		P.lock_code = pda_pass
 
-		to_chat(traitor_mob, "<span class='notice'>The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features.</span>")
-		antag_memory += "<B>Uplink Passcode:</B> [pda_pass] ([R.name]."
+		to_chat(traitor_mob, "<span class='notice'>Синдикат хитро замаскировал ваш алпинк в виде [R.name]. Просто введите код \"[pda_pass]\" в выбор рингтона для разблокировки скрытых функций.</span>")
+		antag_memory += "<B>Пароль для аплинка:</B> [pda_pass] ([R.name]."
 		return TRUE
 	return FALSE
 
@@ -270,21 +274,40 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
-	var/message = "<br><b>The code phrases were:</b> <span class='bluetext'>[phrases]</span><br>\
-					<b>The code responses were:</b> <span class='redtext'>[responses]</span><br>"
+	var/message = "<br><b>Кодовыми фразами были:</b> <span class='bluetext'>[phrases]</span><br>\
+					<b>Кодовыми ответами были:</b> <span class='redtext'>[responses]</span><br>"
 
 	return message
 
 /datum/antagonist/traitor/custom_blurb()
-	return "[GLOB.current_date_string], [station_time_timestamp()]\n[station_name()], [get_area_name(owner.current, TRUE)]\nBEGIN_MISSION"
-
+		return "[GLOB.current_date_string], [station_time_timestamp()]\n[station_name()], [get_area_name(owner.current, TRUE)], \n[organization.intro_desc] BEGIN MISSION"
 /datum/antagonist/traitor/proc/reveal_delayed_objectives()
-	for(var/datum/objective/delayed/delayed_obj in objective_holder.objectives)
+
+	for(var/datum/objective/delayed/delayed_obj in get_antag_objectives(FALSE))
 		delayed_obj.reveal_objective()
 
 	if(!owner?.current)
 		return
 	SEND_SOUND(owner.current, sound('sound/ambience/alarm4.ogg'))
+
+	if(prob(ORG_PROB_PARANOIA)) // Low chance of fake 'You are targeted' notification
+		queue_backstab()
+
 	var/list/messages = owner.prepare_announce_objectives()
 	to_chat(owner.current, chat_box_red(messages.Join("<br>")))
 	delayed_objectives = FALSE
+
+/datum/antagonist/traitor/proc/queue_backstab()
+	// We do not want to send out two of these. As such, if the datum is already sending a backstab, abort.
+	if(sending_backstab)
+		return
+	sending_backstab = TRUE
+	addtimer(CALLBACK(src, PROC_REF(send_backstab)), rand(2 MINUTES, 5 MINUTES))
+
+/datum/antagonist/traitor/proc/send_backstab()
+	if(!owner.current)
+		return
+	add_antag_objective(/datum/objective/potentially_backstabbed)
+	var/list/messages = owner.prepare_announce_objectives()
+	to_chat(owner.current, chat_box_red(messages.Join("<br>")))
+	SEND_SOUND(owner.current, sound('sound/ambience/alarm4.ogg'))

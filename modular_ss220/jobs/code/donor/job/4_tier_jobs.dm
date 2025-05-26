@@ -9,7 +9,7 @@
 	relate_job = "Internal Affairs Agent"
 	supervisors = "главой персонала и капитаном"
 	department_head = list("Head of Personnel", "Captain")
-	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
+	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING, ACCESS_KITCHEN, ACCESS_BAR, ACCESS_JANITOR)
 	selection_color = "#717097"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 4
@@ -200,7 +200,7 @@
 	jobtype = /datum/job/donor/representative_tsf
 
 	uniform = /obj/item/clothing/under/solgov/rep
-	head = /obj/item/clothing/head/beret/solgov/command
+	head = /obj/item/clothing/head/beret/solgov
 	belt = /obj/item/storage/belt/fannypack/black
 	glasses = /obj/item/clothing/glasses/sunglasses
 	gloves = /obj/item/clothing/gloves/color/white
@@ -269,6 +269,7 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 		/obj/item/clothing/under/pants/shorts/red = 1,
 		/obj/item/clothing/head/ushanka = 1,
+		/obj/item/stamp/ussp = 1,
 	)
 
 	bio_chips = list(/obj/item/bio_chip/mindshield,

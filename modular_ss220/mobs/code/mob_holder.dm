@@ -4,9 +4,9 @@
 	lefthand_file = 'modular_ss220/mobs/icons/mob/inhands/mobs_lefthand.dmi'
 	righthand_file = 'modular_ss220/mobs/icons/mob/inhands/mobs_righthand.dmi'
 	origin_tech = "biotech=2"
-	slot_flags = SLOT_FLAG_HEAD
+	slot_flags = ITEM_SLOT_HEAD
 
-/obj/item/holder/attack(mob/living/target, mob/living/user, def_zone)
+/obj/item/holder/attack__legacy__attackchain(mob/living/target, mob/living/user, def_zone)
 	ASSERT(length(contents) > 0)
 	var/mob/living/simple_animal/animal = contents[1]
 	var/mob/living/carbon/devourer = target
@@ -57,13 +57,14 @@
 	icon = null // workaround to hide cringy holder lying on the floor for 1 sec
 	user.drop_item()
 
-/mob/living/simple_animal/attackby(obj/item/O, mob/living/user)
+/mob/living/simple_animal/attack_by(obj/item/attacking, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
 	if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_GRAB)
-		if(istype(O, /obj/item/pet_carrier))
-			var/obj/item/pet_carrier/C = O
+		if(istype(attacking, /obj/item/pet_carrier))
+			var/obj/item/pet_carrier/C = attacking
 			if(C.put_in_carrier(src, user))
-				return
-	return ..()
+				return FINISH_ATTACK
 
 
 
@@ -107,9 +108,8 @@
 /obj/item/holder/pai
 	name = "pAI"
 	desc = "It's a little robot."
-	icon_state = "pai"
 	origin_tech = "materials=3;programming=4;engineering=4"
-	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
+	slot_flags = ITEM_SLOT_HEAD | ITEM_SLOT_BOTH_EARS
 
 /obj/item/holder/bee
 	name = "bee"
@@ -120,7 +120,7 @@
 	slot_flags = null
 
 /obj/item/holder/bunny
-	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
+	slot_flags = ITEM_SLOT_HEAD | ITEM_SLOT_BOTH_EARS
 
 /obj/item/holder/butterfly
 	name = "butterfly"
@@ -128,14 +128,14 @@
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "butterfly"
 	origin_tech = "biotech=4"
-	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
+	slot_flags = ITEM_SLOT_HEAD | ITEM_SLOT_BOTH_EARS
 
 /obj/item/holder/mouse
 	name = "mouse"
 	desc = "It's a small, disease-ridden rodent."
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "mouse_gray"
-	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
+	slot_flags = ITEM_SLOT_HEAD | ITEM_SLOT_BOTH_EARS
 
 /obj/item/holder/drone
 	name = "maintenance drone"
@@ -147,12 +147,6 @@
 	name = "maintenance drone"
 	icon_state = "drone-emagged"
 	origin_tech = "materials=3;programming=4;powerstorage=3;engineering=4;syndicate=3"
-
-/obj/item/holder/cogscarab
-	name = "cogscarab"
-	desc = "A strange, drone-like machine. It constantly emits the hum of gears."
-	icon_state = "cogscarab"
-	origin_tech = "materials=3;magnets=4;powerstorage=9;bluespace=4"
 
 /obj/item/holder/monkey
 	name = "monkey"
@@ -276,12 +270,6 @@
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	icon_state = "crusher"
 
-/obj/item/holder/original
-	name = "pet"
-	desc = "It's a pet"
-	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
-	icon_state = "original"
-
 /obj/item/holder/spacecat
 	name = "pet"
 	desc = "It's a pet"
@@ -366,6 +354,7 @@
 /obj/item/holder/fennec
 	name = "fennec"
 	desc = "It's a fennec. Yiff!"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	icon_state = "fennec"
 	origin_tech = "biotech=4"
 
@@ -379,7 +368,7 @@
 /obj/item/holder/headslug
 	name = "headslug"
 	desc = "It's a headslug. Ewwww..."
-	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon = 'icons/mob/mob.dmi'
 	icon_state = "headslug"
 	origin_tech = "biotech=6"
 
@@ -422,5 +411,5 @@
 /obj/item/holder/clowngoblin
 	name = "clowngoblin"
 	desc = "Honk honk"
-	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon = 'icons/mob/animal.dmi'
 	icon_state = "clowngoblin"

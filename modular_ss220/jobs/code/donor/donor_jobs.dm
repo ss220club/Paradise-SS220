@@ -1,3 +1,6 @@
+/datum/job
+	var/donator_tier = 0
+
 /datum/job/donor
 	title = "Donor" // он тут быть не должен. Но если педали вдруг выдадут, то пускай хотя бы так
 	flag = 0
@@ -8,13 +11,13 @@
 	supervisors = "the head of personnel"
 	department_head = list("Head of Personnel")
 	selection_color = "#fbd5ff"
-	access = list( ACCESS_MAINT_TUNNELS)
+	access = list(ACCESS_MAINT_TUNNELS)
 	alt_titles = null
 	outfit = /datum/outfit/job/donor
 	hidden_from_job_prefs = TRUE
 	is_extra_job = TRUE
+	donator_tier = 999 // I'm unreachable!
 	var/ru_title
-	var/donator_tier = 999 // I'm unreachable!
 
 /datum/outfit/job/donor
 	name = "Donor"

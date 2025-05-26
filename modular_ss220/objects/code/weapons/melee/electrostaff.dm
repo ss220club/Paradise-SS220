@@ -6,7 +6,7 @@
 	icon = 'modular_ss220/objects/icons/melee.dmi'
 	base_icon = "electrostaff"
 	icon_state = "electrostaff_orange"
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_HUGE
 	force = 10
 	throwforce = 7
@@ -36,6 +36,7 @@
 	current_skin = "_orange"
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
 	AddComponent(/datum/component/two_handed, force_unwielded = force / 2, force_wielded = force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
+	RegisterSignal(src, COMSIG_ACTIVATE_SELF, TYPE_PROC_REF(/datum, signal_cancel_activate_self))
 	options["Оранжевое свечение"] = "_orange"
 	options["Красное свечение"] = "_red"
 	options["Фиолетовое свечение"] = "_purple"
@@ -65,13 +66,6 @@
 	. = ..()
 	if(unique_reskin)
 		. += span_notice("<b>Alt-click</b>, to reskin it.")
-
-/obj/item/melee/baton/electrostaff/attack_self(mob/user)
-	var/signal_ret = SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
-	if(signal_ret & COMPONENT_NO_INTERACT)
-		return
-	if(signal_ret & COMPONENT_CANCEL_ATTACK_CHAIN)
-		return TRUE
 
 /obj/item/melee/baton/electrostaff/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))

@@ -66,9 +66,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/transport)
 "k" = (
-/obj/structure/sign/poster/contraband/communist_state{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/contraband/communist_state/directional/north,
 /obj/structure/table/wood/fancy/red,
 /obj/item/reagent_containers/drinks/bottle/vodka{
 	pixel_y = 12;
@@ -89,16 +87,7 @@
 	id_tag = "s_docking_airlock";
 	name = "Шаттл СССП"
 	},
-/obj/docking_port/mobile{
-	dir = 4;
-	dwidth = 2;
-	height = 12;
-	id = "ferry";
-	name = "ferry shuttle";
-	roundstart_move = "ferry_away";
-	timid = 1;
-	width = 5
-	},
+/obj/docking_port/mobile/ferry,
 /turf/simulated/floor/plating,
 /area/shuttle/transport)
 "m" = (
@@ -144,9 +133,7 @@
 /turf/simulated/floor/carpet/red,
 /area/shuttle/transport)
 "t" = (
-/obj/structure/sign/poster/contraband/communist_state{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/contraband/communist_state/directional/south,
 /obj/structure/table/wood/fancy/red,
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
 	pixel_y = 2

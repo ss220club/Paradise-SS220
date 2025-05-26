@@ -1,7 +1,7 @@
 /datum/species/monkey
 	name = "Monkey"
 	name_plural = "Monkeys"
-	blurb = "Ook."
+	blurb = "У-у-у!"
 
 	icobase = 'icons/mob/human_races/monkeys/r_monkey.dmi'
 	damage_overlays = 'icons/mob/human_races/masks/dam_monkey.dmi'
@@ -13,7 +13,7 @@
 	species_traits = list(NOT_SELECTABLE)
 	skinned_type = /obj/item/stack/sheet/animalhide/monkey
 	greater_form = /datum/species/human
-	no_equip = list(SLOT_HUD_BELT, SLOT_HUD_WEAR_ID, SLOT_HUD_LEFT_EAR, SLOT_HUD_RIGHT_EAR, SLOT_HUD_GLASSES, SLOT_HUD_GLOVES, SLOT_HUD_SHOES, SLOT_HUD_OUTER_SUIT, SLOT_HUD_JUMPSUIT, SLOT_HUD_LEFT_STORE, SLOT_HUD_RIGHT_STORE, SLOT_HUD_SUIT_STORE, SLOT_HUD_WEAR_PDA)
+	no_equip = ITEM_SLOT_BELT | ITEM_SLOT_ID | ITEM_SLOT_LEFT_EAR | ITEM_SLOT_RIGHT_EAR | ITEM_SLOT_EYES | ITEM_SLOT_GLOVES | ITEM_SLOT_SHOES | ITEM_SLOT_OUTER_SUIT | ITEM_SLOT_JUMPSUIT | ITEM_SLOT_LEFT_POCKET | ITEM_SLOT_RIGHT_POCKET | ITEM_SLOT_SUIT_STORE |  ITEM_SLOT_PDA | ITEM_SLOT_NECK
 	inherent_factions = list("jungle", "monkey")
 	can_craft = FALSE
 	is_small = 1
@@ -22,7 +22,7 @@
 	dietflags = DIET_OMNI
 	show_ssd = 0
 	eyes = "blank_eyes"
-	death_message = "lets out a faint chimper as it collapses and stops moving..."
+	death_message = "издаёт слабый визг, падает и перестаёт двигаться..."
 
 	scream_verb = "screeches"
 	male_scream_sound = 'sound/goonstation/voice/monkey_scream.ogg'

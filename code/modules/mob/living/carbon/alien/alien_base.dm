@@ -5,6 +5,7 @@
 	bubble_icon = "alien"
 	icon = 'icons/mob/alien.dmi'
 	gender = NEUTER
+	faction = list("alien")
 
 	var/nightvision = TRUE
 	see_in_dark = 4
@@ -19,7 +20,7 @@
 	var/heat_protection = 0.5
 	var/leaping = FALSE
 	ventcrawler = VENTCRAWLER_ALWAYS
-	var/death_message = "lets out a waning guttural screech, green blood bubbling from its maw..."
+	var/death_message = "издаёт ослабевший истошный визг, из её пасти пузырится зелёная кровь..."
 	var/death_sound = 'sound/voice/hiss6.ogg'
 
 /mob/living/carbon/alien/Initialize(mapload)
@@ -255,3 +256,6 @@ and carry the owner just to make sure*/
 	if(health <= HEALTH_THRESHOLD_CRIT && stat == CONSCIOUS)
 		KnockOut()
 	return ..()
+
+/mob/living/carbon/alien/plushify(plushie_override, curse_time)
+	. = ..(/obj/item/toy/plushie/face_hugger, curse_time)

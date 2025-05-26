@@ -4,11 +4,6 @@
 
 // To do: Allow customizing the bodies appearance (they're all bald and white right now).
 
-/// this mob spawn creates the corpse instantly
-#define CORPSE_INSTANT 1
-/// this mob spawn creates the corpse during GAME_STATE_PLAYING
-#define CORPSE_ROUNDSTART 2
-
 /obj/effect/mob_spawn
 	name = "Unknown"
 	density = TRUE
@@ -54,6 +49,8 @@
 		to_chat(user, "<span class='warning'>The [name] is no longer usable!</span>")
 		return
 	create(ckey = user.ckey, user = user)
+
+	return TRUE
 
 /obj/effect/mob_spawn/Initialize(mapload)
 	. = ..()
@@ -210,11 +207,14 @@
 	var/suit_store = -1
 	var/hair_style
 	var/facial_hair_style
+	var/hair_color
+	var/facial_hair_color
 	var/skin_tone
+	var/eyes_color
 
 	var/list/del_types = list(/obj/item/pda, /obj/item/radio/headset)
 
-/obj/effect/mob_spawn/human/Initialize()
+/obj/effect/mob_spawn/human/Initialize(mapload)
 	if(ispath(outfit))
 		outfit = new outfit()
 	if(!outfit)
@@ -236,7 +236,7 @@
 	if(mob_species)
 		H.set_species(mob_species)
 	if(random)
-		H.real_name = random_name(H.gender, H.dna.species)
+		H.real_name = random_name(H.gender, H.dna.species.name)
 
 	if(husk)
 		H.Drain()
@@ -247,16 +247,28 @@
 	H.socks = "Nude"
 	var/obj/item/organ/external/head/D = H.get_organ("head")
 	if(istype(D))
+		if(eyes_color)
+			H.change_eye_color(eyes_color)
 		if(hair_style)
 			D.h_style = hair_style
 		else
 			D.h_style = random_hair_style(gender, D.dna.species.name)
-		D.hair_colour = rand_hex_color()
+		if(hair_color)
+			D.hair_colour = hair_color
+			D.sec_hair_colour = hair_color
+		else
+			D.hair_colour = rand_hex_color()
+			D.sec_hair_colour = D.hair_colour
 		if(facial_hair_style)
 			D.f_style = facial_hair_style
 		else
 			D.f_style = random_facial_hair_style(gender, D.dna.species.name)
-		D.facial_colour = rand_hex_color()
+		if(facial_hair_color)
+			D.facial_colour = facial_hair_color
+			D.sec_facial_colour = facial_hair_color
+		else
+			D.facial_colour = rand_hex_color()
+			D.sec_facial_colour = D.facial_colour
 	if(skin_tone)
 		H.s_tone = skin_tone
 	else
@@ -313,6 +325,11 @@
 /obj/effect/mob_spawn/human/corpse
 	roundstart = FALSE
 	instant = TRUE
+
+/obj/effect/mob_spawn/human/corpse/create(ckey, flavour, name, mob/user)
+	var/mob/corpse = ..()
+	corpse.faction |= "spawned_corpse"
+	return corpse
 
 /obj/effect/mob_spawn/human/corpse/damaged
 	brute_damage = 1000
@@ -407,8 +424,20 @@
 	uniform = /obj/item/clothing/under/color/grey
 	shoes = /obj/item/clothing/shoes/combat
 
+/obj/effect/mob_spawn/human/corpse/ashwalker
+	name = "Ashwalker"
+	mob_name = "Ashwalker"
+	mob_species = /datum/species/unathi/ashwalker
+	outfit = /datum/outfit/ashwalker
+
 //Assistant Corpse
 /obj/effect/mob_spawn/human/corpse/assistant
+	name = "Assistant"
+	mob_name = "Assistant"
+	id_job = "Assistant"
+	outfit = /datum/outfit/job/assistant
+
+/obj/effect/mob_spawn/human/corpse/random_species/assistant
 	name = "Assistant"
 	mob_name = "Assistant"
 	id_job = "Assistant"
@@ -474,7 +503,7 @@
 	id_job = "Clown"
 	outfit = /datum/outfit/job/clown
 
-/obj/effect/mob_spawn/human/corpse/clown/Initialize()
+/obj/effect/mob_spawn/human/corpse/clown/Initialize(mapload)
 	mob_name = pick(GLOB.clown_names)
 	return ..()
 
@@ -483,7 +512,7 @@
 	name = "Clown Officer"
 	outfit = /datum/outfit/clownofficer
 
-/obj/effect/mob_spawn/human/corpse/clown/officer/Initialize()
+/obj/effect/mob_spawn/human/corpse/clown/officer/Initialize(mapload)
 	mob_name = "Honk Specialist [pick(GLOB.clown_names)]"
 	return ..()
 /datum/outfit/clownofficer
@@ -502,7 +531,7 @@
 	name = "Clown Soldier"
 	outfit = /datum/outfit/clownsoldier
 
-/obj/effect/mob_spawn/human/corpse/clown/soldier/Initialize()
+/obj/effect/mob_spawn/human/corpse/clown/soldier/Initialize(mapload)
 	mob_name = "Officer [pick(GLOB.clown_names)]"
 	return ..()
 
@@ -549,12 +578,37 @@
 	id_job = "Medical Doctor"
 	outfit = /datum/outfit/job/doctor
 
+/obj/effect/mob_spawn/human/corpse/random_species/doctor
+	name = "Doctor"
+	mob_name = "Medical Doctor"
+	id_job = "Medical Doctor"
+	outfit = /datum/outfit/job/doctor
+
 //Engineer corpse.
 /obj/effect/mob_spawn/human/corpse/engineer
 	name = "Engineer"
 	mob_name = "Engineer"
 	id_job = "Engineer"
 	outfit = /datum/outfit/job/engineer
+
+/obj/effect/mob_spawn/human/corpse/random_species/engineer
+	name = "Engineer"
+	mob_name = "Engineer"
+	id_job = "Engineer"
+	outfit = /datum/outfit/job/engineer
+
+/datum/outfit/job/officer/nerfed
+	suit_store = null
+	bio_chips = null
+	l_pocket = null
+	l_ear = null
+	id = null
+
+/obj/effect/mob_spawn/human/corpse/random_species/security_officer
+	name = "Security Officer"
+	mob_name = "Security Officer"
+	id_job = "Security Officer"
+	outfit = /datum/outfit/job/officer/nerfed
 
 //Mime corpse.
 /obj/effect/mob_spawn/human/corpse/mime
@@ -563,7 +617,7 @@
 	id_job = "Mime"
 	outfit = /datum/outfit/job/mime
 
-/obj/effect/mob_spawn/human/corpse/mime/Initialize()
+/obj/effect/mob_spawn/human/corpse/mime/Initialize(mapload)
 	mob_name = pick(GLOB.mime_names)
 	return ..()
 
@@ -591,6 +645,12 @@
 
 //Scientist corpse.
 /obj/effect/mob_spawn/human/corpse/scientist
+	name = "Scientist"
+	mob_name = "Scientist"
+	id_job = "Scientist"
+	outfit = /datum/outfit/job/scientist
+
+/obj/effect/mob_spawn/human/corpse/random_species/scientist
 	name = "Scientist"
 	mob_name = "Scientist"
 	id_job = "Scientist"
@@ -640,6 +700,7 @@
 		/datum/species/grey,
 		/datum/species/diona,
 	)
+	del_types |= /obj/item/card/id
 
 	return ..()
 
@@ -670,49 +731,12 @@
 	ADD_TRAIT(H, TRAIT_NON_INFECTIOUS_ZOMBIE, ROUNDSTART_TRAIT)
 	return ..()
 
-////////Non-human spawners////////
-
-/obj/effect/mob_spawn/mouse
-	name = "sleeper"
-	mob_name = "space mouse"
-	mob_type = 	/mob/living/simple_animal/mouse
-	death = FALSE
-	roundstart = FALSE
-	icon = 'icons/obj/cryogenic2.dmi'
-	icon_state = "sleeper"
-	flavour_text = "Squeak!"
-
-/obj/effect/mob_spawn/cow
-	name = "sleeper"
-	mob_name = "space cow"
-	mob_type = 	/mob/living/simple_animal/cow
-	death = FALSE
-	roundstart = FALSE
-	mob_gender = FEMALE
-	icon = 'icons/obj/cryogenic2.dmi'
-	icon_state = "sleeper"
-	flavour_text = "Moo!"
-
 /// these mob spawn subtypes trigger immediately (New or Initialize) and are not player controlled... since they're dead, you know?
 /obj/effect/mob_spawn/corpse
-	/// when this mob spawn should auto trigger.
-	var/spawn_when = CORPSE_INSTANT
-
 	/// what environmental storytelling script should this corpse have
 	var/corpse_description = ""
 	/// optionally different text to display if the target is a clown
 	var/naive_corpse_description = ""
-
-/obj/effect/mob_spawn/corpse/Initialize(mapload, no_spawn)
-	. = ..()
-	if(no_spawn)
-		return
-	switch(spawn_when)
-		if(CORPSE_INSTANT)
-			INVOKE_ASYNC(src, PROC_REF(create))
-		if(CORPSE_ROUNDSTART)
-			if(mapload || (SSticker && SSticker.current_state > GAME_STATE_SETTING_UP))
-				INVOKE_ASYNC(src, PROC_REF(create))
 
 /obj/effect/mob_spawn/corpse/special(mob/living/spawned_mob)
 	. = ..()
@@ -735,7 +759,3 @@
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "goliath_dead"
 	pixel_x = -12
-
-
-#undef CORPSE_INSTANT
-#undef CORPSE_ROUNDSTART

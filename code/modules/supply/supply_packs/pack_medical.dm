@@ -2,7 +2,7 @@
 	name = "HEADER"
 	containertype = /obj/structure/closet/crate/medical
 	group = SUPPLY_MEDICAL
-	announce_beacons = list("Medbay" = list("Medbay", "Chief Medical Officer's Desk"))
+	announce_beacons = list("Медицинский Отдел" = list("Медицинский Отдел", "Chief Medical Officer's Desk"))
 	department_restrictions = list(DEPARTMENT_MEDICAL)
 
 
@@ -108,7 +108,7 @@
 	containertype = /obj/structure/closet/crate/secure/plasma
 	containername = "virus crate"
 	access = ACCESS_CMO
-	announce_beacons = list("Medbay" = list("Virology", "Chief Medical Officer's Desk"))
+	announce_beacons = list("Медицинский Отдел" = list("Virology", "Chief Medical Officer's Desk"))
 
 /datum/supply_packs/medical/vending
 	name = "Medical Vending Crate"
@@ -129,12 +129,12 @@
 	name = "Blood Pack Variety Crate"
 	contains = list(/obj/item/reagent_containers/iv_bag,
 					/obj/item/reagent_containers/iv_bag,
-					/obj/item/reagent_containers/iv_bag/blood/APlus,
-					/obj/item/reagent_containers/iv_bag/blood/AMinus,
-					/obj/item/reagent_containers/iv_bag/blood/BPlus,
-					/obj/item/reagent_containers/iv_bag/blood/BMinus,
-					/obj/item/reagent_containers/iv_bag/blood/OPlus,
-					/obj/item/reagent_containers/iv_bag/blood/OMinus,
+					/obj/item/reagent_containers/iv_bag/blood/a_plus,
+					/obj/item/reagent_containers/iv_bag/blood/a_minus,
+					/obj/item/reagent_containers/iv_bag/blood/b_plus,
+					/obj/item/reagent_containers/iv_bag/blood/b_minus,
+					/obj/item/reagent_containers/iv_bag/blood/o_plus,
+					/obj/item/reagent_containers/iv_bag/blood/o_minus,
 					/obj/item/reagent_containers/iv_bag/slime,
 					/obj/item/reagent_containers/iv_bag/blood/vox,
 					/obj/machinery/iv_drip)
@@ -148,7 +148,7 @@
 					/obj/item/surgicaldrill,
 					/obj/item/clothing/mask/breath/medical,
 					/obj/item/tank/internals/anesthetic,
-					/obj/item/FixOVein,
+					/obj/item/fix_o_vein,
 					/obj/item/hemostat,
 					/obj/item/scalpel,
 					/obj/item/bonegel,

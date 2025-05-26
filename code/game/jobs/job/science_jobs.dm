@@ -5,7 +5,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_SCIENCE
-	supervisors = "the captain"
+	supervisors = "капитаном"
 	department_head = list("Captain")
 	selection_color = "#ffddff"
 	req_admin_notify = 1
@@ -43,15 +43,16 @@
 	)
 
 	outfit = /datum/outfit/job/rd
-	important_information = "This role requires you to coordinate a department. You are required to be familiar with Standard Operating Procedure (Science), basic job duties, and act professionally (roleplay)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Научных), базовых должностных обязанностей и профессиональных действий."
 
 /datum/outfit/job/rd
 	name = "Research Director"
 	jobtype = /datum/job/rd
 
-	uniform = /obj/item/clothing/under/rank/rnd/research_director
+	uniform = /obj/item/clothing/under/rank/rnd/rd
 	suit = /obj/item/clothing/suit/storage/labcoat/rd
 	shoes = /obj/item/clothing/shoes/brown
+	head = /obj/item/clothing/head/rd
 	l_ear = /obj/item/radio/headset/heads/rd
 	id = /obj/item/card/id/rd
 	l_hand = /obj/item/clipboard
@@ -64,7 +65,6 @@
 	satchel = /obj/item/storage/backpack/satchel_tox
 	dufflebag = /obj/item/storage/backpack/duffel/science
 
-
 /datum/job/scientist
 	title = "Scientist"
 	flag = JOB_SCIENTIST
@@ -72,7 +72,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SCIENCE
-	supervisors = "the research director"
+	supervisors = "директором исследований"
 	department_head = list("Research Director")
 	selection_color = "#ffeeff"
 	access = list(
@@ -117,7 +117,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SCIENCE
-	supervisors = "the research director"
+	supervisors = "директором исследований"
 	department_head = list("Research Director")
 	selection_color = "#ffeeff"
 	access = list(

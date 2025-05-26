@@ -20,7 +20,7 @@
 		is_vox_private = TRUE
 		to_chat(user, span_notice("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
 
-/obj/item/gun/throw/biogun/afterattack(atom/target, mob/living/user, flag, params)
+/obj/item/gun/throw/biogun/afterattack__legacy__attackchain(atom/target, mob/living/user, flag, params)
 	if(is_vox_private && !isvox(user))
 		if(prob(20))
 			to_chat(user, span_notice("Оружие отказывается с вами работать и не активируется."))
@@ -70,11 +70,11 @@
 	fire_damage = 1
 	unsuitable_atmos_damage = 0
 	mob_size = MOB_SIZE_TINY
-	flying = FALSE
+	initial_traits = list(TRAIT_FLYING)
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 
-/mob/living/simple_animal/hostile/viscerator/vox/Process_Spacemove(movement_dir)
+/mob/living/simple_animal/hostile/viscerator/vox/Process_Spacemove(movement_dir, continuous_move = FALSE)
 	return TRUE
 
 /mob/living/simple_animal/hostile/viscerator/vox/stamina

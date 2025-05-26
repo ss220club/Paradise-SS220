@@ -23,7 +23,7 @@
 /// A toy version of general griefsky!
 /mob/living/simple_animal/bot/secbot/griefsky/toy
 	name = "Genewul Giftskee"
-	desc = "An adorable looking secbot with four toy swords taped to its arms"
+	desc = "An adorable looking secbot with four toy swords taped to its arms."
 	spin_icon = "griefskyj-c"
 	health = 50
 	maxHealth = 50
@@ -48,10 +48,9 @@
 	..()
 	light_color = LIGHT_COLOR_PURE_RED //if you see a red one. RUN!!
 
-/mob/living/simple_animal/bot/secbot/griefsky/Crossed(atom/movable/AM, oldloc)
-	..()
-	if(ismob(AM) && AM == target)
-		var/mob/living/carbon/C = AM
+/mob/living/simple_animal/bot/secbot/griefsky/on_atom_entered(datum/source, atom/movable/entered)
+	if(iscarbon(entered) && entered == target)
+		var/mob/living/carbon/C = entered
 		visible_message("[src] flails his swords and pushes [C] out of it's way!" )
 		C.KnockDown(4 SECONDS)
 
@@ -95,7 +94,7 @@
 	if(declare_arrests)
 		var/area/location = get_area(src)
 		if(!spam_flag)
-			speak("Back away! I will deal with this level [threat] swine <b>[C]</b> in [location] myself!.", radio_channel)
+			speak("Назад! Я сам разберусь со свиньей <b>[C]</b> с уровнем угрозы [threat] в [location]!.", radio_channel)
 			spam_flag = 1
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 100) //to avoid spamming comms of sec for each hit
 			visible_message("[src] flails his swords and cuts [C]!")
@@ -111,24 +110,24 @@
 	switch(mode)
 		if(BOT_IDLE)		// idle
 			icon_state = "griefsky1"
-			walk_to(src,0)
+			GLOB.move_manager.stop_looping(src)
 			set_path(null)
 			if(find_new_target())
 				return	// see if any criminals are in range
 			if(!mode && auto_patrol)	// still idle, and set to patrol
-				mode = BOT_START_PATROL	// switch to patrol mode
+				set_mode(BOT_START_PATROL)	// switch to patrol mode
 		if(BOT_HUNT)		// hunting for perp
 			icon_state = spin_icon
 			playsound(loc,'sound/effects/spinsabre.ogg',50, TRUE,-1)
 			if(frustration >= frustration_number) // general beepsky doesn't give up so easily, jedi scum
-				walk_to(src,0)
+				GLOB.move_manager.stop_looping(src)
 				set_path(null)
 				back_to_idle()
 				return
 
 			if(!target)		// make sure target exists
 				back_to_idle()
-				speak("You fool")
+				speak("Неудачник")
 				return
 
 			if(target.stat == DEAD)
@@ -172,18 +171,18 @@
 
 		target = C
 		oldtarget_name = C.name
-		speak("You are a bold one")
+		speak("Смелый дохуя?")
 		playsound(src,'sound/weapons/saberon.ogg', 50, TRUE, -1)
 		visible_message("[src] ignites his energy swords!")
 		icon_state = "griefsky-c"
 		visible_message("<b>[src]</b> points at [C.name]!")
-		mode = BOT_HUNT
+		set_mode(BOT_HUNT)
 		INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
 		return TRUE
 	return FALSE
 
 /mob/living/simple_animal/bot/secbot/griefsky/explode()
-	walk_to(src,0)
+	GLOB.move_manager.stop_looping(src)
 	visible_message("<span class='boldannounceic'>[src] lets out a huge cough as it blows apart!</span>")
 	var/turf/Tsec = get_turf(src)
 	new /obj/item/assembly/prox_sensor(Tsec)
@@ -222,14 +221,15 @@
 			return
 	return ..()
 
-/mob/living/simple_animal/bot/secbot/griefsky/attackby(obj/item/W, mob/user, params) //cant touch or attack him while spinning
+// cant touch or attack him while spinning
+/mob/living/simple_animal/bot/secbot/griefsky/attack_by(obj/item/W, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
+
 	if(src.icon_state == spin_icon)
 		if(prob(block_chance_melee))
 			user.changeNext_move(CLICK_CD_MELEE)
 			user.do_attack_animation(src)
 			visible_message("[src] deflects [user]'s move with his energy swords!")
 			playsound(loc, 'sound/weapons/blade1.ogg', 50, TRUE, -1)
-		else
-			return ..()
-	else
-		return ..()
+			return FINISH_ATTACK

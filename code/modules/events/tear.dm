@@ -23,7 +23,7 @@
 	var/list/area_turfs = get_area_turfs(impact_area)
 	while(length(area_turfs))
 		var/turf/T = pick_n_take(area_turfs)
-		if(is_blocked_turf(T))
+		if(T.is_blocked_turf())
 			continue
 
 		// Give ghosts some time to jump there before it begins.
@@ -55,7 +55,7 @@
 			kill()
 			return
 
-	GLOB.minor_announcement.Announce("A tear in the fabric of space and time has opened. Expected location: [target_area.name].", "Anomaly Alert", 'sound/AI/anomaly.ogg')
+	GLOB.minor_announcement.Announce("На борту станции зафиксирован пространственно-временной разрыв. Предполагаемая локация: [impact_area.name].", "ВНИМАНИЕ: Обнаружена аномалия.", 'sound/AI/anomaly.ogg')
 
 /datum/event/tear/end()
 	if(TE)

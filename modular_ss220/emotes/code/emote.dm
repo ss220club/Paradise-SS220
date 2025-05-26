@@ -398,33 +398,62 @@
 	key_third_person = "bark"
 	message = "гавкает."
 	message_param = "гавкает на %t."
+	sound = 'modular_ss220/emotes/audio/bark.ogg'
+	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
 	emote_type = EMOTE_AUDIBLE
 	age_based = TRUE
 	vary = TRUE
+	cooldown = 10 SECONDS
 	volume = 30
-	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
-	sound = 'modular_ss220/emotes/audio/bark.ogg'
 
 /datum/emote/living/carbon/human/wbark
 	key = "wbark"
 	key_third_person = "wbark"
 	message = "дважды гавкает."
 	message_param = "дважды гавкает на %t."
+	sound = 'modular_ss220/emotes/audio/wbark.ogg'
+	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
 	emote_type = EMOTE_AUDIBLE
 	age_based = TRUE
 	vary = TRUE
+	cooldown = 10 SECONDS
 	volume = 30
-	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
-	sound = 'modular_ss220/emotes/audio/wbark.ogg'
 
-/datum/emote/living/carbon/human/ururu
-	key = "ururu"
-	key_third_person = "ururu"
-	message = "урчит."
-	message_param = "урчит на %t."
-	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
+/datum/emote/living/carbon/human/meow
+	key = "meow"
+	key_third_person = "meow"
+	message = "мяукает."
+	message_param = "мяукает на %t."
+	sound = 'modular_ss220/emotes/audio/tajaran/meow_tajaran.ogg'
+	species_type_whitelist_typecache = list(/datum/species/tajaran)
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+	vary = TRUE
+	cooldown = 10 SECONDS
+	volume = 50
+	muzzled_noises = list("слабо")
+
+/datum/emote/living/carbon/human/mrow
+	key = "mrow"
+	key_third_person = "mrow"
+	message = "раздражённо мяукает."
+	message_param = "раздражённо мяукает на %t."
+	sound = 'modular_ss220/emotes/audio/tajaran/annoyed_meow_tajaran.ogg'
+	species_type_whitelist_typecache = list(/datum/species/tajaran)
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+	vary = TRUE
+	cooldown = 10 SECONDS
+	volume = 70
+	muzzled_noises = list("слабо")
+
+/datum/emote/living/carbon/human/mrowss
+	key = "mrowss"
+	key_third_person = "mrowss"
+	message = "мурчит коротко"
+	message_param = "коротко мурчит на %t."
+	sound = 'modular_ss220/emotes/audio/mrowss.ogg'
+	species_type_whitelist_typecache = list(/datum/species/tajaran)
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'modular_ss220/emotes/audio/vulpkanin/purr.ogg'
+	cooldown = 5 SECONDS
 	volume = 50
 	muzzled_noises = list("слабо")

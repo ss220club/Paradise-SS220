@@ -1,7 +1,8 @@
 import { useBackend } from '../backend';
-import { Tabs, Button, Box, Grid, Section, Stack, Icon } from '../components';
+import { Tabs, Button, Box, Grid, Section, Stack, Icon, Input } from '../components';
 import { Window } from '../layouts';
 import { classes } from 'common/react';
+import { TextInputModal } from './TextInputModal';
 
 export const RPD = (props, context) => {
   const { act, data } = useBackend(context);
@@ -27,7 +28,7 @@ export const RPD = (props, context) => {
   };
 
   return (
-    <Window width={550} height={415}>
+    <Window width={550} height={440}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
@@ -71,6 +72,9 @@ const AtmosPipeContent = (props, context) => {
           ))}
         </Tabs>
       </Stack.Item>
+      <Stack.Item>
+        <Input fluid placeholder="Enter pipe label" onInput={(e, value) => act('set_label', { set_label: value })} />
+      </Stack.Item>
       <Stack.Item grow>
         <Stack fill>
           <Stack.Item grow basis="50%">
@@ -101,20 +105,11 @@ const AtmosPipeContent = (props, context) => {
             <Section fill>
               <Grid>
                 <Grid.Column>
+                  <ActionButtons />
                   {pipelist
                     .filter((p) => p.pipe_type === 1 && p.pipe_id === whatpipe && p.orientations !== 1)
                     .map((p) => (
                       <Box key={p.pipe_id}>
-                        <Box>
-                          <Button
-                            fluid
-                            textAlign="center"
-                            content="Orient automatically"
-                            selected={iconrotation === 0}
-                            onClick={() => act('iconrotation', { iconrotation: 0 })}
-                            style={{ 'margin-bottom': '5px' }}
-                          />
-                        </Box>
                         {p.bendy ? (
                           <>
                             <Grid>
@@ -234,7 +229,7 @@ const AtmosPipeContent = (props, context) => {
 
 const DisposalPipeContent = (props, context) => {
   const { act, data } = useBackend(context);
-  const { pipe_category, pipelist, whatdpipe, iconrotation } = data;
+  const { pipe_category, pipelist, whatdpipe, iconrotation, auto_wrench_toggle } = data;
 
   return (
     <Stack.Item grow>
@@ -266,20 +261,11 @@ const DisposalPipeContent = (props, context) => {
           <Section fill>
             <Grid>
               <Grid.Column>
+                <ActionButtons />
                 {pipelist
                   .filter((p) => p.pipe_type === 2 && p.pipe_id === whatdpipe && p.orientations !== 1)
                   .map((p) => (
                     <Stack.Item key={p.pipe_id}>
-                      <Box>
-                        <Button
-                          fluid
-                          textAlign="center"
-                          content="Orient automatically"
-                          selected={iconrotation === 0}
-                          onClick={() => act('iconrotation', { iconrotation: 0 })}
-                          style={{ 'margin-bottom': '5px' }}
-                        />
-                      </Box>
                       <Grid>
                         <Grid.Column>
                           <Button
@@ -338,6 +324,32 @@ const DisposalPipeContent = (props, context) => {
         </Stack.Item>
       </Stack>
     </Stack.Item>
+  );
+};
+
+const ActionButtons = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { iconrotation, auto_wrench_toggle } = data;
+
+  return (
+    <Stack mb={1} textAlign="center">
+      <Stack.Item basis="50%">
+        <Button
+          fluid
+          content="Auto-orientation"
+          selected={iconrotation === 0}
+          onClick={() => act('iconrotation', { iconrotation: 0 })}
+        />
+      </Stack.Item>
+      <Stack.Item basis="50%">
+        <Button.Checkbox
+          fluid
+          checked={auto_wrench_toggle}
+          content="Auto-anchor"
+          onClick={() => act('auto_wrench_toggle')}
+        />
+      </Stack.Item>
+    </Stack>
   );
 };
 
@@ -424,6 +436,7 @@ const TransitTubeContent = (props, context) => {
           <Section fill>
             <Grid>
               <Grid.Column>
+                <ActionButtons />
                 {pipelist
                   .filter((p) => p.pipe_type === transit_pipe_type && p.pipe_id === whatttube && p.orientations !== 1)
                   .map((p) => (

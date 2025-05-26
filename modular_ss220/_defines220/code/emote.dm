@@ -118,9 +118,13 @@
 #define EMOTE_HUMAN_WAVES_K 		"Взмахнуть усиками"
 #define EMOTE_HUMAN_WIGGLES 		"Шевелить усиками"
 #define EMOTE_HUMAN_WHIPS 			"Хлестать хвостом"
-#define EMOTE_HUMAN_WHIP 			"Ударить хвостом"
+#define EMOTE_HUMAN_WHIP 			"Щелкнуть хвостом"
+#define EMOTE_HUMAN_THUMP 			"Ударить хвостом"
 #define EMOTE_HUMAN_BARK			"Гавкнуть"
 #define EMOTE_HUMAN_WBARK			"Дважды гавкнуть"
+#define EMOTE_HUMAN_MEOW			"Мяукнуть"
+#define EMOTE_HUMAN_MROW			"Мяукнуть раздражённо"
+#define EMOTE_HUMAN_MROWSS			"Мурчать коротко"
 
 /// Carbon Emotes
 #define EMOTE_CARBON_BLINK 			"Моргать"

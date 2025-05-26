@@ -52,7 +52,7 @@
 	else if(!insisting)
 		to_chat(user, span_cult("Ваше первое прикосновение заставляет [name] зашевелиться, прислушиваясь к вам. Вы действительно уверены, что хотите это сделать?"))
 		insisting = TRUE
-		update_icon_state()
+		update_icon(UPDATE_ICON_STATE)
 		return
 
 	insisting = FALSE
@@ -60,7 +60,7 @@
 	if(!wish)
 		return
 	charges--
-	update_icon_state()
+	update_icon(UPDATE_ICON_STATE)
 
 	var/mob/living/carbon/human/human = user
 	var/become_shadow = TRUE
@@ -72,7 +72,12 @@
 				mutation.activate(human)
 
 		if("Богатство")
-			new /obj/structure/closet/syndicate/resources/everything(loc)
+			var/obj/structure/closet/syndicate/resources/everything/C = new /obj/structure/closet/syndicate/resources/everything(loc)
+			var/dice = pickweight(list(
+				/obj/item/dice/d20/fate,
+				/obj/item/dice/d20/fate/one_use = 9,
+			))
+			new dice(C)
 
 		if("Бессмертие")
 			user.verbs |= /mob/living/carbon/human/proc/immortality

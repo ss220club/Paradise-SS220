@@ -14,7 +14,7 @@
 		)
 
 /obj/item/clothing/head/helmet/space/capspace/equipped(mob/living/carbon/human/user, slot)
-	if(ishuman(user) && slot == SLOT_HUD_HEAD)
+	if(ishuman(user) && slot == ITEM_SLOT_HEAD)
 		if(isvox(user))
 			if(flags & BLOCKHAIR)
 				flags &= ~BLOCKHAIR
@@ -75,7 +75,7 @@
 	name = "officer beret"
 	desc = "An armored beret commonly used by special operations officers."
 	icon = 'icons/obj/clothing/head/beret.dmi'
-	icon_state = "beret_officer"
+	icon_state = "beret_soo"
 	item_state = 'icons/mob/clothing/head/beret.dmi'
 	icon_override = 'icons/mob/clothing/head/beret.dmi'
 	flags =  STOPSPRESSUREDMAGE | THICKMATERIAL
@@ -124,7 +124,7 @@
 	flags_cover = HEADCOVERSEYES
 	dog_fashion = /datum/dog_fashion/head/santa
 
-/obj/item/clothing/head/helmet/space/santahat/attack_self(mob/user as mob)
+/obj/item/clothing/head/helmet/space/santahat/attack_self__legacy__attackchain(mob/user as mob)
 	if(src.icon_state == "santahat")
 		src.icon_state = "santahat_beard"
 		src.item_state = "santahat_beard"

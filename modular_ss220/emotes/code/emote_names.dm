@@ -458,6 +458,15 @@
 /datum/emote/living/carbon/human/slime/pop
 	name = EMOTE_HUMAN_POP
 
+/datum/emote/living/carbon/human/tajaran/meow
+	name = EMOTE_HUMAN_MEOW
+
+/datum/emote/living/carbon/human/tajaran/mrow
+	name = EMOTE_HUMAN_MROW
+
+/datum/emote/living/carbon/human/tajaran/mrowss
+	name = EMOTE_HUMAN_MROWSS
+
 /// Emote Animal
 
 /datum/emote/living/simple_animal/gorilla/ooga
@@ -530,6 +539,9 @@
 
 /datum/emote/living/carbon/human/wiggles
 	name = EMOTE_HUMAN_WIGGLES
+
+/datum/emote/living/carbon/human/thump
+	name = EMOTE_HUMAN_THUMP
 
 /datum/emote/living/carbon/human/whip
 	name = EMOTE_HUMAN_WHIP

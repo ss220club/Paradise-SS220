@@ -2,6 +2,7 @@
 	var/list/medical = list()
 	var/list/general = list()
 	var/list/security = list()
+	var/list/ai = list()
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/list/locked = list()
 
@@ -150,6 +151,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 			assignment = H.job
 		else
 			assignment = "Unassigned"
+		GLOB.crew_list[H.real_name] = assignment
 
 		var/id = num2hex(GLOB.record_id_num++, 6)
 
@@ -166,6 +168,8 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		G.fields["m_stat"]		= "Stable"
 		G.fields["sex"]			= capitalize(H.gender)
 		G.fields["species"]		= H.dna.species.name
+		G.fields["ai_target"]	= "None" // for malf hud
+
 		// Do some ID card checking stuff here to save on resources
 		var/card_photo
 		if(istype(H.wear_id, /obj/item/card/id))
@@ -181,6 +185,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 			G.fields["notes"] = H.gen_record
 		else
 			G.fields["notes"] = "No notes found."
+		G.fields["nt_relation"] = H?.client?.prefs?.active_character?.nanotrasen_relation || "Unknown relation."
 		general += G
 
 		//Medical Record
@@ -257,6 +262,12 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 			head = alternate_head.icon_state
 	temp = new /icon(icobase, "[head]_[g]")
 	preview_icon.Blend(temp, ICON_OVERLAY)
+
+	// SS220 EDIT START - SERPENTIDS
+	if(is_species(H, /datum/species/serpentid))
+		temp = new/icon("icon" = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi', "icon_state" = "preview")
+		preview_icon.Blend(temp, ICON_OVERLAY)
+	// SS220 EDIT END - SERPENTIDS
 
 	//Tail
 	if(H.body_accessory && (istype(H.body_accessory, /datum/body_accessory/tail) || istype(H.body_accessory, /datum/body_accessory/wing)))
@@ -394,6 +405,10 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		job_clothes = custom_job
 	else if(H.mind)
 		job_clothes = H.mind.assigned_role
+	//SS220 EDIT START - SERPENTIDS
+	if(is_species(H, /datum/species/serpentid))
+		job_clothes = "Naked"
+	//SS220 EDIT END - SERPENTIDS
 	switch(job_clothes)
 		if("Head of Personnel")
 			clothes_s = new /icon('icons/mob/clothing/under/civilian.dmi', "hop_s")
@@ -401,6 +416,10 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if("Nanotrasen Representative")
 			clothes_s = new /icon('icons/mob/clothing/under/centcom.dmi', "officer_s")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+		if("Nanotrasen Career Trainer")
+			clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "trainer_s")
+			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+			clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "trainercoat"), ICON_OVERLAY)
 		if("Blueshield")
 			clothes_s = new /icon('icons/mob/clothing/under/centcom.dmi', "officer_s")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "jackboots"), ICON_UNDERLAY)
@@ -501,11 +520,11 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 			clothes_s = new /icon('icons/mob/clothing/under/security.dmi', "security_s")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "jackboots"), ICON_UNDERLAY)
 		if("Chief Engineer")
-			clothes_s = new /icon('icons/mob/clothing/under/engineering.dmi', "chief_s")
+			clothes_s = new /icon('icons/mob/clothing/under/engineering.dmi', "chief_engineer_s")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "brown"), ICON_UNDERLAY)
 			clothes_s.Blend(new /icon('icons/mob/clothing/belt.dmi', "utility"), ICON_OVERLAY)
 		if("Station Engineer")
-			clothes_s = new /icon('icons/mob/clothing/under/engineering.dmi', "engine_s")
+			clothes_s = new /icon('icons/mob/clothing/under/engineering.dmi', "engineer_s")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "orange"), ICON_UNDERLAY)
 			clothes_s.Blend(new /icon('icons/mob/clothing/belt.dmi', "utility"), ICON_OVERLAY)
 		if("Life Support Specialist")

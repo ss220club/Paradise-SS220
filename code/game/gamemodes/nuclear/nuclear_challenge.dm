@@ -8,7 +8,7 @@
 /obj/item/nuclear_challenge
 	name = "Declaration of War (Challenge Mode)"
 	icon = 'icons/obj/device.dmi'
-	icon_state = "gangtool-red"
+	icon_state = "declaration"
 	item_state = "walkietalkie"
 	desc = "Use to send a declaration of hostilities to the target, delaying your shuttle departure for 20 minutes while they prepare for your assault. \
 	Such a brazen move will attract the attention of powerful benefactors within the Syndicate, who will supply your team with a massive amount of bonus telecrystals. \
@@ -16,7 +16,7 @@
 	var/declaring_war = FALSE
 	var/total_tc = 0 //Total amount of telecrystals shared between nuke ops
 
-/obj/item/nuclear_challenge/attack_self(mob/living/user)
+/obj/item/nuclear_challenge/attack_self__legacy__attackchain(mob/living/user)
 	if(!check_allowed(user))
 		return
 
@@ -31,7 +31,7 @@
 		to_chat(user, "On second thought, the element of surprise isn't so bad after all.")
 		return
 
-	var/war_declaration = "[user.real_name] has declared [user.p_their()] intent to utterly destroy [station_name()] with a nuclear device, and dares the crew to try and stop them."
+	var/war_declaration = "[user.real_name] заявил(-а) о намерении уничтожить станцию [station_name()] с помощью ядерного устройства и бросает вызов экипажу, чтобы те попытались остановить их."
 
 	declaring_war = TRUE
 	var/custom_threat = tgui_alert(user, "Do you want to customize your declaration?", "Customize?", list("Yes", "No"))
@@ -48,13 +48,13 @@
 	if(!check_allowed(user) || !war_declaration)
 		return
 
-	GLOB.major_announcement.Announce(war_declaration, "Declaration of War", 'sound/effects/siren.ogg', msg_sanitized = TRUE)
+	GLOB.major_announcement.Announce(war_declaration, "Объявление Войны.", 'sound/effects/siren.ogg', msg_sanitized = TRUE)
 	addtimer(CALLBACK(SSsecurity_level, TYPE_PROC_REF(/datum/controller/subsystem/security_level, set_level), SEC_LEVEL_GAMMA), 30 SECONDS)
 
 	to_chat(user, "You've attracted the attention of powerful forces within the syndicate. A bonus bundle of telecrystals has been granted to your team. Great things await you if you complete the mission.")
 	to_chat(user, "<b>Your bonus telecrystals have been split between your team's uplinks.</b>")
 
-	for(var/obj/machinery/computer/shuttle/syndicate/S in GLOB.machines)
+	for(var/obj/machinery/computer/shuttle/syndicate/S in SSmachines.get_by_type(/obj/machinery/computer/shuttle/syndicate))
 		S.challenge = TRUE
 		S.challenge_time = world.time
 
@@ -93,7 +93,7 @@
 	if((world.time - SSticker.round_start_time) > CHALLENGE_TIME_LIMIT) // Only count after the round started
 		to_chat(user, "It's too late to declare hostilities. Your benefactors are already busy with other schemes. You'll have to make do with what you have on hand.")
 		return FALSE
-	for(var/obj/machinery/computer/shuttle/syndicate/S in GLOB.machines)
+	for(var/obj/machinery/computer/shuttle/syndicate/S in SSmachines.get_by_type(/obj/machinery/computer/shuttle/syndicate))
 		if(S.moved)
 			to_chat(user, "The shuttle has already been moved! You have forfeit the right to declare war.")
 			return FALSE

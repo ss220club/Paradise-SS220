@@ -27,9 +27,9 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 								/datum/traders/nian)
 
 	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-		GLOB.minor_announcement.Announce("A trading shuttle from [T.trader_location] has been denied docking permission due to the heightened security alert aboard [station_name()].", "Trader Shuttle Docking Request Refused", 'sound/AI/traderdeny.ogg')
+		GLOB.minor_announcement.Announce("Торговому шаттлу от «[T.trader_location]» было отказано в стыковке в связи с повышенным уровнем угрозы на [station_name()].", "Запрос на стыковку шаттла отклонен.", 'sound/AI/traderdeny.ogg')
 		return
-	GLOB.minor_announcement.Announce("A trading shuttle from [T.trader_location] has been granted docking permission at [station_name()] arrivals port 4.", "Trader Shuttle Docking Request Accepted", 'sound/AI/tradergranted.ogg')
+	GLOB.minor_announcement.Announce("Торговому шаттлу от «[T.trader_location]» была одобрена стыковка с портом прибытия номер 4 станции [station_name()].", "Запрос на стыковку шаттла одобрен.", 'sound/AI/tradergranted.ogg')
 
 
 /datum/event/traders/start()
@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 								/datum/traders/nian)
 
 	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-		GLOB.minor_announcement.Announce("A trading shuttle from [T.trader_location] has been denied docking permission due to the heightened security alert aboard [station_name()].", "Trader Shuttle Docking Request Refused", 'sound/AI/traderdeny.ogg')
+		GLOB.minor_announcement.Announce("Торговому шаттлу от «[T.trader_location]» было отказано в стыковке в связи с повышенным уровнем угрозы на [station_name()].", "Запрос на стыковку шаттла отклонен.", 'sound/AI/traderdeny.ogg')
 		// if the docking request was refused, fire another major event in 60 seconds
 		var/datum/event_container/EC = SSevents.event_containers[EVENT_LEVEL_MAJOR]
 		EC.next_event_time = world.time + (60 * 10)
@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 			greet_trader(M, T)
 			success_spawn = TRUE
 	if(success_spawn)
-		GLOB.minor_announcement.Announce("A trading shuttle from [T.trader_location] has been granted docking permission at [station_name()] arrivals port 4.", "Trader Shuttle Docking Request Accepted", 'sound/AI/tradergranted.ogg')
+		GLOB.minor_announcement.Announce("Торговому шаттлу от «[T.trader_location]» была одобрена стыковка с портом прибытия номер 4 станции [station_name()].", "Запрос на стыковку шаттла одобрен.", 'sound/AI/tradergranted.ogg')
 	else
 		GLOB.unused_trade_stations += station // Return the station to the list of usable stations.
 
@@ -144,17 +144,17 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "Kayani Station"
 	trader_species = /mob/living/carbon/human
 	trader_outfit = /datum/outfit/admin/trader/sol
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/federation_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/federation_major
+	trader_minor_special = /obj/effect/spawner/random/traders/federation_minor
+	trader_major_special = /obj/effect/spawner/random/traders/federation_major
 
 /datum/traders/cyber
 	trader_type = "Cybersun Industries"
-	trader_location = "-=ERROR: Unregisted Station Charter=-"
+	trader_location = "-=ERROR: Unregistered Station Charter=-"
 	dock_site = "an undercover robotics factory"
 	trader_species = /mob/living/carbon/human
 	trader_outfit = /datum/outfit/admin/trader/cyber
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/cybersun_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/cybersun_major
+	trader_minor_special = /obj/effect/spawner/random/traders/cybersun_minor
+	trader_major_special = /obj/effect/spawner/random/traders/cybersun_major
 
 /datum/traders/commie
 	trader_type = "USSP"
@@ -162,8 +162,8 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "Belastrav Station"
 	trader_species = /mob/living/carbon/human
 	trader_outfit = /datum/outfit/admin/trader/commie
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/ussp_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/ussp_major
+	trader_minor_special = /obj/effect/spawner/random/traders/ussp_minor
+	trader_major_special = /obj/effect/spawner/random/traders/ussp_major
 
 /datum/traders/unathi
 	trader_type = "Glint Scales"
@@ -171,8 +171,8 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "a Glint-Scale outpost"
 	trader_species = /mob/living/carbon/human/unathi
 	trader_outfit = /datum/outfit/admin/trader/unathi
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/glintscale_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/glintscale_major
+	trader_minor_special = /obj/effect/spawner/random/traders/glintscale_minor
+	trader_major_special = /obj/effect/spawner/random/traders/glintscale_major
 
 /datum/traders/vulp
 	trader_type = "Steadfast Trading Co."
@@ -180,8 +180,8 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "the MV Steadfast Platinum"
 	trader_species = /mob/living/carbon/human/vulpkanin
 	trader_outfit = /datum/outfit/admin/trader/vulp
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/steadfast_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/steadfast_major
+	trader_minor_special = /obj/effect/spawner/random/traders/steadfast_minor
+	trader_major_special = /obj/effect/spawner/random/traders/steadfast_major
 
 /datum/traders/ipc
 	trader_type = "Synthetic Union"
@@ -189,8 +189,8 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "Cadraenov Station"
 	trader_species = /mob/living/carbon/human/machine
 	trader_outfit = /datum/outfit/admin/trader/ipc
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/syntheticunion_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/syntheticunion_major
+	trader_minor_special = /obj/effect/spawner/random/traders/syntheticunion_minor
+	trader_major_special = /obj/effect/spawner/random/traders/syntheticunion_major
 
 /datum/traders/vox
 	trader_type = "Skipjack"
@@ -198,8 +198,8 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "a trading skipjack"
 	trader_species = /mob/living/carbon/human/vox
 	trader_outfit = /datum/outfit/admin/trader/vox
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/skipjack_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/skipjack_major
+	trader_minor_special = /obj/effect/spawner/random/traders/skipjack_minor
+	trader_major_special = /obj/effect/spawner/random/traders/skipjack_major
 
 /datum/traders/skrell
 	trader_type = "Skrellian Central Authority"
@@ -207,8 +207,8 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "Crown Station"
 	trader_species = /mob/living/carbon/human/skrell
 	trader_outfit = /datum/outfit/admin/trader/skrell
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/solarcentral_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/solarcentral_major
+	trader_minor_special = /obj/effect/spawner/random/traders/solarcentral_minor
+	trader_major_special = /obj/effect/spawner/random/traders/solarcentral_major
 
 /datum/traders/grey
 	trader_type = "Technocracy"
@@ -216,8 +216,8 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "Orbital Commerce Outpost 58"
 	trader_species = /mob/living/carbon/human/grey
 	trader_outfit = /datum/outfit/admin/trader/grey
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/technocracy_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/technocracy_major
+	trader_minor_special = /obj/effect/spawner/random/traders/technocracy_minor
+	trader_major_special = /obj/effect/spawner/random/traders/technocracy_major
 
 /datum/traders/nian
 	trader_type = "Merchant Guild"
@@ -225,5 +225,5 @@ GLOBAL_LIST_INIT(unused_trade_stations, list("sol"))
 	dock_site = "Guild Subsidiary Station 'Gilded Comet'"
 	trader_species = /mob/living/carbon/human/moth
 	trader_outfit = /datum/outfit/admin/trader/nian
-	trader_minor_special = /obj/effect/spawner/lootdrop/trade_sol/merchantguild_minor
-	trader_major_special = /obj/effect/spawner/lootdrop/trade_sol/merchantguild_major
+	trader_minor_special = /obj/effect/spawner/random/traders/merchantguild_minor
+	trader_major_special = /obj/effect/spawner/random/traders/merchantguild_major

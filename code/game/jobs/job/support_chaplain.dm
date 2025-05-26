@@ -6,10 +6,15 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
-	access = list(ACCESS_MORGUE, ACCESS_CHAPEL_OFFICE, ACCESS_CREMATORIUM, ACCESS_MAINT_TUNNELS)
+	access = list(
+		ACCESS_CHAPEL_OFFICE,
+		ACCESS_CREMATORIUM,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MORGUE
+	)
 	outfit = /datum/outfit/job/chaplain
 
 /datum/outfit/job/chaplain

@@ -33,7 +33,7 @@
 
 /datum/design/paicard
 	name = "Personal Artificial Intelligence Card"
-	desc = "Allows for the construction of a pAI Card"
+	desc = "Allows for the construction of a pAI Card."
 	id = "paicard"
 	req_tech = list("programming" = 2)
 	build_type = PROTOLATHE
@@ -94,7 +94,7 @@
 
 /datum/design/safety_muzzle
 	name = "Safety Muzzle"
-	desc = "Produce a lockable muzzle keyed to security ID cards"
+	desc = "Produce a lockable muzzle keyed to security ID cards."
 	id = "safetymuzzle"
 	req_tech = list("materials" = 1)
 	build_type = PROTOLATHE
@@ -160,4 +160,14 @@
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL=3000, MAT_GLASS=500)
 	build_path = /obj/item/tank/internals/oxygen/empty
+	category = list("Miscellaneous")
+
+/datum/design/autochef_remote
+	name = "Autochef Remote"
+	desc = "A remote for configuring an autochef."
+	id = "autochef_remote"
+	req_tech = list("programming" = 3, "bluespace" = 3, "materials" = 3)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL=3000)
+	build_path = /obj/item/autochef_remote
 	category = list("Miscellaneous")

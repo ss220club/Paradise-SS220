@@ -2,7 +2,7 @@ GLOBAL_DATUM_INIT(minor_announcement, /datum/announcer, new(config_type = /datum
 GLOBAL_DATUM_INIT(major_announcement, /datum/announcer, new(config_type = /datum/announcement_configuration/major))
 
 /datum/announcement_configuration
-	var/default_title = "Attention"
+	var/default_title = "ВНИМАНИЕ."
 	/// The name used when describing the announcement type in logs.
 	var/log_name = ANNOUNCE_KIND_DEFAULT
 	/// Whether or not to log the announcement when made.
@@ -137,10 +137,6 @@ GLOBAL_DATUM_INIT(major_announcement, /datum/announcer, new(config_type = /datum
 	log_game("[key_name(usr)] has made \a [config.log_name]: [message_title] - [message] - [author]")
 	message_admins("[key_name_admin(usr)] has made \a [config.log_name].", 1)
 
-/proc/GetNameAndAssignmentFromId(obj/item/card/id/I)
-	// Format currently matches that of newscaster feeds: Registered Name (Assigned Rank)
-	return I.assignment ? "[I.registered_name] ([I.assignment])" : I.registered_name
-
 /datum/announcement_configuration/event
 	default_title = ANNOUNCE_KIND_EVENT
 	sound = sound('sound/misc/notice2.ogg')
@@ -166,7 +162,7 @@ GLOBAL_DATUM_INIT(major_announcement, /datum/announcer, new(config_type = /datum
 	sound = sound('sound/misc/notice2.ogg')
 
 /datum/announcement_configuration/comms_console
-	default_title = "Priority Announcement"
+	default_title = "Приоритетное оповещение."
 	add_log = TRUE
 	log_name = ANNOUNCE_KIND_PRIORITY
 	sound = sound('sound/misc/announce.ogg')
@@ -178,3 +174,10 @@ GLOBAL_DATUM_INIT(major_announcement, /datum/announcer, new(config_type = /datum
 	log_name = ANNOUNCE_KIND_AI
 	sound = sound('sound/misc/notice2.ogg')
 	style = "major"
+
+/datum/announcement_configuration/ptl
+	default_title = ANNOUNCE_KIND_PTL
+	add_log = FALSE
+	sound = sound('sound/misc/notice2.ogg')
+	style = "major"
+

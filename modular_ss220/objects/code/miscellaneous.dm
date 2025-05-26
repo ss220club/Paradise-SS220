@@ -109,12 +109,12 @@
 			могут быть использованы для строительства новых отсеков.\
 			<BR><HR><BR><center><H2>Особенности станции</H2></center>\
 			<BR>В отличие от большинства других научно-исследовательских станций Nanotrasen, \
-			таких как &#34;Кибериада&#34;, <B>ИСН &#34;Керборос&#34;</B> имеет менее \
+			таких как &#34;Кибериада&#34;, <B>ИСН &#34;Керберос&#34;</B> имеет менее \
 			жёсткую систему контроля за личными вещами экипажа. В частности, в отсеках \
 			были построены <B>дополнительные автолаты</B>, в том числе <B>публичные</B> \
 			(в карго и РНД). Также, благодаря более высокому бюджету, были возведены \
 			<B>новые отсеки</B>, такие как <B>ангар</B> или <B>склад</B> в отсеке РнД.\
-			Был расширен отдел <B>вирусологии</B> и возведены <B>новые техничесские туннели</B> для \
+			Был расширен отдел <B>вирусологии</B> и возведены <B>новые технические туннели</B> для \
 			новых проектов.</font>"
 
 /obj/item/paper/pamphlet/update_icon_state()
@@ -142,3 +142,76 @@
 	alert = TRUE
 	start_showpiece_type = /obj/item/gun/projectile/revolver/reclinable/judge
 	req_access = list(ACCESS_HOS)
+
+// Upgraded machinery
+/obj/machinery/hydroponics/constructable/upgraded/Initialize(mapload)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/hydroponics(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	component_parts += new /obj/item/stack/sheet/glass(null)
+	RefreshParts()
+
+/obj/machinery/biogenerator/upgraded/Initialize(mapload)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/biogenerator(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	component_parts += new /obj/item/stack/sheet/glass(null)
+	component_parts += new /obj/item/stack/cable_coil(null, 1)
+	RefreshParts()
+
+/obj/machinery/plantgenes/upgraded/Initialize(mapload)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/plantgenes(null)
+	component_parts += new /obj/item/stack/sheet/glass(null)
+	component_parts += new /obj/item/stock_parts/scanning_module/triphasic(null)
+	component_parts += new /obj/item/stock_parts/micro_laser/quadultra(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	RefreshParts()
+
+/obj/machinery/seed_extractor/upgraded/Initialize(mapload)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/seed_extractor(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	RefreshParts()
+
+/obj/machinery/gibber/upgraded/Initialize(mapload)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/gibber(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	RefreshParts()
+
+/obj/machinery/processor/upgraded/Initialize(mapload)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/processor(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	RefreshParts()
+
+/obj/machinery/reagentgrinder/upgraded/Initialize(mapload)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/reagentgrinder(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	RefreshParts()
+
+/obj/machinery/cooking/stovetop/upgraded/Initialize(mapload)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/cooking/stove(null)
+	component_parts += new /obj/item/stock_parts/micro_laser/quadultra(null)
+	component_parts += new /obj/item/stock_parts/micro_laser/quadultra(null)
+	component_parts += new /obj/item/stock_parts/capacitor/quadratic(null)
+	RefreshParts()

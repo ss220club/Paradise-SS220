@@ -8,8 +8,8 @@
 #define UPLOAD_LIMIT		10485760	//Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
 #define MIN_CLIENT_VERSION	513		// Minimum byond major version required to play.
 									//I would just like the code ready should it ever need to be used.
-#define SUGGESTED_CLIENT_VERSION	514		// only integers (e.g: 513, 514) are useful here. This is the part BEFORE the ".", IE 513 out of 513.1542
-#define SUGGESTED_CLIENT_BUILD	1566		// only integers (e.g: 1542, 1543) are useful here. This is the part AFTER the ".", IE 1542 out of 513.1542
+#define SUGGESTED_CLIENT_VERSION	516		// only integers (e.g: 513, 514) are useful here. This is the part BEFORE the ".", IE 513 out of 513.1542
+#define SUGGESTED_CLIENT_BUILD	1660		// only integers (e.g: 1542, 1543) are useful here. This is the part AFTER the ".", IE 1542 out of 513.1542
 
 #define SSD_WARNING_TIMER 30 // cycles, not seconds, so 30=60s
 
@@ -192,10 +192,12 @@
 
 		if("silenceSound")
 			usr.stop_sound_channel(CHANNEL_ADMIN)
+			tgui_panel?.stop_music()
 			return
 
 		if("muteAdmin")
 			usr.stop_sound_channel(CHANNEL_ADMIN)
+			tgui_panel?.stop_music()
 			prefs.admin_sound_ckey_ignore |= href_list["a"]
 			to_chat(usr, "You will no longer hear admin playsounds from <code>[href_list["a"]]</code>. To remove them, go to Preferences --&gt; <code>Manage Admin Sound Mutes</code>.")
 			prefs.save_preferences(src)
@@ -269,7 +271,7 @@
 /client/New(TopicData)
 	// TODO: Remove with 516
 	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
-		winset(src, "", "browser-options=byondstorage")
+		winset(src, "", "browser-options=byondstorage,find")
 
 	var/tdata = TopicData //save this for later use
 	// Instantiate stat panel
@@ -412,6 +414,8 @@
 			to_chat(src, message)
 		GLOB.clientmessages.Remove(ckey)
 
+	acquire_dpi()
+
 	if(SSinput.initialized)
 		set_macros()
 
@@ -453,6 +457,7 @@
 		tooltips = new /datum/tooltip(src)
 
 	Master.UpdateTickRate()
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/client, nag_516))
 
 	// Tell clients about active testmerges
 	if(world.TgsAvailable() && length(GLOB.revision_info.testmerges))
@@ -976,7 +981,7 @@
 /client/proc/generate_clickcatcher()
 	if(!void)
 		void = new()
-		screen += void
+	screen += void
 
 /client/proc/apply_clickcatcher()
 	generate_clickcatcher()
@@ -1316,6 +1321,35 @@
 		editor.editors[target_UID] = editor
 
 	editor.ui_interact(mob)
+
+/client/verb/stop_client_sounds()
+	set category = "Special Verbs"
+	set name = "Stop Sounds"
+	set desc = "Stop Current Sounds."
+	SEND_SOUND(usr, sound(null))
+	to_chat(src, "All sounds stopped.")
+	tgui_panel?.stop_music()
+
+/client/proc/acquire_dpi()
+	set waitfor = FALSE
+
+	// Remove with 516
+	if(byond_version < 516)
+		return
+
+	window_scaling = text2num(winget(src, null, "dpi"))
+
+// This is in its own proc so we can async it out
+/client/proc/nag_516()
+	if(byond_version >= 516)
+		return
+
+	var/choice = alert(src, "Warning - You are currently on BYOND version [byond_version].[byond_build]. Soon, Paradise will start enforcing 516 as the minimum required version, and 515 will no longer work. Please update now to avoid being unable to play in the future.", "BYOND Version Warning", "Update Now", "Ignore for now")
+	if(choice != "Update Now")
+		return
+
+	src << link("https://secure.byond.com/download/")
+
 
 #undef LIMITER_SIZE
 #undef CURRENT_SECOND

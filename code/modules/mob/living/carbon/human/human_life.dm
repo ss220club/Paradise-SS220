@@ -44,6 +44,12 @@
 		if(life_tick == 1)
 			regenerate_icons() // Make sure the inventory updates
 
+	var/datum/antagonist/mindflayer/F = mind?.has_antag_datum(/datum/antagonist/mindflayer)
+	if(F)
+		F.handle_mindflayer()
+		if(life_tick == 1)
+			regenerate_icons()
+
 	if(player_ghosted > 0 && stat == CONSCIOUS && job && !restrained())
 		handle_ghosted()
 	if(player_logged > 0 && stat != DEAD && job)
@@ -100,6 +106,56 @@
 
 	else if(!vision || vision.is_broken())   // Vision organs cut out or broken? Permablind.
 		EyeBlind(4 SECONDS)
+
+	if(getBrainLoss() >= 60 && stat != DEAD)
+		if(prob(3))
+			var/list/crazysay = list("Я [pick("ПОНИ","ЯЩЕР","ТАЯРА","КОТЁНОК","ВУЛЬП","ДРАСК","ПТИЧКА","ВОКСИК","МАШИНА","БОЕВОЙ МЕХ","РАКЕТА")] [pick("НЬЕЕЕЕЕЕЕЕЕЕ","СКРЭЭЭЭЭЭЭЭЭ","МЯУ","НЯ~","РАВР","ГАВ-ГАВ","ХИССССС","ВРУУУМ-ВРУУУУМ","ПИУ-ПИУ","ЧУ-ЧУ")]!",
+							"без кислорода блоб не распространяется?",
+							"КАПИТАН - ГАНДОН!",
+							"[pick("", "Этот чёртов маньяк,")] [pick("Жордж","Джордж","Горж","Грудж")] [pick("Меленс","Мэлонс","Мвырлнс")] убивает меня ПАМА;ГИТЕ!!!",
+							"Можишь пж дать [pick("теликенез","халга","эпелепсию")]?",
+							"ООООО МОЯ ОБОРОНА",
+							"Би - ЛУЧШЕЕ С ДВУХ СТОРОН!",
+							"Я ХОЧУ ПОГЛАДИТЬ ЭТХ БИБЗЯН!",
+							"не бей пж!!!!",
+							"ПЕРКРАТИ!",
+							"ПАМАГИТЕ ЩЕТКУРИТИ",
+							"ВОКсЫ нЕ мОГут ЛюБИТь",
+							"Мой папа владеет этой станцией",
+							"Повар добавил [pick("ПРОТЕИН", "туолетную воду", "муравьёв", "энзимы","акулу","виТамины","РеАктивный МутАген","ТеСлиум","сКрэКтониум")] в [pick("мой суп","мою шОверму","мой рЭйнбургер","мой зеЛёный Сольент","мои СушИ","мой борш")]!",
+							"У ОБЕЗЬЯН ТАЗЕРЫ!",
+							"кМ потраТел мои поенты на [pick("бОевые дробавики","ризИновые перЧатке","кУчу херни!")]",
+							"EI'NATH!",
+							"ПРОСНИТЕСЬ, БАРАНЫ!",
+							"эта [pick("был мой младшей брат!!","была мая невеста","был мой осТавшЕйся друк","был Мой деДдом","былА мая люБов","была моя жена","был мой муж","маИ малЕнькие ДеТи","МаЯ разУмнАя коШка")]",
+							"ФУС РО ДА",
+							"ёбаные мандарины!!!",
+							"Праверь меня",
+							"Моё лицо!",
+							"СПОКОЙНО БЛЯТЬ!",
+							"ВАААААААААГХ!!!",
+							"Папробуй догани!",
+							"ЗА ИМПЕРАТОРА!",
+							"ДАЧНОГО ДНЯ!!!!",
+							"это всё дварфы, чел, всё дварфы",
+							"СПЕЙС МАРИНЫ",
+							"Мввыы ссдееллалии этво вво имя хаосса",
+							"Фотареалистичные тикстуры",
+							"Любоф цвятёт",
+							"ПАКЕТЫ!!!",
+							"[pick("ГДЕ МОЙ","МХНЕ НУЖЕН","ДАЙ МНЕ МОЙ","ОКУНИ МЕНЯ В")] [pick("ДЕРМАЛИН","АЛКИЗИН","ДИЛОВИН","ИНАПРОВАЛИН","БИКАРДИН","ГИПЕРЗИН","КЕЛОТАН","ЛЕПОРАЗИН","СОЛЬ","МАННИТОЛ","КРИОКСАДОН","СПЕЙС ЛУБ","КАППУЛЕТИУМ","ЛСД")]!",
+							"БжеХрнИКрлеВу",
+							"У меНя еСтЬ Лююди на Цк!!!",
+							";П-п-помогите т-т-техи",
+							"Ани идут, ани ИДУТ! АНИ ИДУТ!!!",
+							"КОНЕЦ БЛИЗОК!",
+							"Я ГОТОВ УМЕРЕТЬ ВО ИМЯ [pick("РИТУАЛА","СВОБОДЫ","ЗАРПЛАТЫ","ОЧКОВ","ТЕХНОЛОГИЙ","СОБАКИ","СИРОПА","ПУШИСТЫХ ДРУЗЕЙ","ЛУТА ИЗ ГЕЙТА","ТУЛБОКСОВ","ВУЛЬП","ПОНЧИКОВ","КЛОУНА")]",
+							"УБиЙ ИХ, [pick("ПЕТУХ","КИРА-КЛОЙН","КЛУВНИ","МИМАНЬЯК","БОМБЯЩИЯ ТАЯРА","ОФЕЦЕР","МОРФЛЕНГ","НАС-РИ")]!" ,
+							"Я МаГу ТиБЯ ЗаСТАвИТЬ СКаЗАТЬ ВсЁ ЧТО УГоДНО!!?!?!")
+			if(prob(66))
+				say(pick(crazysay))
+			else
+				emote("drool")
 
 /mob/living/carbon/human/handle_mutations_and_radiation()
 	for(var/mutation_type in active_mutations)
@@ -318,7 +374,7 @@
 		if(V && !V.get_ability(/datum/vampire_passive/full) && stat != DEAD)
 			V.bloodusable = max(V.bloodusable - 5, 0)
 
-/mob/living/carbon/human/proc/get_thermal_protection()
+/mob/living/carbon/human/get_thermal_protection()
 	if(HAS_TRAIT(src, TRAIT_RESISTHEAT))
 		return FIRE_IMMUNITY_MAX_TEMP_PROTECT
 
@@ -368,6 +424,9 @@
 	if(gloves)
 		if(gloves.max_heat_protection_temperature && gloves.max_heat_protection_temperature >= temperature)
 			thermal_protection_flags |= gloves.heat_protection
+	if(neck)
+		if(neck.max_heat_protection_temperature && neck.max_heat_protection_temperature >= temperature)
+			thermal_protection_flags |= neck.heat_protection
 	if(wear_mask)
 		if(wear_mask.max_heat_protection_temperature && wear_mask.max_heat_protection_temperature >= temperature)
 			thermal_protection_flags |= wear_mask.heat_protection
@@ -429,6 +488,9 @@
 	if(gloves)
 		if(gloves.min_cold_protection_temperature && gloves.min_cold_protection_temperature <= temperature)
 			thermal_protection_flags |= gloves.cold_protection
+	if(neck)
+		if(neck.min_cold_protection_temperature && neck.min_cold_protection_temperature <= temperature)
+			thermal_protection_flags |= neck.cold_protection
 	if(wear_mask)
 		if(wear_mask.min_cold_protection_temperature && wear_mask.min_cold_protection_temperature <= temperature)
 			thermal_protection_flags |= wear_mask.cold_protection
@@ -564,6 +626,8 @@
 		covered |= shoes.body_parts_covered
 	if(gloves)
 		covered |= gloves.body_parts_covered
+	if(neck)
+		covered |= neck.body_parts_covered
 	if(wear_mask)
 		covered |= wear_mask.body_parts_covered
 
@@ -647,17 +711,22 @@
 	if(status_flags & GODMODE)
 		return 0
 
+	if(status_flags & TERMINATOR_FORM)
+		return FALSE
+
 	var/guaranteed_death_threshold = health + (getOxyLoss() * 0.5) - (getFireLoss() * 0.67) - (getBruteLoss() * 0.67)
 
-	if(getBrainLoss() >= 120 || (guaranteed_death_threshold) <= -500)
+	var/obj/item/organ/internal/brain = get_int_organ(/obj/item/organ/internal/brain)
+	if(brain?.damage >= brain.max_damage || (guaranteed_death_threshold) <= -500)
 		death()
 		return
 
-	if(getBrainLoss() >= 100) // braindeath
+	if(check_brain_threshold(BRAIN_DAMAGE_RATIO_CRITICAL)) // braindeath
 		dna.species.handle_brain_death(src)
 
 	if(!check_death_method())
 		if(health <= HEALTH_THRESHOLD_DEAD)
+			// No need to get the fraction of the max brain damage here, because for it to matter, they'd probably be dead already
 			var/deathchance = min(99, ((getBrainLoss() / 5) + (health + (getOxyLoss() / -2))) * -0.1)
 			if(prob(deathchance))
 				death()
@@ -741,60 +810,86 @@
 				frostbite_state += "hypothermia"
 		frostbite_screen.icon_state = frostbite_state
 
+/mob/living/carbon/human/proc/can_metabolize(datum/reagent/reagent)
+	var/datum/species/species = dna.species
+	if(!species || !species.reagent_tag)
+		return FALSE
+
+	// SYNTHETIC-oriented reagents require PROCESS_SYN
+	if((reagent.process_flags & SYNTHETIC) && (species.reagent_tag & PROCESS_SYN))
+		return TRUE
+
+	// ORGANIC-oriented reagents require PROCESS_ORG
+	if((reagent.process_flags & ORGANIC) && (species.reagent_tag & PROCESS_ORG))
+		return TRUE
+
+	// Species with PROCESS_DUO are only affected by reagents that affect both organics and synthetics, like acid and hellwater
+	if((reagent.process_flags & ORGANIC) && (reagent.process_flags & SYNTHETIC) && (species.reagent_tag & PROCESS_DUO))
+		return TRUE
+	return FALSE
+
+/mob/living/carbon/human/shock_reduction(allow_true_health_reagents = TRUE)
+	var/shock_reduction = 0
+	if(reagents)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			if(allow_true_health_reagents && R.view_true_health) // Checks if the call is for movement speed and if the reagent shouldn't muddy up the player's health HUD
+				continue
+			if(R.shock_reduction && can_metabolize(R))
+				shock_reduction += R.shock_reduction
+	return shock_reduction
+
+
 #define BODYPART_PAIN_REDUCTION 5
 
 /mob/living/carbon/human/update_health_hud()
 	if(!client)
 		return
-	if(dna.species.update_health_hud())
-		return
-	else
-		var/shock_reduction = shock_reduction()
-		if(healths)
-			var/health_amount = get_perceived_trauma(shock_reduction)
-			if(..(health_amount)) //not dead
-				switch(health_hud_override)
-					if(HEALTH_HUD_OVERRIDE_CRIT)
-						healths.icon_state = "health6"
-					if(HEALTH_HUD_OVERRIDE_DEAD)
-						healths.icon_state = "health7"
-					if(HEALTH_HUD_OVERRIDE_HEALTHY)
-						healths.icon_state = "health0"
+	var/shock_reduction = shock_reduction()
+	if(healths)
+		var/health_amount = get_perceived_trauma(shock_reduction)
+		if(..(health_amount)) //not dead
+			switch(health_hud_override)
+				if(HEALTH_HUD_OVERRIDE_CRIT)
+					healths.icon_state = "health6"
+				if(HEALTH_HUD_OVERRIDE_DEAD)
+					healths.icon_state = "health7"
+				if(HEALTH_HUD_OVERRIDE_HEALTHY)
+					healths.icon_state = "health0"
 
-		if(healthdoll)
-			if(stat == DEAD)
-				healthdoll.icon_state = "healthdoll_DEAD"
-				if(length(healthdoll.overlays))
-					healthdoll.overlays.Cut()
-			else
-				var/list/new_overlays = list()
-				var/list/cached_overlays = healthdoll.cached_healthdoll_overlays
-				// Use the dead health doll as the base, since we have proper "healthy" overlays now
-				healthdoll.icon_state = "healthdoll_DEAD"
-				for(var/obj/item/organ/external/O in bodyparts)
-					var/damage = O.get_damage()
-					damage -= shock_reduction / BODYPART_PAIN_REDUCTION
-					var/comparison = (O.max_damage/5)
-					var/icon_num = 0
-					if(damage > 0)
-						icon_num = 1
-					if(damage > (comparison))
-						icon_num = 2
-					if(damage > (comparison*2))
-						icon_num = 3
-					if(damage > (comparison*3))
-						icon_num = 4
-					if(damage > (comparison*4))
-						icon_num = 5
-					new_overlays += "[O.limb_name][icon_num]"
-				healthdoll.overlays += (new_overlays - cached_overlays)
-				healthdoll.overlays -= (cached_overlays - new_overlays)
-				healthdoll.cached_healthdoll_overlays = new_overlays
-
-		if(health <= HEALTH_THRESHOLD_CRIT)
-			throw_alert("succumb", /atom/movable/screen/alert/succumb)
+	if(healthdoll)
+		if(stat == DEAD)
+			healthdoll.icon_state = "healthdoll_DEAD"
+			if(length(healthdoll.overlays))
+				healthdoll.overlays.Cut()
 		else
-			clear_alert("succumb")
+			var/list/new_overlays = list()
+			var/list/cached_overlays = healthdoll.cached_healthdoll_overlays
+			// Use the dead health doll as the base, since we have proper "healthy" overlays now
+			healthdoll.icon_state = "healthdoll_DEAD"
+			for(var/obj/item/organ/external/O in bodyparts)
+				var/damage = O.get_damage()
+				damage -= shock_reduction / BODYPART_PAIN_REDUCTION
+				var/comparison = (O.max_damage/5)
+				var/icon_num = 0
+				if(damage > 0)
+					icon_num = 1
+				if(damage > (comparison))
+					icon_num = 2
+				if(damage > (comparison*2))
+					icon_num = 3
+				if(damage > (comparison*3))
+					icon_num = 4
+				if(damage > (comparison*4))
+					icon_num = 5
+				new_overlays += "[O.limb_name][icon_num]"
+			healthdoll.overlays += (new_overlays - cached_overlays)
+			healthdoll.overlays -= (cached_overlays - new_overlays)
+			healthdoll.cached_healthdoll_overlays = new_overlays
+
+	if(health <= HEALTH_THRESHOLD_SUCCUMB)
+		throw_alert("succumb", /atom/movable/screen/alert/succumb)
+	else
+		clear_alert("succumb")
 
 #undef BODYPART_PAIN_REDUCTION
 

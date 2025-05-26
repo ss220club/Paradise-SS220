@@ -16,6 +16,15 @@
 	resistance_flags = NONE
 	armor = list(MELEE = 30, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 0, RAD = 0, FIRE = 200, ACID = 50)
 
+/obj/item/clothing/gloves/vox/light
+	name = "light vox gauntlets"
+	desc = "Легкие рукавицы причудливой формы с когтями."
+	strip_delay = 2 SECONDS
+	cold_protection = 0
+	min_cold_protection_temperature = NONE
+	max_heat_protection_temperature = NONE
+	armor = NONE
+
 /obj/item/clothing/gloves/color/yellow/vox
 	name = "insulated vox gauntlets"
 	desc = "Плотные изоляционные рукавицы причудливой формы с когтями."
@@ -35,3 +44,12 @@
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	armor = list(MELEE = 30, BULLET = 0, LASER = 25, ENERGY = 25, BOMB = 0, RAD = 0, FIRE = 200, ACID = 50)
+
+/datum/crafting_recipe/insgauntlets
+	name = "Insulated gauntlets"
+	result = list(/obj/item/clothing/gloves/color/yellow/vox)
+	time = 2 SECONDS
+	tools = list(TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/gloves/vox/light = 1,
+				/obj/item/clothing/gloves/color/yellow = 1)
+	category = CAT_CLOTHING

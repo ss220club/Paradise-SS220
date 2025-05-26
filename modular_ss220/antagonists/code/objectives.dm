@@ -1,3 +1,12 @@
+/datum/objective/is_invalid_target(datum/mind/possible_target)
+	. = ..()
+	if(.)
+		return
+	if(team)
+		for(var/datum/antagonist/target_datum in possible_target.antag_datums)
+			if(team == target_datum.get_team())
+				return TARGET_INVALID_SAME_TEAM
+
 /datum/objective/raider_steal
 	name = "Raider theft"
 	needs_target = FALSE
@@ -28,7 +37,7 @@
 
 /datum/objective/raider_steal/check_completion()
 	var/list_count = 0
-	var/obj/machinery/vox_trader/trader = locate() in GLOB.machines
+	var/obj/machinery/vox_trader/trader = locate() in SSmachines.get_by_type(/obj/machinery/vox_trader)
 	if(!trader)
 		return
 	trader.synchronize_traders_stats()
@@ -65,7 +74,7 @@
 
 /datum/objective/raider_entirety_steal/check_completion()
 	var/value_sum = 0
-	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
+	for(var/obj/machinery/vox_trader/trader in SSmachines.get_by_type(/obj/machinery/vox_trader))
 		value_sum += trader.all_values_sum
 	if(value_sum >= precious_value)
 		return TRUE
@@ -87,7 +96,7 @@
 	update_explanation_text()
 
 /datum/objective/raider_collection_access/check_completion()
-	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
+	for(var/obj/machinery/vox_trader/trader in SSmachines.get_by_type(/obj/machinery/vox_trader))
 		if(length(trader.collected_access_list) >= access_amount)
 			return TRUE
 	return FALSE
@@ -107,7 +116,7 @@
 	update_explanation_text()
 
 /datum/objective/raider_collection_tech/check_completion()
-	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
+	for(var/obj/machinery/vox_trader/trader in SSmachines.get_by_type(/obj/machinery/vox_trader))
 		if(length(trader.collected_tech_dict))
 			var/count = 0
 			for(var/tech in trader.collected_tech_dict)

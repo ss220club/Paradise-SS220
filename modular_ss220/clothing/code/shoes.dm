@@ -26,7 +26,7 @@
 		if(/datum/action/item_action/toggle_light)
 			toggle_glow(user)
 
-/obj/item/clothing/shoes/black/neon/attack_self(mob/user)
+/obj/item/clothing/shoes/black/neon/attack_self__legacy__attackchain(mob/user)
 	var/choice = tgui_input_list(user, "Что вы хотите сделать?", "Неоновые кроссовки", list("Переключить подсветку", "Сменить цвет"))
 	switch(choice)
 		if("Переключить подсветку")
@@ -36,7 +36,7 @@
 
 /obj/item/clothing/shoes/black/neon/equipped(mob/user, slot)
 	. = ..()
-	if(!neon_overlay && glow_active && slot == SLOT_HUD_SHOES)
+	if(!neon_overlay && glow_active && slot == ITEM_SLOT_SHOES)
 		apply_neon_overlay(user)
 
 /obj/item/clothing/shoes/black/neon/dropped(mob/user)
@@ -73,7 +73,7 @@
 		return
 
 	remove_neon_overlay(user)
-	if(user.get_item_by_slot(SLOT_HUD_SHOES))
+	if(user.get_item_by_slot(ITEM_SLOT_SHOES))
 		apply_neon_overlay(user)
 
 /// Toggles neon overlay and light emit
@@ -81,7 +81,7 @@
 	if(!user)
 		return
 	// Toggle neon overlay
-	if(!glow_active && user.get_item_by_slot(SLOT_HUD_SHOES))
+	if(!glow_active && user.get_item_by_slot(ITEM_SLOT_SHOES))
 		apply_neon_overlay(user)
 	else if(neon_overlay)
 		remove_neon_overlay(user)
@@ -93,7 +93,7 @@
 		set_light(0)
 		glow_active = FALSE
 
-	update_icon_state()
+	update_icon(UPDATE_ICON_STATE)
 
 /// Opens user input for changing neon color
 /obj/item/clothing/shoes/black/neon/proc/change_color(mob/user)
@@ -101,7 +101,7 @@
 	color = temp
 	light_color = temp
 	reload_neon_overlay(user)
-	update_icon_state()
+	update_icon(UPDATE_ICON_STATE)
 
 /* Shark Shoes */
 /obj/item/clothing/shoes/shark
@@ -166,3 +166,58 @@
 		/obj/item/clothing/shoes/clown_shoes/slippers,
 	)
 	category = CAT_CLOTHING
+
+/* EI shoes */
+/obj/item/clothing/shoes/ei_shoes
+	name = "ботинки Gold On Black"
+	desc = "Черный ботинки в классическом стиле с легким золотым напылением от корпорации Etamin Industry."
+	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
+	icon_state = "ei_shoes"
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/shoes.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Skeleton" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Abductor" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/shoes.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/shoes.dmi',
+	)
+
+/obj/item/clothing/shoes/jackboots/noisy/long
+	name = "берцы ветерана"
+	desc = "Тяжёлые кожаные ботинки с вшитыми стальными пластинами в носке и подошве. Надёжно защищают ноги и идеально подходят, чтобы раздавить чей-то череп. Их владелец явно обладает мощными ногами. На подошвах выбита надпись Rerro."
+	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
+	icon_state = "jackbootstall_s"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Skeleton" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Abductor" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/shoes.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/shoes.dmi',
+	)

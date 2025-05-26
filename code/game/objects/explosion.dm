@@ -8,7 +8,7 @@
 #define FREQ_UPPER 40 //The upper limit for the randomly selected frequency.
 #define FREQ_LOWER 25 //The lower of the above.
 
-/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, ignorecap = 0, flame_range = 0, silent = 0, smoke = 1, cause = null, breach = TRUE)
+/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, ignorecap = 0, flame_range = 0, silent = 0, smoke = 1, cause = "Unknown Cause!", breach = TRUE)
 	epicenter = get_turf(epicenter)
 	if(!epicenter)
 		return
@@ -49,8 +49,8 @@
 		var/list/cached_exp_block = list()
 
 		if(adminlog)
-			message_admins("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in area [epicenter.loc.name] [cause ? "(Cause: [cause])" : ""] [ADMIN_COORDJMP(epicenter)] ")
-			log_game("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in area [epicenter.loc.name] [cause ? "(Cause: [cause])" : ""] [COORD(epicenter)] ")
+			message_admins("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in area [epicenter.loc.name] (Cause: [cause]) [ADMIN_COORDJMP(epicenter)] ")
+			log_game("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in area [epicenter.loc.name] (Cause: [cause]) [COORD(epicenter)] ")
 
 		var/x0 = epicenter.x
 		var/y0 = epicenter.y
@@ -203,16 +203,7 @@
 		//You need to press the DebugGame verb to see these now....they were getting annoying and we've collected a fair bit of data. Just -test- changes  to explosion code using this please so we can compare
 		log_world("## DEBUG: Explosion([x0],[y0],[z0])(d[devastation_range],h[heavy_impact_range],l[light_impact_range]): Took [took] seconds.")
 
-		//Machines which report explosions.
-		for(var/array in GLOB.doppler_arrays)
-			if(!array)
-				continue
-			if(istype(array, /obj/machinery/doppler_array))
-				var/obj/machinery/doppler_array/Array = array
-				Array.sense_explosion(x0,y0,z0,devastation_range,heavy_impact_range,light_impact_range,took,orig_dev_range,orig_heavy_range,orig_light_range)
-			if(istype(array, /obj/item/mod/module/reagent_scanner/advanced))
-				var/obj/item/mod/module/reagent_scanner/advanced/Mod_Array = array
-				Mod_Array.sense_explosion(x0,y0,z0,devastation_range,heavy_impact_range,light_impact_range,took,orig_dev_range,orig_heavy_range,orig_light_range)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPLOSION, epicenter, devastation_range, heavy_impact_range, light_impact_range, took, orig_dev_range, orig_heavy_range, orig_light_range)
 	return 1
 
 

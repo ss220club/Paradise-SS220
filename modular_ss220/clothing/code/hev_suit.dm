@@ -84,7 +84,7 @@
 //Signal handling.
 /obj/item/clothing/suit/space/hev/equipped(mob/M, slot)
 	..()
-	if(slot == SLOT_HUD_OUTER_SUIT && iscarbon(M))
+	if(slot == ITEM_SLOT_OUTER_SUIT && iscarbon(M))
 		for(var/voice in funny_signals)
 			RegisterSignal(M, voice, funny_signals[voice])
 			owner = M
@@ -107,7 +107,7 @@
 	add_queue('modular_ss220/aesthetics_sounds/sound/hev/death.ogg', 5 SECONDS, purge_queue=TRUE)
 
 //Mute
-/obj/item/clothing/suit/space/hev/proc/handle_speech(datum/source, mob/speech_args)
+/obj/item/clothing/suit/space/hev/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 	var/static/list/cancel_messages = list(
 		"Вам трудно говорить, когда костюм туго сдавливает ваше горло...",
@@ -159,7 +159,7 @@
 
 /obj/item/clothing/head/helmet/hev_helmet/equipped(mob/living/carbon/human/user, slot)
 	..()
-	if(slot != SLOT_HUD_HEAD)
+	if(slot != ITEM_SLOT_HEAD)
 		return
 	for(var/new_hud in hud_types)
 		var/datum/atom_hud/H = GLOB.huds[new_hud]

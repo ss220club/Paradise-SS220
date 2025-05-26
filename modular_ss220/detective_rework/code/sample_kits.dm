@@ -45,13 +45,15 @@
 	return TRUE
 
 /obj/item/sample/pre_attack(atom/A, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
 	// Fingerprints will be handled in after_attack() to not mess up the samples taken
-	return A.attackby(src, user, params)
+	return A.attackby__legacy__attackchain(src, user, params)
 
-/obj/item/sample/attackby(obj/O, mob/user)
+/obj/item/sample/attackby__legacy__attackchain(obj/O, mob/user)
 	if(O.type == src.type)
-		user.unEquip(O)
 		if(merge_evidence(O, user))
+			user.unequip(O)
 			qdel(O)
 		return TRUE
 	return ..()
@@ -64,11 +66,11 @@
 /obj/item/sample/print
 	name = "\improper дактилоскопическая карта"
 	desc = "Сохраняет отпечатки пальцев."
-	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
+	icon = 'modular_ss220/aesthetics/better_ids/icons/card.dmi'
 	icon_state = "fingerprint0"
 	item_state = "paper"
 
-/obj/item/sample/print/attack_self(mob/user)
+/obj/item/sample/print/attack_self__legacy__attackchain(mob/user)
 	if(evidence && evidence.len)
 		return
 	if(!ishuman(user))
@@ -84,7 +86,7 @@
 	name = ("[initial(name)] ([H])")
 	icon_state = "fingerprint1"
 
-/obj/item/sample/print/attack(mob/living/M, mob/user)
+/obj/item/sample/print/attack__legacy__attackchain(mob/living/M, mob/user)
 
 	if(!ishuman(M))
 		return ..()
@@ -149,7 +151,7 @@
 	var/obj/item/sample/S = new evidence_path(get_turf(user), supplied)
 	to_chat(user, span_notice("Вы перемещаете [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]" : "[evidence_type]"] в \the [S]."))
 
-/obj/item/forensics/sample_kit/afterattack(atom/A, mob/user, proximity)
+/obj/item/forensics/sample_kit/afterattack__legacy__attackchain(atom/A, mob/user, proximity)
 	if(!proximity)
 		return
 	if(can_take_sample(user, A))
@@ -161,7 +163,7 @@
 
 /obj/item/forensics/sample_kit/MouseDrop(atom/over)
 	if(ismob(src.loc))
-		afterattack(over, usr, TRUE)
+		afterattack__legacy__attackchain(over, usr, TRUE)
 
 /obj/item/forensics/sample_kit/powder
 	name = "\improper дактилоскопический порошок"

@@ -6,7 +6,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SUPPLY | DEP_FLAG_COMMAND
-	supervisors = "the captain"
+	supervisors = "капитаном"
 	department_head = list("Captain")
 	department_account_access = TRUE
 	selection_color = "#e2c59d"
@@ -28,11 +28,12 @@
 		ACCESS_SUPPLY_SHUTTLE,
 		ACCESS_WEAPONS,
 		ACCESS_TELEPORTER,
-		ACCESS_EXPEDITION
+		ACCESS_EXPEDITION,
+		ACCESS_SMITH
 	)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
 	outfit = /datum/outfit/job/qm
-	important_information = "This role requires you to coordinate a department. You are required to be familiar with Standard Operating Procedure (Supply), basic job duties, and act professionally (roleplay)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Снабжения), базовых должностных обязанностей и профессиональных действий."
 	exp_map = list(EXP_TYPE_SUPPLY = 1200)
 
 /datum/outfit/job/qm
@@ -48,7 +49,7 @@
 	id = /obj/item/card/id/quartermaster
 	l_hand = /obj/item/clipboard
 	l_pocket = /obj/item/mail_scanner
-	pda = /obj/item/pda/quartermaster
+	pda = /obj/item/pda/heads/qm
 	backpack_contents = list(
 		/obj/item/melee/classic_baton/telescopic = 1
 	)
@@ -62,7 +63,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SUPPLY
-	supervisors = "the quartermaster"
+	supervisors = "квартирмейстером"
 	department_head = list("Quartermaster")
 	selection_color = "#eeddbe"
 	access = list(
@@ -87,7 +88,39 @@
 	id = /obj/item/card/id/supply
 	pda = /obj/item/pda/cargo
 
+/datum/job/smith
+	title = "Smith"
+	flag = JOB_SMITH
+	department_flag = JOBCAT_SUPPORT
+	total_positions = 1
+	spawn_positions = 1
+	job_department_flags = DEP_FLAG_SUPPLY
+	supervisors = "the quartermaster"
+	department_head = list("Quartermaster")
+	selection_color = "#eeddbe"
+	access = list(
+		ACCESS_CARGO_BAY,
+		ACCESS_CARGO,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_MINING,
+		ACCESS_MINING_STATION,
+		ACCESS_SMITH
+	)
+	alt_titles = list("Metalworker", "Tinkerer")
+	outfit = /datum/outfit/job/smith
 
+/datum/outfit/job/smith
+	name = "Smith"
+	jobtype = /datum/job/smith
+
+	gloves = /obj/item/clothing/gloves/smithing
+	uniform = /obj/item/clothing/under/rank/cargo/smith
+	l_ear = /obj/item/radio/headset/headset_cargo
+	shoes = /obj/item/clothing/shoes/workboots/smithing
+	id = /obj/item/card/id/smith
+	pda = /obj/item/pda/cargo
 
 /datum/job/mining
 	title = "Shaft Miner"
@@ -96,7 +129,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SUPPLY
-	supervisors = "the quartermaster"
+	supervisors = "квартирмейстером"
 	department_head = list("Quartermaster")
 	selection_color = "#eeddbe"
 	access = list(
@@ -138,7 +171,7 @@
 	mask = /obj/item/clothing/mask/gas/explorer
 	glasses = /obj/item/clothing/glasses/meson
 	suit_store = /obj/item/tank/internals/emergency_oxygen
-	internals_slot = SLOT_HUD_SUIT_STORE
+	internals_slot = ITEM_SLOT_SUIT_STORE
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
 		/obj/item/kitchen/knife/combat/survival=1,
@@ -148,7 +181,7 @@
 		/obj/item/stack/marker_beacon/ten=1
 	)
 
-/datum/outfit/job/miner/equipped/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/mining/equipped/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
 	if(visualsOnly)
 		return
@@ -156,7 +189,7 @@
 		var/obj/item/clothing/suit/hooded/S = H.wear_suit
 		S.ToggleHood()
 
-/datum/outfit/job/miner/equipped/modsuit
+/datum/outfit/job/mining/equipped/modsuit
 	name = "Shaft Miner (Equipment + MODsuit)"
 	back = /obj/item/mod/control/pre_equipped/mining/asteroid
 	mask = /obj/item/clothing/mask/breath
@@ -209,7 +242,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
 	access = list(ACCESS_BAR, ACCESS_MAINT_TUNNELS, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM)
@@ -253,10 +286,13 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
-	access = list(ACCESS_KITCHEN, ACCESS_MAINT_TUNNELS)
+	access = list(
+		ACCESS_KITCHEN,
+		ACCESS_MAINT_TUNNELS
+	)
 	alt_titles = list("Cook","Culinary Artist","Butcher")
 	outfit = /datum/outfit/job/chef
 
@@ -273,18 +309,14 @@
 	id = /obj/item/card/id/chef
 	pda = /obj/item/pda/chef
 	backpack_contents = list(
-		/obj/item/eftpos=1,\
-		/obj/item/paper/chef=1,\
-		/obj/item/book/manual/wiki/chef_recipes=1)
+		/obj/item/eftpos = 1,
+	)
 
 /datum/outfit/job/chef/on_mind_initialize(mob/living/carbon/human/H)
 	. = ..()
 	var/datum/martial_art/cqc/under_siege/justacook = new
 	justacook.teach(H) // requires mind
 	ADD_TRAIT(H.mind, TRAIT_TABLE_LEAP, ROUNDSTART_TRAIT)
-	ADD_TRAIT(H.mind, TRAIT_KNOWS_COOKING_RECIPES, ROUNDSTART_TRAIT)
-	if(H.mind)
-		H.mind.AddSpell(new /datum/spell/chef/expert_chef)
 
 /datum/job/hydro
 	title = "Botanist"
@@ -293,10 +325,14 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
-	access = list(ACCESS_HYDROPONICS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS)
+	access = list(
+		ACCESS_HYDROPONICS,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MORGUE
+	)
 	alt_titles = list("Hydroponicist", "Botanical Researcher")
 	outfit = /datum/outfit/job/hydro
 
@@ -306,10 +342,11 @@
 
 	uniform = /obj/item/clothing/under/rank/civilian/hydroponics
 	suit = /obj/item/clothing/suit/apron
+	belt = /obj/item/storage/belt/botany/full
 	gloves = /obj/item/clothing/gloves/botanic_leather
 	shoes = /obj/item/clothing/shoes/black
 	l_ear = /obj/item/radio/headset/headset_service
-	suit_store = /obj/item/plant_analyzer
+	l_pocket = /obj/item/storage/bag/plants/portaseeder
 	pda = /obj/item/pda/botanist
 	id = /obj/item/card/id/botanist
 	backpack = /obj/item/storage/backpack/botany
@@ -327,10 +364,14 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
-	access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS)
+	access = list(
+		ACCESS_CLOWN,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_THEATRE
+	)
 	outfit = /datum/outfit/job/clown
 
 /datum/outfit/job/clown
@@ -400,7 +441,7 @@
 	active = TRUE
 	button_background_icon_state = "bg_spell"
 	UpdateButtons()
-	to_chat(H, "<span class='notice'>You start acting clumsy to throw suspicions off. Focus again before using weapons.</span>")
+	to_chat(H, "<span class='notice'>Вы начинаете вести себя неуклюже, чтобы отвести от себя подозрения. Снова сосредоточьтесь, прежде чем использовать оружие.</span>")
 
 /datum/action/innate/toggle_clumsy/Deactivate()
 	var/mob/living/carbon/human/H = owner
@@ -409,7 +450,7 @@
 	active = FALSE
 	button_background_icon_state = "bg_default"
 	UpdateButtons()
-	to_chat(H, "<span class='notice'>You focus and can now use weapons regularly.</span>")
+	to_chat(H, "<span class='notice'>Вы сосредоточились и теперь можете эффективно пользоваться оружием.</span>")
 
 /datum/job/mime
 	title = "Mime"
@@ -418,10 +459,14 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
-	access = list(ACCESS_MIME, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS)
+	access = list(
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MIME,
+		ACCESS_THEATRE
+	)
 	outfit = /datum/outfit/job/mime
 
 /datum/outfit/job/mime
@@ -458,7 +503,7 @@
 	if(visualsOnly)
 		return
 
-	qdel(H.GetComponent(/datum/component/footstep))
+	H.DeleteComponent(/datum/component/footstep)
 
 /datum/outfit/job/mime/on_mind_initialize(mob/living/carbon/human/H)
 	. = ..()
@@ -473,10 +518,13 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
-	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS)
+	access = list(
+		ACCESS_JANITOR,
+		ACCESS_MAINT_TUNNELS
+	)
 	alt_titles = list("Custodial Technician")
 	outfit = /datum/outfit/job/janitor
 
@@ -505,10 +553,13 @@
 	total_positions = 0
 	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
-	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
+	access = list(
+		ACCESS_LIBRARY,
+		ACCESS_MAINT_TUNNELS
+	)
 	alt_titles = list("Journalist")
 	outfit = /datum/outfit/job/librarian
 
@@ -525,7 +576,9 @@
 	id = /obj/item/card/id/librarian
 	pda = /obj/item/pda/librarian
 	backpack_contents = list(
-		/obj/item/videocam/advanced = 1)
+		/obj/item/videocam/advanced = 1,
+		/obj/item/clothing/suit/armor/vest/press = 1
+)
 
 /datum/outfit/job/librarian/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()

@@ -1,11 +1,11 @@
 /datum/action/changeling/sting
 	name = "Tiny Prick"
-	desc = "Stabby stabby"
+	desc = "Stabby stabby."
 	power_type = CHANGELING_UNOBTAINABLE_POWER
 	category = /datum/changeling_power_category/stings
 	var/sting_icon = null
 	/// A middle click override used to intercept changeling stings performed on a target.
-	var/datum/middleClickOverride/callback_invoker/click_override
+	var/datum/middle_click_override/callback_invoker/click_override
 
 /datum/action/changeling/sting/New(Target)
 	. = ..()
@@ -61,6 +61,11 @@
 	if(ismachineperson(target))
 		to_chat(user, "<span class='warning'>This won't work on synthetics.</span>")
 		return FALSE
+	// SS220 EDIT START - GAS FIXES AND REBALANCE
+	if(is_species(target, /datum/species/serpentid))
+		to_chat(user, "<span class='warning'>This won't work on serpentids armor.</span>")
+		return FALSE
+	// SS220 EDIT START - GAS FIXES AND REBALANCE
 	if(IS_CHANGELING(target))
 		sting_feedback(user, target)
 		take_chemical_cost()

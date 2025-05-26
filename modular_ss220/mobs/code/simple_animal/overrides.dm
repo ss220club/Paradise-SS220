@@ -77,7 +77,7 @@
 
 
 /* Loot Drops */
-/obj/effect/spawner/lootdrop/bluespace_tap/organic/Initialize(mapload)
+/obj/effect/spawner/random/bluespace_tap/organic/Initialize(mapload)
 	. = ..()
 	LAZYADD(loot, list(
 		//mob/living/simple_animal/pet/dog/corgi = 5,
@@ -102,5 +102,5 @@
 		/mob/living/simple_animal/possum = 2,
 
 		/mob/living/simple_animal/pet/penguin = 5,
-		//mob/living/simple_animal/pig = 5,
+		//mob/living/basic/pig = 5,
 		))

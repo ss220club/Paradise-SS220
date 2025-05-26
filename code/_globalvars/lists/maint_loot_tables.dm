@@ -1,10 +1,13 @@
 GLOBAL_LIST_INIT(maintenance_loot_tier_0, list(
 	list(
 		// Tools
-		/obj/effect/spawner/random/engineering/tools,
-
+		/obj/effect/spawner/random/engineering/tools = 4,
 		// Materials
-		/obj/effect/spawner/random/engineering/materials,
+		/obj/effect/spawner/random/engineering/materials = 4,
+		// Misc eng supplies
+		/obj/effect/spawner/random/engineering/misc = 1,
+		// Plushies
+		/obj/effect/spawner/random/plushies = 1,
 	) = 6,
 
 	list(
@@ -122,11 +125,12 @@ GLOBAL_LIST_INIT(maintenance_loot_tier_1, list(
 GLOBAL_LIST_INIT(maintenance_loot_tier_2, list(
 	list(
 		// Rarer items
-		/obj/effect/spawner/random/mod/maint,
+		/obj/effect/spawner/random/mod_maint,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/head/welding,
 		/obj/item/crowbar/red,
 		/obj/item/storage/belt/utility,
+		/obj/effect/spawner/random/smithed_item/any,
 	) = 45,
 
 	list(
@@ -162,6 +166,12 @@ GLOBAL_LIST_INIT(maintenance_loot_tier_2, list(
 	) = 45,
 
 	list(
+		// Plausible Deniability items
+		/obj/item/storage/box/syndie_kit/nuke,
+		/obj/item/storage/box/syndie_kit/supermatter
+	) = 1,
+
+	list(
 		// Health/repair kits
 		/obj/item/storage/firstaid/regular,
 		/obj/item/storage/firstaid/machine,
@@ -175,6 +185,7 @@ GLOBAL_LIST_INIT(maintenance_loot_tier_2, list(
 		// Other rare but useful items
 		/obj/item/radio/headset,
 		/obj/item/melee/knuckleduster,
+		/obj/item/melee/stylet, // SS220 ADDITION
 	) = 3,
 ))
 

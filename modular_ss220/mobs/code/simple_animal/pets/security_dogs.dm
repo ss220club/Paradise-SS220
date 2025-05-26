@@ -49,18 +49,12 @@
 	if(icon_resting && stat != DEAD)
 		icon_state = icon_resting
 		regenerate_icons()
-		if(collar_type)
-			collar_type = "[initial(collar_type)]_rest"
-			regenerate_icons()
 
 /mob/living/simple_animal/pet/dog/security/on_standing_up(updating = 1)
 	..()
 	if(icon_resting && stat != DEAD)
 		icon_state = icon_living
 		regenerate_icons()
-		if(collar_type)
-			collar_type = "[initial(collar_type)]"
-			regenerate_icons()
 
 
 /mob/living/simple_animal/pet/dog/security/Initialize(mapload)
@@ -92,7 +86,7 @@
 /mob/living/simple_animal/pet/dog/security/proc/place_on_head(obj/item/item_to_add, mob/user)
 
 	if(istype(item_to_add, /obj/item/grenade/plastic/c4)) // last thing he ever wears, I guess
-		item_to_add.afterattack(src,user,1)
+		item_to_add.afterattack__legacy__attackchain(src,user,1)
 		return
 
 	if(inventory_head)
@@ -107,7 +101,7 @@
 			return
 		return
 
-	if(user && !user.unEquip(item_to_add))
+	if(user && !user.unequip(item_to_add))
 		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
 		return 0
 

@@ -5,12 +5,12 @@
 	icon_state = "aicard" // aicard-full
 	item_state = "electronic"
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	flags = NOBLUDGEON
 	var/flush = null
 	origin_tech = "programming=3;materials=3"
 
-/obj/item/aicard/afterattack(atom/target, mob/user, proximity)
+/obj/item/aicard/afterattack__legacy__attackchain(atom/target, mob/user, proximity)
 	..()
 	if(!proximity || !target)
 		return
@@ -26,10 +26,10 @@
 	var/mob/living/silicon/ai/AI = locate(/mob/living/silicon/ai) in src //AI is inside.
 	update_icon(UPDATE_OVERLAYS)
 	if(AI)
-		name = "intelliCard - [AI.name]"
+		name = "ИнтеллиКарта - [AI.name]"
 		AI.cancel_camera() //AI are forced to move when transferred, so do this whenver one is downloaded.
 	else
-		name = "intelliCard"
+		name = "ИнтеллиКарта"
 
 /obj/item/aicard/update_overlays()
 	. = ..()
@@ -45,7 +45,7 @@
 		else
 			. += "ai"
 
-/obj/item/aicard/attack_self(mob/user)
+/obj/item/aicard/attack_self__legacy__attackchain(mob/user)
 	ui_interact(user)
 
 /obj/item/aicard/ui_state(mob/user)

@@ -95,7 +95,7 @@
 		"Nucleation" = 'modular_ss220/clothing/icons/mob/hats.dmi',
 	)
 
-/obj/item/clothing/head/towel/attackby(obj/item/S, mob/user, params)
+/obj/item/clothing/head/towel/attackby__legacy__attackchain(obj/item/S, mob/user, params)
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S
@@ -134,3 +134,11 @@
 /obj/item/clothing/head/towel/brown
 	name = "коричневая шапочка из полотенца"
 	color = "#DEB887"
+
+/obj/item/clothing/head/beret/centcom/intern
+	name = "nanotrasen intern beret"
+	desc = "Берет стажера НТ. Белый берет с зеленой звездой. Выглядит подозрительно похожим на берет главного инженера..."
+	icon_state = "beret_ce"
+
+/obj/item/clothing/head/kitty
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'

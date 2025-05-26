@@ -23,9 +23,10 @@
 	var/zlev = GLOB.space_manager.add_new_zlevel(AWAY_MISSION, linkage = UNAFFECTED, traits = list(AWAY_LEVEL, BLOCK_TELEPORT))
 	GLOB.space_manager.add_dirt(zlev)
 	GLOB.maploader.load_map(file, z_offset = zlev)
-	var/datum/milla_safe/late_setup_level/milla = new()
+	var/datum/milla_safe_must_sleep/late_setup_level/milla = new()
 	milla.invoke_async(block(locate(1, 1, zlev), locate(world.maxx, world.maxy, zlev)))
 	GLOB.space_manager.remove_dirt(zlev)
 	log_world("Away mission loaded: [map]")
 
 	log_startup_progress("Away mission loaded in [stop_watch(watch)]s.")
+	seed_space_salvage(levels_by_trait(AWAY_LEVEL), FALSE)

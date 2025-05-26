@@ -64,7 +64,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 	var/static/list/blacklisted_areas = list(/area/adminconstruction, /area/tdome, /area/ruin/space/bubblegum_arena)
 
 	flags = CONDUCT
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	throw_speed = 2
 	throw_range = 9
 	w_class = WEIGHT_CLASS_SMALL
@@ -82,6 +82,8 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 	var/requires_tcomms = FALSE // Does this device require tcomms to work.If TRUE it wont function at all without tcomms. If FALSE, it will work without tcomms, just slowly
 	var/instant = FALSE // Should this device instantly communicate if there isnt tcomms
 
+	/// A timer that, when going off, will turn this radio on again
+	var/radio_enable_timer
 
 /obj/item/radio/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
@@ -119,7 +121,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 /obj/item/radio/attack_ghost(mob/user)
 	return interact(user)
 
-/obj/item/radio/attack_self(mob/user)
+/obj/item/radio/attack_self__legacy__attackchain(mob/user)
 	interact(user)
 
 /obj/item/radio/interact(mob/user)
@@ -174,7 +176,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 
 /obj/item/radio/ui_act(action, params, datum/tgui/ui)
 	if(..())
-		return
+		return TRUE // SS220 EDIT - return TRUE if the action was handled
 	. = TRUE
 	switch(action)
 		if("frequency") // Available to both headsets and non-headset radios
@@ -202,9 +204,9 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 			if(has_channel_access(usr, num2text(freq)))
 				set_frequency(freq)
 		if("listen")
-			listening = !listening
+			ToggleReception(ui.user) // SS220 EDIT - better reception toggling
 		if("broadcast")
-			broadcasting = !broadcasting
+			ToggleBroadcast(ui.user) // SS220 EDIT - better broadcast toggling
 		if("channel") // For keyed channels on headset radios only
 			var/channel = params["channel"]
 			if(!(channel in channels))
@@ -217,7 +219,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 			if(has_loudspeaker)
 				loudspeaker = !loudspeaker
 				if(loudspeaker)
-					canhear_range = 3
+					canhear_range = initial(canhear_range) // SS220 EDIT - use initial value for toggling speaker
 				else
 					canhear_range = 0
 		else
@@ -265,15 +267,15 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 /mob/dead/observer/has_internal_radio_channel_access(mob/user, list/req_one_accesses)
 	return can_admin_interact()
 
-/obj/item/radio/proc/ToggleBroadcast()
+/obj/item/radio/proc/ToggleBroadcast(mob/user = usr) // SS220 EDIT - user argument
 	broadcasting = !broadcasting && !(wires.is_cut(WIRE_RADIO_TRANSMIT) || wires.is_cut(WIRE_RADIO_SIGNAL))
 	if(broadcasting)
 		playsound(src, 'sound/items/radio_common.ogg', rand(4, 16) * 5, SOUND_RANGE_SET(3))
 
-/obj/item/radio/proc/ToggleReception()
+/obj/item/radio/proc/ToggleReception(mob/user = usr) // SS220 EDIT - user argument
 	listening = !listening && !(wires.is_cut(WIRE_RADIO_RECEIVER) || wires.is_cut(WIRE_RADIO_SIGNAL))
 
-/obj/item/radio/proc/autosay(message, from, channel, follow_target_override) //BS12 EDIT
+/obj/item/radio/proc/autosay(message, from, channel, follow_target_override, receive_sound) // SS220 EDIT
 	var/datum/radio_frequency/connection = null
 	if(channel && channels && length(channels) > 0)
 		if(channel == "department")
@@ -310,6 +312,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 	tcm.sender_job = "Automated Announcement"
 	tcm.vname = "synthesized voice"
 	tcm.data = SIGNALTYPE_AINOTRACK
+	tcm.receive_sound_effect = receive_sound // SS220 EDIT
 	// Datum radios dont have a location (obviously)
 	if(loc && loc.z)
 		tcm.source_level = loc.z // For anyone that reads this: This used to pull from a LIST from the CONFIG DATUM. WHYYYYYYYYY!!!!!!!! -aa
@@ -409,7 +412,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 		jobname = "No id"
 
 	// --- AI ---
-	else if(isAI(M))
+	else if(is_ai(M))
 		jobname = "AI"
 
 	// --- Cyborg ---
@@ -545,7 +548,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 
 /obj/item/radio/proc/send_announcement()
 	if(is_listening())
-		return get_mobs_in_view(canhear_range, src)
+		return get_mobs_in_view(canhear_range, src, ai_eyes = AI_EYE_REQUIRE_HEAR)
 
 	return null
 
@@ -670,7 +673,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 /obj/item/radio/borg/ert/specops
 	keyslot = new /obj/item/encryptionkey/centcom
 
-/obj/item/radio/borg/attackby(obj/item/W as obj, mob/user as mob, params)
+/obj/item/radio/borg/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
 	if(istype(W, /obj/item/encryptionkey/))
 
 		if(keyslot)

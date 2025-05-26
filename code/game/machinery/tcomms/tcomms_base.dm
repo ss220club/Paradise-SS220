@@ -128,12 +128,12 @@ GLOBAL_LIST_EMPTY(tcomms_machines)
   *
   * Proc to make sure you cant have two of these active on a Z-level at once. It also makes sure to update the linkage
   */
-/obj/machinery/tcomms/onTransitZ(old_z, new_z)
+/obj/machinery/tcomms/on_changed_z_level(turf/old_turf, turf/new_turf)
 	. = ..()
 	if(active)
 		active = FALSE
 		// This needs a timer because otherwise its on the shuttle Z and the message is missed
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, visible_message), "<span class='warning'>Radio equipment on [src] has been overloaded by heavy bluespace interference. Please restart the machine.</span>"), 5)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, visible_message), "<span class='warning'>Radio equipment on [src] has suffered an unidentified malfunction. Please restart the machine.</span>"), 5)
 	update_icon(UPDATE_ICON_STATE)
 
 
@@ -412,6 +412,17 @@ GLOBAL_LIST_EMPTY(tcomms_machines)
 			for(var/M in heard_gibberish)
 				var/mob/R = M
 				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, TRUE, follow_target=tcm.follow_target, check_name_against = tcm.pre_modify_name)
+
+	// SS220 EDIT START - receiving sound effect
+	if(tcm.receive_sound_effect)
+		for(var/obj/item/radio/radio in radios)
+			playsound(
+				source = radio,
+				soundin = tcm.receive_sound_effect,
+				vol = rand(40, 50),
+				extrarange = SOUND_RANGE_SET(3)
+			)
+	// SS220 EDIT END
 
 	return TRUE
 

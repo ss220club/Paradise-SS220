@@ -11,6 +11,7 @@
 	var/projectile_delay = 0
 	var/projectiles
 	var/projectile_energy_cost
+	var/suppressed // SS220 EDIT
 
 /obj/item/mecha_parts/mecha_equipment/weapon/can_attach(obj/mecha/combat/M as obj)
 	if(..())
@@ -24,6 +25,9 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/proc/get_shot_amount()
 	return projectiles_per_shot
+
+/obj/item/mecha_parts/mecha_equipment/weapon/get_destroy_sound()
+	return chassis.weapdestrsound
 
 /obj/item/mecha_parts/mecha_equipment/weapon/action(target, params)
 	if(!action_checks(target))
@@ -55,7 +59,12 @@
 		chassis.use_power(energy_drain)
 		projectiles--
 		A.fire()
-		playsound(chassis, fire_sound, 50, 1)
+		// SS220 EDIT START
+		if(suppressed)
+			playsound(chassis, fire_sound, 10, TRUE, ignore_walls = FALSE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+		else
+			playsound(chassis, fire_sound, 50, 1)
+		// SS220 EDIT END
 
 		sleep(max(0, projectile_delay))
 	set_ready_state(0)
@@ -79,7 +88,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/disabler
 	equip_cooldown = 0.8 SECONDS
 	name = "\improper CH-DS \"Peacemaker\" disabler"
-	desc = "A weapon for combat exosuits. Shoots basic disablers."
+	desc = "Оружие для боевых экзокостюмов. Стреляет базовым дизейблером."
 	icon_state = "mecha_disabler"
 	energy_drain = 30
 	projectile = /obj/item/projectile/beam/disabler
@@ -98,7 +107,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/ion
 	equip_cooldown = 4 SECONDS
 	name = "mkIV Ion Heavy Scatter Cannon"
-	desc = "An ion shotgun, that when fired gives the mecha a second of EMP shielding with the excess energy from the discharge."
+	desc = "Ионный дробовик для боевых экзокостюмов. При выстреле предоставляет меху секунду ЭМИ-защиты с избыточной энергией от разряда."
 	icon_state = "mecha_ion"
 	origin_tech = "materials=4;combat=5;magnets=4"
 	energy_drain = 215 // This is per shot + 1x cost, so ~1500 per shotgun shot
@@ -115,7 +124,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/tesla
 	equip_cooldown = 3.5 SECONDS
 	name = "\improper P-X Tesla Cannon"
-	desc = "A weapon for combat exosuits. Fires bolts of electricity similar to the experimental tesla engine."
+	desc = "Орудие для боевых экзокостюмов. Стреляет энергетическими шарами, по принципу экспериментального тесла-двигателя."
 	icon_state = "mecha_teslacannon"
 	origin_tech = "materials=4;engineering=4;combat=6;magnets=6"
 	energy_drain = 500
@@ -126,7 +135,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/xray
 	equip_cooldown = 3.5 SECONDS
 	name = "\improper S-1 X-Ray Projector"
-	desc = "A weapon for combat exosuits. Fires beams of X-Rays that pass through solid matter."
+	desc = "Оружие для боевых экзокостюмов. Стреляет лучами рентгеновских лучей, которые проникают даже через самые твердые материалы."
 	icon_state = "mecha_xray"
 	origin_tech = "materials=3;combat=5;magnets=2;syndicate=2"
 	energy_drain = 80
@@ -142,7 +151,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/immolator
 	equip_cooldown = 3.5 SECONDS
 	name = "\improper ZFI Immolation Beam Gun"
-	desc = "A weapon for combat exosuits. Fires beams of extreme heat that set targets on fire."
+	desc = "Орудие для боевых экзокостюмов. Стреляет высокотемпературными лучами, поджигающими цель."
 	icon_state = "mecha_immolator"
 	origin_tech = "materials=4;engineering=4;combat=6;magnets=6"
 	energy_drain = 80
@@ -229,13 +238,13 @@
 			var/mob/living/carbon/human/H = M
 			if(isobj(H.shoes) && !(H.shoes.flags & NODROP))
 				var/thingy = H.shoes
-				H.unEquip(H.shoes)
-				walk_away(thingy,chassis,15,2)
+				H.drop_item_to_ground(thingy)
+				GLOB.move_manager.move_away(thingy, chassis, 15, 2)
 				spawn(20)
 					if(thingy)
-						walk(thingy,0)
+						GLOB.move_manager.stop_looping(thingy)
 	for(var/obj/mecha/combat/reticence/R in oview(6, chassis))
-		R.occupant_message("\The [R] has protected you from [chassis]'s HONK at the cost of some power.")
+		R.occupant_message("[capitalize(R.declent_ru(NOMINATIVE))] защищает вас от ХОНКа [chassis.declent_ru(GENITIVE)] ценой части энергии.")
 		R.use_power(R.get_charge() / 4)
 
 	chassis.use_power(energy_drain)
@@ -270,7 +279,8 @@
 	playsound(src, 'sound/weapons/gun_interactions/rearm.ogg', 50, 1)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/Topic(href, href_list)
-	..()
+	if(..())
+		return
 	if(href_list["rearm"])
 		rearm()
 
@@ -301,7 +311,6 @@
 	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot
-	equip_cooldown = 2 SECONDS
 	name = "\improper LBX AC 10 \"Scattershot\""
 	icon_state = "mecha_scatter"
 	origin_tech = "combat=4"
@@ -312,6 +321,12 @@
 	projectiles_per_shot = 4
 	variance = 25
 	harmful = TRUE
+	equip_cooldown = 2 SECONDS
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot/syndie //Version used for Dark Gygax
+	name = "\improper LBX AC 20-r \"Scattershot .45\""
+	origin_tech = "combat=4;syndicate=2" //Crew is not going to get it normally anyways
+	projectile = /obj/item/projectile/bullet/midbullet
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
 	equip_cooldown = 1 SECONDS
@@ -378,7 +393,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang/clusterbang//Because I am a heartless bastard -Sieve
 	equip_cooldown = 9 SECONDS
 	name = "\improper SOB-3 Clusterbang Launcher"
-	desc = "A weapon for combat exosuits. Launches primed clusterbangs. You monster."
+	desc = "Оружие для боевых экзокостюмов. Запускает заранее подготовленные кластерные бомбы. Ты монстр."
 	origin_tech = "combat=4;materials=4"
 	projectiles = 3
 	projectile = /obj/item/grenade/clusterbuster
@@ -390,6 +405,37 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang/clusterbang/limited/rearm()
 	return//Extra bit of security
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/cleaner
+	name = "\improper N23 Rotary Janitation Launcher"
+	desc = "Инструмент для массовой уборки. Запускает заранее подготовленные гранаты с очистительной пеной. Высокая опасность поскользнуться!"
+	icon_state = "mecha_grenadelnchr"
+	origin_tech = "combat=4;engineering=4"
+	projectile = /obj/item/grenade/chem_grenade/cleaner
+	fire_sound = 'sound/effects/bang.ogg'
+	equip_cooldown = 6 SECONDS
+	projectiles = 6
+	missile_speed = 1.5
+	projectile_energy_cost = 1000
+	size = 1
+	/// Time until grenade detonates
+	var/det_time = 2 SECONDS
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/cleaner/action(target, params)
+	if(!action_checks(target))
+		return
+	set_ready_state(0)
+	var/obj/item/grenade/chem_grenade/cleaner/grenade = new projectile(chassis.loc)
+	playsound(chassis, fire_sound, 50, TRUE)
+	grenade.throw_at(target, missile_range, missile_speed)
+	projectiles--
+	log_message("Fired from [name], targeting [target].")
+	log_attack(chassis.occupant, target, "Cleaning grenade fired from [name], targeting [target].")
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/grenade/chem_grenade/cleaner, prime)), det_time)
+	do_after_cooldown()
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/cleaner/can_attach(obj/mecha/nkarrdem/M as obj)
+	return istype(M) && length(M.equipment) < M.max_equip
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/banana_mortar
 	equip_cooldown = 2 SECONDS
@@ -482,7 +528,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma
 	equip_cooldown = 1 SECONDS
 	name = "\improper 217-D Heavy Plasma Cutter"
-	desc = "A device that shoots resonant plasma bursts at extreme velocity. The blasts are capable of crushing rock and demolishing solid obstacles."
+	desc = "Устройство для экзокостюмов. Стреляет резонирующими плазменными импульсами с экстремальной скоростью. Взрывы способны разрушать камень и сносить твердые преграды."
 	icon_state = "mecha_plasmacutter"
 	item_state = "plasmacutter"
 	lefthand_file = 'icons/mob/inhands/guns_lefthand.dmi'

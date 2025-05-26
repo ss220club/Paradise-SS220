@@ -35,7 +35,7 @@
 		"Grey" = 'icons/mob/clothing/species/grey/helmet.dmi'
 		)
 
-/obj/item/clothing/head/welding/attack_self(mob/user)
+/obj/item/clothing/head/welding/attack_self__legacy__attackchain(mob/user)
 	weldingvisortoggle(user)
 
 /obj/item/clothing/head/welding/flamedecal
@@ -80,7 +80,7 @@
 	if(isturf(location))
 		location.hotspot_expose(700, 1)
 
-/obj/item/clothing/head/cakehat/attack_self(mob/user)
+/obj/item/clothing/head/cakehat/attack_self__legacy__attackchain(mob/user)
 	if(status > 1)
 		return
 	onfire = !onfire
@@ -111,10 +111,9 @@
 	"Grey" = 'icons/mob/clothing/species/grey/head.dmi',
 	"Vox" = 'icons/mob/clothing/species/vox/head.dmi'
 	)
-
 	isolation = FB_ISOLATION_MEDIUM
 
-/obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
+/obj/item/clothing/head/ushanka/attack_self__legacy__attackchain(mob/user as mob)
 	if(icon_state == "ushankadown")
 		icon_state = "ushankaup"
 		item_state = "ushankaup"
@@ -193,17 +192,17 @@
 		return
 	var/obj/item/organ/external/head/head_organ = user.get_organ("head")
 
-	mob = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = icon_state)
+	mob = new/icon("icon" = icon_override, "icon_state" = icon_state) // SS220 EDIT - Заменил хард код пути на, icon_override
 	mob.Blend(head_organ.hair_colour, ICON_ADD)
 
-	var/icon/earbit = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = "[icon_state]inner")
+	var/icon/earbit = new/icon("icon" = icon_override, "icon_state" = "[icon_state]inner") // SS220 EDIT - Заменил хард код пути на, icon_override
 	mob.Blend(earbit, ICON_OVERLAY)
 
 	icon_override = mob
 
 /obj/item/clothing/head/kitty/equipped(mob/M, slot)
 	. = ..()
-	if(ishuman(M) && slot == SLOT_HUD_HEAD)
+	if(ishuman(M) && slot == ITEM_SLOT_HEAD)
 		update_icon(NONE, M)
 
 /obj/item/clothing/head/kitty/mouse
