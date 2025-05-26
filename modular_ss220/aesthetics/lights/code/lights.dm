@@ -1,5 +1,5 @@
 /obj/machinery/light
-	icon = 'modular_ss220/aesthetics/lights/icons/lights.dmi'
+	//icon = 'modular_ss220/aesthetics/lights/icons/lights.dmi'
 	layer = ABOVE_MOB_LAYER
 	brightness_power = 0.7
 	nightshift_light_power = 0.5

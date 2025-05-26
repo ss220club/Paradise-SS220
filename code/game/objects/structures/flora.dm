@@ -39,7 +39,7 @@
 		new logs(loc)
 	. = ..()
 
-/obj/structure/flora/tree/attackby(obj/item/P, mob/user, params)
+/obj/structure/flora/tree/attackby__legacy__attackchain(obj/item/P, mob/user, params)
 	if(user.a_intent != INTENT_HELP || (!istype(P, /obj/item/fireaxe) && !istype(P, /obj/item/hatchet)))
 		return ..()
 	playsound(src.loc, 'modular_ss220/lazarus/sound/wood_chop.ogg', 80, 1)
@@ -482,7 +482,7 @@
 	. = ..()
 	if(icon_state == "random-alien")
 		icon_state = "alien-[rand(1,8)]"
-	
+
 /obj/item/kirbyplants/large/alien/alien1
 	icon_state = "alien-1"
 /obj/item/kirbyplants/large/alien/alien3

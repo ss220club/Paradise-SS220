@@ -12,7 +12,7 @@
 	end_message = "<span class='boldannounceic'>Рёв ветра постепенно стихает, а землю укрывает одеяло из осевшего снега. Теперь вновь возможно выйти на улицу.</span>"
 	end_overlay = "light_snow"
 
-	area_type = /area/lazarus/outdoors
+	area_types = list(/area/lazarus/outdoors)
 	target_trait = STATION_LEVEL
 	weather_color = "#fcfcfc"
 	immunity_type = "snow"
@@ -53,7 +53,7 @@
 	return FALSE
 
 /datum/weather/ash_storm/blizzard/weather_act(mob/living/L)
-	if(issimple_animal(L))
+	if(isanimal(L))
 		return
 	if(is_blind_immune(L))
 		return

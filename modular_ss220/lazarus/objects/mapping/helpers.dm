@@ -4,7 +4,7 @@
 	icon_state = "forest"
 	var/dirt_chance = 15
 	var/result = list(
-	/datum/nothing = 15,
+	/datum = 15,
 	/obj/structure/flora/tree/pine = 12,
 	/obj/structure/flora/grass/green = 3,
 	/obj/structure/flora/grass/brown = 3,
@@ -28,7 +28,7 @@
 	icon_state = "forest_edge"
 	dirt_chance = 3
 	result = list(
-	/datum/nothing = 40,
+	/datum = 40,
 	/obj/structure/flora/tree/pine = 4,
 	/obj/structure/flora/grass/green = 15,
 	/obj/structure/flora/grass/brown = 15,

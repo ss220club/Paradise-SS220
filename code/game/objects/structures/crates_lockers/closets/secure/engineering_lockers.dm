@@ -126,6 +126,6 @@
 	new /obj/item/clothing/head/hardhat/atmos(src)
 	new /obj/item/clothing/glasses/meson/engine/atmos(src)
 	new /obj/item/rpd(src)
-	new /obj/item/destTagger(src)
+	new /obj/item/dest_tagger(src)
 
 /obj/structure/closet/secure_closet/atmos_personal/empty/populate_contents()

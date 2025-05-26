@@ -22,10 +22,10 @@
 		/obj/item/clothing/gloves/color/fyellow = 5,
 
 		// Food (Lack of food is one of the event ideas)
-		/obj/item/food/applecakeslice = 1,
-		/obj/item/food/cheesecakeslice = 1,
-		/obj/item/food/meatbreadslice = 1,
-		/obj/item/food/creamcheesebreadslice = 1,
+		/obj/item/food/sliced/apple_cake = 1,
+		/obj/item/food/sliced/cheese_cake = 1,
+		/obj/item/food/sliced/meat_bread = 1,
+		/obj/item/food/sliced/cream_cheese_bread = 1,
 		/obj/item/food/grown/apple = 1,
 		/obj/item/food/grown/berries = 5,
 		/obj/item/food/donkpocket = 1,

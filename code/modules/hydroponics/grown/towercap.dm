@@ -258,6 +258,12 @@
 		return
 	..()
 
+/obj/structure/lightable/bonfire/proc/get_heat()
+	if(burning)
+		return BONFIRE_HEAT
+	else
+		return
+
 /obj/structure/lightable/bonfire/buckle_mob(mob/living/M, force = FALSE, check_loc = TRUE)
 	if(..())
 		M.pixel_y += 13

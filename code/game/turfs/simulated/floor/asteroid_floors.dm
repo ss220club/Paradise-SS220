@@ -106,20 +106,20 @@
 		playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 
 	else if(can_lay_cable())
-		if(istype(I, /obj/item/stack/cable_coil))
-			var/obj/item/stack/cable_coil/C = I
+		if(istype(used, /obj/item/stack/cable_coil))
+			var/obj/item/stack/cable_coil/C = used
 			for(var/obj/structure/cable/LC in src)
 				if(LC.d1 == 0 || LC.d2 == 0)
-					LC.attackby(C, user)
+					LC.attackby__legacy__attackchain(C, user)
 					return
 			C.place_turf(src, user)
 			return TRUE
-		else if(istype(I, /obj/item/rcl))
-			var/obj/item/rcl/R = I
+		else if(istype(used, /obj/item/rcl))
+			var/obj/item/rcl/R = used
 			if(R.loaded)
 				for(var/obj/structure/cable/LC in src)
 					if(LC.d1 == 0 || LC.d2 == 0)
-						LC.attackby(R, user)
+						LC.attackby__legacy__attackchain(R, user)
 						return
 				R.loaded.place_turf(src, user)
 				R.is_empty(user)

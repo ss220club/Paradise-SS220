@@ -512,7 +512,7 @@
 /mob/living/carbon/human/proc/get_around_heat()
 	// It's just an oneshot event. Please, don't force me to rewrite this using signals and proximity component. I'm too lazy.
 	var/around_heat = 0
-	for(var/obj/structure/bonfire/B in range(5))
+	for(var/obj/structure/lightable/bonfire/B in range(5))
 		around_heat += B.get_heat()
 	for(var/obj/machinery/space_heater/H in range(5))
 		around_heat += H.get_heat()

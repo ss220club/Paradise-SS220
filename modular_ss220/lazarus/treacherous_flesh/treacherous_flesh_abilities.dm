@@ -330,20 +330,20 @@
 	else
 		if(!take_chems())
 			return FALSE
-		if(!user.host.unEquip(user.host.wear_suit))
+		if(!user.host.unequip(user.host.wear_suit))
 			to_chat(user, "\the [user.host.wear_suit] застрял на теле, мы не можем вырастить панцирь на нём!")
 			return FALSE
-		if(!user.unEquip(user.host.head))
+		if(!user.unequip(user.host.head))
 			to_chat(user, "\the [user.host.head] застрял на голове, мы не можем вырастить панцирь на ней!")
 			return FALSE
 
 		to_chat(user, "<span class='notice'>Используя податливые ткани носителя, мы формируем прочный панцирь из его эпидермиса.</span>")
 		to_chat(user.host, "<span class='warning'>Вы чувствуете невероятную боль по всему телу. Плоть пузырится и рвётся, покрывая вас неким подобием хитинового панциря.</span>")
 		user.host.emote("scream")
-		user.host.unEquip(user.host.head)
-		user.host.unEquip(user.host.wear_suit)
-		user.host.equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/changeling(user), SLOT_HUD_OUTER_SUIT, TRUE, TRUE)
-		user.host.equip_to_slot_if_possible(new /obj/item/clothing/head/helmet/changeling(user), SLOT_HUD_HEAD, TRUE, TRUE)
+		user.host.unequip(user.host.head)
+		user.host.unequip(user.host.wear_suit)
+		user.host.equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/changeling(user), ITEM_SLOT_OUTER_SUIT, TRUE, TRUE)
+		user.host.equip_to_slot_if_possible(new /obj/item/clothing/head/helmet/changeling(user), ITEM_SLOT_HEAD, TRUE, TRUE)
 		is_active = TRUE
 		return TRUE
 

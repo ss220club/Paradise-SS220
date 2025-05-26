@@ -91,7 +91,7 @@
 			gen_state = GEOTHERMAL_GEN_SCREWDRIVER
 			update_icon_state()
 
-/obj/machinery/power/geothermal_generator/attackby(obj/item/P, mob/user, params)
+/obj/machinery/power/geothermal_generator/attackby__legacy__attackchain(obj/item/P, mob/user, params)
 	if(user.a_intent == INTENT_HELP)
 		if(istype(P, /obj/item/stack/cable_coil) && gen_state == GEOTHERMAL_GEN_CABLES)
 			var/obj/item/stack/cable_coil/C = P

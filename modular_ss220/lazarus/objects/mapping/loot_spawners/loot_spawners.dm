@@ -1,12 +1,12 @@
-/obj/effect/spawner/lootdrop/lazarus
+/obj/effect/spawner/random/lazarus
 	icon = 'modular_ss220/lazarus/icons/mapping.dmi'
 	icon_state = "lootmark"
 
-/obj/effect/spawner/lootdrop/lazarus/trash
+/obj/effect/spawner/random/lazarus/trash
 	name = "trash spawner"
 	icon_state = "trash"
 
-	lootcount = 1
+	spawn_loot_count = 1
 	loot = list(
 		/obj/item/stack/cable_coil {amount = 1} = 10,
 		/obj/item/stack/cable_coil {amount = 2} = 10,
@@ -34,11 +34,11 @@
 		/obj/item/trash/spentcasing = 30,
 	)
 
-/obj/effect/spawner/lootdrop/lazarus/medical
+/obj/effect/spawner/random/lazarus/medical
 	name = "medicine spawner"
 	icon_state = "medical"
 
-	lootcount = 1
+	spawn_loot_count = 1
 	loot = list(
 		// FIRST AID KITS
 		/obj/item/storage/firstaid/regular = 15,
@@ -69,11 +69,11 @@
 		/obj/item/vending_refill/medical = 10,
 	)
 
-/obj/effect/spawner/lootdrop/lazarus/engineering
+/obj/effect/spawner/random/lazarus/engineering
 	name = "engi loot spawner"
 	icon_state = "engineering"
 
-	lootcount = 1
+	spawn_loot_count = 1
 	loot = list(
 		// BOXES
 		/obj/item/storage/toolbox/mechanical = 10,
@@ -102,17 +102,17 @@
 		/obj/item/stack/sheet/glass{amount = 10} = 8,
 	)
 
-/obj/effect/spawner/lootdrop/lazarus/food
+/obj/effect/spawner/random/lazarus/food
 	name = "food spawner"
 	icon_state = "food"
 
-	lootcount = 1
+	spawn_loot_count = 1
 	loot = list(
 		// FOOD
 		/obj/item/food/boiledbuckwheat = 10,
 		/obj/item/food/friedegg = 10,
 		/obj/item/food/meatsteak = 10,
-		/obj/item/food/breadslice = 10,
+		/obj/item/food/sliced/bread = 10,
 		/obj/item/food/sliceable/bread = 2,
 		/obj/item/food/vegisalad = 10,
 		/obj/item/food/oliviersalad = 10,
@@ -120,6 +120,6 @@
 		// DRINKS
 		/obj/item/reagent_containers/drinks/chicken_soup = 15,
 		/obj/item/reagent_containers/drinks/cans/cola = 10,
-		/obj/item/reagent_containers/drinks/cans/beer = 10,
+		/obj/item/reagent_containers/drinks/cans/sodawater = 10,
 		/obj/item/reagent_containers/drinks/cans/kvass = 10,
 	)

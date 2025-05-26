@@ -26,7 +26,7 @@
 							/obj/item/clothing/under/color/blue/jersey,
 							/obj/item/clothing/under/color/white/enforcer,
 							/obj/item/clothing/under/color/rainbow,
-							/obj/item/clothing/under/color/psyche)
+							/obj/item/clothing/under/color/psyche,
 							/obj/item/clothing/under/color/white/enforcer)
 	var/obj/item/clothing/under/color/C = pick(subtypesof(/obj/item/clothing/under/color) - typesof(/obj/item/clothing/under/color/jumpskirt) - excluded)
 	name = initial(C.name)
