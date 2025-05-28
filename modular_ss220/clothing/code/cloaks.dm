@@ -68,7 +68,7 @@
 
 /obj/item/clothing/neck/ei_cloak_hoodless
 	name = "накидка Gold On Black"
-	desc = "Корпоративная накидка, выполненный в угольных тонах все с золотым покрытием и специальным логотипом от Etamin Industry – золотой звездой."
+	desc = "Корпоративная накидка, выполненная в угольных тонах все с тем же золотым покрытием и специальным логотипом от Etamin Industry – золотой звездой."
 	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
 	icon_state = "ei_cloak"
 	sprite_sheets = list(
