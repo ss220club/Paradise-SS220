@@ -29,54 +29,6 @@
 	environment_type = "dirt"
 	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
 	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-	mineralSpawnChanceList = list(/turf/simulated/mineral/uranium/lazarus = 5, /turf/simulated/mineral/diamond/lazarus = 1, /turf/simulated/mineral/gold/lazarus = 10,
-		/turf/simulated/mineral/silver/lazarus = 12, /turf/simulated/mineral/plasma/lazarus = 20, /turf/simulated/mineral/iron/lazarus = 40, /turf/simulated/mineral/titanium/lazarus = 11,
-		/turf/simulated/mineral/gibtonite/lazarus = 4, /turf/simulated/mineral/bscrystal/lazarus = 1)
-
-/turf/simulated/mineral/uranium/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-
-/turf/simulated/mineral/diamond/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-
-/turf/simulated/mineral/gold/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-
-/turf/simulated/mineral/silver/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-
-/turf/simulated/mineral/plasma/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-
-/turf/simulated/mineral/iron/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-
-/turf/simulated/mineral/titanium/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-
-/turf/simulated/mineral/gibtonite/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
-
-/turf/simulated/mineral/bscrystal/lazarus
-	environment_type = "dirt"
-	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
-	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
 
 /turf/simulated/floor/chasm/straight_down/lava_land_surface/normal_air/lazarus
 	icon = 'modular_ss220/lazarus/icons/lazarus_chasms.dmi'
