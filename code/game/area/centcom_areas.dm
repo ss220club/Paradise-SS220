@@ -96,7 +96,7 @@
 // Other Areas on centcom z level
 
 /area/abductor_ship
-	name = "Тарелка Абдукторов"
+	name = "Корабль Абдукторов"
 	icon_state = "yellow"
 	requires_power = FALSE
 	has_gravity = TRUE
