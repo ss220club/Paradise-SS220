@@ -60,7 +60,7 @@
 
 //DJSTATION
 /area/ruin/space/djstation
-	name = "Советский Клуб"
+	name = "Советская Радиостанция"
 	icon_state = "DJ"
 
 /area/ruin/space/djstation/solars
