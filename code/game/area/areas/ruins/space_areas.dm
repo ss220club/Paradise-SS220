@@ -306,6 +306,6 @@
 	icon_state = "space_relay"
 
 /area/ruin/space/space_relay/Initialize(mapload)
-	name = "Блюспейс Маяк NT #[rand(1, 1000)]" //Give it a random relay name
+	name = "Блюспейс Маяк НТ #[rand(1, 1000)]" //Give it a random relay name
 	return ..()
 
