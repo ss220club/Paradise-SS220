@@ -64,7 +64,7 @@
 	icon_state = "DJ"
 
 /area/ruin/space/djstation/solars
-	name = "Солнечные Панели Советского Клуба"
+	name = "Солнечные Панели Советской Радиостанции"
 	icon_state = "DJ"
 
 //Methlab
