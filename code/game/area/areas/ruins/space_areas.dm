@@ -257,7 +257,7 @@
 	icon_state = "engine_smes"
 
 /area/ruin/space/telecomms/tele
-	name = "При_УБИТЬ_ие Тел#коММуниК-К@циØнного S-$путника" // If you teleport to it. With a name like that. Thats on you.
+	name = "При_УБИТЬ_ие Тел#коММуниК-К@ци0нного S-$путника" // If you teleport to it. With a name like that. Thats on you.
 	icon_state = "teleporter"
 	tele_proof = FALSE // Oh, right. The teleporter room. The teleporter room for Kuzco, the poison chosen especially to teleport Kuzco, Kuzco's teleporter room. That teleporter room?
 
