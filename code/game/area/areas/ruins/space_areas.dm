@@ -193,7 +193,7 @@
 	icon_state = "general_solars"
 
 /area/ruin/space/abandoned_engi_sat
-	name = "Заброшенный Инженерный Спутник NT"
+	name = "Заброшенный Инженерный Спутник НТ"
 	apc_starts_off = TRUE
 
 /area/ruin/space/sieged_lab
