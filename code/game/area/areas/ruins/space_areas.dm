@@ -302,7 +302,7 @@
 	icon_state = "away"
 
 /area/ruin/space/space_relay
-	name = "Блюспейс Маяк NT"
+	name = "Блюспейс Маяк НТ"
 	icon_state = "space_relay"
 
 /area/ruin/space/space_relay/Initialize(mapload)
