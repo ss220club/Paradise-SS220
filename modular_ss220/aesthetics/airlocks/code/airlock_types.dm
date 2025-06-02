@@ -216,55 +216,83 @@
 	icon = 'modular_ss220/aesthetics/airlocks/icons/large/command_large.dmi'
 	assemblytype = /obj/structure/door_assembly/multi_tile/command
 
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/command, 32)
+
 /obj/machinery/door/airlock/multi_tile/security
 	icon = 'modular_ss220/aesthetics/airlocks/icons/large/security_large.dmi'
 	assemblytype = /obj/structure/door_assembly/multi_tile/security
+
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/security, 32)
 
 /obj/machinery/door/airlock/multi_tile/engineering
 	icon = 'modular_ss220/aesthetics/airlocks/icons/large/engineering_large.dmi'
 	assemblytype = /obj/structure/door_assembly/multi_tile/engineering
 
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/engineering, 32)
+
 /obj/machinery/door/airlock/multi_tile/atmospheric
 	icon = 'modular_ss220/aesthetics/airlocks/icons/large/atmospheric_large.dmi'
 	assemblytype = /obj/structure/door_assembly/multi_tile/atmospheric
+
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/atmospheric, 32)
 
 /obj/machinery/door/airlock/multi_tile/supply
 	icon = 'modular_ss220/aesthetics/airlocks/icons/large/supply_large.dmi'
 	assemblytype = /obj/structure/door_assembly/multi_tile/supply
 
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/supply, 32)
+
 /obj/machinery/door/airlock/multi_tile/medical
 	icon = 'modular_ss220/aesthetics/airlocks/icons/large/medical_large.dmi'
 	assemblytype = /obj/structure/door_assembly/multi_tile/medical
 
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/medical, 32)
+
 /obj/machinery/door/airlock/multi_tile/research
 	icon = 'modular_ss220/aesthetics/airlocks/icons/large/research_large.dmi'
 	assemblytype = /obj/structure/door_assembly/multi_tile/research
+
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/research, 32)
 
 // Multi-tile airlocks glass
 /obj/machinery/door/airlock/multi_tile/command/glass
 	opacity = FALSE
 	glass = TRUE
 
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/command/glass, 32)
+
 /obj/machinery/door/airlock/multi_tile/security/glass
 	opacity = FALSE
 	glass = TRUE
+
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/security/glass, 32)
 
 /obj/machinery/door/airlock/multi_tile/engineering/glass
 	opacity = FALSE
 	glass = TRUE
 
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/engineering/glass, 32)
+
 /obj/machinery/door/airlock/multi_tile/atmospheric/glass
 	opacity = FALSE
 	glass = TRUE
+
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/atmospheric/glass, 32)
 
 /obj/machinery/door/airlock/multi_tile/supply/glass
 	opacity = FALSE
 	glass = TRUE
 
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/supply/glass, 32)
+
 /obj/machinery/door/airlock/multi_tile/medical/glass
 	opacity = FALSE
 	glass = TRUE
 
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/medical/glass, 32)
+
 /obj/machinery/door/airlock/multi_tile/research/glass
 	opacity = FALSE
 	glass = TRUE
+
+MAPPING_DIRECTIONAL_HELPERS_MULTITILE(/obj/machinery/door/airlock/multi_tile/research/glass, 32)
