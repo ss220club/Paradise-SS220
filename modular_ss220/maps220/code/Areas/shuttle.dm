@@ -1,5 +1,5 @@
 /area/shuttle/vox
-	name = "Vox Shuttle"
+	name = "Шаттл Воксов"
 	icon_state = "shuttle"
 	parallax_move_direction = SOUTH
 

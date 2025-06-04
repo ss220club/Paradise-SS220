@@ -70,7 +70,7 @@
 //EXTRA
 
 /area/tdome
-	name = "\improper Thunderdome"
+	name = "Тандердом"
 	icon_state = "thunder"
 	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
@@ -82,15 +82,15 @@
 	icon_state = "thunder"
 
 /area/tdome/arena
-	name = "\improper Thunderdome Arena"
+	name = "Тандердом - Арена"
 	icon_state = "thunder"
 
 /area/tdome/tdomeadmin
-	name = "\improper Thunderdome (Admin.)"
+	name = "Тандердом - Комната Управления"
 	icon_state = "purple"
 
 /area/tdome/tdomeobserve
-	name = "\improper Thunderdome (Observer.)"
+	name = "Тандердом - Трибуны"
 	icon_state = "purple"
 
 // Other Areas on centcom z level
