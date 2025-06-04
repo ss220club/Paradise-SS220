@@ -5135,6 +5135,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "aJv" = (
@@ -8969,6 +8970,7 @@
 /area/station/maintenance/starboard2)
 "bbK" = (
 /obj/machinery/computer/station_alert,
+/obj/machinery/ai_status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -9392,6 +9394,7 @@
 /obj/item/storage/secure/safe{
 	pixel_x = -27
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -14125,8 +14128,8 @@
 /area/station/service/bar)
 "bxf" = (
 /obj/structure/table/wood,
-/obj/machinery/ai_status_display/directional/north,
 /obj/item/flashlight/lamp,
+/obj/machinery/ai_status_display/directional/north,
 /turf/simulated/floor/carpet/grimey,
 /area/station/telecomms/computer)
 "bxg" = (
@@ -15086,13 +15089,10 @@
 "bAX" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue,
-/obj/machinery/status_display{
-	layer = 4;
-	pixel_y = 31
-	},
 /obj/item/folder/blue,
 /obj/item/pen/multi,
 /obj/item/hand_tele,
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/carpet/grimey,
 /area/station/telecomms/computer)
 "bAY" = (
@@ -26961,12 +26961,11 @@
 	},
 /area/station/service/chapel)
 "cGF" = (
-/obj/machinery/keycard_auth{
-	pixel_x = -5;
-	pixel_y = 26
-	},
 /obj/machinery/computer/ai_resource{
 	dir = 4
+	},
+/obj/machinery/keycard_auth/directional/north{
+	pixel_x = -4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -33691,6 +33690,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/ai_status_display/directional/south,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "dXc" = (
@@ -40512,10 +40512,6 @@
 	icon_state = "white"
 	},
 /area/station/science/research)
-"gpj" = (
-/obj/machinery/status_display,
-/turf/simulated/wall/r_wall,
-/area/station/engineering/engine/supermatter)
 "gpT" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -41181,10 +41177,6 @@
 	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/pod_2)
-"gEV" = (
-/obj/machinery/status_display,
-/turf/simulated/wall/r_wall,
-/area/station/engineering/smes)
 "gEX" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp,
@@ -45374,10 +45366,6 @@
 	icon_state = "dark"
 	},
 /area/station/security/armory)
-"ihs" = (
-/obj/machinery/ai_status_display,
-/turf/simulated/wall/r_wall,
-/area/station/engineering/smes)
 "ihF" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood,
@@ -70157,6 +70145,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
+/obj/machinery/status_display/directional/south,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "rlX" = (
@@ -76102,6 +76091,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/ai_status_display/directional/north,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "tAr" = (
@@ -80947,18 +80937,15 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "vvU" = (
-/obj/machinery/keycard_auth{
-	pixel_y = -4;
-	pixel_x = 26
-	},
 /obj/machinery/button/windowtint{
 	id = "QM";
 	name = "Quartermaster Office tint control";
-	pixel_y = 8;
+	pixel_y = -10;
 	pixel_x = 24;
 	dir = 8
 	},
 /obj/machinery/computer/card/minor/qm,
+/obj/machinery/keycard_auth/directional/east,
 /turf/simulated/floor/carpet/royalblack,
 /area/station/supply/qm)
 "vvZ" = (
@@ -127102,7 +127089,7 @@ aWN
 aYE
 aZI
 aYV
-gEV
+hPR
 bdE
 ciF
 beI
@@ -127616,7 +127603,7 @@ aWX
 aYG
 aXF
 aYU
-ihs
+hPR
 bbK
 bdy
 beK
@@ -131974,7 +131961,7 @@ ntU
 wky
 ftb
 rlJ
-gpj
+kez
 aRa
 aOe
 aPv
@@ -131982,7 +131969,7 @@ peF
 huo
 aOe
 tVw
-gpj
+kez
 tAn
 nfB
 nEU
@@ -133002,7 +132989,7 @@ aFY
 aOa
 edK
 dXb
-gpj
+kez
 kez
 kez
 oTM
@@ -133010,7 +132997,7 @@ oTM
 oTM
 kez
 kez
-gpj
+kez
 aJt
 kBa
 hFV
