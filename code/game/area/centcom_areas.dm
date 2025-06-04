@@ -78,7 +78,7 @@
 
 
 /area/tdome/arena_source
-	name = "\improper Thunderdome Arena Template"
+	name = "Тандердом - Шаблон Арены"
 	icon_state = "thunder"
 
 /area/tdome/arena
