@@ -17666,7 +17666,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/spacehut)
 "bOI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_large"
 	},
@@ -44501,14 +44501,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/station/public/toilet/lockerroom)
-"hRP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/command/teleporter)
 "hRR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
@@ -44539,6 +44531,14 @@
 	icon_state = "darkblue"
 	},
 /area/station/command/bridge)
+"hSq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/command/teleporter)
 "hSu" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "rampbottom"
@@ -52805,12 +52805,6 @@
 	icon_state = "darkgreycheck"
 	},
 /area/station/command/office/rd)
-"kTJ" = (
-/obj/machinery/shieldwallgen,
-/obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/alarm/directional/north,
-/turf/simulated/floor/plating,
-/area/station/command/teleporter)
 "kTP" = (
 /obj/structure/disposaloutlet,
 /obj/structure/disposalpipe/trunk{
@@ -55936,6 +55930,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
+"maH" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/important/directional/north,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/command/teleporter)
 "maQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -57181,18 +57184,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
-"mxN" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/command/teleporter)
 "mxS" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -64882,20 +64873,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "pmZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/item/beacon,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/command/bridge)
+/obj/machinery/shieldwallgen,
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/alarm/directional/north,
+/turf/simulated/floor/plating,
+/area/station/command/teleporter)
 "pnr" = (
 /obj/machinery/mineral/stacking_machine{
 	output_dir = 4;
@@ -66398,6 +66380,18 @@
 	icon_state = "dark"
 	},
 /area/station/medical/cloning)
+"pSm" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/command/teleporter)
 "pSs" = (
 /obj/machinery/economy/atm/directional/north,
 /turf/simulated/floor/wood,
@@ -67832,15 +67826,6 @@
 	icon_state = "darkbluecorners"
 	},
 /area/station/aisat)
-"qtM" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc/important/directional/north,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/command/teleporter)
 "qub" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
@@ -83066,12 +83051,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/fore/west)
-"wsb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark_large"
-	},
-/area/station/command/teleporter)
 "wsf" = (
 /obj/item/kirbyplants/large/plant12,
 /obj/structure/window/reinforced{
@@ -88201,6 +88180,12 @@
 	icon_state = "red"
 	},
 /area/station/engineering/atmos)
+"ylu" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark_large"
+	},
+/area/station/command/teleporter)
 "ylN" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -115319,7 +115304,7 @@ abq
 aEh
 bqf
 boE
-pmZ
+gDB
 hSa
 boE
 bwi
@@ -118152,7 +118137,7 @@ asc
 can
 bCd
 snI
-qtM
+maH
 bHz
 boL
 bMW
@@ -118410,8 +118395,8 @@ kqo
 lre
 snI
 vkO
-wsb
-mxN
+bOI
+pSm
 bEj
 bMF
 bLm
@@ -118668,7 +118653,7 @@ cfn
 snI
 bCp
 bEm
-hRP
+hSq
 jXR
 xca
 bNd
@@ -118923,8 +118908,8 @@ xYo
 byE
 eIj
 snI
-kTJ
-bOI
+pmZ
+ylu
 vyd
 bla
 bMG
