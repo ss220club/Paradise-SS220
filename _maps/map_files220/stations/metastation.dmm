@@ -1383,9 +1383,9 @@
 /area/station/hallway/primary/central/south)
 "aok" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "specops_home";
-	locked = 1
+	id_tag = "specops_home"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
 /area/station/hallway/secondary/entry/east)
@@ -4495,9 +4495,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
 "aGX" = (
-/obj/machinery/computer/security/telescreen/entertainment{
-	pixel_y = -29
-	},
+/obj/machinery/computer/security/telescreen/entertainment/directional/south,
 /obj/machinery/suit_storage_unit/industrial/ce/secure,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -4601,9 +4599,8 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "aHB" = (
-/obj/machinery/door/airlock/vault{
-	locked = 1
-	},
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4679,7 +4676,9 @@
 	},
 /area/station/public/dorms)
 "aHW" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "IAA"
+	},
 /turf/simulated/floor/plating,
 /area/station/legal/lawoffice)
 "aHZ" = (
@@ -6034,7 +6033,9 @@
 /turf/simulated/floor/carpet,
 /area/station/procedure/trainer_office)
 "aNq" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "Courtroom"
+	},
 /turf/simulated/floor/plating,
 /area/station/legal/courtroom/gallery)
 "aNs" = (
@@ -10329,9 +10330,7 @@
 /area/station/hallway/primary/starboard/east)
 "bgO" = (
 /obj/structure/rack,
-/obj/machinery/ai_status_display{
-	pixel_y = 31
-	},
+/obj/machinery/ai_status_display/directional/north,
 /obj/effect/spawner/random/tech_storage/security,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -12445,9 +12444,9 @@
 /area/station/supply/sorting)
 "bpG" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "admin_home";
-	locked = 1
+	id_tag = "admin_home"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
 /area/station/hallway/secondary/entry/west)
@@ -14126,9 +14125,7 @@
 /area/station/service/bar)
 "bxf" = (
 /obj/structure/table/wood,
-/obj/machinery/ai_status_display{
-	pixel_y = 31
-	},
+/obj/machinery/ai_status_display/directional/north,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/carpet/grimey,
 /area/station/telecomms/computer)
@@ -16989,9 +16986,7 @@
 "bKP" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp,
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_x = -29
-	},
+/obj/structure/reagent_dispensers/peppertank/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -18016,7 +18011,7 @@
 	},
 /obj/machinery/button/windowtint{
 	id = "SHOW";
-	pixel_x = 2;
+	pixel_x = 9;
 	pixel_y = 24
 	},
 /obj/machinery/light_switch/north,
@@ -18671,9 +18666,9 @@
 /area/station/security/checkpoint/secondary)
 "bTn" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "ferry_home";
-	locked = 1
+	id_tag = "ferry_home"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
 /area/station/hallway/secondary/entry/east)
@@ -20980,7 +20975,7 @@
 /area/station/service/chapel/office)
 "ceP" = (
 /obj/effect/turf_decal/delivery,
-/obj/structure/sink/directional/west,
+/obj/structure/sink/directional/east,
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/service/hydroponics)
@@ -21103,7 +21098,9 @@
 	},
 /area/station/medical/medbay)
 "cfq" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "Morgue"
+	},
 /turf/simulated/floor/plating,
 /area/station/medical/morgue)
 "cfr" = (
@@ -23142,20 +23139,21 @@
 /obj/machinery/computer/card/minor/cmo{
 	dir = 8
 	},
-/obj/machinery/door_control{
-	id = "Biohazard_medi";
-	name = "Medical Quarantine";
-	pixel_x = 8;
-	req_access = list(40);
-	pixel_y = -26
-	},
 /obj/machinery/keycard_auth/directional/south,
 /obj/machinery/button/windowtint{
 	id = "CMO";
 	dir = 8;
-	pixel_x = 24
+	pixel_x = 25;
+	pixel_y = 8
 	},
 /obj/machinery/light_switch/east,
+/obj/machinery/door_control{
+	id = "Biohazard_medi";
+	name = "Medical Quarantine";
+	pixel_x = 25;
+	req_access = list(40);
+	pixel_y = -8
+	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/cmo)
 "coF" = (
@@ -24458,7 +24456,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/structure/sink/directional/west,
+/obj/structure/sink/directional/east,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -24574,7 +24572,9 @@
 	},
 /area/station/medical/virology)
 "cvh" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "psychoffice"
+	},
 /turf/simulated/floor/plating,
 /area/station/medical/psych)
 "cvk" = (
@@ -26752,7 +26752,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "cFY" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "ROBO"
+	},
 /turf/simulated/floor/plating,
 /area/station/science/robotics)
 "cFZ" = (
@@ -31931,9 +31933,9 @@
 /obj/machinery/door/airlock/public/glass{
 	autoclose = 0;
 	heat_proof = 1;
-	id_tag = "turbine_door_ext";
-	locked = 1
+	id_tag = "turbine_door_ext"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/airlock_controller/access_controller{
 	name = "Turbine Access Console";
@@ -32954,7 +32956,7 @@
 /area/station/security/permabrig)
 "dGO" = (
 /obj/item/reagent_containers/glass/bucket,
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "green"
@@ -33521,7 +33523,7 @@
 	},
 /area/station/supply/smith_office)
 "dTp" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -35615,9 +35617,7 @@
 	},
 /area/station/science/toxins/mixing)
 "eEc" = (
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 30
-	},
+/obj/structure/reagent_dispensers/peppertank/directional/east,
 /obj/machinery/camera{
 	c_tag = "Security - Gear Room";
 	dir = 8
@@ -36689,7 +36689,7 @@
 	},
 /area/station/hallway/secondary/exit)
 "eXd" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/structure/mirror{
 	pixel_x = 28
 	},
@@ -36928,7 +36928,7 @@
 /area/station/service/janitor)
 "fbt" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/structure/sink/directional/west,
+/obj/structure/sink/directional/east,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
@@ -40383,7 +40383,7 @@
 	},
 /area/station/security/brig)
 "gmn" = (
-/obj/item/radio/intercom/locked/prison{
+/obj/item/radio/intercom/locked/prison/directional/south{
 	name = "Prison Intercom (General)";
 	pixel_y = 25
 	},
@@ -41475,7 +41475,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/structure/sink/directional/west,
+/obj/structure/sink/directional/east,
 /turf/simulated/floor/grass/no_creep,
 /area/station/maintenance/medmaint)
 "gIJ" = (
@@ -41890,9 +41890,9 @@
 /area/station/maintenance/fore)
 "gRp" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "supply_home";
-	locked = 1
+	id_tag = "supply_home"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
 /turf/simulated/floor/plating,
@@ -42001,9 +42001,9 @@
 /area/station/medical/medbay)
 "gSd" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "laborcamp_home";
-	locked = 1
+	id_tag = "laborcamp_home"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /obj/machinery/door/poddoor/preopen{
@@ -42520,9 +42520,7 @@
 	},
 /area/station/medical/reception)
 "hcM" = (
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_y = 28
-	},
+/obj/structure/reagent_dispensers/peppertank/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkred"
@@ -43339,9 +43337,9 @@
 "huj" = (
 /obj/structure/lattice,
 /obj/machinery/door/airlock/external{
-	id_tag = "mining_home";
-	locked = 1
+	id_tag = "mining_home"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/all/supply/mining,
@@ -43611,7 +43609,7 @@
 /area/station/medical/surgery/primary)
 "hzV" = (
 /obj/machinery/alarm/directional/east,
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
@@ -45236,7 +45234,9 @@
 	name = "Quarantine Lockdown";
 	opacity = 0
 	},
-/obj/effect/spawner/window/reinforced/polarized/grilled,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "psychoffice"
+	},
 /turf/simulated/floor/plating,
 /area/station/medical/psych)
 "ieX" = (
@@ -45618,7 +45618,7 @@
 	},
 /area/station/medical/exam_room)
 "inq" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -46781,9 +46781,8 @@
 	id = "AI";
 	pixel_x = -25
 	},
-/obj/machinery/door/airlock/highsecurity{
-	locked = 1
-	},
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/command/ai_upload,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -47179,9 +47178,7 @@
 /turf/simulated/floor/wood,
 /area/station/service/bar)
 "iOo" = (
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 30
-	},
+/obj/structure/reagent_dispensers/peppertank/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "red"
@@ -47845,9 +47842,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	autoclose = 0;
-	id_tag = "xeno_door_int";
-	locked = 1
+	id_tag = "xeno_door_int"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -48500,7 +48497,7 @@
 	},
 /area/station/engineering/equipmentstorage)
 "jvr" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -48608,11 +48605,6 @@
 /area/station/engineering/control)
 "jym" = (
 /obj/effect/turf_decal/delivery/white/hollow,
-/obj/machinery/button/windowtint{
-	dir = 8;
-	id = "ROBO";
-	pixel_x = 24
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
@@ -48749,9 +48741,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	autoclose = 0;
-	id_tag = "xeno_door_ext";
-	locked = 1
+	id_tag = "xeno_door_ext"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/access_button{
 	autolink_id = "xeno_btn_ext";
@@ -50186,16 +50178,9 @@
 	},
 /area/station/science/lobby)
 "jUN" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
-/obj/machinery/door/poddoor{
-	density = 0;
-	icon_state = "open";
-	id_tag = "Biohazard_medi";
-	name = "Quarantine Lockdown";
-	opacity = 0
-	},
+/obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
-/area/station/medical/psych)
+/area/station/science/robotics)
 "jUQ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/red,
@@ -52075,7 +52060,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/item/radio/intercom/locked/prison{
+/obj/item/radio/intercom/locked/prison/directional/south{
 	name = "Prison Intercom (General)";
 	pixel_x = 25
 	},
@@ -53390,9 +53375,9 @@
 /obj/machinery/door/airlock/public/glass{
 	autoclose = 0;
 	heat_proof = 1;
-	id_tag = "turbine_door_int";
-	locked = 1
+	id_tag = "turbine_door_int"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -55415,7 +55400,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/alarm/directional/east,
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteyellow"
@@ -63130,9 +63115,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/highsecurity{
-	locked = 1
-	},
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -68373,7 +68357,7 @@
 /area/station/hallway/primary/central/south)
 "qCm" = (
 /obj/structure/flora/ausbushes/fernybush,
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /mob/living/carbon/human/monkey,
 /turf/simulated/floor/grass/no_creep,
 /area/station/science/genetics)
@@ -69031,9 +69015,7 @@
 /area/station/engineering/break_room)
 "qQH" = (
 /obj/structure/table/glass,
-/obj/structure/reagent_dispensers/virusfood{
-	pixel_x = -30
-	},
+/obj/structure/reagent_dispensers/virusfood/directional/west,
 /obj/item/folder/white{
 	pixel_x = 4;
 	pixel_y = -3
@@ -70112,7 +70094,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "rkU" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
@@ -70595,9 +70577,9 @@
 "rul" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
-	id_tag = "supply_home";
-	locked = 1
+	id_tag = "supply_home"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
 /turf/simulated/floor/plating,
@@ -73164,7 +73146,7 @@
 /obj/machinery/button/windowtint{
 	pixel_y = -24;
 	dir = 1;
-	pixel_x = -4;
+	pixel_x = -9;
 	id = "Morgue"
 	},
 /turf/simulated/floor/plasteel{
@@ -73400,7 +73382,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/south)
 "sBQ" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/machinery/light_switch/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -75334,7 +75316,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/radio/intercom/locked/prison{
+/obj/item/radio/intercom/locked/prison/directional/south{
 	name = "Prison Intercom (General)";
 	pixel_x = 25
 	},
@@ -75373,9 +75355,7 @@
 	dir = 1
 	},
 /obj/item/kirbyplants/large,
-/obj/machinery/computer/security/telescreen/entertainment{
-	pixel_x = -31
-	},
+/obj/machinery/computer/security/telescreen/entertainment/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -78663,7 +78643,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "uGn" = (
-/obj/item/radio/intercom/locked/prison{
+/obj/item/radio/intercom/locked/prison/directional/south{
 	name = "Prison Intercom (General)";
 	pixel_x = -25
 	},
@@ -78873,9 +78853,9 @@
 /area/station/security/prison/cell_block/a)
 "uJy" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "laborcamp_home";
-	locked = 1
+	id_tag = "laborcamp_home"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /obj/structure/fans/tiny,
@@ -84707,7 +84687,7 @@
 	},
 /area/station/hallway/secondary/entry/lounge)
 "wXy" = (
-/obj/structure/sink/directional/west,
+/obj/structure/sink/directional/east,
 /obj/machinery/light_switch/west,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -84747,9 +84727,9 @@
 /obj/effect/mapping_helpers/airlock/access/all/medical/virology,
 /obj/machinery/door/airlock/virology{
 	autoclose = 0;
-	id_tag = "viro_door_int";
-	locked = 1
+	id_tag = "viro_door_int"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -85537,7 +85517,7 @@
 /area/station/security/main)
 "xjJ" = (
 /obj/machinery/light/directional/north,
-/obj/item/radio/intercom/locked/prison{
+/obj/item/radio/intercom/locked/prison/directional/south{
 	name = "Prison Intercom (General)";
 	pixel_y = 25
 	},
@@ -87093,7 +87073,9 @@
 /turf/simulated/floor/carpet/purple,
 /area/station/service/library)
 "xNV" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "Magistrate"
+	},
 /turf/simulated/floor/plating,
 /area/station/legal/magistrate)
 "xNZ" = (
@@ -87699,9 +87681,9 @@
 	},
 /obj/machinery/door/airlock/virology{
 	autoclose = 0;
-	id_tag = "viro_door_ext";
-	locked = 1
+	id_tag = "viro_door_ext"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -111736,8 +111718,8 @@ bcK
 lKK
 iZh
 cRU
-jUN
-jUN
+ieU
+ieU
 cRU
 udZ
 mgC
@@ -117672,9 +117654,9 @@ cei
 cdo
 jSo
 cJp
-cFY
-cFY
-cFY
+jUN
+jUN
+jUN
 cBJ
 cBJ
 jRo
