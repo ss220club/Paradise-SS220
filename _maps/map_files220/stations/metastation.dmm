@@ -12251,6 +12251,9 @@
 	id = "teleaccessshutter";
 	req_access = list(17)
 	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -16180,6 +16183,9 @@
 /area/station/hallway/secondary/bridge)
 "bHz" = (
 /obj/machinery/bluespace_beacon,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -17284,11 +17290,14 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -17657,6 +17666,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/spacehut)
 "bOI" = (
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_large"
 	},
@@ -18253,6 +18263,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel,
 /area/station/ai_monitored/storage/eva)
 "bRw" = (
@@ -18350,13 +18363,11 @@
 	},
 /area/station/ai_monitored/storage/eva)
 "bRS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel,
 /area/station/ai_monitored/storage/eva)
 "bRU" = (
@@ -36033,6 +36044,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
+"eLE" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark_large"
+	},
+/area/station/command/teleporter)
 "eLQ" = (
 /obj/structure/closet/secure_closet/medical3,
 /turf/simulated/floor/plasteel{
@@ -50630,6 +50647,15 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/fore/west)
+"kdu" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/important/directional/north,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/command/teleporter)
 "kdw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -68577,6 +68603,18 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry/lounge)
+"qJx" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/command/teleporter)
 "qJz" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -71561,14 +71599,15 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutralcorner"
@@ -81058,6 +81097,9 @@
 /obj/item/storage/toolbox/emergency,
 /obj/item/beacon,
 /obj/item/gps,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -82495,6 +82537,14 @@
 /obj/effect/spawner/random/cobweb/right/rare,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/starboard2)
+"wge" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/command/teleporter)
 "wgh" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "redcorner"
@@ -85823,9 +85873,6 @@
 "xpC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/sortjunction{
@@ -118099,7 +118146,7 @@ asc
 can
 bCd
 snI
-bsH
+kdu
 bHz
 boL
 bMW
@@ -118358,7 +118405,7 @@ lre
 snI
 vkO
 bOI
-bsH
+qJx
 bEj
 bMF
 bLm
@@ -118615,7 +118662,7 @@ cfn
 snI
 bCp
 bEm
-bsH
+wge
 jXR
 xca
 bNd
@@ -118871,7 +118918,7 @@ byE
 eIj
 snI
 vkO
-bOI
+eLE
 vyd
 bla
 bMG
