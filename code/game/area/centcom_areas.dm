@@ -115,10 +115,10 @@
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/ninja/outpost
-	name = "\improper SpiderClan Outpost"
+	name = "Аванпост Клана Паука"
 
 /area/ninja/holding
-	name = "\improper SpiderClan Holding Facility"
+	name = "Убежище Клана Паука"
 
 /area/trader_station
 	name = "Торговая Станция"

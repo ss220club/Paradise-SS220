@@ -258,7 +258,7 @@
 	icon_state = "centcom"
 
 /area/shuttle/assault_pod/nanotrasen
-	name = "Штурмовая Капсула НТ"
+	name = "Десантная Капсула НТ"
 	icon_state = "shuttle"
 
 /* Syndicate Base - Mothership */
