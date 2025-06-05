@@ -9047,8 +9047,6 @@
 	id_tag = "toilet2"
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet/unisex)
 "aIb" = (
@@ -20877,9 +20875,6 @@
 	},
 /area/station/hallway/primary/central/east)
 "bBM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whiteyellow"
@@ -23744,7 +23739,6 @@
 	},
 /area/station/medical/reception)
 "bNG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment/corner{
 	dir = 4
 	},
@@ -23755,7 +23749,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/hologram/holopad,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -46234,7 +46228,6 @@
 "dOs" = (
 /obj/structure/table/glass,
 /obj/item/soap/nanotrasen,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -52326,9 +52319,6 @@
 	},
 /obj/effect/landmark/start/chemist,
 /obj/structure/chair/stool,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
 /turf/simulated/floor/engine,
 /area/station/medical/chemistry)
 "fWk" = (
@@ -55979,7 +55969,9 @@
 	},
 /area/station/turret_protected/aisat/interior)
 "hdS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -58311,16 +58303,16 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "hRW" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/effect/turf_decal/siding/white/end,
+/obj/effect/turf_decal/miscellaneous/plumbing{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
+/obj/structure/curtain/open/shower{
+	anchored = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
-	},
-/area/station/medical/chemistry)
+/obj/machinery/shower/directional/north,
+/turf/simulated/floor/plasteel/freezer,
+/area/station/public/toilet/unisex)
 "hRY" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -73807,9 +73799,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whiteyellowcorner"
@@ -74966,12 +74955,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whiteyellow"
@@ -83880,8 +83865,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -89711,7 +89697,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whiteyellowcorner"
@@ -99214,10 +99202,6 @@
 /obj/structure/curtain/open/shower{
 	anchored = 1
 	},
-/obj/structure/window/reinforced/tinted{
-	pixel_y = -1;
-	dir = 4
-	},
 /obj/effect/turf_decal/miscellaneous/plumbing{
 	dir = 1
 	},
@@ -106525,12 +106509,6 @@
 "yiH" = (
 /obj/structure/cable{
 	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -141358,11 +141336,11 @@ ogI
 aTU
 bDf
 nmO
-bSn
-vxo
-bSn
-bSn
 srv
+vxo
+hdS
+bSn
+bSn
 gYk
 bSv
 xCd
@@ -141613,8 +141591,8 @@ hLM
 giL
 wcS
 aTY
-hdS
-hRW
+bSn
+bGf
 bIh
 paW
 bTM
@@ -145696,7 +145674,7 @@ aFI
 gCU
 bsx
 aUQ
-vNh
+mYc
 wCZ
 aUQ
 xZQ
@@ -145953,7 +145931,7 @@ aKX
 eln
 udn
 aUQ
-mYc
+hRW
 jJh
 aHY
 aXi
