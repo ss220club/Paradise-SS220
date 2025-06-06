@@ -19,18 +19,24 @@
 /datum/species/diona/on_species_gain(mob/living/carbon/human/H)
 	..()
 	H.verbs |= /mob/living/carbon/human/proc/emote_creak
+	H.verbs |= /mob/living/carbon/human/proc/emote_chirp
 
 /datum/species/diona/on_species_loss(mob/living/carbon/human/H)
 	..()
 	H.verbs -= /mob/living/carbon/human/proc/emote_creak
+	H.verbs -= /mob/living/carbon/human/proc/emote_chirp
 
 /datum/species/drask/on_species_gain(mob/living/carbon/human/H)
 	..()
 	H.verbs |= /mob/living/carbon/human/proc/emote_hum
+	H.verbs |= /mob/living/carbon/human/proc/emote_rumble
+	H.verbs |= /mob/living/carbon/human/proc/emote_drone
 
 /datum/species/drask/on_species_loss(mob/living/carbon/human/H)
 	..()
 	H.verbs -= /mob/living/carbon/human/proc/emote_hum
+	H.verbs -= /mob/living/carbon/human/proc/emote_rumble
+	H.verbs -= /mob/living/carbon/human/proc/emote_drone
 
 /datum/species/kidan/on_species_gain(mob/living/carbon/human/H)
 	..()

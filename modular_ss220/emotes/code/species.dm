@@ -65,6 +65,9 @@
 		"задерживает дыхание!")
 
 /datum/species/diona
+	scream_verb = "трещит"
+	male_scream_sound = 'sound/voice/dionatalk1.ogg'
+	female_scream_sound = 'sound/voice/dionatalk1.ogg'
 	suicide_messages = list(
 		"теряет ветви!",
 		"вытаскивает из тайника бутыль с гербицидом и делает большой глоток!",
