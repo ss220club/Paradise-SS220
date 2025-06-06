@@ -56,6 +56,7 @@
 	..()
 	H.verbs |= /mob/living/carbon/human/proc/emote_ping
 	H.verbs |= /mob/living/carbon/human/proc/emote_beep
+	H.verbs |= /mob/living/carbon/human/proc/emote_boop
 	H.verbs |= /mob/living/carbon/human/proc/emote_buzz
 	H.verbs |= /mob/living/carbon/human/proc/emote_buzz2
 	H.verbs |= /mob/living/carbon/human/proc/emote_yes
@@ -65,6 +66,7 @@
 	..()
 	H.verbs -= /mob/living/carbon/human/proc/emote_ping
 	H.verbs -= /mob/living/carbon/human/proc/emote_beep
+	H.verbs -= /mob/living/carbon/human/proc/emote_boop
 	H.verbs -= /mob/living/carbon/human/proc/emote_buzz
 	H.verbs -= /mob/living/carbon/human/proc/emote_buzz2
 	H.verbs -= /mob/living/carbon/human/proc/emote_yes

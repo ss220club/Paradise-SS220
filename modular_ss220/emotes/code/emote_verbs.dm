@@ -488,6 +488,11 @@
 	set category = "Эмоции"
 	emote("no", intentional = TRUE)
 
+/mob/living/carbon/human/proc/emote_boop()
+	set name = "< " + EMOTE_SILICON_BOOP + " >"
+	set category = "Эмоции"
+	emote("boop", intentional = TRUE)
+
 /mob/living/carbon/human/proc/emote_waves_k()
 	set name = "< " + EMOTE_HUMAN_WAVES_K + " >"
 	set category = "Эмоции"
