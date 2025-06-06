@@ -34,6 +34,7 @@
 	new /obj/item/storage/bag/construction(src)
 
 /obj/structure/closet/secure_closet/engineering_chief/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"
@@ -56,6 +57,7 @@
 	new /obj/item/clothing/head/beret/eng
 
 /obj/structure/closet/secure_closet/engineering_electrical/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/engineering_welding
 	name = "welding supplies locker"
@@ -72,6 +74,7 @@
 	new /obj/item/weldingtool/largetank(src)
 
 /obj/structure/closet/secure_closet/engineering_welding/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/engineering_personal
 	name = "engineer's locker"
@@ -98,6 +101,7 @@
 	new /obj/item/storage/bag/construction(src)
 
 /obj/structure/closet/secure_closet/engineering_personal/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/atmos_personal
 	name = "technician's locker"
@@ -129,3 +133,4 @@
 	new /obj/item/dest_tagger(src)
 
 /obj/structure/closet/secure_closet/atmos_personal/empty/populate_contents()
+	return

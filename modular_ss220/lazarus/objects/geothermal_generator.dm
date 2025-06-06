@@ -68,14 +68,14 @@
 				return
 			user.visible_message("<span class='notice'>[user] открыл крышку сломанного генератора.</span>", "<span class='notice'>Вы открыли крышку сломанного генератора.</span>")
 			gen_state = GEOTHERMAL_GEN_CABLES
-			update_icon_state()
+			update_icon(UPDATE_ICON_STATE)
 		else if(gen_state == GEOTHERMAL_GEN_SCREWDRIVER)
 			user.visible_message("<span class='notice'>[user] начал закрывать крышку генератора...</span>", "<span class='notice'>Вы начали закрывать крышку генератора</span>")
 			if(!I.use_tool(src, user, 8 SECONDS, volume = I.tool_volume))
 				return
 			user.visible_message("<span class='notice'>[user] закрыл крышку генератора.</span>", "<span class='notice'>Вы закрыли крышку генератора.</span>")
 			gen_state = GEOTHERMAL_GEN_ACTIVE
-			update_icon_state()
+			update_icon(UPDATE_ICON_STATE)
 			break_timer = addtimer(CALLBACK(src, PROC_REF(break_gen)), rand(40 MINUTES, 60 MINUTES), TIMER_STOPPABLE)
 
 /obj/machinery/power/geothermal_generator/wrench_act(mob/living/user, obj/item/I)
@@ -89,7 +89,7 @@
 				return
 			user.visible_message("<span class='notice'>[user] уменьшил подачу пара до оптимального уровня.</span>", "<span class='notice'>Вы уменьшили подачу пара до оптимального уровня.</span>")
 			gen_state = GEOTHERMAL_GEN_SCREWDRIVER
-			update_icon_state()
+			update_icon(UPDATE_ICON_STATE)
 
 /obj/machinery/power/geothermal_generator/attackby__legacy__attackchain(obj/item/P, mob/user, params)
 	if(user.a_intent == INTENT_HELP)
@@ -104,7 +104,7 @@
 							C.use(5)
 							user.visible_message("<span class='notice'>[user] заменил повреждённую проводку.</span>", "<span class='notice'>Вы заменили повреждённую проводку.</span>")
 							gen_state = GEOTHERMAL_GEN_WRENCH
-							update_icon_state()
+							update_icon(UPDATE_ICON_STATE)
 					else
 						to_chat(user, "<span class='warning'>Вам нужно 5 единиц кабеля для замены проводки.</span>")
 						return
@@ -128,7 +128,7 @@
 
 /obj/machinery/power/geothermal_generator/proc/break_gen()
 	gen_state = GEOTHERMAL_GEN_BROKEN
-	update_icon_state()
+	update_icon(UPDATE_ICON_STATE)
 	if(break_timer)
 		deltimer(break_timer)
 		break_timer = null

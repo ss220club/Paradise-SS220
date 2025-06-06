@@ -21,6 +21,7 @@
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
 
 /obj/structure/closet/secure_closet/captains/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/hop
 	name = "head of personnel's locker"
@@ -40,6 +41,7 @@
 	new /obj/item/storage/bag/garment/head_of_personnel(src)
 
 /obj/structure/closet/secure_closet/hop/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/hos
 	name = "head of security's locker"
@@ -70,6 +72,7 @@
 	new /obj/item/clothing/mask/gas/sechailer(src)
 
 /obj/structure/closet/secure_closet/hos/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/warden
 	name = "warden's locker"
@@ -94,6 +97,7 @@
 	new /obj/item/clothing/mask/gas/sechailer(src)
 
 /obj/structure/closet/secure_closet/warden/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
@@ -117,6 +121,7 @@
 	new /obj/item/clothing/suit/armor/secjacket(src)
 
 /obj/structure/closet/secure_closet/security/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/evidence
 	name = "evidence locker"
@@ -148,6 +153,7 @@
 	new /obj/item/sensor_device(src)
 
 /obj/structure/closet/secure_closet/blueshield/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/ntrep
 	name = "\improper Nanotrasen Representative's locker"
@@ -167,6 +173,7 @@
 	new /obj/item/storage/bag/garment/nanotrasen_representative(src)
 
 /obj/structure/closet/secure_closet/ntrep/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/security/cargo
 
@@ -222,6 +229,7 @@
 	new /obj/item/taperecorder(src)
 
 /obj/structure/closet/secure_closet/detective/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections locker"
@@ -335,6 +343,7 @@
 	new /obj/item/storage/bag/garment/magistrate(src)
 
 /obj/structure/closet/secure_closet/magistrate/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/iaa
 	name = "internal affairs locker"
@@ -355,3 +364,4 @@
 	new /obj/item/clothing/accessory/legal_badge/iaa(src)
 
 /obj/structure/closet/secure_closet/iaa/empty/populate_contents()
+	return

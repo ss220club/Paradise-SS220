@@ -61,6 +61,6 @@
 		L.adjustFireLoss(1)
 		L.SetSlowed(5,5)
 		var/blurr_prob = 40
-		if (prob(blurr_prob))
+		if(prob(blurr_prob))
 			L.AdjustEyeBlurry (rand(2 SECONDS, 8 SECONDS))
 	L.AdjustEyeBlind (2 SECONDS)

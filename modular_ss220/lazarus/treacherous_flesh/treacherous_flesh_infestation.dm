@@ -14,13 +14,12 @@
 	bypasses_immunity = TRUE
 	virus_heal_resistant = TRUE
 	discovery_threshold = 0.8
-	stage_prob = 100 //УДАЛИ ПОСЛЕ ТЕСТОВ
 
 /datum/disease/treacherous_flesh/stage_act()
 	if(!..())
 		return FALSE
 	if(stage == 6)
-		if(prob(100)) //ПОСТАВЬ НА 5 ПОСЛЕ ТЕСТОВ
+		if(prob(5))
 			if(istype(affected_mob, /mob/living/carbon/human)) // ДОБАВИТЬ  && !isnull(affected_mob.client) ПОСЛЕ ТЕСТОВ
 				var/mob/living/carbon/human/host = affected_mob
 				var/obj/effect/mob_spawn/treacherous_flesh/spawner = new /obj/effect/mob_spawn/treacherous_flesh
@@ -46,7 +45,7 @@
 	taste_description = "flesh"
 
 /datum/reagent/treacherous_flesh/reaction_mob(mob/living/M, method = REAGENT_TOUCH, volume)
-	if(M in SSticker.mode.ling_hosts || M.HasDisease(/datum/disease/treacherous_flesh))
+	if((M in SSticker.mode.ling_hosts) || (M.HasDisease(/datum/disease/treacherous_flesh)))
 		return ..()
 	if(ishuman(M) && M.stat != DEAD)
 		M.ForceContractDisease(new /datum/disease/treacherous_flesh)

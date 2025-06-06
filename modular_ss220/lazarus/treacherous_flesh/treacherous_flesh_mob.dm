@@ -34,7 +34,7 @@
 	/// Holder for host trapped mind
 	var/mob/living/trapped_mind/trapped_mind
 
-/mob/living/treacherous_flesh/Initialize()
+/mob/living/treacherous_flesh/Initialize(mapload)
 	. = ..()
 	var/datum/atom_hud/U = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	U.add_hud_to(src)
@@ -91,7 +91,7 @@
 				grant_skills()
 
 
-/mob/living/treacherous_flesh/proc/infest(var/mob/living/carbon/human/new_host)
+/mob/living/treacherous_flesh/proc/infest(mob/living/carbon/human/new_host)
 	if(!new_host?.treacherous_flesh)
 		if(host != null)
 			host.treacherous_flesh = null
@@ -106,7 +106,7 @@
 		var/image/holder = host.hud_list[TREACHEOUS_FLESH_HUD]
 		holder.icon_state = "active_hud"
 
-/mob/living/treacherous_flesh/proc/disinfest(var/delete = TRUE)
+/mob/living/treacherous_flesh/proc/disinfest(delete = TRUE)
 	if(!host)
 		return
 	var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]

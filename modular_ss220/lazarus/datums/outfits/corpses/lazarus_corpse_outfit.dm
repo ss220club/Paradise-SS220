@@ -93,7 +93,7 @@
 /datum/outfit/lazarus/corpse/New()
 	. = ..()
 	var/list/backpack_loot = list()
-	for (var/loot in guaranteed_loot)
+	for(var/loot in guaranteed_loot)
 		backpack_loot += loot
 	var/lootcount = rand(loot_min, loot_max)
 	while(lootcount)

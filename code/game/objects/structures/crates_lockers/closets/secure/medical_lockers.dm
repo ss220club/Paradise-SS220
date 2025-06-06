@@ -20,6 +20,7 @@
 	new /obj/item/reagent_containers/glass/bottle/charcoal(src)
 
 /obj/structure/closet/secure_closet/medical1/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/medical2
 	name = "anesthetic locker"
@@ -36,6 +37,7 @@
 	new /obj/item/clothing/mask/breath/medical(src)
 
 /obj/structure/closet/secure_closet/medical2/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/medical3
 	name = "medical doctor's locker"
@@ -62,6 +64,7 @@
 	new /obj/item/clothing/shoes/sandal/white(src)
 
 /obj/structure/closet/secure_closet/medical3/empty/populate_contents()
+	return
 
 //Exam Room
 /obj/structure/closet/secure_closet/exam
@@ -87,6 +90,7 @@
 	new /obj/item/storage/firstaid/toxin(src)
 
 /obj/structure/closet/secure_closet/exam/empty/populate_contents()
+	return
 
 // Psychiatrist's pill bottle
 /obj/item/storage/pill_bottle/psychiatrist
@@ -138,6 +142,7 @@
 		new candy(src)
 
 /obj/structure/closet/secure_closet/psychiatrist/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/cmo
 	name = "chief medical officer's locker"
@@ -169,6 +174,7 @@
 	new /obj/item/clothing/mask/gas(src)
 
 /obj/structure/closet/secure_closet/cmo/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control locker"
@@ -181,6 +187,7 @@
 	new /obj/item/electropack(src)
 
 /obj/structure/closet/secure_closet/animal/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/chemical
 	name = "chemical closet"
@@ -195,6 +202,7 @@
 	new /obj/item/storage/box/patch_packs(src)
 
 /obj/structure/closet/secure_closet/chemical/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/paramedic
 	name = "paramedic EVA gear"
@@ -218,6 +226,7 @@
 	new /obj/item/pickaxe/drill(src)
 
 /obj/structure/closet/secure_closet/paramedic/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/reagents
 	name = "chemical storage closet"
@@ -235,6 +244,7 @@
 	new /obj/item/reagent_containers/glass/bottle/reagent/diethylamine(src)
 
 /obj/structure/closet/secure_closet/reagents/empty/populate_contents()
+	return
 
 /obj/structure/closet/secure_closet/genetics
 	name = "genetics test subject locker"

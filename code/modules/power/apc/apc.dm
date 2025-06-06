@@ -952,6 +952,7 @@
 		CHECK_TICK
 	*/
 	// SS220 LAZARUS EDIT - END
+	return
 
 /obj/machinery/power/apc/proc/relock_callback()
 	locked = TRUE

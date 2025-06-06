@@ -2,11 +2,11 @@
 	. = _memory_edit_header("treacherous flesh")
 	if(H in SSticker.mode.ling_hosts)
 		if(H.treacherous_flesh)
-			. += "<b><font color='red'>INFESTED</font></b>|<a href='?src=[UID()];treacherous_flesh=infestor'>[H.treacherous_flesh.name]</a>|<a href='?src=[UID()];treacherous_flesh=leave'>no</a>"
+			. += "<b><font color='red'>INFESTED</font></b>|<a href='byond://?src=[UID()];treacherous_flesh=infestor'>[H.treacherous_flesh.name]</a>|<a href='?src=[UID()];treacherous_flesh=leave'>no</a>"
 		else
-			. += "<b><font color='red'>INFESTED (Inactive)</font></b>|<a href='?src=[UID()];treacherous_flesh=play'>play as</a>|<a href='?src=[UID()];treacherous_flesh=clear'>no</a>"
+			. += "<b><font color='red'>INFESTED (Inactive)</font></b>|<a href='byond://?src=[UID()];treacherous_flesh=play'>play as</a>|<a href='?src=[UID()];treacherous_flesh=clear'>no</a>"
 	else
-		. += "<a href='?src=[UID()];treacherous_flesh=infest'>infested</a>|<b>NO</b>"
+		. += "<a href='byond://?src=[UID()];treacherous_flesh=infest'>infested</a>|<b>NO</b>"
 
 	. += _memory_edit_role_enabled(ROLE_TREACHEROUS_FLESH)
 

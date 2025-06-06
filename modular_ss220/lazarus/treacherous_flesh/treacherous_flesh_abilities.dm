@@ -16,7 +16,7 @@
 	button_overlay_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 	button_background_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 
-/datum/action/treacherous_flesh/New(var/mob/living/treacherous_flesh/new_user)
+/datum/action/treacherous_flesh/New(mob/living/treacherous_flesh/new_user)
 	user = new_user
 
 /datum/action/treacherous_flesh/proc/activate()
@@ -110,8 +110,8 @@
 	button_overlay_icon_state = "message"
 
 /datum/action/communicate_parasite/Trigger(left_click)
-	if(istype(src, /mob/living/carbon/human))
-		var/mob/living/carbon/human/host = src
+	if(istype(usr, /mob/living/carbon/human))
+		var/mob/living/carbon/human/host = usr
 		if(host.treacherous_flesh)
 			var/msg = clean_input("Сообщение:", "Сообщение для гостя")
 			if(!msg)
