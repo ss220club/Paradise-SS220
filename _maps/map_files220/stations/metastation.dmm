@@ -20050,12 +20050,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel/dark/telecomms,
 /area/station/science/server/coldroom)
 "cbl" = (
@@ -25160,7 +25155,9 @@
 	name = "Server Interior Door";
 	superconductivity = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -30243,7 +30240,7 @@
 /obj/machinery/r_n_d/server/station,
 /obj/effect/turf_decal/delivery/white/hollow,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 10
+	dir = 4
 	},
 /turf/simulated/floor/bluegrid/telecomms/server,
 /area/station/science/server/coldroom)
@@ -30789,10 +30786,10 @@
 	},
 /area/station/science/server)
 "dct" = (
+/obj/machinery/alarm/server/directional/north,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/obj/machinery/alarm/server/directional/north,
 /turf/simulated/floor/plasteel/dark/telecomms{
 	icon_state = "navybluefull"
 	},
@@ -41002,10 +40999,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/directional/east,
-/turf/simulated/floor/plasteel/dark/telecomms{
-	icon_state = "navybluecorners";
-	dir = 4
-	},
+/turf/simulated/floor/plasteel/dark/telecomms,
 /area/station/science/server/coldroom)
 "gFQ" = (
 /obj/machinery/monkey_recycler,
@@ -45304,16 +45298,11 @@
 /turf/simulated/floor/wood,
 /area/station/science/robotics/showroom)
 "ima" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 10
-	},
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plasteel/dark/telecomms{
-	icon_state = "navyblue";
-	dir = 1
-	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/plasteel/dark/telecomms,
 /area/station/science/server/coldroom)
 "imb" = (
 /obj/structure/chair/office/dark{
@@ -51112,10 +51101,12 @@
 	},
 /area/station/turret_protected/ai_upload)
 "kqU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5
+	},
 /turf/simulated/floor/plating,
-/area/station/maintenance/starboard2)
+/area/station/science/server)
 "kri" = (
 /obj/machinery/light_switch/east,
 /obj/machinery/camera{
@@ -67600,8 +67591,8 @@
 	},
 /area/station/aisat)
 "qub" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark/telecomms,
 /area/station/science/server/coldroom)
@@ -77265,14 +77256,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
 "ufm" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /obj/machinery/light/small/directional/west,
-/turf/simulated/floor/plasteel/dark/telecomms{
-	icon_state = "navybluecorners";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/dark/telecomms,
 /area/station/science/server/coldroom)
 "uft" = (
 /obj/structure/table/reinforced,
@@ -123133,12 +123119,12 @@ ubu
 dtC
 cwG
 gnS
-kqU
+cwG
 cZY
 qCR
 ufm
 qub
-cyP
+kqU
 bcC
 hGS
 uhP
@@ -123389,8 +123375,8 @@ hRR
 hRR
 coI
 cwG
-cFB
-cwG
+gSO
+ipj
 cZY
 dct
 ima
@@ -123647,7 +123633,7 @@ ipj
 dtC
 cwG
 cwG
-cFB
+ipj
 cZY
 cYQ
 gFC
