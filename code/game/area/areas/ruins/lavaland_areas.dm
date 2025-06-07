@@ -79,5 +79,5 @@
 	icon_state = "lava_relay"
 
 /area/ruin/lavaland_relay/Initialize(mapload)
-	name = "Шахтерская Телекоммуникационная Станция НТ #[rand(1, 1000)]" //Give it a random relay name
+	name = "Реле Нанотрейзен - Лаваленд #[rand(1, 1000)]" //Give it a random relay name
 	return ..()
