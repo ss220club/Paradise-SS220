@@ -98,118 +98,118 @@
 
 /* Black Market Packers */
 /area/awaymission/bmp_ship
-	name = "Корабль Нелегальных Торговцев"
+	name = "Корабль Контрабандистов"
 	icon_state = "away"
 	report_alerts = FALSE
 	requires_power = FALSE
 	ambientsounds = list('sound/music/space.ogg', 'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambigen11.ogg', 'sound/ambience/ambispace.ogg', 'sound/ambience/ambispace2.ogg')
 
 /area/awaymission/bmp_ship/engines
-	name = "Двигательный Отсек Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Двигательный Отсек"
 	icon_state = "awaycontent1"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/containment
-	name = "Зона Содержания Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Зона Содержания"
 	icon_state = "awaycontent2"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambicave.ogg', 'sound/ambience/ambiatmos2.ogg', 'sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/fore
-	name = "Нос Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Мостик"
 	icon_state = "awaycontent3"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambigen12.ogg', 'sound/ambience/ambicave.ogg', 'sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/gate
-	name = "Гейт Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Гейт"
 	icon_state = "awaycontent4"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambidanger.ogg', 'sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/armory
-	name = "Оружейная Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Арсенал"
 	icon_state = "awaycontent5"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/common
-	name = "Зона Экипажа Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Зона Экипажа"
 	icon_state = "awaycontent6"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambigen4.ogg', 'sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/medbay
-	name = "Медицинский Отдел Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Медицинский Отдел"
 	icon_state = "awaycontent7"
 	requires_power = TRUE
 	ambientsounds = list('sound/ambience/ambigen6.ogg', 'sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/chem_lab
-	name = "Химическая Лаборатория Нелегальных Торговцев"
+	name = "Химическая Лаборатория Контрабандистов"
 	icon_state = "awaycontent8"
 	requires_power = TRUE
 	ambientsounds = "sound/ambience/ambifailure.ogg"
 
 /area/awaymission/bmp_ship/shelter
-	name = "Убежище Нелегальных Торговцев"
+	name = "Убежище Контрабандистов"
 	icon_state = "awaycontent9"
 	requires_power = TRUE
 	ambientsounds = "sound/ambience/ambifailure.ogg"
 
 /area/awaymission/bmp_ship/dormitories
-	name = "Дормитори Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Дормитории"
 	icon_state = "awaycontent10"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambigen3.ogg', 'sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/turrets_north
-	name = "Южные Турели Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Северные Турели"
 	icon_state = "awaycontent11"
 	requires_power = TRUE
 
 /area/awaymission/bmp_ship/turrets_south
-	name = "Северные Турели Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Южные Турели"
 	icon_state = "awaycontent12"
 	requires_power = TRUE
 
 /area/awaymission/bmp_ship/bath
-	name = "Уборная Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Уборная"
 	icon_state = "awaycontent13"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/kitchen
-	name = "Кухня Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Кухня"
 	icon_state = "awaycontent14"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/buffer
-	name = "Основной Коридор Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Основной Коридор"
 	icon_state = "awaycontent15"
 	requires_power = TRUE
 	fire = TRUE
 	ambientsounds = list('sound/ambience/ambigen5.ogg', 'sound/ambience/ambilava1.ogg', 'sound/ambience/ambilava3.ogg', 'sound/ambience/ambimo2.ogg', 'sound/ambience/ambiruin3.ogg', 'sound/ambience/ambiruin4.ogg', 'sound/ambience/ambiruin5.ogg', 'sound/ambience/ambiruin6.ogg')
 
 /area/awaymission/bmp_ship/trader_shuttle
-	name = "Шаттл Нелегальных Торговцев"
+	name = "Шаттл Контрабандистов"
 	icon_state = "awaycontent16"
 	requires_power = TRUE
 	ambientsounds = "sound/spookoween/ghost_whisper.ogg"
 
 /area/awaymission/bmp_ship/mining
-	name = "Шахтный Док Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Шахтный Док"
 	icon_state = "awaycontent17"
 	requires_power = TRUE
 

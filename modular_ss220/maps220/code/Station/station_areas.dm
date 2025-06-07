@@ -263,7 +263,7 @@
 
 /* Syndicate Base - Mothership */
 /area/syndicate_mothership
-	name = "Синдикат - Передовая База"
+	name = "СЦК"
 	icon = 'modular_ss220/maps220/icons/areas.dmi'
 	icon_state = "syndie-ship"
 	requires_power = FALSE
@@ -272,28 +272,28 @@
 	ambientsounds = HIGHSEC_SOUNDS
 
 /area/syndicate_mothership/outside
-	name = "Синдикат - Подконтрольная Территория"
+	name = "СЦК - Подконтрольная Территория"
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	icon_state = "syndie-outside"
 
 /area/syndicate_mothership/control
-	name = "Синдикат - Командный Центр"
+	name = "СЦК - Командный Центр"
 	icon_state = "syndie-control"
 
 /area/syndicate_mothership/elite_squad
-	name = "Синдикат - Отдел Специальных Операций"
+	name = "СЦК - Отдел Специальных Операций"
 	icon_state = "syndie-elite"
 
 /area/syndicate_mothership/infteam
-	name = "Синдикат - Отдел Внедрения"
+	name = "СЦК - Отдел Внедрения"
 	icon_state = "syndie-infiltrator"
 
 /area/syndicate_mothership/jail
-	name = "Синдикат - Тюрьма"
+	name = "СЦК - Тюрьма"
 	icon_state = "syndie-jail"
 
 /area/syndicate_mothership/cargo
-	name = "Синдикат - Грузовой Корабль"
+	name = "СЦК - Грузовой Корабль"
 	icon_state = "syndie-cargo"
 
 /* Skyrat Ghostbar */
