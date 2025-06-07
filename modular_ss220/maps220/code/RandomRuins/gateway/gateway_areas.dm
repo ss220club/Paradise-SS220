@@ -98,14 +98,14 @@
 
 /* Black Market Packers */
 /area/awaymission/bmp_ship
-	name = "Корабль Нелегальных Торговцев"
+	name = "Корабль Контрабандистов"
 	icon_state = "away"
 	report_alerts = FALSE
 	requires_power = FALSE
 	ambientsounds = list('sound/music/space.ogg', 'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambigen11.ogg', 'sound/ambience/ambispace.ogg', 'sound/ambience/ambispace2.ogg')
 
 /area/awaymission/bmp_ship/engines
-	name = "Двигательный Отсек Корабля Нелегальных Торговцев"
+	name = "Корабль Контрабандистов - Двигатель"
 	icon_state = "awaycontent1"
 	requires_power = TRUE
 	fire = TRUE
@@ -285,7 +285,7 @@
 	requires_power = FALSE
 
 /area/awaymission/caves/build/reqpower_build
-	name = "Исследовательский Комплекс ''Зеркало''"
+	name = "Исследовательский Комплекс \"Зеркало\""
 	icon_state = "awaycontent2"
 	requires_power = TRUE
 
