@@ -285,7 +285,7 @@
 	requires_power = FALSE
 
 /area/awaymission/caves/build/reqpower_build
-	name = "Исследовательский Комплекс ''Зеркало''"
+	name = "Исследовательский Комплекс \"Зеркало\""
 	icon_state = "awaycontent2"
 	requires_power = TRUE
 
