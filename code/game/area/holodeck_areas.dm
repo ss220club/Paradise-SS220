@@ -6,7 +6,7 @@
 	sound_environment = SOUND_ENVIRONMENT_PADDED_CELL
 
 /area/holodeck/alphadeck
-	name = "Голодек - Выкл"
+	name = "Голодек"
 
 
 /area/holodeck/source_plating

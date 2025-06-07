@@ -75,7 +75,7 @@
 
 
 /area/ruin/lavaland_relay
-	name = "Шахтерская Телекоммуникационная Станция НТ"
+	name = "Реле Нанотрейзен - Лаваленд"
 	icon_state = "lava_relay"
 
 /area/ruin/lavaland_relay/Initialize(mapload)
