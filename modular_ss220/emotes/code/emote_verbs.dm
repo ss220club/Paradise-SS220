@@ -307,22 +307,22 @@
 	set category = "Эмоции"
 	emote("bshake", intentional = TRUE)
 
+/// Racial Emotes ///
 /mob/living/carbon/human/proc/emote_flap()
-	set name = "◦ " + EMOTE_HUMAN_FLAP + " "
+	set name = "< " + EMOTE_HUMAN_FLAP + " >"
 	set category = "Эмоции"
 	emote("flap", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_aflap()
-	set name = "◦ " + EMOTE_HUMAN_AFLAP + " "
+	set name = "< " + EMOTE_HUMAN_AFLAP + " >"
 	set category = "Эмоции"
 	emote("aflap", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_flutter()
-	set name = "◦ " + EMOTE_HUMAN_FLUTTER + " "
+	set name = "< " + EMOTE_HUMAN_FLUTTER + " >"
 	set category = "Эмоции"
 	emote("flutter", intentional = TRUE)
 
-/// Racial Emotes ///
 /mob/living/carbon/human/proc/emote_wag()
 	set name = "< " + EMOTE_HUMAN_WAG + " >"
 	set category = "Эмоции"
@@ -388,6 +388,11 @@
 	set category = "Эмоции"
 	emote("hum", intentional = TRUE)
 
+/mob/living/carbon/human/proc/emote_drone()
+	set name = "< " + EMOTE_HUMAN_DRONE + " >"
+	set category = "Эмоции"
+	emote("drone", intentional = TRUE)
+
 /mob/living/carbon/human/proc/emote_rumble()
 	set name = "< " + EMOTE_HUMAN_RUMBLE + " >"
 	set category = "Эмоции"
@@ -402,6 +407,11 @@
 	set name = "< " + EMOTE_HUMAN_CREAK + " >"
 	set category = "Эмоции"
 	emote("creak", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_chirp()
+	set name = "< " + EMOTE_HUMAN_CHIRP + " >"
+	set category = "Эмоции"
+	emote("chirp", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_warble()
 	set name = "< " + EMOTE_HUMAN_WARBLE + " >"
@@ -477,6 +487,11 @@
 	set name = "< " + EMOTE_SILICON_NO + " >"
 	set category = "Эмоции"
 	emote("no", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_boop()
+	set name = "< " + EMOTE_SILICON_BOOP + " >"
+	set category = "Эмоции"
+	emote("boop", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_waves_k()
 	set name = "< " + EMOTE_HUMAN_WAVES_K + " >"
