@@ -67,8 +67,8 @@
 ':finnadie: НЕ МОДУЛЬНО':
   - all:
       - changed-files:
-          - any-glob-to-any-file: ['code/**', 'icons/**', 'sounds/**', '_maps/map_files/**']
           - all-globs-to-all-files: ['!modular_ss220/**', '!icons/_nanomaps/**']
+          - any-glob-to-any-file: ['code/**', 'icons/**', 'sounds/**', '_maps/map_files/**']
       - base-branch: 'master'
       - head-branch: '^(?!merge[-_]upstream$).*'
 
