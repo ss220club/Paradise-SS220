@@ -197,6 +197,9 @@ SUBSYSTEM_DEF(central)
 		stack_trace("Failed to get player donate tier: HTTP status code [response.status_code] - [response.error] - [response.body]")
 		return 0
 
+	if(QDELETED(player))
+		return
+
 	var/list/data = json_decode(response.body)
 	return max(player.donator_level, get_max_donation_tier_from_response_data(data))
 

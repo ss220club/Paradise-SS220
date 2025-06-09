@@ -30,7 +30,7 @@
 	return query
 
 /datum/client_login_processor/donator_check/process_result(datum/db_query/Q, client/C)
-	if(IsGuestKey(C.ckey))
+	if(QDELETED(C) || IsGuestKey(C.ckey))
 		return
 
 	CheckAutoDonatorLevel(C)
