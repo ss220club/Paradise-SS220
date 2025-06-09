@@ -23912,7 +23912,8 @@
 /area/station/command/office/captain)
 "bOr" = (
 /obj/machinery/atmospherics/binary/pump{
-	dir = 1
+	dir = 1;
+	name = "Pure to Turbine"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -36848,7 +36849,7 @@
 "cOB" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4;
-	name = "Unfiltered to Mix"
+	name = "Pure to Engine"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -40148,6 +40149,7 @@
 /obj/machinery/autolathe,
 /obj/machinery/light/directional/east,
 /obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowfull"
 	},
@@ -41535,7 +41537,7 @@
 "dfu" = (
 /obj/machinery/atmospherics/binary/volume_pump/on{
 	dir = 1;
-	name = "Mix to Filter"
+	name = "Port to Filter"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -41613,7 +41615,7 @@
 "dfI" = (
 /obj/machinery/atmospherics/trinary/mixer{
 	dir = 4;
-	name = "Gas mixer (N2/O2)";
+	name = "Mix to Air";
 	node1_concentration = 0.8;
 	node2_concentration = 0.2;
 	on = 1;
@@ -43182,7 +43184,7 @@
 "dme" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 1;
-	name = "Pure to Mix"
+	name = "Pure to Port"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -44239,7 +44241,7 @@
 "dqv" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 8;
-	name = "Port to Filter"
+	name = "Port to TCU"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -49244,7 +49246,7 @@
 /area/station/engineering/control)
 "eQo" = (
 /obj/machinery/atmospherics/binary/volume_pump/on{
-	name = "Waste In"
+	name = "Waste to Filter"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -55588,7 +55590,8 @@
 /area/station/maintenance/fsmaint)
 "gYf" = (
 /obj/machinery/atmospherics/binary/volume_pump/on{
-	dir = 1
+	dir = 1;
+	name = "Mix to Engine"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -68732,7 +68735,8 @@
 /area/station/science/genetics)
 "lDk" = (
 /obj/machinery/atmospherics/binary/pump{
-	dir = 4
+	dir = 4;
+	name = "TCU to Port"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -70005,7 +70009,7 @@
 "lXg" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 1;
-	name = "Air to Station";
+	name = "Air to Distro";
 	on = 1;
 	target_pressure = 303
 	},
@@ -73310,7 +73314,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "ngQ" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/binary/pump{
+	name = "Turbine Mix to Filter"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "ngS" = (
@@ -85169,7 +85175,7 @@
 /area/station/medical/reception)
 "qYy" = (
 /obj/machinery/atmospherics/binary/pump{
-	name = "Air to Waste";
+	name = "Distro to Filter";
 	target_pressure = 101
 	},
 /turf/simulated/floor/plasteel{
@@ -87539,7 +87545,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/binary/volume_pump{
-	dir = 4
+	dir = 4;
+	name = "Air to Filter"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -90953,7 +90960,7 @@
 "tdT" = (
 /obj/machinery/atmospherics/binary/volume_pump/on{
 	dir = 8;
-	name = "Port to Filter"
+	name = "Pure to Filter"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -97325,7 +97332,7 @@
 /area/station/maintenance/port)
 "vgR" = (
 /obj/machinery/atmospherics/binary/pump{
-	name = "Waste to Port";
+	name = "Port to Filter";
 	dir = 1
 	},
 /turf/simulated/floor/plasteel,
@@ -102766,7 +102773,7 @@
 "xaZ" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 0;
-	name = "Air to Mix"
+	name = "Port to Pure"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -102908,7 +102915,7 @@
 "xdt" = (
 /obj/machinery/atmospherics/trinary/mixer/flipped{
 	dir = 8;
-	name = "Миксер топливной смеси турбины"
+	name = "Mix to Turbine"
 	},
 /obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
