@@ -4,10 +4,29 @@
 
 /datum/configuration_section/gamemode_configuration/load_data(list/data)
 	..()
-	CONFIG_LOAD_LIST(non_repeatable_gamemodes, data["non_repeatable_gamemodes"])
-	validate()
+	var/list/non_repeatable_gamemodes_tags
+	CONFIG_LOAD_LIST(non_repeatable_gamemodes_tags, data["non_repeatable_gamemodes"])
 
-/datum/configuration_section/gamemode_configuration/proc/validate()
-	for(var/value in non_repeatable_gamemodes)
-		if(!(value in gamemodes))
-			stack_trace("Gamemode [value] is in [NAMEOF(src, non_repeatable_gamemodes)] but it doesn't exist!")
+	for(var/config_tag in non_repeatable_gamemodes_tags)
+		if(validate_config_tag(config_tag))
+			non_repeatable_gamemodes += get_mode_by_tag(config_tag)
+
+/// Crashes if none of the gamemodes has the given tag.
+/datum/configuration_section/gamemode_configuration/proc/validate_config_tag(config_tag as text)
+	if(!(config_tag in gamemodes))
+		stack_trace("Gamemode [config_tag] is in non_repeatable_gamemodes but it doesn't exist!")
+	return TRUE
+
+/// Returns type of gamemode with the given tag.
+/datum/configuration_section/gamemode_configuration/proc/get_mode_by_tag(config_tag as text)
+	for(var/type in subtypesof(/datum/game_mode))
+		var/datum/game_mode/mode = type
+		if(mode::config_tag && mode::config_tag == config_tag)
+			return mode
+
+/// Returns type of gamemode with the given name.
+/datum/configuration_section/gamemode_configuration/proc/get_mode_by_name(config_name as text)
+	for(var/type in subtypesof(/datum/game_mode))
+		var/datum/game_mode/mode = type
+		if(mode::name && mode::name == config_name)
+			return mode
