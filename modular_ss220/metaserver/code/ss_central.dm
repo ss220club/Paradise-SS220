@@ -60,6 +60,9 @@ SUBSYSTEM_DEF(central)
 	GLOB.configuration.overflow.overflow_whitelist = ckeys
 
 /datum/controller/subsystem/central/proc/get_player_discord_async(client/player)
+	if(QDELETED(player))
+		return
+
 	var/endpoint = "[GLOB.configuration.central.api_url]/players/ckey/[player.ckey]"
 
 	SShttp.create_async_request(RUSTLIBS_HTTP_METHOD_GET, endpoint, "", list(), CALLBACK(src, PROC_REF(get_player_discord_callback), player))
@@ -70,6 +73,9 @@ SUBSYSTEM_DEF(central)
 		return
 
 	if(response.status_code == 404)
+		return
+
+	if(QDELETED(player))
 		return
 
 	var/list/data = json_decode(response.body)
@@ -176,6 +182,9 @@ SUBSYSTEM_DEF(central)
 /datum/controller/subsystem/central/proc/update_player_donate_tier_callback(client/player, datum/http_response/response)
 	if(response.errored || response.status_code != 200)
 		stack_trace("Failed to get player donate tier: HTTP status code [response.status_code] - [response.error] - [response.body]")
+		return
+
+	if(QDELETED(player))
 		return
 
 	var/list/data = json_decode(response.body)
