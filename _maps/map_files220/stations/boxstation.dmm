@@ -2811,7 +2811,7 @@
 "anh" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 8;
-	name = "Air to Port"
+	name = "Air to TCU"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -29338,7 +29338,7 @@
 	on = 1
 	},
 /turf/space,
-/area/space/nearstation)
+/area/station/engineering/atmos)
 "ckR" = (
 /obj/effect/spawner/random/oil/maybe,
 /turf/simulated/floor/plating,
@@ -29578,12 +29578,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/valve/digital/open{
-	name = "Oxygen Outlet Valve"
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/atmospherics/binary/volume_pump{
+	dir = 1;
+	name = "O2 to Pure"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -31757,12 +31758,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/valve/digital{
-	name = "N2O Outlet Valve"
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/atmospherics/binary/volume_pump{
+	dir = 1;
+	name = "N2O to Pure"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -34265,12 +34267,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/valve/digital{
-	name = "Plasma Outlet Valve"
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/atmospherics/binary/volume_pump{
+	dir = 1;
+	name = "Toxins to Pure"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -35433,7 +35436,8 @@
 "cIs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/binary/valve{
-	dir = 4
+	dir = 4;
+	name = "Outlet to Space"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -36685,12 +36689,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/assembly_line)
 "cOb" = (
-/obj/machinery/atmospherics/binary/valve/digital{
-	name = "Gas Mix Outlet Valve"
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/atmospherics/binary/volume_pump{
+	dir = 1;
+	name = "Mix to Engine"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -40401,10 +40406,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/binary/valve{
-	dir = 4;
-	name = "Exhaust Reuse"
-	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "daY" = (
@@ -41535,7 +41536,7 @@
 	},
 /area/station/command/office/ce)
 "dfu" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
+/obj/machinery/atmospherics/binary/volume_pump{
 	dir = 1;
 	name = "Port to Filter"
 	},
@@ -43323,7 +43324,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/binary/valve/digital{
-	name = "Gas Mix Outlet Valve"
+	name = "Pure to Mix"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -44271,7 +44272,8 @@
 /area/station/engineering/ai_transit_tube)
 "dqD" = (
 /obj/machinery/atmospherics/binary/valve{
-	dir = 4
+	dir = 4;
+	name = "Mix to FIlter valve"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -44613,7 +44615,8 @@
 /area/station/turret_protected/ai)
 "dsx" = (
 /obj/machinery/atmospherics/trinary/tvalve/digital/flipped{
-	dir = 8
+	dir = 8;
+	name = "Filter to TCU/Bypass"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -49830,7 +49833,8 @@
 /area/station/service/bar)
 "fdg" = (
 /obj/machinery/atmospherics/trinary/tvalve/flipped{
-	dir = 4
+	dir = 4;
+	name = "Port/Filter to TCU"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -55589,12 +55593,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "gYf" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
-	dir = 1;
-	name = "Mix to Engine"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
 	},
@@ -55713,12 +55714,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/valve/digital/open{
-	name = "Mixed Air Outlet Valve"
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/atmospherics/binary/volume_pump/on{
+	dir = 1;
+	name = "Air to Pure"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -56171,7 +56173,9 @@
 /obj/structure/sign/fire{
 	pixel_x = 32
 	},
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/binary/pump{
+	name = "Mix to Turbine"
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "hhX" = (
@@ -59604,7 +59608,8 @@
 "irV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/binary/pump{
-	dir = 4
+	dir = 4;
+	name = "Port to Mix"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -59619,8 +59624,8 @@
 	},
 /area/station/hallway/primary/aft)
 "isi" = (
-/obj/machinery/atmospherics/unary/thermomachine/heater,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/unary/thermomachine/freezer,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -63485,7 +63490,8 @@
 "jNM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/trinary/tvalve/digital{
-	dir = 4
+	dir = 4;
+	name = "Mix/Pure to Turbine"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -73314,8 +73320,8 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "ngQ" = (
-/obj/machinery/atmospherics/binary/pump{
-	name = "Turbine Mix to Filter"
+/obj/machinery/atmospherics/binary/volume_pump{
+	name = "Turbine to Filter"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -73513,6 +73519,14 @@
 /obj/machinery/alarm/directional/west,
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
+"njp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/binary/pump{
+	dir = 4;
+	name = "Toxins to Mix"
+	},
+/turf/simulated/floor/plasteel,
+/area/station/maintenance/turbine)
 "njM" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -73555,7 +73569,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/binary/pump{
-	dir = 8
+	dir = 8;
+	name = "Mix to Turbine"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -73613,14 +73628,12 @@
 	pixel_x = -8;
 	req_access = list(24)
 	},
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 4
-	},
 /obj/machinery/computer/turbine_computer{
 	dir = 1;
 	id = "incineratorturbine"
 	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "nkS" = (
@@ -78460,6 +78473,9 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
+/obj/item/pipe_gsensor{
+	id_tag = "incineratorturbine"
+	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
 "oQv" = (
@@ -80056,8 +80072,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/valve/digital/open{
-	name = "Nitrogen Outlet Valve"
+/obj/machinery/atmospherics/binary/volume_pump{
+	dir = 1;
+	name = "N2 to Pure"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -86438,8 +86455,10 @@
 /area/station/maintenance/port)
 "rzy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold4w/visible,
 /obj/machinery/light/small/directional/south,
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "rzA" = (
@@ -89812,6 +89831,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
+"sIf" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 4
+	},
+/obj/machinery/atmospherics/meter,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "sIF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -90704,7 +90730,9 @@
 /turf/simulated/wall/r_wall,
 /area/station/engineering/engine/supermatter)
 "taa" = (
-/obj/machinery/atmospherics/binary/valve,
+/obj/machinery/atmospherics/binary/valve{
+	name = "Mix to Engine valve"
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
@@ -90958,7 +90986,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "tdT" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
+/obj/machinery/atmospherics/binary/volume_pump{
 	dir = 8;
 	name = "Pure to Filter"
 	},
@@ -92673,6 +92701,7 @@
 "tIg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "yellow"
@@ -96957,7 +96986,7 @@
 	},
 /area/station/public/storage/tools)
 "vbI" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
+/obj/machinery/atmospherics/binary/volume_pump{
 	dir = 8;
 	name = "Mix to Filter"
 	},
@@ -97332,7 +97361,7 @@
 /area/station/maintenance/port)
 "vgR" = (
 /obj/machinery/atmospherics/binary/pump{
-	name = "Port to Filter";
+	name = "TCU to Filter";
 	dir = 1
 	},
 /turf/simulated/floor/plasteel,
@@ -98296,7 +98325,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/purple{
 	dir = 1
 	},
-/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "yellow"
@@ -100307,7 +100335,9 @@
 /obj/structure/sign/fire{
 	pixel_x = -32
 	},
-/obj/machinery/atmospherics/binary/valve,
+/obj/machinery/atmospherics/binary/valve{
+	name = "Outlet to Tank"
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "wiG" = (
@@ -101694,7 +101724,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/binary/pump{
-	name = "Fuel Pipe to Incinerator"
+	name = "Mix to Turbine"
 	},
 /obj/machinery/light_switch/west,
 /turf/simulated/floor/plasteel,
@@ -106469,12 +106499,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/valve/digital{
-	name = "CO2 Outlet Valve"
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/atmospherics/binary/volume_pump{
+	dir = 1;
+	name = "CO2 to Pure"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -130600,7 +130631,7 @@ dzg
 ncY
 irV
 irV
-irV
+njp
 qEo
 bSf
 aab
@@ -134962,7 +134993,7 @@ aOS
 fqV
 cSd
 fXt
-deJ
+sIf
 qHc
 gru
 osz
