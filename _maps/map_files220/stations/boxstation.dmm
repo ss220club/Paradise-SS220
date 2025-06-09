@@ -29333,9 +29333,8 @@
 /area/station/command/office/ntrep)
 "ckP" = (
 /obj/structure/lattice,
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 1;
-	on = 1
+/obj/machinery/atmospherics/unary/outlet_injector/on{
+	dir = 1
 	},
 /turf/space,
 /area/station/engineering/atmos)
@@ -34273,7 +34272,7 @@
 	},
 /obj/machinery/atmospherics/binary/volume_pump{
 	dir = 1;
-	name = "Toxins to Pure"
+	name = "Toxin to Pure"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -38815,6 +38814,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/supply/expedition)
+"cUX" = (
+/obj/machinery/atmospherics/binary/valve/digital/open{
+	name = "N2 to Air Mixer"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "yellow"
+	},
+/area/station/engineering/atmos)
 "cVb" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
@@ -40124,6 +40131,7 @@
 /area/station/engineering/break_room)
 "cZX" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "cZY" = (
@@ -40186,7 +40194,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/binary/pump/on{
 	dir = 8;
-	name = "Gas to Filter"
+	name = "Chamber Bypass"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -40334,8 +40342,7 @@
 /area/station/engineering/break_room)
 "daO" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6;
-	level = 1
+	dir = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -41667,7 +41674,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/valve/digital/open,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "dfR" = (
@@ -43170,7 +43177,7 @@
 "dmd" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4;
-	name = "Atmos to Loop"
+	name = "Mix to Loop"
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -50213,6 +50220,14 @@
 	icon_state = "dark"
 	},
 /area/station/engineering/control)
+"fkt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/binary/pump{
+	dir = 4;
+	name = "Toxins to Mix"
+	},
+/turf/simulated/floor/plasteel,
+/area/station/maintenance/turbine)
 "fkC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/nightshifted/directional/west,
@@ -52491,7 +52506,8 @@
 /area/station/maintenance/asmaint)
 "fZy" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
+	dir = 1;
+	autolink_id = "gas_turbine"
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -52747,7 +52763,7 @@
 /area/station/medical/surgery/observation)
 "gff" = (
 /obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/manifold/visible,
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /turf/space,
 /area/space/nearstation)
 "gfo" = (
@@ -54559,6 +54575,14 @@
 	icon_state = "dark"
 	},
 /area/station/maintenance/aft)
+"gIN" = (
+/obj/machinery/atmospherics/binary/valve/digital{
+	name = "Toxin to Turbine Mixer"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "yellow"
+	},
+/area/station/engineering/atmos)
 "gIU" = (
 /obj/machinery/door/airlock/wood{
 	desc = "No solicitors please."
@@ -57207,7 +57231,7 @@
 "hzG" = (
 /obj/machinery/atmospherics/trinary/filter{
 	dir = 4;
-	name = "Gas filter (Toxins tank)";
+	name = "Gas filter (Toxin tank)";
 	on = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
@@ -60234,7 +60258,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/binary/pump/on{
 	dir = 1;
-	name = "Cooling Loop to Gas"
+	name = "Cooling Loop to Filter"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -69337,8 +69361,10 @@
 /obj/structure/sign/vacuum/external{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1;
+	on = 1;
+	autolink_id = "gas_turbine"
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -73519,14 +73545,6 @@
 /obj/machinery/alarm/directional/west,
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
-"njp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/binary/pump{
-	dir = 4;
-	name = "Toxins to Mix"
-	},
-/turf/simulated/floor/plasteel,
-/area/station/maintenance/turbine)
 "njM" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -74282,7 +74300,9 @@
 	},
 /area/station/medical/morgue)
 "nuO" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/machinery/atmospherics/binary/valve/digital{
+	name = "O2 to Turbine Mixer"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
@@ -78473,8 +78493,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
-/obj/item/pipe_gsensor{
-	id_tag = "incineratorturbine"
+/obj/machinery/atmospherics/air_sensor{
+	autolink_id = "gas_turbine"
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -86459,6 +86479,12 @@
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
 	},
+/obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 1;
+	inlet_injector_autolink_ids = list("gas_turbine");
+	autolink_sensors = list("gas_turbine");
+	outlet_autolink_ids = list("gas_turbine")
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "rzA" = (
@@ -86947,6 +86973,14 @@
 /obj/machinery/alarm/directional/south,
 /turf/simulated/floor/wood/fancy/birch,
 /area/station/medical/break_room)
+"rKo" = (
+/obj/machinery/atmospherics/binary/valve/digital/open{
+	name = "O2 to Air Mixer"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "yellow"
+	},
+/area/station/engineering/atmos)
 "rKr" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/preopen{
@@ -88815,7 +88849,7 @@
 	},
 /obj/machinery/atmospherics/binary/valve{
 	dir = 4;
-	name = "Output to Waste"
+	name = "Filter to Waste"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
@@ -89831,13 +89865,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
-"sIf" = (
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 4
-	},
-/obj/machinery/atmospherics/meter,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
 "sIF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -90859,6 +90886,13 @@
 	icon_state = "neutral"
 	},
 /area/station/hallway/secondary/exit)
+"tch" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 4
+	},
+/obj/machinery/atmospherics/meter,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "tcw" = (
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
@@ -130631,7 +130665,7 @@ dzg
 ncY
 irV
 irV
-njp
+fkt
 qEo
 bSf
 aab
@@ -134231,7 +134265,7 @@ cUM
 esT
 dpV
 dfQ
-cNw
+cUX
 uPV
 vFL
 cZS
@@ -134993,7 +135027,7 @@ aOS
 fqV
 cSd
 fXt
-sIf
+tch
 qHc
 gru
 osz
@@ -135259,7 +135293,7 @@ cSd
 dfI
 dpV
 dfQ
-cNw
+rKo
 iJA
 gff
 cZS
@@ -137315,7 +137349,7 @@ vkM
 vkM
 iaM
 iOj
-nuO
+gIN
 cFn
 ycr
 cZS
