@@ -8992,13 +8992,12 @@
 /turf/simulated/wall,
 /area/station/maintenance/fsmaint)
 "aHR" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6;
-	level = 1
-	},
 /obj/effect/spawner/random/cobweb/left/frequent,
 /obj/item/wrench,
 /obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 6
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "aHS" = (
@@ -54014,14 +54013,13 @@
 /area/station/maintenance/aft)
 "gyR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6;
-	level = 1
-	},
 /obj/effect/spawner/random/cobweb/left/frequent,
 /obj/structure/rack,
 /obj/item/wrench,
 /obj/effect/spawner/random/maintenance,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 6
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
 "gyS" = (
@@ -55201,6 +55199,9 @@
 /obj/item/stack/sheet/glass,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
+"gRZ" = (
+/turf/simulated/wall,
+/area/station/engineering/control)
 "gSa" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/loading_area/red{
@@ -55988,7 +55989,7 @@
 /area/station/maintenance/asmaint)
 "hea" = (
 /obj/effect/mapping_helpers/turfs/rust/maybe,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/station/engineering/control)
 "hen" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -69361,10 +69362,8 @@
 /obj/structure/sign/vacuum/external{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 1;
-	on = 1;
-	autolink_id = "gas_turbine"
+/obj/machinery/atmospherics/unary/outlet_injector/on{
+	dir = 1
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -71996,12 +71995,11 @@
 /area/station/service/hydroponics)
 "mEh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6;
-	level = 1
-	},
 /obj/effect/spawner/random/cobweb/left/rare,
 /obj/machinery/alarm/directional/north,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 6
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "mEj" = (
@@ -78492,9 +78490,6 @@
 "oQe" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
-	},
-/obj/machinery/atmospherics/air_sensor{
-	autolink_id = "gas_turbine"
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -86479,12 +86474,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
 	},
-/obj/machinery/computer/general_air_control/large_tank_control{
-	dir = 1;
-	inlet_injector_autolink_ids = list("gas_turbine");
-	autolink_sensors = list("gas_turbine");
-	outlet_autolink_ids = list("gas_turbine")
-	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "rzA" = (
@@ -87050,6 +87039,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/command/office/captain)
+"rLy" = (
+/turf/simulated/wall,
+/area/station/maintenance/storage)
 "rLK" = (
 /obj/machinery/newscaster/directional/west,
 /obj/structure/sink/directional/east,
@@ -129890,7 +129882,7 @@ bQq
 ujG
 uOG
 dgc
-dcq
+rLy
 aaa
 aab
 aab
@@ -130403,7 +130395,7 @@ cSU
 bWT
 cZg
 wJg
-dcq
+rLy
 dzg
 liX
 qKX
@@ -131421,7 +131413,7 @@ cSU
 fko
 ePY
 snN
-cSU
+gRZ
 cSU
 cSU
 cSU
@@ -132459,7 +132451,7 @@ stu
 dar
 dev
 sLy
-dcq
+rLy
 lGD
 kak
 kak
@@ -132716,7 +132708,7 @@ stu
 dar
 wzQ
 jPX
-dcq
+rLy
 rMi
 cZS
 cZS
