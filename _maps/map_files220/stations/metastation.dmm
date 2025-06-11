@@ -207,7 +207,7 @@
 	pixel_x = 24;
 	req_access = list(4)
 	},
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "acS" = (
 /obj/structure/disposalpipe/segment/corner{
@@ -442,7 +442,7 @@
 /area/station/legal/magistrate)
 "afw" = (
 /obj/machinery/requests_console/directional/north,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "afy" = (
 /obj/machinery/computer/med_data{
@@ -452,7 +452,7 @@
 	pixel_x = 32
 	},
 /obj/machinery/light/directional/north,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "afE" = (
 /obj/structure/disposalpipe/segment,
@@ -606,9 +606,10 @@
 /turf/space,
 /area/station/engineering/solar/fore_port)
 "agY" = (
-/obj/structure/closet/secure_closet/detective,
 /obj/machinery/alarm/directional/south,
-/turf/simulated/floor/carpet/grimey,
+/obj/machinery/economy/vending/detdrobe,
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "ahd" = (
 /obj/effect/mapping_helpers/turfs/damage,
@@ -1336,11 +1337,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "anN" = (
-/obj/structure/morgue{
-	dir = 2
+/obj/structure/table/glass,
+/obj/machinery/computer/med_data/laptop,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "darkred"
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/area/station/security/detective)
 "anP" = (
 /obj/effect/landmark/start/mime,
 /turf/simulated/floor/plasteel{
@@ -1764,15 +1767,16 @@
 	},
 /area/station/medical/storage/secondary)
 "arf" = (
-/obj/item/storage/box/bodybags,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/security/detective)
 "arh" = (
 /obj/machinery/light/directional/west,
 /obj/item/flag/mime,
@@ -2104,8 +2108,18 @@
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "asV" = (
-/obj/machinery/economy/vending/detdrobe,
-/turf/simulated/floor/carpet/grimey,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/obj/structure/closet/secure_closet/evidence/detective,
+/obj/item/folder/red,
+/obj/item/folder/red,
+/obj/item/folder/red,
+/obj/item/folder/red,
+/obj/item/folder/red,
+/obj/item/folder/red,
+/obj/item/storage/box/evidence,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "asW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3512,7 +3526,7 @@
 "aBB" = (
 /obj/structure/chair/office/dark,
 /obj/effect/landmark/start/detective,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "aBF" = (
 /obj/structure/chair{
@@ -4026,15 +4040,14 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "aEq" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light/small/directional/east,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
@@ -5776,7 +5789,7 @@
 	dir = 1;
 	pixel_y = 3
 	},
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "aMm" = (
 /obj/machinery/door/firedoor,
@@ -6861,8 +6874,7 @@
 	dir = 4;
 	pixel_x = -32
 	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "aRK" = (
 /obj/machinery/atmospherics/portable/pump,
@@ -9418,7 +9430,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/grimey,
+/turf/simulated/floor/plasteel,
 /area/station/security/detective)
 "bdU" = (
 /obj/effect/turf_decal/loading_area{
@@ -23139,16 +23151,19 @@
 	},
 /area/station/medical/cryo)
 "cpK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/grimey,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "cpL" = (
 /obj/structure/cable{
@@ -32845,8 +32860,12 @@
 	},
 /area/station/science/toxins/mixing)
 "dJx" = (
-/obj/structure/filingcabinet,
-/turf/simulated/floor/carpet/grimey,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "dJB" = (
 /obj/structure/cable{
@@ -32881,8 +32900,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/machinery/newscaster/security_unit/directional/east,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "dKy" = (
 /obj/machinery/recharger/wallcharger{
@@ -34609,8 +34627,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/structure/shelf/supply,
-/obj/item/rcs,
+/obj/structure/closet/secure_closet/smith,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "brown"
@@ -36043,11 +36060,13 @@
 	},
 /area/station/science/robotics/showroom)
 "eQn" = (
-/obj/effect/spawner/random/oil/often,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
+/obj/effect/mapping_helpers/airlock/access/all/security/forensics,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -38184,13 +38203,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/grimey,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "fEf" = (
 /obj/machinery/door_control{
@@ -38876,17 +38894,20 @@
 	},
 /area/station/medical/morgue)
 "fPT" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/security/forensics,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/universal{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "fPX" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -38916,12 +38937,20 @@
 	},
 /area/station/science/break_room)
 "fQr" = (
-/obj/machinery/power/apc/directional/west,
-/obj/structure/cable{
-	icon_state = "0-4"
+/obj/structure/shelf/security,
+/obj/item/storage/photo_album,
+/obj/item/camera{
+	desc = "A one use - polaroid camera. 30 photos left.";
+	name = "detective's camera"
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/item/camera_film,
+/obj/item/hand_labeler,
+/obj/item/taperecorder,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "fQt" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -38989,11 +39018,12 @@
 /turf/simulated/wall/r_wall,
 /area/station/science/xenobiology)
 "fRm" = (
-/obj/structure/closet,
-/obj/effect/spawner/random/maintenance,
-/obj/effect/spawner/random/cobweb/left/rare,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/dnaforensics,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "fRq" = (
 /obj/machinery/alarm/directional/north,
 /turf/simulated/floor/plasteel{
@@ -41641,11 +41671,16 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/security/detective)
 "gRp" = (
 /obj/machinery/door/airlock/external{
 	id_tag = "supply_home"
@@ -41701,8 +41736,12 @@
 "gRF" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/directional/south,
-/obj/structure/closet/secure_closet/evidence/detective,
-/turf/simulated/floor/carpet/grimey,
+/obj/structure/closet/secure_closet/detective,
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/item/storage/box/bodybags,
+/obj/item/flash,
+/obj/item/restraints/handcuffs,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "gRG" = (
 /obj/structure/disposalpipe/segment,
@@ -42599,10 +42638,25 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "hjE" = (
-/obj/effect/spawner/random/oil/maybe,
-/obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/structure/table/tray,
+/obj/item/clothing/mask/surgical,
+/obj/item/clothing/gloves/color/latex/nitrile,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "surgery cleaner"
+	},
+/obj/item/autopsy_scanner{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/scalpel{
+	pixel_y = 12
+	},
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "hjM" = (
 /obj/machinery/newscaster/directional/east,
 /turf/simulated/floor/wood,
@@ -43801,12 +43855,17 @@
 /turf/simulated/floor/wood,
 /area/station/medical/psych)
 "hIP" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "hIY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
@@ -47910,13 +47969,14 @@
 	},
 /area/station/engineering/control)
 "jnZ" = (
-/obj/item/kirbyplants/large/plant14,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/camera{
 	c_tag = "Brig Detective's Office";
 	dir = 8
 	},
-/turf/simulated/floor/carpet,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "joD" = (
 /obj/structure/cable{
@@ -48923,9 +48983,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "jIf" = (
-/obj/machinery/hologram/holopad,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet,
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "jIj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -54723,11 +54784,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "lHy" = (
-/obj/structure/rack,
-/obj/effect/spawner/random/maintenance,
-/obj/item/clothing/gloves/color/white,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/structure/morgue{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "lHR" = (
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -60615,6 +60678,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/theatre)
+"nNi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/directional/west,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/fore)
 "nNk" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -61500,6 +61571,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "ocC" = (
@@ -62491,7 +62565,8 @@
 /obj/structure/chair/stool{
 	dir = 1
 	},
-/turf/simulated/floor/carpet,
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "oyT" = (
 /obj/structure/disposalpipe/segment,
@@ -63041,8 +63116,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/break_room)
 "oIs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/spawner/random/maintenance,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "oIE" = (
@@ -66075,10 +66152,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/aft/south)
 "pRp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small/directional/west,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/security/detective)
 "pRq" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -70098,8 +70176,7 @@
 	pixel_x = -38;
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "rpy" = (
 /obj/effect/turf_decal/stripes/line{
@@ -75533,27 +75610,12 @@
 /turf/simulated/floor/wood,
 /area/station/maintenance/fpmaint)
 "ttA" = (
-/obj/structure/rack,
-/obj/item/hand_labeler,
-/obj/item/folder/red,
-/obj/item/camera{
-	desc = "A one use - polaroid camera. 30 photos left.";
-	name = "detective's camera";
-	pixel_x = -2;
-	pixel_y = 3
-	},
-/obj/item/taperecorder{
-	pixel_x = -1
-	},
-/obj/item/storage/box/evidence{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/machinery/firealarm/directional/south,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
 	},
-/turf/simulated/floor/carpet/grimey,
+/obj/item/kirbyplants/large/plant14,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "ttE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -76933,8 +76995,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/disposal)
 "uak" = (
-/obj/structure/grille/broken,
-/obj/effect/decal/cleanable/glass,
+/obj/effect/spawner/window/reinforced/tinted/grilled,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "uam" = (
@@ -77881,9 +77945,10 @@
 /turf/simulated/floor/plating,
 /area/station/security/permabrig)
 "urH" = (
-/obj/effect/spawner/random/oil/maybe,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/security/detective)
 "urR" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -78473,10 +78538,15 @@
 	},
 /area/station/science/server)
 "uGy" = (
-/obj/item/bodybag,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/structure/table/glass,
+/obj/machinery/microscope{
+	pixel_y = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "uGA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
@@ -79962,11 +80032,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 4;
-	sort_type_txt = "24"
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/simulated/floor/carpet/grimey,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "vfK" = (
 /obj/structure/cable{
@@ -80432,13 +80501,17 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/sortjunction/reversed{
+	dir = 4;
+	sort_type_txt = "24"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/turf/simulated/floor/carpet/grimey,
+/turf/simulated/floor/wood/parquet/oak,
 /area/station/security/detective)
 "vpo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -80783,10 +80856,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/science/xenobiology)
 "vvF" = (
-/obj/effect/spawner/window/reinforced/tinted/grilled,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/turf/simulated/wall,
+/area/station/security/detective)
 "vvU" = (
 /obj/machinery/button/windowtint{
 	id = "QM";
@@ -83720,12 +83791,11 @@
 	},
 /area/station/security/brig)
 "wGv" = (
-/obj/effect/mapping_helpers/turfs/burn,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
+/obj/machinery/optable,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkred"
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/area/station/security/detective)
 "wGR" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -84002,10 +84072,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "wMy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/effect/mapping_helpers/turfs/burn,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "wME" = (
 /obj/structure/rack,
 /obj/item/wrench,
@@ -84328,6 +84399,7 @@
 /obj/machinery/light/directional/north,
 /obj/item/storage/belt,
 /obj/machinery/light_switch/east,
+/obj/item/rcs,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "brown"
@@ -85836,10 +85908,9 @@
 	},
 /area/station/hallway/supply/aft)
 "xta" = (
-/obj/structure/disposalpipe/trunk,
-/obj/machinery/disposal,
 /obj/machinery/light_switch/north,
-/turf/simulated/floor/carpet,
+/obj/structure/filingcabinet,
+/turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "xtc" = (
 /obj/structure/cable{
@@ -87748,10 +87819,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/supply)
 "yew" = (
-/obj/structure/girder,
-/obj/item/stack/sheet/metal,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/newscaster/security_unit/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkred"
+	},
+/area/station/security/detective)
 "yeE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -118179,11 +118252,11 @@ awp
 aAw
 awp
 awp
-awp
-awp
-awp
+qeK
+vvF
+yew
 fPT
-awp
+fQr
 awp
 ajg
 ajg
@@ -118436,12 +118509,12 @@ awp
 sfG
 bxN
 aGE
-ajg
+qeK
 fRm
 pRp
 gRm
 lHy
-ajg
+awp
 nPD
 alW
 hbB
@@ -118693,12 +118766,12 @@ awp
 oqi
 lHw
 awu
-aWv
+qeK
 anN
 urH
 arf
 wGv
-aWv
+awp
 azu
 ahd
 api
@@ -118950,12 +119023,12 @@ awp
 kfU
 bxN
 oIs
-vvF
+qeK
 uGy
 wMy
 hIP
 hjE
-ajg
+awp
 akT
 alW
 api
@@ -119205,14 +119278,14 @@ gbg
 qwB
 awp
 avL
-aWv
 ajg
-ajg
-ajg
-yew
-eQn
 uak
-akR
+awp
+awp
+awp
+eQn
+awp
+awp
 kol
 aAm
 acj
@@ -119462,8 +119535,8 @@ jQw
 qwB
 ook
 baa
-aDY
-fQr
+nNi
+aSJ
 aJl
 ahJ
 dLg
