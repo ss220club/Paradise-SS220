@@ -29,7 +29,8 @@
 
 	var/list/winning_options = list()
 	for(var/res in results)
-		if(results[res] == max_score)
+		// Consider values whose difference < RESULT_PRECISION as equal
+		if(abs(results[res] - max_score) < RESULT_PRECISION)
 			winning_options |= res
 
 	to_chat(world, span_interface("Результаты голосования:"))
@@ -66,7 +67,7 @@
             return GHOST_VOTE_WEIGHT(online_players)
         return DEAD_VOTE_WEIGHT(online_players)
 
-    log_debug("[client.ckey]'s vote cannot be classified. Their vote will be ignored. Mob type: [client_mob.type]")
+    log_game("[client.ckey]'s vote cannot be classified. Their vote will be ignored. Mob type: [client_mob.type]")
     return 0
 
 #undef ALIVE_VOTE_WEIGHT
