@@ -25,6 +25,22 @@
 	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/ammobox.ogg'
 	pickup_sound =  'modular_ss220/aesthetics_sounds/sound/handling/pickup/ammobox.ogg'
 
+/obj/item/storage/fancy/shell
+	drop_sound = 'sound/items/handling/cardboardbox_drop.ogg'
+	pickup_sound =  'sound/items/handling/cardboardbox_pickup.ogg'
+
+/obj/item/storage/fancy/donut_box
+	drop_sound = 'sound/items/handling/cardboardbox_drop.ogg'
+	pickup_sound =  'sound/items/handling/cardboardbox_pickup.ogg'
+
+/obj/item/storage/fancy/egg_box
+	drop_sound = 'sound/items/handling/cardboardbox_drop.ogg'
+	pickup_sound =  'sound/items/handling/cardboardbox_pickup.ogg'
+
+/obj/item/storage/firstaid
+	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/medkit_drop.ogg'
+	pickup_sound =  'modular_ss220/aesthetics_sounds/sound/handling/pickup/medkit_pickup.ogg'
+
 /* KNIFE */
 /obj/item/nullrod/tribal_knife
 	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/knife.ogg'
@@ -222,3 +238,35 @@
 /obj/item/organ/internal/lungs/cybernetic
 	drop_sound = 'sound/items/handling/component_drop.ogg'
 	pickup_sound =  'sound/items/handling/component_pickup.ogg'
+
+/* BOXES */
+
+/obj/item/storage/box
+	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/cardboard_box_rustle.ogg'
+
+/obj/item/storage/fancy/shell
+	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/cardboard_box_rustle.ogg'
+
+/obj/item/storage/fancy/donut_box
+	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/cardboard_box_rustle.ogg'
+
+/obj/item/storage/fancy/egg_box
+	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/cardboard_box_rustle_light.ogg'
+
+/obj/item/storage/fancy/candle_box
+	use_sound = "patchpack"
+
+/obj/item/storage/fancy/crayons
+	use_sound = "patchpack"
+
+/obj/item/storage/fancy/matches
+	use_sound = "patchpack"
+
+/obj/item/storage/fancy/cigarettes
+	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/cardboard_box_rustle_light.ogg'
+
+/obj/item/storage/fancy/vials
+	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/cardboard_box_rustle_light.ogg'
+
+/obj/item/storage/firstaid
+	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/medkit_open.ogg'
