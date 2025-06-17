@@ -191,13 +191,12 @@ SUBSYSTEM_DEF(central)
 	player.donator_level = max(player.donator_level, get_max_donation_tier_from_response_data(data))
 
 /datum/controller/subsystem/central/proc/get_player_donate_tier_blocking(client/player)
+	if(QDELETED(player))
+		return 0
 	var/endpoint = "[GLOB.configuration.central.api_url]/donates?ckey=[player.ckey]&active_only=true&page=1&page_size=1"
 	var/datum/http_response/response = SShttp.make_sync_request(RUSTLIBS_HTTP_METHOD_GET, endpoint, "", list())
 	if(response.errored || response.status_code != 200)
 		stack_trace("Failed to get player donate tier: HTTP status code [response.status_code] - [response.error] - [response.body]")
-		return 0
-
-	if(QDELETED(player))
 		return 0
 
 	var/list/data = json_decode(response.body)
