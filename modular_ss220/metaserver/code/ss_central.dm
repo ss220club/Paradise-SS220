@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(central)
 		return 0
 
 	if(QDELETED(player))
-		return
+		return 0
 
 	var/list/data = json_decode(response.body)
 	return max(player.donator_level, get_max_donation_tier_from_response_data(data))
