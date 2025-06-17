@@ -149,7 +149,6 @@
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_override = null
 	icon_state = "bandred_up"
-	item_color = "red"
 
 	sprite_sheets = list(
 			"Vox" = 'icons/mob/clothing/species/vox/mask.dmi',
