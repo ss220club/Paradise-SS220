@@ -28,8 +28,10 @@
 		)
 	)
 	if(!query_latest_gamemode.warn_execute() || !query_latest_gamemode.NextRow())
+		qdel(query_latest_gamemode)
 		return null
 
 	var/latest_gamemode_name = query_latest_gamemode.item[1]
+	qdel(query_latest_gamemode)
 	latest_gamemode = GLOB.configuration.gamemode.get_mode_by_name(latest_gamemode_name)
 	return latest_gamemode
