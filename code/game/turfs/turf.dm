@@ -58,25 +58,6 @@
 	/// makes turfs less picky about where they transfer gas. Largely just used in the SM
 	var/atmos_superconductivity = 0
 
-	/*
-	Lighting Vars
-	*/
-	/// Handles if the lighting should be dynamic. Generally lighting is dynamic if it's not in space
-	var/dynamic_lighting = TRUE
-
-	/// If you're curious why these are TMP vars, I don't know! TMP only affects savefiles so this does nothing :) - GDN
-
-	/// Is the lighting on this turf inited
-	var/tmp/lighting_corners_initialised = FALSE
-	/// List of light sources affecting this turf.
-	var/tmp/list/datum/light_source/affecting_lights
-	/// The lighting Object affecting us
-	var/tmp/atom/movable/lighting_object/lighting_object
-	/// A list of our lighting corners.
-	var/tmp/list/datum/lighting_corner/corners
-	/// Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
-	var/tmp/has_opaque_atom = FALSE
-
 	/// The general behavior of atmos on this tile.
 	var/atmos_mode = ATMOS_MODE_SEALED
 	/// The external environment that this tile is exposed to for ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
@@ -96,6 +77,21 @@
 	var/destination_y
 	/// The destination z-level that atoms entering this turf will be automatically moved to.
 	var/destination_z
+
+	var/dynamic_lighting = TRUE
+
+	var/tmp/lighting_corners_initialised = FALSE
+
+	/// List of light sources affecting this turf
+	var/tmp/list/datum/light_source/affecting_lights
+	/// Our lighting object
+	var/tmp/atom/movable/lighting_object/lighting_object
+	var/tmp/list/datum/lighting_corner/corners
+
+	/// Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources
+	var/directional_opacity = NONE
+	/// Lazylist of movable atoms providing opacity sources
+	var/list/atom/movable/opacity_sources
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
@@ -133,7 +129,7 @@
 		update_light()
 
 	if(opacity)
-		has_opaque_atom = TRUE
+		directional_opacity = ALL_CARDINALS
 
 	initialize_milla()
 
@@ -239,11 +235,6 @@
 		if(!O.lastarea)
 			O.lastarea = get_area(O.loc)
 
-	// If an opaque movable atom moves around we need to potentially update visibility.
-	if(A.opacity)
-		has_opaque_atom = TRUE // Make sure to do this before reconsider_lights(), incase we're on instant updates. Guaranteed to be on in this case.
-		reconsider_lights()
-
 	if((!(A) || !(src in A.locs)))
 		return
 
@@ -316,13 +307,13 @@
 		return src
 
 	set_light(0)
-	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_object = lighting_object
 	var/old_blueprint_data = blueprint_data
 	var/old_obscured = obscured
 	var/old_corners = corners
+	var/old_directional_opacity = directional_opacity
 
 	BeforeChange()
 	SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, defer_change, keep_icon, ignore_air, copy_existing_baseturf)
@@ -353,15 +344,12 @@
 	W.blueprint_data = old_blueprint_data
 	W.pressure_overlay = old_pressure_overlay
 
-	recalc_atom_opacity()
-
 	if(SSlighting.initialized)
-		recalc_atom_opacity()
 		lighting_object = old_lighting_object
 		affecting_lights = old_affecting_lights
 		corners = old_corners
-		if(old_opacity != opacity || dynamic_lighting != old_dynamic_lighting)
-			reconsider_lights()
+		directional_opacity = old_directional_opacity
+		recalculate_directional_opacity()
 
 		if(dynamic_lighting != old_dynamic_lighting)
 			if(IS_DYNAMIC_LIGHTING(src))

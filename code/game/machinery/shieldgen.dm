@@ -17,7 +17,7 @@
 	recalculate_atmos_connectivity()
 
 /obj/machinery/shield/Destroy()
-	opacity = FALSE
+	set_opacity(FALSE)
 	density = FALSE
 	recalculate_atmos_connectivity()
 	return ..()

@@ -103,7 +103,6 @@ GLOBAL_LIST_EMPTY(bump_teleporters)
 	var/id_target = null	//id of bump_teleporter which this moves you to.
 	invisibility = 101 		//nope, can't see this
 	density = TRUE
-	opacity = FALSE
 
 /obj/effect/bump_teleporter/New()
 	..()

@@ -2,7 +2,7 @@
 // Небольшой багфикс "непрозрачного открытого шлюза"
 /obj/structure/inflatable/door/operate()
 	. = ..()
-	opacity = FALSE
+	set_opacity(FALSE)
 
 // Голопроектор и улучшенные варианты //
 /obj/item/holosign_creator/atmos/robot
