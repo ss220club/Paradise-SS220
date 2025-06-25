@@ -29,9 +29,10 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 20
 	armour_penetration_percentage = 50
-	light_power = 5
+	light_system = MOVABLE_LIGHT
 	light_range = 2
-	light_color = "#FF0000"
+	light_power = 5
+	light_color = LIGHT_COLOR_PURE_RED
 	attacktext = "preaches to"
 	attack_sound = 'sound/magic/ratvar_attack.ogg'
 	throw_message = "doesn't affect the purity of"

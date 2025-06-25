@@ -4,6 +4,7 @@
 /atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE)
 	if(l_range > 0 && l_range < MINIMUM_USEFUL_LIGHT_RANGE)
 		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4, which is just barely brighter than the soft lighting that surrounds players.
+
 	if(l_power != null)
 		light_power = l_power
 
@@ -22,14 +23,12 @@
 // Will update the light (duh).
 // Creates or destroys it if needed, makes it update values, makes sure it's got the correct source turf...
 /atom/proc/update_light()
-	set waitfor = FALSE
-	if(QDELETED(src))
-		return
+	SHOULD_NOT_SLEEP(TRUE)
 
 	if(light_system != STATIC_LIGHT)
 		CRASH("update_light() for [src] with following light_system value: [light_system]")
 
-	if(!light_power || !light_range) // We won't emit light anyways, destroy the light source.
+	if(!light_power || !light_range || !light_on) // We won't emit light anyways, destroy the light source.
 		QDEL_NULL(light)
 	else
 		if(!ismovable(loc)) // We choose what atom should be the top atom of the light here.
@@ -40,7 +39,7 @@
 		if(light) // Update the light or create it if it does not exist.
 			light.update(.)
 		else
-			light = new/datum/light_source(src, .)
+			light = new /datum/light_source(src, .)
 
 /atom/proc/extinguish_light(force = FALSE)
 	return

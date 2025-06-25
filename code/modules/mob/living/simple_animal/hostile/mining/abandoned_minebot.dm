@@ -25,6 +25,7 @@
 	speak_emote = list("states")
 	throw_message = "does not go through the armor of"
 	del_on_death = TRUE
+	light_system = MOVABLE_LIGHT
 	light_range = 4
 	light_color = LIGHT_COLOR_RED
 	ranged = TRUE

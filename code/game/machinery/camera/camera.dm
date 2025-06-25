@@ -13,8 +13,8 @@
 	anchored = TRUE
 	max_integrity = 100
 	integrity_failure = 50
-	light_system = MOVABLE_LIGHT // not really, but let's try
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	light_system = MOVABLE_LIGHT // not really, but let's try
 	light_range = AI_CAMERA_LUMINOSITY
 	light_on = FALSE
 	var/datum/wires/camera/wires = null // Wires datum

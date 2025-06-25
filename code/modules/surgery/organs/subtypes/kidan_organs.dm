@@ -21,7 +21,7 @@
 	/// Light overlay for our mob
 	var/obj/effect/dummy/lighting_obj/moblight/on_mob
 	var/colour
-	var/glowing = 0
+	var/glowing = FALSE
 
 /obj/item/organ/internal/lantern/ui_action_click()
 	if(toggle_biolum())
@@ -34,12 +34,12 @@
 	..()
 	if(glowing)//i hate this but i couldnt figure out a better way
 		if(owner.nutrition < KIDAN_LANTERN_MINHUNGER)
-			toggle_biolum(1)
+			toggle_biolum(TRUE)
 			to_chat(owner, "<span class='warning'>You're too hungry to be bioluminescent!</span>")
 			return
 
 		if(owner.stat)
-			toggle_biolum(1)
+			toggle_biolum(TRUE)
 			owner.visible_message("<span class='notice'>[owner] fades to dark.</span>")
 			return
 
@@ -58,7 +58,7 @@
 
 /obj/item/organ/internal/lantern/on_owner_death()
 	if(glowing)
-		toggle_biolum(1)
+		toggle_biolum(TRUE)
 
 /obj/item/organ/internal/lantern/proc/toggle_biolum(statoverride)
 	if(!statoverride && owner.incapacitated())
@@ -77,7 +77,7 @@
 		on_mob.set_light_range_power_color(light, owner.light_power, colour)
 		glowing = light
 	else
-		glowing = 0
+		glowing = FALSE
 	on_mob.set_light_on(glowing)
 	return TRUE
 
@@ -98,7 +98,7 @@
 
 /obj/item/organ/internal/lantern/insert(mob/living/carbon/M, special, dont_remove_slot)
 	. = ..()
-	on_mob = M.mob_light()
+	on_mob = M.mob_light(_range = 0)
 
 /obj/item/organ/internal/lantern/remove(mob/living/carbon/M, special = 0)
 	if(ishuman(M))
@@ -108,10 +108,10 @@
 			colour = BlendRGB(H.m_colours["body"], H.m_colours["head"], 0.65)
 
 		if(glowing)
-			toggle_biolum(1)
+			toggle_biolum(TRUE)
 	QDEL_NULL(on_mob)
 
-	. = ..()
+	return ..()
 
 /obj/item/organ/internal/eyes/kidan
 	name = "kidan eyeballs"

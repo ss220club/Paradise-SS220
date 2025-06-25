@@ -3,6 +3,7 @@
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "explosion2"
 	duration = 6 SECONDS
+	light_system = MOVABLE_LIGHT
 	/// Smoke wave particle holder
 	var/obj/effect/abstract/particle_holder/smoke_wave
 	/// Explosion smoke particle holder

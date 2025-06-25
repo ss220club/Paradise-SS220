@@ -55,7 +55,6 @@
 	move_force = MOVE_FORCE_DEFAULT
 	loot = list(/obj/item/organ/internal/cyberimp/arm/razorwire/harbinger)
 	death_simplemob_representation = /obj/effect/temp_visual/dir_setting/syndicate_harbinger_death
-	light_system = MOVABLE_LIGHT
 	light_range = 2
 	light_power = 2
 	light_color = COLOR_RED

@@ -9,9 +9,8 @@
 	desc = "So generic, it might as well have no description at all."
 	icon = 'icons/obj/fish_items.dmi'
 	icon_state = "tank1"
-	density = FALSE
-	anchored = FALSE
-	pass_flags = 0
+	density = TRUE
+	anchored = TRUE
 	light_range = 2
 	light_power = 2
 	light_color = "#a0a080"
@@ -54,8 +53,6 @@
 	desc = "A large glass tank designed to house aquatic creatures. Contains an integrated water circulation system."
 	icon = 'icons/obj/fish_items.dmi'
 	icon_state = "tank1"
-	density = TRUE
-	anchored = TRUE
 	pass_flags = null
 
 	tank_type = "tank"
@@ -71,8 +68,6 @@
 	name = "wall aquarium"
 	desc = "This aquarium is massive! It completely occupies the same space as a wall, and looks very sturdy too!"
 	icon_state = "wall1"
-	density = TRUE
-	anchored = TRUE
 	pass_flags = 0				// This thing is the size of a wall, you can't throw past it.
 
 	tank_type = "wall"

@@ -5,6 +5,7 @@
 	desc = "A strange chunk of crystal, being in the presence of it fills you with equal parts excitement and dread."
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "anomaly_crystal"
+	light_system = MOVABLE_LIGHT
 	light_range = 8
 	power_state = NO_POWER_USE
 	density = TRUE

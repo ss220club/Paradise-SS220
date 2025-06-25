@@ -7,6 +7,7 @@
 	layer = HITSCAN_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = LONG_GLIDE
+	light_system = MOVABLE_LIGHT
 
 /obj/effect/projectile/singularity_pull()
 	return
@@ -58,10 +59,9 @@
 		pixel_y += round((cos(angle_override) + 16 * cos(angle_override) * 2), 1)
 
 /obj/effect/projectile_lighting
-	light_system = MOVABLE_LIGHT
 	var/owner
 
 /obj/effect/projectile_lighting/Initialize(mapload, color, range, intensity, owner_key)
 	. = ..()
-	set_light_range_power_color(range, intensity, color)
+	set_light(range, intensity, color)
 	owner = owner_key

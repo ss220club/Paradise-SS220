@@ -837,6 +837,7 @@ GLOBAL_LIST_EMPTY(proteon_portals)
 	desc = "An eerie translucent orb that feels impossibly light. Legends say summoning orbs are created from corrupted scrying orbs. If you hold it close to your ears, you can hear the screams of the damned."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state ="scrying_orb"
+	light_system = MOVABLE_LIGHT
 	light_range = 3
 	light_color = LIGHT_COLOR_RED
 	new_attack_chain = TRUE

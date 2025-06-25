@@ -575,7 +575,7 @@
 		matrix.Turn(original_angle)
 		thing.transform = matrix
 		thing.color = color
-		thing.set_light_range_power_color(muzzle_flash_range, muzzle_flash_intensity, muzzle_flash_color_override ? muzzle_flash_color_override : color)
+		thing.set_light(muzzle_flash_range, muzzle_flash_intensity, muzzle_flash_color_override ? muzzle_flash_color_override : color)
 		QDEL_IN(thing, duration)
 	if(impacting && impact_type && duration > 0)
 		var/datum/point_precise/p = beam_segments[beam_segments[length(beam_segments)]]
@@ -585,7 +585,7 @@
 		matrix.Turn(Angle)
 		thing.transform = matrix
 		thing.color = color
-		thing.set_light_range_power_color(impact_light_range, impact_light_intensity, impact_light_color_override ? impact_light_color_override : color)
+		thing.set_light(impact_light_range, impact_light_intensity, impact_light_color_override ? impact_light_color_override : color)
 		QDEL_IN(thing, duration)
 	if(cleanup)
 		cleanup_beam_segments()

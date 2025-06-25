@@ -231,6 +231,7 @@
 	desc = "A tiny pinkish gem. It catches the light oddly, almost glowing."
 	icon_state = "lens_gem"
 	w_class = WEIGHT_CLASS_TINY
+	light_system = MOVABLE_LIGHT
 	light_range = 1.4
 	light_power = 0.4
 	light_color = "#F42B9D"

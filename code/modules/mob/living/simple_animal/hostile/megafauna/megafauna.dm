@@ -8,6 +8,7 @@
 	environment_smash = ENVIRONMENT_SMASH_RWALLS
 	mob_biotypes = MOB_ORGANIC | MOB_EPIC
 	obj_damage = 400
+	light_system = MOVABLE_LIGHT
 	light_range = 3
 	faction = list("mining", "boss")
 	weather_immunities = list("lava","ash")

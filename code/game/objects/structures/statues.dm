@@ -56,6 +56,7 @@
 
 /obj/structure/statue/uranium
 	max_integrity = 300
+	light_system = MOVABLE_LIGHT
 	light_range = 2
 	material_drop_type = /obj/item/stack/sheet/mineral/uranium
 	var/last_event = 0
