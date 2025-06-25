@@ -11,6 +11,9 @@
 	icon_override = 'modular_ss220/clothing/icons/mob/shoes.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_on = FALSE
 	actions_types = list(/datum/action/item_action/toggle_light, /datum/action/item_action/change_color)
 	dyeable = FALSE
 	color = null
@@ -77,8 +80,8 @@
 		apply_neon_overlay(user)
 
 /// Toggles neon overlay and light emit
-/obj/item/clothing/shoes/black/neon/proc/toggle_glow(mob/user)
-	if(!user)
+/obj/item/clothing/shoes/black/neon/proc/toggle_glow(mob/user, force = FALSE)
+	if(!user && !force)
 		return
 	// Toggle neon overlay
 	if(!glow_active && user.get_item_by_slot(ITEM_SLOT_SHOES))
@@ -86,12 +89,8 @@
 	else if(neon_overlay)
 		remove_neon_overlay(user)
 	// Toggle light emit
-	if(!glow_active)
-		set_light(2)
-		glow_active = TRUE
-	else
-		set_light(0)
-		glow_active = FALSE
+	glow_active = !glow_active
+	set_light_on(glow_active)
 
 	update_icon(UPDATE_ICON_STATE)
 
@@ -102,6 +101,11 @@
 	light_color = temp
 	reload_neon_overlay(user)
 	update_icon(UPDATE_ICON_STATE)
+
+/obj/item/clothing/shoes/black/neon/extinguish_light(force)
+	. = ..()
+	if(glow_active)
+		toggle_glow(loc, TRUE)
 
 /* Shark Shoes */
 /obj/item/clothing/shoes/shark

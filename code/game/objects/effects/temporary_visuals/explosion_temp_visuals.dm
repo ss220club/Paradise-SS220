@@ -12,7 +12,7 @@
 
 /obj/effect/temp_visual/explosion/Initialize(mapload, radius, color, small = FALSE, large = FALSE)
 	. = ..()
-	set_light(radius, radius, LIGHT_COLOR_ORANGE)
+	set_light_range_power_color(radius, radius, LIGHT_COLOR_ORANGE)
 	generate_particles(radius, small, large)
 	var/image/I = image(icon, src, icon_state, 10, -32, -32)
 	var/matrix/rotate = matrix()
@@ -52,7 +52,7 @@
 	addtimer(CALLBACK(src, PROC_REF(set_count_short)), 1 SECONDS)
 
 /obj/effect/temp_visual/explosion/proc/set_count_short()
-	remove_light()
+	set_light_range_power_color(0, 0, 0)
 	explosion_smoke.particles.count = 0
 	sparks.particles.count = 0
 	smoke_wave.particles.count = 0

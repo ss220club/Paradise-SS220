@@ -93,7 +93,7 @@
 
 	if(istype(holder, /obj/item/flash/armimplant))
 		var/obj/item/flash/F = holder
-		F.set_light(0)
+		F.set_light_on(FALSE)
 
 	owner.transfer_item_to(holder, src, force = TRUE)
 	holder = null
@@ -115,7 +115,7 @@
 
 	if(istype(holder, /obj/item/flash/armimplant))
 		var/obj/item/flash/F = holder
-		F.set_light(7)
+		F.set_light_range(7)
 
 	var/arm_slot = (parent_organ == "r_arm" ? ITEM_SLOT_RIGHT_HAND : ITEM_SLOT_LEFT_HAND)
 	var/obj/item/arm_item = owner.get_item_by_slot(arm_slot)
@@ -718,9 +718,11 @@
 	force = 20 //bonk, not sharp
 	attack_verb = list("slamed", "punched", "parried", "judged", "styled on", "disrespected", "interrupted", "gored")
 	hitsound = 'sound/effects/bang.ogg'
+	light_system = MOVABLE_LIGHT
+	light_range = 3
 	light_power = 3
-	light_range = 0
 	light_color = "#9933ff"
+	light_on = FALSE
 	hit_reaction_chance = -1
 	flags = ABSTRACT
 	/// The damage the reflected projectile will be increased by
@@ -760,8 +762,8 @@
 		playsound(src, 'sound/weapons/effects/ric3.ogg', 100, TRUE)
 		return TRUE
 
-	set_light(3)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), 0), 0.25 SECONDS)
+	set_light_on(TRUE)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), FALSE), 0.25 SECONDS)
 
 	if(isprojectile(hitby))
 		var/obj/item/projectile/P = hitby

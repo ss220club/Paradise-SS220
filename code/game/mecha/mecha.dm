@@ -15,6 +15,9 @@
 	armor = list(melee = 20, bullet = 10, laser = 0, energy = 0, bomb = 0, rad = 0, fire = 100, acid = 75)
 	bubble_icon = "machine"
 	cares_about_temperature = TRUE
+	light_system = MOVABLE_LIGHT
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_power = LIGHTING_MINIMUM_POWER
 	var/list/facing_modifiers = list(MECHA_FRONT_ARMOUR = 1.5, MECHA_SIDE_ARMOUR = 1, MECHA_BACK_ARMOUR = 0.5)
 	var/initial_icon = null //Mech type for resetting icon. Only used for reskinning kits (see custom items)
 	var/can_move = 0 // time of next allowed movement
@@ -40,8 +43,6 @@
 	var/lights = FALSE
 	var/lights_power = 6
 	var/lights_range = 6
-	var/lights_power_ambient = LIGHTING_MINIMUM_POWER
-	var/lights_range_ambient = MINIMUM_USEFUL_LIGHT_RANGE
 	var/frozen = FALSE
 	var/repairing = FALSE
 	var/emp_proof = FALSE //If it is immune to emps
@@ -157,7 +158,6 @@
 	V.install(src)
 	qdel(V)
 
-	set_light(lights_range_ambient, lights_power_ambient)
 	update_icon(UPDATE_OVERLAYS)
 
 /obj/mecha/update_overlays()
@@ -1109,9 +1109,9 @@
 /obj/mecha/proc/toggle_lights(show_message = TRUE)
 	lights = !lights
 	if(lights)
-		set_light(lights_range, lights_power)
+		set_light_range_power_color(lights_power, lights_range, initial(light_color))
 	else
-		set_light(lights_range_ambient, lights_power_ambient)
+		set_light_range_power_color(initial(light_range), initial(light_power), initial(light_color))
 	if(show_message)
 		occupant_message("Toggled lights [lights ? "on" : "off"].")
 		log_message("Toggled lights [lights ? "on" : "off"].")

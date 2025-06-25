@@ -166,7 +166,7 @@
 		effect.alpha = min(255, muzzle_strength * 255)
 		if(chambered.muzzle_flash_color)
 			effect.color = chambered.muzzle_flash_color
-			effect.set_light(muzzle_range, muzzle_strength, chambered.muzzle_flash_color)
+			effect.set_light_range_power_color(muzzle_range, muzzle_strength, chambered.muzzle_flash_color)
 		else
 			effect.color = LIGHT_COLOR_TUNGSTEN
 
@@ -353,11 +353,8 @@
 					return
 				to_chat(user, "<span class='notice'>You click [S] into place on [src].</span>")
 				playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-				if(S.on)
-					set_light(0)
-				gun_light = S
+				set_gun_light(S)
 				update_icon()
-				update_gun_light(user)
 				var/datum/action/A = new /datum/action/item_action/toggle_gunlight(src)
 				if(loc == user)
 					A.Grant(user)
@@ -396,9 +393,8 @@
 		if(gun_light && can_flashlight)
 			for(var/obj/item/flashlight/seclite/S in src)
 				to_chat(user, "<span class='notice'>You unscrew the seclite from [src].</span>")
-				gun_light = null
-				S.loc = get_turf(user)
-				update_gun_light(user)
+				set_gun_light(null)
+				update_action_buttons()
 				S.update_brightness(user)
 				update_icon()
 				for(var/datum/action/item_action/toggle_gunlight/TGL in actions)
@@ -408,26 +404,32 @@
 			to_chat(user, "<span class='notice'>You remove [bayonet] from [src].</span>")
 			clear_bayonet()
 
+/// Called when gun_light value changes.
+/obj/item/gun/proc/set_gun_light(obj/item/flashlight/seclite/new_light)
+	if(gun_light == new_light)
+		return
+	. = gun_light
+	gun_light = new_light
+	if(gun_light)
+		gun_light.set_light_flags(gun_light.light_flags | LIGHT_ATTACHED)
+		if(gun_light.loc != src)
+			gun_light.forceMove(src)
+	else if(.)
+		var/obj/item/flashlight/seclite/old_gun_light = .
+		old_gun_light.set_light_flags(old_gun_light.light_flags & ~LIGHT_ATTACHED)
+		if(old_gun_light.loc == src)
+			old_gun_light.forceMove(get_turf(src))
+
+
 /obj/item/gun/proc/toggle_gunlight()
 	if(!gun_light)
 		return
 	gun_light.on = !gun_light.on
+	gun_light.update_brightness()
 	var/mob/living/carbon/human/user = usr
 	if(user)
 		to_chat(user, "<span class='notice'>You toggle the gun light [gun_light.on ? "on":"off"].</span>")
 	playsound(src, 'sound/weapons/empty.ogg', 100, 1)
-	update_gun_light(user)
-
-/obj/item/gun/proc/update_gun_light(mob/user = null)
-	if(gun_light)
-		if(gun_light.on)
-			set_light(gun_light.brightness_on)
-		else
-			set_light(0)
-		update_icon()
-	else
-		set_light(0)
-
 	update_action_buttons()
 
 /obj/item/gun/proc/clear_bayonet()
@@ -444,8 +446,6 @@
 	if(gun_light?.on)
 		toggle_gunlight()
 		visible_message("<span class='danger'>[src]'s light fades and turns off.</span>")
-
-
 
 /obj/item/gun/AltClick(mob/user)
 	..()

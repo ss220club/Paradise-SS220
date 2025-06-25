@@ -55,6 +55,10 @@
 	move_force = MOVE_FORCE_DEFAULT
 	loot = list(/obj/item/organ/internal/cyberimp/arm/razorwire/harbinger)
 	death_simplemob_representation = /obj/effect/temp_visual/dir_setting/syndicate_harbinger_death
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 2
+	light_color = COLOR_RED
 
 /obj/item/melee/razorwire/harbinger
 	force = 15
@@ -96,9 +100,7 @@
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/syndicate/Initialize(mapload)
 	. = ..()
 	qdel(miner_saw)
-	miner_saw = new/obj/item/melee/razorwire/harbinger(src)
-
-	set_light(2, 2, COLOR_RED)
+	miner_saw = new /obj/item/melee/razorwire/harbinger(src)
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/syndicate/DestroyPathToTarget()
 	if(!doors_opened)

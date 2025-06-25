@@ -519,7 +519,8 @@ GLOBAL_LIST_EMPTY(telecomms_trap_tank)
 	hologram.layer = FLY_LAYER
 	hologram.anchored = TRUE
 	hologram.name = speaking_name
-	hologram.set_light(2)
+	hologram.set_light_range(2)
+	hologram.set_light_on(TRUE)
 	hologram.bubble_icon = "swarmer"
 	hologram.pixel_y = 16
 	var/loops = 0

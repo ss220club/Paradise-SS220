@@ -6,8 +6,10 @@
 	amount_per_transfer_from_this = 15
 	volume = 15
 	materials = list(MAT_GLASS = 50)
-	var/light_intensity = 2
+	light_system = MOVABLE_LIGHT
+	light_range = 2
 	light_color = LIGHT_COLOR_LIGHTBLUE
+	light_on = FALSE
 	resistance_flags = FLAMMABLE
 
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass/bluespace
@@ -76,13 +78,13 @@
 	if(!isShotFlammable() || (resistance_flags & ON_FIRE)) //You can't light a shot that's not flammable!
 		return
 	..()
-	set_light(light_intensity, null, light_color)
+	set_light_on(TRUE)
 	visible_message("<span class = 'notice'>[src] begins to burn with a blue hue!</span>")
 	update_appearance(UPDATE_NAME|UPDATE_OVERLAYS)
 
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass/extinguish(silent = FALSE)
 	..()
-	set_light(0)
+	set_light_on(FALSE)
 	if(!silent)
 		visible_message("<span class = 'notice'>The dancing flame on [src] dies out.</span>")
 	update_appearance(UPDATE_NAME|UPDATE_OVERLAYS)

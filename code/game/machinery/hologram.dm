@@ -441,7 +441,6 @@ GLOBAL_LIST_EMPTY(holopads)
 		hologram.layer = FLY_LAYER //Above all the other objects/mobs. Or the vast majority of them.
 		hologram.anchored = TRUE //So space wind cannot drag it.
 		hologram.name = "[user.name] (hologram)" //If someone decides to right click.
-		hologram.set_light(2)	//hologram lighting
 		move_hologram()
 
 		eye = new /mob/camera/eye/hologram(src, user.name, src, user)
@@ -566,6 +565,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	var/mob/living/Impersonation
 	var/datum/holocall/HC
 	flags_2 = HOLOGRAM_2
+	light_system = MOVABLE_LIGHT
+	light_range = 2
 
 /obj/effect/overlay/holo_pad_hologram/Destroy()
 	Impersonation = null

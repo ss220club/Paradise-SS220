@@ -59,7 +59,7 @@
 	diag_hud_set_health()
 	if(camera)
 		camera.turn_off(src, FALSE)
-	update_headlamp(1) //So borg lights are disabled when killed.
+	update_headlamp(turn_off = TRUE) // So borg lights are disabled when killed.
 
 	if(in_contents_of(/obj/machinery/recharge_station))//exit the recharge station
 		var/obj/machinery/recharge_station/RC = loc

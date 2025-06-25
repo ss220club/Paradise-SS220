@@ -171,6 +171,10 @@
 	slowdown_active = SHOES_SLOWDOWN //wiz hardsuit already slows you down, no need to double it
 	magpulse_name = "gripping ability"
 	magical = TRUE
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_color = LIGHT_COLOR_LIGHTBLUE
+	light_on = FALSE
 
 /obj/item/clothing/shoes/magboots/wizard/toggle_magpulse(mob/user, no_message)
 	if(!user)
@@ -179,11 +183,7 @@
 		to_chat(user, "<span class='notice'>You poke the gem on [src]. Nothing happens.</span>")
 		return
 	..()
-	if(magpulse) //faint blue light when shoes are turned on gives a reason to turn them off when not needed in maint
-		set_light(2, 1, LIGHT_COLOR_LIGHTBLUE)
-	else
-		set_light(0)
-
+	set_light_on(magpulse) // faint blue light when shoes are turned on gives a reason to turn them off when not needed in maint
 
 /obj/item/clothing/shoes/magboots/gravity
 	name = "gravitational boots"

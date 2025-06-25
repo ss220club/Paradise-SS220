@@ -643,7 +643,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	belt_icon = null
 	toolspeed = 0.1
 	w_class = WEIGHT_CLASS_SMALL
-	light_intensity = 0
+	light_range = 0
 	origin_tech = "plasmatech=5;engineering=5;abductor=3"
 	requires_fuel = FALSE
 	refills_over_time = TRUE

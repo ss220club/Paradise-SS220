@@ -25,6 +25,10 @@
 	usesound = 'sound/items/welder.ogg'
 	drop_sound = 'sound/items/handling/weldingtool_drop.ogg'
 	pickup_sound =  'sound/items/handling/weldingtool_pickup.ogg'
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 0.75
+	light_on = FALSE
 	var/maximum_fuel = 20
 	/// Set to FALSE if it doesn't need fuel, but serves equally well as a cost modifier.
 	var/requires_fuel = TRUE
@@ -34,8 +38,6 @@
 	var/activation_sound = 'sound/items/welderactivate.ogg'
 	/// Sound played when turned off.
 	var/deactivation_sound = 'sound/items/welderdeactivate.ogg'
-	/// The brightness of the active flame.
-	var/light_intensity = 2
 	/// Does the icon_state change if the fuel is low?
 	var/low_fuel_changes_icon = TRUE
 	/// How often does the tool flash the user's eyes?
@@ -107,7 +109,6 @@
 		force = 15
 		hitsound = 'sound/items/welder.ogg'
 		playsound(loc, activation_sound, 50, 1)
-		set_light(light_intensity)
 	else
 		if(!refills_over_time)
 			STOP_PROCESSING(SSobj, src)
@@ -115,12 +116,12 @@
 		force = 3
 		hitsound = "swing_hit"
 		playsound(loc, deactivation_sound, 50, 1)
-		set_light(0)
 	update_icon()
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
+	set_light_on(tool_enabled)
 
 // If welding tool ran out of fuel during a construction task, construction fails.
 /obj/item/weldingtool/tool_use_check(mob/living/user, amount, silent = FALSE)
@@ -139,7 +140,7 @@
 /obj/item/weldingtool/tool_start_check(atom/target, mob/living/user, amount=0)
 	. = tool_use_check(user, amount)
 	if(. && user && !ismob(target)) // Don't flash the user if they're repairing robo limbs or repairing a borg etc. Only flash them if the target is an object
-		user.flash_eyes(light_intensity)
+		user.flash_eyes(light_range)
 
 /obj/item/weldingtool/use(amount)
 	amount = amount * bit_efficiency_mod
@@ -200,7 +201,7 @@
 	. = ..()
 	if(!. && user)
 		if(progress_flash_divisor == 0)
-			user.flash_eyes(min(light_intensity, 1))
+			user.flash_eyes(min(light_range, 1))
 			progress_flash_divisor = initial(progress_flash_divisor)
 		else
 			progress_flash_divisor--
@@ -272,7 +273,7 @@
 	belt_icon = "welder_research"
 	maximum_fuel = 40
 	toolspeed = 0.75
-	light_intensity = 1
+	light_range = 1
 
 /obj/item/weldingtool/research/suicide_act(mob/living/user)
 
@@ -320,7 +321,7 @@
 	maximum_fuel = 40
 	materials = list(MAT_METAL=70, MAT_GLASS=120)
 	origin_tech = "materials=4;engineering=4;bluespace=3;plasmatech=4"
-	light_intensity = 1
+	light_range = 1
 	toolspeed = 0.5
 	refills_over_time = TRUE
 	low_fuel_changes_icon = FALSE

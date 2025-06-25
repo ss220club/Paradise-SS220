@@ -13,6 +13,8 @@
 	emote_hear = list("barks!", "woofs!", "yaps.", "pants.")
 	emote_see = list("shakes its head.", "chases its tail.", "shivers.")
 	faction = list("neutral")
+	light_system = MOVABLE_LIGHT
+	light_on = FALSE
 	see_in_dark = 5
 	speak_chance = 1
 	turns_per_move = 10
@@ -265,7 +267,7 @@
 	emote_hear = list("barks!", "woofs!", "yaps.","pants.")
 	emote_see = list("shakes its head.", "chases its tail.","shivers.")
 	desc = initial(desc)
-	set_light(0)
+	set_light_on(FALSE)
 
 	if(inventory_head && inventory_head.dog_fashion)
 		var/datum/dog_fashion/DF = new inventory_head.dog_fashion(src)

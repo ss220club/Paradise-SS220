@@ -30,6 +30,10 @@
 	anchored = FALSE
 	base_state = "pflash"
 	density = TRUE
+	light_system = MOVABLE_LIGHT // Used as a flash here
+	light_range = FLASH_LIGHT_RANGE
+	light_power = FLASH_LIGHT_POWER
+	light_on = FALSE
 
 /obj/machinery/flasher/portable/Initialize(mapload)
 	. = ..()
@@ -38,10 +42,7 @@
 /obj/machinery/flasher/power_change()
 	if(!..())
 		return
-	if(stat & NOPOWER)
-		set_light(0)
-	else
-		set_light(1, LIGHTING_MINIMUM_POWER)
+	set_light_on(!(stat & NOPOWER))
 	update_icon()
 
 /obj/machinery/flasher/update_icon_state()
@@ -81,8 +82,8 @@
 
 	playsound(loc, 'sound/weapons/flash.ogg', 100, 1)
 	flick("[base_state]_flash", src)
-	set_light(2, 1, COLOR_WHITE)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), 0), 2)
+	set_light_on(TRUE)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), FALSE), FLASH_LIGHT_DURATION, TIMER_OVERRIDE | TIMER_UNIQUE)
 	last_flash = world.time
 	use_power(1000)
 

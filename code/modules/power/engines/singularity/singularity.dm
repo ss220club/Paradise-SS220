@@ -10,6 +10,7 @@ GLOBAL_VAR_INIT(global_singulo_id, 1)
 	density = TRUE
 	layer = MASSIVE_OBJ_LAYER
 	flags_2 = IMMUNE_TO_SHUTTLECRUSH_2
+	light_system = MOVABLE_LIGHT
 	light_range = 6
 	appearance_flags = LONG_GLIDE
 	var/current_size = 1
@@ -322,7 +323,7 @@ GLOBAL_VAR_INIT(global_singulo_id, 1)
 		desc = "[initial(desc)] It glows fiercely with inner fire."
 		name = "supermatter-charged [initial(name)]"
 		consumedSupermatter = TRUE
-		set_light(10)
+		set_light_range(10)
 	if(istype(A, /obj/singularity/narsie))
 		if(current_size == STAGE_SIX)
 			visible_message("<span class='userdanger'>[GET_CULT_DATA(entity_name, A.name)] is consumed by [src]!</span>")

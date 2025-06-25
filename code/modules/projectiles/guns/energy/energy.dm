@@ -77,7 +77,7 @@
 	Despite this, it is responsible for thwarting numerous attempted muggings, kidnappings, and assassinations across the Sector ever year."
 
 /obj/item/gun/energy/gun/mini/Initialize(mapload, ...)
-	gun_light = new /obj/item/flashlight/seclite(src)
+	set_gun_light(new /obj/item/flashlight/seclite(src))
 	. = ..()
 	cell.maxcharge = 600
 	cell.charge = 600

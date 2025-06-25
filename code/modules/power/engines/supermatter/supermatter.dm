@@ -240,6 +240,8 @@
 
 
 /obj/machinery/atmospherics/supermatter_crystal/Initialize(mapload)
+	if(moveable)
+		light_system = MOVABLE_LIGHT
 	. = ..()
 	supermatter_id = global_supermatter_id++
 	countdown = new(src)
@@ -962,35 +964,37 @@
 
 // Change how bright the rock is
 /obj/machinery/atmospherics/supermatter_crystal/proc/lights()
-	set_light(
-		l_range = 4 + power / 200,
-		l_power = 1 + power / 1000,
-		l_color = gasmix_power_ratio > 0.8 ? SUPERMATTER_RED : SUPERMATTER_COLOUR,
-	)
-
-	if(power > POWER_PENALTY_THRESHOLD)
-		set_light(
-			l_range = 4 + clamp(damage * power, 50, 500),
-			l_power = 3,
-			l_color = SUPERMATTER_TESLA_COLOUR,
-		)
-	if(combined_gas > MOLE_CRUNCH_THRESHOLD && get_integrity() > SUPERMATTER_DANGER_PERCENT)
-		set_light(
-			l_range = 4 + clamp((450 - damage) / 10, 1, 50),
-			l_power = 3,
-			l_color = SUPERMATTER_SINGULARITY_LIGHT_COLOUR,
-		)
 	if(combined_gas <= MOLE_CRUNCH_THRESHOLD || get_integrity() >= SUPERMATTER_DANGER_PERCENT)
+		if(combined_gas > MOLE_CRUNCH_THRESHOLD && get_integrity() > SUPERMATTER_DANGER_PERCENT)
+			set_light_range_power_color(
+				range = 4 + clamp((450 - damage) / 10, 1, 50),
+				power = 3,
+				color = SUPERMATTER_SINGULARITY_LIGHT_COLOUR,
+			)
+		else if(power > POWER_PENALTY_THRESHOLD)
+			set_light_range_power_color(
+				range = 4 + clamp(damage * power, 50, 500),
+				power = 3,
+				color = SUPERMATTER_TESLA_COLOUR,
+			)
+		else
+			set_light_range_power_color(
+			range = 4 + power / 200,
+			power = 1 + power / 1000,
+			color = gasmix_power_ratio > 0.8 ? SUPERMATTER_RED : SUPERMATTER_COLOUR,
+		)
+
 		for(var/obj/D in darkness_effects)
 			qdel(D)
 		return
 
 	var/darkness_strength = clamp((damage - 450) / 75, 1, 8) / 2
 	var/darkness_aoe = clamp((damage - 450) / 25, 1, 25)
-	set_light(
-		l_range = 4 + darkness_aoe,
-		l_power = -1 - darkness_strength,
-		l_color = "#ddd6cf")
+	set_light_range_power_color(
+		range = 4 + darkness_aoe,
+		power = -1 - darkness_strength,
+		color = "#ddd6cf",
+	)
 	if(!length(darkness_effects) && !moveable) //Don't do this on movable sms oh god. Ideally don't do this at all, but hey, that's lightning for you
 		darkness_effects += new /obj/effect/abstract(locate(x-3,y+3,z))
 		darkness_effects += new /obj/effect/abstract(locate(x+3,y+3,z))
@@ -998,10 +1002,11 @@
 		darkness_effects += new /obj/effect/abstract(locate(x+3,y-3,z))
 	else
 		for(var/obj/O in darkness_effects)
-			O.set_light(
-				l_range = 0 + darkness_aoe,
-				l_power = -1 - darkness_strength / 1.25,
-				l_color = "#ddd6cf")
+			O.set_light_range_power_color(
+				range = 0 + darkness_aoe,
+				power = -1 - darkness_strength / 1.25,
+				color = "#ddd6cf",
+			)
 
 /obj/effect/warp_effect/supermatter
 	plane = GRAVITY_PULSE_PLANE

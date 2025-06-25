@@ -1259,7 +1259,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		to_chat(src, "Свет в камерах отключён.")
 
 		for(var/obj/machinery/camera/C in lit_cameras)
-			C.set_light(0)
+			C.set_light_on(FALSE)
 			lit_cameras = list()
 
 		return

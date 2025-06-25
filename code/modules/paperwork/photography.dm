@@ -172,6 +172,11 @@
 	desc = "A polaroid camera."
 	icon_state = "camera"
 	item_state = "camera"
+	light_system = MOVABLE_LIGHT
+	light_range = 3
+	light_power = 2
+	light_color = LIGHT_COLOR_TUNGSTEN
+	light_on = FALSE
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_NECK
 	var/list/matter = list("metal" = 2000)
@@ -410,9 +415,9 @@ GLOBAL_LIST_INIT(SpookyGhosts, list("ghost","shade","shade2","ghost-narsie","hor
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 75, TRUE, -3)
 	if(flashing_light)
-		set_light(3, 2, LIGHT_COLOR_TUNGSTEN)
+		set_light_on(TRUE)
 		sleep(0.2 SECONDS) //Allow lights to update before capturing image
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), 0), 0.1 SECONDS)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light_on), FALSE), 0.1 SECONDS)
 
 	captureimage(target, user, flag)
 	pictures_left--

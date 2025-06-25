@@ -10,7 +10,9 @@
 	tint = FLASH_PROTECTION_WELDER
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = INFINITY, ACID = 150)
 	resistance_flags = FIRE_PROOF
-	var/brightness_on = 4 //luminosity when the light is on
+	light_system = MOVABLE_LIGHT
+	light_range = 4
+	light_on = FALSE
 	var/on = FALSE
 	var/smile = FALSE
 	var/smile_color = "#FF0000"
@@ -82,10 +84,10 @@
 			to_chat(user, "<span class='notice'>[src]'s torch can't pass through your welding visor!</span>")
 
 	if(!on || !up)
-		set_light(0)
+		set_light_on(FALSE)
 		return
 
-	set_light(brightness_on)
+	set_light_on(TRUE)
 
 /obj/item/clothing/head/helmet/space/plasmaman/extinguish_light(force = FALSE)
 	if(on)

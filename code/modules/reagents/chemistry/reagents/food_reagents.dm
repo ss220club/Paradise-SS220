@@ -10,6 +10,25 @@
 	taste_mult = 4
 	var/nutriment_factor = 1 * REAGENTS_METABOLISM
 	var/diet_flags = DIET_OMNI | DIET_HERB | DIET_CARN
+	// Lazy list of mobs affected by the luminosity of this reagent.
+	var/list/mobs_affected
+
+/datum/reagent/consumable/proc/add_reagent_light(mob/living/living_holder)
+	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = living_holder.mob_light(2)
+	LAZYSET(mobs_affected, living_holder, mob_light_obj)
+	RegisterSignal(living_holder, COMSIG_PARENT_QDELETING, PROC_REF(on_living_holder_deletion))
+
+/datum/reagent/consumable/proc/remove_reagent_light(mob/living/living_holder)
+	UnregisterSignal(living_holder, COMSIG_PARENT_QDELETING)
+	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = LAZYACCESS(mobs_affected, living_holder)
+	LAZYREMOVE(mobs_affected, living_holder)
+	if(mob_light_obj)
+		qdel(mob_light_obj)
+
+/datum/reagent/consumable/proc/on_living_holder_deletion(mob/living/source)
+	SIGNAL_HANDLER
+
+	remove_reagent_light(source)
 
 /datum/reagent/consumable/on_mob_life(mob/living/M)
 	if(ishuman(M) && !M.mind?.has_antag_datum(/datum/antagonist/vampire) && !HAS_TRAIT(M, TRAIT_I_WANT_BRAINS))
@@ -994,17 +1013,14 @@
 	id = "tinlux"
 	description = "A stimulating ichor which causes luminescent fungi to grow on the skin. "
 	color = "#b5a213"
-	var/light_activated = FALSE
 	taste_description = "tingling mushroom"
 
 /datum/reagent/consumable/tinlux/on_mob_life(mob/living/M)
-	if(!light_activated)
-		M.set_light(2)
-		light_activated = TRUE
+	add_reagent_light(M)
 	return ..()
 
 /datum/reagent/consumable/tinlux/on_mob_delete(mob/living/M)
-	M.set_light(0)
+	remove_reagent_light(M)
 
 /datum/reagent/consumable/vitfro
 	name = "Vitrium Froth"

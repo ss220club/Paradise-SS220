@@ -481,8 +481,11 @@
 	can_holster = TRUE
 	atom_say_verb = "beeps"
 	bubble_icon = "swarmer"
+	light_system = MOVABLE_LIGHT
+	light_range = 3
 	light_color = "#89078E"
 	light_power = 4
+	light_on = FALSE
 	var/overloaded = FALSE
 	var/warned = FALSE
 	var/charging = FALSE
@@ -555,7 +558,7 @@
 		cell.use(125)
 		playsound(C.loc, 'sound/machines/terminal_prompt_confirm.ogg', 75, 1)
 		atom_say("Overloading successful.")
-		set_light(3) //extra visual effect to make it more noticable to user and victims alike
+		set_light_on(TRUE) // extra visual effect to make it more noticable to user and victims alike
 		holder = C
 		RegisterSignal(holder, COMSIG_CARBON_SWAP_HANDS, PROC_REF(discharge))
 	else
@@ -566,7 +569,7 @@
 
 /obj/item/gun/energy/plasma_pistol/proc/reset_overloaded()
 	select_fire()
-	set_light(0)
+	set_light_on(FALSE)
 	overloaded = FALSE
 	warned = FALSE
 	UnregisterSignal(holder, COMSIG_CARBON_SWAP_HANDS)

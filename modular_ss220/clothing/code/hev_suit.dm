@@ -140,6 +140,9 @@
 	icon_state = "hev0"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	light_system = MOVABLE_LIGHT
+	light_range = 4
+	light_on = FALSE
 	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 5, RAD = 100, FIRE = 15, ACID = 20)
 	flags = BLOCKHAIR | STOPSPRESSUREDMAGE | THICKMATERIAL
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
@@ -148,7 +151,6 @@
 	flash_protect = FLASH_PROTECTION_WELDER
 	dog_fashion = null
 	var/on = FALSE
-	var/brightness_on = 4
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	var/hud_types = DATA_HUD_MEDICAL_ADVANCED
 
@@ -171,21 +173,19 @@
 		var/datum/atom_hud/H = GLOB.huds[new_hud]
 		H.remove_hud_from(user)
 
+/obj/item/clothing/head/helmet/hev_helmet/update_icon_state()
+	icon_state = "hev[light_on]"
+
 /obj/item/clothing/head/helmet/hev_helmet/ui_action_click(mob/user, toggle_helmet_light)
 	light_toggle(user)
 
-/obj/item/clothing/head/helmet/hev_helmet/proc/light_toggle(mob/user)
+/obj/item/clothing/head/helmet/hev_helmet/proc/light_toggle(mob/living/carbon/human/user)
 	on = !on
-	icon_state = "hev[on]"
+	set_light_on(on)
+	update_icon(UPDATE_ICON_STATE)
 
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_head()
-
-	if(on)
-		set_light(brightness_on)
-	else
-		set_light(0)
+	if(istype(user))
+		user.update_inv_head()
 
 /obj/item/clothing/head/helmet/hev_helmet/extinguish_light(force = FALSE)
 	if(on)

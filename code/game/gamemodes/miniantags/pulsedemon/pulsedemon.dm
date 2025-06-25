@@ -29,6 +29,10 @@
 	response_disarm = "pushes their hand through"
 	response_harm = "punches their fist through"
 	deathmessage = "fizzles out into faint sparks, leaving only a slight trail of smoke..."
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	/// The color of light the demon emits. The range of the light is proportional to energy stored.
+	light_color = "#bbbb00"
 	level = 1
 	plane = FLOOR_PLANE
 	layer = ABOVE_PLATING_LAYER
@@ -92,9 +96,6 @@
 
 	/// The time it takes to hijack APCs and cyborgs.
 	var/hijack_time = 20 SECONDS
-
-	/// The color of light the demon emits. The range of the light is proportional to energy stored.
-	var/glow_color = "#bbbb00"
 
 	/// Area being controlled, should be maintained as long as the demon does not move outside a container (APC, object, robot, bot).
 	var/area/controlling_area
@@ -235,7 +236,7 @@
 
 /mob/living/simple_animal/demon/pulse_demon/vv_edit_var(var_name, var_value)
 	switch(var_name)
-		if("glow_color")
+		if("light_color")
 			update_glow()
 		if("charge")
 			// automatically adjusts maxcharge to allow the new value
@@ -473,7 +474,7 @@
 /mob/living/simple_animal/demon/pulse_demon/proc/update_glow()
 	var/range = charge / 200000
 	range = clamp(range, 1.5, 5)
-	set_light(range, 2, glow_color)
+	set_light_range_power_color(range, light_range, light_color)
 
 /mob/living/simple_animal/demon/pulse_demon/proc/drain_APC(obj/machinery/power/apc/A, multiplier = 1)
 	if(A.being_hijacked)
@@ -898,10 +899,12 @@
 	name = "perpetual pacemaker"
 	desc = "It still beats furiously, thousands of bright lights shine within it."
 	color = COLOR_YELLOW
-
-/obj/item/organ/internal/heart/demon/pulse/Initialize(mapload)
-	. = ..()
-	set_light(13, 2, "#bbbb00")
+	light_system = MOVABLE_LIGHT
+	light_range = 13
+	light_power = 2
+	light_color = "#bbbb00"
+	/// Lighting we gift to our carrier
+	var/obj/effect/dummy/lighting_obj/moblight/on_mob
 
 /obj/item/organ/internal/heart/demon/pulse/attack_self__legacy__attackchain(mob/living/user)
 	. = ..()
@@ -912,12 +915,12 @@
 	. = ..()
 	M.AddComponent(/datum/component/cross_shock, 30, 500, 2 SECONDS)
 	ADD_TRAIT(M, TRAIT_SHOCKIMMUNE, UNIQUE_TRAIT_SOURCE(src))
-	M.set_light(3, 2, "#bbbb00")
+	on_mob = M.mob_light(3, light_power, light_color)
 
 /obj/item/organ/internal/heart/demon/pulse/remove(mob/living/carbon/M, special)
 	. = ..()
 	REMOVE_TRAIT(M, TRAIT_SHOCKIMMUNE, UNIQUE_TRAIT_SOURCE(src))
-	M.remove_light()
+	QDEL_NULL(on_mob)
 
 /obj/item/organ/internal/heart/demon/pulse/on_life()
 	if(!owner)

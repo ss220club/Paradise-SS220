@@ -82,6 +82,11 @@
 	/// How far (in pixels) should this atom scatter when created/dropped/etc. Does not apply to mapped-in items.
 	var/scatter_distance = 0
 
+	/// Lazylist to keep track on the sources of illumination
+	var/list/affected_dynamic_lights
+	/// Highest-intensity light affecting us, which determines our visibility
+	var/affecting_dynamic_lumi = 0
+
 /atom/movable/attempt_init(loc, ...)
 	var/turf/T = get_turf(src)
 	if(T && SSatoms.initialized != INITIALIZATION_INSSATOMS && GLOB.space_manager.is_zlevel_dirty(T.z))
@@ -104,6 +109,8 @@
 			add_overlay(list(em_block))
 	if(opacity)
 		AddElement(/datum/element/light_blocking)
+	if(light_system == MOVABLE_LIGHT)
+		AddComponent(/datum/component/overlay_lighting)
 
 /atom/movable/proc/update_emissive_block()
 	if(!em_block && !QDELETED(src))

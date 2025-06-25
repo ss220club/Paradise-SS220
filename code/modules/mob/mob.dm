@@ -1616,7 +1616,7 @@ GLOBAL_LIST_INIT(holy_areas, typecacheof(list(
 		antimagic_color = LIGHT_COLOR_DARK_BLUE
 		playsound(src, 'sound/magic/magic_block_mind.ogg', 50, TRUE)
 
-	mob_light(_color = antimagic_color, _range = 2, _power = 2, _duration = 5 SECONDS)
+	mob_light(_range = 2, _color = antimagic_color, _duration = 5 SECONDS)
 	add_overlay(antimagic_effect)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, cut_overlay), antimagic_effect), 5 SECONDS)
 

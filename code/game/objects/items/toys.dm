@@ -307,7 +307,7 @@
 	throw_range = 5
 	origin_tech = null
 	attack_verb = list("attacked", "struck", "hit")
-	brightness_on = 0
+	light_range = 0
 	needs_permit = FALSE
 
 /obj/item/dualsaber/toy/Initialize(mapload)
@@ -1056,9 +1056,11 @@
 	name = "borg plushie"
 	desc = "The synthetic backbone of the station, rendered in plush form. Features a built-in flashlight and polychromic fabric."
 	icon_state = "plushie_borg"
+	light_system = MOVABLE_LIGHT
+	light_range = 4
+	light_on = FALSE
 	var/borg_plushie_overlay = "plushie_borgassist"
 	var/plushie_module_selected = FALSE
-	var/on = FALSE
 
 /obj/item/toy/plushie/borgplushie/Initialize(mapload)
 	. = ..()
@@ -1126,29 +1128,25 @@
 /obj/item/toy/plushie/borgplushie/activate_self(mob/user)
 	if(..())
 		return
-	on = !on
 	update_brightness()
 
 /obj/item/toy/plushie/borgplushie/proc/update_brightness()
-	if(on)
-		set_light(4)
-	else
-		set_light(0)
+	set_light_on(!light_on)
 	update_icon()
 
 /obj/item/toy/plushie/borgplushie/update_overlays()
 	. = ..()
 	add_overlay(borg_plushie_overlay)
-	if(on)
+	if(light_on)
 		add_overlay("borglights")
 	else
 		cut_overlay("borglights")
 
 /obj/item/toy/plushie/borgplushie/extinguish_light(force = FALSE)
 	if(!force)
-		if(on)
+		if(light_on)
 			visible_message("<span class='danger'>[src]'s light grows dim...</span>")
-			on = !on
+			set_light_on(FALSE)
 			update_brightness()
 	else
 		atom_say("Self-destruct command received!</span>")

@@ -6,6 +6,7 @@
 	icon = 'icons/obj/aibots.dmi'
 	layer = MOB_LAYER - 0.1
 	mob_biotypes = MOB_ROBOTIC
+	light_system = MOVABLE_LIGHT
 	light_range = 3
 	light_power = 0.5
 	light_color = "#f3ffbb"
@@ -266,7 +267,7 @@
 		return FALSE
 	on = TRUE
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, "depowered")
-	set_light(initial(light_range))
+	set_light_on(TRUE)
 	update_icon()
 	update_controls()
 	diag_hud_set_botstat()
@@ -275,7 +276,7 @@
 /mob/living/simple_animal/bot/proc/turn_off()
 	on = FALSE
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, "depowered")
-	set_light(0)
+	set_light_on(FALSE)
 	bot_reset() // Resets an AI's call, should it exist.
 	update_icon()
 	update_controls()

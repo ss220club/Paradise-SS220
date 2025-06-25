@@ -10,6 +10,8 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	maxHealth = 100
 	health = 100
 	bubble_icon = "robot"
+	light_system = MOVABLE_LIGHT
+	light_on = FALSE
 	universal_understand = TRUE
 	deathgasp_on_death = TRUE
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
@@ -135,8 +137,6 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	var/lamp_max = 10
 	/// Luminosity of the headlamp. 0 is off. Higher settings than the minimum require power. Increments in steps of 2.
 	var/lamp_intensity = 0
-	/// Flag for if the headlamp is on cooldown after being forcibly disabled (e.g. by a shadow deamon).
-	var/lamp_recharging = FALSE
 
 	/// When the camera moved signal was sent last. Avoid overdoing it.
 	var/last_camera_update
@@ -164,6 +164,9 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	silicon_subsystems = list(
 		/mob/living/silicon/robot/proc/self_diagnosis,
 		/mob/living/silicon/proc/subsystem_law_manager)
+
+	/// If the headlamp is on cooldown after being forcibly disabled (e.g. by a shadow demon)
+	COOLDOWN_DECLARE(lamp_recharge)
 
 /mob/living/silicon/robot/get_cell()
 	return cell
@@ -1336,7 +1339,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	radio.interact(src)
 
 /mob/living/silicon/robot/proc/control_headlamp()
-	if(stat || lamp_recharging || low_power_mode)
+	if(stat || !COOLDOWN_FINISHED(src, lamp_recharge) || low_power_mode)
 		to_chat(src, "<span class='danger'>This function is currently offline.</span>")
 		return
 	if(is_ventcrawling(src))
@@ -1347,18 +1350,16 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	to_chat(src, "[lamp_intensity ? "Headlamp power set to Level [lamp_intensity/2]" : "Headlamp disabled."]")
 	update_headlamp()
 
-/mob/living/silicon/robot/proc/update_headlamp(turn_off = 0, cooldown = 100, show_warning = TRUE)
-	set_light(0)
-
+/mob/living/silicon/robot/proc/update_headlamp(turn_off = FALSE, cooldown = 10 SECONDS, show_warning = TRUE)
 	if(lamp_intensity && (turn_off || stat || low_power_mode))
+		set_light_on(FALSE)
 		if(show_warning)
 			to_chat(src, "<span class='danger'>Your headlamp has been deactivated.</span>")
 		lamp_intensity = 0
-		lamp_recharging = TRUE
-		spawn(cooldown) //10 seconds by default, if the source of the deactivation does not keep stat that long.
-			lamp_recharging = FALSE
+		COOLDOWN_START(src, lamp_recharge, cooldown)
 	else
-		set_light(light_range + lamp_intensity)
+		set_light_range(initial(light_range) + lamp_intensity)
+		set_light_on(TRUE)
 
 	if(lamp_button)
 		lamp_button.icon_state = "lamp[lamp_intensity]"
@@ -1659,7 +1660,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 
 
 /mob/living/silicon/robot/extinguish_light(force = FALSE)
-	update_headlamp(1, 150)
+	update_headlamp(turn_off = TRUE, cooldown = 15 SECONDS)
 
 /mob/living/silicon/robot/rejuvenate()
 	..()

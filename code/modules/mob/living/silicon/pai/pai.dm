@@ -2,6 +2,9 @@
 	name = "pAI"
 	icon = 'icons/mob/pai.dmi'//
 	icon_state = "repairbot"
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_on = FALSE
 
 	emote_type = 2		// pAIs emotes are heard, not seen, so they can be seen through a container (eg. person)
 	mob_size = MOB_SIZE_TINY
@@ -70,7 +73,6 @@
 	var/obj/item/assembly/signaler/integ_signaler
 
 	var/translator_on = FALSE // keeps track of the translator module
-	var/flashlight_on = FALSE //keeps track of the flashlight module
 
 	var/current_pda_messaging = null
 	var/custom_sprite = FALSE
@@ -461,9 +463,8 @@
 	loc = card
 
 /mob/living/silicon/pai/extinguish_light(force = FALSE)
-	flashlight_on = FALSE
-	set_light(0)
-	card.set_light(0)
+	set_light_on(FALSE)
+	card.set_light_on(FALSE)
 
 /mob/living/silicon/pai/update_runechat_msg_location()
 	if(istype(loc, /obj/item/paicard))

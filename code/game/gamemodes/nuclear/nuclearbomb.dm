@@ -25,6 +25,9 @@ GLOBAL_VAR(bomb_set)
 	rad_insulation_alpha = RAD_FULL_INSULATION
 	rad_insulation_beta = RAD_FULL_INSULATION
 	rad_insulation_gamma = RAD_FULL_INSULATION
+	light_system = MOVABLE_LIGHT
+	light_range = 1
+	light_power = LIGHTING_MINIMUM_POWER
 
 	/// Are our bolts *supposed* to be in the floor, may not actually cause anchoring if the bolts are cut
 	var/extended = TRUE
@@ -148,11 +151,11 @@ GLOBAL_VAR(bomb_set)
 /obj/machinery/nuclearbomb/update_overlays()
 	. = ..()
 	underlays.Cut()
-	set_light(0)
+	var/nuke_light = !wires.is_cut(WIRE_NUKE_LIGHT)
+	set_light_on(nuke_light)
 
-	if(!wires.is_cut(WIRE_NUKE_LIGHT))
+	if(nuke_light)
 		underlays += emissive_appearance(icon, sprite_prefix + "nukelights_lightmask")
-		set_light(1, LIGHTING_MINIMUM_POWER)
 
 	if(panel_open)
 		. += sprite_prefix + "hackpanel_open"

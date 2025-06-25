@@ -116,10 +116,9 @@
 	name = "glofish"
 	desc = "A small bio-luminescent fish. Not very bright, but at least it's pretty!"
 	icon_state = "glofish"
-
-/obj/item/fish/glofish/Initialize(mapload)
-	. = ..()
-	set_light(2, 1, "#99FF66")
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_color = "#99FF66"
 
 /obj/item/fish/electric_eel
 	name = "electric eel"

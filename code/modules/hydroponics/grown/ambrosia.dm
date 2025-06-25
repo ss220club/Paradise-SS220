@@ -84,6 +84,7 @@
 	icon_state = "ambrosia_gaia"
 	filling_color = rgb(255, 175, 0)
 	origin_tech = "biotech=6;materials=5"
+	light_system = MOVABLE_LIGHT
 	light_range = 3
 	seed = /obj/item/seeds/ambrosia/gaia
 	wine_power = 0.7

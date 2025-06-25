@@ -915,20 +915,22 @@
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 1 MINUTES
 	tick_interval = 0.2 SECONDS
+	/// Our shroud that makes everything dark
+	var/obj/effect/dummy/lighting_obj/moblight/shroud
 
 /datum/status_effect/reversed_sun/on_apply()
 	. = ..()
 	owner.become_nearsighted("REVERSED_SUN")
 	ADD_TRAIT(owner, TRAIT_NIGHT_VISION, "REVERSED_SUN")
 	owner.update_sight()
-	owner.set_light(7, -5, "#ddd6cf")
+	shroud = owner.mob_light(7, -5, "#ddd6cf")
 
 /datum/status_effect/reversed_sun/on_remove()
 	. = ..()
-	owner.remove_light()
 	owner.cure_nearsighted("REVERSED_SUN")
 	REMOVE_TRAIT(owner, TRAIT_NIGHT_VISION, "REVERSED_SUN")
 	owner.update_sight()
+	QDEL_NULL(shroud)
 
 /datum/status_effect/reversed_sun/tick()
 	for(var/atom/movable/AM in oview(8, owner))

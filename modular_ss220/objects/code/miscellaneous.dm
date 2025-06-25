@@ -38,12 +38,6 @@
 	picked_color = spotlight_color
 	update_icon(UPDATE_ICON_STATE)
 
-/obj/structure/marker_beacon/spotlight/yellow/update_icon_state()
-	set_light(light_range, light_power, LIGHT_COLOR_YELLOW)
-
-/obj/structure/marker_beacon/spotlight/jade/update_icon_state()
-	set_light(light_range, light_power, LIGHT_COLOR_BLUEGREEN)
-
 // Pamphlets
 /obj/item/paper/pamphlet
 	name = "pamphlet"

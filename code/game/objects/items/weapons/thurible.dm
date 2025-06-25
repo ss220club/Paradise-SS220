@@ -11,6 +11,11 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	flags = CONDUCT
 	container_type = REFILLABLE
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 0.3
+	light_color = "#E38F46"
+	light_on = FALSE
 	/// Whether or not the thurible can be loaded with harmful chems
 	var/corrupted = FALSE
 	/// Has the thurible been ignited?
@@ -140,7 +145,7 @@
 	reagents.set_reacting(TRUE)
 	reagents.handle_reactions()
 	START_PROCESSING(SSobj, src)
-	set_light(2, 0.3, "#E38F46")
+	set_light_on(TRUE)
 	update_appearance()
 	return TRUE
 
@@ -148,7 +153,7 @@
 /obj/item/thurible/proc/put_out(mob/user)
 	lit = FALSE
 	STOP_PROCESSING(SSobj, src)
-	set_light(0)
+	set_light_on(FALSE)
 	update_appearance()
 	return TRUE
 

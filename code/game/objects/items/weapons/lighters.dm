@@ -13,6 +13,11 @@
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb = null
 	resistance_flags = FIRE_PROOF
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 0.6
+	light_color = LIGHT_COLOR_FIRE
+	light_on = FALSE
 	var/lit = FALSE
 	/// Cooldown until the next turned on message/sound can be activated
 	var/next_on_message
@@ -36,6 +41,7 @@
 		turn_on_lighter(user)
 	else
 		turn_off_lighter(user)
+	set_light_on(lit)
 
 /obj/item/lighter/can_enter_storage(obj/item/storage/S, mob/user)
 	if(lit)
@@ -54,7 +60,6 @@
 
 	update_icon()
 	attempt_light(user)
-	set_light(2)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/lighter/proc/attempt_light(mob/living/user)
@@ -82,7 +87,6 @@
 	update_icon()
 	if(user)
 		show_off_message(user)
-	set_light(0)
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/lighter/extinguish_light(force)

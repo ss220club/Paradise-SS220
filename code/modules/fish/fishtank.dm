@@ -12,6 +12,10 @@
 	density = FALSE
 	anchored = FALSE
 	pass_flags = 0
+	light_range = 2
+	light_power = 2
+	light_color = "#a0a080"
+	light_on = FALSE
 
 	var/tank_type = ""			// Type of aquarium, used for icon updating
 	var/water_capacity = 0		// Number of units the tank holds (varies with tank type)
@@ -36,6 +40,7 @@
 	density = FALSE				// Small enough to not block stuff
 	anchored = FALSE			// Small enough to move even when filled
 	pass_flags = PASSTABLE // Just like at the county fair, you can't seem to throw the ball in to win the goldfish, and it's small enough to pull onto a table
+	light_system = MOVABLE_LIGHT
 	tank_type = "bowl"
 	water_capacity = 50			// Not very big, therefore it can't hold much
 	max_fish = 1				// What a lonely fish
@@ -96,7 +101,10 @@
 
 	light_switch = !light_switch
 	if(light_switch)
-		set_light(2, 2, "#a0a080")
+		if(light_system == MOVABLE_LIGHT)
+			set_light_on(TRUE)
+		else
+			set_light(light_range, light_power, light_color)
 	else
 		adjust_tank_light()
 
@@ -235,11 +243,18 @@
 		var/glo_light = 0
 		for(var/datum/fish/fish in fish_list)
 			if(istype(fish, /datum/fish/glofish))
-				glo_light ++
+				glo_light++
 		if(glo_light)
-			set_light(2, glo_light, "#99FF66")
+			if(light_system == MOVABLE_LIGHT)
+				set_light_range_power_color(2, glo_light, "#99FF66")
+			else
+				set_light(light_range, glo_light, "#99FF66")
 		else
-			set_light(0, 0)
+			if(light_system == MOVABLE_LIGHT)
+				set_light_range_power_color(initial(light_range), initial(light_power), initial(light_color))
+				set_light_on(FALSE)
+			else
+				set_light(0)
 
 /obj/machinery/fishtank/proc/adjust_water_level(amount = 0)
 	water_level = min(water_capacity, max(0, water_level + amount))

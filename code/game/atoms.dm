@@ -102,12 +102,18 @@
 	/*
 	Lighting Vars
 	*/
-	/// Intensity of the light. Can be negative to remove light
-	var/light_power = 1
+	/// Light systems, both shouldn't be active at the same time
+	var/light_system = STATIC_LIGHT
 	// Range in tiles of the light.
 	var/light_range = 0
+	/// Intensity of the light. Can be negative to remove light
+	var/light_power = 1
 	// Hexadecimal RGB string representing the colour of the light. ALWAYS REMEMBER TO MAKE SURE THIS CAN'T BE NULL/NEGATIVE
-	var/light_color
+	var/light_color = COLOR_WHITE
+	/// Boolean variable for toggleable lights. Has no effect without the proper light_system, light_range and light_power values
+	var/light_on = TRUE
+	/// Bitflags to determine lighting-related atom properties
+	var/light_flags = NONE
 
 	// Our light source. Don't fuck with this directly unless you have a good reason!
 	var/tmp/datum/light_source/light
@@ -187,7 +193,7 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
-	if(light_power && light_range)
+	if(light_system == STATIC_LIGHT && light_power && light_range)
 		update_light()
 
 	if(loc)
@@ -1234,12 +1240,25 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 	return
 
 /atom/vv_edit_var(var_name, var_value)
-	. = ..()
 	switch(var_name)
-		if("light_power", "light_range", "light_color")
-			update_light()
+		if("light_range")
+			if(light_system == STATIC_LIGHT)
+				set_light(l_range = var_value)
+			else
+				set_light_range(var_value)
+		if("light_power")
+			if(light_system == STATIC_LIGHT)
+				set_light(l_power = var_value)
+			else
+				set_light_power(var_value)
+		if("light_color")
+			if(light_system == STATIC_LIGHT)
+				set_light(l_color = var_value)
+			else
+				set_light_color(var_value)
 		if("color")
 			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
+	return ..()
 
 /atom/vv_get_dropdown()
 	. = ..()

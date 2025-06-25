@@ -27,6 +27,11 @@ LIGHTERS ARE IN LIGHTERS.DM
 	body_parts_covered = null
 	attack_verb = null
 	container_type = INJECTABLE
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 0.25
+	light_color = "#E38F46"
+	light_on = FALSE
 	new_attack_chain = TRUE
 	/// Is the cigarette lit?
 	var/lit = FALSE
@@ -257,7 +262,7 @@ LIGHTERS ARE IN LIGHTERS.DM
 		var/mob/living/carbon/C = loc
 		if(C.wear_mask == src) // Don't update if it's just in their hand
 			C.wear_mask_update(src)
-	set_light(2, 0.25, "#E38F46")
+	set_light_on(TRUE)
 	START_PROCESSING(SSobj, src)
 	playsound(src, 'sound/items/lighter/light.ogg', 25, TRUE)
 	return TRUE
@@ -301,7 +306,7 @@ LIGHTERS ARE IN LIGHTERS.DM
 
 /obj/item/clothing/mask/cigarette/proc/die()
 	var/turf/T = get_turf(src)
-	set_light(0)
+	set_light_on(FALSE)
 	var/obj/item/butt = new type_butt(T)
 	transfer_fingerprints_to(butt)
 	if(ismob(loc))

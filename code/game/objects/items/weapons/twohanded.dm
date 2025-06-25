@@ -114,11 +114,13 @@
 	max_integrity = 200
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 100, ACID = 70)
 	resistance_flags = FIRE_PROOF
+	light_system = MOVABLE_LIGHT
+	light_range = 4 // TWICE AS BRIGHT AS A REGULAR ESWORD
 	light_power = 2
+	light_on = FALSE
 	needs_permit = TRUE
 	var/hacked = FALSE
 	var/blade_color
-	var/brightness_on = 2
 	var/colormap = list(red = LIGHT_COLOR_RED, blue = LIGHT_COLOR_LIGHTBLUE, green = LIGHT_COLOR_GREEN, purple = LIGHT_COLOR_PURPLE, rainbow = LIGHT_COLOR_WHITE)
 	var/force_unwielded = 3
 	var/force_wielded = 34
@@ -129,6 +131,7 @@
 	. = ..()
 	if(!blade_color)
 		blade_color = pick("red", "blue", "green", "purple")
+	light_color = colormap[blade_color]
 	AddComponent(/datum/component/parry, \
 		_stamina_constant = 2, \
 		_stamina_coefficient = 0.25, \
@@ -148,10 +151,10 @@
 /obj/item/dualsaber/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		icon_state = "dualsaber[blade_color]1"
-		set_light(brightness_on, l_color=colormap[blade_color])
+		set_light_on(TRUE)
 	else
 		icon_state = "dualsaber0"
-		set_light(0)
+		set_light_on(FALSE)
 
 /obj/item/dualsaber/attack__legacy__attackchain(mob/target, mob/living/user)
 	if(cigarette_lighter_act(user, target))

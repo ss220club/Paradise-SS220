@@ -7,6 +7,10 @@
 	icon_state = "clockwork_marauder"
 	icon_living = "clockwork_marauder"
 	icon_dead = "clockwork_marauder_dead"
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 3
+	light_color = LIGHT_COLOR_FIRE
 	a_intent = INTENT_HARM
 	stop_automated_movement = TRUE
 	see_in_dark = 8
@@ -42,7 +46,6 @@
 /mob/living/simple_animal/hostile/clockwork_construct/clockwork_marauder/Initialize(mapload)
 	. = ..()
 	name = "[name] ([rand(1, 1000)])"
-	set_light(2, 3, l_color = LIGHT_COLOR_FIRE)
 	for(var/spell in construct_spells)
 		AddSpell(new spell(null))
 

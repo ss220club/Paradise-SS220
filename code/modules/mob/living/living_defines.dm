@@ -121,3 +121,5 @@
 	var/extra_message_range = 0
 	/// Sets our icon to `null` when `gib()` is used
 	var/gib_nullifies_icon = TRUE
+	/// Temp var before i or someone else move it to a datum, currently sets lighting around mob when ignited
+	var/moblight

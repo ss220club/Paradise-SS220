@@ -78,6 +78,8 @@
 	/// The destination z-level that atoms entering this turf will be automatically moved to.
 	var/destination_z
 
+	/// Lumcount added by sources other than lighting datum objects, such as the overlay lighting component
+	var/dynamic_lumcount = 0
 	var/dynamic_lighting = TRUE
 
 	var/tmp/lighting_corners_initialised = FALSE

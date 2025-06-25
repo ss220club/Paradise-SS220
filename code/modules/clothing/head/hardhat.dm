@@ -4,14 +4,17 @@
 	desc = "A piece of headgear used in dangerous working conditions to protect the head. Comes with a built-in flashlight."
 	icon_state = "hardhat0_yellow"
 	item_state = "hardhat0_yellow"
-	var/brightness_on = 4 //luminosity when on
-	var/on = FALSE
 	item_color = "yellow" //Determines used sprites: hardhat[on]_[color] and hardhat[on]_[color]2 (lying down sprite)
 	armor = list(MELEE = 10, BULLET = 5, LASER = 10, ENERGY = 5, BOMB = 10, RAD = 10, FIRE = INFINITY, ACID = 50)
 	flags_inv = 0
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	resistance_flags = FIRE_PROOF
 	dog_fashion = /datum/dog_fashion/head/hardhat
+	light_system = MOVABLE_LIGHT
+	/// Luminosity when on
+	light_range = 4
+	light_power = 0.8
+	light_on = FALSE
 	sprite_sheets = list(
 		"Grey" = 'icons/mob/clothing/species/grey/head.dmi',
 		"Vox" = 'icons/mob/clothing/species/vox/head.dmi'
@@ -21,31 +24,20 @@
 	toggle_helmet_light(user)
 
 /obj/item/clothing/head/hardhat/proc/toggle_helmet_light(mob/living/user)
-	on = !on
-	if(on)
-		turn_on(user)
-	else
-		turn_off(user)
+	set_light_on(!light_on)
 	update_icon(UPDATE_ICON_STATE)
 
 /obj/item/clothing/head/hardhat/update_icon_state()
-	icon_state = "hardhat[on]_[item_color]"
-	item_state = "hardhat[on]_[item_color]"
+	icon_state = "hardhat[light_on]_[item_color]"
+	item_state = "hardhat[light_on]_[item_color]"
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.update_inv_head()
 	update_action_buttons()
 
-/obj/item/clothing/head/hardhat/proc/turn_on(mob/user)
-	set_light(brightness_on)
-
-/obj/item/clothing/head/hardhat/proc/turn_off(mob/user)
-	set_light(0)
-
 /obj/item/clothing/head/hardhat/extinguish_light(force = FALSE)
-	if(on)
-		on = FALSE
-		turn_off()
+	if(light_on)
+		set_light_on(FALSE)
 		update_icon(UPDATE_ICON_STATE)
 		visible_message("<span class='danger'>[src]'s light fades and turns off.</span>")
 

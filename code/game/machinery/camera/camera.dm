@@ -10,15 +10,19 @@
 	resistance_flags = FIRE_PROOF
 	damage_deflection = 12
 	armor = list(MELEE = 50, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 0, RAD = 0, FIRE = 90, ACID = 50)
-	var/datum/wires/camera/wires = null // Wires datum
+	anchored = TRUE
 	max_integrity = 100
 	integrity_failure = 50
+	light_system = MOVABLE_LIGHT // not really, but let's try
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	light_range = AI_CAMERA_LUMINOSITY
+	light_on = FALSE
+	var/datum/wires/camera/wires = null // Wires datum
 	var/list/network = list("SS13")
 	var/list/previous_network
 	var/c_tag = null
 	var/c_tag_order = 999
 	var/status = TRUE
-	anchored = TRUE
 	var/start_active = FALSE //If it ignores the random chance to start broken on round start
 	var/invuln = null
 	var/obj/item/camera_assembly/assembly = null
@@ -35,7 +39,6 @@
 	var/emped = FALSE  //Number of consecutive EMP's on this camera
 
 	var/toggle_sound = 'sound/items/wirecutter.ogg'
-	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/list/localMotionTargets = list()
 	var/detectTime = 0
 	var/area/station/ai_monitored/area_motion = null
@@ -315,7 +318,7 @@
 		if(our_area)
 			LAZYREMOVE(our_area.cameras, UID())
 
-	set_light(0)
+	set_light_on(FALSE)
 
 	if(display_message)
 		if(user)
@@ -390,10 +393,7 @@
 		for(var/obj/machinery/camera/cam in A.lit_cameras)
 			if(cam == src)
 				return
-	if(on)
-		set_light(AI_CAMERA_LUMINOSITY)
-	else
-		set_light(0)
+	set_light_on(on)
 
 /obj/machinery/camera/proc/nano_structure()
 	var/cam[0]

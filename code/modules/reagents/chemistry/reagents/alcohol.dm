@@ -1611,24 +1611,20 @@
 	drink_name = "Sontse"
 	drink_desc = "The Sun, The Sun, The Sun, The Sun, The Sun, THE SUN!"
 	taste_description = "warmth and brightness"
-	var/light_activated = FALSE
 	goal_difficulty = REAGENT_GOAL_HARD
 
 /datum/reagent/consumable/ethanol/sontse/on_mob_life(mob/living/M)
 	if(current_cycle != 5 || !ismoth(M))
 		return ..()
 	to_chat(M, "<span class='warning'>The Sun was within you all this time!</span>")
-	if(!light_activated)
-		M.set_light(2)
-		light_activated = TRUE
+	add_reagent_light(M)
 	return ..()
 
 /datum/reagent/consumable/ethanol/sontse/on_mob_delete(mob/living/M)
 	if(!ismoth(M))
-		return ..()
+		return
 	to_chat(M, "<span class='warning'>The Sun within you subsides.</span>")
-	M.set_light(0)
-	..()
+	remove_reagent_light(M)
 
 /datum/reagent/consumable/ethanol/ahdomai_eclipse
 	name = "Ahdomai's Eclipse"

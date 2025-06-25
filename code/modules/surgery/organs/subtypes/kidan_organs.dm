@@ -18,6 +18,8 @@
 	parent_organ = "groin"
 	slot = "lantern"
 	actions_types = list(/datum/action/item_action/organ_action/toggle)
+	/// Light overlay for our mob
+	var/obj/effect/dummy/lighting_obj/moblight/on_mob
 	var/colour
 	var/glowing = 0
 
@@ -49,7 +51,7 @@
 			colour = BlendRGB(owner.m_colours["body"], owner.m_colours["head"], 0.65)	//then again im pretty bad at theoretics
 
 		if(new_light != glowing)
-			owner.set_light(new_light, l_color = colour)
+			on_mob.set_light_range_power_color(new_light, owner.light_power, colour)
 			glowing = new_light
 
 	return
@@ -72,14 +74,12 @@
 
 	if(!glowing)
 		var/light = calculate_glow(KIDAN_LANTERN_LIGHT)
-		owner.set_light(light, l_color = colour)
+		on_mob.set_light_range_power_color(light, owner.light_power, colour)
 		glowing = light
-		return 1
-
 	else
-		owner.set_light(0)
 		glowing = 0
-		return 1
+	on_mob.set_light_on(glowing)
+	return TRUE
 
 /obj/item/organ/internal/lantern/proc/calculate_glow(light)
 	if(!light)
@@ -96,6 +96,10 @@
 
 	return light - occlusion
 
+/obj/item/organ/internal/lantern/insert(mob/living/carbon/M, special, dont_remove_slot)
+	. = ..()
+	on_mob = M.mob_light()
+
 /obj/item/organ/internal/lantern/remove(mob/living/carbon/M, special = 0)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -105,6 +109,7 @@
 
 		if(glowing)
 			toggle_biolum(1)
+	QDEL_NULL(on_mob)
 
 	. = ..()
 

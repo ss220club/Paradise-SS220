@@ -2,6 +2,11 @@
 	name = "ambulance"
 	desc = "This is what the paramedic uses to run over people they need to take to medbay."
 	icon_state = "docwagon2"
+	light_system = MOVABLE_LIGHT
+	light_range = 4
+	light_power = 3
+	light_color = "#F70027"
+	light_on = FALSE
 	key_type = /obj/item/key/ambulance
 	var/obj/structure/bed/amb_trolley/bed = null
 	var/datum/action/ambulance_alarm/AA
@@ -40,12 +45,8 @@
 
 	cooldown = world.time
 
-	if(A.soundloop.muted)
-		A.soundloop.start()
-		A.set_light(4,3,"#F70027")
-	else
-		A.soundloop.stop()
-		A.set_light(0)
+	A.soundloop.muted ? A.soundloop.start() : A.soundloop.stop()
+	A.set_light_on(A.soundloop.muted)
 
 
 /datum/looping_sound/ambulance_alarm

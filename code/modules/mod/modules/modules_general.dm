@@ -216,12 +216,11 @@
 	cooldown_time = 0.5 SECONDS
 	overlay_state_inactive = "module_light"
 	overlay_state_active = "module_light_on"
+	light_system = MOVABLE_LIGHT
+	light_range = 4
+	light_power = 2
 	light_color = COLOR_WHITE
-	///The light power for the mod
-	var/mod_light_range = 4
-	///The light range for the mod
-	var/mod_light_power = 2
-	var/light_on = FALSE
+	light_on = FALSE
 	/// Charge drain per range amount.
 	var/base_power = DEFAULT_CHARGE_DRAIN * 0.1
 	/// Minimum range we can set.
@@ -241,23 +240,25 @@
 
 	COOLDOWN_RESET(src, activation_cooldown)
 
-	active_power_cost = base_power * mod_light_range
-	mod.set_light(mod_light_range, mod_light_power, light_color)
+	active_power_cost = base_power * light_range
+	set_light_flags(light_flags | LIGHT_ATTACHED)
+	set_light_on(TRUE)
 
 /obj/item/mod/module/flashlight/on_deactivation(display_message = TRUE, deleting = FALSE)
-	mod.set_light(0, mod_light_power, light_color)
+	set_light_flags(light_flags & ~LIGHT_ATTACHED)
+	set_light_on(FALSE)
 	. = ..()
 	if(!.)
 		return
 
 /obj/item/mod/module/flashlight/on_process()
-	active_power_cost = base_power * mod_light_range
+	active_power_cost = base_power * light_range
 	return ..()
 
 /obj/item/mod/module/flashlight/get_configuration()
 	. = ..()
 	.["light_color"] = add_ui_configuration("Light Color", "color", light_color)
-	.["light_range"] = add_ui_configuration("Light Range", "number", mod_light_range)
+	.["light_range"] = add_ui_configuration("Light Range", "number", light_range)
 
 /obj/item/mod/module/flashlight/configure_edit(key, value)
 	switch(key)
@@ -268,13 +269,11 @@
 			if(is_color_dark(value, 50))
 				to_chat(mod.wearer, ("<span class='warning'>That is too dark</span>"))
 				return
-			light_color = value
+			set_light_color(value)
 			mod.wearer.regenerate_icons()
 		if("light_range")
-			mod_light_range = (clamp(text2num(value), min_range, max_range))
-	mod.set_light(0, mod_light_power, light_color)
+			light_range = (clamp(text2num(value), min_range, max_range))
 	mod_color_overide = light_color
-	on_deactivation()
 
 /obj/item/mod/module/flashlight/extinguish_light(force)
 	. = ..()

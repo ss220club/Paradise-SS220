@@ -11,8 +11,8 @@
 	density = TRUE
 	/// Variable that tracks the screen we display.
 	var/icon_screen = "slots_screen"
-	/// Should we be emitting light?
-	var/brightness_on = TRUE
+	/// Light's range we emit
+	var/brightness_on = 1
 	/// The probability the player has to win.
 	var/win_prob = 5
 	/// The maximum amount of curses we will allow a player to have before disallowing them to use the machine.

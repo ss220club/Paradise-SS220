@@ -9,6 +9,9 @@
 	icon_state = "candle1"
 	item_state = "candle1"
 	w_class = WEIGHT_CLASS_TINY
+	light_system = MOVABLE_LIGHT
+	light_range = CANDLE_LUM
+	light_color = "#E09D37"
 	var/wax = 200
 	/// Index for the icon state
 	var/wax_index = TALL_CANDLE
@@ -16,7 +19,6 @@
 	var/infinite = FALSE
 	var/start_lit = FALSE
 	var/flickering = FALSE
-	light_color = "#E09D37"
 
 /obj/item/candle/New()
 	..()
@@ -62,7 +64,7 @@
 		lit = TRUE
 		if(show_message)
 			usr.visible_message(show_message)
-		set_light(CANDLE_LUM)
+		set_light_on(TRUE)
 		START_PROCESSING(SSobj, src)
 		update_icon(UPDATE_ICON_STATE)
 
@@ -110,7 +112,7 @@
 	if(lit)
 		lit = FALSE
 		update_icon(UPDATE_ICON_STATE)
-		set_light(0)
+		set_light_on(FALSE)
 
 
 /obj/item/candle/attack_self__legacy__attackchain(mob/user)
@@ -138,6 +140,7 @@
 
 /obj/item/candle/eternal/wizard
 	desc = "A candle. It smells like magic, so that would explain why it burns brighter."
+	light_range = CANDLE_LUM * 2
 	start_lit = TRUE
 
 /obj/item/candle/eternal/wizard/attack_self__legacy__attackchain(mob/user)
@@ -145,11 +148,6 @@
 
 /obj/item/candle/eternal/wizard/process()
 	return
-
-/obj/item/candle/eternal/wizard/light(show_message)
-	. = ..()
-	if(lit)
-		set_light(CANDLE_LUM * 2)
 
 
 /obj/item/candle/extinguish_light(force)

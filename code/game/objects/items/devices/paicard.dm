@@ -4,6 +4,9 @@
 	icon = 'icons/obj/aicards.dmi'
 	icon_state = "pai"
 	item_state = "electronic"
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_on = FALSE
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_BELT
 	origin_tech = "programming=2"
@@ -331,4 +334,4 @@
 /obj/item/paicard/extinguish_light(force = FALSE)
 	if(pai)
 		pai.extinguish_light()
-		set_light(0)
+		set_light_on(FALSE)

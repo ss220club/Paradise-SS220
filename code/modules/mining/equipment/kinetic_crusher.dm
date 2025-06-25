@@ -9,6 +9,9 @@
 	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
 	icon_state = "crusher"
 	item_state = "crusher0"
+	light_system = MOVABLE_LIGHT
+	light_range = 5
+	light_on = FALSE
 	force = 0 //You can't hit stuff unless wielded
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
@@ -25,8 +28,6 @@
 	var/charge_time = 15
 	var/detonation_damage = 50
 	var/backstab_bonus = 30
-	var/light_on = FALSE
-	var/brightness_on = 5
 	var/adaptive_damage_bonus = 0
 	/// Amount of force typically assigned when wielded
 	var/base_force_wielded = 20
@@ -169,16 +170,9 @@
 		playsound(src.loc, 'sound/weapons/kenetic_reload.ogg', 60, 1)
 
 /obj/item/kinetic_crusher/ui_action_click(mob/user, actiontype)
-	light_on = !light_on
+	set_light_on(!light_on)
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
-	update_brightness(user)
 	update_icon()
-
-/obj/item/kinetic_crusher/proc/update_brightness(mob/user = null)
-	if(light_on)
-		set_light(brightness_on)
-	else
-		set_light(0)
 
 /obj/item/kinetic_crusher/update_icon_state()
 	item_state = "crusher[HAS_TRAIT(src, TRAIT_WIELDED)]"

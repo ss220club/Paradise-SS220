@@ -16,6 +16,10 @@
 	desc = "An energy ball."
 	icon = 'icons/obj/tesla_engine/energy_ball.dmi'
 	icon_state = "energy_ball"
+	light_range = 10
+	light_power = 7
+	light_color = "#5e5edd"
+	light_on = FALSE
 	pixel_x = -32
 	pixel_y = -32
 	current_size = STAGE_TWO
@@ -53,7 +57,7 @@
 	AddElement(/datum/element/connect_loc, loc_connections)
 	. = ..()
 	if(!is_miniball)
-		set_light(10, 7, "#5e5edd")
+		set_light_on(TRUE)
 	else
 		// This gets added by the parent call
 		GLOB.poi_list -= src

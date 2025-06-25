@@ -206,7 +206,7 @@
 /obj/item/food/grown/extinguish_light(force)
 	if(seed.get_gene(/datum/plant_gene/trait/glow/shadow))
 		return
-	set_light(0)
+	set_light_on(FALSE)
 
 /obj/item/food/grown/proc/send_plant_details(mob/user)
 	var/msg = "<span class='notice'>This is \a </span><span class='name'>[src].</span>\n"

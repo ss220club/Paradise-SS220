@@ -37,11 +37,22 @@
 	var/organ_explosion_thrown_speed = 2
 	var/max_light_impact_range = 4
 	var/max_flash_range = 12
+	var/obj/effect/dummy/lighting_obj/nucleation_light
+
+/datum/species/nucleation/Destroy(force)
+	QDEL_NULL(nucleation_light)
+	return ..()
 
 /datum/species/nucleation/on_species_gain(mob/living/carbon/human/H)
-	..()
-	H.light_color = "#1C1C00"
-	H.set_light(2)
+	. = ..()
+	if(istype(H))
+		nucleation_light = H.mob_light()
+		nucleation_light.set_light_range_power_color(2, nucleation_light.light_range, "#1C1C00")
+		nucleation_light.set_light_on(TRUE)
+
+/datum/species/nucleation/on_species_loss(mob/living/carbon/human/H)
+	QDEL_NULL(nucleation_light)
+	return ..()
 
 /datum/species/nucleation/handle_death(gibbed, mob/living/carbon/human/H)
 	var/turf/T = get_turf(H)

@@ -109,11 +109,11 @@
 /obj/item/wrench/medical/suicide_act(mob/living/user)
 	user.visible_message("<span class='suicide'>[user] is praying to the medical wrench to take [user.p_their()] soul. It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	// HAVE THEM GLOW WITH THE BRIGHTNESS OF A THOUSAND SUNS
-	user.set_light(10, 25, rgb(255, 252, 82))
+	user.mob_light(10, 25, "#FFFC52")
 
 	var/previous_color = user.color
 
-	user.color = rgb(255, 252, 82)
+	user.color = "#fffc52"
 
 	// thank you vi3
 	user.add_filter("sacrifice_glow", 2, list("type" = "outline", "color" = "#55dcfdd2", "size" = 2))

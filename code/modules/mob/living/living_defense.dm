@@ -185,7 +185,9 @@
 	if(fire_stacks > 0 && !on_fire && !HAS_TRAIT(src, TRAIT_NOFIRE))
 		on_fire = TRUE
 		visible_message("<span class='warning'>[src] catches fire!</span>", "<span class='userdanger'>You're set on fire!</span>")
-		set_light(light_range + 3,l_color = "#ED9200")
+		if(moblight)
+			qdel(moblight)
+			moblight = new /obj/effect/dummy/lighting_obj/moblight(src, light_range + 3, light_power, "#ED9200")
 		throw_alert("fire", /atom/movable/screen/alert/fire)
 		update_fire()
 		SEND_SIGNAL(src, COMSIG_LIVING_IGNITED)
@@ -196,7 +198,7 @@
 	if(on_fire)
 		on_fire = 0
 		fire_stacks = 0
-		set_light(max(0,light_range - 3))
+		qdel(moblight)
 		clear_alert("fire")
 		update_fire()
 

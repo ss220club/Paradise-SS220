@@ -32,7 +32,6 @@
 	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
 	icon_state = "mid_dualsaber0"
 	blade_color = "midnight"
-	colormap = LIGHT_COLOR_RED
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/mid_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/mid_saberoff.ogg'
 	var/saber_name = "mid"
@@ -41,19 +40,21 @@
 	var/ranged = FALSE
 	var/power = 1
 	var/refusal_text = "Злоба неподвластна твоей воле, усмрить её сможет лишь сильнейший."
+	var/saber_color = LIGHT_COLOR_RED
 	var/datum/enchantment/enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/Initialize(mapload)
 	. = ..()
+	set_light_color(saber_color)
 	AddComponent(/datum/component/ckey_and_role_locked_pickup, TRUE, LEGENDARY_SWORDS_CKEY_WHITELIST, pickup_damage = 10, refusal_text = refusal_text)
 
 /obj/item/dualsaber/legendary_saber/update_icon_state()
-	if(HAS_TRAIT(src, TRAIT_WIELDED))
+	var/saber_active = HAS_TRAIT(src, TRAIT_WIELDED)
+	if(saber_active)
 		icon_state = "[saber_name]_dualsaber[blade_color]1"
-		set_light(brightness_on, l_color=colormap)
 	else
 		icon_state = "[saber_name]_dualsaber0"
-		set_light(0)
+	set_light_on(saber_active)
 
 /obj/item/dualsaber/legendary_saber/on_wield(obj/item/source, mob/living/carbon/user)
 	if(user && HAS_TRAIT(user, TRAIT_HULK))
@@ -73,7 +74,7 @@
 	icon_state = "gr_dualsaber0"
 	blade_color = "gromov"
 	refusal_text = "Ну, заплачь."
-	colormap = LIGHT_COLOR_LIGHT_CYAN
+	saber_color = LIGHT_COLOR_LIGHT_CYAN
 	saber_name = "gr"
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/gr_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/gr_saberoff.ogg'
@@ -85,7 +86,7 @@
 	icon_state = "sh_dualsaber0"
 	blade_color = "sharlotta"
 	refusal_text = "Кровь и свет принадлежат лишь одному."
-	colormap = LIGHT_COLOR_LAVENDER
+	saber_color = LIGHT_COLOR_LAVENDER
 	saber_name = "sh"
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/sh_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/sh_saberoff.ogg'
@@ -97,7 +98,7 @@
 	icon_state = "kir_dualsaber0"
 	blade_color = "kirien"
 	refusal_text = "Только достойный узрит свет."
-	colormap = LIGHT_COLOR_PURE_GREEN
+	saber_color = LIGHT_COLOR_PURE_GREEN
 	saber_name = "kir"
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/kir_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kir_saberoff.ogg'
@@ -109,7 +110,7 @@
 	icon_state = "norm_dualsaber0"
 	blade_color = "normandy"
 	refusal_text = "Ты не принадлежишь сестре, верни её законному владельцу."
-	colormap = LIGHT_COLOR_HOLY_MAGIC
+	saber_color = LIGHT_COLOR_HOLY_MAGIC
 	saber_name = "norm"
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberoff.ogg'
@@ -121,7 +122,7 @@
 	icon_state = "kel_dualsaber0"
 	blade_color = "kelly"
 	refusal_text = "Ловец бегущих не слушается тебя, кажется он хочет вернуться к хозяину."
-	colormap = LIGHT_COLOR_HOLY_MAGIC
+	saber_color = LIGHT_COLOR_HOLY_MAGIC
 	saber_name = "kel"
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberoff.ogg'

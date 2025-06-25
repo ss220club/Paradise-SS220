@@ -9,6 +9,9 @@
 	response_harm = "punches"
 	icon = 'icons/mob/cult.dmi'
 	icon_dead = "shade_dead"
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 3
 	speed = 0
 	a_intent = INTENT_HARM
 	stop_automated_movement = TRUE
@@ -34,6 +37,7 @@
 	var/playstyle_string = "<b>You are a generic construct! Your job is to not exist, and you should probably adminhelp this.</b>"
 
 /mob/living/simple_animal/hostile/construct/Initialize(mapload)
+	set_light_color(GET_CULT_DATA(construct_glow, LIGHT_COLOR_BLOOD_MAGIC))
 	. = ..()
 	name = "[GET_CULT_DATA(get_name(construct_type), construct_type)] ([rand(1, 1000)])"
 	real_name = GET_CULT_DATA(get_name(construct_type), construct_type)
@@ -42,8 +46,6 @@
 
 	for(var/spell in construct_spells)
 		AddSpell(new spell(null))
-
-	set_light(2, 3, l_color = GET_CULT_DATA(construct_glow, LIGHT_COLOR_BLOOD_MAGIC))
 
 /mob/living/simple_animal/hostile/construct/death(gibbed)
 	// we also drop our heldbody from the /construct_held_body component, as well as our cult/wiz construct antag datums
@@ -357,7 +359,7 @@
 	if(holy) // Already holy-fied
 		return
 	holy = TRUE
-	set_light(3, 5, LIGHT_COLOR_DARK_BLUE)
+	set_light_range_power_color(3, 5, LIGHT_COLOR_DARK_BLUE)
 	name = "Holy [name]"
 	real_name = "Holy [real_name]"
 	faction.Remove("cult")

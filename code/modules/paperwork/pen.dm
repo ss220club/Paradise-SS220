@@ -207,10 +207,11 @@
 // E-DAGGER
 
 /obj/item/pen/edagger
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_color = LIGHT_COLOR_RED
 	origin_tech = "combat=3;syndicate=1"
 	var/active = FALSE
-	var/brightness_on = 2
-	light_color = LIGHT_COLOR_RED
 	var/backstab_sound = 'sound/items/unsheath.ogg'
 	var/backstab_damage = 12
 	armour_penetration_flat = 20
@@ -282,7 +283,6 @@
 		throwforce = initial(throwforce)
 		playsound(user, 'sound/weapons/saberoff.ogg', 2, 1)
 		to_chat(user, "<span class='warning'>[src] can now be concealed.</span>")
-		set_light(0)
 	else
 		active = TRUE
 		force = 18
@@ -294,7 +294,7 @@
 		throwforce = 35
 		playsound(user, 'sound/weapons/saberon.ogg', 2, TRUE)
 		to_chat(user, "<span class='warning'>[src] is now active.</span>")
-		set_light(brightness_on, 1)
+	set_light_on(active)
 	set_sharpness(active)
 	update_icon()
 

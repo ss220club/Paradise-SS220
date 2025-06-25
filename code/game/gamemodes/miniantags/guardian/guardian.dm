@@ -11,6 +11,9 @@
 	icon_state = "magicOrange"
 	icon_living = "magicOrange"
 	icon_dead = "magicOrange"
+	light_system = MOVABLE_LIGHT
+	light_range = 3
+	light_on = FALSE
 	speed = 0
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	see_in_dark = 2
@@ -36,8 +39,6 @@
 	var/summoned = FALSE
 	var/cooldown = 0
 	var/damage_transfer = 1 //how much damage from each attack we transfer to the owner
-	var/light_on = FALSE
-	var/luminosity_on = 3
 	var/mob/living/summoner
 	var/range = 10 //how far from the user the spirit can be
 	var/playstyle_string = "You are a standard Guardian. You shouldn't exist!"
@@ -250,13 +251,8 @@
 
 
 /mob/living/simple_animal/hostile/guardian/proc/ToggleLight()
-	if(!light_on)
-		set_light(luminosity_on)
-		to_chat(src, "<span class='notice'>You activate your light.</span>")
-	else
-		set_light(0)
-		to_chat(src, "<span class='notice'>You deactivate your light.</span>")
-	light_on = !light_on
+	set_light_on(!light_on)
+	to_chat(src, "<span class='notice'>You [light_on ? "" : "de"]activate your light.</span>")
 
 ////////Creation
 

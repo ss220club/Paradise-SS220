@@ -287,33 +287,36 @@
 	base_cooldown = 10 SECONDS
 	action_icon_state = "eternal_darkness"
 	required_blood = 5
-	var/shroud_power = -6
 
-/datum/spell/vampire/self/eternal_darkness/cast(list/targets, mob/user)
+/datum/spell/vampire/self/eternal_darkness/cast(list/targets, mob/living/user)
 	var/datum/antagonist/vampire/V = user.mind.has_antag_datum(/datum/antagonist/vampire)
-	var/mob/target = targets[1]
 	if(!V.get_ability(/datum/vampire_passive/eternal_darkness))
 		V.force_add_ability(/datum/vampire_passive/eternal_darkness)
-		target.set_light(8, shroud_power, "#ddd6cf")
 	else
 		for(var/datum/vampire_passive/eternal_darkness/E in V.powers)
 			V.remove_ability(E)
 
 /datum/vampire_passive/eternal_darkness
 	gain_desc = "You surround yourself in a unnatural darkness, freezing those around you and dimming energy projectiles."
+	var/datum/antagonist/vampire/our_vampire
+	/// Our shroud that makes everything dark
+	var/obj/effect/dummy/lighting_obj/moblight/shroud
+	/// Power of our shroud
+	var/shroud_power = -6
 
 /datum/vampire_passive/eternal_darkness/New()
 	..()
+	our_vampire = owner.mind.has_antag_datum(/datum/antagonist/vampire)
+	shroud = owner.mob_light(8, shroud_power, "#ddd6cf")
 	START_PROCESSING(SSfastprocess, src)
 
 /datum/vampire_passive/eternal_darkness/Destroy(force, ...)
-	owner.remove_light()
 	STOP_PROCESSING(SSfastprocess, src)
+	our_vampire = null
+	QDEL_NULL(shroud)
 	return ..()
 
 /datum/vampire_passive/eternal_darkness/process()
-	var/datum/antagonist/vampire/V = owner.mind.has_antag_datum(/datum/antagonist/vampire)
-
 	for(var/mob/living/L in view(8, owner))
 		if(L.affects_vampire(owner))
 			L.adjust_bodytemperature(-3 * TEMPERATURE_DAMAGE_COEFFICIENT) //The dark is cold and unforgiving. Equivelnt to -60 with previous values.
@@ -321,10 +324,10 @@
 		if(P.flag == ENERGY || P.flag == LASER)
 			P.damage *= 0.7
 
-	V.bloodusable = max(V.bloodusable - 0.25, 0) //2.5 per second, 5 per 2, same as before
+	our_vampire.bloodusable = max(our_vampire.bloodusable - 0.25, 0) //2.5 per second, 5 per 2, same as before
 
-	if(!V.bloodusable || owner.stat == DEAD)
-		V.remove_ability(src)
+	if(!our_vampire.bloodusable || owner.stat == DEAD)
+		our_vampire.remove_ability(src)
 
 /datum/vampire_passive/vision/xray
 	gain_desc = "You can now see through walls, incase you hadn't noticed."

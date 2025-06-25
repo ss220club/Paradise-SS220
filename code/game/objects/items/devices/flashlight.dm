@@ -10,8 +10,11 @@
 	materials = list(MAT_METAL = 200, MAT_GLASS = 100)
 	actions_types = list(/datum/action/item_action/toggle_light)
 	light_color = "#ffffd0"
+	light_system = MOVABLE_LIGHT
+	light_range = 4
+	light_on = FALSE
+	/// Whether we are turned on or off
 	var/on = FALSE
-	var/brightness_on = 4 //luminosity when on
 	var/togglesound = 'sound/weapons/empty.ogg'
 
 /obj/item/flashlight/Initialize(mapload)
@@ -19,16 +22,10 @@
 	update_brightness()
 
 /obj/item/flashlight/update_icon_state()
-	if(on)
-		icon_state = "[initial(icon_state)]-on"
-	else
-		icon_state = "[initial(icon_state)]"
+	icon_state = "[initial(icon_state)][on ? "-on" : ""]"
 
 /obj/item/flashlight/proc/update_brightness()
-	if(on)
-		set_light(brightness_on)
-	else
-		set_light(0)
+	set_light_on(on)
 	update_icon()
 
 /obj/item/flashlight/attack_self__legacy__attackchain(mob/user)
@@ -94,7 +91,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BOTH_EARS
 	flags = CONDUCT
-	brightness_on = 2
+	light_range = 2
 	var/colour = "blue" // Ink color
 
 /obj/item/flashlight/seclite
@@ -103,7 +100,7 @@
 	icon_state = "seclite"
 	item_state = "seclite"
 	force = 9 // Not as good as a stun baton.
-	brightness_on = 5 // A little better than the standard flashlight.
+	light_range = 5 // A little better than the standard flashlight.
 	hitsound = 'sound/weapons/genhit1.ogg'
 
 /obj/item/flashlight/drone
@@ -112,7 +109,7 @@
 	icon_state = "penlight"
 	item_state = ""
 	flags = CONDUCT
-	brightness_on = 2
+	light_range = 2
 	w_class = WEIGHT_CLASS_TINY
 
 // the desk lamps are a bit special
@@ -121,7 +118,7 @@
 	desc = "A desk lamp with an adjustable mount."
 	icon_state = "lamp"
 	item_state = "lamp"
-	brightness_on = 5
+	light_range = 5
 	w_class = WEIGHT_CLASS_BULKY
 	flags = CONDUCT
 	materials = list()
@@ -161,26 +158,25 @@
 /obj/item/flashlight/flare
 	name = "flare"
 	desc = "A red Nanotrasen issued flare. There are instructions on the side, it reads 'pull cord, make light'."
-	brightness_on = 8
-	light_color = "#ff0000"
+	light_range = 8
+	light_color = LIGHT_COLOR_PURE_RED
 	icon_state = "flare"
 	item_state = "flare"
 	togglesound = 'sound/goonstation/misc/matchstick_light.ogg'
-	var/fuel = 0
+	/// Whether or not we start with a fuel
+	var/fuel = TRUE
 	var/on_damage = 7
 	var/produce_heat = 1500
 	var/fuel_lower = 800
 	var/fuel_upp = 1000
 
-/obj/item/flashlight/flare/New()
-	fuel = rand(fuel_lower, fuel_upp)
-	..()
+/obj/item/flashlight/flare/Initialize(mapload)
+	if(fuel)
+		fuel = rand(fuel_lower, fuel_upp)
+	return ..()
 
 /obj/item/flashlight/flare/update_icon_state()
-	if(on)
-		item_state = "[initial(item_state)]-on"
-	else
-		item_state = "[initial(item_state)]"
+	item_state = "[initial(item_state)][on ? "-on" : ""]"
 
 	if(!fuel)
 		icon_state = "[initial(icon_state)]-empty"
@@ -229,20 +225,10 @@
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/flare/used
+	fuel = FALSE
 
-/obj/item/flashlight/flare/used/Initialize(mapload)
-	. = ..()
-	// fuel gets set on New which is annoying so these can't just be vars
-	fuel = 0
-	on = 0
-	update_icon()
-
-/obj/item/flashlight/flare/glowstick/used/Initialize(mapload)
-	. = ..()
-	// fuel gets set on New which is annoying so these can't just be vars
-	fuel = 0
-	on = 0
-	update_icon()
+/obj/item/flashlight/flare/glowstick/used
+	fuel = FALSE
 
 /obj/item/flashlight/flare/decompile_act(obj/item/matter_decompiler/C, mob/user)
 	if(isdrone(user) && !fuel)
@@ -260,7 +246,7 @@
 /obj/item/flashlight/flare/glowstick
 	name = "green glowstick"
 	desc = "A military-grade glowstick."
-	brightness_on = 4
+	light_range = 4
 	color = LIGHT_COLOR_GREEN
 	icon_state = "glowstick"
 	item_state = "glowstick"
@@ -271,8 +257,8 @@
 	blocks_emissive = FALSE
 
 /obj/item/flashlight/flare/glowstick/Initialize(mapload)
-	. = ..()
-	light_color = color
+	set_light_color(color)
+	return ..()
 
 /obj/item/flashlight/flare/glowstick/update_icon_state()
 	if(!fuel)
@@ -323,7 +309,7 @@
 	name = "torch"
 	desc = "A torch fashioned from some leaves and a log."
 	w_class = WEIGHT_CLASS_BULKY
-	brightness_on = 7
+	light_range = 7
 	icon_state = "torch"
 	item_state = "torch"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
@@ -339,17 +325,10 @@
 	icon_state = "slime-on"
 	item_state = "slime"
 	w_class = WEIGHT_CLASS_TINY
-	brightness_on = 6
-	light_color = "#FFBF00"
+	light_range = 6
+	light_color = COLOR_AMBER
 	materials = list()
 	on = TRUE //Bio-luminesence has one setting, on.
-
-/obj/item/flashlight/slime/New()
-	..()
-	set_light(brightness_on)
-	spawn(1) //Might be sloppy, but seems to be necessary to prevent further runtimes and make these work as intended... don't judge me!
-		update_brightness()
-		icon_state = initial(icon_state)
 
 /obj/item/flashlight/slime/attack_self__legacy__attackchain(mob/user)
 	return //Bio-luminescence does not toggle.
@@ -411,20 +390,31 @@
 	desc = "Groovy..."
 	icon_state = null
 	light_color = null
-	brightness_on = 0
 	light_range = 0
 	light_power = 10
 	alpha = 0
 	layer = 0
 	on = TRUE
 	anchored = TRUE
-	var/range = null
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	/// Boolean that switches when a full color flip ends, so the light can appear in all colors
+	var/even_cycle = FALSE
+	/// Base light_range that can be set on Initialize to use in smooth light range expansions and contractions
+	var/base_light_range = 4
+
+/obj/item/flashlight/spotlight/Initialize(mapload, _light_range, _light_power, _light_color)
+	. = ..()
+	if(!isnull(_light_range))
+		base_light_range = _light_range
+		set_light_range(_light_range)
+	if(!isnull(_light_power))
+		set_light_power(_light_power)
+	if(!isnull(_light_color))
+		set_light_color(_light_color)
 
 /obj/item/flashlight/eyelight
 	name = "eyelight"
 	desc = "This shouldn't exist outside of someone's head, how are you seeing this?"
 	light_range = 15
-	light_power = 1
 	flags = CONDUCT | DROPDEL
 	actions_types = list()

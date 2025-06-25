@@ -12,6 +12,10 @@
 	flags = CONDUCT
 	materials = list(MAT_METAL = 300, MAT_GLASS = 300)
 	origin_tech = "magnets=2;combat=1"
+	light_system = MOVABLE_LIGHT // Used as a flash here
+	light_range = FLASH_LIGHT_RANGE
+	light_power = FLASH_LIGHT_POWER
+	light_on = FALSE
 
 	/// Is the flash burnt out?
 	var/broken = FALSE
@@ -84,8 +88,8 @@
 	playsound(loc, use_sound, 100, TRUE)
 
 	flick("[initial(icon_state)]2", src)
-	set_light(2, 1, COLOR_WHITE)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), 0), 2 DECISECONDS)
+	set_light_on(TRUE)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), FALSE), FLASH_LIGHT_DURATION, TIMER_OVERRIDE | TIMER_UNIQUE)
 
 	times_used++
 	if(times_used == (max_uses - 1))

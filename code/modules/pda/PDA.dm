@@ -18,6 +18,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	origin_tech = "programming=2"
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 0.6
+	light_color = "#FFCC66"
+	light_on = FALSE
 
 	//Main variables
 	var/owner = null
@@ -143,7 +148,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/update_overlays()
 	. = ..()
 	var/datum/data/pda/utility/flashlight/flash = find_program(/datum/data/pda/utility/flashlight)
-	if(flash.fon)
+	if(flash && light_on)
 		switch(icon_state)
 			if("pda-library")
 				. += image('icons/obj/pda.dmi', "pda-light-library")
@@ -418,9 +423,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 		current_app.program_process()
 
 /obj/item/pda/extinguish_light(force = FALSE)
-	var/datum/data/pda/utility/flashlight/FL = find_program(/datum/data/pda/utility/flashlight)
-	if(FL && FL.fon)
-		FL.start()
+	var/datum/data/pda/utility/flashlight/flash = find_program(/datum/data/pda/utility/flashlight)
+	if(flash && light_on)
+		flash.start()
 
 /obj/item/pda/get_ID_assignment(if_no_id = "No id")
 	. = ..()

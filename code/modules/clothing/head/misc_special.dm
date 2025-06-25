@@ -150,9 +150,9 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	dog_fashion = null
+	light_range = 2
 	light_color = "#fff2bf"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
-	brightness_on = 2 //luminosity when on
 
 /obj/item/clothing/head/hardhat/pumpkinhead/blumpkin
 	name = "carved blumpkin"
@@ -171,7 +171,7 @@
 	item_color = "reindeer"
 	flags_inv = 0
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
-	brightness_on = 1 //luminosity when on
+	light_range = 1
 	dog_fashion = /datum/dog_fashion/head/reindeer
 
 

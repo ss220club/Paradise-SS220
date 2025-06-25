@@ -52,6 +52,11 @@
 	attack_sound = 'sound/weapons/blade1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0) // We know how to use gasmasks
 	faction = list(SYNDICATE)
+	light_system = MOVABLE_LIGHT
+	// Shine bright like an esword
+	light_range = /obj/item/melee/energy::light_range
+	light_power = 2
+	light_on = FALSE
 	move_to_delay = 2.99 // Faster than human by 0.01
 	del_on_death = TRUE
 	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
@@ -170,9 +175,13 @@
 	if(!attack_icon)
 		if(melee_type == MELEE_WEAPON_NONE)
 			attack_icon = MELEE_WEAPON_NONE
+		if(melee_type == MELEE_WEAPON_DSWORD)
+			// Shine bright like a dsword
+			light_range = /obj/item/dualsaber::light_range
 		else
 			sword_color = rand(1,4)
 			attack_icon = "[melee_type][sword_color]"
+			light_color = colormap[sword_color]
 
 	if(target)
 		if(weapon_idle)
@@ -187,12 +196,12 @@
 					weapon = "[sword_color][melee_type]"
 				add_overlay(weapon)
 				if(sword_color)
-					set_light(2, l_color = colormap[sword_color])
+					set_light_on(TRUE)
 				if(!(syndie_flags & SWORD))
 					syndie_flags |= SWORD
 	else
 		if(sword_color)
-			set_light(0)
+			set_light_on(FALSE)
 		if(weapon)
 			cut_overlay(weapon)
 		if(weapon_idle)

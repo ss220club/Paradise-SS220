@@ -45,9 +45,10 @@
 /datum/dog_fashion/back
 	icon_file = 'icons/mob/corgi_back.dmi'
 
-/datum/dog_fashion/head/hardhat/apply(mob/living/simple_animal/pet/dog/D)
+/datum/dog_fashion/head/hardhat/apply(mob/living/simple_animal/pet/dog/dog)
 	..()
-	D.set_light(4)
+	dog.set_light_range(4)
+	dog.set_light_on(TRUE)
 
 /datum/dog_fashion/head/hardhat
 	name = "Engineer REAL_NAME"
@@ -220,9 +221,10 @@
 	emote_hear = list("lights the way!", "illuminates.", "yaps!")
 	desc = "He has a very shiny nose."
 
-/datum/dog_fashion/head/reindeer/apply(mob/living/simple_animal/pet/dog/D)
+/datum/dog_fashion/head/reindeer/apply(mob/living/simple_animal/pet/dog/dog)
 	..()
-	D.set_light(2, 2, LIGHT_COLOR_RED)
+	dog.set_light_range_power_color(2, 2, LIGHT_COLOR_RED)
+	dog.set_light_on(TRUE)
 
 /datum/dog_fashion/head/sombrero
 	name = "Segnor REAL_NAME"

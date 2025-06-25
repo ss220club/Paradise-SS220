@@ -41,14 +41,17 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 100, ACID = 30)
 	resistance_flags = FIRE_PROOF
 	toolspeed = 1
+	light_system = MOVABLE_LIGHT
+	light_range = 2
 	light_power = 2
-	var/brightness_on = 2
+	light_on = FALSE
 	var/colormap = list(red=LIGHT_COLOR_RED, blue=LIGHT_COLOR_LIGHTBLUE, green=LIGHT_COLOR_GREEN, purple=LIGHT_COLOR_PURPLE, rainbow=LIGHT_COLOR_WHITE)
 	/// Used to mark the item as a cleaving saw so that cigarette_lighter_act() will perform an early return.
 	var/is_a_cleaving_saw = FALSE
 
 /obj/item/melee/energy/Initialize(mapload)
 	. = ..()
+	light_color = item_color
 	force_off = initial(force) //We want to check this only when initializing, not when swapping, so sharpening works.
 	throwforce_off = initial(throwforce)
 	RegisterSignal(src, COMSIG_ITEM_SHARPEN_ACT, PROC_REF(try_sharpen))
@@ -124,7 +127,6 @@
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		playsound(user, 'sound/weapons/saberoff.ogg', 35, 1)  //changed it from 50% volume to 35% because deafness
-		set_light(0)
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 	else
 		ADD_TRAIT(src, TRAIT_ITEM_ACTIVE, TRAIT_GENERIC)
@@ -136,10 +138,8 @@
 			attack_verb = attack_verb_on
 		if(icon_state_on)
 			icon_state = icon_state_on
-			set_light(brightness_on, l_color = item_color ? colormap[item_color] : null)
 		else
 			icon_state = "sword[item_color]"
-			set_light(brightness_on, l_color=colormap[item_color])
 		w_class = w_class_on
 		playsound(user, 'sound/weapons/saberon.ogg', 35, 1) //changed it from 50% volume to 35% because deafness
 		to_chat(user, "<span class='notice'>[src] is now active.</span>")
@@ -149,7 +149,7 @@
 		H.update_inv_l_hand()
 		H.update_inv_r_hand()
 	add_fingerprint(user)
-	return
+	set_light_on(HAS_TRAIT(src, TRAIT_ITEM_ACTIVE))
 
 /obj/item/melee/energy/get_heat()
 	if(HAS_TRAIT(src, TRAIT_ITEM_ACTIVE))
@@ -195,7 +195,7 @@
 	return BRUTELOSS|FIRELOSS
 
 //////////////////////////////
-// MARK: SWORD
+// MARK: ENERGY SWORD
 //////////////////////////////
 // Base variant.
 /obj/item/melee/energy/sword
@@ -453,7 +453,6 @@
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		playsound(user, 'sound/magic/fellowship_armory.ogg', 35, 1)  //changed it from 50% volume to 35% because deafness
-		set_light(0)
 		to_chat(user, "<span class='notice'>You close [src]. It will now attack rapidly and cause fauna to bleed.</span>")
 	else
 		ADD_TRAIT(src, TRAIT_ITEM_ACTIVE, TRAIT_GENERIC)
@@ -463,12 +462,7 @@
 		throw_speed = 4
 		if(length(attack_verb_on))
 			attack_verb = attack_verb_on
-		if(icon_state_on)
-			icon_state = icon_state_on
-			set_light(brightness_on, l_color = item_color ? colormap[item_color] : null)
-		else
-			icon_state = "sword[item_color]"
-			set_light(brightness_on, l_color=colormap[item_color])
+		icon_state = icon_state_on
 		w_class = w_class_on
 		playsound(user, 'sound/magic/fellowship_armory.ogg', 35, TRUE, frequency = 90000 - (HAS_TRAIT(src, TRAIT_ITEM_ACTIVE) * 30000))
 		to_chat(user, "<span class='notice'>You open [src]. It will now cleave enemies in a wide arc and deal additional damage to fauna.</span>")

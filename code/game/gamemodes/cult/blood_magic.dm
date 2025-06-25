@@ -460,7 +460,7 @@
 	user.visible_message("<span class='warning'>[user] holds up [user.p_their()] hand, which explodes in a flash of red light!</span>", \
 							"<span class='cultitalic'>You attempt to stun [L] with the spell!</span>")
 
-	user.mob_light(LIGHT_COLOR_BLOOD_MAGIC, 3, _duration = 2)
+	user.mob_light(_range = 3, _color = LIGHT_COLOR_BLOOD_MAGIC, _duration = 0.2 SECONDS)
 
 	var/obj/item/nullrod/N = locate() in target
 	if(N)

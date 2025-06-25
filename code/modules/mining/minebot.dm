@@ -9,6 +9,9 @@
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "mining_drone"
 	icon_living = "mining_drone"
+	light_system = MOVABLE_LIGHT
+	light_range = 6
+	light_on = FALSE
 	status_flags = CANSTUN|CANWEAKEN|CANPUSH
 	mouse_opacity = MOUSE_OPACITY_ICON
 	faction = list("neutral")
@@ -37,7 +40,6 @@
 	healable = FALSE
 	del_on_death = TRUE
 	var/mode = MINEDRONE_COLLECT
-	var/light_on = FALSE
 	var/mesons_active
 	var/obj/item/gun/energy/kinetic_accelerator/minebot/stored_gun
 
@@ -230,11 +232,7 @@
 /datum/action/innate/minedrone/toggle_light/Activate()
 	var/mob/living/simple_animal/hostile/mining_drone/user = owner
 
-	if(user.light_on)
-		user.set_light(0)
-	else
-		user.set_light(6)
-	user.light_on = !user.light_on
+	user.set_light_on(!user.light_on)
 	to_chat(user, "<span class='notice'>You toggle your light [user.light_on ? "on" : "off"].</span>")
 
 /datum/action/innate/minedrone/toggle_meson_vision
