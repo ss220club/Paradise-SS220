@@ -134,14 +134,14 @@
 
 	var/list/ruins = templates.Copy()
 
-	var/list/forced_ruins = list() // ruins we are required to place, from low priority to high priority
+	var/list/forced_ruins = list() // ruins we are required to place
 	var/list/ruins_available = list() // ruins we will attempt to place based on budget
 
 	// Set up the starting ruin lists
 	for(var/key in ruins)
 		var/datum/map_template/ruin/R = ruins[key]
 		if(R.always_place)
-			BINARY_INSERT_TG(R, forced_ruins, /datum/map_template/ruin, R, always_place_priority, COMPARE_KEY)
+			forced_ruins += R
 			continue
 		if(R.unpickable)
 			continue
@@ -149,7 +149,9 @@
 			continue
 		ruins_available[R] = R.placement_weight
 
-	for(var/datum/map_template/ruin/ruin in reverselist(forced_ruins)) // from high priority to low priority
+	forced_ruins = sortTim(forced_ruins, GLOBAL_PROC_REF(cmp_ruin_placement_size)) // SS220 EDIT - sort ruins by size
+	while(length(forced_ruins))
+		var/datum/map_template/ruin/ruin = forced_ruins[length(forced_ruins)]
 		var/datum/ruin_placement/placement = new(ruin, base_padding_ = base_padding)
 		var/placement_success = placement.try_to_place(z_levels, area_whitelist)
 		if(placement_success)
@@ -157,6 +159,8 @@
 			ruin_budget -= ruin.get_cost()
 		else
 			stack_trace("failed to place required ruin [ruin.suffix]")
+
+		forced_ruins.len--
 		CHECK_TICK
 
 	while(ruin_budget > 0 && length(ruins_available))
