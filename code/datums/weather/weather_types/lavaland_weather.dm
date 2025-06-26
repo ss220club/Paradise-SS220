@@ -179,7 +179,7 @@
 			hits++
 			valid_targets -= target
 		//just play the play from the last hit in the bundle, it reaches across the map anyways
-		INVOKE_ASYNC(src, PROC_REF(generate_boom), target)
+		//INVOKE_ASYNC(src, PROC_REF(generate_boom), target)
 
 //lets just fake some booms
 /datum/weather/volcano/proc/generate_boom(turf/target)

@@ -59,6 +59,9 @@
 	if(user.host.client)
 		if(user.host.client.holder)
 			to_chat(user.host, "<b>Вы слышите голос в своей голове... <i>[msg]</i></b>")
+			to_chat(user, "Носитель слышит голос в своей голове... <i>[msg]</i>")
+	else
+		to_chat(user, span_warning("Похоже, носитель не может нас услышать."))
 	return TRUE
 
 // Contact host
@@ -212,7 +215,7 @@
 
 /datum/action/treacherous_flesh/panacea
 	name = "Анатомическая панацея"
-	desc = "Мы вводим в тело носителя ряд биоактивных элементов, вычищая из него токсины, радиацию и мутировавшие трани, а также восстанавливая нервную систему. Стоит 50 химикатов"
+	desc = "Мы вводим в тело носителя ряд биоактивных элементов, вычищая из него химикаты, радиацию и мутировавшие трани, а также восстанавливая нервную систему. Стоит 50 химикатов"
 	button_overlay_icon_state = "panacea"
 	chemical_cost = 50
 
@@ -302,8 +305,8 @@
 		to_chat(user.host, "<span class='warning'>Вы чувствуете невероятную боль в своей руке. Плоть пузырится и рвётся, преобразуя вашу конечность в острое лезвие.</span>")
 		user.host.emote("scream")
 		SEND_SIGNAL(user.host, COMSIG_MOB_WEAPON_APPEARS)
-		if(!user.host.drop_item())
-			to_chat(user, "[user.host.get_active_hand()] застрял в руке носителя. Мы не можем вырастить руку-лезвие на ней.")
+		if(user.get_active_hand() && !user.drop_item())
+			to_chat(user, span_warning("[user.host.get_active_hand()] застрял в руке носителя. Мы не можем вырастить руку-лезвие на ней."))
 			return FALSE
 		var/obj/item/W = new /obj/item/melee/arm_blade(user.host, src)
 		user.host.put_in_hands(W)
@@ -330,18 +333,20 @@
 	else
 		if(!take_chems())
 			return FALSE
-		if(!user.host.unequip(user.host.wear_suit))
-			to_chat(user, "\the [user.host.wear_suit] застрял на теле, мы не можем вырастить панцирь на нём!")
-			return FALSE
-		if(!user.unequip(user.host.head))
-			to_chat(user, "\the [user.host.head] застрял на голове, мы не можем вырастить панцирь на ней!")
-			return FALSE
+		if(user.host.wear_suit)
+			if(!user.host.drop_item_to_ground(user.host.wear_suit))
+				to_chat(user, "\the [user.host.wear_suit] застрял на теле, мы не можем вырастить панцирь на нём!")
+				return FALSE
+		if(user.host.head)
+			if(!user.host.drop_item_to_ground(user.host.head))
+				to_chat(user, "\the [user.host.head] застрял на голове, мы не можем вырастить панцирь на ней!")
+				return FALSE
 
 		to_chat(user, "<span class='notice'>Используя податливые ткани носителя, мы формируем прочный панцирь из его эпидермиса.</span>")
 		to_chat(user.host, "<span class='warning'>Вы чувствуете невероятную боль по всему телу. Плоть пузырится и рвётся, покрывая вас неким подобием хитинового панциря.</span>")
 		user.host.emote("scream")
-		user.host.unequip(user.host.head)
-		user.host.unequip(user.host.wear_suit)
+		user.host.add_splatter_floor()
+		playsound(user.host.loc, 'sound/effects/splat.ogg', 50, 1)
 		user.host.equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/changeling(user), ITEM_SLOT_OUTER_SUIT, TRUE, TRUE)
 		user.host.equip_to_slot_if_possible(new /obj/item/clothing/head/helmet/changeling(user), ITEM_SLOT_HEAD, TRUE, TRUE)
 		is_active = TRUE
@@ -408,6 +413,7 @@
 	sleep(10 SECONDS)
 
 	user.host.emote("scream")
+	playsound(user.host.loc, 'sound/effects/splat.ogg', 50, 1)
 	user.host.adjustStaminaLoss(30)
 	user.host.Jitter(45 SECONDS)
 	to_chat(user.host, "<span class='boldwarning'>Всё ваше тело будто варят заживо, а внутренности разрывают на куски. Вы хотите содрать с себя кожу.</span>")
@@ -420,6 +426,7 @@
 	sleep(5 SECONDS)
 
 	user.host.emote("scream")
+	playsound(user.host.loc, 'sound/effects/splat.ogg', 50, 1)
 	to_chat(user.host, "<span class='biggerdanger'>Вы хотите умереть.</span>")
 	user.host.adjustStaminaLoss(30)
 

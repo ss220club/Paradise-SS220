@@ -1,5 +1,5 @@
-#define PRIMALIS_CHEM_REGEN 0.5
-#define PRIMALIS_CHEM_MAX 150
+#define PRIMALIS_CHEM_REGEN 2
+#define PRIMALIS_CHEM_MAX 200
 
 #define EVOLUTION_STAGE_0 0		///These are used both as required amount of evo points and macro for stage checks
 #define EVOLUTION_STAGE_1 300
@@ -55,15 +55,14 @@
 			chemicals = clamp(chemicals - PRIMALIS_CHEM_REGEN * 2, 0, PRIMALIS_CHEM_MAX)
 		else
 			chemicals = clamp(chemicals + PRIMALIS_CHEM_REGEN, 0, PRIMALIS_CHEM_MAX)
+		handle_evolution()
 	if(chemicals == 0)
 		disable_passive_abilities()
 
-	if(hud_used?.lingchemdisplay)
-		hud_used.lingchemdisplay.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font face='Small Fonts' color='#dd66dd'>[round(chemicals)]</font></div>"
-	handle_evolution()
 
 /mob/living/treacherous_flesh/proc/handle_evolution()
-	evolution_points += EVOLUTION_GROWTH
+	if(evolution_stage < EVOLUTION_STAGE_4)
+		evolution_points += EVOLUTION_GROWTH
 	switch(evolution_stage)
 		if(EVOLUTION_STAGE_0)
 			if(evolution_points > EVOLUTION_STAGE_1)
@@ -179,14 +178,6 @@
 			to_chat(src, span_warning("Не указаны навыки"))
 	for(var/datum/action/treacherous_flesh/ability in primalis_abilities)
 		ability.Grant(src)
-
-// Chemicals HUD
-
-/datum/hud/simple_animal/treacherous_flesh/New(mob/user)
-	..()
-	lingchemdisplay = new /atom/movable/screen/ling/chems()
-	lingchemdisplay.invisibility = 0
-	infodisplay += lingchemdisplay
 
 #undef PRIMALIS_CHEM_REGEN
 #undef PRIMALIS_CHEM_MAX
