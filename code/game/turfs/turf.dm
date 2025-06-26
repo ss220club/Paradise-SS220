@@ -123,11 +123,11 @@
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
-	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+	var/area/area = loc
+	if(!IS_DYNAMIC_LIGHTING(src) && !area.has_base_lighting) // Only provide your own lighting if the area doesn't for you
 		add_overlay(/obj/effect/fullbright)
 
-	if(light_power && light_range)
+	if(light_range && light_power)
 		update_light()
 
 	if(opacity)
@@ -315,6 +315,7 @@
 	var/old_blueprint_data = blueprint_data
 	var/old_obscured = obscured
 	var/old_corners = corners
+	var/old_dynamic_lumcount = dynamic_lumcount
 	var/old_directional_opacity = directional_opacity
 
 	BeforeChange()
@@ -345,6 +346,8 @@
 		W.AfterChange(ignore_air)
 	W.blueprint_data = old_blueprint_data
 	W.pressure_overlay = old_pressure_overlay
+
+	dynamic_lumcount = old_dynamic_lumcount
 
 	if(SSlighting.initialized)
 		lighting_object = old_lighting_object

@@ -14,8 +14,7 @@
 	attack_verb = null
 	resistance_flags = FIRE_PROOF
 	light_system = MOVABLE_LIGHT
-	light_range = 2
-	light_power = 0.6
+	light_range = 1
 	light_color = LIGHT_COLOR_FIRE
 	light_on = FALSE
 	var/lit = FALSE

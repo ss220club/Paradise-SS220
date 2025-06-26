@@ -175,13 +175,13 @@
 	if(!attack_icon)
 		if(melee_type == MELEE_WEAPON_NONE)
 			attack_icon = MELEE_WEAPON_NONE
-		if(melee_type == MELEE_WEAPON_DSWORD)
-			// Shine bright like a dsword
-			set_light_range(/obj/item/dualsaber::light_range)
 		else
 			sword_color = rand(1,4)
 			attack_icon = "[melee_type][sword_color]"
 			set_light_color(colormap[sword_color])
+		if(melee_type == MELEE_WEAPON_DSWORD)
+			// Shine bright like a dsword
+			set_light_range(/obj/item/dualsaber::light_range)
 
 	if(target)
 		if(weapon_idle)

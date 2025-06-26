@@ -981,10 +981,7 @@
 			new_light_power = 1 + power / 1000
 			new_light_color = gasmix_power_ratio > 0.8 ? SUPERMATTER_RED : SUPERMATTER_COLOUR
 
-		if(light_system == MOVABLE_LIGHT)
-			set_light_range_power_color(new_light_range, new_light_power, new_light_color)
-		else
-			set_light(new_light_range, new_light_power, new_light_color)
+		set_light(new_light_range, new_light_power, new_light_color)
 
 		for(var/obj/D in darkness_effects)
 			qdel(D)
@@ -992,14 +989,11 @@
 
 	var/darkness_strength = clamp((damage - 450) / 75, 1, 8) / 2
 	var/darkness_aoe = clamp((damage - 450) / 25, 1, 25)
-	if(light_system == MOVABLE_LIGHT)
-		set_light_range_power_color(
-			range = 4 + darkness_aoe,
-			power = -1 - darkness_strength,
-			color = "#ddd6cf",
-		)
-	else
-		set_light(4 + darkness_aoe, -1 - darkness_strength, "#ddd6cf")
+	set_light(
+		4 + darkness_aoe,
+		-1 - darkness_strength,
+		"#ddd6cf",
+	)
 	if(!length(darkness_effects) && !moveable) //Don't do this on movable sms oh god. Ideally don't do this at all, but hey, that's lightning for you
 		darkness_effects += new /obj/effect/abstract(locate(x-3,y+3,z))
 		darkness_effects += new /obj/effect/abstract(locate(x+3,y+3,z))

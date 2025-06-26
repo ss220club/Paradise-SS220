@@ -28,9 +28,8 @@ LIGHTERS ARE IN LIGHTERS.DM
 	attack_verb = null
 	container_type = INJECTABLE
 	light_system = MOVABLE_LIGHT
-	light_range = 2
-	light_power = 0.25
-	light_color = "#E38F46"
+	light_range = 1
+	light_color = LIGHT_COLOR_FIRE
 	light_on = FALSE
 	new_attack_chain = TRUE
 	/// Is the cigarette lit?

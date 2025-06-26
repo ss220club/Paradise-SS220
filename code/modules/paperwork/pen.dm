@@ -210,6 +210,7 @@
 	light_system = MOVABLE_LIGHT
 	light_range = 2
 	light_color = LIGHT_COLOR_RED
+	light_on = FALSE
 	origin_tech = "combat=3;syndicate=1"
 	var/active = FALSE
 	var/backstab_sound = 'sound/items/unsheath.ogg'

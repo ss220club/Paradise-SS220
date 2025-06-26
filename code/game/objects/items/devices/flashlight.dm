@@ -257,7 +257,7 @@
 	blocks_emissive = FALSE
 
 /obj/item/flashlight/flare/glowstick/Initialize(mapload)
-	set_light_color(color)
+	light_color = color
 	return ..()
 
 /obj/item/flashlight/flare/glowstick/update_icon_state()
@@ -328,10 +328,13 @@
 	light_range = 6
 	light_color = COLOR_AMBER
 	materials = list()
-	on = TRUE //Bio-luminesence has one setting, on.
+	on = TRUE // Bio-luminesence has one setting, on.
+
+/obj/item/flashlight/update_icon_state()
+	return // We don't have alt icon
 
 /obj/item/flashlight/slime/attack_self__legacy__attackchain(mob/user)
-	return //Bio-luminescence does not toggle.
+	return // Bio-luminescence does not toggle.
 
 /obj/item/flashlight/slime/extinguish_light(force = FALSE)
 	if(force)

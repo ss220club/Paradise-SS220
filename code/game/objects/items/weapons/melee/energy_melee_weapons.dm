@@ -51,7 +51,7 @@
 
 /obj/item/melee/energy/Initialize(mapload)
 	. = ..()
-	light_color = item_color
+	light_color = colormap[item_color]
 	force_off = initial(force) //We want to check this only when initializing, not when swapping, so sharpening works.
 	throwforce_off = initial(throwforce)
 	RegisterSignal(src, COMSIG_ITEM_SHARPEN_ACT, PROC_REF(try_sharpen))

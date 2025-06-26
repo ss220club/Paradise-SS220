@@ -236,8 +236,6 @@
 
 /mob/living/simple_animal/demon/pulse_demon/vv_edit_var(var_name, var_value)
 	switch(var_name)
-		if("light_color")
-			update_glow()
 		if("charge")
 			// automatically adjusts maxcharge to allow the new value
 			adjust_charge(var_value - charge, TRUE)

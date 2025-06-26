@@ -37,7 +37,7 @@
 	var/playstyle_string = "<b>You are a generic construct! Your job is to not exist, and you should probably adminhelp this.</b>"
 
 /mob/living/simple_animal/hostile/construct/Initialize(mapload)
-	set_light_color(GET_CULT_DATA(construct_glow, LIGHT_COLOR_BLOOD_MAGIC))
+	light_color = GET_CULT_DATA(construct_glow, LIGHT_COLOR_BLOOD_MAGIC)
 	. = ..()
 	name = "[GET_CULT_DATA(get_name(construct_type), construct_type)] ([rand(1, 1000)])"
 	real_name = GET_CULT_DATA(get_name(construct_type), construct_type)

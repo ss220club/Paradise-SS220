@@ -1,22 +1,26 @@
 // The proc you should always use to set the light of this atom.
 // Nonesensical value for l_color default, so we can detect if it gets set to null.
 #define NONSENSICAL_VALUE -99999
-/atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE)
+/atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, l_on)
 	if(l_range > 0 && l_range < MINIMUM_USEFUL_LIGHT_RANGE)
 		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4, which is just barely brighter than the soft lighting that surrounds players.
 
-	if(l_power != null)
-		light_power = l_power
+	if(!isnull(l_range))
+		set_light_range(l_range)
 
-	if(l_range != null)
-		light_range = l_range
+	if(!isnull(l_power))
+		set_light_power(l_power)
 
 	if(l_color != NONSENSICAL_VALUE)
 		light_color = l_color
 
+	if(!isnull(l_on))
+		set_light_on(l_on)
+
 	SEND_SIGNAL(src, COMSIG_ATOM_SET_LIGHT, l_range, l_power, l_color)
 
-	update_light()
+	if(light_system == STATIC_LIGHT)
+		update_light()
 
 #undef NONSENSICAL_VALUE
 
@@ -28,7 +32,7 @@
 	if(light_system != STATIC_LIGHT)
 		CRASH("update_light() for [src] with following light_system value: [light_system]")
 
-	if(!light_power || !light_range || !light_on) // We won't emit light anyways, destroy the light source.
+	if(!light_on || !light_range || !light_power) // We won't emit light anyways, destroy the light source.
 		QDEL_NULL(light)
 	else
 		if(!ismovable(loc)) // We choose what atom should be the top atom of the light here.
@@ -54,10 +58,8 @@
 	if(new_opacity == opacity)
 		return
 	SEND_SIGNAL(src, COMSIG_ATOM_SET_OPACITY, new_opacity)
-	var/current_opacity = opacity
+	. = opacity
 	opacity = new_opacity
-
-	return current_opacity
 
 /atom/movable/set_opacity(new_opacity)
 	. = ..()

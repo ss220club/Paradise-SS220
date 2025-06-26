@@ -42,7 +42,6 @@
 /obj/machinery/flasher/power_change()
 	if(!..())
 		return
-	set_light_on(!(stat & NOPOWER))
 	update_icon()
 
 /obj/machinery/flasher/update_icon_state()

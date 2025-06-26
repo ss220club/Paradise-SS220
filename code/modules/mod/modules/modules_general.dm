@@ -272,7 +272,7 @@
 			set_light_color(value)
 			mod.wearer.regenerate_icons()
 		if("light_range")
-			light_range = (clamp(text2num(value), min_range, max_range))
+			set_light_range(clamp(text2num(value), min_range, max_range))
 	mod_color_overide = light_color
 
 /obj/item/mod/module/flashlight/extinguish_light(force)

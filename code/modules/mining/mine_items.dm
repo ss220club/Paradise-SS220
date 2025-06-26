@@ -83,7 +83,7 @@
 	icon_state = "lantern"
 	item_state = "lantern"
 	desc = "A mining lantern."
-	light_on = 6			// luminosity when on
+	light_range = 6
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

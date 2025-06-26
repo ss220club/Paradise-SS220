@@ -35,11 +35,11 @@
 			smoothing_flags |= SMOOTH_OBJ
 		SET_BITFLAG_LIST(canSmoothWith)
 
-	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+	var/area/area = loc
+	if(!IS_DYNAMIC_LIGHTING(src) && !area.has_base_lighting) // Only provide your own lighting if the area doesn't for you
 		add_overlay(/obj/effect/fullbright)
 
-	if(light_power && light_range)
+	if(light_range && light_power)
 		update_light()
 
 	if(opacity)

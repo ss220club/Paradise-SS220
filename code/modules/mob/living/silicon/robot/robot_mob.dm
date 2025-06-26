@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	var/modules_break = TRUE
 
 	/// Maximum brightness of a robot's headlamp. Set as a var for easy adjusting.
-	var/lamp_max = 10
+	var/lamp_max = OVERLAY_LIGHTING_MAX_RANGE // used to be 10, now we have a limit of 6
 	/// Luminosity of the headlamp. 0 is off. Higher settings than the minimum require power. Increments in steps of 2.
 	var/lamp_intensity = 0
 
@@ -1345,8 +1345,8 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	if(is_ventcrawling(src))
 		return
 
-//Some sort of magical "modulo" thing which somehow increments lamp power by 2, until it hits the max and resets to 0.
-	lamp_intensity = (lamp_intensity+2) % (lamp_max+2)
+//Some sort of magical "modulo" thing which somehow increments lamp power by 1, until it hits the max and resets to 0.
+	lamp_intensity = (lamp_intensity + 1) % lamp_max + 1
 	to_chat(src, "[lamp_intensity ? "Headlamp power set to Level [lamp_intensity/2]" : "Headlamp disabled."]")
 	update_headlamp()
 

@@ -304,9 +304,9 @@
 	/// Power of our shroud
 	var/shroud_power = -6
 
-/datum/vampire_passive/eternal_darkness/New()
-	..()
-	our_vampire = owner.mind.has_antag_datum(/datum/antagonist/vampire)
+/datum/vampire_passive/eternal_darkness/on_apply(datum/antagonist/vampire/vamp_datum)
+	. = ..()
+	our_vampire = vamp_datum
 	shroud = owner.mob_light(8, shroud_power, "#ddd6cf")
 	START_PROCESSING(SSfastprocess, src)
 

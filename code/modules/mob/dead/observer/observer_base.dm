@@ -18,8 +18,8 @@ GLOBAL_DATUM_INIT(ghost_crew_monitor, /datum/ui_module/crew_monitor/ghost, new)
 	density = FALSE
 	alpha = 127
 	light_system = MOVABLE_LIGHT
-	light_range = 1
-	light_power = 2
+	light_range = 2.5
+	light_power = 0.6
 	light_on = FALSE
 	move_resist = INFINITY	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
@@ -828,7 +828,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/proc/set_invisibility(value)
 	invisibility = value
-	set_light_on(!value)
+	set_light_on(value)
 
 /mob/dead/observer/vv_edit_var(var_name, var_value)
 	. = ..()

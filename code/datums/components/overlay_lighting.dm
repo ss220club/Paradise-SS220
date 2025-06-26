@@ -22,7 +22,7 @@
   * * For small objects this is good (you can't see them behind a wall), but for big ones this quickly becomes prety clumsy.
 */
 /datum/component/overlay_lighting
-	///How far the light reaches, float.
+	///How far the light reaches, float. Maximum value is 6
 	var/range = 1
 	///Ceiling of range, integer without decimal entries.
 	var/lumcount_range = 0
@@ -123,8 +123,7 @@
 
 ///Clears the affected_turfs lazylist, removing from its contents the effects of being near the light.
 /datum/component/overlay_lighting/proc/clean_old_turfs()
-	for(var/t in affected_turfs)
-		var/turf/lit_turf = t
+	for(var/turf/lit_turf in affected_turfs)
 		lit_turf.dynamic_lumcount -= lum_power
 	affected_turfs = null
 
@@ -132,9 +131,12 @@
 /datum/component/overlay_lighting/proc/get_new_turfs()
 	if(!current_holder)
 		return
+	. = list()
 	for(var/turf/lit_turf in view(lumcount_range, get_turf(current_holder)))
 		lit_turf.dynamic_lumcount += lum_power
-		LAZYADD(affected_turfs, lit_turf)
+		. += lit_turf
+	if(length(.))
+		affected_turfs = .
 
 ///Clears the old affected turfs and populates the new ones.
 /datum/component/overlay_lighting/proc/make_luminosity_update()
@@ -154,6 +156,15 @@
 	LAZYREMOVE(affected_movable.affected_dynamic_lights, src)
 	affected_movable.vis_contents -= visible_mask
 	affected_movable.update_dynamic_luminosity()
+
+/// Called whenever we change range or power of the active light, to update movable's visibility
+/datum/component/overlay_lighting/proc/update_dynamic_lumi(atom/movable/affected_movable)
+	LAZYREMOVE(affected_movable.affected_dynamic_lights, src)
+	affected_movable.vis_contents -= visible_mask
+	clean_old_turfs()
+	LAZYSET(affected_movable.affected_dynamic_lights, src, lumcount_range + 1)
+	affected_movable.vis_contents += visible_mask
+	get_new_turfs()
 
 ///Called to change the value of parent_attached_to.
 /datum/component/overlay_lighting/proc/set_parent_attached_to(atom/movable/new_parent_attached_to)
@@ -253,7 +264,7 @@
 		return
 	make_luminosity_update()
 
-///Changes the range which the light reaches. 0 means no light, 6 is the maximum value.
+///Changes the range which the light reaches. 0 means no light, OVERLAY_LIGHTING_MAX_RANGE is the maximum value.
 /datum/component/overlay_lighting/proc/set_range(atom/source, new_range)
 	SIGNAL_HANDLER
 
@@ -261,7 +272,7 @@
 		return
 	if(range == 0)
 		turn_off()
-	range = clamp(CEILING(new_range, 0.5), 1, 6)
+	range = clamp(CEILING(new_range, 0.5), 1, OVERLAY_LIGHTING_MAX_RANGE)
 	var/pixel_bounds = ((range - 1) * 64) + 32
 	lumcount_range = CEILING(range, 1)
 	visible_mask.icon = light_overlays["[pixel_bounds]"]
@@ -274,6 +285,8 @@
 	visible_mask.transform = transform
 	if(overlay_lighting_flags & LIGHTING_ON)
 		make_luminosity_update()
+		turn_off()
+		turn_on()
 
 ///Changes the intensity/brightness of the light by altering the visual object's alpha.
 /datum/component/overlay_lighting/proc/set_power(atom/source, new_power)
@@ -337,9 +350,10 @@
 	. = lum_power
 	lum_power = new_lum_power
 	var/difference = . - lum_power
-	for(var/t in affected_turfs)
-		var/turf/lit_turf = t
+	for(var/turf/lit_turf in affected_turfs)
 		lit_turf.dynamic_lumcount -= difference
+	if(overlay_lighting_flags & LIGHTING_ON && current_holder)
+		update_dynamic_lumi(current_holder)
 
 #undef LIGHTING_ON
 #undef LIGHTING_ATTACHED

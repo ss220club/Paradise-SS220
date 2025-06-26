@@ -1109,9 +1109,9 @@
 /obj/mecha/proc/toggle_lights(show_message = TRUE)
 	lights = !lights
 	if(lights)
-		set_light_range_power_color(lights_power, lights_range, initial(light_color))
+		set_light_range_power_color(lights_power, lights_range, light_color)
 	else
-		set_light_range_power_color(initial(light_range), initial(light_power), initial(light_color))
+		set_light_range_power_color(initial(light_range), initial(light_power), light_color)
 	if(show_message)
 		occupant_message("Toggled lights [lights ? "on" : "off"].")
 		log_message("Toggled lights [lights ? "on" : "off"].")

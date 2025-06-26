@@ -12,6 +12,8 @@
 #define LIGHTING_INTERVAL       5 // frequency, in 1/10ths of a second, of the lighting process
 
 #define MINIMUM_USEFUL_LIGHT_RANGE 1.4
+/// Max `light_range` that light with overlay lighting can reach
+#define OVERLAY_LIGHTING_MAX_RANGE 6
 
 #define LIGHTING_FALLOFF        1 // type of falloff to use for lighting; 1 for circular, 2 for square
 #define LIGHTING_LAMBERTIAN     0 // use lambertian shading for light sources

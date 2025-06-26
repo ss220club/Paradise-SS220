@@ -205,7 +205,7 @@
 			if(B.tint)
 				to_chat(user, "<span class='warning'>You're blindfolded!</span>")
 				return
-	user.mob_light(3, LIGHT_COLOR_BLOOD_MAGIC, _duration = 0.2 SECONDS)
+	user.mob_light(3, _color = LIGHT_COLOR_BLOOD_MAGIC, _duration = 0.2 SECONDS)
 	user.visible_message("<span class='warning'>[user]'s eyes emit a blinding flash!</span>")
 
 	for(var/mob/living/target in targets)

@@ -96,10 +96,7 @@
 
 	light_switch = !light_switch
 	if(light_switch)
-		if(light_system == MOVABLE_LIGHT)
-			set_light_on(TRUE)
-		else
-			set_light(light_range, light_power, light_color)
+		set_light(l_on = TRUE)
 	else
 		adjust_tank_light()
 
@@ -240,16 +237,9 @@
 			if(istype(fish, /datum/fish/glofish))
 				glo_light++
 		if(glo_light)
-			if(light_system == MOVABLE_LIGHT)
-				set_light_range_power_color(2, glo_light, "#99FF66")
-			else
-				set_light(light_range, glo_light, "#99FF66")
+			set_light(initial(light_range), glo_light, "#99FF66", TRUE)
 		else
-			if(light_system == MOVABLE_LIGHT)
-				set_light_range_power_color(initial(light_range), initial(light_power), initial(light_color))
-				set_light_on(FALSE)
-			else
-				set_light(0)
+			set_light(initial(light_range), initial(light_power), initial(light_color), FALSE)
 
 /obj/machinery/fishtank/proc/adjust_water_level(amount = 0)
 	water_level = min(water_capacity, max(0, water_level + amount))

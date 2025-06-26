@@ -38,6 +38,7 @@ Difficulty: Very Hard
 	friendly = "stares down"
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
 	speak_emote = list("roars")
+	light_range = 4
 	armour_penetration_percentage = 50
 	melee_damage_lower = 40
 	melee_damage_upper = 40

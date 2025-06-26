@@ -111,6 +111,8 @@
 	*/
 	luminosity = TRUE
 	var/dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	/// Whether this area has a currently active base lighting, bool
+	var/has_base_lighting = FALSE
 
 /area/New(loc, ...)
 	if(!there_can_be_many) // Has to be done in New else the maploader will fuck up and find subtypes for the parent
@@ -147,6 +149,7 @@
 
 	if(!IS_DYNAMIC_LIGHTING(src))
 		add_overlay(/obj/effect/fullbright)
+		has_base_lighting = TRUE
 
 	reg_in_areas_in_z()
 

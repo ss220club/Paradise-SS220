@@ -105,7 +105,6 @@
 
 /datum/pai_software/flashlight/toggle(mob/living/silicon/pai/user)
 	var/atom/movable/actual_location = istype(user.loc, /obj/item/paicard) ? user.loc : user
-
 	var/state = user.light_on
 
 	actual_location.set_light_on(!state)

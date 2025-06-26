@@ -193,7 +193,7 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
-	if(light_system == STATIC_LIGHT && light_power && light_range)
+	if(light_system == STATIC_LIGHT && light_range && light_power)
 		update_light()
 
 	if(loc)
@@ -1242,20 +1242,11 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 /atom/vv_edit_var(var_name, var_value)
 	switch(var_name)
 		if("light_range")
-			if(light_system == STATIC_LIGHT)
-				set_light(l_range = var_value)
-			else
-				set_light_range(var_value)
+			set_light(l_range = var_value)
 		if("light_power")
-			if(light_system == STATIC_LIGHT)
-				set_light(l_power = var_value)
-			else
-				set_light_power(var_value)
+			set_light(l_power = var_value)
 		if("light_color")
-			if(light_system == STATIC_LIGHT)
-				set_light(l_color = var_value)
-			else
-				set_light_color(var_value)
+			set_light(l_color = var_value)
 		if("color")
 			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
 	return ..()

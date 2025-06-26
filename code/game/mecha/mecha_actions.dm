@@ -64,15 +64,8 @@
 /datum/action/innate/mecha/mech_toggle_lights/Activate()
 	if(!owner || !chassis || chassis.occupant != owner)
 		return
-	chassis.lights = !chassis.lights
-	if(chassis.lights)
-		chassis.set_light_range_power_color(chassis.lights_power, chassis.lights_range, initial(chassis.light_color))
-		button_overlay_icon_state = "mech_lights_on"
-	else
-		chassis.set_light_range_power_color(initial(chassis.light_range), initial(chassis.light_power), initial(chassis.light_color))
-		button_overlay_icon_state = "mech_lights_off"
-	chassis.occupant_message("Toggled lights [chassis.lights ? "on" : "off"].")
-	chassis.log_message("Toggled lights [chassis.lights ? "on" : "off"].")
+	chassis.toggle_lights()
+	button_overlay_icon_state = "mech_lights_[chassis.lights ? "on" : "off"]"
 	UpdateButtons()
 
 /datum/action/innate/mecha/mech_view_stats

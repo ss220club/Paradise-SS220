@@ -328,8 +328,9 @@ GLOBAL_LIST_INIT(SpookyGhosts, list("ghost","shade","shade2","ghost-narsie","hor
 
 	// Sort the atoms into their layers
 	var/list/sorted = sort_atoms(atoms)
+	var/list/overlay_lights = list()
 	var/center_offset = (size-1)/2 * 32 + 1
-	for(var/i; i <= length(sorted); i++)
+	for(var/i in 1 to length(sorted))
 		var/atom/A = sorted[i]
 		if(istype(A, /atom/movable/lighting_object))
 			continue //Lighting objects render last, need to be above all atoms and turfs displayed
@@ -359,19 +360,35 @@ GLOBAL_LIST_INIT(SpookyGhosts, list("ghost","shade","shade2","ghost-narsie","hor
 					yoff += (32 - img.Height()) / 2
 
 				res.Blend(img, blendMode2iconMode(A.blend_mode),  A.pixel_x + xoff, A.pixel_y + yoff)
+			var/atom/movable/movable_atom = A
+			if(istype(movable_atom) && movable_atom.affected_dynamic_lights)
+				for(var/datum/component/overlay_lighting/light in movable_atom.affected_dynamic_lights)
+					overlay_lights[light.visible_mask] = get_turf(light.parent_attached_to || light.parent)
 
-	// Lastly, render any contained effects on top.
+	// Render any contained effects on top.
 	for(var/turf/the_turf in turfs)
 		// Calculate where we are relative to the center of the photo
 		var/xoff = (the_turf.x - center.x) * 32 + center_offset
 		var/yoff = (the_turf.y - center.y) * 32 + center_offset
 		res.Blend(getFlatIcon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
 
+	var/icon/dark_mask = icon(res)
+	dark_mask.DrawBox("#FFFFFF", 0, 0, dark_mask.Width(), dark_mask.Height())
+
 	// Render lighting objects to make picture look nice.
 	for(var/atom/movable/lighting_object/light in sorted)
 		var/xoff = (light.x - center.x) * 32 + center_offset
 		var/yoff = (light.y - center.y) * 32 + center_offset
-		res.Blend(getFlatIcon(light), blendMode2iconMode(BLEND_MULTIPLY),  light.pixel_x + xoff, light.pixel_y + yoff)
+		dark_mask.Blend(getFlatIcon(light), blendMode2iconMode(BLEND_MULTIPLY),  light.pixel_x + xoff, light.pixel_y + yoff)
+
+	for(var/obj/effect/overlay/light_visible/light in overlay_lights)
+		var/turf/light_turf = overlay_lights[light]
+		var/icon/light_icon = getFlatIcon(light)
+		var/xoff = (light_turf.x - center.x) * 32 + center_offset - (light_icon.Width() - 32) / 2
+		var/yoff = (light_turf.y - center.y) * 32 + center_offset - (light_icon.Height() - 32) / 2
+		dark_mask.Blend(light_icon, ICON_OVERLAY, xoff, yoff)
+
+	res.Blend(dark_mask, blendMode2iconMode(BLEND_MULTIPLY))
 
 	return res
 
@@ -416,7 +433,6 @@ GLOBAL_LIST_INIT(SpookyGhosts, list("ghost","shade","shade2","ghost-narsie","hor
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 75, TRUE, -3)
 	if(flashing_light)
 		set_light_on(TRUE)
-		sleep(0.2 SECONDS) //Allow lights to update before capturing image
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light_on), FALSE), 0.1 SECONDS)
 
 	captureimage(target, user, flag)
