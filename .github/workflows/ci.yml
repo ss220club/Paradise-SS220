@@ -69,9 +69,9 @@ jobs:
         run: |
           bash tools/ci/setup_od.sh
       - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4.3.1
         env:
           DOTNET_INSTALL_DIR: './_work/.dotnet'
-        uses: actions/setup-dotnet@v4.3.1
         with:
           dotnet-version: 9.x
       - name: Run OD
@@ -142,7 +142,7 @@ jobs:
           release: ${{ matrix.byondtype }}
       - name: Setup & Validate DB
         run: |
-          sudo systemctl start mysql
+          sudo service mysql start
           python3 tools/ci/generate_sql_scripts.py
           tools/ci/validate_sql.sh
       - name: Install RUST_G Deps
