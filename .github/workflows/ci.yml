@@ -69,6 +69,8 @@ jobs:
         run: |
           bash tools/ci/setup_od.sh
       - name: Setup .NET SDK
+        env:
+          DOTNET_INSTALL_DIR: './_work/.dotnet'
         uses: actions/setup-dotnet@v4.3.1
         with:
           dotnet-version: 9.x
