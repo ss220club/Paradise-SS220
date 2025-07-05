@@ -50,3 +50,11 @@
 /turf/simulated/floor/plating/asteroid/lazarus/snow/getDug()
 	ChangeTurf(/turf/simulated/floor/plating/asteroid/lazarus/dirt, keep_icon = FALSE)
 	randomize_icon_state()
+
+// ICE
+
+/turf/simulated/floor/plating/ice/lazarus
+	baseturf = /turf/simulated/floor/plating/ice/lazarus
+	oxygen = MOLES_O2STANDARD
+	nitrogen = MOLES_N2STANDARD
+	temperature = T20C

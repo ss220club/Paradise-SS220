@@ -2,8 +2,8 @@
 	title = "Captain"
 	flag = JOB_CAPTAIN
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "Официальными лицами Нанотрейзен"
 	department_head = list("Nanotrasen Navy Officer")
 	selection_color = "#ccccff"
@@ -57,8 +57,8 @@
 	title = "Head of Personnel"
 	flag = JOB_HOP
 	department_flag = JOBCAT_SUPPORT
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "капитаном"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
@@ -128,8 +128,8 @@
 	title = "Nanotrasen Representative"
 	flag = JOB_NANO
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "командным составом"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
@@ -202,8 +202,8 @@
 	title = "Blueshield"
 	flag = JOB_BLUESHIELD
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "представителем Нанотрейзен"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
@@ -258,8 +258,8 @@
 	title = "Magistrate"
 	flag = JOB_JUDGE
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "верховным судом Нанотрейзен"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
@@ -358,8 +358,8 @@
 	title = "Nanotrasen Career Trainer"
 	flag = JOB_INSTRUCTOR
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Nanotrasen Representative"
 	department_head = list("Captain")
 	selection_color = "#ddddff"

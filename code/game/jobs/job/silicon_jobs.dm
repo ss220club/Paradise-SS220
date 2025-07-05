@@ -3,7 +3,7 @@
 	flag = JOB_AI
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 0 // Not used for AI, see is_position_available below and modules/mob/living/silicon/ai/latejoin.dm
-	spawn_positions = 1
+	spawn_positions = 0
 	selection_color = "#ccffcc"
 	supervisors = "своими законами"
 	department_head = list("Captain")
@@ -23,8 +23,8 @@
 	title = "Cyborg"
 	flag = JOB_CYBORG
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "своими законами и ИИ"	//Nodrak
 	department_head = list("AI")
 	selection_color = "#ddffdd"

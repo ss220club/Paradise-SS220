@@ -92,8 +92,8 @@
 	title = "Smith"
 	flag = JOB_SMITH
 	department_flag = JOBCAT_SUPPORT
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SUPPLY
 	supervisors = "the quartermaster"
 	department_head = list("Quartermaster")

@@ -56,6 +56,10 @@
 
 	temperature = AREA_TEMPERATURE_OUTSIDE
 
+/area/lazarus/outdoors/lake
+	icon_state = "awaycontent1"
+	name = "Замерзшее озеро"
+
 //-----UNDERGROUND-----//
 
 /area/lazarus/underground

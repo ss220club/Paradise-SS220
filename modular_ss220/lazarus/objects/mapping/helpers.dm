@@ -4,14 +4,15 @@
 	icon_state = "forest"
 	var/dirt_chance = 15
 	var/result = list(
-	/datum = 15,
-	/obj/structure/flora/tree/pine = 12,
-	/obj/structure/flora/grass/green = 3,
-	/obj/structure/flora/grass/brown = 3,
-	/obj/structure/flora/grass/both = 3,
-	/obj/structure/flora/bush = 2,
-	/obj/structure/flora/rock/icy = 1,
-	/obj/structure/flora/rock/pile/icy = 1,
+	/datum = 150,
+	/obj/structure/flora/tree/pine = 120,
+	/obj/structure/flora/grass/green = 30,
+	/obj/structure/flora/grass/brown = 30,
+	/obj/structure/flora/grass/both = 30,
+	/obj/structure/flora/bush = 20,
+	/obj/structure/flora/rock/icy = 10,
+	/obj/structure/flora/rock/pile/icy = 10,
+	/obj/structure/flora/lazarus/berry = 1,
 	)
 
 /turf/simulated/floor/plating/asteroid/lazarus/forest/Initialize(mapload)
@@ -28,14 +29,17 @@
 	icon_state = "forest_edge"
 	dirt_chance = 3
 	result = list(
-	/datum = 40,
-	/obj/structure/flora/tree/pine = 4,
-	/obj/structure/flora/grass/green = 15,
-	/obj/structure/flora/grass/brown = 15,
-	/obj/structure/flora/grass/both = 15,
-	/obj/structure/flora/bush = 12,
-	/obj/structure/flora/rock/icy = 2,
-	/obj/structure/flora/rock/pile/icy = 2,
+	/datum = 400,
+	/obj/structure/flora/tree/pine = 40,
+	/obj/structure/flora/grass/green = 150,
+	/obj/structure/flora/grass/brown = 150,
+	/obj/structure/flora/grass/both = 150,
+	/obj/structure/flora/bush = 120,
+	/obj/structure/flora/rock/icy = 20,
+	/obj/structure/flora/rock/pile/icy = 20,
+	/obj/structure/flora/lazarus/berry = 10,
+	/obj/structure/flora/lazarus/comfrey = 5,
+	/obj/structure/flora/lazarus/aloe = 5
 	)
 
 // Destroyed Window Helpers
