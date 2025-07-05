@@ -1,7 +1,7 @@
 /// How many Z levels we allow before being suspicious that the wrong number was sent.
 pub(crate) const MAX_Z_LEVELS: i32 = 19; // SS220 EDIT - upstream value +4
 /// How big is the map? Assumed square.
-pub(crate) const MAP_SIZE: usize = 511;
+pub(crate) const MAP_SIZE: usize = 255;
 
 /// One atmosphere, in kPa.
 pub(crate) const ONE_ATMOSPHERE: f32 = 101.325;
