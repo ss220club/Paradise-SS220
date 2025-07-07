@@ -202,7 +202,7 @@
 	donator_tier = 3
 	cost = 2
 
-// ID Skins
+// MARK: ID Skins
 /datum/gear/donor/id_decal_colored
 	display_name = "Наклейка на карту (Голографическая)"
 	path = /obj/item/id_skin/colored
@@ -413,3 +413,44 @@
 	path = /obj/item/clothing/under/ei_skirt_alt
 	donator_tier = 1
 	cost = 1
+
+// MARK: Donor Implants
+/datum/gear/donor/implant
+	sort_category = "Implants"
+	main_typepath = /datum/gear/donor/implant
+	donator_tier = 0
+	cost = 1
+	implant = TRUE
+
+/datum/gear/donor/implant/surgery
+	display_name = "Хирургический имплант"
+	allowed_roles = list("Chief Medical Officer", "Medical Doctor", "Paramedic", "Coroner")
+	path = /obj/item/organ/internal/cyberimp/arm/surgery
+
+/datum/gear/donor/implant/toolset
+	display_name = "Инструментальный имплант"
+	allowed_roles = list("Chief Engineer", "Station Engineer", "Life Support Specialist")
+	path = /obj/item/organ/internal/cyberimp/arm/toolset
+
+/datum/gear/donor/implant/janitorial
+	display_name = "Уборочный имплант"
+	allowed_roles = list("Janitor")
+	path = /obj/item/organ/internal/cyberimp/arm/janitorial
+
+/datum/gear/donor/implant/botanical
+	display_name = "Ботанический имплант"
+	allowed_roles = list("Botanist")
+	path = /obj/item/organ/internal/cyberimp/arm/botanical
+
+// Installing implant
+/datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(allow_loadout && H.client && length(H.client.prefs.active_character.loadout_gear))
+		for(var/gear in H.client.prefs.active_character.loadout_gear)
+			var/datum/gear/G = GLOB.gear_datums[text2path(gear) || gear]
+			// Only organ implants
+			if(G?.implant)
+				var/obj/item/organ/internal/I = new G.path
+				I.insert(H)
+				to_chat(H, span_notice("Вам установлен имплант \"[G.display_name]\"!"))
+				continue
