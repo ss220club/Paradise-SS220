@@ -434,7 +434,7 @@
 
 /datum/gear/donor/implant/janitorial
 	display_name = "Уборочный имплант"
-	allowed_roles = list("Janitor")
+	allowed_roles = list("Janitor", "Cleaning Manager")
 	path = /obj/item/organ/internal/cyberimp/arm/janitorial
 
 /datum/gear/donor/implant/botanical
