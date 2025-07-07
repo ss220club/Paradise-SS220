@@ -418,8 +418,8 @@
 /datum/gear/donor/implant
 	sort_category = "Implants"
 	main_typepath = /datum/gear/donor/implant
-	donator_tier = 0
-	cost = 1
+	donator_tier = 3
+	cost = 12
 	implant = TRUE
 
 /datum/gear/donor/implant/surgery
