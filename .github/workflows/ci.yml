@@ -159,13 +159,14 @@ jobs:
           echo '/datum/map/test_tiny' > data/next_map.txt
           tools/ci/run_server.sh
 
-  windows_dll_tests:
-    name: Windows RUSTG Validation
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.8.2' # Script was made for 3.8.2
-          architecture: 'x86' # This MUST be x86
-      - run: python tools/ci/validate_rustg_windows.py
+# TODO: Add back when we have a Windows runner (never)
+  # windows_dll_tests:
+  #   name: Windows RUSTG Validation
+  #   runs-on: self-hosted
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.8.2' # Script was made for 3.8.2
+  #         architecture: 'x86' # This MUST be x86
+  #     - run: python tools/ci/validate_rustg_windows.py
