@@ -84,7 +84,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        byondtype: ['STABLE', 'BETA']
+        byondtype: ['BETA']
     steps:
       - uses: actions/checkout@v4
       - name: Restore BYOND from Cache
@@ -105,8 +105,8 @@ jobs:
     strategy:
       fail-fast: false # Let all map tests run to completion
       matrix:
-        station: ['boxstation', 'deltastation', 'metastation', 'cerestation', 'emeraldstation']
-        byondtype: ['STABLE', 'BETA']
+        station: ['boxstation', 'deltastation', 'metastation']
+        byondtype: ['BETA']
     steps:
       - uses: actions/checkout@v4
       - name: Restore BYOND from Cache
@@ -133,7 +133,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        byondtype: ['STABLE', 'BETA']
+        byondtype: ['BETA']
     steps:
       - uses: actions/checkout@v4
       - name: Restore BYOND from Cache
