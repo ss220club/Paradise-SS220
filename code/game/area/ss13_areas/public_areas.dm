@@ -153,6 +153,26 @@
 /area/station/hallway/secondary/bridge
 	name = "Коридор Командования"
 	icon_state = "hallC"
+
+// Hallways for departments
+
+/area/station/hallway/supply
+	name = "Коридор Карго"
+	icon_state = "cargo_hallway"
+
+/area/station/hallway/supply/fore
+	name = "Северный Коридор Карго"
+
+/area/station/hallway/supply/starboard
+	name = "Восточный Коридор Карго"
+
+/area/station/hallway/supply/aft
+	name = "Южный Коридор Карго"
+
+/area/station/hallway/supply/port
+	name = "Западный Коридор Карго"
+
+
 // Other public areas
 
 
@@ -193,7 +213,7 @@
 	request_console_name = "Crew Quarters"
 
 /area/station/public/arcade
-	name = "Аркаданый Зал"
+	name = "Аркадный Зал"
 	icon_state = "arcade"
 
 /area/station/public/mrchangs

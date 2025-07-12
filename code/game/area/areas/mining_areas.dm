@@ -5,7 +5,7 @@
 	has_gravity = TRUE
 
 /area/mine/unexplored
-	name = "Mine"
+	name = "Астероид"
 	icon_state = "unexplored"
 	always_unpowered = TRUE
 	requires_power = TRUE
@@ -61,7 +61,11 @@
 
 /// subtype of /surface so storms hit there
 /area/lavaland/surface/outdoors/outpost/catwalk
-	name = "Площадка вне Шахтерского Аванпоста"
+	name = "Внешная Площадка Шахтерского Аванпоста"
+	icon_state = "mining"
+
+/area/lavaland/surface/outdoors/outpost/no_boulder
+	name = "Mining Station"
 	icon_state = "mining"
 
 /area/mine/outpost/comms

@@ -5,7 +5,7 @@ on:
 
 jobs:
   merge-upstream:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - id: create_token
@@ -41,7 +41,7 @@ jobs:
           UPSTREAM_BRANCH: 'master'
           MERGE_BRANCH: 'merge-upstream'
           CHANGELOG_AUTHOR: 'ParadiseSS13'
-          TRANSLATE_CHANGES: 'true'
+          TRANSLATE_CHANGES: true
           OPENAI_API_KEY: ${{ secrets.ORG_EMPTY_TOKEN }}
           LOG_LEVEL: ${{ runner.debug && 'DEBUG' || 'INFO' }}
         run: |
