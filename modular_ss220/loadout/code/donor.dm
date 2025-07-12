@@ -407,3 +407,9 @@
 	path = /obj/item/clothing/under/ei_skirt_alt
 	donator_tier = 1
 	cost = 1
+
+/datum/gear/donor/crewmanplushie
+	display_name = "Medic tajaran plushie"
+	path = /obj/item/toy/plushie/crewmanplushie
+	donator_tier = 2
+	cost = 1
