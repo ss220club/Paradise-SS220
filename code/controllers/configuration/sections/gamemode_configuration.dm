@@ -53,7 +53,10 @@
 	CONFIG_LOAD_BOOL(prevent_mindshield_antags, data["prevent_mindshield_antag"])
 	CONFIG_LOAD_BOOL(disable_certain_round_early_end, data["disable_certain_round_early_end"])
 	CONFIG_LOAD_BOOL(enable_gamemode_player_limit, data["enable_gamemode_player_limit"])
-	CONFIG_LOAD_BOOL(add_random_station_traits, data["add_random_station_traits"])
+
+	// We don't need this for an event
+	//CONFIG_LOAD_BOOL(add_random_station_traits, data["add_random_station_traits"])
+	add_random_station_traits = FALSE
 
 	CONFIG_LOAD_NUM(traitor_objectives_amount, data["traitor_objective_amount"])
 

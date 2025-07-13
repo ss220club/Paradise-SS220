@@ -598,6 +598,9 @@
 				status_list += "<span class='warning'>Мне очень холодно. Примерно на [H.frostbite] единиц(ы). Если я не найду где согреться, то умру!</span>"
 			if(-1 to FROSTBITE_HYPOTHERMIA)
 				status_list += "<span class='warning'>Мне безумно холодно. Примерно на [H.frostbite] единиц. Глаза слипаются на ходу. Я не могу больше идти...</span>"
+		if(H.lastarea)
+			status_list += "<span class='notice'>Базовая температура зоны, где я нахожусь [H.lastarea.temperature] единиц(ы)."
+		status_list += "<span class='notice'>Моё тело само по себе согревает меня на [FROSTBITE_REGENERATION] единиц(ы)."
 		status_list += "<span class='notice'>По ощущениям, моя одежда защищает меня от холода на [H.get_clothes_isolation()] единиц(ы)."
 		status_list += "<span class='notice'>Окружающие меня объекты и погода изменяют температуру на [H.get_around_heat()] единиц(ы)."
 		to_chat(usr, chat_box_examine(status_list.Join("\n")))

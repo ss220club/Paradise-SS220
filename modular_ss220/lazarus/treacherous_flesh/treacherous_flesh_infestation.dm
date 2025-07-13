@@ -19,8 +19,8 @@
 	if(!..())
 		return FALSE
 	if(stage == 6)
-		if(prob(5))
-			if(istype(affected_mob, /mob/living/carbon/human)) // ДОБАВИТЬ  && !isnull(affected_mob.client) ПОСЛЕ ТЕСТОВ
+		if(prob(4))
+			if(istype(affected_mob, /mob/living/carbon/human) && !isnull(affected_mob.client))
 				var/mob/living/carbon/human/host = affected_mob
 				var/obj/effect/mob_spawn/treacherous_flesh/spawner = new /obj/effect/mob_spawn/treacherous_flesh
 				host.contents += spawner
@@ -61,7 +61,7 @@
 /datum/surgery_step/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.is_flesh_infecting() && (target.stat != DEAD) && !(target in SSticker.mode.ling_hosts)) // ДОБАВИТЬ  && !isnull(affected_mob.client) ПОСЛЕ ТЕСТОВ
+		if(H.is_flesh_infecting() && (target.stat != DEAD) && !(target in SSticker.mode.ling_hosts) && !isnull(affected_mob.client))
 			target.ForceContractDisease(new /datum/disease/treacherous_flesh)
 	return ..()
 

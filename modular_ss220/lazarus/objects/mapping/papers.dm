@@ -44,7 +44,7 @@
 	name = "Карта колонии \"Перун\""
 	desc = "Карта, напечатанная на дешёвой бумаги. У вас есть настойчивое ощущение, что её рисовали в Пеинте."
 	icon_state = "pamphlet"
-	info = "<<img src=\"https://media.discordapp.net/attachments/394156247269507074/1389968847255371960/a49929f98dac216b.png?ex=68668cdd&is=68653b5d&hm=db8c4e15dc1523e3b3cc2c402960ef600d3a2d55e283b982248990f0871ab7cd&=&format=webp&quality=lossless&width=1355&height=968\"><font face=\"Verdana\" color=black></font>"
+	info = "<img src=\"https://images2.imgbox.com/d3/00/MuDeQutV_o.png\" alt=\"image host\" width=\"1350\" height=\"950\"/>"
 	paper_height = 1000
 	paper_width = 1400
 

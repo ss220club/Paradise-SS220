@@ -2,6 +2,8 @@
 	name = "Заключённый разум"
 	real_name = "Заключённый разум"
 	hud_type = /datum/hud/trapped_mind
+	see_in_dark = 6
+
 
 /datum/hud/trapped_mind/New(mob/user)
 	..()

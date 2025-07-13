@@ -4,7 +4,7 @@
 		if(H.treacherous_flesh)
 			. += "<b><font color='red'>INFESTED</font></b>|<a href='byond://?src=[UID()];treacherous_flesh=infestor'>[H.treacherous_flesh.name]</a>|<a href='byond://?src=[UID()];treacherous_flesh=leave'>no</a>"
 		else
-			. += "<b><font color='red'>INFESTED (Inactive)</font></b>|<a href='byond://?src=[UID()];treacherous_flesh=play'>play as</a>|<a href='byond://?src=[UID()];treacherous_flesh=clear'>no</a>"
+			. += "<b><font color='red'>INFESTED (Inactive)</font></b>|<a href='byond://?src=[UID()];treacherous_flesh=play'>play as</a>|<a href='byond://?src=[UID()];treacherous_flesh=clear'>no</a>|<a href='byond://?src=[UID()];treacherous_flesh=insert_ghost'>insert ghost</a>"
 	else
 		. += "<a href='byond://?src=[UID()];treacherous_flesh=infest'>infested</a>|<b>NO</b>"
 
@@ -32,6 +32,15 @@
 			if("play")
 				for(var/obj/effect/mob_spawn/treacherous_flesh/spawner in host.contents)
 					spawner.attack_ghost(usr)
+					continue
+			if("insert_ghost")
+				var/list/client/candidates = list()
+				for(var/mob/M in GLOB.player_list)
+					if((M in GLOB.dead_mob_list) && !isnewplayer(M) && istype(M, /mob/dead/observer) && M.client)
+						candidates.Add(M.client)
+				var/client/target = input("Выберите игрока", "Выбор игрока", assigned_role) in candidates
+				for(var/obj/effect/mob_spawn/treacherous_flesh/spawner in host.contents)
+					spawner.create(ckey = target.ckey, user = usr)
 					continue
 			if("clear")
 				for(var/obj/effect/mob_spawn/treacherous_flesh/spawner in host.contents)

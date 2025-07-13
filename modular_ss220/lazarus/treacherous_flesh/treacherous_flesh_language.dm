@@ -1,5 +1,5 @@
 /datum/language/treacherous_flesh
-	name = "Разум Улья Биомофров"
+	name = "Разум Улья Биоморфов"
 	desc = "Биоморфы удивительным образом способны общаться на большие растояния при помощи испускаемых ими радиоволн."
 	speech_verb = "says"
 	colour = "changeling"

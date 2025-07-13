@@ -14,8 +14,12 @@
 
 	area_types = list(/area/lazarus/outdoors)
 	target_trait = STATION_LEVEL
-	weather_color = "#fcfcfc"
 	immunity_type = "snow"
+
+	telegraph_duration = 2 MINUTES
+	weather_duration = 7 MINUTES
+	weather_duration_lower = 6 MINUTES
+	weather_duration_upper = 8 MINUTES
 
 /datum/weather/ash_storm/blizzard/update_areas()
 	for(var/V in impacted_areas)
@@ -53,14 +57,13 @@
 	return FALSE
 
 /datum/weather/ash_storm/blizzard/weather_act(mob/living/L)
-	if(isanimal(L))
+	if(!ishuman(L))
 		return
 	if(is_blind_immune(L))
 		return
 	if(!is_ash_immune(L))
-		L.adjustFireLoss(1)
-		L.SetSlowed(5,5)
-		var/blurr_prob = 40
-		if(prob(blurr_prob))
-			L.AdjustEyeBlurry (rand(2 SECONDS, 8 SECONDS))
-	L.AdjustEyeBlind (2 SECONDS)
+		L.SetSlowed(1 SECONDS, 5)
+		if(L.AmountEyeBlurry() < 1 SECONDS)
+			L.AdjustEyeBlurry (2 SECONDS)
+		if(L.AmountBlinded() < 1 SECONDS)
+			L.AdjustEyeBlind (2 SECONDS)

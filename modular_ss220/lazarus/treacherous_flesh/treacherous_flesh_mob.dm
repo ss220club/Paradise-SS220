@@ -7,7 +7,7 @@
 #define EVOLUTION_STAGE_3 2100
 #define EVOLUTION_STAGE_4 3600
 
-#define EVOLUTION_GROWTH 4
+#define EVOLUTION_GROWTH 1
 
 /mob/living/treacherous_flesh
 	name = "Meaty worm"
@@ -42,7 +42,7 @@
 	real_name = "[pick("Альфа", "Бэта", "Гамма", "Сигма", "Дельта", "Эпсилон", "Дзета", "Йота", "Пси", "Омега")]-[rand(100, 999)]"
 	name = real_name
 	SSticker.mode.ling_infestors.Add(src)
-	add_language("Разум Улья Биомофров")
+	add_language("Разум Улья Биоморфов")
 
 /mob/living/treacherous_flesh/Destroy()
 	disinfest(FALSE)
@@ -79,8 +79,9 @@
 		if(EVOLUTION_STAGE_2)
 			if(evolution_points > EVOLUTION_STAGE_3)
 				evolution_stage = EVOLUTION_STAGE_3
-				to_chat(src, span_biggerdanger("Мы окончательно укоренились в теле носителя. Теперь мы способны на короткий промежуток времени брать его под контроль. Более того, теперь мы способны заражать нашими отпрысками и других гуманойдов."))
+				to_chat(src, span_biggerdanger("Мы окончательно укоренились в теле носителя. Теперь мы способны на короткий промежуток времени брать его под контроль. Более того, теперь мы способны заражать нашими отпрысками и других гуманойдов и видеть живых существ сквозь стены."))
 				SEND_SOUND(src, 'sound/ambience/antag/ling_alert.ogg')
+				sight = SEE_MOBS
 				grant_skills()
 		if(EVOLUTION_STAGE_3)
 			if(evolution_points > EVOLUTION_STAGE_4)
@@ -128,7 +129,7 @@
 /mob/living/treacherous_flesh/get_default_language()
 	if(default_language)
 		return default_language
-	return GLOB.all_languages["Разум Улья Биомофров"]
+	return GLOB.all_languages["Разум Улья Биоморфов"]
 
 /mob/living/treacherous_flesh/UnarmedAttack(mob/living/carbon/human/M)
 	if(istype(M))
@@ -175,7 +176,7 @@
 			primalis_abilities += new /datum/action/treacherous_flesh/take_control(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/enslave_mind(src)
 		if(EVOLUTION_STAGE_4)
-			to_chat(src, span_warning("Не указаны навыки"))
+			primalis_abilities += new /datum/action/treacherous_flesh/ascension(src)
 	for(var/datum/action/treacherous_flesh/ability in primalis_abilities)
 		ability.Grant(src)
 

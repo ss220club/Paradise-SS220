@@ -179,9 +179,12 @@ SUBSYSTEM_DEF(economy)
 	check_total_virology_goals_completion()
 
 /datum/controller/subsystem/economy/fire()
+	// We don't need this for an event
+	/*
 	if(next_paycheck_delay <= world.time)
 		next_paycheck_delay = 30 MINUTES + world.time
 		payday()
+	*/
 	if(next_data_check <= world.time)
 		next_data_check = 10 MINUTES + world.time
 		record_economy_data()

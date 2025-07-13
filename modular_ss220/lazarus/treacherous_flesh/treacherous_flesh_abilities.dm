@@ -57,9 +57,11 @@
 	if(!msg)
 		return
 	if(user.host.client)
-		if(user.host.client.holder)
-			to_chat(user.host, "<b>Вы слышите голос в своей голове... <i>[msg]</i></b>")
-			to_chat(user, "Носитель слышит голос в своей голове... <i>[msg]</i>")
+		to_chat(user.host, span_boldnotice("Вы слышите голос в своей голове... <i>[msg]</i>"))
+		to_chat(user, span_notice("Носитель слышит голос в своей голове... <i>[msg]</i>"))
+		for(var/mob/M in GLOB.player_list)
+			if((M in GLOB.dead_mob_list) && !isnewplayer(M))
+				to_chat(M, "<span class='notice'><b>[user.name]</b> -> [user.host.name] ([ghost_follow_link(user.host, ghost=M)]): [msg]</span>")
 	else
 		to_chat(user, span_warning("Похоже, носитель не может нас услышать."))
 	return TRUE
@@ -81,6 +83,9 @@
 			Remove(user)
 			for(var/datum/action/treacherous_flesh/message_host/mes_host in user.actions)
 				mes_host.Remove(user)
+			to_chat(user, span_boldnotice("Носитель получил информацию о том, что что-то находится внутри него и говорит с ним. Теперь он сможет общаться с нами посредством телепатии."))
+			to_chat(user.host, span_boldwarning("Вы чувствуете что внутри вас что-то шевелится. Внезапно, вы ощущаете странную связь, будто теперь в вашем разуме находится кто-то иной. И вы даже можете поговорить с этим."))
+			SEND_SOUND(user.host, sound('sound/ambience/antag/ling_alert.ogg'))
 			var/datum/action/com_host = new /datum/action/treacherous_flesh/communicate_host(user)
 			var/datum/action/com_parasite = new /datum/action/communicate_parasite(user)
 			com_host.Grant(user)
@@ -102,8 +107,11 @@
 	var/msg = clean_input("Сообщение:", "Сообщение для носителя")
 	if(!msg)
 		return
-	to_chat(user, "<b>[user.name]: <i>[msg]</i></b>")
-	to_chat(user.host, "<b>[user.name]: <i>[msg]</i></b>")
+	to_chat(user, span_purple("<b>[user.name]: <i>[msg]</i></b>"))
+	to_chat(user.host, span_purple("<b>[user.name]: <i>[msg]</i></b>"))
+	for(var/mob/M in GLOB.player_list)
+		if((M in GLOB.dead_mob_list) && !isnewplayer(M))
+			to_chat(M, "<span class='notice'><b>[user.name]</b> -> [user.host.name] ([ghost_follow_link(user.host, ghost=M)]): [msg]</span>")
 
 // Communicate parasite
 
@@ -111,6 +119,7 @@
 	name = "Разговаривать с гостем"
 	desc = "Проговорив фразу про себя, вы способны передать её гостю, что обитает в вашем сознании."
 	button_overlay_icon_state = "message"
+	button_overlay_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 
 /datum/action/communicate_parasite/Trigger(left_click)
 	if(istype(usr, /mob/living/carbon/human))
@@ -119,8 +128,12 @@
 			var/msg = clean_input("Сообщение:", "Сообщение для гостя")
 			if(!msg)
 				return
-			to_chat(host, "<b>[host.name]: <i>[msg]</i></b>")
-			to_chat(host.treacherous_flesh, "<b>[host.name]: <i>[msg]</i></b>")
+			to_chat(host, span_purple("<b>[host.name]: <i>[msg]</i></b>"))
+			to_chat(host.treacherous_flesh, span_purple("<b>[host.name]: <i>[msg]</i></b>"))
+			for(var/mob/M in GLOB.player_list)
+				if((M in GLOB.dead_mob_list) && !isnewplayer(M))
+					to_chat(M, "<span class='notice'><b>[host.name]</b> -> [host.treacherous_flesh.name] ([ghost_follow_link(host, ghost=M)]): [msg]</span>")
+
 
 // Speed Up Evolution
 
@@ -499,6 +512,10 @@
 	var/mob/living/trapped_mind/temp_mind = new /mob/living/trapped_mind(user.host)
 	user.trapped_mind = temp_mind
 
+	// Granting languages
+	for(var/datum/language/lang in user.host.languages)
+		user.trapped_mind.add_language(lang.name)
+
 	// Moving host to trapped mind
 	user.trapped_mind.name = user.host.real_name
 	user.trapped_mind.ckey = user.host.ckey
@@ -569,6 +586,65 @@
 		is_active = TRUE
 		button_overlay_icon_state = "pheromones_on"
 	UpdateButtons()
+	return TRUE
+
+/datum/action/treacherous_flesh/ascension
+	name = "Вознестись"
+	desc = "Мы заканчиваем наш рост внутри носителя и выходим во всём своём великолепии высшего существа. Стоит 200 химикатов. Наш носитель станет низшим крупным биоморфом."
+	button_overlay_icon_state = "ascension"
+	chemical_cost = 200
+	var/in_use = FALSE
+
+/datum/action/treacherous_flesh/ascension/activate()
+	if(in_use)
+		return FALSE
+	in_use = TRUE
+	var/confirm = alert(usr, "Мы уверены, что хотим начать возвышение. Это займёт время и это действие нельзя отменить.","Возвысится?","Да","Нет")
+	if(confirm != "Да")
+		in_use = FALSE
+		return FALSE
+	if(!take_chems())
+		in_use = FALSE
+		return FALSE
+	to_chat(user, "<span class='notice'>Мы начинаем окончательные метаморфозы. Через минуту мы родимся на свет.</span>")
+	to_chat(user.host, "<span class='boldwarning'>Внезапный порыв боли пронзает всё ваше тело. Вы не знаете что происходит, но каждую секунду агония становится всё сильнее.</span>")
+	user.host.emote("scream")
+	user.host.adjustStaminaLoss(30)
+
+	sleep(10 SECONDS)
+
+	user.host.emote("scream")
+	playsound(user.host.loc, 'sound/effects/splat.ogg', 50, 1)
+	user.host.adjustStaminaLoss(30)
+	user.host.Jitter(45 SECONDS)
+	to_chat(user.host, "<span class='boldwarning'>Ваши конечности постепенно перестают вас слушаться. Голос в голове становится всё громче. Вы меняетесь. Оно рождается.</span>")
+
+	sleep(5 SECONDS)
+
+	user.host.emote("gasp")
+	user.host.adjustStaminaLoss(30)
+
+	sleep(5 SECONDS)
+
+	user.host.emote("scream")
+	playsound(user.host.loc, 'sound/effects/splat.ogg', 50, 1)
+	to_chat(user.host, "<span class='biggerdanger'>Несмотря на агонию, вы чувствуете себя невероятно счастливым. Начинается ваша новая жизнь.</span>")
+	user.host.adjustStaminaLoss(30)
+
+	sleep(10 SECONDS)
+
+	user.host.emote("laugh")
+	SEND_SOUND(user.host, 'sound/ambience/antag/ling_alert.ogg')
+	to_chat(user, "<span class='boldnotice'>МЫ ВОЗВЫСИЛИСЬ!.</span>")
+	to_chat(user.host, "<span class='biggerdanger'>Теперь я чавсть семьи Великой Матери. Я должен помочь своему высшему сородичу во всех его начинаниях.</span>")
+	var/mob/living/simple_animal/hostile/flesh_biomorph/lesser/large/host_biomorph = new (user.host.loc)
+	host_biomorph.client = user.host.client
+	var/mob/living/simple_animal/hostile/flesh_biomorph/high/ascend_biomorph = new (user.host.loc)
+	ascend_biomorph.client = user.client
+	ascend_biomorph.real_name = "[initial(ascend_biomorph.name)] ([user.name])"
+	ascend_biomorph.name = ascend_biomorph.real_name
+	user.host.gib()
+
 	return TRUE
 
 #undef EVOLUTION_BONUS

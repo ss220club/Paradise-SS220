@@ -5,11 +5,12 @@
 
 /obj/structure/alien/weeds/node/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_weeds.dmi'
-	light_color = "A91515"
+	light_color = "#A91515"
 	light_power = 0.8
 	light_range = 3
 	name = "глазной отросток"
 	desc = "Отросток, на котором растёт множество белых глазных яблок. Они смотрят прямо на вас..."
+	layer = 2.12
 
 /obj/structure/alien/wallweed/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_weeds.dmi'

@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(weather)
 		var/trait = eligible_traits[length(eligible_traits)]
 		var/possible_weathers = eligible_traits[trait]
 		var/datum/weather/W = pickweight(possible_weathers)
-		var/randTime = rand(3000, 6000)
+		var/randTime = rand(10 MINUTES, 20 MINUTES)
 		var/list/zlevels = levels_by_trait(trait)
 		for(var/z in zlevels)
 			addtimer(CALLBACK(src, PROC_REF(make_eligible), trait, possible_weathers), randTime + initial(W.weather_duration_upper), TIMER_UNIQUE) //Around 5-10 minutes between weathers

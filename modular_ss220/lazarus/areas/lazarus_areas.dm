@@ -76,6 +76,8 @@
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
 
+	temperature = AREA_TEMPERATURE_UNDERGROUND
+
 // Powered
 
 /area/lazarus/underground/powered
@@ -124,6 +126,9 @@
 
 /area/lazarus/cabin/tourists
 	name = "Туристическая база"
+
+/area/lazarus/cabin/hermit
+	name = "Хижина Отшельника"
 
 //---Other---//
 

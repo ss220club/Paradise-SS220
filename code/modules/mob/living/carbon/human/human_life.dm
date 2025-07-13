@@ -191,7 +191,7 @@
 	if(status_flags & GODMODE)
 		frostbite = FROSTBITE_WARM
 	else
-		frostbite = clamp(get_frostbite_delta() + frostbite, 0, FROSTBITE_WARM)
+		frostbite = clamp((get_frostbite_delta() + frostbite), 0, FROSTBITE_WARM)
 	switch(frostbite)
 		if(FROSTBITE_HYPOTHERMIA to FROSTBITE_SEVERE)
 			adjustFireLoss(0.5)
@@ -512,10 +512,16 @@
 /mob/living/carbon/human/proc/get_around_heat()
 	// It's just an oneshot event. Please, don't force me to rewrite this using signals and proximity component. I'm too lazy.
 	var/around_heat = 0
-	for(var/obj/structure/lightable/bonfire/B in range(5))
+	for(var/obj/structure/lightable/bonfire/B in range(5, src))
 		around_heat += B.get_heat()
-	for(var/obj/machinery/space_heater/H in range(5))
+	for(var/obj/machinery/space_heater/H in range(5, src))
 		around_heat += H.get_heat()
+	if(!lastarea)
+		return around_heat
+	if(lastarea.icon_state == "snow_storm")
+		around_heat -= BLIZZARD_TEMPERATURE_EFFECT
+	if(on_fire)
+		around_heat += FROSTBITE_BURNING_BONUS
 	return around_heat
 
 /mob/living/carbon/human/proc/get_cold_protection(temperature)

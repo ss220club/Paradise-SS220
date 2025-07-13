@@ -1,3 +1,5 @@
+//#define NOT_GENERATE_FOREST
+
 /turf/simulated/floor/plating/asteroid/lazarus/forest
 	name = "forest turf"
 	icon = 'modular_ss220/lazarus/icons/mapping.dmi'
@@ -16,13 +18,14 @@
 	)
 
 /turf/simulated/floor/plating/asteroid/lazarus/forest/Initialize(mapload)
-	. = ..()
+	#ifndef NOT_GENERATE_FOREST
 	var/type_to_spawn = pickweight(result)
 	new type_to_spawn(src)
 	if(prob(dirt_chance))
 		ChangeTurf(/turf/simulated/floor/plating/asteroid/lazarus/dirt, keep_icon = FALSE)
 	else
 		ChangeTurf(/turf/simulated/floor/plating/asteroid/lazarus/snow, keep_icon = FALSE)
+	#endif
 
 /turf/simulated/floor/plating/asteroid/lazarus/forest/edge
 	name = "forest edge turf"

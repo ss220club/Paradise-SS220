@@ -23,13 +23,13 @@
 	. = ..()
 	switch(gen_state)
 		if(GEOTHERMAL_GEN_BROKEN)
-			. += "<span class='notice'>Генератор сломан. Крышка прикрыта и из под неё валит пар. Используйте отвёртку для ремонта.</span>"
+			. += "<span class='notice'>Генератор сломан. Крышка прикрыта и из под неё валит пар. Используйте <b>отвёртку</b> для ремонта.</span>"
 		if(GEOTHERMAL_GEN_CABLES)
-			. += "<span class='notice'>Генератор сломан. Крышка открыта и из под неё висят повреждённые провода. Используйте кабеля для продолжения ремонта.</span>"
+			. += "<span class='notice'>Генератор сломан. Крышка открыта и из под неё висят повреждённые провода. Используйте <b>кусачки</b> для продолжения ремонта.</span>"
 		if(GEOTHERMAL_GEN_WRENCH)
-			. += "<span class='notice'>Генератор сломан. Крышка открыта и из под неё валит пар. Используйте гаечный ключ для продолжения ремонта.</span>"
+			. += "<span class='notice'>Генератор сломан. Крышка открыта и из под неё валит пар. Используйте <b>гаечный ключ</b> для продолжения ремонта.</span>"
 		if(GEOTHERMAL_GEN_SCREWDRIVER)
-			. += "<span class='notice'>Генератор сломан. Крышка открыта и всё под ней приведено в порядок. Используйте отвёртку для продолжения ремонта.</span>"
+			. += "<span class='notice'>Генератор сломан. Крышка открыта и всё под ней приведено в порядок. Используйте <b>отвёртку</b> для продолжения ремонта.</span>"
 		if(GEOTHERMAL_GEN_ACTIVE)
 			. += "<span class='notice'>Генератор работает, вырабатывая [GEOTHERMAL_GEN_OUTPUT]W.</span>"
 			. += "<span class='warning'>Генератор можно саботировать при помощи монтировки на HARM.</span>"
@@ -91,28 +91,18 @@
 			gen_state = GEOTHERMAL_GEN_SCREWDRIVER
 			update_icon(UPDATE_ICON_STATE)
 
-/obj/machinery/power/geothermal_generator/attackby__legacy__attackchain(obj/item/P, mob/user, params)
+/obj/machinery/power/geothermal_generator/wirecutter_act(mob/living/user, obj/item/I)
 	if(user.a_intent == INTENT_HELP)
-		if(istype(P, /obj/item/stack/cable_coil) && gen_state == GEOTHERMAL_GEN_CABLES)
-			var/obj/item/stack/cable_coil/C = P
-			if(C.get_amount() >= 5)
-				playsound(src.loc, C.usesound, 50, 1)
-				user.visible_message("<span class='notice'>[user] начал заменять повреждённую проводку.</span>", "<span class='notice'>Вы начали заменять повреждённую проводку.</span>")
-				if(do_after(user, 20 * C.toolspeed, target = src))
-					if(C.get_amount() >= 5)
-						if(gen_state == GEOTHERMAL_GEN_CABLES)
-							C.use(5)
-							user.visible_message("<span class='notice'>[user] заменил повреждённую проводку.</span>", "<span class='notice'>Вы заменили повреждённую проводку.</span>")
-							gen_state = GEOTHERMAL_GEN_WRENCH
-							update_icon(UPDATE_ICON_STATE)
-					else
-						to_chat(user, "<span class='warning'>Вам нужно 5 единиц кабеля для замены проводки.</span>")
-						return
-				else
-					to_chat(user, "<span class='warning'>Вам нужно 5 единиц кабеля для замены проводки.</span>")
-		return
-	else
-		return ..()
+		. = TRUE
+		if(!I.tool_use_check(user, 0))
+			return
+		if(gen_state == GEOTHERMAL_GEN_CABLES)
+			user.visible_message("<span class='notice'>[user] начал заменять повреждённую проводку.</span>", "<span class='notice'>Вы начали заменять повреждённую проводку.</span>")
+			if(!I.use_tool(src, user, 8 SECONDS, volume = I.tool_volume))
+				return
+			user.visible_message("<span class='notice'>[user] заменил повреждённую проводку.</span>", "<span class='notice'>Вы заменили повреждённую проводку.</span>")
+			gen_state = GEOTHERMAL_GEN_WRENCH
+			update_icon(UPDATE_ICON_STATE)
 
 /obj/machinery/power/geothermal_generator/crowbar_act(mob/living/user, obj/item/I)
 	if(user.a_intent == INTENT_HARM)
