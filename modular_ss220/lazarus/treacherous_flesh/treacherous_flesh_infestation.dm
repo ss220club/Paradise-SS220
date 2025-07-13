@@ -61,7 +61,7 @@
 /datum/surgery_step/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.is_flesh_infecting() && (target.stat != DEAD) && !(target in SSticker.mode.ling_hosts) && !isnull(affected_mob.client))
+		if(H.is_flesh_infecting() && (target.stat != DEAD) && !(target in SSticker.mode.ling_hosts) && !isnull(target.client))
 			target.ForceContractDisease(new /datum/disease/treacherous_flesh)
 	return ..()
 
