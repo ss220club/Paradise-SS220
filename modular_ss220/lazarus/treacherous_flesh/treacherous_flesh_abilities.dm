@@ -139,7 +139,7 @@
 					to_chat(M, "<span class='notice'><b>[host.name]</b> -> [host.treacherous_flesh.name] ([ghost_follow_link(host, ghost=M)]): [msg]</span>")
 					if(!host.treacherous_flesh.client)
 						return
-					user.cast_tts(host.treacherous_flesh, msg, host, FALSE)
+					host.cast_tts(host.treacherous_flesh, msg, host, FALSE)
 
 
 // Speed Up Evolution

@@ -1,6 +1,6 @@
 #define JOB_HERMIT			(1<<15)
 #define JOB_CRUSADER		(1<<16)
-#define JOB_ABADONED_MINER	(1<<17)
+#define JOB_ABANDONED_MINER	(1<<17)
 #define JOB_CANNIBAL		(1<<18)
 #define JOB_SECTARIAN		(1<<19)
 #define JOB_SYNDI_AGENT		(1<<20)
@@ -87,11 +87,11 @@
 	outfit = /datum/outfit/job/assistant
 	hidden_from_job_prefs = FALSE
 
-/datum/job/abadoned_miner
-	title = "Abadoned Miner"
+/datum/job/abandoned_miner
+	title = "Abandoned Miner"
 	total_positions = 1
 	spawn_positions = 1
-	flag = JOB_ABADONED_MINER
+	flag = JOB_ABANDONED_MINER
 	department_flag = JOBCAT_SUPPORT
 	supervisors = "руководство комплекса"
 	department_head = list("Руководство Комплекса")
