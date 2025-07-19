@@ -257,7 +257,7 @@ SLIME SCANNER
 	msgs += "Damage Specifics: <span class='healthscan_oxy'>[OX]</span> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
 
 	// SS220 EDIT - START
-	msgs += "Обморожение: <font color='#e6451c'>[H.frostbite]/[FROSTBITE_WARM]</font>"
+	msgs += "Температура тела: <font color='#e6451c'>[H.frostbite]/[FROSTBITE_WARM]</font>"
 	// SS220 EDIT - END
 
 	if(H.timeofdeath && (H.stat == DEAD || (HAS_TRAIT(H, TRAIT_FAKEDEATH)) || probably_dead))

@@ -70,6 +70,9 @@ SUBSYSTEM_DEF(ticker)
 	/// List of biohazards keyed to the last time their population was sampled.
 	var/list/biohazard_pop_times = list()
 	var/list/biohazard_included_admin_spawns = list()
+	// Lazarus needs
+	var/quarantine = TRUE
+	var/shuttle_called = FALSE
 
 /datum/controller/subsystem/ticker/Initialize()
 	login_music = pick(\
@@ -554,7 +557,7 @@ SUBSYSTEM_DEF(ticker)
 			m = pick(memetips)
 
 	if(m)
-		to_chat(world, "<span class='purple'><b>Tip of the round: </b>[html_encode(m)]</span>")
+		to_chat(world, "<span class='purple'><b>Tip of the round: </b>Вы собираетесь играть в сложный ивент, где не прощаются малейшие ошибки. Уважайте лес. Будьте терпиливы. Cосредоточьтесь.</span>")
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	GLOB.nologevent = TRUE //end of round murder and shenanigans are legal; there's no need to jam up attack logs past this point.

@@ -9,6 +9,9 @@
 	icon = 'modular_ss220/lazarus/icons/lazarus_natural_floors.dmi'
 	digResult = /obj/item/stack/ore/glass
 	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	oxygen = MOLES_O2STANDARD
+	nitrogen = MOLES_N2STANDARD
+	temperature = T20C
 	//planetary_atmos = TRUE // It's not work properly
 
 /turf/simulated/floor/plating/asteroid/lazarus/randomize_icon_state()
@@ -25,6 +28,9 @@
 	desc = "Почва, почти полностью состоящая из песка. Используйте лопату для добычи песка."
 	baseturf = /turf/simulated/floor/plating/asteroid/lazarus/dirt
 	icon_state = "dirt_0"
+	oxygen = MOLES_O2STANDARD
+	nitrogen = MOLES_N2STANDARD
+	temperature = T20C
 
 // SNOW
 
@@ -46,6 +52,9 @@
 	baseturf = /turf/simulated/floor/plating/asteroid/lazarus/dirt
 	transform = matrix(1, 0, -9, 0, 1, -9) //50x50
 	slowdown = 1
+	oxygen = MOLES_O2STANDARD
+	nitrogen = MOLES_N2STANDARD
+	temperature = T20C
 
 /turf/simulated/floor/plating/asteroid/lazarus/snow/getDug()
 	ChangeTurf(/turf/simulated/floor/plating/asteroid/lazarus/dirt, keep_icon = FALSE)

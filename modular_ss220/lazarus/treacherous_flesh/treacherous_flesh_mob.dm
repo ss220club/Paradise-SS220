@@ -34,6 +34,9 @@
 	/// Holder for host trapped mind
 	var/mob/living/trapped_mind/trapped_mind
 
+/mob/living/treacherous_flesh/add_tts_component()
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/anubarak)
+
 /mob/living/treacherous_flesh/Initialize(mapload)
 	. = ..()
 	var/datum/atom_hud/U = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]

@@ -243,7 +243,8 @@ SUBSYSTEM_DEF(shuttle)
 			callShuttle = 0
 			break
 
-	if(callShuttle)
+	// We don't need auto-evac in event
+	if(callShuttle && FALSE)
 		if(emergency.mode < SHUTTLE_CALL)
 			emergency.request(null, 2.5)
 			log_game("There is no means of calling the shuttle anymore. Shuttle automatically called.")

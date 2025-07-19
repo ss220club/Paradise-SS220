@@ -33,7 +33,8 @@ GLOBAL_DATUM_INIT(major_announcement, /datum/announcer, new(config_type = /datum
 		msg_sanitized = FALSE,
 		msg_language,
 		new_sound2 = null,
-		new_subtitle = null
+		new_subtitle = null,
+		tts_seed = null
 	)
 
 	if(!message)
@@ -60,7 +61,7 @@ GLOBAL_DATUM_INIT(major_announcement, /datum/announcer, new(config_type = /datum
 		message_language.scramble(subtitle)
 	)
 
-	Message(formatted_message, garbled_formatted_message, receivers, garbled_receivers)
+	Message(formatted_message, garbled_formatted_message, receivers, garbled_receivers, tts_seed)
 
 	var/datum/feed_message/FM = new
 	FM.author = author ? author : "Automated Announcement System"
@@ -102,7 +103,7 @@ GLOBAL_DATUM_INIT(major_announcement, /datum/announcer, new(config_type = /datum
 
 	return list(receivers, garbled_receivers)
 
-/datum/announcer/proc/Message(message, garbled_message, receivers, garbled_receivers)
+/datum/announcer/proc/Message(message, garbled_message, receivers, garbled_receivers, tts_seed)
 	for(var/mob/M in receivers)
 		to_chat(M, message, MESSAGE_TYPE_WARNING)
 	for(var/mob/M in garbled_receivers)

@@ -634,6 +634,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		"Enemy Communications Intercepted" = 'sound/AI/intercept.ogg',
 		"New Command Report Created" = 'sound/AI/commandreport.ogg')
 
+	var/list/TTSVoices = subtypesof(/datum/tts_seed/silero)
+
 	var/type = input(usr, "Pick a type of report to send", "Report Type", "") as anything in MsgType
 
 	if(type == "Custom")
@@ -646,6 +648,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!message)
 		return
 
+	var/chosen_tts_seed = input(usr, "Pick a TTS seed for an announce", "TTS seed", "") as anything in TTSVoices
+
 	switch(alert("Should this be announced to the general population?", null,"Yes","No", "Cancel"))
 		if("Yes")
 			var/beepsound = input(usr, "What sound should the announcement make?", "Announcement Sound", "") as anything in MsgSound
@@ -654,7 +658,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				message,
 				new_title = type,
 				new_subtitle = subtitle,
-				new_sound = MsgSound[beepsound]
+				new_sound = MsgSound[beepsound],
+				tts_seed = chosen_tts_seed
 			)
 			print_command_report(message, subtitle)
 		if("No")

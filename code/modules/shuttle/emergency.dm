@@ -340,6 +340,8 @@
 		SSshuttle.emergencyLastCallLoc = signalOrigin
 	else
 		SSshuttle.emergencyLastCallLoc = null
+	// We don't need announcements during event
+	/*
 	if(canRecall)
 		GLOB.major_announcement.Announce(
 			GLOB.major_announcement.Announce("Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] [declension_ru(timeLeft(600), "минуты", "минут", "минут")].[reason][SSshuttle.emergencyLastCallLoc ? "\n\nВызов шаттла отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]"),
@@ -352,6 +354,7 @@
 			new_title = "Приоритетное оповещение.",
 			new_sound = sound('sound/AI/cshuttle.ogg')
 		)
+	*/
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin, byCC = FALSE)
 	if(!canRecall)
@@ -367,11 +370,14 @@
 		SSshuttle.emergencyLastCallLoc = signalOrigin
 	else
 		SSshuttle.emergencyLastCallLoc = null
+	// We don't need announcements during event
+	/*
 	GLOB.major_announcement.Announce(
 		"Эвакуационный шаттл был отозван[byCC ? " Центральным Командованием." : SSshuttle.emergencyLastCallLoc ? ". Отзыв шаттла отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "." ]",
 		new_title = "Приоритетное оповещение.",
 		new_sound = sound('sound/AI/eshuttle_recall.ogg')
 	)
+	*/
 
 /obj/docking_port/mobile/emergency/proc/is_hijacked(fullcheck = FALSE)
 	if(hijack_status == HIJACKED && !fullcheck) //Don't even bother if it was done via computer.
@@ -457,6 +463,8 @@
 					return
 				mode = SHUTTLE_DOCKED
 				timer = world.time
+				// We don't need announcements during event
+				/*
 				if(canRecall)
 					GLOB.major_announcement.Announce(
 						"Эвакуационный шаттл пристыковался со станцией. У вас есть [timeLeft(600)] [declension_ru(timeLeft(600), "минута", "минуты", "минут")] чтобы прибыть на борт эвакуационного шаттла.",
@@ -469,6 +477,7 @@
 						new_title = "Приоритетное оповещение.",
 						new_sound = sound('sound/AI/cshuttle_dock.ogg')
 					)
+				*/
 		if(SHUTTLE_DOCKED)
 
 			if(time_left <= 0 && length(SSshuttle.hostile_environments))
@@ -506,10 +515,13 @@
 				enterTransit()
 				mode = SHUTTLE_ESCAPE
 				timer = world.time
+				// We don't need announcements during event
+				/*
 				GLOB.major_announcement.Announce(
 					"Эвакуационный шаттл покинул станцию. Расчетное время прибытия на Центральное Командование: [timeLeft(600)] [declension_ru(timeLeft(600), "минута", "минуты", "минут")].",
 					new_title = "Приоритетное оповещение."
 				)
+				*/
 
 		if(SHUTTLE_ESCAPE)
 			if(time_left <= 0)

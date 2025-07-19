@@ -62,6 +62,7 @@
 		for(var/mob/M in GLOB.player_list)
 			if((M in GLOB.dead_mob_list) && !isnewplayer(M))
 				to_chat(M, "<span class='notice'><b>[user.name]</b> -> [user.host.name] ([ghost_follow_link(user.host, ghost=M)]): [msg]</span>")
+				user.cast_tts(user.host, msg, user, FALSE)
 	else
 		to_chat(user, span_warning("Похоже, носитель не может нас услышать."))
 	return TRUE
@@ -112,6 +113,9 @@
 	for(var/mob/M in GLOB.player_list)
 		if((M in GLOB.dead_mob_list) && !isnewplayer(M))
 			to_chat(M, "<span class='notice'><b>[user.name]</b> -> [user.host.name] ([ghost_follow_link(user.host, ghost=M)]): [msg]</span>")
+			if(!user.host.client)
+				return
+			user.cast_tts(user.host, msg, user, FALSE)
 
 // Communicate parasite
 
@@ -133,6 +137,9 @@
 			for(var/mob/M in GLOB.player_list)
 				if((M in GLOB.dead_mob_list) && !isnewplayer(M))
 					to_chat(M, "<span class='notice'><b>[host.name]</b> -> [host.treacherous_flesh.name] ([ghost_follow_link(host, ghost=M)]): [msg]</span>")
+					if(!host.treacherous_flesh.client)
+						return
+					user.cast_tts(host.treacherous_flesh, msg, host, FALSE)
 
 
 // Speed Up Evolution
@@ -270,7 +277,7 @@
 	to_chat(user.host, "<span class='warning'>Вы чувствуете невероятную боль. Кожа пузырится и на месте отсутствующих культей формируются новый, здоровые конечности. Вас тошнит.</span>")
 	user.host.emote("scream")
 
-	user.host.check_and_regenerate_organs(src)
+	user.host.check_and_regenerate_organs(user.host)
 
 	return TRUE
 
@@ -648,8 +655,3 @@
 	return TRUE
 
 #undef EVOLUTION_BONUS
-#undef EVOLUTION_STAGE_0
-#undef EVOLUTION_STAGE_1
-#undef EVOLUTION_STAGE_2
-#undef EVOLUTION_STAGE_3
-#undef EVOLUTION_STAGE_4

@@ -9,12 +9,12 @@
 	move_resist = MOVE_FORCE_STRONG
 	speak_emote = list("кряхтит")
 	emote_hear = list("кряхтит")
-	maxHealth = 200
-	health = 200
+	maxHealth = 400
+	health = 400
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	obj_damage = 50
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	melee_damage_lower = 35
+	melee_damage_upper = 35
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = INFINITY
@@ -43,7 +43,7 @@
 	AddSpell(tentacle)
 	add_language("Galactic Common")
 
-/mob/living/simple_animal/hostile/flesh_biomorph/lesser/death(gibbed)
+/mob/living/simple_animal/hostile/flesh_biomorph/high/death(gibbed)
 	if(!gibbed)
 		gib()
 	return ..(TRUE)

@@ -19,6 +19,7 @@
 
 /turf/simulated/floor/plating/asteroid/lazarus/forest/Initialize(mapload)
 	#ifndef NOT_GENERATE_FOREST
+	. = ..()
 	var/type_to_spawn = pickweight(result)
 	new type_to_spawn(src)
 	if(prob(dirt_chance))
