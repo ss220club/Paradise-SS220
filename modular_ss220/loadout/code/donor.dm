@@ -414,8 +414,6 @@
 	donator_tier = 1
 	cost = 1
 
-/datum/gear/donor/crewmanplushie
+/datum/gear/crewmanplushie
 	display_name = "Medic tajaran plushie"
 	path = /obj/item/toy/plushie/crewmanplushie
-	donator_tier = 2
-	cost = 1
