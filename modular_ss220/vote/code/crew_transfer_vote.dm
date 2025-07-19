@@ -50,25 +50,25 @@
 	return res
 
 /datum/vote/crew_transfer/proc/get_vote_weight_for_client(client/client, online_players as num) as num
-    if(!istype(client) || !client.mob)
-        return 0
+	if(!istype(client) || !client.mob)
+		return 0
 
-    var/mob/client_mob = client.mob
+	var/mob/client_mob = client.mob
 
-    if(client_mob in GLOB.alive_mob_list)
-        return ALIVE_VOTE_WEIGHT(online_players)
+	if(client_mob in GLOB.alive_mob_list)
+		return ALIVE_VOTE_WEIGHT(online_players)
 
-    if(client_mob in GLOB.new_player_mobs)
-        return LOBBY_VOTE_WEIGHT(online_players)
+	if(client_mob in GLOB.new_player_mobs)
+		return LOBBY_VOTE_WEIGHT(online_players)
 
-    if(client_mob in GLOB.dead_mob_list)
-        var/mob/dead/observer/ghost = client_mob
-        if(isobserver(ghost) && ghost.started_as_observer)
-            return GHOST_VOTE_WEIGHT(online_players)
-        return DEAD_VOTE_WEIGHT(online_players)
+	if(client_mob in GLOB.dead_mob_list)
+		var/mob/dead/observer/ghost = client_mob
+		if(isobserver(ghost) && ghost.started_as_observer)
+			return GHOST_VOTE_WEIGHT(online_players)
+		return DEAD_VOTE_WEIGHT(online_players)
 
-    log_game("[client.ckey]'s vote cannot be classified. Their vote will be ignored. Mob type: [client_mob.type]")
-    return 0
+	log_game("[client.ckey]'s vote cannot be classified. Their vote will be ignored. Mob type: [client_mob.type]")
+	return 0
 
 #undef ALIVE_VOTE_WEIGHT
 #undef DEAD_VOTE_WEIGHT
