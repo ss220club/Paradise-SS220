@@ -1,6 +1,6 @@
 #define ALIVE_VOTE_WEIGHT(online_players) (1)
-#define DEAD_VOTE_WEIGHT(online_players) (1 / (1 + NUM_E ** (0.025 * (online_players - 50))))
-#define GHOST_VOTE_WEIGHT(online_players) (1 / (1 + NUM_E ** (0.025 * online_players)))
+#define DEAD_VOTE_WEIGHT(online_players) (1 / (1 + NUM_E ** (0.015 * (online_players - 80))))
+#define GHOST_VOTE_WEIGHT(online_players) (1 / (1 + NUM_E ** (0.015 * online_players)))
 #define LOBBY_VOTE_WEIGHT(online_players) (1 / (1 + NUM_E ** (0.03 * (online_players + 40))))
 #define RESULT_PRECISION 0.01
 
