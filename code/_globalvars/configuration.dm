@@ -6,7 +6,7 @@ GLOBAL_VAR(join_tos)
 GLOBAL_PROTECT(join_tos) // Takes up a lot of space. Also dont touch this shit
 
 /// The current game year
-GLOBAL_VAR_INIT(game_year, (text2num(time2text(world.realtime, "YYYY")) + 544))
+GLOBAL_VAR_INIT(game_year, (text2num(time2text(world.realtime, "YYYY")) + 537))
 
 /// Allow new players to enter the game?
 GLOBAL_VAR_INIT(enter_allowed, TRUE)

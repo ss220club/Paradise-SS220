@@ -1,4 +1,4 @@
-#define EVOLUTION_BONUS 150
+#define EVOLUTION_BONUS 60
 
 // Basic
 
@@ -59,10 +59,11 @@
 	if(user.host.client)
 		to_chat(user.host, span_boldnotice("Вы слышите голос в своей голове... <i>[msg]</i>"))
 		to_chat(user, span_notice("Носитель слышит голос в своей голове... <i>[msg]</i>"))
+		user.cast_tts(user.host, msg, user, FALSE)
+		user.cast_tts(user, msg, user, FALSE)
 		for(var/mob/M in GLOB.player_list)
 			if((M in GLOB.dead_mob_list) && !isnewplayer(M))
 				to_chat(M, "<span class='notice'><b>[user.name]</b> -> [user.host.name] ([ghost_follow_link(user.host, ghost=M)]): [msg]</span>")
-				user.cast_tts(user.host, msg, user, FALSE)
 	else
 		to_chat(user, span_warning("Похоже, носитель не может нас услышать."))
 	return TRUE
@@ -110,12 +111,13 @@
 		return
 	to_chat(user, span_purple("<b>[user.name]: <i>[msg]</i></b>"))
 	to_chat(user.host, span_purple("<b>[user.name]: <i>[msg]</i></b>"))
+	user.cast_tts(user.host, msg, user, FALSE)
+	user.cast_tts(user, msg, user, FALSE)
 	for(var/mob/M in GLOB.player_list)
 		if((M in GLOB.dead_mob_list) && !isnewplayer(M))
 			to_chat(M, "<span class='notice'><b>[user.name]</b> -> [user.host.name] ([ghost_follow_link(user.host, ghost=M)]): [msg]</span>")
 			if(!user.host.client)
 				return
-			user.cast_tts(user.host, msg, user, FALSE)
 
 // Communicate parasite
 
@@ -134,13 +136,13 @@
 				return
 			to_chat(host, span_purple("<b>[host.name]: <i>[msg]</i></b>"))
 			to_chat(host.treacherous_flesh, span_purple("<b>[host.name]: <i>[msg]</i></b>"))
+			host.cast_tts(host.treacherous_flesh, msg, host, FALSE)
+			host.cast_tts(host, msg, host, FALSE)
 			for(var/mob/M in GLOB.player_list)
 				if((M in GLOB.dead_mob_list) && !isnewplayer(M))
 					to_chat(M, "<span class='notice'><b>[host.name]</b> -> [host.treacherous_flesh.name] ([ghost_follow_link(host, ghost=M)]): [msg]</span>")
 					if(!host.treacherous_flesh.client)
 						return
-					host.cast_tts(host.treacherous_flesh, msg, host, FALSE)
-
 
 // Speed Up Evolution
 
@@ -514,10 +516,18 @@
 		in_use = FALSE
 		return FALSE
 
+	user.host.Jitter(8 SECONDS)
+	sleep(20 SECONDS)
+	user.host.Jitter(8 SECONDS)
+	sleep(20 SECONDS)
+	user.host.Jitter(8 SECONDS)
+	sleep(20 SECONDS)
+
 	// HOST TO TRAPPED MIND
 	// Spawning trapped mind
 	var/mob/living/trapped_mind/temp_mind = new /mob/living/trapped_mind(user.host)
 	user.trapped_mind = temp_mind
+	temp_mind.original_body = user.host
 
 	// Granting languages
 	for(var/datum/language/lang in user.host.languages)
@@ -533,8 +543,10 @@
 	// Granting return action
 	var/datum/action/return_control/A = new()
 	A.Grant(user.host)
-	in_use = FALSE
+	var/datum/action/resist_control/B = new()
+	B.Grant(user.trapped_mind)
 
+	in_use = FALSE
 	return TRUE
 
 // Return Control

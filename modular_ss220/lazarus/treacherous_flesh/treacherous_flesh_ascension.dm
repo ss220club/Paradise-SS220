@@ -32,6 +32,9 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	pressure_resistance = 200
 	weeds_heal_amount = 10
+	icon_living = "high"
+	icon_resting = "high"
+	speed = 0.8
 
 /mob/living/simple_animal/hostile/flesh_biomorph/high/Initialize(mapload)
 	. = ..()

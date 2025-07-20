@@ -15,6 +15,7 @@
 	update_icon()
 
 /obj/structure/event_console/update_overlays()
+	. = ..()
 	if(icon_keyboard)
 		. += "[icon_keyboard]"
 		underlays += emissive_appearance(icon, "[icon_keyboard]_lightmask")
@@ -33,6 +34,7 @@
 		return ..()
 	if(SSticker.quarantine)
 		to_chat(user, span_boldwarning("Объект находится на карантине. Вызов помощи невозможен. Обратитесь к администрации колонии за помощью."))
+		return
 	if(!SSticker.shuttle_called)
 		var/confirm = alert(user, "Вы уверены что хотите отправить сигнал бедствия? Это действие нельзя отменить.","Отправить сигналл бедствия?","Да","Нет")
 		if(confirm != "Да")
@@ -40,7 +42,6 @@
 		SSticker.shuttle_called = TRUE
 		to_chat(user, span_notice("Сигнал бедствия был отправлен."))
 		message_admins("(ИВЕНТ) ИГРОКИ ОТПРАВИЛИ СИГНАЛ БЕДСТВИЯ.")
-	to_chat(user, span_notice("Сигнал бедствия уже был отправлен."))
 	return
 
 /obj/structure/event_console/quarantine
@@ -51,12 +52,12 @@
 	if(!ishuman(user))
 		return ..()
 	if(!SSticker.quarantine)
-		to_chat(user, span_boldwarning("Объект уже снят с карантина"))
+		to_chat(user, span_notice("Объект уже снят с карантина"))
+		return
 	var/confirm = alert(user, "Вы уверены что хотите отправить снять карантин? Это действие нельзя отменить.","Снять карантин?","Да","Нет")
 	if(confirm != "Да")
 		return
 	SSticker.quarantine = FALSE
 	to_chat(user, span_notice("Карантин был снят."))
 	message_admins("(ИВЕНТ) ИГРОКИ СНЯЛИ КАРАНТИН.")
-	to_chat(user, span_notice("Карантин уже был снят."))
 	return

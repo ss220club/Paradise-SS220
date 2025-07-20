@@ -28,7 +28,8 @@ GLOBAL_VAR(religion_name)
 	return capitalize(name)
 
 /proc/station_name()
-	return SSmapping.map_datum.fluff_name
+	return "ПКК \"Перун\""
+	//return SSmapping.map_datum.fluff_name
 
 /proc/new_station_name()
 	var/random = rand(1,5)

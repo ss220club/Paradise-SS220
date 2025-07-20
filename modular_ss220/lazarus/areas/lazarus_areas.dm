@@ -104,6 +104,9 @@
 /area/lazarus/underground/powered/geotherm/veles
 	name = "Геотермальная электростанция (Велес)"
 
+/area/lazarus/underground/powered/west_hatch
+	name = "Восточный спуск"
+
 //-----MISC LOCATIONS-----//
 
 //---Cabins---//
@@ -456,6 +459,10 @@
 	name = "Спуск в бездну (Велес)"
 	icon_state = "mining"
 
+/area/lazarus/outpost/veles/rd
+	name = "Офис РД (Велес)"
+	icon_state = "rnd"
+
 // Sec
 
 /area/lazarus/outpost/veles/sec
@@ -503,3 +510,11 @@
 /area/lazarus/outpost/veles/hatch
 	name = "Шлюз (Велес)"
 	icon_state = "entry"
+
+/area/lazarus/outpost/veles/bunker
+	name = "Тайный бункер (Велес)"
+	icon_state = "entry"
+
+/area/lazarus/outpost/veles/generators
+	name = "Подстанция (Велес)"
+	icon_state = "engi"

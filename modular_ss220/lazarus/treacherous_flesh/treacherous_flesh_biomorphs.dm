@@ -61,11 +61,11 @@
 /mob/living/simple_animal/hostile/flesh_biomorph/lesser/small
 	name = "Маленький биоморф"
 	desc = "Искривлённая конечность, из которой торчит множество щупалец и усиков. Они неестественно извиваются, будто пытаясь ухватиться за что-то поблизости."
-	maxHealth = 25
-	health = 25
+	maxHealth = 20
+	health = 20
 	obj_damage = 10
 	melee_damage_lower = 5
-	melee_damage_upper = 10
+	melee_damage_upper = 5
 	icon_state = "small"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB | PASSFLORA
@@ -75,15 +75,16 @@
 	can_hide = TRUE
 	pass_door_while_hidden = TRUE
 	weeds_heal_amount = 3
+	speed = 0.5
 
 /mob/living/simple_animal/hostile/flesh_biomorph/lesser/medium
 	name = "Средний биоморф"
 	desc = "Кусок плоти с кучей щупалец и усиков. Они неестественно извиваются, будто пытаясь ухватиться за что-то поблизости."
-	maxHealth = 60
-	health = 60
+	maxHealth = 50
+	health = 50
 	obj_damage = 30
-	melee_damage_lower = 10
-	melee_damage_upper = 15
+	melee_damage_lower = 12
+	melee_damage_upper = 12
 	icon_state = "medium"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	pass_flags = PASSTABLE | PASSFLORA
@@ -91,6 +92,7 @@
 	mob_size = MOB_SIZE_SMALL
 	split_to = /mob/living/simple_animal/hostile/flesh_biomorph/lesser/small
 	weeds_heal_amount = 5
+	speed = 0.8
 
 /mob/living/simple_animal/hostile/flesh_biomorph/lesser/medium/Initialize(mapload)
 	. = ..()
@@ -100,11 +102,11 @@
 /mob/living/simple_animal/hostile/flesh_biomorph/lesser/large
 	name = "Крупный биоморф"
 	desc = "Настоящая гора плоти с кучей щупалец и усиков. Они неестественно извиваются, будто пытаясь ухватиться за что-то поблизости."
-	maxHealth = 100
-	health = 100
+	maxHealth = 90
+	health = 90
 	obj_damage = 50
-	melee_damage_lower = 25
-	melee_damage_upper = 30
+	melee_damage_lower = 22
+	melee_damage_upper = 22
 	icon_state = "large"
 	mob_size = MOB_SIZE_HUMAN
 	split_to = /mob/living/simple_animal/hostile/flesh_biomorph/lesser/medium

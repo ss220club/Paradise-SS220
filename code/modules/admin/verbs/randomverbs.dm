@@ -648,7 +648,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!message)
 		return
 
-	var/chosen_tts_seed = input(usr, "Pick a TTS seed for an announce", "TTS seed", "") as anything in TTSVoices
+	var/chosen_tts_seed = tgui_input_list(usr, "Pick a TTS seed for an announce", "TTS seed", TTSVoices)
 
 	switch(alert("Should this be announced to the general population?", null,"Yes","No", "Cancel"))
 		if("Yes")

@@ -14,7 +14,7 @@
 	. = ..()
 	announcer.ai = src
 
-/datum/announcer/Message(message, garbled_message, receivers, garbled_receivers, tts_seed)
+/datum/announcer/Message(message, garbled_message, receivers, garbled_receivers, tts_seed, raw_message)
 	var/using_seed
 	if(tts_seed)
 		using_seed = tts_seed
@@ -22,7 +22,7 @@
 		using_seed = config.tts_seed
 	if(!using_seed)
 		return ..()
-	var/message_tts = message
+	var/message_tts = raw_message
 	var/garbled_message_tts = garbled_message
 	message = replace_characters(message, list("+"))
 	garbled_message = replace_characters(garbled_message, list("+"))

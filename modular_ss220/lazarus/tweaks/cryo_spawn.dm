@@ -1,0 +1,7 @@
+/datum/controller/subsystem/jobs/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0)
+	.=..()
+	for(var/atom/A in get_turf(H))
+		if(istype(A, /obj/machinery/cryopod))
+			H.Sleeping(10 SECONDS)
+			H.AdjustEyeBlind(12 SECONDS)
+			H.Drowsy(25 SECONDS)

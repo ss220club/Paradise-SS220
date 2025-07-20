@@ -84,8 +84,13 @@
 	department_head = list("Всевышний")
 	selection_color = "#8fa088"
 	access = list()
-	outfit = /datum/outfit/job/assistant
+	outfit = /datum/outfit/job/crusader
 	hidden_from_job_prefs = FALSE
+
+/datum/outfit/job/crusader
+	uniform = /obj/item/clothing/under/rank/civilian/chaplain
+	shoes = /obj/item/clothing/shoes/black
+	l_ear = /obj/item/radio/headset
 
 /datum/job/abandoned_miner
 	title = "Abandoned Miner"
@@ -97,13 +102,13 @@
 	department_head = list("Руководство Комплекса")
 	selection_color = "#8fa088"
 	access = list()
-	outfit = /datum/outfit/job/assistant
+	outfit = /datum/outfit/job/mining
 	hidden_from_job_prefs = FALSE
 
 /datum/job/cannibal
 	title = "Cannibal"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 4
+	spawn_positions = 4
 	flag = JOB_CANNIBAL
 	department_flag = JOBCAT_SUPPORT
 	supervisors = "голос плоти"
@@ -127,11 +132,12 @@
 	)
 	mask = /obj/item/clothing/mask/pig
 	belt = /obj/item/storage/belt/chef
+	id = /obj/item/card/id/syndicate
 
 /datum/job/sectarian
 	title = "Sectarian"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 4
+	spawn_positions = 4
 	flag = JOB_SECTARIAN
 	department_flag = JOBCAT_SUPPORT
 	supervisors = "Бог-Во-Плоти"
@@ -156,8 +162,8 @@
 
 /datum/job/syndicate_agent
 	title = "Syndicate Agent"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 3
+	spawn_positions = 3
 	flag = JOB_SYNDI_AGENT
 	department_flag = JOBCAT_SUPPORT
 	supervisors = "синдикат"
@@ -175,3 +181,4 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_ear = /obj/item/radio/headset
 	belt = /obj/item/storage/belt/military
+	id = /obj/item/card/id/syndicate
