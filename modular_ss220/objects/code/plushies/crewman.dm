@@ -1,5 +1,5 @@
 /obj/item/toy/plushie/crewmanplushie
-	name = "medic Tajaran Plushie"
+	name = "medic tajaran plushie"
 	desc = "Мягкая белая игрушка с доброй, но пугливой улыбкой."
 	icon = 'modular_ss220/objects/icons/plushies.dmi'
 	icon_state = "crewman"
