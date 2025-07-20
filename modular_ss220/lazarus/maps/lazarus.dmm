@@ -851,12 +851,6 @@
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/hermit)
-"aDC" = (
-/obj/item/kirbyplants/large,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred"
-	},
-/area/lazarus/syndie_shelter)
 "aDO" = (
 /obj/machinery/power/apc/directional/west,
 /obj/structure/cable{
@@ -1312,8 +1306,11 @@
 	},
 /area/lazarus/outpost/rod/canteen)
 "aSl" = (
-/turf/simulated/wall/indestructible/ice,
-/area/lazarus/outdoors)
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkred"
+	},
+/area/lazarus/syndie_shelter)
 "aSF" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/rack,
@@ -1331,18 +1328,8 @@
 	},
 /area/lazarus/outpost/rod/living/crew)
 "aUh" = (
-/obj/machinery/light/small/directional/west,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/structure/rack,
-/turf/simulated/floor/plating/asteroid/lazarus/dirt,
-/area/lazarus/underground/powered/outpost)
+/turf/simulated/mineral/random/lazarus,
+/area/lazarus/outpost/veles/bunker)
 "aUj" = (
 /obj/machinery/hydroponics/soil,
 /obj/machinery/hydroponics/soil,
@@ -1739,6 +1726,20 @@
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/abandoned_bunker)
+"bhk" = (
+/obj/structure/table,
+/obj/item/radio/uplink{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/obj/item/radio/uplink{
+	pixel_x = 16;
+	pixel_y = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkred"
+	},
+/area/lazarus/syndie_shelter)
 "bhI" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/effect/spawner/random/lazarus/trash,
@@ -4674,18 +4675,6 @@
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/briefing)
-"cSu" = (
-/obj/structure/table,
-/obj/structure/sign/poster/contraband/random/directional/north,
-/obj/item/reagent_containers/drinks/bottle/wine{
-	pixel_x = -7;
-	pixel_y = 9
-	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "darkred"
-	},
-/area/lazarus/syndie_shelter)
 "cSD" = (
 /obj/structure/fence,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
@@ -5424,10 +5413,9 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/veles/generators)
 "dsH" = (
-/obj/machinery/light/small/directional/west,
-/obj/structure/dispenser/oxygen,
-/turf/simulated/floor/plating/asteroid/lazarus/dirt,
-/area/lazarus/underground/powered/outpost)
+/obj/effect/mapping_helpers/turfs/rust/probably,
+/turf/simulated/wall/r_wall,
+/area/lazarus/outpost/veles/bunker)
 "dsO" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -7150,6 +7138,18 @@
 	icon_state = "white"
 	},
 /area/lazarus/outpost/rod/living/cryo)
+"etB" = (
+/obj/structure/table,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/item/reagent_containers/drinks/bottle/wine{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "darkred"
+	},
+/area/lazarus/syndie_shelter)
 "etO" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -9292,9 +9292,16 @@
 	},
 /area/lazarus/outpost/veles/med)
 "fQy" = (
-/obj/effect/mapping_helpers/turfs/rust/probably,
-/turf/simulated/wall/r_wall,
-/area/lazarus/outpost/veles/bunker)
+/obj/structure/table,
+/obj/item/radio/uplink{
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "darkred"
+	},
+/area/lazarus/syndie_shelter)
 "fQz" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -9857,6 +9864,10 @@
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/canteen)
+"ghM" = (
+/obj/machinery/atmospherics/portable/canister/oxygen,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/underground/powered/outpost)
 "ghW" = (
 /obj/machinery/power/geothermal_generator,
 /obj/structure/cable/yellow{
@@ -10201,14 +10212,6 @@
 	icon_state = "darkbluefull"
 	},
 /area/lazarus/outpost/yarilo/med/cmo)
-"gsN" = (
-/obj/machinery/door/airlock/hatch,
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark";
-	dir = 6
-	},
-/area/lazarus/syndie_shelter)
 "gsT" = (
 /obj/machinery/light/directional/south,
 /obj/structure/event_console/shuttle_console{
@@ -10827,8 +10830,12 @@
 /turf/simulated/floor/plating,
 /area/lazarus/underground/powered/west_hatch)
 "gNS" = (
-/turf/simulated/mineral/random/lazarus,
-/area/lazarus/outpost/veles/bunker)
+/obj/structure/rack,
+/obj/item/storage/box/syndie_kit/stechkin,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkred"
+	},
+/area/lazarus/syndie_shelter)
 "gOq" = (
 /obj/machinery/door/airlock/bathroom,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -13057,9 +13064,13 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/maint)
 "ifo" = (
-/obj/machinery/atmospherics/portable/canister/oxygen,
-/turf/simulated/floor/plating/asteroid/lazarus/dirt,
-/area/lazarus/underground/powered/outpost)
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark";
+	dir = 6
+	},
+/area/lazarus/syndie_shelter)
 "ifp" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/lightable/bonfire,
@@ -13194,8 +13205,12 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/briefing)
 "iml" = (
-/obj/machinery/light/directional/south,
+/obj/structure/rack,
+/obj/item/kitchen/knife/combat,
+/obj/item/kitchen/knife/combat,
+/obj/item/kitchen/knife/combat,
 /turf/simulated/floor/plasteel{
+	dir = 10;
 	icon_state = "darkred"
 	},
 /area/lazarus/syndie_shelter)
@@ -13829,19 +13844,7 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec)
 "iDQ" = (
-/obj/structure/table,
-/obj/item/bio_chip/uplink{
-	pixel_x = -2;
-	pixel_y = 9
-	},
-/obj/item/bio_chip/uplink{
-	pixel_x = 34;
-	pixel_y = 9
-	},
-/obj/item/bio_chip/uplink{
-	pixel_x = 16;
-	pixel_y = 2
-	},
+/obj/item/kirbyplants/large,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
 	},
@@ -14627,12 +14630,12 @@
 	},
 /area/lazarus/outpost/svarog/kitchen)
 "jaF" = (
-/obj/structure/rack,
-/obj/item/storage/box/syndie_kit/stechkin,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkred"
+	dir = 5;
+	icon_state = "darkfull"
 	},
-/area/lazarus/syndie_shelter)
+/area/lazarus/outpost/veles/bunker)
 "jaN" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -22789,15 +22792,9 @@
 	},
 /area/lazarus/outpost/veles/rnd/workshop)
 "oJV" = (
-/obj/structure/rack,
-/obj/item/kitchen/knife/combat,
-/obj/item/kitchen/knife/combat,
-/obj/item/kitchen/knife/combat,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "darkred"
-	},
-/area/lazarus/syndie_shelter)
+/obj/item/tank/internals/emergency_oxygen/nitrogen,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/underground)
 "oKf" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -27294,16 +27291,6 @@
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/locker)
-"rrL" = (
-/obj/structure/table,
-/obj/structure/sign/poster/contraband/random/directional/north,
-/obj/item/paper_bin/syndicate,
-/obj/item/pen/multi/syndicate,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "darkred"
-	},
-/area/lazarus/syndie_shelter)
 "rsd" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
@@ -29371,13 +29358,6 @@
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/abandoned_bunker)
-"sFL" = (
-/obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "darkred"
-	},
-/area/lazarus/syndie_shelter)
 "sFZ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating/asteroid/lazarus/forest/edge,
@@ -31203,12 +31183,11 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/veles/bunker)
 "tLx" = (
-/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "darkfull"
+	dir = 1;
+	icon_state = "darkred"
 	},
-/area/lazarus/outpost/veles/bunker)
+/area/lazarus/syndie_shelter)
 "tLC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -31445,10 +31424,15 @@
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors/svarog)
 "tRK" = (
-/obj/structure/dresser,
-/obj/item/tank/internals/emergency_oxygen/nitrogen,
-/turf/simulated/floor/wood/fancy,
-/area/lazarus/cabin/hermit)
+/obj/structure/table,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/item/paper_bin/syndicate,
+/obj/item/pen/multi/syndicate,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "darkred"
+	},
+/area/lazarus/syndie_shelter)
 "tRV" = (
 /obj/effect/mapping_helpers/turfs/rust/probably,
 /turf/simulated/wall/r_wall,
@@ -34824,6 +34808,19 @@
 /obj/effect/mapping_helpers/airlock/access/all/command/hop,
 /turf/simulated/floor/wood/oak,
 /area/lazarus/outpost/rod/hop)
+"wcT" = (
+/obj/machinery/light/small/directional/west,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/structure/rack,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/underground/powered/outpost)
 "wdo" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -36493,11 +36490,10 @@
 	},
 /area/lazarus/outpost/veles/rnd/xeno)
 "xed" = (
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkred"
-	},
-/area/lazarus/syndie_shelter)
+/obj/structure/dresser,
+/obj/item/tank/internals/emergency_oxygen/nitrogen,
+/turf/simulated/floor/wood/fancy,
+/area/lazarus/cabin/hermit)
 "xeh" = (
 /obj/machinery/bodyscanner{
 	dir = 4
@@ -38044,9 +38040,10 @@
 /turf/simulated/floor/carpet/black,
 /area/lazarus/outpost/rod/hop)
 "ykx" = (
-/obj/item/tank/internals/emergency_oxygen/nitrogen,
+/obj/machinery/light/small/directional/west,
+/obj/structure/dispenser/oxygen,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
-/area/lazarus/underground)
+/area/lazarus/underground/powered/outpost)
 "ykB" = (
 /obj/effect/mapping_helpers/turfs/rust/probably,
 /turf/simulated/wall/r_wall,
@@ -38663,10 +38660,10 @@ ejF
 ejF
 ejF
 ejF
-fQy
-fQy
-fQy
-fQy
+dsH
+dsH
+dsH
+dsH
 ejF
 ejF
 ejF
@@ -39014,16 +39011,16 @@ ejF
 kie
 kie
 kie
-fQy
-fQy
+dsH
+dsH
 isd
 tdG
-fQy
-fQy
-fQy
-fQy
-fQy
-fQy
+dsH
+dsH
+dsH
+dsH
+dsH
+dsH
 ejF
 ejF
 ejF
@@ -39365,18 +39362,18 @@ ejF
 kie
 kie
 kie
-fQy
-fQy
+dsH
+dsH
 kjE
 vVR
 dOF
 ekC
-fQy
+dsH
 hHw
 tId
 mcC
-fQy
-fQy
+dsH
+dsH
 ejF
 ejF
 ejF
@@ -39717,18 +39714,18 @@ kie
 kie
 kie
 kie
-fQy
+dsH
 qTX
 rkk
-tLx
-tLx
-tLx
+jaF
+jaF
+jaF
 cxr
-tLx
-tLx
+jaF
+jaF
 cPq
 ppc
-fQy
+dsH
 ejF
 ejF
 ejF
@@ -40069,18 +40066,18 @@ kie
 kie
 kie
 kie
-fQy
+dsH
 esd
 snG
-tLx
-tLx
+jaF
+jaF
 nHZ
-fQy
+dsH
 jNp
 sxt
 hxu
 pOh
-fQy
+dsH
 ejF
 ejF
 ejF
@@ -40421,18 +40418,18 @@ kie
 kie
 kie
 kie
-fQy
+dsH
 isd
 rkk
-tLx
-tLx
+jaF
+jaF
 qxJ
-fQy
-fQy
-fQy
-fQy
-fQy
-fQy
+dsH
+dsH
+dsH
+dsH
+dsH
+dsH
 kie
 ejF
 ejF
@@ -40773,10 +40770,10 @@ kie
 kie
 kie
 kie
-fQy
+dsH
 gKu
 rkk
-tLx
+jaF
 kcL
 fVq
 iMY
@@ -40784,7 +40781,7 @@ tLf
 uxk
 tLf
 pde
-fQy
+dsH
 kie
 ejF
 ejF
@@ -41125,18 +41122,18 @@ kie
 kie
 kie
 kie
-fQy
+dsH
 csS
 pib
 aoA
 sbF
 pJl
-fQy
+dsH
 huw
 qga
 qga
 gmd
-fQy
+dsH
 kie
 ejF
 ejF
@@ -41476,19 +41473,19 @@ kie
 kie
 kie
 kie
-fQy
+dsH
 csS
 csS
 csS
 pJY
-tLx
+jaF
 xrQ
-fQy
+dsH
 sxn
 sxn
 sxn
-fQy
-fQy
+dsH
+dsH
 ejF
 ejF
 ejF
@@ -41827,20 +41824,20 @@ kie
 kie
 kie
 kie
-fQy
-fQy
+dsH
+dsH
 nEP
 vKk
 csS
 csS
 ebi
-fQy
-fQy
-fQy
-fQy
-fQy
-fQy
-gNS
+dsH
+dsH
+dsH
+dsH
+dsH
+dsH
+aUh
 ejF
 ejF
 xis
@@ -42179,7 +42176,7 @@ kie
 kie
 kie
 kie
-fQy
+dsH
 aiI
 tEx
 tEx
@@ -42187,7 +42184,7 @@ csS
 fSd
 tEx
 fSd
-fQy
+dsH
 kie
 kie
 kie
@@ -42531,7 +42528,7 @@ ejF
 kie
 kie
 kie
-fQy
+dsH
 aiI
 tEx
 tEx
@@ -42539,7 +42536,7 @@ daF
 tEx
 dHK
 tEx
-fQy
+dsH
 kie
 kie
 ejF
@@ -42883,15 +42880,15 @@ ejF
 kie
 kie
 kie
-fQy
+dsH
 tEx
 tEx
 kGP
-fQy
+dsH
 gez
 kGP
 gez
-fQy
+dsH
 ejF
 ejF
 ejF
@@ -43235,15 +43232,15 @@ ejF
 kie
 kie
 kie
-fQy
+dsH
 tEx
 idr
-fQy
-fQy
-fQy
-fQy
-fQy
-fQy
+dsH
+dsH
+dsH
+dsH
+dsH
+dsH
 ejF
 ejF
 ejF
@@ -85094,7 +85091,7 @@ rLp
 rLp
 vzO
 xhI
-tRK
+xed
 ccZ
 xhI
 rLp
@@ -116920,7 +116917,7 @@ kie
 kie
 kie
 puc
-ykx
+oJV
 sDu
 uDS
 evL
@@ -122135,7 +122132,7 @@ ggK
 kbK
 awz
 kbK
-oJV
+iml
 fcp
 dlD
 okl
@@ -122483,11 +122480,11 @@ xis
 xis
 xis
 fcp
-rrL
+tRK
 kby
 fcp
-xed
-jaF
+tLx
+gNS
 fcp
 pjq
 okl
@@ -122838,9 +122835,9 @@ fcp
 fcp
 fcp
 fcp
-xed
+tLx
 okl
-gsN
+ifo
 okl
 okl
 okl
@@ -123191,7 +123188,7 @@ ggK
 kbK
 awz
 okl
-iml
+aSl
 fcp
 mkE
 okl
@@ -123539,11 +123536,11 @@ xis
 xis
 xis
 fcp
-cSu
+etB
 kby
 fcp
-xed
-aDC
+tLx
+iDQ
 fcp
 pdA
 okl
@@ -123894,8 +123891,8 @@ fcp
 fcp
 fcp
 fcp
-xed
-iDQ
+tLx
+bhk
 fcp
 yfC
 wyu
@@ -124247,7 +124244,7 @@ ggK
 kbK
 awz
 wyu
-sFL
+fQy
 fcp
 fcp
 vuc
@@ -151677,7 +151674,7 @@ xis
 xis
 xis
 xis
-aSl
+ejF
 ejF
 ejF
 ejF
@@ -152028,8 +152025,8 @@ xis
 xis
 xis
 xis
-aSl
-aSl
+ejF
+ejF
 ejF
 ejF
 ejF
@@ -152379,9 +152376,9 @@ xis
 xis
 xis
 xis
-aSl
-aSl
-aSl
+ejF
+ejF
+ejF
 ejF
 ejF
 kie
@@ -168925,11 +168922,11 @@ hzz
 sgV
 kcQ
 vUH
-ifo
-dsH
+ghM
+ykx
 nlY
 vyZ
-aUh
+wcT
 xsG
 vUH
 ejF
