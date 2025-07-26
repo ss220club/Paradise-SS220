@@ -232,7 +232,7 @@
 		tablepush(I, user)
 		return
 
-	if(isrobot(user))
+	if(isrobot(user) && !istype(I.loc, /obj/item/gripper))
 		return
 
 	if(user.a_intent == INTENT_HELP && !(I.flags & ABSTRACT))
@@ -947,7 +947,7 @@
 		return TRUE
 
 /obj/structure/rack/attackby__legacy__attackchain(obj/item/W, mob/user, params)
-	if(isrobot(user))
+	if(isrobot(user) && !istype(W.loc, /obj/item/gripper))
 		return
 	if(user.a_intent == INTENT_HARM)
 		return ..()
