@@ -85,7 +85,7 @@
 		// We also need to check if it's the old or new attack chain until the migration is complete.
 		if(new_attack_chain)
 			if(!target.item_interaction(user, gripped_item, modifiers))
-				gripped_item.melee_attack_chain(user, target, modifiers)
+				gripped_item.melee_attack_chain(user, target, list2params(modifiers))
 		else
 			if(!target.attackby__legacy__attackchain(gripped_item, user, modifiers))
 				gripped_item?.afterattack__legacy__attackchain(target, user, 1, modifiers)
