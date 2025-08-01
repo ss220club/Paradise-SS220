@@ -116,7 +116,7 @@
 	if(busy)
 		return
 	if(is_type_in_list(target,validSurfaces))
-		var/temp = "руку"
+		var/temp = "руну"
 		if(preset_message_index > 0)
 			temp = "букву"
 			drawtype = preset_message[preset_message_index]
@@ -323,9 +323,9 @@
 /obj/item/toy/crayon/spraycan/activate_self(mob/user)
 	if(..())
 		return
-	var/choice = tgui_input_list(user, "Вы хотите...", "Spraycan Options", list("Проверить колпачок","Изменить рисунок", "Изменить цвет"))
+	var/choice = tgui_input_list(user, "Вы хотите...", "Spraycan Options", list("Снять/надеть колпачок","Изменить рисунок", "Изменить цвет"))
 	switch(choice)
-		if("Проверить колпачок")
+		if("Снять/надеть колпачок")
 			to_chat(user, "<span class='notice'>Вы [capped ? "открыли" : "закрыли"] крышку [src].</span>")
 			capped = !capped
 			update_icon()

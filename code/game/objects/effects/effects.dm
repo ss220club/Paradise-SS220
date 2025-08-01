@@ -100,28 +100,30 @@
 		reagents.add_reagent_list(scoop_reagents)
 
 /obj/effect/decal/build_base_description(infix, suffix) // overriding this is a sin but it fixes a worse sin
-	var/f_name = "\a [src.declent_ru(NOMINATIVE)][infix]."
+	var/object_title = "[src.declent_ru(NOMINATIVE)][infix]"
+	var/f_name = "[object_title]."
 	if(src.blood_DNA)
-		if(gender == PLURAL)
-			if(blood_color != "#030303")
-				f_name += "<span class='danger'>окровавленные</span> [name][infix]!"
+		switch(gender)
+			if(PLURAL)
+				if(blood_color != "#030303")
+					f_name = "<span class='danger'>окровавленные</span> [object_title]!"
+				else
+					f_name = "испачканые в масле [object_title]."
+			if(MALE)
+				if(blood_color != "#030303")
+					f_name = "<span class='danger'>окровавленный</span> [object_title]!"
+				else
+					f_name = "испачканый в масле [object_title]."
+			if(FEMALE)
+				if(blood_color != "#030303")
+					f_name = "<span class='danger'>окровавленная</span> [object_title]!"
+				else
+					f_name = "испачканая в масле [object_title]."
 			else
-				f_name += "испачканные в масле [name][infix]."
-		else if (gender == MALE)
-			if(blood_color != "#030303")
-				f_name += "<span class='danger'>окровавленный</span> [name][infix]!"
-			else
-				f_name += "испачканый в масле [name][infix]."
-		else if (gender == FEMALE)
-			if(blood_color != "#030303")
-				f_name += "<span class='danger'>окровавленная</span> [name][infix]!"
-			else
-				f_name += "испачканная в масле [name][infix]."
-		else
-			if(blood_color != "#030303")
-				f_name += "<span class='danger'>окровавленное</span> [name][infix]!"
-			else
-				f_name += "испачканное в масле [name][infix]."
+				if(blood_color != "#030303")
+					f_name = "<span class='danger'>окровавленное</span> [object_title]!"
+				else
+					f_name = "испачканое в масле [object_title]."
 	. = list("[bicon(src)] Это [f_name] [suffix]")
 	if(desc)
 		. += desc
