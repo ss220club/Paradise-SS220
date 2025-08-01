@@ -7,7 +7,7 @@
  */
 /obj/item/toy/crayon
 	name = "crayon"
-	desc = "A colourful crayon. Looks tasty. Mmmm..."
+	desc = "Цветной мелок. Выглядит подозрительно вкусно. Мммм..."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonred"
 	w_class = WEIGHT_CLASS_TINY
@@ -37,7 +37,7 @@
 	var/consumable = TRUE
 
 /obj/item/toy/crayon/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is jamming the [name] up [user.p_their()] nose and into [user.p_their()] brain. It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] засовывает [name] в [user.p_their()] нос и в [user.p_their()] мозг. Похоже, [user.p_theyre()] пытается совершить НаноТрейзенНадзор!</span>")
 	return BRUTELOSS|OXYLOSS
 
 /obj/item/toy/crayon/Initialize(mapload)
@@ -56,20 +56,20 @@
 		current_drawtype += "<u>[preset_message[preset_message_index]]</u>"
 		current_drawtype += copytext(preset_message, preset_message_index + 1)
 		current_drawtype = uppertext(current_drawtype)
-	dat += "<center><h2>Currently selected: [current_drawtype]</h2><br>"
-	dat += "<a href='byond://?src=[UID()];type=random_letter'>Random letter</a><a href='byond://?src=[UID()];type=letter'>Pick letter</a><br />"
-	dat += "<a href='byond://?src=[UID()];type=message'>Message</a>"
+	dat += "<center><h2>Текущий выбор: [current_drawtype]</h2><br>"
+	dat += "<a href='byond://?src=[UID()];type=random_letter'>Случайная буква</a><a href='byond://?src=[UID()];type=letter'>Выбрать букву</a><br />"
+	dat += "<a href='byond://?src=[UID()];type=message'>Сообщение</a>"
 	dat += "<hr>"
-	dat += "<h3>Runes:</h3><br>"
-	dat += "<a href='byond://?src=[UID()];type=random_rune'>Random rune</a>"
+	dat += "<h3>Руны:</h3><br>"
+	dat += "<a href='byond://?src=[UID()];type=random_rune'>Случайная руна</a>"
 	for(var/i = 1; i <= 8; i++)
-		dat += "<a href='byond://?src=[UID()];type=rune[i]'>Rune [i]</a>"
+		dat += "<a href='byond://?src=[UID()];type=rune[i]'>Руна [i]</a>"
 		if(!((i + 1) % 3)) //3 buttons in a row
 			dat += "<br>"
 	dat += "<hr>"
 	graffiti.Find()
-	dat += "<h3>Graffiti:</h3><br>"
-	dat += "<a href='byond://?src=[UID()];type=random_graffiti'>Random graffiti</a>"
+	dat += "<h3>Граффити:</h3><br>"
+	dat += "<a href='byond://?src=[UID()];type=random_graffiti'>Случайное граффити</a>"
 	var/c = 1
 	for(var/T in graffiti)
 		dat += "<a href='byond://?src=[UID()];type=[T]'>[T]</a>"
@@ -89,14 +89,14 @@
 		if("random_letter")
 			temp = pick(letters)
 		if("letter")
-			temp = input("Choose the letter.", "Scribbles") in letters
+			temp = input("Выберите букву.", "Каракули") in letters
 		if("random_rune")
 			temp = "rune[rand(1, 8)]"
 		if("random_graffiti")
 			temp = pick(graffiti)
 		if("message")
 			var/regex/graffiti_chars = regex("\[^a-zA-Z0-9+\\-!?=%&,.#\\/\]", "g")
-			var/new_preset = input(usr, "Set the message. Max length [CRAYON_MESSAGE_MAX_LENGTH] characters.")
+			var/new_preset = input(usr, "Укажите сообщение. Максимальная длина [CRAYON_MESSAGE_MAX_LENGTH] символов.")
 			new_preset = copytext(new_preset, 1, CRAYON_MESSAGE_MAX_LENGTH)
 			preset_message = lowertext(graffiti_chars.Replace(new_preset, ""))
 			if(preset_message != "")
@@ -116,20 +116,20 @@
 	if(busy)
 		return
 	if(is_type_in_list(target,validSurfaces))
-		var/temp = "rune"
+		var/temp = "руку"
 		if(preset_message_index > 0)
-			temp = "letter"
+			temp = "букву"
 			drawtype = preset_message[preset_message_index]
 		else if(letters.Find(drawtype))
-			temp = "letter"
+			temp = "букву"
 		else if(graffiti.Find(drawtype))
-			temp = "graffiti"
-		to_chat(user, "<span class='notice'>You start drawing a [temp] on the [target.name].</span>")
+			temp = "граффити"
+		to_chat(user, "<span class='notice'>Вы начинаете рисовать [temp] на [target.name].</span>")
 		busy = TRUE
 		if(instant || do_after(user, 50 * toolspeed, target = target))
 			var/obj/effect/decal/cleanable/crayon/C = new /obj/effect/decal/cleanable/crayon(target,colour,drawtype,temp)
 			C.add_hiddenprint(user)
-			to_chat(user, "<span class='notice'>You finish drawing [temp].</span>")
+			to_chat(user, "<span class='notice'>Вы закончили рисовать [temp].</span>")
 
 			if(preset_message_index > 0)
 				preset_message_index++
@@ -140,7 +140,7 @@
 			if(uses)
 				uses--
 				if(!uses)
-					to_chat(user, "<span class='danger'>You used up your [name]!</span>")
+					to_chat(user, "<span class='danger'>Вы использовали свой [name]!</span>")
 					qdel(src)
 		busy = FALSE
 
@@ -151,15 +151,15 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(!H.check_has_mouth())
-				to_chat(user, "<span class='warning'>You do not have a mouth!</span>")
+				to_chat(user, "<span class='warning'>У вас нет рта!</span>")
 				return
 		times_eaten++
 		playsound(loc, 'sound/items/eatfood.ogg', 50, 0)
 		user.adjust_nutrition(5)
 		if(times_eaten < max_bites)
-			to_chat(user, "<span class='notice'>You take a bite of the [name]. Delicious!</span>")
+			to_chat(user, "<span class='notice'>Вы откусываете [name]. Вкусно!</span>")
 		else
-			to_chat(user, "<span class='warning'>There is no more of [name] left!</span>")
+			to_chat(user, "<span class='warning'>Вы полностью сгрызли [name], больше кусать нечего!</span>")
 			qdel(src)
 
 /obj/item/toy/crayon/examine(mob/user)
@@ -167,9 +167,9 @@
 	if(!user.Adjacent(src) || !times_eaten)
 		return
 	if(times_eaten == 1)
-		. += "<span class='notice'>[src] was bitten by someone!</span>"
+		. += "<span class='notice'>[src] был надкушен кем-то!</span>"
 	else
-		. += "<span class='notice'>[src] was bitten multiple times!</span>"
+		. += "<span class='notice'>[src] был надкушен несколько раз!</span>"
 
 /obj/item/toy/crayon/red
 	name = "red crayon"
@@ -250,20 +250,20 @@
 
 /obj/item/toy/crayon/white/chalk
 	name = "detective's chalk"
-	desc = "A stick of white chalk for marking crime scenes."
+	desc = "Кусочек белого мела для разметки места преступления."
 	gender = PLURAL
 	toolspeed = 0.25
 
 /obj/item/toy/crayon/mime
 	name = "mime crayon"
-	desc = "A very sad-looking crayon."
+	desc = "Очень грустно выглядящий карандаш."
 	icon_state = "crayonmime"
 	colour = "#FFFFFF"
 	dye_color = DYE_MIME
 	uses = 0
 
 /obj/item/toy/crayon/mime/update_window(mob/living/user as mob)
-	dat += "<center><span style='border:1px solid #161616; background-color: [colour];'>&nbsp;&nbsp;&nbsp;</span><a href='byond://?src=[UID()];color=1'>Change color</a></center>"
+	dat += "<center><span style='border:1px solid #161616; background-color: [colour];'>&nbsp;&nbsp;&nbsp;</span><a href='byond://?src=[UID()];color=1'>Изменить цвет</a></center>"
 	..()
 
 /obj/item/toy/crayon/mime/Topic(href,href_list)
@@ -286,14 +286,14 @@
 	uses = 0
 
 /obj/item/toy/crayon/rainbow/update_window(mob/living/user as mob)
-	dat += "<center><span style='border:1px solid #161616; background-color: [colour];'>&nbsp;&nbsp;&nbsp;</span><a href='byond://?src=[UID()];color=1'>Change color</a></center>"
+	dat += "<center><span style='border:1px solid #161616; background-color: [colour];'>&nbsp;&nbsp;&nbsp;</span><a href='byond://?src=[UID()];color=1'>Изменить цвет</a></center>"
 	..()
 
 /obj/item/toy/crayon/rainbow/Topic(href,href_list[])
 	if(!Adjacent(usr) || usr.incapacitated())
 		return
 	if(href_list["color"])
-		var/temp = tgui_input_color(usr, "Please select crayon color.", "Crayon color")
+		var/temp = tgui_input_color(usr, "Пожалуйста, выберите цвет мелка.", "Цвет мелка")
 		if(isnull(temp))
 			return
 		colour = temp
@@ -306,7 +306,7 @@
 
 /obj/item/toy/crayon/spraycan
 	name = "\improper Nanotrasen-brand Rapid Paint Applicator"
-	desc = "A metallic container containing spray paint."
+	desc = "Металлический контейнер с краской-спреем."
 	icon_state = "spraycan_cap"
 	slot_flags = ITEM_SLOT_BELT
 	var/capped = TRUE
@@ -323,16 +323,16 @@
 /obj/item/toy/crayon/spraycan/activate_self(mob/user)
 	if(..())
 		return
-	var/choice = tgui_input_list(user, "Do you want to...", "Spraycan Options", list("Toggle Cap","Change Drawing", "Change Color"))
+	var/choice = tgui_input_list(user, "Вы хотите...", "Spraycan Options", list("Проверить колпачок","Изменить рисунок", "Изменить цвет"))
 	switch(choice)
-		if("Toggle Cap")
-			to_chat(user, "<span class='notice'>You [capped ? "remove" : "replace"] the cap of [src].</span>")
+		if("Проверить колпачок")
+			to_chat(user, "<span class='notice'>Вы [capped ? "открыли" : "закрыли"] крышку [src].</span>")
 			capped = !capped
 			update_icon()
-		if("Change Drawing")
+		if("Изменить рисунок")
 			update_window(user)
-		if("Change Color")
-			colour = tgui_input_color(user,"Please select a paint color.","Spray Can Color")
+		if("Изменить цвет")
+			colour = tgui_input_color(user,"Пожалуйста, выберите цвет краски.","Цвет краски")
 			if(isnull(colour))
 				return
 			update_icon()
@@ -342,7 +342,7 @@
 	if(!proximity_flag)
 		return
 	if(capped)
-		to_chat(user, "<span class='warning'>You cannot spray [target] while the cap is still on!</span>")
+		to_chat(user, "<span class='warning'>Вы не можете нарисовать [target] пока колпачок закрыт!</span>")
 		return
 	if(istype(target, /obj/item/clothing/head/cardborg) || istype(target, /obj/item/clothing/suit/cardborg))	// Spraypainting your cardborg suit for more fashion options.
 		cardborg_recolor(target, user)
@@ -351,10 +351,10 @@
 		return
 	var/mob/living/carbon/human/attackee = target
 	if(uses < 10)
-		to_chat(user, "<span class='warning'>Theres not enough paint left to have an effect!</span>")
+		to_chat(user, "<span class='warning'>Осталось недостаточно краски, чтобы оказать какой-либо реальный эффект!</span>")
 		return
 	uses -= 10
-	user.visible_message("<span class='danger'>[user] sprays [src] into the face of [target]!</span>")
+	user.visible_message("<span class='danger'>[user] распыляет [src] прямо в лицо [target]!</span>")
 	if(!attackee.is_eyes_covered()) // eyes aren't covered? ARGH IT BURNS.
 		attackee.Confused(6 SECONDS)
 		attackee.KnockDown(6 SECONDS)

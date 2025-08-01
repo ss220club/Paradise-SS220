@@ -421,17 +421,30 @@
 
 /atom/proc/build_base_description(infix = "", suffix = "")
 	//This reformat names to get a/an properly working on item descriptions when they are bloody
-	var/f_name = "\a [src][infix]."
+	var/object_title = "[src.declent_ru(NOMINATIVE)][infix]"
+	var/f_name = "[object_title]."
 	if(src.blood_DNA)
 		if(gender == PLURAL)
-			f_name = "some "
+			if(blood_color != "#030303")
+				f_name = "<span class='danger'>окровавленные</span> [object_title]!"
+			else
+				f_name = "испачканные в масле [object_title]."
+		else if (gender == MALE)
+			if(blood_color != "#030303")
+				f_name = "<span class='danger'>окровавленный</span> [object_title]!"
+			else
+				f_name = "испачканый в масле [object_title]."
+		else if (gender == FEMALE)
+			if(blood_color != "#030303")
+				f_name = "<span class='danger'>окровавленная</span> [object_title]!"
+			else
+				f_name = "испачканная в масле [object_title]."
 		else
-			f_name = "a "
-		if(blood_color != "#030303")
-			f_name += "<span class='danger'>blood-stained</span> [name][infix]!"
-		else
-			f_name += "oil-stained [name][infix]."
-	. = list("[bicon(src)] That's [f_name] [suffix]")
+			if(blood_color != "#030303")
+				f_name = "<span class='danger'>окровавленное</span> [object_title]!"
+			else
+				f_name = "испачканное в масле [object_title]."
+	. = list("[bicon(src)] Это [f_name] [suffix]")
 	if(desc)
 		. += desc
 

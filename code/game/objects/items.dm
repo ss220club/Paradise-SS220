@@ -263,19 +263,19 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	var/size
 	switch(src.w_class)
 		if(WEIGHT_CLASS_TINY)
-			size = "tiny"
+			size = "крошечный предмет."
 		if(WEIGHT_CLASS_SMALL)
-			size = "small"
+			size = "маленький предмет."
 		if(WEIGHT_CLASS_NORMAL)
-			size = "normal-sized"
+			size = "предмет нормального размера."
 		if(WEIGHT_CLASS_BULKY)
-			size = "bulky"
+			size = "громоздкий предмет."
 		if(WEIGHT_CLASS_HUGE)
-			size = "huge"
+			size = "огромный предмет."
 		if(WEIGHT_CLASS_GIGANTIC)
-			size = "gigantic"
+			size = "гигантский предмет."
 
-	. = ..(user, "", "It is a [size] item.")
+	. = ..(user, "", "<span class='italics'>Это [size].</span>")
 
 	if(user.research_scanner) //Mob has a research scanner active.
 		var/msg = "*--------* <BR>"

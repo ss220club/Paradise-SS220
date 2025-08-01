@@ -100,7 +100,29 @@
 		reagents.add_reagent_list(scoop_reagents)
 
 /obj/effect/decal/build_base_description(infix, suffix) // overriding this is a sin but it fixes a worse sin
-	. = list("[bicon(src)] That's \a [src][infix]. [suffix]")
+	var/f_name = "\a [src.declent_ru(NOMINATIVE)][infix]."
+	if(src.blood_DNA)
+		if(gender == PLURAL)
+			if(blood_color != "#030303")
+				f_name += "<span class='danger'>окровавленные</span> [name][infix]!"
+			else
+				f_name += "испачканные в масле [name][infix]."
+		else if (gender == MALE)
+			if(blood_color != "#030303")
+				f_name += "<span class='danger'>окровавленный</span> [name][infix]!"
+			else
+				f_name += "испачканый в масле [name][infix]."
+		else if (gender == FEMALE)
+			if(blood_color != "#030303")
+				f_name += "<span class='danger'>окровавленная</span> [name][infix]!"
+			else
+				f_name += "испачканная в масле [name][infix]."
+		else
+			if(blood_color != "#030303")
+				f_name += "<span class='danger'>окровавленное</span> [name][infix]!"
+			else
+				f_name += "испачканное в масле [name][infix]."
+	. = list("[bicon(src)] Это [f_name] [suffix]")
 	if(desc)
 		. += desc
 
