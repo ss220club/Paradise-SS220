@@ -451,7 +451,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/spawner/random/dirt/maybe,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
-/turf/simulated/floor/catwalk,
+/turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "dv" = (
 /obj/structure/cable{
@@ -1237,6 +1237,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/mine/outpost/hallway/east)
 "il" = (
@@ -1628,10 +1629,6 @@
 /obj/effect/spawner/random/cobweb/left/rare,
 /turf/simulated/floor/plating,
 /area/mine/outpost/maintenance/south)
-"ls" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
-/turf/simulated/floor/transparent/glass/reinforced/plasma,
-/area/mine/outpost/smith_workshop)
 "lt" = (
 /obj/machinery/economy/vending/wallmed/directional/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2132,13 +2129,6 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/outpost/catwalk)
 "os" = (
-/obj/structure/lattice/catwalk/mining,
-/obj/structure/railing{
-	dir = 10
-	},
-/obj/structure/marker_beacon/dock_marker{
-	name = "beacon"
-	},
 /turf/simulated/floor/lava/mapping_lava,
 /area/lavaland/surface/outdoors/outpost/catwalk)
 "ou" = (
@@ -2363,12 +2353,12 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
+/obj/machinery/door/airlock,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -2777,6 +2767,7 @@
 /area/mine/laborcamp)
 "sC" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/mine/outpost/maintenance/south)
 "sE" = (
@@ -3116,7 +3107,7 @@
 /obj/machinery/door/airlock/maintenance/external/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
-/turf/simulated/floor/catwalk,
+/turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "uz" = (
 /obj/effect/baseturf_helper/lava_land,
@@ -3220,10 +3211,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkredfull"
-	},
+/turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "vs" = (
 /obj/structure/chair{
@@ -4066,10 +4054,7 @@
 	},
 /area/mine/outpost/cafeteria)
 "AJ" = (
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkredfull"
-	},
+/turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "AK" = (
 /obj/structure/cable{
@@ -5646,10 +5631,7 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkredfull"
-	},
+/turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "KS" = (
 /obj/structure/cable{
@@ -6639,10 +6621,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/box,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkredfull"
-	},
+/turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "Qz" = (
 /obj/item/bikehorn/rubberducky,
@@ -7411,6 +7390,7 @@
 /area/mine/outpost/smith_workshop)
 "Vi" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/mine/outpost/smith_workshop)
 "Vq" = (
@@ -8019,6 +7999,11 @@
 /obj/structure/sign/poster/official/random/directional/south,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/mining)
+"YS" = (
+/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
+/area/mine/outpost/hallway/west)
 "YT" = (
 /obj/machinery/mineral/smart_hopper{
 	input_dir = 4
@@ -13720,8 +13705,8 @@ LO
 VP
 VP
 Yt
-Yt
 wL
+os
 oO
 oO
 oO
@@ -13874,7 +13859,7 @@ wp
 BJ
 zJ
 Vi
-ls
+Vi
 Vi
 zJ
 zJ
@@ -13882,8 +13867,8 @@ zJ
 zJ
 zJ
 ZV
-vL
-Mb
+RN
+os
 os
 oO
 oO
@@ -14044,9 +14029,9 @@ YC
 bx
 zJ
 ZV
-vL
-ZV
-LO
+Mb
+VP
+VP
 wL
 oO
 oO
@@ -15504,7 +15489,7 @@ Us
 hF
 Pi
 wh
-wp
+YS
 vn
 oO
 IJ
