@@ -29591,27 +29591,12 @@
 	},
 /area/station/medical/surgery/primary)
 "cmQ" = (
-/obj/structure/rack,
-/obj/item/clothing/mask/gas{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/grenade/chem_grenade/firefighting{
-	pixel_x = 8;
-	pixel_y = 2
-	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/clothing/mask/gas{
-	pixel_x = -6;
-	pixel_y = 2
-	},
-/obj/item/grenade/chem_grenade/firefighting{
-	pixel_x = 10;
-	pixel_y = 2
-	},
 /obj/effect/turf_decal/delivery,
+/obj/structure/reagent_dispensers/watertank/firetank,
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
 "cmR" = (
@@ -30706,8 +30691,24 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/closet/bombcloset,
-/obj/effect/turf_decal/delivery/hollow,
+/obj/effect/turf_decal/delivery,
+/obj/structure/rack,
+/obj/item/grenade/chem_grenade/firefighting{
+	pixel_x = 10;
+	pixel_y = 2
+	},
+/obj/item/grenade/chem_grenade/firefighting{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = -4;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
 "crQ" = (
@@ -30794,12 +30795,6 @@
 	dir = 4;
 	name = "Toxins Mixing Room"
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -30808,6 +30803,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/any/science/tox{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
@@ -31104,10 +31102,6 @@
 	icon_state = "arrival"
 	},
 /area/station/hallway/secondary/entry)
-"cto" = (
-/obj/structure/sign/explosives,
-/turf/simulated/wall,
-/area/station/science/hallway)
 "ctq" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
@@ -31191,9 +31185,6 @@
 "ctL" = (
 /obj/structure/window/reinforced{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
@@ -31566,16 +31557,16 @@
 /area/station/hallway/secondary/entry/south)
 "cuZ" = (
 /obj/machinery/light/directional/south,
-/obj/structure/reagent_dispensers/watertank,
-/obj/machinery/light_switch/west,
 /obj/structure/extinguisher_cabinet/directional/south,
-/obj/effect/turf_decal/delivery,
+/obj/structure/closet/bombcloset,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
 "cva" = (
-/obj/structure/closet/l3closet/scientist,
-/obj/item/radio/intercom/directional/south,
-/obj/effect/turf_decal/delivery/hollow,
+/obj/effect/turf_decal/delivery/red/hollow,
+/obj/structure/closet/firecloset,
+/obj/machinery/power/apc/directional/south,
+/obj/structure/cable,
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
 "cvb" = (
@@ -68885,10 +68876,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/closet/firecloset,
-/obj/machinery/power/apc/directional/south,
-/obj/structure/cable,
-/obj/effect/turf_decal/delivery/red/hollow,
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/closet/l3closet/scientist,
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
 "lDQ" = (
@@ -79009,8 +78999,8 @@
 	dir = 1
 	},
 /obj/machinery/disposal,
-/obj/effect/turf_decal/delivery/hollow,
 /obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
 "oSl" = (
@@ -83881,6 +83871,13 @@
 	icon_state = "whitepurplefull"
 	},
 /area/station/science/xenobiology)
+"quI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel,
+/area/station/science/toxins/mixing)
 "quV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -84735,9 +84732,6 @@
 /turf/space,
 /area/station/aisat/hall)
 "qHw" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -84746,6 +84740,12 @@
 	},
 /obj/structure/disposalpipe/segment/corner{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
@@ -157741,7 +157741,7 @@ cbj
 cbj
 rKV
 evS
-cto
+rKV
 rKV
 afs
 hTK
@@ -158767,9 +158767,9 @@ cgs
 cgs
 cgs
 cgs
-crK
-qQO
 cgs
+qQO
+crK
 cgs
 cgs
 bRs
@@ -159283,7 +159283,7 @@ xUA
 fMa
 oRP
 qHw
-qAo
+quI
 cva
 cgs
 cDo
