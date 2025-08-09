@@ -2,7 +2,7 @@
 
 /obj/item/chesspiece
 	name = "Chess Piece"
-	desc = "A generic chess piece used in a game of chess."
+	desc = "Обычная шахматная фигура, используемая в игре в шахматы."
 	icon = 'icons/obj/chess.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 
@@ -10,62 +10,62 @@
 
 /obj/item/chesspiece/bpawn
 	name = "Black Pawn"
-	desc = "A Black Pawn. The most basic chess piece, yet capable of ascending to royalty."
+	desc = "Черная пешка. Самая простая шахматная фигура, но способная достичь королевского сана."
 	icon_state = "bpawn"
 
 /obj/item/chesspiece/brook
 	name = "Black Rook"
-	desc = "A Black Rook. Stalwart guard of the Black King and Queen."
+	desc = "Черная ладья. Стойкий страж черного короля и королевы."
 	icon_state = "brook"
 
 /obj/item/chesspiece/bknight
 	name = "Black Knight"
-	desc = "A Black Knight. A noble knight in the service of the Black King and Queen."
+	desc = "Черный конь. Благородный рыцарь на службе у черного короля и королевы."
 	icon_state = "bknight"
 
 /obj/item/chesspiece/bbishop
 	name = "Black Bishop"
-	desc = "A Black Bishop. Close advisor to the Black King and Queen."
+	desc = "Черный слон. Близкий советник черного короля и королевы."
 	icon_state = "bbishop"
 
 /obj/item/chesspiece/bqueen
 	name = "Black Queen"
-	desc = "The Black Queen. Loyal wife of the Black King."
+	desc = "Черная королева. Верная супруга черного короля."
 	icon_state = "bqueen"
 
 /obj/item/chesspiece/bking
 	name = "Black King"
-	desc = "The Black King. Wise and mighty ruler of the Black Kingdom."
+	desc = "Черный король. Мудрый и могущественный правитель черного королевства."
 	icon_state = "bking"
 
 //White chess pieces.
 
 /obj/item/chesspiece/wpawn
 	name = "White Pawn"
-	desc = "A White Pawn. The most basic chess piece, yet capable of ascending to royalty."
+	desc = "Белая пешка. Самая простая шахматная фигура, но способная достичь королевского сана."
 	icon_state = "wpawn"
 
 /obj/item/chesspiece/wrook
 	name = "White Rook"
-	desc = "A White Rook. Stalwart guard of the White King and Queen."
+	desc = "Белая ладья. Стойкий страж белого короля и королевы."
 	icon_state = "wrook"
 
 /obj/item/chesspiece/wknight
 	name = "White Knight"
-	desc = "A White Knight. A noble knight in the service of the White King and Queen."
+	desc = "Белый конь. Благородный рыцарь на службе у белого короля и королевы."
 	icon_state = "wknight"
 
 /obj/item/chesspiece/wbishop
 	name = "White Bishop"
-	desc = "A White Bishop. Close advisor to the White King and Queen."
+	desc = "Белый слон. Близкий советник белого короля и королевы."
 	icon_state = "wbishop"
 
 /obj/item/chesspiece/wqueen
 	name = "White Queen"
-	desc = "The White Queen. Loyal wife of the White King."
+	desc = "Белая королева. Верная супруга белого короля."
 	icon_state = "wqueen"
 
 /obj/item/chesspiece/wking
 	name = "White King"
-	desc = "The White King. Wise and mighty ruler of the White Kingdom."
+	desc = "Белый король. Мудрый и могущественный правитель белого королевства."
 	icon_state = "wking"
