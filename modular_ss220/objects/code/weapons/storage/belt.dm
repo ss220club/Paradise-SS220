@@ -11,7 +11,6 @@
 	var/is_unique_reskin_available = TRUE
 	/// the skin choices
 	var/list/options = list("Классика" = "classic", "Церемониальный" = "ceremonial", "Шашка" = "cossack")
-	var/current_skin = "classic"
 
 /obj/item/storage/belt/sheath/saber/examine(mob/user)
 	. = ..()
@@ -41,14 +40,15 @@
 	var/choice = show_radial_menu(user, src, skins, radius = 40, custom_check = CALLBACK(src, PROC_REF(reskin_radial_check), user), require_near = TRUE)
 	if(!choice)
 		return
-	current_skin = options[choice]
-	saber.reskin(current_skin)
-	to_chat(user, "[choice] идеально вам подходит.")
+
 	is_unique_reskin_available = FALSE
-	base_icon_state = "[base_name]_[current_skin]"
+	var/new_skin = options[choice]
+	base_icon_state = "[base_name]_[new_skin]"
 	update_icon()
+	saber.reskin(new_skin)
 	user.update_inv_r_hand()
 	user.update_inv_l_hand()
+	to_chat(user, "[choice] идеально вам подходит.")
 
 /obj/item/storage/belt/sheath/saber/proc/reskin_radial_check(mob/user)
 	if(!ishuman(user))
