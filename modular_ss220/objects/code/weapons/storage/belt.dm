@@ -15,7 +15,7 @@
 /obj/item/storage/belt/sheath/saber/examine(mob/user)
 	. = ..()
 	if(is_unique_reskin_available)
-		. += span_notice("<b>Ctrl-click</b>, В вашей руке, чтобы единожды выбрать внешний вид.")
+		. += span_notice("<b>Ctrl-click</b> по предмету в руке, чтобы один раз изменить внешний вид.")
 
 /obj/item/storage/belt/sheath/saber/CtrlClick(mob/user)
 	. = ..()
@@ -23,13 +23,13 @@
 		to_chat(user, span_warning("Внешний вид уже выбран!"))
 		return
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("Вы должны взять пояс в руки, чтобы сделать это."))
+		to_chat(user, span_warning("Вы должны взять ножны в руки, чтобы сделать это."))
 		return
 	if(user.incapacitated())
 		to_chat(user, span_warning("Вы не можете этого сделать прямо сейчас!"))
 		return
 	if(!length(contents))
-		to_chat(user, span_warning("Чтобы это сделать меч должен быть внутри!"))
+		to_chat(user, span_warning("Чтобы это сделать, меч должен быть внутри!"))
 		return
 	reskin(user, contents[1])
 
