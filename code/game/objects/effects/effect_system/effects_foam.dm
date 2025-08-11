@@ -56,7 +56,9 @@
 			var/amount = foamed.reagents?.get_reagent_amount(R.id)
 			var/foam_content_amount = reagents.get_reagent_amount(R.id)
 			if(amount < max_reagent_filling)
-				foamed.reagents?.add_reagent(R.id, min(round(foam_content_amount / 2), 15))
+				amount = round(min(round(foam_content_amount / 2), 15) * (1 - foamed.get_permeability_protection()), 0.1)
+				if(amount >= 0.5)
+					foamed.reagents?.add_reagent(R.id, amount)
 
 /obj/effect/particle_effect/foam/proc/initial_process()
 	process()
