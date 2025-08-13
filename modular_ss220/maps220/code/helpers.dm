@@ -101,3 +101,54 @@
 	if(airlock.welded)
 		log_world("[src] at [AREACOORD(src)] tried to make [airlock] welded but it's already welded closed!")
 	airlock.welded = TRUE
+
+//Disposal delivery helpers
+/obj/effect/mapping_helpers/sortjunc_helper
+	icon = 'modular_ss220/maps220/icons/mapping_helpers.dmi'
+	icon_state = "mail_sorting"
+	late = TRUE
+	var/sort_type = list()
+
+/obj/effect/mapping_helpers/sortjunc_helper/Initialize(mapload)
+	. = ..()
+	var/obj/structure/disposalpipe/sortjunction/mail_sorter = locate(/obj/structure/disposalpipe/sortjunction) in loc
+	if(mail_sorter)
+		mail_sorter.sort_type = sort_type
+		update_appearance(UPDATE_NAME|UPDATE_DESC)
+	else
+		log_world("[src] failed to find a sorting junction pipe at [AREACOORD(src)]")
+	qdel(src)
+
+#define MAILSORTINGHELPERS(helper_type, sort_id, icon) \
+	/obj/effect/mapping_helpers/sortjunc_helper/##helper_type { \
+		sort_type = sort_id; \
+		icon_state = icon; \
+	}
+
+MAILSORTINGHELPERS(disposals, list(1), "mail_sorting")
+MAILSORTINGHELPERS(cargo_bay, list(2), "mail_sorting_sup")
+MAILSORTINGHELPERS(qm_office, list(3), "mail_sorting_com")
+MAILSORTINGHELPERS(engineering, list(4), "mail_sorting_eng")
+MAILSORTINGHELPERS(ce_office, list(5), "mail_sorting_com")
+MAILSORTINGHELPERS(atmospherics, list(6), "mail_sorting_eng")
+MAILSORTINGHELPERS(hos_office, list(7), "mail_sorting_com")
+MAILSORTINGHELPERS(security, list(8), "mail_sorting_sec")
+MAILSORTINGHELPERS(medbay, list(9), "mail_sorting_med")
+MAILSORTINGHELPERS(cmo_office, list(10), "mail_sorting_com")
+MAILSORTINGHELPERS(chemistry, list(11), "mail_sorting_med")
+MAILSORTINGHELPERS(research, list(12), "mail_sorting_sci")
+MAILSORTINGHELPERS(rd_office, list(13), "mail_sorting_com")
+MAILSORTINGHELPERS(robotics, list(14), "mail_sorting_sci")
+MAILSORTINGHELPERS(hop_office, list(15), "mail_sorting_com")
+MAILSORTINGHELPERS(library, list(16), "mail_sorting_serv")
+MAILSORTINGHELPERS(chapel, list(17), "mail_sorting_serv")
+MAILSORTINGHELPERS(captains_office, list(18), "mail_sorting_com")
+MAILSORTINGHELPERS(bar, list(19), "mail_sorting_serv")
+MAILSORTINGHELPERS(kitchen, list(20), "mail_sorting_serv")
+MAILSORTINGHELPERS(hydroponics, list(21), "mail_sorting_serv")
+MAILSORTINGHELPERS(janitor, list(22), "mail_sorting_serv")
+MAILSORTINGHELPERS(genetics, list(23), "mail_sorting_sci")
+MAILSORTINGHELPERS(detective, list(24), "mail_sorting_sec")
+MAILSORTINGHELPERS(morgue, list(25), "mail_sorting_med")
+
+#undef MAILSORTINGHELPERS
