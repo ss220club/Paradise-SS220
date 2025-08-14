@@ -1220,8 +1220,8 @@
 				mapping_fail = "No sort types after parsing sort_type_txt"
 	else
 		mapping_fail = "Sort_type_txt is empty"
-	if(mapping_fail)
-		stack_trace("[src] mapped incorrectly at [x],[y],[z] - [mapping_fail]")
+//SS220 EDIT	if(mapping_fail)
+//SS220 EDIT		stack_trace("[src] mapped incorrectly at [x],[y],[z] - [mapping_fail]")
 
 /obj/structure/disposalpipe/sortjunction/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(..())

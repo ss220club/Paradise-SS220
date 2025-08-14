@@ -4789,8 +4789,7 @@
 /area/station/supply/qm)
 "axz" = (
 /obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	sort_type_txt = "7"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -4805,6 +4804,7 @@
 	dir = 8
 	},
 /obj/structure/table/wood,
+/obj/effect/mapping_helpers/sortjunc_helper/hos_office,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_large"
 	},
@@ -6230,8 +6230,7 @@
 /area/station/supply/storage)
 "aCI" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 1;
-	sort_type_txt = "3"
+	dir = 1
 	},
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -6245,6 +6244,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/qm_office,
 /turf/simulated/floor/plasteel,
 /area/station/supply/storage)
 "aCJ" = (
@@ -10438,9 +10438,9 @@
 /area/station/supply/office)
 "aUO" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 4;
-	sort_type_txt = "2"
+	dir = 4
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/cargo_bay,
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "aUQ" = (
@@ -25407,7 +25407,7 @@
 /area/station/service/library)
 "cbL" = (
 /obj/effect/landmark/spawner/rev,
-/turf/simulated/floor/plasteel/grimy,
+/turf/simulated/floor/carpet,
 /area/station/service/library)
 "cbM" = (
 /obj/machinery/door/morgue{
@@ -25923,7 +25923,7 @@
 /area/station/service/library)
 "cdC" = (
 /obj/structure/filingcabinet,
-/turf/simulated/floor/plasteel/grimy,
+/turf/simulated/floor/carpet,
 /area/station/service/library)
 "cdH" = (
 /obj/structure/table/wood,
@@ -32512,8 +32512,7 @@
 	location = "hall5"
 	},
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 4;
-	sort_type_txt = "15"
+	dir = 4
 	},
 /obj/effect/landmark/lightsout,
 /obj/structure/cable{
@@ -32524,6 +32523,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/effect/mapping_helpers/sortjunc_helper/hop_office,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -36041,9 +36041,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	sort_type_txt = "11"
+	dir = 1
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/chemistry,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -37209,7 +37209,6 @@
 /area/station/medical/storage)
 "daX" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	sort_type_txt = "9";
 	dir = 1
 	},
 /obj/structure/cable{
@@ -37217,6 +37216,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/mapping_helpers/sortjunc_helper/medbay,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whitebluecorner"
@@ -41753,9 +41753,9 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	sort_type_txt = "14"
+	dir = 4
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/robotics,
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
 	},
@@ -44440,15 +44440,16 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/structure/disposalpipe/junction/reversed{
-	dir = 8
-	},
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/structure/disposalpipe/sortjunction/reversed{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/sortjunc_helper/janitor,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -44704,9 +44705,9 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	sort_type_txt = "17"
+	dir = 4
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/chapel,
 /turf/simulated/floor/carpet/black,
 /area/station/service/chapel)
 "dPb" = (
@@ -49732,8 +49733,7 @@
 /area/station/public/sleep_male)
 "eOm" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 1;
-	sort_type_txt = "18"
+	dir = 1
 	},
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -49747,6 +49747,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/captains_office,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -50153,8 +50154,7 @@
 /area/station/security/prisonershuttle)
 "eTq" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 8;
-	sort_type_txt = "23"
+	dir = 8
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -50168,6 +50168,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/genetics,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
@@ -58929,8 +58930,7 @@
 /area/station/hallway/primary/central/north)
 "hMZ" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 8;
-	sort_type_txt = "13"
+	dir = 8
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -58944,6 +58944,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/rd_office,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitepurple"
 	},
@@ -60721,10 +60722,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	sort_type_txt = "1"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/mapping_helpers/sortjunc_helper/disposals,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
@@ -65723,7 +65724,7 @@
 	},
 /obj/item/radio/intercom/directional/north,
 /obj/structure/sign/poster/official/random/directional/east,
-/turf/simulated/floor/plasteel/grimy,
+/turf/simulated/floor/carpet,
 /area/station/service/library)
 "jRG" = (
 /obj/structure/shelf/supply,
@@ -66634,8 +66635,7 @@
 /area/station/service/mime)
 "kdH" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 1;
-	sort_type_txt = "20"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -66649,6 +66649,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/kitchen,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -72708,7 +72709,6 @@
 /area/station/maintenance/fsmaint)
 "mbp" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	sort_type_txt = "25";
 	dir = 1
 	},
 /obj/structure/cable{
@@ -72716,6 +72716,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/mapping_helpers/sortjunc_helper/morgue,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -76139,12 +76140,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/disposalpipe/sortjunction{
-	sort_type_txt = "5"
-	},
+/obj/structure/disposalpipe/sortjunction,
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/ce_office,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -77615,12 +77615,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/structure/disposalpipe/sortjunction/reversed{
-	sort_type_txt = "12"
-	},
+/obj/structure/disposalpipe/sortjunction/reversed,
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/research,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
 "nDZ" = (
@@ -86721,6 +86720,23 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/turret_protected/ai)
+"qqx" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/effect/mapping_helpers/sortjunc_helper/detective,
+/obj/structure/disposalpipe/sortjunction{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/hallway/primary/starboard)
 "qqy" = (
 /turf/simulated/floor/engine,
 /area/station/science/xenobiology)
@@ -86831,8 +86847,7 @@
 /area/station/engineering/control)
 "qtU" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 4;
-	sort_type_txt = "16"
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -86843,6 +86858,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/library,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "neutralcorner"
@@ -88587,12 +88603,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/sortjunction{
-	sort_type_txt = "6"
-	},
+/obj/structure/disposalpipe/sortjunction,
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 5
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/atmospherics,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -90833,9 +90848,9 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 4;
-	sort_type_txt = "19"
+	dir = 4
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/bar,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "browncorner"
@@ -94646,8 +94661,7 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 2;
-	sort_type_txt = "8"
+	dir = 2
 	},
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -94661,6 +94675,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/security,
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
 "sLp" = (
@@ -95447,8 +95462,7 @@
 /area/station/maintenance/port)
 "tad" = (
 /obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	sort_type_txt = "10"
+	dir = 1
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -95462,6 +95476,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/cmo_office,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
@@ -101823,15 +101838,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/sortjunction{
-	sort_type_txt = "4"
-	},
+/obj/structure/disposalpipe/sortjunction,
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/engineering,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "vcp" = (
@@ -104528,9 +104542,9 @@
 	icon_state = "2-4"
 	},
 /obj/structure/disposalpipe/sortjunction/reversed{
-	dir = 2;
-	sort_type_txt = "21"
+	dir = 2
 	},
+/obj/effect/mapping_helpers/sortjunc_helper/hydroponics,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "vYI" = (
@@ -156884,7 +156898,7 @@ fxX
 bPk
 aZB
 dAg
-uzO
+qqx
 mrW
 hTV
 caF
