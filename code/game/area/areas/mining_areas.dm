@@ -61,7 +61,7 @@
 	icon_state = "mining"
 
 /area/lavaland/surface/outdoors/outpost/no_boulder
-	name = "Внешная Площадка Шахтерского Аванпоста"
+	name = "Внешняя Площадка Шахтерского Аванпоста"
 	icon_state = "mining"
 
 /area/mine/outpost/comms
