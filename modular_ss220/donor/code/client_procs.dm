@@ -5,7 +5,7 @@
 	var/static/list/ultimate_worker = list("Банда", "Братюня", "Сестрюня", "Главный Администратор", "Старший Администратор")
 	var/static/list/big_worker = list("Администратор", "Старший Разработчик", "Разработчик", "Бригадир Мапперов", "Маппер", "Ведущий Редактор Вики", "Администратор СС14")
 
-	var/datum/admins/holder/admin_holder = GLOB.admin_datums[C.ckey]
+	var/datum/admins/admin_holder = GLOB.admin_datums[C.ckey]
 	if(admin_holder)
 		C.donator_level = (admin_holder.rank in ultimate_worker) ? DONATOR_LEVEL_MAX : (admin_holder.rank in big_worker) ? BIG_WORKER_LEVEL : LITTLE_WORKER_LEVEL
 
