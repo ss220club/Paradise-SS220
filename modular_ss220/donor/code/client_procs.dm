@@ -3,11 +3,11 @@
 
 /datum/client_login_processor/donator_check/proc/CheckAutoDonatorLevel(client/C)
 	var/static/list/ultimate_worker = list("Банда", "Братюня", "Сестрюня", "Главный Администратор", "Старший Администратор")
-
 	var/static/list/big_worker = list("Администратор", "Старший Разработчик", "Разработчик", "Бригадир Мапперов", "Маппер", "Ведущий Редактор Вики", "Администратор СС14")
 
-	if(C.holder)
-		C.donator_level = (C.holder.rank in ultimate_worker) ? DONATOR_LEVEL_MAX : (C.holder.rank in big_worker) ? BIG_WORKER_LEVEL : LITTLE_WORKER_LEVEL
+	var/datum/admins/holder/admin_holder = GLOB.admin_datums[C.ckey]
+	if(admin_holder)
+		C.donator_level = (admin_holder.rank in ultimate_worker) ? DONATOR_LEVEL_MAX : (admin_holder.rank in big_worker) ? BIG_WORKER_LEVEL : LITTLE_WORKER_LEVEL
 
 /datum/client_login_processor/donator_check/get_query(client/C)
 	var/datum/db_query/query = SSdbcore.NewQuery("SELECT 1", list()) // La stampella
