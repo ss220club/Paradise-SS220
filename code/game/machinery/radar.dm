@@ -86,7 +86,7 @@
 						return
 					if(W.aesthetic)
 						if(correct_prediction) // unupgraded machines should still scare the poor bastards
-							radio.autosay("<b>[W.name] detected settling over the sector. Никаких дальнейших действий не требуется.</b>", name, "Supply")
+							radio.autosay("<b>Обнаружено, что [W.name] распространяется над сектором. Никаких дальнейших действий не требуется.</b>", name, "Supply")
 						else
 							radio.autosay("<b>Внимание! К местному сектору приближается пепельный шторм. Немедленно прекратите любую деятельность на поверхности планеты.</b>", name, "Supply")
 					else
