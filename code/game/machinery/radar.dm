@@ -126,11 +126,11 @@
 			correct_prediction = TRUE
 	else if(prob(accuracy_coeff) && next_difference <= 3 MINUTES && next_difference >= 30 SECONDS)
 		if(next_weather == "emberfall" && !prob(10 * accuracy_coeff)) // fake callout
-			radio.autosay("<b>Успешно проанализированы погодные условия планеты.  Спрогнозировано погодное явление через [difference_rounded]: пепельный шторм </b>", name, "Supply")
+			radio.autosay("<b>Успешно проанализированы погодные условия планеты. Спрогнозировано погодное явление через [difference_rounded]: пепельный шторм </b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = FALSE
 		else
-			radio.autosay("<b>Успешно проанализированы погодные условия планеты.  Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
+			radio.autosay("<b>Успешно проанализированы погодные условия планеты. Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = TRUE
 
