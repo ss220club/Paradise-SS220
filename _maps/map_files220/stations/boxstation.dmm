@@ -10616,11 +10616,8 @@
 	},
 /area/station/engineering/supermatter_room)
 "aOm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
@@ -16564,6 +16561,9 @@
 	id_tag = "ChangKitchen";
 	name = "Mr. Chang's Shutters"
 	},
+/obj/structure/noticeboard{
+	pixel_x = -32
+	},
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
 "biR" = (
@@ -18035,17 +18035,17 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry/south)
 "boU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
 /turf/simulated/floor/wood,
@@ -18291,6 +18291,9 @@
 /obj/effect/landmark/start/dealer,
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
@@ -24134,9 +24137,7 @@
 /obj/effect/spawner/random/maintenance,
 /obj/effect/spawner/random/oil/often,
 /obj/effect/turf_decal/delivery/hollow,
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/supply/storage)
 "bQh" = (
 /obj/item/radio/intercom/directional/east,
@@ -37684,8 +37685,6 @@
 "cSV" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/table/wood/fancy/red,
-/obj/item/reagent_containers/glass/beaker/large,
-/obj/item/reagent_containers/glass/beaker/large,
 /obj/machinery/light/small/directional/south,
 /obj/machinery/button/windowtint/south{
 	pixel_x = -6;
@@ -37696,6 +37695,12 @@
 	name = "Mr. Chang's Shutters Control";
 	pixel_x = 6
 	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/item/reagent_containers/cooking/sushimat,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
 /obj/item/kitchen/knife{
 	pixel_x = -8
 	},
@@ -38108,9 +38113,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "cUi" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
@@ -41307,7 +41309,8 @@
 "dgH" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/light/small/directional/south,
-/obj/machinery/cooking/deepfryer,
+/obj/machinery/cooking/deepfryer/loaded,
+/obj/structure/sign/poster/contraband/eat/directional/south,
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
 "dgI" = (
@@ -41437,23 +41440,16 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/machinery/cooking/grill,
-/obj/machinery/door_control/shutter/south{
-	id = "ChangKitchenBottom";
-	name = "Mr. Chang's Bottom Shutters Control";
-	pixel_x = -8
-	},
-/obj/machinery/light_switch/south{
-	pixel_x = 8
-	},
+/obj/machinery/cooking/grill/loaded,
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
 "dhq" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/structure/chair/stool,
-/obj/effect/landmark/start/dealer,
+/obj/structure/table,
+/obj/machinery/cooking/stovetop/loaded,
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
 "dhv" = (
@@ -70310,7 +70306,15 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
 "lXG" = (
@@ -75049,9 +75053,7 @@
 /obj/effect/spawner/random/trash,
 /obj/effect/spawner/random/oil/often,
 /obj/effect/turf_decal/delivery/hollow,
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/supply/storage)
 "nAq" = (
 /obj/structure/sink/directional/west,
@@ -99843,23 +99845,6 @@
 /obj/structure/reagent_dispensers/spacecleanertank/directional/north,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
-"vCe" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/firedoor,
-/obj/structure/noticeboard{
-	pixel_x = -32
-	},
-/obj/machinery/door/window/classic/normal{
-	dir = 1
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 2;
-	id_tag = "ChangKitchenBottom";
-	name = "Mr. Chang's Shutters"
-	},
-/obj/effect/mapping_helpers/airlock/windoor/autoname,
-/turf/simulated/floor/plating,
-/area/station/public/mrchangs)
 "vCM" = (
 /obj/machinery/power/apc/directional/east,
 /obj/structure/cable,
@@ -105330,6 +105315,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
 "xrq" = (
@@ -107435,7 +107423,13 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "2-8"
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
@@ -139050,7 +139044,7 @@ aYJ
 lXF
 boU
 dhq
-vCe
+aDN
 upi
 pok
 vdh
