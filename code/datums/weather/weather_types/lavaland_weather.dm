@@ -108,7 +108,7 @@
 	weather_message = "<span class='notice'>Тлеющие угольки медленно осыпаются вокруг Вас, словно преисподний снег. Кажется, в этот раз шторм обошёл Вас стороной...</span>"
 	weather_overlay = "light_ash"
 
-	end_message = "<span class='notice'>Пеплопад постепенно замедляется и стихает. Очередной слой сажи оседает на землю под Вашими стопами...</span>"
+	end_message = "<span class='notice'>Пеплопад постепенно замедляется и угасает. Очередной слой сажи оседает на землю под Ваши...</span>"
 	end_sound = null
 
 	aesthetic = TRUE
@@ -251,7 +251,7 @@
 	telegraph_duration = 600
 	telegraph_overlay = "light_ash"
 
-	weather_message = "<span class='userdanger'><i>Кислотный дождь начинает обильно выпадать, расплавляя всё, к чему прикасается. Немедленно прячьтесь внутрь!</i></span>"
+	weather_message = "<span class='userdanger'><i>Кислотный дождь начинает обильно выпадать, расплавляя всё, к чему прикоснётся. Немедленно прячьтесь внутрь!</i></span>"
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_overlay = "acid_rain"
@@ -373,7 +373,7 @@
 	weather_duration_upper = 1200
 	weather_overlay = "wind"
 
-	end_message = "<span class='boldannounceic'>Ветер успокаивается, возвращаясь к своему обычному ритму, пыль оседает на пепельную поверхность. Теперь можно безопасно выходить наружу.</span>"
+	end_message = "<span class='boldannounceic'>Ветер успокаивается, возвращаясь к своему обычному ритму, а пыль оседает на пепельную поверхность. Теперь можно безопасно выходить наружу.</span>"
 	end_overlay = "light_ash"
 
 	area_types = list(/area/lavaland/surface/outdoors, /area/lavaland/surface/gulag_rock)

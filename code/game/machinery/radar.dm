@@ -86,25 +86,25 @@
 						return
 					if(W.aesthetic)
 						if(correct_prediction) // unupgraded machines should still scare the poor bastards
-							radio.autosay("<b>[W.name] detected settling over the sector. No further action required.</b>", name, "Supply")
+							radio.autosay("<b>[W.name] detected settling over the sector. Никаких дальнейших действий не требуется.</b>", name, "Supply")
 						else
-							radio.autosay("<b>Зафиксирован пепельный шторм, надвигающийся на местный сектор. Немедленно прекратите любую деятельность на поверхности планеты.</b>", name, "Supply")
+							radio.autosay("<b>Внимание! К местному сектору приближается пепельный шторм. Немедленно прекратите любую деятельность на поверхности планеты.</b>", name, "Supply")
 					else
-						radio.autosay("<b>[W.name] зафиксирован приближающимся к местному сектору. Немедленно прекратите любую деятельность на поверхности планеты.</b>", name, "Supply")
+						radio.autosay("<b>Внимание! К местному сектору приближается [W.name]. Немедленно прекратите любую деятельность на поверхности планеты.</b>", name, "Supply")
 					last_stage = WEATHER_STARTUP_STAGE
 					check_time = world.time + W.telegraph_duration + 5 SECONDS
 					return
 				if(WEATHER_MAIN_STAGE)
 					if(last_stage == WEATHER_MAIN_STAGE)
 						return
-					radio.autosay("<b>Неблагоприятная погода настигла местный сектор. Немедленно найдите убежище.</b>", name, "Supply")
+					radio.autosay("<b>Неблагоприятная погода достигла местный сектор. Немедленно найдите убежище.</b>", name, "Supply")
 					last_stage = WEATHER_MAIN_STAGE
 					check_time = world.time + (W.weather_duration / 2)
 					return
 				if(WEATHER_WIND_DOWN_STAGE)
 					if(last_stage == WEATHER_WIND_DOWN_STAGE)
 						return
-					radio.autosay("<b>Неблагоприятная погода прекратила свою активность. Теперь Вы можете безопасно продолжать деятельность на поверхности планеты.</b>", name, "Supply")
+					radio.autosay("<b>Неблагоприятная погода прекратила свою активность. Теперь Вы можете безопасно возобновить деятельность на поверхности планеты.</b>", name, "Supply")
 					last_stage = WEATHER_WIND_DOWN_STAGE
 					dont_announce = FALSE
 					return
