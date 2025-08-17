@@ -88,23 +88,23 @@
 						if(correct_prediction) // unupgraded machines should still scare the poor bastards
 							radio.autosay("<b>[W.name] detected settling over the sector. No further action required.</b>", name, "Supply")
 						else
-							radio.autosay("<b>Ash Storm detected converging over the local sector. Please finish any surface excavations.</b>", name, "Supply")
+							radio.autosay("<b>Зафиксирован пепельный шторм, надвигающийся на местный сектор. Немедленно прекратите любую деятельность на поверхности планеты.</b>", name, "Supply")
 					else
-						radio.autosay("<b>[W.name] detected converging over the local sector. Please finish any surface excavations.</b>", name, "Supply")
+						radio.autosay("<b>[W.name] зафиксирован приближающимся к местному сектору. Немедленно прекратите любую деятельность на поверхности планеты.</b>", name, "Supply")
 					last_stage = WEATHER_STARTUP_STAGE
 					check_time = world.time + W.telegraph_duration + 5 SECONDS
 					return
 				if(WEATHER_MAIN_STAGE)
 					if(last_stage == WEATHER_MAIN_STAGE)
 						return
-					radio.autosay("<b>Inclement weather has reached the local sector. Seek shelter immediately.</b>", name, "Supply")
+					radio.autosay("<b>Неблагоприятная погода настигла местный сектор. Немедленно найдите убежище.</b>", name, "Supply")
 					last_stage = WEATHER_MAIN_STAGE
 					check_time = world.time + (W.weather_duration / 2)
 					return
 				if(WEATHER_WIND_DOWN_STAGE)
 					if(last_stage == WEATHER_WIND_DOWN_STAGE)
 						return
-					radio.autosay("<b>Inclement weather has dispersed. It is now safe to resume surface excavations.</b>", name, "Supply")
+					radio.autosay("<b>Неблагоприятная погода прекратила свою активность. Теперь Вы можете безопасно продолжать деятельность на поверхности планеты.</b>", name, "Supply")
 					last_stage = WEATHER_WIND_DOWN_STAGE
 					dont_announce = FALSE
 					return
@@ -121,16 +121,16 @@
 		return
 	if(accuracy_coeff >= 4) //perfect accuracy
 		if(next_difference <= (3 MINUTES))
-			radio.autosay("<b>Weather patterns successfully analyzed. Predicted weather event in [difference_rounded]: [next_weather.name] </b>", name, "Supply")
+			radio.autosay("<b>Успешно проанализированы погодные условия планеты. Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = TRUE
 	else if(prob(accuracy_coeff) && next_difference <= 3 MINUTES && next_difference >= 30 SECONDS)
 		if(next_weather == "emberfall" && !prob(10 * accuracy_coeff)) // fake callout
-			radio.autosay("<b>Weather patterns successfully analyzed. Predicted weather event in [difference_rounded]: ash storm </b>", name, "Supply")
+			radio.autosay("<b>Успешно проанализированы погодные условия планеты.  Спрогнозировано погодное явление через [difference_rounded]: пепельный шторм </b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = FALSE
 		else
-			radio.autosay("<b>Weather patterns successfully analyzed. Predicted weather event in [difference_rounded]: [next_weather.name] </b>", name, "Supply")
+			radio.autosay("<b>Успешно проанализированы погодные условия планеты.  Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = TRUE
 
