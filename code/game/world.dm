@@ -63,7 +63,7 @@ GLOBAL_DATUM(test_runner, /datum/test_runner)
 	if(byond_version < MIN_COMPILER_VERSION || byond_build < MIN_COMPILER_BUILD)
 		log_world("Your server's byond version does not meet the recommended requirements for this code. Please update BYOND")
 
-	GLOB.timezoneOffset = world.timezone * 36000
+	GLOB.timezoneOffset = 36000 * floor(world.time / 36000) // SS220 EDIT - valid offset calculation
 
 	update_status()
 
