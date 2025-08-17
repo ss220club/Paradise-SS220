@@ -12593,7 +12593,6 @@
 /obj/effect/turf_decal/siding/wood/cherry/end{
 	dir = 8
 	},
-/obj/machinery/alarm/directional/west,
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/wood/cherry,
 /area/station/public/mrchangs)
@@ -16543,64 +16542,70 @@
 	},
 /obj/item/reagent_containers/condiment/soysauce,
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 2;
+	dir = 1;
 	id_tag = "ChangKitchen";
 	name = "Mr. Chang's Shutters"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/plasteel/dark,
 /area/station/public/mrchangs)
 "biQ" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
-/obj/item/eftpos{
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 2;
+	dir = 1;
 	id_tag = "ChangKitchen";
 	name = "Mr. Chang's Shutters"
 	},
 /obj/structure/noticeboard{
 	pixel_x = -32
 	},
-/turf/simulated/floor/wood,
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/pen{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/eftpos{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/public/mrchangs)
 "biR" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
-/obj/item/paper_bin/nanotrasen,
-/obj/item/pen,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 2;
-	id_tag = "ChangKitchen";
-	name = "Mr. Chang's Shutters"
-	},
-/turf/simulated/floor/wood,
-/area/station/public/mrchangs)
-"biT" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/firedoor,
-/obj/item/kitchen/utensil/spork{
-	pixel_x = -10
-	},
 /obj/item/kitchen/utensil/spork{
 	pixel_x = 10
+	},
+/obj/item/kitchen/utensil/spork{
+	pixel_y = 2;
+	pixel_x = 4
 	},
 /obj/item/kitchen/utensil/spork{
 	pixel_y = 2;
 	pixel_x = -4
 	},
 /obj/item/kitchen/utensil/spork{
-	pixel_y = 2;
-	pixel_x = 4
+	pixel_x = -10
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 2;
+	dir = 1;
 	id_tag = "ChangKitchen";
 	name = "Mr. Chang's Shutters"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/plasteel/dark,
+/area/station/public/mrchangs)
+"biT" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id_tag = "ChangKitchen";
+	name = "Mr. Chang's Shutters"
+	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/public/mrchangs)
 "biZ" = (
 /obj/structure/table/wood,
@@ -37685,7 +37690,32 @@
 "cSV" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/table/wood/fancy/red,
-/obj/machinery/light/small/directional/south,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_x = -5
+	},
+/obj/item/radio/intercom/directional/south,
+/turf/simulated/floor/wood,
+/area/station/public/mrchangs)
+"cSW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/structure/table/wood/fancy/red,
+/obj/item/reagent_containers/cooking/sushimat{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/item/kitchen/knife{
+	pixel_x = -8;
+	pixel_y = 2
+	},
 /obj/machinery/button/windowtint/south{
 	pixel_x = -6;
 	id = "mrchang"
@@ -37695,27 +37725,6 @@
 	name = "Mr. Chang's Shutters Control";
 	pixel_x = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/item/reagent_containers/cooking/sushimat,
-/obj/item/reagent_containers/glass/beaker/large,
-/obj/item/reagent_containers/glass/beaker/large,
-/obj/item/kitchen/knife{
-	pixel_x = -8
-	},
-/turf/simulated/floor/wood,
-/area/station/public/mrchangs)
-"cSW" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 10
-	},
-/obj/structure/table/wood/fancy/red,
-/obj/machinery/kitchen_machine/microwave{
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
 "cSY" = (
@@ -41308,8 +41317,8 @@
 /area/shuttle/pod_4)
 "dgH" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/light/small/directional/south,
 /obj/machinery/cooking/deepfryer/loaded,
+/obj/machinery/light/directional/south,
 /obj/structure/sign/poster/contraband/eat/directional/south,
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
@@ -41441,6 +41450,7 @@
 	},
 /obj/structure/table,
 /obj/machinery/cooking/grill/loaded,
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
 "dhq" = (
@@ -55451,6 +55461,12 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/service/chapel/office)
+"gZb" = (
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "bluecorner"
+	},
+/area/station/hallway/primary/central/nw)
 "gZc" = (
 /obj/machinery/gateway{
 	dir = 5
@@ -134419,7 +134435,7 @@ bvx
 cJA
 daf
 bfh
-bgP
+gZb
 wOF
 bkv
 bmb
@@ -135447,7 +135463,7 @@ fdC
 beg
 dbv
 hit
-bgP
+bnP
 wOF
 bkv
 bmb
@@ -135704,7 +135720,7 @@ fdC
 beg
 daT
 sSa
-bgP
+bnP
 wOF
 bky
 bmc
