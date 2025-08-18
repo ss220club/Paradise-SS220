@@ -86,7 +86,7 @@
 						return
 					if(W.aesthetic)
 						if(correct_prediction) // unupgraded machines should still scare the poor bastards
-							radio.autosay("<b>Обнаружено, что [W.name] распространяется над сектором. Никаких дальнейших действий не требуется.</b>", name, "Supply")
+							radio.autosay("<b>[capitalize(W.name)] распространяется над сектором. Никаких дальнейших действий не требуется.</b>", name, "Supply")
 						else
 							radio.autosay("<b>Внимание! К местному сектору приближается пепельный шторм. Немедленно прекратите любую деятельность на поверхности планеты.</b>", name, "Supply")
 					else
@@ -97,14 +97,14 @@
 				if(WEATHER_MAIN_STAGE)
 					if(last_stage == WEATHER_MAIN_STAGE)
 						return
-					radio.autosay("<b>Неблагоприятная погода достигла местный сектор. Немедленно найдите убежище.</b>", name, "Supply")
+					radio.autosay("<b>Неблагоприятная погода охватила местный сектор. Немедленно найдите убежище.</b>", name, "Supply")
 					last_stage = WEATHER_MAIN_STAGE
 					check_time = world.time + (W.weather_duration / 2)
 					return
 				if(WEATHER_WIND_DOWN_STAGE)
 					if(last_stage == WEATHER_WIND_DOWN_STAGE)
 						return
-					radio.autosay("<b>Неблагоприятная погода прекратила свою активность. Теперь Вы можете безопасно возобновить деятельность на поверхности планеты.</b>", name, "Supply")
+					radio.autosay("<b>Неблагоприятная погода прекратилась. Теперь вы можете безопасно возобновить деятельность на поверхности планеты.</b>", name, "Supply")
 					last_stage = WEATHER_WIND_DOWN_STAGE
 					dont_announce = FALSE
 					return
@@ -121,16 +121,16 @@
 		return
 	if(accuracy_coeff >= 4) //perfect accuracy
 		if(next_difference <= (3 MINUTES))
-			radio.autosay("<b>Успешно проанализированы погодные условия планеты. Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
+			radio.autosay("<b>Рассчет метеорологической модели успешно завершен. Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = TRUE
 	else if(prob(accuracy_coeff) && next_difference <= 3 MINUTES && next_difference >= 30 SECONDS)
 		if(next_weather == "emberfall" && !prob(10 * accuracy_coeff)) // fake callout
-			radio.autosay("<b>Успешно проанализированы погодные условия планеты. Спрогнозировано погодное явление через [difference_rounded]: пепельный шторм </b>", name, "Supply")
+			radio.autosay("<b>Рассчет метеорологической модели успешно завершен. Спрогнозировано погодное явление через [difference_rounded]: пепельный шторм </b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = FALSE
 		else
-			radio.autosay("<b>Успешно проанализированы погодные условия планеты. Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
+			radio.autosay("<b>Рассчет метеорологической модели успешно завершен. Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = TRUE
 

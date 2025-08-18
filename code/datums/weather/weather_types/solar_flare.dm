@@ -5,7 +5,7 @@
 	telegraph_duration = 40 SECONDS
 	telegraph_message = null // handled via event announcement
 
-	weather_message = "<span class='userdanger'><i>Солнечная вспышка достигла станцию! Не выходите в открытый космос и не приближайтесь к иллюминаторам, пока солнечная вспышка не пройдёт!</i></span>"
+	weather_message = "<span class='userdanger'><i>Солнечная вспышка достигла станции! Не выходите в открытый космос и не приближайтесь к иллюминаторам, пока солнечная вспышка не пройдёт!</i></span>"
 	weather_overlay = "light_ash"
 	weather_duration_lower = 1 MINUTES
 	weather_duration_upper = 5 MINUTES
