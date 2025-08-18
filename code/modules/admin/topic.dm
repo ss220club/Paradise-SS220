@@ -2452,31 +2452,23 @@
 			return
 		// SS220 EDIT START Код выбора автофакса изменён для наших шаблонов
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
-		var/options = list("Разберитесь с этим сами","Некорректный факс","Нет подписи/печати","Не сейчас","Трата времени", "Продолжайте в том же духе", "ОБР", "Трурль недоступен", "Завершение смены", "Новая цель")
-		var/answer = tgui_input_list(usr, "Выберите шаблон для авто-ответа на факс:", "Шаблоны авто-ответа", options)
-		var/obj/item/paper/fax_to_send
-		if(answer == "Разберитесь с этим сами")
-			fax_to_send = new /obj/item/paper/central_command/automated/handle_it_yourselves()
-		else if(answer == "Некорректный факс")
-			fax_to_send = new /obj/item/paper/central_command/automated/illegible_fax()
-		else if(answer == "Нет подписи/печати")
-			fax_to_send = new /obj/item/paper/central_command/automated/not_signed()
-		else if(answer == "Не сейчас")
-			fax_to_send = new /obj/item/paper/central_command/automated/not_right_now()
-		else if(answer == "Трата времени")
-			fax_to_send = new /obj/item/paper/central_command/automated/wasting_time()
-		else if(answer == "Продолжайте в том же духе")
-			fax_to_send = new /obj/item/paper/central_command/automated/keep_up_good_work()
-		else if(answer == "ОБР")
-			fax_to_send = new /obj/item/paper/central_command/automated/ert()
-		else if(answer == "Трурль недоступен")
-			fax_to_send = new /obj/item/paper/central_command/automated/recipient_unavailable()
-		else if(answer == "Завершение смены")
-			fax_to_send = new /obj/item/paper/central_command/automated/shift_end()
-		else if(answer == "Новая цель")
-			fax_to_send = new /obj/item/paper/central_command/automated/new_goal()
-		else
-			return
+
+		var/list/fax_templates = list(
+			"Разберитесь с этим сами" = /obj/item/paper/central_command/automated/handle_it_yourselves,
+			"Некорректный факс" = /obj/item/paper/central_command/automated/illegible_fax,
+			"Нет подписи/печати" = /obj/item/paper/central_command/automated/not_signed,
+			"Не сейчас" = /obj/item/paper/central_command/automated/not_right_now,
+			"Трата времени" = /obj/item/paper/central_command/automated/wasting_time,
+			"Продолжайте в том же духе" = /obj/item/paper/central_command/automated/keep_up_good_work,
+			"ОБР" = /obj/item/paper/central_command/automated/ert,
+			"Трурль недоступен" = /obj/item/paper/central_command/automated/recipient_unavailable,
+			"Завершение смены" = /obj/item/paper/central_command/automated/shift_end,
+			"Новая цель" = /obj/item/paper/central_command/automated/new_goal
+		)
+
+		var/answer = tgui_input_list(usr, "Выберите шаблон для авто-ответа на факс:", "Шаблоны авто-ответа", fax_templates)
+		var/fax_type = fax_templates[answer]
+		var/obj/item/paper/central_command/automated/fax_to_send = new fax_type()
 
 		var/obj/item/stamp/cent_stamp = new /obj/item/stamp/centcom()
 		fax_to_send.stamp(cent_stamp)
@@ -2496,7 +2488,7 @@
 			to_chat(H, "<span class='specialnotice bold'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
 		to_chat(src.owner, "Вы отправили стандартный факс типа: '[answer]' для [H]")
 		log_admin("[key_name(src.owner)] отправил [key_name(H)] стандартный факс типа '[answer]'")
-		message_admins("[key_name_admin(src.owner)] отправил ответ [key_name_admin(H)] стандартным факсом типа '[answer]' fax")
+		message_admins("[key_name_admin(src.owner)] отправил ответ [key_name_admin(H)] стандартным факсом типа '[answer]'")
 
 		// SS220 EDIT END
 
