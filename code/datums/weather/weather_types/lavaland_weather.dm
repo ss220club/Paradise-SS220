@@ -9,12 +9,12 @@
 	telegraph_message = "<span class='boldwarning'>Далёкий ветер разносит жуткий стон. Горизонт застилают тучи пепла и чёрного дыма. Поскорее найдите укрытие.</span>"
 	telegraph_overlay = "light_ash"
 
-	weather_message = "<span class='userdanger'><i>Вокруг Вас сгущаются облака жгучего пепла! Немедленно прячьтесь внутрь!</i></span>"
+	weather_message = "<span class='userdanger'><i>Вокруг вас сгущаются облака жгучего пепла! Немедленно прячьтесь внутрь!</i></span>"
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_overlay = "ash_storm"
 
-	end_message = "<span class='boldannounceic'>Ветер уносит от Вас остатки пепла и возвращается к своему привычному тихому гулу. Теперь можно безопасно выходить наружу.</span>"
+	end_message = "<span class='boldannounceic'>Ветер уносит от вас остатки пепла и возвращается к своему привычному тихому гулу. Теперь можно безопасно выходить наружу.</span>"
 	end_overlay = "light_ash"
 
 	area_types = list(/area/lavaland/surface/outdoors, /area/lavaland/surface/gulag_rock)
@@ -105,7 +105,7 @@
 	name = "пеплопад"
 	desc = "Пролетающий мимо пепельный шторм покрывает местность безвредными тлеющими угольками."
 
-	weather_message = "<span class='notice'>Тлеющие угольки медленно осыпаются вокруг Вас, словно странный снег. Кажется, в этот раз шторм обошёл вас стороной...</span>"
+	weather_message = "<span class='notice'>Тлеющие угольки медленно осыпаются вокруг вас, словно странный снег. Кажется, в этот раз шторм обошёл вас стороной...</span>"
 	weather_overlay = "light_ash"
 
 	end_message = "<span class='notice'>Пеплопад постепенно замедляется и угасает. Очередной слой сажи оседает на землю под вами...</span>"
