@@ -103,6 +103,18 @@
 	drop_sound = 'sound/items/handling/component_drop.ogg'
 	pickup_sound =  'sound/items/handling/component_pickup.ogg'
 
+/obj/item/extinguisher
+	drop_sound = 'sound/items/handling/gastank_drop.ogg'
+	pickup_sound =  'sound/items/handling/gastank_pickup.ogg'
+
+/obj/item/tank/internals
+	drop_sound = 'sound/items/handling/gastank_drop.ogg'
+	pickup_sound =  'sound/items/handling/gastank_pickup.ogg'
+
+/obj/item/chemical_canister
+	drop_sound = 'sound/items/handling/gastank_drop.ogg'
+	pickup_sound =  'sound/items/handling/gastank_pickup.ogg'
+
 /* KNIFE */
 /obj/item/nullrod/tribal_knife
 	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/knife.ogg'
