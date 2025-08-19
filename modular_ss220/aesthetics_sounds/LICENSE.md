@@ -3,3 +3,5 @@ food_open.ogg by mrgant -- https://freesound.org/s/79409/ -- License: Attributio
 cardboard_box_rustle.ogg, cardboard_box_rustle_light.ogg by sadboysuss -- https://github.com/ss220club/BandaStation/tree/1420e5d8e668f0dbe83e16f1cca251f036d07860/sound/items/handling/cardboard_box -- license: CC-by-SA
 
 plasticbox_open.ogg, plasticbox_drop.ogg, plasticbox_pickup.ogg by sadboysuss -- https://github.com/ss220club/BandaStation/tree/1420e5d8e668f0dbe83e16f1cca251f036d07860/sound/items/handling/medkit -- license: CC-by-SA
+
+device_drop.ogg, device_pickup.ogg -- https://github.com/NebulaSS13/Nebula/commit/30a68bebfa44ce562582171c8d25c4ceb0740ad5 -- license: APGL-3.0
