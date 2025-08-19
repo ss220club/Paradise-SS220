@@ -35,31 +35,22 @@
 	name = "Бумага с ЦК"
 	info = ""
 
-/obj/item/paper/central_command/New(sign_name = "Стэнди Мэроу")
+/obj/item/paper/central_command/New(sign_name = "Стэнди Мэроу", title = "Приветствую экипаж и руководство \[station\]" )
 	..()
 
-	var/SS220_pen_code_header =" \
-		<div style='display: flex;'> \
-			<img src='ntlogo.png'> \
-			<table style='padding-top: 15px;'> \
-				<tr> \
-					<td> \
-						<small>Форма Nanotrasen NT-CC-RES<br>Корабль — <b>АКН «Трурль»</b></small> \
-					</td> \
-					<td> \
-						<small>Дата: [time2text(world.timeofday, "DD.MM")].[GLOB.game_year]<br>Время: [station_time_timestamp()]</small> \
-					</td> \
-				</tr> \
-				<tr> \
-					<td colspan='2' style='text-align: center; padding-top: 25px;'><i><large><b>Приказ Центрального Командования</b></large></i></td> \
-				</tr> \
-			</table> \
-		</div> \
-		<hr>"
+	var/SS220_pen_code_header = \
+	"\[center\]\[grid\]\[row\]\[cell\]\[logo\]\[cell\]\[br\]\
+	\[small\]Форма Nano Trasen NT-\[b\]CC\[/b\]-АМ\[/small\]\[br\]\
+	\[small\]Время: \[time\]\[/small\] \[small\]Дата: [time2text(world.timeofday, "DD.MM")].[GLOB.game_year]\[/small\]\[br\]\
+	\[small\]Субъект — \[b\]«АКН Трурль»\[/b\]\[/small\]\[br\]\
+	\[small\]Объект — \[b\]«\[station\]»\[/b\]\[/small\]\[/center\]\[br\]\
+	\[br\]\[i\]\[large\]\[b\]\[b\]\[/large\]\[/i\]\[/grid\]\[hr\]\[br\]\
+	\[h3\][title].\[/h3\]\[br\]"
+
 	header = pencode_to_html(SS220_pen_code_header, sign=FALSE)
 
 	var/SS220_pen_code_footer = \
-	"\[br\]\[small\]\[i\]" + \
+	"\[/center\]\[br\]\[small\]\[i\]" + \
 	"\[br\]Подпись: \[signfont\][sign_name]\[/signfont\]\[/i\], в должности: \[i\]Nanotrasen Navy Officer\[field\].\[/i\]\[/small\]" + \
 	CC_DEFAULT_FOOTER
 	footer = pencode_to_html(SS220_pen_code_footer, sign=FALSE)
@@ -69,7 +60,7 @@
 
 	var/SS220_pen_code_header = \
 	"\[center\]\[grid\]\[row\]\[cell\]\[logo\]\[cell\]\[br\]\
-	\[small\]Форма NanoTrasen NT-\[b\]CC\[/b\]-АМ\[/small\]\[br\]\
+	\[small\]Форма Nano Trasen NT-\[b\]CC\[/b\]-АМ\[/small\]\[br\]\
 	\[small\]Время: \[time\]\[/small\] \[small\]Дата: [time2text(world.timeofday, "DD.MM")].[GLOB.game_year]\[/small\]\[br\]\
 	\[small\]Субъект — \[b\]«АКН Трурль»\[/b\]\[/small\]\[br\]\
 	\[small\]Объект — \[b\]«\[station\]»\[/b\]\[/small\]\[/center\]\[br\]\
@@ -128,10 +119,9 @@
 	..(SS220_pen_code_body)
 
 /obj/item/paper/central_command/automated/ert/New()
-	var/SS220_pen_code_body = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль \
-		и незамедлительно перенаправлен в Отдел регистрации ценной макулатуры. \
-		Центральным Командованием очень ценится подход к работе, подобный вашему, \
-		именно поэтому мы пристально наблюдаем за ситуацией и настоятельно рекомендуем продолжать демонстрировать такой же профессионализм и преданность корпорации." + not_automated_end
+	var/SS220_pen_code_body = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль и незамедлительно перенаправлен в Отдел специальных операций. \
+		Пожалуйста, используйте картридер вызова Отряда Быстрого Реагирования и ожидайте решения уполномоченного Офицера Специальных \
+		Операций о подборе и направлении поддержки в ваш сектор. Будьте уверены, что ваши исчерпывающие данные, изложенные в факсе, значительно повлияют на скорость принятия мер." + automated_end
 
 	..(SS220_pen_code_body)
 

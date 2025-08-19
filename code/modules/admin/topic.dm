@@ -2467,6 +2467,8 @@
 		)
 
 		var/answer = tgui_input_list(usr, "Выберите шаблон для авто-ответа на факс:", "Шаблоны авто-ответа", fax_templates)
+		if(!answer)
+			return
 		var/fax_type = fax_templates[answer]
 		var/obj/item/paper/central_command/automated/fax_to_send = new fax_type()
 
@@ -2586,8 +2588,9 @@
 		switch(use_letterheard)
 			if("Nanotrasen")
 				// SS220 EDIT START Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
-				var/sign_name = tgui_input_text(usr, "Введите, от чьего лица отправить факс. Оставьте пустым, чтобы использовать стандартное имя.", "Выбор имени отправителя факса", max_length = MAX_NAME_LEN)
-				P = new /obj/item/paper/central_command(sign_name || null)
+				var/sign_name = tgui_input_text(usr, "Введите, от чьего лица отправить факс. Оставьте пустым, чтобы использовать стандартное имя.", "Ввод имени отправителя факса", max_length = MAX_NAME_LEN)
+				var/title = tgui_input_text(usr, "Введите, заголовок факса. Оставьте пустым, чтобы использовать стандартное приветствие.", "Ввод заголовок факса")
+				P = new /obj/item/paper/central_command(sign_name || null, title || null)
 				// SS220 EDIT END
 			if("Syndicate")
 				P = new /obj/item/paper/syndicate(null)
