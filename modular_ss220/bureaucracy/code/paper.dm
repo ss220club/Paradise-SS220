@@ -33,119 +33,119 @@
 
 /obj/item/paper/central_command
 	name = "Бумага с ЦК"
+	var/code_form = "Форма Nano Trasen NT-\[b\]CC\[/b\]-RES"
 	info = ""
+	var/pen_code_header = ""
+	var/pen_code_body = ""
+	var/pen_code_footer = ""
 
-/obj/item/paper/central_command/New(sign_name = "Стэнди Мэроу", title = "Приветствую экипаж и руководство \[station\]" )
+/obj/item/paper/central_command/New()
 	..()
 
-	var/SS220_pen_code_header = \
+	pen_code_header = \
 	"\[center\]\[grid\]\[row\]\[cell\]\[logo\]\[cell\]\[br\]\
-	\[small\]Форма Nano Trasen NT-\[b\]CC\[/b\]-АМ\[/small\]\[br\]\
+	\[small\][code_form]\[/small\]\[br\]\
 	\[small\]Время: \[time\]\[/small\] \[small\]Дата: [time2text(world.timeofday, "DD.MM")].[GLOB.game_year]\[/small\]\[br\]\
 	\[small\]Субъект — \[b\]«АКН Трурль»\[/b\]\[/small\]\[br\]\
 	\[small\]Объект — \[b\]«\[station\]»\[/b\]\[/small\]\[/center\]\[br\]\
-	\[br\]\[i\]\[large\]\[b\]\[b\]\[/large\]\[/i\]\[/grid\]\[hr\]\[br\]\
-	\[h3\][title].\[/h3\]\[br\]"
+	\[br\]\[i\]\[large\]\[b\]\[b\]\[/large\]\[/i\]\[/grid\]\[hr\]\[/center\]\[br\]" + pen_code_header
 
-	header = pencode_to_html(SS220_pen_code_header, sign=FALSE)
+	header = pencode_to_html(pen_code_header, sign=FALSE)
 
-	var/SS220_pen_code_footer = \
+	info = pencode_to_html(pen_code_body, sign=FALSE)
+
+	pen_code_footer = pen_code_footer + CC_DEFAULT_FOOTER
+	footer = pencode_to_html(pen_code_footer, sign=FALSE)
+
+/obj/item/paper/central_command/quick_fax/New(sign_name = "Стэнди Мэроу", title = "Приветствую экипаж и руководство \[station\].")
+	pen_code_header = "\[center\]\[h3\][title]\[/h3\]\[br\]"
+
+	pen_code_footer = \
 	"\[/center\]\[br\]\[small\]\[i\]" + \
-	"\[br\]Подпись: \[signfont\][sign_name]\[/signfont\]\[/i\], в должности: \[i\]Nanotrasen Navy Officer\[field\].\[/i\]\[/small\]" + \
-	CC_DEFAULT_FOOTER
-	footer = pencode_to_html(SS220_pen_code_footer, sign=FALSE)
+	"\[br\]Подпись: \[signfont\][sign_name]\[/signfont\]\[/i\], в должности: \[i\]Nanotrasen Navy Officer\[field\].\[/i\]\[/small\]"
 
-/obj/item/paper/central_command/automated/New(SS220_pen_code_body)
 	..()
 
-	var/SS220_pen_code_header = \
-	"\[center\]\[grid\]\[row\]\[cell\]\[logo\]\[cell\]\[br\]\
-	\[small\]Форма Nano Trasen NT-\[b\]CC\[/b\]-АМ\[/small\]\[br\]\
-	\[small\]Время: \[time\]\[/small\] \[small\]Дата: [time2text(world.timeofday, "DD.MM")].[GLOB.game_year]\[/small\]\[br\]\
-	\[small\]Субъект — \[b\]«АКН Трурль»\[/b\]\[/small\]\[br\]\
-	\[small\]Объект — \[b\]«\[station\]»\[/b\]\[/small\]\[/center\]\[br\]\
-	\[br\]\[i\]\[large\]\[b\]\[b\]\[/large\]\[/i\]\[/grid\]\[hr\]\[br\]\
-	\[h3\]Приветствуем, уважаемый член экипажа.\[/h3\]\[br\]"
-	header = pencode_to_html(SS220_pen_code_header, sign=FALSE)
+/obj/item/paper/central_command/automated
+	code_form = "Форма Nano Trasen NT-\[b\]CC\[/b\]-АМ"
 
-	// main body of the paper
-	info = pencode_to_html(SS220_pen_code_body, sign=FALSE)
-
-	var/SS220_pen_code_footer = CC_DEFAULT_FOOTER
-	footer = pencode_to_html(SS220_pen_code_footer, sign=FALSE)
+/obj/item/paper/central_command/automated/New(body_text)
+	pen_code_header = "\[center\]\[h3\]Приветствуем, уважаемый член экипажа.\[/h3\]\[br\]"
+	pen_code_body = body_text
+	..()
 
 /obj/item/paper/central_command/automated/handle_it_yourselves/New()
-	var/SS220_pen_code_body = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
+	var/body_text = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
 		Вы полностью обучены, чтобы справиться с этой ситуацией без вмешательства Центрального Командования. \
 		Пожалуйста, действуйте соответствуя Стандартным Рабочим Процедурам и/или Космическому Закону." + automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/illegible_fax/New()
-	var/SS220_pen_code_body = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
+	var/body_text = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
 		Грамматика, синтаксис и/или типография вашего факса находятся на низком уровне и не позволяют нам в полной мере понять содержание сообщения. \
 		Пожалуйста, обратитесь к ближайшему словарю и/или глоссарию и попробуйте снова" + automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/not_signed/New()
-	var/SS220_pen_code_body = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
+	var/body_text = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
 		Документ не был корректно подписан и/или подпись не закреплена обязательной печатью. \
 		Пожалуйста, корректно оформляйте документацию перед отправкой, чтобы мы могли верифицировать вашу личность." + automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/not_right_now/New()
-	var/SS220_pen_code_body = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
+	var/body_text = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
 		Из-за неотложных вопросов, выходящих за пределы вашей текущей должностной категории, мы не можем оказать помощь по делу, указанному в вашем факсе. \
 		Это может быть вызвано блюспейс бурей, отключением электроэнергии, бюрократическим аудитом, нашествием вредителей, \
 		празднованием дня рождения сотрудника отдела, внезапной вспышкой размножения популяции корги или любой другой ситуацией, влияющей на нормальную работу АКН Трурль. \
 		Пожалуйста, попробуйте значительно позже." + automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/wasting_time/New()
-	var/SS220_pen_code_body = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
+	var/body_text = "Ваш факс был автоматически \[b\]ОТКЛОНЁН\[/b\] системой регистрации факсов АКН Трурль. \
 		В целях предотвращения дальнейших расходов ресурсов корпорации, пожалуйста, воздержитесь от неразумной растраты нашего времени на такие мелочные бессмыслицы. \
 		Просим помнить, что мы ожидаем от сотрудников хотя бы минимального уровня профессионализма. Не испытывайте наше терпение." + automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/keep_up_good_work/New()
-	var/SS220_pen_code_body = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль и незамедлительно перенаправлен в Отдел регистрации ценной макулатуры. \
+	var/body_text = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль и незамедлительно перенаправлен в Отдел регистрации ценной макулатуры. \
 		Центральным Командованием очень ценится подход к работе, подобный вашему именно поэтому мы пристально наблюдаем за ситуацией \
 		и настоятельно рекомендуем продолжать демонстрировать такой же профессионализм и преданность корпорации." + not_automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/ert/New()
-	var/SS220_pen_code_body = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль и незамедлительно перенаправлен в Отдел специальных операций. \
+	var/body_text = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль и незамедлительно перенаправлен в Отдел специальных операций. \
 		Пожалуйста, используйте картридер вызова Отряда Быстрого Реагирования и ожидайте решения уполномоченного Офицера Специальных \
 		Операций о подборе и направлении поддержки в ваш сектор. Будьте уверены, что ваши исчерпывающие данные, изложенные в факсе, значительно повлияют на скорость принятия мер." + automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/recipient_unavailable/New()
-	var/SS220_pen_code_body = "К сожалению, ваш факс не был доставлен в связи с недоступностью приёмных машин получателя. \
+	var/body_text = "К сожалению, ваш факс не был доставлен в связи с недоступностью приёмных машин получателя. \
 		Причиной этому могли послужить атипичные флуктуации квазичастиц, наведённые блюспейс штормом в расположении получателя, \
 		или, возможно, кто-то выдернул из розетки все дежурные факс-машины Трурля. \
 		Так или иначе, ваш факс очень важен для корпорации, попробуйте отправить его значительно позже." + automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/shift_end/New()
-	var/SS220_pen_code_body = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль. \
+	var/body_text = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль. \
 		Центральным Командованием было принято решение о завершении смены на вашем объекте, вам приказано инициировать процедуру эвакуации экипажа. \
 		Всем сотрудникам следует привести в порядок рабочие места, а главам отделов проверить наличие всех подчинённых на борту эвакуационного шаттла перед его отправлением. \
 		Желаем вам приятного пути." + not_automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 /obj/item/paper/central_command/automated/new_goal/New()
-	var/SS220_pen_code_body = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль и незамедлительно перенаправлен в Отдел корпоративного развития. \
+	var/body_text = "Ваш факс успешно принят Отделом регистрации факсов АКН Трурль и незамедлительно перенаправлен в Отдел корпоративного развития. \
 	Ожидайте приоритетной директивы Нанотрейзен и прилагаемых к ней деталей нового проекта." + not_automated_end
 
-	..(SS220_pen_code_body)
+	..(body_text)
 
 #undef automated_end
 #undef not_automated_end

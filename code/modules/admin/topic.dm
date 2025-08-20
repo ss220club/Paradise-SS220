@@ -2590,7 +2590,7 @@
 				// SS220 EDIT START Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
 				var/sign_name = tgui_input_text(usr, "Введите, от чьего лица отправить факс. Оставьте пустым, чтобы использовать стандартное имя.", "Ввод имени отправителя факса", max_length = MAX_NAME_LEN)
 				var/title = tgui_input_text(usr, "Введите, заголовок факса. Оставьте пустым, чтобы использовать стандартное приветствие.", "Ввод заголовок факса")
-				P = new /obj/item/paper/central_command(sign_name || null, title || null)
+				P = new /obj/item/paper/central_command/quick_fax(sign_name || null, title || null)
 				// SS220 EDIT END
 			if("Syndicate")
 				P = new /obj/item/paper/syndicate(null)
