@@ -238,3 +238,8 @@
 		/obj/item/clothing/under/rank/procedure/nct/black/skirt = 2
 		)
 	. = ..()
+
+/obj/machinery/mineral/equipment_vendor/explorer/Initialize(mapload)
+	prize_list["Consumables"] += list(
+		EQUIPMENT("Spacer First-Aid Kit", /obj/item/storage/firstaid/spacer, 800),
+	)

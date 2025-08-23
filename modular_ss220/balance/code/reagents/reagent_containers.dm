@@ -52,3 +52,36 @@
 
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom
+	desc = "A rapid and safe way to inject chemicals into humanoids. This one have extended capacity."
+	amount_per_transfer_from_this = 20
+	volume = 20
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/brute
+	name = "brute medipen"
+	desc = "A rapid and safe way to tend wounds and deal with minor pain even through spacesuits. Contains bicaridine and salicylic acid."
+	list_reagents = list("bicaridine" = 15, "sal_acid" = 5)
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/burn
+	name = "burn medipen"
+	desc = "A rapid and safe way to tend burns and regulate body's temperature even through spacesuits. Contains kelotane and menthol."
+	list_reagents = list("kelotane" = 15, "menthol" = 5)
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/critical
+	name = "critical state medipen"
+	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains ephedrine and perfluorodecalin. <br><span class='boldwarning'>WARNING: Do not inject more than one pen in quick succession.</span>"
+	list_reagents = list("ephedrine" = 16, "perfluorodecalin" = 4)
+
+/obj/item/storage/firstaid/spacer
+	name = "spacer first-aid kit"
+	desc = "A medical kit designed for use in space. Contains medipens for both brute damage and burn damage. Also contains an critical state medipen for emergency use and a health analyzer."
+	icon_state = "firstaid"
+
+/obj/item/storage/firstaid/spacer/populate_contents()
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/critical(src)
+	new /obj/item/healthanalyzer(src)

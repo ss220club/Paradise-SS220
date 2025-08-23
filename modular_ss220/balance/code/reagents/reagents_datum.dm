@@ -18,3 +18,22 @@
 
 #undef DEFAULT_DAMAGE
 #undef ADDITIONAL_DAMAGE
+
+/datum/chemical_production_mode/patches
+	max_units_per_item = 20
+
+/datum/chemical_production_mode/pills
+	max_units_per_item = 20
+
+/datum/chemical_production_mode/autoinjectors
+	mode_id = "medipens"
+	production_name = "Medipens"
+	production_icon = "pills"
+	sprites = list("autoinjector", "survpen", "stimpen", "lepopen")
+	item_type = /obj/item/reagent_containers/hypospray/autoinjector/custom
+	max_items_amount = 20
+	max_units_per_item = 30
+	name_suffix = " medipen"
+
+/datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents, amount_per_item)
+	return reagents.get_master_reagent_name()
