@@ -29,7 +29,7 @@
 	mode_id = "medipens"
 	production_name = "Medipens"
 	production_icon = "pills"
-	sprites = list("autoinjector", "survpen", "stimpen", "lepopen")
+	sprites = list("autoinjector")
 	item_type = /obj/item/reagent_containers/hypospray/autoinjector/custom
 	max_items_amount = 20
 	max_units_per_item = 30
