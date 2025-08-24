@@ -29,11 +29,11 @@
 	mode_id = "medipens"
 	production_name = "Medipens"
 	production_icon = "pills"
-	sprites = list("autoinjector")
+	sprites = list("medipen")
 	item_type = /obj/item/reagent_containers/hypospray/autoinjector/custom
 	max_items_amount = 20
 	max_units_per_item = 30
 	name_suffix = " medipen"
 
-/datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents, amount_per_item)
+/datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents)
 	return reagents.get_master_reagent_name()
