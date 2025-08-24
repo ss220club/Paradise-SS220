@@ -24,6 +24,13 @@
 	apply(user, user)
 
 /obj/item/reagent_containers/pill/proc/apply(mob/living/carbon/C, mob/user)
+	if(C.is_mouth_covered()) // SS220 EDIT
+		if(C == user)
+			to_chat(user, "<span class='warning'>You cant't take pills with mouth covered!</span>")
+		else
+			to_chat(user,  "<span class='warning'>[C] can't take pills with mouth covered!</span>")
+		return FALSE
+
 	if(!istype(C))
 		return FALSE
 

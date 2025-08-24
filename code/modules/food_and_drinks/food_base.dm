@@ -175,6 +175,15 @@
 	return
 
 /obj/item/food/attack__legacy__attackchain(mob/M, mob/user, def_zone)
+	if(isliving(M)) // SS220 EDIT
+		var/mob/living/L = M
+		if(L.is_mouth_covered())
+			if(L == user)
+				to_chat(user, "<span class='warning'>You cant't eat with mouth covered!</span>")
+			else
+				to_chat(user,  "<span class='warning'>[L] can't eat with mouth covered!</span>")
+			return FALSE
+
 	if(user.a_intent == INTENT_HARM && force)
 		return ..()
 	if(reagents && !reagents.total_volume)	// Shouldn't be needed but it checks to see if it has anything left in it.
