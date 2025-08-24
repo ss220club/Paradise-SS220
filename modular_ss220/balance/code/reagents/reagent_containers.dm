@@ -79,12 +79,15 @@
 	icon_state = "firstaid"
 
 /obj/item/storage/firstaid/spacer/populate_contents()
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/critical(src)
 	new /obj/item/healthanalyzer(src)
 
 /obj/machinery/suit_storage_unit/expedition
+	storage_type = /obj/item/storage/firstaid/spacer
+
+/obj/machinery/suit_storage_unit/security
 	storage_type = /obj/item/storage/firstaid/spacer
