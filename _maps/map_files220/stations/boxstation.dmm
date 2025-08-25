@@ -13059,10 +13059,7 @@
 	},
 /area/station/public/dorms)
 "aWN" = (
-/obj/machinery/power/apc/directional/north,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutralcorner"
@@ -16121,7 +16118,6 @@
 	},
 /area/station/hallway/primary/central/north)
 "bgV" = (
-/obj/item/radio/intercom/directional/north,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -27742,6 +27738,13 @@
 /obj/structure/closet/secure_closet/blueshield,
 /turf/simulated/floor/wood/fancy/ebonite,
 /area/station/command/office/blueshield)
+"cfq" = (
+/obj/item/radio/intercom/directional/west,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutralcorner"
+	},
+/area/station/hallway/primary/fore)
 "cfw" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -41878,7 +41881,7 @@
 "dje" = (
 /obj/item/kirbyplants/large,
 /obj/machinery/light/directional/north,
-/obj/item/radio/intercom/directional/north,
+/obj/machinery/ai_status_display/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutralcorner"
@@ -42184,13 +42187,6 @@
 	icon_state = "darkbluecorners"
 	},
 /area/station/engineering/atmos/control)
-"dkm" = (
-/obj/machinery/status_display/directional/north,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "neutralcorner"
-	},
-/area/station/hallway/primary/central/ne)
 "dkn" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -42259,7 +42255,10 @@
 	},
 /area/station/engineering/atmos)
 "dkD" = (
-/obj/machinery/newscaster/directional/north,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutralcorner"
@@ -59063,23 +59062,6 @@
 	icon_state = "whitepurplecorner"
 	},
 /area/station/science/xenobiology)
-"iit" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/hallway/primary/central/ne)
 "ijf" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/stripes/line,
@@ -59796,6 +59778,23 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/command/office/hop)
+"iwT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/hallway/primary/central/ne)
 "ixh" = (
 /obj/structure/toilet/directional/north,
 /obj/effect/landmark/spawner/nukedisc_respawn,
@@ -89888,6 +89887,13 @@
 /obj/effect/landmark/start/cargo_technician,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/disposal/westalt)
+"ssy" = (
+/obj/item/radio/intercom/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "bluecorner"
+	},
+/area/station/hallway/primary/central/nw)
 "ssI" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -104898,6 +104904,13 @@
 /obj/item/storage/toolbox/mechanical/old,
 /turf/simulated/floor/plating,
 /area/station/supply/break_room)
+"xkz" = (
+/obj/item/radio/intercom/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutralcorner"
+	},
+/area/station/hallway/primary/central/ne)
 "xkF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -135720,7 +135733,7 @@ fdC
 beg
 daT
 aRw
-bnP
+ssy
 wOF
 bky
 bmc
@@ -136999,7 +137012,7 @@ aRF
 sDk
 atc
 ayV
-ayV
+cfq
 ayV
 tMN
 bdv
@@ -138804,7 +138817,7 @@ xYi
 aOm
 dgH
 aDN
-upi
+xkz
 pok
 bkE
 bmc
@@ -139318,7 +139331,7 @@ bqm
 vpM
 bqm
 aDN
-dkm
+upi
 pok
 vdh
 bmi
@@ -140861,7 +140874,7 @@ buU
 sUe
 aOI
 dkD
-thq
+iwT
 vdh
 bmi
 bmi
@@ -141118,7 +141131,7 @@ rgz
 bJU
 aOI
 aWN
-iit
+kRo
 bhq
 bWH
 bod
