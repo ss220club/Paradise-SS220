@@ -1,3 +1,56 @@
+/obj/item/food/attack__legacy__attackchain(mob/M, mob/user, def_zone)
+	if(isliving(M))
+		var/mob/living/L = M
+		if(L.is_mouth_covered())
+			if(L == user)
+				to_chat(user, span_warning("Вы не можете есть с закрытым ртом!"))
+			else
+				to_chat(user, span_warning("[L] не может есть с закрытым ртом!"))
+			return FALSE
+	return ..()
+
+/obj/item/reagent_containers/glass/mob_act(mob/target, mob/living/user)
+	if(isliving(target))
+		var/mob/living/L = target
+		if(L.is_mouth_covered())
+			if(L == user)
+				to_chat(user, span_warning("Вы не можете пить с закрытым ртом!"))
+			else
+				to_chat(user, span_warning("[L] не может пить с закрытым ртом!"))
+			return
+	return ..()
+
+/obj/item/reagent_containers/drinks/mob_act(mob/target, mob/living/user)
+	if(isliving(target))
+		var/mob/living/L = target
+		if(L.is_mouth_covered())
+			if(L == user)
+				to_chat(user, span_warning("Вы не можете пить с закрытым ртом!"))
+			else
+				to_chat(user, span_warning("[L] не может пить с закрытым ртом!"))
+			return FALSE
+	return ..()
+
+/obj/item/reagent_containers/condiment/mob_act(mob/target, mob/living/user)
+	if(isliving(target))
+		var/mob/living/L = target
+		if(L.is_mouth_covered())
+			if(L == user)
+				to_chat(user, span_warning("Вы не можете пить с закрытым ртом!"))
+			else
+				to_chat(user, span_warning("[L] не может пить с закрытым ртом!"))
+			return FALSE
+	return ..()
+
+/obj/item/reagent_containers/pill/apply(mob/living/carbon/C, mob/user)
+	if(C.is_mouth_covered())
+		if(C == user)
+			to_chat(user, span_warning("Вы не можете принять таблетки с закрытым ртом!</span>"))
+		else
+			to_chat(user, span_warning("[C] не может принять таблетки с закрытым ртом!"))
+		return FALSE
+	return ..()
+
 #define BORGHYPO_REFILL_VALUE 10
 #define SYNDICATE_NANITES_LIMIT 250
 
