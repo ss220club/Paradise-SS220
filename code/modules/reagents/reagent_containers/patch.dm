@@ -26,9 +26,6 @@
 	apply(user, user)
 
 /obj/item/reagent_containers/patch/proc/apply(mob/living/carbon/C, mob/user)
-	if(!C.can_inject(user, TRUE)) //SS220 EDIT
-		return
-
 	if(!istype(C))
 		return
 

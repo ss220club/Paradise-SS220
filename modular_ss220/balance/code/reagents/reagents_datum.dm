@@ -28,7 +28,7 @@
 /datum/chemical_production_mode/autoinjectors
 	mode_id = "medipens"
 	production_name = "Medipens"
-	production_icon = "pills"
+	production_icon = "syringe"
 	sprites = list("medipen")
 	item_type = /obj/item/reagent_containers/hypospray/autoinjector/custom
 	max_items_amount = 20

@@ -53,6 +53,11 @@
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT
 
+/obj/item/reagent_containers/patch/apply(mob/living/carbon/C, mob/user)
+	if(!C.can_inject(user, TRUE))
+		return
+	return ..()
+
 /obj/item/reagent_containers/hypospray/autoinjector/custom
 	icon = 'modular_ss220/aesthetics/medipens/icon/medipens.dmi'
 	icon_state = "medipen"
@@ -75,8 +80,8 @@
 /obj/item/reagent_containers/hypospray/autoinjector/custom/critical
 	name = "critical state medipen"
 	icon_state = "medipen_blu"
-	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains ephedrine and perfluorodecalin. <br><span class='boldwarning'>WARNING: Do not inject more than one pen in quick succession.</span>"
-	list_reagents = list("ephedrine" = 16, "perfluorodecalin" = 4)
+	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains epinephrine, perfluorodecalin and morphine. <br><span class='boldwarning'>WARNING: Do not inject more than one pen in quick succession.</span>"
+	list_reagents = list("epinephrine" = 13, "perfluorodecalin" = 3, "morphine" = 4)
 
 /obj/item/storage/firstaid/spacer
 	name = "spacer first-aid kit"

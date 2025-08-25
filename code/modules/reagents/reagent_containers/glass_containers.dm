@@ -27,15 +27,6 @@
 	. += "<span class='notice'>[src] can hold up to [reagents.maximum_volume] units.</span>"
 
 /obj/item/reagent_containers/glass/mob_act(mob/target, mob/living/user)
-	if(isliving(target)) //SS220 EDIT
-		var/mob/living/L = target
-		if(L.is_mouth_covered())
-			if(L == user)
-				to_chat(user, "<span class='warning'>You cant't drink with mouth covered!</span>")
-			else
-				to_chat(user,  "<span class='warning'>[L] can't drink with mouth covered!</span>")
-			return
-
 	. = TRUE
 	if(!is_open_container())
 		return

@@ -39,15 +39,6 @@
 	var/originalname = "condiment" //Can't use initial(name) for this. This stores the name set by condimasters.
 
 /obj/item/reagent_containers/condiment/mob_act(mob/target, mob/living/user)
-	if(isliving(target)) //SS220 EDIT
-		var/mob/living/L = target
-		if(L.is_mouth_covered())
-			if(L == user)
-				to_chat(user, "<span class='warning'>You cant't drink with mouth covered!</span>")
-			else
-				to_chat(user,  "<span class='warning'>[L] can't drink with mouth covered!</span>")
-			return FALSE
-
 	. = TRUE
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, "<span class='warning'>None of [src] left, oh no!</span>")
