@@ -1148,6 +1148,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
+"agQ" = (
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "whiteyellow"
+	},
+/area/station/medical/chemistry)
 "agS" = (
 /obj/machinery/flasher/portable,
 /turf/simulated/floor/plasteel{
@@ -9868,6 +9874,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "arcade"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/public/arcade)
 "aKY" = (
@@ -14038,10 +14047,10 @@
 /turf/simulated/floor/wood/fancy,
 /area/station/public/sleep_female)
 "aZE" = (
-/obj/item/radio/intercom/directional/north,
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 1
 	},
+/obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/public/arcade)
 "aZF" = (
@@ -21848,7 +21857,7 @@
 	pixel_y = 5
 	},
 /turf/simulated/floor/plasteel{
-	dir = 9;
+	dir = 8;
 	icon_state = "whiteyellow"
 	},
 /area/station/medical/chemistry)
@@ -55617,11 +55626,11 @@
 "haC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/window/reinforced,
-/obj/structure/morgue{
-	dir = 2
-	},
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/landmark/spawner/rev,
+/obj/structure/morgue{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/station/medical/morgue)
 "haD" = (
@@ -76374,6 +76383,7 @@
 	c_tag = "Casino"
 	},
 /obj/effect/landmark/start/bar,
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/carpet/green,
 /area/station/public/arcade)
 "nXU" = (
@@ -85689,11 +85699,11 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/obj/structure/morgue{
-	dir = 2
-	},
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/landmark/spawner/rev,
+/obj/structure/morgue{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/station/medical/morgue)
 "qQm" = (
@@ -105679,11 +105689,11 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/obj/structure/morgue{
-	dir = 2
-	},
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/landmark/spawner/rev,
+/obj/structure/morgue{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/station/medical/morgue)
 "xwS" = (
@@ -142176,7 +142186,7 @@ sqU
 ogI
 aTT
 bCW
-bDf
+agQ
 bGi
 bJF
 bTI
