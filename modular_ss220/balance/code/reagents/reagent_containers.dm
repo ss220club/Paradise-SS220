@@ -45,7 +45,7 @@
 /obj/item/reagent_containers/pill/apply(mob/living/carbon/C, mob/user)
 	if(C.is_mouth_covered())
 		if(C == user)
-			to_chat(user, span_warning("Вы не можете принять таблетки с закрытым ртом!</span>"))
+			to_chat(user, span_warning("Вы не можете принять таблетки с закрытым ртом!"))
 		else
 			to_chat(user, span_warning("[C] не может принять таблетки с закрытым ртом!"))
 		return FALSE
