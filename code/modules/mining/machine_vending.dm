@@ -43,7 +43,7 @@
 		EQUIPMENT("10 Marker Beacons", /obj/item/stack/marker_beacon/ten, 100),
 		EQUIPMENT("First-Aid Kit", /obj/item/storage/firstaid/regular, 400),
 		EQUIPMENT("Advanced First-Aid Kit", /obj/item/storage/firstaid/adv, 600),
-		EQUIPMENT("Spacer First-Aid Kit", /obj/item/storage/firstaid/spacer, 800),
+		EQUIPMENT("Spacer First-Aid Kit", /obj/item/storage/firstaid/spacer, 600),
 		EQUIPMENT("Fulton Pack", /obj/item/extraction_pack, 1000),
 		EQUIPMENT("Fulton Beacon", /obj/item/fulton_core, 400),
 		EQUIPMENT("Jaunter", /obj/item/wormhole_jaunter, 750),
@@ -384,7 +384,7 @@
 	prize_list["Consumables"] = list(
 		EQUIPMENT("First-Aid Kit", /obj/item/storage/firstaid/regular, 400),
 		EQUIPMENT("Advanced First-Aid Kit", /obj/item/storage/firstaid/adv, 600),
-		EQUIPMENT("Spacer First-Aid Kit", /obj/item/storage/firstaid/spacer, 800),
+		EQUIPMENT("Spacer First-Aid Kit", /obj/item/storage/firstaid/spacer, 600),
 		EQUIPMENT("Fulton Pack", /obj/item/extraction_pack, 1000),
 		EQUIPMENT("Fulton Beacon", /obj/item/fulton_core, 400),
 		EQUIPMENT("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),

@@ -934,10 +934,10 @@
 	var/fail_msg
 	if(!affecting)
 		. = FALSE
-		fail_msg = "[p_they(TRUE)] [p_are()] missing that limb."
+		fail_msg = "Эта конечность отсутствует!"
 	else if(affecting.is_robotic())
 		. = FALSE
-		fail_msg = "That limb is robotic."
+		fail_msg = "Это роботическая конечность!"
 
 	// If there is flesh, inject.
 	if(penetrate_everything)
@@ -957,8 +957,8 @@
 			. = FALSE
 	if(!. && error_msg && user)
 		if(!fail_msg)
-			fail_msg = "There is no exposed flesh or thin material [target_zone == "head" ? "on [p_their()] head" : "on [p_their()] body"] to inject into."
-		to_chat(user, "<span class='alert'>[fail_msg]</span>")
+			fail_msg = "Вы не можете дотянуться до кожи сквозь плотную одежду!"
+		to_chat(user, "<span class='warning'>[fail_msg]</span>")
 
 ///
 /**

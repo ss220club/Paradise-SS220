@@ -96,6 +96,15 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/critical(src)
 	new /obj/item/healthanalyzer(src)
 
+/datum/supply_packs/medical/spacerkits
+	name = "Spacer First-Aid Kits Crate"
+	contains = list(/obj/item/storage/firstaid/spacer,
+					/obj/item/storage/firstaid/spacer,
+					/obj/item/storage/firstaid/spacer,
+					/obj/item/storage/firstaid/spacer)
+	cost = 250
+	containername = "spacer first-aid kits crate"
+
 /obj/machinery/suit_storage_unit/expedition
 	storage_type = /obj/item/storage/firstaid/spacer
 
