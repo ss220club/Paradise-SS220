@@ -28,7 +28,6 @@
 /obj/item/mecha_parts/mecha_equipment/teleporter/precise
 	name = "upgraded teleporter"
 	desc = "Модуль для экзокостюма, который позволяет телепортироваться в любую видимую позицию. Это версия с более высокой точностью и энергоэффективностью."
-	origin_tech = "bluespace=7"
 	energy_drain = 1000
 	tele_precision = 1
 
@@ -139,6 +138,26 @@
 		start_cooldown()
 		return TRUE
 
+/obj/item/mecha_parts/mecha_equipment/pulse_shield
+	name = "EPS-99 pulse shield generator"
+	desc = "A shield module that covers the exosuit in an energy barrier that absorbs damage. Requires energy to operate."
+	icon_state = "mecha_pulse_shield"
+	origin_tech = "materials=4;combat=4"
+	equip_cooldown = 10
+	energy_drain = 50
+	range = 0
+
+/obj/item/mecha_parts/mecha_equipment/pulse_shield/on_equip()
+	chassis.update_icon(UPDATE_OVERLAYS)
+
+/obj/item/mecha_parts/mecha_equipment/pulse_shield/on_unequip()
+	. = ..()
+	chassis.update_icon(UPDATE_OVERLAYS)
+
+/obj/item/mecha_parts/mecha_equipment/pulse_shield/proc/attack_react(mob/user as mob)
+	if(action_checks(user))
+		start_cooldown()
+		return TRUE
 
 ////////////////////////////////// REPAIR DROID //////////////////////////////////////////////////
 
@@ -233,7 +252,6 @@
 	desc = "Модуль для экзокостюма, который беспроводным образом извлекает энергию из любых доступных источников питания в области. КПД едва компенсирует затраты на движение."
 	icon_state = "tesla"
 	origin_tech = "magnets=4;powerstorage=4;engineering=4"
-	energy_drain = 0
 	range = 0
 	var/coeff = 100
 	var/list/use_channels = list(PW_CHANNEL_EQUIPMENT, PW_CHANNEL_ENVIRONMENT, PW_CHANNEL_LIGHTING)
@@ -288,6 +306,9 @@
 		STOP_PROCESSING(SSobj, src)
 		set_ready_state(1)
 		return
+	if(istype(chassis.selected, /obj/item/mecha_parts/mecha_equipment/pulse_shield))
+		chassis.selected.on_unequip() // No shields while recharging
+		occupant_message("Shields disabled.")
 	var/cur_charge = chassis.get_charge()
 	if(isnull(cur_charge) || !chassis.cell)
 		STOP_PROCESSING(SSobj, src)
@@ -314,8 +335,6 @@
 	desc = "Модуль для экзокостюма, который генерирует энергию, используя твёрдую плазму в качестве топлива. Загрязняет окружающую среду плазмой при повреждении."
 	icon_state = "tesla"
 	origin_tech = "plasmatech=2;powerstorage=2;engineering=2"
-	range = MECHA_MELEE
-	energy_drain = 0 //for allow load fuel without energy
 	var/coeff = 100
 	var/fuel_type = MAT_PLASMA
 	var/max_fuel = 150000 // 45k energy for 75 plasma/ 375 cr.
@@ -426,12 +445,10 @@
 /obj/item/mecha_parts/mecha_equipment/generator/nuclear
 	name = "exonuclear reactor"
 	desc = "Ядерный реактор для экзокостюма, который генерирует энергию, используя уран в качестве топлива. Некоторые называют его «ядерным блоком». Загрязняет окружающую среду при повреждении."
-	icon_state = "tesla"
 	origin_tech = "powerstorage=4;engineering=4"
 	fuel_name = "uranium" // Our fuel name as a string
 	fuel_type = MAT_URANIUM
 	max_fuel = 50000 // around 83k energy for 25 uranium/ 0 cr.
-	fuel_per_cycle_idle = 10
 	fuel_per_cycle_active = 150
 	power_per_cycle = 250
 	var/rad_per_cycle = 120

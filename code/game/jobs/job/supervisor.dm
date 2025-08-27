@@ -16,6 +16,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/captain
 	important_information = "Эта роль требует, чтобы вы координировали работу отделов. От вас требуется знание Стандартных Рабочих Процедур (Командования), базовых должностных обязанностей и профессиональных действий."
+	standard_paycheck = CREW_PAY_HIGH
 
 /datum/job/captain/get_access()
 	return get_all_accesses()
@@ -52,6 +53,10 @@
 		var/obj/item/clothing/accessory/medal/gold/captain/M = new /obj/item/clothing/accessory/medal/gold/captain(U)
 		U.accessories += M
 		M.on_attached(U)
+
+/datum/outfit/job/captain/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	H.AddSpell(new /datum/spell/big_voice)
 
 /datum/job/hop
 	title = "Head of Personnel"
@@ -106,6 +111,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY , DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/hop
 	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Сервис), базовых должностных обязанностей и профессиональных действий."
+	standard_paycheck = CREW_PAY_HIGH
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"
@@ -181,6 +187,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/nanotrasenrep
 	important_information = "Эта роль требует, чтобы вы консультировали командование по Стандартным Рабочим Процедурам, цепочке командования и отчитывались перед Центральным Командованием по различным вопросам. От вас требуется действовать так, как подобает лицу, представляющему Нанотрейзен."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/nanotrasenrep
 	name = "Nanotrasen Representative"
@@ -197,6 +204,15 @@
 		/obj/item/melee/classic_baton/ntcane = 1
 	)
 	bio_chips = list(/obj/item/bio_chip/mindshield)
+
+/datum/outfit/job/nanotrasenrep/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_COFFEE_SNOB, JOB_TRAIT)
+
+	if(visualsOnly)
+		return
+
+	INVOKE_ASYNC(src, PROC_REF(give_gaze), H)
 
 /datum/job/blueshield
 	title = "Blueshield"
@@ -233,6 +249,7 @@
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/blueshield
 	important_information = "Эта роль требует, чтобы вы обеспечивали безопасность руководителей персонала, а не всего экипажа. Вы можете производить аресты только в том случае, если нарушитель напрямую угрожает члену командования, представителю Нанотрейзен или магистрату."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"
@@ -285,6 +302,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/judge
 	important_information = "Эта роль требует от вас курировать юридические вопросы и принимать важные решения о вынесении приговоров. От вас требуется обладать обширными знаниями в области Космического Закона и охранного СРП, действовать только в рамках закона, а не за его пределами."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/judge
 	name = "Magistrate"
@@ -305,6 +323,12 @@
 	bio_chips = list(/obj/item/bio_chip/mindshield)
 	satchel = /obj/item/storage/backpack/satchel_sec
 	dufflebag = /obj/item/storage/backpack/duffel/security
+
+/datum/outfit/job/judge/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	add_verb(H, /mob/living/carbon/human/proc/sop_legal)
+	add_verb(H, /mob/living/carbon/human/proc/space_law)
+	ADD_TRAIT(H.mind, TRAIT_COFFEE_SNOB, JOB_TRAIT)
 
 /datum/job/iaa
 	title = "Internal Affairs Agent"
@@ -327,12 +351,13 @@
 		ACCESS_RESEARCH,
 		ACCESS_SEC_DOORS
 	)
-	alt_titles = list("Human Resources Agent")
+	alt_titles = list("Human Resources Agent", "Inspector")
 	minimal_player_age = 30
 	exp_map = list(EXP_TYPE_CREW = 600)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/iaa
 	important_information = "Ваша работа заключается в решении вопросов, касающихся Стандартных Рабочих Процедур. Вы не отвечаете за вопросы Космического Закона и не можете его отменять. Вы не являетесь адвокатом заключенных."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/iaa
 	name = "Internal Affairs Agent"
@@ -353,6 +378,16 @@
 	bio_chips = list(/obj/item/bio_chip/mindshield)
 	satchel = /obj/item/storage/backpack/satchel_sec
 	dufflebag = /obj/item/storage/backpack/duffel/security
+
+/datum/outfit/job/iaa/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	add_verb(H, /mob/living/carbon/human/proc/sop_legal)
+	add_verb(H, /mob/living/carbon/human/proc/space_law)
+
+	if(visualsOnly)
+		return
+
+	INVOKE_ASYNC(src, PROC_REF(give_gaze), H)
 
 /datum/job/nanotrasentrainer
 	title = "Nanotrasen Career Trainer"
@@ -384,6 +419,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/nct
 	important_information = "Your job is to try to assist as many crew members as possible regardless of department. You are NOT permitted to give command staff advice on any command SOP questions or aid in legal advice."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/nct
 	name = "Nanotrasen Career Trainer"
@@ -424,3 +460,30 @@
 /datum/outfit/job/nct/on_mind_initialize(mob/living/carbon/human/H)
 	. = ..()
 	H.mind.offstation_role = TRUE
+
+/datum/spell/big_voice
+	name = "Speak with Authority"
+	desc = "Speak with a COMMANDING AUTHORITY against those you govern."
+	base_cooldown = 1 MINUTES
+	action_background_icon_state = "bg_default"
+	action_icon = 'icons/obj/clothing/accessories.dmi'
+	action_icon_state = "gold"
+	sound = null
+	invocation = null
+	clothes_req = FALSE
+
+/datum/spell/big_voice/create_new_targeting()
+	return new /datum/spell_targeting/self
+
+/datum/spell/big_voice/cast(list/targets, mob/living/user)
+	var/say_message = tgui_input_text(user, "Message:", "Speak With Authority", encode = FALSE)
+	if(isnull(say_message))
+		revert_cast()
+	else
+		if(user.big_voice != 2)
+			user.big_voice = 1
+			user.say(say_message)
+			user.big_voice = 0
+		else
+			user.say(say_message)
+			cooldown_handler.start_recharge()

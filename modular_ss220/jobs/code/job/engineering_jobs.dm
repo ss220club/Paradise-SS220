@@ -8,6 +8,7 @@
 	exp_map = list(EXP_TYPE_CREW = NOVICE_JOB_MINUTES)
 	outfit = /datum/outfit/job/engineer/trainee
 	important_information = "Ваша должность ограничена во всех взаимодействиях с рабочим имуществом отдела и экипажем станции, при отсутствии приставленного к нему квалифицированного сотрудника или полученного разрешения от вышестоящего начальства."
+	standard_paycheck = CREW_PAY_LOW
 
 /datum/outfit/job/engineer/trainee
 	name = "Trainee Engineer"
@@ -28,6 +29,10 @@
 	satchel = /obj/item/storage/backpack/satchel_eng
 	dufflebag = /obj/item/storage/backpack/duffel/engineering
 	box = /obj/item/storage/box/engineer
+
+/datum/outfit/job/engineer/trainee/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	REMOVE_TRAIT(H.mind, TRAIT_ELECTRICAL_SPECIALIST, JOB_TRAIT)
 
 /datum/outfit/job/engineer/trainee/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
