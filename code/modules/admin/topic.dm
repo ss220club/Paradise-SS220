@@ -2461,63 +2461,49 @@
 		if(!istype(H))
 			to_chat(usr, "<span class='warning'>This can only be used on instances of type /mob/living/carbon/human</span>")
 			return
-		var/obj/item/paper/P = new /obj/item/paper(null)
+		// SS220 EDIT START Код выбора автофакса изменён для наших шаблонов
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
-		P.name = "Central Command - paper"
-		var/stypes = list("Handle it yourselves!","Illegible fax","Fax not signed","Not Right Now","You are wasting our time", "Keep up the good work", "ERT Instructions")
-		var/stype = input(src.owner, "Which type of standard reply do you wish to send to [H]?","Choose your paperwork", "") as null|anything in stypes
-		var/tmsg = "<font face='Verdana' color='black'><center><img src = 'ntlogo.png'><br><br><br><font size='4'><b>[SSmapping.map_datum.fluff_name]</b></font><br><br><br><font size='4'>NAS Trurl Communications Department Report</font></center><br><br>"
-		if(stype == "Handle it yourselves!")
-			tmsg += "Greetings, esteemed crewmember. Your fax has been <b><i>DECLINED</i></b> automatically by NAS Trurl Fax Registration.<br><br>Please proceed in accordance with Standard Operating Procedure and/or Space Law. You are fully trained to handle this situation without Central Command intervention.<br><br><i><small>This is an automatic message.</small>"
-		else if(stype == "Illegible fax")
-			tmsg += "Greetings, esteemed crewmember. Your fax has been <b><i>DECLINED</i></b> automatically by NAS Trurl Fax Registration.<br><br>Your fax's grammar, syntax and/or typography are of a sub-par level and do not allow us to understand the contents of the message.<br><br>Please consult your nearest dictionary and/or thesaurus and try again.<br><br><i><small>This is an automatic message.</small>"
-		else if(stype == "Fax not signed")
-			tmsg += "Greetings, esteemed crewmember. Your fax has been <b><i>DECLINED</i></b> automatically by NAS Trurl Fax Registration.<br><br>Your fax has not been correctly signed and, as such, we cannot verify your identity.<br><br>Please sign your faxes before sending them so that we may verify your identity.<br><br><i><small>This is an automatic message.</small>"
-		else if(stype == "Not Right Now")
-			tmsg += "Greetings, esteemed crewmember. Your fax has been <b><i>DECLINED</i></b> automatically by NAS Trurl Fax Registration.<br><br>Due to pressing concerns of a matter above your current paygrade, we are unable to provide assistance in whatever matter your fax referenced.<br><br>This can be either due to a power outage, bureaucratic audit, pest infestation, Ascendance Event, corgi outbreak, or any other situation that would affect the proper functioning of the NAS Trurl.<br><br>Please try again later.<br><br><i><small>This is an automatic message.</small>"
-		else if(stype == "You are wasting our time")
-			tmsg += "Greetings, esteemed crewmember. Your fax has been <b><i>DECLINED</i></b> automatically by NAS Trurl Fax Registration.<br><br>In the interest of preventing further mismanagement of company resources, please avoid wasting our time with such petty drivel.<br><br>Do kindly remember that we expect our workforce to maintain at least a semi-decent level of professionalism. Do not test our patience.<br><br><i><small>This is an automatic message.</i></small>"
-		else if(stype == "Keep up the good work")
-			tmsg += "Greetings, esteemed crewmember. Your fax has been received successfully by NAS Trurl Fax Registration.<br><br>We at the NAS Trurl appreciate the good work that you have done here, and sincerely recommend that you continue such a display of dedication to the company.<br><br><i><small>This is absolutely not an automated message.</i></small>"
-		else if(stype == "ERT Instructions")
-			tmsg += "Greetings, esteemed crewmember. Your fax has been <b><i>DECLINED</i></b> automatically by NAS Trurl Fax Registration.<br><br>Please utilize the Card Swipers if you wish to call for an ERT.<br><br><i><small>This is an automated message.</i></small>"
-		else
+
+		var/list/fax_templates = list(
+			"Разберитесь с этим сами" = /obj/item/paper/central_command/automated/handle_it_yourselves,
+			"Некорректный факс" = /obj/item/paper/central_command/automated/illegible_fax,
+			"Нет подписи/печати" = /obj/item/paper/central_command/automated/not_signed,
+			"Не сейчас" = /obj/item/paper/central_command/automated/not_right_now,
+			"Трата времени" = /obj/item/paper/central_command/automated/wasting_time,
+			"Продолжайте в том же духе" = /obj/item/paper/central_command/automated/keep_up_good_work,
+			"ОБР" = /obj/item/paper/central_command/automated/ert,
+			"Трурль недоступен" = /obj/item/paper/central_command/automated/recipient_unavailable,
+			"Завершение смены" = /obj/item/paper/central_command/automated/shift_end,
+			"Новая цель" = /obj/item/paper/central_command/automated/new_goal
+		)
+
+		var/answer = tgui_input_list(usr, "Выберите шаблон для авто-ответа на факс:", "Шаблоны авто-ответа", fax_templates)
+		if(!answer)
 			return
-		tmsg += "</font>"
-		P.info = tmsg
-		P.x = rand(-2, 0)
-		P.y = rand(-1, 2)
-		P.offset_x += P.x
-		P.offset_y += P.y
-		P.update_icon()
-		var/stampvalue = "cent"
-		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-		stampoverlay.icon_state = "paper_stamp-[stampvalue]"
-		stampoverlay.pixel_x = P.x
-		stampoverlay.pixel_y = P.y
-		P.stamped = list()
-		P.stamped += /obj/item/stamp/centcom
-		if(!P.ico)
-			P.ico = new
-		P.ico += "paper_stamp-[stampvalue]"
-		P.stamp_overlays += stampoverlay
-		P.stamps += "<hr><img src='large_stamp-[stampvalue].png'>"
-		P.update_icon()
+		var/fax_type = fax_templates[answer]
+		var/obj/item/paper/central_command/automated/fax_to_send = new fax_type()
+
+		var/obj/item/stamp/cent_stamp = new /obj/item/stamp/centcom()
+		fax_to_send.stamp(cent_stamp)
+		qdel(cent_stamp)
+		fax_to_send.name = "Ответ от АКН Трурль № " + num2text(rand(0,99999), 5)
 
 		var/datum/fax/admin/sending = new /datum/fax/admin()
-		sending.name = P.name
+		sending.name = fax_to_send.name
 		sending.to_department = fax.department
 		sending.origin = "Administrator"
-		sending.message = P
+		sending.message = fax_to_send
 		sending.sent_by = usr
 		sending.sent_at = world.time
 
 		fax.receivefax(sending)
 		if(istype(H) && H.stat == CONSCIOUS && (istype(H.l_ear, /obj/item/radio/headset) || istype(H.r_ear, /obj/item/radio/headset)))
 			to_chat(H, "<span class='specialnotice bold'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
-		to_chat(src.owner, "You sent a standard '[stype]' fax to [H]")
-		log_admin("[key_name(src.owner)] sent [key_name(H)] a standard '[stype]' fax")
-		message_admins("[key_name_admin(src.owner)] replied to [key_name_admin(H)] with a standard '[stype]' fax")
+		to_chat(src.owner, "Вы отправили стандартный факс типа: '[answer]' для [H]")
+		log_admin("[key_name(src.owner)] отправил [key_name(H)] стандартный факс типа '[answer]'")
+		message_admins("[key_name_admin(src.owner)] отправил ответ [key_name_admin(H)] стандартным факсом типа '[answer]'")
+
+		// SS220 EDIT END
 
 	else if(href_list["ErtReply"])
 		if(!check_rights(R_ADMIN))
@@ -2613,8 +2599,9 @@
 		switch(use_letterheard)
 			if("Nanotrasen")
 				// SS220 EDIT START Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
-				var/sign_name = tgui_input_text(usr, "Введите, от чьего лица отправить факс. Оставьте пустым, чтобы использовать стандартное имя.", "Выбор имени отправителя факса", max_length = MAX_NAME_LEN)
-				P = new /obj/item/paper/central_command(sign_name || null)
+				var/sign_name = tgui_input_text(usr, "Введите, от чьего лица отправить факс. Оставьте пустым, чтобы использовать стандартное имя.", "Ввод имени отправителя факса", max_length = MAX_NAME_LEN)
+				var/title = tgui_input_text(usr, "Введите, заголовок факса. Оставьте пустым, чтобы использовать стандартное приветствие.", "Ввод заголовок факса")
+				P = new /obj/item/paper/central_command/quick_fax(sign_name || null, title || null)
 				// SS220 EDIT END
 			if("Syndicate")
 				P = new /obj/item/paper/syndicate(null)
