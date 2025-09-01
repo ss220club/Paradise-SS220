@@ -154,14 +154,20 @@
 
 		//Mitocholide is hard enough to get, it's probably fair to make this all internal organs
 		for(var/obj/item/organ/internal/I in H.internal_organs)
-			I.heal_internal_damage(heal_modifier)
+			if(I.status & ORGAN_DEAD) // SS220 EDIT
+				return // Dead organs shouldn't be revivable
+			else
+				I.heal_internal_damage(heal_modifier)
 	return ..()
 
 /datum/reagent/medicine/mitocholide/reaction_obj(obj/O, volume)
 	if(istype(O, /obj/item/organ))
 		var/obj/item/organ/Org = O
 		if(!Org.is_robotic())
-			Org.rejuvenate()
+			if(Org.status & ORGAN_DEAD) // SS220 EDIT
+				return // Dead organs shouldn't be revivable
+			else
+				Org.rejuvenate()
 
 /datum/reagent/medicine/cryoxadone
 	name = "Cryoxadone"
