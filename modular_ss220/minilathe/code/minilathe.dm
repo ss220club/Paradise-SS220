@@ -21,7 +21,7 @@
 	RegisterSignal(src, COMSIG_TOOL_ATTACK, PROC_REF(on_tool_attack))
 
 	wires = new(src)
-	files = new /datum/research/autolathe(src)
+	files = new /datum/research/minilathe(src)
 	matching_designs = list()
 
 	add_overlay(departament_overlay)
@@ -41,13 +41,13 @@
 /obj/machinery/autolathe/mini/service
 	name = "service minilathe"
 	desc = "Compact version of the Autolathe. It produces service-related items using metal and glass."
-	categories = list("Dinnerware", "Imported")
+	categories = list("Dinnerware", "Service Tools", "Materials", "Imported")
 	departament_overlay = "overlay_serv"
 	board_type = /obj/item/circuitboard/minilathe/service
 
 /obj/machinery/autolathe/mini/Initialize(mapload)
 	. = ..()
-	files = new /datum/research/autolathe/mini/service(src)
+	files = new /datum/research/minilathe/service(src)
 	return ..()
 
 /obj/item/circuitboard/minilathe/service
