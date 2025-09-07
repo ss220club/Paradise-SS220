@@ -53,6 +53,11 @@
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT
 
+/obj/item/reagent_containers/applicator/apply(mob/living/carbon/C, mob/user)
+	if(!C.can_inject(user, TRUE))
+		return
+	return ..()
+
 /obj/item/reagent_containers/patch/apply(mob/living/carbon/C, mob/user)
 	if(!C.can_inject(user, TRUE))
 		return
