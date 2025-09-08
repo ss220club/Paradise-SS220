@@ -154,10 +154,12 @@
 
 		//Mitocholide is hard enough to get, it's probably fair to make this all internal organs
 		for(var/obj/item/organ/internal/I in H.internal_organs)
-			if(I.status & ORGAN_DEAD) // SS220 EDIT
-				return // Dead organs shouldn't be revivable
+			// SS220 EDIT START - Dead organs shouldn't be revivable
+			if(I.status & ORGAN_DEAD)
+				return
 			else
 				I.heal_internal_damage(heal_modifier)
+			// SS220 EDIT END
 	return ..()
 
 /datum/reagent/medicine/mitocholide/reaction_obj(obj/O, volume)
