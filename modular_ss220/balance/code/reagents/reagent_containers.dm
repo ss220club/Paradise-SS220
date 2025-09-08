@@ -63,30 +63,53 @@
 		return
 	return ..()
 
+/obj/item/reagent_containers/hypospray
+	var/instant_application = TRUE
+
+/obj/item/reagent_containers/hypospray/apply(mob/living/carbon/C, mob/user)
+	if(!instant_application)
+		if(C == user)
+			C.visible_message(span_warning("[user] пытается вколоть в себя [src]."))
+		else
+			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
+		if(!do_after(user, 3 SECONDS, TRUE, C, TRUE))
+			return
+
+	C.forceFedAttackLog(src, user)
+	if(C == user)
+		C.visible_message(span_warning("[user] вкалывает в себя [src]."))
+	else
+		C.visible_message(span_warning("[user] вкалывает [src] в [C]."))
+	return ..()
+
 /obj/item/reagent_containers/hypospray/autoinjector/custom
 	icon = 'modular_ss220/aesthetics/medipens/icon/medipens.dmi'
 	icon_state = "medipen"
 	desc = "A rapid and safe way to inject chemicals into humanoids. This one have extended capacity."
 	amount_per_transfer_from_this = 20
 	volume = 20
+	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/brute
 	name = "brute medipen"
 	icon_state = "medipen_red"
 	desc = "A rapid and safe way to tend wounds and deal with minor pain even through spacesuits. Contains bicaridine and salicylic acid."
 	list_reagents = list("bicaridine" = 15, "sal_acid" = 5)
+	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/burn
 	name = "burn medipen"
 	icon_state = "medipen_org"
 	desc = "A rapid and safe way to tend burns and regulate body's temperature even through spacesuits. Contains kelotane and menthol."
 	list_reagents = list("kelotane" = 15, "menthol" = 5)
+	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/critical
 	name = "critical state medipen"
 	icon_state = "medipen_blu"
 	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains epinephrine, perfluorodecalin and morphine. <br><span class='boldwarning'>WARNING: Do not inject more than one pen in quick succession.</span>"
 	list_reagents = list("epinephrine" = 13, "perfluorodecalin" = 3, "morphine" = 4)
+	instant_application = TRUE
 
 /obj/item/storage/firstaid/spacer
 	name = "spacer first-aid kit"
