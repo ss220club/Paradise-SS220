@@ -1,12 +1,12 @@
-/obj/item/food/attack__legacy__attackchain(mob/M, mob/user, def_zone)
-	if(isliving(M))
-		var/mob/living/L = M
+/obj/item/food/interact_with_atom(atom/target, mob/living/user, list/modifiers, var/def_zone)
+	if(isliving(target))
+		var/mob/living/L = target
 		if(L.is_mouth_covered())
 			if(L == user)
 				to_chat(user, span_warning("Вы не можете есть с закрытым ртом!"))
 			else
 				to_chat(user, span_warning("[L] не может есть с закрытым ртом!"))
-			return FALSE
+			return NONE
 	return ..()
 
 /obj/item/reagent_containers/glass/mob_act(mob/target, mob/living/user)
