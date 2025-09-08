@@ -166,10 +166,12 @@
 	if(istype(O, /obj/item/organ))
 		var/obj/item/organ/Org = O
 		if(!Org.is_robotic())
-			if(Org.status & ORGAN_DEAD) // SS220 EDIT
-				return // Dead organs shouldn't be revivable
+			// SS220 EDIT START - Dead organs shouldn't be revivable
+			if(Org.status & ORGAN_DEAD)
+				return
 			else
 				Org.rejuvenate()
+			// SS220 EDIT END
 
 /datum/reagent/medicine/cryoxadone
 	name = "Cryoxadone"
