@@ -824,7 +824,7 @@ SUBSYSTEM_DEF(ticker)
 /// but the second xeno biohazard was nuked.
 /datum/controller/subsystem/ticker/proc/record_biohazard_results()
 	for(var/biohazard in SSevents.biohazards_this_round)
-		if(biohazard_active_threat(biohazard))
+		if(biohazard_active_threat(biohazard) || GLOB.deathsquad_sent) // SS220 EDIT START - Consider sending deathsquad as biohazard win
 			SSblackbox.record_feedback("nested tally", "biohazards", 1, list("survived", biohazard))
 		else
 			SSblackbox.record_feedback("nested tally", "biohazards", 1, list("defeated", biohazard))
