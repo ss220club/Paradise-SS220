@@ -133,7 +133,7 @@
 		return
 
 	if(!target.is_injectable(user))
-		to_chat(user, "<span class='warning'>You cannot directly fill [L]!</span>")
+		to_chat(user, "<span class='warning'>You cannot directly fill [target]!</span>")
 		return
 
 	if(isfood(target))
