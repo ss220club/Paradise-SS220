@@ -87,9 +87,9 @@
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/update_icon_state()
-    icon_state = replacetext(icon_state, regex(@"\d+$"), "")
-    if(reagents.total_volume <= 0)
-        icon_state = "[icon_state]0"
+	icon_state = replacetext(icon_state, regex(@"\d+$"), "")
+	if(reagents.total_volume <= 0)
+		icon_state = "[icon_state]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/brute
 	name = "brute medipen"

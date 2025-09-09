@@ -689,7 +689,7 @@
 									"omnizine", "stimulants", "synaptizine", "potass_iodide", "oculine", "mannitol",
 									"spaceacillin", "salglu_solution", "sal_acid", "cryoxadone", "blood", "synthflesh",
 									"hydrocodone", "mitocholide", "rezadone", "menthol", "diphenhydramine", "ephedrine",
-									 "iron", "sanguine_reagent", "kelotane", "bicaridine", "pen_acid", "atropine")
+									"iron", "sanguine_reagent", "kelotane", "bicaridine", "pen_acid", "atropine")
 
 /datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents)
 	return reagents.get_master_reagent_name()
