@@ -24,7 +24,7 @@
 	flags_cover = MASKCOVERSEYES
 
 /obj/item/clothing/mask/breath/vox
-	flags_cover = 0
+	flags_cover = NONE
 
 /obj/item/clothing/mask/fakemoustache/chef
 	name = "абсолютно настоящие усы шефа"
