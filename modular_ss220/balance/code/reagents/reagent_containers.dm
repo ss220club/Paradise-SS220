@@ -137,3 +137,6 @@
 
 /obj/machinery/suit_storage_unit/security
 	storage_type = /obj/item/storage/firstaid/spacer
+
+/obj/machinery/suit_storage_unit/blueshield
+	storage_type = /obj/item/storage/firstaid/spacer
