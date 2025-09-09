@@ -823,8 +823,10 @@ SUBSYSTEM_DEF(ticker)
 /// into the insanity of trying to record if the first xeno biohazard was defeated
 /// but the second xeno biohazard was nuked.
 /datum/controller/subsystem/ticker/proc/record_biohazard_results()
+	var/list/deathsquad_biohazards_to_record = deathsquad_biohazards.Copy()
 	for(var/biohazard in SSevents.biohazards_this_round)
-		if((biohazard in deathsquad_biohazards) || biohazard_active_threat(biohazard)) // SS220 EDIT - Credit biohazards active at DS call or still active now
+		if((biohazard in deathsquad_biohazards_to_record) || biohazard_active_threat(biohazard)) // SS220 EDIT - Credit biohazards active at DS call or still active now
+			deathsquad_biohazards_to_record -= biohazard
 			SSblackbox.record_feedback("nested tally", "biohazards", 1, list("survived", biohazard))
 		else
 			SSblackbox.record_feedback("nested tally", "biohazards", 1, list("defeated", biohazard))
