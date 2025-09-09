@@ -72,7 +72,7 @@
 			C.visible_message(span_warning("[user] пытается вколоть в себя [src]."))
 		else
 			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
-		if(!do_after(user, 3 SECONDS, TRUE, C, TRUE))
+		if(!do_after(user, 3 SECONDS, needhand = TRUE, target = C, progress = TRUE))
 			return
 
 	C.forceFedAttackLog(src, user)
