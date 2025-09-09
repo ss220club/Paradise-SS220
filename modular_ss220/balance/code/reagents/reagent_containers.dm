@@ -108,7 +108,7 @@
 	name = "critical state medipen"
 	icon_state = "medipen_blu"
 	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains epinephrine, perfluorodecalin and morphine. <br><span class='boldwarning'>WARNING: Do not inject more than one pen in quick succession.</span>"
-	list_reagents = list("epinephrine" = 13, "perfluorodecalin" = 3, "morphine" = 4)
+	list_reagents = list("epinephrine" = 14, "salbutamol" = 3, "ephedrine" = 3)
 	instant_application = TRUE
 
 /obj/item/storage/firstaid/spacer
