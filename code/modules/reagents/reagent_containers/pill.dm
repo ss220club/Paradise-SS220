@@ -37,6 +37,15 @@
 			to_chat(user, "<span class='warning'>[user == H ? "You" : H] can't ingest [src]!</span>")
 			return FALSE
 
+	// SS220 EDIT START - No More Eating And Drinking With Mouth Covered
+	if(C.is_mouth_covered())
+		if(C == user)
+			to_chat(user, "<span class='warning'>Вы не можете принять таблетки с закрытым ртом!</span>")
+		else
+			to_chat(user, "<span class='warning'>[C] не может принять таблетки с закрытым ртом!</span>")
+		return FALSE
+	// SS220 EDIT END
+
 	if(user == C)
 		to_chat(user, "<span class='notice'>You swallow [src].</span>")
 	else

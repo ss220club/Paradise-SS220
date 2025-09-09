@@ -17,6 +17,15 @@
 	. = ..()
 	UnregisterSignal(M, COMSIG_MOB_SAY)
 
+/obj/item/clothing/mask/gas/mime
+	flags_cover = MASKCOVERSEYES
+
+/obj/item/clothing/mask/gas/clown_hat
+	flags_cover = MASKCOVERSEYES
+
+/obj/item/clothing/mask/breath/vox
+	flags_cover = 0
+
 /obj/item/clothing/mask/fakemoustache/chef
 	name = "абсолютно настоящие усы шефа"
 	desc = "Осторожно: усы накладные."
