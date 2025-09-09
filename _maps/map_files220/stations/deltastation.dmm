@@ -965,16 +965,16 @@
 "ahy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/command/glass{
-	id_tag = "nct"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/procedure/trainer,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "NCT"
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/plasteel,
+/obj/machinery/door/airlock/corporate/glass,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
 /area/station/procedure/trainer_office)
 "ahz" = (
 /obj/machinery/door/airlock/external{
@@ -2132,8 +2132,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "darkgreen"
+	dir = 1;
+	icon_state = "darkblue"
 	},
 /area/station/procedure/trainer_office)
 "aoZ" = (
@@ -2373,8 +2373,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "darkgreen"
+	dir = 8;
+	icon_state = "darkblue"
 	},
 /area/station/procedure/trainer_office)
 "apM" = (
@@ -2382,7 +2382,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkgreen"
+	icon_state = "dark"
 	},
 /area/station/procedure/trainer_office)
 "apP" = (
@@ -2708,22 +2708,13 @@
 "aqI" = (
 /obj/structure/chair/office/dark,
 /turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "darkgreen"
+	dir = 8;
+	icon_state = "darkblue"
 	},
 /area/station/procedure/trainer_office)
 "aqJ" = (
 /turf/simulated/floor/plasteel{
-	icon_state = "darkgreen"
-	},
-/area/station/procedure/trainer_office)
-"aqN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkgreencorners"
+	icon_state = "dark"
 	},
 /area/station/procedure/trainer_office)
 "aqO" = (
@@ -3031,8 +3022,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "darkgreen"
+	icon_state = "darkblue"
 	},
 /area/station/procedure/trainer_office)
 "arF" = (
@@ -4650,7 +4640,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/mob/living/simple_animal/nian_caterpillar{
+/mob/living/basic/nian_caterpillar{
 	name = "Сеньйор";
 	desc = "Мотылёк. Обожает светочи. Знает всю атмосферику, но из-за своего скверного характера не расскажет, даже если бы мог говорить."
 	},
@@ -27669,9 +27659,6 @@
 /area/station/command/office/ntrep)
 "cku" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command{
-	id_tag = "ntrepofficedoor"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -27680,6 +27667,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/mapping_helpers/airlock/access/any/command/ntrep,
+/obj/machinery/door/airlock/corporate,
 /turf/simulated/floor/plasteel,
 /area/station/command/office/ntrep)
 "ckv" = (
@@ -27689,9 +27677,6 @@
 /area/station/hallway/secondary/bridge)
 "ckw" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command{
-	id_tag = "blueshieldofficedoor"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -27700,6 +27685,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/mapping_helpers/airlock/access/any/command/blueshield,
+/obj/machinery/door/airlock/corporate,
 /turf/simulated/floor/plasteel,
 /area/station/command/office/blueshield)
 "ckx" = (
@@ -30334,11 +30320,9 @@
 /area/station/public/vacant_office/secondary)
 "cxc" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "pub_room"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/polarized,
+/obj/machinery/door/airlock/corporate/glass,
 /turf/simulated/floor/plasteel,
 /area/station/public/vacant_office/secondary)
 "cxd" = (
@@ -30653,10 +30637,6 @@
 	},
 /area/station/public/vacant_office/secondary)
 "cyr" = (
-/obj/machinery/camera{
-	c_tag = "Expedition Access";
-	dir = 4
-	},
 /obj/machinery/light/directional/west,
 /obj/structure/closet/secure_closet/explorer,
 /obj/effect/turf_decal/delivery/hollow,
@@ -41358,13 +41338,12 @@
 "duw" = (
 /obj/effect/mapping_helpers/airlock/access/any/service/crematorium,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock{
-	name = "Chapel Crematorium"
-	},
+/obj/machinery/door/airlock/service,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "duB" = (
 /turf/simulated/floor/plasteel{
 	dir = 9;
@@ -41496,9 +41475,6 @@
 	},
 /area/station/maintenance/port)
 "duZ" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Robotics Maintenance"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -41512,6 +41488,7 @@
 	id_tag = "Biohazard_RnD";
 	name = "Biohazard Shutter"
 	},
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "dvc" = (
@@ -43639,17 +43616,16 @@
 	},
 /area/station/maintenance/apmaint)
 "dIA" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Chapel Maintenance"
-	},
 /obj/effect/mapping_helpers/airlock/access/any/service/chapel_office,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
-/area/station/service/chapel/study)
+/area/station/maintenance/apmaint)
 "dID" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -43922,7 +43898,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dKg" = (
 /obj/machinery/light/nightshifted/directional/south,
 /obj/structure/chair/sofa/pew/right{
@@ -44058,7 +44034,7 @@
 	id = "CHAP2"
 	},
 /turf/simulated/floor/plating,
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dKL" = (
 /obj/structure/chair/sofa/pew/left{
 	dir = 8
@@ -44095,9 +44071,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "dKY" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Chapel Maintenance"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -44105,10 +44078,12 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/service/chapel)
+/area/station/maintenance/apmaint)
 "dKZ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -44284,7 +44259,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dMo" = (
 /obj/machinery/economy/vending/snack,
 /obj/structure/window/reinforced{
@@ -44390,7 +44365,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dMW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/black,
@@ -44893,7 +44868,7 @@
 /obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dPE" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -44995,11 +44970,11 @@
 	},
 /obj/structure/closet/coffin,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/mapping_helpers/airlock/windoor/access/any/service/chapel_office{
+/obj/effect/mapping_helpers/airlock/windoor/access/any/service/crematorium{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dQi" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
@@ -45014,11 +44989,11 @@
 /obj/effect/mapping_helpers/airlock/access/any/service/chapel_office,
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "CHAP"
 	},
+/obj/machinery/door/airlock/service/glass,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel/office)
 "dQl" = (
@@ -45311,7 +45286,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "CHAP"
@@ -45319,6 +45293,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/service/glass,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel/office)
 "dRB" = (
@@ -45535,7 +45510,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dSk" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -45895,7 +45870,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dTY" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -46099,21 +46074,21 @@
 /obj/structure/closet/coffin,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/plating,
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dUK" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/closet/coffin,
 /turf/simulated/floor/plating,
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dUL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dUM" = (
 /obj/structure/table,
 /obj/item/storage/box/bodybags,
@@ -46126,14 +46101,14 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dUN" = (
 /obj/structure/crematorium,
 /obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "dUO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/girder,
@@ -52777,13 +52752,11 @@
 "fOS" = (
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
-/obj/machinery/door/airlock/maintenance{
-	name = "Robotics Maintenance"
-	},
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "Biohazard_RnD";
 	name = "Biohazard Shutter"
 	},
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitepurplefull"
 	},
@@ -54960,15 +54933,13 @@
 /area/station/security/permabrig)
 "gyY" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "pub_room"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/mapping_helpers/airlock/polarized,
+/obj/machinery/door/airlock/corporate/glass,
 /turf/simulated/floor/carpet,
 /area/station/public/vacant_office/secondary)
 "gzd" = (
@@ -56144,7 +56115,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkgreen"
+	icon_state = "dark"
 	},
 /area/station/procedure/trainer_office)
 "gTc" = (
@@ -56612,8 +56583,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "darkgreen"
+	dir = 1;
+	icon_state = "darkblue"
 	},
 /area/station/procedure/trainer_office)
 "hbq" = (
@@ -57467,7 +57438,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "hqG" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -59233,10 +59204,10 @@
 	},
 /area/station/command/bridge/checkpoint/south)
 "hQJ" = (
-/obj/machinery/door/airlock/command,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/command/magistrate,
+/obj/machinery/door/airlock/lawyer,
 /turf/simulated/floor/wood/oak,
 /area/station/legal/magistrate)
 "hQV" = (
@@ -61179,7 +61150,6 @@
 /turf/simulated/floor/carpet/black,
 /area/station/service/chapel/office)
 "iwR" = (
-/obj/machinery/door/airlock,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/service/chapel_office,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -61188,6 +61158,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/service,
 /turf/simulated/floor/carpet/black,
 /area/station/service/chapel/bedroom)
 "ixf" = (
@@ -69223,12 +69194,6 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/port)
-"kWy" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "darkgreen";
-	dir = 1
-	},
-/area/station/procedure/trainer_office)
 "kWB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -73600,8 +73565,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkgreen"
+	icon_state = "dark"
 	},
 /area/station/procedure/trainer_office)
 "mqG" = (
@@ -75410,8 +75374,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkgreen";
-	dir = 1
+	icon_state = "dark"
 	},
 /area/station/procedure/trainer_office)
 "mWM" = (
@@ -77648,8 +77611,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "darkgreen"
+	icon_state = "darkblue"
 	},
 /area/station/procedure/trainer_office)
 "nEn" = (
@@ -79588,7 +79550,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "oen" = (
 /obj/machinery/newscaster/directional/east,
 /obj/item/kirbyplants/large,
@@ -79803,7 +79765,6 @@
 /turf/simulated/floor/plating,
 /area/station/supply/abandoned_boxroom)
 "ohp" = (
-/obj/machinery/door/airlock,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -79820,6 +79781,7 @@
 /obj/effect/turf_decal/siding/wood/cherry{
 	dir = 1
 	},
+/obj/machinery/door/airlock/service,
 /turf/simulated/floor/wood/cherry,
 /area/station/service/chapel/study)
 "ohw" = (
@@ -79838,7 +79800,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "ohP" = (
 /obj/structure/table_frame/wood,
 /obj/item/melee/baseball_bat,
@@ -82218,6 +82180,20 @@
 	icon_state = "darkpurple"
 	},
 /area/station/command/office/rd)
+"oWE" = (
+/obj/structure/closet/secure_closet/explorer,
+/obj/effect/turf_decal/delivery/hollow,
+/obj/item/gun/energy/laser/awaymission_aeg/rnd,
+/obj/item/radio/off,
+/obj/machinery/camera{
+	c_tag = "Expedition Access";
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkbrown"
+	},
+/area/station/supply/expedition)
 "oWQ" = (
 /obj/machinery/camera{
 	c_tag = "Bar counter";
@@ -82287,7 +82263,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkgreen"
+	icon_state = "dark"
 	},
 /area/station/procedure/trainer_office)
 "oYg" = (
@@ -88317,8 +88293,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkgreen";
-	dir = 1
+	icon_state = "dark"
 	},
 /area/station/procedure/trainer_office)
 "qQx" = (
@@ -88517,15 +88492,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/apmaint)
-"qSe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkgreencorners"
-	},
-/area/station/procedure/trainer_office)
 "qSh" = (
 /obj/machinery/door/airlock/external{
 	hackProof = 1;
@@ -91587,7 +91553,7 @@
 /obj/structure/closet/coffin,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "rRw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -93236,9 +93202,6 @@
 /turf/simulated/floor/engine,
 /area/station/engineering/controlroom)
 "srw" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Chapel Maintenance"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -93246,6 +93209,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "srJ" = (
@@ -95732,17 +95696,16 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "teT" = (
-/obj/effect/mapping_helpers/airlock/access/any/service/chapel_office,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock{
-	name = "Chapel Crematorium"
-	},
+/obj/machinery/door/airlock/service,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/service/crematorium,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "teX" = (
 /obj/structure/chair/comfy/brown{
 	dir = 1
@@ -98235,8 +98198,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkgreen"
+	icon_state = "dark"
 	},
 /area/station/procedure/trainer_office)
 "tVj" = (
@@ -104161,12 +104123,10 @@
 /area/station/maintenance/fore2)
 "vTv" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "pub_room"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/mapping_helpers/airlock/polarized,
+/obj/machinery/door/airlock/corporate/glass,
 /turf/simulated/floor/carpet,
 /area/station/public/vacant_office/secondary)
 "vTJ" = (
@@ -109335,7 +109295,6 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "magistrate"
@@ -109344,6 +109303,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/command/magistrate,
+/obj/machinery/door/airlock/lawyer/glass,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/magistrate)
 "xxW" = (
@@ -109851,7 +109811,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
-/area/station/service/chapel/office)
+/area/station/service/chapel/funeral)
 "xHN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/oil/maybe,
@@ -142855,11 +142815,11 @@ dQl
 dXV
 qOs
 dTm
-dIx
+dGU
 dUJ
 dPD
 rRm
-dIx
+dGU
 abj
 aaa
 aaa
@@ -143112,11 +143072,11 @@ aMt
 fTn
 dRM
 ozL
-dIx
+dGU
 dUK
 dQh
 dUK
-dIx
+dGU
 abj
 aaa
 aaa
@@ -143481,7 +143441,7 @@ ant
 anP
 dqB
 imf
-kWy
+aqJ
 aqJ
 arB
 aoo
@@ -143626,11 +143586,11 @@ jdM
 dSf
 iwO
 dTp
-dIx
+dGU
 dUM
 dTX
 oei
-dIx
+dGU
 abj
 aaa
 aaa
@@ -143883,11 +143843,11 @@ kbO
 tNn
 hxF
 dTq
-dIx
+dGU
 dUN
 xHF
 dMn
-dIx
+dGU
 abj
 aaa
 aaa
@@ -144140,7 +144100,7 @@ qux
 tNn
 auH
 dQi
-dIx
+dGU
 dMU
 dSj
 hqq
@@ -144397,11 +144357,11 @@ dIx
 dSh
 dSh
 dIx
-dIx
-dIx
-dIx
+dGU
+dGU
+dGU
 duw
-dIx
+dGU
 abj
 abj
 aaa
@@ -144509,8 +144469,8 @@ ant
 anP
 aoo
 aoY
-qSe
-aqN
+qQa
+oYb
 nEe
 aoo
 atu
@@ -150497,7 +150457,7 @@ cvG
 csV
 fQh
 czW
-czW
+oWE
 cyr
 czW
 cBw
