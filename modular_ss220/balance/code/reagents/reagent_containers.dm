@@ -67,18 +67,14 @@
 	var/instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/apply(mob/living/carbon/C, mob/user)
-	if(!instant_application)
-		if(C == user)
-			C.visible_message(span_warning("[user] пытается вколоть в себя [src]."))
-		else
-			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
-		if(!do_after(user, 3 SECONDS, needhand = TRUE, target = C, progress = TRUE))
-			return
-
-	C.forceFedAttackLog(src, user)
-	if(C == user)
-		C.visible_message(span_warning("[user] вкалывает в себя [src]."))
+	if(user == C)
 	else
+		if(!instant_application)
+			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
+			if(!do_after(user, 3 SECONDS, needhand = TRUE, target = C, progress = TRUE))
+				return
+
+		C.forceFedAttackLog(src, user)
 		C.visible_message(span_warning("[user] вкалывает [src] в [C]."))
 	return ..()
 
@@ -89,6 +85,11 @@
 	amount_per_transfer_from_this = 20
 	volume = 20
 	instant_application = FALSE
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/update_icon_state()
+    icon_state = replacetext(icon_state, regex(@"\d+$"), "")
+    if(reagents.total_volume <= 0)
+        icon_state = "[icon_state]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/brute
 	name = "brute medipen"
@@ -128,9 +129,8 @@
 	name = "Spacer First-Aid Kits Crate"
 	contains = list(/obj/item/storage/firstaid/spacer,
 					/obj/item/storage/firstaid/spacer,
-					/obj/item/storage/firstaid/spacer,
 					/obj/item/storage/firstaid/spacer)
-	cost = 250
+	cost = 600
 	containername = "spacer first-aid kits crate"
 
 /obj/machinery/suit_storage_unit/expedition
