@@ -11,7 +11,6 @@
 /area/station/supply/sorting
 	name = "Офис Доставки"
 	icon_state = "cargomail"
-	sound_environment = SOUND_AREA_STANDARD_STATION
 	request_console_flags = RC_SUPPLY
 	request_console_name = "Cargo Bay"
 
@@ -22,11 +21,11 @@
 	request_console_name = "Cargo Bay"
 
 /area/station/supply/warehouse
-	name = "\improper Cargo Warehouse"
+	name = "Склад Карго"
 	icon_state = "cargowarehouse"
 
 /area/station/supply/break_room
-	name = "\improper Cargo Breakroom"
+	name = "Комната Отдыха Карго"
 	icon_state = "cargobreak"
 
 /area/station/supply/storage
@@ -35,8 +34,12 @@
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 	request_console_flags = RC_SUPPLY
 
+/area/station/supply/smith_office
+	name = "Кабинет Кузнеца"
+	icon_state = "smith"
+
 /area/station/supply/qm
-	name = "Офис Квартирмейстера"
+	name = "Кабинет Квартирмейстера"
 	icon_state = "qm"
 	request_console_flags = RC_ASSIST | RC_INFO
 	request_console_name = "Quartermaster's Desk"

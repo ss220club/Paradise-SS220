@@ -4,18 +4,40 @@
 	. = ..()
 	opacity = FALSE
 
-/* Medical */
-/obj/item/reagent_containers/borghypo/basic/Initialize(mapload)
-	. = ..()
-	reagent_ids |= list("sal_acid", "charcoal")
+// Голопроектор и улучшенные варианты //
+/obj/item/holosign_creator/atmos/robot
+	name = "Модульный ATMOS голопроектор"
+	desc = "Стандартный модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами. Создаваемые голопроекции полностью блокируют перемещение газов.\
+		<br>Количество создаваемых голопроекций снижено относительно немодульного аналога в целях снижения энергопотребления."
+	max_signs = 1
 
-/obj/item/reagent_containers/borghypo/basic/upgraded
-	name = "Upgraded Medical Hypospray"
-	desc = "Upgraded medical hypospray, capable of providing standart medical treatment."
-	reagent_ids = list("salglu_solution", "epinephrine", "spaceacillin", "sal_acid",
-	"charcoal", "hydrocodone", "mannitol", "salbutamol", "styptic_powder")
-	total_reagents = 60
-	maximum_reagents = 60
+/obj/item/holosign_creator/atmos/robot/better
+	name = "Улучшенный модульный ATMOS голопроектор"
+	desc = "Улучшенный модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами.\
+		<br>Количество создаваемых голопроекций увеличено до 3 за счёт применения улучшенных материалов."
+	icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
+	icon_state = "atmos_holofan_better"
+	max_signs = 3
+
+/obj/item/holosign_creator/atmos/robot/best
+	name = "Продвинутый модульный ATMOS голопроектор"
+	desc = "Продвинутый модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами.\
+		<br>Количество создаваемых голопроекций увеличено до 5 за счёт точечной оптимизации микросхем и применения редких материалов."
+	icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
+	icon_state = "atmos_holofan_best"
+	max_signs = 5
+
+/* Medical */
+/obj/item/reagent_containers/borghypo/basic
+	name = "Basic Cyborg Hypospray"
+	desc = "A very basic cyborg hypospray, capable of providing simple medical treatment in emergencies."
+	reagent_ids = list("salglu_solution", "epinephrine", "charcoal", "sal_acid")
+	volume = 30
+
+/obj/item/reagent_containers/borghypo
+	name = "Upgraded Cyborg Hypospray"
+	desc = "Upgraded cyborg hypospray, capable of providing standart medical treatment."
+	volume = 60
 
 /* Service */
 /obj/item/rsf/attack_self__legacy__attackchain(mob/user)

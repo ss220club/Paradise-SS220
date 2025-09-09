@@ -36,14 +36,13 @@
 	request_console_flags = RC_SUPPLY
 
 /area/station/service/chapel/funeral
-	name = "\improper Funeral Services"
+	name = "Похоронные Службы"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 	valid_territory = TRUE
 
 /area/station/service/chapel/office
 	name = "Офис Священника"
 	icon_state = "chapeloffice"
-	request_console_flags = RC_SUPPLY
 	request_console_name = "Chapel"
 
 /area/station/service/clown

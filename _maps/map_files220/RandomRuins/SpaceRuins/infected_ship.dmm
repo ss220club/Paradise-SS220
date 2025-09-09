@@ -10,12 +10,7 @@
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
 "al" = (
-/obj/machinery/suit_storage_unit/syndicate{
-	mask_type = null;
-	storage_type = null;
-	suit_type = null;
-	req_access = null
-	},
+/obj/machinery/suit_storage_unit/syndicate/empty,
 /obj/item/trash/spentcasing/bullet,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
@@ -45,9 +40,8 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "bk" = (
-/obj/machinery/door/airlock/freezer{
-	locked = 1
-	},
+/obj/machinery/door/airlock/freezer,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
 "bo" = (
@@ -102,18 +96,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
-"cM" = (
-/obj/machinery/suit_storage_unit/syndicate{
-	mask_type = null;
-	storage_type = null;
-	suit_type = null;
-	req_access = null
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/simulated/floor/mineral/plastitanium,
-/area/ruin/space/powered/requires_power_space)
 "do" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -137,7 +119,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "dI" = (
-/mob/living/simple_animal/hostile/alien,
+/mob/living/basic/alien,
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/mineral/plastitanium,
@@ -146,7 +128,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
-/obj/structure/sign/poster/contraband/random/north,
+/obj/structure/sign/poster/contraband/random/directional/north,
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/mineral/plastitanium,
@@ -162,9 +144,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "eq" = (
@@ -195,7 +175,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
 	},
-/obj/structure/sign/poster/contraband/random/north,
+/obj/structure/sign/poster/contraband/random/directional/north,
 /obj/effect/decal/cleanable/glass,
 /obj/item/shard,
 /obj/item/stack/cable_coil{
@@ -240,7 +220,7 @@
 /area/template_noop)
 "gg" = (
 /obj/item/trash/can,
-/obj/structure/sign/poster/contraband/random/north,
+/obj/structure/sign/poster/contraband/random/directional/north,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
@@ -298,9 +278,7 @@
 /obj/structure/machine_frame{
 	icon_state = "box_1"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "hP" = (
@@ -370,7 +348,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "iS" = (
-/mob/living/simple_animal/hostile/alien,
+/mob/living/basic/alien,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
 "jb" = (
@@ -381,13 +359,13 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/mob/living/simple_animal/hostile/alien/sentinel,
+/mob/living/basic/alien/sentinel,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "jl" = (
-/obj/structure/sign/poster/contraband/random/south,
+/obj/structure/sign/poster/contraband/random/directional/south,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "5"
 	},
@@ -419,20 +397,18 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
 "jW" = (
-/mob/living/simple_animal/hostile/alien,
+/mob/living/basic/alien,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "kg" = (
-/obj/machinery/door/airlock/hatch{
-	welded = 1
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/welded,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "km" = (
-/obj/machinery/door/airlock/highsecurity{
-	welded = 1
-	},
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/mapping_helpers/airlock/welded,
 /obj/effect/turf_decal/stripes/white/line,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
@@ -480,9 +456,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "lj" = (
-/obj/structure/extinguisher_cabinet/empty{
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/empty/directional/north,
 /obj/effect/turf_decal/stripes/white/line,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
@@ -512,9 +486,7 @@
 	pixel_y = 33;
 	icon_state = "mirror_broke"
 	},
-/obj/structure/sink{
-	pixel_y = 17
-	},
+/obj/structure/sink/directional/north,
 /obj/item/organ/internal/body_egg/alien_embryo,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
@@ -535,7 +507,7 @@
 "lP" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/blood/gibs/xeno,
-/obj/structure/sign/poster/contraband/random/north,
+/obj/structure/sign/poster/contraband/random/directional/north,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "mS" = (
@@ -587,11 +559,11 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "nz" = (
-/mob/living/simple_animal/hostile/alien,
+/mob/living/basic/alien,
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
 "nE" = (
-/mob/living/simple_animal/hostile/alien/sentinel,
+/mob/living/basic/alien/sentinel,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
@@ -626,9 +598,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "oz" = (
-/obj/structure/computerframe{
-	icon_state = "comp_frame_2"
-	},
+/obj/structure/computerframe,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/shard{
 	icon_state = "small";
@@ -645,9 +615,7 @@
 /area/ruin/space/powered/requires_power_space)
 "pj" = (
 /obj/machinery/light_construct/directional/west,
-/obj/structure/computerframe{
-	icon_state = "comp_frame_5"
-	},
+/obj/structure/computerframe,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/shard,
 /obj/item/stack/cable_coil{
@@ -707,7 +675,6 @@
 /area/ruin/space/powered/requires_power_space)
 "pP" = (
 /obj/item/shard{
-	icon_state = "large";
 	pixel_y = 9
 	},
 /turf/template_noop,
@@ -755,10 +722,9 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "sg" = (
-/obj/machinery/door/airlock/hatch{
-	welded = 1;
-	locked = 1
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/welded,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
 "sj" = (
@@ -790,7 +756,7 @@
 /turf/template_noop,
 /area/template_noop)
 "tv" = (
-/mob/living/simple_animal/hostile/alien/queen/large,
+/mob/living/basic/alien/queen/large,
 /obj/structure/bed/nest,
 /obj/effect/mob_spawn/human/corpse/damaged,
 /turf/simulated/floor/plating,
@@ -819,9 +785,7 @@
 /area/ruin/space/powered/requires_power_space)
 "tX" = (
 /obj/structure/mecha_wreckage/mauler,
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "ue" = (
@@ -860,7 +824,7 @@
 	dir = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/mob/living/simple_animal/hostile/alien,
+/mob/living/basic/alien,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "vk" = (
@@ -1179,9 +1143,7 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
 "HV" = (
-/obj/structure/extinguisher_cabinet/empty{
-	pixel_x = 30
-	},
+/obj/structure/extinguisher_cabinet/empty/directional/east,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
@@ -1251,7 +1213,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/sign/poster/contraband/random/north,
+/obj/structure/sign/poster/contraband/random/directional/north,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "JK" = (
@@ -1263,7 +1225,7 @@
 /turf/template_noop,
 /area/template_noop)
 "JS" = (
-/mob/living/simple_animal/hostile/alien/sentinel,
+/mob/living/basic/alien/sentinel,
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
@@ -1279,7 +1241,7 @@
 "KH" = (
 /obj/item/trash/spentcasing/bullet,
 /obj/item/trash/spentcasing/bullet,
-/obj/structure/sign/poster/contraband/random/north,
+/obj/structure/sign/poster/contraband/random/directional/north,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Ln" = (
@@ -1348,13 +1310,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "NN" = (
-/obj/machinery/suit_storage_unit/syndicate{
-	mask_type = null;
-	storage_type = null;
-	suit_type = null;
-	state_open = 1;
-	req_access = null
-	},
+/obj/machinery/suit_storage_unit/syndicate/empty,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
 "NP" = (
@@ -1381,7 +1337,7 @@
 /area/ruin/space/powered/requires_power_space)
 "OA" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/structure/sign/poster/contraband/random/south,
+/obj/structure/sign/poster/contraband/random/directional/south,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "OL" = (
@@ -1429,26 +1385,14 @@
 /area/ruin/space/powered/requires_power_space)
 "QS" = (
 /obj/machinery/light_construct/directional/west,
-/obj/machinery/suit_storage_unit/syndicate{
-	mask_type = null;
-	storage_type = null;
-	suit_type = null;
-	state_open = 1;
-	req_access = null
-	},
+/obj/machinery/suit_storage_unit/syndicate/empty,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
 "QU" = (
-/obj/machinery/suit_storage_unit/syndicate{
-	mask_type = null;
-	storage_type = null;
-	suit_type = null;
-	state_open = 1;
-	req_access = null
-	},
+/obj/machinery/suit_storage_unit/syndicate/empty,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -1531,9 +1475,8 @@
 /area/ruin/space/powered/requires_power_space)
 "UK" = (
 /obj/effect/mapping_helpers/airlock/access/all/syndicate,
-/obj/machinery/door/airlock/external{
-	locked = 1
-	},
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
@@ -1602,7 +1545,7 @@
 	amount = 1
 	},
 /obj/structure/bed/nest,
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/corpse,
+/obj/effect/mob_spawn/human/corpse/syndicate/modsuit,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
 "WR" = (
@@ -1662,10 +1605,8 @@
 	icon_state = "borgdecon2";
 	name = "cyborg recharging station"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
-/obj/structure/sign/poster/contraband/random/south,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/sign/poster/contraband/random/directional/south,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "YG" = (
@@ -1695,9 +1636,7 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered/requires_power_space)
 "Zk" = (
-/obj/structure/toilet{
-	dir = 4
-	},
+/obj/structure/toilet/directional/west,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/spawner/random/blood/often,
 /turf/simulated/floor/plating,
@@ -2614,7 +2553,7 @@ iB
 iB
 iB
 jb
-cM
+QU
 XJ
 XJ
 cB

@@ -2,7 +2,7 @@
 	name = "Skrell"
 	name_plural = "Skrell"
 	icobase = 'icons/mob/human_races/r_skrell.dmi'
-	language = "Skrellian"
+	language = "Qurvolious"
 	primitive_form = /datum/species/monkey/skrell
 
 	blurb = "Скреллы - вид амфибий, родом с Кверрбалака, влажной тропической планеты, полной болот и архипелагов. \
@@ -13,7 +13,7 @@
 	species_traits = list(LIPS, NO_HAIR)
 	inherent_traits = list(TRAIT_NOFAT, TRAIT_WATERBREATH)
 	clothing_flags = HAS_UNDERWEAR | HAS_UNDERSHIRT | HAS_SOCKS
-	bodyflags = HAS_SKIN_COLOR | HAS_BODY_MARKINGS | SHAVED
+	bodyflags = HAS_SKIN_COLOR | HAS_BODY_MARKINGS | HAS_TAIL | TAIL_OVERLAPPED
 	dietflags = DIET_HERB
 	taste_sensitivity = TASTE_SENSITIVITY_DULL
 	flesh_color = "#8CD7A3"

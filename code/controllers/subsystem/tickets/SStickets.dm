@@ -191,6 +191,7 @@ SUBSYSTEM_DEF(tickets)
 	SEND_SOUND(C, sound('sound/effects/adminticketopen.ogg'))
 
 	message_staff(url_title, NONE, TRUE)
+	open_ticket_count_updated()
 	return T
 
 //Set ticket state with key N to open
@@ -201,6 +202,7 @@ SUBSYSTEM_DEF(tickets)
 		sendFollowupToDiscord(T, usr.client, "*Ticket reopened.*")
 		to_chat_safe(returnClient(N), "<span class='[span_class]'>Ваш [ticket_name] был переоткрыт.</span>")
 		T.ticketState = TICKET_OPEN
+		open_ticket_count_updated()
 		return TRUE
 
 //Set ticket state with key N to resolved
@@ -211,6 +213,7 @@ SUBSYSTEM_DEF(tickets)
 		message_staff("<span class='[span_class]'>[usr.client] / ([usr]) решил [ticket_name] номер [N]</span>")
 		sendFollowupToDiscord(T, usr.client, "*Ticket resolved.*")
 		to_chat_safe(returnClient(N), "<span class='[span_class]'>Ваш [ticket_name] был решён.</span>")
+		open_ticket_count_updated()
 		return TRUE
 
 /datum/controller/subsystem/tickets/proc/refresh_tickets(list/tickets)
@@ -275,6 +278,7 @@ SUBSYSTEM_DEF(tickets)
 	message_staff("<span class='[span_class]'>[C] конвертировал тикет номер [T.ticketNum] в [other_ticket_name] тикет.</span>")
 	log_game("[C] конвертировал тикет номер [T.ticketNum] в [other_ticket_name] тикет.")
 	create_other_system_ticket(T)
+	open_ticket_count_updated()
 
 /datum/controller/subsystem/tickets/proc/create_other_system_ticket(datum/ticket/T)
 	var/client/C = get_client_by_ckey(T.client_ckey)
@@ -330,6 +334,7 @@ SUBSYSTEM_DEF(tickets)
 		sendFollowupToDiscord(T, usr.client, "*Ticket closed.*")
 		to_chat_safe(returnClient(N), close_messages)
 		T.ticketState = TICKET_CLOSED
+		open_ticket_count_updated()
 		return TRUE
 
 //Check if the user already has a ticket open and within the cooldown period.
@@ -414,7 +419,7 @@ SUBSYSTEM_DEF(tickets)
 	ticket_responses = list()
 	ticket_responses += new /datum/ticket_response(cont, the_ckey)
 	real_time_opened = SQLtime()
-	ingame_time_opened = (ROUND_TIME ? time2text(ROUND_TIME, "hh:mm:ss") : 0)
+	ingame_time_opened = worldtime2text() // SS220 EDIT - timestamp fix
 	timeUntilStale = world.time + TICKET_TIMEOUT
 	setCooldownPeriod()
 	ticketNum = num
@@ -575,8 +580,8 @@ UI STUFF
 
 	dat += "</table></div>"
 	var/client/C = get_client_by_ckey(T.client_ckey)
-	for(var/key in C?.pm_tracker.pms)
-		var/datum/pm_convo/convo = C.pm_tracker.pms[key]
+	for(var/key in C?.persistent.pm_tracker.pms)
+		var/datum/pm_convo/convo = C.persistent.pm_tracker.pms[key]
 		if(convo.typing)
 			dat += "<i><span class='typing'>[key] is typing</span></i><br />"
 
@@ -584,12 +589,12 @@ UI STUFF
 	for(var/client/X in GLOB.admins)
 		if(ckey(X.ckey) == ckey(T.client_ckey))
 			continue
-		if(!check_rights_for(X, rights_needed))
+		if(!check_rights_client(rights_needed, FALSE, X))
 			continue
-		for(var/key in X.pm_tracker.pms)
+		for(var/key in X.persistent.pm_tracker.pms)
 			if(ckey(key) != ckey(T.client_ckey))
 				continue
-			var/datum/pm_convo/convo = X.pm_tracker.pms[key]
+			var/datum/pm_convo/convo = X.persistent.pm_tracker.pms[key]
 			if(convo.typing)
 				dat += "<i><span class='typing'>[key] is typing</span></i><br />"
 				found_typing = TRUE
@@ -830,6 +835,13 @@ UI STUFF
 	if(!check_rights(R_ADMIN, FALSE, usr) && (var_name in protected_vars))
 		return FALSE
 	return TRUE
+
+/datum/controller/subsystem/tickets/proc/open_ticket_count_updated()
+	var/ticket_count = 0
+	for(var/datum/ticket/T in allTickets)
+		if(T.ticketState == TICKET_OPEN || T.ticketState == TICKET_STALE)
+			ticket_count++
+	SEND_SIGNAL(src, COMSIGN_TICKET_COUNT_UPDATE, ticket_count)
 
 #undef TICKET_STAFF_MESSAGE_ADMIN_CHANNEL
 #undef TICKET_STAFF_MESSAGE_PREFIX

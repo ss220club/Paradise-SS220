@@ -69,8 +69,7 @@
 	dir = 2
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2.9
+	dir = 1
 	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/unpowered/unpowered_structures)
@@ -93,9 +92,7 @@
 	},
 /area/ruin/space/unpowered/unpowered_structures)
 "il" = (
-/obj/machinery/status_display{
-	pixel_y = -30
-	},
+/obj/machinery/status_display/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "Dark_Golden_1"
@@ -138,7 +135,7 @@
 /obj/effect/turf_decal/box,
 /obj/machinery/light_construct/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/loot/crate,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "Dark"
 	},
@@ -224,9 +221,8 @@
 /area/ruin/space/unpowered/unpowered_structures)
 "vp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/command{
-	locked = 1
-	},
+/obj/machinery/door/airlock/command,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "Dark"
 	},
@@ -344,7 +340,7 @@
 "Fi" = (
 /obj/effect/turf_decal/box,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/loot/crate,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "Dark"
 	},
@@ -452,7 +448,7 @@
 /obj/item/shard{
 	icon_state = "small"
 	},
-/obj/effect/spawner/random/loot/crate,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
 	},
@@ -567,9 +563,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ZK" = (
-/obj/structure/extinguisher_cabinet/empty{
-	pixel_y = -30
-	},
+/obj/structure/extinguisher_cabinet/empty/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/plating/airless,

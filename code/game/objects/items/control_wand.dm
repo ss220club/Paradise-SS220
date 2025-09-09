@@ -175,7 +175,6 @@
 
 /obj/item/door_remote/civillian
 	name = "civilian door remote"
-	icon_state = "gangtool-white"
 	region_access = list(REGION_GENERAL)
 	additional_access = list(ACCESS_HOP)
 
@@ -215,7 +214,7 @@
 	icon_state = "hacktool-g"
 	busy = TRUE
 	to_chat(user, "<span class='notice'>[src] is attempting to interface with [target]...</span>")
-	if(do_after(user, hack_speed, target = target))
+	if(do_after(user, hack_speed, target = target, hidden = TRUE))
 		busy = FALSE
 		icon_state = "hacktool"
 		return TRUE

@@ -43,12 +43,16 @@
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 
-// MARK: ERT RED MODsuit
-/obj/item/mod/control/pre_equipped/responsory/red
+// MARK: ERT MODsuit
+// Gamma
+/obj/item/mod/control/pre_equipped/responsory/New()
+	. = ..()
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
+
+// Red
+/obj/item/mod/control/pre_equipped/responsory/red
 	theme = /datum/mod_theme/responsory/red
-	req_access = list(ACCESS_CENT_GENERAL)
 	applied_modules = list(
 		/obj/item/mod/module/storage/syndicate,
 		/obj/item/mod/module/welding,
@@ -88,3 +92,8 @@
 
 /obj/item/mod/control/pre_equipped/responsory/red/inquisitory
 	applied_skin = "inquisitory"
+
+// MARK: Misc modsuits
+/obj/item/mod/control/pre_equipped/prototype/spacebattle
+	theme = /datum/mod_theme/prototype/spacebattle
+	default_pins = list(/obj/item/mod/module/tether)

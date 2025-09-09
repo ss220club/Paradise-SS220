@@ -42,17 +42,17 @@
 	icon_state = "medbaybreak"
 
 /area/station/medical/patients_rooms
-	name = "Палаты Пациентов"
+	name = "Психиатрические Палаты"
 	icon_state = "patients"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
 /area/station/medical/patients_rooms1
-	name = "\improper Patient Room"
+	name = "Палаты Пациентов"
 	icon_state = "patients"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
 /area/station/medical/patients_rooms_secondary
-	name = "\improper Patient Room Secondary"
+	name = "Вспомогательные Палаты Пациентов"
 	icon_state = "patients"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
@@ -71,7 +71,6 @@
 
 /area/station/medical/virology/lab
 	name = "Лаборатория Вирусологии"
-	icon_state = "virology"
 
 /area/station/medical/morgue
 	name = "Морг"
@@ -100,7 +99,6 @@
 
 /area/station/medical/surgery/observation
 	name = "Комната Оперативного Наблюдения"
-	icon_state = "surgery"
 
 /area/station/medical/cryo
 	name = "Криогеника"

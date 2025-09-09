@@ -560,16 +560,20 @@ What are the archived variables for?
 /datum/gas_mixture/proc/react(atom/dump_location)
 	var/reacting = FALSE //set to TRUE if a notable reaction occured (used by pipe_network)
 
-	if((private_agent_b > MINIMUM_MOLE_COUNT) && private_temperature > 900)
+	if((private_agent_b > MINIMUM_MOLE_COUNT) && private_temperature > AGENT_B_CONVERSION_MIN_TEMP)
 		if(private_toxins > MINIMUM_HEAT_CAPACITY && private_carbon_dioxide > MINIMUM_HEAT_CAPACITY)
 			var/reaction_rate = min(private_carbon_dioxide * 0.75, private_toxins * 0.25, private_agent_b * 0.05)
+			var/old_heat_capacity = heat_capacity()
+			var/energy_released = reaction_rate * AGENT_B_CONVERSION_ENERGY_RELEASED
 
 			private_carbon_dioxide -= reaction_rate
 			private_oxygen += reaction_rate
 
 			private_agent_b -= reaction_rate * 0.05
 
-			private_temperature += (reaction_rate * 20000) / heat_capacity()
+			var/new_heat_capacity = heat_capacity()
+			if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
+				private_temperature = (private_temperature * old_heat_capacity + energy_released) / new_heat_capacity
 
 			reacting = TRUE
 
@@ -670,9 +674,8 @@ What are the archived variables for?
 
 	// Collect all the cheap data and check if there's a significant temperature difference.
 	var/temperature = null
-	for(var/datum/gas_mixture/G as anything in mixtures)
-		if(!istype(G))
-			stack_trace("share_many_airs had [G] in mixtures ([json_encode(mixtures)])")
+	for(var/datum/gas_mixture/G in mixtures)
+		if(QDELETED(G))
 			continue
 		total_volume += G.volume
 
@@ -693,8 +696,8 @@ What are the archived variables for?
 
 	// If we don't have a significant temperature difference, check for a significant gas amount difference.
 	if(!must_share)
-		for(var/datum/gas_mixture/G as anything in mixtures)
-			if(!istype(G))
+		for(var/datum/gas_mixture/G in mixtures)
+			if(QDELETED(G))
 				continue
 			if(abs(G.private_oxygen - total_oxygen * G.volume / total_volume) > 0.1)
 				must_share = TRUE
@@ -722,8 +725,8 @@ What are the archived variables for?
 	// Collect the more expensive data.
 	var/total_thermal_energy = 0
 	var/total_heat_capacity = 0
-	for(var/datum/gas_mixture/G as anything in mixtures)
-		if(!istype(G))
+	for(var/datum/gas_mixture/G in mixtures)
+		if(QDELETED(G))
 			continue
 		var/heat_capacity = G.heat_capacity()
 		total_heat_capacity += heat_capacity
@@ -735,8 +738,8 @@ What are the archived variables for?
 		temperature = total_thermal_energy/total_heat_capacity
 
 	// Update individual gas_mixtures by volume ratio.
-	for(var/datum/gas_mixture/G as anything in mixtures)
-		if(!istype(G))
+	for(var/datum/gas_mixture/G in mixtures)
+		if(QDELETED(G))
 			continue
 		G.private_oxygen = total_oxygen * G.volume / total_volume
 		G.private_nitrogen = total_nitrogen * G.volume / total_volume

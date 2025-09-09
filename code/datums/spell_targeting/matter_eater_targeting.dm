@@ -16,8 +16,8 @@
 		/mob/living/simple_animal/slime,
 		/mob/living/simple_animal/chick,
 		/mob/living/simple_animal/chicken,
-		/mob/living/simple_animal/lizard,
-		/mob/living/simple_animal/cow,
+		/mob/living/basic/lizard,
+		/mob/living/basic/cow,
 		/mob/living/simple_animal/spiderbot
 	)
 	var/list/own_blacklist = list(
@@ -37,6 +37,10 @@
 			if(isanimal(O))
 				var/mob/living/simple_animal/SA = O
 				if(!SA.gold_core_spawnable)
+					continue
+			if(isbasicmob(O))
+				var/mob/living/basic/B = O
+				if(!B.gold_core_spawnable)
 					continue
 			possible_targets += O
 

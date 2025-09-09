@@ -1,6 +1,7 @@
 /datum/asset/simple/paper
-	// TODO: revrite stamp code to not rely on hardcoded stamp url or make TGUI for paper
+	//TODO: Move paper to TGUI. Period.
 	keep_local_name = TRUE
+	legacy = TRUE
 	assets = list(
 		"large_stamp-clown.png" = 'icons/paper_icons/large_stamp-clown.png',
 		"large_stamp-deny.png"= 'icons/paper_icons/large_stamp-deny.png',
@@ -27,5 +28,6 @@
 		"large_stamp-BIGdeny.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-BIGdeny.png',
 		"large_stamp-navcom.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-navcom.png',
 		"large_stamp-mime.png"     	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-mime.png',
-		"large_stamp-ussp.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ussp.png'
+		"large_stamp-ussp.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ussp.png',
+		"large_stamp-nct.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-nct.png'
 	)

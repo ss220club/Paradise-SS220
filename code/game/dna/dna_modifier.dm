@@ -160,7 +160,7 @@
 		return
 	if(!ismob(O)) //humans only
 		return
-	if(isanimal(O) || issilicon(O)) //animals and robutts dont fit
+	if(isanimal_or_basicmob(O) || issilicon(O)) //animals and robutts dont fit
 		return
 	if(!ishuman(user) && !isrobot(user)) //No ghosts or mice putting people into the sleeper
 		return
@@ -304,10 +304,8 @@
 /obj/machinery/computer/scan_consolenew
 	name = "\improper DNA Modifier access console"
 	desc = "Allows you to scan and modify DNA."
-	icon = 'icons/obj/computer.dmi'
 	icon_screen = "dna"
 	icon_keyboard = "med_key"
-	density = TRUE
 	circuit = /obj/item/circuitboard/scan_consolenew
 	var/selected_ui_block = 1.0
 	var/selected_ui_subblock = 1.0
@@ -323,7 +321,6 @@
 	var/obj/machinery/dna_scannernew/connected = null
 	var/obj/item/disk/data/disk = null
 	var/selected_menu_key = PAGE_UI
-	anchored = TRUE
 	idle_power_consumption = 10
 	active_power_consumption = 400
 

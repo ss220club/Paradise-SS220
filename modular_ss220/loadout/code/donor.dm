@@ -360,6 +360,12 @@
 	donator_tier = 2
 	cost = 2
 
+/datum/gear/donor/ei_cloak_hoodless
+	display_name = "Накидка Gold On Black"
+	path = /obj/item/clothing/neck/ei_cloak_hoodless
+	donator_tier = 2
+	cost = 2
+
 /datum/gear/donor/ei_gloves
 	display_name = "Перчатки Gold On Black"
 	path = /obj/item/clothing/gloves/color/ei_gloves
@@ -407,3 +413,7 @@
 	path = /obj/item/clothing/under/ei_skirt_alt
 	donator_tier = 1
 	cost = 1
+
+/datum/gear/crewmanplushie
+	display_name = "Medic tajaran plushie"
+	path = /obj/item/toy/plushie/crewmanplushie

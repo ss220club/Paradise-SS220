@@ -12,10 +12,10 @@ on:
 jobs:
   generate_maps:
     name: 'Generate NanoMaps'
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     steps:
       - id: create_token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}

@@ -26,7 +26,6 @@
 	icon_state = "tube-construct-stage1"
 	anchored = TRUE
 	layer = FLY_LAYER
-	max_integrity = 200
 	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 80, ACID = 50)
 	/// Construction stage
 	var/stage = LIGHT_CONSTRUCT_EMPTY_FRAME
@@ -174,8 +173,6 @@
 	name = "small light fixture frame"
 	desc = "A small light fixture under construction."
 	icon_state = "bulb-construct-stage1"
-	anchored = TRUE
-	layer = FLY_LAYER
 	fixture_type = "bulb"
 	sheets_refunded = 1
 	construct_type = /obj/machinery/light/small/built
@@ -184,7 +181,6 @@
 	name = "floor light fixture frame"
 	desc = "A floor light fixture under construction."
 	icon_state = "floor-construct-stage1"
-	anchored = TRUE
 	layer = ABOVE_OPEN_TURF_LAYER
 	plane = FLOOR_PLANE
 	fixture_type = "floor"
@@ -194,11 +190,7 @@
 /obj/machinery/light_construct/clockwork/small
 	name = "small brass light fixture frame"
 	desc = "A small brass light fixture under construction."
-	icon = 'icons/obj/lighting.dmi'
 	icon_state = "clockwork_bulb-construct-stage1"
-	anchored = TRUE
-	layer = 5
-	stage = 1
 	fixture_type = "clockwork_bulb"
 	sheets_refunded = 1
 	construct_type = /obj/machinery/light/clockwork/small/built
@@ -207,7 +199,6 @@
 	name = "brass floor light fixture frame"
 	desc = "A brass floor light fixture under construction."
 	icon_state = "clockwork_floor-construct-stage1"
-	anchored = TRUE
 	layer = ABOVE_OPEN_TURF_LAYER
 	plane = FLOOR_PLANE
 	fixture_type = "clockwork_floor"
@@ -766,13 +757,12 @@
 
 // attempts to set emergency lights
 /obj/machinery/light/proc/set_emergency_lights()
-	var/area/current_area = get_area(src)
-	var/obj/machinery/power/apc/current_apc = current_area.get_apc()
+	var/obj/machinery/power/apc/current_apc = machine_powernet?.powernet_apc
 	if(status != LIGHT_OK || !current_apc || flickering || no_emergency)
-		emergency_lights_off(current_area, current_apc)
+		emergency_lights_off(current_apc)
 		return
 	if(current_apc.emergency_lights || !current_apc.emergency_power)
-		emergency_lights_off(current_area, current_apc)
+		emergency_lights_off(current_apc)
 		return
 	if(fire_mode)
 		set_light(nightshift_light_range, nightshift_light_power, bulb_emergency_colour)
@@ -783,7 +773,7 @@
 	update_icon()
 	RegisterSignal(machine_powernet, COMSIG_POWERNET_POWER_CHANGE, PROC_REF(update), override = TRUE)
 
-/obj/machinery/light/proc/emergency_lights_off(area/current_area, obj/machinery/power/apc/current_apc)
+/obj/machinery/light/proc/emergency_lights_off(obj/machinery/power/apc/current_apc)
 	set_light(0, 0, 0) //you, sir, are off!
 	if(current_apc)
 		RegisterSignal(machine_powernet, COMSIG_POWERNET_POWER_CHANGE, PROC_REF(update), override = TRUE)
@@ -937,7 +927,7 @@
 	zap_flags &= ~(ZAP_MACHINE_EXPLOSIVE | ZAP_OBJ_DAMAGE)
 	. = ..()
 	if(explosive)
-		explosion(src, 0, 0, 0, flame_range = 5, adminlog = FALSE)
+		explosion(src, 0, 0, 0, flame_range = 5, cause = "Exploding light")
 		qdel(src)
 
 // timed process
@@ -964,7 +954,7 @@
 
 /obj/machinery/light/proc/actually_explode()
 	var/turf/T = get_turf(loc)
-	explosion(T, 0, 0, 2, 2)
+	explosion(T, 0, 0, 2, 2, cause = "exploding light")
 	qdel(src)
 
 /obj/machinery/light/extinguish_light(force = FALSE)

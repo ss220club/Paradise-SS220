@@ -322,6 +322,9 @@
 /datum/emote/living/carbon/human/highfive
 	name = EMOTE_HUMAN_HIGHFIVE
 
+/datum/emote/living/carbon/human/highfive/payme
+	name = EMOTE_HUMAN_PAYME
+
 /datum/emote/living/carbon/human/highfive/dap
 	name = EMOTE_HUMAN_DAP
 
@@ -467,6 +470,9 @@
 /datum/emote/living/carbon/human/tajaran/mrowss
 	name = EMOTE_HUMAN_MROWSS
 
+/datum/emote/living/carbon/human/diona_chirp
+	name = EMOTE_HUMAN_CHIRP
+
 /// Emote Animal
 
 /datum/emote/living/simple_animal/gorilla/ooga
@@ -539,6 +545,9 @@
 
 /datum/emote/living/carbon/human/wiggles
 	name = EMOTE_HUMAN_WIGGLES
+
+/datum/emote/living/carbon/human/thump
+	name = EMOTE_HUMAN_THUMP
 
 /datum/emote/living/carbon/human/whip
 	name = EMOTE_HUMAN_WHIP

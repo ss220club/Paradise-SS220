@@ -35,7 +35,7 @@
 /datum/emote/living/choke
 	key = "choke"
 	key_third_person = "chokes"
-	message = "подавился!"
+	message = "давится!"
 	message_mime = "отчаянно хватается за горло!"
 	emote_type = EMOTE_AUDIBLE
 	muzzled_noises = list("рвотный", "громкий")
@@ -44,7 +44,6 @@
 	key = "collapse"
 	key_third_person = "collapses"
 	message = "падает!"
-	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/collapse/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -56,11 +55,6 @@
 	key = "dance"
 	key_third_person = "dances"
 	message = "радостно танцует."
-
-/datum/emote/living/jump
-	key = "jump"
-	key_third_person = "jumps"
-	message = "прыгает!"
 
 /datum/emote/living/deathgasp
 	key = "deathgasp"
@@ -186,8 +180,6 @@
 	message = "показывает пальцем."
 	message_param = "показывает пальцем на %t."
 	hands_use_check = TRUE
-	target_behavior = EMOTE_TARGET_BHVR_USE_PARAMS_ANYWAY
-	emote_target_type = EMOTE_TARGET_ANY
 
 /datum/emote/living/point/act_on_target(mob/user, target)
 	if(!target)
@@ -302,7 +294,6 @@
 /datum/emote/living/nightmare
 	key = "nightmare"
 	message = "ворочается во сне."
-	emote_type = EMOTE_VISIBLE
 	stat_allowed = UNCONSCIOUS
 	max_stat_allowed = UNCONSCIOUS
 	unintentional_stat_allowed = UNCONSCIOUS
@@ -376,7 +367,7 @@
 	key = "whimper"
 	key_third_person = "whimpers"
 	message = "хнычет."
-	message_mime = "кажется, задет."
+	message_mime = "молча хнычет."
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 	muzzled_noises = list("слабый", "жалкий")
 

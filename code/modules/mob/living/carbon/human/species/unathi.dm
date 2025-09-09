@@ -34,6 +34,8 @@
 	//Default styles for created mobs.
 	default_headacc = "Simple"
 	default_headacc_colour = "#404040"
+	male_scream_sound = 'sound/effects/unathiscream.ogg' // credits to skyrat [https://github.com/Skyrat-SS13/Skyrat-tg/pull/892]
+	female_scream_sound = 'sound/effects/unathiscream.ogg'
 	butt_sprite = "unathi"
 
 	has_organ = list(
@@ -46,8 +48,8 @@
 		"eyes" =     /obj/item/organ/internal/eyes/unathi //3 darksight.
 		)
 
-	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse, /mob/living/simple_animal/lizard, /mob/living/simple_animal/chick, /mob/living/simple_animal/chicken,
-								/mob/living/simple_animal/crab, /mob/living/simple_animal/butterfly, /mob/living/simple_animal/parrot, /mob/living/simple_animal/hostile/poison/bees)
+	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse, /mob/living/basic/lizard, /mob/living/simple_animal/chick, /mob/living/simple_animal/chicken,
+								/mob/living/simple_animal/crab, /mob/living/basic/butterfly, /mob/living/simple_animal/parrot, /mob/living/simple_animal/hostile/poison/bees)
 
 	suicide_messages = list(
 		"is attempting to bite their tongue off!",
@@ -77,8 +79,8 @@
 /datum/action/innate/unathi_ignite
 	name = "Ignite"
 	desc = "A fire forms in your mouth, fierce enough to... light a cigarette. Requires you to drink welding fuel beforehand."
-	button_overlay_icon = 'icons/obj/cigarettes.dmi'
-	button_overlay_icon_state = "match_unathi"
+	button_icon = 'icons/obj/cigarettes.dmi'
+	button_icon_state = "match_unathi"
 	var/cooldown = 0
 	var/cooldown_duration = 20 SECONDS
 	var/welding_fuel_used = 3 //one sip, with less strict timing
@@ -118,7 +120,6 @@
 	blurb = "Эти рептилоидные существа, похоже, родственны Унатхам, но выглядят значительно менее развитыми. \
 	Они скитаются по пустошам Лаваленда, поклоняются мертвому городу и похищают ничего не подозревающих шахтеров."
 
-	language = "Sinta'unathi"
 	default_language = "Sinta'unathi"
 
 	speed_mod = -0.80

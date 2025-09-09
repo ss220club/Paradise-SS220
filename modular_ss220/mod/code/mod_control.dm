@@ -32,7 +32,6 @@
 		quick_deploy(wearer)
 
 /obj/item/mod/control/quick_deploy(mob/user)
-	user = user || loc // why the fuck this is nullable
 	if(!is_any_part_deployed() && !theme.is_species_allowed(user.dna.species))
 		to_chat(user, span_warning("Ошибка видовой принадлежности! Развертывание недоступно."))
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
@@ -40,12 +39,16 @@
 	return ..()
 
 /obj/item/mod/control/deploy(mob/user, obj/item/part, mass)
-	user = user || loc // why the fuck this is nullable
-	if(!mass && part.loc != user && !theme.is_species_allowed(user.dna.species))
-		to_chat(user, span_warning("Ошибка видовой принадлежности! Развертывание недоступно."))
-		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-		return FALSE
+	if(part.loc == src)
+		if(user && !theme.is_species_allowed(user.dna.species))
+			to_chat(user, span_warning("Ошибка видовой принадлежности! Развертывание недоступно."))
+			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+			return FALSE
 	return ..()
+
+/obj/item/mod/control/quick_activation()
+	if(theme.is_species_allowed(wearer.dna.species))
+		return ..()
 
 /obj/item/mod/control/pre_equipped/exclusive
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
@@ -76,15 +79,15 @@
 /obj/item/mod/control/pre_equipped/corporate/build_shoes()
 	return new /obj/item/clothing/shoes/mod/exclusive(src)
 
-//MARK: ERT Red
-/obj/item/mod/control/pre_equipped/responsory/red/build_head()
+//MARK: ERT
+/obj/item/mod/control/pre_equipped/responsory/build_head()
 	return new /obj/item/clothing/head/mod/exclusive(src)
 
-/obj/item/mod/control/pre_equipped/responsory/red/build_suit()
+/obj/item/mod/control/pre_equipped/responsory/build_suit()
 	return new /obj/item/clothing/suit/mod/exclusive(src)
 
-/obj/item/mod/control/pre_equipped/responsory/red/build_gloves()
+/obj/item/mod/control/pre_equipped/responsory/build_gloves()
 	return new /obj/item/clothing/gloves/mod/exclusive(src)
 
-/obj/item/mod/control/pre_equipped/responsory/red/build_shoes()
+/obj/item/mod/control/pre_equipped/responsory/build_shoes()
 	return new /obj/item/clothing/shoes/mod/exclusive(src)

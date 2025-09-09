@@ -30,14 +30,13 @@
 	name = "Коридор Спутника ИИ"
 
 /area/station/aisat/breakroom
-	name = "\improper AI Satellite Break Room Hallway"
+	name = "Комната Отдыха Спутника ИИ"
 
 /area/station/aisat/service
 	name = "Сервисная Комната Спутника ИИ"
 
 /area/station/turret_protected/aisat/interior
 	name = "Фойе Спутника ИИ"
-	icon_state = "ai"
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
 /area/station/turret_protected/aisat/interior/secondary

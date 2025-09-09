@@ -27,14 +27,12 @@
 	righthand_file = 'icons/mob/inhands/utensil_righthand.dmi'
 	force = 5.0
 	w_class = WEIGHT_CLASS_TINY
-	throwforce = 0.0
 	throw_speed = 3
 	throw_range = 5
 	flags = CONDUCT
 	attack_verb = list("attacked", "stabbed", "poked")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 50, ACID = 30)
-	sharp = FALSE
 	var/max_contents = 1
 
 /obj/item/kitchen/utensil/New()
@@ -162,13 +160,12 @@
 	materials = list()
 	origin_tech = "biotech=3;combat=2"
 	attack_verb = list("shanked", "shivved")
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = null
 
 /obj/item/kitchen/knife/butcher
 	name = "butcher's cleaver"
 	icon_state = "butch"
 	desc = "Огромный нож, используемый для рубки мяса и его нарезки. Это так же включает продукцию из клоунов."
-	flags = CONDUCT
 	force = 15
 	throwforce = 8
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -183,7 +180,7 @@
 
 /obj/item/kitchen/knife/butcher/meatcleaver/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_BUTCHERS_HUMANS, ROUNDSTART_TRAIT)
+	AddElement(/datum/element/butchers_humans)
 
 /obj/item/kitchen/knife/combat
 	name = "combat knife"
@@ -242,8 +239,6 @@
 	force = 8.0
 	throwforce = 10.0
 	throw_speed = 3
-	throw_range = 7
-	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
 
 /* Trays moved to /obj/item/storage/bag */
@@ -252,79 +247,68 @@
  * Candy Moulds
  */
 
-/obj/item/kitchen/mould
+/obj/item/reagent_containers/cooking/mould
 	name = "generic candy mould"
 	desc = "Непонятно, что это вообще такое."
+	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mould"
 	force = 5
 	throwforce = 5
 	throw_speed = 3
 	throw_range = 3
-	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "smashed")
 
-/obj/item/kitchen/mould/bear
+/obj/item/reagent_containers/cooking/mould/make_mini()
+	transform *= 0.5
+
+/obj/item/reagent_containers/cooking/mould/unmake_mini()
+	transform = null
+
+/obj/item/reagent_containers/cooking/mould/bear
 	name = "bear-shaped candy mould"
 	desc = "Формочка в виде маленького медведя."
 	icon_state = "mould_bear"
 
-/obj/item/kitchen/mould/worm
+/obj/item/reagent_containers/cooking/mould/worm
 	name = "worm-shaped candy mould"
 	desc = "Формочка в виде червячка."
 	icon_state = "mould_worm"
 
-/obj/item/kitchen/mould/bean
+/obj/item/reagent_containers/cooking/mould/bean
 	name = "bean-shaped candy mould"
 	desc = "Формочка в виде боба."
 	icon_state = "mould_bean"
 
-/obj/item/kitchen/mould/ball
+/obj/item/reagent_containers/cooking/mould/ball
 	name = "ball-shaped candy mould"
 	desc = "Формочка в виде маленькой сферы"
 	icon_state = "mould_ball"
 
-/obj/item/kitchen/mould/cane
+/obj/item/reagent_containers/cooking/mould/cane
 	name = "cane-shaped candy mould"
 	desc = "Формочка в виде трости."
 	icon_state = "mould_cane"
 
-/obj/item/kitchen/mould/cash
+/obj/item/reagent_containers/cooking/mould/cash
 	name = "cash-shaped candy mould"
 	desc = "Формочка в виде фальшивых денег"
 	icon_state = "mould_cash"
 
-/obj/item/kitchen/mould/coin
+/obj/item/reagent_containers/cooking/mould/coin
 	name = "coin-shaped candy mould"
 	desc = "Формочка в виде монеты."
 	icon_state = "mould_coin"
 
-/obj/item/kitchen/mould/loli
+/obj/item/reagent_containers/cooking/mould/loli
 	name = "sucker mould"
 	desc = "Формочка в виде леденца."
 	icon_state = "mould_loli"
-
-/*
- * Sushi Mat
- */
-/obj/item/kitchen/sushimat
-	name = "Sushi Mat"
-	desc = "Деревянный коврик для эффективного приготовления суши."
-	icon_state = "sushi_mat"
-	force = 5
-	throwforce = 5
-	throw_speed = 3
-	throw_range = 3
-	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("rolled", "cracked", "battered", "thrashed")
-
-
 
 /// circular cutter by Ume
 
 /obj/item/kitchen/cutter
 	name = "generic circular cutter"
 	desc = "Универсальный круглый резак для печенья и других изделий."
-	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "circular_cutter"
 	force = 5
 	throwforce = 5

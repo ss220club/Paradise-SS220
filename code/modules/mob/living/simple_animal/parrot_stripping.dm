@@ -1,6 +1,5 @@
 GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	/datum/strippable_item/parrot_headset,
-	/datum/strippable_item/pet_collar
 )))
 
 /datum/strippable_item/parrot_headset
@@ -47,7 +46,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		return
 
 	if(parrot_source.stat == CONSCIOUS) // DEAD PARROTS TELL NO TALES (Finally moved this out of topic, thank god)
-		parrot_source.say("[length(parrot_source.available_channels) ? "[pick(parrot_source.available_channels)] " : null]BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+		parrot_source.say("[length(parrot_source.available_channels) ? "[pick(parrot_source.available_channels)] " : null]ОСТАВЬ ГАРНИТУРУ! НЕТ!!!")
 
 	return TRUE
 

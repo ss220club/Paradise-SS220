@@ -9,7 +9,7 @@
 	relate_job = "Internal Affairs Agent"
 	supervisors = "главой персонала и капитаном"
 	department_head = list("Head of Personnel", "Captain")
-	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
+	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING, ACCESS_KITCHEN, ACCESS_BAR, ACCESS_JANITOR)
 	selection_color = "#717097"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 4
@@ -19,6 +19,7 @@
 	Вы тот, кто поможет капитану нужным советом или своевременно принесет ему чашечку кофе, чтобы он \
 	легче перенес работу. Вы тот, кто следит за ментальным здоровьем глав и помощи в исполнении их обязанностей. \
 	\nВы не являетесь АВД или НТР'ом и можете не исполнять их обязанности. Но вы можете работать сообща с Юридическим Отделом."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/donor/adjutant
 	name = "Adjutant"
@@ -194,6 +195,7 @@
 	\nВы ПРЕДСТАВИТЕЛЬ ТСФ. Вы прибыли сюда для отдыха и возможно для переговоров. На вас по прежнему действует КЗ НТ, не смотря на то \
 	что вы являетесь гражданином ТСФ. ТСФ и СССП недоброжелательно относятся друг к другу, но это по прежнему не дает нарушать правила сервера.	\
 	"
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/donor/representative_tsf
 	name = "Representative TSF"
@@ -248,6 +250,7 @@
 	\nВы ПРЕДСТАВИТЕЛЬ СССП. Вы прибыли сюда для отдыха и возможно для переговоров. На вас по прежнему действует КЗ НТ, не смотря на то \
 	что вы являетесь гражданином СССП. ТСФ и СССП недоброжелательно относятся друг к другу, но это по прежнему не дает нарушать правила сервера. \
 	"
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/donor/representative_ussp
 	name = "Representative USSP"
@@ -269,6 +272,7 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 		/obj/item/clothing/under/pants/shorts/red = 1,
 		/obj/item/clothing/head/ushanka = 1,
+		/obj/item/stamp/ussp = 1,
 	)
 
 	bio_chips = list(/obj/item/bio_chip/mindshield,
@@ -303,6 +307,7 @@
 	Найдите любыми способами предметы у экипажа и продайте его им же! Либо же продайте барахло которое вы привезли с собой. \
 	Богатый торговец - успешный торговец! \
 	\nВам выдан личный EFTPOS для снятия средств с карт."
+	standard_paycheck = CREW_PAY_LOW
 
 /datum/outfit/job/donor/dealer
 	name = "Dealer"

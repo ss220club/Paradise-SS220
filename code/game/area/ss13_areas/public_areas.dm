@@ -89,43 +89,40 @@
 	icon_state = "hall_space"
 
 /area/station/hallway/spacebridge/security
-	icon_state = "hall_space"
-	name = "\improper Security Space Bridge"
+	name = "Мост Службы Безопасности"
 
 /area/station/hallway/spacebridge/security/west
-	icon_state = "hall_space"
-	name = "\improper Security West Space Bridge"
+	name = "Западный Мост Службы Безопасности"
 
 /area/station/hallway/spacebridge/security/south
-	icon_state = "hall_space"
-	name = "\improper Security South Space Bridge"
+	name = "Южный Мост Службы Безопасности"
 
 /area/station/hallway/spacebridge/dockmed
-	name = "Docking-Medical Bridge"
+	name = "Мост Прибытие-Медбей"
 
 /area/station/hallway/spacebridge/scidock
-	name = "Science-Docking Bridge"
+	name = "Мост РНД-Прибытие"
 
 /area/station/hallway/spacebridge/servsci
-	name = "Service-Science Bridge"
+	name = "Мост Сервис-РНД"
 
 /area/station/hallway/spacebridge/serveng
-	name = "Service-Engineering Bridge"
+	name = "Мост Сервис-Инженерия"
 
 /area/station/hallway/spacebridge/engmed
-	name = "Engineering-Medical Bridge"
+	name = "Мост Медбей-Инженерия"
 
 /area/station/hallway/spacebridge/medcargo
-	name = "Medical-Cargo Bridge"
+	name = "Мост Медбей-Карго"
 
 /area/station/hallway/spacebridge/cargocom
-	name = "Cargo-AI-Command Bridge"
+	name = "Мост Карго-Спутник-Командование"
 
 /area/station/hallway/spacebridge/sercom
-	name = "Command-Service Bridge"
+	name = "Мост Сервис-Командование"
 
 /area/station/hallway/spacebridge/comeng
-	name = "Command-Engineering Bridge"
+	name = "Мост Командование-Инженерия"
 
 /area/station/hallway/secondary/exit
 	name = "Коридор Эвакуационного Шаттла"
@@ -153,6 +150,26 @@
 /area/station/hallway/secondary/bridge
 	name = "Коридор Командования"
 	icon_state = "hallC"
+
+// Hallways for departments
+
+/area/station/hallway/supply
+	name = "Коридор Карго"
+	icon_state = "cargo_hallway"
+
+/area/station/hallway/supply/fore
+	name = "Северный Коридор Карго"
+
+/area/station/hallway/supply/starboard
+	name = "Восточный Коридор Карго"
+
+/area/station/hallway/supply/aft
+	name = "Южный Коридор Карго"
+
+/area/station/hallway/supply/port
+	name = "Западный Коридор Карго"
+
+
 // Other public areas
 
 
@@ -169,7 +186,6 @@
 
 /area/station/public/sleep/secondary
 	name = "Вторичное Криохранилище Дормитория"
-	icon_state = "Sleep"
 
 /area/station/public/locker
 	name = "Бытовое Помещение"
@@ -193,7 +209,7 @@
 	request_console_name = "Crew Quarters"
 
 /area/station/public/arcade
-	name = "Аркаданый Зал"
+	name = "Аркадный Зал"
 	icon_state = "arcade"
 
 /area/station/public/mrchangs
@@ -209,7 +225,7 @@
 	icon_state = "vacantoffice"
 
 /area/station/public/storefront
-	name = "\improper Storefront"
+	name = "Вакантная Коммерческая Зона"
 	icon_state = "vacantoffice"
 
 //Storage
@@ -235,7 +251,6 @@
 
 /area/station/public/storage/emergency/port
 	name = "Западное Аварийное Хранилище"
-	icon_state = "emergencystorage"
 
 /area/station/public/storage/office
 	name = "Комната Канцелярских Принадлежностей"
@@ -248,27 +263,30 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/public/quantum/security
-	name = "Security Quantum Pad"
+	name = "Телепортерный Узел Брига"
+
+/area/station/public/quantum/engineering
+	name = "Телепортерный Узел Инженерии"
 
 /area/station/public/quantum/docking
-	name = "Docking Quantum Pad"
+	name = "Телепортерный Узел Зоны Прибытия"
 
 /area/station/public/quantum/science
-	name = "Science Quantum Pad"
+	name = "Телепортерный Узел Исследовательского Отдела"
 
 /area/station/public/quantum/cargo
-	name = "Cargo Quantum Pad"
+	name = "Телепортерный Узел Карго"
 
 /area/station/public/quantum/service
-	name = "Service Quantum Pad"
+	name = "Телепортерный Узел Сервисного Отдела"
 
 /area/station/public/quantum/medbay
-	name = "Medbay Quantum Pad"
+	name = "Телепортерный Узел Медицинского Отдела"
 
 /area/station/public/park
-	name = "Public Nature Reserve"
+	name = "Общественный Парк"
 	icon_state = "park"
 
 /area/station/public/shops
-	name = "Dorms Public Storefront"
+	name = "Вакантная Коммерческая Зона Дормиториев"
 	icon_state = "shop"

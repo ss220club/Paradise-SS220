@@ -23,7 +23,6 @@
 
 /datum/surgery/heal
 	abstract = TRUE  // don't need this popping up
-	requires_organic_bodypart = TRUE
 	/// A subtype of /datum/surgery_step/heal that this will invoke.
 	var/healing_step_type
 	possible_locs = list(BODY_ZONE_CHEST)
@@ -58,7 +57,7 @@
 	time = 2.5 SECONDS
 	repeatable = TRUE
 
-	// no sounds, since it would quickly get annoying
+	preop_sound = 'sound/surgery/retractor2.ogg'
 
 	var/shown_starting_message_already = FALSE
 
@@ -180,7 +179,6 @@
 
 /datum/surgery_step/heal/brute
 	name = "tend wounds"
-	damage_name_pretty = "wounds"
 	brute_damage_healed = 5
 	brute_damage_healmod = 0.07
 

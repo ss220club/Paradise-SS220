@@ -229,16 +229,10 @@
 /datum/antag_scenario/traitor
 	restricted_species = list("Serpentid")
 
-/datum/antag_scenario/mindflayer
-	restricted_species = list("Serpentid")
-
 /datum/antag_scenario/team/blood_brothers
 	restricted_species = list("Serpentid")
 
 /datum/ruleset/traitor
-	banned_species = list("Serpentid")
-
-/datum/ruleset/mindflayer
 	banned_species = list("Serpentid")
 
 /datum/ruleset/vampire
@@ -268,6 +262,8 @@
 //Расширение для действий органов серпентидов
 /datum/action/item_action/organ_action/toggle/serpentid
 	name = "serpentid organ selection"
+	button_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
+	button_icon_state = "serpentid_abilities"
 
 /datum/action/changeling/transform/sting_action(mob/living/carbon/human/user)
 	. = ..()
