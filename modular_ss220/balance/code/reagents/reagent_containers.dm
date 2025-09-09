@@ -114,7 +114,8 @@
 /obj/item/storage/firstaid/spacer
 	name = "spacer first-aid kit"
 	desc = "A medical kit designed for use in vacuum while wearing EVA and MOD suits. Contains medipens for both brute and burn damage. Also contains an critical state medipen for emergency use and a health analyzer."
-	icon_state = "firstaid"
+	icon_state = "firstaid_spacer"
+	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 
 /obj/item/storage/firstaid/spacer/populate_contents()
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
