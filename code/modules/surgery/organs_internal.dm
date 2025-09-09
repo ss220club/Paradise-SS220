@@ -393,9 +393,11 @@
 		to_chat(user, "<span class='notice'>There is no room for [I] in [target]'s [parse_zone(target_zone)]!</span>")
 		return SURGERY_BEGINSTEP_SKIP
 
+	// SS220 EDIT START - allow the transplantation of dead organs
 	// if(I.damage > (I.max_damage * 0.75))
 	// 	to_chat(user, "<span class='notice'>[I] is in no state to be transplanted.</span>")
 	// 	return SURGERY_BEGINSTEP_SKIP
+	// SS220 EDIT END
 
 	if(affected)
 		user.visible_message(
@@ -460,7 +462,7 @@
 
 
 /datum/surgery_step/internal/manipulate_organs/clean
-	name = "clean organs"
+	name = "clean organs" // SS220 EDIT - Dead organs shouldn't be revivable
 	allowed_tools = list(
 		/obj/item/reagent_containers/dropper = 100,
 		/obj/item/reagent_containers/syringe = 100,
