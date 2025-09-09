@@ -67,8 +67,7 @@
 	var/instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/apply(mob/living/carbon/C, mob/user)
-	if(user == C)
-	else
+	if(user != C)
 		if(!instant_application)
 			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
 			if(!do_after(user, 3 SECONDS, needhand = TRUE, target = C, progress = TRUE))
