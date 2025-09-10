@@ -63,6 +63,10 @@
 	desc = "A small electronic device designed to topically apply healing chemicals. This one can penetrate thick suits."
 	ignore_flags = TRUE
 
+/obj/item/reagent_containers/applicator/dual/syndi
+	name = "advanced dual auto-mender"
+	desc = "A small electronic device designed to topically apply healing chemicals. This one can penetrate thick suits."
+
 /obj/item/reagent_containers/patch/apply(mob/living/carbon/C, mob/user)
 	if(!C.can_inject(user, TRUE))
 		return
