@@ -53,10 +53,15 @@
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT
 
-/obj/item/reagent_containers/applicator/apply(mob/living/carbon/C, mob/user)
-	if(!C.can_inject(user, TRUE))
-		return
-	return ..()
+/obj/item/reagent_containers/applicator/brute/syndi
+	name = "advanced brute auto-mender"
+	desc = "A small electronic device designed to topically apply healing chemicals. This one can penetrate thick suits."
+	ignore_flags = TRUE
+
+/obj/item/reagent_containers/applicator/burn/syndi
+	name = "advanced burn auto-mender"
+	desc = "A small electronic device designed to topically apply healing chemicals. This one can penetrate thick suits."
+	ignore_flags = TRUE
 
 /obj/item/reagent_containers/patch/apply(mob/living/carbon/C, mob/user)
 	if(!C.can_inject(user, TRUE))
@@ -107,8 +112,8 @@
 /obj/item/reagent_containers/hypospray/autoinjector/custom/critical
 	name = "critical state medipen"
 	icon_state = "medipen_blu"
-	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains epinephrine, perfluorodecalin and morphine. <br><span class='boldwarning'>WARNING: Do not inject more than one pen in quick succession.</span>"
-	list_reagents = list("epinephrine" = 14, "salbutamol" = 3, "ephedrine" = 3)
+	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains epinephrine and salbutamol. <br><span class='boldwarning'>WARNING: Do not inject more than one pen in quick succession.</span>"
+	list_reagents = list("epinephrine" = 15, "salbutamol" = 5)
 	instant_application = TRUE
 
 /obj/item/storage/firstaid/spacer
@@ -116,6 +121,8 @@
 	desc = "A medical kit designed for use in vacuum while wearing EVA and MOD suits. Contains medipens for both brute and burn damage. Also contains an critical state medipen for emergency use and a health analyzer."
 	icon_state = "firstaid_spacer"
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
+	lefthand_file = 'modular_ss220/aesthetics/boxes/icons/boxes_lefthand.dmi'
+	righthand_file = 'modular_ss220/aesthetics/boxes/icons/boxes_righthand.dmi'
 
 /obj/item/storage/firstaid/spacer/populate_contents()
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)

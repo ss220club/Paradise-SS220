@@ -94,6 +94,10 @@
 		applying = FALSE
 		update_icon()
 		user.changeNext_move(CLICK_CD_MELEE)
+	// SS220 EDIT START - Menders shouldn't heal through thick suits
+	else
+		return
+	// SS220 EDIT END
 
 /obj/item/reagent_containers/applicator/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(!iscarbon(target))

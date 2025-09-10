@@ -494,10 +494,12 @@
 	max_combined_w_class = 200
 	prefered_slot_flags = ITEM_SLOT_BOTH_POCKETS
 	w_class = WEIGHT_CLASS_TINY
+	// SS220 EDIT START - medipens shouldn't fit in biobags
 	can_hold = list(/obj/item/slime_extract, /obj/item/food/monkeycube,
 					/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/glass/beaker,
-					/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/iv_bag,
-					/obj/item/reagent_containers/hypospray/autoinjector/epinephrine)
+					/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/iv_bag)
+					// /obj/item/reagent_containers/hypospray/autoinjector/epinephrine
+	// SS220 EDIT END
 	resistance_flags = FLAMMABLE
 
 ////////////////////////////////////////

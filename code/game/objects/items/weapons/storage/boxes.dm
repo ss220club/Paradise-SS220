@@ -1187,7 +1187,7 @@
 	new /obj/item/crowbar/small(src)
 	new /obj/item/kitchen/knife/combat(src)
 	new /obj/item/grenade/plastic/c4/x4(src)
-	new /obj/item/reagent_containers/patch/synthflesh(src)
+	new /obj/item/reagent_containers/applicator/dual/syndi(src) // SS220 EDIT - Giving Deathsquad menders that can penetrate their MODs
 	new /obj/item/reagent_containers/hypospray/autoinjector/survival(src)
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
 
