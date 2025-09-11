@@ -8,6 +8,7 @@
 	exp_map = list(EXP_TYPE_CREW = NOVICE_CADET_JOB_MINUTES)
 	outfit = /datum/outfit/job/officer/cadet
 	important_information = "Космический закон это необходимость, а не рекомендация. Ваша должность ограничена во всех взаимодействиях с рабочим имуществом отдела и экипажем станции, при отсутствии приставленного к нему квалифицированного сотрудника или полученного разрешения от вышестоящего начальства."
+	standard_paycheck = CREW_PAY_LOW
 
 /datum/outfit/job/officer/cadet
 	name = "Security Cadet"
@@ -27,6 +28,10 @@
 	)
 	//box = /obj/item/storage/box/survival_security/cadet
 
+/datum/outfit/job/officer/cadet/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	remove_verb(H, /mob/living/carbon/human/proc/sop_legal)
+	remove_verb(H, /mob/living/carbon/human/proc/space_law)
 
 /datum/outfit/job/officer/cadet/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
