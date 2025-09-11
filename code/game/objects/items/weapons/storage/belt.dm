@@ -207,7 +207,7 @@
 		/obj/item/flashlight/pen,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/gloves/color/latex,
-		/obj/item/reagent_containers/hypospray/autoinjector/epinephrine,
+		/obj/item/reagent_containers/hypospray/autoinjector, // SS220 EDIT - Medbelt should hold any autoinjectors
 		/obj/item/reagent_containers/hypospray/cmo,
 		/obj/item/reagent_containers/hypospray/safety,
 		/obj/item/sensor_device,
