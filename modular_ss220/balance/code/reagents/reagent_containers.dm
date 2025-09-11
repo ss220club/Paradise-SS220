@@ -103,21 +103,21 @@
 	name = "brute medipen"
 	icon_state = "medipen_red"
 	desc = "A rapid and safe way to tend wounds and deal with minor pain even through spacesuits. Contains bicaridine and salicylic acid."
-	list_reagents = list("bicaridine" = 15, "sal_acid" = 5)
+	list_reagents = list("bicaridine" = 10, "sal_acid" = 5)
 	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/burn
 	name = "burn medipen"
 	icon_state = "medipen_org"
 	desc = "A rapid and safe way to tend burns and regulate body's temperature even through spacesuits. Contains kelotane and menthol."
-	list_reagents = list("kelotane" = 15, "menthol" = 5)
+	list_reagents = list("kelotane" = 10, "menthol" = 5)
 	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/critical
 	name = "critical state medipen"
 	icon_state = "medipen_blu"
-	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains epinephrine and salbutamol. <br><span class='boldwarning'>WARNING: Do not inject more than one pen in quick succession.</span>"
-	list_reagents = list("epinephrine" = 15, "salbutamol" = 5)
+	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains epinephrine and salbutamol."
+	list_reagents = list("epinephrine" = 10, "salbutamol" = 5)
 	instant_application = TRUE
 
 /obj/item/storage/firstaid/spacer
@@ -141,7 +141,7 @@
 	contains = list(/obj/item/storage/firstaid/spacer,
 					/obj/item/storage/firstaid/spacer,
 					/obj/item/storage/firstaid/spacer)
-	cost = 600
+	cost = 400
 	containername = "spacer first-aid kits crate"
 
 /obj/machinery/suit_storage_unit/expedition
