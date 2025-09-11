@@ -1,3 +1,4 @@
+// MARK: REAGENT CONTAINERS REBALANCING
 #define BORGHYPO_REFILL_VALUE 10
 #define SYNDICATE_NANITES_LIMIT 250
 
@@ -86,6 +87,7 @@
 		C.visible_message(span_warning("[user] вкалывает [src] в [C]."))
 	return ..()
 
+// MARK: CUSTOM MEDIPENS
 /obj/item/reagent_containers/hypospray/autoinjector/custom
 	icon = 'modular_ss220/aesthetics/medipens/icon/medipens.dmi'
 	icon_state = "medipen"
@@ -120,6 +122,7 @@
 	list_reagents = list("epinephrine" = 10, "salbutamol" = 5)
 	instant_application = TRUE
 
+// MARK: SPACER FIRST-AID KIT
 /obj/item/storage/firstaid/spacer
 	name = "spacer first-aid kit"
 	desc = "A medical kit designed for use in vacuum while wearing EVA and MOD suits. Contains medipens for both brute and burn damage. Also contains an critical state medipen for emergency use and a health analyzer."
@@ -149,3 +152,46 @@
 
 /obj/machinery/suit_storage_unit/security
 	storage_type = /obj/item/storage/firstaid/spacer
+
+// MARK: MEDIPEN CASE
+/obj/item/storage/pill_bottle
+	var/allow_rapid_intake = TRUE
+
+/obj/item/storage/pill_bottle/attack__legacy__attackchain(mob/M, mob/user)
+	if(!allow_rapid_intake)
+		return
+	return ..()
+
+/obj/item/storage/pill_bottle/medipen_case
+	name = "autoinjector case"
+	desc = "It's a container for storing medical autoinjectors."
+	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
+	icon_state = "medipen_case"
+	belt_icon = "patch_pack"
+	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/plasticbox_open.ogg'
+	can_hold = list(/obj/item/reagent_containers/hypospray/autoinjector)
+	cant_hold = list(/obj/item/reagent_containers/patch, /obj/item/reagent_containers/pill)
+	storage_slots = 5
+	max_combined_w_class = 5
+	display_contents_with_number = FALSE
+	wrapper_state = "medipen_case_wrap"
+	allow_rapid_intake = FALSE
+
+/datum/design/medipencase
+	name = "Autoinjector Case"
+	id = "medipencase"
+	build_type = AUTOLATHE
+	materials = list(MAT_METAL = 160, MAT_GLASS = 40)
+	build_path = /obj/item/storage/pill_bottle/medipen_case
+	category = list("initial", "Medical")
+
+/obj/item/storage/box/medipen_cases
+	name = "box of autoinjector cases"
+	desc = "It has pictures of autoinjector case on its front."
+	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
+	icon_state = "medipen_box"
+
+/obj/item/storage/box/medipen_cases/populate_contents()
+	for(var/I in 1 to 7)
+		var/obj/item/storage/pill_bottle/P = new /obj/item/storage/pill_bottle/medipen_case(src)
+		P.apply_wrapper_color(I)
