@@ -472,7 +472,7 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bag"
 	desc = "A bag for storing pills, patches, and bottles."
-	storage_slots = 25 // SS220 EDIT 50 -> 25
+	storage_slots = 50
 	max_combined_w_class = 200
 	prefered_slot_flags = ITEM_SLOT_BOTH_POCKETS
 	w_class = WEIGHT_CLASS_TINY
