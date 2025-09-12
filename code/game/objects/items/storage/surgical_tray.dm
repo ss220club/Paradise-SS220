@@ -34,8 +34,10 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/bonegel(src)
 	new /obj/item/bonesetter(src)
-	new /obj/item/stack/medical/bruise_pack/advanced(src)
-	new /obj/item/stack/medical/ointment/advanced(src)
+	// SS220 EDIT START - remove meds
+	// new /obj/item/stack/medical/bruise_pack/advanced(src)
+	// new /obj/item/stack/medical/ointment/advanced(src)
+	// SS220 EDIT END
 	new /obj/item/surgical_drapes(src)
 
 /obj/item/storage/surgical_tray/update_icon_state()

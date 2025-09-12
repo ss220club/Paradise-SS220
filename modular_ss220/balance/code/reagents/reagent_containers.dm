@@ -105,14 +105,14 @@
 	name = "brute medipen"
 	icon_state = "medipen_red"
 	desc = "A rapid and safe way to tend wounds and deal with minor pain even through spacesuits. Contains bicaridine and salicylic acid."
-	list_reagents = list("bicaridine" = 10, "sal_acid" = 5)
+	list_reagents = list("bicaridine" = 10, "sal_acid" = 3)
 	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/burn
 	name = "burn medipen"
 	icon_state = "medipen_org"
 	desc = "A rapid and safe way to tend burns and regulate body's temperature even through spacesuits. Contains kelotane and menthol."
-	list_reagents = list("kelotane" = 10, "menthol" = 5)
+	list_reagents = list("kelotane" = 10, "menthol" = 3)
 	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/critical
@@ -143,7 +143,9 @@
 	name = "Spacer First-Aid Kits Crate"
 	contains = list(/obj/item/storage/firstaid/spacer,
 					/obj/item/storage/firstaid/spacer,
-					/obj/item/storage/firstaid/spacer)
+					/obj/item/storage/firstaid/spacer,
+					/obj/item/storage/firstaid/spacer
+					)
 	cost = 400
 	containername = "spacer first-aid kits crate"
 
@@ -170,7 +172,6 @@
 	belt_icon = "patch_pack"
 	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/plasticbox_open.ogg'
 	can_hold = list(/obj/item/reagent_containers/hypospray/autoinjector)
-	cant_hold = list(/obj/item/reagent_containers/patch, /obj/item/reagent_containers/pill)
 	storage_slots = 5
 	max_combined_w_class = 5
 	display_contents_with_number = FALSE

@@ -472,14 +472,18 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bag"
 	desc = "A bag for storing pills, patches, and bottles."
-	storage_slots = 50
+	storage_slots = 25 // SS220 EDIT 50 -> 25
 	max_combined_w_class = 200
 	prefered_slot_flags = ITEM_SLOT_BOTH_POCKETS
 	w_class = WEIGHT_CLASS_TINY
+	// SS220 EDIT START - autoinjectors should fit in chembags
 	can_hold = list(/obj/item/reagent_containers/pill,
 					/obj/item/reagent_containers/patch,
 					/obj/item/reagent_containers/glass/beaker,
-					/obj/item/reagent_containers/glass/bottle)
+					/obj/item/reagent_containers/glass/bottle,
+					/obj/item/reagent_containers/hypospray/autoinjector
+					)
+	// SS220 EDIT END
 	resistance_flags = FLAMMABLE
 
 ////////////////////////////////////////
@@ -494,10 +498,16 @@
 	max_combined_w_class = 200
 	prefered_slot_flags = ITEM_SLOT_BOTH_POCKETS
 	w_class = WEIGHT_CLASS_TINY
-	can_hold = list(/obj/item/slime_extract, /obj/item/food/monkeycube,
-					/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/glass/beaker,
-					/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/iv_bag,
-					/obj/item/reagent_containers/hypospray/autoinjector/epinephrine)
+	// SS220 EDIT START - autoinjectors shouldn't fit in biobags
+	can_hold = list(/obj/item/slime_extract,
+					/obj/item/food/monkeycube,
+					/obj/item/reagent_containers/syringe,
+					/obj/item/reagent_containers/glass/beaker,
+					/obj/item/reagent_containers/glass/bottle,
+					/obj/item/reagent_containers/iv_bag,
+					/obj/item/reagent_containers/dropper
+					)
+	// SS220 EDIT END
 	resistance_flags = FLAMMABLE
 
 ////////////////////////////////////////
