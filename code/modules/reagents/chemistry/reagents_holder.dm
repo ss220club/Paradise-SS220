@@ -362,10 +362,15 @@
 				R.overdose_start(M)
 			if(!R.overdosed || R.allowed_overdose_process)
 				// SS220 EDIT START - Prevent microdosing
-				if (R.volume < R.metabolization_rate)
+				var/total_depletion_rate = R.metabolization_rate * M.metabolism_efficiency
+				if(R.volume < total_depletion_rate)
+					if (R.overdosed)
+						R.overdosed = FALSE
+						R.overdose_end(M)
 					R.holder.remove_reagent(R.id, R.volume)
-				else
-					update_flags |= R.on_mob_life(M)
+					continue
+
+				update_flags |= R.on_mob_life(M)
 				// SS220 EDIT END
 			else
 				update_flags |= R.on_mob_overdose_life(M) //We want to drain reagents but not do the entire mob life.
