@@ -10,7 +10,13 @@
 	base_icon_state = "cryopod"
 	occupied_icon_state = "cryopod_closed"
 
+/obj/effect/mob_spawn/human/alive/old
+	icon = 'modular_ss220/aesthetics/sleepers/icon/sleepers.dmi'
+
 /obj/effect/mob_spawn/human/alive/spacebase_syndicate
+	icon = 'modular_ss220/aesthetics/sleepers/icon/sleepers.dmi'
+
+/obj/structure/showcase/machinery/oldpod
 	icon = 'modular_ss220/aesthetics/sleepers/icon/sleepers.dmi'
 
 /obj/machinery/sleeper/clockwork
