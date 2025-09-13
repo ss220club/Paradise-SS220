@@ -226,7 +226,7 @@
 /obj/item/storage/firstaid/ert/populate_contents()
 	new /obj/item/healthanalyzer/advanced(src)
 	new /obj/item/stack/medical/splint(src)
-	new /obj/item/reagent_containers/applicator/dual(src)
+	new /obj/item/reagent_containers/applicator/dual/syndi(src) // SS220 EDIT - Giving ERT menders that can penetrate their MODs
 	new /obj/item/stack/medical/ointment/advanced(src)
 	new /obj/item/stack/medical/ointment/advanced(src)
 	new /obj/item/stack/medical/bruise_pack/advanced(src)
@@ -240,8 +240,8 @@
 
 /obj/item/storage/firstaid/ert_amber/populate_contents()
 	new /obj/item/healthanalyzer/advanced(src)
-	new /obj/item/reagent_containers/applicator/brute(src)
-	new /obj/item/reagent_containers/applicator/burn(src)
+	new /obj/item/reagent_containers/applicator/brute/syndi(src) // SS220 EDIT
+	new /obj/item/reagent_containers/applicator/burn/syndi(src) // Giving ERT menders that can penetrate their MODs
 	new /obj/item/stack/medical/bruise_pack/advanced(src)
 	new /obj/item/stack/medical/ointment/advanced(src)
 	new /obj/item/storage/pill_bottle/ert_amber(src)

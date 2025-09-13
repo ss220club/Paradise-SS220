@@ -18,3 +18,9 @@
 
 #undef DEFAULT_DAMAGE
 #undef ADDITIONAL_DAMAGE
+
+/datum/chemical_production_mode/patches
+	max_units_per_item = 20
+
+/datum/chemical_production_mode/pills
+	max_units_per_item = 20
