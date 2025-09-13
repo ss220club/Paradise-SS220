@@ -393,9 +393,11 @@
 		to_chat(user, "<span class='notice'>There is no room for [I] in [target]'s [parse_zone(target_zone)]!</span>")
 		return SURGERY_BEGINSTEP_SKIP
 
-	if(I.damage > (I.max_damage * 0.75))
-		to_chat(user, "<span class='notice'>[I] is in no state to be transplanted.</span>")
-		return SURGERY_BEGINSTEP_SKIP
+	// SS220 EDIT START - allow the transplantation of dead organs
+	// if(I.damage > (I.max_damage * 0.75))
+	// 	to_chat(user, "<span class='notice'>[I] is in no state to be transplanted.</span>")
+	// 	return SURGERY_BEGINSTEP_SKIP
+	// SS220 EDIT END
 
 	if(affected)
 		user.visible_message(
@@ -460,7 +462,7 @@
 
 
 /datum/surgery_step/internal/manipulate_organs/clean
-	name = "clean and/or revive organs"
+	name = "clean organs" // SS220 EDIT - Dead organs shouldn't be revivable
 	allowed_tools = list(
 		/obj/item/reagent_containers/dropper = 100,
 		/obj/item/reagent_containers/syringe = 100,
@@ -514,14 +516,14 @@
 	var/datum/reagents/R = C.reagents
 	var/ethanol = 0 //how much alcohol is in the thing
 	var/spaceacillin = 0 //how much actual antibiotic is in the thing
-	var/mito_tot = 0 // same for mito, thanks farie
+	// var/mito_tot = 0 // same for mito, thanks farie // SS220 EDIT - Dead organs shouldn't be revivable
 
 	if(length(R.reagent_list))
 		for(var/datum/reagent/consumable/ethanol/alcohol in R.reagent_list)
 			ethanol += alcohol.alcohol_perc * 300
 		ethanol /= length(R.reagent_list)
 
-		mito_tot = R.get_reagent_amount("mitocholide")
+		// mito_tot = R.get_reagent_amount("mitocholide") // SS220 EDIT - Dead organs shouldn't be revivable
 		spaceacillin = R.get_reagent_amount("spaceacillin")
 
 
@@ -531,7 +533,7 @@
 		if(I.germ_level < INFECTION_LEVEL_ONE / 2 && !(I.status & ORGAN_DEAD))  // not dead, don't need to inject mito either
 			to_chat(user, "[I] does not appear to need chemical treatment.")
 			continue
-		if(!spaceacillin && !ethanol && !mito_tot)
+		if(!spaceacillin && !ethanol) // SS220 EDIT -!mito_tot - Dead organs shouldn't be revivable
 			to_chat(user, "<span class='warning'>[C] doesn't have anything in it that would be worth applying!</span>")
 			break
 		var/success = FALSE
@@ -547,11 +549,12 @@
 			else if(!(I.status & ORGAN_DEAD)) // Not dead and got nothing to disinfect the organ with. Don't waste the other chems
 				to_chat(user, "<span class='warning'>[I] does appear mildly infected but [C] does not seem to contain disinfectants. You decide to not inject the chemicals into [I].</span>")
 				continue
-
-		var/mito_trans
-		if(mito_tot && (I.status & ORGAN_DEAD) && !I.is_robotic())
-			mito_trans = min(mito_tot, C.amount_per_transfer_from_this / length(R.reagent_list)) // How much mito is actually transfered
-			success = TRUE
+		// SS220 EDIT START - Dead organs shouldn't be revivable
+		// var/mito_trans
+		// if(mito_tot && (I.status & ORGAN_DEAD) && !I.is_robotic())
+		// 	mito_trans = min(mito_tot, C.amount_per_transfer_from_this / length(R.reagent_list)) // How much mito is actually transfered
+		// 	success = TRUE
+		// SS220 EDIT END
 		if(!success)
 			to_chat(user, "<span class='warning'>[C] does not seem to have the chemicals needed to clean [I]. You decide against wasting chemicals.</span>")
 			continue
@@ -573,17 +576,17 @@
 
 		R.reaction(target, REAGENT_INGEST, R.total_volume / C.amount_per_transfer_from_this)
 		R.trans_to(target, C.amount_per_transfer_from_this)
-
-		if(mito_trans)
-			mito_tot -= mito_trans
-			if(I.is_robotic()) // Get out cyborg people
-				continue
-			if(mito_trans >= MITO_REVIVAL_COST)
-				I.rejuvenate() // Just like splashing it onto it
-				user.visible_message("<span class='warning'>\The [I] seems to regain its lively luster!</span>")
-			else
-				to_chat(user, "<span class='warning'>[I] does not seem to respond to the amount of mitocholide inside the injection. Try injecting more next time.</span>")
-
+		// SS220 EDIT START - Dead organs shouldn't be revivable
+		// if(mito_trans)
+		// 	mito_tot -= mito_trans
+		// 	if(I.is_robotic()) // Get out cyborg people
+		// 		continue
+		// 	if(mito_trans >= MITO_REVIVAL_COST)
+		// 		I.rejuvenate() // Just like splashing it onto it
+		// 		user.visible_message("<span class='warning'>\The [I] seems to regain its lively luster!</span>")
+		// 	else
+		// 		to_chat(user, "<span class='warning'>[I] does not seem to respond to the amount of mitocholide inside the injection. Try injecting more next time.</span>")
+		// SS220 EDIT END
 	return SURGERY_STEP_CONTINUE
 
 
