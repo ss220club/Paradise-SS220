@@ -176,6 +176,17 @@
 	if(user.a_intent == INTENT_HARM && force)
 		return NONE
 
+	// SS220 EDIT START - No More Eating And Drinking With Mouth Covered
+	if(isliving(target))
+		var/mob/living/L = target
+		if(L.is_mouth_covered())
+			if(L == user)
+				to_chat(user, "<span class='warning'>Вы не можете есть с закрытым ртом!</span>")
+			else
+				to_chat(user, "<span class='warning'>[L] не может есть с закрытым ртом!</span>")
+			return NONE
+	// SS220 EDIT END
+
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(reagents && !reagents.total_volume)	// Shouldn't be needed but it checks to see if it has anything left in it.
 		to_chat(user, "<span class='warning'>None of [src] left, oh no!</span>")

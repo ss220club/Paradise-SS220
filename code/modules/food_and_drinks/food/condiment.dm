@@ -47,6 +47,17 @@
 		to_chat(user, "<span class='warning'>You cannot find a way to feed [target].</span>")
 		return
 
+	// SS220 EDIT START - No More Eating And Drinking With Mouth Covered
+	if(isliving(target))
+		var/mob/living/L = target
+		if(L.is_mouth_covered())
+			if(L == user)
+				to_chat(user, "<span class='warning'>Вы не можете пить с закрытым ртом!</span>")
+			else
+				to_chat(user, "<span class='warning'>[L] не может пить с закрытым ртом!</span>")
+			return FALSE
+	// SS220 EDIT END
+
 	if(target == user)
 		to_chat(user, "<span class='notice'>You swallow some of the contents of [src].</span>")
 	else

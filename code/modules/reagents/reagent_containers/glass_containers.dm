@@ -35,6 +35,17 @@
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return
 
+	// SS220 EDIT START - No More Eating And Drinking With Mouth Covered
+	if(isliving(target))
+		var/mob/living/L = target
+		if(L.is_mouth_covered())
+			if(L == user)
+				to_chat(user, "<span class='warning'>Вы не можете пить с закрытым ртом!</span>")
+			else
+				to_chat(user, "<span class='warning'>[L] не может пить с закрытым ртом!</span>")
+			return
+	// SS220 EDIT END
+
 	if(istype(target))
 		var/list/transferred = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
