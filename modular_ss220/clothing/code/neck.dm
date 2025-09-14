@@ -50,3 +50,12 @@
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/neck.dmi',
 	)
 
+/obj/item/clothing/neck/scarf/scary
+	name = "realy scary"
+	icon_state = "scary"
+	item_color = "scary"
+	icon = 'modular_ss220/clothing/icons/object/neck.dmi'
+	dog_fashion = null
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/neck.dmi',
+	)
