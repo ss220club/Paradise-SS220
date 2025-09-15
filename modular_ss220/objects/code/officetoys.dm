@@ -205,3 +205,26 @@
 	mid_length = 9
 	end_sound = FALSE
 	volume = 50
+
+// Desk Flags
+/obj/item/deskflag
+	name = "You shouldn't see this"
+	icon = 'modular_ss220/objects/icons/officetoys.dmi'
+	icon_state = "deskflag"
+	layer = ABOVE_MOB_LAYER
+
+/obj/item/deskflag/nanotrasen
+	name = "corporate desk flag"
+	icon_state = "deskflag_nanotrasen"
+
+/obj/item/deskflag/syndicate
+	name = "suspicious desk flag"
+	icon_state = "deskflag_syndicate"
+
+/obj/item/deskflag/tsf
+	name = "solar desk flag"
+	icon_state = "deskflag_solgov"
+
+/obj/item/deskflag/ussp
+	name = "soviet desk flag"
+	icon_state = "deskflag_soviet"

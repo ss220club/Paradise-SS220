@@ -13127,10 +13127,16 @@
 	},
 /obj/structure/table/glass,
 /obj/item/folder/blue{
-	pixel_y = 2
+	pixel_y = 4;
+	pixel_x = -8
 	},
 /obj/item/folder/blue{
-	pixel_y = 2
+	pixel_y = 6;
+	pixel_x = -8
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 3;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -17882,6 +17888,9 @@
 /obj/machinery/light_switch/north,
 /obj/machinery/light/small/directional/north,
 /obj/structure/table/wood,
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
 /turf/simulated/floor/wood,
 /area/station/science/robotics/showroom)
 "bQy" = (
@@ -18820,12 +18829,23 @@
 /area/station/hallway/primary/central/sw)
 "bVg" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/sop_command,
 /obj/item/folder/blue{
-	pixel_x = 4;
-	pixel_y = 6
+	pixel_x = 7;
+	pixel_y = 4
 	},
 /obj/machinery/keycard_auth/directional/west,
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/pen/blue{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/paper/blueshield{
+	pixel_x = 7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/blueshield)
 "bVi" = (
@@ -19105,10 +19125,15 @@
 /area/station/ai_monitored/storage/eva)
 "bWC" = (
 /obj/structure/table/wood,
-/obj/item/paper/blueshield,
-/obj/item/paper_bin,
-/obj/item/pen/blue,
 /obj/machinery/requests_console/directional/west,
+/obj/item/book/manual/wiki/sop_command{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = -7;
+	pixel_y = 6
+	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/blueshield)
 "bWD" = (
@@ -20570,6 +20595,10 @@
 	pixel_x = -5;
 	pixel_y = 1
 	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 8;
+	pixel_y = 5
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "cdD" = (
@@ -20893,6 +20922,10 @@
 /obj/item/pen{
 	pixel_x = -3;
 	pixel_y = 5
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 10;
+	pixel_y = 4
 	},
 /turf/simulated/floor/wood,
 /area/station/command/office/hop)
@@ -35688,7 +35721,8 @@
 "eIj" = (
 /obj/structure/table/wood,
 /obj/item/ashtray/bronze{
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = -4
 	},
 /obj/item/flashlight/lamp/green/off{
 	pixel_y = 3;
@@ -35698,6 +35732,10 @@
 	id = "CaptainOfficeDoor";
 	name = "Captain Office Door Control";
 	req_access = list(20)
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 8;
+	pixel_y = 11
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/office/captain)
@@ -45357,6 +45395,9 @@
 	icon_state = "0-4"
 	},
 /obj/structure/table/wood,
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
 /turf/simulated/floor/wood,
 /area/station/science/robotics/showroom)
 "ima" = (

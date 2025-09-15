@@ -20294,6 +20294,7 @@
 	},
 /obj/item/melee/chainofcommand,
 /obj/item/card/id/captains_spare,
+/obj/item/coin/plasma,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
 "byP" = (
@@ -50156,10 +50157,17 @@
 /area/station/engineering/hallway)
 "fqJ" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/coin/plasma,
-/obj/item/book/manual/wiki/sop_general,
-/obj/item/book/manual/wiki/sop_command,
+/obj/item/book/manual/wiki/sop_general{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/book/manual/wiki/sop_command{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 6
+	},
 /obj/item/megaphone,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
@@ -51683,22 +51691,33 @@
 /area/station/maintenance/asmaint2)
 "fQw" = (
 /obj/structure/table/wood,
-/obj/item/folder/blue{
-	pixel_y = 8
-	},
-/obj/item/stamp/captain{
-	pixel_x = -10
-	},
 /obj/machinery/door_control/normal{
 	id = "captainofficedoor";
 	name = "Office Door";
 	pixel_y = -3;
-	req_access = list(20)
+	req_access = list(20);
+	pixel_x = 7
+	},
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -10;
+	pixel_y = 4
+	},
+/obj/item/pen/multi/fountain{
+	pixel_x = -10;
+	pixel_y = 4
+	},
+/obj/item/folder/blue{
+	pixel_y = 8;
+	pixel_x = 6
 	},
 /obj/item/paper/safe_code{
 	owner = "captain";
-	pixel_x = 11;
-	pixel_y = 4
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/stamp/captain{
+	pixel_x = 3;
+	pixel_y = 8
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
@@ -59185,9 +59204,14 @@
 /area/station/engineering/control)
 "ilc" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin/nanotrasen,
-/obj/item/pen/multi/fountain,
-/obj/item/hand_tele,
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/hand_tele{
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
 "ild" = (
@@ -68695,7 +68719,14 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/storage/fancy/donut_box,
+/obj/item/storage/fancy/donut_box{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = -8;
+	pixel_y = 4
+	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/blueshield)
 "lxc" = (
@@ -80634,13 +80665,27 @@
 "pll" = (
 /obj/structure/table/wood,
 /obj/item/clipboard{
-	pixel_x = -2
+	pixel_x = -5;
+	pixel_y = 4
 	},
-/obj/item/folder,
-/obj/item/pen/multi/fountain,
-/obj/item/stamp/rep,
+/obj/item/folder{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/pen/multi/fountain{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/stamp/rep{
+	pixel_x = -5;
+	pixel_y = 10
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 7;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
@@ -97239,8 +97284,11 @@
 /obj/item/phone{
 	desc = "Предположительно, это прямая линия с центральным командованием Нанотрейзен. Он даже не подключен.";
 	name = "красный телефон";
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = 8
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = -7;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
@@ -104036,6 +104084,10 @@
 /obj/machinery/camera{
 	c_tag = "HoP Office";
 	dir = 1
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/command/office/hop)

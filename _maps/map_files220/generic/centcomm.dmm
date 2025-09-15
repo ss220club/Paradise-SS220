@@ -462,9 +462,17 @@
 	color = "#996633"
 	},
 /obj/item/book/manual/wiki/sop_general{
-	pixel_x = 5
+	pixel_x = 6;
+	pixel_y = 1
 	},
-/obj/item/book/manual/wiki/security_space_law/black,
+/obj/item/book/manual/wiki/security_space_law/black{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = -7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/carpet/blue,
 /area/centcom/ss220/admin2)
 "aoD" = (
@@ -2646,6 +2654,26 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/general)
+"blp" = (
+/obj/structure/table/reinforced,
+/obj/item/syndicatedetonator{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/deskflag/syndicate{
+	pixel_x = 7;
+	pixel_y = 13
+	},
+/obj/item/stamp/syndicate{
+	pixel_x = -6;
+	pixel_y = -1
+	},
+/obj/item/stamp/chameleon{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/turf/simulated/floor/carpet,
+/area/syndicate_mothership/control)
 "blv" = (
 /obj/machinery/cryopod/robot/offstation,
 /turf/simulated/floor/plasteel/dark{
@@ -3921,8 +3949,11 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/storage/secure/briefcase,
 /obj/machinery/newscaster/directional/north,
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "bQB" = (
@@ -8446,6 +8477,9 @@
 "dJs" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced,
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
 "dJv" = (
@@ -10069,6 +10103,9 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_herringbone"
 	},
@@ -11202,6 +11239,10 @@
 /area/centcom/ss220/bar)
 "eSd" = (
 /obj/structure/table/glass/reinforced/titanium,
+/obj/item/deskflag/nanotrasen{
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/centcom/ss220/admin2)
 "eSh" = (
@@ -12839,7 +12880,12 @@
 	dir = 8
 	},
 /obj/item/paper{
-	pixel_y = 2
+	pixel_y = 35;
+	pixel_x = -3
+	},
+/obj/item/storage/secure/briefcase{
+	pixel_x = 1;
+	pixel_y = 1
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -14388,12 +14434,16 @@
 "gny" = (
 /obj/structure/table/wood,
 /obj/item/folder/red{
-	pixel_x = 5;
-	pixel_y = 8
+	pixel_x = 7;
+	pixel_y = 4
 	},
 /obj/structure/curtain/black{
 	pixel_x = -32;
 	anchored = 1
+	},
+/obj/item/deskflag/syndicate{
+	pixel_x = -6;
+	pixel_y = 7
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/infteam)
@@ -14497,6 +14547,13 @@
 	icon_state = "darkyellowaltstrip"
 	},
 /area/syndicate_mothership/control)
+"gpy" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "gpF" = (
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
@@ -14864,15 +14921,19 @@
 	light_range = 6
 	},
 /obj/structure/table/wood/fancy/royalblack,
-/obj/item/stamp/syndicate{
-	pixel_x = 6;
-	pixel_y = -4
-	},
 /obj/item/stamp/chameleon{
-	pixel_x = 4;
-	pixel_y = 6
+	pixel_x = 6;
+	pixel_y = 9
 	},
 /obj/effect/turf_decal/miscellaneous/goldensiding,
+/obj/item/deskflag/syndicate{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/stamp/syndicate{
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "gyt" = (
@@ -17910,6 +17971,13 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
+"hLM" = (
+/obj/structure/table/wood/fancy/black,
+/obj/item/deskflag/ussp{
+	pixel_y = 7
+	},
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "hLN" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 6;
@@ -24906,6 +24974,26 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin1)
+"kLx" = (
+/obj/structure/light_fake/small{
+	light_range = 6
+	},
+/obj/structure/table/wood/fancy/royalblack,
+/obj/item/stamp/chameleon{
+	pixel_x = 7;
+	pixel_y = 11
+	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
+/obj/item/deskflag/syndicate{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/stamp/syndicate{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/turf/simulated/floor/carpet/black,
+/area/syndicate_mothership/control)
 "kLU" = (
 /obj/structure/dresser,
 /turf/simulated/floor/carpet/red,
@@ -27399,6 +27487,9 @@
 /area/syndicate_mothership/cargo)
 "lPi" = (
 /obj/structure/table/glass,
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/general)
 "lPo" = (
@@ -30022,6 +30113,14 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/supply)
+"nab" = (
+/obj/structure/table/glass,
+/obj/item/deskflag/nanotrasen{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/centcom/ss220/general)
 "nar" = (
 /obj/mecha/combat/gygax/nt/loaded_epsilon,
 /obj/effect/turf_decal/stripes/red/line,
@@ -31730,9 +31829,17 @@
 "nNU" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin/syndicate{
-	pixel_y = 7
+	pixel_y = 3;
+	pixel_x = 6
 	},
-/obj/item/pen/fancy,
+/obj/item/pen/fancy{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/deskflag/syndicate{
+	pixel_x = -7;
+	pixel_y = 6
+	},
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/control)
 "nNZ" = (
@@ -35631,6 +35738,9 @@
 /area/syndicate_mothership/control)
 "pCD" = (
 /obj/structure/table/wood/fancy/royalblack,
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
 /turf/simulated/floor/carpet/purple,
 /area/centcom/ss220/admin2)
 "pCJ" = (
@@ -39268,11 +39378,16 @@
 	color = "#996633"
 	},
 /obj/item/flashlight/lamp/green/off{
-	pixel_y = 10
+	pixel_y = 12;
+	pixel_x = 3
 	},
 /obj/item/ashtray/bronze{
 	pixel_x = 5;
 	pixel_y = -4
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = -7;
+	pixel_y = 5
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
@@ -40969,6 +41084,22 @@
 /obj/item/bonegel/alien,
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
+"rRD" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin/syndicate{
+	pixel_y = 3;
+	pixel_x = 5
+	},
+/obj/item/pen/fancy{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/item/deskflag/syndicate{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/turf/simulated/floor/carpet,
+/area/syndicate_mothership/control)
 "rRY" = (
 /obj/structure/light_fake{
 	dir = 8
@@ -44651,6 +44782,9 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_herringbone"
 	},
@@ -46740,6 +46874,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership)
+"uwB" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/deskflag/tsf{
+	pixel_y = 7
+	},
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "uwE" = (
 /turf/simulated/floor/wood,
 /area/ghost_bar/indoor)
@@ -48976,7 +49117,12 @@
 "vuV" = (
 /obj/structure/table/glass,
 /obj/item/paper{
-	pixel_y = 2
+	pixel_y = 3;
+	pixel_x = 6
+	},
+/obj/item/deskflag/nanotrasen{
+	pixel_x = -7;
+	pixel_y = 7
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -51220,13 +51366,9 @@
 	name = "Blast Window Open";
 	pixel_x = -6
 	},
-/obj/item/paper_bin/nanotrasen{
+/obj/item/deskflag/nanotrasen{
 	pixel_x = 5;
 	pixel_y = 5
-	},
-/obj/item/pen/multi/gold{
-	pixel_x = 6;
-	pixel_y = 3
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/admin2)
@@ -51349,6 +51491,9 @@
 	pixel_x = -4
 	},
 /obj/structure/table/glass,
+/obj/item/deskflag/nanotrasen{
+	pixel_y = 7
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/general)
 "wwo" = (
@@ -51375,11 +51520,16 @@
 "wwK" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin/syndicate{
-	pixel_x = -2;
-	pixel_y = 2
+	pixel_x = -4;
+	pixel_y = 4
 	},
 /obj/item/pen/fancy{
-	pixel_x = 8
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/deskflag/syndicate{
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/control)
@@ -52958,7 +53108,14 @@
 /area/shuttle/syndicate)
 "xeN" = (
 /obj/structure/table/reinforced,
-/obj/item/syndicatedetonator,
+/obj/item/syndicatedetonator{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/deskflag/syndicate{
+	pixel_x = -5;
+	pixel_y = 6
+	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/elite_squad)
 "xeT" = (
@@ -63890,7 +64047,7 @@ bcg
 rzI
 bkK
 fjI
-lPi
+nab
 axu
 gcV
 jIT
@@ -66878,7 +67035,7 @@ gZH
 ggq
 nML
 eVk
-mKA
+blp
 bUU
 rHF
 oTz
@@ -68561,9 +68718,9 @@ ciP
 oqI
 iQa
 poi
-giW
+gpy
 aZq
-bqV
+hLM
 ebd
 iQa
 oFG
@@ -69589,9 +69746,9 @@ ciP
 aJO
 iQa
 poi
-giW
+uwB
 uVd
-bqV
+hLM
 ebd
 iQa
 nls
@@ -69960,7 +70117,7 @@ hLH
 urf
 nGz
 nML
-nNU
+rRD
 mkf
 bUU
 wPj
@@ -71256,7 +71413,7 @@ fxM
 lTh
 oTz
 oTz
-gyr
+kLx
 fxM
 bxA
 vVY
