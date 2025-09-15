@@ -21682,14 +21682,6 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
-"bFN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 10
-	},
-/obj/machinery/atmospherics/meter,
-/turf/simulated/floor/plasteel,
-/area/station/maintenance/turbine)
 "bFO" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -34928,14 +34920,6 @@
 /obj/structure/chair/stool,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
-"cIs" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/binary/valve{
-	dir = 4;
-	name = "Outlet to Space"
-	},
-/turf/simulated/floor/plasteel,
-/area/station/maintenance/turbine)
 "cIt" = (
 /obj/machinery/door/window/classic/reversed{
 	dir = 1;
@@ -38617,11 +38601,11 @@
 "cWm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/extinguisher_cabinet/directional/south,
-/obj/machinery/atmospherics/portable/canister,
-/obj/machinery/atmospherics/unary/portables_connector{
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "cWp" = (
@@ -50671,7 +50655,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
+	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
 "fzh" = (
@@ -52186,9 +52172,9 @@
 	},
 /area/station/maintenance/asmaint)
 "fZy" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 1;
-	autolink_id = "gas_turbine"
+	autolink_id = "gas_turbine_outlet_scrubber"
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -59467,9 +59453,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6
-	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "iqI" = (
@@ -64585,6 +64568,12 @@
 	icon_state = "dark"
 	},
 /area/station/turret_protected/aisat/interior)
+"kcq" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5
+	},
+/turf/simulated/wall/r_wall,
+/area/station/maintenance/turbine)
 "kcx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -69225,13 +69214,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
-"lEM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel,
-/area/station/maintenance/turbine)
 "lEW" = (
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "arcade"
@@ -69641,8 +69623,9 @@
 /obj/structure/sign/vacuum/external{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1;
+	autolink_id = "gas_turbine_in"
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -74095,7 +74078,8 @@
 	},
 /obj/machinery/computer/turbine_computer{
 	dir = 1;
-	id = "incineratorturbine"
+	id = "incineratorturbine";
+	name = "Gas Turbine Control Computer"
 	},
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -76532,9 +76516,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 10
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -79269,8 +79250,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "oQe" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 5
+/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/atmospherics/air_sensor{
+	autolink_id = "gas_turbine_sensor";
+	name = "PRE-burn";
+	output = 127
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -87170,10 +87154,10 @@
 	},
 /area/station/security/lobby)
 "rsv" = (
-/obj/machinery/atmospherics/unary/outlet_injector/on{
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/unary/passive_vent{
 	dir = 8
 	},
-/obj/structure/lattice/catwalk,
 /turf/space,
 /area/station/maintenance/turbine)
 "rsI" = (
@@ -87503,8 +87487,15 @@
 "rzy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/south,
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 4
+/obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 1;
+	autolink_sensors = list("gas_turbine_sensor"="PRE-burn");
+	inlet_injector_autolink_ids = list("gas_turbine_in");
+	outlet_autolink_ids = list("gas_turbine_outlet_scrubber");
+	name = "Gas Turbine ECU"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -100853,6 +100844,14 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/expedition)
+"vQG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/trinary/mixer/flipped{
+	dir = 1;
+	name = "Mix to Turbine"
+	},
+/turf/simulated/floor/plasteel,
+/area/station/maintenance/turbine)
 "vQT" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
@@ -104223,7 +104222,6 @@
 /area/station/maintenance/fsmaint)
 "wZe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/table,
 /obj/item/paper_bin{
 	pixel_x = -2;
@@ -104231,6 +104229,9 @@
 	},
 /obj/item/pen{
 	pixel_y = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -106952,11 +106953,10 @@
 /area/station/public/locker)
 "xQL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/portable/canister/oxygen,
-/obj/machinery/atmospherics/unary/portables_connector{
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/unary/tank/oxygen{
 	dir = 4
 	},
-/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "xQP" = (
@@ -132543,8 +132543,8 @@ ddr
 oSG
 dzg
 dpY
-lEM
 cRa
+vQG
 iqq
 wZe
 erN
@@ -132802,7 +132802,7 @@ dzg
 bOE
 dos
 bVj
-cIs
+qEo
 cWm
 dgS
 dgS
@@ -133059,13 +133059,13 @@ wHB
 rPd
 mms
 qEo
-bFN
+qEo
 rzy
 pUp
 wii
 pUp
 oQe
-dgS
+kcq
 dgS
 dgS
 dnx
