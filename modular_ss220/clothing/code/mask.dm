@@ -20,7 +20,13 @@
 /obj/item/clothing/mask/gas/mime
 	flags_cover = MASKCOVERSEYES
 
+/obj/item/clothing/mask/gas/sexymime
+	flags_cover = MASKCOVERSEYES
+
 /obj/item/clothing/mask/gas/clown_hat
+	flags_cover = MASKCOVERSEYES
+
+/obj/item/clothing/mask/gas/clownwiz
 	flags_cover = MASKCOVERSEYES
 
 /obj/item/clothing/mask/breath/vox
