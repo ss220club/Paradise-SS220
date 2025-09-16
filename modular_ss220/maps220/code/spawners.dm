@@ -221,18 +221,33 @@
 		/mob/living/basic/hellhound/tear/wildwest,
 	)
 
+/mob/living/basic/netherworld/faithless/caves
+	maximum_survivable_temperature = 1500
+
 /mob/living/basic/creature/caves
+	maximum_survivable_temperature = 1500
+
+/mob/living/basic/netherworld/caves
+	maximum_survivable_temperature = 1500
+
+/mob/living/basic/netherworld/migo/caves
+	maximum_survivable_temperature = 1500
+
+/mob/living/basic/hellhound/caves
+	maximum_survivable_temperature = 1500
+
+/mob/living/basic/hellhound/tear/caves
 	maximum_survivable_temperature = 1500
 
 /obj/effect/spawner/random/hostile_fauna/caves
 	loot = list(
-		/mob/living/basic/netherworld/faithless = 30,
+		/mob/living/basic/netherworld/faithless/caves = 30,
 		/mob/living/basic/creature/caves = 20,
-		/mob/living/basic/netherworld = 10,
-		/mob/living/basic/netherworld/migo = 10,
-		/mob/living/basic/hellhound = 5,
+		/mob/living/basic/netherworld/caves = 10,
+		/mob/living/basic/netherworld/migo/caves = 10,
+		/mob/living/basic/hellhound/caves = 5,
 
-		/mob/living/basic/hellhound/tear,
+		/mob/living/basic/hellhound/tear/caves,
 	)
 
 /obj/effect/spawner/random/hostile_fauna/spider
