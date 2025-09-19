@@ -52207,8 +52207,7 @@
 /area/station/maintenance/asmaint)
 "fZy" = (
 /obj/machinery/atmospherics/unary/vent_scrubber{
-	dir = 1;
-	autolink_id = "gas_turbine_outlet_scrubber"
+	dir = 1
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -69665,8 +69664,7 @@
 	pixel_y = -32
 	},
 /obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 1;
-	autolink_id = "gas_turbine_in"
+	dir = 1
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -79312,9 +79310,8 @@
 "oQe" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/atmospherics/air_sensor{
-	autolink_id = "gas_turbine_sensor";
-	name = "PRE-burn";
-	output = 127
+	output = 127;
+	autolink_id = "gas_turbine_sensor"
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -87549,10 +87546,8 @@
 /obj/machinery/light/small/directional/south,
 /obj/machinery/computer/general_air_control/large_tank_control{
 	dir = 1;
-	autolink_sensors = list("gas_turbine_sensor"="PRE-burn");
-	inlet_injector_autolink_ids = list("gas_turbine_in");
-	outlet_autolink_ids = list("gas_turbine_outlet_scrubber");
-	name = "Gas Turbine ECU"
+	name = "Gas Turbine ECU";
+	autolink_sensors = list("gas_turbine_sensor"="PRE-burn")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
