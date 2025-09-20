@@ -36,7 +36,7 @@
 		return
 
 	// SS220 EDIT START - No More Eating And Drinking With Mouth Covered
-	if(isliving(target))
+	if(isliving(target) && (user.a_intent != INTENT_HARM))
 		var/mob/living/L = target
 		if(L.is_mouth_covered())
 			if(L == user)
