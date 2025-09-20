@@ -681,7 +681,7 @@
 	production_name = "Medipens"
 	production_icon = "syringe"
 	item_type = /obj/item/reagent_containers/hypospray/autoinjector/custom
-	sprites = list("medipen", "medipen_red", "medipen_org", "medipen_blu", "medipen_grn")
+	sprites = list("medipen", "medipen_red", "medipen_org", "medipen_blu", "medipen_grn", "medipen_prp", "medipen_rad")
 	max_items_amount = 20
 	max_units_per_item = 30
 	name_suffix = " medipen"

@@ -132,7 +132,7 @@
 /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin
 	name = "anti-toxin medipen"
 	icon_state = "medipen_grn"
-	desc = "A rapid and safe way to counter the effects of poisoning even through spacesuits. Contains potassium iodide."
+	desc = "A rapid and safe way to counter the effects of poisoning even through spacesuits. Contains charcoal."
 	list_reagents = list("charcoal" = 20)
 	instant_application = TRUE
 
