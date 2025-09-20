@@ -122,6 +122,20 @@
 	list_reagents = list("epinephrine" = 10, "salbutamol" = 5)
 	instant_application = TRUE
 
+/obj/item/reagent_containers/hypospray/autoinjector/custom/radiation
+	name = "anti-radiation medipen"
+	icon_state = "medipen_rad"
+	desc = "A rapid and safe way to counter the effects of irradiation even through spacesuits. Contains potassium iodide."
+	list_reagents = list("potass_iodide" = 15)
+	instant_application = TRUE
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/toxin
+	name = "anti-toxin medipen"
+	icon_state = "medipen_grn"
+	desc = "A rapid and safe way to counter the effects of poisoning even through spacesuits. Contains potassium iodide."
+	list_reagents = list("charcoal" = 20)
+	instant_application = TRUE
+
 // MARK: SPACER FIRST-AID KIT
 /obj/item/storage/firstaid/spacer
 	name = "spacer first-aid kit"
@@ -196,3 +210,14 @@
 	for(var/I in 1 to 7)
 		var/obj/item/storage/pill_bottle/P = new /obj/item/storage/pill_bottle/medipen_case(src)
 		P.apply_wrapper_color(I)
+
+/obj/item/storage/pill_bottle/medipen_case/radiation
+	name = "anti-radiation medipen case"
+	wrapper_color = COLOR_ORANGE
+
+/obj/item/storage/pill_bottle/medipen_case/radiation/populate_contents()
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)

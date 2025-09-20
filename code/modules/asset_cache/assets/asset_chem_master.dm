@@ -10,7 +10,7 @@
 	for(var/bottle_type in list("bottle", "reagent_bottle"))
 		Insert(bottle_type, 'icons/obj/chemical.dmi', bottle_type)
 	// SS220 EDIT START - Adding Medipens In Chemaster
-	for(var/medipen_type in list("medipen", "medipen_red", "medipen_org", "medipen_blu", "medipen_grn"))
+	for(var/medipen_type in list("medipen", "medipen_red", "medipen_org", "medipen_blu", "medipen_grn", "medipen_prp", "medipen_rad"))
 		Insert(medipen_type, 'modular_ss220/aesthetics/medipens/icon/medipens.dmi', medipen_type)
 	// SS220 EDIT END
 
