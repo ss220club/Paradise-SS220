@@ -11,7 +11,7 @@ on:
 jobs:
   run_linters:
     name: Run Linters
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v5
 
@@ -65,7 +65,7 @@ jobs:
 
   odlint:
     name: Lint with OpenDream
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v5
       - name: Setup OD
@@ -73,8 +73,6 @@ jobs:
           bash tools/ci/setup_od.sh
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4.3.1
-        env:
-          DOTNET_INSTALL_DIR: './_work/.dotnet'
         with:
           dotnet-version: 9.x
       - name: Run OD
@@ -83,7 +81,7 @@ jobs:
 
   compile_all_maps:
     name: Compile All Maps
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -104,7 +102,7 @@ jobs:
 
   station_mapload_tests:
     name: Station Tests
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false # Let all map tests run to completion
       matrix:
@@ -133,7 +131,7 @@ jobs:
 
   unit_tests_and_sql:
     name: Unit Tests + SQL Validation
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -146,7 +144,7 @@ jobs:
           release: ${{ matrix.byondtype }}
       - name: Setup & Validate DB
         run: |
-          sudo service mysql start
+          sudo systemctl start mysql
           python3 tools/ci/generate_sql_scripts.py
           tools/ci/validate_sql.sh
       - name: Install RUST_G Deps
@@ -164,14 +162,13 @@ jobs:
           echo '/datum/map/test_tiny' > data/next_map.txt
           tools/ci/run_server.sh
 
-# TODO: Add back when we have a Windows runner (never)
-# windows_dll_tests:
-#   name: Windows RUSTG Validation
-#   runs-on: self-hosted
-#   steps:
-#     - uses: actions/checkout@v5
-#     - uses: actions/setup-python@v5
-#       with:
-#         python-version: '3.8.2' # Script was made for 3.8.2
-#         architecture: 'x86' # This MUST be x86
-#     - run: python tools/ci/validate_rustg_windows.py
+  windows_dll_tests:
+    name: Windows RUSTG Validation
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.8.2' # Script was made for 3.8.2
+          architecture: 'x86' # This MUST be x86
+      - run: python tools/ci/validate_rustg_windows.py
