@@ -35,17 +35,6 @@
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return
 
-	// SS220 EDIT START - No More Eating And Drinking With Mouth Covered
-	if(isliving(target) && (user.a_intent != INTENT_HARM))
-		var/mob/living/L = target
-		if(L.is_mouth_covered())
-			if(L == user)
-				to_chat(user, "<span class='warning'>Вы не можете пить с закрытым ртом!</span>")
-			else
-				to_chat(user, "<span class='warning'>[L] не может пить с закрытым ртом!</span>")
-			return
-	// SS220 EDIT END
-
 	if(istype(target))
 		var/list/transferred = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -63,6 +52,15 @@
 			if(!iscarbon(target)) // Non-carbons can't process reagents
 				to_chat(user, "<span class='warning'>You cannot find a way to feed [target].</span>")
 				return
+			// SS220 EDIT START - No More Eating And Drinking With Mouth Covered
+			var/mob/living/L = target
+			if(L.is_mouth_covered())
+				if(L == user)
+					to_chat(user, "<span class='warning'>Вы не можете пить с закрытым ртом!</span>")
+				else
+					to_chat(user, "<span class='warning'>[L] не может пить с закрытым ртом!</span>")
+				return
+			// SS220 EDIT END
 			if(target != user)
 				target.visible_message("<span class='danger'>[user] attempts to feed something to [target].</span>", \
 							"<span class='userdanger'>[user] attempts to feed something to you.</span>")
