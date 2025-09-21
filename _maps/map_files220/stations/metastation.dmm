@@ -11057,6 +11057,10 @@
 	id_tag = "AI Core Shutters";
 	name = "AI Chamber Entrance Shutters"
 	},
+/obj/machinery/flasher{
+	id = "AI";
+	pixel_y = -2
+	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/ai)
 "bjS" = (
@@ -50254,6 +50258,10 @@
 /obj/machinery/requests_console/directional/east,
 /turf/simulated/floor/wood,
 /area/station/supply/qm)
+"jZU" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/turf/simulated/floor/plating,
+/area/station/turret_protected/ai)
 "jZY" = (
 /obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -61699,11 +61707,6 @@
 /turf/simulated/floor/plating,
 /area/station/security/brig)
 "oeK" = (
-/obj/machinery/camera/motion{
-	c_tag = "AI Chamber - Core";
-	network = list("SS13","MiniSat");
-	start_active = 1
-	},
 /obj/machinery/power/apc/important/directional/south,
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -72915,14 +72918,14 @@
 /obj/machinery/turretid/lethal{
 	check_synth = 1;
 	name = "AI Chamber Turret Control";
-	pixel_x = 5;
 	pixel_y = -24;
 	req_access = list(75)
 	},
-/obj/machinery/flasher{
-	id = "AI";
-	pixel_x = -8;
-	pixel_y = -24
+/obj/machinery/camera/motion{
+	c_tag = "AI Chamber - Core";
+	network = list("SS13","MiniSat");
+	start_active = 1;
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
@@ -142724,7 +142727,7 @@ bdI
 bdu
 jgJ
 bdL
-bdI
+jZU
 ssD
 bdI
 bdI
@@ -143238,7 +143241,7 @@ bdI
 bhZ
 bdw
 pjx
-bdI
+jZU
 oeK
 bdI
 bdI
