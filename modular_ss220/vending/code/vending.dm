@@ -200,6 +200,9 @@
 	icon_lightmask = "Cola_Machine_Red"
 	slogan_list = list("Кола в космосе!")
 
+/obj/machinery/economy/vending/cola/red/free
+	prices = list()
+
 /obj/machinery/economy/vending/suitdispenser/free
 	prices = list()
 
