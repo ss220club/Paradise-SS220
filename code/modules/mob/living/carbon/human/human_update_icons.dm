@@ -697,6 +697,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/worn_icon = glasses.worn_icon || (robohead && robohead.is_monitor ? glasses.icon_monitor : FALSE) ||  listgetindex(glasses.sprite_sheets, head_organ.dna.species.sprite_sheet_name) || 'icons/mob/clothing/eyes.dmi'
 		var/worn_icon_state = glasses.worn_icon_state || glasses.icon_state
 		var/obj/item/clothing/glasses/mob_glasses = glasses
+		// SS220 EDIT START - Species overlay shift
+		. = list()
+		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
+		if(length(.) > 0)
+			glasses.pixel_x += .["shift_x"]
+			glasses.pixel_y += .["shift_y"]
+		// SS220 EDIT END
+
 		var/datum/sprite_accessory/hair/hair_style = GLOB.hair_styles_full_list[head_organ.h_style]
 		var/worn_layer
 		if(istype(mob_glasses) && mob_glasses.over_mask)
@@ -729,7 +737,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			var/worn_icon = listgetindex(l_ear.sprite_sheets, dna.species.sprite_sheet_name) || 'icons/mob/clothing/ears.dmi'
 			var/worn_state = l_ear.worn_icon_state || l_ear.icon_state
 
-			overlays_standing[LEFT_EAR_LAYER] = mutable_appearance(worn_icon, worn_state, layer = -LEFT_EAR_LAYER)
+			// SS220 EDIT START - Species overlay shift
+			var/mutable_appearance/standing = mutable_appearance(worn_icon, worn_state, layer = -LEFT_EAR_LAYER)
+			. = list()
+			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
+			if(length(.) > 0)
+				standing.pixel_x += .["shift_x"]
+				standing.pixel_y += .["shift_y"]
+			overlays_standing[LEFT_EAR_LAYER] = standing
+			// SS220 EDIT END
 
 	if(r_ear)
 		update_hud_r_ear(r_ear)
@@ -738,7 +754,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			var/worn_icon = listgetindex(r_ear.sprite_sheets, dna.species.sprite_sheet_name) || 'icons/mob/clothing/ears.dmi'
 			var/worn_state = r_ear.worn_icon_state || r_ear.icon_state
 
-			overlays_standing[RIGHT_EAR_LAYER] = mutable_appearance(worn_icon, worn_state, layer = -RIGHT_EAR_LAYER)
+			// SS220 EDIT START - Species overlay shift
+			var/mutable_appearance/standing = mutable_appearance(worn_icon, worn_state, layer = -RIGHT_EAR_LAYER)
+			. = list()
+			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
+			if(length(.) > 0)
+				standing.pixel_x += .["shift_x"]
+				standing.pixel_y += .["shift_y"]
+			overlays_standing[RIGHT_EAR_LAYER] = standing
+			// SS220 EDIT END
 
 	apply_overlay(LEFT_EAR_LAYER)
 	apply_overlay(RIGHT_EAR_LAYER)
@@ -822,6 +846,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			var/image/bloodsies = image("icon" = dna.species.blood_mask, "icon_state" = "helmetblood")
 			bloodsies.color = head.blood_color
 			standing.overlays += bloodsies
+
+		// SS220 EDIT START - Species overlay shift
+		. = list()
+		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
+		// SS220 EDIT END
+
 		overlays_standing[HEAD_LAYER] = standing
 	apply_overlay(HEAD_LAYER)
 
@@ -850,7 +883,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		var/worn_icon = belt.worn_icon || listgetindex(belt.sprite_sheets, dna.species.sprite_sheet_name) || 'icons/mob/clothing/belt.dmi'
 		var/worn_icon_state = belt.worn_icon_state || belt.icon_state
-		overlays_standing[worn_layer] = mutable_appearance(worn_icon, worn_icon_state, layer = -worn_layer)
+		// SS220 EDIT - вызов сдвигов
+		var/mutable_appearance/standing = mutable_appearance(worn_icon, worn_icon_state, layer = -worn_layer)
+		. = list()
+		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "belt", .)
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
+		overlays_standing[worn_layer] = standing
+		// SS220 EDIT END
 
 	apply_overlay(BELT_LAYER)
 	apply_overlay(SPECIAL_BELT_LAYER)
@@ -941,6 +982,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				bloodsies.color = wear_mask.blood_color
 				standing.overlays += bloodsies
 
+
+			// SS220 EDIT START - Species overlay shift
+			. = list()
+			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
+			if(length(.) > 0)
+				standing.pixel_x += .["shift_x"]
+				standing.pixel_y += .["shift_y"]
+			// SS220 EDIT END
+
 			overlays_standing[FACEMASK_LAYER] = standing
 	apply_overlay(FACEMASK_LAYER)
 
@@ -975,6 +1025,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/worn_icon = listgetindex(back.sprite_sheets, dna.species.sprite_sheet_name) || back.worn_icon || 'icons/mob/clothing/back.dmi'
 		var/worn_icon_state = back.worn_icon_state || back.icon_state
 		var/mutable_appearance/standing = mutable_appearance(worn_icon, worn_icon_state, -BACK_LAYER, alpha = back.alpha, color = back.color)
+
+		// SS220 EDIT START - Species overlay shift
+		. = list()
+		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "back", .)
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
+		// SS220 EDIT END
+
 		overlays_standing[BACK_LAYER] = standing
 	apply_overlay(BACK_LAYER)
 
@@ -1005,6 +1064,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			standing = mutable_appearance(r_hand.righthand_file, worn_icon_state, layer = -R_HAND_LAYER, color = r_hand.color)
 			standing = center_image(standing, r_hand.inhand_x_dimension, r_hand.inhand_y_dimension)
 
+		// SS220 EDIT START - Species overlay shift
+		. = list()
+		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "inhand", .)
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
+		// SS220 EDIT END
+
 		overlays_standing[R_HAND_LAYER] = standing
 	apply_overlay(R_HAND_LAYER)
 
@@ -1022,6 +1089,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		else
 			standing = mutable_appearance(l_hand.lefthand_file, worn_icon_state, layer = -L_HAND_LAYER, color = l_hand.color)
 			standing = center_image(standing, l_hand.inhand_x_dimension, l_hand.inhand_y_dimension)
+
+		// SS220 EDIT START - Species overlay shift
+		. = list()
+		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "inhand", .)
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
+		// SS220 EDIT END
 
 		overlays_standing[L_HAND_LAYER] = standing
 	apply_overlay(L_HAND_LAYER)

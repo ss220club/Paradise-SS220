@@ -179,10 +179,10 @@
 		return
 	var/obj/item/organ/external/head/head_organ = user.get_organ("head")
 
-	mob = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = icon_state)
+	mob = new/icon("icon" = worn_icon, "icon_state" = icon_state) // SS220 EDIT - Заменил хард код пути на worn_icon
 	mob.Blend(head_organ.hair_colour, ICON_ADD)
 
-	var/icon/earbit = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = "[icon_state]inner")
+	var/icon/earbit = new/icon("icon" = worn_icon, "icon_state" = "[icon_state]inner") // SS220 EDIT - Заменил хард код пути на worn_icon
 	mob.Blend(earbit, ICON_OVERLAY)
 
 	worn_icon = mob

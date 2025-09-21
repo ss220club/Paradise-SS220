@@ -31,7 +31,7 @@
 	var/obj/structure/ai_core/core = teleport_to_first(player, /obj/structure/ai_core)
 	player.spawn_obj_in_hand(/obj/item/circuitboard/aicore)
 	player.click_on(core)
-	TEST_ASSERT_LAST_CHATLOG(player, "You place the circuit board inside the frame")
+	TEST_ASSERT_LAST_CHATLOG(player, "<span class='notice'>Вы вставляете плату в раму.</span>")
 
 	var/shell = teleport_to_first(player, /obj/structure/constructshell)
 	var/obj/item/soulstone/soulstone = player.spawn_obj_in_hand(/obj/item/soulstone)
