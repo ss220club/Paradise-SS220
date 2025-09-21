@@ -42,7 +42,6 @@
 	max_combined_w_class = 30
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear, /obj/item/grown/bananapeel/traitorpeel)
-
 	/* SS220 EDIT START - MAKING update_weight() LOGIC MORE UNIVERSAL
 	/obj/item/storage/bag/trash/proc/update_weight()
 		if(!length(contents))
@@ -74,7 +73,6 @@
 		. = ..()
 		update_weight()
 	SS220 EDIT END */
-
 /obj/item/storage/bag/trash/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!</span>")
 	playsound(loc, 'sound/items/eatfood.ogg', 50, TRUE, -1)
