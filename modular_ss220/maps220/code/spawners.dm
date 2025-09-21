@@ -221,18 +221,35 @@
 		/mob/living/basic/hellhound/tear/wildwest,
 	)
 
+#define CAVES_MAX_SURVIVABLE_TEMP 1500
+
+/mob/living/basic/netherworld/faithless/caves
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
+
 /mob/living/basic/creature/caves
-	maximum_survivable_temperature = 1500
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
+
+/mob/living/basic/netherworld/caves
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
+
+/mob/living/basic/netherworld/migo/caves
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
+
+/mob/living/basic/hellhound/caves
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
+
+/mob/living/basic/hellhound/tear/caves
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
 
 /obj/effect/spawner/random/hostile_fauna/caves
 	loot = list(
-		/mob/living/basic/netherworld/faithless = 30,
+		/mob/living/basic/netherworld/faithless/caves = 30,
 		/mob/living/basic/creature/caves = 20,
-		/mob/living/basic/netherworld = 10,
-		/mob/living/basic/netherworld/migo = 10,
-		/mob/living/basic/hellhound = 5,
+		/mob/living/basic/netherworld/caves = 10,
+		/mob/living/basic/netherworld/migo/caves = 10,
+		/mob/living/basic/hellhound/caves = 5,
 
-		/mob/living/basic/hellhound/tear,
+		/mob/living/basic/hellhound/tear/caves,
 	)
 
 /obj/effect/spawner/random/hostile_fauna/spider
@@ -244,13 +261,13 @@
 	)
 
 /mob/living/basic/giant_spider/caves
-	maximum_survivable_temperature = 1500
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
 
 /mob/living/basic/giant_spider/hunter/caves
-	maximum_survivable_temperature = 1500
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
 
 /mob/living/basic/giant_spider/nurse/caves
-	maximum_survivable_temperature = 1500
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
 
 /obj/effect/spawner/random/hostile_fauna/spider/caves
 	loot = list(
@@ -260,7 +277,9 @@
 	)
 
 /mob/living/basic/scarybat/caves
-	maximum_survivable_temperature = 1500
+	maximum_survivable_temperature = CAVES_MAX_SURVIVABLE_TEMP
+
+#undef CAVES_MAX_SURVIVABLE_TEMP
 
 // MARK: Misc
 /obj/effect/spawner/random/trash
