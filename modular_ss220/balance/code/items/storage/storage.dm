@@ -22,8 +22,8 @@
 
 /obj/item/storage/bag/proc/update_weight()
 	if(!updates_weight_on_fill)
-	    return
-    w_class = length(contents) ? WEIGHT_CLASS_BULKY : WEIGHT_CLASS_SMALL
+		return
+	w_class = length(contents) ? WEIGHT_CLASS_BULKY : WEIGHT_CLASS_SMALL
 
 /obj/item/storage/bag/remove_from_storage(obj/item/I, atom/new_location)
 	. = ..()
@@ -31,8 +31,8 @@
 
 /obj/item/storage/bag/can_be_inserted(obj/item/I, stop_messages = FALSE)
 	if(!updates_weight_on_fill)
-	    return ..()
-    if(isstorage(loc) && !istype(loc, /obj/item/storage/backpack/holding))
+		return ..()
+	if(isstorage(loc) && !istype(loc, /obj/item/storage/backpack/holding))
 		to_chat(usr, span_warning("У вас не получается поместить [I] в [src]!"))
 		return FALSE
 	if(ishuman(loc))
