@@ -2,14 +2,10 @@
 	var/updates_weight_on_fill = FALSE
 
 /obj/item/storage/bag/bio
-	max_combined_w_class = 30
-	storage_slots = 30
 	updates_weight_on_fill = TRUE
 	prefered_slot_flags = ITEM_SLOT_BELT
 
 /obj/item/storage/bag/chemistry
-	max_combined_w_class = 30
-	storage_slots = 30
 	updates_weight_on_fill = TRUE
 	prefered_slot_flags = ITEM_SLOT_BELT
 
