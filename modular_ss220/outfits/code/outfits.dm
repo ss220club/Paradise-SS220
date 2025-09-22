@@ -512,7 +512,8 @@
 	flags = EARBANGPROTECT
 	origin_tech = "syndicate=3"
 	icon_state = "com_headset_alt"
-	item_state = "com_headset_alt"
+	inhand_icon_state = "com_headset_alt"
+	worn_icon_state = "com_headset_alt"
 	ks1type = /obj/item/encryptionkey/skrell
 	requires_tcomms = FALSE
 

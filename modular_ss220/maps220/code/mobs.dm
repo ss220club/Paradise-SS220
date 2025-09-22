@@ -372,7 +372,7 @@
 	attacktext = "рубит"
 	damage_coeff = list(BRUTE = 0.8, BURN = 0.8, TOX = 1, CLONE = 2, STAMINA = 1, OXY = 1)
 
-/mob/living/simple_animal/hostile/panther/huge_panther
+/mob/living/basic/panther/huge_panther
 	name = "huge panther"
 	desc = "Большой, гладкий черный кот с острыми клыками и когтями. Этот выглядит особенно огромным."
 	maxHealth = 120
@@ -380,11 +380,7 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	rapid_melee = 2
-	move_to_delay = 2.8
 	speed = -0.2
-	dodging = TRUE
-	sidestep_per_cycle = 2
 	faction = list("junglemob")
 
 /mob/living/simple_animal/hostile/poison_snake
@@ -1104,7 +1100,8 @@
 	name = "xen key"
 	desc = ""
 	icon_state = "emag"
-	item_state = "card-id"
+	worn_icon_state = "card-id"
+	inhand_icon_state = "card-id"
 	access = list (271)
 
 /obj/item/projectile/nihilanth
@@ -1347,7 +1344,7 @@
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/drone
 	name = "drone"
 	icon_state = "drone"
-	syndi_mob = /mob/living/simple_animal/hostile/malf_drone/spacebattle
+	syndi_mob = /mob/living/basic/malf_drone/spacebattle
 
 // Syndie griefsky
 /mob/living/simple_animal/bot/secbot/griefsky/syndie
@@ -1361,7 +1358,7 @@
 	weapons_check = TRUE
 	emagged = TRUE
 
-/mob/living/simple_animal/hostile/malf_drone/spacebattle
+/mob/living/basic/malf_drone/spacebattle
 	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'
 	icon_state = "wisewill-Combat-roll"
 	icon_living = "wisewill-Combat-roll"
@@ -1369,7 +1366,7 @@
 	health = 50
 	maxHealth = 50
 	faction = list("syndicate")
-	projectiletype = /obj/item/projectile/beam/laser/syndrone
+	projectile_type = /obj/item/projectile/beam/laser/syndrone
 
 /obj/item/projectile/beam/laser/syndrone
 	name = "light immolation beam"
@@ -1377,7 +1374,7 @@
 	icon_state = "scatterlaser"
 	eyeblur = 1
 
-/mob/living/simple_animal/hostile/malf_drone/spacebattle/drop_loot()
+/mob/living/basic/malf_drone/spacebattle/drop_loot()
 	do_sparks(3, 1, src)
 	var/turf/T = get_turf(src)
 
@@ -1401,8 +1398,8 @@
 	step_to(K, get_turf(pick(view(7, src))))
 	K.update_icon()
 
-/mob/living/simple_animal/hostile/malf_drone/spacebattle/update_icons()
-	if(passive_mode)
+/mob/living/basic/malf_drone/spacebattle/update_icons()
+	if(passive)
 		icon_state = "wisewill-Combat"
 	else if(health / maxHealth > 0.9)
 		icon_state = "wisewill-Combat-roll2"

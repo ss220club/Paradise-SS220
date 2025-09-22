@@ -6,8 +6,8 @@
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
-	item_state = "skrell_carbine"
 	icon_state = "skrell_carbine"
+	inhand_icon_state = "skrell_carbine"
 	cell_type = /obj/item/stock_parts/cell/skrell_carbine_cell
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light, /obj/item/ammo_casing/energy/laser/skrell_assault)
 	origin_tech = "combat=6;magnets=5"
@@ -70,7 +70,7 @@
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon_state = "sniper"
-	item_state = "sniper"
+	inhand_icon_state = "sniper"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/railgun.ogg'
 	recoil = 0
 	fire_delay = 25
@@ -118,7 +118,7 @@
 
 /obj/item/projectile/bullet/railgun
 	damage = 35
-	armour_penetration_flat = 80
+	armor_penetration_flat = 80
 	pass_flags = PASSTABLE | PASSGRILLE | PASSGIRDER
 	speed = 0.2
 	icon_state = "gauss_silenced"
@@ -126,7 +126,7 @@
 
 /obj/item/projectile/bullet/railgun/railgun_strong
 	damage = 45
-	armour_penetration_flat = 30
+	armor_penetration_flat = 30
 	weaken = 0.2
 	speed = 0.2
 
@@ -137,7 +137,7 @@
 		Встроенный микрогенератор постепенно пополняет запас аккамулятора прямо в бою."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "skrell_pistol"
-	item_state = "skrell_pistol"
+	inhand_icon_state = "skrell_pistol"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light, /obj/item/ammo_casing/energy/disabler)

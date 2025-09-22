@@ -562,11 +562,10 @@
 	do_after_cooldown()
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma
-	equip_cooldown = 1 SECONDS
 	name = "\improper 217-D Heavy Plasma Cutter"
 	desc = "Устройство для экзокостюмов. Стреляет резонирующими плазменными импульсами с экстремальной скоростью. Взрывы способны разрушать камень и сносить твердые преграды."
 	icon_state = "mecha_plasmacutter"
-	item_state = "plasmacutter"
+	inhand_icon_state = "plasmacutter"
 	lefthand_file = 'icons/mob/inhands/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/guns_righthand.dmi'
 	energy_drain = 30
@@ -574,6 +573,7 @@
 	projectile = /obj/item/projectile/plasma/adv/mech
 	fire_sound = 'sound/weapons/laser.ogg'
 	harmful = TRUE
+	equip_cooldown = 1 SECONDS
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma/can_attach(obj/mecha/M)
 	if(istype(M, /obj/mecha/working))

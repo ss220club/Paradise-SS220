@@ -6,7 +6,7 @@
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon_state = "beretta_modified"
-	item_state = "beretta_modified"
+	inhand_icon_state = "beretta_modified"
 	origin_tech = "combat=3;materials=2"
 	w_class = WEIGHT_CLASS_NORMAL
 	can_suppress = FALSE
@@ -134,8 +134,8 @@
 /obj/item/projectile/bullet/mmap919
 	name = "9x19mm armor-piercing bullet"
 	damage = 18
-	armour_penetration_percentage = 35
-	armour_penetration_flat = 15
+	armor_penetration_percentage = 35
+	armor_penetration_flat = 15
 
 /obj/item/projectile/bullet/mmbsp919
 	name = "9x19 bluespace bullet"

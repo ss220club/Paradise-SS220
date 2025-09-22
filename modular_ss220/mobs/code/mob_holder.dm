@@ -1,6 +1,6 @@
 // \code\modules\mob\mob_holder.dm
 /obj/item/holder
-	icon_override = 'modular_ss220/mobs/icons/mob/inhead/head.dmi'
+	worn_icon = 'modular_ss220/mobs/icons/mob/inhead/head.dmi'
 	lefthand_file = 'modular_ss220/mobs/icons/mob/inhands/mobs_lefthand.dmi'
 	righthand_file = 'modular_ss220/mobs/icons/mob/inhands/mobs_righthand.dmi'
 	origin_tech = "biotech=2"

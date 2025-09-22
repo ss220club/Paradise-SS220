@@ -98,11 +98,11 @@
 
 /obj/structure/closet/critter/goose
 	name = "goose crate"
-	content_mob = /mob/living/simple_animal/goose
+	content_mob = /mob/living/basic/goose
 
 /obj/structure/closet/critter/gosling
 	name = "gosling crate"
-	content_mob = /mob/living/simple_animal/goose/gosling
+	content_mob = /mob/living/basic/goose/gosling
 
 /obj/structure/closet/critter/gosling/populate_contents()
 	amount = rand(1, 3)
