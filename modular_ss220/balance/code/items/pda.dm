@@ -98,12 +98,17 @@
 	var/receive_sound = prioritized \
 		? 'modular_ss220/aesthetics/tcomms/sound/walkie_talkie_alert_major.ogg' \
 		: 'modular_ss220/aesthetics/tcomms/sound/walkie_talkie_alert_minor.ogg'
+	var/atom/follow_target = pda
+	var/follow_mob
+	if(ismob(pda.loc))
+		follow_mob = TRUE
+		follow_target = pda.loc
 
 	pda.radio.autosay(
 		from = "Система Оповещения",
 		message = message,
 		channel = DEPARTMENT_SECURITY,
-		follow_target_override = pda,
+		follow_target_override = follow_target,
 		receive_sound = receive_sound
 	)
 	if(!pda.silent)
@@ -111,10 +116,9 @@
 
 	notify_ghosts(
 		title = "Система Оповещения",
-		message = "Кто-то вызвал службу безопасности!",
+		message = "[follow_mob ? follow_target.name : "Кто-то"] вызывает службу безопасности!",
 		ghost_sound = 'sound/effects/electheart.ogg',
-		enter_link = "<a href=byond://?src=[pda.UID()];follow=1>(Click to follow)</a>",
-		source = pda,
+		source = follow_target,
 		action = NOTIFY_FOLLOW,
 		flashwindow = FALSE,
 	)

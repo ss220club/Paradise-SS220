@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(sechailers)
 					security_channel_found = TRUE
 					break
 		if(security_channel_found)
-			radio.autosay("Центр, Код [message], офицер [user] запрашивает помощь в [location_name].", "Система Оповещения", DEPARTMENT_SECURITY, list(z))
+			radio.autosay("Центр, Код [message], офицер [user] запрашивает помощь в [location_name].", "Система Оповещения", DEPARTMENT_SECURITY, user)
 			playsound(hailer.loc, 'modular_ss220/sechailer/sound/dispatch_please_respond.ogg', 55, FALSE)
 			break
 		else
