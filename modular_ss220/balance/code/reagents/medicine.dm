@@ -6,3 +6,39 @@
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustCloneLoss(1.5 * REAGENTS_EFFECT_MULTIPLIER, FALSE)
 	return list(0, update_flags)
+
+/mob/living/proc/can_apply(mob/user, error_msg, target_zone, penetrate_thick)
+	return TRUE
+
+/mob/living/carbon/human/can_apply(mob/user, error_msg, target_zone, penetrate_thick = FALSE, penetrate_everything = FALSE)
+	. = TRUE
+
+	if(!target_zone)
+		if(!user)
+			. = FALSE
+			CRASH("can_inject() called on a human mob with neither a user nor a targeting zone selected.")
+		else
+			target_zone = user.zone_selected
+
+	var/obj/item/organ/external/affecting = get_organ(target_zone)
+	var/fail_msg
+	if(!affecting)
+		. = FALSE
+		fail_msg = "Эта конечность отсутствует!"
+
+	if(penetrate_everything)
+		return TRUE
+
+	if(wear_suit && HAS_TRAIT(wear_suit, TRAIT_RSG_IMMUNE))
+		. = FALSE
+
+	if(target_zone == "head")
+		if((head?.flags & THICKMATERIAL) && !penetrate_thick)
+			. = FALSE
+	else
+		if((wear_suit?.flags & THICKMATERIAL) && !penetrate_thick)
+			. = FALSE
+	if(!. && error_msg && user)
+		if(!fail_msg)
+			fail_msg = "Вы не можете дотянуться до кожи сквозь плотную одежду!"
+		to_chat(user, span_warning("[fail_msg]"))

@@ -69,7 +69,7 @@
 	desc = "A small electronic device designed to topically apply healing chemicals. This one can penetrate thick suits."
 
 /obj/item/reagent_containers/patch/apply(mob/living/carbon/C, mob/user)
-	if(!C.can_inject(user, TRUE))
+	if(!C.can_apply(user, TRUE))
 		return
 	return ..()
 

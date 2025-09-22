@@ -945,6 +945,7 @@
 
 	if(HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
 		. = FALSE
+		fail_msg = "Вы не можете проколоть толстую кожу!" // SS220 EDIT - Making separate fail_msg for golems and other fuckers with thick skin
 
 	if(wear_suit && HAS_TRAIT(wear_suit, TRAIT_RSG_IMMUNE))
 		. = FALSE
