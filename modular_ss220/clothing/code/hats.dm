@@ -141,7 +141,7 @@
 	icon_state = "beret_ce"
 
 /obj/item/clothing/head/kitty
-  worn_icon = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/hats.dmi'
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret
 	flags_cover = NONE
