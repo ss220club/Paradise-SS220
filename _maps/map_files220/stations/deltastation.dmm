@@ -8512,6 +8512,7 @@
 	pixel_y = 2
 	},
 /obj/effect/turf_decal/delivery,
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "caution"
@@ -8808,10 +8809,7 @@
 /turf/simulated/floor/wood/cherry,
 /area/station/service/chapel/office)
 "aMA" = (
-/obj/machinery/atmospherics/unary/portables_connector,
-/obj/machinery/atmospherics/portable/canister,
-/obj/machinery/light/directional/west,
-/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "caution"
@@ -9055,8 +9053,12 @@
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/turbine)
 "aNU" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6
+/obj/machinery/atmospherics/unary/outlet_injector{
+	autolink_id = "co2_in";
+	dir = 4;
+	icon_state = "on";
+	on = 1;
+	pixel_y = 1
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -9069,10 +9071,10 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 10
-	},
 /obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -9302,15 +9304,15 @@
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
 "aPm" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/machinery/power/compressor{
 	comp_id = "incineratorturbine";
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -9321,9 +9323,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 9
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -9337,18 +9336,12 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/binary/valve{
-	name = "Exhaust Reuse"
-	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
 	},
 /area/station/maintenance/turbine)
 "aPt" = (
-/obj/machinery/atmospherics/binary/valve{
-	name = "Exhaust Disposal"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -9638,42 +9631,36 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "aQM" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
+/obj/machinery/atmospherics/air_sensor{
+	output = 127;
+	autolink_id = "gas_turbine_sensor"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 8
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
 "aQO" = (
-/obj/machinery/atmospherics/binary/pump{
-	dir = 8
-	},
 /obj/machinery/light/small/directional/south,
+/obj/machinery/atmospherics/binary/valve{
+	dir = 4;
+	name = "Outlet to Space"
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "aQQ" = (
-/obj/structure/table/reinforced,
-/obj/item/clipboard{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/obj/item/folder/yellow{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/patch/silver_sulf{
-	pixel_x = 8
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
+	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/structure/chair/stool{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "caution"
 	},
 /area/station/maintenance/turbine)
 "aQR" = (
-/obj/structure/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = 4;
 	pixel_y = 4
@@ -9683,9 +9670,7 @@
 	pixel_y = 4
 	},
 /obj/machinery/newscaster/directional/south,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 9
-	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "caution"
@@ -9971,10 +9956,10 @@
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "aSx" = (
-/obj/machinery/atmospherics/unary/outlet_injector/on,
 /obj/structure/disposalpipe/segment/corner{
 	dir = 2
 	},
+/obj/machinery/atmospherics/unary/passive_vent,
 /turf/simulated/floor/plating/airless,
 /area/station/maintenance/turbine)
 "aSy" = (
@@ -9988,6 +9973,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plating,
 /area/station/maintenance/turbine)
 "aSA" = (
@@ -56581,6 +56567,12 @@
 	icon_state = "caution"
 	},
 /area/station/maintenance/electrical)
+"hbm" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5
+	},
+/turf/simulated/wall/r_wall,
+/area/station/maintenance/turbine)
 "hbo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -57630,8 +57622,8 @@
 /area/station/security/armory/secure)
 "huh" = (
 /obj/structure/sign/fire,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 8
 	},
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/turbine)
@@ -59679,8 +59671,9 @@
 /area/station/maintenance/fore)
 "ibb" = (
 /obj/machinery/light/small/directional/north,
-/obj/machinery/atmospherics/binary/valve{
-	dir = 4
+/obj/machinery/atmospherics/binary/pump{
+	dir = 8;
+	name = "Mix to Turbine"
 	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
@@ -65251,8 +65244,8 @@
 	},
 /area/station/security/interrogation)
 "jJU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 8
 	},
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/turbine)
@@ -74928,11 +74921,14 @@
 	req_access = list(24)
 	},
 /obj/machinery/computer/turbine_computer{
-	dir = 1;
-	id = "incineratorturbine"
+	dir = 4;
+	id = "incineratorturbine";
+	name = "Gas Turbine Control Computer"
 	},
-/obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "caution"
@@ -76247,8 +76243,8 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/service/bar/atrium)
 "nls" = (
-/obj/machinery/atmospherics/binary/pump{
-	name = "Port to Turbine"
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 9
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -85008,9 +85004,19 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "pOF" = (
-/obj/machinery/atmospherics/pipe/simple/visible,
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/meter,
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/patch/silver_sulf{
+	pixel_x = 8
+	},
+/obj/item/clipboard{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/folder/yellow{
+	pixel_x = -4;
+	pixel_y = 3
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "caution"
@@ -105326,7 +105332,7 @@
 	},
 /area/station/medical/morgue)
 "wok" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/simulated/floor/engine/vacuum,
@@ -111196,9 +111202,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/abandonedbar)
 "yeA" = (
-/obj/machinery/atmospherics/pipe/manifold4w/visible,
-/obj/machinery/atmospherics/meter,
-/obj/machinery/light_switch/west,
+/obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
+	name = "Gas Turbine ECU";
+	autolink_sensors = list("gas_turbine_sensor"="PRE-burn")
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "caution"
@@ -129763,7 +129774,7 @@ aGX
 leZ
 leZ
 aPm
-leZ
+hbm
 leZ
 aZY
 abj
