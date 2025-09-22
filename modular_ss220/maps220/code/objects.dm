@@ -19,6 +19,13 @@
 	light_color = "#a0a080"
 	light_range = 4
 
+/obj/structure/light_fake/floor
+	name = "floor light"
+	desc = "A small lighting fixture."
+	icon_state = "floor1"
+	light_color = "#a0a080"
+	light_range = 4
+
 /obj/structure/light_fake/spot
 	name = "spotlight"
 	light_range = 12
