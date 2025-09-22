@@ -142,3 +142,6 @@
 
 /obj/item/clothing/head/kitty
 	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+
+/obj/item/clothing/head/helmet/space/deathsquad/beret
+	flags_cover = NONE
