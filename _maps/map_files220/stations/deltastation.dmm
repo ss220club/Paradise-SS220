@@ -7782,30 +7782,29 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/turbine)
 "aIv" = (
-/obj/machinery/atmospherics/unary/tank/toxins,
 /obj/structure/sign/nosmoking_2{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/unary/portables_connector,
+/obj/machinery/atmospherics/portable/canister,
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/turbine)
 "aIw" = (
-/obj/machinery/atmospherics/unary/portables_connector,
-/obj/machinery/atmospherics/portable/canister/oxygen,
 /obj/machinery/light/small/directional/north,
 /obj/machinery/alarm/directional/north,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/unary/tank/oxygen,
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/turbine)
 "aIx" = (
-/obj/machinery/atmospherics/unary/portables_connector,
-/obj/machinery/atmospherics/portable/canister,
 /obj/machinery/camera{
 	c_tag = "Turbine";
 	network = list("SS13","Engineering")
 	},
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/unary/tank/toxins,
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/turbine)
 "aIy" = (
@@ -8527,9 +8526,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/fore_port)
 "aLf" = (
-/obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/trinary/mixer{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
