@@ -26,17 +26,14 @@
 		. = FALSE
 		fail_msg = "Эта конечность отсутствует!"
 
-	if(penetrate_everything)
+	if(apply_through_everything)
 		return TRUE
 
-	if(wear_suit && HAS_TRAIT(wear_suit, TRAIT_RSG_IMMUNE))
-		. = FALSE
-
 	if(target_zone == "head")
-		if((head?.flags & THICKMATERIAL) && !penetrate_thick)
+		if((head?.flags & THICKMATERIAL) && !apply_through_thick)
 			. = FALSE
 	else
-		if((wear_suit?.flags & THICKMATERIAL) && !penetrate_thick)
+		if((wear_suit?.flags & THICKMATERIAL) && !apply_through_thick)
 			. = FALSE
 	if(!. && error_msg && user)
 		if(!fail_msg)
