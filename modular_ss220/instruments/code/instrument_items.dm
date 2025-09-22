@@ -2,7 +2,8 @@
 	name = "гитара Арии"
 	desc = "Тяжелая гитара со встроенными эффектами дисторшена и овердрайва. Эта гитара украшена пламенем в районе корпуса и подписью Арии Вильвен."
 	icon_state = "elguitar_fire"
-	item_state = "elguitar_fire"
+	worn_icon_state = "elguitar_fire"
+	inhand_icon_state = "elguitar_fire"
 	icon = 'modular_ss220/instruments/icons/samurai_guitar.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	lefthand_file = 'modular_ss220/instruments/icons/samurai_guitar_lefthand.dmi'
@@ -19,7 +20,8 @@
 	name = "бас-гитара"
 	desc = "Тяжелая гитара с сокращенным количеством широких струн для извлечения низкочастотных звуков."
 	icon_state = "bluegitara"
-	item_state = "bluegitara"
+	worn_icon_state = "bluegitara"
+	inhand_icon_state = "bluegitara"
 	icon = 'modular_ss220/instruments/icons/samurai_guitar.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	lefthand_file = 'modular_ss220/instruments/icons/samurai_guitar_lefthand.dmi'
@@ -36,7 +38,8 @@
 	name = "рок-гитара"
 	desc = "Тяжелая гитара со встроенными эффектами дисторшена и овердрайва"
 	icon_state = "elguitar"
-	item_state = "elguitar"
+	worn_icon_state = "elguitar"
+	inhand_icon_state = "elguitar"
 	icon = 'modular_ss220/instruments/icons/samurai_guitar.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	lefthand_file = 'modular_ss220/instruments/icons/samurai_guitar_lefthand.dmi'

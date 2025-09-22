@@ -3,8 +3,8 @@
 	desc = "Носится верховным лидером станции NSS Cyberiad."
 	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
 	icon_state = "capcloak_black"
-	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
-	item_state = "capcloak_black"
+	worn_icon_state = "capcloak_black"
+	inhand_icon_state = "capcloak_black"
 
 /obj/item/clothing/neck/cloak/captain_mantle/black/Initialize(mapload)
 	. = ..()

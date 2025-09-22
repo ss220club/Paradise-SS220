@@ -36,7 +36,8 @@
 	desc = "Устройство для автоматической замены ламп. Заправьте его сломанными или рабочими лампочками, либо листами стекла."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
-	item_state = "electronic"
+	worn_icon_state = "electronic"
+	inhand_icon_state = "electronic"
 	belt_icon = "light_replacer"
 	w_class = WEIGHT_CLASS_SMALL
 	flags = CONDUCT

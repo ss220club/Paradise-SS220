@@ -1,9 +1,10 @@
 /obj/item/storage/belt/sheath/saber
 	icon = 'modular_ss220/objects/icons/belts.dmi'
-	icon_override = 'modular_ss220/mobs/icons/mob/belts.dmi'
+	worn_icon = 'modular_ss220/mobs/icons/mob/belts.dmi'
 	var/base_name = "sheath"
 	icon_state = "sheath_classic"
-	item_state = null
+	worn_icon_state = null
+	inhand_icon_state = null
 	base_icon_state = "sheath_classic"
 	can_hold = list(/obj/item/melee/saber)
 

@@ -1,6 +1,3 @@
-/obj/structure/sign/poster
-	icon = 'modular_ss220/objects/icons/posters.dmi'
-
 // MARK: Contraband
 /obj/structure/sign/poster/contraband/lady
 	name = "Соблазнительная Красотка"

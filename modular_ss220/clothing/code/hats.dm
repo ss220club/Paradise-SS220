@@ -3,7 +3,7 @@
 	desc = "Хорошо быть королём."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "cap_beret_black"
-	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/hats.dmi'
 
 /obj/item/clothing/head/ratge
 	name = "ratge head"
@@ -141,4 +141,4 @@
 	icon_state = "beret_ce"
 
 /obj/item/clothing/head/kitty
-	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/hats.dmi'
