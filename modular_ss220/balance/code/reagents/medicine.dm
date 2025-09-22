@@ -10,13 +10,13 @@
 /mob/living/proc/can_apply(mob/user, error_msg, target_zone, penetrate_thick)
 	return TRUE
 
-/mob/living/carbon/human/can_apply(mob/user, error_msg, target_zone, penetrate_thick = FALSE, penetrate_everything = FALSE)
+/mob/living/carbon/human/can_apply(mob/user, error_msg, target_zone, apply_through_thick = FALSE, apply_through_everything = FALSE)
 	. = TRUE
 
 	if(!target_zone)
 		if(!user)
 			. = FALSE
-			CRASH("can_inject() called on a human mob with neither a user nor a targeting zone selected.")
+			CRASH("can_apply() called on a human mob with neither a user nor a targeting zone selected.")
 		else
 			target_zone = user.zone_selected
 
