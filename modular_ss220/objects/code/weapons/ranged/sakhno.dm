@@ -6,7 +6,7 @@
 		была разработана и производится с 2440 года."
 	icon = 'modular_ss220/objects/icons/wide_guns.dmi'
 	icon_state = "sakhno"
-	item_state = "sakhno"
+	inhand_icon_state = "sakhno"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/shot_heavy.ogg'

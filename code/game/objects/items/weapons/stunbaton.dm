@@ -3,8 +3,6 @@
 	desc = "A stun baton for incapacitating people with."
 	icon = 'icons/obj/weapons/baton.dmi'
 	icon_state = "stunbaton"
-	var/base_icon = "stunbaton"
-	item_state = null
 	belt_icon = "stunbaton"
 	slot_flags = ITEM_SLOT_BELT
 	force = 10
@@ -13,6 +11,7 @@
 	attack_verb = list("beaten")
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, RAD = 0, FIRE = 80, ACID = 80)
 	new_attack_chain = TRUE
+	var/base_icon = "stunbaton"
 	/// How many seconds does the knockdown last for?
 	var/knockdown_duration = 10 SECONDS
 	/// how much stamina damage does this baton do?
@@ -267,7 +266,7 @@
 
 		H.Confused(10 SECONDS)
 		H.Jitter(10 SECONDS)
-		H.apply_damage(stam_damage, STAMINA, blocked = H.run_armor_check(attack_flag = ENERGY)) // SS220 EDIT
+		H.apply_damage(stam_damage, STAMINA, blocked = H.run_armor_check(armor_type = ENERGY)) // SS220 EDIT
 		H.SetStuttering(10 SECONDS)
 
 	COOLDOWN_START(src, stun_cooldown, cooldown)
@@ -306,7 +305,7 @@
 	COOLDOWN_START(src, stun_cooldown, cooldown)
 	L.Confused(4 SECONDS)
 	L.Jitter(4 SECONDS)
-	L.apply_damage(30, STAMINA, blocked = L.run_armor_check(attack_flag = ENERGY)) // SS220 EDIT
+	L.apply_damage(30, STAMINA, blocked = L.run_armor_check(armor_type = ENERGY)) // SS220 EDIT
 	L.SetStuttering(4 SECONDS)
 
 	ADD_TRAIT(L, TRAIT_WAS_BATONNED, user_UID) // so one person cannot hit the same person with two separate batons
@@ -388,7 +387,7 @@
 	desc = "A mechanical mass which you can use to incapacitate someone with."
 	icon_state = "swarmprod"
 	base_icon = "swarmprod"
-	item_state = "swarmprod"
+	inhand_icon_state = "swarmprod"
 	throwforce = 0 // Just in case
 	knockdown_duration = 6 SECONDS
 	knockdown_delay = 0 SECONDS

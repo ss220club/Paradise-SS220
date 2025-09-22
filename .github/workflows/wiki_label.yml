@@ -5,7 +5,7 @@ on:
 
 jobs:
   wiki-label:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     if: github.event.issue.pull_request && github.event.comment.body == '!wiki_label'
     permissions:
       issues: write

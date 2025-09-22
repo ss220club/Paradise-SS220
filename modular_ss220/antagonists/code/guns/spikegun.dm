@@ -6,7 +6,7 @@
 	lefthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_righthand.dmi'
 	icon_state = "spike"
-	item_state = "spike"
+	inhand_icon_state = "spike"
 	charge_sections = 4
 	inhand_charge_sections = 4
 	w_class = WEIGHT_CLASS_NORMAL
@@ -54,16 +54,14 @@
 /obj/item/gun/energy/spike/update_icon_state()
 	. = ..()
 	var/inhand_ratio = CEILING((cell.charge / cell.maxcharge) * inhand_charge_sections, 1)
-	var/new_item_state = "[initial(item_state)][inhand_ratio]"
-	item_state = new_item_state
-
+	inhand_icon_state = "[initial(inhand_icon_state)][inhand_ratio]"
 
 /// Самозаряжаемый шипомет, шипы чуть-чуть слабее, но зато самовосстанавливаются и лучше проходят через броню.
 /obj/item/gun/energy/spike/long
 	name = "\improper Vox spike longgun"
 	desc = "Оружие причудливой формы с яркими пурпурными энергетическими светочами. Рукоять предназначена для когтистой руки. Выстреливает длинными энергетическими самовосстановимыми кристаллами с увеличенной проникающей способностью."
 	icon_state = "spike_long"
-	item_state = "spike_long"
+	inhand_icon_state = "spike_long"
 	charge_sections = 6
 	inhand_charge_sections = 6
 	selfcharge = TRUE
@@ -84,7 +82,7 @@
 	name = "\improper Vox spike biogun"
 	desc = "Оружие причудливой формы с шипами-трубками для нанизывания на руку. Рукоять предназначена для когтистой руки и имеет заостренные полые шипы. Выстреливает большими энергетическими распадающимися заостренными кристаллами, выматывающие цель и рикошетящую о поверхность."
 	icon_state = "spike_bio"
-	item_state = "spike_bio"
+	inhand_icon_state = "spike_bio"
 	w_class = WEIGHT_CLASS_HUGE
 	charge_sections = 4
 	inhand_charge_sections = 4

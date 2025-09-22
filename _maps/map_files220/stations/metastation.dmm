@@ -437,7 +437,13 @@
 "afp" = (
 /obj/machinery/newscaster/security_unit/directional/west,
 /obj/structure/table/reinforced,
-/obj/item/taperecorder,
+/obj/item/taperecorder{
+	pixel_y = -7
+	},
+/obj/machinery/phone{
+	pixel_y = 10;
+	pixel_x = -3
+	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "afw" = (
@@ -4966,7 +4972,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
 	},
-/area/station/telecomms/computer)
+/area/station/turret_protected/aisat/interior)
 "aIS" = (
 /obj/item/stack/sheet/plasteel{
 	amount = 10;
@@ -10382,7 +10388,6 @@
 /turf/simulated/wall/r_wall,
 /area/station/command/office/captain/bedroom)
 "bhA" = (
-/obj/item/radio/intercom/directional/north,
 /obj/structure/showcase{
 	density = 0;
 	desc = "An old, deactivated cyborg. Whilst once actively used to guard against intruders, it now simply intimidates them with its cold, steely gaze.";
@@ -10391,6 +10396,7 @@
 	name = "Cyborg Statue";
 	pixel_y = 20
 	},
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkbluecorners"
@@ -11056,6 +11062,10 @@
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "AI Core Shutters";
 	name = "AI Chamber Entrance Shutters"
+	},
+/obj/machinery/flasher{
+	id = "AI";
+	pixel_y = -2
 	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/ai)
@@ -12189,7 +12199,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/starboard)
 "boR" = (
-/obj/machinery/porta_turret,
+/obj/machinery/porta_turret/ai_turret,
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai_upload)
 "boX" = (
@@ -12390,12 +12400,17 @@
 "bpY" = (
 /obj/machinery/status_display/directional/north,
 /obj/item/folder/yellow{
-	pixel_y = 4
+	pixel_y = 1;
+	pixel_x = -8
 	},
 /obj/machinery/camera{
 	c_tag = "Bridge - Central"
 	},
 /obj/structure/table/glass,
+/obj/machinery/phone{
+	pixel_y = 7;
+	pixel_x = 5
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkbrown"
@@ -13223,15 +13238,15 @@
 /area/station/command/office/captain)
 "bui" = (
 /obj/structure/table/wood/fancy/blue,
-/obj/item/clothing/mask/cigarette/cigar{
-	pixel_y = 5
-	},
-/obj/item/lighter/zippo/cap{
-	pixel_x = -1;
-	pixel_y = 5
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
+	},
+/obj/item/storage/fancy/cigars/cohiba{
+	pixel_y = 15
+	},
+/obj/item/lighter/zippo/cap{
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /turf/simulated/floor/wood,
 /area/station/command/office/captain)
@@ -13618,9 +13633,6 @@
 /obj/machinery/recharger{
 	pixel_y = 3
 	},
-/obj/item/flashlight/lamp/green{
-	pixel_y = -25
-	},
 /obj/item/storage/secure/safe{
 	pixel_x = 32
 	},
@@ -13690,12 +13702,6 @@
 /area/station/turret_protected/aisat/interior)
 "bvx" = (
 /obj/machinery/ai_slipper,
-/obj/machinery/turretid/stun{
-	control_area = "\improper AI Satellite Antechamber";
-	name = "AI Antechamber Turret Control";
-	pixel_x = 24;
-	req_access = list(75)
-	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkbluecorners"
@@ -13798,6 +13804,11 @@
 "bwc" = (
 /obj/machinery/newscaster/security_unit/directional/east,
 /obj/structure/table/wood,
+/obj/machinery/phone,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 15;
+	pixel_x = 6
+	},
 /turf/simulated/floor/wood,
 /area/station/command/office/hop)
 "bwd" = (
@@ -15827,8 +15838,16 @@
 /area/station/command/bridge)
 "bFO" = (
 /obj/structure/table/wood,
-/obj/item/folder/blue,
-/obj/item/lighter/zippo,
+/obj/item/folder/blue{
+	pixel_x = -8
+	},
+/obj/item/lighter/zippo{
+	pixel_y = 1;
+	pixel_x = -12
+	},
+/obj/machinery/phone{
+	pixel_x = 8
+	},
 /turf/simulated/floor/carpet,
 /area/station/command/bridge)
 "bFP" = (
@@ -17326,6 +17345,10 @@
 /obj/item/stamp/denied{
 	pixel_x = 4;
 	pixel_y = -4
+	},
+/obj/machinery/phone{
+	pixel_y = 15;
+	pixel_x = 6
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/supply/qm)
@@ -19236,6 +19259,10 @@
 /obj/item/stamp/rep,
 /obj/machinery/requests_console/directional/west,
 /obj/machinery/keycard_auth/directional/south,
+/obj/machinery/phone{
+	pixel_y = 15;
+	pixel_x = -3
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "bXb" = (
@@ -20291,7 +20318,9 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/machinery/door/airlock/corporate,
+/obj/machinery/door/airlock/corporate{
+	id_tag = "ntrepofficedoor"
+	},
 /turf/simulated/floor/wood,
 /area/station/command/office/ntrep)
 "ccn" = (
@@ -20566,6 +20595,10 @@
 /obj/item/flashlight/lamp/green{
 	pixel_x = -5;
 	pixel_y = 1
+	},
+/obj/item/storage/fancy/cigars{
+	pixel_y = 9;
+	pixel_x = 16
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
@@ -20865,6 +20898,10 @@
 	},
 /obj/item/pen{
 	pixel_x = 6
+	},
+/obj/machinery/phone{
+	pixel_y = 15;
+	pixel_x = -3
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
@@ -23210,7 +23247,9 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/door/airlock/corporate/glass,
+/obj/machinery/door/airlock/corporate/glass{
+	id_tag = "nct"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -26348,9 +26387,19 @@
 "cES" = (
 /obj/structure/table/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/paper_bin/nanotrasen,
-/obj/item/pen/multi,
-/obj/item/stamp/cmo,
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = 10
+	},
+/obj/item/pen/multi{
+	pixel_x = 8
+	},
+/obj/item/stamp/cmo{
+	pixel_x = 11
+	},
+/obj/machinery/phone{
+	pixel_y = 2;
+	pixel_x = -6
+	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/cmo)
 "cET" = (
@@ -35661,13 +35710,17 @@
 	pixel_x = 6
 	},
 /obj/item/flashlight/lamp/green/off{
-	pixel_y = 3;
-	pixel_x = -6
+	pixel_y = 2;
+	pixel_x = -7
 	},
 /obj/machinery/door_control/normal/south{
 	id = "CaptainOfficeDoor";
 	name = "Captain Office Door Control";
 	req_access = list(20)
+	},
+/obj/machinery/phone{
+	pixel_y = 10;
+	pixel_x = 9
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/office/captain)
@@ -39895,6 +39948,14 @@
 /area/station/maintenance/asmaint)
 "ghd" = (
 /obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/obj/item/pen{
+	pixel_x = 8;
+	pixel_y = 5
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -45066,9 +45127,7 @@
 	},
 /area/station/hallway/secondary/entry/lounge)
 "ifN" = (
-/obj/machinery/porta_turret{
-	dir = 1
-	},
+/obj/machinery/porta_turret/ai_turret,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -45542,6 +45601,14 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/secondary/entry/west)
+"iqQ" = (
+/obj/machinery/turretid/stun{
+	name = "AI Satellite Turret Control";
+	pixel_x = -8;
+	req_access = list(75)
+	},
+/turf/simulated/wall/r_wall,
+/area/station/turret_protected/aisat/interior)
 "iqV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -46552,7 +46619,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/turret_protected/aisat/interior)
+/area/station/turret_protected/ai)
 "iHv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable,
@@ -46916,19 +46983,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
-"iNO" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/turretid/stun{
-	control_area = "\improper AI Upload Chamber";
-	name = "AI Upload Turret Control";
-	pixel_x = 28;
-	req_access = list(75)
-	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "whitepurple"
-	},
-/area/station/science/research)
 "iOf" = (
 /obj/machinery/atmospherics/unary/portables_connector{
 	dir = 4
@@ -50237,6 +50291,10 @@
 /obj/machinery/requests_console/directional/east,
 /turf/simulated/floor/wood,
 /area/station/supply/qm)
+"jZU" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/turf/simulated/floor/plating,
+/area/station/turret_protected/ai)
 "jZY" = (
 /obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -51127,10 +51185,8 @@
 /area/station/command/office/rd)
 "kqP" = (
 /obj/machinery/light_switch/north,
-/obj/machinery/porta_turret{
-	dir = 1
-	},
 /obj/machinery/alarm/directional/west,
+/obj/machinery/porta_turret/ai_turret,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -54467,10 +54523,15 @@
 /obj/structure/table,
 /obj/item/folder/white,
 /obj/item/toy/figure/crew/rd{
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = -7
 	},
 /obj/item/stamp/rd,
 /obj/item/paper/monitorkey,
+/obj/machinery/phone{
+	pixel_y = 12;
+	pixel_x = 7
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -55234,10 +55295,9 @@
 	pixel_x = 5;
 	pixel_y = -1
 	},
-/obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
-	pixel_x = -3;
-	pixel_y = 3
+/obj/machinery/phone{
+	pixel_y = 6;
+	pixel_x = -3
 	},
 /turf/simulated/floor/wood,
 /area/station/command/office/hos)
@@ -60800,7 +60860,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/turret_protected/aisat/interior)
+/area/station/aisat/service)
 "nOU" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
@@ -61691,11 +61751,6 @@
 /turf/simulated/floor/plating,
 /area/station/security/brig)
 "oeK" = (
-/obj/machinery/camera/motion{
-	c_tag = "AI Chamber - Core";
-	network = list("SS13","MiniSat");
-	start_active = 1
-	},
 /obj/machinery/power/apc/important/directional/south,
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -63039,7 +63094,7 @@
 	},
 /area/station/engineering/control)
 "oHv" = (
-/mob/living/simple_animal/hostile/retaliate/goat/chef,
+/mob/living/basic/goat/chef,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -69149,7 +69204,7 @@
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/east)
 "qUq" = (
-/mob/living/simple_animal/chicken/clucky,
+/mob/living/basic/chicken/clucky,
 /turf/simulated/floor/grass,
 /area/station/service/hydroponics)
 "qUA" = (
@@ -70939,7 +70994,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/warden)
 "rEw" = (
-/obj/machinery/porta_turret,
+/obj/machinery/porta_turret/ai_turret,
 /turf/simulated/floor/redgrid,
 /area/station/turret_protected/ai_upload)
 "rEF" = (
@@ -72907,14 +72962,14 @@
 /obj/machinery/turretid/lethal{
 	check_synth = 1;
 	name = "AI Chamber Turret Control";
-	pixel_x = 5;
 	pixel_y = -24;
 	req_access = list(75)
 	},
-/obj/machinery/flasher{
-	id = "AI";
-	pixel_x = -8;
-	pixel_y = -24
+/obj/machinery/camera/motion{
+	c_tag = "AI Chamber - Core";
+	network = list("SS13","MiniSat");
+	start_active = 1;
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
@@ -75579,16 +75634,12 @@
 /area/station/maintenance/aft2)
 "ttp" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin{
-	pixel_y = 4;
-	pixel_x = -5
-	},
-/obj/item/pen{
-	pixel_x = 8;
-	pixel_y = 5
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/machinery/phone{
+	pixel_y = 4;
+	pixel_x = -3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -81437,13 +81488,14 @@
 	pixel_x = 32
 	},
 /obj/structure/table/wood/fancy/green,
-/obj/item/kirbyplants/large{
-	pixel_y = 10
-	},
 /obj/machinery/camera/motion{
 	c_tag = "AI Upload Chamber";
 	dir = 8;
 	network = list("SS13","RD","AIUpload")
+	},
+/obj/machinery/phone{
+	pixel_y = 5;
+	pixel_x = -3
 	},
 /turf/simulated/floor/greengrid,
 /area/station/turret_protected/ai_upload)
@@ -83910,6 +83962,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/aft2)
 "wIu" = (
+/obj/machinery/salvage_redemption,
 /turf/simulated/floor/plasteel{
 	icon_state = "brown"
 	},
@@ -85966,6 +86019,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/xenobio_south)
+"xtu" = (
+/obj/machinery/turretid/stun{
+	name = "AI Upload Turret Control";
+	req_access = list(75)
+	},
+/turf/simulated/wall/r_wall,
+/area/station/turret_protected/ai_upload)
 "xtx" = (
 /obj/machinery/atmospherics/binary/valve{
 	dir = 4;
@@ -118869,7 +118929,7 @@ iKk
 uSJ
 dYb
 lEw
-iNO
+fTs
 mai
 fTs
 fTs
@@ -119126,7 +119186,7 @@ gQc
 aOG
 aOG
 oGh
-aOG
+xtu
 aOG
 xbs
 hQB
@@ -141174,12 +141234,12 @@ aaa
 aXL
 aaa
 aaa
-aXL
-aXL
-aXL
+bri
+bri
+bri
 cQP
-aXL
-aXL
+bri
+bri
 aaa
 aaa
 aXL
@@ -141423,21 +141483,21 @@ abq
 abq
 aXL
 aaa
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
 wxE
 bvw
 bxz
 bBn
-aXL
-aXL
+bri
+bBl
 aaa
 aXL
 aaa
@@ -141678,30 +141738,30 @@ fbS
 arA
 arA
 arA
-aXL
-aXL
-aXL
 bdI
 bdI
 bdI
-aXL
-aXL
-aXL
-aXL
-bri
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
 bwr
 buU
 bxy
 bBj
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
+bri
+bBl
+bBl
+bBl
+bKl
+bKl
+bKl
+bKl
+bKl
 arA
 arA
 iNu
@@ -141934,9 +141994,9 @@ bxl
 aQF
 aaa
 aaa
-aXL
-aXL
-aXL
+bdI
+bdI
+bdI
 bdI
 bdI
 bjW
@@ -141945,20 +142005,20 @@ bdI
 bdI
 bdI
 bdI
-bri
+bdI
 bsX
 bvx
 bxB
 bCW
+bri
 bBl
 bBl
 bBl
-bBl
-aXL
-aXL
-aXL
-aXL
-aXL
+bKl
+bKl
+bKl
+bKl
+bKl
 aaa
 aaa
 aUU
@@ -142191,7 +142251,7 @@ bxl
 aQF
 aaa
 aaa
-aXL
+bdI
 bdI
 qfR
 blK
@@ -142202,20 +142262,20 @@ bfC
 bjS
 bog
 bqX
+bdI
 bri
-bri
-bri
+iqQ
 cQP
 bri
-bBl
+bri
 bxb
 bHi
 bJl
-aXL
-aXL
-aXL
-aXL
-aXL
+bKl
+bKl
+bKl
+bKl
+bKl
 aaa
 aaa
 aUU
@@ -142447,8 +142507,8 @@ bbX
 say
 aQF
 aaa
-aXL
-aXL
+bdI
+bdI
 bdI
 uUX
 nvN
@@ -142459,12 +142519,12 @@ bmT
 mvP
 bpt
 brm
-bri
+bdI
 avN
 buY
 bxD
 bAA
-bBl
+bri
 bAX
 bFi
 bIz
@@ -142472,8 +142532,8 @@ bKl
 iWv
 bOb
 odO
-aXL
-aXL
+bKl
+bKl
 aaa
 aUU
 rKu
@@ -142704,24 +142764,24 @@ bbW
 rqY
 aQF
 aaa
-aXL
+bdI
 bdI
 bdu
 jgJ
 bdL
-bdI
+jZU
 ssD
 bdI
 bdI
 bdL
 hLH
 mcP
-bri
+bdI
 bwL
 buX
 bsT
 jKb
-bBl
+bri
 bfz
 bFj
 bIA
@@ -142729,8 +142789,8 @@ tgE
 dwC
 bOa
 bOa
-aXL
-aXL
+bKl
+bKl
 aaa
 aUU
 fES
@@ -142961,7 +143021,7 @@ bbY
 bdJ
 bdP
 aef
-aXL
+bdI
 bdI
 aXI
 bih
@@ -142986,8 +143046,8 @@ pQq
 bRs
 fZV
 hxv
-aXL
-aXL
+bKl
+bKl
 aef
 bvh
 cQc
@@ -143218,24 +143278,24 @@ pkq
 rzT
 aQF
 aaa
-aXL
+bdI
 bdI
 bhZ
 bdw
 pjx
-bdI
+jZU
 oeK
 bdI
 bdI
 bdL
 uHX
 bif
-bri
+bdI
 bhA
 buZ
 aIu
 nPe
-bBl
+bri
 bfz
 bGT
 bIB
@@ -143243,8 +143303,8 @@ tgE
 xEi
 bOa
 bOa
-aXL
-aXL
+bKl
+bKl
 aaa
 aUU
 ijt
@@ -143475,8 +143535,8 @@ bbZ
 bzh
 aQF
 aaa
-aXL
-aXL
+bdI
+bdI
 bdI
 wAP
 bfN
@@ -143487,12 +143547,12 @@ bmT
 mkL
 bph
 brQ
-bri
+bdI
 aXK
 bvc
 bxD
 bDi
-bBl
+bri
 bxf
 bFm
 bRo
@@ -143500,8 +143560,8 @@ bKl
 bOa
 dRN
 kwJ
-aXL
-aXL
+bKl
+bKl
 aaa
 aUU
 cLL
@@ -143733,7 +143793,7 @@ bMr
 aQF
 aaa
 aaa
-aXL
+bdI
 bdI
 qfR
 bjQ
@@ -143744,20 +143804,20 @@ bfH
 bid
 bpq
 bra
-bri
-bri
-bri
+bdI
+brk
+brk
 nOR
-bri
-bBl
+brk
+brk
 vfv
 bFd
 bJm
-aXL
-aXL
-aXL
-aXL
-aXL
+bKl
+bKl
+bKl
+bKl
+bKl
 aaa
 aaa
 aUU
@@ -143990,9 +144050,9 @@ bMr
 aQF
 aaa
 aaa
-aXL
-aXL
-aXL
+bdI
+bdI
+bdI
 bdI
 bdI
 blJ
@@ -144001,20 +144061,20 @@ bdI
 bdI
 bdI
 bdI
-brk
+bdI
 bDb
 bve
 bzj
 bAW
+brk
 bBl
 bBl
 bBl
-bBl
-aXL
-aXL
-aXL
-aXL
-aXL
+bKl
+bKl
+bKl
+bKl
+bKl
 aaa
 aaa
 aUU
@@ -144248,30 +144308,30 @@ aQF
 aaa
 aaa
 aaa
-aXL
-aXL
-aXL
 bdI
 bdI
 bdI
-aXL
-aXL
-aXL
-aXL
-brk
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
 bvo
 bvX
 bzi
 bAT
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
+brk
+bBl
+bBl
+bBl
+bKl
+bKl
+bKl
+bKl
+bKl
 aaa
 aaa
 aUU
@@ -144507,21 +144567,21 @@ aaa
 aaa
 aXL
 aaa
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
-aXL
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
+bdI
 sFz
 bwa
 bzl
 bFf
-aXL
-aXL
+brk
+bBl
 aaa
 aXL
 aaa
@@ -144772,12 +144832,12 @@ aaa
 aXL
 aaa
 aaa
-aXL
+brk
 nKx
 bvZ
 bzk
 bBm
-aXL
+brk
 aaa
 aaa
 aXL
@@ -145029,12 +145089,12 @@ aXH
 aXL
 aaa
 aaa
-aXL
-aXL
-aXL
+brk
+brk
+brk
 dGs
-aXL
-aXL
+brk
+brk
 aaa
 aUU
 bMt

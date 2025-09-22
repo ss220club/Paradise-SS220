@@ -139,7 +139,7 @@
 	name = "beaker"
 	desc = "A simple glass beaker, nothing special."
 	icon_state = "beaker"
-	item_state = "beaker"
+	inhand_icon_state = "beaker"
 	belt_icon = "beaker"
 	materials = list(MAT_GLASS = 1000)
 	var/obj/item/assembly_holder/assembly = null
@@ -304,7 +304,6 @@
 	desc = "Полезно для переноса жидкостей, а также сойдёт в качестве шлема на случай зомби-апокалипсиса."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "bucket"
-	item_state = "bucket"
 	materials = list(MAT_METAL=200)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
@@ -312,6 +311,7 @@
 	volume = 120
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 75, ACID = 50) //Weak melee protection, because you can wear it on your head
 	slot_flags = ITEM_SLOT_HEAD
+	body_parts_covered = HEAD
 	prefered_slot_flags = ITEM_SLOT_IN_BACKPACK
 	resistance_flags = NONE
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
@@ -325,7 +325,6 @@
 /obj/item/reagent_containers/glass/bucket/wooden
 	name = "wooden bucket"
 	icon_state = "woodbucket"
-	item_state = "woodbucket"
 	materials = null
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 50)
 	resistance_flags = FLAMMABLE
@@ -356,9 +355,9 @@
 	desc = "A bottle of water filled at an old Earth bottling facility."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "smallbottle"
-	item_state = "bottle"
+	inhand_icon_state = "bottle"
 	list_reagents = list("water" = 49.5, "fluorine" = 0.5) //see desc, don't think about it too hard
-	materials = list(MAT_GLASS = 0)
+	materials = list()
 
 /obj/item/reagent_containers/glass/beaker/waterbottle/empty
 	list_reagents = list()

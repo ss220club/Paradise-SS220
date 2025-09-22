@@ -5,7 +5,7 @@
 	lefthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_righthand.dmi'
 	icon_state = "biogun"
-	item_state = "spike_long"
+	inhand_icon_state = "spike_long"
 	var/inhand_charge_sections = 3
 	w_class = WEIGHT_CLASS_HUGE
 	max_capacity = 3
@@ -39,8 +39,7 @@
 	. = ..()
 	var/num = length(loaded_projectiles) + (to_launch ? 1 : 0)
 	var/inhand_ratio = CEILING((num / max_capacity) * inhand_charge_sections, 1)
-	var/new_item_state = "[initial(item_state)][inhand_ratio]"
-	item_state = new_item_state
+	inhand_icon_state = "[initial(inhand_icon_state)][inhand_ratio]"
 
 /obj/item/gun/throw/biogun/update_overlays()
 	. = ..()

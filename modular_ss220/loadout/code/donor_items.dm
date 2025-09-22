@@ -1,6 +1,6 @@
 /obj/item/storage/firstaid/regular/donor
 	desc = "Набор первой медицинской помощи за оформление страховки"
-	icon_state = "firstaid"
+	icon_state = "firstaid_regular"
 
 /obj/item/storage/firstaid/regular/donor/populate_contents()
 	new /obj/item/reagent_containers/patch/styptic(src)

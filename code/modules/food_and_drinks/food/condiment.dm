@@ -134,7 +134,7 @@
 	name = "sugar sack"
 	desc = "Космический сахар. Слаще, чем кажется."
 	icon_state = "sugar"
-	item_state = "sugar"
+	inhand_icon_state = "carton"
 	list_reagents = list("sugar" = 50)
 	possible_states = list()
 
@@ -175,7 +175,7 @@
 	name = "space milk"
 	desc = "Пейте дети и скелеты молоко - будете здоровы!"
 	icon_state = "milk"
-	item_state = "carton"
+	inhand_icon_state = "contvapour"
 	list_reagents = list("milk" = 50)
 	possible_states = list()
 
@@ -183,7 +183,7 @@
 	name = "flour sack"
 	desc = "Большой мешок муки. Отлично подходит для выпечки!"
 	icon_state = "flour"
-	item_state = "flour"
+	inhand_icon_state = "contvapour"
 	list_reagents = list("flour" = 30)
 	possible_states = list()
 
@@ -198,7 +198,7 @@
 	name = "soy milk"
 	desc = "Это соевое молоко. Подходит, если у вас непереносимость лактозы."
 	icon_state = "soymilk"
-	item_state = "carton"
+	inhand_icon_state = "contvapour"
 	list_reagents = list("soymilk" = 50)
 	possible_states = list()
 
@@ -206,7 +206,7 @@
 	name = "rice sack"
 	desc = "Большой мешок риса. Отлично подходит для готовки!"
 	icon_state = "rice"
-	item_state = "flour"
+	inhand_icon_state = "carton"
 	list_reagents = list("rice" = 30)
 	possible_states = list()
 
