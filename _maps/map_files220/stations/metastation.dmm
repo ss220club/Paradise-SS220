@@ -675,8 +675,8 @@
 /obj/structure/sign/magboots{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/binary/pump/on{
-	dir = 1
+/obj/machinery/atmospherics/binary/pump{
+	name = "Mix to Turbine"
 	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
@@ -10693,10 +10693,8 @@
 /area/station/security/checkpoint/secondary)
 "biB" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /obj/machinery/atmospherics/meter,
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "biF" = (
@@ -11176,20 +11174,13 @@
 "bkW" = (
 /turf/simulated/wall/r_wall,
 /area/station/command/bridge)
-"bkY" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 6
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
-/area/station/maintenance/turbine)
 "bkZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/alarm/all_access/directional/east,
-/obj/machinery/atmospherics/pipe/manifold/visible/purple{
-	dir = 4
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 10
 	},
-/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "bla" = (
@@ -12780,7 +12771,9 @@
 /area/station/maintenance/maintcentral)
 "brW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "brY" = (
@@ -13247,7 +13240,14 @@
 "bul" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/south,
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 10
+	},
+/obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 1;
+	name = "Gas Turbine ECU";
+	autolink_sensors = list("gas_turbine_sensor"="PRE-burn")
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "bum" = (
@@ -17881,8 +17881,10 @@
 /turf/simulated/floor/wood,
 /area/station/maintenance/abandonedbar)
 "bQA" = (
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/machinery/atmospherics/air_sensor{
+	output = 127;
+	autolink_id = "gas_turbine_sensor"
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -21897,8 +21899,6 @@
 /obj/structure/sign/fire{
 	pixel_x = 32
 	},
-/obj/machinery/atmospherics/portable/canister,
-/obj/machinery/atmospherics/unary/portables_connector,
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -22074,9 +22074,7 @@
 "ckb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/west,
-/obj/machinery/atmospherics/unary/tank/toxins{
-	dir = 4
-	},
+/obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "ckd" = (
@@ -22337,8 +22335,10 @@
 /area/station/science/rnd)
 "cly" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow,
-/obj/structure/chair/stool,
+/obj/machinery/atmospherics/trinary/mixer/flipped{
+	dir = 4;
+	name = "Mix to Turbine"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "clA" = (
@@ -22861,9 +22861,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/extinguisher_cabinet/directional/south,
-/obj/machinery/computer/turbine_computer{
-	id = "incineratorturbine";
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -22901,7 +22900,11 @@
 	pixel_y = -24;
 	req_access = list(12)
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/machinery/computer/turbine_computer{
+	id = "incineratorturbine";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "cov" = (
@@ -23377,7 +23380,7 @@
 /area/station/maintenance/turbine)
 "cqQ" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/unary/outlet_injector/on{
+/obj/machinery/atmospherics/unary/passive_vent{
 	dir = 1
 	},
 /turf/space,
@@ -23670,8 +23673,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "cso" = (
-/obj/machinery/atmospherics/pipe/manifold4w/visible/yellow,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "csp" = (
@@ -24294,8 +24299,8 @@
 /obj/structure/sign/vacuum/external{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 9
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -24321,9 +24326,6 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 6
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
@@ -24638,7 +24640,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 10
+	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
 "cwC" = (
@@ -26291,9 +26295,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/on{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "cEE" = (
@@ -27869,7 +27870,9 @@
 /area/station/maintenance/starboard)
 "cLs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/machinery/atmospherics/unary/tank/toxins{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "cLt" = (
@@ -47024,7 +47027,9 @@
 /obj/structure/sign/turbine{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/binary/pump/on,
+/obj/machinery/atmospherics/binary/valve{
+	name = "Output to Space"
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "iPW" = (
@@ -63820,8 +63825,8 @@
 /area/station/engineering/gravitygenerator)
 "oVF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 9
+/obj/machinery/atmospherics/binary/pump{
+	name = "Mix to Turbine"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -67366,7 +67371,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/binary/valve{
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -74820,9 +74825,8 @@
 /area/station/engineering/engine_foyer)
 "tdA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/binary/pump{
-	name = "Fuel Pipe to Incinerator"
-	},
+/obj/machinery/atmospherics/pipe/simple/visible/yellow,
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "tdI" = (
@@ -80795,11 +80799,10 @@
 	},
 /area/station/medical/surgery/secondary)
 "vuM" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 10
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 5
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/wall/r_wall,
 /area/station/maintenance/turbine)
 "vuY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -81225,7 +81228,8 @@
 "vCR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/binary/pump{
-	dir = 4
+	dir = 4;
+	name = "Gas to Turbine"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -127325,9 +127329,9 @@ wFC
 lRY
 dPC
 aRQ
+aRQ
 vCR
 vCR
-bkY
 brW
 dBe
 cqQ
@@ -127582,7 +127586,7 @@ qgE
 wFC
 isU
 chQ
-vuM
+aRQ
 cso
 cly
 cor
@@ -127843,11 +127847,11 @@ tdA
 oVF
 biB
 bul
-clB
+kij
 iPT
-clB
+kij
 bQA
-clA
+vuM
 clA
 clA
 cyu
@@ -128357,9 +128361,9 @@ cjq
 cEC
 bkZ
 cou
-kij
+clB
 ahZ
-kij
+clB
 cuO
 clA
 clA
