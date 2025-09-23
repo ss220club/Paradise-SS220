@@ -8807,7 +8807,7 @@
 "aMG" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 8;
-	name = "Port to Turbine"
+	name = "Mix to Turbine"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -9664,11 +9664,19 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
 "aQW" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 5
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 4
 	},
-/obj/machinery/atmospherics/meter,
-/turf/simulated/floor/plasteel/dark,
+/obj/item/pen{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "vault"
+	},
 /area/station/engineering/atmos)
 "aQZ" = (
 /obj/item/kirbyplants/large,
@@ -31539,13 +31547,14 @@
 	},
 /area/station/medical/virology/lab)
 "cBK" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/meter,
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
@@ -49246,7 +49255,7 @@
 "eIa" = (
 /obj/machinery/atmospherics/meter,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4
+	dir = 10
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
@@ -63707,7 +63716,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -66279,11 +66287,9 @@
 	},
 /area/station/maintenance/starboard2)
 "kaq" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4
-	},
-/obj/machinery/atmospherics/meter,
-/turf/simulated/floor/plasteel/dark,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/atmospherics/pipe/simple/visible/red,
+/turf/simulated/floor/plating,
 /area/station/engineering/atmos)
 "kaA" = (
 /obj/item/radio/intercom/directional/west,
@@ -67477,17 +67483,8 @@
 /area/station/engineering/controlroom)
 "kuK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/structure/table/reinforced,
-/obj/item/stack/package_wrap{
-	pixel_y = 12
-	},
-/obj/item/hand_labeler{
-	pixel_y = 2
-	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/obj/machinery/atmospherics/meter,
+/turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
 "kuY" = (
 /obj/structure/cable{
@@ -67742,11 +67739,9 @@
 	},
 /area/station/maintenance/port2)
 "kze" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/structure/dispenser,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
 "kzh" = (
 /obj/effect/turf_decal/delivery,
@@ -69143,12 +69138,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/station/medical/chemistry)
-"kXZ" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/atmos)
 "kYb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -74761,9 +74750,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -78398,12 +78384,15 @@
 	},
 /area/station/hallway/secondary/exit/maintenance)
 "nPe" = (
-/obj/machinery/atmospherics/trinary/mixer/flipped{
-	dir = 8;
-	name = "Миксер топливной смеси турбины"
+/obj/structure/table/reinforced,
+/obj/item/hand_labeler,
+/obj/item/stack/package_wrap{
+	pixel_y = 10
 	},
-/obj/effect/turf_decal/delivery/hollow,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "vault"
+	},
 /area/station/engineering/atmos)
 "nPi" = (
 /obj/machinery/light/directional/east,
@@ -101170,22 +101159,12 @@
 	},
 /area/station/security/processing)
 "uTD" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 6
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/trinary/mixer{
+	dir = 1;
+	name = "Mix to Turbine"
 	},
-/obj/structure/table/reinforced,
-/obj/item/paper_bin{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
 "uTO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -108675,9 +108654,6 @@
 	},
 /area/station/maintenance/medmaint)
 "xqG" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -132042,7 +132018,7 @@ aIx
 aJO
 eQe
 eIa
-aOb
+kaq
 kze
 uTD
 kuK
@@ -132557,8 +132533,8 @@ jhJ
 hLA
 hxO
 aOb
+aQW
 aQT
-kaq
 pxC
 hEc
 aVE
@@ -132815,7 +132791,7 @@ hLA
 jhJ
 aOb
 nPe
-brz
+aQT
 aSD
 qYd
 aVF
@@ -133071,8 +133047,8 @@ aJS
 hgs
 jhJ
 aOb
-kXZ
-aQW
+aPH
+aQT
 aSD
 gsz
 aVG
