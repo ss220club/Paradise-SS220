@@ -63,10 +63,6 @@
 /obj/machinery/shieldwallgen,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/extinguisher_cabinet/directional/west,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_large"
 	},
@@ -12873,8 +12869,10 @@
 	},
 /area/station/aisat)
 "bsH" = (
+/obj/machinery/shieldwallgen,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	icon_state = "dark_large"
 	},
 /area/station/command/teleporter)
 "bsI" = (
@@ -13122,10 +13120,6 @@
 	},
 /area/station/service/bar)
 "bur" = (
-/obj/machinery/camera/motion{
-	c_tag = "Bridge West";
-	dir = 4
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners";
 	dir = 1
@@ -13452,10 +13446,6 @@
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/command/office/hop)
 "bvr" = (
-/obj/machinery/camera/motion{
-	c_tag = "Bridge East";
-	dir = 8
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners";
 	dir = 4
@@ -13684,12 +13674,14 @@
 	},
 /area/station/turret_protected/aisat/interior)
 "bwu" = (
-/obj/machinery/power/apc/important/directional/north,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/machinery/shieldwallgen,
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/power/apc/important/directional/east,
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	icon_state = "dark_large"
 	},
 /area/station/command/teleporter)
 "bwz" = (
@@ -14824,14 +14816,9 @@
 /turf/simulated/floor/wood/parquet/tile,
 /area/station/command/office/captain)
 "bCr" = (
-/obj/machinery/shieldwallgen,
-/obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/firealarm/directional/west,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark_large"
+	icon_state = "dark"
 	},
 /area/station/command/teleporter)
 "bCu" = (
@@ -14867,8 +14854,12 @@
 	},
 /area/station/hallway/primary/aft/north)
 "bCB" = (
+/obj/machinery/power/apc/directional/west,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
+	dir = 1;
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/central/east)
@@ -15156,27 +15147,11 @@
 	},
 /turf/simulated/floor/wood/parquet/tile,
 /area/station/command/office/captain)
-"bEo" = (
-/obj/machinery/door_control/shutter/north{
-	req_access = list(17);
-	name = "Teleporter Shutters Control";
-	id = "teleportershutter"
-	},
-/obj/machinery/door/poddoor/shutters{
-	id_tag = "teleportershutter";
-	name = "Teleporter Shutters"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/delivery,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/command/teleporter)
 "bEp" = (
 /obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
-	icon_state = "neutralcorner"
+	icon_state = "blue"
 	},
 /area/station/hallway/primary/central/east)
 "bEr" = (
@@ -15336,7 +15311,10 @@
 	},
 /area/station/hallway/primary/central/west)
 "bFV" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/computer/teleporter{
+	dir = 1
+	},
+/obj/machinery/status_display/directional/south,
 /turf/simulated/floor/plating,
 /area/station/command/teleporter)
 "bGa" = (
@@ -16642,13 +16620,7 @@
 	c_tag = "Teleporter Room";
 	dir = 4
 	},
-/obj/machinery/alarm/directional/north,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
+/obj/machinery/alarm/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_large"
 	},
@@ -18226,11 +18198,11 @@
 /area/station/maintenance/abandonedbar)
 "bWF" = (
 /obj/structure/closet/secure_closet/expedition,
-/obj/machinery/camera{
-	c_tag = "Gateway";
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/camera/motion{
+	c_tag = "Gateway Motion Sensor";
 	dir = 8
 	},
-/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkblue"
@@ -18650,7 +18622,7 @@
 /obj/structure/table/wood,
 /obj/item/paicard{
 	desc = "A real Nanotrasen success, these personal AIs provide all of the companionship of an AI without any law related red-tape.";
-	name = "\improper Nanotrasen-brand personal AI device exhibit"
+	name = "\improper Nanotrasen-brand personal AI device"
 	},
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 10
@@ -21425,12 +21397,12 @@
 /obj/item/storage/secure/safe{
 	pixel_y = 32
 	},
-/obj/machinery/camera/autoname{
-	dir = 4;
-	c_tag = "Head of Personnel's Quarters"
-	},
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 9
+	},
+/obj/machinery/camera{
+	c_tag = "Head of Personnel's Quarters";
+	dir = 4
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/command/office/hop)
@@ -25228,16 +25200,6 @@
 	icon_state = "white"
 	},
 /area/station/science/xenobiology)
-"cEg" = (
-/obj/machinery/door/poddoor/shutters{
-	dir = 2;
-	id_tag = "teleaccessshutter";
-	name = "Teleporter Access Shutters"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/delivery,
-/turf/simulated/floor/plating,
-/area/station/command/teleporter)
 "cEh" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
@@ -35881,9 +35843,8 @@
 	},
 /area/station/science/break_room)
 "eZO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -37363,11 +37324,13 @@
 	},
 /area/station/hallway/supply/aft)
 "fBH" = (
-/obj/machinery/computer/teleporter{
+/obj/machinery/light_switch/east,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/radio/intercom/directional/east,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/station/command/teleporter)
 "fBK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -39855,6 +39818,12 @@
 /area/station/hallway/primary/central/west)
 "gsA" = (
 /obj/machinery/hologram/holopad,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -41569,6 +41538,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood/parquet/tile,
 /area/station/command/office/captain)
 "gZP" = (
@@ -43501,6 +43471,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/sign/securearea{
+	pixel_x = -32
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
 "hMv" = (
@@ -43818,6 +43791,10 @@
 "hSa" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = -32
+	},
+/obj/machinery/camera{
+	c_tag = "Bridge Central";
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners"
@@ -47400,12 +47377,8 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -47852,12 +47825,13 @@
 	},
 /area/station/security/armory)
 "jvM" = (
-/obj/machinery/shieldwallgen,
-/obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/light_switch/south,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark_large"
+/obj/machinery/door_control/shutter/west{
+	req_access = list(17);
+	id = "teleaccessshutter";
+	name = "Teleporter Shutters Access Control"
 	},
+/obj/machinery/teleport/hub,
+/turf/simulated/floor/plating,
 /area/station/command/teleporter)
 "jvU" = (
 /obj/structure/cable{
@@ -54981,6 +54955,10 @@
 /area/station/hallway/primary/fore/west)
 "lRo" = (
 /obj/item/kirbyplants/medium,
+/obj/machinery/camera{
+	c_tag = "Bridge West";
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners"
 	},
@@ -56869,14 +56847,6 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /turf/space,
 /area/space/nearstation)
-"mBP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/command/teleporter)
 "mBZ" = (
 /obj/structure/chair{
 	pixel_y = -2
@@ -57406,14 +57376,16 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft2)
 "mLT" = (
-/obj/structure/closet/crate,
 /obj/item/crowbar,
 /obj/item/wrench,
-/obj/item/storage/toolbox/emergency,
 /obj/item/beacon,
 /obj/item/gps,
 /obj/machinery/light/directional/west,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/storage/toolbox/emergency,
+/obj/structure/closet/crate,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -59150,6 +59122,13 @@
 	icon_state = "darkgreycheck"
 	},
 /area/station/command/office/rd)
+"nlU" = (
+/obj/effect/turf_decal/delivery/partial,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/station/hallway/secondary/bridge)
 "nmc" = (
 /obj/item/radio/intercom/directional/south,
 /obj/machinery/light/directional/south,
@@ -59273,6 +59252,10 @@
 /area/station/maintenance/xenobio_south)
 "noN" = (
 /obj/item/kirbyplants/medium,
+/obj/machinery/camera{
+	c_tag = "Bridge East";
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluecorners";
 	dir = 8
@@ -61493,17 +61476,13 @@
 /turf/simulated/floor/wood,
 /area/station/maintenance/fpmaint)
 "ofu" = (
-/obj/machinery/power/apc/directional/west,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
 /obj/machinery/camera{
 	c_tag = "Central Primary Hallway - Starboard - Bar";
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
-	icon_state = "neutralcorner"
+	icon_state = "bluecorner"
 	},
 /area/station/hallway/primary/central/east)
 "ofC" = (
@@ -62194,11 +62173,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/supply/port)
 "oum" = (
-/obj/structure/extinguisher_cabinet/directional/west,
-/obj/structure/extinguisher_cabinet/directional/west,
+/obj/structure/sign/securearea{
+	pixel_x = -32
+	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "neutralcorner"
+	dir = 1;
+	icon_state = "bluecorner"
 	},
 /area/station/hallway/primary/central/east)
 "ouq" = (
@@ -62283,6 +62263,11 @@
 "ovR" = (
 /turf/simulated/floor/wood,
 /area/station/maintenance/starboard)
+"ovT" = (
+/obj/machinery/teleport/station,
+/obj/item/radio/intercom/directional/south,
+/turf/simulated/floor/plating,
+/area/station/command/teleporter)
 "owg" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -63100,7 +63085,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
-	icon_state = "neutralcorner"
+	icon_state = "neutral"
 	},
 /area/station/hallway/primary/central/ne)
 "oNg" = (
@@ -63629,6 +63614,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
+"oVf" = (
+/obj/machinery/light/directional/north,
+/obj/structure/sign/securearea{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "bluecorner"
+	},
+/area/station/hallway/secondary/bridge)
 "oVj" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable{
@@ -71620,6 +71615,16 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/science/xenobiology)
+"rPX" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/poddoor/shutters{
+	dir = 2;
+	id_tag = "teleaccessshutter";
+	name = "Teleporter Access Shutters"
+	},
+/turf/simulated/floor/plating,
+/area/station/command/teleporter)
 "rQg" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -72516,16 +72521,6 @@
 	},
 /turf/simulated/floor/engine/vacuum,
 /area/station/science/toxins/mixing)
-"siv" = (
-/obj/machinery/door/poddoor/shutters{
-	id_tag = "teleportershutter";
-	name = "Teleporter Shutters"
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/command/teleporter)
 "sjx" = (
 /obj/structure/chair{
 	dir = 1
@@ -79680,13 +79675,14 @@
 /turf/simulated/wall,
 /area/station/maintenance/apmaint)
 "uVT" = (
-/obj/machinery/teleport/station,
 /obj/machinery/door_control/shutter/east{
 	req_access = list(17);
 	name = "Teleporter Shutters Access Control";
 	id = "teleaccessshutter"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/station/command/teleporter)
 "uWe" = (
 /obj/structure/table,
@@ -81888,6 +81884,13 @@
 	icon_state = "dark"
 	},
 /area/station/security/main)
+"vMa" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutralcorner"
+	},
+/area/station/hallway/primary/central/east)
 "vMb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -82461,7 +82464,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/theatre)
 "vXp" = (
-/obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood/parquet/tile,
 /area/station/command/office/captain)
 "vXq" = (
@@ -84129,10 +84131,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/east)
@@ -84888,13 +84887,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fore)
-"wVL" = (
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "neutralcorner"
-	},
-/area/station/hallway/primary/central/east)
 "wVO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -86129,14 +86121,17 @@
 	},
 /area/station/hallway/secondary/entry/lounge)
 "xpC" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/east)
 "xpD" = (
@@ -117921,8 +117916,8 @@ snI
 snI
 lIo
 snI
-snI
-snI
+qgk
+qgk
 qgk
 mXy
 jJR
@@ -119209,7 +119204,7 @@ bMW
 bMW
 bMW
 bMW
-yhp
+oVf
 xca
 whX
 bOY
@@ -119465,8 +119460,8 @@ abb
 mLT
 bCr
 jvM
-bMW
-fLM
+rPX
+nlU
 bJp
 tuo
 fyR
@@ -119720,10 +119715,10 @@ hMr
 jlh
 eZO
 gsA
-mBP
 bAl
-dkz
-wHz
+ovT
+bMW
+fLM
 bEh
 opf
 uhY
@@ -119979,8 +119974,8 @@ bsH
 fBH
 uVT
 bFV
-cEg
-wHz
+bMW
+nwc
 bEh
 bLg
 bZn
@@ -120231,10 +120226,10 @@ bhw
 bht
 iFN
 bMW
-bEo
-siv
 bMW
 bMW
+bMW
+dkz
 bMW
 bMW
 bFB
@@ -120487,8 +120482,8 @@ wBR
 bvs
 aUM
 oNe
-wVL
-bCB
+bQF
+vMa
 bCB
 ofu
 bEp
