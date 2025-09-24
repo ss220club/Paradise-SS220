@@ -436,9 +436,9 @@
 	return ..()
 
 // MARK: MISC SECURITY
-/datum/design/handcuffs_mini
+/datum/design/handcuffsmini
 	name = "Handcuffs"
-	id = "handcuffs_mini"
+	id = "handcuffsmini"
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 500)
 	build_path = /obj/item/restraints/handcuffs

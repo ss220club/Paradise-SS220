@@ -6,6 +6,7 @@
 	active_power_consumption = 25
 	queue_max_len = 6
 	board_type = /obj/item/circuitboard/minilathe
+	disks_compatible = FALSE
 	var/departament_overlay
 
 /obj/machinery/autolathe/mini/Initialize(mapload)
@@ -44,8 +45,18 @@
 							/obj/item/stock_parts/manipulator = 1,
 							/obj/item/stack/sheet/glass = 1)
 
+/datum/design/minilathe
+	name = "Machine Board (Minilathe)"
+	desc = "The circuit board for an Minilathe."
+	id = "minilathe"
+	req_tech = list("programming" = 2, "engineering" = 2)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/minilathe
+	category = list("Research Machinery")
+
 /obj/machinery/autolathe/mini/departamental
-	name = "strange minilathe"
+	name = "StRaNgE mInIlAtHe"
 	desc = "Какой-то странный минилат. Сообщите мистеру-разработчику, если вы вдруг видите его."
 	categories = list("Materials")
 
@@ -68,6 +79,16 @@
 	icon_state = "service"
 	build_path = /obj/machinery/autolathe/mini/departamental/service
 
+/datum/design/servminilathe
+	name = "Machine Board (Service Minilathe)"
+	desc = "The circuit board for an Service Minilathe."
+	id = "service_minilathe"
+	req_tech = list("programming" = 2, "engineering" = 2)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/minilathe/service
+	category = list("Misc. Machinery")
+
 // MEDICAL
 /obj/machinery/autolathe/mini/departamental/medical
 	name = "medical minilathe"
@@ -80,6 +101,16 @@
 	board_name = "Medical Minilathe"
 	icon_state = "medical"
 	build_path = /obj/machinery/autolathe/mini/departamental/medical
+
+/datum/design/medminilathe
+	name = "Machine Board (Medical Minilathe)"
+	desc = "The circuit board for an Medical Minilathe."
+	id = "medical_minilathe"
+	req_tech = list("programming" = 2, "engineering" = 2, "biotech" = 1)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/minilathe/medical
+	category = list("Misc. Machinery")
 
 // SECURITY
 /obj/machinery/autolathe/mini/departamental/security
@@ -94,6 +125,16 @@
 	icon_state = "security"
 	build_path = /obj/machinery/autolathe/mini/departamental/security
 
+/datum/design/secminilathe
+	name = "Machine Board (Security Minilathe)"
+	desc = "The circuit board for an Security Minilathe."
+	id = "security_minilathe"
+	req_tech = list("programming" = 2, "engineering" = 2, "combat" = 1)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/minilathe/security
+	category = list("Misc. Machinery")
+
 // ENGINEERING
 /obj/machinery/autolathe/mini/departamental/engineering
 	name = "engineering minilathe"
@@ -106,3 +147,13 @@
 	board_name = "Engineering Minilathe"
 	icon_state = "engineering"
 	build_path = /obj/machinery/autolathe/mini/departamental/engineering
+
+/datum/design/engminilathe
+	name = "Machine Board (Engineering Minilathe)"
+	desc = "The circuit board for an Engineering Minilathe."
+	id = "engineering_minilathe"
+	req_tech = list("programming" = 2, "engineering" = 2, "materials" = 1)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/minilathe/engineering
+	category = list("Misc. Machinery")

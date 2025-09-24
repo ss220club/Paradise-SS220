@@ -39,6 +39,8 @@
 	var/board_type = /obj/item/circuitboard/autolathe
 	var/disk_design_load_delay = 1.5 SECONDS
 
+	var/disks_compatible = TRUE // SS220 EDIT - Adding minilathes which aren't compatible with disks
+
 /obj/machinery/autolathe/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/material_container, list(MAT_METAL, MAT_GLASS), _show_on_examine=TRUE, _after_insert=CALLBACK(src, PROC_REF(AfterMaterialInsert)))
@@ -265,6 +267,12 @@
 	return data
 
 /obj/machinery/autolathe/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	// SS220 EDIT START - Adding minilathes which aren't compatible with disks
+	if(!disks_compatible)
+		to_chat(user, "<span class='alert'>[src] doesn't have any slots for disks!</span>")
+		return ITEM_INTERACT_COMPLETE
+	// SS220 EDIT END
+
 	if(busy)
 		to_chat(user, "<span class='alert'>The autolathe is busy. Please wait for completion of previous operation.</span>")
 		return ITEM_INTERACT_COMPLETE
