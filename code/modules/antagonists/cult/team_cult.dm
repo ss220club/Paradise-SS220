@@ -31,17 +31,23 @@ RESTRICT_TYPE(/datum/team/cult)
 	/// Boolean that prevents all_members_timer from being called multiple times
 	var/is_in_transition = FALSE
 
+	/// Timer until we do a recount of cultist members
+	var/recount_timer
+
+/datum/team/cult/Destroy(force, ...)
+	deltimer(recount_timer)
+	return ..()
+
 /datum/team/cult/create_team(list/starting_members)
 	cult_threshold_check() // Set this ALWAYS before any check_cult_size check, or
 	. = ..()
 
 	objective_holder.add_objective(/datum/objective/servecult)
 
-	addtimer(CALLBACK(src, PROC_REF(cult_threshold_check)), 2 MINUTES) // Check again in 2 minutes for latejoiners
-
 	cult_status = NARSIE_DEMANDS_SACRIFICE
 
 	create_next_sacrifice()
+	recount_timer = addtimer(CALLBACK(src, PROC_REF(cult_threshold_check)), 5 MINUTES, TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
 
 	for(var/datum/mind/M as anything in starting_members)
 		var/datum/antagonist/cultist/cultist = M.has_antag_datum(/datum/antagonist/cultist)
@@ -102,7 +108,7 @@ RESTRICT_TYPE(/datum/team/cult)
 /**
   * Returns the current number of cultists and constructs.
   *
-  * Returns the number of cultists and constructs in a list ([1] = Cultists, [2] = Constructs), or as one combined number.
+  * Returns the number of cultists and constructs in the format `list(number of Cultists, number of Constructs)`, or as one combined number.
   *
   * * separate - Should the number be returned as a list with two separate values (Humans and Constructs) or as one number.
   */
@@ -159,7 +165,7 @@ RESTRICT_TYPE(/datum/team/cult)
 
 	if(cult_ascendant)
 		// The cult only falls if below 1/2 of the rising, usually pretty low. e.g. 5% on highpop, 10% on lowpop
-		if(cult_players < (rise_number / 2))
+		if(cult_players <= ceil(rise_number / 2))
 			cult_fall()
 		return
 
@@ -190,7 +196,14 @@ RESTRICT_TYPE(/datum/team/cult)
 
 	addtimer(CALLBACK(src, PROC_REF(all_members_timer), TYPE_PROC_REF(/datum/antagonist/cultist, ascend), VARSET_CALLBACK(src, cult_ascendant, TRUE)), 20 SECONDS)
 	if(!no_announcements)
-		GLOB.major_announcement.Announce("Picking up extradimensional activity related to the Cult of [GET_CULT_DATA(entity_name, "Nar'Sie")] from your station. Data suggests that about [ascend_percent * 100]% of the station has been converted. Security staff are authorized to use lethal force freely against cultists. Non-security staff should be prepared to defend themselves and their work areas from hostile cultists. Self defense permits non-security staff to use lethal force as a last resort, but non-security staff should be defending their work areas, not hunting down cultists. Dead crewmembers must be revived and deconverted once the situation is under control.", "Central Command Higher Dimensional Affairs", 'sound/AI/commandreport.ogg')
+		GLOB.major_announcement.Announce(
+			"Мы фиксируем активность из другого измерения, связаную с культом [GET_CULT_DATA(entity_name, "Nar'Sie")] на вашей станции. \
+			Согласно нашей информации, [ascend_percent * 100]% экипажа станции были порабощены культом. \
+			Сотрудники службы безопасности и экипаж наделены правом беспрепятственно применять летальную силу против культистов. \
+			Погибшие члены экипажа должны быть реанимированы и деконвертированы, как только ситуация будет взята под контроль.",
+			"Отдел по делам Высших Измерений",
+			'sound/AI/commandreport.ogg'
+			)
 
 /datum/team/cult/proc/cult_fall()
 	is_in_transition = TRUE
@@ -202,14 +215,14 @@ RESTRICT_TYPE(/datum/team/cult)
 
 	addtimer(CALLBACK(src, PROC_REF(all_members_timer), TYPE_PROC_REF(/datum/antagonist/cultist, descend), VARSET_CALLBACK(src, cult_ascendant, FALSE)), 20 SECONDS)
 	if(!no_announcements)
-		GLOB.major_announcement.Announce("Paranormal activity has returned to minimal levels. \
-									Security staff should minimize lethal force against cultists, using non-lethals where possible. \
-									All dead cultists should be taken to medbay or robotics for immediate revival and deconversion. \
-									Non-security staff may defend themselves, but should prioritize leaving any areas with cultists and reporting the cultists to security. \
-									Self defense permits non-security staff to use lethal force as a last resort. Hunting down cultists may make you liable for a manslaughter charge. \
-									Any access granted in response to the paranormal threat should be reset. \
-									Any and all security gear that was handed out should be returned. Finally, all weapons (including improvised) should be removed from the crew.",
-									"Central Command Higher Dimensional Affairs", 'sound/AI/commandreport.ogg')
+		GLOB.major_announcement.Announce("Уровень паранормальной активности снизился до прежнего минимального значения. \
+									Сотрудники службы безопасности должны свести к минимуму применение летальной силы против культистов, используя, по возможности, нелетальные средства. \
+									Все погибшие культисты должны быть доставлены в медбей или робототехнику для немедленной реанимации и деконвертации. \
+									Сотрудники, не относящиеся к службе безопасности, имеют право на самооборону, но в первую очередь они должны покинуть зоны, где есть культисты, и сообщить о них в службу безопасности. \
+									Самооборона позволяет сотрудникам, не относящимся к службе безопасности, применять летальную силу в случае крайней необходимости. Охота на культистов может повлечь за собой ответственность перед законом. \
+									Любые доступы, предоставленные в ответ на паранормальную угрозу, должны быть сброшены. \
+									Все выданные средства для защиты должны быть возвращены, всё оружие (включая самодельное) у экипажа должно быть изъято.",
+									"Отдел по делам Высших Измерений", 'sound/AI/commandreport.ogg')
 /**
  * This is a magic fuckin proc that takes a proc_ref, and calls it on all the human cultists.
  * Created so that we don't make 1000 timers, and I'm too lazy to make a proc for all of these.
@@ -253,7 +266,7 @@ RESTRICT_TYPE(/datum/team/cult)
 			return TRUE //can't convert it unless the owner is converted
 	if(isgolem(mind.current))
 		return FALSE
-	if(isanimal(mind.current))
+	if(isanimal_or_basicmob(mind.current))
 		return FALSE
 	return TRUE
 

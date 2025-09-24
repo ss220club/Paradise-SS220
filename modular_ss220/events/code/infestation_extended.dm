@@ -27,7 +27,7 @@
 		/area/station/security/armory/secure,
 		/area/station/security/permabrig,
 		/area/station/security/lobby,
-		/area/station/security/prison/cell_block/A
+		/area/station/security/prison/cell_block/a
 	)
 
 /datum/event/infestation/extended/start()
@@ -40,7 +40,7 @@
 			kill()
 			return
 		for(var/turf/simulated/floor/F in A.contents)
-			if(turf_clear(F))
+			if(!F.is_blocked_turf())
 				turfs += F
 
 	var/list/spawn_types = list()
@@ -81,7 +81,7 @@
 			max_number = 5
 			vermstring = "молей"
 		if(VERM_MOTHROACH)
-			spawn_types = list(/mob/living/simple_animal/nian_caterpillar)
+			spawn_types = list(/mob/living/basic/nian_caterpillar)
 			max_number = 5
 			vermstring = "молетараканов"
 	var/amount_to_spawn = rand(2, max_number)

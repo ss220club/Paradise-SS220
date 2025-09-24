@@ -17,8 +17,7 @@
 	name = "\improper LG-5 laser carbine"
 	desc = "A compact and lightweight laser carbine manufactured by Shellguard Munitions Co. Considered the most widely used laserarm in the Orion sector, it only fires lethal rounds and requires a recharger to reload."
 	icon_state = "laser"
-	item_state = "laser"
-	w_class = WEIGHT_CLASS_NORMAL
+	inhand_icon_state = "laser"
 	materials = list(MAT_METAL=2000)
 	origin_tech = "combat=4;magnets=2"
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
@@ -74,10 +73,10 @@
 //////////////////////////////
 /obj/item/gun/energy/laser/retro
 	name ="\improper L-1 'retro' laser gun"
-	icon_state = "retro"
-	item_state = "retro"
 	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. \
-	Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
+		Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
+	icon_state = "retro"
+	inhand_icon_state = "retro"
 	ammo_x_offset = 3
 
 /obj/item/gun/energy/laser/retro/examine_more(mob/user)
@@ -97,10 +96,10 @@
 //////////////////////////////
 /obj/item/gun/energy/laser/captain
 	name = "antique laser gun"
-	icon_state = "caplaser"
-	item_state = null
 	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with bovine leather and chrome. \
-	The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
+		The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
+	icon_state = "caplaser"
+	inhand_icon_state = null
 	force = 10
 	origin_tech = null
 	ammo_x_offset = 3
@@ -109,7 +108,7 @@
 
 /obj/item/gun/energy/laser/captain/Initialize(mapload, ...)
 	. = ..()
-	RegisterSignal(src, COMSIG_PARENT_QDELETING, PROC_REF(alert_admins_on_destroy))
+	AddElement(/datum/element/high_value_item)
 
 /obj/item/gun/energy/laser/captain/examine(mob/user)
 	. = ..()
@@ -135,9 +134,9 @@
 //////////////////////////////
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
-	icon_state = "lasercannon"
-	item_state = "laser"
 	desc = "A heavy-duty laser rifle fitted with a retractable prism that scatters its beam into multiple smaller shots. The fire selector has two settings: 'scatter', and 'kill'."
+	icon_state = "lasercannon"
+	modifystate = TRUE
 	origin_tech = "combat=5;materials=4;powerstorage=4"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter, /obj/item/ammo_casing/energy/laser)
 	shaded_charge = FALSE
@@ -162,12 +161,11 @@
 	name = "accelerator laser cannon"
 	desc = "An advanced laser cannon that does more damage the farther away the target is. At close range, damage is less than an LG-5 laser carbine shot."
 	icon_state = "lasercannon"
-	item_state = null
+	worn_icon_state = null
+	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_BULKY
 	force = 10
-	flags =  CONDUCT
-	slot_flags = SLOT_FLAG_BACK
-	can_holster = FALSE
+	slot_flags = ITEM_SLOT_BACK
 	origin_tech = "combat=4;magnets=4;powerstorage=3"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/accelerator)
 	ammo_x_offset = 3
@@ -214,12 +212,11 @@
 	name = "\improper LWAP laser sniper"
 	desc = "A highly advanced laser sniper that does more damage the farther away the target is, but fires slowly. Comes with a super advanced scope, which can highlight threats through walls, and pierce one object, after being deployed for a while."
 	icon_state = "esniper"
-	item_state = null
+	worn_icon_state = null
+	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_BULKY
 	force = 12
-	flags = CONDUCT
-	slot_flags = SLOT_FLAG_BACK
-	can_holster = FALSE
+	slot_flags = ITEM_SLOT_BACK
 	weapon_weight = WEAPON_HEAVY
 	origin_tech = "combat=6;magnets=6;powerstorage=4"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/sniper, /obj/item/ammo_casing/energy/laser/sniper/pierce)
@@ -237,7 +234,7 @@
 
 /obj/item/gun/energy/lwap/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/scope, range_modifier = 2, time_to_scope = 3 SECONDS, flags = SCOPE_MOVEMENT_CANCELS | SCOPE_TURF_ONLY | SCOPE_NEED_ACTIVE_HAND)
+	AddComponent(/datum/component/scope, range_modifier = 2, time_to_scope = 2 SECONDS, flags = SCOPE_MOVEMENT_CANCELS | SCOPE_TURF_ONLY | SCOPE_NEED_ACTIVE_HAND)
 
 /obj/item/gun/energy/lwap/on_scope_success(mob/living/user)
 	to_chat(user, "<b><span class='robot'>SCOPE_CREEPER_[rand(1, 9999)] Online.</span></b>")
@@ -248,7 +245,7 @@
 	select_fire(user)
 	user.remove_status_effect(STATUS_EFFECT_LWAPSCOPE)
 
-/obj/item/gun/energy/lwap/attack_self()
+/obj/item/gun/energy/lwap/attack_self__legacy__attackchain()
 	return //no manual ammo changing.
 
 /obj/item/ammo_casing/energy/laser/sniper
@@ -258,7 +255,7 @@
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_STRONG
 	select_name = null
 	fire_sound = 'sound/weapons/marauder.ogg'
-	delay = 5 SECONDS
+	delay = 2 SECONDS
 
 /obj/item/ammo_casing/energy/laser/sniper/pierce
 	projectile_type = /obj/item/projectile/beam/laser/sniper/pierce
@@ -287,8 +284,10 @@
 /obj/item/projectile/beam/laser/sniper/pierce
 	forcedodge = 1 // Can pierce one non wall thing.
 	speed = 0.5
+	always_hit_living_nondense = TRUE //This means if you are scoped in sniping at crit xenomorphs or crit humans, you can always hit them even if you do not directly click on them
 	/// Have we hit an r_wall? If we have, don't pierce it again so we don't become too effective on reinforced locations (AI sat)
 	var/hit_a_r_wall = FALSE
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSGIRDER
 
 /obj/item/projectile/beam/laser/sniper/pierce/prehit(atom/target)
 	if(istype(target, /turf/simulated/wall/r_wall))
@@ -296,7 +295,7 @@
 			hit_a_r_wall = TRUE
 			if(!forcedodge)
 				forcedodge++
-	else if((isturf(target) || istype(target, /obj/structure/alien/resin)) && !forcedodge)
+	else if((isturf(target) || istype(target, /obj/structure/alien/resin) || istype(target, /obj/structure/spider)) && !forcedodge)
 		forcedodge++
 	..()
 
@@ -307,7 +306,7 @@
 	name = "\improper X-ray laser gun"
 	desc = "A high-power laser gun capable of expelling concentrated X-ray beams. These beams can penetrate any number of solid objects, but will decrease in power the longer they have to travel."
 	icon_state = "xray"
-	item_state = null
+	inhand_icon_state = null
 	shaded_charge = TRUE
 	origin_tech = "combat=6;materials=4;magnets=4;syndicate=1"
 	ammo_type = list(/obj/item/ammo_casing/energy/xray)
@@ -331,7 +330,7 @@
 	name = "immolator laser gun"
 	desc = "A laser rifle that shoots incendiary bolts, struck targets will be set on fire. Each shot consumes more energy than a regular laser rifle, draining the power cell more quickly."
 	icon_state = "immolator"
-	item_state = null
+	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/immolator)
 	origin_tech = "combat=4;magnets=4;powerstorage=3"
 	shaded_charge = TRUE
@@ -353,7 +352,6 @@
 	name = "multi-lens immolator cannon"
 	desc = "The bigger brother of the Immolator Laser Gun, featuring toggleable firemodes. The fire selector has two settings: 'scatter', and 'precise'."
 	icon_state = "multilensimmolator"
-	item_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/immolator/strong, /obj/item/ammo_casing/energy/immolator/scatter)
 	origin_tech = "combat=5;magnets=5;powerstorage=4"
 
@@ -387,10 +385,9 @@
 	name = "portable laser emitter"
 	desc = "An emitter removed from its base, and attached to a laser cannon frame."
 	icon_state = "emittercannon"
-	item_state = "laser"
+	inhand_icon_state = "laser"
 	w_class = WEIGHT_CLASS_BULKY
 	shaded_charge = TRUE
-	can_holster = FALSE
 	origin_tech = "combat=4;magnets=4;powerstorage=3"
 	ammo_type = list(/obj/item/ammo_casing/energy/emitter)
 	ammo_x_offset = 3
@@ -439,10 +436,8 @@
 
 /obj/item/gun/energy/laser/tag/blue
 	icon_state = "bluetag"
-	item_state = "bluetag"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/bluetag)
 
 /obj/item/gun/energy/laser/tag/red
 	icon_state = "redtag"
-	item_state = "redtag"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/redtag)

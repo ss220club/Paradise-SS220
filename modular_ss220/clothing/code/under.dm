@@ -3,22 +3,22 @@
 	desc = "Кибер-костюм так называемой Катарины."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "katarina_cybersuit"
-	icon_override = 'modular_ss220/clothing/icons/mob/under.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	item_color = "katarina_cybersuit"
-	sprite_sheets = null
+	sprite_sheets = list("Human" = 'modular_ss220/clothing/icons/mob/under.dmi')
 
 /obj/item/clothing/under/costume/katarina_suit
 	name = "костюм Катарины"
 	desc = "Костюм так называемой Катарины."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "katarina_suit"
-	icon_override = 'modular_ss220/clothing/icons/mob/under.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	item_color = "katarina_suit"
-	sprite_sheets = null
+	sprite_sheets = list("Human" = 'modular_ss220/clothing/icons/mob/under.dmi')
 
 /obj/item/clothing/under/rank/civilian/chef/red
 	name = "chef's red uniform"
@@ -27,57 +27,29 @@
 	icon_state = "chef_red"
 	item_color = "chef_red"
 	sprite_sheets = list(
-		"Abductor" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Ancient Skeleton" 	= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
-		"Golem" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Grey" 				= 	'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
 		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine"			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
 		"Monkey" 			= 	'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
-		"Nian" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Shadow" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
 		)
 
 /obj/item/clothing/under/towel
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Plasmaman" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
-		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
 		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
 		"Monkey" = 'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
-		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Adbuctor" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Ancient Skeleton" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi'
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
 	)
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	has_sensor = 0
 
-/obj/item/clothing/under/towel/attackby(obj/item/S, mob/user, params)
+/obj/item/clothing/under/towel/attackby__legacy__attackchain(obj/item/S, mob/user, params)
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S
@@ -314,3 +286,26 @@
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
 	)
+
+/obj/item/clothing/under/rank/procedure/nct/black
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	desc = "A neatly pressed black shirt paired with black jeans, worn by those dedicated to shaping the future of the workforce."
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/under.dmi'
+		)
+	icon_state = "trainer_black"
+	worn_icon_state = "trainer_black"
+	inhand_icon_state = "trainer_black"
+	item_color = "trainer_black"
+
+/obj/item/clothing/under/rank/procedure/nct/black/skirt
+	name = "\improper NT Career Trainer's skirt"
+	desc = "A neatly pressed black shirt paired with a sleek black skirt, worn by those committed to mentoring the next generation."
+	icon_state = "trainer_black_skirt"
+	worn_icon_state = "trainer_black_skirt"
+	inhand_icon_state = "trainer_black_skirt"
+	item_color = "trainer_black_skirt"

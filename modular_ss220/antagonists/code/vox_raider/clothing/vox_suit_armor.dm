@@ -6,11 +6,12 @@
 	desc = "Специализированный бронекостюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением."
 	icon_state = "vox-merc"
 	item_color = "vox-merc"
-	item_state = "armor"
+	worn_icon_state = "armor"
+	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_suit.dmi'
-	icon_override = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
+	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
 		)
@@ -32,7 +33,7 @@
 	item_color = "vox-merc"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_head.dmi'
-	icon_override = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
+	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
 		)
@@ -173,7 +174,7 @@
 
 /obj/item/clothing/suit/armor/vox_merc/stealth/equipped(mob/living/user, slot)
 	..()
-	if(isvox(user) && slot == SLOT_HUD_OUTER_SUIT)
+	if(isvox(user) && slot == ITEM_SLOT_OUTER_SUIT)
 		disguise_spell = new(null)
 		user.AddSpell(disguise_spell)
 
@@ -207,7 +208,7 @@
 
 /obj/item/clothing/head/helmet/vox_merc/stealth/equipped(mob/living/user, slot)
 	..()
-	if(isvox(user) && slot == SLOT_HUD_HEAD)
+	if(isvox(user) && slot == ITEM_SLOT_HEAD)
 		smoke_spell = new(null)
 		user.AddSpell(smoke_spell)
 

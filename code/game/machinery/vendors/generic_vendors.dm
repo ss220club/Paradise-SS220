@@ -51,8 +51,8 @@
 					/obj/item/reagent_containers/drinks/bag/goonbag = 3,
 					/obj/item/reagent_containers/drinks/bottle/cognac = 5,
 					/obj/item/reagent_containers/drinks/bottle/kahlua = 5,
-					/obj/item/reagent_containers/drinks/cans/beer = 6,
-					/obj/item/reagent_containers/drinks/cans/ale = 6,
+					/obj/item/reagent_containers/drinks/bottle/beer = 6,
+					/obj/item/reagent_containers/drinks/bottle/ale = 6,
 					/obj/item/reagent_containers/drinks/cans/synthanol = 15,
 					/obj/item/reagent_containers/drinks/bottle/orangejuice = 4,
 					/obj/item/reagent_containers/drinks/bottle/tomatojuice = 4,
@@ -69,25 +69,25 @@
 					/obj/item/reagent_containers/drinks/bottle/fernet = 5)
 
 	vend_delay = 15
-	slogan_list = list("I hope nobody asks me for a bloody cup o' tea...",
-						"Alcohol is humanity's friend. Would you abandon a friend?",
-						"Quite delighted to serve you!",
-						"Is nobody thirsty on this station?")
+	slogan_list = list("Надеюсь, никто не попросит меня о чёртовой кружке чая...",
+						"Алкоголь - друг человека. Вы же не бросите друга?",
+						"Очень рад вас обслужить!",
+						"Никто на этой станции не хочет выпить?")
 
-	ads_list = list("Drink up!",
-					"Booze is good for you!",
-					"Alcohol is humanity's best friend.",
-					"Quite delighted to serve you!",
-					"Care for a nice, cold beer?",
-					"Nothing cures you like booze!",
-					"Have a sip!","Have a drink!",
-					"Have a beer!","Beer is good for you!",
-					"Only the finest alcohol!",
-					"Best quality booze since 2053!",
-					"Award-winning wine!",
-					"Maximum alcohol!",
-					"Man loves beer.",
-					"A toast for progress!")
+	ads_list = list("Выпьем!",
+					"Бухло пойдёт вам на пользу!",
+					"Алкоголь - друг человека.",
+					"Очень рад вас обслужить!",
+					"Хотите отличного холодного пива?",
+					"Ничто так не лечит, как бухло!",
+					"Пригубите!","Выпейте!",
+					"Возьмите пивка!","Пиво пойдёт вам на пользу!",
+					"Только лучший алкоголь!",
+					"Бухло лучшего качества с 2053 года!",
+					"Вино со множеством наград!",
+					"Максимум алкоголя!",
+					"Твоё любимое пиво.",
+					"Тост: «За прогресс!»")
 
 	refill_canister = /obj/item/vending_refill/boozeomat
 
@@ -156,30 +156,15 @@
 	return TRUE
 
 /obj/machinery/economy/vending/coffee/do_vend(datum/data/vending_product/R, mob/user)
-	if(..())
+	var/obj/item/reagent_containers/drinks/vended = ..()
+	if(!istype(vended))
 		return
-	var/obj/item/reagent_containers/drinks/vended = new R.product_path()
 
 	if(istype(vended, /obj/item/reagent_containers/drinks/mug))
-		var/put_on_turf = TRUE
-		if(user && iscarbon(user) && user.Adjacent(src))
-			if(user.put_in_hands(vended))
-				put_on_turf = FALSE
-		if(put_on_turf)
-			var/turf/T = get_turf(src)
-			vended.forceMove(T)
 		return
 
 	vended.reagents.trans_to(inserted_item, vended.reagents.total_volume)
-	if(vended.reagents.total_volume)
-		var/put_on_turf = TRUE
-		if(user && iscarbon(user) && user.Adjacent(src))
-			if(user.put_in_hands(vended))
-				put_on_turf = FALSE
-		if(put_on_turf)
-			var/turf/T = get_turf(src)
-			vended.forceMove(T)
-	else
+	if(!vended.reagents.total_volume)
 		qdel(vended)
 
 
@@ -411,12 +396,12 @@
 	icon_state = "clothes"
 	icon_lightmask = "base_drobe"
 	icon_panel = "drobe"
-	slogan_list = list("Dress for success!",
-					"Prepare to look swagalicious!",
-					"Look at all this free swag!",
-					"Why leave style up to fate? Use the ClothesMate!")
+	slogan_list = list("Одевайся и врывайся!",
+					"Готовься выглядеть воскрутительно!",
+					"Посмотрите на эти халявные шмотки!",
+					"Зачем бросать стиль на волю судьбы? Воспользуйтесь ClothesMate!")
 	vend_delay = 15
-	vend_reply = "Thank you for using the ClothesMate!"
+	vend_reply = "Спасибо за использование ClothesMate!"
 	category = VENDOR_TYPE_CLOTHING
 	products = list(/obj/item/clothing/suit/ianshirt = 2,
 					/obj/item/clothing/under/misc/overalls = 2,
@@ -430,6 +415,7 @@
 					/obj/item/clothing/under/pants/mustangjeans = 1,
 					/obj/item/clothing/under/pants/camo = 3,
 					/obj/item/clothing/under/pants/blackjeans = 3,
+					/obj/item/clothing/under/pants/shorts/jeanshorts = 3,
 					/obj/item/clothing/under/pants/khaki = 3,
 					/obj/item/clothing/under/pants/white = 3,
 					/obj/item/clothing/under/pants/red = 3,
@@ -437,6 +423,10 @@
 					/obj/item/clothing/under/pants/tan = 3,
 					/obj/item/clothing/under/pants/blue = 3,
 					/obj/item/clothing/under/pants/track = 3,
+					/obj/item/clothing/suit/tracksuit = 3,
+					/obj/item/clothing/suit/tracksuit/green = 3,
+					/obj/item/clothing/suit/tracksuit/red = 3,
+					/obj/item/clothing/suit/tracksuit/white = 3,
 					/obj/item/clothing/suit/jacket/miljacket = 3,
 					/obj/item/clothing/suit/jacket/miljacket/white = 3,
 					/obj/item/clothing/suit/jacket/miljacket/desert = 3,
@@ -456,23 +446,23 @@
 					/obj/item/clothing/head/beanie/stripedblue = 3,
 					/obj/item/clothing/head/beanie/stripedgreen = 3,
 					/obj/item/clothing/head/beanie/rasta = 3,
-					/obj/item/clothing/accessory/scarf/red = 3,
-					/obj/item/clothing/accessory/scarf/green = 3,
-					/obj/item/clothing/accessory/scarf/darkblue = 3,
-					/obj/item/clothing/accessory/scarf/purple = 3,
-					/obj/item/clothing/accessory/scarf/yellow = 3,
-					/obj/item/clothing/accessory/scarf/orange = 3,
-					/obj/item/clothing/accessory/scarf/lightblue = 3,
-					/obj/item/clothing/accessory/scarf/white = 3,
-					/obj/item/clothing/accessory/scarf/black = 3,
-					/obj/item/clothing/accessory/scarf/zebra = 3,
-					/obj/item/clothing/accessory/scarf/christmas = 3,
-					/obj/item/clothing/accessory/stripedredscarf = 3,
-					/obj/item/clothing/accessory/stripedbluescarf = 3,
-					/obj/item/clothing/accessory/stripedgreenscarf = 3,
-					/obj/item/clothing/accessory/blue = 3,
-					/obj/item/clothing/accessory/red = 3,
-					/obj/item/clothing/accessory/black = 3,
+					/obj/item/clothing/neck/scarf/red = 3,
+					/obj/item/clothing/neck/scarf/green = 3,
+					/obj/item/clothing/neck/scarf/darkblue = 3,
+					/obj/item/clothing/neck/scarf/purple = 3,
+					/obj/item/clothing/neck/scarf/yellow = 3,
+					/obj/item/clothing/neck/scarf/orange = 3,
+					/obj/item/clothing/neck/scarf/lightblue = 3,
+					/obj/item/clothing/neck/scarf/white = 3,
+					/obj/item/clothing/neck/scarf/black = 3,
+					/obj/item/clothing/neck/scarf/zebra = 3,
+					/obj/item/clothing/neck/scarf/christmas = 3,
+					/obj/item/clothing/neck/scarf/stripedred = 3,
+					/obj/item/clothing/neck/scarf/stripedblue = 3,
+					/obj/item/clothing/neck/scarf/stripedgreen = 3,
+					/obj/item/clothing/neck/tie/blue = 3,
+					/obj/item/clothing/neck/tie/red = 3,
+					/obj/item/clothing/neck/tie/black = 3,
 					/obj/item/clothing/accessory/waistcoat = 2,
 					/obj/item/clothing/under/dress/sundress = 2,
 					/obj/item/clothing/under/dress/stripeddress = 2,
@@ -496,9 +486,9 @@
 					/obj/item/storage/belt/fannypack = 1,
 					/obj/item/storage/belt/fannypack/blue = 1,
 					/obj/item/storage/belt/fannypack/red = 1,
-					/obj/item/clothing/suit/mantle = 2,
-					/obj/item/clothing/suit/mantle/old = 1,
-					/obj/item/clothing/suit/mantle/regal = 2)
+					/obj/item/clothing/neck/cloak/mantle = 2,
+					/obj/item/clothing/neck/cloak/old = 1,
+					/obj/item/clothing/neck/cloak/regal = 2)
 
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,
 					/obj/item/clothing/mask/balaclava = 1,
@@ -517,6 +507,7 @@
 				/obj/item/clothing/under/pants/mustangjeans = 100,
 				/obj/item/clothing/under/pants/camo = 75,
 				/obj/item/clothing/under/pants/blackjeans = 75,
+				/obj/item/clothing/under/pants/shorts/jeanshorts = 75,
 				/obj/item/clothing/under/pants/khaki = 75,
 				/obj/item/clothing/under/pants/white = 75,
 				/obj/item/clothing/under/pants/red = 75,
@@ -524,6 +515,10 @@
 				/obj/item/clothing/under/pants/tan = 75,
 				/obj/item/clothing/under/pants/blue = 75,
 				/obj/item/clothing/under/pants/track = 75,
+				/obj/item/clothing/suit/tracksuit = 75,
+				/obj/item/clothing/suit/tracksuit/green = 75,
+				/obj/item/clothing/suit/tracksuit/red = 75,
+				/obj/item/clothing/suit/tracksuit/white = 75,
 				/obj/item/clothing/suit/jacket/miljacket = 75,
 				/obj/item/clothing/suit/jacket/miljacket/white = 75,
 				/obj/item/clothing/suit/jacket/miljacket/desert = 75,
@@ -543,23 +538,23 @@
 				/obj/item/clothing/head/beanie/stripedblue = 40,
 				/obj/item/clothing/head/beanie/stripedgreen = 40,
 				/obj/item/clothing/head/beanie/rasta = 40,
-				/obj/item/clothing/accessory/scarf/red = 20,
-				/obj/item/clothing/accessory/scarf/green = 20,
-				/obj/item/clothing/accessory/scarf/darkblue = 20,
-				/obj/item/clothing/accessory/scarf/purple = 20,
-				/obj/item/clothing/accessory/scarf/yellow = 20,
-				/obj/item/clothing/accessory/scarf/orange = 20,
-				/obj/item/clothing/accessory/scarf/lightblue = 20,
-				/obj/item/clothing/accessory/scarf/white = 20,
-				/obj/item/clothing/accessory/scarf/black = 20,
-				/obj/item/clothing/accessory/scarf/zebra = 20,
-				/obj/item/clothing/accessory/scarf/christmas = 20,
-				/obj/item/clothing/accessory/stripedredscarf = 20,
-				/obj/item/clothing/accessory/stripedbluescarf = 20,
-				/obj/item/clothing/accessory/stripedgreenscarf = 20,
-				/obj/item/clothing/accessory/blue = 20,
-				/obj/item/clothing/accessory/red = 20,
-				/obj/item/clothing/accessory/black = 20,
+				/obj/item/clothing/neck/scarf/red = 20,
+				/obj/item/clothing/neck/scarf/green = 20,
+				/obj/item/clothing/neck/scarf/darkblue = 20,
+				/obj/item/clothing/neck/scarf/purple = 20,
+				/obj/item/clothing/neck/scarf/yellow = 20,
+				/obj/item/clothing/neck/scarf/orange = 20,
+				/obj/item/clothing/neck/scarf/lightblue = 20,
+				/obj/item/clothing/neck/scarf/white = 20,
+				/obj/item/clothing/neck/scarf/black = 20,
+				/obj/item/clothing/neck/scarf/zebra = 20,
+				/obj/item/clothing/neck/scarf/christmas = 20,
+				/obj/item/clothing/neck/scarf/stripedred = 20,
+				/obj/item/clothing/neck/scarf/stripedblue = 20,
+				/obj/item/clothing/neck/scarf/stripedgreen = 20,
+				/obj/item/clothing/neck/tie/blue = 20,
+				/obj/item/clothing/neck/tie/red = 20,
+				/obj/item/clothing/neck/tie/black = 20,
 				/obj/item/clothing/accessory/waistcoat = 20,
 				/obj/item/clothing/under/dress/sundress = 75,
 				/obj/item/clothing/under/dress/stripeddress = 75,
@@ -584,9 +579,9 @@
 				/obj/item/storage/belt/fannypack = 50,
 				/obj/item/storage/belt/fannypack/blue = 50,
 				/obj/item/storage/belt/fannypack/red = 50,
-				/obj/item/clothing/suit/mantle = 20,
-				/obj/item/clothing/suit/mantle/old = 20,
-				/obj/item/clothing/suit/mantle/regal = 30,
+				/obj/item/clothing/neck/cloak/mantle = 20,
+				/obj/item/clothing/neck/cloak/old = 20,
+				/obj/item/clothing/neck/cloak/regal = 30,
 				/obj/item/clothing/suit/pimpcoat/white = 500,
 				/obj/item/clothing/under/misc/mailman = 100)
 
@@ -599,10 +594,10 @@
 	name = "\improper MagiVend"
 	desc = "A magic vending machine."
 	icon_state = "MagiVend"
-	slogan_list = list("Sling spells the proper way with MagiVend!",
-					"Be your own Houdini! Use MagiVend!")
+	slogan_list = list("Колдуйте правильно с помощью MagiVend!",
+					"Станьте сами себе Гудини! Используйте MagiVend!")
 	vend_delay = 15
-	vend_reply = "Have an enchanted evening!"
+	vend_reply = "Волшебного вечера!"
 	category = VENDOR_TYPE_CLOTHING
 	ads_list = list("FJKLFJSD",
 					"AJKFLBJAKL",
@@ -642,10 +637,10 @@
 	icon_state = "theater"
 	icon_lightmask = "theater"
 	icon_deny = "theater_deny"
-	slogan_list = list("Dress for success!",
-					"Suited and booted!",
-					"It's show time!",
-					"Why leave style up to fate? Use AutoDrobe!")
+	slogan_list = list("Одевайся и врывайся!",
+					"Одетый и обутый!",
+					"Время представления!",
+					"Зачем бросать стиль на волю судьбы? Воспользуйтесь AutoDrobe!")
 
 	vend_delay = 15
 	vend_reply = "Thank you for using AutoDrobe!"
@@ -654,7 +649,7 @@
 					/obj/item/clothing/head/chicken = 1,
 					/obj/item/clothing/under/costume/gladiator = 1,
 					/obj/item/clothing/head/helmet/gladiator = 1,
-					/obj/item/clothing/under/misc/gimmick/rank/captain/suit = 1,
+					/obj/item/clothing/under/misc/gimmick_captain_suit = 1,
 					/obj/item/clothing/head/flatcap = 1,
 					/obj/item/clothing/suit/storage/labcoat/mad = 1,
 					/obj/item/clothing/glasses/gglasses = 1,
@@ -684,6 +679,7 @@
 					/obj/item/clothing/under/costume/pirate = 1,
 					/obj/item/clothing/suit/pirate_brown = 1,
 					/obj/item/clothing/suit/pirate_black =1,
+					/obj/item/clothing/head/cool_bandana =1,
 					/obj/item/clothing/under/costume/pirate_rags =1,
 					/obj/item/clothing/head/pirate = 1,
 					/obj/item/clothing/under/costume/soviet = 1,
@@ -703,6 +699,7 @@
 					/obj/item/clothing/under/rank/civilian/clown/sexy = 1,
 					/obj/item/clothing/mask/gas/sexymime = 1,
 					/obj/item/clothing/under/rank/civilian/mime/sexy = 1,
+					/obj/item/clothing/suit/suspenders = 1,
 					/obj/item/clothing/mask/face/bat = 1,
 					/obj/item/clothing/mask/face/bee = 1,
 					/obj/item/clothing/mask/face/bear = 1,
@@ -717,7 +714,7 @@
 					/obj/item/clothing/suit/poncho = 1,
 					/obj/item/clothing/suit/poncho/green = 1,
 					/obj/item/clothing/suit/poncho/red = 1,
-					/obj/item/clothing/accessory/horrible = 1,
+					/obj/item/clothing/neck/tie/horrible = 1,
 					/obj/item/clothing/under/costume/maid = 1,
 					/obj/item/clothing/under/costume/janimaid = 1,
 					/obj/item/clothing/under/costume/jester = 1,
@@ -772,7 +769,7 @@
 				/obj/item/clothing/head/chicken = 50,
 				/obj/item/clothing/under/costume/gladiator = 100,
 				/obj/item/clothing/head/helmet/gladiator = 50,
-				/obj/item/clothing/under/misc/gimmick/rank/captain/suit = 100,
+				/obj/item/clothing/under/misc/gimmick_captain_suit = 100,
 				/obj/item/clothing/head/flatcap = 30,
 				/obj/item/clothing/suit/storage/labcoat/mad = 75,
 				/obj/item/clothing/glasses/gglasses = 20,
@@ -802,6 +799,7 @@
 				/obj/item/clothing/under/costume/pirate = 100,
 				/obj/item/clothing/suit/pirate_brown = 100,
 				/obj/item/clothing/suit/pirate_black = 100,
+				/obj/item/clothing/head/cool_bandana = 50,
 				/obj/item/clothing/under/costume/pirate_rags = 100,
 				/obj/item/clothing/head/pirate = 50,
 				/obj/item/clothing/under/costume/soviet = 100,
@@ -821,6 +819,7 @@
 				/obj/item/clothing/under/rank/civilian/clown/sexy = 100,
 				/obj/item/clothing/mask/gas/sexymime = 100,
 				/obj/item/clothing/under/rank/civilian/mime/sexy = 100,
+				/obj/item/clothing/suit/suspenders = 50,
 				/obj/item/clothing/mask/face/bat = 100,
 				/obj/item/clothing/mask/face/bee = 100,
 				/obj/item/clothing/mask/face/bear = 100,
@@ -835,7 +834,7 @@
 				/obj/item/clothing/suit/poncho = 75,
 				/obj/item/clothing/suit/poncho/green = 75,
 				/obj/item/clothing/suit/poncho/red = 75,
-				/obj/item/clothing/accessory/horrible = 30,
+				/obj/item/clothing/neck/tie/horrible = 30,
 				/obj/item/clothing/under/costume/maid = 75,
 				/obj/item/clothing/under/costume/janimaid = 75,
 				/obj/item/clothing/under/costume/jester = 100,
@@ -891,8 +890,8 @@
 /obj/machinery/economy/vending/sustenance
 	name = "\improper Sustenance Vendor"
 	desc = "A vending machine which vends food, as required by section 47-C of the NT's Prisoner Ethical Treatment Agreement."
-	slogan_list = list("Enjoy your meal.",
-					"Enough calories to support strenuous labor.")
+	slogan_list = list("Наслаждайся своей стряпнёй.",
+					"Достаточно калорий чтоб не сдохнуть.")
 
 	ads_list = list("The healthiest!",
 					"Award-winning chocolate bars!",
@@ -943,19 +942,19 @@
 /obj/machinery/economy/vending/snack
 	name = "\improper Getmore Chocolate Corp"
 	desc = "A snack machine courtesy of the Getmore Chocolate Corporation, based out of Mars."
-	slogan_list = list("Try our new nougat bar!",
-					"Twice the calories for half the price!")
+	slogan_list = list("Попробуйте наш новый батончик с нугой!",
+					"Вдвое больше калорий за полцены!")
 
-	ads_list = list("The healthiest!",
-					"Award-winning chocolate bars!",
-					"Mmm! So good!",
-					"Oh my god it's so juicy!",
-					"Have a snack.",
-					"Snacks are good for you!",
-					"Have some more Getmore!",
-					"Best quality snacks straight from mars.",
-					"We love chocolate!",
-					"Try our new jerky!")
+	ads_list = list("Самые полезные!",
+					"Удостоенные наград шоколадные плитки!",
+					"Ммм! Как вкусно!",
+					"Боже мой, какой сочный!",
+					"Перекуси!",
+					"Закуски полезны для вас!",
+					"Запаситесь закусками Getmore!",
+					"Самые качественные закуски прямо с Марса.",
+					"Мы любим шоколад!",
+					"Попробуйте наше новое вяленое мясо!")
 
 	icon_state = "snack"
 	icon_lightmask = "nutri"
@@ -972,6 +971,7 @@
 					/obj/item/food/spacetwinkie = 6,
 					/obj/item/food/cheesiehonkers = 6,
 					/obj/item/food/tastybread = 6,
+					/obj/item/food/deluxe_chocolate_bar = 6,
 					/obj/item/food/stroopwafel = 2)
 
 	contraband = list(/obj/item/food/syndicake = 6)
@@ -986,6 +986,7 @@
 				/obj/item/food/spacetwinkie = 64,
 				/obj/item/food/cheesiehonkers = 64,
 				/obj/item/food/tastybread = 80,
+				/obj/item/food/deluxe_chocolate_bar = 100,
 				/obj/item/food/stroopwafel = 100,
 				/obj/item/food/syndicake = 175) //syndicakes are genuinely kind of powerful
 
@@ -997,10 +998,10 @@
 /obj/machinery/economy/vending/chinese
 	name = "\improper Mr. Chang"
 	desc = "A self-serving Chinese food machine, for all your Chinese food needs."
-	slogan_list = list("Taste 5000 years of culture!",
-					"Mr. Chang, approved for safe consumption in over 10 sectors!",
-					"Chinese food is great for a date night, or a lonely night!",
-					"You can't go wrong with Mr. Chang's authentic Chinese food!")
+	slogan_list = list("Попробуйте 5000 лет культуры!",
+					"Мистер Чанг, одобрен для безопасного потребления в более чем 10 секторах!",
+					"Китайская кухня отлично подходит для вечернего свидания или одинокого вечера!",
+					"Вы не ошибетесь, если попробуете настоящую китайскую кухню от мистера Чанга!")
 
 	icon_state = "chang"
 	icon_lightmask = "chang"
@@ -1030,14 +1031,14 @@
 	icon_state = "Cola_Machine"
 	icon_lightmask = "Cola_Machine"
 	icon_panel = "thin_vendor"
-	slogan_list = list("Robust Softdrinks: More robust than a toolbox to the head!")
-	ads_list = list("Refreshing!",
-					"Hope you're thirsty!",
-					"Over 1 million drinks sold!",
-					"Thirsty? Why not cola?",
-					"Please, have a drink!",
-					"Drink up!",
-					"The best drinks in space.")
+	slogan_list = list("Робаст Софтдринкс: крепче, чем тулбоксом по голове!")
+	ads_list = list("Освежает!",
+					"Надеюсь, вас одолела жажда!",
+					"Продано больше миллиона бутылок!",
+					"Хотите пить? Почему бы не взять колы?",
+					"Пей на здоровье!",
+					"Освежись!",
+					"Лучшие напитки в космосе.")
 
 	category = VENDOR_TYPE_DRINK
 	products = list(/obj/item/reagent_containers/drinks/cans/cola = 10,
@@ -1067,10 +1068,10 @@
 /obj/machinery/economy/vending/artvend
 	name = "\improper ArtVend"
 	desc = "A vending machine for art supplies."
-	slogan_list = list("Stop by for all your artistic needs!",
-					"Color the floors with crayons, not blood!",
-					"Don't be a starving artist, use ArtVend. ",
-					"Don't fart, do art!")
+	slogan_list = list("Решение для всех ваших творческих нужд!",
+					"Окрашивайте полы мелками, а не кровью!",
+					"Не будьте голодающим художником, используйте ArtVend.",
+					"Не перди, твори!")
 
 	ads_list = list("Just like Kindergarten!",
 					"Now with 1000% more vibrant colors!",
@@ -1088,7 +1089,7 @@
 					/obj/item/camera_film = 6,
 					/obj/item/storage/photo_album = 2,
 					/obj/item/stack/wrapping_paper = 4,
-					/obj/item/stack/packageWrap = 4,
+					/obj/item/stack/package_wrap = 4,
 					/obj/item/c_tube = 10,
 					/obj/item/hand_labeler = 4,
 					/obj/item/stack/tape_roll = 5,
@@ -1118,7 +1119,7 @@
 	icon_lightmask = "tool"
 	icon_panel = "generic"
 	category = VENDOR_TYPE_SUPPLIES
-	armor = list(melee = 50, bullet = 20, laser = 20, energy = 20, bomb = 0, rad = 0, fire = 100, acid = 70)
+	armor = list(MELEE = 50, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 0, RAD = 0, FIRE = 100, ACID = 70)
 	resistance_flags = FIRE_PROOF
 	products = list(/obj/item/crowbar = 5,
 					/obj/item/screwdriver = 5,
@@ -1156,11 +1157,11 @@
 /obj/machinery/economy/vending/crittercare
 	name = "\improper CritterCare"
 	desc = "A vending machine for pet supplies."
-	slogan_list = list("Stop by for all your animal's needs!",
-					"Cuddly pets deserve a stylish collar!",
-					"Pets in space, what could be more adorable?",
-					"Freshest fish eggs in the system!",
-					"Rocks are the perfect pet, buy one today!")
+	slogan_list = list("Всё необходимое для ваших питомцев!",
+					"Милые питомцы заслуживают стильного ошейника!",
+					"Космические питомцы, что может быть очаровательнее?",
+					"Свежайшая рыбья икра в секторе!",
+					"Камни - идеальные питомцы, купите уже сегодня!")
 
 	ads_list = list("House-training costs extra!",
 					"Now with 1000% more cat hair!",
@@ -1214,56 +1215,67 @@
 /obj/machinery/economy/vending/cigarette
 	name = "\improper ShadyCigs Deluxe"
 	desc = "If you want to get cancer, might as well do it in style."
-	slogan_list = list("Space cigs taste good like a cigarette should.",
-					"I'd rather toolbox than switch.",
-					"Smoke!",
-					"Don't believe the reports - smoke today!")
+	slogan_list = list("Космосигареты хороши на вкус, какими они и должны быть.",
+					"Курение убивает, но не сегодня!",
+					"Курите!",
+					"Не верьте исследованиям - курите сегодня!")
 
-	ads_list = list("Probably not bad for you!",
-					"Don't believe the scientists!",
-					"It's good for you!",
-					"Don't quit, buy more!",
-					"Smoke!",
-					"Nicotine heaven.",
-					"Best cigarettes since 2150.",
-					"Award-winning cigs.")
+	ads_list = list("Наверняка не вредно!",
+					"Не верьте ученым!",
+					"На здоровье!",
+					"Не бросайте курить, купите ещё!",
+					"Курите!",
+					"Никотиновый рай.",
+					"Лучшие сигареты с 2150 года.",
+					"Сигареты с множеством наград.")
 
 	vend_delay = 34
 	icon_state = "cigs"
 	icon_lightmask = "cigs"
 	category = VENDOR_TYPE_RECREATION
 	products = list(/obj/item/clothing/mask/cigarette/cigar = 2,
-					/obj/item/storage/fancy/cigarettes = 6,
 					/obj/item/storage/fancy/cigarettes/cigpack_carp = 6,
 					/obj/item/storage/fancy/cigarettes/dromedaryco = 6,
 					/obj/item/storage/fancy/cigarettes/cigpack_random = 6,
-					/obj/item/storage/fancy/cigarettes/cigpack_midori = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_our_brand = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_despojna = 6, // SS220 EDIT
 					/obj/item/storage/fancy/cigarettes/cigpack_robust = 6,
 					/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
+					/obj/item/storage/fancy/cigarettes/cigpack_candy = 6,
 					/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_solar_rays = 6,
 					/obj/item/storage/fancy/cigarettes/cigpack_uplift = 6,
 					/obj/item/reagent_containers/patch/nicotine = 10,
 					/obj/item/storage/fancy/matches = 10,
 					/obj/item/lighter/random = 4,
-					/obj/item/lighter/zippo = 2)
+					/obj/item/lighter/zippo = 2,
+					/obj/item/storage/fancy/rollingpapers = 5,
+					/obj/item/food/grown/tobacco/pre_dried = 5,)
 
-	contraband = list(/obj/item/storage/fancy/rollingpapers = 5)
+	contraband = list(/obj/item/storage/fancy/cigarettes/cigpack_midori = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_carcinoma = 6
+					)
 
 	prices = list(/obj/item/clothing/mask/cigarette/cigar = 100,
-				/obj/item/storage/fancy/cigarettes = 25,
 				/obj/item/storage/fancy/cigarettes/cigpack_carp = 25,
 				/obj/item/storage/fancy/cigarettes/dromedaryco = 25,
 				/obj/item/storage/fancy/cigarettes/cigpack_random = 80,
 				/obj/item/storage/fancy/cigarettes/cigpack_midori = 60,
+				/obj/item/storage/fancy/cigarettes/cigpack_our_brand = 15,
+				/obj/item/storage/fancy/cigarettes/cigpack_despojna = 20, // SS220 EDIT
 				/obj/item/storage/fancy/cigarettes/cigpack_robust = 25,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 120,
+				/obj/item/storage/fancy/cigarettes/cigpack_candy = 25,
 				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 50,
+				/obj/item/storage/fancy/cigarettes/cigpack_solar_rays = 25,
 				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 35,
+				/obj/item/storage/fancy/cigarettes/cigpack_carcinoma = 70,
 				/obj/item/reagent_containers/patch/nicotine = 70,
 				/obj/item/storage/fancy/matches = 20,
 				/obj/item/lighter/random = 40,
 				/obj/item/lighter/zippo = 80,
 				/obj/item/storage/fancy/rollingpapers = 30,
+				/obj/item/food/grown/tobacco/pre_dried = 50,
 )
 
 	refill_canister = /obj/item/vending_refill/cigarette
@@ -1274,20 +1286,27 @@
 // The Syndicate version doesn't sell Robust because that is a Nanotrasen-owned brand. It *does* have its special own-brand replacement.
 /obj/machinery/economy/vending/cigarette/syndicate
 	products = list(/obj/item/clothing/mask/cigarette/cigar = 6,
-				/obj/item/storage/fancy/cigarettes = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_carp = 6,
 				/obj/item/storage/fancy/cigarettes/dromedaryco = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_random = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_midori = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_our_brand = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_despojna = 6, // SS220 EDIT
 				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_carcinoma = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_solar_rays = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 6,
 				/obj/item/reagent_containers/patch/nicotine = 10,
 				/obj/item/storage/fancy/matches = 10,
 				/obj/item/lighter/zippo = 6,
-				/obj/item/storage/fancy/rollingpapers = 5)
+				/obj/item/storage/fancy/rollingpapers = 5,
+				/obj/item/food/grown/tobacco/pre_dried = 5,)
 
-	contraband = list()
+	// You'd better believe that NT branded cigs are contraband in the Syndicate's territory.
+	contraband = list(/obj/item/storage/fancy/cigarettes/cigpack_robust = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
+					/obj/item/storage/fancy/cigarettes/cigpack_candy = 6)
 
 /obj/machinery/economy/vending/cigarette/syndicate/free
 	prices = list()
@@ -1296,30 +1315,35 @@
 /obj/machinery/economy/vending/cigarette/beach
 	name = "\improper ShadyCigs Ultra"
 	desc = "Now with extra premium products!"
-	slogan_list = list("Turn on, tune in, drop out!",
-					"Better living through chemistry!",
-					"Toke!",
-					"Don't forget to keep a smile on your lips and a song in your heart!")
+	slogan_list = list("Включи, настрой, получи!",
+					"С химией жить веселей!",
+					"Затянитесь!",
+					"Сохраняй улыбку на устах и песню в своём сердце!")
 
-	ads_list = list("Probably not bad for you!",
-					"Dope will get you through times of no money better than money will get you through times of no dope!",
-					"It's good for you!")
+	ads_list = list("Наверняка не вредно!",
+					"Допинг проведёт через безденежье лучше, чем деньги через бездопингье!",
+					"На здоровье!")
 
 	products = list(/obj/item/clothing/mask/cigarette/cigar = 6,
 				/obj/item/clothing/mask/cigarette/cigar/cohiba = 6,
 				/obj/item/clothing/mask/cigarette/cigar/havana = 6,
-				/obj/item/storage/fancy/cigarettes = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_carp = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_random = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_midori = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_our_brand = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_despojna = 10, // SS220 EDIT
 				/obj/item/storage/fancy/cigarettes/cigpack_robust = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_candy = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_carcinoma = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_solar_rays = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 10,
 				/obj/item/reagent_containers/patch/nicotine = 20,
 				/obj/item/storage/fancy/matches = 10,
 				/obj/item/lighter/zippo = 10,
-				/obj/item/storage/fancy/rollingpapers = 10)
+				/obj/item/storage/fancy/rollingpapers = 10,
+				/obj/item/food/grown/tobacco/pre_dried = 10,)
 
 	contraband = list()
 	prices = list()
@@ -1359,9 +1383,11 @@
 	density = FALSE //It is wall-mounted, and thus, not dense. --Superxpdude
 	tiltable = FALSE
 	products = list(/obj/item/stack/medical/bruise_pack = 2,
+					/obj/item/stack/medical/suture/emergency = 2,
 					/obj/item/stack/medical/ointment = 2,
 					/obj/item/reagent_containers/syringe/charcoal = 4,
 					/obj/item/reagent_containers/hypospray/autoinjector/epinephrine = 4,
+					/obj/item/stack/medical/splint = 2,
 					/obj/item/healthanalyzer = 1)
 
 	contraband = list(/obj/item/reagent_containers/syringe/antiviral = 4,
@@ -1377,7 +1403,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed, 32, 32)
 /obj/machinery/economy/vending/cart
 	name = "\improper PTech"
 	desc = "Cartridges for PDA's."
-	slogan_list = list("Carts to go!")
+	slogan_list = list("Карточки в дорогу!")
 
 	icon_state = "cart"
 	icon_lightmask = "med"
@@ -1391,7 +1417,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed, 32, 32)
 					/obj/item/cartridge/atmos = 10,
 					/obj/item/cartridge/janitor = 10,
 					/obj/item/cartridge/signal/toxins = 10,
-					/obj/item/cartridge/signal = 10)
+					/obj/item/cartridge/signal = 10,
+					/obj/item/cartridge/chef = 10)
 
 	contraband = list(/obj/item/cartridge/clown = 1,
 					/obj/item/cartridge/mime = 1)
@@ -1403,7 +1430,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed, 32, 32)
 				/obj/item/cartridge/atmos = 75,
 				/obj/item/cartridge/janitor = 100,
 				/obj/item/cartridge/signal/toxins = 150,
-				/obj/item/cartridge/signal = 75)
+				/obj/item/cartridge/signal = 75,
+				/obj/item/cartridge/chef = 100)
 
 	refill_canister = /obj/item/vending_refill/cart
 

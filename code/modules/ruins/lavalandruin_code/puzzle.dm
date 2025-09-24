@@ -3,7 +3,6 @@
 	icon = 'icons/obj/items.dmi' //mapping
 	icon_state = "syndballoon"
 	invisibility = INVISIBILITY_ABSTRACT
-	anchored = TRUE
 	var/list/elements
 	var/floor_type = /turf/simulated/floor/vault/lavaland_air
 	var/finished = FALSE
@@ -104,7 +103,7 @@
 			if(current_ordering[j] < checked_value)
 				swap_tally++
 
-	return swap_tally % 2 == 0
+	return ISEVEN(swap_tally)
 
 //swap two tiles in same row
 /obj/effect/sliding_puzzle/proc/make_solvable()
@@ -197,7 +196,6 @@
 	desc = "Puzzling..."
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "puzzle_pillar"
-	anchored = FALSE
 	density = TRUE
 	var/id = 0
 	var/obj/effect/sliding_puzzle/source
@@ -303,7 +301,7 @@
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "prison_cube"
 
-/obj/item/prisoncube/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/prisoncube/afterattack__legacy__attackchain(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 	if(!proximity_flag || !isliving(target))
 		return

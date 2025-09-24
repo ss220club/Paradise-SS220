@@ -3,11 +3,11 @@
 	name = "Nar'sie's Avatar"
 	desc = "Your mind begins to bubble and ooze as it tries to comprehend what it sees."
 	icon = 'icons/obj/magic_terror.dmi'
+	icon_state = null
 	pixel_x = -89
 	pixel_y = -85
 	current_size = 9 //It moves/eats like a max-size singulo, aside from range. --NEO
 	dissipate = FALSE
-	move_self = TRUE
 	grav_pull = 5
 	consume_range = 6
 	gender = FEMALE
@@ -18,11 +18,11 @@
 /obj/singularity/narsie/large
 	name = "Nar'Sie"
 	icon = 'icons/obj/narsie.dmi'
+	icon_state = "narsie"
 	// Pixel stuff centers Narsie.
 	pixel_x = -236
 	pixel_y = -256
 	current_size = 12
-	move_self = TRUE //Do we move on our own?
 	grav_pull = 10
 	consume_range = 12 //How many tiles out do we eat
 
@@ -37,7 +37,7 @@
 		if(isnewplayer(player))
 			continue
 
-		to_chat(player, "<font size='15' color='red'><b> [uppertext(name)] HAS RISEN</b></font>")
+		to_chat(player, "<font size='15' color='red'><b> [uppertext(name)] ЯВИЛСЯ</b></font>")
 		SEND_SOUND(player, cry)
 
 	SSticker.mode?.cult_team?.successful_summon()

@@ -8,49 +8,49 @@
 /obj/item/stack/sheet/animalhide/human
 	name = "human skin"
 	desc = "The by-product of human farming."
-	singular_name = "human skin piece"
 	icon_state = "sheet-hide"
-	item_state = "sheet-leather"
+	inhand_icon_state = "sheet-leather"
+	singular_name = "human skin piece"
 
 GLOBAL_LIST_INIT(human_recipes, list(
 	new /datum/stack_recipe("bloated human costume", /obj/item/clothing/suit/bloated_human, 5, on_floor = TRUE),
 	new /datum/stack_recipe("bloated human costume head", /obj/item/clothing/head/human_head, 5, on_floor = TRUE),
 	))
 
-/obj/item/stack/sheet/animalhide/human/New(loc, amount=null)
+/obj/item/stack/sheet/animalhide/human/Initialize(mapload, new_amount, merge)
+	. = ..()
 	recipes = GLOB.human_recipes
-	return ..()
 
 /obj/item/stack/sheet/animalhide/generic
 	name = "generic skin"
 	desc = "A piece of generic skin."
-	singular_name = "generic skin piece"
 	icon_state = "sheet-hide"
-	item_state = "sheet-leather"
+	inhand_icon_state = "sheet-leather"
+	singular_name = "generic skin piece"
 
 /obj/item/stack/sheet/animalhide/corgi
 	name = "corgi hide"
 	desc = "The by-product of corgi farming."
-	singular_name = "corgi hide piece"
 	icon_state = "sheet-corgi"
+	singular_name = "corgi hide piece"
 
 /obj/item/stack/sheet/animalhide/cat
 	name = "cat hide"
 	desc = "The by-product of cat farming."
-	singular_name = "cat hide piece"
 	icon_state = "sheet-cat"
+	singular_name = "cat hide piece"
 
 /obj/item/stack/sheet/animalhide/monkey
 	name = "monkey hide"
 	desc = "The by-product of monkey farming."
-	singular_name = "monkey hide piece"
 	icon_state = "sheet-monkey"
+	singular_name = "monkey hide piece"
 
 /obj/item/stack/sheet/animalhide/lizard
 	name = "lizard skin"
 	desc = "Sssssss..."
-	singular_name = "lizard skin piece"
 	icon_state = "sheet-lizard"
+	singular_name = "lizard skin piece"
 
 GLOBAL_LIST_INIT(lizard_recipes, list(
 	new /datum/stack_recipe("lizard skin handbag", /obj/item/storage/backpack/satchel/lizard, 5, on_floor = TRUE),
@@ -64,17 +64,16 @@ GLOBAL_LIST_INIT(lizard_recipes, list(
 /obj/item/stack/sheet/fur
 	name = "pile of fur"
 	desc = "Vulp remains."
-	singular_name = "fur piece"
 	icon = 'icons/obj/stacks/organic.dmi'
 	icon_state = "sheet-hide"
+	singular_name = "fur piece"
 	origin_tech = "materials=2"
-	max_amount = 50
 
 /obj/item/stack/sheet/animalhide/xeno
 	name = "alien hide"
 	desc = "The skin of a terrible creature."
-	singular_name = "alien hide piece"
 	icon_state = "sheet-xeno"
+	singular_name = "alien hide piece"
 
 GLOBAL_LIST_INIT(xeno_recipes, list (
 	new /datum/stack_recipe("alien helmet", /obj/item/clothing/head/xenos, 1),
@@ -88,9 +87,9 @@ GLOBAL_LIST_INIT(xeno_recipes, list (
 /obj/item/stack/sheet/xenochitin
 	name = "alien chitin"
 	desc = "A piece of the hide of a terrible creature."
-	singular_name = "alien hide piece"
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "chitin"
+	singular_name = "alien hide piece"
 	origin_tech = ""
 	dynamic_icon_state = FALSE
 
@@ -111,30 +110,30 @@ GLOBAL_LIST_INIT(xeno_recipes, list (
 /obj/item/stack/sheet/hairlesshide
 	name = "hairless hide"
 	desc = "This hide was stripped of it's hair, but still needs tanning."
-	singular_name = "hairless hide piece"
 	icon = 'icons/obj/stacks/organic.dmi'
 	icon_state = "sheet-hairlesshide"
-	item_state = "sheet-leather"
+	inhand_icon_state = "sheet-leather"
+	singular_name = "hairless hide piece"
 	origin_tech = ""
 
 /obj/item/stack/sheet/wetleather
 	name = "wet leather"
 	desc = "This leather has been cleaned but still needs to be dried."
-	singular_name = "wet leather piece"
 	icon = 'icons/obj/stacks/organic.dmi'
 	icon_state = "sheet-wetleather"
-	item_state = "sheet-leather"
+	inhand_icon_state = "sheet-leather"
+	singular_name = "wet leather piece"
 	origin_tech = ""
+	cares_about_temperature = TRUE
 	var/wetness = 30 //Reduced when exposed to high temperautres
 	var/drying_threshold_temperature = 500 //Kelvin to start drying
 
 /obj/item/stack/sheet/leather
 	name = "leather"
 	desc = "The by-product of mob grinding."
-	singular_name = "leather piece"
 	icon = 'icons/obj/stacks/organic.dmi'
 	icon_state = "sheet-leather"
-	item_state = "sheet-leather"
+	singular_name = "leather piece"
 	origin_tech = "materials=2"
 
 GLOBAL_LIST_INIT(leather_recipes, list (
@@ -152,19 +151,17 @@ GLOBAL_LIST_INIT(leather_recipes, list (
 	new /datum/stack_recipe("leather jacket", /obj/item/clothing/suit/jacket/leather, 7),
 	new /datum/stack_recipe("leather shoes", /obj/item/clothing/shoes/leather, 2),
 	new /datum/stack_recipe("leather overcoat", /obj/item/clothing/suit/jacket/leather/overcoat, 10),
-	new /datum/stack_recipe("hide mantle", /obj/item/clothing/suit/unathi/mantle, 4)))
+	new /datum/stack_recipe("hide mantle", /obj/item/clothing/neck/cloak/unathi, 4)))
 
-/obj/item/stack/sheet/leather/New(loc, new_amount, merge = TRUE)
+/obj/item/stack/sheet/leather/Initialize(mapload, new_amount, merge)
+	. = ..()
 	recipes = GLOB.leather_recipes
-	return ..()
 
 /obj/item/stack/sheet/sinew
 	name = "watcher sinew"
 	icon = 'icons/obj/stacks/organic.dmi'
 	desc = "Long stringy filaments which presumably came from a watcher's wings."
-	singular_name = "watcher sinew"
 	icon_state = "sinew"
-	item_state = "sinew"
 	origin_tech = "biotech=4"
 	dynamic_icon_state = FALSE
 
@@ -172,19 +169,16 @@ GLOBAL_LIST_INIT(sinew_recipes, list (
 	new /datum/stack_recipe("sinew restraints", /obj/item/restraints/handcuffs/sinew, 1, on_floor = 1),
 	))
 
-/obj/item/stack/sheet/sinew/New(loc, amount=null)
+/obj/item/stack/sheet/sinew/Initialize(mapload, new_amount, merge)
+	. = ..()
 	recipes = GLOB.sinew_recipes
-	return ..()
 
 /obj/item/stack/sheet/animalhide/goliath_hide
 	name = "goliath hide plates"
 	desc = "Pieces of a goliath's rocky hide, these might be able to make your miner equipment such as suits, plasmaman helmets, borgs and Ripley class exosuits a bit more durable to attack from the local fauna."
-	icon = 'icons/obj/stacks/organic.dmi'
 	icon_state = "goliath_hide"
-	item_state = "goliath_hide"
 	singular_name = "hide plate"
 	flags = NOBLUDGEON
-	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
 	dynamic_icon_state = TRUE
 	var/static/list/goliath_platable_armor_typecache = typecacheof(list(
@@ -192,7 +186,7 @@ GLOBAL_LIST_INIT(sinew_recipes, list (
 			/obj/item/clothing/head/hooded/explorer,
 			/obj/item/clothing/head/helmet/space/plasmaman/mining))
 
-/obj/item/stack/sheet/animalhide/goliath_hide/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/stack/sheet/animalhide/goliath_hide/afterattack__legacy__attackchain(atom/target, mob/user, proximity_flag)
 	if(!proximity_flag)
 		return
 	if(is_type_in_typecache(target, goliath_platable_armor_typecache))
@@ -240,13 +234,11 @@ GLOBAL_LIST_INIT(sinew_recipes, list (
 	desc = "This piece of metal can be attached to the mech itself, enhancing its protective characteristics. Unfortunately, only working class exosuits have notches for such armor."
 	icon = 'icons/mecha/mecha_equipment.dmi'
 	icon_state = "armor_plate"
-	item_state = "armor_plate"
 	singular_name = "armor plate"
 	flags = NOBLUDGEON
-	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
 
-/obj/item/stack/sheet/animalhide/armor_plate/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/stack/sheet/animalhide/armor_plate/afterattack__legacy__attackchain(atom/target, mob/user, proximity_flag)
 	if(!proximity_flag)
 		return
 	if(istype(target, /obj/mecha/working/ripley))
@@ -264,22 +256,19 @@ GLOBAL_LIST_INIT(sinew_recipes, list (
 		else
 			to_chat(user, "<span class='warning'>You can't improve [D] any further!</span>")
 
-/obj/item/stack/sheet/animalhide/armor_plate/attackby(obj/item/W, mob/user, params)
+/obj/item/stack/sheet/animalhide/armor_plate/attackby__legacy__attackchain(obj/item/W, mob/user, params)
 	return // no steel leather for ya
 
 /obj/item/stack/sheet/animalhide/ashdrake
 	name = "ash drake hide"
 	desc = "The strong, scaled hide of an ash drake. Can be attached to the mech itself, greatly enhancing its protective characteristics. Unfortunately, only working class exosuits have notches for such armor."
-	icon = 'icons/obj/stacks/organic.dmi'
 	icon_state = "dragon_hide"
-	item_state = "dragon_hide"
 	singular_name = "drake plate"
 	flags = NOBLUDGEON
-	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
 	dynamic_icon_state = TRUE
 
-/obj/item/stack/sheet/animalhide/ashdrake/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/stack/sheet/animalhide/ashdrake/afterattack__legacy__attackchain(atom/target, mob/user, proximity_flag)
 	if(!proximity_flag)
 		return
 	if(istype(target, /obj/mecha/working/ripley))
@@ -301,7 +290,7 @@ GLOBAL_LIST_INIT(sinew_recipes, list (
 
 //Step one - dehairing.
 
-/obj/item/stack/sheet/animalhide/attackby(obj/item/W, mob/user, params)
+/obj/item/stack/sheet/animalhide/attackby__legacy__attackchain(obj/item/W, mob/user, params)
 	if(W.sharp)
 		user.visible_message("[user] starts cutting hair off \the [src].", "<span class='notice'>You start cutting the hair off \the [src]...</span>", "<span class='italics'>You hear the sound of a knife rubbing against flesh.</span>")
 		if(do_after(user, 50 * W.toolspeed, target = src))
@@ -327,7 +316,7 @@ GLOBAL_LIST_INIT(sinew_recipes, list (
 		qdel(src)
 
 //Step three - drying
-/obj/item/stack/sheet/wetleather/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/item/stack/sheet/wetleather/temperature_expose(exposed_temperature, exposed_volume)
 	..()
 	if(exposed_temperature >= drying_threshold_temperature)
 		wetness--

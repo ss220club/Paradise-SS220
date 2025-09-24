@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 	if(!check_rights(R_EVENT))
 		return
 
-	if(!SSticker)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(usr, "<span class='warning'>The game hasn't started yet!</span>")
 		return
 
@@ -95,8 +95,8 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 		A.close()
 	var/list/ert_species_prefs = list()
 	for(var/mob/M in GLOB.response_team_members)
-		ert_species_prefs.Add(input_async(M, "Please select a species (10 seconds):", list("Human", "Tajaran", "Skrell", "Unathi", "Diona", "Vulpkanin", "Nian", "Drask", "Kidan", "Grey", "Random")))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(get_ert_role_prefs), GLOB.response_team_members, ert_gender_prefs, ert_species_prefs), 10 SECONDS)
+		ert_species_prefs.Add(input_async(M, "Please select a species (10 seconds):", list("Human"))) // SS220 EDIT - Human only ERT
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(get_ert_role_prefs), GLOB.response_team_members, ert_gender_prefs, ert_species_prefs), 0 SECONDS) // SS220 EDIT - Human only ERT
 
 /proc/get_ert_role_prefs(list/response_team_members, list/ert_gender_prefs, list/ert_species_prefs) // Why the FUCK is this variable the EXACT SAME as the global one
 	var/list/ert_role_prefs = list()
@@ -150,13 +150,15 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 			R.force_modules = list("Engineering", "Medical")
 		return R
 
-	var/mob/living/carbon/human/M = new(null)
+	var/mob/living/carbon/human/M = new(spawn_location)
 
 	if(new_gender)
 		if(new_gender == "Male")
 			M.change_gender(MALE)
+			M.change_body_type(MALE)
 		else
 			M.change_gender(FEMALE)
+			M.change_body_type(FEMALE)
 
 	if(!new_species)
 		new_species = "Human"
@@ -170,7 +172,6 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 	M.overeatduration = 0
 	var/obj/item/organ/external/head/head_organ = M.get_organ("head")
 	var/eye_c = pick("#000000", "#8B4513", "#1E90FF", "#8c00ff", "#a80c0c", "#2fdb63") // Black, brown, blue, purple, red, green
-	var/skin_tone = rand(-120, 20) // A range of skin colors
 
 	switch(new_species) //Diona not included as they don't use the hair colours, kidan use accessory, drask are skin tone Grey not included as they are BALD
 		if("Human", "Tajaran", "Vulpkanin", "Nian")
@@ -193,20 +194,21 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 				M.skin_colour = pick(su) //Pick a diffrent colour for body.
 
 
-	M.change_eye_color(eye_c)
-	M.s_tone = skin_tone
+	M.change_eye_color(eye_c, FALSE)
+	M.change_skin_tone(random_skin_tone(M.dna.species.name))
 	head_organ.headacc_colour = pick("#1f138b", "#272525", "#07a035", "#8c00ff", "#a80c0c")
 	head_organ.h_style = random_hair_style(M.gender, head_organ.dna.species.name)
-	head_organ.f_style = random_facial_hair_style(M.gender, head_organ.dna.species.name)
+	if(M.gender != FEMALE) // no beard for women pls
+		head_organ.f_style = random_facial_hair_style(M.gender, head_organ.dna.species.name)
 
-	M.rename_character(null, "[pick("Corporal", "Sergeant", "Staff Sergeant", "Sergeant First Class", "Master Sergeant", "Sergeant Major")] [pick(GLOB.last_names)]")
+	M.rename_character(M.real_name, "[pick("Капрал", "Сержант", "Старший Сержант", "Сержант 1-го Класса", "Мастер-Сержант", "Сержант-Майор")] [pick(GLOB.last_names)]")
 	M.age = rand(23,35)
+	M.update_dna()
 	M.regenerate_icons()
-	M.update_body()
 
 	//Creates mind stuff.
 	M.mind = new
-	M.mind.current = M
+	M.mind.bind_to(M)
 	M.mind.set_original_mob(M)
 	M.mind.assigned_role = SPECIAL_ROLE_ERT
 	M.mind.special_role = SPECIAL_ROLE_ERT
@@ -214,7 +216,6 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 	if(!(M.mind in SSticker.minds))
 		SSticker.minds += M.mind //Adds them to regular mind list.
 	SSticker.mode.ert += M.mind
-	M.forceMove(spawn_location)
 
 	SSjobs.CreateMoneyAccount(M, role, null)
 
@@ -298,61 +299,61 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 	if(silent)
 		message_admins("A silent response team failed to spawn. Likely, no one signed up.")
 		return
-	GLOB.major_announcement.Announce("[station_name()], we are unfortunately unable to send you an Emergency Response Team at this time.", "ERT Unavailable")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. К сожалению, в настоящее время мы не можем направить к вам отряд быстрого реагирования.", "ОБР недоступен.")
 
 /datum/response_team/proc/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Attention, [station_name()]. We are sending a team of highly trained assistants to aid(?) you. Standby.", "ERT En-Route")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем команду высококвалифицированных ассистентов для оказания помощи(?). Ожидайте.", "ОБР в пути.")
 
 // -- AMBER TEAM --
 
 /datum/response_team/amber
-	engineering_outfit = /datum/outfit/job/centcom/response_team/engineer/amber
-	security_outfit = /datum/outfit/job/centcom/response_team/security/amber
-	medical_outfit = /datum/outfit/job/centcom/response_team/medic/amber
-	command_outfit = /datum/outfit/job/centcom/response_team/commander/amber
-	janitor_outfit = /datum/outfit/job/centcom/response_team/janitorial/amber
-	paranormal_outfit = /datum/outfit/job/centcom/response_team/paranormal/amber
+	engineering_outfit = /datum/outfit/job/response_team/engineer/amber
+	security_outfit = /datum/outfit/job/response_team/security/amber
+	medical_outfit = /datum/outfit/job/response_team/medic/amber
+	command_outfit = /datum/outfit/job/response_team/commander/amber
+	janitor_outfit = /datum/outfit/job/response_team/janitorial/amber
+	paranormal_outfit = /datum/outfit/job/response_team/paranormal/amber
 
 /datum/response_team/amber/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Attention, [station_name()]. We are sending a code AMBER light Emergency Response Team. Standby.", "ERT En-Route")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем стандартный отряд быстрого реагирования кода «ЭМБЕР». Ожидайте.", "ОБР в пути.")
 
 // -- RED TEAM --
 
 /datum/response_team/red
-	engineering_outfit = /datum/outfit/job/centcom/response_team/engineer/red
-	security_outfit = /datum/outfit/job/centcom/response_team/security/red
-	medical_outfit = /datum/outfit/job/centcom/response_team/medic/red
-	command_outfit = /datum/outfit/job/centcom/response_team/commander/red
-	janitor_outfit = /datum/outfit/job/centcom/response_team/janitorial/red
-	paranormal_outfit = /datum/outfit/job/centcom/response_team/paranormal/red
+	engineering_outfit = /datum/outfit/job/response_team/engineer/red
+	security_outfit = /datum/outfit/job/response_team/security/red
+	medical_outfit = /datum/outfit/job/response_team/medic/red
+	command_outfit = /datum/outfit/job/response_team/commander/red
+	janitor_outfit = /datum/outfit/job/response_team/janitorial/red
+	paranormal_outfit = /datum/outfit/job/response_team/paranormal/red
 	borg_path = /mob/living/silicon/robot/ert/red
 
 /datum/response_team/red/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Attention, [station_name()]. We are sending a code RED Emergency Response Team. Standby.", "ERT En-Route")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем усиленный отряд быстрого реагирования кода «РЭД». Ожидайте.", "ОБР в пути.")
 
 // -- GAMMA TEAM --
 
 /datum/response_team/gamma
-	engineering_outfit = /datum/outfit/job/centcom/response_team/engineer/gamma
-	security_outfit = /datum/outfit/job/centcom/response_team/security/gamma
-	medical_outfit = /datum/outfit/job/centcom/response_team/medic/gamma
-	command_outfit = /datum/outfit/job/centcom/response_team/commander/gamma
-	janitor_outfit = /datum/outfit/job/centcom/response_team/janitorial/gamma
-	paranormal_outfit = /datum/outfit/job/centcom/response_team/paranormal/gamma
+	engineering_outfit = /datum/outfit/job/response_team/engineer/gamma
+	security_outfit = /datum/outfit/job/response_team/security/gamma
+	medical_outfit = /datum/outfit/job/response_team/medic/gamma
+	command_outfit = /datum/outfit/job/response_team/commander/gamma
+	janitor_outfit = /datum/outfit/job/response_team/janitorial/gamma
+	paranormal_outfit = /datum/outfit/job/response_team/paranormal/gamma
 	borg_path = /mob/living/silicon/robot/ert/gamma
 
 /datum/response_team/gamma/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Attention, [station_name()]. We are sending a code GAMMA elite Emergency Response Team. Standby.", "ERT En-Route")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем элитный отряд быстрого реагирования кода «ГАММА». Ожидайте.", "ОБР в пути.")
 
-/datum/outfit/job/centcom/response_team
+/datum/outfit/job/response_team
 	name = "Response team"
 	var/rt_assignment = "Emergency Response Team Member"
 	var/rt_job = "This is a bug"

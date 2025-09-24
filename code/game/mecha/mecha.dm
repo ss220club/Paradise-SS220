@@ -6,17 +6,16 @@
 	icon = 'icons/mecha/mecha.dmi'
 
 	density = TRUE //Dense. To raise the heat.
-	opacity = TRUE ///opaque. Menacing.
 	anchored = TRUE //no pulling around.
 	resistance_flags = FIRE_PROOF
 	layer = MOB_LAYER //icon draw layer
 	infra_luminosity = 15 //byond implementation is bugged.
 	force = 5
 	max_integrity = 300 //max_integrity is base health
-	armor = list(melee = 20, bullet = 10, laser = 0, energy = 0, bomb = 0, rad = 0, fire = 100, acid = 75)
+	armor = list(MELEE = 20, BULLET = 10, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 100, ACID = 75)
 	bubble_icon = "machine"
+	cares_about_temperature = TRUE
 	var/list/facing_modifiers = list(MECHA_FRONT_ARMOUR = 1.5, MECHA_SIDE_ARMOUR = 1, MECHA_BACK_ARMOUR = 0.5)
-	var/ruin_mecha = FALSE //if the mecha starts on a ruin, don't automatically give it a tracking beacon to prevent metagaming.
 	var/initial_icon = null //Mech type for resetting icon. Only used for reskinning kits (see custom items)
 	var/can_move = 0 // time of next allowed movement
 	/// Time it takes to enter the mech
@@ -91,7 +90,7 @@
 	var/destruction_sleep_duration = 2 SECONDS //Time that mech pilot is put to sleep for if mech is destroyed
 
 	var/melee_cooldown = 10
-	var/melee_can_hit = TRUE
+	var/mecha_melee_cooldown = FALSE
 
 	/// How many ion thrusters we got on this bad boy
 	var/thruster_count = 0
@@ -160,11 +159,15 @@
 
 	set_light(lights_range_ambient, lights_power_ambient)
 	update_icon(UPDATE_OVERLAYS)
+	AddElement(/datum/element/hostile_machine)
 
 /obj/mecha/update_overlays()
 	. = ..()
 	underlays.Cut()
 	underlays += emissive_appearance(emissive_appearance_icon, "[icon_state]_lightmask")
+	overlays.Cut()
+	if(istype(selected, /obj/item/mecha_parts/mecha_equipment/pulse_shield) && !leg_overload_mode && !istype(cell, /obj/item/stock_parts/cell/infinite) && occupant)
+		overlays += mutable_appearance('icons/effects/effects.dmi', "at_shield2", MOB_LAYER + 0.01, alpha = 120)
 
 ////////////////////////
 ////// Helpers /////////
@@ -264,12 +267,12 @@
 	else
 		if(internal_damage & MECHA_INT_CONTROL_LOST)
 			target = safepick(oview(1, src))
-		if(!melee_can_hit || !isatom(target))
+		if(mecha_melee_cooldown || !isatom(target))
 			return
-		target.mech_melee_attack(src)
-		melee_can_hit = FALSE
-		spawn(melee_cooldown)
-			melee_can_hit = TRUE
+		if(iswallturf(target) || isliving(target) || isobj(target))
+			target.mech_melee_attack(src)
+			mecha_melee_cooldown = TRUE
+			addtimer(VARSET_CALLBACK(src, mecha_melee_cooldown, FALSE), melee_cooldown)
 
 /obj/mecha/proc/mech_toxin_damage(mob/living/target)
 	playsound(src, 'sound/effects/spray2.ogg', 50, 1)
@@ -287,7 +290,7 @@
 ////////  MARK: Movement procs
 //////////////////////////////////
 
-/obj/mecha/Process_Spacemove(movement_dir = 0)
+/obj/mecha/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	. = ..()
 	if(.)
 		return TRUE
@@ -405,7 +408,7 @@
 	if(. && stepsound)
 		playsound(src, stepsound, 40, 1)
 
-/obj/mecha/Bump(atom/obstacle, bump_allowed)
+/obj/mecha/Bump(atom/obstacle)
 	if(throwing) //high velocity mechas in your face!
 		var/breakthrough = FALSE
 		if(istype(obstacle, /obj/structure/window))
@@ -460,15 +463,14 @@
 					throw_at(crashing, 50, throw_speed)
 
 	else
-		if(bump_allowed)
-			if(..())
-				return
-			if(isobj(obstacle))
-				var/obj/O = obstacle
-				if(!O.anchored)
-					step(obstacle, dir)
-			else if(ismob(obstacle))
+		if(..())
+			return
+		if(isobj(obstacle))
+			var/obj/O = obstacle
+			if(!O.anchored)
 				step(obstacle, dir)
+		else if(ismob(obstacle))
+			step(obstacle, dir)
 
 
 ///////////////////////////////////
@@ -527,6 +529,16 @@
 	return facing_modifiers[MECHA_SIDE_ARMOUR] //always return non-0
 
 /obj/mecha/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
+	for(var/obj/item/mecha_parts/mecha_equipment/pulse_shield/shield in equipment)
+		if(selected == shield && !leg_overload_mode && !istype(cell, /obj/item/stock_parts/cell/infinite) && occupant)
+			var/required_power = shield.energy_drain * damage_amount
+			if(cell && cell.use(required_power))
+				log_message("Took [damage_amount] points of damage. Damage absorbed by [shield].")
+				damage_amount = 0
+				spark_system.start()
+			else
+				occupant_message("<span class='userdanger'>Shield breached!</span>")
+				shield.on_unequip()
 	. = ..()
 	if(. && obj_integrity > 0)
 		spark_system.start()
@@ -630,6 +642,9 @@
 /obj/mecha/bullet_act(obj/item/projectile/Proj) //wrapper
 	log_message("Hit by projectile. Type: [Proj.name]([Proj.flag]).")
 	add_attack_logs(Proj.firer, OCCUPANT_LOGGING, "shot [Proj.name]([Proj.flag]) at mech [src]")
+	if(Proj.shield_buster && istype(selected, /obj/item/mecha_parts/mecha_equipment/pulse_shield))
+		occupant_message("<span class='userdanger'>Shield breached!</span>")
+		selected.on_unequip()
 	..()
 
 /obj/mecha/ex_act(severity, target)
@@ -662,7 +677,7 @@
 		occupant.SetSleeping(destruction_sleep_duration)
 	go_out()
 	for(var/mob/M in src) //Let's just be ultra sure
-		if(isAI(M))
+		if(is_ai(M))
 			var/mob/living/silicon/ai/AI = M //AIs are loaded into the mech computer itself. When the mech dies, so does the AI. They can be recovered with an AI card from the wreck.
 			AI.gib() //No wreck, no AI to recover
 		else
@@ -695,13 +710,16 @@
 /obj/mecha/emp_act(severity)
 	if(emp_proof)
 		return
+	if(istype(selected, /obj/item/mecha_parts/mecha_equipment/pulse_shield))
+		occupant_message("<span class='userdanger'>Shield breached!</span>")
+		selected.on_unequip()
 	if(get_charge())
 		use_power((cell.charge/3)/(severity*2))
 		take_damage(30 / severity, BURN, ENERGY, 1)
 	log_message("EMP detected", 1)
 	check_for_internal_damage(list(MECHA_INT_FIRE, MECHA_INT_TEMP_CONTROL, MECHA_INT_CONTROL_LOST, MECHA_INT_SHORT_CIRCUIT), 1)
 
-/obj/mecha/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/mecha/temperature_expose(exposed_temperature, exposed_volume)
 	..()
 	if(exposed_temperature > max_temperature)
 		log_message("Exposed to dangerous temperature.", 1)
@@ -712,7 +730,7 @@
 ////// MARK: AttackBy
 //////////////////////
 
-/obj/mecha/attackby(obj/item/W, mob/user, params)
+/obj/mecha/attackby__legacy__attackchain(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/mmi))
 		if(mmi_move_inside(W,user))
 			to_chat(user, "[src]-MMI interface initialized successfuly")
@@ -768,12 +786,15 @@
 				W.forceMove(src)
 				cell = W
 				log_message("Powercell installed")
+				if(istype(selected, /obj/item/mecha_parts/mecha_equipment/pulse_shield) && istype(cell, /obj/item/stock_parts/cell/infinite))
+					occupant_message("<span class='danger'>The immense power of the cell overloads the shields.</span>")
+					selected.on_unequip()
 			else
 				to_chat(user, "<span class='notice'>There's already a powercell installed.</span>")
 		return
 
 	else if(istype(W, /obj/item/mecha_parts/mecha_tracking))
-		if(!user.unEquip(W))
+		if(!user.drop_item_to_ground(W))
 			to_chat(user, "<span class='notice'>\the [W] is stuck to your hand, you cannot put it in \the [src]</span>")
 			return
 
@@ -951,7 +972,7 @@
 /////////////////////////////////////
 
 /obj/mecha/attack_ai(mob/living/silicon/ai/user)
-	if(!isAI(user))
+	if(!is_ai(user))
 		return
 	//Allows the Malf to scan a mech's status and loadout, helping it to decide if it is a worthy chariot.
 	if(user.can_dominate_mechs)
@@ -989,7 +1010,7 @@
 				to_chat(user, "<span class='warning'>[name] must have maintenance protocols active in order to allow a transfer.</span>")
 				return
 			AI = occupant
-			if(!AI || !isAI(occupant)) //Mech does not have an AI for a pilot
+			if(!AI || !is_ai(occupant)) //Mech does not have an AI for a pilot
 				to_chat(user, "<span class='warning'>No AI detected in the [name] onboard computer.</span>")
 				return
 			if(AI.mind.special_role) //Malf AIs cannot leave mechs. Except through death.
@@ -1007,7 +1028,7 @@
 			to_chat(user, "<span class='boldnotice'>Transfer successful</span>: [AI.name] ([rand(1000,9999)].exe) removed from [name] and stored within local memory.")
 
 		if(AI_MECH_HACK) //Called by AIs on the mech
-			AI.linked_core = new /obj/structure/AIcore/deactivated(AI.loc)
+			AI.linked_core = new /obj/structure/ai_core/deactivated(AI.loc)
 			if(AI.can_dominate_mechs)
 				if(occupant) //Oh, I am sorry, were you using that?
 					to_chat(AI, "<span class='warning'>Pilot detected! Forced ejection initiated!")
@@ -1033,6 +1054,10 @@
 
 //Hack and From Card interactions share some code, so leave that here for both to use.
 /obj/mecha/proc/ai_enter_mech(mob/living/silicon/ai/AI, interaction)
+	var/mob/camera/eye/hologram/hologram_eye = AI.remote_control
+	if(istype(hologram_eye))
+		hologram_eye.release_control()
+		qdel(hologram_eye)
 	AI.aiRestorePowerRoutine = 0
 	AI.forceMove(src)
 	occupant = AI
@@ -1044,6 +1069,7 @@
 	AI.cancel_camera()
 	AI.controlled_mech = src
 	AI.remote_control = src
+	AI.reset_perspective(src)
 	AI.can_shunt = FALSE //ONE AI ENTERS. NO AI LEAVES.
 	to_chat(AI, "[AI.can_dominate_mechs ? "<span class='boldnotice'>Takeover of [name] complete! You are now permanently loaded onto the onboard computer. Do not attempt to leave the station sector!</span>" \
 	: "<span class='notice'>You have been uploaded to a mech's onboard computer."]")
@@ -1234,7 +1260,7 @@
 		else if(mmi_as_oc.brainmob.stat)
 			to_chat(user, "Beta-rhythm below acceptable level.")
 			return FALSE
-		if(!user.unEquip(mmi_as_oc))
+		if(!user.drop_item_to_ground(mmi_as_oc))
 			to_chat(user, "<span class='notice'>\the [mmi_as_oc] is stuck to your hand, you cannot put it in \the [src]</span>")
 			return FALSE
 		var/mob/living/brain/brainmob = mmi_as_oc.brainmob
@@ -1272,10 +1298,11 @@
 /obj/mecha/proc/pilot_mmi_hud(mob/living/brain/pilot)
 	return
 
-/obj/mecha/Exited(atom/movable/M, atom/newloc)
+/obj/mecha/Exited(atom/movable/M, direction)
+	var/new_loc = get_step(M, direction)
 	if(occupant && occupant == M) // The occupant exited the mech without calling go_out()
-		if(!isAI(occupant)) //This causes carded AIS to gib, so we do not want this to be called during carding.
-			go_out(1, newloc)
+		if(!is_ai(occupant)) //This causes carded AIS to gib, so we do not want this to be called during carding.
+			go_out(1, new_loc)
 
 /obj/mecha/proc/go_out(forced, atom/newloc = loc)
 	if(!occupant)
@@ -1293,7 +1320,7 @@
 		var/mob/living/brain/brain = occupant
 		RemoveActions(brain)
 		mob_container = brain.container
-	else if(isAI(occupant))
+	else if(is_ai(occupant))
 		var/mob/living/silicon/ai/AI = occupant
 		if(forced)//This should only happen if there are multiple AIs in a round, and at least one is Malf.
 			RemoveActions(occupant)
@@ -1307,10 +1334,15 @@
 				return
 			to_chat(AI, "<span class='notice'>Returning to core...</span>")
 			AI.controlled_mech = null
-			AI.remote_control = null
+			if(istype(AI.eyeobj))
+				AI.remote_control = AI.eyeobj
+				AI.reset_perspective(AI.eyeobj)
+			else
+				AI.eyeobj = new /mob/camera/eye/ai(loc, AI.name, AI, AI)
 			RemoveActions(occupant, 1)
 			mob_container = AI
 			newloc = get_turf(AI.linked_core)
+			AI.eyeobj?.set_loc(newloc)
 			qdel(AI.linked_core)
 	else
 		return
@@ -1582,7 +1614,7 @@
 /obj/mecha/obj_destruction()
 	if(wreckage)
 		var/mob/living/silicon/ai/AI
-		if(isAI(occupant))
+		if(is_ai(occupant))
 			AI = occupant
 			occupant = null
 		var/obj/structure/mecha_wreckage/WR = new wreckage(loc, AI)

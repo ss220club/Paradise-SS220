@@ -8,7 +8,7 @@
 /obj/item/clothing/mask/equipped(mob/M, slot)
 	. = ..()
 
-	if((slot & SLOT_HUD_WEAR_MASK) && modifies_speech)
+	if((slot & ITEM_SLOT_MASK) && modifies_speech)
 		RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	else
 		UnregisterSignal(M, COMSIG_MOB_SAY)
@@ -60,13 +60,13 @@
 	desc = "Стильная дыхательная маска в виде противогаза, не скрывает лицо."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_state = "red_gas"
-	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/mask.dmi'
 
 /obj/item/clothing/mask/breath/breathscarf
 	name = "шарф с системой дыхания"
 	desc = "Стильный и инновационный шарф, который служит дыхательной маской в экстремальных ситуациях."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
-	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
 
 /obj/item/clothing/mask/rooster
@@ -81,7 +81,7 @@
 	name = "маска петуха"
 	desc = "Прямо из Острой дороги космо-Майами. Со встроенными фразами."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
-	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "rooster_mask"
 
 /obj/item/clothing/mask/rooster/handle_speech(datum/source, list/speech_args)

@@ -41,6 +41,11 @@
 	if(messiness > 2)
 		layer = LOW_OBJ_LAYER  // I wont do such stuff on splicing "reinforcement". Take it as nasty feature
 
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 	// Wire splice can only exist on a cable. Lets try to place it in a good location
 	if(locate(/obj/structure/cable) in get_turf(src)) // If we're already in a good location, no problem!
 		return
@@ -99,16 +104,16 @@
 	. = ..()
 	. += span_warning("It has [messiness] wire[messiness > 1 ? "s" : ""] dangling around.")
 
-/obj/structure/wire_splicing/Crossed(atom/movable/AM, oldloc)
-	. = ..()
-	if(isliving(AM))
+/obj/structure/wire_splicing/proc/on_atom_entered(datum/source, atom/movable/entered)
+	SIGNAL_HANDLER
+	if(isliving(entered))
 		var/chance_to_shock = messiness * shock_chance_per_messiness
 		/*
 		var/turf/T = get_turf(src)
 		if(locate(/obj/structure/catwalk) in T)
 			chance_to_shock -= 20
 		*/
-		shock(AM, chance_to_shock)
+		shock(entered, chance_to_shock)
 
 /obj/structure/wire_splicing/proc/shock(mob/living/user, prb, siemens_coeff = 1)
 	. = FALSE
@@ -143,12 +148,12 @@
 	investigate_log("was cut by [key_name(usr)] in [AREACOORD(src)]", "wires")
 	qdel(src)
 
-/obj/structure/wire_splicing/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/stack/cable_coil) && user.a_intent == INTENT_HARM)
-		var/obj/item/stack/cable_coil/coil = I
+/obj/structure/wire_splicing/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/stack/cable_coil) && user.a_intent == INTENT_HARM)
+		var/obj/item/stack/cable_coil/coil = used
 		reinforce(user, coil)
-		return
-	. = ..()
+		return ITEM_INTERACT_COMPLETE
+	return ..()
 
 /obj/structure/wire_splicing/proc/reinforce(mob/user, obj/item/stack/cable_coil/coil)
 	if(messiness >= MAX_MESSINESS)

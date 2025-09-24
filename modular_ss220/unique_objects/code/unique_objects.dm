@@ -192,7 +192,7 @@
 	icon_state = "se"
 
 // =========== items ===========
-/obj/item/clothing/head/helmet/skull/Yorick
+/obj/item/clothing/head/helmet/skull/yorick
 	name = "Йорик"
 	desc = "Бедный Йорик..."
 
@@ -201,7 +201,8 @@
 	desc = "Капитан всех уточек на этой станции. Крайне важная и престижная уточка. Выпущены в ограниченном тираже и только для капитанов. Ценная находка для коллекционеров."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 	icon_state = "captain_rubberducky"
-	item_state = "captain_rubberducky"
+	worn_icon_state = "captain_rubberducky"
+	inhand_icon_state = "captain_rubberducky"
 
 // =========== toilets ===========
 /obj/structure/toilet
@@ -213,10 +214,12 @@
 	desc = "Особенный унитаз для особенных особ."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 
-/obj/structure/toilet/attackby(obj/item/I, mob/living/user, params)
-	. = ..()
-	if(try_construct(I, user))
-		return TRUE
+/obj/structure/toilet/attack_by(obj/item/attacking, mob/user, params)
+	if(..())
+		return FINISH_ATTACK
+
+	if(try_construct(attacking, user))
+		return FINISH_ATTACK
 
 /obj/structure/toilet/proc/try_construct(obj/item/I, mob/living/user)
 	if(!istype(I, /obj/item/stack))

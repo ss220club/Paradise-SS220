@@ -16,7 +16,6 @@
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
 	icon_state = "welding"
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	item_state = "welding"
 	materials = list(MAT_METAL=1750, MAT_GLASS=400)
 	flash_protect = FLASH_PROTECTION_WELDER
 	tint = FLASH_PROTECTION_WELDER
@@ -26,7 +25,6 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	visor_flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	resistance_flags = FIRE_PROOF
-
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/head.dmi',
 		"Unathi" = 'icons/mob/clothing/species/unathi/helmet.dmi',
@@ -35,7 +33,7 @@
 		"Grey" = 'icons/mob/clothing/species/grey/helmet.dmi'
 		)
 
-/obj/item/clothing/head/welding/attack_self(mob/user)
+/obj/item/clothing/head/welding/attack_self__legacy__attackchain(mob/user)
 	weldingvisortoggle(user)
 
 /obj/item/clothing/head/welding/flamedecal
@@ -61,7 +59,6 @@
 	desc = "It's tasty looking!"
 	icon_state = "cake0"
 	flags_cover = HEADCOVERSEYES
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
 	var/onfire = FALSE
 	var/status = 0
 	var/fire_resist = T0C+1300	//this is the max temp it can stand before you start to cook. although it might not burn away, you take damage
@@ -80,7 +77,7 @@
 	if(isturf(location))
 		location.hotspot_expose(700, 1)
 
-/obj/item/clothing/head/cakehat/attack_self(mob/user)
+/obj/item/clothing/head/cakehat/attack_self__legacy__attackchain(mob/user)
 	if(status > 1)
 		return
 	onfire = !onfire
@@ -102,7 +99,6 @@
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
-	item_state = "ushankadown"
 	flags_inv = HIDEEARS
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
@@ -112,14 +108,12 @@
 	"Vox" = 'icons/mob/clothing/species/vox/head.dmi'
 	)
 
-/obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
+/obj/item/clothing/head/ushanka/attack_self__legacy__attackchain(mob/user as mob)
 	if(icon_state == "ushankadown")
 		icon_state = "ushankaup"
-		item_state = "ushankaup"
 		to_chat(user, "You raise the ear flaps on the ushanka.")
 	else
 		icon_state = "ushankadown"
-		item_state = "ushankadown"
 		to_chat(user, "You lower the ear flaps on the ushanka.")
 
 /obj/item/clothing/head/sovietsidecap
@@ -144,36 +138,30 @@
 	name = "carved pumpkin"
 	desc = "A jack o' lantern! Believed to ward off evil spirits."
 	icon_state = "hardhat0_pumpkin"//Could stand to be renamed
-	item_state = "hardhat0_pumpkin"
 	item_color = "pumpkin"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	dog_fashion = null
 	light_color = "#fff2bf"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = null
 	brightness_on = 2 //luminosity when on
 
 /obj/item/clothing/head/hardhat/pumpkinhead/blumpkin
 	name = "carved blumpkin"
 	desc = "A very blue jack o' lantern! Believed to ward off vengeful chemists."
 	icon_state = "hardhat0_blumpkin"
-	item_state = "hardhat0_blumpkin"
 	item_color = "blumpkin"
 	light_color = "#76ff8e"
-
 
 /obj/item/clothing/head/hardhat/reindeer
 	name = "novelty reindeer hat"
 	desc = "Some fake antlers and a very fake red nose."
 	icon_state = "hardhat0_reindeer"
-	item_state = "hardhat0_reindeer"
 	item_color = "reindeer"
-	flags_inv = 0
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = null
 	brightness_on = 1 //luminosity when on
 	dog_fashion = /datum/dog_fashion/head/reindeer
-
 
 /*
  * Kitty ears
@@ -191,17 +179,17 @@
 		return
 	var/obj/item/organ/external/head/head_organ = user.get_organ("head")
 
-	mob = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = icon_state)
+	mob = new/icon("icon" = worn_icon, "icon_state" = icon_state) // SS220 EDIT - Заменил хард код пути на worn_icon
 	mob.Blend(head_organ.hair_colour, ICON_ADD)
 
-	var/icon/earbit = new/icon("icon" = 'icons/mob/clothing/head.dmi', "icon_state" = "[icon_state]inner")
+	var/icon/earbit = new/icon("icon" = worn_icon, "icon_state" = "[icon_state]inner") // SS220 EDIT - Заменил хард код пути на worn_icon
 	mob.Blend(earbit, ICON_OVERLAY)
 
-	icon_override = mob
+	worn_icon = mob
 
 /obj/item/clothing/head/kitty/equipped(mob/M, slot)
 	. = ..()
-	if(ishuman(M) && slot == SLOT_HUD_HEAD)
+	if(ishuman(M) && slot == ITEM_SLOT_HEAD)
 		update_icon(NONE, M)
 
 /obj/item/clothing/head/kitty/mouse
@@ -216,8 +204,6 @@
 	name = "head mirror"
 	desc = "A band of rubber with a very reflective looking mirror attached to the front of it. One of the early signs of medical budget cuts."
 	icon_state = "head_mirror"
-	item_state = "head_mirror"
-
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/head.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/head.dmi',

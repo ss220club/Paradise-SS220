@@ -6,8 +6,6 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "minibar"
 	anchored = TRUE
-	density = FALSE
-	opacity = FALSE
 	var/deconstructible = TRUE
 
 /obj/structure/fluff/wrench_act(mob/living/user, obj/item/I)
@@ -73,7 +71,7 @@
 /obj/structure/fluff/divine
 	name = "Miracle"
 	icon = 'icons/obj/hand_of_god_structures.dmi'
-	anchored = TRUE
+	icon_state = null
 	density = TRUE
 
 /obj/structure/fluff/divine/nexus

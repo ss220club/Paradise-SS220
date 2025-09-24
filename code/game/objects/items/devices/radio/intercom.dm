@@ -6,7 +6,6 @@
 	anchored = TRUE
 	w_class = WEIGHT_CLASS_BULKY
 	canhear_range = 2
-	flags = CONDUCT
 	blocks_emissive = FALSE
 	var/circuitry_installed = 1
 	var/buildstage = 0
@@ -16,7 +15,6 @@
 /obj/item/radio/intercom/custom
 	name = "station intercom (Custom)"
 	custom_name = TRUE
-	broadcasting = FALSE
 	listening = FALSE
 
 /obj/item/radio/intercom/interrogation
@@ -42,8 +40,6 @@
 /obj/item/radio/intercom/department
 	canhear_range = 5
 	custom_name = TRUE
-	broadcasting = FALSE
-	listening = TRUE
 
 /obj/item/radio/intercom/department/medbay
 	name = "station intercom (Medbay)"
@@ -121,11 +117,11 @@
 /obj/item/radio/intercom/attack_ai(mob/user)
 	add_hiddenprint(user)
 	add_fingerprint(user)
-	attack_self(user)
+	attack_self__legacy__attackchain(user)
 
 /obj/item/radio/intercom/attack_hand(mob/user)
 	add_fingerprint(user)
-	attack_self(user)
+	attack_self__legacy__attackchain(user)
 
 /obj/item/radio/intercom/receive_range(freq, level)
 	if(!is_listening())
@@ -151,7 +147,7 @@
 		if(2)
 			. += "<span class='notice'>The intercom is <b>wired</b>, and the maintenance panel is <i>unscrewed</i>.</span>"
 
-/obj/item/radio/intercom/attackby(obj/item/W, mob/user)
+/obj/item/radio/intercom/attackby__legacy__attackchain(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/tape_roll)) //eww
 		return
 	else if(iscoil(W) && buildstage == 1)
@@ -284,7 +280,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	materials = list(MAT_METAL = 100, MAT_GLASS = 100)
 	origin_tech = "engineering=2;programming=1"
-	toolspeed = 1
 	usesound = 'sound/items/deconstruct.ogg'
 
 /obj/item/radio/intercom/locked

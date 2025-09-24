@@ -25,7 +25,7 @@
 
 /obj/machinery/vox_shop/proc/generate_pack_items()
 	var/list/shop_items = list()
-	var/obj/machinery/vox_trader/trader = locate() in GLOB.machines
+	var/obj/machinery/vox_trader/trader = locate() in SSmachines.get_by_type(/obj/machinery/vox_trader)
 	for(var/path in subtypesof(/datum/vox_pack))
 		var/datum/vox_pack/pack = new path
 		if(pack.cost < 0)
@@ -81,12 +81,12 @@
 /obj/machinery/vox_shop/attack_ai(mob/user)
 	return FALSE
 
-/obj/machinery/vox_shop/attackby(obj/item/O, mob/user, params)
-	if(isvoxcash(O))
+/obj/machinery/vox_shop/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(isvoxcash(used))
 		user.do_attack_animation(src)
-		insert_cash(O, user)
-		return TRUE
-	. = ..()
+		insert_cash(used, user)
+		return ITEM_INTERACT_COMPLETE
+	return ..()
 
 /obj/machinery/vox_shop/proc/insert_cash(obj/item/stack/vox_cash, mob/user)
 	visible_message("<span class='info'>[user] загрузил [vox_cash] в [src].</span>")
@@ -121,7 +121,7 @@
 			if(isitem(obj))
 				if(!user.put_in_any_hand_if_possible(obj) && ishuman(user))
 					var/mob/living/carbon/human/H = user
-					H.equip_or_collect(obj, SLOT_HUD_IN_BACKPACK)
+					H.equip_or_collect(obj, ITEM_SLOT_IN_BACKPACK)
 			else
 				obj.forceMove(get_turf(src))
 

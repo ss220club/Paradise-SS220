@@ -2,7 +2,6 @@
 	name = "Orange juice"
 	id = "orangejuice"
 	description = "Both delicious AND rich in Vitamin C, what more do you need?"
-	color = "#E78108" // rgb: 231, 129, 8
 	drink_icon = "glass_orange"
 	drink_name = "Glass of Orange juice"
 	drink_desc = "Vitamins! Yay!"
@@ -78,7 +77,6 @@
 	name = "The Doctor's Delight"
 	id = "doctorsdelight"
 	description = "A gulp a day keeps the MediBot away. That's probably for the best."
-	reagent_state = LIQUID
 	color = "#FF8CFF" // rgb: 255, 140, 255
 	drink_icon = "doctorsdelightglass"
 	drink_name = "Doctor's Delight"
@@ -95,16 +93,17 @@
 	name = "Triple Citrus"
 	id = "triple_citrus"
 	description = "A refreshing mixed drink of orange, lemon and lime juice."
-	reagent_state = LIQUID
 	color = "#B5FF00"
 	drink_icon = "triplecitrus"
 	drink_name = "Glass of Triplecitrus Juice"
 	drink_desc = "As colorful and healthy as it is delicious."
 	taste_description = "citrus juice"
 
-/datum/reagent/consumable/drink/triple_citrus/reaction_mob(mob/living/M, method=REAGENT_TOUCH, volume)
-	if(method == REAGENT_INGEST)
-		M.adjustToxLoss(-rand(1,2))
+/datum/reagent/consumable/drink/triple_citrus/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	if(prob(15))
+		update_flags |= M.adjustToxLoss(-rand(1, 2), FALSE)
+	return ..() | update_flags
 
 /datum/reagent/consumable/drink/berryjuice
 	name = "Berry Juice"
@@ -254,7 +253,6 @@
 	name = "Cream"
 	id = "cream"
 	description = "The fatty, still liquid part of milk. Why don't you mix this with some scotch, eh?"
-	color = "#F1F1F1"
 	drink_name = "Glass of cream"
 	drink_desc = "Ewwww..."
 	taste_description = "cream"
@@ -369,6 +367,17 @@
 	drink_name = "Cafe Mocha"
 	drink_desc = "The perfect blend of coffee, milk, and chocolate."
 	taste_description = "chocolatey coffee"
+
+/datum/reagent/consumable/drink/coffee/cafe_latte/pumpkin_latte
+	name = "Pumpkin Latte"
+	id = "pumpkin_latte"
+	description = "A mix of pumpkin juice and coffee."
+	color = "#F4A460"
+	nutriment_factor = 3 * REAGENTS_METABOLISM
+	drink_icon = "pumpkin_latte"
+	drink_name = "Pumpkin Latte"
+	drink_desc = "A mix of coffee and pumpkin juice."
+	taste_description = "overpriced hipster spices"
 
 /datum/reagent/consumable/drink/tea
 	name = "Tea"
@@ -487,17 +496,6 @@
 	drink_desc = "An exotic blue milkshake."
 	taste_description = "blues"
 
-/datum/reagent/consumable/drink/pumpkin_latte
-	name = "Pumpkin Latte"
-	id = "pumpkin_latte"
-	description = "A mix of pumpkin juice and coffee."
-	color = "#F4A460"
-	nutriment_factor = 3 * REAGENTS_METABOLISM
-	drink_icon = "pumpkin_latte"
-	drink_name = "Pumpkin Latte"
-	drink_desc = "A mix of coffee and pumpkin juice."
-	taste_description = "overpriced hipster spices"
-
 /datum/reagent/consumable/drink/gibbfloats
 	name = "Gibb Floats"
 	id = "gibbfloats"
@@ -536,7 +534,7 @@
 	drink_desc = "Made with real grapes! Shocking!"
 	taste_description = "grape soda"
 
-/datum/reagent/consumable/drink/coco/icecoco
+/datum/reagent/consumable/drink/icecoco
 	name = "Iced Cocoa"
 	id = "icecoco"
 	description = "Hot cocoa and ice, refreshing and cool."
@@ -590,7 +588,6 @@
 	name = "Cola"
 	id = "cola"
 	description = "A refreshing beverage."
-	reagent_state = LIQUID
 	color = "#100800" // rgb: 16, 8, 0
 	adj_drowsy = -10 SECONDS
 	drink_icon = "glass_brown"
@@ -764,3 +761,18 @@
 	drink_name = "Lean"
 	drink_desc = "Also known as Purple Drank."
 	taste_description = "sweet druggy soda"
+
+/datum/reagent/consumable/drink/melonade
+	name = "Melonade"
+	description = "A slushy, sour, melon-lemonade."
+	id = "melonade"
+	color = "#e8313f" // rgb: 232, 49, 63
+	drink_icon = "melonade_glass"
+	drink_name = "Tall Glass of Melonade"
+	drink_desc = "This would go great with 147 fluffity puffity marshalays."
+	taste_description = "summer fruit"
+
+/datum/reagent/consumable/drink/melonade/on_mob_life(mob/living/M)
+	if(M.satiety < 600)
+		M.satiety += 5
+	return ..()

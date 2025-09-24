@@ -1,10 +1,19 @@
 /datum/job/cargo_tech/New()
 	. = ..()
-	access |= list(ACCESS_MINING)
+	access |= list(ACCESS_MINING_STATION)
 
 /datum/job/mining/New()
 	. = ..()
 	access |= list(ACCESS_CARGO, ACCESS_CARGO_BAY, ACCESS_SUPPLY_SHUTTLE, ACCESS_MAILSORTING)
+
+/datum/job/explorer/New()
+	. = ..()
+	access -= list(ACCESS_TELEPORTER)
+	access |= list(ACCESS_MAILSORTING)
+
+/datum/job/smith/New()
+	. = ..()
+	access |= list(ACCESS_SUPPLY_SHUTTLE, ACCESS_MAILSORTING)
 
 /datum/job/bartender/New()
 	. = ..()
@@ -28,7 +37,7 @@
 
 /datum/job/atmos/New()
 	. = ..()
-	access |= list(ACCESS_ENGINE)
+	access |= list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP)
 
 /datum/job/engineer/New()
 	. = ..()
@@ -41,3 +50,7 @@
 /datum/job/roboticist/New()
 	. = ..()
 	access |= list(ACCESS_TOX)
+
+/datum/job/qm/New()
+	. = ..()
+	access |= list(ACCESS_EVA)

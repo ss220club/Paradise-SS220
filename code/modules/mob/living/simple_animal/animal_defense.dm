@@ -1,10 +1,3 @@
-/mob/living/simple_animal/attackby(obj/item/O, mob/living/user)
-	if(can_collar && istype(O, /obj/item/petcollar) && !pcollar)
-		add_collar(O, user)
-		return
-	else
-		return ..()
-
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M)
 	..()
 	switch(M.a_intent)
@@ -90,7 +83,7 @@
 		visible_message("<span class='warning'>[src] looks unharmed.</span>")
 		return FALSE
 	else
-		apply_damage(damage, damagetype, null, getarmor(null, armorcheck))
+		apply_damage(damage, damagetype, null, getarmor(armor_type = armorcheck))
 		return TRUE
 
 /mob/living/simple_animal/bullet_act(obj/item/projectile/Proj)
@@ -104,7 +97,7 @@
 	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
 		return
 	..()
-	var/bomb_armor = getarmor(null, BOMB)
+	var/bomb_armor = getarmor(armor_type = BOMB)
 	switch(severity)
 		if(1)
 			if(prob(bomb_armor))
@@ -133,3 +126,9 @@
 		else
 			visual_effect_icon = ATTACK_EFFECT_SMASH
 	..()
+
+/mob/living/simple_animal/handle_basic_attack(mob/living/basic/attacker, modifiers)
+	. = ..()
+	if(.)
+		var/damage = rand(attacker.melee_damage_lower, attacker.melee_damage_upper)
+		return attack_threshold_check(damage, attacker.melee_damage_type)

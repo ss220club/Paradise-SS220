@@ -4,10 +4,8 @@
 		The illusion isn't strong enough for more thorough examinations, but will fool people at a glance. \
 		You will lose control over the illusion if you're attacked, shoved, or a object is thrown at you, no matter how soft."
 
-	school = "illusion"
 	base_cooldown = 3 SECONDS
 	clothes_req = FALSE
-	invocation_type = "none"
 	level_max = 0 //cannot be improved
 	action_icon_state = "disguise_self"
 	sound = null

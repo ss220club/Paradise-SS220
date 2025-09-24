@@ -56,7 +56,7 @@
 		Get the job done, and we'll be one step closer to ending Nanotrasen's slave empire."
 	focus = 70
 	targeted_departments = list(DEPARTMENT_SCIENCE)
-	theft_targets = list(/datum/theft_objective/reactive, /datum/theft_objective/steal/documents, /datum/theft_objective/hand_tele)
+	theft_targets = list(/datum/theft_objective/reactive, /datum/theft_objective/documents, /datum/theft_objective/hand_tele)
 
 /datum/antag_org/syndicate/electra // Mostly target Engineering
 	name = "Electra Dynamics"
@@ -69,7 +69,7 @@
 /datum/antag_org/syndicate/spiderclan // Targets one syndicate agent and one non-mindshielded crewmember.
 	name = "Spider Clan"
 	intro_desc = "You are an initiate of the elusive Spider Clan, an insular cult of assassins and rogues styling themselves after ancient ninjas from Earth. \
-		This is your final test, Initiate. Terminate the selected targets by any means necessary and you will have earned your place within the Clan."
+		This is your final test, Initiate. Terminate the selected targets by any means necessary, and you will have earned your place within the Clan."
 	forced_objectives = list(/datum/objective/assassinate/syndicate, /datum/objective/assassinate/nomindshield)
 	chaos_level = ORG_CHAOS_HUNTER
 
@@ -78,7 +78,7 @@
 	intro_desc = "You are an undercover agent of the Federation Analytics and Intelligence Directorate, a Trans-Solar agency keeping tabs on the Corporate Wars, among other duties. \
 		Be quick, be efficient, and don't get caught. The Directorate will deny any involvement with your presence here."
 	forced_objectives = list(/datum/objective/assassinate/syndicate, /datum/objective/steal)
-	theft_targets = list(/datum/theft_objective/blueprints, /datum/theft_objective/steal/documents)
+	theft_targets = list(/datum/theft_objective/blueprints, /datum/theft_objective/documents)
 	chaos_level = ORG_CHAOS_HUNTER
 
 /datum/antag_org/syndicate/gorlex // Hijack only

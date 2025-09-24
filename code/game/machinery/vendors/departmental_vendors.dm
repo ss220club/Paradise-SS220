@@ -7,7 +7,7 @@
 	category = VENDOR_TYPE_DEPARTMENTAL
 	req_one_access = list(ACCESS_ENGINE_EQUIP, ACCESS_ATMOSPHERICS)
 	products = list(/obj/item/clothing/glasses/meson/engine = 2,
-					/obj/item/clothing/glasses/meson/engine/tray = 4,
+					/obj/item/clothing/glasses/meson/engine/atmos = 4,
 					/obj/item/multitool = 4,
 					/obj/item/geiger_counter = 5,
 					/obj/item/airlock_electronics = 10,
@@ -99,24 +99,24 @@
 					/obj/item/trash/bowl = 20,
 					/obj/item/kitchen/knife = 3,
 					/obj/item/kitchen/rollingpin = 2,
-					/obj/item/kitchen/sushimat = 3,
+					/obj/item/reagent_containers/cooking/sushimat = 3,
 					/obj/item/reagent_containers/drinks/drinkingglass = 8,
-					/obj/item/clothing/suit/chef/classic = 2,
-					/obj/item/storage/belt/chef = 2,
 					/obj/item/reagent_containers/condiment/pack/ketchup = 5,
 					/obj/item/reagent_containers/condiment/pack/hotsauce = 5,
 					/obj/item/reagent_containers/condiment/saltshaker =5,
 					/obj/item/reagent_containers/condiment/peppermill =5,
 					/obj/item/whetstone = 2,
-					/obj/item/mixing_bowl = 10,
-					/obj/item/kitchen/mould/bear = 1,
-					/obj/item/kitchen/mould/worm = 1,
-					/obj/item/kitchen/mould/bean = 1,
-					/obj/item/kitchen/mould/ball = 1,
-					/obj/item/kitchen/mould/cane = 1,
-					/obj/item/kitchen/mould/cash = 1,
-					/obj/item/kitchen/mould/coin = 1,
-					/obj/item/kitchen/mould/loli = 1,
+					/obj/item/storage/box/papersack = 20,
+					/obj/item/kitchen/knife/cheese = 2,
+					/obj/item/kitchen/knife/pizza_cutter = 2,
+					/obj/item/reagent_containers/cooking/mould/bear = 1,
+					/obj/item/reagent_containers/cooking/mould/worm = 1,
+					/obj/item/reagent_containers/cooking/mould/bean = 1,
+					/obj/item/reagent_containers/cooking/mould/ball = 1,
+					/obj/item/reagent_containers/cooking/mould/cane = 1,
+					/obj/item/reagent_containers/cooking/mould/cash = 1,
+					/obj/item/reagent_containers/cooking/mould/coin = 1,
+					/obj/item/reagent_containers/cooking/mould/loli = 1,
 					/obj/item/kitchen/cutter = 2)
 
 	contraband = list(/obj/item/kitchen/rollingpin = 2,
@@ -127,14 +127,14 @@
 /obj/machinery/economy/vending/hydronutrients
 	name = "\improper NutriMax"
 	desc = "A plant nutrients vendor."
-	slogan_list = list("Aren't you glad you don't have to fertilize the natural way?",
-					"Now with 50% less stink!","Plants are people too!")
+	slogan_list = list("Вам не надо удобрять почву естественным путём — разве это не чудесно?",
+					"Теперь на 50% меньше вони!","Растения тоже люди!")
 
-	ads_list = list("We like plants!",
-					"Don't you want some?",
-					"The greenest thumbs ever.",
-					"We like big plants.",
-					"Soft soil...")
+	ads_list = list("Мы любим растения!",
+					"Может сами примете?",
+					"Самые зелёные кнопки на свете.",
+					"Мы любим большие растения.",
+					"Мягкая почва...")
 
 	icon_state = "nutri"
 	icon_deny = "nutri_deny"
@@ -164,14 +164,14 @@
 /obj/machinery/economy/vending/hydroseeds
 	name = "\improper MegaSeed Servitor"
 	desc = "When you need seeds fast!"
-	slogan_list = list("THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!",
-					"Hands down the best seed selection on the station!",
-					"Also certain mushroom varieties available, more for experts! Get certified today!")
+	slogan_list = list("ЗДЕСЬ ЖИВУТ СЕМЕНА! ВОЗЬМИТЕ СЕБЕ НЕМНОГО!",
+					"Лучший выбор семян на станции!",
+					"Доступны разнообразные сорта грибов для специалистов! Станьте им уже сегодня!")
 
-	ads_list = list("We like plants!",
-					"Grow some crops!",
-					"Grow, baby, growww!",
-					"Aw h'yeah son!")
+	ads_list = list("Мы любим растения!",
+					"Вырасти урожай!",
+					"Расти, малыш, расти-и-и-и!",
+					"Ды-а, сына!")
 
 	icon_state = "seeds"
 	icon_lightmask = "seeds"
@@ -238,6 +238,45 @@
 
 	refill_canister = /obj/item/vending_refill/hydroseeds
 
+/obj/machinery/economy/vending/hydroseeds/perma
+	name = "\improper PrisonSeed Servitor"
+	desc = "Dispenses seeds for prisoners to grow plants with. It's supposed to help reform them into good citizens, or something."
+	slogan_list = list("You've got nothing better to do. Might as well take up gardening!",
+					"Hands down the best restricted seed selection in prison!",
+					"No crimes against God or your money back!")
+	products = list(/obj/item/seeds/apple = 3,
+					/obj/item/seeds/cabbage = 3,
+					/obj/item/seeds/carrot = 3,
+					/obj/item/seeds/chili = 3,
+					/obj/item/seeds/cocoapod = 3,
+					/obj/item/seeds/corn = 3,
+					/obj/item/seeds/eggplant = 3,
+					/obj/item/seeds/garlic = 3,
+					/obj/item/seeds/grape = 3,
+					/obj/item/seeds/grass = 3,
+					/obj/item/seeds/lettuce = 3,
+					/obj/item/seeds/lime = 3,
+					/obj/item/seeds/olive = 3,
+					/obj/item/seeds/onion = 3,
+					/obj/item/seeds/orange = 3,
+					/obj/item/seeds/pineapple = 3,
+					/obj/item/seeds/plum = 3,
+					/obj/item/seeds/plump = 3,
+					/obj/item/seeds/potato = 3,
+					/obj/item/seeds/pumpkin = 3,
+					/obj/item/seeds/wheat/rice = 3,
+					/obj/item/seeds/soya = 3,
+					/obj/item/seeds/sugarcane = 3,
+					/obj/item/seeds/tobacco = 3,
+					/obj/item/seeds/watermelon = 3,
+					/obj/item/seeds/wheat = 3,)
+
+	contraband = list(/obj/item/seeds/cannabis = 3,
+					/obj/item/seeds/fungus = 3,
+					/obj/item/seeds/liberty = 3,
+					/obj/item/seeds/reishi = 3,
+					/obj/item/seeds/starthistle = 3,)
+
 /obj/machinery/economy/vending/medical
 	name = "\improper NanoMed Plus"
 	desc = "Medical drug dispenser."
@@ -260,8 +299,10 @@
 					/obj/item/stack/medical/ointment/advanced = 2,
 					/obj/item/reagent_containers/patch/styptic = 3,
 					/obj/item/reagent_containers/patch/silver_sulf = 3,
-					/obj/item/reagent_containers/applicator/brute = 2,
-					/obj/item/reagent_containers/applicator/burn = 2,
+					/obj/item/stack/medical/suture/medicated = 3,
+					/obj/item/stack/medical/suture = 5,
+					/obj/item/stack/medical/suture/regen_mesh/advanced = 3,
+					/obj/item/stack/medical/suture/regen_mesh = 5,
 					/obj/item/stack/medical/bruise_pack = 2,
 					/obj/item/stack/medical/splint = 3,
 					/obj/item/reagent_containers/syringe = 6,
@@ -351,3 +392,28 @@
 	refill_canister = /obj/item/vending_refill/security
 	prices = list(/obj/item/food/donut = 40,
 				/obj/item/storage/fancy/donut_box = 200) //Bulk discount
+
+
+/obj/machinery/economy/vending/smith
+	name = "\improper Castivend"
+	desc = "Everything you need to start your own smithing workshop."
+	icon_state = "castivend"
+	category = VENDOR_TYPE_DEPARTMENTAL
+	req_access = list(ACCESS_SMITH)
+	products = list(/obj/item/smithing_cast/sheet = 6,
+					/obj/item/smithing_cast/component/insert_frame = 3,
+					/obj/item/smithing_cast/component/insert_lining = 3,
+					/obj/item/smithing_cast/component/bit_mount = 3,
+					/obj/item/smithing_cast/component/bit_head = 3,
+					/obj/item/smithing_cast/component/lens_focus = 3,
+					/obj/item/smithing_cast/component/lens_frame = 3,
+					/obj/item/smithing_cast/component/trim = 3,
+					/obj/item/smithing_cast/misc/egun_parts = 3,
+					/obj/item/storage/bag/smith = 2,
+					/obj/item/storage/box/crewvend = 1)
+
+	refill_canister = /obj/item/vending_refill/smith
+
+	prices = list(
+		/obj/item/storage/box/crewvend = 100
+	)

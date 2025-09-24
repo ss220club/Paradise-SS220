@@ -40,7 +40,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/antag_spawner/nuke_ops/attack_self(mob/user)
+/obj/item/antag_spawner/nuke_ops/attack_self__legacy__attackchain(mob/user)
 	if(!(check_usability(user)))
 		return
 
@@ -94,7 +94,6 @@
 //////SYNDICATE BORG
 /obj/item/antag_spawner/nuke_ops/borg_tele
 	name = "syndicate cyborg teleporter"
-	desc = "A single-use teleporter designed to quickly reinforce operatives in the field."
 	var/switch_roles = FALSE
 
 /obj/item/antag_spawner/nuke_ops/borg_tele/assault
@@ -104,7 +103,7 @@
 
 /obj/item/antag_spawner/nuke_ops/borg_tele/assault/Initialize(mapload)
 	. = ..()
-	poll_icon = image(icon = 'icons/mob/robots.dmi', icon_state = "syndie-bloodhound-preview")
+	poll_icon = image(icon = 'icons/mob/robots.dmi', icon_state = "spidersyndi-preview")
 
 /obj/item/antag_spawner/nuke_ops/borg_tele/medical
 	name = "syndicate medical teleporter"
@@ -187,7 +186,7 @@
 	var/objective_verb = "Kill"
 	var/mob/living/demon_type = /mob/living/simple_animal/demon/slaughter
 
-/obj/item/antag_spawner/slaughter_demon/attack_self(mob/user)
+/obj/item/antag_spawner/slaughter_demon/attack_self__legacy__attackchain(mob/user)
 	if(level_blocks_magic(user.z)) //this is to make sure the wizard does NOT summon a demon from the Den..
 		to_chat(user, "<span class='notice'>You should probably wait until you reach the station.</span>")
 		return
@@ -198,10 +197,7 @@
 	used = TRUE
 	to_chat(user, "<span class='notice'>You break the seal on the bottle, calling upon the dire spirits of the underworld...</span>")
 
-	var/type = "slaughter"
-	if(demon_type == /mob/living/simple_animal/demon/slaughter/laughter)
-		type = "laughter"
-	var/list/candidates = SSghost_spawns.poll_candidates("Do you want to play as a [type] demon summoned by [user.real_name]?", ROLE_DEMON, TRUE, 10 SECONDS, source = demon_type)
+	var/list/candidates = SSghost_spawns.poll_candidates("Do you want to play as a [demon_type::name] summoned by [user.real_name]?", ROLE_DEMON, TRUE, 10 SECONDS, source = demon_type)
 
 	if(length(candidates) > 0)
 		var/mob/C = pick(candidates)
@@ -246,7 +242,6 @@
 	desc = "A magically infused bottle of clown love, distilled from \
 		countless hugging attacks. Used in funny rituals to attract \
 		adorable creatures."
-	icon = 'icons/obj/wizard.dmi'
 	icon_state = "vialtickles"
 	veil_msg = "<span class='warning'>You sense an adorable presence \
 		lurking just beyond the veil...</span>"
@@ -258,11 +253,9 @@
 	desc = "A magically infused bottle of pure darkness, distilled from \
 		ground up shadowling bones. Used in dark rituals to attract \
 		dark creatures."
-	icon = 'icons/obj/wizard.dmi'
 	icon_state = "vialshadows"
 	veil_msg = "<span class='warning'>You sense a dark presence \
 		lurking in the shadows...</span>"
-	objective_verb = "Kill"
 	demon_type = /mob/living/simple_animal/demon/shadow
 
 ///////////MORPH
@@ -279,7 +272,7 @@
 	var/objective_verb = "Eat"
 	var/mob/living/morph_type = /mob/living/simple_animal/hostile/morph
 
-/obj/item/antag_spawner/morph/attack_self(mob/user)
+/obj/item/antag_spawner/morph/attack_self__legacy__attackchain(mob/user)
 	if(level_blocks_magic(user.z))//this is to make sure the wizard does NOT summon a morph from the Den..
 		to_chat(user, "<span class='notice'>You should probably wait until you reach the station.</span>")
 		return
@@ -349,7 +342,7 @@
 	var/objective_verb = "Harvest"
 	var/mob/living/revenant = /mob/living/simple_animal/revenant
 
-/obj/item/antag_spawner/revenant/attack_self(mob/user)
+/obj/item/antag_spawner/revenant/attack_self__legacy__attackchain(mob/user)
 	if(level_blocks_magic(user.z)) //this is to make sure the wizard does NOT summon a revenant from the Den..
 		to_chat(user, "<span class='notice'>You should probably wait until you reach the station.</span>")
 		return
@@ -404,9 +397,9 @@
 	var/shatter_msg = "<span class='notice'>You shatter the bulb, no turning back now!</span>"
 	var/veil_msg = "<span class='warning'>The creature sparks energetically and zips away...</span>"
 	var/objective_verb = "Electrocute"
-	var/mob/living/demon_type = /mob/living/simple_animal/demon/pulse_demon
+	var/mob/living/demon_type = /mob/living/simple_animal/demon/pulse_demon/wizard
 
-/obj/item/antag_spawner/pulse_demon/attack_self(mob/user)
+/obj/item/antag_spawner/pulse_demon/attack_self__legacy__attackchain(mob/user)
 	if(level_blocks_magic(user.z))
 		to_chat(user, "<span class='notice'>You should probably wait until you reach the station.</span>")
 		return
@@ -443,7 +436,7 @@
 	var/datum/mind/player_mind = new /datum/mind(C.key)
 	player_mind.active = TRUE
 
-	var/mob/living/simple_animal/demon/pulse_demon/demon = new(T)
+	var/mob/living/simple_animal/demon/pulse_demon/wizard/demon = new(T)
 	player_mind.transfer_to(demon)
 	player_mind.assigned_role = SPECIAL_ROLE_DEMON
 	player_mind.special_role = SPECIAL_ROLE_DEMON

@@ -68,7 +68,7 @@
 	},
 /area/ruin/space/syndicakefactory)
 "bY" = (
-/obj/structure/girder,
+/obj/item/stack/ore/glass/basalt,
 /turf/template_noop,
 /area/template_noop)
 "co" = (
@@ -224,7 +224,7 @@
 	},
 /area/ruin/space/syndicakefactory)
 "hF" = (
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/engine/airless,
 /area/ruin/space/syndicakefactory)
 "hH" = (
@@ -344,7 +344,7 @@
 	},
 /area/ruin/space/syndicakefactory)
 "oH" = (
-/obj/effect/spawner/random_spawners/wall_rusted_maybe,
+/obj/effect/mapping_helpers/turfs/rust/maybe,
 /turf/simulated/wall,
 /area/ruin/space/syndicakefactory)
 "oJ" = (
@@ -371,11 +371,11 @@
 /area/ruin/space/syndicakefactory)
 "qd" = (
 /obj/structure/table/glass/reinforced/plastitanium,
-/obj/item/food/breadslice,
-/obj/item/food/breadslice{
+/obj/item/food/sliced/bread,
+/obj/item/food/sliced/bread{
 	pixel_y = 4
 	},
-/obj/item/food/breadslice{
+/obj/item/food/sliced/bread{
 	pixel_y = 8
 	},
 /obj/machinery/light/small{
@@ -389,27 +389,6 @@
 /obj/item/trash/syndi_cakes,
 /turf/simulated/floor/plasteel{
 	icon_state = "floorgrime"
-	},
-/area/ruin/space/syndicakefactory)
-"qx" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/alien/sentinel{
-	animal_species = /mob/living/simple_animal/pet/dog;
-	attack_sound = 'sound/weapons/bite.ogg';
-	attacktext = "bites";
-	damage_coeff = list("brute" = 1, "fire" = 1, "tox" = 1, "clone" = 1, "stamina" = 1, "oxy" = 1);
-	death_sound = null;
-	deathmessage = "";
-	desc = "This is no longer a goodboy. Not anymore. He has seen too much.";
-	icon = 'icons/mob/pets.dmi';
-	icon_living = "corgi";
-	icon_state = "corgi";
-	name = "angry corgi";
-	retreat_distance = 2;
-	icon_dead = "corgi_dead"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
 	},
 /area/ruin/space/syndicakefactory)
 "qX" = (
@@ -551,14 +530,14 @@
 /area/ruin/space/syndicakefactory)
 "uU" = (
 /obj/structure/rack,
-/obj/random/tool,
+/obj/effect/spawner/random/engineering/tools,
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "vo" = (
 /obj/structure/lattice,
 /obj/item/stack/sheet/metal,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "vE" = (
 /obj/structure/table/glass/reinforced/plastitanium,
 /obj/machinery/kitchen_machine/microwave,
@@ -660,8 +639,8 @@
 /area/ruin/space/syndicakefactory)
 "zc" = (
 /obj/structure/table/glass/reinforced/plastitanium,
-/obj/item/stack/packageWrap,
-/obj/item/stack/packageWrap{
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap{
 	pixel_y = 7
 	},
 /obj/machinery/light/small{
@@ -717,7 +696,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/engine,
@@ -738,18 +716,18 @@
 /turf/simulated/floor/grass,
 /area/ruin/space/syndicakefactory)
 "Cu" = (
-/obj/item/stack/ore/glass/basalt,
+/obj/item/stack/sheet/metal,
 /turf/template_noop,
 /area/template_noop)
 "CR" = (
 /obj/structure/chair/office/dark,
-/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mob,
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "CW" = (
 /obj/structure/table/glass/reinforced/plastitanium,
-/obj/item/stack/packageWrap,
-/obj/item/stack/packageWrap{
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap{
 	pixel_y = 7
 	},
 /turf/simulated/floor/plasteel{
@@ -804,7 +782,7 @@
 	},
 /area/ruin/space/syndicakefactory)
 "EH" = (
-/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
+/obj/effect/mob_spawn/human/corpse/syndicate,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -868,17 +846,15 @@
 	},
 /area/ruin/space/syndicakefactory)
 "Ha" = (
-/obj/item/stack/sheet/metal,
+/obj/structure/girder,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Hh" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/bed/dogbed,
-/mob/living/simple_animal/bunny/syndi,
+/mob/living/basic/bunny/syndi,
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "Ho" = (
@@ -910,6 +886,13 @@
 "IB" = (
 /obj/item/stack/sheet/animalhide/corgi,
 /turf/simulated/floor/grass,
+/area/ruin/space/syndicakefactory)
+"ID" = (
+/obj/structure/table/glass/reinforced/plastitanium,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
 /area/ruin/space/syndicakefactory)
 "IE" = (
 /obj/item/flag/syndi{
@@ -1012,6 +995,12 @@
 	icon_state = "floorgrime"
 	},
 /area/ruin/space/syndicakefactory)
+"MK" = (
+/mob/living/basic/alien/sentinel/corgi,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ruin/space/syndicakefactory)
 "MV" = (
 /obj/structure/table/glass/reinforced/plastitanium,
 /obj/item/storage/box/papersack{
@@ -1044,8 +1033,8 @@
 /area/ruin/space/syndicakefactory)
 "Nx" = (
 /obj/structure/table/glass/reinforced/plastitanium,
-/obj/item/stack/packageWrap,
-/obj/item/stack/packageWrap{
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap{
 	pixel_y = 7
 	},
 /turf/simulated/floor/plasteel{
@@ -1055,7 +1044,7 @@
 "NQ" = (
 /obj/structure/lattice,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Ov" = (
 /obj/structure/table/glass/reinforced/plastitanium,
 /obj/item/food/donkpocket{
@@ -1072,7 +1061,7 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/item/food/birthdaycakeslice,
+/obj/item/food/sliced/birthday_cake,
 /turf/simulated/floor/plasteel{
 	icon_state = "floorgrime"
 	},
@@ -1096,26 +1085,6 @@
 	anchored = 1
 	},
 /turf/simulated/floor/engine/airless,
-/area/ruin/space/syndicakefactory)
-"OU" = (
-/mob/living/simple_animal/hostile/alien/sentinel{
-	animal_species = /mob/living/simple_animal/pet/dog;
-	attack_sound = 'sound/weapons/bite.ogg';
-	attacktext = "bites";
-	damage_coeff = list("brute" = 1, "fire" = 1, "tox" = 1, "clone" = 1, "stamina" = 1, "oxy" = 1);
-	death_sound = null;
-	deathmessage = "";
-	desc = "This is no longer a goodboy. Not anymore. He has seen too much.";
-	icon = 'icons/mob/pets.dmi';
-	icon_living = "corgi";
-	icon_state = "corgi";
-	name = "angry corgi";
-	retreat_distance = 2;
-	icon_dead = "corgi_dead"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
 /area/ruin/space/syndicakefactory)
 "PH" = (
 /obj/structure/railing,
@@ -1282,7 +1251,7 @@
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "YE" = (
-/obj/item/kirbyplants/plant22,
+/obj/item/kirbyplants/medium/medium6,
 /turf/simulated/floor/grass,
 /area/ruin/space/syndicakefactory)
 "YQ" = (
@@ -1294,21 +1263,7 @@
 	},
 /area/ruin/space/syndicakefactory)
 "YR" = (
-/mob/living/simple_animal/hostile/alien/sentinel{
-	animal_species = /mob/living/simple_animal/pet/dog;
-	attack_sound = 'sound/weapons/bite.ogg';
-	attacktext = "bites";
-	damage_coeff = list("brute" = 1, "fire" = 1, "tox" = 1, "clone" = 1, "stamina" = 1, "oxy" = 1);
-	death_sound = null;
-	deathmessage = "";
-	desc = "This is no longer a goodboy. Not anymore. He has seen too much.";
-	icon = 'icons/mob/pets.dmi';
-	icon_living = "corgi";
-	icon_state = "corgi";
-	name = "angry corgi";
-	retreat_distance = 2;
-	icon_dead = "corgi_dead"
-	},
+/mob/living/basic/alien/sentinel/corgi,
 /turf/simulated/floor/grass,
 /area/ruin/space/syndicakefactory)
 "Zs" = (
@@ -1374,21 +1329,17 @@ pd
 pd
 pd
 pd
-pd
-pd
 "}
 (2,1,1) = {"
 pd
 pd
 pd
-OK
-pd
-pd
 pd
 OK
 pd
 pd
 pd
+OK
 pd
 pd
 pd
@@ -1422,6 +1373,7 @@ pd
 (3,1,1) = {"
 pd
 pd
+pd
 OK
 OK
 OK
@@ -1448,9 +1400,6 @@ OK
 OK
 pd
 OK
-pd
-pd
-pd
 pd
 pd
 pd
@@ -1463,36 +1412,34 @@ pd
 "}
 (4,1,1) = {"
 pd
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
 pd
-pd
-pd
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
 pd
 pd
 pd
@@ -1507,36 +1454,34 @@ pd
 pd
 pd
 pd
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
 pd
-pd
-pd
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
 pd
 pd
 pd
@@ -1546,6 +1491,7 @@ pd
 pd
 "}
 (6,1,1) = {"
+pd
 OK
 pd
 OK
@@ -1577,9 +1523,6 @@ OK
 OK
 OK
 OK
-pd
-pd
-pd
 pd
 pd
 pd
@@ -1589,6 +1532,7 @@ pd
 "}
 (7,1,1) = {"
 pd
+pd
 OK
 OK
 OK
@@ -1619,9 +1563,6 @@ EJ
 OK
 OK
 OK
-pd
-pd
-pd
 pd
 pd
 pd
@@ -1630,6 +1571,7 @@ pd
 pd
 "}
 (8,1,1) = {"
+pd
 OK
 OK
 OK
@@ -1667,11 +1609,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (9,1,1) = {"
+pd
 pd
 pd
 OK
@@ -1686,7 +1626,7 @@ oB
 bn
 bn
 Iz
-qx
+oB
 Kr
 bG
 TM
@@ -1709,11 +1649,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (10,1,1) = {"
+pd
 OK
 pd
 OK
@@ -1729,7 +1667,7 @@ Vt
 gx
 DY
 XZ
-bn
+MK
 bG
 uA
 bG
@@ -1751,11 +1689,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (11,1,1) = {"
+pd
 pd
 OK
 OK
@@ -1793,11 +1729,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (12,1,1) = {"
+pd
 OK
 OK
 OK
@@ -1811,7 +1745,7 @@ wC
 bn
 Qv
 oB
-bn
+MK
 bn
 bn
 bn
@@ -1819,9 +1753,9 @@ oB
 bn
 bn
 Kr
-bn
+MK
 yV
-OU
+bn
 oB
 RO
 wI
@@ -1831,15 +1765,13 @@ OK
 OK
 pd
 pd
-Cu
-pd
-pd
-pd
+bY
 pd
 pd
 pd
 "}
 (13,1,1) = {"
+pd
 pd
 OK
 OK
@@ -1849,7 +1781,7 @@ EJ
 EJ
 rJ
 bn
-OU
+bn
 bn
 oH
 EJ
@@ -1870,18 +1802,16 @@ wI
 EJ
 OK
 OK
-Cu
-Cu
-Cu
-pd
-pd
-pd
+bY
+bY
+bY
 pd
 pd
 pd
 pd
 "}
 (14,1,1) = {"
+pd
 pd
 pd
 OK
@@ -1911,19 +1841,17 @@ EJ
 EJ
 EJ
 OK
-Cu
-Cu
+bY
+bY
 pd
-Cu
-pd
-pd
-pd
+bY
 pd
 pd
 pd
 pd
 "}
 (15,1,1) = {"
+pd
 pd
 OK
 OK
@@ -1953,19 +1881,17 @@ tX
 EJ
 OK
 OK
-bY
-pd
 Ha
-pd
 pd
 Cu
 pd
 pd
-pd
+bY
 pd
 pd
 "}
 (16,1,1) = {"
+pd
 pd
 OK
 OK
@@ -1995,19 +1921,17 @@ YE
 EJ
 OK
 EJ
-bY
-pd
-pd
 Ha
 pd
 pd
-pd
+Cu
 pd
 pd
 pd
 pd
 "}
 (17,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2045,11 +1969,9 @@ pd
 oo
 pd
 pd
-pd
-pd
-pd
 "}
 (18,1,1) = {"
+pd
 pd
 OK
 OK
@@ -2087,11 +2009,9 @@ vo
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (19,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2126,14 +2046,12 @@ LN
 lZ
 lZ
 NQ
-bY
+Ha
 EJ
-pd
-pd
-pd
 pd
 "}
 (20,1,1) = {"
+pd
 pd
 OK
 OK
@@ -2171,11 +2089,9 @@ Hy
 lZ
 Hy
 pd
-pd
-pd
-pd
 "}
 (21,1,1) = {"
+pd
 pd
 OK
 OK
@@ -2213,11 +2129,9 @@ EJ
 EJ
 EJ
 pd
-pd
-pd
-pd
 "}
 (22,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2255,11 +2169,9 @@ oH
 OK
 OK
 pd
-pd
-pd
-pd
 "}
 (23,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2297,11 +2209,9 @@ EJ
 OK
 OK
 pd
-pd
-pd
-pd
 "}
 (24,1,1) = {"
+pd
 pd
 OK
 OK
@@ -2339,11 +2249,9 @@ EJ
 OK
 pd
 pd
-pd
-pd
-pd
 "}
 (25,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2381,11 +2289,9 @@ OK
 OK
 pd
 pd
-pd
-pd
-pd
 "}
 (26,1,1) = {"
+pd
 pd
 OK
 OK
@@ -2423,11 +2329,9 @@ OK
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (27,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2465,11 +2369,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (28,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2507,11 +2409,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (29,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2549,11 +2449,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (30,1,1) = {"
+pd
 pd
 OK
 OK
@@ -2591,11 +2489,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (31,1,1) = {"
+pd
 pd
 OK
 OK
@@ -2633,11 +2529,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (32,1,1) = {"
+pd
 OK
 OK
 OK
@@ -2675,11 +2569,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (33,1,1) = {"
+pd
 pd
 OK
 OK
@@ -2717,11 +2609,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (34,1,1) = {"
+pd
 pd
 pd
 OK
@@ -2759,11 +2649,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (35,1,1) = {"
+pd
 pd
 pd
 OK
@@ -2801,11 +2689,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (36,1,1) = {"
+pd
 pd
 pd
 OK
@@ -2819,7 +2705,7 @@ OK
 OK
 OK
 EJ
-Wh
+ID
 xO
 hq
 xO
@@ -2843,11 +2729,9 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (37,1,1) = {"
+pd
 pd
 pd
 pd
@@ -2885,14 +2769,12 @@ pd
 pd
 pd
 pd
-pd
-pd
-pd
 "}
 (38,1,1) = {"
 pd
 pd
 pd
+pd
 OK
 pd
 pd
@@ -2916,9 +2798,6 @@ OK
 OK
 OK
 OK
-pd
-pd
-pd
 pd
 pd
 pd
@@ -2940,24 +2819,22 @@ pd
 pd
 pd
 pd
-OK
 pd
 OK
 pd
 OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-OK
 pd
-pd
-pd
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
 pd
 pd
 pd
@@ -2974,8 +2851,6 @@ pd
 pd
 "}
 (40,1,1) = {"
-pd
-pd
 pd
 pd
 pd

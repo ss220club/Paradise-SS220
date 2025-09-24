@@ -18,9 +18,9 @@
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "aH" = (
-/obj/structure/closet/crate/secure/loot,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light_construct/directional/north,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered)
 "aK" = (
@@ -32,9 +32,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "be" = (
-/obj/machinery/light/spot{
-	dir = 4
-	},
+/obj/machinery/light/spot/directional/east,
 /obj/structure/table,
 /obj/item/paper_bin{
 	pixel_y = 2;
@@ -247,7 +245,7 @@
 "fO" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/camera_bug,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "gB" = (
@@ -331,11 +329,11 @@
 /area/ruin/space/powered)
 "ir" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered)
 "iG" = (
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /obj/item/flashlight{
 	on = 1
 	},
@@ -364,14 +362,14 @@
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "iU" = (
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/machinery/light_construct/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "jq" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/drinks/cans/beer{
+/obj/item/reagent_containers/drinks/bottle/beer{
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -493,7 +491,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "lF" = (
-/obj/structure/closet/walllocker/emerglocker/south,
+/obj/structure/closet/walllocker/emerglocker/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
@@ -507,7 +505,7 @@
 /turf/template_noop,
 /area/template_noop)
 "lR" = (
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "lS" = (
@@ -529,14 +527,19 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
+"mF" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/loot_crate,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/mineral/titanium,
+/area/ruin/space/powered)
 "mN" = (
 /obj/machinery/button/windowtint/west{
 	id = "mech_toilet"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/toilet{
-	dir = 1
-	},
+/obj/structure/toilet/directional/south,
 /obj/machinery/light_construct/directional/west,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
@@ -545,9 +548,9 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "nc" = (
-/obj/structure/closet/crate/secure/loot,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/south,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "ng" = (
@@ -575,13 +578,12 @@
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "nx" = (
-/obj/effect/spawner/random_spawners/wall_rusted_always,
+/obj/effect/mapping_helpers/turfs/rust,
 /turf/simulated/wall/r_wall,
 /area/ruin/space/powered)
 "nA" = (
-/obj/machinery/door/airlock/external{
-	locked = 1
-	},
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
@@ -612,7 +614,7 @@
 /area/ruin/space/powered)
 "oh" = (
 /obj/effect/decal/cleanable/glass,
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "ol" = (
@@ -624,7 +626,7 @@
 "ov" = (
 /obj/effect/decal/cleanable/ash,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "oE" = (
@@ -662,6 +664,11 @@
 /obj/structure/railing/corner,
 /turf/template_noop,
 /area/template_noop)
+"pC" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/spawner/random/loot_crate/rarely,
+/turf/simulated/floor/mineral/titanium,
+/area/ruin/space/powered)
 "pQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -690,9 +697,7 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered)
 "qA" = (
-/obj/mecha/combat/durand/old{
-	obj_integrity = 120
-	},
+/obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha,
 /turf/simulated/floor/mech_bay_recharge_floor,
 /area/ruin/space/powered)
 "qB" = (
@@ -763,7 +768,7 @@
 /area/ruin/space/powered)
 "rZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_containers/drinks/cans/beer{
+/obj/item/reagent_containers/drinks/bottle/beer{
 	pixel_x = 4;
 	pixel_y = 4;
 	volume = 0
@@ -809,8 +814,8 @@
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "sU" = (
-/obj/structure/closet/crate/secure/loot,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "tf" = (
@@ -834,8 +839,8 @@
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "to" = (
-/obj/effect/landmark/burnturf,
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/burn,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "tv" = (
@@ -881,7 +886,7 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "uU" = (
-/obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/closet/walllocker/emerglocker/directional/north,
 /turf/simulated/floor/mineral/titanium/purple,
 /area/ruin/space/powered)
 "vc" = (
@@ -898,7 +903,7 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "vo" = (
-/obj/item/reagent_containers/drinks/cans/beer{
+/obj/item/reagent_containers/drinks/bottle/beer{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -925,7 +930,7 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered)
 "vw" = (
-/obj/item/stack/packageWrap,
+/obj/item/stack/package_wrap,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
@@ -988,7 +993,7 @@
 /area/ruin/space/powered)
 "wv" = (
 /obj/effect/decal/cleanable/glass,
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "wF" = (
@@ -1034,7 +1039,7 @@
 	},
 /obj/effect/decal/cleanable/glass,
 /obj/item/shard,
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "xY" = (
@@ -1069,7 +1074,7 @@
 	icon_state = "mirror_broke";
 	pixel_x = -30
 	},
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "yr" = (
@@ -1081,7 +1086,7 @@
 /turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
 /area/ruin/space/powered)
 "yt" = (
-/obj/machinery/constructable_frame/machine_frame{
+/obj/structure/machine_frame{
 	icon_state = "box_1"
 	},
 /turf/simulated/floor/bluegrid,
@@ -1182,7 +1187,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "AS" = (
-/obj/machinery/constructable_frame/machine_frame,
+/obj/structure/machine_frame,
 /obj/item/stock_parts/cell/hyper/empty,
 /obj/item/stack/cable_coil{
 	amount = 5
@@ -1208,10 +1213,8 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "Bh" = (
-/obj/item/kirbyplants,
-/obj/machinery/light/spot{
-	dir = 4
-	},
+/obj/item/kirbyplants/large,
+/obj/machinery/light/spot/directional/east,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Bj" = (
@@ -1228,11 +1231,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
-"BX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/plating,
-/area/ruin/space/powered)
 "Cl" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/scavengers/meele/crusher,
@@ -1241,13 +1239,13 @@
 "Cm" = (
 /obj/machinery/light_construct/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/closet/walllocker/emerglocker/directional/north,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "Co" = (
 /obj/structure/table,
-/obj/item/mecha_parts/core,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pool/spaceloot/mechtransport/storage4,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "Cp" = (
@@ -1294,10 +1292,9 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "CW" = (
-/obj/machinery/door/airlock/external{
-	locked = 1;
-	welded = 1
-	},
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/welded,
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/fans/tiny,
 /obj/structure/barricade/wooden{
 	layer = 3.11
@@ -1306,6 +1303,12 @@
 	layer = 3.11
 	},
 /turf/simulated/floor/plating,
+/area/ruin/space/powered)
+"CX" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/loot_crate/rarely,
+/turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "CZ" = (
 /obj/effect/turf_decal/delivery/hollow,
@@ -1354,7 +1357,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "DJ" = (
-/obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/closet/walllocker/emerglocker/directional/north,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "Eb" = (
@@ -1478,7 +1481,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "FF" = (
-/obj/structure/closet/walllocker/emerglocker/west,
+/obj/structure/closet/walllocker/emerglocker/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
@@ -1499,9 +1502,7 @@
 /area/ruin/space/powered)
 "Gl" = (
 /obj/structure/table,
-/obj/machinery/light/spot{
-	dir = 1
-	},
+/obj/machinery/light/spot/directional/north,
 /obj/item/reagent_containers/drinks/coffee{
 	list_reagents = list("coffee"=0);
 	pixel_x = 10;
@@ -1623,7 +1624,7 @@
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "HQ" = (
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "HU" = (
@@ -1684,7 +1685,7 @@
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "IK" = (
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /obj/item/stack/sheet/mineral/titanium,
 /obj/item/stack/rods,
 /turf/simulated/floor/plating,
@@ -1694,14 +1695,14 @@
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "Ja" = (
-/obj/machinery/constructable_frame/machine_frame{
+/obj/structure/machine_frame{
 	icon_state = "box_1"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/bluegrid,
 /area/ruin/space/powered)
 "Jq" = (
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/machinery/light_construct/directional/east,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
@@ -1770,7 +1771,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/ruin/space/powered)
 "KW" = (
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/damage,
 /obj/structure/railing{
 	dir = 5
 	},
@@ -1778,7 +1779,7 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered)
 "KY" = (
-/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/loot_crate/rarely,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "La" = (
@@ -1847,31 +1848,21 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "LV" = (
-/obj/machinery/constructable_frame/machine_frame{
+/obj/structure/machine_frame{
 	icon_state = "box_1"
 	},
 /obj/item/stack/cable_coil{
 	amount = 5
 	},
-/obj/machinery/light/spot{
-	dir = 8
-	},
+/obj/machinery/light/spot/directional/west,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "LY" = (
 /obj/structure/gunrack,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered)
-"Md" = (
-/obj/effect/turf_decal/delivery,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/mineral/titanium,
-/area/ruin/space/powered)
 "Me" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
-	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /mob/living/simple_animal/hostile/scavengers/laser/spacelaser,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
@@ -1879,8 +1870,8 @@
 /turf/simulated/floor/mech_bay_recharge_floor,
 /area/ruin/space/powered)
 "Mp" = (
-/obj/effect/landmark/burnturf,
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/burn,
+/obj/effect/mapping_helpers/turfs/damage,
 /obj/item/stack/sheet/mineral/titanium,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
@@ -2023,9 +2014,7 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "Qd" = (
-/obj/machinery/light/spot{
-	dir = 8
-	},
+/obj/machinery/light/spot/directional/west,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "Qf" = (
@@ -2058,7 +2047,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "QD" = (
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered)
 "QF" = (
@@ -2078,11 +2067,11 @@
 /obj/item/cigbutt/roach,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "QS" = (
-/obj/item/reagent_containers/drinks/cans/beer{
+/obj/item/reagent_containers/drinks/bottle/beer{
 	pixel_x = 4;
 	pixel_y = 4;
 	volume = 0
@@ -2103,7 +2092,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "Ry" = (
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "RF" = (
@@ -2112,8 +2101,8 @@
 /area/ruin/space/powered)
 "RM" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/drinks/cans/beer,
-/obj/item/reagent_containers/drinks/cans/beer{
+/obj/item/reagent_containers/drinks/bottle/beer,
+/obj/item/reagent_containers/drinks/bottle/beer{
 	list_reagents = list("beer"=0);
 	pixel_x = 9;
 	pixel_y = -3
@@ -2157,7 +2146,7 @@
 /area/ruin/space/powered)
 "SA" = (
 /obj/structure/fans/tiny/invisible,
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "SH" = (
@@ -2217,11 +2206,11 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered)
 "Ty" = (
-/obj/machinery/constructable_frame/machine_frame,
+/obj/structure/machine_frame,
 /turf/simulated/floor/bluegrid,
 /area/ruin/space/powered)
 "TR" = (
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/machinery/light_construct/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium/blue,
@@ -2278,22 +2267,18 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "Uu" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "UH" = (
-/obj/machinery/constructable_frame/machine_frame,
+/obj/structure/machine_frame,
 /obj/item/stock_parts/cell/hyper/empty,
 /obj/item/stock_parts/cell/hyper/empty{
 	pixel_y = 8;
 	pixel_x = 6
 	},
-/obj/machinery/light/spot{
-	dir = 4
-	},
+/obj/machinery/light/spot/directional/east,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "UV" = (
@@ -2366,7 +2351,7 @@
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "VO" = (
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/mineral/plastitanium/red/airless,
 /area/ruin/space/powered)
 "VQ" = (
@@ -2388,7 +2373,7 @@
 /obj/item/circuitboard/atmoscontrol{
 	icon_state = "command_broken"
 	},
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /obj/machinery/light_construct/directional/north,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
@@ -2423,14 +2408,11 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_access = list(7)
 	},
-/obj/item/mecha_parts/mecha_equipment/weapon/honker,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang,
 /obj/item/mecha_modkit/voice/nanotrasen,
 /obj/item/toy/figure/mech/mauler,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light_construct/directional/south,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
+/obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha_equipment,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "WK" = (
@@ -2455,7 +2437,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "Xy" = (
-/obj/effect/landmark/burnturf,
+/obj/effect/mapping_helpers/turfs/burn,
 /obj/machinery/light_construct/directional/north,
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/simulated/floor/plating,
@@ -2480,9 +2462,7 @@
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Yl" = (
-/obj/machinery/light/spot{
-	dir = 4
-	},
+/obj/machinery/light/spot/directional/east,
 /obj/structure/chair/comfy/black{
 	dir = 8
 	},
@@ -2493,9 +2473,7 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "Yn" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium/purple,
 /area/ruin/space/powered)
@@ -2871,9 +2849,9 @@ qU
 qU
 Sb
 sD
-Md
+CX
 sh
-HB
+pC
 HB
 LC
 Kb
@@ -2929,7 +2907,7 @@ nk
 VB
 bR
 sh
-sh
+CX
 pm
 vP
 lf
@@ -3036,7 +3014,7 @@ qU
 qU
 Sb
 Oh
-HB
+pC
 HB
 HB
 GF
@@ -3091,8 +3069,8 @@ Sb
 qU
 Sb
 Uu
-sh
-Md
+mF
+CX
 HB
 HB
 nk
@@ -3893,7 +3871,7 @@ QD
 SH
 ir
 rZ
-BX
+hw
 CW
 VO
 QD

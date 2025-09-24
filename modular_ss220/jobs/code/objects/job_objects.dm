@@ -63,7 +63,6 @@
 		/obj/item/toy/balloon,
 		/obj/item/toy/blink,
 		/obj/item/toy/katana,
-		/obj/random/mech,
 		/obj/item/toy/spinningtoy,
 		/obj/item/toy/sword,
 		/obj/item/dualsaber/toy,
@@ -71,10 +70,7 @@
 		/obj/item/instrument/violin,
 		/obj/item/instrument/guitar,
 		/obj/item/storage/belt/utility/full,
-		/obj/item/clothing/accessory/horrible,
-		/obj/random/carp_plushie,
-		/obj/random/plushie,
-		/obj/random/figure,
+		/obj/item/clothing/neck/tie/horrible,
 		/obj/item/deck/cards,
 		/obj/item/deck/cards/tiny,
 		/obj/item/deck/unum,
@@ -93,14 +89,14 @@
 		/obj/item/toy/flash,
 		/obj/item/toy/minigibber,
 		/obj/item/toy/nuke,
-		/obj/item/toy/AI,
+		/obj/item/toy/ai,
 		/obj/item/clothing/under/syndicate/tacticool,
 		/obj/item/storage/box/fakesyndiesuit,
 		/obj/item/gun/projectile/shotgun/toy/tommygun,
 		/obj/item/stack/tile/fakespace/loaded,
 		/obj/item/stack/tile/brass/fifty,
 		/obj/item/sord,
-		/obj/item/toy/prizeball/figure,
+		/obj/item/toy/prizeball/action_figure,
 		/obj/item/toy/prizeball/therapy,
 
 		// pew pew
@@ -155,7 +151,7 @@
 // HONK Rifle //
 /obj/item/gun/energy/clown
 	icon_state = "honkrifle"
-	item_state = "honkrifle"
+	inhand_icon_state = "honkrifle"
 	icon = 'modular_ss220/jobs/icons/custom_gun/custom_guns.dmi'
 	lefthand_file = 'modular_ss220/jobs/icons/custom_gun/mob/custom_guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/jobs/icons/custom_gun/mob/custom_guns_righthand.dmi'
@@ -164,13 +160,17 @@
 	name = "ХОНК-ружье офицера"
 	desc = "Личное оружие клоуна офицера. Смертоносное для ментального состояния каждого на ком было применено. Запрещено конвенкцией НТ 12 раз. Разрешено конвенкцией советов клоунов 13 раз. На рукояти выгривирован \"HONK\" и нацарапаны пару зачернутых черточек."
 	icon_state = "honkrifle_security"
-	item_state = "honkrifle_security"
+	inhand_icon_state = "honkrifle_security"
 
 /obj/item/gun/energy/clown/security/warden
 	name = "Личное ХОНК-ружье смотрителя"
 	desc = "Личное смертоносное оружие клоуна-смотрителя, выданное за заслуги перед НТ и \[ДАННЫЕ ХОНКНУТЫ\]. Ходят слухи что это один из первых экземпляров произведенных во время войны мимов и клоунов на родной планете клоунов."
 
 // JANITOR //
+/obj/item/soap/nanotrasen/prime
+	desc = "Мыло марки Нанотрейзен, выполненное по спецзаказу для лучших из лучших уборщиков."
+	cleanspeed = 20
+
 /obj/item/storage/belt/janitor/full/donor/populate_contents()
 	new /obj/item/holosign_creator/janitor(src)
 	new /obj/item/reagent_containers/spray/cleaner(src)

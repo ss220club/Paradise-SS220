@@ -9,6 +9,23 @@
 /turf/simulated/floor/plasteel/get_broken_states()
 	return list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5")
 
+/turf/simulated/floor/plasteel/pressure_debug
+
+/turf/simulated/floor/plasteel/pressure_debug/airless
+	name = "airless floor"
+	oxygen = 0
+	nitrogen = 0
+	temperature = TCMB
+
+/turf/simulated/floor/plasteel/pressure_debug/Initialize(mapload)
+	..()
+	addtimer(CALLBACK(src, PROC_REF(update_color)), 1, TIMER_LOOP)
+
+/turf/simulated/floor/plasteel/pressure_debug/proc/update_color()
+	var/datum/gas_mixture/air = get_readonly_air()
+	var/ratio = min(1, air.return_pressure() / ONE_ATMOSPHERE)
+	color = rgb(255 * (1 - ratio), 0, 255 * ratio)
+
 /turf/simulated/floor/plasteel/airless
 	name = "airless floor"
 	oxygen = 0
@@ -53,6 +70,11 @@
 /turf/simulated/floor/plasteel/goonplaque/violence
 	name = "Violence Free Area"
 	desc = "Violence Free Area."
+
+/turf/simulated/floor/plasteel/goonplaque/cerestation
+	name = "Farragus Commission Plaque"
+	desc = "\"AMS Farragus, Commissioned on 13 April 2472 by the Althland Mining Company. Acquired and recommissioned as NSS Farragus by Nanotrasen on 3 January 2485.\"<br><br>\
+	Scratched in beneath is a crude image of a mime and a security officer. The security officer is hitting an invisible wall with a baton. The mime is silently laughing."
 
 //TODO: Make subtypes for all normal turf icons
 /turf/simulated/floor/plasteel/white

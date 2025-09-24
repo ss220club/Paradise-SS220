@@ -1,16 +1,18 @@
 /obj/item/grenade
 	name = "grenade"
 	desc = "A hand held grenade with an adjustable timer."
-	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "grenade"
-	item_state = "grenade"
+	worn_icon_state = "grenade"
+	inhand_icon_state = "grenade"
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 20
 	flags = CONDUCT
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FLAMMABLE
 	max_integrity = 40
+	flags_2 = RANDOM_BLOCKER_2
 	/// Has the pin been pulled?
 	var/active = FALSE
 	/// Time between the pin being pulled and detonation.
@@ -54,7 +56,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/grenade/attack_self(mob/user as mob)
+/obj/item/grenade/attack_self__legacy__attackchain(mob/user as mob)
 	if(active)
 		return
 	if(!clown_check(user))
@@ -82,7 +84,7 @@
 /obj/item/grenade/proc/update_mob()
 	if(ismob(loc))
 		var/mob/M = loc
-		M.unEquip(src)
+		M.drop_item_to_ground(src)
 
 /obj/item/grenade/screwdriver_act(mob/living/user, obj/item/I)
 	if(!modifiable_timer)
@@ -106,20 +108,20 @@
 
 /obj/item/grenade/attack_hand()
 	///We need to clear the walk_to on grabbing a moving grenade to have it not leap straight out of your hand
-	walk(src, null, null)
+	GLOB.move_manager.stop_looping(src)
 	..()
 
 /obj/item/grenade/Destroy()
-	///We need to clear the walk_to on destroy to allow a grenade which uses walk_to or related to properly GC
-	walk_to(src, 0)
+	GLOB.move_manager.stop_looping(src)
 	return ..()
 
 /obj/item/grenade/cmag_act(mob/user)
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
-		return
+		return FALSE
 	ADD_TRAIT(src, TRAIT_CMAGGED, "cmagged grenade")
 	to_chat(user, "<span class='warning'>You drip some yellow ooze into [src]. [src] suddenly doesn't want to leave you...</span>")
 	AddComponent(/datum/component/boomerang, throw_range, TRUE)
+	return TRUE
 
 /obj/item/grenade/uncmag()
 	if(!HAS_TRAIT(src, TRAIT_CMAGGED))

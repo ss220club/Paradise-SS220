@@ -14,20 +14,22 @@
 /obj/item/card/id/thunderdome
 	skinable = FALSE
 
-/obj/item/card/id/attackby(obj/item/item, mob/user, params)
+/obj/item/card/id/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	. = ..()
-	if(!istype(item, /obj/item/id_skin))
-		return .
-
-	return apply_skin(item, user)
+	if(istype(used, /obj/item/id_skin))
+		apply_skin(used, user)
+		return ITEM_INTERACT_COMPLETE
 
 /obj/item/card/id/examine(mob/user)
 	. = ..()
 	if(skin_applied)
 		. += span_notice("Нажмите <b>Alt-Click</b> на карту, чтобы снять наклейку.")
 
-/obj/item/card/id/AltClick(mob/user)
-	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
+/obj/item/card/id/AltClick(mob/living/carbon/user)
+	if(!iscarbon(user))
+		return
+
+	if(!Adjacent(user) || user.incapacitated())
 		to_chat(user, span_warning("У вас нет возможности снять наклейку!"))
 		return
 
@@ -120,7 +122,7 @@
 
 	color = color_list[pick(color_list)]
 
-/obj/item/id_skin/colored/attack_self(mob/living)
+/obj/item/id_skin/colored/attack_self__legacy__attackchain(mob/living)
 	var/choice = tgui_input_list(usr, "Какой цвет предпочитаете?", "Выбор цвета", list("Выбрать предустановленный", "Выбрать вручную"))
 	if(!choice)
 		return

@@ -7,10 +7,10 @@
 	skinned_type = /obj/item/stack/sheet/fur
 	unarmed_type = /datum/unarmed_attack/claws
 
-	blurb = "Tajaran hail from the mineral-rich arctic moon of Ahdomai. \
-	They were introduced into the galactic scene after the Skrellian discovery and were elevated to be associates to the Solar-Central Compact.<br/><br/> \
-	The teachings of S'randarr and solar iconography dominate their religious practices, \
-	and Tajaran often speak in the third person due to the lack of first-person references in their native tongue."
+	blurb = "Таяран - вид всеядных млекопитающих, имеющих внешнее сходство с земными кошачьими, родом происходящие с богатой минералами планеты Адомай. \
+	Они появились на галактической арене в результате обнаружения экспедиционным флотом проекта \"Новые Горизонты\", после освобождения из рабства были приняты частичные условия интеграции в Человеко-Скреллианский Альянс.<br/><br/> \
+	В их религиозной практике преобладают учения С'рандарра и солнечная иконография, \
+	сами Таяры часто говорят о себе в третьем лице из-за отсутствия обращений от первого лица в их родном языке."
 
 	cold_level_1 = 240
 	cold_level_2 = 180
@@ -44,7 +44,7 @@
 															unless they choose otherwise by selecting the colourblind disability in character creation (darksight = 8 but colourblind).*/
 		)
 
-	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse, /mob/living/simple_animal/chick, /mob/living/simple_animal/butterfly, /mob/living/simple_animal/parrot, /mob/living/simple_animal/hostile/poison/bees)
+	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse, /mob/living/basic/chick, /mob/living/basic/butterfly, /mob/living/simple_animal/parrot, /mob/living/simple_animal/hostile/poison/bees)
 
 	suicide_messages = list(
 		"is attempting to bite their tongue off!",
@@ -55,6 +55,8 @@
 			"r" = list("rr", "rrr", "rrrr")
 		)
 	autohiss_exempt = list("Siik'tajr")
+
+	plushie_type = /obj/item/toy/plushie/grey_cat
 
 /datum/species/tajaran/handle_death(gibbed, mob/living/carbon/human/H)
 	H.stop_tail_wagging()

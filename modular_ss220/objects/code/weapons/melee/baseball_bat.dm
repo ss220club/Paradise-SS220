@@ -5,7 +5,7 @@
 	В официальных документах эта бита проходит под элегантным названием \"Высокоскоростная система доставки СРП\". \
 	Выдаваясь только самым верным и эффективным офицерам Nanotrasen, это оружие является одновременно символом статуса \
 	и инструментом высшего правосудия."
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
 
 	var/on = FALSE
@@ -18,9 +18,11 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/melee.dmi'
 	/// Item state when concealed
-	item_state = "centcom_bat_0"
+	worn_icon_state = "centcom_bat_0"
+	inhand_icon_state = "centcom_bat_0"
 	/// Item state when extended
-	var/item_state_on = "centcom_bat_1"
+	var/worn_icon_state_on = "centcom_bat_1"
+	var/inhand_icon_state_on = "centcom_bat_1"
 	/// Icon state when concealed
 	icon_state = "centcom_bat_0"
 	/// Icon state when extended
@@ -36,7 +38,7 @@
 	. = ..()
 	if(!(user.mind.offstation_role))
 		user.Weaken(10 SECONDS)
-		user.unEquip(src, force, silent = FALSE)
+		user.drop_item_to_ground(src, force = TRUE, silent = FALSE)
 		to_chat(user, span_userdanger("Это - оружие истинного правосудия. Тебе не дано обуздать его мощь."))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -44,19 +46,23 @@
 		else
 			user.adjustBruteLoss(rand(force/2, force))
 
-/obj/item/melee/baseball_bat/homerun/central_command/attack_self(mob/user)
+/obj/item/melee/baseball_bat/homerun/central_command/activate_self(mob/user)
+	if(..())
+		return
 	on = !on
 
 	if(on)
 		to_chat(user, span_userdanger("Вы активировали [name] - время для правосудия!"))
-		item_state = item_state_on
+		worn_icon_state = worn_icon_state_on
+		inhand_icon_state = inhand_icon_state_on
 		icon_state = icon_state_on
 		w_class = WEIGHT_CLASS_HUGE
 		force = force_on
 		attack_verb = attack_verb_on
 	else
 		to_chat(user, span_notice("Вы деактивировали [name]."))
-		item_state = initial(item_state)
+		worn_icon_state = initial(worn_icon_state)
+		inhand_icon_state = initial(inhand_icon_state)
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		force = initial(force)
@@ -74,4 +80,4 @@
 /obj/item/melee/baseball_bat/homerun/central_command/attack(mob/living/target, mob/living/user)
 	if(on)
 		homerun_ready = TRUE
-	. = ..()
+	return ..()

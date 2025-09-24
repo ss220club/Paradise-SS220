@@ -13,7 +13,7 @@
 
 /datum/gear/suit
 	main_typepath = /datum/gear/suit
-	slot = SLOT_HUD_OUTER_SUIT
+	slot = ITEM_SLOT_OUTER_SUIT
 	sort_category = "External Wear"
 
 //WINTER COATS
@@ -41,7 +41,7 @@
 /datum/gear/suit/coat/job/med
 	display_name = "Winter coat, medical"
 	path = /obj/item/clothing/suit/hooded/wintercoat/medical
-	allowed_roles = list("Chief Medical Officer", "Medical Doctor", "Chemist", "Psychiatrist", "Paramedic", "Virologist", "Coroner", "Geneticist")
+	allowed_roles = list("Chief Medical Officer", "Medical Doctor", "Chemist", "Psychiatrist", "Paramedic", "Virologist", "Coroner")
 
 /datum/gear/suit/coat/job/sci
 	display_name = "Winter coat, science"
@@ -111,6 +111,11 @@
 	path = /obj/item/clothing/suit/jacket/bomber/expedition
 	allowed_roles = list("Quartermaster", "Explorer")
 
+/datum/gear/suit/bomber/job/smith
+	display_name = "Bomber jacket, smith"
+	path = /obj/item/clothing/suit/jacket/bomber/smith
+	allowed_roles = list("Quartermaster", "Smith")
+
 /datum/gear/suit/bomber/job/engi
 	display_name = "Bomber jacket, engineering"
 	path = /obj/item/clothing/suit/jacket/bomber/engi
@@ -129,7 +134,7 @@
 /datum/gear/suit/bomber/job/medical
 	display_name = "Bomber jacket, medical"
 	path = /obj/item/clothing/suit/jacket/bomber/med
-	allowed_roles = list("Chief Medical Officer", "Medical Doctor", "Chemist", "Psychiatrist", "Paramedic", "Virologist", "Coroner", "Geneticist")
+	allowed_roles = list("Chief Medical Officer", "Medical Doctor", "Chemist", "Psychiatrist", "Paramedic", "Virologist", "Coroner")
 
 /datum/gear/suit/bomber/job/chemist
 	display_name = "Bomber jacket, chemist"
@@ -252,55 +257,26 @@
 	display_name = "Suit jacket, purple"
 	path = /obj/item/clothing/suit/storage/iaa/purplejacket
 
-//Mantles!
-/datum/gear/suit/mantle
-	display_name = "Mantle"
-	path = /obj/item/clothing/suit/mantle
-
-/datum/gear/suit/old_scarf
-	display_name = "Old scarf"
-	path = /obj/item/clothing/suit/mantle/old
-
-/datum/gear/suit/regal_shawl
-	display_name = "Regal shawl"
-	path = /obj/item/clothing/suit/mantle/regal
-
-/datum/gear/suit/mantle/job
-	main_typepath = /datum/gear/suit/mantle/job
-	subtype_selection_cost = FALSE
-
-/datum/gear/suit/mantle/job/captain
-	display_name = "Mantle, captain"
-	path = /obj/item/clothing/suit/mantle/armor/captain
-	allowed_roles = list("Captain")
-
-/datum/gear/suit/mantle/job/ce
-	display_name = "Mantle, chief engineer"
-	path = /obj/item/clothing/suit/mantle/chief_engineer
-	allowed_roles = list("Chief Engineer")
-
-/datum/gear/suit/mantle/job/cmo
-	display_name = "Mantle, chief medical officer"
-	path = /obj/item/clothing/suit/mantle/labcoat/chief_medical_officer
-	allowed_roles = list("Chief Medical Officer")
-
-/datum/gear/suit/mantle/job/hos
-	display_name = "Mantle, head of security"
-	path = /obj/item/clothing/suit/mantle/armor
-	allowed_roles = list("Head of Security")
-
-/datum/gear/suit/mantle/job/hop
-	display_name = "Mantle, head of personnel"
-	path = /obj/item/clothing/suit/mantle/armor/hop
-	allowed_roles = list("Head of Personnel")
-
-/datum/gear/suit/mantle/job/rd
-	display_name = "Mantle, research director"
-	path = /obj/item/clothing/suit/mantle/labcoat
-	allowed_roles = list("Research Director")
-
 //Robes!
 
 /datum/gear/suit/witch
 	display_name = "Witch robes"
 	path = /obj/item/clothing/suit/wizrobe/marisa/fake
+
+//Tracksuits
+
+/datum/gear/suit/tracksuit
+	display_name = "Tracksuit"
+	path = /obj/item/clothing/suit/tracksuit
+
+/datum/gear/suit/tracksuitgreen
+		display_name = "Tracksuit, green"
+		path = /obj/item/clothing/suit/tracksuit/green
+
+/datum/gear/suit/tracksuitred
+	display_name = "Tracksuit, red"
+	path = /obj/item/clothing/suit/tracksuit/red
+
+/datum/gear/suit/tracksuitwhite
+	display_name = "Tracksuit, white"
+	path = /obj/item/clothing/suit/tracksuit/white

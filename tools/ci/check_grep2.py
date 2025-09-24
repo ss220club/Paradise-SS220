@@ -4,7 +4,7 @@ import os
 import sys
 import time
 from collections import namedtuple
-
+from concurrent.futures import ProcessPoolExecutor
 Failure = namedtuple("Failure", ["filename", "lineno", "message"])
 
 RED = "\033[0;31m"
@@ -125,7 +125,7 @@ GLOBAL_LIST_EMPTY = re.compile(r"(?<!#define GLOBAL_LIST_EMPTY\(X\) )GLOBAL_LIST
 # An easy regex replacement for this is GLOBAL_LIST_EMPTY$1
 def check_global_list_empty(idx, line):
     if GLOBAL_LIST_EMPTY.search(line):
-        failures.append((idx + 1, "Found a GLOBAL_LIST_INIT(_, list()), please use GLOBAL_LIST_EMPTY(_) instead."))
+        return [(idx + 1, "Found a GLOBAL_LIST_INIT(_, list()), please use GLOBAL_LIST_EMPTY(_) instead.")]
 
 # makes sure arguments contained within "ui = new" are valid
 TGUI_UI_NEW = re.compile(r"ui = new\(((?:(?!,\s*).)+,\s*){1,3}(?:(?!,\s*).)+\)")
@@ -139,12 +139,12 @@ FOR_ALL_DATUMS = re.compile(r"for\s*\(\s*var\/((\w+)(?:(?:\/\w+){2,})?)\)")
 FOR_ALL_NOT_DATUMS = re.compile(r"for\s*\(\s*var\/((?:atom|area|turf|obj|mob)(?:\/\w+))\)")
 def check_datum_loops(idx, line):
     if FOR_ALL_DATUMS.search(line) or FOR_ALL_NOT_DATUMS.search(line):
-        return Failure(
+        return [(
             idx + 1,
             # yes this will concatenate the strings, don't look too hard
             "Found a for loop without explicit contents. If you're trying to loop over everything in the world, first double check that you truly need to, and if so specify \'in world\'.\n"
             "If you're trying to check bare datums, please ensure that your value is only cast to /datum, and please make sure you use \'as anything\', or use a global list instead."
-        )
+        )]
 
 HREF_OLD_STYLE = re.compile(r"href[\s='\"\\]*\?")
 def check_href_styles(idx, line):
@@ -181,6 +181,17 @@ def check_istype_src(idx, line):
     if CONDITIONAL_ISTYPE_SRC.search(line):
         return [(idx + 1, "Our coding requirements prohibit use of istype(src, /any_type). Consider making the behavior dependent on a variable and/or overriding a proc instead.")]
 
+CAMEL_CASE_TYPE_NAMES = re.compile(r"^/[\w]\S+/{1}([a-zA-Z]+([A-Z][a-z]+)+|([A-Z]+[a-z]+))$")
+def check_camel_case_type_names(idx, line):
+    if result := CAMEL_CASE_TYPE_NAMES.search(line):
+        type_result = result.group(0)
+        return [(idx + 1, f"name of type {type_result} is not in snake_case format.")]
+
+UID_WITH_PARAMETER = re.compile(r"\bUID\(\w+\)")
+def check_uid_parameters(idx, line):
+    if result := UID_WITH_PARAMETER.search(line):
+        return [(idx + 1, "UID() does not take arguments. Use UID() instead of UID(src) and datum.UID() instead of UID(datum).")]
+
 CODE_CHECKS = [
     check_space_indentation,
     check_mixed_indentation,
@@ -197,23 +208,13 @@ CODE_CHECKS = [
     check_initialize_missing_mapload,
     check_empty_list_whitespace,
     check_istype_src,
+    check_camel_case_type_names,
+    check_uid_parameters,
 ]
 
-
-if __name__ == "__main__":
-    print("check_grep2 started")
-
-    exit_code = 0
-    start = time.time()
-
-    dm_files = glob.glob("**/*.dm", recursive=True)
-
-    if len(sys.argv) > 1:
-        dm_files = [sys.argv[1]]
-
+def lint_file(code_filepath: str) -> list[Failure]:
     all_failures = []
-
-    for code_filepath in dm_files:
+    try:
         with open(code_filepath, encoding="UTF-8") as code:
             filename = code_filepath.split(os.path.sep)[-1]
 
@@ -232,6 +233,25 @@ if __name__ == "__main__":
 
             if last_line and last_line[-1] != '\n':
                 all_failures.append(Failure(code_filepath, idx + 1, "Missing a trailing newline"))
+    except Exception as e:
+        print(f"Failed to lint {code_filepath}", e)
+    return all_failures
+
+if __name__ == "__main__":
+    print("check_grep2 started")
+
+    exit_code = 0
+    start = time.time()
+
+    dm_files = glob.glob("**/*.dm", recursive=True)
+
+    if len(sys.argv) > 1:
+        dm_files = [sys.argv[1]]
+
+    all_failures = []
+    with ProcessPoolExecutor() as executor:
+        for failures in executor.map(lint_file, dm_files):
+            all_failures += failures
 
     if all_failures:
         exit_code = 1

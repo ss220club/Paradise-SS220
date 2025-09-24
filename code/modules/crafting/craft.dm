@@ -90,7 +90,7 @@
 				if(AM.flags_2 & HOLOGRAM_2)
 					continue
 				. += AM
-	for(var/slot in list(SLOT_HUD_RIGHT_STORE, SLOT_HUD_LEFT_STORE))
+	for(var/slot in list(ITEM_SLOT_RIGHT_POCKET, ITEM_SLOT_LEFT_POCKET))
 		. += user.get_item_by_slot(slot)
 
 
@@ -167,7 +167,9 @@
 		return ", missing tool."
 	if(!check_pathtools(user, recipe, contents))
 		return ", missing tool."
-
+	var/craft_time = recipe.time
+	if(HAS_TRAIT(user.mind, TRAIT_CRAFTY))
+		craft_time /= 3
 	if(!do_after(user, recipe.time, target = user))
 		return "."
 	contents = get_surroundings(user)

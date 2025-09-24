@@ -2,9 +2,7 @@
 	name = "Magic Missile"
 	desc = "This spell fires several, slow moving, magic projectiles at nearby targets."
 
-	school = "evocation"
 	base_cooldown = 200
-	clothes_req = TRUE
 	invocation = "FORTI GY AMA"
 	invocation_type = "shout"
 	cooldown_min = 60 //35 deciseconds reduction per rank
@@ -38,9 +36,8 @@
 
 /datum/spell/projectile/honk_missile
 	name = "Honk Missile"
-	desc = "This spell fires several, slow moving, magic bikehorns at nearby targets."
+	desc = "This spell fires several, slow moving, magic bike horns at nearby targets."
 
-	school = "evocation"
 	base_cooldown = 6 SECONDS
 	clothes_req = FALSE
 	invocation = "HONK GY AMA"
@@ -87,9 +84,7 @@
 	name = "Mutate"
 	desc = "This spell causes you to turn into a hulk and gain laser vision for a short while."
 
-	school = "transmutation"
 	base_cooldown = 400
-	clothes_req = TRUE
 	invocation = "BIRUZ BENNAR"
 	invocation_type = "shout"
 	message = "<span class='notice'>You feel strong! You feel a pressure building behind your eyes!</span>"
@@ -113,11 +108,9 @@
 	name = "Smoke"
 	desc = "This spell spawns a cloud of choking smoke at your location and does not require wizard garb."
 
-	school = "conjuration"
 	base_cooldown = 120
 	clothes_req = FALSE
 	invocation = "none"
-	invocation_type = "none"
 	cooldown_min = 20 //25 deciseconds reduction per rank
 
 	smoke_type = SMOKE_COUGHING
@@ -132,7 +125,6 @@
 	name = "Disable Tech"
 	desc = "This spell disables all weapons, cameras and most other technology in range."
 	base_cooldown = 40 SECONDS
-	clothes_req = TRUE
 	invocation = "NEC CANTIO"
 	invocation_type = "shout"
 	cooldown_min = 200 //50 deciseconds reduction per rank
@@ -146,11 +138,8 @@
 	name = "Blink"
 	desc = "This spell randomly teleports you a short distance."
 
-	school = "abjuration"
 	base_cooldown = 20
-	clothes_req = TRUE
 	invocation = "none"
-	invocation_type = "none"
 	cooldown_min = 5 //4 deciseconds reduction per rank
 
 
@@ -174,9 +163,7 @@
 	name = "Teleport"
 	desc = "This spell teleports you to a type of area of your selection."
 
-	school = "abjuration"
 	base_cooldown = 600
-	clothes_req = TRUE
 	invocation = "SCYAR NILA"
 	invocation_type = "shout"
 	cooldown_min = 200 //100 deciseconds reduction per rank
@@ -194,9 +181,7 @@
 	name = "Return to Teacher"
 	desc = "This spell teleports you back to your teacher."
 
-	school = "abjuration"
 	base_cooldown = 30 SECONDS
-	clothes_req = TRUE
 	invocation = "SCYAR TESO"
 	invocation_type = "shout"
 	cooldown_min = 10 SECONDS
@@ -217,7 +202,6 @@
 	name = "Force Wall"
 	desc = "This spell creates a 3 tile wide unbreakable wall that only you can pass through, and does not need wizard garb. Lasts 30 seconds."
 
-	school = "transmutation"
 	base_cooldown = 15 SECONDS
 	clothes_req = FALSE
 	invocation = "TARCOL MINTI ZHERI"
@@ -243,11 +227,9 @@
 	name = "Stop Time"
 	desc = "This spell stops time for everyone except for you, allowing you to move freely while your enemies and even projectiles are frozen."
 	base_cooldown = 50 SECONDS
-	clothes_req = TRUE
 	invocation = "TOKI WO TOMARE"
 	invocation_type = "shout"
 	cooldown_min = 100
-	summon_amt = 1
 	delay = 0
 	action_icon_state = "time"
 
@@ -259,13 +241,11 @@
 	name = "Summon Carp"
 	desc = "This spell conjures a simple carp."
 
-	school = "conjuration"
 	base_cooldown = 1200
-	clothes_req = TRUE
 	invocation = "NOUK FHUNMM SACP RISSKA"
 	invocation_type = "shout"
 
-	summon_type = list(/mob/living/simple_animal/hostile/carp)
+	summon_type = list(/mob/living/basic/carp)
 
 	cast_sound = 'sound/magic/summon_karp.ogg'
 	aoe_range = 1
@@ -274,11 +254,9 @@
 	name = "Artificer"
 	desc = "This spell conjures a construct which may be controlled by Shades."
 
-	school = "conjuration"
 	base_cooldown = 600
 	clothes_req = FALSE
 	invocation = "none"
-	invocation_type = "none"
 
 	summon_type = list(/obj/structure/constructshell)
 
@@ -290,21 +268,19 @@
 	name = "Summon Creature Swarm"
 	desc = "This spell tears the fabric of reality, allowing horrific daemons to spill forth."
 
-	school = "conjuration"
 	base_cooldown = 1200
 	clothes_req = FALSE
 	invocation = "IA IA"
 	invocation_type = "shout"
 	summon_amt = 10
 
-	summon_type = list(/mob/living/simple_animal/hostile/creature)
+	summon_type = list(/mob/living/basic/creature)
 	cast_sound = 'sound/magic/summonitems_generic.ogg'
 	aoe_range = 3
 
 /datum/spell/blind
 	name = "Blind"
 	desc = "This spell temporarily blinds a single person and does not require wizard garb."
-	school = "transmutation"
 	base_cooldown = 15 SECONDS
 	clothes_req = FALSE
 	invocation = "STI KALY"
@@ -325,6 +301,10 @@
 		return
 
 	var/mob/living/target = targets[1]
+	if(target.can_block_magic(antimagic_flags))
+		to_chat(target, "<span class='notice'>Your eye itches, but it passes momentarily.</span>")
+		to_chat(user, "<span class='notice'>The spell had no effect!</span>")
+		return FALSE
 	target.EyeBlurry(40 SECONDS)
 	target.EyeBlind(30 SECONDS)
 
@@ -335,7 +315,6 @@
 	name = "Fireball"
 	desc = "This spell fires a fireball at a target and does not require wizard garb."
 
-	school = "evocation"
 	base_cooldown = 60
 	clothes_req = FALSE
 	invocation = "ONI SOMA"
@@ -349,7 +328,6 @@
 	action_icon_state = "fireball0"
 	sound = 'sound/magic/fireball.ogg'
 
-	active = FALSE
 
 /datum/spell/fireball/apprentice
 	centcom_cancast = FALSE
@@ -362,8 +340,8 @@
 /datum/spell/fireball/update_spell_icon()
 	if(!action)
 		return
-	action.button_overlay_icon_state = "fireball[active]"
-	action.UpdateButtons()
+	action.button_icon_state = "fireball[active]"
+	action.build_all_button_icons()
 
 /datum/spell/fireball/cast(list/targets, mob/living/user = usr)
 	var/target = targets[1] //There is only ever one target for fireball
@@ -399,13 +377,11 @@
 	fireball_type = /obj/item/projectile/homing/magic/homing_fireball
 
 	selection_activated_message = "<span class='notice'>You prepare to cast your greater homing fireball spell! <B>Left-click to cast at a target!</B></span>"
-	base_cooldown = 6 SECONDS
 
 /datum/spell/aoe/repulse
 	name = "Repulse"
 	desc = "This spell throws everything around the user away."
 	base_cooldown = 40 SECONDS
-	clothes_req = TRUE
 	invocation = "GITTAH WEIGH"
 	invocation_type = "shout"
 	cooldown_min = 150
@@ -427,6 +403,10 @@
 	playMagSound()
 	for(var/turf/T in targets) //Done this way so things don't get thrown all around hilariously.
 		for(var/atom/movable/AM in T)
+			if(ismob(AM))
+				var/mob/victim_mob = AM
+				if(victim_mob.can_block_magic(antimagic_flags))
+					continue
 			thrownatoms += AM
 
 	for(var/am in thrownatoms)
@@ -470,6 +450,8 @@
 
 /datum/spell/sacred_flame/cast(list/targets, mob/user = usr)
 	for(var/mob/living/L in targets)
+		if(L.can_block_magic(antimagic_flags))
+			continue
 		L.adjust_fire_stacks(20)
 	if(isliving(user))
 		var/mob/living/U = user
@@ -478,9 +460,7 @@
 /datum/spell/corpse_explosion
 	name = "Corpse Explosion"
 	desc = "Fills a corpse with energy, causing it to explode violently."
-	school = "evocation"
 	base_cooldown = 5 SECONDS
-	clothes_req = TRUE
 	invocation = "JAH ITH BER"
 	invocation_type = "whisper"
 	selection_activated_message = "<span class='notice'>You prepare to detonate a corpse. Click on a target to cast the spell.</span>"
@@ -501,7 +481,7 @@
 	var/turf/corpse_turf = get_turf(target)
 	new /obj/effect/temp_visual/corpse_explosion(get_turf(target))
 	target.gib()
-	explosion(corpse_turf, 0, 0, 0, 0, silent = TRUE, breach = FALSE)
+	explosion(corpse_turf, 0, 0, 0, 0, silent = TRUE, cause = name, breach = FALSE)
 	for(var/mob/living/M in range(4, corpse_turf))
 		if(M == user)
 			continue

@@ -6,13 +6,13 @@
 	desc = "Used by obese officers to save their breath for running."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "voice0"
-	item_state = "flashtool"	//looks exactly like a flash (and nothing like a flashbang)
+	inhand_icon_state = "flashtool"
 	w_class = WEIGHT_CLASS_TINY
 	flags = CONDUCT
 	var/next_use_time
 	var/spamcheck = FALSE
 
-/obj/item/hailer/attack_self(mob/living/carbon/user as mob)
+/obj/item/hailer/attack_self__legacy__attackchain(mob/living/carbon/user as mob)
 	if(world.time < next_use_time)
 		return
 
@@ -37,7 +37,6 @@
 	name = "whistle"
 	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth."
 	icon_state = "whistle"
-	item_state = "whistle"
 	w_class = WEIGHT_CLASS_TINY
 	flags = CONDUCT
 	body_parts_covered = null
@@ -51,7 +50,7 @@
 		"Grey" = 'icons/mob/clothing/species/grey/mask.dmi'
 		)
 
-/obj/item/clothing/mask/whistle/attack_self(mob/user)
+/obj/item/clothing/mask/whistle/attack_self__legacy__attackchain(mob/user)
 	if(!COOLDOWN_FINISHED(src, whistle_cooldown))
 		return
 

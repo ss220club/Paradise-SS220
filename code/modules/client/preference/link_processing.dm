@@ -151,8 +151,10 @@
 				if("eyes")
 					active_character.e_colour = rand_hex_color()
 				if("s_tone")
-					if(S.bodyflags & (HAS_SKIN_TONE|HAS_ICON_SKIN_TONE))
-						active_character.s_tone = random_skin_tone()
+					if(S.bodyflags & HAS_SKIN_TONE)
+						active_character.s_tone = 35 - random_skin_tone(active_character.species)
+					else if(S.bodyflags & HAS_ICON_SKIN_TONE)
+						active_character.s_tone = random_skin_tone(active_character.species)
 				if("s_color")
 					if(S.bodyflags & HAS_SKIN_COLOR)
 						active_character.s_colour = rand_hex_color()
@@ -246,10 +248,12 @@
 							active_character.socks = random_socks(active_character.body_type, active_character.species)
 
 						//reset skin tone and colour
-						if(NS.bodyflags & (HAS_SKIN_TONE|HAS_ICON_SKIN_TONE))
-							random_skin_tone(active_character.species)
+						if(NS.bodyflags & HAS_SKIN_TONE)
+							active_character.s_tone = 35 - random_skin_tone(active_character.species)
+						else if(NS.bodyflags & HAS_ICON_SKIN_TONE)
+							active_character.s_tone = random_skin_tone(active_character.species)
 						else
-							active_character.s_tone = 0
+							active_character.s_tone = 1
 
 						if(!(NS.bodyflags & HAS_SKIN_COLOR))
 							active_character.s_colour = "#000000"
@@ -639,18 +643,18 @@
 					active_character.e_colour = new_eyes
 
 				if("s_tone")
+					var/new_s_tone
 					if(S.bodyflags & HAS_SKIN_TONE)
-						var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
+						new_s_tone = tgui_input_number(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference", -active_character.s_tone + 35, 220, 1)
 						if(isnull(new_s_tone))
 							return
-						active_character.s_tone = 35 - max(min(round(new_s_tone), 220), 1)
+						active_character.s_tone = 35 - new_s_tone
 					else if(S.bodyflags & HAS_ICON_SKIN_TONE)
-						var/const/MAX_LINE_ENTRIES = 4
 						var/prompt = "Choose your character's skin tone: 1-[length(S.icon_skin_tones)]\n(Light to Dark)"
-						var/skin_c = tgui_input_number(user, prompt, "Character Preference", active_character.s_tone, length(S.icon_skin_tones), 1)
-						if(isnull(skin_c))
+						new_s_tone = tgui_input_number(user, prompt, "Character Preference", active_character.s_tone, length(S.icon_skin_tones), 1)
+						if(isnull(new_s_tone))
 							return
-						active_character.s_tone = skin_c
+						active_character.s_tone = new_s_tone
 
 				if("skin")
 					if((S.bodyflags & HAS_SKIN_COLOR) || GLOB.body_accessory_by_species[active_character.species] || check_rights(R_ADMIN, 0, user))
@@ -863,17 +867,24 @@
 					if(!(brain_type in GLOB.borg_brain_choices))
 						return
 					active_character.cyborg_brain_type = brain_type
+				if("pda_ringtone")
+					var/ringtone = tgui_input_list(user, "What type of ringtone would you like to have on your PDA?", "PDA Ringtones", list("Reset Default Ringtone") + GLOB.pda_ringtone_choices, active_character.pda_ringtone)
+					if(!(ringtone in GLOB.pda_ringtone_choices))
+						if(ringtone == "Reset Default Ringtone")
+							active_character.pda_ringtone = null
+						return
+					active_character.pda_ringtone = ringtone
 				if("clientfps")
-					var/version_message
-					if(user.client && user.client.byond_version < 511)
-						version_message = "\nYou need to be using byond version 511 or later to take advantage of this feature, your version of [user.client.byond_version] is too low"
-					if(world.byond_version < 511)
-						version_message += "\nThis server does not currently support client side fps. You can set now for when it does."
-					var/desiredfps = tgui_input_number(user, "Choose your desired fps.[version_message]\n(Min = synced with server tick rate)", "Character Preference", clientfps, 120, world.fps)
+					var/desiredfps = tgui_input_list(user, "Choose your desired fps. Listed variants work better than custom", "Character Preference", list("\[CUSTOM\]") + GLOB.client_fps_options, clientfps)
 					if(!isnull(desiredfps))
+						if(desiredfps == "\[CUSTOM\]")
+							desiredfps = tgui_input_number(user, "Set your desired fps. Remember that this value will be converted to one that server can actually work with!", "Character Preference", parent.fps, 1000, world.fps)
+							if(isnull(desiredfps)) // we closed the window
+								return
+							if(round(1000 / floor(1000 / desiredfps), 1) != desiredfps) // don't ask
+								desiredfps = floor(1000 / round(1000 / desiredfps, 1))
 						clientfps = desiredfps
-						if(world.byond_version >= 511 && user.client && user.client.byond_version >= 511)
-							parent.fps = clientfps
+						parent.fps = clientfps
 
 		else
 			switch(href_list["preference"])
@@ -914,7 +925,7 @@
 				if("hear_adminhelps")
 					sound ^= SOUND_ADMINHELP
 				if("ui")
-					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Vaporwave", "Detective", "Trasenknox", "Clockwork")) // SS220 EDIT "Vaporwave, Detective, Trasenknox, Clockwork"
+					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Clockwork", "Vaporwave", "Detective", "Trasenknox", "Clockwork")) // SS220 EDIT "Vaporwave, Detective, Trasenknox, Clockwork"
 					if(!new_UI_style)
 						return
 					switch(new_UI_style)
@@ -930,6 +941,8 @@
 							UI_style = "Operative"
 						if("White")
 							UI_style = "White"
+						if("Clockwork")
+							UI_style = "Clockwork"
 						// SS220 ADDITION - START
 						if("Vaporwave")
 							UI_style = "Vaporwave"
@@ -944,7 +957,20 @@
 					if(ishuman(usr)) //mid-round preference changes, for aesthetics
 						var/mob/living/carbon/human/H = usr
 						H.remake_hud()
+				if("map_pick")
+					var/list/potential_maps = list()
+					for(var/x in subtypesof(/datum/map))
+						var/datum/map/M = x
+						if(!initial(M.voteable))
+							continue
+						potential_maps += M
 
+					var/list/output = tgui_input_ranked_list(usr, "Pick a map, in order of most wanted to least. This will go on until there are no more maps left.", "Maps", potential_maps)
+					if(!length(output))
+						return
+					map_vote_pref_json = list() //Clear it out
+					for(var/index in 1 to length(output)) //This is an associated list to make blackbox tracking easier
+						map_vote_pref_json[output[index]] = index
 				if("tgui")
 					toggles2 ^= PREFTOGGLE_2_FANCYUI
 
@@ -1007,6 +1033,7 @@
 						var/list/actualview = getviewsize(parent.view)
 						parent.void.UpdateGreed(actualview[1],actualview[2])
 
+					parent.fit_viewport()
 					parent.debug_text_overlay?.update_view(parent)
 
 				if("afk_watch")
@@ -1041,6 +1068,12 @@
 					toggles2 ^= PREFTOGGLE_2_THOUGHT_BUBBLE
 					if(length(parent?.screen))
 						var/atom/movable/screen/plane_master/point/PM = locate(/atom/movable/screen/plane_master/point) in parent.screen
+						PM.backdrop(parent.mob)
+
+				if("cogbar")
+					toggles3 ^= PREFTOGGLE_3_COGBAR_ANIMATIONS
+					if(length(parent?.screen))
+						var/atom/movable/screen/plane_master/cogbar/PM = locate(/atom/movable/screen/plane_master/cogbar) in parent.screen
 						PM.backdrop(parent.mob)
 
 				if("be_special")

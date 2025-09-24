@@ -165,7 +165,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		var/png_name = "[name]_[size_id].png"
 		var/file_directory = "data/spritesheets/[png_name]"
 		fcopy(size[SPRSZ_ICON], file_directory)
-		var/error = rustg_dmi_strip_metadata(file_directory)
+		var/error = rustlibs_dmi_strip_metadata(file_directory)
 		if(length(error))
 			stack_trace("Failed to strip [png_name]: [error]")
 		size[SPRSZ_STRIPPED] = icon(file_directory)
@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 /datum/asset/spritesheet/proc/Insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
 	I = icon(I, icon_state=icon_state, dir=dir, frame=frame, moving=moving)
-	if(!I || !length(icon_states(I)))  // that direction or state doesn't exist
+	if(!I || length(icon_states(I)) != 1)  // that direction or state doesn't exist
 		return
 	// any sprite modifications we want to do (aka, coloring a greyscaled asset)
 	I = ModifyInserted(I)
@@ -311,9 +311,9 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	var/frame = 1
 	var/movement_states = FALSE
 
-	/// Used in asset name generation, (asset_name = "[prefix].[icon_state_name].png")
+	/// Used in asset name generation, (asset_name = `"[prefix].[icon_state_name].png"`)
 	var/prefix = "default"
-	/// Generate icon filenames using GENERATE_ASSET_NAME instead the "[prefix].[icon_state_name].png" format
+	/// Generate icon filenames using GENERATE_ASSET_NAME instead the `"[prefix].[icon_state_name].png"` format
 	var/generic_icon_names = FALSE
 
 /datum/asset/simple/icon_states/register(_icon = icon)

@@ -37,10 +37,8 @@
 	var/list/attack_verb_on = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/weapons/blade1.ogg' // Probably more appropriate than the previous hitsound. -- Dave
 	usesound = 'sound/weapons/blade1.ogg'
-	max_integrity = 200
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 100, ACID = 30)
 	resistance_flags = FIRE_PROOF
-	toolspeed = 1
 	light_power = 2
 	var/brightness_on = 2
 	var/colormap = list(red=LIGHT_COLOR_RED, blue=LIGHT_COLOR_LIGHTBLUE, green=LIGHT_COLOR_GREEN, purple=LIGHT_COLOR_PURPLE, rainbow=LIGHT_COLOR_WHITE)
@@ -57,7 +55,7 @@
 	UnregisterSignal(src, COMSIG_ITEM_SHARPEN_ACT)
 	return ..()
 
-/obj/item/melee/energy/attack(mob/living/target, mob/living/user)
+/obj/item/melee/energy/attack__legacy__attackchain(mob/living/target, mob/living/user)
 	if(cigarette_lighter_act(user, target))
 		return
 
@@ -109,7 +107,7 @@
 						"<span class='suicide'>[user] is falling on [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>"))
 	return BRUTELOSS|FIRELOSS
 
-/obj/item/melee/energy/attack_self(mob/living/carbon/user)
+/obj/item/melee/energy/attack_self__legacy__attackchain(mob/living/carbon/user)
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		to_chat(user, "<span class='warning'>You accidentally cut yourself with [src], like a doofus!</span>")
 		user.take_organ_damage(5,5)
@@ -183,7 +181,7 @@
 	w_class_on = WEIGHT_CLASS_HUGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	flags = CONDUCT
-	armour_penetration_percentage = 100
+	armor_penetration_percentage = 100
 	origin_tech = "combat=4;magnets=3"
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	attack_verb_on = list()
@@ -209,8 +207,8 @@
 	hitsound = "swing_hit"
 	embed_chance = 75
 	embedded_impact_pain_multiplier = 10
-	armour_penetration_percentage = 50
-	armour_penetration_flat = 10
+	armor_penetration_percentage = 50
+	armor_penetration_flat = 10
 	origin_tech = "combat=3;magnets=4;syndicate=4"
 	sharp = TRUE
 	var/hacked = FALSE
@@ -234,11 +232,11 @@
 /obj/item/melee/energy/sword/cyborg
 	var/hitcost = 50
 
-/obj/item/melee/energy/sword/cyborg/attack(mob/M, mob/living/silicon/robot/R)
+/obj/item/melee/energy/sword/cyborg/attack__legacy__attackchain(mob/M, mob/living/silicon/robot/R)
 	if(R.cell)
 		var/obj/item/stock_parts/cell/C = R.cell
 		if(HAS_TRAIT(src, TRAIT_ITEM_ACTIVE) && !(C.use(hitcost)))
-			attack_self(R)
+			attack_self__legacy__attackchain(R)
 			to_chat(R, "<span class='notice'>It's out of charge!</span>")
 			return
 		..()
@@ -266,7 +264,7 @@
 /obj/item/melee/energy/sword/saber/red
 	item_color = "red"
 
-/obj/item/melee/energy/sword/saber/attackby(obj/item/W, mob/living/user, params)
+/obj/item/melee/energy/sword/saber/attackby__legacy__attackchain(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/melee/energy/sword/saber))
 		if(W == src)
@@ -279,8 +277,6 @@
 			if(src.hacked) // That's right, we'll only check the "original" esword.
 				newSaber.hacked = TRUE
 				newSaber.item_color = "rainbow"
-			user.unEquip(W)
-			user.unEquip(src)
 			qdel(W)
 			qdel(src)
 			user.put_in_hands(newSaber)
@@ -328,9 +324,7 @@
 /obj/item/melee/energy/sword/cyborg/saw
 	name = "energy saw"
 	desc = "For heavy duty cutting. It has a carbon-fiber blade in addition to a toggleable hard-light edge to dramatically increase sharpness."
-	force_on = 30
 	force = 18 //About as much as a spear
-	sharp = TRUE
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "esaw_0"
@@ -351,12 +345,13 @@
 	throwforce_on = 10 // No PvP shenanigans, this is main weapon in PvE explorer gameplay and can be obtained very easy
 	embed_chance = 45
 	embedded_impact_pain_multiplier = 4
-	armour_penetration_percentage = 0
-	armour_penetration_flat = 0
+	armor_penetration_percentage = 0
+	armor_penetration_flat = 0
 	icon_state = "cutlass0"
 	icon_state_on = "cutlass1"
 	light_color = LIGHT_COLOR_RED
 	origin_tech = "combat=3;magnets=4"
+	item_color = "red"
 
 //////////////////////////////
 // MARK: HARDLIGHT BLADE
@@ -366,7 +361,6 @@
 	desc = "A concentrated beam of energy in the shape of a blade. Very stylish... and lethal."
 	icon_state = "blade"
 	force = 30	//Normal attacks deal esword damage
-	hitsound = 'sound/weapons/blade1.ogg'
 	throwforce = 1//Throwing or dropping the item deletes it.
 	throw_speed = 3
 	throw_range = 1
@@ -377,14 +371,13 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_ITEM_ACTIVE, ROUNDSTART_TRAIT)
 
-/obj/item/melee/energy/blade/attack_self(mob/user)
+/obj/item/melee/energy/blade/attack_self__legacy__attackchain(mob/user)
 	return
 
 /obj/item/melee/energy/blade/hardlight
 	name = "hardlight blade"
 	desc = "An extremely sharp blade made out of hard light. Packs quite a punch."
 	icon_state = "lightblade"
-	item_state = "lightblade"
 
 /obj/item/melee/energy/proc/nemesis_effects(mob/living/user, mob/living/target)
 	return
@@ -398,7 +391,6 @@
 	force = 12
 	force_on = 20 //force when active
 	throwforce = 20
-	throwforce_on = 20
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -406,7 +398,7 @@
 	inhand_y_dimension = 64
 	icon_state = "cleaving_saw"
 	icon_state_on = "cleaving_saw_open"
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	is_a_cleaving_saw = TRUE
 	var/attack_verb_off = list("attacked", "sawed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_verb_on = list("cleaved", "swiped", "slashed", "chopped")
@@ -428,7 +420,7 @@
 	else
 		B.add_bleed(B.bleed_buildup)
 
-/obj/item/melee/energy/cleaving_saw/attack_self(mob/living/carbon/user)
+/obj/item/melee/energy/cleaving_saw/attack_self__legacy__attackchain(mob/living/carbon/user)
 	transform_weapon(user)
 
 /obj/item/melee/energy/cleaving_saw/proc/transform_weapon(mob/living/user, supress_message_text)
@@ -498,7 +490,7 @@
 	if(!HAS_TRAIT(src, TRAIT_ITEM_ACTIVE))
 		user.changeNext_move(CLICK_CD_MELEE * 0.5) //when closed, it attacks very rapidly
 
-/obj/item/melee/energy/cleaving_saw/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/melee/energy/cleaving_saw/attack__legacy__attackchain(mob/living/target, mob/living/carbon/human/user)
 	if(!HAS_TRAIT(src, TRAIT_ITEM_ACTIVE) || swiping || !target.density || get_turf(target) == get_turf(user))
 		if(!HAS_TRAIT(src, TRAIT_ITEM_ACTIVE))
 			faction_bonus_force = 0

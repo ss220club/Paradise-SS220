@@ -23,7 +23,7 @@
 	var/list/area_turfs = get_area_turfs(impact_area)
 	while(length(area_turfs))
 		var/turf/T = pick_n_take(area_turfs)
-		if(is_blocked_turf(T))
+		if(T.is_blocked_turf())
 			continue
 
 		// Give ghosts some time to jump there before it begins.
@@ -55,7 +55,7 @@
 			kill()
 			return
 
-	GLOB.minor_announcement.Announce("A tear in the fabric of space and time has opened. Expected location: [target_area.name].", "Anomaly Alert", 'sound/AI/anomaly.ogg')
+	GLOB.minor_announcement.Announce("На борту станции зафиксирован пространственно-временной разрыв. Предполагаемая локация: [impact_area.name].", "ВНИМАНИЕ: Обнаружена аномалия.", 'sound/AI/anomaly.ogg')
 
 /datum/event/tear/end()
 	if(TE)
@@ -73,15 +73,15 @@
 	pixel_x = -106
 	pixel_y = -96
 	/// What the leader of the dimensional tear will be
-	var/leader = /mob/living/simple_animal/hostile/hellhound/tear
+	var/leader = /mob/living/basic/hellhound/tear
 	var/spawn_max = 0
 	var/spawn_total = 0
 	var/list/possible_mobs = list(
-		/mob/living/simple_animal/hostile/hellhound,
-		/mob/living/simple_animal/hostile/skeleton,
-		/mob/living/simple_animal/hostile/netherworld,
-		/mob/living/simple_animal/hostile/netherworld/migo,
-		/mob/living/simple_animal/hostile/faithless)
+		/mob/living/basic/hellhound,
+		/mob/living/basic/skeleton,
+		/mob/living/basic/netherworld/,
+		/mob/living/basic/netherworld/migo,
+		/mob/living/basic/netherworld/faithless)
 
 /obj/effect/tear/Initialize(mapload)
 	. = ..()
@@ -107,6 +107,7 @@
 	if(!leader)
 		return
 	var/mob/M = new leader(get_turf(src))
+	M.faction = list("rift")
 	playsound(M, 'sound/goonstation/voice/growl2.ogg', 100)
 	visible_message("<span class='danger'>With a terrifying growl, \a [M] steps out of the portal!</span>")
 

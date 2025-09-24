@@ -3,7 +3,8 @@
 	desc = "Мягкая и приятная на ощупь игрушка важного рыжего лиса в пальто."
 	icon = 'modular_ss220/objects/icons/plushies.dmi'
 	icon_state = "macvulpix"
-	item_state = "macvulpix"
+	worn_icon_state = "macvulpix"
+	inhand_icon_state = "macvulpix"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/plushies_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/plushies_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
@@ -20,19 +21,24 @@
 /obj/item/toy/plushie/macvulpix/update_icon_state()
 	if(glasses)
 		icon_state = "[initial(icon_state)]_glasses"
-		item_state = "[initial(item_state)]_glasses"
+		worn_icon_state = "[initial(worn_icon_state)]_glasses"
+		inhand_icon_state = "[initial(inhand_icon_state)]_glasses"
 	else
 		icon_state = "[initial(icon_state)]"
-		item_state = "[initial(item_state)]"
+		worn_icon_state = "[initial(worn_icon_state)]"
+		inhand_icon_state = "[initial(inhand_icon_state)]"
 
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
 
-/obj/item/toy/plushie/macvulpix/attackby(obj/item/clothing/glasses/sunglasses, mob/living/user, params)
+/obj/item/toy/plushie/macvulpix/attack_by(obj/item/attacking, mob/user, params)
 	. = ..()
-	if(is_type_in_list(sunglasses, allowed_glasses))
+	if(.)
+		return
+	if(is_type_in_list(attacking, allowed_glasses))
+		var/obj/item/clothing/glasses/sunglasses = attacking
 		user.drop_item()
 		sunglasses.forceMove(src)
 		glasses = sunglasses

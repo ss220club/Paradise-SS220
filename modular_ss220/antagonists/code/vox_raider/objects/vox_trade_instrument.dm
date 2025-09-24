@@ -3,7 +3,8 @@
 	desc = "Приспособление воксов для оценки стоимости объекта."
 	icon = 'modular_ss220/antagonists/icons/trader_machine.dmi'
 	icon_state = "valuer"
-	item_state = "camera_bug"
+	worn_icon_state = "camera_bug"
+	inhand_icon_state = "camera_bug"
 	var/obj/machinery/vox_trader/connected_trader
 
 /obj/item/hand_valuer/examine(mob/user)
@@ -11,7 +12,7 @@
 	if(!isvox(user))
 		. += span_notice("Выглядит непонятно. Как воксы этим пользуются?")
 
-/obj/item/hand_valuer/afterattack(atom/target, mob/user, proximity, params)
+/obj/item/hand_valuer/afterattack__legacy__attackchain(atom/target, mob/user, proximity, params)
 	if(!proximity)
 		return
 

@@ -3,9 +3,10 @@
 	desc = "Fog of war that fits your pocket. Flicking the switch and extending the antenna will scramble nearby radio comms, making outgoing messages hard to understand."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "jammer"
-	item_state = "jammer"
+	inhand_icon_state = "jammer"
 	w_class = WEIGHT_CLASS_TINY
 	actions_types = list(/datum/action/item_action/toggle_radio_jammer)
+	new_attack_chain = TRUE
 	var/active = FALSE
 	var/range = 15
 
@@ -19,7 +20,9 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
-/obj/item/jammer/attack_self(mob/user)
+/obj/item/jammer/activate_self(mob/user)
+	if(..())
+		return
 	to_chat(user, "<span class='notice'>You [active ? "deactivate [src]. It goes quiet with a small click." : "activate [src]. It starts to hum softly."]</span>")
 	active = !active
 	update_icon(UPDATE_ICON_STATE)
@@ -27,21 +30,21 @@
 		GLOB.active_jammers |= src
 	else
 		GLOB.active_jammers -= src
-	for(var/datum/action/item_action/toggle_radio_jammer/A in actions)
-		A.UpdateButtons()
+	update_action_buttons()
 
 /obj/item/teleporter
 	name = "syndicate teleporter"
 	desc = "A strange syndicate version of a cult veil shifter. Warranty voided if exposed to EMP."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndi-tele-4"
+	inhand_icon_state = "electronic"
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 10
 	flags = CONDUCT
-	item_state = "electronic"
 	origin_tech = "magnets=3;combat=3;syndicate=3"
+	new_attack_chain = TRUE
 	var/list/icons_charges = list(
 		"syndi-tele-0",
 		"syndi-tele-1",
@@ -68,7 +71,9 @@
 	. = ..()
 	. += "<span class='notice'>[src] has [charges] out of [max_charges] charges left.</span>"
 
-/obj/item/teleporter/attack_self(mob/user)
+/obj/item/teleporter/activate_self(mob/user)
+	if(..())
+		return
 	attempt_teleport(user, FALSE)
 
 /obj/item/teleporter/process()
@@ -233,11 +238,10 @@
 	for(var/mob/living/M in fragging_location)//Hit everything in the turf
 		M.apply_damage(20, BRUTE)
 		M.Weaken(6 SECONDS)
-		to_chat(M, "<span_class='warning'>[user] teleports into you, knocking you to the floor with the bluespace wave!</span>")
+		to_chat(M, "<span class='warning'>[user] teleports into you, knocking you to the floor with the bluespace wave!</span>")
 
 /obj/item/paper/teleporter
 	name = "Teleporter Guide"
-	icon_state = "paper"
 	info = {"<b>Instructions on your new prototype syndicate teleporter</b><br>
 	<br>
 	This teleporter will teleport the user 4-8 meters in the direction they are facing. Unlike the cult veil shifter, you can not drag people with you.<br>
@@ -272,9 +276,12 @@
 	desc = "It contains an alien nanoswarm created by the technomancers of boron. Through near sorcerous feats via use of nanomachines, it enables its user to become fully fireproof."
 	icon = 'icons/obj/hypo.dmi'
 	icon_state = "combat_hypo"
+	new_attack_chain = TRUE
 	var/used = FALSE
 
-/obj/item/fireproofing_injector/attack_self(mob/living/user)
+/obj/item/fireproofing_injector/activate_self(mob/user)
+	if(..())
+		return
 	if(HAS_TRAIT(user, TRAIT_RESISTHEAT))
 		to_chat(user, "<span class='warning'>You are already fireproof!</span>")
 		return
@@ -298,6 +305,7 @@
 	desc = "Specially designed nanomachines that enhance the low-temperature regenerative capabilities of drask. Requires supercooled air in the enviroment or internals to function."
 	icon = 'icons/obj/hypo.dmi'
 	icon_state = "combat_hypo"
+	new_attack_chain = TRUE
 	var/used = FALSE
 
 /obj/item/cryoregenerative_enhancer/examine_more(mob/user)
@@ -306,7 +314,9 @@
 	. += ""
 	. += "Clinical trials have shown a four times increase in the rate of healing compared to a placebo. Whilst the product is technically not yet available to the public, the right connections with the right people allow interested parties to obtain samples early..."
 
-/obj/item/cryoregenerative_enhancer/attack_self(mob/living/user)
+/obj/item/cryoregenerative_enhancer/activate_self(mob/user)
+	if(..())
+		return
 	if(HAS_TRAIT(user, TRAIT_DRASK_SUPERCOOL))
 		to_chat(user, "<span class='warning'>Your regeneration is already enhanced!</span>")
 		return
@@ -332,13 +342,14 @@
 	desc = "A dangerous syndicate device focused on crowd control and escapes. Causes brain damage, confusion, and other nasty effects to those surrounding the user."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "batterer"
+	inhand_icon_state = "electronic"
 	throwforce = 5
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 4
 	throw_range = 10
 	flags = CONDUCT
-	item_state = "electronic"
 	origin_tech = "magnets=3;combat=3;syndicate=3"
+	new_attack_chain = TRUE
 
 	/// How many times the mind batter has been used
 	var/times_used = 0
@@ -368,7 +379,9 @@
 		times_used--
 		icon_state = "batterer"
 
-/obj/item/batterer/attack_self(mob/living/carbon/user)
+/obj/item/batterer/activate_self(mob/user)
+	if(..())
+		return
 	activate_batterer(user)
 
 /obj/item/batterer/proc/activate_batterer(mob/user)
@@ -378,7 +391,7 @@
 			to_chat(user, "<span class='danger'>The mind batterer has been burnt out!</span>")
 			times_used--
 			return
-		if(!do_after_once(user, 2 SECONDS, target = src, allow_moving = TRUE, attempt_cancel_message = "You think it's best to save this for later."))
+		if(!do_after_once(user, 2 SECONDS, target = src, allow_moving = TRUE, attempt_cancel_message = "You think it's best to save this for later.", hidden = TRUE))
 			times_used--
 			return
 		to_chat(user, "<span class='notice'>You trigger [src]. It has [max_uses-times_used] charges left.</span>")
@@ -450,6 +463,7 @@
 	icon = 'icons/obj/hhmirror.dmi'
 	icon_state = "hhmirror"
 	w_class = WEIGHT_CLASS_TINY
+	new_attack_chain = TRUE
 	var/datum/ui_module/appearance_changer/appearance_changer_holder
 
 /obj/item/handheld_mirror/ui_state(mob/user)
@@ -458,11 +472,12 @@
 /obj/item/handheld_mirror/ui_interact(mob/user, datum/tgui/ui = null)
 	appearance_changer_holder.ui_interact(user, ui)
 
-/obj/item/handheld_mirror/attack_self(mob/user)
-	if(ishuman(user))
-		appearance_changer_holder = new(src, user)
-		appearance_changer_holder.flags = APPEARANCE_ALL_BODY
-		ui_interact(user)
+/obj/item/handheld_mirror/activate_self(mob/user)
+	if(..() || !ishuman(user))
+		return
+	appearance_changer_holder = new(src, user)
+	appearance_changer_holder.flags = APPEARANCE_ALL_BODY
+	ui_interact(user)
 
 /obj/item/handheld_mirror/Initialize(mapload)
 	. = ..()
@@ -479,12 +494,13 @@
 	desc = "The Syndicate seem to have modified this T-ray scanner for a more nefarious purpose, allowing it to detect all loyal Nanotrasen crew."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndi-scanner"
+	inhand_icon_state = "electronic"
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 10
 	flags = CONDUCT
-	item_state = "electronic"
+	new_attack_chain = TRUE
 	/// Split points for range_messages.
 	var/list/ranges = list(5, 15, 30)
 	/// Messages to output to the user.
@@ -498,7 +514,9 @@
 	COOLDOWN_DECLARE(scan_cooldown)
 	var/on_hit_sound = 'sound/effects/ping_hit.ogg'
 
-/obj/item/syndi_scanner/attack_self(mob/user)
+/obj/item/syndi_scanner/activate_self(mob/user)
+	if(..())
+		return
 	if(!COOLDOWN_FINISHED(src, scan_cooldown))
 		to_chat(user, "<span class='warning'>[src] is recharging!</span>")
 		return

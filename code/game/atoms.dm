@@ -42,6 +42,9 @@
 	/// Value used to increment ex_act() if reactionary_explosions is on
 	var/explosion_block = 0
 
+	///vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
+	var/list/managed_vis_overlays
+
 	// Detective Work, used for the duplicate data points kept in the scanners
 	var/list/original_atom
 	/// List of fibers that this atom has
@@ -60,8 +63,12 @@
 	var/list/atom_colours	 //used to store the different colors on an atom
 						//its inherent color, the colored paint applied on it, special color effect etc...
 
-	/// Radiation insulation types
-	var/rad_insulation = RAD_NO_INSULATION
+	/// Radiation insulation for alpha emissions
+	var/rad_insulation_alpha = RAD_ALPHA_BLOCKER
+	/// Radiation insulation for beta emissions
+	var/rad_insulation_beta = RAD_NO_INSULATION
+	/// Radiation insulation for gamma emissions
+	var/rad_insulation_gamma = RAD_NO_INSULATION
 
 	/// Last name used to calculate a color for the chatmessage overlays. Used for caching.
 	var/chat_color_name
@@ -128,6 +135,19 @@
 	var/receive_ricochet_chance_mod = 1
 	///When a projectile ricochets off this atom, it deals the normal damage * this modifier to this atom
 	var/receive_ricochet_damage_coeff = 0.33
+	/// AI controller that controls this atom. type on init, then turned into an instance during runtime
+	var/datum/ai_controller/ai_controller
+	/// Information about attacks performed on this atom.
+	var/datum/attack_info/attack_info
+
+	/// Whether this atom is using the new attack chain.
+	var/new_attack_chain = FALSE
+
+	/// Do we care about temperature at all? Saves us a ton of proc calls during big fires.
+	var/cares_about_temperature = FALSE
+
+	// Should we ignore PROJECTILE_HIT_THRESHHOLD_LAYER to hit it? Allows us to hit things like floor, cables etc.
+	var/proj_ignores_layer = FALSE
 
 /atom/New(loc, ...)
 	SHOULD_CALL_PARENT(TRUE)
@@ -170,10 +190,6 @@
 	if(light_power && light_range)
 		update_light()
 
-	if(opacity && isturf(loc))
-		var/turf/T = loc
-		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
-
 	if(loc)
 		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) // Used for poolcontroller / pool to improve performance greatly. However it also open up path to other usage of observer pattern on turfs.
 
@@ -185,6 +201,11 @@
 		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF) //If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
 			smoothing_flags |= SMOOTH_OBJ
 		SET_BITFLAG_LIST(canSmoothWith)
+
+	if(ispath(ai_controller, /datum/ai_controller))
+		ai_controller = new ai_controller(src)
+	else if(!isnull(ai_controller))
+		stack_trace("[src] expected an ai controller typepath or null for its AI controller, but was instead given [ai_controller].")
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -224,6 +245,8 @@
 		return TRUE
 
 /atom/Destroy()
+	QDEL_NULL(attack_info)
+
 	if(alternate_appearances)
 		for(var/aakey in alternate_appearances)
 			var/datum/alternate_appearance/AA = alternate_appearances[aakey]
@@ -237,6 +260,9 @@
 	LAZYCLEARLIST(priority_overlays)
 
 	managed_overlays = null
+
+	if(ai_controller)
+		QDEL_NULL(ai_controller)
 
 	QDEL_NULL(light)
 
@@ -297,7 +323,7 @@
 			var/atom/movable/M = A
 			if(isliving(M.loc))
 				var/mob/living/L = M.loc
-				L.unEquip(M)
+				L.drop_item_to_ground(M)
 			M.forceMove(src)
 
 ///Return the air if we can analyze it
@@ -308,7 +334,14 @@
 	return
 
 /atom/proc/Bumped(atom/movable/AM)
-	return
+	// This may seem scary but one will find that replacing this with
+	// SHOULD_NOT_SLEEP(TRUE) surfaces two dozen instances where /Bumped sleeps,
+	// such as airlocks. We cannot wait for these procs to finish because they
+	// will clobber any movement which occurred in the intervening time. If we
+	// want to get rid of this we need to move bumping in its entirety to signal
+	// handlers, which is scarier.
+	set waitfor = FALSE
+	SEND_SIGNAL(src, COMSIG_ATOM_BUMPED, AM)
 
 /// Convenience proc to see if a container is open for chemistry handling
 /atom/proc/is_open_container()
@@ -329,9 +362,6 @@
 /// Is this atom drainable of reagents
 /atom/proc/is_drainable()
 	return reagents && (container_type & DRAINABLE)
-
-/atom/proc/CheckExit()
-	return TRUE
 
 /atom/proc/HasProximity(atom/movable/AM)
 	return
@@ -465,12 +495,14 @@
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
 
 /**
- * Updates the appearence of the icon
+ * Updates the appearence of the atom, including text.
  *
  * Mostly delegates to update_name, update_desc, and update_icon
  *
  * Arguments:
  * - updates: A set of bitflags dictating what should be updated. Defaults to [ALL]
+ *
+ * Supported bitflags: UPDATE_NAME, UPDATE_DESC, UPDATE_ICON
  */
 /atom/proc/update_appearance(updates=ALL)
 	SHOULD_NOT_SLEEP(TRUE)
@@ -497,7 +529,16 @@
 	PROTECTED_PROC(TRUE)
 	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_DESC, updates)
 
-/// Updates the icon of the atom
+/**
+ * Updates the icon and overlays of the atom
+ *
+ * Mostly delegates to update_icon_state and update_overlays
+ *
+ * Arguments:
+ * - updates: A set of bitflags dictating what should be updated. Defaults to [ALL]
+ *
+ * Supported bitflags: UPDATE_ICON_STATE, UPDATE_OVERLAYS
+ */
 /atom/proc/update_icon(updates=ALL)
 	SIGNAL_HANDLER
 	SHOULD_CALL_PARENT(TRUE)
@@ -521,19 +562,29 @@
 			else
 				managed_overlays = new_overlays
 			add_overlay(new_overlays)
-		SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS)
 
 	SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, updates)
 
-/// Updates the icon state of the atom
+/**
+ * Updates the icon state of the atom
+ *
+ * Excluding the base proc, or child overrides that do not intend to change the icon_state, this proc needs a minimum of two possible icon_states, otherwise it effectively becomes permanent and a redundant proc.
+ */
 /atom/proc/update_icon_state()
 	PROTECTED_PROC(TRUE)
 	return
 
-/// Updates the overlays of the atom. It has to return a list of overlays if it can't call the parent to create one. The list can contain anything that would be valid for the add_overlay proc: Images, mutable appearances, icon states...
+/**
+ * Updates the managed overlays of the atom
+ *
+ * Old overlays from this proc are removed when called, and does not affect overlays from outside it. e.g. add_overlay() called independently in a different proc.
+ *
+ * It has to return a list of overlays if it can't call the parent to create one. The list can contain anything that would be valid for the add_overlay proc: Images, mutable appearances, icon state names...
+ */
 /atom/proc/update_overlays()
 	PROTECTED_PROC(TRUE)
-	return list()
+	. = list()
+	SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS, .)
 
 /atom/proc/relaymove()
 	return
@@ -548,23 +599,6 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_FIRE_ACT, exposed_temperature, exposed_volume)
 	if(reagents)
 		reagents.temperature_reagents(exposed_temperature)
-
-/// If it returns TRUE, attack chain stops
-/atom/proc/tool_act(mob/living/user, obj/item/I, tool_type)
-	switch(tool_type)
-		if(TOOL_CROWBAR)
-			return crowbar_act(user, I)
-		if(TOOL_MULTITOOL)
-			return multitool_act(user, I)
-		if(TOOL_SCREWDRIVER)
-			return screwdriver_act(user, I)
-		if(TOOL_WRENCH)
-			return wrench_act(user, I)
-		if(TOOL_WIRECUTTER)
-			return wirecutter_act(user, I)
-		if(TOOL_WELDER)
-			return welder_act(user, I)
-
 
 // Tool-specific behavior procs. To be overridden in subtypes.
 /atom/proc/crowbar_act(mob/living/user, obj/item/I)
@@ -591,6 +625,9 @@
 /atom/proc/welder_act(mob/living/user, obj/item/I)
 	return
 
+/atom/proc/hammer_act(mob/living/user, obj/item/I)
+	return
+
 /// This is when an atom is emagged. Should return false if it fails, or it has no emag_act defined.
 /atom/proc/emag_act(mob/user)
 	SEND_SIGNAL(src, COMSIG_ATOM_EMAG_ACT, user)
@@ -600,7 +637,7 @@
 	return
 
 /atom/proc/cmag_act(mob/user)
-	return
+	return FALSE
 
 /atom/proc/uncmag()
 	return
@@ -608,10 +645,32 @@
 /**
  * Respond to a radioactive wave hitting this atom
  *
- * Default behaviour is to send [COMSIG_ATOM_RAD_ACT] and return
+ * This should only be called through the atom/base_rad_act proc
  */
-/atom/proc/rad_act(amount)
-	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, amount)
+/atom/proc/rad_act(atom/source, amount, emission_type)
+	return
+
+/**
+* Sends a COMSIG_ATOM_RAD_ACT signal, calls the atoms rad_act with the amount of radiation it should have absorbed and returns the rad insulation of the atom that isappropriate for emission_type
+*/
+/atom/proc/base_rad_act(atom/source, amount, emission_type)
+	switch(emission_type)
+		if(ALPHA_RAD)
+			. = rad_insulation_alpha
+		if(BETA_RAD)
+			. = rad_insulation_beta
+		if(GAMMA_RAD)
+			. = rad_insulation_gamma
+	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, amount, emission_type)
+	if(amount >= RAD_BACKGROUND_RADIATION)
+		rad_act(source, amount * (1 - .), emission_type)
+
+/// Attempt to contaminate a single atom
+/atom/proc/contaminate_atom(atom/source, intensity, emission_type)
+	if(flags_2 & RAD_NO_CONTAMINATE_2 || (SEND_SIGNAL(src, COMSIG_ATOM_RAD_CONTAMINATING) & COMPONENT_BLOCK_CONTAMINATION))
+		return
+	AddComponent(/datum/component/radioactive, intensity, source, emission_type)
+
 
 /atom/proc/fart_act(mob/living/M)
 	return FALSE
@@ -678,9 +737,7 @@
 
 /obj/item/update_filters()
 	. = ..()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtons()
+	update_action_buttons()
 
 /atom/proc/get_filter(name)
 	if(filter_data && filter_data[name])
@@ -1004,8 +1061,10 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 /atom/proc/clean_radiation(clean_factor = 2)
 	var/datum/component/radioactive/healthy_green_glow = GetComponent(/datum/component/radioactive)
 	if(!QDELETED(healthy_green_glow))
-		healthy_green_glow.strength = max(0, (healthy_green_glow.strength - (RAD_BACKGROUND_RADIATION * clean_factor)))
-		if(healthy_green_glow.strength <= RAD_BACKGROUND_RADIATION)
+		healthy_green_glow.alpha_strength = max(0, (healthy_green_glow.alpha_strength - (RAD_BACKGROUND_RADIATION * clean_factor)))
+		healthy_green_glow.beta_strength = max(0, (healthy_green_glow.beta_strength - (RAD_BACKGROUND_RADIATION * clean_factor)))
+		healthy_green_glow.gamma_strength = max(0, (healthy_green_glow.gamma_strength - (RAD_BACKGROUND_RADIATION * clean_factor)))
+		if((healthy_green_glow.alpha_strength + healthy_green_glow.beta_strength + healthy_green_glow.gamma_strength) <= RAD_BACKGROUND_RADIATION)
 			healthy_green_glow.RemoveComponent()
 
 /obj/effect/decal/cleanable/blood/clean_blood(radiation_clean = FALSE)
@@ -1061,20 +1120,25 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 	if(belt)
 		if(belt.clean_blood(radiation_clean))
 			update_inv_belt()
+	if(neck)
+		if(neck.clean_blood(radiation_clean))
+			update_inv_neck()
 	..(clean_hands, clean_mask, clean_feet)
 	update_icons()	//apply the now updated overlays to the mob
 
-/atom/proc/add_vomit_floor(toxvomit = FALSE, green = FALSE)
+/atom/proc/add_vomit_floor(toxvomit = FALSE, green = FALSE, type_override)
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 	if(!isspaceturf(src))
 		var/type = green ? /obj/effect/decal/cleanable/vomit/green : /obj/effect/decal/cleanable/vomit
 		var/vomit_reagent = green ? "green_vomit" : "vomit"
+		if(type_override)
+			type = type_override
 		for(var/obj/effect/decal/cleanable/vomit/V in get_turf(src))
 			if(V.type == type)
 				V.reagents.add_reagent(vomit_reagent, 5)
 				return
 
-		var/obj/effect/decal/cleanable/vomit/this = new type(src)
+		var/obj/effect/decal/cleanable/vomit/this = new type(get_turf(src))
 		if(!this.gravity_check)
 			this.newtonian_move(dir)
 
@@ -1169,7 +1233,7 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 	if(!message)
 		return
 	var/list/speech_bubble_hearers = list()
-	for(var/mob/M as anything in get_mobs_in_view(7, src))
+	for(var/mob/M as anything in get_mobs_in_view(7, src, ai_eyes=AI_EYE_REQUIRE_HEAR))
 		M.show_message("<span class='game say'><span class='name'>[src]</span> [atom_say_verb], \"[message]\"</span>", 2, null, 1)
 		if(M.client)
 			speech_bubble_hearers += M.client
@@ -1182,27 +1246,15 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay), I, speech_bubble_hearers, 30)
 
+/atom/proc/atom_emote(emote)
+	if(!emote)
+		return
+	visible_message("<span class='game emote'><span class='name'>[src]</span> [emote]</span>", "<span class='game emote'>You hear how something [emote]</span>")
+
+	runechat_emote(src, emote)
+
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
-
-/atom/vv_edit_var(var_name, var_value)
-	. = ..()
-	switch(var_name)
-		if("light_power", "light_range", "light_color")
-			update_light()
-		if("color")
-			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
-
-/atom/vv_get_dropdown()
-	. = ..()
-	.["Manipulate Colour Matrix"] = "?_src_=vars;manipcolours=[UID()]"
-	var/turf/curturf = get_turf(src)
-	if(curturf)
-		.["Jump to turf"] = "?_src_=holder;adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]"
-	.["Add reagent"] = "?_src_=vars;addreagent=[UID()]"
-	.["Edit reagents"] = "?_src_=vars;editreagents=[UID()]"
-	.["Trigger explosion"] = "?_src_=vars;explode=[UID()]"
-	.["Trigger EM pulse"] = "?_src_=vars;emp=[UID()]"
 
 /atom/proc/AllowDrop()
 	return FALSE
@@ -1216,13 +1268,23 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 /atom/Entered(atom/movable/AM, atom/oldLoc)
 	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, AM, oldLoc)
 
-/atom/Exit(atom/movable/AM, atom/newLoc)
-	. = ..()
-	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, AM, newLoc) & COMPONENT_ATOM_BLOCK_EXIT)
+/**
+ * An atom is attempting to exit this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXIT]
+ */
+/atom/Exit(atom/movable/leaving, direction)
+	// Don't call `..()` here, otherwise `Uncross()` gets called.
+	// See the doc comment on `Uncross()` to learn why this is bad.
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, leaving, direction) & COMPONENT_ATOM_BLOCK_EXIT)
 		return FALSE
 
-/atom/Exited(atom/movable/AM, atom/newLoc)
-	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, newLoc)
+	return TRUE
+
+/atom/Exited(atom/movable/AM, direction)
+	var/new_loc = get_step(AM, direction)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, new_loc)
 
 /*
 	Adds an instance of colour_type to the atom's atom_colours list
@@ -1428,3 +1490,23 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
  */
 /atom/proc/relaydrive(mob/living/user, direction)
 	return !(SEND_SIGNAL(src, COMSIG_RIDDEN_DRIVER_MOVE, user, direction) & COMPONENT_DRIVER_BLOCK_MOVE)
+
+/// Used with the spawner component to do something when a mob is spawned.
+/atom/proc/on_mob_spawn(mob/created_mob)
+	return
+
+///Returns the src and all recursive contents as a list.
+/atom/proc/get_all_contents()
+	. = list(src)
+	var/i = 0
+	while(i < length(.))
+		var/atom/checked_atom = .[++i]
+		. += checked_atom.contents
+
+/atom/proc/store_last_attacker(mob/living/attacker, obj/item/weapon)
+	if(!attack_info)
+		attack_info = new
+	attack_info.last_attacker_name = attacker.real_name
+	attack_info.last_attacker_ckey = attacker.ckey
+	if(istype(weapon))
+		attack_info.last_attacker_weapon = "[weapon] ([weapon.type])"

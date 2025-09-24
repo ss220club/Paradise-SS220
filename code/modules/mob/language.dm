@@ -16,7 +16,7 @@
 	var/flags = 0                               // Various language flags.
 	var/native                                  // If set, non-native speakers will have trouble speaking.
 	var/list/syllables                          // Used when scrambling text for a non-speaker.
-	var/list/space_chance = 55                  // Likelihood of getting a space in the random scramble string.
+	var/space_chance = 55                  // Likelihood of getting a space in the random scramble string.
 	var/follow = 0                              // Applies to HIVEMIND languages - should a follow link be included for dead mobs?
 	var/english_names = 0                       // Do we want English names by default, no matter what?
 	var/list/scramble_cache = list()
@@ -118,7 +118,7 @@
 
 		else if(istype(player, /mob/dead) || ((src in player.languages) && check_special_condition(player, speaker)))
 			to_chat(player, msg)
-			if((flags & HIVEMIND) && (flags & HIVEMIND_RUNECHAT))
+			if((flags & HIVEMIND) && (flags & HIVEMIND_RUNECHAT) && player?.client?.prefs.toggles2 & PREFTOGGLE_2_RUNECHAT)
 				player.create_chat_message(player, "[speaker_mask], [format_message(message)]")
 
 /datum/language/proc/check_special_condition(mob/other, mob/living/speaker)
@@ -219,15 +219,15 @@
 	return new_name
 
 /datum/language/skrell
-	name = "Skrellian"
-	desc = "A melodic and complex language spoken by the Skrell of Qerrbalak. Some of the notes are inaudible to humans."
+	name = "Qurvolious"
+	desc = "The state language of the Royal Domain of Qerballak, Qurvolious has a rich and melodious sound that flows like water. Certain syllables of the language cannot be comprehended by non-Skrell."
 	speech_verb = "warbles"
 	ask_verb = "warbles"
 	exclaim_verbs = list("warbles")
 	colour = "skrell"
 	key = "k"
 	flags = RESTRICTED
-	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix","*","!")
+	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix","!","*")
 
 /datum/language/vox
 	name = "Vox-pidgin"
@@ -317,13 +317,13 @@
 /datum/language/slime
 	name = "Bubblish"
 	desc = "The language of slimes. It's a mixture of bubbling noises and pops. Very difficult to speak without mechanical aid for humans."
-	speech_verb = "bubbles and pops"
-	ask_verb = "bubbles and pops"
-	exclaim_verbs = list("bubbles and pops")
+	speech_verb = "burbles"
+	ask_verb = "pops softly"
+	exclaim_verbs = list("fizzes")
 	colour = "slime"
 	key = "f"
 	flags = RESTRICTED | WHITELISTED
-	syllables = list("blob","plop","pop","bop","boop")
+	syllables = list("zlu", "gl", "oo", "shl", "bl", "wob", "lur", "wh", "zz", "spl", "mur", "fl", "dro", "fru", "slu", "gle", "flo")
 
 /datum/language/slime/get_random_name(gender)
 	var/new_name
@@ -413,8 +413,7 @@
 
 /datum/language/common
 	name = "Galactic Common"
-	desc = "The common galactic tongue."
-	speech_verb = "says"
+	desc = "Originally a carefully crafted fusion of various Human and Skrell dialects, Galactic Common is the most commonly spoken language in the Sector, and incorporates influences from nearly every known sapient species."
 	exclaim_verbs = list("exclaims", "shouts", "yells")
 	whisper_verb = "whispers"
 	key = "9"
@@ -424,15 +423,15 @@
 
 /datum/language/human
 	name = "Sol Common"
-	desc = "A bastardized hybrid of informal English and elements of Mandarin Chinese; the common language of the Sol system."
-	speech_verb = "says"
-	exclaim_verbs = list("exclaims", "shouts", "yells")
+	desc = "An artifical language designed by the Trans-Solar Federation for ease of use and concise communication."
+	exclaim_verbs = list("snaps", "shouts", "barks")
 	whisper_verb = "whispers"
 	colour = "solcom"
 	key = "1"
+	space_chance = 70
 	flags = RESTRICTED
-	syllables = list("tao","shi","tzu","yi","com","be","is","i","op","vi","ed","lec","mo","cle","te","dis","e")
-	english_names = 1
+	syllables = list("ba","da","ka","ki","to","ta","sa","so","a","e","i","o","u","am","on","na","in",
+					"ko",)
 
 // Galactic common languages (systemwide accepted standards).
 /datum/language/trader
@@ -471,12 +470,13 @@
 	key = "0"
 	syllables = list ("honk","squeak","bonk","toot","narf","zub","wee","wub","norf")
 
+// SS220 EDIT START - Cygni -> Neo-Russkiya
 /datum/language/com_srus
 	name = "Neo-Russkiya"
 	desc = "Neo-Russkiya, a bastard mix of Gutter, Sol Common, and old Russian. The official language of the USSP. It has started to see use outside of the fringe in hobby circles and protest groups. The linguistic spirit of Sol-Gov criticisms."
 	speech_verb = "articulates"
 	whisper_verb = "mutters"
-	exclaim_verbs = list("exaggerates")
+	exclaim_verbs = list("proclaims", "boasts", "accentuates")
 	colour = "com_srus"
 	key = "?"
 	space_chance = 65
@@ -490,6 +490,7 @@
 					"odasky","trov","niki","ivano","dostov","sokol","oupa","pervom","schel",
 					"tizan","chka","tagan","dobry","okt","boda","veta","idi","cyk","blyt","hui","na",
 					"udi","litchki","casa","linka","toly","anatov","vich","vech","vuch","toi","ka","vod")
+// SS220 EDIT END - Cygni -> Neo-Russkiya
 
 /datum/language/xenocommon
 	name = "Xenomorph"
@@ -542,7 +543,6 @@
 /datum/language/ling
 	name = "Changeling"
 	desc = "Although they are normally wary and suspicious of each other, changelings can commune over a distance."
-	speech_verb = "says"
 	colour = "changeling"
 	key = "g"
 	flags = RESTRICTED | HIVEMIND | NOBABEL
@@ -626,7 +626,7 @@
 			continue
 		else if(drone_only && !isdrone(S))
 			continue
-		else if(isAI(S))
+		else if(is_ai(S))
 			message_start = list("<i><span class='game say'>[name], <a href='byond://?src=[S.UID()];track=\ref[speaker]'><span class='name'>[speaker.name]</span></a>")
 		else if(isrobot(S))
 			var/mob/living/silicon/robot/borg = S
@@ -652,11 +652,8 @@
 	speech_verb = "transmits"
 	ask_verb = "transmits"
 	exclaim_verbs = list("transmits")
-	colour = "say_quote"
 	key = "d"
-	flags = RESTRICTED | HIVEMIND | NOBABEL
 	drone_only = TRUE
-	follow = TRUE
 
 /datum/language/drone
 	name = "Drone"
@@ -785,7 +782,7 @@
 	ask_verb = "groans"
 	exclaim_verbs = list("yells")
 	colour = "zombie"
-	key = "zz" //doesn't matter, this is their default and only language
+	key = "w"
 	flags = RESTRICTED | NOLIBRARIAN
 	syllables = list("Brains", "Brainssss", "Flesh", "Grrr", "Hnng", "Braaaains", "Braaiiiins")
 	english_names = TRUE

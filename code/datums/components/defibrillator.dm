@@ -72,7 +72,7 @@
 
 	var/effect_target = isnull(actual_unit) ? parent : actual_unit
 
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(trigger_defib))
+	RegisterSignal(parent, COMSIG_ATTACK, PROC_REF(trigger_defib))
 	RegisterSignal(effect_target, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag))
 	RegisterSignal(effect_target, COMSIG_ATOM_EMP_ACT, PROC_REF(on_emp))
 
@@ -119,7 +119,7 @@
  * Start the defibrillation process when triggered by a signal.
  */
 /datum/component/defib/proc/trigger_defib(obj/item/paddles, mob/living/carbon/human/target, mob/living/user)
-	SIGNAL_HANDLER  // COMSIG_ITEM_ATTACK
+	SIGNAL_HANDLER  // COMSIG_ATTACK
 	// This includes some do-afters, so we have to pass it off asynchronously
 	INVOKE_ASYNC(src, PROC_REF(defibrillate), user, target)
 	return TRUE
@@ -269,7 +269,7 @@
 	else if(!target.get_organ_slot("brain"))  // So things like headless clings don't get outed
 		failure_message = "<span class='boldnotice'>[defib_ref] buzzes: Resuscitation failed - No brain detected within patient.</span>"
 	else if(ghost)
-		if(!ghost.can_reenter_corpse || target.suiciding) // DNR or AntagHUD
+		if(!(ghost.ghost_flags & GHOST_CAN_REENTER) || target.suiciding) // DNR or AntagHUD
 			failure_message = "<span class='boldnotice'>[defib_ref] buzzes: Resuscitation failed - No electrical brain activity detected.</span>"
 		else
 			failure_message = "<span class='boldnotice'>[defib_ref] buzzes: Resuscitation failed - Patient's brain is unresponsive. Further attempts may succeed.</span>"

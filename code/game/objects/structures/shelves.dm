@@ -14,28 +14,34 @@ GLOBAL_LIST_INIT(shelf_colors, list("basic", "sci", "sup", "serv", "med", "sec",
 	var/shelf_style = "basic"
 	/// The current overlay of the top shelf. Used for interleaving objects and shelf layers for the illusion of depth.
 	var/image/shelf_overlay
+	var/build_stack_type = /obj/item/stack/sheet/metal
 	COOLDOWN_DECLARE(spraypaint_cd)
 
 /obj/structure/shelf/Initialize(mapload)
 	. = ..()
 	var/area/A = get_area(src)
-	AddComponent(/datum/component/shelver/basic_shelf, random_pickup_locations_ = istype(A, /area/station/maintenance))
+	AddComponent(/datum/component/shelver/basic_shelf, random_pickup_locations_ = istype(A, /area/station/maintenance) || istype(A, /area/ruin/lavaland_relay))
 	update_icon()
 	set_style(shelf_style)
 
 	if(mapload)
 		SEND_SIGNAL(src, COMSIG_SHELF_ADDED_ON_MAPLOAD)
 
-/obj/structure/shelf/attackby(obj/item/I, mob/living/user, params)
+/obj/structure/shelf/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	var/obj/item/toy/crayon/spraycan/spraycan = I
 	if(!istype(spraycan))
 		return ..()
+
 	if(spraycan.capped)
+		return ..()
+
+	// Spraypaint cannot turn brass into steel.
+	if(shelf_style == "clockwork")
 		return ..()
 
 	if(!COOLDOWN_FINISHED(src, spraypaint_cd))
 		to_chat(user, "<span class='warning'>The paint on [src] is still drying!</span>")
-		return
+		return ITEM_INTERACT_COMPLETE
 
 	var/cur_idx = GLOB.shelf_colors.Find(shelf_style)
 	if(!cur_idx)
@@ -48,6 +54,7 @@ GLOBAL_LIST_INIT(shelf_colors, list("basic", "sci", "sup", "serv", "med", "sec",
 
 	// Tiny cooldown to prevent constant spamming of the action
 	COOLDOWN_START(src, spraypaint_cd, 1 SECONDS)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/structure/shelf/proc/set_style(new_style)
 	if(shelf_style == new_style && !isnull(shelf_overlay))
@@ -67,14 +74,14 @@ GLOBAL_LIST_INIT(shelf_colors, list("basic", "sci", "sup", "serv", "med", "sec",
 	. = TRUE
 	if(user.a_intent == INTENT_HELP)
 		return FALSE
-	if(!I.use_tool(src, user, 2.5 SECONDS, volume = I.tool_volume))
+	if(!I.use_tool(src, user, (2.5 SECONDS) * I.toolspeed, volume = I.tool_volume))
 		return
 
 	to_chat(user, "<span class='notice'>You disassemble [src].</span>")
 	deconstruct()
 
 /obj/structure/shelf/deconstruct(disassembled)
-	new /obj/item/stack/sheet/metal(get_turf(src), 5)
+	new build_stack_type(get_turf(src), 5)
 	return ..()
 
 /obj/structure/shelf/engineering
@@ -105,16 +112,22 @@ GLOBAL_LIST_INIT(shelf_colors, list("basic", "sci", "sup", "serv", "med", "sec",
 	icon_state = "shelf_sup"
 	shelf_style = "sup"
 
+/obj/structure/shelf/clockwork
+	name = "brass shelf"
+	icon_state = "shelf_clockwork"
+	shelf_style = "clockwork"
+	build_stack_type = /obj/item/stack/tile/brass
+
 /obj/structure/gunrack
 	name = "gun rack"
 	desc = "A rack for stowing firearms."
-	icon = 'icons/obj/structures.dmi'
 	icon_state = "gunrack"
 	layer = TABLE_LAYER
 	density = TRUE
 	anchored = TRUE
 	pass_flags_self = PASSTAKE
 	max_integrity = 80
+	var/build_stack_type = /obj/item/stack/sheet/metal
 
 /obj/structure/gunrack/Initialize(mapload)
 	. = ..()
@@ -135,5 +148,51 @@ GLOBAL_LIST_INIT(shelf_colors, list("basic", "sci", "sup", "serv", "med", "sec",
 	deconstruct()
 
 /obj/structure/gunrack/deconstruct(disassembled)
-	new /obj/item/stack/sheet/metal(get_turf(src), 5)
+	new build_stack_type(get_turf(src), 5)
+	return ..()
+
+/obj/structure/gunrack/clockwork
+	name = "brass weapon rack"
+	icon_state = "gunrack_clockwork"
+	build_stack_type = /obj/item/stack/tile/brass
+
+/obj/structure/spear_rack
+	name = "spear rack"
+	desc = "A rack meant to hold spears, though you could probably balance other things on there if you tried..."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "rack_wood"
+	layer = TABLE_LAYER
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = PASSTAKE
+	max_integrity = 80
+	var/build_stack_type = /obj/item/stack/sheet/wood
+	var/image/shelf_overlay
+
+/obj/structure/spear_rack/Initialize(mapload)
+	. = ..()
+	var/static/list/spear_subtypes = typesof(/obj/item/spear)
+	shelf_overlay = mutable_appearance('icons/obj/objects.dmi', "rack_wood_over")
+	shelf_overlay.layer = LOW_ITEM_LAYER
+	AddComponent(/datum/component/shelver/spear_rack, allowed_types_ = spear_subtypes)
+	update_appearance(UPDATE_OVERLAYS)
+
+	if(mapload)
+		SEND_SIGNAL(src, COMSIG_SHELF_ADDED_ON_MAPLOAD)
+
+/obj/structure/spear_rack/update_overlays()
+	return list(shelf_overlay)
+
+/obj/structure/spear_rack/wrench_act(mob/living/user, obj/item/I)
+	. = TRUE
+	if(user.a_intent != INTENT_HELP)
+		return FALSE
+	if(!I.use_tool(src, user, 2.5 SECONDS, volume = I.tool_volume))
+		return
+
+	to_chat(user, "<span class='notice'>You disassemble [src].</span>")
+	deconstruct()
+
+/obj/structure/spear_rack/deconstruct(disassembled)
+	new build_stack_type(get_turf(src), 2)
 	return ..()

@@ -22,7 +22,7 @@
 		playsound(T, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		return TRUE
 
-/obj/item/lance_docking_generator/attack_self(mob/living/user)
+/obj/item/lance_docking_generator/attack_self__legacy__attackchain(mob/living/user)
 	if(!is_station_level(user.z))
 		to_chat(user, "<span class='warning'>You'll want this to dock on the station.</span>")
 		return
@@ -107,7 +107,6 @@
 	name = "lance docking port"
 	id = "emergency_home"
 	height = 50
-	dheight = 0
 	width = 19
 	dwidth = 9
 
@@ -115,4 +114,3 @@
 	icon_state = null
 	gpstag = "Lance Docking Beacon"
 	desc = "It is not reccomended to stand here."
-	invisibility = 100

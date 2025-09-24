@@ -26,39 +26,51 @@
 	mob_biotypes = MOB_ORGANIC | MOB_BEAST
 	mob_size = MOB_SIZE_TINY
 	var/mouse_color //brown, gray and white, leave blank for random
-	layer = MOB_LAYER
 	atmos_requirements = list("min_oxy" = 16, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323	//Above 50 Degrees Celcius
-	universal_speak = FALSE
 	can_hide = TRUE
 	pass_door_while_hidden = TRUE
 	holder_type = /obj/item/holder/mouse
-	can_collar = TRUE
 	gold_core_spawnable = FRIENDLY_SPAWN
 	var/chew_probability = 1
 
 /mob/living/simple_animal/mouse/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/wears_collar)
 	AddComponent(/datum/component/squeak, list('sound/creatures/mousesqueak.ogg' = 1), 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE) //as quiet as a mouse or whatever
+	if(!mouse_color)
+		mouse_color = pick("brown", "gray", "white")
+	icon_state = "mouse_[mouse_color]"
+	icon_living = "mouse_[mouse_color]"
+	icon_dead = "mouse_[mouse_color]_dead"
+	icon_resting = "mouse_[mouse_color]_sleep"
+	update_appearance(UPDATE_ICON_STATE|UPDATE_DESC)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /mob/living/simple_animal/mouse/handle_automated_action()
-#ifdef UNIT_TESTS // DO NOT EAT MY CABLES DURING UNIT TESTS
+#if defined(GAME_TESTS) || defined(MAP_TESTS) // DO NOT EAT MY CABLES DURING TESTS
 	return
 #endif
-	if(prob(chew_probability) && isturf(loc))
-		var/turf/simulated/floor/F = get_turf(src)
-		if(istype(F) && !F.intact)
-			var/obj/structure/cable/C = locate() in F
-			if(C && prob(15))
-				if(C.get_available_power() && !HAS_TRAIT(src, TRAIT_SHOCKIMMUNE))
-					visible_message("<span class='warning'>[src] chews through [C]. It's toast!</span>")
-					playsound(src, 'sound/effects/sparks2.ogg', 100, 1)
-					toast() // mmmm toasty.
-				else
-					visible_message("<span class='warning'>[src] chews through [C].</span>")
-				investigate_log("was chewed through by a mouse in [get_area(F)]([F.x], [F.y], [F.z] - [ADMIN_JMP(F)])","wires")
-				C.deconstruct()
+	if(!prob(chew_probability) || !isfloorturf(loc))
+		return
+	var/turf/simulated/floor/F = get_turf(src)
+	if(F.intact || F.transparent_floor)
+		return
+	var/obj/structure/cable/C = locate() in F
+	if(!C || !prob(15))
+		return
+	if(C.get_available_power() && !HAS_TRAIT(src, TRAIT_SHOCKIMMUNE))
+		visible_message("<span class='warning'>[src] chews through [C]. It's toast!</span>")
+		playsound(src, 'sound/effects/sparks2.ogg', 100, 1)
+		toast() // mmmm toasty.
+	else
+		visible_message("<span class='warning'>[src] chews through [C].</span>")
+	investigate_log("was chewed through by a mouse in [get_area(F)]([F.x], [F.y], [F.z] - [ADMIN_JMP(F)])",INVESTIGATE_WIRES)
+	C.deconstruct()
 
 /mob/living/simple_animal/mouse/handle_automated_speech()
 	..()
@@ -75,16 +87,6 @@
 	else if(prob(0.5))
 		lay_down()
 
-/mob/living/simple_animal/mouse/New()
-	..()
-	if(!mouse_color)
-		mouse_color = pick( list("brown","gray","white") )
-	icon_state = "mouse_[mouse_color]"
-	icon_living = "mouse_[mouse_color]"
-	icon_dead = "mouse_[mouse_color]_dead"
-	icon_resting = "mouse_[mouse_color]_sleep"
-	update_appearance(UPDATE_DESC)
-
 /mob/living/simple_animal/mouse/update_desc()
 	. = ..()
 	desc = "It's a small [mouse_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
@@ -95,18 +97,17 @@
 	..()
 
 /mob/living/simple_animal/mouse/start_pulling(atom/movable/AM, state, force = pull_force, show_message = FALSE)//Prevents mouse from pulling things
-	if(istype(AM, /obj/item/food/cheesewedge))
+	if(isfood(AM)) // SS220 EDIT - Mouse pulling
 		return ..() // Get dem
 	if(show_message)
-		to_chat(src, "<span class='warning'>You are too small to pull anything except cheese.</span>")
+		to_chat(src, "<span class='warning'>Ты слишком крохотный, чтобы тянуть что-то кроме еды.</span>") // SS220 EDIT - Mouse pulling
 	return
 
-/mob/living/simple_animal/mouse/Crossed(AM as mob|obj, oldloc)
-	if(ishuman(AM))
+/mob/living/simple_animal/mouse/proc/on_atom_entered(datum/source, atom/movable/entered)
+	if(ishuman(entered))
 		if(stat == CONSCIOUS)
-			var/mob/M = AM
+			var/mob/M = entered
 			to_chat(M, "<span class='notice'>[bicon(src)] Squeek!</span>")
-	..()
 
 /mob/living/simple_animal/mouse/proc/toast()
 	add_atom_colour("#3A3A3A", FIXED_COLOUR_PRIORITY)
@@ -125,7 +126,7 @@
 		return FALSE
 	layer = MOB_LAYER
 	if(client)
-		client.time_died_as_mouse = world.time
+		client.persistent.time_died_as_mouse = world.time
 
 /*
  * Mouse types
@@ -135,6 +136,13 @@
 	mouse_color = "white"
 	icon_state = "mouse_white"
 
+/mob/living/simple_animal/mouse/white/linter
+	name = "Linter"
+
+/mob/living/simple_animal/mouse/white/linter/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, ROUNDSTART_TRAIT)
+
 /mob/living/simple_animal/mouse/gray
 	mouse_color = "gray"
 
@@ -143,32 +151,30 @@
 	icon_state = "mouse_brown"
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
-/mob/living/simple_animal/mouse/brown/Tom
+/mob/living/simple_animal/mouse/brown/tom
 	name = "Tom"
 	real_name = "Tom"
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
 	response_harm   = "splats"
 	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 
-/mob/living/simple_animal/mouse/brown/Tom/update_desc()
+/mob/living/simple_animal/mouse/brown/tom/update_desc()
 	. = ..()
 	desc = "Jerry the cat is not amused."
 
-/mob/living/simple_animal/mouse/brown/Tom/Initialize(mapload)
+/mob/living/simple_animal/mouse/brown/tom/Initialize(mapload)
 	. = ..()
 	// Tom fears no cable.
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, SPECIES_TRAIT)
 
-/mob/living/simple_animal/mouse/white/Brain
+/mob/living/simple_animal/mouse/white/brain
 	name = "Brain"
 	real_name = "Brain"
 	response_harm = "splats"
 	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 
-/mob/living/simple_animal/mouse/white/Brain/update_desc()
+/mob/living/simple_animal/mouse/white/brain/update_desc()
 	. = ..()
 	desc = "Gee Virology, what are we going to do tonight? The same thing we do every night, try to take over the world!"
 

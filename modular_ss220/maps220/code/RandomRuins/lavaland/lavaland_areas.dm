@@ -1,5 +1,5 @@
 /area/lavaland/surface/outdoors/legion
-	name = "Necropolis"
+	name = "Некрополис"
 	no_teleportlocs = TRUE
 	tele_proof = TRUE
 
@@ -8,3 +8,7 @@
 
 /area/ruin/powered/cheesus
 	icon_state = "yellow"
+
+/area/mine/outpost/maintenance/north
+	name = "Северные Технические Тоннели Шахтерского Аванпоста"
+	icon_state = "fmaint"

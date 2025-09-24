@@ -3,7 +3,7 @@
 	desc = "Маленький складной нож скрытого ношения. \
 	Нож в итальянском стиле, который исторически стал предметом споров и даже запретов \
 	Его лезвие практически мгновенно выбрасывается при нажатии кнопки-качельки."
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_TINY
 
 	var/on = FALSE
@@ -14,8 +14,10 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/melee.dmi'
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	item_state = "stylet_0"
-	var/item_state_on = "stylet_1"
+	worn_icon_state = "stylet_0"
+	inhand_icon_state = "stylet_0"
+	var/worn_icon_state_on = "stylet_1"
+	var/inhand_icon_state_on = "stylet_1"
 	icon_state = "stylet_0"
 	var/icon_state_on = "stylet_1"
 	var/extend_sound = 'modular_ss220/objects/sound/weapons/styletext.ogg'
@@ -25,24 +27,21 @@
 
 /obj/item/melee/stylet/update_icon_state()
 	. = ..()
-	if(on)
-		icon_state = "stylet_1"
-	else
-		icon_state = "stylet_0"
+	icon_state = on ? icon_state_on : initial(icon_state)
+	worn_icon_state = on ? worn_icon_state_on : initial(worn_icon_state)
+	inhand_icon_state = on ? inhand_icon_state_on : initial(inhand_icon_state)
 
-/obj/item/melee/stylet/attack_self(mob/user)
+/obj/item/melee/stylet/attack_self__legacy__attackchain(mob/user)
 	on = !on
 
 	if(on)
 		to_chat(user, span_userdanger("Вы разложили [name]."))
-		item_state = item_state_on
 		update_icon(UPDATE_ICON_STATE)
 		w_class = WEIGHT_CLASS_SMALL
 		force = force_on
 		attack_verb = attack_verb_on
 	else
 		to_chat(user, span_notice("Вы сложили [name]."))
-		item_state = initial(item_state)
 		update_icon(UPDATE_ICON_STATE)
 		w_class = initial(w_class)
 		force = initial(force)

@@ -9,7 +9,7 @@
 
 /datum/event/spider_infestation/announce(false_alarm)
 	if(successSpawn || false_alarm)
-		GLOB.minor_announcement.Announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
+		GLOB.minor_announcement.Announce("Обнаружены неопознанные формы жизни на борту станции [station_name()]. Обезопасьте все наружные входы и выходы, включая вентиляцию и вытяжки.", "ВНИМАНИЕ: Неопознанные формы жизни.", new_sound = 'sound/AI/aliens.ogg')
 	else
 		log_and_message_admins("Warning: Could not spawn any mobs for event Spider Infestation")
 
@@ -19,6 +19,6 @@
 		var/obj/vent = pick_n_take(vents)
 		var/obj/structure/spider/spiderling/S = new(vent.loc)
 		if(prob(66))
-			S.grow_as = /mob/living/simple_animal/hostile/poison/giant_spider/nurse
+			S.grow_as = /mob/living/basic/giant_spider/nurse
 		spawncount--
 		successSpawn = TRUE

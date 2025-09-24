@@ -3,7 +3,7 @@
 /obj/structure/light_fake
 	name = "light fixture"
 	desc = "A lighting fixture."
-	icon = 'modular_ss220/aesthetics/lights/icons/lights.dmi'
+	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube1"
 	anchored = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
@@ -15,8 +15,14 @@
 /obj/structure/light_fake/small
 	name = "light fixture"
 	desc = "A small lighting fixture."
-	icon = 'icons/obj/lighting.dmi'
 	icon_state = "bulb1"
+	light_color = "#a0a080"
+	light_range = 4
+
+/obj/structure/light_fake/floor
+	name = "floor light"
+	desc = "A small lighting fixture."
+	icon_state = "floor1"
 	light_color = "#a0a080"
 	light_range = 4
 
@@ -42,16 +48,14 @@
 
 //Crates
 /obj/structure/closet/crate/wooden
-	icon = 'modular_ss220/maps220/icons/crates.dmi'
-	open_sound = 'sound/machines/wooden_closet_open.ogg'
-	close_sound = 'sound/machines/wooden_closet_close.ogg'
-
-/obj/structure/closet/crate/wooden/wooden_crate
 	name = "wooden crate"
 	desc = "A wooden crate."
+	icon = 'modular_ss220/maps220/icons/crates.dmi'
 	icon_state = "wooden"
 	icon_opened = "wooden_open"
 	icon_closed = "wooden"
+	open_sound = 'sound/machines/wooden_closet_open.ogg'
+	close_sound = 'sound/machines/wooden_closet_close.ogg'
 
 /obj/structure/closet/crate/wooden/barrel
 	name = "wooden barrel"
@@ -144,12 +148,22 @@
 
 // Mecha equipment
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/syndi
-	name = "\improper AC 2 \"Special\""
-	desc = "C-20r inside!"
-	equip_cooldown = 8
-	projectile = /obj/item/projectile/bullet/midbullet2
-	fire_sound = 'sound/weapons/gunshots/gunshot_smg.ogg'
+	name = "\improper SA-9 \"Tacit\""
+	equip_cooldown = 0.75 SECONDS
+	projectile = /obj/item/projectile/bullet/midbullet
+	projectiles_per_shot = 2
+	projectile_delay = 1.2
 	projectile_energy_cost = 14
+	suppressed = TRUE
+	fire_sound = 'sound/weapons/gunshots/gunshot_silenced.ogg'
+
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion/syndie
+	name = "SA ISR \"Interitus\""
+	equip_cooldown = 8 SECONDS // greater cooldown for high damage
+	energy_drain = 500 // 2000 total
+	projectile = /obj/item/projectile/ion
+	projectiles_per_shot = 4
+	variance = 20 // kinda accurate
 
 /* Caves awaymission */
 /obj/item/clothing/gloves/ring/immortality_ring
@@ -194,13 +208,13 @@
 	ring_ability(user)
 
 /obj/item/clothing/gloves/ring/immortality_ring/item_action_slot_check(slot, mob/user, immortality)
-	if(slot == SLOT_HUD_GLOVES)
+	if(slot == ITEM_SLOT_GLOVES)
 		return TRUE
 
 /obj/item/clothing/gloves/ring/immortality_ring/equipped(mob/user, slot)
 	..()
 	var/mob/living/carbon/human/H = user
-	if(istype(H) && slot == SLOT_HUD_GLOVES)
+	if(istype(H) && slot == ITEM_SLOT_GLOVES)
 		flags = NODROP
 		to_chat(user, span_danger("[name] туго обвивается вокруг твоего пальца!"))
 		SEND_SOUND (user, sound('modular_ss220/aesthetics_sounds/sound/creepy/demon2.ogg'))
@@ -210,13 +224,14 @@
 	desc = "Маленькая серебряная побрякушка, инкрустированная ярким изумрудом бриллиантовой огранки. На верхушечной площадке камня выгравирован череп."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "necrostone"
-	item_state = "electronic"
+	worn_icon_state = "electronic"
+	inhand_icon_state = "electronic"
 	origin_tech = "bluespace=4;materials=4"
 	w_class = WEIGHT_CLASS_TINY
 	var/list/skeletons = list()
 	var/number = 2 // for ingame VV change
 
-/obj/item/emerald_stone/attack(mob/living/carbon/human/undead, mob/living/carbon/human/user)
+/obj/item/emerald_stone/attack__legacy__attackchain(mob/living/carbon/human/undead, mob/living/carbon/human/user)
 
 	if(!istype(undead))
 		return ..()
@@ -261,37 +276,37 @@
 
 /obj/item/emerald_stone/proc/equip_undead(mob/living/carbon/human/raised)
 	for(var/obj/item/I in raised)
-		raised.unEquip(I)
+		raised.drop_item_to_ground(I)
 	var/randomUndead = "roman" // defualt
 	randomUndead = pick("roman","pirate","clown")
 
 	switch(randomUndead)
 		if("roman")
 			var/hat = pick(/obj/item/clothing/head/helmet/roman, /obj/item/clothing/head/helmet/roman/legionaire)
-			raised.equip_to_slot_or_del(new hat(raised), SLOT_HUD_HEAD)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/under/costume/roman(raised), SLOT_HUD_JUMPSUIT)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/shoes/roman(raised), SLOT_HUD_SHOES)
-			raised.equip_to_slot_or_del(new /obj/item/shield/riot/roman(raised), SLOT_HUD_LEFT_HAND)
-			raised.equip_to_slot_or_del(new /obj/item/claymore/ceremonial(raised), SLOT_HUD_RIGHT_HAND)
-			raised.equip_to_slot_or_del(new /obj/item/spear(raised), SLOT_HUD_BACK)
+			raised.equip_to_slot_or_del(new hat(raised), ITEM_SLOT_HEAD)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/under/costume/roman(raised), ITEM_SLOT_JUMPSUIT)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/shoes/roman(raised), ITEM_SLOT_SHOES)
+			raised.equip_to_slot_or_del(new /obj/item/shield/riot/roman(raised), ITEM_SLOT_LEFT_HAND)
+			raised.equip_to_slot_or_del(new /obj/item/claymore/ceremonial(raised), ITEM_SLOT_RIGHT_HAND)
+			raised.equip_to_slot_or_del(new /obj/item/spear(raised), ITEM_SLOT_BACK)
 		if("pirate")
-			raised.equip_to_slot_or_del(new /obj/item/clothing/under/costume/pirate(raised), SLOT_HUD_JUMPSUIT)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/suit/pirate_brown(raised),  SLOT_HUD_OUTER_SUIT)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(raised), SLOT_HUD_HEAD)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(raised), SLOT_HUD_SHOES)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(raised), SLOT_HUD_GLASSES)
-			raised.equip_to_slot_or_del(new /obj/item/claymore/ceremonial(raised), SLOT_HUD_RIGHT_HAND)
-			raised.equip_to_slot_or_del(new /obj/item/spear(raised), SLOT_HUD_BACK)
-			raised.equip_to_slot_or_del(new /obj/item/shield/riot/roman(raised), SLOT_HUD_LEFT_HAND)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/under/costume/pirate(raised), ITEM_SLOT_JUMPSUIT)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/suit/pirate_brown(raised),  ITEM_SLOT_OUTER_SUIT)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(raised), ITEM_SLOT_HEAD)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(raised), ITEM_SLOT_SHOES)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(raised), ITEM_SLOT_EYES)
+			raised.equip_to_slot_or_del(new /obj/item/claymore/ceremonial(raised), ITEM_SLOT_RIGHT_HAND)
+			raised.equip_to_slot_or_del(new /obj/item/spear(raised), ITEM_SLOT_BACK)
+			raised.equip_to_slot_or_del(new /obj/item/shield/riot/roman(raised), ITEM_SLOT_LEFT_HAND)
 		if("clown")
-			raised.equip_to_slot_or_del(new /obj/item/clothing/under/rank/civilian/clown(raised), SLOT_HUD_JUMPSUIT)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(raised), SLOT_HUD_SHOES)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(raised), SLOT_HUD_WEAR_MASK)
-			raised.equip_to_slot_or_del(new /obj/item/clothing/head/stalhelm(raised), SLOT_HUD_HEAD)
-			raised.equip_to_slot_or_del(new /obj/item/bikehorn(raised), SLOT_HUD_LEFT_STORE)
-			raised.equip_to_slot_or_del(new /obj/item/claymore/ceremonial(raised), SLOT_HUD_RIGHT_HAND)
-			raised.equip_to_slot_or_del(new /obj/item/shield/riot/roman(raised), SLOT_HUD_LEFT_HAND)
-			raised.equip_to_slot_or_del(new /obj/item/spear(raised), SLOT_HUD_BACK)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/under/rank/civilian/clown(raised), ITEM_SLOT_JUMPSUIT)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(raised), ITEM_SLOT_SHOES)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(raised), ITEM_SLOT_MASK)
+			raised.equip_to_slot_or_del(new /obj/item/clothing/head/stalhelm(raised), ITEM_SLOT_HEAD)
+			raised.equip_to_slot_or_del(new /obj/item/bikehorn(raised), ITEM_SLOT_LEFT_POCKET)
+			raised.equip_to_slot_or_del(new /obj/item/claymore/ceremonial(raised), ITEM_SLOT_RIGHT_HAND)
+			raised.equip_to_slot_or_del(new /obj/item/shield/riot/roman(raised), ITEM_SLOT_LEFT_HAND)
+			raised.equip_to_slot_or_del(new /obj/item/spear(raised), ITEM_SLOT_BACK)
 
 /*Black Mesa awaymission*/
 //Xenodoor

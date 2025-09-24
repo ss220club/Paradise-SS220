@@ -11,13 +11,13 @@
 	custom_fire_overlay = "fire"
 	var/rolled = FALSE
 
-/obj/item/flag/attackby(obj/item/W, mob/user, params)
+/obj/item/flag/attackby__legacy__attackchain(obj/item/W, mob/user, params)
 	. = ..()
 	if(W.get_heat() && !(resistance_flags & ON_FIRE))
 		user.visible_message("<span class='notice'>[user] lights [src] with [W].</span>", "<span class='notice'>You light [src] with [W].</span>", "<span class='warning'>You hear a low whoosh.</span>")
 		fire_act()
 
-/obj/item/flag/attack_self(mob/user)
+/obj/item/flag/attack_self__legacy__attackchain(mob/user)
 	rolled = !rolled
 	user.visible_message("<span class='notice'>[user] [rolled ? "rolls up" : "unfurls"] [src].</span>", "<span class='notice'>You [rolled ? "roll up" : "unfurl"] [src].</span>", "<span class='warning'>You hear fabric rustling.</span>")
 	update_icon()
@@ -31,27 +31,20 @@
 	update_icon()
 
 /obj/item/flag/update_icon_state()
-	updateFlagIcon()
-	item_state = icon_state
-	if(rolled)
-		icon_state = "[icon_state]_rolled"
-		custom_fire_overlay = "fire_rolled"
-	else
-		custom_fire_overlay = initial(custom_fire_overlay)
-	if(resistance_flags & ON_FIRE)
-		item_state = "[item_state]_fire"
+	icon_state = "[get_flag_icon()][rolled ? "_rolled" : ""]"
+	inhand_icon_state = "[get_flag_icon()][resistance_flags & ON_FIRE ? "_fire" : ""]"
+	custom_fire_overlay = "[initial(custom_fire_overlay)][rolled ? "_rolled" : ""]"
 	if(ismob(loc))
-		var/mob/M = loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+		var/mob/mob = loc
+		mob.update_inv_r_hand()
+		mob.update_inv_l_hand()
 
-/obj/item/flag/proc/updateFlagIcon()
-	icon_state = initial(icon_state)
+/obj/item/flag/proc/get_flag_icon()
+	return initial(icon_state)
 
 /obj/item/flag/nt
 	name = "\improper Nanotrasen flag"
 	desc = "A flag proudly boasting the logo of NT."
-	icon_state = "ntflag"
 
 /obj/item/flag/clown
 	name = "\improper Clown Unity flag"
@@ -171,7 +164,6 @@
 /obj/item/flag/command
 	name = "\improper Command flag"
 	desc = "The flag of the independent, sovereign nation of Command. Apparently the budget was all spent on this flag, rather than a creative name."
-	icon_state = "ntflag"
 
 //Antags
 
@@ -210,7 +202,6 @@
 /obj/item/flag/chameleon
 	name = "chameleon flag"
 	desc = "A poor recreation of the official NT flag. It seems to shimmer a little."
-	icon_state = "ntflag"
 	origin_tech = "syndicate=1;magnets=4"
 	var/updated_icon_state = null
 	var/used = FALSE
@@ -221,7 +212,7 @@
 	updated_icon_state = icon_state
 	..()
 
-/obj/item/flag/chameleon/attack_self(mob/user)
+/obj/item/flag/chameleon/attack_self__legacy__attackchain(mob/user)
 	if(used)
 		return ..()
 
@@ -248,7 +239,7 @@
 			desc = chosen_flag.desc
 			used = TRUE
 
-/obj/item/flag/chameleon/attackby(obj/item/I, mob/user, params)
+/obj/item/flag/chameleon/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/grenade) && !boobytrap)
 		if(user.drop_item())
 			boobytrap = I
@@ -294,8 +285,8 @@
 	boobytrap = null
 	burn()
 
-/obj/item/flag/chameleon/updateFlagIcon()
-	icon_state = updated_icon_state
+/obj/item/flag/chameleon/get_flag_icon()
+	return updated_icon_state
 
 /obj/item/flag/chameleon/depot/New()
 	..()

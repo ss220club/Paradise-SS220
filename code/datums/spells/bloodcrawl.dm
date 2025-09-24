@@ -3,11 +3,11 @@
 	desc = "Use pools of blood to phase out of existence."
 	base_cooldown = 1 SECONDS
 	clothes_req = FALSE
-	cooldown_min = 0
 	should_recharge_after_cast = FALSE
 	overlay = null
 	action_icon_state = "bloodcrawl"
 	action_background_icon_state = "bg_demon"
+	antimagic_flags = NONE
 	var/allowed_type = /obj/effect/decal/cleanable
 	var/phased = FALSE
 
@@ -59,10 +59,7 @@
 /// Can't use the wizard one, blocked by jaunt/slow
 /obj/effect/dummy/slaughter
 	name = "odd blood"
-	icon = 'icons/effects/effects.dmi'
 	icon_state = "nothing"
-	density = FALSE
-	anchored = TRUE
 	invisibility = 60
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
@@ -78,7 +75,13 @@
 /obj/effect/dummy/slaughter/singularity_act()
 	return
 
-
+/obj/effect/dummy/slaughter/return_obj_air()
+	var/datum/gas_mixture/GM = new
+	GM.set_oxygen(MOLES_O2STANDARD)
+	GM.set_nitrogen(MOLES_N2STANDARD)
+	GM.set_temperature(T20C)
+	return GM
+		
 /datum/spell/bloodcrawl/proc/block_hands(mob/living/carbon/C)
 	if(C.l_hand || C.r_hand)
 		to_chat(C, "<span class='warning'>You may not hold items while blood crawling!</span>")
@@ -96,7 +99,6 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "blank" // Flicks are used instead
 	duration = 0.6 SECONDS
-	layer = MOB_LAYER + 0.1
 
 /obj/effect/temp_visual/dir_setting/bloodcrawl/Initialize(mapload, set_dir, animation_state)
 	. = ..()
@@ -158,11 +160,11 @@
 		L.adjustOxyLoss(-1000)
 		L.adjustToxLoss(-1000)
 	else if((ishuman(victim) || isrobot(victim)))
-		to_chat(L, "<span class='warning'>You devour [victim], but their lack of intelligence renders their flesh dull and unappetising, leaving you wanting for more.</span>")
+		to_chat(L, "<span class='warning'>You devour [victim], but their lack of intelligence renders their flesh dull and unappetizing, leaving you wanting for more.</span>")
 		L.adjustBruteLoss(-50)
 		if(!isslaughterdemon(L))
 			L.adjustFireLoss(-50)
-	else if(isanimal(victim))
+	else if(isanimal_or_basicmob(victim))
 		to_chat(L, "<span class='warning'>You devour [victim], but this measly meal barely sates your appetite!</span>")
 		L.adjustBruteLoss(-25)
 		if(!isslaughterdemon(L))
@@ -237,9 +239,9 @@
 		var/mob/living/simple_animal/demon/slaughter/S = L
 		S.speed = 0
 		S.boost = world.time + 6 SECONDS
+	var/old_color = L.color
 	L.color = A.color
-	addtimer(VARSET_CALLBACK(L, color, null), 6 SECONDS)
-
+	animate(L, 6 SECONDS, color = old_color, easing = EASE_IN|CIRCULAR_EASING, flags = ANIMATION_PARALLEL)
 
 /datum/spell/bloodcrawl/proc/phasein(atom/A, mob/living/L)
 
@@ -267,10 +269,21 @@
 
 /datum/spell/bloodcrawl/shadow_crawl
 	name = "Shadow Crawl"
-	desc = "Fade into the shadows, increasing your speed and making you incomprehensible. Will not work in brightened terrane."
+	desc = "Fade into the shadows, increasing your speed and making you incomprehensible. Will not work in lit areas."
 	allowed_type = /turf
 	action_background_icon_state = "shadow_demon_bg"
 	action_icon_state = "shadow_crawl"
+
+/datum/spell/bloodcrawl/shadow_crawl/can_cast(mob/user, charge_check, show_message)
+	var/mob/living/simple_animal/demon/shadow/current_demon = user
+	if(!istype(current_demon))
+		return ..()
+
+	if(current_demon.block_shadow_crawl)
+		to_chat(user, "<span class='warning'>You are too concentrated to activate [name].</span>")
+		return FALSE
+
+	return ..()
 
 /datum/spell/bloodcrawl/shadow_crawl/valid_target(turf/target, user)
 	return target.get_lumcount() < 0.2

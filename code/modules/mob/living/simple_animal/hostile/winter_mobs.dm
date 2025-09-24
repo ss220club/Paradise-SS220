@@ -4,9 +4,7 @@
 
 /mob/living/simple_animal/hostile/winter
 	faction = list("hostile", "syndicate", "winter")
-	speak_chance = 0
 	turns_per_move = 5
-	speed = 1
 	maxHealth = 50
 	health = 50
 	icon = 'icons/mob/winter_mob.dmi'
@@ -91,11 +89,9 @@
 
 /// stage 1: slow melee
 /mob/living/simple_animal/hostile/winter/santa/stage_1
-	maxHealth = 150
-	health = 150
 	desc = "GET THE FAT MAN!"
 	next_stage = /mob/living/simple_animal/hostile/winter/santa/stage_2
-	death_message = "<span class='danger'>HO HO HO! YOU THOUGHT IT WOULD BE THIS EASY?!?</span>"
+	death_message = "<span class='danger'>ХО ХО ХО! ВЫ ДУМАЛИ, ЧТО ЭТО БУДЕТ ТАК ПРОСТО?!?</span>"
 	speed = 2
 	melee_damage_lower = 10
 	melee_damage_upper = 20
@@ -104,7 +100,7 @@
 /mob/living/simple_animal/hostile/winter/santa/stage_2
 	desc = "GET THE FAT MAN AGAIN!"
 	next_stage = /mob/living/simple_animal/hostile/winter/santa/stage_3
-	death_message = "<span class='danger'>YOU'VE BEEN VERY NAUGHTY! PREPARE TO DIE!</span>"
+	death_message = "<span class='danger'>ВЫ БЫЛИ ОЧЕНЬ НЕПОСЛУШНЫ! ПРИГОТОВЬТЕСЬ УМЕРЕТЬ!</span>"
 	maxHealth = 200		//DID YOU REALLY BELIEVE IT WOULD BE THIS EASY!??!!
 	health = 200
 	ranged = TRUE
@@ -116,7 +112,7 @@
 /mob/living/simple_animal/hostile/winter/santa/stage_3
 	desc = "WHY WON'T HE DIE ALREADY!?"
 	next_stage = /mob/living/simple_animal/hostile/winter/santa/stage_4
-	death_message = "<span class='danger'>FACE MY FINAL FORM AND KNOW DESPAIR!</span>"
+	death_message = "<span class='danger'>ВСТРЕЧАЙТЕ МОЙ ПОСЛЕДНИЙ ОБЛИК И ПОЗНАЙТЕ ОТЧАЯНИЕ!</span>"
 	maxHealth = 250
 	health = 250
 	ranged = TRUE

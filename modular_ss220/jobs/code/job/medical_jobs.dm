@@ -8,6 +8,7 @@
 	exp_map = list(EXP_TYPE_CREW = NOVICE_JOB_MINUTES)
 	outfit = /datum/outfit/job/doctor/intern
 	important_information = "Ваша должность ограничена во всех взаимодействиях с рабочим имуществом отдела и экипажем станции, при отсутствии приставленного к нему квалифицированного сотрудника или полученного разрешения от вышестоящего начальства."
+	standard_paycheck = CREW_PAY_LOW
 
 /datum/outfit/job/doctor/intern
 	name = "Medical Intern"
@@ -27,6 +28,10 @@
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel_med
 	dufflebag = /obj/item/storage/backpack/duffel/medical
+
+/datum/outfit/job/doctor/intern/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	REMOVE_TRAIT(H.mind, TRAIT_MED_EXAMINE, JOB_TRAIT)
 
 /datum/outfit/job/doctor/intern/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()

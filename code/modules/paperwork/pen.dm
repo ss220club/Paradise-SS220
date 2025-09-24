@@ -14,12 +14,10 @@
 	name = "pen"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
-	item_state = "pen"
-	slot_flags = SLOT_FLAG_BELT | SLOT_FLAG_EARS
-	throwforce = 0
+	inhand_icon_state = "pen"
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BOTH_EARS
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
-	throw_range = 7
 	materials = list(MAT_METAL=10)
 	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
@@ -47,7 +45,6 @@
 
 /obj/item/pen/invisible
 	desc = "It's an invisible pen marker."
-	icon_state = "pen"
 	colour = "white"
 
 /obj/item/pen/multi
@@ -74,7 +71,7 @@
 		playsound(loc, 'sound/effects/pop.ogg', 50, 1)
 		update_icon()
 
-/obj/item/pen/multi/attack_self(mob/living/user as mob)
+/obj/item/pen/multi/attack_self__legacy__attackchain(mob/living/user as mob)
 	select_colour(user)
 
 /obj/item/pen/multi/update_overlays()
@@ -146,7 +143,7 @@
 	origin_tech = "engineering=4;syndicate=2"
 	var/transfer_amount = 50
 
-/obj/item/pen/sleepy/attack(mob/living/M, mob/user)
+/obj/item/pen/sleepy/attack__legacy__attackchain(mob/living/M, mob/user)
 	if(!istype(M))
 		return
 
@@ -180,7 +177,6 @@
 	desc = "A fancy metal pen. An inscription on one side reads, \"L.L. - L.R.\""
 	icon_state = "fancypen"
 	container_type = (DRAINABLE | TRANSPARENT) //cannot be refilled, but pax can be extracted for use in other items with syringe
-	origin_tech = "engineering=4;syndicate=2"
 	transfer_amount = 25 // 4 Dosages instead of 2
 
 /obj/item/pen/sleepy/love/Initialize(mapload)
@@ -207,16 +203,17 @@
 // E-DAGGER
 
 /obj/item/pen/edagger
+	inhand_icon_state = null
 	origin_tech = "combat=3;syndicate=1"
 	var/active = FALSE
 	var/brightness_on = 2
 	light_color = LIGHT_COLOR_RED
 	var/backstab_sound = 'sound/items/unsheath.ogg'
 	var/backstab_damage = 12
-	armour_penetration_flat = 20
+	armor_penetration_flat = 20
 	throw_speed = 4
 
-/obj/item/pen/edagger/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/pen/edagger/attack__legacy__attackchain(mob/living/M, mob/living/user, def_zone)
 	if(cigarette_lighter_act(user, M))
 		return
 
@@ -270,7 +267,7 @@
 /obj/item/pen/edagger/get_clamped_volume() //So the parent proc of attack isn't the loudest sound known to man
 	return FALSE
 
-/obj/item/pen/edagger/attack_self(mob/living/user)
+/obj/item/pen/edagger/attack_self__legacy__attackchain(mob/living/user)
 	if(active)
 		active = FALSE
 		force = initial(force)
@@ -301,10 +298,8 @@
 /obj/item/pen/edagger/update_icon_state()
 	if(active)
 		icon_state = "edagger"
-		item_state = "edagger"
 	else
 		icon_state = initial(icon_state) //looks like a normal pen when off.
-		item_state = initial(item_state)
 
 /obj/item/proc/on_write(obj/item/paper/P, mob/user)
 	return
@@ -314,7 +309,7 @@
 /obj/item/pen/multi/poison
 	var/current_poison = null
 
-/obj/item/pen/multi/poison/attack_self(mob/living/user)
+/obj/item/pen/multi/poison/attack_self__legacy__attackchain(mob/living/user)
 	. = ..()
 	switch(colour)
 		if("black")
@@ -338,3 +333,17 @@
 			P.contact_poison_poisoner = user.name
 			add_attack_logs(user, P, "Poison pen'ed")
 			to_chat(user, "<span class='warning'>You apply the poison to [P].</span>")
+
+// MARK: CHAMELEON PEN
+/obj/item/pen/chameleon
+	var/forge_name
+
+/obj/item/pen/chameleon/attack_self__legacy__attackchain(mob/user)
+	if(!iscarbon(user))
+		return
+
+	if(!Adjacent(user) || user.incapacitated())
+		return
+
+	forge_name = tgui_input_text(user, "Enter the name of the person whose signature you want to forge", "Forge name", max_length = MAX_NAME_LEN)
+

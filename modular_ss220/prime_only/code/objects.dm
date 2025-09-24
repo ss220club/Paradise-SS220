@@ -5,7 +5,8 @@
 	desc = "Стилизованная под трость рапира, чье элегантное и обоюдоострое лезвие усажено на роскошно украшенную рукоять. Одни лишь инкрустированные в неё драгоценные камни стоят как целая звездная система."
 	icon = 'modular_ss220/prime_only/icons/saber.dmi'
 	icon_state = "trrapier"
-	item_state = "trrapier"
+	worn_icon_state = "trrapier"
+	inhand_icon_state = "trrapier"
 	force = 25
 	lefthand_file = 'modular_ss220/prime_only/icons/saber_left.dmi'
 	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
@@ -14,7 +15,8 @@
 	name = "Трость-рапира"
 	desc = "Ножны стилизованной под трость рапиры. Их корпус вырезан из черного дерева и щедро украшен позолотой. Их владелец обладает неоспоримый богатством и властью в известной Галактике."
 	icon_state = "trsheath"
-	item_state = "trsheath"
+	worn_icon_state = "trsheath"
+	inhand_icon_state = "trsheath"
 	icon = 'modular_ss220/prime_only/icons/saber.dmi'
 	lefthand_file = 'modular_ss220/prime_only/icons/saber_left.dmi'
 	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
@@ -127,7 +129,7 @@
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/kel_saberhit.ogg'
 
-/obj/item/dualsaber/legendary_saber/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/dualsaber/legendary_saber/afterattack__legacy__attackchain(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 	enchant?.on_legendary_hit(target, user, proximity_flag, src)
 

@@ -94,6 +94,10 @@ SUBSYSTEM_DEF(tts220)
 		"вкд" = "Вэ Ка Дэ",
 		"нтр" = "Эн Тэ Эр",
 		"пнт" = "Пэ Эн Тэ",
+		"птн" = "Пэ Тэ Эн",
+		"нст" = "Эн Эс Тэ",
+		"нкт" = "Эн Кэ Тэ",
+		"nct" = "Эн Кэ Тэ",
 		"авд" = "А Вэ Дэ",
 		"пнв" = "Пэ Эн Вэ",
 		"ссд" = "Эс Эс Дэ",
@@ -363,7 +367,7 @@ SUBSYSTEM_DEF(tts220)
 	if(traits & TTS_TRAIT_PITCH_WHISPER)
 		text = provider.pitch_whisper(text)
 
-	var/hash = rustg_hash_string(RUSTG_HASH_MD5, lowertext(text))
+	var/hash = md5(lowertext(text))
 	var/filename = "data/tts_cache/[tts_seed.name]/[hash]"
 
 
@@ -543,7 +547,7 @@ SUBSYSTEM_DEF(tts220)
 /datum/controller/subsystem/tts220/proc/sanitize_tts_input(message)
 	var/hash
 	if(sanitized_messages_caching)
-		hash = rustg_hash_string(RUSTG_HASH_MD5, lowertext(message))
+		hash = md5(lowertext(message))
 		if(sanitized_messages_cache[hash])
 			sanitized_messages_cache_hit++
 			return sanitized_messages_cache[hash]

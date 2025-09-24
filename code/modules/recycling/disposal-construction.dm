@@ -7,10 +7,7 @@
 	desc = "A huge pipe segment used for constructing disposal systems."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
-	anchored = FALSE
-	density = FALSE
 	pressure_resistance = 5*ONE_ATMOSPHERE
-	level = 2
 	max_integrity = 200
 	var/ptype = PIPE_DISPOSALS_STRAIGHT //Use the defines
 	var/base_state
@@ -126,7 +123,7 @@
 		if(PIPE_DISPOSALS_OUTLET)
 			return /obj/structure/disposaloutlet
 		if(PIPE_DISPOSALS_CHUTE)
-			return /obj/machinery/disposal/deliveryChute
+			return /obj/machinery/disposal/delivery_chute
 		if(PIPE_DISPOSALS_SORT_RIGHT, PIPE_DISPOSALS_SORT_LEFT)
 			return /obj/structure/disposalpipe/sortjunction
 	return
@@ -142,11 +139,11 @@
 	var/ispipe = is_pipe()
 	var/nicetype = get_nice_name()
 	var/turf/T = get_turf(src)
-	
+
 	if(T.intact)
 		to_chat(user, "<span class='warning'>You can only attach the [nicetype] if the floor plating is removed.</span>")
 		return
-	
+
 	if(ispipe)
 		anchored = !anchored
 		level = anchored ? 1 : 2
@@ -187,7 +184,8 @@
 			nicetype = "sorting pipe"
 	return nicetype
 
-/obj/structure/disposalconstruct/attackby(obj/item/I, mob/user, params)
+/obj/structure/disposalconstruct/item_interaction(mob/living/user, obj/item/I, list/modifiers)
+	. = ITEM_INTERACT_COMPLETE
 	var/nicetype = get_nice_name()
 	var/ispipe = is_pipe() // Indicates if we should change the level of this pipe
 	var/turf/T = get_turf(src)
@@ -248,7 +246,7 @@
 
 					else if(ptype==PIPE_DISPOSALS_CHUTE) // Disposal outlet
 
-						var/obj/machinery/disposal/deliveryChute/P = new /obj/machinery/disposal/deliveryChute(src.loc)
+						var/obj/machinery/disposal/delivery_chute/P = new /obj/machinery/disposal/delivery_chute(src.loc)
 						src.transfer_fingerprints_to(P)
 						P.dir = dir
 

@@ -26,6 +26,7 @@ SUBSYSTEM_DEF(garbage)
 
 	//Queue
 	var/list/queues
+	var/static/list/hard_del_enjoyers = list(/client, /obj/item/disk/nuclear) // SS220 EDIT - disable hard del (performance tweak)
 
 	#ifdef REFERENCE_TRACKING
 	var/list/reference_find_on_fail = list()
@@ -251,7 +252,14 @@ SUBSYSTEM_DEF(garbage)
 	var/type = D.type
 	var/refID = text_ref(D)
 
+	// SS220 EDIT START - disable hard del (performance tweak)
+#ifdef GAME_TESTS
 	del(D)
+#else
+	if(is_type_in_list(D, hard_del_enjoyers))
+		del(D)
+#endif
+	// SS220 EDIT END
 
 	tick = (TICK_USAGE - tick + ((world.time - ticktime) / world.tick_lag * 100))
 
@@ -436,7 +444,7 @@ SUBSYSTEM_DEF(garbage)
 
 	log_gc("Completed search for references to a [type].")
 	#ifdef FIND_REF_NOTIFY_ON_COMPLETE
-	rustg_create_toast("ParadiseSS13", "GC search complete for [type]")
+	rustlibs_create_toast("ParadiseSS13", "GC search complete for [type]")
 	#endif
 	if(usr && usr.client)
 		usr.client.running_find_references = null

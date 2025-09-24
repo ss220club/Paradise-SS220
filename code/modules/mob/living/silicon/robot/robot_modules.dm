@@ -1,9 +1,8 @@
 /obj/item/robot_module
 	name = "robot module"
 	icon = 'icons/obj/module.dmi'
-	icon_state = "std_module"
+	icon_state = "std_mod"
 	w_class = 100
-	item_state = "electronic"
 	flags = CONDUCT
 	var/module_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
 
@@ -138,7 +137,7 @@
 /obj/item/robot_module/proc/fix_modules()
 	for(var/item in modules)
 		var/obj/item/I = item
-		I.flags |= NODROP
+		I.set_nodrop(TRUE)
 		I.mouse_opacity = MOUSE_OPACITY_OPAQUE
 
 /**
@@ -184,7 +183,7 @@
 		I.forceMove(src)
 
 	modules += I
-	I.flags |= NODROP
+	I.set_nodrop(TRUE)
 	I.mouse_opacity = MOUSE_OPACITY_OPAQUE
 
 	if(requires_rebuild)
@@ -277,23 +276,23 @@
  */
 /obj/item/robot_module/proc/add_languages(mob/living/silicon/robot/R)
 	//full set of languages
-	R.add_language("Galactic Common", 1)
-	R.add_language("Sol Common", 1)
-	R.add_language("Tradeband", 1)
-	R.add_language("Gutter", 0)
-	R.add_language("Neo-Russkiya", 0)
-	R.add_language("Sinta'unathi", 0)
-	R.add_language("Siik'tajr", 0)
-	R.add_language("Canilunzt", 0)
-	R.add_language("Skrellian", 0)
-	R.add_language("Vox-pidgin", 0)
-	R.add_language("Rootspeak", 0)
-	R.add_language("Trinary", 1)
-	R.add_language("Chittin", 0)
-	R.add_language("Bubblish", 0)
-	R.add_language("Orluum", 0)
-	R.add_language("Clownish", 0)
-	R.add_language("Tkachi", 0)
+	R.add_language("Galactic Common", TRUE)
+	R.add_language("Sol Common", TRUE)
+	R.add_language("Tradeband", TRUE)
+	R.add_language("Gutter", FALSE)
+	R.add_language("Neo-Russkiya", TRUE) // SS220 EDIT - Cygni -> Neo-Russkiya
+	R.add_language("Sinta'unathi", FALSE)
+	R.add_language("Siik'tajr", FALSE)
+	R.add_language("Canilunzt", FALSE)
+	R.add_language("Qurvolious", FALSE)
+	R.add_language("Vox-pidgin", FALSE)
+	R.add_language("Rootspeak", FALSE)
+	R.add_language("Trinary", TRUE)
+	R.add_language("Chittin", FALSE)
+	R.add_language("Bubblish", FALSE)
+	R.add_language("Orluum", FALSE)
+	R.add_language("Clownish", FALSE)
+	R.add_language("Tkachi", FALSE)
 
 ///Adds armor to a cyborg. Normaly resets it to 0 across the board, unless the module has an armor defined.
 /obj/item/robot_module/proc/add_armor(mob/living/silicon/robot/R)
@@ -346,8 +345,8 @@
 		/obj/item/surgicaldrill,
 		/obj/item/bonesetter,
 		/obj/item/bonegel,
-		/obj/item/FixOVein,
-		/obj/item/extinguisher/mini,
+		/obj/item/fix_o_vein,
+		/obj/item/extinguisher/mini/cyborg,
 		/obj/item/reagent_containers/glass/beaker/large,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
@@ -360,7 +359,7 @@
 	)
 	malf_modules = list(/obj/item/gun/syringemalf)
 	special_rechargables = list(
-		/obj/item/extinguisher/mini,
+		/obj/item/extinguisher/mini/cyborg,
 		/obj/item/gun/syringemalf
 	)
 
@@ -394,7 +393,6 @@
 	name = "plasma syringe cannon"
 	desc = "A syringe gun integrated into a medical cyborg's chassis. Fires heavy-duty plasma syringes tipped in poison."
 	icon_state = "rapidsyringegun"
-	throw_speed = 3
 	throw_range = 7
 	force = 4
 	fire_sound = 'sound/items/syringeproj.ogg'
@@ -415,7 +413,7 @@
 		process_chamber()
 
 //Cannot manually remove syringes
-/obj/item/gun/syringemalf/attack_self(mob/living/user)
+/obj/item/gun/syringemalf/attack_self__legacy__attackchain(mob/living/user)
 	return
 
 //Load syringe into the chamber
@@ -436,6 +434,9 @@
 // Fluorosulphuric acid spray bottle.
 /obj/item/reagent_containers/spray/cyborg_facid
 	name = "Polyacid spray"
+	spray_maxrange = 3
+	spray_currentrange = 3
+	adjustable = FALSE
 	list_reagents = list("facid" = 250)
 
 /obj/item/reagent_containers/spray/cyborg_facid/cyborg_recharge(coeff, emagged)
@@ -452,6 +453,7 @@
 		/obj/item/flash/cyborg,
 		/obj/item/rpd,
 		/obj/item/extinguisher,
+		/obj/item/extinguisher/mini/cyborg, // Give them the option of BOTH extinguishers
 		/obj/item/weldingtool/largetank/cyborg,
 		/obj/item/screwdriver/cyborg,
 		/obj/item/wrench/cyborg,
@@ -478,7 +480,7 @@
 	emag_modules = list(/obj/item/melee/baton/loaded/borg_stun_arm, /obj/item/restraints/handcuffs/cable/zipties/cyborg, /obj/item/rcd/borg)
 	override_modules = list(/obj/item/gun/energy/emitter/cyborg/proto)
 	malf_modules = list(/obj/item/gun/energy/emitter/cyborg)
-	special_rechargables = list(/obj/item/extinguisher, /obj/item/weldingtool/largetank/cyborg, /obj/item/gun/energy/emitter/cyborg)
+	special_rechargables = list(/obj/item/extinguisher, /obj/item/extinguisher/mini/cyborg, /obj/item/weldingtool/largetank/cyborg, /obj/item/gun/energy/emitter/cyborg)
 
 /obj/item/robot_module/engineering/handle_death(mob/living/silicon/robot/R, gibbed)
 	var/obj/item/gripper/engineering/G = locate(/obj/item/gripper/engineering) in modules
@@ -536,7 +538,7 @@
 		/obj/item/mop/advanced/cyborg,
 		/obj/item/lightreplacer/cyborg,
 		/obj/item/holosign_creator/janitor,
-		/obj/item/extinguisher/mini,
+		/obj/item/extinguisher/mini/cyborg,
 		/obj/item/melee/flyswatter
 	)
 	emag_override_modules = list(/obj/item/reagent_containers/spray/cyborg_lube)
@@ -546,7 +548,7 @@
 		/obj/item/lightreplacer,
 		/obj/item/reagent_containers/spray/cyborg_lube,
 		/obj/item/reagent_containers/spray/cyborg_facid,
-		/obj/item/extinguisher/mini
+		/obj/item/extinguisher/mini/cyborg
 	)
 
 /obj/item/robot_module/janitor/handle_death(mob/living/silicon/robot/R, gibbed)
@@ -601,7 +603,7 @@
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked", "swept")
 	force = 20
 
-/obj/item/malfbroom/attack(mob/target, mob/user)
+/obj/item/malfbroom/attack__legacy__attackchain(mob/target, mob/user)
 	if(!ishuman(target))
 		return ..()
 	var/mob/living/carbon/human/H = target
@@ -635,12 +637,12 @@
 		/obj/item/reagent_containers/drinks/shaker,
 		/obj/item/gripper/service
 	)
-	emag_override_modules = list(/obj/item/reagent_containers/drinks/cans/beer/sleepy_beer)
+	emag_override_modules = list(/obj/item/reagent_containers/drinks/bottle/beer/sleepy_beer)
 	emag_modules = list(/obj/item/restraints/handcuffs/cable/zipties/cyborg, /obj/item/instrument/guitar/cyborg)
-	malf_modules = list(/obj/item/gun/projectile/shotgun/automatic/combat/cyborg)
+	malf_modules = list(/obj/item/gun/energy/gun/shotgun/cyborg)
 	special_rechargables = list(
 		/obj/item/reagent_containers/condiment/enzyme,
-		/obj/item/reagent_containers/drinks/cans/beer/sleepy_beer,
+		/obj/item/reagent_containers/drinks/bottle/beer/sleepy_beer,
 		/obj/item/gun/projectile/shotgun/automatic/combat/cyborg
 	)
 
@@ -663,11 +665,12 @@
 	return ..()
 
 // This is a special type of beer given when emagged, one sip and the target falls asleep.
-/obj/item/reagent_containers/drinks/cans/beer/sleepy_beer
+/obj/item/reagent_containers/drinks/bottle/beer/sleepy_beer
 	name = "Mickey Finn's Special Brew"
 	list_reagents = list("beer2" = 50)
+	is_glass = FALSE // Smashing a borgs sole beer bottle would be sad
 
-/obj/item/reagent_containers/drinks/cans/beer/sleepy_beer/cyborg_recharge(coeff, emagged)
+/obj/item/reagent_containers/drinks/bottle/beer/sleepy_beer/cyborg_recharge(coeff, emagged)
 	if(emagged)
 		reagents.check_and_add("beer2", volume, 5)
 
@@ -680,14 +683,14 @@
 	R.add_language("Sinta'unathi", 1)
 	R.add_language("Siik'tajr", 1)
 	R.add_language("Canilunzt", 1)
-	R.add_language("Skrellian", 1)
+	R.add_language("Qurvolious", 1)
 	R.add_language("Vox-pidgin", 1)
 	R.add_language("Rootspeak", 1)
 	R.add_language("Trinary", 1)
 	R.add_language("Chittin", 1)
 	R.add_language("Bubblish", 1)
 	R.add_language("Clownish",1)
-	R.add_language("Neo-Russkiya", 1)
+	R.add_language("Neo-Russkiya", 1) // SS220 EDIT - Cygni -> Neo-Russkiya
 	R.add_language("Tkachi", 1)
 
 // Mining
@@ -704,7 +707,7 @@
 		/obj/item/pickaxe/drill/cyborg,
 		/obj/item/shovel,
 		/obj/item/weldingtool/mini,
-		/obj/item/extinguisher/mini,
+		/obj/item/extinguisher/mini/cyborg,
 		/obj/item/t_scanner/adv_mining_scanner/cyborg,
 		/obj/item/gun/energy/kinetic_accelerator/cyborg,
 		/obj/item/gps/cyborg,
@@ -712,7 +715,7 @@
 	)
 	emag_modules = list(/obj/item/pickaxe/drill/jackhammer)
 	malf_modules = list(/obj/item/gun/energy/kinetic_accelerator/cyborg/malf)
-	special_rechargables = list(/obj/item/extinguisher/mini, /obj/item/weldingtool/mini)
+	special_rechargables = list(/obj/item/extinguisher/mini/cyborg, /obj/item/weldingtool/mini)
 
 /obj/item/robot_module/miner/handle_death(mob/living/silicon/robot/R, gibbed)
 	var/obj/item/gripper/mining/G = locate(/obj/item/gripper/mining) in modules
@@ -847,7 +850,7 @@
 		/obj/item/surgicaldrill,
 		/obj/item/bonesetter,
 		/obj/item/bonegel,
-		/obj/item/FixOVein,
+		/obj/item/fix_o_vein,
 		/obj/item/card/emag,
 		/obj/item/crowbar/cyborg/red,
 		/obj/item/pinpointer/operative,
@@ -856,7 +859,7 @@
 		/obj/item/stack/medical/splint/cyborg/syndicate,
 		/obj/item/stack/nanopaste/cyborg/syndicate,
 		/obj/item/gun/medbeam,
-		/obj/item/extinguisher/mini,
+		/obj/item/extinguisher/mini, // Why the hell would the syndicate care about greys?
 		/obj/item/gripper/medical,
 	)
 	special_rechargables = list(/obj/item/extinguisher/mini)
@@ -879,7 +882,7 @@
 		/obj/item/flash/cyborg,
 		/obj/item/rcd/borg/syndicate,
 		/obj/item/rpd,
-		/obj/item/extinguisher,
+		/obj/item/extinguisher, // Syndicate dont care about no greys.
 		/obj/item/weldingtool/largetank/cyborg,
 		/obj/item/screwdriver/cyborg,
 		/obj/item/wrench/cyborg,
@@ -928,12 +931,12 @@
 		/obj/item/melee/baton/loaded, // secondary weapon, for things immune to burn, immune to ranged weapons, or for arresting low-grade threats
 		/obj/item/restraints/handcuffs/cable/zipties/cyborg,
 		/obj/item/pickaxe/drill/jackhammer, // for breaking walls to execute flanking moves
-		/obj/item/extinguisher/mini // for friendly fire from their immolator gun.
+		/obj/item/extinguisher/mini/cyborg // for friendly fire from their immolator gun.
 	)
 	special_rechargables = list(
 		/obj/item/melee/baton/loaded,
 		/obj/item/gun/energy/immolator/multi/cyborg,
-		/obj/item/extinguisher/mini
+		/obj/item/extinguisher/mini/cyborg
 	)
 
 // Destroyer security module.
@@ -1110,7 +1113,7 @@
 	max_amount = 25
 
 //Energy stack for landmines
-/datum/robot_storage/energy/janitor/landmine
+/datum/robot_storage/energy/jani_landmine
 	name = "Landmine Synthesizer"
 	statpanel_name = "Landmines"
 	max_amount = 4

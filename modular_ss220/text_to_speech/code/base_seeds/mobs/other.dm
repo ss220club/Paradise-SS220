@@ -46,7 +46,7 @@
 /mob/living/simple_animal/mouse/brown/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/clockwerk)
 
-/mob/living/simple_animal/mouse/brown/Tom/add_tts_component()
+/mob/living/simple_animal/mouse/brown/tom/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/arthas)
 
 /mob/living/simple_animal/mouse/fluff/clockwork/add_tts_component()
@@ -58,31 +58,31 @@
 /mob/living/simple_animal/mouse/hamster/baby/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/meepo)
 
-/mob/living/simple_animal/hostile/retaliate/goat/add_tts_component()
+/mob/living/basic/goat/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/muradin)
 
-/mob/living/simple_animal/cow/add_tts_component()
+/mob/living/basic/cow/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cairne)
 
-/mob/living/simple_animal/chicken/add_tts_component()
+/mob/living/basic/chicken/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/windranger)
 
-/mob/living/simple_animal/chick/add_tts_component()
+/mob/living/basic/chick/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/meepo)
 
 /mob/living/simple_animal/cock/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/pantheon)
 
-/mob/living/simple_animal/pig/add_tts_component()
+/mob/living/basic/pig/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/anubarak)
 
-/mob/living/simple_animal/seal/add_tts_component()
+/mob/living/basic/seal/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/narrator)
 
 /mob/living/simple_animal/moth/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/tychus)
 
-/mob/living/simple_animal/nian_caterpillar/add_tts_component()
+/mob/living/basic/nian_caterpillar/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/tychus)
 
 /mob/living/simple_animal/possum/add_tts_component()

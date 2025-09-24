@@ -3,8 +3,8 @@
 	endWhen 		= 900
 
 	var/list/spawned_mobs = list(
-		/mob/living/simple_animal/hostile/carp = 95,
-		/mob/living/simple_animal/hostile/carp/megacarp = 5)
+		/mob/living/basic/carp = 95,
+		/mob/living/basic/carp/megacarp = 5)
 
 /datum/event/carp_migration/setup()
 	announceWhen = rand(40, 60)
@@ -13,10 +13,10 @@
 /datum/event/carp_migration/announce()
 	var/announcement = ""
 	if(severity == EVENT_LEVEL_MAJOR)
-		announcement = "Massive migration of unknown biological entities has been detected near [station_name()], please stand-by."
+		announcement = "Массовая миграция неизвестных биологических объектов была зафиксирована вблизи станции [station_name()], будьте наготове."
 	else
-		announcement = "Unknown biological entities have been detected near [station_name()], please stand-by."
-	GLOB.minor_announcement.Announce(announcement, "Lifesign Alert")
+		announcement = "Неизвестные биологические объекты были зафиксированы вблизи станции [station_name()], будьте наготове."
+	GLOB.minor_announcement.Announce(announcement, "ВНИМАНИЕ: Неопознанные формы жизни.")
 
 /datum/event/carp_migration/start()
 

@@ -4,7 +4,7 @@
 	department_flag = JOB_SYNDICATE // This gets its job as its own flag because admin jobs dont have flags
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the admins"
+	supervisors = "админами"
 	selection_color = "#ff0000"
 	access = list()
 	admin_only = TRUE
@@ -19,7 +19,6 @@
 	jobtype = /datum/job/syndicateofficer
 
 	uniform = /obj/item/clothing/under/syndicate
-	back = /obj/item/storage/backpack
 	head = /obj/item/clothing/head/beret
 	gloves = /obj/item/clothing/gloves/combat
 	shoes = /obj/item/clothing/shoes/magboots/elite
@@ -28,7 +27,7 @@
 	l_ear = /obj/item/radio/headset/syndicate/alt/syndteam
 	pda = /obj/item/pinpointer/advpinpointer
 	id = /obj/item/card/id/syndicate/command
-	box = /obj/item/storage/box/survival_syndi
+	box = /obj/item/storage/box/survival_syndie
 	backpack_contents = list(
 		/obj/item/flashlight = 1,
 		/obj/item/ammo_box/magazine/m50 = 2,
@@ -38,7 +37,8 @@
 	bio_chips = list(
 		/obj/item/bio_chip/dust,
 		/obj/item/bio_chip/freedom,
-		/obj/item/bio_chip/adrenalin
+		/obj/item/bio_chip/adrenalin,
+		/obj/item/bio_chip/mindshield/syndicate
 	)
 
 	cybernetic_implants = list(

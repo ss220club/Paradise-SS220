@@ -5,7 +5,7 @@
 	lefthand_file = 'modular_ss220/awaymission_gun/icons/inhands/lefthand.dmi'
 	righthand_file = 'modular_ss220/awaymission_gun/icons/inhands/righthand.dmi'
 	icon_state = "laser_gate"
-	item_state = "nucgun"
+	inhand_icon_state = "nucgun"
 	force = 10
 	origin_tech = "combat=5;magnets=3;powerstorage=4"
 	selfcharge = TRUE // Selfcharge is enabled and disabled, and used as the away mission tracker
@@ -14,11 +14,11 @@
 /obj/item/gun/energy/laser/awaymission_aeg/Initialize(mapload)
 	. = ..()
 	// Force update it incase it spawns outside an away mission and shouldnt be charged
-	onTransitZ(new_z = loc.z)
+	on_changed_z_level(new_turf = loc)
 
-/obj/item/gun/energy/laser/awaymission_aeg/onTransitZ(old_z, new_z)
+/obj/item/gun/energy/laser/awaymission_aeg/on_changed_z_level(turf/old_turf, turf/new_turf)
 	. = ..()
-	if(is_away_level(new_z))
+	if(is_away_level(new_turf.z))
 		if(ismob(loc))
 			to_chat(loc, span_notice("Ваш [src] активируется, начиная аккумулировать энергию из материи сущего."))
 		selfcharge = TRUE
@@ -28,11 +28,6 @@
 	cell.charge = 0
 	selfcharge = FALSE
 	update_icon()
-
-/obj/item/gun/energy/laser/awaymission_aeg/proc/update_mob()
-	if(ismob(loc))
-		var/mob/M = loc
-		M.unEquip(src)
 
 // GUNS
 /obj/item/gun/energy/laser/awaymission_aeg/rnd
@@ -50,7 +45,7 @@
 	icon_state = "laser_gate_mk2"
 	origin_tech = "combat=3;magnets=2;powerstorage=2;programming=3;"
 
-/obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2/attack_self(mob/living/user)
+/obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2/attack_self__legacy__attackchain(mob/living/user)
 	var/msg_for_all = span_warning("[user.name] усердно давит на рычаг зарядки [src], но он не поддается!")
 	var/msg_for_user = span_notice("Вы пытаетесь надавить на рычаг зарядки [src], но он заблокирован.")
 	var/msg_recharge_all = span_notice("[user.name] усердно давит на рычаг зарядки [src]...")

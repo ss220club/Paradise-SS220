@@ -73,7 +73,7 @@
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/glasses/hud/health(src)
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
-	new /obj/item/clothing/accessory/stethoscope(src)
+	new /obj/item/clothing/neck/stethoscope(src)
 	new /obj/item/flashlight/pen(src)
 	new /obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/firstaid/adv(src)
@@ -127,17 +127,17 @@
 	new /obj/item/storage/fancy/cigarettes/cigpack_med(src)
 	new /obj/item/storage/fancy/cigarettes/cigpack_med(src)
 	new /obj/item/storage/pill_bottle/psychiatrist(src)
-	new /obj/random/plushie(src)
+	new /obj/effect/spawner/random/plushies
 	for(var/i in 0 to 3)
 		var/candy = pick(subtypesof(/obj/item/food/candy/fudge))
 		new candy(src)
 
-/obj/structure/closet/secure_closet/CMO
+/obj/structure/closet/secure_closet/cmo
 	name = "chief medical officer's locker"
 	req_access = list(ACCESS_CMO)
 	icon_state = "cmo"
 
-/obj/structure/closet/secure_closet/CMO/populate_contents()
+/obj/structure/closet/secure_closet/cmo/populate_contents()
 	if(prob(50))
 		new /obj/item/storage/backpack/medic(src)
 	else
@@ -153,14 +153,14 @@
 	new /obj/item/clothing/glasses/hud/health/sunglasses(src)
 	new /obj/item/flash(src)
 	new /obj/item/gun/syringe(src)
-	new /obj/item/reagent_containers/hypospray/CMO(src)
-	new /obj/item/organ/internal/cyberimp/eyes/hud/medical(src)
+	new /obj/item/reagent_containers/hypospray/cmo(src)
 	new /obj/item/door_remote/chief_medical_officer(src)
 	new /obj/item/reagent_containers/drinks/mug/cmo(src)
 	new /obj/item/clothing/accessory/medal/medical(src)
 	new /obj/item/storage/briefcase(src)
 	new /obj/item/clothing/mask/gas(src)
-
+	// new /obj/item/gun/energy/gun/mini(src) // SS220 EDIT - remove eguns from staff lockers
+	new /obj/item/autosurgeon/organ/one_use/med_hud(src)
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control locker"
@@ -197,6 +197,8 @@
 	new /obj/item/key/ambulance(src)
 	new /obj/item/handheld_defibrillator(src)
 	new /obj/item/storage/bag/garment/paramedic(src)
+	new /obj/item/tank/internals/emergency_oxygen/engi(src)
+	new /obj/item/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/defibrillator/loaded(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/firstaid/adv(src)

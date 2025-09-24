@@ -2,13 +2,13 @@
 	name = "magboots"
 	desc = "Magnetic boots, often used during extravehicular activity to ensure the user remains safely attached to the vehicle."
 	icon_state = "magboots0"
+	inhand_icon_state = "magboots"
 	origin_tech = "materials=3;magnets=4;engineering=4"
 	dyeable = FALSE
 	actions_types = list(/datum/action/item_action/toggle)
 	strip_delay = 7 SECONDS
 	put_on_delay = 7 SECONDS
 	resistance_flags = FIRE_PROOF
-
 	var/magboot_state = "magboots"
 	var/magpulse = FALSE
 	var/slowdown_active = 2
@@ -24,7 +24,7 @@
 
 /obj/item/clothing/shoes/magboots/equipped(mob/user, slot, initial)
 	. = ..()
-	if(slot != SLOT_HUD_SHOES || !ishuman(user))
+	if(slot != ITEM_SLOT_SHOES || !ishuman(user))
 		return
 	check_mag_pulse(user)
 
@@ -34,7 +34,7 @@
 		return
 	check_mag_pulse(user, removing = TRUE)
 
-/obj/item/clothing/shoes/magboots/attack_self(mob/user)
+/obj/item/clothing/shoes/magboots/attack_self__legacy__attackchain(mob/user)
 	toggle_magpulse(user)
 
 /obj/item/clothing/shoes/magboots/proc/toggle_magpulse(mob/user, no_message)
@@ -42,7 +42,7 @@
 		REMOVE_TRAIT(user, TRAIT_NOSLIP, UID())
 		slowdown = slowdown_passive
 	else
-		if(user.get_item_by_slot(SLOT_HUD_SHOES) == src)
+		if(user.get_item_by_slot(ITEM_SLOT_SHOES) == src)
 			ADD_TRAIT(user, TRAIT_NOSLIP, UID())
 		slowdown = slowdown_active
 	magpulse = !magpulse
@@ -53,10 +53,8 @@
 		to_chat(user, "You [magpulse ? "enable" : "disable"] the [magpulse_name].")
 	user.update_inv_shoes()	//so our mob-overlays update
 	user.update_gravity(user.mob_has_gravity())
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtons()
-	check_mag_pulse(user, removing = (user.get_item_by_slot(SLOT_HUD_SHOES) != src))
+	update_action_buttons()
+	check_mag_pulse(user, removing = (user.get_item_by_slot(ITEM_SLOT_SHOES) != src))
 
 /obj/item/clothing/shoes/magboots/proc/check_mag_pulse(mob/user, removing = FALSE)
 	if(!user)
@@ -73,7 +71,7 @@
 
 /obj/item/clothing/shoes/magboots/atmos
 	name = "atmospheric magboots"
-	desc = "Magnetic boots, made to withstand gusts of space wind over 500kmph."
+	desc = "Magnetic boots, made to withstand gusts of space wind over 500k mph."
 	icon_state = "atmosmagboots0"
 	magboot_state = "atmosmagboots"
 
@@ -101,7 +99,7 @@
 
 /obj/item/clothing/shoes/magboots/advance/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_PARENT_QDELETING, PROC_REF(alert_admins_on_destroy))
+	AddElement(/datum/element/high_value_item)
 
 /obj/item/clothing/shoes/magboots/syndie
 	name = "blood-red magboots"
@@ -129,7 +127,7 @@
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge! There's a red light on the side."
 	icon_state = "clownmag0"
 	magboot_state = "clownmag"
-	item_state = "clown_shoes"
+	inhand_icon_state = "clown_shoes"
 	slowdown = SHOES_SLOWDOWN+1
 	slowdown_active = SHOES_SLOWDOWN+1
 	slowdown_passive = SHOES_SLOWDOWN+1
@@ -144,7 +142,7 @@
 
 /obj/item/clothing/shoes/magboots/clown/equipped(mob/user, slot)
 	. = ..()
-	if(slot == SLOT_HUD_SHOES && enabled_waddle)
+	if(slot == ITEM_SLOT_SHOES && enabled_waddle)
 		user.AddElement(/datum/element/waddling)
 
 /obj/item/clothing/shoes/magboots/clown/dropped(mob/user)
@@ -189,7 +187,7 @@
 
 /obj/item/clothing/shoes/magboots/gravity
 	name = "gravitational boots"
-	desc = "These experimental boots try to get around the restrictions of magboots by installing miniture gravitational generators in the soles. Sadly, power hungry, and needs a gravitational anomaly core."
+	desc = "These experimental boots try to get around the restrictions of magboots by installing miniature gravitational generators in the soles. Sadly, power hungry, and needs a gravitational anomaly core."
 	icon_state = "gravboots0"
 	origin_tech = "materials=6;magnets=6;engineering=6"
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/gravity_jump) //In other news, combining magboots with jumpboots is a mess
@@ -272,12 +270,12 @@
 	cell = null
 	update_icon()
 
-/obj/item/clothing/shoes/magboots/gravity/attackby(obj/item/I, mob/user, params)
+/obj/item/clothing/shoes/magboots/gravity/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stock_parts/cell))
 		if(cell)
 			to_chat(user, "<span class='warning'>[src] already has a cell!</span>")
 			return
-		if(!user.unEquip(I))
+		if(!user.drop_item_to_ground(I))
 			return
 		I.forceMove(src)
 		cell = I
@@ -302,7 +300,7 @@
 	..()
 	if(!ishuman(user))
 		return
-	if(slot == SLOT_HUD_SHOES && cell && core)
+	if(slot == ITEM_SLOT_SHOES && cell && core)
 		style.teach(user, TRUE)
 
 /obj/item/clothing/shoes/magboots/gravity/dropped(mob/user)
@@ -310,14 +308,14 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(H.get_item_by_slot(SLOT_HUD_SHOES) == src)
+	if(H.get_item_by_slot(ITEM_SLOT_SHOES) == src)
 		style.remove(H)
 		if(magpulse)
 			to_chat(user, "<span class='notice'>As [src] are removed, they deactivate.</span>")
 			toggle_magpulse(user, TRUE)
 
 /obj/item/clothing/shoes/magboots/gravity/item_action_slot_check(slot)
-	if(slot == SLOT_HUD_SHOES)
+	if(slot == ITEM_SLOT_SHOES)
 		return TRUE
 
 /obj/item/clothing/shoes/magboots/gravity/proc/dash(mob/user, action)

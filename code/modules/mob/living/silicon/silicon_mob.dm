@@ -1,5 +1,4 @@
 /mob/living/silicon
-	gender = NEUTER
 	voice_name = "synthesized voice"
 	bubble_icon = "machine"
 	has_unlimited_silicon_privilege = TRUE
@@ -20,7 +19,7 @@
 	var/list/alarms_to_clear = list()
 	var/list/alarm_types_show = list("Motion" = 0, "Fire" = 0, "Atmosphere" = 0, "Power" = 0)
 	var/list/alarm_types_clear = list("Motion" = 0, "Fire" = 0, "Atmosphere" = 0, "Power" = 0)
-	var/list/alarms_listend_for = list("Motion", "Fire", "Atmosphere", "Power")
+	var/list/alarms_listened_for = list("Motion", "Fire", "Atmosphere", "Power")
 	//var/list/hud_list[10]
 	var/list/speech_synthesizer_langs = list()	//which languages can be vocalized by the speech synthesizer
 	var/designation = ""
@@ -80,6 +79,9 @@
 	var/datum/ai_laws/laws = null
 	var/list/additional_law_channels = list("State" = "")
 
+	/// The delay used when toggling door bolts or electrification
+	var/door_bolt_delay = 3 SECONDS
+
 /mob/living/silicon/New()
 	GLOB.silicon_mob_list |= src
 	..()
@@ -126,10 +128,10 @@
 /mob/living/silicon/proc/get_radio()
 	return
 
-/mob/living/silicon/proc/alarm_triggered(src, class, area/A, list/O, obj/alarmsource)
+/mob/living/silicon/proc/alarm_triggered(source, class, area/A, list/O, obj/alarmsource)
 	return
 
-/mob/living/silicon/proc/alarm_cancelled(src, class, area/A, obj/origin, cleared)
+/mob/living/silicon/proc/alarm_cancelled(source, class, area/A, obj/origin, cleared)
 	return
 
 /mob/living/silicon/proc/queueAlarm(message, type, incoming = TRUE)
@@ -154,20 +156,23 @@
 
 		var/list/msg = list("--- ")
 
+		if(alarm_types_show["Tracking"])
+			msg += "TRACKING: [alarm_types_show["Tracking"]] alarms detected. - "
+
 		if(alarm_types_show["Burglar"])
-			msg += "BURGLAR: [alarm_types_show["Burglar"]] alarms detected. - "
+			msg += "ПРОНИКНОВЕНИЕ: Обнаржуено [alarm_types_show["Burglar"]] тревог. - "
 
 		if(alarm_types_show["Motion"])
-			msg += "MOTION: [alarm_types_show["Motion"]] alarms detected. - "
+			msg += "ДВИЖЕНИЕ: Обнаружено [alarm_types_show["Motion"]] тревог. - "
 
 		if(alarm_types_show["Fire"])
-			msg += "FIRE: [alarm_types_show["Fire"]] alarms detected. - "
+			msg += "ПОЖАР: Обнаружено [alarm_types_show["Fire"]] тревог. - "
 
 		if(alarm_types_show["Atmosphere"])
-			msg += "ATMOSPHERE: [alarm_types_show["Atmosphere"]] alarms detected. - "
+			msg += "АТМОСФЕРА: Обнаружено [alarm_types_show["Atmosphere"]] тревог. - "
 
 		if(alarm_types_show["Power"])
-			msg += "POWER: [alarm_types_show["Power"]] alarms detected. - "
+			msg += "ПИТАНИЕ: Обнаружено [alarm_types_show["Power"]] тревог. - "
 
 		msg += "<A href=byond://?src=[UID()];showalerts=1'>\[Show Alerts\]</a>"
 		var/msg_text = msg.Join("")
@@ -181,16 +186,16 @@
 		var/list/msg = list("--- ")
 
 		if(alarm_types_clear["Motion"])
-			msg += "MOTION: [alarm_types_clear["Motion"]] alarms cleared. - "
+			msg += "ДВИЖЕНИЕ: Нейтрализовано [alarm_types_clear["Motion"]] тревог. - "
 
 		if(alarm_types_clear["Fire"])
-			msg += "FIRE: [alarm_types_clear["Fire"]] alarms cleared. - "
+			msg += "ПОЖАР: Нейтрализовано [alarm_types_clear["Fire"]] тревог. - "
 
 		if(alarm_types_clear["Atmosphere"])
-			msg += "ATMOSPHERE: [alarm_types_clear["Atmosphere"]] alarms cleared. - "
+			msg += "АТМОСФЕРА: Нейтрализовано [alarm_types_clear["Atmosphere"]] тревог. - "
 
 		if(alarm_types_clear["Power"])
-			msg += "POWER: [alarm_types_clear["Power"]] alarms cleared. - "
+			msg += "ПИТАНИЕ: Нейтрализовано [alarm_types_clear["Power"]] тревог. - "
 
 		msg += "<A href=byond://?src=[UID()];showalerts=1'>\[Show Alerts\]</a>"
 
@@ -222,6 +227,12 @@
 /mob/living/silicon/drop_item()
 	return
 
+/mob/living/silicon/put_in_l_hand(obj/item/W, skip_blocked_hands_check)
+	return
+
+/mob/living/silicon/put_in_r_hand(obj/item/W, skip_blocked_hands_check)
+	return
+
 /mob/living/silicon/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE //So borgs they don't die trying to fix wiring
 
@@ -234,7 +245,7 @@
 			take_organ_damage(10)
 	flash_eyes(affect_silicon = 1)
 	to_chat(src, "<span class='danger'>*BZZZT*</span>")
-	to_chat(src, "<span class='warning'>Warning: Electromagnetic pulse detected.</span>")
+	to_chat(src, "<span class='warning'>Внимание: Обнаружен электромагнитный импульс.</span>")
 
 
 /mob/living/silicon/proc/damage_mob(brute = 0, fire = 0, tox = 0)
@@ -255,21 +266,21 @@
 		return
 	. = TRUE
 	if(!getBruteLoss())
-		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
+		to_chat(user, "<span class='notice'>Нечего чинить!</span>")
 		return
 	else if(!getBruteLoss(TRUE))
-		to_chat(user, "<span class='warning'>The damaged components are beyond saving!</span>")
+		to_chat(user, "<span class='warning'>Повреждённые компоненты не починить!</span>")
 		return
 	if(!I.use_tool(src, user, volume = I.tool_volume))
 		return
 	adjustBruteLoss(-30)
 	add_fingerprint(user)
-	user.visible_message("<span class='alert'>[user] patches some dents on [src] with [I].</span>")
+	user.visible_message("<span class='alert'>[user] латает некоторые вмятины на [src] с помощью [I].</span>")
 
 
 /mob/living/silicon/bullet_act(obj/item/projectile/Proj)
 	if(!Proj.nodamage)
-		var/damage = run_armor(Proj.damage, Proj.damage_type, Proj.flag, 0, Proj.armour_penetration_flat, Proj.armour_penetration_percentage)
+		var/damage = run_armor(Proj.damage, Proj.damage_type, Proj.flag, 0, Proj.armor_penetration_flat, Proj.armor_penetration_percentage)
 		switch(Proj.damage_type)
 			if(BRUTE)
 				adjustBruteLoss(damage)
@@ -280,29 +291,33 @@
 
 	return 2
 
-/mob/living/silicon/attacked_by(obj/item/I, mob/living/user, def_zone)
+/mob/living/silicon/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(istype(I, /obj/item/clothing/head) && user.a_intent == INTENT_HELP)
 		place_on_head(user.get_active_hand(), user)
-		return TRUE
+		return ITEM_INTERACT_COMPLETE
+
+	return ..()
+
+/mob/living/silicon/attacked_by(obj/item/I, mob/living/user, def_zone)
 	send_item_attack_message(I, user)
 	if(I.force)
 		var/bonus_damage = 0
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			bonus_damage = H.physiology.melee_bonus
-		var/damage = run_armor(I.force + bonus_damage, I.damtype, MELEE, 0, I.armour_penetration_flat, I.armour_penetration_percentage)
+		var/damage = run_armor(I.force + bonus_damage, I.damtype, MELEE, 0, I.armor_penetration_flat, I.armor_penetration_percentage)
 		apply_damage(damage, I.damtype, def_zone)
 
 ///returns the damage value of the attack after processing the silicons's various armor protections
-/mob/living/silicon/proc/run_armor(damage_amount, damage_type, damage_flag = 0, attack_dir, armour_penetration_flat = 0, armour_penetration_percentage = 0)
+/mob/living/silicon/proc/run_armor(damage_amount, damage_type, damage_flag = 0, attack_dir, armor_penetration_flat = 0, armor_penetration_percentage = 0)
 	if(damage_type != BRUTE && damage_type != BURN)
 		return 0
-	var/armor_protection = 0
+	var/armor_protection
 	if(damage_flag)
 		armor_protection = armor.getRating(damage_flag)
-	if(armor_protection)		//Only apply weak-against-armor/hollowpoint effects if there actually IS armor.
-		armor_protection = clamp((armor_protection * ((100 - armour_penetration_percentage) / 100)) - armour_penetration_flat, min(armor_protection, 0), 100)
-	return round(damage_amount * (100 - armor_protection) * 0.01, DAMAGE_PRECISION)
+	if(armor_protection > 0)		//Only apply weak-against-armor/hollowpoint effects if there actually IS armor.
+		armor_protection = clamp(armor_protection * (100 - armor_penetration_percentage) / 100 - armor_penetration_flat, 0, 100)
+	return round(damage_amount * (100 - armor_protection) / 100, DAMAGE_PRECISION)
 
 /mob/living/silicon/apply_effect(effect = 0, effecttype = STUN, blocked = 0)
 	return FALSE //The only effect that can hit them atm is flashes and they still directly edit so this works for now
@@ -317,7 +332,7 @@
 
 // this function shows the health of the pAI in the Status panel
 /mob/living/silicon/proc/show_system_integrity()
-	return list("System integrity:", stat ? "Nonfunctional" : "[round((health / maxHealth) * 100)]%")
+	return list("Целостность систем:", stat ? "Системы не функциональны" : "[round((health / maxHealth) * 100)]%")
 
 
 // This adds the basic clock, shuttle recall timer, and malf_ai info to all silicon lifeforms
@@ -413,31 +428,31 @@
 	janisensor.add_hud_to(src)
 
 /mob/living/silicon/proc/toggle_sensor_mode()
-	to_chat(src, "<span class='notice'>Please select sensor type.</span>")
-	var/static/list/sensor_choices = list("Security" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
-							"Medical" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
-							"Diagnostic" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
-							"Janitor" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "janihud"),
-							"None" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
+	to_chat(src, "<span class='notice'>Выберите тип сенсора.</span>")
+	var/static/list/sensor_choices = list("Служба Безопасности" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
+							"Медицинский" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
+							"Диагностика" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
+							"Уборщик" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "janihud"),
+							"Нет" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
 	var/sensor_type = show_radial_menu(src, src, sensor_choices)
 	if(!sensor_type)
 		return
 	remove_med_sec_hud()
 	switch(sensor_type)
-		if("Security")
+		if("Служба Безопасности")
 			add_sec_hud()
-			to_chat(src, "<span class='notice'>Security records overlay enabled.</span>")
-		if("Medical")
+			to_chat(src, "<span class='notice'>Включён оверлей Службы Безопасности.</span>")
+		if("Медицинский")
 			add_med_hud()
-			to_chat(src, "<span class='notice'>Life signs monitor overlay enabled.</span>")
-		if("Diagnostic")
+			to_chat(src, "<span class='notice'>Включен оверлей жизненных показателей.</span>")
+		if("Диагностика")
 			add_diag_hud()
-			to_chat(src, "<span class='notice'>Robotics diagnostic overlay enabled.</span>")
-		if("Janitor")
+			to_chat(src, "<span class='notice'>Включён диагностический оверлей.</span>")
+		if("Уборщик")
 			add_jani_hud()
-			to_chat(src, "<span class='notice'>Janitorial filth overlay enabled.</span>")
-		if("None")
-			to_chat(src, "Sensor augmentations disabled.")
+			to_chat(src, "<span class='notice'>Включён оверлей грязи для уборки.</span>")
+		if("Нет")
+			to_chat(src, "Аугментация сенсоров отключена.")
 
 /mob/living/silicon/adjustToxLoss(amount)
 	return STATUS_UPDATE_NONE
@@ -481,8 +496,8 @@
 		return
 	var/image/head_icon
 
-	if(silicon_hat.icon_override)
-		hat_icon_file = silicon_hat.icon_override
+	if(silicon_hat.worn_icon)
+		hat_icon_file = silicon_hat.worn_icon
 	if(!hat_icon_state)
 		hat_icon_state = silicon_hat.icon_state
 	if(isnull(hat_alpha))
@@ -539,7 +554,7 @@
 		to_chat(user, "<span class='warning'>[item_to_add] does not fit on the head of [src]!</span>")
 		return FALSE
 
-	if(!user.unEquip(item_to_add))
+	if(!user.transfer_item_to(item_to_add, src))
 		to_chat(user, "<span class='warning'>[item_to_add] is stuck to your hand, you cannot put it on [src]!</span>")
 		return FALSE
 
@@ -547,7 +562,6 @@
 		"<span class='notice'>[user] puts [item_to_add] on [real_name].</span>",
 		"<span class='notice'>You put [item_to_add] on [real_name].</span>"
 	)
-	item_to_add.forceMove(src)
 	silicon_hat = item_to_add
 	update_icons()
 
@@ -578,13 +592,14 @@
 
 /mob/living/silicon/proc/drop_hat()
 	if(silicon_hat)
-		unEquip(silicon_hat)
+		drop_item_to_ground(silicon_hat)
 		null_hat()
 		update_icons()
 		return TRUE
 
 /mob/living/silicon/proc/null_hat()
 	silicon_hat = null
+	hat_icon_file = initial(hat_icon_file)
 	hat_icon_state = null
 	hat_alpha = null
 	hat_color = null
@@ -594,3 +609,6 @@
 	if(silicon_hat)
 		. += "<span class='notice'>They are wearing a [bicon(silicon_hat)] [silicon_hat.name].<span>"
 		. += "<span class='notice'>Use an empty hand on [src] on grab mode to remove [silicon_hat].<span>"
+
+/mob/living/silicon/plushify(plushie_override, curse_time)
+	. = ..(/obj/item/toy/plushie/borgplushie, curse_time)

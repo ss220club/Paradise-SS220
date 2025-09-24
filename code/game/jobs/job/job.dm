@@ -60,6 +60,7 @@
 	var/hidden_from_job_prefs = FALSE // if true, job preferences screen never shows this job.
 
 	var/admin_only = 0
+	var/mentor_only = 0
 	var/spawn_ert = 0
 	var/syndicate_command = 0
 
@@ -71,9 +72,15 @@
 	/// Boolean detailing if this job has been banned because of a gamemode restriction i.e. The revolution has won, no more command
 	var/job_banned_gamemode = FALSE
 
+	/// Standard paycheck amount for this job
+	var/standard_paycheck = CREW_PAY_ASSISTANT
+
 //Only override this proc
 /datum/job/proc/after_spawn(mob/living/carbon/human/H, joined_late = FALSE)	// SS220 EDIT - jobs - prisoner spawn
+	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, H)
+
+	H.mind.initial_account?.payday_amount = standard_paycheck
 
 /datum/job/proc/announce(mob/living/carbon/human/H)
 	return
@@ -147,6 +154,9 @@
 		return FALSE
 	return (current_positions < spawn_positions) || (spawn_positions == -1)
 
+/datum/job/proc/is_command_position()
+	return (title in GLOB.command_positions)
+
 /datum/outfit/job
 	name = "Standard Gear"
 	collect_not_del = TRUE // we don't want anyone to lose their job shit
@@ -203,12 +213,12 @@
 					permitted = TRUE
 
 				if(!permitted)
-					to_chat(H, "<span class='warning'>Your current job or whitelist status does not permit you to spawn with [G.display_name]!</span>")
+					to_chat(H, "<span class='warning'>Ваша текущая работа или статус в белом списке не позволяют вам спауниться с [G.display_name]!</span>")
 					continue
 
 				if(G.slot)
 					if(H.equip_to_slot_or_del(G.spawn_item(H, H.client.prefs.active_character.get_gear_metadata(G)), G.slot, TRUE))
-						to_chat(H, "<span class='notice'>Equipping you with [G.display_name]!</span>")
+						to_chat(H, "<span class='notice'>Одеваем вас в [G.display_name]!</span>")
 					else
 						gear_leftovers += G
 				else
@@ -230,17 +240,17 @@
 			var/atom/placed_in = H.equip_or_collect(G.spawn_item(null, H.client.prefs.active_character.get_gear_metadata(G)))
 			if(istype(placed_in))
 				if(isturf(placed_in))
-					to_chat(H, "<span class='notice'>Placing [G.display_name] on [placed_in]!</span>")
+					to_chat(H, "<span class='notice'>Помещение [G.display_name] в [placed_in]!</span>")
 				else
-					to_chat(H, "<span class='notice'>Placing [G.display_name] in your [placed_in.name].</span>")
+					to_chat(H, "<span class='notice'>Помещение [G.display_name] в ваш [placed_in.name].</span>")
 				continue
 			if(H.equip_to_appropriate_slot(G))
-				to_chat(H, "<span class='notice'>Placing [G.display_name] in your inventory!</span>")
+				to_chat(H, "<span class='notice'>Помещение [G.display_name] в ваш инвентарь!</span>")
 				continue
 			if(H.put_in_hands(G))
-				to_chat(H, "<span class='notice'>Placing [G.display_name] in your hands!</span>")
+				to_chat(H, "<span class='notice'>Помещение [G.display_name] в ваши руки!</span>")
 				continue
-			to_chat(H, "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no hands free and no backpack or this is a bug.</span>")
+			to_chat(H, "<span class='danger'>Не удалось найти хранилище на мобе, либо вы спавнитесь без свободных рук и рюкзака, либо это ошибка.</span>")
 			qdel(G)
 
 		gear_leftovers.Cut()
@@ -283,7 +293,9 @@
 		PDA.owner = H.real_name
 		PDA.ownjob = C.assignment
 		PDA.ownrank = C.rank
-		PDA.name = "PDA-[H.real_name] ([PDA.ownjob])"
+		PDA.name = "КПК-[H.real_name] ([PDA.ownjob])"
+		if(H.client?.prefs.active_character.pda_ringtone)
+			PDA.ttone = H.client.prefs.active_character.pda_ringtone
 
 /datum/outfit/job/on_mind_initialize(mob/living/carbon/human/H)
 	. = ..()
@@ -293,7 +305,70 @@
 	var/datum/job/J = SSjobs.GetJobType(jobtype)
 	if(!J)
 		J = SSjobs.GetJob(H.job)
-	id.assignment = H.mind.role_alt_title ? H.mind.role_alt_title : J.title
+	if(H.mind.role_alt_title)
+		id.assignment = H.mind.role_alt_title
+	else if(J)
+		id.assignment = J.title
+	else
+		id.assignment = H.job // ERTs and other things without job datums
+
 	if(!H.mind.initial_account)
 		return
 	id.associated_account_number = H.mind.initial_account.account_number
+
+/// Used to give the gaze ability to NTReps and IAAs
+/datum/outfit/job/proc/give_gaze(mob/living/carbon/human/user)
+	user.AddSpell(new /datum/spell/inspectors_gaze(null))
+
+/// Gives the imaginary space law booklet verb
+/mob/living/carbon/human/proc/space_law()
+	set name = "Open Space Law"
+	set desc = "Open a memorized version of the space law booklet."
+	set category = "Space Law"
+
+	var/obj/item/book/manual/wiki/security_space_law/imaginary/book = new()
+	if(!put_in_any_hand_if_possible(book))
+		QDEL_NULL(book)
+
+/// Gives the imaginary legal sop booklet verb
+/mob/living/carbon/human/proc/sop_legal()
+	set name = "Open Legal SOP"
+	set desc = "Open a memorized version of the legal SOP booklet."
+	set category = "Space Law"
+
+	var/obj/item/book/manual/wiki/sop_legal/imaginary/book = new()
+	if(!put_in_any_hand_if_possible(book))
+		QDEL_NULL(book)
+
+/proc/get_full_job_name(job)
+	var/static/regex/cap_expand = new("cap(?!tain)")
+	var/static/regex/cmo_expand = new("cmo")
+	var/static/regex/hos_expand = new("hos")
+	var/static/regex/hop_expand = new("hop")
+	var/static/regex/rd_expand = new("rd")
+	var/static/regex/ce_expand = new("ce")
+	var/static/regex/qm_expand = new("qm")
+	var/static/regex/sec_expand = new("(?<!security )officer")
+	var/static/regex/engi_expand = new("(?<!station )engineer")
+	var/static/regex/atmos_expand = new("atmos tech")
+	var/static/regex/doc_expand = new("(?<!medical )doctor|medic(?!al)")
+	var/static/regex/mine_expand = new("(?<!shaft )miner")
+	var/static/regex/chef_expand = new("chef")
+	var/static/regex/borg_expand = new("(?<!cy)borg")
+
+	job = lowertext(job)
+	job = cap_expand.Replace(job, "captain")
+	job = cmo_expand.Replace(job, "chief medical officer")
+	job = hos_expand.Replace(job, "head of security")
+	job = hop_expand.Replace(job, "head of personnel")
+	job = rd_expand.Replace(job, "research director")
+	job = ce_expand.Replace(job, "chief engineer")
+	job = qm_expand.Replace(job, "quartermaster")
+	job = sec_expand.Replace(job, "security officer")
+	job = engi_expand.Replace(job, "station engineer")
+	job = atmos_expand.Replace(job, "atmospheric technician")
+	job = doc_expand.Replace(job, "medical doctor")
+	job = mine_expand.Replace(job, "shaft miner")
+	job = chef_expand.Replace(job, "cook")
+	job = borg_expand.Replace(job, "cyborg")
+	return job

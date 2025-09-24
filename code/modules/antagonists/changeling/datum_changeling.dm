@@ -50,6 +50,7 @@ RESTRICT_TYPE(/datum/antagonist/changeling)
 	var/regenerating = FALSE
 	blurb_text_color = COLOR_PURPLE
 	blurb_text_outline_width = 1
+	boss_title = "Greater Hivemind"
 
 /datum/antagonist/changeling/New()
 	..()
@@ -87,10 +88,10 @@ RESTRICT_TYPE(/datum/antagonist/changeling)
 /datum/antagonist/changeling/greet()
 	. = ..()
 	SEND_SOUND(owner.current, sound('sound/ambience/antag/ling_alert.ogg'))
-	. += "<span class='danger'>Remember: you get all of their absorbed DNA if you absorb a fellow changeling.</span>"
+	. += "<span class='danger'>Use say \":g message\" to communicate with your fellow changelings. Remember: you get all of their absorbed DNA if you absorb a fellow changeling.</span>"
 
 /datum/antagonist/changeling/farewell()
-	to_chat(owner.current, "<span class='biggerdanger'><B>You grow weak and lose your powers! You are no longer a changeling and are stuck in your current form!</span>")
+	to_chat(owner.current, "<span class='biggerdanger'><b>You grow weak and lose your powers! You are no longer a changeling and are stuck in your current form!</b></span>")
 
 /datum/antagonist/changeling/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/L = ..()
@@ -98,6 +99,7 @@ RESTRICT_TYPE(/datum/antagonist/changeling)
 		START_PROCESSING(SSobj, src)
 	add_new_languages(L.languages) // Absorb the languages of the new body.
 	update_languages() // But also, give the changeling the languages they've already absorbed before this.
+	L.add_language("Changeling")
 	// If there's a mob_override, this is a body transfer, and therefore we should give them back their powers they had while in the old body.
 	if(mob_override)
 		for(var/datum/action/changeling/power in acquired_powers)
@@ -125,6 +127,7 @@ RESTRICT_TYPE(/datum/antagonist/changeling)
 	if(L.hud_used?.lingstingdisplay)
 		L.hud_used.lingstingdisplay.invisibility = 101
 		L.hud_used.lingchemdisplay.invisibility = 101
+	L.remove_language("Changeling")
 	remove_unnatural_languages(L)
 	UnregisterSignal(L, COMSIG_MOB_DEATH)
 	// If there's a mob_override, this is a body transfer, and therefore we should only remove their powers from the old body.
@@ -183,6 +186,14 @@ RESTRICT_TYPE(/datum/antagonist/changeling)
 	else
 		chem_charges = clamp(0, chem_charges + chem_recharge_rate - chem_recharge_slowdown, chem_storage)
 	update_chem_charges_ui(H)
+
+/datum/antagonist/changeling/exfiltrate(mob/living/carbon/human/extractor, obj/item/radio/radio)
+	remove_changeling_powers(FALSE)
+	var/datum/action/changeling/power = new /datum/action/changeling/transform
+	power.Grant(extractor)
+	extractor.equipOutfit(/datum/outfit/admin/ghostbar_antag/changeling)
+	radio.autosay("<b>--ZZZT!- Welcome home, [extractor.real_name]. -ZZT!-</b>", "Changeling Hive", "Security")
+	SSblackbox.record_feedback("tally", "successful_extraction", 1, "Changeling")
 
 /datum/antagonist/changeling/proc/update_chem_charges_ui(mob/living/carbon/human/H = owner.current)
 	if(H.hud_used?.lingchemdisplay)
@@ -456,4 +467,4 @@ RESTRICT_TYPE(/datum/antagonist/changeling)
 		to_chat(L, "<span class='notice'>While our current form may be lifeless, this is not the end for us as we can still regenerate!</span>")
 
 /datum/antagonist/changeling/custom_blurb()
-	return "We awaken on the [station_name()], [get_area_name(owner.current, TRUE)]...\nWe have our tasks to attend to..."
+	return "Мы пробуждаемся на [station_name()], [get_area_name(owner.current, TRUE)]...\nИ у нас есть задачи, которые нужно выполнить..."

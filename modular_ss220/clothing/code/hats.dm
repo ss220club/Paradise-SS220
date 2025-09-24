@@ -3,7 +3,7 @@
 	desc = "Хорошо быть королём."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "cap_beret_black"
-	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/hats.dmi'
 
 /obj/item/clothing/head/ratge
 	name = "ratge head"
@@ -95,7 +95,7 @@
 		"Nucleation" = 'modular_ss220/clothing/icons/mob/hats.dmi',
 	)
 
-/obj/item/clothing/head/towel/attackby(obj/item/S, mob/user, params)
+/obj/item/clothing/head/towel/attackby__legacy__attackchain(obj/item/S, mob/user, params)
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S
@@ -139,3 +139,6 @@
 	name = "nanotrasen intern beret"
 	desc = "Берет стажера НТ. Белый берет с зеленой звездой. Выглядит подозрительно похожим на берет главного инженера..."
 	icon_state = "beret_ce"
+
+/obj/item/clothing/head/kitty
+	worn_icon = 'modular_ss220/clothing/icons/mob/hats.dmi'

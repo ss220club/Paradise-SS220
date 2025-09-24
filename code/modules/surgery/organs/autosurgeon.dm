@@ -5,7 +5,6 @@
 	desc = "A device that automatically inserts an implant or organ into the user without the hassle of extensive surgery. It has a screwdriver slot for removing accidentally added items."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "autoimplanter"
-	item_state = ""
 	w_class = WEIGHT_CLASS_SMALL
 	var/uses = INFINITE
 
@@ -29,13 +28,14 @@
 	I.forceMove(src)
 	name = "[initial(name)] ([storedorgan.name])"
 
-/obj/item/autosurgeon/organ/attack_self(mob/user) //when the object it used...
+/obj/item/autosurgeon/organ/attack_self__legacy__attackchain(mob/user) //when the object it used...
 	if(!uses)
 		to_chat(user, "<span class='alert'>[src] has already been used. The tools are dull and won't reactivate.</span>")
 		return
 	else if(!storedorgan)
 		to_chat(user, "<span class='alert'>[src] currently has no implant stored.</span>")
 		return
+	SSblackbox.record_feedback("tally", "o_implant_auto", 1, "[storedorgan.type]")
 	storedorgan.insert(user) //insert stored organ into the user
 	user.visible_message("<span class='notice'>[user] presses a button on [src], and you hear a short mechanical noise.</span>", "<span class='notice'>You feel a sharp sting as [src] plunges into your body.</span>")
 	playsound(get_turf(user), 'sound/weapons/circsawhit.ogg', 50, TRUE)
@@ -46,7 +46,7 @@
 	if(!uses)
 		desc = "[initial(desc)] Looks like it's been used up."
 
-/obj/item/autosurgeon/organ/attackby(obj/item/I, mob/user, params)
+/obj/item/autosurgeon/organ/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(istype(I, organ_type))
 		if(storedorgan)
 			to_chat(user, "<span class='alert'>[src] already has an implant stored.</span>")
@@ -78,6 +78,33 @@
 		if(!uses)
 			desc = "[initial(desc)] Looks like it's been used up."
 	return TRUE
+
+/obj/item/autosurgeon/organ/one_use
+	uses = 1
+
+/obj/item/autosurgeon/organ/one_use/skill_hud
+	desc = "A single use autosurgeon that contains a skill heads up display. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/eyes/hud/skill
+
+/obj/item/autosurgeon/organ/one_use/sec_hud
+	desc = "A single use autosurgeon that contains a security heads up display. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/eyes/hud/security
+
+/obj/item/autosurgeon/organ/one_use/med_hud
+	desc = "A single use autosurgeon that contains a medical heads up display. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/eyes/hud/medical
+
+/obj/item/autosurgeon/organ/one_use/diagnostic_hud
+	desc = "A single use autosurgeon that contains a diagnostic heads up display. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/eyes/hud/diagnostic
+
+/obj/item/autosurgeon/organ/one_use/wire_interface
+	desc = "A single use autosurgeon that contains a wire interface. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/brain/wire_interface
+
+/obj/item/autosurgeon/organ/one_use/meson_eyes
+	desc = "A single use autosurgeon that contains a set of meson eyes. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/eyes/cybernetic/meson
 
 /obj/item/autosurgeon/organ/syndicate
 	name = "suspicious implant autosurgeon"
@@ -151,5 +178,11 @@
 
 /obj/item/autosurgeon/organ/syndicate/oneuse/hardened_heart
 	starting_organ = /obj/item/organ/internal/heart/cybernetic/upgraded/hardened
+
+/obj/item/autosurgeon/organ/syndicate/oneuse/syndie_mantis
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/syndie_mantis
+
+/obj/item/autosurgeon/organ/syndicate/oneuse/syndie_mantis/l
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/syndie_mantis/l
 
 #undef INFINITE

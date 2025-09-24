@@ -3,7 +3,8 @@
 	desc = "Переноска для маленьких животных. "
 	icon = 'modular_ss220/mobs/icons/pet_carrier.dmi'
 	icon_state = "pet_carrier"
-	item_state = "pet_carrier"
+	worn_icon_state = "pet_carrier"
+	inhand_icon_state = "pet_carrier"
 	max_integrity = 100
 	w_class = WEIGHT_CLASS_SMALL
 	var/mob_size = MOB_SIZE_SMALL
@@ -20,7 +21,8 @@
 	name = "переноска"
 	desc = "Переноска для небольших животных. "
 	icon_state = "pet_carrier_normal"
-	item_state = "pet_carrier_normal"
+	worn_icon_state = "pet_carrier_normal"
+	inhand_icon_state = "pet_carrier_normal"
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	mob_size = MOB_SIZE_LARGE
@@ -36,11 +38,11 @@
 	free_content()
 	. = ..()
 
-/obj/item/pet_carrier/attack_self(mob/user)
+/obj/item/pet_carrier/attack_self__legacy__attackchain(mob/user)
 	..()
 	change_state()
 
-/obj/item/pet_carrier/attackby(obj/item/I, mob/user, params)
+/obj/item/pet_carrier/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/holder))
 		var/obj/item/holder/H = I
 		for(var/mob/M in H.contents)
@@ -71,9 +73,6 @@
 	if(!istype(target, /mob/living/simple_animal/pet))
 		to_chat(user, span_warning("Это существо не очень похоже на ручное животное."))
 		return FALSE
-	//if(target.mob_size < mob_size)
-	//	to_chat(user, span_warning("Ваша переноска слишком большая!"))
-	//	return FALSE
 
 	target.forceMove(src)
 	name += " ([target.name])"
@@ -83,7 +82,7 @@
 	contains_pet = TRUE
 
 	to_chat(user, span_notice("Вы поместили [target.name] в [src.name]."))
-	to_chat(target, span_notice("[user.name] поместил[user.gender == FEMALE ? "" : "а"] вас в [src.name]."))
+	to_chat(target, span_notice("[user.name] поместил [user.gender == FEMALE ? "" : "а"] вас в [src.name]."))
 	update_icon()
 	return TRUE
 
@@ -220,7 +219,7 @@
 	if(user.stat || !ishuman(user) || user.restrained())
 		return
 
-	try_free_content(user)
+	try_free_content()
 
 /obj/item/pet_carrier/MouseDrop(obj/over_object)
 	if(ishuman(usr))
@@ -260,11 +259,11 @@
 		if(!(M.restrained()) && !(M.stat))
 			switch(over_object.name)
 				if("r_hand")
-					if(!M.unEquip(src))
+					if(!M.unequip(src))
 						return
 					M.put_in_r_hand(src)
 				if("l_hand")
-					if(!M.unEquip(src))
+					if(!M.unequip(src))
 						return
 					M.put_in_l_hand(src)
 			add_fingerprint(usr)

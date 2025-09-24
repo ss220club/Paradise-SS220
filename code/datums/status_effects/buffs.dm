@@ -2,7 +2,6 @@
 
 /datum/status_effect/his_grace
 	id = "his_grace"
-	duration = -1
 	tick_interval = 4
 	alert_type = /atom/movable/screen/alert/status_effect/his_grace
 	var/bloodlust = 0
@@ -46,11 +45,13 @@
 		qdel(src)
 		return
 	var/grace_heal = bloodlust * 0.05
-	owner.adjustBruteLoss(-grace_heal)
-	owner.adjustFireLoss(-grace_heal)
-	owner.adjustToxLoss(-grace_heal)
-	owner.adjustOxyLoss(-(grace_heal * 2))
-	owner.adjustCloneLoss(-grace_heal)
+
+	var/mob/living/carbon/human/owner_human = owner
+	owner_human.adjustBruteLoss(-grace_heal, robotic = TRUE)
+	owner_human.adjustFireLoss(-grace_heal, robotic = TRUE)
+	owner_human.adjustToxLoss(-grace_heal)
+	owner_human.adjustOxyLoss(-(grace_heal * 2))
+	owner_human.adjustCloneLoss(-grace_heal)
 
 /datum/status_effect/his_grace/on_remove()
 	add_attack_logs(owner, owner, "lost His Grace's stun immunity", ATKLOG_ALL)
@@ -92,9 +93,12 @@
 	var/found_someone = FALSE
 
 	for(var/mob/living/L in oview(9, owner))
-		found_someone = TRUE
 		playsound(owner, 'sound/magic/teleport_diss.ogg', 50, TRUE)
 		L.Beam(owner, "grabber_beam", time = 1 SECONDS, maxdistance = 9)
+		if(L.can_block_magic(MAGIC_RESISTANCE))
+			to_chat(L, "<span class='warning'>You shake off the tendrils that try to wrap around you!</span>")
+			continue
+		found_someone = TRUE
 		L.apply_status_effect(STATUS_EFFECT_VOID_PRICE)
 	if(found_someone)
 		owner.visible_message("<span class='warning'>The violet light around [owner] glows black... and shoots off to those around [owner.p_them()]!</span>", "<span class='warning'>The tendrils around you cinch tightly... but then unwravel and fly at others!</span>")
@@ -235,7 +239,6 @@
 /datum/status_effect/vampire_gladiator
 	id = "vampire_gladiator"
 	duration = 30 SECONDS
-	tick_interval = 1 SECONDS
 	alert_type = /atom/movable/screen/alert/status_effect/vampire_gladiator
 
 /atom/movable/screen/alert/status_effect/vampire_gladiator
@@ -319,10 +322,8 @@
 
 
 //Hippocratic Oath: Applied when the Rod of Asclepius is activated.
-/datum/status_effect/hippocraticOath
+/datum/status_effect/hippocratic_oath
 	id = "Hippocratic Oath"
-	status_type = STATUS_EFFECT_UNIQUE
-	duration = -1
 	tick_interval = 25
 	examine_text = "<span class='notice'>They seem to have an aura of healing and helpfulness about them.</span>"
 	alert_type = null
@@ -332,19 +333,21 @@
 	/// Max heal points for the rod to spend on healing people
 	var/max_heal_points = 50
 
-/datum/status_effect/hippocraticOath/on_apply()
+/datum/status_effect/hippocratic_oath/on_apply()
 	//Makes the user passive, it's in their oath not to harm!
 	ADD_TRAIT(owner, TRAIT_PACIFISM, "hippocraticOath")
 	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	H.add_hud_to(owner)
+	owner.permanent_huds |= H
 	return ..()
 
-/datum/status_effect/hippocraticOath/on_remove()
+/datum/status_effect/hippocratic_oath/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "hippocraticOath")
 	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
+	owner.permanent_huds ^= H
 	H.remove_hud_from(owner)
 
-/datum/status_effect/hippocraticOath/tick()
+/datum/status_effect/hippocratic_oath/tick()
 	// Death transforms you into a snake after a short grace period
 	if(owner.stat == DEAD)
 		if(deathTick < 4)
@@ -352,7 +355,7 @@
 			return
 
 		owner.visible_message("<span class='notice'>[owner]'s soul is absorbed into the rod, relieving the previous snake of its duty.</span>")
-		var/mob/living/simple_animal/hostile/retaliate/poison/snake/healSnake = new(owner.loc)
+		var/mob/living/basic/snake/healSnake = new(owner.loc)
 		var/list/chems = list("bicaridine", "perfluorodecalin", "kelotane")
 		healSnake.poison_type = pick(chems)
 		healSnake.name = "Asclepius's Snake"
@@ -386,7 +389,7 @@
 		if(!heal_points)
 			break
 
-/datum/status_effect/hippocraticOath/proc/heal(mob/living/L)
+/datum/status_effect/hippocratic_oath/proc/heal(mob/living/L)
 	var/starting_points = heal_points
 	var/force_particle = FALSE
 
@@ -406,10 +409,10 @@
 			L.adjustBruteLoss(-3.5)
 			L.adjustFireLoss(-3.5)
 			heal_points--
-	else if(isanimal(L))
-		var/mob/living/simple_animal/SM = L
-		if(SM.health < SM.maxHealth)
-			SM.adjustHealth(-3.5)
+	else if(isanimal_or_basicmob(L))
+		var/mob/living/animal = L
+		if(animal.health < animal.maxHealth)
+			animal.adjustHealth(-3.5)
 			force_particle = TRUE
 			if(prob(50)) // Animals are simpler
 				heal_points--
@@ -417,7 +420,7 @@
 	if(starting_points < heal_points || force_particle)
 		new /obj/effect/temp_visual/heal(get_turf(L), COLOR_HEALING_GREEN)
 
-/datum/status_effect/hippocraticOath/proc/heal_human(mob/living/carbon/human/H)
+/datum/status_effect/hippocratic_oath/proc/heal_human(mob/living/carbon/human/H)
 	if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss() || H.getBrainLoss() || H.getStaminaLoss() || H.getCloneLoss()) // Avoid counting burn wounds
 		H.adjustBruteLoss(-3.5, robotic = TRUE)
 		H.adjustFireLoss(-3.5, robotic = TRUE)
@@ -459,12 +462,12 @@
 	ADD_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, id)
 	owner.adjustBruteLoss(-25)
 	owner.adjustFireLoss(-25)
-	owner.remove_CC()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		H.bodytemperature = H.dna.species.body_temperature
 		if(regen_type_applied == "Legion")
 			if(is_mining_level(H.z) || istype(get_area(H), /area/ruin/space/bubblegum_arena))
+				owner.remove_CC()
 				for(var/obj/item/organ/external/E in H.bodyparts)
 					E.fix_internal_bleeding()
 					E.fix_burn_wound()
@@ -490,9 +493,7 @@
 
 /datum/status_effect/fleshmend
 	id = "fleshmend"
-	duration = -1
 	status_type = STATUS_EFFECT_REFRESH
-	tick_interval = 1 SECONDS
 	alert_type = null
 	/// This diminishes the healing of fleshmend the higher it is.
 	var/tolerance = 1
@@ -539,8 +540,6 @@
 
 /datum/status_effect/speedlegs
 	id = "speedlegs"
-	duration = -1
-	status_type = STATUS_EFFECT_UNIQUE
 	tick_interval = 4 SECONDS
 	alert_type = null
 	var/stacks = 0
@@ -633,8 +632,6 @@
 
 /datum/status_effect/breaching_and_cleaving
 	id = "breaching_and_cleaving"
-	duration = -1
-	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/breaching_and_cleaving
 	var/datum/armor/cleaving_armor_boost = new /datum/armor(0, 30, 30, 30, 0, 0, 50, 0, 0)
 
@@ -660,9 +657,7 @@
 
 /datum/status_effect/hope
 	id = "hope"
-	duration = -1
 	tick_interval = 2 SECONDS
-	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/hope
 
 /atom/movable/screen/alert/status_effect/hope
@@ -673,14 +668,23 @@
 /datum/status_effect/hope/tick()
 	if(owner.stat == DEAD || owner.health <= HEALTH_THRESHOLD_DEAD) // No dead healing, or healing in dead crit
 		return
+	var/heal_multiplier = 0
+	switch(owner.health)
+		if(50 to INFINITY)
+			heal_multiplier = 1
+		if(0 to 50)
+			heal_multiplier = 2
+		if(-50 to 0)
+			heal_multiplier = 3
+		if(-100 to -50)
+			heal_multiplier = 4
+	owner.adjustBruteLoss(-heal_multiplier)
+	owner.adjustFireLoss(-heal_multiplier)
+	owner.adjustOxyLoss(-heal_multiplier)
 	if(owner.health > 50)
 		if(prob(0.5))
 			hope_message()
 		return
-	var/heal_multiplier = min(3, ((50 - owner.health) / 50 + 1)) // 1 hp at 50 health, 2 at 0, 3 at -50
-	owner.adjustBruteLoss(-heal_multiplier * 0.5)
-	owner.adjustFireLoss(-heal_multiplier * 0.5)
-	owner.adjustOxyLoss(-heal_multiplier)
 	if(prob(heal_multiplier * 2))
 		hope_message()
 
@@ -707,8 +711,6 @@
 
 /datum/status_effect/drill_payback
 	id = "drill_payback"
-	duration = -1
-	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = null
 	var/drilled_successfully = FALSE
 	var/times_warned = 0
@@ -747,7 +749,6 @@
 /datum/status_effect/thrall_net
 	id = "thrall_net"
 	tick_interval = 2 SECONDS
-	duration = -1
 	alert_type = null
 	var/blood_cost_per_tick = 5
 	var/list/target_UIDs = list()
@@ -929,7 +930,6 @@
 /datum/status_effect/flayer_rejuv
 	id = "rejuvination"
 	duration = 5 SECONDS
-	tick_interval = 1 SECONDS
 	alert_type = /atom/movable/screen/alert/status_effect/flayer_rejuv
 	var/heal_amount = 5 // 25 total healing of both brute and burn at base
 
@@ -958,7 +958,7 @@
 	return ..()
 
 /datum/status_effect/flayer_rejuv/tick()
-	if(!ishuman(owner))
+	if(!ishuman(owner) || owner.stat == DEAD)
 		return
 
 	var/mob/living/carbon/human/flayer = owner
@@ -992,8 +992,18 @@
 	return ..()
 
 /datum/status_effect/quicksilver_form/on_apply()
+	var/obj/item/item_one = owner.get_active_hand()
+	if(item_one)
+		item_one.equip_to_best_slot(owner)
+	var/obj/item/item_two = owner.get_inactive_hand()
+	if(item_two)
+		// Equip to best slot only works for the item in the active hand. As such, if we detect an item, we swap, equip, then swap back
+		owner.swap_hand()
+		item_two.equip_to_best_slot(owner)
+		owner.swap_hand()
 	if(should_deflect)
 		ADD_TRAIT(owner, TRAIT_DEFLECTS_PROJECTILES, UNIQUE_TRAIT_SOURCE(src))
+	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, "[id]")
 	temporary_flag_storage = owner.pass_flags
 	owner.pass_flags |= (PASSTABLE | PASSGRILLE | PASSMOB | PASSFENCE | PASSGIRDER | PASSGLASS | PASSTAKE | PASSBARRICADE)
 	owner.add_atom_colour(COLOR_ALUMINIUM, TEMPORARY_COLOUR_PRIORITY)
@@ -1001,13 +1011,13 @@
 
 /datum/status_effect/quicksilver_form/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_DEFLECTS_PROJECTILES, UNIQUE_TRAIT_SOURCE(src))
+	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, "[id]")
 	owner.pass_flags = temporary_flag_storage
 	owner.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_ALUMINIUM)
 
 /datum/status_effect/terminator_form
 	id = "terminator_form"
 	duration = 1 MINUTES
-	tick_interval = 1 SECONDS
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = /atom/movable/screen/alert/status_effect/terminator_form
 	var/mutable_appearance/eye
@@ -1033,9 +1043,6 @@
 #define COMBUSTION_TEMPERATURE 500
 /datum/status_effect/overclock
 	id = "overclock"
-	duration = -1
-	tick_interval = 1 SECONDS
-	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/overclock
 	/// How much do we heat up per tick?
 	var/heat_per_tick = 5

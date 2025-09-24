@@ -14,12 +14,12 @@ CONTENTS:
 /obj/item/gun/magic/wand
 	name = "wand of nothing"
 	desc = "It's not just a stick, it's a MAGIC stick!"
-	ammo_type = /obj/item/ammo_casing/magic
+	icon_state = "nothingwand"
+	inhand_icon_state = "wand"
 	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
-	icon_state = "nothingwand"
-	item_state = "wand"
 	belt_icon = "wand_nothing"
+	ammo_type = /obj/item/ammo_casing/magic
 	w_class = WEIGHT_CLASS_SMALL
 	can_charge = FALSE
 	max_charges = 100 //100, 50, 50, 34 (max charge distribution by 25%ths)
@@ -43,13 +43,12 @@ CONTENTS:
 /obj/item/gun/magic/wand/update_icon_state()
 	icon_state = "[initial(icon_state)][charges ? "" : "-drained"]"
 
-
-/obj/item/gun/magic/wand/attack(atom/target, mob/living/user)
+/obj/item/gun/magic/wand/attack__legacy__attackchain(atom/target, mob/living/user)
 	if(target == user)
 		return
 	..()
 
-/obj/item/gun/magic/wand/afterattack(atom/target, mob/living/user)
+/obj/item/gun/magic/wand/afterattack__legacy__attackchain(atom/target, mob/living/user)
 	if(!charges)
 		shoot_with_empty_chamber(user)
 		return
@@ -188,11 +187,11 @@ CONTENTS:
 	max_charges = 8 //8, 4, 4, 3
 
 /obj/item/gun/magic/wand/fireball/zap_self(mob/living/user)
-	explosion(user.loc, -1, 0, 2, 3, 0, flame_range = 2)
+	explosion(user.loc, -1, 0, 2, 3, 0, flame_range = 2, cause = "Self-fireball")
 	charges--
 	..()
 
-/obj/item/gun/magic/wand/fireball/attack(atom/target, mob/living/user)
+/obj/item/gun/magic/wand/fireball/attack__legacy__attackchain(atom/target, mob/living/user)
 	if(!iscarbon(target))
 		return ..()
 
@@ -234,13 +233,13 @@ CONTENTS:
 		"<span class='userdanger'>Unsure which end of [src] is which, you accidentally zap yourself with a fireball!</span>",
 		"<span class='userdanger'>You hear a firey explosion!</span>"
 	)
-	explosion(user.loc, -1, 0, 2, 3, 0, flame_range = 2)
+	explosion(user.loc, -1, 0, 2, 3, 0, flame_range = 2, cause = "Fireball to the face from failed cigarette lighting")
 	charges--
 	return TRUE
 
 // This is needed to you don't try to perform an execution/suicide when lighting a cigarette.
 /obj/item/gun/magic/wand/fireball/handle_suicide(mob/user, mob/living/carbon/human/target, params)
-	var/mask_item = target.get_item_by_slot(SLOT_HUD_WEAR_MASK)		
+	var/mask_item = target.get_item_by_slot(ITEM_SLOT_MASK)
 	if(istype(mask_item, /obj/item/clothing/mask/cigarette) && user.zone_selected == "mouth" && user.a_intent == INTENT_HELP)
 		return
 	. = ..()

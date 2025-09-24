@@ -79,11 +79,11 @@
 /obj/item/bedsheet/cult/double
 	icon_state = "double_sheetcult"
 
+/obj/item/bedsheet/clockwork/double
+	icon_state = "double_sheetclockwork"
+
 /obj/item/bedsheet/wiz/double
 	icon_state = "double_sheetwiz"
-
-/obj/item/bedsheet/rev/double
-	icon_state = "double_sheetrev"
 
 /obj/item/bedsheet/nanotrasen/double
 	icon_state = "double_sheetNT"

@@ -10,7 +10,7 @@
 	else
 		icon_state = "ai_dead"
 	if(eyeobj)
-		eyeobj.setLoc(get_turf(src))
+		eyeobj.set_loc(get_turf(src))
 
 	GLOB.shuttle_caller_list -= src
 	SSshuttle.autoEvac()
@@ -27,12 +27,12 @@
 		if(SSshuttle.emergency.mode == SHUTTLE_STRANDED)
 			SSshuttle.emergency.mode = SHUTTLE_DOCKED
 			SSshuttle.emergency.timer = world.time
-			GLOB.major_announcement.Announce("Hostile environment resolved. You have 3 minutes to board the Emergency Shuttle.", "Priority Announcement", 'sound/AI/eshuttle_dock.ogg')
+			GLOB.major_announcement.Announce("Враждебная среда нейтрализована. У вас есть 3 минуты, чтобы прибыть на борт эвакуационного шаттла.", "Приоритетное оповещение", 'sound/AI/eshuttle_dock.ogg')
 		qdel(doomsday_device)
 
 	if(explosive)
 		spawn(10) // REEEEEEEE
-			explosion(src.loc, 3, 6, 12, 15)
+			explosion(src.loc, 3, 6, 12, 15, cause = "Adminbus explosive AI")
 
 	for(var/obj/machinery/ai_status_display/O as anything in GLOB.ai_displays) //change status
 		O.mode = AI_DISPLAY_MODE_BSOD

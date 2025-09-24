@@ -17,8 +17,8 @@
  * Returns [MINERAL_ALLOW_DIG] if the containing turf should be changed to its
  * "dug" state, [MINERAL_PREVENT_DIG] if it should remain as is.
  */
-/datum/ore/proc/on_mine(turf/source, mob/user, triggered_by_explosion = FALSE)
-	var/amount = rand(drop_min, drop_max)
+/datum/ore/proc/on_mine(turf/source, mob/user, triggered_by_explosion = FALSE, productivity_mod = 1)
+	var/amount = round(rand(drop_min, drop_max) + productivity_mod)
 
 	if(ispath(drop_type, /obj/item/stack/ore))
 		new drop_type(source, amount)
@@ -43,6 +43,18 @@
 	drop_type = /obj/item/stack/ore/diamond
 	scan_icon_state = "rock_Diamond"
 
+/datum/ore/platinum
+	drop_type = /obj/item/stack/ore/platinum
+	scan_icon_state = "rock_Platinum"
+
+/datum/ore/palladium
+	drop_type = /obj/item/stack/ore/palladium
+	scan_icon_state = "rock_Palladium"
+
+/datum/ore/iridium
+	drop_type = /obj/item/stack/ore/iridium
+	scan_icon_state = "rock_Iridium"
+
 /datum/ore/gold
 	drop_type = /obj/item/stack/ore/gold
 	spread_chance = 5
@@ -65,7 +77,6 @@
 
 /datum/ore/bluespace
 	drop_type = /obj/item/stack/ore/bluespace_crystal
-	drop_min = 1
 	drop_max = 1
 	scan_icon_state = "rock_BScrystal"
 
@@ -79,6 +90,7 @@
 	drop_type = /obj/item/stack/ore/tranquillite
 	drop_min = 3
 	drop_max = 3
+	scan_icon_state = "rock_Tranquillite"
 
 /datum/ore/ancient_basalt
 	drop_type = /obj/item/stack/ore/glass/basalt/ancient
@@ -108,6 +120,9 @@
 	/// Note that this is only for explosions caused while the gibtonite is still
 	/// unmined, in contrast to [/obj/item/gibtonite/proc/GibtoniteReaction].
 	var/notify_admins = FALSE
+	/// The callback for the explosion that occurs if the gibtonite is not
+	/// defused in time.
+	var/explosion_callback
 
 /datum/ore/gibtonite/New()
 	// So you don't know exactly when the hot potato will explode
@@ -133,20 +148,22 @@
 	else
 		log_game("An explosion has triggered a gibtonite deposit reaction at [AREACOORD(source)].")
 
-	RegisterSignal(source, COMSIG_PARENT_ATTACKBY, PROC_REF(on_parent_attackby))
+	RegisterSignal(source, COMSIG_ATTACK_BY, PROC_REF(on_attackby))
 	detonate_start_time = world.time
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/ore/gibtonite, detonate), source), detonate_time)
+	explosion_callback = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/ore/gibtonite, detonate), source), detonate_time, TIMER_STOPPABLE)
 
 /datum/ore/gibtonite/on_mine(turf/source, mob/user, triggered_by_explosion = FALSE)
 	switch(stage)
 		if(GIBTONITE_UNSTRUCK)
 			playsound(src,'sound/effects/hit_on_shattered_glass.ogg', 50, TRUE)
 			explosive_reaction(source, user, triggered_by_explosion)
+			SEND_SIGNAL(source, COMSIG_MINE_EXPOSE_GIBTONITE, user)
 			return MINERAL_PREVENT_DIG
 		if(GIBTONITE_ACTIVE)
 			detonate(source)
 
-			return MINERAL_ALLOW_DIG
+			// Detonation takes care of this for us.
+			return MINERAL_PREVENT_DIG
 		if(GIBTONITE_STABLE)
 			var/obj/item/gibtonite/gibtonite = new(source)
 			if(remaining_time <= 0)
@@ -160,20 +177,24 @@
 
 	return MINERAL_PREVENT_DIG
 
-/datum/ore/gibtonite/proc/on_parent_attackby(turf/source, obj/item/attacker, mob/user)
-	SIGNAL_HANDLER // COMSIG_PARENT_ATTACKBY
+/datum/ore/gibtonite/proc/on_attackby(turf/source, obj/item/attacker, mob/user)
+	SIGNAL_HANDLER // COMSIG_ATTACK_BY
 
 	if(istype(attacker, /obj/item/mining_scanner) || istype(attacker, /obj/item/t_scanner/adv_mining_scanner) && stage == GIBTONITE_ACTIVE)
-		user.visible_message("<span class='notice'>[user] holds [attacker] to [src]...</span>", "<span class='notice'>You use [attacker] to locate where to cut off the chain reaction and attempt to stop it...</span>")
+		user.visible_message("<span class='notice'>[user] holds [attacker] to [source]...</span>", "<span class='notice'>You use [attacker] to locate where to cut off the chain reaction and attempt to stop it...</span>")
 		defuse(source)
-		return COMPONENT_NO_AFTERATTACK
+		return COMPONENT_SKIP_AFTERATTACK
 
 /datum/ore/gibtonite/proc/detonate(turf/simulated/mineral/source)
 	if(stage == GIBTONITE_STABLE)
 		return
 
+	// Don't explode twice please
+	if(explosion_callback)
+		deltimer(explosion_callback)
+
 	stage = GIBTONITE_DETONATE
-	explosion(source, 1, 3, 5, adminlog = notify_admins)
+	explosion(source, 1, 3, 5, adminlog = notify_admins, cause = "Gibtonite")
 
 	if(!istype(source))
 		return

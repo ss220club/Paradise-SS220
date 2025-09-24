@@ -6,10 +6,11 @@
 	desc = "Специализированный космический защитный костюм воксов-рейдеров. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными. За счет иной структуры, костюм рейдеров уступает в защитных свойствах костюму наемников."
 	icon_state = "vox-raider"
 	item_color = "vox-raider"
-	item_state = "rig_suit"
+	worn_icon_state = "rig_suit"
+	inhand_icon_state = "rig_suit"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_suit.dmi'
-	icon_override = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
+	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
 		)
@@ -34,7 +35,7 @@
 	item_color = "vox-raider"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_head.dmi'
-	icon_override = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
+	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
 		)
@@ -56,7 +57,7 @@
 		set_light(0)
 	for(var/X in actions)
 		var/datum/action/A = X
-		A.UpdateButtons()
+		A.build_all_button_icons()
 
 // Space Trooper
 

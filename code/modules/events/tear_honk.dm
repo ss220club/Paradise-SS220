@@ -8,7 +8,7 @@
 	HE = new /obj/effect/tear/honk(location)
 
 /datum/event/tear/honk/announce()
-	GLOB.minor_announcement.Announce("A Honknomoly has opened. Expected location: [impact_area.name].", "Honknomoly Alert", 'sound/items/airhorn.ogg')
+	GLOB.minor_announcement.Announce("На борту станции зафиксирована Хонканомалия. Предполагаемая локация: [impact_area.name].", "ВНИМАНИЕ: Обнаружена ХОНКАНОМАЛИЯ.", 'sound/items/airhorn.ogg')
 
 /datum/event/tear/honk/end()
 	if(HE)
@@ -17,8 +17,8 @@
 /obj/effect/tear/honk
 	name = "honkmensional tear"
 	desc = "A tear in the dimensional fabric of sanity."
-	leader = /mob/living/simple_animal/hostile/retaliate/clown/goblin/cluwne
+	leader = /mob/living/basic/clown/goblin/cluwne
 	possible_mobs = list(
-		/mob/living/simple_animal/hostile/retaliate/clown,
-		/mob/living/simple_animal/hostile/retaliate/clown/goblin
+		/mob/living/basic/clown,
+		/mob/living/basic/clown/goblin
 	)

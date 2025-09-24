@@ -72,13 +72,18 @@
 				mutation.activate(human)
 
 		if("Богатство")
-			new /obj/structure/closet/syndicate/resources/everything(loc)
+			var/obj/structure/closet/syndicate/resources/everything/C = new /obj/structure/closet/syndicate/resources/everything(loc)
+			var/dice = pickweight(list(
+				/obj/item/dice/d20/fate,
+				/obj/item/dice/d20/fate/one_use = 9,
+			))
+			new dice(C)
 
 		if("Бессмертие")
 			user.verbs |= /mob/living/carbon/human/proc/immortality
 
 		if("Покой")
-			for(var/mob/living/simple_animal/hostile/faithless/F in GLOB.mob_living_list)
+			for(var/mob/living/basic/netherworld/faithless/F in GLOB.mob_living_list)
 				F.death()
 			become_shadow = FALSE
 

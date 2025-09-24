@@ -1,22 +1,30 @@
+/// Chance for mob to avoid being affected by rad storm
+#define RAD_STORM_AVOID_CHANCE 40
+/// Chance to additionally apply good or bad mutation
+#define RAD_STORM_ADDITIONAL_MUT_CHANCE 50
+/// Chance to apply bad mutation. When failed will apply good mutation instead
+#define RAD_STORM_BAD_MUT_CHANCE 90
+/// Amount of radiation mob receives when affected
+#define RAD_STORM_RAD_AMOUNT 400
+
 //Radiation storms occur when the station passes through an irradiated area, and irradiate anyone not standing in protected areas (maintenance, emergency storage, etc.)
 /datum/weather/rad_storm
-	name = "radiation storm"
-	desc = "A cloud of intense radiation passes through the area dealing rad damage to those who are unprotected."
+	name = "радиационный шторм"
+	desc = "Станция проходит через радиационный пояс высокой интенсивности, облучающее всех, кому не повезло оказаться без защиты."
 
 	telegraph_duration = 400
-	telegraph_message = "<span class='danger'>The air begins to grow warm.</span>"
+	telegraph_message = "<span class='danger'>Вам кажется, что воздух вокруг становится теплее.</span>"
 
-	weather_message = "<span class='userdanger'><i>You feel waves of heat wash over you! Find shelter!</i></span>"
+	weather_message = "<span class='userdanger'><i>Вы чувствуете, как вас окутывают волны жара! Срочно найдите укрытие!</i></span>"
 	weather_overlay = "ash_storm"
 	weather_duration_lower = 600
-	weather_duration_upper = 1500
 	weather_color = "green"
 	weather_sound = 'sound/misc/bloblarm.ogg'
 
 	end_duration = 100
-	end_message = "<span class='notice'>The air seems to be cooling off again.</span>"
+	end_message = "<span class='notice'>Воздух, кажется, остывает обратно...</span>"
 	var/pre_maint_all_access
-	area_type = /area
+	area_types = list(/area)
 	protected_areas = list(
 		/area/station/maintenance,
 		/area/station/turret_protected/ai_upload,
@@ -42,30 +50,26 @@
 	if(!SSmapping.maint_all_access)
 		SSmapping.make_maint_all_access()
 
-/datum/weather/rad_storm/weather_act(mob/living/L)
-	if(!prob(60))
+/datum/weather/rad_storm/weather_act(mob/living/carbon/human/human)
+	if(!istype(human) || HAS_TRAIT(human, TRAIT_RADIMMUNE) || prob(RAD_STORM_AVOID_CHANCE))
 		return
 
-	if(!ishuman(L))
-		return
-
-	var/mob/living/carbon/human/H = L
-	var/resist = H.getarmor(null, RAD)
-	if(HAS_TRAIT(H, TRAIT_RADIMMUNE) || resist == INFINITY)
+	var/resist = human.getarmor(armor_type = RAD)
+	if(resist == INFINITY)
 		return
 
 	if(prob(max(0, 100 - ARMOUR_VALUE_TO_PERCENTAGE(resist))))
-		L.rad_act(400)
-		if(HAS_TRAIT(H, TRAIT_GENELESS))
+		human.base_rad_act(human, RAD_STORM_RAD_AMOUNT, BETA_RAD)
+		if(HAS_TRAIT(human, TRAIT_GENELESS))
 			return
-		randmuti(H) // Applies bad mutation
-		if(prob(50))
-			if(prob(90))
-				randmutb(H)
+		randmuti(human) // Applies appearance mutation
+		if(prob(RAD_STORM_ADDITIONAL_MUT_CHANCE))
+			if(prob(RAD_STORM_BAD_MUT_CHANCE))
+				randmutb(human) // Applies bad mutation
 			else
-				randmutg(H)
+				randmutg(human) // Applies good mutation
 
-		domutcheck(H, MUTCHK_FORCED)
+		domutcheck(human, MUTCHK_FORCED)
 
 /datum/weather/rad_storm/end()
 	if(..())
@@ -73,13 +77,18 @@
 
 	status_alarm(FALSE)
 	if(!pre_maint_all_access)
-		GLOB.minor_announcement.Announce("The radiation threat has passed. Please return to your workplaces. Door access resetting momentarily.", "Anomaly Alert")
+		GLOB.minor_announcement.Announce("Радиационная угроза миновала. Пожалуйста, вернитесь на свои рабочие места. Доступы восстановлены.", "ВНИМАНИЕ: Радиационная опасность.")
 		addtimer(CALLBACK(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping, revoke_maint_all_access)), 10 SECONDS) // Bit of time to get out / break into somewhere.
 	else
-		GLOB.minor_announcement.Announce("The radiation threat has passed. Please return to your workplaces.", "Anomaly Alert")
+		GLOB.minor_announcement.Announce("Радиационная угроза миновала. Пожалуйста, вернитесь на свои рабочие места.", "ВНИМАНИЕ: Радиационная опасность.")
 
 /datum/weather/rad_storm/proc/status_alarm(active)	//Makes the status displays show the radiation warning for those who missed the announcement.
 	if(active)
 		post_status(STATUS_DISPLAY_ALERT, "radiation")
 	else
 		post_status(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)
+
+#undef RAD_STORM_AVOID_CHANCE
+#undef RAD_STORM_ADDITIONAL_MUT_CHANCE
+#undef RAD_STORM_BAD_MUT_CHANCE
+#undef RAD_STORM_RAD_AMOUNT

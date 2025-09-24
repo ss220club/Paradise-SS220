@@ -3,7 +3,7 @@
 	desc = "A data cartridge for portable microcomputers."
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "cart"
-	item_state = "electronic"
+	inhand_icon_state = "electronic"
 	w_class = WEIGHT_CLASS_TINY
 
 	/// Integrated signaler for captain, science & generic signaler cartridge
@@ -139,6 +139,14 @@
 		new /datum/data/pda/utility/scanmode/gas,
 		new /datum/data/pda/utility/scanmode/reagent,
 		new /datum/data/pda/app/signaller
+	)
+
+/obj/item/cartridge/chef
+	name = "Chef's Guide to the Galaxy"
+	desc = "A data cartridge for portable microcomputers. Contains every cooking recipe ever."
+	icon_state = "cart-chef"
+	programs = list(
+		new /datum/data/pda/app/cookbook
 	)
 
 /obj/item/cartridge/cargo
@@ -278,7 +286,6 @@
 /obj/item/cartridge/syndicate
 	name = "Detomatix Cartridge"
 	desc = "Allows you to remotely detonate other people's PDAs through the messenger program."
-	icon_state = "cart"
 	charges = 4
 	messenger_plugins = list(new/datum/data/pda/messenger_plugin/virus/detonate)
 
@@ -300,7 +307,6 @@
 /obj/item/cartridge/frame
 	name = "F.R.A.M.E. cartridge"
 	desc = "Allows you to upload a virus onto a PDA with it's messenger on."
-	icon_state = "cart"
 	charges = 5
 	var/telecrystals = 0
 	messenger_plugins = list(

@@ -21,13 +21,13 @@
 		wormholes += new /obj/effect/portal/wormhole(T, null, null, -1)
 
 /datum/event/wormholes/announce()
-	GLOB.minor_announcement.Announce("Space-time anomalies detected on the station. There is no additional data.", "Anomaly Alert", new_sound = 'sound/AI/spanomalies.ogg')
+	GLOB.minor_announcement.Announce("Зафиксированы пространственно-временные аномалии на борту станции. Дополнительная информация отсутствует.", "ВНИМАНИЕ: Обнаружена аномалия.", new_sound = 'sound/AI/spanomalies.ogg')
 
 /datum/event/wormholes/tick()
 	if(activeFor % shift_frequency == 0)
 		for(var/obj/effect/portal/wormhole/O in wormholes)
 			var/turf/T = pick(pick_turfs)
-			if(T)	O.loc = T
+			if(T)	O.forceMove(T)
 
 /datum/event/wormholes/end()
 	for(var/obj/effect/portal/wormhole/O in wormholes)
@@ -39,7 +39,6 @@
 	desc = "It looks highly unstable; It could close at any moment."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "anom"
-	failchance = 0
 
 /obj/effect/portal/wormhole/can_teleport(atom/movable/M)
 	. = ..()

@@ -1,9 +1,7 @@
 /obj/effect/forcefield
 	desc = "A space wizard's magic wall."
 	name = "FORCEWALL"
-	icon = 'icons/effects/effects.dmi'
 	icon_state = "m_shield"
-	opacity = FALSE
 	density = TRUE
 	var/lifetime = 30 SECONDS
 
@@ -17,14 +15,20 @@
 
 /obj/effect/forcefield/wizard
 	var/mob/wizard
+	/// Flags for what antimagic can just ignore our forcefields
+	var/antimagic_flags = MAGIC_RESISTANCE
 
 /obj/effect/forcefield/wizard/Initialize(mapload, mob/summoner)
 	. = ..()
 	wizard = summoner
 
-/obj/effect/forcefield/wizard/CanPass(atom/movable/mover, turf/target)
+/obj/effect/forcefield/wizard/CanPass(atom/movable/mover, border_dir)
 	if(mover == wizard)
 		return TRUE
+	if(isliving(mover))
+		var/mob/living/living_mover = mover
+		if(living_mover.can_block_magic(antimagic_flags, charge_cost = 0))
+			return TRUE
 	return FALSE
 
 ///////////Mimewalls///////////
@@ -52,15 +56,14 @@
 	return !blocks_atmos
 
 /obj/structure/forcefield/mime
-	icon = 'icons/effects/effects.dmi'
 	icon_state = "5"
 	name = "invisible wall"
 	alpha = 1
 	desc = "You have a bad feeling about this."
 	max_integrity = 80
 
-/obj/effect/forcefield/mime/advanced
-	icon_state = "empty"
+/obj/effect/forcefield/mime
+	icon_state = null
 	name = "invisible blockade"
 	desc = "You might be here a while."
 	lifetime = 60 SECONDS

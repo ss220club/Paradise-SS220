@@ -182,9 +182,8 @@
 	desc = "A solar panel assembly kit, allows constructions of a solar panel, or with a tracking circuit board, a solar tracker."
 	icon = 'icons/goonstation/objects/power.dmi'
 	icon_state = "sp_base"
-	item_state = "electropack"
+	inhand_icon_state = "electropack"
 	w_class = WEIGHT_CLASS_BULKY // Pretty big!
-	anchored = FALSE
 	var/tracker = 0
 	var/glass_type = null
 
@@ -205,11 +204,11 @@
 	if(tracker)
 		. += "<span class='notice'>The solar assembly has a tracking circuit installed. It can be <b>pried out</b>.</span>"
 	else
-		. += "<span class='notice'>The solar assembly has a slot for a <i>tracking circuit<i> board.</span>"
+		. += "<span class='notice'>The solar assembly has a slot for a <i>tracking circuit</i> board.</span>"
 	if(anchored)
-		.+= "<span class='notice'>The solar assembly needs <i>glass<i> to be completed.</span>"
+		.+= "<span class='notice'>The solar assembly needs <i>glass</i> to be completed.</span>"
 
-/obj/item/solar_assembly/attackby(obj/item/W, mob/user, params)
+/obj/item/solar_assembly/attackby__legacy__attackchain(obj/item/W, mob/user, params)
 
 	if(anchored || !isturf(loc))
 		if(istype(W, /obj/item/stack/sheet/glass) || istype(W, /obj/item/stack/sheet/rglass))
@@ -273,11 +272,9 @@
 	desc = "A controller for solar panel arrays."
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
-	anchored = TRUE
 	density = TRUE
 	power_state = IDLE_POWER_USE
 	idle_power_consumption = 250
-	max_integrity = 200
 	integrity_failure = 100
 	var/icon_screen = "solar"
 	var/icon_keyboard = "power_key"

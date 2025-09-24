@@ -12,81 +12,71 @@
 	icon_state = "emptycondiment"
 	container_type = OPENCONTAINER
 	possible_transfer_amounts = list(1, 5, 10, 15, 20, 25, 30, 50)
-	visible_transfer_rate = TRUE
 	volume = 50
 	//Possible_states has the reagent id as key and a list of, in order, the icon_state, the name and the desc as values. Used in the on_reagent_change() to change names, descs and sprites.
 	var/list/possible_states = list(
-	"bbqsauce" = list("bbqsauce", "BBQ sauce bottle", "Sweet, smoky, savory, and gets everywhere. Perfect for grilling."),
-	"ketchup" = list("ketchup", "ketchup bottle", "You feel more American already."),
-	"capsaicin" = list("hotsauce", "hotsauce bottle", "You can almost TASTE the stomach ulcers now!"),
-	"enzyme" = list("enzyme", "universal enzyme bottle", "Used in cooking various dishes."),
-	"soysauce" = list("soysauce", "soy sauce bottle", "A salty soy-based flavoring."),
-	"frostoil" = list("coldsauce", "coldsauce bottle", "Leaves the tongue numb in it's passage."),
-	"sodiumchloride" = list("saltshakersmall", "salt shaker", "Salt. From space oceans, presumably."),
-	"blackpepper" = list("peppermillsmall", "pepper mill", "Often used to flavor food or make people sneeze."),
-	"cornoil" = list("cornoil", "corn oil bottle", "A delicious oil used in cooking. Made from corn."),
-	"oliveoil" = list("oliveoil","olive oil bottle", "A high quality oil used in a variety of cuisine. Made from olives."),
-	"wasabi" = list("wasabibottle", "wasabi bottle", "A pungent paste commonly served in tiny amounts with sushi. Spicy!"),
-	"sugar" = list("emptycondiment", "sugar bottle", "Tasty spacey sugar!"),
-	"vinegar" = list("vinegar", "vinegar", "Perfect for chips, if you're feeling Space British."),
-	"mayonnaise" = list("mayonnaise", "mayonnaise bottle", "An oily condiment made from egg yolks."),
-	"yogurt" = list("yogurt", "yogurt tub", "Some yogurt, produced by bacterial fermentation of milk. Yum."),
-	"cherryjelly" = list("cherryjelly", "cherry jelly jar", "A sweet jelly made out of red cherries."),
-	"peanutbutter" = list("peanutbutter", "peanut butter jar", "A smooth, nutty spread. Perfect for sandwiches."),
-	"honey" = list("honey", "honey jar", "A sweet substance produced by bees."),
-	"sugar" = list("sugar", "sugar sack", "Tasty spacey sugar!"),
-	"flour" = list("flour", "flour sack", "A big bag of flour. Good for baking!"),
-	"rice" = list("rice", "rice sack", "A big bag of rice. Good for cooking!"))
+	"bbqsauce" = list("bbqsauce", "BBQ sauce bottle", "Сладкий и пикантный для добавок всюду. Идеален для гриля."),
+	"ketchup" = list("ketchup", "ketchup bottle", "Кровь томатов!"),
+	"capsaicin" = list("hotsauce", "hotsauce bottle", "Попробуй на вкус ИЗЖОГУ!"),
+	"enzyme" = list("enzyme", "universal enzyme bottle", "Используется для приготовления различных блюд."),
+	"soysauce" = list("soysauce", "soy sauce bottle", "Соленый соевый соус. Если попал на одежду, то замочи в нём её всю."),
+	"frostoil" = list("coldsauce", "coldsauce bottle", "Пробирает до мурашек и оставляет язык онемевшим после потребления."),
+	"sodiumchloride" = list("saltshakersmall", "salt shaker", "Соль. Предположительно, из космических океанов."),
+	"blackpepper" = list("peppermillsmall", "pepper mill", "Часто используется для придания пряного вкуса блюдам или чтобы заставить кого-то чихнуть."),
+	"cornoil" = list("cornoil", "corn oil bottle", "Вкусное масло, используемое в кулинарии. Сделано из кукурузы."),
+	"oliveoil" = list("oliveoil","olive oil bottle", "Высококачественное масло, используемое в различных кухнях. Сделано из оливок."),
+	"wasabi" = list("wasabibottle", "wasabi bottle", "Пикантная паста, обычно подаваемая в небольших количествах с суши. Острая!"),
+	"sugar" = list("emptycondiment", "sugar bottle", "Вкусный космический сахар!"),
+	"vinegar" = list("vinegar", "vinegar", "Уксус прекрасно подходит для дезинфекции, консервации, удаления накипи, устранения запахов, полоскания рта, убирания ржавчины, удаление пятна с одежды, обработку зуда после укусов, а также для заправки салатов, соусов и блюд."),
+	"mayonnaise" = list("mayonnaise", "mayonnaise bottle", "Прекрасная заправка для всего и отличное сочетание с кетчупом."),
+	"yogurt" = list("yogurt", "yogurt tub", "Йогурт, произведённый путём бактериальной ферментации молока. Вкусно!"),
+	"cherryjelly" = list("cherryjelly", "Повидло из красной вишни."),
+	"peanutbutter" = list("peanutbutter", "Нежная ореховая паста. Отлично подходит для бутербродов и аллергиков."),
+	"honey" = list("honey", "honey jar", "Сладкое вещество, производимое пчёлами."),
+	"sugar" = list("sugar", "sugar sack", "Большой мешок сахара. Отлично подходит для сладостей!"),
+	"flour" = list("flour", "flour sack", "Большой мешок муки. Отлично подходит для выпечки!"),
+	"rice" = list("rice", "rice sack", "Большой мешок риса. Отлично подходит для готовки!"))
 	var/originalname = "condiment" //Can't use initial(name) for this. This stores the name set by condimasters.
 
-/obj/item/reagent_containers/condiment/attack_self(mob/user)
-	return
-
-/obj/item/reagent_containers/condiment/attack(mob/M, mob/user, def_zone)
-
+/obj/item/reagent_containers/condiment/mob_act(mob/target, mob/living/user)
+	. = TRUE
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, "<span class='warning'>None of [src] left, oh no!</span>")
-		return FALSE
-
-	if(!iscarbon(M)) // Non-carbons can't process reagents
-		to_chat(user, "<span class='warning'>You cannot find a way to feed [M].</span>")
+		return
+	if(!iscarbon(target)) // Non-carbons can't process reagents
+		to_chat(user, "<span class='warning'>You cannot find a way to feed [target].</span>")
 		return
 
-	if(M == user)
+	if(target == user)
 		to_chat(user, "<span class='notice'>You swallow some of the contents of [src].</span>")
 	else
-		user.visible_message("<span class='warning'>[user] attempts to feed [M] from [src].</span>")
-		if(!do_mob(user, M))
+		user.visible_message("<span class='warning'>[user] attempts to feed [target] from [src].</span>")
+		if(!do_mob(user, target))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The condiment might be empty after the delay.
-		user.visible_message("<span class='warning'>[user] feeds [M] from [src].</span>")
-		add_attack_logs(user, M, "Fed [src] containing [reagents.log_list()]", reagents.harmless_helper() ? ATKLOG_ALMOSTALL : null)
-
+		user.visible_message("<span class='warning'>[user] feeds [target] from [src].</span>")
+		add_attack_logs(user, target, "Fed [src] containing [reagents.log_list()]", reagents.harmless_helper() ? ATKLOG_ALMOSTALL : null)
 	var/fraction = min(10/reagents.total_volume, 1)
-	reagents.reaction(M, REAGENT_INGEST, fraction)
-	reagents.trans_to(M, 10)
-	playsound(M.loc,'sound/items/drink.ogg', rand(10,50), 1)
-	return 1
+	reagents.reaction(target, REAGENT_INGEST, fraction)
+	reagents.trans_to(target, 10)
+	playsound(target.loc,'sound/items/drink.ogg', rand(10,50), TRUE)
 
-/obj/item/reagent_containers/condiment/afterattack(obj/target, mob/user , proximity)
-	if(!proximity)
-		return
+/obj/item/reagent_containers/condiment/normal_act(atom/target, mob/living/user) // Proc is true if any of the if checks go through. Preserves tapping behaviour on certain machinery.
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-
+		. = TRUE
 		if(!target.reagents.total_volume)
 			to_chat(user, "<span class='warning'>[target] is empty!</span>")
 			return
-
 		if(reagents.total_volume >= reagents.maximum_volume)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
 		to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
 
 	//Something like a glass or a food item. Player probably wants to transfer TO it.
-	else if(target.is_drainable() || istype(target, /obj/item/food))
+	else if(target.is_refillable() || istype(target, /obj/item/food))
+		. = TRUE
 		if(!reagents.total_volume)
 			to_chat(user, "<span class='warning'>[src] is empty!</span>")
 			return
@@ -117,11 +107,12 @@
 	else
 		icon_state = "emptycondiment"
 		name = "condiment bottle"
-		desc = "An empty condiment bottle."
+		desc = "Пустая бутылка для соуса"
+	update_appearance(UPDATE_NAME)
 
 /obj/item/reagent_containers/condiment/enzyme
 	name = "universal enzyme"
-	desc = "Used in cooking various dishes."
+	desc = "Используется для приготовления различных блюд."
 	icon_state = "enzyme"
 	list_reagents = list("enzyme" = 50)
 
@@ -130,16 +121,16 @@
 
 /obj/item/reagent_containers/condiment/sugar
 	name = "sugar sack"
-	desc = "Tasty spacey sugar!"
+	desc = "Космический сахар. Слаще, чем кажется."
 	icon_state = "sugar"
-	item_state = "sugar"
+	inhand_icon_state = "carton"
 	list_reagents = list("sugar" = 50)
 	possible_states = list()
 
 /// Seperate from above since it's a small shaker rather then
 /obj/item/reagent_containers/condiment/saltshaker
 	name = "salt shaker"											//	a large one.
-	desc = "Salt. From space oceans, presumably."
+	desc = "Соль. Предположительно, из космических океанов."
 	icon_state = "saltshakersmall"
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
@@ -153,7 +144,7 @@
 	name = "[user.name]"
 	user.name = newname
 	user.real_name = newname
-	desc = "Salt. From dead crew, presumably."
+	desc = "Соль. Предположительно, из мёртвого члена экипажа"
 	var/space = reagents.maximum_volume - reagents.total_volume
 	if(space > 0)
 		reagents.add_reagent("sodiumchloride", space)
@@ -161,7 +152,7 @@
 
 /obj/item/reagent_containers/condiment/peppermill
 	name = "pepper mill"
-	desc = "Often used to flavor food or make people sneeze."
+	desc = "Часто используется для придания пряного вкуса блюдам или чтобы заставить кого-то чихнуть."
 	icon_state = "peppermillsmall"
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
@@ -171,129 +162,129 @@
 
 /obj/item/reagent_containers/condiment/milk
 	name = "space milk"
-	desc = "It's milk. White and nutritious goodness!"
+	desc = "Пейте дети и скелеты молоко - будете здоровы!"
 	icon_state = "milk"
-	item_state = "carton"
+	inhand_icon_state = "contvapour"
 	list_reagents = list("milk" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/flour
 	name = "flour sack"
-	desc = "A big bag of flour. Good for baking!"
+	desc = "Большой мешок муки. Отлично подходит для выпечки!"
 	icon_state = "flour"
-	item_state = "flour"
+	inhand_icon_state = "contvapour"
 	list_reagents = list("flour" = 30)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/bbqsauce
 	name = "BBQ sauce"
-	desc = "Sweet, smoky, savory, and gets everywhere. Perfect for grilling."
+	desc = "Сладкий и пикантный, подходит в качестве добавки всюду. Идеален для гриля."
 	icon_state = "bbqsauce"
 	list_reagents = list("bbqsauce" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/soymilk
 	name = "soy milk"
-	desc = "It's soy milk. White and nutritious goodness!"
+	desc = "Это соевое молоко. Подходит, если у вас непереносимость лактозы."
 	icon_state = "soymilk"
-	item_state = "carton"
+	inhand_icon_state = "contvapour"
 	list_reagents = list("soymilk" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/rice
 	name = "rice sack"
-	desc = "A big bag of rice. Good for cooking!"
+	desc = "Большой мешок риса. Отлично подходит для готовки!"
 	icon_state = "rice"
-	item_state = "flour"
+	inhand_icon_state = "carton"
 	list_reagents = list("rice" = 30)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/soysauce
 	name = "soy sauce"
-	desc = "A salty soy-based flavoring."
+	desc = "Соленый соевый соус. Если попал на одежду, то замочи в нём её всю."
 	icon_state = "soysauce"
 	list_reagents = list("soysauce" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/syndisauce
 	name = "\improper Chef Excellence's Special Sauce"
-	desc = "A potent sauce extracted from the potent amanita mushrooms. Death never tasted quite so delicious."
+	desc = "Мощный соус, изготовленный из ядовитых грибов-амманитов. Смерть никогда не имела такого восхитительного привкуса."
 	list_reagents = list("amanitin" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/mayonnaise
 	name = "mayonnaise"
-	desc = "An oily condiment made from egg yolks."
+	desc = "Прекрасная заправка для всего и отличное сочетание с кетчупом."
 	icon_state = "mayonnaise"
 	list_reagents = list("mayonnaise" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/yogurt
 	name = "yogurt tub"
-	desc = "Some yogurt, produced by bacterial fermentation of milk. Yum."
+	desc = "Йогурт, произведённый путём бактериальной ферментации молока. Вкусно!"
 	icon_state = "yogurt"
 	list_reagents = list("yogurt" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/cherryjelly
 	name = "cherry jelly"
-	desc = "A sweet jelly made out of red cherries."
+	desc = "Повидло из красной вишни."
 	icon_state = "cherryjelly"
 	list_reagents = list("cherryjelly" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/peanutbutter
 	name = "peanut butter"
-	desc = "A smooth, nutty spread. Perfect for sandwiches."
+	desc = "Нежная ореховая паста. Отлично подходит для бутербродов и аллергиков."
 	icon_state = "peanutbutter"
 	list_reagents = list("peanutbutter" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/honey
 	name = "honey"
-	desc = "A sweet substance produced by bees."
+	desc = "Сладкое вещество, производимое пчёлами."
 	icon_state = "honey"
 	list_reagents = list("honey" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/oliveoil
 	name = "olive oil"
-	desc = "A high quality oil derived from olives."
+	desc = "Высококачественное масло, используемое в различных кухнях. Сделано из оливок."
 	icon_state = "oliveoil"
 	list_reagents = list("oliveoil" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/frostoil
 	name = "cold sauce"
-	desc = "A special oil that noticably chills the body. Extraced from Icepeppers."
+	desc = "Пробирает до мурашек и оставляет язык онемевшим после потребления."
 	icon_state = "coldsauce"
 	list_reagents = list("frostoil" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/capsaicin
 	name = "hot sauce"
-	desc = "You can almost TASTE the stomach ulcers now!"
+	desc = "Попробуй на вкус ИЗЖОГУ!"
 	icon_state = "hotsauce"
 	list_reagents = list("capsaicin" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/wasabi
 	name = "wasabi"
-	desc= "A pungent paste commonly served in tiny amounts with sushi. Spicy!"
+	desc= "Пикантная паста, обычно подаваемая в небольших количествах с суши. Острая!"
 	icon_state = "wasabibottle"
 	list_reagents = list("wasabi" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/vinegar
 	name = "vinegar"
-	desc = "Useful for pickling, or putting on chips."
+	desc = "Подходит для засолки. Лучше не пить даже бесплатно."
 	icon_state = "vinegar"
 	list_reagents = list("vinegar" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/ketchup
 	name = "ketchup"
-	desc = "You feel more American already."
+	desc = "Кровь томатов!"
 	icon_state = "ketchup"
 	list_reagents = list("ketchup" = 50)
 	possible_states = list()
@@ -302,42 +293,41 @@
 
 /obj/item/reagent_containers/condiment/pack
 	name = "condiment pack"
-	desc = "A small plastic pack with condiments to put on your food."
+	desc = "Небольшая пластиковая упаковка с приправой для добавления в пищу."
 	icon_state = "condi_empty"
 	volume = 10
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = null
 	possible_states = list(
-	"ketchup" = list("condi_ketchup", "Ketchup", "You feel more American already."),
-	"capsaicin" = list("condi_hotsauce", "Hotsauce", "You can almost TASTE the stomach ulcers now!"),
-	"soysauce" = list("condi_soysauce", "Soy Sauce", "A salty soy-based flavoring."),
-	"frostoil" = list("condi_frostoil", "Coldsauce", "Leaves the tongue numb in it's passage."),
-	"sodiumchloride" = list("condi_salt", "Salt Shaker", "Salt. From space oceans, presumably."),
-	"blackpepper" = list("condi_pepper", "Pepper Mill", "Often used to flavor food or make people sneeze."),
-	"cornoil" = list("condi_cornoil", "Corn Oil", "A delicious oil used in cooking. Made from corn."),
-	"sugar" = list("condi_sugar", "Sugar", "Tasty spacey sugar!"),
-	"vinegar" =list("condi_mixed", "vinegar", "Perfect for chips, if you're feeling Space British."))
+	"ketchup" = list("condi_ketchup", "Ketchup", "Кровь томатов!"),
+	"capsaicin" = list("condi_hotsauce", "Hotsauce", "Попробуй на вкус ИЗЖОГУ!"),
+	"soysauce" = list("condi_soysauce", "Soy Sauce", "Соленый соевый соус. Если попал на одежду, то замочи в нём её всю."),
+	"frostoil" = list("condi_frostoil", "Coldsauce", "Пробирает до мурашек и оставляет язык онемевшим после потребления."),
+	"sodiumchloride" = list("condi_salt", "Salt Shaker", "Соль. Предположительно, из космических океанов."),
+	"blackpepper" = list("condi_pepper", "Pepper Mill", "Часто используется для придания вкуса блюдам или чтобы заставить кого-то чихнуть."),
+	"cornoil" = list("condi_cornoil", "Corn Oil", "Вкусное масло, используемое в кулинарии. Сделано из кукурузы."),
+	"sugar" = list("condi_sugar", "Sugar", "Небольшой пакетик с сахаром."),
+	"vinegar" =list("condi_mixed", "vinegar", "Уксус прекрасно подходит для дезинфекции, консервации, удаления накипи, устранения запахов, полоскания рта, убирания ржавчины, удаление пятна с одежды, обработку зуда после укусов, а также для заправки салатов, соусов и блюд."))
 
-/obj/item/reagent_containers/condiment/pack/attack(mob/M, mob/user, def_zone) //Can't feed these to people directly.
-	return
-
-/obj/item/reagent_containers/condiment/pack/afterattack(obj/target, mob/user , proximity)
-	if(!proximity) return
-
+/obj/item/reagent_containers/condiment/pack/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	//You can tear the bag open above food to put the condiments on it, obviously.
 	if(istype(target, /obj/item/food))
 		if(!reagents.total_volume)
 			to_chat(user, "<span class='warning'>You tear open [src], but there's nothing in it.</span>")
 			qdel(src)
-			return
+			return ITEM_INTERACT_COMPLETE
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
 			to_chat(user, "<span class='warning'>You tear open [src], but [target] is stacked so high that it just drips off!</span>") //Not sure if food can ever be full, but better safe than sorry.
 			qdel(src)
-			return
+			return ITEM_INTERACT_COMPLETE
 		else
 			to_chat(user, "<span class='notice'>You tear open [src] above [target] and the condiments drip onto it.</span>")
 			reagents.trans_to(target, amount_per_transfer_from_this)
 			qdel(src)
+			return ITEM_INTERACT_COMPLETE
+
+	if(isliving(target)) // Ignore mobs. Don't tap mobs.
+		return ITEM_INTERACT_COMPLETE
 
 /obj/item/reagent_containers/condiment/pack/on_reagent_change()
 	if(length(reagents.reagent_list) > 0)
@@ -348,10 +338,10 @@
 			desc = temp_list[3]
 		else
 			icon_state = "condi_mixed"
-			desc = "A small condiment pack. The label says it contains [originalname]."
+			desc = "Небольшая упаковка с приправой. На ярлыке написано, что она содержит [originalname]."
 	else
 		icon_state = "condi_empty"
-		desc = "A small condiment pack. It is empty."
+		desc = "Небольшая упаковка для приправ. Она пуста."
 
 //Ketchup
 /obj/item/reagent_containers/condiment/pack/ketchup

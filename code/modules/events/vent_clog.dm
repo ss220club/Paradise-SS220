@@ -1,16 +1,15 @@
 /datum/event/vent_clog
-	announceWhen	= 0
 	startWhen		= 5
 	endWhen			= 35
 	var/interval 	= 2
 	var/list/vents  = list()
 
 /datum/event/vent_clog/announce()
-	GLOB.minor_announcement.Announce("The scrubbers network is experiencing a backpressure surge.  Some ejection of contents may occur.", "Atmospherics alert", 'sound/AI/scrubbers.ogg')
+	GLOB.minor_announcement.Announce("Зафиксирован скачок обратного давления в системе вытяжных труб. Возможен выброс содержимого.", "ВНИМАНИЕ: Атмосферная тревога.", 'sound/AI/scrubbers.ogg')
 
 /datum/event/vent_clog/setup()
 	endWhen = rand(25, 100)
-	for(var/obj/machinery/atmospherics/unary/vent_scrubber/temp_vent in GLOB.machines)
+	for(var/obj/machinery/atmospherics/unary/vent_scrubber/temp_vent in SSmachines.get_by_type(/obj/machinery/atmospherics/unary/vent_scrubber))
 		if(is_station_level(temp_vent.loc.z))
 			if(length(temp_vent.parent.other_atmosmch) > 50)
 				vents += temp_vent

@@ -17,15 +17,14 @@
 	eyes = "blank_eyes"
 	tox_mod = 0
 	clone_mod = 0
-	death_message = "gives a short series of shrill beeps, their chassis shuddering before falling limp, nonfunctional."
+	death_message = "издаёт короткую серию пронзительных звуковых сигналов, вздрагивает и падает, не функционируя."
 	death_sounds = list('sound/voice/borg_deathsound.ogg') //I've made this a list in the event we add more sounds for dead robots.
 
 	species_traits = list(NO_BLOOD, NO_CLONESCAN, NO_INTORGANS)
-	inherent_traits = list(TRAIT_VIRUSIMMUNE, TRAIT_NOBREATH, TRAIT_NOGERMS, TRAIT_NODECAY, TRAIT_NOPAIN, TRAIT_GENELESS) //Computers that don't decay? What a lie!
+	inherent_traits = list(TRAIT_VIRUSIMMUNE, TRAIT_NOBREATH, TRAIT_NOGERMS, TRAIT_NODECAY, TRAIT_NOPAIN, TRAIT_GENELESS, TRAIT_NOFAT) // Computers that don't decay? What a lie!
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	clothing_flags = HAS_UNDERWEAR | HAS_UNDERSHIRT | HAS_SOCKS
 	bodyflags = HAS_SKIN_COLOR | HAS_HEAD_MARKINGS | HAS_HEAD_ACCESSORY | ALL_RPARTS | SHAVED
-	dietflags = 0		//IPCs can't eat, so no diet
 	taste_sensitivity = TASTE_SENSITIVITY_NO_TASTE
 	blood_color = COLOR_BLOOD_MACHINE
 	flesh_color = "#AAAAAA"
@@ -74,6 +73,7 @@
 		"is frying their own circuits!",
 		"is blocking their ventilation port!")
 
+	plushie_type = /obj/item/toy/plushie/ipcplushie
 
 /datum/species/machine/on_species_gain(mob/living/carbon/human/H)
 	..()
@@ -115,12 +115,19 @@
 	..()
 	if(isLivingSSD(H)) // We don't want AFK people dying from this
 		return
+
 	if(H.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA)
+		return
+
+	// We invented surge protectors and power monitors for just this occasion.
+	if(H.nutrition >= NUTRITION_LEVEL_FAT)
+		H.nutrition = NUTRITION_LEVEL_FULL
 		return
 
 	var/obj/item/organ/internal/cell/microbattery = H.get_organ_slot("heart")
 	if(!istype(microbattery)) //Maybe they're powered by an abductor gland or sheer force of will
 		return
+
 	if(prob(6))
 		to_chat(H, "<span class='warning'>Error 74: Microbattery critical malfunction, likely cause: Extended strain.</span>")
 		microbattery.receive_damage(4, TRUE)
@@ -138,7 +145,7 @@
 /datum/action/innate/change_monitor
 	name = "Change Monitor"
 	check_flags = AB_CHECK_CONSCIOUS
-	button_overlay_icon_state = "scan_mode"
+	button_icon_state = "scan_mode"
 
 /datum/action/innate/change_monitor/Activate()
 	var/mob/living/carbon/human/H = owner
@@ -189,8 +196,7 @@
 /datum/species/machine/spec_electrocute_act(mob/living/carbon/human/H, shock_damage, source, siemens_coeff, flags)
 	if(flags & SHOCK_ILLUSION)
 		return
-	H.adjustBrainLoss(shock_damage)
-	H.adjust_nutrition(shock_damage)
+	H.adjust_nutrition(clamp(shock_damage, 0, (NUTRITION_LEVEL_FULL - H.nutrition)))
 
 /datum/species/machine/handle_mutations_and_radiation(mob/living/carbon/human/H)
 	H.adjustBrainLoss(H.radiation / 100)
@@ -219,3 +225,6 @@
 								)
 		var/error_message = pick(error_messages)
 		to_chat(H, "<span class='boldwarning'>[error_message]</span>")
+
+/datum/species/machine/do_compressor_grind(mob/living/carbon/human/H)
+	new /obj/item/stack/sheet/mineral/titanium(H.loc)

@@ -2,32 +2,30 @@
 
 /obj/item/weldingtool
 	name = "welding tool"
-	desc = "A standard edition welder provided by Nanotrasen."
+	desc = "A basic, handheld welding tool. Useful for welding bits together, and cutting them apart."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "welder"
-	item_state = "welder"
+	inhand_icon_state = "welder"
 	belt_icon = "welder"
 	flags = CONDUCT
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	force = 3
 	throwforce = 5
 	throw_speed = 3
 	throw_range = 5
 	hitsound = "swing_hit"
-	w_class = WEIGHT_CLASS_NORMAL
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 100, ACID = 30)
 	resistance_flags = FIRE_PROOF
 	materials = list(MAT_METAL = 400, MAT_GLASS = 100)
 	origin_tech = "engineering=1;plasmatech=1"
 	tool_behaviour = TOOL_WELDER
-	toolspeed = 1
 	tool_enabled = FALSE
 	usesound = 'sound/items/welder.ogg'
 	drop_sound = 'sound/items/handling/weldingtool_drop.ogg'
 	pickup_sound =  'sound/items/handling/weldingtool_pickup.ogg'
 	var/maximum_fuel = 20
 	/// Set to FALSE if it doesn't need fuel, but serves equally well as a cost modifier.
-	var/requires_fuel = TRUE 
+	var/requires_fuel = TRUE
 	/// If TRUE, fuel will regenerate over time.
 	var/refills_over_time = FALSE
 	/// Sound played when turned on.
@@ -40,12 +38,17 @@
 	var/low_fuel_changes_icon = TRUE
 	/// How often does the tool flash the user's eyes?
 	var/progress_flash_divisor = 1 SECONDS
+	/// If FALSE, welding tools wont appear prefilled by default
+	var/prefilled = TRUE
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
 	create_reagents(maximum_fuel)
-	reagents.add_reagent("fuel", maximum_fuel)
+	if(prefilled)
+		reagents.add_reagent("fuel", maximum_fuel)
 	update_icon()
+	RegisterSignal(src, COMSIG_BIT_ATTACH, PROC_REF(add_bit))
+	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(remove_bit))
 
 /obj/item/weldingtool/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -71,7 +74,7 @@
 	if(tool_enabled)
 		var/turf/T = get_turf(src)
 		if(T) // Implants for instance won't find a turf
-			T.hotspot_expose(2500, 5)
+			T.hotspot_expose(2500, 1)
 		if(prob(5))
 			remove_fuel(1)
 	if(refills_over_time)
@@ -86,7 +89,7 @@
 		return
 	remove_fuel(maximum_fuel)
 
-/obj/item/weldingtool/attack_self(mob/user)
+/obj/item/weldingtool/attack_self__legacy__attackchain(mob/user)
 	if(tool_enabled) //Turn off the welder if it's on
 		to_chat(user, "<span class='notice'>You switch off [src].</span>")
 		toggle_welder()
@@ -140,12 +143,13 @@
 		user.flash_eyes(light_intensity)
 
 /obj/item/weldingtool/use(amount)
+	amount = amount * bit_efficiency_mod
 	if(GET_FUEL < amount * requires_fuel)
 		return
 	remove_fuel(amount)
 	return TRUE
 
-/obj/item/weldingtool/afterattack(atom/target, mob/user, proximity, params)
+/obj/item/weldingtool/afterattack__legacy__attackchain(atom/target, mob/user, proximity, params)
 	. = ..()
 	if(!tool_enabled)
 		return
@@ -153,9 +157,13 @@
 		return
 	remove_fuel(0.5)
 
-/obj/item/weldingtool/attack(mob/living/target, mob/living/user)
-	if(!cigarette_lighter_act(user, target))
-		return ..()
+/obj/item/weldingtool/attack__legacy__attackchain(mob/living/target, mob/living/user, def_zone)
+	if(cigarette_lighter_act(user, target))
+		return
+	if(tool_enabled && target.IgniteMob())
+		message_admins("[key_name_admin(user)] set [key_name_admin(target)] on fire")
+		log_game("[key_name(user)] set [key_name(target)] on fire")
+	return ..()
 
 /obj/item/weldingtool/cigarette_lighter_act(mob/living/user, mob/living/target, obj/item/direct_attackby_item)
 	var/obj/item/clothing/mask/cigarette/cig = ..()
@@ -226,10 +234,7 @@
 			icon_state = initial(icon_state)
 		else
 			icon_state = "[initial(icon_state)][ratio]"
-	if(tool_enabled)
-		item_state = "[initial(item_state)]1"
-	else
-		item_state = "[initial(item_state)]"
+	inhand_icon_state = "[initial(inhand_icon_state)][tool_enabled || ""]"
 
 /obj/item/weldingtool/update_overlays()
 	. = ..()
@@ -243,25 +248,31 @@
 /obj/item/weldingtool/get_heat()
 	return tool_enabled * 2500
 
+/obj/item/weldingtool/empty
+	prefilled = FALSE
+
 /obj/item/weldingtool/largetank
 	name = "industrial welding tool"
-	desc = "A slightly larger welder with a larger tank."
+	desc = "A heavier welding tool with an expanded fuel reservoir. Otherwise identical to a normal welder."
 	icon_state = "indwelder"
 	belt_icon = "welder_ind"
 	maximum_fuel = 40
 	materials = list(MAT_METAL = 400, MAT_GLASS = 300)
 	origin_tech = "engineering=2;plasmatech=2"
 
+/obj/item/weldingtool/largetank/empty
+	prefilled = FALSE
+
 /obj/item/weldingtool/largetank/cyborg
 	name = "integrated welding tool"
-	desc = "An advanced welder designed to be used in robotic systems."
+	desc = "An integrated industrial welding tool used by construction and engineering robots. "
 	toolspeed = 0.5
 
 /obj/item/weldingtool/research
 	name = "research welding tool"
-	desc = "A scratched-up welder that's been modified many times. Is it still the same tool?"
+	desc = "A scratched-up welding tool that's been the subject of numerous aftermarket enhancements. It has a larger fuel tank, and a more focused torch than a standard welder. A label on the side reads, \"Property of Theseus\"."
 	icon_state = "welder_research"
-	item_state = "welder_research"
+	inhand_icon_state = "welder_research"
 	belt_icon = "welder_research"
 	maximum_fuel = 40
 	toolspeed = 0.75
@@ -287,28 +298,34 @@
 
 /obj/item/weldingtool/mini
 	name = "emergency welding tool"
-	desc = "A miniature welder used during emergencies."
+	desc = "A small, stripped down welding tool for emergency use only."
 	icon_state = "miniwelder"
 	maximum_fuel = 10
 	w_class = WEIGHT_CLASS_SMALL
 	materials = list(MAT_METAL = 200, MAT_GLASS = 50)
 	low_fuel_changes_icon = FALSE
 
+/obj/item/weldingtool/mini/empty
+	prefilled = FALSE
+
 /obj/item/weldingtool/hugetank
 	name = "upgraded welding tool"
-	desc = "An upgraded welder based off the industrial welder."
+	desc = "A large industrial welding tool with an even further upgraded fuel reservoir."
 	icon_state = "upindwelder"
-	item_state = "upindwelder"
+	inhand_icon_state = "upindwelder"
 	belt_icon = "welder_upg"
 	maximum_fuel = 80
 	materials = list(MAT_METAL=70, MAT_GLASS=120)
 	origin_tech = "engineering=3;plasmatech=2"
 
+/obj/item/weldingtool/hugetank/empty
+	prefilled = FALSE
+
 /obj/item/weldingtool/experimental
 	name = "experimental welding tool"
-	desc = "An experimental welder capable of self-fuel generation and less harmful to the eyes."
+	desc = "A prototype welding tool which uses an experimental fuel breeder to create a near-infinite reserve of fuel. The unusual fuel mixture also means that the flame is less intense on the eyes."
 	icon_state = "exwelder"
-	item_state = "exwelder"
+	inhand_icon_state = "exwelder"
 	belt_icon = "welder_exp"
 	maximum_fuel = 40
 	materials = list(MAT_METAL=70, MAT_GLASS=120)
@@ -322,7 +339,8 @@
 	name = "brass welding tool"
 	desc = "A brass welder that seems to constantly refuel itself. It is faintly warm to the touch."
 	icon_state = "brasswelder"
-	item_state = "brasswelder"
+	inhand_icon_state = "brasswelder"
+	belt_icon = "welder_brass"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 #undef GET_FUEL

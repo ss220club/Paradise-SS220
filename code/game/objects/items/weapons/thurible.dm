@@ -2,13 +2,11 @@
 	name = "thurible"
 	desc = "A religious artifact used to burn and spread incense when swung from the attached chain."
 	icon = 'icons/obj/weapons/magical_weapons.dmi'
+	icon_state = "thurible"
 	lefthand_file = 'icons/mob/inhands/religion_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/religion_righthand.dmi'
-	icon_state = "thurible"
-	item_state = "thurible"
 	force = 10
 	throwforce = 7
-	w_class = WEIGHT_CLASS_NORMAL
 	flags = CONDUCT
 	container_type = REFILLABLE
 	/// Whether or not the thurible can be loaded with harmful chems
@@ -46,10 +44,8 @@
 /obj/item/thurible/update_appearance()
 	if(lit)
 		icon_state = "thurible-lit"
-		item_state = "thurible-lit"
 	else
 		icon_state = "thurible"
-		item_state = "thurible"
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		if(H.r_hand == src || H.l_hand == src)
@@ -57,7 +53,7 @@
 			H.update_inv_r_hand()
 	return ..()
 
-/obj/item/thurible/attackby(obj/item/fire_source, mob/user, params)
+/obj/item/thurible/attackby__legacy__attackchain(obj/item/fire_source, mob/user, params)
 	. = ..()
 	if(fire_source.get_heat())
 		user.visible_message(
@@ -67,7 +63,7 @@
 		)
 		light(user)
 
-/obj/item/thurible/attack_self(mob/user)
+/obj/item/thurible/attack_self__legacy__attackchain(mob/user)
 	if(lit)
 		to_chat(user, "<span class='warning'>You extinguish [src].</span>")
 		put_out(user)

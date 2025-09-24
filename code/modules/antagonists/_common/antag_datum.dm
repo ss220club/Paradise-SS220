@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	/// Should we replace the role-banned player with a ghost?
 	var/replace_banned = TRUE
 	/// List of objectives connected to this datum.
-	var/datum/objective_holder/objective_holder
+	VAR_PRIVATE/datum/objective_holder/objective_holder
 	/// Antagonist datum specific information that appears in the player's notes. Information stored here will be removed when the datum is removed from the player.
 	var/antag_memory
 	/// The special role that will be applied to the owner's `special_role` var. i.e. `SPECIAL_ROLE_TRAITOR`, `SPECIAL_ROLE_VAMPIRE`.
@@ -45,10 +45,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/wiki_page_name
 	/// The organization, if any, this antag is associated with
 	var/datum/antag_org/organization
-	/// If set to TRUE, the antag will be notified they are targeted by another antagonist this round.
-	var/targeted_by_antag = FALSE
-	/// The message displayed to the antag if targeted_by_antag is set to TRUE
-	var/targeted_by_antag_message = "You can't shake the feeling someone's been stalking you. You might be an assassin's next target."
 
 	//Blurb stuff
 	/// Intro Blurbs text colour
@@ -65,6 +61,8 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 	/// Do we have delayed objective giving?
 	var/delayed_objectives = FALSE
+	/// The title of the players "boss", used for exfil strings
+	var/boss_title = "Operations"
 
 /datum/antagonist/New()
 	GLOB.antagonists += src
@@ -287,22 +285,22 @@ GLOBAL_LIST_EMPTY(antagonists)
  */
 /datum/antagonist/proc/has_antag_objectives(include_team = TRUE)
 	. = FALSE
-	if(include_team)
+	. |= objective_holder.has_objectives()
+	if(!. && include_team)
 		var/datum/team/team = get_team()
 		if(istype(team))
 			. |= team.objective_holder.has_objectives()
-	. |= objective_holder.has_objectives()
 
 /**
  * Get all of this antagonist's objectives, including from the team.
  */
 /datum/antagonist/proc/get_antag_objectives(include_team = TRUE)
 	. = list()
+	. |= objective_holder.get_objectives()
 	if(include_team)
 		var/datum/team/team = get_team()
 		if(istype(team))
 			. |= team.objective_holder.get_objectives()
-	. |= objective_holder.get_objectives()
 
 /**
  * Proc called when the datum is given to a mind.
@@ -318,12 +316,13 @@ GLOBAL_LIST_EMPTY(antagonists)
 		messages.Add(greet())
 		messages.Add(owner.prepare_announce_objectives())
 	apply_innate_effects()
-	messages.Add(finalize_antag())
+	var/finalized = finalize_antag()
+	if(length(finalized) || istext(finalized))
+		messages.Add(finalized)
 	if(wiki_page_name)
 		messages.Add("<span class='motd'>For more information, check the wiki page: ([GLOB.configuration.url.wiki_url]/index.php/[wiki_page_name])</span>")
-
-	to_chat(owner.current, chat_box_red(messages.Join("<br>")))
-
+	if(length(messages))
+		to_chat(owner.current, chat_box_red(messages.Join("<br>")))
 	if(is_banned(owner.current) && replace_banned)
 		INVOKE_ASYNC(src, PROC_REF(replace_banned_player))
 	owner.current.create_log(MISC_LOG, "[owner.current] was made into \an [special_role]")
@@ -365,7 +364,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/mob/dead/observer/C = pick(candidates)
 	to_chat(owner.current, "Your mob has been taken over by a ghost! Appeal your job ban if you want to avoid this in the future!")
 	message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(owner.current)]) to replace a jobbaned player.")
-	owner.current.ghostize(FALSE)
+	owner.current.ghostize(GHOST_FLAGS_OBSERVE_ONLY)
 	owner.current.key = C.key
 	dust_if_respawnable(C)
 	return TRUE
@@ -380,8 +379,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 	. = messages
 	if(owner && owner.current)
 		messages.Add("<span class='userdanger'>You are a [special_role]!</span>")
-		if(organization && organization.intro_desc)
-			messages.Add("<span class='boldnotice'>[organization.intro_desc]</span>")
 
 /**
  * Displays a message to the antag mob while the datum is being deleted, i.e. "Your powers are gone and you're no longer a vampire!"
@@ -412,11 +409,11 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 /**
  * Create and assign a full set of randomized, basic human traitor objectives.
- * can_hijack - If you want the 10% chance for the antagonist to be able to roll hijack, only true for traitors
+ * can_hijack - If you want the 5% chance for the antagonist to be able to roll hijack, only true for traitors
  */
 /datum/antagonist/proc/forge_basic_objectives(can_hijack = FALSE)
 	// Hijack objective.
-	if(can_hijack && prob(10) && !(locate(/datum/objective/hijack) in owner.get_all_objectives()))
+	if(can_hijack && prob(5) && !(locate(/datum/objective/hijack) in owner.get_all_objectives()))
 		add_antag_objective(/datum/objective/hijack)
 		return // Hijack should be their only objective (normally), so return.
 
@@ -506,5 +503,25 @@ GLOBAL_LIST_EMPTY(antagonists)
 /// This is the custom blurb message used on login for an antagonist.
 /datum/antagonist/proc/custom_blurb()
 	return FALSE
+
+/datum/antagonist/proc/exfiltrate(mob/living/carbon/human/extractor, obj/item/radio/radio)
+	return
+
+/datum/antagonist/proc/prepare_exfiltration(mob/user, obj/item/wormhole_jaunter/extraction/extraction_type = null)
+	// No extraction for certian steals/hijack
+	var/objectives = user.mind.get_all_objectives()
+	for(var/datum/objective/goal in objectives)
+		if(!goal.is_valid_exfiltration())
+			to_chat(user, "<span class='warning'>The [boss_title] has deemed your objectives too delicate for an early extraction.</span>")
+			return
+
+	if(world.time < 60 MINUTES) // 60 minutes of no exfil
+		to_chat(user, "<span class='warning'>The [boss_title] is still preparing an exfiltration portal. Please wait another [round((36000 - world.time) / 600)] minutes before trying again.</span>")
+		return
+	var/mob/living/L = user
+	if(!istype(L))
+		return
+	var/obj/item/wormhole_jaunter/extraction/extractor = new extraction_type()
+	L.put_in_active_hand(extractor)
 
 #undef SUCCESSFUL_DETACH

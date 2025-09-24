@@ -47,18 +47,18 @@
 	power_station = locate(/obj/machinery/teleport/station, orange(1, src))
 	return power_station
 
-/obj/machinery/computer/teleporter/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/gps))
-		var/obj/item/gps/L = I
+/obj/machinery/computer/teleporter/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/gps))
+		var/obj/item/gps/L = used
 		if(L.locked_location && !(stat & (NOPOWER|BROKEN)))
-			if(!user.unEquip(L))
-				to_chat(user, "<span class='warning'>[I] is stuck to your hand, you cannot put it in [src]</span>")
-				return
-			L.forceMove(src)
+			if(!user.transfer_item_to(L, src))
+				to_chat(user, "<span class='warning'>[used] is stuck to your hand, you cannot put it in [src]</span>")
+				return ITEM_INTERACT_COMPLETE
 			locked = L
 			to_chat(user, "<span class='caution'>You insert the GPS device into [src]'s slot.</span>")
-	else
-		return ..()
+		return ITEM_INTERACT_COMPLETE
+
+	return ..()
 
 /obj/machinery/computer/teleporter/emag_act(mob/user)
 	if(!emagged)
@@ -118,10 +118,10 @@
 		return
 
 	if(!check_hub_connection())
-		atom_say("Error: Unable to detect hub.")
+		atom_say("Ошибка: Хаб не обнаружен.")
 		return
 	if(calibrating)
-		atom_say("Error: Calibration in progress. Stand by.")
+		atom_say("Ошибка: Выполняется калибровка. Ожидайте.")
 		return
 
 	. = TRUE
@@ -140,7 +140,7 @@
 			if(!advanced_beacon_locking)
 				var/turf/tmpTarget = locate(text2num(params["x"]), text2num(params["y"]), text2num(params["z"]))
 				if(!isturf(tmpTarget))
-					atom_say("No valid targets available.")
+					atom_say("Отсутствуют доступные пункты назначения.")
 					return
 				target = tmpTarget
 			else
@@ -151,13 +151,13 @@
 				gate_helper()
 		if("calibrate")
 			if(!target)
-				atom_say("Error: No target set to calibrate to.")
+				atom_say("Ошибка: Отсутствует пункт назначения для калибровки.")
 				return
 			if(power_station.teleporter_hub.calibrated || power_station.teleporter_hub.accurate >= 3)
-				atom_say("Hub is already calibrated.")
+				atom_say("Хаб уже откалиброван.")
 				return
 
-			atom_say("Processing hub calibration to target...")
+			atom_say("Калибровка хаба до пункта назначения...")
 			calibrating = TRUE
 			addtimer(CALLBACK(src, PROC_REF(calibrateCallback)), 50 * (3 - power_station.teleporter_hub.accurate)) //Better parts mean faster calibration
 		if("advanced_beacon_locking")
@@ -179,9 +179,9 @@
 	calibrating = FALSE
 	if(check_hub_connection())
 		power_station.teleporter_hub.calibrated = TRUE
-		atom_say("Calibration complete.")
+		atom_say("Калибровка завершена.")
 	else
-		atom_say("Error: Unable to detect hub.")
+		atom_say("Ошибка: Хаб не обнаружен.")
 
 /obj/machinery/computer/teleporter/proc/check_hub_connection()
 	if(!power_station)
@@ -217,6 +217,8 @@
 		if(R.wormhole_weaver)
 			continue
 		if(R.syndicate && !emagged)
+			continue
+		if(!R.broadcast_to_teleport_hubs)
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])
@@ -335,8 +337,8 @@
 	Prevents AI from using the teleporter, prints out failure messages for clarity
 */
 /obj/machinery/teleport/proc/blockAI(atom/A)
-	if(isAI(A) || istype(A, /obj/structure/AIcore))
-		if(isAI(A))
+	if(is_ai(A) || istype(A, /obj/structure/ai_core))
+		if(is_ai(A))
 			var/mob/living/silicon/ai/T = A
 			if(T.allow_teleporter)
 				return FALSE
@@ -373,6 +375,12 @@
 	component_parts += new /obj/item/stock_parts/matter_bin(null)
 	RefreshParts()
 
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+
 /obj/machinery/teleport/hub/upgraded/Initialize(mapload)
 	. = ..()
 	component_parts = list()
@@ -408,13 +416,15 @@
 			break
 	return power_station
 
-/obj/machinery/teleport/hub/Crossed(atom/movable/AM, oldloc)
+/obj/machinery/teleport/hub/proc/on_atom_entered(datum/source, atom/movable/entered)
+	SIGNAL_HANDLER // COMSIG_ATOM_ENTERED
+
 	if(!is_teleport_allowed(z) && !admin_usage)
-		if(ismob(AM))
-			to_chat(AM, "You can't use this here.")
+		if(ismob(entered))
+			to_chat(entered, "You can't use this here.")
 		return
-	if(power_station && power_station.engaged && !panel_open && !blockAI(AM) && !iseffect(AM))
-		if(!teleport(AM) && isliving(AM)) // the isliving(M) is needed to avoid triggering errors if a spark bumps the telehub
+	if(power_station && power_station.engaged && !panel_open && !blockAI(entered) && !iseffect(entered))
+		if(!teleport(entered) && isliving(entered)) // the isliving(M) is needed to avoid triggering errors if a spark bumps the telehub
 			visible_message("<span class='warning'>[src] emits a loud buzz, as its teleport portal flickers and fails!</span>")
 			playsound(loc, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
 			power_station.toggle() // turn off the portal.
@@ -475,21 +485,37 @@
 
 /obj/machinery/teleport/perma
 	name = "permanent teleporter"
-	desc = "A teleporter with the target pre-set on the circuit board."
+	desc = "A teleporter with the target pre-set on the circuit board. The permently aligned transmitter allows it to be more power efficient than a regular teleporter station at the cost of flexibility. \
+	Built-in safeties prevent it from teleporting during a recalibration, so you will never get thrown into space."
 	icon_state = "tele0"
 	density = FALSE
 	layer = HOLOPAD_LAYER
 	plane = FLOOR_PLANE
-	idle_power_consumption = 10
-	active_power_consumption = 2000
+	idle_power_consumption = 50 // Both of these are half the consumption of a non-permanent tele.
+	active_power_consumption = 1000
 
 	var/recalibrating = FALSE
 	var/target
-	var/tele_delay = 50
+	var/tele_delay = 3 SECONDS
+	var/teleport_cost = 1000 // 1/5 cost of a non permanent tele.
+	var/admin_usage = FALSE // If TRUE, this will work on the CC Z-level.
 
 /obj/machinery/teleport/perma/Initialize(mapload)
 	. = ..()
+	initialize_parts()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+	update_icon(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
 	update_lighting()
+
+/obj/machinery/teleport/perma/proc/initialize_parts()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/teleporter_perma(null)
+	component_parts += new /obj/item/stack/ore/bluespace_crystal/artificial(null, 3)
+	component_parts += new /obj/item/stock_parts/matter_bin(null)
+	RefreshParts()
 
 /obj/machinery/teleport/perma/process()
 	teleports_this_cycle = 0
@@ -501,24 +527,34 @@
 	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
 		A -= M.rating * 10
 	tele_delay = max(A, 0)
-	update_icon(UPDATE_ICON_STATE)
 
-/obj/machinery/teleport/perma/Crossed(atom/movable/AM, oldloc)
+/obj/machinery/teleport/perma/proc/on_atom_entered(datum/source, atom/movable/entered)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	if(!is_teleport_allowed(z))
-		to_chat(AM, "You can't use this here.")
+
+	if(!is_teleport_allowed(z) && !admin_usage)
+		if(ismob(entered))
+			to_chat(entered, "You can't use this here.")
 		return
 
-	if(target && !recalibrating && !panel_open && !blockAI(AM) && (teleports_this_cycle <= MAX_ALLOWED_TELEPORTS_PER_PROCESS))
-		do_teleport(AM, target)
-		use_power(5000)
+	if(entered == src)
+		return
+
+	teleport(entered)
+
+/obj/machinery/teleport/perma/proc/teleport(atom/movable/entered as mob|obj)
+	if(target && !recalibrating && !panel_open && !blockAI(entered) && (teleports_this_cycle <= MAX_ALLOWED_TELEPORTS_PER_PROCESS) && !iseffect(entered))
+		do_teleport(entered, target)
+		use_power(teleport_cost)
 		teleports_this_cycle++
 		if(tele_delay)
 			recalibrating = TRUE
 			update_icon(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
 			update_lighting()
 			addtimer(CALLBACK(src, PROC_REF(CrossedCallback)), tele_delay)
+
+/obj/machinery/teleport/perma/Destroy()
+	. = ..()
 
 /obj/machinery/teleport/perma/proc/CrossedCallback()
 	recalibrating = FALSE
@@ -559,6 +595,60 @@
 /obj/machinery/teleport/perma/screwdriver_act(mob/user, obj/item/I)
 	if(default_deconstruction_screwdriver(user, "tele-o", "tele0", I))
 		return TRUE
+
+/obj/machinery/teleport/perma/preset
+	var/target_beacon_type
+
+/obj/machinery/teleport/perma/preset/Initialize(mapload)
+	. = ..()
+	if(target_beacon_type)
+		target = locate(target_beacon_type)
+	update_icon(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
+	update_lighting()
+
+/obj/machinery/teleport/perma/preset/initialize_parts()
+	. = ..()
+	tele_delay = 0 // Act like a fully upgraded tele, no T4 stock parts to plunder.
+
+/obj/machinery/teleport/perma/preset/cerestation
+
+/obj/machinery/teleport/perma/preset/cerestation/medbay
+	target_beacon_type = /obj/machinery/bluespace_beacon/cerestation/medbay
+
+/obj/machinery/teleport/perma/preset/cerestation/service
+	target_beacon_type = /obj/machinery/bluespace_beacon/cerestation/service
+
+/obj/machinery/teleport/perma/preset/cerestation/cargo
+	target_beacon_type = /obj/machinery/bluespace_beacon/cerestation/cargo
+
+/obj/machinery/teleport/perma/preset/cerestation/brig
+	target_beacon_type = /obj/machinery/bluespace_beacon/cerestation/brig
+
+/obj/machinery/teleport/perma/preset/cerestation/science
+	target_beacon_type = /obj/machinery/bluespace_beacon/cerestation/science
+
+/obj/machinery/teleport/perma/preset/cerestation/departures
+	target_beacon_type = /obj/machinery/bluespace_beacon/cerestation/departures
+
+/obj/machinery/teleport/perma/preset/cerestation/engineering
+	target_beacon_type = /obj/machinery/bluespace_beacon/cerestation/engineering
+
+/obj/machinery/bluespace_beacon/cerestation
+	broadcast_to_teleport_hubs = FALSE
+
+/obj/machinery/bluespace_beacon/cerestation/medbay
+
+/obj/machinery/bluespace_beacon/cerestation/cargo
+
+/obj/machinery/bluespace_beacon/cerestation/brig
+
+/obj/machinery/bluespace_beacon/cerestation/science
+
+/obj/machinery/bluespace_beacon/cerestation/departures
+
+/obj/machinery/bluespace_beacon/cerestation/engineering
+
+/obj/machinery/bluespace_beacon/cerestation/service
 
 /obj/machinery/teleport/station
 	name = "station"
@@ -625,16 +715,16 @@
 		teleporter_console = null
 	return ..()
 
-/obj/machinery/teleport/station/attackby(obj/item/I, mob/user, params)
-	if(panel_open && istype(I, /obj/item/circuitboard/teleporter_perma))
+/obj/machinery/teleport/station/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(panel_open && istype(used, /obj/item/circuitboard/teleporter_perma))
 		if(!teleporter_console)
 			to_chat(user, "<span class='caution'>[src] is not linked to a teleporter console.</span>")
-			return
+			return ITEM_INTERACT_COMPLETE
 
-		var/obj/item/circuitboard/teleporter_perma/C = I
+		var/obj/item/circuitboard/teleporter_perma/C = used
 		C.target = teleporter_console.target
 		to_chat(user, "<span class='caution'>You copy the targeting information from [src] to [C].</span>")
-		return
+		return ITEM_INTERACT_COMPLETE
 
 	return ..()
 

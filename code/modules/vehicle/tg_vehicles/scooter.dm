@@ -80,10 +80,13 @@
 
 /obj/tgvehicle/scooter/skateboard/generate_actions()
 	. = ..()
-	initialize_controller_action_type(/datum/action/vehicle/scooter/skateboard/ollie, VEHICLE_CONTROL_DRIVE)
-	initialize_controller_action_type(/datum/action/vehicle/scooter/skateboard/kickflip, VEHICLE_CONTROL_DRIVE)
+	initialize_controller_action_type(/datum/action/vehicle/skateboard/ollie, VEHICLE_CONTROL_DRIVE)
+	initialize_controller_action_type(/datum/action/vehicle/skateboard/kickflip, VEHICLE_CONTROL_DRIVE)
 
 /obj/tgvehicle/scooter/skateboard/post_buckle_mob(mob/living/M)//allows skateboards to be non-dense but still allows 2 skateboarders to collide with each other
+	if(M.pulling)
+		M.stop_pulling()
+		to_chat(M, "<span class='warning'>You can't pull things along while skateboarding!</span>")
 	set_density(TRUE)
 	return ..()
 
@@ -119,7 +122,7 @@
 			V.tilt(rider, from_combat = TRUE)
 			return
 		rider.throw_at(throw_target, 3, 2)
-		var/head_slot = rider.get_item_by_slot(SLOT_HUD_HEAD)
+		var/head_slot = rider.get_item_by_slot(ITEM_SLOT_HEAD)
 		if(!head_slot || !(istype(head_slot, /obj/item/clothing/head/helmet) || istype(head_slot, /obj/item/clothing/head/hardhat)))
 			rider.adjustBrainLoss(5)
 			rider.updatehealth()
@@ -176,7 +179,7 @@
 
 	if(location)
 		if(prob(33))
-			location.hotspot_expose(1000, 1000)
+			location.hotspot_expose(1000, 1)
 			sparks.start() //the most radical way to start plasma fires
 	for(var/mob/living/carbon/victim in location)
 		if(victim.body_position == LYING_DOWN)
@@ -273,9 +276,8 @@
 	desc = "A metal frame for building a scooter. Looks like you'll need to add some iron to make wheels."
 	icon = 'icons/obj/tgvehicles.dmi'
 	icon_state = "scooter_frame"
-	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/scooter_frame/attackby(obj/item/I, mob/user, params)
+/obj/item/scooter_frame/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(!istype(I, /obj/item/stack/sheet/metal))
 		return ..()
 	var/obj/item/stack/S = I
@@ -301,16 +303,16 @@
 /obj/tgvehicle/scooter/skateboard/wrench_act(mob/living/user, obj/item/I)
 	return
 
-/obj/tgvehicle/scooter/skateboard/improvised/attackby(obj/item/I, mob/user, params)
+/obj/tgvehicle/scooter/skateboard/improvised/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(!istype(I, /obj/item/stack/rods))
 		return ..()
 	var/obj/item/stack/S = I
 	if(S.get_amount() < 2)
-		return
+		return ITEM_INTERACT_COMPLETE
 	to_chat(user, "<span class='notice'>You begin making handlebars for [src].</span>")
 	if(do_after(user, 2.5 SECONDS, target = src))
 		if(!loc || !S || S.get_amount() < 2 || !S.use(2))
-			return
+			return ITEM_INTERACT_COMPLETE
 	to_chat(user, "<span class='notice'>You add the rods to [src], creating handlebars.</span>")
 	var/obj/tgvehicle/scooter/skaterskoot = new(loc)
 	if(has_buckled_mobs())
@@ -339,19 +341,19 @@
 	name = "skateboard"
 	desc = "A skateboard. It can be placed on its wheels and ridden, or used as a radical weapon."
 	icon = 'icons/obj/tgvehicles.dmi'
+	icon_state = "skateboard_held"
+	inhand_icon_state = "skateboard"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
-	icon_state = "skateboard_held"
-	item_state = "skateboard"
 	force = 12
 	throwforce = 4
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = SLOT_FLAG_BACK
+	slot_flags = ITEM_SLOT_BACK
 	attack_verb = list("smacks", "whacks", "slams", "smashes")
 	///The vehicle counterpart for the board
 	var/board_item_type = /obj/tgvehicle/scooter/skateboard
 
-/obj/item/melee/skateboard/attack_self(mob/user)
+/obj/item/melee/skateboard/attack_self__legacy__attackchain(mob/user)
 	var/obj/tgvehicle/scooter/skateboard/S = new board_item_type(get_turf(user))//this probably has fucky interactions with telekinesis but for the record it wasn't my fault
 	S.buckle_mob(user)
 	qdel(src)
@@ -365,7 +367,7 @@
 	name = "pro skateboard"
 	desc = "An EightO brand professional skateboard. It looks sturdy and well made."
 	icon_state = "skateboardpro_held"
-	item_state = "skateboardpro"
+	inhand_icon_state = "skateboardpro"
 	board_item_type = /obj/tgvehicle/scooter/skateboard/pro
 
 /obj/item/melee/skateboard/hoverboard
@@ -373,12 +375,12 @@
 	desc = "A blast from the past, so retro!"
 	w_class = WEIGHT_CLASS_NORMAL
 	icon_state = "hoverboard_red_held"
-	item_state = "hoverboard_red"
+	inhand_icon_state = "hoverboard_red"
 	board_item_type = /obj/tgvehicle/scooter/skateboard/hoverboard
 
 /obj/item/melee/skateboard/hoverboard/admin
 	name = "Board Of Directors"
 	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
 	icon_state = "hoverboard_nt_held"
-	item_state = "hoverboard_nt"
+	inhand_icon_state = "hoverboard_nt"
 	board_item_type = /obj/tgvehicle/scooter/skateboard/hoverboard/admin

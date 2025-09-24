@@ -1,12 +1,12 @@
-/obj/item/clothing/suit/mantle/armor/captain/black
+/obj/item/clothing/neck/cloak/captain_mantle/black
 	name = "чёрная капитанская мантия"
 	desc = "Носится верховным лидером станции NSS Cyberiad."
 	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
 	icon_state = "capcloak_black"
-	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
-	item_state = "capcloak_black"
+	worn_icon_state = "capcloak_black"
+	inhand_icon_state = "capcloak_black"
 
-/obj/item/clothing/suit/mantle/armor/captain/black/Initialize(mapload)
+/obj/item/clothing/neck/cloak/captain_mantle/black/Initialize(mapload)
 	. = ..()
 	desc = "Носится верховным лидером станции [station_name()]."
 
@@ -65,3 +65,29 @@
 	)
 	flags = BLOCKHAIR
 	flags_inv = HIDEEARS
+
+/obj/item/clothing/neck/ei_cloak_hoodless
+	name = "накидка Gold On Black"
+	desc = "Корпоративная накидка, выполненная в угольных тонах все с тем же золотым покрытием и специальным логотипом от Etamin Industry – золотой звездой."
+	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
+	icon_state = "ei_cloak"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/cloaks.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Skeleton" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/cloaks.dmi',
+		"Abductor" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/cloaks.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/cloaks.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/cloaks.dmi',
+	)

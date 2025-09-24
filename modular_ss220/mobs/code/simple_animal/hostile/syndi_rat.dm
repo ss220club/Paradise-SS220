@@ -17,7 +17,6 @@
 	density = 0
 	ventcrawler = 2
 	can_hide = 1
-	can_collar = 1
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	see_in_dark = 6
 	speak = list("Слава Синдикату!","Смерть НаноТрейзен!", "У вас есть сыр?")
@@ -48,7 +47,15 @@
 
 /mob/living/simple_animal/hostile/retaliate/syndirat/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/wears_collar)
+
+/mob/living/simple_animal/hostile/retaliate/syndirat/Initialize(mapload)
+	. = ..()
 	AddComponent(/datum/component/squeak, list('sound/creatures/mousesqueak.ogg' = 1), 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE) //as quiet as a mouse or whatever
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /mob/living/simple_animal/hostile/retaliate/syndirat/handle_automated_action()
 	if(prob(chew_probability) && isturf(loc))
@@ -85,12 +92,13 @@
 	else if(prob(0.5))
 		on_lying_down()
 
-/mob/living/simple_animal/hostile/retaliate/syndirat/Crossed(AM as mob|obj, oldloc)
-	if(ishuman(AM))
-		if(!stat)
-			var/mob/M = AM
-			to_chat(M, span_notice("[bicon(src)] Squeek!"))
-	..()
+/mob/living/simple_animal/hostile/retaliate/syndirat/proc/on_atom_entered(datum/source, atom/movable/entered)
+	SIGNAL_HANDLER
+	if(!ishuman(source))
+		return
+	if(stat)
+		return
+	to_chat(source, span_notice("[bicon(src)] Squeek!"))
 
 /mob/living/simple_animal/hostile/retaliate/syndirat/emote(emote_key, type_override = 1, message, intentional, force_silence)
 	if(stat != CONSCIOUS)

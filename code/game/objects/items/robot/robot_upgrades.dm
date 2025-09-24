@@ -79,14 +79,20 @@
  * * R - the cyborg that we've applied the upgrade to.
  */
 /obj/item/borg/upgrade/proc/after_install(mob/living/silicon/robot/R)
-	for(var/item in items_to_replace)
-		var/replacement_type = items_to_replace[item]
-		var/obj/item/replacement = new replacement_type(R.module)
-		R.module.remove_item_from_lists(item)
-		R.module.basic_modules += replacement
+	for(var/obj/item/installed_item in R.module.basic_modules.Copy())
+		for(var/item in items_to_replace)
+			if(!istype(installed_item, item))
+				continue
+			var/replacement_type = items_to_replace[item]
+			var/obj/item/replacement = new replacement_type(R.module)
+			R.module.remove_item_from_lists(item)
+			R.module.basic_modules += replacement
 
-		if(replacement_type in special_rechargables)
-			R.module.special_rechargables += replacement
+			if(replacement_type in special_rechargables)
+				R.module.special_rechargables += replacement
+
+			// Item is replaced, no need to continue
+			break
 
 	for(var/item in items_to_add)
 		var/obj/item/replacement = new item(R.module)
@@ -120,7 +126,7 @@
 	delete_after_install = TRUE
 	var/heldname = "default name"
 
-/obj/item/borg/upgrade/rename/attack_self(mob/user)
+/obj/item/borg/upgrade/rename/attack_self__legacy__attackchain(mob/user)
 	var/new_heldname = tgui_input_text(user, "Enter new robot name", "Cyborg Reclassification", heldname, MAX_NAME_LEN)
 	if(!new_heldname)
 		return
@@ -209,9 +215,7 @@
 /obj/item/borg/upgrade/selfrepair/update_icon_state()
 	if(cyborg)
 		icon_state = "selfrepair_[on ? "on" : "off"]"
-		for(var/X in actions)
-			var/datum/action/A = X
-			A.UpdateButtons()
+		update_action_buttons()
 	else
 		icon_state = "cyborg_upgrade5"
 
@@ -320,7 +324,7 @@
 	require_module = TRUE
 	module_type = /obj/item/robot_module/miner
 	items_to_replace = list(
-		/obj/item/storage/bag/ore/cyborg = /obj/item/storage/bag/ore/holding
+		/obj/item/storage/bag/ore/cyborg = /obj/item/storage/bag/ore/cyborg/holding
 	)
 
 /obj/item/borg/upgrade/lavaproof
@@ -411,6 +415,34 @@
 	)
 
 /***********************/
+// MARK: Service
+/***********************/
+
+/obj/item/borg/upgrade/rsf_executive
+	name = "executive service upgrade"
+	desc = "An upgrade that replaces a service cyborg's Rapid Service Fabricator with a classy Executive version."
+	icon_state = "cyborg_upgrade5"
+	origin_tech = "biotech=2;materials=1"
+	require_module = TRUE
+	module_type = /obj/item/robot_module/butler
+	items_to_add = list(/obj/item/kitchen/knife/cheese)
+	items_to_replace = list(/obj/item/rsf = /obj/item/rsf/executive)
+
+/***********************/
+// MARK: Medical
+/***********************/
+
+/obj/item/borg/upgrade/holo_stretcher
+	name = "holo stretcher rack upgrade"
+	desc = "An upgrade that allows medical cyborgs to carry holo stretchers in addition to basic roller beds."
+	icon = 'icons/obj/rollerbed.dmi'
+	icon_state = "holo_retracted"
+	origin_tech = "magnets=3;biotech=4;powerstorage=3"
+	require_module = TRUE
+	module_type = /obj/item/robot_module/medical
+	items_to_replace = list(/obj/item/roller_holder = /obj/item/roller_holder/holo)
+
+/***********************/
 // MARK: Syndicate
 /***********************/
 
@@ -469,11 +501,11 @@
 	require_module = TRUE
 	module_type = /obj/item/robot_module/medical
 	items_to_replace = list(
-		/obj/item/scalpel/laser/laser1 = /obj/item/scalpel/laser/laser3, // No abductor laser scalpel, so next best thing.
+		/obj/item/scalpel/laser/laser1 = /obj/item/scalpel/laser/alien,
 		/obj/item/hemostat = /obj/item/hemostat/alien,
 		/obj/item/retractor = /obj/item/retractor/alien,
 		/obj/item/bonegel = /obj/item/bonegel/alien,
-		/obj/item/FixOVein = /obj/item/FixOVein/alien,
+		/obj/item/fix_o_vein = /obj/item/fix_o_vein/alien,
 		/obj/item/bonesetter = /obj/item/bonesetter/alien,
 		/obj/item/circular_saw = /obj/item/circular_saw/alien,
 		/obj/item/surgicaldrill = /obj/item/surgicaldrill/alien,

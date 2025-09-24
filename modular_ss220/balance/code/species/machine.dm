@@ -7,12 +7,12 @@
 	icon_state = "machine_box"
 
 /obj/item/storage/box/survival_ipc/populate_contents()
-	new /obj/item/weldingtool(src)
-	new /obj/item/stack/cable_coil/five(src)
+	new /obj/item/weldingtool/mini(src)
+	new /obj/item/stack/cable_coil/ten(src)
 	new /obj/item/flashlight/flare/glowstick/emergency(src)
 
-/obj/machinery/recharger/attackby(obj/item/G, mob/user, params)
-	if(istype(G, /obj/item/melee/baton/electrostaff))
-		to_chat(user, span_notice("[G] не имеет внешних разъемов для подзарядки."))
-		return
-	. = ..()
+/obj/machinery/recharger/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/melee/baton/electrostaff))
+		to_chat(user, span_notice("[used] не имеет внешних разъемов для подзарядки."))
+		return ITEM_INTERACT_COMPLETE
+	return ..()

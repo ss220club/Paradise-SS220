@@ -24,7 +24,6 @@
 						You may use the blood crawl icon when on blood pools to travel through them, appearing and dissapearing from the station at will. \
 						Pulling a dead or critical mob while you enter a pool will pull them in with you, allowing you to feast. \
 						You move quickly upon leaving a pool of blood, but the material world will soon sap your strength and leave you sluggish. </B>"
-	del_on_death = TRUE
 	deathmessage = "screams in anger as it collapses into a puddle of viscera!"
 
 
@@ -107,7 +106,6 @@
 	desc = "Sense the location of heretics."
 	base_cooldown = 0
 	clothes_req = FALSE
-	cooldown_min = 0
 	overlay = null
 	action_icon_state = "bloodcrawl"
 	action_background_icon_state = "bg_cult"
@@ -164,15 +162,12 @@
 //Paradise Port: I added this because..SPOOPY DEMON IN YOUR BRAIN
 
 
-/datum/action/innate/demon/whisper
+/datum/action/innate/demon_whisper
 	name = "Demonic Whisper"
-	button_overlay_icon_state = "demon_comms"
-	button_background_icon_state = "bg_demon"
+	button_icon_state = "demon_comms"
+	background_icon_state = "bg_demon"
 
-/datum/action/innate/demon/whisper/IsAvailable()
-	return ..()
-
-/datum/action/innate/demon/whisper/proc/choose_targets(mob/user = usr)//yes i am copying from telepathy..hush...
+/datum/action/innate/demon_whisper/proc/choose_targets(mob/user = usr)//yes i am copying from telepathy..hush...
 	var/list/validtargets = list()
 	for(var/mob/living/M in view(user.client.maxview(), get_turf(user)))
 		if(M && M.mind && M.stat != DEAD)
@@ -188,7 +183,7 @@
 	var/mob/living/target = tgui_input_list(user, "Choose the target to talk to", "Targeting", validtargets)
 	return target
 
-/datum/action/innate/demon/whisper/Activate()
+/datum/action/innate/demon_whisper/Activate()
 	var/mob/living/choice = choose_targets()
 	if(!choice)
 		return
@@ -209,7 +204,6 @@
 /obj/item/organ/internal/heart/demon
 	name = "demon heart"
 	desc = "Still it beats furiously, emanating an aura of utter hate."
-	icon = 'icons/obj/surgery.dmi'
 	icon_state = "demon_heart"
 	origin_tech = "combat=5;biotech=7"
 	organ_datums = list(/datum/organ/heart/always_beating, /datum/organ/battery)
@@ -220,7 +214,7 @@
 /obj/item/organ/internal/heart/demon/prepare_eat()
 	return // Just so people don't accidentally waste it
 
-/obj/item/organ/internal/heart/demon/attack_self(mob/living/user)
+/obj/item/organ/internal/heart/demon/attack_self__legacy__attackchain(mob/living/user)
 	user.visible_message("<span class='warning'>[user] raises [src] to [user.p_their()] mouth and tears into it with [user.p_their()] teeth!</span>", \
 						"<span class='danger'>An unnatural hunger consumes you. You raise [src] to your mouth and devour it!</span>")
 	playsound(user, 'sound/misc/demon_consume.ogg', 50, 1)
@@ -230,7 +224,7 @@
 //The loot from killing a slaughter demon - can be consumed to allow the user to blood crawl
 /// SLAUGHTER DEMON HEART
 
-/obj/item/organ/internal/heart/demon/slaughter/attack_self(mob/living/user)
+/obj/item/organ/internal/heart/demon/slaughter/attack_self__legacy__attackchain(mob/living/user)
 	..()
 
 	// Eating the heart for the first time. Gives basic bloodcrawling. This is the only time we need to insert the heart.
@@ -326,6 +320,7 @@
 	return FALSE
 
 /datum/objective/demon_fluff
+	name = "Spread blood"
 	needs_target = FALSE
 
 /datum/objective/demon_fluff/New()

@@ -3,12 +3,10 @@
 	desc = "A powerful and versatile flashbulb device, with applications ranging from disorienting attackers to acting as visual receptors in robot production."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "flash"
-	item_state = "flashtool"	//looks exactly like a flash (and nothing like a flashbang)
+	inhand_icon_state = "flashtool"	//looks exactly like a flash (and nothing like a flashbang)
 	belt_icon = "flash"
-	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
-	throw_range = 7
 	flags = CONDUCT
 	materials = list(MAT_METAL = 300, MAT_GLASS = 300)
 	origin_tech = "magnets=2;combat=1"
@@ -33,7 +31,7 @@
 	var/use_sound = 'sound/weapons/flash.ogg'
 	COOLDOWN_DECLARE(flash_cooldown)
 
-/obj/item/flash/attackby(obj/item/I, mob/user, params)
+/obj/item/flash/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(!can_overcharge || !istype(I, /obj/item/stock_parts/cell))
 		return
 
@@ -126,7 +124,7 @@
 	if(M.flash_eyes())
 		M.AdjustConfused(power)
 
-/obj/item/flash/attack(mob/living/M, mob/user)
+/obj/item/flash/attack__legacy__attackchain(mob/living/M, mob/user)
 	if(!try_use_flash(user))
 		return FALSE
 	if(iscarbon(M))
@@ -143,7 +141,7 @@
 		return TRUE
 	user.visible_message("<span class='disarm'>[user] fails to blind [M] with [src]!</span>", "<span class='warning'>You fail to blind [M] with [src]!</span>")
 
-/obj/item/flash/afterattack(atom/target, mob/living/user, proximity, params)
+/obj/item/flash/afterattack__legacy__attackchain(atom/target, mob/living/user, proximity, params)
 	if(!proximity)
 		return
 	if(!istype(target, /obj/machinery/camera))
@@ -157,7 +155,7 @@
 	user.create_attack_log("[key_name(user)] EMPd a camera with a flash")
 	add_attack_logs(user, C, "EMPd with [src]", ATKLOG_ALL)
 
-/obj/item/flash/attack_self(mob/living/carbon/user, flag = 0, emp = 0)
+/obj/item/flash/attack_self__legacy__attackchain(mob/living/carbon/user, flag = 0, emp = 0)
 	if(!try_use_flash(user))
 		return FALSE
 	user.visible_message("<span class='disarm'>[user]'s [name] emits a blinding light!</span>", "<span class='danger'>Your [name] emits a blinding light!</span>")
@@ -207,11 +205,11 @@
 	origin_tech = null
 	can_overcharge = FALSE
 
-/obj/item/flash/cyborg/attack(mob/living/M, mob/user)
+/obj/item/flash/cyborg/attack__legacy__attackchain(mob/living/M, mob/user)
 	..()
 	new /obj/effect/temp_visual/borgflash(get_turf(src))
 
-/obj/item/flash/cyborg/attack_self(mob/user)
+/obj/item/flash/cyborg/attack_self__legacy__attackchain(mob/user)
 	..()
 	new /obj/effect/temp_visual/borgflash(get_turf(src))
 
@@ -226,9 +224,10 @@
 	icon = 'icons/obj/items.dmi'
 	desc = "A polaroid camera. 10 photos left."
 	icon_state = "camera"
-	item_state = "electropack" //spelling, a coders worst enemy. This part gave me trouble for a while.
+	worn_icon_state = "camera"
+	inhand_icon_state = "camera"
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_NECK
 	can_overcharge = FALSE
 	var/flash_max_charges = 5
 	var/flash_cur_charges = 5
@@ -267,7 +266,9 @@
 	name = "memorizer"
 	desc = "If you see this, you're not likely to remember it any time soon." // Why doesn't this at least delete your notes smh
 	icon_state = "memorizer"
-	item_state = "nullrod"
+	inhand_icon_state = "tele_baton"
+	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
 
 /obj/item/flash/armimplant
 	name = "photon projector"

@@ -32,31 +32,43 @@
 	maxHealth = 3
 	var/amount_grown = 0
 	can_hide = 1
-	can_collar = 0
 	holder_type = /obj/item/holder/hamster
+
+/mob/living/simple_animal/mouse/hamster/baby/Initialize(mapload)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered),
+	)
+	RemoveElement(/datum/element/wears_collar)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 // Hamster procs
 #define MAX_HAMSTER 20
 GLOBAL_VAR_INIT(hamster_count, 0)
 
-/mob/living/simple_animal/mouse/hamster/color_pick()
-	reinitial()
-	return
-
-/mob/living/simple_animal/mouse/hamster/New()
-	gender = prob(80) ? MALE : FEMALE
-	desc += MALE ? " Самец!" : " Самочка! Ох... Нет... "
-	GLOB.hamster_count++
+/mob/living/simple_animal/mouse/hamster/Initialize(mapload)
 	. = ..()
+	gender = prob(80) ? MALE : FEMALE
+
+	icon_state = initial(icon_state)
+	icon_living = initial(icon_living)
+	icon_dead = initial(icon_dead)
+	icon_resting = initial(icon_resting)
+
+	update_appearance(UPDATE_ICON_STATE, UPDATE_DESC)
+	GLOB.hamster_count++
 
 /mob/living/simple_animal/mouse/hamster/Destroy()
 	GLOB.hamster_count--
 	. = ..()
 
-/mob/living/simple_animal/mouse/hamster/death(gibbed)
-	if(!gibbed)
-		GLOB.hamster_count--
+/mob/living/simple_animal/mouse/hamster/color_pick()
+	return
+
+/mob/living/simple_animal/mouse/hamster/update_desc()
 	. = ..()
+	desc = initial(desc)
+	desc += MALE ? " Самец!" : " Самочка! Ох... Нет... "
 
 /mob/living/simple_animal/mouse/hamster/pull_constraint(atom/movable/AM, show_message = FALSE)
 	return TRUE
@@ -81,11 +93,9 @@ GLOBAL_VAR_INIT(hamster_count, 0)
 				mind.transfer_to(A)
 			qdel(src)
 
-/mob/living/simple_animal/mouse/hamster/baby/Crossed(AM as mob|obj, oldloc)
-	if(ishuman(AM))
-		if(!stat)
-			var/mob/M = AM
-			to_chat(M, span_notice("[bicon(src)] раздавлен!"))
-			death()
-			splat(user = AM)
-	..()
+/mob/living/simple_animal/mouse/hamster/baby/on_atom_entered(datum/source, atom/movable/entered)
+	if(!ishuman(source) || stat)
+		return ..()
+	to_chat(source, span_notice("[bicon(src)] раздавлен!"))
+	death()
+	splat(user = source)

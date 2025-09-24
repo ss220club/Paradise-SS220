@@ -4,12 +4,11 @@
 	icon_state = "start"
 	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-	has_gravity = TRUE
 	ambientsounds = null // No ambient sounds in the lobby
 
 
 /area/space
-	icon_state = "space"
+	icon_state = "Космос"
 	requires_power = FALSE
 	always_unpowered = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
@@ -48,10 +47,14 @@
 	icon_state = "space_notp"
 	tele_proof = TRUE
 
+/area/game_test
+	name = "Game Test Area"
+	requires_power = FALSE
+
 //SYNDICATES
 
 /area/syndicate_mothership
-	name = "\improper Syndicate Forward Base"
+	name = "Передовая База Синдиката"
 	icon_state = "syndie-ship"
 	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
@@ -59,4 +62,12 @@
 	ambientsounds = HIGHSEC_SOUNDS
 
 /area/syndicate_mothership/jail
-	name = "\improper Syndicate Jail"
+	name = "Тюрьма Синдиката"
+
+/area/cordon
+	name = "CORDON"
+	icon_state = "cordon"
+	requires_power = FALSE
+	always_unpowered = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	valid_territory = FALSE

@@ -18,22 +18,21 @@
 		/obj/item/book = 5
 		)
 
-/obj/machinery/papershredder/attackby(obj/item/item, mob/user, params)
-	if(istype(item, /obj/item/storage))
+/obj/machinery/papershredder/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/storage))
 		add_fingerprint(user)
-		empty_bin(user, item)
-		return
+		empty_bin(user, used)
+		return ITEM_INTERACT_COMPLETE
 	var/paper_result
-	if(item.type in shred_amounts)
-		paper_result = shred_amounts[item.type]
+	if(used.type in shred_amounts)
+		paper_result = shred_amounts[used.type]
 	if(!paper_result)
-		. = ..()
-		return
+		return ..()
 	if(paperamount == max_paper)
 		to_chat(user, span_warning("[src] is full; please empty it before you continue."))
-		return
+		return ITEM_INTERACT_COMPLETE
 	paperamount += paper_result
-	qdel(item)
+	qdel(used)
 	playsound(loc, 'modular_ss220/objects/sound/pshred.ogg', 75, 1)
 	if(paperamount > max_paper)
 		to_chat(user, span_danger("[src] was too full, and shredded paper goes everywhere!"))
@@ -44,6 +43,7 @@
 		paperamount = max_paper
 	update_icon()
 	add_fingerprint(user)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/machinery/papershredder/wrench_act(mob/user, obj/item/tool)
 	. = TRUE
@@ -110,7 +110,7 @@
 /obj/machinery/papershredder/update_icon_state()
 	icon_state = "papershredder[clamp(round(paperamount/3), 0, 5)]"
 
-/obj/item/shredded_paper/attackby(obj/item/shredp as obj, mob/user)
+/obj/item/shredded_paper/attackby__legacy__attackchain(obj/item/shredp as obj, mob/user)
 	if(resistance_flags & ON_FIRE)
 		add_fingerprint(user)
 		return

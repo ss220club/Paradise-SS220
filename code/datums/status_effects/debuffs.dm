@@ -3,7 +3,6 @@
 /// does minor damage over time unless holding His Grace
 /datum/status_effect/his_wrath
 	id = "his_wrath"
-	duration = -1
 	tick_interval = 4
 	alert_type = /atom/movable/screen/alert/status_effect/his_wrath
 
@@ -27,7 +26,6 @@
 /// is a cult ghost and can't use manifest runes, can see ghosts and dies if too far from summoner
 /datum/status_effect/cultghost
 	id = "cult_ghost"
-	duration = -1
 	alert_type = null
 	var/damage = 7.5
 	var/source_UID
@@ -80,7 +78,6 @@
 
 /datum/status_effect/saw_bleed
 	id = "saw_bleed"
-	duration = -1 //removed under specific conditions
 	tick_interval = 6
 	alert_type = null
 	var/mutable_appearance/bleed_overlay
@@ -163,7 +160,7 @@
 	stack_threshold = 3
 	max_stacks = 3
 	reset_ticks_on_stack = TRUE
-	var/mob/living/simple_animal/hostile/asteroid/big_legion/latest_attacker
+	var/mob/living/basic/mining/big_legion/latest_attacker
 
 /datum/status_effect/stacking/ground_pound/on_creation(mob/living/new_owner, stacks_to_apply, mob/living/attacker)
 	. = ..()
@@ -179,7 +176,7 @@
 
 /datum/status_effect/stacking/ground_pound/stacks_consumed_effect()
 	flick("legion-smash", latest_attacker)
-	addtimer(CALLBACK(latest_attacker, TYPE_PROC_REF(/mob/living/simple_animal/hostile/asteroid/big_legion, throw_mobs)), 1 SECONDS)
+	addtimer(CALLBACK(latest_attacker, TYPE_PROC_REF(/mob/living/basic/mining/big_legion, throw_mobs)), 1 SECONDS)
 
 /datum/status_effect/stacking/ground_pound/on_remove()
 	latest_attacker = null
@@ -696,6 +693,18 @@
 	if(isnum(_slowdown_value))
 		slowdown_value = _slowdown_value
 
+// Directional slow - Like slowed, but only if you're moving in a certain direction.
+/datum/status_effect/incapacitating/directional_slow
+	id = "directional_slow"
+	var/direction
+	var/slowdown_value = 10 // defaults to this value if none is specified
+
+/datum/status_effect/incapacitating/directional_slow/on_creation(mob/living/new_owner, set_duration, _direction, _slowdown_value)
+	. = ..()
+	direction = _direction
+	if(isnum(_slowdown_value))
+		slowdown_value = _slowdown_value
+
 /datum/status_effect/transient/silence
 	id = "silenced"
 
@@ -752,7 +761,7 @@
 
 #define HALLUCINATE_COOLDOWN_MIN 20 SECONDS
 #define HALLUCINATE_COOLDOWN_MAX 50 SECONDS
-/// This is multiplied with [/mob/var/hallucination] to determine the final cooldown. A higher hallucination value means shorter cooldown.
+/// This is multiplied with [/datum/status_effect/transient/var/strength] to determine the final cooldown. A higher hallucination value means shorter cooldown.
 #define HALLUCINATE_COOLDOWN_FACTOR 0.003
 /// Percentage defining the chance at which an hallucination may spawn past the cooldown.
 #define HALLUCINATE_CHANCE 80
@@ -992,7 +1001,6 @@
 /datum/status_effect/cryo_beam
 	id = "cryo beam"
 	alert_type = null
-	duration = -1 //Kill it, get out of sight, or be killed. Jump boots are *required*
 	tick_interval = 0.5 SECONDS
 	var/damage = 0.75
 	var/source_UID
@@ -1018,8 +1026,6 @@
 /datum/status_effect/bubblegum_curse
 	id = "bubblegum curse"
 	alert_type = /atom/movable/screen/alert/status_effect/bubblegum_curse
-	duration = -1 //Kill it. There is no other option.
-	tick_interval = 1 SECONDS
 	/// The damage the status effect does per tick.
 	var/damage = 0.75
 	var/source_UID
@@ -1033,8 +1039,9 @@
 
 /datum/status_effect/bubblegum_curse/tick()
 	var/mob/living/simple_animal/hostile/megafauna/bubblegum/attacker = locateUID(source_UID)
-	if(!attacker || attacker.loc == null)
+	if(!attacker || attacker.loc == null || attacker.stat == DEAD)
 		qdel(src)
+		return
 	if(attacker.health <= attacker.maxHealth / 2)
 		owner.clear_fullscreen("Bubblegum")
 		owner.overlay_fullscreen("Bubblegum", /atom/movable/screen/fullscreen/stretch/fog, 2)
@@ -1355,6 +1362,18 @@
 	new /obj/effect/abstract/bubblegum_rend_helper(get_turf(src), null, 10)
 	qdel(src)
 
+/// The mob has been pushed by airflow recently, and won't automatically grab nearby objects to stop drifting.
+/datum/status_effect/unbalanced
+	id = "unbalanced"
+	duration = 1 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = /atom/movable/screen/alert/status_effect/unbalanced
+
+/atom/movable/screen/alert/status_effect/unbalanced
+	name = "Unbalanced"
+	desc = "You're being shoved around by airflow! You can resist this by moving, but moving against the wind will be slow."
+	icon_state = "unbalanced"
+
 /datum/status_effect/c_foamed
 	id = "c_foamed up"
 	duration = 1 MINUTES
@@ -1392,7 +1411,7 @@
 	refresh_overlay()
 
 	if(foam_level == 5)
-		owner.Paralyse(4 SECONDS)
+		owner.Immobilize(5 SECONDS)
 
 /datum/status_effect/c_foamed/proc/refresh_overlay()
 	// Refresh overlay
@@ -1406,3 +1425,83 @@
 	duration = 5 SECONDS
 	alert_type = null
 	status_type = STATUS_EFFECT_REPLACE
+
+/datum/status_effect/rust_corruption
+	alert_type = null
+	id = "rust_turf_effects"
+	tick_interval = 2 SECONDS
+
+/datum/status_effect/rust_corruption/tick()
+	. = ..()
+	SEND_SOUND(owner, sound('sound/weapons/sear.ogg'))
+	if(issilicon(owner))
+		to_chat(owner, "<span class='userdanger'>The unnatural rust magically corrodes your body!</span>")
+		owner.adjustBruteLoss(10)
+		return
+	//We don't have disgust, so...
+	to_chat(owner, "<span class='userdanger'>The unnatural rust makes you feel sick!</span>")
+	if(ishuman(owner))
+		owner.adjustBrainLoss(2.5)
+		owner.reagents?.remove_all(0.75)
+	else
+		owner.adjustBruteLoss(3) //Weaker than borgs but still constant.
+
+/// This is the threshold where the attack will stun on the last hit. Why? Because it is cool, that's why.
+#define FINISHER_THRESHOLD 7
+
+/datum/status_effect/temporal_slash
+	id = "temporal_slash"
+	duration = 3 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = null
+	/// How many times the user has been cut. Each cut adds a damage value below
+	var/cuts = 1
+	/// How much damage the blade will do each slice
+	var/damage_per_cut = 20
+
+/datum/status_effect/temporal_slash/on_creation(mob/living/new_owner, cut_damage = 20)
+	. = ..()
+	damage_per_cut = cut_damage
+
+/datum/status_effect/temporal_slash/refresh()
+	cuts++
+	return ..()
+
+/datum/status_effect/temporal_slash/on_remove()
+	owner.apply_status_effect(STATUS_EFFECT_TEMPORAL_SLASH_FINISHER, cuts, damage_per_cut) //We apply this to a new status effect, to avoid refreshing while on_remove happens.
+
+/datum/status_effect/temporal_slash_finisher
+	id = "temporal_slash_finisher"
+	alert_type = null
+	tick_interval = 0.25 SECONDS
+	/// How many times the user has been cut. Each cut adds a damage value below
+	var/cuts = 1
+	/// How much damage the blade will do each slice
+	var/damage_per_cut = 20
+	/// Have we done enough damage to trigger the finisher?
+	var/finishing_cuts = FALSE
+
+/datum/status_effect/temporal_slash_finisher/on_creation(mob/living/new_owner, final_cuts = 1, cut_damage = 20)
+	. = ..()
+	cuts = final_cuts
+	damage_per_cut = cut_damage
+	if(ismegafauna(owner))
+		damage_per_cut *= 4 //This will deal 40 damage bonus per cut on megafauna as a miner, and 80 as a wizard. To kill a megafauna, you need to hit it 48 times. You don't get the buffs of a crusher though. Also you already killed bubblegum, so, you know.
+	if(cuts >= FINISHER_THRESHOLD)
+		finishing_cuts = TRUE
+	new /obj/effect/temp_visual/temporal_slash(get_turf(owner), owner)
+
+/datum/status_effect/temporal_slash_finisher/tick()
+	. = ..()
+	owner.visible_message("<span class='danger'>[owner] gets slashed by a cut through spacetime!</span>", "<span class='userdanger'>You get slashed by a cut through spacetime!</span>")
+	playsound(owner, 'sound/weapons/rapierhit.ogg', 50, TRUE)
+	owner.apply_damage(damage_per_cut, BRUTE, pick(BODY_ZONE_CHEST, BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_ARM, BODY_ZONE_R_LEG), 0, TRUE, null, FALSE)
+	cuts--
+	if(cuts <= 0)
+		if(finishing_cuts)
+			owner.Weaken(7 SECONDS)
+		qdel(src)
+	else
+		new /obj/effect/temp_visual/temporal_slash(get_turf(owner), owner)
+
+#undef FINISHER_THRESHOLD

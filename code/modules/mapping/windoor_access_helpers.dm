@@ -1,5 +1,4 @@
 /obj/effect/mapping_helpers/airlock/windoor/access
-	layer = DOOR_HELPER_LAYER
 	icon_state = "access_windoor"
 	var/access
 
@@ -176,6 +175,9 @@
 /obj/effect/mapping_helpers/airlock/windoor/access/any/security/iaa
 	access = ACCESS_INTERNAL_AFFAIRS
 
+/obj/effect/mapping_helpers/airlock/windoor/access/any/security/evidence
+	access = ACCESS_EVIDENCE
+
 // -------------------- Service access helpers
 /obj/effect/mapping_helpers/airlock/windoor/access/any/service
 	icon_state = "access_windoor_serv"
@@ -228,6 +230,9 @@
 
 /obj/effect/mapping_helpers/airlock/windoor/access/any/supply/mineral_storage
 	access = ACCESS_MINERAL_STOREROOM
+
+/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/smith
+	access = ACCESS_SMITH
 
 /obj/effect/mapping_helpers/airlock/windoor/access/any/supply/qm
 	access = ACCESS_QM
@@ -385,6 +390,9 @@
 /obj/effect/mapping_helpers/airlock/windoor/access/all/security/iaa
 	access = ACCESS_INTERNAL_AFFAIRS
 
+/obj/effect/mapping_helpers/airlock/windoor/access/all/security/evidence
+	access = ACCESS_EVIDENCE
+
 // -------------------- Service access helpers
 /obj/effect/mapping_helpers/airlock/windoor/access/all/service
 	icon_state = "access_windoor_serv"
@@ -446,3 +454,10 @@
 
 /obj/effect/mapping_helpers/airlock/windoor/access/all/supply/mule_bot
 	access = ACCESS_CARGO_BOT
+
+// -------------------- Procedure access helpers
+/obj/effect/mapping_helpers/airlock/windoor/access/all/procedure
+	icon_state = "access_windoor_pro"
+
+/obj/effect/mapping_helpers/airlock/windoor/access/all/procedure/trainer
+	access = ACCESS_TRAINER

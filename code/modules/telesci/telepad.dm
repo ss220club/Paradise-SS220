@@ -96,10 +96,10 @@
 	desc = "Use to warp in a cargo telepad."
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "beacon"
-	item_state = "signaler"
+	inhand_icon_state = "signaler"
 	origin_tech = "bluespace=3"
 
-/obj/item/telepad_beacon/attack_self(mob/user as mob)
+/obj/item/telepad_beacon/attack_self__legacy__attackchain(mob/user as mob)
 	if(user)
 		to_chat(user, "<span class = 'caution'> Locked In</span>")
 		new /obj/machinery/telepad_cargo(user.loc)

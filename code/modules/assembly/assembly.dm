@@ -10,7 +10,6 @@
 	throw_speed = 3
 	throw_range = 10
 	origin_tech = "magnets=1;engineering=1"
-	toolspeed = 1
 	usesound = 'sound/items/deconstruct.ogg'
 	drop_sound = 'sound/items/handling/component_drop.ogg'
 	pickup_sound =  'sound/items/handling/component_pickup.ogg'
@@ -24,6 +23,12 @@
 	var/wires = ASSEMBLY_WIRE_RECEIVE | ASSEMBLY_WIRE_PULSE
 	var/datum/wires/connected = null // currently only used by timer/signaler
 
+/obj/item/assembly/Initialize(mapload)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /// Called when the holder is moved
 /obj/item/assembly/proc/holder_movement()
@@ -31,6 +36,9 @@
 
 /// Called when attack_self is called
 /obj/item/assembly/interact(mob/user)
+	return
+
+/obj/item/assembly/proc/on_atom_entered(datum/source, atom/movable/entered)
 	return
 
 /// Called to constantly step down the countdown/cooldown
@@ -90,6 +98,29 @@
 	update_icon()
 	return secured
 
+/**
+ * on_attach: Called when attached to a holder, wiring datum, or other special assembly
+ *
+ * Will also be called if the assembly holder is attached to a plasma (internals) tank or welding fuel (dispenser) tank.
+ */
+/obj/item/assembly/proc/on_attach()
+	SHOULD_CALL_PARENT(TRUE)
+
+	if(!holder && connected)
+		holder = connected.holder
+
+/**
+ * on_detach: Called when removed from an assembly holder or wiring datum
+ */
+/obj/item/assembly/proc/on_detach()
+	if(connected)
+		connected = null
+	if(!holder)
+		return FALSE
+	forceMove(holder.drop_location())
+	holder = null
+	return TRUE
+
 /// Called when an assembly is attacked by another
 /obj/item/assembly/proc/attach_assembly(obj/item/assembly/A, mob/user)
 	holder = new /obj/item/assembly_holder(get_turf(src))
@@ -99,7 +130,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/assembly/attackby(obj/item/W, mob/user, params)
+/obj/item/assembly/attackby__legacy__attackchain(obj/item/W, mob/user, params)
 	if(isassembly(W))
 		var/obj/item/assembly/A = W
 		if(!A.secured && !secured)
@@ -128,7 +159,7 @@
 		else
 			. += "[src] can be attached!"
 
-/obj/item/assembly/attack_self(mob/user)
+/obj/item/assembly/attack_self__legacy__attackchain(mob/user)
 	if(!user)
 		return
 	user.set_machine(src)

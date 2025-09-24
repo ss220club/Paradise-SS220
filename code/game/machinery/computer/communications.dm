@@ -12,7 +12,7 @@
 #define COMM_MSGLEN_MINIMUM 6
 #define COMM_CCMSGLEN_MINIMUM 20
 
-#define ADMIN_CHECK(user) (check_rights_all(R_ADMIN|R_EVENT, FALSE, user) && (authenticated >= COMM_AUTHENTICATION_CENTCOM || user.can_admin_interact()))
+#define ADMIN_CHECK(user) (check_rights(R_ADMIN|R_EVENT, FALSE, user, all = TRUE) && (authenticated >= COMM_AUTHENTICATION_CENTCOM || user.can_admin_interact()))
 
 // The communications computer
 /obj/machinery/computer/communications
@@ -56,7 +56,7 @@
 	. = ..()
 
 /obj/machinery/computer/communications/proc/is_authenticated(mob/user, message = 1)
-	if(check_rights_all(R_ADMIN|R_EVENT, FALSE, user))
+	if(check_rights(R_ADMIN|R_EVENT, FALSE, user, all = TRUE))
 		if(user.can_admin_interact())
 			return COMM_AUTHENTICATION_AGHOST
 		if(authenticated == COMM_AUTHENTICATION_CENTCOM)
@@ -109,7 +109,7 @@
 		if(ACCESS_CAPTAIN in access)
 			authenticated = COMM_AUTHENTICATION_CAPT
 		if(ACCESS_CENT_COMMANDER in access)
-			if(!check_rights_all(R_ADMIN|R_EVENT, FALSE, ui.user))
+			if(!check_rights(R_ADMIN|R_EVENT, FALSE, ui.user, all = TRUE))
 				to_chat(ui.user, "<span class='warning'>[src] buzzes, invalid central command clearance.</span>")
 				return
 			authenticated = COMM_AUTHENTICATION_CENTCOM
@@ -134,7 +134,7 @@
 			setMenuState(ui.user, COMM_SCREEN_MAIN)
 
 		if("newalertlevel")
-			if(isAI(ui.user) || isrobot(ui.user))
+			if(is_ai(ui.user) || isrobot(ui.user))
 				to_chat(ui.user, "<span class='warning'>Firewalls prevent you from changing the alert level.</span>")
 				return
 			else if(ADMIN_CHECK(ui.user))
@@ -184,7 +184,7 @@
 			setMenuState(ui.user, COMM_SCREEN_MAIN)
 
 		if("cancelshuttle")
-			if(isAI(ui.user) || isrobot(ui.user))
+			if(is_ai(ui.user) || isrobot(ui.user))
 				to_chat(ui.user, "<span class='warning'>Firewalls prevent you from recalling the shuttle.</span>")
 				return
 			var/response = tgui_alert(usr, "Are you sure you wish to recall the shuttle?", "Confirm", list("Yes", "No"))
@@ -256,7 +256,7 @@
 				Nuke_request(input, ui.user)
 				to_chat(ui.user, "<span class='notice'>Request sent.</span>")
 				log_game("[key_name(ui.user)] has requested the nuclear codes from Centcomm")
-				GLOB.major_announcement.Announce("The codes for the on-station nuclear self-destruction device have been requested by [ui.user]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self Destruct Codes Requested", 'sound/AI/nuke_codes.ogg')
+				GLOB.major_announcement.Announce("[ui.user] запросил коды для запуска механизма ядерного самоуничтожения станции. В ближайшее время будет отправлено уведомление о подтверждении или отклонении данного запроса.", "ВНИМАНИЕ: Запрос кода самоуничтожения станции.", 'sound/AI/nuke_codes.ogg')
 				centcomm_message_cooldown = world.time + 6000 // 10 minutes
 			setMenuState(ui.user, COMM_SCREEN_MAIN)
 
@@ -355,13 +355,13 @@
 			if(params["classified"] != 1) // this uses 1/0 on the js side instead of "true" or "false"
 				GLOB.major_announcement.Announce(
 					params["text"],
-					new_title = "Central Command Report",
+					new_title = "Сообщение Центрального Командования",
 					new_subtitle = params["subtitle"],
 					new_sound = cc_announcement_sounds[params["beepsound"]]
 				)
 				print_command_report(params["text"], params["subtitle"])
 			else
-				GLOB.command_announcer.autosay("A classified message has been printed out at all communication consoles.")
+				GLOB.command_announcer.autosay("На всех коммуникационных консолях было распечатано конфиденциальное сообщение.")
 				print_command_report(params["text"], "Classified: [params["subtitle"]]")
 
 			log_and_message_admins("has created a communications report: [params["text"]]")
@@ -418,7 +418,7 @@
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list()
-	data["is_ai"]         = isAI(user) || isrobot(user)
+	data["is_ai"]         = is_ai(user) || isrobot(user)
 	data["noauthbutton"]  = !ishuman(user)
 	data["menu_state"]    = data["is_ai"] ? ai_menu_state : menu_state
 	data["emagged"]       = emagged
@@ -515,19 +515,19 @@
 	return data
 
 /obj/machinery/computer/communications/proc/setCurrentMessage(mob/user, value)
-	if(isAI(user) || isrobot(user))
+	if(is_ai(user) || isrobot(user))
 		aicurrmsg = value
 	else
 		currmsg = value
 
 /obj/machinery/computer/communications/proc/getCurrentMessage(mob/user)
-	if(isAI(user) || isrobot(user))
+	if(is_ai(user) || isrobot(user))
 		return aicurrmsg
 	else
 		return currmsg
 
 /obj/machinery/computer/communications/proc/setMenuState(mob/user, value)
-	if(isAI(user) || isrobot(user))
+	if(is_ai(user) || isrobot(user))
 		ai_menu_state=value
 	else
 		menu_state=value

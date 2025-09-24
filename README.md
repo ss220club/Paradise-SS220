@@ -120,10 +120,19 @@ TGUI сильно отличается от большинства других 
 <details>
 <summary><a href="#"><img src="https://img.shields.io/badge/licence-CC_3.0_BY--NC--SA-blue?style=for-the-badge" alt="Creative Commons 3.0 BY-NC-SA" align="centre"></a></summary>
 
-> Any files with the ancestor directories [`Paradise/icons/goonstation`](icons/goonstation) or [`Paradise/sound/goonstation`](sound/goonstation) are licensed under the [Creative Commons 3.0 BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/3.0).
+> Any files with the ancestor directories [`modular_ss220/aesthetics/goonstation`](modular_ss220/aesthetics/goonstation), [`Paradise/icons/goonstation`](icons/goonstation) or [`Paradise/sound/goonstation`](sound/goonstation) are licensed under the [Creative Commons 3.0 BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/3.0).
 >
 > Further files or folders may also fall under this licence, and any such instances will be specified within the folder or file.
 
+</details>
+
+<details>
+
+<summary><a href="#"><img src="https://img.shields.io/badge/licence-CC_4.0_BY--NC-blue?style=for-the-badge" alt="Creative Commons 4.0 BY-NC" align="centre"></a></summary>
+
+>Any files with the ancestor directories [`Paradise/icons/tgmc`](icons/tgmc) are licensed under the [Creative Commons 4.0 BY-NC license](https://creativecommons.org/licenses/by-nc/4.0).
+>
+>Further files or folders may also fall under this license, and any such instances will be specified within the folder or file.
 </details>
 
 <details>
@@ -132,3 +141,4 @@ TGUI сильно отличается от большинства других 
 > All other non-code assets, including icons and sound files, are licensed under the [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/), unless otherwise specified within the folder or file.
 
 </details>
+

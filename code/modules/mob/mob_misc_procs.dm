@@ -5,13 +5,6 @@
 			return 1
 	return 0
 
-/proc/ispet(A)
-	if(isanimal(A))
-		var/mob/living/simple_animal/SA = A
-		if(SA.can_collar)
-			return 1
-	return 0
-
 /mob/proc/get_screen_colour()
 	SHOULD_CALL_PARENT(TRUE)
 	// OOC Colourblind setting takes priority over everything else.
@@ -81,7 +74,7 @@
 	if(istype(worn_glasses) && worn_glasses.color_view) //Check to see if they got those magic glasses and they're augmenting the colour of what the wearer sees. If they're not, color_view should be null.
 		return worn_glasses.color_view
 	else if(eyes) //If they're not, check to see if their eyes got one of them there colour matrices. Will be null if eyes are robotic/the mob isn't colourblind and they have no default colour matrix.
-		return eyes.get_colourmatrix()
+		return eyes.get_colormatrix()
 
 /**
   * Flash up a color as an overlay on a player's screen, then fade back to normal.
@@ -101,18 +94,19 @@
 /proc/ismindshielded(A) //Checks to see if the person contains a mindshield implant, then checks that the implant is actually inside of them
 	for(var/obj/item/bio_chip/mindshield/L in A)
 		if(L && L.implanted)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /proc/isLivingSSD(mob/M)
 	return istype(M) && M.player_logged && M.stat != DEAD
 
 /proc/isAntag(A)
-	if(isliving(A))
-		var/mob/living/L = A
-		if(L.mind?.special_role)
-			return TRUE
-	return FALSE
+	if(!isliving(A))
+		return FALSE
+	var/mob/living/L = A
+	if(!L.mind || !L.mind.special_role)
+		return FALSE
+	return L.mind.special_role != SPECIAL_ROLE_ERT
 
 /proc/isNonCrewAntag(A)
 	if(!isAntag(A))
@@ -185,8 +179,8 @@
 		theghost = pick(candidates)
 		to_chat(M, "Your mob has been taken over by a ghost!")
 		message_admins("[key_name_admin(theghost)] has taken control of ([key_name_admin(M)])")
-		var/mob/dead/observer/ghost = M.ghostize(TRUE) // Keep them respawnable
-		ghost?.can_reenter_corpse = FALSE // but keep them out of their old body
+		log_admin("[key_name(theghost)] has taken control of [key_name(M)]")
+		M.ghostize(GHOST_FLAGS_NO_REENTER)
 		M.key = theghost.key
 		dust_if_respawnable(theghost)
 	else
@@ -209,7 +203,9 @@
 // Do not use this if someone is intentionally trying to hit a specific body part.
 // Use get_zone_with_miss_chance() for that.
 /proc/ran_zone(zone, probability = 80)
-
+#ifdef GAME_TESTS
+	probability = 100
+#endif
 	zone = check_zone(zone)
 
 	if(prob(probability))
@@ -239,6 +235,30 @@
 			return "r_foot"
 
 	return zone
+
+/// Convert the impact zone of a projectile to a clothing zone we can do a contamination check on
+/proc/hit_zone_to_clothes_zone(zone)
+	switch(zone)
+		if("head")
+			return HEAD
+		if("chest")
+			return UPPER_TORSO
+		if("l_hand")
+			return HANDS
+		if("r_hand")
+			return HANDS
+		if("l_arm")
+			return ARMS
+		if("r_arm")
+			return ARMS
+		if("l_leg")
+			return LEGS
+		if("r_leg")
+			return LEGS
+		if("l_foot")
+			return FEET
+		if("r_foot")
+			return FEET
 
 /proc/above_neck(zone)
 	var/list/zones = list("head", "mouth", "eyes")
@@ -359,6 +379,17 @@
 
 	return returntext
 
+/proc/brain_gibberish(message, emp_damage)
+	if(copytext(message, 1, 2) == "*") // if the brain tries to emote, return an emote
+		return message
+
+	var/repl_char = pick("@","&","%","$","/")
+	var/regex/bad_char = regex("\[*]|#")
+	message = Gibberish(message, emp_damage)
+	message = bad_char.Replace(message, repl_char, 1, 2) // prevents the gibbered message from emoting
+
+	return message
+
 /proc/Gibberish_all(list/message_pieces, p, replace_rate)
 	for(var/datum/multilingual_say_piece/S in message_pieces)
 		S.message = Gibberish(S.message, p, replace_rate)
@@ -458,7 +489,7 @@
 			if(hud_used && hud_used.action_intent)
 				hud_used.action_intent.icon_state = "[a_intent]"
 
-		else if(isrobot(src) || islarva(src) || isanimal(src) || isAI(src))
+		else if(isrobot(src) || islarva(src) || isanimal_or_basicmob(src) || is_ai(src))
 			switch(input)
 				if(INTENT_HELP)
 					a_intent = INTENT_HELP
@@ -495,7 +526,7 @@
 	else
 		to_chat(src, "<span class='notice'>You are now trying to get up.</span>")
 
-	if(!do_mob(src, src, 1 SECONDS, extra_checks = list(CALLBACK(src, TYPE_PROC_REF(/mob/living, cannot_stand))), only_use_extra_checks = TRUE))
+	if(!do_mob(src, src, 1 SECONDS, extra_checks = list(CALLBACK(src, TYPE_PROC_REF(/mob/living, cannot_stand))), only_use_extra_checks = TRUE, hidden = TRUE))
 		return
 
 	if(resting)
@@ -508,7 +539,7 @@
 	var/obj/item/multitool/P
 	if(isrobot(user) || ishuman(user))
 		P = user.get_active_hand()
-	else if(isAI(user))
+	else if(is_ai(user))
 		var/mob/living/silicon/ai/AI=user
 		P = AI.aiMulti
 
@@ -523,7 +554,7 @@
 //Direct dead say used both by emote and say
 //It is somewhat messy. I don't know what to do.
 //I know you can't see the change, but I rewrote the name code. It is significantly less messy now
-/proc/say_dead_direct(message, mob/subject = null)
+/proc/say_dead_direct(message, mob/subject, raw_message)
 	var/name
 	var/keyname
 	if(subject && subject.client)
@@ -544,12 +575,14 @@
 	for(var/obj/item/radio/deadsay_radio_system as anything in GLOB.deadsay_radio_systems)
 		deadsay_radio_system.attempt_send_deadsay_message(subject, message)
 
+	var/should_show_runechat = (subject && raw_message && !subject.orbiting_uid)
+
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!isnewplayer(M) && M.stat == DEAD) || check_rights(R_ADMIN|R_MOD,0,M)) && M.get_preference(PREFTOGGLE_CHAT_DEAD))
+		if(M.client && ((!isnewplayer(M) && M.stat == DEAD) || check_rights(R_ADMIN|R_MOD,0,M) || istype(M, /mob/living/simple_animal/revenant)) && M.get_preference(PREFTOGGLE_CHAT_DEAD))
 			var/follow
 			var/lname
 			if(subject)
-				if(subject != M)
+				if(subject != M && M.stat == DEAD)
 					follow = "([ghost_follow_link(subject, ghost=M)]) "
 				if(M.stat != DEAD && check_rights(R_ADMIN|R_MOD,0,M))
 					follow = "([admin_jump_link(subject)]) "
@@ -568,11 +601,13 @@
 						lname = name
 				lname = "<span class='name'>[lname]</span> "
 			to_chat(M, "<span class='deadsay'>[lname][follow][message]</span>")
+			if(should_show_runechat && (M.client?.prefs.toggles2 & PREFTOGGLE_2_RUNECHAT) && M.see_invisible >= subject.invisibility)
+				M.create_chat_message(subject, raw_message, symbol = RUNECHAT_SYMBOL_DEAD)
 
 /proc/notify_ghosts(message, ghost_sound = null, enter_link = null, title = null, atom/source = null, image/alert_overlay = null, flashwindow = TRUE, action = NOTIFY_JUMP, role = null) //Easy notification of ghosts.
 	for(var/mob/O in GLOB.player_list)
 		if(O.client && HAS_TRAIT(O, TRAIT_RESPAWNABLE) && (!role || (role in O.client.prefs.be_special)))
-			to_chat(O, "<span class='ghostalert'>[message][(enter_link) ? " [enter_link]" : ""]</span>")
+			to_chat(O, "<span class='ghostalert'>[message][(enter_link) ? " [enter_link]" : ""]</span>", MESSAGE_TYPE_DEADCHAT)
 			if(ghost_sound)
 				SEND_SOUND(O, sound(ghost_sound))
 			if(flashwindow)
@@ -614,7 +649,7 @@
   */
 /mob/proc/ghost_can_reenter()
 	var/mob/dead/observer/ghost = get_ghost(TRUE)
-	if(ghost && !ghost.can_reenter_corpse)
+	if(ghost && !(ghost.ghost_flags & GHOST_CAN_REENTER))
 		return FALSE
 	return TRUE
 
@@ -680,11 +715,11 @@
 
 		for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
 			if(force)
-				newname = tgui_input_text(src, "Pick a new name.", "Name Change", oldname)
+				newname = tgui_input_text(src, "Выберите новое имя.", "Смена имени", oldname)
 			else
-				newname = tgui_input_text(src, "You are a [role]. Would you like to change your name to something else? (You have 3 minutes to select a new name.)", "Name Change", oldname, timeout = 3 MINUTES)
+				newname = tgui_input_text(src, "Вы - [role]. Хотели бы вы сменить своё имя? (У вас есть 3 минуты на выбор имени.)", "Смена имени", oldname, timeout = 3 MINUTES)
 			if(((world.time - time_passed) > 1800) && !force)
-				tgui_alert(src, "Unfortunately, more than 3 minutes have passed for selecting your name. If you are a robot, use the Namepick verb; otherwise, adminhelp.", "Name Change")
+				tgui_alert(src, "К сожалению, прошло более трёх минут для выбора имени. Если вы робот, используйте верб Namepick; в иных случаях, adminhelp.", "Смена имени")
 				return	//took too long
 			newname = reject_bad_name(newname,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
 

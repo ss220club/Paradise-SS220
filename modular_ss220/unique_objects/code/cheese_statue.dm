@@ -13,7 +13,7 @@
 	desc = "Cheese expertly crafted into a representation of our mighty lord and saviour."
 	icon_state = "cheesus1"
 
-/obj/structure/statue/cheese/cheesus/attackby(obj/item/W, mob/user, params)
+/obj/structure/statue/cheese/cheesus/item_interaction(mob/living/user, obj/item/W, list/modifiers)
 	switch(obj_integrity)
 		if(0 to 20)
 			icon_state = "cheesus4"
@@ -41,7 +41,8 @@ GLOBAL_LIST_INIT(cheese_recipes, list(
 	desc = "A stack of cheese that seems sturdier than regular cheese."
 	icon = 'modular_ss220/unique_objects/icons/organic.dmi'
 	icon_state = "sheet-cheese"
-	item_state = "sheet-cheese"
+	worn_icon_state = "sheet-cheese"
+	inhand_icon_state = "sheet-cheese"
 	singular_name = "reinforced cheese block"
 	sheettype = "cheese"
 	force = 5
@@ -63,10 +64,12 @@ GLOBAL_LIST_INIT(cheese_recipes, list(
 //////////////////////////////////////////
 //Reinforced cheese
 //////////////////////////////////////////
-/datum/recipe/oven/reinforcedcheese
-	reagents = list("sodiumchloride" = 10)
-	items = list(
-		/obj/item/food/sliceable/cheesewheel,
-		/obj/item/food/sliceable/cheesewheel
+/datum/cooking/recipe/reinforcedcheese
+	container_type = /obj/item/reagent_containers/cooking/oven
+	product_type = /obj/item/stack/sheet/cheese
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliceable/cheesewheel),
+		PCWJ_ADD_ITEM(/obj/item/food/sliceable/cheesewheel),
+		PCWJ_ADD_REAGENT("sodiumchloride", 10),
+		PCWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)
-	result = /obj/item/stack/sheet/cheese

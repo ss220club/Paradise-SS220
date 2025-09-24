@@ -12,8 +12,6 @@
 	var/deflection_chance = 0
 	/// Can it reflect projectiles in a random direction?
 	var/reroute_deflection = FALSE
-	///Chance to block melee attacks using items while on throw mode.
-	var/block_chance = 0
 	var/help_verb = null
 	/// Set to TRUE to prevent users of this style from using guns (sleeping carp, highlander). They can still pick them up, but not fire them.
 	var/no_guns = FALSE
@@ -73,14 +71,19 @@
 		streak += intent_to_streak(step)
 		var/mob/living/carbon/human/owner = locateUID(owner_UID)
 		if(istype(owner) && !QDELETED(owner))
-			owner.hud_used.combo_display.update_icon(ALL, streak)
+			if(owner.hud_used)
+				owner.hud_used.combo_display.update_icon(ALL, streak)
 			return check_combos(step, user, target, could_start_new_combo)
 	return FALSE
 
-/datum/martial_art/proc/reset_combos()
+/datum/martial_art/proc/reset_combos(mob/living/carbon/human/H)
 	current_combos.Cut()
 	streak = ""
-	var/mob/living/carbon/human/owner = locateUID(owner_UID)
+	var/mob/living/carbon/human/owner
+	if(H)
+		owner = H
+	else
+		owner = locateUID(owner_UID)
 	if(istype(owner) && !QDELETED(owner))
 		owner.hud_used.combo_display.update_icon(ALL, streak)
 	for(var/combo_type in combos)
@@ -169,6 +172,8 @@
 	var/datum/martial_art/MA = src
 	if(!H.mind)
 		return
+	if(H.hud_used)
+		reset_combos()
 	deltimer(combo_timer)
 	H.mind.known_martial_arts.Remove(MA)
 	H.mind.martial_art = get_highest_weight(H)
@@ -239,7 +244,7 @@
 
 /datum/action/defensive_stance
 	name = "Defensive Stance - Ready yourself to be attacked, allowing you to parry incoming melee hits."
-	button_overlay_icon_state = "block"
+	button_icon_state = "block"
 
 /datum/action/defensive_stance/Trigger(left_click)
 	var/mob/living/carbon/human/H = owner
@@ -268,7 +273,7 @@
 /obj/item/storage/belt/champion/wrestling/equipped(mob/user, slot)
 	if(!ishuman(user))
 		return
-	if(slot == SLOT_HUD_BELT)
+	if(slot == ITEM_SLOT_BELT)
 		var/mob/living/carbon/human/H = user
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
 			to_chat(user, "<span class='warning'>In spite of the grandiosity of the belt, you don't feel like getting into any fights.</span>")
@@ -282,7 +287,7 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(H.get_item_by_slot(SLOT_HUD_BELT) == src)
+	if(H.get_item_by_slot(ITEM_SLOT_BELT) == src)
 		style.remove(H)
 		to_chat(user, "<span class='sciradio'>You no longer have an urge to flex your muscles.</span>")
 
@@ -293,7 +298,7 @@
 	icon_state ="scroll2"
 	var/used = FALSE
 
-/obj/item/plasma_fist_scroll/attack_self(mob/user as mob)
+/obj/item/plasma_fist_scroll/attack_self__legacy__attackchain(mob/user as mob)
 	if(!ishuman(user))
 		return
 
@@ -313,7 +318,7 @@
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "scroll2"
 
-/obj/item/sleeping_carp_scroll/attack_self(mob/living/carbon/human/user as mob)
+/obj/item/sleeping_carp_scroll/attack_self__legacy__attackchain(mob/living/carbon/human/user as mob)
 	if(!istype(user) || !user)
 		return
 	if(user.mind) //Prevents changelings and vampires from being able to learn it
@@ -331,13 +336,13 @@
 	new /obj/effect/decal/cleanable/ash(get_turf(src))
 	qdel(src)
 
-/obj/item/CQC_manual
+/obj/item/cqc_manual
 	name = "old manual"
 	desc = "A small, black manual. There are drawn instructions of tactical hand-to-hand combat."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "cqcmanual"
 
-/obj/item/CQC_manual/attack_self(mob/living/carbon/human/user)
+/obj/item/cqc_manual/attack_self__legacy__attackchain(mob/living/carbon/human/user)
 	if(!istype(user) || !user)
 		return
 	if(user.mind) //Prevents changelings and vampires from being able to learn it
@@ -369,9 +374,8 @@
 	righthand_file = 'icons/mob/inhands/staves_righthand.dmi'
 	force = 10
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = SLOT_FLAG_BACK
+	slot_flags = ITEM_SLOT_BACK
 	throwforce = 20
-	throw_speed = 2
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 
 /obj/item/bostaff/Initialize(mapload)
@@ -382,7 +386,7 @@
 /obj/item/bostaff/update_icon_state()
 	icon_state = "[base_icon_state]0"
 
-/obj/item/bostaff/attack(mob/target, mob/living/user)
+/obj/item/bostaff/attack__legacy__attackchain(mob/target, mob/living/user)
 	add_fingerprint(user)
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		to_chat(user, "<span class ='warning'>You club yourself over the head with [src].</span>")
@@ -445,7 +449,7 @@
 /atom/movable/screen/combo
 	icon_state = ""
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	screen_loc = ui_combo
+	screen_loc = UI_COMBO
 	layer = ABOVE_HUD_LAYER
 	var/streak
 

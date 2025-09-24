@@ -4,17 +4,18 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 /**********************Jaunter**********************/
 /obj/item/wormhole_jaunter
 	name = "wormhole jaunter"
-	desc = "A single use device harnessing outdated wormhole technology, Nanotrasen has since turned its eyes to bluespace for more accurate teleportation. The wormholes it creates are unpleasant to travel through, to say the least.\nThanks to modifications provided by the Free Golems, this jaunter can be worn on the belt to provide protection from chasms."
+	desc = "A single use device harnessing outdated wormhole technology, Nanotrasen has since turned its eyes to bluespace for more accurate teleportation. \
+		The wormholes it creates are unpleasant to travel through, to say the least. If attached to your belt, it'll automatically activate should you fall into a chasm."
 	icon_state = "Jaunter"
-	item_state = "electronic"
-	throwforce = 0
+	worn_icon_state = "electronic"
+	inhand_icon_state = "electronic"
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = "bluespace=2"
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 
-/obj/item/wormhole_jaunter/attack_self(mob/user)
+/obj/item/wormhole_jaunter/attack_self__legacy__attackchain(mob/user)
 	user.visible_message("<span class='notice'>[user.name] activates the [name]!</span>")
 	activate(user, TRUE)
 
@@ -55,7 +56,7 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 	qdel(src)
 
 /obj/item/wormhole_jaunter/proc/chasm_react(mob/user)
-	if(user.get_item_by_slot(SLOT_HUD_BELT) == src)
+	if(user.get_item_by_slot(ITEM_SLOT_BELT) == src)
 		to_chat(user, "Your [name] activates, saving you from the chasm!</span>")
 		activate(user, FALSE)
 	else
@@ -75,7 +76,6 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "bhole3"
 	desc = "A stable hole in the universe made by a wormhole jaunter. Turbulent doesn't even begin to describe how rough passage through one of these is, but at least it will always get you somewhere near a beacon."
-	failchance = 0
 
 /obj/effect/portal/jaunt_tunnel/can_teleport(atom/movable/M)
 	if(!emagged && ismegafauna(M))
@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 	icon = 'icons/obj/lighting.dmi'
 	desc = "A single-use extraction flare that will let you create a portal to any beacon on the station. You must choose the destination beforehand, else it will target a random beacon. The portal is generated 5 seconds after activation, and has 1 use."
 	icon_state = "flare-contractor"
-	item_state = "flare"
+	inhand_icon_state = "flare"
 	var/destination
 
 /obj/item/wormhole_jaunter/contractor/examine(mob/user)
@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 		return
 	destination = L[desc]
 
-/obj/item/wormhole_jaunter/contractor/attack_self(mob/user) // message is later down
+/obj/item/wormhole_jaunter/contractor/attack_self__legacy__attackchain(mob/user) // message is later down
 	activate(user, TRUE)
 
 /obj/item/wormhole_jaunter/contractor/activate(mob/user)
@@ -197,7 +197,7 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 	thrower = null
 	return ..()
 
-/obj/item/grenade/jaunter_grenade/attack_self(mob/user)
+/obj/item/grenade/jaunter_grenade/attack_self__legacy__attackchain(mob/user)
 	. = ..()
 	thrower = user
 
@@ -241,7 +241,6 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 	name = "wormhole weaver"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "wormhole_weaver"
-	item_state = "electronic"
 	desc = "This peculiar device is a prototype from a discontinued project. It was designed as an alternative to jaunters, offering more precise teleportation. However, as a prototype, it drains its entire battery with a single wormhole and can only target the beacons included in the kit."
 	/// Where are we teleporting to?
 	var/destination
@@ -261,7 +260,7 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 	/// The turf where we activated the wormwhole.
 	var/wormhole_loc
 
-/obj/item/wormhole_jaunter/wormhole_weaver/attack_self(mob/user)
+/obj/item/wormhole_jaunter/wormhole_weaver/attack_self__legacy__attackchain(mob/user)
 	activate(user, TRUE)
 
 /obj/item/wormhole_jaunter/wormhole_weaver/emp_act(severity)
@@ -359,7 +358,9 @@ GLOBAL_LIST_EMPTY(wormhole_effect)
 	inactive = TRUE
 	menu_open = FALSE
 
-	sleep(5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(post_activate)), 5 SECONDS)
+
+/obj/item/wormhole_jaunter/wormhole_weaver/proc/post_activate()
 	if(emp_inflicted)
 		return
 

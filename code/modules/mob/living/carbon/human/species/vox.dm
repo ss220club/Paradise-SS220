@@ -10,10 +10,10 @@
 	speech_chance = 20
 	unarmed_type = /datum/unarmed_attack/claws	//I dont think it will hurt to give vox claws too.
 
-	blurb = "The Vox are remnants of an ancient race, that originate from arkships. \
-	These bioengineered, reptilian, beaked, and quilled beings have a physiological caste system and follow 'The Inviolate' tenets.<br/><br/> \
-	Breathing pure nitrogen, they need specialized masks and tanks for survival outside their arkships. \
-	Their insular nature limits their involvement in broader galactic affairs, maintaining a distinct, yet isolated presence away from other species."
+	blurb = "Воксы - это остатки древней расы, которые берут своё начало от огромных космических кораблей, именуемых ковчегами. \
+	Эти биоинженерные, рептилоидные, клюворылые и перьевые существа имеют физиологическую кастовую систему и следуют принципам \"Незыблемости\".<br/><br/> \
+	Дышащие чистым азотом, они нуждаются в специальных масках и баллонах для выживания вне своих кораблей. \
+	Их замкнутый характер ограничивает их участие в более широких галактических делах, они сохраняют отчетливое, но изолированное присутствие вдали от других видов."
 
 	breathid = "n2"
 
@@ -72,14 +72,16 @@
 
 	speciesbox = /obj/item/storage/box/survival_vox
 
+	plushie_type = /obj/item/toy/plushie/voxplushie
+
 /datum/species/vox/handle_death(gibbed, mob/living/carbon/human/H)
 	H.stop_tail_wagging()
 
 /datum/species/vox/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	if(!H.mind || !H.mind.assigned_role || H.mind.assigned_role != "Clown" && H.mind.assigned_role != "Mime")
-		H.unEquip(H.wear_mask)
+		H.drop_item_to_ground(H.wear_mask)
 
-	H.equip_or_collect(new /obj/item/clothing/mask/breath/vox/respirator(H), SLOT_HUD_WEAR_MASK)
+	H.equip_or_collect(new /obj/item/clothing/mask/breath/vox/respirator(H), ITEM_SLOT_MASK)
 	var/tank_pref = H.client && H.client.prefs ? H.client.prefs.active_character.speciesprefs : null
 	var/obj/item/tank/internal_tank
 	if(tank_pref)//Diseasel, here you go
@@ -88,8 +90,8 @@
 		internal_tank = new /obj/item/tank/internals/emergency_oxygen/double/vox(H)
 	if(!H.equip_to_appropriate_slot(internal_tank))
 		if(!H.put_in_any_hand_if_possible(internal_tank))
-			H.unEquip(H.l_hand)
-			H.equip_or_collect(internal_tank, SLOT_HUD_LEFT_HAND)
+			H.drop_item_to_ground(H.l_hand)
+			H.equip_or_collect(internal_tank, ITEM_SLOT_LEFT_HAND)
 			to_chat(H, "<span class='boldannounceooc'>Could not find an empty slot for internals! Please report this as a bug</span>")
 	H.internal = internal_tank
 	to_chat(H, "<span class='notice'>You are now running on nitrogen internals from [internal_tank]. Your species finds oxygen toxic, so you must breathe nitrogen only.</span>")
@@ -138,3 +140,6 @@
 		return FALSE //Handling reagent removal on our own.
 
 	return ..()
+
+/datum/species/vox/do_compressor_grind(mob/living/carbon/human/H)
+	new /obj/item/food/fried_vox(H.loc)

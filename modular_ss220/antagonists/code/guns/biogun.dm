@@ -5,7 +5,7 @@
 	lefthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_righthand.dmi'
 	icon_state = "biogun"
-	item_state = "spike_long"
+	inhand_icon_state = "spike_long"
 	var/inhand_charge_sections = 3
 	w_class = WEIGHT_CLASS_HUGE
 	max_capacity = 3
@@ -20,7 +20,7 @@
 		is_vox_private = TRUE
 		to_chat(user, span_notice("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
 
-/obj/item/gun/throw/biogun/afterattack(atom/target, mob/living/user, flag, params)
+/obj/item/gun/throw/biogun/afterattack__legacy__attackchain(atom/target, mob/living/user, flag, params)
 	if(is_vox_private && !isvox(user))
 		if(prob(20))
 			to_chat(user, span_notice("Оружие отказывается с вами работать и не активируется."))
@@ -39,8 +39,7 @@
 	. = ..()
 	var/num = length(loaded_projectiles) + (to_launch ? 1 : 0)
 	var/inhand_ratio = CEILING((num / max_capacity) * inhand_charge_sections, 1)
-	var/new_item_state = "[initial(item_state)][inhand_ratio]"
-	item_state = new_item_state
+	inhand_icon_state = "[initial(inhand_icon_state)][inhand_ratio]"
 
 /obj/item/gun/throw/biogun/update_overlays()
 	. = ..()
@@ -74,7 +73,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 
-/mob/living/simple_animal/hostile/viscerator/vox/Process_Spacemove(movement_dir)
+/mob/living/simple_animal/hostile/viscerator/vox/Process_Spacemove(movement_dir, continuous_move = FALSE)
 	return TRUE
 
 /mob/living/simple_animal/hostile/viscerator/vox/stamina
@@ -123,7 +122,7 @@
 	obj_damage = 0
 	melee_damage_lower = 5
 	melee_damage_upper = 10
-	armour_penetration_flat = 30
+	armor_penetration_flat = 30
 	attacktext = "кусает"
 
 /mob/living/simple_animal/hostile/viscerator/vox/kusaka/death(gibbed)
@@ -142,7 +141,7 @@
 	obj_damage = 50
 	melee_damage_lower = 10
 	melee_damage_upper = 20
-	armour_penetration_flat = 20
+	armor_penetration_flat = 20
 	attacktext = "таранит"
 	mob_size = MOB_SIZE_HUMAN
 
@@ -159,7 +158,7 @@
 	melee_damage_type = TOX
 	melee_damage_lower = 5
 	melee_damage_upper = 15
-	armour_penetration_flat = 80
+	armor_penetration_flat = 80
 	attacktext = "вонзается"
 
 /mob/living/simple_animal/hostile/viscerator/vox/tox/death(gibbed)

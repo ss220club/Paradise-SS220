@@ -24,7 +24,6 @@
 	icon_state= "bolter"
 	damage = 50
 	alwayslog = TRUE
-	flag = "bullet"
 
 /obj/item/projectile/bullet/gyro/on_hit(atom/target, blocked = 0)
 	..()
@@ -36,8 +35,6 @@
 	desc = "USE A WEEL GUN."
 	icon_state= "bolter"
 	alwayslog = TRUE
-	damage = 60
-	flag = "bullet"
 
 /obj/item/projectile/bullet/a40mm/on_hit(atom/target, blocked = 0)
 	..()
@@ -107,13 +104,9 @@
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "small"
 	damage = 0
-	damage_type = BRUTE
 	nodamage = 1
-	flag = "bullet"
 
-/obj/item/projectile/meteor/Bump(atom/A, yes)
-	if(yes)
-		return
+/obj/item/projectile/meteor/Bump(atom/A)
 	if(A == firer)
 		loc = A.loc
 		return
@@ -145,20 +138,16 @@
 /obj/item/projectile/energy/floramut
 	name = "alpha somatoray"
 	icon_state = "energy"
-	damage = 0
 	damage_type = TOX
 	nodamage = TRUE
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/green_laser
-	flag = "energy"
 
 /obj/item/projectile/energy/florayield
 	name = "beta somatoray"
 	icon_state = "energy2"
-	damage = 0
 	damage_type = TOX
 	nodamage = TRUE
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/green_laser
-	flag = "energy"
 
 /obj/item/projectile/energy/mindflayer
 	name = "flayer ray"
@@ -183,7 +172,7 @@
 	qdel(src)
 
 /obj/item/projectile/beam/wormhole
-	name = "bluespace beam"
+	name = "wormhole beam"
 	icon_state = "spark"
 	hitsound = "sparks"
 	damage = 0
@@ -192,7 +181,7 @@
 	nodamage = TRUE
 
 /obj/item/projectile/beam/wormhole/orange
-	name = "orange bluespace beam"
+	name = "orange wormhole beam"
 	color = "#FF6600"
 
 /obj/item/projectile/beam/wormhole/New(obj/item/ammo_casing/energy/wormhole/casing)
@@ -217,7 +206,7 @@
 
 /obj/item/projectile/bullet/frag12/on_hit(atom/target, blocked = 0)
 	..()
-	explosion(target, -1, 0, 1)
+	explosion(target, -1, 0, 1, cause = "frag 12 fired by [key_name(firer)]")
 	return TRUE
 
 /obj/item/projectile/bullet/confetti
@@ -236,7 +225,6 @@
 /obj/item/projectile/plasma
 	name = "plasma blast"
 	icon_state = "plasmacutter"
-	damage_type = BRUTE
 	damage = 5
 	range = 3
 	dismemberment = 20
@@ -247,7 +235,6 @@
 	impact_type = /obj/effect/projectile/impact/plasma_cutter
 	impact_effect_type = null
 	hitscan_light_intensity = 3
-	hitscan_light_range = 0.75
 	hitscan_light_color_override = LIGHT_COLOR_CYAN
 	muzzle_flash_intensity = 6
 	muzzle_flash_range = 2
@@ -287,7 +274,6 @@
 /obj/item/projectile/energy/teleport
 	name = "teleportation burst"
 	icon_state = "bluespace"
-	damage = 0
 	nodamage = 1
 	alwayslog = TRUE
 	var/obj/item/beacon/teleport_target
@@ -305,6 +291,21 @@
 		else
 			do_teleport(target, target, 15) //Otherwise it just warps you off somewhere.
 	add_attack_logs(firer, target, "Shot with a [type] [teleport_target ? "(Destination: [teleport_target])" : ""]")
+	return ..()
+
+/obj/item/projectile/energy/demonic_grappler
+	name = "demonic grappler"
+	icon_state = "bluespace"
+	nodamage = 1
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+
+/obj/item/projectile/energy/demonic_grappler/on_hit(atom/target, blocked = 0)
+	if(isliving(target))
+		var/turf/source_turf = get_turf(firer)
+		do_teleport(target, source_turf)
+	else
+		var/turf/miss_turf = get_step(target, get_dir(target, firer))
+		do_teleport(firer, miss_turf)
 	return ..()
 
 /obj/item/projectile/snowball
@@ -326,7 +327,6 @@
 	icon_state = "ornament-1"
 	hitsound = 'sound/effects/glasshit.ogg'
 	damage = 7
-	damage_type = BRUTE
 
 /obj/item/projectile/ornament/New()
 	icon_state = pick("ornament-1", "ornament-2")

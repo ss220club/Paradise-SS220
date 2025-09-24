@@ -7,7 +7,6 @@
 	var/obj/item/electropack/part2 = null
 	var/status = FALSE
 	w_class = WEIGHT_CLASS_HUGE
-	flags = CONDUCT
 
 /obj/item/assembly/shock_kit/Destroy()
 	QDEL_NULL(part1)
@@ -35,9 +34,9 @@
 	add_fingerprint(user)
 	return TRUE
 
-/obj/item/assembly/shock_kit/attack_self(mob/user as mob)
-	part1.attack_self(user, status)
-	part2.attack_self(user, status)
+/obj/item/assembly/shock_kit/attack_self__legacy__attackchain(mob/user as mob)
+	part1.attack_self__legacy__attackchain(user, status)
+	part2.attack_self__legacy__attackchain(user, status)
 	add_fingerprint(user)
 	return
 

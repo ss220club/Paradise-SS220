@@ -5,9 +5,8 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "camera_bug"
 	w_class	= WEIGHT_CLASS_TINY
-	item_state = "camera_bug"
-	throw_speed	= 4
-	throw_range	= 20
+	throw_speed = 4
+	throw_range = 20
 	origin_tech = "syndicate=1;engineering=3"
 	/// Integrated camera console to serve UI data
 	var/obj/machinery/computer/security/camera_bug/integrated_console
@@ -31,7 +30,7 @@
 	QDEL_NULL(integrated_console)
 	return ..()
 
-/obj/item/camera_bug/attack_self(mob/user as mob)
+/obj/item/camera_bug/attack_self__legacy__attackchain(mob/user as mob)
 	ui_interact(user)
 
 /obj/item/camera_bug/ui_state(mob/user)
@@ -114,7 +113,6 @@
 
 /obj/item/paper/camera_bug
 	name = "\improper Camera Bug Guide"
-	icon_state = "paper"
 	info = {"<b>Instructions on your new invasive camera utility</b><br>
 	<br>
 	This camera bug can access all default cameras on the station, along with the hidden cameras provided in this kit.<br>

@@ -18,8 +18,11 @@
 	friendly = "pinches"
 	ventcrawler = VENTCRAWLER_ALWAYS
 	can_hide = TRUE
-	can_collar = TRUE
 	gold_core_spawnable = FRIENDLY_SPAWN
+
+/mob/living/simple_animal/crab/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/wears_collar)
 
 /mob/living/simple_animal/crab/handle_automated_movement()
 	//CRAB movement
@@ -36,13 +39,10 @@
 	return TRUE
 
 //COFFEE! SQUEEEEEEEEE!
-/mob/living/simple_animal/crab/Coffee
+/mob/living/simple_animal/crab/coffee
 	name = "Coffee"
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "stomps"
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE
 
@@ -55,5 +55,4 @@
 	icon_dead = "evilcrab_dead"
 	response_help = "pokes"
 	response_disarm = "shoves"
-	response_harm = "stomps"
 	gold_core_spawnable = HOSTILE_SPAWN
