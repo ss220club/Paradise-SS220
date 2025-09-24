@@ -37,6 +37,12 @@
 							/obj/item/stock_parts/manipulator = 1,
 							/obj/item/stack/sheet/glass = 1)
 
+/obj/machinery/autolathe/mini/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Minilathe220", name)
+		ui.open()
+
 // SERVICE
 /obj/machinery/autolathe/mini/service
 	name = "service minilathe"
