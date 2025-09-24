@@ -25,15 +25,6 @@
 
 	add_overlay(departament_overlay)
 
-/obj/machinery/autolathe/mini/item_interaction(mob/living/user,  obj/item/used)
-	. = ..()
-	if(!.)
-		return
-
-	if(istype(used, /obj/item/disk))
-		to_chat(user, span_warning("[src] can't load designs from disks!"))
-		return ITEM_INTERACT_COMPLETE
-
 /obj/item/circuitboard/minilathe
 	board_name = "Minilathe"
 	icon_state = "engineering"
