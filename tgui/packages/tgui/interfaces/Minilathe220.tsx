@@ -1,5 +1,5 @@
 import { filter, sortBy } from 'common/collections';
-import { Box, Button, ImageButton, Input, ProgressBar, Section, Stack, Tabs } from 'tgui-core/components';
+import { Box, Button, ImageButton, ProgressBar, Section, Stack, Tabs } from 'tgui-core/components';
 import { flow } from 'tgui-core/fp';
 import { BooleanLike } from 'tgui-core/react';
 import { toTitleCase } from 'tgui-core/string';
@@ -63,7 +63,7 @@ const roundMaterials = (amount, multiplier) => {
 };
 
 export const Minilathe220 = () => {
-  const [category, setCategory] = useSharedState('category', 'Tools');
+  const [category, setCategory] = useSharedState('category', 'Materials');
 
   return (
     <Window width={800} height={550}>
@@ -119,11 +119,7 @@ const Recipes = (props) => {
   const { category } = props;
 
   const recipesToShow = flow(
-    (recipes: Recipe[]) =>
-      filter(
-        recipes,
-        (recipe) => recipe.category.includes(category)
-      ),
+    (recipes: Recipe[]) => filter(recipes, (recipe) => recipe.category.includes(category)),
     (recipes: Recipe[]) => sortBy(recipes, (recipe) => recipe.name.toLowerCase())
   )(recipes);
 
