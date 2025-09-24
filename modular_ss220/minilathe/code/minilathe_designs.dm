@@ -454,12 +454,12 @@
 	category += list("Security Misc.")
 	return ..()
 
-/datum/design/sample_kit
+/datum/design/sample_kit/New()
 	. = ..()
 	category += list("Security Misc.")
 	return ..()
 
-/datum/design/knuckleduster
+/datum/design/knuckleduster/New()
 	. = ..()
 	category += list("Security Misc.")
 	return ..()
