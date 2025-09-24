@@ -2648,17 +2648,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_y = 35
 	},
-/obj/item/assembly/timer{
-	pixel_y = 4;
-	pixel_x = 6
-	},
-/obj/item/flash{
-	pixel_y = 6;
-	pixel_x = -4
-	},
-/obj/item/assembly/timer{
-	pixel_x = 6
-	},
+/obj/machinery/autolathe/mini/departamental/security,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkredcorners"
@@ -3547,6 +3537,20 @@
 	dir = 4
 	},
 /obj/item/radio/intercom/directional/south,
+/obj/structure/table/reinforced,
+/obj/item/flash{
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredcorners"
 	},
@@ -19113,8 +19117,8 @@
 /turf/simulated/wall/r_wall,
 /area/station/engineering/supermatter_room)
 "bsX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
@@ -22603,10 +22607,7 @@
 /area/station/maintenance/asmaint2)
 "bJh" = (
 /obj/structure/table,
-/obj/item/defibrillator/loaded,
-/obj/item/defibrillator/loaded{
-	pixel_y = 8
-	},
+/obj/machinery/autolathe/mini/departamental/medical,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
@@ -28294,20 +28295,29 @@
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/medical/psych)
 "chK" = (
-/obj/structure/table,
+/obj/structure/shelf/medbay,
+/obj/effect/turf_decal/delivery/blue,
 /obj/item/handheld_defibrillator{
-	pixel_x = -6;
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/defibrillator/loaded{
+	pixel_y = -6
+	},
+/obj/item/handheld_defibrillator{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/obj/item/handheld_defibrillator{
+	pixel_x = -8;
 	pixel_y = 8
 	},
+/obj/item/defibrillator/loaded{
+	pixel_y = 9
+	},
 /obj/item/handheld_defibrillator{
-	pixel_x = 6;
+	pixel_x = 8;
 	pixel_y = 8
-	},
-/obj/item/handheld_defibrillator{
-	pixel_x = -6
-	},
-/obj/item/handheld_defibrillator{
-	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
@@ -39658,10 +39668,10 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
 "dab" = (
-/obj/machinery/autolathe,
 /obj/machinery/light/directional/east,
 /obj/item/radio/intercom/directional/east,
-/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/autolathe/mini/departamental/engineering,
+/obj/structure/table,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowfull"
 	},
@@ -76319,18 +76329,9 @@
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "nVq" = (
-/obj/structure/shelf/service,
-/obj/item/cultivator,
-/obj/item/shovel/spade,
-/obj/item/hatchet,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
-	},
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/light/small/directional/east,
-/obj/item/reagent_containers/glass/bucket,
-/obj/item/reagent_containers/glass/bucket,
-/obj/effect/turf_decal/delivery,
+/obj/structure/sink/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
 	},
@@ -83437,8 +83438,9 @@
 	},
 /area/station/science/xenobiology)
 "qgF" = (
-/obj/structure/sink/directional/east,
 /obj/machinery/alarm/directional/east,
+/obj/structure/table,
+/obj/machinery/autolathe/mini/departamental/service,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -84239,20 +84241,15 @@
 /area/station/command/meeting_room)
 "qsX" = (
 /obj/structure/table,
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = 5;
-	pixel_y = 10
-	},
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = -5
-	},
 /obj/machinery/light/directional/south,
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = 5
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 5;
+	pixel_y = 2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -87209,8 +87206,8 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -93276,10 +93273,22 @@
 "tsO" = (
 /obj/structure/table,
 /obj/item/soap/deluxe/laundry{
-	pixel_y = 4
+	pixel_y = 10
 	},
 /obj/item/soap/deluxe/laundry{
-	pixel_y = 8
+	pixel_y = 15
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 2
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -10
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
@@ -97584,22 +97593,20 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/table,
 /obj/machinery/camera{
 	c_tag = "Hydroponics Pasture";
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
+/obj/structure/shelf/service,
+/obj/effect/turf_decal/delivery,
+/obj/item/stack/sheet/glass{
+	amount = 10
 	},
-/obj/item/eftpos{
-	pixel_x = 6;
-	pixel_y = 4
-	},
-/obj/item/eftpos{
-	pixel_x = -6;
-	pixel_y = 4
-	},
+/obj/item/stack/sheet/metal/ten,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/cultivator,
+/obj/item/shovel/spade,
+/obj/item/hatchet,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},

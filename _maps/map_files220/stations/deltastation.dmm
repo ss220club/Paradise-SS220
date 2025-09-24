@@ -124,9 +124,9 @@
 /turf/space,
 /area/station/engineering/solar/fore_starboard)
 "acn" = (
-/obj/machinery/autolathe,
-/obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/economy/vending/wallmed/directional/east,
+/obj/machinery/autolathe/mini/departamental/engineering,
+/obj/structure/table,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "yellow"
@@ -7734,6 +7734,22 @@
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
+"aIn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "asteroid"
+	},
+/area/station/service/hydroponics)
 "aIq" = (
 /obj/machinery/atmospherics/unary/portables_connector,
 /obj/machinery/atmospherics/portable/canister/air{
@@ -11295,7 +11311,15 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood/cherry,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "asteroid"
+	},
 /area/station/service/hydroponics)
 "aYZ" = (
 /turf/simulated/wall,
@@ -14161,10 +14185,11 @@
 /area/station/service/bar/atrium)
 "blp" = (
 /obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
 /obj/machinery/light/directional/south,
 /obj/machinery/light_switch/south,
+/obj/item/lightreplacer{
+	pixel_y = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
@@ -16523,6 +16548,13 @@
 	icon_state = "darkyellowfull"
 	},
 /area/station/command/vault)
+"bwz" = (
+/obj/structure/table,
+/obj/machinery/autolathe/mini/departamental/service,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/service/hydroponics)
 "bwA" = (
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
@@ -19167,6 +19199,12 @@
 /area/station/engineering/hallway)
 "bGE" = (
 /obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_y = 3
+	},
+/obj/item/pen{
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -31365,15 +31403,16 @@
 /area/station/engineering/hardsuitstorage)
 "cAO" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_y = 10;
-	pixel_x = -8
-	},
-/obj/item/book/manual/wiki/security_space_law{
-	pixel_x = 6;
-	pixel_y = 4
-	},
 /obj/item/radio/intercom/directional/north,
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 4;
+	pixel_y = 3
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -31946,6 +31985,22 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/central/nw)
+"cDe" = (
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/simulated/floor/plasteel,
+/area/station/security/processing)
 "cDh" = (
 /obj/structure/chair/comfy/teal,
 /obj/effect/landmark/start/doctor,
@@ -34169,8 +34224,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics)
 "cNT" = (
-/obj/item/kirbyplants/large,
 /obj/machinery/light_switch/north,
+/obj/machinery/autolathe/mini/departamental/medical,
+/obj/structure/table,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "whiteblue"
@@ -36533,6 +36589,9 @@
 /area/station/medical/reception)
 "cXg" = (
 /obj/structure/disposalpipe/segment/corner{
+	dir = 4
+	},
+/obj/structure/chair/comfy/teal{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -41305,8 +41364,13 @@
 /obj/machinery/light/directional/east,
 /obj/structure/table,
 /obj/machinery/light_switch/east,
-/obj/item/lightreplacer{
-	pixel_y = 6
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -48174,7 +48238,9 @@
 	dir = 1
 	},
 /obj/item/cultivator,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
 /area/station/service/hydroponics)
 "eqH" = (
 /obj/effect/turf_decal/stripes/line{
@@ -49515,7 +49581,16 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/hologram/holopad,
-/turf/simulated/floor/wood/cherry,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "asteroid"
+	},
 /area/station/service/hydroponics)
 "eLI" = (
 /obj/structure/cable{
@@ -59205,6 +59280,36 @@
 	icon_state = "yellow"
 	},
 /area/station/maintenance/medmaint)
+"hQW" = (
+/obj/structure/shelf/engineering,
+/obj/item/clothing/suit/storage/hazardvest{
+	pixel_y = -4;
+	pixel_x = -8
+	},
+/obj/item/clothing/suit/storage/hazardvest{
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/storage/hazardvest{
+	pixel_y = -4;
+	pixel_x = 8
+	},
+/obj/item/clothing/mask/gas{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/clothing/mask/gas{
+	pixel_y = 8
+	},
+/obj/item/clothing/mask/gas{
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/obj/effect/turf_decal/delivery,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/station/engineering/hallway)
 "hRa" = (
 /obj/structure/chair{
 	dir = 4
@@ -60112,10 +60217,6 @@
 	},
 /turf/simulated/floor/engine/air,
 /area/station/engineering/atmos)
-"ihN" = (
-/obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass,
-/area/station/service/hydroponics)
 "ihR" = (
 /obj/machinery/hologram/holopad,
 /obj/structure/cable{
@@ -62340,7 +62441,9 @@
 	},
 /obj/item/shovel/spade,
 /obj/item/hatchet,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
 /area/station/service/hydroponics)
 "iST" = (
 /turf/simulated/floor/plasteel{
@@ -70670,7 +70773,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/plating,
 /area/station/service/hydroponics)
 "lwj" = (
 /obj/machinery/disposal,
@@ -74629,6 +74732,21 @@
 /obj/effect/spawner/random/trash,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
+"mLO" = (
+/obj/structure/table,
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 3;
+	pixel_y = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/station/service/hydroponics)
 "mMc" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/light_switch/south,
@@ -78032,7 +78150,13 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/wood/cherry,
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/white/corner,
+/turf/simulated/floor/plasteel{
+	icon_state = "asteroid"
+	},
 /area/station/service/hydroponics)
 "nLy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -89200,7 +89324,13 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood/cherry,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "asteroid"
+	},
 /area/station/service/hydroponics)
 "rds" = (
 /obj/structure/closet/firecloset,
@@ -90318,6 +90448,10 @@
 /obj/machinery/recharger{
 	pixel_y = 2
 	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_y = 1;
+	pixel_x = -11
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -90943,19 +91077,9 @@
 /area/station/medical/medbay2)
 "rIx" = (
 /obj/structure/table/reinforced,
-/obj/item/taperecorder{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/obj/item/taperecorder{
-	pixel_y = 4
-	},
-/obj/item/taperecorder{
-	pixel_x = 8;
-	pixel_y = 4
-	},
 /obj/machinery/economy/vending/wallmed/directional/north,
 /obj/machinery/light/directional/north,
+/obj/machinery/autolathe/mini/departamental/security,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -93863,12 +93987,20 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/dormitory_maintenance)
 "sBm" = (
-/obj/structure/chair/comfy/teal,
 /obj/machinery/power/apc/directional/north,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/effect/landmark/start/doctor,
+/obj/structure/table,
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_y = 3;
+	pixel_x = 3
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "whiteblue"
@@ -95440,7 +95572,13 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood/cherry,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "asteroid"
+	},
 /area/station/service/hydroponics)
 "tbo" = (
 /obj/effect/turf_decal/stripes/line{
@@ -100971,7 +101109,9 @@
 "uQx" = (
 /obj/structure/beebox/unwrenched,
 /obj/machinery/light/directional/south,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
 /area/station/service/hydroponics)
 "uQP" = (
 /obj/structure/chair/sofa/right{
@@ -106712,30 +106852,6 @@
 	},
 /area/station/supply/expedition)
 "wNF" = (
-/obj/structure/shelf/engineering,
-/obj/item/clothing/suit/storage/hazardvest{
-	pixel_y = -4;
-	pixel_x = -8
-	},
-/obj/item/clothing/suit/storage/hazardvest{
-	pixel_y = -4
-	},
-/obj/item/clothing/suit/storage/hazardvest{
-	pixel_y = -4;
-	pixel_x = 8
-	},
-/obj/item/clothing/mask/gas{
-	pixel_y = 8;
-	pixel_x = -8
-	},
-/obj/item/clothing/mask/gas{
-	pixel_y = 8
-	},
-/obj/item/clothing/mask/gas{
-	pixel_y = 8;
-	pixel_x = 8
-	},
-/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
@@ -109444,7 +109560,15 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/wood/cherry,
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "asteroid"
+	},
 /area/station/service/hydroponics)
 "xDT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -133905,7 +134029,7 @@ mmE
 kur
 bKr
 ndD
-bKr
+hQW
 bGz
 bQk
 bSc
@@ -141330,8 +141454,8 @@ gSs
 mlS
 lfd
 aRm
-aYQ
-aYQ
+aIn
+aIn
 eLu
 uQx
 aYZ
@@ -142102,9 +142226,9 @@ aNe
 aor
 uIo
 lvV
-ihN
-nDZ
 kKj
+mLO
+bwz
 tvx
 jxY
 bdx
@@ -159078,7 +159202,7 @@ qcZ
 nxy
 yhT
 cDq
-ifS
+cDe
 sFp
 nfX
 nfX

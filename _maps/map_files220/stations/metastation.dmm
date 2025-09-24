@@ -23016,13 +23016,6 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/cmo)
-"coF" = (
-/obj/structure/chair/wheelchair,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whiteblue"
-	},
-/area/station/medical/storage)
 "coG" = (
 /turf/simulated/wall,
 /area/station/maintenance/aft2)
@@ -24520,8 +24513,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/engimaint)
 "cvS" = (
-/obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/autolathe/mini/departamental/medical,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -32432,6 +32426,23 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_y = 10;
+	pixel_x = -6
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_y = 10;
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_y = 2;
+	pixel_x = -6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -34760,6 +34771,13 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/structure/table/reinforced,
+/obj/item/soap/deluxe/laundry{
+	pixel_y = 13
+	},
+/obj/item/soap/deluxe/laundry{
+	pixel_y = 2
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -37696,9 +37714,7 @@
 /area/station/engineering/control)
 "fth" = (
 /obj/structure/table/reinforced,
-/obj/machinery/kitchen_machine/microwave{
-	pixel_y = 6
-	},
+/obj/machinery/autolathe/mini/departamental/engineering,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkyellow"
@@ -58651,6 +58667,16 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/structure/table,
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 3;
+	pixel_y = -2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgreenfull"
 	},
@@ -67351,6 +67377,19 @@
 	icon_state = "brown"
 	},
 /area/station/supply/office)
+"qkg" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -4
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/station/medical/storage)
 "qkC" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -69877,6 +69916,7 @@
 /area/station/supply/qm)
 "rif" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whitebluecorner"
@@ -70395,6 +70435,16 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/structure/table,
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 2;
+	pixel_y = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "red"
@@ -70642,7 +70692,15 @@
 /area/station/maintenance/port)
 "rxV" = (
 /obj/structure/table/reinforced,
-/obj/effect/spawner/random/trash,
+/obj/item/stack/sheet/metal/ten{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/glass{
+	amount = 10;
+	pixel_x = 3;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow";
 	dir = 8
@@ -85486,6 +85544,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/autolathe/mini/departamental/security,
+/obj/structure/table,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -88049,6 +88109,8 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/table,
+/obj/machinery/autolathe/mini/departamental/service,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgreenfull"
 	},
@@ -107605,9 +107667,9 @@ crG
 nuC
 cqZ
 iue
-crE
+qkg
 esw
-xSh
+crE
 xSh
 xSh
 cCK
@@ -107864,7 +107926,7 @@ ctY
 lLO
 mUf
 jtB
-coF
+mUf
 czv
 laE
 moE
