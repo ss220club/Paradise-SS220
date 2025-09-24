@@ -24,7 +24,7 @@
 
 	add_overlay(departament_overlay)
 
-/obj/machinery/autolathe/mini/item_interaction(mob/living/user)
+/obj/machinery/autolathe/mini/item_interaction(mob/living/user,  obj/item/used)
 	. = ..()
 	if(!.)
 		return
