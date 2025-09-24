@@ -7480,9 +7480,6 @@
 "aUK" = (
 /obj/structure/cable,
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plating,
 /area/station/engineering/smes)
 "aUL" = (
@@ -8035,15 +8032,22 @@
 /area/station/hallway/primary/fore/east)
 "aXx" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/catwalk,
 /area/station/engineering/smes)
 "aXy" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
 "aXz" = (
@@ -8058,12 +8062,20 @@
 /area/station/engineering/atmos)
 "aXF" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/catwalk,
 /area/station/engineering/smes)
@@ -8138,6 +8150,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
 "aXR" = (
@@ -8186,20 +8201,11 @@
 	},
 /area/station/legal/courtroom/gallery)
 "aYD" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/station/engineering/smes)
 "aYE" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
 /obj/effect/landmark/start/engineer,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
@@ -8216,15 +8222,9 @@
 	},
 /area/station/security/permabrig)
 "aYG" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/cable/yellow{
-	icon_state = "1-4"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -8261,9 +8261,6 @@
 "aYQ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -8325,12 +8322,14 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
@@ -8401,9 +8400,11 @@
 /area/station/supply/qm)
 "aZI" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/catwalk,
 /area/station/engineering/smes)
@@ -8429,6 +8430,9 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -25364,6 +25368,17 @@
 /obj/structure/cable,
 /turf/simulated/floor/plating/airless,
 /area/station/engineering/solar/aft_starboard)
+"czW" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/engine_foyer)
 "czX" = (
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/engine,
@@ -60034,7 +60049,7 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	icon_state = "4-8"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
@@ -74793,13 +74808,8 @@
 	},
 /area/station/command/bridge)
 "tdz" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
@@ -75222,12 +75232,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
 "tmZ" = (
@@ -80188,12 +80196,9 @@
 /area/station/science/robotics)
 "vkG" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
+	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "yellow"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
 "vkJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -128555,7 +128560,7 @@ wQV
 aWn
 rGY
 aWm
-ccH
+jke
 tmI
 jQO
 bam
@@ -128808,9 +128813,9 @@ ccH
 ccH
 aPo
 ccH
-ccH
+vkG
 aQY
-ccH
+tdz
 aYS
 ccH
 xCJ
@@ -129065,11 +129070,11 @@ ccz
 aPp
 hgN
 aPp
-aPp
+czW
 aUR
 aPp
 eTX
-tdz
+ccz
 baw
 aPp
 bmh
@@ -129326,7 +129331,7 @@ jiK
 aVh
 htt
 aYW
-vkG
+ksf
 ksf
 bcq
 kOn
