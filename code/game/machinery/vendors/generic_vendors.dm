@@ -1119,7 +1119,7 @@
 	icon_lightmask = "tool"
 	icon_panel = "generic"
 	category = VENDOR_TYPE_SUPPLIES
-	armor = list(melee = 50, bullet = 20, laser = 20, energy = 20, bomb = 0, rad = 0, fire = 100, acid = 70)
+	armor = list(MELEE = 50, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 0, RAD = 0, FIRE = 100, ACID = 70)
 	resistance_flags = FIRE_PROOF
 	products = list(/obj/item/crowbar = 5,
 					/obj/item/screwdriver = 5,
@@ -1238,6 +1238,7 @@
 					/obj/item/storage/fancy/cigarettes/dromedaryco = 6,
 					/obj/item/storage/fancy/cigarettes/cigpack_random = 6,
 					/obj/item/storage/fancy/cigarettes/cigpack_our_brand = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_despojna = 6, // SS220 EDIT
 					/obj/item/storage/fancy/cigarettes/cigpack_robust = 6,
 					/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 					/obj/item/storage/fancy/cigarettes/cigpack_candy = 6,
@@ -1248,9 +1249,12 @@
 					/obj/item/storage/fancy/matches = 10,
 					/obj/item/lighter/random = 4,
 					/obj/item/lighter/zippo = 2,
-					/obj/item/storage/fancy/rollingpapers = 5)
+					/obj/item/storage/fancy/rollingpapers = 5,
+					/obj/item/food/grown/tobacco/pre_dried = 5,)
 
-	contraband = list(/obj/item/storage/fancy/cigarettes/cigpack_midori = 6)
+	contraband = list(/obj/item/storage/fancy/cigarettes/cigpack_midori = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_carcinoma = 6
+					)
 
 	prices = list(/obj/item/clothing/mask/cigarette/cigar = 100,
 				/obj/item/storage/fancy/cigarettes/cigpack_carp = 25,
@@ -1258,17 +1262,20 @@
 				/obj/item/storage/fancy/cigarettes/cigpack_random = 80,
 				/obj/item/storage/fancy/cigarettes/cigpack_midori = 60,
 				/obj/item/storage/fancy/cigarettes/cigpack_our_brand = 15,
+				/obj/item/storage/fancy/cigarettes/cigpack_despojna = 20, // SS220 EDIT
 				/obj/item/storage/fancy/cigarettes/cigpack_robust = 25,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 120,
 				/obj/item/storage/fancy/cigarettes/cigpack_candy = 25,
 				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 50,
 				/obj/item/storage/fancy/cigarettes/cigpack_solar_rays = 25,
 				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 35,
+				/obj/item/storage/fancy/cigarettes/cigpack_carcinoma = 70,
 				/obj/item/reagent_containers/patch/nicotine = 70,
 				/obj/item/storage/fancy/matches = 20,
 				/obj/item/lighter/random = 40,
 				/obj/item/lighter/zippo = 80,
 				/obj/item/storage/fancy/rollingpapers = 30,
+				/obj/item/food/grown/tobacco/pre_dried = 50,
 )
 
 	refill_canister = /obj/item/vending_refill/cigarette
@@ -1284,14 +1291,17 @@
 				/obj/item/storage/fancy/cigarettes/cigpack_random = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_midori = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_our_brand = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_despojna = 6, // SS220 EDIT
 				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_carcinoma = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_solar_rays = 6,
 				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 6,
 				/obj/item/reagent_containers/patch/nicotine = 10,
 				/obj/item/storage/fancy/matches = 10,
 				/obj/item/lighter/zippo = 6,
-				/obj/item/storage/fancy/rollingpapers = 5)
+				/obj/item/storage/fancy/rollingpapers = 5,
+				/obj/item/food/grown/tobacco/pre_dried = 5,)
 
 	// You'd better believe that NT branded cigs are contraband in the Syndicate's territory.
 	contraband = list(/obj/item/storage/fancy/cigarettes/cigpack_robust = 6,
@@ -1321,16 +1331,19 @@
 				/obj/item/storage/fancy/cigarettes/cigpack_random = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_midori = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_our_brand = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_despojna = 10, // SS220 EDIT
 				/obj/item/storage/fancy/cigarettes/cigpack_robust = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_candy = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_carcinoma = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_solar_rays = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 10,
 				/obj/item/reagent_containers/patch/nicotine = 20,
 				/obj/item/storage/fancy/matches = 10,
 				/obj/item/lighter/zippo = 10,
-				/obj/item/storage/fancy/rollingpapers = 10)
+				/obj/item/storage/fancy/rollingpapers = 10,
+				/obj/item/food/grown/tobacco/pre_dried = 10,)
 
 	contraband = list()
 	prices = list()

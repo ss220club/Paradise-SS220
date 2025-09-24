@@ -5,7 +5,7 @@
 	lefthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_righthand.dmi'
 	icon_state = "dartgun"
-	item_state = "dartgun"
+	inhand_icon_state = "dartgun"
 	var/cartridge_overlay = "dartgun_cartridge_overlay"
 	max_syringes = 5
 	var/list/valid_cartridge_types = list(

@@ -12,7 +12,7 @@ on:
 jobs:
   generate_maps:
     name: 'Generate NanoMaps'
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     steps:
       - id: create_token
         uses: actions/create-github-app-token@v2
@@ -23,7 +23,7 @@ jobs:
       - run: echo "GH_TOKEN=${{ steps.create_token.outputs.token }}" >> "$GITHUB_ENV"
 
       - name: 'Update Branch'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ steps.create_token.outputs.token }}
 

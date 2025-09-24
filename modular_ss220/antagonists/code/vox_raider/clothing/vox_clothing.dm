@@ -3,10 +3,11 @@
 	desc = "Рабочая одежда вокса."
 	icon_state = "vox-jumpsuit"
 	item_color = "vox-jumpsuit"
-	item_state = "syndicate-black"
+	worn_icon_state = "syndicate-black"
+	inhand_icon_state = "syndicate-black"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_under.dmi'
-	icon_override = 'modular_ss220/antagonists/icons/clothing/mob/vox/uniform.dmi'
+	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/uniform.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/uniform.dmi'
 		)

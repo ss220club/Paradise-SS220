@@ -13,7 +13,7 @@
 	desc = "Cheese expertly crafted into a representation of our mighty lord and saviour."
 	icon_state = "cheesus1"
 
-/obj/structure/statue/cheese/cheesus/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/obj/structure/statue/cheese/cheesus/item_interaction(mob/living/user, obj/item/W, list/modifiers)
 	switch(obj_integrity)
 		if(0 to 20)
 			icon_state = "cheesus4"
@@ -41,7 +41,8 @@ GLOBAL_LIST_INIT(cheese_recipes, list(
 	desc = "A stack of cheese that seems sturdier than regular cheese."
 	icon = 'modular_ss220/unique_objects/icons/organic.dmi'
 	icon_state = "sheet-cheese"
-	item_state = "sheet-cheese"
+	worn_icon_state = "sheet-cheese"
+	inhand_icon_state = "sheet-cheese"
 	singular_name = "reinforced cheese block"
 	sheettype = "cheese"
 	force = 5

@@ -27,12 +27,6 @@ SUBSYSTEM_DEF(ticker)
 	var/login_music
 	/// List of all minds in the game. Used for objective tracking
 	var/list/datum/mind/minds = list()
-	/// icon_state the chaplain has chosen for his bible
-	var/Bible_icon_state
-	/// item_state the chaplain has chosen for his bible
-	var/Bible_item_state
-	/// Name of the bible
-	var/Bible_name
 	/// Name of the bible deity
 	var/Bible_deity_name
 	/// Cult static info, used for things like sprites. Someone should refactor the sprites out of it someday and just use SEPERATE ICONS DEPNDING ON THE TYPE OF CULT... like a sane person
@@ -823,8 +817,12 @@ SUBSYSTEM_DEF(ticker)
 /// into the insanity of trying to record if the first xeno biohazard was defeated
 /// but the second xeno biohazard was nuked.
 /datum/controller/subsystem/ticker/proc/record_biohazard_results()
+	// SS220 EDIT START - Record biohazards active at DS call or still active now
+	var/list/deathsquad_biohazards_to_record = deathsquad_biohazards.Copy()
 	for(var/biohazard in SSevents.biohazards_this_round)
-		if(biohazard_active_threat(biohazard))
+		if((biohazard in deathsquad_biohazards_to_record) || biohazard_active_threat(biohazard))
+			deathsquad_biohazards_to_record -= biohazard
+	// SS220 EDIT END
 			SSblackbox.record_feedback("nested tally", "biohazards", 1, list("survived", biohazard))
 		else
 			SSblackbox.record_feedback("nested tally", "biohazards", 1, list("defeated", biohazard))

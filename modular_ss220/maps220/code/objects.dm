@@ -19,6 +19,13 @@
 	light_color = "#a0a080"
 	light_range = 4
 
+/obj/structure/light_fake/floor
+	name = "floor light"
+	desc = "A small lighting fixture."
+	icon_state = "floor1"
+	light_color = "#a0a080"
+	light_range = 4
+
 /obj/structure/light_fake/spot
 	name = "spotlight"
 	light_range = 12
@@ -217,7 +224,8 @@
 	desc = "Маленькая серебряная побрякушка, инкрустированная ярким изумрудом бриллиантовой огранки. На верхушечной площадке камня выгравирован череп."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "necrostone"
-	item_state = "electronic"
+	worn_icon_state = "electronic"
+	inhand_icon_state = "electronic"
 	origin_tech = "bluespace=4;materials=4"
 	w_class = WEIGHT_CLASS_TINY
 	var/list/skeletons = list()

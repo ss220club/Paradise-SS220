@@ -4,10 +4,10 @@ on: pull_request_target
 
 jobs:
   check-dmi5:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - uses: ParadiseSS13/DMI5Checker@v1
       with:
         icons-path: 'icons'

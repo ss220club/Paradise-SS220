@@ -98,11 +98,11 @@
 
 /obj/structure/closet/critter/goose
 	name = "goose crate"
-	content_mob = /mob/living/simple_animal/goose
+	content_mob = /mob/living/basic/goose
 
 /obj/structure/closet/critter/gosling
 	name = "gosling crate"
-	content_mob = /mob/living/simple_animal/goose/gosling
+	content_mob = /mob/living/basic/goose/gosling
 
 /obj/structure/closet/critter/gosling/populate_contents()
 	amount = rand(1, 3)
@@ -147,7 +147,7 @@
 /obj/structure/closet/critter/moth/populate_contents()
 	amount = rand(1, 5)
 	if(prob(50))
-		content_mob = /mob/living/simple_animal/nian_caterpillar
+		content_mob = /mob/living/basic/nian_caterpillar
 
 	if(prob(prob_clothes))
 		//contains = list()
