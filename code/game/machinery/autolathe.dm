@@ -267,12 +267,6 @@
 	return data
 
 /obj/machinery/autolathe/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	// SS220 EDIT START - Adding minilathes which aren't compatible with disks
-	if(!disks_compatible)
-		to_chat(user, "<span class='alert'>[src] doesn't have any slots for disks!</span>")
-		return ITEM_INTERACT_COMPLETE
-	// SS220 EDIT END
-
 	if(busy)
 		to_chat(user, "<span class='alert'>The autolathe is busy. Please wait for completion of previous operation.</span>")
 		return ITEM_INTERACT_COMPLETE
@@ -283,6 +277,11 @@
 	// Disks in general
 	if(istype(used, /obj/item/disk))
 		if(istype(used, /obj/item/disk/design_disk))
+			// SS220 EDIT START - Adding minilathes which aren't compatible with disks
+			if(!disks_compatible)
+				to_chat(user, "<span class='alert'>[src] doesn't have any slots for disks!</span>")
+				return ITEM_INTERACT_COMPLETE
+			// SS220 EDIT END
 			var/obj/item/disk/design_disk/D = used
 			if(D.blueprint)
 				var/datum/design/design = D.blueprint // READ ONLY!!
