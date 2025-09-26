@@ -7811,7 +7811,6 @@
 	c_tag = "Turbine";
 	network = list("SS13","Engineering")
 	},
-/obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/unary/tank/toxins,
 /turf/simulated/floor/plasteel/dark,
@@ -8502,7 +8501,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/turbine)
 "aLc" = (
 /obj/machinery/power/apc/directional/south,
@@ -8803,7 +8802,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/structure/cable,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/turbine)
 "aMG" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -8845,7 +8844,10 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "vault"
+	},
 /area/station/maintenance/turbine)
 "aMV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9064,6 +9066,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -23510,18 +23515,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/central/west)
-"bUN" = (
-/obj/machinery/atmospherics/binary/pump{
-	name = "Gas to Turbine"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/plasteel,
-/area/station/maintenance/turbine)
 "bUO" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -65318,6 +65311,18 @@
 	icon_state = "black"
 	},
 /area/station/maintenance/dormitory_maintenance)
+"jKQ" = (
+/obj/machinery/atmospherics/binary/pump{
+	name = "Gas to Turbine"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plasteel,
+/area/station/maintenance/turbine)
 "jKW" = (
 /obj/machinery/atmospherics/air_sensor{
 	autolink_id = "tox_sensor"
@@ -76221,6 +76226,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
+/obj/machinery/computer/monitor{
+	dir = 8;
+	name = "Turbine Power Monitoring Computer"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "caution"
@@ -84980,13 +84992,6 @@
 /area/station/supply/office)
 "pOF" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/patch/silver_sulf{
-	pixel_x = 8
-	},
-/obj/item/reagent_containers/patch/silver_sulf{
-	pixel_x = 8;
-	pixel_y = 6
-	},
 /obj/item/clipboard{
 	pixel_x = -5;
 	pixel_y = 3
@@ -84994,6 +84999,13 @@
 /obj/item/folder/yellow{
 	pixel_x = -4;
 	pixel_y = 3
+	},
+/obj/item/reagent_containers/patch/silver_sulf{
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/patch/silver_sulf{
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -131541,7 +131553,7 @@ abj
 abj
 leZ
 aIv
-bUN
+jKQ
 xqR
 tqr
 nls
