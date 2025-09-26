@@ -8809,6 +8809,7 @@
 	dir = 8;
 	name = "Mix to Turbine"
 	},
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "aMJ" = (
@@ -9655,7 +9656,7 @@
 	pixel_y = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/radio/intercom/directional/south,
+/obj/machinery/newscaster/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "caution"
@@ -9948,7 +9949,8 @@
 	dir = 2
 	},
 /obj/machinery/atmospherics/unary/passive_vent,
-/turf/simulated/floor/plating/airless,
+/obj/structure/lattice/catwalk,
+/turf/space,
 /area/station/maintenance/turbine)
 "aSy" = (
 /obj/machinery/door/poddoor{
@@ -9961,7 +9963,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/machinery/atmospherics/meter,
+/obj/machinery/atmospherics/meter{
+	layer = 3.3
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/turbine)
 "aSA" = (
@@ -76201,6 +76205,21 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
+/obj/item/reagent_containers/patch/silver_sulf{
+	pixel_x = 8
+	},
+/obj/item/clipboard{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/folder/yellow{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/patch/silver_sulf{
+	pixel_x = 8
+	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "caution"
@@ -84959,18 +84978,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "pOF" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/patch/silver_sulf{
-	pixel_x = 8
-	},
-/obj/item/clipboard{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/obj/item/folder/yellow{
-	pixel_x = -4;
-	pixel_y = 3
-	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "caution"
@@ -131777,7 +131784,7 @@ aIw
 aJO
 aLf
 aMG
-aOb
+aOg
 aOb
 aOb
 aOg
