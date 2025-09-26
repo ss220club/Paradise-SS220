@@ -7383,7 +7383,7 @@
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/incinerator)
 "aHa" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/station/maintenance/turbine)
 "aHc" = (
@@ -9966,10 +9966,10 @@
 "aSz" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/visible,
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/atmospherics/meter{
 	layer = 3.3
 	},
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/station/maintenance/turbine)
 "aSA" = (
@@ -23510,6 +23510,18 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/primary/central/west)
+"bUN" = (
+/obj/machinery/atmospherics/binary/pump{
+	name = "Gas to Turbine"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plasteel,
+/area/station/maintenance/turbine)
 "bUO" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -57316,18 +57328,6 @@
 	icon_state = "yellowfull"
 	},
 /area/station/engineering/controlroom)
-"hoD" = (
-/obj/machinery/atmospherics/binary/pump{
-	name = "Gas to Turbine"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/plasteel,
-/area/station/maintenance/turbine)
 "hoG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/barrier/grille_maybe,
@@ -131541,7 +131541,7 @@ abj
 abj
 leZ
 aIv
-hoD
+bUN
 xqR
 tqr
 nls
