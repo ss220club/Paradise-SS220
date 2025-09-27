@@ -3,7 +3,8 @@
 	desc = "Переноска для маленьких животных. "
 	icon = 'modular_ss220/mobs/icons/pet_carrier.dmi'
 	icon_state = "pet_carrier"
-	item_state = "pet_carrier"
+	worn_icon_state = "pet_carrier"
+	inhand_icon_state = "pet_carrier"
 	max_integrity = 100
 	w_class = WEIGHT_CLASS_SMALL
 	var/mob_size = MOB_SIZE_SMALL
@@ -20,7 +21,8 @@
 	name = "переноска"
 	desc = "Переноска для небольших животных. "
 	icon_state = "pet_carrier_normal"
-	item_state = "pet_carrier_normal"
+	worn_icon_state = "pet_carrier_normal"
+	inhand_icon_state = "pet_carrier_normal"
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	mob_size = MOB_SIZE_LARGE

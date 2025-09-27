@@ -1,9 +1,7 @@
 /obj/item/clothing/under/rank/rnd/scientist/student
 	name = "scientist student jumpsuit"
 	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
-	icon_override = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
-	//lefthand_file = 'icons/mob/inhands/clothing_lefthand.dmi'
-	//righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'
+	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
 	icon_state = "student_s"
 	item_color = "student"
 	sprite_sheets = list("Human" = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi')

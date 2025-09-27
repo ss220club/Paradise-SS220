@@ -23,7 +23,7 @@
 /obj/item/gun/projectile/automatic/pneumaticgun/update_icon_state()
 	var/obj/item/ammo_box/magazine/pneuma/M = magazine
 	icon_state = "pneumagun[M ? "[M.col]" : ""]"
-	item_state = icon_state
+	inhand_icon_state = icon_state
 
 // Базовые боеприпасы для пневморужья
 /obj/item/ammo_box/magazine/pneuma

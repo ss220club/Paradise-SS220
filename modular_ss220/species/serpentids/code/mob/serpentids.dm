@@ -27,8 +27,8 @@
 	taste_sensitivity = TASTE_SENSITIVITY_SHARP
 	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse,
 		/mob/living/simple_animal/lizard,
-		/mob/living/simple_animal/chick,
-		/mob/living/simple_animal/chicken,
+		/mob/living/basic/chick,
+		/mob/living/basic/chicken,
 		/mob/living/simple_animal/crab,
 		/mob/living/simple_animal/butterfly,
 		/mob/living/simple_animal/parrot,
