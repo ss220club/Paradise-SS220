@@ -34,7 +34,8 @@
 	desc = "Почему-то, всегда можно найти под рингом."
 	icon = 'modular_ss220/objects/icons/plastic.dmi'
 	icon_state = "folded_chair"
-	item_state = "folded_chair"
+	worn_icon_state = "folded_chair"
+	inhand_icon_state = "folded_chair"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/chairs_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/chairs_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL

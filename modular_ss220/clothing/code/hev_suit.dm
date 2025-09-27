@@ -7,7 +7,7 @@
 	desc = "The Mark IV HEV suit protects the user from a number of hazardous environments and has in build ballistic protection."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "hev"
-	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/suits.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	resistance_flags = FIRE_PROOF | ACID_PROOF | FREEZE_PROOF | STOPSPRESSUREDMAGE
@@ -135,9 +135,10 @@
 	name = "hazardous environment suit helmet"
 	desc = "The Mark IV HEV suit helmet."
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
-	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
-	item_state = "hev_helmet"
+	worn_icon = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 	icon_state = "hev0"
+	worn_icon_state = "hev_helmet"
+	inhand_icon_state = "hev_helmet"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 5, RAD = 100, FIRE = 15, ACID = 20)

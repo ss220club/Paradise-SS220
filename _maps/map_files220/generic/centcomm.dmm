@@ -816,6 +816,16 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
+"auP" = (
+/obj/structure/table/wood{
+	color = "#996633"
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 1;
+	pixel_x = -9
+	},
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "auQ" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line,
@@ -1197,7 +1207,7 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "aDR" = (
-/mob/living/simple_animal/turkey,
+/mob/living/basic/turkey,
 /turf/simulated/floor/wood/cherry,
 /area/ghost_bar/indoor)
 "aEb" = (
@@ -1389,20 +1399,21 @@
 "aIF" = (
 /obj/structure/table/glass,
 /obj/item/clipboard{
-	pixel_y = 4
+	pixel_y = -2
 	},
 /obj/item/folder/red{
-	pixel_y = 3
+	pixel_y = -5
 	},
-/obj/item/folder/blue{
-	pixel_y = 5
-	},
+/obj/item/folder/blue,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_x = 11;
-	pixel_y = 6
+	pixel_x = 11
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 2
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -5403,6 +5414,10 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 2
+	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/admin2)
 "crA" = (
@@ -8446,6 +8461,10 @@
 "dJs" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced,
+/obj/machinery/phone/centcomm{
+	pixel_y = 5;
+	pixel_x = -5
+	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
 "dJv" = (
@@ -8844,6 +8863,10 @@
 /obj/structure/table/glass,
 /obj/item/paper{
 	pixel_y = 2
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 5
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
@@ -10069,6 +10092,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/phone/centcomm,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_herringbone"
 	},
@@ -11202,6 +11226,7 @@
 /area/centcom/ss220/bar)
 "eSd" = (
 /obj/structure/table/glass/reinforced/titanium,
+/obj/machinery/phone/centcomm,
 /turf/simulated/floor/carpet/royalblack,
 /area/centcom/ss220/admin2)
 "eSh" = (
@@ -11527,19 +11552,22 @@
 /obj/structure/table/glass,
 /obj/item/folder{
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = -2
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_x = -6;
-	pixel_y = 6
+	pixel_x = -6
 	},
 /obj/item/folder/blue{
 	pixel_x = 3;
-	pixel_y = 3
+	pixel_y = -1
 	},
 /obj/item/folder/red,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 1
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -12840,6 +12868,10 @@
 	},
 /obj/item/paper{
 	pixel_y = 2
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 2
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -17017,7 +17049,8 @@
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove{
 	icon_state = "boxinggreen";
-	item_state = "boxinggreen"
+	worn_icon_state = "boxinggreen";
+	inhand_icon_state = "boxinggreen"
 	},
 /turf/simulated/floor/holofloor{
 	dir = 10;
@@ -17061,11 +17094,11 @@
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
 	pixel_x = -4;
-	pixel_y = 4
+	pixel_y = -2
 	},
 /obj/item/pen/multi/gold{
 	pixel_x = -4;
-	pixel_y = 3
+	pixel_y = -4
 	},
 /obj/item/stamp/denied{
 	pixel_x = 8;
@@ -17080,6 +17113,10 @@
 	pixel_y = -2
 	},
 /obj/machinery/newscaster/directional/south,
+/obj/machinery/phone/centcomm{
+	pixel_y = 12;
+	pixel_x = -9
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "htV" = (
@@ -18256,6 +18293,9 @@
 "hQe" = (
 /obj/structure/table/glass/reinforced/plastitanium,
 /obj/item/folder/white,
+/obj/machinery/phone/centcomm{
+	pixel_y = 13
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/command)
 "hQt" = (
@@ -19580,7 +19620,7 @@
 /area/vox_base)
 "iue" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/mob/living/simple_animal/chick,
+/mob/living/basic/chick,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "iuv" = (
@@ -19902,6 +19942,10 @@
 /obj/machinery/door/window/reinforced/normal{
 	name = "Брифинг-зал";
 	req_access = list(114)
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 4;
+	pixel_x = -7
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin3)
@@ -26548,12 +26592,11 @@
 "lwb" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
-	pixel_x = 4;
-	pixel_y = 4
+	pixel_x = 4
 	},
 /obj/item/pen/multi/gold{
-	pixel_x = 6;
-	pixel_y = 3
+	pixel_x = 4;
+	pixel_y = -1
 	},
 /obj/item/stamp/denied{
 	pixel_x = -8;
@@ -26568,6 +26611,10 @@
 	pixel_y = -2
 	},
 /obj/machinery/newscaster/directional/south,
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 9
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "lwj" = (
@@ -27399,6 +27446,7 @@
 /area/syndicate_mothership/cargo)
 "lPi" = (
 /obj/structure/table/glass,
+/obj/machinery/phone/centcomm,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/general)
 "lPo" = (
@@ -31933,10 +31981,12 @@
 "nRv" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/clipboard{
-	pixel_y = 4
+	pixel_y = 8;
+	pixel_x = 7
 	},
 /obj/item/folder/blue{
-	pixel_y = 4
+	pixel_y = 7;
+	pixel_x = 9
 	},
 /obj/item/stamp/centcom{
 	pixel_x = 8;
@@ -31947,6 +31997,10 @@
 	color = "#ffbf80";
 	id = "CC_DeathSquad";
 	req_access = list(114)
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 2;
+	pixel_x = -8
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -47596,6 +47650,7 @@
 /area/ghost_bar/indoor)
 "uRG" = (
 /obj/structure/table,
+/obj/machinery/phone/centcomm,
 /turf/simulated/floor/carpet/royalblack,
 /area/shuttle/administration)
 "uRI" = (
@@ -48558,13 +48613,16 @@
 "vnv" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/paper_bin/nanotrasen{
-	pixel_x = 3;
-	pixel_y = 5
+	pixel_x = 8;
+	pixel_y = 9
 	},
 /obj/item/flashlight/lamp/green{
 	pixel_x = -6;
 	pixel_y = 16;
 	layer = 5
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = -6
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/centcom/ss220/admin2)
@@ -48709,7 +48767,7 @@
 /area/syndicate_mothership/outside)
 "vqJ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/mob/living/simple_animal/chicken,
+/mob/living/basic/chicken,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "vqP" = (
@@ -48977,6 +49035,10 @@
 /obj/structure/table/glass,
 /obj/item/paper{
 	pixel_y = 2
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 1;
+	pixel_x = -9
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -49350,7 +49412,7 @@
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "vAy" = (
-/mob/living/simple_animal/chicken,
+/mob/living/basic/chicken,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "vBj" = (
@@ -51349,6 +51411,7 @@
 	pixel_x = -4
 	},
 /obj/structure/table/glass,
+/obj/machinery/phone/centcomm,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/general)
 "wwo" = (
@@ -52972,6 +53035,11 @@
 	icon_state = "neutralcorner"
 	},
 /area/shuttle/escape)
+"xfg" = (
+/obj/structure/table/glass/reinforced/titanium,
+/obj/machinery/phone/centcomm,
+/turf/simulated/floor/carpet/royalblack,
+/area/centcom/ss220/general)
 "xfn" = (
 /obj/machinery/clonescanner,
 /turf/simulated/floor/plasteel{
@@ -53771,7 +53839,8 @@
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove{
 	icon_state = "boxinggreen";
-	item_state = "boxinggreen"
+	worn_icon_state = "boxinggreen";
+	inhand_icon_state = "boxinggreen"
 	},
 /turf/simulated/floor/holofloor{
 	dir = 6;
@@ -67746,7 +67815,7 @@ rzI
 uGs
 eya
 qsH
-nfM
+xfg
 qsH
 jIT
 aXt
@@ -68581,7 +68650,7 @@ ciP
 rhB
 vIu
 lWc
-tAQ
+auP
 oXh
 oXh
 qEr

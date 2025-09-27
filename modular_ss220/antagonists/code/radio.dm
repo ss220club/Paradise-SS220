@@ -27,7 +27,8 @@
 	name = "vox protect headset"
 	desc = "Наушник дальней связи для поддержания связи со стаей. Защищает ушные раковины от громких звуков"
 	icon_state = "com_headset_alt"
-	item_state = "com_headset_alt"
+	inhand_icon_state = "com_headset_alt"
+	worn_icon_state = "com_headset_alt"
 	origin_tech = "syndicate=3"
 	flags = EARBANGPROTECT
 

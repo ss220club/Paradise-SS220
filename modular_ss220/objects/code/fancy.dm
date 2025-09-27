@@ -4,7 +4,8 @@
 	desc = "Любимые многими моряками сигареты прямиком с Деспойны. Не имеют каких-либо фильтров и отдают вкусом морской соли."
 	icon = 'modular_ss220/objects/icons/fancy.dmi'
 	icon_state = "soviet_packet"
-	item_state = "sovietpacket"
+	worn_icon_state = "sovietpacket"
+	inhand_icon_state = "sovietpacket"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/fancy_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/fancy_righthand.dmi'
 	cigarette_type = /obj/item/clothing/mask/cigarette/rollie/soviet
@@ -19,7 +20,8 @@
 	desc = "Простая самодельная пачка для сигарет и косяков."
 	icon = 'modular_ss220/objects/icons/fancy.dmi'
 	icon_state = "diy_packet"
-	item_state = "diypacket"
+	worn_icon_state = "diypacket"
+	inhand_icon_state = "diypacket"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/fancy_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/fancy_righthand.dmi'
 	foldable = /obj/item/stack/sheet/cardboard

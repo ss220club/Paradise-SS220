@@ -5,7 +5,7 @@
 	lefthand_file = 'modular_ss220/awaymission_gun/icons/inhands/lefthand.dmi'
 	righthand_file = 'modular_ss220/awaymission_gun/icons/inhands/righthand.dmi'
 	icon_state = "laser_gate"
-	item_state = "nucgun"
+	inhand_icon_state = "nucgun"
 	force = 10
 	origin_tech = "combat=5;magnets=3;powerstorage=4"
 	selfcharge = TRUE // Selfcharge is enabled and disabled, and used as the away mission tracker

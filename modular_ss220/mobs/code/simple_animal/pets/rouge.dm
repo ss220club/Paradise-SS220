@@ -109,8 +109,8 @@
 	..(gibbed)
 	regenerate_icons()
 
-/mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/getarmor(def_zone, type)
-	var/armorval = inventory_head?.armor.getRating(type)
+/mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/getarmor(def_zone, armor_type)
+	var/armorval = inventory_head?.armor.getRating(armor_type)
 	if(!def_zone)
 		armorval *= 0.5
 	else if(def_zone != "head")

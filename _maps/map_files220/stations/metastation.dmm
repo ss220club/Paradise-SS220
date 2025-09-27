@@ -437,7 +437,13 @@
 "afp" = (
 /obj/machinery/newscaster/security_unit/directional/west,
 /obj/structure/table/reinforced,
-/obj/item/taperecorder,
+/obj/item/taperecorder{
+	pixel_y = -7
+	},
+/obj/machinery/phone{
+	pixel_y = 10;
+	pixel_x = -3
+	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "afw" = (
@@ -12383,12 +12389,17 @@
 "bpY" = (
 /obj/machinery/status_display/directional/north,
 /obj/item/folder/yellow{
-	pixel_y = 4
+	pixel_y = 1;
+	pixel_x = -8
 	},
 /obj/machinery/camera{
 	c_tag = "Bridge - Central"
 	},
 /obj/structure/table/glass,
+/obj/machinery/phone{
+	pixel_y = 7;
+	pixel_x = 5
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkbrown"
@@ -13216,15 +13227,15 @@
 /area/station/command/office/captain)
 "bui" = (
 /obj/structure/table/wood/fancy/blue,
-/obj/item/clothing/mask/cigarette/cigar{
-	pixel_y = 5
-	},
-/obj/item/lighter/zippo/cap{
-	pixel_x = -1;
-	pixel_y = 5
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
+	},
+/obj/item/storage/fancy/cigars/cohiba{
+	pixel_y = 15
+	},
+/obj/item/lighter/zippo/cap{
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /turf/simulated/floor/wood,
 /area/station/command/office/captain)
@@ -13611,9 +13622,6 @@
 /obj/machinery/recharger{
 	pixel_y = 3
 	},
-/obj/item/flashlight/lamp/green{
-	pixel_y = -25
-	},
 /obj/item/storage/secure/safe{
 	pixel_x = 32
 	},
@@ -13785,6 +13793,11 @@
 "bwc" = (
 /obj/machinery/newscaster/security_unit/directional/east,
 /obj/structure/table/wood,
+/obj/machinery/phone,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 15;
+	pixel_x = 6
+	},
 /turf/simulated/floor/wood,
 /area/station/command/office/hop)
 "bwd" = (
@@ -15814,8 +15827,16 @@
 /area/station/command/bridge)
 "bFO" = (
 /obj/structure/table/wood,
-/obj/item/folder/blue,
-/obj/item/lighter/zippo,
+/obj/item/folder/blue{
+	pixel_x = -8
+	},
+/obj/item/lighter/zippo{
+	pixel_y = 1;
+	pixel_x = -12
+	},
+/obj/machinery/phone{
+	pixel_x = 8
+	},
 /turf/simulated/floor/carpet,
 /area/station/command/bridge)
 "bFP" = (
@@ -17313,6 +17334,10 @@
 /obj/item/stamp/denied{
 	pixel_x = 4;
 	pixel_y = -4
+	},
+/obj/machinery/phone{
+	pixel_y = 15;
+	pixel_x = 6
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/supply/qm)
@@ -19223,6 +19248,10 @@
 /obj/item/stamp/rep,
 /obj/machinery/requests_console/directional/west,
 /obj/machinery/keycard_auth/directional/south,
+/obj/machinery/phone{
+	pixel_y = 15;
+	pixel_x = -3
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "bXb" = (
@@ -20556,6 +20585,10 @@
 	pixel_x = -5;
 	pixel_y = 1
 	},
+/obj/item/storage/fancy/cigars{
+	pixel_y = 9;
+	pixel_x = 16
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "cdD" = (
@@ -20854,6 +20887,10 @@
 	},
 /obj/item/pen{
 	pixel_x = 6
+	},
+/obj/machinery/phone{
+	pixel_y = 15;
+	pixel_x = -3
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
@@ -26350,9 +26387,19 @@
 "cES" = (
 /obj/structure/table/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/paper_bin/nanotrasen,
-/obj/item/pen/multi,
-/obj/item/stamp/cmo,
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = 10
+	},
+/obj/item/pen/multi{
+	pixel_x = 8
+	},
+/obj/item/stamp/cmo{
+	pixel_x = 11
+	},
+/obj/machinery/phone{
+	pixel_y = 2;
+	pixel_x = -6
+	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/cmo)
 "cET" = (
@@ -35663,13 +35710,17 @@
 	pixel_x = 6
 	},
 /obj/item/flashlight/lamp/green/off{
-	pixel_y = 3;
-	pixel_x = -6
+	pixel_y = 2;
+	pixel_x = -7
 	},
 /obj/machinery/door_control/normal/south{
 	id = "CaptainOfficeDoor";
 	name = "Captain Office Door Control";
 	req_access = list(20)
+	},
+/obj/machinery/phone{
+	pixel_y = 10;
+	pixel_x = 9
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/office/captain)
@@ -39897,6 +39948,14 @@
 /area/station/maintenance/asmaint)
 "ghd" = (
 /obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/obj/item/pen{
+	pixel_x = 8;
+	pixel_y = 5
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -54464,10 +54523,15 @@
 /obj/structure/table,
 /obj/item/folder/white,
 /obj/item/toy/figure/crew/rd{
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = -7
 	},
 /obj/item/stamp/rd,
 /obj/item/paper/monitorkey,
+/obj/machinery/phone{
+	pixel_y = 12;
+	pixel_x = 7
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -55231,10 +55295,9 @@
 	pixel_x = 5;
 	pixel_y = -1
 	},
-/obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
-	pixel_x = -3;
-	pixel_y = 3
+/obj/machinery/phone{
+	pixel_y = 6;
+	pixel_x = -3
 	},
 /turf/simulated/floor/wood,
 /area/station/command/office/hos)
@@ -63031,7 +63094,7 @@
 	},
 /area/station/engineering/control)
 "oHv" = (
-/mob/living/simple_animal/hostile/retaliate/goat/chef,
+/mob/living/basic/goat/chef,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -69141,7 +69204,7 @@
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/east)
 "qUq" = (
-/mob/living/simple_animal/chicken/clucky,
+/mob/living/basic/chicken/clucky,
 /turf/simulated/floor/grass,
 /area/station/service/hydroponics)
 "qUA" = (
@@ -75558,16 +75621,12 @@
 /area/station/maintenance/aft2)
 "ttp" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin{
-	pixel_y = 4;
-	pixel_x = -5
-	},
-/obj/item/pen{
-	pixel_x = 8;
-	pixel_y = 5
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/machinery/phone{
+	pixel_y = 4;
+	pixel_x = -3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -81413,13 +81472,14 @@
 	pixel_x = 32
 	},
 /obj/structure/table/wood/fancy/green,
-/obj/item/kirbyplants/large{
-	pixel_y = 10
-	},
 /obj/machinery/camera/motion{
 	c_tag = "AI Upload Chamber";
 	dir = 8;
 	network = list("SS13","RD","AIUpload")
+	},
+/obj/machinery/phone{
+	pixel_y = 5;
+	pixel_x = -3
 	},
 /turf/simulated/floor/greengrid,
 /area/station/turret_protected/ai_upload)
@@ -83886,6 +83946,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/aft2)
 "wIu" = (
+/obj/machinery/salvage_redemption,
 /turf/simulated/floor/plasteel{
 	icon_state = "brown"
 	},
@@ -86321,9 +86382,10 @@
 	},
 /area/station/security/brig)
 "xBg" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
+/obj/machinery/atmospherics/binary/pump/on{
 	dir = 8;
-	name = "Air To Distro"
+	name = "Air To Distro";
+	target_pressure = 303
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)

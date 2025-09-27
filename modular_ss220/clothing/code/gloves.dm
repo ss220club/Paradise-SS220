@@ -3,7 +3,8 @@
 	desc = "Обычные черные перчатки с черепом."
 	icon = 'modular_ss220/clothing/icons/object/gloves.dmi'
 	icon_state = "bike_gloves"
-	icon_override = 'modular_ss220/clothing/icons/mob/hands.dmi'
+	inhand_icon_state = "bike_gloves"
+	worn_icon_state = "bike_gloves"
 
 /* EI gloves */
 /obj/item/clothing/gloves/color/ei_gloves
