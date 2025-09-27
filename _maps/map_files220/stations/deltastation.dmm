@@ -412,7 +412,7 @@
 	},
 /obj/machinery/computer/monitor{
 	dir = 1;
-	name = "Engine Power Monitoring Computer"
+	name = "SM Power Monitoring Computer"
 	},
 /obj/structure/cable/yellow,
 /obj/effect/turf_decal/delivery/hollow,
@@ -16793,7 +16793,9 @@
 	},
 /area/station/command/bridge)
 "bxw" = (
-/obj/machinery/computer/monitor,
+/obj/machinery/computer/monitor{
+	name = "Bridge Power Monitoring Console"
+	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -25905,6 +25907,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/smes)
 "cdr" = (
@@ -26409,13 +26414,13 @@
 /area/station/engineering/smes)
 "cfh" = (
 /obj/machinery/light/directional/south,
-/obj/item/radio/intercom/directional/south,
 /obj/machinery/computer/station_alert{
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/smes)
 "cfi" = (
@@ -26423,14 +26428,13 @@
 	pixel_x = 28;
 	pixel_y = -28
 	},
-/obj/machinery/computer/atmos_alert{
-	dir = 1
-	},
-/obj/machinery/power/apc/directional/south,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
 /obj/machinery/firealarm/directional/east,
+/obj/item/radio/intercom/directional/south,
+/obj/structure/cable/yellow,
+/obj/machinery/computer/monitor{
+	dir = 1;
+	name = "Engineering Power Monitoring Computer"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/smes)
 "cfn" = (
@@ -26853,7 +26857,8 @@
 "chu" = (
 /obj/machinery/light/directional/south,
 /obj/machinery/computer/monitor{
-	dir = 1
+	dir = 1;
+	name = "AI Satellite Power Monitoring Console"
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
@@ -36631,7 +36636,9 @@
 	},
 /area/station/maintenance/port)
 "cXV" = (
-/obj/machinery/computer/monitor,
+/obj/machinery/computer/monitor{
+	name = "Backup Power Monitoring Console"
+	},
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
