@@ -25,10 +25,9 @@
 	for(var/mob/living/M in our_turf)
 		if(!M.can_apply(M, TRUE))
 			return
-	else
-		for(var/atom/T in our_turf)
-			reagents.reaction(T)
 	// SS220 EDIT END
+	for(var/atom/T in our_turf)
+		reagents.reaction(T)
 
 /obj/effect/decal/snow
 	name = "snow"
