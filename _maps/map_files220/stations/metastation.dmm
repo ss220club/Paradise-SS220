@@ -7075,6 +7075,9 @@
 	icon_state = "2-4"
 	},
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/station/engineering/smes)
 "aTa" = (
@@ -7496,6 +7499,9 @@
 	},
 /obj/machinery/computer/station_alert,
 /obj/machinery/light/directional/north,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellow"
@@ -7893,6 +7899,9 @@
 	pixel_y = 32
 	},
 /obj/machinery/computer/security/engineering,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkyellow"
@@ -7925,12 +7934,15 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/expedition)
 "aWX" = (
-/obj/machinery/computer/monitor{
-	name = "Engine Power Monitoring Console"
-	},
 /obj/machinery/firealarm/directional/north,
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/computer/monitor{
+	name = "Grid Power Monitoring Computer"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -8047,7 +8059,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/catwalk,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/station/engineering/smes)
 "aXy" = (
 /obj/structure/disposalpipe/segment,
@@ -8080,10 +8094,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
 	},
-/turf/simulated/floor/catwalk,
 /area/station/engineering/smes)
 "aXH" = (
 /obj/structure/window/reinforced{
@@ -8214,6 +8227,9 @@
 "aYE" = (
 /obj/effect/landmark/start/engineer,
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellowcorners"
@@ -8229,12 +8245,9 @@
 /area/station/security/permabrig)
 "aYG" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
-	icon_state = "darkyellow"
+	icon_state = "darkyellowcorners"
 	},
 /area/station/engineering/smes)
 "aYJ" = (
@@ -8297,7 +8310,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 6;
 	icon_state = "darkyellow"
 	},
 /area/station/engineering/smes)
@@ -8306,9 +8318,6 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow"
 	},
@@ -8412,7 +8421,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/station/engineering/smes)
 "aZJ" = (
 /turf/simulated/wall/r_wall,
@@ -8602,11 +8616,14 @@
 /area/station/public/locker)
 "bag" = (
 /obj/machinery/alarm/directional/north,
-/obj/item/radio/intercom/directional/west,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "darkyellow"
+/obj/machinery/power/apc/critical/directional/west,
+/obj/effect/turf_decal/stripes/end{
+	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
 /area/station/engineering/smes)
 "bai" = (
 /obj/effect/spawner/window/reinforced/grilled,
@@ -56742,14 +56759,16 @@
 /turf/simulated/floor/wood,
 /area/station/public/vacant_office)
 "mpP" = (
-/obj/machinery/power/apc/critical/directional/west,
-/obj/effect/turf_decal/stripes/end{
-	dir = 4
+/obj/structure/cable/yellow,
+/obj/machinery/computer/monitor{
+	dir = 1;
+	name = "SM Power Monitoring Console"
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
+/obj/item/radio/intercom/directional/west,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "darkyellow"
 	},
-/turf/simulated/floor/plating,
 /area/station/engineering/smes)
 "mqA" = (
 /obj/machinery/atmospherics/portable/canister/oxygen,
@@ -79207,6 +79226,9 @@
 /area/station/maintenance/fore2)
 "uRN" = (
 /obj/machinery/light_switch/west,
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow";
 	dir = 8
