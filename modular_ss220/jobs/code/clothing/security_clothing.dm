@@ -1,9 +1,7 @@
 /obj/item/clothing/under/rank/security/officer/cadet
 	name = "security cadet jumpsuit"
 	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
-	icon_override = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
-	//lefthand_file = 'icons/mob/inhands/clothing_lefthand.dmi'
-	//righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'
+	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
 	icon_state = "cadet_s"
 	item_color = "cadet"
 	sprite_sheets = list("Human" = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi')
@@ -30,10 +28,11 @@
 /obj/item/clothing/under/rank/security/officer/clown
 	name = "security clown suit"
 	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
-	icon_override = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
+	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
 	sprite_sheets = list("Human" = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi')
 	desc = "<i>'HONK THE LAW!'</i>"
 	icon_state = "security_clown_s"
 	item_color = "security_clown"
-	item_state = "clown"
+	worn_icon_state = "clown"
+	inhand_icon_state = "clown"
 

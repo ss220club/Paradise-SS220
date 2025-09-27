@@ -659,15 +659,15 @@
 	qdel(I)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, TRUE)
 
-/obj/structure/fermenting_barrel/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/structure/fermenting_barrel/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(istype(I, /obj/item/food/sliceable/bread))
 		if(!user.drop_item())
 			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
-			return FALSE
+			return ITEM_INTERACT_COMPLETE
 		I.forceMove(src)
 		to_chat(user, "<span class='notice'>You place [I] into [src] to start the fermentation process.</span>")
 		addtimer(CALLBACK(src, PROC_REF(make_drink), I, "alco_kvass", 35), rand(80, 120) * speed_multiplier)
-		return
+		return ITEM_INTERACT_COMPLETE
 	return ..()
 
 /obj/item/reagent_containers/drinks/cans/kvass
@@ -805,7 +805,8 @@
 	desc = "Холодный чёрный чай, натуральный и полезный."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_grey"
-	item_state = "beer"
+	worn_icon_state = "beer"
+	inhand_icon_state = "beer"
 	list_reagents = list("icetea" = 30)
 
 /obj/item/reagent_containers/drinks/cans/nt_iced_green_tea
@@ -813,7 +814,8 @@
 	desc = "Холодный зелёный чай, натуральный и полезный."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle"
-	item_state = "beer"
+	worn_icon_state = "beer"
+	inhand_icon_state = "beer"
 	list_reagents = list("icetea" = 30)
 
 /obj/item/reagent_containers/drinks/cans/nt_iced_mint_tea
@@ -821,7 +823,8 @@
 	desc = "Освежающий холодный чай с листьями мяты."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_blue"
-	item_state = "beer"
+	worn_icon_state = "beer"
+	inhand_icon_state = "beer"
 	list_reagents = list("icetea" = 30)
 
 /obj/item/reagent_containers/drinks/cans/nt_iced_berry_tea
@@ -829,7 +832,8 @@
 	desc = "Холодный чай с натуральными ягодами без сахара."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_pink"
-	item_state = "beer"
+	worn_icon_state = "beer"
+	inhand_icon_state = "beer"
 	list_reagents = list("icetea" = 30)
 
 /datum/reagent/consumable/ethanol/communism_beach
@@ -1029,7 +1033,8 @@
 	desc = "Упаковка морковного сока. Полезен для зрения и, если верить некоторым слухам, для роста."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "carrotjuice_carton"
-	item_state = "carton"
+	worn_icon_state = "carton"
+	inhand_icon_state = "carton"
 	is_glass = FALSE
 	gender = PLURAL
 	list_reagents = list("carrotjuice" = 50)

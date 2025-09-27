@@ -6,9 +6,10 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
 	icon_state = "telecane_0"
-	item_state_on = "telecane"
-	icon_state_off = "telecane_0"
 	icon_state_on = "telecane_1"
+	icon_state_off = "telecane_0"
+	worn_icon_state_on = "telecane"
+	inhand_icon_state_on = "telecane"
 	stamina_damage = FALSE
 	knockdown_duration = FALSE
 	stun_time_silicon = FALSE

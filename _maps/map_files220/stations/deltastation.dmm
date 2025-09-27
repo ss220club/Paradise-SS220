@@ -2159,8 +2159,17 @@
 "apb" = (
 /obj/structure/table/wood,
 /obj/machinery/status_display/directional/north,
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_y = 1;
+	pixel_x = -6
+	},
+/obj/item/pen{
+	pixel_x = -7
+	},
+/obj/machinery/phone{
+	pixel_y = 4;
+	pixel_x = 9
+	},
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
 "apc" = (
@@ -3007,7 +3016,6 @@
 /area/station/maintenance/fore)
 "arB" = (
 /obj/structure/table/wood,
-/obj/item/phone,
 /obj/machinery/newscaster/directional/south,
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
@@ -5944,6 +5952,10 @@
 	pixel_y = 2;
 	pixel_x = 12
 	},
+/obj/item/dest_tagger{
+	pixel_x = -1;
+	pixel_y = 6
+	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/qm)
 "aBH" = (
@@ -7532,10 +7544,6 @@
 /area/station/service/theatre)
 "aHO" = (
 /obj/structure/table/glass,
-/obj/item/phone{
-	pixel_y = 6;
-	pixel_x = -4
-	},
 /obj/item/lighter/zippo/cmo{
 	pixel_x = 8;
 	pixel_y = 6
@@ -16676,16 +16684,9 @@
 /obj/structure/table/reinforced,
 /obj/machinery/ai_status_display/directional/north,
 /obj/machinery/light/directional/north,
-/obj/item/restraints/handcuffs{
-	pixel_y = 8
-	},
-/obj/item/flash{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/flash{
-	pixel_x = 6;
-	pixel_y = 2
+/obj/machinery/phone{
+	pixel_x = -1;
+	pixel_y = 3
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
@@ -17124,7 +17125,18 @@
 "byR" = (
 /obj/structure/table/reinforced,
 /obj/item/radio/intercom/directional/west,
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular{
+	pixel_y = 6
+	},
+/obj/item/flash{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/flash{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/restraints/handcuffs,
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
 "byS" = (
@@ -20533,7 +20545,6 @@
 /area/station/command/meeting_room)
 "bKL" = (
 /obj/structure/table/wood,
-/obj/item/phone,
 /obj/item/cigbutt/cigarbutt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
@@ -20541,6 +20552,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
+	},
+/obj/item/storage/fancy/donut_box{
+	pixel_y = 9
 	},
 /turf/simulated/floor/carpet,
 /area/station/command/meeting_room)
@@ -21157,12 +21171,15 @@
 /area/station/command/meeting_room)
 "bMS" = (
 /obj/structure/table/wood,
-/obj/item/storage/fancy/donut_box,
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/phone{
+	pixel_y = 4;
+	pixel_x = -1
+	},
 /turf/simulated/floor/carpet,
 /area/station/command/meeting_room)
 "bMU" = (
@@ -21187,9 +21204,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/turret_protected/ai_upload)
 "bMZ" = (
-/obj/item/phone{
-	pixel_x = -3;
-	pixel_y = 3
+/obj/machinery/phone{
+	pixel_y = 2;
+	pixel_x = -2
 	},
 /obj/structure/table/glass,
 /obj/structure/cable{
@@ -22663,9 +22680,9 @@
 	pixel_x = 12;
 	pixel_y = 12
 	},
-/obj/item/phone{
-	pixel_x = -3;
-	pixel_y = 3
+/obj/machinery/phone{
+	pixel_y = 8;
+	pixel_x = -2
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -22952,9 +22969,13 @@
 	},
 /obj/item/coin/plasma{
 	pixel_x = -8;
-	pixel_y = 4
+	pixel_y = 10
 	},
 /obj/machinery/status_display/directional/east,
+/obj/machinery/phone{
+	pixel_y = 2;
+	pixel_x = -2
+	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/office/captain)
 "bST" = (
@@ -25475,6 +25496,10 @@
 /area/station/command/office/ntrep)
 "cbX" = (
 /obj/structure/table/wood,
+/obj/machinery/phone{
+	pixel_y = 11;
+	pixel_x = -2
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "cbY" = (
@@ -25499,16 +25524,13 @@
 	pixel_x = -2;
 	pixel_y = 10
 	},
+/obj/item/storage/fancy/cigars{
+	pixel_y = 8
+	},
 /turf/simulated/floor/wood/parquet/tile/oak,
 /area/station/command/office/ntrep)
 "ccb" = (
 /obj/structure/table/wood,
-/obj/item/clothing/mask/cigarette/cigar/cohiba{
-	pixel_y = 4
-	},
-/obj/item/clothing/mask/cigarette/cigar/havana{
-	pixel_y = 12
-	},
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass{
 	pixel_x = 8;
 	pixel_y = -8
@@ -26115,7 +26137,7 @@
 /obj/item/clothing/mask/cigarette/cigar/cohiba,
 /obj/item/lighter/zippo/engraved{
 	pixel_x = -5;
-	pixel_y = 16
+	pixel_y = 10
 	},
 /obj/item/flashlight/lamp/green{
 	pixel_y = -10;
@@ -31461,9 +31483,6 @@
 /area/station/public/vacant_office/secondary)
 "cBq" = (
 /obj/structure/table/wood,
-/obj/item/clothing/mask/cigarette/cigar/havana{
-	pixel_y = 12
-	},
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
 	pixel_y = 4
 	},
@@ -40929,43 +40948,8 @@
 	},
 /area/station/medical/chemistry)
 "dte" = (
-/obj/structure/closet/crate/internals,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
 /obj/machinery/alarm/directional/south,
+/obj/machinery/salvage_redemption,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbrowncorners"
 	},
@@ -49558,7 +49542,13 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/machinery/computer/secure_data/laptop,
+/obj/machinery/computer/secure_data/laptop{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/machinery/phone{
+	pixel_y = 11
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/legal/magistrate)
 "eMP" = (
@@ -63947,9 +63937,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/dest_tagger{
-	pixel_x = 11;
-	pixel_y = 6
+/obj/machinery/phone{
+	pixel_y = 8;
+	pixel_x = 9
 	},
 /obj/effect/spawner/random/officetoys,
 /turf/simulated/floor/plasteel{
@@ -64062,6 +64052,9 @@
 	icon_state = "1-8"
 	},
 /obj/effect/spawner/random/officetoys,
+/obj/machinery/phone{
+	pixel_y = 13
+	},
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
 "jqD" = (
@@ -66516,11 +66509,8 @@
 /area/station/security/armory/secure)
 "kcE" = (
 /obj/structure/table/wood,
-/obj/item/clothing/mask/cigarette/cigar{
-	pixel_y = 2
-	},
-/obj/item/clothing/mask/cigarette/cigar{
-	pixel_y = 8
+/obj/item/storage/fancy/cigars/cohiba{
+	pixel_y = 9
 	},
 /turf/simulated/floor/carpet/green,
 /area/station/command/office/captain)
@@ -75392,7 +75382,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/retaliate/goat/chef,
+/mob/living/basic/goat/chef,
 /obj/machinery/light/small/directional/east,
 /obj/item/radio/intercom/directional/east,
 /turf/simulated/floor/plasteel/white,
@@ -78237,6 +78227,10 @@
 /obj/item/pen/multi{
 	pixel_x = 2;
 	pixel_y = 4
+	},
+/obj/item/toy/figure/crew/hop{
+	pixel_x = 6;
+	pixel_y = 2
 	},
 /turf/simulated/floor/carpet,
 /area/station/command/office/hop)
@@ -93131,6 +93125,10 @@
 	pixel_x = 6
 	},
 /obj/effect/spawner/random/officetoys,
+/obj/machinery/phone{
+	pixel_y = 8;
+	pixel_x = -2
+	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkpurple"
@@ -97530,10 +97528,6 @@
 /area/station/maintenance/fore)
 "tIJ" = (
 /obj/structure/table/wood,
-/obj/item/toy/figure/crew/hop{
-	pixel_x = 6;
-	pixel_y = 2
-	},
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
@@ -97549,6 +97543,10 @@
 	pixel_x = -6;
 	pixel_y = -1;
 	req_access = list(57)
+	},
+/obj/machinery/phone{
+	pixel_y = 9;
+	pixel_x = 9
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/hop)
@@ -99637,6 +99635,9 @@
 /obj/effect/spawner/random/officetoys,
 /obj/machinery/light/directional/east,
 /obj/machinery/ai_status_display/directional/east,
+/obj/machinery/phone{
+	pixel_y = 13
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -109060,7 +109061,7 @@
 /area/station/hallway/primary/central/east)
 "xwU" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/mob/living/simple_animal/chicken/wife,
+/mob/living/basic/chicken/wife,
 /turf/simulated/floor/grass,
 /area/station/service/hydroponics)
 "xxc" = (

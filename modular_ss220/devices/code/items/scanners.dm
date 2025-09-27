@@ -55,7 +55,8 @@
 	desc = "Специализированный вариант T-ray сканера, используемый для обнаружения биологических объектов. Устройство уязвимо для ЭМИ излучения."
 	lefthand_file = 'modular_ss220/devices/icons/inhands/items_lefthand.dmi'
 	righthand_file = 'modular_ss220/devices/icons/inhands/items_righthand.dmi'
-	item_state = "sb_t-ray"
+	worn_icon_state = "sb_t-ray"
+	inhand_icon_state = "sb_t-ray"
 	icon_state = "sb_t-ray0"
 	scan_range = 4
 	pulse_duration = 15

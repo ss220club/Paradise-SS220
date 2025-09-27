@@ -372,7 +372,7 @@
 	attacktext = "рубит"
 	damage_coeff = list(BRUTE = 0.8, BURN = 0.8, TOX = 1, CLONE = 2, STAMINA = 1, OXY = 1)
 
-/mob/living/simple_animal/hostile/panther/huge_panther
+/mob/living/basic/panther/huge_panther
 	name = "huge panther"
 	desc = "Большой, гладкий черный кот с острыми клыками и когтями. Этот выглядит особенно огромным."
 	maxHealth = 120
@@ -380,11 +380,7 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	rapid_melee = 2
-	move_to_delay = 2.8
 	speed = -0.2
-	dodging = TRUE
-	sidestep_per_cycle = 2
 	faction = list("junglemob")
 
 /mob/living/simple_animal/hostile/poison_snake
@@ -1104,7 +1100,8 @@
 	name = "xen key"
 	desc = ""
 	icon_state = "emag"
-	item_state = "card-id"
+	worn_icon_state = "card-id"
+	inhand_icon_state = "card-id"
 	access = list (271)
 
 /obj/item/projectile/nihilanth
