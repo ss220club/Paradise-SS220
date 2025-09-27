@@ -37,5 +37,5 @@
 			. = FALSE
 	if(!. && error_msg && user)
 		if(!fail_msg)
-			fail_msg = "Вы не можете дотянуться до кожи сквозь плотную одежду!"
+			fail_msg = "Нельзя дотянуться до кожи сквозь плотную одежду!"
 		to_chat(user, span_warning("[fail_msg]"))

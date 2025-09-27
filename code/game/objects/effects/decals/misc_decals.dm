@@ -21,8 +21,14 @@
 	SIGNAL_HANDLER // COMSIG_MOVELOOP_POSTPROCESS
 	var/turf/our_turf = get_turf(src)
 	reagents.reaction(our_turf)
-	for(var/atom/T in our_turf)
-		reagents.reaction(T)
+	// SS220 EDIT START - Sprays shouldn't penetrate thick clothing
+	for(var/mob/living/M in our_turf)
+		if(!M.can_apply(M, TRUE))
+			return
+	else
+		for(var/atom/T in our_turf)
+			reagents.reaction(T)
+	// SS220 EDIT END
 
 /obj/effect/decal/snow
 	name = "snow"
