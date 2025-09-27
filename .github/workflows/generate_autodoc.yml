@@ -8,7 +8,7 @@ on:
 jobs:
   generate_docs:
     name: 'Generate Documentation'
-    runs-on: self-hosted
+    runs-on: ubuntu-20.04
     steps:
     - name: 'Update Branch'
       uses: actions/checkout@v5

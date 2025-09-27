@@ -2,7 +2,7 @@
 	name = "flashbang"
 	desc = "A less-than-lethal grenade designed for crowd control. Blinds all unprotected targets in range and disrupts their balance, sending them falling to the floor."
 	icon_state = "flashbang"
-	item_state = "flashbang"
+	inhand_icon_state = "flashbang"
 	belt_icon = "flashbang"
 	origin_tech = "materials=2;combat=3"
 	light_power = 10
@@ -22,9 +22,11 @@
 		playsound(T, 'sound/effects/bang.ogg', 100, TRUE)
 		new /obj/effect/dummy/lighting_obj(T, light_color, range + 2, light_power, light_time)
 		// Blob damage
-		for(var/obj/structure/blob/B in hear(range + 1, T))
-			var/damage = round(30 / (get_dist(B, T) + 1))
-			B.take_damage(damage, BURN, MELEE, FALSE)
+		// SS220 EDIT START - no damage from flashbangs for blob
+		// for(var/obj/structure/blob/B in hear(range + 1, T))
+		// 	var/damage = round(30 / (get_dist(B, T) + 1))
+		// 	B.take_damage(damage, BURN, MELEE, FALSE)
+		// SS220 EDIT END
 
 		// Stunning & damaging mechanic
 		bang(T, src, range)

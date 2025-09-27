@@ -102,8 +102,10 @@
  */
 /obj/item/kitchen/knife
 	name = "kitchen knife"
-	icon_state = "knife"
 	desc = "Универсальный поварской нож производства компании Космическая Нарезка. Гарантированно остаётся острым на долгие годы."
+	icon_state = "knife"
+	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
 	flags = CONDUCT
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL
@@ -115,8 +117,6 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = TRUE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 50, ACID = 50)
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
 	var/bayonet = FALSE	//Can this be attached to a gun?
 
 /obj/item/kitchen/knife/Initialize(mapload)
@@ -146,7 +146,6 @@
 	name = "glass shiv"
 	desc = "Какой-то острый осколок завёрнутый в ткань, так же делала пра-пра-пра-пра-бабушка."
 	icon = 'icons/obj/weapons/melee.dmi'
-	item_state = "glass_shiv"
 	icon_state = "glass_shiv"
 
 /obj/item/kitchen/knife/shiv/carrot
@@ -154,7 +153,6 @@
 	desc = "В отличие от других морковок, эту, вероятно, стоит держать подальше от глаз."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "carrotshiv"
-	item_state = "carrotshiv"
 	force = 8
 	throwforce = 12 //fuck git
 	materials = list()
@@ -164,8 +162,8 @@
 
 /obj/item/kitchen/knife/butcher
 	name = "butcher's cleaver"
-	icon_state = "butch"
 	desc = "Огромный нож, используемый для рубки мяса и его нарезки. Это так же включает продукцию из клоунов."
+	icon_state = "butch"
 	force = 15
 	throwforce = 8
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -174,7 +172,7 @@
 /obj/item/kitchen/knife/butcher/meatcleaver
 	name = "meat cleaver"
 	icon_state = "mcleaver"
-	item_state = "butch"
+	inhand_icon_state = "butch"
 	force = 25
 	throwforce = 15
 
@@ -184,9 +182,10 @@
 
 /obj/item/kitchen/knife/combat
 	name = "combat knife"
-	icon_state = "combatknife"
-	item_state = "knife"
 	desc = "Военный боевой нож для выживания."
+	icon_state = "combatknife"
+	worn_icon_state = "knife"
+	inhand_icon_state = "knife"
 	force = 20
 	throwforce = 20
 	origin_tech = "materials=3;combat=4"
@@ -195,25 +194,23 @@
 
 /obj/item/kitchen/knife/combat/survival
 	name = "survival knife"
-	icon_state = "survivalknife"
 	desc = "Охотничий нож для выживания."
+	icon_state = "survivalknife"
 	force = 15
 	throwforce = 15
 
 /obj/item/kitchen/knife/combat/survival/bone
 	name = "bone dagger"
-	item_state = "bone_dagger"
-	icon_state = "bone_dagger"
-	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	desc = "Острый костяной нож. Самый минимум для выживания."
+	icon_state = "bone_dagger"
+	inhand_icon_state = "bone_dagger"
 	materials = list()
 
 /obj/item/kitchen/knife/combat/cyborg
 	name = "cyborg knife"
+	desc = "Пласталевый нож, устанавливаемый киборгам. Крайне острый и прочный."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "knife"
-	desc = "Пласталевый нож, устанавливаемый киборгам. Крайне острый и прочный."
 	origin_tech = null
 
 /obj/item/kitchen/knife/cheese

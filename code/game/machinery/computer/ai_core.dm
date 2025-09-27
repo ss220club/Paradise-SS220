@@ -15,12 +15,12 @@
 	QDEL_NULL(brain)
 	return ..()
 
-/obj/structure/ai_core/attackby__legacy__attackchain(obj/item/P, mob/user, params)
+/obj/structure/ai_core/item_interaction(mob/living/user, obj/item/P, list/modifiers)
 	switch(state)
 		if(EMPTY_CORE)
 			if(istype(P, /obj/item/circuitboard/aicore))
 				if(!user.drop_item())
-					return
+					return ITEM_INTERACT_COMPLETE
 				playsound(loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>Вы вставляете плату в раму.</span>")
 				update_icon(UPDATE_ICON_STATE)
@@ -28,7 +28,7 @@
 				P.forceMove(src)
 				circuit = P
 				update_icon(UPDATE_ICON_STATE)
-				return
+				return ITEM_INTERACT_COMPLETE
 		if(SCREWED_CORE)
 			if(istype(P, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C = P
@@ -41,7 +41,7 @@
 						update_icon(UPDATE_ICON_STATE)
 				else
 					to_chat(user, "<span class='warning'>Вам нужно 5 кабелей для вставки проводки в ядро ИИ!</span>")
-				return
+				return ITEM_INTERACT_COMPLETE
 		if(CABLED_CORE)
 			if(istype(P, /obj/item/stack/sheet/rglass))
 				var/obj/item/stack/sheet/rglass/G = P
@@ -54,73 +54,73 @@
 						update_icon(UPDATE_ICON_STATE)
 				else
 					to_chat(user, "<span class='warning'>Вам нужно два листа укрепленного стекла для вставки в ядро ИИ!</span>")
-				return
+				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/ai_module/purge))
 				laws.clear_inherent_laws()
 				to_chat(usr, "<span class='notice'>Применён модуль Purge.</span>")
-				return
+				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/ai_module/freeform))
 				var/obj/item/ai_module/freeform/M = P
 				if(!M.newFreeFormLaw)
-					to_chat(usr, "На модуле не обнаружено закона. Пожалуйста, напишите его.")
-					return
+					to_chat(usr, "На модуле не обнаружено законов. Пожалуйста, сформулируйте хотя бы один.")
+					return ITEM_INTERACT_COMPLETE
 				laws.add_supplied_law(M.lawpos, M.newFreeFormLaw)
 				to_chat(usr, "<span class='notice'>Добавлен закон Freeform.</span>")
-				return
+				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/ai_module/syndicate))
 				var/obj/item/ai_module/syndicate/M = P
 				if(!M.newFreeFormLaw)
-					to_chat(usr, "На модуле не обнаружено закона. Пожалуйста, напишите его.")
-					return
+					to_chat(usr, "На модуле не обнаружено законов. Пожалуйста, сформулируйте хотя бы один.")
+					return ITEM_INTERACT_COMPLETE
 				laws.add_ion_law(M.newFreeFormLaw)
 				to_chat(usr, "<span class='notice'>Добавлен взломанный закон.</span>")
-				return
+				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/ai_module))
 				var/obj/item/ai_module/M = P
 				if(!M.laws)
 					to_chat(usr, "<span class='warning'>Этот модуль ИИ нельзя применить напрямую к ядру.</span>")
-					return
+					return ITEM_INTERACT_COMPLETE
 				laws = M.laws
-				to_chat(usr, "<span class='notice'>Добавлены [M.laws.name] законы.</span>")
-				return
+				to_chat(usr, "<span class='notice'>Добавлены законы [M.laws.name].</span>")
+				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/mmi) && !brain)
 				var/obj/item/mmi/M = P
 				if(!M.brainmob)
-					to_chat(user, "<span class='warning'>Вставка пустого [P] в раму своего рода противоречить цели.</span>")
-					return
+					to_chat(user, "<span class='warning'>Вставка пустого [P] в раму своего рода противоречит цели.</span>")
+					return ITEM_INTERACT_COMPLETE
 				if(M.brainmob.stat == DEAD)
-					to_chat(user, "<span class='warning'>Вставка мёртвого [P] в раму своего рода противоречить цели.</span>")
-					return
+					to_chat(user, "<span class='warning'>Вставка мёртвого [P] в раму своего рода противоречит цели.</span>")
+					return ITEM_INTERACT_COMPLETE
 
 				if(!M.brainmob.client)
-					to_chat(user, "<span class='warning'>Вставка неактивного [M.name] в раму своего рода противоречить цели.</span>")
-					return
+					to_chat(user, "<span class='warning'>Вставка неактивного [M.name] в раму своего рода противоречит цели.</span>")
+					return ITEM_INTERACT_COMPLETE
 
 				if(jobban_isbanned(M.brainmob, "AI") || jobban_isbanned(M.brainmob, "nonhumandept"))
 					to_chat(user, "<span class='warning'>Видимо, [P] не подходит.</span>")
-					return
+					return ITEM_INTERACT_COMPLETE
 
 				if(!M.brainmob.mind)
 					to_chat(user, "<span class='warning'>[M.name] сейчас без разума!</span>")
-					return
+					return ITEM_INTERACT_COMPLETE
 
 				if(istype(P, /obj/item/mmi/syndie))
 					to_chat(user, "<span class='warning'>Этот MMI, видимо, не подходит!</span>")
-					return
+					return ITEM_INTERACT_COMPLETE
 
 				if(!user.drop_item())
-					return
+					return ITEM_INTERACT_COMPLETE
 
 				M.forceMove(src)
 				brain = M
 				to_chat(user, "<span class='notice'>Вы вставляете [M.name] в раму.</span>")
 				update_icon(UPDATE_ICON_STATE)
-				return
+				return ITEM_INTERACT_COMPLETE
 
 	return ..()
 
