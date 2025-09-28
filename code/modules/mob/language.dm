@@ -8,7 +8,7 @@
 	var/name = "an unknown language"           // Fluff name of language if any.
 	var/desc = "A language."                    // Short description for 'Check Languages'.
 	var/speech_verb = "говорит"                    // 'says', 'hisses', 'farts'.
-	var/ask_verb = list("спрашивает", "уточняет")  // Used when sentence ends in a ?
+	var/ask_verb = "спрашивает"                    // Used when sentence ends in a ?
 	var/list/exclaim_verbs = list("восклицает")   // Used when sentence ends in a !
 	var/whisper_verb                            // Optional. When not specified speech_verb + quietly/softly is used instead.
 	var/colour = "body"                         // CSS style to use for strings in this language.
@@ -294,7 +294,7 @@
 /datum/language/kidan
 	name = "Chittin"
 	desc = "The noise made by rubbing its antennae together is actually a complex form of communication for Kidan."
-	speech_verb = list("клацает жвалами", "перетирает жвалы")
+	speech_verb = "клацает жвалами"
 	ask_verb = "трётся антеннами"
 	exclaim_verbs = list("стучит жвалами")
 	colour = "kidan"

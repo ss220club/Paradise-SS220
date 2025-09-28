@@ -384,8 +384,8 @@ GLOBAL_LIST_EMPTY(channel_to_radio_key)
 	if(verb == "yells loudly")
 		verb = "slurs emphatically"
 	else if(!adverb_added)
-		var/adverb = pick("quietly", "softly")
-		verb = "[verb] [adverb]"
+		var/adverb = pick("тихо", "негромко")
+		verb = "[adverb] [verb]"
 
 	var/atom/whisper_loc = get_whisper_loc()
 	var/list/listening = hear(message_range, whisper_loc)
