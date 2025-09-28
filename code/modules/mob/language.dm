@@ -7,9 +7,9 @@
 /datum/language
 	var/name = "an unknown language"            // Fluff name of language if any.
 	var/desc = "A language."                    // Short description for 'Check Languages'.
-	var/speech_verb = "says"                    // 'says', 'hisses', 'farts'.
-	var/ask_verb = "asks"                       // Used when sentence ends in a ?
-	var/list/exclaim_verbs = list("exclaims")   // Used when sentence ends in a !
+	var/speech_verb = "говорит"                    // 'says', 'hisses', 'farts'.
+	var/ask_verb = "спрашивает"                       // Used when sentence ends in a ?
+	var/list/exclaim_verbs = list("восклицает")   // Used when sentence ends in a !
 	var/whisper_verb                            // Optional. When not specified speech_verb + quietly/softly is used instead.
 	var/colour = "body"                         // CSS style to use for strings in this language.
 	var/key = "x"                               // Character used to speak in language eg. :o for Unathi.
@@ -155,9 +155,9 @@
 /datum/language/unathi
 	name = "Sinta'unathi"
 	desc = "The common language of Moghes, composed of sibilant hisses and rattles. Spoken natively by Unathi."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verbs = list("roars")
+	speech_verb = "шипит"
+	ask_verb = "шипит"
+	exclaim_verbs = list("рычит")
 	colour = "soghun"
 	key = "o"
 	flags = RESTRICTED
@@ -176,9 +176,9 @@
 /datum/language/tajaran
 	name = "Siik'tajr"
 	desc = "The traditionally employed tongue of Ahdomai, composed of expressive yowls and chirps. Native to the Tajaran."
-	speech_verb = "mrowls"
-	ask_verb = "mrowls"
-	exclaim_verbs = list("yowls")
+	speech_verb = "мурлычет"
+	ask_verb = "мяукает"
+	exclaim_verbs = list("рычит")
 	colour = "tajaran"
 	key = "j"
 	flags = RESTRICTED
@@ -198,9 +198,9 @@
 /datum/language/vulpkanin
 	name = "Canilunzt"
 	desc = "The guttural language spoken and utilized by the inhabitants of Vazzend system, composed of growls, barks, yaps, and heavy utilization of ears and tail movements.Vulpkanin speak this language with ease."
-	speech_verb = "rawrs"
-	ask_verb = "rurs"
-	exclaim_verbs = list("barks")
+	speech_verb = "лает"
+	ask_verb = "урчит"
+	exclaim_verbs = list("рычит")
 	colour = "vulpkanin"
 	key = "7"
 	flags = RESTRICTED
@@ -221,9 +221,9 @@
 /datum/language/skrell
 	name = "Qurvolious"
 	desc = "The state language of the Royal Domain of Qerballak, Qurvolious has a rich and melodious sound that flows like water. Certain syllables of the language cannot be comprehended by non-Skrell."
-	speech_verb = "warbles"
-	ask_verb = "warbles"
-	exclaim_verbs = list("warbles")
+	speech_verb = "трелит"
+	ask_verb = "трелит"
+	exclaim_verbs = list("квакает")
 	colour = "skrell"
 	key = "k"
 	flags = RESTRICTED
@@ -232,9 +232,9 @@
 /datum/language/vox
 	name = "Vox-pidgin"
 	desc = "The common tongue of the various Vox ships making up the Shoal. It sounds like chaotic shrieking to everyone else."
-	speech_verb = "shrieks"
-	ask_verb = "creels"
-	exclaim_verbs = list("loudly skrees")
+	speech_verb = "скрипит"
+	ask_verb = "скрипит"
+	exclaim_verbs = list("громко скрипит")
 	colour = "vox"
 	key = "v"
 	flags = RESTRICTED | WHITELISTED
@@ -254,9 +254,9 @@
 /datum/language/diona
 	name = "Rootspeak"
 	desc = "A creaking, subvocal language spoken instinctively by the Dionaea. Due to the unique makeup of the average Diona, a phrase of Rootspeak can be a combination of anywhere from one to twelve individual voices and notes."
-	speech_verb = "creaks and rustles"
-	ask_verb = "creaks"
-	exclaim_verbs = list("rustles")
+	speech_verb = "потрескивает"
+	ask_verb = "шелестит"
+	exclaim_verbs = list("трещит")
 	colour = "diona"
 	key = "q"
 	flags = RESTRICTED
@@ -270,9 +270,9 @@
 /datum/language/trinary
 	name = "Trinary"
 	desc = "A modification of binary to allow fuzzy logic. 0 is no, 1 is maybe, 2 is yes. Credited with giving Machine People the ability to think creatively."
-	speech_verb = "states"
-	ask_verb = "queries"
-	exclaim_verbs = list("exclaims")
+	speech_verb = "сообщает"
+	ask_verb = "запрашивает"
+	exclaim_verbs = list("объявляет", "докладывает")
 	colour = "trinary"
 	key = "5"
 	flags = RESTRICTED | WHITELISTED
@@ -294,9 +294,9 @@
 /datum/language/kidan
 	name = "Chittin"
 	desc = "The noise made by rubbing its antennae together is actually a complex form of communication for Kidan."
-	speech_verb = "rubs their antennae together"
-	ask_verb = "rubs their antennae together"
-	exclaim_verbs = list("rubs their antennae together")
+	speech_verb = list("клацает жвалами", "перетирает жвалы")
+	ask_verb = "трётся антеннами"
+	exclaim_verbs = list("стучит жвалами")
 	colour = "kidan"
 	key = "4"
 	flags = RESTRICTED | WHITELISTED
@@ -317,9 +317,9 @@
 /datum/language/slime
 	name = "Bubblish"
 	desc = "The language of slimes. It's a mixture of bubbling noises and pops. Very difficult to speak without mechanical aid for humans."
-	speech_verb = "burbles"
-	ask_verb = "pops softly"
-	exclaim_verbs = list("fizzes")
+	speech_verb = "хлюпает"
+	ask_verb = "булькает"
+	exclaim_verbs = list("шипит")
 	colour = "slime"
 	key = "f"
 	flags = RESTRICTED | WHITELISTED
@@ -337,9 +337,9 @@
 /datum/language/grey
 	name = "Psionic Communication"
 	desc = "The grey's psionic communication, less potent version of their distant cousin's telepathy. Talk to other greys within a limited radius."
-	speech_verb = "expresses"
-	ask_verb = "inquires"
-	exclaim_verbs = list("imparts")
+	speech_verb = "сообщает"
+	ask_verb = "сообщает"
+	exclaim_verbs = list("сообщает")
 	colour = "abductor"
 	key = "^"
 	flags = RESTRICTED | HIVEMIND | NOLIBRARIAN | HIVEMIND_RUNECHAT
@@ -375,9 +375,9 @@
 /datum/language/drask
 	name = "Orluum"
 	desc = "The droning, vibrous language of the Drask. It sounds somewhat like whalesong."
-	speech_verb = "drones"
-	ask_verb = "hums"
-	exclaim_verbs = list("rumbles")
+	speech_verb = "гудит"
+	ask_verb = "урчит"
+	exclaim_verbs = list("жужжит")
 	colour = "drask"
 	key = "%"
 	flags = RESTRICTED | WHITELISTED
@@ -392,11 +392,11 @@
 /datum/language/moth
 	name = "Tkachi"
 	desc = "The language of the Nianae mothpeople borders on complete unintelligibility."
-	speech_verb = "buzzes"
-	ask_verb = "flaps"
-	exclaim_verbs = list("chatters")
+	speech_verb = "жужжит"
+	ask_verb = "трепещет"
+	exclaim_verbs = list("жужжит")
 	colour = "moth"
-	key = "#"
+	key = "№"
 	flags = RESTRICTED | WHITELISTED
 	join_override = "-"
 	syllables = list("år", "i", "går", "sek", "mo", "ff", "ok", "gj", "ø", "gå", "la", "le",
@@ -414,8 +414,8 @@
 /datum/language/common
 	name = "Galactic Common"
 	desc = "Originally a carefully crafted fusion of various Human and Skrell dialects, Galactic Common is the most commonly spoken language in the Sector, and incorporates influences from nearly every known sapient species."
-	exclaim_verbs = list("exclaims", "shouts", "yells")
-	whisper_verb = "whispers"
+	exclaim_verbs = list("восклицает", "кричит")
+	whisper_verb = "шепчет"
 	key = "9"
 	flags = RESTRICTED
 	syllables = list("blah","blah","blah","bleh","meh","neh","nah","wah")
@@ -424,8 +424,8 @@
 /datum/language/human
 	name = "Sol Common"
 	desc = "An artifical language designed by the Trans-Solar Federation for ease of use and concise communication."
-	exclaim_verbs = list("snaps", "shouts", "barks")
-	whisper_verb = "whispers"
+	exclaim_verbs = list("гаркает", "кричит")
+	whisper_verb = "шепчет"
 	colour = "solcom"
 	key = "1"
 	space_chance = 70
@@ -453,9 +453,9 @@
 /datum/language/gutter
 	name = "Gutter"
 	desc = "Much like Standard, this crude pidgin tongue descended from numerous languages and serves as Tradeband for criminal elements."
-	speech_verb = "growls"
-	ask_verb = "gnarls"
-	exclaim_verbs = list("snarls")
+	speech_verb = "бормочет"
+	ask_verb = "бурчит"
+	exclaim_verbs = list("ворчит")
 	colour = "gutter"
 	key = "3"
 	syllables = list ("gra","ba","ba","breh","bra","rah","dur","ra","ro","gro","go","ber","bar","geh","heh","gra")
@@ -463,9 +463,9 @@
 /datum/language/clown
 	name = "Clownish"
 	desc = "The language of Clown University. Mother tongue of clowns throughout the galaxy."
-	speech_verb = "honks"
-	ask_verb = "honks"
-	exclaim_verbs = list("toots", "wubs", "honks")
+	speech_verb = "хонкает"
+	ask_verb = "хонкает"
+	exclaim_verbs = list("трубит", "гогочет", "хонкает")
 	colour = "clown"
 	key = "0"
 	syllables = list ("honk","squeak","bonk","toot","narf","zub","wee","wub","norf")
@@ -474,9 +474,9 @@
 /datum/language/com_srus
 	name = "Neo-Russkiya"
 	desc = "Neo-Russkiya, a bastard mix of Gutter, Sol Common, and old Russian. The official language of the USSP. It has started to see use outside of the fringe in hobby circles and protest groups. The linguistic spirit of Sol-Gov criticisms."
-	speech_verb = "articulates"
-	whisper_verb = "mutters"
-	exclaim_verbs = list("proclaims", "boasts", "accentuates")
+	speech_verb = "глаголит"
+	whisper_verb = "бормочет"
+	exclaim_verbs = list("возвещает", "кичится", "отмечает")
 	colour = "com_srus"
 	key = "?"
 	space_chance = 65
@@ -496,9 +496,9 @@
 	name = "Xenomorph"
 	colour = "alien"
 	desc = "The common tongue of the xenomorphs."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verbs = list("hisses")
+	speech_verb = "шипит"
+	ask_verb = "шипит"
+	exclaim_verbs = list("шипит")
 	key = "6"
 	flags = RESTRICTED | NOLIBRARIAN
 	syllables = list("sss","sSs","SSS")
@@ -506,9 +506,9 @@
 /datum/language/xenos
 	name = "Hivemind"
 	desc = "Xenomorphs have the strange ability to commune over a psychic hivemind."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verbs = list("hisses")
+	speech_verb = "шипит"
+	ask_verb = "шипит"
+	exclaim_verbs = list("шипит")
 	colour = "alien"
 	key = "a"
 	flags = RESTRICTED | HIVEMIND | NOBABEL
@@ -524,9 +524,9 @@
 /datum/language/terrorspider
 	name = "Spider Hivemind"
 	desc = "Terror spiders have a limited ability to commune over a psychic hivemind, similar to xenomorphs."
-	speech_verb = "chitters"
-	ask_verb = "chitters"
-	exclaim_verbs = list("chitters")
+	speech_verb = "щёлкает"
+	ask_verb = "шуршит"
+	exclaim_verbs = list("скребёт")
 	colour = "terrorspider"
 	key = "ts"
 	flags = RESTRICTED | HIVEMIND | NOBABEL
@@ -559,9 +559,9 @@
 /datum/language/abductor
 	name = "Abductor Mindlink"
 	desc = "Abductors are incapable of speech, but have a psychic link attuned to their own team."
-	speech_verb = "gibbers"
-	ask_verb = "gibbers"
-	exclaim_verbs = list("gibbers")
+	speech_verb = "сообщает"
+	ask_verb = "сообщает"
+	exclaim_verbs = list("сообщает")
 	colour = "abductor"
 	key = "zw" //doesn't matter, this is their default and only language
 	flags = RESTRICTED | HIVEMIND | NOBABEL | HIVEMIND_RUNECHAT
@@ -590,9 +590,9 @@
 	name = "Robot Talk"
 	desc = "Most human stations support free-use communications protocols and routing hubs for synthetic use."
 	colour = "say_quote"
-	speech_verb = "states"
-	ask_verb = "queries"
-	exclaim_verbs = list("declares")
+	speech_verb = "сообщает"
+	ask_verb = "запрашивает"
+	exclaim_verbs = list("объявляет", "докладывает")
 	key = "b"
 	flags = RESTRICTED | HIVEMIND | NOBABEL
 	follow = TRUE
@@ -649,18 +649,18 @@
 /datum/language/binary/drone
 	name = "Drone Talk"
 	desc = "A heavily encoded damage control coordination stream."
-	speech_verb = "transmits"
-	ask_verb = "transmits"
-	exclaim_verbs = list("transmits")
+	speech_verb = "транслирует"
+	ask_verb = "транслирует"
+	exclaim_verbs = list("транслирует")
 	key = "d"
 	drone_only = TRUE
 
 /datum/language/drone
 	name = "Drone"
 	desc = "An encrypted stream of data converted to speech patterns."
-	speech_verb = "states"
-	ask_verb = "queries"
-	exclaim_verbs = list("declares")
+	speech_verb = "сообщает"
+	ask_verb = "запрашивает"
+	exclaim_verbs = list("объявляет", "докладывает")
 	key = "]"
 	flags = RESTRICTED | NOLIBRARIAN
 	follow = TRUE
@@ -743,9 +743,9 @@
 /datum/language/human/monkey
 	name = "Chimpanzee"
 	desc = "Ook ook ook."
-	speech_verb = "chimpers"
-	ask_verb = "chimpers"
-	exclaim_verbs = list("screeches")
+	speech_verb = "пискает"
+	ask_verb = "пискает"
+	exclaim_verbs = list("визжит")
 	key = "mo"
 
 /datum/language/skrell/monkey
@@ -778,9 +778,9 @@
 /datum/language/zombie
 	name = "Zombie"
 	desc = "Flesh... Brains... We hunger..."
-	speech_verb = "groans"
-	ask_verb = "groans"
-	exclaim_verbs = list("yells")
+	speech_verb = "стонет"
+	ask_verb = "кряхтит"
+	exclaim_verbs = list("ревёт")
 	colour = "zombie"
 	key = "w"
 	flags = RESTRICTED | NOLIBRARIAN

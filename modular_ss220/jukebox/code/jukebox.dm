@@ -4,7 +4,7 @@
 	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
 	icon_state = "jukebox"
 	base_icon_state = "jukebox"
-	atom_say_verb =  "states"
+	atom_say_verb =  "докладывает"
 	anchored = TRUE
 	density = TRUE
 	idle_power_consumption = 10

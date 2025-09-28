@@ -4,7 +4,7 @@
 	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
 	icon_state = "concertspeaker_unanchored"
 	base_icon_state = "concertspeaker"
-	atom_say_verb = "states"
+	atom_say_verb = "докладывает"
 	anchored = FALSE
 	var/active = FALSE
 	density = FALSE

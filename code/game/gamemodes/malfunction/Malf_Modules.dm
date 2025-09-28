@@ -285,7 +285,7 @@
 	desc = "Оружие, уничтожающее всю жизнь на станции."
 	anchored = TRUE
 	density = TRUE
-	atom_say_verb = "blares"
+	atom_say_verb = "ревёт"
 	speed_process = TRUE // Disgusting fix. Please remove once #12952 is merged
 	var/timing = FALSE
 	var/default_timer = 4500

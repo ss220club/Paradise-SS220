@@ -50,16 +50,16 @@
 	return GLOB.all_languages["Xenomorph"]
 
 /mob/living/carbon/alien/say_quote(message, datum/language/speaking = null)
-	var/speech_verb = "hisses"
+	var/speech_verb = "шипит"
 	var/ending = copytext(message, length(message))
 
 	if(speaking && (speaking.name != "Galactic Common")) //this is so adminbooze xenos speaking common have their custom verbs,
 		speech_verb = speaking.get_spoken_verb(ending)          //and use normal verbs for their own languages and non-common languages
 	else
 		if(ending == "!")
-			speech_verb = "roars"
+			speech_verb = "рычит"
 		else if(ending== "?")
-			speech_verb = "hisses curiously"
+			speech_verb = "любопытно шипит"
 	return speech_verb
 
 

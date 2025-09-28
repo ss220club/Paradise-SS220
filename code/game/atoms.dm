@@ -26,7 +26,7 @@
 	var/germ_level = GERM_LEVEL_AMBIENT
 	/// Filter for actions - used by lighting overlays
 	var/simulated = TRUE
-	var/atom_say_verb = "says"
+	var/atom_say_verb = "говорит"
 	/// What icon the mob uses for speechbubbles
 	var/bubble_icon = "default"
 

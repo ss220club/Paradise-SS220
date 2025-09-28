@@ -6,7 +6,7 @@
 	max_integrity = 200
 	layer = BELOW_OBJ_LAYER
 	armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 50, ACID = 70)
-	atom_say_verb = "beeps"
+	atom_say_verb = "бипает"
 	flags_ricochet = RICOCHET_HARD
 	receive_ricochet_chance_mod = 0.3
 	new_attack_chain = TRUE

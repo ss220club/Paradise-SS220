@@ -5,7 +5,7 @@
 	icon_state = "tdoppler"
 	density = TRUE
 	anchored = TRUE
-	atom_say_verb = "states coldly"
+	atom_say_verb = "докладывает"
 	var/list/logged_explosions = list()
 	var/explosion_target
 	var/datum/tech/toxins/toxins_tech

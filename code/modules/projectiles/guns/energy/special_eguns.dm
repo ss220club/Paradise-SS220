@@ -468,7 +468,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/weak_plasma, /obj/item/ammo_casing/energy/charged_plasma)
 	shaded_charge = TRUE
 	can_holster = TRUE
-	atom_say_verb = "beeps"
+	atom_say_verb = "бипает"
 	bubble_icon = "swarmer"
 	light_color = "#89078E"
 	light_power = 4
