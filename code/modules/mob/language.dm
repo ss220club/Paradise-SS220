@@ -5,10 +5,10 @@
 */
 
 /datum/language
-	var/name = "an unknown language"            // Fluff name of language if any.
+	var/name = "an unknown language"           // Fluff name of language if any.
 	var/desc = "A language."                    // Short description for 'Check Languages'.
 	var/speech_verb = "говорит"                    // 'says', 'hisses', 'farts'.
-	var/ask_verb = "спрашивает"                       // Used when sentence ends in a ?
+	var/ask_verb = list("спрашивает", "уточняет")  // Used when sentence ends in a ?
 	var/list/exclaim_verbs = list("восклицает")   // Used when sentence ends in a !
 	var/whisper_verb                            // Optional. When not specified speech_verb + quietly/softly is used instead.
 	var/colour = "body"                         // CSS style to use for strings in this language.
@@ -234,7 +234,7 @@
 	desc = "The common tongue of the various Vox ships making up the Shoal. It sounds like chaotic shrieking to everyone else."
 	speech_verb = "скрипит"
 	ask_verb = "скрипит"
-	exclaim_verbs = list("громко скрипит")
+	exclaim_verbs = list("громко скрежещет")
 	colour = "vox"
 	key = "v"
 	flags = RESTRICTED | WHITELISTED
