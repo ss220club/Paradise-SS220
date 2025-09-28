@@ -38873,6 +38873,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 1
 	},
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "cXd" = (
@@ -41164,8 +41165,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "dfR" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 1
 	},
 /obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel,
@@ -43328,8 +43329,9 @@
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
 "doI" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
-	name = "Space Loop In"
+/obj/machinery/atmospherics/binary/volume_pump{
+	dir = 1;
+	name = "Space Loop Out"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -47900,7 +47902,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "ezc" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
+/obj/machinery/atmospherics/pipe/manifold4w/visible/yellow,
 /obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -53704,11 +53706,12 @@
 	},
 /area/station/engineering/control)
 "gwz" = (
-/obj/machinery/atmospherics/binary/pump/on{
-	dir = 1
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/asmaint2)
+/obj/machinery/atmospherics/meter,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "gwH" = (
 /obj/machinery/atmospherics/trinary/filter{
 	dir = 4;
@@ -55506,11 +55509,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/binary/volume_pump/on{
 	dir = 1;
-	name = "Air to Distro";
-	on = 1;
-	target_pressure = 4500
+	name = "Air to Distro"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -55806,9 +55807,8 @@
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/fsmaint)
 "hfb" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
-	dir = 1;
-	name = "Space Loop Out"
+/obj/machinery/atmospherics/binary/volume_pump{
+	name = "Space Loop In"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -64900,7 +64900,8 @@
 /area/station/engineering/atmos/control)
 "khY" = (
 /obj/machinery/atmospherics/air_sensor{
-	autolink_id = "o2_sensor"
+	autolink_id = "o2_sensor";
+	output = 127
 	},
 /turf/simulated/floor/engine/o2,
 /area/station/engineering/atmos)
@@ -70304,10 +70305,9 @@
 	},
 /area/station/turret_protected/ai_upload)
 "lXg" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/binary/pump/on{
 	dir = 1;
 	name = "Air to Distro";
-	on = 1;
 	target_pressure = 303
 	},
 /turf/simulated/floor/plasteel{
@@ -72170,6 +72170,7 @@
 	},
 /obj/machinery/light_switch/west,
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow"
 	},
@@ -73184,7 +73185,8 @@
 /area/station/command/teleporter)
 "mVr" = (
 /obj/machinery/atmospherics/air_sensor{
-	autolink_id = "n2_sensor"
+	autolink_id = "n2_sensor";
+	output = 127
 	},
 /turf/simulated/floor/engine/n2,
 /area/station/engineering/atmos)
@@ -97389,6 +97391,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/purple{
 	dir = 1
 	},
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "uLw" = (
@@ -136128,7 +136131,7 @@ cOW
 nVh
 bOr
 cSd
-dfR
+ctJ
 uCC
 cSp
 cRq
@@ -136642,7 +136645,7 @@ osz
 oWM
 dfF
 xaZ
-bAO
+ezc
 clP
 sKK
 mqE
@@ -138184,7 +138187,7 @@ iDh
 nVh
 lwG
 cSd
-dfR
+ctJ
 vts
 cSp
 cRq
@@ -138436,7 +138439,7 @@ jzn
 enG
 dhF
 anh
-cUQ
+gmW
 cSd
 wQr
 fFY
@@ -138698,7 +138701,7 @@ dgg
 dgZ
 cXW
 xaZ
-bAO
+ezc
 yiy
 sKK
 mqE
@@ -138950,7 +138953,7 @@ giQ
 rWB
 cPv
 cop
-gmW
+cUQ
 cSd
 uPV
 cSd
@@ -139726,7 +139729,7 @@ cOB
 oWM
 cSd
 xaZ
-bAO
+ezc
 cDW
 sKK
 mqE
@@ -140490,9 +140493,9 @@ cZc
 cGK
 deW
 dgI
-tch
+deJ
 ctJ
-cUQ
+gmW
 cSd
 qpq
 dkA
@@ -140754,7 +140757,7 @@ cSd
 cSd
 cSd
 xaZ
-bAO
+ezc
 cuu
 sKK
 mqE
@@ -141263,7 +141266,7 @@ drS
 dkA
 deJ
 ctJ
-rHu
+dfR
 cJD
 cJD
 cJD
@@ -141777,12 +141780,12 @@ gYf
 ugT
 dgd
 dgd
-dgd
-cXT
-ezc
+gwz
 cXT
 cXT
-dgd
+cXT
+cXT
+gwz
 cOb
 sKK
 mqE
@@ -150464,7 +150467,7 @@ rvH
 oHA
 gqN
 gNs
-gwz
+bGG
 lvL
 xMK
 rFP
