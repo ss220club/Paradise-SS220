@@ -832,7 +832,7 @@
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 500)
 	build_path = /obj/item/restraints/handcuffs
-	category = list(DESIGN_HACKED, DESIGN_SECURITY, DESIGN_SECURITYMISC)
+	category = list(DESIGN_INITIAL, DESIGN_SECURITYMISC)
 
 /datum/design/receiver
 	name = "Modular Receiver"
