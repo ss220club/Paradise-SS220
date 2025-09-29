@@ -125,7 +125,7 @@
 /obj/machinery/autolathe/mini/departamental/engineering
 	name = "engineering minilathe"
 	desc = "Compact version of the Autolathe. It produces engineering-related items using metal and glass."
-	categories = list("Tools", "Electronics", "Construction", "Machinery", DESIGN_MATERIALS)
+	categories = list(DESIGN_TOOLS, DESIGN_ELECTRONICS, DESIGN_CONSTRUCTION, DESIGN_MACHINERY, DESIGN_MATERIALS)
 	departament_overlay = "overlay_eng"
 	board_type = /obj/item/circuitboard/minilathe/engineering
 
