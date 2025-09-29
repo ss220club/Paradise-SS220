@@ -8484,10 +8484,15 @@
 /area/station/maintenance/fpmaint2)
 "aFV" = (
 /obj/structure/table,
-/obj/item/storage/fancy/cigarettes,
-/obj/item/ashtray/glass,
+/obj/item/ashtray/glass{
+	pixel_x = -7
+	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -16784,6 +16789,7 @@
 /area/station/service/bar/atrium)
 "bjO" = (
 /obj/structure/table/wood,
+/obj/item/storage/fancy/cigarettes/cigpack_robust,
 /turf/simulated/floor/carpet,
 /area/station/hallway/secondary/entry/lounge)
 "bjQ" = (
@@ -16843,9 +16849,6 @@
 /area/station/hallway/primary/port)
 "bkc" = (
 /obj/structure/table/wood,
-/obj/item/storage/fancy/cigarettes{
-	pixel_y = 2
-	},
 /obj/item/lighter{
 	pixel_x = 4;
 	pixel_y = 2
@@ -40942,10 +40945,6 @@
 /obj/item/lighter/zippo/ce{
 	pixel_y = 6
 	},
-/obj/item/storage/fancy/cigarettes{
-	pixel_x = 10;
-	pixel_y = 4
-	},
 /obj/machinery/button/windowtint/west{
 	id = "CE";
 	pixel_y = 8;
@@ -40960,13 +40959,17 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/random/officetoys,
 /obj/item/clipboard{
 	pixel_x = -10
 	},
 /obj/item/folder/yellow{
 	pixel_x = -9
 	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = 11;
+	pixel_y = 6
+	},
+/obj/effect/spawner/random/officetoys,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
 	},
@@ -65656,7 +65659,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/storage/fancy/cigarettes{
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
 	pixel_x = 5
 	},
 /turf/simulated/floor/plasteel{
@@ -90465,15 +90468,15 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/item/storage/fancy/cigarettes{
-	pixel_x = 7;
-	pixel_y = 2
-	},
 /obj/item/ashtray/bronze{
 	pixel_x = -6;
 	pixel_y = -4
 	},
 /obj/machinery/newscaster/directional/north,
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = 7;
+	pixel_y = 4
+	},
 /turf/simulated/floor/wood/fancy,
 /area/station/supply/break_room)
 "sym" = (
