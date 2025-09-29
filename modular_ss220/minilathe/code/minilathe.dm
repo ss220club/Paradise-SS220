@@ -44,7 +44,7 @@
 /obj/machinery/autolathe/mini/departamental
 	name = "StRaNgE mInIlAtHe"
 	desc = "Какой-то странный минилат. Сообщите мистеру-разработчику, если вы вдруг видите его."
-	categories = list("Materials")
+	categories = list(DESIGN_MATERIALS)
 
 /obj/machinery/autolathe/mini/departamental/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -56,7 +56,7 @@
 /obj/machinery/autolathe/mini/departamental/service
 	name = "service minilathe"
 	desc = "Compact version of the Autolathe. It produces service-related items using metal and glass."
-	categories = list("Cookware", "Glassware", "Hydroponical", "Janitorial", "Service Misc.", "Materials")
+	categories = list(DESIGN_COOKWARE, DESIGN_GLASSWARE, DESIGN_HYDROPONICAL, DESIGN_JANITORIAL, DESIGN_SERVICEMISC, DESIGN_MATERIALS)
 	departament_overlay = "overlay_serv"
 	board_type = /obj/item/circuitboard/minilathe/service
 
@@ -79,7 +79,7 @@
 /obj/machinery/autolathe/mini/departamental/medical
 	name = "medical minilathe"
 	desc = "Compact version of the Autolathe. It produces medical-related items using metal and glass."
-	categories = list("Surgical Tools", "Containers", "Medical Misc.", "Materials")
+	categories = list(DESIGN_SURGICAL, DESIGN_CONTAINERS, DESIGN_MEDICALMISC, DESIGN_MATERIALS)
 	departament_overlay = "overlay_med"
 	board_type = /obj/item/circuitboard/minilathe/medical
 
@@ -102,7 +102,7 @@
 /obj/machinery/autolathe/mini/departamental/security
 	name = "security minilathe"
 	desc = "Compact version of the Autolathe. It produces security-related items using metal and glass."
-	categories = list("Ammunition", "Security Misc.", "Materials")
+	categories = list(DESIGN_AMMUNITION, DESIGN_SECURITYMISC, DESIGN_MATERIALS)
 	departament_overlay = "overlay_sec"
 	board_type = /obj/item/circuitboard/minilathe/security
 
@@ -125,7 +125,7 @@
 /obj/machinery/autolathe/mini/departamental/engineering
 	name = "engineering minilathe"
 	desc = "Compact version of the Autolathe. It produces engineering-related items using metal and glass."
-	categories = list("Tools", "Electronics", "Construction", "Machinery", "Materials")
+	categories = list("Tools", "Electronics", "Construction", "Machinery", DESIGN_MATERIALS)
 	departament_overlay = "overlay_eng"
 	board_type = /obj/item/circuitboard/minilathe/engineering
 
