@@ -396,7 +396,7 @@
 	ask_verb = "трепещет"
 	exclaim_verbs = list("жужжит")
 	colour = "moth"
-	key = "№"
+	key = "№" // SS220 EDIT - № prefix is more convenient for ru players
 	flags = RESTRICTED | WHITELISTED
 	join_override = "-"
 	syllables = list("år", "i", "går", "sek", "mo", "ff", "ok", "gj", "ø", "gå", "la", "le",
