@@ -784,17 +784,20 @@
 /area/station/security/storage)
 "aeC" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/drinks/mug/hos{
-	pixel_x = 8;
-	pixel_y = 16
-	},
-/obj/item/lighter/zippo/hos{
-	pixel_x = -4;
-	pixel_y = 14
-	},
-/obj/effect/spawner/random/officetoys,
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stamp/hos{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/pen/multi{
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
@@ -802,14 +805,7 @@
 /obj/machinery/computer/secure_data{
 	dir = 8
 	},
-/obj/machinery/button/windowtint/east{
-	id = "HoS";
-	pixel_y = -8;
-	req_access = list(58)
-	},
-/obj/machinery/keycard_auth/directional/east{
-	pixel_y = 2
-	},
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
 "aeE" = (
@@ -1040,25 +1036,17 @@
 /area/station/maintenance/apmaint2)
 "afM" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin/nanotrasen{
-	pixel_x = 6;
-	pixel_y = -2
-	},
-/obj/item/pen/multi{
-	pixel_x = 8;
-	pixel_y = -1
-	},
-/obj/item/flashlight/lamp/green{
+/obj/item/lighter/zippo/hos{
 	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/machinery/phone,
+/obj/effect/spawner/random/officetoys{
+	pixel_y = -11
+	},
+/obj/item/reagent_containers/drinks/mug/hos{
+	pixel_x = 8;
 	pixel_y = 12
-	},
-/obj/item/stamp/hos{
-	pixel_x = -6;
-	pixel_y = -4
-	},
-/obj/machinery/phone{
-	pixel_y = 13;
-	pixel_x = 8
 	},
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
@@ -2264,7 +2252,6 @@
 	},
 /area/station/security/main)
 "alH" = (
-/obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
 	},
@@ -3271,9 +3258,16 @@
 /obj/machinery/computer/card/minor/hos{
 	dir = 8
 	},
-/obj/machinery/light/directional/east,
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
+	},
+/obj/machinery/keycard_auth/directional/east{
+	pixel_y = 2
+	},
+/obj/machinery/button/windowtint/east{
+	id = "HoS";
+	pixel_y = -8;
+	req_access = list(58)
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
@@ -3683,6 +3677,7 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
 "apW" = (
@@ -3694,6 +3689,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/machinery/firealarm/directional/east,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/office/hos)
 "apY" = (
@@ -3809,9 +3805,6 @@
 	icon_state = "whitepurplefull"
 	},
 /area/station/science/xenobiology)
-"aqG" = (
-/turf/simulated/wall,
-/area/station/command/office/hos)
 "aqH" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -6814,15 +6807,6 @@
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "aAN" = (
-/obj/structure/table,
-/obj/item/taperecorder{
-	pixel_x = -7;
-	pixel_y = -10
-	},
-/obj/item/megaphone{
-	pixel_x = 6;
-	pixel_y = -3
-	},
 /obj/machinery/button/windowtint/east{
 	id = "Magistrate";
 	pixel_y = 6;
@@ -6834,10 +6818,8 @@
 	pixel_y = -6;
 	req_access = list(74)
 	},
-/obj/machinery/phone{
-	pixel_x = -7;
-	pixel_y = 9
-	},
+/obj/machinery/phone,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "aAO" = (
@@ -7238,30 +7220,34 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "aCi" = (
-/obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law{
-	pixel_x = -9;
-	pixel_y = 6
-	},
 /obj/item/pen/multi/gold{
-	pixel_x = -22;
-	pixel_y = 8
+	pixel_x = -26;
+	pixel_y = 4
 	},
+/obj/item/taperecorder{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/megaphone{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/structure/table/wood,
 /obj/item/clothing/head/helmet/skull/yorick{
-	pixel_x = 7;
-	pixel_y = 9
+	pixel_y = 3
 	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "aCj" = (
-/obj/structure/table,
 /obj/item/paper_bin/nanotrasen{
-	pixel_x = 4
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /obj/item/stamp/magistrate{
-	pixel_y = 7;
-	pixel_x = -7
+	pixel_y = 4;
+	pixel_x = -6
 	},
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "aCl" = (
@@ -8234,10 +8220,6 @@
 /obj/structure/table,
 /obj/item/folder/blue{
 	pixel_x = 7;
-	pixel_y = 1
-	},
-/obj/item/paper_bin{
-	pixel_x = -6;
 	pixel_y = 4
 	},
 /obj/structure/cable{
@@ -8247,14 +8229,17 @@
 	dir = 4
 	},
 /obj/item/folder/yellow{
-	pixel_x = 10;
-	pixel_y = 1
-	},
-/obj/item/pen/multi{
-	pixel_x = -6;
-	pixel_y = 8
+	pixel_x = 7;
+	pixel_y = 2
 	},
 /obj/effect/turf_decal/siding/wood/cherry,
+/obj/item/folder/red{
+	pixel_x = 7
+	},
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_x = -7;
+	pixel_y = 3
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/magistrate)
 "aFs" = (
@@ -18238,13 +18223,10 @@
 "bpu" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/wiki/sop_command{
-	pixel_x = 5;
-	pixel_y = -4
+	pixel_x = 6;
+	pixel_y = 3
 	},
-/obj/machinery/phone{
-	pixel_x = -1;
-	pixel_y = 11
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel{
 	icon_state = "navyblue";
 	dir = 8
@@ -19297,9 +19279,7 @@
 /obj/effect/mapping_helpers/airlock/windoor/access/all/procedure/trainer{
 	dir = 4
 	},
-/obj/item/paicard{
-	pixel_y = 2
-	},
+/obj/item/paicard,
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
 "btH" = (
@@ -21013,10 +20993,7 @@
 	pixel_y = -32
 	},
 /obj/structure/table/wood/fancy/blue,
-/obj/machinery/phone{
-	pixel_y = 8;
-	pixel_x = -2
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutral"
 	},
@@ -21822,13 +21799,20 @@
 "bGe" = (
 /obj/structure/table/glass,
 /obj/item/clipboard{
-	pixel_y = 2
+	pixel_y = 4;
+	pixel_x = 7
 	},
-/obj/item/stamp/cmo,
-/obj/effect/spawner/random/officetoys,
-/obj/item/lighter/zippo/cmo{
-	pixel_x = 16;
-	pixel_y = 4
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/pen{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/stamp/cmo{
+	pixel_x = 7;
+	pixel_y = 5
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -25718,11 +25702,17 @@
 /area/station/hallway/primary/central/se)
 "bXf" = (
 /obj/structure/table/wood,
-/obj/item/megaphone{
-	pixel_x = 2;
-	pixel_y = 11
+/obj/item/flashlight/lamp/green{
+	pixel_y = 9
 	},
-/obj/item/flashlight/lamp/green,
+/obj/item/lighter/zippo/engraved{
+	pixel_x = 8;
+	pixel_y = -12
+	},
+/obj/item/megaphone{
+	pixel_x = -2;
+	pixel_y = -10
+	},
 /turf/simulated/floor/carpet,
 /area/station/supply/qm)
 "bXq" = (
@@ -25936,22 +25926,11 @@
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/asmaint2)
 "bYr" = (
-/obj/item/paper_bin{
-	pixel_y = -5;
-	pixel_x = -6
-	},
-/obj/item/pen{
-	pixel_y = -5;
-	pixel_x = -5
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/structure/table/wood,
-/obj/machinery/phone{
-	pixel_y = 8;
-	pixel_x = -2
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet,
 /area/station/supply/qm)
 "bYu" = (
@@ -27419,7 +27398,19 @@
 	},
 /area/station/hallway/primary/central/south)
 "cdO" = (
-/obj/structure/closet,
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/taperecorder{
+	pixel_x = 8;
+	pixel_y = 4
+	},
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
 "cdP" = (
@@ -27681,23 +27672,24 @@
 "ceN" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
-	pixel_x = -6;
-	pixel_y = 16
-	},
-/obj/item/paicard{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/obj/item/aicard{
 	pixel_x = -7;
-	pixel_y = -2
+	pixel_y = 4
 	},
-/obj/item/circuitboard/aicore{
-	pixel_x = -1;
-	pixel_y = -4
+/obj/item/folder/white{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/paper/monitorkey{
+	pixel_x = 7;
+	pixel_y = 3
 	},
 /obj/item/stamp/rd{
-	pixel_x = 8
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/obj/item/pen/multi{
+	pixel_x = -6;
+	pixel_y = 3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -27966,9 +27958,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "cgc" = (
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: <<<"
-	},
 /obj/structure/table/wood,
 /obj/machinery/door_control/normal{
 	id = "captainofficedoor";
@@ -27977,58 +27966,26 @@
 	req_access = list(20);
 	pixel_x = 7
 	},
-/obj/item/paper_bin/nanotrasen{
-	pixel_x = -10;
-	pixel_y = 4
-	},
-/obj/item/pen/multi/fountain{
-	pixel_x = -10;
-	pixel_y = 4
-	},
 /obj/item/folder/blue{
-	pixel_y = 8;
-	pixel_x = 6
+	pixel_y = 7;
+	pixel_x = 8
 	},
 /obj/item/paper/safe_code{
 	owner = "captain";
-	pixel_x = 6;
-	pixel_y = 8
+	pixel_x = 9;
+	pixel_y = 6
 	},
 /obj/item/stamp/captain{
-	pixel_x = 3;
+	pixel_x = 10;
 	pixel_y = 8
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: ---"
-	},
-/obj/structure/table/wood,
-/obj/item/folder/blue{
-	pixel_y = 8
-	},
-/obj/machinery/door_control/normal{
-	id = "captainofficedoor";
-	name = "Office Door";
-	pixel_y = -3;
-	req_access = list(20)
-	},
-/obj/item/paper/safe_code{
-	owner = "captain";
-	pixel_x = 11;
-	pixel_y = 4
 	},
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 6;
-	pixel_x = -11
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/fountain{
-	pixel_y = 8;
-	pixel_x = -11
-	},
-/obj/item/stamp/captain{
-	pixel_x = -10
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: >>>"
+	pixel_x = -5;
+	pixel_y = 4
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
@@ -28402,7 +28359,9 @@
 /area/station/medical/surgery/primary)
 "chM" = (
 /obj/structure/displaycase/labcage,
-/obj/structure/sign/poster/contraband/lamarr/directional/north,
+/obj/machinery/computer/security/telescreen/rd{
+	pixel_y = 32
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkpurple"
@@ -28417,8 +28376,6 @@
 /area/station/command/office/rd)
 "chO" = (
 /obj/structure/table/glass,
-/obj/item/pen/multi,
-/obj/item/radio/intercom/directional/north,
 /obj/machinery/camera{
 	c_tag = "Research Director's Office";
 	network = list("Research","SS13")
@@ -28427,6 +28384,7 @@
 	pixel_x = 10;
 	pixel_y = 8
 	},
+/obj/item/radio/intercom/directional/north,
 /obj/item/taperecorder{
 	pixel_x = -6;
 	pixel_y = 4
@@ -29082,6 +29040,11 @@
 "ckE" = (
 /obj/structure/table/glass,
 /obj/item/eftpos{
+	pixel_y = 3;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/bottle/morphine{
+	pixel_x = -7;
 	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -29249,12 +29212,31 @@
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/asmaint2)
 "clj" = (
-/obj/machinery/computer/security/telescreen/rd{
-	pixel_y = 2
-	},
 /obj/structure/table/glass,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
+	},
+/obj/machinery/door_control/shutter{
+	id = "Biohazard";
+	name = "Biohazard Shutter Control";
+	pixel_x = -8;
+	pixel_y = 8;
+	req_access = list(30)
+	},
+/obj/machinery/door_control/normal{
+	id = "rdofficedoor";
+	name = "Office Door";
+	pixel_x = -8;
+	pixel_y = -2;
+	req_access = list(30)
+	},
+/obj/item/aicard{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/circuitboard/aicore{
+	pixel_x = 7;
+	pixel_y = 3
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -29266,36 +29248,11 @@
 	},
 /area/station/command/office/cmo)
 "cln" = (
-/obj/machinery/door_control/shutter{
-	id = "Biohazard";
-	name = "Biohazard Shutter Control";
-	pixel_x = -8;
-	pixel_y = 8;
-	req_access = list(30)
-	},
 /obj/structure/table/glass,
-/obj/machinery/door_control/normal{
-	id = "rdofficedoor";
-	name = "Office Door";
-	pixel_x = -8;
-	pixel_y = -2;
-	req_access = list(30)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/phone{
-	pixel_y = -1;
-	pixel_x = 8
-	},
-/obj/item/paper/monitorkey{
-	pixel_x = 8;
-	pixel_y = 12
-	},
-/obj/item/folder/white{
-	pixel_x = 5;
-	pixel_y = 10
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkpurple"
@@ -29306,8 +29263,8 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/west,
-/obj/machinery/light_switch/west,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/keycard_auth/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkpurple"
@@ -41007,9 +40964,6 @@
 /area/station/command/office/hos)
 "deY" = (
 /obj/structure/table/reinforced,
-/obj/item/lighter/zippo/ce{
-	pixel_y = 6
-	},
 /obj/item/storage/fancy/cigarettes{
 	pixel_x = 10;
 	pixel_y = 4
@@ -41028,12 +40982,24 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/random/officetoys,
 /obj/item/clipboard{
-	pixel_x = -10
+	pixel_x = -12;
+	pixel_y = 2
 	},
 /obj/item/folder/yellow{
-	pixel_x = -9
+	pixel_x = -11;
+	pixel_y = 2
+	},
+/obj/item/lighter/zippo/ce{
+	pixel_y = 6
+	},
+/obj/item/paper/tcommskey{
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/item/stamp/ce{
+	pixel_x = -12;
+	pixel_y = 3
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
@@ -41845,33 +41811,8 @@
 	},
 /area/station/hallway/primary/central/north)
 "diy" = (
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: <<<"
-	},
 /obj/structure/table/wood,
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/item/hand_tele{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: ---"
-	},
-/obj/structure/table/wood,
-/obj/item/hand_tele{
-	pixel_x = 9;
-	pixel_y = 9
-	},
-/obj/machinery/phone{
-	pixel_x = -4;
-	pixel_y = 1
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: >>>"
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
 "diB" = (
@@ -43661,12 +43602,7 @@
 	},
 /obj/structure/table/wood,
 /obj/machinery/newscaster/security_unit/directional/south,
-/obj/item/kirbyplants/small{
-	pixel_y = 8
-	},
-/obj/item/storage/fancy/cigars{
-	pixel_y = 17
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "dpu" = (
@@ -47556,23 +47492,8 @@
 /area/station/security/brig)
 "eqL" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 11
-	},
-/obj/item/pen{
-	pixel_x = 5;
-	pixel_y = 10
-	},
 /obj/structure/window/reinforced,
-/obj/item/taperecorder{
-	pixel_x = 17;
-	pixel_y = 3
-	},
-/obj/machinery/phone{
-	pixel_x = -6;
-	pixel_y = -2
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
 "eqO" = (
@@ -48530,7 +48451,13 @@
 /area/station/engineering/gravitygenerator)
 "eIP" = (
 /obj/structure/table/wood,
-/obj/item/kirbyplants/small,
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_y = 8
+	},
+/obj/item/hand_tele{
+	pixel_x = -12;
+	pixel_y = 6
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
 "eIS" = (
@@ -49458,15 +49385,19 @@
 	},
 /area/station/medical/virology)
 "fav" = (
-/obj/item/folder/yellow{
-	pixel_x = -11;
-	pixel_y = 4
-	},
 /obj/effect/spawner/random/officetoys{
 	pixel_x = 4;
 	pixel_y = 4
 	},
 /obj/structure/table/wood,
+/obj/item/clipboard{
+	pixel_y = 3;
+	pixel_x = -12
+	},
+/obj/item/folder/yellow{
+	pixel_x = -11;
+	pixel_y = 4
+	},
 /turf/simulated/floor/carpet,
 /area/station/supply/qm)
 "faB" = (
@@ -50917,6 +50848,10 @@
 /obj/item/flashlight/lamp/green{
 	pixel_x = -6;
 	pixel_y = 5
+	},
+/obj/item/clipboard{
+	pixel_x = 9;
+	pixel_y = 4
 	},
 /obj/item/paper/ntrep{
 	pixel_x = 9;
@@ -53672,21 +53607,8 @@
 /area/station/security/permabrig)
 "guJ" = (
 /obj/structure/table/reinforced,
-/obj/item/paper_bin{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/paper/tcommskey{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/obj/item/stamp/ce{
-	pixel_x = 7
-	},
-/obj/item/pen/multi{
-	pixel_x = -5;
-	pixel_y = 6
-	},
+/obj/machinery/phone,
+/obj/effect/spawner/random/officetoys,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
 	},
@@ -54026,19 +53948,12 @@
 /area/station/maintenance/apmaint)
 "gAS" = (
 /obj/structure/table/glass,
-/obj/item/paper_bin{
-	pixel_x = -10;
-	pixel_y = 6
-	},
-/obj/item/pen{
-	pixel_x = -8;
-	pixel_y = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/phone{
-	pixel_y = 2;
-	pixel_x = 8
+/obj/machinery/phone,
+/obj/item/lighter/zippo/cmo{
+	pixel_x = 8;
+	pixel_y = 16
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -59449,6 +59364,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/item/lighter/zippo/rd,
 /obj/item/megaphone,
+/obj/structure/sign/poster/contraband/lamarr/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkpurple"
@@ -63081,29 +62997,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
 "jyT" = (
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: <<<"
-	},
 /obj/structure/table/wood,
-/obj/item/phone{
-	desc = "Предположительно, это прямая линия с центральным командованием Нанотрейзен. Он даже не подключен.";
-	name = "красный телефон";
-	pixel_x = 8
-	},
 /obj/item/toy/deskflag/nanotrasen{
-	pixel_x = -7;
-	pixel_y = 6
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: ---"
-	},
-/obj/structure/table/wood,
-/obj/machinery/phone{
-	pixel_y = 8;
-	pixel_x = -2
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: >>>"
+	pixel_y = 8
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
@@ -65698,23 +65594,27 @@
 "kst" = (
 /obj/item/cartridge/signal/toxins{
 	pixel_x = -6;
-	pixel_y = 8
+	pixel_y = 10
 	},
 /obj/structure/table/glass,
-/obj/item/book/manual/wiki/sop_science{
-	pixel_x = 6;
-	pixel_y = 2
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/item/cartridge/signal/toxins{
 	pixel_x = -6;
-	pixel_y = 2
+	pixel_y = 12
+	},
+/obj/item/paicard{
+	pixel_x = 7;
+	pixel_y = 3
 	},
 /obj/item/cartridge/signal/toxins{
 	pixel_x = -6;
-	pixel_y = -4
+	pixel_y = 14
+	},
+/obj/item/book/manual/wiki/sop_science{
+	pixel_x = -6;
+	pixel_y = -1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -66273,19 +66173,6 @@
 	icon_state = "darkblue"
 	},
 /area/station/command/office/cmo)
-"kBQ" = (
-/obj/structure/table/wood,
-/obj/item/stack/package_wrap,
-/obj/item/assembly/timer{
-	pixel_x = -4;
-	pixel_y = 12
-	},
-/obj/item/hand_labeler{
-	pixel_x = 2;
-	pixel_y = 10
-	},
-/turf/simulated/floor/carpet/black,
-/area/station/command/meeting_room)
 "kCd" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
@@ -68938,12 +68825,12 @@
 	icon_state = "4-8"
 	},
 /obj/item/storage/fancy/donut_box{
-	pixel_x = 8;
-	pixel_y = 1
+	pixel_x = 12;
+	pixel_y = 2
 	},
 /obj/item/toy/deskflag/nanotrasen{
-	pixel_x = -8;
-	pixel_y = 4
+	pixel_x = -6;
+	pixel_y = 8
 	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/blueshield)
@@ -73599,58 +73486,24 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/electrical)
 "mYp" = (
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: <<<"
-	},
-/obj/structure/table/wood,
-/obj/item/clipboard{
-	pixel_x = -5;
-	pixel_y = 4
-	},
-/obj/item/folder{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/obj/item/pen/multi/fountain{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stamp/rep{
-	pixel_x = -5;
-	pixel_y = 10
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/item/toy/deskflag/nanotrasen{
-	pixel_x = 7;
-	pixel_y = 6
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: ---"
+	pixel_x = 6;
+	pixel_y = 8
 	},
 /obj/structure/table/wood,
-/obj/item/clipboard{
-	pixel_x = -8
+/obj/item/taperecorder{
+	pixel_x = -6;
+	pixel_y = 4
 	},
-/obj/item/folder{
-	pixel_x = -7
+/obj/item/lighter/zippo/nt_rep{
+	pixel_x = -6;
+	pixel_y = 4
 	},
-/obj/item/pen/multi/fountain{
-	pixel_x = -4
-	},
-/obj/item/stamp/rep{
-	pixel_x = -10
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/phone{
-	pixel_x = 5;
-	pixel_y = 7
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: >>>"
+/obj/item/storage/fancy/cigars{
+	pixel_y = -10
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
@@ -75551,10 +75404,6 @@
 	},
 /area/station/command/bridge)
 "nBz" = (
-/obj/item/clipboard{
-	pixel_y = 3;
-	pixel_x = 4
-	},
 /obj/item/stamp/granted{
 	pixel_x = -7;
 	pixel_y = 11
@@ -75567,15 +75416,15 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/obj/item/lighter/zippo/engraved{
-	pixel_x = 9;
-	pixel_y = 20
-	},
-/obj/item/pen/red{
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/obj/item/pen{
+	pixel_y = 3;
+	pixel_x = 6
+	},
 /turf/simulated/floor/carpet,
 /area/station/supply/qm)
 "nBI" = (
@@ -81841,24 +81690,24 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "pzQ" = (
-/obj/structure/table/wood,
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/item/taperecorder{
-	pixel_x = 9;
-	pixel_y = 4
-	},
-/obj/item/lighter/zippo/nt_rep{
-	pixel_x = 10;
-	pixel_y = 4
-	},
 /obj/item/paper_bin{
 	pixel_x = -6;
 	pixel_y = 4
+	},
+/obj/structure/table/wood,
+/obj/item/pen/multi/fountain{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/stamp/rep{
+	pixel_x = 7;
+	pixel_y = 5
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
@@ -88253,45 +88102,15 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
 "rHn" = (
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: <<<"
-	},
 /obj/structure/table/wood,
 /obj/machinery/requests_console/directional/south,
 /obj/effect/turf_decal/siding/wood/oak,
-/obj/item/kirbyplants/small{
-	pixel_x = -4;
-	pixel_y = 9
-	},
 /obj/machinery/camera{
 	c_tag = "HoP Office";
 	dir = 1
 	},
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_x = 6;
-	pixel_y = 3
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: ---"
-	},
 /obj/structure/table/wood,
-/obj/machinery/requests_console/directional/south,
-/obj/effect/turf_decal/siding/wood/oak,
-/obj/item/kirbyplants/small{
-	pixel_x = -4;
-	pixel_y = 9
-	},
-/obj/machinery/camera{
-	c_tag = "HoP Office";
-	dir = 1
-	},
-/obj/machinery/phone{
-	pixel_x = 12;
-	pixel_y = 1
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: >>>"
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/command/office/hop)
 "rHu" = (
@@ -89239,6 +89058,11 @@
 	icon_state = "dark"
 	},
 /area/station/command/bridge)
+"rYY" = (
+/obj/structure/table/wood,
+/obj/machinery/phone,
+/turf/simulated/floor/carpet/black,
+/area/station/command/meeting_room)
 "rZd" = (
 /obj/structure/railing/cap/normal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -90453,17 +90277,17 @@
 	dir = 4
 	},
 /obj/machinery/firealarm/directional/south,
-/obj/item/eftpos{
-	pixel_x = 4;
-	pixel_y = 2
-	},
 /obj/item/paper_bin/nanotrasen{
-	pixel_x = -5;
-	pixel_y = 3
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_x = -3;
+	pixel_x = -6;
 	pixel_y = 4
+	},
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/command/office/hop)
@@ -96239,19 +96063,20 @@
 /area/station/science/server/coldroom)
 "ula" = (
 /obj/structure/table/glass,
-/obj/item/reagent_containers/glass/bottle/morphine{
-	pixel_x = 8;
-	pixel_y = 6
-	},
 /obj/item/clothing/glasses/hud/health/sunglasses{
-	pixel_y = -12
-	},
-/obj/item/book/manual/wiki/sop_medical{
-	pixel_x = -6;
-	pixel_y = 2
+	pixel_y = -16;
+	pixel_x = -1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/item/book/manual/wiki/sop_medical{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_x = 6;
+	pixel_y = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -99950,11 +99775,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "vwC" = (
-/obj/machinery/keycard_auth/directional/south,
 /obj/machinery/computer/ai_resource{
 	dir = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/newscaster/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkpurple"
 	},
@@ -102647,15 +102472,12 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "wqu" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/newscaster/directional/south,
 /obj/structure/table/glass,
 /obj/machinery/photocopier/faxmachine/longrange{
 	pixel_y = 4;
 	department = "Research Director's Office"
 	},
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkpurple"
@@ -106921,13 +106743,13 @@
 /area/station/security/prisonlockers)
 "xJE" = (
 /obj/structure/table/reinforced,
-/obj/machinery/phone{
-	pixel_y = -1;
-	pixel_x = -8
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 4
 	},
-/obj/item/flashlight/lamp{
-	pixel_y = 14;
-	pixel_x = -8
+/obj/item/pen/multi{
+	pixel_x = -5;
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
@@ -134936,7 +134758,7 @@ olN
 iOD
 biZ
 sBO
-kBQ
+oUZ
 xVq
 uwP
 hBs
@@ -135190,7 +135012,7 @@ bkR
 gaY
 nOD
 ulC
-oUZ
+rYY
 hoS
 ciu
 jSZ
@@ -143619,7 +143441,7 @@ amT
 aHq
 apQ
 aih
-aqG
+aih
 agV
 npc
 qFW
@@ -143876,7 +143698,7 @@ amS
 ajV
 ajV
 kTA
-aqG
+aih
 ajJ
 asy
 lme
@@ -144133,7 +143955,7 @@ anb
 uaf
 cGB
 apV
-aqG
+aih
 ahD
 uAG
 atg
@@ -144390,7 +144212,7 @@ aeC
 ahm
 tWh
 apU
-aqG
+aih
 aqX
 tls
 atg

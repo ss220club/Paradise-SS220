@@ -2159,17 +2159,7 @@
 "apb" = (
 /obj/structure/table/wood,
 /obj/machinery/status_display/directional/north,
-/obj/item/paper_bin{
-	pixel_y = 1;
-	pixel_x = -6
-	},
-/obj/item/pen{
-	pixel_x = -7
-	},
-/obj/machinery/phone{
-	pixel_y = 4;
-	pixel_x = 9
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
 "apc" = (
@@ -2413,17 +2403,27 @@
 "apR" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue{
-	pixel_x = 5;
-	pixel_y = 5
+	pixel_x = -4;
+	pixel_y = 3
 	},
-/obj/item/folder/yellow,
-/obj/item/pen,
 /obj/machinery/door/window/classic/normal{
 	name = "Glass Door";
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/all/procedure/trainer{
 	dir = 8
+	},
+/obj/item/folder/yellow{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/paper_bin{
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/obj/item/pen{
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
@@ -5941,39 +5941,39 @@
 "aBG" = (
 /obj/structure/table/wood,
 /obj/item/clipboard{
-	pixel_x = -4;
-	pixel_y = 2
+	pixel_x = -7;
+	pixel_y = 3
 	},
 /obj/item/paper_bin{
-	pixel_y = 2;
-	pixel_x = 12
+	pixel_y = 3;
+	pixel_x = 7
 	},
 /obj/item/pen/multi{
 	pixel_y = 2;
-	pixel_x = 12
+	pixel_x = 8
 	},
-/obj/item/dest_tagger{
-	pixel_x = -1;
-	pixel_y = 6
+/obj/item/coin/silver{
+	pixel_y = 5;
+	pixel_x = -11
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/qm)
 "aBH" = (
 /obj/structure/table/wood,
-/obj/item/stamp/granted{
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/obj/item/stamp/denied{
-	pixel_x = -8
-	},
 /obj/item/stamp/qm{
-	pixel_x = 2;
-	pixel_y = 8
+	pixel_x = -8;
+	pixel_y = 12
 	},
 /obj/item/flashlight/lamp/green/off{
 	pixel_y = 4;
 	pixel_x = 6
+	},
+/obj/item/stamp/granted{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/item/stamp/denied{
+	pixel_x = -8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -7548,7 +7548,11 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/clothing/glasses/hud/health/sunglasses,
+/obj/item/clothing/glasses/hud/health/sunglasses{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/effect/spawner/random/officetoys,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whiteblue"
@@ -16684,10 +16688,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/ai_status_display/directional/north,
 /obj/machinery/light/directional/north,
-/obj/machinery/phone{
-	pixel_x = -1;
-	pixel_y = 3
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
 "bxq" = (
@@ -21184,10 +21185,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/phone{
-	pixel_y = 4;
-	pixel_x = -1
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet,
 /area/station/command/meeting_room)
 "bMU" = (
@@ -21212,16 +21210,13 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/turret_protected/ai_upload)
 "bMZ" = (
-/obj/machinery/phone{
-	pixel_y = 2;
-	pixel_x = -2
-	},
 /obj/structure/table/glass,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel/dark,
 /area/station/turret_protected/ai_upload)
 "bNa" = (
@@ -22700,10 +22695,7 @@
 	pixel_x = 12;
 	pixel_y = 12
 	},
-/obj/machinery/phone{
-	pixel_y = 8;
-	pixel_x = -2
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -22992,10 +22984,7 @@
 	pixel_y = 10
 	},
 /obj/machinery/status_display/directional/east,
-/obj/machinery/phone{
-	pixel_y = 2;
-	pixel_x = -2
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet/black,
 /area/station/command/office/captain)
 "bST" = (
@@ -25595,17 +25584,13 @@
 /area/station/command/office/blueshield)
 "cce" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/sop_command{
-	pixel_x = -6;
-	pixel_y = 14
-	},
 /obj/item/folder/blue{
-	pixel_x = 8;
-	pixel_y = 12
+	pixel_x = 4;
+	pixel_y = 5
 	},
 /obj/item/paper/blueshield{
-	pixel_x = -4;
-	pixel_y = -2
+	pixel_x = 1;
+	pixel_y = 3
 	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/blueshield)
@@ -25982,18 +25967,7 @@
 /area/station/command/office/ntrep)
 "cdK" = (
 /obj/structure/table/wood,
-/obj/item/stamp/rep{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/paper_bin/nanotrasen{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/pen/multi/fountain{
-	pixel_x = -4;
-	pixel_y = 4
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "cdN" = (
@@ -26030,6 +26004,18 @@
 /obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/book/manual/wiki/sop_command{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/pen/blue{
+	pixel_x = 7;
+	pixel_y = 3
 	},
 /turf/simulated/floor/carpet/blue,
 /area/station/command/office/blueshield)
@@ -26141,18 +26127,15 @@
 	pixel_y = 6;
 	pixel_x = 6
 	},
-/obj/item/ashtray/glass{
-	pixel_x = -8;
-	pixel_y = -4
+/obj/item/stamp/magistrate{
+	pixel_x = 7
 	},
-/obj/item/clothing/mask/cigarette/cigar/cohiba,
-/obj/item/lighter/zippo/engraved{
+/obj/item/gavelblock{
+	pixel_x = -7
+	},
+/obj/item/gavelhammer{
 	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/flashlight/lamp/green{
-	pixel_y = -10;
-	pixel_x = -5
+	pixel_y = 1
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/legal/magistrate)
@@ -26719,10 +26702,20 @@
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "cgS" = (
-/obj/structure/table/wood,
-/obj/item/clothing/head/helmet/skull/yorick,
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
+	},
+/obj/item/lighter/zippo/engraved{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/structure/table/wood,
+/obj/item/clothing/mask/cigarette/cigar/cohiba{
+	pixel_x = -4
+	},
+/obj/item/clothing/head/helmet/skull/yorick{
+	pixel_x = 8;
+	pixel_y = 4
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/magistrate)
@@ -34470,10 +34463,13 @@
 	pixel_x = -5
 	},
 /obj/item/ashtray/bronze{
-	pixel_x = 4;
-	pixel_y = 2
+	pixel_x = -5
 	},
 /obj/item/clothing/mask/cigarette/cigar,
+/obj/item/lighter/zippo/hos{
+	pixel_x = 8;
+	pixel_y = 7
+	},
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
 "cPb" = (
@@ -38162,11 +38158,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/ce)
 "dfV" = (
-/obj/structure/chair/office{
-	dir = 8
-	},
 /obj/machinery/light/directional/north,
-/obj/effect/landmark/start/research_director,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -49581,11 +49573,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/computer/secure_data/laptop{
-	dir = 8;
-	pixel_y = -5
-	},
-/obj/machinery/phone{
-	pixel_y = 11
+	dir = 8
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/legal/magistrate)
@@ -55384,8 +55372,8 @@
 	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_y = 3;
+	pixel_x = -5
 	},
 /obj/machinery/button/windowtint/east{
 	id = "CMO";
@@ -55404,7 +55392,7 @@
 	},
 /obj/item/cartridge/chemistry{
 	pixel_y = 4;
-	pixel_x = -6
+	pixel_x = 7
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -55925,15 +55913,15 @@
 /area/station/maintenance/fsmaint)
 "gQg" = (
 /obj/structure/table/wood,
-/obj/item/gavelblock,
-/obj/item/stamp/magistrate{
-	pixel_x = 7;
-	pixel_y = 8
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/gavelhammer,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 14;
+	pixel_x = -7;
+	layer = 4
+	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet/royalblack,
 /area/station/legal/magistrate)
 "gQm" = (
@@ -61852,7 +61840,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/kirbyplants/large,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkpurple"
@@ -63975,19 +63962,12 @@
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/solar_maintenance/aft_starboard)
 "jpn" = (
-/obj/item/coin/silver{
-	pixel_y = 6;
-	pixel_x = -6
-	},
 /obj/structure/table/wood,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/phone{
-	pixel_y = 8;
-	pixel_x = 9
-	},
 /obj/effect/spawner/random/officetoys,
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "purple"
@@ -64097,10 +64077,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/effect/spawner/random/officetoys,
-/obj/machinery/phone{
-	pixel_y = 13
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
 "jqD" = (
@@ -65188,23 +65165,22 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
 "jIR" = (
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: <<<"
-	},
 /obj/structure/table/wood,
 /obj/item/folder{
+	pixel_y = 4;
+	pixel_x = 7
+	},
+/obj/item/stamp/rep{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/pen/multi/fountain{
+	pixel_x = -6;
 	pixel_y = 3
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: ---"
-	},
-/obj/structure/table/wood,
-/obj/machinery/phone{
-	pixel_y = 11;
-	pixel_x = -2
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: >>>"
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
@@ -77503,10 +77479,7 @@
 /area/station/hallway/secondary/entry)
 "nCQ" = (
 /obj/structure/table/wood,
-/obj/item/flashlight/lamp{
-	pixel_x = -4;
-	pixel_y = 4
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/hop)
 "nCT" = (
@@ -93198,18 +93171,14 @@
 /area/station/service/hydroponics)
 "srQ" = (
 /obj/structure/table/glass,
-/obj/item/book/manual/wiki/sop_science{
-	pixel_y = 4;
-	pixel_x = 6
+/obj/machinery/phone,
+/obj/item/lighter/zippo/rd{
+	pixel_y = 6;
+	pixel_x = 8
 	},
-/obj/item/book/manual/research_and_development{
-	pixel_y = 8;
-	pixel_x = 6
-	},
-/obj/effect/spawner/random/officetoys,
-/obj/machinery/phone{
-	pixel_y = 8;
-	pixel_x = -2
+/obj/item/reagent_containers/drinks/mug/rd{
+	pixel_x = -7;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
@@ -97623,9 +97592,9 @@
 	pixel_y = -1;
 	req_access = list(57)
 	},
-/obj/machinery/phone{
-	pixel_y = 9;
-	pixel_x = 9
+/obj/item/flashlight/lamp{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/hop)
@@ -99711,12 +99680,9 @@
 /area/station/public/arcade)
 "usY" = (
 /obj/structure/table/glass,
-/obj/effect/spawner/random/officetoys,
 /obj/machinery/light/directional/east,
 /obj/machinery/ai_status_display/directional/east,
-/obj/machinery/phone{
-	pixel_y = 13
-	},
+/obj/machinery/phone,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -101531,18 +101497,6 @@
 /area/station/medical/medbay2)
 "uWB" = (
 /obj/structure/table/glass,
-/obj/item/clipboard{
-	pixel_x = 8
-	},
-/obj/item/paper/monitorkey{
-	pixel_x = -8
-	},
-/obj/item/folder/blue{
-	pixel_x = 8
-	},
-/obj/item/stamp/rd{
-	pixel_x = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -101552,10 +101506,29 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/item/reagent_containers/drinks/mug/rd,
-/obj/item/lighter/zippo/rd{
+/obj/item/book/manual/wiki/sop_science{
 	pixel_y = 4;
-	pixel_x = 6
+	pixel_x = 9
+	},
+/obj/item/book/manual/research_and_development{
+	pixel_y = 8;
+	pixel_x = 9
+	},
+/obj/item/clipboard{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/folder/blue{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/paper/monitorkey{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/stamp/rd{
+	pixel_x = -6;
+	pixel_y = 5
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/rd)
@@ -109649,15 +109622,15 @@
 	icon_state = "1-2"
 	},
 /obj/item/clipboard{
-	pixel_x = -4
+	pixel_x = -6;
+	pixel_y = 3
 	},
 /obj/item/stamp/hos{
-	pixel_x = 8;
-	pixel_y = 8
+	pixel_x = -5;
+	pixel_y = 4
 	},
-/obj/item/lighter/zippo/hos{
-	pixel_x = -4;
-	pixel_y = 18
+/obj/effect/spawner/random/officetoys{
+	pixel_y = -9
 	},
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
@@ -110075,6 +110048,16 @@
 /obj/item/radio/intercom/directional/east,
 /turf/simulated/floor/carpet,
 /area/station/medical/psych)
+"xKH" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/landmark/start/research_director,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "darkpurple"
+	},
+/area/station/command/office/rd)
 "xKL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -141760,7 +141743,7 @@ vSs
 dda
 dff
 dfV
-gtA
+xKH
 ueI
 eeA
 dwj
