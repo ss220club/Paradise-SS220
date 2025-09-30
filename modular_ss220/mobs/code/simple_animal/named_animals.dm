@@ -10,7 +10,7 @@
 	maxHealth = 80
 	health = 80
 
-/mob/living/simple_animal/hostile/retaliate/goat/chef
+/mob/living/basic/goat/chef
 	name = "Боря"
 	desc = "Этот козёл - парнокопытное гурме шефа, в его мрачных глазах-бусинках так и читается амибициозный нрав! Он не твой друг, ведь за каждым игривым прыжком может скрываться неожиданный выпад."
 	gold_core_spawnable = NO_SPAWN
@@ -20,19 +20,15 @@
 	desc = "Старая добрая старушка. Нескончаемый источник природного молока без ГМО. Ну почти без ГМО..."
 	gold_core_spawnable = NO_SPAWN
 
-/mob/living/simple_animal/chicken/wife
+/mob/living/basic/chicken/wife
 	name = "Галя"
 	desc = "Почетная наседка. Жена Коммандора, следующая за ним в коммандировки по космическим станциям."
 	icon_state = "chicken_white"
 	icon_living = "chicken_white"
 	icon_dead = "chicken_white_dead"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 20
 	health = 20
-
-/mob/living/simple_animal/chicken/wife/npc_safe(mob/user) // depriving the chef of his animals is not cool
-	return FALSE
 
 /mob/living/simple_animal/cock/clucky
 	name = "Коммандор Клакки"
@@ -46,7 +42,7 @@
 /mob/living/simple_animal/cock/clucky/npc_safe(mob/user) // depriving the chef of his animals is not cool
 	return FALSE
 
-/mob/living/simple_animal/goose/scientist
+/mob/living/basic/goose/scientist
 	name = "Гуськор"
 	desc = "Учёный Гусь. Везде учусь. Крайне умная и задиристая птица. Обожает генетику. Надеемся это не бывший пропавший генетик..."
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
@@ -54,15 +50,10 @@
 	icon_living = "goose_labcoat"
 	icon_dead = "goose_labcoat_dead"
 	icon_resting = "goose_labcoat_rest"
-	attacktext = "умно щипает"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 80
 	health = 80
 	resting = TRUE
-
-/mob/living/simple_animal/goose/scientist/npc_safe(mob/user)
-	return FALSE
 
 /mob/living/simple_animal/hostile/lizard/croco/gena
 	name = "Гена"

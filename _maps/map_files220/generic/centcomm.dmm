@@ -824,6 +824,16 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
+"auP" = (
+/obj/structure/table/wood{
+	color = "#996633"
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 1;
+	pixel_x = -9
+	},
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "auQ" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line,
@@ -1205,7 +1215,7 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "aDR" = (
-/mob/living/simple_animal/turkey,
+/mob/living/basic/turkey,
 /turf/simulated/floor/wood/cherry,
 /area/ghost_bar/indoor)
 "aEb" = (
@@ -1397,20 +1407,21 @@
 "aIF" = (
 /obj/structure/table/glass,
 /obj/item/clipboard{
-	pixel_y = 4
+	pixel_y = -2
 	},
 /obj/item/folder/red{
-	pixel_y = 3
+	pixel_y = -5
 	},
-/obj/item/folder/blue{
-	pixel_y = 5
-	},
+/obj/item/folder/blue,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_x = 11;
-	pixel_y = 6
+	pixel_x = 11
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 2
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -5434,6 +5445,10 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 2
+	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/admin2)
 "crA" = (
@@ -8474,14 +8489,6 @@
 	icon_state = "darkneutralfull"
 	},
 /area/syndicate_mothership/elite_squad)
-"dJs" = (
-/obj/structure/table/glass,
-/obj/structure/window/reinforced,
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_y = 7
-	},
-/turf/simulated/floor/carpet/black,
-/area/centcom/ss220/admin2)
 "dJv" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/carpet/black,
@@ -8878,6 +8885,10 @@
 /obj/structure/table/glass,
 /obj/item/paper{
 	pixel_y = 2
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 5
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
@@ -10092,24 +10103,6 @@
 	icon_state = "snow"
 	},
 /area/holodeck/source_snowfield)
-"euO" = (
-/obj/structure/table/glass/reinforced/plastitanium,
-/obj/effect/turf_decal/siding/black{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_y = 7
-	},
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "dark_herringbone"
-	},
-/area/centcom/ss220/command)
 "euU" = (
 /obj/structure/closet/crate/trashcart,
 /obj/effect/decal/cleanable/dirt,
@@ -11237,14 +11230,6 @@
 	icon_state = "darkbluealt"
 	},
 /area/centcom/ss220/bar)
-"eSd" = (
-/obj/structure/table/glass/reinforced/titanium,
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/turf/simulated/floor/carpet/royalblack,
-/area/centcom/ss220/admin2)
 "eSh" = (
 /obj/structure/shuttle/engine/platform{
 	dir = 1;
@@ -11568,19 +11553,22 @@
 /obj/structure/table/glass,
 /obj/item/folder{
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = -2
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_x = -6;
-	pixel_y = 6
+	pixel_x = -6
 	},
 /obj/item/folder/blue{
 	pixel_x = 3;
-	pixel_y = 3
+	pixel_y = -1
 	},
 /obj/item/folder/red,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 1
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -12874,21 +12862,6 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
-"fyv" = (
-/obj/structure/table/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/paper{
-	pixel_y = 35;
-	pixel_x = -3
-	},
-/obj/item/storage/secure/briefcase{
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/turf/simulated/floor/wood/fancy/cherry,
-/area/centcom/ss220/admin2)
 "fyz" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/light_fake,
@@ -13745,6 +13718,44 @@
 /obj/item/food/onionrings,
 /turf/simulated/floor/wood/parquet/tile,
 /area/centcom/ss220/admin1)
+"fSZ" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/table/glass/reinforced/plastitanium,
+/obj/effect/turf_decal/siding/black{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_y = 7
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/table/glass/reinforced/plastitanium,
+/obj/effect/turf_decal/siding/black{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/phone/centcomm,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_herringbone"
+	},
+/area/centcom/ss220/command)
 "fTe" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/decal/cleanable/dirt,
@@ -14293,6 +14304,24 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/centcom/ss220/admin1)
+"ghW" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/table/glass,
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_y = 7
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/table/glass,
+/obj/machinery/phone/centcomm,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/centcom/ss220/general)
 "giO" = (
 /obj/structure/light_fake/small{
 	dir = 1
@@ -17078,7 +17107,8 @@
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove{
 	icon_state = "boxinggreen";
-	item_state = "boxinggreen"
+	worn_icon_state = "boxinggreen";
+	inhand_icon_state = "boxinggreen"
 	},
 /turf/simulated/floor/holofloor{
 	dir = 10;
@@ -17122,11 +17152,11 @@
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
 	pixel_x = -4;
-	pixel_y = 4
+	pixel_y = -2
 	},
 /obj/item/pen/multi/gold{
 	pixel_x = -4;
-	pixel_y = 3
+	pixel_y = -4
 	},
 /obj/item/stamp/denied{
 	pixel_x = 8;
@@ -17141,6 +17171,10 @@
 	pixel_y = -2
 	},
 /obj/machinery/newscaster/directional/south,
+/obj/machinery/phone/centcomm{
+	pixel_y = 12;
+	pixel_x = -9
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "htV" = (
@@ -18324,6 +18358,9 @@
 "hQe" = (
 /obj/structure/table/glass/reinforced/plastitanium,
 /obj/item/folder/white,
+/obj/machinery/phone/centcomm{
+	pixel_y = 13
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/command)
 "hQt" = (
@@ -19648,7 +19685,7 @@
 /area/vox_base)
 "iue" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/mob/living/simple_animal/chick,
+/mob/living/basic/chick,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "iuv" = (
@@ -19970,6 +20007,10 @@
 /obj/machinery/door/window/reinforced/normal{
 	name = "Брифинг-зал";
 	req_access = list(114)
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 4;
+	pixel_x = -7
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin3)
@@ -22731,6 +22772,32 @@
 	icon_state = "navybluealt"
 	},
 /area/syndicate_mothership/control)
+"jMw" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = -4
+	},
+/obj/structure/table/glass,
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_y = 7
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = -4
+	},
+/obj/structure/table/glass,
+/obj/machinery/phone/centcomm,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/centcom/ss220/general)
 "jMU" = (
 /turf/simulated/wall/mineral/plastitanium,
 /area/shuttle/syndicate_elite)
@@ -26636,12 +26703,11 @@
 "lwb" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
-	pixel_x = 4;
-	pixel_y = 4
+	pixel_x = 4
 	},
 /obj/item/pen/multi/gold{
-	pixel_x = 6;
-	pixel_y = 3
+	pixel_x = 4;
+	pixel_y = -1
 	},
 /obj/item/stamp/denied{
 	pixel_x = -8;
@@ -26656,6 +26722,10 @@
 	pixel_y = -2
 	},
 /obj/machinery/newscaster/directional/south,
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 9
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "lwj" = (
@@ -27485,13 +27555,6 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/cargo)
-"lPi" = (
-/obj/structure/table/glass,
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_y = 7
-	},
-/turf/simulated/floor/wood/fancy/cherry,
-/area/centcom/ss220/general)
 "lPo" = (
 /obj/machinery/economy/vending/nta/red,
 /turf/simulated/floor/plasteel/dark,
@@ -30113,14 +30176,6 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/supply)
-"nab" = (
-/obj/structure/table/glass,
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/turf/simulated/floor/wood/fancy/cherry,
-/area/centcom/ss220/general)
 "nar" = (
 /obj/mecha/combat/gygax/nt/loaded_epsilon,
 /obj/effect/turf_decal/stripes/red/line,
@@ -32040,10 +32095,12 @@
 "nRv" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/clipboard{
-	pixel_y = 4
+	pixel_y = 8;
+	pixel_x = 7
 	},
 /obj/item/folder/blue{
-	pixel_y = 4
+	pixel_y = 7;
+	pixel_x = 9
 	},
 /obj/item/stamp/centcom{
 	pixel_x = 8;
@@ -32054,6 +32111,10 @@
 	color = "#ffbf80";
 	id = "CC_DeathSquad";
 	req_access = list(114)
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 2;
+	pixel_x = -8
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -36281,6 +36342,41 @@
 	icon_state = "darkredaltstrip"
 	},
 /area/syndicate_mothership/jail)
+"pPW" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/table/glass,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/paper{
+	pixel_y = 35;
+	pixel_x = -3
+	},
+/obj/item/storage/secure/briefcase{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/table/glass,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/paper{
+	pixel_y = 2
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 13;
+	pixel_x = 2
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/centcom/ss220/admin2)
 "pQc" = (
 /obj/structure/marker_beacon/spotlight/jade,
 /turf/simulated/floor/plasteel/dark{
@@ -37044,6 +37140,35 @@
 	icon_state = "alienvault"
 	},
 /area/admin)
+"qix" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/table/glass,
+/obj/item/paper{
+	pixel_y = 3;
+	pixel_x = 6
+	},
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/table/glass,
+/obj/item/paper{
+	pixel_y = 2
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = 1;
+	pixel_x = -9
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/centcom/ss220/admin2)
 "qiZ" = (
 /obj/structure/chair/comfy/brown{
 	dir = 8
@@ -46121,6 +46246,29 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership/infteam)
+"ubL" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/table/glass,
+/obj/structure/window/reinforced,
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_y = 7
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/table/glass,
+/obj/structure/window/reinforced,
+/obj/machinery/phone/centcomm{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "ubR" = (
 /obj/structure/gunrack,
 /obj/item/gun/energy/pulse/pistol/m1911{
@@ -47031,6 +47179,25 @@
 	color = "gray"
 	},
 /area/centcom/ss220/admin1)
+"uAD" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/table/glass,
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/table/glass,
+/obj/machinery/phone/centcomm,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/centcom/ss220/general)
 "uAE" = (
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/backrooms_carpet,
@@ -47737,6 +47904,7 @@
 /area/ghost_bar/indoor)
 "uRG" = (
 /obj/structure/table,
+/obj/machinery/phone/centcomm,
 /turf/simulated/floor/carpet/royalblack,
 /area/shuttle/administration)
 "uRI" = (
@@ -48699,13 +48867,16 @@
 "vnv" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/paper_bin/nanotrasen{
-	pixel_x = 3;
-	pixel_y = 5
+	pixel_x = 8;
+	pixel_y = 9
 	},
 /obj/item/flashlight/lamp/green{
 	pixel_x = -6;
 	pixel_y = 16;
 	layer = 5
+	},
+/obj/machinery/phone/centcomm{
+	pixel_y = -6
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/centcom/ss220/admin2)
@@ -48850,7 +49021,7 @@
 /area/syndicate_mothership/outside)
 "vqJ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/mob/living/simple_animal/chicken,
+/mob/living/basic/chicken,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "vqP" = (
@@ -49114,18 +49285,6 @@
 	color = "#f63d3d"
 	},
 /area/syndicate_mothership)
-"vuV" = (
-/obj/structure/table/glass,
-/obj/item/paper{
-	pixel_y = 3;
-	pixel_x = 6
-	},
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_x = -7;
-	pixel_y = 7
-	},
-/turf/simulated/floor/wood/fancy/cherry,
-/area/centcom/ss220/admin2)
 "vvl" = (
 /obj/structure/rack,
 /obj/item/stock_parts/cell/high/slime{
@@ -49496,7 +49655,7 @@
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "vAy" = (
-/mob/living/simple_animal/chicken,
+/mob/living/basic/chicken,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "vBj" = (
@@ -51485,17 +51644,6 @@
 /obj/machinery/prize_counter,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
-"wwl" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	pixel_x = -4
-	},
-/obj/structure/table/glass,
-/obj/item/toy/deskflag/nanotrasen{
-	pixel_y = 7
-	},
-/turf/simulated/floor/wood/fancy/cherry,
-/area/centcom/ss220/general)
 "wwo" = (
 /obj/structure/rack,
 /obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
@@ -53129,6 +53277,11 @@
 	icon_state = "neutralcorner"
 	},
 /area/shuttle/escape)
+"xfg" = (
+/obj/structure/table/glass/reinforced/titanium,
+/obj/machinery/phone/centcomm,
+/turf/simulated/floor/carpet/royalblack,
+/area/centcom/ss220/general)
 "xfn" = (
 /obj/machinery/clonescanner,
 /turf/simulated/floor/plasteel{
@@ -53488,6 +53641,25 @@
 /obj/item/clothing/head/collectable/paper,
 /turf/simulated/floor/beach/away/coastline/alternative,
 /area/ninja/holding)
+"xlH" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/structure/table/glass/reinforced/titanium,
+/obj/item/toy/deskflag/nanotrasen{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/structure/table/glass/reinforced/titanium,
+/obj/machinery/phone/centcomm,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/centcom/ss220/admin2)
 "xlL" = (
 /obj/structure/fans/tiny/invisible,
 /obj/machinery/door/airlock/wood{
@@ -53928,7 +54100,8 @@
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove{
 	icon_state = "boxinggreen";
-	item_state = "boxinggreen"
+	worn_icon_state = "boxinggreen";
+	inhand_icon_state = "boxinggreen"
 	},
 /turf/simulated/floor/holofloor{
 	dir = 6;
@@ -61519,7 +61692,7 @@ jLd
 ciP
 iqn
 iqn
-eSd
+xlH
 aCG
 aCG
 hPF
@@ -63333,7 +63506,7 @@ vrQ
 ciP
 ejk
 hoY
-dJs
+ubL
 vIu
 vIu
 bsB
@@ -64047,7 +64220,7 @@ bcg
 rzI
 bkK
 fjI
-nab
+uAD
 axu
 gcV
 jIT
@@ -64304,7 +64477,7 @@ bcg
 rzI
 fQN
 qZI
-wwl
+jMw
 axu
 gcV
 jIT
@@ -64875,7 +65048,7 @@ gXu
 hdx
 joz
 hVA
-vuV
+qix
 vIu
 vIu
 whl
@@ -65088,7 +65261,7 @@ axu
 kNM
 oKA
 blA
-lPi
+ghW
 aXt
 jSP
 dhe
@@ -65388,7 +65561,7 @@ bAK
 dep
 ciP
 bQz
-fyv
+pPW
 oMN
 vIu
 vIu
@@ -66630,7 +66803,7 @@ axu
 kNM
 oKA
 blA
-lPi
+ghW
 aXt
 sci
 jEY
@@ -67144,7 +67317,7 @@ axu
 kNM
 oKA
 blA
-lPi
+ghW
 aXt
 ybO
 sqr
@@ -67903,7 +68076,7 @@ rzI
 uGs
 eya
 qsH
-nfM
+xfg
 qsH
 jIT
 aXt
@@ -68738,7 +68911,7 @@ ciP
 rhB
 vIu
 lWc
-tAQ
+auP
 oXh
 oXh
 qEr
@@ -70232,7 +70405,7 @@ qaw
 tKh
 eqX
 fpx
-euO
+fSZ
 tKh
 tKh
 bSp

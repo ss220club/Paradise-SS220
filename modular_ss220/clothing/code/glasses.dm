@@ -3,7 +3,8 @@
 	desc = "Прототип повязки на глаз с интегрированным secHUD. От этого исполнения отказались в пользу более удобного и легковесного размещения в очках, однако на устройство все еще спрос среди ценителей. Данную повязку можно носить как на правом, так и на левом глазу."
 	icon = 'modular_ss220/clothing/icons/object/eyes.dmi'
 	icon_state = "hudpatch"
-	item_state = "hudpatch"
+	inhand_icon_state = "hudpatch"
+	worn_icon_state = "hudpatch"
 	item_color = "hudpatch"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/eyes.dmi',
@@ -29,8 +30,9 @@
 	var/flipped = FALSE
 
 /obj/item/clothing/glasses/hud/security/eyepatch/update_icon_state()
-	item_state = flipped ? "[initial(item_state)]_flipped" : initial(item_state)
 	icon_state = flipped ? "[initial(icon_state)]_flipped" : initial(icon_state)
+	inhand_icon_state = flipped ? "[initial(inhand_icon_state)]_flipped" : initial(inhand_icon_state)
+	worn_icon_state = flipped ? "[initial(worn_icon_state)]_flipped" : initial(worn_icon_state)
 
 /obj/item/clothing/glasses/hud/security/eyepatch/attack_self__legacy__attackchain(mob/user)
 	flipped = !flipped

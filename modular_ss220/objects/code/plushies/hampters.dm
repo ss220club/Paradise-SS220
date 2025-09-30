@@ -50,7 +50,7 @@
 	desc = "Просто плюшевый хамптер. Самый обычный."
 	icon = 'modular_ss220/objects/icons/plushies.dmi'
 	icon_state = "hampter"
-	icon_override = 'modular_ss220/objects/icons/inhead/head.dmi'
+	worn_icon = 'modular_ss220/objects/icons/inhead/head.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/plushies_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/plushies_righthand.dmi'
 	slot_flags = ITEM_SLOT_HEAD

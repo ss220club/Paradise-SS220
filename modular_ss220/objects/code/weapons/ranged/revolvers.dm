@@ -37,7 +37,7 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "anaconda"
-	item_state = "anaconda"
+	inhand_icon_state = "anaconda"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_anaconda.ogg'
 
 /obj/item/gun/projectile/revolver/reclinable/anaconda/attackby__legacy__attackchain(obj/item/A, mob/user, params)
@@ -96,7 +96,7 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "judge"
-	item_state = "judge"
+	inhand_icon_state = "judge"
 	w_class = WEIGHT_CLASS_NORMAL
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_judge.ogg'
 	spread = 10
@@ -118,7 +118,6 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "rsh12"
-	item_state = "rsh12"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_rsh12.ogg'
 
 /obj/item/gun/projectile/revolver/reclinable/rsh12/attackby__legacy__attackchain(obj/item/A, mob/user, params)
@@ -206,7 +205,9 @@
 // Пуля горохострела
 /obj/item/projectile/bullet/midbullet_r/peas_shooter
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
-	item_state = "peashooter_bullet"
+	icon_state = "peashooter_bullet"
+	worn_icon_state = "peashooter_bullet"
+	inhand_icon_state = "peashooter_bullet"
 	stamina = 5
 	damage = 0
 	var/additional_zombie_damage = 10

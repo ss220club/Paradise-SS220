@@ -52,7 +52,7 @@
 
 /obj/item/mod/control/pre_equipped/exclusive
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
-	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
+	worn_icon = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 
 /obj/item/mod/control/pre_equipped/exclusive/build_head()
 	return new /obj/item/clothing/head/mod/exclusive(src)
