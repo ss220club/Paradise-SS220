@@ -10763,6 +10763,14 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
+"biS" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/delivery/blue/hollow,
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark_large"
+	},
+/area/station/ai_monitored/storage/eva)
 "biU" = (
 /obj/machinery/ai_slipper,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13516,21 +13524,25 @@
 /obj/machinery/flasher_button{
 	id = "hopflash";
 	pixel_y = 8;
-	pixel_x = -32
+	pixel_x = -32;
+	req_access = list(57)
 	},
 /obj/machinery/door_control/shutter/west{
 	pixel_x = -26;
 	name = "Privacy Shutters Control";
-	id = "hop"
+	id = "hop";
+	req_access = list(57)
 	},
 /obj/machinery/door_control/shutter/west{
 	pixel_x = -38;
 	name = "Queue Privacy Shutters Control";
-	id = "hopqueue"
+	id = "hopqueue";
+	req_access = list(57)
 	},
 /obj/machinery/door_control/ticket_machine_button{
 	pixel_x = -32;
-	pixel_y = -9
+	pixel_y = -9;
+	req_access = list(57)
 	},
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 10
@@ -14203,14 +14215,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/station/service/bar)
-"byY" = (
-/obj/machinery/light/directional/west,
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/effect/turf_decal/delivery/blue/hollow,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark_large"
-	},
-/area/station/ai_monitored/storage/eva)
 "byZ" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -15340,13 +15344,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/command/meeting_room)
-"bFI" = (
-/obj/item/radio/intercom/directional/north,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
-/area/station/hallway/secondary/bridge)
 "bFL" = (
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/machinery/door/firedoor,
@@ -16160,14 +16157,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/secondary/bridge)
-"bKU" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/machinery/light/directional/east,
-/obj/effect/turf_decal/delivery/blue/hollow,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark_large"
-	},
-/area/station/ai_monitored/storage/eva)
 "bKX" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -16702,7 +16691,6 @@
 /obj/machinery/suit_storage_unit/clown/secure,
 /obj/effect/turf_decal/delivery/white/hollow,
 /obj/machinery/light/directional/north,
-/obj/machinery/alarm/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_large"
 	},
@@ -17346,6 +17334,7 @@
 /obj/machinery/suit_storage_unit/mime/secure,
 /obj/structure/railing,
 /obj/effect/turf_decal/delivery/white/hollow,
+/obj/machinery/alarm/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_large"
 	},
@@ -40037,7 +40026,8 @@
 	},
 /obj/machinery/door_control/bolt_control/east{
 	id = "pub_room";
-	name = "\improper Robotics Showroom Bolt Control"
+	name = "\improper Robotics Showroom Bolt Control";
+	req_access = list(57)
 	},
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/command/office/hop)
@@ -48133,6 +48123,7 @@
 /area/station/supply/office)
 "jAR" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "bluecorner"
@@ -58144,13 +58135,6 @@
 	icon_state = "darkgreycheck"
 	},
 /area/station/medical/break_room)
-"mXy" = (
-/obj/item/radio/intercom/directional/north,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
-/area/station/hallway/secondary/bridge)
 "mXQ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -64113,7 +64097,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "pcy" = (
-/obj/machinery/light/directional/north,
 /obj/structure/shelf/command,
 /obj/item/clothing/shoes/magboots{
 	pixel_x = -6;
@@ -73708,6 +73691,13 @@
 	icon_state = "cult"
 	},
 /area/station/maintenance/starboard)
+"sER" = (
+/obj/machinery/light/directional/south,
+/obj/item/radio/intercom/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/station/hallway/secondary/bridge)
 "sES" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -76806,6 +76796,14 @@
 	},
 /turf/simulated/floor/carpet/grimey,
 /area/station/service/chapel/office)
+"tOX" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/delivery/blue/hollow,
+/obj/machinery/light/directional/west,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark_large"
+	},
+/area/station/ai_monitored/storage/eva)
 "tPc" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -83038,6 +83036,7 @@
 /area/station/service/hydroponics)
 "whe" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutralcorner"
@@ -84347,7 +84346,6 @@
 	dir = 1;
 	id = "BS";
 	pixel_y = -24;
-	req_access = list(67);
 	pixel_x = -7
 	},
 /obj/machinery/door_control/normal/south{
@@ -112056,8 +112054,8 @@ bMS
 cNi
 bRQ
 uVd
+tOX
 bVb
-byY
 bQd
 bMS
 caL
@@ -113084,8 +113082,8 @@ bMS
 bOS
 bSi
 wVw
+biS
 bPq
-bKU
 bXV
 bMS
 caD
@@ -114105,7 +114103,7 @@ ddW
 tEE
 lhC
 vgl
-bFI
+owg
 bJs
 rqS
 uOg
@@ -116163,7 +116161,7 @@ aOG
 vXg
 hma
 eLe
-nxu
+sER
 qiN
 dhm
 cwr
@@ -118217,7 +118215,7 @@ ppB
 fAS
 bEi
 qgk
-mXy
+fLM
 jJR
 eZP
 rfr
