@@ -23,9 +23,9 @@
 /obj/item/card/id/examine(mob/user)
 	. = ..()
 	if(skin_applied)
-		. += span_notice("Нажмите <b>Alt-Click</b> на карту, чтобы снять наклейку.")
+		. += span_notice("Нажмите <b>Ctrl-Shift-Click</b> на карту, чтобы снять наклейку.")
 
-/obj/item/card/id/AltClick(mob/living/carbon/user)
+/obj/item/card/id/CtrlShiftClick(mob/living/carbon/user)
 	if(!iscarbon(user))
 		return
 
