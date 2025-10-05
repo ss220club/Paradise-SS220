@@ -28,6 +28,7 @@ GLOBAL_VAR(bomb_set)
 
 	/// Are our bolts *supposed* to be in the floor, may not actually cause anchoring if the bolts are cut
 	var/extended = TRUE
+	var/force_play_station_destroy_cinematic = FALSE // SS220 EDIT: REMOVE AFTER EVENT
 	/// Countdown to boom
 	var/timeleft = 120
 	/// Are we counting down?
@@ -623,6 +624,12 @@ GLOBAL_VAR(bomb_set)
 /// round-end cinematic to play.
 /obj/machinery/nuclearbomb/proc/get_nuke_site()
 	var/turf/bomb_turf = get_turf(src)
+	// SS220 EDIT START: REMOVE AFTER EVENT
+	// Force the nuke to always count as on-station for the cinematic
+	if(force_play_station_destroy_cinematic)
+		return NUKE_SITE_ON_STATION
+	// END SS220 EDIT
+
 	if(!bomb_turf)
 		return NUKE_SITE_INVALID
 

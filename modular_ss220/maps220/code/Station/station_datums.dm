@@ -4,6 +4,13 @@
 	map_path = "_maps/map_files220/stations/boxstation.dmm"
 	webmap_url = "https://webmap.affectedarc07.co.uk/maps/ss220/boxstation/"
 
+/datum/map/boxstation_event
+	fluff_name = "ИСН Кибериада"
+	technical_name = "BoxStation220_event"
+	map_path = "_maps/map_files220/stations/boxstation_event.dmm"
+	webmap_url = "https://webmap.affectedarc07.co.uk/maps/ss220/boxstation/"
+	voteable = FALSE
+
 /datum/map/deltastation
 	fluff_name = "ИСН Керберос"
 	technical_name = "DeltaStation220"

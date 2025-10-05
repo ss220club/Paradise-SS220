@@ -219,3 +219,85 @@
 	r_pocket = /obj/item/paper/crumpled/ruins/lavaland/seed_vault/discovery
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi/empty
 
+// SS220 EVENT REMOVE AFTER TM
+
+/obj/item/storage/belt/military/assault/srt/event/populate_contents()
+	new /obj/item/reagent_containers/spray/pepper(src)
+	new /obj/item/flash(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/restraints/legcuffs/bola/energy(src)
+	update_icon()
+
+
+// MARK: SRT
+/datum/outfit/admin/srt_event
+	name = "Special Response Team Member"
+
+	uniform = /obj/item/clothing/under/solgov/srt
+	suit = /obj/item/clothing/suit/armor/vest/fluff/tactical
+	suit_store = /obj/item/gun/projectile/automatic/proto
+	back = /obj/item/storage/backpack/satchel_blueshield
+	belt = /obj/item/storage/belt/military/assault/srt/event
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/combat/swat
+	head = /obj/item/clothing/head/beret/centcom/officer/navy/marine
+	l_ear = /obj/item/radio/headset/ert/alt
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	id = /obj/item/card/id/ert/security
+	pda = /obj/item/pda/heads/ert/security
+	box = /obj/item/storage/box/responseteam
+	r_pocket = /obj/item/flashlight/seclite
+	backpack_contents = list(
+		/obj/item/clothing/mask/gas/explorer/marines,
+
+	)
+	bio_chips = list(
+		/obj/item/bio_chip/mindshield
+	)
+	cybernetic_implants = list(
+		/obj/item/organ/internal/cyberimp/arm/baton,
+		/obj/item/organ/internal/cyberimp/eyes/hud/security
+	)
+	var/id_icon = "syndie"
+
+/datum/outfit/admin/srt_event/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/I = H.wear_id
+	if(istype(I))
+		apply_to_card(I, H, get_centcom_access("Emergency Response Team Member"), "Special Response Team Member")
+	I.assignment = "Emergency Response Team Officer"
+	H.sec_hud_set_ID()
+
+	if(H?.w_uniform)
+		var/obj/item/clothing/under/U = H.w_uniform
+		var/obj/item/clothing/accessory/holster/W = new /obj/item/clothing/accessory/holster(U)
+		U.accessories += W
+		W.on_attached(U)
+		var/obj/item/gun/energy/gun/blueshield/pdw9/gun = new /obj/item/gun/energy/gun/blueshield/pdw9()
+		var/obj/item/stock_parts/cell/cell = gun.get_cell()
+		cell.charge = 0
+		cell.give(120 * rand(0,3))
+		W.holster(gun)
+
+
+/obj/effect/mob_spawn/human/corpse/srt
+
+	id_job = "Emergency Response Team Officer"
+	id_access_list = list(ACCESS_CENT_SPECOPS_COMMANDER)
+	outfit = /datum/outfit/admin/srt_event
+	del_types = list()
+
+/obj/effect/mob_spawn/human/corpse/srt/Initialize(mapload)
+	mob_name = "[random_name(src.gender)]"
+	brute_damage = rand(0, 200)
+	burn_damage = rand(50, 10)
+	var/hcolor = pick("#000000", "#8B4513", "#FFD700")
+	var/ecolor = pick("#000000", "#8B4513", "#1E90FF")
+	hair_color = hcolor
+	facial_hair_color = hcolor
+	eyes_color = ecolor
+	skin_tone = pick(-50, -30, -10, 0, 0, 0, 10)
+	return ..()
