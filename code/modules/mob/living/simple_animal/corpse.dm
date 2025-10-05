@@ -258,7 +258,6 @@
 		/obj/item/organ/internal/cyberimp/arm/baton,
 		/obj/item/organ/internal/cyberimp/eyes/hud/security
 	)
-	var/id_icon = "syndie"
 
 /datum/outfit/admin/srt_event/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
@@ -280,7 +279,7 @@
 		var/obj/item/stock_parts/cell/cell = gun.get_cell()
 		cell.charge = 0
 		cell.give(120 * rand(0,3))
-		W.holster(gun)
+		W.holster(gun, H)
 
 
 /obj/effect/mob_spawn/human/corpse/srt
@@ -293,7 +292,7 @@
 /obj/effect/mob_spawn/human/corpse/srt/Initialize(mapload)
 	mob_name = "[random_name(src.gender)]"
 	brute_damage = rand(0, 200)
-	burn_damage = rand(50, 10)
+	burn_damage = rand(50, 150)
 	var/hcolor = pick("#000000", "#8B4513", "#FFD700")
 	var/ecolor = pick("#000000", "#8B4513", "#1E90FF")
 	hair_color = hcolor
