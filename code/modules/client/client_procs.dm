@@ -942,7 +942,7 @@
 	return 0
 
 /client/proc/is_rm()
-    return src.master_of_round
+	return src.master_of_round
 
 //Send resources to the client.
 /client/proc/send_resources()
