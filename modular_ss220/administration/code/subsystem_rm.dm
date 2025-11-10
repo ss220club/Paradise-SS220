@@ -3,7 +3,7 @@
 	wait = 1
 	priority = FIRE_PRIORITY_DEFAULT
 	runlevels = RUNLEVEL_GAME
-	flags = SS_NO_FIRE
+	flags = SS_NO_FIRE | SS_NO_INIT
 
 	var/current_master = null
 
