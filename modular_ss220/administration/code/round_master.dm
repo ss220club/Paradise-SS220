@@ -21,26 +21,11 @@
 		return
 
 	if(SSround_master.is_master(src))
-		SSround_master.clear_master()
-		world << "<b>[key_name(src)]</b> больше не мастер раунда."
-		play_sound_to_admins('sound/effects/adminhelp.ogg')
-		message_admins("[key_name_admin(src)] больше не мастер раунда.")
-		log_admin("[key_name(src)] снял с себя звание мастера раунда.")
+		SSround_master.clear_master(src)
 		return
 
 	if(SSround_master.has_master() && SSround_master.current_master != src)
 		if(alert(src, "[key_name(SSround_master.current_master)] уже является мастером раунда. Перенять звание?", "Подтверждение", "Да", "Нет") == "Нет")
 			return
 
-		to_chat(SSround_master.current_master, "<span class='boldannounceooc'>[key_name(src)] перенял у тебя роль мастера раунда.</span>")
-		log_admin("[key_name(src)] перенял роль мастера раунда у [key_name(SSround_master.current_master)].")
-		message_admins("[key_name_admin(src)] перенял роль мастера раунда у [key_name_admin(SSround_master.current_master)].")
-		play_sound_to_admins('sound/effects/adminhelp.ogg')
-
 	SSround_master.set_master(src)
-
-	world << "<b>[key_name(src)]</b> теперь мастер этого раунда!"
-	play_sound_to_admins('sound/effects/adminhelp.ogg')
-	message_admins("[key_name_admin(src)] стал мастером раунда.")
-	log_admin("[key_name(src)] стал мастером раунда.")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Round Master")
