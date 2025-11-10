@@ -1,6 +1,6 @@
 /proc/play_sound_to_admins(soundfile)
-	for(var/client/C in GLOB.clients)
-		if(C && C.holder)
+	for(var/client/C in GLOB.admins)
+		if(C)
 			SEND_SOUND(C, sound(soundfile))
 
 
