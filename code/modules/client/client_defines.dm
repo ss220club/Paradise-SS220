@@ -220,7 +220,6 @@
 	/// Used with the camera console to clear out the screen objects it adds to the client when the console is deleted
 	var/list/screen_maps = list()
 
-	var/master_of_round = FALSE
 
 	/// Assigned say modal of the client
 	var/datum/tgui_say/tgui_say
