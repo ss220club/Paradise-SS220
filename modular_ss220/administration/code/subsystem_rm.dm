@@ -8,9 +8,8 @@ SUBSYSTEM_DEF(round_master)
 /datum/controller/subsystem/round_master/proc/has_master()
 	return !!current_master
 
-/datum/controller/subsystem/round_master/proc/is_master(client/C)
-	if(!C) return FALSE
-	return current_master == C
+/datum/controller/subsystem/round_master/proc/is_master(client/to_check)
+	return current_master == to_check
 
 /datum/controller/subsystem/round_master/proc/set_master(client/C)
 	if(!C) return FALSE
