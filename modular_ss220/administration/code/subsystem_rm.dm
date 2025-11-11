@@ -3,8 +3,7 @@ SUBSYSTEM_DEF(round_master)
 	priority = FIRE_PRIORITY_DEFAULT
 	runlevels = RUNLEVEL_GAME
 	flags = SS_NO_FIRE
-
-	var/current_master = null
+	var/current_master
 
 /datum/controller/subsystem/round_master/proc/has_master()
 	return !!current_master
