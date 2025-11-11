@@ -1,7 +1,6 @@
 /proc/play_sound_to_admins(soundfile)
-	for(var/client/C in GLOB.admins)
-		if(C)
-			SEND_SOUND(C, sound(soundfile))
+	for(var/client/admin as anything in GLOB.admins)
+		SEND_SOUND(admin, sound(soundfile))
 
 /client/proc/make_round_master()
 	set name = "Make Round Master"
