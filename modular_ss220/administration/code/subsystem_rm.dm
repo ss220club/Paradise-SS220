@@ -29,7 +29,6 @@ SUBSYSTEM_DEF(round_master)
 	message_admins("[key_name_admin(C)] стал мастером раунда.")
 	log_admin("[key_name(C)] стал мастером раунда.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Round Master")
-	return TRUE
 
 /datum/controller/subsystem/round_master/proc/clear_master(client/C)
 	if(!C) return FALSE
