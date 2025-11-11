@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(round_master)
 		play_sound_to_admins('sound/effects/adminhelp.ogg')
 
 	current_master = C
-	world << "<b>[key_name(C)]</b> теперь мастер этого раунда!"
+	to_chat(world, "<b>[key_name(C)]</b> теперь мастер этого раунда!")
 	play_sound_to_admins('sound/effects/adminhelp.ogg')
 	message_admins("[key_name_admin(C)] стал мастером раунда.")
 	log_admin("[key_name(C)] стал мастером раунда.")
