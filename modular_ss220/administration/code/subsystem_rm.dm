@@ -12,7 +12,8 @@ SUBSYSTEM_DEF(round_master)
 	return current_master == to_check
 
 /datum/controller/subsystem/round_master/proc/set_master(client/C)
-	if(!C) return FALSE
+	if(!C) 
+		return
 
 	if(current_master && current_master != C)
 		to_chat(current_master, "<span class='boldannounceooc'>[key_name(C)] перенял у тебя роль мастера раунда.</span>")
