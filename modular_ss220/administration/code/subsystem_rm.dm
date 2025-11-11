@@ -31,7 +31,8 @@ SUBSYSTEM_DEF(round_master)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Round Master")
 
 /datum/controller/subsystem/round_master/proc/clear_master(client/C)
-	if(!C) return FALSE
+	if(!C)
+		return
 	if(current_master == C)
 		world << "<b>[key_name(C)]</b> больше не мастер раунда."
 		play_sound_to_admins('sound/effects/adminhelp.ogg')
