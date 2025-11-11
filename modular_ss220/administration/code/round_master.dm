@@ -8,7 +8,7 @@
 	set desc = "Назначить или снять звание мастера раунда."
 
 	if(IsAdminAdvancedProcCall())
-		to_chat(src, "<span class='boldannounceooc'>Действие заблокировано: Advanced ProcCall.</span>")
+		to_chat(src, span_boldannounceooc("Действие заблокировано: Advanced ProcCall."))
 		message_admins("[key_name(src)] попытался вызвать make_round_master через advanced proc-call.")
 		log_admin("[key_name(src)] попытался вызвать make_round_master через advanced proc-call.")
 		return
