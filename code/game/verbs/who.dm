@@ -133,7 +133,7 @@
 			if(C.is_afk())
 				line += " (AFK)"
 
-			if(C == SSround_master.current_master)
+			if(C == GLOB.round_master.current_master)
 				line += " | <font color='orange'><b>Мастер раунда</b></font> |"
 
 		line += "<br>"

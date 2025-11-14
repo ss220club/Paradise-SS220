@@ -7,32 +7,29 @@
 	set category = "Admin"
 	set desc = "Назначить или снять звание мастера раунда."
 
-	var/adv_proc = "попытался вызвать make_round_master через advanced proc-call."
-	var/no_adm = "попытался стать мастером раунда без прав."
-
 	if(IsAdminAdvancedProcCall())
-		to_chat(src, SPAN_BOLDOOC("Действие заблокировано: Advanced ProcCall."))
-		message_admins("[key_name(src)] " + adv_proc)
-		log_admin("[key_name(src)] " + adv_proc)
+		to_chat(src, span_boldannounceooc("Действие заблокировано: Advanced ProcCall."))
+		message_admins("[key_name(src)] попытался вызвать make_round_master через advanced proc-call.")
+		log_admin("[key_name(src)] попытался вызвать make_round_master через advanced proc-call.")
 		return
 
 	if(!holder)
-		to_chat(src, SPAN_BOLDOOC("Только администраторы могут делать это."))
-		message_admins("[key_name(src)] " + no_adm)
-		log_admin("[key_name(src)] " + no_adm)
+		to_chat(src, span_boldannounceooc("Только администраторы могут делать это."))
+		message_admins("[key_name(src)] попытался стать мастером раунда без прав.")
+		log_admin("[key_name(src)] попытался стать мастером раунда без прав.")
 		return
 
-	if(SSround_master.is_master(src))
-		SSround_master.clear_master(src)
+	if(GLOB.round_master.is_master(src))
+		GLOB.round_master.clear_master(src)
 		return
 
-	if(SSround_master.current_master && SSround_master.current_master != src)
+	if(GLOB.round_master.current_master && GLOB.round_master.current_master != src)
 		var/choice = tgui_alert(src,
-			"[key_name(SSround_master.current_master)] уже является мастером раунда. Перенять звание?",
+			"[key_name(GLOB.round_master.current_master)] уже является мастером раунда. Перенять звание?",
 			"Подтверждение",
 			list("Да", "Нет"))
 
 		if(choice != "Да")
 			return
 
-	SSround_master.set_master(src)
+	GLOB.round_master.set_master(src)

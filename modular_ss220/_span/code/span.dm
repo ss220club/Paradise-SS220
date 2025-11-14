@@ -166,4 +166,4 @@
 
 #define span_bolditalics(str) ("<span class='bolditalics'>" + str + "</span>")
 
-#define SPAN_BOLDOOC(str) ("<span class='boldannounceooc'>" + str + "</span>")
+#define span_boldannounceooc(str) ("<span class='boldannounceooc'>" + str + "</span>")
