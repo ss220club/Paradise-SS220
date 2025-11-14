@@ -32,7 +32,7 @@ GLOBAL_DATUM_INIT(round_master, /datum/round_master, new)
 	if(!current_master)
 		return
 
-	if(current_master != clear_master)
+	if(!is_master(clear_master))
 		to_chat(src, span_boldannounceooc("Ты не являешься мастером раунда."))
 		return
 	play_sound_to_admins(admin_notify_sound)
