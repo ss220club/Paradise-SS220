@@ -1,7 +1,9 @@
 GLOBAL_DATUM_INIT(round_master, /datum/round_master, new)
 
 /datum/round_master
-	var/current_master
+	/// Stores ref to current round master's client
+	var/client/current_master
+	/// Notify admins with this sound when master is updated
 	var/sound/admin_notify_sound = 'sound/effects/adminhelp.ogg'
 
 /datum/round_master/proc/is_master(client/to_check)
