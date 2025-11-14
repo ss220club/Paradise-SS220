@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(round_master, /datum/round_master, new)
 		log_admin("[key_name_admin(current_master)] стал мастером раунда.")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Round Master")
 
-	if(current_master && current_master != new_master)
+	if(current_master && !is_master(new_master))
 		to_chat(src, span_boldannounceooc("[key_name(new_master)] перенял у тебя роль мастера раунда."))
 		log_admin("[key_name(new_master)] перенял у тебя роль мастера раунда [key_name(current_master)].")
 		message_admins("[key_name_admin(new_master)] перенял у тебя роль мастера раунда [key_name_admin(current_master)].")
