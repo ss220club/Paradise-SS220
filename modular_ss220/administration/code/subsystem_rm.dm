@@ -7,8 +7,7 @@ GLOBAL_DATUM_INIT(round_master, /datum/round_master, new)
 	var/sound/admin_notify_sound = 'sound/effects/adminhelp.ogg'
 
 /datum/round_master/proc/is_master(client/to_check)
-	if(current_master)
-		return current_master == to_check
+	return current_master == to_check
 
 /datum/round_master/proc/set_master(client/new_master)
 	if(!current_master)
