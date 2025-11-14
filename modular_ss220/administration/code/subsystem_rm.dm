@@ -1,4 +1,4 @@
-GLOBAL_DATUM_INIT(round_master, /datum/round_master, new())
+GLOBAL_DATUM_INIT(round_master, /datum/round_master, new)
 
 /datum/round_master
 	var/current_master
