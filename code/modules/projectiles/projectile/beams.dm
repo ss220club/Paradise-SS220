@@ -14,9 +14,8 @@
 	light_color = LIGHT_COLOR_FIRE
 	ricochets_max = 50	//Honk!
 	ricochet_chance = 80
-	// speed = 0.7
 
-/obj/item/projectile/beam/laser/player_laser
+/obj/item/projectile/beam/laser/player_laser	// SS220 ADDTION START
 
 	damage = 20
 	damage_type = BURN
@@ -33,7 +32,7 @@
 	impact_light_intensity = 7
 	impact_light_range = 2.5
 	impact_light_color_override = LIGHT_COLOR_FIRE
-	forcedodge = 0
+	forcedodge = 0	// SS220 ADDITION END
 
 /obj/item/projectile/beam/laser
 

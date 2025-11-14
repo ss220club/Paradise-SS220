@@ -25,7 +25,7 @@
 	shaded_charge = TRUE
 	execution_speed = 5 SECONDS
 
-/obj/item/ammo_casing/energy/lasergun_hs
+/obj/item/ammo_casing/energy/lasergun_hs	// SS220 ADDTION START
 	name = "LG-5 laser cell"
 	desc = "A special energy cell designed specifically for the LG-5 laser carbine. Fires a precise, hitscan laser beam."
 	icon_state = "laser"
@@ -33,7 +33,7 @@
 	projectile_type = /obj/item/projectile/beam/laser/player_laser
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
 	muzzle_flash_range = 2
-	delay = 1.5 SECONDS
+	delay = 1.5 SECONDS	// SS220 ADDITION END
 
 /obj/item/gun/energy/laser/examine_more(mob/user)
 	..()

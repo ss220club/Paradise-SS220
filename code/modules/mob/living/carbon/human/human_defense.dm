@@ -80,7 +80,7 @@ emp_act
 
 	var/obj/item/organ/external/organ = get_organ(check_zone(def_zone))
 
-	if(!QDELETED(src) && health > -100)
+	if(!QDELETED(src) && health > -100)	// SS220 ADDTION START
 		var/original_x = src.pixel_x
 		var/original_y = src.pixel_y
 		var/original_transform = src.transform
@@ -99,7 +99,7 @@ emp_act
 				sleep(1)
 			// Return to the original position if the mob has not changed (not died, not fallen, etc.)
 			if(!QDELETED(src) && src.stat == original_stat && src.transform == original_transform)
-				animate(src, pixel_x = original_x, pixel_y = original_y, time = 1, easing = LINEAR_EASING)
+				animate(src, pixel_x = original_x, pixel_y = original_y, time = 1, easing = LINEAR_EASING)	// SS220 ADDITION END
 
 
 	if(isnull(organ))
