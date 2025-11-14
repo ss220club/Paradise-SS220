@@ -28,7 +28,7 @@
 /obj/item/ammo_casing/energy/lasergun_hs
 	name = "LG-5 laser cell"
 	desc = "A special energy cell designed specifically for the LG-5 laser carbine. Fires a precise, hitscan laser beam."
-	icon_state = "lasercell"  // можно заменить на существующий спрайт патрона
+	icon_state = "laser"
 	caliber = "energy"
 	projectile_type = /obj/item/projectile/beam/laser/player_laser
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
