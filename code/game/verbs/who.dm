@@ -133,9 +133,8 @@
 			if(C.is_afk())
 				line += " (AFK)"
 
-			if(C == GLOB.round_master.current_master)
+			if(GLOB.round_master.is_master(C))
 				line += " | <font color='orange'><b>Мастер раунда</b></font> |"
-
 		line += "<br>"
 		if(check_rights(R_BAN, FALSE, C.mob)) // Is this client an admin? // SS220 EDIT - R_ADMIN -> R_BAN
 			if(C?.holder?.fakekey && !check_rights(R_BAN, FALSE)) // Only admins can see stealthmins // SS220 EDIT - R_ADMIN -> R_BAN
