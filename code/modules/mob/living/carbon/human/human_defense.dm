@@ -9,105 +9,105 @@ emp_act
 
 
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P, def_zone)
-    if(!dna.species.bullet_act(P, src, def_zone))
-        add_attack_logs(P.firer, src, "hit by [P.type] but got deflected by species '[dna.species]'")
-        P.reflect_back(src) //It has to be here, not on species. Why? Who knows. Testing showed me no reason why it doesn't work on species, and neither did tracing. It has to be here, or it gets qdel'd by bump.
-        return -1
+	if(!dna.species.bullet_act(P, src, def_zone))
+		add_attack_logs(P.firer, src, "hit by [P.type] but got deflected by species '[dna.species]'")
+		P.reflect_back(src) //It has to be here, not on species. Why? Who knows. Testing showed me no reason why it doesn't work on species, and neither did tracing. It has to be here, or it gets qdel'd by bump.
+		return -1
 
-    if(P.is_reflectable(REFLECTABILITY_ENERGY))
-        var/can_reflect = check_reflect(def_zone)
-        var/reflected = FALSE
+	if(P.is_reflectable(REFLECTABILITY_ENERGY))
+		var/can_reflect = check_reflect(def_zone)
+		var/reflected = FALSE
 
-        switch(can_reflect)
-            if(1) // proper reflection
-                reflected = TRUE
-            if(2) //If target is holding a toy sword
-                var/static/list/safe_list = list(/obj/item/projectile/beam/lasertag, /obj/item/projectile/beam/practice)
-                reflected = is_type_in_list(P, safe_list) //And it's safe
+		switch(can_reflect)
+			if(1) // proper reflection
+				reflected = TRUE
+			if(2) //If target is holding a toy sword
+				var/static/list/safe_list = list(/obj/item/projectile/beam/lasertag, /obj/item/projectile/beam/practice)
+				reflected = is_type_in_list(P, safe_list) //And it's safe
 
-        if(reflected)
-            visible_message("<span class='danger'>[P] gets reflected by [src]!</span>", "<span class='userdanger'>[P] gets reflected by [src]!</span>")
-            add_attack_logs(P.firer, src, "hit by [P.type] but got reflected")
-            P.reflect_back(src)
-            return -1
+		if(reflected)
+			visible_message("<span class='danger'>[P] gets reflected by [src]!</span>", "<span class='userdanger'>[P] gets reflected by [src]!</span>")
+			add_attack_logs(P.firer, src, "hit by [P.type] but got reflected")
+			P.reflect_back(src)
+			return -1
 
-    //Shields
-    var/shield_check_result = check_shields(P, P.damage, "the [P.name]", PROJECTILE_ATTACK)
-    if(shield_check_result == 1)
-        return 2
-    else if(shield_check_result == -1)
-        P.reflect_back(src)
-        return -1
+	//Shields
+	var/shield_check_result = check_shields(P, P.damage, "the [P.name]", PROJECTILE_ATTACK)
+	if(shield_check_result == 1)
+		return 2
+	else if(shield_check_result == -1)
+		P.reflect_back(src)
+		return -1
 
-    if(mind?.martial_art?.deflection_chance) //Some martial arts users can deflect projectiles!
-        if(!HAS_TRAIT(src, TRAIT_HULK) && mind.martial_art.try_deflect(src)) //But only if they're not hulked
-            add_attack_logs(P.firer, src, "hit by [P.type] but got deflected by martial arts '[mind.martial_art]'")
-            playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
+	if(mind?.martial_art?.deflection_chance) //Some martial arts users can deflect projectiles!
+		if(!HAS_TRAIT(src, TRAIT_HULK) && mind.martial_art.try_deflect(src)) //But only if they're not hulked
+			add_attack_logs(P.firer, src, "hit by [P.type] but got deflected by martial arts '[mind.martial_art]'")
+			playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 
-            if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL))
+			if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL))
 				// Pacifists can deflect projectiles, but not reflect them.
 				// Instead, they deflect them into the ground below them.
-                var/turf/T = get_turf(src)
-                P.firer = src
-                T.bullet_act(P)
-                visible_message("<span class='danger'>[src] deflects the projectile into the ground!</span>", "<span class='userdanger'>You deflect the projectile towards the ground beneath your feet!</span>")
-                return FALSE
+				var/turf/T = get_turf(src)
+				P.firer = src
+				T.bullet_act(P)
+				visible_message("<span class='danger'>[src] deflects the projectile into the ground!</span>", "<span class='userdanger'>You deflect the projectile towards the ground beneath your feet!</span>")
+				return FALSE
 
-            visible_message("<span class='danger'>[src] deflects the projectile!</span>", "<span class='userdanger'>You deflect the projectile!</span>")
-            if(mind.martial_art.reroute_deflection)
-                var/refl_angle = get_angle(loc, get_step(src, dir))
-                P.firer = src
-                P.set_angle(rand(refl_angle - 30, refl_angle + 30))
-                return -1
-            else
-                return FALSE
+			visible_message("<span class='danger'>[src] deflects the projectile!</span>", "<span class='userdanger'>You deflect the projectile!</span>")
+			if(mind.martial_art.reroute_deflection)
+				var/refl_angle = get_angle(loc, get_step(src, dir))
+				P.firer = src
+				P.set_angle(rand(refl_angle - 30, refl_angle + 30))
+				return -1
+			else
+				return FALSE
 
-    if(HAS_TRAIT(src, TRAIT_DEFLECTS_PROJECTILES))
-        add_attack_logs(P.firer, src, "Hit by [P.type], but deflected by something other than martial arts")
-        playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
+	if(HAS_TRAIT(src, TRAIT_DEFLECTS_PROJECTILES))
+		add_attack_logs(P.firer, src, "Hit by [P.type], but deflected by something other than martial arts")
+		playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 
-        if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL))
-            var/turf/T = get_turf(src)
-            P.firer = src
-            T.bullet_act(P)
-            visible_message("<span class='danger'>[src] deflects the projectile into the ground!</span>", "<span class='userdanger'>You deflect the projectile towards the ground beneath your feet!</span>")
-            return FALSE
+		if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL))
+			var/turf/T = get_turf(src)
+			P.firer = src
+			T.bullet_act(P)
+			visible_message("<span class='danger'>[src] deflects the projectile into the ground!</span>", "<span class='userdanger'>You deflect the projectile towards the ground beneath your feet!</span>")
+			return FALSE
 
-        visible_message("<span class='danger'>[src] deflects the projectile!</span>", "<span class='userdanger'>You deflect the projectile!</span>")
-        P.firer = src
-        P.set_angle(rand(0, 360))
-        return -1
+		visible_message("<span class='danger'>[src] deflects the projectile!</span>", "<span class='userdanger'>You deflect the projectile!</span>")
+		P.firer = src
+		P.set_angle(rand(0, 360))
+		return -1
 
-    var/obj/item/organ/external/organ = get_organ(check_zone(def_zone))
+	var/obj/item/organ/external/organ = get_organ(check_zone(def_zone))
 
-    if(!QDELETED(src) && health > -100)
-        var/original_x = src.pixel_x
-        var/original_y = src.pixel_y
-        var/original_transform = src.transform
-        var/original_stat = src.stat
+	if(!QDELETED(src) && health > -100)
+		var/original_x = src.pixel_x
+		var/original_y = src.pixel_y
+		var/original_transform = src.transform
+		var/original_stat = src.stat
 
-        // Number of jerks and shaking force
-        var/shakes = 5
-        var/intensity_x = 2
-        var/intensity_y = 1
+		// Number of jerks and shaking force
+		var/shakes = 5
+		var/intensity_x = 2
+		var/intensity_y = 1
 
-        // do the shaking in a separate thread so as not to block the code
-        spawn()
-            for(var/i = 1, i <= shakes, i++)
-                if(QDELETED(src)) break
-                animate(src, pixel_x = rand(-intensity_x, intensity_x), pixel_y = rand(-intensity_y, intensity_y), time = 1)
-                sleep(1)
-            // Return to the original position if the mob has not changed (not died, not fallen, etc.)
-            if(!QDELETED(src) && src.stat == original_stat && src.transform == original_transform)
-                animate(src, pixel_x = original_x, pixel_y = original_y, time = 1, easing = LINEAR_EASING)
+		// do the shaking in a separate thread so as not to block the code
+		spawn()
+			for(var/i = 1, i <= shakes, i++)
+				if(QDELETED(src)) break
+				animate(src, pixel_x = rand(-intensity_x, intensity_x), pixel_y = rand(-intensity_y, intensity_y), time = 1)
+				sleep(1)
+			// Return to the original position if the mob has not changed (not died, not fallen, etc.)
+			if(!QDELETED(src) && src.stat == original_stat && src.transform == original_transform)
+				animate(src, pixel_x = original_x, pixel_y = original_y, time = 1, easing = LINEAR_EASING)
 
 
-    if(isnull(organ))
-        return bullet_act(P, "chest") //act on chest instead
+	if(isnull(organ))
+		return bullet_act(P, "chest") //act on chest instead
 
-    organ.add_autopsy_data(P.name, P.damage) // Add the bullet's name to the autopsy data
+	organ.add_autopsy_data(P.name, P.damage) // Add the bullet's name to the autopsy data
 
-    return (..(P, def_zone))
+	return (..(P, def_zone))
 
 /mob/living/carbon/human/welder_act(mob/user, obj/item/I)
 	if(user.a_intent != INTENT_HELP)
