@@ -1,35 +1,41 @@
-/proc/play_sound_to_admins(soundfile)
-	for(var/client/admin as anything in GLOB.admins)
-		SEND_SOUND(admin, sound(soundfile))
+GLOBAL_DATUM_INIT(round_master, /datum/round_master, new)
 
-/client/proc/make_round_master()
-	set name = "Make Round Master"
-	set category = "Admin"
-	set desc = "Назначить или снять звание мастера раунда."
+/datum/round_master
+	/// Stores ref to current round master's client
+	var/client/current_master
+	/// Notify admins with this sound when master is updated
+	var/sound/admin_notify_sound = 'sound/effects/adminhelp.ogg'
 
-	if(IsAdminAdvancedProcCall())
-		to_chat(src, span_boldannounceooc("Действие заблокировано: Advanced ProcCall."))
-		message_admins("[key_name(src)] попытался вызвать make_round_master через advanced proc-call.")
-		log_admin("[key_name(src)] попытался вызвать make_round_master через advanced proc-call.")
+/datum/round_master/proc/is_master(client/to_check)
+	return current_master == to_check
+
+/datum/round_master/proc/set_master(client/new_master)
+	if(!current_master)
+		play_sound_to_admins(admin_notify_sound)
+		message_admins("[key_name_admin(current_master)] стал мастером раунда.")
+		log_admin("[key_name_admin(current_master)] стал мастером раунда.")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Round Master")
+
+	if(current_master && !is_master(new_master))
+		to_chat(src, span_boldannounceooc("[key_name(new_master)] перенял у тебя роль мастера раунда."))
+		log_admin("[key_name(new_master)] перенял у тебя роль мастера раунда [key_name(current_master)].")
+		message_admins("[key_name_admin(new_master)] перенял у тебя роль мастера раунда [key_name_admin(current_master)].")
+		play_sound_to_admins(admin_notify_sound)
+
+	current_master = new_master
+	play_sound_to_admins(admin_notify_sound)
+	message_admins("[key_name_admin(current_master)] стал мастером раунда.")
+	log_admin("[key_name_admin(current_master)] стал мастером раунда.")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Round Master")
+
+/datum/round_master/proc/clear_master(client/clear_master)
+	if(!current_master)
 		return
 
-	if(!holder)
-		to_chat(src, span_boldannounceooc("Только администраторы могут делать это."))
-		message_admins("[key_name(src)] попытался стать мастером раунда без прав.")
-		log_admin("[key_name(src)] попытался стать мастером раунда без прав.")
+	if(!is_master(clear_master))
+		to_chat(src, span_boldannounceooc("Ты не являешься мастером раунда."))
 		return
-
-	if(GLOB.round_master.is_master(src))
-		GLOB.round_master.clear_master(src)
-		return
-
-	if(GLOB.round_master.current_master && GLOB.round_master.current_master != src)
-		var/choice = tgui_alert(src,
-			"[key_name(GLOB.round_master.current_master)] уже является мастером раунда. Перенять звание?",
-			"Подтверждение",
-			list("Да", "Нет"))
-
-		if(choice != "Да")
-			return
-
-	GLOB.round_master.set_master(src)
+	play_sound_to_admins(admin_notify_sound)
+	message_admins("[key_name_admin(current_master)] больше не мастер раунда.")
+	log_admin("[key_name(current_master)] снял с себя звание мастера раунда.")
+	current_master = null
