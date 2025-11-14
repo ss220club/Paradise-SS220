@@ -11,9 +11,29 @@
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/red_laser
 	reflectability = REFLECTABILITY_ENERGY
 	light_range = 2
-	light_color = LIGHT_COLOR_DARKRED
+	light_color = LIGHT_COLOR_FIRE
 	ricochets_max = 50	//Honk!
 	ricochet_chance = 80
+	// speed = 0.7
+
+/obj/item/projectile/beam/laser/player_laser
+
+    damage = 20
+    damage_type = BURN
+    hitscan = TRUE
+    muzzle_type = /obj/effect/projectile/muzzle/laser
+    tracer_type = /obj/effect/projectile/tracer/laser
+    impact_type = /obj/effect/projectile/impact/laser
+    impact_effect_type = null
+    hitscan_light_intensity = 4
+    hitscan_light_color_override = LIGHT_COLOR_FIRE
+    muzzle_flash_intensity = 5
+    muzzle_flash_range = 2
+    muzzle_flash_color_override = LIGHT_COLOR_FIRE
+    impact_light_intensity = 7
+    impact_light_range = 2.5
+    impact_light_color_override = LIGHT_COLOR_FIRE
+    forcedodge = 0
 
 /obj/item/projectile/beam/laser
 
@@ -96,11 +116,12 @@
 /obj/item/projectile/beam/disabler
 	name = "disabler beam"
 	icon_state = "omnilaser"
-	damage = 30
+	damage = 20
 	damage_type = STAMINA
 	flag = "energy"
 	hitsound = 'sound/weapons/tap.ogg'
 	eyeblur = 0
+	speed = 0.7
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
 	light_color = LIGHT_COLOR_CYAN
 
@@ -281,6 +302,7 @@
 	damage = 5
 	stamina = 25
 	eyeblur = 2 SECONDS
+	speed = 0.7
 
 /obj/item/projectile/beam/laser/detective/overcharged
 	name = "overcharged shot"
@@ -291,6 +313,7 @@
 	damage = 45
 	stamina = 15
 	eyeblur = 4 SECONDS
+	speed = 0.7
 
 /obj/item/projectile/beam/laser/detective/tracker_warrant_shot
 	name = "tracker shot"

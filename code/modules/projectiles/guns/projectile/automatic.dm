@@ -138,6 +138,7 @@
 	magout_sound = 'sound/weapons/gun_interactions/batrifle_magout.ogg'
 	can_suppress = FALSE
 	burst_size = 1
+	recoil = 0.75
 	actions_types = list()
 	can_bayonet = TRUE
 	knife_x_offset = 25

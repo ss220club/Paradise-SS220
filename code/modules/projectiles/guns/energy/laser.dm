@@ -20,10 +20,20 @@
 	inhand_icon_state = "laser"
 	materials = list(MAT_METAL=2000)
 	origin_tech = "combat=4;magnets=2"
-	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
+	ammo_type = list(/obj/item/ammo_casing/energy/lasergun_hs)
 	ammo_x_offset = 1
 	shaded_charge = TRUE
 	execution_speed = 5 SECONDS
+
+/obj/item/ammo_casing/energy/lasergun_hs
+    name = "LG-5 laser cell"
+    desc = "A special energy cell designed specifically for the LG-5 laser carbine. Fires a precise, hitscan laser beam."
+    icon_state = "lasercell"  // можно заменить на существующий спрайт патрона
+    caliber = "energy"
+    projectile_type = /obj/item/projectile/beam/laser/player_laser
+    muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
+    muzzle_flash_range = 2
+    delay = 1.5 SECONDS
 
 /obj/item/gun/energy/laser/examine_more(mob/user)
 	..()
