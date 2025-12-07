@@ -251,6 +251,14 @@
 	amount_per_transfer_from_this = 42
 	list_reagents = list("salbutamol" = 10, "teporone" = 15, "epinephrine" = 10, "lavaland_extract" = 2, "weak_omnizine" = 5)
 
+/obj/item/reagent_containers/hypospray/autoinjector/lux
+	name = "lux medipen"
+	desc = "An advanced multi-purpose medical pen containing a powerful cocktail of high-end reagents."
+	icon_state = "luxpen"
+	volume = 60
+	amount_per_transfer_from_this = 60
+	list_reagents = list("lavaland_extract" = 3,"weak_omnizine" = 10,"omnizine" = 5,"bicaridine" = 10,"kelotane" = 10,"menthol" = 4,"sal_acid" = 4,"teporone" = 5,"salbutamol" = 5,"epinephrine" = 3,"rezadone" = 1)
+
 /obj/item/reagent_containers/hypospray/autoinjector/emergency_nuclear
 	name = "emergency stabilization medipen"
 	desc = "A fast acting life-saving emergency autoinjector. Effective in combat situations, made by the syndicate for the syndicate."
