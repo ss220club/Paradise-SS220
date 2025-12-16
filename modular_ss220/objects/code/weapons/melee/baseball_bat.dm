@@ -17,12 +17,6 @@
 	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/melee.dmi'
-	/// Item state when concealed
-	worn_icon_state = "centcom_bat_0"
-	inhand_icon_state = "centcom_bat_0"
-	/// Item state when extended
-	var/worn_icon_state_on = "centcom_bat_1"
-	var/inhand_icon_state_on = "centcom_bat_1"
 	/// Icon state when concealed
 	icon_state = "centcom_bat_0"
 	/// Icon state when extended
@@ -53,16 +47,12 @@
 
 	if(on)
 		to_chat(user, span_userdanger("Вы активировали [name] - время для правосудия!"))
-		worn_icon_state = worn_icon_state_on
-		inhand_icon_state = inhand_icon_state_on
 		icon_state = icon_state_on
 		w_class = WEIGHT_CLASS_HUGE
 		force = force_on
 		attack_verb = attack_verb_on
 	else
 		to_chat(user, span_notice("Вы деактивировали [name]."))
-		worn_icon_state = initial(worn_icon_state)
-		inhand_icon_state = initial(inhand_icon_state)
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		force = initial(force)

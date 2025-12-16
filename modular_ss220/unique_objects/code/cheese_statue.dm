@@ -41,8 +41,6 @@ GLOBAL_LIST_INIT(cheese_recipes, list(
 	desc = "A stack of cheese that seems sturdier than regular cheese."
 	icon = 'modular_ss220/unique_objects/icons/organic.dmi'
 	icon_state = "sheet-cheese"
-	worn_icon_state = "sheet-cheese"
-	inhand_icon_state = "sheet-cheese"
 	singular_name = "reinforced cheese block"
 	sheettype = "cheese"
 	force = 5

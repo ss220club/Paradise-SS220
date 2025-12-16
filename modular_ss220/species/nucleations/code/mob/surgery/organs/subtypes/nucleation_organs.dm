@@ -44,8 +44,6 @@
 		forceMove(tongs)
 		tongs.sliver = src
 		tongs.icon_state = "supermatter_tongs_loaded"
-		tongs.worn_icon_state = "supermatter_tongs_loaded"
-		tongs.inhand_icon_state = "supermatter_tongs_loaded"
 		to_chat(user, "<span class='notice'>You carefully pick up [src] with [tongs].</span>")
 	else if(istype(I, /obj/item/scalpel/supermatter) || istype(I, /obj/item/nuke_core_container/supermatter) || HAS_TRAIT(I, TRAIT_SUPERMATTER_IMMUNE)) // we don't want it to dust
 		return

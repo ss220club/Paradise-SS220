@@ -4,6 +4,7 @@
 	desc = "Крутой шлем."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "bike_helmet"
+	worn_icon = 'modular_ss220/clothing/icons/mob/hats.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	toggle_message = "Вы опустили защитное стекло"
@@ -13,27 +14,13 @@
 	toggle_sound = 'sound/weapons/tap.ogg'
 	dog_fashion = null
 	sprite_sheets = list(
-		"Abductor" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Ancient Skeleton" 	= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Diona" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
-		"Golem" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Grey" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Machine"			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Monkey" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Nian" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Shadow" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/species/skrell/helmet.dmi',
-		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/species/tajaran/helmet.dmi',
-		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/species/unathi/helmet.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
-		"Nucleation"		=	'modular_ss220/clothing/icons/mob/helmet.dmi',
-		)
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/species/skrell/helmet.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/species/tajaran/helmet.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/helmet.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
+	)
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/bandana
 	name = "officer bandana"
@@ -59,39 +46,27 @@
 /obj/item/clothing/head/helmet/ert
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "ember_sec"
-	worn_icon_state = "ember_sec"
-	inhand_icon_state = "ember_sec"
+	worn_icon = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 	sprite_sheets = list(
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
-		)
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
+	)
 
 /obj/item/clothing/head/helmet/ert/security
 	icon_state = "ember_sec"
-	worn_icon_state = "ember_sec"
-	inhand_icon_state = "ember_sec"
 
 /obj/item/clothing/head/helmet/ert/engineer
 	icon_state = "ember_eng"
-	worn_icon_state = "ember_eng"
-	inhand_icon_state = "ember_eng"
 
 /obj/item/clothing/head/helmet/ert/medical
 	icon_state = "ember_med"
-	worn_icon_state = "ember_med"
-	inhand_icon_state = "ember_med"
 
 /obj/item/clothing/head/helmet/ert/janitor
 	icon_state = "ember_jan"
-	worn_icon_state = "ember_jan"
-	inhand_icon_state = "ember_jan"
 
 /obj/item/clothing/head/helmet/ert/command
 	icon_state = "ember_com"
-	worn_icon_state = "ember_com"
-	inhand_icon_state = "ember_com"
 	actions_types = list(/datum/action/item_action/toggle_nvg)
 	/// Is night vision goggles enabled?
 	var/nvg_enabled = FALSE
@@ -119,9 +94,7 @@
 
 /obj/item/clothing/head/helmet/ert/command/update_icon_state()
 	. = ..()
-	icon_state = nvg_enabled ? initial(icon_state) + "_nvg" : initial(icon_state)
-	worn_icon_state = icon_state
-	inhand_icon_state = icon_state
+	icon_state = "[initial(icon_state)][nvg_enabled ? "_nvg" : ""]"
 
 /obj/item/clothing/head/helmet/ert/command/proc/toggle_nvg(mob/user)
 	var/msg
@@ -145,53 +118,47 @@
 
 /obj/item/clothing/head/helmet/ert/security/paranormal
 	icon_state = "knight_templar"
-	worn_icon_state = "knight_templar"
-	inhand_icon_state = "knight_templar"
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/helmet.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/helmet.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/helmet.dmi'
-		)
+	)
 
 /obj/item/clothing/head/helmet/space/ert_engineer
 	name = "emergency response team engineer space helmet"
 	desc = "Space helmet worn by engineering members of the Nanotrasen Emergency Response Team. Has orange highlights."
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "ember_eng"
-	worn_icon_state = "ember_eng"
-	inhand_icon_state = "ember_eng"
-	sprite_sheets = list(
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
-		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/species/tajaran/helmet.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
-		)
+	worn_icon = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 10, RAD = 50, FIRE = 200, ACID = 115)
+	sprite_sheets = list(
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/species/tajaran/helmet.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
+	)
 
 /obj/item/clothing/head/helmet/cop
 	name = "helmet of civil defend officer"
 	desc = "Шлем для любителей свежего воздуха. Подними эту банку!"
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "cop0"
+	worn_icon = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
-	icon_state = "cop0"
-	worn_icon_state = "cop0"
-	inhand_icon_state = "cop0"
-	sprite_sheets = list(
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
-		"Grey" 				= 	'modular_ss220/clothing/icons/mob/species/grey/helmet.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/helmet.dmi',
-		"Machine"			= 	'modular_ss220/clothing/icons/mob/species/machine/helmet.dmi',
-		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/species/tajaran/helmet.dmi',
-		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/species/unathi/helmet.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
-	)
 	armor = list(MELEE = 10, BULLET = 20, LASER = 10, ENERGY = 15, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
+	sprite_sheets = list(
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/helmet.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/helmet.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/species/machine/helmet.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/species/tajaran/helmet.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/helmet.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
+	)
 	var/on = FALSE
 	var/brightness_on = 2
 
@@ -208,8 +175,6 @@
 
 /obj/item/clothing/head/helmet/cop/update_icon_state()
 	icon_state = "cop[on]"
-	worn_icon_state =icon_state
-	inhand_icon_state = icon_state
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.update_inv_head()
@@ -232,5 +197,3 @@
 
 /obj/item/clothing/head/helmet/cop/v2
 	icon_state = "cop1"
-	worn_icon_state = "cop1"
-	inhand_icon_state = "cop1"

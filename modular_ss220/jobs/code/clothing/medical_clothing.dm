@@ -1,11 +1,10 @@
 /obj/item/clothing/under/rank/medical/doctor/intern
+	name = "intern jumpsuit"
 	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
 	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
-	sprite_sheets = list("Human" = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi')
-
-	name = "intern jumpsuit"
 	icon_state = "intern_s"
 	item_color = "intern"
+	sprite_sheets = null
 
 /obj/item/clothing/under/rank/medical/doctor/intern/skirt
 	name = "intern jumpskirt"
@@ -31,7 +30,7 @@
 	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
 	icon_state = "scrubsgreen"
 	item_color = "surgcap_green"
-	sprite_sheets = list("Human" = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi')
+	sprite_sheets = null
 
 /obj/item/clothing/head/surgery/green/light
 	name = "light green surgical cap"

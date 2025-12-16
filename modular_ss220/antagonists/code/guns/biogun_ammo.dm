@@ -3,7 +3,6 @@
 	desc = "Острое биоядро с живым организмом внутри. Оно пульсирует и ответно реагирует толчками на каждые взаимодействия."
 	icon = 'modular_ss220/antagonists/icons/guns/vox_guns.dmi'
 	icon_state = "biocore"
-	worn_icon_state = "cottoncandy_purple"
 	inhand_icon_state = "cottoncandy_purple"
 
 	var/mob/living/mob_spawner_type = /mob/living/basic/creature

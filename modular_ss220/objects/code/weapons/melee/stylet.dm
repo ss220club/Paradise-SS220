@@ -14,10 +14,6 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/melee.dmi'
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	worn_icon_state = "stylet_0"
-	inhand_icon_state = "stylet_0"
-	var/worn_icon_state_on = "stylet_1"
-	var/inhand_icon_state_on = "stylet_1"
 	icon_state = "stylet_0"
 	var/icon_state_on = "stylet_1"
 	var/extend_sound = 'modular_ss220/objects/sound/weapons/styletext.ogg'
@@ -28,8 +24,6 @@
 /obj/item/melee/stylet/update_icon_state()
 	. = ..()
 	icon_state = on ? icon_state_on : initial(icon_state)
-	worn_icon_state = on ? worn_icon_state_on : initial(worn_icon_state)
-	inhand_icon_state = on ? inhand_icon_state_on : initial(inhand_icon_state)
 
 /obj/item/melee/stylet/attack_self__legacy__attackchain(mob/user)
 	on = !on
