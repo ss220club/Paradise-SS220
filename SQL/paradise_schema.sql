@@ -743,6 +743,8 @@ DELIMITER ;
 --
 -- Table structure for table `kudos_system`
 --
+CREATE DATABASE kudos_system CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
 CREATE TABLE kudos_system.kudos_log (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	giver VARCHAR(32) NOT NULL,
