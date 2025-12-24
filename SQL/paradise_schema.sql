@@ -743,9 +743,7 @@ DELIMITER ;
 --
 -- Table structure for table `kudos_system`
 --
-CREATE DATABASE kudos_system CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-
-CREATE TABLE kudos_system.kudos_log (
+CREATE TABLE kudos_log (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	giver VARCHAR(32) NOT NULL,
 	receiver VARCHAR(32) NOT NULL,
@@ -758,7 +756,7 @@ CREATE TABLE kudos_system.kudos_log (
 	INDEX idx_time (time)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE kudos_system.kudos_unique (
+CREATE TABLE kudos_unique (
 	giver VARCHAR(32) NOT NULL,
 	receiver VARCHAR(32) NOT NULL,
 	last_given DATETIME NOT NULL,
