@@ -36,10 +36,11 @@ SUBSYSTEM_DEF(kudos)
 		return
 
 	// 1. TOTAL KUDOS — ALWAYS ADD
-	SSdbcore.NewQuery(
-		"INSERT INTO kudos_system.kudos_log (giver, receiver, round_id, time) VALUES (?, ?, ?, NOW())",
+	var/datum/db_query/Q = SSdbcore.NewQuery(
+		"INSERT INTO kudos_log (giver, receiver, round_id, time) VALUES (?, ?, ?, NOW())",
 		list(giver_ckey, receiver_ckey, GLOB.round_id)
-	).warn_execute()
+	)
+	Q.warn_execute()
 
 	// 2. UNIQUE KUDOS — MOVE OR CREATE
 	_update_unique_kudos(giver_ckey, receiver_ckey)
@@ -49,7 +50,7 @@ SUBSYSTEM_DEF(kudos)
 // -----------------------------------------------------
 /datum/controller/subsystem/kudos/proc/_update_unique_kudos(giver_ckey, receiver_ckey)
 	var/datum/db_query/Q = SSdbcore.NewQuery(
-		"SELECT receiver, last_given FROM kudos_system.kudos_unique WHERE giver = ?",
+		"SELECT receiver, last_given FROM kudos_unique WHERE giver = ?",
 		list(giver_ckey)
 	)
 
@@ -64,7 +65,7 @@ SUBSYSTEM_DEF(kudos)
 
 	if(exists)
 		var/datum/db_query/Q2 = SSdbcore.NewQuery(
-			"SELECT TIMESTAMPDIFF(DAY, last_given, NOW()) AS diff FROM kudos_system.kudos_unique WHERE giver = ?",
+			"SELECT TIMESTAMPDIFF(DAY, last_given, NOW()) AS diff FROM kudos_unique WHERE giver = ?",
 			list(giver_ckey)
 		)
 		if(Q2.warn_execute() && Q2.NextRow())
@@ -74,16 +75,18 @@ SUBSYSTEM_DEF(kudos)
 
 	if(exists)
 		// MOVE unique kudos to new receiver
-		SSdbcore.NewQuery(
-			"UPDATE kudos_system.kudos_unique SET receiver = ?, last_given = NOW() WHERE giver = ?",
+		var/datum/db_query/Q3 = SSdbcore.NewQuery(
+			"UPDATE kudos_unique SET receiver = ?, last_given = NOW() WHERE giver = ?",
 			list(receiver_ckey, giver_ckey)
-		).warn_execute()
+		)
+		Q3.warn_execute()
 	else
 		// CREATE new unique kudos
-		SSdbcore.NewQuery(
-			"INSERT INTO kudos_system.kudos_unique (giver, receiver, last_given) VALUES (?, ?, NOW())",
+		var/datum/db_query/Q4 = SSdbcore.NewQuery(
+			"INSERT INTO kudos_unique (giver, receiver, last_given) VALUES (?, ?, NOW())",
 			list(giver_ckey, receiver_ckey)
-		).warn_execute()
+		)
+		Q4.warn_execute()
 
 // -----------------------------------------------------
 // API (UI / STATS)
@@ -94,7 +97,7 @@ SUBSYSTEM_DEF(kudos)
 		return 0
 
 	var/datum/db_query/Q = SSdbcore.NewQuery(
-		"SELECT COUNT(*) FROM kudos_system.kudos_log WHERE receiver = ?",
+		"SELECT COUNT(*) FROM kudos_log WHERE receiver = ?",
 		list(ckey)
 	)
 
@@ -114,7 +117,7 @@ SUBSYSTEM_DEF(kudos)
 		return 0
 
 	var/datum/db_query/Q = SSdbcore.NewQuery(
-		"SELECT COUNT(*) FROM kudos_system.kudos_unique WHERE receiver = ? AND last_given >= DATE_SUB(NOW(), INTERVAL ? DAY)",
+		"SELECT COUNT(*) FROM kudos_unique WHERE receiver = ? AND last_given >= DATE_SUB(NOW(), INTERVAL ? DAY)",
 		list(ckey, KUDOS_UNIQUE_DAYS)
 	)
 
