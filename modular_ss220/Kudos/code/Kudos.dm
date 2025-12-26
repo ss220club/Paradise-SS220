@@ -4,9 +4,6 @@ SUBSYSTEM_DEF(kudos)
 	init_order = INIT_ORDER_DEFAULT
 	runlevels = RUNLEVEL_GAME
 
-// -----------------------------------------------------
-// СИНХРОНИЗАЦИЯ
-// -----------------------------------------------------
 /datum/controller/subsystem/kudos/proc/sync_round_kudos()
 	if(!SSdbcore.IsConnected())
 		return
@@ -27,9 +24,6 @@ SUBSYSTEM_DEF(kudos)
 
 		C.persistent.kudos_received_from.Cut()
 
-// -----------------------------------------------------
-// АРХИВАЦИЯ И СБРОС
-// -----------------------------------------------------
 /datum/controller/subsystem/kudos/proc/_try_monthly_reset()
 	if(time2text(world.realtime, "DD") != "01")
 		return
@@ -46,7 +40,6 @@ SUBSYSTEM_DEF(kudos)
 		return
 	qdel(Q_check)
 
-	// Используем одну строку для SQL, чтобы избежать проблем с переносами в DM
 	var/sql_archive = "INSERT INTO kudos_log (giver, receiver, past_unique, time) SELECT '___SYSTEM___', receiver, COUNT(*), NOW() FROM kudos_unique GROUP BY receiver"
 	var/datum/db_query/Q_archive = SSdbcore.NewQuery(sql_archive)
 
@@ -67,9 +60,6 @@ SUBSYSTEM_DEF(kudos)
 
 	qdel(Q_archive)
 
-// -----------------------------------------------------
-// ОБРАБОТКА
-// -----------------------------------------------------
 /datum/controller/subsystem/kudos/proc/_process_kudos(giver_ckey, receiver_ckey)
 	giver_ckey = ckey(giver_ckey)
 	receiver_ckey = ckey(receiver_ckey)
@@ -119,9 +109,8 @@ SUBSYSTEM_DEF(kudos)
 	)
 	if(!Q.warn_execute() || !Q.NextRow())
 		if(Q) qdel(Q)
-		return 0
+		return
 	var/amount = text2num(Q.item[1])
-	qdel(Q)
 	return amount
 
 /datum/controller/subsystem/kudos/proc/get_last_month_kudos(ckey)
@@ -132,9 +121,8 @@ SUBSYSTEM_DEF(kudos)
 	)
 	if(!Q.warn_execute() || !Q.NextRow())
 		if(Q) qdel(Q)
-		return 0
+		return
 	var/amount = text2num(Q.item[1])
-	qdel(Q)
 	return amount
 
 /datum/controller/subsystem/kudos/proc/get_total_kudos(ckey)
@@ -145,7 +133,6 @@ SUBSYSTEM_DEF(kudos)
 	)
 	if(!Q.warn_execute() || !Q.NextRow())
 		if(Q) qdel(Q)
-		return 0
+		return
 	var/amount = text2num(Q.item[1])
-	qdel(Q)
 	return amount
