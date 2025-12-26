@@ -1,5 +1,3 @@
-#define KUDOS_UNIQUE_DAYS 30
-
 SUBSYSTEM_DEF(kudos)
 	name = "Kudos System"
 	flags = SS_NO_FIRE | SS_BACKGROUND
@@ -7,26 +5,70 @@ SUBSYSTEM_DEF(kudos)
 	runlevels = RUNLEVEL_GAME
 
 // -----------------------------------------------------
-// SYNC ENTRY POINT
+// СИНХРОНИЗАЦИЯ
 // -----------------------------------------------------
 /datum/controller/subsystem/kudos/proc/sync_round_kudos()
 	if(!SSdbcore.IsConnected())
 		return
+
+	_try_monthly_reset()
 
 	for(var/mob/M in GLOB.player_list)
 		var/client/C = M.client
 		if(!C || !C.ckey)
 			continue
 
-		var/list/from = C.persistent.kudos_received_from
-		if(!from || !length(from))
+		var/list/received = C.persistent.kudos_received_from
+		if(!received || !length(received))
 			continue
 
-		for(var/giver_ckey in from)
+		for(var/giver_ckey in received)
 			_process_kudos(giver_ckey, C.ckey)
 
+		C.persistent.kudos_received_from.Cut()
+
 // -----------------------------------------------------
-// INTERNAL PROCESSING
+// АРХИВАЦИЯ И СБРОС
+// -----------------------------------------------------
+/datum/controller/subsystem/kudos/proc/_try_monthly_reset()
+	if(time2text(world.realtime, "DD") != "01")
+		return
+
+	var/today_date = time2text(world.realtime, "YYYY-MM-DD")
+
+	var/datum/db_query/Q_check = SSdbcore.NewQuery(
+		"SELECT id FROM kudos_log WHERE giver = '___SYSTEM___' AND receiver = 'SYSTEM_ARCHIVE_DONE' AND DATE(time) = ?",
+		list(today_date)
+	)
+
+	if(!Q_check.warn_execute() || Q_check.NextRow())
+		qdel(Q_check)
+		return
+	qdel(Q_check)
+
+	// Используем одну строку для SQL, чтобы избежать проблем с переносами в DM
+	var/sql_archive = "INSERT INTO kudos_log (giver, receiver, past_unique, time) SELECT '___SYSTEM___', receiver, COUNT(*), NOW() FROM kudos_unique GROUP BY receiver"
+	var/datum/db_query/Q_archive = SSdbcore.NewQuery(sql_archive)
+
+	if(Q_archive.warn_execute())
+		log_admin("Kudos System: Данные архивированы.")
+
+		var/datum/db_query/Q_reset = SSdbcore.NewQuery(
+			"DELETE FROM kudos_unique WHERE last_given < DATE_FORMAT(NOW() ,'%Y-%m-01')"
+		)
+		Q_reset.warn_execute()
+		qdel(Q_reset)
+
+		var/datum/db_query/Q_mark = SSdbcore.NewQuery(
+			"INSERT INTO kudos_log (giver, receiver, past_unique, time) VALUES ('___SYSTEM___', 'SYSTEM_ARCHIVE_DONE', 0, NOW())"
+		)
+		Q_mark.warn_execute()
+		qdel(Q_mark)
+
+	qdel(Q_archive)
+
+// -----------------------------------------------------
+// ОБРАБОТКА
 // -----------------------------------------------------
 /datum/controller/subsystem/kudos/proc/_process_kudos(giver_ckey, receiver_ckey)
 	giver_ckey = ckey(giver_ckey)
@@ -35,98 +77,75 @@ SUBSYSTEM_DEF(kudos)
 	if(!giver_ckey || !receiver_ckey || giver_ckey == receiver_ckey)
 		return
 
-	// 1. TOTAL KUDOS — ALWAYS ADD
-	var/datum/db_query/Q = SSdbcore.NewQuery(
+	var/datum/db_query/Q_log = SSdbcore.NewQuery(
 		"INSERT INTO kudos_log (giver, receiver, round_id, time) VALUES (?, ?, ?, NOW())",
 		list(giver_ckey, receiver_ckey, GLOB.round_id)
 	)
-	Q.warn_execute()
+	Q_log.warn_execute()
+	qdel(Q_log)
 
-	// 2. UNIQUE KUDOS — MOVE OR CREATE
 	_update_unique_kudos(giver_ckey, receiver_ckey)
 
-// -----------------------------------------------------
-// UNIQUE KUDOS LOGIC
-// -----------------------------------------------------
 /datum/controller/subsystem/kudos/proc/_update_unique_kudos(giver_ckey, receiver_ckey)
 	var/datum/db_query/Q = SSdbcore.NewQuery(
-		"SELECT receiver, last_given FROM kudos_unique WHERE giver = ?",
+		"SELECT id FROM kudos_unique WHERE giver = ? AND MONTH(last_given) = MONTH(NOW()) AND YEAR(last_given) = YEAR(NOW())",
 		list(giver_ckey)
 	)
 
-	var/exists = FALSE
-	var/last_given
+	if(!Q.warn_execute())
+		qdel(Q)
+		return
 
-	if(Q.warn_execute() && Q.NextRow())
-		exists = TRUE
-		last_given = Q.item[2]
-
-	qdel(Q)
-
-	if(exists)
-		var/datum/db_query/Q2 = SSdbcore.NewQuery(
-			"SELECT TIMESTAMPDIFF(DAY, last_given, NOW()) AS diff FROM kudos_unique WHERE giver = ?",
-			list(giver_ckey)
-		)
-		if(Q2.warn_execute() && Q2.NextRow())
-			if(Q2.item[1] > KUDOS_UNIQUE_DAYS)
-				exists = FALSE
-		qdel(Q2)
-
-	if(exists)
-		// MOVE unique kudos to new receiver
-		var/datum/db_query/Q3 = SSdbcore.NewQuery(
+	if(Q.NextRow())
+		var/datum/db_query/UP = SSdbcore.NewQuery(
 			"UPDATE kudos_unique SET receiver = ?, last_given = NOW() WHERE giver = ?",
-			list(receiver_ckey, giver_ckey)
-		)
-		Q3.warn_execute()
+			list(receiver_ckey, giver_ckey))
+		UP.warn_execute()
+		qdel(UP)
 	else
-		// CREATE new unique kudos
-		var/datum/db_query/Q4 = SSdbcore.NewQuery(
+		var/datum/db_query/INS = SSdbcore.NewQuery(
 			"INSERT INTO kudos_unique (giver, receiver, last_given) VALUES (?, ?, NOW())",
 			list(giver_ckey, receiver_ckey)
 		)
-		Q4.warn_execute()
+		INS.warn_execute()
+		qdel(INS)
+	qdel(Q)
 
-// -----------------------------------------------------
-// API (UI / STATS)
-// -----------------------------------------------------
-/datum/controller/subsystem/kudos/proc/get_total_kudos(ckey)
+/datum/controller/subsystem/kudos/proc/get_current_month_kudos(ckey)
 	ckey = ckey(ckey)
-	if(!ckey)
-		return 0
-
 	var/datum/db_query/Q = SSdbcore.NewQuery(
-		"SELECT COUNT(*) FROM kudos_log WHERE receiver = ?",
+		"SELECT COUNT(*) FROM kudos_unique WHERE receiver = ? AND MONTH(last_given) = MONTH(NOW()) AND YEAR(last_given) = YEAR(NOW())",
 		list(ckey)
 	)
-
-	if(!Q.warn_execute())
-		qdel(Q)
+	if(!Q.warn_execute() || !Q.NextRow())
+		if(Q) qdel(Q)
 		return 0
-
-	Q.NextRow()
 	var/amount = text2num(Q.item[1])
 	qdel(Q)
-
 	return amount
 
-/datum/controller/subsystem/kudos/proc/get_unique_kudos(ckey)
+/datum/controller/subsystem/kudos/proc/get_last_month_kudos(ckey)
 	ckey = ckey(ckey)
-	if(!ckey)
-		return 0
-
 	var/datum/db_query/Q = SSdbcore.NewQuery(
-		"SELECT COUNT(*) FROM kudos_unique WHERE receiver = ? AND last_given >= DATE_SUB(NOW(), INTERVAL ? DAY)",
-		list(ckey, KUDOS_UNIQUE_DAYS)
+		"SELECT past_unique FROM kudos_log WHERE giver = '___SYSTEM___' AND receiver = ? ORDER BY time DESC LIMIT 1",
+		list(ckey)
 	)
-
-	if(!Q.warn_execute())
-		qdel(Q)
+	if(!Q.warn_execute() || !Q.NextRow())
+		if(Q) qdel(Q)
 		return 0
-
-	Q.NextRow()
 	var/amount = text2num(Q.item[1])
 	qdel(Q)
+	return amount
 
+/datum/controller/subsystem/kudos/proc/get_total_kudos(ckey)
+	ckey = ckey(ckey)
+	var/datum/db_query/Q = SSdbcore.NewQuery(
+		"SELECT COUNT(*) FROM kudos_log WHERE receiver = ? AND giver != '___SYSTEM___'",
+		list(ckey)
+	)
+	if(!Q.warn_execute() || !Q.NextRow())
+		if(Q) qdel(Q)
+		return 0
+	var/amount = text2num(Q.item[1])
+	qdel(Q)
 	return amount

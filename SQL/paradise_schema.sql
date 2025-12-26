@@ -743,24 +743,24 @@ DELIMITER ;
 --
 -- Table structure for table `kudos_system`
 --
-CREATE TABLE kudos_log (
-	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	giver VARCHAR(32) NOT NULL,
-	receiver VARCHAR(32) NOT NULL,
-	round_id INT UNSIGNED NOT NULL,
-	time DATETIME NOT NULL,
-	PRIMARY KEY (id),
-	INDEX idx_receiver (receiver),
-	INDEX idx_giver (giver),
-	INDEX idx_round (round_id),
-	INDEX idx_time (time)
+CREATE TABLE IF NOT EXISTS `kudos_log` (
+    `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `giver` VARCHAR(50) NOT NULL COMMENT 'Ckey того, кто дал кудос, или ___SYSTEM___ для архивов',
+    `receiver` VARCHAR(50) NOT NULL COMMENT 'Ckey получателя или флаг',
+    `round_id` INT(11) UNSIGNED DEFAULT NULL COMMENT 'ID раунда',
+    `past_unique` INT(11) DEFAULT 0 COMMENT 'Сумма уникальных кудосов за прошлый месяц',
+    `time` DATETIME NOT NULL,
+    PRIMARY KEY (`id`),
+    INDEX `idx_receiver_total` (`receiver`, `giver`),
+    INDEX `idx_system_archive` (`giver`, `receiver`, `time` DESC)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE kudos_unique (
-	giver VARCHAR(32) NOT NULL,
-	receiver VARCHAR(32) NOT NULL,
-	last_given DATETIME NOT NULL,
-	PRIMARY KEY (giver),
-	INDEX idx_receiver (receiver),
-	INDEX idx_last_given (last_given)
+CREATE TABLE IF NOT EXISTS `kudos_unique` (
+    `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `giver` VARCHAR(50) NOT NULL COMMENT 'Ckey того, кто отдал свой кудос',
+    `receiver` VARCHAR(50) NOT NULL COMMENT 'Ckey того, кто получил этот кудос',
+    `last_given` DATETIME NOT NULL COMMENT 'Дата и время последнего обновления кудоса',
+    PRIMARY KEY (`id`),
+    INDEX `idx_giver_monthly` (`giver`, `last_given`),
+    INDEX `idx_receiver_monthly` (`receiver`, `last_given`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
