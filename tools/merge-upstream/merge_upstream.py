@@ -127,7 +127,7 @@ def update_merge_branch():
             datetime.strptime(UNTIL_DATE, "%Y-%m-%d")
         except ValueError:
             logging.error("Invalid format for UNTIL_DATE: %s. Expected YYYY-MM-DD.", UNTIL_DATE)
-            raise
+            exit(1)
         logging.info("Finding last commit until date: %s", UNTIL_DATE)
         target_commit = run_command(f"git log upstream/{UPSTREAM_BRANCH} --until='{UNTIL_DATE} 23:59:59' --pretty=format:'%H' -n 1")
         if target_commit:
