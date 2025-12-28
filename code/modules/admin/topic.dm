@@ -943,7 +943,7 @@
 			if(!S || (NOT_SELECTABLE in S.species_traits))
 				continue
 
-			if(is_species_banned(M.last_known_ckey, species_name))
+			if(is_species_banned_ckey(M.last_known_ckey, species_name))
 				species_html += "<td width='12.5%'><a href='byond://?src=[UID()];speciesban_toggle=[species_name];speciesban_mob=[M.UID()];dbbanaddckey=[M.last_known_ckey]'><font color=red>[replacetext(species_name, " ", "&nbsp")]</font></a></td>"
 			else
 				species_html += "<td width='12.5%'><a href='byond://?src=[UID()];speciesban_toggle=[species_name];speciesban_mob=[M.UID()];dbbanaddckey=[M.last_known_ckey]'>[replacetext(species_name, " ", "&nbsp")]</a></td>"
@@ -986,7 +986,7 @@
 		var/ban_ckey_param = href_list["dbbanaddckey"]
 		var/species_name = href_list["speciesban_toggle"]
 
-		if(is_species_banned(M.last_known_ckey, species_name))
+		if(is_species_banned_ckey(M.last_known_ckey, species_name))
 			// Unban
 			var/datum/db_query/query = SSdbcore.NewQuery({"
 				UPDATE ban SET unbanned = 1, unbanned_datetime = Now(), unbanned_ckey = :admin_ckey
@@ -1005,6 +1005,7 @@
 			add_note(M.last_known_ckey, "Unbanned for species [species_name]", null, usr.ckey, 0, public = TRUE)
 
 			if(M.client)
+				M.client.sbh.reload_species_bans(M.client)
 				to_chat(M, "<span class='notice'>You have been unbanned for species [species_name] by [usr.client.ckey].</span>")
 		else
 			// Ban
@@ -1028,6 +1029,7 @@
 					message_admins("<span class='notice'>[key_name_admin(usr)] banned [key_name_admin(M)] for species [species_name] for [mins] minutes</span>", 1)
 
 					if(M.client)
+						M.client.sbh.reload_species_bans(M.client)
 						to_chat(M, "<span class='warning'><big><b>You have been banned for species [species_name] by [usr.client.ckey].</b></big></span>")
 						to_chat(M, "<span class='danger'>The reason is: [reason]</span>")
 						to_chat(M, "<span class='warning'>This ban will be lifted in [mins] minutes.</span>")
@@ -1049,6 +1051,7 @@
 					message_admins("<span class='notice'>[key_name_admin(usr)] banned [key_name_admin(M)] for species [species_name]</span>", 1)
 
 					if(M.client)
+						M.client.sbh.reload_species_bans(M.client)
 						to_chat(M, "<span class='warning'><big><b>You have been banned for species [species_name] by [usr.client.ckey].</b></big></span>")
 						to_chat(M, "<span class='danger'>The reason is: [reason]</span>")
 						to_chat(M, "<span class='warning'>Species ban can be lifted only upon request.</span>")
