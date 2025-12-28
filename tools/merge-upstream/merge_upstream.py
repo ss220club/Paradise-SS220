@@ -78,6 +78,7 @@ logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO").upper())
 # Environment variables
 TRANSLATE_CHANGES = os.getenv("TRANSLATE_CHANGES", "False").lower() in ("true", "yes", "1")
 CHANGELOG_AUTHOR = os.getenv("CHANGELOG_AUTHOR", "")
+UNTIL_DATE = os.getenv("UNTIL_DATE", "")
 
 check_env()
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
@@ -136,7 +137,13 @@ def update_merge_branch():
 def detect_commits() -> list[str]:
     """Detect commits from upstream not yet in downstream."""
     logging.info("Detecting new commits from upstream...")
-    commit_log: list[str] = run_command(f"git log {TARGET_BRANCH}..{MERGE_BRANCH} --pretty=format:'%h %s'").split("\n")
+    git_command = f"git log {TARGET_BRANCH}..{MERGE_BRANCH} --pretty=format:'%h %s'"
+
+    if UNTIL_DATE:
+        logging.info("Filtering commits until date: %s", UNTIL_DATE)
+        git_command += f" --until='{UNTIL_DATE} 23:59:59'"
+
+    commit_log: list[str] = run_command(git_command).split("\n")
     commit_log.reverse()
     logging.debug("Detected commits: %s", commit_log)
     return commit_log
