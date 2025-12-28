@@ -805,7 +805,6 @@
 	desc = "Холодный чёрный чай, натуральный и полезный."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_grey"
-	worn_icon_state = "beer"
 	inhand_icon_state = "beer"
 	list_reagents = list("icetea" = 30)
 
@@ -814,7 +813,6 @@
 	desc = "Холодный зелёный чай, натуральный и полезный."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle"
-	worn_icon_state = "beer"
 	inhand_icon_state = "beer"
 	list_reagents = list("icetea" = 30)
 
@@ -823,7 +821,6 @@
 	desc = "Освежающий холодный чай с листьями мяты."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_blue"
-	worn_icon_state = "beer"
 	inhand_icon_state = "beer"
 	list_reagents = list("icetea" = 30)
 
@@ -832,7 +829,6 @@
 	desc = "Холодный чай с натуральными ягодами без сахара."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_pink"
-	worn_icon_state = "beer"
 	inhand_icon_state = "beer"
 	list_reagents = list("icetea" = 30)
 
@@ -1033,7 +1029,6 @@
 	desc = "Упаковка морковного сока. Полезен для зрения и, если верить некоторым слухам, для роста."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "carrotjuice_carton"
-	worn_icon_state = "carton"
 	inhand_icon_state = "carton"
 	is_glass = FALSE
 	gender = PLURAL
