@@ -55,7 +55,8 @@
 		EQUIPMENT("Luxury Shelter Capsule", /obj/item/survivalcapsule/luxury, 3000),
 		EQUIPMENT("Bridge Capsule", /obj/item/bridge_capsule, 300),
 		EQUIPMENT("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),
-		EQUIPMENT("Survival Medipen", /obj/item/reagent_containers/hypospray/autoinjector/survival, 500),
+		EQUIPMENT("Survival Medipen", /obj/item/reagent_containers/hypospray/autoinjector/survival, 750),
+		EQUIPMENT("Lux Medipen", /obj/item/reagent_containers/hypospray/autoinjector/lux, 3500),
 	)
 	prize_list["Kinetic Weapons"] = list(
 		EQUIPMENT("Kinetic Accelerator", /obj/item/gun/energy/kinetic_accelerator, 750),
@@ -386,7 +387,7 @@
 		EQUIPMENT("Fulton Pack", /obj/item/extraction_pack, 1000),
 		EQUIPMENT("Fulton Beacon", /obj/item/fulton_core, 400),
 		EQUIPMENT("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),
-		EQUIPMENT("Survival Medipen", /obj/item/reagent_containers/hypospray/autoinjector/survival, 500),
+		EQUIPMENT("Survival Medipen", /obj/item/reagent_containers/hypospray/autoinjector/survival, 750),
 	)
 
 	prize_list["Kinetic Weapons"] = list(
