@@ -678,6 +678,9 @@ CREATE TABLE `json_datum_saves` (
 
 ALTER TABLE `characters` ADD `tts_seed` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `custom_emotes`;
 
+# Updating DB from 49.220.1 to 49.220.2
+# Adds ckey whitelist
+
 --
 -- Table structure for table `ckey_whitelist`
 --
@@ -694,6 +697,9 @@ CREATE TABLE `ckey_whitelist` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+# Updating DB from 53.220.2 to 53.220.3
+# Adds discord links
+
 --
 -- Table structure for table `admin_wl`
 --
@@ -706,6 +712,35 @@ CREATE TABLE `admin_wl` (
 	PRIMARY KEY (`id`),
 	KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+# Updating DB from 53.220.3 to 53.220.4
+# Adds discord links
+
+CREATE TABLE IF NOT EXISTS `discord_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ckey` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discord_id` bigint(20) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `one_time_token` varchar(100) NOT NULL,
+  `valid` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+# Updating DB from 53.220.4 to 53.220.5
+# Adds budget
+
+CREATE TABLE `budget` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`date` DATETIME NOT NULL DEFAULT current_timestamp(),
+	`ckey` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`amount` INT(10) UNSIGNED NOT NULL,
+	`source` VARCHAR(32) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`date_start` DATETIME NOT NULL DEFAULT current_timestamp(),
+	`date_end` DATETIME NULL DEFAULT (current_timestamp() + interval 1 month),
+	`is_valid` TINYINT(1) NOT NULL DEFAULT '1',
+	`discord_id` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+) COLLATE='utf8mb4_general_ci' ENGINE=InnoDB;
 
 # Updating DB from 53.220.5 to 53.220.6
 # Adds species whitelist ~legendaxe
