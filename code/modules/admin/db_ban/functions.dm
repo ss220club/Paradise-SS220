@@ -52,6 +52,13 @@
 			announce_in_discord = TRUE
 			blockselfban = 1
 			kickbannedckey = 1
+		if(BANTYPE_SPECIES_PERMA)
+			bantype_str = "SPECIES_PERMABAN"
+			duration = -1
+			bantype_pass = 1
+		if(BANTYPE_SPECIES_TEMP)
+			bantype_str = "SPECIES_TEMPBAN"
+			bantype_pass = 1
 
 	if(!bantype_pass) return
 	if(!istext(reason)) return
@@ -229,6 +236,14 @@
 			if(BANTYPE_ANY_FULLBAN)
 				bantype_str = "ANY"
 				bantype_pass = 1
+			// SS220 EDIT START - Species bans
+			if(BANTYPE_SPECIES_PERMA)
+				bantype_str = "SPECIES_PERMABAN"
+				bantype_pass = 1
+			if(BANTYPE_SPECIES_TEMP)
+				bantype_str = "SPECIES_TEMPBAN"
+				bantype_pass = 1
+			// SS220 EDIT END
 		if(!bantype_pass) return
 
 	var/bantype_sql
@@ -477,6 +492,10 @@
 	output += "<option value='[BANTYPE_JOB_TEMP]'>JOB TEMPBAN</option>"
 	output += "<option value='[BANTYPE_ADMIN_PERMA]'>ADMIN PERMABAN</option>"
 	output += "<option value='[BANTYPE_ADMIN_TEMP]'>ADMIN TEMPBAN</option>"
+	// SS220 EDIT START - Species bans
+	output += "<option value='[BANTYPE_SPECIES_PERMA]'>SPECIES PERMABAN</option>"
+	output += "<option value='[BANTYPE_SPECIES_TEMP]'>SPECIES TEMPBAN</option>"
+	// SS220 EDIT END
 	output += "</select></td>"
 	output += "<td width='50%' align='center'><b>Ckey:</b><br><input type='text' name='dbbanaddckey'></td></tr>"
 	output += "<tr><td width='50%' align='center'><b>IP:</b><br><input type='text' name='dbbanaddip'></td>"
@@ -494,6 +513,15 @@
 		output += "<option value='[j]'>[j]</option>"
 	for(var/j in list("Syndicate") + GLOB.antag_roles)
 		output += "<option value='[j]'>[j]</option>"
+	// SS220 EDIT START - Species bans
+	output += "</select></td></tr>"
+	output += "<tr><td width='50%' align='center' colspan='2'><b>Species:</b><br><select name='dbbanaddspecies'>"
+	output += "<option value=''>--</option>"
+	for(var/species_name in GLOB.all_species)
+		var/datum/species/S = GLOB.all_species[species_name]
+		if(!(NOT_SELECTABLE in S.species_traits))
+			output += "<option value='[species_name]'>[species_name]</option>"
+	// SS220 EDIT END
 	output += "</select></td></tr></table>"
 	output += "<b>Reason:<br></b><textarea name='dbbanreason' cols='55' rows='10'></textarea><br>"
 	output += "<input type='checkbox' value='1' name='autopopulate' checked='1'>&nbsp;Auto populate CID & IP for players seen this round<br>"
@@ -519,6 +547,10 @@
 	output += "<option value='[BANTYPE_JOB_TEMP]'>JOB TEMPBAN</option>"
 	output += "<option value='[BANTYPE_ADMIN_PERMA]'>ADMIN PERMABAN</option>"
 	output += "<option value='[BANTYPE_ADMIN_TEMP]'>ADMIN TEMPBAN</option>"
+	// SS220 EDIT START - Species bans
+	output += "<option value='[BANTYPE_SPECIES_PERMA]'>SPECIES PERMABAN</option>"
+	output += "<option value='[BANTYPE_SPECIES_TEMP]'>SPECIES TEMPBAN</option>"
+	// SS220 EDIT END
 	output += "</select></td></tr></table>"
 	output += "<br><input type='submit' value='Search'><br>"
 	output += "<input type='checkbox' value='[match]' name='dbmatch' [match? "checked=\"1\"" : null]> Match(min. 3 characters to search by key or ip, and 7 to search by cid)<br>"
@@ -647,6 +679,12 @@
 						typedesc = "<b>ADMIN PERMABAN</b>"
 					if("ADMIN_TEMPBAN")
 						typedesc = "<b>ADMIN TEMPBAN</b><br><font size='2'>([duration] minutes [(unbanned) ? "" : "(<a href=\"byond://?src=[cached_UID];dbbanedit=duration;dbbanid=[banid]\">Edit</a>))"]<br>Expires<br>[expiration]</font>"
+					// SS220 EDIT START - Species bans
+					if("SPECIES_PERMABAN")
+						typedesc = "<b>SPECIES PERMABAN</b><br><font size='2'>([job])"
+					if("SPECIES_TEMPBAN")
+						typedesc = "<b>TEMP SPECIES BAN</b><br><font size='2'>([job])<br>([duration] minutes<br>Expires [expiration]"
+					// SS220 EDIT END
 
 				output += "<tr bgcolor='[dcolor]'>"
 				output += "<td align='center'>[typedesc]</td>"

@@ -14,26 +14,47 @@
 	if(NOT_SELECTABLE in S.species_traits)
 		return FALSE
 
-	// SS220 EDIT START
-
 	// Yes if admin
-	//if(check_rights(R_ADMIN, FALSE))
-	//	return TRUE
+	// SS220 EDIT START - Species bans
+	// if(check_rights(R_ADMIN, FALSE))
+	// 	return TRUE
 
-	if(GLOB.configuration.species_whitelist.species_whitelist_enabled)
-		if(!M.client?.prefs?.species_whitelist)
-			return FALSE
-
-		if(!(species in M.client.prefs.species_whitelist))
-			return FALSE
+	if(M.client && is_species_banned(M.client.ckey, species))
+		return FALSE
+	// SS220 EDIT END
 
 	if(!S.is_available(M))
 		return FALSE
-
-	// SS220 EDIT END
 
 	// No if species is blacklisted
 	if(S.blacklisted)
 		return FALSE
 
 	return TRUE
+
+// SS220 EDIT START - Species bans
+/proc/is_species_banned(ckey, species)
+	if(!GLOB.configuration.species_whitelist.species_whitelist_enabled)
+		return FALSE
+	if(!SSdbcore.IsConnected())
+		return FALSE
+
+	var/datum/db_query/query = SSdbcore.NewQuery({"
+		SELECT id FROM ban
+		WHERE ckey=:ckey
+		AND job=:species
+		AND (bantype='SPECIES_PERMABAN' OR (bantype='SPECIES_TEMPBAN' AND expiration_time > Now()))
+		AND (unbanned IS NULL OR unbanned = 0)
+	"}, list("ckey" = ckey, "species" = species))
+
+	if(!query.warn_execute())
+		qdel(query)
+		return FALSE
+
+	var/is_banned = FALSE
+	if(query.NextRow())
+		is_banned = TRUE
+
+	qdel(query)
+	return is_banned
+// SS220 EDIT END

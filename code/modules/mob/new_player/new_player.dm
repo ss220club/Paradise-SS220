@@ -144,12 +144,12 @@
 			ready = FALSE
 			return FALSE
 
-		// SS220 ADDITION START - TTS220
+		// SS220 ADDITION START
 		if(!check_tts_seed_ready())
 			return FALSE
 
 		if(!can_use_species(src, client.prefs.active_character.species))
-			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.active_character.species]."))
+			to_chat(src, alert("В настоящее время вам недоступна игра за [client.prefs.active_character.species]."))
 			return FALSE
 		// SS220 ADDITION END
 
@@ -232,12 +232,16 @@
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<span class='warning'>Раунд либо не готов, либо уже завершился...</span>")
 			return
+		// SS220 EDIT START - Species bans
 		if(!can_use_species(src, client.prefs.active_character.species))
-			to_chat(src, alert("В настоящее время вы не включены в белый список для игры на [client.prefs.active_character.species]."))
+			to_chat(src, alert("В настоящее время вам недоступна игра за [client.prefs.active_character.species]."))
 			return FALSE
+		// SS220 EDIT END
 
-		if(!check_tts_seed_ready()) // SS220 ADDITION - TTS
+		// SS220 EDIT START - TTS
+		if(!check_tts_seed_ready())
 			return FALSE
+		// SS220 EDIT END
 
 		LateChoices()
 
@@ -253,9 +257,11 @@
 		if(client.prefs.toggles2 & PREFTOGGLE_2_RANDOMSLOT)
 			client.prefs.load_random_character_slot(client)
 
+		// SS220 EDIT START - Species bans
 		if(!can_use_species(src, client.prefs.active_character.species))
-			to_chat(src, alert("В настоящее время вы не включены в белый список для игры на [client.prefs.active_character.species]."))
+			to_chat(src, alert("В настоящее время вам недоступна игра за [client.prefs.active_character.species]."))
 			return FALSE
+		// SS220 EDIT END
 
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
