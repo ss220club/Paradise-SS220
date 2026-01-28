@@ -4,9 +4,9 @@
 	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
 	icon_state = "cadet_s"
 	item_color = "cadet"
-	sprite_sheets = list("Human" = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi')
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	sprite_sheets = null
 
 /obj/item/clothing/under/rank/security/officer/cadet/skirt
 	name = "security cadet jumpskirt"
@@ -29,10 +29,8 @@
 	name = "security clown suit"
 	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
 	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
-	sprite_sheets = list("Human" = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi')
 	desc = "<i>'HONK THE LAW!'</i>"
 	icon_state = "security_clown_s"
 	item_color = "security_clown"
-	worn_icon_state = "clown"
 	inhand_icon_state = "clown"
-
+	sprite_sheets = null

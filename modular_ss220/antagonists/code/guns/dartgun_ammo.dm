@@ -6,7 +6,6 @@
 	var/icon_state_base = "darts"
 	var/overlay_state = "darts_overlay"
 	var/overlay_state_color
-	worn_icon_state = "rcdammo"
 	inhand_icon_state = "rcdammo"
 	origin_tech = "materials=2"
 	storage_slots = 5

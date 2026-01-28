@@ -11,8 +11,6 @@
 		с огромной частотой, что позволяет при его достаточной зарядке наносить глубокие раны даже ударами по касательной."
 	icon = 'modular_ss220/objects/icons/melee.dmi'
 	icon_state = "vibroblade"
-	worn_icon_state = "vibroblade"
-	inhand_icon_state = "vibroblade"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	hitsound = 'modular_ss220/objects/sound/weapons/melee/sardaukar/knifehit1.ogg'
@@ -161,8 +159,6 @@
 		Воины Куи'кверр-Кэтиш обучаются мастерству ближнего боя с детства, поэтому в их руках он особо опасен и жесток. \
 		Каждый будущий гвардеец добывает свой клинок в ритуальном бою, и его сохранность есть вопрос жизни и смерти владельца."
 	icon_state = "vibroblade_elite"
-	worn_icon_state = "vibroblade_elite"
-	inhand_icon_state = "vibroblade_elite"
 	force = 25
 	charge_time = 2 SECONDS
 	hold_to_be_charged = FALSE

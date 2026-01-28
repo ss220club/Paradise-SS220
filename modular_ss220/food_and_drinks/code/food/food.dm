@@ -1230,7 +1230,6 @@
 	desc = "Вкуснейшие сухарики с запахом дымка!"
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "disk"
-	worn_icon_state = "chips"
 	inhand_icon_state = "chips"
 	bitesize = 3
 	junkiness = 20
@@ -1244,7 +1243,6 @@
 	name = "диск с сухариками"
 	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "disk"
-	worn_icon_state = "chips"
 	inhand_icon_state = "chips"
 
 // Plov
@@ -1334,5 +1332,4 @@
 	desc = "Когда-то это были вкусные чипсы."
 	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "MV-chips"
-	worn_icon_state = "chips"
 	inhand_icon_state = "chips"

@@ -3,8 +3,6 @@
 	worn_icon = 'modular_ss220/mobs/icons/mob/belts.dmi'
 	var/base_name = "sheath"
 	icon_state = "sheath_classic"
-	worn_icon_state = null
-	inhand_icon_state = null
 	base_icon_state = "sheath_classic"
 	can_hold = list(/obj/item/melee/saber)
 

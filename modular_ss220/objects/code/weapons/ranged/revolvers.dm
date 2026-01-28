@@ -206,8 +206,6 @@
 /obj/item/projectile/bullet/midbullet_r/peas_shooter
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "peashooter_bullet"
-	worn_icon_state = "peashooter_bullet"
-	inhand_icon_state = "peashooter_bullet"
 	stamina = 5
 	damage = 0
 	var/additional_zombie_damage = 10
