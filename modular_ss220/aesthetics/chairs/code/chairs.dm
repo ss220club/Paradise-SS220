@@ -37,7 +37,6 @@
 /obj/item/chair/stool/bar/dark
 	icon = 'modular_ss220/aesthetics/chairs/icons/chairs.dmi'
 	icon_state = "bar_toppled_dark"
-	worn_icon_state = "stool_bar_dark"
 	inhand_icon_state = "stool_bar_dark"
 	origin_type = /obj/structure/chair/stool/bar/dark
 	lefthand_file = 'modular_ss220/aesthetics/chairs/icons/chairs_lefthand.dmi'

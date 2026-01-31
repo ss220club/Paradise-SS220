@@ -156,8 +156,7 @@
 	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING, ACCESS_KITCHEN, ACCESS_BAR, ACCESS_JANITOR)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/card.dmi'
 	icon_state = "adjutant"
-	worn_icon_state = "silver-id"
-	inhand_icon_state = "silver-id"
+	inhand_icon_state = "silver_id"
 
 /obj/item/card/id/butler
 	name = "Butler ID"
@@ -176,16 +175,14 @@
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/card.dmi'
 	icon_state = "representativetsf"
-	worn_icon_state = "silver-id"
-	inhand_icon_state = "silver-id"
+	inhand_icon_state = "silver_id"
 
 /obj/item/card/id/representative_ussp
 	name = "Representative USSP ID"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/card.dmi'
 	icon_state = "representativeussp"
-	worn_icon_state = "silver-id"
-	inhand_icon_state = "silver-id"
+	inhand_icon_state = "silver_id"
 
 /obj/item/card/id/dealer
 	name = "Dealer ID"
@@ -198,16 +195,14 @@
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/card.dmi'
 	icon_state = "vipcorporateguest"
-	worn_icon_state = "gold-id"
-	inhand_icon_state = "gold-id"
+	inhand_icon_state = "gold_id"
 
 /obj/item/card/id/banker
 	name = "Banker ID"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_EVA)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/card.dmi'
 	icon_state = "banker"
-	worn_icon_state = "gold-id"
-	inhand_icon_state = "gold-id"
+	inhand_icon_state = "gold_id"
 
 /obj/item/card/id/seclown
 	name = "Security Clown ID"
