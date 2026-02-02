@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 		// SS220 EDIT START
 		if(length(GLOB.crew_list) < next_event.min_player)
 			log_debug("Event manager: Недостаточно игроков для запуска ивента, минимальное значение [next_event.min_player] членов экипажа")
+			available_events += next_event
 			next_event = null
 			next_event_time += (10)
 			return
