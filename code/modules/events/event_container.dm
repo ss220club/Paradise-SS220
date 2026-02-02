@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 			log_debug("Event manager: Недостаточно игроков для запуска ивента, минимальное значение [next_event.min_player] членов экипажа")
 			available_events += next_event
 			next_event = null
-			next_event_time += (10)
+			next_event_time = world.time + 6000
 			return
 		// SS220 EDIT END
 	// Has an event been acquired?
@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 	available_events = list(
 		// Severity level, event name, event type, base weight, role weights, one shot, min weight, max weight, min_number_player. Last three only used if set.
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Nothing",			/datum/event/nothing,			1100),
-		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "PDA Spam",			/datum/event/pda_spam, 			0, 		list(ASSIGNMENT_ANY = 4), 25, 50),
+		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "PDA Spam",			/datum/event/pda_spam, 			0, 		list(ASSIGNMENT_ANY = 4), min_event_weight = 25, max_event_weight = 50),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Economic News",		/datum/event/economic_event,	300),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Trivial News",		/datum/event/trivial_news, 		400),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Mundane News", 		/datum/event/mundane_news, 		300),
