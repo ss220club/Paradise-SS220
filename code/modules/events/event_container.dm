@@ -197,8 +197,8 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Disease Outbreak",			/datum/event/disease_outbreak, 			50,		list(ASSIGNMENT_MEDICAL = 30), min_number_player = 15),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Door Runtime",				/datum/event/door_runtime,				50,		list(ASSIGNMENT_ENGINEER = 25, ASSIGNMENT_AI = 150), TRUE),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Tourist Arrivals",			/datum/event/tourist_arrivals,			100,	list(ASSIGNMENT_SECURITY = 15), TRUE),
-		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Shuttle Loan",				/datum/event/shuttle_loan,				100,	list(ASSIGNMENT_CARGO = 15, ASSIGNMENT_SECURITY = 10), is_one_shot = TRUE)
-		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Traders",				/datum/event/traders,			75, 	is_one_shot = TRUE, min_number_player = 15),
+		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Shuttle Loan",				/datum/event/shuttle_loan,				100,	list(ASSIGNMENT_CARGO = 15, ASSIGNMENT_SECURITY = 10), is_one_shot = TRUE),
+		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Traders",				/datum/event/traders,			75, 	is_one_shot = TRUE, min_number_player = 15)
 	)
 
 /datum/event_container/major
@@ -219,9 +219,9 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Immovable Rod",		/datum/event/immovable_rod,				2,		list(ASSIGNMENT_ENGINEER = 10), min_number_player = 35),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Disease Outbreak",			/datum/event/disease_outbreak, 			15,		list(ASSIGNMENT_MEDICAL = 4), min_number_player = 20),
 		//new /datum/event_meta(EVENT_LEVEL_MAJOR, "Floor Cluwne",	/datum/event/spawn_floor_cluwne,	15, is_one_shot = TRUE)
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pulse Demon Infiltration",	/datum/event/spawn_pulsedemon,	20,	is_one_shot = TRUE, min_number_player = 35)
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pulse Demon Infiltration",	/datum/event/spawn_pulsedemon,	20,	is_one_shot = TRUE, min_number_player = 35),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Dimensional Tear",			/datum/event/tear,						5,		list(ASSIGNMENT_SECURITY = 15), TRUE, min_number_player = 20),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Honknomoly",				/datum/event/tear/honk,					5,		list(ASSIGNMENT_SECURITY = 10), min_number_player = 20),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Honknomoly",				/datum/event/tear/honk,					5,		list(ASSIGNMENT_SECURITY = 10), min_number_player = 20)
 	)
 	// SS220 EDIT END
 #undef ASSIGNMENT_ANY
