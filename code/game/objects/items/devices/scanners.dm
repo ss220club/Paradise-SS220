@@ -88,7 +88,7 @@ SLIME SCANNER
 	var/has_real_or_fake_reagents = FALSE
 	if(length(H.reagents.reagent_list))
 		has_real_or_fake_reagents = TRUE
-		msgs += "<span class='boldnotice'>В субъекте обнаруженны следующие реагенты:</span>"
+		msgs += "<span class='boldnotice'>В субъекте обнаружены следующие реагенты:</span>"
 		for(var/datum/reagent/R in H.reagents.reagent_list)
 			var/volume = R.volume
 			var/overdosing = R.overdosed
@@ -107,7 +107,7 @@ SLIME SCANNER
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
 		if(!length(H.reagents.reagent_list))
-			msgs += "<span class='boldnotice'>В субъекте обнаруженны следующие реагенты:</span>"
+			msgs += "<span class='boldnotice'>В субъекте обнаружены следующие реагенты:</span>"
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
 				msgs += "<span class='notice'>[rand(5, 100)]u [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
@@ -170,7 +170,7 @@ SLIME SCANNER
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		var/list/msgs = list()
 		user.visible_message("<span class='warning'>[user] анализирует жизненные показатели the floor!</span>", "<span class='notice'>You stupidly try to analyze the floor's vitals!</span>")
-		msgs += "<span class='notice'>Анализ результата для the floor:\nОбщее состояние: Здоровый</span>"
+		msgs += "<span class='notice'>Анализ результатов для the floor:\nОбщее состояние: Здоровый</span>"
 		msgs += "<span class='notice'>Основные: <font color='blue'>Гипоксия</font>/<font color='green'>Интоксикация</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Травмы</font></span>"
 		msgs += "<span class='notice'>Детализация повреждений: <font color='blue'>0</font> - <font color='green'>0</font> - <font color='#FFA500'>0</font> - <font color='red'>0</font></span>"
 		msgs += "<span class='notice'>Температура тела: ???</span>"
@@ -298,7 +298,7 @@ SLIME SCANNER
 		if(heart && !(heart.linked_organ.status & ORGAN_DEAD))
 			msgs += "<span class='notice'><font color='red'><b>Сердце пациента остановилось.</b>\nМетод лечения: Электрический шок.</font>"
 		else if(heart && (heart.linked_organ.status & ORGAN_DEAD))
-			msgs += "<span class='notice'><font color='red'><b>Зафиксирован некрос сердца субъекта.</b></font>"
+			msgs += "<span class='notice'><font color='red'><b>Зафиксирован некроз сердца субъекта.</b></font>"
 		else if(!heart)
 			msgs += "<span class='notice'><font color='red'><b>Субъект не имеет сердца.</b></font>"
 
@@ -334,7 +334,7 @@ SLIME SCANNER
 				msgs += "<span class='warning'>Обнаружен перелом в [limb]. Рекомендуется наложение шин при транспортировке.</span>"
 			broken_bone = TRUE
 		if(e.has_infected_wound())
-			msgs += "<span class='warning'>Обнаруженна инфекция в [limb]. Рекомендуется дезинфекция.</span>"
+			msgs += "<span class='warning'>Обнаружена инфекция в [limb]. Рекомендуется дезинфекция.</span>"
 		burn_wound = burn_wound || (e.status & ORGAN_BURNT)
 		internal_bleed = internal_bleed || (e.status & ORGAN_INT_BLEEDING)
 	if(broken_bone)
@@ -388,7 +388,7 @@ SLIME SCANNER
 		if(O.is_robotic() && !O.stealth_level)
 			implant_detect += "[O.name].<br>"
 	if(implant_detect)
-		msgs += "<span class='notice'>Обнаруженны кибернетические модификации:</span>"
+		msgs += "<span class='notice'>обнаружены кибернетические модификации:</span>"
 		msgs += "<span class='notice'>[implant_detect]</span>"
 
 	// Do you have too many genetics superpowers?
@@ -419,7 +419,7 @@ SLIME SCANNER
 		return ..()
 
 	if(advanced)
-		to_chat(user, "<span class='notice'>Улучшение уже установленно на [src].</span>")
+		to_chat(user, "<span class='notice'>Улучшение уже установлено на [src].</span>")
 		return
 
 	if(!user.unequip(I))
@@ -472,7 +472,7 @@ SLIME SCANNER
 /obj/item/robotanalyzer/proc/handle_clumsy(mob/living/user)
 	var/list/msgs = list()
 	user.visible_message("<span class='warning'>[user] анализирует жизненные показатели the floor's!</span>", "<span class='warning'>You stupidly try to analyze the floor's vitals!</span>")
-	msgs += "<span class='notice'>Анализ результатов для the floor:\n\t Общее состояние: Неизвестено</span>"
+	msgs += "<span class='notice'>Анализ результатов для the floor:\n\t Общее состояние: Неизвестно</span>"
 	msgs += "<span class='notice'>\t Детализация повреждений: <font color='#FFA500'>[0]</font>/<font color='red'>[0]</font></span>"
 	msgs += "<span class='notice'>Основные: <font color='#FFA500'>Ожоги</font><font color ='red'>/Травмы</font></span>"
 	msgs += "<span class='notice'>Температура шасси: ???</span>"
@@ -810,7 +810,7 @@ SLIME SCANNER
 			if(nitrogen && (milla_turf_details || nitrogen / total_moles > 0.01))
 				message += "  <span class='nitrogen'>Азот: [round(nitrogen, 0.01)] молей ([round(nitrogen / total_moles * 100, 0.01)] %)</span>"
 			if(carbon_dioxide && (milla_turf_details || carbon_dioxide / total_moles > 0.01))
-				message += "  <span class='carbon_dioxide'>Углекислытый газ: [round(carbon_dioxide, 0.01)] молей ([round(carbon_dioxide / total_moles * 100, 0.01)] %)</span>"
+				message += "  <span class='carbon_dioxide'>Углекислый газ: [round(carbon_dioxide, 0.01)] молей ([round(carbon_dioxide / total_moles * 100, 0.01)] %)</span>"
 			if(toxins && (milla_turf_details || toxins / total_moles > 0.01))
 				message += "  <span class='plasma'>Плазма: [round(toxins, 0.01)] молей ([round(toxins / total_moles * 100, 0.01)] %)</span>"
 			if(sleeping_agent && (milla_turf_details || sleeping_agent / total_moles > 0.01))
@@ -839,7 +839,7 @@ SLIME SCANNER
 				message += "<span class='notice'>Режим Атмосферы: Подвержен воздействию окружающей среды (ID: [milla[MILLA_INDEX_ENVIRONMENT_ID]])</span>"
 			else
 				message += "<span class='notice'>Режим Атмосферы: Неизвестен ([milla[MILLA_INDEX_ATMOS_MODE]]), наберите кодеру.</span>"
-		message += "<span class='notice'>Герметичность N/E/S/W: [milla[MILLA_INDEX_SUPERCONDUCTIVITY_NORTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_EAST]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_SOUTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_WEST]]</span>"
+		message += "<span class='notice'>Сверхпроводимость N/E/S/W: [milla[MILLA_INDEX_SUPERCONDUCTIVITY_NORTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_EAST]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_SOUTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_WEST]]</span>"
 		message += "<span class='notice'>Внутренняя теплоемкость Turf: [milla[MILLA_INDEX_INNATE_HEAT_CAPACITY]]</span>"
 		message += "<span class='notice'>Hotspot: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] Литров ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)</span>"
 		message += "<span class='notice'>Ветер: ([round(milla[MILLA_INDEX_WIND_X], 0.001)], [round(milla[MILLA_INDEX_WIND_Y], 0.001)])</span>"
@@ -959,7 +959,7 @@ SLIME SCANNER
 		to_chat(user, "<span class='warning'>Внимание: слайм голодает!</span>")
 	else if(T.nutrition < T.get_hunger_nutrition())
 		to_chat(user, "<span class='warning'>Внимание: слайм голоден.</span>")
-	to_chat(user, "Электрическое сопротивление: [T.powerlevel]")
+	to_chat(user, "Сила электрического заряда: [T.powerlevel]")
 	to_chat(user, "Состояние: [round(T.health/T.maxHealth,0.01)*100]%")
 	if(T.slime_mutation[4] == T.colour)
 		to_chat(user, "Слайм больше не эволюционирует.")
@@ -1052,14 +1052,14 @@ SLIME SCANNER
 		return
 
 	if(!ready)
-		to_chat(user, "<span class='notice'>Сканер издаёт расздражённый звуковой сигнал! Он перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
+		to_chat(user, "<span class='notice'>Сканер издаёт раздражённый звуковой сигнал! Он перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
 	if(cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, "<span class='notice'>Сканер издаёт расздражённый звуковой сигнал! Он разряжен!</span>")
+		to_chat(user, "<span class='notice'>Сканер издаёт раздражённый звуковой сигнал! Он разряжен!</span>")
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 
 /obj/item/bodyanalyzer/borg/attack__legacy__attackchain(mob/living/M, mob/living/silicon/robot/user)
@@ -1082,7 +1082,7 @@ SLIME SCANNER
 		if(do_after(user, scan_time, target = M))
 			var/obj/item/paper/printout = new
 			printout.info = report
-			printout.name = "Отчёт о сканирование - [M.name]"
+			printout.name = "Отчёт о сканировании - [M.name]"
 			playsound(user.loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
 			user.put_in_hands(printout)
 			time_to_use = world.time + scan_cd
@@ -1116,7 +1116,7 @@ SLIME SCANNER
 	var/t1
 	switch(target.stat) // obvious, see what their status is
 		if(CONSCIOUS)
-			t1 = "В сознание"
+			t1 = "В сознании"
 		if(UNCONSCIOUS)
 			t1 = "Без сознания"
 		else
@@ -1199,7 +1199,7 @@ SLIME SCANNER
 		var/internal_bleeding = ""
 		var/lung_ruptured = ""
 		if(e.status & ORGAN_INT_BLEEDING)
-			internal_bleeding = "<br>Внутренне кровотечение"
+			internal_bleeding = "<br>Внутреннее кровотечение"
 		if(istype(e, /obj/item/organ/external/chest) && target.is_lung_ruptured())
 			lung_ruptured = "Разрыв лёгкого:"
 		if(e.status & ORGAN_SPLINTED)
@@ -1231,7 +1231,7 @@ SLIME SCANNER
 			unknown_body++
 
 		if(unknown_body || e.hidden)
-			imp += "Обнаруженно инородное тело:"
+			imp += "Обнаружено инородное тело:"
 		if(!AN && !open && !infected && !imp)
 			AN = "None:"
 		dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured]</td>"
@@ -1258,7 +1258,7 @@ SLIME SCANNER
 		dat += "</tr>"
 	dat += "</table>"
 	if(HAS_TRAIT(target, TRAIT_BLIND))
-		dat += "<font color='red'>Обнаруженна катаракта.</font><BR>"
+		dat += "<font color='red'>Обнаружена катаракта.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_COLORBLIND))
 		dat += "<font color='red'>Обнаружены нарушения в работе фоторецепторов.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_NEARSIGHT))
