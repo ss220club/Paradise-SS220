@@ -251,7 +251,7 @@
 	amount_per_transfer_from_this = 42
 	list_reagents = list("salbutamol" = 10, "teporone" = 15, "epinephrine" = 10, "lavaland_extract" = 2, "weak_omnizine" = 5)
 
-/obj/item/reagent_containers/hypospray/autoinjector/lux
+/obj/item/reagent_containers/hypospray/autoinjector/lux //Ss220 по возможности перенести в модуль пока для обработки так будет
 	name = "lux medipen"
 	desc = "An advanced multi-purpose medical pen containing a powerful cocktail of high-end reagents."
 	icon_state = "luxpen"
