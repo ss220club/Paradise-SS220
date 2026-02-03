@@ -88,7 +88,7 @@ SLIME SCANNER
 	var/has_real_or_fake_reagents = FALSE
 	if(length(H.reagents.reagent_list))
 		has_real_or_fake_reagents = TRUE
-		msgs += "<span class='boldnotice'>Subject contains the following reagents:</span>"
+		msgs += "<span class='boldnotice'>В субъекте обнаруженны следующие реагенты:</span>"
 		for(var/datum/reagent/R in H.reagents.reagent_list)
 			var/volume = R.volume
 			var/overdosing = R.overdosed
@@ -102,31 +102,31 @@ SLIME SCANNER
 				if(!overdosing)
 					overdosing = prob(10)
 
-			msgs += "<span class='notice'>[volume]u of [R.name][overdosing ? "</span> - <span class='boldannounceic'>OVERDOSING</span>" : ".</span>"]"
+			msgs += "<span class='notice'>[volume]u [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
 		if(!length(H.reagents.reagent_list))
-			msgs += "<span class='boldnotice'>Subject contains the following reagents:</span>"
+			msgs += "<span class='boldnotice'>В субъекте обнаруженны следующие реагенты:</span>"
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += "<span class='notice'>[rand(5, 100)]u of [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>OVERDOSING</span>" : ".</span>"]"
+				msgs += "<span class='notice'>[rand(5, 100)]u [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(!has_real_or_fake_reagents)
-		msgs += "<span class='notice'>Subject contains no reagents.</span>"
+		msgs += "<span class='notice'>Субъект не содержит реагентов.</span>"
 
 	if(length(H.reagents.addiction_list))
-		msgs += "<span class='danger'>Subject is addicted to the following reagents:</span>"
+		msgs += "<span class='danger'>Субъект зависим от следующих реагентов:</span>"
 		for(var/datum/reagent/R in H.reagents.addiction_list)
-			msgs += "<span class='danger'>[R.name] Stage: [R.addiction_stage]/5</span>"
+			msgs += "<span class='danger'>[R.name] Стадия: [R.addiction_stage]/5</span>"
 
 	if(hallucinating && prob(10))
 		if(!length(H.reagents.addiction_list))
-			msgs += "<span class='danger'>Subject is addicted to the following reagents:</span>"
+			msgs += "<span class='danger'>Субъект зависим от следующих реагентов:</span>"
 		// try to add two random chems
 		for(var/i in 1 to rand(1, 2))
 			var/reagent_name = pick(GLOB.chemical_reagents_list)
-			msgs += "<span class='danger'>[GLOB.chemical_reagents_list[reagent_name]] Stage: [rand(1, 5)]/5</span>"
+			msgs += "<span class='danger'>[GLOB.chemical_reagents_list[reagent_name]] Стадия: [rand(1, 5)]/5</span>"
 
 	return msgs
 
@@ -137,7 +137,7 @@ SLIME SCANNER
 
 /obj/item/healthanalyzer
 	name = "health analyzer"
-	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
+	desc = "Ручной сканер тела, способный распознавать жизненно важные показатели пациента."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "health"
 	worn_icon_state = "healthanalyzer"
@@ -156,30 +156,30 @@ SLIME SCANNER
 
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Use [src] in hand to toggle showing localised damage.</span>"
+	. += "<span class='notice'>Используйте [src] в руке чтобы включить детализацию повреждений.</span>"
 
 /obj/item/healthanalyzer/attack_self__legacy__attackchain(mob/user)
 	mode = !mode
 	switch(mode)
 		if(DETAILED_HEALTH_SCAN)
-			to_chat(user, "<span class='notice'>The scanner is now showing localised limb damage.</span>")
+			to_chat(user, "<span class='notice'>Теперь сканер показывает повреждения каждой конечности.</span>")
 		if(SIMPLE_HEALTH_SCAN)
-			to_chat(user, "<span class='notice'>The scanner is no longer showing localised limb damage.</span>")
+			to_chat(user, "<span class='notice'>Сканер больше не показывает повреждения каждой конечности.</span>")
 
 /obj/item/healthanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		var/list/msgs = list()
-		user.visible_message("<span class='warning'>[user] analyzes the floor's vitals!</span>", "<span class='notice'>You stupidly try to analyze the floor's vitals!</span>")
-		msgs += "<span class='notice'>Analyzing results for The floor:\nOverall status: Healthy</span>"
-		msgs += "<span class='notice'>Key: <font color='blue'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burn</font>/<font color='red'>Brute</font></span>"
-		msgs += "<span class='notice'>Damage specifics: <font color='blue'>0</font> - <font color='green'>0</font> - <font color='#FFA500'>0</font> - <font color='red'>0</font></span>"
-		msgs += "<span class='notice'>Body temperature: ???</span>"
+		user.visible_message("<span class='warning'>[user] анализирует жизненные показатели the floor!</span>", "<span class='notice'>You stupidly try to analyze the floor's vitals!</span>")
+		msgs += "<span class='notice'>Анализ результата для the floor:\nОбщее состояние: Здоровый</span>"
+		msgs += "<span class='notice'>Основные: <font color='blue'>Гипоксия</font>/<font color='green'>Интоксикация</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Травмы</font></span>"
+		msgs += "<span class='notice'>Детализация повреждений: <font color='blue'>0</font> - <font color='green'>0</font> - <font color='#FFA500'>0</font> - <font color='red'>0</font></span>"
+		msgs += "<span class='notice'>Температура тела: ???</span>"
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 		return
 
 	user.visible_message(
-		"<span class='notice'>[user] analyzes [M]'s vitals.</span>",
-		"<span class='notice'>You analyze [M]'s vitals.</span>"
+		"<span class='notice'>[user] анализирует жизненные показатели [M].</span>",
+		"<span class='notice'>Вы анализируете жизненные показатели [M].</span>"
 	)
 	healthscan(user, M, mode, advanced)
 	add_fingerprint(user)
@@ -202,21 +202,21 @@ SLIME SCANNER
 	if(isanimal_or_basicmob(M))
 		// No box here, keep it simple.
 		if(probably_dead)
-			to_chat(user, "<span class='notice'>Analyzing Results for [M]:\nOverall Status: <font color='red'>Dead</font></span>")
+			to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние: <font color='red'>Мёртв</font></span>")
 			return
 
-		to_chat(user, "<span class='notice'>Analyzing Results for [M]:\nOverall Status: [round(M.health / M.maxHealth * 100, 0.1)]% Healthy")
-		to_chat(user, "\t Damage Specifics: <font color='red'>[M.maxHealth - M.health]</font>")
+		to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние - [round(M.health / M.maxHealth * 100, 0.1)]%")
+		to_chat(user, "\t Детализация повреждений: <font color='red'>[M.maxHealth - M.health]</font>")
 		return
 
 	// These sensors are designed for organic life.
 	if(!ishuman(M) || ismachineperson(M) || (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5)))
-		msgs += "<span class='notice'>Analyzing Results for ERROR:\nOverall Status: ERROR</span>"
-		msgs += "Key: <span class='healthscan_oxy'>Suffocation</span>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>"
-		msgs += "Damage Specifics: <span class='healthscan_oxy'>?</span> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
-		msgs += "<span class='notice'>Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
-		msgs += "<span class='warning'><b>Warning: Blood Level ERROR: --% --cl.</span><span class='notice'>Type: ERROR</span>"
-		msgs += "<span class='notice'>Subject's pulse: <font color='red'>-- bpm.</font></span>"
+		msgs += "<span class='notice'>Анализ Результатов для ОШИБКА:\nОбщее состояние: ОШИБКА</span>"
+		msgs += "Основные: <span class='healthscan_oxy'>Гипоксия</span>/<font color='green'>Интоксикация</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Травмы</font>"
+		msgs += "Детализация повреждений: <span class='healthscan_oxy'>?</span> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
+		msgs += "<span class='notice'>Температура тела: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
+		msgs += "<span class='warning'><b>Предупреждение: Уровень крови ОШИБКА: --% --cl.</span><span class='notice'>Тип: ОШИБКА</span>"
+		msgs += "<span class='notice'>Пульс субъекта: <font color='red'>-- bpm.</font></span>"
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 		return
 
@@ -241,34 +241,34 @@ SLIME SCANNER
 	BU = BU > 50 ? "<b>[BU]</b>" : BU
 	BR = BR > 50 ? "<b>[BR]</b>" : BR
 
-	var/status = "<font color='red'>Dead</font>" // Dead by default to make it simpler
+	var/status = "<font color='red'>Мёртв</font>" // Dead by default to make it simpler
 	var/DNR = !H.ghost_can_reenter() // If the ghost can't reenter
 	if(H.stat == DEAD)
 		if(DNR)
-			status = "<font color='red'>Dead <b>(DNR)</b></font>"
+			status = "<font color='red'>Мёртв <b>(DNR)</b></font>"
 	else // Alive or unconscious
 		if(HAS_TRAIT(H, TRAIT_FAKEDEATH) || probably_dead) // status still shows as "Dead"
 			OX = fake_oxy > 50 ? "<b>[fake_oxy]</b>" : fake_oxy
 		else
-			status = "[H.health]% Healthy"
+			status = " Состояние [H.health]%"
 
-	msgs += "<span class='notice'>Analyzing Results for [scanned_name]:\nOverall Status: [status]"
-	msgs += "Key: <span class='healthscan_oxy'>Suffocation</span>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>"
-	msgs += "Damage Specifics: <span class='healthscan_oxy'>[OX]</span> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
+	msgs += "<span class='notice'>Анализ результатов для [scanned_name]:\nОбщее состояние: [status]"
+	msgs += "Основные: <span class='healthscan_oxy'>Гипоксия</span>/<font color='green'>Интоксикация</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Травмы</font>"
+	msgs += "Детализация повреждений: <span class='healthscan_oxy'>[OX]</span> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
 
 	if(H.timeofdeath && (H.stat == DEAD || (HAS_TRAIT(H, TRAIT_FAKEDEATH)) || probably_dead))
 		var/tod = probably_dead && (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(10)) ? world.time - rand(10, 5000) : H.timeofdeath  // Sure let's blow it out
-		msgs += "<span class='notice'>Time of Death: [station_time_timestamp("hh:mm:ss", tod)]</span>"
+		msgs += "<span class='notice'>Время смерти: [station_time_timestamp("hh:mm:ss", tod)]</span>"
 		var/tdelta = round(world.time - tod)
 		if(H.is_revivable() && !DNR)
-			msgs += "<span class='danger'>Subject died [DisplayTimeText(tdelta)] ago, defibrillation may be possible!</span>"
+			msgs += "<span class='danger'>Субъект умер [DisplayTimeText(tdelta)] назад, дефибрилляция ещё возможна!</span>"
 		else
-			msgs += "<font color='red'>Subject died [DisplayTimeText(tdelta)] ago. <b>Defibrillation is not possible!</b></font>"
+			msgs += "<font color='red'>Субъект умер [DisplayTimeText(tdelta)] назад. <b>Дефибрилляция более невозможна!</b></font>"
 
 	if(mode == DETAILED_HEALTH_SCAN)
 		var/list/damaged = H.get_damaged_organs(1,1)
 		if(length(damaged))
-			msgs += "<span class='notice'>Localized Damage, Brute/Burn:</span>"
+			msgs += "<span class='notice'>Локальные повреждения, Травмы/Ожоги:</span>"
 			for(var/obj/item/organ/external/org in damaged)
 				msgs += "<span class='notice'>[capitalize(org.name)]: [(org.brute_dam > 0) ? "<font color='red'>[org.brute_dam]</font></span>" : "<font color='red'>0</font>"]-[(org.burn_dam > 0) ? "<font color='#FF8000'>[org.burn_dam]</font>" : "<font color='#FF8000'>0</font>"]"
 
@@ -282,43 +282,43 @@ SLIME SCANNER
 			continue
 		// Snowflaking heart problems, because they are special (and common).
 		if(istype(D, /datum/disease/critical))
-			msgs += "<span class='notice'><font color='red'><b>Warning: Subject is undergoing [D.name].</b>\nStage: [D.stage]/[D.max_stages].\nCure: [D.cure_text]</font></span>"
+			msgs += "<span class='notice'><font color='red'><b>Предупреждение: У субъекта [D.name].</b>\nСтадия: [D.stage]/[D.max_stages].\nМетод лечения: [D.cure_text]</font></span>"
 			continue
 		if(istype(D, /datum/disease/advance))
 			var/datum/disease/advance/A = D
 			if(!(A.id in GLOB.known_advanced_diseases[num2text(user.z)]))
-				msgs += "<span class='notice'><font color='red'><b>Warning: Unknown viral strain detected</b>\nStrain:[A.strain]\nStage: [A.stage]</span>"
+				msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен неизвестный штамм вируса</b>\nStrain:[A.strain]\nСтадия: [A.stage]</span>"
 			else
-				msgs += "<span class='notice'><font color='red'><b>Warning: [A.form] detected</b>\nName: [A.name].\nStrain:[A.strain]\nType: [A.spread_text].\nStage: [A.stage]/[A.max_stages].\nPossible Cures: [A.cure_text]\nNeeded Cures: [A.cures_required]</font></span>"
+				msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен [A.form]</b>\nName: [A.name].\nStrain:[A.strain]\nТип: [A.spread_text].\nСтадия: [A.stage]/[A.max_stages].\nМетод лечения: [A.cure_text]\nНеобходимое лечение: [A.cures_required]</font></span>"
 			continue
-		msgs += "<span class='notice'><font color='red'><b>Warning: [D.form] detected</b>\nName: [D.name].\nType: [D.spread_text].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure_text]</font></span>"
+		msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен [D.form]</b>\nНазвание: [D.name].\nТип: [D.spread_text].\nСтадия: [D.stage]/[D.max_stages].\nМетод лечения: [D.cure_text]</font></span>"
 
 	if(H.undergoing_cardiac_arrest())
 		var/datum/organ/heart/heart = H.get_int_organ_datum(ORGAN_DATUM_HEART)
 		if(heart && !(heart.linked_organ.status & ORGAN_DEAD))
-			msgs += "<span class='notice'><font color='red'><b>The patient's heart has stopped.</b>\nPossible Cure: Electric Shock</font>"
+			msgs += "<span class='notice'><font color='red'><b>Сердце пациента остановилось.</b>\nМетод лечения: Электрический шок.</font>"
 		else if(heart && (heart.linked_organ.status & ORGAN_DEAD))
-			msgs += "<span class='notice'><font color='red'><b>Subject's heart is necrotic.</b></font>"
+			msgs += "<span class='notice'><font color='red'><b>Зафиксирован некрос сердца субъекта.</b></font>"
 		else if(!heart)
-			msgs += "<span class='notice'><font color='red'><b>Subject has no heart.</b></font>"
+			msgs += "<span class='notice'><font color='red'><b>Субъект не имеет сердца.</b></font>"
 
 	if(H.getStaminaLoss() || HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5))
-		msgs += "<span class='notice'>Subject appears to be suffering from fatigue.</span>"
+		msgs += "<span class='notice'>Субъект страдает от переутомления.</span>"
 
 	if(H.getCloneLoss() || (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5)))
-		msgs += "<span class='warning'>Subject appears to have [H.getCloneLoss() > 30 ? "severe" : "minor"] cellular damage.</span>"
+		msgs += "<span class='warning'>Субъект имеет [H.getCloneLoss() > 30 ? "серьёзное" : "незначительное"] клеточное повреждение.</span>"
 
 	// Brain.
 	var/obj/item/organ/internal/brain = H.get_int_organ(/obj/item/organ/internal/brain)
 	if(brain)
 		if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_CRITICAL)) // 100
-			msgs += "<span class='warning'>Subject is brain dead.</span>"
+			msgs += "<span class='warning'>Мозг субъекта мёртв.</span>"
 		else if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_MODERATE)) // 60
-			msgs += "<span class='warning'>Severe brain damage detected. Subject likely to have dementia.</span>"
+			msgs += "<span class='warning'>Обнаружено серьезное повреждение мозга. Возможно, у пациента слабоумие.</span>"
 		else if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_MINOR)) // 10
-			msgs += "<span class='warning'>Significant brain damage detected. Subject may have had a concussion.</span>"
+			msgs += "<span class='warning'>Обнаружено значительное повреждение мозга. Возможно, у пациента сотрясение мозга.</span>"
 	else
-		msgs += "<span class='warning'>Subject has no brain.</span>"
+		msgs += "<span class='warning'>Субъект не имеет мозга.</span>"
 
 	// Broken bones, internal bleeding, infection, and critical burns.
 	var/broken_bone = FALSE
@@ -331,18 +331,18 @@ SLIME SCANNER
 		var/limb = e.name
 		if(e.status & ORGAN_BROKEN)
 			if((e.limb_name in list("l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "l_foot", "r_foot")) && !(e.status & ORGAN_SPLINTED))
-				msgs += "<span class='warning'>Unsecured fracture in subject [limb]. Splinting recommended for transport.</span>"
+				msgs += "<span class='warning'>Обнаружен перелом в [limb]. Рекомендуется наложение шин при транспортировке.</span>"
 			broken_bone = TRUE
 		if(e.has_infected_wound())
-			msgs += "<span class='warning'>Infected wound detected in subject [limb]. Disinfection recommended.</span>"
+			msgs += "<span class='warning'>Обнаруженна инфекция в [limb]. Рекомендуется дезинфекция.</span>"
 		burn_wound = burn_wound || (e.status & ORGAN_BURNT)
 		internal_bleed = internal_bleed || (e.status & ORGAN_INT_BLEEDING)
 	if(broken_bone)
-		msgs += "<span class='warning'>Bone fractures detected. Advanced scanner required for location.</span>"
+		msgs += "<span class='warning'>Обнаружен перелом кости. Продвинутый сканер покажет местоположение.</span>"
 	if(internal_bleed)
-		msgs += "<span class='warning'>Internal bleeding detected. Advanced scanner required for location.</span>"
+		msgs += "<span class='warning'>Обнаружено внутреннее кровотечение. Продвинутый сканер покажет местоположение.</span>"
 	if(burn_wound)
-		msgs += "<span class='warning'>Critical burn detected. Examine patient's body for location.</span>"
+		msgs += "<span class='warning'>Обнаружен серьёзный ожог. Осмотрите пациента для установления местоположения.</span>"
 
 	if(HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5))
 		var/list/spooky_conditions = list(
@@ -363,7 +363,7 @@ SLIME SCANNER
 	var/blood_id = H.get_blood_id()
 	if(blood_id)
 		if(H.bleed_rate)
-			msgs += "<span class='danger'>Subject is bleeding!</span>"
+			msgs += "<span class='danger'>У субъекта кровотечение!</span>"
 		var/blood_percent =  round((H.blood_volume / BLOOD_VOLUME_NORMAL)*100)
 		var/blood_type = H.dna.blood_type
 		var/blood_volume = round(H.blood_volume)
@@ -374,38 +374,38 @@ SLIME SCANNER
 			else
 				blood_type = blood_id
 		if(H.blood_volume <= BLOOD_VOLUME_SAFE && H.blood_volume > BLOOD_VOLUME_OKAY)
-			msgs += "<span class='danger'>LOW blood level [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>type: [blood_type]</span>"
+			msgs += "<span class='danger'>НИЗКИЙ уровень крови [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>type: [blood_type]</span>"
 		else if(H.blood_volume <= BLOOD_VOLUME_OKAY)
-			msgs += "<span class='danger'>CRITICAL blood level [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>type: [blood_type]</span>"
+			msgs += "<span class='danger'>КРИТИЧЕСКИЙ уровень крови [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>type: [blood_type]</span>"
 		else
-			msgs += "<span class='notice'>Blood level [blood_percent] %, [blood_volume] cl, type: [blood_type]</span>"
+			msgs += "<span class='notice'>Уровень крови [blood_percent] %, [blood_volume] cl, тип: [blood_type]</span>"
 
-	msgs += "<span class='notice'>Body Temperature: [round(H.bodytemperature-T0C, 0.01)]&deg;C ([round(H.bodytemperature*1.8-459.67, 0.01)]&deg;F)</span>"
-	msgs += "<span class='notice'>Subject's pulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse()] bpm.</font></span>"
+	msgs += "<span class='notice'>Температура тела: [round(H.bodytemperature-T0C, 0.01)]&deg;C ([round(H.bodytemperature*1.8-459.67, 0.01)]&deg;F)</span>"
+	msgs += "<span class='notice'>Пульс субъекта: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse()] bpm.</font></span>"
 
 	var/implant_detect
 	for(var/obj/item/organ/internal/O in H.internal_organs)
 		if(O.is_robotic() && !O.stealth_level)
 			implant_detect += "[O.name].<br>"
 	if(implant_detect)
-		msgs += "<span class='notice'>Detected cybernetic modifications:</span>"
+		msgs += "<span class='notice'>Обнаруженны кибернетические модификации:</span>"
 		msgs += "<span class='notice'>[implant_detect]</span>"
 
 	// Do you have too many genetics superpowers?
 	if(H.gene_stability < 40)
-		msgs += "<span class='userdanger'>Subject's genes are quickly breaking down!</span>"
+		msgs += "<span class='userdanger'>Гены субъекта быстро разрушаются!</span>"
 	else if(H.gene_stability < 70)
-		msgs += "<span class='danger'>Subject's genes are showing signs of spontaneous breakdown.</span>"
+		msgs += "<span class='danger'>Гены субъекта спонтанно разрушаются.</span>"
 	else if(H.gene_stability < 85)
-		msgs += "<span class='warning'>Subject's genes are showing minor signs of instability.</span>"
+		msgs += "<span class='warning'>Гены субъекта незначительно нестабильны.</span>"
 
 	if(HAS_TRAIT(H, TRAIT_HUSK))
-		msgs += "<span class='danger'>Subject is husked. Application of synthflesh is recommended.</span>"
+		msgs += "<span class='danger'>Субъект стал хаском. Рекомендуется наложить синтплоть.</span>"
 
 	if(H.radiation > RAD_MOB_SAFE)
-		msgs += "<span class='danger'>Subject is irradiated.</span>"
+		msgs += "<span class='danger'>Субъект облучён.</span>"
 
-	msgs += "<span class='notice'>Biological Age: [H.age]</span>"
+	msgs += "<span class='notice'>Биологический возраст: [H.age]</span>"
 
 	//SS220 ADDITION START - SERPENTIDS
 	if(SEND_SIGNAL(H, COMSIG_SHELL_GET_CARAPACE_STATE) & CARAPACE_SHELL_BROKEN)
@@ -419,14 +419,14 @@ SLIME SCANNER
 		return ..()
 
 	if(advanced)
-		to_chat(user, "<span class='notice'>An upgrade is already installed on [src].</span>")
+		to_chat(user, "<span class='notice'>Улучшение уже установленно на [src].</span>")
 		return
 
 	if(!user.unequip(I))
 		to_chat(user, "<span class='warning'>[src] is stuck to your hand!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>You install the upgrade on [src].</span>")
+	to_chat(user, "<span class='notice'>Вы установили улучшение на [src].</span>")
 	add_overlay("advanced")
 	playsound(loc, I.usesound, 50, TRUE)
 	advanced = TRUE
@@ -443,7 +443,7 @@ SLIME SCANNER
 
 /obj/item/healthupgrade
 	name = "Health Analyzer Upgrade"
-	desc = "An upgrade unit that can be installed on a health analyzer for expanded functionality."
+	desc = "Модуль улучшения, который может быть установлен на health analyzer для расширения возможностей."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "healthupgrade"
 	w_class = WEIGHT_CLASS_TINY
@@ -458,7 +458,7 @@ SLIME SCANNER
 ////////////////////////////////////////
 /obj/item/robotanalyzer
 	name = "machine analyzer"
-	desc = "A hand-held scanner able to diagnose robotic injuries and the condition of machinery."
+	desc = "Ручной сканер, способный проверять повреждения синтетиков и состояние оборудования."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "robotanalyzer"
 	inhand_icon_state = "analyzer"
@@ -471,11 +471,11 @@ SLIME SCANNER
 
 /obj/item/robotanalyzer/proc/handle_clumsy(mob/living/user)
 	var/list/msgs = list()
-	user.visible_message("<span class='warning'>[user] has analyzed the floor's components!</span>", "<span class='warning'>You try to analyze the floor's vitals!</span>")
-	msgs += "<span class='notice'>Analyzing Results for The floor:\n\t Overall Status: Unknown</span>"
-	msgs += "<span class='notice'>\t Damage Specifics: <font color='#FFA500'>[0]</font>/<font color='red'>[0]</font></span>"
-	msgs += "<span class='notice'>Key: <font color='#FFA500'>Burns</font><font color ='red'>/Brute</font></span>"
-	msgs += "<span class='notice'>Chassis Temperature: ???</span>"
+	user.visible_message("<span class='warning'>[user] анализирует жизненные показатели the floor's!</span>", "<span class='warning'>You stupidly try to analyze the floor's vitals!</span>")
+	msgs += "<span class='notice'>Анализ результатов для the floor:\n\t Общее состояние: Неизвестено</span>"
+	msgs += "<span class='notice'>\t Детализация повреждений: <font color='#FFA500'>[0]</font>/<font color='red'>[0]</font></span>"
+	msgs += "<span class='notice'>Основные: <font color='#FFA500'>Ожоги</font><font color ='red'>/Травмы</font></span>"
+	msgs += "<span class='notice'>Температура шасси: ???</span>"
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 
 /obj/item/robotanalyzer/attack_obj__legacy__attackchain(obj/machinery/M, mob/living/user) // Scanning a machine object
@@ -484,23 +484,23 @@ SLIME SCANNER
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return
-	user.visible_message("<span class='notice'>[user] has analyzed [M]'s components with [src].</span>", "<span class='notice'>You analyze [M]'s components with [src].</span>")
+	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [src].</span>")
 	machine_scan(user, M)
 	add_fingerprint(user)
 
 /obj/item/robotanalyzer/proc/machine_scan(mob/user, obj/machinery/M)
 	if(M.obj_integrity == M.max_integrity)
-		to_chat(user, "<span class='notice'>[M] is at full integrity.</span>")
+		to_chat(user, "<span class='notice'>[M] полностью работоспособен.</span>")
 		return
-	to_chat(user, "<span class='notice'>Structural damage detected! [M]'s overall estimated integrity is [round((M.obj_integrity / M.max_integrity) * 100)]%.</span>")
+	to_chat(user, "<span class='notice'>Обнаружены структурные повреждения! Общая целостность [M] - [round((M.obj_integrity / M.max_integrity) * 100)]%.</span>")
 	if(M.stat & BROKEN) // Displays alongside above message. Machines with a "broken" state do not become broken at 0% HP - anything that reaches that point is destroyed
-		to_chat(user, "<span class='warning'>Further analysis: Catastrophic component failure detected! [M] requires reconstruction to fully repair.</span>")
+		to_chat(user, "<span class='warning'>Дополнительный анализ: Обнаружен полный отказ компонента! Требуется полная реконструкция [M] для ремонта.</span>")
 
 /obj/item/robotanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/user) // Scanning borgs, IPCs/augmented crew, and AIs
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return
-	user.visible_message("<span class='notice'>[user] has analyzed [M]'s components with [src].</span>", "<span class='notice'>You analyze [M]'s components with [src].</span>")
+	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [src].</span>")
 	robot_healthscan(user, M)
 	add_fingerprint(user)
 
@@ -514,47 +514,47 @@ SLIME SCANNER
 	else if(is_ai(M))
 		scan_type = "ai"
 	else
-		to_chat(user, "<span class='warning'>You can't analyze non-robotic things!</span>")
+		to_chat(user, "<span class='warning'>Вы не можете анализировать нероботизированные объекты!</span>")
 		return
 
 	switch(scan_type)
 		if("robot")
 			var/burn = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
 			var/brute = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
-			msgs += "<span class='notice'>Analyzing Results for [M]:\n\t Overall Status: [M.stat == DEAD ? "fully disabled" : "[M.health]% functional"]</span>"
-			msgs += "\t Key: <font color='#FFA500'>Electronics</font>/<font color='red'>Brute</font>"
-			msgs += "\t Damage Specifics: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
+			msgs += "<span class='notice'>Результат анализа для [M]:\n\t Общее состояние: [M.stat == DEAD ? "полностью отключён" : "Работоспособность [M.health]%"]</span>"
+			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
+			msgs += "\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
 			if(M.timeofdeath && M.stat == DEAD)
-				msgs += "<span class='notice'>Time of disable: [station_time_timestamp("hh:mm:ss", M.timeofdeath)]</span>"
+				msgs += "<span class='notice'>Время отключения: [station_time_timestamp("hh:mm:ss", M.timeofdeath)]</span>"
 			var/mob/living/silicon/robot/H = M
 			var/list/damaged = H.get_damaged_components(TRUE, TRUE, TRUE) // Get all except the missing ones
 			var/list/missing = H.get_missing_components()
-			msgs += "<span class='notice'>Localized Damage:</span>"
+			msgs += "<span class='notice'>Локальные повреждения:</span>"
 			if(!LAZYLEN(damaged) && !LAZYLEN(missing))
-				msgs += "<span class='notice'>\t Components are OK.</span>"
+				msgs += "<span class='notice'>\t Состояние компонентов - OK.</span>"
 			else
 				if(LAZYLEN(damaged))
 					for(var/datum/robot_component/org in damaged)
 						msgs += text("<span class='notice'>\t []: [][] - [] - [] - []</span>",	\
 						capitalize(org.name),					\
-						(org.is_destroyed())	?	"<font color='red'><b>DESTROYED</b></font> "							:"",\
+						(org.is_destroyed())	?	"<font color='red'><b>УНИЧТОЖЕН</b></font> "							:"",\
 						(org.electronics_damage > 0)	?	"<font color='#FFA500'>[org.electronics_damage]</font>"	:0,	\
 						(org.brute_damage > 0)	?	"<font color='red'>[org.brute_damage]</font>"							:0,		\
-						(org.toggled)	?	"Toggled ON"	:	"<font color='red'>Toggled OFF</font>",\
-						(org.powered)	?	"Power ON"		:	"<font color='red'>Power OFF</font>")
+						(org.toggled)	?	"Переключен на ON"	:	"<font color='red'>Переключен на OFF</font>",\
+						(org.powered)	?	"Питание ON"		:	"<font color='red'>Питание OFF</font>")
 				if(LAZYLEN(missing))
 					for(var/datum/robot_component/org in missing)
-						msgs += "<span class='warning'>\t [capitalize(org.name)]: MISSING</span>"
+						msgs += "<span class='warning'>\t [capitalize(org.name)]: ПОТЕРЯН</span>"
 
 			if(H.emagged && prob(5))
-				msgs += "<span class='warning'>\t ERROR: INTERNAL SYSTEMS COMPROMISED</span>"
+				msgs += "<span class='warning'>\t ОШИБКА: ВНУТРЕННИЕ СИСТЕМЫ СКОМПРОМЕТИРОВАНЫ</span>"
 
 		if("prosthetics")
 			var/mob/living/carbon/human/H = M
 			var/is_ipc = ismachineperson(H)
-			msgs += "<span class='notice'>Analyzing Results for [M]: [is_ipc ? "\n\t Overall Status: [H.stat == DEAD ? "fully disabled" : "[H.health]% functional"]</span><hr>" : "<hr>"]" //for the record im sorry
-			msgs += "\t Key: <font color='#FFA500'>Electronics</font>/<font color='red'>Brute</font>"
-			msgs += "<span class='notice'>External prosthetics:</span>"
+			msgs += "<span class='notice'>Анализ результатов для [M]: [is_ipc ? "\n\t Общее состояние: [H.stat == DEAD ? "полностью отключён" : "Работоспособность [H.health]%"]</span><hr>" : "<hr>"]" //for the record im sorry
+			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
+			msgs += "<span class='notice'>Внешние протезы:</span>"
 			var/organ_found
 			if(LAZYLEN(H.internal_organs))
 				for(var/obj/item/organ/external/E in H.bodyparts)
@@ -563,9 +563,9 @@ SLIME SCANNER
 					organ_found = TRUE
 					msgs += "[E.name]: <font color='red'>[E.brute_dam]</font> <font color='#FFA500'>[E.burn_dam]</font>"
 			if(!organ_found)
-				msgs += "<span class='warning'>No prosthetics located.</span>"
+				msgs += "<span class='warning'>Протезы не обнаружены.</span>"
 			msgs += "<hr>"
-			msgs += "<span class='notice'>Internal prosthetics:</span>"
+			msgs += "<span class='notice'>Внутренние протезы:</span>"
 			organ_found = null
 			if(LAZYLEN(H.internal_organs))
 				for(var/obj/item/organ/internal/O in H.internal_organs)
@@ -574,29 +574,29 @@ SLIME SCANNER
 					organ_found = TRUE
 					msgs += "[capitalize(O.name)]: <font color='red'>[O.damage]</font>"
 			if(!organ_found)
-				msgs += "<span class='warning'>No prosthetics located.</span>"
+				msgs += "<span class='warning'>Протезы не обнаружены.</span>"
 			msgs += "<hr>"
-			msgs += "<span class='notice'>Cybernetic implants:</span>"
+			msgs += "<span class='notice'>Кибернетические импланты:</span>"
 			organ_found = null
 			if(LAZYLEN(H.internal_organs))
 				for(var/obj/item/organ/internal/cyberimp/I in H.internal_organs)
 					if(I.stealth_level > 1)
 						continue
 					organ_found = TRUE
-					msgs += "[capitalize(I.name)]: <font color='red'>[I.crit_fail ? "CRITICAL FAILURE" : I.damage]</font>"
+					msgs += "[capitalize(I.name)]: <font color='red'>[I.crit_fail ? "КРИТИЧЕСКАЯ НЕИСПРАВНОСТЬ" : I.damage]</font>"
 			if(!organ_found)
-				msgs += "<span class='warning'>No implants located.</span>"
+				msgs += "<span class='warning'>Импланты не обнаружены.</span>"
 			msgs += "<hr>"
 			if(is_ipc)
 				msgs.Add(get_chemscan_results(user, H))
-			msgs += "<span class='notice'>Subject temperature: [round(H.bodytemperature-T0C, 0.01)]&deg;C ([round(H.bodytemperature*1.8-459.67, 0.01)]&deg;F)</span>"
+			msgs += "<span class='notice'>Температура субъекта: [round(H.bodytemperature-T0C, 0.01)]&deg;C ([round(H.bodytemperature*1.8-459.67, 0.01)]&deg;F)</span>"
 		if("ai")
 			var/mob/living/silicon/ai/A = M
 			var/burn = A.getFireLoss() > 50 	? 	"<b>[A.getFireLoss()]</b>" 		: A.getFireLoss()
 			var/brute = A.getBruteLoss() > 50 	? 	"<b>[A.getBruteLoss()]</b>" 	: A.getBruteLoss()
-			msgs += "<span class='notice'>Analyzing Results for [M]:\n\t Overall Status: [A.stat == DEAD ? "fully disabled" : "[A.health]% functional"]</span>"
-			msgs += "\t Key: <font color='#FFA500'>Electronics</font>/<font color='red'>Brute</font>"
-			msgs += "\t Damage Specifics: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
+			msgs += "<span class='notice'>Анализ результатов для [M]:\n\t Общее состояние: [A.stat == DEAD ? "полностью отключён" : "Работоспособность[A.health]%"]</span>"
+			msgs += "\t Key: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
+			msgs += "\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
 
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 
@@ -605,7 +605,7 @@ SLIME SCANNER
 ////////////////////////////////////////
 /obj/item/analyzer
 	name = "analyzer"
-	desc = "A hand-held environmental scanner which reports current gas levels."
+	desc = "Ручной сканер состояния окружающей среды, показывающий информацию о содержащихся в атмосфере газах."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "atmos"
 	inhand_icon_state = "analyzer"
@@ -623,8 +623,8 @@ SLIME SCANNER
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click [src] to activate the barometer function.</span>"
-	. += "<span class='notice'>Alt-Shift-click [src] to toggle detailed reporting on or off.</span>"
+	. += "<span class='notice'>Alt-click по [src] чтобы активировать функцию Барометра.</span>"
+	. += "<span class='notice'>Alt-Shift-click по [src] для включения или выключения подробных отчетов.</span>"
 
 /obj/item/analyzer/attack_self__legacy__attackchain(mob/user as mob)
 
@@ -640,7 +640,7 @@ SLIME SCANNER
 
 /obj/item/analyzer/AltShiftClick(mob/user)
 	show_detailed = !show_detailed
-	to_chat(user, "<span class='notice'>You toggle detailed reporting [show_detailed ? "on" : "off"]</span>")
+	to_chat(user, "<span class='notice'>Вы переключаете режим подробных отчётов на [show_detailed ? "on" : "off"]</span>")
 
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
@@ -648,7 +648,7 @@ SLIME SCANNER
 	if(!user.incapacitated() && Adjacent(user))
 
 		if(cooldown)
-			to_chat(user, "<span class='warning'>[src]'s barometer function is preparing itself.</span>")
+			to_chat(user, "<span class='warning'>Функция [src] Барометр подготавливается.</span>")
 			return
 
 		var/turf/T = get_turf(user)
@@ -660,7 +660,7 @@ SLIME SCANNER
 		var/datum/weather/ongoing_weather = null
 
 		if(!user_area.outdoors)
-			to_chat(user, "<span class='warning'>[src]'s barometer function won't work indoors!</span>")
+			to_chat(user, "<span class='warning'>Функция [src] Барометр не будет работать в помещении!</span>")
 			return
 
 		for(var/V in SSweather.processing)
@@ -671,26 +671,26 @@ SLIME SCANNER
 
 		if(ongoing_weather)
 			if((ongoing_weather.stage == WEATHER_MAIN_STAGE) || (ongoing_weather.stage == WEATHER_WIND_DOWN_STAGE))
-				to_chat(user, "<span class='warning'>[src]'s barometer function can't trace anything while the storm is [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "already here!" : "winding down."]</span>")
+				to_chat(user, "<span class='warning'>Функция [src] Барометр не может ничего отследить во время шторма. [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "Шторм уже здесь!" : "Шторм прекращается."]</span>")
 				return
 
-			to_chat(user, "<span class='notice'>The next [ongoing_weather] will hit in [butchertime(ongoing_weather.next_hit_time - world.time)].</span>")
+			to_chat(user, "<span class='notice'>Следующий [ongoing_weather] появится в [butchertime(ongoing_weather.next_hit_time - world.time)].</span>")
 			if(ongoing_weather.aesthetic)
-				to_chat(user, "<span class='warning'>[src]'s barometer function says that the next storm will breeze on by.</span>")
+				to_chat(user, "<span class='warning'>Функция [src] Барометр говорит о том, что следующий шторм пройдёт мимо.</span>")
 		else
 			var/next_hit = SSweather.next_hit_by_zlevel["[T.z]"]
 			var/fixed = next_hit ? next_hit - world.time : -1
 			if(fixed < 0)
-				to_chat(user, "<span class='warning'>[src]'s barometer function was unable to trace any weather patterns.</span>")
+				to_chat(user, "<span class='warning'>Функция [src] Барометр не смогла отследить какие-либо погодные условия.</span>")
 			else
-				to_chat(user, "<span class='warning'>[src]'s barometer function says a storm will land in approximately [butchertime(fixed)].</span>")
+				to_chat(user, "<span class='warning'>Функция [src] Барометр показывает, что шторм начнется примерно через [butchertime(fixed)].</span>")
 		cooldown = TRUE
 		addtimer(CALLBACK(src, PROC_REF(ping)), cooldown_time)
 
 /obj/item/analyzer/proc/ping()
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, "<span class='notice'>[src]'s barometer function is ready!</span>")
+		to_chat(L, "<span class='notice'>Функция [src] Барометр полностью готова!</span>")
 	playsound(src, 'sound/machines/click.ogg', 100)
 	cooldown = FALSE
 
@@ -738,8 +738,8 @@ SLIME SCANNER
 
 	var/list/message = list()
 	if(!silent && isliving(user))
-		user.visible_message("<span class='notice'>[user] uses the analyzer on [target].</span>", "<span class='notice'>You use the analyzer on [target].</span>")
-	message += "<span class='boldnotice'>Results of analysis of [bicon(target)] [target].</span>"
+		user.visible_message("<span class='notice'>[user] использует the analyzer на [target].</span>", "<span class='notice'>Вы используете анализатор на [target].</span>")
+	message += "<span class='boldnotice'>Результаты анализа [bicon(target)] [target].</span>"
 
 	if(!print)
 		return TRUE
@@ -763,27 +763,27 @@ SLIME SCANNER
 			heat_capacity = air.heat_capacity()
 			thermal_energy = air.thermal_energy()
 			if(total_moles)
-				message += "<span class='notice'>Total: [round(total_moles, 0.01)] moles</span>"
+				message += "<span class='notice'>Суммарно: [round(total_moles, 0.01)] молей</span>"
 				if(air.oxygen() && (milla_turf_details || air.oxygen() / total_moles > 0.01))
-					message += "  <span class='oxygen'>Oxygen: [round(air.oxygen(), 0.01)] moles ([round(air.oxygen() / total_moles * 100, 0.01)] %)</span>"
+					message += "  <span class='oxygen'>Кислород: [round(air.oxygen(), 0.01)] молей ([round(air.oxygen() / total_moles * 100, 0.01)] %)</span>"
 				if(air.nitrogen() && (milla_turf_details || air.nitrogen() / total_moles > 0.01))
-					message += "  <span class='nitrogen'>Nitrogen: [round(air.nitrogen(), 0.01)] moles ([round(air.nitrogen() / total_moles * 100, 0.01)] %)</span>"
+					message += "  <span class='nitrogen'>Азот: [round(air.nitrogen(), 0.01)] молей ([round(air.nitrogen() / total_moles * 100, 0.01)] %)</span>"
 				if(air.carbon_dioxide() && (milla_turf_details || air.carbon_dioxide() / total_moles > 0.01))
-					message += "  <span class='carbon_dioxide'>Carbon Dioxide: [round(air.carbon_dioxide(), 0.01)] moles ([round(air.carbon_dioxide() / total_moles * 100, 0.01)] %)</span>"
+					message += "  <span class='carbon_dioxide'>Углекислый газ: [round(air.carbon_dioxide(), 0.01)] молей ([round(air.carbon_dioxide() / total_moles * 100, 0.01)] %)</span>"
 				if(air.toxins() && (milla_turf_details || air.toxins() / total_moles > 0.01))
-					message += "  <span class='plasma'>Plasma: [round(air.toxins(), 0.01)] moles ([round(air.toxins() / total_moles * 100, 0.01)] %)</span>"
+					message += "  <span class='plasma'>Плазма: [round(air.toxins(), 0.01)] молей ([round(air.toxins() / total_moles * 100, 0.01)] %)</span>"
 				if(air.sleeping_agent() && (milla_turf_details || air.sleeping_agent() / total_moles > 0.01))
-					message += "  <span class='sleeping_agent'>Nitrous Oxide: [round(air.sleeping_agent(), 0.01)] moles ([round(air.sleeping_agent() / total_moles * 100, 0.01)] %)</span>"
+					message += "  <span class='sleeping_agent'>Оксид азота: [round(air.sleeping_agent(), 0.01)] молей ([round(air.sleeping_agent() / total_moles * 100, 0.01)] %)</span>"
 				if(air.agent_b() && (milla_turf_details || air.agent_b() / total_moles > 0.01))
-					message += "  <span class='agent_b'>Agent B: [round(air.agent_b(), 0.01)] moles ([round(air.agent_b() / total_moles * 100, 0.01)] %)</span>"
-				message += "<span class='notice'>Temperature: [round(air.temperature()-T0C)] &deg;C ([round(air.temperature())] K)</span>"
-				message += "<span class='notice'>Volume: [round(volume)] Liters</span>"
-				message += "<span class='notice'>Pressure: [round(pressure, 0.1)] kPa</span>"
-				message += "<span class='notice'>Heat Capacity: [DisplayJoules(heat_capacity)] / K</span>"
-				message += "<span class='notice'>Thermal Energy: [DisplayJoules(thermal_energy)]</span>"
+					message += "  <span class='agent_b'>Agent B: [round(air.agent_b(), 0.01)] молей ([round(air.agent_b() / total_moles * 100, 0.01)] %)</span>"
+				message += "<span class='notice'>Температура: [round(air.temperature()-T0C)] &deg;C ([round(air.temperature())] K)</span>"
+				message += "<span class='notice'>Объём: [round(volume)] Литров</span>"
+				message += "<span class='notice'>Давление: [round(pressure, 0.1)] kPa</span>"
+				message += "<span class='notice'>Теплоемкость: [DisplayJoules(heat_capacity)] / K</span>"
+				message += "<span class='notice'>Тепловая энергия: [DisplayJoules(thermal_energy)]</span>"
 			else
-				message += "<span class='notice'>[target] is empty!</span>"
-				message += "<span class='notice'>Volume: [round(volume)] Liters</span>" // don't want to change the order volume appears in, suck it
+				message += "<span class='notice'>[target] без газа!</span>"
+				message += "<span class='notice'>Объём: [round(volume)] Литров</span>" // don't want to change the order volume appears in, suck it
 
 	else// Sum mixtures then present
 		for(var/datum/gas_mixture/air as anything in airs)
@@ -804,27 +804,27 @@ SLIME SCANNER
 		pressure = volume ? total_moles * R_IDEAL_GAS_EQUATION * temperature / volume : 0
 
 		if(total_moles)
-			message += "<span class='notice'>Total: [round(total_moles, 0.01)] moles</span>"
+			message += "<span class='notice'>Суммарно: [round(total_moles, 0.01)] молей</span>"
 			if(oxygen && (milla_turf_details || oxygen / total_moles > 0.01))
-				message += "  <span class='oxygen'>Oxygen: [round(oxygen, 0.01)] moles ([round(oxygen / total_moles * 100, 0.01)] %)</span>"
+				message += "  <span class='oxygen'>Кислород: [round(oxygen, 0.01)] молей ([round(oxygen / total_moles * 100, 0.01)] %)</span>"
 			if(nitrogen && (milla_turf_details || nitrogen / total_moles > 0.01))
-				message += "  <span class='nitrogen'>Nitrogen: [round(nitrogen, 0.01)] moles ([round(nitrogen / total_moles * 100, 0.01)] %)</span>"
+				message += "  <span class='nitrogen'>Азот: [round(nitrogen, 0.01)] молей ([round(nitrogen / total_moles * 100, 0.01)] %)</span>"
 			if(carbon_dioxide && (milla_turf_details || carbon_dioxide / total_moles > 0.01))
-				message += "  <span class='carbon_dioxide'>Carbon Dioxide: [round(carbon_dioxide, 0.01)] moles ([round(carbon_dioxide / total_moles * 100, 0.01)] %)</span>"
+				message += "  <span class='carbon_dioxide'>Углекислытый газ: [round(carbon_dioxide, 0.01)] молей ([round(carbon_dioxide / total_moles * 100, 0.01)] %)</span>"
 			if(toxins && (milla_turf_details || toxins / total_moles > 0.01))
-				message += "  <span class='plasma'>Plasma: [round(toxins, 0.01)] moles ([round(toxins / total_moles * 100, 0.01)] %)</span>"
+				message += "  <span class='plasma'>Плазма: [round(toxins, 0.01)] молей ([round(toxins / total_moles * 100, 0.01)] %)</span>"
 			if(sleeping_agent && (milla_turf_details || sleeping_agent / total_moles > 0.01))
-				message += "  <span class='sleeping_agent'>Nitrous Oxide: [round(sleeping_agent, 0.01)] moles ([round(sleeping_agent / total_moles * 100, 0.01)] %)</span>"
+				message += "  <span class='sleeping_agent'>Оксид азота: [round(sleeping_agent, 0.01)] молей ([round(sleeping_agent / total_moles * 100, 0.01)] %)</span>"
 			if(agent_b && (milla_turf_details || agent_b / total_moles > 0.01))
-				message += "  <span class='agent_b'>Agent B: [round(agent_b, 0.01)] moles ([round(agent_b / total_moles * 100, 0.01)] %)</span>"
-			message += "<span class='notice'>Temperature: [round(temperature-T0C)] &deg;C ([round(temperature)] K)</span>"
-			message += "<span class='notice'>Volume: [round(volume)] Liters</span>"
-			message += "<span class='notice'>Pressure: [round(pressure, 0.1)] kPa</span>"
-			message += "<span class='notice'>Heat Capacity: [DisplayJoules(heat_capacity)] / K</span>"
-			message += "<span class='notice'>Thermal Energy: [DisplayJoules(thermal_energy)]</span>"
+				message += "  <span class='agent_b'>Agent B: [round(agent_b, 0.01)] молей ([round(agent_b / total_moles * 100, 0.01)] %)</span>"
+			message += "<span class='notice'>Температура: [round(temperature-T0C)] &deg;C ([round(temperature)] K)</span>"
+			message += "<span class='notice'>Объём: [round(volume)] Литров</span>"
+			message += "<span class='notice'>Давление: [round(pressure, 0.1)] kPa</span>"
+			message += "<span class='notice'>Теплоемкость: [DisplayJoules(heat_capacity)] / K</span>"
+			message += "<span class='notice'>Тепловая энергия: [DisplayJoules(thermal_energy)]</span>"
 		else
-			message += "<span class='notice'>[target] is empty!</span>"
-			message += "<span class='notice'>Volume: [round(volume)] Liters</span>" // don't want to change the order volume appears in, suck it
+			message += "<span class='notice'>[target] без газа!</span>"
+			message += "<span class='notice'>Объём: [round(volume)] Литров</span>" // don't want to change the order volume appears in, suck it
 
 	if(milla)
 		// Values from milla/src/lib.rs, +1 due to array indexing difference.
@@ -832,18 +832,18 @@ SLIME SCANNER
 		switch(milla[MILLA_INDEX_ATMOS_MODE])
 			// These are enum values, so they don't get increased.
 			if(0)
-				message += "<span class='notice'>Atmos Mode: Space</span>"
+				message += "<span class='notice'>Режим Атмосферы: Космос</span>"
 			if(1)
-				message += "<span class='notice'>Atmos Mode: Sealed</span>"
+				message += "<span class='notice'>Режим Атмосферы: Герметичный</span>"
 			if(2)
-				message += "<span class='notice'>Atmos Mode: Exposed to Environment (ID: [milla[MILLA_INDEX_ENVIRONMENT_ID]])</span>"
+				message += "<span class='notice'>Режим Атмосферы: Подвержен воздействию окружающей среды (ID: [milla[MILLA_INDEX_ENVIRONMENT_ID]])</span>"
 			else
-				message += "<span class='notice'>Atmos Mode: Unknown ([milla[MILLA_INDEX_ATMOS_MODE]]), contact a coder.</span>"
-		message += "<span class='notice'>Superconductivity N/E/S/W: [milla[MILLA_INDEX_SUPERCONDUCTIVITY_NORTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_EAST]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_SOUTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_WEST]]</span>"
-		message += "<span class='notice'>Turf's Innate Heat Capacity: [milla[MILLA_INDEX_INNATE_HEAT_CAPACITY]]</span>"
-		message += "<span class='notice'>Hotspot: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] Liters ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)</span>"
-		message += "<span class='notice'>Wind: ([round(milla[MILLA_INDEX_WIND_X], 0.001)], [round(milla[MILLA_INDEX_WIND_Y], 0.001)])</span>"
-		message += "<span class='notice'>Fuel burnt last tick: [milla[MILLA_INDEX_FUEL_BURNT]] moles</span>"
+				message += "<span class='notice'>Режим Атмосферы: Неизвестен ([milla[MILLA_INDEX_ATMOS_MODE]]), наберите кодеру.</span>"
+		message += "<span class='notice'>Герметичность N/E/S/W: [milla[MILLA_INDEX_SUPERCONDUCTIVITY_NORTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_EAST]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_SOUTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_WEST]]</span>"
+		message += "<span class='notice'>Внутренняя теплоемкость Turf: [milla[MILLA_INDEX_INNATE_HEAT_CAPACITY]]</span>"
+		message += "<span class='notice'>Hotspot: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] Литров ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)</span>"
+		message += "<span class='notice'>Ветер: ([round(milla[MILLA_INDEX_WIND_X], 0.001)], [round(milla[MILLA_INDEX_WIND_Y], 0.001)])</span>"
+		message += "<span class='notice'>Топлива сожжено в последний тик: [milla[MILLA_INDEX_FUEL_BURNT]] молей</span>"
 
 	to_chat(user, chat_box_examine(message.Join("<br>")))
 	return TRUE
@@ -853,7 +853,7 @@ SLIME SCANNER
 ////////////////////////////////////////
 /obj/item/reagent_scanner
 	name = "reagent scanner"
-	desc = "A hand-held reagent scanner which identifies chemical agents and blood types."
+	desc = "Ручной сканер реагентов, который идентифицирует химические вещества и группы крови."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "spectrometer"
 	inhand_icon_state = "analyzer"
@@ -873,7 +873,7 @@ SLIME SCANNER
 	if(user.stat)
 		return
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>Вам не хватит ловкости, чтобы сделать это!</span>")
 		return
 	if(!istype(O))
 		return
@@ -890,13 +890,13 @@ SLIME SCANNER
 					blood_type = R.data["blood_type"]
 					dat += "<br>[TAB]<span class='notice'>[blood_type ? "[blood_type]" : ""] [R.data["species"]] [R.name] [details ? ":([R.volume / one_percent]%)" : ""]</span>"
 		if(dat)
-			to_chat(user, "<span class='notice'>Chemicals found: [dat]</span>")
+			to_chat(user, "<span class='notice'>Реагенты найдены: [dat]</span>")
 			datatoprint = dat
 			scanning = FALSE
 		else
-			to_chat(user, "<span class='notice'>No active chemical agents found in [O].</span>")
+			to_chat(user, "<span class='notice'>В [O] не обнаружено активных химических веществ.</span>")
 	else
-		to_chat(user, "<span class='notice'>No significant chemical agents found in [O].</span>")
+		to_chat(user, "<span class='notice'>В [O] не обнаружено важных химических веществ.</span>")
 	return
 
 /obj/item/reagent_scanner/adv
@@ -907,22 +907,22 @@ SLIME SCANNER
 
 /obj/item/reagent_scanner/proc/print_report()
 	if(!scanning)
-		usr.visible_message("<span class='warning'>[src] rattles and prints out a sheet of paper.</span>")
+		usr.visible_message("<span class='warning'>[src] скрипит и распечатывает лист бумаги.</span>")
 		playsound(loc, 'sound/goonstation/machines/printer_thermal.ogg', 50, 1)
 		sleep(50)
 
 		var/obj/item/paper/P = new(get_turf(src))
-		P.name = "Reagent Scanner Report: [station_time_timestamp()]"
-		P.info = "<center><b>Reagent Scanner</b></center><br><center>Data Analysis:</center><br><hr><br><b>Chemical agents detected:</b><br> [datatoprint]<br><hr>"
+		P.name = " Отчёт Reagent Scanner: [station_time_timestamp()]"
+		P.info = "<center><b>Reagent Scanner</b></center><br><center>Анализ данных:</center><br><hr><br><b>Обнаруженные химические вещества:</b><br> [datatoprint]<br><hr>"
 
 		if(ismob(loc))
 			var/mob/M = loc
 			M.put_in_hands(P)
-			to_chat(M, "<span class='notice'>Report printed. Log cleared.</span>")
+			to_chat(M, "<span class='notice'>Отчёт распечатан. Логи удалены.</span>")
 			datatoprint = ""
 			scanning = TRUE
 	else
-		to_chat(usr, "<span class='notice'>[src]  has no logs or is already in use.</span>")
+		to_chat(usr, "<span class='notice'>[src] не содержит логов или уже используется.</span>")
 
 /obj/item/reagent_scanner/ui_action_click()
 	print_report()
@@ -946,40 +946,40 @@ SLIME SCANNER
 	if(user.incapacitated() || user.AmountBlinded())
 		return
 	if(!isslime(M))
-		to_chat(user, "<span class='warning'>This device can only scan slimes!</span>")
+		to_chat(user, "<span class='warning'>Устройство может сканировать только слаймов!</span>")
 		return
 	slime_scan(M, user)
 
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
 	to_chat(user, "========================")
-	to_chat(user, "<b>Slime scan results:</b>")
-	to_chat(user, "<span class='notice'>[T.colour] [T.is_adult ? "adult" : "baby"] slime</span>")
-	to_chat(user, "Nutrition: [T.nutrition]/[T.get_max_nutrition()]")
+	to_chat(user, "<b>Результаты сканирования слайма:</b>")
+	to_chat(user, "<span class='notice'>[T.colour] [T.is_adult ? "взрослый" : "маленький"] slime</span>")
+	to_chat(user, "Сытость: [T.nutrition]/[T.get_max_nutrition()]")
 	if(T.nutrition < T.get_starve_nutrition())
-		to_chat(user, "<span class='warning'>Warning: slime is starving!</span>")
+		to_chat(user, "<span class='warning'>Внимание: слайм голодает!</span>")
 	else if(T.nutrition < T.get_hunger_nutrition())
-		to_chat(user, "<span class='warning'>Warning: slime is hungry</span>")
-	to_chat(user, "Electric change strength: [T.powerlevel]")
-	to_chat(user, "Health: [round(T.health/T.maxHealth,0.01)*100]%")
+		to_chat(user, "<span class='warning'>Внимание: слайм голоден.</span>")
+	to_chat(user, "Электрическое сопротивление: [T.powerlevel]")
+	to_chat(user, "Состояние: [round(T.health/T.maxHealth,0.01)*100]%")
 	if(T.slime_mutation[4] == T.colour)
-		to_chat(user, "This slime does not evolve any further.")
+		to_chat(user, "Слайм больше не эволюционирует.")
 	else
 		if(T.slime_mutation[3] == T.slime_mutation[4])
 			if(T.slime_mutation[2] == T.slime_mutation[1])
-				to_chat(user, "Possible mutation: [T.slime_mutation[3]]")
-				to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+				to_chat(user, "Возможные мутации: [T.slime_mutation[3]]")
+				to_chat(user, "Генетическая нестабильность: [T.mutation_chance] % вероятность мутации при расщеплении")
 			else
-				to_chat(user, "Possible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]] (x2)")
-				to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+				to_chat(user, "Возможные мутации: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]] (x2)")
+				to_chat(user, "Генетическая нестабильность: [T.mutation_chance] % вероятность мутации при расщеплении")
 		else
-			to_chat(user, "Possible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]], [T.slime_mutation[4]]")
-			to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+			to_chat(user, "Возможные мутации: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]], [T.slime_mutation[4]]")
+			to_chat(user, "Генетическая нестабильность: [T.mutation_chance] % вероятность мутации при расщеплении")
 	if(T.cores > 1)
-		to_chat(user, "Multiple cores detected")
-	to_chat(user, "Growth progress: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
+		to_chat(user, "Обнаружено несколько ядер")
+	to_chat(user, "Прогресс роста: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
 	if(T.effectmod)
-		to_chat(user, "<span class='notice'>Core mutation in progress: [T.effectmod]</span>")
-		to_chat(user, "<span class='notice'>Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]</span>")
+		to_chat(user, "<span class='notice'>Ядро мутации в процессе: [T.effectmod]</span>")
+		to_chat(user, "<span class='notice'>Прогресс в ядре мутации: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]</span>")
 	to_chat(user, "========================")
 
 ////////////////////////////////////////
@@ -987,7 +987,7 @@ SLIME SCANNER
 ////////////////////////////////////////
 /obj/item/bodyanalyzer
 	name = "handheld body analyzer"
-	desc = "A handheld scanner capable of deep-scanning an entire body."
+	desc = "Портативный сканер, способный полностью сканировать все тело аналогично стационарной версии."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "bodyanalyzer_0"
 	worn_icon_state = "healthanalyzer"
@@ -1014,7 +1014,7 @@ SLIME SCANNER
 
 /obj/item/bodyanalyzer/borg
 	name = "cyborg body analyzer"
-	desc = "Scan an entire body to prepare for field surgery. Consumes power for each scan."
+	desc = "Сканируйте все тело, чтобы подготовиться к полевой операции. При каждом сканировании расходуется энергия аккумулятора."
 
 /obj/item/bodyanalyzer/borg/syndicate
 	scan_cd = 20 SECONDS
@@ -1052,14 +1052,14 @@ SLIME SCANNER
 		return
 
 	if(!ready)
-		to_chat(user, "<span class='notice'>The scanner beeps angrily at you! It's currently recharging - [round((time_to_use - world.time) * 0.1)] seconds remaining.</span>")
+		to_chat(user, "<span class='notice'>Сканер издаёт расздражённый звуковой сигнал! Он перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
 	if(cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, "<span class='notice'>The scanner beeps angrily at you! It's out of charge!</span>")
+		to_chat(user, "<span class='notice'>Сканер издаёт расздражённый звуковой сигнал! Он разряжен!</span>")
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 
 /obj/item/bodyanalyzer/borg/attack__legacy__attackchain(mob/living/M, mob/living/silicon/robot/user)
@@ -1067,22 +1067,22 @@ SLIME SCANNER
 		return
 
 	if(!ready)
-		to_chat(user, "<span class='notice'>[src] is currently recharging - [round((time_to_use - world.time) * 0.1)] seconds remaining.</span>")
+		to_chat(user, "<span class='notice'>[src] перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
 		return
 
 	if(user.cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, "<span class='notice'>You need to recharge before you can use [src]</span>")
+		to_chat(user, "<span class='notice'>Вам необходимо подзарядиться, прежде чем использовать [src]</span>")
 
 /obj/item/bodyanalyzer/proc/mobScan(mob/living/M, mob/user)
 	if(ishuman(M))
 		var/report = generate_printing_text(M, user)
-		user.visible_message("[user] begins scanning [M] with [src].", "You begin scanning [M].")
+		user.visible_message("[user] начинает сканирование [M] [src].", "Вы начинаете сканирование [M].")
 		if(do_after(user, scan_time, target = M))
 			var/obj/item/paper/printout = new
 			printout.info = report
-			printout.name = "Scan report - [M.name]"
+			printout.name = "Отчёт о сканирование - [M.name]"
 			playsound(user.loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
 			user.put_in_hands(printout)
 			time_to_use = world.time + scan_cd
@@ -1098,30 +1098,30 @@ SLIME SCANNER
 			addtimer(VARSET_CALLBACK(src, printing, FALSE), 1.4 SECONDS)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), UPDATE_OVERLAYS), 1.5 SECONDS)
 	else if(iscorgi(M) && M.stat == DEAD)
-		to_chat(user, "<span class='notice'>You wonder if [M.p_they()] was a good dog. <b>[src] tells you they were the best...</b></span>") // :'(
+		to_chat(user, "<span class='notice'>Вас не покидает вопрос, был ли [M.p_they()] хорошим корги. <b>[src] говорит, что он был лучшим...</b></span>") // :'(
 		playsound(loc, 'sound/machines/ping.ogg', 50, 0)
 		ready = FALSE
 		update_icon(UPDATE_ICON_STATE)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/bodyanalyzer, setReady)), scan_cd)
 		time_to_use = world.time + scan_cd
 	else
-		to_chat(user, "<span class='notice'>Scanning error detected. Invalid specimen.</span>")
+		to_chat(user, "<span class='notice'>Ошибка сканирования. Недопустимый образец.</span>")
 
 //Unashamedly ripped from adv_med.dm
 /obj/item/bodyanalyzer/proc/generate_printing_text(mob/living/M, mob/user)
 	var/dat = ""
 	var/mob/living/carbon/human/target = M
 
-	dat = "<font color='blue'><b>Target Statistics:</b></font><br>"
+	dat = "<font color='blue'><b>Статистика объекта:</b></font><br>"
 	var/t1
 	switch(target.stat) // obvious, see what their status is
 		if(CONSCIOUS)
-			t1 = "Conscious"
+			t1 = "В сознание"
 		if(UNCONSCIOUS)
-			t1 = "Unconscious"
+			t1 = "Без сознания"
 		else
-			t1 = "*dead*"
-	dat += "[target.health > 50 ? "<font color='blue'>" : "<font color='red'>"]\tHealth %: [target.health], ([t1])</font><br>"
+			t1 = "*мёртв*"
+	dat += "[target.health > 50 ? "<font color='blue'>" : "<font color='red'>"]\tСостояние %: [target.health], ([t1])</font><br>"
 
 	var/found_disease = FALSE
 	for(var/thing in target.viruses)
@@ -1131,32 +1131,32 @@ SLIME SCANNER
 		found_disease = TRUE
 		break
 	if(found_disease)
-		dat += "<font color='red'>Disease detected in target.</font><BR>"
+		dat += "<font color='red'>У субъекта обнаружено заболевание.</font><BR>"
 
 	var/extra_font = null
 	extra_font = (target.getBruteLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Brute Damage %: [target.getBruteLoss()]</font><br>"
+	dat += "[extra_font]\t-Тяжесть повреждений от травм %: [target.getBruteLoss()]</font><br>"
 
 	extra_font = (target.getOxyLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Respiratory Damage %: [target.getOxyLoss()]</font><br>"
+	dat += "[extra_font]\t-Степень гипоксии %: [target.getOxyLoss()]</font><br>"
 
 	extra_font = (target.getToxLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Toxin Content %: [target.getToxLoss()]</font><br>"
+	dat += "[extra_font]\t-Уровень токсинов %: [target.getToxLoss()]</font><br>"
 
 	extra_font = (target.getFireLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Burn Severity %: [target.getFireLoss()]</font><br>"
+	dat += "[extra_font]\t-Тяжесть ожоговых повреждений %: [target.getFireLoss()]</font><br>"
 
 	extra_font = (target.radiation < 10 ?"<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tRadiation Level %: [target.radiation]</font><br>"
+	dat += "[extra_font]\tУровень радиационного облучения %: [target.radiation]</font><br>"
 
 	extra_font = (target.getCloneLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tGenetic Tissue Damage %: [target.getCloneLoss()]<br>"
+	dat += "[extra_font]\tСтепень генетического повреждения тканей %: [target.getCloneLoss()]<br>"
 
 	extra_font = (target.getBrainLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tApprox. Brain Damage %: [target.getBrainLoss()]<br>"
+	dat += "[extra_font]\tТяжесть повреждений мозга %: [target.getBrainLoss()]<br>"
 
-	dat += "Paralysis Summary %: [target.IsParalyzed()] ([round(target.AmountParalyzed() / 10)] seconds left!)<br>"
-	dat += "Body Temperature: [target.bodytemperature-T0C]&deg;C ([target.bodytemperature*1.8-459.67]&deg;F)<br>"
+	dat += "Описание паралича %: [target.IsParalyzed()] (осталось [round(target.AmountParalyzed() / 10)] секунд!)<br>"
+	dat += "Температура тела: [target.bodytemperature-T0C]&deg;C ([target.bodytemperature*1.8-459.67]&deg;F)<br>"
 
 	dat += "<hr>"
 
@@ -1164,27 +1164,27 @@ SLIME SCANNER
 	blood_percent *= 100
 
 	extra_font = (target.blood_volume > 448 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tBlood Level %: [blood_percent] ([target.blood_volume] units)</font><br>"
+	dat += "[extra_font]\tУровень крови %: [blood_percent] ([target.blood_volume] юнитов)</font><br>"
 
 	if(target.reagents)
-		dat += "Epinephrine units: [target.reagents.get_reagent_amount("Epinephrine")] units<BR>"
-		dat += "Ether: [target.reagents.get_reagent_amount("ether")] units<BR>"
+		dat += "Эпинефрин: [target.reagents.get_reagent_amount("Epinephrine")] юнитов<BR>"
+		dat += "Эфир: [target.reagents.get_reagent_amount("ether")] юнитов<BR>"
 
 		extra_font = (target.reagents.get_reagent_amount("silver_sulfadiazine") < 30 ? "<font color='black'>" : "<font color='red'>")
-		dat += "[extra_font]\tSilver Sulfadiazine: [target.reagents.get_reagent_amount("silver_sulfadiazine")]</font><br>"
+		dat += "[extra_font]\tСульфадиазин серебра: [target.reagents.get_reagent_amount("silver_sulfadiazine")] юнитов</font><br>"
 
 		extra_font = (target.reagents.get_reagent_amount("styptic_powder") < 30 ? "<font color='black'>" : "<font color='red'>")
-		dat += "[extra_font]\tStyptic Powder: [target.reagents.get_reagent_amount("styptic_powder")] units<BR>"
+		dat += "[extra_font]\tКровоостанавливающая пудра: [target.reagents.get_reagent_amount("styptic_powder")] юнитов<BR>"
 
 		extra_font = (target.reagents.get_reagent_amount("salbutamol") < 30 ? "<font color='black'>" : "<font color='red'>")
-		dat += "[extra_font]\tSalbutamol: [target.reagents.get_reagent_amount("salbutamol")] units<BR>"
+		dat += "[extra_font]\tСальбутамол: [target.reagents.get_reagent_amount("salbutamol")] юнитов<BR>"
 
 	dat += "<hr><table border='1'>"
 	dat += "<tr>"
-	dat += "<th>Organ</th>"
-	dat += "<th>Burn Damage</th>"
-	dat += "<th>Brute Damage</th>"
-	dat += "<th>Other Wounds</th>"
+	dat += "<th>Части тела / Органы</th>"
+	dat += "<th>Ожоговые повреждения</th>"
+	dat += "<th>Повреждения от травм</th>"
+	dat += "<th>Другие раны</th>"
 	dat += "</tr>"
 
 	for(var/obj/item/organ/external/e in target.bodyparts)
@@ -1199,39 +1199,39 @@ SLIME SCANNER
 		var/internal_bleeding = ""
 		var/lung_ruptured = ""
 		if(e.status & ORGAN_INT_BLEEDING)
-			internal_bleeding = "<br>Internal bleeding"
+			internal_bleeding = "<br>Внутренне кровотечение"
 		if(istype(e, /obj/item/organ/external/chest) && target.is_lung_ruptured())
-			lung_ruptured = "Lung ruptured:"
+			lung_ruptured = "Разрыв лёгкого:"
 		if(e.status & ORGAN_SPLINTED)
-			splint = "Splinted:"
+			splint = "Зашитый:"
 		if(e.status & ORGAN_BROKEN)
 			AN = "[e.broken_description]:"
 		if(e.is_robotic())
-			robot = "Robotic:"
+			robot = "Роботизированный:"
 		if(e.open)
-			open = "Open:"
+			open = "Открыт:"
 		switch(e.germ_level)
 			if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-				infected = "Mild Infection:"
+				infected = "Легкая инфекция:"
 			if(INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infected = "Mild Infection+:"
+				infected = "Легкая инфекция+:"
 			if(INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infected = "Mild Infection++:"
+				infected = "Легкая инфекция++:"
 			if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-				infected = "Acute Infection:"
+				infected = "Острая инфекция:"
 			if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-				infected = "Acute Infection+:"
+				infected = "Острая инфекция+:"
 			if(INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_TWO + 400)
-				infected = "Acute Infection++:"
+				infected = "Острая инфекция++:"
 			if(INFECTION_LEVEL_THREE to INFINITY)
-				infected = "Septic:"
+				infected = "Заражённый:"
 
 		var/unknown_body = 0
 		for(var/I in e.embedded_objects)
 			unknown_body++
 
 		if(unknown_body || e.hidden)
-			imp += "Unknown body present:"
+			imp += "Обнаруженно инородное тело:"
 		if(!AN && !open && !infected && !imp)
 			AN = "None:"
 		dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured]</td>"
@@ -1241,29 +1241,29 @@ SLIME SCANNER
 		var/infection = "None"
 		switch(i.germ_level)
 			if(1 to INFECTION_LEVEL_ONE + 200)
-				infection = "Mild Infection:"
+				infection = "Легкая инфекция:"
 			if(INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infection = "Mild Infection+:"
+				infection = "Легкая инфекция+:"
 			if(INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infection = "Mild Infection++:"
+				infection = "Легкая инфекция++:"
 			if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-				infection = "Acute Infection:"
+				infection = "Острая инфекция:"
 			if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-				infection = "Acute Infection+:"
+				infection = "Острая инфекция+:"
 			if(INFECTION_LEVEL_TWO + 300 to INFINITY)
-				infection = "Acute Infection++:"
+				infection = "Острая инфекция++:"
 
 		dat += "<tr>"
 		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech]</td><td></td>"
 		dat += "</tr>"
 	dat += "</table>"
 	if(HAS_TRAIT(target, TRAIT_BLIND))
-		dat += "<font color='red'>Cataracts detected.</font><BR>"
+		dat += "<font color='red'>Обнаруженна катаракта.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_COLORBLIND))
-		dat += "<font color='red'>Photoreceptor abnormalities detected.</font><BR>"
+		dat += "<font color='red'>Обнаружены нарушения в работе фоторецепторов.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_NEARSIGHT))
-		dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
+		dat += "<font color='red'>Обнаружено смещение сетчатки.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_PARAPLEGIC))
-		dat += "<font color='red'>Lumbar nerves damaged.</font><BR>"
+		dat += "<font color='red'>Повреждены поясничные нервы.</font><BR>"
 
 	return dat
