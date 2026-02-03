@@ -2,6 +2,7 @@
 
 	name = "lux medipen"
 	desc = "An advanced multi-purpose medical pen containing a powerful cocktail of high-end reagents."
+	icon = 'modular_ss220/objects/icons/luxpen.dmi'
 	icon_state = "luxpen"
 	volume = 60
 	amount_per_transfer_from_this = 60
