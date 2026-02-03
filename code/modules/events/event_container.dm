@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 	if(!next_event)	// If non-one has explicitly set an event, randomly pick one
 		next_event = acquire_event()
 		// SS220 EDIT START
-		if(length(GLOB.crew_list) < next_event.min_player)
+		if(next_event && length(GLOB.crew_list) < next_event.min_player)
 			log_debug("Event manager: Недостаточно игроков для запуска ивента, минимальное значение [next_event.min_player] членов экипажа")
 			available_events += next_event
 			next_event = null
