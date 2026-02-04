@@ -205,7 +205,7 @@ SLIME SCANNER
 			to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние: <font color='red'>Мёртв</font></span>")
 			return
 
-		to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние - [round(M.health / M.maxHealth * 100, 0.1)]%")
+		to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние - Здоров на [round(M.health / M.maxHealth * 100, 0.1)]%")
 		to_chat(user, "\t Детализация повреждений: <font color='red'>[M.maxHealth - M.health]</font>")
 		return
 
@@ -250,7 +250,7 @@ SLIME SCANNER
 		if(HAS_TRAIT(H, TRAIT_FAKEDEATH) || probably_dead) // status still shows as "Dead"
 			OX = fake_oxy > 50 ? "<b>[fake_oxy]</b>" : fake_oxy
 		else
-			status = " Состояние [H.health]%"
+			status = "Состояние [H.health]%"
 
 	msgs += "<span class='notice'>Анализ результатов для [scanned_name]:\nОбщее состояние: [status]"
 	msgs += "Основные: <span class='healthscan_oxy'>Удушье</span>/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>"
