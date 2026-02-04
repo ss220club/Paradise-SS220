@@ -137,7 +137,6 @@
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	worn_icon = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 	icon_state = "hev0"
-	worn_icon_state = "hev_helmet"
 	inhand_icon_state = "hev_helmet"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'

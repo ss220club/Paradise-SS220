@@ -12,9 +12,7 @@
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_suit.dmi'
 	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
-	sprite_sheets = list(
-		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
-		)
+	sprite_sheets = null
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton,
 		/obj/item/melee/energy/sword, /obj/item/shield/energy,
 		/obj/item/restraints/handcuffs, /obj/item/tank/internals)
@@ -34,9 +32,7 @@
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_head.dmi'
 	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
-	sprite_sheets = list(
-		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
-		)
+	sprite_sheets = null
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(MELEE = 35, BULLET = 50, LASER = 20, ENERGY = 20, BOMB = 25, RAD = 80, FIRE = 50, ACID = 50)
 	flags = HEADBANGPROTECT | BLOCKHEADHAIR

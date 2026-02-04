@@ -4,7 +4,7 @@
 	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
 	icon_state = "student_s"
 	item_color = "student"
-	sprite_sheets = list("Human" = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi')
+	sprite_sheets = null
 
 /obj/item/clothing/under/rank/rnd/scientist/student/skirt
 	name = "scientist student jumpskirt"
