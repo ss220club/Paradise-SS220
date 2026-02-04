@@ -171,7 +171,7 @@ SLIME SCANNER
 		var/list/msgs = list()
 		user.visible_message("<span class='warning'>[user] анализирует жизненные показатели the floor!</span>", "<span class='notice'>You stupidly try to analyze the floor's vitals!</span>")
 		msgs += "<span class='notice'>Анализ результатов для the floor:\nОбщее состояние: Здоровый</span>"
-		msgs += "<span class='notice'>Основные: <font color='blue'>Гипоксия</font>/<font color='green'>Интоксикация</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Травмы</font></span>"
+		msgs += "<span class='notice'>Основные: <font color='blue'>Удушье</font>/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font></span>"
 		msgs += "<span class='notice'>Детализация повреждений: <font color='blue'>0</font> - <font color='green'>0</font> - <font color='#FFA500'>0</font> - <font color='red'>0</font></span>"
 		msgs += "<span class='notice'>Температура тела: ???</span>"
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
@@ -212,7 +212,7 @@ SLIME SCANNER
 	// These sensors are designed for organic life.
 	if(!ishuman(M) || ismachineperson(M) || (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5)))
 		msgs += "<span class='notice'>Анализ Результатов для ОШИБКА:\nОбщее состояние: ОШИБКА</span>"
-		msgs += "Основные: <span class='healthscan_oxy'>Гипоксия</span>/<font color='green'>Интоксикация</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Травмы</font>"
+		msgs += "Основные: <span class='healthscan_oxy'>Удушье</span>/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>"
 		msgs += "Детализация повреждений: <span class='healthscan_oxy'>?</span> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
 		msgs += "<span class='notice'>Температура тела: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
 		msgs += "<span class='warning'><b>Предупреждение: Уровень крови ОШИБКА: --% --cl.</span><span class='notice'>Тип: ОШИБКА</span>"
@@ -253,7 +253,7 @@ SLIME SCANNER
 			status = " Состояние [H.health]%"
 
 	msgs += "<span class='notice'>Анализ результатов для [scanned_name]:\nОбщее состояние: [status]"
-	msgs += "Основные: <span class='healthscan_oxy'>Гипоксия</span>/<font color='green'>Интоксикация</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Травмы</font>"
+	msgs += "Основные: <span class='healthscan_oxy'>Удушье</span>/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>"
 	msgs += "Детализация повреждений: <span class='healthscan_oxy'>[OX]</span> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
 
 	if(H.timeofdeath && (H.stat == DEAD || (HAS_TRAIT(H, TRAIT_FAKEDEATH)) || probably_dead))
@@ -268,7 +268,7 @@ SLIME SCANNER
 	if(mode == DETAILED_HEALTH_SCAN)
 		var/list/damaged = H.get_damaged_organs(1,1)
 		if(length(damaged))
-			msgs += "<span class='notice'>Локальные повреждения, Травмы/Ожоги:</span>"
+			msgs += "<span class='notice'>Локальные повреждения, Ушибы/Ожоги:</span>"
 			for(var/obj/item/organ/external/org in damaged)
 				msgs += "<span class='notice'>[capitalize(org.name)]: [(org.brute_dam > 0) ? "<font color='red'>[org.brute_dam]</font></span>" : "<font color='red'>0</font>"]-[(org.burn_dam > 0) ? "<font color='#FF8000'>[org.burn_dam]</font>" : "<font color='#FF8000'>0</font>"]"
 
@@ -287,7 +287,7 @@ SLIME SCANNER
 		if(istype(D, /datum/disease/advance))
 			var/datum/disease/advance/A = D
 			if(!(A.id in GLOB.known_advanced_diseases[num2text(user.z)]))
-				msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен неизвестный штамм вируса</b>\nStrain:[A.strain]\nСтадия: [A.stage]</span>"
+				msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен неизвестный штамм вируса</b>\nШтамм:[A.strain]\nСтадия: [A.stage]</span>"
 			else
 				msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен [A.form]</b>\nНазвание: [A.name].\nШтамм:[A.strain]\nТип: [A.spread_text].\nСтадия: [A.stage]/[A.max_stages].\nМетод лечения: [A.cure_text]\nНеобходимо лечений: [A.cures_required]</font></span>"
 			continue
@@ -388,7 +388,7 @@ SLIME SCANNER
 		if(O.is_robotic() && !O.stealth_level)
 			implant_detect += "[O.name].<br>"
 	if(implant_detect)
-		msgs += "<span class='notice'>обнаружены кибернетические модификации:</span>"
+		msgs += "<span class='notice'>Обнаружены кибернетические модификации:</span>"
 		msgs += "<span class='notice'>[implant_detect]</span>"
 
 	// Do you have too many genetics superpowers?
@@ -474,7 +474,7 @@ SLIME SCANNER
 	user.visible_message("<span class='warning'>[user] анализирует жизненные показатели the floor's!</span>", "<span class='warning'>You stupidly try to analyze the floor's vitals!</span>")
 	msgs += "<span class='notice'>Анализ результатов для the floor:\n\t Общее состояние: Неизвестно</span>"
 	msgs += "<span class='notice'>\t Детализация повреждений: <font color='#FFA500'>[0]</font>/<font color='red'>[0]</font></span>"
-	msgs += "<span class='notice'>Основные: <font color='#FFA500'>Ожоги</font><font color ='red'>/Травмы</font></span>"
+	msgs += "<span class='notice'>Основные: <font color='#FFA500'>Ожоги</font><font color ='red'>/Ушибы</font></span>"
 	msgs += "<span class='notice'>Температура шасси: ???</span>"
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 
@@ -594,7 +594,7 @@ SLIME SCANNER
 			var/mob/living/silicon/ai/A = M
 			var/burn = A.getFireLoss() > 50 	? 	"<b>[A.getFireLoss()]</b>" 		: A.getFireLoss()
 			var/brute = A.getBruteLoss() > 50 	? 	"<b>[A.getBruteLoss()]</b>" 	: A.getBruteLoss()
-			msgs += "<span class='notice'>Анализ результатов для [M]:\n\t Общее состояние: [A.stat == DEAD ? "полностью отключён" : "Работоспособность[A.health]%"]</span>"
+			msgs += "<span class='notice'>Анализ результатов для [M]:\n\t Общее состояние: [A.stat == DEAD ? "полностью отключён" : "Работоспособность [A.health]%"]</span>"
 			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
 			msgs += "\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
 
@@ -912,7 +912,7 @@ SLIME SCANNER
 		sleep(50)
 
 		var/obj/item/paper/P = new(get_turf(src))
-		P.name = " Отчёт Reagent Scanner: [station_time_timestamp()]"
+		P.name = "Отчёт Reagent Scanner: [station_time_timestamp()]"
 		P.info = "<center><b>Reagent Scanner</b></center><br><center>Анализ данных:</center><br><hr><br><b>Обнаруженные химические вещества:</b><br> [datatoprint]<br><hr>"
 
 		if(ismob(loc))
