@@ -6,14 +6,11 @@
 	desc = "Специализированный космический защитный костюм воксов-рейдеров. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными. За счет иной структуры, костюм рейдеров уступает в защитных свойствах костюму наемников."
 	icon_state = "vox-raider"
 	item_color = "vox-raider"
-	worn_icon_state = "rig_suit"
 	inhand_icon_state = "rig_suit"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_suit.dmi'
 	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
-	sprite_sheets = list(
-		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
-		)
+	sprite_sheets = null
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals,
 		/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton,
 		/obj/item/melee/energy/sword, /obj/item/shield/energy,
@@ -36,9 +33,7 @@
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_head.dmi'
 	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
-	sprite_sheets = list(
-		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
-		)
+	sprite_sheets = null
 	flags = HEADBANGPROTECT | BLOCKHAIR | STOPSPRESSUREDMAGE | THICKMATERIAL
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(MELEE = 75, BULLET = 50, LASER = 30, ENERGY = 20, BOMB = 25, RAD = 115, FIRE = 80, ACID = 200)

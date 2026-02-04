@@ -8,8 +8,6 @@
 	desc = "Пара чёрных кроссовок с светодиодными вставками."
 	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
 	icon_state = "neon"
-	inhand_icon_state = "neon"
-	worn_icon_state = "neon"
 	worn_icon = 'modular_ss220/clothing/icons/mob/shoes.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
@@ -122,13 +120,12 @@
 	name = "moffers"
 	desc = "Ни одна моль не пострадала во время создания этих ботинок."
 	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
+	icon_state = "moffers"
+	worn_icon = 'modular_ss220/clothing/icons/mob/shoes.dmi'
+	inhand_icon_state = "moffers"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
-	icon_state = "moffers"
-	worn_icon_state = "moffers"
-	inhand_icon_state = "moffers"
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/shoes.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/shoes.dmi',
 	)
@@ -159,25 +156,11 @@
 	desc = "Черный ботинки в классическом стиле с легким золотым напылением от корпорации Etamin Industry."
 	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
 	icon_state = "ei_shoes"
+	worn_icon = 'modular_ss220/clothing/icons/mob/shoes.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Tajaran" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/shoes.dmi',
-		"Skrell" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Skeleton" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Slime People" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Unathi" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Grey" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Abductor" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Golem" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Machine" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Diona" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Nian" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Shadow" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/shoes.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/shoes.dmi',
 	)
@@ -187,23 +170,8 @@
 	desc = "Тяжёлые кожаные ботинки с вшитыми стальными пластинами в носке и подошве. Надёжно защищают ноги и идеально подходят, чтобы раздавить чей-то череп. Их владелец явно обладает мощными ногами. На подошвах выбита надпись Rerro."
 	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
 	icon_state = "jackbootstall_s"
+	worn_icon = 'modular_ss220/clothing/icons/mob/shoes.dmi'
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Tajaran" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Kidan" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Skrell" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Skeleton" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Slime People" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Unathi" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Grey" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Abductor" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Golem" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Machine" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Diona" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Nian" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Shadow" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/shoes.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/shoes.dmi',
 	)

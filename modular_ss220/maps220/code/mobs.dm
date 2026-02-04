@@ -1100,7 +1100,6 @@
 	name = "xen key"
 	desc = ""
 	icon_state = "emag"
-	worn_icon_state = "card-id"
 	inhand_icon_state = "card-id"
 	access = list (271)
 

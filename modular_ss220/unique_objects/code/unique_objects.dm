@@ -201,7 +201,6 @@
 	desc = "Капитан всех уточек на этой станции. Крайне важная и престижная уточка. Выпущены в ограниченном тираже и только для капитанов. Ценная находка для коллекционеров."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 	icon_state = "captain_rubberducky"
-	worn_icon_state = "captain_rubberducky"
 	inhand_icon_state = "captain_rubberducky"
 
 // =========== toilets ===========
