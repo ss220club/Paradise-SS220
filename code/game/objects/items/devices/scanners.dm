@@ -289,7 +289,7 @@ SLIME SCANNER
 			if(!(A.id in GLOB.known_advanced_diseases[num2text(user.z)]))
 				msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен неизвестный штамм вируса</b>\nStrain:[A.strain]\nСтадия: [A.stage]</span>"
 			else
-				msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен [A.form]</b>\nName: [A.name].\nStrain:[A.strain]\nТип: [A.spread_text].\nСтадия: [A.stage]/[A.max_stages].\nМетод лечения: [A.cure_text]\nНеобходимое лечение: [A.cures_required]</font></span>"
+				msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен [A.form]</b>\nНазвание: [A.name].\nШтамм:[A.strain]\nТип: [A.spread_text].\nСтадия: [A.stage]/[A.max_stages].\nМетод лечения: [A.cure_text]\nНеобходимо лечений: [A.cures_required]</font></span>"
 			continue
 		msgs += "<span class='notice'><font color='red'><b>Предупреждение: Обнаружен [D.form]</b>\nНазвание: [D.name].\nТип: [D.spread_text].\nСтадия: [D.stage]/[D.max_stages].\nМетод лечения: [D.cure_text]</font></span>"
 
@@ -374,9 +374,9 @@ SLIME SCANNER
 			else
 				blood_type = blood_id
 		if(H.blood_volume <= BLOOD_VOLUME_SAFE && H.blood_volume > BLOOD_VOLUME_OKAY)
-			msgs += "<span class='danger'>НИЗКИЙ уровень крови [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>type: [blood_type]</span>"
+			msgs += "<span class='danger'>НИЗКИЙ уровень крови [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>тип: [blood_type]</span>"
 		else if(H.blood_volume <= BLOOD_VOLUME_OKAY)
-			msgs += "<span class='danger'>КРИТИЧЕСКИЙ уровень крови [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>type: [blood_type]</span>"
+			msgs += "<span class='danger'>КРИТИЧЕСКИЙ уровень крови [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>тип: [blood_type]</span>"
 		else
 			msgs += "<span class='notice'>Уровень крови [blood_percent] %, [blood_volume] cl, тип: [blood_type]</span>"
 
@@ -423,7 +423,7 @@ SLIME SCANNER
 		return
 
 	if(!user.unequip(I))
-		to_chat(user, "<span class='warning'>[src] is stuck to your hand!</span>")
+		to_chat(user, "<span class='warning'>[src] застрял в вашей руке!!</span>")
 		return
 
 	to_chat(user, "<span class='notice'>Вы установили улучшение на [src].</span>")
@@ -595,7 +595,7 @@ SLIME SCANNER
 			var/burn = A.getFireLoss() > 50 	? 	"<b>[A.getFireLoss()]</b>" 		: A.getFireLoss()
 			var/brute = A.getBruteLoss() > 50 	? 	"<b>[A.getBruteLoss()]</b>" 	: A.getBruteLoss()
 			msgs += "<span class='notice'>Анализ результатов для [M]:\n\t Общее состояние: [A.stat == DEAD ? "полностью отключён" : "Работоспособность[A.health]%"]</span>"
-			msgs += "\t Key: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
+			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
 			msgs += "\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
 
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
@@ -640,7 +640,7 @@ SLIME SCANNER
 
 /obj/item/analyzer/AltShiftClick(mob/user)
 	show_detailed = !show_detailed
-	to_chat(user, "<span class='notice'>Вы переключаете режим подробных отчётов на [show_detailed ? "on" : "off"]</span>")
+	to_chat(user, "<span class='notice'>Вы [show_detailed ? "Включаете" : "Выключаете"] режим подробных отчётов.</span>")
 
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
@@ -828,7 +828,7 @@ SLIME SCANNER
 
 	if(milla)
 		// Values from milla/src/lib.rs, +1 due to array indexing difference.
-		message += "<span class='notice'>Airtight N/E/S/W: [(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_NORTH) ? "yes" : "no"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_EAST) ? "yes" : "no"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_SOUTH) ? "yes" : "no"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_WEST) ? "yes" : "no"]</span>"
+		message += "<span class='notice'>Airtight N/E/S/W: [(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_NORTH) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_EAST) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_SOUTH) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_WEST) ? "да" : "нет"]</span>"
 		switch(milla[MILLA_INDEX_ATMOS_MODE])
 			// These are enum values, so they don't get increased.
 			if(0)
@@ -953,7 +953,7 @@ SLIME SCANNER
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
 	to_chat(user, "========================")
 	to_chat(user, "<b>Результаты сканирования слайма:</b>")
-	to_chat(user, "<span class='notice'>[T.colour] [T.is_adult ? "взрослый" : "маленький"] slime</span>")
+	to_chat(user, "<span class='notice'>[T.colour] [T.is_adult ? "взрослый" : "маленький"] слайм</span>")
 	to_chat(user, "Сытость: [T.nutrition]/[T.get_max_nutrition()]")
 	if(T.nutrition < T.get_starve_nutrition())
 		to_chat(user, "<span class='warning'>Внимание: слайм голодает!</span>")
@@ -1233,12 +1233,12 @@ SLIME SCANNER
 		if(unknown_body || e.hidden)
 			imp += "Обнаружено инородное тело:"
 		if(!AN && !open && !infected && !imp)
-			AN = "None:"
+			AN = "Нет:"
 		dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured]</td>"
 		dat += "</tr>"
 	for(var/obj/item/organ/internal/i in target.internal_organs)
 		var/mech = i.desc
-		var/infection = "None"
+		var/infection = "Нет"
 		switch(i.germ_level)
 			if(1 to INFECTION_LEVEL_ONE + 200)
 				infection = "Легкая инфекция:"
