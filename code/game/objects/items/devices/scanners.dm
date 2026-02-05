@@ -156,21 +156,21 @@ SLIME SCANNER
 
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Используйте [src] в руке чтобы включить детализацию повреждений.</span>"
+	. += "<span class='notice'>Используйте [src.declent_ru(NOMINATIVE)] в руке чтобы включить детализацию повреждений.</span>"
 
 /obj/item/healthanalyzer/attack_self__legacy__attackchain(mob/user)
 	mode = !mode
 	switch(mode)
 		if(DETAILED_HEALTH_SCAN)
-			to_chat(user, "<span class='notice'>Теперь сканер показывает повреждения каждой конечности.</span>")
+			to_chat(user, "<span class='notice'>Теперь [src.declent_ru(NOMINATIVE)] показывает повреждения каждой конечности.</span>")
 		if(SIMPLE_HEALTH_SCAN)
-			to_chat(user, "<span class='notice'>Сканер больше не показывает повреждения каждой конечности.</span>")
+			to_chat(user, "<span class='notice'>[capitalize(src.declent_ru(NOMINATIVE))] больше не показывает повреждения каждой конечности.</span>")
 
 /obj/item/healthanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		var/list/msgs = list()
-		user.visible_message("<span class='warning'>[user] анализирует жизненные показатели the floor!</span>", "<span class='notice'>You stupidly try to analyze the floor's vitals!</span>")
-		msgs += "<span class='notice'>Анализ результатов для the floor:\nОбщее состояние: Здоровый</span>"
+		user.visible_message("<span class='warning'>[user] анализирует жизненные показатели пола!</span>", "<span class='notice'>Вы по глупости пытаетесь проанализировать жизненные показатели пола!</span>")
+		msgs += "<span class='notice'>Анализ результатов для пола:\nОбщее состояние: Здоровый</span>"
 		msgs += "<span class='notice'>Основные: <font color='blue'>Удушье</font>/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font></span>"
 		msgs += "<span class='notice'>Детализация повреждений: <font color='blue'>0</font> - <font color='green'>0</font> - <font color='#FFA500'>0</font> - <font color='red'>0</font></span>"
 		msgs += "<span class='notice'>Температура тела: ???</span>"
@@ -205,17 +205,17 @@ SLIME SCANNER
 			to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние: <font color='red'>Мёртв</font></span>")
 			return
 
-		to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние - Здоров на [round(M.health / M.maxHealth * 100, 0.1)]%")
+		to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние : [round(M.health / M.maxHealth * 100, 0.1)]%")
 		to_chat(user, "\t Детализация повреждений: <font color='red'>[M.maxHealth - M.health]</font>")
 		return
 
 	// These sensors are designed for organic life.
 	if(!ishuman(M) || ismachineperson(M) || (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5)))
-		msgs += "<span class='notice'>Анализ Результатов для ОШИБКА:\nОбщее состояние: ОШИБКА</span>"
+		msgs += "<span class='notice'>Анализ результатов для ОШИБКА:\nОбщее состояние: ОШИБКА</span>"
 		msgs += "Основные: <span class='healthscan_oxy'>Удушье</span>/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>"
 		msgs += "Детализация повреждений: <span class='healthscan_oxy'>?</span> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
 		msgs += "<span class='notice'>Температура тела: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
-		msgs += "<span class='warning'><b>Предупреждение: Уровень крови ОШИБКА: --% --cl.</span><span class='notice'>Тип: ОШИБКА</span>"
+		msgs += "<span class='warning'><b>Предупреждение: уровень крови ОШИБКА: --% --cl.</span><span class='notice'>Тип: ОШИБКА</span>"
 		msgs += "<span class='notice'>Пульс субъекта: <font color='red'>-- bpm.</font></span>"
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 		return
@@ -261,14 +261,14 @@ SLIME SCANNER
 		msgs += "<span class='notice'>Время смерти: [station_time_timestamp("hh:mm:ss", tod)]</span>"
 		var/tdelta = round(world.time - tod)
 		if(H.is_revivable() && !DNR)
-			msgs += "<span class='danger'>Субъект умер [DisplayTimeText(tdelta)] назад, дефибрилляция ещё возможна!</span>"
+			msgs += "<span class='danger'>Субъект умер [DisplayTimeText(tdelta)] назад. Дефибрилляция ещё возможна!</span>"
 		else
 			msgs += "<font color='red'>Субъект умер [DisplayTimeText(tdelta)] назад. <b>Дефибрилляция более невозможна!</b></font>"
 
 	if(mode == DETAILED_HEALTH_SCAN)
 		var/list/damaged = H.get_damaged_organs(1,1)
 		if(length(damaged))
-			msgs += "<span class='notice'>Локальные повреждения, Ушибы/Ожоги:</span>"
+			msgs += "<span class='notice'>Локальные повреждения. Ушибы/ожоги:</span>"
 			for(var/obj/item/organ/external/org in damaged)
 				msgs += "<span class='notice'>[capitalize(org.name)]: [(org.brute_dam > 0) ? "<font color='red'>[org.brute_dam]</font></span>" : "<font color='red'>0</font>"]-[(org.burn_dam > 0) ? "<font color='#FF8000'>[org.burn_dam]</font>" : "<font color='#FF8000'>0</font>"]"
 
@@ -282,7 +282,7 @@ SLIME SCANNER
 			continue
 		// Snowflaking heart problems, because they are special (and common).
 		if(istype(D, /datum/disease/critical))
-			msgs += "<span class='notice'><font color='red'><b>Предупреждение: У субъекта [D.name].</b>\nСтадия: [D.stage]/[D.max_stages].\nМетод лечения: [D.cure_text]</font></span>"
+			msgs += "<span class='notice'><font color='red'><b>Предупреждение: у субъекта [D.name].</b>\nСтадия: [D.stage]/[D.max_stages].\nМетод лечения: [D.cure_text]</font></span>"
 			continue
 		if(istype(D, /datum/disease/advance))
 			var/datum/disease/advance/A = D
@@ -397,7 +397,7 @@ SLIME SCANNER
 	else if(H.gene_stability < 70)
 		msgs += "<span class='danger'>Гены субъекта спонтанно разрушаются.</span>"
 	else if(H.gene_stability < 85)
-		msgs += "<span class='warning'>Гены субъекта незначительно нестабильны.</span>"
+		msgs += "<span class='warning'>Незначительные признаки нестабильности в генах субъекта.</span>"
 
 	if(HAS_TRAIT(H, TRAIT_HUSK))
 		msgs += "<span class='danger'>Субъект стал хаском. Рекомендуется наложить синтплоть.</span>"
@@ -419,14 +419,14 @@ SLIME SCANNER
 		return ..()
 
 	if(advanced)
-		to_chat(user, "<span class='notice'>Улучшение уже установлено на [src].</span>")
+		to_chat(user, "<span class='notice'>[src.declent_ru(NOMINATIVE)] уже улучшен.</span>")
 		return
 
 	if(!user.unequip(I))
-		to_chat(user, "<span class='warning'>[src] застрял в вашей руке!!</span>")
+		to_chat(user, "<span class='warning'>[src.declent_ru(NOMINATIVE)] застрял в вашей руке!!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>Вы установили улучшение на [src].</span>")
+	to_chat(user, "<span class='notice'>Вы установили улучшение на [src.declent_ru(NOMINATIVE)].</span>")
 	add_overlay("advanced")
 	playsound(loc, I.usesound, 50, TRUE)
 	advanced = TRUE
@@ -484,7 +484,7 @@ SLIME SCANNER
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return
-	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [src].</span>")
+	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src.declent_ru(NOMINATIVE)].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [declent_ru(GENITIVE)].</span>")
 	machine_scan(user, M)
 	add_fingerprint(user)
 
@@ -500,7 +500,7 @@ SLIME SCANNER
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return
-	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [src].</span>")
+	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [declent_ru(GENITIVE)].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [declent_ru(GENITIVE)].</span>")
 	robot_healthscan(user, M)
 	add_fingerprint(user)
 
@@ -623,8 +623,8 @@ SLIME SCANNER
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click по [src] чтобы активировать функцию Барометра.</span>"
-	. += "<span class='notice'>Alt-Shift-click по [src] для включения или выключения подробных отчетов.</span>"
+	. += "<span class='notice'>Alt-click по [src.declent_ru(DATIVE)] чтобы активировать функцию Барометра.</span>"
+	. += "<span class='notice'>Alt-Shift-click по [src.declent_ru(DATIVE)] для включения или выключения подробных отчетов.</span>"
 
 /obj/item/analyzer/attack_self__legacy__attackchain(mob/user as mob)
 
@@ -648,7 +648,7 @@ SLIME SCANNER
 	if(!user.incapacitated() && Adjacent(user))
 
 		if(cooldown)
-			to_chat(user, "<span class='warning'>Функция [src] Барометр подготавливается.</span>")
+			to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр подготавливается.</span>")
 			return
 
 		var/turf/T = get_turf(user)
@@ -660,7 +660,7 @@ SLIME SCANNER
 		var/datum/weather/ongoing_weather = null
 
 		if(!user_area.outdoors)
-			to_chat(user, "<span class='warning'>Функция [src] Барометр не будет работать в помещении!</span>")
+			to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр не будет работать в помещении!</span>")
 			return
 
 		for(var/V in SSweather.processing)
@@ -671,26 +671,26 @@ SLIME SCANNER
 
 		if(ongoing_weather)
 			if((ongoing_weather.stage == WEATHER_MAIN_STAGE) || (ongoing_weather.stage == WEATHER_WIND_DOWN_STAGE))
-				to_chat(user, "<span class='warning'>Функция [src] Барометр не может ничего отследить во время шторма. [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "Шторм уже здесь!" : "Шторм прекращается."]</span>")
+				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр не может ничего отследить во время шторма. [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "Шторм уже здесь!" : "Шторм прекращается."]</span>")
 				return
 
 			to_chat(user, "<span class='notice'>Следующий [ongoing_weather] появится в [butchertime(ongoing_weather.next_hit_time - world.time)].</span>")
 			if(ongoing_weather.aesthetic)
-				to_chat(user, "<span class='warning'>Функция [src] Барометр говорит о том, что следующий шторм пройдёт мимо.</span>")
+				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр говорит о том, что следующий шторм пройдёт мимо.</span>")
 		else
 			var/next_hit = SSweather.next_hit_by_zlevel["[T.z]"]
 			var/fixed = next_hit ? next_hit - world.time : -1
 			if(fixed < 0)
-				to_chat(user, "<span class='warning'>Функция [src] Барометр не смогла отследить какие-либо погодные условия.</span>")
+				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр не смогла отследить какие-либо погодные условия.</span>")
 			else
-				to_chat(user, "<span class='warning'>Функция [src] Барометр показывает, что шторм начнется примерно через [butchertime(fixed)].</span>")
+				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр показывает, что шторм начнется примерно через [butchertime(fixed)].</span>")
 		cooldown = TRUE
 		addtimer(CALLBACK(src, PROC_REF(ping)), cooldown_time)
 
 /obj/item/analyzer/proc/ping()
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, "<span class='notice'>Функция [src] Барометр полностью готова!</span>")
+		to_chat(L, "<span class='notice'>Функция [src.declent_ru(GENITIVE)] Барометр полностью готова!</span>")
 	playsound(src, 'sound/machines/click.ogg', 100)
 	cooldown = FALSE
 
@@ -738,7 +738,7 @@ SLIME SCANNER
 
 	var/list/message = list()
 	if(!silent && isliving(user))
-		user.visible_message("<span class='notice'>[user] использует the analyzer на [target].</span>", "<span class='notice'>Вы используете анализатор на [target].</span>")
+		user.visible_message("<span class='notice'>[user] использует газоанализатор на [target].</span>", "<span class='notice'>Вы используете газоанализатор на [target].</span>")
 	message += "<span class='boldnotice'>Результаты анализа [bicon(target)] [target].</span>"
 
 	if(!print)
@@ -907,13 +907,13 @@ SLIME SCANNER
 
 /obj/item/reagent_scanner/proc/print_report()
 	if(!scanning)
-		usr.visible_message("<span class='warning'>[src] скрипит и распечатывает лист бумаги.</span>")
+		usr.visible_message("<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] скрипит и распечатывает лист бумаги.</span>")
 		playsound(loc, 'sound/goonstation/machines/printer_thermal.ogg', 50, 1)
 		sleep(50)
 
 		var/obj/item/paper/P = new(get_turf(src))
-		P.name = "Отчёт Reagent Scanner: [station_time_timestamp()]"
-		P.info = "<center><b>Reagent Scanner</b></center><br><center>Анализ данных:</center><br><hr><br><b>Обнаруженные химические вещества:</b><br> [datatoprint]<br><hr>"
+		P.name = "Отчёт от [declent_ru(GENITIVE)]: [station_time_timestamp()]"
+		P.info = "<center><b>[capitalize(declent_ru(NOMINATIVE))]</b></center><br><center>Анализ данных:</center><br><hr><br><b>Обнаруженные химические вещества:</b><br> [datatoprint]<br><hr>"
 
 		if(ismob(loc))
 			var/mob/M = loc
@@ -922,7 +922,7 @@ SLIME SCANNER
 			datatoprint = ""
 			scanning = TRUE
 	else
-		to_chat(usr, "<span class='notice'>[src] не содержит логов или уже используется.</span>")
+		to_chat(usr, "<span class='notice'>[capitalize(declent_ru(NOMINATIVE))] не содержит логов или уже используется.</span>")
 
 /obj/item/reagent_scanner/ui_action_click()
 	print_report()
@@ -1067,18 +1067,18 @@ SLIME SCANNER
 		return
 
 	if(!ready)
-		to_chat(user, "<span class='notice'>[src] перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
+		to_chat(user, "<span class='notice'>[capitalize(src.declent_ru(NOMINATIVE))] перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
 		return
 
 	if(user.cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, "<span class='notice'>Вам необходимо подзарядиться, прежде чем использовать [src]</span>")
+		to_chat(user, "<span class='notice'>Вам необходимо подзарядиться, прежде чем использовать [src.declent_ru(NOMINATIVE)]</span>")
 
 /obj/item/bodyanalyzer/proc/mobScan(mob/living/M, mob/user)
 	if(ishuman(M))
 		var/report = generate_printing_text(M, user)
-		user.visible_message("[user] начинает сканирование [M] [src].", "Вы начинаете сканирование [M].")
+		user.visible_message("[user] начинает сканирование [M] [src.declent_ru(INSTRUMENTAL)].", "Вы начинаете сканирование [M].")
 		if(do_after(user, scan_time, target = M))
 			var/obj/item/paper/printout = new
 			printout.info = report
@@ -1098,7 +1098,7 @@ SLIME SCANNER
 			addtimer(VARSET_CALLBACK(src, printing, FALSE), 1.4 SECONDS)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), UPDATE_OVERLAYS), 1.5 SECONDS)
 	else if(iscorgi(M) && M.stat == DEAD)
-		to_chat(user, "<span class='notice'>Вас не покидает вопрос, был ли [M.p_they()] хорошим корги. <b>[src] говорит, что он был лучшим...</b></span>") // :'(
+		to_chat(user, "<span class='notice'>Вас не покидает вопрос, был ли [M.p_they()] хорошим корги. <b>[capitalize(src.declent_ru(NOMINATIVE))] говорит, что он был лучшим...</b></span>") // :'(
 		playsound(loc, 'sound/machines/ping.ogg', 50, 0)
 		ready = FALSE
 		update_icon(UPDATE_ICON_STATE)
@@ -1182,7 +1182,7 @@ SLIME SCANNER
 	dat += "<hr><table border='1'>"
 	dat += "<tr>"
 	dat += "<th>Части тела / Органы</th>"
-	dat += "<th>Ожоговые повреждения</th>"
+	dat += "<th>Термические повреждения</th>"
 	dat += "<th>Повреждения от травм</th>"
 	dat += "<th>Другие раны</th>"
 	dat += "</tr>"
