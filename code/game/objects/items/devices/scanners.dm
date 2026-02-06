@@ -205,7 +205,7 @@ SLIME SCANNER
 			to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние: <font color='red'>Мёртв</font></span>")
 			return
 
-		to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние : [round(M.health / M.maxHealth * 100, 0.1)]%")
+		to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние: [round(M.health / M.maxHealth * 100, 0.1)]%")
 		to_chat(user, "\t Детализация повреждений: <font color='red'>[M.maxHealth - M.health]</font>")
 		return
 
@@ -471,8 +471,8 @@ SLIME SCANNER
 
 /obj/item/robotanalyzer/proc/handle_clumsy(mob/living/user)
 	var/list/msgs = list()
-	user.visible_message("<span class='warning'>[user] анализирует жизненные показатели the floor's!</span>", "<span class='warning'>You stupidly try to analyze the floor's vitals!</span>")
-	msgs += "<span class='notice'>Анализ результатов для the floor:\n\t Общее состояние: Неизвестно</span>"
+	user.visible_message("<span class='warning'>[user] анализирует жизненные показатели пола!</span>", "<span class='warning'>Вы по-глупому пытаетесь проанализировать жизненные показатели пола!</span>")
+	msgs += "<span class='notice'>Анализ результатов для пола:\n\t Общее состояние: Неизвестно</span>"
 	msgs += "<span class='notice'>\t Детализация повреждений: <font color='#FFA500'>[0]</font>/<font color='red'>[0]</font></span>"
 	msgs += "<span class='notice'>Основные: <font color='#FFA500'>Ожоги</font><font color ='red'>/Ушибы</font></span>"
 	msgs += "<span class='notice'>Температура шасси: ???</span>"
@@ -484,7 +484,7 @@ SLIME SCANNER
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return
-	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src.declent_ru(NOMINATIVE)].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [declent_ru(GENITIVE)].</span>")
+	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src.declent_ru(INSTRUMENTAL)].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [src.declent_ru(INSTRUMENTAL)].</span>")
 	machine_scan(user, M)
 	add_fingerprint(user)
 
@@ -500,7 +500,7 @@ SLIME SCANNER
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return
-	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [declent_ru(GENITIVE)].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [declent_ru(GENITIVE)].</span>")
+	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src.declent_ru(INSTRUMENTAL)].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [src.declent_ru(INSTRUMENTAL)].</span>")
 	robot_healthscan(user, M)
 	add_fingerprint(user)
 
@@ -907,13 +907,13 @@ SLIME SCANNER
 
 /obj/item/reagent_scanner/proc/print_report()
 	if(!scanning)
-		usr.visible_message("<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] скрипит и распечатывает лист бумаги.</span>")
+		usr.visible_message("<span class='warning'>[capitalize(src.declent_ru(NOMINATIVE))] скрипит и распечатывает лист бумаги.</span>")
 		playsound(loc, 'sound/goonstation/machines/printer_thermal.ogg', 50, 1)
 		sleep(50)
 
 		var/obj/item/paper/P = new(get_turf(src))
-		P.name = "Отчёт от [declent_ru(GENITIVE)]: [station_time_timestamp()]"
-		P.info = "<center><b>[capitalize(declent_ru(NOMINATIVE))]</b></center><br><center>Анализ данных:</center><br><hr><br><b>Обнаруженные химические вещества:</b><br> [datatoprint]<br><hr>"
+		P.name = "Отчёт от [src.declent_ru(GENITIVE)]: [station_time_timestamp()]"
+		P.info = "<center><b>[capitalize(src.declent_ru(NOMINATIVE))]</b></center><br><center>Анализ данных:</center><br><hr><br><b>Обнаруженные химические вещества:</b><br> [datatoprint]<br><hr>"
 
 		if(ismob(loc))
 			var/mob/M = loc
@@ -922,7 +922,7 @@ SLIME SCANNER
 			datatoprint = ""
 			scanning = TRUE
 	else
-		to_chat(usr, "<span class='notice'>[capitalize(declent_ru(NOMINATIVE))] не содержит логов или уже используется.</span>")
+		to_chat(usr, "<span class='notice'>[capitalize(src.declent_ru(NOMINATIVE))] не содержит логов или уже используется.</span>")
 
 /obj/item/reagent_scanner/ui_action_click()
 	print_report()
