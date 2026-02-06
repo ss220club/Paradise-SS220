@@ -102,7 +102,7 @@ SLIME SCANNER
 				if(!overdosing)
 					overdosing = prob(10)
 
-			msgs += "<span class='notice'>[volume]u [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
+			msgs += "<span class='notice'>[volume]u of [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
@@ -110,7 +110,7 @@ SLIME SCANNER
 			msgs += "<span class='boldnotice'>В субъекте обнаружены следующие реагенты:</span>"
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += "<span class='notice'>[rand(5, 100)]u [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
+				msgs += "<span class='notice'>[rand(5, 100)]u of [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(!has_real_or_fake_reagents)
 		msgs += "<span class='notice'>Субъект не содержит реагентов.</span>"
