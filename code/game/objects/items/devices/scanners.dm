@@ -1203,7 +1203,7 @@ SLIME SCANNER
 		if(istype(e, /obj/item/organ/external/chest) && target.is_lung_ruptured())
 			lung_ruptured = "Разрыв лёгкого:"
 		if(e.status & ORGAN_SPLINTED)
-			splint = "Зашитый:"
+			splint = "Наложена шина:"
 		if(e.status & ORGAN_BROKEN)
 			AN = "[e.broken_description]:"
 		if(e.is_robotic())
