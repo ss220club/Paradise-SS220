@@ -102,7 +102,7 @@ SLIME SCANNER
 				if(!overdosing)
 					overdosing = prob(10)
 
-			msgs += "<span class='notice'>[volume]ю [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
+			msgs += "<span class='notice'>[volume]ед. [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
@@ -110,7 +110,7 @@ SLIME SCANNER
 			msgs += "<span class='boldnotice'>В субъекте обнаружены следующие реагенты:</span>"
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += "<span class='notice'>[rand(5, 100)]ю [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
+				msgs += "<span class='notice'>[rand(5, 100)]ед. [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(!has_real_or_fake_reagents)
 		msgs += "<span class='notice'>Субъект не содержит реагентов.</span>"
@@ -296,7 +296,7 @@ SLIME SCANNER
 	if(H.undergoing_cardiac_arrest())
 		var/datum/organ/heart/heart = H.get_int_organ_datum(ORGAN_DATUM_HEART)
 		if(heart && !(heart.linked_organ.status & ORGAN_DEAD))
-			msgs += "<span class='notice'><font color='red'><b>Сердце пациента остановилось.</b>\nМетод лечения: Электрический шок.</font>"
+			msgs += "<span class='notice'><font color='red'><b>Сердце пациента остановилось.</b>\nМетод лечения: Электрический шок</font>"
 		else if(heart && (heart.linked_organ.status & ORGAN_DEAD))
 			msgs += "<span class='notice'><font color='red'><b>Зафиксирован некроз сердца субъекта.</b></font>"
 		else if(!heart)
@@ -423,7 +423,7 @@ SLIME SCANNER
 		return
 
 	if(!user.unequip(I))
-		to_chat(user, "<span class='warning'>[src.declent_ru(NOMINATIVE)] застрял в вашей руке!!</span>")
+		to_chat(user, "<span class='warning'>[src.declent_ru(NOMINATIVE)] застрял в вашей руке!</span>")
 		return
 
 	to_chat(user, "<span class='notice'>Вы установили улучшение на [src.declent_ru(NOMINATIVE)].</span>")
