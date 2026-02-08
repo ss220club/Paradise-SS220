@@ -102,7 +102,7 @@ SLIME SCANNER
 				if(!overdosing)
 					overdosing = prob(10)
 
-			msgs += "<span class='notice'>[volume]u of [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
+			msgs += "<span class='notice'>[volume]ю [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
@@ -110,7 +110,7 @@ SLIME SCANNER
 			msgs += "<span class='boldnotice'>В субъекте обнаружены следующие реагенты:</span>"
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += "<span class='notice'>[rand(5, 100)]u of [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
+				msgs += "<span class='notice'>[rand(5, 100)]ю [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(!has_real_or_fake_reagents)
 		msgs += "<span class='notice'>Субъект не содержит реагентов.</span>"
@@ -338,7 +338,7 @@ SLIME SCANNER
 		burn_wound = burn_wound || (e.status & ORGAN_BURNT)
 		internal_bleed = internal_bleed || (e.status & ORGAN_INT_BLEEDING)
 	if(broken_bone)
-		msgs += "<span class='warning'>Обнаружен перелом кости. Продвинутый сканер покажет местоположение.</span>"
+		msgs += "<span class='warning'>Обнаружены переломы костей. Продвинутый сканер покажет местоположение.</span>"
 	if(internal_bleed)
 		msgs += "<span class='warning'>Обнаружено внутреннее кровотечение. Продвинутый сканер покажет местоположение.</span>"
 	if(burn_wound)
@@ -443,7 +443,7 @@ SLIME SCANNER
 
 /obj/item/healthupgrade
 	name = "Health Analyzer Upgrade"
-	desc = "Модуль улучшения, который может быть установлен на health analyzer для расширения возможностей."
+	desc = "Модуль улучшения, который может быть установлен на анализатор здоровья для расширения возможностей."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "healthupgrade"
 	w_class = WEIGHT_CLASS_TINY
@@ -471,7 +471,7 @@ SLIME SCANNER
 
 /obj/item/robotanalyzer/proc/handle_clumsy(mob/living/user)
 	var/list/msgs = list()
-	user.visible_message("<span class='warning'>[user] анализирует жизненные показатели пола!</span>", "<span class='warning'>Вы по-глупому пытаетесь проанализировать жизненные показатели пола!</span>")
+	user.visible_message("<span class='warning'>[user] анализирует компоненты пола!</span>", "<span class='warning'>Вы по-глупому пытаетесь проанализировать компоненты пола!</span>")
 	msgs += "<span class='notice'>Анализ результатов для пола:\n\t Общее состояние: Неизвестно</span>"
 	msgs += "<span class='notice'>\t Детализация повреждений: <font color='#FFA500'>[0]</font>/<font color='red'>[0]</font></span>"
 	msgs += "<span class='notice'>Основные: <font color='#FFA500'>Ожоги</font><font color ='red'>/Ушибы</font></span>"
