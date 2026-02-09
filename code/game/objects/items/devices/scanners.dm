@@ -331,10 +331,10 @@ SLIME SCANNER
 		var/limb = e.name
 		if(e.status & ORGAN_BROKEN)
 			if((e.limb_name in list("l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "l_foot", "r_foot")) && !(e.status & ORGAN_SPLINTED))
-				msgs += "<span class='warning'>Обнаружен перелом в [limb]. Рекомендуется наложение шин при транспортировке.</span>"
+				msgs += "<span class='warning'>Обнаружен незафиксированный перелом в [limb]. Рекомендуется наложение шин при транспортировке.</span>"
 			broken_bone = TRUE
 		if(e.has_infected_wound())
-			msgs += "<span class='warning'>Обнаружена инфекция в [limb]. Рекомендуется дезинфекция.</span>"
+			msgs += "<span class='warning'>Обнаружена инфицированная рана в [limb]. Рекомендуется дезинфекция.</span>"
 		burn_wound = burn_wound || (e.status & ORGAN_BURNT)
 		internal_bleed = internal_bleed || (e.status & ORGAN_INT_BLEEDING)
 	if(broken_bone)
