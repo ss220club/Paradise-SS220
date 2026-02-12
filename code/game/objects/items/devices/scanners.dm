@@ -738,7 +738,7 @@ SLIME SCANNER
 
 	var/list/message = list()
 	if(!silent && isliving(user))
-		user.visible_message("<span class='notice'>[user] использует газоанализатор на [target].</span>", "<span class='notice'>Вы используете газоанализатор на [target].</span>")
+		user.visible_message("<span class='notice'>[user] анализирует [target].</span>", "<span class='notice'>Вы используете газоанализатор на [target].</span>")
 	message += "<span class='boldnotice'>Результаты анализа [bicon(target)] [target].</span>"
 
 	if(!print)
