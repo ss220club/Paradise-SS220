@@ -102,7 +102,7 @@ SLIME SCANNER
 				if(!overdosing)
 					overdosing = prob(10)
 
-			msgs += "<span class='notice'>[volume]ед. [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
+			msgs += "<span class='notice'>[volume]ю. [R.name][overdosing ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
@@ -110,7 +110,7 @@ SLIME SCANNER
 			msgs += "<span class='boldnotice'>В субъекте обнаружены следующие реагенты:</span>"
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += "<span class='notice'>[rand(5, 100)]ед. [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
+				msgs += "<span class='notice'>[rand(5, 100)]ю. [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - <span class='boldannounceic'>ПЕРЕДОЗИРОВКА</span>" : ".</span>"]"
 
 	if(!has_real_or_fake_reagents)
 		msgs += "<span class='notice'>Субъект не содержит реагентов.</span>"
@@ -178,8 +178,8 @@ SLIME SCANNER
 		return
 
 	user.visible_message(
-		"<span class='notice'>[user] анализирует жизненные показатели [M].</span>",
-		"<span class='notice'>Вы анализируете жизненные показатели [M].</span>"
+		"<span class='notice'>[user] анализирует жизненные показатели [M.declent_ru(GENITIVE)].</span>",
+		"<span class='notice'>Вы анализируете жизненные показатели [M.declent_ru(GENITIVE)].</span>"
 	)
 	healthscan(user, M, mode, advanced)
 	add_fingerprint(user)
@@ -188,7 +188,7 @@ SLIME SCANNER
 /proc/healthscan(mob/user, mob/living/M, mode = DETAILED_HEALTH_SCAN, advanced = FALSE)
 	var/list/msgs = list()
 
-	var/scanned_name = "[M]"
+	var/scanned_name = "[M.declent_ru(GENITIVE)]"
 
 	var/probably_dead = (M.stat == DEAD)
 
@@ -202,10 +202,10 @@ SLIME SCANNER
 	if(isanimal_or_basicmob(M))
 		// No box here, keep it simple.
 		if(probably_dead)
-			to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние: <font color='red'>Мёртв</font></span>")
+			to_chat(user, "<span class='notice'>Анализ результатов для [M.declent_ru(GENITIVE)]:\nОбщее состояние: <font color='red'>Мёртв</font></span>")
 			return
 
-		to_chat(user, "<span class='notice'>Анализ результатов для [M]:\nОбщее состояние: [round(M.health / M.maxHealth * 100, 0.1)]%")
+		to_chat(user, "<span class='notice'>Анализ результатов для [M.declent_ru(GENITIVE)]:\nОбщее состояние: [round(M.health / M.maxHealth * 100, 0.1)]%")
 		to_chat(user, "\t Детализация повреждений: <font color='red'>[M.maxHealth - M.health]</font>")
 		return
 
@@ -374,11 +374,11 @@ SLIME SCANNER
 			else
 				blood_type = blood_id
 		if(H.blood_volume <= BLOOD_VOLUME_SAFE && H.blood_volume > BLOOD_VOLUME_OKAY)
-			msgs += "<span class='danger'>НИЗКИЙ уровень крови [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>тип: [blood_type]</span>"
+			msgs += "<span class='danger'>НИЗКИЙ уровень крови [blood_percent] %, [blood_volume] сл,</span> <span class='notice'>тип: [blood_type]</span>"
 		else if(H.blood_volume <= BLOOD_VOLUME_OKAY)
-			msgs += "<span class='danger'>КРИТИЧЕСКИЙ уровень крови [blood_percent] %, [blood_volume] cl,</span> <span class='notice'>тип: [blood_type]</span>"
+			msgs += "<span class='danger'>КРИТИЧЕСКИЙ уровень крови [blood_percent] %, [blood_volume] сл,</span> <span class='notice'>тип: [blood_type]</span>"
 		else
-			msgs += "<span class='notice'>Уровень крови [blood_percent] %, [blood_volume] cl, тип: [blood_type]</span>"
+			msgs += "<span class='notice'>Уровень крови [blood_percent] %, [blood_volume] сл, тип: [blood_type]</span>"
 
 	msgs += "<span class='notice'>Температура тела: [round(H.bodytemperature-T0C, 0.01)]&deg;C ([round(H.bodytemperature*1.8-459.67, 0.01)]&deg;F)</span>"
 	msgs += "<span class='notice'>Пульс субъекта: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse()] bpm.</font></span>"
@@ -400,7 +400,7 @@ SLIME SCANNER
 		msgs += "<span class='warning'>Незначительные признаки нестабильности в генах субъекта.</span>"
 
 	if(HAS_TRAIT(H, TRAIT_HUSK))
-		msgs += "<span class='danger'>Субъект стал хаском. Рекомендуется наложить синтплоть.</span>"
+		msgs += "<span class='danger'>Субъект стал хаском. Рекомендуется применение синтплоть.</span>"
 
 	if(H.radiation > RAD_MOB_SAFE)
 		msgs += "<span class='danger'>Субъект облучён.</span>"
@@ -419,14 +419,14 @@ SLIME SCANNER
 		return ..()
 
 	if(advanced)
-		to_chat(user, "<span class='notice'>[src.declent_ru(NOMINATIVE)] уже улучшен.</span>")
+		to_chat(user, "<span class='notice'>[capitalize(src.declent_ru(NOMINATIVE))] уже улучшен.</span>")
 		return
 
 	if(!user.unequip(I))
-		to_chat(user, "<span class='warning'>[src.declent_ru(NOMINATIVE)] застрял в вашей руке!</span>")
+		to_chat(user, "<span class='warning'>[capitalize(src.declent_ru(NOMINATIVE))] застрял в вашей руке!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>Вы установили улучшение на [src.declent_ru(NOMINATIVE)].</span>")
+	to_chat(user, "<span class='notice'>Вы установили улучшение на [src.declent_ru(ACCUSATIVE)].</span>")
 	add_overlay("advanced")
 	playsound(loc, I.usesound, 50, TRUE)
 	advanced = TRUE
@@ -484,23 +484,23 @@ SLIME SCANNER
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return
-	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src.declent_ru(INSTRUMENTAL)].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [src.declent_ru(INSTRUMENTAL)].</span>")
+	user.visible_message("<span class='notice'>[user] анализирует компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)].</span>", "<span class='notice'>Вы анализируете компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)].</span>")
 	machine_scan(user, M)
 	add_fingerprint(user)
 
 /obj/item/robotanalyzer/proc/machine_scan(mob/user, obj/machinery/M)
 	if(M.obj_integrity == M.max_integrity)
-		to_chat(user, "<span class='notice'>[M] полностью работоспособен.</span>")
+		to_chat(user, "<span class='notice'>[M.declent_ru(NOMINATIVE)] полностью работоспособен.</span>")
 		return
-	to_chat(user, "<span class='notice'>Обнаружены структурные повреждения! Общая целостность [M] - [round((M.obj_integrity / M.max_integrity) * 100)]%.</span>")
+	to_chat(user, "<span class='notice'>Обнаружены структурные повреждения! Общая целостность [M.declent_ru(GENITIVE)] - [round((M.obj_integrity / M.max_integrity) * 100)]%.</span>")
 	if(M.stat & BROKEN) // Displays alongside above message. Machines with a "broken" state do not become broken at 0% HP - anything that reaches that point is destroyed
-		to_chat(user, "<span class='warning'>Дополнительный анализ: Обнаружен полный отказ компонента! Требуется полная реконструкция [M] для ремонта.</span>")
+		to_chat(user, "<span class='warning'>Дополнительный анализ: Обнаружен полный отказ компонента! Требуется полная реконструкция [M.declent_ru(GENITIVE)] для ремонта.</span>")
 
 /obj/item/robotanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/user) // Scanning borgs, IPCs/augmented crew, and AIs
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return
-	user.visible_message("<span class='notice'>[user] анализирует компоненты [M] с помощью [src.declent_ru(INSTRUMENTAL)].</span>", "<span class='notice'>Вы анализируете компоненты [M] с помощью [src.declent_ru(INSTRUMENTAL)].</span>")
+	user.visible_message("<span class='notice'>[user] анализирует компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)].</span>", "<span class='notice'>Вы анализируете компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)].</span>")
 	robot_healthscan(user, M)
 	add_fingerprint(user)
 
@@ -521,7 +521,7 @@ SLIME SCANNER
 		if("robot")
 			var/burn = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
 			var/brute = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
-			msgs += "<span class='notice'>Результат анализа для [M]:\n\t Общее состояние: [M.stat == DEAD ? "полностью отключён" : "Работоспособность [M.health]%"]</span>"
+			msgs += "<span class='notice'>Результат анализа для [M.declent_ru(GENITIVE)]:\n\t Общее состояние: [M.stat == DEAD ? "полностью отключён" : "Работоспособность [M.health]%"]</span>"
 			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
 			msgs += "\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
 			if(M.timeofdeath && M.stat == DEAD)
@@ -540,11 +540,11 @@ SLIME SCANNER
 						(org.is_destroyed())	?	"<font color='red'><b>УНИЧТОЖЕН</b></font> "							:"",\
 						(org.electronics_damage > 0)	?	"<font color='#FFA500'>[org.electronics_damage]</font>"	:0,	\
 						(org.brute_damage > 0)	?	"<font color='red'>[org.brute_damage]</font>"							:0,		\
-						(org.toggled)	?	"Переключен на ON"	:	"<font color='red'>Переключен на OFF</font>",\
-						(org.powered)	?	"Питание ON"		:	"<font color='red'>Питание OFF</font>")
+						(org.toggled)	?	"Переключен на ВКЛ"	:	"<font color='red'>Переключен на ВЫКЛ</font>",\
+						(org.powered)	?	"Питание ВКЛ"		:	"<font color='red'>Питание ВЫКЛ</font>")
 				if(LAZYLEN(missing))
 					for(var/datum/robot_component/org in missing)
-						msgs += "<span class='warning'>\t [capitalize(org.name)]: ПОТЕРЯН</span>"
+						msgs += "<span class='warning'>\t [capitalize(org.name).declent_ru(NOMINATIVE)]: ПОТЕРЯН</span>"
 
 			if(H.emagged && prob(5))
 				msgs += "<span class='warning'>\t ОШИБКА: ВНУТРЕННИЕ СИСТЕМЫ СКОМПРОМЕТИРОВАНЫ</span>"
@@ -552,7 +552,7 @@ SLIME SCANNER
 		if("prosthetics")
 			var/mob/living/carbon/human/H = M
 			var/is_ipc = ismachineperson(H)
-			msgs += "<span class='notice'>Анализ результатов для [M]: [is_ipc ? "\n\t Общее состояние: [H.stat == DEAD ? "полностью отключён" : "Работоспособность [H.health]%"]</span><hr>" : "<hr>"]" //for the record im sorry
+			msgs += "<span class='notice'>Анализ результатов для [M.declent_ru(GENITIVE)]: [is_ipc ? "\n\t Общее состояние: [H.stat == DEAD ? "полностью отключён" : "Работоспособность [H.health]%"]</span><hr>" : "<hr>"]" //for the record im sorry
 			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
 			msgs += "<span class='notice'>Внешние протезы:</span>"
 			var/organ_found
@@ -594,7 +594,7 @@ SLIME SCANNER
 			var/mob/living/silicon/ai/A = M
 			var/burn = A.getFireLoss() > 50 	? 	"<b>[A.getFireLoss()]</b>" 		: A.getFireLoss()
 			var/brute = A.getBruteLoss() > 50 	? 	"<b>[A.getBruteLoss()]</b>" 	: A.getBruteLoss()
-			msgs += "<span class='notice'>Анализ результатов для [M]:\n\t Общее состояние: [A.stat == DEAD ? "полностью отключён" : "Работоспособность [A.health]%"]</span>"
+			msgs += "<span class='notice'>Анализ результатов для [M.declent_ru(GENITIVE)]:\n\t Общее состояние: [A.stat == DEAD ? "полностью отключён" : "Работоспособность [A.health]%"]</span>"
 			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
 			msgs += "\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
 
@@ -640,7 +640,7 @@ SLIME SCANNER
 
 /obj/item/analyzer/AltShiftClick(mob/user)
 	show_detailed = !show_detailed
-	to_chat(user, "<span class='notice'>Вы [show_detailed ? "Включаете" : "Выключаете"] режим подробных отчётов.</span>")
+	to_chat(user, "<span class='notice'>Вы [show_detailed ? "включаете" : "выключаете"] режим подробных отчётов.</span>")
 
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
@@ -648,7 +648,7 @@ SLIME SCANNER
 	if(!user.incapacitated() && Adjacent(user))
 
 		if(cooldown)
-			to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр подготавливается.</span>")
+			to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр подготавливается.</span>")
 			return
 
 		var/turf/T = get_turf(user)
@@ -660,7 +660,7 @@ SLIME SCANNER
 		var/datum/weather/ongoing_weather = null
 
 		if(!user_area.outdoors)
-			to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр не будет работать в помещении!</span>")
+			to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр не будет работать в помещении!</span>")
 			return
 
 		for(var/V in SSweather.processing)
@@ -671,26 +671,26 @@ SLIME SCANNER
 
 		if(ongoing_weather)
 			if((ongoing_weather.stage == WEATHER_MAIN_STAGE) || (ongoing_weather.stage == WEATHER_WIND_DOWN_STAGE))
-				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр не может ничего отследить во время шторма. [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "Шторм уже здесь!" : "Шторм прекращается."]</span>")
+				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр не может ничего отследить во время шторма. [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "Шторм уже здесь!" : "Шторм прекращается."]</span>")
 				return
 
 			to_chat(user, "<span class='notice'>Следующий [ongoing_weather] появится в [butchertime(ongoing_weather.next_hit_time - world.time)].</span>")
 			if(ongoing_weather.aesthetic)
-				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр говорит о том, что следующий шторм пройдёт мимо.</span>")
+				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр говорит о том, что следующий шторм пройдёт мимо.</span>")
 		else
 			var/next_hit = SSweather.next_hit_by_zlevel["[T.z]"]
 			var/fixed = next_hit ? next_hit - world.time : -1
 			if(fixed < 0)
-				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр не смогла отследить какие-либо погодные условия.</span>")
+				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр не смогла отследить какие-либо погодные условия.</span>")
 			else
-				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] Барометр показывает, что шторм начнется примерно через [butchertime(fixed)].</span>")
+				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр показывает, что шторм начнется примерно через [butchertime(fixed)].</span>")
 		cooldown = TRUE
 		addtimer(CALLBACK(src, PROC_REF(ping)), cooldown_time)
 
 /obj/item/analyzer/proc/ping()
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, "<span class='notice'>Функция [src.declent_ru(GENITIVE)] Барометр полностью готова!</span>")
+		to_chat(L, "<span class='notice'>Функция [src.declent_ru(GENITIVE)] барометр полностью готова!</span>")
 	playsound(src, 'sound/machines/click.ogg', 100)
 	cooldown = FALSE
 
@@ -738,8 +738,8 @@ SLIME SCANNER
 
 	var/list/message = list()
 	if(!silent && isliving(user))
-		user.visible_message("<span class='notice'>[user] анализирует [target].</span>", "<span class='notice'>Вы используете газоанализатор на [target].</span>")
-	message += "<span class='boldnotice'>Результаты анализа [bicon(target)] [target].</span>"
+		user.visible_message("<span class='notice'>[user] анализирует [target.declent_ru(NOMINATIVE)].</span>", "<span class='notice'>Вы используете газоанализатор на [target.declent_ru(PREPOSITIONAL)].</span>")
+	message += "<span class='boldnotice'>Результаты анализа [bicon(target.declent_ru(GENITIVE))] [target.declent_ru(GENITIVE)].</span>"
 
 	if(!print)
 		return TRUE
@@ -779,11 +779,11 @@ SLIME SCANNER
 				message += "<span class='notice'>Температура: [round(air.temperature()-T0C)] &deg;C ([round(air.temperature())] K)</span>"
 				message += "<span class='notice'>Объём: [round(volume)] Литров</span>"
 				message += "<span class='notice'>Давление: [round(pressure, 0.1)] kPa</span>"
-				message += "<span class='notice'>Теплоемкость: [DisplayJoules(heat_capacity)] / K</span>"
+				message += "<span class='notice'>Теплоёмкость: [DisplayJoules(heat_capacity)] / K</span>"
 				message += "<span class='notice'>Тепловая энергия: [DisplayJoules(thermal_energy)]</span>"
 			else
 				message += "<span class='notice'>[target] без газа!</span>"
-				message += "<span class='notice'>Объём: [round(volume)] Литров</span>" // don't want to change the order volume appears in, suck it
+				message += "<span class='notice'>Объём: [round(volume)] литров</span>" // don't want to change the order volume appears in, suck it
 
 	else// Sum mixtures then present
 		for(var/datum/gas_mixture/air as anything in airs)
@@ -820,11 +820,11 @@ SLIME SCANNER
 			message += "<span class='notice'>Температура: [round(temperature-T0C)] &deg;C ([round(temperature)] K)</span>"
 			message += "<span class='notice'>Объём: [round(volume)] Литров</span>"
 			message += "<span class='notice'>Давление: [round(pressure, 0.1)] kPa</span>"
-			message += "<span class='notice'>Теплоемкость: [DisplayJoules(heat_capacity)] / K</span>"
+			message += "<span class='notice'>Теплоёмкость: [DisplayJoules(heat_capacity)] / K</span>"
 			message += "<span class='notice'>Тепловая энергия: [DisplayJoules(thermal_energy)]</span>"
 		else
 			message += "<span class='notice'>[target] без газа!</span>"
-			message += "<span class='notice'>Объём: [round(volume)] Литров</span>" // don't want to change the order volume appears in, suck it
+			message += "<span class='notice'>Объём: [round(volume)] литров</span>" // don't want to change the order volume appears in, suck it
 
 	if(milla)
 		// Values from milla/src/lib.rs, +1 due to array indexing difference.
@@ -840,8 +840,8 @@ SLIME SCANNER
 			else
 				message += "<span class='notice'>Режим Атмосферы: Неизвестен ([milla[MILLA_INDEX_ATMOS_MODE]]), наберите кодеру.</span>"
 		message += "<span class='notice'>Сверхпроводимость N/E/S/W: [milla[MILLA_INDEX_SUPERCONDUCTIVITY_NORTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_EAST]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_SOUTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_WEST]]</span>"
-		message += "<span class='notice'>Внутренняя теплоемкость Turf: [milla[MILLA_INDEX_INNATE_HEAT_CAPACITY]]</span>"
-		message += "<span class='notice'>Hotspot: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] Литров ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)</span>"
+		message += "<span class='notice'>Внутренняя теплоемкость на полу: [milla[MILLA_INDEX_INNATE_HEAT_CAPACITY]]</span>"
+		message += "<span class='notice'>Горячая точка: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] Литров ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)</span>"
 		message += "<span class='notice'>Ветер: ([round(milla[MILLA_INDEX_WIND_X], 0.001)], [round(milla[MILLA_INDEX_WIND_Y], 0.001)])</span>"
 		message += "<span class='notice'>Топлива сожжено в последний тик: [milla[MILLA_INDEX_FUEL_BURNT]] молей</span>"
 
@@ -894,9 +894,9 @@ SLIME SCANNER
 			datatoprint = dat
 			scanning = FALSE
 		else
-			to_chat(user, "<span class='notice'>В [O] не обнаружено активных химических веществ.</span>")
+			to_chat(user, "<span class='notice'>В [O.declent_ru(PREPOSITIONAL)] не обнаружено активных химических веществ.</span>")
 	else
-		to_chat(user, "<span class='notice'>В [O] не обнаружено важных химических веществ.</span>")
+		to_chat(user, "<span class='notice'>В [O.declent_ru(PREPOSITIONAL)] не обнаружено важных химических веществ.</span>")
 	return
 
 /obj/item/reagent_scanner/adv
@@ -1078,11 +1078,11 @@ SLIME SCANNER
 /obj/item/bodyanalyzer/proc/mobScan(mob/living/M, mob/user)
 	if(ishuman(M))
 		var/report = generate_printing_text(M, user)
-		user.visible_message("[user] начинает сканирование [M] [src.declent_ru(INSTRUMENTAL)].", "Вы начинаете сканирование [M].")
+		user.visible_message("[user] начинает сканирование [M.declent_ru(GENITIVE)] [src.declent_ru(INSTRUMENTAL)].", "Вы начинаете сканирование [M.declent_ru(GENITIVE)].")
 		if(do_after(user, scan_time, target = M))
 			var/obj/item/paper/printout = new
 			printout.info = report
-			printout.name = "Отчёт о сканировании - [M.name]"
+			printout.name = "Отчёт о сканировании - [M.declent_ru(NOMINATIVE)]"
 			playsound(user.loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
 			user.put_in_hands(printout)
 			time_to_use = world.time + scan_cd
@@ -1098,8 +1098,7 @@ SLIME SCANNER
 			addtimer(VARSET_CALLBACK(src, printing, FALSE), 1.4 SECONDS)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), UPDATE_OVERLAYS), 1.5 SECONDS)
 	else if(iscorgi(M) && M.stat == DEAD)
-		to_chat(user, "<span class='notice'>Вас не покидает вопрос, был ли [M.p_they()] хорошим корги. <b>[capitalize(src.declent_ru(NOMINATIVE))] говорит, что он был лучшим...</b></span>") // :'(
-		playsound(loc, 'sound/machines/ping.ogg', 50, 0)
+		to_chat(user, "<span class='notice'>Вас не покидает вопрос, был ли [M.ru_p_they()] хорошим корги. <b>[capitalize(src.declent_ru(NOMINATIVE))] говорит, что он был лучш[genderize_ru(M.gender, "им", "ей", "им", "ими")]...</b></span>") // :'(		playsound(loc, 'sound/machines/ping.ogg', 50, 0)
 		ready = FALSE
 		update_icon(UPDATE_ICON_STATE)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/bodyanalyzer, setReady)), scan_cd)
