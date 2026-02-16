@@ -544,7 +544,7 @@ SLIME SCANNER
 						(org.powered)	?	"Питание ВКЛ"		:	"<font color='red'>Питание ВЫКЛ</font>")
 				if(LAZYLEN(missing))
 					for(var/datum/robot_component/org in missing)
-						msgs += "<span class='warning'>\t [capitalize(org.name).declent_ru(NOMINATIVE)]: ПОТЕРЯН</span>"
+						msgs += "<span class='warning'>\t [capitalize(org.declent_ru(NOMINATIVE))]: ПОТЕРЯН</span>"
 
 			if(H.emagged && prob(5))
 				msgs += "<span class='warning'>\t ОШИБКА: ВНУТРЕННИЕ СИСТЕМЫ СКОМПРОМЕТИРОВАНЫ</span>"
