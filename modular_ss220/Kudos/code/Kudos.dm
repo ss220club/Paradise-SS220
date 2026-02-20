@@ -1,100 +1,68 @@
-/*
-Маркера '___SYSTEM___' и 'SYSTEM_ARCHIVE_DONE' используются в БД что бы пропустить проверку _try_monthly_reset
-и не проводить повторно обнуление каждый раунд первого числа.
-*/
+/datum/kudos
+    var/list/round_votes = list()
+    var/static/list/weight_steps = list(1.0, 0.85, 0.72, 0.61, 0.50, 0.40, 0.32, 0.25, 0.18, 0.10)
 
-SUBSYSTEM_DEF(kudos)
-    name = "Kudos System"
-    flags = SS_NO_FIRE | SS_BACKGROUND
-    init_order = INIT_ORDER_DEFAULT
-    runlevels = RUNLEVEL_GAME
-
-// Синхронизация с БД
-/datum/controller/subsystem/kudos/proc/sync_round_kudos()
-    if(!SSdbcore.IsConnected())
-        return
-    _try_monthly_reset()
-
-    for(var/mob/M in GLOB.player_list)
-        var/client/C = M.client
-        if(!C || !C.ckey)
-            continue
-
-        var/list/received = C.persistent.kudos_received_from
-        if(!received || !length(received))
-            continue
-
-        for(var/giver_ckey in received)
-            _process_kudos(giver_ckey, C.ckey)
-        C.persistent.kudos_received_from.Cut()
-
-//Обнуление
-/datum/controller/subsystem/kudos/proc/_try_monthly_reset(current_month_count)
-	//Если сегодня не первое число, пропускаем проверку
-    if(time2text(world.realtime, "DD") != "01")
+/datum/kudos/proc/update_data(target_ckey, client/C)
+    if(!SSdbcore.IsConnected() || !C || !target_ckey)
         return
 
-    var/today_date = time2text(world.realtime, "YYYY-MM-DD")
-	//Временной маркер
-    var/datum/db_query/Q_check = SSdbcore.NewQuery(
-        "SELECT id FROM kudos_log WHERE giver = '___SYSTEM___' AND receiver = 'SYSTEM_ARCHIVE_DONE' AND DATE(time) = ?",
-        list(today_date)
+    var/from_ckey = C.ckey
+    if(target_ckey == from_ckey)
+        to_chat(C, span_warning("Вы не можете хвалить самого себя."))
+		return
+
+    if(!round_votes[from_ckey])
+        round_votes[from_ckey] = list()
+
+    if(target_ckey in round_votes[from_ckey])
+        to_chat(C, span_warning("Вы уже похвалили этого игрока в этом раунде."))
+        return
+
+    // Считаем, сколько раз giver уже хвалил этого игрока за все время
+    var/datum/db_query/q_count = SSdbcore.NewQuery(
+        "SELECT COUNT(id) FROM kudos_history WHERE giver = '[from_ckey]' AND receiver = '[target_ckey]'"
     )
 
-    if(!Q_check.warn_execute() || Q_check.NextRow())
-        qdel(Q_check)
-        return
-    qdel(Q_check)
-	//Передача значения с текущего месяца на "прошлый"
-    var/datum/db_query/Q_archive = SSdbcore.NewQuery(
-        "UPDATE kudos_unique SET past_month_count = current_month_count, current_month_count = 0, last_update = NOW()",
-		list(current_month_count)
-    )
-	//Установка маркеров
-    if(Q_archive.warn_execute())
-        log_admin("Данные Kudos за месяц успешно архивированы.")
-        var/datum/db_query/Q_mark = SSdbcore.NewQuery(
-            "INSERT INTO kudos_log (giver, receiver, time) VALUES ('___SYSTEM___', 'SYSTEM_ARCHIVE_DONE', NOW())"
-        )
-        Q_mark.warn_execute()
-        qdel(Q_mark)
-
-    qdel(Q_archive)
-
-//Логика выдачи
-/datum/controller/subsystem/kudos/proc/_process_kudos(giver_ckey, receiver_ckey)
-    giver_ckey = ckey(giver_ckey)
-    receiver_ckey = ckey(receiver_ckey)
-	//На случай внезапного абуза
-    if(!giver_ckey || !receiver_ckey || giver_ckey == receiver_ckey)
-        return
-    var/datum/db_query/Q_log = SSdbcore.NewQuery(
-        "INSERT INTO kudos_log (giver, receiver, round_id, time) VALUES (?, ?, ?, NOW())",
-        list(giver_ckey, receiver_ckey, GLOB.round_id)
-    )
-    Q_log.warn_execute()
-    qdel(Q_log)
-    _update_unique_kudos(giver_ckey, receiver_ckey)
-
-//Учёт уникальных
-/datum/controller/subsystem/kudos/proc/_update_unique_kudos(giver_ckey, receiver_ckey, current_month_count)
-    var/datum/db_query/Q_check = SSdbcore.NewQuery(
-        "SELECT id FROM kudos_log WHERE giver = ? AND receiver = ? AND MONTH(time) = MONTH(NOW()) AND YEAR(time) = YEAR(NOW()) AND id != (SELECT LAST_INSERT_ID())",
-        list(giver_ckey, receiver_ckey)
-    )
-
-    if(!Q_check.warn_execute())
-        qdel(Q_check)
+    if(!q_count.Execute())
+        qdel(q_count)
         return
 
-    if(Q_check.NextRow())
-        qdel(Q_check)
-        return
-    qdel(Q_check)
+    var/times_given = 0
+    if(q_count.NextRow())
+        times_given = text2num(q_count.item[1])
+    qdel(q_count)
 
-    var/datum/db_query/Q_inc = SSdbcore.NewQuery(
-        "INSERT INTO kudos_unique (receiver, current_month_count, last_update) VALUES (?, 1, NOW()) ON DUPLICATE KEY UPDATE current_month_count = current_month_count + 1, last_update = NOW()",
-        list(receiver_ckey, current_month_count)
+    // Расчет прогрессивного веса
+    var/weight_index = times_given + 1
+    var/voice_weight = (weight_index <= weight_steps.len) ? weight_steps[weight_index] : weight_steps[weight_steps.len]
+
+    // ИСПРАВЛЕНО: Теперь записываем points в историю
+    var/datum/db_query/q_hist = SSdbcore.NewQuery(
+        "INSERT INTO kudos_history (giver, receiver, points, round_id, timestamp) VALUES ('[from_ckey]', '[target_ckey]', [voice_weight], [GLOB.round_id || 0], NOW())"
     )
-    Q_inc.warn_execute()
-    qdel(Q_inc)
+    q_hist.Execute()
+    qdel(q_hist)
+
+    // ИСПРАВЛЕНО: Обновление общего зачета (Float)
+    var/datum/db_query/q_total = SSdbcore.NewQuery(
+        "INSERT INTO kudos_totals (receiver, total_score) VALUES ('[target_ckey]', [voice_weight]) ON DUPLICATE KEY UPDATE total_score = total_score + [voice_weight]"
+    )
+
+    q_total.Execute()
+    qdel(q_total)
+
+    round_votes[from_ckey] += target_ckey
+    to_chat(C, span_notice("Вы успешно похвалили игрока."))
+
+/datum/kudos/proc/check_monthly_reset()
+    var/current_month = time2text(world.realtime, "MM-YYYY")
+    var/current_day = time2text(world.realtime, "DD")
+
+    if(current_day != "01")
+        return
+
+    var/datum/db_query/q_check = SSdbcore.NewQuery("SELECT id FROM kudos_archive WHERE month_mark = '[current_month]' LIMIT 1")
+
+    if(!q_check.Execute())
+        qdel(q_check)
+        return

@@ -1519,6 +1519,9 @@ GLOBAL_LIST_INIT(holy_areas, typecacheof(list(
 	if(!client || !target.client)
 		return
 
+	var/datum/kudos/K = new /datum/kudos()
+	K.update_data(target.ckey, src.client)
+
 	target.client.persistent.kudos_received_from |= ckey
 
 /mob/living/simple_animal/relaymove(mob/living/user, direction)

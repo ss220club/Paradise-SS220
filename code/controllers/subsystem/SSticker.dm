@@ -697,7 +697,6 @@ SUBSYSTEM_DEF(ticker)
 
 	// Seal the blackbox, stop collecting info
 	SSblackbox.Seal()
-	SSkudos.sync_round_kudos()
 	SSdbcore.SetRoundEnd()
 
 	return TRUE
