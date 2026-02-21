@@ -6,6 +6,7 @@ SUBSYSTEM_DEF(kudos)
 	var/static/list/weight_steps = list(1.0, 0.85, 0.72, 0.61, 0.50, 0.40, 0.32, 0.25, 0.18, 0.10)
 
 /datum/controller/subsystem/kudos/Initialize()
+	round_votes.Cut()
 	if(!SSdbcore.IsConnected())
 		return
 	check_monthly_reset()
@@ -31,7 +32,7 @@ SUBSYSTEM_DEF(kudos)
 		list("giver" = from_ckey, "receiver" = target_ckey)
 	)
 
-	if(!q_count.Execute())
+	if(!q_count.Execute(async = FALSE))
 		qdel(q_count)
 		return
 
@@ -89,7 +90,7 @@ SUBSYSTEM_DEF(kudos)
 	qdel(q_check)
 
 	var/datum/db_query/q_mark = SSdbcore.NewQuery("INSERT INTO kudos_archive (receiver, total_score, month_mark) SELECT receiver, total_score, :month_mark FROM kudos_totals", list("month_mark" = day_month_mark))
-	if(!q_mark.Execute())
+	if(!q_mark.Execute(async = FALSE))
 		qdel(q_mark)
 		return
 	qdel(q_mark)
