@@ -9,7 +9,6 @@ SUBSYSTEM_DEF(kudos)
 	if(!SSdbcore.IsConnected())
 		return
 	check_monthly_reset()
-	log_debug("OK")
 
 /datum/controller/subsystem/kudos/proc/update_data(target_ckey, client/C)
 	if(!SSdbcore.IsConnected() || !C || !target_ckey)
