@@ -755,7 +755,7 @@ CREATE TABLE `kudos_history` (
 
 CREATE TABLE `kudos_totals` (
     `receiver` VARCHAR(32) PRIMARY KEY,
-    `total_score` DECIMAL(10, 2) DEFAULT 0.00,
+    `total_score` DECIMAL(10, 2) DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `kudos_archive` (
