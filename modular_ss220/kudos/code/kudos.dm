@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(kudos)
 		list("giver" = from_ckey, "receiver" = target_ckey)
 	)
 
-	if(!q_count.Execute(async = FALSE))
+	if(!q_count.Execute())
 		qdel(q_count)
 		return
 
@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(kudos)
 	qdel(q_check)
 
 	var/datum/db_query/q_mark = SSdbcore.NewQuery("INSERT INTO kudos_archive (receiver, total_score, month_mark) SELECT receiver, total_score, :month_mark FROM kudos_totals", list("month_mark" = day_month_mark))
-	if(!q_mark.Execute(async = FALSE))
+	if(!q_mark.Execute())
 		qdel(q_mark)
 		return
 	qdel(q_mark)
