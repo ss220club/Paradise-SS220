@@ -4,9 +4,9 @@
 	desc = "An advanced multi-purpose medical pen containing a powerful cocktail of high-end reagents."
 	icon = 'modular_ss220/objects/icons/luxpen.dmi'
 	icon_state = "luxpen"
-	volume = 55
-	amount_per_transfer_from_this = 55
-	list_reagents = list("lavaland_extract" = 3, "weak_omnizine" = 5, "omnizine" = 5, "bicaridine" = 5, "kelotane" = 5, "menthol" = 5, "sal_acid" = 5, "teporone" = 8, "salbutamol" = 8, "epinephrine" = 6)
+	volume = 40
+	amount_per_transfer_from_this = 40
+	list_reagents = list("adv_lava_extract" = 10, "teporone" = 10, "salbutamol" = 10, "epinephrine" = 10)
 
 /obj/item/reagent_containers/hypospray/autoinjector/lux/apply(mob/living/M, mob/user)
 	if(!reagents.total_volume)
