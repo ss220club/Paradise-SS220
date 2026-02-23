@@ -6,7 +6,7 @@
 	icon_state = "luxpen"
 	volume = 40
 	amount_per_transfer_from_this = 40
-	list_reagents = list("adv_lava_extract" = 10, "teporone" = 10, "salbutamol" = 10, "epinephrine" = 10)
+	list_reagents = list("adv_lava_extract" = 10, "teporone" = 10, "salbutamol" = 10, "hydrocodone" = 10)
 
 /obj/item/reagent_containers/hypospray/autoinjector/lux/apply(mob/living/M, mob/user)
 	if(!reagents.total_volume)
@@ -21,6 +21,9 @@
 
 	var/area/A = get_area(T)
 	if(istype(A, /area/lavaland))
+		delay = 0
+
+	if(lavaland_equipment_pressure_check(T))
 		delay = 0
 
 	if(delay)
