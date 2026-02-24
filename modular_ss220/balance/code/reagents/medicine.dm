@@ -26,6 +26,9 @@
 	. = ..()
 	user.throw_alert("penthrite", /atom/movable/screen/alert/adv_lava_extract)
 
+	if(user.client)
+		user.playsound_local(user, 'sound/effects/heartbeat.ogg', 100, TRUE, channel = CHANNEL_HEARTBEAT)
+
 /datum/reagent/medicine/adv_lava_extract/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustOxyLoss(-3.5, FALSE)
@@ -62,3 +65,6 @@
 /datum/reagent/medicine/adv_lava_extract/on_mob_delete(mob/living/carbon/human/user)
 	. = ..()
 	user.clear_alert("penthrite")
+
+	if(user.client)
+		user.stop_sound_channel(CHANNEL_HEARTBEAT)
