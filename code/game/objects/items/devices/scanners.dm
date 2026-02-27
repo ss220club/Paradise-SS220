@@ -423,7 +423,7 @@ SLIME SCANNER
 		return
 
 	if(!user.unequip(I))
-		to_chat(user, "<span class='warning'>[capitalize(src.declent_ru(NOMINATIVE))] застрял в вашей руке!</span>")
+		to_chat(user, "<span class='warning'>[src.declent_ru(NOMINATIVE)] застрял в вашей руке!</span>")
 		return
 
 	to_chat(user, "<span class='notice'>Вы установили улучшение на [src.declent_ru(ACCUSATIVE)].</span>")
@@ -623,8 +623,8 @@ SLIME SCANNER
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click по [src.declent_ru(DATIVE)] чтобы активировать функцию Барометра.</span>"
-	. += "<span class='notice'>Alt-Shift-click по [src.declent_ru(DATIVE)] для включения или выключения подробных отчетов.</span>"
+	. += "<span class='notice'>Alt-ЛКМ по [src.declent_ru(DATIVE)], чтобы активировать функцию Барометра.</span>"
+	. += "<span class='notice'>Alt-Shift-ЛКМ по [src.declent_ru(DATIVE)] для включения или выключения подробных отчетов.</span>"
 
 /obj/item/analyzer/attack_self__legacy__attackchain(mob/user as mob)
 
@@ -648,7 +648,7 @@ SLIME SCANNER
 	if(!user.incapacitated() && Adjacent(user))
 
 		if(cooldown)
-			to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр подготавливается.</span>")
+			to_chat(user, "<span class='warning'>Функция барометра [src.declent_ru(GENITIVE)] подготавливается.</span>")
 			return
 
 		var/turf/T = get_turf(user)
@@ -660,7 +660,7 @@ SLIME SCANNER
 		var/datum/weather/ongoing_weather = null
 
 		if(!user_area.outdoors)
-			to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр не будет работать в помещении!</span>")
+			to_chat(user, "<span class='warning'>Функция барометра [src.declent_ru(GENITIVE)] не будет работать в помещении!</span>")
 			return
 
 		for(var/V in SSweather.processing)
@@ -671,26 +671,26 @@ SLIME SCANNER
 
 		if(ongoing_weather)
 			if((ongoing_weather.stage == WEATHER_MAIN_STAGE) || (ongoing_weather.stage == WEATHER_WIND_DOWN_STAGE))
-				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр не может ничего отследить во время шторма. [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "Шторм уже здесь!" : "Шторм прекращается."]</span>")
+				to_chat(user, "<span class='warning'>Функция барометра [src.declent_ru(GENITIVE)] не может ничего отследить во время шторма. [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "Шторм уже здесь!" : "Шторм прекращается."]</span>")
 				return
 
 			to_chat(user, "<span class='notice'>Следующий [ongoing_weather] появится в [butchertime(ongoing_weather.next_hit_time - world.time)].</span>")
 			if(ongoing_weather.aesthetic)
-				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр говорит о том, что следующий шторм пройдёт мимо.</span>")
+				to_chat(user, "<span class='warning'>Функция барометра [src.declent_ru(GENITIVE)] говорит о том, что следующий шторм пройдёт мимо.</span>")
 		else
 			var/next_hit = SSweather.next_hit_by_zlevel["[T.z]"]
 			var/fixed = next_hit ? next_hit - world.time : -1
 			if(fixed < 0)
-				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр не смогла отследить какие-либо погодные условия.</span>")
+				to_chat(user, "<span class='warning'>Функция барометра [src.declent_ru(GENITIVE)] не смогла отследить какие-либо погодные условия.</span>")
 			else
-				to_chat(user, "<span class='warning'>Функция [src.declent_ru(GENITIVE)] барометр показывает, что шторм начнется примерно через [butchertime(fixed)].</span>")
+				to_chat(user, "<span class='warning'>Функция барометра [src.declent_ru(GENITIVE)] показывает, что шторм начнется примерно через [butchertime(fixed)].</span>")
 		cooldown = TRUE
 		addtimer(CALLBACK(src, PROC_REF(ping)), cooldown_time)
 
 /obj/item/analyzer/proc/ping()
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, "<span class='notice'>Функция [src.declent_ru(GENITIVE)] барометр полностью готова!</span>")
+		to_chat(L, "<span class='notice'>Функция барометра [src.declent_ru(GENITIVE)] полностью готова!</span>")
 	playsound(src, 'sound/machines/click.ogg', 100)
 	cooldown = FALSE
 
@@ -777,7 +777,7 @@ SLIME SCANNER
 				if(air.agent_b() && (milla_turf_details || air.agent_b() / total_moles > 0.01))
 					message += "  <span class='agent_b'>Agent B: [round(air.agent_b(), 0.01)] молей ([round(air.agent_b() / total_moles * 100, 0.01)] %)</span>"
 				message += "<span class='notice'>Температура: [round(air.temperature()-T0C)] &deg;C ([round(air.temperature())] K)</span>"
-				message += "<span class='notice'>Объём: [round(volume)] Литров</span>"
+				message += "<span class='notice'>Объём: [round(volume)] литров</span>"
 				message += "<span class='notice'>Давление: [round(pressure, 0.1)] kPa</span>"
 				message += "<span class='notice'>Теплоёмкость: [DisplayJoules(heat_capacity)] / K</span>"
 				message += "<span class='notice'>Тепловая энергия: [DisplayJoules(thermal_energy)]</span>"
@@ -818,7 +818,7 @@ SLIME SCANNER
 			if(agent_b && (milla_turf_details || agent_b / total_moles > 0.01))
 				message += "  <span class='agent_b'>Agent B: [round(agent_b, 0.01)] молей ([round(agent_b / total_moles * 100, 0.01)] %)</span>"
 			message += "<span class='notice'>Температура: [round(temperature-T0C)] &deg;C ([round(temperature)] K)</span>"
-			message += "<span class='notice'>Объём: [round(volume)] Литров</span>"
+			message += "<span class='notice'>Объём: [round(volume)] литров</span>"
 			message += "<span class='notice'>Давление: [round(pressure, 0.1)] kPa</span>"
 			message += "<span class='notice'>Теплоёмкость: [DisplayJoules(heat_capacity)] / K</span>"
 			message += "<span class='notice'>Тепловая энергия: [DisplayJoules(thermal_energy)]</span>"
@@ -832,16 +832,16 @@ SLIME SCANNER
 		switch(milla[MILLA_INDEX_ATMOS_MODE])
 			// These are enum values, so they don't get increased.
 			if(0)
-				message += "<span class='notice'>Режим Атмосферы: Космос</span>"
+				message += "<span class='notice'>Режим Атмосферы: космос</span>"
 			if(1)
-				message += "<span class='notice'>Режим Атмосферы: Герметичный</span>"
+				message += "<span class='notice'>Режим Атмосферы: герметичный</span>"
 			if(2)
-				message += "<span class='notice'>Режим Атмосферы: Подвержен воздействию окружающей среды (ID: [milla[MILLA_INDEX_ENVIRONMENT_ID]])</span>"
+				message += "<span class='notice'>Режим Атмосферы: подвержен воздействию окружающей среды (ID: [milla[MILLA_INDEX_ENVIRONMENT_ID]])</span>"
 			else
-				message += "<span class='notice'>Режим Атмосферы: Неизвестен ([milla[MILLA_INDEX_ATMOS_MODE]]), наберите кодеру.</span>"
+				message += "<span class='notice'>Режим Атмосферы: неизвестен ([milla[MILLA_INDEX_ATMOS_MODE]]), наберите кодеру.</span>"
 		message += "<span class='notice'>Сверхпроводимость N/E/S/W: [milla[MILLA_INDEX_SUPERCONDUCTIVITY_NORTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_EAST]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_SOUTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_WEST]]</span>"
 		message += "<span class='notice'>Внутренняя теплоемкость на полу: [milla[MILLA_INDEX_INNATE_HEAT_CAPACITY]]</span>"
-		message += "<span class='notice'>Горячая точка: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] Литров ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)</span>"
+		message += "<span class='notice'>Горячая точка: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] литров ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)</span>"
 		message += "<span class='notice'>Ветер: ([round(milla[MILLA_INDEX_WIND_X], 0.001)], [round(milla[MILLA_INDEX_WIND_Y], 0.001)])</span>"
 		message += "<span class='notice'>Топлива сожжено в последний тик: [milla[MILLA_INDEX_FUEL_BURNT]] молей</span>"
 
@@ -1014,7 +1014,7 @@ SLIME SCANNER
 
 /obj/item/bodyanalyzer/borg
 	name = "cyborg body analyzer"
-	desc = "Сканируйте все тело, чтобы подготовиться к полевой операции. При каждом сканировании расходуется энергия аккумулятора."
+	desc = "Сканируйте всё тело, чтобы подготовиться к полевой операции. При каждом сканировании расходуется энергия аккумулятора."
 
 /obj/item/bodyanalyzer/borg/syndicate
 	scan_cd = 20 SECONDS
@@ -1073,7 +1073,7 @@ SLIME SCANNER
 	if(user.cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, "<span class='notice'>Вам необходимо подзарядиться, прежде чем использовать [src.declent_ru(NOMINATIVE)]</span>")
+		to_chat(user, "<span class='notice'>Вам необходимо подзарядиться, прежде чем использовать [src.declent_ru(ACCUSATIVE)]</span>")
 
 /obj/item/bodyanalyzer/proc/mobScan(mob/living/M, mob/user)
 	if(ishuman(M))
@@ -1134,25 +1134,25 @@ SLIME SCANNER
 
 	var/extra_font = null
 	extra_font = (target.getBruteLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Тяжесть повреждений от травм %: [target.getBruteLoss()]</font><br>"
+	dat += "[extra_font]\t-Тяжесть ушибов %: [target.getBruteLoss()]</font><br>"
 
 	extra_font = (target.getOxyLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Степень гипоксии %: [target.getOxyLoss()]</font><br>"
+	dat += "[extra_font]\t-Степень удушья %: [target.getOxyLoss()]</font><br>"
 
 	extra_font = (target.getToxLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\t-Уровень токсинов %: [target.getToxLoss()]</font><br>"
 
 	extra_font = (target.getFireLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Тяжесть ожоговых повреждений %: [target.getFireLoss()]</font><br>"
+	dat += "[extra_font]\t-Тяжесть ожогов %: [target.getFireLoss()]</font><br>"
 
 	extra_font = (target.radiation < 10 ?"<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\tУровень радиационного облучения %: [target.radiation]</font><br>"
 
 	extra_font = (target.getCloneLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tСтепень генетического повреждения тканей %: [target.getCloneLoss()]<br>"
+	dat += "[extra_font]\tГенетическое повреждение тканей %: [target.getCloneLoss()]<br>"
 
 	extra_font = (target.getBrainLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tТяжесть повреждений мозга %: [target.getBrainLoss()]<br>"
+	dat += "[extra_font]\tПриблизительное повреждение мозга %: [target.getBrainLoss()]<br>"
 
 	dat += "Описание паралича %: [target.IsParalyzed()] (осталось [round(target.AmountParalyzed() / 10)] секунд!)<br>"
 	dat += "Температура тела: [target.bodytemperature-T0C]&deg;C ([target.bodytemperature*1.8-459.67]&deg;F)<br>"
@@ -1232,12 +1232,12 @@ SLIME SCANNER
 		if(unknown_body || e.hidden)
 			imp += "Обнаружено инородное тело:"
 		if(!AN && !open && !infected && !imp)
-			AN = "Нет:"
+			AN = "Отсутствует:"
 		dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured]</td>"
 		dat += "</tr>"
 	for(var/obj/item/organ/internal/i in target.internal_organs)
 		var/mech = i.desc
-		var/infection = "Нет"
+		var/infection = "Отсутствует"
 		switch(i.germ_level)
 			if(1 to INFECTION_LEVEL_ONE + 200)
 				infection = "Легкая инфекция:"
