@@ -87,7 +87,7 @@ JOIN temp_all_species s
 ON p.species_whitelist IS NOT NULL
     AND p.species_whitelist != ''
     AND p.species_whitelist != '[]'
-    AND NOT JSON_CONTAINS(p.species_whitelist, JSON_QUOTE(s.species_name))
+    AND NOT JSON_CONTAINS(p.species_whitelist, JSON_QUOTE(s.species_name));
 
 # Clean up
 DROP TEMPORARY TABLE temp_all_species;

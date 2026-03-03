@@ -31,7 +31,3 @@
 		return FALSE
 
 	return TRUE
-
-// SS220 EDIT START - Species bans
-
-// SS220 EDIT END

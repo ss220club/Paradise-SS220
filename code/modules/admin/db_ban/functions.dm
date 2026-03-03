@@ -52,6 +52,7 @@
 			announce_in_discord = TRUE
 			blockselfban = 1
 			kickbannedckey = 1
+		// SS220 EDIT START - Species bans
 		if(BANTYPE_SPECIES_PERMA)
 			bantype_str = "SPECIES_PERMABAN"
 			duration = -1
@@ -59,6 +60,7 @@
 		if(BANTYPE_SPECIES_TEMP)
 			bantype_str = "SPECIES_TEMPBAN"
 			bantype_pass = 1
+		// SS220 EDIT END
 
 	if(!bantype_pass) return
 	if(!istext(reason)) return

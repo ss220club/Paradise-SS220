@@ -29,7 +29,6 @@
 	qdel(query)
 	return is_banned
 
-
 /// Lists all active species bans for src client.
 /client/proc/display_species_bans()
 	sbh.reload_species_bans(src)
