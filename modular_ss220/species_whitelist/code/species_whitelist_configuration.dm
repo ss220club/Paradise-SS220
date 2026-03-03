@@ -9,6 +9,9 @@
 
 /datum/configuration_section/species_whitelist_configuration
 	var/species_whitelist_enabled = FALSE
+	/// List of species that are banned by default for new players
+	var/list/default_species_bans = list()
 
 /datum/configuration_section/species_whitelist_configuration/load_data(list/data)
 	CONFIG_LOAD_BOOL(species_whitelist_enabled, data["species_whitelist_enabled"])
+	CONFIG_LOAD_LIST(default_species_bans, data["default_species_bans"])

@@ -69,11 +69,11 @@ SELECT
     p.ckey as ckey,
     '' as computerid,
     '' as ip,
-    'AutoMigration' as a_ckey,
+    'System' as a_ckey,
     '' as a_computerid,
     '' as a_ip,
     '' as who,
-    'AutoMigration' as adminwho,
+    'System' as adminwho,
     NULL as edits,
     NULL as unbanned,
     NULL as unbanned_datetime,
@@ -88,7 +88,6 @@ ON p.species_whitelist IS NOT NULL
     AND p.species_whitelist != ''
     AND p.species_whitelist != '[]'
     AND NOT JSON_CONTAINS(p.species_whitelist, JSON_QUOTE(s.species_name))
-	AND s.species_name != 'Serpentid'; -- Allow for everyone no matter what
 
 # Clean up
 DROP TEMPORARY TABLE temp_all_species;

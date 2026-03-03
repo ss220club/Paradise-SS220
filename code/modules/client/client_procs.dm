@@ -635,6 +635,10 @@
 		// This is their first connection instance, so TRUE here to notify admins
 		// This needs to happen here to ensure they actually have a row to update
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/client, get_byond_account_date), TRUE) // Async to avoid other procs in the client chain being delayed by a web request
+		// SS220 EDIT START - Species bans
+		// Apply default species bans for new players
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(apply_default_species_bans), ckey)
+		// SS220 EDIT END
 
 	// Log player connections to DB
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(log_connection), ckey, address, computer_id, CONNECTION_TYPE_ESTABLISHED)
