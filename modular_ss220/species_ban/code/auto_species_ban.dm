@@ -1,13 +1,13 @@
 /// Apply default species bans to a new player
 /proc/apply_default_species_bans(ckey)
-	if(!GLOB.configuration.species_whitelist.species_whitelist_enabled)
+	if(!GLOB.configuration.species_ban.species_bans_enabled)
 		return
 
 	if(!SSdbcore.IsConnected())
 		log_debug("AutoBan: Database not connected, skipping default species bans for [ckey]")
 		return
 
-	var/list/default_bans = GLOB.configuration.species_whitelist.default_species_bans
+	var/list/default_bans = GLOB.configuration.species_ban.default_species_bans
 	if(!length(default_bans))
 		return
 

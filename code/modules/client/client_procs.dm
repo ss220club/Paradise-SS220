@@ -458,9 +458,11 @@
 	// Tell client about their connection
 	to_chat(src, "<span class='notice'>You are currently connected [prefs.server_region ? "via the <b>[prefs.server_region]</b> relay" : "directly"] to Paradise.</span>")
 	to_chat(src, "<span class='notice'>You can change this using the <code>Change Region</code> verb in the OOC tab, as selecting a region closer to you may reduce latency.</span>")
-	display_job_bans(TRUE)
 	// SS220 EDIT START - Species bans
-	display_species_bans()
+	jbh.reload_jobbans(src)
+	sbh.reload_species_bans(src)
+	display_job_bans(TRUE)
+	display_species_bans(TRUE)
 	// SS220 EDIT END
 
 /client/proc/is_connecting_from_localhost()
