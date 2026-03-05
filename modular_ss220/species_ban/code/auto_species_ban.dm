@@ -7,8 +7,8 @@
 		log_debug("AutoBan: Database not connected, skipping default species bans for [ckey]")
 		return
 
-	var/list/default_bans = GLOB.configuration.species_ban.default_species_bans
-	if(!length(default_bans))
+	var/list/default_species_bans = GLOB.configuration.species_ban.default_species_bans
+	if(!length(default_species_bans))
 		return
 
 	var/player_exists = FALSE
@@ -37,14 +37,11 @@
 		else
 			who += ", [C]"
 
-	var/adminwho = ""
+	var/adminwho = "@system"
 	for(var/client/C in GLOB.admins)
-		if(!adminwho)
-			adminwho = "[C]"
-		else
-			adminwho += ", [C]"
+		adminwho += ", [C]"
 
-	for(var/species_name in default_bans)
+	for(var/species_name in default_species_bans)
 		if(!(species_name in GLOB.all_species))
 			log_debug("AutoBan: Invalid species [species_name] in default_species_bans config")
 			continue
@@ -61,7 +58,7 @@
 			"ckey" = ckey,
 			"computerid" = "",
 			"ip" = "",
-			"a_ckey" = "System",
+			"a_ckey" = "@system",
 			"a_computerid" = "",
 			"a_ip" = world.internet_address,
 			"who" = who,

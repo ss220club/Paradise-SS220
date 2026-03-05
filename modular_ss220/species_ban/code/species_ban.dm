@@ -32,7 +32,7 @@
 /// Lists all active species bans for src client.
 /client/proc/display_species_bans(from_client_connection = FALSE)
 	if(!from_client_connection)
-		jbh.reload_jobbans(src)
+		sbh.reload_species_bans(src)
 
 	if(!length(sbh.species_bans))
 		if(!from_client_connection)
@@ -40,10 +40,11 @@
 		return
 
 	var/list/messages = list()
+	var/list/default_species_bans = GLOB.configuration.species_ban.default_species_bans
 
 	for(var/species in sbh.species_bans)
 		var/datum/species_ban/ban = sbh.species_bans[species]
-		if(from_client_connection && ban.a_ckey && ban.a_ckey == "System") // SQL\updates220\64.220.8-64.220.9.sql
+		if(from_client_connection && (ban.species in default_species_bans) && ban.a_ckey == "@system") // SQL\updates220\64.220.8-64.220.9.sql
 			continue
 		switch(ban.bantype)
 			if("SPECIES_PERMABAN")
