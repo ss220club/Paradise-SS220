@@ -14,7 +14,7 @@
 		return
 
 	var/turf/T = get_turf(user)
-	var/delay = 50 // 5  SECONDS
+	var/delay = 100 // 10  SECONDS
 
 	if(isspaceturf(T))
 		delay = 0
