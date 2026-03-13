@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/hypospray/autoinjector/lux //Является модулем
 
-	name = "lux medipen"
-	desc = "An advanced multi-purpose medical pen containing a powerful cocktail of high-end reagents."
+	name = "Люкс медипен"
+	desc = "Продвинутая версия survival medipen, содержащая высококачественные реагенты *WARNING не использовать больше двух медипенов одновременно, возможен риск остановки сердца*"
 	icon = 'modular_ss220/objects/icons/luxpen.dmi'
 	icon_state = "luxpen"
 	volume = 40
