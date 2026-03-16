@@ -38,9 +38,14 @@
 	if(response.errored)
 		CRASH("AI failed to respond with code: [response.status_code]")
 
-	response = json_decode(response.body)
-	var/ai_response = response["choices"][1]["message"]["content"]
+	var/list/decoded = json_decode(response.body)
+	var/ai_response = "No response"
+	if(decoded && decoded["choices"] && decoded["choices"][1] && decoded["choices"][1]["message"] && decoded["choices"][1]["message"]["content"])
+		ai_response = decoded["choices"][1]["message"]["content"]
+
 	var/datum/ticket/T = allTickets[N]
+	if(!istype(T, /datum/ticket))
+		return
 
 	to_chat_safe(returnClient(N), "<span class='[span_class]'>AI is autoresponding with:<span/><span class='adminticketalt'> [ai_response] </span>")
 	message_staff("AI autoresponded with: [ai_response]")
