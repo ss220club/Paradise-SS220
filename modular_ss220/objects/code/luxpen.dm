@@ -1,7 +1,9 @@
+#define INJECTION_TIME 10 SECONDS
+
 /obj/item/reagent_containers/hypospray/autoinjector/lux //Является модулем
 
 	name = "Люкс медипен"
-	desc = "Продвинутая версия survival medipen, содержащая высококачественные реагенты *WARNING не использовать больше двух медипенов одновременно, возможен риск остановки сердца*"
+	desc = "Продвинутая версия survival medipen, содержащая высококачественные реагенты. Из-за давления внутри медипена рекомендуется использовать в среде с пониженым давлением  *WARNING не использовать больше двух медипенов одновременно, возможен риск остановки сердца*"
 	icon = 'modular_ss220/objects/icons/luxpen.dmi'
 	icon_state = "luxpen"
 	volume = 40
@@ -14,7 +16,7 @@
 		return
 
 	var/turf/T = get_turf(user)
-	var/delay = 100 // 10  SECONDS
+	var/delay = INJECTION_TIME
 
 	if(isspaceturf(T))
 		delay = 0
@@ -34,3 +36,5 @@
 		user.visible_message("<span class='notice'>[user] instantly injects [M] with [src]!</span>")
 
 	return ..()
+
+#undef INJECTION_TIME

@@ -27,7 +27,7 @@
 	user.throw_alert("penthrite", /atom/movable/screen/alert/adv_lava_extract)
 
 	if(user.client)
-		user.playsound_local(user, 'sound/effects/heartbeat.ogg', 100, TRUE, channel = CHANNEL_HEARTBEAT)
+		user.playsound_local(user, 'sound/effects/heartbeat.ogg', 100, TRUE)
 
 /datum/reagent/medicine/adv_lava_extract/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
@@ -49,14 +49,12 @@
 
 /datum/reagent/medicine/adv_lava_extract/overdose_process(mob/living/M, severity)
 	var/update_flags = STATUS_UPDATE_NONE
-	update_flags |= M.adjustOxyLoss(4, FALSE)
-	update_flags |= M.adjustToxLoss(3, FALSE)
-	update_flags |= M.adjustBruteLoss(5, FALSE)
-	update_flags |= M.adjustFireLoss(5, FALSE)
-	update_flags |= M.adjustStaminaLoss(10, FALSE)
-	if(M.getFireLoss())
-		update_flags |= M.adjustFireLoss(5, FALSE) //It only makes existing burns worse
-	if(ishuman(M) && prob(7))
+	update_flags |= M.adjustOxyLoss(5, FALSE)
+	update_flags |= M.adjustToxLoss(4, FALSE)
+	update_flags |= M.adjustBruteLoss(8, FALSE)
+	update_flags |= M.adjustFireLoss(8, FALSE)
+	update_flags |= M.adjustStaminaLoss(25, FALSE)
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.undergoing_cardiac_arrest())
 			H.set_heartattack(TRUE)
