@@ -10,7 +10,7 @@
 #define ASSIGNMENT_CHEMIST "Chemist"
 #define ASSIGNMENT_CARGO "Cargo Bay"
 
-GLOBAL_LIST_INIT(severity_to_string, alist(EVENT_LEVEL_MUNDANE = "Mundane", EVENT_LEVEL_MODERATE = "Moderate", EVENT_LEVEL_MAJOR = "Major"))
+GLOBAL_LIST_INIT(severity_to_string, list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT_LEVEL_MODERATE = "Moderate", EVENT_LEVEL_MAJOR = "Major"))
 GLOBAL_LIST_EMPTY(event_last_fired)
 
 /datum/event_container

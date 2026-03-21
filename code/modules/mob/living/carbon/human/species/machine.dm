@@ -79,13 +79,10 @@
 	..()
 	var/datum/action/innate/change_monitor/monitor = new()
 	monitor.Grant(H)
-	for(var/hud_key, hud in GLOB.huds)
-		if(istype(hud, /datum/atom_hud/data/diagnostic))
-			var/datum/atom_hud/data/diagnostic/diag_hud = hud
-			diag_hud.add_to_hud(H)
-		else if(istype(hud, /datum/atom_hud/data/human/medical))
-			var/datum/atom_hud/data/human/medical/med_hud = hud
-			med_hud.remove_from_hud(H)
+	for(var/datum/atom_hud/data/human/medical/medhud in GLOB.huds)
+		medhud.remove_from_hud(H)
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+		diag_hud.add_to_hud(H)
 
 	// i love snowflake code
 	var/image/health_bar = H.hud_list[DIAG_HUD]
@@ -100,13 +97,10 @@
 	..()
 	for(var/datum/action/innate/change_monitor/monitor in H.actions)
 		monitor.Remove(H)
-	for(var/hud_key, hud in GLOB.huds)
-		if(istype(hud, /datum/atom_hud/data/diagnostic))
-			var/datum/atom_hud/data/diagnostic/diag_hud = hud
-			diag_hud.remove_from_hud(H)
-		else if(istype(hud, /datum/atom_hud/data/human/medical))
-			var/datum/atom_hud/data/human/medical/med_hud = hud
-			med_hud.add_hud_to(H)
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+		diag_hud.remove_from_hud(H)
+	for(var/datum/atom_hud/data/human/medical/medhud in GLOB.huds)
+		medhud.add_to_hud(H)
 
 	// i love snowflake code
 	var/image/health_bar = H.hud_list[DIAG_HUD]

@@ -14,7 +14,7 @@
 	Являются одними из самых узнаваемых и распространенных видов во всей галактике."
 
 	/// Organized to be from Light to Dark.
-	icon_skin_tones = alist(
+	icon_skin_tones = list(
 		1 = "Default White",
 		2 = "Pale",
 		3 = "Classic",
@@ -62,3 +62,6 @@
 				new_icobase = 'icons/mob/human_races/human_skintones/r_human_pale.dmi'
 
 		H.change_icobase(new_icobase, owner_sensitive) //Update the icobase of all our organs, but make sure we don't mess with frankenstein limbs in doing so.
+
+
+

@@ -108,7 +108,7 @@
 	// Color of our blade
 	var/sword_color
 	// Colors for our blade
-	var/alist/static/colormap = alist(
+	var/list/static/colormap = list(
 		1 = LIGHT_COLOR_GREEN,
 		2 = LIGHT_COLOR_RED,
 		3 = LIGHT_COLOR_LIGHTBLUE,

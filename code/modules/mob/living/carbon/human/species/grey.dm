@@ -12,7 +12,7 @@
 	eyes = "grey_eyes_s"
 	butt_sprite = "grey"
 
-	icon_skin_tones = alist(
+	icon_skin_tones = list(
 		1 = "Default Grey",
 		2 = "Grey Green",
 		3 = "Grey Blue",
@@ -110,3 +110,4 @@
 		H.adjustFireLoss(1)
 		return TRUE
 	return ..()
+

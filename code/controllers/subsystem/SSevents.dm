@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(events)
 	var/list/active_events = list()
 	var/list/finished_events = list()
 	var/list/allEvents
-	var/alist/event_containers = alist(
+	var/list/event_containers = list(
 			EVENT_LEVEL_MUNDANE 	= new/datum/event_container/mundane,
 			EVENT_LEVEL_MODERATE	= new/datum/event_container/moderate,
 			EVENT_LEVEL_MAJOR 		= new/datum/event_container/major

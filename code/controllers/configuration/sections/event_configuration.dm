@@ -3,20 +3,20 @@
 	/// Do we want to enable random events at all
 	var/enable_random_events = TRUE
 	/// Assoc list of when the first event in a group can run. key: severity | value: assoc list with upper and low bounds (key: "upper"/"lower" | value: time in deciseconds)
-	var/alist/first_run_times = alist(
+	var/list/first_run_times = list(
 		EVENT_LEVEL_MUNDANE = null,
 		EVENT_LEVEL_MODERATE = null,
 		EVENT_LEVEL_MAJOR = list("lower" = 40 MINUTES, "upper" = 50 MINUTES)
 	) // <---- Whoever designed this needs to be shot
 
 	/// Assoc list of lower bounds of event delays. key: severity | value: delay (deciseconds)
-	var/alist/delay_lower_bound = alist(
+	var/list/delay_lower_bound = list(
 		EVENT_LEVEL_MUNDANE = 5 MINUTES,
 		EVENT_LEVEL_MODERATE = 15 MINUTES,
 		EVENT_LEVEL_MAJOR = 25 MINUTES
 	)
 	/// Assoc list of lower bounds of event delays. key: severity | value: delay (deciseconds)
-	var/alist/delay_upper_bound = alist(
+	var/list/delay_upper_bound = list(
 		EVENT_LEVEL_MUNDANE = 7.5 MINUTES,
 		EVENT_LEVEL_MODERATE = 22.5 MINUTES,
 		EVENT_LEVEL_MAJOR = 35 MINUTES

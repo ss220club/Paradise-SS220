@@ -22,7 +22,7 @@
 	desc = "Старая компакт-кассета. Видимо, использовалась начинающим радиолюбителем."
 
 	used_capacity = 240
-	storedinfo = alist(
+	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Начало записи.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>объявляет, \"<span class=' '>Следующее сообщение передается по запросу местных властей.</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>сообщает, \"<span class=' '>В 9:47 утра по стандартному времени в исследовательском центре Black Mesa произошла катастрофа неизвестного типа, вызвавшая значительный ущерб и сбой в работе различных систем электроснабжения и связи в прилегающих районах.</span>\"</span></span>",
@@ -36,7 +36,7 @@
 		11 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>aсообщает, \"<span class=' '>Следите за новостями местных СМИ для получения дополнительной информации о текущей ситуации...</span>\"</span></span>",
 		12 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Конец записи.</span>\"</span></span>",
 	)
-	timestamp = alist(
+	timestamp = list(
 		1 = 0,
 		2 = 20,
 		3 = 40,
@@ -56,7 +56,7 @@
 	desc = "Компакт-кассета со следами крови. Видимо, использовалась начинающим радиолюбителем (ныне покойным)."
 
 	used_capacity = 240
-	storedinfo = alist(
+	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Начало записи.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>громко оповещает, \"<span class=' '>Следующее сообщение передается по запросу депортамента экстренных служб сектора Нова.</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>заявляет, \"<span class=' '>В 9:47 утра по стандартному времени в исследовательском центре Black Mesa произошла катастрофа неизвестного типа, вызвавшая значительный ущерб и сбой в работе различных систем электроснабжения и связи в прилегающих районах.</span>\"</span></span>",
@@ -70,7 +70,7 @@
 		11 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>объявляет, \"<span class=' '>Следите за новостями местных СМИ для получения дополнительной информации о текущей ситуации.</span>\"</span></span>",
 		12 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Конец записи.</span>\"</span></span>",
 	)
-	timestamp = alist(
+	timestamp = list(
 		1 = 0,
 		2 = 20,
 		3 = 40,
@@ -90,7 +90,7 @@
 	desc = "Компакт-кассета со следами... странной лозы, прорастающей внутрь. Видимо, использовалась каким то ксеносом."
 
 	used_capacity = 260
-	storedinfo = alist(
+	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Начало записи.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>объявляет, \"<span class=' '>Следующее сообщение передается по запросу Министерства Самообороны планеты Рикс-6. Это не учебная тревога.</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>заявляет, \"<span class=' '>Сегодня, в 16:16 по стандартному времени, Высший Управитель Рикс-6 объявил чрезвычайное положение.</span>\"</span></span>",
@@ -105,7 +105,7 @@
 		12 = "<span class='game say'><span class='name'>Оповещение EAS</span> <span class='message'>уточняет, \"<span class=' '>Оставайтесь на частоте 740 для получения дополнительной информации.</span>\"</span></span>",
 		13 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Конец записи.</span>\"</span></span>",
 	)
-	timestamp = alist(
+	timestamp = list(
 		1 = 0,
 		2 = 20,
 		3 = 40,
@@ -126,7 +126,7 @@
 	desc = "Свежезаписанная компакт-кассета, еще даже не подписанная."
 
 	used_capacity = 100
-	storedinfo = alist(
+	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Начало записи.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>Штаб сил самообороны</span> <span class='message'>спрашивает, \"<span class=' '>Прием, офицер, вы меня слышите? Офицер, вы меня слышите!?</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Штаб сил самообороны</span> <span class='message'>сообщает, \"<span class=' '>Забудьте о ███████! Мы покидаем базу!</span>\"</span></span>",
@@ -134,7 +134,7 @@
 		5 = "<span class='game say'><span class='name'>Штаб сил самообороны</span> <span class='message'>громко оповещает, \"<span class=' '>Повторяю, если вас еще не эвакуировались, то вы предоставлены сами себе!</span>\"</span></span>",
 		6 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Конец записи.</span>\"</span></span>",
 	)
-	timestamp = alist(
+	timestamp = list(
 		1 = 0,
 		2 = 20,
 		3 = 40,
@@ -148,7 +148,7 @@
 	desc = "Относительно свежая компакт-кассета, подписанная как \"радиопередача от XX XX.XX.25XX\". Дата и серийные номера были поцарапаны до неузнаваемости. Как удобно."
 
 	used_capacity = 140
-	storedinfo = alist(
+	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Начало записи.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>Эхо-5 Браво</span> <span class='message'>громко сообщает, \"<span class=' '>Любой станции, любой станции, это Эхо-5 Браво! Поблизости есть хоть какие то наземные силы, способные поддержать в 8 районе?</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Эхо-5 Браво</span> <span class='message'>повторно сообщает, \"<span class=' '>Любой станции, любой станции, это Эхо-5 Браво! Поблизости есть хоть какие то наземные силы, способные поддержать в 8 районе? Хоть кто ниубдь слышит нас?!</span>\"</span></span>",
@@ -157,7 +157,7 @@
 		6 = "<span class='game say'><span class='name'>Эхо-5 Зетта</span> <span class='message'>сообщает, \"<span class=' '>Прорывайтесь к ближайшей трассе и ждите указаний, как слышали?!</span>\"</span></span>",
 		7 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Конец записи.</span>\"</span></span>",
 	)
-	timestamp = alist(
+	timestamp = list(
 		1 = 0,
 		2 = 20,
 		3 = 40,
@@ -172,7 +172,7 @@
 	desc = "Окровавленная компакт-кассета. Это уже слишком..."
 
 	used_capacity = 120
-	storedinfo = alist(
+	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Начало записи.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>Эхо-5 Джульетта</span> <span class='message'>громко сообщает, \"<span class=' '>Любой станции, любой станции, это Эхо-5 Джульетта... Мой отряд попал в засаду... Меня ранили... Я здесь истекаю кровью... Левая.. Левая нога.</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Эхо-5 Ромео</span> <span class='message'>сообщает, \"<span class=' '>Эхо-5 Джульетта, это Эхо-5 Ромео. Мне нужно что бы ты наложил жгут выше раны, на расстоянии ладони. Живо доставай его из своего ИПП!</span>\"</span></span>",
@@ -183,7 +183,7 @@
 		8 = "<span class='game say'><span class='name'>Эхо-5 Ромео</span> <span class='message'>громко спрашивает, \"<span class=' '>Ты еще на короткой? Эхо-5 Джульетта, ты меня слышишь?!</span>\"</span></span>",
 		9 = "<span class='game say'><span class='name'>Универсальный диктофон</span> <span class='message'>воспроизводит, \"<span class='tape_recorder '>Конец записи.</span>\"</span></span>",
 	)
-	timestamp = alist(
+	timestamp = list(
 		1 = 0,
 		2 = 10,
 		3 = 30,

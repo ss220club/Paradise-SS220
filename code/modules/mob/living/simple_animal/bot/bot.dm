@@ -165,10 +165,7 @@
 	default_language = GLOB.all_languages["Galactic Common"]
 
 	prepare_huds()
-	for(var/hud_key, hud in GLOB.huds)
-		var/datum/atom_hud/data/diagnostic/diag_hud = hud
-		if(!istype(diag_hud))
-			continue
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_to_hud(src)
 		permanent_huds |= diag_hud
 

@@ -162,10 +162,7 @@ GLOBAL_LIST_EMPTY(airlock_emissive_underlays)
 		damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
 	update_icon()
 	prepare_huds()
-	for(var/hud_key, hud in GLOB.huds)
-		var/datum/atom_hud/data/diagnostic/diag_hud = hud
-		if(!istype(diag_hud))
-			continue
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_to_hud(src)
 	diag_hud_set_electrified()
 
@@ -190,10 +187,7 @@ GLOBAL_LIST_EMPTY(airlock_emissive_underlays)
 	if(electrified_timer)
 		deltimer(electrified_timer)
 		electrified_timer = null
-	for(var/hud_key, hud in GLOB.huds)
-		var/datum/atom_hud/data/diagnostic/diag_hud = hud
-		if(!istype(diag_hud))
-			continue
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.remove_from_hud(src)
 	return ..()
 

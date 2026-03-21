@@ -52,7 +52,7 @@
 	else
 		parryable_attack_types = list(_parryable_attack_types)
 
-	var/static/alist/attack_types_english = alist(
+	var/static/list/attack_types_english = list(
 		MELEE_ATTACK = "melee attacks",
 		UNARMED_ATTACK = "unarmed attacks",
 		PROJECTILE_ATTACK = "projectiles",

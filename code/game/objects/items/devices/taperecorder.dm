@@ -277,8 +277,8 @@
 	var/max_capacity = 600
 	var/used_capacity = 0
 	var/remaining_capacity = 600
-	var/alist/storedinfo = alist()
-	var/alist/timestamp = alist()
+	var/list/storedinfo = list()
+	var/list/timestamp = list()
 	var/ruined = FALSE
 
 /obj/item/tape/examine(mob/user)

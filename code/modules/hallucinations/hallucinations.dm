@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(hallucinations, alist(
+GLOBAL_LIST_INIT(hallucinations, list(
 	HALLUCINATE_MINOR = list(
 		/obj/effect/hallucination/bolts = 10,
 		/obj/effect/hallucination/fake_danger = 10,
