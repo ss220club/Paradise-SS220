@@ -3232,14 +3232,10 @@
 	pixel_x = 9;
 	pixel_y = -24
 	},
-/obj/item/radio/intercom{
-	broadcasting = 1;
-	frequency = 1447;
-	listening = 0;
-	name = "AI Intercom";
-	pixel_x = -4;
+/obj/item/radio/intercom/private{
 	pixel_y = -28;
-	dir = 2
+	dir = 2;
+	pixel_x = -4
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai_upload)
@@ -33814,6 +33810,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/atmospherics/meter,
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "yellow"
@@ -46547,7 +46544,6 @@
 /turf/simulated/floor/plating/airless,
 /area/station/engineering/control)
 "xrf" = (
-/obj/machinery/light/directional/west,
 /obj/structure/sign/electricshock{
 	pixel_x = -32
 	},
