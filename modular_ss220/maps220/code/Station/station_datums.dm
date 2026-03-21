@@ -21,3 +21,11 @@
 
 /datum/map/emeraldstation
 	voteable = FALSE
+
+/datum/map/omegastation
+	fluff_name = "ИСН Георгонис"
+	technical_name = "Omega"
+	map_path = "_maps/map_files220/stations/omegastation.dmm"
+	// webmap_url = "https://webmap.affectedarc07.co.uk/maps/paradise/omegastation/" TODO add to web map
+	// welcome_sound = 'sound/AI/welcome_kerberos.ogg' TODO Generate sound
+	voteable = FALSE
