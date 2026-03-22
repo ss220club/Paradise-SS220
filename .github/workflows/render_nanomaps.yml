@@ -31,7 +31,6 @@ jobs:
         run: |
           git branch -f nanomap-render
           git checkout nanomap-render
-          git reset --hard origin/master
 
       - name: 'Generate Maps'
         run: './tools/github-actions/nanomap-renderer-invoker.sh'
@@ -40,9 +39,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "NanoMap Generation"
-          git pull origin master
+          git pull master
           git commit -m "NanoMap Auto-Update (`date`)" -a || true
-          git push -f -u origin nanomap-render
+          git push -f -u nanomap-render
           result=$(gh pr create -t "Automatic NanoMap Update" -b "This pull request updates the server NanoMaps. Please review the diff images before merging." -l "NanoMaps,:scroll: CL не требуется" -H "nanomap-render" -B "master" 2>&1) || true
           echo "$result"
           if echo "$result" | grep -q "No commits between master and nanomap-render"; then
