@@ -35,15 +35,12 @@ jobs:
       - name: 'Generate Maps'
         run: './tools/github-actions/nanomap-renderer-invoker.sh'
 
-      - name: 'Commit Maps and open PR'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "NanoMap Generation"
-          git pull master
-          git commit -m "NanoMap Auto-Update (`date`)" -a || true
-          git push -f -u nanomap-render
-          result=$(gh pr create -t "Automatic NanoMap Update" -b "This pull request updates the server NanoMaps. Please review the diff images before merging." -l "NanoMaps,:scroll: CL не требуется" -H "nanomap-render" -B "master" 2>&1) || true
-          echo "$result"
-          if echo "$result" | grep -q "No commits between master and nanomap-render"; then
-            echo "No NanoMaps update required, skipping."
-          fi
+      - name: 'Upload Nanomaps as Artifacts'
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-nanomaps
+          path: |
+            data/nanomaps/*.png
+            icons/_nanomaps/*.png
+          retention-days: 3
