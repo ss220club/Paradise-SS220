@@ -3679,7 +3679,7 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/virology{
 	autoclose = 0;
-	id_tag = "virology_airlock_exterior";
+	id_tag = "viro_door_ext";
 	name = "Virology Exterior Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/virology,
@@ -13958,15 +13958,6 @@
 	icon_state = "whitepurple"
 	},
 /area/station/science/genetics)
-"aLp" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel/dark/telecomms,
-/area/station/telecomms/chamber)
 "aLq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -18401,7 +18392,7 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/virology{
 	autoclose = 0;
-	id_tag = "virology_airlock_interior";
+	id_tag = "viro_door_int";
 	name = "Virology Interior Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/virology,
@@ -25709,6 +25700,13 @@
 /obj/machinery/power/apc/directional/south,
 /turf/simulated/floor/plasteel/grimy,
 /area/station/command/office/ntrep)
+"dDp" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "dDs" = (
 /obj/structure/railing/cap,
 /turf/simulated/floor/plasteel{
@@ -27669,11 +27667,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "fSb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
+/obj/machinery/atmospherics/pipe/manifold/visible/purple{
+	dir = 8
 	},
-/turf/simulated/floor/wood/fancy/oak,
-/area/station/maintenance/aft)
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "fSn" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -30541,6 +30539,12 @@
 	dir = 4
 	},
 /area/station/command/bridge)
+"iOl" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood/fancy/oak,
+/area/station/maintenance/aft)
 "iOr" = (
 /obj/structure/chair/office/dark,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -31756,12 +31760,6 @@
 	icon_state = "redfull"
 	},
 /area/station/security/permabrig)
-"kfV" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/purple{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
 "kgb" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -32325,12 +32323,14 @@
 	},
 /area/station/security/prisonershuttle)
 "kJl" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
+/turf/simulated/floor/plasteel/dark/telecomms,
+/area/station/telecomms/chamber)
 "kJC" = (
 /obj/structure/railing{
 	dir = 4
@@ -65850,7 +65850,7 @@ jpv
 qui
 aps
 aps
-kJl
+dDp
 aKB
 bGL
 amh
@@ -67162,7 +67162,7 @@ dtl
 xam
 ash
 jmx
-aLp
+kJl
 bjS
 fzT
 gii
@@ -67674,9 +67674,9 @@ aSO
 uoO
 hnm
 sny
-aLp
+kJl
 nyC
-aLp
+kJl
 bjS
 fzT
 oTK
@@ -70474,7 +70474,7 @@ rEx
 arz
 ajD
 oGc
-kfV
+fSb
 enz
 rJj
 aBy
@@ -73091,7 +73091,7 @@ aXN
 aOY
 aLb
 noq
-fSb
+iOl
 aZy
 aZy
 aZy
