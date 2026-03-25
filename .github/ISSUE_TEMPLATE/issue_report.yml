@@ -1,34 +1,14 @@
-#For more details
-# https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
-# https://docs.gitea.com/1.19/usage/issue-pull-request-templates
-#Be sure to check the docs
-#
-#Format
-#- type: | markdown | textarea | input | checkboxes |
-#  id:   | just an id, no actual relevance |
-#  attributes:
-#    label:       | Box title |
-#    description: | Box small text - Description |
-#
 name: 'Issue Report'
-#title: "[Bug]: " | if you want to have a have it automatically say [Bug] when they start the form
 description: 'Доложите о проблемах или багах, что бы мы могли их исправить.'
-#labels: "Баг"
-
 body:
   - type: markdown
     attributes:
-      value: 'Спасибо за оставленный отчёт! Не забудьте дать ему соответствующее проблеме название для упрощения работы другим.'
-  - type: checkboxes
-    id: not_an_exploit
-    attributes:
-      label: ⚠️ Может, это эксплойт? ⚠️
-      description: 'Если проблема является игровым эксплойтом, который дает игрокам несправедливое преимущество, или может повлиять на стабильность или безопасность сервера, пожалуйста, сообщите об этом администрации в игре через тикет.'
-      options:
-        - label: Я уверен, что проблема не является игровым эксплойтом, который дает игрокам несправедливое преимущество. (Обязательно)
-          required: true
-        - label: Я уверен, что проблема не влияет на стабильность или безопасность сервера. (Обязательно)
-          required: true
+      value: >
+        Спасибо за оставленный отчёт!<br>
+        Не забудьте дать ему соответствующее проблеме название для упрощения работы другим.<br>
+
+        Если проблема является игровым эксплойтом, который дает игрокам несправедливое преимущество, или может повлиять на стабильность или безопасность сервера,
+        пожалуйста, сообщите об этом администрации в игре через тикет.<br>
 
   - type: input
     id: version
