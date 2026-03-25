@@ -6,7 +6,6 @@
 	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
-	item_color = "katarina_cybersuit"
 	sprite_sheets = null
 
 /obj/item/clothing/under/costume/katarina_suit
@@ -17,7 +16,6 @@
 	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
-	item_color = "katarina_suit"
 	sprite_sheets = null
 
 /obj/item/clothing/under/rank/civilian/chef/red
@@ -26,7 +24,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "chef_red"
 	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
-	item_color = "chef_red"
 	sprite_sheets = list(
 		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
 		"Monkey" = 'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
@@ -65,25 +62,21 @@
 	name = "полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани. Можно обмотать вокруг тела."
 	icon_state = "towel_long"
-	item_color = "towel_long"
 
 /obj/item/clothing/under/towel/long/alt
 	name = "махровое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, на взгляд шершавое. Можно обмотать вокруг тела."
 	icon_state = "towel_long_alt"
-	item_color = "towel_long_alt"
 
 /obj/item/clothing/under/towel/short
 	name = "маленькое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, но маленькое. Можно обмотать вокруг тела."
 	icon_state = "towel_short"
-	item_color = "towel_short"
 
 /obj/item/clothing/under/towel/short/alt
 	name = "маленькое махровое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, на взгляд шершавое и маленькое. Можно обмотать вокруг тела."
 	icon_state = "towel_short_alt"
-	item_color = "towel_short_alt"
 
 // Длинное полотенце
 /obj/item/clothing/under/towel/long/red
@@ -208,7 +201,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "ei_combat"
 	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
-	item_color = "ei_combat"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	sprite_sheets = list(
@@ -224,7 +216,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	icon_state = "ei_skirt"
-	item_color = "ei_skirt"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	sprite_sheets = list(
@@ -240,7 +231,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "ei_skirt_alt"
 	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
-	item_color = "ei_skirt_alt"
 	sprite_sheets = list(
 		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/under.dmi',
 		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
@@ -253,7 +243,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	icon_state = "trainer_black"
-	item_color = "trainer_black"
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
@@ -265,4 +254,3 @@
 	name = "\improper NT Career Trainer's skirt"
 	desc = "A neatly pressed black shirt paired with a sleek black skirt, worn by those committed to mentoring the next generation."
 	icon_state = "trainer_black_skirt"
-	item_color = "trainer_black_skirt"

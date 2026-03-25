@@ -38,6 +38,7 @@
 
 /area/station/science
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_wires = /datum/wires/airlock/science
 
 /area/station/science/rnd
 	name = "Отдел Исследований"
@@ -90,6 +91,7 @@
 /area/station/science/server
 	name = "Серверная Комната"
 	icon_state = "server"
+	airlock_wires = /datum/wires/airlock/command // Like every one has command doors.
 
 /area/station/science/server/coldroom
 	name = "Холодильная Камера Серверной"

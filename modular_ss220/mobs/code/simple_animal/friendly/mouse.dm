@@ -33,11 +33,11 @@
 
 	user.overlay_fullscreen("see_through_darkness", /atom/movable/screen/fullscreen/stretch/see_through_darkness)
 
-/mob/living/simple_animal/mouse
+/mob/living/basic/mouse
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	death_sound = 'modular_ss220/mobs/sound/creatures/rat_death.ogg'
-	talk_sound = list('modular_ss220/mobs/sound/creatures/rat_talk.ogg')
-	damaged_sound = list('modular_ss220/mobs/sound/creatures/rat_wound.ogg')
+	squeak_sound = list('modular_ss220/mobs/sound/creatures/rat_talk.ogg')
+	attacked_sound = list('modular_ss220/mobs/sound/creatures/rat_wound.ogg')
 	blood_volume = BLOOD_VOLUME_SURVIVE
 	butcher_results = list(/obj/item/food/meat/mouse = 1)
 	// hungry mouse
@@ -52,7 +52,7 @@
 	var/busy = FALSE
 	var/non_standard = FALSE // for no "mouse_" with mouse_color
 
-/mob/living/simple_animal/mouse/Initialize(mapload)
+/mob/living/basic/mouse/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list("[squeak_sound]" = 1), 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE) //as quiet as a mouse or whatever
 
@@ -64,12 +64,12 @@
 	update_appearance(UPDATE_ICON_STATE|UPDATE_DESC)
 
 // Отслеживаем, что призрак попал в мышку.
-/mob/living/simple_animal/mouse/Login()
+/mob/living/basic/mouse/Login()
 	. = ..()
 	// Теперь мышка будет обрабатыватся в цикле life, обычные мышки не будут обрабатывать голод.
 	reagents = new()
 
-/mob/living/simple_animal/mouse/proc/color_pick()
+/mob/living/basic/mouse/proc/color_pick()
 	if(!mouse_color)
 		mouse_color = pick( list("brown","gray","white") )
 	icon_state = "mouse_[mouse_color]"
@@ -77,7 +77,7 @@
 	icon_dead = "mouse_[mouse_color]_dead"
 	icon_resting = "mouse_[mouse_color]_sleep"
 
-/mob/living/simple_animal/mouse/splat(obj/item/item = null, mob/living/user = null)
+/mob/living/basic/mouse/splat(obj/item/item = null, mob/living/user = null)
 	if(non_standard)
 		var/temp_state = initial(icon_state)
 		icon_dead = "[temp_state]_splat"
@@ -93,18 +93,18 @@
 		if(user)
 			user.add_mob_blood(src)
 
-/mob/living/simple_animal/mouse/death(gibbed)
+/mob/living/basic/mouse/death(gibbed)
 	if(gibbed)
 		make_remains()
 	. = ..(gibbed)
 
-/mob/living/simple_animal/mouse/proc/make_remains()
+/mob/living/basic/mouse/proc/make_remains()
 	var/obj/effect/decal/remains = new /obj/effect/decal/remains/mouse(src.loc)
 	remains.pixel_x = pixel_x
 	remains.pixel_y = pixel_y
 
 // Вызывается циклически из прока `Life`. Отвечает за обработку голода
-/mob/living/simple_animal/mouse/handle_chemicals_in_body()
+/mob/living/basic/mouse/handle_chemicals_in_body()
 	adjust_nutrition(-hunger_drain)
 
 	switch(nutrition)
@@ -139,7 +139,7 @@
 	handle_nutrition_alerts()
 	update_appearance(UPDATE_NAME|UPDATE_DESC)
 
-/mob/living/simple_animal/mouse/proc/handle_nutrition_alerts()
+/mob/living/basic/mouse/proc/handle_nutrition_alerts()
 	switch(nutrition)
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
 			nutrition_display.icon_state = STATUS_FAT
@@ -154,7 +154,7 @@
 		else
 			nutrition_display.icon_state = STATUS_STARVING
 
-/mob/living/simple_animal/mouse/update_name()
+/mob/living/basic/mouse/update_name()
 	. = ..()
 	var/tag
 	if(nutrition >= NUTRITION_LEVEL_FULL)
@@ -163,7 +163,7 @@
 		tag = "костлявая "
 	name = "[tag][initial(name)]"
 
-/mob/living/simple_animal/mouse/update_desc()
+/mob/living/basic/mouse/update_desc()
 	. = ..()
 	desc = "It's a small [mouse_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 	if(nutrition >= NUTRITION_LEVEL_FULL)
@@ -172,7 +172,7 @@
 		desc += " Вы можете увидеть рёбра через её кожу."
 
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
-/mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
+/mob/living/basic/mouse/proc/consume(obj/item/food/F)
 	if(busy)
 		to_chat(src, span_warning("Сначала доешь то, что уже жуёшь."))
 		return
@@ -207,24 +207,21 @@
 		qdel(F)
 
 
-/mob/living/simple_animal/mouse/brown/tom
+/mob/living/basic/mouse/brown/tom
 	maxHealth = 10
 	health = 10
 
-/mob/living/simple_animal/mouse/fluff/clockwork
+/mob/living/basic/mouse/fluff/clockwork
 	name = "Chip"
 	real_name = "Chip"
 	mouse_color = "clockwork"
 	icon_state = "mouse_clockwork"
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "stamps on"
 	gold_core_spawnable = NO_SPAWN
 	butcher_results = list(/obj/item/stack/sheet/metal = 1)
 	maxHealth = 20
 	health = 20
 
-/mob/living/simple_animal/mouse/fluff/clockwork/Initialize(mapload)
+/mob/living/basic/mouse/fluff/clockwork/Initialize(mapload)
 	. = ..()
 	RemoveElement(/datum/element/wears_collar)
 

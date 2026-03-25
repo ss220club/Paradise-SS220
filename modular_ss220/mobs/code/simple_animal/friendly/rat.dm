@@ -1,4 +1,4 @@
-/mob/living/simple_animal/mouse/rat
+/mob/living/basic/mouse/rat
 	name = "rat"
 	real_name = "rat"
 	desc = "Серая крыса. Не яркий представитель своего вида."
@@ -15,17 +15,17 @@
 	mob_size = MOB_SIZE_SMALL
 	butcher_results = list(/obj/item/food/meat/mouse = 2)
 
-/mob/living/simple_animal/mouse/rat/update_desc()
+/mob/living/basic/mouse/rat/update_desc()
 	. = ..()
 	switch(mouse_color)
 		if("white")
-			desc = /mob/living/simple_animal/mouse/rat/white::desc
+			desc = /mob/living/basic/mouse/rat/white::desc
 		if("irish")
-			desc = /mob/living/simple_animal/mouse/rat/irish::desc
+			desc = /mob/living/basic/mouse/rat/irish::desc
 		else
-			desc = /mob/living/simple_animal/mouse/rat::desc
+			desc = /mob/living/basic/mouse/rat::desc
 
-/mob/living/simple_animal/mouse/rat/white
+/mob/living/basic/mouse/rat/white
 	name = "white rat"
 	real_name = "white rat"
 	desc = "Типичный представитель лабораторных крыс."
@@ -35,7 +35,7 @@
 	icon_resting = "rat_white_sleep"
 	mouse_color = "white"
 
-/mob/living/simple_animal/mouse/rat/irish
+/mob/living/basic/mouse/rat/irish
 	name = "irish rat"
 	real_name = "irish rat"
 	desc = "Ирландская крыса, борец за независимость. На космической станции?! На этот раз им точно некуда бежать!"
@@ -45,15 +45,10 @@
 	icon_resting = "rat_irish_sleep"
 	mouse_color = "irish"
 
-/mob/living/simple_animal/mouse/rat/color_pick()
+/mob/living/basic/mouse/rat/color_pick()
 	if(!mouse_color)
 		mouse_color = pick(list("gray","white","irish"))
 	icon_state = "rat_[mouse_color]"
 	icon_living = "rat_[mouse_color]"
 	icon_dead = "rat_[mouse_color]_dead"
 	icon_resting = "rat_[mouse_color]_sleep"
-
-/mob/living/simple_animal/mouse/rat/pull_constraint(atom/movable/AM, show_message = FALSE)
-	return TRUE
-
-
