@@ -30789,13 +30789,16 @@
 /area/station/maintenance/port)
 "cqT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/power/apc/reinforced/directional/west,
+/obj/structure/cable/extra_insulated{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "cqZ" = (
@@ -49946,9 +49949,6 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/extra_insulated{
-	icon_state = "1-2"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/equipment,
 /obj/machinery/door/airlock/engineering{
 	name = "Подстанция Отдела Службы Безопасности и Юрисприденции"
@@ -53462,6 +53462,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "gmE" = (
@@ -63521,9 +63522,6 @@
 /turf/simulated/floor/carpet,
 /area/station/medical/psych)
 "jAa" = (
-/obj/structure/cable/extra_insulated{
-	icon_state = "1-2"
-	},
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
@@ -82851,9 +82849,6 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/extra_insulated{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/engineering{
 	name = "Подстанция Сервисного Отдела"
 	},
@@ -87070,9 +87065,6 @@
 	},
 /area/station/public/vacant_store)
 "qYO" = (
-/obj/structure/cable/extra_insulated{
-	icon_state = "1-2"
-	},
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
@@ -92277,9 +92269,6 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/extra_insulated{
-	icon_state = "1-2"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/equipment,
 /obj/machinery/door/airlock/engineering{
 	name = "Подстанция Отдела Снабжения"
@@ -94442,10 +94431,6 @@
 	icon_state = "yellow"
 	},
 /area/station/maintenance/fsmaint)
-"tzE" = (
-/obj/machinery/power/apc/directional/west,
-/turf/simulated/floor/plating,
-/area/station/maintenance/apmaint)
 "tzW" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/toy/plushie/tuxedo_cat{
@@ -101917,6 +101902,9 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/command/blueshield,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "vRL" = (
@@ -132856,7 +132844,7 @@ xzY
 cam
 ckM
 lUN
-tzE
+coL
 cyg
 cgQ
 kyh
