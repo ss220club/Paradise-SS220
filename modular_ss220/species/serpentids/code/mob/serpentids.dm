@@ -25,11 +25,11 @@
 
 	dietflags = DIET_OMNI
 	taste_sensitivity = TASTE_SENSITIVITY_SHARP
-	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse,
+	allowed_consumed_mobs = list(/mob/living/basic/mouse,
 		/mob/living/simple_animal/lizard,
 		/mob/living/basic/chick,
 		/mob/living/basic/chicken,
-		/mob/living/simple_animal/crab,
+		/mob/living/basic/crab,
 		/mob/living/simple_animal/butterfly,
 		/mob/living/simple_animal/parrot,
 		/mob/living/simple_animal/hostile/poison/bees)

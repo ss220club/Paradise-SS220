@@ -1,3 +1,6 @@
+/area/station/service
+	airlock_wires = /datum/wires/airlock/service
+
 /area/station/service/cafeteria
 	name = "Кафетерий"
 	icon_state = "cafeteria"

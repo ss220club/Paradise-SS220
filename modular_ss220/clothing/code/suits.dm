@@ -265,7 +265,6 @@
 	icon = 'icons/obj/clothing/under/procedure.dmi'
 	icon_state = "iaa"
 	worn_icon = 'icons/mob/clothing/under/procedure.dmi'
-	item_color = "iaa"
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/under/procedure.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/under/procedure.dmi',

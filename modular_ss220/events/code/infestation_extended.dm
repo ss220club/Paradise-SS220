@@ -52,13 +52,13 @@
 			var/possible_vermin = rand(0, 2)
 			switch(possible_vermin)
 				if(0)
-					spawn_types = list(/mob/living/simple_animal/mouse/rat)
+					spawn_types = list(/mob/living/basic/mouse/rat)
 					vermstring = "крыс"
 				if(1)
-					spawn_types = list(/mob/living/simple_animal/mouse/rat/irish)
+					spawn_types = list(/mob/living/basic/mouse/rat/irish)
 					vermstring = "ирландских крыс борцов за независимость"
 				if(2)
-					spawn_types = list(/mob/living/simple_animal/mouse/rat/white)
+					spawn_types = list(/mob/living/basic/mouse/rat/white)
 					vermstring = "лабораторных крыс"
 		if(VERM_AXOLOTL)
 			spawn_types = list(/mob/living/simple_animal/lizard/axolotl)

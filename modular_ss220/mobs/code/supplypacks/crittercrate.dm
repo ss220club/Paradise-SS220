@@ -109,7 +109,7 @@
 
 /obj/structure/closet/critter/hamster
 	name = "hamster crate"
-	content_mob = /mob/living/simple_animal/mouse/hamster
+	content_mob = /mob/living/basic/mouse/hamster
 
 /obj/structure/closet/critter/hamster/populate_contents()
 	amount = rand(1, 5)

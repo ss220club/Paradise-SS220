@@ -356,5 +356,5 @@
 		)
 
 	backpack = /obj/item/storage/backpack/explorer
-	satchel = /obj/item/storage/backpack/satchel/explorer
+	satchel = /obj/item/storage/backpack/satchel_explorer
 	dufflebag = /obj/item/storage/backpack/duffel
