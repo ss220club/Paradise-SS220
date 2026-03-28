@@ -74,7 +74,9 @@ export const BugReportForm = (props) => {
               </a>
             </Flex.Item>
             <Flex.Item>
-              <h2 className="tip">{'TIP: Пожалуйста, опишите проблему как можно более подробно, это действительно сильно помогает'}</h2>
+              <h2 className="tip">
+                {'TIP: Пожалуйста, опишите проблему как можно более подробно, это действительно сильно помогает'}
+              </h2>
             </Flex.Item>
             <Flex.Item>
               <InputTitle required>{'Название отчета'}</InputTitle>
@@ -144,7 +146,7 @@ export const BugReportForm = (props) => {
             {!!awaiting_approval && (
               <Flex.Item my={2}>
                 <InputTitle>{'Дополнительные заметки'}</InputTitle>
-                {"Любые дополнительные заметки для отправки вместе с отчетом об ошибке автора "}
+                {'Любые дополнительные заметки для отправки вместе с отчетом об ошибке автора '}
                 <textarea
                   rows={4}
                   className="textarea"
