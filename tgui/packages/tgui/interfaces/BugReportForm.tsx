@@ -77,7 +77,7 @@ export const BugReportForm = (props) => {
               <h2 className="tip">{'TIP: Пожалуйста, опишите проблему как можно более подробно, это действительно сильно помогает'}</h2>
             </Flex.Item>
             <Flex.Item>
-              <InputTitle required>{'Title'}</InputTitle>
+              <InputTitle required>{'Название отчета'}</InputTitle>
               <input width="100%" className="textarea" value={title} onChange={(e) => setTitle(e.target.value)} />
             </Flex.Item>
             <Flex.Item my={2}>
@@ -160,7 +160,7 @@ export const BugReportForm = (props) => {
             )}
             <Flex.Item my={2}>
               <InputTitle>{'Logs'}</InputTitle>
-              {'Please paste any relevant logs here'}
+              {'Пожалуйста, прикрипите любые походящие логи здесь'}
               <textarea
                 rows={4}
                 className="textarea"
