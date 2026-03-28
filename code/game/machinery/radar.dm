@@ -112,8 +112,8 @@
 	if(dont_announce)
 		return
 
-	var/datum/weather/next_weather = SSweather.next_weather_by_zlevel["3"]
-	var/next_hit = SSweather.next_hit_by_zlevel["3"]
+	var/datum/weather/next_weather = SSweather.next_weather_by_zlevel["[z]"]
+	var/next_hit = SSweather.next_hit_by_zlevel["[z]"]
 	var/next_difference = next_hit - world.time
 	var/difference_rounded = DisplayTimeText(max(1, next_difference))
 
@@ -130,7 +130,7 @@
 			dont_announce = TRUE
 			correct_prediction = FALSE
 		else
-			radio.autosay("<b>Рассчет метеорологической модели успешно завершен. Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name] </b>", name, "Supply")
+			radio.autosay("<b>Рассчет метеорологической модели успешно завершен. Спрогнозировано погодное явление через [difference_rounded]: [next_weather.name].</b>", name, "Supply")
 			dont_announce = TRUE
 			correct_prediction = TRUE
 

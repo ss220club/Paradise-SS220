@@ -4,7 +4,6 @@
 	icon = 'modular_ss220/clothing/icons/object/eyes.dmi'
 	icon_state = "hudpatch"
 	worn_icon = 'modular_ss220/clothing/icons/mob/eyes.dmi'
-	item_color = "hudpatch"
 	prescription_upgradable = FALSE
 	sprite_sheets = list(
 		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/eyes.dmi',

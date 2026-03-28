@@ -41,7 +41,6 @@
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "towel_head"
 	worn_icon = 'modular_ss220/clothing/icons/mob/hats.dmi'
-	item_color = "towel_head"
 	sprite_sheets = list(
 		"Ancient Skeleton" = 'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/hats.dmi',

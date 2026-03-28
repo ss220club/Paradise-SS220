@@ -1,6 +1,9 @@
 
 //Command
 
+/area/station/command
+	airlock_wires = /datum/wires/airlock/command
+
 /area/station/command/bridge
 	name = "Мостик"
 	icon_state = "bridge"
