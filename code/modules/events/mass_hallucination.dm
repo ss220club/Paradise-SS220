@@ -16,6 +16,6 @@
 		human.AdjustHallucinate(rand(50 SECONDS, 100 SECONDS))
 
 /datum/event/mass_hallucination/announce()
-	GLOB.minor_announcement.Announce("The [station_name()] is passing through a minor radiation field. Be advised that acute exposure to space radiation can induce hallucinogenic episodes.")
+	GLOB.minor_announcement.Announce("[station_name()] проходит через радиационное поле низкой интенсивности. Возможно появление галлюцинаций, но не более.")
 
 #undef RAD_ARMOR_TO_IMMUNITY
