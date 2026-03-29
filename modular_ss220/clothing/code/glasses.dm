@@ -16,7 +16,9 @@
 /obj/item/clothing/glasses/hud/security/eyepatch/update_icon_state()
 	icon_state = flipped ? "[initial(icon_state)]_flipped" : initial(icon_state)
 
-/obj/item/clothing/glasses/hud/security/eyepatch/attack_self__legacy__attackchain(mob/user)
+/obj/item/clothing/glasses/hud/security/eyepatch/activate_self(mob/user)
+	if(..())
+		return
 	flipped = !flipped
 	to_chat(user, "You flip [src] [flipped ? "left" : "right"].")
 	update_icon(UPDATE_ICON_STATE)
