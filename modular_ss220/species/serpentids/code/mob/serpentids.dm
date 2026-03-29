@@ -32,7 +32,7 @@
 		/mob/living/basic/crab,
 		/mob/living/simple_animal/butterfly,
 		/mob/living/simple_animal/parrot,
-		/mob/living/simple_animal/hostile/poison/bees)
+		/mob/living/basic/bee)
 
 	bodyflags = HAS_SKIN_COLOR | BALD | SHAVED
 	skinned_type = /obj/item/stack/sheet/animalhide/lizard
