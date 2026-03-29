@@ -255,6 +255,7 @@ WOODEN_DECAL_HELPER(/obj/effect/turf_decal/siding/wood/guaiacum)
 /* TILE */
 /obj/effect/turf_decal/tile
 	icon = 'modular_ss220/aesthetics/decals/icons/tile.dmi'
+	icon_state = "tile_fourcorners"
 
 /// Automatically generates all subtypes for a decal with the given path.
 #define TILE_DECAL_SUBTYPE_HELPER(path)\
