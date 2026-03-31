@@ -393,7 +393,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/protect
 	name = "Protect"
 	martyr_compatible = TRUE
-	delayed_objective_text = "Your objective is to protect another crewmember. You will receive further information in a few minutes."
+	delayed_objective_text = "Ваша задача — защитить другого члена экипажа. Дополнительную информацию вы получите через несколько минут."
 	completed = TRUE
 
 /datum/objective/protect/update_explanation_text()
@@ -685,12 +685,12 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/incriminate
 	name = "Incriminate"
 	martyr_compatible = TRUE
-	delayed_objective_text = "Your objective is to incriminate a crew member for a major level crime without revealing yourself. You will receive further information in a few minutes."
+	delayed_objective_text = "Ваша цель — обвинить члена экипажа в серьёзном преступлении, не раскрывая своей личности. Дополнительную информацию вы получите через несколько минут."
 	completed = TRUE
 
 /datum/objective/incriminate/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Deceive the station. Incriminate [target.current.real_name], the [target.assigned_role] for a major level crime and ensure that you are not revealed as the perpetrator."
+		explanation_text = "Обманите станцию. Обвините [target.current.real_name], [target.assigned_role] в серьёзном преступлении и убедитесь, что вы не раскрыты как преступник."
 	else
 		explanation_text = "Free Objective"
 
@@ -1136,9 +1136,9 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/steal/exchange/update_explanation_text()
 	if(!opponent)
-		explanation_text = "The person you were supposed to trade with didn't show up."
+		explanation_text = "Человек, с которым вы должны были обменяться предметами, не явился."
 	if(!betrayal)
-		explanation_text = "Exchange your secret documents for [steal_target.name]. Arrange a meeting with [opponent] and make the trade."
+		explanation_text = "Обменяйте свои секретные документы на [steal_target.name]. Договоритесь о встрече с [opponent] и совершите обмен."
 		return
-	explanation_text = "[opponent] thinks you're going to exchange your secret documents for [steal_target.name]. Steal their documents, and keep your own."
+	explanation_text = "[opponent] думает, что вы собираетесь обменять свои секретные документы на [steal_target.name]. Украдите их документы, а свои оставьте себе."
 
