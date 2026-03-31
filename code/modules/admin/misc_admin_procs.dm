@@ -135,6 +135,9 @@ GLOBAL_VAR_INIT(disable_explosions, FALSE)
 		body += "<A href='byond://?_src_=holder;boot2=[mob_uid]'>Kick</A> | "
 		body += "<A href='byond://?_src_=holder;newban=[mob_uid];dbbanaddckey=[M.ckey]'>Ban</A> | "
 		body += "<A href='byond://?_src_=holder;jobban2=[mob_uid];dbbanaddckey=[M.ckey]'>Jobban</A> | "
+		// SS220 EDIT START - Species bans
+		body += "<A href='byond://?_src_=holder;speciesban=[mob_uid];dbbanaddckey=[M.ckey]'>Speciesban</A> | "
+		// SS220 EDIT END
 		body += "<A href='byond://?_src_=holder;shownoteckey=[M.ckey]'>Notes</A> | "
 		if(GLOB.configuration.url.forum_playerinfo_url)
 			body += "<A href='byond://?_src_=holder;webtools=[M.ckey]'>WebInfo</A> | "

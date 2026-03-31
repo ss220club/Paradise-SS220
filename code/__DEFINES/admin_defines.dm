@@ -19,6 +19,10 @@
 #define BANTYPE_ANY_FULLBAN	5 //used to locate stuff to unban.
 #define BANTYPE_ADMIN_PERMA	7
 #define BANTYPE_ADMIN_TEMP	8
+// SS220 EDIT START - Species bans
+#define BANTYPE_SPECIES_PERMA	2201
+#define BANTYPE_SPECIES_TEMP	2202
+// SS220 EDIT END
 
 //Admin Permissions
 #define R_BUILDMODE		(1<<0)

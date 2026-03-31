@@ -178,7 +178,7 @@ ipc_screens = [
 # Enable/disable the database on a whole
 sql_enabled = false
 # SQL version. If this is a mismatch, round start will be delayed
-sql_version = 702208
+sql_version = 702209
 # SQL server address. Can be an IP or DNS name
 sql_address = "127.0.0.1"
 # SQL server port
@@ -677,6 +677,7 @@ active_space_ruins = [
   "_maps/map_files/RandomRuins/SpaceRuins/derelict4.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/derelict5.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/emptyshell.dmm",
+  "_maps/map_files/RandomRuins/SpaceRuins/engineering_vessel.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/freighter.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/intactemptyship.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/listeningpost.dmm",
@@ -689,6 +690,7 @@ active_space_ruins = [
   "_maps/map_files/RandomRuins/SpaceRuins/sieged_lab.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/spacebar.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/syndiecakesfactory.dmm",
+  "_maps/map_files/RandomRuins/SpaceRuins/telecoms_shuttle.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/telecomns_returns.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/turretedoutpost.dmm",
   "_maps/map_files/RandomRuins/SpaceRuins/unathi_skiff.dmm",
@@ -798,6 +800,8 @@ shutdown_on_reboot = false
 #api_host = "http://127.0.0.1:8080"
 # Access key for the internal API.
 #api_key = "your_secret_here"
+# Github API token for in game bug reporting
+#github_api_token = "your_secret_here"
 # List of IP addresses to be ignored by the world/Topic rate limiting. Useful if you have other services
 topic_ip_ratelimit_bypass = ["127.0.0.1"]
 # Turn this to true if you are running a production server
@@ -987,9 +991,14 @@ speech_filter_bypass = []
 
 ################################################################
 
-[species_whitelist_configuration]
+[species_ban_configuration]
+# This section contains all settings related to species bans
 
-species_whitelist_enabled = false
+# Enable species bans
+species_bans_enabled = false
+# List of species that will be automatically banned for new players upon registration
+# Example: default_species_bans = ["Serpentid"]
+default_species_bans = []
 
 ################################################################
 

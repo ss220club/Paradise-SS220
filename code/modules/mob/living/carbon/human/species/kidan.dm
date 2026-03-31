@@ -3,6 +3,7 @@
 	name_plural = "Kidan"
 	icobase = 'icons/mob/human_races/r_kidan.dmi'
 	language = "Chittin"
+	meat_type = /obj/item/food/meat/human
 
 	blurb = "Киданы - муравьеподобные существа, обладающих жестким экзоскелетом и строго придерживающиеся профессиональных каст. \
 	Они родом с планеты Аурум - бесплодного, подвергшегося бомбардировкам мира, который пострадал после войны с Человеко-Скреллаинским Альянсом, потерпев сокрушительное поражение.<br/><br/> \
@@ -27,6 +28,7 @@
 	default_headacc = "Normal Antennae"
 	butt_sprite = "kidan"
 
+	meat_type = /obj/item/food/meat/human
 	has_organ = list(
 		"heart" =    /obj/item/organ/internal/heart/kidan,
 		"lungs" =    /obj/item/organ/internal/lungs/kidan,
