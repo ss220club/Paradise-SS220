@@ -51,8 +51,25 @@
 
 
 #define RUSTLIB (__rustlib || __detect_rustlib())
+// SS220 EDIT START
+#ifndef RUST_UTILS
+/* This comment bypasses grep checks */ /var/__rust_utils
 
+/proc/__detect_rust_utils()
+	if(world.system_type == UNIX)
+		if(fexists("./librust_utils.so"))
+			return __rust_utils = "./librust_utils.so"
+		return __rust_utils = "librust_utils.so"
+	else
+		if(fexists("./librust_utils.dll"))
+			return __rust_utils = "./librust_utils.dll"
+		return __rust_utils = "librust_utils.dll"
+
+#define RUST_UTILS (__rust_utils || __detect_rust_utils())
+#endif
+// SS220 EDIT END
 #define RUSTLIB_CALL(func, args...) call_ext(RUSTLIB, "byond:[#func]_ffi")(args)
+#define RUST_UTILS_CALL(func, args...) call_ext(RUST_UTILS, "byond:[#func]_ffi")(args) // SS220 EDIT
 
 // This needs to go BELOW the above define, otherwise the BYOND compiler can make the above immediate call disappear
 #undef RUSTLIBS_SUFFIX
@@ -246,9 +263,28 @@
 
 /proc/rustlibs_sql_check_query(datum/db_query/query)
 	return RUSTLIB_CALL(sql_check_query, query)
+// SS220 EDIT START
+#ifndef RUST_UTILS_API
+#define RUST_UTILS_API
+// MARK: rust_utils
+/proc/rust_utils_get_version()
+	return RUST_UTILS_CALL(get_version)
 
+/proc/rustutils_file_write_b64decode(text, fname)
+	return RUST_UTILS_CALL(file_write, text, fname, "true")
+
+/proc/rustutils_regex_replace(text, re, re_params, replacement)
+	return RUST_UTILS_CALL(regex_replace, text, re, re_params, replacement)
+
+/proc/rustutils_cyrillic_to_latin(text)
+	return RUST_UTILS_CALL(cyrillic_to_latin, "[text]")
+
+/proc/rustutils_latin_to_cyrillic(text)
+	return RUST_UTILS_CALL(latin_to_cyrillic, "[text]")
+#endif
+// SS220 EDIT END
 #undef RUSTLIB_CALL
-
+#undef RUST_UTILS_CALL // SS220 EDIT
 // Indexes for Tiles and InterestingTiles
 // Must match the order in milla/src/model.rs
 #define MILLA_INDEX_AIRTIGHT_DIRECTIONS 	1
