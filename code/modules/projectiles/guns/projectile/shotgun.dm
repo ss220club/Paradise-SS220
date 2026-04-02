@@ -10,6 +10,7 @@
 	inhand_y_dimension = 64
 	w_class = WEIGHT_CLASS_BULKY
 	force = 10
+	recoil = 1.5
 	slot_flags = ITEM_SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/shot
 	fire_sound = 'sound/weapons/gunshots/gunshot_shotgun.ogg'

@@ -13,6 +13,7 @@ emp_act
 		add_attack_logs(P.firer, src, "hit by [P.type] but got deflected by species '[dna.species]'")
 		P.reflect_back(src) //It has to be here, not on species. Why? Who knows. Testing showed me no reason why it doesn't work on species, and neither did tracing. It has to be here, or it gets qdel'd by bump.
 		return -1
+
 	if(P.is_reflectable(REFLECTABILITY_ENERGY))
 		var/can_reflect = check_reflect(def_zone)
 		var/reflected = FALSE
@@ -43,7 +44,8 @@ emp_act
 		if(!HAS_TRAIT(src, TRAIT_HULK) && mind.martial_art.try_deflect(src)) //But only if they're not hulked
 			add_attack_logs(P.firer, src, "hit by [P.type] but got deflected by martial arts '[mind.martial_art]'")
 			playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
-			if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL)) //if it cannot be reflected, it hits the floor. This is the exception to the rule
+
+			if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL))
 				// Pacifists can deflect projectiles, but not reflect them.
 				// Instead, they deflect them into the ground below them.
 				var/turf/T = get_turf(src)
@@ -66,7 +68,6 @@ emp_act
 		playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 
 		if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL))
-			// Pacifism and unreflectables hitting the ground logic. Copied from above
 			var/turf/T = get_turf(src)
 			P.firer = src
 			T.bullet_act(P)
@@ -79,6 +80,29 @@ emp_act
 		return -1
 
 	var/obj/item/organ/external/organ = get_organ(check_zone(def_zone))
+	// SS220 ADDTION START
+	if(!QDELETED(src) && health > -100)
+		var/original_x = src.pixel_x
+		var/original_y = src.pixel_y
+		var/original_transform = src.transform
+		var/original_stat = src.stat
+
+		// Number of jerks and shaking force
+		var/shakes = 5
+		var/intensity_x = 2
+		var/intensity_y = 1
+
+		// do the shaking in a separate thread so as not to block the code
+		spawn()
+			for(var/i in 1 to shakes)
+				if(QDELETED(src)) break
+				animate(src, pixel_x = rand(-intensity_x, intensity_x), pixel_y = rand(-intensity_y, intensity_y), time = 1)
+				sleep(1)
+			// Return to the original position if the mob has not changed (not died, not fallen, etc.)
+			if(!QDELETED(src) && src.stat == original_stat && src.transform == original_transform)
+				animate(src, pixel_x = original_x, pixel_y = original_y, time = 1, easing = LINEAR_EASING)
+	// SS220 ADDITION END
+
 	if(isnull(organ))
 		return bullet_act(P, "chest") //act on chest instead
 
