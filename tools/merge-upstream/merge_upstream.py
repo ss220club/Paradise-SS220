@@ -78,6 +78,7 @@ logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO").upper())
 # Environment variables
 TRANSLATE_CHANGES = os.getenv("TRANSLATE_CHANGES", "False").lower() in ("true", "yes", "1")
 CHANGELOG_AUTHOR = os.getenv("CHANGELOG_AUTHOR", "")
+UNTIL_DATE = os.getenv("UNTIL_DATE", "")
 
 check_env()
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
@@ -120,15 +121,30 @@ def update_merge_branch():
     all_branches: list[str] = run_command("git branch -a").split()
     logging.debug("Fetched branches: %s", all_branches)
 
+    target_ref = f"upstream/{UPSTREAM_BRANCH}"
+    if UNTIL_DATE:
+        try:
+            datetime.strptime(UNTIL_DATE, "%Y-%m-%d")
+        except ValueError:
+            logging.error("Invalid format for UNTIL_DATE: %s. Expected YYYY-MM-DD.", UNTIL_DATE)
+            exit(1)
+        logging.info("Finding last commit until date: %s", UNTIL_DATE)
+        target_commit = run_command(f"git log upstream/{UPSTREAM_BRANCH} --until='{UNTIL_DATE} 23:59:59' --pretty=format:'%H' -n 1")
+        if target_commit:
+            target_ref = target_commit
+            logging.info("Target commit: %s", target_commit)
+        else:
+            logging.warning("No commits found until date %s, using full upstream branch", UNTIL_DATE)
+
     if f"remotes/origin/{MERGE_BRANCH}" not in all_branches:
-        logging.info("Branch '%s' does not exist. Creating it from upstream/%s...", MERGE_BRANCH, UPSTREAM_BRANCH)
-        run_command(f"git checkout -b {MERGE_BRANCH} upstream/{UPSTREAM_BRANCH}")
+        logging.info("Branch '%s' does not exist. Creating it from %s...", MERGE_BRANCH, target_ref)
+        run_command(f"git checkout -b {MERGE_BRANCH} {target_ref}")
         run_command(f"git push -u origin {MERGE_BRANCH}")
         return
 
-    logging.info("Resetting '%s' onto upstream/%s...", MERGE_BRANCH, UPSTREAM_BRANCH)
+    logging.info("Resetting '%s' onto %s...", MERGE_BRANCH, target_ref)
     run_command(f"git checkout {MERGE_BRANCH}")
-    run_command(f"git reset --hard upstream/{UPSTREAM_BRANCH}")
+    run_command(f"git reset --hard {target_ref}")
     logging.info("Pushing changes to origin...")
     run_command(f"git push origin {MERGE_BRANCH} --force")
 
@@ -407,6 +423,7 @@ def check_pull_exists(target_repo: Repository, base: str, head: str):
         logging.error("Pull request already exists: %s", ", ".join(pull.html_url for pull in existing_pulls))
         exit(1)
     logging.debug("No existing pull requests found.")
+
 
 if __name__ == "__main__":
     github = Github(GITHUB_TOKEN)

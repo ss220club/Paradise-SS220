@@ -110,7 +110,10 @@ RESTRICT_TYPE(/datum/antagonist/vampire)
 				if(slave.master == extractor.mind)
 					possible_thrall.remove_antag_datum(/datum/antagonist/mindslave/thrall)
 
-	extractor.equipOutfit(/datum/outfit/admin/ghostbar_antag/vampire)
+	if(isplasmaman(extractor))
+		extractor.equipOutfit(/datum/outfit/admin/ghostbar_antag/vampire/plasmaman)
+	else
+		extractor.equipOutfit(/datum/outfit/admin/ghostbar_antag/vampire)
 	radio.autosay("<b>--ZZZT!- Wonderfully done, [extractor.real_name]. Welcome to -^%&!-ZZT!-</b>", "Ancient Vampire", "Security")
 	SSblackbox.record_feedback("tally", "successful_extraction", 1, "Vampire")
 
@@ -355,7 +358,11 @@ RESTRICT_TYPE(/datum/antagonist/vampire)
 /datum/antagonist/vampire/give_objectives()
 	add_antag_objective(/datum/objective/blood)
 	add_antag_objective(/datum/objective/assassinate)
-	add_antag_objective(/datum/objective/steal)
+
+	if(prob(5)) // 5% chance of getting protect. 95% chance of getting steal.
+		add_antag_objective(/datum/objective/protect)
+	else
+		add_antag_objective(/datum/objective/steal)
 
 	if(prob(20)) // 20% chance of getting survive. 80% chance of getting escape.
 		add_antag_objective(/datum/objective/survive)

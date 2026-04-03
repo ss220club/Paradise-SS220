@@ -138,6 +138,25 @@
 	if(!firstquery.warn_execute())
 		qdel(firstquery)
 		return
+
+	// ALL OF THIS SHIT BECAUSE h_style CAN BE A STRING OR A DATUM
+	var/h_style_str = "Bald"
+	if(istype(h_style, /datum/sprite_accessory/hair))
+		var/datum/sprite_accessory/hair/H = h_style
+		h_style_str = H.name
+
+	if(istext(h_style))
+		h_style_str = h_style
+
+	// Same with f_style
+	var/f_style_str = "Bald"
+	if(istype(f_style, /datum/sprite_accessory/facial_hair))
+		var/datum/sprite_accessory/facial_hair/F = f_style
+		f_style_str = F.name
+
+	if(istext(f_style))
+		f_style_str = f_style
+
 	while(firstquery.NextRow())
 		if(text2num(firstquery.item[1]) == slot_number) // Check if the character exists
 			var/datum/db_query/query = SSdbcore.NewQuery({"UPDATE characters
@@ -223,8 +242,8 @@
 						"s_colour" = s_colour,
 						"markingcolourslist" = markingcolourslist,
 						"hacc_colour" = hacc_colour,
-						"h_style" = h_style,
-						"f_style" = f_style,
+						"h_style" = h_style_str,
+						"f_style" = f_style_str,
 						"markingstyleslist" = markingstyleslist,
 						"ha_style" = ha_style,
 						"alt_head" = (alt_head ? alt_head : ""), // This it intentional. It wont work without it!
@@ -356,8 +375,8 @@
 		"s_colour" = s_colour,
 		"markingcolourslist" = markingcolourslist,
 		"hacc_colour" = hacc_colour,
-		"h_style" = h_style,
-		"f_style" = f_style,
+		"h_style" = h_style_str,
+		"f_style" = f_style_str,
 		"markingstyleslist" = markingstyleslist,
 		"ha_style" = ha_style,
 		"alt_head" = (alt_head ? alt_head : "None"), // bane of my fucking life
@@ -1022,7 +1041,7 @@
 
 	var/icon/undershirt_s = null
 	if(undershirt && (current_species.clothing_flags & HAS_UNDERSHIRT))
-		var/datum/sprite_accessory/undershirt/U2 = GLOB.undershirt_list[undershirt]
+		var/datum/sprite_accessory/undershirt/U2 = GLOB.undershirt_full_list[undershirt]
 		if(U2)
 			var/u2_icon = U2.sprite_sheets && (current_species.sprite_sheet_name in U2.sprite_sheets) ? U2.sprite_sheets[current_species.sprite_sheet_name] : U2.icon
 			undershirt_s = new/icon(u2_icon, "us_[U2.icon_state]_s", ICON_OVERLAY)
@@ -1157,7 +1176,7 @@
 				clothes_s.Blend(new /icon('icons/mob/clothing/hands.dmi', "smithing"), ICON_OVERLAY)
 				has_gloves = TRUE
 				if(prob(1))
-					clothes_s.Blend(new /icon('icons/mob/clothing/head/softcap.dmi', "smithsoft"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/clothing/head/softcap.dmi', "smith"), ICON_OVERLAY)
 				switch(backbag)
 					if(2)
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
@@ -1381,7 +1400,7 @@
 				clothes_s = new /icon('icons/mob/clothing/under/medical.dmi', "paramedic_s")
 				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "black"), ICON_UNDERLAY)
 				clothes_s.Blend(new /icon('icons/mob/clothing/mask.dmi', "cig_off"), ICON_OVERLAY)
-				clothes_s.Blend(new /icon('icons/mob/clothing/head/softcap.dmi', "paramedicsoft"), ICON_OVERLAY)
+				clothes_s.Blend(new /icon('icons/mob/clothing/head/softcap.dmi', "paramedic"), ICON_OVERLAY)
 				switch(backbag)
 					if(2)
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "medicalpack"), ICON_OVERLAY)

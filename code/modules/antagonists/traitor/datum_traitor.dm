@@ -118,7 +118,10 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		forge_human_objectives()
 
 /datum/antagonist/traitor/exfiltrate(mob/living/carbon/human/extractor, obj/item/radio/radio)
-	extractor.equipOutfit(/datum/outfit/admin/ghostbar_antag/syndicate)
+	if(isplasmaman(extractor))
+		extractor.equipOutfit(/datum/outfit/admin/ghostbar_antag/syndicate/plasmaman)
+	else
+		extractor.equipOutfit(/datum/outfit/admin/ghostbar_antag/syndicate)
 	// Remove mindslaves
 	var/list/mindslaves = SSticker.mode.implanted
 	for(var/datum/mind/possible_slave in mindslaves)
@@ -306,6 +309,9 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 
 	if(prob(ORG_PROB_PARANOIA)) // Low chance of fake 'You are targeted' notification
 		queue_backstab()
+
+	if(prob(EXCHANGE_PROBABILITY))
+		start_exchange()
 
 	var/list/messages = owner.prepare_announce_objectives()
 	to_chat(owner.current, chat_box_red(messages.Join("<br>")))

@@ -76,6 +76,7 @@
 		IMPTRACK_HUD = 'icons/mob/hud/sechud.dmi',
 		PRESSURE_HUD = 'icons/effects/effects.dmi',
 		MALF_AI_HUD = 'icons/mob/hud/malfhud.dmi',
+		ANOMALOUS_HUD = 'icons/effects/effects.dmi',
 	)
 
 	for(var/hud in hud_possible)
@@ -1118,7 +1119,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 			to_chat(src, "<span class='warning'>Unable to find any unwelded vents to spawn mice at.</span>")
 			return FALSE
 	var/obj/vent_found = pick(found_vents)
-	var/mob/living/simple_animal/mouse/host = prob(20) ? new /mob/living/simple_animal/mouse/rat(vent_found.loc) : new(vent_found.loc) // SS220 EDIT
+	var/mob/living/basic/mouse/host = prob(20) ? new /mob/living/basic/mouse/rat(vent_found.loc) : new(vent_found.loc) // SS220 EDIT
 	host.ckey = src.ckey
 	to_chat(host, "<span class='notice'>You are now a mouse, a small and fragile creature capable of scurrying through vents and under doors. Be careful who you reveal yourself to, for that will decide whether you receive cheese or death.</span>")
 	host.forceMove(vent_found)
@@ -1352,12 +1353,6 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 /mob/proc/update_sight()
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
 	sync_lighting_plane_alpha()
-
-/mob/proc/set_sight(datum/vision_override/O)
-	QDEL_NULL(vision_type)
-	if(O) //in case of null
-		vision_type = new O
-	update_sight()
 
 /mob/proc/sync_lighting_plane_alpha()
 	if(hud_used)

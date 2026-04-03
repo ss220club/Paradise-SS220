@@ -100,6 +100,10 @@
 	/// The destination z-level that atoms entering this turf will be automatically moved to.
 	var/destination_z
 
+	///what /mob/oranges_ear instance is already assigned to us as there should only ever be one.
+	///used for guaranteeing there is only one oranges_ear per turf when assigned, speeds up view() iteration
+	var/mob/oranges_ear/assigned_oranges_ear
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
 	if(initialized)
@@ -587,9 +591,12 @@
 		if(AM == source)
 			continue	//we don't want to return source
 		if(istype(AM, /obj/structure/cable))
-
 			var/obj/structure/cable/C = AM
 			if(C.d1 == direction || C.d2 == direction)
+				if(istype(source, /obj/structure/cable))
+					var/obj/structure/cable/source_cable = source
+					if(!(source_cable.connect_type & C.connect_type))
+						continue
 				. += C // one of the cables ends matches the supplied direction, add it to connnections
 		if(cable_only || direction)
 			continue
