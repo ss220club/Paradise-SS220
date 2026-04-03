@@ -17,25 +17,13 @@
 #define RUST_UTILS (__rust_utils || __detect_rust_utils())
 #endif
 
-#ifndef RUST_UTILS_API
-#define RUST_UTILS_API
-#define RUST_UTILS_CALL(func, args...) call_ext(RUST_UTILS, "byond:[#func]_ffi")(args)
+#define RUST_UTILS_CALL call_ext
 
-/// Gets the version of rust_utils
-/proc/rust_utils_get_version()
-	return RUST_UTILS_CALL(get_version)
+/proc/rust_utils_get_version() return RUST_UTILS_CALL(RUST_UTILS, "get_version")()
 
-/proc/rustutils_file_write_b64decode(text, fname)
-	return RUST_UTILS_CALL(file_write, text, fname, "true")
+#define rustutils_file_write_b64decode(text, fname) RUST_UTILS_CALL(RUST_UTILS, "file_write")(text, fname, "true")
 
-/proc/rustutils_regex_replace(text, re, re_params, replacement)
-	return RUST_UTILS_CALL(regex_replace, text, re, re_params, replacement)
+#define rustutils_regex_replace(text, re, re_params, replacement) RUST_UTILS_CALL(RUST_UTILS, "regex_replace")(text, re, re_params, replacement)
 
-/proc/rustutils_cyrillic_to_latin(text)
-	return RUST_UTILS_CALL(cyrillic_to_latin, "[text]")
-
-/proc/rustutils_latin_to_cyrillic(text)
-	return RUST_UTILS_CALL(latin_to_cyrillic, "[text]")
-
-#undef RUST_UTILS_CALL
-#endif
+#define rustutils_cyrillic_to_latin(text) RUST_UTILS_CALL(RUST_UTILS, "cyrillic_to_latin")("[text]")
+#define rustutils_latin_to_cyrillic(text) RUST_UTILS_CALL(RUST_UTILS, "latin_to_cyrillic")("[text]")
