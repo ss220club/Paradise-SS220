@@ -50,7 +50,7 @@
 			target = A
 
 	if(target)
-		to_chat(user, "<span class='warning'>Найдена только одна цель. Наложение [spell] на [target.declent_ru(NOMINATIVE)]!</span>")
+		to_chat(user, "<span class='warning'>Найдена только одна цель. Наложение [spell] на [target.declent_ru(ACCUSATIVE)]!</span>")
 		spell.try_perform(list(target), user)
 		return TRUE
 	return FALSE

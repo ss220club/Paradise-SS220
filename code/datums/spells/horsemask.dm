@@ -7,7 +7,7 @@
 	invocation_type = "shout"
 	cooldown_min = 30 //30 deciseconds reduction per rank
 
-	selection_activated_message = "<span class='notice'>Вы начинаете тихо произносить заклинание. Нажмите на цель или рядом с ней, чтобы произнести заклинание.</span>"
+	selection_activated_message = "<span class='notice'>Вы начинаете тихо произносить заклинание. Нажмите на цель или рядом с ней, чтобы применить его.</span>"
 	selection_deactivated_message = "<span class='notice'>Вы перестаёте тихо ржать.</span>"
 
 	action_icon_state = "barn"
@@ -27,7 +27,7 @@
 	var/mob/living/carbon/human/target = targets[1]
 
 	if(target.can_block_magic(antimagic_flags))
-		target.visible_message("<span class='danger'>Лицо [target.declent_ru(GENITIVE)] охватывает пламя, которое мгновенно вырывается наружу, оставляя [target.declent_ru(GENITIVE)] невредимым!</span>",
+		target.visible_message("<span class='danger'>Лицо [target.declent_ru(GENITIVE)] охватывает пламя, которое мгновенно вырывается наружу, оставляя [target.declent_ru(ACCUSATIVE)] невредимым!</span>",
 			"<span class='danger'>Твое лицо начинает гореть, но пламя отражается твоей антимагической защитой!</span>",
 		)
 		to_chat(user, "<span class='warning'>Заклинание не дало эффекта!</span>")
