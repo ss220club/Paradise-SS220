@@ -1,6 +1,6 @@
 /datum/spell/summonitem
 	name = "Instant Summons"
-	desc = "This spell can be used to recall a previously marked item to your hand from anywhere in the universe."
+	desc = "Это заклинание можно использовать для того, чтобы вернуть ранее помеченный предмет в вашу руку из любой точки мира."
 	clothes_req = FALSE
 	invocation = "GAR YOK"
 	invocation_type = "whisper"
@@ -27,30 +27,30 @@
 				if(istype(item, /obj/item/organ/internal/brain)) //Yeah, sadly this doesn't work due to the organ system.
 					break
 				if(istype(item, /obj/item/disk/nuclear)) //Let's not make nukies suffer with this bullshit.
-					to_chat(user, "<span class='notice'>[item] has some built in protections against such summoning magic.</span>")
+					to_chat(user, "<span class='notice'>[item.declent_ru(NOMINATIVE)] имеет некоторую встроенную защиту от такой магии призыва.</span>")
 					break
 				if(ABSTRACT in item.flags)
 					continue
 				if(NODROP in item.flags)
-					message += "This feels very redundant, but you go through with it anyway.<br>"
+					message += "Это кажется совершенно излишним, но вы все равно проходите через это.<br>"
 				marked_item = 		item
-				message += "You mark [item] for recall.</span>"
+				message += "Вы помечаете [item.declent_ru(ACCUSATIVE)] для призыва.</span>"
 				name = "Recall [item]"
 				break
 
 			if(!marked_item)
 				if(hand_items)
-					message = "<span class='caution'>You aren't holding anything that can be marked for recall.</span>"
+					message = "<span class='caution'>У вас нет ничего, что можно было бы пометить для призыва.</span>"
 				else
-					message = "<span class='notice'>You must hold the desired item in your hands to mark it for recall.</span>"
+					message = "<span class='notice'>Вы должны подержать нужный предмет в руках, чтобы пометить его для призыва.</span>"
 
 		else if(marked_item && (marked_item in hand_items)) //unlinking item to the spell
-			message = "<span class='notice'>You remove the mark on [marked_item] to use elsewhere.</span>"
+			message = "<span class='notice'>Вы удаляете метку с [marked_item.declent_ru(GENITIVE)] чтобы использовать её чём-то другом.</span>"
 			name = "Instant Summons"
 			marked_item = 		null
 
 		else if(marked_item && !marked_item.loc) //the item was destroyed at some point
-			message = "<span class='warning'>You sense your marked item has been destroyed!</span>"
+			message = "<span class='warning'>Вы чувствуете, что ваш помеченный предмет был уничтожен!</span>"
 			name = "Instant Summons"
 			marked_item = 		null
 
@@ -63,21 +63,21 @@
 				if(istype(item_to_retrieve.loc, /obj/item/organ/internal/headpocket))
 					var/obj/item/organ/internal/headpocket/pocket = item_to_retrieve.loc
 					if(pocket.owner)
-						to_chat(pocket.owner, "<span class='warning'>Your [pocket.name] suddenly feels lighter. How strange!</span>")
+						to_chat(pocket.owner, "<span class='warning'>Ваш [pocket.name] внезапно становится легче. Как странно!</span>")
 					visible_item = FALSE
 					break
 				if(istype(item_to_retrieve.loc, /obj/item/storage/hidden_implant)) //The implant should be left alone
 					var/obj/item/storage/S = item_to_retrieve.loc
 					for(var/mob/M in S.mobs_viewing)
-						to_chat(M, "<span class='warning'>[item_to_retrieve] suddenly disappears!</span>")
+						to_chat(M, "<span class='warning'>[item_to_retrieve.declent_ru(NOMINATIVE)] внезапно исчезает!</span>")
 					visible_item = FALSE
 					break
 				if(ismob(item_to_retrieve.loc)) //If its on someone, properly drop it
 					var/mob/M = item_to_retrieve.loc
 
 					if(issilicon(M) || !M.transfer_item_to(item_to_retrieve, target.loc)) //Items in silicons warp the whole silicon
-						M.visible_message("<span class='warning'>[M] suddenly disappears!</span>", "<span class='danger'>A force suddenly pulls you away!</span>")
-						M.loc.visible_message("<span class='caution'>[M] suddenly appears!</span>")
+						M.visible_message("<span class='warning'>[M] внезапно исчезает!</span>", "<span class='danger'>Какая-то сила внезапно отталкивает тебя!</span>")
+						M.loc.visible_message("<span class='caution'>[M] внезапно появляется!</span>")
 						item_to_retrieve = null
 						break
 
@@ -87,14 +87,14 @@
 							var/obj/item/organ/external/part = X
 							if(item_to_retrieve in part.embedded_objects)
 								part.remove_embedded_object(item_to_retrieve)
-								to_chat(C, "<span class='warning'>[item_to_retrieve] that was embedded in your [part] has mysteriously vanished. How fortunate!</span>")
+								to_chat(C, "<span class='warning'>[item_to_retrieve], который был интегрирован в вашу [part], таинственным образом исчез. Как удачно!</span>")
 								if(!C.has_embedded_objects())
 									C.clear_alert("embeddedobject")
 								break
 							if(item_to_retrieve == part.hidden)
 								visible_item = FALSE
 								part.hidden = null
-								to_chat(C, "<span class='warning'>Your [part.name] suddenly feels emptier. How weird!</span>")
+								to_chat(C, "<span class='warning'>[part.name] внезапно становится еще более пустым. Как странно!</span>")
 								break
 
 				else
@@ -116,15 +116,15 @@
 				return
 
 			if(!isturf(target.loc))
-				to_chat(target, "<span class='caution'>You attempt to cast the spell, but it fails! Perhaps you aren't available?</span>")
+				to_chat(target, "<span class='caution'>Вы пытаетесь произнести заклинание, но у вас ничего не получается!</span>")
 				return
 			if(visible_item)
-				item_to_retrieve.loc.visible_message("<span class='warning'>[item_to_retrieve] suddenly disappears!</span>")
+				item_to_retrieve.loc.visible_message("<span class='warning'>[item_to_retrieve] внезапно исчезает!</span>")
 			var/list/heres_disky = item_to_retrieve.search_contents_for(/obj/item/disk/nuclear)
 			heres_disky += item_to_retrieve.loc.search_contents_for(/obj/item/disk/nuclear) //So if you mark another item in a bag, we don't pull
 			for(var/obj/item/disk/nuclear/N in heres_disky)
 				N.forceMove(get_turf(item_to_retrieve))
-				N.visible_message("<span class='warning'>As [item_to_retrieve] vanishes, [N] remains behind!</span>")
+				N.visible_message("<span class='warning'>Когда [item_to_retrieve] исчезает, [N] остается позади!</span>")
 				break //If you have 2 nads, well, congrats? Keeps message from doubling up
 			if(target.hand) //left active hand
 				if(!target.equip_to_slot_if_possible(item_to_retrieve, ITEM_SLOT_LEFT_HAND, FALSE, TRUE))
@@ -136,10 +136,10 @@
 						butterfingers = TRUE
 			if(butterfingers)
 				item_to_retrieve.loc = target.loc
-				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve] suddenly appears!</span>")
+				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve] внезапно появляется!</span>")
 				playsound(get_turf(target),'sound/magic/summonitems_generic.ogg', 50, 1)
 			else
-				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve] suddenly appears in [target]'s hand!</span>")
+				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve] внезапно появляется в руке [target]!</span>")
 				playsound(get_turf(target),'sound/magic/summonitems_generic.ogg', 50, 1)
 
 		if(message)

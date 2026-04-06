@@ -1,6 +1,6 @@
 /datum/spell/touch/cluwne
 	name = "Curse of the Cluwne"
-	desc = "Turns the target into a fat and cursed monstrosity of a clown."
+	desc = "Превращает цель в толстого и отвратительного клоуна."
 	hand_path = /obj/item/melee/touch_attack/cluwne
 
 	base_cooldown = 1 MINUTES

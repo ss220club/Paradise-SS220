@@ -1,6 +1,6 @@
 /datum/spell/rod_form
 	name = "Rod Form"
-	desc = "Take on the form of an immovable rod, destroying all in your path."
+	desc = "Примите форму непоколебимого стержня, уничтожающего все на своем пути."
 	base_cooldown = 600
 	cooldown_min = 200
 	invocation = "CLANG!"
@@ -16,7 +16,7 @@
 
 /datum/spell/rod_form/cast(list/targets,mob/user = usr)
 	if(get_turf(user) != user.loc)
-		to_chat(user, "<span class='warning'>You cannot summon a rod in the ether, the spell fizzles out!</span>")
+		to_chat(user, "<span class='warning'>Вы не можете вызвать жезл в эфире!</span>")
 		revert_cast()
 		return FALSE
 	for(var/mob/living/M in targets)

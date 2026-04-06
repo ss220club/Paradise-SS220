@@ -1,6 +1,6 @@
 /datum/spell/lichdom
 	name = "Bind Soul"
-	desc = "A dark necromantic pact that can forever bind your soul to an item of your choosing. So long as both your body and the item remain intact and on the same plane you can revive from death, though the time between reincarnations grows steadily with use."
+	desc = "Темный договор некроманта, который навсегда привязывает вашу душу к предмету по вашему выбору. Пока и ваше тело, и предмет остаются нетронутыми и на одном уровне, вы можете возрождаться после смерти, хотя время между возрождениями растет с каждой смертью."
 	base_cooldown = 10
 	clothes_req = FALSE
 	centcom_cancast = FALSE
@@ -28,26 +28,26 @@
 /datum/spell/lichdom/proc/attempt_revive(mob/user)
 	// Can only cast when unconscious/dead
 	if(user.stat == CONSCIOUS)
-		to_chat(user, "<span class='notice'>You aren't dead enough to revive!</span>")
+		to_chat(user, "<span class='notice'>Вы не мертвы, чтобы возродиться!</span>")
 		cooldown_handler.revert_cast()
 		return
 
 	// Body was destroyed
 	if(QDELETED(current_body))
-		to_chat(user, "<span class='warning'>Your body is gone!</span>")
+		to_chat(user, "<span class='warning'>Вашего тела больше нет!</span>")
 		return
 
 	// Phylactery was destroyed
 	var/obj/item/marked_item = locateUID(marked_item_uid)
 	if(QDELETED(marked_item))
-		to_chat(user, "<span class='warning'>Your phylactery is gone!</span>")
+		to_chat(user, "<span class='warning'>Ваш оберег пропал!</span>")
 		return
 
 	// Wrong z-level
 	var/turf/body_turf = get_turf(current_body)
 	var/turf/item_turf = get_turf(marked_item)
 	if(body_turf.z != item_turf.z)
-		to_chat(user, "<span class='warning'>Your phylactery is out of range!</span>")
+		to_chat(user, "<span class='warning'>Ваша оберег вне досягаемости!</span>")
 		return
 
 	if(isobserver(user))
@@ -64,7 +64,7 @@
 		// Give a hint as to where the body is
 		var/wheres_wizdo = dir2text(get_dir(body_turf, item_turf))
 		if(wheres_wizdo)
-			current_body.visible_message("<span class='warning'>Suddenly [current_body.name]'s corpse falls to pieces! You see a strange energy rise from the remains, and speed off towards the [wheres_wizdo]!</span>")
+			current_body.visible_message("<span class='warning'>Внезапно труп [current_body.name] разваливается на куски! Вы видите, как из останков поднимается странная энергия и устремляется к [wheres_wizdo]!</span>")
 			body_turf.Beam(item_turf, icon_state = "lichbeam", icon = 'icons/effects/effects.dmi', time = 10 + 10 * resurrections, maxdistance = INFINITY)
 
 		UnregisterSignal(current_body, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
@@ -81,24 +81,24 @@
 
 	current_body = lich
 	cooldown_handler.recharge_duration += 1 MINUTES
-	to_chat(lich, "<span class='warning'>Your bones clatter and shudder as they're pulled back into this world!</span>")
+	to_chat(lich, "<span class='warning'>Ваши кости стучат и содрогаются, когда их возвращают в этот мир!</span>")
 
 /datum/spell/lichdom/proc/attempt_mark_item(mob/user)
 	var/obj/item/target = user.get_active_hand()
 	if(!target)
-		to_chat(user, "<span class='warning'>You must hold an item you wish to make your phylactery!</span>")
+		to_chat(user, "<span class='warning'>У вас должен быть предмет, который вы хотите использовать для создания своего оберега!</span>")
 		return
 
 	if(target.flags & (ABSTRACT|NODROP))
-		to_chat(user, "<span class='warning'>[target] cannot be used as your phylactery!</span>")
+		to_chat(user, "<span class='warning'>[target.declent_ru(NOMINATIVE)] не может быть использован в качестве вашего оберега!</span>")
 		return
 
 	if(!do_after(user, 5 SECONDS, target = target))
-		to_chat(user, "<span class='warning'>Your soul snaps back to your body as you drop [target]!</span>")
+		to_chat(user, "<span class='warning'>Ваша душа возвращается в ваше тело, когда вы бросаете [target.declent_ru(ACCUSATIVE)]!</span>")
 		return
 
 	name = "RISE!"
-	desc = "Rise from the dead! You will reform at the location of your phylactery and your old body will crumble away."
+	desc = "Восстань из мертвых! Ты возродишься в том месте, где находится твой оберег, и твое старое тело исчезнет."
 	stat_allowed = UNCONSCIOUS
 	cooldown_handler.recharge_duration = 3 MINUTES
 	cooldown_handler.revert_cast()
@@ -108,7 +108,7 @@
 		build_all_button_icons()
 
 	target.name = "ensouled [target.name]"
-	target.desc += "<br><span class='warning'>A terrible aura surrounds this item, its very existence is offensive to life itself...</span>"
+	target.desc += "<br><span class='warning'>Ужасная аура окружает этот предмет, само его существование оскорбительно для самой жизни...</span>"
 	target.color = "#003300"
 	marked_item_uid = target.UID()
 
@@ -122,7 +122,7 @@
 		H.drop_item_to_ground(H.head)
 		equip_lich(H)
 
-	to_chat(user, "<span class='userdanger'>With a hideous feeling of emptiness you watch in horrified fascination as skin sloughs off bone! Blood boils, nerves disintegrate, eyes boil in their sockets! As your organs crumble to dust in your fleshless chest you come to terms with your choice. You're a lich!</span>")
+	to_chat(user, "<span class='userdanger'>С отвратительным чувством опустошенности вы с ужасом и восхищением наблюдаете, как кожа отслаивается от костей! Кровь кипит, нервы разрушаются, глаза выкипают из орбит! Ваши органы рассыпаются в прах в лишенной плоти груди, вы смиряетесь со своим выбором. Вы - лич!</span>")
 
 /datum/spell/lichdom/proc/is_revive_possible()
 	var/obj/item/marked_item = locateUID(marked_item_uid)

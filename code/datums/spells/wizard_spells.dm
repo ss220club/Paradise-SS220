@@ -285,7 +285,7 @@
 	clothes_req = FALSE
 	invocation = "STI KALY"
 	invocation_type = "whisper"
-	message = "<span class='notice'>Твои глаза плачут от боли!</span>"
+	message = "<span class='notice'>Ваши глаза плачут от боли!</span>"
 	cooldown_min = 2 SECONDS
 	sound = 'sound/magic/blind.ogg'
 
@@ -321,8 +321,8 @@
 	invocation_type = "shout"
 	cooldown_min = 20 //10 deciseconds reduction per rank
 
-	selection_activated_message		= "<span class='notice'>Вы готовитесь применить огненный шар! <B> Щелкните левой кнопкой мыши, чтобы нанести удар по цели!</B></span>"
-	selection_deactivated_message	= "<span class='notice'>Ты гасишь свой огненный шар... на время.</span>"
+	selection_activated_message		= "<span class='notice'>Вы готовитесь применить огненный шар! <B>Щелкните левой кнопкой мыши, чтобы нанести удар по цели!</B></span>"
+	selection_deactivated_message	= "<span class='notice'>Вы гасите свой огненный шар... на время.</span>"
 
 	var/fireball_type = /obj/item/projectile/magic/fireball
 	action_icon_state = "fireball0"
@@ -367,7 +367,7 @@
 	fireball_type = /obj/item/projectile/homing/magic/toolbox
 	invocation = "ROBUSTIO!"
 
-	selection_activated_message		= "<span class='notice'>Вы готовитесь использовать свой набор самонаводящийся тулбокс! <B> Щелкните левой кнопкой мыши, чтобы применить заклинание к цели!</B></span>"
+	selection_activated_message		= "<span class='notice'>Вы готовитесь использовать свой самонаводящийся тулбокс! <B>Щелкните левой кнопкой мыши, чтобы применить заклинание к цели!</B></span>"
 	selection_deactivated_message	= "<span class='notice'>Вы приберегаете свой тулбокс... пока что.</span>"
 
 /datum/spell/fireball/homing
@@ -376,7 +376,7 @@
 	invocation = "ZI-ONI SOMA"
 	fireball_type = /obj/item/projectile/homing/magic/homing_fireball
 
-	selection_activated_message = "<span class='notice'>Вы готовитесь самонаводящийся огненный шар! <B> Щелкните левой кнопкой мыши, чтобы нанести удар по цели!</B></span>"
+	selection_activated_message = "<span class='notice'>Вы готовитесь запустить самонаводящийся огненный шар! <B>Щелкните левой кнопкой мыши, чтобы нанести удар по цели!</B></span>"
 
 /datum/spell/aoe/repulse
 	name = "Repulse"

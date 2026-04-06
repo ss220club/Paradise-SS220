@@ -1,6 +1,6 @@
 /datum/spell/aoe/knock
 	name = "Knock"
-	desc = "This spell opens nearby doors and does not require wizard garb."
+	desc = "Это заклинание открывает ближайшие двери и не требует робы волшебника."
 
 	clothes_req = FALSE
 	invocation = "AULIE OXIN FIERA"
@@ -37,7 +37,7 @@
 
 /datum/spell/aoe/knock/greater
 	name = "Greater Knock"
-	desc = "On first cast, will remove access restrictions on all airlocks on the station, and announce this spell's use to the station. On any further cast, will open all doors in sight. Cannot be refunded once bought!"
+	desc = "При первом использовании снимет ограничения доступа на всех шлюзах на станции и объявит об использовании заклинания на станции. При любом последующем использовании откроет все шлюзы в поле зрения. Нельзя вернуть."
 
 	base_cooldown = 200
 	invocation = "MAIOR OXIN FIERA"
