@@ -18227,19 +18227,11 @@
 	},
 /area/station/medical/medbay)
 "bbv" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "eng_sm_door_ext"
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "darkred"
 	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/access_button{
-	autolink_id = "eng_sm_btn_ext";
-	pixel_y = 24;
-	req_access = list(10)
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/turf/simulated/floor/plating,
-/area/space/nearstation)
+/area/station/maintenance/fore2)
 "bbw" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -20300,8 +20292,20 @@
 	},
 /area/station/hallway/primary/central/se)
 "bhj" = (
-/turf/simulated/wall/r_wall,
-/area/space)
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	autolink_id = "fssolar_vent"
+	},
+/obj/machinery/airlock_controller/air_cycler{
+	ext_button_link_id = "fssolar_btn_ext";
+	ext_door_link_id = "fssolar_door_ext";
+	int_button_link_id = "fssolar_btn_int";
+	int_door_link_id = "fssolar_door_int";
+	pixel_x = 25;
+	req_access = list(13);
+	vent_link_id = "fssolar_vent"
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/fore2)
 "bho" = (
 /obj/machinery/door/airlock/silver{
 	name = "Bathroom"
@@ -22430,28 +22434,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/se)
 "bQi" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "eng_sm_door_int"
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
 	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
 	},
-/obj/machinery/access_button{
-	autolink_id = "eng_sm_btn_int";
-	pixel_y = 24;
-	req_access = list(10)
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/machinery/door/poddoor{
-	density = 0;
-	icon_state = "open";
-	id_tag = "Engineering";
-	name = "Engineering Security Doors";
-	opacity = 0
-	},
-/turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "bQl" = (
 /obj/structure/cable/extra_insulated{
@@ -23630,6 +23618,7 @@
 "cUQ" = (
 /obj/structure/transit_tube,
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/status_display/directional/east,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "cVa" = (
@@ -35513,10 +35502,18 @@
 /turf/simulated/floor/engine/vacuum,
 /area/station/maintenance/turbine)
 "oxT" = (
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "darkred"
+/obj/machinery/door/airlock/external{
+	id_tag = "fssolar_door_ext"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/machinery/access_button{
+	autolink_id = "fssolar_btn_ext";
+	pixel_x = -24;
+	req_access = list(13)
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "oys" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -35798,22 +35795,15 @@
 /turf/simulated/floor/wood/parquet/oak,
 /area/station/medical/psych)
 "oKb" = (
-/obj/machinery/light/small/directional/north,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	autolink_id = "eng_sm_vent";
+/obj/machinery/atmospherics/portable/canister/air,
+/obj/machinery/atmospherics/unary/portables_connector{
 	dir = 8
 	},
-/obj/machinery/airlock_controller/air_cycler{
-	ext_button_link_id = "eng_sm_btn_ext";
-	ext_door_link_id = "eng_sm_door_ext";
-	int_button_link_id = "eng_sm_btn_int";
-	int_door_link_id = "eng_sm_door_int";
-	pixel_y = 25;
-	vent_link_id = "eng_sm_vent";
-	req_access = list(10)
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkred"
 	},
-/turf/simulated/floor/plating,
-/area/station/engineering/atmos/asteroid)
+/area/station/maintenance/fore2)
 "oKm" = (
 /obj/machinery/door/poddoor/preopen{
 	name = "Brig Blast door";
@@ -38880,9 +38870,9 @@
 	},
 /area/station/security/permabrig)
 "rwE" = (
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkred"
+	icon_state = "dark"
 	},
 /area/station/maintenance/fore2)
 "rxC" = (
@@ -40294,11 +40284,19 @@
 /turf/simulated/floor/plating/airless,
 /area/space/nearstation)
 "sHV" = (
-/obj/machinery/light/small/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "darkred"
+/obj/machinery/door/airlock/external{
+	id_tag = "fssolar_door_int"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/machinery/access_button{
+	autolink_id = "fssolar_btn_int";
+	pixel_x = 24;
+	req_access = list(13)
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "sIb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -44074,8 +44072,12 @@
 	},
 /area/station/medical/medbay)
 "vjK" = (
-/obj/machinery/status_display/directional/east,
-/turf/simulated/wall/r_wall,
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "darkred"
+	},
 /area/station/maintenance/fore2)
 "vkq" = (
 /obj/machinery/alarm/directional/west,
@@ -77526,7 +77528,7 @@ hhM
 hhM
 aLL
 hhM
-vjK
+afR
 qwz
 rEV
 ckR
@@ -77781,12 +77783,12 @@ hhM
 hhM
 hhM
 hhM
-pZU
-aXs
+aLL
 afR
-oxT
+afR
+afR
 rwE
-sHV
+ckR
 gJR
 bmG
 acO
@@ -78030,20 +78032,20 @@ aAm
 abS
 urp
 abS
-hhM
-hhM
-hhM
-hhM
-hhM
-hhM
-hhM
-hhM
-pZU
-aXs
-afR
-afR
+aOc
+aOc
+aOc
+aOc
+aOc
+aOc
+aOc
+aOc
+aOc
+oxT
+bhj
+sHV
 bQi
-afR
+bbv
 gJR
 nMf
 idk
@@ -78287,20 +78289,20 @@ hhM
 abS
 xRw
 abS
-aLL
-aLL
-aLL
-aLL
-aLL
-aLL
-aLL
-aLL
-aLL
+aOc
 hhM
 hhM
-bhj
+hhM
+hhM
+hhM
+hhM
+hhM
+aLL
+afR
+afR
+afR
 oKb
-jug
+vjK
 gJR
 abZ
 acQ
@@ -78541,10 +78543,10 @@ hhM
 hhM
 hhM
 hhM
-aLL
 aOc
-aLL
-aLL
+aOc
+aOc
+aOc
 hhM
 hhM
 hhM
@@ -78553,11 +78555,11 @@ hhM
 hhM
 hhM
 aLL
-hhM
-hhM
-bhj
-bbv
-bhj
+aXs
+aXs
+afR
+afR
+afR
 bNf
 aca
 acR
