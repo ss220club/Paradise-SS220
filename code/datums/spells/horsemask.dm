@@ -8,7 +8,7 @@
 	cooldown_min = 30 //30 deciseconds reduction per rank
 
 	selection_activated_message = "<span class='notice'>Вы начинаете тихо произносить заклинание. Нажмите на цель или рядом с ней, чтобы произнести заклинание.</span>"
-	selection_deactivated_message = "<span class='notice'>Ты перестаешь тихо ржать.</span>"
+	selection_deactivated_message = "<span class='notice'>Вы перестаёте тихо ржать.</span>"
 
 	action_icon_state = "barn"
 	sound = 'sound/magic/HorseHead_curse.ogg'

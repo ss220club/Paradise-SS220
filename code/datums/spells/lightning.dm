@@ -8,7 +8,7 @@
 	action_icon_state = "lightning"
 	charge_sound = new /sound('sound/magic/lightning_chargeup.ogg', channel = 7)
 	max_charge_time = 10 SECONDS
-	stop_charging_text = "Ты перестаешь заряжать молнии вокруг себя."
+	stop_charging_text = "Вы перестаёте заряжать молнии вокруг себя."
 	stop_charging_fail_text = "Молнии вокруг тебя слишком сильны, чтобы их можно было удержать!"
 	start_charging_text = "Вы начинаете собирать молнии вокруг себя."
 	bounce_hit_sound = 'sound/magic/lightningshock.ogg'
@@ -39,7 +39,7 @@
 /datum/spell/charge_up/bounce/lightning/apply_bounce_effect(mob/origin, mob/living/target, energy, mob/user)
 	if(target.can_block_magic(antimagic_flags))
 		target.visible_message(
-			"<span class='warning'>[target.declent_ru(NOMINATIVE)] поглощает заклинание, оставаясь невредимой!</span>",
+			"<span class='warning'>[target.declent_ru(NOMINATIVE)] поглощает заклинание, оставаясь невредимым!</span>",
 			"<span class='danger'>Вы поглощаете заклинание, оставаясь невредимым!</span>"
 		)
 		return

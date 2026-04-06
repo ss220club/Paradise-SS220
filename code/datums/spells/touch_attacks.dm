@@ -30,7 +30,7 @@
 	if(!hand_handled)
 		qdel(attached_hand)
 		attached_hand = null
-		to_chat(user, "<span class='warning'>Ваши руки заполненны!</span>")
+		to_chat(user, "<span class='warning'>Ваши руки заполнены!</span>")
 		return 0
 	to_chat(user, "<span class='notice'>Вы направляете силу заклинания в свою руку.</span>")
 	return 1

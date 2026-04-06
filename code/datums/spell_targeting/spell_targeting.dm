@@ -50,7 +50,7 @@
 			target = A
 
 	if(target)
-		to_chat(user, "<span class='warning'>Only one target found. Casting [spell] on [target]!</span>")
+		to_chat(user, "<span class='warning'>Найдена только одна цель. Наложение [spell] на [target.declent_ru(NOMINATIVE)]!</span>")
 		spell.try_perform(list(target), user)
 		return TRUE
 	return FALSE

@@ -76,7 +76,7 @@
 		if(!usr.mind.miming)
 			to_chat(usr, "<span class='notice'>Сначала ты должен посвятить себя тишине.</span>")
 			return
-		invocation = "<B>[usr.name]</B> выглядит так, как будто перед [usr.ru_p_them()] находится стена.."
+		invocation = "<B>[usr.name]</B> выглядит так, как будто перед [usr.ru_p_them()] находится стена."
 	else
 		invocation_type ="none"
 	..()

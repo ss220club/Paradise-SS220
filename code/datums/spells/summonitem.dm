@@ -45,7 +45,7 @@
 					message = "<span class='notice'>Вы должны подержать нужный предмет в руках, чтобы пометить его для призыва.</span>"
 
 		else if(marked_item && (marked_item in hand_items)) //unlinking item to the spell
-			message = "<span class='notice'>Вы удаляете метку с [marked_item.declent_ru(GENITIVE)] чтобы использовать её чём-то другом.</span>"
+			message = "<span class='notice'>Вы удаляете метку с [marked_item.declent_ru(GENITIVE)], чтобы использовать её в чём-то другом.</span>"
 			name = "Instant Summons"
 			marked_item = 		null
 
@@ -76,7 +76,7 @@
 					var/mob/M = item_to_retrieve.loc
 
 					if(issilicon(M) || !M.transfer_item_to(item_to_retrieve, target.loc)) //Items in silicons warp the whole silicon
-						M.visible_message("<span class='warning'>[M] внезапно исчезает!</span>", "<span class='danger'>Какая-то сила внезапно отталкивает тебя!</span>")
+						M.visible_message("<span class='warning'>[M] внезапно исчезает!</span>", "<span class='danger'>Какая-то сила внезапно отталкивает вас!</span>")
 						M.loc.visible_message("<span class='caution'>[M] внезапно появляется!</span>")
 						item_to_retrieve = null
 						break
@@ -139,7 +139,7 @@
 				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve] внезапно появляется!</span>")
 				playsound(get_turf(target),'sound/magic/summonitems_generic.ogg', 50, 1)
 			else
-				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve] внезапно появляется в руке [target]!</span>")
+				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve] внезапно появляется в руке [target.declent_ru(GENITIVE)]!</span>")
 				playsound(get_turf(target),'sound/magic/summonitems_generic.ogg', 50, 1)
 
 		if(message)

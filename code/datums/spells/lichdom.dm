@@ -47,7 +47,7 @@
 	var/turf/body_turf = get_turf(current_body)
 	var/turf/item_turf = get_turf(marked_item)
 	if(body_turf.z != item_turf.z)
-		to_chat(user, "<span class='warning'>Ваша оберег вне досягаемости!</span>")
+		to_chat(user, "<span class='warning'>Ваш оберег вне досягаемости!</span>")
 		return
 
 	if(isobserver(user))
@@ -64,7 +64,7 @@
 		// Give a hint as to where the body is
 		var/wheres_wizdo = dir2text(get_dir(body_turf, item_turf))
 		if(wheres_wizdo)
-			current_body.visible_message("<span class='warning'>Внезапно труп [current_body.name] разваливается на куски! Вы видите, как из останков поднимается странная энергия и устремляется к [wheres_wizdo]!</span>")
+			current_body.visible_message("<span class='warning'>Внезапно труп [current_body.declent_ru(GENITIVE)] разваливается на куски! Вы видите, как из останков поднимается странная энергия и устремляется к [wheres_wizdo]!</span>")
 			body_turf.Beam(item_turf, icon_state = "lichbeam", icon = 'icons/effects/effects.dmi', time = 10 + 10 * resurrections, maxdistance = INFINITY)
 
 		UnregisterSignal(current_body, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
@@ -98,7 +98,7 @@
 		return
 
 	name = "RISE!"
-	desc = "Восстань из мертвых! Ты возродишься в том месте, где находится твой оберег, и твое старое тело исчезнет."
+	desc = "Восстань из мертвых! Вы возродитесь в том месте, где находится ваш оберег, и ваше старое тело исчезнет."
 	stat_allowed = UNCONSCIOUS
 	cooldown_handler.recharge_duration = 3 MINUTES
 	cooldown_handler.revert_cast()
