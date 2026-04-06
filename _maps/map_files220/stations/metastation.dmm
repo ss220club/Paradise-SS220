@@ -18477,7 +18477,6 @@
 /obj/item/pen/multi/fountain,
 /obj/item/stamp/rep,
 /obj/machinery/requests_console/directional/west,
-/obj/machinery/keycard_auth/directional/south,
 /obj/machinery/phone{
 	pixel_y = 15;
 	pixel_x = -3
@@ -18779,6 +18778,7 @@
 /area/station/science/robotics/showroom)
 "bYo" = (
 /obj/structure/closet/secure_closet/ntrep,
+/obj/machinery/keycard_auth/directional/south,
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "bYp" = (
@@ -32286,11 +32286,6 @@
 /area/station/medical/virology)
 "dZd" = (
 /obj/machinery/light/directional/west,
-/obj/item/radio/intercom,
-/obj/item/radio/intercom/department/security{
-	pixel_x = -28;
-	pixel_y = -11
-	},
 /obj/structure/table/reinforced,
 /obj/item/paper_bin/nanotrasen{
 	pixel_x = -6;
@@ -51215,6 +51210,11 @@
 /obj/structure/filingcabinet,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/radio/intercom/directional/east,
+/obj/item/radio/intercom/department/security{
+	pixel_x = 38;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
