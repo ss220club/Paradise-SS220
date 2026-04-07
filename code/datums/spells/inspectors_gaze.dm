@@ -1,10 +1,10 @@
 /datum/spell/inspectors_gaze
 	name = "Inspector's Gaze"
-	desc = "Let the crew know that they're being watched and inspected."
+	desc = "Дайте экипажу узнать, что за ними наблюдают и контролируют."
 	base_cooldown = 6 SECONDS
 	clothes_req = FALSE
-	selection_activated_message		= "<span class='notice'>You look for a crewmember to inspect! <b>Left-click to gaze at a target!</b></span>"
-	selection_deactivated_message	= "<span class='notice'>You relinquish your gaze... for now.</span>"
+	selection_activated_message		= "<span class='notice'>Вы ищете члена экипажа для проверки! <b> Щелкните левой кнопкой мыши, чтобы посмотреть на цель.</b></span>"
+	selection_deactivated_message	= "<span class='notice'>Ты отводишь свой взгляд... на время.</span>"
 	action_icon_state = "genetic_view"
 
 /datum/spell/inspectors_gaze/create_new_targeting()
@@ -15,9 +15,9 @@
 /datum/spell/inspectors_gaze/cast(list/targets, mob/living/user = usr)
 	var/mob/target = targets[1] // There is only ever one target for your gaze
 	if(!istype(target))
-		to_chat(user, "<span class='warning'>You don't think [target] can commit SOP violations.</span>")
+		to_chat(user, "<span class='warning'>Вы не думаете, что [target.declent_ru(GENITIVE)] может нарушить СРП.</span>")
 		return FALSE
-	to_chat(target, "<span class='warning'>You feel someone staring at you...</span>")
-	to_chat(user, "<span class='notice'>You gaze at [target], intent to find SOP violations.</span>")
+	to_chat(target, "<span class='warning'>Вы чувствуете, что кто-то пристально смотрит за вами...</span>")
+	to_chat(user, "<span class='notice'>Вы смотрите на [target.declent_ru(GENITIVE)] с намерением найти нарушения СРП.</span>")
 
 	return TRUE

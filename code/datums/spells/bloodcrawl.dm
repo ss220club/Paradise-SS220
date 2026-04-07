@@ -1,6 +1,6 @@
 /datum/spell/bloodcrawl
 	name = "Blood Crawl"
-	desc = "Use pools of blood to phase out of existence."
+	desc = "Используйте лужи крови, чтобы растворится в фазе."
 	base_cooldown = 1 SECONDS
 	clothes_req = FALSE
 	should_recharge_after_cast = FALSE
@@ -52,7 +52,7 @@
 
 /obj/item/bloodcrawl
 	name = "blood crawl"
-	desc = "You are unable to hold anything while in this form."
+	desc = "Вы не можете ничего держать, пока находитесь в этой форме."
 	icon = 'icons/effects/blood.dmi'
 	flags = NODROP|ABSTRACT
 
@@ -81,7 +81,7 @@
 	GM.set_nitrogen(MOLES_N2STANDARD)
 	GM.set_temperature(T20C)
 	return GM
-		
+
 /datum/spell/bloodcrawl/proc/block_hands(mob/living/carbon/C)
 	if(C.l_hand || C.r_hand)
 		to_chat(C, "<span class='warning'>You may not hold items while blood crawling!</span>")
@@ -269,7 +269,7 @@
 
 /datum/spell/bloodcrawl/shadow_crawl
 	name = "Shadow Crawl"
-	desc = "Fade into the shadows, increasing your speed and making you incomprehensible. Will not work in lit areas."
+	desc = "Исчезновение во тьме, что увеличит скорость и сделает неосязаемым. Не работает в освещенных местах."
 	allowed_type = /turf
 	action_background_icon_state = "shadow_demon_bg"
 	action_icon_state = "shadow_crawl"
