@@ -35,7 +35,7 @@
 					message += "Это кажется совершенно излишним, но вы все равно проходите через это.<br>"
 				marked_item = 		item
 				message += "Вы помечаете [item.declent_ru(ACCUSATIVE)] для призыва.</span>"
-				name = "Призвать [item]"
+				name = "Призвать [item.declent_ru(ACCUSATIVE)]"
 				break
 
 			if(!marked_item)

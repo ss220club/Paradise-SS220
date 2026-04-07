@@ -454,7 +454,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 /datum/spell/proc/can_cast(mob/user = usr, charge_check = TRUE, show_message = FALSE)
 	if(((!user.mind) || !(src in user.mind.spell_list)) && !(src in user.mob_spell_list))
 		if(show_message)
-			to_chat(user, "<span class='warning'>Тебе не следовало использовать это заклинание! Что-то не так.</span>")
+			to_chat(user, "<span class='warning'>Вам не следовало использовать это заклинание! Что-то не так.</span>")
 		return FALSE
 
 	if(!centcom_cancast) //Certain spells are not allowed on the centcom zlevel
