@@ -28,7 +28,7 @@
 
 	if(target.can_block_magic(antimagic_flags))
 		target.visible_message("<span class='danger'>Лицо [target.declent_ru(GENITIVE)] охватывает пламя, которое мгновенно вырывается наружу, оставляя [target.declent_ru(ACCUSATIVE)] невредимым!</span>",
-			"<span class='danger'>Твое лицо начинает гореть, но пламя отражается твоей антимагической защитой!</span>",
+			"<span class='danger'>Ваше лицо начинает гореть, но пламя отражается вашей антимагической защитой!</span>",
 		)
 		to_chat(user, "<span class='warning'>Заклинание не дало эффекта!</span>")
 		return FALSE
@@ -39,7 +39,7 @@
 	magichead.flags_inv = null	//so you can still see their face
 	magichead.voicechange = TRUE	//NEEEEIIGHH
 	target.visible_message(	"<span class='danger'>Лицо [target.declent_ru(GENITIVE)] озаряется пламенем, а после на его месте появляется голова лошади!</span>", \
-							"<span class='danger'>Твое лицо горит, и вскоре ты понимаешь, что у тебя лошадиная морда!</span>")
+							"<span class='danger'>Ваше лицо горит, и вскоре вы понимаете, что у тебя лошадиная морда!</span>")
 	if(!target.drop_item_to_ground(target.wear_mask))
 		qdel(target.wear_mask)
 	target.equip_to_slot_if_possible(magichead, ITEM_SLOT_MASK, TRUE, TRUE)

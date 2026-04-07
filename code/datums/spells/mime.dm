@@ -17,7 +17,7 @@
 /datum/spell/aoe/conjure/build/mime_wall/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>Сначала ты должен посвятить себя тишине.</span>")
+			to_chat(usr, "<span class='notice'>Сначала вы должны посвятить себя тишине.</span>")
 			return
 		invocation = "<B>[usr.name]</B> выглядит так, как будто перед [usr.ru_p_them()] находится стена."
 	else
@@ -74,7 +74,7 @@
 /datum/spell/forcewall/mime/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>Сначала ты должен посвятить себя тишине.</span>")
+			to_chat(usr, "<span class='notice'>Сначала вы должны посвятить себя тишине.</span>")
 			return
 		invocation = "<B>[usr.name]</B> выглядит так, как будто перед [usr.ru_p_them()] находится стена."
 	else
@@ -83,7 +83,7 @@
 
 /datum/spell/mime/fingergun
 	name = "Finger Gun"
-	desc = "Стреляйте летальными бесшумными пулями прямо из пальцев! Для каждой активации доступно по 3 пули. Используйте пальцы, чтобы вручную спрятать их в кобуру."
+	desc = "Стреляйте летальными бесшумными пулями прямо из пальцев! Для каждой активации доступно по 3 пули. Используйте пальцы, чтобы спрятать их в кобуру."
 	clothes_req = FALSE
 	base_cooldown = 30 SECONDS
 	human_req = TRUE
@@ -115,11 +115,11 @@
 	SIGNAL_HANDLER
 	if(!current_gun || !any && action.owner.get_active_hand() != current_gun)
 		return
-	to_chat(action.owner, "<span class='notice'>Ты прячешь пальцы в кобуру. Возможно, в другой раз...</span>")
+	to_chat(action.owner, "<span class='notice'>Вы прячете пальцы в кобуру. Возможно, в другой раз...</span>")
 	QDEL_NULL(current_gun)
 
 /datum/spell/mime/fingergun/fake
-	desc = "Представьте, что вы стреляете бесшумными пулями прямо из пальцев! Для каждой активации доступно по 3 пули. Используйте пальцы, чтобы вручную спрятать их в кобуру."
+	desc = "Представьте, что вы стреляете бесшумными пулями прямо из пальцев! Для каждой активации доступно по 3 пули. Используйте пальцы, чтобы спрятать их в кобуру."
 	gun = /obj/item/gun/projectile/revolver/fingergun/fake
 
 // Mime Spellbooks
