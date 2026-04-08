@@ -1,6 +1,6 @@
 /datum/spell/bloodcrawl
 	name = "Blood Crawl"
-	desc = "Используйте лужи крови, чтобы растворится в фазе."
+    desc = "Используйте лужи крови, чтобы раствориться в фазе."
 	base_cooldown = 1 SECONDS
 	clothes_req = FALSE
 	should_recharge_after_cast = FALSE
