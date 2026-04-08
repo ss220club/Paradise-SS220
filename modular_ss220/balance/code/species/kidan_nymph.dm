@@ -23,7 +23,8 @@
 		"liver"   = /obj/item/organ/internal/liver/kidan,
 		"kidneys"   = /obj/item/organ/internal/kidneys/kidan,
 		"brain"   = /obj/item/organ/internal/brain/kidan,
-		"eyes"     = /obj/item/organ/internal/eyes/kidan
+		"eyes"     = /obj/item/organ/internal/eyes/kidan,
+		"lantern"  = /obj/item/organ/internal/lantern
 	)
 
 	allowed_consumed_mobs = list(/mob/living/basic/diona_nymph)
@@ -32,7 +33,7 @@
 	name = "kidan nymph cube"
 	monkey_type = /datum/species/monkey/kidan_nymph
 
-/datum/design/kidan_nymhpcube
+/datum/design/kidan_nymphcube
 	name = "Kidan nymph cube"
 	id = "kncube"
 	build_type = BIOGENERATOR
