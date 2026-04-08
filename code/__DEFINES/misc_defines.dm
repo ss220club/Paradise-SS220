@@ -436,7 +436,7 @@
 #define INVESTIGATE_DEATHS "deaths"
 
 // The SQL version required by this version of the code
-#define SQL_VERSION 702209
+#define SQL_VERSION 712209
 
 // Vending machine stuff
 #define CAT_NORMAL (1<<0)
