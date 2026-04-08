@@ -404,8 +404,8 @@ GLOBAL_LIST_INIT(special_role_times, list(
 			if(S.clothing_flags & HAS_SOCKS)
 				dat += "<b>Носки:</b> <a href='byond://?_src_=prefs;preference=socks;task=input'>[active_character.socks]</a><BR>"
 			dat += "<b>Рюкзак:</b> <a href='byond://?_src_=prefs;preference=bag;task=input'>[active_character.backbag]</a><br><br>"
-			dat += "<a style='font-size: 1.5em;' href='byond://?_src_=prefs;preference=loadout;task=input'>Стартовые предметы</a><br>"
-			dat += "<a href='byond://?_src_=prefs;preference=quirks;task=input'>Open Quirk Menu</a><br>"
+			dat += "<a style='font-size: 1.5em;' href='byond://?_src_=prefs;preference=loadout;task=input'>Стартовые предметы</a><br><br>"
+			dat += "<a style='font-size: 1.5em;' href='byond://?_src_=prefs;preference=quirks;task=input'>Квирки</a><br>"
 
 			var/datum/species/myspecies = GLOB.all_species[active_character.species]
 			if(!isnull(myspecies))
