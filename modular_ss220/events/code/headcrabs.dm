@@ -6,8 +6,13 @@
 #define HEADCRAB_SPAWNER 5
 
 /datum/event/headcrabs
+	name = "Headcrabs"
 	announceWhen = 10
 	endWhen = 11
+	noAutoEnd = TRUE
+	nominal_severity = EVENT_LEVEL_MODERATE
+	role_weights = list(ASSIGNMENT_SECURITY =  5)
+	role_requirements = list(ASSIGNMENT_SECURITY = 3)
 	var/locstring
 	var/headcrab_type
 

@@ -97,10 +97,10 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 			organization = new org_type(src)
 			if(istype(organization, /datum/antag_org/syndicate/gorlex))
 				if(prob(50))
-					organization.intro_desc += "Get in, fuck shit up, get out with a fancy new shuttle. You know the drill."
+					organization.intro_desc += "Залезть, устроить беспредел, вылететь на новом шикарном шаттле. Вы знаете, как это делается."
 					organization.forced_objectives = list(/datum/objective/hijack)
 				else
-					organization.intro_desc += "Get in, fuck shit up, send the station out with a bang. You know the drill."
+					organization.intro_desc += "Залезть внутрь, устроить настоящий беспредел, похоронить станцию ​​с оглушительным грохотом. Вы знаете, как это делается."
 					organization.forced_objectives = list(/datum/objective/nuke)
 			return
 

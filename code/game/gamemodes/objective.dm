@@ -295,8 +295,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return ..()
 
 /datum/objective/infiltrate_sec
-	name = "Infiltrate Security"
-	explanation_text = "Your objective is to infiltrate the ranks of the Security department undetected, be it by being lawfully hired into it or by replacing one of its members."
+	name = "Проникнуть в службу безопасности"
+	explanation_text = "Ваша задача — незаметно проникнуть в ряды отдела безопасности, будь то путем законного трудоустройства или путем замены одного из его сотрудников."
 	needs_target = FALSE
 	completed = TRUE
 
@@ -534,9 +534,9 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/nuke
-	name = "Detonate the Station"
-	explanation_text = "Detonate the station's nuclear device. You will need to secure the station's Nuclear Authentication Disk in order to arm the warhead. \
-	The Nuclear Authentication Disk can be found in the Captain's Office, or carried by the Captain."
+	name = "Взорвать станцию"
+	explanation_text = "Подорвите ядерное устройство станции. Для активации боеголовки вам потребуется получить доступ к диску ядерной аутентификации станции. \
+	Диск ядерного подтверждения можно найти в кабинете капитана или же капитан может носить его с собой."
 	martyr_compatible = TRUE
 	needs_target = FALSE
 
@@ -548,7 +548,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 			code = bombue.r_code
 			break
 	if(code)
-		explanation_text += " We have intercepted the nuclear codes for the warhead. The code is [code]. Good luck."
+		explanation_text += " Мы перехватили ядерные коды боеголовки. Код: [code]. Удачи."
 
 /datum/objective/nuke/check_completion()
 	if(SSticker.mode.station_was_nuked)
@@ -1034,8 +1034,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 			return FALSE
 
 /datum/objective/specialization
-	name = "Vampire subclass objective"
-	explanation_text = "Accumulate at least 150 units of blood and pick a specialization to receive further instructions."
+	name = "Цель подкласса вампира"
+	explanation_text = "Накопите не менее 150 единиц крови и выберите специализацию, чтобы получить дальнейшие инструкции."
 	needs_target = FALSE
 
 /datum/objective/specialization/update_explanation_text()
@@ -1102,7 +1102,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 	var/list/owners = get_owners()
 	for(var/datum/mind/M in owners)
-		to_chat(M.current, "<BR><span class='userdanger'>We sense the target console has been compromised. New vulnerability located.</span>")
+		to_chat(M.current, "<BR><span class='userdanger'>Мы предполагаем, что целевая консоль скомпрометирована. Обнаружена новая уязвимость.</span>")
 		SEND_SOUND(M.current, sound('sound/ambience/alarm4.ogg'))
 
 	target_console = null
@@ -1158,7 +1158,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 				continue
 			var/area/comp_area = get_area(comp)
 			possible_computers += comp
-			computer_areas[comp] = comp_area ? comp_area.name : "(Unknown Location - Please create an issue on GitHub!)"
+			computer_areas[comp] = comp_area ? comp_area.name : "(Местоположение неизвестно — пожалуйста, создайте issue в GitHub!)"
 
 	if(length(possible_computers))
 		target_console = pick(possible_computers)
@@ -1167,7 +1167,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	else
 		// Fallback if no computers found
 		target_console = null
-		target_console_room = "(Unknown Location - Please create an issue on GitHub!)"
+		target_console_room = "(Местоположение неизвестно — пожалуйста, создайте issue в GitHub!)"
 
 /datum/objective/download/found_target()
 	return target_console
@@ -1176,7 +1176,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 // E.g. "the Communications Console"
 /datum/objective/download/proc/get_formatted_console_name()
 	if(!target_console)
-		return "an unknown console"
+		return "неизвестная консоль"
 
 	var/console_name = target_console.name
 
@@ -1199,7 +1199,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return "the " + formatted_name
 
 /datum/objective/download/update_explanation_text()
-	explanation_text = "Use your charging implant on [get_formatted_console_name()] in the [target_console_room] to download your next objective."
+	explanation_text = "Используйте свой зарядный имплант на [get_formatted_console_name()] в [target_console_room] чтобы загрузить следующую цель."
 
 // We already check that the player is an IPC when assigning this objective,
 // but this protects us from cases like cybernetic revolution where the implant could be lost.
@@ -1238,7 +1238,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 // This is called from computer.dm when the do_after of downloading is completed
 /datum/objective/download/proc/complete_objective()
 	for(var/datum/mind/M in get_owners())
-		to_chat(M.current, "<BR><span class='warning'>*gzzt* Authentication success! Welcome, [M.current.name]. Thank you for- for- for-...</span>")
+		to_chat(M.current, "<BR><span class='warning'>*gzzt* Аутентификация прошла успешно! Добро пожаловать, [M.current.name]. Спасибо за- за- за-...</span>")
 
 		var/datum/antagonist/mindflayer/flayer_datum = M.has_antag_datum(/datum/antagonist/mindflayer)
 
@@ -1253,7 +1253,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/lair
 	name = "Build a lair"
-	explanation_text = "Build a lair by placing a coffin in the middle of an unoccupied 3x3 area. This requires at least 150 total units of blood."
+	explanation_text = "Для постройки логова необходимо разместить гроб посреди незанятой области размером 3x3. Для этого потребуется не менее 150 единиц крови."
 	needs_target = FALSE
 
 /datum/objective/lair/check_completion()
