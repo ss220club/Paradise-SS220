@@ -25,7 +25,7 @@
 			A.forceMove(get_turf(H))
 			spawn()
 				A.throw_at(get_edge_target_turf(H, pick(GLOB.alldirs)), rand(1, 10), 5)
-            H.visible_message("<span class='danger'>[A.name] [H.declent_ru(GENITIVE)] вылетает из тела в результате магического взрыва!</span>",\
+			H.visible_message("<span class='danger'>[A.name] [H.declent_ru(GENITIVE)] вылетает из тела в результате магического взрыва!</span>",\
 							"<span class='danger'>Твой [A.name] вылетает из твоего тела в магическом взрыве!</span>")
 			H.KnockDown(4 SECONDS)
 		else

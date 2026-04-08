@@ -1,6 +1,7 @@
 /datum/spell/disguise_self
 	name = "Disguise Self"
-	    desc = "Замаскируйтесь под члена экипажа, в зависимости от вашего текущего местоположения. Активация заклинания занимает две секунды, будучи неподвижным."
+	desc = "Замаскируйтесь себя под члена экипажа, в зависимости от вашего текущего местоположения. Активация заклинания занимает две секунды, будучи неподвижным"
+
 	base_cooldown = 3 SECONDS
 	clothes_req = FALSE
 	level_max = 0 //cannot be improved
@@ -16,13 +17,13 @@
 	var/mob/living/carbon/human/H = user
 
 	H.emote("spin")
-    to_chat(H, "<span class='notice'>Вы начинаете крутиться на месте и использовать [src.name]...</span>")
+	to_chat(H, "<span class='notice'>Вы наачинаете крутится на месте и копировать [src.name]...</span>")
 	if(do_after(H, 2 SECONDS, FALSE, H))
 		finish_disguise(H)
 		return TRUE
 	else
 		H.slip("your own foot", 1 SECONDS, 0, 0, 1, "trip")
-        to_chat(H, "<span class='danger'>Вы должны стоять неподвижно, чтобы использовать [src.name]!</span>")
+		to_chat(H, "<span class='danger'>Вы должны стоять неподвижно чтобы скопировать [src.name]!</span>")
 		return FALSE
 
 /datum/spell/disguise_self/proc/finish_disguise(mob/living/carbon/human/H)

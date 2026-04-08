@@ -1,6 +1,6 @@
 /datum/spell/mimic
 	name = "Mimic"
-    desc = "Изучите новую форму для имитации или мимикрируйте в уже известную."
+	desc = "Изучите новую форму для имитации или мимикрируйте в уже известную."
 	clothes_req = FALSE
 	base_cooldown = 3 SECONDS
 	action_icon_state = "morph_mimic"
@@ -164,7 +164,7 @@
 /datum/spell/mimic/proc/show_restore_form_message(mob/user, old_name, new_name)
 	user.visible_message(
 		"<span class='warning'>[old_name] трясется, искажается и быстро превращается в [new_name]!</span>",
-        "<span class='sinister'>Вы возвращаетесь к своей обычной форме.</span>",
+		"<span class='sinister'>Вы возвращаетесь к своей обычной форме.</span>",
 		"<span class='warning'>Вы слышите громкий треск!</span>"
 	)
 
