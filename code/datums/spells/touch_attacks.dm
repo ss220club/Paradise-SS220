@@ -44,7 +44,7 @@
 		return
 	QDEL_NULL(attached_hand)
 	if(on_remove_message)
-		to_chat(user, "<span class='notice'>Ты вытягиваешь силу из своей руки.</span>")
+		to_chat(user, "<span class='notice'>Вы вытягиваете силу из своей руки.</span>")
 
 
 /datum/spell/touch/disintegrate

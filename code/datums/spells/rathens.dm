@@ -26,7 +26,7 @@
 			spawn()
 				A.throw_at(get_edge_target_turf(H, pick(GLOB.alldirs)), rand(1, 10), 5)
 			H.visible_message("<span class='danger'>[A.name] [H.declent_ru(GENITIVE)] вылетает из тела в результате магического взрыва!</span>",\
-							"<span class='danger'>Твой [A.name] вылетает из твоего тела в магическом взрыве!</span>")
+							"<span class='danger'>Ваш [A.name] вылетает из вашего тела в магическом взрыве!</span>")
 			H.KnockDown(4 SECONDS)
 		else
 			var/obj/effect/decal/cleanable/blood/gibs/G = new/obj/effect/decal/cleanable/blood/gibs(get_turf(H))

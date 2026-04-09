@@ -26,7 +26,7 @@
 			for(var/path in possible_shapes)
 				var/mob/living/simple_animal/A = path
 				animal_list[initial(A.name)] = path
-			shapeshift_type = tgui_input_list(M, "Выбери свой Звериный облик!", "Пришло время меняться!", animal_list)
+			shapeshift_type = tgui_input_list(M, "Выберите свой Звериный облик!", "Пришло время меняться!", animal_list)
 			if(!shapeshift_type) //If you aren't gonna decide I am!
 				shapeshift_type = pick(animal_list)
 			shapeshift_type = animal_list[shapeshift_type]
@@ -38,7 +38,7 @@
 /datum/spell/shapeshift/proc/Shapeshift(mob/living/caster)
 	for(var/mob/living/M in caster)
 		if(M.status_flags & GODMODE)
-			to_chat(caster, "<span class='warning'>Ты уже превратился!</span>")
+			to_chat(caster, "<span class='warning'>Вы уже превратились!</span>")
 			return
 
 	var/mob/living/shape = new shapeshift_type(get_turf(caster))
@@ -109,7 +109,7 @@
 	invocation_type = "none"
 	action_background_icon_state = "bg_demon"
 	action_icon_state = "glare"
-	gain_desc = "Вы получили возможность превращаться в Адского пса. Это боевая форма с различными способностями, выносливая, но не неуязвимая. Со временем она может восстанавливаться вне использования."
+	gain_desc = "Вы получили возможность превращаться в Адского пса. Это боевая форма с различными способностями, выносливая, но не неуязвимая. Со временем она может восстанавливаться во время отдыха."
 
 	shapeshift_type = /mob/living/basic/hellhound
 	current_shapes = list(/mob/living/basic/hellhound)

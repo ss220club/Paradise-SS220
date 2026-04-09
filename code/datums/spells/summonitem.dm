@@ -116,7 +116,7 @@
 				return
 
 			if(!isturf(target.loc))
-				to_chat(target, "<span class='caution'>Вы пытаетесь произнести заклинание, но у вас ничего не получается!</span>")
+				to_chat(target, "<span class='caution'>Вы пытаетесь произнести заклинание, но у вас ничего не получается! Возможно, вы недоступны?</span>")
 				return
 			if(visible_item)
 				item_to_retrieve.loc.visible_message("<span class='warning'>[item_to_retrieve] внезапно исчезает!</span>")

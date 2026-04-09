@@ -1,5 +1,5 @@
 /datum/spell/genetic
-	desc = "Это заклинание вызывает у цели ряд мутаций и инвалидности."
+	desc = "Это заклинание вызывает у цели ряд мутаций и приводит к инвалидности."
 
 	var/list/active_on = list()
 	var/list/traits = list() // traits

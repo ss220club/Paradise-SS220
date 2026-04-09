@@ -9,7 +9,7 @@
 	charge_sound = new /sound('sound/magic/lightning_chargeup.ogg', channel = 7)
 	max_charge_time = 10 SECONDS
 	stop_charging_text = "Вы перестаете заряжать магнетизмом окружающее вас пространство."
-	stop_charging_fail_text = "Магнетизм вокруг тебя слишком силен, чтобы остановиться сейчас!"
+	stop_charging_fail_text = "Магнетизм вокруг вас слишком силен, чтобы остановиться сейчас!"
 	start_charging_text = "Вы начинаете заряжать магнетизм вокруг себя."
 	bounce_hit_sound = 'sound/machines/defib_zap.ogg'
 
@@ -50,6 +50,6 @@
 	if(!(to_throw.flags & CONDUCT) || !thrower.drop_item_to_ground(to_throw, silent = TRUE))
 		return FALSE
 	thrower.visible_message("<span class='warning'>[to_throw.declent_ru(NOMINATIVE)] вылетает из рук [thrower.declent_ru(GENITIVE)]!</span>",
-		"<span class='danger'>[to_throw.declent_ru(NOMINATIVE)] внезапно вырывается из твоих рук!</span>")
+		"<span class='danger'>[to_throw.declent_ru(NOMINATIVE)] внезапно вырывается из ваших рук!</span>")
 	to_throw.throw_at(user, to_throw.throw_range, 4)
 	return TRUE

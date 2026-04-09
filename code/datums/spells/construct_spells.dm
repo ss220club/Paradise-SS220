@@ -73,7 +73,7 @@
 
 /datum/spell/aoe/conjure/build/lesserforcewall
 	name = "Shield"
-	desc = "Это заклинание создает временное неразрушимое препятствие, чтобы защитить вас и союзников."
+	desc = "Это заклинание создает временное неразрушимое препятствие, чтобы защитить вас и союзников от вражеского огня."
 	action_icon_state = "cultforcewall"
 	action_background_icon_state = "bg_cult"
 	base_cooldown = 300

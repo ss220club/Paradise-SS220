@@ -9,7 +9,7 @@
 	charge_sound = new /sound('sound/magic/lightning_chargeup.ogg', channel = 7)
 	max_charge_time = 10 SECONDS
 	stop_charging_text = "Вы перестаёте заряжать молнии вокруг себя."
-	stop_charging_fail_text = "Молнии вокруг тебя слишком сильны, чтобы их можно было удержать!"
+	stop_charging_fail_text = "Молнии вокруг вас слишком сильны, чтобы их можно было удержать!"
 	start_charging_text = "Вы начинаете собирать молнии вокруг себя."
 	bounce_hit_sound = 'sound/magic/lightningshock.ogg'
 	var/damaging = TRUE

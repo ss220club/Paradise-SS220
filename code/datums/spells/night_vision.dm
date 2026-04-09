@@ -6,7 +6,7 @@
 	clothes_req = FALSE
 	antimagic_flags = NONE
 
-	message = "<span class='notice'>Ты переключаешь свое ночное зрение!</span>"
+	message = "<span class='notice'>Вы переключаете свое ночное зрение!</span>"
 
 /datum/spell/night_vision/create_new_targeting()
 	return new /datum/spell_targeting/self

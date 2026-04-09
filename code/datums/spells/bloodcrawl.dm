@@ -84,7 +84,7 @@
 
 /datum/spell/bloodcrawl/proc/block_hands(mob/living/carbon/C)
 	if(C.l_hand || C.r_hand)
-		to_chat(C, "<span class='warning'>You may not hold items while blood crawling!</span>")
+		to_chat(C, "<span class='warning'>Вы не можете держать предметы во время передвижения в форме крови!!</span>")
 		return FALSE
 	var/obj/item/bloodcrawl/B1 = new(C)
 	var/obj/item/bloodcrawl/B2 = new(C)
