@@ -4,9 +4,8 @@
 /area/space)
 "aab" = (
 /obj/docking_port/stationary{
-	dheight = 9;
 	dir = 2;
-	dwidth = 5;
+	dwidth = 8;
 	height = 22;
 	id = "syndicate_n";
 	name = "north of station";
@@ -29,35 +28,11 @@
 /obj/effect/landmark/spawner/carp,
 /turf/space,
 /area/space)
-"aaK" = (
-/obj/docking_port/stationary{
-	dheight = 9;
-	dir = 2;
-	dwidth = 5;
-	height = 22;
-	id = "syndicate_nw";
-	name = "northwest of station";
-	width = 18
-	},
-/turf/space,
-/area/space)
 "aaT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
-"aaX" = (
-/obj/docking_port/stationary{
-	dheight = 9;
-	dir = 2;
-	dwidth = 5;
-	height = 22;
-	id = "syndicate_ne";
-	name = "northeast of station";
-	width = 18
-	},
-/turf/space,
-/area/space)
 "abb" = (
 /obj/machinery/computer/communications{
 	dir = 1
@@ -10028,10 +10003,10 @@
 "bhu" = (
 /obj/machinery/door/airlock,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable/extra_insulated{
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
 "bhv" = (
@@ -11927,10 +11902,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/procedure/trainer_office)
 "bpU" = (
-/obj/structure/cable/extra_insulated,
 /obj/effect/landmark/spawner/nukedisc_respawn,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/power/apc/reinforced/directional/east,
+/obj/structure/cable,
+/obj/machinery/power/apc/directional/east,
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
 "bpV" = (
@@ -18502,7 +18477,6 @@
 /obj/item/pen/multi/fountain,
 /obj/item/stamp/rep,
 /obj/machinery/requests_console/directional/west,
-/obj/machinery/keycard_auth/directional/south,
 /obj/machinery/phone{
 	pixel_y = 15;
 	pixel_x = -3
@@ -18804,6 +18778,7 @@
 /area/station/science/robotics/showroom)
 "bYo" = (
 /obj/structure/closet/secure_closet/ntrep,
+/obj/machinery/keycard_auth/directional/south,
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "bYp" = (
@@ -21564,11 +21539,11 @@
 /turf/simulated/floor/carpet/royalblue,
 /area/station/command/office/captain)
 "clO" = (
-/obj/structure/cable/extra_insulated{
-	icon_state = "1-2"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/maintcentral)
@@ -24056,8 +24031,6 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
 "cxQ" = (
-/obj/structure/table/wood,
-/obj/item/storage/photo_album,
 /turf/simulated/floor/carpet/grimey,
 /area/station/service/chapel/office)
 "cxT" = (
@@ -25091,6 +25064,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "chapel"
 	},
@@ -25575,6 +25551,7 @@
 /obj/item/storage/fancy/candle_box/eternal{
 	pixel_y = 5
 	},
+/obj/item/folder,
 /turf/simulated/floor/carpet/grimey,
 /area/station/service/chapel/office)
 "cFB" = (
@@ -26457,6 +26434,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel)
@@ -28886,8 +28866,8 @@
 "cXQ" = (
 /obj/structure/table/wood,
 /obj/structure/disposalpipe/segment,
-/obj/item/folder,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/item/storage/photo_album,
 /turf/simulated/floor/carpet/grimey,
 /area/station/service/chapel/office)
 "cXU" = (
@@ -29479,18 +29459,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel,
 /area/station/service/janitor)
-"dbE" = (
-/obj/docking_port/stationary{
-	dheight = 9;
-	dir = 2;
-	dwidth = 5;
-	height = 22;
-	id = "syndicate_se";
-	name = "southeast of station";
-	width = 18
-	},
-/turf/space,
-/area/space)
 "dbG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -29635,18 +29603,6 @@
 /obj/effect/turf_decal/tiles/department/medical,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/storage)
-"dcO" = (
-/obj/docking_port/stationary{
-	dheight = 9;
-	dir = 2;
-	dwidth = 5;
-	height = 22;
-	id = "syndicate_sw";
-	name = "southwest of station";
-	width = 18
-	},
-/turf/space,
-/area/space)
 "dcX" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -29730,18 +29686,6 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
-"ddQ" = (
-/obj/docking_port/stationary{
-	dheight = 9;
-	dir = 2;
-	dwidth = 5;
-	height = 22;
-	id = "syndicate_s";
-	name = "south of station";
-	width = 18
-	},
-/turf/space,
-/area/space)
 "ddR" = (
 /obj/structure/table,
 /obj/item/mmi,
@@ -29965,6 +29909,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/carpet,
 /area/station/service/chapel)
@@ -30328,7 +30275,6 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/directional/east,
-/obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel,
 /area/station/security/prison/cell_block/a)
 "did" = (
@@ -32340,11 +32286,6 @@
 /area/station/medical/virology)
 "dZd" = (
 /obj/machinery/light/directional/west,
-/obj/item/radio/intercom,
-/obj/item/radio/intercom/department/security{
-	pixel_x = -28;
-	pixel_y = -11
-	},
 /obj/structure/table/reinforced,
 /obj/item/paper_bin/nanotrasen{
 	pixel_x = -6;
@@ -36398,7 +36339,10 @@
 /area/station/maintenance/aft2)
 "fxB" = (
 /obj/machinery/light/small/directional/south,
-/obj/machinery/light_switch/south,
+/obj/machinery/light_switch/south{
+	pixel_x = 6;
+	pixel_y = -24
+	},
 /obj/machinery/button/windowtint{
 	dir = 1;
 	id = "CHAP";
@@ -37346,6 +37290,9 @@
 "fPa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel)
 "fPd" = (
@@ -39372,6 +39319,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -51261,6 +51211,11 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/item/radio/intercom/directional/east,
+/obj/item/radio/intercom/department/security{
+	pixel_x = 38;
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
@@ -51804,7 +51759,7 @@
 "llw" = (
 /obj/docking_port/stationary{
 	dir = 8;
-	dwidth = 3;
+	dwidth = 7;
 	height = 5;
 	id = "sit_arrivals";
 	name = "Cerebron Arrivals";
@@ -60673,6 +60628,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel/funeral)
 "oDE" = (
@@ -63612,7 +63570,7 @@
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "pKS" = (
-/obj/structure/cable/extra_insulated{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
@@ -63757,6 +63715,7 @@
 /obj/effect/turf_decal/tiles/department/security/side{
 	dir = 4
 	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel,
 /area/station/security/prison/cell_block/a)
 "pOr" = (
@@ -79447,6 +79406,9 @@
 /obj/machinery/door/airlock/public/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel/funeral)
 "vXw" = (
@@ -95349,7 +95311,7 @@ aaa
 aaa
 aaa
 aaa
-aaK
+aaa
 aaa
 aaa
 aaa
@@ -99361,7 +99323,7 @@ aaa
 aaa
 aaa
 aaa
-dcO
+aaa
 aaa
 aaa
 aaa
@@ -116097,7 +116059,7 @@ aaa
 aaa
 aaa
 aaa
-ddQ
+aaa
 aaa
 aaa
 aaa
@@ -133792,7 +133754,7 @@ aaa
 aaa
 aaa
 aaa
-dbE
+aaa
 aaa
 aaa
 aaa
@@ -133897,7 +133859,7 @@ aaa
 aaa
 aaa
 aaa
-aaX
+aaa
 aaa
 aaa
 aaa

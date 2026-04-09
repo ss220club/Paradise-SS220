@@ -4,7 +4,7 @@
 
 /obj/item/rsf
 	name = "\improper Rapid-Service-Fabricator"
-	desc = "A device used to rapidly deploy service items."
+	desc = "Устройство, используемое для быстрого развёртывания сервисных предметов."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
 	var/atom/currently_dispensing
@@ -28,12 +28,12 @@
 							"Paper" = image(icon = 'icons/obj/bureaucracy.dmi', icon_state = "paper"),
 							"Pen" = image(icon = 'icons/obj/bureaucracy.dmi', icon_state = "pen"),
 							"Dice Pack" = image(icon = 'icons/obj/dice.dmi', icon_state = "dicebag"),
-							"Cigarette" = image(icon = 'icons/obj/clothing/masks.dmi', icon_state = "cig_on"),
+							"Cigarette" = image(icon = 'icons/obj/clothing/smoking.dmi', icon_state = "cig_on"),
 							"Newdles" = image(icon = 'icons/obj/food/food.dmi', icon_state = "chinese3"),
 							"Donut" = image(icon = 'icons/obj/food/bakedgoods.dmi', icon_state = "donut1"),
 							"Chicken Soup" = image(icon = 'icons/obj/drinks.dmi', icon_state = "soupcan"),
 							"Tofu Burger" = image(icon = 'icons/obj/food/burgerbread.dmi', icon_state = "tofuburger"),
-							"Cigar" = image(icon = 'icons/obj/clothing/masks.dmi', icon_state = "cigar_off"),
+							"Cigar" = image(icon = 'icons/obj/clothing/smoking.dmi', icon_state = "cigar"),
 							"Smoked Cheese" = image(icon = 'icons/obj/food/food.dmi', icon_state = "cheesewheel-smoked"),
 							"Edam Cheese" = image(icon = 'icons/obj/food/food.dmi', icon_state = "cheesewheel-edam"),
 							"Blue Cheese" = image(icon = 'icons/obj/food/food.dmi', icon_state = "cheesewheel-blue"),
@@ -63,18 +63,19 @@
 /obj/item/rsf/attack_self__legacy__attackchain(mob/user)
 	playsound(loc, 'sound/effects/pop.ogg', 50, FALSE)
 	if(!currently_dispensing)
-		to_chat(user, "<span class='notice'>Choose an item to dispense!</span>")
+		to_chat(user, "<span class='notice'>Выберите товар для выдачи!</span>")
 	else
-		to_chat(user, "<span class='notice'>You are currently dispensing a [initial(currently_dispensing.name)].</span>")
+		to_chat(user, "<span class='notice'>В данный момент вы отпускаете [initial(currently_dispensing.name)].</span>")
 
 	var/rsf_radial_choice = show_radial_menu(user, src, get_radial_contents())
 	if(user.stat || !in_range(user, src))
-		return
+		return ITEM_INTERACT_COMPLETE
+
 	currently_dispensing = rsf_items[rsf_radial_choice]
 	power_mode = power_costs[rsf_radial_choice]
 	if(currently_dispensing)
-		to_chat(user, "<span class='notice'>Your RSF has been configured to now dispense a [initial(currently_dispensing.name)]!</span>")
-	return TRUE
+		to_chat(user, "<span class='notice'>Ваш RSF был настроен на выдачу [initial(currently_dispensing.name)]!</span>")
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/rsf/proc/get_radial_contents()
 	return rsf_icons & rsf_items
@@ -82,22 +83,28 @@
 /obj/item/rsf/afterattack__legacy__attackchain(atom/A, mob/user, proximity)
 	if(!currently_dispensing)
 		return
+
 	if(!proximity)
 		return
+
 	if(!istype(A, /obj/structure/table) && !isfloorturf(A))
+		to_chat(user, "<span class='warning'>RSF может создавать сервисные товары только на столах или на полу!</span>")
 		return
+
 	if(isrobot(user))
 		var/mob/living/silicon/robot/energy_check = user
 		if(!energy_check.cell.use(power_mode))
-			to_chat(user, "<span class='warning'>Insufficient energy.</span>")
+			to_chat(user, "<span class='warning'>Недостаточно энергии.</span>")
 			flick("[icon_state]_empty", src)
 			return
+
 	var/turf/T = get_turf(A)
 	if(!istype(T) || T.density)
 		to_chat(user, "The RSF can only create service items on tables, or floors.")
 		return
-	playsound(loc, 'sound/machines/click.ogg', 10, 1)
+
 	new currently_dispensing(T)
+	playsound(loc, 'sound/machines/click.ogg', 10, 1)
 
 /obj/item/rsf/executive
 	name = "\improper Executive-Service-Fabricator"
