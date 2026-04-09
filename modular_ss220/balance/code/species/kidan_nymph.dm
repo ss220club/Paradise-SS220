@@ -23,6 +23,7 @@
 		"liver"   = /obj/item/organ/internal/liver/kidan,
 		"kidneys"   = /obj/item/organ/internal/kidneys/kidan,
 		"brain"   = /obj/item/organ/internal/brain/kidan,
+		"appendix" = /obj/item/organ/internal/appendix,
 		"eyes"     = /obj/item/organ/internal/eyes/kidan,
 		"lantern"  = /obj/item/organ/internal/lantern
 	)
