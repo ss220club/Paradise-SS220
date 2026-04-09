@@ -40,3 +40,9 @@
 	materials = list(MAT_BIOMASS = 250)
 	build_path = /obj/item/food/monkeycube/kidan_nymphcube
 	category = list("initial", "Food")
+
+/obj/item/storage/box/monkeycubes/kidan_nymph_cubes
+	name = "kidan nymph cube box"
+	desc = "Kidan cubes from the people of the TSF. Just add water!"
+	icon_state = "kidan_nymph_box"
+	monkey_cube_type = /obj/item/food/monkeycube/kidan_nymphcube
