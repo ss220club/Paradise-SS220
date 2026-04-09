@@ -3,7 +3,7 @@
 /obj/item/nuke_core
 	name = "plutonium core"
 	desc = "Extremely radioactive. Wear goggles."
-	icon = 'icons/obj/nuke_tools.dmi'
+	icon = 'icons/obj/theft_tools.dmi'
 	icon_state = "plutonium_core"
 	inhand_icon_state = "plutoniumcore"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
@@ -39,7 +39,7 @@
 /obj/item/nuke_core_container
 	name = "nuke core container"
 	desc = "A lead-lined secure container produced by the Syndicate for the express purpose of extracting the valuable radioactive cores of nuclear weapons."
-	icon = 'icons/obj/nuke_tools.dmi'
+	icon = 'icons/obj/theft_tools.dmi'
 	icon_state = "core_container_empty"
 	inhand_icon_state = "syringe_kit"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF //Don't want people trying to break it open with acid, then destroying the core.
@@ -349,7 +349,7 @@
 /obj/item/scalpel/supermatter
 	name = "supermatter scalpel"
 	desc = "A scalpel with a fragile tip of condensed hyper-noblium gas, searingly cold to the touch, that can safely shave a sliver off a supermatter crystal."
-	icon = 'icons/obj/nuke_tools.dmi'
+	icon = 'icons/obj/theft_tools.dmi'
 	icon_state = "supermatter_scalpel"
 	toolspeed = 0.5
 	damtype = BURN
@@ -363,7 +363,7 @@
 /obj/item/retractor/supermatter
 	name = "supermatter extraction tongs"
 	desc = "A pair of tongs made from condensed hyper-noblium gas, searingly cold to the touch, that can safely grip a supermatter sliver."
-	icon = 'icons/obj/nuke_tools.dmi'
+	icon = 'icons/obj/theft_tools.dmi'
 	icon_state = "supermatter_tongs"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
@@ -440,3 +440,314 @@
 			)
 	QDEL_NULL(sliver)
 	update_icon(UPDATE_ICON_STATE)
+
+// This device is used to analyze and trigger the particulate
+/obj/item/ppp_processor
+	name = "\improper Prototype Portable Particulate Processor"
+	desc = "Прототип портативного процессора частиц, или сокращённо PPPProcessor, — это устройство, предназначенное для возбуждения, сбора и обработки аномальных частиц."
+	icon = 'icons/obj/theft_tools.dmi'
+	icon_state = "PPP_Processor_0"
+	worn_icon_state = "gun"
+	inhand_icon_state = "gun"
+	lefthand_file = 'icons/mob/inhands/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/guns_righthand.dmi'
+	force = 10
+	throwforce = 10
+	attack_verb = list("processed", "perforated", "pounded", "pasted", "proded", "punished", "plowed into", "pommeled", "pummeled", "penetrated", "probed", "pulsed", "pulverized", "pillaged", "persecuted", "pasted", "peppered", "plundered", "put down", "pushed")
+	origin_tech = "programming=6;plasma=6;syndicate=3"
+	new_attack_chain = TRUE
+	/// How many clouds have been processed?
+	var/clouds_processed = 0
+	/// Have we used it in hand to fully process the particulate and eject the canisters?
+	var/fully_processed_particulate = FALSE
+	/// Are we possibly processing particularly powerful packets?
+	var/presently_processing_particular_particultate = FALSE
+	/// The soundloop we use.
+	var/datum/looping_sound/kitchen/microwave/me_cro_wah_vey
+
+/obj/item/ppp_processor/Initialize(mapload)
+	. = ..()
+	me_cro_wah_vey = new /datum/looping_sound/kitchen/microwave(list(src), FALSE)
+
+/obj/item/ppp_processor/Destroy()
+	QDEL_NULL(me_cro_wah_vey)
+	return ..()
+
+/obj/item/ppp_processor/examine(mob/user)
+	. = ..()
+	if(fully_processed_particulate)
+		. += "<span class='notice'>[src] обработал имеющиеся у вас данные. Вам остаётся лишь представить их после завершения смены.</span>"
+		return
+	if(clouds_processed < 3)
+		. += "<span class='notice'>[src] содержит только [clouds_processed] из 3 образцов.</span>"
+	if(clouds_processed == 3)
+		. += "<span class='notice'>[src] содержит все 3 образца. Используйте его в руке для обработки частиц.</span>"
+
+
+/obj/item/ppp_processor/activate_self(mob/user)
+	if(..())
+		return
+	if(fully_processed_particulate)
+		to_chat(user, "<span class='notice'>[src] уже обработал и выбросил контейнеры с частицами. Просто убедитесь, что покинете станцию вместе с процессором!</span>")
+		return
+	if(clouds_processed < 3)
+		to_chat(user, "<span class='warning'>[src] содержит только [clouds_processed] из 3 образцов. Вам нужно собрать больше!</span>")
+		return
+	if(presently_processing_particular_particultate)
+		to_chat(user, "<span class='warning'>[src] сейчас обрабатывает особенно мощные пакеты ваших особых частиц. Дождитесь завершения процесса, прежде чем продолжать.</span>")
+		return
+
+	to_chat(user, "<span class='notice'>[src] сейчас обрабатывает частицы. Пожалуйста, подождите завершения процесса и имейте в виду, что он может выбросить контейнеры для сбора.</span>")
+	if(me_cro_wah_vey)
+		me_cro_wah_vey.start()
+	addtimer(CALLBACK(src, PROC_REF(perfectly_processed), user), 15 SECONDS)
+	presently_processing_particular_particultate = TRUE
+
+/obj/item/ppp_processor/update_icon_state()
+	. = ..()
+	switch(clouds_processed)
+		if(-1)
+			icon_state = "PPP_Processor_-1"
+		if(0)
+			icon_state = "PPP_Processor_0"
+		if(1)
+			icon_state = "PPP_Processor_1"
+		if(2)
+			icon_state = "PPP_Processor_2"
+		if(3)
+			icon_state = "PPP_Processor_3"
+
+/obj/item/ppp_processor/proc/collect()
+	clouds_processed++
+	update_icon()
+
+/obj/item/ppp_processor/proc/perfectly_processed(mob/user)
+	if(!QDELETED(user))
+		to_chat(user, "<span class='notice'>[src] успешно обработал частицы. Теперь вы можете использовать контейнеры как угодно. Убедитесь, что процессор вернётся к нам.</span>")
+	me_cro_wah_vey.stop()
+	presently_processing_particular_particultate = FALSE
+	clouds_processed = -1
+	fully_processed_particulate = TRUE
+	update_icon()
+	var/list/potential_grenade_rewards = list()
+	potential_grenade_rewards += subtypesof(/obj/item/grenade/anomalous_canister)
+	potential_grenade_rewards += /obj/item/grenade/anomalous_canister
+	potential_grenade_rewards += /obj/effect/abstract/dummy_mini_spawner
+	potential_grenade_rewards -= /obj/item/grenade/anomalous_canister/mini
+
+	var/turf/our_turf = get_turf(src)
+	our_turf.visible_message("<span class='warning'>Из [src] выбрасываются три контейнера.</span>")
+	for(var/i in 1 to 3)
+		var/obj/item/new_toy = pick_n_take(potential_grenade_rewards)
+		new new_toy(get_turf(src))
+
+/obj/item/clothing/glasses/hud/anomalous
+	name = "anomalous particulate scanner HUD"
+	desc = "Проекционный дисплей, сканирующий наличие аномальных частиц. Оснащён встроенной функцией хамелеона, помогающей ему сливаться с окружением."
+	icon_state = "sunhudmed"
+	inhand_icon_state = "sunglasses"
+	hud_types = DATA_HUD_ANOMALOUS
+
+	var/datum/action/item_action/chameleon_change/chameleon_action
+
+/obj/item/clothing/glasses/hud/anomalous/Initialize(mapload)
+	. = ..()
+	chameleon_action = new(src)
+	chameleon_action.chameleon_type = /obj/item/clothing/glasses
+	chameleon_action.chameleon_name = "HUD"
+	chameleon_action.chameleon_blacklist = list()
+	chameleon_action.initialize_disguises()
+
+/obj/item/clothing/glasses/hud/anomalous/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
+/obj/item/clothing/glasses/hud/anomalous/emp_act(severity)
+	. = ..()
+	chameleon_action.emp_randomise()
+
+// The parent anomalous grenade type. Spawns a random anomaly.
+/obj/item/grenade/anomalous_canister
+	name = "anomalous particulate canister"
+	desc = "Этот контейнер содержит облако заряженных аномальных частиц. Его можно активировать для создания временной аномалии. \
+	Будьте осторожны: из-за стеклянного корпуса он может разбиться раньше времени при броске."
+	icon_state = "anomalous_canister"
+	inhand_icon_state = "emp"
+	origin_tech = "magnets=6;combat=6;syndicate=2"
+	/// The type of anomaly the canister will spawn.
+	var/obj/effect/anomaly/anomaly_type
+	/// The lifetime of the anomaly.
+	var/anomaly_lifetime = 45 SECONDS
+	/// How many anomalies the grenade will spawn
+	var/number_of_anomalies = 1
+	/// Have we primed? It contains a cloud of particulate matter. Breaking it is going to let the anomaly out.
+	var/has_primed = FALSE
+	/// Chance to be a varient that the glass will shatter when thrown earlier than expected. The smaller canisters are more metal spheres, and will not.
+	var/shatter_chance = 20
+
+/obj/item/grenade/anomalous_canister/Initialize(mapload)
+	. = ..()
+	anomaly_type = pick(subtypesof(/obj/effect/anomaly))
+	if(prob(shatter_chance))
+		AddElement(/datum/element/shatters_when_thrown, /obj/effect/decal/cleanable/glass, 1, "shatter")
+
+/obj/item/grenade/anomalous_canister/Destroy()
+	prime()
+	return ..()
+
+/obj/item/grenade/anomalous_canister/prime()
+	if(has_primed)
+		return
+	has_primed = TRUE
+	var/turf/our_turf = get_turf(src)
+	our_turf.visible_message("<span class='danger'>[src] разбивается вдребезги, и [(number_of_anomalies - 1) ? "clouds" : "cloud"] частиц быстро превращаются во что-то большее!</span>")
+	playsound(src, "shatter", 70, TRUE)
+	update_mob()
+	for(var/i in 1 to number_of_anomalies)
+		var/obj/effect/anomaly/A = new anomaly_type(our_turf, anomaly_lifetime, FALSE)
+		A.anomalous_canister_setup()
+	if(!QDELETED(src))
+		qdel(src)
+
+/obj/item/grenade/anomalous_canister/dual_core
+	name = "dual clouded anomalous particulate canister"
+	icon_state = "anomalous_canister_dual"
+	number_of_anomalies = 2
+	anomaly_lifetime = 30 SECONDS
+
+/obj/item/grenade/anomalous_canister/dual_core/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>В этом контейнере кружатся два небольших облака частиц. Вероятно, они сформируют две аномалии.</span>"
+
+/obj/item/grenade/anomalous_canister/condensed
+	name = "condensed anomalous particulate canister"
+	icon_state = "anomalous_canister_condensed"
+	anomaly_lifetime = 90 SECONDS
+
+/obj/item/grenade/anomalous_canister/condensed/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>В этом контейнере находится большое облако устойчивых частиц. Оно просуществует дольше других аномалий.</span>"
+
+/obj/item/grenade/anomalous_canister/stabilized
+	name = "stabilized anomalous particulate canister"
+	desc = "Облако этих частиц достаточно стабилизировалось, чтобы компьютер мог предсказать, в какую аномалию оно сконденсируется..."
+	icon_state = "anomalous_canister_stable"
+
+/obj/item/grenade/anomalous_canister/stabilized/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>Прогнозируемый результат конденсации облака отображается как [anomaly_type::name]!</span>"
+
+/obj/effect/abstract/dummy_mini_spawner
+
+/obj/effect/abstract/dummy_mini_spawner/Initialize(mapload)
+	. = ..()
+	var/turf/our_turf = get_turf(src)
+	our_turf.visible_message("<span class='warning'>Один из контейнеров распадается на 3 более мелкие капсулы!</span>")
+	for(var/i in 1 to 3)
+		new /obj/item/grenade/anomalous_canister/mini(our_turf)
+	return INITIALIZE_HINT_QDEL
+
+/obj/item/grenade/anomalous_canister/mini
+	name = "miniature anomalous particulate canister"
+	desc = "Эта небольшая сфера содержит маленькое облако частиц. Вероятно, оно не сформирует аномалию, но всё же окажет заметный эффект."
+	icon_state = "anomalous_canister_mini"
+	w_class = 1
+	shatter_chance = 0
+
+/obj/item/grenade/anomalous_canister/mini/prime()
+	if(has_primed)
+		return
+	has_primed = TRUE
+	update_mob()
+	var/turf/our_turf = get_turf(src)
+	our_turf.visible_message("<span class='danger'>[src] активируется и...</span>")
+	playsound(src, "shatter", 70, TRUE)
+	switch(anomaly_type)
+		if(/obj/effect/anomaly/bluespace) // Teleport and slow combat for 15
+			if(!is_teleport_allowed(z))
+				visible_message("<span class='warning'>Осколки [src] начинают быстро вибрировать и исчезают.</span>")
+				qdel(src)
+				return
+			for(var/mob/living/L in range(7, our_turf))
+				do_teleport(L, get_turf(L), 7, sound_in = 'sound/effects/phasein.ogg')
+				L.apply_status_effect(STATUS_EFFECT_BLUESPACESLOWDOWN)
+		if(/obj/effect/anomaly/flux) // shock
+			for(var/mob/living/L in view(7, our_turf))
+				L.Beam(get_turf(src), icon_state = "lightning[rand(1, 12)]", icon = 'icons/effects/effects.dmi', time = 5) // What? Why are we beaming from the mob to the turf? Turf to mob generates really odd results.
+				L.electrocute_act(20, "electrical blast", flags = SHOCK_NOGLOVES)
+				L.KnockDown(6 SECONDS)
+		if(/obj/effect/anomaly/grav) // repulse
+			var/list/thrownatoms = list()
+			var/atom/throwtarget
+			var/distfromcaster
+			for(var/turf/T in range(7, our_turf)) // Done this way so things don't get thrown all around hilariously.
+				for(var/atom/movable/AM in T)
+					thrownatoms += AM
+
+			for(var/am in thrownatoms)
+				var/atom/movable/AM = am
+				if(AM == src || AM.anchored || AM.move_resist == INFINITY)
+					continue
+
+				throwtarget = get_edge_target_turf(src, get_dir(src, get_step_away(AM, src)))
+				distfromcaster = get_dist(src, AM)
+				if(distfromcaster == 0)
+					if(isliving(AM))
+						var/mob/living/M = AM
+						M.Weaken(8 SECONDS)
+						M.adjustBruteLoss(5)
+						to_chat(M, "<span class='userdanger'>Вас с силой швыряет на пол аномальной энергией!</span>")
+				else
+					new /obj/effect/temp_visual/gravpush(get_turf(AM), get_dir(src, AM)) // created sparkles will disappear on their own
+					if(isliving(AM))
+						var/mob/living/M = AM
+						M.Weaken(3 SECONDS)
+						to_chat(M, "<span class='userdanger'>Вас отбрасывает назад аномальной силой!</span>")
+					spawn(0)
+						AM.throw_at(throwtarget, ((clamp((5 - (clamp(distfromcaster - 2, 0, distfromcaster))), 3, 5))), 1) // So stuff gets tossed around at the same time.
+		if(/obj/effect/anomaly/pyro) // burn
+			var/datum/gas_mixture/air = new()
+			air.set_temperature(1000)
+			air.set_toxins(20)
+			air.set_oxygen(20)
+			our_turf.blind_release_air(air)
+			for(var/mob/living/L in view(7, our_turf))
+				L.adjust_fire_stacks(6)
+				L.IgniteMob()
+		if(/obj/effect/anomaly/cryo) // weaker anomaly grenade
+			for(var/turf/simulated/floor/T in view(4, our_turf))
+				T.MakeSlippery(TURF_WET_ICE)
+				for(var/mob/living/carbon/C in T)
+					C.adjust_bodytemperature(-230)
+					C.apply_status_effect(/datum/status_effect/freon)
+		if(/obj/effect/anomaly/bhole) // big smoke that doesn't last as long as a smoke grenade
+			var/datum/effect_system/smoke_spread/smoke
+			smoke = new /datum/effect_system/smoke_spread/bad()
+			smoke.set_up(20, FALSE, src)
+			playsound(our_turf, 'sound/effects/smoke.ogg', 50, TRUE, -3)
+			smoke.start()
+	if(!QDELETED(src))
+		qdel(src)
+
+/obj/item/paper/guides/antag/anomalous_particulate
+	name = "Particulate gathering instructions"
+	info = {"<b>Instructions on your new PPPProcessor and HUD</b><br>
+	<br>
+	Прежде всего наденьте очки. Они понадобятся вам для поиска частиц. Настоятельно не рекомендуем их терять.<br>
+	<br>
+	Это позволит вам обнаруживать незаряженные аномальные частицы на борту станции. Они могут быть где угодно, осматривайте комнаты или используйте камеры для поиска.\
+	Они будут выглядеть как <b>фиолетовые искры с жёлто-красной квадратной подсветкой наведения.</b><br>
+	<br>
+	После этого подойдите к частице с PPPProcessor и используйте его на ней. Он зарядит и захватит образец.<br>
+	<br>
+	<b>Warning:</b> Заряженные частицы опасны. Наденьте защитные очки и покиньте зону. Постарайтесь не попасться.<br>
+	<br>
+	После сбора 3 разных уникальных образцов (мы не примем образец, уже собранный другим агентом) используйте сканер в руке, чтобы начать обработку частиц.<br>
+	<br>
+	После короткого периода обработки процесс завершится, и вы сможете вернуть процессор нам. Кроме того, будут выброшены 3 контейнера для сбора.<br>
+	<br>
+	Используйте контейнеры как пожелаете, они должны оказаться эффективным оружием, но не забудьте записать результаты для нас.
+	<br><hr>
+	<font size =\"1\"><i>Мы не несём ответственности за любые проблемы со здоровьем, которые могут возникнуть из-за сканирования частиц или использования контейнеров.</i></font>
+"}
+
