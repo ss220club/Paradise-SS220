@@ -1947,6 +1947,7 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/catwalk,
 /area/station/supply/storage)
 "afF" = (
@@ -2024,6 +2025,7 @@
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "qm"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel{
 	icon_state = "brownfull"
 	},
@@ -11294,15 +11296,14 @@
 "aGN" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/mining/glass{
-	name = "Cargo Office"
-	},
+/obj/machinery/door/airlock/mining/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/access/any/supply/general,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel{
 	icon_state = "brownfull"
 	},
@@ -13964,7 +13965,7 @@
 /obj/item/ammo_box/a357,
 /obj/item/paper/central_command{
 	name = "Разрешение на ношения оружия";
-	info = "<grid><row><cell><logo><cell><small>Форма NanoTrasen NT-CC-RES</b></small><br><b>Центр Управление Безопасности НТ</b></grid><br><i><large><center><b> Разрешение на ношение оружия.</b></i></center><br>Данному члену экипажа, в должности Nanotrasen Career Trainer, было выдано разрешение на оружие. Соглашается с условиями его использования, хранения и применения. Данное оружие обязуюсь применять только в целях самообороны, защиты своих личных вещей, и рабочего места, а так же для защиты своих коллег.<br>При попытке применения оружия, против остальных членов экипажа не предоставляющих угрозу, или при запугивании данным оружием, я лишаюсь лицензии на оружие, а так же понесу наказания, при нарушении закона.<br>Оружие: Unica 6 auto-revolver"
+	info = "<grid><row><cell><logo><cell><small>Форма NanoTrasen NT-CC-RES</b></small><br><b>Центр Управление Безопасности НТ</b></grid><br><br><i><large><center><b> Разрешение на ношение оружия.</b></i></center><br>Данному члену экипажа, в должности Nanotrasen Career Trainer, было выдано разрешение на оружие. Соглашается с условиями его использования, хранения и применения. Данное оружие обязуюсь применять только в целях самообороны, защиты своих личных вещей, и рабочего места, а так же для защиты своих коллег.<br>При попытке применения оружия, против остальных членов экипажа не предоставляющих угрозу, или при запугивании данным оружием, я лишаюсь лицензии на оружие, а так же понесу наказания, при нарушении закона.<br>Оружие: Unica 6 auto-revolver"
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
@@ -17693,9 +17694,7 @@
 /area/station/command/office/hos)
 "aYi" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/mining{
-	name = "Cargo Bay"
-	},
+/obj/machinery/door/airlock/mining,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
@@ -17703,6 +17702,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel{
 	icon_state = "brownfull"
 	},
@@ -19036,9 +19036,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "bcO" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Starboard Bow Solar Access"
-	},
+/obj/machinery/door/airlock/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -19049,6 +19047,7 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/catwalk,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "bcQ" = (
@@ -19084,15 +19083,14 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fpmaint)
 "bcT" = (
-/obj/machinery/door/airlock/external{
-	name = "External Airlock"
-	},
+/obj/machinery/door/airlock/external,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/catwalk,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "bcU" = (
@@ -46370,6 +46368,7 @@
 /area/station/science/xenobiology)
 "vBT" = (
 /obj/structure/closet/secure_closet/miner,
+/obj/item/radio/intercom/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
