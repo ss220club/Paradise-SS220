@@ -11,11 +11,6 @@
 		"dark_diagonal", "dark_herringbone", "white_large", "white_small", "white_diagonal", "white_herringbone"
 		)
 
-/turf/simulated/floor
-	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
-
-/turf/simulated/floor/plasteel/dark
-	icon_state = "dark"
 
 /turf/simulated/floor/mech_bay_recharge_floor
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
