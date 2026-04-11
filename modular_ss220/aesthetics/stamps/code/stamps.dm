@@ -69,3 +69,9 @@
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-nct"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/navytsf
+	name = "Trans Solar Federation Navy Command rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-navytsf"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
