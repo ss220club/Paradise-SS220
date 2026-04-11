@@ -1,3 +1,17 @@
+//A temporary solution until they change it at upstream
+/datum/asset/simple/paper/New()
+	assets += list(
+		"large_stamp-ward.png"     	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ward.png',
+		"large_stamp-ploho.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ploho.png',
+		"large_stamp-BIGdeny.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-BIGdeny.png',
+		"large_stamp-navcom.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-navcom.png',
+		"large_stamp-mime.png"     	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-mime.png',
+		"large_stamp-ussp.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ussp.png',
+		"large_stamp-nct.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-nct.png',
+		"large_stamp-navytsf.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-navytsf.png'
+	)
+	..()
+
 // It's just works :skull:
 /obj/item/paper/stamp(obj/item/stamp/stamp)
 	if(stamp.stampoverlay_custom_icon)
