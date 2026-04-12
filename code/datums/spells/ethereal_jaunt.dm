@@ -1,6 +1,6 @@
 /datum/spell/ethereal_jaunt
 	name = "Ethereal Jaunt"
-	desc = "Это заклинание создает вашу эфирную форму, временно делая вас невидимым и способным проходить сквозь стены."
+	desc = "Создает вашу эфирную форму, временно делая вас невидимым и способным проходить сквозь стены."
 
 	base_cooldown = 300
 	invocation = "none"
@@ -26,7 +26,7 @@
 		if(SEND_SIGNAL(target, COMSIG_MOB_PRE_JAUNT, target) & COMPONENT_BLOCK_JAUNT)
 			continue
 		if(!target.can_safely_leave_loc()) // No more brainmobs hopping out of their brains
-			to_chat(target, "<span class='warning'>Вы каким-то образом слишком привязаны к своему текущему местоположению, чтобы отказаться от него.</span>")
+			to_chat(target, "<span class='warning'>Вы каким-то образом слишком привязаны к своему текущему месту, чтобы покинуть его.</span>")
 			continue
 		INVOKE_ASYNC(src, PROC_REF(do_jaunt), target)
 

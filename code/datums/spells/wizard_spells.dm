@@ -1,6 +1,6 @@
 /datum/spell/projectile/magic_missile
 	name = "Magic Missile"
-	desc = "Это заклинание выпускает несколько медленно движущихся магических снарядов по ближайшим целям."
+	desc = "Выпускает несколько медленно движущихся магических снарядов по ближайшим целям."
 
 	base_cooldown = 200
 	invocation = "FORTI GY AMA"
@@ -36,7 +36,7 @@
 
 /datum/spell/projectile/honk_missile
 	name = "Honk Missile"
-	desc = "Это заклинание запускает несколько медленно движущихся магических велосипедных гудков по ближайшим целям."
+	desc = "Запускает несколько медленно движущихся магических велосипедных гудков по ближайшим целям."
 
 	base_cooldown = 6 SECONDS
 	clothes_req = FALSE
@@ -74,7 +74,7 @@
 
 /datum/spell/noclothes
 	name = "No Clothes"
-	desc = "Это постоянно действующее заклинание позволяет вам колдовать без одежды."
+	desc = "Постоянно действующее заклинание позволяет вам колдовать без робы волшебника."
 	action_icon_state = "no_clothes"
 
 /datum/spell/noclothes/create_new_targeting()
@@ -82,7 +82,7 @@
 
 /datum/spell/genetic/mutate
 	name = "Mutate"
-	desc = "Это заклинание заставляет вас превратиться в халка и на короткое время обрести лазеры из глаз!"
+	desc = "Заставляет вас превратиться в халка и на короткое время обрести лазеры из глаз!"
 
 	base_cooldown = 400
 	invocation = "BIRUZ BENNAR"
@@ -106,7 +106,7 @@
 
 /datum/spell/smoke
 	name = "Smoke"
-	desc = "Это заклинание создает облако плотной дымовой завесы в вашем местоположении и не требует робы волшебника."
+	desc = "Создает облако плотной дымовой завесы вокруг вас и не требует робы волшебника."
 
 	base_cooldown = 120
 	clothes_req = FALSE
@@ -123,7 +123,7 @@
 
 /datum/spell/emplosion/disable_tech
 	name = "Disable Tech"
-	desc = "Это заклинание отключает все оружие, камеры и большую часть другой техники в радиусе действия."
+	desc = "Отключает все оружие, камеры и большую часть другой техники в радиусе действия."
 	base_cooldown = 40 SECONDS
 	invocation = "NEC CANTIO"
 	invocation_type = "shout"
@@ -136,7 +136,7 @@
 
 /datum/spell/turf_teleport/blink
 	name = "Blink"
-	desc = "Это заклинание случайным образом телепортирует вас на небольшое расстояние."
+	desc = "Случайным образом телепортирует вас на небольшое расстояние."
 
 	base_cooldown = 20
 	invocation = "none"
@@ -161,7 +161,7 @@
 
 /datum/spell/area_teleport/teleport
 	name = "Teleport"
-	desc = "Это заклинание телепортирует вас в выбранную вами область."
+	desc = "Телепортирует вас в выбранную область."
 
 	base_cooldown = 600
 	invocation = "SCYAR NILA"
@@ -179,7 +179,7 @@
 
 /datum/spell/return_to_teacher
 	name = "Return to Teacher"
-	desc = "Это заклинание телепортирует вас обратно к вашему учителю."
+	desc = "Телепортирует вас обратно к вашему учителю."
 
 	base_cooldown = 30 SECONDS
 	invocation = "SCYAR TESO"
@@ -194,13 +194,13 @@
 
 /datum/spell/return_to_teacher/cast(list/targets, mob/living/user = usr)
 	if(!(teacher && teacher.current))
-		to_chat(user, "<span class='danger'>Связь с вашим учителем прервана!</span>")
+		to_chat(user, "<span class='danger'>Связь с вашим учителем нарушена!</span>")
 		return
 	do_teleport(user, teacher.current, 1, sound_in = 'sound/magic/blink.ogg', sound_out = 'sound/magic/blink.ogg', safe_turf_pick = TRUE)
 
 /datum/spell/forcewall
 	name = "Force Wall"
-	desc = "Это заклинание создает нерушимую стену шириной 3 метра, через которую можете пройти только вы, и для этого не требуется роба волшебника. Длится 30 секунд."
+	desc = "Создает нерушимую стену шириной 3 метра, через которую можете пройти только вы, и для этого не требуется роба волшебника. Длится 30 секунд."
 
 	base_cooldown = 15 SECONDS
 	clothes_req = FALSE
@@ -225,7 +225,7 @@
 
 /datum/spell/aoe/conjure/timestop
 	name = "Stop Time"
-	desc = "Это заклинание останавливает время для всех, кроме вас, позволяя вам свободно передвигаться, в то время как ваши враги и даже снаряды будут заморожены."
+	desc = "Останавливает время для всех, кроме вас, позволяя вам свободно передвигаться, в то время как ваши враги и даже снаряды будут остановленны."
 	base_cooldown = 50 SECONDS
 	invocation = "TOKI WO TOMARE"
 	invocation_type = "shout"
@@ -239,7 +239,7 @@
 
 /datum/spell/aoe/conjure/carp
 	name = "Summon Carp"
-	desc = "Это заклинание призывает карпа."
+	desc = "Призывает карпа."
 
 	base_cooldown = 1200
 	invocation = "NOUK FHUNMM SACP RISSKA"
@@ -252,7 +252,7 @@
 
 /datum/spell/aoe/conjure/construct
 	name = "Artificer"
-	desc = "Это заклинание создает конструкта, которым могут управлять Тени."
+	desc = "Создает конструкта, которым могут управлять Тени."
 
 	base_cooldown = 600
 	clothes_req = FALSE
@@ -266,7 +266,7 @@
 
 /datum/spell/aoe/conjure/creature
 	name = "Summon Creature Swarm"
-	desc = "Это заклинание разрывает ткань реальности, позволяя ужасным демонам вырваться наружу."
+	desc = "Разрывает ткань реальности, позволяя зловещим демонам вырваться наружу."
 
 	base_cooldown = 1200
 	clothes_req = FALSE
@@ -280,12 +280,12 @@
 
 /datum/spell/blind
 	name = "Blind"
-	desc = "Это заклинание временно ослепляет одну цель и не требует робы волшебника."
+	desc = "Временно ослепляет одну цель и не требует робы волшебника."
 	base_cooldown = 15 SECONDS
 	clothes_req = FALSE
 	invocation = "STI KALY"
 	invocation_type = "whisper"
-	message = "<span class='notice'>Ваши глаза плачут от боли!</span>"
+	message = "<span class='notice'>Ваши глаза кричат от боли!</span>"
 	cooldown_min = 2 SECONDS
 	sound = 'sound/magic/blind.ogg'
 
@@ -313,7 +313,7 @@
 
 /datum/spell/fireball
 	name = "Fireball"
-	desc = "Это заклинание запускает в цель огненный шар и не требует робы волшебника."
+	desc = "Запускает в цель огненный шар и не требует робы волшебника."
 
 	base_cooldown = 60
 	clothes_req = FALSE
@@ -321,7 +321,7 @@
 	invocation_type = "shout"
 	cooldown_min = 20 //10 deciseconds reduction per rank
 
-	selection_activated_message		= "<span class='notice'>Вы готовитесь применить огненный шар! <B>Щелкните левой кнопкой мыши, чтобы нанести удар по цели!</B></span>"
+	selection_activated_message		= "<span class='notice'>Вы готовитесь применить огненный шар! <B>Щелкните левой кнопкой мыши, чтобы отправить его в цель!</B></span>"
 	selection_deactivated_message	= "<span class='notice'>Вы гасите свой огненный шар... на время.</span>"
 
 	var/fireball_type = /obj/item/projectile/magic/fireball
@@ -362,25 +362,25 @@
 
 /datum/spell/fireball/toolbox
 	name = "Homing Toolbox"
-	desc = "Это заклинание вызывает и бросает в вашего противника магический самонаводящийся тулбокс."
+	desc = "Вызывает и бросает в вашего противника магический самонаводящийся тулбокс."
 	sound = 'sound/weapons/smash.ogg'
 	fireball_type = /obj/item/projectile/homing/magic/toolbox
 	invocation = "ROBUSTIO!"
 
-	selection_activated_message		= "<span class='notice'>Вы готовитесь использовать свой самонаводящийся тулбокс! <B>Щелкните левой кнопкой мыши, чтобы применить заклинание к цели!</B></span>"
+	selection_activated_message		= "<span class='notice'>Вы готовитесь использовать свой магический тулбокс! <B>Щелкните левой кнопкой мыши, чтобы напрваить тулбокс в цель!</B></span>"
 	selection_deactivated_message	= "<span class='notice'>Вы приберегаете свой тулбокс... пока что.</span>"
 
 /datum/spell/fireball/homing
 	name = "Greater Homing Fireball"
-	desc = "Это заклинание запускает в цель мощный самонаводящийся огненный шар."
+	desc = "Запускает в цель мощный самонаводящийся огненный шар."
 	invocation = "ZI-ONI SOMA"
 	fireball_type = /obj/item/projectile/homing/magic/homing_fireball
 
-	selection_activated_message = "<span class='notice'>Вы готовитесь запустить самонаводящийся огненный шар! <B>Щелкните левой кнопкой мыши, чтобы нанести удар по цели!</B></span>"
+	selection_activated_message = "<span class='notice'>Вы готовитесь запустить самонаводящийся огненный шар! <B>Щелкните левой кнопкой мыши, чтобы отправить огненный шар в цель!</B></span>"
 
 /datum/spell/aoe/repulse
 	name = "Repulse"
-	desc = "Это заклинание отбрасывает все, что находится вокруг пользователя."
+	desc = "Отбрасывает все, что находится вокруг мага."
 	base_cooldown = 40 SECONDS
 	invocation = "GITTAH WEIGH"
 	invocation_type = "shout"
@@ -459,11 +459,11 @@
 
 /datum/spell/corpse_explosion
 	name = "Corpse Explosion"
-	desc = "Наполняет труп энергией, заставляя его сильно взорваться."
+	desc = "Переполняет труп энергией, заставляя его сильно взорваться."
 	base_cooldown = 5 SECONDS
 	invocation = "JAH ITH BER"
 	invocation_type = "whisper"
-	selection_activated_message = "<span class='notice'>Вы готовитесь взорвать труп. Нажмите на цель, чтобы применить заклинание.</span>"
+	selection_activated_message = "<span class='notice'>Вы готовитесь разорвать труп. Нажмите на цель, чтобы наполнить его энергией.</span>"
 	selection_deactivated_message = "<span class='notice'>Вы отменяете заклинание.</span>"
 	action_icon_state = "corpse_explosion"
 

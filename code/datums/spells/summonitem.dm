@@ -1,6 +1,6 @@
 /datum/spell/summonitem
 	name = "Instant Summons"
-	desc = "Это заклинание можно использовать для того, чтобы вернуть ранее помеченный предмет в вашу руку из любой точки мира."
+	desc = "Возвращает зачарованый ранее вами предмет из любой точки мира."
 	clothes_req = FALSE
 	invocation = "GAR YOK"
 	invocation_type = "whisper"
@@ -32,7 +32,7 @@
 				if(ABSTRACT in item.flags)
 					continue
 				if(NODROP in item.flags)
-					message += "Это кажется совершенно излишним, но вы все равно проходите через это.<br>"
+					message += "Это кажется излишним и безполезным, но вы все равно делаете это.<br>"
 				marked_item = 		item
 				message += "Вы помечаете [item.declent_ru(ACCUSATIVE)] для призыва.</span>"
 				name = "Призвать [item.declent_ru(ACCUSATIVE)]"
@@ -40,17 +40,17 @@
 
 			if(!marked_item)
 				if(hand_items)
-					message = "<span class='caution'>У вас нет ничего, что можно было бы пометить для призыва.</span>"
+					message = "<span class='caution'>У вас нет ничего, что можно было бы зачаровать для призыва.</span>"
 				else
-					message = "<span class='notice'>Вы должны подержать нужный предмет в руках, чтобы пометить его для призыва.</span>"
+					message = "<span class='notice'>Вы должны держать нужный предмет в руках, чтобы зачаровать его для призыва.</span>"
 
 		else if(marked_item && (marked_item in hand_items)) //unlinking item to the spell
-			message = "<span class='notice'>Вы удаляете метку с [marked_item.declent_ru(GENITIVE)], чтобы использовать её в чём-то другом.</span>"
+			message = "<span class='notice'>Вы удаляете чары с [marked_item.declent_ru(GENITIVE)], чтобы использовать заклинание на чём-то другом.</span>"
 			name = "Instant Summons"
 			marked_item = 		null
 
 		else if(marked_item && !marked_item.loc) //the item was destroyed at some point
-			message = "<span class='warning'>Вы чувствуете, что ваш помеченный предмет был уничтожен!</span>"
+			message = "<span class='warning'>Вы чувствуете, что ваш зачарованый предмет был уничтожен!</span>"
 			name = "Instant Summons"
 			marked_item = 		null
 
@@ -87,7 +87,7 @@
 							var/obj/item/organ/external/part = X
 							if(item_to_retrieve in part.embedded_objects)
 								part.remove_embedded_object(item_to_retrieve)
-								to_chat(C, "<span class='warning'>[item_to_retrieve], который был интегрирован в вашу [part], таинственным образом исчез. Как удачно!</span>")
+								to_chat(C, "<span class='warning'>[item_to_retrieve], который был интегрирован в вашу [part], таинственным образом исчез. Как неожиданно!</span>")
 								if(!C.has_embedded_objects())
 									C.clear_alert("embeddedobject")
 								break

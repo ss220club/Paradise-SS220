@@ -1,6 +1,6 @@
 /datum/spell/aoe/conjure/build/mime_wall
 	name = "Invisible Wall"
-	desc = "Представление мима превращается в реальность."
+	desc = "Представление станет явью!."
 	summon_type = list(/obj/structure/forcefield/mime)
 	invocation_type = "emote"
 	invocation_emote_self = "<span class='notice'>Вы возводите перед собой стену.</span>"
@@ -64,7 +64,7 @@
 	desc = "Возведите невидимую стену шириной в три метра."
 	wall_type = /obj/effect/forcefield/mime
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='notice'>Вы создаете преграду перед самим собой.</span>"
+	invocation_emote_self = "<span class='notice'>Вы возводите перед собой широкую стену.</span>"
 	base_cooldown = 60 SECONDS
 	sound =  null
 
@@ -136,13 +136,13 @@
 	for(var/datum/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == S.type)
 			if(user.mind)
-				to_chat(user, "<span class='notice'>Вы уже читали его.</span>")
+				to_chat(user, "<span class='notice'>Вы уже читали его раньше.</span>")
 			return
 	if(used)
 		recoil(user)
 	else
 		user.mind.AddSpell(S)
-		to_chat(user, "<span class='notice'>Вы листаете страницы. Ваше понимание границ реальности увеличивается. Вы можете использовать [spellname]!</span>")
+		to_chat(user, "<span class='notice'>Вы листаете страницы. Ваше понимание границ реальности увеличивается. Теперь вы можете использовать [spellname]!</span>")
 		user.create_log(MISC_LOG, "learned the spell [spellname] ([S])")
 		user.create_attack_log("<font color='orange'>[key_name(user)] learned the spell [spellname] ([S]).</font>")
 		onlearned(user)
@@ -167,4 +167,4 @@
 /obj/item/spellbook/oneuse/mime/greaterwall
 	spell = /datum/spell/forcewall/mime
 	spellname = "Invisible Greater Wall"
-	desc = "Содержит иллюстрации самых великих стен в истории."
+	desc = "Содержит иллюстрации самых великих стен в истории театра иллюзий."

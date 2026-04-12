@@ -1,6 +1,6 @@
 /datum/spell/rod_form
 	name = "Rod Form"
-	desc = "Примите форму непоколебимого стержня, уничтожающего все на своем пути."
+	desc = "Примите форму нерушимого стержня, уничтожающего все на своем пути."
 	base_cooldown = 600
 	cooldown_min = 200
 	invocation = "CLANG!"

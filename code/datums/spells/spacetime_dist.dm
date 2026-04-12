@@ -1,8 +1,8 @@
 // This could probably be an aoe spell but it's a little cursed, so I'm not touching it
 /datum/spell/spacetime_dist
 	name = "Spacetime Distortion"
-	desc = "Запутайте нити пространства-времени в области вокруг себя, \
-		изменяя расположение объектов и делая невозможным правильное перемещение. Нити вибрируют... \
+	desc = "Запутайте нити пространства-времени вокруг себя, \
+		изменяя расположение предметов и объектов, делая невозможным правильное перемещение. Нити вибрируют... \
 		Усовершенствование заклинания увеличивает дальность действия, но не уменьшает время восстановления."
 	sound = 'sound/magic/strings.ogg'
 	action_icon_state = "spacetime"
@@ -43,7 +43,7 @@
 	. = ..()
 	var/list/turf/to_switcharoo = targets
 	if(!length(to_switcharoo))
-		to_chat(user, "<span class='warning'>По какой-то причине нити, находящиеся поблизости, не хотят запутываться.</span>")
+		to_chat(user, "<span class='warning'>По какой-то причине нити, находящиеся поблизости, не могут быть запутанны.</span>")
 		return
 
 	ready = FALSE
@@ -77,7 +77,7 @@
 
 /obj/effect/cross_action/spacetime_dist
 	name = "spacetime distortion"
-	desc = "Искажение пространства-времени. Вы слышите тихую музыку..."
+	desc = "Искажает пространство и временя. Вы слышите тихую музыку..."
 	icon_state = "nothing"
 	/// A flags which save people from being thrown about
 	var/antimagic_flags = MAGIC_RESISTANCE

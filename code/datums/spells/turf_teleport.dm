@@ -1,6 +1,6 @@
 /datum/spell/turf_teleport
 	name = "Turf Teleport"
-	desc = "Это заклинание телепортирует цель на территорию, находящуюся в пределах досягаемости."
+	desc = "Телепортирует вас в место в пределах досягаемости."
 	nonabstract_req = TRUE
 
 	var/inner_tele_radius = 1

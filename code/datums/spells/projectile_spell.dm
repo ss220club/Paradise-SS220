@@ -1,5 +1,5 @@
 /datum/spell/projectile
-	desc = "Это заклинание вызывает снаряды, которые пытаются поразить цели."
+	desc = "Вызывает снаряды, которые пытаются поразить цели."
 
 	var/proj_icon = 'icons/obj/projectiles.dmi'
 	var/proj_icon_state = "spell"

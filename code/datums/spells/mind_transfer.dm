@@ -1,12 +1,12 @@
 /datum/spell/mind_transfer
 	name = "Mind Transfer"
-	desc = "Это заклинание позволяет пользователю меняться телами с целью."
+	desc = "Позволяет меняться телами с целью."
 
 	base_cooldown = 600
 	clothes_req = FALSE
 	invocation = "GIN'YU CAPAN"
 	selection_activated_message = "<span class='notice'>Вы готовитесь перенести свой разум. Нажмите на цель, чтобы применить заклинание.</span>"
-	selection_deactivated_message = "<span class='notice'>Вы решаете, что ваша текущая форма пока достаточно хороша.</span>"
+	selection_deactivated_message = "<span class='notice'>Вы решаете, что ваше тело и так хорошее.</span>"
 	cooldown_min = 200 //100 deciseconds reduction per rank
 	antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_MIND
 	var/list/protected_roles = list(SPECIAL_ROLE_WIZARD, SPECIAL_ROLE_CHANGELING, SPECIAL_ROLE_CULTIST) //which roles are immune to the spell
@@ -37,18 +37,18 @@ Also, you never added distance checking after target is selected. I've went ahea
 	var/mob/living/target = targets[1]
 
 	if(user.suiciding)
-		to_chat(user, "<span class='warning'>Вы убиваете себя! Вы не можете сосредоточиться настолько, чтобы сделать это!</span>")
+		to_chat(user, "<span class='warning'>Вы убьёте себя! Вы не можете сосредоточиться настолько, чтобы сделать это!</span>")
 		return
 
 	if((target.mind.special_role in protected_roles) && target != user)
-		to_chat(user, "<span class='danger'>Их разум сопротивляется вашим чарам.</span>")
+		to_chat(user, "<span class='danger'>Его разум сопротивляется вашим чарам.</span>")
 		return
 
 	if(issilicon(target))
-		to_chat(user, "<span class='warning'>Вы чувствуете, что это порабощенное существо так же мертво, как и его холодный, твердый экзоскелет.</span>")
+		to_chat(user, "<span class='warning'>Вы чувствуете, что это порабощенное существо так же мертво, как и его холодный и твердый скелет.</span>")
 		return
 	if(target.can_block_magic(antimagic_flags))
-		to_chat(user, "<span class='danger'>Их разум сопротивляется вашим чарам.</span>")
+		to_chat(user, "<span class='danger'>Его разум сопротивляется вашим чарам.</span>")
 		return
 
 	var/mob/living/victim = target//The target of the spell whos body will be transferred to.
