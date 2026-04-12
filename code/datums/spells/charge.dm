@@ -36,7 +36,7 @@
 				if(istype(item, /obj/item/spellbook/oneuse))
 					var/obj/item/spellbook/oneuse/I = item
 					if(prob(80))
-						L.visible_message("<span class='warning'>[I] загораюсь!</span>")
+						L.visible_message("<span class='warning'>[I] загорается!</span>")
 						qdel(I)
 					else
 						I.used = FALSE
@@ -49,7 +49,7 @@
 			else if(istype(item, /obj/item/book/granter))
 				var/obj/item/book/granter/I = item
 				if(prob(80))
-					L.visible_message("<span class='warning'>[I] загораюсь!</span>")
+					L.visible_message("<span class='warning'>[I] загорается!</span>")
 					qdel(I)
 				else
 					I.uses += 1

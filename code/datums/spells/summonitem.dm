@@ -32,7 +32,7 @@
 				if(ABSTRACT in item.flags)
 					continue
 				if(NODROP in item.flags)
-					message += "Это кажется излишним и безполезным, но вы все равно делаете это.<br>"
+					message += "Это кажется излишним и бесполезным, но вы все равно делаете это.<br>"
 				marked_item = 		item
 				message += "Вы помечаете [item.declent_ru(ACCUSATIVE)] для призыва.</span>"
 				name = "Призвать [item.declent_ru(ACCUSATIVE)]"
@@ -87,7 +87,7 @@
 							var/obj/item/organ/external/part = X
 							if(item_to_retrieve in part.embedded_objects)
 								part.remove_embedded_object(item_to_retrieve)
-								to_chat(C, "<span class='warning'>[item_to_retrieve], который был интегрирован в вашу [part], таинственным образом исчез. Как неожиданно!</span>")
+								to_chat(C, "<span class='warning'>[item_to_retrieve], который был интегрирован в вашу [part.declent_ru(ACCUSATIVE)], таинственным образом исчез. Как неожиданно!</span>")
 								if(!C.has_embedded_objects())
 									C.clear_alert("embeddedobject")
 								break

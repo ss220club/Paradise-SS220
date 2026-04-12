@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	action = new(src)
 	still_recharging_msg = "<span class='notice'>[name] перезаряжается.</span>"
 	if(!gain_desc)
-		gain_desc = "Теперь вы обученны использованию [src]."
+		gain_desc = "Теперь вы обучены использованию [src]."
 
 	if(!targeting_datums[type])
 		targeting_datums[type] = create_new_targeting()
@@ -480,7 +480,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	if(!ghost)
 		if(user.stat && !stat_allowed)
 			if(show_message)
-				to_chat(user, "<span class='notice'>Вы не можете произнести это заклинание, будучи нематериальным.</span>")
+				to_chat(user, "<span class='notice'>Вы не можете произнести это заклинание, будучи недееспособным.</span>")
 			return FALSE
 		if(ishuman(user) && (invocation_type == "whisper" || invocation_type == "shout") && user.is_muzzled())
 			if(show_message)
