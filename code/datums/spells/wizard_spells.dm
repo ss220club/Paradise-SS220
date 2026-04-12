@@ -225,7 +225,7 @@
 
 /datum/spell/aoe/conjure/timestop
 	name = "Stop Time"
-	desc = "Останавливает время для всех, кроме вас, позволяя вам свободно передвигаться, в то время как ваши враги и даже снаряды будут остановленны."
+	desc = "Останавливает время для всех, кроме вас, позволяя вам свободно передвигаться, в то время как ваши враги и даже снаряды будут остановлены."
 	base_cooldown = 50 SECONDS
 	invocation = "TOKI WO TOMARE"
 	invocation_type = "shout"
@@ -367,7 +367,7 @@
 	fireball_type = /obj/item/projectile/homing/magic/toolbox
 	invocation = "ROBUSTIO!"
 
-	selection_activated_message		= "<span class='notice'>Вы готовитесь использовать свой магический тулбокс! <B>Щелкните левой кнопкой мыши, чтобы напрваить тулбокс в цель!</B></span>"
+	selection_activated_message		= "<span class='notice'>Вы готовитесь использовать свой магический тулбокс! <B>Щелкните левой кнопкой мыши, чтобы направить тулбокс в цель!</B></span>"
 	selection_deactivated_message	= "<span class='notice'>Вы приберегаете свой тулбокс... пока что.</span>"
 
 /datum/spell/fireball/homing

@@ -87,14 +87,14 @@
 							var/obj/item/organ/external/part = X
 							if(item_to_retrieve in part.embedded_objects)
 								part.remove_embedded_object(item_to_retrieve)
-								to_chat(C, "<span class='warning'>[item_to_retrieve], который был интегрирован в вашу [part.declent_ru(ACCUSATIVE)], таинственным образом исчез. Как неожиданно!</span>")
+								to_chat(C, "<span class='warning'>[item_to_retrieve.declent_ru(NOMINATIVE)] таинственным образом исчезает из [part.declent_ru(GENITIVE)]. Как неожиданно!</span>")
 								if(!C.has_embedded_objects())
 									C.clear_alert("embeddedobject")
 								break
 							if(item_to_retrieve == part.hidden)
 								visible_item = FALSE
 								part.hidden = null
-								to_chat(C, "<span class='warning'>[part.name] внезапно становится еще более пустым. Как странно!</span>")
+								to_chat(C, "<span class='warning'>В [part.declent_ru(PREPOSITIONAL)] внезапно становится пусто. Как странно!</span>")
 								break
 
 				else
