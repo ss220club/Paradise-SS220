@@ -9,7 +9,7 @@
 
 /datum/spell/aoe/conjure/build/floor
 	name = "Summon Cult Floor"
-	desc = "Это заклинание заменяет пол на культистский."
+	desc = "Заклинание заменяет пол на культистский."
 	action_icon_state = "floorconstruct"
 	action_background_icon_state = "bg_cult"
 	base_cooldown = 20
@@ -21,7 +21,7 @@
 
 /datum/spell/aoe/conjure/build/wall
 	name = "Summon Cult Wall"
-	desc = "Это заклинание возводит стену культа."
+	desc = "Возводит стену культа."
 	action_icon_state = "cultforcewall"
 	action_background_icon_state = "bg_cult"
 	clothes_req = FALSE
@@ -32,7 +32,7 @@
 
 /datum/spell/aoe/conjure/build/wall/reinforced
 	name = "Greater Construction"
-	desc = "Это заклинание возводит укреплённую металлическую стену."
+	desc = "Возводит укреплённую металлическую стену."
 	base_cooldown = 300
 	delay = 50
 
@@ -40,7 +40,7 @@
 
 /datum/spell/aoe/conjure/build/soulstone
 	name = "Summon Soulstone"
-	desc = "Это заклинание использует мерзкую магию для создания камня души."
+	desc = "Использует зловещую магию для создания камня души."
 	action_icon_state = "summonsoulstone"
 	action_background_icon_state = "bg_cult"
 	base_cooldown = 3000
@@ -60,7 +60,7 @@
 
 /datum/spell/aoe/conjure/build/pylon
 	name = "Cult Pylon"
-	desc = "Это заклинание использует темную магию для создания нечестивого пилона. Исцеляет культистов и создает удобный источник света."
+	desc = "Использует зловещую магию для создания нечестивого пилона. Исцеляет культистов и создает удобный источник света."
 	action_icon_state = "pylon"
 	action_background_icon_state = "bg_cult"
 	base_cooldown = 200
@@ -73,7 +73,7 @@
 
 /datum/spell/aoe/conjure/build/lesserforcewall
 	name = "Shield"
-	desc = "Это заклинание создает временное неразрушимое препятствие, чтобы защитить вас и союзников от вражеского огня."
+	desc = "Создает временное неразрушимое препятствие, чтобы защитить вас и союзников от вражеского огня."
 	action_icon_state = "cultforcewall"
 	action_background_icon_state = "bg_cult"
 	base_cooldown = 300
@@ -84,7 +84,7 @@
 	summon_lifespan = 200
 
 /obj/effect/forcefield/cult
-	desc = "Это жутковато выглядящее препятствие, кажется, появилось из другого измерения с помощью чистой силы."
+	desc = "Жутковато выглядящее препятствие, кажется, появилось из другого измерения с помощью чистой силы."
 	name = "eldritch wall"
 	icon = 'icons/effects/cult_effects.dmi'
 	icon_state = "m_shield_cult"
@@ -92,7 +92,7 @@
 
 /datum/spell/ethereal_jaunt/shift
 	name = "Phase Shift"
-	desc = "Это заклинание позволяет вам проходить сквозь стены."
+	desc = "Позволяет вам проходить сквозь стены."
 	action_icon_state = "phaseshift"
 	action_background_icon_state = "bg_cult"
 	base_cooldown = 200
@@ -142,7 +142,7 @@
 
 /datum/spell/smoke/disable
 	name = "Paralyzing Smoke"
-	desc = "Это заклинание создает облако парализующего дыма."
+	desc = "Создает облако парализующего дыма."
 	action_icon_state = "parasmoke"
 	action_background_icon_state = "bg_cult"
 	base_cooldown = 200

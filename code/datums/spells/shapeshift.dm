@@ -73,7 +73,7 @@
 
 /datum/spell/shapeshift/dragon
 	name = "Dragon Form"
-	desc = "Станьте Пепельным Дрейком после небольшой задержки."
+	desc = "Превратитесь в Пепельного Дрейка."
 	invocation = "*scream"
 
 	shapeshift_type = /mob/living/simple_animal/hostile/megafauna/dragon/lesser
@@ -83,9 +83,9 @@
 
 /datum/spell/shapeshift/dragon/Shapeshift(mob/living/caster)
 	caster.visible_message("<span class='danger'>[caster.declent_ru(NOMINATIVE)] кричит в агонии, когда кости и когти вырываются из его плоти!</span>",
-		"<span class='danger'>Вы начинаете направлять трансформацию.</span>")
+		"<span class='danger'>Вы начинаете перевоплощаться.</span>")
 	if(!do_after(caster, 5 SECONDS, FALSE, caster))
-		to_chat(caster, "<span class='warning'>Вы теряете концентрацию заклинания!</span>")
+		to_chat(caster, "<span class='warning'>Вы теряете концентрацию и не можете продолжить колдовать!</span>")
 		return
 	return ..()
 
@@ -95,7 +95,7 @@
 	invocation = "none"
 	invocation_type = "none"
 	action_icon_state = "vampire_bats"
-	gain_desc = "Вы получили способность превращаться в летучую мышь. Это слабая форма, не имеющая способностей, полезная только для скрытности."
+	gain_desc = "Вы получили способность превращаться в летучую мышь. Это слабая форма, не имеющая способностей и полезная только для скрытности."
 
 	shapeshift_type = /mob/living/basic/scarybat/adminvampire
 	current_shapes = list(/mob/living/basic/scarybat/adminvampire)
@@ -109,7 +109,7 @@
 	invocation_type = "none"
 	action_background_icon_state = "bg_demon"
 	action_icon_state = "glare"
-	gain_desc = "Вы получили возможность превращаться в Адского пса. Это боевая форма с различными способностями, выносливая, но не неуязвимая. Со временем она может восстанавливаться во время отдыха."
+	gain_desc = "Вы получили возможность превращаться в Адского пса. Это боевая форма с различными способностями, выносливая, но не неуязвимая. Со временем она может восстанавиться во время отдыха."
 
 	shapeshift_type = /mob/living/basic/hellhound
 	current_shapes = list(/mob/living/basic/hellhound)

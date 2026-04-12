@@ -1,6 +1,6 @@
 /datum/spell/rathens
 	name = "Rathen's Secret"
-	desc = "Создает вокруг себя мощную ударную волну, которая вырывает у врагов аппендикс, а иногда и конечности."
+	desc = "Создает вокруг себя мощную ударную волну, которая силой вырывает у врагов аппендикс, а иногда и конечности."
 	base_cooldown = 50 SECONDS
 	invocation = "APPEN NATH!"
 	invocation_type = "shout"
@@ -33,7 +33,7 @@
 			spawn()
 				G.throw_at(get_edge_target_turf(H, pick(GLOB.alldirs)), rand(1, 10), 5)
 			H.apply_damage(10, BRUTE, "chest")
-			to_chat(H, "<span class='userdanger'>У вас нет аппендикса, его что-то вырвало! Черт возьми, что это было?</span>")
+			to_chat(H, "<span class='userdanger'>У вас больше нет аппендикса, его что-то вырвало! Черт возьми, что это было?</span>")
 			H.KnockDown(6 SECONDS)
 			for(var/obj/item/organ/external/E in H.bodyparts)
 				if(istype(E, /obj/item/organ/external/head))

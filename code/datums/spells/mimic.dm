@@ -59,7 +59,7 @@
 
 /datum/spell/mimic/proc/remember_form(atom/movable/A, mob/user)
 	if(A.name in available_forms)
-		to_chat(user, "<span class='warning'>[A] - это уже доступная форма.</span>")
+		to_chat(user, "<span class='warning'>[A] - уже доступная форма.</span>")
 		revert_cast(user)
 		return
 	if(length(available_forms) >= max_forms)
@@ -92,7 +92,7 @@
 		forms += "Original Form"
 
 	forms += available_forms.Copy()
-	var/what = tgui_input_list(user, "Какой формой вы хотите стать?", "Мимикрировать", forms)
+	var/what = tgui_input_list(user, "Какой формой вы хотите стать сегодня?", "Мимикрировать", forms)
 	if(!what)
 		to_chat(user, "<span class='notice'>Вы решаете не менять форму.</span>")
 		revert_cast(user)
@@ -181,7 +181,7 @@
 
 /datum/spell/mimic/proc/show_death_message(mob/user)
 	user.visible_message(
-		"<span class='warning'>[user.declent_ru(NOMINATIVE)] дрожит и корчится, когда [user.ru_p_they()] умирает, возвращаясь к [user.ru_p_them()] истинной форме!</span>",
+		"<span class='warning'>[user.declent_ru(NOMINATIVE)] дрожит и корчится, когда [user.ru_p_they()] умирает, возвращаясь к своей истинной форме!</span>",
 		"<span class='deadsay'>Ваша маскировка расслаивается по мере того, как ваши жизненные силы иссякают.</span>",
 		"<span class='warning'>Вы слышите громкий треск, за которым следует глухой удар!</span>"
 	)
@@ -232,7 +232,7 @@
 
 /datum/spell/mimic/morph/show_restore_form_message(mob/user, old_name, new_name)
 	user.visible_message(
-		"<span class='warning'>[old_name] внезапно распадается сам на себя, превращаясь в груду зеленой плоти!</span>",
+		"<span class='warning'>[old_name] внезапно распадается, превращаясь в груду зеленой плоти!</span>",
 		"<span class='notice'>Вы возвращаетесь в свое обычное тело.</span>",
 		"<span class='warning'>Вы слышите громкий треск, за которым следует глухой удар!</span>"
 	)

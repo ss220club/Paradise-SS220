@@ -1,5 +1,5 @@
 /datum/spell/aoe/conjure
-	desc = "Это заклинание вызывает объекты указанных типов в пределах досягаемости."
+	desc = "Это заклинание сотворяет объекты указанных типов в пределах досягаемости."
 
 	var/list/summon_type = list() //determines what exactly will be summoned
 	//should be text, like list("/mob/simple_animal/bot/ed209")

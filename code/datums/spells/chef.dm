@@ -1,6 +1,6 @@
 /datum/spell/expert_chef
 	name = "Expert Chef Knowledge"
-	desc = "Позволяет узнать, что можно приготовить из предметов в пределах досягаемости."
+	desc = "Позволяет узнать, что можно приготовить из предметов неподалёку."
 	clothes_req = FALSE
 	base_cooldown = 5 SECONDS
 	human_req = TRUE

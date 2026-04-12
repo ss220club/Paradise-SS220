@@ -8,9 +8,9 @@
 	cooldown_min = 3 SECONDS
 	charge_sound = new /sound('sound/magic/lightning_chargeup.ogg', channel = 7)
 	max_charge_time = 10 SECONDS
-	stop_charging_text = "Вы перестаете заряжать магнетизмом окружающее вас пространство."
-	stop_charging_fail_text = "Магнетизм вокруг вас слишком силен, чтобы остановиться сейчас!"
-	start_charging_text = "Вы начинаете заряжать магнетизм вокруг себя."
+	stop_charging_text = "Вы перестаете заряжать магнетизмом ваше окружение."
+	stop_charging_fail_text = "Магнетизм вокруг вас слишком силен, чтобы не распасться!"
+	start_charging_text = "Вы начинаете заряжать магнетизмом ваше окружение."
 	bounce_hit_sound = 'sound/machines/defib_zap.ogg'
 
 /datum/spell/charge_up/bounce/magnet/New()
