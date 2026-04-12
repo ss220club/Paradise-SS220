@@ -41,14 +41,14 @@ Also, you never added distance checking after target is selected. I've went ahea
 		return
 
 	if((target.mind.special_role in protected_roles) && target != user)
-		to_chat(user, "<span class='danger'>Его разум сопротивляется вашим чарам.</span>")
+		to_chat(user, "<span class='danger'>Разум цели сопротивляется вашим чарам.</span>")
 		return
 
 	if(issilicon(target))
 		to_chat(user, "<span class='warning'>Вы чувствуете, что это порабощенное существо так же мертво, как и его холодный и твердый скелет.</span>")
 		return
 	if(target.can_block_magic(antimagic_flags))
-		to_chat(user, "<span class='danger'>Его разум сопротивляется вашим чарам.</span>")
+		to_chat(user, "<span class='danger'>Разум цели сопротивляется вашим чарам.</span>")
 		return
 
 	var/mob/living/victim = target//The target of the spell whos body will be transferred to.
