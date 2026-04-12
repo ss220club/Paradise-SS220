@@ -1,6 +1,6 @@
 /datum/spell/aoe/conjure/build/mime_wall
 	name = "Invisible Wall"
-	desc = "Представление станет явью!."
+	desc = "Представление станет явью!"
 	summon_type = list(/obj/structure/forcefield/mime)
 	invocation_type = "emote"
 	invocation_emote_self = "<span class='notice'>Вы возводите перед собой стену.</span>"

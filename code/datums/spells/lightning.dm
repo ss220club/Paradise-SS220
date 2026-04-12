@@ -1,6 +1,6 @@
 /datum/spell/charge_up/bounce/lightning
 	name = "Lightning Bolt"
-	desc = "Метает молнии в ваших врагов. Классика. При нажатии начнет накапливаться энергия. Нажмите на цель, чтобы отправить заряд до того, как он переполнится и рассеится."
+	desc = "Метает молнии в ваших врагов. Классика. При нажатии начнет накапливаться энергия. Нажмите на цель, чтобы отправить заряд до того, как он переполнится и рассеется."
 	base_cooldown	= 30 SECONDS
 	invocation = "UN'LTD P'WAH!"
 	invocation_type = "shout"
@@ -39,7 +39,7 @@
 /datum/spell/charge_up/bounce/lightning/apply_bounce_effect(mob/origin, mob/living/target, energy, mob/user)
 	if(target.can_block_magic(antimagic_flags))
 		target.visible_message(
-			"<span class='warning'>[target.declent_ru(NOMINATIVE)] поглощает молнии, оставаясь невредимым!</span>",
+			"<span class='warning'>[target.declent_ru(NOMINATIVE)] поглощает молнии, не получив повреждений!</span>",
 			"<span class='danger'>Вы поглощаете молнии, вас так просто не остановить!</span>"
 		)
 		return

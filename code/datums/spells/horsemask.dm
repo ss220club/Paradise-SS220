@@ -27,7 +27,7 @@
 	var/mob/living/carbon/human/target = targets[1]
 
 	if(target.can_block_magic(antimagic_flags))
-		target.visible_message("<span class='danger'>Лицо [target.declent_ru(GENITIVE)] охватывает пламя, которое мгновенно вырывается наружу, оставляя [target.declent_ru(ACCUSATIVE)] невредимым!</span>",
+		target.visible_message("<span class='danger'>Лицо [target.declent_ru(GENITIVE)] охватывает пламя, которое мгновенно вырывается наружу, не причинив [target.declent_ru(DATIVE)] вреда!</span>",
 			"<span class='danger'>Ваше лицо начинает гореть, но пламя отражается вашей антимагической защитой!</span>",
 		)
 		to_chat(user, "<span class='warning'>Заклинание не дало эффекта!</span>")
