@@ -43,7 +43,7 @@
 	. = ..()
 	var/list/turf/to_switcharoo = targets
 	if(!length(to_switcharoo))
-		to_chat(user, "<span class='warning'>По какой-то причине нити, находящиеся поблизости, не могут быть запутанны.</span>")
+		to_chat(user, "<span class='warning'>По какой-то причине нити, находящиеся поблизости, не могут быть запутаны.</span>")
 		return
 
 	ready = FALSE
@@ -77,7 +77,7 @@
 
 /obj/effect/cross_action/spacetime_dist
 	name = "spacetime distortion"
-	desc = "Искажает пространство и временя. Вы слышите тихую музыку..."
+	desc = "Искажает пространство и время. Вы слышите тихую музыку..."
 	icon_state = "nothing"
 	/// A flags which save people from being thrown about
 	var/antimagic_flags = MAGIC_RESISTANCE

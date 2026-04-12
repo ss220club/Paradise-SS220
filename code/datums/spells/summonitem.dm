@@ -1,6 +1,6 @@
 /datum/spell/summonitem
 	name = "Instant Summons"
-	desc = "Возвращает зачарованый ранее вами предмет из любой точки мира."
+	desc = "Возвращает зачарованный ранее вами предмет из любой точки мира."
 	clothes_req = FALSE
 	invocation = "GAR YOK"
 	invocation_type = "whisper"
@@ -50,7 +50,7 @@
 			marked_item = 		null
 
 		else if(marked_item && !marked_item.loc) //the item was destroyed at some point
-			message = "<span class='warning'>Вы чувствуете, что ваш зачарованый предмет был уничтожен!</span>"
+			message = "<span class='warning'>Вы чувствуете, что ваш зачарованный предмет был уничтожен!</span>"
 			name = "Instant Summons"
 			marked_item = 		null
 

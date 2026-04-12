@@ -49,7 +49,7 @@
 
 /datum/spell/touch/disintegrate
 	name = "Disintegrate"
-	desc = "Заряжает вашу руку зловещей энергией, разрывающей жертв на куски при прикосновение."
+	desc = "Заряжает вашу руку зловещей энергией, разрывающей жертв на куски при прикосновении."
 	hand_path = /obj/item/melee/touch_attack/disintegrate
 
 	base_cooldown = 600
