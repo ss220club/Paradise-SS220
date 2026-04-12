@@ -240,6 +240,6 @@
 /datum/spell/mimic/morph/show_death_message(mob/user)
 	user.visible_message(
 		"<span class='warning'>[user] скручивается и превращается в груду зеленой плоти!</span>",
-		"<span class='userdanger'>Ваша кожа лопается! Ваша плоть распадается на части! Никакая маскировка не спасет вас от....</span>",
+		"<span class='userdanger'>Ваша кожа лопается! Ваша плоть распадается на части! Никакая маскировка не спасет вас от сме...</span>",
 		"<span class='warning'>Вы слышите громкий треск, за которым следует глухой удар!</span>"
 	)
