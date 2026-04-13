@@ -1,6 +1,6 @@
 /datum/spell/summonitem
 	name = "Instant Summons"
-	desc = "Возвращает зачарованный ранее вами предмет из любой точки мира."
+	desc = "Возвращает в руки зачарованный ранее вами предмет из любой точки мира или зачаровывает удерживаемый предмет."
 	clothes_req = FALSE
 	invocation = "GAR YOK"
 	invocation_type = "whisper"

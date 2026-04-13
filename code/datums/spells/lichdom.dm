@@ -108,7 +108,7 @@
 		build_all_button_icons()
 
 	target.name = "ensouled [target.name]"
-	target.desc += "<br><span class='warning'>Зловещая аура окружает этот предмет, само его существование оскорбительно для самой жизни...</span>"
+	target.desc += "<br><span class='warning'>Зловещая аура окружает этот предмет, даже его существование оскорбительно для самой жизни...</span>"
 	target.color = "#003300"
 	marked_item_uid = target.UID()
 

@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	/// The message displayed when a click based spell gets activated
 	var/selection_activated_message		= "<span class='notice'>Нажмите на цель, чтобы произнести заклинание.</span>"
 	/// The message displayed when a click based spell gets deactivated
-	var/selection_deactivated_message	= "<span class='notice'>Вы решили не использовать это заклинание.</span>"
+	var/selection_deactivated_message	= "<span class='notice'>Вы решили повременить с использованием этого заклинания.</span>"
 
 	/// does this spell generate attack logs?
 	var/create_attack_logs = TRUE

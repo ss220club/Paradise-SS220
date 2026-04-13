@@ -59,7 +59,7 @@
 
 /datum/spell/touch/flesh_to_stone
 	name = "Flesh to Stone"
-	desc = "Заряжает вашу руку силой, способной превращать жертв в неподвижные статуи на долгое время."
+	desc = "Заряжает вашу руку зловещей силой, способной превращать жертв в неподвижные статуи на долгое время."
 	hand_path = /obj/item/melee/touch_attack/fleshtostone
 
 	base_cooldown = 600
@@ -69,7 +69,7 @@
 
 /datum/spell/touch/plushify
 	name = "Plushify"
-	desc = "Заряжает вашу руку силой, способной превратить ваших жертв в игрушки!"
+	desc = "Заряжает вашу руку зловещей силой, способной превратить ваших жертв в игрушки!"
 	hand_path = /obj/item/melee/touch_attack/plushify
 
 	base_cooldown = 600
