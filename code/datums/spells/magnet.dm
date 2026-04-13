@@ -1,6 +1,6 @@
 /datum/spell/charge_up/bounce/magnet
 	name = "Magnetic Pull"
-	desc = "Вырывает металлические предметы из рук врагов с помощью МАГНИТОВ!"
+	desc = "Вырывает металлические предметы из рук врагов с помощью МА-А-А-АГНИТОВ!"
 	action_icon_state = "magnet"
 	base_cooldown	= 30 SECONDS
 	clothes_req = FALSE

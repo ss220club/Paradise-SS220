@@ -73,7 +73,7 @@
 
 /datum/spell/aoe/conjure/build/lesserforcewall
 	name = "Shield"
-	desc = "Создает временное неразрушимое препятствие, чтобы защитить вас и союзников от вражеского огня."
+	desc = "Создает временное несокрушимое препятствие, чтобы защитить вас и союзников от вражеского огня."
 	action_icon_state = "cultforcewall"
 	action_background_icon_state = "bg_cult"
 	base_cooldown = 300
@@ -84,7 +84,7 @@
 	summon_lifespan = 200
 
 /obj/effect/forcefield/cult
-	desc = "Жутковато выглядящее препятствие, кажется, появилось из другого измерения с помощью чистой силы."
+	desc = "Жутковато выглядящее препятствие, кажется, появилось из другого измерения с помощью зловещей силы."
 	name = "eldritch wall"
 	icon = 'icons/effects/cult_effects.dmi'
 	icon_state = "m_shield_cult"
