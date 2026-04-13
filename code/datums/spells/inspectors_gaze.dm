@@ -3,7 +3,7 @@
 	desc = "Дайте экипажу узнать, что за ними наблюдают и контролируют."
 	base_cooldown = 6 SECONDS
 	clothes_req = FALSE
-	selection_activated_message		= "<span class='notice'>Вы ищете члена экипажа для проверки! <b>Щелкните левой кнопкой мыши, чтобы опустить свой взор на цель.</b></span>"
+	selection_activated_message		= "<span class='notice'>Вы ищете члена экипажа для проверки! <b>Щелкните левой кнопкой мыши, чтобы направить свой взор на цель.</b></span>"
 	selection_deactivated_message	= "<span class='notice'>Вы отводите свой взгляд... на время.</span>"
 	action_icon_state = "genetic_view"
 

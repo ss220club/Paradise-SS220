@@ -59,7 +59,7 @@
 
 /datum/spell/aoe/conjure/summon_ed_swarm
 	name = "Dispense Wizard Justice"
-	desc = "Да свершиться магическое правосудие!"
+	desc = "Да свершится магическое правосудие!"
 	summon_type = list(/mob/living/simple_animal/bot/ed209)
 	summon_amt = 10
 	newVars = list("emagged" = 1,"name" = "Wizard's Justicebot")

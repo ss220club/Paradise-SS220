@@ -109,7 +109,7 @@
 	invocation_type = "none"
 	action_background_icon_state = "bg_demon"
 	action_icon_state = "glare"
-	gain_desc = "Вы получили возможность превращаться в Адского пса. Это боевая форма с различными способностями, выносливая, но не неуязвимая. Со временем она может восстанавиться во время отдыха."
+	gain_desc = "Вы получили возможность превращаться в Адского пса. Это боевая форма с различными способностями, выносливая, но не неуязвимая. Со временем она может восстановиться во время отдыха."
 
 	shapeshift_type = /mob/living/basic/hellhound
 	current_shapes = list(/mob/living/basic/hellhound)
