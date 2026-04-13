@@ -1,5 +1,5 @@
 /datum/spell/aoe/conjure
-	desc = "Это заклинание сотворяет объекты указанных типов в пределах досягаемости."
+	desc = "Призывает некоторых существ в небольшой области вокруг вас."
 
 	var/list/summon_type = list() //determines what exactly will be summoned
 	//should be text, like list("/mob/simple_animal/bot/ed209")
@@ -59,7 +59,7 @@
 
 /datum/spell/aoe/conjure/summon_ed_swarm
 	name = "Dispense Wizard Justice"
-	desc = "Это заклинание вершит волшебное правосудие!"
+	desc = "Да свершиться магическое правосудие!"
 	summon_type = list(/mob/living/simple_animal/bot/ed209)
 	summon_amt = 10
 	newVars = list("emagged" = 1,"name" = "Wizard's Justicebot")
