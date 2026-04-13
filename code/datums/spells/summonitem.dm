@@ -32,7 +32,7 @@
 				if(ABSTRACT in item.flags)
 					continue
 				if(NODROP in item.flags)
-					message += "Это кажется излишним и бесполезным, но вы все равно делаете это.<br>"
+					message += "Вам кажется это совершенно бесполезным, но вы всё равно делаете это.<br>"
 				marked_item = 		item
 				message += "Вы помечаете [item.declent_ru(ACCUSATIVE)] для призыва.</span>"
 				name = "Призвать [item.declent_ru(ACCUSATIVE)]"
