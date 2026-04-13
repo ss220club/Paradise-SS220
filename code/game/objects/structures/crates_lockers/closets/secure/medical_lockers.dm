@@ -235,7 +235,7 @@
 	new /obj/item/storage/box/monkeycubes/farwacubes(src)
 	new /obj/item/storage/box/monkeycubes/neaeracubes(src)
 	new /obj/item/storage/box/monkeycubes/nian_worme_cubes(src)
-	new /obj/item/storage/box/monkeycubes/kidan_nymph_cubes(src) //From SS220
+	new /obj/item/storage/box/monkeycubes/kidan_nymph_cubes(src) // SS220 EDIT - (Добавлена коробка для удобства генетиков)
 	new /obj/item/storage/box/monkeycubes/stokcubes(src)
 	new /obj/item/storage/box/monkeycubes/wolpincubes(src)
 
