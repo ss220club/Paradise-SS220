@@ -89,3 +89,21 @@
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-navytsf"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/reptsf
+	name = "Trans Solar Federation Representative's rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-reptsf"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/repussp
+	name = "USSP Representative's rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-ussprep"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/comussp
+	name = "USSP Command rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-usspcom"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
