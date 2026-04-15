@@ -1,6 +1,6 @@
 /datum/spell/bloodcrawl
 	name = "Blood Crawl"
-	desc = "Используйте лужи крови, чтобы раствориться в фазе."
+	desc = "Используйте лужи крови, чтобы раствориться."
 	base_cooldown = 1 SECONDS
 	clothes_req = FALSE
 	should_recharge_after_cast = FALSE
@@ -269,7 +269,7 @@
 
 /datum/spell/bloodcrawl/shadow_crawl
 	name = "Shadow Crawl"
-	desc = "Исчезновение во тьме, что увеличит скорость и сделает неосязаемым. Не работает в освещенных местах."
+	desc = "Слейтесь с тьмой, ускорьтесь, будьте не осязаемым. Не сработает в месте наполненым светом."
 	allowed_type = /turf
 	action_background_icon_state = "shadow_demon_bg"
 	action_icon_state = "shadow_crawl"
