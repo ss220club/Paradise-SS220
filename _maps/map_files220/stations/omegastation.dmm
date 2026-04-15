@@ -15497,7 +15497,7 @@
 /area/station/command/office/cmo)
 "aRq" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
-	autolink_id = "air_in";
+	autolink_id = "n2_in";
 	dir = 1
 	},
 /turf/simulated/floor/engine/n2,
@@ -17775,7 +17775,7 @@
 "aYl" = (
 /obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 1;
-	autolink_id = "n2_outlet_scrubber"
+	autolink_id = "air_outlet_scrubber"
 	},
 /turf/simulated/floor/engine/air,
 /area/station/engineering/atmos)
@@ -42908,7 +42908,7 @@
 /area/station/turret_protected/ai)
 "sMb" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
-	autolink_id = "n2_in";
+	autolink_id = "air_in";
 	dir = 1
 	},
 /turf/simulated/floor/engine/air,
@@ -47113,11 +47113,11 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/sortjunction{
 	dir = 4;
 	sort_type_txt = "1"
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "brown"
@@ -50095,7 +50095,7 @@
 "yeE" = (
 /obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 1;
-	autolink_id = "air_outlet_scrubber"
+	autolink_id = "n2_outlet_scrubber"
 	},
 /turf/simulated/floor/engine/n2,
 /area/station/engineering/atmos)
