@@ -1,9 +1,7 @@
 // This could probably be an aoe spell but it's a little cursed, so I'm not touching it
 /datum/spell/spacetime_dist
 	name = "Spacetime Distortion"
-	desc = "Запутайте нити пространства-времени вокруг себя, \
-		изменяя расположение предметов и объектов, делая невозможным правильное перемещение. Нити вибрируют... \
-		Усовершенствование заклинания увеличивает дальность действия, но не уменьшает время восстановления."
+	desc = "Да будет ХАОС на арене! Пространство вокруг мага будет сильно запутано, что усложнит передвижение врагов. Усовершенствование заклинания увеличивает дальность действия, но не уменьшает время восстановления."
 	sound = 'sound/magic/strings.ogg'
 	action_icon_state = "spacetime"
 
@@ -77,7 +75,7 @@
 
 /obj/effect/cross_action/spacetime_dist
 	name = "spacetime distortion"
-	desc = "Искажает пространство и время. Вы слышите тихую музыку..."
+	desc = "Искажает пространство и время. Вы слышите тихую мелодию..."
 	icon_state = "nothing"
 	/// A flags which save people from being thrown about
 	var/antimagic_flags = MAGIC_RESISTANCE

@@ -106,7 +106,7 @@
 
 /datum/spell/smoke
 	name = "Smoke"
-	desc = "Создает облако плотной дымовой завесы вокруг вас и не требует робы волшебника."
+	desc = "Создает облако плотной дымовой завесы вокруг вас. Не требует робы волшебника."
 
 	base_cooldown = 120
 	clothes_req = FALSE
@@ -123,7 +123,7 @@
 
 /datum/spell/emplosion/disable_tech
 	name = "Disable Tech"
-	desc = "Отключает все оружие, камеры и большую часть другой техники в радиусе действия."
+	desc = "Отключает всё оружие, камеры и большую часть другой техники в радиусе действия."
 	base_cooldown = 40 SECONDS
 	invocation = "NEC CANTIO"
 	invocation_type = "shout"

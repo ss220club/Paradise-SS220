@@ -1,6 +1,6 @@
 /datum/spell/aoe/conjure/build/mime_wall
 	name = "Invisible Wall"
-	desc = "Представление станет явью!"
+	desc = "Метериальные пантомимы!"
 	summon_type = list(/obj/structure/forcefield/mime)
 	invocation_type = "emote"
 	invocation_emote_self = "<span class='notice'>Вы возводите перед собой стену.</span>"
@@ -17,7 +17,7 @@
 /datum/spell/aoe/conjure/build/mime_wall/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>Сначала вы должны посвятить себя тишине.</span>")
+			to_chat(usr, "<span class='notice'>Сначала вы должны принять обед молчания.</span>")
 			return
 		invocation = "<B>[usr.name]</B> выглядит так, как будто перед [usr.ru_p_them()] находится стена."
 	else

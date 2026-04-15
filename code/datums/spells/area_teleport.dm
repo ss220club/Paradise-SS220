@@ -25,7 +25,7 @@
 	var/area/thearea = SSmapping.teleportlocs[area_name]
 
 	if(thearea.tele_proof && !istype(thearea, /area/wizard_station))
-		to_chat(user, "Таинственная сила разрушает вашу тайную матрицу заклинаний, и вы остаетесь там, где находитесь.")
+		to_chat(user, "Таинственная сила разрушает мистическую матрицу вашего заклинания. Вы остаетесь там, где находитесь.")
 		return
 
 	selected_area = thearea
@@ -50,7 +50,7 @@
 					L+=T
 
 		if(!length(L))
-			to_chat(usr, "Матрица заклинаний по неизвестной причине не смогла найти подходящее место для телепортации.")
+			to_chat(usr, "Матрица заклинания по неизвестной причине не смогла найти подходящее место для телепортации.")
 			return
 
 		if(target && target.buckled)

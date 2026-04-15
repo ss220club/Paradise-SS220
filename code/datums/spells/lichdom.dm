@@ -1,6 +1,6 @@
 /datum/spell/lichdom
 	name = "Bind Soul"
-	desc = "Темный договор некроманта, навсегда привязывающий вашу душу к выбранному предмету. Пока и ваше тело, и предмет остаются нетронутыми и на одном уровне, вы можете возрождаться после смерти, хотя время между возрождениями растет с каждой смертью."
+	desc = "Древний пакт смерти, навсегда привязывающий вашу душу к  предмету в руках. Пока ваше тело и предмет остаются целыми на одном уровне, вы сможете возрадиться после смерти. Время между возрождениями растет с каждой смертью."
 	base_cooldown = 10
 	clothes_req = FALSE
 	centcom_cancast = FALSE
@@ -40,14 +40,14 @@
 	// Phylactery was destroyed
 	var/obj/item/marked_item = locateUID(marked_item_uid)
 	if(QDELETED(marked_item))
-		to_chat(user, "<span class='warning'>Ваш оберег пропал!</span>")
+		to_chat(user, "<span class='warning'>Ваш кристраж пропал!</span>")
 		return
 
 	// Wrong z-level
 	var/turf/body_turf = get_turf(current_body)
 	var/turf/item_turf = get_turf(marked_item)
 	if(body_turf.z != item_turf.z)
-		to_chat(user, "<span class='warning'>Ваш оберег вне досягаемости!</span>")
+		to_chat(user, "<span class='warning'>Ваш кристраж вне досягаемости!</span>")
 		return
 
 	if(isobserver(user))
@@ -86,11 +86,11 @@
 /datum/spell/lichdom/proc/attempt_mark_item(mob/user)
 	var/obj/item/target = user.get_active_hand()
 	if(!target)
-		to_chat(user, "<span class='warning'>У вас должен быть предмет, который вы хотите использовать для создания своего оберега!</span>")
+		to_chat(user, "<span class='warning'>У вас должен быть предмет, который вы хотите использовать для создания своего кристража!</span>")
 		return
 
 	if(target.flags & (ABSTRACT|NODROP))
-		to_chat(user, "<span class='warning'>[target.declent_ru(NOMINATIVE)] не может быть использован в качестве вашего оберега!</span>")
+		to_chat(user, "<span class='warning'>[target.declent_ru(NOMINATIVE)] не может быть использован в качестве вашего кристража!</span>")
 		return
 
 	if(!do_after(user, 5 SECONDS, target = target))
@@ -98,7 +98,7 @@
 		return
 
 	name = "RISE!"
-	desc = "Восстань из мертвых! Вы возродитесь в том месте, где находится ваш оберег, и ваше старое тело исчезнет."
+	desc = "Восстань из мертвых! Вы возродитесь в том месте, где находится ваш кристраж, и ваше старое тело исчезнет."
 	stat_allowed = UNCONSCIOUS
 	cooldown_handler.recharge_duration = 3 MINUTES
 	cooldown_handler.revert_cast()
