@@ -66,6 +66,8 @@
 		production_modes[new_mode.mode_id] = new_mode
 		new_mode = new /datum/chemical_production_mode/bottles()
 		production_modes[new_mode.mode_id] = new_mode
+		new_mode = new /datum/chemical_production_mode/autoinjectors() //EDIT 220 - Нужно для добавления медипена
+		production_modes[new_mode.mode_id] = new_mode
 	if(isnull(production_mode))
 		for(var/key in production_modes)
 			production_mode = key
@@ -672,6 +674,43 @@
 
 /datum/chemical_production_mode/condiment_packs/get_base_placeholder_name(datum/reagents/reagents, amount_per_item)
 	return reagents.get_master_reagent_name()
+
+// SS220 EDIT START - Adding Medipens In Chemaster
+/datum/chemical_production_mode/autoinjectors
+	mode_id = "medipens"
+	production_name = "Medipens"
+	production_icon = "syringe"
+	item_type = /obj/item/reagent_containers/hypospray/autoinjector/custom
+	sprites = list("medipen", "medipen_red", "medipen_org", "medipen_blu", "medipen_grn", "medipen_prp", "medipen_rad")
+	max_items_amount = 20
+	max_units_per_item = 30
+	name_suffix = " medipen"
+	var/static/list/safe_chem_list = list("antihol", "charcoal", "epinephrine", "insulin", "teporone", "salbutamol",
+									"omnizine", "stimulants", "synaptizine", "potass_iodide", "oculine", "mannitol",
+									"spaceacillin", "salglu_solution", "sal_acid", "cryoxadone", "blood", "synthflesh",
+									"hydrocodone", "mitocholide", "rezadone", "menthol", "diphenhydramine", "ephedrine",
+									"iron", "sanguine_reagent", "kelotane", "bicaridine", "pen_acid", "atropine")
+
+/datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents)
+	return reagents.get_master_reagent_name()
+
+/datum/chemical_production_mode/autoinjectors/proc/safety_check(datum/reagents/R)
+	for(var/datum/reagent/A in R.reagent_list)
+		if(!safe_chem_list.Find(A.id))
+			return FALSE
+	if(R.chem_temp < SAFE_MIN_TEMPERATURE || R.chem_temp > SAFE_MAX_TEMPERATURE)
+		return FALSE
+	return TRUE
+
+/datum/chemical_production_mode/autoinjectors/configure_item(data, datum/reagents/R, obj/item/reagent_containers/hypospray/P)
+	. = ..()
+	var/chemicals_is_safe = data["chemicals_is_safe"]
+
+	if(isnull(chemicals_is_safe))
+		chemicals_is_safe = safety_check(R)
+		data["chemicals_is_safe"] = chemicals_is_safe
+
+// S220 EDIT END
 
 #undef MAX_PILL_SPRITE
 #undef MAX_PATCH_SPRITE

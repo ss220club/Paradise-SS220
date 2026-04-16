@@ -306,6 +306,7 @@
 					/obj/item/stack/medical/bruise_pack = 2,
 					/obj/item/stack/medical/splint = 3,
 					/obj/item/reagent_containers/syringe = 6,
+					/obj/item/storage/pill_bottle/medipen_case = 1, // EDIT SS220 - На складах места нету будет тут
 					/obj/item/reagent_containers/glass/bottle/charcoal = 3,
 					/obj/item/reagent_containers/glass/bottle/epinephrine = 3,
 					/obj/item/reagent_containers/glass/bottle/salicylic = 3,
