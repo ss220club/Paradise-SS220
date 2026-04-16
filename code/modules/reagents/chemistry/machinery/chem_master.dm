@@ -687,7 +687,7 @@
 	name_suffix = " medipen"
 	var/static/list/safe_chem_list = list("antihol", "charcoal", "epinephrine", "insulin", "teporone", "salbutamol",
 									"omnizine", "stimulants", "synaptizine", "potass_iodide", "oculine", "mannitol",
-									"spaceacillin", "salglu_solution", "sal_acid", "cryoxadone", "blood", "synthflesh",
+									"spaceacillin", "salglu_solution", "sal_acid", "cryoxadone", "synthflesh",
 									"hydrocodone", "mitocholide", "rezadone", "menthol", "diphenhydramine", "ephedrine",
 									"iron", "sanguine_reagent", "kelotane", "bicaridine", "pen_acid", "atropine")
 
