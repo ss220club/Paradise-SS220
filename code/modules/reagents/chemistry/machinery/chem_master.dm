@@ -696,7 +696,7 @@
 
 /datum/chemical_production_mode/autoinjectors/proc/safety_check(datum/reagents/R)
 	for(var/datum/reagent/A in R.reagent_list)
-		if(!safe_chem_list.Find(A.id))
+		if(!safe_chem_list.Find[A.id])
 			return FALSE
 	if(R.chem_temp < SAFE_MIN_TEMPERATURE || R.chem_temp > SAFE_MAX_TEMPERATURE)
 		return FALSE

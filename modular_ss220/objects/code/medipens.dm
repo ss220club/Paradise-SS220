@@ -2,8 +2,8 @@
 	icon = 'modular_ss220/objects/icons/medipens.dmi'
 	icon_state = "medipen"
 	desc = "A rapid and safe way to inject chemicals into humanoids. This one have extended capacity."
-	amount_per_transfer_from_this = 20
-	volume = 20
+	amount_per_transfer_from_this = 30
+	volume = 30
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/update_icon_state()
 	icon_state = replacetext(icon_state, regex(@"\d+$"), "")
