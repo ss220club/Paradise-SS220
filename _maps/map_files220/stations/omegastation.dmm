@@ -12219,7 +12219,10 @@
 	},
 /area/station/engineering/break_room)
 "aIA" = (
-/obj/item/paper_bin,
+/obj/item/paper_bin{
+	pixel_x = 10;
+	pixel_y = -5
+	},
 /obj/item/assembly/prox_sensor{
 	pixel_x = 5;
 	pixel_y = 7
@@ -12234,15 +12237,25 @@
 	},
 /obj/structure/table/reinforced,
 /obj/machinery/light_switch/east,
-/obj/item/clothing/glasses/welding,
-/obj/item/wrench,
-/obj/item/stack/sheet/plasteel{
-	amount = 15
-	},
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/cable_coil/white,
-/obj/item/stack/sheet/metal/fifty,
 /obj/machinery/requests_console/directional/north,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 14
+	},
+/obj/item/wrench{
+	pixel_y = 10;
+	pixel_x = 5
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_y = 15;
+	pixel_x = 10
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "darkpurple"
@@ -14794,11 +14807,8 @@
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "aPn" = (
-/obj/structure/table,
-/obj/item/stock_parts/cell/high,
-/obj/item/stock_parts/cell/high,
-/obj/machinery/cell_charger,
 /obj/item/radio/intercom/directional/south,
+/obj/machinery/economy/vending/robodrobe,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkpurple"
@@ -15005,15 +15015,18 @@
 /obj/item/stock_parts/micro_laser{
 	pixel_y = -15
 	},
-/obj/item/weldingtool/research{
-	pixel_y = -15
-	},
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
+	},
+/obj/item/stock_parts/matter_bin{
+	pixel_y = -15
+	},
+/obj/item/weldingtool/research{
+	pixel_y = -15
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -16909,7 +16922,7 @@
 	},
 /area/station/hallway/primary/central/north)
 "aVv" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/mecha_part_fabricator/station,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkpurple"
@@ -18480,11 +18493,6 @@
 /area/station/hallway/primary/central/se)
 "bag" = (
 /obj/structure/rack,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/toolbox/electrical,
 /obj/item/screwdriver{
 	pixel_y = 5
 	},
@@ -18502,6 +18510,12 @@
 /obj/item/circuitboard/mecha/ripley/main,
 /obj/item/storage/belt/utility/full,
 /obj/item/book/manual/wiki/robotics_cyborgs,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/cable_coil/white,
+/obj/item/stack/sheet/plasteel{
+	amount = 15
+	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkpurple"
@@ -19866,11 +19880,11 @@
 	},
 /area/station/science/robotics)
 "ber" = (
-/obj/structure/closet/secure_closet/roboticist,
 /obj/machinery/power/apc/directional/west,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/structure/closet/secure_closet/roboticist,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkpurple"
@@ -40440,8 +40454,8 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/lawoffice)
 "qGl" = (
-/obj/machinery/mecha_part_fabricator,
 /obj/machinery/alarm/directional/north,
+/obj/machinery/mecha_part_fabricator/station,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkpurple"
@@ -50262,14 +50276,6 @@
 	icon_state = "darkred"
 	},
 /area/station/security/prisonershuttle)
-"xVo" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/item/stock_parts/matter_bin{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/turf/simulated/floor/plating,
-/area/station/science/rnd)
 "xVp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -87124,7 +87130,7 @@ aEl
 mxh
 dds
 xij
-xVo
+egh
 xij
 cPk
 xij
