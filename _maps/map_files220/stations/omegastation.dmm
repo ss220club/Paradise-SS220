@@ -3470,6 +3470,9 @@
 "ajs" = (
 /obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment/corner{
+	dir = 2
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "brown"
@@ -3510,7 +3513,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/alarm/directional/south,
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
@@ -5098,11 +5100,26 @@
 /area/station/command/office/hos)
 "aow" = (
 /obj/structure/table/reinforced,
-/obj/item/pen/blue,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
+/obj/item/multitool{
+	pixel_x = -6;
+	pixel_y = 10
 	},
-/area/station/engineering/gravitygenerator)
+/obj/item/radio/headset/headset_eng{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/t_scanner{
+	pixel_x = 10;
+	pixel_y = 12
+	},
+/obj/item/t_scanner{
+	pixel_x = 10;
+	pixel_y = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "yellowfull"
+	},
+/area/station/engineering/control)
 "aox" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8656,8 +8673,17 @@
 	},
 /area/station/security/permabrig)
 "azk" = (
-/obj/item/stack/ore/silver,
-/turf/simulated/wall/r_wall,
+/obj/item/radio/intercom/directional/north,
+/obj/item/stack/sheet/metal/fifty{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/glass/fifty,
+/obj/structure/rack,
+/obj/effect/turf_decal/delivery/hollow,
+/turf/simulated/floor/plasteel{
+	icon_state = "yellowfull"
+	},
 /area/station/engineering/control)
 "azl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -10508,6 +10534,9 @@
 /area/station/service/bar/atrium)
 "aEF" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment/corner{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
@@ -21974,9 +22003,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/structure/disposalpipe/segment/corner{
-	dir = 4
-	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/disposal)
 "blo" = (
@@ -22849,7 +22876,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "bDd" = (
-/obj/item/radio/intercom/directional/north,
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
@@ -25702,8 +25728,11 @@
 /turf/simulated/wall/r_wall,
 /area/station/ai_monitored/storage/eva)
 "ebj" = (
-/turf/simulated/mineral/ancient,
-/area/station/engineering/gravitygenerator)
+/obj/structure/disposalpipe/sortjunction/reversed{
+	sort_type_txt = "1"
+	},
+/turf/space,
+/area/space)
 "ebt" = (
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
@@ -28560,6 +28589,15 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/service/bar/atrium)
+"gCK" = (
+/obj/structure/table/reinforced,
+/obj/item/wrench{
+	pixel_y = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "yellowfull"
+	},
+/area/station/engineering/control)
 "gDx" = (
 /obj/machinery/power/apc/reinforced/directional/east,
 /obj/structure/cable/extra_insulated,
@@ -37511,6 +37549,14 @@
 "oEF" = (
 /turf/simulated/wall,
 /area/station/science/server)
+"oFU" = (
+/obj/machinery/alarm/directional/south,
+/obj/structure/table/reinforced,
+/obj/item/pen/blue,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/engineering/gravitygenerator)
 "oGc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /turf/simulated/floor/plasteel,
@@ -47156,11 +47202,10 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/sortjunction{
-	dir = 4;
+/obj/structure/disposalpipe/sortjunction/reversed{
 	sort_type_txt = "1"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "brown"
@@ -68945,7 +68990,7 @@ jqQ
 jqQ
 jqQ
 jqQ
-ebj
+jqQ
 alz
 mJM
 xjN
@@ -69201,9 +69246,9 @@ kQu
 afn
 aWT
 ajy
+oFU
 jqQ
-jqQ
-alz
+gCK
 qgF
 jgN
 vCh
@@ -69458,7 +69503,7 @@ juj
 xge
 fxE
 rpK
-aow
+vEl
 jqQ
 azk
 bDd
@@ -69717,7 +69762,7 @@ aXe
 uGf
 aGi
 jqQ
-alz
+aow
 cSA
 aQV
 bwf
@@ -91516,7 +91561,7 @@ sfS
 hhM
 hhM
 hhM
-hhM
+ebj
 hhM
 aiC
 ajr
