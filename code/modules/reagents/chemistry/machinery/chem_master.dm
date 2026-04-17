@@ -685,11 +685,11 @@
 	max_items_amount = 20
 	max_units_per_item = 30
 	name_suffix = " medipen"
-	var/static/list/safe_chem_list = list("antihol", "charcoal", "epinephrine", "insulin", "teporone", "salbutamol",
-									"omnizine", "stimulants", "synaptizine", "potass_iodide", "oculine", "mannitol",
-									"spaceacillin", "salglu_solution", "sal_acid", "cryoxadone", "synthflesh",
-									"hydrocodone", "mitocholide", "rezadone", "menthol", "diphenhydramine", "ephedrine",
-									"iron", "sanguine_reagent", "kelotane", "bicaridine", "pen_acid")
+	var/static/list/safe_chem_list = list("antihol" = TRUE, "charcoal" = TRUE, "epinephrine" = TRUE, "insulin" = TRUE, "teporone" = TRUE, "salbutamol" = TRUE,
+									"omnizine" = TRUE, "stimulants" = TRUE, "synaptizine" = TRUE, "potass_iodide" = TRUE, "oculine" = TRUE, "mannitol" = TRUE,
+									"spaceacillin" = TRUE, "salglu_solution" = TRUE, "sal_acid" = TRUE, "cryoxadone" = TRUE, "blood" = TRUE, "synthflesh" = TRUE,
+									"hydrocodone" = TRUE, "mitocholide" = TRUE, "rezadone" = TRUE, "menthol" = TRUE, "diphenhydramine" = TRUE, "ephedrine" = TRUE,
+									"iron" = TRUE, "sanguine_reagent" = TRUE, "kelotane" = TRUE, "bicaridine" = TRUE, "pen_acid" = TRUE, "atropine" = TRUE)
 
 /datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents)
 	return reagents.get_master_reagent_name()
@@ -710,6 +710,8 @@
 		chemicals_is_safe = safety_check(R)
 		data["chemicals_is_safe"] = chemicals_is_safe
 
+	if(chemicals_is_safe)
+		P.instant_application = TRUE
 // S220 EDIT END
 
 #undef MAX_PILL_SPRITE
