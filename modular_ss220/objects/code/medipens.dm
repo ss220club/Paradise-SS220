@@ -125,3 +125,13 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
+
+/obj/machinery/smartfridge/medbay/Initialize(mapload)
+	. = ..()
+	accepted_items_typecache = typecacheof(list(
+		/obj/item/reagent_containers/hypospray/autoinjector,
+	))
+
+/obj/machinery/economy/vending/medical/Initialize(mapload)
+	products += list(/obj/item/storage/pill_bottle/medipen_case = 1,)
+	return ..()

@@ -684,7 +684,6 @@
 /obj/machinery/smartfridge/medbay/Initialize(mapload)
 	. = ..()
 	accepted_items_typecache = typecacheof(list(
-		/obj/item/reagent_containers/hypospray/autoinjector, // SS220 EDIT - Medipens now craftable, so make them fit into smartfridge
 		/obj/item/reagent_containers/glass,
 		/obj/item/reagent_containers/iv_bag,
 		/obj/item/reagent_containers/applicator,
