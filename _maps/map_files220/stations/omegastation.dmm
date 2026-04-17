@@ -4083,7 +4083,7 @@
 /area/station/supply/sorting)
 "alm" = (
 /obj/machinery/light/directional/west,
-/obj/item/kirbyplants/large,
+/obj/item/flag/command,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "neutralcorner"
@@ -4091,7 +4091,7 @@
 /area/station/hallway/primary/fore)
 "als" = (
 /obj/machinery/light/directional/east,
-/obj/item/kirbyplants/large,
+/obj/item/flag/command,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner"
 	},
@@ -6364,7 +6364,8 @@
 /area/station/engineering/supermatter_room)
 "asd" = (
 /obj/machinery/newscaster/directional/east,
-/obj/item/kirbyplants/large,
+/obj/machinery/economy/vending/cola/red,
+/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "black"
@@ -18948,6 +18949,7 @@
 /area/station/service/bar)
 "bbI" = (
 /obj/item/flag/rnd,
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "purple"
@@ -19155,6 +19157,10 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/effect/turf_decal/tiles/department/engineering/side{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "bcH" = (
@@ -19167,6 +19173,10 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/turf_decal/tiles/department/engineering/side{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "bcI" = (
@@ -19202,6 +19212,10 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "2-4"
 	},
+/obj/effect/turf_decal/tiles/department/engineering/side{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "bcN" = (
@@ -19215,6 +19229,10 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
+/obj/effect/turf_decal/tiles/department/engineering/side{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "bcO" = (
@@ -21759,6 +21777,7 @@
 "bju" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/status_display/directional/south,
+/obj/machinery/economy/vending/vulpix,
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
 	},
@@ -23536,6 +23555,7 @@
 /area/station/engineering/atmos)
 "ccv" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "ccC" = (
@@ -23616,6 +23636,7 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/procedure/trainer_office)
 "cfi" = (
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/plating,
 /area/station/maintenance/abandonedbar)
 "cfq" = (
@@ -28626,6 +28647,7 @@
 /area/station/security/prisonershuttle)
 "gxn" = (
 /obj/machinery/firealarm/directional/east,
+/obj/machinery/economy/vending/crittercare,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "black"
@@ -29957,14 +29979,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/aft)
 "hCP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/extra_insulated{
-	icon_state = "1-2"
-	},
-/obj/effect/spawner/wire_splicing/thirty,
-/turf/simulated/floor/catwalk,
-/area/station/maintenance/fsmaint)
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plating,
+/area/station/maintenance/aft)
 "hDi" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 1
@@ -35237,6 +35254,7 @@
 	},
 /area/station/engineering/control)
 "meV" = (
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "meY" = (
@@ -35403,6 +35421,15 @@
 /area/station/engineering/break_room)
 "mnh" = (
 /obj/structure/table,
+/obj/item/petcollar{
+	pixel_y = -4;
+	pixel_x = -4
+	},
+/obj/item/petcollar,
+/obj/item/petcollar{
+	pixel_x = 4;
+	pixel_y = 4
+	},
 /obj/item/storage/backpack/duffel,
 /turf/simulated/floor/plasteel/white/corner,
 /area/station/public/locker)
@@ -38999,6 +39026,7 @@
 /area/station/engineering/atmos)
 "pvW" = (
 /obj/structure/sign/poster/random/directional/east,
+/obj/machinery/economy/vending/chinese,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "black"
@@ -42660,7 +42688,6 @@
 /obj/item/crowbar/red,
 /obj/structure/table,
 /obj/item/analyzer,
-/obj/item/aicard,
 /obj/item/clipboard,
 /turf/simulated/floor/plating,
 /area/station/public/storage/tools/auxiliary)
@@ -44710,6 +44737,7 @@
 "tDF" = (
 /obj/machinery/newscaster/directional/east,
 /obj/machinery/light/directional/east,
+/obj/machinery/economy/vending/coffee,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "black"
@@ -82005,7 +82033,7 @@ rae
 rae
 rae
 pcN
-moS
+hCP
 aWa
 kYi
 due
@@ -88115,7 +88143,7 @@ mHZ
 mHZ
 mHZ
 mHZ
-hCP
+mHZ
 mHZ
 lFO
 lyF
