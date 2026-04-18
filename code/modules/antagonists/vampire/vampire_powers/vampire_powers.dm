@@ -211,7 +211,7 @@
 
 /datum/spell/vampire/lair
 	name = "Lair"
-	desc = "Pick a coffin for yourself, the centrepiece of your new lair."
+	desc = "Выберите себе гроб, который станет центральным элементом вашего нового логова."
 	gain_desc = "You can now start a lair."
 	action_icon = 'icons/obj/closet.dmi'
 	action_icon_state = "coffin"
@@ -226,19 +226,19 @@
 /datum/spell/vampire/lair/cast(list/targets, mob/user)
 	var/obj/structure/closet/coffin/C = targets[1] // this spell will basically always target a singular coffin unless you stack multiple on the same tile
 	if(!istype(C, /obj/structure/closet/coffin))
-		to_chat(user, "<span class='warning'>This only works on coffins!</span>")
+		to_chat(user, "<span class='warning'>Это работает только с гробами!</span>")
 		return
 	if(istype(C, /obj/structure/closet/coffin/vampire))
-		to_chat(user, "<span class='warning'>This coffin serves another and refuses to bend to your will!</span>")
+		to_chat(user, "<span class='warning'>Этот гроб принадлежит другому и отказывается подчиняться вашему воле!</span>")
 		return
 	if(istype(C, /obj/structure/closet/coffin/sarcophagus))
-		to_chat(user, "<span class='warning'>Making such a lavish lair would likely upset an ancient. You should really use a wooden coffin for now.</span>")
+		to_chat(user, "<span class='warning'>Создание такого роскошного логова, вероятно, расстроило бы древний народ. Вам лучше пока использовать деревянный гроб.</span>")
 		return
 	for(var/turf/T in range(1, C))
 		if(T.density)
-			to_chat(user, "<span class='warning'>You need more space around the coffin for the ritual!</span>")
+			to_chat(user, "<span class='warning'>Вам нужно больше места вокруг гроба для ритуала!</span>")
 			return
-	to_chat(user, "<span class='danger'>You begin marking the coffin!</span>")
+	to_chat(user, "<span class='danger'>Вы начинаете обозначать гроб!</span>")
 	C.Beam(user, icon_state = "drainbeam", maxdistance = 1, time = 10 SECONDS)
 	playsound(C, 'sound/misc/enter_blood.ogg', 20)
 	for(var/obj/machinery/light/L in range(5, user))

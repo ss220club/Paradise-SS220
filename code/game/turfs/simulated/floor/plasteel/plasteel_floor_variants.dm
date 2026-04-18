@@ -23,6 +23,15 @@
 	nitrogen = 0
 	temperature = TCMB
 
+// SS220 EDIT START: Added lavaland air variant for dark plasteel floor
+/turf/simulated/floor/plasteel/dark/lavaland_air
+	oxygen = LAVALAND_OXYGEN
+	nitrogen = LAVALAND_NITROGEN
+	temperature = LAVALAND_TEMPERATURE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_LAVALAND
+// SS220 EDIT END
+
 /turf/simulated/floor/plasteel/dark/edge
 	icon_state = "tile_dark_edge"
 
@@ -45,6 +54,15 @@
 	oxygen = 0
 	nitrogen = 0
 	temperature = TCMB
+
+// SS220 EDIT START: Added lavaland air variant for white plasteel floor
+/turf/simulated/floor/plasteel/white/lavaland_air
+	oxygen = LAVALAND_OXYGEN
+	nitrogen = LAVALAND_NITROGEN
+	temperature = LAVALAND_TEMPERATURE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_LAVALAND
+// SS220 EDIT END
 
 /turf/simulated/floor/plasteel/white/edge
 	icon_state = "tile_white_edge"

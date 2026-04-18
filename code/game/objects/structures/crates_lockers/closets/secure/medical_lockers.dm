@@ -159,7 +159,7 @@
 	new /obj/item/clothing/accessory/medal/medical(src)
 	new /obj/item/storage/briefcase(src)
 	new /obj/item/clothing/mask/gas(src)
-	new /obj/item/gun/energy/gun/mini(src)
+	// new /obj/item/gun/energy/gun/mini(src) // SS220 EDIT - remove eguns from staff lockers
 	new /obj/item/autosurgeon/organ/one_use/med_hud(src)
 
 /obj/structure/closet/secure_closet/animal
@@ -236,6 +236,7 @@
 	new /obj/item/storage/box/monkeycubes/farwacubes(src)
 	new /obj/item/storage/box/monkeycubes/neaeracubes(src)
 	new /obj/item/storage/box/monkeycubes/nian_worme_cubes(src)
+	new /obj/item/storage/box/monkeycubes/kidan_nymph_cubes(src) // SS220 EDIT - (Добавлена коробка для удобства генетиков)
 	new /obj/item/storage/box/monkeycubes/stokcubes(src)
 	new /obj/item/storage/box/monkeycubes/wolpincubes(src)
 
