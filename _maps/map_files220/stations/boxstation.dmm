@@ -694,9 +694,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/storage)
 "aem" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "laborcamp_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/any/security/brig,
@@ -705,6 +702,7 @@
 	id_tag = "Secure Gate";
 	name = "Security Blast Door"
 	},
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/security/prisonershuttle)
 "aev" = (
@@ -24383,12 +24381,10 @@
 /area/station/supply/storage)
 "bTr" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/external{
-	id_tag = "supply_home"
-	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "bTu" = (
@@ -36261,6 +36257,10 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
+"cRm" = (
+/obj/machinery/status_display,
+/turf/simulated/wall,
+/area/station/supply/storage)
 "cRo" = (
 /obj/machinery/alarm/directional/north,
 /obj/structure/reagent_dispensers/fueltank,
@@ -64847,12 +64847,10 @@
 /area/station/maintenance/incinerator)
 "kJQ" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external{
-	id_tag = "mining_home"
-	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "kJT" = (
@@ -72839,9 +72837,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "nsq" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "laborcamp_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/unres{
@@ -72853,6 +72848,7 @@
 	id_tag = "Secure Gate";
 	name = "Security Blast Door"
 	},
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/security/prisonershuttle)
 "nsw" = (
@@ -87040,12 +87036,10 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/control)
 "sft" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "supply_home"
-	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "sfu" = (
@@ -123885,7 +123879,7 @@ aab
 bpb
 bRK
 bTq
-bxb
+cRm
 xSH
 bYw
 bpb
