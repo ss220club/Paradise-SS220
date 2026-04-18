@@ -52,7 +52,7 @@
 /obj/item/door_remote/key/engineer
 	name = "\proper ключ от инженерного отдела"
 	icon_state = "eng"
-	additional_access = list(ACCESS_ENGINE,ACCESS_CONSTRUCTION)
+	additional_access = list(ACCESS_ENGINE, ACCESS_ENGINEERING_GENERAL)
 
 /obj/item/door_remote/key/medical
 	name = "\proper ключ от медицинского отдела"

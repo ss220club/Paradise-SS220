@@ -9,7 +9,7 @@
 	relate_job = "Internal Affairs Agent"
 	supervisors = "главой персонала и капитаном"
 	department_head = list("Head of Personnel", "Captain")
-	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING, ACCESS_KITCHEN, ACCESS_BAR, ACCESS_JANITOR)
+	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_ENGINEERING_GENERAL, ACCESS_MAILSORTING, ACCESS_KITCHEN, ACCESS_BAR, ACCESS_JANITOR)
 	selection_color = "#717097"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 4
@@ -297,7 +297,7 @@
 	spawn_positions = 2
 	ru_title = "Торговец"
 	alt_titles = list("Торговец", "Независимый Торговец", "Сдельщик", "Барахольщик", "Меценат", "Коммерсант")
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#717097"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 4

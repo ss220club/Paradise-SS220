@@ -202,6 +202,7 @@
 	new /obj/item/defibrillator/loaded(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/firstaid/adv(src)
+	new /obj/item/grenade/jaunter_grenade(src)
 	new /obj/item/storage/toolbox/emergency(src)
 	new /obj/item/fulton_core(src)
 	new /obj/item/extraction_pack(src)
@@ -235,6 +236,7 @@
 	new /obj/item/storage/box/monkeycubes/farwacubes(src)
 	new /obj/item/storage/box/monkeycubes/neaeracubes(src)
 	new /obj/item/storage/box/monkeycubes/nian_worme_cubes(src)
+	new /obj/item/storage/box/monkeycubes/kidan_nymph_cubes(src) // SS220 EDIT - (Добавлена коробка для удобства генетиков)
 	new /obj/item/storage/box/monkeycubes/stokcubes(src)
 	new /obj/item/storage/box/monkeycubes/wolpincubes(src)
 

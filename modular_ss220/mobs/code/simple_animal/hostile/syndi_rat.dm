@@ -32,7 +32,7 @@
 	minbodytemp = 0
 
 	ranged =  1
-	projectiletype = /obj/item/projectile/beam/disabler
+	projectiletype = /obj/projectile/beam/disabler
 
 	attack_sound = 'sound/weapons/punch1.ogg'
 	talk_sound = list('modular_ss220/mobs/sound/creatures/rat_talk.ogg')
