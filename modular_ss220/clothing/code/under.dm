@@ -50,7 +50,7 @@
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S
-		var/list/hsl = rgb2hsl(hex2num(copytext(spcan.colour, 2, 4)), hex2num(copytext(spcan.colour, 4, 6)), hex2num(copytext(spcan.colour, 6, 8)))
+		var/list/hsl = rgb2hsl(hex2num(copytext(spcan.crayon_color, 2, 4)), hex2num(copytext(spcan.crayon_color, 4, 6)), hex2num(copytext(spcan.crayon_color, 6, 8)))
 		hsl[3] = max(hsl[3], 0.4)
 		var/list/rgb = hsl2rgb(arglist(hsl))
 		var/new_color = "#[num2hex(rgb[1], 2)][num2hex(rgb[2], 2)][num2hex(rgb[3], 2)]"

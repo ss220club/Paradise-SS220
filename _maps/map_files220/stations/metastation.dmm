@@ -40051,7 +40051,9 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "supply_home"
+	},
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "gRq" = (
@@ -41465,14 +41467,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/theatre)
 "huj" = (
-/obj/structure/lattice,
-/obj/machinery/door/airlock/external{
-	id_tag = "mining_home"
-	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/all/supply/mining,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "mining_home"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/miningdock)
 "hun" = (
@@ -42610,7 +42611,7 @@
 /area/station/command/bridge)
 "hSd" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "trade_dock"
+	id_tag = "trader_home"
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/locked,
@@ -68079,7 +68080,9 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "supply_home"
+	},
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "ruo" = (
@@ -81039,13 +81042,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/east)
 "wFr" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 9;
-	height = 23;
-	id = "trade_dock";
-	name = "port bay 4 at Cyberiad";
-	width = 23
+/obj/docking_port/stationary/trader{
+	name = "Стыковочный порт 4  ИСН Цереброн";
+	dir = 8
 	},
 /turf/space,
 /area/space)
