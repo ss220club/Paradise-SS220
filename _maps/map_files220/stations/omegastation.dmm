@@ -846,7 +846,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -854,6 +853,7 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/station_engineer,
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
 "acE" = (
@@ -5249,6 +5249,8 @@
 /obj/item/stack/sheet/glass{
 	amount = 30
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/lights/mixed,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/maintcentral)
 "aoL" = (
@@ -5256,6 +5258,7 @@
 /obj/item/crowbar/red,
 /obj/item/wrench,
 /obj/item/tank/internals/emergency_oxygen/engi,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/maintcentral)
 "aoN" = (
@@ -5281,6 +5284,7 @@
 /obj/item/stack/rods{
 	amount = 25
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/maintcentral)
 "aoW" = (
@@ -5652,6 +5656,7 @@
 /obj/item/flashlight,
 /obj/item/flashlight/flare,
 /obj/item/flashlight/flare,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/maintcentral)
 "aqc" = (
@@ -11772,9 +11777,6 @@
 /obj/machinery/door/window/reinforced/normal{
 	dir = 1;
 	name = "Engineering Checkpoint"
-	},
-/obj/effect/mapping_helpers/airlock/windoor/access/any/engineering/construction{
-	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18238,7 +18240,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "aZy" = (
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/poddoor{
@@ -18257,6 +18258,7 @@
 	id_tag = "ceblast"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/station_engineer,
 /turf/simulated/floor/plating,
 /area/station/engineering/break_room)
 "aZz" = (
@@ -32651,6 +32653,7 @@
 /area/station/maintenance/maintcentral)
 "jNR" = (
 /obj/machinery/space_heater,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/maintcentral)
 "jNT" = (
@@ -34722,7 +34725,6 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "open";
@@ -34741,6 +34743,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/station_engineer,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowfull"
 	},
@@ -36618,10 +36621,6 @@
 "nsI" = (
 /turf/simulated/floor/plating/airless,
 /area/station/science/toxins/test)
-"ntl" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/station/maintenance/maintcentral)
 "ntq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -37009,10 +37008,6 @@
 	icon_state = "darkred"
 	},
 /area/station/security/brig)
-"nNO" = (
-/obj/item/storage/box/lights/mixed,
-/turf/simulated/floor/plating,
-/area/station/maintenance/maintcentral)
 "nNR" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -41828,8 +41823,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "rYp" = (
-/turf/simulated/mineral/ancient,
-/area/station/engineering/atmos)
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/station/engineering/atmos/asteroid)
 "rYR" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/power/grounding_rod,
@@ -69138,9 +69134,9 @@ hhM
 hhM
 hhM
 aAp
-aXs
-aXs
-aXs
+aAp
+rYp
+rYp
 rYp
 rEx
 rEx
@@ -69393,9 +69389,9 @@ hhM
 hhM
 hhM
 aAp
+rYp
 aAp
 aAp
-aXs
 aXs
 aXs
 rEx
@@ -69650,7 +69646,7 @@ hhM
 hhM
 aAp
 aAp
-aXs
+jug
 aXs
 aXs
 aXs
@@ -69907,7 +69903,7 @@ hhM
 hhM
 aAp
 aXs
-aXs
+jug
 aXs
 aXs
 aXs
@@ -82760,8 +82756,8 @@ aLL
 aLL
 vlH
 jNR
-nNO
-eOV
+bOF
+cTu
 tpH
 atg
 iBX
@@ -83034,7 +83030,7 @@ akd
 atU
 aQA
 kpF
-ntl
+bOF
 yiZ
 aLd
 sMw
@@ -85330,7 +85326,7 @@ lzG
 lzG
 nFG
 std
-eOV
+bOF
 gRO
 gRO
 xcX
