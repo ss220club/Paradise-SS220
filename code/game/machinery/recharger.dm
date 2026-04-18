@@ -18,16 +18,16 @@
 /obj/machinery/recharger/examine(mob/user)
 	. = ..()
 	if(charging && (!in_range(user, src) && !issilicon(user) && !isobserver(user)))
-		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"
+		. += "<span class='warning'>Вы слишком далеко от [src]'s что бы осмотреть его содержимое и дисплей!</span>"
 		return
 
 	if(charging)
-		. += "There's [charging ? "\a [charging.name]" : "nothing"] in [src]."
+		. += "В [src] [charging ? "\a [charging.name]" : "ничего"]."
 		if(!(stat & (NOPOWER|BROKEN)))
 			var/obj/item/stock_parts/cell/C = charging.get_cell()
-			. += "<span class='notice'>Current charge: <b>[round(C.percent(), 1)]%</b>.</span>"
+			. += "<span class='notice'>Текущий заряд: <b>[round(C.percent(), 1)]%</b>.</span>"
 			if(using_power)
-				. += "<span class='notice'>- Recharging <b>[((C.chargerate * recharge_coeff) / C.maxcharge) * 100]%</b> cell charge per cycle.</span>"
+				. += "<span class='notice'>- Зарядка <b>[((C.chargerate * recharge_coeff) / C.maxcharge) * 100]%</b> заряда аккумулятора за цикл.</span>"
 
 
 /obj/machinery/recharger/Initialize(mapload)
