@@ -7127,13 +7127,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "aFN" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "supply_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "aFO" = (
@@ -10673,14 +10671,12 @@
 /area/station/maintenance/disposal/west)
 "aWH" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/external{
-	id_tag = "mining_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "aWI" = (
@@ -55941,13 +55937,11 @@
 /area/station/service/library)
 "hgc" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/external{
-	id_tag = "mining_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "hgg" = (
@@ -72455,6 +72449,11 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/item/kitchen/rollingpin,
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "mtM" = (
@@ -79829,9 +79828,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/locker)
 "oFN" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "laborcamp_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/unres{
@@ -79843,6 +79839,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/security/prisonershuttle)
 "oFY" = (
@@ -94774,6 +94771,10 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/station/public/locker)
+"trO" = (
+/obj/machinery/status_display/supply_display/directional/east,
+/turf/simulated/wall,
+/area/station/supply/storage)
 "trS" = (
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
@@ -96292,9 +96293,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
 "tTZ" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "laborcamp_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor/preopen{
@@ -96303,6 +96301,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/security/prisonershuttle)
 "tUs" = (
@@ -99643,10 +99642,10 @@
 /area/station/medical/medbay)
 "uWd" = (
 /obj/structure/table,
-/obj/machinery/cooking/grill,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/machinery/cooking/grill/loaded,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "uWh" = (
@@ -103854,10 +103853,10 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/science/lobby)
 "wvh" = (
-/obj/machinery/cooking/oven,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/status_display/directional/north,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/machinery/cooking/oven/loaded,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "wvn" = (
@@ -106517,8 +106516,8 @@
 "xmd" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/cooking/stovetop,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/machinery/cooking/stovetop/loaded,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "xme" = (
@@ -152016,7 +152015,7 @@ ayD
 aFR
 aGP
 aFN
-ayD
+trO
 aFN
 aIk
 aFR
