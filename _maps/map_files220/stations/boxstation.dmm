@@ -694,9 +694,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/storage)
 "aem" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "laborcamp_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/any/security/brig,
@@ -705,6 +702,7 @@
 	id_tag = "Secure Gate";
 	name = "Security Blast Door"
 	},
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/security/prisonershuttle)
 "aev" = (
@@ -835,9 +833,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "aeT" = (
-/obj/machinery/cooking/oven,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/machinery/cooking/oven/loaded,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "aeU" = (
@@ -1077,6 +1075,7 @@
 /area/station/security/brig)
 "agt" = (
 /obj/machinery/door/poddoor/impassable/gamma,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "agO" = (
@@ -1250,8 +1249,12 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/brig)
 "ahF" = (
+/obj/docking_port/stationary/gamma_armory{
+	dir = 8;
+	name = "NSS Cyberiad Gamma Armory Shuttle Dock"
+	},
 /turf/space,
-/area/shuttle/gamma/station)
+/area/space)
 "ahG" = (
 /obj/structure/gunrack,
 /obj/item/gun/projectile/shotgun/riot{
@@ -24383,12 +24386,10 @@
 /area/station/supply/storage)
 "bTr" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/external{
-	id_tag = "supply_home"
-	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "bTu" = (
@@ -39465,9 +39466,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/closet/firecloset,
 /obj/effect/turf_decal/delivery/red/hollow,
 /obj/effect/turf_decal/tiles/department/science,
+/obj/structure/closet/secure_closet/xenobiologist,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "ddG" = (
@@ -43274,9 +43275,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/closet/firecloset,
 /obj/effect/turf_decal/delivery/red/hollow,
 /obj/effect/turf_decal/tiles/department/science,
+/obj/structure/closet/secure_closet/xenobiologist,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "dvC" = (
@@ -60053,9 +60054,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/closet/l3closet/scientist,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/turf_decal/tiles/department/science,
+/obj/structure/closet/secure_closet/xenobiologist,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "jeE" = (
@@ -61800,8 +61801,8 @@
 /area/station/public/storage/tools)
 "jHG" = (
 /obj/structure/table,
-/obj/machinery/cooking/grill,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/machinery/cooking/grill/loaded,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "jIj" = (
@@ -64847,12 +64848,10 @@
 /area/station/maintenance/incinerator)
 "kJQ" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external{
-	id_tag = "mining_home"
-	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "kJT" = (
@@ -68572,6 +68571,14 @@
 /obj/item/reagent_containers/cooking/pot,
 /obj/item/reagent_containers/cooking/grill_grate,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/item/kitchen/rollingpin{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "lXe" = (
@@ -70875,9 +70882,6 @@
 "mJy" = (
 /turf/simulated/wall,
 /area/station/maintenance/port2)
-"mJO" = (
-/turf/simulated/wall/r_wall,
-/area/space)
 "mJT" = (
 /obj/structure/closet/cardboard,
 /obj/item/toy/plushie/nianplushie/rainbow{
@@ -72839,9 +72843,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "nsq" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "laborcamp_home"
-	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/unres{
@@ -72853,6 +72854,7 @@
 	id_tag = "Secure Gate";
 	name = "Security Blast Door"
 	},
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/security/prisonershuttle)
 "nsw" = (
@@ -82675,6 +82677,10 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/port)
+"qCg" = (
+/obj/machinery/status_display/supply_display/directional/west,
+/turf/simulated/wall,
+/area/station/supply/storage)
 "qCi" = (
 /obj/machinery/light/directional/east,
 /obj/structure/reagent_dispensers/watertank/firetank,
@@ -84144,8 +84150,8 @@
 "qXR" = (
 /obj/structure/table,
 /obj/machinery/light/directional/north,
-/obj/machinery/cooking/stovetop,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/machinery/cooking/stovetop/loaded,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "qYn" = (
@@ -87040,12 +87046,10 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/control)
 "sft" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "supply_home"
-	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "sfu" = (
@@ -88782,15 +88786,6 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/theatre)
-"sGm" = (
-/obj/structure/closet/l3closet/scientist,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/turf_decal/delivery/hollow,
-/obj/effect/turf_decal/tiles/department/science,
-/turf/simulated/floor/plasteel/white,
-/area/station/science/xenobiology)
 "sGs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -122274,7 +122269,7 @@ abN
 abN
 abN
 abN
-mJO
+abN
 aaa
 aaa
 aaa
@@ -124142,7 +124137,7 @@ bKB
 bxb
 bRI
 bTr
-bxb
+qCg
 bTr
 bUg
 bxb
@@ -132802,13 +132797,13 @@ aaa
 aaa
 afO
 aab
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 akZ
 vDY
@@ -133059,13 +133054,13 @@ afO
 afO
 afO
 aab
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 afm
 aqv
@@ -133316,13 +133311,13 @@ afO
 afO
 afO
 aab
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 afm
 aey
@@ -133573,13 +133568,13 @@ afX
 afX
 aaa
 abY
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 jyu
 jfx
@@ -133830,13 +133825,13 @@ afX
 afX
 afX
 aYm
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 llP
 amz
@@ -134087,13 +134082,13 @@ afX
 afO
 afX
 afX
+aaa
+aaa
+aaa
 ahF
-ahF
-ahF
-ahF
-ahF
-ahF
-ahF
+aaa
+aaa
+aaa
 aaa
 afm
 jVf
@@ -149625,7 +149620,7 @@ jdZ
 qKN
 osN
 uSD
-sGm
+jet
 uVL
 jXI
 ial

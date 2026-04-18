@@ -1715,7 +1715,7 @@
 /obj/item/id_decal/aa07
 	name = "lifetime ID card decal"
 	desc = "Make your ID look like the property of a nerd. Applies to any ID."
-	decal_icon_state = "lifetimeid"
+	decal_icon_state = "tsf"
 
 // TheFlagbearer: Colin Earle
 /obj/item/clothing/under/costume/rebeloutfit
@@ -1741,6 +1741,15 @@
 	name = "Spriting Contribution Pin"
 	desc = "A commemorative pin to reward contributions of spriting."
 	icon_state = "pin_spriting"
+
+/obj/item/clothing/neck/necklace/reward/ptbf25
+	name = "suspicious amulet"
+	desc = "A suspicious red and black amulet attached to a golden chain. It has 'Paratoberfest 25' engraved on the back."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "necklace_ptbf25"
+	sprite_sheets = list("Grey" = 'icons/mob/clothing/species/grey/neck.dmi',
+		"Kidan" = 'icons/mob/clothing/species/kidan/neck.dmi',
+		"Vox" = 'icons/mob/clothing/species/vox/neck.dmi')
 
 #undef USED_MOD_HELM
 #undef USED_MOD_SUIT
