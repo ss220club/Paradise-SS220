@@ -4,9 +4,10 @@
 
 /obj/item/rsf
 	name = "\improper Rapid-Service-Fabricator"
-	desc = "Устройство, используемое для быстрого развёртывания сервисных предметов."
+	desc = "A device used to rapidly deploy service items."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
+	new_attack_chain = TRUE
 	var/atom/currently_dispensing
 	var/power_mode = POWER_NONE
 
@@ -60,12 +61,15 @@
 							"Caviar" = POWER_HIGH
 							)
 
-/obj/item/rsf/attack_self__legacy__attackchain(mob/user)
+/obj/item/rsf/activate_self(mob/user)
+	if(..())
+		return
+
 	playsound(loc, 'sound/effects/pop.ogg', 50, FALSE)
 	if(!currently_dispensing)
-		to_chat(user, "<span class='notice'>Выберите товар для выдачи!</span>")
+		to_chat(user, "<span class='notice'>Choose an item to dispense!</span>")
 	else
-		to_chat(user, "<span class='notice'>В данный момент вы отпускаете [initial(currently_dispensing.name)].</span>")
+		to_chat(user, "<span class='notice'>You are currently dispensing a [initial(currently_dispensing.name)].</span>")
 
 	var/rsf_radial_choice = show_radial_menu(user, src, get_radial_contents())
 	if(user.stat || !in_range(user, src))
@@ -74,37 +78,48 @@
 	currently_dispensing = rsf_items[rsf_radial_choice]
 	power_mode = power_costs[rsf_radial_choice]
 	if(currently_dispensing)
-		to_chat(user, "<span class='notice'>Ваш RSF был настроен на выдачу [initial(currently_dispensing.name)]!</span>")
+		to_chat(user, "<span class='notice'>Your RSF has been configured to now dispense a [initial(currently_dispensing.name)]!</span>")
 	return ITEM_INTERACT_COMPLETE
 
-/obj/item/rsf/proc/get_radial_contents()
-	return rsf_icons & rsf_items
-
-/obj/item/rsf/afterattack__legacy__attackchain(atom/A, mob/user, proximity)
+/obj/item/rsf/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(!currently_dispensing)
-		return
+		return ITEM_INTERACT_COMPLETE
 
-	if(!proximity)
-		return
-
-	if(!istype(A, /obj/structure/table) && !isfloorturf(A))
-		to_chat(user, "<span class='warning'>RSF может создавать сервисные товары только на столах или на полу!</span>")
-		return
+	if(!istype(target, /obj/structure/table) && !isfloorturf(target) && !ishuman(target))
+		to_chat(user, "<span class='warning'>The RSF can only create service items on tables, floors, or people's hands!</span>")
+		return ITEM_INTERACT_COMPLETE
 
 	if(isrobot(user))
 		var/mob/living/silicon/robot/energy_check = user
 		if(!energy_check.cell.use(power_mode))
-			to_chat(user, "<span class='warning'>Недостаточно энергии.</span>")
+			to_chat(user, "<span class='warning'>Insufficient energy.</span>")
 			flick("[icon_state]_empty", src)
-			return
+			return ITEM_INTERACT_COMPLETE
 
-	var/turf/T = get_turf(A)
-	if(!istype(T) || T.density)
-		to_chat(user, "The RSF can only create service items on tables, or floors.")
-		return
+	var/turf/T = get_turf(target)
+	if(!ishuman(target))
+		new currently_dispensing(T)
+		playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
+		return ITEM_INTERACT_COMPLETE
 
-	new currently_dispensing(T)
-	playsound(loc, 'sound/machines/click.ogg', 10, 1)
+	if(do_after_once(user, DEFAULT_ITEM_PUTON_DELAY, target = target))
+		var/mob/living/carbon/human/esteemed_individual = target
+		var/dispensed_item = new currently_dispensing(T)
+		if(esteemed_individual.put_in_hands(dispensed_item))
+			target.visible_message(
+				"<span class='notice'>[user] hands [target] \a [dispensed_item].</span>",
+				"<span class='notice'>[user] hands you \a [dispensed_item].</span>"
+			)
+		else
+			target.visible_message(
+				"<span class='warning'>[user] tries to hand [target] \a [dispensed_item], but it tumbles down onto the floor!</span>",
+				"<span class='warning'>[user] tries to hand you \a [dispensed_item], but it tumbles down onto the floor!</span>"
+			)
+		playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
+	return ITEM_INTERACT_COMPLETE
+
+/obj/item/rsf/proc/get_radial_contents()
+	return rsf_icons & rsf_items
 
 /obj/item/rsf/executive
 	name = "\improper Executive-Service-Fabricator"
