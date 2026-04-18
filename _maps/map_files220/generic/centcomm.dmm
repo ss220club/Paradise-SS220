@@ -288,16 +288,6 @@
 "ajH" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/transport)
-"ajI" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/mech_bay_recharge_port/upgraded,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "ajW" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 4
@@ -3842,7 +3832,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership/jail)
 "bRy" = (
-/obj/machinery/light/spot/directional/west,
 /obj/machinery/door_control/no_emag/west{
 	id = "QMLoaddoor2";
 	layer = 3;
@@ -3855,6 +3844,9 @@
 	name = "Loading Doors";
 	pixel_y = 8;
 	req_access = list(79)
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
 	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/supply)
@@ -4882,15 +4874,6 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
-"ckX" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/machinery/light/spot/directional/east,
-/obj/machinery/ai_status_display/directional/north,
-/obj/item/gun/energy/immolator/multi,
-/obj/item/gun/energy/immolator/multi,
-/obj/item/gun/energy/immolator/multi,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "ckZ" = (
 /obj/structure/mecha_wreckage/durand/old{
 	icon_state = "durand";
@@ -5269,12 +5252,9 @@
 	},
 /area/centcom/ss220/admin1)
 "cts" = (
-/obj/mecha/combat/marauder/ares/loaded,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
+/obj/structure/marker_beacon/dock_marker,
+/turf/space,
+/area/space/centcomm)
 "ctx" = (
 /obj/structure/spacevine{
 	name = "thick vines";
@@ -9990,10 +9970,11 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
 "eAy" = (
-/obj/machinery/door/airlock/titanium,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating,
-/area/shuttle/gamma/space)
+/obj/docking_port/stationary/gamma_armory/centcomm{
+	dir = 8
+	},
+/turf/space,
+/area/space/centcomm)
 "eAA" = (
 /obj/structure/fans/tiny/invisible,
 /obj/machinery/door/airlock/sandstone{
@@ -15075,12 +15056,6 @@
 	icon_state = "navybluealt"
 	},
 /area/syndicate_mothership/control)
-"gNr" = (
-/obj/machinery/recharger/wallcharger/upgraded{
-	pixel_x = 32
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "gNs" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 5;
@@ -17636,16 +17611,12 @@
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership)
 "hPO" = (
-/obj/structure/table/reinforced,
-/obj/item/grenade/clusterbuster,
-/obj/item/grenade/chem_grenade/incendiary{
-	name = "Incendiary Grenade"
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/obj/item/kitchen/knife/combat,
-/obj/item/kitchen/knife/combat,
-/obj/item/kitchen/knife/combat,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/supply)
 "hQc" = (
 /obj/structure/closet/cabinet/wizard,
 /turf/simulated/floor/carpet/black,
@@ -18569,12 +18540,6 @@
 /obj/effect/spawner/window/reinforced/tinted,
 /turf/simulated/floor/plating,
 /area/centcom/ss220/admin2)
-"imQ" = (
-/obj/machinery/recharger/wallcharger/upgraded{
-	pixel_x = -24
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "ini" = (
 /obj/structure/table/glass/reinforced/plastitanium,
 /turf/simulated/floor/carpet/royalblue,
@@ -21023,13 +20988,6 @@
 "jrk" = (
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
-"jrr" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "jrC" = (
 /obj/machinery/door/poddoor/multi_tile/triple{
 	closingLayer = 3.2;
@@ -21543,9 +21501,6 @@
 "jGU" = (
 /turf/simulated/wall/indestructible/necropolis,
 /area/ruin/space/bubblegum_arena)
-"jHd" = (
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "jHe" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/chair/comfy/brown,
@@ -21952,6 +21907,9 @@
 /turf/simulated/floor/beach/away/sand_alternative,
 /area/ghost_bar/outdoor/beach)
 "jOb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/supply)
 "jOe" = (
@@ -29515,8 +29473,14 @@
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "nlc" = (
-/turf/simulated/wall/mineral/titanium,
-/area/shuttle/gamma/space)
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/supply)
 "nls" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -34013,18 +33977,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership/cargo)
-"pqS" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/machinery/status_display/directional/north,
-/obj/machinery/light/spot/directional/west,
-/obj/item/ammo_box/shotgun/buck,
-/obj/item/ammo_box/shotgun/buck,
-/obj/item/ammo_box/shotgun/buck,
-/obj/item/gun/projectile/shotgun/automatic/combat,
-/obj/item/gun/projectile/shotgun/automatic/combat,
-/obj/item/gun/projectile/shotgun/automatic/combat,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "pqU" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -34637,14 +34589,6 @@
 	},
 /turf/simulated/floor/carpet/arcade,
 /area/centcom/ss220/bar)
-"pJi" = (
-/obj/machinery/autolathe/upgraded/gamma,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/glass/fifty,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "pJj" = (
 /obj/structure/chair/sofa/corp/corner{
 	dir = 1
@@ -34985,16 +34929,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/supply)
-"pRh" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/ammo_box/magazine/smgm9mm,
-/obj/item/ammo_box/magazine/smgm9mm,
-/obj/item/ammo_box/magazine/smgm9mm,
-/obj/item/gun/projectile/automatic/proto,
-/obj/item/gun/projectile/automatic/proto,
-/obj/item/gun/projectile/automatic/proto,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "pRk" = (
 /obj/machinery/cryopod/offstation{
 	icon_state = "sleeper_s";
@@ -35289,12 +35223,6 @@
 	},
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/centcom/ss220/admin1)
-"pXL" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/gun/medbeam,
-/obj/item/gun/medbeam,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "pXM" = (
 /obj/structure/railing{
 	dir = 8
@@ -38973,8 +38901,8 @@
 /obj/machinery/porta_turret/syndicate{
 	faction = "Vox";
 	name = "vox turret";
-	eprojectile = /obj/item/projectile/beam/disabler;
-	projectile = /obj/item/projectile/beam/disabler
+	eprojectile = /obj/projectile/beam/disabler;
+	projectile = /obj/projectile/beam/disabler
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
@@ -42327,10 +42255,6 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/ghost_bar/indoor)
-"tak" = (
-/obj/machinery/light/spot/directional/north,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/supply)
 "tax" = (
 /obj/machinery/porta_turret/centcom/pulse,
 /turf/simulated/floor/plasteel/dark{
@@ -44524,16 +44448,12 @@
 	},
 /area/centcom/ss220/admin1)
 "udY" = (
-/obj/machinery/power/apc/directional/south,
-/obj/structure/cable{
-	icon_state = "0-4"
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
 	},
-/obj/structure/sign/securearea{
-	pixel_x = -32
-	},
-/obj/machinery/suit_storage_unit/gamma/secure,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
+/obj/effect/turf_decal/stripes/corner,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/supply)
 "ued" = (
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/delivery,
@@ -44784,8 +44704,7 @@
 	},
 /area/vox_base)
 "umL" = (
-/obj/machinery/light/spot/directional/south,
-/turf/simulated/floor/mineral/titanium/blue,
+/turf/simulated/floor/catwalk,
 /area/shuttle/supply)
 "umT" = (
 /obj/structure/table/glass/reinforced/plastitanium,
@@ -45016,15 +44935,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/escape)
-"urK" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/computer/mech_bay_power_console{
-	dir = 1
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
 "urL" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/vox,
 /turf/simulated/floor/mineral/plastitanium{
@@ -47927,11 +47837,12 @@
 	},
 /area/vox_base)
 "vFv" = (
-/obj/structure/sign/securearea{
-	pixel_x = 32
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/shuttle/gamma/space)
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/supply)
 "vFG" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/armor/heavy,
@@ -48621,7 +48532,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/admin)
 "vXk" = (
-/obj/machinery/light/spot/directional/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/supply)
 "vXr" = (
@@ -56108,15 +56021,15 @@ adJ
 adJ
 adJ
 adJ
-rzI
-rzI
-rzI
-rzI
-rzI
-rzI
-rzI
-rzI
-rzI
+cts
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+cts
 adJ
 adJ
 adJ
@@ -56365,15 +56278,15 @@ adJ
 adJ
 adJ
 adJ
-rzI
-nlc
-nlc
-nlc
-nlc
-eAy
-nlc
-nlc
-rzI
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -56622,15 +56535,15 @@ adJ
 adJ
 adJ
 adJ
-rzI
-nlc
-pqS
-imQ
-pJi
-jHd
-udY
-nlc
-rzI
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -56879,15 +56792,15 @@ adJ
 adJ
 adJ
 adJ
-rzI
-nlc
-pRh
-jHd
-hPO
-jHd
-ajI
-nlc
-rzI
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -57136,15 +57049,15 @@ adJ
 adJ
 adJ
 adJ
-rzI
-nlc
-jrr
-jHd
-pXL
-jHd
-cts
-nlc
-rzI
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -57393,15 +57306,15 @@ adJ
 adJ
 adJ
 adJ
-rzI
-nlc
-ckX
-gNr
-jHd
-vFv
-urK
-nlc
-rzI
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -57650,15 +57563,15 @@ adJ
 adJ
 adJ
 adJ
-rzI
-nlc
-nlc
-nlc
+cts
+adJ
+adJ
+adJ
 eAy
-nlc
-nlc
-nlc
-rzI
+adJ
+adJ
+adJ
+cts
 adJ
 adJ
 adJ
@@ -68197,7 +68110,7 @@ wDi
 jOb
 jOb
 jOb
-jOb
+udY
 jOb
 bRy
 jOb
@@ -68451,15 +68364,15 @@ qcZ
 ijD
 bnh
 wDi
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
+umL
+umL
+umL
+vFv
+umL
+umL
+umL
+umL
+umL
 mLO
 hGn
 adJ
@@ -68708,14 +68621,14 @@ dHY
 ijD
 cXK
 wDi
-tak
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
+umL
+umL
+umL
+vFv
+umL
+umL
+umL
+umL
 umL
 mLO
 hGn
@@ -68965,15 +68878,15 @@ scg
 ijD
 bnh
 wDi
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
-jOb
+umL
+umL
+umL
+vFv
+umL
+umL
+umL
+umL
+umL
 mLO
 hGn
 adJ
@@ -69222,15 +69135,15 @@ hWg
 rzI
 bnh
 wDi
-jOb
-jOb
-jOb
-jOb
-jOb
 vXk
-jOb
-jOb
-jOb
+vXk
+hPO
+nlc
+vXk
+vXk
+hPO
+vXk
+vXk
 wDi
 ncH
 adJ
