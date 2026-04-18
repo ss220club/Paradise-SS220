@@ -1,6 +1,7 @@
 
 /turf/simulated/floor/mech_bay_recharge_floor
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+
 //MARK: BLACK MESA
 /turf/simulated/floor/plasteel/smooth
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
