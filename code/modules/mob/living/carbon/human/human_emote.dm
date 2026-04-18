@@ -487,7 +487,7 @@
 		to_chat(user, "Вам нужна хотя бы одна работоспособная рука, чтобы щелкнуть пальцами.")
 		return TRUE
 
-	if(prob(5))
+	if(prob(5) && !HAS_TRAIT(user, TRAIT_COOL))
 		user.visible_message("<span class='danger'><b>[user]</b> щелкает своими пальцами без раздумий!</span>")
 		playsound(user.loc, 'sound/effects/snap.ogg', 50, 1)
 		return TRUE

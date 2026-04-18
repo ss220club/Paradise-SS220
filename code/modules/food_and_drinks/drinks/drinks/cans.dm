@@ -219,6 +219,12 @@
 	icon_state = "purple_can"
 	list_reagents = list("grapejuice" = 30)
 
+/obj/item/reagent_containers/drinks/cans/electrolytes
+	name = "Электролиты"
+	desc = "Самый быстрый способ восстановить водный баланс. Теперь с гигантской буквой Z на банке. Или это молния?"
+	icon_state = "electrolytes_can"
+	list_reagents = list("electrolytes" = 30)
+
 /obj/item/reagent_containers/drinks/cans/tonic
 	name = "T-Borg's Tonic Water"
 	desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."

@@ -1,3 +1,7 @@
+/datum/event/communications_blackout
+	name = "Communication Blackout"
+	nominal_severity = EVENT_LEVEL_MODERATE
+
 /datum/event/communications_blackout/announce(false_alarm)
 	var/alert = pick(	"Обнаружены ионосферные аномалии. Неизбежен временный сбой связи. Пожалуйста, свяжитесь с вашим*%fj 00)`5 vc-БЗЗЗ", \
 						"Обнаружены ионосферные аномалии. Неизбежен временный сбо*3mga;b4;'1v?-БЗЗЗЗ", \

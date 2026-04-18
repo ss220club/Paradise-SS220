@@ -7,8 +7,11 @@
 #define VERM_MOTHROACH 	6
 
 /datum/event/infestation/extended
+	name = "Infestation Extended"
 	announceWhen = 10
 	endWhen = 11
+	noAutoEnd = FALSE
+	nominal_severity = EVENT_LEVEL_MUNDANE
 	var/static/list/spawn_areas_extended = list(
 		/area/station/service/chapel,
 		/area/station/service/library,
