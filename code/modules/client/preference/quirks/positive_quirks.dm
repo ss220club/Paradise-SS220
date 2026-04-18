@@ -132,3 +132,10 @@
 	desc = "Ты можешь сделать сальто с любого трамплина. Ты такой крутой!"
 	cost = 1
 	trait_to_apply = TRAIT_COOL
+
+/datum/quirk/breathing_tube
+	name = "Breathing Tube"
+	desc  = "You have been outfitted with a breathing tube."
+	cost = 2
+	species_flags = QUIRK_MACHINE_INCOMPATIBLE
+	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube

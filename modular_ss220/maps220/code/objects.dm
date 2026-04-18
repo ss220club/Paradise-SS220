@@ -150,7 +150,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/syndi
 	name = "\improper SA-9 \"Tacit\""
 	equip_cooldown = 0.75 SECONDS
-	projectile = /obj/item/projectile/bullet/midbullet
+	projectile = /obj/projectile/bullet/midbullet
 	projectiles_per_shot = 2
 	projectile_delay = 1.2
 	projectile_energy_cost = 14
@@ -161,7 +161,7 @@
 	name = "SA ISR \"Interitus\""
 	equip_cooldown = 8 SECONDS // greater cooldown for high damage
 	energy_drain = 500 // 2000 total
-	projectile = /obj/item/projectile/ion
+	projectile = /obj/projectile/ion
 	projectiles_per_shot = 4
 	variance = 20 // kinda accurate
 
@@ -631,8 +631,8 @@
 	faction = "xen"
 	lethal = TRUE
 	max_integrity = 70
-	projectile = /obj/item/projectile/beam/emitter
-	eprojectile = /obj/item/projectile/beam/emitter
+	projectile = /obj/projectile/beam/emitter
+	eprojectile = /obj/projectile/beam/emitter
 	shot_sound = 'sound/weapons/laser.ogg'
 	eshot_sound = 'sound/weapons/laser.ogg'
 
@@ -645,8 +645,8 @@
 /obj/machinery/porta_turret/syndicate/black_mesa/heavy
 	name = "Heavy Defence Turret"
 	max_integrity = 120
-	projectile = /obj/item/projectile/beam/laser/heavylaser
-	eprojectile = /obj/item/projectile/beam/laser/heavylaser
+	projectile = /obj/projectile/beam/laser/heavylaser
+	eprojectile = /obj/projectile/beam/laser/heavylaser
 	shot_sound = 'sound/weapons/lasercannonfire.ogg'
 	eshot_sound = 'sound/weapons/lasercannonfire.ogg'
 

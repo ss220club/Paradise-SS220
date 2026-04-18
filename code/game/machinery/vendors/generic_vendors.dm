@@ -62,6 +62,7 @@
 					/obj/item/reagent_containers/drinks/cans/cola = 8,
 					/obj/item/reagent_containers/drinks/cans/electrolytes = 4,
 					/obj/item/reagent_containers/drinks/cans/sodawater = 15,
+					/obj/item/reagent_containers/drinks/cans/ginger_ale = 8,
 					/obj/item/reagent_containers/drinks/drinkingglass = 30,
 					/obj/item/reagent_containers/drinks/drinkingglass/shotglass = 30,
 					/obj/item/reagent_containers/drinks/ice = 9)
@@ -1080,6 +1081,7 @@
 					/obj/item/reagent_containers/drinks/cans/starkist = 10,
 					/obj/item/reagent_containers/drinks/cans/space_up = 10,
 					/obj/item/reagent_containers/drinks/cans/grape_juice = 10,
+					/obj/item/reagent_containers/drinks/cans/ginger_ale = 10,
 					/obj/item/reagent_containers/drinks/cans/electrolytes = 10,
 					/obj/item/reagent_containers/glass/beaker/waterbottle = 10)
 
@@ -1091,6 +1093,7 @@
 				/obj/item/reagent_containers/drinks/cans/starkist = 50,
 				/obj/item/reagent_containers/drinks/cans/space_up = 50,
 				/obj/item/reagent_containers/drinks/cans/grape_juice = 50,
+				/obj/item/reagent_containers/drinks/cans/ginger_ale = 50,
 				/obj/item/reagent_containers/drinks/cans/electrolytes = 40,
 				/obj/item/reagent_containers/glass/beaker/waterbottle = 20)
 

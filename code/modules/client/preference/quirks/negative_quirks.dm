@@ -117,6 +117,7 @@
 	name = "Pacifist"
 	desc = "Вы не можете заставить себя причинять боль другим и не можете занимать должности в командовании или службе безопасности."
 	cost = -3
+	blacklisted = TRUE
 	trait_to_apply = TRAIT_PACIFISM
 
 /datum/quirk/hungry
