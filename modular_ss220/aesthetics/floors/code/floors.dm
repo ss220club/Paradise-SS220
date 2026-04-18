@@ -1,22 +1,6 @@
-// MARK: Floor painter
-/datum/painter/floor
-	floor_icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
-
-/datum/painter/floor/New()
-	. = ..()
-	allowed_states |= list("darkneutralcorner", "darkneutral", "darkneutralfull", "navybluecorners", "navyblue", "navybluefull",
-		"navybluealt", "navybluealtstrip", "navybluecornersalt", "darkbluealt", "darkbluealtstrip", "darkbluecornersalt",
-		"darkredalt", "darkredaltstrip", "darkredcornersalt", "darkyellowalt", "darkyellowaltstrip", "darkyellowcornersalt",
-		"whitebrowncorner", "whitebrown", "floor_large", "small", "diagonal", "herringbone", "dark_large", "dark_small",
-		"dark_diagonal", "dark_herringbone", "white_large", "white_small", "white_diagonal", "white_herringbone"
-		)
-
 
 /turf/simulated/floor/mech_bay_recharge_floor
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
-
-/turf/simulated/floor/plasteel/smooth
-	icon_state = "smooth"
 
 // MARK: LIGHT FLOORS
 /turf/simulated/floor/light/red
