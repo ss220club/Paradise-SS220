@@ -1,3 +1,6 @@
+#define SAFE_MIN_TEMPERATURE T0C+7	// Safe minimum temperature for chemicals before they would start to damage slimepeople.
+#define SAFE_MAX_TEMPERATURE T0C+36 // Safe maximum temperature for chemicals before they would start to damage drask.
+
 /obj/item/reagent_containers/hypospray
 	var/instant_application = TRUE
 
@@ -185,3 +188,6 @@
 
 	if(chemicals_is_safe)
 		P.instant_application = TRUE
+
+#undef SAFE_MIN_TEMPERATURE
+#undef SAFE_MAX_TEMPERATURE
