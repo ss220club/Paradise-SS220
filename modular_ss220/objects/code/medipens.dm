@@ -95,12 +95,13 @@
 	storage_type = /obj/item/storage/firstaid/spacer
 
 // MARK: MEDIPEN CASE
-/obj/item/storage/pill_bottle
+/obj/item/storage/pill_bottle/medipen_case
 	var/allow_rapid_intake = TRUE
 
-/obj/item/storage/pill_bottle/attack__legacy__attackchain(mob/M, mob/user)
+/obj/item/storage/pill_bottle/medipen_case/attack__legacy__attackchain(mob/M, mob/user)
 	if(!allow_rapid_intake)
-		return
+		return FALSE
+
 	return ..()
 
 /obj/item/storage/pill_bottle/medipen_case
