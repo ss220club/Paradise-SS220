@@ -4,17 +4,6 @@
 /obj/item/reagent_containers/hypospray/autoinjector/custom
 	var/instant_application = TRUE
 
-/obj/item/reagent_containers/hypospray/autoinjector/custom/apply(mob/living/carbon/C, mob/user)
-	if(user != C)
-		if(!instant_application)
-			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
-			if(!do_after(user, 3 SECONDS, needhand = TRUE, target = C, progress = TRUE))
-				return
-
-		C.forceFedAttackLog(src, user)
-		C.visible_message(span_warning("[user] вкалывает [src] в [C]."))
-	return ..()
-
 // MARK: CUSTOM MEDIPENS
 /obj/item/reagent_containers/hypospray/autoinjector/custom
 	icon = 'modular_ss220/objects/icons/medipens.dmi'
@@ -161,24 +150,24 @@
 	max_items_amount = 20
 	max_units_per_item = 30
 	name_suffix = " medipen"
-	var/static/list/safe_chem_list = list("antihol" = TRUE, "charcoal" = TRUE, "epinephrine" = TRUE, "insulin" = TRUE, "teporone" = TRUE, "salbutamol" = TRUE,
-									"omnizine" = TRUE, "stimulants" = TRUE, "synaptizine" = TRUE, "potass_iodide" = TRUE, "oculine" = TRUE, "mannitol" = TRUE,
-									"spaceacillin" = TRUE, "salglu_solution" = TRUE, "sal_acid" = TRUE, "cryoxadone" = TRUE, "synthflesh" = TRUE,
-									"hydrocodone" = TRUE, "mitocholide" = TRUE, "rezadone" = TRUE, "menthol" = TRUE, "diphenhydramine" = TRUE, "ephedrine" = TRUE,
-									"iron" = TRUE, "sanguine_reagent" = TRUE, "kelotane" = TRUE, "bicaridine" = TRUE, "pen_acid" = TRUE)
+	var/static/list/safe_chem_list = list("antihol", "charcoal", "epinephrine", "insulin", "teporone", "salbutamol", "omnizine",
+									"weak_omnizine", "stimulants", "synaptizine", "potass_iodide", "oculine", "mannitol",
+									"spaceacillin", "salglu_solution", "sal_acid", "cryoxadone", "synthflesh",
+									"hydrocodone", "mitocholide", "rezadone", "menthol", "diphenhydramine", "ephedrine",
+									"iron", "sanguine_reagent", "kelotane", "bicaridine", "pen_acid")
 
 /datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents)
 	return reagents.get_master_reagent_name()
 
-/datum/chemical_production_mode/autoinjectors/proc/safety_check(datum/reagents/R)
+/datum/chemical_production_mode/autoinjectors/custom/proc/safety_check(datum/reagents/R)
+	var/chemicals_safe = TRUE
 	for(var/datum/reagent/A in R.reagent_list)
-		if(!safe_chem_list[A.id])
-			return
-	if(R.chem_temp < SAFE_MIN_TEMPERATURE || R.chem_temp > SAFE_MAX_TEMPERATURE)
+		if(!safe_chem_list.Find(A.id))
+			chemicals_safe = FALSE
+	if(R.chem_temp < SAFE_MIN_TEMPERATURE || R.chem_temp > SAFE_MAX_TEMPERATURE || chemicals_safe == FALSE)
 		return
-	return
 
-/datum/chemical_production_mode/autoinjectors/configure_item(data, datum/reagents/R, obj/item/reagent_containers/hypospray/autoinjector/custom/P)
+/datum/chemical_production_mode/autoinjectors/custom/configure_item(data, datum/reagents/R, obj/item/reagent_containers/hypospray/autoinjector/custom/P)
 	. = ..()
 	var/chemicals_is_safe = data["chemicals_is_safe"]
 
@@ -188,6 +177,15 @@
 
 	if(chemicals_is_safe)
 		P.instant_application = TRUE
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/apply(mob/living/carbon/C, mob/user)
+	if(user != C)
+		if(!instant_application)
+			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
+			if(!do_after(user, 3 SECONDS, needhand = TRUE, target = C, progress = TRUE))
+				return
+
+		C.visible_message(span_warning("[user] вкалывает [src] в [C]."))
 
 #undef SAFE_MIN_TEMPERATURE
 #undef SAFE_MAX_TEMPERATURE

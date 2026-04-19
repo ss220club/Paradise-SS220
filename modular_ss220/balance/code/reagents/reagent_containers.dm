@@ -72,3 +72,8 @@
 	name = "grokodil bottle"
 	desc = "A small bottle of grokodil."
 	list_reagents = list("grokodil" = 30)
+
+/obj/item/reagent_containers/glass/bottle/adv_lava_extract
+	name = "Модифицированный Экстракт Лазиса bottle"
+	desc = "A small bottle of Модифицированный Экстракт."
+	list_reagents = list("adv_lava_extract" = 30)
