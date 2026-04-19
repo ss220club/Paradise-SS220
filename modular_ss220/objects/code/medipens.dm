@@ -148,3 +148,40 @@
 /obj/machinery/economy/vending/medical/Initialize(mapload)
 	products += list(/obj/item/storage/pill_bottle/medipen_case = 1,)
 	return ..()
+
+/datum/chemical_production_mode/autoinjectors
+	mode_id = "medipens"
+	production_name = "Medipens"
+	production_icon = "syringe"
+	item_type = /obj/item/reagent_containers/hypospray/autoinjector/custom
+	sprites = list("medipen", "medipen_red", "medipen_org", "medipen_blu", "medipen_grn", "medipen_prp", "medipen_rad")
+	max_items_amount = 20
+	max_units_per_item = 30
+	name_suffix = " medipen"
+	var/static/list/safe_chem_list = list("antihol" = TRUE, "charcoal" = TRUE, "epinephrine" = TRUE, "insulin" = TRUE, "teporone" = TRUE, "salbutamol" = TRUE,
+									"omnizine" = TRUE, "stimulants" = TRUE, "synaptizine" = TRUE, "potass_iodide" = TRUE, "oculine" = TRUE, "mannitol" = TRUE,
+									"spaceacillin" = TRUE, "salglu_solution" = TRUE, "sal_acid" = TRUE, "cryoxadone" = TRUE, "synthflesh" = TRUE,
+									"hydrocodone" = TRUE, "mitocholide" = TRUE, "rezadone" = TRUE, "menthol" = TRUE, "diphenhydramine" = TRUE, "ephedrine" = TRUE,
+									"iron" = TRUE, "sanguine_reagent" = TRUE, "kelotane" = TRUE, "bicaridine" = TRUE, "pen_acid" = TRUE)
+
+/datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents)
+	return reagents.get_master_reagent_name()
+
+/datum/chemical_production_mode/autoinjectors/proc/safety_check(datum/reagents/R)
+	for(var/datum/reagent/A in R.reagent_list)
+		if(!safe_chem_list[A.id])
+			return
+	if(R.chem_temp < SAFE_MIN_TEMPERATURE || R.chem_temp > SAFE_MAX_TEMPERATURE)
+		return
+	return
+
+/datum/chemical_production_mode/autoinjectors/configure_item(data, datum/reagents/R, obj/item/reagent_containers/hypospray/P)
+	. = ..()
+	var/chemicals_is_safe = data["chemicals_is_safe"]
+
+	if(isnull(chemicals_is_safe))
+		chemicals_is_safe = safety_check(R)
+		data["chemicals_is_safe"] = chemicals_is_safe
+
+	if(chemicals_is_safe)
+		P.instant_application = TRUE
