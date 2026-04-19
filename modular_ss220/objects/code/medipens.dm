@@ -1,10 +1,10 @@
 #define SAFE_MIN_TEMPERATURE T0C+7	// Safe minimum temperature for chemicals before they would start to damage slimepeople.
 #define SAFE_MAX_TEMPERATURE T0C+36 // Safe maximum temperature for chemicals before they would start to damage drask.
 
-/obj/item/reagent_containers/hypospray
+/obj/item/reagent_containers/hypospray/autoinjector/custom
 	var/instant_application = TRUE
 
-/obj/item/reagent_containers/hypospray/apply(mob/living/carbon/C, mob/user)
+/obj/item/reagent_containers/hypospray/autoinjector/custom/apply(mob/living/carbon/C, mob/user)
 	if(user != C)
 		if(!instant_application)
 			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
@@ -178,7 +178,7 @@
 		return
 	return
 
-/datum/chemical_production_mode/autoinjectors/configure_item(data, datum/reagents/R, obj/item/reagent_containers/hypospray/P)
+/datum/chemical_production_mode/autoinjectors/configure_item(data, datum/reagents/R, obj/item/reagent_containers/hypospray/autoinjector/custom/P)
 	. = ..()
 	var/chemicals_is_safe = data["chemicals_is_safe"]
 
