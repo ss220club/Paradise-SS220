@@ -140,11 +140,10 @@
 
 /obj/machinery/smartfridge/medbay/Initialize(mapload)
 	. = ..()
-	accepted_items_typecache = typecacheof(list(
+	accepted_items_typecache |= typecacheof(list(
 		/obj/item/reagent_containers/hypospray/autoinjector,
 	))
 
-	accepted_items_typecache |= new
 
 /obj/machinery/economy/vending/medical/Initialize(mapload)
 	products += list(/obj/item/storage/pill_bottle/medipen_case = 1,)
