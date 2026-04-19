@@ -238,7 +238,7 @@ const GASES = [
     'id': 'hydrogen',
     'name': 'Hydrogen',
     'label': 'H₂',
-    'color': 'white',
+    'color': '#997379',
   },
   {
     'id': 'ab',

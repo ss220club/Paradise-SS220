@@ -473,3 +473,7 @@ RESTRICT_TYPE(/datum/antagonist/changeling)
 
 /datum/antagonist/changeling/custom_blurb()
 	return "Мы пробуждаемся на [station_name()], [get_area_name(owner.current, TRUE)]...\nИ у нас есть задачи, которые нужно выполнить..."
+
+// Ling Stronk
+/datum/antagonist/changeling/antag_event_resource_cost()
+	return list(ASSIGNMENT_SECURITY = 3)

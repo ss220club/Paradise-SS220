@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	var/datum/objective_holder/holder
 
 	/// What is the text we show when our objective is delayed?
-	var/delayed_objective_text = "This is a bug! Report it on the github and ask an admin what type of objective"
+	var/delayed_objective_text = "Someone forgot to set a delayed objective text! Report it on the github and ask an admin what type of objective this is!"
 	/// If the objective needs another person with a paired objective
 	var/needs_pair = FALSE
 
@@ -294,6 +294,16 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 		return
 	return ..()
 
+/datum/objective/infiltrate_sec
+	name = "Проникнуть в службу безопасности"
+	explanation_text = "Ваша задача — незаметно проникнуть в ряды отдела безопасности, будь то путем законного трудоустройства или путем замены одного из его сотрудников."
+	delayed_objective_text = "Your objective is unknown. You will receive further information in a few minutes"
+	needs_target = FALSE
+	completed = TRUE
+
+/datum/objective/infiltrate_sec/is_valid_exfiltration()
+	return FALSE
+
 /datum/objective/mutiny
 	name = "Mutiny"
 	martyr_compatible = TRUE
@@ -524,6 +534,30 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 						return TRUE
 	return FALSE
 
+/datum/objective/nuke
+	name = "Взорвать станцию"
+	explanation_text = "Подорвите ядерное устройство станции. Для активации боеголовки вам потребуется получить доступ к диску ядерной аутентификации станции. \
+	Диск ядерного подтверждения можно найти в кабинете капитана или же капитан может носить его с собой."
+	martyr_compatible = TRUE
+	needs_target = FALSE
+
+/datum/objective/nuke/New(text, datum/team/team_to_join, datum/mind/_owner)
+	. = ..()
+	var/code
+	for(var/obj/machinery/nuclearbomb/bombue in SSmachines.get_by_type(/obj/machinery/nuclearbomb))
+		if(length(bombue.r_code) <= 5 && bombue.r_code != "LOLNO" && bombue.r_code != "ADMIN")
+			code = bombue.r_code
+			break
+	if(code)
+		explanation_text += " Мы перехватили ядерные коды боеголовки. Код: [code]. Удачи."
+
+/datum/objective/nuke/check_completion()
+	if(SSticker.mode.station_was_nuked)
+		return TRUE
+
+/datum/objective/nuke/is_valid_exfiltration()
+	return FALSE
+
 /datum/objective/block
 	name = "Silicon hijack"
 	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
@@ -571,7 +605,13 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	for(var/datum/mind/M in owners)
 		var/turf/location = get_turf(M.current)
 		if(istype(location, /turf/simulated/floor/mineral/plastitanium/red/brig))
-			return FALSE
+			if(locate(/datum/objective/infiltrate_sec) in owner.get_all_objectives())
+				var/mob/living/A = owner.current
+				var/mob/living/carbon/carbon_A = A
+				if(!(carbon_A.handcuffed))
+					return TRUE
+			else
+				return FALSE
 		if(!location.onCentcom() && !location.onSyndieBase())
 			return FALSE
 
@@ -878,7 +918,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/destroy
 	name = "Destroy AI"
 	martyr_compatible = TRUE
-	delayed_objective_text = "Your objective is to destroy an Artificial Intelligence. You will receive further information in a few minutes."
+	delayed_objective_text = "Your objective is unknown. You will receive further information in a few minutes"
 
 /datum/objective/destroy/find_target(list/target_blacklist)
 	var/list/possible_targets = active_ais(1)
@@ -994,6 +1034,20 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 		else
 			return FALSE
 
+/datum/objective/specialization
+	name = "Цель подкласса вампира"
+	explanation_text = "Накопите не менее 150 единиц крови и выберите специализацию, чтобы получить дальнейшие инструкции."
+	needs_target = FALSE
+
+/datum/objective/specialization/update_explanation_text()
+	var/datum/antagonist/vampire/V = owner?.has_antag_datum(/datum/antagonist/vampire)
+
+	if(V?.subclass)
+		var/departments = list("security", "service", "research", "medical", "engineering", "supply")
+		explanation_text = replacetext(pick(V.subclass.unique_objectives), "%DEPARTMENT", pick(departments))
+
+// Flayers
+
 #define SWARM_GOAL_LOWER_BOUND	130
 #define SWARM_GOAL_UPPER_BOUND	400
 
@@ -1022,6 +1076,195 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 #undef SWARM_GOAL_LOWER_BOUND
 #undef SWARM_GOAL_UPPER_BOUND
+
+/datum/objective/download
+	name = "Download Files"
+	needs_target = FALSE
+	var/obj/machinery/computer/target_console = null
+	var/target_console_room = null
+
+/datum/objective/download/New()
+	find_target()
+	update_explanation_text()
+	establish_signals()
+	return ..()
+
+/datum/objective/download/Destroy()
+	if(target_console)
+		UnregisterSignal(target_console, COMSIG_PARENT_QDELETING)
+	return ..()
+
+/datum/objective/download/establish_signals()
+	if(target_console)
+		RegisterSignal(target_console, COMSIG_PARENT_QDELETING, PROC_REF(on_console_destroyed), override = TRUE)
+
+/datum/objective/download/proc/on_console_destroyed()
+	SIGNAL_HANDLER // COMSIG_PARENT_QDELETING
+
+	var/list/owners = get_owners()
+	for(var/datum/mind/M in owners)
+		to_chat(M.current, "<BR><span class='userdanger'>Мы предполагаем, что целевая консоль скомпрометирована. Обнаружена новая уязвимость.</span>")
+		SEND_SOUND(M.current, sound('sound/ambience/alarm4.ogg'))
+
+	target_console = null
+	find_target()
+	if(!target_console)
+		holder.remove_objective(src)
+
+	// Update explanation text with new target
+	update_explanation_text()
+
+	// Announce the updated objective with new target
+	for(var/datum/mind/M in owners)
+		var/list/messages = M.prepare_announce_objectives(FALSE)
+		to_chat(M.current, chat_box_red(messages.Join("<br>")))
+
+/datum/objective/download/find_target()
+	if(target_console)
+		return
+
+	var/list/possible_computers = list()
+	var/list/computer_areas = list()
+
+	var/list/restricted_area_computer_types = list(
+		// ID management computers
+		/obj/machinery/computer/card,                    // Main HOP ID computer
+		/obj/machinery/computer/card/minor/hos,          // Security ID computer
+		/obj/machinery/computer/card/minor/cmo,          // Medical ID computer
+		/obj/machinery/computer/card/minor/qm,           // Supply ID computer
+		/obj/machinery/computer/card/minor/rd,           // Science ID computer
+		/obj/machinery/computer/card/minor/ce,           // Engineering ID computer
+
+		// Security
+		/obj/machinery/computer/prisoner,                // Prisoner management
+		/obj/machinery/computer/brigcells,               // Brig cell management
+
+		// Command
+		/obj/machinery/computer/communications,          // Command comms console
+		/obj/machinery/computer/teleporter,              // Teleporter control
+
+		// Science
+		/obj/machinery/computer/message_monitor,         // Message monitor
+	)
+
+	// Get all computers of the specified types
+	for(var/computer_type in restricted_area_computer_types)
+		var/list/computers_of_type = SSmachines.get_by_type(computer_type, subtypes = FALSE)
+		for(var/obj/machinery/computer/comp in computers_of_type)
+			// Skip deleted/invalid computers
+			if(QDELETED(comp))
+				continue
+			var/turf/comp_turf = get_turf(comp)
+			if(!comp_turf || !is_station_level(comp_turf.z))
+				continue
+			var/area/comp_area = get_area(comp)
+			possible_computers += comp
+			computer_areas[comp] = comp_area ? comp_area.name : "(Местоположение неизвестно — пожалуйста, создайте issue в GitHub!)"
+
+	if(length(possible_computers))
+		target_console = pick(possible_computers)
+		target_console_room = computer_areas[target_console]
+		establish_signals()
+	else
+		// Fallback if no computers found
+		target_console = null
+		target_console_room = "(Местоположение неизвестно — пожалуйста, создайте issue в GitHub!)"
+
+/datum/objective/download/found_target()
+	return target_console
+
+// Formats as title case except for "the".
+// E.g. "the Communications Console"
+/datum/objective/download/proc/get_formatted_console_name()
+	if(!target_console)
+		return "неизвестная консоль"
+
+	var/console_name = target_console.name
+
+	var/list/words = splittext(console_name, " ")
+	var/formatted_name = ""
+	var/first_word = TRUE
+
+	for(var/word in words)
+		if(first_word && lowertext(word) == "the")
+			first_word = FALSE
+			continue
+
+		if(!first_word)
+			formatted_name += " "
+
+		// Capitalize first letter of each word
+		formatted_name += uppertext(copytext(word, 1, 2)) + lowertext(copytext(word, 2))
+		first_word = FALSE
+
+	return "the " + formatted_name
+
+/datum/objective/download/update_explanation_text()
+	explanation_text = "Используйте свой зарядный имплант на [get_formatted_console_name()] в [target_console_room] чтобы загрузить следующую цель."
+
+// We already check that the player is an IPC when assigning this objective,
+// but this protects us from cases like cybernetic revolution where the implant could be lost.
+/datum/objective/download/proc/enforce_charging_implant()
+	for(var/datum/mind/M in get_owners())
+		var/mob/living/carbon/human/H = M.current
+		if(!H)
+			continue
+
+		var/obj/item/organ/internal/left_arm_implant = H.get_organ_slot("l_arm_device")
+		var/obj/item/organ/internal/right_arm_implant = H.get_organ_slot("r_arm_device")
+
+		// Already have a charger, do nothing
+		if(istype(left_arm_implant, /obj/item/organ/internal/cyberimp/arm/power_cord) || istype(right_arm_implant, /obj/item/organ/internal/cyberimp/arm/power_cord))
+			continue
+
+		var/obj/item/organ/internal/cyberimp/arm/power_cord/implant = new /obj/item/organ/internal/cyberimp/arm/power_cord()
+
+		// Try to install in the first available slot
+		if(!left_arm_implant)
+			implant.slot = "l_arm_device"
+			implant.parent_organ = "l_arm"
+			implant.insert(H)
+		else if(!right_arm_implant)
+			implant.slot = "r_arm_device"
+			implant.parent_organ = "r_arm"
+			implant.insert(H)
+		else
+			// Both slots occupied, remove left arm implant and replace with charging implant
+			left_arm_implant.remove(H)
+			qdel(left_arm_implant)
+			implant.slot = "l_arm_device"
+			implant.parent_organ = "l_arm"
+			implant.insert(H)
+
+// This is called from computer.dm when the do_after of downloading is completed
+/datum/objective/download/proc/complete_objective()
+	for(var/datum/mind/M in get_owners())
+		to_chat(M.current, "<BR><span class='warning'>*gzzt* Аутентификация прошла успешно! Добро пожаловать, [M.current.name]. Спасибо за- за- за-...</span>")
+
+		var/datum/antagonist/mindflayer/flayer_datum = M.has_antag_datum(/datum/antagonist/mindflayer)
+
+		holder.replace_objective(src, flayer_datum.roll_single_human_objective())
+
+		SEND_SOUND(M.current, sound('sound/ambience/alarm4.ogg'))
+		var/list/messages = M.prepare_announce_objectives(FALSE)
+		to_chat(M.current, chat_box_red(messages.Join("<br>")))
+
+/datum/objective/download/check_completion()
+	return TRUE
+
+/datum/objective/lair
+	name = "Build a lair"
+	explanation_text = "Для постройки логова необходимо разместить гроб посреди незанятой области размером 3x3. Для этого потребуется не менее 150 единиц крови."
+	needs_target = FALSE
+
+/datum/objective/lair/check_completion()
+	if(..())
+		return TRUE
+	for(var/datum/mind/M in get_owners())
+		var/datum/antagonist/vampire/V = M.has_antag_datum(/datum/antagonist/vampire)
+		if(V.has_lair)
+			return TRUE
+		return FALSE
 
 // Traders
 // These objectives have no check_completion, they exist only to tell Sol Traders what to aim for.

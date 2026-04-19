@@ -1,8 +1,8 @@
-/obj/item/projectile
+/obj/projectile
 	///If TRUE, hit mobs even if they're on the floor and not our target
 	var/hit_prone_targets = TRUE
 
-/atom/handle_ricochet(obj/item/projectile/ricocheting_projectile)
+/atom/handle_ricochet(obj/projectile/ricocheting_projectile)
 	. = ..()
 	if(.)
 		// here is confirmed ricochet - force projectile to hit targets
@@ -14,7 +14,7 @@
 		return
 	BB.hit_prone_targets = user.a_intent != INTENT_HELP
 
-/mob/living/carbon/human/projectile_hit_check(obj/item/projectile/P)
+/mob/living/carbon/human/projectile_hit_check(obj/projectile/P)
 	if(stat == CONSCIOUS)
 		return !P.hit_prone_targets && !density
 	return !density
