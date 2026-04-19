@@ -98,7 +98,7 @@
 		CheckLayer()
 	if(istype(leaving, /obj/structure/platform))
 		return COMPONENT_ATOM_BLOCK_EXIT
-	if(istype(leaving, /obj/item/projectile) || istype(leaving, /obj/effect))
+	if(istype(leaving, /obj/projectile) || istype(leaving, /obj/effect))
 		return
 	var/mob/living/M = leaving
 	if(istype(M))
@@ -116,7 +116,7 @@
 		CheckLayer()
 	if(istype(mover, /obj/structure/platform))
 		return FALSE
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return TRUE
 	if(corner)
 		return !density

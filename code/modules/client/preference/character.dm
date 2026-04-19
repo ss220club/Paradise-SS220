@@ -110,6 +110,8 @@
 	var/runechat_color = "#FFFFFF"
 	/// The ringtone their PDA should start with
 	var/pda_ringtone
+	/// A list/JSON of the quirk datums to attach to the character
+	var/list/quirks = list()
 
 // Fuckery to prevent null characters
 /datum/character_save/New()
@@ -131,6 +133,8 @@
 		playertitlelist = list2params(player_alt_titles)
 	if(length(loadout_gear))
 		gearlist = json_encode(loadout_gear)
+	if(islist(quirks))
+		quirks = json_encode(quirks)
 
 	var/datum/db_query/firstquery = SSdbcore.NewQuery("SELECT slot FROM characters WHERE ckey=:ckey ORDER BY slot", list(
 		"ckey" = C.ckey
@@ -222,6 +226,7 @@
 					cyborg_brain_type=:cyborg_brain_type,
 					body_type=:body_type,
 					pda_ringtone=:pda_ringtone,
+					quirks=:quirks,
 					tts_seed=:tts_seed
 					WHERE ckey=:ckey
 					AND slot=:slot"}, list(
@@ -288,7 +293,8 @@
 						"pda_ringtone" = pda_ringtone,
 						"tts_seed" = tts_seed, // SS220 EDIT ADDITION - TTS220
 						"ckey" = C.ckey,
-						"slot" = slot_number
+						"slot" = slot_number,
+						"quirks" = quirks
 					))
 
 			if(!query.warn_execute())
@@ -327,7 +333,7 @@
 			player_alt_titles,
 			disabilities, organ_data, rlimb_data, nanotrasen_relation, physique, height, speciesprefs,
 			socks, body_accessory, gear, autohiss,
-			hair_gradient, hair_gradient_offset, hair_gradient_colour, hair_gradient_alpha, custom_emotes, runechat_color, cyborg_brain_type, body_type, pda_ringtone, tts_seed)
+			hair_gradient, hair_gradient_offset, hair_gradient_colour, hair_gradient_alpha, custom_emotes, runechat_color, cyborg_brain_type, body_type, pda_ringtone, quirks, tts_seed)
 		VALUES
 			(:ckey, :slot, :metadata, :name, :be_random_name, :gender,
 			:age, :species, :language,
@@ -354,7 +360,7 @@
 			:playertitlelist,
 			:disabilities, :organ_list, :rlimb_list, :nanotrasen_relation, :physique, :height, :speciesprefs,
 			:socks, :body_accessory, :gearlist, :autohiss_mode,
-			:h_grad_style, :h_grad_offset, :h_grad_colour, :h_grad_alpha, :custom_emotes, :runechat_color, :cyborg_brain_type, :body_type, :pda_ringtone, :tts_seed)
+			:h_grad_style, :h_grad_offset, :h_grad_colour, :h_grad_alpha, :custom_emotes, :runechat_color, :cyborg_brain_type, :body_type, :pda_ringtone, :quirks, :tts_seed)
 	"}, list(
 		// This has too many params for anyone to look at this without going insae
 		"ckey" = C.ckey,
@@ -419,6 +425,7 @@
 		"runechat_color" = runechat_color,
 		"cyborg_brain_type" = cyborg_brain_type,
 		"pda_ringtone" = pda_ringtone,
+		"quirks" = quirks,
 		"tts_seed" = tts_seed // SS220 EDIT ADDITION - TTS220
 	))
 
@@ -515,7 +522,9 @@
 	body_type = query.item[60]
 	pda_ringtone = query.item[61]
 
-	tts_seed = query.item[62] // SS220 EDIT ADDITION - TTS220
+	quirks = query.item[62]
+
+	tts_seed = query.item[63] // SS220 EDIT ADDITION - TTS220
 
 	//Sanitize
 	var/datum/species/SP = GLOB.all_species[species]
@@ -604,6 +613,7 @@
 	runechat_color = sanitize_hexcolor(runechat_color)
 	cyborg_brain_type = sanitize_inlist(cyborg_brain_type, GLOB.borg_brain_choices, initial(cyborg_brain_type))
 	pda_ringtone = sanitize_inlist(pda_ringtone, GLOB.pda_ringtone_choices, initial(pda_ringtone))
+	quirks = sanitize_json(quirks)
 	if(!player_alt_titles)
 		player_alt_titles = new()
 	if(!organ_data)
@@ -1890,6 +1900,11 @@
 	character.set_species(S.type, delay_icon_update = TRUE) // Yell at me if this causes everything to melt
 	if(be_random_name)
 		real_name = random_name(gender, species)
+	var/balance_check = rebuild_quirks()
+	for(var/datum/quirk/to_add in quirks)
+		to_add.apply_quirk_effects(character)
+	if(balance_check > 0)
+		log_debug("[src] spawned in with more quirks than they should have been able to. Quirk balance of [balance_check].")
 	character.add_language(language)
 
 	character.real_name = real_name
@@ -2163,6 +2178,9 @@
 			if(job.barred_by_disability(user.client))
 				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[DISABILITY\]</b></td></tr>"
 				continue
+			if(job.barred_by_quirk(user.client))
+				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[QUIRK\]</b></td></tr>"
+				continue
 			if(job.barred_by_missing_limbs(user.client))
 				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[MISSING LIMBS\]</b></td></tr>"
 				continue
@@ -2302,3 +2320,21 @@
 		custom_emotes[custom_emote.name] = emote_text
 
 	return custom_emotes
+/*
+* This serves two purposes. It tallies up and returns the total quirk balance of the current loadout
+* It also rebuilds then entire list of quirks, converting the JSON format it could be into a usable datum.
+*/
+/datum/character_save/proc/rebuild_quirks()
+	var/point_total = 0
+	if(!islist(quirks)) // If it's not a normal list then it has to be JSON. Or something went horribly wrong.
+		quirks = json_decode(quirks)
+	var/list/quirk_cache = quirks.Copy()
+	quirks.Cut()
+	for(var/quirk_name in quirk_cache)
+		var/datum/quirk/chosen_quirk = GLOB.quirk_paths["[quirk_name]"]
+		var/datum/quirk/quirk = new chosen_quirk.type // Don't want hard refs to the global list
+		if(!quirk)
+			continue
+		point_total += quirk.cost
+		quirks += quirk
+	return point_total
