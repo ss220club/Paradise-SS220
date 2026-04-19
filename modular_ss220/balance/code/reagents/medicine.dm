@@ -73,6 +73,7 @@
 	description = "It restores burnt tissues by straining the body; an overdose causes severe inflammation of the skin."
 	reagent_state = LIQUID
 	color = "#eeff00"
+	metabolization_rate = 1.5
 	overdose_threshold = 15
 	harmless = FALSE
 	taste_description = "soothed burns"
@@ -95,6 +96,7 @@
 	description = "Restores serious cuts by straining the body; overdose causes a disruption in the body's regeneration."
 	reagent_state = LIQUID
 	color = "#dd0303"
+	metabolization_rate = 1.5
 	overdose_threshold = 15
 	harmless = FALSE
 	taste_description = "knitting wounds"
@@ -115,14 +117,14 @@
 	name = "Dermalin"
 	id = "dermalin"
 	result = "dermalin"
-	required_reagents = list("synthflesh" = 1, "kelotane" = 2, "mitocholide" = 1)
+	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "kelotane" = 2, "mitocholide" = 1, "omnizine" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/bruzin
 	name = "Bruzin"
 	id = "bruzin"
 	result = "bruzin"
-	required_reagents = list("synthflesh" = 1, "bicaridine" = 2, "mitocholide" = 1)
+	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "bicaridine" = 2, "mitocholide" = 1, "omnizine" = 1)
 	result_amount = 1
 
 //MARK: Robot Drugs
