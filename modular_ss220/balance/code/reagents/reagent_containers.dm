@@ -52,3 +52,23 @@
 
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT
+
+/obj/item/reagent_containers/glass/bottle/dermalin
+	name = "dermalin bottle"
+	desc = "A small bottle of dermalin."
+	list_reagents = list("dermalin" = 30)
+
+/obj/item/reagent_containers/glass/bottle/bruzin
+	name = "bruzin bottle"
+	desc = "A small bottle of bruzin."
+	list_reagents = list("bruzin" = 30)
+
+/obj/item/reagent_containers/glass/bottle/w33d
+	name = "bottle w33d"
+	desc = "A small bottle w33d."
+	list_reagents = list("w33d" = 30)
+
+/obj/item/reagent_containers/glass/bottle/grokodil
+	name = "grokodil bottle"
+	desc = "A small bottle of grokodil."
+	list_reagents = list("grokodil" = 30)

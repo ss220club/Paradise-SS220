@@ -73,19 +73,20 @@
 	description = "It restores burnt tissues by straining the body; an overdose causes severe inflammation of the skin."
 	reagent_state = LIQUID
 	color = "#eeff00"
-	overdose_threshold = 30
+	overdose_threshold = 15
 	harmless = FALSE
 	taste_description = "soothed burns"
 
 /datum/reagent/medicine/dermalin/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustFireLoss(-5, FALSE)
-	update_flags |= M.adjustStaminaLoss(5, FALSE)
+	update_flags |= M.adjustStaminaLoss(2, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/dermalin/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustFireLoss(10, FALSE)
+	update_flags |= M.adjustStaminaLoss(5, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/bruzin
@@ -101,12 +102,13 @@
 /datum/reagent/medicine/bruzin/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(-5, FALSE)
-	update_flags |= M.adjustStaminaLoss(5, FALSE)
+	update_flags |= M.adjustStaminaLoss(2, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/bruzin/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(10, FALSE)
+	update_flags |= M.adjustStaminaLoss(5, FALSE)
 	return list(0, update_flags)
 
 /datum/chemical_reaction/dermalin
@@ -134,6 +136,7 @@
 	As a happy coincidence, when it dries out it can also function as servicable filler, sealant, and insulator."
 	reagent_state = LIQUID
 	color = "#17dd17"
+	overdose_threshold = 30
 	process_flags = SYNTHETIC
 	taste_description = "man, like, totally the best most relaxing thing ever, dude"
 
@@ -160,6 +163,14 @@
 			M.Drowsy(20 SECONDS)
 	return ..() | update_flags
 
+/datum/reagent/w33d/overdose_process(mob/living/M, severity)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustBruteLoss(3, FALSE)
+	update_flags |= M.adjustFireLoss(3, FALSE)
+	update_flags |= M.adjustBrainLoss(1, FALSE)
+	update_flags |= M.adjustStaminaLoss(5, FALSE)
+	return list(0, update_flags)
+
 // Robot Krokodil
 /datum/reagent/grokodil
 	name = "Grokodil"
@@ -181,19 +192,18 @@
 	var/update_flags = STATUS_UPDATE_NONE
 	M.AdjustJitter(-80 SECONDS)
 	if(prob(25))
-		update_flags |= M.adjustBrainLoss(1, FALSE)
-	if(prob(15))
 		M.emote(pick("smile", "grin", "chuckle", "laugh"))
-	if(prob(10))
+	if(prob(15))
 		to_chat(M, "<span class='notice'>You feel pretty chill.</span>")
 		M.bodytemperature--
 		M.emote("smile")
-	if(prob(5))
+	if(prob(30))
 		to_chat(M, "<span class='warning'>You feel too chill!</span>")
 		M.emote(pick("shiver", "cross"))
-		M.Stun(2 SECONDS, FALSE)
-		update_flags |= M.adjustFireLoss(1, FALSE)
-		update_flags |= M.adjustBrainLoss(1, FALSE)
+		update_flags |= M.adjustBruteLoss(2, FALSE)
+		update_flags |= M.adjustFireLoss(2, FALSE)
+		update_flags |= M.adjustBrainLoss(3, FALSE)
+		update_flags |= M.adjustStaminaLoss(-50, FALSE)
 		M.bodytemperature -= 20
 	if(prob(2))
 		to_chat(M, "<span class='warning'>Patches of corrosion appear on your chassis!</span>")

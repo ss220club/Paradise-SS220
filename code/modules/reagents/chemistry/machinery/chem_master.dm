@@ -674,9 +674,9 @@
 	name_suffix = " medipen"
 	var/static/list/safe_chem_list = list("antihol" = TRUE, "charcoal" = TRUE, "epinephrine" = TRUE, "insulin" = TRUE, "teporone" = TRUE, "salbutamol" = TRUE,
 									"omnizine" = TRUE, "stimulants" = TRUE, "synaptizine" = TRUE, "potass_iodide" = TRUE, "oculine" = TRUE, "mannitol" = TRUE,
-									"spaceacillin" = TRUE, "salglu_solution" = TRUE, "sal_acid" = TRUE, "cryoxadone" = TRUE, "blood" = TRUE, "synthflesh" = TRUE,
+									"spaceacillin" = TRUE, "salglu_solution" = TRUE, "sal_acid" = TRUE, "cryoxadone" = TRUE, "synthflesh" = TRUE,
 									"hydrocodone" = TRUE, "mitocholide" = TRUE, "rezadone" = TRUE, "menthol" = TRUE, "diphenhydramine" = TRUE, "ephedrine" = TRUE,
-									"iron" = TRUE, "sanguine_reagent" = TRUE, "kelotane" = TRUE, "bicaridine" = TRUE, "pen_acid" = TRUE, "atropine" = TRUE)
+									"iron" = TRUE, "sanguine_reagent" = TRUE, "kelotane" = TRUE, "bicaridine" = TRUE, "pen_acid" = TRUE)
 
 /datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents)
 	return reagents.get_master_reagent_name()

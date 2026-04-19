@@ -96,15 +96,6 @@
 
 // MARK: MEDIPEN CASE
 /obj/item/storage/pill_bottle/medipen_case
-	var/allow_rapid_intake = TRUE
-
-/obj/item/storage/pill_bottle/medipen_case/attack__legacy__attackchain(mob/M, mob/user)
-	if(!allow_rapid_intake && ismob(M))
-		return FALSE
-
-	return ..()
-
-/obj/item/storage/pill_bottle/medipen_case
 	name = "autoinjector case"
 	desc = "It's a container for storing medical autoinjectors."
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
@@ -116,7 +107,6 @@
 	max_combined_w_class = 5
 	display_contents_with_number = FALSE
 	wrapper_state = "medipen_case_wrap"
-	allow_rapid_intake = FALSE
 
 /datum/design/medipencase
 	name = "Autoinjector Case"
