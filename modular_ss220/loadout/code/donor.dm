@@ -417,3 +417,7 @@
 /datum/gear/crewmanplushie
 	display_name = "Medic tajaran plushie"
 	path = /obj/item/toy/plushie/crewmanplushie
+
+/datum/gear/beer_demon
+	display_name = "Плюшевый Хмельной Парень"
+	path = /obj/item/toy/plushie/beer_demon
