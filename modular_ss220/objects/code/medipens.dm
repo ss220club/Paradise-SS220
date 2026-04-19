@@ -99,7 +99,7 @@
 	var/allow_rapid_intake = TRUE
 
 /obj/item/storage/pill_bottle/medipen_case/attack__legacy__attackchain(mob/M, mob/user)
-	if(!allow_rapid_intake)
+	if(!allow_rapid_intake && ismob(M))
 		return FALSE
 
 	return ..()
