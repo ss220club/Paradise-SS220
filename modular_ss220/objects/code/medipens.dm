@@ -144,6 +144,8 @@
 		/obj/item/reagent_containers/hypospray/autoinjector,
 	))
 
+	accepted_items_typecache |= new
+
 /obj/machinery/economy/vending/medical/Initialize(mapload)
 	products += list(/obj/item/storage/pill_bottle/medipen_case = 1,)
 	return ..()
