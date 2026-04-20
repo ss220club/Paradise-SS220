@@ -25,13 +25,13 @@
 		client.prefs.ShowChoices(user)
 
 	else if(href_list["change_picture"])
-		SSuser_verbs.invoke_verb(usr, /datum/user_verb/admin_change_title_screen)
+		SSuser_verbs.invoke_verb(client, /datum/user_verb/admin_change_title_screen)
 
 	else if(href_list["leave_notice"])
-		SSuser_verbs.invoke_verb(usr, /datum/user_verb/change_title_screen_notice)
+		SSuser_verbs.invoke_verb(client, /datum/user_verb/change_title_screen_notice)
 
 	else if(href_list["swap_server"])
-		SSuser_verbs.invoke_verb(usr, /datum/user_verb/swap_server)
+		SSuser_verbs.invoke_verb(client, /datum/user_verb/swap_server)
 
 	else if(href_list["wiki"])
 		if(tgui_alert(usr, "Хотите открыть нашу вики?", "Вики", list("Да", "Нет")) != "Да")
