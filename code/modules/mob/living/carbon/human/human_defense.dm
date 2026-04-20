@@ -45,7 +45,7 @@ emp_act
 			add_attack_logs(P.firer, src, "hit by [P.type] but got deflected by martial arts '[mind.martial_art]'")
 			playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 
-			if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL))
+			if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL)) //if it cannot be reflected, it hits the floor. This is the exception to the rule
 				// Pacifists can deflect projectiles, but not reflect them.
 				// Instead, they deflect them into the ground below them.
 				var/turf/T = get_turf(src)
@@ -68,6 +68,7 @@ emp_act
 		playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 
 		if(HAS_TRAIT(src, TRAIT_PACIFISM) || !P.is_reflectable(REFLECTABILITY_PHYSICAL))
+			// Pacifism and unreflectables hitting the ground logic. Copied from above
 			var/turf/T = get_turf(src)
 			P.firer = src
 			T.bullet_act(P)
@@ -96,11 +97,11 @@ emp_act
 		spawn()
 			for(var/i in 1 to shakes)
 				if(QDELETED(src)) break
-				animate(src, pixel_x = rand(-intensity_x, intensity_x), pixel_y = rand(-intensity_y, intensity_y), time = 1)
-				sleep(1)
+				animate(src, pixel_x = rand(-intensity_x, intensity_x), pixel_y = rand(-intensity_y, intensity_y), time = 0.1 SECONDS)
+				sleep(0.1 SECONDS)
 			// Return to the original position if the mob has not changed (not died, not fallen, etc.)
 			if(!QDELETED(src) && src.stat == original_stat && src.transform == original_transform)
-				animate(src, pixel_x = original_x, pixel_y = original_y, time = 1, easing = LINEAR_EASING)
+				animate(src, pixel_x = original_x, pixel_y = original_y, time = 0.1 SECONDS, easing = LINEAR_EASING)
 	// SS220 ADDITION END
 
 	if(isnull(organ))
@@ -108,7 +109,7 @@ emp_act
 
 	organ.add_autopsy_data(P.name, P.damage) // Add the bullet's name to the autopsy data
 
-	return (..(P , def_zone))
+	return (..(P, def_zone))
 
 /mob/living/carbon/human/welder_act(mob/user, obj/item/I)
 	if(user.a_intent != INTENT_HELP)

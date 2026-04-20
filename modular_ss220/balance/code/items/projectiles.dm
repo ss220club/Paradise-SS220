@@ -18,3 +18,28 @@
 	if(stat == CONSCIOUS)
 		return !P.hit_prone_targets && !density
 	return !density
+
+/obj/item/gun/projectile/automatic/wt550
+	recoil = 0.75
+
+/obj/item/gun/projectile/shotgun
+	recoil = 1.5
+
+/obj/item/projectile/beam/laser/player_laser
+
+	damage = 24
+	damage_type = BURN
+	hitscan = TRUE
+	muzzle_type = /obj/effect/projectile/muzzle/laser
+	tracer_type = /obj/effect/projectile/tracer/laser
+	impact_type = /obj/effect/projectile/impact/laser
+	impact_effect_type = null
+	hitscan_light_intensity = 4
+	hitscan_light_color_override = LIGHT_COLOR_FIRE
+	muzzle_flash_intensity = 5
+	muzzle_flash_range = 2
+	muzzle_flash_color_override = LIGHT_COLOR_FIRE
+	impact_light_intensity = 7
+	impact_light_range = 2.5
+	impact_light_color_override = LIGHT_COLOR_FIRE
+	forcedodge = 0
