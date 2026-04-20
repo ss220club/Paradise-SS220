@@ -3,9 +3,6 @@
 	desc = "Заменяет изображение в лобби настоящей картинкой, а не объектом в мире игры."
 	author = "larentoun"
 
-/datum/modpack/title_screen/initialize()
-
-
 USER_VERB(admin_change_title_screen, R_EVENT, "Title Screen: Change", "Upload a new titlescreen image.", VERB_CATEGORY_EVENT)
 	log_admin("[key_name(client)] is changing the title screen.")
 	message_admins("[key_name_admin(client)] is changing the title screen.")
@@ -36,13 +33,11 @@ USER_VERB(change_title_screen_notice, R_EVENT, "Title Screen: Set Notice", "Sets
 		to_chat(new_player, SPAN_BOLDANNOUNCE("УВЕДОМЛЕНИЕ В ЛОББИ ОБНОВЛЕНО: [new_notice]"))
 		SEND_SOUND(new_player,  sound('sound/items/bikehorn.ogg'))
 
-
 USER_VERB(fix_title_screen, R_NONE, "Fix Lobby Screen", "Lobbyscreen broke? Press this.", VERB_CATEGORY_SPECIAL)
 	if(istype(client, /mob/new_player))
 		SStitle.show_title_screen_to(src)
 	else
 		SStitle.hide_title_screen_from(src)
-
 
 USER_VERB(change_title_screen_htm, R_DEBUG, "Title Screen: Set HTML", "Debug command that enables you to change the HTML on the go", VERB_CATEGORY_EVENT)
 	log_admin("[key_name(client)] is setting the title screen HTML.")
