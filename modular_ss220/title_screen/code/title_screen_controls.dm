@@ -1,19 +1,12 @@
-/**
- * Enables an admin to upload a new titlescreen image.
- */
-/client/proc/admin_change_title_screen()
-	set category = "Event"
-	set name = "Title Screen: Change"
+USER_VERB(admin_change_title_screen, R_EVENT, "Title Screen: Change", "Upload a new titlescreen image.", VERB_CATEGORY_EVENT)
+	var/input = tgui_alert(client, "Что делаем с изображением в лобби?", "Лобби", list("Меняем", "Сбрасываем", "Ничего")) as message|null
 
-	if(!check_rights(R_EVENT))
-		return
+	log_admin("[key_name(client)] is changing the title screen.")
+	message_admins("[key_name_admin(client)] is changing the title screen.")
 
-	log_admin("[key_name(usr)] is changing the title screen.")
-	message_admins("[key_name_admin(usr)] is changing the title screen.")
-
-	switch(tgui_alert(usr, "Что делаем с изображением в лобби?", "Лобби", list("Меняем", "Сбрасываем", "Ничего")))
+	switch(input)
 		if("Меняем")
-			var/file = input(usr) as icon|null
+			var/file = input(client) as icon|null
 			if(!file)
 				return
 
@@ -23,20 +16,13 @@
 		if("Ничего")
 			return
 
-/**
- * Sets a titlescreen notice, a big red text on the main screen.
- */
-/client/proc/change_title_screen_notice()
-	set category = "Event"
-	set name = "Title Screen: Set Notice"
 
-	if(!check_rights(R_EVENT))
-		return
+USER_VERB(change_title_screen_notice, R_EVENT, "Title Screen: Set Notice", "Sets a titlescreen notice, a big red text on the main screen", VERB_CATEGORY_EVENT)
+	var/new_notice = tgui_input_text(client, "Введи то что должно отображаться в лобби:", "Уведомление в лобби") | null
 
-	log_admin("[key_name(usr)] is setting the title screen notice.")
-	message_admins("[key_name_admin(usr)] is setting the title screen notice.")
+	log_admin("[key_name(client)] is setting the title screen notice.")
+	message_admins("[key_name_admin(client)] is setting the title screen notice.")
 
-	var/new_notice = tgui_input_text(usr, "Введи то что должно отображаться в лобби:", "Уведомление в лобби")
 	if(isnull(new_notice))
 		return
 
@@ -45,38 +31,27 @@
 		to_chat(new_player, span_boldannounce("УВЕДОМЛЕНИЕ В ЛОББИ ОБНОВЛЕНО: [new_notice]"))
 		SEND_SOUND(new_player,  sound('sound/items/bikehorn.ogg'))
 
-/**
- * Reloads the titlescreen if it is bugged for someone.
- */
-/client/verb/fix_title_screen()
-	set name = "Fix Lobby Screen"
-	set desc = "Lobbyscreen broke? Press this."
-	set category = "Special Verbs"
 
-	if(istype(mob, /mob/new_player))
+USER_VERB(fix_title_screen, R_NONE, "Fix Lobby Screen", "Lobbyscreen broke? Press this.", VERB_CATEGORY_SPECIAL)
+	if(istype(client, /mob/new_player))
 		SStitle.show_title_screen_to(src)
 	else
 		SStitle.hide_title_screen_from(src)
 
-/**
- * An admin debug command that enables you to change the HTML on the go.
- */
-/client/proc/change_title_screen_html()
-	set category = "Event"
-	set name = "Title Screen: Set HTML"
 
-	if(!check_rights(R_DEBUG))
-		return
+USER_VERB(change_title_screen_htm, R_DEBUG, "Title Screen: Set HTML", "Debug command that enables you to change the HTML on the go", VERB_CATEGORY_EVENT)
+	var/new_html = tgui_input_text(client, "Введи нужный HTML (ВНИМАНИЕ: ТЫ СКОРЕЕ ВСЕГО ЧТО-ТО СЛОМАЕШЬ!!!)", "РИСКОВАННО: ИЗМЕНЕНИЕ HTML ЛОББИ", max_length = 99999, multiline = TRUE, encode = FALSE) | null
 
-	log_admin("[key_name(usr)] is setting the title screen HTML.")
-	message_admins("[key_name_admin(usr)] is setting the title screen HTML.")
 
-	var/new_html = tgui_input_text(usr, "Введи нужный HTML (ВНИМАНИЕ: ТЫ СКОРЕЕ ВСЕГО ЧТО-ТО СЛОМАЕШЬ!!!)", "РИСКОВАННО: ИЗМЕНЕНИЕ HTML ЛОББИ", max_length = 99999, multiline = TRUE, encode = FALSE)
+	log_admin("[key_name(client)] is setting the title screen HTML.")
+	message_admins("[key_name_admin(client)] is setting the title screen HTML.")
+
+	var/new_html = tgui_input_text(client, "Введи нужный HTML (ВНИМАНИЕ: ТЫ СКОРЕЕ ВСЕГО ЧТО-ТО СЛОМАЕШЬ!!!)", "РИСКОВАННО: ИЗМЕНЕНИЕ HTML ЛОББИ", max_length = 99999, multiline = TRUE, encode = FALSE)
 	if(isnull(new_html))
 		return
 
-	if(tgui_alert(usr, "Всё ли верно? Нигде не ошибся? Возврата нет!", "Ты подумай...", list("Рискнём", "Пожалуй нет...")) != "Рискнём")
+	if(tgui_alert(client, "Всё ли верно? Нигде не ошибся? Возврата нет!", "Ты подумай...", list("Рискнём", "Пожалуй нет...")) != "Рискнём")
 		return
 
 	SStitle.set_title_html(new_html)
-	message_admins("[key_name_admin(usr)] has changed the title screen HTML.")
+	message_admins("[key_name_admin(client)] has changed the title screen HTML.")
