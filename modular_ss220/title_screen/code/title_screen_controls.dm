@@ -28,7 +28,7 @@ USER_VERB(change_title_screen_notice, R_EVENT, "Title Screen: Set Notice", "Sets
 
 	SStitle.set_notice(new_notice)
 	for(var/mob/new_player/new_player in GLOB.player_list)
-		to_chat(new_player, span_boldannounce("УВЕДОМЛЕНИЕ В ЛОББИ ОБНОВЛЕНО: [new_notice]"))
+		to_chat(new_player, SPAN_BOLDANNOUNCE("УВЕДОМЛЕНИЕ В ЛОББИ ОБНОВЛЕНО: [new_notice]"))
 		SEND_SOUND(new_player,  sound('sound/items/bikehorn.ogg'))
 
 

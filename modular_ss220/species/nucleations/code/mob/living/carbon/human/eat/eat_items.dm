@@ -119,7 +119,7 @@
 	colour_change()
 	obj_integrity = max(obj_integrity - integrity_bite, 0)
 	if(current_bites >= bites_limit)
-		to_chat(user, SPAN_NOTICE("[target == user ? \"Вы доели\" : \"[target] доел\"] [src.name]."))
+		to_chat(user, SPAN_NOTICE("[target == user ? "Вы доели" : "[target] доел"] [src.name]."))
 		qdel(src)
 
 /obj/item/proc/forceFed(mob/living/carbon/target, mob/user, instant_application = FALSE)

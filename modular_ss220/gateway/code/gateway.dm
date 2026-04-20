@@ -293,7 +293,7 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 		if(calibrated)
 			to_chat(user, SPAN_NOTICE("The gate is already calibrated, there is no work for you to do here."))
 		else
-			to_chat(user, span_boldannounce("Recalibration successful!") + SPAN_NOTICE(": This gate's systems have been fine tuned.  Travel to this gate will now be on target."))
+			to_chat(user, SPAN_BOLDANNOUNCE("Recalibration successful!") + SPAN_NOTICE(": This gate's systems have been fine tuned.  Travel to this gate will now be on target."))
 			calibrated = TRUE
 		return ITEM_INTERACT_COMPLETE
 	return ..()
