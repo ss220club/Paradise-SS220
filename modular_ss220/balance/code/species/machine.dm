@@ -13,6 +13,6 @@
 
 /obj/machinery/recharger/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/melee/baton/electrostaff))
-		to_chat(user, span_notice("[used] не имеет внешних разъемов для подзарядки."))
+		to_chat(user, SPAN_NOTICE("[used] не имеет внешних разъемов для подзарядки."))
 		return ITEM_INTERACT_COMPLETE
 	return ..()

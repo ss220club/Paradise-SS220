@@ -29,13 +29,13 @@
 	if(!paper_result)
 		return ..()
 	if(paperamount == max_paper)
-		to_chat(user, span_warning("[src] is full; please empty it before you continue."))
+		to_chat(user, SPAN_WARNING("[src] is full; please empty it before you continue."))
 		return ITEM_INTERACT_COMPLETE
 	paperamount += paper_result
 	qdel(used)
 	playsound(loc, 'modular_ss220/objects/sound/pshred.ogg', 75, 1)
 	if(paperamount > max_paper)
-		to_chat(user, span_danger("[src] was too full, and shredded paper goes everywhere!"))
+		to_chat(user, SPAN_DANGER("[src] was too full, and shredded paper goes everywhere!"))
 		for(var/i in 1 to paperamount-max_paper)
 			var/obj/item/shredded_paper/shredp = get_shredded_paper()
 			shredp.loc = get_turf(src)
@@ -57,18 +57,18 @@
 
 /obj/machinery/papershredder/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Alt-Click</b> to empty [src].")
+	. += SPAN_NOTICE("<b>Alt-Click</b> to empty [src].")
 
 /obj/machinery/papershredder/AltClick(mob/user)
 	empty_contents(user)
 
 /obj/machinery/papershredder/proc/empty_contents(mob/user)
 	if(user.stat || user.restrained())
-		to_chat(user, span_notice("You need your hands and legs free for this."))
+		to_chat(user, SPAN_NOTICE("You need your hands and legs free for this."))
 		return
 
 	if(!paperamount)
-		to_chat(user, span_notice("[src] is empty."))
+		to_chat(user, SPAN_NOTICE("[src] is empty."))
 		return
 
 	empty_bin(user)
@@ -80,7 +80,7 @@
 		empty_into = null
 
 	if(empty_into && length(empty_into.contents) >= empty_into.storage_slots)
-		to_chat(user, span_notice("[empty_into] is full."))
+		to_chat(user, SPAN_NOTICE("[empty_into] is full."))
 		return
 
 	while(paperamount)
@@ -93,12 +93,12 @@
 				break
 	if(empty_into)
 		if(paperamount)
-			to_chat(user, span_notice("You fill [empty_into] with as much shredded paper as it will carry."))
+			to_chat(user, SPAN_NOTICE("You fill [empty_into] with as much shredded paper as it will carry."))
 		else
-			to_chat(user, span_notice("You empty [src] into [empty_into]."))
+			to_chat(user, SPAN_NOTICE("You empty [src] into [empty_into]."))
 
 	else
-		to_chat(user, span_notice("You empty [src]."))
+		to_chat(user, SPAN_NOTICE("You empty [src]."))
 	update_icon()
 
 /obj/machinery/papershredder/proc/get_shredded_paper()
@@ -117,8 +117,8 @@
 	if(shredp.get_heat())
 		add_fingerprint(user)
 		user.visible_message(
-			span_danger("\The [user] burns right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap."),
-			span_danger("You burn right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap."))
+			SPAN_DANGER("\The [user] burns right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap."),
+			SPAN_DANGER("You burn right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap."))
 		fire_act()
 	else
 		..()

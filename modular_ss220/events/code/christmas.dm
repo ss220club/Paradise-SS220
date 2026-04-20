@@ -97,10 +97,10 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		return
 
 	if(took_presents[user.ckey] && !unlimited)
-		to_chat(user, span_warning("Ты не видишь подарка со своим именем."))
+		to_chat(user, SPAN_WARNING("Ты не видишь подарка со своим именем."))
 		return
 
-	to_chat(user, span_notice("Немного покопавшись, ты нашёл подарок со своим именем."))
+	to_chat(user, SPAN_NOTICE("Немного покопавшись, ты нашёл подарок со своим именем."))
 
 	if(!unlimited)
 		took_presents[user.ckey] = TRUE

@@ -100,12 +100,12 @@
 /mob/new_player/proc/check_tts_seed_ready()
 	if(GLOB.configuration.tts.tts_enabled)
 		if(!client.prefs.active_character.tts_seed)
-			to_chat(usr, span_danger("Вам необходимо настроить голос персонажа! Не забудьте сохранить настройки."))
+			to_chat(usr, SPAN_DANGER("Вам необходимо настроить голос персонажа! Не забудьте сохранить настройки."))
 			client.prefs.ShowChoices(src)
 			return FALSE
 		var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.active_character.tts_seed]
 		if(!seed)
-			to_chat(usr, span_danger("Выбранный голос персонажа недоступен!"))
+			to_chat(usr, SPAN_DANGER("Выбранный голос персонажа недоступен!"))
 			client.prefs.ShowChoices(src)
 			return FALSE
 
@@ -118,7 +118,7 @@
 					return TRUE
 
 		if(client.donator_level < seed.required_donator_level || client.donator_level > DONATOR_LEVEL_MAX)
-			to_chat(usr, span_danger("Выбранный голос персонажа более недоступен на текущем уровне подписки!"))
+			to_chat(usr, SPAN_DANGER("Выбранный голос персонажа более недоступен на текущем уровне подписки!"))
 			client.prefs.ShowChoices(src)
 			return FALSE
 	return TRUE

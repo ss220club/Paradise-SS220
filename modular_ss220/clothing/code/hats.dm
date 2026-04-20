@@ -57,7 +57,7 @@
 		var/list/rgb = hsl2rgb(arglist(hsl))
 		var/new_color = "#[num2hex(rgb[1], 2)][num2hex(rgb[2], 2)][num2hex(rgb[3], 2)]"
 		color = new_color
-		to_chat(user, "<span class='notice'>Вы перекрашиваете [src.name].</span>")
+		to_chat(user, SPAN_NOTICE("Вы перекрашиваете [src.name]."))
 		return
 
 /obj/item/clothing/head/towel/red

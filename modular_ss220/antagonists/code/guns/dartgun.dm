@@ -25,12 +25,12 @@
 	. = ..()
 	if(!is_vox_private)
 		is_vox_private = TRUE
-		to_chat(user, span_notice("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
+		to_chat(user, SPAN_NOTICE("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
 
 /obj/item/gun/syringe/dart_gun/afterattack__legacy__attackchain(atom/target, mob/living/user, flag, params)
 	if(is_vox_private && !isvox(user))
 		if(prob(20))
-			to_chat(user, span_notice("Оружие отказывается с вами работать и не активируется."))
+			to_chat(user, SPAN_NOTICE("Оружие отказывается с вами работать и не активируется."))
 		return FALSE
 	. = ..()
 
@@ -56,7 +56,7 @@
 			if(!istype(A, hold_type))
 				continue
 			if(insert_syringe_to_cartridge(A) && user && user.unequip(A))
-				to_chat(user, span_notice("Вы загрузили [A] в [cartridge_loaded] в [src]!"))
+				to_chat(user, SPAN_NOTICE("Вы загрузили [A] в [cartridge_loaded] в [src]!"))
 				return ..()
 		to_chat(user, "Картридж [src] полон!")
 		return FALSE
@@ -67,7 +67,7 @@
 					continue
 				if(user && !user.unequip(A))
 					return TRUE
-				to_chat(user, span_notice("Вы вставили [A] в [src]!"))
+				to_chat(user, SPAN_NOTICE("Вы вставили [A] в [src]!"))
 				cartridge_load(A)
 				return ..()
 	if(!chambered.BB && istype(A, valid_dart_type) && length(syringes) < max_syringes)
@@ -104,7 +104,7 @@
 /obj/item/gun/syringe/dart_gun/attack_self__legacy__attackchain(mob/living/user)
 	if(cartridge_loaded)
 		playsound(src, 'modular_ss220/antagonists/sound/guns/m79_unload.ogg', 50, 1)
-		to_chat(user, span_notice("Вы выгрузили [cartridge_loaded] с [src]."))
+		to_chat(user, SPAN_NOTICE("Вы выгрузили [cartridge_loaded] с [src]."))
 		cartridge_unload(user)
 		process_chamber()
 		return TRUE

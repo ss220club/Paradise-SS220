@@ -23,11 +23,11 @@
 
 /obj/item/hourglass/proc/toggle(mob/user)
 	if(!timing_id)
-		to_chat(user, span_notice("You flip [src]."))
+		to_chat(user, SPAN_NOTICE("You flip [src]."))
 		start()
 		flick("hourglass_flip",src)
 	else
-		to_chat(user, span_notice("You stop [src].")) // Sand magically flows back because that's more convinient to use.
+		to_chat(user, SPAN_NOTICE("You stop [src].")) // Sand magically flows back because that's more convinient to use.
 		stop()
 
 /obj/item/hourglass/update_icon()
@@ -56,7 +56,7 @@
 	update_icon()
 
 /obj/item/hourglass/proc/finish()
-	visible_message(span_notice("[src] stops."))
+	visible_message(SPAN_NOTICE("[src] stops."))
 	stop()
 
 /obj/item/hourglass/Destroy()
@@ -120,7 +120,7 @@
 
 /obj/item/toy/desk/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Alt-Click</b> to rotate.")
+	. += SPAN_NOTICE("<b>Alt-Click</b> to rotate.")
 
 /obj/item/toy/desk/proc/rotate(mob/user)
 	if(user.incapacitated())
@@ -130,7 +130,7 @@
 
 /obj/item/toy/desk/AltClick(mob/user)
 	if(user.incapacitated())
-		to_chat(user, span_warning("You can't do that right now!"))
+		to_chat(user, SPAN_WARNING("You can't do that right now!"))
 		return
 	if(!in_range(src, user))
 		return

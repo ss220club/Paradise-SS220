@@ -114,7 +114,7 @@
 
 	update_icon(UPDATE_ICON_STATE)
 	user.update_inv_head()
-	to_chat(user, span_notice("[msg]"))
+	to_chat(user, SPAN_NOTICE("[msg]"))
 
 /obj/item/clothing/head/helmet/ert/security/paranormal
 	icon_state = "knight_templar"
@@ -193,7 +193,7 @@
 		on = FALSE
 		turn_off()
 		update_icon(UPDATE_ICON_STATE)
-		visible_message(span_danger("[src]'s light fades and turns off."))
+		visible_message(SPAN_DANGER("[src]'s light fades and turns off."))
 
 /obj/item/clothing/head/helmet/cop/v2
 	icon_state = "cop1"

@@ -35,7 +35,7 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/owner = parent
 	if(owner.stat == CONSCIOUS)
-		examine_list += span_warning("<B>[owner] с трудом держится в сознании.\n</B>")
+		examine_list += SPAN_WARNING("<B>[owner] с трудом держится в сознании.\n</B>")
 
 /datum/component/softcrit/proc/check_health()
 	SIGNAL_HANDLER

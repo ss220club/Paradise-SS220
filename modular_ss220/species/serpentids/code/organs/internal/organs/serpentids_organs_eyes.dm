@@ -55,13 +55,13 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 		chemical_consuption = initial(chemical_consuption)
 		active = TRUE
-		owner.visible_message(span_warning("Зрачки [owner] расширяются!"))
+		owner.visible_message(SPAN_WARNING("Зрачки [owner] расширяются!"))
 	else
 		see_in_dark = initial(see_in_dark)
 		lighting_alpha = initial(lighting_alpha)
 		chemical_consuption = 0
 		active = FALSE
-		owner.visible_message(span_notice("Зрачки [owner] сужаются."))
+		owner.visible_message(SPAN_NOTICE("Зрачки [owner] сужаются."))
 	owner?.update_sight()
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 

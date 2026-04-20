@@ -68,10 +68,10 @@
 
 /obj/machinery/jukebox/attack_hand(mob/user)
 	if(!anchored)
-		to_chat(user, span_warning("Это устройство должно быть закреплено гаечным ключом!"))
+		to_chat(user, SPAN_WARNING("Это устройство должно быть закреплено гаечным ключом!"))
 		return
 	if(!length(music_player.songs))
-		to_chat(user, span_warning("Ошибка: Для вашей станции не было авторизовано ни одной музыкальной композиции. Обратитесь к Центральному командованию с просьбой решить эту проблему."))
+		to_chat(user, SPAN_WARNING("Ошибка: Для вашей станции не было авторизовано ни одной музыкальной композиции. Обратитесь к Центральному командованию с просьбой решить эту проблему."))
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return
 	ui_interact(user)
@@ -83,16 +83,16 @@
 /obj/machinery/jukebox/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/coin))
 		if(payment)
-			to_chat(user, span_info("Монетка уже вставлена."))
+			to_chat(user, SPAN_INFO("Монетка уже вставлена."))
 			return ITEM_INTERACT_COMPLETE
 
 		if(!user.drop_item())
-			to_chat(user, span_warning("Монетка выскользнула с вашей руки!"))
+			to_chat(user, SPAN_WARNING("Монетка выскользнула с вашей руки!"))
 			return ITEM_INTERACT_COMPLETE
 
 		used.forceMove(src)
 		payment = used
-		to_chat(user, span_notice("Вы вставили [used] в музыкальный автомат."))
+		to_chat(user, SPAN_NOTICE("Вы вставили [used] в музыкальный автомат."))
 		playsound(src, 'modular_ss220/aesthetics_sounds/sound/coin_accept.ogg', 50, TRUE)
 		ui_interact(user)
 		add_fingerprint(user)
@@ -101,9 +101,9 @@
 	if(used.GetID())
 		if(allowed(user))
 			need_coin = !need_coin
-			to_chat(user, span_notice("Вы [need_coin ? "вернули" : "сняли"] ограничения [need_coin ? "в" : "с"] [src]."))
+			to_chat(user, SPAN_NOTICE("Вы [need_coin ? "вернули" : "сняли"] ограничения [need_coin ? "в" : "с"] [src]."))
 		else
-			to_chat(user, span_warning("Access denied."))
+			to_chat(user, SPAN_WARNING("Access denied."))
 		return ITEM_INTERACT_COMPLETE
 
 	return ..()
@@ -137,7 +137,7 @@
 		if("toggle")
 			if(isnull(music_player.active_song_sound))
 				if(!COOLDOWN_FINISHED(src, jukebox_song_cd))
-					to_chat(usr, span_warning("Ошибка: Устройство перезагружается после предыдущего трека, \
+					to_chat(usr, SPAN_WARNING("Ошибка: Устройство перезагружается после предыдущего трека, \
 						Оно будет готово через [DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]."))
 					if(COOLDOWN_FINISHED(src, jukebox_error_cd))
 						playsound(src, 'sound/misc/compiler-failure.ogg', 33, TRUE)
@@ -152,7 +152,7 @@
 
 		if("select_track")
 			if(!isnull(music_player.active_song_sound))
-				to_chat(usr, span_warning("Ошибка: Вы не можете сменить трек, пока не закончится текущий."))
+				to_chat(usr, SPAN_WARNING("Ошибка: Вы не можете сменить трек, пока не закончится текущий."))
 				return TRUE
 
 			var/datum/track/new_song = music_player.songs[params["track"]]
