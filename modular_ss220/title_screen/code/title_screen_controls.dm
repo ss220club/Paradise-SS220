@@ -40,9 +40,6 @@ USER_VERB(fix_title_screen, R_NONE, "Fix Lobby Screen", "Lobbyscreen broke? Pres
 
 
 USER_VERB(change_title_screen_htm, R_DEBUG, "Title Screen: Set HTML", "Debug command that enables you to change the HTML on the go", VERB_CATEGORY_EVENT)
-	var/new_html = tgui_input_text(client, "Введи нужный HTML (ВНИМАНИЕ: ТЫ СКОРЕЕ ВСЕГО ЧТО-ТО СЛОМАЕШЬ!!!)", "РИСКОВАННО: ИЗМЕНЕНИЕ HTML ЛОББИ", max_length = 99999, multiline = TRUE, encode = FALSE) | null
-
-
 	log_admin("[key_name(client)] is setting the title screen HTML.")
 	message_admins("[key_name_admin(client)] is setting the title screen HTML.")
 
