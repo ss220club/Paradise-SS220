@@ -27,7 +27,8 @@
 	desc = "An armored bandana commonly used by special operations officers."
 	icon = 'icons/obj/clothing/masks.dmi'
 	worn_icon = null
-	icon_state = "bandred_up"
+	icon_state = "bandana" // Default white bandana
+	color = "#c43638" // Red
 	sprite_sheets = list(
 			"Vox" = 'icons/mob/clothing/species/vox/mask.dmi',
 			"Unathi" = 'icons/mob/clothing/species/unathi/mask.dmi',
