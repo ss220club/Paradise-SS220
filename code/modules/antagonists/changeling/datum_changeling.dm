@@ -472,7 +472,7 @@ RESTRICT_TYPE(/datum/antagonist/changeling)
 		to_chat(L, SPAN_NOTICE("While our current form may be lifeless, this is not the end for us as we can still regenerate!"))
 
 /datum/antagonist/changeling/custom_blurb()
-	return "We awaken on the [station_name()], [get_area_name(owner.current, TRUE)]...\nWe have our tasks to attend to..."
+	return "Мы пробуждаемся на [station_name()], [get_area_name(owner.current, TRUE)]...\nИ у нас есть задачи, которые нужно выполнить..."
 
 // Ling Stronk
 /datum/antagonist/changeling/antag_event_resource_cost()

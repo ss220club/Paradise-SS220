@@ -43,7 +43,7 @@
 	switch(stage)
 		if(2, 3)
 			if(prob(2)) // Low prob. since everyone else will also be spouting this
-				affected_mob.say(pick("You shall not pass!", "Expeliarmus!", "By Merlin's beard!", "Feel the power of the Dark Side!", "A wizard is never late!", "50 points for Security!", "NEC CANTIO!", "STI KALY!", "AULIE OXIN FIERA!", "GAR YOK!", "DIRI CEL!"))
+				affected_mob.say(pick("ТЫ!!! НЕ ПРОЙ-ДЁШЬ!!!", "Экспеллиармус!", "Мерлинова борода!", "Почувствуй силу тёмной стороны!"))
 			if(prob(8)) // Double the stage advancement prob. so each player has a chance to catch a couple
 				to_chat(affected_mob, SPAN_DANGER("You feel [pick("that you don't have enough mana", "that the winds of magic are gone", "that this location gives you a +1 to INT", "an urge to summon familiar")]."))
 		if(4)

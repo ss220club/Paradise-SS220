@@ -92,9 +92,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("<b>Alt-Click</b> [src] to remove its ID card.")
-	. += SPAN_NOTICE("<b>Ctrl-Click</b> [src] to remove its pen.")
-	. += SPAN_NOTICE("Use a screwdriver on [src] to reset it.")
+	. += SPAN_NOTICE("<b>Alt-Click</b> - достать ID-карту.")
+	. += SPAN_NOTICE("<b>Ctrl-Click</b> - достать ручку.")
+	. += SPAN_NOTICE("Примените отвертку на [src], чтобы сбросить его до заводских настроек.")
 
 /obj/item/pda/proc/can_use()
 	if(!ismob(loc))

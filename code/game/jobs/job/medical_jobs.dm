@@ -5,7 +5,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_MEDICAL
-	supervisors = "the captain"
+	supervisors = "капитаном"
 	department_head = list("Captain")
 	selection_color = "#b8ebfa"
 	req_admin_notify = 1
@@ -32,7 +32,7 @@
 	exp_map = list(EXP_TYPE_MEDICAL = 1200)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
 	outfit = /datum/outfit/job/cmo
-	important_information = "This role requires you to coordinate a department. You are required to be familiar with Standard Operating Procedure (Medical), basic job duties, and act professionally (roleplay)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Медицинских), базовых должностных обязанностей и профессиональных действий."
 	standard_paycheck = CREW_PAY_HIGH
 	difficulty = HARD_DIFFICULTY
 	description = "The Chief Medical Officer has the responsibility of overseeing the Medical Department.\n\n\
@@ -70,7 +70,7 @@
 	total_positions = 5
 	spawn_positions = 3
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#cbf7ff"
 	access = list(
@@ -109,6 +109,8 @@
 	. = ..()
 	ADD_TRAIT(H.mind, TRAIT_MED_EXAMINE, JOB_TRAIT)
 
+/datum/job/doctor/intern	// SS220 ADDITION - new jobs
+
 /datum/job/coroner
 	title = "Coroner"
 	flag = JOB_CORONER
@@ -116,7 +118,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#cbf7ff"
 	access = list(
@@ -187,7 +189,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#cbf7ff"
 	access = list(
@@ -233,7 +235,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#cbf7ff"
 	access = list(
@@ -284,7 +286,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#cbf7ff"
 	access = list(
@@ -329,7 +331,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#cbf7ff"
 	access = list(
@@ -349,7 +351,7 @@
 	minimal_player_age = 3
 	exp_map = list(EXP_TYPE_CREW = 180)
 	outfit = /datum/outfit/job/paramedic
-	important_information = "You are the first responder to medical emergencies outside the sanctity of the Medbay. You can also respond to Lavaland emergencies via the mining shuttle located in Cargo, or space emergencies via the Teleporter near the Bridge."
+	important_information = "Вы являетесь первым, кто реагирует на неотложные медицинские ситуации за пределами неприкосновенности медицинского отсека. Вы также можете реагировать на вызовы с Лаваленда с помощью шахтерского шаттла, расположенного в отделе снабжения, или в случае чрезвычайных ситуаций в космосе, используя телепортатор рядом с мостиком."
 	standard_paycheck = CREW_PAY_MEDIUM
 	difficulty = LOW_DIFFICULTY
 	description = "The Paramedic has the responsibility of rescuing crew members from danger.\n\n\

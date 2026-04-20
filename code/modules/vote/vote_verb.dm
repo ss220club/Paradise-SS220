@@ -5,11 +5,11 @@
 	if(SSvote.active_vote)
 		SSvote.active_vote.ui_interact(usr)
 	else
-		to_chat(usr, "There is no active vote")
+		to_chat(usr, "Нет активных голосований")
 
-USER_VERB(start_vote, R_ADMIN, "Start Vote", "Start a vote on the server", VERB_CATEGORY_ADMIN)
+USER_VERB(start_vote, R_ADMIN, "Начать голосование", "Начать голосование на сервере", VERB_CATEGORY_ADMIN)
 	if(SSvote.active_vote)
-		to_chat(client, "A vote is already in progress")
+		to_chat(client, "Голосование уже в процессе")
 		return
 
 	// Ask admins which type of vote they want to start
@@ -21,7 +21,7 @@ USER_VERB(start_vote, R_ADMIN, "Start Vote", "Start a vote on the server", VERB_
 	for(var/vtype in vote_types)
 		votemap["[vtype]"] = vtype
 
-	var/choice = tgui_input_list(client, "Select a vote type", "Vote", vote_types)
+	var/choice = tgui_input_list(client, "Выбрать тип голосования", "Голосование", vote_types)
 
 	if(choice == null)
 		return
@@ -33,19 +33,19 @@ USER_VERB(start_vote, R_ADMIN, "Start Vote", "Start a vote on the server", VERB_
 		return
 
 	// Its custom, lets ask
-	var/question = tgui_input_text(client, "What is the vote for?", "Create Vote", encode = FALSE)
+	var/question = tgui_input_text(client, "За что голосуем?", "Create Vote", encode = FALSE)
 	if(isnull(question))
 		return
 
 	var/list/choices = list()
 	for(var/i in 1 to 10)
-		var/option = tgui_input_text(client, "Please enter an option or hit cancel to finish", "Create Vote", encode = FALSE)
+		var/option = tgui_input_text(client, "Впишите опцию или нажмите отмену для завершения", "Create Vote", encode = FALSE)
 		if(isnull(option) || !client)
 			break
 		choices |= option
 
-	var/c2 = tgui_alert(client, "Show counts while vote is happening?", "Counts", list("Yes", "No"))
-	var/c3 = input(client, "Select a result calculation type", "Vote", VOTE_RESULT_TYPE_MAJORITY) as anything in list(VOTE_RESULT_TYPE_MAJORITY)
+	var/c2 = tgui_alert(client, "Показать подсчеты во время голосования?", "Голоса", list("Да", "Нет"))
+	var/c3 = input(client, "Выберите тип расчета результата", "Голосование", VOTE_RESULT_TYPE_MAJORITY) as anything in list(VOTE_RESULT_TYPE_MAJORITY)
 
 	var/datum/vote/V = new /datum/vote(client.ckey, question, choices, TRUE)
 	V.show_counts = (c2 == "Yes")
