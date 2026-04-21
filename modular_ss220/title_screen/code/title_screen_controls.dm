@@ -1,5 +1,5 @@
 USER_VERB(admin_change_title_screen, R_EVENT, "Title Screen: Change", "Upload a new titlescreen image.", VERB_CATEGORY_EVENT)
-	var/input = tgui_alert(client, "Что делаем с изображением в лобби?", "Лобби", list("Меняем", "Сбрасываем", "Ничего")) as message|null
+	var/input = tgui_alert(client, "Что делаем с изображением в лобби?", "Лобби", list("Меняем", "Сбрасываем", "Ничего"))
 
 	log_admin("[key_name(client)] is changing the title screen.")
 	message_admins("[key_name_admin(client)] is changing the title screen.")
@@ -18,7 +18,7 @@ USER_VERB(admin_change_title_screen, R_EVENT, "Title Screen: Change", "Upload a 
 
 
 USER_VERB(change_title_screen_notice, R_EVENT, "Title Screen: Set Notice", "Sets a titlescreen notice, a big red text on the main screen", VERB_CATEGORY_EVENT)
-	var/new_notice = tgui_input_text(client, "Введи то что должно отображаться в лобби:", "Уведомление в лобби") | null
+	var/new_notice = tgui_input_text(client, "Введи то что должно отображаться в лобби:", "Уведомление в лобби")
 
 	log_admin("[key_name(client)] is setting the title screen notice.")
 	message_admins("[key_name_admin(client)] is setting the title screen notice.")
