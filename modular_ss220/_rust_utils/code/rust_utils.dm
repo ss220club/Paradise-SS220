@@ -7,22 +7,23 @@
 		if(fexists("./librust_utils.so"))
 			// No need for LD_LIBRARY_PATH badness.
 			return __rust_utils = "./librust_utils.so"
-		else
-			// It's not in the current directory, so try others
-			return __rust_utils = "librust_utils.so"
+		// It's not in the current directory, so try others
+		return __rust_utils = "librust_utils.so"
 	else
-		return __rust_utils = "librust_utils"
+		if(fexists("./librust_utils.dll"))
+			return __rust_utils = "./librust_utils.dll"
+		return __rust_utils = "librust_utils.dll"
 
 #define RUST_UTILS (__rust_utils || __detect_rust_utils())
 #endif
 
-/// Gets the version of rust_utils
-/proc/rust_utils_get_version() return RUSTG_CALL(RUST_UTILS, "get_version")()
+#define RUST_UTILS_CALL call_ext
 
-#define rustutils_file_write_b64decode(text, fname) RUSTG_CALL(RUST_UTILS, "file_write")(text, fname, "true")
+/proc/rust_utils_get_version() return RUST_UTILS_CALL(RUST_UTILS, "get_version")()
 
-#define rustutils_regex_replace(text, re, re_params, replacement) RUSTG_CALL(RUST_UTILS, "regex_replace")(text, re, re_params, replacement)
+#define rustutils_file_write_b64decode(text, fname) RUST_UTILS_CALL(RUST_UTILS, "file_write")(text, fname, "true")
 
-#define rustutils_cyrillic_to_latin(text) RUSTG_CALL(RUST_UTILS, "cyrillic_to_latin")("[text]")
-#define rustutils_latin_to_cyrillic(text) RUSTG_CALL(RUST_UTILS, "latin_to_cyrillic")("[text]")
+#define rustutils_regex_replace(text, re, re_params, replacement) RUST_UTILS_CALL(RUST_UTILS, "regex_replace")(text, re, re_params, replacement)
 
+#define rustutils_cyrillic_to_latin(text) RUST_UTILS_CALL(RUST_UTILS, "cyrillic_to_latin")("[text]")
+#define rustutils_latin_to_cyrillic(text) RUST_UTILS_CALL(RUST_UTILS, "latin_to_cyrillic")("[text]")

@@ -39,9 +39,9 @@
 	if(animal.mind)
 		add_attack_logs(devourer, animal, "Devoured")
 
-	if(istype(animal, /mob/living/simple_animal/hostile/poison/bees)) // Eating a bee will end up damaging you
+	if(istype(animal, /mob/living/basic/bee)) // Eating a bee will end up damaging you
 		var/obj/item/organ/external/mouth = devourer.get_organ(BODY_ZONE_PRECISE_MOUTH)
-		var/mob/living/simple_animal/hostile/poison/bees/bee = animal
+		var/mob/living/basic/bee/bee = animal
 		mouth.receive_damage(1)
 		if(bee.beegent)
 			bee.beegent.reaction_mob(devourer, REAGENT_INGEST)

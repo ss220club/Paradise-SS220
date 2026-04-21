@@ -336,6 +336,7 @@ MAPPING_DIRECTIONAL_HELPERS_CUSTOM(/obj/machinery/shower, 16, -5, 0, 0)
 	switch(dir)
 		if(NORTH)
 			pixel_y = 16
+			layer = HIGH_OBJ_LAYER // fixes showers hiding behind posters
 		if(SOUTH)
 			pixel_y = -5
 			layer = FLY_LAYER
@@ -502,6 +503,7 @@ MAPPING_DIRECTIONAL_HELPERS_CUSTOM(/obj/machinery/shower, 16, -5, 0, 0)
 	inhand_icon_state = "rubberducky"
 	honk_sounds = list('sound/items/squeaktoy.ogg')
 	attack_verb = list("quacked", "squeaked")
+	throwforce = 0
 
 /obj/item/bikehorn/rubberducky/captainducky
 	name = "captain rubber ducky"

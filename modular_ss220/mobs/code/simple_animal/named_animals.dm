@@ -60,59 +60,55 @@
 	desc = "Крокодил обожающий музыкальные инструменты и плюшевые игрушки. Пожевать."
 	faction = list("neutral")
 
-/mob/living/simple_animal/mouse/brown/demon
+/mob/living/basic/mouse/brown/demon
 	name = "Мышедемон"
 	desc = "Секретная разработка синдиката. Сидит тут потому, что сам хочет"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 20
 	health = 20
 
-/mob/living/simple_animal/mouse/brown/demon/update_desc()
+/mob/living/basic/mouse/brown/demon/update_desc()
 	. = ..()
 	desc = initial(desc)
 
 // rats
-/mob/living/simple_animal/mouse/rat/ratatui
+/mob/living/basic/mouse/rat/ratatui
 	name = "Рататуй"
 	real_name = "Рататуй"
 	desc = "Личная крыса шеф повара, помогающая ему при готовке наиболее изысканных блюд. До момента пока он не пропадет и повар не начнет готовить что-то новенькое..."
 	mouse_color = "gray"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 20
 	health = 20
 
-/mob/living/simple_animal/mouse/rat/ratatui/update_desc()
+/mob/living/basic/mouse/rat/ratatui/update_desc()
 	. = ..()
 	desc = initial(desc)
 
-/mob/living/simple_animal/mouse/rat/irish/remi
+/mob/living/basic/mouse/rat/irish/remi
 	name = "Реми"
 	real_name = "Реми"
 	desc = "Близкий друг Рататуя. Не любимец повара, но пока тот не мешает на кухне, ему разрешили здесь остаться. Очень толстая крыса."
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 25
 	health = 25
 	transform = matrix(1.250, 0, 0, 0, 1, 0) // Толстячок на +2 пикселя
 
-/mob/living/simple_animal/mouse/rat/irish/remi/update_desc()
+/mob/living/basic/mouse/rat/irish/remi/update_desc()
 	. = ..()
 	desc = initial(desc)
 
-/mob/living/simple_animal/mouse/rat/white/brain
+/mob/living/basic/mouse/rat/white/brain
 	name = "Брейн"
 	real_name = "Брейн"
 	desc = "Сообразительная личная лабораторная крыса директора исследований, даже освоившая речь. Настолько часто сбегал, что его перестали помещать в клетку. Он явно хочет захватить мир. Где-то спрятался его напарник..."
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 20
 	health = 20
 	universal_speak = 1
 	resting = TRUE
 
-/mob/living/simple_animal/mouse/rat/white/brain/update_desc()
+/mob/living/basic/mouse/rat/white/brain/update_desc()
 	. = ..()
 	desc = initial(desc)
 
@@ -122,7 +118,7 @@
 	anchored = TRUE
 
 // hamster
-/mob/living/simple_animal/mouse/hamster/representative
+/mob/living/basic/mouse/hamster/representative
 	name = "представитель Алексей"
 	desc = "Представитель федерации хомяков. Проявите уважение при его виде, ведь он с позитивным исходом решил немало дипломатических вопросов между федерацией мышей, республикой крыс и корпорацией Нанотрейзен. Да и кто вообще хомяка так назвал?!"
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
@@ -130,7 +126,6 @@
 	icon_living = "hamster_rep"
 	icon_dead = "hamster_rep_dead"
 	icon_resting = "hamster_rep_rest"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	holder_type = /obj/item/holder/hamster_rep
 	maxHealth = 20

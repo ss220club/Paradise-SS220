@@ -7,8 +7,11 @@
 #define VERM_MOTHROACH 	6
 
 /datum/event/infestation/extended
+	name = "Infestation Extended"
 	announceWhen = 10
 	endWhen = 11
+	noAutoEnd = FALSE
+	nominal_severity = EVENT_LEVEL_MUNDANE
 	var/static/list/spawn_areas_extended = list(
 		/area/station/service/chapel,
 		/area/station/service/library,
@@ -52,13 +55,13 @@
 			var/possible_vermin = rand(0, 2)
 			switch(possible_vermin)
 				if(0)
-					spawn_types = list(/mob/living/simple_animal/mouse/rat)
+					spawn_types = list(/mob/living/basic/mouse/rat)
 					vermstring = "крыс"
 				if(1)
-					spawn_types = list(/mob/living/simple_animal/mouse/rat/irish)
+					spawn_types = list(/mob/living/basic/mouse/rat/irish)
 					vermstring = "ирландских крыс борцов за независимость"
 				if(2)
-					spawn_types = list(/mob/living/simple_animal/mouse/rat/white)
+					spawn_types = list(/mob/living/basic/mouse/rat/white)
 					vermstring = "лабораторных крыс"
 		if(VERM_AXOLOTL)
 			spawn_types = list(/mob/living/simple_animal/lizard/axolotl)

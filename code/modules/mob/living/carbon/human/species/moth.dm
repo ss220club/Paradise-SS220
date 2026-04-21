@@ -32,13 +32,14 @@
 	В отличие от большинства видов в галактике, Нианы не признают власть Транс-Солнечной Федерации, \
 	установив вместо этого тесные дипломатические отношения с Союзом Советских Социалистических Планет."
 
-	icon_skin_tones = list(
+	icon_skin_tones = alist(
 		1 = "Default Biege",
 		2 = "Lighter",
 		3 = "Darker",
 		4 = "Purple"
 	)
 
+	meat_type = /obj/item/food/meat/human
 	has_organ = list(
 		"heart" =    /obj/item/organ/internal/heart/nian,
 		"lungs" =    /obj/item/organ/internal/lungs/nian,

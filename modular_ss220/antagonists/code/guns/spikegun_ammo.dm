@@ -14,10 +14,10 @@
 	delay = 3 //and delay has to be stored here on energy guns
 	select_name = "spike"
 	fire_sound = 'modular_ss220/antagonists/sound/guns/gun_es4.ogg'
-	projectile_type = /obj/item/projectile/bullet/vox_spike
+	projectile_type = /obj/projectile/bullet/vox_spike
 	e_cost = 25	// 1000 / (50*3) = ~13 выстрелов
 
-/obj/item/projectile/bullet/vox_spike
+/obj/projectile/bullet/vox_spike
 	name = "шип"
 	desc = "Маленький самозаряжающийся кристаллический шип испускающий энергетический вайб."
 	icon_state = "magspear"
@@ -26,7 +26,7 @@
 	knockdown = 0
 	var/bleed_loss = 5
 
-/obj/item/projectile/bullet/vox_spike/on_hit(atom/target, blocked = 0)
+/obj/projectile/bullet/vox_spike/on_hit(atom/target, blocked = 0)
 	if((blocked < 100) && ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.bleed(bleed_loss)
@@ -34,10 +34,10 @@
 
 
 /obj/item/ammo_casing/energy/vox_spike/long
-	projectile_type = /obj/item/projectile/bullet/vox_spike/long
+	projectile_type = /obj/projectile/bullet/vox_spike/long
 	e_cost = 50	// 1000 / (50*3) = 6 выстрелов
 
-/obj/item/projectile/bullet/vox_spike/long
+/obj/projectile/bullet/vox_spike/long
 	damage = 5
 	armor_penetration_flat = 60
 	jitter = 1 SECONDS
@@ -46,10 +46,10 @@
 
 
 /obj/item/ammo_casing/energy/vox_spike/big
-	projectile_type = /obj/item/projectile/bullet/vox_spike/big
+	projectile_type = /obj/projectile/bullet/vox_spike/big
 	e_cost = 80	// 1000 / (80*3) = 4 выстрела
 
-/obj/item/projectile/bullet/vox_spike/big
+/obj/projectile/bullet/vox_spike/big
 	damage = 15
 	stamina = 50
 	stutter = 2 SECONDS

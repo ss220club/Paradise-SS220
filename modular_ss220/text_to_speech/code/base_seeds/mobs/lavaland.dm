@@ -9,7 +9,7 @@
 /mob/living/basic/mining/basilisk/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/antimage)
 
-/mob/living/simple_animal/hostile/asteroid/goliath/add_tts_component()
+/mob/living/basic/mining/goliath/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/bloodseeker)
 
 /mob/living/basic/mining/hivelord/add_tts_component()

@@ -136,7 +136,7 @@
 	alt_titles = list("Менеджер по Клинингу", "Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда",
 		"Подмастерье", "Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
 	relate_job = "Janitor"
-	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
+	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -201,7 +201,7 @@
 	ru_title = "Подмастерье"
 	alt_titles = list("Подмастерье", "Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
 	relate_job = "Assistant"
-	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -317,7 +317,7 @@
 	flag = JOB_UNCERTAIN
 	ru_title = "Безработный"
 	alt_titles = list("Безработный", "Безработный Ассистент", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
-	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -356,5 +356,5 @@
 		)
 
 	backpack = /obj/item/storage/backpack/explorer
-	satchel = /obj/item/storage/backpack/satchel/explorer
+	satchel = /obj/item/storage/backpack/satchel_explorer
 	dufflebag = /obj/item/storage/backpack/duffel

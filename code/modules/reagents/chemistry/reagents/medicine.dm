@@ -1110,7 +1110,7 @@
 /datum/reagent/medicine/mutadone
 	name = "Mutadone"
 	id = "mutadone"
-	description = "Mutadone is an experimental bromide that can cure genetic abnomalities."
+	description = "Mutadone is an experimental bromide that can cure genetic abnormalities."
 	color = "#5096C8"
 	taste_description = "cleanliness"
 	goal_difficulty = REAGENT_GOAL_NORMAL
@@ -1467,10 +1467,10 @@
 	for(var/datum/reagent/R in M.reagents.reagent_list)
 		if(R != src)
 			if(R.id == "ultralube" || R.id == "lube")
-				//Flushes lube and ultra-lube even faster than other chems
+				// Flushes lube and ultra-lube even faster than other chems
 				M.reagents.remove_reagent(R.id, 5)
 			else
-				M.reagents.remove_reagent(R.id,1)
+				M.reagents.remove_reagent(R.id, 1)
 	return ..() | update_flags
 
 /datum/reagent/medicine/degreaser/reaction_turf(turf/simulated/T, volume)

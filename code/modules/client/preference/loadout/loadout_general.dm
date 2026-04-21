@@ -190,6 +190,10 @@
 	path = /obj/item/paicard
 	cost = 2
 
+/datum/gear/wizard_staff
+	display_name = "Wizard's staff"
+	path = /obj/item/staff
+
 //////////////////////
 //		Mugs		//
 //////////////////////
@@ -231,7 +235,7 @@
 /datum/gear/mug/department/sci
 	display_name = "Coffee mug, science"
 	description = "A scientist's coffee mug, emblazoned in the colors of the Science department."
-	allowed_roles = list("Research Director", "Scientist", "Roboticist")
+	allowed_roles = list("Research Director", "Scientist", "Roboticist", "Xenobiologist")
 	path = /obj/item/reagent_containers/drinks/mug/sci
 
 /datum/gear/mug/department/sec

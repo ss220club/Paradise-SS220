@@ -3,6 +3,7 @@
 	name_plural = "Kidan"
 	icobase = 'icons/mob/human_races/r_kidan.dmi'
 	language = "Chittin"
+	meat_type = /obj/item/food/meat/human
 
 	blurb = "Киданы - муравьеподобные существа, обладающих жестким экзоскелетом и строго придерживающиеся профессиональных каст. \
 	Они родом с планеты Аурум - бесплодного, подвергшегося бомбардировкам мира, который пострадал после войны с Человеко-Скреллаинским Альянсом, потерпев сокрушительное поражение.<br/><br/> \
@@ -13,6 +14,7 @@
 	brute_mod = 0.8
 	hunger_drain = 0.15
 	tox_mod = 1.7
+	primitive_form = /datum/species/monkey/kidan_nymph // SS220 EDIT - (Низшая форма для киданов)
 
 	species_traits = list(NO_HAIR)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_BUG
@@ -27,6 +29,10 @@
 	default_headacc = "Normal Antennae"
 	butt_sprite = "kidan"
 
+	male_scream_sound = 'sound/voice/scream_kidan.ogg'
+	female_scream_sound = 'sound/voice/scream_kidan.ogg'
+
+	meat_type = /obj/item/food/meat/human
 	has_organ = list(
 		"heart" =    /obj/item/organ/internal/heart/kidan,
 		"lungs" =    /obj/item/organ/internal/lungs/kidan,
@@ -38,7 +44,7 @@
 		"lantern" =  /obj/item/organ/internal/lantern
 		)
 
-	allowed_consumed_mobs = list(/mob/living/simple_animal/diona)
+	allowed_consumed_mobs = list(/mob/living/basic/diona_nymph)
 
 	suicide_messages = list(
 		"is attempting to bite their antenna off!",

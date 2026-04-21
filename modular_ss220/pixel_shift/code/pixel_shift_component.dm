@@ -40,7 +40,7 @@
 /datum/component/pixel_shift/proc/check_passable(mob/source, atom/movable/mover, border_dir)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/owner = parent
-	if(!istype(mover, /obj/item/projectile) && !mover.throwing && passthroughable & get_dir(owner, mover))
+	if(!istype(mover, /obj/projectile) && !mover.throwing && passthroughable & get_dir(owner, mover))
 		return COMPONENT_LIVING_PASSABLE
 
 /datum/component/pixel_shift/proc/pixel_shift_down()
