@@ -34,9 +34,9 @@ USER_VERB(change_title_screen_notice, R_EVENT, "Title Screen: Set Notice", "Sets
 
 USER_VERB(fix_title_screen, R_NONE, "Fix Lobby Screen", "Lobbyscreen broke? Press this.", VERB_CATEGORY_SPECIAL)
 	if(istype(client, /mob/new_player))
-		SStitle.show_title_screen_to(src)
+		SStitle.show_title_screen_to(client)
 	else
-		SStitle.hide_title_screen_from(src)
+		SStitle.hide_title_screen_from(client)
 
 
 USER_VERB(change_title_screen_htm, R_DEBUG, "Title Screen: Set HTML", "Debug command that enables you to change the HTML on the go", VERB_CATEGORY_EVENT)

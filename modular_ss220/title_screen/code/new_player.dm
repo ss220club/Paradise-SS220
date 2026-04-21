@@ -72,7 +72,7 @@ USER_VERB(swap_server, R_SERVER, "Swap Server", "Поменять сервер",
 		return
 
 	to_chat_immediate(client, "Удачной охоты, сталкер.")
-	src << link(server_ip)
+	client << link(server_ip)
 
 /datum/preferences/process_link(mob/user, list/href_list)
 	. = ..()
