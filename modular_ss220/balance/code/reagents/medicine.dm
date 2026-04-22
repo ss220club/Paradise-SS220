@@ -73,7 +73,7 @@
 	description = "Препарат восстанавливает обожженные ткани, оказывая механическое воздействие на организм; передозировка вызывает сильное воспаление кожи."
 	reagent_state = LIQUID
 	color = "#eeff00"
-	metabolization_rate = 1.5
+	metabolization_rate = 1
 	overdose_threshold = 15
 	harmless = FALSE
 	taste_description = "Сладковато кислый"
@@ -83,13 +83,13 @@
 /datum/reagent/medicine/dermalin/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustFireLoss(-5, FALSE)
-	update_flags |= M.adjustStaminaLoss(5, FALSE)
+	update_flags |= M.adjustStaminaLoss(15, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/dermalin/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustFireLoss(10, FALSE)
-	update_flags |= M.adjustStaminaLoss(7.5, FALSE)
+	update_flags |= M.adjustStaminaLoss(20, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/bruzin
@@ -98,7 +98,7 @@
 	description = "Препарат восстанавливает серьезные порезы, оказывая нагрузку на организм; передозировка вызывает разрыв тканей."
 	reagent_state = LIQUID
 	color = "#dd0303"
-	metabolization_rate = 1.5
+	metabolization_rate = 1
 	overdose_threshold = 15
 	harmless = FALSE
 	taste_description = "Сладковато мясной"
@@ -108,13 +108,13 @@
 /datum/reagent/medicine/bruzin/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(-5, FALSE)
-	update_flags |= M.adjustStaminaLoss(5, FALSE)
+	update_flags |= M.adjustStaminaLoss(15, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/bruzin/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(10, FALSE)
-	update_flags |= M.adjustStaminaLoss(7.5, FALSE)
+	update_flags |= M.adjustStaminaLoss(20, FALSE)
 	return list(0, update_flags)
 
 /datum/chemical_reaction/dermalin
