@@ -295,7 +295,7 @@
 
 
 /obj/item/paper/proc/openhelp(mob/user as mob)
-	user << browse({"<html><meta charset='utf-8'><head><title>Pen Help</title></head>
+	user << browse(common_browser_html(user, {"<html><meta charset='utf-8'><head><title>Pen Help</title></head>
 	<BODY>
 		<b><center>Crayon&Pen commands</center></b><br>
 		<br>
@@ -318,7 +318,7 @@
 		\[*\] : A dot used for lists.<br>
 		\[hr\] : Adds a horizontal rule.
 		\[time\] : Inserts the current station time in HH:MM:SS.<br>
-	</BODY></HTML>"}, "window=paper_help")
+	</BODY></HTML>"}, "Pen Help"), "window=paper_help")
 
 /obj/item/paper/vv_edit_var(var_name, var_value)
 	if((var_name == "info") && blacklist.Find(var_value)) //uh oh, they tried to be naughty

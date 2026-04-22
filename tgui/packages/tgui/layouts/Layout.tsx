@@ -18,7 +18,8 @@ type Props = Partial<{
   BoxProps;
 
 export function Layout(props: Props) {
-  const { className, theme = 'nanotrasen', children, ...rest } = props;
+  const { className, children, ...rest } = props;
+  const theme = 'nanotrasen';
   document.documentElement.className = `theme-${theme}`;
 
   return (

@@ -604,7 +604,7 @@ GLOBAL_LIST_EMPTY(timers_by_proc)
 		text += "<li>[key] - [sorted[key]]</li>"
 
 	text += "</ul>"
-	usr << browse(text.Join(), "window=timerlog")
+	usr << browse(common_browser_html(usr, text.Join(), "Timer Log"), "window=timerlog")
 
 /client/proc/debug_timers()
 	set name = "Debug Timers"
@@ -646,7 +646,7 @@ GLOBAL_LIST_EMPTY(timers_by_proc)
 		text += "<li>[key] - [sorted2[key]]</li>"
 
 	text += "</ul>"
-	usr << browse(text.Join(), "window=timerdebug")
+	usr << browse(common_browser_html(usr, text.Join(), "Timer Debug"), "window=timerdebug")
 
 
 /**

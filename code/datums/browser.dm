@@ -164,9 +164,8 @@
 
 /datum/browser/admin/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, atom/atom = null)
 	..()
-	add_stylesheet("admin", 'html/browser/admin.css')
 
-/proc/admin_browser_html(user_or_client, content, title = null)
+/proc/common_browser_html(user_or_client, content, title = null)
 	var/mob/user
 	if(ismob(user_or_client))
 		user = user_or_client
@@ -175,15 +174,13 @@
 		user = client_user.mob
 
 	var/datum/asset/simple/common/common_asset = get_asset_datum(/datum/asset/simple/common)
-	var/datum/asset/simple/admin_browser/admin_asset = get_asset_datum(/datum/asset/simple/admin_browser)
 
 	if(user)
 		common_asset.send(user)
-		admin_asset.send(user)
 
 	var/sanitized_content = replacetext("[content]", "<!DOCTYPE html>", "")
 	var/title_html = title ? "<title>[html_encode("[title]")]</title>" : ""
-	var/styles_html = "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("admin.css")]'>"
+	var/styles_html = "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'>"
 
 	if(findtext(sanitized_content, "<head>"))
 		return replacetext(sanitized_content, "<head>", "<head>[title_html][styles_html]")
@@ -211,6 +208,9 @@
 		[sanitized_content]
 	</body>
 </html>"}
+
+/proc/admin_browser_html(user_or_client, content, title = null)
+	return common_browser_html(user_or_client, content, title)
 
 /proc/onclose(mob/user, windowid, atom_uid)
 	if(!user?.client)

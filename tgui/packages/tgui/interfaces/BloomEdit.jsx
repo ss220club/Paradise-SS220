@@ -18,7 +18,7 @@ export const BloomEdit = (props) => {
   } = data;
 
   return (
-    <Window title="BloomEdit" width={500} height={500} theme="adminpink">
+    <Window title="BloomEdit" width={500} height={500}>
       <Window.Content>
         <Section title="Bloom Edit">
           <LabeledList>

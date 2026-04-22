@@ -186,10 +186,10 @@
 	//Now we're going to display the header buttons + the current page selected, if it's page 0, we display the cover_page instead
 	if(!current_page)
 		var/cover_page = {"<center><h1>[title]</h1><br></h2>Written by: [author]</h2></center><br><hr><b>Summary:</b> [summary]"}
-		user << browse("<body bgcolor='[book_bgcolor]'>[dat]<br>" + "[cover_page]", "window=book[UID()];size=400x400")
+		user << browse(common_browser_html(user, "[dat]<br>[cover_page]", "[title]"), "window=book[UID()];size=400x400")
 		return
 	else
-		user << browse("<body bgcolor='[book_bgcolor]'>[dat]<br>" + "[pages[current_page]]", "window=book[UID()]")
+		user << browse(common_browser_html(user, "[dat]<br>[pages[current_page]]", "[title]"), "window=book[UID()]")
 
 /obj/item/book/Topic(href, href_list)
 	if(..() || isobserver(usr))

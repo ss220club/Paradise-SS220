@@ -377,7 +377,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 	viewalerts = TRUE
 	var/dat_text = dat.Join("")
-	src << browse(dat_text, "window=aialerts&can_close=0")
+	src << browse(common_browser_html(src, dat_text, "Current Station Alerts"), "window=aialerts&can_close=0")
 
 /mob/living/silicon/ai/proc/show_borg_info(list/status_tab_data)
 	status_tab_data[++status_tab_data.len] = list("Подключённые киборги:", "[length(connected_robots)]")

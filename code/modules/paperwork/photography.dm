@@ -106,11 +106,11 @@
 			colormatrix[7], colormatrix[8], colormatrix[9],
 		)
 	usr << browse_rsc(img_shown, "tmp_photo.png")
-	usr << browse("<html><meta charset='utf-8'><head><title>[name]</title></head>" \
+	usr << browse(common_browser_html(usr, "<html><meta charset='utf-8'><head><title>[name]</title></head>" \
 		+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
 		+ "<img src='tmp_photo.png' width='[64*photo_size]' style='-ms-interpolation-mode:nearest-neighbor' />" \
 		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"\
-		+ "</body></html>", "window=Photo[UID()];size=[64*photo_size]x[scribble ? 400 : 64*photo_size]")
+		+ "</body></html>", name), "window=Photo[UID()];size=[64*photo_size]x[scribble ? 400 : 64*photo_size]")
 	onclose(usr, "Photo[UID()]")
 
 /obj/item/photo/proc/rename(mob/user)

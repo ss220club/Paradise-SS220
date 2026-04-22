@@ -61,15 +61,21 @@
 @include meta.load-css('./layouts/TitleBar.scss');
 @include meta.load-css('./layouts/Window.scss');
 
-// NT Theme
-.Layout__content {
-  background-image: url('../assets/bg-nanotrasen.svg');
-  background-size: 70% 70%;
-  background-position: center;
-  background-repeat: no-repeat;
+:root {
+  --color-base: hsl(329, 34%, 17%);
+  --color-section: hsl(329, 31%, 14%);
+  --color-primary: hsl(329, 76%, 62%);
+  --color-secondary: hsl(329, 42%, 24%);
+  --color-border-primary: hsl(from var(--color-primary) h s l / 0.75);
+  --titlebar-background: hsl(329, 44%, 24%);
+  --button-background-default: hsl(332, 46%, 31%);
+  --button-background-selected: hsl(329, 76%, 62%);
+  --button-background-danger: hsl(347, 82%, 57%);
+  --tab-background-selected: hsl(329, 43%, 24%);
+  --scaling-amount: 1;
 }
 
-// A default, in case someone uses the vp() function outside of a <Window>
-:root {
-  --scaling-amount: 1;
+.Layout__content {
+  background-image: none !important;
+  background-color: var(--color-base);
 }

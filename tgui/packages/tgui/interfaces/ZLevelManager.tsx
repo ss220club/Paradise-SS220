@@ -61,7 +61,7 @@ export const ZLevelManager = () => {
   };
 
   return (
-    <Window width={600} height={500} title="Z-Level Manager" theme="adminpink">
+    <Window width={600} height={500} title="Z-Level Manager">
       <Window.Content scrollable>
         <Stack fill>
           <Stack.Item>

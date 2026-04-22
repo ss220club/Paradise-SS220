@@ -140,7 +140,7 @@
 		dat += "<a href='byond://?src=[UID()];op=temp;val=5'>+</a><br>"
 
 		user.set_machine(src)
-		user << browse("<!DOCTYPE html><meta charset='utf-8'><head><title>Space Heater Control Panel</title></head><tt>[dat]</tt>", "window=spaceheater")
+		user << browse(common_browser_html(user, "<tt>[dat]</tt>", "Space Heater Control Panel"), "window=spaceheater")
 		onclose(user, "spaceheater")
 
 	else

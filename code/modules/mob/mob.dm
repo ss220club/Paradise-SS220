@@ -910,7 +910,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 
 /mob/Topic(href, href_list)
 	if(href_list["flavor_more"])
-		usr << browse(text("<html><meta charset='utf-8'><head><title>[]</title></head><body><tt>[]</tt></body></html>", name, replacetext(flavor_text, "\n", "<br>")), "window=[name];size=500x200")
+		usr << browse(common_browser_html(usr, text("<html><meta charset='utf-8'><head><title>[]</title></head><body><tt>[]</tt></body></html>", name, replacetext(flavor_text, "\n", "<br>")), name), "window=[name];size=500x200")
 		onclose(usr, "[name]")
 	if(href_list["flavor_change"])
 		update_flavor_text()
@@ -938,7 +938,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 
 
 	if(href_list["scoreboard"])
-		usr << browse(GLOB.scoreboard, "window=roundstats;size=500x600")
+		usr << browse(common_browser_html(usr, GLOB.scoreboard, "Round Statistics and Score"), "window=roundstats;size=500x600")
 
 /mob/MouseDrop(mob/M as mob, src_location, over_location, src_control, over_control, params)
 	if((M != usr) || !istype(M))

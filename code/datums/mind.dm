@@ -216,7 +216,7 @@
 
 	output = output.Join("<br>")
 	if(window)
-		recipient << browse(output, "window=memory")
+		recipient << browse(common_browser_html(recipient, output, "[current.real_name]'s Memories"), "window=memory")
 	else
 		to_chat(recipient, "<i>[output]</i>")
 
@@ -646,7 +646,7 @@
 	out.Add("<a href='byond://?src=[UID()];obj_add=1'>Add objective</a><br>")
 	out.Add("<a href='byond://?src=[UID()];obj_announce=1'>Announce objectives</a><br>")
 	out.Add("</body></html>")
-	usr << browse(out.Join("<br>"), "window=edit_memory[src];size=500x500")
+	usr << browse(common_browser_html(usr, out.Join("<br>"), "Edit Memory"), "window=edit_memory[src];size=500x500")
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))

@@ -315,7 +315,7 @@ GLOBAL_VAR(scoreboard) // Variable to save the scoreboard string once it's been 
 			to_chat(E, "<b><font size='4'><a href='byond://?src=[E.UID()];scoreboard=1'>[crewscore]</a></font></b>")
 			to_chat(E, "<b><font size='4'><a href='byond://?src=[E.UID()];station_report=1'>View Station Report</a></font></b>")
 			if(!E.get_preference(PREFTOGGLE_DISABLE_SCOREBOARD))
-				E << browse(GLOB.scoreboard, "window=roundstats;size=500x600")
+				E << browse(common_browser_html(E, GLOB.scoreboard, "Round Statistics and Score"), "window=roundstats;size=500x600")
 
 
 /datum/game_mode/proc/get_scoreboard_stats()

@@ -118,64 +118,59 @@ GLOBAL_DATUM_INIT(paiController, /datum/pai_controller, new) // Global handler f
 /datum/pai_controller/proc/recruitWindow(mob/M)
 	var/datum/pai_save/candidate = M.client.pai_save
 
-	var/dat = ""
-	dat += {"
-			<style type="text/css">
-				body {
-					margin-top:5px;
-					font-family:Verdana;
-					color:white;
-					font-size:13px;
-					background-image:url('uiBackground.png');
-					background-repeat:repeat-x;
-					background-color:#272727;
-					background-position:center top;
-				}
-				table {
-					border-collapse:collapse;
-					font-size:13px;
-				}
-				th, td {
-					border: 1px solid #333333;
-				}
-				p.top {
-					background-color: none;
-					color: white;
-				}
-				tr.d0 td {
-					background-color: #c0c0c0;
-					color: black;
-					border:0px;
-					border: 1px solid #333333;
-				}
-				tr.d0 th {
-					background-color: none;
-					color: #4477E0;
-					text-align:right;
-					vertical-align:top;
-					width:120px;
-					border:0px;
-				}
-				tr.d1 td {
-					background-color: #555555;
-					color: white;
-				}
-				td.button {
-					border: 1px solid #161616;
-					background-color: #40628a;
-				}
-				td.desc {
-					font-weight:bold;
-				}
-				a {
-					color:#4477E0;
-				}
-				a.button {
-					color:white;
-					text-decoration: none;
-				}
-			</style>
-			"}
+	var/dat = {"
+		<html>
+			<head>
+				<meta charset='utf-8'>
+				<title>pAI Personality Configuration</title>
+				<style type='text/css'>
+					body {
+						margin-top: 5px;
+						font-size: 13px;
+					}
+					table {
+						border-collapse: collapse;
+						font-size: 13px;
+						width: 100%;
+					}
+					th, td {
+						border: 1px solid #7a2d56;
+						padding: 6px 8px;
+					}
+					p.top {
+						margin: 0 0 1rem;
+					}
+					tr.d0 td {
+						background-color: #58203b;
+						color: #ffe7f4;
+					}
+					tr.d0 th {
+						color: #ff9fc8;
+						text-align: right;
+						vertical-align: top;
+						width: 120px;
+						background-color: #3f172b;
+					}
+					tr.d1 td {
+						background-color: #3a1426;
+						color: #ffe7f4;
+					}
+					td.button {
+						border: 1px solid #a94679;
+						background-color: #8f3565;
+						text-align: center;
+					}
+					td.desc {
+						font-weight: bold;
+					}
+					a.button {
+						color: #fff4fa;
+						text-decoration: none;
+						display: block;
+					}
+				</style>
+			</head>
+	"}
 
 	dat += {"
 	<body>
@@ -229,10 +224,10 @@ GLOBAL_DATUM_INIT(paiController, /datum/pai_controller, new) // Global handler f
 			<td class="button"><a href='byond://?src=[UID()];option=submit;new=1;candidate=[candidate.UID()]' class="button"><b><font size="4px">Submit Personality</font></b></a></td>
 		</table><br>
 
-	</body>
 	"}
 
-	M << browse(dat, "window=paiRecruit;size=580x580;")
+	dat += "</body></html>"
+	M << browse(common_browser_html(M, dat, "pAI Personality Configuration"), "window=paiRecruit;size=580x580;")
 
 /datum/pai_controller/proc/findPAI(obj/item/paicard/p, mob/user)
 	requestRecruits(p, user)
@@ -244,69 +239,48 @@ GLOBAL_DATUM_INIT(paiController, /datum/pai_controller, new) // Global handler f
 				found = 1
 		if(found)
 			available.Add(c)
-	var/dat = ""
-
-	dat += {"
-		<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
-		<html><meta charset='utf-8'>
+	var/dat = {"
+		<html>
 			<head>
+				<meta charset='utf-8'>
+				<title>pAI Availability List</title>
 				<style>
 					body {
-						margin-top:5px;
-						font-family:Verdana;
-						color:white;
-						font-size:13px;
-						background-image:url('uiBackground.png');
-						background-repeat:repeat-x;
-						background-color:#272727;
-						background-position:center top;
+						margin-top: 5px;
+						font-size: 13px;
 					}
 					table {
-						font-size:13px;
+						font-size: 13px;
 					}
-					table.desc {
-						border-collapse:collapse;
-						font-size:13px;
-						border: 1px solid #161616;
-						width:100%;
-					}
+					table.desc,
 					table.download {
-						border-collapse:collapse;
-						font-size:13px;
-						border: 1px solid #161616;
-						width:100%;
+						border-collapse: collapse;
+						font-size: 13px;
+						border: 1px solid #7a2d56;
+						width: 100%;
 					}
 					tr.d0 td, tr.d0 th {
-						background-color: #506070;
-						color: white;
+						background-color: #58203b;
+						color: #ffe7f4;
 					}
 					tr.d1 td, tr.d1 th {
-						background-color: #708090;
-						color: white;
-					}
-					tr.d2 td {
-						background-color: #00FF00;
-						color: white;
-						text-align:center;
-					}
-					td.button {
-						border: 1px solid #161616;
-						background-color: #40628a;
-						text-align: center;
+						background-color: #3a1426;
+						color: #ffe7f4;
 					}
 					td.download {
-						border: 1px solid #161616;
-						background-color: #40628a;
+						border: 1px solid #a94679;
+						background-color: #8f3565;
 						text-align: center;
 					}
 					th {
-						text-align:left;
-						width:125px;
-						vertical-align:top;
+						text-align: left;
+						width: 125px;
+						vertical-align: top;
 					}
 					a.button {
-						color:white;
+						color: #fff4fa;
 						text-decoration: none;
+						display: block;
 					}
 				</style>
 			</head>
@@ -347,7 +321,7 @@ GLOBAL_DATUM_INIT(paiController, /datum/pai_controller, new) // Global handler f
 		</html>
 	"}
 
-	user << browse(dat, "window=findPai")
+	user << browse(common_browser_html(user, dat, "pAI Availability List"), "window=findPai")
 
 /datum/pai_controller/proc/requestRecruits(obj/item/paicard/P, mob/user)
 	for(var/mob/dead/observer/O in GLOB.player_list)

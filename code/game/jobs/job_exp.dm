@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(role_playtime_requirements, list(
 		msg += "</TR>"
 
 	msg += "</TABLE></BODY></HTML>"
-	src << browse(msg.Join(""), "window=Player_playtime_check")
+	src << browse(common_browser_html(src, msg.Join(""), "Playtime Report"), "window=Player_playtime_check")
 
 
 /datum/admins/proc/cmd_mentor_show_exp_panel(client/C)
@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(role_playtime_requirements, list(
 	var/body = "<html><meta charset='utf-8'><head><title>Playtime for [C.key]</title></head><BODY><BR>Playtime:"
 	body += C.get_exp_report()
 	body += "</BODY></HTML>"
-	usr << browse(body, "window=playerplaytime[C.ckey];size=550x615")
+	usr << browse(common_browser_html(usr, body, "Playtime for [C.key]"), "window=playerplaytime[C.ckey];size=550x615")
 
 
 // Procs

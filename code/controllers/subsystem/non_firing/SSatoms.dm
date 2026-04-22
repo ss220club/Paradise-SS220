@@ -134,5 +134,5 @@ SUBSYSTEM_DEF(atoms)
 
 	html_data += "</table>"
 
-	usr << browse(html_data.Join(), "window=initdebug")
+	usr << browse(common_browser_html(usr, html_data.Join(), "Initialize Debug"), "window=initdebug")
 

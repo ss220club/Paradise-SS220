@@ -1310,7 +1310,7 @@
 /obj/item/book/manual/wiki/Initialize(mapload)
 	. = ..()
 	pages = list({"
-		<html><meta charset='utf-8'><head></head><body bgcolor='[book_bgcolor]'>
+		<html><meta charset='utf-8'><head></head><body>
 		<iframe width='100%' height='97%' src="[GLOB.configuration.url.wiki_url]/index.php/[wiki_article_title]?action=render" frameborder="0" id="main_frame"></iframe>
 		</body></html>"})
 

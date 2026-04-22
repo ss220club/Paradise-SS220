@@ -245,7 +245,7 @@
 			dat += "</table>"
 	dat += "</body>"
 	message = defaultmsg
-	user << browse(dat, "window=message;size=700x700")
+	user << browse(common_browser_html(user, dat, "Message Monitor"), "window=message;size=700x700")
 	onclose(user, "message")
 	return
 

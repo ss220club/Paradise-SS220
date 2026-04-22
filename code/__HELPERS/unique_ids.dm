@@ -98,4 +98,4 @@ GLOBAL_LIST_EMPTY(uid_log)
 		text += "<li>[key] - [sorted[key]]</li>"
 
 	text += "</ul>"
-	usr << browse(text.Join(), "window=uidlog")
+	usr << browse(common_browser_html(usr, text.Join(), "UID Log"), "window=uidlog")

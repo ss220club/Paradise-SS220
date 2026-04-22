@@ -205,7 +205,7 @@ export const StationTraitsPanel = (props) => {
   }
 
   return (
-    <Window title="Modify Station Traits" height={350} width={350} theme="adminpink">
+    <Window title="Modify Station Traits" height={350} width={350}>
       <Window.Content scrollable>
         <Stack fill vertical>
           <Stack.Item>
