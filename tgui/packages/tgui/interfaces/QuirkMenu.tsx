@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, Divider, Icon, LabeledList, Section, Stack } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
@@ -104,7 +105,7 @@ export const QuirkMenu = () => {
           >
             <LabeledList>
               <LabeledList.Item label="Описание">{q.desc}</LabeledList.Item>
-              <LabeledList.Item label="Эффект">
+              <LabeledList.Item label="Поинты">
                 <Box color={costColor} bold>
                   {cost}
                 </Box>
@@ -150,7 +151,7 @@ export const QuirkMenu = () => {
                   {balance}
                 </Box>
               </Section>
-              <Section title="Выбранные квирки." fill scrollable>
+              <Section title="Выбранные квирки" fill scrollable>
                 {selected.length ? (
                   selected.map((name) => {
                     const q = data.all_quirks.find((x) => x.name === name);

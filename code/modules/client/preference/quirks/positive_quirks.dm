@@ -135,7 +135,7 @@
 
 /datum/quirk/breathing_tube
 	name = "Breathing Tube"
-	desc  = "Вам вживили дыхательную трубку"
+	desc  = "Вам вживили дыхательную трубку."
 	cost = 2
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube
