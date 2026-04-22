@@ -493,7 +493,7 @@
 			M.Weaken(6 SECONDS / range)
 			continue
 
-		to_chat(M, "<span class='userdanger'>Вы выпотрошены жестокой темной магией!</span>")
+		to_chat(M, "<span class='userdanger'>Жестокая тёмная магия вырывает ваши внутренности!</span>")
 		if(ishuman(M))
 			if(range < 4)
 				M.KnockDown(4 SECONDS / range)

@@ -17,7 +17,7 @@
 /datum/spell/aoe/conjure/build/mime_wall/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>Сначала вы должны принять обед молчания.</span>")
+			to_chat(usr, "<span class='notice'>Сначала вы должны принять обет молчания.</span>")
 			return
 		invocation = "<B>[usr.name]</B> выглядит так, как будто перед [usr.ru_p_them()] находится стена."
 	else

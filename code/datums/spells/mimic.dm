@@ -101,7 +101,7 @@
 	if(what == "Original Form")
 		restore_form(user)
 		return
-	to_chat(user, "<span class='sinister'>Вы начинаете становиться [what].</span>")
+	to_chat(user, "<span class='sinister'>Вы начинаете превращаться в [what].</span>")
 	if(!do_after(user, 2 SECONDS, FALSE, user))
 		to_chat(user, "<span class='warning'>Вы потеряли концентрацию.</span>")
 		return
@@ -182,7 +182,7 @@
 /datum/spell/mimic/proc/show_death_message(mob/user)
 	user.visible_message(
 		"<span class='warning'>[user.declent_ru(NOMINATIVE)] дрожит и корчится, когда [user.ru_p_they()] умирает, возвращаясь к своей истинной форме!</span>",
-		"<span class='deadsay'>Ваша маскировка расслаивается по мере того, как ваши жизненные силы иссякают.</span>",
+		"<span class='deadsay'>Ваша маскировка рассеивается по мере того, как ваши жизненные силы иссякают.</span>",
 		"<span class='warning'>Вы слышите громкий треск, за которым следует глухой удар!</span>"
 	)
 
