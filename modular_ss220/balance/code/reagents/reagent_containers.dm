@@ -54,26 +54,26 @@
 #undef SYNDICATE_NANITES_LIMIT
 
 /obj/item/reagent_containers/glass/bottle/dermalin
-	name = "dermalin bottle"
-	desc = "A small bottle of dermalin."
+	name = "Бутылка дермалина"
+	desc = "Маленькая бутылка с дермалином."
 	list_reagents = list("dermalin" = 30)
 
 /obj/item/reagent_containers/glass/bottle/bruzin
-	name = "bruzin bottle"
-	desc = "A small bottle of bruzin."
+	name = "Бутылка брузина"
+	desc = "Маленькая бутылка с брузином."
 	list_reagents = list("bruzin" = 30)
 
 /obj/item/reagent_containers/glass/bottle/w33d
-	name = "bottle w33d"
-	desc = "A small bottle w33d."
+	name = "Бутылка w33d"
+	desc = "Маленькая бутылка с w33d."
 	list_reagents = list("w33d" = 30)
 
 /obj/item/reagent_containers/glass/bottle/grokodil
-	name = "grokodil bottle"
-	desc = "A small bottle of grokodil."
+	name = "Бутылка грокодила"
+	desc = "Маленькая бутылка с грокодилом."
 	list_reagents = list("grokodil" = 30)
 
 /obj/item/reagent_containers/glass/bottle/adv_lava_extract
-	name = "Модифицированный Экстракт Лазиса bottle"
-	desc = "A small bottle of Модифицированный Экстракт."
+	name = "Бутылка модифицированного экстракта лазиса "
+	desc = "Маленькая бутылка с Модифицированным экстрактом лазиса."
 	list_reagents = list("adv_lava_extract" = 30)

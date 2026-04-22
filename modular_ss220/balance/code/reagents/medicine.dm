@@ -68,60 +68,64 @@
 		user.stop_sound_channel(CHANNEL_HEARTBEAT)
 
 /datum/reagent/medicine/dermalin
-	name = "Dermalin"
+	name = "Дермалин"
 	id = "dermalin"
-	description = "It restores burnt tissues by straining the body; an overdose causes severe inflammation of the skin."
+	description = "Препарат восстанавливает обожженные ткани, оказывая механическое воздействие на организм; передозировка вызывает сильное воспаление кожи."
 	reagent_state = LIQUID
 	color = "#eeff00"
 	metabolization_rate = 1.5
 	overdose_threshold = 15
 	harmless = FALSE
-	taste_description = "soothed burns"
+	taste_description = "Сладковато кислый"
+	goal_department = "Chemistry"
+	goal_difficulty = REAGENT_GOAL_HARD
 
 /datum/reagent/medicine/dermalin/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustFireLoss(-5, FALSE)
-	update_flags |= M.adjustStaminaLoss(2, FALSE)
+	update_flags |= M.adjustStaminaLoss(5, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/dermalin/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustFireLoss(10, FALSE)
-	update_flags |= M.adjustStaminaLoss(5, FALSE)
+	update_flags |= M.adjustStaminaLoss(7.5, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/bruzin
-	name = "Bruzin"
+	name = "Брузин"
 	id = "bruzin"
-	description = "Restores serious cuts by straining the body; overdose causes a disruption in the body's regeneration."
+	description = "Препарат восстанавливает серьезные порезы, оказывая нагрузку на организм; передозировка вызывает разрыв тканей."
 	reagent_state = LIQUID
 	color = "#dd0303"
 	metabolization_rate = 1.5
 	overdose_threshold = 15
 	harmless = FALSE
-	taste_description = "knitting wounds"
+	taste_description = "Сладковато мясной"
+	goal_department = "Chemistry"
+	goal_difficulty = REAGENT_GOAL_HARD
 
 /datum/reagent/medicine/bruzin/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(-5, FALSE)
-	update_flags |= M.adjustStaminaLoss(2, FALSE)
+	update_flags |= M.adjustStaminaLoss(5, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/bruzin/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(10, FALSE)
-	update_flags |= M.adjustStaminaLoss(5, FALSE)
+	update_flags |= M.adjustStaminaLoss(7.5, FALSE)
 	return list(0, update_flags)
 
 /datum/chemical_reaction/dermalin
-	name = "Dermalin"
+	name = "Дермалин"
 	id = "dermalin"
 	result = "dermalin"
 	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "kelotane" = 2, "mitocholide" = 1, "omnizine" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/bruzin
-	name = "Bruzin"
+	name = "Брузин"
 	id = "bruzin"
 	result = "bruzin"
 	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "bicaridine" = 2, "mitocholide" = 1, "omnizine" = 1)
@@ -132,15 +136,15 @@
 
 // Роботизированная трава. Сочетает в себе эффекты КБД и ТГК.
 /datum/reagent/w33d
-	name = "W33D"
+	name = "В33Д"
 	id = "w33d"
-	description = "A thick, oily concoction designed to mimic the effects of cannabis in synthetics. \
-	As a happy coincidence, when it dries out it can also function as servicable filler, sealant, and insulator."
+	description = "Густая маслянистая смесь, предназначенная для имитации действия каннабиса в синтетических препаратах. \
+	По счастливому совпадению, после высыхания она также может использоваться в качестве пригодного наполнителя, герметика и изолятора.."
 	reagent_state = LIQUID
 	color = "#17dd17"
 	overdose_threshold = 30
 	process_flags = SYNTHETIC
-	taste_description = "man, like, totally the best most relaxing thing ever, dude"
+	taste_description = "Чувак, это просто лучшее и самое расслабляющее занятие на свете!"
 
 /datum/reagent/w33d/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
@@ -149,7 +153,7 @@
 	if(prob(5))
 		M.emote(pick("hsigh", "giggle", "laugh", "smile"))
 	if(prob(5))
-		to_chat(M, "<span class='notice'>[pick("You feel peaceful.", "You whirr softly.", "You feel chill.", "You vibe.")]</span>")
+		to_chat(M, "<span class='notice'>[pick("Ты чувствуешь себя спокойно.", "Ты тихо жужжишь.", "Ты чувствуешь себя расслабленно.", "Ты наслаждаешься атмосферой.")]</span>")
 	if(prob(4))
 		M.Confused(20 SECONDS)
 	if(prob(10))
@@ -175,17 +179,17 @@
 
 // Robot Krokodil
 /datum/reagent/grokodil
-	name = "Grokodil"
+	name = "Грокодил"
 	id = "grokodil"
-	description = "An experimental compound cooked up in the back alleys of New Canaan, designed to mimic the effects of Krokodil in synthetics. \
-	Unfortunately, this worked a little too well, as it also faithfully replicates the fact that there are serious side-effects. \
-	Overconsumption will cause extreme corrosion and a combonation of endothermic and exothermic reactions that will lead to localized melting and generalized temperature reduction."
+	description = "Экспериментальное соединение, созданное в темных переулках Нью-Кэнана, призвано имитировать действие Крокодила в синтетических материалах. \
+	К сожалению, это сработало слишком хорошо, поскольку также точно воспроизводит тот факт, что у него есть серьезные побочные эффекты. \
+	Чрезмерное потребление вызовет сильную коррозию и сочетание эндотермических и экзотермических реакций, которые приведут к локальному плавлению и общему снижению температуры."
 	color = "#212121"
 	process_flags = SYNTHETIC
 	overdose_threshold = 20
 	addiction_chance = 10
 	addiction_threshold = 10
-	taste_description = "very poor life choices"
+	taste_description = "Очень неудачный жизненный выбор"
 	allowed_overdose_process = TRUE
 	goal_department = "Science"
 	goal_difficulty = REAGENT_GOAL_HARD
@@ -196,11 +200,11 @@
 	if(prob(25))
 		M.emote(pick("smile", "grin", "chuckle", "laugh"))
 	if(prob(15))
-		to_chat(M, "<span class='notice'>You feel pretty chill.</span>")
+		to_chat(M, "<span class='notice'>Ты чувствуешь себя довольно спокойно.</span>")
 		M.bodytemperature--
 		M.emote("smile")
 	if(prob(30))
-		to_chat(M, "<span class='warning'>You feel too chill!</span>")
+		to_chat(M, "<span class='warning'>Ты слишком расслаблен</span>")
 		M.emote(pick("shiver", "cross"))
 		update_flags |= M.adjustBruteLoss(2, FALSE)
 		update_flags |= M.adjustFireLoss(2, FALSE)
@@ -208,7 +212,7 @@
 		update_flags |= M.adjustStaminaLoss(-50, FALSE)
 		M.bodytemperature -= 20
 	if(prob(2))
-		to_chat(M, "<span class='warning'>Patches of corrosion appear on your chassis!</span>")
+		to_chat(M, "<span class='warning'>На корпусе вашего шасси появляются пятна коррозии.!</span>")
 		update_flags |= M.adjustBruteLoss(2, FALSE)
 	return ..() | update_flags
 
@@ -218,7 +222,7 @@
 	var/update_flags = overdose_info[REAGENT_OVERDOSE_FLAGS]
 	if(severity == 1)
 		if(effect <= 2)
-			M.visible_message("<span class='warning'>[M] looks dazed!</span>")
+			M.visible_message("<span class='warning'>[M] выглядит ошеломлённым!</span>")
 			M.Stun(6 SECONDS)
 			do_sparks(5, FALSE, M)
 			M.emote("stare")
@@ -226,7 +230,7 @@
 			M.emote("shiver")
 			M.bodytemperature -= 40
 		else if(effect <= 7)
-			to_chat(M, "<span class='warning'>Your chassis and internals are corroding!</span>")
+			to_chat(M, "<span class='warning'>Корпус и внутренние компоненты вашего шасси подвергаются коррозии.!</span>")
 			update_flags |= M.adjustBruteLoss(5, FALSE)
 			update_flags |= M.adjustFireLoss(2, FALSE)
 			update_flags |= M.adjustBrainLoss(1, FALSE)
@@ -236,8 +240,8 @@
 	if(severity == 2)
 		if(effect <= 2)
 			M.visible_message(
-				"<span class='warning'>[M] sways and falls over!</span>",
-				"<span class='warning'>You sway and fall over!</span>"
+				"<span class='warning'>[M] качается и падает!</span>",
+				"<span class='warning'>Ты покачиваешься и падаешь!</span>"
 			)
 			update_flags |= M.adjustBruteLoss(3, FALSE)
 			update_flags |= M.adjustBrainLoss(3, FALSE)
@@ -245,8 +249,8 @@
 			M.emote("faint")
 		else if(effect <= 4)
 			M.visible_message(
-				"<span class='danger'>Large cracks appear on [M]'s casing and the surrounding area starts to melt!</span>",
-				"<span class='userdanger'>Large cracks appear on your casing and the surrounding area starts to melt!</span>"
+				"<span class='danger'>На корпусе появляются крупные трещины [M]'s и окружающая область начинает плавиться!</span>",
+				"<span class='userdanger'>На корпусе появляются крупные трещины и окружающая область начинает плавиться!</span>"
 			)
 			update_flags |= M.adjustBruteLoss(25, FALSE)
 			update_flags |= M.adjustFireLoss(25, FALSE) // We can't husk a robot. So we substitute with some extra melt damage.
@@ -258,19 +262,19 @@
 	return list(effect, update_flags)
 
 /datum/chemical_reaction/w33d
-	name = "W33D"
+	name = "В33Д"
 	id = "w33d"
 	result = "w33d"
 	required_reagents = list("synthanol" = 1, "oil" = 1, "aluminum" = 1)
 	result_amount = 3
-	mix_message = "The mixture bubbles into a vibrant green oil with a musky smell."
+	mix_message = "Смесь вспенивается, превращаясь в ярко-зеленое масло с мускусным запахом.."
 
 /datum/chemical_reaction/grokodil
-	name = "Grokodil"
+	name = "Грокодил"
 	id = "grokodil"
 	result = "grokodil"
 	required_reagents = list("mutadone" = 1, "heparin" = 1, "cleaner" = 1, "phenol" = 1, "w33d" = 1)
 	result_amount = 5
-	mix_message = "A semi-solid black powder crashes out of the solution."
+	mix_message = "Из раствора выпадает полутвердый черный порошок."
 	min_temp = T0C + 100
 	mix_sound = 'sound/goonstation/misc/fuse.ogg'
