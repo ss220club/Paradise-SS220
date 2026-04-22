@@ -10,9 +10,6 @@
 	minimal_player_age = 30
 	exp_map = list(EXP_TYPE_SILICON = 300)
 	has_bank_account = FALSE
-	difficulty = HARD_DIFFICULTY
-	description = "The AI has the responsibility of assisting the crew while following its lawset.\n\n\
-					Difficulties: AI lawsets, controls"
 
 /datum/job/ai/equip(mob/living/carbon/human/H)
 	if(!H)
@@ -34,9 +31,6 @@
 	exp_map = list(EXP_TYPE_CREW = 300)
 	alt_titles = list("Robot")
 	has_bank_account = FALSE
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Cyborgs have the responsibility of assisting the crew and following their lawsets.\n\n\
-					Difficulties: AI lawsets, cyborg modules, controls"
 
 /datum/job/cyborg/equip(mob/living/carbon/human/H)
 	if(!H)

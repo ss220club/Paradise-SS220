@@ -38,9 +38,6 @@
 	outfit = /datum/outfit/job/chief_engineer
 	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Инженерных), базовых должностных обязанностей и профессиональных действий."
 	standard_paycheck = CREW_PAY_HIGH
-	difficulty = HARD_DIFFICULTY
-	description = "The Chief Engineer has the responsibility of overseeing the Engineering department.\n\n\
-					Difficulties: Standard Operating Procedure (General, Engineering), construction (advanced), hacking, engines (supermatter, tesla, singularity), communication"
 
 /datum/outfit/job/chief_engineer
 	name = "Chief Engineer"
@@ -95,9 +92,6 @@
 	exp_map = list(EXP_TYPE_CREW = 300)
 	outfit = /datum/outfit/job/engineer
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Station Engineers have the responsibility of maintaining the station's infrastructure and operating the station's engine.\n\n\
-					Difficulties: Construction (advanced), space movement"
 
 /datum/outfit/job/engineer
 	name = "Station Engineer"
@@ -149,9 +143,6 @@
 	exp_map = list(EXP_TYPE_CREW = 300)
 	outfit = /datum/outfit/job/atmos
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Atmospheric Technicians have the responsibility of maintaining the station's atmospherics system.\n\n\
-					Difficulties: Atmospherics, pipe manipulation, gas pressure, space movement"
 
 /datum/outfit/job/atmos
 	name = "Life Support Specialist"

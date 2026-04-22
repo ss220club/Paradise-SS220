@@ -75,12 +75,6 @@
 	/// Standard paycheck amount for this job
 	var/standard_paycheck = CREW_PAY_ASSISTANT
 
-	/// A description to be shown when set to high priority
-	var/description = "Missing description"
-
-	/// How mechanically difficult this job is, shown on the job selection screen
-	var/difficulty
-
 //Only override this proc
 /datum/job/proc/after_spawn(mob/living/carbon/human/H, joined_late = FALSE)	// SS220 EDIT - jobs - prisoner spawn
 	SHOULD_CALL_PARENT(TRUE)

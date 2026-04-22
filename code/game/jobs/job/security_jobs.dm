@@ -45,9 +45,6 @@
 	outfit = /datum/outfit/job/hos
 	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Охранных), базовых должностных обязанностей и профессиональных действий."
 	standard_paycheck = CREW_PAY_HIGH
-	difficulty = EXTREMELY_HARD_DIFFICULTY
-	description = "The Head of Security has the responsibility of overseeing the Security department.\n\n\
-					Difficulties: Space Law, Standard Operating Procedure (General, Legal, Security), combat, identifying antagonists, communication"
 
 /datum/outfit/job/hos
 	name = "Head of Security"
@@ -105,9 +102,6 @@
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/warden
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = HARD_DIFFICULTY
-	description = "The Warden has the responsibility of monitoring prisoners.\n\n\
-					Difficulties: Space Law, Standard Operating Procedure (Legal), identifying antagonists"
 
 /datum/outfit/job/warden
 	name = "Warden"
@@ -168,9 +162,6 @@
 	outfit = /datum/outfit/job/detective
 	important_information = "Расследуйте, исследуйте и выглядите при этом круто."
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "The Detective has the responsibility of solving crimes and uncovering criminals.\n\n\
-					Difficulties: Space Law, Standard Operating Procedure (Legal), forensics, identifying antagonists"
 
 /datum/outfit/job/detective
 	name = "Detective"
@@ -242,9 +233,6 @@
 	outfit = /datum/outfit/job/officer
 	important_information = "Космический Закон - это необходимость, а не рекомендация."
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Security Officers have the responsibility of enforcing Space Law and protecting the crew.\n\n\
-					Difficulties: Space Law, Standard Operating Procedure (Legal), combat, identifying antagonists"
 
 /datum/outfit/job/officer
 	name = "Security Officer"
