@@ -799,7 +799,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 	dellog += "</ol>"
 
-	usr << browse(dellog.Join(), "window=dellog")
+	usr << browse(admin_browser_html(usr, dellog.Join(), "Delete Log"), "window=dellog")
 
 /client/proc/cmd_display_del_log_simple()
 	set category = "Debug"
@@ -827,7 +827,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		if(I.slept_destroy)
 			dat += "[I]<BR>"
 
-	usr << browse(dat, "window=simpledellog")
+	usr << browse(admin_browser_html(usr, dat, "Simple Delete Log"), "window=simpledellog")
 
 /client/proc/show_gc_queues()
 	set name = "View GC Queue"
@@ -873,7 +873,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		text += "<li>[key] - [sorted[key]]</li>"
 
 	text += "</ul>"
-	usr << browse(text.Join(), "window=gcqueuestatus")
+	usr << browse(admin_browser_html(usr, text.Join(), "GC Queue Status"), "window=gcqueuestatus")
 
 /client/proc/cmd_admin_toggle_block(mob/M, block)
 	if(!check_rights(R_SPAWN))

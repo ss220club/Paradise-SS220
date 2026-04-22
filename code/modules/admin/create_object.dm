@@ -9,7 +9,7 @@ GLOBAL_LIST_INIT(create_object_forms, list(/obj, /obj/structure, /obj/machinery,
 		GLOB.create_object_html = replacetext(GLOB.create_object_html, "$ATOM$", "Object")
 		GLOB.create_object_html = replacetext(GLOB.create_object_html, "null /* object types */", "\"[objectjs]\"")
 
-	var/datum/browser/popup = new(user, "create_obj", "<div align='center'>Create Object</div>", 500, 550)
+	var/datum/browser/admin/popup = new(user, "create_obj", "<div align='center'>Create Object</div>", 500, 550)
 	var/unique_content = GLOB.create_object_html
 	unique_content = replacetext(unique_content, "/* ref src */", UID())
 	popup.set_content(unique_content)
@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(create_object_forms, list(/obj, /obj/structure, /obj/machinery,
 		html_form = replacetext(html_form, "null /* object types */", "\"[objectjs]\"")
 		GLOB.create_object_forms[path] = html_form
 
-	var/datum/browser/popup = new(user, "qco[path]", "<div align='center'>Quick Create [path]</div>", 500, 550)
+	var/datum/browser/admin/popup = new(user, "qco[path]", "<div align='center'>Quick Create [path]</div>", 500, 550)
 	var/unique_content = html_form
 	unique_content = replacetext(unique_content, "/* ref src */", UID())
 	popup.set_content(unique_content)

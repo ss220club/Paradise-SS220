@@ -92,7 +92,7 @@
 				else
 					output += "&nbsp;&nbsp;&nbsp;&nbsp;[device]<br>"
 
-	usr << browse(output,"window=radioreport")
+	usr << browse(admin_browser_html(usr, output, "Radio Report"),"window=radioreport")
 
 	message_admins("[key_name_admin(usr)] has generated a radio report")
 	log_admin("[key_name(usr)] has generated a radio report")

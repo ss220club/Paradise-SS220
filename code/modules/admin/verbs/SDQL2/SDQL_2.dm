@@ -127,7 +127,7 @@
 						else
 							text += ": [t]<br>"
 
-					usr << browse(text, "window=SDQL-result")
+					usr << browse(admin_browser_html(usr, text, "SDQL Result"), "window=SDQL-result")
 
 				if("update")
 					if("set" in query_tree)

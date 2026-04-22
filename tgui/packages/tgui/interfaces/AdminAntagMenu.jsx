@@ -56,7 +56,7 @@ const PickTab = (index) => {
 
 export const AdminAntagMenu = (properties) => {
   return (
-    <Window width={800} height={600}>
+    <Window width={800} height={600} theme="adminpink">
       <Window.Content scrollable>
         <Stack fill vertical>
           <Stack.Item>

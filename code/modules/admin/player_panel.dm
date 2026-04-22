@@ -335,7 +335,7 @@
 	</body></html>
 	"}
 
-	usr << browse(dat, "window=players;size=600x480")
+	usr << browse(admin_browser_html(usr, dat, "Player Panel"), "window=players;size=600x480")
 
 
 /datum/admins/proc/check_antagonists_line(mob/M, caption = "", close = 1)
@@ -523,7 +523,7 @@
 		dat += "</table>"
 
 		dat += "</body></html>"
-		usr << browse(dat, "window=roundstatus;size=400x500")
+		usr << browse(admin_browser_html(usr, dat, "Round Status"), "window=roundstatus;size=400x500")
 	else
 		alert("The game hasn't started yet!")
 

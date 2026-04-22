@@ -265,7 +265,7 @@
 	else
 		output += "<center><a href='byond://?_src_=holder;addnoteempty=1'>\[Add Note\]</a></center>"
 		output += ruler
-	usr << browse(output.Join(""), "window=show_notes;size=900x500")
+	usr << browse(admin_browser_html(usr, output.Join(""), "Player Notes"), "window=show_notes;size=900x500")
 
 /proc/toggle_note_publicity(note_id)
 	if(!usr)

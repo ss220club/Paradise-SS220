@@ -12,6 +12,8 @@
 
 	var/datum/asset/permissions_asset = get_asset_datum(/datum/asset/simple/permissions)
 	permissions_asset.send(usr)
+	var/datum/asset/simple/admin_browser/admin_asset = get_asset_datum(/datum/asset/simple/admin_browser)
+	admin_asset.send(usr)
 
 	var/db_section = ""
 	if(db_available())
@@ -26,6 +28,7 @@
 <title>Permissions Panel</title>
 <script type='text/javascript' src='[SSassets.transport.get_asset_url("search.js")]'></script>
 <link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("panels.css")]'>
+<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("admin.css")]'>
 </head>
 <body onload='selectTextField();updateSearch();'>
 <div id='spacer'></div>

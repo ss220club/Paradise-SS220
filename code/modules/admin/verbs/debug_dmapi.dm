@@ -32,4 +32,4 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	usr << browse(GLOB.tgs_log.Join("<br>"), "window=dmapi_log")
+	usr << browse(admin_browser_html(usr, GLOB.tgs_log.Join("<br>"), "DMAPI Log"), "window=dmapi_log")

@@ -770,7 +770,7 @@
 
 		body = "<body>[jobs]</body>"
 		dat = "<!DOCTYPE html><tt>[header][body]</tt>"
-		usr << browse(dat, "window=jobban2;size=800x490")
+		usr << browse(admin_browser_html(usr, dat, "Job Ban Panel"), "window=jobban2;size=800x490")
 		return
 
 	//JOBBAN'S INNARDS
@@ -957,7 +957,7 @@
 
 		body = "<body>[species_html]</body>"
 		dat = "<!DOCTYPE html><tt>[header][body]</tt>"
-		usr << browse(dat, "window=speciesban;size=600x300")
+		usr << browse(admin_browser_html(usr, dat, "Species Ban Panel"), "window=speciesban;size=600x300")
 		return
 
 	// SPECIES BAN TOGGLE
@@ -1143,7 +1143,7 @@
 			return
 		if(query_noteedits.NextRow())
 			var/edit_log = query_noteedits.item[1]
-			usr << browse("<!DOCTYPE html>[edit_log]","window=noteedits")
+			usr << browse(admin_browser_html(usr, "<!DOCTYPE html>[edit_log]", "Note Edit Log"),"window=noteedits")
 		qdel(query_noteedits)
 
 	else if(href_list["newban"])
@@ -1247,7 +1247,7 @@
 			return
 		if(query_watchedits.NextRow())
 			var/edit_log = query_watchedits.item[1]
-			usr << browse("<!DOCTYPE html>[edit_log]","window=watchedits")
+			usr << browse(admin_browser_html(usr, "<!DOCTYPE html>[edit_log]", "Watchlist Edit Log"),"window=watchedits")
 		qdel(query_watchedits)
 
 	else if(href_list["mute"])
@@ -1275,7 +1275,7 @@
 		dat += {"<A href='byond://?src=[UID()];c_mode2=secret'>Secret</A><br>"}
 		dat += {"<A href='byond://?src=[UID()];c_mode2=random'>Random</A><br>"}
 		dat += {"Now: [GLOB.master_mode]"}
-		usr << browse(dat, "window=c_mode")
+		usr << browse(admin_browser_html(usr, dat, "Change Game Mode"), "window=c_mode")
 
 	else if(href_list["f_secret"])
 		if(!check_rights(R_ADMIN))	return
@@ -1289,7 +1289,7 @@
 			dat += {"<A href='byond://?src=[UID()];f_secret2=[mode]'>[GLOB.configuration.gamemode.gamemode_names[mode]]</A><br>"}
 		dat += {"<A href='byond://?src=[UID()];f_secret2=secret'>Random (default)</A><br>"}
 		dat += {"Now: [GLOB.secret_force_mode]"}
-		usr << browse(dat, "window=f_secret")
+		usr << browse(admin_browser_html(usr, dat, "Force Secret Mode"), "window=f_secret")
 
 	else if(href_list["f_dynamic"])
 		if(!check_rights(R_ADMIN))	return
@@ -1303,7 +1303,7 @@
 		dat += {"Budget: <a href='byond://?src=[UID()];f_dynamic2=budget'>[isnull(GLOB.dynamic_forced_rulesets["budget"]) ? "Random" : GLOB.dynamic_forced_rulesets["budget"]]</a><hr>"}
 		for(var/datum/ruleset/ruleset as anything in rulesets)
 			dat += {"[ruleset.name]: <a href='byond://?src=[UID()];f_dynamic2=[ruleset.type]'>[GLOB.dynamic_forced_rulesets[ruleset] || DYNAMIC_RULESET_NORMAL]</a><br>"}
-		usr << browse(dat, "window=f_dynamic")
+		usr << browse(admin_browser_html(usr, dat, "Force Dynamic Rulesets"), "window=f_dynamic")
 
 	else if(href_list["c_mode2"])
 		if(!check_rights(R_ADMIN|R_SERVER))	return
@@ -3157,7 +3157,7 @@
 			return
 		if(query_memoedits.NextRow())
 			var/edit_log = query_memoedits.item[1]
-			usr << browse("<!DOCTYPE html>[edit_log]","window=memoeditlist")
+			usr << browse(admin_browser_html(usr, "<!DOCTYPE html>[edit_log]", "Memo Edit Log"),"window=memoeditlist")
 		qdel(query_memoedits)
 
 	else if(href_list["secretsfun"])
@@ -3556,12 +3556,12 @@
 				var/dat = "<b>Showing last [length(GLOB.lastsignalers)] signalers.</b><hr>"
 				for(var/sig in GLOB.lastsignalers)
 					dat += "[sig]<BR>"
-				usr << browse(dat, "window=lastsignalers;size=800x500")
+				usr << browse(admin_browser_html(usr, dat, "Last Signalers"), "window=lastsignalers;size=800x500")
 			if("list_lawchanges")
 				var/dat = "<b>Showing last [length(GLOB.lawchanges)] law changes.</b><hr>"
 				for(var/sig in GLOB.lawchanges)
 					dat += "[sig]<BR>"
-				usr << browse(dat, "window=lawchanges;size=800x500")
+				usr << browse(admin_browser_html(usr, dat, "Law Changes"), "window=lawchanges;size=800x500")
 			if("showailaws")
 				output_ai_laws()
 			if("showgm")
@@ -3578,7 +3578,7 @@
 					if(H.ckey)
 						dat += "<tr><td>[H.name]</td><td>[H.get_assignment()]</td></tr>"
 				dat += "</table>"
-				usr << browse(dat, "window=manifest;size=440x410")
+				usr << browse(admin_browser_html(usr, dat, "Manifest"), "window=manifest;size=440x410")
 			if("check_antagonist")
 				check_antagonists()
 			if("view_codewords")
@@ -3592,7 +3592,7 @@
 					if(H.dna && H.ckey)
 						dat += "<tr><td>[H]</td><td>[H.dna.unique_enzymes]</td><td>[H.dna.blood_type]</td></tr>"
 				dat += "</table>"
-				usr << browse(dat, "window=DNA;size=440x410")
+				usr << browse(admin_browser_html(usr, dat, "DNA"), "window=DNA;size=440x410")
 			if("fingerprints")
 				var/dat = "<b>Showing Fingerprints.</b><hr>"
 				dat += "<table cellspacing=5><tr><th>Name</th><th>Fingerprints</th></tr>"
@@ -3606,7 +3606,7 @@
 						else if(!H.dna)
 							dat += "<tr><td>[H]</td><td>H.dna = null</td></tr>"
 				dat += "</table>"
-				usr << browse(dat, "window=fingerprints;size=440x410")
+				usr << browse(admin_browser_html(usr, dat, "Fingerprints"), "window=fingerprints;size=440x410")
 			if("night_shift_set")
 				var/val = alert(usr, "What do you want to set night shift to? This will override the automatic system until set to automatic again.", "Night Shift", "On", "Off", "Automatic")
 				switch(val)
@@ -3640,7 +3640,7 @@
 					dat += "<li>[l]</li>"
 				if(!length(GLOB.admin_log))
 					dat += "No-one has done anything this round!"
-				usr << browse(dat, "window=admin_log")
+				usr << browse(admin_browser_html(usr, dat, "Admin Log"), "window=admin_log")
 			if("maint_ACCESS_BRIG")
 				for(var/obj/machinery/door/airlock/maintenance/M in GLOB.airlocks)
 					if(ACCESS_MAINT_TUNNELS in M.req_access)
@@ -3743,7 +3743,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 		var/text = html_decode(href_list["showdetails"])
-		usr << browse("<html><meta charset='utf-8'><head><title>Details</title></head><body><tt>[replacetext(text, "\n", "<BR>")]</tt></body></html>",
+		usr << browse(admin_browser_html(usr, "<html><meta charset='utf-8'><head><title>Details</title></head><body><tt>[replacetext(text, "\n", "<BR>")]</tt></body></html>", "Details"),
 			"window=show_details;size=500x200")
 
 	else if(href_list["create_outfit_finalize"])

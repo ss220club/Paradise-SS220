@@ -61,7 +61,7 @@
 	message_admins("[key_name_admin(user)] accessed file: [filename]")
 	switch(alert("View (in game), Open (in your system's text editor), or Download?", filename, "View", "Open", "Download"))
 		if("View")
-			user << browse("<pre style='word-wrap: break-word;'>[html_encode(wrap_file2text(wrap_file(filename)))]</pre>", list2params(list("window" = "viewfile.[filename]")))
+			user << browse(admin_browser_html(user, "<pre style='word-wrap: break-word;'>[html_encode(wrap_file2text(wrap_file(filename)))]</pre>", "Log View"), list2params(list("window" = "viewfile.[filename]")))
 		if("Open")
 			user << run(wrap_file(filename))
 		if("Download")

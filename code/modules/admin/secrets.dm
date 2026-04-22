@@ -123,6 +123,6 @@
 					<BR>
 					</center>"}
 	dat += "</center></body></html>"
-	var/datum/browser/popup = new(usr, "secrets", "<div align='center'>Admin Secrets</div>", 630, 670)
+	var/datum/browser/admin/popup = new(usr, "secrets", "<div align='center'>Admin Secrets</div>", 630, 670)
 	popup.set_content(dat)
 	popup.open(0)

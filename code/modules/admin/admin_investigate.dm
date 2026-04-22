@@ -26,6 +26,6 @@ GLOBAL_PROTECT(investigate_log_wrapper)
 
 	var/list/entries = GLOB.investigate_log_wrapper[subject]
 
-	var/datum/browser/B = new(usr, "investigatelog", "Investigate ([subject])", 800, 400)
+	var/datum/browser/admin/B = new(usr, "investigatelog", "Investigate ([subject])", 800, 400)
 	B.set_content(entries.Join("<br>"))
 	B.open()

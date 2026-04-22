@@ -82,6 +82,6 @@ GLOBAL_LIST_EMPTY(adminfaxes)
 	html += "</table>"
 	html += "</div>"
 
-	var/datum/browser/popup = new(user, "fax_panel", "Fax Panel", 950, 450)
+	var/datum/browser/admin/popup = new(user, "fax_panel", "Fax Panel", 950, 450)
 	popup.set_content(html)
 	popup.open()

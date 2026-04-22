@@ -6,7 +6,7 @@ import { ComplexModal } from './common/ComplexModal';
 
 export const EconomyManager = (props) => {
   return (
-    <Window width={600} height={325}>
+    <Window width={600} height={325} theme="adminpink">
       <ComplexModal />
       <Window.Content scrollable className="Layout__content--flexColumn">
         <EconomyButtons />

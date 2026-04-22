@@ -102,6 +102,6 @@ GLOBAL_LIST_EMPTY(staffsays)
 		</tbody>
 	</table>"}
 
-	var/datum/browser/popup = new(src, title, "<div align='center'>Current Round [capitalize(title)]s</div>", 1200, 825)
+	var/datum/browser/admin/popup = new(src, title, "<div align='center'>Current Round [capitalize(title)]s</div>", 1200, 825)
 	popup.set_content(output.Join())
 	popup.open(0)

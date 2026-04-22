@@ -8,7 +8,7 @@ GLOBAL_VAR(create_turf_html)
 		GLOB.create_turf_html = replacetext(GLOB.create_turf_html, "$ATOM$", "Turf")
 		GLOB.create_turf_html = replacetext(GLOB.create_turf_html, "null /* object types */", "\"[turfjs]\"")
 
-	var/datum/browser/popup = new(user, "create_turf", "<div align='center'>Create Turf</div>", 500, 550)
+	var/datum/browser/admin/popup = new(user, "create_turf", "<div align='center'>Create Turf</div>", 500, 550)
 	var/unique_content = GLOB.create_turf_html
 	unique_content = replacetext(unique_content, "/* ref src */", UID())
 	popup.set_content(unique_content)

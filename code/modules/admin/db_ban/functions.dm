@@ -727,7 +727,7 @@
 
 			qdel(select_query)
 
-	var/datum/browser/popup = new(usr, "ban_panel", "<div align='center'>Manual Ban Panel</div>", 700, 800)
+	var/datum/browser/admin/popup = new(usr, "ban_panel", "<div align='center'>Manual Ban Panel</div>", 700, 800)
 	popup.set_content(output.Join(""))
 	popup.open()
 	onclose(usr, "ban_panel")

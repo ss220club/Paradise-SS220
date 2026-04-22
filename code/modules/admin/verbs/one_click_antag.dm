@@ -26,7 +26,7 @@
 		<a href='byond://?src=[UID()];makeAntag=11'>Make Vox Raiders</a><br>
 		"}
 
-	usr << browse(dat, "window=oneclickantag;size=400x400")
+	usr << browse(admin_browser_html(usr, dat, "One Click Antag"), "window=oneclickantag;size=400x400")
 	return
 
 /datum/admins/proc/CandCheck(role = null, mob/living/carbon/human/M, datum/game_mode/temp = null)

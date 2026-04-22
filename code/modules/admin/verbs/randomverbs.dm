@@ -115,7 +115,7 @@
 		to_chat(src, "Some accounts did not have proper ages set in their clients.  This function requires database to be present")
 
 	if(msg != "")
-		src << browse(msg, "window=Player_age_check")
+		src << browse(admin_browser_html(src, msg, "Player Age Check"), "window=Player_age_check")
 	else
 		to_chat(src, "No matches for that age range found.")
 
@@ -1111,7 +1111,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			msg += "<TD><A href='byond://?_src_=holder;cryossd=[H.UID()];cryoafk=1'>Cryo</A></TD>"
 		msg += "</TR>"
 	msg += "</TABLE></BODY></HTML>"
-	src << browse(msg, "window=Player_ssd_afk_check;size=600x300")
+	src << browse(admin_browser_html(src, msg, "SSD And AFK Check"), "window=Player_ssd_afk_check;size=600x300")
 
 /client/proc/toggle_ert_calling()
 	set category = "Event"
@@ -1185,7 +1185,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		dat += "[SG.admin_desc][SG.completed ? " (C)" : ""] for [SG.requester_name || SG.department] - <a href='byond://?src=[SG.UID()];announce=1'>Announce</a> | <a href='byond://?src=[SG.UID()];remove=1'>Remove</a> | <a href='byond://?src=[SG.UID()];mark_complete=1'>Mark complete</a> | <a href='byond://?src=[SG.UID()];reset_progress=1'>Reset progress</a>"
 	dat += "<a href='byond://?src=[UID()];add_secondary_goal=1'>Add New Secondary Goal</a>"
 
-	usr << browse(dat.Join("<br>"), "window=goals;size=400x400")
+	usr << browse(admin_browser_html(usr, dat.Join("<br>"), "Goals"), "window=goals;size=400x400")
 
 /// Allow admin to add or remove traits of datum
 /datum/admins/proc/modify_traits(datum/D)

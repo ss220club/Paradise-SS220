@@ -101,7 +101,7 @@
 			to_chat(user, "<span class='warning'>Error parsing JSON data from CentCom Ban DB lookup. Please inform a maintainer.</span>")
 			return
 
-	var/datum/browser/popup = new(user, "ccbdblookup-[ckey]", "<div align='center'>CC Ban DB Lookup - [ckey]</div>", 700, 600)
+	var/datum/browser/admin/popup = new(user, "ccbdblookup-[ckey]", "<div align='center'>CC Ban DB Lookup - [ckey]</div>", 700, 600)
 	popup.set_content(popup_data.Join())
 	popup.open(FALSE)
 

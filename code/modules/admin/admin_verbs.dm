@@ -1196,7 +1196,7 @@ GLOBAL_LIST_INIT(view_logs_verbs, list(
 	var/list/ui_dat = list()
 	var/list/turf_markers = list()
 
-	var/datum/browser/vis = new(usr, "atvis", "Interesting Turfs (Z[z_to_view])", 300, 315)
+	var/datum/browser/admin/vis = new(usr, "atvis", "Interesting Turfs (Z[z_to_view])", 300, 315)
 	ui_dat += "<center><canvas width=\"255px\" height=\"255px\" id=\"atmos\"></canvas></center>"
 	ui_dat += "<script>e=document.getElementById(\"atmos\");c=e.getContext('2d');c.fillStyle='#ffffff';c.fillRect(0,0,255,255);function s(x,y){var p=c.createImageData(1,1);p.data\[0]=255;p.data\[1]=0;p.data\[2]=0;p.data\[3]=255;c.putImageData(p,(x-1),255-Math.abs(y-1));}</script>"
 	// Now generate the other list

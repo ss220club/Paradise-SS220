@@ -180,10 +180,10 @@
 	//Now we're going to display the header buttons + the current page selected, if it's page 0, we display the cover_page instead
 	if(!view_book_page)
 		var/cover_page = {"<center><h1>[view_book.title]</h1><br></h2>Written by: [view_book.author]</h2></center><br><hr><b>Summary:</b> [view_book.summary]"}
-		user << browse("<body>[dat]<br>" + "[cover_page]", "window=book[UID()];size=400x400")
+		user << browse(admin_browser_html(user, "<body>[dat]<br>" + "[cover_page]", "[view_book.title]"), "window=book[UID()];size=400x400")
 		return
 	else
-		user << browse("<body>[dat]<br>" + "[view_book.content[view_book_page]]", "window=book[UID()]")
+		user << browse(admin_browser_html(user, "<body>[dat]<br>" + "[view_book.content[view_book_page]]", "[view_book.title]"), "window=book[UID()]")
 
 /datum/ui_module/library_manager/Topic(href, href_list)
 	..()

@@ -86,7 +86,7 @@ export class ReagentsEditor extends Component<{}, ReagentsEditorState> {
       });
 
     return (
-      <Window width={400} height={480}>
+      <Window width={400} height={480} theme="adminpink">
         <Window.Content>
           <Section fill>
             <Stack fill vertical>

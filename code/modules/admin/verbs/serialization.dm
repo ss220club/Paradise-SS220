@@ -117,7 +117,7 @@
 	qdel(dbq)
 
 
-	var/datum/browser/popup = new(usr, "jsonspawnmenu", "JSON Spawn Menu", 400, 300)
+	var/datum/browser/admin/popup = new(usr, "jsonspawnmenu", "JSON Spawn Menu", 400, 300)
 
 	// Cache this to reduce proc jumps
 	var/holder_uid = holder.UID()

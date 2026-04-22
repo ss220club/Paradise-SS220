@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	dat += "</ul>"
 	dat += "<a href='byond://?_src_=holder;create_outfit_menu=1'>Create</a><br>"
 	dat += "<a href='byond://?_src_=holder;load_outfit=1'>Load from file</a>"
-	admin << browse(dat.Join(),"window=outfitmanager")
+	admin << browse(admin_browser_html(admin, dat.Join(), "Outfit Manager"),"window=outfitmanager")
 
 /datum/admins/proc/save_outfit(mob/admin,datum/outfit/O)
 	O.save_to_file(admin)
@@ -245,7 +245,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	<input type="submit" value="Save">
 	</form></body></html>
 	"}
-	admin << browse(dat, "window=dressup;size=550x600")
+	admin << browse(admin_browser_html(admin, dat, "Create Outfit"), "window=dressup;size=550x600")
 
 
 /datum/admins/proc/create_outfit_finalize(mob/admin, list/href_list)

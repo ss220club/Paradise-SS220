@@ -368,7 +368,7 @@
 		dat += "<a class='[class]' href='byond://?src=[UID()];newtitle=[title]'>[label]</a>"
 
 	var/datum/pm_convo/convo = pms[current_title]
-	var/datum/browser/popup = new(user, window_id, "Messages", 1000, 600, src)
+	var/datum/browser/admin/popup = new(user, window_id, "Messages", 1000, 600, src)
 
 	if(forced) // Lockout the normal close button, force the UI one
 		popup.set_window_options("can_close=0")
