@@ -127,13 +127,13 @@ export const QuirkMenu = () => {
                 {renderList(
                   data.all_quirks.filter((q) => q.cost < 0),
                   'Негативные квирки (Добавляют поинты)',
-                  'green',
+                  'bad',
                   'minus-circle'
                 )}
                 {renderList(
                   data.all_quirks.filter((q) => q.cost > 0),
                   'Позитивные квирки (Убавляют поинты)',
-                  'bad',
+                  'green',
                   'plus-circle'
                 )}
               </Stack>
