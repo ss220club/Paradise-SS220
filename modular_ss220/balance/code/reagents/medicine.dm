@@ -127,10 +127,10 @@
 	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "bicaridine" = 2, "mitocholide" = 1, "omnizine" = 1)
 	result_amount = 1
 
-//MARK: Robot Drugs
-// Made for robots, by robots.
+//MARK: Роботические наркотики
+// Сделано для роботов, От роботов.
 
-// Robot weed. Mixes the effects of CBD and THC.
+// Роботизированная трава. Сочетает в себе эффекты КБД и ТГК.
 /datum/reagent/w33d
 	name = "W33D"
 	id = "w33d"

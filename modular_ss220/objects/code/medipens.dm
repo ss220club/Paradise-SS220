@@ -1,9 +1,6 @@
 #define SAFE_MIN_TEMPERATURE T0C+7	// Safe minimum temperature for chemicals before they would start to damage slimepeople.
 #define SAFE_MAX_TEMPERATURE T0C+36 // Safe maximum temperature for chemicals before they would start to damage drask.
 
-/obj/item/reagent_containers/hypospray/autoinjector/custom
-	var/instant_application = TRUE
-
 /obj/item/reagent_containers/hypospray/autoinjector/custom/apply(mob/living/carbon/C, mob/user)
 	if(user != C)
 		if(!instant_application)
@@ -14,11 +11,14 @@
 		C.visible_message(span_warning("[user] вкалывает [src] в [C]."))
 	return ..()
 
-// MARK: CUSTOM MEDIPENS
+// MARK: Кастом медипены
+/obj/item/reagent_containers/hypospray/autoinjector/custom
+	var/instant_application = TRUE
+
 /obj/item/reagent_containers/hypospray/autoinjector/custom
 	icon = 'modular_ss220/objects/icons/medipens.dmi'
 	icon_state = "medipen"
-	desc = "A rapid and safe way to inject chemicals into humanoids. This one have extended capacity."
+	desc = "Быстрый и безопасный способ вводить химические вещества гуманоидным существам. Этот имеет увеличенную ёмкость."
 	amount_per_transfer_from_this = 30
 	volume = 30
 	instant_application = FALSE
@@ -29,44 +29,44 @@
 		icon_state = "[icon_state]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/brute
-	name = "brute medipen"
+	name = "Медипен для физического урона"
 	icon_state = "medipen_red"
-	desc = "A rapid and safe way to tend wounds and deal with minor pain even through spacesuits. Contains bicaridine and salicylic acid."
+	desc = "Быстрый и безопасный способ лечить раны и справляться с незначительной болью даже через скафандры. Содержит бикаридин и салициловую кислоту."
 	list_reagents = list("bicaridine" = 10, "sal_acid" = 3)
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/burn
-	name = "burn medipen"
+	name = "Медипен от ожогов"
 	icon_state = "medipen_org"
-	desc = "A rapid and safe way to tend burns and regulate body's temperature even through spacesuits. Contains kelotane and menthol."
+	desc = "Быстрый и безопасный способ лечить ожоги и регулировать температуру тела даже через скафандры. Содержит келотан и ментол."
 	list_reagents = list("kelotane" = 10, "menthol" = 3)
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/critical
-	name = "critical state medipen"
+	name = "Медипен стабилизации"
 	icon_state = "medipen_blu"
-	desc = "A rapid and safe way to stabilize patient from passing out even through spacesuits. Contains epinephrine and salbutamol."
+	desc = "Быстрый и безопасный способ стабилизировать пациента и предотвратить потерю сознания даже через скафандры. Содержит эпинефрин и сальбутамол."
 	list_reagents = list("epinephrine" = 10, "salbutamol" = 5)
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation
-	name = "anti-radiation medipen"
+	name = "Противорадиационный медипен"
 	icon_state = "medipen_rad"
-	desc = "A rapid and safe way to counter the effects of irradiation even through spacesuits. Contains potassium iodide."
+	desc = "Быстрый и безопасный способ противодействовать эффектам облучения даже через скафандры. Содержит йодид калия."
 	list_reagents = list("potass_iodide" = 15)
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin
-	name = "anti-toxin medipen"
+	name = "Противотоксинный медипен"
 	icon_state = "medipen_grn"
-	desc = "A rapid and safe way to counter the effects of poisoning even through spacesuits. Contains charcoal."
+	desc = "Быстрый и безопасный способ противодействовать эффектам отравления даже через скафандры. Содержит уголь."
 	list_reagents = list("charcoal" = 20)
 	instant_application = FALSE
 
-// MARK: SPACER FIRST-AID KIT
+// MARK: Космическая аптечка
 /obj/item/storage/firstaid/spacer
-	name = "spacer first-aid kit"
-	desc = "A medical kit designed for use in vacuum while wearing EVA and MOD suits. Contains medipens for both brute and burn damage. Also contains an critical state medipen for emergency use and a health analyzer."
+	name = "Космическая аптечка"
+	desc = "Медицинский набор, предназначенный для использования в вакууме при ношении EVA и MOD скафандров. Содержит медипены для лечения физического урона и ожогов. Также включает медипены стабилизации с противотоксиным для экстренных случаев и анализатор здоровья."
 	icon_state = "firstaid_spacer"
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	lefthand_file = 'modular_ss220/aesthetics/boxes/icons/boxes_lefthand.dmi'
@@ -78,17 +78,18 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/critical(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
 	new /obj/item/healthanalyzer(src)
 
 /datum/supply_packs/medical/spacerkits
-	name = "Spacer First-Aid Kits Crate"
+	name = "Ящик космических аптечек"
 	contains = list(/obj/item/storage/firstaid/spacer,
 					/obj/item/storage/firstaid/spacer,
 					/obj/item/storage/firstaid/spacer,
 					/obj/item/storage/firstaid/spacer
 					)
 	cost = 400
-	containername = "spacer first-aid kits crate"
+	containername = "Ящик космических аптечек"
 
 /obj/machinery/suit_storage_unit/expedition
 	storage_type = /obj/item/storage/firstaid/spacer
@@ -96,10 +97,10 @@
 /obj/machinery/suit_storage_unit/security
 	storage_type = /obj/item/storage/firstaid/spacer
 
-// MARK: MEDIPEN CASE
+// MARK: Медипен кейсы
 /obj/item/storage/pill_bottle/medipen_case
-	name = "autoinjector case"
-	desc = "It's a container for storing medical autoinjectors."
+	name = "Кейс для автоинжекторов"
+	desc = "Это контейнер для хранения медицинских автоинжекторов.."
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	icon_state = "medipen_case"
 	belt_icon = "patch_pack"
@@ -111,7 +112,7 @@
 	wrapper_state = "medipen_case_wrap"
 
 /datum/design/medipencase
-	name = "Autoinjector Case"
+	name = "Кейс для автоинжекторов"
 	id = "medipencase"
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 160, MAT_GLASS = 40)
@@ -119,8 +120,8 @@
 	category = list("initial", "Medical")
 
 /obj/item/storage/box/medipen_cases
-	name = "box of autoinjector cases"
-	desc = "It has pictures of autoinjector case on its front."
+	name = "Коробка кейсов для автоинжекторов"
+	desc = "На передней стороне изображены кейсы для автоинжекторов."
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	icon_state = "medipen_box"
 
@@ -175,7 +176,6 @@
 			return FALSE
 	if(R.chem_temp < SAFE_MIN_TEMPERATURE || R.chem_temp > SAFE_MAX_TEMPERATURE)
 		return FALSE
-
 	return TRUE
 
 /datum/chemical_production_mode/autoinjectors/configure_item(data, datum/reagents/R, obj/item/reagent_containers/hypospray/autoinjector/custom/P)
