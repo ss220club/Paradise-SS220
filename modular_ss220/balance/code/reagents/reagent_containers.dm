@@ -65,7 +65,7 @@
 
 /obj/item/reagent_containers/glass/bottle/w33d
 	name = "Бутылка w33d"
-	desc = "Маленькая бутылка с w33d."
+	desc = "Маленькая бутылка с в33д."
 	list_reagents = list("w33d" = 30)
 
 /obj/item/reagent_containers/glass/bottle/grokodil
