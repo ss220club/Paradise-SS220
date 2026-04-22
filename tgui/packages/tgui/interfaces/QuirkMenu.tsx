@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Button, Divider, Icon, LabeledList, Section, Stack } from 'tgui-core/components';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -65,8 +65,8 @@ export const QuirkMenu = () => {
       </Box>
       {quirks.map((q) => {
         const chosen = selectedSet.has(q.name);
-        const cost = q.cost > 0 ? `-${q.cost}` : `+${Math.abs(q.cost)}`;
-        const costColor = q.cost > 0 ? 'bad' : 'good';
+        const cost = q.cost > 0 ? `+${q.cost}` : `-${Math.abs(q.cost)}`;
+        const costColor = q.cost > 0 ? 'good' : 'bad';
 
         let disabled = false;
         let buttonContent = chosen ? 'Убрать' : 'Выбрать';
@@ -121,7 +121,7 @@ export const QuirkMenu = () => {
       <Window.Content>
         <Stack fill>
           <Stack.Item grow basis={500}>
-            <Section title="Available Quirks" fill scrollable>
+            <Section title="Доступные квирки" fill scrollable>
               <Stack vertical>
                 {renderList(
                   data.all_quirks.filter((q) => q.cost < 0),
@@ -155,8 +155,8 @@ export const QuirkMenu = () => {
                   selected.map((name) => {
                     const q = data.all_quirks.find((x) => x.name === name);
                     if (!q) return null;
-                    const cost = q.cost > 0 ? `-${q.cost}` : `+${Math.abs(q.cost)}`;
-                    const border = q.cost > 0 ? 'var(--color-bad)' : 'var(--color-good)';
+                    const cost = q.cost > 0 ? `+${q.cost}` : `-${Math.abs(q.cost)}`;
+                    const border = q.cost > 0 ? 'var(--color-good)' : 'var(--color-bad)';
                     return (
                       <Box key={name} mb={0.5} p={0.5} style={{ borderLeft: `3px solid ${border}` }}>
                         <Stack justify="space-between">

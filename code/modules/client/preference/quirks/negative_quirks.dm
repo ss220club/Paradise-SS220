@@ -117,11 +117,12 @@
 	name = "Pacifist"
 	desc = "Вы не можете заставить себя причинять боль другим и не можете занимать должности в командовании или службе безопасности."
 	cost = -3
+	blacklisted = TRUE
 	trait_to_apply = TRAIT_PACIFISM
 
 /datum/quirk/hungry
 	name = "Hungry"
-	desc = "К вам быстрее наступает голод."
+	desc = "Для вас голод наступает быстрее."
 	cost = -1
 
 /datum/quirk/hungry/apply_quirk_effects()

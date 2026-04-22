@@ -132,12 +132,10 @@
 	desc = "Вы можете сделать сальто с любого трамплина. Вы такой крутой!"
 	cost = 1
 	trait_to_apply = TRAIT_COOL
-// BEGIN_INTERNALS
-// END_INTERNALS
-// BEGIN_FILE_DIR
-#define FILE_DIR .
-// END_FILE_DIR
-// BEGIN_PREFERENCES
-// END_PREFERENCES
-// BEGIN_INCLUDE
-// END_INCLUDE
+
+/datum/quirk/breathing_tube
+	name = "Breathing Tube"
+	desc  = "Вам вживили дыхательную трубку"
+	cost = 2
+	species_flags = QUIRK_MACHINE_INCOMPATIBLE
+	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube
