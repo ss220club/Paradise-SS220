@@ -269,7 +269,7 @@
 
 /datum/spell/bloodcrawl/shadow_crawl
 	name = "Shadow Crawl"
-	desc = "Слейтесь с тьмой, ускорьтесь, будьте не осязаемым. Не сработает в месте наполненым светом."
+	desc = "Слияние во тьме увеличит вашу скорость, делая вас незаметным. Не сработает в месте, наполненном светом."
 	allowed_type = /turf
 	action_background_icon_state = "shadow_demon_bg"
 	action_icon_state = "shadow_crawl"
