@@ -459,7 +459,7 @@
 
 /datum/spell/corpse_explosion
 	name = "Corpse Explosion"
-	desc = "Переполняет труп энергией, заставляя его сильно взорваться."
+	desc = "Переполняет труп энергией, заставляя его чудовищно взорваться."
 	base_cooldown = 5 SECONDS
 	invocation = "JAH ITH BER"
 	invocation_type = "whisper"
