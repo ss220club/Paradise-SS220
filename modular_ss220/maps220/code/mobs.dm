@@ -90,7 +90,7 @@
 	rapid = 2
 	melee_damage_lower = 10
 	melee_damage_upper = 10
-	projectiletype = /obj/item/projectile/beam/laser
+	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser.ogg'
 
 /mob/living/simple_animal/hostile/scavengers/laser/spacelaser
@@ -261,7 +261,7 @@
 	rapid = 2
 	melee_damage_lower = 20
 	melee_damage_upper = 20
-	projectiletype = /obj/item/projectile/beam/laser
+	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser.ogg'
 	loot = list(/obj/effect/spawner/random/maintenance = 1)
 
@@ -336,11 +336,11 @@
 	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 6
-	projectiletype = /obj/item/projectile/bullet/arrow
+	projectiletype = /obj/projectile/bullet/arrow
 	projectilesound = 'sound/weapons/grenadelaunch.ogg'
 	attacktext = "стреляет"
 
-/obj/item/projectile/bullet/arrow //not reusable
+/obj/projectile/bullet/arrow //not reusable
 	name = "arrow"
 	icon_state = "arrow"
 	range = 10
@@ -645,9 +645,9 @@
 	if(get_dist(src, targeted_atom) > 9)
 		rapid = 1
 		ranged_cooldown_time = 15
-		projectiletype = /obj/item/projectile/magic/fireball/infernal
+		projectiletype = /obj/projectile/magic/fireball/infernal
 	else
-		projectiletype = /obj/item/projectile/magic/arcane_barrage
+		projectiletype = /obj/projectile/magic/arcane_barrage
 		rapid = 4
 		rapid_fire_delay = 1
 		ranged_cooldown_time = 15
@@ -952,7 +952,7 @@
 	minimum_distance = 5
 	dodging = TRUE
 	butcher_results = list(/obj/item/food/monstermeat/xenomeat = 2)
-	projectiletype = /obj/item/projectile/bullet/bullsquid
+	projectiletype = /obj/projectile/bullet/bullsquid
 	projectilesound = 'modular_ss220/aesthetics_sounds/sound/mobs/bullsquid/goo_attack3.ogg'
 	melee_damage_upper = 18
 	attack_sound = 'modular_ss220/aesthetics_sounds/sound/mobs/bullsquid/attack1.ogg'
@@ -963,7 +963,7 @@
 		'modular_ss220/aesthetics_sounds/sound/mobs/bullsquid/detect3.ogg'
 	)
 
-/obj/item/projectile/bullet/bullsquid
+/obj/projectile/bullet/bullsquid
 	name = "nasty ball of ooze"
 	icon_state = "neurotoxin"
 	damage = 13
@@ -974,7 +974,7 @@
 	hitsound = 'modular_ss220/aesthetics_sounds/sound/mobs/bullsquid/splat1.ogg'
 	hitsound_wall = 'modular_ss220/aesthetics_sounds/sound/mobs/bullsquid/splat1.ogg'
 
-/obj/item/projectile/bullet/bullsquid/on_hit(atom/target, blocked, pierce_hit)
+/obj/projectile/bullet/bullsquid/on_hit(atom/target, blocked, pierce_hit)
 	new /obj/effect/decal/cleanable/greenglow(target.loc)
 	return ..()
 
@@ -1030,7 +1030,7 @@
 	speak_emote = list("galungs")
 	speed = 1
 	emote_taunt = list("galalungas", "galungas", "gungs")
-	projectiletype = /obj/item/projectile/beam/emitter/hitscan
+	projectiletype = /obj/projectile/beam/emitter/hitscan
 	projectilesound = 'modular_ss220/aesthetics_sounds/sound/mobs/vortigaunt/attack_shoot4.ogg'
 	ranged_cooldown_time = 3 SECONDS
 	ranged_message = "fires"
@@ -1080,7 +1080,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	universal_speak = TRUE
 	projectilesound = 'sound/weapons/lasercannonfire.ogg'
-	projectiletype = /obj/item/projectile/nihilanth
+	projectiletype = /obj/projectile/nihilanth
 	ranged = TRUE
 	ranged_cooldown_time = 25
 	rapid = 3
@@ -1100,11 +1100,10 @@
 	name = "xen key"
 	desc = ""
 	icon_state = "emag"
-	worn_icon_state = "card-id"
 	inhand_icon_state = "card-id"
 	access = list (271)
 
-/obj/item/projectile/nihilanth
+/obj/projectile/nihilanth
 	name = "portal energy"
 	icon_state = "parry"
 	damage = 20
@@ -1366,9 +1365,9 @@
 	health = 50
 	maxHealth = 50
 	faction = list("syndicate")
-	projectile_type = /obj/item/projectile/beam/laser/syndrone
+	projectile_type = /obj/projectile/beam/laser/syndrone
 
-/obj/item/projectile/beam/laser/syndrone
+/obj/projectile/beam/laser/syndrone
 	name = "light immolation beam"
 	damage = 8
 	icon_state = "scatterlaser"

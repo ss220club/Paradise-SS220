@@ -1,6 +1,8 @@
 /mob/new_player
 	var/ready = FALSE
 	var/spawning = FALSE	//Referenced when you want to delete the new_player later on in the code.
+	/// Has this player chosen to respawn as a new character?
+	var/chose_respawn = FALSE
 	universal_speak = TRUE
 
 	invisibility = 101
@@ -144,12 +146,12 @@
 			ready = FALSE
 			return FALSE
 
-		// SS220 ADDITION START - TTS220
+		// SS220 ADDITION START
 		if(!check_tts_seed_ready())
 			return FALSE
 
 		if(!can_use_species(src, client.prefs.active_character.species))
-			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.active_character.species]."))
+			to_chat(src, alert("В настоящее время вам недоступна игра за [client.prefs.active_character.species]."))
 			return FALSE
 		// SS220 ADDITION END
 
@@ -232,12 +234,16 @@
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<span class='warning'>Раунд либо не готов, либо уже завершился...</span>")
 			return
+		// SS220 EDIT START - Species bans
 		if(!can_use_species(src, client.prefs.active_character.species))
-			to_chat(src, alert("В настоящее время вы не включены в белый список для игры на [client.prefs.active_character.species]."))
+			to_chat(src, alert("В настоящее время вам недоступна игра за [client.prefs.active_character.species]."))
 			return FALSE
+		// SS220 EDIT END
 
-		if(!check_tts_seed_ready()) // SS220 ADDITION - TTS
+		// SS220 EDIT START - TTS
+		if(!check_tts_seed_ready())
 			return FALSE
+		// SS220 EDIT END
 
 		LateChoices()
 
@@ -253,9 +259,11 @@
 		if(client.prefs.toggles2 & PREFTOGGLE_2_RANDOMSLOT)
 			client.prefs.load_random_character_slot(client)
 
+		// SS220 EDIT START - Species bans
 		if(!can_use_species(src, client.prefs.active_character.species))
-			to_chat(src, alert("В настоящее время вы не включены в белый список для игры на [client.prefs.active_character.species]."))
+			to_chat(src, alert("В настоящее время вам недоступна игра за [client.prefs.active_character.species]."))
 			return FALSE
+		// SS220 EDIT END
 
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
@@ -333,6 +341,9 @@
 	if(thisjob.barred_by_disability(client))
 		to_chat(src, alert("[rank] недоступен из-за инвалидности вашего персонажа. Попробуйте другую должность."))
 		return 0
+	if(thisjob.barred_by_quirk(client))
+		to_chat(src, alert("[rank] is not available due to your character's quirk. Please try another."))
+		return 0
 	if(thisjob.barred_by_missing_limbs(client))
 		to_chat(src, alert("[rank] недоступен из-за того, что у вашего персонажа ампутированы конечности и отсутствуют протезы. Попробуйте другую должность."))
 		return 0
@@ -341,7 +352,9 @@
 
 	var/mob/living/character = create_character()	//creates the human and transfers vars and mind
 	character = SSjobs.AssignRank(character, rank, TRUE)					//equips the human
-
+	if(chose_respawn)
+		SSblackbox.record_feedback("tally", "player_respawn", 1, "[thisjob]")
+		log_and_message_admins("[character.ckey] has respawned as [character.real_name], \a [character.dna?.species ? character.dna.species : "Undefined species"] [rank].")
 	// AIs don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")
 		var/mob/living/silicon/ai/ai_character = character.AIize() // AIize the character, but don't move them yet
@@ -493,7 +506,7 @@
 		"Supply" = list(jobs = list(), titles = GLOB.supply_positions, color = "#ead4ae"),
 		)
 	for(var/datum/job/job in SSjobs.occupations)
-		if(job && IsJobAvailable(job.title) && !job.barred_by_disability(client) && !job.barred_by_missing_limbs(client))
+		if(job && IsJobAvailable(job.title) && !job.barred_by_disability(client) && !job.barred_by_missing_limbs(client) && !job.barred_by_quirk(client))
 			num_jobs_available++
 			activePlayers[job] = 0
 			var/categorized = 0

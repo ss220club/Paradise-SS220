@@ -5,15 +5,11 @@
 	name = "vox raider hardsuit"
 	desc = "Специализированный космический защитный костюм воксов-рейдеров. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными. За счет иной структуры, костюм рейдеров уступает в защитных свойствах костюму наемников."
 	icon_state = "vox-raider"
-	item_color = "vox-raider"
-	worn_icon_state = "rig_suit"
 	inhand_icon_state = "rig_suit"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_suit.dmi'
 	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
-	sprite_sheets = list(
-		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
-		)
+	sprite_sheets = null
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals,
 		/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton,
 		/obj/item/melee/energy/sword, /obj/item/shield/energy,
@@ -32,13 +28,10 @@
 	name = "vox raider helmet"
 	desc = "Специализированный космический шлем воксов-рейдеров."
 	icon_state = "vox-raider"
-	item_color = "vox-raider"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_head.dmi'
 	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
-	sprite_sheets = list(
-		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
-		)
+	sprite_sheets = null
 	flags = HEADBANGPROTECT | BLOCKHAIR | STOPSPRESSUREDMAGE | THICKMATERIAL
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(MELEE = 75, BULLET = 50, LASER = 30, ENERGY = 20, BOMB = 25, RAD = 115, FIRE = 80, ACID = 200)
@@ -66,7 +59,6 @@
 	desc = "Специализированный космический защитный костюм воксов-рейдеров. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными. За счет иной структуры, костюм рейдеров уступает в защитных свойствах костюму наемников. \
 	\nКостюм космического штурмовика рейдеров с защитой от огнестрела и колюще-режущего."
 	icon_state = "vox-raider-trooper"
-	item_color = "vox-raider-trooper"
 	armor = list(MELEE = 75, BULLET = 50, LASER = 30, ENERGY = 20, BOMB = 25, RAD = 115, FIRE = 80, ACID = 200)
 	strip_delay = 12 SECONDS
 	put_on_delay = 8 SECONDS
@@ -76,7 +68,6 @@
 /obj/item/clothing/head/helmet/space/hardsuit/vox/trooper
 	name = "vox raider trooper helmet"
 	icon_state = "vox-raider-trooper"
-	item_color = "vox-raider-trooper"
 	armor = list(MELEE = 75, BULLET = 50, LASER = 30, ENERGY = 20, BOMB = 25, RAD = 115, FIRE = 80, ACID = 200)
 
 
@@ -85,7 +76,6 @@
 	desc = "Специализированный космический защитный костюм воксов-рейдеров. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными. За счет иной структуры, костюм рейдеров уступает в защитных свойствах костюму наемников. \
 	\nКостюм разведчика не сковывает движение и помогает владельцу удобней двигаться в условиях невесомости."
 	icon_state = "vox-raider-scout"
-	item_color = "vox-raider-scout"
 	armor = list(MELEE = 10, BULLET = 20, LASER = 30, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
 	strip_delay = 6 SECONDS
 	put_on_delay = 4 SECONDS
@@ -95,7 +85,6 @@
 /obj/item/clothing/head/helmet/space/hardsuit/vox/scout
 	name = "vox raider scout helmet"
 	icon_state = "vox-raider-scout"
-	item_color = "vox-raider-scout"
 	armor = list(MELEE = 10, BULLET = 20, LASER = 30, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
 
 
@@ -106,7 +95,6 @@
 	desc = "Специализированный космический защитный костюм воксов-рейдеров. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными. За счет иной структуры, костюм рейдеров уступает в защитных свойствах костюму наемников. \
 	\nКостюм для работы в условиях отдаленности от опасностей. Более подвижен и обладает приемлимыми свойствами защиты от воздействий различного рода снарядов, но из-за своей структуры способен нанести вред носителю при взрывных воздействиях или колющих атак. Костюм отлично выдерживает радиационный фон и кислотное воздействие и биологическими угрозами. Имеет хранилище для ношения аптечек контейнеров с химикатами."
 	icon_state = "vox-raider-medic"
-	item_color = "vox-raider-medic"
 	armor = list(MELEE = -30, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = -30, RAD = INFINITY, FIRE = 120, ACID = INFINITY)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/vox/medic
 	allowed = list(/obj/item/flashlight, /obj/item/storage/firstaid,
@@ -122,7 +110,6 @@
 /obj/item/clothing/head/helmet/space/hardsuit/vox/medic
 	name = "vox raider medic helmet"
 	icon_state = "vox-raider-medic"
-	item_color = "vox-raider-medic"
 	armor = list(MELEE = -30, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = -30, RAD = INFINITY, FIRE = 120, ACID = INFINITY)
 
 
@@ -133,7 +120,6 @@
 	desc = "Специализированный космический защитный костюм воксов-рейдеров. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными. За счет иной структуры, костюм рейдеров уступает в защитных свойствах костюму наемников. \
 	\nКостюм для работы в условиях крайне опасных и недружелюбных атмосфер. За счет своей структуры и технологии рассеивания тепла, костюм обладает хорошей защитой от энергетического оружия."
 	icon_state = "vox-raider-mechanic"
-	item_color = "vox-raider-mechanic"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	armor = list(MELEE = 20, BULLET = 20, LASER = 75, ENERGY = 50, BOMB = 150, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
 	slowdown = 2
@@ -146,7 +132,6 @@
 /obj/item/clothing/head/helmet/space/hardsuit/vox/mechanic
 	name = "vox raider mechanic helmet"
 	icon_state = "vox-raider-mechanic"
-	item_color = "vox-raider-mechanic"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	armor = list(MELEE = 20, BULLET = 20, LASER = 75, ENERGY = 50, BOMB = 150, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
 
@@ -158,7 +143,6 @@
 	desc = "Специализированный космический защитный костюм воксов-рейдеров. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными. За счет иной структуры, костюм рейдеров уступает в защитных свойствах костюму наемников. \
 	\nТяжелый огнеупорный и взрывостойкий костюм рейдеров с превосходной защитой от энергетического оружия и колюще-режущих и приемлимой от огнестрела. Костюм был разработан для противостояния механизированным силам в условиях космического пространства. К сожалению, его вес и ресиверы не настолько совершены, из-за чего он уступает в скорости."
 	icon_state = "vox-raider-heavy"
-	item_color = "vox-raider-heavy"
 	w_class = WEIGHT_CLASS_HUGE
 	armor = list(MELEE = 115, BULLET = 80, LASER = 150, ENERGY = 80, BOMB = 200, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
@@ -170,6 +154,5 @@
 /obj/item/clothing/head/helmet/space/hardsuit/vox/heavy
 	name = "vox raider heavy helmet"
 	icon_state = "vox-raider-heavy"
-	item_color = "vox-raider-heavy"
 	armor = list(MELEE = 115, BULLET = 80, LASER = 115, ENERGY = 80, BOMB = 200, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT

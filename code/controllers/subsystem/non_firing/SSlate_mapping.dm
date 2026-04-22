@@ -14,6 +14,17 @@ SUBSYSTEM_DEF(late_mapping)
 	GLOB.air_alarms = sortAtom(GLOB.air_alarms)
 	GLOB.apcs = sortAtom(GLOB.apcs)
 
+	if(SSmapping.trader_shuttle_id)
+		var/template = new SSmapping.trader_shuttle_id()
+		SSshuttle.set_trader_shuttle(template)
+	else
+		WARNING("no valid trader shuttle template was set in SSmapping")
+
+	if(SSmapping.gamma_armory_shuttle_id)
+		SSshuttle.load_initial_gamma_armory_shuttle(SSmapping.gamma_armory_shuttle_id)
+	else
+		WARNING("no valid Gamma Armory shuttle template was set in SSmapping")
+
 	for(var/obj/machinery/computer/shuttle/console in SSmachines.get_by_type(/obj/machinery/computer/shuttle))
 		if(console.find_destinations_in_late_mapping)
 			console.connect()
@@ -67,17 +78,19 @@ SUBSYSTEM_DEF(late_mapping)
 
 	// SS220 EDIT START - mouse diversity
 	var/static/list/mouse_pool = list(
-		/mob/living/simple_animal/mouse = 1,
-		/mob/living/simple_animal/mouse/brown = 1,
-		/mob/living/simple_animal/mouse/gray = 1,
-		/mob/living/simple_animal/mouse/white = 1,
-		/mob/living/simple_animal/mouse/rat = 1,
-		/mob/living/simple_animal/mouse/rat/white = 1,
+		/mob/living/basic/mouse = 1,
+		/mob/living/basic/mouse/brown = 1,
+		/mob/living/basic/mouse/gray = 1,
+		/mob/living/basic/mouse/white = 1,
+		/mob/living/basic/mouse/rat = 1,
+		/mob/living/basic/mouse/rat/white = 1,
 	)
 	for(var/i in 1 to mice_number)
-		var/mouse_type = pickweight(mouse_pool)
-		new mouse_type(pick_n_take(maintenance_turfs))
-	new /mob/living/simple_animal/mouse/white/linter(pick_n_take(maintenance_turfs))
+		if(prob(1))
+			new /mob/living/basic/mouse/white/linter(pick_n_take(maintenance_turfs))
+		else
+			var/mouse_type = pickweight(mouse_pool)
+			new mouse_type(pick_n_take(maintenance_turfs))
 	// SS220 EDIT END
 
 	log_debug("Spawned [mice_number] mice over in [stop_watch(watch)]s")

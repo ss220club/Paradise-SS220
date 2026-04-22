@@ -38,8 +38,8 @@
 	return ..()
 
 /obj/structure/flora/tree/sakura/proc/on_round_start()
-	initiate_blossom_cycle()
 	SIGNAL_HANDLER
+	initiate_blossom_cycle()
 	UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)
 	return
 

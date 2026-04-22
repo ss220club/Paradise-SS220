@@ -667,6 +667,20 @@ CREATE TABLE `json_datum_saves` (
 	INDEX `ckey` (`ckey`) USING BTREE
 ) COLLATE = 'utf8mb4_general_ci' ENGINE = InnoDB;
 
+--
+-- Table structure for table 'bug_reports'
+--
+DROP TABLE IF EXISTS `bug_reports`;
+CREATE TABLE `bug_reports` (
+  `db_uid` BIGINT(32) NOT NULL,
+  `author_ckey` varchar(32) NOT NULL,
+  `title` MEDIUMTEXT COLLATE 'utf8mb4_general_ci',
+  `round_id` int(11),
+  `contents_json` LONGTEXT,
+  CONSTRAINT bug_key PRIMARY KEY (`db_uid`,`author_ckey`) USING BTREE
+
+) COLLATE = 'utf8mb4_general_ci' ENGINE = INNODB;
+
 
 
 --
@@ -677,6 +691,9 @@ CREATE TABLE `json_datum_saves` (
 # Adds characters.tts_seed ~furior
 
 ALTER TABLE `characters` ADD `tts_seed` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `custom_emotes`;
+
+# Updating DB from 49.220.1 to 49.220.2
+# Adds ckey whitelist
 
 --
 -- Table structure for table `ckey_whitelist`
@@ -694,6 +711,9 @@ CREATE TABLE `ckey_whitelist` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+# Updating DB from 53.220.2 to 53.220.3
+# Adds discord links
+
 --
 -- Table structure for table `admin_wl`
 --
@@ -707,10 +727,39 @@ CREATE TABLE `admin_wl` (
 	KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+# Updating DB from 53.220.3 to 53.220.4
+# Adds discord links
+
+CREATE TABLE IF NOT EXISTS `discord_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ckey` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discord_id` bigint(20) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `one_time_token` varchar(100) NOT NULL,
+  `valid` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+# Updating DB from 53.220.4 to 53.220.5
+# Adds budget
+
+CREATE TABLE `budget` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`date` DATETIME NOT NULL DEFAULT current_timestamp(),
+	`ckey` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`amount` INT(10) UNSIGNED NOT NULL,
+	`source` VARCHAR(32) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`date_start` DATETIME NOT NULL DEFAULT current_timestamp(),
+	`date_end` DATETIME NULL DEFAULT (current_timestamp() + interval 1 month),
+	`is_valid` TINYINT(1) NOT NULL DEFAULT '1',
+	`discord_id` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+) COLLATE='utf8mb4_general_ci' ENGINE=InnoDB;
+
 # Updating DB from 53.220.5 to 53.220.6
 # Adds species whitelist ~legendaxe
 
-ALTER TABLE `player` ADD `species_whitelist` LONGTEXT COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ('["human"]');
+ALTER TABLE `player` ADD `species_whitelist` LONGTEXT COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ('["Human","Diona","Drask","Grey","Kidan","Machine","Nian","Plasmaman","Skrell","Slime People","Tajaran","Unathi","Vox","Nucleation","Vulpkanin","Serpentid"]');
 
 # Updating DB from 59.220.6 to 59.220.7
 # Adds SS220 toggle prefs ~Maxiemar
@@ -739,3 +788,105 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+# Updating DB from 59.220.7 to 59.220.8
+# Adds SS220 toggle prefs ~Furior
+
+DROP TABLE `discord_links`;
+DROP TABLE `budget`;
+
+# Updating DB from 64.220.8 to 64.220.9
+# Migration from species whitelist to species ban system
+
+# This migration converts the old whitelist system to the new ban system
+# Old logic: if species IS in whitelist -> player CAN play
+# New logic: if species IS in bans -> player CANNOT play
+# Therefore: we ban all species that are NOT in the player whitelist
+
+CREATE TEMPORARY TABLE temp_all_species (species_name VARCHAR(50));
+
+INSERT INTO temp_all_species (species_name) VALUES
+('Human'),
+('Diona'),
+('Drask'),
+('Grey'),
+('Kidan'),
+('Machine'),
+('Nian'),
+('Plasmaman'),
+('Skrell'),
+('Slime People'),
+('Tajaran'),
+('Unathi'),
+('Vox'),
+('Nucleation'),
+('Vulpkanin'),
+('Serpentid');
+
+# Insert bans for all species that are NOT in players whitelist
+INSERT INTO ban (
+    bantime,
+    ban_round_id,
+    serverip,
+    server_id,
+    bantype,
+    reason,
+    job,
+    duration,
+    rounds,
+    expiration_time,
+    ckey,
+    computerid,
+    ip,
+    a_ckey,
+    a_computerid,
+    a_ip,
+    who,
+    adminwho,
+    edits,
+    unbanned,
+    unbanned_datetime,
+    unbanned_round_id,
+    unbanned_ckey,
+    unbanned_computerid,
+    unbanned_ip,
+    exportable
+)
+SELECT
+    NOW() as bantime,
+    0 as ban_round_id,
+    '127.0.0.0:8000' as serverip, -- You might want to change this to your server's IP
+    'some_server' as server_id, -- You might want to change this to your server's ID
+    'SPECIES_PERMABAN' as bantype,
+    'Migrated from old whitelist system' as reason,
+    s.species_name as job,
+    -1 as duration,
+    0 as rounds,
+    DATE_ADD(NOW(), INTERVAL -1 MINUTE) as expiration_time,
+    p.ckey as ckey,
+    '' as computerid,
+    '' as ip,
+    '@system' as a_ckey,
+    '' as a_computerid,
+    '' as a_ip,
+    '' as who,
+    '@system' as adminwho,
+    NULL as edits,
+    NULL as unbanned,
+    NULL as unbanned_datetime,
+    NULL as unbanned_round_id,
+    NULL as unbanned_ckey,
+    NULL as unbanned_computerid,
+    NULL as unbanned_ip,
+    0 as exportable
+FROM player p
+JOIN temp_all_species s
+ON p.species_whitelist IS NOT NULL
+    AND p.species_whitelist != ''
+    AND p.species_whitelist != '[]'
+    AND NOT JSON_CONTAINS(p.species_whitelist, JSON_QUOTE(s.species_name));
+
+# Clean up
+DROP TEMPORARY TABLE temp_all_species;
+
+ALTER TABLE `player` DROP COLUMN `species_whitelist`;

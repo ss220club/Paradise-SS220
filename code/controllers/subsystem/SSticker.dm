@@ -665,10 +665,13 @@ SUBSYSTEM_DEF(ticker)
 	log_game("///////////////////////////////////////////////////////")
 
 	// Add AntagHUD to everyone, see who was really evil the whole time!
-	for(var/datum/atom_hud/antag/H in GLOB.huds)
+	for(var/hud_key, hud in GLOB.huds)
+		var/datum/atom_hud/antag/antag_hud = hud
+		if(!istype(antag_hud))
+			continue
 		for(var/m in GLOB.player_list)
 			var/mob/M = m
-			H.add_hud_to(M)
+			antag_hud.add_hud_to(M)
 
 	var/static/list/base_encouragement_messages = list(
 		"Keep on keeping on!",
@@ -694,6 +697,9 @@ SUBSYSTEM_DEF(ticker)
 		if(length(kudos))
 			kudos_message = pick(length(kudos) > 5 ? special_encouragement_messages : base_encouragement_messages)
 			to_chat(M, "<span class='green big'>You received <b>[length(kudos)]</b> kudos from other players this round! [kudos_message]</span>")
+
+	// Roll credits!
+	// generate_credits() SS220 EDIT - Turn off upstream end of round credits
 
 	// Seal the blackbox, stop collecting info
 	SSblackbox.Seal()
@@ -854,7 +860,7 @@ SUBSYSTEM_DEF(ticker)
 /// admin-spawned and which ones weren't.
 /datum/controller/subsystem/ticker/proc/any_admin_spawned_mobs(biohazard)
 	switch(biohazard)
-		if(TS_INFESTATION_GREEN_SPIDER, TS_INFESTATION_WHITE_SPIDER, TS_INFESTATION_PRINCESS_SPIDER, TS_INFESTATION_QUEEN_SPIDER, TS_INFESTATION_PRINCE_SPIDER)
+		if(TS_INFESTATION_WHITE_SPIDER, TS_INFESTATION_PRINCESS_SPIDER, TS_INFESTATION_QUEEN_SPIDER, TS_INFESTATION_PRINCE_SPIDER)
 			for(var/mob/living/simple_animal/hostile/poison/terror_spider/S in GLOB.ts_spiderlist)
 				if(S.admin_spawned)
 					return TRUE
@@ -873,7 +879,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/biohazard_count(biohazard)
 	switch(biohazard)
-		if(TS_INFESTATION_GREEN_SPIDER, TS_INFESTATION_WHITE_SPIDER, TS_INFESTATION_PRINCESS_SPIDER, TS_INFESTATION_QUEEN_SPIDER)
+		if(TS_INFESTATION_WHITE_SPIDER, TS_INFESTATION_PRINCESS_SPIDER, TS_INFESTATION_QUEEN_SPIDER)
 			var/spiders = 0
 			for(var/mob/living/simple_animal/hostile/poison/terror_spider/S in GLOB.ts_spiderlist)
 				if(S.ckey)
@@ -896,7 +902,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/biohazard_active_threat(biohazard)
 	var/count = biohazard_count(biohazard)
 	switch(biohazard)
-		if(TS_INFESTATION_GREEN_SPIDER, TS_INFESTATION_WHITE_SPIDER, TS_INFESTATION_PRINCESS_SPIDER, TS_INFESTATION_QUEEN_SPIDER)
+		if(TS_INFESTATION_WHITE_SPIDER, TS_INFESTATION_PRINCESS_SPIDER, TS_INFESTATION_QUEEN_SPIDER)
 			return count >= 5
 		if(TS_INFESTATION_PRINCE_SPIDER)
 			return count > 0

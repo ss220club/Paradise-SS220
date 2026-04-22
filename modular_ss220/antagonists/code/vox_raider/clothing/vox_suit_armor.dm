@@ -5,16 +5,13 @@
 	name = "vox mercenary vest"
 	desc = "Специализированный бронекостюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением."
 	icon_state = "vox-merc"
-	item_color = "vox-merc"
 	worn_icon_state = "armor"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_suit.dmi'
 	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
-	sprite_sheets = list(
-		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/suit.dmi'
-		)
+	sprite_sheets = null
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton,
 		/obj/item/melee/energy/sword, /obj/item/shield/energy,
 		/obj/item/restraints/handcuffs, /obj/item/tank/internals)
@@ -30,13 +27,10 @@
 	name = "vox mercenary helmet"
 	desc = "Специализированный шлем воксов-наемников."
 	icon_state = "vox-merc"
-	item_color = "vox-merc"
 	species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_head.dmi'
 	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
-	sprite_sheets = list(
-		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/head.dmi'
-		)
+	sprite_sheets = null
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(MELEE = 35, BULLET = 50, LASER = 20, ENERGY = 20, BOMB = 25, RAD = 80, FIRE = 50, ACID = 50)
 	flags = HEADBANGPROTECT | BLOCKHEADHAIR
@@ -54,7 +48,6 @@
 	desc = "Специализированный бронекостюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением. \
 	\nШтурмовой бронекостюм воксов разработан под их структуру тела и прикрывает наиболее уязвимые места, превосходно защищает носителя от огнестрельного вооружения и ближних атак."
 	icon_state = "vox-merc-stormtrooper"
-	item_color = "vox-merc-stormtrooper"
 	w_class = WEIGHT_CLASS_BULKY
 	armor = list(MELEE = 115, BULLET = 115, LASER = 50, ENERGY = 30, BOMB = 15, RAD = 80, FIRE = 50, ACID = 50)
 	strip_delay = 12 SECONDS
@@ -64,7 +57,6 @@
 /obj/item/clothing/head/helmet/vox_merc/stormtrooper
 	name = "vox mercenary helmet"
 	icon_state = "vox-merc-stormtrooper"
-	item_color = "vox-merc-stormtrooper"
 	armor = list(MELEE = 115, BULLET = 115, LASER = 50, ENERGY = 30, BOMB = 15, RAD = 80, FIRE = 50, ACID = 50)
 
 
@@ -75,7 +67,6 @@
 	desc = "Специализированный бронекостюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением. \
 	\nМедицинский полевой костюм предназначен для защиты владельца от биологических угроз, радиации и кислотной атмосферы. Дает слабую защиту от внешне поступаемых энергетических снарядов, равномерно рассеивая остаточную энергию. Костюм абсолютно не предназначен для защиты в ближнем бою или от взрывчатых веществ за счет свое внутреннего строения, повреждающий носителя от осколков костюма при нарушении целостности. Имеет хранилище для ношения аптечек и контейнеров с химикатами."
 	icon_state = "vox-merc-fieldmedic"
-	item_color = "vox-merc-fieldmedic"
 	armor = list(MELEE = -15, BULLET = 20, LASER = 50, ENERGY = 40, BOMB = -15, RAD = INFINITY, FIRE = 80, ACID = INFINITY)
 	strip_delay = 6 SECONDS
 	put_on_delay = 4 SECONDS
@@ -92,7 +83,6 @@
 /obj/item/clothing/head/helmet/vox_merc/fieldmedic
 	name = "vox mercenary field medic helmet"
 	icon_state = "vox-merc-fieldmedic"
-	item_color = "vox-merc-fieldmedic"
 	armor = list(MELEE = -15, BULLET = 20, LASER = 50, ENERGY = 40, BOMB = -15, RAD = INFINITY, FIRE = 80, ACID = INFINITY)
 	flags_inv =  HIDEMASK
 	flags = HEADBANGPROTECT
@@ -104,7 +94,6 @@
 	desc = "Специализированный бронекостюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением. \
 	\nОсобый разработанный штурмовой тяжелый костюм для действий в условиях крайне взрывоопасной атмосферы. Абсолютная жаростойкость, повышенная стойкость к кислотным жидкостям и лазерному воздействию делают эту броню основной для воксов действующих внутри активно разрушающихся комплексов и кораблей."
 	icon_state = "vox-merc-bomber"
-	item_color = "vox-merc-bomber"
 	armor = list(MELEE = 80, BULLET = 20, LASER = 115, ENERGY = 75, BOMB = 200, RAD = 115, FIRE = INFINITY, ACID = 150)
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	strip_delay = 12 SECONDS
@@ -114,7 +103,6 @@
 /obj/item/clothing/head/helmet/vox_merc/bomber
 	name = "vox mercenary bomber helmet"
 	icon_state = "vox-merc-bomber"
-	item_color = "vox-merc-bomber"
 	armor = list(MELEE = 80, BULLET = 20, LASER = 115, ENERGY = 75, BOMB = 200, RAD = 115, FIRE = INFINITY, ACID = 150)
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 
@@ -126,7 +114,6 @@
 	desc = "Специализированный бронекостюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением. \
 	\nКомпактный и мобильный костюм отлично помещается в рюкзаке, сформирован из легких пластин позволяющий получить хорошие защитные свойства в совокупности с удобством для носителя, не мешающий его передвижению. Но, в отличии от других моделей, не дает приемлимых защитных параметров от воздействий внешней агрессивной среды и не защищает руки."
 	icon_state = "vox-merc-laminar"
-	item_color = "vox-merc-laminar"
 	w_class = WEIGHT_CLASS_SMALL
 	body_parts_covered = UPPER_TORSO | LOWER_TORSO | LEGS | FEET	// Руки уязвимые зоны.
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET
@@ -138,7 +125,6 @@
 /obj/item/clothing/head/helmet/vox_merc/laminar
 	name = "vox mercenary laminar helmet"
 	icon_state = "vox-merc-laminar"
-	item_color = "vox-merc-laminar"
 	w_class = WEIGHT_CLASS_SMALL
 	armor = list(MELEE = 20, BULLET = 20, LASER = 40, ENERGY = 40, BOMB = 15, RAD = 20, FIRE = 20, ACID = 20)
 	flags_inv =  HIDEEARS|HIDEEYES
@@ -158,7 +144,6 @@
 	desc = "Специализированный маскировочный костюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением. \
 		Костюм с маскировочной системой, напрямую связанная с телом носителя. При снимании костюма возможно ощущение легкого недомогания."
 	icon_state = "vox-merc-stealth"
-	item_color = "vox-merc-stealth"
 	blood_overlay_type = "suit"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 15, RAD = INFINITY, FIRE = INFINITY, ACID = 80)
 	strip_delay = 6 SECONDS
@@ -196,7 +181,6 @@
 	name = "vox mercenary stealth helmet"
 	desc = "Специализированный шлем воксов-наемников со встроенной системой дымогенератора."
 	icon_state = "vox-merc-stealth"
-	item_color = "vox-merc-stealth"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 15, RAD = INFINITY, FIRE = INFINITY, ACID = 80)
 	flags = HEADBANGPROTECT
 	flags_inv =  HIDEMASK|HIDEEARS|HIDEEYES

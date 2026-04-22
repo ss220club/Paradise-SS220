@@ -252,6 +252,8 @@
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(health < HEALTH_THRESHOLD_CRIT)
 		return
+	if(SEND_SIGNAL(src, COMSIG_CARBON_PRE_MISC_HELP, M) & COMPONENT_BLOCK_MISC_HELP)
+		return
 	if(src == M && ishuman(src))
 		check_self_for_injuries()
 		return
@@ -357,7 +359,7 @@
 				status = "battered"
 			if(40 to INFINITY)
 				status = "mangled"
-		if(brutedamage > 0 && (burndamage > 0 || LB.status & ORGAN_BURNT))
+		if(brutedamage > 0.1 && (burndamage > 0.1 || LB.status & ORGAN_BURNT))
 			status += " and "
 
 		if(LB.status & ORGAN_BURNT)
@@ -405,7 +407,7 @@
 	if((E?.status & ORGAN_DEAD) || E?.is_broken() || !.)
 		return FALSE
 
-/mob/living/carbon/flash_eyes(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0, laser_pointer = FALSE, type = /atom/movable/screen/fullscreen/stretch/flash)
+/mob/living/carbon/flash_eyes(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0, laser_pointer = FALSE, flash_type = /atom/movable/screen/fullscreen/stretch/flash)
 	//Parent proc checks if a mob can_be_flashed()
 	. = ..()
 
@@ -1052,7 +1054,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(/obj/machinery/atmospherics/unary/ven
 	if(HAS_TRAIT(src, TRAIT_EMP_IMMUNE))
 		return
 	if(HAS_TRAIT(src, TRAIT_EMP_RESIST))
-		severity = clamp(severity, EMP_LIGHT, EMP_WEAKENED)
+		severity = clamp(severity, EMP_RESIST_ORGAN, EMP_WEAKENED)
 	for(var/X in internal_organs)
 		var/obj/item/organ/internal/O = X
 		O.emp_act(severity)
@@ -1229,7 +1231,8 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(/obj/machinery/atmospherics/unary/ven
 	return TRUE
 
 /mob/living/carbon/proc/selfFeed(obj/item/food/to_eat, fullness)
-	if(to_eat.junkiness && satiety < -150 && nutrition > NUTRITION_LEVEL_STARVING + 50)
+	var/is_glutton = HAS_TRAIT(src, TRAIT_GLUTTON)
+	if(!is_glutton && to_eat.junkiness && satiety < -150 && nutrition > NUTRITION_LEVEL_STARVING + 50)
 		to_chat(src, "<span class='notice'>You don't feel like eating any more junk food at the moment.</span>")
 		return FALSE
 
@@ -1246,7 +1249,8 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(/obj/machinery/atmospherics/unary/ven
 	else if(fullness > (600 * (1 + overeatduration / 2000))) // The more you eat - the more you can eat
 		to_chat(src, "<span class='warning'>You cannot force any more of [to_eat] to go down your throat.</span>")
 		return FALSE
-
+	if(is_glutton)
+		src.changeNext_move(CLICK_CD_RAPID) // Hungry hungry spessman
 	to_chat(src, "<span class='notice'>[jointext(reaction_msg, " ")]</span>")
 
 	return TRUE
@@ -1297,7 +1301,7 @@ so that different stomachs can handle things in different ways VB*/
 		. |= LH.GetAccess()
 
 /mob/living/carbon/proc/can_breathe_gas()
-	if(wear_mask?.flags & BLOCK_GAS_SMOKE_EFFECT || head?.flags & BLOCK_GAS_SMOKE_EFFECT || internal)
+	if(HAS_TRAIT(src, TRAIT_NOBREATH) || wear_mask?.flags & BLOCK_GAS_SMOKE_EFFECT || head?.flags & BLOCK_GAS_SMOKE_EFFECT || internal)
 		return FALSE
 
 	return TRUE
