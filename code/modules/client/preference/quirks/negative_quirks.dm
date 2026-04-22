@@ -69,7 +69,7 @@
 
 /datum/quirk/asthma
 	name = "Asthma"
-	desc = "Вам трудно отдышаться, а при физических нагрузках могут случаться приступы сильного кашля. Несовместим с рассой КПБ."
+	desc = "Вам трудно отдышаться, а при физических нагрузках могут случаться приступы сильного кашля. Несовместимо с расой КПБ."
 	cost = -3
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	trait_to_apply = TRAIT_ASTHMATIC
@@ -107,7 +107,7 @@
 
 /datum/quirk/no_apc_charging
 	name = "High Internal Resistance"
-	desc = "ЛКП на станции рассчитаны на более высокое напряжение, чем может выдержать ваше шасси, поэтому заряжать его можно только на зарядных станциях. Совместимо только с КБП."
+	desc = "ЛКП на станции рассчитаны на более высокое напряжение, чем может выдержать ваше шасси, поэтому заряжать его можно только на зарядных станциях. Совместимо только с КПБ."
 	cost = -2
 	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
 	trait_to_apply = TRAIT_NO_APC_CHARGING
@@ -117,12 +117,11 @@
 	name = "Pacifist"
 	desc = "Вы не можете заставить себя причинять боль другим и не можете занимать должности в командовании или службе безопасности."
 	cost = -3
-	blacklisted = TRUE
 	trait_to_apply = TRAIT_PACIFISM
 
 /datum/quirk/hungry
 	name = "Hungry"
-	desc = "К вам быстрее приходит голод."
+	desc = "К вам быстрее наступает голод."
 	cost = -1
 
 /datum/quirk/hungry/apply_quirk_effects()
@@ -148,7 +147,7 @@
 
 /datum/quirk/nearsighted
 	name = "Nearsighted"
-	desc = "Без специальных очков вы плохо видите."
+	desc = "Вы плохо видите без специальных очков."
 	cost = -1
 	trait_to_apply = TRAIT_NEARSIGHT
 	species_flags = QUIRK_SLIME_INCOMPATIBLE

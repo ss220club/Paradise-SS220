@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Button, Divider, Icon, LabeledList, Section, Stack } from 'tgui-core/components';
-
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
@@ -66,11 +65,11 @@ export const QuirkMenu = () => {
       </Box>
       {quirks.map((q) => {
         const chosen = selectedSet.has(q.name);
-        const cost = q.cost > 0 ? `+${q.cost}` : `-${Math.abs(q.cost)}`;
-        const costColor = q.cost > 0 ? 'good' : 'bad';
+        const cost = q.cost > 0 ? `-${q.cost}` : `+${Math.abs(q.cost)}`;
+        const costColor = q.cost > 0 ? 'bad' : 'good';
 
         let disabled = false;
-        let buttonContent = chosen ? 'Снять' : 'Выбрать';
+        let buttonContent = chosen ? 'Убрать' : 'Выбрать';
         let buttonColor = chosen ? 'bad' : 'good';
 
         if (!chosen) {
@@ -105,7 +104,7 @@ export const QuirkMenu = () => {
           >
             <LabeledList>
               <LabeledList.Item label="Описание">{q.desc}</LabeledList.Item>
-              <LabeledList.Item label="Поинты">
+              <LabeledList.Item label="Эффект">
                 <Box color={costColor} bold>
                   {cost}
                 </Box>
@@ -122,18 +121,18 @@ export const QuirkMenu = () => {
       <Window.Content>
         <Stack fill>
           <Stack.Item grow basis={500}>
-            <Section title="Доступные квирки" fill scrollable>
+            <Section title="Available Quirks" fill scrollable>
               <Stack vertical>
                 {renderList(
                   data.all_quirks.filter((q) => q.cost < 0),
-                  'Негативный квирк (Добавляет поинты)',
-                  'bad',
+                  'Негативные квирки (Добавляют поинты)',
+                  'green',
                   'minus-circle'
                 )}
                 {renderList(
                   data.all_quirks.filter((q) => q.cost > 0),
-                  'Позитивный квирк (Отнимает поинты)',
-                  'green',
+                  'Позитивные квирки (Убавляют поинты)',
+                  'bad',
                   'plus-circle'
                 )}
               </Stack>
@@ -151,13 +150,13 @@ export const QuirkMenu = () => {
                   {balance}
                 </Box>
               </Section>
-              <Section title="Выбранные квирки" fill scrollable>
+              <Section title="Выбранные квирки." fill scrollable>
                 {selected.length ? (
                   selected.map((name) => {
                     const q = data.all_quirks.find((x) => x.name === name);
                     if (!q) return null;
-                    const cost = q.cost > 0 ? `+${q.cost}` : `-${Math.abs(q.cost)}`;
-                    const border = q.cost > 0 ? 'var(--color-good)' : 'var(--color-bad)';
+                    const cost = q.cost > 0 ? `-${q.cost}` : `+${Math.abs(q.cost)}`;
+                    const border = q.cost > 0 ? 'var(--color-bad)' : 'var(--color-good)';
                     return (
                       <Box key={name} mb={0.5} p={0.5} style={{ borderLeft: `3px solid ${border}` }}>
                         <Stack justify="space-between">
@@ -168,7 +167,7 @@ export const QuirkMenu = () => {
                     );
                   })
                 ) : (
-                  <Box italic>Нету выбранных квирков.</Box>
+                  <Box italic>Нет выбранных квирков.</Box>
                 )}
               </Section>
             </Stack>
