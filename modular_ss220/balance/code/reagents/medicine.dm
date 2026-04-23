@@ -90,9 +90,9 @@
 	update_flags |= M.adjustFireLoss(-5, FALSE)
 	update_flags |= M.adjustStaminaLoss(15, FALSE)
 	if(prob(30))
-		M.Confused(5 SECONDS)
-	if(prob(10))
-		M.SetWeakened(2 SECONDS, FALSE)
+		M.Confused(10 SECONDS)
+	if(prob(5))
+		M.SetWeakened(6 SECONDS, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/dermalin/overdose_process(mob/living/M)
@@ -124,9 +124,9 @@
 	update_flags |= M.adjustBruteLoss(-5, FALSE)
 	update_flags |= M.adjustStaminaLoss(15, FALSE)
 	if(prob(30))
-		M.Confused(5 SECONDS)
-	if(prob(10))
-		M.SetWeakened(2 SECONDS, FALSE)
+		M.Confused(10 SECONDS)
+	if(prob(5))
+		M.SetWeakened(6 SECONDS, FALSE)
 	return ..() | update_flags
 
 /datum/reagent/medicine/bruzin/overdose_process(mob/living/M)
@@ -149,150 +149,54 @@
 	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "bicaridine" = 2, "mitocholide" = 1, "haloperidol" = 1)
 	result_amount = 1
 
-//MARK: Роботические наркотики
-// Сделано для роботов, От роботов.
-
-// Роботизированная трава. Сочетает в себе эффекты КБД и ТГК.
-/datum/reagent/w33d
-	name = "В33Д"
-	id = "w33d"
-	description = "Густая маслянистая смесь, предназначенная для имитации действия каннабиса в синтетических препаратах. \
-	По счастливому совпадению, после высыхания она также может использоваться в качестве пригодного наполнителя, герметика и изолятора.."
+/datum/reagent/medicine/bruzin_pluse
+	name = "Брузин плюс"
+	id = "bruzin_pluse"
+	description = "Продвинутая версия Брузина, лишённая стандартных побочных эффектов ценой ужасающих эффектов при передозе. Экслюзивная разработка синдиката."
 	reagent_state = LIQUID
-	color = "#17dd17"
+	color = "#dd0303"
+	metabolization_rate = 0.4
 	overdose_threshold = 30
-	process_flags = SYNTHETIC
-	taste_description = "Чувак, это просто лучшее и самое расслабляющее занятие на свете!"
+	harmless = FALSE
+	taste_description = "Сладковато мясной"
 
-/datum/reagent/w33d/on_mob_life(mob/living/M)
+/datum/reagent/medicine/bruzin_pluse/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
-	if(prob(10))
-		M.AdjustStuttering(rand(0, 6 SECONDS))
-	if(prob(5))
-		M.emote(pick("hsigh", "giggle", "laugh", "smile"))
-	if(prob(5))
-		to_chat(M, "<span class='notice'>[pick("Ты чувствуешь себя спокойно.", "Ты тихо жужжишь.", "Ты чувствуешь себя расслабленно.", "Ты наслаждаешься атмосферой.")]</span>")
-	if(prob(4))
-		M.Confused(20 SECONDS)
-	if(prob(10))
-		M.AdjustConfused(-10 SECONDS)
-		M.SetWeakened(0, FALSE)
-	if(prob(25))
-		if(ishuman(M))
-			var/mob/living/carbon/human/dude = M
-			update_flags |= dude.adjustBruteLoss(-4, FALSE, robotic = TRUE)
-			update_flags |= dude.adjustFireLoss(-4, FALSE, robotic = TRUE)
-	if(volume >= 50 && prob(25))
-		if(prob(10))
-			M.Drowsy(20 SECONDS)
+	update_flags |= M.adjustBruteLoss(-5, FALSE)
 	return ..() | update_flags
 
-/datum/reagent/w33d/overdose_process(mob/living/M, severity)
+/datum/reagent/medicine/bruzin_pluse/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
-	update_flags |= M.adjustBruteLoss(3, FALSE)
-	update_flags |= M.adjustFireLoss(3, FALSE)
-	update_flags |= M.adjustBrainLoss(1, FALSE)
-	update_flags |= M.adjustStaminaLoss(5, FALSE)
+	update_flags |= M.adjustBruteLoss(15, FALSE)
+	update_flags |= M.adjustStaminaLoss(40, FALSE)
+	if(prob(70))
+		M.Confused(15 SECONDS)
+	if(prob(50))
+		M.SetWeakened(5 SECONDS, FALSE)
 	return list(0, update_flags)
 
-// Robot Krokodil
-/datum/reagent/grokodil
-	name = "Грокодил"
-	id = "grokodil"
-	description = "Экспериментальное соединение, созданное в темных переулках Нью-Кэнана, призвано имитировать действие Крокодила в синтетических материалах. \
-	К сожалению, это сработало слишком хорошо, поскольку также точно воспроизводит тот факт, что у него есть серьезные побочные эффекты. \
-	Чрезмерное потребление вызовет сильную коррозию и сочетание эндотермических и экзотермических реакций, которые приведут к локальному плавлению и общему снижению температуры."
-	color = "#212121"
-	process_flags = SYNTHETIC
-	overdose_threshold = 20
-	addiction_chance = 10
-	addiction_threshold = 10
-	taste_description = "Очень неудачный жизненный выбор"
-	allowed_overdose_process = TRUE
-	goal_department = "Science"
-	goal_difficulty = REAGENT_GOAL_HARD
+/datum/reagent/medicine/dermalin_pluse
+	name = "Дермалин Плюс"
+	id = "dermalin_pluse"
+	description = "Продвинутая версия Дермалина, лишённая стандартных побочных эффектов ценой ужасающих эффектов при передозе. Экслюзивная разработка синдиката."
+	reagent_state = LIQUID
+	color = "#eeff00"
+	metabolization_rate = 0.4
+	overdose_threshold = 30
+	harmless = FALSE
+	taste_description = "Сладковато кислый"
 
-/datum/reagent/grokodil/on_mob_life(mob/living/M)
+/datum/reagent/medicine/dermalin_pluse/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
-	M.AdjustJitter(-80 SECONDS)
-	if(prob(25))
-		M.emote(pick("smile", "grin", "chuckle", "laugh"))
-	if(prob(15))
-		to_chat(M, "<span class='notice'>Ты чувствуешь себя довольно спокойно.</span>")
-		M.bodytemperature--
-		M.emote("smile")
-	if(prob(30))
-		to_chat(M, "<span class='warning'>Ты слишком расслаблен</span>")
-		M.emote(pick("shiver", "cross"))
-		update_flags |= M.adjustBruteLoss(2, FALSE)
-		update_flags |= M.adjustFireLoss(2, FALSE)
-		update_flags |= M.adjustBrainLoss(3, FALSE)
-		update_flags |= M.adjustStaminaLoss(-50, FALSE)
-		M.bodytemperature -= 20
-	if(prob(2))
-		to_chat(M, "<span class='warning'>На корпусе вашего шасси появляются пятна коррозии.!</span>")
-		update_flags |= M.adjustBruteLoss(2, FALSE)
+	update_flags |= M.adjustFireLoss(-5, FALSE)
 	return ..() | update_flags
 
-/datum/reagent/grokodil/overdose_process(mob/living/M, severity)
-	var/list/overdose_info = ..()
-	var/effect = overdose_info[REAGENT_OVERDOSE_EFFECT]
-	var/update_flags = overdose_info[REAGENT_OVERDOSE_FLAGS]
-	if(severity == 1)
-		if(effect <= 2)
-			M.visible_message("<span class='warning'>[M] выглядит ошеломлённым!</span>")
-			M.Stun(6 SECONDS)
-			do_sparks(5, FALSE, M)
-			M.emote("stare")
-		else if(effect <= 4)
-			M.emote("shiver")
-			M.bodytemperature -= 40
-		else if(effect <= 7)
-			to_chat(M, "<span class='warning'>Корпус и внутренние компоненты вашего шасси подвергаются коррозии.!</span>")
-			update_flags |= M.adjustBruteLoss(5, FALSE)
-			update_flags |= M.adjustFireLoss(2, FALSE)
-			update_flags |= M.adjustBrainLoss(1, FALSE)
-			M.emote("cry")
-		return list(effect, update_flags)
-
-	if(severity == 2)
-		if(effect <= 2)
-			M.visible_message(
-				"<span class='warning'>[M] качается и падает!</span>",
-				"<span class='warning'>Ты покачиваешься и падаешь!</span>"
-			)
-			update_flags |= M.adjustBruteLoss(3, FALSE)
-			update_flags |= M.adjustBrainLoss(3, FALSE)
-			M.Weaken(16 SECONDS)
-			M.emote("faint")
-		else if(effect <= 4)
-			M.visible_message(
-				"<span class='danger'>На корпусе появляются крупные трещины [M]'s и окружающая область начинает плавиться!</span>",
-				"<span class='userdanger'>На корпусе появляются крупные трещины и окружающая область начинает плавиться!</span>"
-			)
-			update_flags |= M.adjustBruteLoss(25, FALSE)
-			update_flags |= M.adjustFireLoss(25, FALSE) // We can't husk a robot. So we substitute with some extra melt damage.
-			M.emote("scream")
-			M.emote("faint")
-		else if(effect <= 7)
-			M.emote("shiver")
-			M.bodytemperature -= 70
-	return list(effect, update_flags)
-
-/datum/chemical_reaction/w33d
-	name = "В33Д"
-	id = "w33d"
-	result = "w33d"
-	required_reagents = list("synthanol" = 1, "oil" = 1, "aluminum" = 1)
-	result_amount = 3
-	mix_message = "Смесь вспенивается, превращаясь в ярко-зеленое масло с мускусным запахом.."
-
-/datum/chemical_reaction/grokodil
-	name = "Грокодил"
-	id = "grokodil"
-	result = "grokodil"
-	required_reagents = list("mutadone" = 1, "heparin" = 1, "cleaner" = 1, "phenol" = 1, "w33d" = 1)
-	result_amount = 5
-	mix_message = "Из раствора выпадает полутвердый черный порошок."
-	min_temp = T0C + 100
-	mix_sound = 'sound/goonstation/misc/fuse.ogg'
+/datum/reagent/medicine/dermalin_pluse/overdose_process(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustFireLoss(15, FALSE)
+	update_flags |= M.adjustStaminaLoss(40, FALSE)
+	if(prob(70))
+		M.Confused(15 SECONDS)
+	if(prob(50))
+		M.SetWeakened(5 SECONDS, FALSE)
+	return ..() | update_flags

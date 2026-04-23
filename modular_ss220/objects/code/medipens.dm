@@ -61,6 +61,20 @@
 	list_reagents = list("charcoal" = 20)
 	instant_application = FALSE
 
+/obj/item/reagent_containers/hypospray/autoinjector/custom/elite/brute
+	name = "Элитный медипен"
+	icon_state = "medipen_red"
+	desc = "Специальный медипен содержащий высокачественную медицину способную лечить раны и справляться с колосальными физическими повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
+	list_reagents = list("bruzin_pluse" = 10)
+	instant_application = FALSE
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/elite/burn
+	name = "Элитный медипен"
+	icon_state = "medipen_org"
+	desc = "Специальный медипен содержащий высокачественную медицину способную лечить раны и справляться с колосальными ожоговыми повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
+	list_reagents = list("dermalin_pluse" = 10)
+	instant_application = FALSE
+
 // MARK: Космическая аптечка
 /obj/item/storage/firstaid/spacer
 	name = "Космическая аптечка"
@@ -129,7 +143,7 @@
 		P.apply_wrapper_color(I)
 
 /obj/item/storage/pill_bottle/medipen_case/radiation
-	name = "anti-radiation medipen case"
+	name = "Кейс содержащий противорадиационные и токсинные автоинжекторы"
 	wrapper_color = COLOR_ORANGE
 
 /obj/item/storage/pill_bottle/medipen_case/radiation/populate_contents()
@@ -144,7 +158,6 @@
 	accepted_items_typecache |= typecacheof(list(
 		/obj/item/reagent_containers/hypospray/autoinjector,
 	))
-
 
 /obj/machinery/economy/vending/medical/Initialize(mapload)
 	products += list(/obj/item/storage/pill_bottle/medipen_case = 1,)
