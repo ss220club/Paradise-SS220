@@ -131,7 +131,7 @@
 
 /datum/quirk/hungry/remove_quirk_effects()
 	..()
-	owner.dna.species.hunger_drain -= 0.03
+	owner.dna.species.hunger_drain += 0.03
 
 /datum/quirk/colorblind
 	name = "Monochromacy"
