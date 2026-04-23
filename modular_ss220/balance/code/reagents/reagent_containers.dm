@@ -63,15 +63,15 @@
 	desc = "Маленькая бутылка с брузином."
 	list_reagents = list("bruzin" = 30)
 
-/obj/item/reagent_containers/glass/bottle/dermalin_pluse
+/obj/item/reagent_containers/glass/bottle/dermalin_plus
 	name = "Бутылка дермалина плюс"
 	desc = "Маленькая бутылка с дермалином плюс."
-	list_reagents = list("dermalin_pluse" = 30)
+	list_reagents = list("dermalin_plus" = 30)
 
-/obj/item/reagent_containers/glass/bottle/bruzin_pluse
+/obj/item/reagent_containers/glass/bottle/bruzin_plus
 	name = "Бутылка брузина плюс"
 	desc = "Маленькая бутылка с брузином плюс."
-	list_reagents = list("bruzin_pluse" = 30)
+	list_reagents = list("bruzin_plus" = 30)
 
 /obj/item/reagent_containers/glass/bottle/adv_lava_extract
 	name = "Бутылка модифицированного экстракта лазиса "

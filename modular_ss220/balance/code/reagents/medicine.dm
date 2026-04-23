@@ -149,9 +149,9 @@
 	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "bicaridine" = 2, "mitocholide" = 1, "haloperidol" = 1)
 	result_amount = 1
 
-/datum/reagent/medicine/bruzin_pluse
+/datum/reagent/medicine/bruzin_plus
 	name = "Брузин плюс"
-	id = "bruzin_pluse"
+	id = "bruzin_plus"
 	description = "Продвинутая версия Брузина, лишённая стандартных побочных эффектов ценой ужасающих эффектов при передозе. Экслюзивная разработка синдиката."
 	reagent_state = LIQUID
 	color = "#dd0303"
@@ -160,12 +160,12 @@
 	harmless = FALSE
 	taste_description = "Сладковато мясной"
 
-/datum/reagent/medicine/bruzin_pluse/on_mob_life(mob/living/M)
+/datum/reagent/medicine/bruzin_plus/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(-5, FALSE)
 	return ..() | update_flags
 
-/datum/reagent/medicine/bruzin_pluse/overdose_process(mob/living/M)
+/datum/reagent/medicine/bruzin_plus/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(15, FALSE)
 	update_flags |= M.adjustStaminaLoss(40, FALSE)
@@ -175,9 +175,9 @@
 		M.SetWeakened(5 SECONDS, FALSE)
 	return list(0, update_flags)
 
-/datum/reagent/medicine/dermalin_pluse
+/datum/reagent/medicine/dermalin_plus
 	name = "Дермалин Плюс"
-	id = "dermalin_pluse"
+	id = "dermalin_plus"
 	description = "Продвинутая версия Дермалина, лишённая стандартных побочных эффектов ценой ужасающих эффектов при передозе. Экслюзивная разработка синдиката."
 	reagent_state = LIQUID
 	color = "#eeff00"
@@ -186,12 +186,12 @@
 	harmless = FALSE
 	taste_description = "Сладковато кислый"
 
-/datum/reagent/medicine/dermalin_pluse/on_mob_life(mob/living/M)
+/datum/reagent/medicine/dermalin_plus/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustFireLoss(-5, FALSE)
 	return ..() | update_flags
 
-/datum/reagent/medicine/dermalin_pluse/overdose_process(mob/living/M)
+/datum/reagent/medicine/dermalin_plus/overdose_process(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustFireLoss(15, FALSE)
 	update_flags |= M.adjustStaminaLoss(40, FALSE)

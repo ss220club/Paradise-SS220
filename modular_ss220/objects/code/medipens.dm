@@ -65,14 +65,14 @@
 	name = "Элитный медипен"
 	icon_state = "medipen_red"
 	desc = "Специальный медипен содержащий высокачественную медицину способную лечить раны и справляться с колосальными физическими повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
-	list_reagents = list("bruzin_pluse" = 10)
+	list_reagents = list("bruzin_plus" = 10)
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/elite/burn
 	name = "Элитный медипен"
 	icon_state = "medipen_org"
 	desc = "Специальный медипен содержащий высокачественную медицину способную лечить раны и справляться с колосальными ожоговыми повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
-	list_reagents = list("dermalin_pluse" = 10)
+	list_reagents = list("dermalin_plus" = 10)
 	instant_application = FALSE
 
 // MARK: Космическая аптечка
