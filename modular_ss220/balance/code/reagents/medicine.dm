@@ -133,7 +133,7 @@
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustBruteLoss(10, FALSE)
 	update_flags |= M.adjustStaminaLoss(20, FALSE)
-	return list(0, update_flags)
+	return ..() | update_flags
 
 /datum/chemical_reaction/dermalin
 	name = "Дермалин"
@@ -173,7 +173,7 @@
 		M.Confused(15 SECONDS)
 	if(prob(50))
 		M.SetWeakened(5 SECONDS, FALSE)
-	return list(0, update_flags)
+	return ..() | update_flags
 
 /datum/reagent/medicine/dermalin_plus
 	name = "Дермалин Плюс"

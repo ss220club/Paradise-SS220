@@ -27,21 +27,21 @@
 		icon_state = "[icon_state]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/brute
-	name = "Медипен для физического урона"
+	name = "Медипен против травм"
 	icon_state = "medipen_red"
 	desc = "Быстрый и безопасный способ лечить раны и справляться с незначительной болью даже через скафандры. Содержит бикаридин и салициловую кислоту."
 	list_reagents = list("bicaridine" = 10, "sal_acid" = 3)
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/burn
-	name = "Медипен от ожогов"
+	name = "Медипен против ожогов"
 	icon_state = "medipen_org"
 	desc = "Быстрый и безопасный способ лечить ожоги и регулировать температуру тела даже через скафандры. Содержит келотан и ментол."
 	list_reagents = list("kelotane" = 10, "menthol" = 3)
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/critical
-	name = "Медипен стабилизации"
+	name = "Стабилизирующий медипен"
 	icon_state = "medipen_blu"
 	desc = "Быстрый и безопасный способ стабилизировать пациента и предотвратить потерю сознания даже через скафандры. Содержит эпинефрин и сальбутамол."
 	list_reagents = list("epinephrine" = 10, "salbutamol" = 5)
@@ -64,21 +64,21 @@
 /obj/item/reagent_containers/hypospray/autoinjector/custom/elite/brute
 	name = "Элитный медипен"
 	icon_state = "medipen_red"
-	desc = "Специальный медипен содержащий высокачественную медицину способную лечить раны и справляться с колосальными физическими повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
+	desc = "Специальный медипен содержащий высококачественную медицину способную лечить раны и справляться с колоссальными физическими повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
 	list_reagents = list("bruzin_plus" = 10)
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/elite/burn
 	name = "Элитный медипен"
 	icon_state = "medipen_org"
-	desc = "Специальный медипен содержащий высокачественную медицину способную лечить раны и справляться с колосальными ожоговыми повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
+	desc = "Специальный медипен содержащий высококачественную медицину способную лечить раны и справляться с колоссальными ожоговыми повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
 	list_reagents = list("dermalin_plus" = 10)
 	instant_application = FALSE
 
 // MARK: Космическая аптечка
 /obj/item/storage/firstaid/spacer
 	name = "Космическая аптечка"
-	desc = "Медицинский набор, предназначенный для использования в вакууме при ношении EVA и MOD скафандров. Содержит медипены для лечения физического урона и ожогов. Также включает медипены стабилизации с противотоксиным для экстренных случаев и анализатор здоровья."
+	desc = "Медицинский набор, предназначенный для использования в вакууме при ношении EVA и MOD скафандров. Содержит медипены для лечения физического урона и ожогов. Также включает медипены стабилизации с противотоксинным для экстренных случаев и анализатор здоровья."
 	icon_state = "firstaid_spacer"
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	lefthand_file = 'modular_ss220/aesthetics/boxes/icons/boxes_lefthand.dmi'
@@ -112,7 +112,7 @@
 // MARK: Медипен кейсы
 /obj/item/storage/pill_bottle/medipen_case
 	name = "Кейс для автоинжекторов"
-	desc = "Это контейнер для хранения медицинских автоинжекторов.."
+	desc = "Это контейнер для хранения медицинских автоинжекторов."
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	icon_state = "medipen_case"
 	belt_icon = "patch_pack"

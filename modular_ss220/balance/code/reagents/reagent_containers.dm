@@ -74,6 +74,6 @@
 	list_reagents = list("bruzin_plus" = 30)
 
 /obj/item/reagent_containers/glass/bottle/adv_lava_extract
-	name = "Бутылка модифицированного экстракта лазиса "
+	name = "Бутылка модифицированного экстракта лазиса."
 	desc = "Маленькая бутылка с модифицированным экстрактом лазиса."
 	list_reagents = list("adv_lava_extract" = 30)
