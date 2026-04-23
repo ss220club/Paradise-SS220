@@ -119,27 +119,30 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/mac_vulpix, 32, 
 	poster_type = /obj/structure/sign/poster/official/mac_vulpix
 
 /obj/structure/sign/poster/official/assist_girl
-	name = "Постер Assist Girl"
-	desc = "Официальный постер Nanotrasen с девушкой-ассистентом, выполняющей различные поручения и задачи. Постер №1 из серии Assist Girl"
+	name = "Постер Assist Girl - Отдых"
+	desc = "Официальный постер Nanotrasen с девушкой-ассистентом. Не перетруждайтесь, выделите время для отдыха между работой. Постер №1 из серии Assist Girl"
 	icon = 'modular_ss220/objects/icons/posters.dmi'
 	icon_state = "assist_girl1"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/assist_girl, 32, 32)
 
 /obj/structure/sign/poster/official/assist_girl/two
-	desc = "Официальный постер Nanotrasen с девушкой-ассистентом, выполняющей различные поручения и задачи. Постер №2 из серии Assist Girl"
+	name = "Постер Assist Girl - Труд
+	desc = "Официальный постер Nanotrasen с девушкой-ассистентом. Трудитесь во бляго, ваш труд неотъемлемая часть рабочего процесса станции. Постер №2 из серии Assist Girl"
 	icon_state = "assist_girl2"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/assist_girl/two, 32, 32)
 
 /obj/structure/sign/poster/official/assist_girl/three
-	desc = "Официальный постер Nanotrasen с девушкой-ассистентом, выполняющей различные поручения и задачи. Постер №3 из серии Assist Girl"
+	name = "Постер Assist Girl - Здоровье
+	desc = "Официальный постер Nanotrasen с девушкой-ассистентом. Следите за собой, поддерживайте собственную гигиену. Постер №3 из серии Assist Girl"
 	icon_state = "assist_girl3"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/assist_girl/three, 32, 32)
 
 /obj/structure/sign/poster/official/assist_girl/four
-	desc = "Официальный постер Nanotrasen с девушкой-ассистентом, выполняющей различные поручения и задачи. Постер №4 из серии Assist Girl"
+	name = "Постер Assist Girl - Спорт
+	desc = "Официальный постер Nanotrasen с девушкой-ассистентом. Поддерживайте собственную форму, собственное здоровье превыше всего. Постер №4 из серии Assist Girl"
 	icon_state = "assist_girl4"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/assist_girl/four, 32, 32)
