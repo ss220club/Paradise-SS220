@@ -117,3 +117,32 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/mac_vulpix, 32, 
 	desc = "Рекламный постер с новой линейкой продукции “Большой Укус” от ресторана быстрого питания МакВульпикс."
 	icon_state = "rolled_poster_legit"
 	poster_type = /obj/structure/sign/poster/official/mac_vulpix
+
+/obj/structure/sign/poster/official/assist_girl
+	name = "Постер Assist Girl"
+	desc = "Официальный постер Nanotrasen с девушкой-ассистентом, выполняющей различные поручения и задачи. Постер №1 из серии Assist Girl"
+	icon = 'modular_ss220/objects/icons/posters.dmi'
+	icon_state = "assist_girl1"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/assist_girl, 32, 32)
+
+/obj/structure/sign/poster/official/assist_girl/two
+	name = "Постер Assist Girl"
+	desc = "Официальный постер Nanotrasen с девушкой-ассистентом, выполняющей различные поручения и задачи. Постер №2 из серии Assist Girl"
+	icon_state = "assist_girl2"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/assist_girl/two, 32, 32)
+
+/obj/structure/sign/poster/official/assist_girl/three
+	name = "Постер Assist Girl"
+	desc = "Официальный постер Nanotrasen с девушкой-ассистентом, выполняющей различные поручения и задачи. Постер №3 из серии Assist Girl"
+	icon_state = "assist_girl3"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/assist_girl/three, 32, 32)
+
+/obj/structure/sign/poster/official/assist_girl/four
+	name = "Постер Assist Girl"
+	desc = "Официальный постер Nanotrasen с девушкой-ассистентом, выполняющей различные поручения и задачи. Постер №4 из серии Assist Girl"
+	icon_state = "assist_girl4"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/assist_girl/four, 32, 32)
