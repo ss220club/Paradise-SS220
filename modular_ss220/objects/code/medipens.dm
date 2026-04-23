@@ -13,12 +13,12 @@
 
 // MARK: Кастом медипены
 /obj/item/reagent_containers/hypospray/autoinjector/custom
-	var/instant_application = TRUE
 	icon = 'modular_ss220/objects/icons/medipens.dmi'
 	icon_state = "medipen"
 	desc = "Быстрый и безопасный способ вводить химические вещества гуманоидным существам. Этот имеет увеличенную ёмкость."
 	amount_per_transfer_from_this = 30
 	volume = 30
+	var/instant_application = TRUE
 	instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/update_icon_state()
