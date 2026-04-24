@@ -76,7 +76,7 @@
 	metabolization_rate = 0.4
 	overdose_threshold = 15
 	harmless = FALSE
-	var/list/drug_list = list("crank", "methamphetamine", "space_drugs", "synaptizine", "psilocybin", "ephedrine", "epinephrine", "stimulants", "stimulative_agent", "bath_salts", "lsd", "thc", "mephedrone", "pump_up")
+	var/static/list/drug_list = list("crank", "methamphetamine", "space_drugs", "synaptizine", "psilocybin", "ephedrine", "epinephrine", "stimulants", "stimulative_agent", "bath_salts", "lsd", "thc", "mephedrone", "pump_up")
 	taste_description = "Сладковато кислый"
 	goal_department = "Chemistry"
 	goal_difficulty = REAGENT_GOAL_HARD
@@ -110,7 +110,7 @@
 	metabolization_rate = 0.4
 	overdose_threshold = 15
 	harmless = FALSE
-	var/list/drug_list = list("crank", "methamphetamine", "space_drugs", "synaptizine", "psilocybin", "ephedrine", "epinephrine", "stimulants", "stimulative_agent", "bath_salts", "lsd", "thc", "mephedrone", "pump_up")
+	var/static/list/drug_list = list("crank", "methamphetamine", "space_drugs", "synaptizine", "psilocybin", "ephedrine", "epinephrine", "stimulants", "stimulative_agent", "bath_salts", "lsd", "thc", "mephedrone", "pump_up")
 	taste_description = "Сладковато мясной"
 	goal_department = "Chemistry"
 	goal_difficulty = REAGENT_GOAL_HARD

@@ -18,8 +18,7 @@
 	desc = "Быстрый и безопасный способ вводить химические вещества гуманоидным существам. Этот имеет увеличенную ёмкость."
 	amount_per_transfer_from_this = 30
 	volume = 30
-	var/instant_application = TRUE
-	instant_application = FALSE
+	var/instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/update_icon_state()
 	icon_state = replacetext(icon_state, regex(@"\d+$"), "")
