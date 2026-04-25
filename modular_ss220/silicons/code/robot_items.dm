@@ -40,10 +40,6 @@
 	volume = 60
 
 /* Service */
-/obj/item/rsf/attack_self__legacy__attackchain(mob/user)
-	if(..() && power_mode >= 3000)
-		power_mode /= 2
-
 /obj/item/eftpos/cyborg
 	name = "Silicon EFTPOS"
 	desc = "Проведите ID картой для оплаты налогов."

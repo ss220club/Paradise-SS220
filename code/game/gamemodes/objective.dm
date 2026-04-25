@@ -297,6 +297,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/infiltrate_sec
 	name = "Проникнуть в службу безопасности"
 	explanation_text = "Ваша задача — незаметно проникнуть в ряды отдела безопасности, будь то путем законного трудоустройства или путем замены одного из его сотрудников."
+	delayed_objective_text = "Your objective is unknown. You will receive further information in a few minutes"
 	needs_target = FALSE
 	completed = TRUE
 
@@ -917,7 +918,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/destroy
 	name = "Destroy AI"
 	martyr_compatible = TRUE
-	delayed_objective_text = "Your objective is to destroy an Artificial Intelligence. You will receive further information in a few minutes."
+	delayed_objective_text = "Your objective is unknown. You will receive further information in a few minutes"
 
 /datum/objective/destroy/find_target(list/target_blacklist)
 	var/list/possible_targets = active_ais(1)
