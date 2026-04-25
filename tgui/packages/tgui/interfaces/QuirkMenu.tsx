@@ -70,7 +70,7 @@ export const QuirkMenu = () => {
         const costColor = q.cost > 0 ? 'good' : 'bad';
 
         let disabled = false;
-        let buttonContent = chosen ? 'Снять' : 'Выбрать';
+        let buttonContent = chosen ? 'Убрать' : 'Выбрать';
         let buttonColor = chosen ? 'bad' : 'good';
 
         if (!chosen) {
@@ -126,13 +126,13 @@ export const QuirkMenu = () => {
               <Stack vertical>
                 {renderList(
                   data.all_quirks.filter((q) => q.cost < 0),
-                  'Негативный квирк (Добавляет поинты)',
+                  'Негативные квирки (Добавляют поинты)',
                   'bad',
                   'minus-circle'
                 )}
                 {renderList(
                   data.all_quirks.filter((q) => q.cost > 0),
-                  'Позитивный квирк (Отнимает поинты)',
+                  'Позитивные квирки (Убавляют поинты)',
                   'green',
                   'plus-circle'
                 )}
@@ -168,7 +168,7 @@ export const QuirkMenu = () => {
                     );
                   })
                 ) : (
-                  <Box italic>Нету выбранных квирков.</Box>
+                  <Box italic>Нет выбранных квирков.</Box>
                 )}
               </Section>
             </Stack>
