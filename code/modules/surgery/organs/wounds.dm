@@ -54,8 +54,8 @@
 
 /datum/wound/ruptured_lungs/do_effect()
 	if(prob(2) && !(NO_BLOOD in parent.owner.dna.species.species_traits))
-		parent.owner.custom_emote(EMOTE_VISIBLE, "coughs up blood!")
+		parent.owner.custom_emote(EMOTE_VISIBLE, "кашляет кровью!")
 		parent.owner.bleed(1)
 	if(prob(4))
-		parent.owner.custom_emote(EMOTE_VISIBLE, "gasps for air!")
+		parent.owner.custom_emote(EMOTE_VISIBLE, "задыхается!")
 		parent.owner.AdjustLoseBreath(10 SECONDS)
