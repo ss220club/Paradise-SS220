@@ -1,6 +1,6 @@
 /datum/spell/aoe/conjure/summon_supermatter
 	name = "Summon Supermatter Crystal"
-	desc = "Summons an active supermatter crystal. Imbues you with some supermatter, giving you resistance to it's hallucinations and radiation immunity."
+	desc = "Вызывает активный кристалл Суперматерии. Насыщает вас некоторым количеством Суперматерии, что дает вам устойчивость к галлюцинациям и радиации."
 	base_cooldown = 5 MINUTES
 	cooldown_min = 60 SECONDS
 	summon_type = list(/obj/machinery/atmospherics/supermatter_crystal/shard)

@@ -1,6 +1,6 @@
 /datum/spell/lichdom
 	name = "Bind Soul"
-	desc = "A dark necromantic pact that can forever bind your soul to an item of your choosing. So long as both your body and the item remain intact and on the same plane you can revive from death, though the time between reincarnations grows steadily with use."
+	desc = "Древний пакт смерти, навсегда привязывающий вашу душу к  предмету в руках. Пока ваше тело и предмет остаются целыми на одном уровне, вы сможете возрадиться после смерти. Время между возрождениями растет с каждой смертью."
 	base_cooldown = 10
 	clothes_req = FALSE
 	centcom_cancast = FALSE
@@ -28,26 +28,26 @@
 /datum/spell/lichdom/proc/attempt_revive(mob/user)
 	// Can only cast when unconscious/dead
 	if(user.stat == CONSCIOUS)
-		to_chat(user, SPAN_NOTICE("You aren't dead enough to revive!"))
+		to_chat(user, SPAN_NOTICE("Вы не мертвы, чтобы возродиться!"))
 		cooldown_handler.revert_cast()
 		return
 
 	// Body was destroyed
 	if(QDELETED(current_body))
-		to_chat(user, SPAN_WARNING("Your body is gone!"))
+		to_chat(user, SPAN_WARNING("Вашего тела больше нет!"))
 		return
 
 	// Phylactery was destroyed
 	var/obj/item/marked_item = locateUID(marked_item_uid)
 	if(QDELETED(marked_item))
-		to_chat(user, SPAN_WARNING("Your phylactery is gone!"))
+		to_chat(user, SPAN_WARNING("Ваш кристраж пропал!"))
 		return
 
 	// Wrong z-level
 	var/turf/body_turf = get_turf(current_body)
 	var/turf/item_turf = get_turf(marked_item)
 	if(body_turf.z != item_turf.z)
-		to_chat(user, SPAN_WARNING("Your phylactery is out of range!"))
+		to_chat(user, SPAN_WARNING("Ваш кристраж вне досягаемости!"))
 		return
 
 	if(isobserver(user))
@@ -64,7 +64,7 @@
 		// Give a hint as to where the body is
 		var/wheres_wizdo = dir2text(get_dir(body_turf, item_turf))
 		if(wheres_wizdo)
-			current_body.visible_message(SPAN_WARNING("Suddenly [current_body.name]'s corpse falls to pieces! You see a strange energy rise from the remains, and speed off towards the [wheres_wizdo]!"))
+			current_body.visible_message(SPAN_WARNING("Внезапно труп [current_body.declent_ru(GENITIVE)] разваливается на куски! Вы видите, как из останков поднимается странная энергия и устремляется к [wheres_wizdo]!"))
 			body_turf.Beam(item_turf, icon_state = "lichbeam", icon = 'icons/effects/effects.dmi', time = 10 + 10 * resurrections, maxdistance = INFINITY)
 
 		UnregisterSignal(current_body, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
@@ -81,24 +81,24 @@
 
 	current_body = lich
 	cooldown_handler.recharge_duration += 1 MINUTES
-	to_chat(lich, SPAN_WARNING("Your bones clatter and shudder as they're pulled back into this world!"))
+	to_chat(lich, SPAN_WARNING("Ваши кости стучат и содрогаются, когда их возвращают в этот мир!"))
 
 /datum/spell/lichdom/proc/attempt_mark_item(mob/user)
 	var/obj/item/target = user.get_active_hand()
 	if(!target)
-		to_chat(user, SPAN_WARNING("You must hold an item you wish to make your phylactery!"))
+		to_chat(user, SPAN_WARNING("У вас должен быть предмет, который вы хотите использовать для создания своего кристража!"))
 		return
 
 	if(target.flags & (ABSTRACT|NODROP))
-		to_chat(user, SPAN_WARNING("[target] cannot be used as your phylactery!"))
+		to_chat(user, SPAN_WARNING("[target.declent_ru(NOMINATIVE)] не может быть использован в качестве вашего кристража!"))
 		return
 
 	if(!do_after(user, 5 SECONDS, target = target))
-		to_chat(user, SPAN_WARNING("Your soul snaps back to your body as you drop [target]!"))
+		to_chat(user, SPAN_WARNING("Ваша душа возвращается в ваше тело, когда вы бросаете [target.declent_ru(ACCUSATIVE)]!"))
 		return
 
 	name = "RISE!"
-	desc = "Rise from the dead! You will reform at the location of your phylactery and your old body will crumble away."
+	desc = "Восстань из мертвых! Вы возродитесь в том месте, где находится ваш кристраж, и ваше старое тело исчезнет."
 	stat_allowed = UNCONSCIOUS
 	cooldown_handler.recharge_duration = 3 MINUTES
 	cooldown_handler.revert_cast()
@@ -108,7 +108,7 @@
 		build_all_button_icons()
 
 	target.name = "ensouled [target.name]"
-	target.desc += "<br>[SPAN_WARNING("A terrible aura surrounds this item, its very existence is offensive to life itself...")]"
+	target.desc += "<br>[SPAN_WARNING("Зловещая аура окружает этот предмет, даже его существование оскорбительно для самой жизни...")]"
 	target.color = "#003300"
 	marked_item_uid = target.UID()
 
@@ -122,7 +122,7 @@
 		H.drop_item_to_ground(H.head)
 		equip_lich(H)
 
-	to_chat(user, SPAN_USERDANGER("With a hideous feeling of emptiness you watch in horrified fascination as skin sloughs off bone! Blood boils, nerves disintegrate, eyes boil in their sockets! As your organs crumble to dust in your fleshless chest you come to terms with your choice. You're a lich!"))
+	to_chat(user, SPAN_USERDANGER("С отвратительным чувством опустошенности вы с ужасом и восхищением наблюдаете, как кожа отслаивается от костей! Кровь кипит, нервы разрушаются, глаза выкипают из орбит! Ваши органы рассыпаются в прах в лишенной плоти груди, вы смиряетесь со своим выбором. Вы - лич!"))
 
 /datum/spell/lichdom/proc/is_revive_possible()
 	var/obj/item/marked_item = locateUID(marked_item_uid)

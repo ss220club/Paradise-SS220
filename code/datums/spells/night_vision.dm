@@ -1,12 +1,12 @@
 /datum/spell/night_vision
 	name = "Toggle Nightvision"
-	desc = "Toggle your nightvision mode."
+	desc = "Переключите режим ночного видения."
 
 	base_cooldown = 10
 	clothes_req = FALSE
 	antimagic_flags = NONE
 
-	message = SPAN_NOTICE("You toggle your night vision!")
+	message = SPAN_NOTICE("Вы переключаете свое ночное зрение!")
 
 /datum/spell/night_vision/create_new_targeting()
 	return new /datum/spell_targeting/self
