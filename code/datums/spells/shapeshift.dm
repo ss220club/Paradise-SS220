@@ -38,7 +38,7 @@
 /datum/spell/shapeshift/proc/Shapeshift(mob/living/caster)
 	for(var/mob/living/M in caster)
 		if(M.status_flags & GODMODE)
-			to_chat(caster, "<span class='warning'>Вы уже превратились!</span>")
+			to_chat(caster, SPAN_WARNING("Вы уже превратились!"))
 			return
 
 	var/mob/living/shape = new shapeshift_type(get_turf(caster))
@@ -82,10 +82,10 @@
 	possible_shapes = list(/mob/living/simple_animal/hostile/megafauna/dragon/lesser)
 
 /datum/spell/shapeshift/dragon/Shapeshift(mob/living/caster)
-	caster.visible_message("<span class='danger'>[caster.declent_ru(NOMINATIVE)] кричит в агонии, когда кости и когти вырываются из его плоти!</span>",
-		"<span class='danger'>Вы начинаете перевоплощаться.</span>")
+	caster.visible_message(SPAN_DANGER("[caster.declent_ru(NOMINATIVE)] кричит в агонии, когда кости и когти вырываются из его плоти!"),
+		SPAN_DANGER("Вы начинаете перевоплощаться."))
 	if(!do_after(caster, 5 SECONDS, FALSE, caster))
-		to_chat(caster, "<span class='warning'>Вы теряете концентрацию и не можете продолжить колдовать!</span>")
+		to_chat(caster, SPAN_WARNING("Вы теряете концентрацию и не можете продолжить колдовать!"))
 		return
 	return ..()
 

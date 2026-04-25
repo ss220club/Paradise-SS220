@@ -30,7 +30,7 @@
 
 /datum/quirk/glutton
 	name = "Glutton"
-	desc = "Вы можете есть быстрее и не страдать от последствий избыточного веса. Несовместим с рассой КПБ."
+	desc = "Вы можете есть быстрее и не страдать от последствий избыточного веса. Несовместимо с расой КПБ."
 	cost = 2
 	trait_to_apply = TRAIT_GLUTTON
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
@@ -129,13 +129,13 @@
 
 /datum/quirk/cool
 	name = "Cool"
-	desc = "Ты можешь сделать сальто с любого трамплина. Ты такой крутой!"
+	desc = "Вы можете сделать сальто с любого трамплина. Вы такой крутой!"
 	cost = 1
 	trait_to_apply = TRAIT_COOL
 
 /datum/quirk/breathing_tube
 	name = "Breathing Tube"
-	desc  = "You have been outfitted with a breathing tube."
+	desc  = "Вам вживили дыхательную трубку."
 	cost = 2
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube

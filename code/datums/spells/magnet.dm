@@ -49,7 +49,7 @@
 /datum/spell/charge_up/bounce/magnet/proc/try_throw_object(mob/user, mob/thrower, obj/item/to_throw)
 	if(!(to_throw.flags & CONDUCT) || !thrower.drop_item_to_ground(to_throw, silent = TRUE))
 		return FALSE
-	thrower.visible_message("<span class='warning'>[to_throw.declent_ru(NOMINATIVE)] вылетает из рук [thrower.declent_ru(GENITIVE)]!</span>",
-		"<span class='danger'>[to_throw.declent_ru(NOMINATIVE)] внезапно вырывается из ваших рук!</span>")
+	thrower.visible_message(SPAN_WARNING("[to_throw.declent_ru(NOMINATIVE)] вылетает из рук [thrower.declent_ru(GENITIVE)]!"),
+		SPAN_DANGER("[to_throw.declent_ru(NOMINATIVE)] внезапно вырывается из ваших рук!"))
 	to_throw.throw_at(user, to_throw.throw_range, 4)
 	return TRUE

@@ -39,8 +39,8 @@
 /datum/spell/charge_up/bounce/lightning/apply_bounce_effect(mob/origin, mob/living/target, energy, mob/user)
 	if(target.can_block_magic(antimagic_flags))
 		target.visible_message(
-			"<span class='warning'>[target.declent_ru(NOMINATIVE)] поглощает молнии, не получив повреждений!</span>",
-			"<span class='danger'>Вы поглощаете молнии. Вас так просто не остановить!</span>"
+			SPAN_WARNING("[target.declent_ru(NOMINATIVE)] поглощает молнии, не получив повреждений!"),
+			SPAN_DANGER("Вы поглощаете молнии. Вас так просто не остановить!")
 		)
 		return
 	if(damaging)

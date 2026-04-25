@@ -163,7 +163,7 @@
 /datum/emote/living/carbon/twirl/run_emote(mob/user, params, type_override, intentional)
 
 	if(!(user.get_active_hand() || user.get_inactive_hand()))
-		to_chat(user, "<span class='warning'>Вы должны держать что-то в руках, чтобы использовать эту эмоцию!</span>")
+		to_chat(user, SPAN_WARNING("Вы должны держать что-то в руках, чтобы использовать эту эмоцию!"))
 		return TRUE
 
 	var/obj/item/thing
@@ -198,7 +198,7 @@
 	else if(!(thing.flags & ABSTRACT))
 		message = "вертит [thing] в руке!"
 	else
-		to_chat(user, "<span class='warning'>У вас не получится повертеть [thing]!</span>")
+		to_chat(user, SPAN_WARNING("У вас не получится повертеть [thing]!"))
 		return TRUE
 
 	. = ..()

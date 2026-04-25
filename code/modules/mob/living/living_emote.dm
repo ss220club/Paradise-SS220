@@ -198,7 +198,7 @@
 				message_param = "пытается указать ногой на %t."
 			else
 				// nugget
-				message_param = "<span class='userdanger'>ударяется головой о землю</span>, пытаясь двигаться в направлении %t."
+				message_param = "[SPAN_USERDANGER("ударяется головой о землю")], пытаясь двигаться в направлении %t."
 
 	return ..()
 
@@ -391,7 +391,7 @@
 /datum/emote/living/custom/proc/check_invalid(mob/user, input)
 	var/static/regex/stop_bad_mime = regex(@"говорит|кричит|шепчет|спрашивает")
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, "<span class='danger'>Некорректная эмоция.</span>")
+		to_chat(user, SPAN_DANGER("Некорректная эмоция."))
 		return TRUE
 	return FALSE
 
@@ -402,7 +402,7 @@
 	if(QDELETED(user))
 		return FALSE
 	else if(check_mute(user?.client?.ckey, MUTE_IC))
-		to_chat(user, "<span class='boldwarning'>Отправка IC сообщение недоступна (muted).</span>")
+		to_chat(user, SPAN_BOLDWARNING("Отправка IC сообщение недоступна (muted)."))
 		return FALSE
 	else if(!params)
 		custom_emote = tgui_input_text(user, "Выберите эмоцию для отображения.", "Custom Emote")
@@ -414,7 +414,7 @@
 				if("Слышима")
 					custom_emote_type = EMOTE_AUDIBLE
 				else
-					to_chat(user,"<span class='warning'>Использовать эмоцию невозможно, она должна быть слышима или видима.</span>")
+					to_chat(user,SPAN_WARNING("Использовать эмоцию невозможно, она должна быть слышима или видима."))
 					return
 	else
 		custom_emote = params

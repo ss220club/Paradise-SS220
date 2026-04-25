@@ -30,9 +30,9 @@
 	if(!hand_handled)
 		qdel(attached_hand)
 		attached_hand = null
-		to_chat(user, "<span class='warning'>Ваши руки заполнены!</span>")
+		to_chat(user, SPAN_WARNING("Ваши руки заполнены!"))
 		return 0
-	to_chat(user, "<span class='notice'>Вы направляете силу заклинания в свою руку.</span>")
+	to_chat(user, SPAN_NOTICE("Вы направляете силу заклинания в свою руку."))
 	return 1
 
 /datum/spell/touch/proc/discharge_hand(atom/target, any = FALSE)
@@ -44,7 +44,7 @@
 		return
 	QDEL_NULL(attached_hand)
 	if(on_remove_message)
-		to_chat(user, "<span class='notice'>Вы вытягиваете силу из своей руки.</span>")
+		to_chat(user, SPAN_NOTICE("Вы вытягиваете силу из своей руки."))
 
 
 /datum/spell/touch/disintegrate

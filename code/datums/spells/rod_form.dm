@@ -16,7 +16,7 @@
 
 /datum/spell/rod_form/cast(list/targets,mob/user = usr)
 	if(get_turf(user) != user.loc)
-		to_chat(user, "<span class='warning'>Вы не можете вызвать стержень в эфире!</span>")
+		to_chat(user, SPAN_WARNING("Вы не можете вызвать стержень в эфире!"))
 		revert_cast()
 		return FALSE
 	for(var/mob/living/M in targets)

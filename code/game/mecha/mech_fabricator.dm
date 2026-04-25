@@ -124,7 +124,7 @@
 	if(!I.tool_start_check(src, user, 0))
 		return
 	output_dir = turn(output_dir, -90)
-	to_chat(user, "<span class='notice'>Вы поворачиваете выход [declent_ru(GENITIVE)] на [dir2text(output_dir)].</span>")
+	to_chat(user, SPAN_NOTICE("Вы поворачиваете выход [declent_ru(GENITIVE)] на [dir2text(output_dir)]."))
 
 /obj/machinery/mecha_part_fabricator/RefreshParts()
 	var/coef_mats = 0
@@ -305,10 +305,10 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/can_insert_materials(mob/user)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>В [declent_ru(ACCUSATIVE)] не могут быть загружены новые материалы, пока панель открыта!</span>")
+		to_chat(user, SPAN_WARNING("В [declent_ru(ACCUSATIVE)] не могут быть загружены новые материалы, пока панель открыта!"))
 		return FALSE
 	if(being_built)
-		to_chat(user, "<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] в данный момент печатает деталь! Пожалуйста, дождитесь завершения.</span>")
+		to_chat(user, SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] в данный момент печатает деталь! Пожалуйста, дождитесь завершения."))
 		return FALSE
 	return TRUE
 
@@ -328,7 +328,7 @@
 	if(..())
 		return
 	if(!allowed(user) && !isobserver(user))
-		to_chat(user, "<span class='warning'>Доступ запрещён.</span>")
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 	ui_interact(user)
 
@@ -460,18 +460,18 @@
 				if(user_pass == C.network_password)
 					C.mechfabs += UID()
 					network_manager_uid = C.UID()
-					to_chat(usr, "<span class='notice'>Успешно подключено к <b>[C.network_name]</b>.</span>")
+					to_chat(usr, SPAN_NOTICE("Успешно подключено к <b>[C.network_name]</b>."))
 				else
-					to_chat(usr, "<span class='alert'><b>ОШИБКА:</b> Неправильный пароль.</span>")
+					to_chat(usr, SPAN_ALERT("<b>ОШИБКА:</b> Неправильный пароль."))
 			else
-				to_chat(usr, "<span class='alert'><b>ОШИБКА:</b> Контроллер не найден. Пожалуйста, отправьте отчет о проблеме.</span>")
+				to_chat(usr, SPAN_ALERT("<b>ОШИБКА:</b> Контроллер не найден. Пожалуйста, отправьте отчет о проблеме."))
 
 			return TRUE
 
 
 	var/datum/research/files = get_files()
 	if(!files)
-		to_chat(usr, "<span class='danger'>Ошибка: нет соединения с исследовательской сетью</span>")
+		to_chat(usr, SPAN_DANGER("Ошибка: нет соединения с исследовательской сетью"))
 		return
 
 	. = TRUE

@@ -41,7 +41,7 @@
 	. = ..()
 	var/list/turf/to_switcharoo = targets
 	if(!length(to_switcharoo))
-		to_chat(user, "<span class='warning'>По какой-то причине нити, находящиеся поблизости, не могут быть запутаны.</span>")
+		to_chat(user, SPAN_WARNING("По какой-то причине нити, находящиеся поблизости, не могут быть запутаны."))
 		return
 
 	ready = FALSE

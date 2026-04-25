@@ -5,8 +5,8 @@
 	base_cooldown = 600
 	clothes_req = FALSE
 	invocation = "GIN'YU CAPAN"
-	selection_activated_message = "<span class='notice'>Вы готовитесь перенести свой разум. Нажмите на цель, чтобы применить заклинание.</span>"
-	selection_deactivated_message = "<span class='notice'>Вы решаете, что ваше тело и так хорошее.</span>"
+	selection_activated_message = SPAN_NOTICE("Вы готовитесь перенести свой разум. Нажмите на цель, чтобы применить заклинание.")
+	selection_deactivated_message = SPAN_NOTICE("Вы решаете, что ваше тело и так хорошее.")
 	cooldown_min = 200 //100 deciseconds reduction per rank
 	antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_MIND
 	var/list/protected_roles = list(SPECIAL_ROLE_WIZARD, SPECIAL_ROLE_CHANGELING, SPECIAL_ROLE_CULTIST) //which roles are immune to the spell
@@ -37,18 +37,18 @@ Also, you never added distance checking after target is selected. I've went ahea
 	var/mob/living/target = targets[1]
 
 	if(user.suiciding)
-		to_chat(user, "<span class='warning'>Вы убьёте себя! Вы не можете сосредоточиться настолько, чтобы сделать это!</span>")
+		to_chat(user, SPAN_WARNING("Вы убьёте себя! Вы не можете сосредоточиться настолько, чтобы сделать это!"))
 		return
 
 	if((target.mind.special_role in protected_roles) && target != user)
-		to_chat(user, "<span class='danger'>Разум цели сопротивляется вашим чарам.</span>")
+		to_chat(user, SPAN_DANGER("Разум цели сопротивляется вашим чарам."))
 		return
 
 	if(issilicon(target))
-		to_chat(user, "<span class='warning'>Вы чувствуете, что это порабощенное существо так же мертво, как и его холодный и твердый скелет.</span>")
+		to_chat(user, SPAN_WARNING("Вы чувствуете, что это порабощенное существо так же мертво, как и его холодный и твердый скелет."))
 		return
 	if(target.can_block_magic(antimagic_flags))
-		to_chat(user, "<span class='danger'>Разум цели сопротивляется вашим чарам.</span>")
+		to_chat(user, SPAN_DANGER("Разум цели сопротивляется вашим чарам."))
 		return
 
 	var/mob/living/victim = target//The target of the spell whos body will be transferred to.

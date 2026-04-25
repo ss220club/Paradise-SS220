@@ -13,7 +13,7 @@
 
 /datum/spell/sentient_sword_lunge/cast(list/targets, mob/user = usr)
 	if(!istype(user.loc, /obj/item))
-		to_chat(user, "<span class='warning'>Вы не можете использовать эту способность, если находитесь без клинка!</span>")
+		to_chat(user, SPAN_WARNING("Вы не можете использовать эту способность, если находитесь без клинка!"))
 		return
 	var/obj/item/nullrod/scythe/talking/user_sword = user.loc
 	if(ishuman(user_sword.loc))
@@ -21,9 +21,9 @@
 		holder.drop_item_to_ground(user_sword)
 	else if(isstorage(user_sword.loc))
 		if(prob(50))
-			to_chat(user, "<span class='warning'>Вам не удается выйти из [user_sword.loc]!</span>")
+			to_chat(user, SPAN_WARNING("Вам не удается выйти из [user_sword.loc]!"))
 			return
 		var/turf/our_turf = get_turf(user_sword.loc)
-		our_turf.visible_message("<span class='danger'>[user_sword.declent_ru(NOMINATIVE)] выскакивает из [user_sword.loc]!</span>")
+		our_turf.visible_message(SPAN_DANGER("[user_sword.declent_ru(NOMINATIVE)] выскакивает из [user_sword.loc]!"))
 		user_sword.forceMove(our_turf)
 	user_sword.throw_at(targets[1], 10, 3, user)

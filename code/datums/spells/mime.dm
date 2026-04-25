@@ -3,7 +3,7 @@
 	desc = "Метериальные пантомимы!"
 	summon_type = list(/obj/structure/forcefield/mime)
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='notice'>Вы возводите перед собой стену.</span>"
+	invocation_emote_self = SPAN_NOTICE("Вы возводите перед собой стену.")
 	summon_lifespan = 20 SECONDS
 	base_cooldown = 30 SECONDS
 	clothes_req = FALSE
@@ -17,7 +17,7 @@
 /datum/spell/aoe/conjure/build/mime_wall/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>Сначала вы должны принять обет молчания.</span>")
+			to_chat(usr, SPAN_NOTICE("Сначала вы должны принять обет молчания."))
 			return
 		invocation = "<B>[usr.name]</B> выглядит так, как будто перед [usr.ru_p_them()] находится стена."
 	else
@@ -44,18 +44,18 @@
 		return
 	var/mob/living/carbon/human/H = usr
 	if(H.mind.miming)
-		still_recharging_msg = "<span class='warning'>Вы не можете так быстро нарушить свой обет молчания!</span>"
+		still_recharging_msg = SPAN_WARNING("Вы не можете так быстро нарушить свой обет молчания!")
 	else
-		still_recharging_msg = "<span class='warning'>Вам придется подождать, прежде чем вы сможете снова дать свой обет молчания!</span>"
+		still_recharging_msg = SPAN_WARNING("Вам придется подождать, прежде чем вы сможете снова дать свой обет молчания!")
 	..()
 
 /datum/spell/mime/speak/cast(list/targets,mob/user = usr)
 	for(var/mob/living/carbon/human/H in targets)
 		H.mind.miming=!H.mind.miming
 		if(H.mind.miming)
-			to_chat(H, "<span class='notice'>Вы даёте обет молчания.</span>")
+			to_chat(H, SPAN_NOTICE("Вы даёте обет молчания."))
 		else
-			to_chat(H, "<span class='notice'>Вы нарушаете свой обет молчания.</span>")
+			to_chat(H, SPAN_NOTICE("Вы нарушаете свой обет молчания."))
 
 //Advanced Mimery traitor item spells
 
@@ -64,7 +64,7 @@
 	desc = "Возведите невидимую стену шириной в три метра."
 	wall_type = /obj/effect/forcefield/mime
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='notice'>Вы возводите перед собой широкую стену.</span>"
+	invocation_emote_self = SPAN_NOTICE("Вы возводите перед собой широкую стену.")
 	base_cooldown = 60 SECONDS
 	sound =  null
 
@@ -74,7 +74,7 @@
 /datum/spell/forcewall/mime/Click()
 	if(usr && usr.mind)
 		if(!usr.mind.miming)
-			to_chat(usr, "<span class='notice'>Сначала вы должны посвятить себя тишине.</span>")
+			to_chat(usr, SPAN_NOTICE("Сначала вы должны посвятить себя тишине."))
 			return
 		invocation = "<B>[usr.name]</B> выглядит так, как будто перед [usr.ru_p_them()] находится стена."
 	else
@@ -97,7 +97,7 @@
 /datum/spell/mime/fingergun/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/human/C in targets)
 		if(!current_gun)
-			to_chat(user, "<span class='notice'>Вы приготавливаете свои пальцы для стрельбы!</span>")
+			to_chat(user, SPAN_NOTICE("Вы приготавливаете свои пальцы для стрельбы!"))
 			current_gun = new gun(get_turf(user), src)
 			C.drop_item()
 			C.put_in_hands(current_gun)
@@ -115,7 +115,7 @@
 	SIGNAL_HANDLER
 	if(!current_gun || !any && action.owner.get_active_hand() != current_gun)
 		return
-	to_chat(action.owner, "<span class='notice'>Вы прячете пальцы в кобуру. Возможно, в другой раз...</span>")
+	to_chat(action.owner, SPAN_NOTICE("Вы прячете пальцы в кобуру. Возможно, в другой раз..."))
 	QDEL_NULL(current_gun)
 
 /datum/spell/mime/fingergun/fake
@@ -136,25 +136,25 @@
 	for(var/datum/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == S.type)
 			if(user.mind)
-				to_chat(user, "<span class='notice'>Вы уже читали его раньше.</span>")
+				to_chat(user, SPAN_NOTICE("Вы уже читали его раньше."))
 			return
 	if(used)
 		recoil(user)
 	else
 		user.mind.AddSpell(S)
-		to_chat(user, "<span class='notice'>Вы листаете страницы. Ваше понимание границ реальности увеличивается. Теперь вы можете использовать [spellname]!</span>")
+		to_chat(user, SPAN_NOTICE("Вы листаете страницы. Ваше понимание границ реальности увеличивается. Теперь вы можете использовать [spellname]!"))
 		user.create_log(MISC_LOG, "learned the spell [spellname] ([S])")
 		user.create_attack_log("<font color='orange'>[key_name(user)] learned the spell [spellname] ([S]).</font>")
 		onlearned(user)
 
 /obj/item/spellbook/oneuse/mime/recoil(mob/user)
-	to_chat(user, "<span class='notice'>Вы листаете страницы. Там нет ничего интересного для вас.</span>")
+	to_chat(user, SPAN_NOTICE("Вы листаете страницы. Там нет ничего интересного для вас."))
 
 /obj/item/spellbook/oneuse/mime/onlearned(mob/user)
 	used = TRUE
 	if(!locate(/datum/spell/mime/speak) in user.mind.spell_list) //add vow of silence if not known by user
 		user.mind.AddSpell(new /datum/spell/mime/speak)
-		to_chat(user, "<span class='notice'>Вы узнали, как использовать тишину для улучшения своего таланта.</span>")
+		to_chat(user, SPAN_NOTICE("Вы узнали, как использовать тишину для улучшения своего таланта."))
 
 /obj/item/spellbook/oneuse/mime/fingergun
 	spell = /datum/spell/mime/fingergun

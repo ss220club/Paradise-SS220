@@ -261,7 +261,7 @@
 	if(href_list["drop_from_cargo"])
 		var/obj/O = locate(href_list["drop_from_cargo"])
 		if(O && (O in cargo))
-			occupant_message("<span class='notice'>Вы выгрузили [O.declent_ru(ACCUSATIVE)].</span>")
+			occupant_message(SPAN_NOTICE("Вы выгрузили [O.declent_ru(ACCUSATIVE)]."))
 			O.loc = get_turf(src)
 			cargo -= O
 			var/turf/T = get_turf(O)
@@ -306,5 +306,5 @@
 /obj/mecha/working/ripley/emag_act(mob/user)
 	if(!emagged)
 		emagged = TRUE
-		desc += "</br><span class='danger'>Оборудование меха опасно искрится!</span>"
+		desc += "</br>[SPAN_DANGER("Оборудование меха опасно искрится!")]"
 	return ..()

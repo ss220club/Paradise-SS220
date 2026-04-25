@@ -118,23 +118,23 @@
 	U.camera_follow = target
 	U.tracking = TRUE
 
-	to_chat(U, "<span class='notice'>Пытаемся отследить [target.get_visible_name()]...</span>")
+	to_chat(U, SPAN_NOTICE("Пытаемся отследить [target.get_visible_name()]..."))
 	if(!doubleclick)
 		sleep(1.5 SECONDS) // Gives antags a brief window to get out of dodge before the eye of sauron decends upon them when someone yells ;HALP
 	spawn(15) //give the AI a grace period to stop moving.
 		U.tracking = FALSE
 
 	if(target.is_jammed())
-		to_chat(U, "<span class='warning'>Невозможно отследить [target.get_visible_name()]...</span>")
+		to_chat(U, SPAN_WARNING("Невозможно отследить [target.get_visible_name()]..."))
 		U.camera_follow = null
 		return
 
 	if(!target || !target.can_track(usr))
-		to_chat(U, "<span class='warning'>Цель находится вне зоны покрытия камер.</span>")
+		to_chat(U, SPAN_WARNING("Цель находится вне зоны покрытия камер."))
 		U.camera_follow = null
 		return
 
-	to_chat(U, "<span class='notice'>Следим за [target.get_visible_name()] на камерах.</span>")
+	to_chat(U, SPAN_NOTICE("Следим за [target.get_visible_name()] на камерах."))
 
 	var/cameraticks = 0
 	spawn(0)
@@ -145,11 +145,11 @@
 			if(!target.can_track(usr))
 				U.tracking = TRUE
 				if(!cameraticks)
-					to_chat(U, "<span class='warning'>Цель находится вне активных камер. Попытка обнаружения...</span>")
+					to_chat(U, SPAN_WARNING("Цель находится вне активных камер. Попытка обнаружения..."))
 				cameraticks++
 				if(cameraticks > 9)
 					U.camera_follow = null
-					to_chat(U, "<span class='warning'>Наблюдение невозможно, прерываем слежение...</span>")
+					to_chat(U, SPAN_WARNING("Наблюдение невозможно, прерываем слежение..."))
 					U.tracking = FALSE
 					return
 				else

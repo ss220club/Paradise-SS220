@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	var/base_cooldown = 10 SECONDS
 	var/starts_charged = TRUE //Does this spell start ready to go?
 	var/should_recharge_after_cast = TRUE
-	var/still_recharging_msg = "<span class='notice'>Заклинание перезаряжается.</span>"
+	var/still_recharging_msg = SPAN_NOTICE("Заклинание перезаряжается.")
 
 	var/active = FALSE //Used by toggle based abilities.
 	var/ranged_mousepointer
@@ -63,9 +63,9 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	var/gain_desc = null
 
 	/// The message displayed when a click based spell gets activated
-	var/selection_activated_message		= "<span class='notice'>Нажмите на цель, чтобы произнести заклинание.</span>"
+	var/selection_activated_message		= SPAN_NOTICE("Нажмите на цель, чтобы произнести заклинание.")
 	/// The message displayed when a click based spell gets deactivated
-	var/selection_deactivated_message	= "<span class='notice'>Вы решили повременить с использованием этого заклинания.</span>"
+	var/selection_deactivated_message	= SPAN_NOTICE("Вы решили повременить с использованием этого заклинания.")
 
 	/// does this spell generate attack logs?
 	var/create_attack_logs = TRUE
@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 /datum/spell/New()
 	..()
 	action = new(src)
-	still_recharging_msg = "<span class='notice'>[name] перезаряжается.</span>"
+	still_recharging_msg = SPAN_NOTICE("[name] перезаряжается.")
 	if(!gain_desc)
 		gain_desc = "Теперь вы обучены использованию [src]."
 
@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 
 /datum/spell/proc/InterceptClickOn(mob/user, params, atom/A)
 	if(user.ranged_ability != src)
-		to_chat(user, "<span class='warning'><b>[user.ranged_ability.name]</b> был отключён.</span>")
+		to_chat(user, SPAN_WARNING("<b>[user.ranged_ability.name]</b> был отключён."))
 		user.ranged_ability.remove_ranged_ability(user)
 		return TRUE //TRUE for failed, FALSE for passed.
 	user.face_atom(A)
@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	if(!user || !user.client)
 		return
 	if(user.ranged_ability && user.ranged_ability != src)
-		to_chat(user, "<span class='warning'><b>[user.ranged_ability.name]</b> был заменён на <b>[name]</b>.</span>")
+		to_chat(user, SPAN_WARNING("<b>[user.ranged_ability.name]</b> был заменён на <b>[name]</b>."))
 		user.ranged_ability.remove_ranged_ability(user)
 	user.ranged_ability = src
 	ranged_ability_user = user
@@ -308,7 +308,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 /datum/spell/proc/try_perform(list/targets, mob/user)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!length(targets))
-		to_chat(user, "<span class='warning'>Подходящая цель не найдена.</span>")
+		to_chat(user, SPAN_WARNING("Подходящая цель не найдена."))
 		return FALSE
 	if(should_remove_click_intercept()) // returns TRUE by default
 		remove_ranged_ability(user) // Targeting succeeded. So remove the click interceptor if there is one. Even if the cast didn't succeed afterwards
@@ -454,7 +454,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 /datum/spell/proc/can_cast(mob/user = usr, charge_check = TRUE, show_message = FALSE)
 	if(((!user.mind) || !(src in user.mind.spell_list)) && !(src in user.mob_spell_list))
 		if(show_message)
-			to_chat(user, "<span class='warning'>Вам не следовало использовать это заклинание! Что-то пошло не так.</span>")
+			to_chat(user, SPAN_WARNING("Вам не следовало использовать это заклинание! Что-то пошло не так."))
 		return FALSE
 
 	if(!centcom_cancast) //Certain spells are not allowed on the centcom zlevel
@@ -466,7 +466,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	// that corresponds with the spell's antimagic, then they can't actually cast the spell
 	if((spell_requirements & SPELL_REQUIRES_NO_ANTIMAGIC) && !user.can_cast_magic(antimagic_flags))
 		if(show_message)
-			to_chat(user, "<span class='warning'>Какая-то форма антимагии мешает вам использовать [src.name]!</span>")
+			to_chat(user, SPAN_WARNING("Какая-то форма антимагии мешает вам использовать [src.name]!"))
 		return FALSE
 
 	if(!holy_area_cancast && user.holy_check())
@@ -481,7 +481,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	if(!ghost)
 		if(user.stat && !stat_allowed)
 			if(show_message)
-				to_chat(user, "<span class='notice'>Вы не можете произнести это заклинание, будучи недееспособным.</span>")
+				to_chat(user, SPAN_NOTICE("Вы не можете произнести это заклинание, будучи недееспособным."))
 			return FALSE
 		if(ishuman(user) && (invocation_type == "whisper" || invocation_type == "shout") && user.is_muzzled())
 			if(show_message)
@@ -498,20 +498,20 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 			var/obj/item/clothing/shoes = H.shoes
 			if(!robe || !hat || !shoes)
 				if(show_message)
-					to_chat(user, "<span class='notice'>Ваш наряд еще не закончен, вам следует надеть робу и шляпу волшебника, а также сандалии.</span>")
+					to_chat(user, SPAN_NOTICE("Ваш наряд еще не закончен, вам следует надеть робу и шляпу волшебника, а также сандалии."))
 				return FALSE
 			if(!robe.magical || !hat.magical || !shoes.magical)
 				if(show_message)
-					to_chat(user, "<span class='notice'>Ваш наряд недостаточно волшебный, вам следует надеть робу и шляпу волшебника, а также сандалии.</span>")
+					to_chat(user, SPAN_NOTICE("Ваш наряд недостаточно волшебный, вам следует надеть робу и шляпу волшебника, а также сандалии."))
 				return FALSE
 	else
 		if(clothes_req || human_req)
 			if(show_message)
-				to_chat(user, "<span class='notice'>Это заклинание может быть произнесено только человеком!</span>")
+				to_chat(user, SPAN_NOTICE("Это заклинание может быть произнесено только человеком!"))
 			return FALSE
 		if(nonabstract_req && (isbrain(user) || ispAI(user)))
 			if(show_message)
-				to_chat(user, "<span class='notice'>Это заклинание может быть произнесено только материальными существами!</span>")
+				to_chat(user, SPAN_NOTICE("Это заклинание может быть произнесено только материальными существами!"))
 			return FALSE
 
 	if(custom_handler && !custom_handler.can_cast(user, charge_check, show_message, src))

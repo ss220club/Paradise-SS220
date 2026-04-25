@@ -17,13 +17,13 @@
 	var/mob/living/carbon/human/H = user
 
 	H.emote("spin")
-	to_chat(H, "<span class='notice'>Вы начинаете крутиться на месте и применять [src.name]...</span>")
+	to_chat(H, SPAN_NOTICE("Вы начинаете крутиться на месте и применять [src.name]..."))
 	if(do_after(H, 2 SECONDS, FALSE, H))
 		finish_disguise(H)
 		return TRUE
 	else
 		H.slip("your own foot", 1 SECONDS, 0, 0, 1, "trip")
-		to_chat(H, "<span class='danger'>Вы должны стоять неподвижно, чтобы применить [src.name]!</span>")
+		to_chat(H, SPAN_DANGER("Вы должны стоять неподвижно, чтобы применить [src.name]!"))
 		return FALSE
 
 /datum/spell/disguise_self/proc/finish_disguise(mob/living/carbon/human/H)

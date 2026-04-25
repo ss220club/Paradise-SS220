@@ -25,9 +25,9 @@
 				if(M.mind)
 					for(var/datum/spell/S in M.mind.spell_list)
 						S.cooldown_handler.revert_cast()
-				to_chat(M, "<span class='notice'>Вы чувствуете необузданную энергию внутри себя, как же это приятно!</span>")
+				to_chat(M, SPAN_NOTICE("Вы чувствуете необузданную энергию внутри себя, как же это приятно!"))
 			else
-				to_chat(M, "<span class='notice'>На мгновение вы чувствуете себя очень странно, но потом чувство проходит.</span>")
+				to_chat(M, SPAN_NOTICE("На мгновение вы чувствуете себя очень странно, но потом чувство проходит."))
 				burnt_out = TRUE
 			charged_item = M
 			break
@@ -36,20 +36,20 @@
 				if(istype(item, /obj/item/spellbook/oneuse))
 					var/obj/item/spellbook/oneuse/I = item
 					if(prob(80))
-						L.visible_message("<span class='warning'>[I] загорается!</span>")
+						L.visible_message(SPAN_WARNING("[I] загорается!"))
 						qdel(I)
 					else
 						I.used = FALSE
 						charged_item = I
 						break
 				else
-					to_chat(L, "<span class='caution'>На обложке книги появляются светящиеся красные символы...</span>")
-					to_chat(L, "<span class='warning'>[pick("ХОРОШАЯ ПОПЫТКА, НО НЕ СЕГОДНЯ!", "УМНО, НО НЕДОСТАТОЧНО!", "КАКОЙ ГЕНИАЛЬНЫЙ ЖУЛИК, БУДЕШЬ РАБОТАТЬ У НАС!", "МИЛО!", "ВЫ ЖЕ НЕ ДУМАЛИ, ЧТО ЭТО БУДЕТ ТАК ПРОСТО, НЕ ТАК ЛИ?")]</span>")
+					to_chat(L, SPAN_CAUTION("На обложке книги появляются светящиеся красные символы..."))
+					to_chat(L, SPAN_WARNING("[pick("ХОРОШАЯ ПОПЫТКА, НО НЕ СЕГОДНЯ!", "УМНО, НО НЕДОСТАТОЧНО!", "КАКОЙ ГЕНИАЛЬНЫЙ ЖУЛИК, БУДЕШЬ РАБОТАТЬ У НАС!", "МИЛО!", "ВЫ ЖЕ НЕ ДУМАЛИ, ЧТО ЭТО БУДЕТ ТАК ПРОСТО, НЕ ТАК ЛИ?")]"))
 					burnt_out = TRUE
 			else if(istype(item, /obj/item/book/granter))
 				var/obj/item/book/granter/I = item
 				if(prob(80))
-					L.visible_message("<span class='warning'>[I] загорается!</span>")
+					L.visible_message(SPAN_WARNING("[I] загорается!"))
 					qdel(I)
 				else
 					I.uses += 1
@@ -84,8 +84,8 @@
 						charged_item = item
 						break
 		if(!charged_item)
-			to_chat(L, "<span class='notice'>Вы чувствуете, как к вашим рукам приливает сила, но это ощущение быстро исчезает...</span>")
+			to_chat(L, SPAN_NOTICE("Вы чувствуете, как к вашим рукам приливает сила, но это ощущение быстро исчезает..."))
 		else if(burnt_out)
-			to_chat(L, "<span class='caution'>[charged_item] похоже, не реагирует на заклинание...</span>")
+			to_chat(L, SPAN_CAUTION("[charged_item] похоже, не реагирует на заклинание..."))
 		else
-			to_chat(L, "<span class='notice'>[charged_item] внезапно становится очень горячим!</span>")
+			to_chat(L, SPAN_NOTICE("[charged_item] внезапно становится очень горячим!"))

@@ -29,13 +29,13 @@
 	on = !on
 
 	if(on)
-		to_chat(user, span_userdanger("Вы разложили [name]."))
+		to_chat(user, SPAN_USERDANGER("Вы разложили [name]."))
 		update_icon(UPDATE_ICON_STATE)
 		w_class = WEIGHT_CLASS_SMALL
 		force = force_on
 		attack_verb = attack_verb_on
 	else
-		to_chat(user, span_notice("Вы сложили [name]."))
+		to_chat(user, SPAN_NOTICE("Вы сложили [name]."))
 		update_icon(UPDATE_ICON_STATE)
 		w_class = initial(w_class)
 		force = initial(force)

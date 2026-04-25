@@ -140,7 +140,7 @@
 /obj/effect/decal/sakura_leaves/examine(mob/user)
 	. = ..()
 	if(on_fire)
-		. += span_danger("[src] is on fire!")
+		. += SPAN_DANGER("[src] is on fire!")
 
 /obj/effect/decal/sakura_leaves/update_icon_state()
 	. = ..()
@@ -160,22 +160,22 @@
 		return FINISH_ATTACK
 
 	if(attacking.get_heat() && !on_fire)
-		visible_message(span_danger("[src] bursts into flames!"))
+		visible_message(SPAN_DANGER("[src] bursts into flames!"))
 		fire_act()
 	if(istype(attacking, /obj/item/cultivator))
 		var/obj/item/cultivator/C = attacking
 		user.visible_message(
-			span_notice("[user] is clearing [src] from the ground..."),
-			span_notice("You begin clearing [src] from the ground..."),
-			span_warning("You hear a sound of leaves rustling."))
+			SPAN_NOTICE("[user] is clearing [src] from the ground..."),
+			SPAN_NOTICE("You begin clearing [src] from the ground..."),
+			SPAN_WARNING("You hear a sound of leaves rustling."))
 		playsound(loc, 'sound/effects/shovel_dig.ogg', 50, 1)
 
 		if(!do_after(user, 50 * C.toolspeed, target = src))
 			return FINISH_ATTACK
 
 		user.visible_message(
-			span_notice("[user] clears [src] from the ground!"),
-			span_notice("You clear [src] from the ground!"))
+			SPAN_NOTICE("[user] clears [src] from the ground!"),
+			SPAN_NOTICE("You clear [src] from the ground!"))
 		qdel(src)
 
 // This is fake fire actually

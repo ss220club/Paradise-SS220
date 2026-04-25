@@ -87,7 +87,7 @@
 	base_cooldown = 400
 	invocation = "BIRUZ BENNAR"
 	invocation_type = "shout"
-	message = "<span class='notice'>Вы чувствуете себя сильным! Вы чувствуете, как в глазах нарастает напряжение!</span>"
+	message = SPAN_NOTICE("Вы чувствуете себя сильным! Вы чувствуете, как в глазах нарастает напряжение!")
 	centcom_cancast = FALSE
 
 	traits = list(TRAIT_LASEREYES)
@@ -194,7 +194,7 @@
 
 /datum/spell/return_to_teacher/cast(list/targets, mob/living/user = usr)
 	if(!(teacher && teacher.current))
-		to_chat(user, "<span class='danger'>Связь с вашим учителем нарушена!</span>")
+		to_chat(user, SPAN_DANGER("Связь с вашим учителем нарушена!"))
 		return
 	do_teleport(user, teacher.current, 1, sound_in = 'sound/magic/blink.ogg', sound_out = 'sound/magic/blink.ogg', safe_turf_pick = TRUE)
 
@@ -285,7 +285,7 @@
 	clothes_req = FALSE
 	invocation = "STI KALY"
 	invocation_type = "whisper"
-	message = "<span class='notice'>Ваши глаза кричат от боли!</span>"
+	message = SPAN_NOTICE("Ваши глаза кричат от боли!")
 	cooldown_min = 2 SECONDS
 	sound = 'sound/magic/blind.ogg'
 
@@ -297,13 +297,13 @@
 
 /datum/spell/blind/cast(list/targets, mob/living/user)
 	if(!length(targets))
-		to_chat(user, "<span class='notice'>Цель вне досягаемости.</span>")
+		to_chat(user, SPAN_NOTICE("Цель вне досягаемости."))
 		return
 
 	var/mob/living/target = targets[1]
 	if(target.can_block_magic(antimagic_flags))
-		to_chat(target, "<span class='notice'>Ваш глаз чешется, но это мгновенно проходит.</span>")
-		to_chat(user, "<span class='notice'>Заклинание не произвело никакого эффекта!</span>")
+		to_chat(target, SPAN_NOTICE("Ваш глаз чешется, но это мгновенно проходит."))
+		to_chat(user, SPAN_NOTICE("Заклинание не произвело никакого эффекта!"))
 		return FALSE
 	target.EyeBlurry(40 SECONDS)
 	target.EyeBlind(30 SECONDS)
@@ -321,8 +321,8 @@
 	invocation_type = "shout"
 	cooldown_min = 20 //10 deciseconds reduction per rank
 
-	selection_activated_message		= "<span class='notice'>Вы готовитесь применить огненный шар! <B>Щелкните левой кнопкой мыши, чтобы отправить его в цель!</B></span>"
-	selection_deactivated_message	= "<span class='notice'>Вы гасите свой огненный шар... на время.</span>"
+	selection_activated_message		= SPAN_NOTICE("Вы готовитесь применить огненный шар! <B>Щелкните левой кнопкой мыши, чтобы отправить его в цель!</B>")
+	selection_deactivated_message	= SPAN_NOTICE("Вы гасите свой огненный шар... на время.")
 
 	var/fireball_type = /obj/projectile/magic/fireball
 	action_icon_state = "fireball0"
@@ -367,8 +367,8 @@
 	fireball_type = /obj/projectile/homing/magic/toolbox
 	invocation = "ROBUSTIO!"
 
-	selection_activated_message		= "<span class='notice'>Вы готовитесь использовать свой магический тулбокс! <B>Щелкните левой кнопкой мыши, чтобы направить тулбокс в цель!</B></span>"
-	selection_deactivated_message	= "<span class='notice'>Вы приберегаете свой тулбокс... пока что.</span>"
+	selection_activated_message		= SPAN_NOTICE("Вы готовитесь использовать свой магический тулбокс! <B>Щелкните левой кнопкой мыши, чтобы направить тулбокс в цель!</B>")
+	selection_deactivated_message	= SPAN_NOTICE("Вы приберегаете свой тулбокс... пока что.")
 
 /datum/spell/fireball/homing
 	name = "Greater Homing Fireball"
@@ -376,7 +376,7 @@
 	invocation = "ZI-ONI SOMA"
 	fireball_type = /obj/projectile/homing/magic/homing_fireball
 
-	selection_activated_message = "<span class='notice'>Вы готовитесь запустить самонаводящийся огненный шар! <B>Щелкните левой кнопкой мыши, чтобы отправить огненный шар в цель!</B></span>"
+	selection_activated_message = SPAN_NOTICE("Вы готовитесь запустить самонаводящийся огненный шар! <B>Щелкните левой кнопкой мыши, чтобы отправить огненный шар в цель!</B>")
 
 /datum/spell/aoe/repulse
 	name = "Repulse"
@@ -421,13 +421,13 @@
 				var/mob/living/M = AM
 				M.Weaken(10 SECONDS)
 				M.adjustBruteLoss(5)
-				to_chat(M, "<span class='userdanger'>Вас швыряет на пол какая-то мистическая сила!</span>")
+				to_chat(M, SPAN_USERDANGER("Вас швыряет на пол какая-то мистическая сила!"))
 		else
 			new sparkle_path(get_turf(AM), get_dir(user, AM)) //created sparkles will disappear on their own
 			if(isliving(AM))
 				var/mob/living/M = AM
 				M.Weaken(stun_amt)
-				to_chat(M, "<span class='userdanger'>Вас отбрасывает назад мистическая сила!</span>")
+				to_chat(M, SPAN_USERDANGER("Вас отбрасывает назад мистическая сила!"))
 			spawn(0)
 				AM.throw_at(throwtarget, ((clamp((maxthrow - (clamp(distfromcaster - 2, 0, distfromcaster))), 3, maxthrow))), 1)//So stuff gets tossed around at the same time.
 
@@ -463,8 +463,8 @@
 	base_cooldown = 5 SECONDS
 	invocation = "JAH ITH BER"
 	invocation_type = "whisper"
-	selection_activated_message = "<span class='notice'>Вы готовитесь разорвать труп. Нажмите на цель, чтобы наполнить его энергией.</span>"
-	selection_deactivated_message = "<span class='notice'>Вы отменяете заклинание.</span>"
+	selection_activated_message = SPAN_NOTICE("Вы готовитесь разорвать труп. Нажмите на цель, чтобы наполнить его энергией.")
+	selection_deactivated_message = SPAN_NOTICE("Вы отменяете заклинание.")
 	action_icon_state = "corpse_explosion"
 
 /datum/spell/corpse_explosion/create_new_targeting()
@@ -489,11 +489,11 @@
 		range = max(1, range)
 		M.apply_damage(100 / range, BRUTE)
 		if(issilicon(M))
-			to_chat(M, "<span class='userdanger'>Ваши сенсоры отключены, а ваша обшивка разорвана на части яростной темной магией!</span>")
+			to_chat(M, SPAN_USERDANGER("Ваши сенсоры отключены, а ваша обшивка разорвана на части яростной темной магией!"))
 			M.Weaken(6 SECONDS / range)
 			continue
 
-		to_chat(M, "<span class='userdanger'>Жестокая тёмная магия вырывает ваши внутренности!</span>")
+		to_chat(M, SPAN_USERDANGER("Жестокая тёмная магия вырывает ваши внутренности!"))
 		if(ishuman(M))
 			if(range < 4)
 				M.KnockDown(4 SECONDS / range)

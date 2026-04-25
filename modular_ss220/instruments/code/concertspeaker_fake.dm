@@ -19,7 +19,7 @@
 
 /obj/structure/concertspeaker_fake/examine()
 	. = ..()
-	. += "<span class='notice'>Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.</span>"
+	. += SPAN_NOTICE("Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.")
 
 /obj/structure/concertspeaker_fake/update_icon_state()
 	if(stat & (BROKEN))
@@ -32,13 +32,13 @@
 		return
 
 	if(!anchored && !isinspace())
-		to_chat(user, span_notice("You secure [name] to the floor."))
+		to_chat(user, SPAN_NOTICE("You secure [name] to the floor."))
 		anchored = TRUE
 		density = TRUE
 		layer = 5
 		update_icon()
 	else if(anchored)
-		to_chat(user, span_notice("You unsecure and disconnect [src]."))
+		to_chat(user, SPAN_NOTICE("You unsecure and disconnect [src]."))
 		anchored = FALSE
 		density = FALSE
 		layer = 2.5

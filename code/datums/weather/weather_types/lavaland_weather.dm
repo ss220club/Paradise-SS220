@@ -6,15 +6,15 @@
 	name = "пепельный шторм"
 	desc = "Интенсивный шторм поднимает горячий пепел с поверхности планеты и обрушивает его на всю округу, обжигая всех, кому не повезло оказаться снаружи без защиты."
 
-	telegraph_message = "<span class='boldwarning'>Далёкий ветер разносит жуткий стон. Горизонт застилают тучи пепла и чёрного дыма. Поскорее найдите укрытие.</span>"
+	telegraph_message = SPAN_BOLDWARNING("Далёкий ветер разносит жуткий стон. Горизонт застилают тучи пепла и чёрного дыма. Поскорее найдите укрытие.")
 	telegraph_overlay = "light_ash"
 
-	weather_message = "<span class='userdanger'><i>Вокруг вас сгущаются облака жгучего пепла! Немедленно прячьтесь внутрь!</i></span>"
+	weather_message = SPAN_USERDANGER("<i>Вокруг вас сгущаются облака жгучего пепла! Немедленно прячьтесь внутрь!</i>")
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_overlay = "ash_storm"
 
-	end_message = "<span class='boldannounceic'>Ветер уносит от вас остатки пепла и возвращается к своему привычному тихому гулу. Теперь можно безопасно выходить наружу.</span>"
+	end_message = SPAN_BOLDANNOUNCEIC("Ветер уносит от вас остатки пепла и возвращается к своему привычному тихому гулу. Теперь можно безопасно выходить наружу.")
 	end_overlay = "light_ash"
 
 	area_types = list(/area/lavaland/surface/outdoors, /area/lavaland/surface/gulag_rock)
@@ -105,10 +105,10 @@
 	name = "пеплопад"
 	desc = "Пролетающий мимо пепельный шторм покрывает местность безвредными тлеющими угольками."
 
-	weather_message = "<span class='notice'>Тлеющие угольки медленно осыпаются вокруг вас, словно странный снег. Кажется, в этот раз шторм обошёл вас стороной...</span>"
+	weather_message = SPAN_NOTICE("Тлеющие угольки медленно осыпаются вокруг вас, словно странный снег. Кажется, в этот раз шторм обошёл вас стороной...")
 	weather_overlay = "light_ash"
 
-	end_message = "<span class='notice'>Пеплопад постепенно замедляется и угасает. Очередной слой сажи оседает на землю под вами...</span>"
+	end_message = SPAN_NOTICE("Пеплопад постепенно замедляется и угасает. Очередной слой сажи оседает на землю под вами...")
 	end_sound = null
 
 	aesthetic = TRUE
@@ -118,11 +118,11 @@
 	name = "вулканический выброс"
 	desc = "Сдвиг тектонических плит на планете вызвал вулканическую активность в этом районе. Образуются новые лавовые реки и бездонные пропасти, а с неба обрушатся обломки горных пород."
 
-	telegraph_message = "<span class='boldwarning'><i>Земля под вами дрожжит с пугающей силой, грозя расколоться. Поскорее найдите укрытие.</i></span>"
+	telegraph_message = SPAN_BOLDWARNING("<i>Земля под вами дрожжит с пугающей силой, грозя расколоться. Поскорее найдите укрытие.</i>")
 	telegraph_duration = 600
 	telegraph_sound = 'sound/weather/volcano/lavaland_volcano_warning.ogg'
 
-	weather_message = "<span class='userdanger'><i>Вдали виден огромный столб дыма и лавы. Земля под вами трясётся и грозит расколоться. Немедленно прячьтесь внутрь!</i></span>"
+	weather_message = SPAN_USERDANGER("<i>Вдали виден огромный столб дыма и лавы. Земля под вами трясётся и грозит расколоться. Немедленно прячьтесь внутрь!</i>")
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_sound = 'sound/weather/volcano/lavaland_volcano_eruption.ogg'
@@ -231,7 +231,7 @@
 				L.visible_message("[L.name] easily withstands the hit of the massive rock!")
 				return
 			else
-				L.visible_message("<span class='danger'>[L.name] is crushed under the massive impact of the boulder!</span>", "<span class='userdanger'>You are crushed as a massive weight suddenly descends upon you!</span>", "<span class='danger'>You hear wet splatters as something is hit with a massive object!</span>")
+				L.visible_message(SPAN_DANGER("[L.name] is crushed under the massive impact of the boulder!"), SPAN_USERDANGER("You are crushed as a massive weight suddenly descends upon you!"), SPAN_DANGER("You hear wet splatters as something is hit with a massive object!"))
 				L.gib()
 	if(!islava(T) && !istype(T, /turf/simulated/floor/chasm)) // Splash harmlessly into the lava pools
 		for(var/obj/structure/thing in T.contents) // dont cover the tendrils
@@ -247,16 +247,16 @@
 	name = "кислотный дождь"
 	desc = "Выбросы серы и углерода в атмосферу приводят к образованию кислотных частиц в облаках пепла. В конечном итоге их накапливается достаточно, чтобы сконденсироваться и выпасть обратно в виде сернокислотных дождей. Шахтерские капсулы-убежища Нанотрейзен не рассчитаны на такую концентрацию кислоты."
 
-	telegraph_message = "<span class='boldwarning'><i>Вы слышите звуки падения капель и следующее за ними кислотное шипение. Поскорее найдите укрытие.</i></span>"
+	telegraph_message = SPAN_BOLDWARNING("<i>Вы слышите звуки падения капель и следующее за ними кислотное шипение. Поскорее найдите укрытие.</i>")
 	telegraph_duration = 600
 	telegraph_overlay = "light_ash"
 
-	weather_message = "<span class='userdanger'><i>Кислотный дождь начинает обильно выпадать, расплавляя и плоть, и породу. Немедленно прячьтесь внутрь!</i></span>"
+	weather_message = SPAN_USERDANGER("<i>Кислотный дождь начинает обильно выпадать, расплавляя и плоть, и породу. Немедленно прячьтесь внутрь!</i>")
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_overlay = "acid_rain"
 
-	end_message = "<span class='boldannounceic'>Стук кислотных капель постепенно затихает. Теперь можно безопасно выходить наружу.</span>"
+	end_message = SPAN_BOLDANNOUNCEIC("Стук кислотных капель постепенно затихает. Теперь можно безопасно выходить наружу.")
 	end_overlay = "light_ash"
 
 	area_types = list(/area/lavaland/surface/outdoors, /area/lavaland/surface/gulag_rock)
@@ -364,16 +364,16 @@
 	name = "ураган"
 	desc = "Высокие барометрические значения в этом районе стали причиной радикального изменения давления воздуха, что привело к возникновению сильнейшего урагана."
 
-	telegraph_message = "<span class='boldwarning'><i>Ветер усиливается, обдавая ваше тело с угрожающей силой. Поскорее найдите укрытие.</i></span>"
+	telegraph_message = SPAN_BOLDWARNING("<i>Ветер усиливается, обдавая ваше тело с угрожающей силой. Поскорее найдите укрытие.</i>")
 	telegraph_duration = 600
 	telegraph_overlay = "light_ash"
 
-	weather_message = "<span class='userdanger'><i>Ветер яростно усиливается, поднимая в воздух пыль и пепел. Немедленно прячьтесь внутрь!</i></span>"
+	weather_message = SPAN_USERDANGER("<i>Ветер яростно усиливается, поднимая в воздух пыль и пепел. Немедленно прячьтесь внутрь!</i>")
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_overlay = "wind"
 
-	end_message = "<span class='boldannounceic'>Ветер успокаивается, возвращаясь к своему обычному ритму, а пыль оседает на пепельную поверхность. Теперь можно безопасно выходить наружу.</span>"
+	end_message = SPAN_BOLDANNOUNCEIC("Ветер успокаивается, возвращаясь к своему обычному ритму, а пыль оседает на пепельную поверхность. Теперь можно безопасно выходить наружу.")
 	end_overlay = "light_ash"
 
 	area_types = list(/area/lavaland/surface/outdoors, /area/lavaland/surface/gulag_rock)
