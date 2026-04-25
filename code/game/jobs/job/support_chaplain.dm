@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_SERVICE
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
 	access = list(
@@ -17,9 +17,6 @@
 	)
 	outfit = /datum/outfit/job/chaplain
 	standard_paycheck = CREW_PAY_LOW
-	difficulty = EASY_DIFFICULTY
-	description = "The Chaplain has the responsibility of providing religious services for the crew.\n\n\
-					Difficulties: Controls, funerals"
 
 /datum/outfit/job/chaplain
 	name = "Chaplain"

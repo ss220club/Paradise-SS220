@@ -1715,7 +1715,7 @@
 /obj/item/id_decal/aa07
 	name = "lifetime ID card decal"
 	desc = "Make your ID look like the property of a nerd. Applies to any ID."
-	decal_icon_state = "lifetimeid"
+	decal_icon_state = "tsf"
 
 // TheFlagbearer: Colin Earle
 /obj/item/clothing/under/costume/rebeloutfit

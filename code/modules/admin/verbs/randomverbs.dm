@@ -577,7 +577,7 @@ USER_VERB(create_centcom_report, R_SERVER|R_EVENT, "Create Communications Report
 			print_command_report(message, subtitle)
 		if("No")
 			//same thing as the blob stuff - it's not public, so it's classified, dammit
-			GLOB.command_announcer.autosay("A classified message has been printed out at all communication consoles.")
+			GLOB.command_announcer.autosay("На всех коммуникационных консолях было распечатано конфиденциальное сообщение.")
 			print_command_report(message, "Classified: [subtitle]")
 		else
 			return

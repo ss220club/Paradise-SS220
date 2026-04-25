@@ -14,11 +14,11 @@
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("There's [charging ? "\a [charging.name]" : "no cell"] in [src].")
+	. += SPAN_NOTICE("В [src] [charging ? "\a [charging.name]" : "нету батарейки"].")
 	if(charging && !(stat & (NOPOWER|BROKEN)))
-		. += SPAN_NOTICE("Current charge: <b>[round(charging.percent(), 1)]%</b>")
+		. += SPAN_NOTICE("Текущий заряд: <b>[round(charging.percent(), 1)]%</b>")
 		if(charging.percent() < 100)
-			. += SPAN_NOTICE("- Recharging <b>[((charging.chargerate * recharge_coeff) / charging.maxcharge) * 100]%</b> cell charge per cycle.")
+			. += SPAN_NOTICE("- Зарядка <b>[((charging.chargerate * recharge_coeff) / charging.maxcharge) * 100]%</b> заряда аккумулятора за цикл.")
 
 /obj/machinery/cell_charger/Initialize(mapload)
 	. = ..()

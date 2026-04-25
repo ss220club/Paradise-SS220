@@ -5,7 +5,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_ENGINEERING
-	supervisors = "the captain"
+	supervisors = "капитаном"
 	department_head = list("Captain")
 	selection_color = "#ffeeaa"
 	req_admin_notify = 1
@@ -36,11 +36,8 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/chief_engineer
-	important_information = "This role requires you to coordinate a department. You are required to be familiar with Standard Operating Procedure (Engineering), basic job duties, and act professionally (roleplay)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Инженерных), базовых должностных обязанностей и профессиональных действий."
 	standard_paycheck = CREW_PAY_HIGH
-	difficulty = HARD_DIFFICULTY
-	description = "The Chief Engineer has the responsibility of overseeing the Engineering department.\n\n\
-					Difficulties: Standard Operating Procedure (General, Engineering), construction (advanced), hacking, engines (supermatter, tesla, singularity), communication"
 
 /datum/outfit/job/chief_engineer
 	name = "Chief Engineer"
@@ -76,7 +73,7 @@
 	total_positions = 5
 	spawn_positions = 5
 	job_department_flags = DEP_FLAG_ENGINEERING
-	supervisors = "the chief engineer"
+	supervisors = "главным инженером"
 	department_head = list("Chief Engineer")
 	selection_color = "#fff5cc"
 	access = list(
@@ -95,9 +92,6 @@
 	exp_map = list(EXP_TYPE_CREW = 300)
 	outfit = /datum/outfit/job/engineer
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Station Engineers have the responsibility of maintaining the station's infrastructure and operating the station's engine.\n\n\
-					Difficulties: Construction (advanced), space movement"
 
 /datum/outfit/job/engineer
 	name = "Station Engineer"
@@ -122,6 +116,8 @@
 	. = ..()
 	ADD_TRAIT(H.mind, TRAIT_ELECTRICAL_SPECIALIST, JOB_TRAIT)
 
+/datum/job/engineer/trainee	// SS220 ADDITION - new jobs
+
 /datum/job/atmos
 	title = "Life Support Specialist"
 	flag = JOB_ATMOSTECH
@@ -129,7 +125,7 @@
 	total_positions = 3
 	spawn_positions = 2
 	job_department_flags = DEP_FLAG_ENGINEERING
-	supervisors = "the chief engineer"
+	supervisors = "главным инженером"
 	department_head = list("Chief Engineer")
 	selection_color = "#fff5cc"
 	access = list(
@@ -147,9 +143,6 @@
 	exp_map = list(EXP_TYPE_CREW = 300)
 	outfit = /datum/outfit/job/atmos
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Atmospheric Technicians have the responsibility of maintaining the station's atmospherics system.\n\n\
-					Difficulties: Atmospherics, pipe manipulation, gas pressure, space movement"
 
 /datum/outfit/job/atmos
 	name = "Life Support Specialist"

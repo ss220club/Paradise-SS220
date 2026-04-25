@@ -4,7 +4,7 @@
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Nanotrasen officials"
+	supervisors = "Официальными лицами Нанотрейзен"
 	department_head = list("Nanotrasen Navy Officer")
 	selection_color = "#ccccff"
 	req_admin_notify = 1
@@ -15,11 +15,8 @@
 	exp_map = list(EXP_TYPE_COMMAND = 1200)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/captain
-	important_information = "This role requires you to coordinate a department. You are required to be familiar with Standard Operating Procedure (Command), basic job duties, and act professionally (roleplay)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отделов. От вас требуется знание Стандартных Рабочих Процедур (Командования), базовых должностных обязанностей и профессиональных действий."
 	standard_paycheck = CREW_PAY_HIGH
-	difficulty = VERY_HARD_DIFFICULTY
-	description = "The Captain has the responsibility to oversee heads of staff.\n\n\
-					Difficulties: Standard Operating Procedure (General, Legal, Command), Space Law, paperwork, AI modules, communication"
 
 /datum/job/captain/get_access()
 	return get_all_accesses()
@@ -27,7 +24,7 @@
 /datum/job/captain/announce(mob/living/carbon/human/H)
 	. = ..()
 	// Why the hell are captain announcements minor
-	GLOB.minor_announcement.Announce("All hands, Captain [H.real_name] on deck!")
+	GLOB.minor_announcement.Announce("Всему экипажу, капитан [H.real_name] на борту!")
 
 /datum/outfit/job/captain
 	name = "Captain"
@@ -67,7 +64,7 @@
 	department_flag = JOBCAT_SUPPORT
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "капитаном"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
 	req_admin_notify = 1
@@ -112,11 +109,8 @@
 	)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY , DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/hop
-	important_information = "This role requires you to coordinate a department. You are required to be familiar with Standard Operating Procedure (Service), basic job duties, and act professionally (roleplay)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Сервис), базовых должностных обязанностей и профессиональных действий."
 	standard_paycheck = CREW_PAY_HIGH
-	difficulty = MEDIUM_DIFFICULTY
-	description = "The Head of Personnel has the responsibility of overseeing the Service department.\n\n\
-					Difficulties: Standard Operating Procedure (Standard, Service, Command), Space Law, administration, IDs, paperwork "
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"
@@ -141,7 +135,7 @@
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the command staff"
+	supervisors = "командным составом"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
 	req_admin_notify = TRUE
@@ -191,11 +185,8 @@
 	)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/nanotrasenrep
-	important_information = "This role requires you to advise the Command team about Standard Operating Procedure, Chain of Command, and report to Central Command about various matters. You are required to act in a manner befitting someone representing Nanotrasen."
+	important_information = "Эта роль требует, чтобы вы консультировали командование по Стандартным Рабочим Процедурам, цепочке командования и отчитывались перед Центральным Командованием по различным вопросам. От вас требуется действовать так, как подобает лицу, представляющему Нанотрейзен."
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = LOW_DIFFICULTY
-	description = "The Nanotrasen Representative has the responsibility of ensuring heads of staff are following Standard Operating Procedure.\n\n\
-					Difficulties: Standard Operating Procedure (General, Command), paperwork, communication"
 
 /datum/outfit/job/nanotrasenrep
 	name = "Nanotrasen Representative"
@@ -228,7 +219,7 @@
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Nanotrasen representative"
+	supervisors = "представителем Нанотрейзен"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
 	req_admin_notify = TRUE
@@ -256,11 +247,8 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/blueshield
-	important_information = "This role requires you to ensure the safety of the Heads of Staff, not the general crew. You may perform arrests only if the combatant is directly threatening a member of Command, the Nanotrasen Representative, or the Magistrate."
+	important_information = "Эта роль требует, чтобы вы обеспечивали безопасность руководителей персонала, а не всего экипажа. Вы можете производить аресты только в том случае, если нарушитель напрямую угрожает члену командования, представителю Нанотрейзен или магистрату."
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = HARD_DIFFICULTY
-	description = "The Blueshield has the responsibility of protecting heads of staff and dignitaries.\n\n\
-					Difficulties: Healing, combat, communication"
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"
@@ -288,7 +276,7 @@
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Nanotrasen Asset Protection"
+	supervisors = "верховным судом Нанотрейзен"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
 	req_admin_notify = TRUE
@@ -312,11 +300,8 @@
 	)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/judge
-	important_information = "This role requires you to oversee legal matters and make important decisions about sentencing. You are required to have an extensive knowledge of Space Law and Security SOP and only operate within, not outside, the boundaries of the law."
+	important_information = "Эта роль требует от вас курировать юридические вопросы и принимать важные решения о вынесении приговоров. От вас требуется обладать обширными знаниями в области Космического Закона и охранного СРП, действовать только в рамках закона, а не за его пределами."
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = HARD_DIFFICULTY
-	description = "The Magistrate has the responsibility of being the final word on Space Law and ensuring it's enforced properly.\n\n\
-					Difficulties: Space Law, Standard Operating Procedure (General, Legal), communication"
 
 /datum/outfit/job/judge
 	name = "Magistrate"
@@ -351,7 +336,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	job_department_flags = DEP_FLAG_LEGAL
-	supervisors = "the magistrate"
+	supervisors = "магистратом"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
 	access = list(
@@ -370,11 +355,8 @@
 	exp_map = list(EXP_TYPE_CREW = 600)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/iaa
-	important_information = "Your job is to deal with affairs regarding Standard Operating Procedure. You are NOT in charge of Space Law affairs, nor can you override it. You are NOT a prisoner defence lawyer."
+	important_information = "Ваша работа заключается в решении вопросов, касающихся Стандартных Рабочих Процедур. Вы не отвечаете за вопросы Космического Закона и не можете его отменять. Вы не являетесь адвокатом заключенных."
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Internal Affairs Agents have the responsibility of ensuring departments are following Standard Operating Procedure.\n\n\
-					Difficulties: Standard Operating Procedure (General, Departmental), paperwork"
 
 /datum/outfit/job/iaa
 	name = "Internal Affairs Agent"
@@ -437,9 +419,6 @@
 	outfit = /datum/outfit/job/nct
 	important_information = "Your job is to try to assist as many crew members as possible regardless of department. You are NOT permitted to give command staff advice on any command SOP questions or aid in legal advice."
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Nanotrasen Career Trainers (NCTs for short) are currently a mentor/admin only job. They are held to a higher standard, like any other staff-only job.\n\n\
-					Difficulties: Training crew."
 
 /datum/outfit/job/nct
 	name = "Nanotrasen Career Trainer"

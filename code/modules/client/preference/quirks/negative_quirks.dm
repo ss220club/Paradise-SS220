@@ -11,13 +11,13 @@
 
 /datum/quirk/alcohol_tolerance/lightweight
 	name = "Lightweight"
-	desc = "You can't handle liquor very well, and get drunker quicker."
+	desc = "Вы плохо переносите алкоголь и быстрее пьянеете."
 	cost = -1
 	alcohol_modifier = 1.5
 
 /datum/quirk/foreigner
 	name = "Foreigner"
-	desc = "You just recently joined the greater galactic community, and don't understand the common tongue yet. You cannot sign up for a command or security position."
+	desc = "Вы совсем недавно присоединились к крупнейшему галактическому сообществу и еще не знаете общегалактического языка. Вы не можете вступить на должность в командовании или службе безопасности."
 	cost = -2
 	item_to_give = /obj/item/taperecorder
 	blacklisted = TRUE
@@ -38,14 +38,14 @@
 
 /datum/quirk/deaf
 	name = "Deafness"
-	desc = "You are incurably deaf, and cannot take a command or security position."
+	desc = "Вы неизлечимо глухи и не можете занимать должности в командовании или службе безопасности."
 	cost = -4
 	trait_to_apply = TRAIT_DEAF
 	blacklisted = TRUE
 
 /datum/quirk/blind
 	name = "Blind"
-	desc = "You are incurably blind, and cannot take a command or security position."
+	desc = "Вы неизлечимо слепы и не можете занимать должности в командовании или службе безопасности."
 	cost = -4
 	trait_to_apply = TRAIT_BLIND
 	blacklisted = TRUE
@@ -53,14 +53,14 @@
 
 /datum/quirk/mute
 	name = "Mute"
-	desc = "You are incurably mute, and cannot take a command or security position."
+	desc = "Вы неизлечимо немы и не можете занимать должности в командовании или службе безопасности."
 	cost = -3
 	blacklisted = TRUE
 	trait_to_apply = TRAIT_MUTE
 
 /datum/quirk/frail
 	name = "Frail"
-	desc = "You get major injuries much easier than most people."
+	desc = "Вам значительно легче получить серьезную травму, чем большинству людей."
 	cost = -3
 	trait_to_apply = TRAIT_FRAIL
 
@@ -68,7 +68,7 @@
 
 /datum/quirk/asthma
 	name = "Asthma"
-	desc = "You have trouble catching your breath, and can have violent coughing fits when exerting yourself. IPCs cannot take this."
+	desc = "Вам трудно отдышаться, а при физических нагрузках могут случаться приступы сильного кашля. Несовместимо с расой КПБ."
 	cost = -3
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	trait_to_apply = TRAIT_ASTHMATIC
@@ -106,7 +106,7 @@
 
 /datum/quirk/no_apc_charging
 	name = "High Internal Resistance"
-	desc = "The station's outlets operate at a higher voltage than your chassis can handle, so you can only safely charge from recharging stations. Only IPCs can take this."
+	desc = "ЛКП на станции рассчитаны на более высокое напряжение, чем может выдержать ваше шасси, поэтому заряжать его можно только на зарядных станциях. Совместимо только с КПБ."
 	cost = -2
 	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
 	trait_to_apply = TRAIT_NO_APC_CHARGING
@@ -114,14 +114,14 @@
 
 /datum/quirk/pacifism
 	name = "Pacifist"
-	desc = "You can't bring yourself to hurt others, and cannot take a command or security position."
+	desc = "Вы не можете заставить себя причинять боль другим и не можете занимать должности в командовании или службе безопасности."
 	cost = -3
 	blacklisted = TRUE
 	trait_to_apply = TRAIT_PACIFISM
 
 /datum/quirk/hungry
 	name = "Hungry"
-	desc = "You get hungry faster."
+	desc = "Для вас голод наступает быстрее."
 	cost = -1
 
 /datum/quirk/hungry/apply_quirk_effects()
@@ -134,20 +134,20 @@
 
 /datum/quirk/colorblind
 	name = "Monochromacy"
-	desc = "You can't see any color."
+	desc = "Вы не различаете цвета."
 	cost = -2
 	trait_to_apply = TRAIT_COLORBLIND
 	species_flags = QUIRK_SLIME_INCOMPATIBLE
 
 /datum/quirk/loudmouthed
 	name = "Loudmouthed"
-	desc = "You can't seem to lower your volume to a whisper."
+	desc = "Вы не можете говорить шепотом."
 	cost = -1
 	trait_to_apply = TRAIT_NO_WHISPERING
 
 /datum/quirk/nearsighted
 	name = "Nearsighted"
-	desc = "You can't see well without prescription glasses."
+	desc = "Вы плохо видите без специальных очков."
 	cost = -1
 	trait_to_apply = TRAIT_NEARSIGHT
 	species_flags = QUIRK_SLIME_INCOMPATIBLE

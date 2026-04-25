@@ -159,8 +159,9 @@ USER_VERB(set_next_map, R_SERVER, "Set Next Map", "Set Next Map", VERB_CATEGORY_
 	var/list/map_datums = list()
 	for(var/x in subtypesof(/datum/map))
 		var/datum/map/M = x
-		if(initial(M.voteable))
-			map_datums["[initial(M.fluff_name)] ([initial(M.technical_name)])"] = M // Put our map in
+		// SS220 EDIT - START
+		map_datums["[initial(M.fluff_name)] ([initial(M.technical_name)])"] = M // Put our map in
+		// SS220 EDIT - END
 
 	var/target_map_name = input(client, "Select target map", "Next map", null) as null|anything in map_datums
 

@@ -221,8 +221,8 @@
 	list_reagents = list("grapejuice" = 30)
 
 /obj/item/reagent_containers/drinks/cans/electrolytes
-	name = "Electrolytez"
-	desc = "The fastest way to rehydration. Now with a giant Z on the can. Or is it a lightning bolt?"
+	name = "Электролиты"
+	desc = "Самый быстрый способ восстановить водный баланс. Теперь с гигантской буквой Z на банке. Или это молния?"
 	icon_state = "electrolytes_can"
 	list_reagents = list("electrolytes" = 30)
 

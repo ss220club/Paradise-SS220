@@ -1,37 +1,36 @@
 /datum/quirk/skittish
 	name = "Skittish"
-	desc = "You can hide yourself in crates by lying down, and WILL jump into a locker or crate if you bump into one while running, \
-			as long as you have access."
+	desc = "Вы можете спрятаться в ящике лёжа или запрыгнуть в шкаф на бегу, если столкнётесь с ним."
 	cost = 4
 	trait_to_apply = TRAIT_SKITTISH
 
 /datum/quirk/freerunner
 	name = "Freerunner"
-	desc = "You're practiced in vaulting over things."
+	desc = "Вы умеете перепрыгивать через препятствия."
 	cost = 4
 	trait_to_apply = TRAIT_FREERUNNER
 
 /datum/quirk/crafty
 	name = "Crafty"
-	desc = "You can craft things twice as fast."
+	desc = "Вы можете создавать предметы в два раза быстрее."
 	cost = 2
 	trait_to_apply = TRAIT_CRAFTY
 
 /datum/quirk/alcohol_tolerance/heavy_drinker
 	name = "Heavy Drinker"
-	desc = "You're used to the effects of alcohol, and get drunk slower than others."
+	desc = "Вы привыкли к воздействию алкоголя и пьянеете медленнее, чем другие."
 	cost = 1
 	alcohol_modifier = 0.7
 
 /datum/quirk/meal_prepper
 	name = "Meal Prepper"
-	desc = "You thought ahead and pre-packed a meal for the day."
+	desc = "Вы заранее продумали свой рацион на день."
 	cost = 1
 	item_to_give = /obj/item/storage/box/papersack/prepped_meal
 
 /datum/quirk/glutton
 	name = "Glutton"
-	desc = "You can eat faster, and don't suffer any ill-effects from being overweight. IPCs cannot take this."
+	desc = "Вы можете есть быстрее и не страдать от последствий избыточного веса. Несовместимо с расой КПБ."
 	cost = 2
 	trait_to_apply = TRAIT_GLUTTON
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
@@ -41,7 +40,7 @@
 	var/list/entree_options = list(
 		/obj/item/food/sandwich,
 		/obj/item/food/toastedsandwich,
-		/obj/item/food/jellysandwich/cherry,
+		/obj/item/food/jellysandwich,
 		/obj/item/food/grilledcheese,
 		/obj/item/food/burger/cheese,
 		/obj/item/food/blt,
@@ -99,7 +98,7 @@
 
 /datum/quirk/upgraded_lungs
 	name = "Upgraded Cybernetic Lungs"
-	desc  = "Your lungs have been replaced with upgraded cybernetics."
+	desc  = "Ваши легкие заменены на продвинутые кибернетические."
 	cost = 3
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/lungs/cybernetic/upgraded
@@ -116,21 +115,20 @@
 
 /datum/quirk/culinary_implant
 	name = "IPC Culinary Implant"
-	desc = "Either you or your creator wanted you to seem more organic, and gave you an artificial mouth and stomach."
+	desc = "То ли вы, то ли ваш создатель хотели, чтобы вы выглядели более естественно, и установили вам искусственный рот и живот."
 	cost = 2
 	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/chest/ipc_food
 
 /datum/quirk/home_cook
 	name = "Home Cook"
-	desc = "You have experience in the kitchen, and can examine kitchen machinery to see if the ingredients inside will cook into a proper meal. \
-			Chefs can already do this."
+	desc = "У вас есть опыт работы на кухне, и вы можете проверить кухонную технику, чтобы убедиться, что из продуктов внутри получится полноценное блюдо. Шеф-повара уже умеют это делать."
 	cost = 1
 	trait_to_apply = TRAIT_KNOWS_COOKING_RECIPES
 
 /datum/quirk/pet_owner
 	name = "Animal Lover"
-	desc = "You brought one of your pets to work today! Make sure to name them with your collar."
+	desc = "Сегодня вы привели на работу одного из своих питомцев! Не забудьте дать ему ошейник."
 	cost = 1
 	item_to_give = /obj/item/petcollar
 	var/list/possible_pets = list(/mob/living/simple_animal/pet/dog/corgi, /mob/living/simple_animal/pet/cat, /mob/living/simple_animal/pet/dog/pug,
@@ -142,13 +140,13 @@
 
 /datum/quirk/cool
 	name = "Cool"
-	desc = "You can land every flip. You're so cool."
+	desc = "Вы можете сделать сальто с любого трамплина. Вы такой крутой!"
 	cost = 1
 	trait_to_apply = TRAIT_COOL
 
 /datum/quirk/breathing_tube
 	name = "Breathing Tube"
-	desc  = "You have been outfitted with a breathing tube."
+	desc  = "Вам вживили дыхательную трубку."
 	cost = 2
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube

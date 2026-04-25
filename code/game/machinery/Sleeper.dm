@@ -134,7 +134,7 @@
 			if(world.timeofday > (R.last_addiction_dose + ADDICTION_SPEEDUP_TIME)) // 2.5 minutes
 				addiction_removal_chance = 10
 			if(prob(addiction_removal_chance))
-				atom_say("Patient's addiction was cured.")
+				atom_say("Пациент излечен от зависимости.")
 				playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 0)
 				to_chat(occupant, SPAN_BOLDNOTICE("You no longer feel reliant on [R.name]!"))
 				occupant.reagents.addiction_list.Remove(R)

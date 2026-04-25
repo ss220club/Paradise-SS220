@@ -73,7 +73,7 @@ USER_VERB(check_player_exp, R_ADMIN|R_MOD|R_MENTOR, "Check Player Playtime", "Re
 		return
 	if(!check_rights(R_ADMIN|R_MOD|R_MENTOR))
 		return
-	var/body = "<html><head><title>Playtime for [C.key]</title></head><BODY><BR>Playtime:"
+	var/body = "<html><meta charset='utf-8'><head><title>Playtime for [C.key]</title></head><BODY><BR>Playtime:"
 	body += C.get_exp_report()
 	body += "</BODY></HTML>"
 	usr << browse(body, "window=playerplaytime[C.ckey];size=550x615")

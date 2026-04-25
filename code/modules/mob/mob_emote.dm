@@ -22,7 +22,7 @@
 
 	if(!length(key_emotes))
 		if(intentional && !force_silence)
-			to_chat(src, SPAN_NOTICE("'[emote_key]' emote does not exist. Say *help for a list."))
+			to_chat(src, SPAN_NOTICE("Эмоции '[emote_key]' не существует. Введите *help для их списка."))
 		else if(!intentional)
 			CRASH("Emote with key [emote_key] was attempted to be called, though doesn't exist!")
 		return FALSE
@@ -38,7 +38,7 @@
 		if(P.try_run_emote(src, param, type_override, intentional))
 			return TRUE
 	if(intentional && !silenced && !force_silence)
-		to_chat(src, SPAN_NOTICE("Unusable emote '[emote_key]'. Say *help for a list."))
+		to_chat(src, SPAN_NOTICE("Эмоция '[emote_key]' недоступна. Введите *help для их списка."))
 	return FALSE
 
 /**
@@ -53,7 +53,7 @@
 	if(!message && !client)
 		CRASH("An empty custom emote was called from a client-less mob.")
 	else if(!message)
-		input = tgui_input_text(src, "Choose an emote to display.", "Custom Emote")
+		input = tgui_input_text(src, "Выберите эмоцию для отображения.", "Custom Emote")
 	else
 		input = message
 
@@ -86,7 +86,7 @@
 	var/list/base_keys = list()
 	var/list/all_keys = list()
 	var/list/species_emotes = list()
-	var/list/message = list("Available emotes, you can use them with say \"*emote\": ")
+	var/list/message = list("Доступные эмоции, можете их использовать с помощью \"*emote\": ")
 
 	var/mob/living/carbon/human/H = user
 	for(var/key in GLOB.emote_list)
@@ -110,7 +110,7 @@
 	message = message.Join("")
 	if(length(species_emotes) > 0)
 		species_emotes = sortList(species_emotes)
-		message += "\n<u>[user?.dna?.species.name] specific emotes</u> :- "
+		message += "\n<u>[user?.dna?.species.name] специальные эмоции</u> :- "
 		message += species_emotes.Join(", ")
 		message += "."
 	to_chat(user, message)
@@ -118,7 +118,7 @@
 /datum/emote/flip
 	key = "flip"
 	key_third_person = "flips"
-	message = "does a flip!"
+	message = "делает кувырок!"
 	hands_use_check = TRUE
 	emote_type = EMOTE_VISIBLE | EMOTE_FORCE_NO_RUNECHAT  // don't need an emote to see that
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)  // okay but what if we allowed ghosts to flip as well
@@ -135,10 +135,10 @@
 
 	if(IS_HORIZONTAL(L))
 		var/turf = get_turf(L)
-		message = "flops and flails around [isspaceturf(turf) ? "in space" : "on the floor"]."
+		message = "Шлепается и метается [isspaceturf(turf) ? "в космосе" : "по полу"]."
 		return ..()
 	else if(params)
-		message_param = "flips in %t's general direction."
+		message_param = "делает кувырок в направлении к %t."
 	else if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(istype(H.get_active_hand(), /obj/item/grab))
@@ -146,24 +146,23 @@
 			if(G && G.affecting)
 				if(H.buckled || G.affecting.buckled)
 					var/who_is = H.buckled ? "You are" : "[G.affecting] is"
-					to_chat(user, SPAN_WARNING("[who_is] buckled, you can't flip around [G.affecting.p_them()]!"))
+					to_chat(user, SPAN_WARNING("[who_is] пристёгнут(а), кувырок сделать не получится! [G.affecting.p_them()]!"))
 					return TRUE
 				var/turf/oldloc = user.loc
 				var/turf/newloc = G.affecting.loc
 				if(isturf(oldloc) && isturf(newloc))
 					user.SpinAnimation(5, 1)
-					var/old_pass = user.pass_flags
-					user.pass_flags |= (PASSTABLE)
+					// SS220 EDIT START - remove PASSTABLE flag
 					step(user, get_dir(oldloc, newloc))
-					user.pass_flags = old_pass
-					message = "flips over [G.affecting]!"
+					// SS220 EDIT END
+					message = "делает кувырок через [G.affecting]!"
 					return ..()
 
 	user.SpinAnimation(5, 1)
 
 	if(prob(5) && ishuman(user) && !HAS_TRAIT(user, TRAIT_COOL))
 		var/turf = get_turf(L)
-		message = "attempts a flip and [isspaceturf(turf) ? "loses balance" : "crashes to the floor"]!"
+		message = "пытается сделать кувырок и [isspaceturf(turf) ? "теряет баланс" : "шлёпается на пол"]!"
 		if(istype(L))
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, Weaken), 4 SECONDS), 0.3 SECONDS)
 		return ..()
@@ -190,7 +189,7 @@
 		return TRUE
 
 	user.spin(32, 1)
-	to_chat(user, SPAN_WARNING("You spin too much!"))
+	to_chat(user, SPAN_WARNING("Вы слишком долго вращаетесь!"))
 	var/mob/living/L = user
 	if(istype(L))
 		L.Dizzy(24 SECONDS)
@@ -199,7 +198,7 @@
 /datum/emote/jump
 	key = "jump"
 	key_third_person = "jumps"
-	message = "jumps!"
+	message = "прыгает!"
 	emote_type = EMOTE_VISIBLE | EMOTE_FORCE_NO_RUNECHAT
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/camera, /mob/living/silicon/ai)
