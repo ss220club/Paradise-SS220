@@ -1,6 +1,6 @@
 /proc/load_whitelist()
 	if(IsAdminAdvancedProcCall())
-		to_chat(usr, span_boldannounce("Whitelist reload blocked: Advanced ProcCall detected"))
+		to_chat(usr, SPAN_BOLDANNOUNCE("Whitelist reload blocked: Advanced ProcCall detected"))
 		return
 
 	if(!GLOB.configuration.overflow.reroute_cap || !SSdbcore.IsConnected())

@@ -91,7 +91,7 @@
 /mob/living/simple_animal/hostile/winter/santa/stage_1
 	desc = "GET THE FAT MAN!"
 	next_stage = /mob/living/simple_animal/hostile/winter/santa/stage_2
-	death_message = "<span class='danger'>ХО ХО ХО! ВЫ ДУМАЛИ, ЧТО ЭТО БУДЕТ ТАК ПРОСТО?!?</span>"
+	death_message = SPAN_DANGER("ХО ХО ХО! ВЫ ДУМАЛИ, ЧТО ЭТО БУДЕТ ТАК ПРОСТО?!?")
 	speed = 2
 	melee_damage_lower = 10
 	melee_damage_upper = 20
@@ -100,7 +100,7 @@
 /mob/living/simple_animal/hostile/winter/santa/stage_2
 	desc = "GET THE FAT MAN AGAIN!"
 	next_stage = /mob/living/simple_animal/hostile/winter/santa/stage_3
-	death_message = "<span class='danger'>ВЫ БЫЛИ ОЧЕНЬ НЕПОСЛУШНЫ! ПРИГОТОВЬТЕСЬ УМЕРЕТЬ!</span>"
+	death_message = SPAN_DANGER("ВЫ БЫЛИ ОЧЕНЬ НЕПОСЛУШНЫ! ПРИГОТОВЬТЕСЬ УМЕРЕТЬ!")
 	maxHealth = 200		//DID YOU REALLY BELIEVE IT WOULD BE THIS EASY!??!!
 	health = 200
 	ranged = TRUE
@@ -112,7 +112,7 @@
 /mob/living/simple_animal/hostile/winter/santa/stage_3
 	desc = "WHY WON'T HE DIE ALREADY!?"
 	next_stage = /mob/living/simple_animal/hostile/winter/santa/stage_4
-	death_message = "<span class='danger'>ВСТРЕЧАЙТЕ МОЙ ПОСЛЕДНИЙ ОБЛИК И ПОЗНАЙТЕ ОТЧАЯНИЕ!</span>"
+	death_message = SPAN_DANGER("ВСТРЕЧАЙТЕ МОЙ ПОСЛЕДНИЙ ОБЛИК И ПОЗНАЙТЕ ОТЧАЯНИЕ!")
 	maxHealth = 250
 	health = 250
 	ranged = TRUE
@@ -136,10 +136,10 @@
 
 /mob/living/simple_animal/hostile/winter/santa/stage_4/death(gibbed)
 	if(can_die())
-		to_chat(world, "<span class='notice'><hr></span>")
-		to_chat(world, "<span class='notice'>THE FAT MAN HAS FALLEN!</span>")
-		to_chat(world, "<span class='notice'>SANTA CLAUS HAS BEEN DEFEATED!</span>")
-		to_chat(world, "<span class='notice'><hr></span>")
+		to_chat(world, SPAN_NOTICE("<hr>"))
+		to_chat(world, SPAN_NOTICE("THE FAT MAN HAS FALLEN!"))
+		to_chat(world, SPAN_NOTICE("SANTA CLAUS HAS BEEN DEFEATED!"))
+		to_chat(world, SPAN_NOTICE("<hr>"))
 	// Only execute the below if we successfully died
 	. = ..()
 	if(!.)

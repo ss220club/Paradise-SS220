@@ -19,7 +19,7 @@
 /obj/structure/tribune/screwdriver_act(mob/user, obj/item/tool)
 	. = TRUE
 	if(flags & NODECONSTRUCT)
-		to_chat(user, span_warning("Try as you might, you can't figure out how to deconstruct [src]."))
+		to_chat(user, SPAN_WARNING("Try as you might, you can't figure out how to deconstruct [src]."))
 		return
 	if(!tool.use_tool(src, user, 30, volume = tool.tool_volume))
 		return
@@ -61,7 +61,7 @@
 	if(!Adjacent(user))
 		return
 	if(anchored)
-		to_chat(user, span_warning("It is fastened to the floor!"))
+		to_chat(user, SPAN_WARNING("It is fastened to the floor!"))
 		return
 	setDir(turn(dir, 90))
 	after_rotation(user)

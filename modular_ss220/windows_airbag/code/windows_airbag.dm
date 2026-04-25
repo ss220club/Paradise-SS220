@@ -36,7 +36,7 @@
 /datum/element/airbag/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 
-	examine_text += span_warning("It has a blinking red light indicating an airbag is installed. <b>Alt+click</b> to disarm.")
+	examine_text += SPAN_WARNING("It has a blinking red light indicating an airbag is installed. <b>Alt+click</b> to disarm.")
 
 /datum/element/airbag/proc/on_altclick(atom/movable/clicked_atom, mob/living/clicker)
 	SIGNAL_HANDLER
@@ -47,8 +47,8 @@
 
 /datum/element/airbag/proc/disarm_airbag(atom/movable/clicked_atom, mob/living/clicker)
 	clicker.visible_message(
-		span_notice("[clicker] starts disarming the airbag..."),
-		span_notice("You start disarming the airbag..."))
+		SPAN_NOTICE("[clicker] starts disarming the airbag..."),
+		SPAN_NOTICE("You start disarming the airbag..."))
 	clicked_atom.add_fingerprint(clicker)
 	if(do_after_once(clicker, DISARM_TIME, target = clicked_atom, progress = TRUE))
 		new disarmed_type(get_turf(clicked_atom))

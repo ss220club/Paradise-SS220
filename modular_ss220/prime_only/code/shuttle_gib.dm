@@ -54,15 +54,15 @@
 	target.stop_pulling()
 	if(isspaceturf(get_turf(target)))
 		target.visible_message(
-			span_warning("[target] иcчезает в спышке блюспейс излучения в тот момент, когда шаттл материализуется в нашем пространстве!"),
-			span_userdanger("Вы чувствуете, будто вас сейчас стошнит. Блюспейс прыжок шаттла телепортировал вас в другое место!")
+			SPAN_WARNING("[target] иcчезает в спышке блюспейс излучения в тот момент, когда шаттл материализуется в нашем пространстве!"),
+			SPAN_USERDANGER("Вы чувствуете, будто вас сейчас стошнит. Блюспейс прыжок шаттла телепортировал вас в другое место!")
 		)
 		do_teleport(target, get_turf(target), SHUTTLE_ROADKILL_TELEPORTATION_RANGE, sound_in = 'sound/effects/phasein.ogg')
 		return TRUE // Calls 'continue' to avoid qdeling of mob
 	else
 		target.visible_message(
-			span_warning("Тело [target] разрывается на куски от приземлившегося шаттла!"),
-			span_userdanger("Вы чувствуете, как ваше тело раздавило огромным весом прилетевшего шаттла!")
+			SPAN_WARNING("Тело [target] разрывается на куски от приземлившегося шаттла!"),
+			SPAN_USERDANGER("Вы чувствуете, как ваше тело раздавило огромным весом прилетевшего шаттла!")
 		)
 		target.gib()
 
@@ -70,14 +70,14 @@
 	var/mob/living/pilot = occupant
 	if(isspaceturf(get_turf(src)))
 		pilot.visible_message(
-			span_warning("[src] иcчезает в спышке блюспейс излучения в тот момент, когда шаттл материализуется в нашем пространстве!"),
-			span_userdanger("Вы чувствуете, будто вас сейчас стошнит. Блюспейс прыжок шаттла телепортировал вас в другое место!")
+			SPAN_WARNING("[src] иcчезает в спышке блюспейс излучения в тот момент, когда шаттл материализуется в нашем пространстве!"),
+			SPAN_USERDANGER("Вы чувствуете, будто вас сейчас стошнит. Блюспейс прыжок шаттла телепортировал вас в другое место!")
 		)
 		do_teleport(src, get_turf(src), SHUTTLE_ROADKILL_TELEPORTATION_RANGE, sound_in = 'sound/effects/phasein.ogg')
 	else
 		pilot.visible_message(
-			span_warning("Тело [pilot] разрывается на куски от приземлившегося шаттла!"),
-			span_userdanger("Вы чувствуете, как ваше тело раздавило огромным весом прилетевшего шаттла!")
+			SPAN_WARNING("Тело [pilot] разрывается на куски от приземлившегося шаттла!"),
+			SPAN_USERDANGER("Вы чувствуете, как ваше тело раздавило огромным весом прилетевшего шаттла!")
 		)
 		go_out(TRUE)
 		if(iscarbon(pilot))

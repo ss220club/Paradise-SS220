@@ -53,7 +53,7 @@
 		if(being_changed.gender == active_character.gender)
 			if(alert(chooser, "Оставляем голос вашего персонажа [active_character.real_name] - [active_character.tts_seed]?", "Выбор голоса", "Нет", "Да") ==  "Да")
 				if(!SStts220.tts_seeds[active_character.tts_seed])
-					to_chat(chooser, span_warning("Отсутствует tts_seed для значения \"[active_character.tts_seed]\". Текущий голос - [tts_seed.name]"))
+					to_chat(chooser, SPAN_WARNING("Отсутствует tts_seed для значения \"[active_character.tts_seed]\". Текущий голос - [tts_seed.name]"))
 					return null
 				new_tts_seed = SStts220.tts_seeds[active_character.tts_seed]
 				if(new_traits)
@@ -76,7 +76,7 @@
 	else
 		new_tts_seed_key = input(chooser, "Выберите голос персонажа", "Преобразуем голос") as null|anything in tts_seed
 	if(!new_tts_seed_key || !SStts220.tts_seeds[new_tts_seed_key])
-		to_chat(chooser, span_warning("Что-то пошло не так с выбором голоса. Текущий голос - [tts_seed.name]"))
+		to_chat(chooser, SPAN_WARNING("Что-то пошло не так с выбором голоса. Текущий голос - [tts_seed.name]"))
 		return null
 
 	new_tts_seed = SStts220.tts_seeds[new_tts_seed_key]

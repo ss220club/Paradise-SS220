@@ -25,6 +25,7 @@
 // SS220 EDIT END
 
 //Admin Permissions
+#define R_NONE			NONE
 #define R_BUILDMODE		(1<<0)
 #define R_ADMIN			(1<<1)
 #define R_BAN			(1<<2)

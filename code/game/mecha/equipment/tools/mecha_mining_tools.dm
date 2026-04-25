@@ -26,12 +26,12 @@
 		if(target_obj.resistance_flags & UNACIDABLE)
 			return
 	if(is_ancient_rock(target))
-		visible_message("<span class='notice'>Этот камень, похоже, устойчив ко всем инструментам для добычи, кроме кирок!</span>")
+		visible_message(SPAN_NOTICE("Этот камень, похоже, устойчив ко всем инструментам для добычи, кроме кирок!"))
 		return
 
-	target.visible_message("<span class='warning'>[capitalize(chassis.declent_ru(NOMINATIVE))] начинает бурить [target.declent_ru(ACCUSATIVE)].</span>",
-					"<span class='userdanger'>[capitalize(chassis.declent_ru(NOMINATIVE))] начинает бурить [target.declent_ru(ACCUSATIVE)]...</span>",
-					"<span class='italics'>Вы слышите шум бурения.</span>")
+	target.visible_message(SPAN_WARNING("[capitalize(chassis.declent_ru(NOMINATIVE))] начинает бурить [target.declent_ru(ACCUSATIVE)]."),
+					SPAN_USERDANGER("[capitalize(chassis.declent_ru(NOMINATIVE))] начинает бурить [target.declent_ru(ACCUSATIVE)]..."),
+					SPAN_ITALICS("Вы слышите шум бурения."))
 
 	if(do_after_cooldown(target))
 		set_ready_state(FALSE)
@@ -68,7 +68,7 @@
 			drill.log_message("Бурение [declent_ru(GENITIVE)] завершено")
 			dismantle_wall(TRUE, FALSE)
 	else
-		drill.occupant_message("<span class='danger'>Бур недостаточно мощный, чтобы пробить [declent_ru(ACCUSATIVE)]</span>")
+		drill.occupant_message(SPAN_DANGER("Бур недостаточно мощный, чтобы пробить [declent_ru(ACCUSATIVE)]"))
 
 /turf/simulated/mineral/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill)
 	for(var/turf/simulated/mineral/M in range(drill.chassis, 1))
@@ -96,8 +96,8 @@
 	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/drill/proc/drill_mob(mob/living/target, mob/user)
-	target.visible_message("<span class='danger'>[capitalize(chassis.declent_ru(NOMINATIVE))] бурит [target.declent_ru(ACCUSATIVE)] с помощью [declent_ru(GENITIVE)]!</span>",
-						"<span class='userdanger'>[capitalize(chassis.declent_ru(NOMINATIVE))] бурит вас с помощью [declent_ru(GENITIVE)]!</span>")
+	target.visible_message(SPAN_DANGER("[capitalize(chassis.declent_ru(NOMINATIVE))] бурит [target.declent_ru(ACCUSATIVE)] с помощью [declent_ru(GENITIVE)]!"),
+						SPAN_USERDANGER("[capitalize(chassis.declent_ru(NOMINATIVE))] бурит вас с помощью [declent_ru(GENITIVE)]!"))
 	add_attack_logs(user, target, "DRILLED with [src] ([uppertext(user.a_intent)]) ([uppertext(damtype)])")
 	if(target.stat == DEAD && target.getBruteLoss() >= 200)
 		add_attack_logs(user, target, "gibbed")
