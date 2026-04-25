@@ -10,23 +10,25 @@
 	desc = "A device used to teleport crates and closets to cargo telepads."
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "rcs"
-	item_state = "rcd"
 	flags = CONDUCT
 	force = 10.0
 	throwforce = 10.0
-	throw_speed = 2
 	throw_range = 5
-	toolspeed = 1
-	usesound = 'sound/machines/click.ogg'
+	usesound = 'sound/weapons/flash.ogg'
+	origin_tech = "bluespace=3"
 	/// Power cell (10000W)
 	var/obj/item/stock_parts/cell/high/rcell = null
 	/// Selected telepad
 	var/obj/machinery/pad = null
-
 	/// Currently teleporting something?
 	var/teleporting = FALSE
 	/// How much power does each teleport use?
 	var/chargecost = 1000
+
+/obj/item/rcs/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_BIT_ATTACH, PROC_REF(add_bit))
+	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(remove_bit))
 
 /obj/item/rcs/get_cell()
 	return rcell
@@ -37,7 +39,7 @@
 
 /obj/item/rcs/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There are [round(rcell.charge/chargecost)] charge\s left.</span>"
+	. += SPAN_NOTICE("There are [round(rcell.charge/chargecost)] charge\s left.")
 
 /obj/item/rcs/Destroy()
 	QDEL_NULL(rcell)
@@ -48,12 +50,12 @@
   */
 /obj/item/rcs/attack_self__legacy__attackchain(mob/user)
 	if(teleporting)
-		to_chat(user, "<span class='warning'>Error: Unable to change destination while in use.</span>")
+		to_chat(user, SPAN_WARNING("Error: Unable to change destination while in use."))
 		return
 
 	var/list/L = list() // List of avaliable telepads
 	var/list/areaindex = list() // Telepad area location
-	for(var/obj/machinery/telepad_cargo/R in GLOB.machines)
+	for(var/obj/machinery/telepad_cargo/R in SSmachines.get_by_type(/obj/machinery/telepad_cargo))
 		if(R.stage)
 			continue
 		var/turf/T = get_turf(R)
@@ -98,40 +100,41 @@
 	if(!emagged)
 		emagged = TRUE
 		do_sparks(3, TRUE, src)
-		to_chat(user, "<span class='boldwarning'>Warning: Safeties disabled.</span>")
+		to_chat(user, SPAN_BOLDWARNING("Warning: Safeties disabled."))
 		return TRUE
 
 
 /obj/item/rcs/proc/try_send_container(mob/user, obj/structure/closet/C)
 	if(teleporting)
-		to_chat(user, "<span class='warning'>You're already using [src]!</span>")
+		to_chat(user, SPAN_WARNING("You're already using [src]!"))
 		return
 	if((!emagged) && (user in C.contents)) // If it's emagged, skip this check.
-		to_chat(user, "<span class='warning'>Error: User located in container--aborting for safety.</span>")
+		to_chat(user, SPAN_WARNING("Error: User located in container--aborting for safety."))
 		return
 	if(rcell.charge < chargecost)
-		to_chat(user, "<span class='warning'>Unable to teleport, insufficient charge.</span>")
+		to_chat(user, SPAN_WARNING("Unable to teleport, insufficient charge."))
 		return
 	if(!pad)
-		to_chat(user, "<span class='warning'>Error: No telepad selected.</span>")
+		to_chat(user, SPAN_WARNING("Error: No telepad selected."))
 		return
 	if(!is_level_reachable(C.z))
-		to_chat(user, "<span class='warning'>Warning: No telepads in range!</span>")
+		to_chat(user, SPAN_WARNING("Warning: No telepads in range!"))
 		return
 
 	teleport(user, C, pad)
 
 
 /obj/item/rcs/proc/teleport(mob/user, obj/structure/closet/C, target)
-	to_chat(user, "<span class='notice'>Teleporting [C]...</span>")
-	playsound(src, usesound, 50, TRUE)
+	to_chat(user, SPAN_NOTICE("Teleporting [C]..."))
+	playsound(get_turf(src), usesound, 25, TRUE)
 	teleporting = TRUE
 	if(!do_after(user, 50 * toolspeed, target = C))
 		teleporting = FALSE
 		return
 
 	teleporting = FALSE
-	rcell.use(chargecost)
-	do_sparks(5, TRUE, C)
+	var/final_cost = chargecost * bit_efficiency_mod
+	rcell.use(final_cost)
+	playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 25, TRUE)
 	do_teleport(C, target)
-	to_chat(user, "<span class='notice'>Teleport successful. [round(rcell.charge/chargecost)] charge\s left.</span>")
+	to_chat(user, SPAN_NOTICE("Teleport successful. [round(rcell.charge/final_cost)] charge\s left."))

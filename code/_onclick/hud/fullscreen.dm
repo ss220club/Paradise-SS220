@@ -125,11 +125,17 @@
 	icon = 'icons/mob/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
+	var/dark_type = /atom/movable/screen/fullscreen/stretch/flash/dark
+
+/atom/movable/screen/fullscreen/stretch/flash/dark
+	icon_state = "flash_dark"
 
 /atom/movable/screen/fullscreen/stretch/flash/noise
-	icon = 'icons/mob/screen_gen.dmi'
-	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "noise"
+	dark_type = /atom/movable/screen/fullscreen/stretch/flash/noise/dark
+
+/atom/movable/screen/fullscreen/stretch/flash/noise/dark
+	icon_state = "noise_dark"
 
 /atom/movable/screen/fullscreen/stretch/high
 	icon = 'icons/mob/screen_gen.dmi'
@@ -149,12 +155,10 @@
 	invisibility = INVISIBILITY_LIGHTING
 	layer = BACKGROUND_LAYER+21
 	color = "#000"
-	show_when_dead = TRUE
 
 //Provides whiteness in case you don't see lights so everything is still visible
 /atom/movable/screen/fullscreen/stretch/lighting_backdrop/unlit
 	layer = BACKGROUND_LAYER+20
-	show_when_dead = TRUE
 
 /atom/movable/screen/fullscreen/stretch/see_through_darkness
 	icon_state = "nightvision"

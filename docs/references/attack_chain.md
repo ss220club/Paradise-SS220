@@ -32,10 +32,13 @@ The core of the attack chain commences:
    `COMSIG_INTERACT_USER`. If any listeners request it (usually by returning a
    non-null value), the attack chain may end here.
 5. If the target implements `item_interaction()`, it is called here, and can
-   return one of the `ITEM_INTERACT_` flags to end the attack chain.
+   either return `ITEM_INTERACT_COMPLETE` to end the attack chain, or
+   `ITEM_INTERACT_SKIP_TO_AFTER_ATTACK` to skip all phases of the attack chain
+   except for after-attack.
 6. If the item being used on the target implements `interact_with_atom()`, it is
-   called here, and can return one of the `ITEM_INTERACT_` flags to end the
-   attack chain.
+   called here, and can either return `ITEM_INTERACT_COMPLETE` to end the attack
+   chain, or `ITEM_INTERACT_SKIP_TO_AFTER_ATTACK` to skip all phases of the
+   attack chain except for after-attack.
 
 The above steps can generally be considered the "item interaction phase", when
 the action is not meant to cause in-game harm to the target. If the attack chain
@@ -89,12 +92,16 @@ into the attack chain.
 
 ### ITEM_INTERACT flags
 
-One may also ask why there are several `ITEM_INTERACT_` flags if returning any
-of them always results in the end of the attack chain. This is for two reasons:
+One may also ask why the `ITEM_INTERACT_SKIP_TO_AFTER_ATTACK` flag is necessary.
+Pre-migration, a common pattern was for an object to skip certain items in its
+`attackby`, and let those items handle the interaction in their `afterattack`.
+Some examples of this include:
 
-1. To make it clear at the call site what the intent of the code is, and
-2. So that in the future, if we do wish to separate the behavior of these flags,
-   we do not need to refactor all of the call sites.
+- Mountable frames being "ignored" in `/turf/attackby`, in order to let
+  `/obj/item/mounted/frame/afterattack` handle its specific behavior.
+- Reagent containers being "ignored" in various machines' `attackby`, in order
+  to let the container's `afterattack` handle reagent transfer or other specific
+  behavior.
 
 ## Attack Chain Refactor
 
@@ -172,17 +179,17 @@ First, let's look at `/obj/vehicle/attackby__legacy__attackchain`:
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		if(user.drop_item())
 			I.forceMove(src)
-			to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+			to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
 			if(inserted_key)	//just in case there's an invalid key
 				inserted_key.forceMove(drop_location())
 			inserted_key = I
 		else
-			to_chat(user, "<span class='warning'>[I] seems to be stuck to your hand!</span>")
+			to_chat(user, SPAN_WARNING("[I] seems to be stuck to your hand!"))
 		return
 	if(istype(I, /obj/item/borg/upgrade/vtec) && vehicle_move_delay > 1)
 		vehicle_move_delay = 1
 		qdel(I)
-		to_chat(user, "<span class='notice'>You upgrade [src] with [I].</span>")
+		to_chat(user, SPAN_NOTICE("You upgrade [src] with [I]."))
 		return
 	return ..()
 ```
@@ -196,7 +203,7 @@ Now let's look at `/obj/vehicle/janicart/attackby__legacy__attackchain`:
 
 ```dm
 /obj/vehicle/janicart/attackby(obj/item/I, mob/user, params)
-	var/fail_msg = "<span class='notice'>There is already one of those in [src].</span>"
+	var/fail_msg = SPAN_NOTICE("There is already one of those in [src].")
 
 	if(istype(I, /obj/item/storage/bag/trash))
 		if(mybag)
@@ -204,7 +211,7 @@ Now let's look at `/obj/vehicle/janicart/attackby__legacy__attackchain`:
 			return
 		if(!user.drop_item())
 			return
-		to_chat(user, "<span class='notice'>You hook [I] onto [src].</span>")
+		to_chat(user, SPAN_NOTICE("You hook [I] onto [src]."))
 		I.forceMove(src)
 		mybag = I
 		update_icon(UPDATE_OVERLAYS)
@@ -215,7 +222,7 @@ Now let's look at `/obj/vehicle/janicart/attackby__legacy__attackchain`:
 			return
 		buffer_installed = TRUE
 		qdel(I)
-		to_chat(user,"<span class='notice'>You upgrade [src] with [I].</span>")
+		to_chat(user,SPAN_NOTICE("You upgrade [src] with [I]."))
 		update_icon(UPDATE_OVERLAYS)
 		return
 	if(istype(I, /obj/item/borg/upgrade/vtec) && floorbuffer)
@@ -251,39 +258,39 @@ at each junction whenever we have handled the item interaction.
 ```diff
 -/obj/vehicle/janicart/attackby(obj/item/I, mob/user, params)
 +/obj/vehicle/janicart/item_interaction(mob/living/user, obj/item/I, list/modifiers)
- 	var/fail_msg = "<span class='notice'>There is already one of those in [src].</span>"
+ 	var/fail_msg = SPAN_NOTICE("There is already one of those in [src].")
 
  	if(istype(I, /obj/item/storage/bag/trash))
  		if(mybag)
  			to_chat(user, fail_msg)
 -			return
-+			return ITEM_INTERACT_BLOCKING
++			return ITEM_INTERACT_COMPLETE
  		if(!user.drop_item())
 -			return
-+			return ITEM_INTERACT_BLOCKING
- 		to_chat(user, "<span class='notice'>You hook [I] onto [src].</span>")
++			return ITEM_INTERACT_COMPLETE
+ 		to_chat(user, SPAN_NOTICE("You hook [I] onto [src]."))
  		I.forceMove(src)
  		mybag = I
  		update_icon(UPDATE_OVERLAYS)
 -		return
-+		return ITEM_INTERACT_SUCCESS
++		return ITEM_INTERACT_COMPLETE
 +
  	if(istype(I, /obj/item/borg/upgrade/floorbuffer))
  		if(buffer_installed)
  			to_chat(user, fail_msg)
 -			return
-+			return ITEM_INTERACT_BLOCKING
++			return ITEM_INTERACT_COMPLETE
  		buffer_installed = TRUE
  		qdel(I)
- 		to_chat(user,"<span class='notice'>You upgrade [src] with [I].</span>")
+ 		to_chat(user,SPAN_NOTICE("You upgrade [src] with [I]."))
  		update_icon(UPDATE_OVERLAYS)
 -		return
 -	if(istype(I, /obj/item/borg/upgrade/vtec) && floorbuffer)
-+		return ITEM_INTERACT_SUCCESS
++		return ITEM_INTERACT_COMPLETE
 +
 +	if(mybag && user.a_intent == INTENT_HELP && !is_key(I))
 +		mybag.attackby__legacy__attackchain(I, user)
-+		return ITEM_INTERACT_ANY_BLOCKER
++		return ITEM_INTERACT_COMPLETE
 +
 +	return ..()
 ```
@@ -374,7 +381,7 @@ is the proc before the migration:
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= max_brain_damage)
-			to_chat(user, "<span class='warning'>You forget how to use [src].</span>")
+			to_chat(user, SPAN_WARNING("You forget how to use [src]."))
 			return
 	ui_interact(user)
 ```
@@ -443,7 +450,7 @@ The migration is complete. The proc now looks like this:
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= max_brain_damage)
-			to_chat(user, "<span class='warning'>You forget how to use [src].</span>")
+			to_chat(user, SPAN_WARNING("You forget how to use [src]."))
 			return
 	ui_interact(user)
 ```
@@ -459,10 +466,10 @@ migration:
 	if(IS_CULTIST(M))
 		if(M.reagents && M.reagents.has_reagent("holywater")) //allows cultists to be rescued from the clutches of ordained religion
 			if(M == user) // Targeting yourself
-				to_chat(user, "<span class='warning'>You can't remove holy water from yourself!</span>")
+				to_chat(user, SPAN_WARNING("You can't remove holy water from yourself!"))
 			else // Targeting someone else
-				to_chat(user, "<span class='cult'>You remove the taint from [M].</span>")
-				to_chat(M, "<span class='cult'>[user] removes the taint from your body.</span>")
+				to_chat(user, SPAN_CULT("You remove the taint from [M]."))
+				to_chat(M, SPAN_CULT("[user] removes the taint from your body."))
 				M.reagents.del_reagent("holywater")
 				add_attack_logs(user, M, "Hit with [src], removing the holy water from them")
 		return FALSE
@@ -480,8 +487,8 @@ Because the dagger has a parent proc, let's also examine that:
 	if(!IS_CULTIST(user))
 		user.Weaken(10 SECONDS)
 		user.unEquip(src, 1)
-		user.visible_message("<span class='warning'>A powerful force shoves [user] away from [target]!</span>",
-							"<span class='cultlarge'>\"You shouldn't play with sharp things. You'll poke someone's eye out.\"</span>")
+		user.visible_message(SPAN_WARNING("A powerful force shoves [user] away from [target]!"),
+							SPAN_CULTLARGE("\"You shouldn't play with sharp things. You'll poke someone's eye out.\""))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(rand(force/2, force), BRUTE, pick("l_arm", "r_arm"))
@@ -592,8 +599,8 @@ The resultant code looks like this:
 	if(!IS_CULTIST(user))
 		user.Weaken(10 SECONDS)
 		user.unEquip(src, 1)
-		user.visible_message("<span class='warning'>A powerful force shoves [user] away from [target]!</span>",
-							"<span class='cultlarge'>\"You shouldn't play with sharp things. You'll poke someone's eye out.\"</span>")
+		user.visible_message(SPAN_WARNING("A powerful force shoves [user] away from [target]!"),
+							SPAN_CULTLARGE("\"You shouldn't play with sharp things. You'll poke someone's eye out.\""))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(rand(force/2, force), BRUTE, pick("l_arm", "r_arm"))
@@ -618,11 +625,11 @@ The resultant code looks like this:
 	if(IS_CULTIST(target))
 		if(target.reagents && target.reagents.has_reagent("holywater")) //allows cultists to be rescued from the clutches of ordained religion
 			if(target == user) // Targeting yourself
-				to_chat(user, "<span class='warning'>You can't remove holy water from yourself!</span>")
+				to_chat(user, SPAN_WARNING("You can't remove holy water from yourself!"))
 
 			else // Targeting someone else
-				to_chat(user, "<span class='cult'>You remove the taint from [target].</span>")
-				to_chat(target, "<span class='cult'>[user] removes the taint from your body.</span>")
+				to_chat(user, SPAN_CULT("You remove the taint from [target]."))
+				to_chat(target, SPAN_CULT("[user] removes the taint from your body."))
 				target.reagents.del_reagent("holywater")
 				add_attack_logs(user, target, "Hit with [src], removing the holy water from them")
 

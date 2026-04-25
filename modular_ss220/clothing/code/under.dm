@@ -3,10 +3,9 @@
 	desc = "Кибер-костюм так называемой Катарины."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "katarina_cybersuit"
-	icon_override = 'modular_ss220/clothing/icons/mob/under.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
-	item_color = "katarina_cybersuit"
 	sprite_sheets = null
 
 /obj/item/clothing/under/costume/katarina_suit
@@ -14,10 +13,9 @@
 	desc = "Костюм так называемой Катарины."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "katarina_suit"
-	icon_override = 'modular_ss220/clothing/icons/mob/under.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
-	item_color = "katarina_suit"
 	sprite_sheets = null
 
 /obj/item/clothing/under/rank/civilian/chef/red
@@ -25,93 +23,60 @@
 	desc = "Униформа повара с пуговицами на одну сторону."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "chef_red"
-	item_color = "chef_red"
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	sprite_sheets = list(
-		"Abductor" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Ancient Skeleton" 	= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
-		"Golem" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Grey" 				= 	'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine"			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Monkey" 			= 	'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
-		"Nian" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Shadow" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
-		)
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
+		"Monkey" = 'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+	)
 
 /obj/item/clothing/under/towel
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	has_sensor = FALSE
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Plasmaman" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
-		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
 		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
 		"Monkey" = 'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
-		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Adbuctor" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Ancient Skeleton" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi'
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
 	)
-	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
-	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
-	has_sensor = 0
 
 /obj/item/clothing/under/towel/attackby__legacy__attackchain(obj/item/S, mob/user, params)
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S
-		var/list/hsl = rgb2hsl(hex2num(copytext(spcan.colour, 2, 4)), hex2num(copytext(spcan.colour, 4, 6)), hex2num(copytext(spcan.colour, 6, 8)))
+		var/list/hsl = rgb2hsl(hex2num(copytext(spcan.crayon_color, 2, 4)), hex2num(copytext(spcan.crayon_color, 4, 6)), hex2num(copytext(spcan.crayon_color, 6, 8)))
 		hsl[3] = max(hsl[3], 0.4)
 		var/list/rgb = hsl2rgb(arglist(hsl))
 		var/new_color = "#[num2hex(rgb[1], 2)][num2hex(rgb[2], 2)][num2hex(rgb[3], 2)]"
 		color = new_color
-		to_chat(user, "<span class='notice'>Вы перекрашиваете [src.name].</span>")
+		to_chat(user, SPAN_NOTICE("Вы перекрашиваете [src.name]."))
 		return
 
 /obj/item/clothing/under/towel/long
 	name = "полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани. Можно обмотать вокруг тела."
 	icon_state = "towel_long"
-	item_color = "towel_long"
 
 /obj/item/clothing/under/towel/long/alt
 	name = "махровое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, на взгляд шершавое. Можно обмотать вокруг тела."
 	icon_state = "towel_long_alt"
-	item_color = "towel_long_alt"
 
 /obj/item/clothing/under/towel/short
 	name = "маленькое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, но маленькое. Можно обмотать вокруг тела."
 	icon_state = "towel_short"
-	item_color = "towel_short"
 
 /obj/item/clothing/under/towel/short/alt
 	name = "маленькое махровое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, на взгляд шершавое и маленькое. Можно обмотать вокруг тела."
 	icon_state = "towel_short_alt"
-	item_color = "towel_short_alt"
 
 // Длинное полотенце
 /obj/item/clothing/under/towel/long/red
@@ -235,26 +200,12 @@
 	desc = "Все то же удобство, но в прекрасной гамме угольных оттенков."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "ei_combat"
-	item_color = "ei_combat"
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/under.dmi',
-		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skeleton" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Unathi" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
-		"Abductor" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
 	)
@@ -263,27 +214,13 @@
 	name = "блузка с юбкой Gold on Black"
 	desc = "Не волнуйтесь, запачкать её будет крайне сложно, так что вы всегда будете прелестны и очаровательны. Даже если руки по локоть в крови."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	icon_state = "ei_skirt"
-	item_color = "ei_skirt"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/under.dmi',
-		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skeleton" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Unathi" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
-		"Abductor" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
 	)
@@ -293,24 +230,27 @@
 	desc = "Юбка «Солнце» в классических цветах корпорации EI."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "ei_skirt_alt"
-	item_color = "ei_skirt_alt"
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/under.dmi',
-		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skeleton" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Unathi" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
-		"Abductor" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
 	)
+
+/obj/item/clothing/under/rank/procedure/nct/black
+	desc = "A neatly pressed black shirt paired with black jeans, worn by those dedicated to shaping the future of the workforce."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	worn_icon = 'modular_ss220/clothing/icons/mob/under.dmi'
+	icon_state = "trainer_black"
+	sprite_sheets = list(
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/under.dmi'
+	)
+
+/obj/item/clothing/under/rank/procedure/nct/black/skirt
+	name = "\improper NT Career Trainer's skirt"
+	desc = "A neatly pressed black shirt paired with a sleek black skirt, worn by those committed to mentoring the next generation."
+	icon_state = "trainer_black_skirt"

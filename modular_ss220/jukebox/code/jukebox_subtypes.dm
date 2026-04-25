@@ -54,7 +54,7 @@
 
 /obj/machinery/jukebox/concertspeaker/examine()
 	. = ..()
-	. += "<span class='notice'>Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.</span>"
+	. += SPAN_NOTICE("Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.")
 
 /obj/machinery/jukebox/concertspeaker/wrench_act()
 	. = ..()

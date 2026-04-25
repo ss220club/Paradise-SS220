@@ -1,11 +1,10 @@
 /obj/item/clothing/gloves/ring
 	name = "iron ring"
 	desc = "A band that goes around your finger. It's considered gauche to wear more than one."
-	gender = "neuter" // not plural anymore
-	transfer_prints = TRUE
-	icon_state = "ironring"
-	item_state = ""
 	icon = 'icons/obj/clothing/rings.dmi'
+	icon_state = "ironring"
+	gender = NEUTER // not plural anymore
+	transfer_prints = TRUE
 	var/fluff_material = FALSE	//If true, will ignore the material when examining
 	var/material = "iron"
 	var/stud = 0
@@ -29,13 +28,13 @@
 	if(istype(I, /obj/item/stack/sheet/mineral/diamond))
 		var/obj/item/stack/sheet/mineral/diamond/D = I
 		if(stud)
-			to_chat(usr, "<span class='notice'>[src] already has a gem.</span>")
+			to_chat(usr, SPAN_NOTICE("[src] already has a gem."))
 		else
 			if(D.amount >= 1)
 				D.use(1)
 				stud = TRUE
 				update_icon(UPDATE_ICON_STATE)
-				to_chat(usr, "<span class='notice'>You socket the diamond into [src].</span>")
+				to_chat(usr, SPAN_NOTICE("You socket the diamond into [src]."))
 
 // s'pensive
 /obj/item/clothing/gloves/ring/silver
@@ -104,3 +103,8 @@
 	icon_state = "shadowring"
 	material = "shadows"
 	ring_color = "shadow"
+
+/obj/item/clothing/gloves/ring/white_diamond
+	name = "white diamond ring"
+	desc = "A small silver ring with a large light blue diamond. Someone's a big spender."
+	icon_state = "d_whitering"

@@ -1,7 +1,6 @@
 /obj/machinery/computer/arcade
 	name = "random arcade"
 	desc = "random arcade machine."
-	icon = 'icons/obj/computer.dmi'
 	icon_state = "arcade"
 	icon_keyboard = null
 	icon_screen = "invaders"
@@ -45,13 +44,12 @@
 			num_of_prizes = rand(0,2)
 	for(var/i = num_of_prizes; i > 0; i--)
 		prizevend()
-	explosion(get_turf(src), -1, 0, 1+num_of_prizes, flame_range = 1+num_of_prizes)
+	explosion(get_turf(src), -1, 0, 1+num_of_prizes, flame_range = 1+num_of_prizes, cause = "EMP'd arcade machine")
 
 
 /obj/machinery/computer/arcade/battle
 	name = "arcade machine"
 	desc = "Does not support Pinball."
-	icon = 'icons/obj/computer.dmi'
 	icon_state = "battle_arcade"
 	icon_screen = "battle"
 	circuit = /obj/item/circuitboard/arcade/battle
@@ -280,7 +278,6 @@
 /obj/machinery/computer/arcade/orion_trail
 	name = "The Orion Trail"
 	desc = "Learn how our ancestors got to Orion, and have fun in the process!"
-	icon_state = "arcade"
 	icon_screen = "orion"
 	circuit = /obj/item/circuitboard/arcade/orion_trail
 	var/busy = FALSE //prevent clickspam that allowed people to ~speedrun~ the game.
@@ -369,18 +366,18 @@
 				dat += "<br>You ran out of food and starved."
 				if(emagged)
 					user.set_nutrition(0) //yeah you pretty hongry
-					to_chat(user, "<span class='userdanger'><font size=3>Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor.</span>")
+					to_chat(user, SPAN_USERDANGER("<font size=3>Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor."))
 			if(fuel <= 0)
 				dat += "<br>You ran out of fuel, and drift, slowly, into a star."
 				if(emagged)
 					var/mob/living/M = user
 					M.adjust_fire_stacks(5)
 					M.IgniteMob() //flew into a star, so you're on fire
-					to_chat(user, "<span class='userdanger'><font size=3>You feel an immense wave of heat emanate from the arcade machine. Your skin bursts into flames.</span>")
+					to_chat(user, SPAN_USERDANGER("<font size=3>You feel an immense wave of heat emanate from the arcade machine. Your skin bursts into flames."))
 		dat += "<br><P ALIGN=Right><a href='byond://?src=[UID()];menu=1'>OK...</a></P>"
 
 		if(emagged)
-			to_chat(user, "<span class='userdanger'><font size=3>You're never going to make it to Orion...</span></font>")
+			to_chat(user, "[SPAN_USERDANGER("<font size=3>You're never going to make it to Orion...")]</font>")
 			user.death()
 			emagged = FALSE //removes the emagged status after you lose
 			playing = 0 //also a new game
@@ -447,22 +444,22 @@
 			switch(event)
 				if(ORION_TRAIL_RAIDERS)
 					if(prob(50))
-						to_chat(usr, "<span class='userdanger'>You hear battle shouts. The tramping of boots on cold metal. Screams of agony. The rush of venting air. Are you going insane?</span>")
+						to_chat(usr, SPAN_USERDANGER("You hear battle shouts. The tramping of boots on cold metal. Screams of agony. The rush of venting air. Are you going insane?"))
 						M.AdjustHallucinate(30 SECONDS)
 					else
-						to_chat(usr, "<span class='userdanger'>Something strikes you from behind! It hurts like hell and feel like a blunt weapon, but nothing is there...</span>")
+						to_chat(usr, SPAN_USERDANGER("Something strikes you from behind! It hurts like hell and feel like a blunt weapon, but nothing is there..."))
 						M.take_organ_damage(30)
 						playsound(loc, 'sound/weapons/genhit2.ogg', 100, TRUE)
 				if(ORION_TRAIL_ILLNESS)
 					var/severity = rand(1,3) //pray to RNGesus. PRAY, PIGS
 					if(severity == 1)
-						to_chat(M, "<span class='userdanger'>You suddenly feel slightly nauseous.</span>")//got off lucky
+						to_chat(M, SPAN_USERDANGER("You suddenly feel slightly nauseous."))//got off lucky
 
 					if(severity == 2)
-						to_chat(usr, "<span class='userdanger'>You suddenly feel extremely nauseous and hunch over until it passes.</span>")
+						to_chat(usr, SPAN_USERDANGER("You suddenly feel extremely nauseous and hunch over until it passes."))
 						M.Stun(6 SECONDS)
 					if(severity >= 3) //you didn't pray hard enough
-						to_chat(M, "<span class='warning'>An overpowering wave of nausea consumes over you. You hunch over, your stomach's contents preparing for a spectacular exit.</span>")
+						to_chat(M, SPAN_WARNING("An overpowering wave of nausea consumes over you. You hunch over, your stomach's contents preparing for a spectacular exit."))
 						M.Stun(10 SECONDS)
 						sleep(30)
 						atom_say("[M] violently throws up!")
@@ -478,7 +475,7 @@
 						M.take_organ_damage(25)
 						playsound(loc, 'sound/weapons/genhit.ogg', 100, TRUE)
 					else
-						to_chat(M, "<span class='userdanger'>A violent gale blows past you, and you barely manage to stay standing!</span>")
+						to_chat(M, SPAN_USERDANGER("A violent gale blows past you, and you barely manage to stay standing!"))
 				if(ORION_TRAIL_COLLISION) //by far the most damaging event
 					if(prob(90))
 						playsound(loc, 'sound/effects/bang.ogg', 100, TRUE)
@@ -498,7 +495,7 @@
 						playsound(loc, 'sound/effects/bang.ogg', 50, TRUE)
 				if(ORION_TRAIL_MALFUNCTION)
 					playsound(loc, 'sound/effects/empulse.ogg', 50, TRUE)
-					visible_message("<span class='danger'>[src] malfunctions, randomizing in-game stats!</span>")
+					visible_message(SPAN_DANGER("[src] malfunctions, randomizing in-game stats!"))
 					var/oldfood = food
 					var/oldfuel = fuel
 					food = rand(10,80) / rand(1,2)
@@ -506,9 +503,9 @@
 					if(electronics)
 						sleep(10)
 						if(oldfuel > fuel && oldfood > food)
-							audible_message("<span class='danger'>[src] lets out a somehow reassuring chime.</span>")
+							audible_message(SPAN_DANGER("[src] lets out a somehow reassuring chime."))
 						else if(oldfuel < fuel || oldfood < food)
-							audible_message("<span class='danger'>[src] lets out a somehow ominous chime.</span>")
+							audible_message(SPAN_DANGER("[src] lets out a somehow ominous chime."))
 						food = oldfood
 						fuel = oldfuel
 						playsound(loc, 'sound/machines/chime.ogg', 50, TRUE)
@@ -961,7 +958,7 @@
 
 /obj/machinery/computer/arcade/orion_trail/emag_act(mob/user)
 	if(!emagged)
-		to_chat(user, "<span class='notice'>You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode.</span>")
+		to_chat(user, SPAN_NOTICE("You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode."))
 		name = "The Orion Trail: Realism Edition"
 		desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
 		add_hiddenprint(user)
@@ -974,7 +971,6 @@
 	desc = "Premier corporate security forces for all spaceports found along the Orion Trail."
 	faction = list("orion")
 	loot = list()
-	del_on_death = TRUE
 
 /obj/item/orion_ship
 	name = "model settler ship"
@@ -988,9 +984,9 @@
 	. = ..()
 	if(in_range(user, src))
 		if(!active)
-			. += "<span class='notice'>There's a little switch on the bottom. It's flipped down.</span>"
+			. += SPAN_NOTICE("There's a little switch on the bottom. It's flipped down.")
 		else
-			. += "<span class='notice'>There's a little switch on the bottom. It's flipped up.</span>"
+			. += SPAN_NOTICE("There's a little switch on the bottom. It's flipped up.")
 
 /obj/item/orion_ship/attack_self__legacy__attackchain(mob/user) //Minibomb-level explosion. Should probably be more because of how hard it is to survive the machine! Also, just over a 5-second fuse
 	if(active)
@@ -999,20 +995,20 @@
 	message_admins("[key_name_admin(usr)] primed an explosive Orion ship for detonation.")
 	log_game("[key_name(usr)] primed an explosive Orion ship for detonation.")
 
-	to_chat(user, "<span class='warning'>You flip the switch on the underside of [src].</span>")
+	to_chat(user, SPAN_WARNING("You flip the switch on the underside of [src]."))
 	active = TRUE
-	visible_message("<span class='notice'>[src] softly beeps and whirs to life!</span>")
+	visible_message(SPAN_NOTICE("[src] softly beeps and whirs to life!"))
 	playsound(loc, 'sound/machines/defib_saftyon.ogg', 25, TRUE)
 	atom_say("This is ship ID #[rand(1,1000)] to Orion Port Authority. We're coming in for landing, over.")
 	sleep(20)
-	visible_message("<span class='warning'>[src] begins to vibrate...</span>")
+	visible_message(SPAN_WARNING("[src] begins to vibrate..."))
 	atom_say("Uh, Port? Having some issues with our reactor, could you check it out? Over.")
 	sleep(30)
 	atom_say("Oh, God! Code Eight! CODE EIGHT! IT'S GONNA BL-")
 	playsound(loc, 'sound/machines/buzz-sigh.ogg', 25, TRUE)
 	sleep(3.6)
-	visible_message("<span class='userdanger'>[src] explodes!</span>")
-	explosion(src.loc, 1,2,4, flame_range = 3)
+	visible_message(SPAN_USERDANGER("[src] explodes!"))
+	explosion(src.loc, 1,2,4, flame_range = 3, cause = "Orion Ship Minibomb")
 	qdel(src)
 
 

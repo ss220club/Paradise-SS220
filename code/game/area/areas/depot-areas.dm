@@ -1,6 +1,6 @@
 
 /area/syndicate_depot
-	name = "Suspicious Supply Depot"
+	name = "Подозрительный Схрон"
 	icon_state = "dark"
 	tele_proof = TRUE
 
@@ -254,7 +254,7 @@
 				var/obj/effect/landmark/L = thing
 				if(prob(50))
 					if(L.name == "syndi_depot_backup")
-						var/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/space/S = new /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/space(get_turf(L))
+						var/mob/living/simple_animal/hostile/syndicate/depot/modsuit/backup/S = new /mob/living/simple_animal/hostile/syndicate/depot/modsuit/backup(get_turf(L))
 						S.name = "Syndicate Backup " + "([rand(1, 1000)])"
 						S.depotarea = src
 						list_add(S, guard_list)
@@ -294,7 +294,7 @@
 			reactor.overload(containment_failure)
 	else
 		log_debug("Depot: [src] called activate_self_destruct with no reactor.")
-		message_admins("<span class='adminnotice'>Syndicate Depot lacks reactor to initiate self-destruct. Must be destroyed manually.</span>")
+		message_admins(SPAN_ADMINNOTICE("Syndicate Depot lacks reactor to initiate self-destruct. Must be destroyed manually."))
 	update_icon(UPDATE_ICON_STATE)
 
 /area/syndicate_depot/core/proc/activate_lockdown()
@@ -374,12 +374,14 @@
 		if(S)
 			qdel(S)
 	shield_list = list()
+	for(var/obj/machinery/door/airlock/hatch/syndicate/vault/A in src)
+		A.unlock()
+
+/area/syndicate_depot/core/proc/unlock_lockers() // used on QM's death
 	for(var/obj/structure/closet/secure_closet/depot/armory/L in src)
 		if(L.locked)
 			L.locked = !L.locked
 			L.update_icon()
-	for(var/obj/machinery/door/airlock/hatch/syndicate/vault/A in src)
-		A.unlock()
 
 /area/syndicate_depot/core/proc/despawn_guards()
 	for(var/mob/thismob in list_getmobs(guard_list))
@@ -476,11 +478,11 @@
 	return moblist
 
 /area/syndicate_depot/outer
-	name = "Suspicious Asteroid"
+	name = "Подозрительный Астероид"
 	icon_state = "green"
 
 /area/syndicate_depot/perimeter
-	name = "Suspicious Asteroid Perimeter"
+	name = "Периметр Подозрительного Астероида"
 	icon_state = "yellow"
 	var/list/shield_list = list()
 

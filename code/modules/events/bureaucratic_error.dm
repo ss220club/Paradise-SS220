@@ -1,4 +1,5 @@
 /datum/event/bureaucratic_error
+	name = "Bureaucratic Error"
 	announceWhen = 1
 	/// Jobs that are not allowed to be picked for the bureaucratic error
 	var/list/blacklisted_jobs = list(
@@ -21,11 +22,12 @@
 		/datum/job/hop,
 		/datum/job/nanotrasenrep,
 		/datum/job/judge,
-		/datum/job/qm
+		/datum/job/qm,
+		/datum/job/nanotrasentrainer
 	)
 
 /datum/event/bureaucratic_error/announce()
-	GLOB.major_announcement.Announce("A recent bureaucratic error in the Human Resources Department may result in personnel shortages in some departments and redundant staffing in others. Contact your local HoP to solve this issue.", "Paperwork Mishap Alert")
+	GLOB.major_announcement.Announce("Недавняя бюрократическая ошибка в отделе кадров может привести к нехватке персонала в одних отделах и избытку в других. Свяжитесь с ГП вашей станции для решения этой проблемы.", "Ошибка системы документооборота.")
 
 /datum/event/bureaucratic_error/start()
 	var/list/affected_jobs = list() // For logging
@@ -48,4 +50,4 @@
 		errors++
 	log_and_message_admins(affected_jobs.Join(".\n"))
 	for(var/mob/M as anything in GLOB.dead_mob_list)
-		to_chat(M, "<span class='deadsay'><b>Bureaucratic Error:</b> The following job slots have changed: \n[affected_jobs.Join(",\n ")].</span>")
+		to_chat(M, SPAN_DEADSAY("<b>Bureaucratic Error:</b> The following job slots have changed: \n[affected_jobs.Join(",\n ")]."))

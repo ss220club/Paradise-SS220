@@ -36,6 +36,7 @@
 	current_skin = "_orange"
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
 	AddComponent(/datum/component/two_handed, force_unwielded = force / 2, force_wielded = force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
+	RegisterSignal(src, COMSIG_ACTIVATE_SELF, TYPE_PROC_REF(/datum, signal_cancel_activate_self))
 	options["Оранжевое свечение"] = "_orange"
 	options["Красное свечение"] = "_red"
 	options["Фиолетовое свечение"] = "_purple"
@@ -64,14 +65,7 @@
 /obj/item/melee/baton/electrostaff/examine(mob/user)
 	. = ..()
 	if(unique_reskin)
-		. += span_notice("<b>Alt-click</b>, to reskin it.")
-
-/obj/item/melee/baton/electrostaff/attack_self__legacy__attackchain(mob/user)
-	var/signal_ret = SEND_SIGNAL(src, COMSIG_ACTIVATE_SELF, user)
-	if(signal_ret & COMPONENT_NO_INTERACT)
-		return
-	if(signal_ret & COMPONENT_CANCEL_ATTACK_CHAIN)
-		return TRUE
+		. += SPAN_NOTICE("<b>Alt-click</b>, to reskin it.")
 
 /obj/item/melee/baton/electrostaff/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
@@ -89,13 +83,13 @@
 	if(cell?.charge >= hitcost)
 		if(to_turn_on)
 			turned_on = TRUE
-		to_chat(user, span_notice("[src] [turned_on ? "включен" : "выключен"]."))
+		to_chat(user, SPAN_NOTICE("[src] [turned_on ? "включен" : "выключен"]."))
 		playsound(src, turned_on ? sound_on : "sparks", 75, TRUE, -1)
 	else
 		if(!cell)
-			to_chat(user, span_warning("[src] не имеет источников питания!"))
+			to_chat(user, SPAN_WARNING("[src] не имеет источников питания!"))
 		else
-			to_chat(user, span_warning("[src] обесточен."))
+			to_chat(user, SPAN_WARNING("[src] обесточен."))
 	update_icon()
 	add_fingerprint(user)
 
@@ -109,7 +103,7 @@
 /obj/item/melee/baton/electrostaff/AltClick(mob/user)
 	. = ..()
 	if(user.incapacitated())
-		to_chat(user, span_warning("Вы не можете этого сделать прямо сейчас!"))
+		to_chat(user, SPAN_WARNING("Вы не можете этого сделать прямо сейчас!"))
 		return
 	if(unique_reskin && loc == user)
 		reskin_staff(user)

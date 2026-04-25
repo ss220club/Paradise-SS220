@@ -1,8 +1,3 @@
-#define BASE_POINT_MULT 0.65
-#define BASE_SHEET_MULT 0.65
-#define POINT_MULT_ADD_PER_RATING 0.35
-#define SHEET_MULT_ADD_PER_RATING 0.35
-
 /**
   * # Ore Redemption Machine
   *
@@ -15,11 +10,8 @@
 	icon_state = "ore_redemption"
 	density = TRUE
 	anchored = TRUE
-	input_dir = NORTH
-	output_dir = SOUTH
 	req_access = list(ACCESS_MINERAL_STOREROOM)
 	speed_process = TRUE
-	layer = BELOW_OBJ_LAYER
 	// Settings
 	/// The access number required to claim points from the machine.
 	var/req_access_claim = ACCESS_MINING_STATION
@@ -52,11 +44,13 @@
 	var/datum/research/files
 	/// The currently inserted design disk.
 	var/obj/item/disk/design_disk/inserted_disk
+	var/datum/component/material_container/mat_container
+	var/invalid_material
 
 
 /obj/machinery/mineral/ore_redemption/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/material_container, list(MAT_METAL, MAT_GLASS, MAT_SILVER, MAT_GOLD, MAT_DIAMOND, MAT_PLASMA, MAT_URANIUM, MAT_BANANIUM, MAT_TRANQUILLITE, MAT_TITANIUM, MAT_BLUESPACE), INFINITY, FALSE, /obj/item/stack, null, CALLBACK(src, PROC_REF(on_material_insert)))
+	mat_container = AddComponent(/datum/component/material_container, list(MAT_METAL, MAT_GLASS, MAT_SILVER, MAT_GOLD, MAT_DIAMOND, MAT_PLASMA, MAT_URANIUM, MAT_BANANIUM, MAT_TRANQUILLITE, MAT_TITANIUM, MAT_BLUESPACE, MAT_PLATINUM, MAT_IRIDIUM, MAT_PALLADIUM), INFINITY, FALSE, /obj/item/stack, null, CALLBACK(src, PROC_REF(on_material_insert)))
 	ore_buffer = list()
 	files = new /datum/research/smelter(src)
 	// Stock parts
@@ -76,26 +70,6 @@
 	component_parts += new /obj/item/stock_parts/matter_bin/super(null)
 	component_parts += new /obj/item/stock_parts/manipulator/pico(null)
 	component_parts += new /obj/item/stock_parts/micro_laser/ultra(null)
-	component_parts += new /obj/item/assembly/igniter(null)
-	component_parts += new /obj/item/stack/sheet/glass(null)
-	RefreshParts()
-
-/**
-  * # Ore Redemption Machine (Golem)
-  *
-  * Golem variant of the ORM.
-  */
-/obj/machinery/mineral/ore_redemption/golem
-	req_access = list(ACCESS_FREE_GOLEMS)
-	req_access_claim = ACCESS_FREE_GOLEMS
-
-/obj/machinery/mineral/ore_redemption/golem/Initialize(mapload)
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/ore_redemption/golem(null)
-	component_parts += new /obj/item/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/stock_parts/manipulator(null)
-	component_parts += new /obj/item/stock_parts/micro_laser(null)
 	component_parts += new /obj/item/assembly/igniter(null)
 	component_parts += new /obj/item/stack/sheet/glass(null)
 	RefreshParts()
@@ -132,12 +106,12 @@
 	return ..()
 
 /obj/machinery/mineral/ore_redemption/RefreshParts()
-	var/P = BASE_POINT_MULT
-	var/S = BASE_SHEET_MULT
+	var/P = ORM_BASE_POINT_MULT
+	var/S = ORM_BASE_SHEET_MULT
 	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
-		P += POINT_MULT_ADD_PER_RATING * M.rating
+		P += ORM_POINT_MULT_ADD_PER_RATING * M.rating
 	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
-		S += SHEET_MULT_ADD_PER_RATING * M.rating
+		S += ORM_SHEET_MULT_ADD_PER_RATING * M.rating
 		// Manipulators do nothing
 	// Update our values
 	point_upgrade = P
@@ -170,6 +144,17 @@
 		ore_buffer |= O
 		O.forceMove(src)
 		CHECK_TICK
+	for(var/obj/item/stack/stack in input)
+		if(QDELETED(stack))
+			return
+		if(!mat_container.insert_stack(stack, stack.amount))
+			stack.forceMove(get_step(src, output_dir))
+			invalid_material = TRUE
+		CHECK_TICK
+	if(invalid_material)
+		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		atom_say("ERROR - Spitting out invalid materials.")
+		invalid_material = FALSE
 	// Process it
 	if(length(ore_buffer))
 		message_sent = FALSE
@@ -180,46 +165,46 @@
 		message_sent = TRUE
 
 // Interactions
-/obj/machinery/mineral/ore_redemption/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/storage/part_replacer))
+/obj/machinery/mineral/ore_redemption/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/storage/part_replacer))
 		return ..()
 
 	if(!has_power())
 		return ..()
 
-	if(istype(I, /obj/item/card/id))
-		var/obj/item/card/id/ID = I
+	if(istype(used, /obj/item/card/id))
+		var/obj/item/card/id/ID = used
 		if(!points)
-			to_chat(usr, "<span class='warning'>There are no points to claim.</span>");
-			return
+			to_chat(usr, SPAN_WARNING("There are no points to claim."));
+			return ITEM_INTERACT_COMPLETE
 		if(anyone_claim || (req_access_claim in ID.access))
 			ID.mining_points += points
 			ID.total_mining_points += points
-			to_chat(usr, "<span class='notice'><b>[points] Mining Points</b> claimed. You have earned a total of <b>[ID.total_mining_points] Mining Points</b> this Shift!</span>")
+			to_chat(usr, SPAN_NOTICE("<b>[points] Mining Points</b> claimed. You have earned a total of <b>[ID.total_mining_points] Mining Points</b> this Shift!"))
 			points = 0
 			SStgui.update_uis(src)
 		else
-			to_chat(usr, "<span class='warning'>Required access not found.</span>")
+			to_chat(usr, SPAN_WARNING("Required access not found."))
 		add_fingerprint(usr)
-		return
+		return ITEM_INTERACT_COMPLETE
 
-	if(istype(I, /obj/item/disk/design_disk))
+	if(istype(used, /obj/item/disk/design_disk))
 		if(!user.drop_item())
-			return
-		I.forceMove(src)
-		inserted_disk = I
+			return ITEM_INTERACT_COMPLETE
+		used.forceMove(src)
+		inserted_disk = used
 		SStgui.update_uis(src)
 		interact(user)
 		user.visible_message(
-			"<span class='notice'>[user] inserts [I] into [src].</span>",
-			"<span class='notice'>You insert [I] into [src].</span>"
+			SPAN_NOTICE("[user] inserts [used] into [src]."),
+			SPAN_NOTICE("You insert [used] into [src].")
 		)
-		return
+		return ITEM_INTERACT_COMPLETE
 
-	if(istype(I, /obj/item/gripper))
+	if(istype(used, /obj/item/gripper))
 		if(!try_refill_storage(user))
-			to_chat(user, "<span class='notice'>You fail to retrieve any sheets from [src].</span>")
-		return
+			to_chat(user, SPAN_NOTICE("You fail to retrieve any sheets from [src]."))
+		return ITEM_INTERACT_COMPLETE
 
 	return ..()
 
@@ -237,7 +222,7 @@
 		return
 	input_dir = turn(input_dir, -90)
 	output_dir = turn(output_dir, -90)
-	to_chat(user, "<span class='notice'>You change [src]'s I/O settings, setting the input to [dir2text(input_dir)] and the output to [dir2text(output_dir)].</span>")
+	to_chat(user, SPAN_NOTICE("You change [src]'s I/O settings, setting the input to [dir2text(input_dir)] and the output to [dir2text(output_dir)]."))
 
 /obj/machinery/mineral/ore_redemption/screwdriver_act(mob/user, obj/item/I)
 	if(default_deconstruction_screwdriver(user, "ore_redemption-open", "ore_redemption", I))
@@ -310,7 +295,7 @@
 	switch(action)
 		if("sheet", "alloy")
 			if(!allowed(usr))
-				to_chat(usr, "<span class='warning'>Required access not found.</span>")
+				to_chat(usr, SPAN_WARNING("Required access not found."))
 				return FALSE
 			var/id = params["id"]
 			var/amount = round(text2num(params["amount"]))
@@ -347,8 +332,8 @@
 				return FALSE
 			if(ishuman(usr))
 				usr.put_in_hands(inserted_disk)
-				usr.visible_message("<span class='notice'>[usr] retrieves [inserted_disk] from [src].</span>", \
-									"<span class='notice'>You retrieve [inserted_disk] from [src].</span>")
+				usr.visible_message(SPAN_NOTICE("[usr] retrieves [inserted_disk] from [src]."), \
+									SPAN_NOTICE("You retrieve [inserted_disk] from [src]."))
 			else
 				inserted_disk.forceMove(get_turf(src))
 			inserted_disk = null
@@ -482,7 +467,7 @@
 
 	for(var/datum/robot_storage/material/mat_store in robot.module.material_storages)
 		if(mat_store.amount == mat_store.max_amount) // Already full, no need to run a check
-			to_chat(robot, "<span class='notice'>[mat_store] could not be filled due to it already being full.</span>")
+			to_chat(robot, SPAN_NOTICE("[mat_store] could not be filled due to it already being full."))
 			continue
 		var/datum/component/material_container/container_component = GetComponent(/datum/component/material_container)
 		for(var/mat_id in container_component.materials)
@@ -493,10 +478,10 @@
 				var/total_stacks = stack.amount / MINERAL_MATERIAL_AMOUNT // To account for 1 sheet being 2000 units of metal
 				if(total_stacks >= (mat_store.max_amount - mat_store.amount))
 					amount_to_add = round(mat_store.max_amount - mat_store.amount)
-					to_chat(robot, "<span class='notice'>You refill [mat_store] to full.</span>")
+					to_chat(robot, SPAN_NOTICE("You refill [mat_store] to full."))
 				else
 					amount_to_add = round(total_stacks) // In case we have half a sheet stored
-					to_chat(robot, "<span class='notice'>You refill [amount_to_add] sheets to [mat_store].</span>")
+					to_chat(robot, SPAN_NOTICE("You refill [amount_to_add] sheets to [mat_store]."))
 				mat_store.amount += amount_to_add
 				remove_from_storage(stack, amount_to_add)
 				. = TRUE
@@ -516,8 +501,3 @@
 /obj/machinery/mineral/ore_redemption/proc/on_material_insert(inserted_type, last_inserted_id, inserted)
 	give_points(inserted_type, inserted)
 	SStgui.update_uis(src)
-
-#undef BASE_POINT_MULT
-#undef BASE_SHEET_MULT
-#undef POINT_MULT_ADD_PER_RATING
-#undef SHEET_MULT_ADD_PER_RATING

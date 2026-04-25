@@ -22,9 +22,7 @@
 	id_tag = "SpaceBar";
 	name = "Teleporter Shutters"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "rampbottom"
-	},
+/turf/simulated/floor/plasteel/fakestairs,
 /area/ruin/space/powered/bar)
 "af" = (
 /obj/effect/spawner/window/reinforced/grilled,
@@ -52,10 +50,10 @@
 /obj/structure/chair/stool/bar{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "aq" = (
 /obj/structure/table,
@@ -127,6 +125,7 @@
 /area/ruin/space/powered/bar)
 "aF" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/wood,
 /area/ruin/space/powered/bar)
 "aG" = (
@@ -134,6 +133,7 @@
 /area/ruin/space/powered)
 "aH" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/wood,
 /area/ruin/space/powered/bar)
 "aI" = (
@@ -151,9 +151,7 @@
 /obj/structure/rack,
 /obj/item/tank/internals/oxygen,
 /obj/item/clothing/mask/gas,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "aM" = (
 /obj/structure/lattice,
@@ -179,19 +177,19 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/bar)
 "aS" = (
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "aT" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "aU" = (
 /obj/effect/mapping_helpers/turfs/rust,
@@ -205,25 +203,19 @@
 /obj/structure/mirror{
 	pixel_x = -28
 	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = -8
-	},
+/obj/structure/sink/directional/west,
 /obj/effect/spawner/random/cobweb/left/rare,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "aX" = (
 /obj/machinery/door/airlock/multi_tile/glass,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "aY" = (
-/obj/item/clothing/accessory/stethoscope,
+/obj/item/clothing/neck/stethoscope,
 /obj/item/stack/medical/bruise_pack/advanced,
 /obj/item/scalpel,
 /obj/structure/table,
@@ -237,13 +229,13 @@
 /area/space/nearstation)
 "ba" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/fans/tiny,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "bb" = (
 /obj/machinery/door/poddoor,
@@ -259,30 +251,25 @@
 /obj/structure/chair/stool{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "be" = (
 /obj/structure/chair/stool{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/tiles/dark/side,
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "bf" = (
 /obj/structure/table,
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "bg" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "rampbottom"
-	},
+/turf/simulated/floor/plasteel/fakestairs,
 /area/ruin/space/powered/bar)
 "bh" = (
 /obj/item/stack/ore/glass,
@@ -297,9 +284,7 @@
 /turf/simulated/floor/plating/asteroid/ancient,
 /area/ruin/space/powered)
 "bk" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "bl" = (
 /obj/structure/girder,
@@ -312,18 +297,12 @@
 /obj/structure/mirror{
 	pixel_x = -28
 	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = -8
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/obj/structure/sink/directional/west,
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "bn" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/obj/item/stack/tile/mineral,
+/obj/item/stack/tile/plasteel,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/bar)
 "bo" = (
@@ -349,23 +328,19 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "bN" = (
 /obj/machinery/atmospherics/portable/canister/air{
 	filled = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "cE" = (
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "ee" = (
 /obj/structure/safe,
@@ -395,10 +370,10 @@
 /area/ruin/space/powered/bar)
 "fg" = (
 /obj/structure/fans/tiny,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "gy" = (
 /obj/item/stack/cable_coil{
@@ -412,31 +387,25 @@
 /area/space/nearstation)
 "iM" = (
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "jm" = (
 /obj/effect/spawner/random/cobweb/left/rare,
 /obj/machinery/economy/vending/cigarette,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "jD" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "jN" = (
 /obj/machinery/economy/vending/boozeomat,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "jR" = (
 /obj/docking_port/stationary/whiteship{
@@ -447,24 +416,22 @@
 /turf/template_noop,
 /area/template_noop)
 "lh" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/tiles/dark/side,
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "lx" = (
 /obj/structure/table,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "lO" = (
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "lS" = (
 /obj/item/restraints/handcuffs/cable/red,
@@ -484,7 +451,7 @@
 /turf/simulated/floor/plating/asteroid/ancient,
 /area/space/nearstation)
 "pb" = (
-/obj/item/stack/tile/mineral,
+/obj/item/stack/tile/plasteel,
 /obj/machinery/door_control{
 	id = "SpaceBar";
 	name = "Public Shutters";
@@ -494,15 +461,11 @@
 /area/ruin/space/powered/bar)
 "qZ" = (
 /obj/item/caution/proximity_sign,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "rC" = (
-/mob/living/simple_animal/hostile/pirate,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/mob/living/basic/pirate,
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "rN" = (
 /obj/machinery/atmospherics/portable/canister/air{
@@ -514,21 +477,21 @@
 /obj/structure/chair/stool{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/pirate,
+/mob/living/basic/pirate,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "sq" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/template_noop,
 /area/space/nearstation)
 "st" = (
 /turf/template_noop,
 /area/ruin/space/powered)
 "tu" = (
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/tiles/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "tv" = (
 /obj/effect/mapping_helpers/turfs/damage,
@@ -539,10 +502,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "vD" = (
 /obj/structure/table,
@@ -568,7 +531,7 @@
 /turf/simulated/floor/plating/asteroid/ancient,
 /area/ruin/space/powered)
 "wo" = (
-/mob/living/simple_animal/hostile/pirate/ranged,
+/mob/living/basic/pirate/ranged,
 /turf/simulated/floor/wood,
 /area/ruin/space/powered/bar)
 "wy" = (
@@ -584,31 +547,23 @@
 /area/ruin/space/powered/bar)
 "wQ" = (
 /obj/structure/mopbucket/full,
-/obj/item/mop,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "xZ" = (
 /obj/item/beacon,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "yC" = (
 /obj/machinery/economy/vending/cola,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/tiles/dark/side,
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "yE" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "yW" = (
 /obj/effect/mapping_helpers/turfs/damage,
@@ -628,37 +583,34 @@
 /area/space/nearstation)
 "zC" = (
 /obj/structure/chair/stool,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "Ad" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Bathroom"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "AX" = (
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/tiles/dark/corner{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "Bc" = (
 /obj/machinery/light,
 /obj/machinery/economy/vending/snack,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/tiles/dark/side,
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "Ck" = (
 /obj/structure/chair/stool{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/pirate,
+/mob/living/basic/pirate,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "Cx" = (
@@ -667,12 +619,8 @@
 /turf/simulated/floor/mineral/titanium/blue/airless,
 /area/ruin/space/powered)
 "CN" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/obj/structure/toilet/directional/east,
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "Do" = (
 /obj/machinery/door/poddoor/preopen{
@@ -686,21 +634,15 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered)
 "DT" = (
-/obj/structure/toilet{
-	dir = 8
-	},
+/obj/structure/toilet/directional/east,
 /obj/item/wrench,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "Ec" = (
 /obj/machinery/door/airlock{
 	name = "Toilet"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "Ee" = (
 /obj/item/shard,
@@ -709,10 +651,10 @@
 /area/ruin/space/powered/bar)
 "Fj" = (
 /obj/machinery/economy/vending/coffee,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "FO" = (
 /obj/structure/rack{
@@ -733,9 +675,6 @@
 	},
 /turf/simulated/floor/plating/asteroid/ancient,
 /area/space/nearstation)
-"Gz" = (
-/turf/simulated/wall/mineral/iron,
-/area/template_noop)
 "HX" = (
 /obj/structure/table,
 /obj/item/book/manual/barman_recipes,
@@ -748,9 +687,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "JK" = (
 /turf/simulated/floor/plating/asteroid/ancient,
@@ -767,18 +704,14 @@
 "Kp" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "KM" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/item/stack/cable_coil{
 	amount = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "KO" = (
 /obj/structure/rack{
@@ -792,10 +725,10 @@
 /area/ruin/space/powered)
 "Lh" = (
 /obj/structure/table/wood,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "Lq" = (
 /turf/simulated/wall,
@@ -810,9 +743,7 @@
 	name = "Pod Door Cycle";
 	pixel_x = 24
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "LB" = (
 /obj/machinery/light/small{
@@ -829,9 +760,8 @@
 /turf/template_noop,
 /area/ruin/space/powered)
 "LU" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/tiles/dark/corner,
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "Ni" = (
 /obj/machinery/kitchen_machine/microwave,
@@ -867,9 +797,7 @@
 /area/ruin/space/powered/bar)
 "Of" = (
 /obj/effect/spawner/random/cobweb/right/rare,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "Ow" = (
 /obj/item/stack/ore/glass/basalt,
@@ -877,13 +805,13 @@
 /area/ruin/space/powered)
 "Pr" = (
 /obj/structure/chair/stool,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "PA" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/template_noop,
 /area/template_noop)
 "QG" = (
@@ -895,10 +823,8 @@
 /area/ruin/space/powered)
 "QU" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/obj/item/stack/tile/mineral,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/obj/item/stack/tile/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "QY" = (
 /obj/structure/falsewall,
@@ -922,10 +848,10 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "Sy" = (
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "UA" = (
 /obj/structure/glowshroom,
@@ -937,19 +863,17 @@
 	dir = 8
 	},
 /obj/item/shard,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "Vt" = (
 /obj/structure/table/wood,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/powered/bar)
 "VR" = (
-/obj/item/stack/tile/mineral,
+/obj/item/stack/tile/plasteel,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/bar)
 "VU" = (
@@ -961,17 +885,13 @@
 /obj/item/stack/cable_coil{
 	amount = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "VY" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/powered/bar)
 "Xi" = (
 /obj/machinery/bottler,
@@ -3185,7 +3105,7 @@ aw
 ab
 aw
 ab
-Gz
+aw
 ad
 ab
 ab

@@ -20,12 +20,12 @@
 /obj/machinery/atmospherics/binary/passive_gate/CtrlClick(mob/living/user)
 	if(can_use_shortcut(user))
 		toggle(user)
-		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", "atmos")
+		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
 	return ..()
 
 /obj/machinery/atmospherics/binary/passive_gate/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>This is a one-way regulator, allowing gas to flow only at a specific pressure and flow rate. If the light is green, gas is flowing.</span>"
+	. += SPAN_NOTICE("This is a one-way regulator, allowing gas to flow only at a specific pressure and flow rate. If the light is green, gas is flowing.")
 
 /obj/machinery/atmospherics/binary/passive_gate/update_icon_state()
 	icon_state = "[on ? "on" : "off"]"
@@ -76,7 +76,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, "<span class='alert'>Access denied.</span>")
+		to_chat(user, SPAN_ALERT("Access denied."))
 		return
 
 	add_fingerprint(user)
@@ -111,7 +111,7 @@
 	switch(action)
 		if("power")
 			toggle()
-			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", "atmos")
+			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
 			return TRUE
 
 		if("max_rate")
@@ -126,4 +126,4 @@
 			target_pressure = clamp(text2num(params["rate"]), 0 , MAX_OUTPUT_PRESSURE)
 			. = TRUE
 	if(.)
-		investigate_log("was set to [target_pressure] kPa by [key_name(usr)]", "atmos")
+		investigate_log("was set to [target_pressure] kPa by [key_name(usr)]", INVESTIGATE_ATMOS)

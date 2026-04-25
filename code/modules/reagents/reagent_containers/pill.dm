@@ -6,9 +6,7 @@
 /obj/item/reagent_containers/pill
 	name = "pill"
 	desc = "A pill."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = null
-	item_state = "pill"
+	inhand_icon_state = "pill"
 	possible_transfer_amounts = null
 	visible_transfer_rate = FALSE
 	volume = 100
@@ -17,6 +15,12 @@
 	. = ..()
 	if(!icon_state)
 		icon_state = "pill[rand(1, 20)]"
+
+/obj/item/reagent_containers/pill/activate_self(mob/user)
+	if(..())
+		return FINISH_ATTACK
+
+	apply(user, user)
 
 /obj/item/reagent_containers/pill/proc/apply(mob/living/carbon/C, mob/user)
 	if(!istype(C))
@@ -29,40 +33,45 @@
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(!H.check_has_mouth())
-			to_chat(user, "<span class='warning'>[user == H ? "You" : H] can't ingest [src]!</span>")
+			to_chat(user, SPAN_WARNING("[user == H ? "You" : H] can't ingest [src]!"))
 			return FALSE
 
 	if(user == C)
-		to_chat(user, "<span class='notice'>You swallow [src].</span>")
+		to_chat(user, SPAN_NOTICE("You swallow [src]."))
 	else
-		C.visible_message("<span class='warning'>[user] attempts to force [C] to swallow [src].</span>")
+		C.visible_message(SPAN_WARNING("[user] attempts to force [C] to swallow [src]."))
 		if(!do_after(user, 3 SECONDS, TRUE, C, TRUE))
 			return FALSE
 
 		C.forceFedAttackLog(src, user)
-		C.visible_message("<span class='warning'>[user] forces [C] to swallow [src].</span>")
+		C.visible_message(SPAN_WARNING("[user] forces [C] to swallow [src]."))
 
 	reagents.reaction(C, REAGENT_INGEST)
 	reagents.trans_to(C, reagents.total_volume)
 	qdel(src)
 	return TRUE
 
-/obj/item/reagent_containers/pill/attack__legacy__attackchain(mob/living/carbon/C, mob/user)
-	return apply(C, user)
+/obj/item/reagent_containers/pill/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(isnull(target.reagents))
+		return
 
-/obj/item/reagent_containers/pill/attack_self__legacy__attackchain(mob/user)
-	return apply(user, user)
+	return ..()
 
-/obj/item/reagent_containers/pill/afterattack__legacy__attackchain(obj/target, mob/user, proximity)
-	if(!proximity || !target.is_refillable())
+/obj/item/reagent_containers/pill/mob_act(mob/target, mob/living/user)
+	apply(target, user)
+	return TRUE
+
+/obj/item/reagent_containers/pill/normal_act(atom/target, mob/living/user)
+	. = TRUE
+	if(!target.is_refillable())
 		return
 	if(target.reagents.holder_full())
-		to_chat(user, "<span class='warning'>[target] is full.</span>")
+		to_chat(user, SPAN_WARNING("[target] is full."))
 		return
 
-	to_chat(user, "<span class='notice'>You [!target.reagents.total_volume ? "break open" : "dissolve"] [src] in [target].</span>")
+	to_chat(user, SPAN_NOTICE("You [!target.reagents.total_volume ? "break open" : "dissolve"] [src] in [target]."))
 	for(var/mob/O in oviewers(2, user))
-		O.show_message("<span class='warning'>[user] puts something in [target].</span>", 1)
+		O.show_message(SPAN_WARNING("[user] puts something in [target]."), 1)
 	reagents.trans_to(target, reagents.total_volume)
 	qdel(src)
 

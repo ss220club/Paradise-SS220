@@ -6,8 +6,8 @@
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
-	item_state = "skrell_carbine"
 	icon_state = "skrell_carbine"
+	inhand_icon_state = "skrell_carbine"
 	cell_type = /obj/item/stock_parts/cell/skrell_carbine_cell
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light, /obj/item/ammo_casing/energy/laser/skrell_assault)
 	origin_tech = "combat=6;magnets=5"
@@ -23,13 +23,13 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light/elite, /obj/item/ammo_casing/energy/laser/skrell_assault/elite)
 
 /obj/item/ammo_casing/energy/laser/skrell_light
-	projectile_type = /obj/item/projectile/beam/laser/skrell_light
+	projectile_type = /obj/projectile/beam/laser/skrell_light
 	muzzle_flash_color = LIGHT_COLOR_LAVENDER
 	select_name = "light"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/blaster.ogg'
 
 /obj/item/ammo_casing/energy/laser/skrell_assault
-	projectile_type = /obj/item/projectile/beam/pulse/skrell_laser_assault
+	projectile_type = /obj/projectile/beam/pulse/skrell_laser_assault
 	muzzle_flash_color = LIGHT_COLOR_LAVENDER
 	select_name = "assault"
 	e_cost = 1600
@@ -41,14 +41,14 @@
 /obj/item/ammo_casing/energy/laser/skrell_assault/elite
 	e_cost = 200
 
-/obj/item/projectile/beam/laser/skrell_light
+/obj/projectile/beam/laser/skrell_light
 	name = "laser"
 	icon_state = "purple_laser"
 	damage = 23
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
 	light_color = LIGHT_COLOR_LAVENDER
 
-/obj/item/projectile/beam/pulse/skrell_laser_assault
+/obj/projectile/beam/pulse/skrell_laser_assault
 	name = "heavy laser"
 	icon_state = "u_laser_alt"
 	damage = 10
@@ -70,7 +70,7 @@
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon_state = "sniper"
-	item_state = "sniper"
+	inhand_icon_state = "sniper"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/railgun.ogg'
 	recoil = 0
 	fire_delay = 25
@@ -111,22 +111,22 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "railgun-casing"
 	caliber = "railgun"
-	projectile_type = /obj/item/projectile/bullet/railgun
+	projectile_type = /obj/projectile/bullet/railgun
 
 /obj/item/ammo_casing/railgun/railgun_strong
-	projectile_type = /obj/item/projectile/bullet/railgun/railgun_strong
+	projectile_type = /obj/projectile/bullet/railgun/railgun_strong
 
-/obj/item/projectile/bullet/railgun
+/obj/projectile/bullet/railgun
 	damage = 35
-	armour_penetration_flat = 80
+	armor_penetration_flat = 80
 	pass_flags = PASSTABLE | PASSGRILLE | PASSGIRDER
 	speed = 0.2
 	icon_state = "gauss_silenced"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
-/obj/item/projectile/bullet/railgun/railgun_strong
+/obj/projectile/bullet/railgun/railgun_strong
 	damage = 45
-	armour_penetration_flat = 30
+	armor_penetration_flat = 30
 	weaken = 0.2
 	speed = 0.2
 
@@ -137,7 +137,7 @@
 		Встроенный микрогенератор постепенно пополняет запас аккамулятора прямо в бою."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "skrell_pistol"
-	item_state = "skrell_pistol"
+	inhand_icon_state = "skrell_pistol"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light, /obj/item/ammo_casing/energy/disabler)

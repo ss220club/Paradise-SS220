@@ -89,6 +89,34 @@
 	display_name = "Nian plushie"
 	path = /obj/item/toy/plushie/nianplushie
 
+/datum/gear/ipcplushie
+	display_name = "IPC plushie"
+	path = /obj/item/toy/plushie/ipcplushie
+
+/datum/gear/kidanplushie
+	display_name = "Kidan plushie"
+	path = /obj/item/toy/plushie/kidanplushie
+
+/datum/gear/plasmaplushie
+	display_name = "Plasmaman plushie"
+	path = /obj/item/toy/plushie/plasmamanplushie
+
+/datum/gear/skrellplushie
+	display_name = "Skrell plushie"
+	path = /obj/item/toy/plushie/skrellplushie
+
+/datum/gear/draskplushie
+	display_name = "Drask plushie"
+	path = /obj/item/toy/plushie/draskplushie
+
+/datum/gear/borgplushie
+	display_name = "Borg plushie"
+	path = /obj/item/toy/plushie/borgplushie
+
+/datum/gear/nymphplushie
+	display_name = "Diona nymph plushie"
+	path = /obj/item/toy/plushie/nymphplushie
+
 /datum/gear/sharkplushie
 	display_name = "Shark plushie"
 	path = /obj/item/toy/plushie/shark
@@ -100,6 +128,10 @@
 /datum/gear/cane
 	display_name = "Walking cane"
 	path = /obj/item/cane
+
+/datum/gear/blindcane
+	display_name = "Blind cane"
+	path = /obj/item/blindcane
 
 /datum/gear/cards
 	display_name = "Deck of standard cards"
@@ -124,6 +156,10 @@
 /datum/gear/fannypack
 	display_name = "Fannypack"
 	path = /obj/item/storage/belt/fannypack
+
+/datum/gear/whitebandana
+	display_name = "Bandana, white"
+	path = /obj/item/clothing/mask/bandana
 
 /datum/gear/blackbandana
 	display_name = "Bandana, black"
@@ -162,6 +198,10 @@
 	path = /obj/item/paicard
 	cost = 2
 
+/datum/gear/wizard_staff
+	display_name = "Wizard's staff"
+	path = /obj/item/staff
+
 //////////////////////
 //		Mugs		//
 //////////////////////
@@ -186,7 +226,6 @@
 
 /datum/gear/mug/department
 	main_typepath = /datum/gear/mug/department
-	sort_category = "Mugs"
 	subtype_selection_cost = FALSE
 
 /datum/gear/mug/department/eng
@@ -204,7 +243,7 @@
 /datum/gear/mug/department/sci
 	display_name = "Coffee mug, science"
 	description = "A scientist's coffee mug, emblazoned in the colors of the Science department."
-	allowed_roles = list("Research Director", "Scientist", "Roboticist")
+	allowed_roles = list("Research Director", "Scientist", "Roboticist", "Xenobiologist")
 	path = /obj/item/reagent_containers/drinks/mug/sci
 
 /datum/gear/mug/department/sec

@@ -1,6 +1,6 @@
 // \code\modules\mob\mob_holder.dm
 /obj/item/holder
-	icon_override = 'modular_ss220/mobs/icons/mob/inhead/head.dmi'
+	worn_icon = 'modular_ss220/mobs/icons/mob/inhead/head.dmi'
 	lefthand_file = 'modular_ss220/mobs/icons/mob/inhands/mobs_lefthand.dmi'
 	righthand_file = 'modular_ss220/mobs/icons/mob/inhands/mobs_righthand.dmi'
 	origin_tech = "biotech=2"
@@ -18,30 +18,30 @@
 
 	if(!is_type_in_list(animal,  devourer.dna.species.allowed_consumed_mobs))
 		if(user != devourer)
-			to_chat(user, span_notice("Вряд ли это понравится [devourer]..."))
+			to_chat(user, SPAN_NOTICE("Вряд ли это понравится [devourer]..."))
 		else if(ishuman(devourer))
-			to_chat(user, span_notice("Интересно, каков на вкус [animal]? Но проверять не будем."))
+			to_chat(user, SPAN_NOTICE("Интересно, каков на вкус [animal]? Но проверять не будем."))
 		return
 
 	if(!user.canUnEquip(src, FALSE))
-		to_chat(user, span_notice("[src] никак не отлипает от руки!"))
+		to_chat(user, SPAN_NOTICE("[src] никак не отлипает от руки!"))
 		return
 
 	if(user != devourer)
-		visible_message(span_danger("[user] пытается скормить [devourer] [animal]!"))
+		visible_message(SPAN_DANGER("[user] пытается скормить [devourer] [animal]!"))
 	else
-		visible_message(span_danger("[user] пытается съесть [animal]!"))
+		visible_message(SPAN_DANGER("[user] пытается съесть [animal]!"))
 
 	if(!do_after(user, 3 SECONDS, target = devourer))
 		return
 
-	visible_message(span_danger("[devourer] съедает [animal]!"))
+	visible_message(SPAN_DANGER("[devourer] съедает [animal]!"))
 	if(animal.mind)
 		add_attack_logs(devourer, animal, "Devoured")
 
-	if(istype(animal, /mob/living/simple_animal/hostile/poison/bees)) // Eating a bee will end up damaging you
+	if(istype(animal, /mob/living/basic/bee)) // Eating a bee will end up damaging you
 		var/obj/item/organ/external/mouth = devourer.get_organ(BODY_ZONE_PRECISE_MOUTH)
-		var/mob/living/simple_animal/hostile/poison/bees/bee = animal
+		var/mob/living/basic/bee/bee = animal
 		mouth.receive_damage(1)
 		if(bee.beegent)
 			bee.beegent.reaction_mob(devourer, REAGENT_INGEST)
@@ -49,21 +49,22 @@
 		else
 			devourer.reagents.add_reagent("spidertoxin", 5)
 		devourer.visible_message(
-			span_warning("Рот [devourer] опух."),
-			span_danger("Ваш рот ужален, он теперь опухает!"))
+			SPAN_WARNING("Рот [devourer] опух."),
+			SPAN_DANGER("Ваш рот ужален, он теперь опухает!"))
 
 	animal.forceMove(devourer)
 	LAZYADD(devourer.stomach_contents, animal)
 	icon = null // workaround to hide cringy holder lying on the floor for 1 sec
 	user.drop_item()
 
-/mob/living/simple_animal/attackby__legacy__attackchain(obj/item/O, mob/living/user)
+/mob/living/simple_animal/attack_by(obj/item/attacking, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
 	if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_GRAB)
-		if(istype(O, /obj/item/pet_carrier))
-			var/obj/item/pet_carrier/C = O
+		if(istype(attacking, /obj/item/pet_carrier))
+			var/obj/item/pet_carrier/C = attacking
 			if(C.put_in_carrier(src, user))
-				return
-	return ..()
+				return FINISH_ATTACK
 
 
 

@@ -20,7 +20,6 @@ GLOBAL_LIST_EMPTY(safes)
 /obj/structure/safe
 	name = "safe"
 	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms tumbler safe, guaranteed thermite resistant, explosion resistant, and assistant resistant.\""
-	icon = 'icons/obj/structures.dmi'
 	icon_state = "safe"
 	anchored = TRUE
 	density = TRUE
@@ -72,7 +71,7 @@ GLOBAL_LIST_EMPTY(safes)
 	for(var/i in 1 to number_of_tumblers)
 		tumblers.Add(rand(0, 99))
 	if(mapload)
-		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
+		END_OF_TICK(CALLBACK(src, PROC_REF(take_contents)))
 
 /obj/structure/safe/proc/take_contents()
 	// Put as many items on our turf inside as possible
@@ -101,7 +100,7 @@ GLOBAL_LIST_EMPTY(safes)
 	if(!drill_timer)
 		return
 	cut_overlay(progress_bar)
-	progress_bar = image('icons/effects/progessbar.dmi', src, "prog_bar_[round((((world.time - drill_start_time) / time_to_drill) * 100), 5)]", HUD_LAYER)
+	progress_bar = image('icons/effects/progressbar.dmi', src, "prog_bar_[round((((world.time - drill_start_time) / time_to_drill) * 100), 5)]", HUD_LAYER)
 	add_overlay(progress_bar)
 	if(prob(DRILL_SPARK_CHANCE))
 		drill.spark_system.start()
@@ -174,7 +173,7 @@ GLOBAL_LIST_EMPTY(safes)
 					STOP_PROCESSING(SSobj, src)
 			if("Remove Drill")
 				if(drill_timer)
-					to_chat(user, "<span class='warning'>You cannot remove the drill while it's running!</span>")
+					to_chat(user, SPAN_WARNING("You cannot remove the drill while it's running!"))
 				else if(do_after(user, 2 SECONDS, target = src))
 					user.put_in_hands(drill)
 					drill = null
@@ -188,44 +187,48 @@ GLOBAL_LIST_EMPTY(safes)
 	else
 		ui_interact(user)
 
-/obj/structure/safe/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/structure/safe/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(open)
 		if(I.flags && ABSTRACT)
-			return
+			return ITEM_INTERACT_COMPLETE
 		if(broken && istype(I, /obj/item/safe_internals) && do_after(user, 2 SECONDS, target = src))
-			to_chat(user, "<span class='notice'>You replace the broken mechanism.</span>")
+			to_chat(user, SPAN_NOTICE("You replace the broken mechanism."))
 			qdel(I)
 			broken = FALSE
 			locked = FALSE
 			update_icon()
+			return ITEM_INTERACT_COMPLETE
 		else if(I.w_class + space <= maxspace)
 			if(!user.drop_item())
-				to_chat(user, "<span class='warning'>\The [I] is stuck to your hand, you cannot put it in the safe!</span>")
-				return
+				to_chat(user, SPAN_WARNING("\The [I] is stuck to your hand, you cannot put it in the safe!"))
+				return ITEM_INTERACT_COMPLETE
 			space += I.w_class
 			I.forceMove(src)
-			to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
 			SStgui.update_uis(src)
+			return ITEM_INTERACT_COMPLETE
 		else
-			to_chat(user, "<span class='warning'>[I] won't fit in [src].</span>")
+			to_chat(user, SPAN_WARNING("[I] won't fit in [src]."))
+			return ITEM_INTERACT_COMPLETE
 	else
-		if(istype(I, /obj/item/clothing/accessory/stethoscope))
+		if(istype(I, /obj/item/clothing/neck/stethoscope))
 			attack_hand(user)
-			return
+			return ITEM_INTERACT_COMPLETE
 		else if(istype(I, /obj/item/thermal_drill))
 			if(drill)
-				to_chat(user, "<span class='warning'>There is already a drill attached!</span>")
+				to_chat(user, SPAN_WARNING("There is already a drill attached!"))
 			else if(do_after(user, 2 SECONDS, target = src))
 				if(!user.drop_item())
-					to_chat(user, "<span class='warning'>[I] is stuck to your hand, you cannot put it in the safe!</span>")
+					to_chat(user, SPAN_WARNING("[I] is stuck to your hand, you cannot put it in the safe!"))
 					return
 				I.forceMove(src)
 				drill = I
 				time_to_drill = DRILL_TIME * drill.time_multiplier
 				update_icon()
+			return ITEM_INTERACT_COMPLETE
 		else
-			to_chat(user, "<span class='warning'>You can't put [I] into the safe while it is closed!</span>")
-			return
+			to_chat(user, SPAN_WARNING("You can't put [I] into the safe while it is closed!"))
+			return ITEM_INTERACT_COMPLETE
 
 /obj/structure/safe/ui_state(mob/user)
 	return GLOB.physical_state
@@ -262,41 +265,38 @@ GLOBAL_LIST_EMPTY(safes)
 		return
 
 	if(!usr.IsAdvancedToolUser() && !isobserver(usr))
-		to_chat(usr, "<span class='warning'>You are not able to operate the safe.</span>")
+		to_chat(usr, SPAN_WARNING("You are not able to operate the safe."))
 		return
 
 	var/canhear = FALSE
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
-		var/list/accessories = H.w_uniform?.accessories
 		if(H.can_hear()) // This is cursed but is_type_in_list somehow fails
-			if(H.is_in_hands(/obj/item/clothing/accessory/stethoscope))
+			if(H.is_in_hands(/obj/item/clothing/neck/stethoscope))
 				canhear = TRUE
-			else
-				for(var/obj/item/clothing/accessory/stethoscope/S in accessories)
-					canhear = TRUE
-					break
+			if(istype(H.neck, /obj/item/clothing/neck/stethoscope))
+				canhear = TRUE
 
 	. = TRUE
 	switch(action)
 		if("open")
 			if(check_unlocked() || open || broken)
-				to_chat(usr, "<span class='notice'>You [open ? "close" : "open"] [src].</span>")
+				to_chat(usr, SPAN_NOTICE("You [open ? "close" : "open"] [src]."))
 				open = !open
 				update_icon()
 			else
-				to_chat(usr, "<span class='warning'>You cannot open [src], as its lock is engaged!</span>")
+				to_chat(usr, SPAN_WARNING("You cannot open [src], as its lock is engaged!"))
 		if("turnright")
 			if(open)
 				return
 			if(broken)
-				to_chat(usr, "<span class='warning'>The dial will not turn, as the mechanism is destroyed!</span>")
+				to_chat(usr, SPAN_WARNING("The dial will not turn, as the mechanism is destroyed!"))
 				return
 			var/ticks = text2num(params["num"])
 			for(var/i = 1 to ticks)
 				dial = WRAP(dial - 1, 0, 100)
 
-				var/invalid_turn = current_tumbler_index % 2 == 0 || current_tumbler_index > number_of_tumblers
+				var/invalid_turn = ISEVEN(current_tumbler_index) || current_tumbler_index > number_of_tumblers
 				if(invalid_turn) // The moment you turn the wrong way or go too far, the tumblers reset
 					current_tumbler_index = 1
 
@@ -310,13 +310,13 @@ GLOBAL_LIST_EMPTY(safes)
 			if(open)
 				return
 			if(broken)
-				to_chat(usr, "<span class='warning'>The dial will not turn, as the mechanism is destroyed!</span>")
+				to_chat(usr, SPAN_WARNING("The dial will not turn, as the mechanism is destroyed!"))
 				return
 			var/ticks = text2num(params["num"])
 			for(var/i = 1 to ticks)
 				dial = WRAP(dial + 1, 0, 100)
 
-				var/invalid_turn = current_tumbler_index % 2 != 0 || current_tumbler_index > number_of_tumblers
+				var/invalid_turn = ISODD(current_tumbler_index) || current_tumbler_index > number_of_tumblers
 				if(invalid_turn) // The moment you turn the wrong way or go too far, the tumblers reset
 					current_tumbler_index = 1
 
@@ -384,7 +384,7 @@ GLOBAL_LIST_EMPTY(safes)
 /obj/structure/safe/proc/check_unlocked()
 	if(current_tumbler_index > number_of_tumblers)
 		locked = FALSE
-		visible_message("<span class='boldnotice'>[pick("Spring", "Sprang", "Sproing", "Clunk", "Krunk")]!</span>")
+		visible_message(SPAN_BOLDNOTICE("[pick("Spring", "Sprang", "Sproing", "Clunk", "Krunk")]!"))
 		return TRUE
 	locked = TRUE
 	return FALSE
@@ -397,7 +397,7 @@ GLOBAL_LIST_EMPTY(safes)
 		return
 
 	if(current_tick == 2)
-		to_chat(user, "<span class='italics'>The sounds from [src] are too fast and blend together.</span>")
+		to_chat(user, SPAN_ITALICS("The sounds from [src] are too fast and blend together."))
 	if(total_ticks == 1 || prob(SOUND_CHANCE))
 		to_chat(user, "<span class='[correct_sound ? "bolditalics" : "italics"]'>You hear a [pick(sounds)] from [src].</span>")
 

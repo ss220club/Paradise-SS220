@@ -12,7 +12,7 @@
 	var/report_message = "Complete this goal."
 
 /datum/station_goal/proc/send_report()
-	GLOB.minor_announcement.Announce("Priority Nanotrasen directive received. Project \"[html_decode(name)]\" details inbound.", "Incoming Priority Message", 'sound/AI/commandreport.ogg')
+	GLOB.minor_announcement.Announce("Получена приоритетная директива Нанотрейзен. Прилагаются детали проекта \"[html_decode(name)]\".", "ВНИМАНИЕ: Поступила директива Нанотрейзен.", 'sound/AI/commandreport.ogg')
 	print_command_report(get_report(), "Nanotrasen Directive [pick(GLOB.phonetic_alphabet)] \Roman[rand(1,50)]", FALSE)
 	on_report()
 
@@ -28,9 +28,9 @@
 
 /datum/station_goal/proc/print_result()
 	if(check_completion())
-		to_chat(world, "<b>Station Goal</b>: [name]:  <span class='greenannounce'>Completed!</span>")
+		to_chat(world, "<b>Station Goal</b>: [name]:  [SPAN_GREENANNOUNCE("Completed!")]")
 	else
-		to_chat(world, "<b>Station Goal</b>: [name]: <span class='boldannounceic'>Failed!</span>")
+		to_chat(world, "<b>Station Goal</b>: [name]: [SPAN_BOLDANNOUNCEIC("Failed!")]")
 
 /datum/station_goal/Destroy()
 	SSticker.mode.station_goals -= src
@@ -52,4 +52,4 @@
 		message_admins("[key_name_admin(usr)] removed station goal [src]")
 		log_admin("[key_name_admin(usr)] removed station goal [src]")
 		qdel(src)
-		usr.client.modify_goals()
+		SSuser_verbs.invoke_verb(usr, /datum/user_verb/modify_goals)

@@ -3,9 +3,8 @@ GLOBAL_LIST_EMPTY(sechailers)
 /datum/action/item_action/dispatch
 	name = "Signal Dispatch"
 	desc = "Открывает колесо быстрого выбора для сообщения о преступлениях, включая ваше текущее местоположение."
-	button_overlay_icon_state = "dispatch"
-	button_overlay_icon = 'modular_ss220/sechailer/icons/sechailer.dmi'
-	use_itemicon = FALSE
+	button_icon_state = "dispatch"
+	button_icon = 'modular_ss220/sechailer/icons/sechailer.dmi'
 
 /obj/item/clothing/mask/gas/sechailer
 	var/obj/item/radio/radio // For dispatch to work
@@ -48,7 +47,7 @@ GLOBAL_LIST_EMPTY(sechailers)
 /obj/item/clothing/mask/gas/sechailer/proc/dispatch(mob/user)
 	for(var/option in available_dispatch_messages)
 		available_dispatch_messages[option] = image(icon = 'modular_ss220/sechailer/icons/menu.dmi', icon_state = option)
-	var/message = show_radial_menu(user, src, available_dispatch_messages)
+	var/message = show_radial_menu(user, src, available_dispatch_messages, require_near = TRUE)
 	var/location_name = get_location_name(src, TRUE) // get_location_name works better as Affected says
 
 	if(!message)
@@ -61,7 +60,7 @@ GLOBAL_LIST_EMPTY(sechailers)
 			cooldown_info += "перезаряжается, "
 		// Cooldown not updating realtime, and i don't want to rewrite it just for the sake of it
 		cooldown_info += "примерное время восстановления: [dispatch_cooldown / 10] секунд."
-		to_chat(user, span_notice(cooldown_info.Join()))
+		to_chat(user, SPAN_NOTICE(cooldown_info.Join()))
 		return
 
 	on_cooldown = TRUE
@@ -83,7 +82,7 @@ GLOBAL_LIST_EMPTY(sechailers)
 			playsound(hailer.loc, 'modular_ss220/sechailer/sound/dispatch_please_respond.ogg', 55, FALSE)
 			break
 		else
-			to_chat(user, span_warning("Внимание: Невозможно установить соединение с каналом службы безопасности, требуется подключение!"))
+			to_chat(user, SPAN_WARNING("Внимание: Невозможно установить соединение с каналом службы безопасности, требуется подключение!"))
 			playsound(hailer.loc, 'modular_ss220/sechailer/sound/radio_static.ogg', 30, TRUE)
 
 /obj/item/clothing/mask/gas/sechailer/proc/reboot()
@@ -103,4 +102,4 @@ GLOBAL_LIST_EMPTY(sechailers)
 	addtimer(CALLBACK(src, PROC_REF(reboot)), dispatch_cooldown)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/user = loc
-		to_chat(user, span_userdanger("Обнаружен электромагнитный импульс, система оповещения отключена для сохранения работоспособности..."))
+		to_chat(user, SPAN_USERDANGER("Обнаружен электромагнитный импульс, система оповещения отключена для сохранения работоспособности..."))

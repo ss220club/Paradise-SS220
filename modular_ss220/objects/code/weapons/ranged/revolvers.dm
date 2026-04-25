@@ -25,7 +25,7 @@
 	if(!reclined)
 		return ..()
 
-	to_chat(user, span_danger("*click*"))
+	to_chat(user, SPAN_DANGER("*click*"))
 	playsound(user, dry_fire_sound, 100, 1)
 
 // Colt Anaconda .44
@@ -37,7 +37,7 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "anaconda"
-	item_state = "anaconda"
+	inhand_icon_state = "anaconda"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_anaconda.ogg'
 
 /obj/item/gun/projectile/revolver/reclinable/anaconda/attackby__legacy__attackchain(obj/item/A, mob/user, params)
@@ -56,11 +56,11 @@
 	caliber = "44"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casing44"
-	projectile_type = /obj/item/projectile/bullet/d44
+	projectile_type = /obj/projectile/bullet/d44
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_STRONG
 
-/obj/item/projectile/bullet/d44
+/obj/projectile/bullet/d44
 	name = ".44 bullet"
 	icon_state = "bullet"
 	damage = 50
@@ -96,7 +96,7 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "judge"
-	item_state = "judge"
+	inhand_icon_state = "judge"
 	w_class = WEIGHT_CLASS_NORMAL
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_judge.ogg'
 	spread = 10
@@ -118,7 +118,6 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "rsh12"
-	item_state = "rsh12"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_rsh12.ogg'
 
 /obj/item/gun/projectile/revolver/reclinable/rsh12/attackby__legacy__attackchain(obj/item/A, mob/user, params)
@@ -137,11 +136,11 @@
 	caliber = "127mm"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casing127mm"
-	projectile_type = /obj/item/projectile/bullet/mm127
+	projectile_type = /obj/projectile/bullet/mm127
 	muzzle_flash_strength = MUZZLE_FLASH_RANGE_STRONG
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_STRONG
 
-/obj/item/projectile/bullet/mm127
+/obj/projectile/bullet/mm127
 	name = "127mm bullet"
 	icon_state = "bullet"
 	damage = 75
@@ -150,7 +149,7 @@
 	hitsound_wall = "ricochet"
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 
-/obj/item/projectile/bullet/mm127/on_hit(atom/target, blocked, hit_zone)
+/obj/projectile/bullet/mm127/on_hit(atom/target, blocked, hit_zone)
 	. = ..()
 	if(!isliving(target))
 		return
@@ -200,23 +199,23 @@
 /obj/item/ammo_casing/peas_shooter
 	name = "pea bullet"
 	desc = "Пуля из гороха, не может нанести какого-либо ощутимого урона."
-	projectile_type = /obj/item/projectile/bullet/midbullet_r/peas_shooter
+	projectile_type = /obj/projectile/bullet/midbullet_r/peas_shooter
 	icon_state = "peashooter_bullet"
 
 // Пуля горохострела
-/obj/item/projectile/bullet/midbullet_r/peas_shooter
+/obj/projectile/bullet/midbullet_r/peas_shooter
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
-	item_state = "peashooter_bullet"
+	icon_state = "peashooter_bullet"
 	stamina = 5
 	damage = 0
 	var/additional_zombie_damage = 10
 
-/obj/item/projectile/bullet/midbullet_r/peas_shooter/prehit(atom/target)
+/obj/projectile/bullet/midbullet_r/peas_shooter/prehit(atom/target)
 	if(HAS_TRAIT(target, TRAIT_I_WANT_BRAINS))
 		damage += additional_zombie_damage
 	return ..()
 
-/obj/item/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
+/obj/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
 	. = ..()
 	if(ishuman(H) && prob(15))
 		H.emote("moan")

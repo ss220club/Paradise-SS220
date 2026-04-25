@@ -27,6 +27,10 @@
 /obj/structure/platform/Initialize(mapload)
 	. = ..()
 	CheckLayer()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = PROC_REF(on_atom_exit),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/platform/New()
 	..()
@@ -40,15 +44,15 @@
 
 /obj/structure/platform/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] is [anchored == TRUE ? "screwed" : "unscrewed"] [anchored == TRUE ? "to" : "from"] the floor.")
-	. += span_notice("<b>Alt-Click</b> to rotate.")
+	. += SPAN_NOTICE("[src] is [anchored == TRUE ? "screwed" : "unscrewed"] [anchored == TRUE ? "to" : "from"] the floor.")
+	. += SPAN_NOTICE("<b>Alt-Click</b> to rotate.")
 
 /obj/structure/platform/proc/rotate(mob/user)
 	if(user.incapacitated())
 		return
 
 	if(anchored)
-		to_chat(user, span_warning("[src] cannot be rotated while it is screwed to the floor!"))
+		to_chat(user, SPAN_WARNING("[src] cannot be rotated while it is screwed to the floor!"))
 		return FALSE
 
 	var/target_dir = turn(dir, 90)
@@ -64,10 +68,10 @@
 // Construction
 /obj/structure/platform/screwdriver_act(mob/user, obj/item/I)
 	. = TRUE
-	to_chat(user, span_notice("You begin [anchored == TRUE ? "unscrewing" : "screwing"] [src] [anchored == TRUE ? "from" : "to"] the floor."))
+	to_chat(user, SPAN_NOTICE("You begin [anchored == TRUE ? "unscrewing" : "screwing"] [src] [anchored == TRUE ? "from" : "to"] the floor."))
 	if(!I.use_tool(src, user, decon_speed, volume = I.tool_volume))
 		return
-	to_chat(user, span_notice("You [anchored == TRUE ? "unscrew" : "screw"] [src] [anchored == TRUE ? "from" : "to"] the floor."))
+	to_chat(user, SPAN_NOTICE("You [anchored == TRUE ? "unscrew" : "screw"] [src] [anchored == TRUE ? "from" : "to"] the floor."))
 	anchored = !anchored
 
 /obj/structure/platform/wrench_act(mob/user, obj/item/I)
@@ -75,7 +79,7 @@
 		return
 	. = TRUE
 	if(anchored)
-		to_chat(user, span_notice("You cannot disassemble [src], unscrew it first!"))
+		to_chat(user, SPAN_NOTICE("You cannot disassemble [src], unscrew it first!"))
 		return
 	TOOL_ATTEMPT_DISMANTLE_MESSAGE
 	if(!I.use_tool(src, user, decon_speed, volume = I.tool_volume))
@@ -87,28 +91,32 @@
 	qdel(src)
 
 
-/obj/structure/platform/CheckExit(atom/movable/O, turf/target)
+/obj/structure/platform/proc/on_atom_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+
 	if(!anchored)
 		CheckLayer()
-	if(istype(O, /obj/structure/platform))
-		return FALSE
-	if(istype(O, /obj/item/projectile) || istype(O, /obj/effect))
-		return TRUE
-	if(corner)
-		return !density
-	if(O && O.throwing)
-		return TRUE
-	if(((flags & ON_BORDER) && get_dir(loc, target) == dir))
-		return FALSE
-	else
-		return TRUE
+	if(istype(leaving, /obj/structure/platform))
+		return COMPONENT_ATOM_BLOCK_EXIT
+	if(istype(leaving, /obj/projectile) || istype(leaving, /obj/effect))
+		return
+	var/mob/living/M = leaving
+	if(istype(M))
+		if(HAS_TRAIT(M, TRAIT_FLYING) || M.floating || (IS_HORIZONTAL(M) && HAS_TRAIT(M, TRAIT_CONTORTED_BODY)))
+			return
+	if(leaving.throwing)
+		return
+	if(leaving.move_force >= MOVE_FORCE_EXTREMELY_STRONG)
+		return
+	if(!(flags & ON_BORDER) || direction == dir)
+		return COMPONENT_ATOM_BLOCK_EXIT
 
-/obj/structure/platform/CanPass(atom/movable/mover, turf/target)
+/obj/structure/platform/CanPass(atom/movable/mover, border_dir)
 	if(!anchored)
 		CheckLayer()
 	if(istype(mover, /obj/structure/platform))
 		return FALSE
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return TRUE
 	if(corner)
 		return !density
@@ -117,30 +125,29 @@
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
 	if(S && S.climbable && !(S.flags & ON_BORDER) && climbable && isliving(mover))// Climbable objects allow you to universally climb over others
 		return TRUE
-	if(!(flags & ON_BORDER) || get_dir(loc, target) == dir)
+	if(!(flags & ON_BORDER) || border_dir == dir)
 		return FALSE
-	else
-		return TRUE
+	return TRUE
 
 /obj/structure/platform/do_climb(mob/living/user)
 	if(!can_touch(user) || !climbable)
 		return
 	var/blocking_object = density_check()
 	if(blocking_object)
-		to_chat(user, span_warning("You cannot climb over [src], as it is blocked by \a [blocking_object]!"))
+		to_chat(user, SPAN_WARNING("You cannot climb over [src], as it is blocked by \a [blocking_object]!"))
 		return
 
-	var/destination_climb = get_step(src, dir)
-	if(is_blocked_turf(destination_climb))
-		to_chat(user, span_warning("You cannot climb over [src], the path is blocked!"))
+	var/turf/destination_climb = get_step(src, dir)
+	if(destination_climb.is_blocked_turf())
+		to_chat(user, SPAN_WARNING("You cannot climb over [src], the path is blocked!"))
 		return
 	var/turf/T = src.loc
 	if(!T || !istype(T)) return
 
 	if(get_turf(user) == get_turf(src))
-		usr.visible_message(span_warning("[user] starts climbing over \the [src]!"))
+		usr.visible_message(SPAN_WARNING("[user] starts climbing over \the [src]!"))
 	else
-		usr.visible_message(span_warning("[user] starts getting off \the [src]!"))
+		usr.visible_message(SPAN_WARNING("[user] starts getting off \the [src]!"))
 	climbers += user
 	if(!do_after(user, 50, target = src))
 		climbers -= user
@@ -152,10 +159,10 @@
 
 	if(get_turf(user) == get_turf(src))
 		usr.loc = get_step(src, dir)
-		usr.visible_message(span_warning("[user] leaves \the [src]!"))
+		usr.visible_message(SPAN_WARNING("[user] leaves \the [src]!"))
 	else
 		usr.loc = get_turf(src)
-		usr.visible_message(span_warning("[user] starts climbing over \the [src]!"))
+		usr.visible_message(SPAN_WARNING("[user] starts climbing over \the [src]!"))
 	climbers -= user
 
 /obj/structure/platform/CanAtmosPass()

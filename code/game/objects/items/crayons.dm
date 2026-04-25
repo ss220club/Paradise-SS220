@@ -7,14 +7,13 @@
  */
 /obj/item/toy/crayon
 	name = "crayon"
-	desc = "A colourful crayon. Looks tasty. Mmmm..."
+	desc = "A colorful crayon. Looks tasty. Mmmm..."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonred"
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BOTH_EARS
-	attack_verb = list("attacked", "coloured")
-	toolspeed = 1
-	var/colour = COLOR_RED
+	attack_verb = list("attacked", "colored")
+	var/crayon_color = COLOR_RED
 	var/drawtype = "rune"
 	var/list/graffiti = list("body","amyjon","face","matt","revolution","engie","guy","end","dwarf","uboa","up","down","left","right","heart","borgsrogue","voxpox","shitcurity","catbeast","hieroglyphs1","hieroglyphs2","hieroglyphs3","security","syndicate1","syndicate2","nanotrasen","lie","valid","arrowleft","arrowright","arrowup","arrowdown","chicken","hailcrab","brokenheart","peace","scribble","scribble2","scribble3","skrek","squish","tunnelsnake","yip","youaredead")
 	var/list/letters = list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
@@ -33,16 +32,20 @@
 	var/preset_message
 	/// The index of the character in the message that will be drawn next.
 	var/preset_message_index = 0
+	/// Can this crayon be consumed or not
+	var/consumable = TRUE
 
 /obj/item/toy/crayon/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is jamming the [name] up [user.p_their()] nose and into [user.p_their()] brain. It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is jamming the [name] up [user.p_their()] nose and into [user.p_their()] brain. It looks like [user.p_theyre()] trying to commit suicide!"))
 	return BRUTELOSS|OXYLOSS
 
-/obj/item/toy/crayon/New()
-	..()
+/obj/item/toy/crayon/Initialize(mapload)
+	. = ..()
 	drawtype = pick(pick(graffiti), pick(letters), "rune[rand(1, 8)]")
 
-/obj/item/toy/crayon/attack_self__legacy__attackchain(mob/living/user as mob)
+/obj/item/toy/crayon/activate_self(mob/user)
+	if(..())
+		return
 	update_window(user)
 
 /obj/item/toy/crayon/proc/update_window(mob/living/user as mob)
@@ -105,9 +108,12 @@
 	drawtype = temp
 	update_window(usr)
 
-/obj/item/toy/crayon/afterattack__legacy__attackchain(atom/target, mob/user, proximity)
-	if(!proximity) return
-	if(busy) return
+/obj/item/toy/crayon/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!proximity_flag)
+		return
+	if(busy)
+		return
 	if(is_type_in_list(target,validSurfaces))
 		var/temp = "rune"
 		if(preset_message_index > 0)
@@ -117,12 +123,12 @@
 			temp = "letter"
 		else if(graffiti.Find(drawtype))
 			temp = "graffiti"
-		to_chat(user, "<span class='notice'>You start drawing a [temp] on the [target.name].</span>")
+		to_chat(user, SPAN_NOTICE("You start drawing a [temp] on the [target.name]."))
 		busy = TRUE
 		if(instant || do_after(user, 50 * toolspeed, target = target))
-			var/obj/effect/decal/cleanable/crayon/C = new /obj/effect/decal/cleanable/crayon(target,colour,drawtype,temp)
+			var/obj/effect/decal/cleanable/crayon/C = new /obj/effect/decal/cleanable/crayon(target, crayon_color, drawtype, temp)
 			C.add_hiddenprint(user)
-			to_chat(user, "<span class='notice'>You finish drawing [temp].</span>")
+			to_chat(user, SPAN_NOTICE("You finish drawing [temp]."))
 
 			if(preset_message_index > 0)
 				preset_message_index++
@@ -133,112 +139,109 @@
 			if(uses)
 				uses--
 				if(!uses)
-					to_chat(user, "<span class='danger'>You used up your [name]!</span>")
+					to_chat(user, SPAN_DANGER("You used up your [name]!"))
 					qdel(src)
 		busy = FALSE
 
-/obj/item/toy/crayon/attack__legacy__attackchain(mob/M, mob/user)
-	if(M == user)
+/obj/item/toy/crayon/attack(mob/living/target, mob/living/carbon/human/user)
+	if(..() || !consumable)
+		return FINISH_ATTACK
+	if(target == user)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(!H.check_has_mouth())
-				to_chat(user, "<span class='warning'>You do not have a mouth!</span>")
+				to_chat(user, SPAN_WARNING("You do not have a mouth!"))
 				return
 		times_eaten++
 		playsound(loc, 'sound/items/eatfood.ogg', 50, 0)
 		user.adjust_nutrition(5)
 		if(times_eaten < max_bites)
-			to_chat(user, "<span class='notice'>You take a bite of the [name]. Delicious!</span>")
+			to_chat(user, SPAN_NOTICE("You take a bite of the [name]. Delicious!"))
 		else
-			to_chat(user, "<span class='warning'>There is no more of [name] left!</span>")
+			to_chat(user, SPAN_WARNING("There is no more of [name] left!"))
 			qdel(src)
-	else
-		..()
 
 /obj/item/toy/crayon/examine(mob/user)
 	. = ..()
 	if(!user.Adjacent(src) || !times_eaten)
 		return
 	if(times_eaten == 1)
-		. += "<span class='notice'>[src] was bitten by someone!</span>"
+		. += SPAN_NOTICE("[src] was bitten by someone!")
 	else
-		. += "<span class='notice'>[src] was bitten multiple times!</span>"
+		. += SPAN_NOTICE("[src] was bitten multiple times!")
 
 /obj/item/toy/crayon/red
 	name = "red crayon"
-	icon_state = "crayonred"
-	colour = COLOR_RED
-	dye_color = DYE_RED
 
 /obj/item/toy/crayon/orange
 	name = "orange crayon"
 	icon_state = "crayonorange"
-	colour = COLOR_ORANGE
+	crayon_color = COLOR_ORANGE
 	dye_color = DYE_ORANGE
 
 /obj/item/toy/crayon/yellow
 	name = "yellow crayon"
 	icon_state = "crayonyellow"
-	colour = COLOR_YELLOW
+	crayon_color = COLOR_YELLOW
 	dye_color = DYE_YELLOW
 
 /obj/item/toy/crayon/green
 	name = "green crayon"
 	icon_state = "crayongreen"
-	colour = COLOR_GREEN
+	crayon_color = COLOR_GREEN
 	dye_color = DYE_GREEN
 
 /obj/item/toy/crayon/blue
 	name = "blue crayon"
 	icon_state = "crayonblue"
-	colour = COLOR_BLUE
+	crayon_color = COLOR_BLUE
 	dye_color = DYE_BLUE
 
 /obj/item/toy/crayon/purple
 	name = "purple crayon"
 	icon_state = "crayonpurple"
-	colour = COLOR_PURPLE
+	crayon_color = COLOR_PURPLE
 	dye_color = DYE_PURPLE
 
-/obj/item/toy/crayon/random/New()
+/obj/item/toy/crayon/random/Initialize(mapload)
+	. = ..()
 	icon_state = pick("crayonred", "crayonorange", "crayonyellow", "crayongreen", "crayonblue", "crayonpurple")
 	switch(icon_state)
 		if("crayonred")
 			name = "red crayon"
-			colour = COLOR_RED
+			crayon_color = COLOR_RED
 			dye_color = DYE_RED
 		if("crayonorange")
 			name = "orange crayon"
-			colour = COLOR_ORANGE
+			crayon_color = COLOR_ORANGE
 			dye_color = DYE_ORANGE
 		if("crayonyellow")
 			name = "yellow crayon"
-			colour = COLOR_YELLOW
+			crayon_color = COLOR_YELLOW
 			dye_color = DYE_YELLOW
 		if("crayongreen")
 			name = "green crayon"
-			colour = COLOR_GREEN
+			crayon_color = COLOR_GREEN
 			dye_color = DYE_GREEN
 		if("crayonblue")
 			name = "blue crayon"
-			colour = COLOR_BLUE
+			crayon_color = COLOR_BLUE
 			dye_color = DYE_BLUE
 		if("crayonpurple")
 			name = "purple crayon"
-			colour = COLOR_PURPLE
+			crayon_color = COLOR_PURPLE
 			dye_color = DYE_PURPLE
-	..()
 
 /obj/item/toy/crayon/black
 	name = "black crayon"
 	icon_state = "crayonblack"
-	colour = "#000000"
+	crayon_color = "#000000"
 	dye_color = DYE_BLACK
 
 /obj/item/toy/crayon/white
 	name = "white crayon"
 	icon_state = "crayonwhite"
-	colour = "#FFFFFF"
+	crayon_color = "#FFFFFF"
 	dye_color = DYE_WHITE
 
 /obj/item/toy/crayon/white/chalk
@@ -251,25 +254,22 @@
 	name = "mime crayon"
 	desc = "A very sad-looking crayon."
 	icon_state = "crayonmime"
-	colour = "#FFFFFF"
+	crayon_color = "#FFFFFF"
 	dye_color = DYE_MIME
 	uses = 0
 
-/obj/item/toy/crayon/mime/attack_self__legacy__attackchain(mob/living/user as mob)
-	update_window(user)
-
-/obj/item/toy/crayon/mime/update_window(mob/living/user as mob)
-	dat += "<center><span style='border:1px solid #161616; background-color: [colour];'>&nbsp;&nbsp;&nbsp;</span><a href='byond://?src=[UID()];color=1'>Change color</a></center>"
+/obj/item/toy/crayon/mime/update_window(mob/living/user)
+	dat += "<center><span style='border:1px solid #161616; background-color: [crayon_color];'>&nbsp;&nbsp;&nbsp;</span><a href='byond://?src=[UID()];color=1'>Change color</a></center>"
 	..()
 
 /obj/item/toy/crayon/mime/Topic(href,href_list)
 	if(!Adjacent(usr) || usr.incapacitated())
 		return
 	if(href_list["color"])
-		if(colour != COLOR_WHITE)
-			colour = COLOR_WHITE
+		if(crayon_color != COLOR_WHITE)
+			crayon_color = COLOR_WHITE
 		else
-			colour = COLOR_BLACK
+			crayon_color = COLOR_BLACK
 		update_window(usr)
 	else
 		..()
@@ -277,15 +277,12 @@
 /obj/item/toy/crayon/rainbow
 	name = "rainbow crayon"
 	icon_state = "crayonrainbow"
-	colour = "#FFF000"
+	crayon_color = "#FFF000"
 	dye_color = DYE_RAINBOW
 	uses = 0
 
-/obj/item/toy/crayon/rainbow/attack_self__legacy__attackchain(mob/living/user as mob)
-	update_window(user)
-
-/obj/item/toy/crayon/rainbow/update_window(mob/living/user as mob)
-	dat += "<center><span style='border:1px solid #161616; background-color: [colour];'>&nbsp;&nbsp;&nbsp;</span><a href='byond://?src=[UID()];color=1'>Change color</a></center>"
+/obj/item/toy/crayon/rainbow/update_window(mob/living/user)
+	dat += "<center><span style='border:1px solid #161616; background-color: [crayon_color];'>&nbsp;&nbsp;&nbsp;</span><a href='byond://?src=[UID()];color=1'>Change color</a></center>"
 	..()
 
 /obj/item/toy/crayon/rainbow/Topic(href,href_list[])
@@ -295,7 +292,7 @@
 		var/temp = tgui_input_color(usr, "Please select crayon color.", "Crayon color")
 		if(isnull(temp))
 			return
-		colour = temp
+		crayon_color = temp
 		update_window(usr)
 	else
 		..()
@@ -312,35 +309,36 @@
 	instant = TRUE
 	validSurfaces = list(/turf/simulated/floor,/turf/simulated/wall)
 	dye_color = null // not technically a crayon, so we're not gonna have it dye stuff in the laundry machine
+	consumable = FALSE // To stop you from eating spraycans. It's TOO SILLY!
 
-/obj/item/toy/crayon/spraycan/New()
-	..()
+/obj/item/toy/crayon/spraycan/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_ACTIVATE_SELF, TYPE_PROC_REF(/datum, signal_cancel_activate_self))
 	update_icon()
 
-/obj/item/toy/crayon/spraycan/attack__legacy__attackchain(mob/M, mob/user)
-	return // To stop you from eating spraycans. It's TOO SILLY!
-
-/obj/item/toy/crayon/spraycan/attack_self__legacy__attackchain(mob/living/user)
+/obj/item/toy/crayon/spraycan/activate_self(mob/user)
+	if(..())
+		return
 	var/choice = tgui_input_list(user, "Do you want to...", "Spraycan Options", list("Toggle Cap","Change Drawing", "Change Color"))
 	switch(choice)
 		if("Toggle Cap")
-			to_chat(user, "<span class='notice'>You [capped ? "remove" : "replace"] the cap of [src].</span>")
+			to_chat(user, SPAN_NOTICE("You [capped ? "remove" : "replace"] the cap of [src]."))
 			capped = !capped
 			update_icon()
 		if("Change Drawing")
-			..()
+			update_window(user)
 		if("Change Color")
-			colour = tgui_input_color(user,"Please select a paint color.","Spray Can Color")
-			if(isnull(colour))
+			crayon_color = tgui_input_color(user,"Please select a paint color.","Spray Can Color")
+			if(isnull(crayon_color))
 				return
 			update_icon()
 
-/obj/item/toy/crayon/spraycan/afterattack__legacy__attackchain(atom/target, mob/user as mob, proximity)
+/obj/item/toy/crayon/spraycan/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(!proximity)
+	if(!proximity_flag)
 		return
 	if(capped)
-		to_chat(user, "<span class='warning'>You cannot spray [target] while the cap is still on!</span>")
+		to_chat(user, SPAN_WARNING("You cannot spray [target] while the cap is still on!"))
 		return
 	if(istype(target, /obj/item/clothing/head/cardborg) || istype(target, /obj/item/clothing/suit/cardborg))	// Spraypainting your cardborg suit for more fashion options.
 		cardborg_recolor(target, user)
@@ -349,10 +347,10 @@
 		return
 	var/mob/living/carbon/human/attackee = target
 	if(uses < 10)
-		to_chat(user, "<span class='warning'>Theres not enough paint left to have an effect!</span>")
+		to_chat(user, SPAN_WARNING("Theres not enough paint left to have an effect!"))
 		return
 	uses -= 10
-	user.visible_message("<span class='danger'>[user] sprays [src] into the face of [target]!</span>")
+	user.visible_message(SPAN_DANGER("[user] sprays [src] into the face of [target]!"))
 	if(!attackee.is_eyes_covered()) // eyes aren't covered? ARGH IT BURNS.
 		attackee.Confused(6 SECONDS)
 		attackee.KnockDown(6 SECONDS)
@@ -360,7 +358,7 @@
 	attackee.EyeBlind(2 SECONDS)
 
 	attackee.lip_style = "spray_face"
-	attackee.lip_color = colour
+	attackee.lip_color = crayon_color
 	attackee.update_body()
 
 	play_spray_sound(user)
@@ -374,7 +372,7 @@
 /obj/item/toy/crayon/spraycan/update_overlays()
 	. = ..()
 	var/image/I = image('icons/obj/crayons.dmi',icon_state = "[capped ? "spraycan_cap_colors" : "spraycan_colors"]")
-	I.color = colour
+	I.color = crayon_color
 	. += I
 
 /obj/item/toy/crayon/spraycan/proc/cardborg_recolor(obj/target, mob/user)
@@ -410,7 +408,7 @@
 	)
 	selected_disguise = disguise_spraypaint_items[selected_disguise][is_cardborg_head]
 	playsound(user, 'sound/effects/spray.ogg', 5, TRUE, 5)
-	user.unEquip(target)
+	user.unequip(target)
 	user.put_in_hands(new selected_disguise())	// Spawn the desired cardborg item.
 	qdel(target)								// Get rid of the old one.
 

@@ -193,6 +193,14 @@ GLOBAL_LIST_EMPTY(rpd_pipe_list)			//Some pipes we don't want to be dispensable 
 	pipe_category = RPD_DEVICES
 	rpd_dispensable = TRUE
 
+/datum/pipes/atmospheric/temperature_gate
+	pipe_name = "temperature gate"
+	pipe_id = PIPE_TEMPERATURE_GATE
+	orientations = 4
+	pipe_icon = "temperature_gate"
+	pipe_category = RPD_DEVICES
+	rpd_dispensable = TRUE
+
 /datum/pipes/atmospheric/filter
 	pipe_name = "gas filter"
 	pipe_id = PIPE_GAS_FILTER
@@ -253,7 +261,6 @@ GLOBAL_LIST_EMPTY(rpd_pipe_list)			//Some pipes we don't want to be dispensable 
 	pipe_name = "bent h/e pipe"
 	pipe_id = PIPE_HE_BENT
 	pipe_icon = "he"
-	bendy = TRUE
 	pipe_category = RPD_HEAT_PIPING
 
 /datum/pipes/atmospheric/he_junction
@@ -356,9 +363,7 @@ GLOBAL_LIST_EMPTY(rpd_pipe_list)			//Some pipes we don't want to be dispensable 
 	pipe_name = "diagonal transit tube"
 	construction_type = /obj/structure/transit_tube_construction/diagonal
 	pipe_id = PIPE_TRANSIT_TUBE_DIAGONAL
-	orientations = 2
 	pipe_icon = "transit_diagonal"
-	rpd_dispensable = TRUE
 
 /datum/pipes/transit/tube/curved
 	pipe_name = "curved transit tube"
@@ -366,7 +371,6 @@ GLOBAL_LIST_EMPTY(rpd_pipe_list)			//Some pipes we don't want to be dispensable 
 	pipe_id = PIPE_TRANSIT_TUBE_CURVED
 	orientations = 4
 	pipe_icon = "transit_curved"
-	rpd_dispensable = TRUE
 
 /datum/pipes/transit/tube/junction
 	pipe_name = "junction transit tube"
@@ -374,7 +378,6 @@ GLOBAL_LIST_EMPTY(rpd_pipe_list)			//Some pipes we don't want to be dispensable 
 	pipe_id = PIPE_TRANSIT_TUBE_JUNCTION
 	orientations = 4
 	pipe_icon = "transit_junction"
-	rpd_dispensable = TRUE
 
 /datum/pipes/transit/tube/terminus_dispenser_station
 	pipe_name = "terminus dispenser tube station"
@@ -382,7 +385,6 @@ GLOBAL_LIST_EMPTY(rpd_pipe_list)			//Some pipes we don't want to be dispensable 
 	pipe_id = PIPE_TRANSIT_TUBE_TERMINUS_DISPENSER
 	orientations = 4
 	pipe_icon = "transit_dispenser_terminus"
-	rpd_dispensable = TRUE
 
 /datum/pipes/transit/tube/dispenser_station
 	pipe_name = "dispenser tube station"
@@ -390,7 +392,6 @@ GLOBAL_LIST_EMPTY(rpd_pipe_list)			//Some pipes we don't want to be dispensable 
 	construction_type = /obj/structure/transit_tube_construction/station/dispenser
 	orientations = 4
 	pipe_icon = "transit_dispenser_station"
-	rpd_dispensable = TRUE
 
 /datum/pipes/transit/tube/station
 	pipe_name = "transit tube station"
@@ -398,7 +399,6 @@ GLOBAL_LIST_EMPTY(rpd_pipe_list)			//Some pipes we don't want to be dispensable 
 	pipe_id = PIPE_TRANSIT_TUBE_STATION
 	orientations = 4
 	pipe_icon = "transit_station"
-	rpd_dispensable = TRUE
 
 //Pipes the RPD can't dispense. Since these don't use an interface, we don't need to bother with setting an icon. We do, however, want to name these for other purposes
 

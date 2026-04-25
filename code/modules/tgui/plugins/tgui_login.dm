@@ -56,7 +56,7 @@ GLOBAL_LIST(ui_logins)
 		"rank" = state.rank,
 		"logged_in" = state.logged_in,
 	)
-	data["isAI"] = isAI(user)
+	data["isAI"] = is_ai(user)
 	data["isRobot"] = isrobot(user)
 	data["isAdmin"] = user.can_admin_interact()
 
@@ -131,9 +131,9 @@ GLOBAL_LIST(ui_logins)
 			state.rank = state.id.assignment
 			state.access = state.id.access
 		else
-			to_chat(usr, "<span class='warning'>Access Denied</span>")
+			to_chat(usr, SPAN_WARNING("Access Denied"))
 			return
-	else if(login_type == LOGIN_TYPE_AI && isAI(usr))
+	else if(login_type == LOGIN_TYPE_AI && is_ai(usr))
 		state.name = usr.name
 		state.rank = "AI"
 	else if(login_type == LOGIN_TYPE_ROBOT && isrobot(usr))

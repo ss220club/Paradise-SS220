@@ -1,6 +1,6 @@
 GLOBAL_LIST_INIT(map_transition_config, list(CC_TRANSITION_CONFIG))
 
-#ifdef UNIT_TESTS
+#ifdef TEST_RUNNER
 GLOBAL_DATUM(test_runner, /datum/test_runner)
 #endif
 
@@ -9,24 +9,19 @@ GLOBAL_DATUM(test_runner, /datum/test_runner)
 	// If you do any SQL operations inside this proc, they must ***NOT*** be ran async. Otherwise players can join mid query
 	// This is BAD.
 
+
 	SSmetrics.world_init_time = REALTIMEOFDAY
-
-	// Do sanity checks to ensure RUST actually exists
-	if((!fexists(RUST_G)) && world.system_type == MS_WINDOWS)
-		DIRECT_OUTPUT(world.log, "ERROR: RUSTG was not found and is required for the game to function. Server will now exit.")
-		del(world)
-
-	var/rustg_version = rustg_get_version()
-	if(rustg_version != RUST_G_VERSION)
-		DIRECT_OUTPUT(world.log, "ERROR: RUSTG version mismatch. Library is [rustg_version], code wants [RUST_G_VERSION]. Server will now exit.")
-		del(world)
 
 	//temporary file used to record errors with loading config and the database, moved to log directory once logging is set up
 	GLOB.config_error_log = GLOB.world_game_log = GLOB.world_runtime_log = GLOB.sql_log = "data/logs/config_error.log"
 	GLOB.configuration.load_configuration() // Load up the base config.toml
 	// Load up overrides for this specific instance, based on port
 	// If this instance is listening on port 6666, the server will look for config/overrides_6666.toml
-	GLOB.configuration.load_overrides()
+	GLOB.configuration.load_overrides("config/overrides_[world.port].toml")
+
+	#ifdef TEST_CONFIG_OVERRIDE
+	GLOB.configuration.load_overrides("config/tests/config_[TEST_CONFIG_OVERRIDE].toml")
+	#endif
 
 	// Right off the bat, load up the DB
 	SSdbcore.CheckSchemaVersion() // This doesnt just check the schema version, it also connects to the db! This needs to happen super early! I cannot stress this enough!
@@ -51,8 +46,8 @@ GLOBAL_DATUM(test_runner, /datum/test_runner)
 	if(TgsAvailable())
 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
 
-	#ifdef UNIT_TESTS
-	log_world("Unit Tests Are Enabled!")
+	#ifdef TEST_RUNNER
+	log_world("Test runner enabled.")
 	#endif
 
 	if(byond_version < MIN_COMPILER_VERSION || byond_build < MIN_COMPILER_BUILD)
@@ -69,7 +64,7 @@ GLOBAL_DATUM(test_runner, /datum/test_runner)
 	Master.Initialize(10, FALSE, TRUE)
 
 
-	#ifdef UNIT_TESTS
+	#ifdef TEST_RUNNER
 	GLOB.test_runner = new
 	GLOB.test_runner.Start()
 	#endif
@@ -126,8 +121,8 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 				return
 			message_admins("[key_name_admin(usr)] has requested an immediate world restart via client side debugging tools")
 			log_admin("[key_name(usr)] has requested an immediate world restart via client side debugging tools")
-			to_chat(world, "<span class='boldannounceooc'>Rebooting world immediately due to host request</span>")
-		rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
+			to_chat(world, SPAN_BOLDANNOUNCEOOC("Rebooting world immediately due to host request"))
+		rustlibs_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
 		// Now handle a reboot
 		if(GLOB.configuration.system.shutdown_on_reboot)
 			sleep(0)
@@ -144,7 +139,7 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 	Master.Shutdown() // Shutdown subsystems
 
 	// If we were running unit tests, finish that run
-	#ifdef UNIT_TESTS
+	#ifdef TEST_RUNNER
 	GLOB.test_runner.Finalize()
 	return
 	#endif
@@ -152,7 +147,7 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 	// Send the stats URL if applicable
 	if(GLOB.configuration.url.round_stats_url && GLOB.round_id)
 		var/stats_link = "[GLOB.configuration.url.round_stats_url][GLOB.round_id]"
-		to_chat(world, "<span class='notice'>Stats for this round can be viewed at <a href=\"[stats_link]\">[stats_link]</a></span>")
+		to_chat(world, SPAN_NOTICE("Stats for this round can be viewed at <a href=\"[stats_link]\">[stats_link]</a>"))
 
 	// If the server has been gracefully shutdown in TGS, have a 60 seconds grace period for SQL updates and stuff
 	if(GLOB.slower_restart)
@@ -170,12 +165,12 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 				C << link("byond://[GLOB.configuration.url.server_url]")
 
 	// And begin the real shutdown
-	rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
+	rustlibs_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
 	if(GLOB.configuration.system.shutdown_on_reboot)
 		sleep(0)
 		if(GLOB.configuration.system.shutdown_shell_command)
 			shell(GLOB.configuration.system.shutdown_shell_command)
-		rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
+		rustlibs_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
 		del(world)
 		TgsEndProcess() // We want to shutdown on reboot. That means kill our TGS process "gracefully", instead of the watchdog crying
 		return
@@ -249,9 +244,9 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 
 /world/proc/SetupLogs()
 	if(GLOB.round_id)
-		GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM-Month/DD-Day")]/round-[GLOB.round_id]"
+		GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM-Month/DD-Day", 0)]/round-[GLOB.round_id]" // SS220 EDIT - use UTC for log directory
 	else
-		GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM-Month/DD-Day")]" // Dont stick a round ID if we dont have one
+		GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM-Month/DD-Day", 0)]" // Dont stick a round ID if we dont have one // SS220 EDIT - use UTC for log directory
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
@@ -291,11 +286,11 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 	F << GLOB.log_directory
 
 /world/Del()
-	rustg_close_async_http_client() // Close the HTTP client. If you dont do this, youll get phantom threads which can crash DD from memory access violations
+	rustlibs_http_shutdown_client() // Close the HTTP client. If you dont do this, youll get phantom threads which can crash DD from memory access violations
 	disable_auxtools_debugger() // Disables the debugger if running. See above comment
 
 	if(SSredis.connected)
-		rustg_redis_disconnect() // Disconnects the redis connection. See above.
+		rustlibs_redis_disconnect() // Disconnects the redis connection. See above.
 
 	#ifdef ENABLE_BYOND_TRACY
 	CALL_EXT("prof.dll", "destroy")() // Setup Tracy integration

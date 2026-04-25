@@ -14,8 +14,6 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/melee.dmi'
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	item_state = "stylet_0"
-	var/item_state_on = "stylet_1"
 	icon_state = "stylet_0"
 	var/icon_state_on = "stylet_1"
 	var/extend_sound = 'modular_ss220/objects/sound/weapons/styletext.ogg'
@@ -25,24 +23,19 @@
 
 /obj/item/melee/stylet/update_icon_state()
 	. = ..()
-	if(on)
-		icon_state = "stylet_1"
-	else
-		icon_state = "stylet_0"
+	icon_state = on ? icon_state_on : initial(icon_state)
 
 /obj/item/melee/stylet/attack_self__legacy__attackchain(mob/user)
 	on = !on
 
 	if(on)
-		to_chat(user, span_userdanger("Вы разложили [name]."))
-		item_state = item_state_on
+		to_chat(user, SPAN_USERDANGER("Вы разложили [name]."))
 		update_icon(UPDATE_ICON_STATE)
 		w_class = WEIGHT_CLASS_SMALL
 		force = force_on
 		attack_verb = attack_verb_on
 	else
-		to_chat(user, span_notice("Вы сложили [name]."))
-		item_state = initial(item_state)
+		to_chat(user, SPAN_NOTICE("Вы сложили [name]."))
 		update_icon(UPDATE_ICON_STATE)
 		w_class = initial(w_class)
 		force = initial(force)

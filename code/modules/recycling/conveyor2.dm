@@ -18,7 +18,6 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	Use a <b>crowbar</b> on the belt to dislodge it.<span>"
 	layer = CONVEYOR_LAYER 		// so they appear under stuff but not below stuff like vents
 	anchored = TRUE
-	move_force = MOVE_FORCE_DEFAULT
 	var/operating = FALSE	//NB: this can be TRUE while the belt doesn't go
 	var/forwards			// The direction the conveyor sends you in
 	var/backwards			// hopefully self-explanatory
@@ -43,6 +42,11 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 		var/obj/machinery/conveyor_switch/S = I
 		S.link_conveyers(src)
 
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/machinery/conveyor/Destroy()
 	GLOB.conveyor_belts -= src
 	return ..()
@@ -52,28 +56,27 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	update_move_direction()
 
 // attack with item, place item on conveyor
-/obj/machinery/conveyor/attackby__legacy__attackchain(obj/item/I, mob/user)
+/obj/machinery/conveyor/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(stat & BROKEN)
 		return ..()
 
-	if(istype(I, /obj/item/conveyor_switch_construct))
-		var/obj/item/conveyor_switch_construct/S = I
+	if(istype(used, /obj/item/conveyor_switch_construct))
+		var/obj/item/conveyor_switch_construct/S = used
 		if(S.id == id)
 			return ..()
 		for(var/obj/machinery/conveyor_switch/CS in GLOB.conveyor_switches)
 			if(CS.id == id)
 				CS.conveyors -= src
 		id = S.id
-		to_chat(user, "<span class='notice'>You link [I] with [src].</span>")
-		return
+		to_chat(user, SPAN_NOTICE("You link [used] with [src]."))
+		return ITEM_INTERACT_COMPLETE
 
 	if(user.a_intent == INTENT_HELP)
 		if(user.drop_item())
-			I.forceMove(loc)
-		return
+			used.forceMove(loc)
+		return ITEM_INTERACT_COMPLETE
 
 	return ..()
-
 
 /obj/machinery/conveyor/crowbar_act(mob/user, obj/item/I)
 	. = TRUE
@@ -83,7 +86,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 		var/obj/item/conveyor_construct/C = new(loc)
 		C.id = id
 		transfer_fingerprints_to(C)
-	to_chat(user,"<span class='notice'>You remove [src].</span>")
+	to_chat(user,SPAN_NOTICE("You remove [src]."))
 	qdel(src)
 
 /obj/machinery/conveyor/wrench_act(mob/user, obj/item/I)
@@ -143,7 +146,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	var/turf/left = get_step(src, turn(dir, 90))	//We need to get conveyors to the right, left, and behind this one to be able to determine if we need to make a corner piece
 	var/turf/right = get_step(src, turn(dir, -90))
 	var/turf/back = get_step(src, turn(dir, 180))
-	to_chat(user, "<span class='notice'>You rotate [src].</span>")
+	to_chat(user, SPAN_NOTICE("You rotate [src]."))
 	var/obj/machinery/conveyor/CL = locate() in left
 	var/obj/machinery/conveyor/CR = locate() in right
 	var/obj/machinery/conveyor/CB = locate() in back
@@ -199,10 +202,9 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	else if(still_stuff_to_move && !speed_process)
 		makeSpeedProcess()
 
-/obj/machinery/conveyor/Crossed(atom/movable/AM, oldloc)
-	if(!speed_process && !AM.anchored)
+/obj/machinery/conveyor/proc/on_atom_entered(datum/source, atom/movable/entered)
+	if(!speed_process && !entered.anchored)
 		makeSpeedProcess()
-	..()
 
 /obj/machinery/conveyor/proc/move_thing(atom/movable/AM)
 	affecting.Remove(AM)
@@ -322,7 +324,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	add_fingerprint(user)
 	playsound(loc, 'sound/machines/switch.ogg', 10, TRUE)
 	if(!allowed(user) && !user.can_advanced_admin_interact()) //this is in Para but not TG. I don't think there's any which are set anyway.
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 	if(position)
 		position = DIRECTION_OFF
@@ -364,7 +366,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 		return
 	var/obj/item/conveyor_switch_construct/C = new(loc, id)
 	transfer_fingerprints_to(C)
-	to_chat(user,"<span class='notice'>You detach [src].</span>")
+	to_chat(user,SPAN_NOTICE("You detach [src]."))
 	qdel(src)
 
 /obj/machinery/conveyor_switch/multitool_act(mob/user, obj/item/I)
@@ -430,7 +432,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	if(!istype(I, /obj/item/conveyor_switch_construct))
 		return
 	var/obj/item/conveyor_switch_construct/C = I
-	to_chat(user, "<span class='notice'>You link [src] to [C].</span>")
+	to_chat(user, SPAN_NOTICE("You link [src] to [C]."))
 	id = C.id
 
 /obj/item/conveyor_construct/afterattack__legacy__attackchain(turf/T, mob/user, proximity)
@@ -441,10 +443,10 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	if(!isfloorturf(T))
 		return
 	if(T == get_turf(user))
-		to_chat(user, "<span class='notice'>You cannot place [src] under yourself.</span>")
+		to_chat(user, SPAN_NOTICE("You cannot place [src] under yourself."))
 		return
 	if(locate(/obj/machinery/conveyor) in T) //Can't put conveyors beneath conveyors
-		to_chat(user, "<span class='notice'>There's already a conveyor there!</span>")
+		to_chat(user, SPAN_NOTICE("There's already a conveyor there!"))
 		return
 	var/obj/machinery/conveyor/C = new(T, user.dir, id)
 	transfer_fingerprints_to(C)
@@ -481,7 +483,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 			found = TRUE
 			break
 	if(!found)
-		to_chat(user, "<span class='notice'>[src] did not detect any linked conveyor belts in range.</span>")
+		to_chat(user, SPAN_NOTICE("[src] did not detect any linked conveyor belts in range."))
 		return
 	var/obj/machinery/conveyor_switch/NC = new(T, id)
 	transfer_fingerprints_to(NC)
@@ -492,7 +494,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 		return ..()
 	var/obj/item/conveyor_switch_construct/S = I
 	id = S.id
-	to_chat(user, "<span class='notice'>You link the two switch constructs.</span>")
+	to_chat(user, SPAN_NOTICE("You link the two switch constructs."))
 
 /obj/item/paper/conveyor
 	name = "paper- 'Nano-it-up U-build series, #9: Build your very own conveyor belt, in SPACE'"
@@ -532,7 +534,6 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	dir = SOUTHEAST
 
 /obj/machinery/conveyor/south
-	dir = SOUTH
 
 /obj/machinery/conveyor/southwest
 	dir = SOUTHWEST

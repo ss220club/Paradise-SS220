@@ -41,7 +41,7 @@
 
 	if(istype(I, /obj/item/stack))
 		if(!ishuman(user))
-			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
 
 		var/obj/item/stack/O = I
@@ -59,25 +59,25 @@
 /obj/effect/mob_spawn/human/alive/golem
 	name = "inert free golem shell"
 	desc = "A humanoid shape, empty, lifeless, and full of potential."
-	mob_name = "a free golem"
+	role_name = "free golem"
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "construct"
-	mob_species = /datum/species/golem
-	roundstart = FALSE
-	death = FALSE
-	anchored = FALSE
-	move_resist = MOVE_FORCE_NORMAL
-	density = FALSE
-	death_cooldown = 300 SECONDS
-	STATIC_COOLDOWN_DECLARE(ghost_flash_cooldown)
-	var/has_owner = FALSE
-	var/can_transfer = TRUE //if golems can switch bodies to this new shell
-	var/mob/living/owner = null //golem's owner if it has one
 	important_info = "You are not an antagonist. Do not create AIs without explicit admin permission. Do not involve yourself with the main station, boarding the main station requires explicit admin permission."
 	description = "As a Free Golem on lavaland, you are unable to use most weapons, but you can mine, research and make more of your kind. Earn enough mining points and you can even move your shuttle out of there. Your goal is to survive on lavaland with your kin, not to become crew on the primary station."
 	flavour_text = "You are a Free Golem. Your family worships The Liberator. In his infinite and divine wisdom, he set your clan free to \
 	travel the stars with a single declaration: \"Yeah go do whatever.\" Though you are bound to the one who created you, it is customary in your society to repeat those same words to newborn \
 	golems, so that no golem may ever be forced to serve again."
+	density = FALSE
+	anchored = FALSE
+	move_resist = MOVE_FORCE_NORMAL
+	death_cooldown = 300 SECONDS
+	mob_species = /datum/species/golem
+	var/has_owner = FALSE
+	/// If golems can switch bodies to this new shell
+	var/can_transfer = TRUE
+	/// Golem's owner if it has one
+	var/mob/living/owner
+	STATIC_COOLDOWN_DECLARE(ghost_flash_cooldown)
 
 /obj/effect/mob_spawn/human/alive/golem/Initialize(mapload, datum/species/golem/species = null, mob/creator = null)
 	if(species) //spawners list uses object name to register so this goes before ..()
@@ -98,11 +98,11 @@
 		Serve [creator], and assist [creator.p_them()] in completing [creator.p_their()] goals at any cost."
 		owner = creator
 
-/obj/effect/mob_spawn/human/alive/golem/special(mob/living/new_spawn, name)
+/obj/effect/mob_spawn/human/alive/golem/special(mob/living/new_spawn)
 	var/datum/species/golem/X = mob_species
 	to_chat(new_spawn, "[initial(X.info_text)]")
 	if(!owner)
-		to_chat(new_spawn, "<big><span class='warning'>You are not an antagonist, do not build an AI without explicit admin permission. Do not board the station without explicit admin permission.</span><big>")
+		to_chat(new_spawn, "<big>[SPAN_WARNING("You are not an antagonist, do not build an AI without explicit admin permission. Do not board the station without explicit admin permission.")]<big>")
 		to_chat(new_spawn, "<span class='notice'>It is common in free golem societies to respect Adamantine golems as elders, however you do not have to obey them. \
 		Adamantine golems are the only golems that can resonate to all golems.</span>")
 		to_chat(new_spawn, "Build golem shells in the autolathe, and feed refined mineral sheets to the shells to bring them to life! You are generally a peaceful group unless provoked.")
@@ -130,10 +130,6 @@
 		if(has_owner)
 			var/datum/species/golem/G = H.dna.species
 			G.owner = owner
-		if(!name)
-			H.rename_character(null, H.dna.species.get_random_name())
-		else
-			H.rename_character(null, name)
 		if(is_species(H, /datum/species/golem/tranquillite) && H.mind)
 			H.mind.AddSpell(new /datum/spell/aoe/conjure/build/mime_wall(null))
 			H.mind.AddSpell(new /datum/spell/mime/speak(null))
@@ -162,20 +158,17 @@
 		if(QDELETED(src) || uses <= 0)
 			return
 		log_game("[key_name(user)] golem-swapped into [src]")
-		user.visible_message("<span class='notice'>A faint light leaves [user], moving to [src] and animating it!</span>","<span class='notice'>You leave your old body behind, and transfer into [src]!</span>")
+		user.visible_message(SPAN_NOTICE("A faint light leaves [user], moving to [src] and animating it!"),SPAN_NOTICE("You leave your old body behind, and transfer into [src]!"))
 		create(ckey = user.ckey, name = user.real_name)
 		user.death()
 
-/obj/effect/mob_spawn/human/alive/golem/attackby__legacy__attackchain(obj/item/I, mob/living/carbon/user, params)
-	if(!istype(I, /obj/item/slimepotion/transference))
-		return ..()
-	if(iscarbon(user) && can_transfer)
+/obj/effect/mob_spawn/human/alive/golem/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/slimepotion/transference) && iscarbon(user) && can_transfer)
 		var/human_transfer_choice = tgui_alert(user, "Transfer your soul to [src]? (Warning, your old body will die!)", "Respawn", list("Yes", "No"))
-		if(human_transfer_choice != "Yes")
-			return
-		if(QDELETED(src) || uses <= 0 || user.stat >= 1 || QDELETED(I))
-			return
-		handle_becoming_golem(I, user)
+		if(human_transfer_choice != "Yes" || QDELETED(src) || uses <= 0 || user.stat >= 1 || QDELETED(used))
+			return ITEM_INTERACT_COMPLETE
+		handle_becoming_golem(used, user)
+		return ITEM_INTERACT_COMPLETE
 
 /obj/effect/mob_spawn/human/alive/golem/proc/handle_becoming_golem(obj/item/I, mob/living/carbon/user)
 	if(isgolem(user) && can_transfer)
@@ -187,21 +180,21 @@
 			has_owner = FALSE
 			owner = null
 	flavour_text = null
-	user.visible_message("<span class='notice'>As [user] applies the potion on the golem shell, a faint light leaves them, moving to [src] and animating it!</span>",
-	"<span class='notice'>You apply the potion to [src], feeling your mind leave your body!</span>")
+	user.visible_message(SPAN_NOTICE("As [user] applies the potion on the golem shell, a faint light leaves them, moving to [src] and animating it!"),
+	SPAN_NOTICE("You apply the potion to [src], feeling your mind leave your body!"))
 	message_admins("[key_name(user)] used [I] to transfer their mind into [src]")
 	var/mob/living/carbon/human/g = create() //Create the golem and prep mind transfer stuff
 	user.mind.transfer_to(g)
 	g.real_name = user.real_name
 	g.faction = user.faction
 	user.death()  //Keeps brain intact to prevent forcing redtext
-	to_chat(g, "<span class='warning'>You have become the [g.dna.species]. Your allegiances, alliances, and roles are still the same as they were prior to using [I]!</span>")
+	to_chat(g, SPAN_WARNING("You have become the [g.dna.species]. Your allegiances, alliances, and roles are still the same as they were prior to using [I]!"))
 	qdel(I)
 
 /obj/effect/mob_spawn/human/alive/golem/servant
 	has_owner = TRUE
 	name = "inert servant golem shell"
-	mob_name = "a servant golem"
+	role_name = "servant golem"
 
 /obj/effect/mob_spawn/human/alive/golem/servant/handle_becoming_golem(obj/item/I, mob/living/carbon/user)
 	if(!isgolem(user))
@@ -210,8 +203,6 @@
 
 /obj/effect/mob_spawn/human/alive/golem/adamantine
 	name = "dust-caked free golem shell"
-	desc = "A humanoid shape, empty, lifeless, and full of potential."
-	mob_name = "a free golem"
+	assignedrole = "Free Golem"
 	can_transfer = FALSE
 	mob_species = /datum/species/golem/adamantine
-	assignedrole = "Free Golem"

@@ -2,12 +2,12 @@
 	name = "plastic explosive"
 	desc = "Used to put holes in specific areas without too much extra hole."
 	icon_state = "plastic-explosive0"
-	item_state = "plastic-explosive"
+	base_icon_state = "plastic-explosive"
+	inhand_icon_state = "plastic-explosive"
 	flags = NOBLUDGEON
 	det_time = 10
 	display_timer = FALSE
 	origin_tech = "syndicate=1"
-	toolspeed = 1
 	var/atom/target = null
 	var/image_overlay = null
 	var/obj/item/assembly/nadeassembly = null
@@ -20,7 +20,11 @@
 
 /obj/item/grenade/plastic/Initialize(mapload)
 	. = ..()
-	plastic_overlay = mutable_appearance(icon, "[item_state]2", HIGH_OBJ_LAYER)
+	plastic_overlay = mutable_appearance(icon, "[base_icon_state]2", HIGH_OBJ_LAYER)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/grenade/plastic/Destroy()
 	QDEL_NULL(nadeassembly)
@@ -31,13 +35,12 @@
 /obj/item/grenade/plastic/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(!nadeassembly && istype(I, /obj/item/assembly))
 		var/obj/item/assembly/A = I
-		if(!user.unEquip(I))
+		if(!user.transfer_item_to(A, src))
 			return ..()
 		nadeassembly = A
 		A.master = src
-		A.loc = src
 		assemblyattacher = user.ckey
-		to_chat(user, "<span class='notice'>You add [A] to [src].</span>")
+		to_chat(user, SPAN_NOTICE("You add [A] to [src]."))
 		playsound(src, 'sound/weapons/tap.ogg', 20, 1)
 		update_icon(UPDATE_ICON_STATE)
 		return
@@ -50,13 +53,23 @@
 		return
 	..()
 
-/obj/item/grenade/plastic/Crossed(atom/movable/AM, oldloc)
+/obj/item/grenade/plastic/proc/on_atom_entered(datum/source, atom/movable/entered)
 	if(nadeassembly)
-		nadeassembly.Crossed(AM, oldloc)
+		nadeassembly.on_atom_entered(source, entered)
 
 /obj/item/grenade/plastic/on_found(mob/finder)
 	if(nadeassembly)
 		nadeassembly.on_found(finder)
+
+/obj/item/grenade/plastic/hear_talk(mob/living/M as mob, list/message_pieces)
+	if(istype(nadeassembly, /obj/item/assembly/voice))
+		var/obj/item/assembly/voice/voice_analyzer = nadeassembly
+		voice_analyzer.hear_input(M, multilingual_to_message(message_pieces), 0)
+
+/obj/item/grenade/plastic/hear_message(mob/living/M as mob, msg)
+	if(istype(nadeassembly, /obj/item/assembly/voice))
+		var/obj/item/assembly/voice/voice_analyzer = nadeassembly
+		voice_analyzer.hear_input(M, msg, 1)
 
 /obj/item/grenade/plastic/attack_self__legacy__attackchain(mob/user)
 	if(nadeassembly)
@@ -72,18 +85,19 @@
 	if(!flag)
 		return
 	if(ismob(AM) && AM.stat == CONSCIOUS)
-		to_chat(user, "<span class='warning'>You can't get the [src] to stick to [AM]! Perhaps if [AM] was asleep or dead you could attach it?</span>")
+		to_chat(user, SPAN_WARNING("You can't get the [src] to stick to [AM]! Perhaps if [AM] was asleep or dead you could attach it?"))
 		return
 	if(isstorage(AM) || ismodcontrol(AM))
 		return ..() //Let us not have people c4 themselfs. Especially with a now 1.5 second do_after
 	if(isobserver(AM))
-		to_chat(user, "<span class='warning'>Your hand just phases through [AM]!</span>")
+		to_chat(user, SPAN_WARNING("Your hand just phases through [AM]!"))
 		return
-	to_chat(user, "<span class='notice'>You start planting [src].[isnull(nadeassembly) ? " The timer is set to [det_time]..." : ""]</span>")
+	to_chat(user, SPAN_NOTICE("You start planting [src].[isnull(nadeassembly) ? " The timer is set to [det_time]..." : ""]"))
 
 	if(do_after(user, 1.5 SECONDS * toolspeed, target = AM))
-		if(!user.unEquip(src))
+		if(!user.unequip(src))
 			return
+
 		target = AM
 		loc = null
 
@@ -112,13 +126,13 @@
 		plastic_overlay_target.add_overlay(plastic_overlay)
 
 		if(!nadeassembly)
-			to_chat(user, "<span class='notice'>You plant the bomb. Timer counting down from [det_time].</span>")
+			to_chat(user, SPAN_NOTICE("You plant the bomb. Timer counting down from [det_time]."))
 			addtimer(CALLBACK(src, PROC_REF(prime)), det_time SECONDS)
 
 /obj/item/grenade/plastic/suicide_act(mob/user)
 	message_admins("[key_name_admin(user)]([ADMIN_QUE(user,"?")]) ([ADMIN_FLW(user,"FLW")]) suicided with [src.name] at ([user.x],[user.y],[user.z] - <A href='byond://?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)",0,1)
 	log_game("[key_name(user)] suicided with [name] at ([user.x],[user.y],[user.z])")
-	user.visible_message("<span class='suicide'>[user] activates [src] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!</span>")
+	user.visible_message(SPAN_SUICIDE("[user] activates [src] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!"))
 	var/message_say = "FOR NO RAISIN!"
 	if(user.mind)
 		if(user.mind.special_role)
@@ -144,9 +158,9 @@
 
 /obj/item/grenade/plastic/update_icon_state()
 	if(nadeassembly)
-		icon_state = "[item_state]1"
+		icon_state = "[base_icon_state]1"
 	else
-		icon_state = "[item_state]0"
+		icon_state = "[base_icon_state]0"
 
 //////////////////////////
 ///// The Explosives /////
@@ -165,6 +179,10 @@
 	var/ex_light = 3
 	/// Will the explosion cause a breach. C4 placed on floors will always cause a breach, regardless of this value.
 	var/ex_breach = FALSE
+
+/obj/item/grenade/plastic/c4/Initialize(mapload)
+	. = ..()
+	desc += SPAN_NOTICE("<br><b>Use [src] in-hand</b> to adjust the detonation timer.")
 
 /obj/item/grenade/plastic/c4/afterattack__legacy__attackchain(atom/movable/AM, mob/user, flag)
 	aim_dir = get_dir(user, AM)
@@ -189,7 +207,7 @@
 	if(location)
 		if(shaped && aim_dir)
 			location = get_step(get_step(location, aim_dir), aim_dir) //Move the explosion location two steps away from the target when using a shaped c4
-		explosion(location, ex_devastate, ex_heavy, ex_light, breach = ex_breach)
+		explosion(location, ex_devastate, ex_heavy, ex_light, breach = ex_breach, cause = name)
 
 	qdel(src)
 
@@ -201,7 +219,7 @@
 	name = "X4"
 	desc = "A specialized shaped high explosive breaching charge. Designed to be safer for the user, and less so, for the wall."
 	icon_state = "plasticx40"
-	item_state = "plasticx4"
+	base_icon_state = "plasticx4"
 	shaped = TRUE
 	ex_heavy = 2
 	ex_breach = TRUE
@@ -237,7 +255,7 @@
 	desc = "A wall breaching charge, containing fuel, metal oxide and metal powder mixed in just the right way. One hell of a combination. Effective against walls, ineffective against airlocks..."
 	det_time = 2
 	icon_state = "t4breach0"
-	item_state = "t4breach"
+	base_icon_state = "t4breach"
 
 /obj/item/grenade/plastic/c4/thermite/prime()
 	var/turf/location

@@ -32,40 +32,40 @@
 	name = "warden's rubber stamp"
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-ward"
-	item_color = "hosred"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 
 /obj/item/stamp/ploho
 	name = "'Very Bad, Redo' rubber stamp"
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-ploho"
-	item_color = "hop"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 
 /obj/item/stamp/bigdeny
 	name = "\improper BIG DENY rubber stamp"
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-BIGdeny"
-	item_color = "redcoat"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 
 /obj/item/stamp/navcom
 	name = "Nanotrasen Naval Command rubber stamp"
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-navcom"
-	item_color = "captain"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 
 /obj/item/stamp/mime
 	name = "mime's rubber stamp"
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-mime"
-	item_color = "mime"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 
 /obj/item/stamp/ussp
 	name = "old USSP rubber stamp"
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-ussp"
-	item_color = "redcoat"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/nct
+	name = "Nanotrasen Career Trainer's rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-nct"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'

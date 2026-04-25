@@ -8,10 +8,7 @@
 /obj/machinery/door/airlock/medical,
 /obj/machinery/door/firedoor/closed,
 /obj/effect/mapping_helpers/airlock/welded,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ae" = (
 /obj/effect/decal/remains/human,
@@ -37,10 +34,7 @@
 	},
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ai" = (
 /obj/structure/chair/sofa/right{
@@ -66,20 +60,19 @@
 /area/awaymission/caves)
 "an" = (
 /obj/item/stack/sheet/metal,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ao" = (
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build)
-"ap" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter{
-	maxbodytemp = 1500
-	},
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+"aq" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
+/turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "as" = (
 /obj/effect/mapping_helpers/turfs/rust/probably,
@@ -104,9 +97,8 @@
 "aw" = (
 /obj/structure/curtain/black,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "az" = (
 /obj/structure{
@@ -120,10 +112,7 @@
 "aD" = (
 /obj/machinery/optable,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "aE" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -170,7 +159,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "aP" = (
@@ -188,6 +177,13 @@
 /obj/structure/spider/cocoon,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
+"aU" = (
+/obj/machinery/door/airlock/survival_pod,
+/obj/machinery/door/poddoor{
+	id_tag = "cave4_solgovdoor"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/awaymission/caves/build/reqpower_build)
 "aV" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating/lavaland_air,
@@ -199,18 +195,10 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
-"aX" = (
-/obj/effect/spawner/random/blood/often,
-/obj/item/salvage/ruin/tablet,
-/turf/simulated/floor/engine/cult/lavaland_air,
-/area/awaymission/caves)
 "aY" = (
 /obj/item/stock_parts/micro_laser,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bb" = (
 /obj/structure/table/reinforced,
@@ -221,11 +209,10 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/east,
-/obj/item/salvage/ruin/nanotrasen,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bc" = (
 /obj/structure/mecha_wreckage/ripley/firefighter,
@@ -250,10 +237,10 @@
 "bf" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bg" = (
 /obj/structure/fluff/divine/conduit{
@@ -262,28 +249,18 @@
 /obj/effect/spawner/random/blood/often,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
-"bh" = (
-/obj/effect/spawner/random/blood/often,
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "bi" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bk" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "bm" = (
 /obj/structure/bed{
@@ -300,10 +277,10 @@
 "bo" = (
 /obj/structure/curtain/black,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt";
+/obj/effect/turf_decal/tiles/department/security/side{
 	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bq" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
@@ -330,11 +307,8 @@
 	density = 1
 	},
 /obj/effect/decal/cleanable/glass,
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/west,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bB" = (
 /obj/structure/mineral_door/wood,
@@ -359,10 +333,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bK" = (
 /obj/item/stack/sheet/bone,
@@ -377,10 +351,7 @@
 "bM" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bO" = (
 /turf/simulated/floor/chasm/straight_down/lava_land_surface{
@@ -391,42 +362,30 @@
 /area/awaymission/caves)
 "bP" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
 	dir = 4
 	},
 /obj/item/stack/cable_coil{
 	amount = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/west,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bQ" = (
 /obj/machinery/optable,
 /obj/item/clothing/gloves/color/latex,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bS" = (
 /obj/item/reagent_containers/iv_bag/salglu,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/stack/rods,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "bT" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "bU" = (
 /obj/effect/spawner/window/reinforced/grilled,
@@ -489,10 +448,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo20"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "cj" = (
 /obj/structure/cult/altar,
@@ -502,7 +458,6 @@
 "ck" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/item/crowbar,
-/obj/item/salvage/ruin/brick,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "cm" = (
@@ -517,14 +472,9 @@
 /obj/machinery/button/windowtint/south{
 	id = "cave4_bath2"
 	},
-/obj/structure/toilet{
-	dir = 4
-	},
+/obj/structure/toilet/directional/west,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "cq" = (
 /obj/effect/decal/cleanable/generic,
@@ -533,10 +483,7 @@
 "cs" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ct" = (
 /obj/structure/table,
@@ -551,23 +498,14 @@
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
-"cv" = (
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "cz" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "cA" = (
 /obj/effect/decal/cleanable/shreds,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "cB" = (
@@ -592,10 +530,7 @@
 	density = 1
 	},
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "cE" = (
 /obj/structure/sign/fire{
@@ -623,10 +558,7 @@
 	pixel_y = -30
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "cO" = (
 /obj/item/pickaxe/mini,
@@ -649,7 +581,7 @@
 "cW" = (
 /obj/structure/dresser,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/caves/build/reqpower_build)
 "cX" = (
@@ -677,10 +609,6 @@
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
-"dd" = (
-/obj/item/salvage/ruin/tablet,
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
 "dh" = (
 /obj/structure/statue{
 	icon_state = "angelseen";
@@ -694,18 +622,16 @@
 /obj/structure/sign/securearea{
 	pixel_x = -32
 	},
-/obj/machinery/shower{
-	dir = 1
-	},
+/obj/machinery/shower/directional/south,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "dj" = (
 /obj/structure/chair/sofa/corp/right{
@@ -727,17 +653,15 @@
 /obj/structure/stone_tile/slab/cracked{
 	icon_state = "cracked_center3"
 	},
-/mob/living/simple_animal/hostile/skeleton,
+/mob/living/basic/skeleton,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "dp" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/trash,
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/west,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "dq" = (
 /obj/structure/cable{
@@ -764,9 +688,8 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "dw" = (
 /obj/structure/girder,
@@ -790,10 +713,8 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "dC" = (
-/obj/machinery/light_construct/small/south,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/south,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "dF" = (
 /obj/structure/closet,
@@ -801,14 +722,13 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/stack/spacecash/c20,
+/obj/effect/spawner/random/loot/modkit,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "dG" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "dI" = (
 /obj/machinery/atmospherics/unary/tank/oxygen,
@@ -829,9 +749,7 @@
 	},
 /obj/effect/decal/cleanable/generic,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "dR" = (
 /obj/structure/sign/biohazard{
@@ -862,10 +780,13 @@
 "dX" = (
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
+"dZ" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_mixed,
+/turf/simulated/floor/plasteel/dark,
+/area/awaymission/caves/build/reqpower_build)
 "ea" = (
-/mob/living/simple_animal/hostile/asteroid/hivelord{
-	wander = 0
-	},
+/mob/living/basic/mining/hivelord,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "ed" = (
@@ -883,39 +804,27 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "ef" = (
-/obj/structure/sink/directional/west,
+/obj/structure/sink/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/stack/rods,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "eg" = (
-/obj/structure/computerframe{
-	icon_state = "comp_frame_2"
-	},
+/obj/structure/computerframe,
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ek" = (
 /obj/structure/flora/rock,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "eo" = (
 /obj/structure/flora/rock/pile,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "eq" = (
 /obj/structure/table/wood/fancy/black,
@@ -937,17 +846,16 @@
 "eA" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "eB" = (
 /obj/structure/railing,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "eD" = (
 /obj/effect/turf_decal/stripes,
@@ -955,9 +863,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "eE" = (
 /obj/item/flashlight{
@@ -976,9 +882,9 @@
 /turf/simulated/floor/plasteel/lavaland_air,
 /area/awaymission/caves)
 "eG" = (
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
 "eK" = (
@@ -986,10 +892,10 @@
 	maxbodytemp = 1500
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "eL" = (
 /obj/structure/flora/ash/rock/style_random,
@@ -1007,12 +913,11 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/fluff/dusty_jacket,
 /obj/effect/decal/cleanable/cobweb2,
-/obj/item/gun/energy/laser/retro,
+/obj/effect/spawner/random/loot/laser/retro,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "eQ" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_5";
 	dir = 8
 	},
 /obj/effect/decal/cleanable/glass,
@@ -1023,14 +928,11 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo10"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "eR" = (
 /obj/effect/decal/cleanable/generic,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/remains/robot,
 /turf/simulated/floor/plasteel,
@@ -1042,9 +944,7 @@
 /obj/machinery/button/windowtint/north{
 	id = "cave4_bath1"
 	},
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/west,
 /obj/item/bikehorn/rubberducky,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel{
@@ -1054,19 +954,13 @@
 "eZ" = (
 /obj/structure/curtain/black,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "fa" = (
 /obj/structure/table,
 /obj/effect/spawner/random/dirt/often,
-/obj/item/stack/medical/splint,
-/obj/item/stack/medical/splint,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/obj/item/storage/firstaid/adv,
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "fb" = (
 /obj/structure/cable{
@@ -1094,10 +988,7 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "fi" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -1123,10 +1014,7 @@
 "fm" = (
 /obj/structure/closet/emcloset,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "fo" = (
 /obj/item/stack/rods,
@@ -1166,16 +1054,14 @@
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "fw" = (
-/obj/item/storage/firstaid/brute/empty,
 /obj/effect/spawner/random/dirt/often,
+/obj/item/storage/firstaid/o2,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
 "fz" = (
 /obj/structure/flora/rock/pile,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "fC" = (
 /obj/structure/flora/rock/pile,
@@ -1198,10 +1084,7 @@
 	icon_state = "sol_logo7"
 	},
 /obj/item/radio,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "fM" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -1229,9 +1112,7 @@
 /obj/structure/flora/rock/pile,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	icon_state = "elevatorshaft"
-	},
+/turf/simulated/floor/plasteel,
 /area/awaymission/caves/build/reqpower_build)
 "fT" = (
 /obj/structure/cult/pylon,
@@ -1247,10 +1128,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo19"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "fW" = (
 /obj/structure/closet{
@@ -1258,26 +1136,12 @@
 	},
 /obj/item/clothing/mask/breath,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
-/area/awaymission/caves/build/reqpower_build)
-"fX" = (
-/obj/effect/spawner/random/blood/often,
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ga" = (
 /obj/structure/closet/l3closet/general,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "gc" = (
 /turf/simulated/wall,
@@ -1311,44 +1175,23 @@
 	opened = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "gk" = (
 /obj/structure/dresser,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/caves/build/reqpower_build)
 "gl" = (
 /obj/structure/table/wood/fancy/royalblack,
-/obj/item/salvage/ruin/tablet{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/salvage/ruin/tablet{
-	pixel_y = 10;
-	pixel_x = -6
-	},
 /turf/simulated/floor/wood/lavaland_air,
-/area/awaymission/caves)
-"gm" = (
-/obj/structure/stone_tile/slab/cracked{
-	icon_state = "cracked_surrounding_tile2"
-	},
-/obj/effect/decal/cleanable/dust,
-/obj/item/salvage/ruin/tablet,
-/turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "gq" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/ore_box,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "gs" = (
 /obj/item/stack/sheet/metal,
@@ -1363,10 +1206,7 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/west,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "gv" = (
 /obj/structure/cable{
@@ -1375,17 +1215,10 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
-"gB" = (
-/obj/item/salvage/ruin/nanotrasen,
-/turf/simulated/floor/plasteel,
-/area/awaymission/caves/build)
 "gI" = (
 /obj/item/rack_parts,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "gL" = (
 /obj/structure/grille,
@@ -1400,10 +1233,10 @@
 "gN" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "gO" = (
 /obj/machinery/light/small/directional/east,
@@ -1422,10 +1255,10 @@
 	pixel_x = -9
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "hb" = (
 /obj/structure/flora/rock,
@@ -1450,10 +1283,7 @@
 "hi" = (
 /obj/machinery/door/airlock/hatch,
 /obj/effect/mapping_helpers/machinery/damaged,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "hj" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -1473,11 +1303,8 @@
 	pixel_y = -9
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/east,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "hn" = (
 /obj/structure/statue{
@@ -1486,11 +1313,6 @@
 	anchored = 1
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
-"hp" = (
-/obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/brick,
-/turf/simulated/floor/plasteel/lavaland_air,
 /area/awaymission/caves)
 "ht" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -1575,16 +1397,11 @@
 /area/awaymission/caves)
 "hP" = (
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "hQ" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "hS" = (
@@ -1620,10 +1437,7 @@
 	amount = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ie" = (
 /obj/machinery/light/small/directional/south,
@@ -1631,12 +1445,10 @@
 /obj/effect/turf_decal/arrows{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "if" = (
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
@@ -1662,33 +1474,27 @@
 /obj/structure/table,
 /obj/item/storage/fancy/donut_box,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ij" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "ik" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ip" = (
 /obj/structure/railing,
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ir" = (
 /obj/structure/dispenser/oxygen,
@@ -1705,18 +1511,12 @@
 "iu" = (
 /obj/item/flag/solgov,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "iv" = (
 /obj/item/clothing/under/rank/medical/scrubs/green,
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "iw" = (
 /obj/structure/cult/altar,
@@ -1755,10 +1555,10 @@
 "iD" = (
 /mob/living/simple_animal/hostile/abomination,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "iE" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -1789,13 +1589,6 @@
 	icon_state = "bcircuit"
 	},
 /area/awaymission/caves/build/reqpower_build)
-"iH" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
 "iM" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
@@ -1814,22 +1607,18 @@
 /obj/effect/decal/cleanable/ants,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "iW" = (
 /obj/structure/flora/rock/pile,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "iZ" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plasteel/stairs/left{
 	dir = 1
 	},
@@ -1841,12 +1630,11 @@
 /area/awaymission/caves)
 "je" = (
 /obj/machinery/economy/vending/snack/free,
-/obj/effect/mapping_helpers/machinery/damaged,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "jg" = (
 /obj/effect/baseturf_helper/lava/mapping_lava,
@@ -1860,7 +1648,7 @@
 /area/awaymission/caves/build)
 "ji" = (
 /obj/effect/decal/cleanable/generic,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating/lavaland_air,
@@ -1893,10 +1681,7 @@
 /obj/item/reagent_containers/syringe/insulin,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/dnascrambler,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "js" = (
 /obj/structure/table_frame/wood,
@@ -1904,7 +1689,8 @@
 	dir = 10
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
 "jt" = (
@@ -1928,22 +1714,10 @@
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
-"jA" = (
-/obj/structure/closet/secure_closet{
-	req_access = list(271)
-	},
-/obj/item/extinguisher/mini,
-/obj/item/pickaxe/mini,
-/obj/item/kitchen/knife/combat/survival,
-/obj/item/storage/backpack/satchel/explorer,
-/turf/simulated/floor/plating,
-/area/awaymission/caves/build)
 "jC" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/closet/crate/miningcar,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "jE" = (
 /obj/structure/railing{
@@ -1957,10 +1731,10 @@
 /area/awaymission/caves)
 "jF" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "jL" = (
 /obj/effect/turf_decal/siding/wood/neutral/corner{
@@ -1972,10 +1746,10 @@
 "jM" = (
 /obj/structure/closet/radiation,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "jN" = (
 /obj/item/stack/sheet/metal,
@@ -1986,18 +1760,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
-/area/awaymission/caves/build/reqpower_build)
-"jQ" = (
-/obj/effect/spawner/random/blood/often,
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "jW" = (
 /obj/structure/cable{
@@ -2035,15 +1801,11 @@
 /area/awaymission/caves/build/reqpower_build)
 "kc" = (
 /obj/structure/table/reinforced,
-/obj/item/salvage/ruin/nanotrasen{
-	pixel_y = 5;
-	pixel_x = 5
-	},
 /obj/item/paper/researchnotes,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "kf" = (
 /turf/simulated/floor/plasteel/lavaland_air{
@@ -2092,17 +1854,14 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "ko" = (
-/mob/living/simple_animal/hostile/scarybat,
+/mob/living/basic/scarybat/caves,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "kp" = (
 /obj/machinery/optable,
 /obj/item/clothing/gloves/color/latex,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "kv" = (
 /obj/structure/cable{
@@ -2119,9 +1878,7 @@
 /area/awaymission/caves)
 "kD" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "kF" = (
 /obj/item/shard{
@@ -2152,18 +1909,12 @@
 /area/awaymission/caves/build)
 "kR" = (
 /obj/item/reagent_containers/spray,
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "kU" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
 	dir = 8
 	},
 /obj/effect/decal/cleanable/glass,
@@ -2190,18 +1941,12 @@
 /obj/structure/door_assembly/door_assembly_med{
 	anchored = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "lk" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "lm" = (
 /obj/structure/cable{
@@ -2222,9 +1967,9 @@
 	req_access = list(271)
 	},
 /obj/item/extinguisher/mini,
-/obj/item/pickaxe/mini,
 /obj/item/kitchen/knife/combat/survival,
-/obj/item/storage/backpack/satchel/explorer,
+/obj/item/storage/backpack/satchel_explorer,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "lq" = (
@@ -2240,17 +1985,14 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo9"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ls" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "lt" = (
 /obj/machinery/light/small/directional/south,
@@ -2307,7 +2049,6 @@
 /area/awaymission/caves/build/reqpower_build)
 "lE" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
 	dir = 4
 	},
 /obj/effect/decal/cleanable/glass,
@@ -2315,10 +2056,10 @@
 	amount = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "lG" = (
 /obj/structure/flora/rock/pile,
@@ -2339,10 +2080,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo18"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "lQ" = (
 /obj/structure{
@@ -2366,9 +2104,7 @@
 	id = "2caveup";
 	id_target = "1cavedown"
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "lU" = (
 /obj/item/chair/wood,
@@ -2378,18 +2114,14 @@
 "lV" = (
 /obj/machinery/door/airlock/medical,
 /obj/effect/mapping_helpers/machinery/destroyed,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "lW" = (
 /obj/structure/railing,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "lY" = (
 /obj/structure/sink/puddle,
@@ -2432,14 +2164,9 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "mn" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "mo" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -2500,7 +2227,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "mL" = (
@@ -2514,10 +2241,7 @@
 "mM" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "mN" = (
 /obj/structure/dispenser/oxygen,
@@ -2525,9 +2249,7 @@
 /area/awaymission/caves/build)
 "mR" = (
 /obj/structure/flora/rock,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "mT" = (
 /obj/machinery/floodlight,
@@ -2538,6 +2260,7 @@
 /obj/item/clothing/suit/storage/labcoat,
 /obj/item/clothing/shoes/centcom,
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/caves/build/reqpower_build)
 "na" = (
@@ -2553,7 +2276,7 @@
 /area/awaymission/caves/build/reqpower_build)
 "nc" = (
 /obj/effect/decal/cleanable/generic,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/lavaland_air,
@@ -2565,10 +2288,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo3"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "nj" = (
 /obj/structure/chair/wood/wings{
@@ -2580,21 +2300,16 @@
 "nl" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredaltstrip"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "nm" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_5";
 	dir = 8
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "no" = (
 /obj/structure/door_assembly/door_assembly_hatch,
@@ -2634,9 +2349,7 @@
 "nB" = (
 /obj/structure/bed/roller,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "nC" = (
 /obj/structure/railing{
@@ -2657,9 +2370,7 @@
 /area/awaymission/caves)
 "nE" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "nF" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -2669,7 +2380,6 @@
 /area/awaymission/caves)
 "nG" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
 	dir = 8
 	},
 /obj/effect/decal/cleanable/glass,
@@ -2677,16 +2387,13 @@
 	amount = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "nJ" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "nK" = (
@@ -2697,13 +2404,6 @@
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
-"nN" = (
-/obj/effect/spawner/random/blood/often,
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "nO" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/spawner/random/dirt/often,
@@ -2714,6 +2414,7 @@
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/item/stack/rods,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "nQ" = (
@@ -2731,6 +2432,14 @@
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
+"nV" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/structure/safe/floor,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
+/obj/item/clothing/mask/balaclava,
+/obj/item/toy/hampter/syndicate,
+/turf/simulated/floor/plating,
+/area/awaymission/caves/build/reqpower_build)
 "nW" = (
 /obj/effect/decal/cleanable/glass,
 /obj/item/stack/rods,
@@ -2755,9 +2464,8 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/stack/rods,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "oi" = (
 /obj/structure/mecha_wreckage/ripley,
@@ -2765,7 +2473,7 @@
 /area/awaymission/caves)
 "om" = (
 /obj/structure/flora/rock/pile,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/lavaland_air,
@@ -2774,49 +2482,33 @@
 /obj/structure/flora/rock/pile,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
-/area/awaymission/caves)
-"oq" = (
-/obj/item/gun/energy/kinetic_accelerator,
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "or" = (
-/obj/structure/closet/walllocker/firelocker/south,
+/obj/structure/closet/walllocker/firelocker/directional/south,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "ot" = (
 /obj/machinery/door/airlock/survival_pod,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ow" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
-"oz" = (
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "oA" = (
 /mob/living/simple_animal/hostile/abomination/super{
 	maxbodytemp = 1500
 	},
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt";
+/obj/effect/turf_decal/tiles/department/security/side{
 	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "oB" = (
 /obj/structure/girder/reinforced,
@@ -2827,10 +2519,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/radio,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "oK" = (
 /obj/structure/closet{
@@ -2839,20 +2531,12 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
 /obj/item/tank/internals/anesthetic,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "oM" = (
 /obj/effect/decal/cleanable/shreds,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/wood/lavaland_air,
-/area/awaymission/caves)
-"oN" = (
-/obj/structure/stone_tile/slab/cracked,
-/obj/item/salvage/ruin/tablet,
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "oP" = (
 /obj/machinery/door/airlock/mining,
@@ -2863,15 +2547,11 @@
 	id_target = "3cave_down";
 	id = "4cave_up"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "oR" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/nanotrasen,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "oS" = (
@@ -2889,11 +2569,11 @@
 	amount = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/machinery/light_construct/small/directional/west,
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "oV" = (
 /obj/structure/cult/altar,
@@ -2909,10 +2589,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "oY" = (
 /obj/structure/girder/reinforced,
@@ -2924,10 +2601,10 @@
 /obj/item/retractor,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "pd" = (
 /obj/structure/closet/crate/grave/gravelead{
@@ -2943,19 +2620,16 @@
 	pixel_x = 10
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "pi" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "pk" = (
 /obj/effect/spawner/random/dirt/often,
@@ -2970,10 +2644,7 @@
 "pq" = (
 /obj/effect/turf_decal/box,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "pr" = (
 /obj/structure/machine_frame{
@@ -2981,12 +2652,6 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel/lavaland_air,
-/area/awaymission/caves)
-"ps" = (
-/obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/brick,
-/obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "pt" = (
 /obj/structure/cable{
@@ -3000,12 +2665,6 @@
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
-"pw" = (
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "pB" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
@@ -3025,7 +2684,7 @@
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "pI" = (
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /turf/simulated/floor/chasm/straight_down/lava_land_surface{
 	light_color = null;
 	light_power = 0;
@@ -3035,16 +2694,14 @@
 "pJ" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "pQ" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "pT" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -3052,21 +2709,13 @@
 /area/awaymission/caves)
 "pU" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "pV" = (
 /obj/item/clothing/mask/surgical,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
-"pY" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/salvage/ruin/tablet,
-/turf/simulated/floor/engine/cult/lavaland_air,
-/area/awaymission/caves)
 "pZ" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating/lavaland_air,
@@ -3091,11 +2740,8 @@
 "qe" = (
 /obj/structure/closet/l3closet/general,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/obj/machinery/light_construct/small/directional/west,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "qf" = (
 /obj/structure/bed,
@@ -3120,7 +2766,7 @@
 "qn" = (
 /obj/effect/decal/cleanable/shreds,
 /obj/effect/decal/cleanable/blood/old,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/structure/coatrack,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
@@ -3138,6 +2784,7 @@
 /obj/item/tank/internals/emergency_oxygen,
 /obj/item/clothing/mask/breath,
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/loot/modkit,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "qt" = (
@@ -3172,10 +2819,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/machinery/light/small/directional/west,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "qM" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -3188,10 +2835,7 @@
 /obj/effect/decal/remains/human,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/blood/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "qQ" = (
 /obj/structure/closet/firecloset/full,
@@ -3220,10 +2864,10 @@
 	},
 /obj/structure/closet/l3closet/general,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "qY" = (
 /obj/structure/railing/corner,
@@ -3251,9 +2895,7 @@
 /area/awaymission/caves)
 "rg" = (
 /obj/structure/flora/rock/pile,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "rh" = (
 /obj/structure{
@@ -3265,10 +2907,7 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ri" = (
 /obj/structure/spider/stickyweb,
@@ -3277,10 +2916,7 @@
 /area/awaymission/caves)
 "rm" = (
 /obj/item/bonegel,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ro" = (
 /obj/machinery/door/airlock/survival_pod/glass,
@@ -3311,10 +2947,7 @@
 	},
 /obj/effect/decal/remains/human,
 /obj/effect/spawner/random/blood/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "rv" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -3360,9 +2993,8 @@
 "rM" = (
 /obj/structure/showcase/horrific_experiment,
 /obj/structure/curtain/medical,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "rN" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -3375,27 +3007,24 @@
 	dir = 1
 	},
 /obj/structure/closet/body_bag,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "rX" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_5";
 	dir = 4
 	},
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "rZ" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "sd" = (
 /turf/simulated/floor/plasteel,
@@ -3406,9 +3035,7 @@
 	},
 /obj/structure/spider/stickyweb,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "sf" = (
 /obj/structure/flora/ash/tall_shroom,
@@ -3423,16 +3050,16 @@
 /obj/structure/machine_frame{
 	icon_state = "box_2"
 	},
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel/lavaland_air,
 /area/awaymission/caves)
 "sj" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "sm" = (
 /obj/structure/flora/ash/cap_shroom,
@@ -3440,15 +3067,12 @@
 /area/awaymission/caves)
 "sn" = (
 /obj/structure/gunrack,
-/obj/item/gun/energy/laser/retro,
-/obj/item/gun/energy/laser/retro,
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/effect/spawner/random/loot/laser/retro,
+/obj/effect/spawner/random/loot/laser/retro,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "so" = (
 /obj/effect/spawner/random/blood/often,
@@ -3470,7 +3094,7 @@
 /area/awaymission/caves)
 "sw" = (
 /obj/structure/spider/stickyweb,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/lavaland_air,
@@ -3483,7 +3107,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "sz" = (
-/mob/living/simple_animal/hostile/skeleton,
+/mob/living/basic/skeleton,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "sA" = (
@@ -3496,13 +3120,6 @@
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
-"sF" = (
-/obj/effect/spawner/random/blood/often,
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "sK" = (
 /obj/machinery/door/airlock/survival_pod,
 /obj/effect/mapping_helpers/airlock/welded,
@@ -3518,21 +3135,6 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air,
-/area/awaymission/caves)
-"sM" = (
-/obj/structure/closet/secure_closet{
-	req_access = list(271)
-	},
-/obj/item/extinguisher/mini,
-/obj/item/kitchen/knife/combat/survival,
-/obj/item/storage/backpack/satchel/explorer,
-/turf/simulated/floor/plating,
-/area/awaymission/caves/build)
-"sO" = (
-/obj/effect/spawner/random/dirt/often,
-/obj/effect/mapping_helpers/turfs/damage,
-/obj/item/salvage/ruin/brick,
-/turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "sP" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -3552,6 +3154,14 @@
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
+"sW" = (
+/obj/effect/turf_decal/arrows{
+	dir = 4
+	},
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
+/area/awaymission/caves/build)
 "sY" = (
 /obj/structure/cult/pylon,
 /obj/effect/decal/cleanable/dust,
@@ -3565,9 +3175,7 @@
 /obj/item/tank/internals/nitrogen,
 /obj/item/tank/internals/emergency_oxygen/nitrogen,
 /obj/item/tank/internals/emergency_oxygen/nitrogen,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "td" = (
 /obj/structure/statue{
@@ -3580,9 +3188,7 @@
 /area/awaymission/caves)
 "th" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	icon_state = "elevatorshaft"
-	},
+/turf/simulated/floor/plasteel,
 /area/awaymission/caves/build/reqpower_build)
 "tj" = (
 /obj/structure/fluff/divine/conduit{
@@ -3617,9 +3223,7 @@
 "tn" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "tr" = (
 /obj/effect/turf_decal/miscellaneous/goldensiding{
@@ -3630,35 +3234,24 @@
 	desc = " Документы ''СОВЕРШЕННО СЕКРЕТНО'', напечатанные на защищенной от копирования бумаге.  В них описываются ужасные эксперименты, проводимые в секретной лаборатории под эгидой Транс-Солнечной Федерации.";
 	name = "SolGov secret documents"
 	},
-/obj/item/salvage/ruin/nanotrasen,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ts" = (
 /obj/effect/turf_decal/arrows{
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "tw" = (
 /obj/effect/decal/remains/human,
 /obj/effect/spawner/random/blood/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "tx" = (
 /obj/item/stack/sheet/metal,
-/obj/machinery/light_construct/small/south,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/south,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "ty" = (
 /obj/structure/stone_tile/slab/cracked,
@@ -3678,9 +3271,7 @@
 	dir = 10
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "tD" = (
 /obj/effect/spawner/random/blood/often,
@@ -3692,7 +3283,7 @@
 	dir = 9
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
@@ -3704,7 +3295,7 @@
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "tK" = (
-/obj/random/tool,
+/obj/effect/spawner/random/engineering/tools,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "tL" = (
@@ -3712,10 +3303,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "tM" = (
 /obj/structure{
@@ -3746,7 +3334,7 @@
 /obj/item/clothing/suit/storage/labcoat,
 /obj/item/clothing/suit/storage/labcoat,
 /obj/item/clothing/shoes/centcom,
-/obj/item/stack/spacecash/c200,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/caves/build/reqpower_build)
 "tV" = (
@@ -3758,9 +3346,7 @@
 "tW" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "tZ" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -3776,9 +3362,7 @@
 	dir = 6;
 	id = "packageSort2"
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "uc" = (
 /obj/structure/mirror{
@@ -3786,7 +3370,6 @@
 	pixel_x = -32
 	},
 /obj/structure/table/wood/fancy/red,
-/obj/item/spellbook/oneuse/smoke,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "ud" = (
@@ -3803,7 +3386,7 @@
 /obj/structure/stone_tile/slab/cracked{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/skeleton,
+/mob/living/basic/skeleton,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "ug" = (
@@ -3831,14 +3414,14 @@
 /area/awaymission/caves/build/reqpower_build)
 "uk" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "un" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plasteel/stairs/right,
 /area/awaymission/caves/build/reqpower_build)
 "uo" = (
@@ -3858,24 +3441,21 @@
 	},
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "uu" = (
 /obj/structure/flora/rock/pile,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "uv" = (
 /obj/effect/decal/cleanable/glass/plasma,
 /obj/effect/mapping_helpers/turfs/burn,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "ux" = (
 /obj/structure/flora/rock/pile,
@@ -3934,15 +3514,13 @@
 "uO" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/stone_tile/slab,
-/mob/living/simple_animal/hostile/deadwizard,
+/obj/effect/spawner/random/pool/gatewayloot/wizard,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "uP" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "uR" = (
 /obj/effect/decal/cleanable/ash,
@@ -3963,17 +3541,14 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "uW" = (
-/mob/living/simple_animal/hostile/asteroid/basilisk{
-	wander = 0
-	},
+/mob/living/basic/mining/basilisk,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "uX" = (
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredaltstrip"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "uY" = (
 /obj/structure/chair/office/dark{
@@ -3983,10 +3558,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo14"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "va" = (
 /obj/structure/flora/ash/tall_shroom,
@@ -3999,14 +3571,15 @@
 "vc" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/atmospherics/portable/canister/oxygen,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "vg" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
+/obj/effect/decal/remains/human,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "vh" = (
@@ -4032,10 +3605,7 @@
 /area/awaymission/caves)
 "vl" = (
 /obj/machinery/fishtank/wall,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "vo" = (
 /obj/structure/cable{
@@ -4049,10 +3619,10 @@
 /area/awaymission/caves)
 "vr" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "vx" = (
 /obj/effect/mapping_helpers/turfs/burn,
@@ -4060,25 +3630,22 @@
 /area/awaymission/caves)
 "vy" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredaltstrip"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "vC" = (
 /obj/structure/table,
 /obj/effect/turf_decal/siding/wood/neutral,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/south,
-/obj/item/salvage/ruin/nanotrasen,
+/obj/machinery/light_construct/small/directional/south,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
 "vE" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/obj/effect/spawner/random/loot/bluespace_tap/food_mixed,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "vG" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
@@ -4106,10 +3673,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "vL" = (
 /obj/structure/table_frame,
@@ -4127,6 +3691,7 @@
 	dir = 9
 	},
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
 "vS" = (
@@ -4167,38 +3732,31 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/effect/turf_decal/miscellaneous/goldensiding{
 	dir = 10
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "vZ" = (
 /obj/effect/mapping_helpers/turfs/burn,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "wd" = (
 /obj/machinery/light/small/directional/west,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "we" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "wh" = (
 /obj/machinery/suit_storage_unit/lavaland{
@@ -4225,7 +3783,7 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "wr" = (
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "ws" = (
@@ -4251,11 +3809,8 @@
 	dir = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/east,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "wy" = (
 /obj/structure/flora/rock,
@@ -4280,10 +3835,7 @@
 	pixel_x = -5
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "wC" = (
 /obj/structure/flora/rock/pile,
@@ -4292,10 +3844,8 @@
 /area/awaymission/caves)
 "wD" = (
 /obj/structure/closet/crate,
-/obj/item/borg/upgrade/modkit/cooldown,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/effect/spawner/random/loot/modkit,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "wE" = (
 /obj/structure/cable{
@@ -4311,12 +3861,10 @@
 	id = "3cave_down";
 	id_target = "4cave_up"
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "wH" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/plating,
@@ -4341,10 +3889,7 @@
 	},
 /obj/effect/decal/cleanable/glass,
 /obj/machinery/light/small/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "wO" = (
 /obj/structure/window/reinforced{
@@ -4353,27 +3898,21 @@
 /obj/structure/closet,
 /obj/item/clothing/under/rank/medical/scrubs,
 /obj/item/clothing/mask/surgical,
-/obj/item/gun/syringe/rapidsyringe,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredalt"
+/obj/effect/spawner/random/pool/gatewayloot/rsg,
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "wQ" = (
 /obj/structure/flora/rock/pile,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
-"wT" = (
-/obj/item/gun/projectile/automatic/pistol/deagle/gold,
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
 "wV" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	icon_state = "elevatorshaft"
-	},
+/turf/simulated/floor/plasteel,
 /area/awaymission/caves/build/reqpower_build)
 "wZ" = (
 /obj/structure/cable{
@@ -4419,10 +3958,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/north,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "xy" = (
 /obj/machinery/light/small/directional/north,
@@ -4445,10 +3984,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "xE" = (
 /obj/effect/decal/cleanable/glass/plasma,
@@ -4464,15 +4000,8 @@
 "xJ" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/structure/closet/crate/freezer/iv_storage,
-/obj/item/reagent_containers/iv_bag/blood/vox,
-/obj/item/reagent_containers/iv_bag/salglu,
-/obj/item/reagent_containers/iv_bag/salglu,
 /obj/effect/spawner/random/dirt/often,
-/obj/item/reagent_containers/iv_bag/blood/o_minus,
-/obj/item/reagent_containers/iv_bag/blood/o_plus,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "xQ" = (
 /obj/effect/turf_decal/siding/wood/neutral/corner{
@@ -4489,23 +4018,14 @@
 "xS" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "xV" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/firstaid/regular/empty{
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /obj/machinery/light/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "yb" = (
 /obj/effect/turf_decal/siding/wood/neutral{
@@ -4528,13 +4048,6 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
-"yf" = (
-/obj/structure/rack,
-/obj/item/shield/mirror,
-/obj/effect/spawner/random/blood/often,
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/engine/cult/lavaland_air,
-/area/awaymission/caves)
 "yh" = (
 /obj/machinery/autolathe,
 /turf/simulated/floor/plasteel,
@@ -4542,9 +4055,7 @@
 "yo" = (
 /obj/structure/flora/rock/pile,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "yp" = (
 /obj/structure/cable{
@@ -4558,9 +4069,7 @@
 "yt" = (
 /obj/structure/spider/stickyweb,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "yw" = (
 /obj/effect/spawner/random/dirt/often,
@@ -4575,16 +4084,13 @@
 "yD" = (
 /obj/item/storage/box/gloves,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "yF" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "yG" = (
 /obj/machinery/flasher{
@@ -4593,10 +4099,7 @@
 	},
 /obj/effect/spawner/random/blood/often,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "yH" = (
 /obj/structure/fluff/divine/conduit{
@@ -4612,15 +4115,13 @@
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "yJ" = (
-/obj/structure/extinguisher_cabinet/empty{
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/empty/directional/north,
 /obj/effect/decal/cleanable/shreds,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "yK" = (
 /obj/structure/railing,
@@ -4643,10 +4144,7 @@
 "yO" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "yP" = (
 /obj/effect/bump_teleporter{
@@ -4657,10 +4155,7 @@
 /area/awaymission/caves)
 "yR" = (
 /obj/effect/spawner/random/blood/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "yS" = (
 /turf/simulated/wall/indestructible/rock/mineral{
@@ -4679,10 +4174,7 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "yW" = (
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "yY" = (
 /obj/effect/spawner/random/dirt/often,
@@ -4691,7 +4183,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "za" = (
-/obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/closet/walllocker/emerglocker/directional/north,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/stack/sheet/metal,
 /turf/simulated/floor/wood/lavaland_air,
@@ -4702,10 +4194,10 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt";
+/obj/effect/turf_decal/tiles/department/security/side{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "zf" = (
 /obj/structure/sign/securearea{
@@ -4742,9 +4234,7 @@
 /area/awaymission/caves)
 "zm" = (
 /obj/item/stack/sheet/metal,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "zp" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -4768,10 +4258,7 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "zw" = (
 /obj/item/fluff/zekemirror{
@@ -4792,11 +4279,8 @@
 /obj/structure/table,
 /obj/item/trash/tray,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/obj/machinery/light_construct/small/directional/west,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "zy" = (
 /obj/item/clothing/under/syndicate/sniper,
@@ -4837,7 +4321,7 @@
 /area/awaymission/caves)
 "zO" = (
 /obj/structure/stone_tile/slab,
-/mob/living/simple_animal/hostile/skeleton,
+/mob/living/basic/skeleton,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "zT" = (
@@ -4849,7 +4333,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "zW" = (
@@ -4863,10 +4347,10 @@
 	opened = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "zZ" = (
 /obj/machinery/door/poddoor{
@@ -4876,10 +4360,7 @@
 /area/awaymission/caves/build/reqpower_build)
 "Ag" = (
 /obj/item/circular_saw,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "An" = (
 /obj/structure/stone_tile/cracked{
@@ -4901,7 +4382,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Ar" = (
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
@@ -4920,6 +4401,7 @@
 "Au" = (
 /obj/structure/closet,
 /obj/item/stack/spacecash/c100,
+/obj/effect/spawner/random/loot/modkit,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "Ay" = (
@@ -4933,11 +4415,6 @@
 /obj/machinery/igniter,
 /turf/simulated/floor/engine,
 /area/awaymission/caves/build/reqpower_build)
-"AD" = (
-/obj/item/clothing/gloves/ring/immortality_ring,
-/obj/structure/cult/altar,
-/turf/simulated/floor/engine/cult/lavaland_air,
-/area/awaymission/caves)
 "AE" = (
 /obj/effect/spawner/random/blood/often,
 /mob/living/simple_animal/hostile/clown/mutant{
@@ -4948,10 +4425,7 @@
 "AG" = (
 /obj/machinery/door/airlock/survival_pod,
 /obj/machinery/door/firedoor/closed,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "AI" = (
 /obj/structure/table,
@@ -4973,19 +4447,13 @@
 /obj/item/shard{
 	pixel_x = 9
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "AL" = (
 /obj/structure/bed{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "AM" = (
 /obj/structure{
@@ -5006,9 +4474,7 @@
 /obj/effect/decal/cleanable/glass,
 /obj/structure/spider/cocoon,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "AQ" = (
 /obj/effect/spawner/random/dirt/often,
@@ -5033,7 +4499,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "AX" = (
@@ -5045,11 +4511,11 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Ba" = (
-/obj/structure/mineral_door/iron,
+/obj/structure/mineral_door,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Bc" = (
@@ -5058,7 +4524,7 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Bd" = (
@@ -5068,10 +4534,7 @@
 /obj/item/clothing/mask/balaclava,
 /obj/item/clothing/mask/balaclava,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Bg" = (
 /obj/machinery/shield{
@@ -5122,10 +4585,10 @@
 	},
 /obj/structure/flora/rock/pile,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Bs" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -5152,10 +4615,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo12"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Bz" = (
 /obj/structure/statue{
@@ -5178,8 +4638,7 @@
 	dir = 1;
 	id = "packageSort2"
 	},
-/obj/machinery/light_construct/small/east,
-/obj/item/salvage/ruin/brick,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "BF" = (
@@ -5192,19 +4651,15 @@
 	},
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "BG" = (
 /obj/structure/sign/securearea{
 	pixel_x = 30
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "BH" = (
 /turf/simulated/floor/lava/lava_land_surface,
@@ -5218,9 +4673,7 @@
 	dir = 1;
 	id = "packageSort2"
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "BM" = (
 /obj/structure/door_assembly/door_assembly_pod{
@@ -5234,9 +4687,7 @@
 /area/awaymission/caves/build/reqpower_build)
 "BU" = (
 /obj/structure/flora/rock,
-/mob/living/simple_animal/hostile/asteroid/basilisk{
-	wander = 0
-	},
+/mob/living/basic/mining/basilisk,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "BW" = (
@@ -5282,10 +4733,7 @@
 	id = "cave4_flash"
 	},
 /obj/effect/spawner/random/blood/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ci" = (
 /obj/structure/railing{
@@ -5294,7 +4742,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Ck" = (
@@ -5347,24 +4795,18 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Cz" = (
-/obj/structure/extinguisher_cabinet{
-	name = "north extinguisher cabinet";
-	pixel_y = 30
+/obj/structure/extinguisher_cabinet/directional/north{
+	name = "north extinguisher cabinet"
 	},
 /obj/structure/chair/comfy,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "CA" = (
 /obj/machinery/door/airlock/survival_pod,
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "CB" = (
 /obj/structure/door_assembly/door_assembly_pod{
@@ -5392,10 +4834,7 @@
 	dir = 10
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "CL" = (
 /obj/structure/ore_box,
@@ -5410,8 +4849,8 @@
 "CN" = (
 /obj/structure/closet,
 /obj/item/clothing/mask/breath,
-/obj/item/gun/energy/kinetic_accelerator,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "CO" = (
@@ -5430,6 +4869,7 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/hostile_fauna/caves,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "CU" = (
@@ -5437,7 +4877,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build)
 "CZ" = (
-/obj/item/kinetic_crusher,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Dc" = (
@@ -5445,12 +4885,6 @@
 	icon_state = "cracked_tile10"
 	},
 /turf/simulated/floor/engine/cult/lavaland_air,
-/area/awaymission/caves)
-"Df" = (
-/obj/item/salvage/ruin/tablet,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "necro1"
-	},
 /area/awaymission/caves)
 "Dj" = (
 /obj/structure/barricade/wooden,
@@ -5491,10 +4925,7 @@
 /obj/item/stock_parts/capacitor/adv,
 /obj/item/circuitboard/holopad,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Dx" = (
 /obj/structure/cable{
@@ -5502,23 +4933,29 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
+"DG" = (
+/obj/structure/cult/altar,
+/obj/effect/spawner/random/pool/gatewayloot/immortality_ring,
+/obj/effect/spawner/random/blood/often,
+/turf/simulated/floor/engine/cult/lavaland_air,
+/area/awaymission/caves)
 "DH" = (
 /obj/structure/cult/pylon,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "DL" = (
-/obj/structure/mineral_door/iron,
+/obj/structure/mineral_door,
 /obj/structure/stone_tile/slab,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "DM" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/south,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredalt"
+/obj/machinery/light_construct/small/directional/south,
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "DQ" = (
 /obj/structure/grille/broken,
@@ -5536,22 +4973,15 @@
 /obj/structure/table/glass,
 /obj/item/cautery,
 /obj/item/clothing/mask/surgical,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "DW" = (
-/obj/machinery/door/airlock/command{
-	locked = 1
-	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/machinery/door/airlock/command,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "DZ" = (
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel/lavaland_air,
 /area/awaymission/caves)
@@ -5573,15 +5003,12 @@
 /obj/effect/turf_decal/miscellaneous/goldensiding{
 	dir = 1
 	},
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/railing/cap{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ef" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -5591,26 +5018,21 @@
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Eh" = (
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build)
 "Ei" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ej" = (
 /obj/effect/turf_decal/caution{
 	dir = 8
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "Ek" = (
 /obj/structure/fluff/divine/conduit{
@@ -5635,10 +5057,7 @@
 	},
 /obj/item/reagent_containers/syringe/sarin,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Es" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -5672,6 +5091,7 @@
 "EB" = (
 /obj/structure/closet/crate/can,
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel/lavaland_air,
 /area/awaymission/caves)
 "ED" = (
@@ -5680,9 +5100,7 @@
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 30
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "EE" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
@@ -5703,10 +5121,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo6"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "EM" = (
 /turf/simulated/floor/plasteel/lavaland_air{
@@ -5725,10 +5140,7 @@
 	pixel_y = 10
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ES" = (
 /obj/effect/spawner/random/dirt/often,
@@ -5779,9 +5191,7 @@
 	amount = 15
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "Fk" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -5817,32 +5227,29 @@
 	dir = 10
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/nanotrasen,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Fp" = (
 /obj/machinery/door/airlock/bathroom,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Fr" = (
 /obj/effect/mapping_helpers/turfs/burn,
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/west,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
+/area/awaymission/caves)
+"Fw" = (
+/obj/structure/bookcase,
+/obj/effect/spawner/random/pool/gatewayloot/spellbook,
+/turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Fx" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/ore_box,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "Fz" = (
 /obj/structure/table/wood,
@@ -5856,13 +5263,13 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "FE" = (
-/obj/structure/closet/walllocker/emerglocker/east,
+/obj/structure/closet/walllocker/emerglocker/directional/east,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
@@ -5884,19 +5291,16 @@
 /obj/structure/closet/secure_closet{
 	req_access = list(271)
 	},
-/obj/item/gun/energy/kinetic_accelerator,
 /obj/item/extinguisher/mini,
 /obj/item/kitchen/knife/combat/survival,
-/obj/item/storage/backpack/satchel/explorer,
+/obj/item/storage/backpack/satchel_explorer,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build)
 "FK" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink/directional/west,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "FL" = (
 /obj/structure{
@@ -5908,21 +5312,15 @@
 	},
 /obj/structure/windoor_assembly,
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "FO" = (
 /obj/structure/closet/critter,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "FP" = (
 /obj/structure/mecha_wreckage/ripley,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
@@ -5956,10 +5354,7 @@
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Gh" = (
 /obj/effect/spawner/random/blood/often,
@@ -5974,10 +5369,8 @@
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Gj" = (
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/west,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Gk" = (
 /obj/machinery/computer/nonfunctional{
@@ -5989,9 +5382,8 @@
 	},
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Gn" = (
 /obj/structure/chair/wood{
@@ -6008,10 +5400,7 @@
 /area/awaymission/caves/build)
 "Gq" = (
 /obj/machinery/door/airlock/medical/glass,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Gw" = (
 /obj/structure/cult/pylon,
@@ -6025,10 +5414,10 @@
 "GA" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "GB" = (
 /obj/structure/stone_tile/cracked{
@@ -6058,20 +5447,17 @@
 /obj/item/stack/rods,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "GH" = (
 /obj/machinery/iv_drip{
 	pixel_y = -14
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "GJ" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -6114,14 +5500,10 @@
 /obj/structure/table_frame,
 /obj/item/storage/firstaid/fire,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "Hd" = (
-/obj/machinery/shower{
-	pixel_y = 20
-	},
+/obj/machinery/shower/directional/north,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -6135,16 +5517,14 @@
 /area/awaymission/caves/build/reqpower_build)
 "Hf" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
 	dir = 4
 	},
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Hg" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
@@ -6160,33 +5540,14 @@
 	},
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
-"Hi" = (
-/obj/effect/spawner/random/blood/often,
-/obj/effect/mapping_helpers/turfs/damage,
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "Hj" = (
 /obj/effect/decal/remains/robot,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
-"Hk" = (
-/obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/brick,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "Hl" = (
-/obj/machinery/light_construct/small/north,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/north,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Hm" = (
 /obj/structure/cable{
@@ -6212,25 +5573,13 @@
 "Hr" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/brute,
-/obj/item/storage/firstaid/brute{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "Hw" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 9
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
-"Hx" = (
-/obj/effect/decal/cleanable/dust,
-/obj/effect/spawner/random/blood/often,
-/obj/item/salvage/ruin/tablet,
-/turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "HA" = (
 /obj/structure/girder/reinforced,
@@ -6276,20 +5625,14 @@
 /area/awaymission/caves)
 "HJ" = (
 /obj/structure/flora/rock/pile,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "HL" = (
 /obj/structure/closet/l3closet/general,
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "HM" = (
 /obj/effect/decal/cleanable/glass,
@@ -6307,25 +5650,24 @@
 /obj/item/storage/belt/medical/surgery,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredaltstrip"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "HV" = (
 /obj/effect/turf_decal/caution,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "HW" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "HX" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -6343,10 +5685,10 @@
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ic" = (
 /obj/structure/computerframe{
@@ -6371,10 +5713,7 @@
 /area/awaymission/caves)
 "Ik" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "In" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -6384,7 +5723,7 @@
 /area/awaymission/caves)
 "Ip" = (
 /obj/structure/bookcase,
-/obj/item/spellbook/oneuse/summonitem,
+/obj/effect/spawner/random/pool/gatewayloot/spellbook,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "Is" = (
@@ -6393,9 +5732,7 @@
 	icon_state = "box_1"
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "It" = (
 /obj/structure/bed{
@@ -6411,18 +5748,26 @@
 /obj/structure/closet/critter/fox,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
+"Iy" = (
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/awaymission/caves)
 "ID" = (
 /obj/structure/cult/altar,
 /obj/item/clothing/gloves/ring/plasma,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
+"IE" = (
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_mixed,
+/turf/simulated/floor/plating,
+/area/awaymission/caves/build/reqpower_build)
 "IF" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "II" = (
 /obj/structure/bed{
@@ -6451,10 +5796,7 @@
 /obj/item/shard{
 	pixel_x = 9
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "IM" = (
 /obj/effect/decal/cleanable/generic,
@@ -6479,10 +5821,7 @@
 	},
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "IX" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -6506,9 +5845,7 @@
 	icon = 'icons/obj/power.dmi';
 	density = 1
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Jd" = (
 /obj/machinery/mech_bay_recharge_port,
@@ -6520,14 +5857,6 @@
 /obj/structure/flora/rock,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
-"Jf" = (
-/obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/brick,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt";
-	dir = 1
-	},
-/area/awaymission/caves/build/reqpower_build)
 "Jg" = (
 /obj/structure{
 	icon_state = "smes";
@@ -6549,27 +5878,24 @@
 "Jj" = (
 /obj/structure/chair/sofa/corp/left,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Jl" = (
 /obj/machinery/door/airlock/survival_pod,
 /obj/machinery/door/firedoor/closed,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Jn" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/east,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Jt" = (
 /obj/structure/computerframe,
@@ -6583,48 +5909,36 @@
 	amount = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/east,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ju" = (
-/mob/living/simple_animal/hostile/skeleton,
+/mob/living/basic/skeleton,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Jv" = (
 /obj/structure/chair/sofa/corp/right,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Jy" = (
 /obj/structure/spider/stickyweb,
 /obj/machinery/optable,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
 "Jz" = (
 /obj/effect/turf_decal/box,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "JC" = (
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
-"JD" = (
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "JJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -6651,10 +5965,7 @@
 /obj/structure/windoor_assembly,
 /obj/effect/decal/cleanable/glass,
 /obj/structure/curtain/medical,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "JS" = (
 /obj/structure/stone_tile/block/cracked{
@@ -6671,9 +5982,8 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredaltstrip"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "JW" = (
 /obj/machinery/computer/nonfunctional{
@@ -6691,10 +6001,10 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/east,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "JY" = (
 /obj/structure/grille/broken,
@@ -6703,7 +6013,7 @@
 /area/awaymission/caves/build/reqpower_build)
 "Ka" = (
 /obj/effect/decal/cleanable/shreds,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/lavaland_air,
@@ -6722,19 +6032,13 @@
 	maxbodytemp = 1500
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ke" = (
 /obj/item/reagent_scanner,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Kh" = (
 /obj/structure/cable{
@@ -6754,18 +6058,20 @@
 "Kl" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "Km" = (
 /obj/effect/turf_decal{
 	dir = 8
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
+/area/awaymission/caves)
+"Ko" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/hostile_fauna/caves,
+/turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "Kp" = (
 /obj/structure/flora/rock/pile,
@@ -6777,8 +6083,8 @@
 /area/awaymission/caves)
 "Ku" = (
 /obj/structure/table,
-/obj/random/toolbox,
-/obj/random/tool,
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/tools,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Kw" = (
@@ -6793,21 +6099,13 @@
 	dir = 9
 	},
 /obj/structure/closet/cabinet,
-/obj/item/clothing/under/solgov/command,
-/obj/item/clothing/head/soft/solgov/marines/command,
-/obj/item/gun/projectile/automatic/pistol/m1911,
-/obj/item/clothing/shoes/jackboots,
-/obj/item/stack/spacecash/c1000,
-/obj/item/stack/spacecash/c500,
-/obj/item/stack/spacecash/c1000,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/effect/spawner/random/pool/gatewayloot/tsf/mixed,
+/obj/effect/spawner/random/pool/gatewayloot/tsf/hardsuit,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Kz" = (
 /obj/structure/table,
-/obj/random/toolbox,
+/obj/effect/spawner/random/engineering/toolbox,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
@@ -6815,21 +6113,17 @@
 /obj/item/stack/rods,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "KC" = (
 /obj/structure/flora/rock/pile,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "KF" = (
 /obj/machinery/door/airlock/medical,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "KJ" = (
 /obj/effect/decal/cleanable/dust,
@@ -6854,22 +6148,15 @@
 /area/awaymission/caves)
 "KO" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/west,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "KP" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
 "KQ" = (
@@ -6879,10 +6166,10 @@
 "KR" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "KT" = (
 /obj/effect/rune/narsie{
@@ -6906,9 +6193,7 @@
 /obj/effect/turf_decal/caution{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "KZ" = (
 /obj/machinery/power/port_gen/pacman,
@@ -6939,10 +6224,8 @@
 /area/awaymission/caves)
 "Lj" = (
 /obj/structure/cult/altar,
-/obj/item/stack/sheet/runed_metal{
-	amount = 10
-	},
 /obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/random/pool/gatewayloot/cult/valuable,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Ll" = (
@@ -6960,10 +6243,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Lq" = (
 /obj/effect/turf_decal/stripes{
@@ -6973,9 +6256,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Lr" = (
 /obj/structure/cable{
@@ -6989,10 +6270,7 @@
 	pixel_x = -30
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Lt" = (
 /obj/structure/cable{
@@ -7014,7 +6292,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Lz" = (
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/lavaland_air,
@@ -7038,7 +6316,7 @@
 /area/awaymission/caves)
 "LJ" = (
 /obj/structure/table,
-/obj/item/gun/projectile/revolver/russian,
+/obj/item/toy/russian_revolver,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
@@ -7068,10 +6346,8 @@
 /area/awaymission/caves)
 "LV" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/west,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/west,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Md" = (
 /obj/effect/decal/cleanable/glass,
@@ -7079,10 +6355,7 @@
 /mob/living/simple_animal/hostile/abomination/super{
 	maxbodytemp = 1500
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Me" = (
 /obj/item/toy/crayon/red,
@@ -7125,18 +6398,13 @@
 "MA" = (
 /obj/structure/spider/cocoon,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "MC" = (
 /obj/machinery/iv_drip{
 	pixel_x = 7
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "MF" = (
 /obj/structure{
@@ -7147,11 +6415,8 @@
 	dir = 8
 	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/east,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "MH" = (
 /obj/machinery/door/poddoor/shutters{
@@ -7178,29 +6443,22 @@
 	pixel_y = 3
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "MY" = (
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "Nh" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_5";
 	dir = 8
 	},
 /obj/machinery/light/small/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Nj" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/cobweb,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
@@ -7214,13 +6472,13 @@
 /obj/item/ashtray/bronze,
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/north,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "No" = (
-/obj/structure/mineral_door/iron,
+/obj/structure/mineral_door,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
@@ -7240,7 +6498,7 @@
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Nx" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build)
@@ -7278,20 +6536,13 @@
 /area/awaymission/caves)
 "NJ" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "NK" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/west,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "NL" = (
 /obj/machinery/photocopier,
@@ -7303,10 +6554,7 @@
 	icon_state = "sol_logo24"
 	},
 /obj/machinery/light/small/directional/north,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "NN" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
@@ -7320,15 +6568,11 @@
 	amount = 10
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "NR" = (
 /obj/structure/closet/body_bag,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "NS" = (
 /obj/effect/spawner/random/dirt/often,
@@ -7340,10 +6584,8 @@
 /area/awaymission/caves/build)
 "NU" = (
 /obj/effect/mapping_helpers/turfs/burn,
-/obj/machinery/light_construct/small/north,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/north,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "NX" = (
 /obj/structure/closet/crate/wooden,
@@ -7354,9 +6596,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "NY" = (
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Oc" = (
 /obj/machinery/computer/nonfunctional{
@@ -7368,19 +6608,11 @@
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 8
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/basic/mouse,
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
-"Od" = (
-/obj/effect/turf_decal/delivery,
-/obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/soviet,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
-/area/awaymission/caves/build)
 "Oi" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/generic,
@@ -7399,21 +6631,16 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/turfs/burn,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "On" = (
-/obj/item/borg/upgrade/modkit/range,
+/obj/effect/spawner/random/loot/modkit,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Oo" = (
 /obj/machinery/door/airlock/survival_pod,
 /obj/structure/fans/tiny,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Os" = (
 /obj/structure/table/wood,
@@ -7479,10 +6706,7 @@
 "OR" = (
 /obj/machinery/door/airlock/survival_pod,
 /obj/effect/mapping_helpers/airlock/welded,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "OS" = (
 /obj/effect/decal/cleanable/shreds,
@@ -7495,18 +6719,15 @@
 	dir = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "OZ" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Pb" = (
 /obj/structure/grille/broken,
@@ -7524,13 +6745,10 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Pe" = (
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 9
 	},
@@ -7540,26 +6758,18 @@
 "Pf" = (
 /obj/machinery/door/airlock/medical/glass,
 /obj/effect/mapping_helpers/airlock/locked,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ph" = (
 /obj/structure/chair/sofa/corp/left{
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
-"Pj" = (
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "elevatorshaft"
-	},
-/area/awaymission/caves)
 "Pl" = (
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
@@ -7573,10 +6783,8 @@
 /area/awaymission/caves/build/reqpower_build)
 "Po" = (
 /obj/structure/table,
-/obj/random/toolbox,
-/obj/random/toolbox{
-	pixel_y = 8
-	},
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/toolbox,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "Pp" = (
@@ -7585,22 +6793,21 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Pq" = (
-/obj/structure/closet/walllocker/medlocker/south,
+/obj/structure/closet/walllocker/medlocker/directional/south,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Pv" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt";
+/obj/effect/turf_decal/tiles/department/security/side{
 	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Pw" = (
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Py" = (
@@ -7609,10 +6816,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo13"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Pz" = (
 /obj/structure/spider/cocoon,
@@ -7626,10 +6830,10 @@
 	icon_keyboard = "generic_key_broken"
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "PB" = (
 /mob/living/simple_animal/hostile/abomination/altform3{
@@ -7645,13 +6849,6 @@
 /obj/effect/spawner/random/blood/often,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
-"PF" = (
-/obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter{
-	maxbodytemp = 1500
-	},
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
 "PG" = (
 /obj/item/clothing/mask/breath,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
@@ -7663,9 +6860,8 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_y = 30
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "PO" = (
 /obj/structure/table_frame,
@@ -7674,10 +6870,7 @@
 	pixel_x = 9
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "PP" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -7692,12 +6885,9 @@
 /obj/effect/turf_decal/miscellaneous/goldensiding{
 	dir = 6
 	},
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "PR" = (
 /obj/effect/spawner/random/dirt/often,
@@ -7705,9 +6895,7 @@
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 30
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "PT" = (
 /obj/effect/gibspawner/human,
@@ -7715,7 +6903,7 @@
 /area/awaymission/caves)
 "PY" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "PZ" = (
@@ -7735,10 +6923,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/south,
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Qg" = (
 /obj/effect/decal/cleanable/glass/plasma,
@@ -7752,12 +6940,9 @@
 /area/awaymission/caves)
 "Qm" = (
 /obj/structure/table_frame,
-/obj/random/tool,
+/obj/effect/spawner/random/engineering/tools,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Qn" = (
 /obj/effect/decal/cleanable/glass,
@@ -7784,6 +6969,7 @@
 "Qs" = (
 /obj/structure/closet/emcloset,
 /obj/effect/decal/cleanable/cobweb2,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "Qu" = (
@@ -7793,10 +6979,9 @@
 /area/awaymission/caves)
 "Qy" = (
 /obj/structure/rack,
-/obj/item/melee/cultblade,
-/obj/item/whetstone/cult,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/random/pool/gatewayloot/cult,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "QE" = (
@@ -7827,10 +7012,7 @@
 	dir = 2
 	},
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "QS" = (
 /obj/machinery/gateway{
@@ -7854,9 +7036,8 @@
 /obj/item/shard,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredaltstrip"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Rf" = (
 /obj/structure/barricade/wooden,
@@ -7870,10 +7051,7 @@
 /area/awaymission/caves/build/reqpower_build)
 "Rk" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Rn" = (
 /obj/effect/spawner/window/reinforced/grilled,
@@ -7912,9 +7090,7 @@
 	dir = 4;
 	open = 1
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Ry" = (
 /obj/structure{
@@ -7957,16 +7133,14 @@
 	amount = 1
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "RJ" = (
 /obj/machinery/light/small/directional/south,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "RK" = (
 /obj/structure/showcase/horrific_experiment{
@@ -7974,10 +7148,10 @@
 	desc = "Some sort of pod filled with... What is this?"
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "RM" = (
 /obj/machinery/computer/nonfunctional{
@@ -7988,10 +7162,10 @@
 	density = 0
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "RN" = (
 /obj/structure/flora/rock,
@@ -8008,10 +7182,7 @@
 "RR" = (
 /obj/item/hemostat,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "RU" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -8036,7 +7207,7 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Se" = (
-/obj/structure/mineral_door/iron,
+/obj/structure/mineral_door,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Sh" = (
@@ -8079,7 +7250,6 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Sr" = (
-/mob/living/simple_animal/hostile/hellhound/tear,
 /obj/effect/gibspawner/human,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/mapping_helpers/turfs/damage,
@@ -8096,15 +7266,13 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Sx" = (
-/obj/item/borg/upgrade/modkit/damage,
+/obj/effect/spawner/random/loot/modkit,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "SA" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/east,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "SB" = (
 /obj/structure/flora/rock/pile,
@@ -8133,13 +7301,12 @@
 /area/awaymission/caves/build/reqpower_build)
 "SI" = (
 /obj/machinery/economy/vending/cigarette/free,
-/obj/effect/mapping_helpers/machinery/damaged,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "SM" = (
 /obj/machinery/atmospherics/binary/valve,
@@ -8179,7 +7346,7 @@
 /area/awaymission/caves)
 "SX" = (
 /obj/machinery/power/smes,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -8190,10 +7357,7 @@
 /obj/item/surgicaldrill,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/bonesetter,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "SZ" = (
 /obj/machinery/suit_storage_unit/lavaland{
@@ -8204,6 +7368,11 @@
 /obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
+"Ta" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
+/turf/simulated/floor/plasteel/dark/lavaland_air,
+/area/awaymission/caves)
 "Tc" = (
 /obj/effect/spawner/random/maintenance,
 /obj/structure/rack,
@@ -8216,15 +7385,10 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Tf" = (
-/obj/machinery/shower{
-	dir = 8
-	},
+/obj/machinery/shower/directional/east,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Tg" = (
 /obj/machinery/door/airlock/survival_pod,
@@ -8233,10 +7397,7 @@
 	layer = 3.11;
 	closingLayer = 3.11
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Th" = (
 /obj/effect/decal/cleanable/glass/plasma,
@@ -8267,10 +7428,10 @@
 /obj/structure/flora/rock/pile,
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Tr" = (
 /obj/effect/decal/remains/human,
@@ -8284,7 +7445,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
@@ -8299,10 +7460,7 @@
 "Tv" = (
 /obj/item/stock_parts/matter_bin,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Tw" = (
 /obj/structure/table/wood,
@@ -8314,10 +7472,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Tz" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -8328,10 +7486,10 @@
 /area/awaymission/caves)
 "TB" = (
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "TD" = (
 /obj/machinery/gateway{
@@ -8346,10 +7504,7 @@
 	pixel_x = -8
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "TG" = (
 /obj/structure/grille/broken,
@@ -8379,9 +7534,8 @@
 /obj/structure/closet/crate/wooden,
 /obj/item/kitchen/knife/ritual,
 /obj/item/staff/broom,
-/obj/item/clothing/accessory/necklace/locket/fluff/fethasnecklace,
+/obj/item/clothing/accessory/locket/fluff/fethasnecklace,
 /obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/tablet,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "TQ" = (
@@ -8398,10 +7552,7 @@
 "TV" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/spawner/random/dirt/often,
-/obj/item/salvage/ruin/soviet,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "TX" = (
 /obj/structure/railing/cap{
@@ -8415,9 +7566,7 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Ud" = (
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "Ug" = (
 /obj/structure/closet{
@@ -8431,46 +7580,39 @@
 "Uh" = (
 /obj/structure/table,
 /obj/item/analyzer,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small/directional/north,
 /obj/item/storage/belt/utility/full/multitool,
 /obj/item/flashlight/shadowlight,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "Uj" = (
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
 /area/awaymission/caves/build/reqpower_build)
 "Uk" = (
 /obj/structure/rack/skeletal_bar/left,
-/obj/item/clothing/suit/hooded/cultrobes,
 /obj/effect/spawner/random/blood/often,
-/obj/item/salvage/ruin/tablet,
+/obj/effect/spawner/random/pool/gatewayloot/cult,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Um" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Un" = (
 /obj/effect/mapping_helpers/turfs/burn,
 /obj/structure/flora/rock/pile,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Uq" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/west,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Ur" = (
@@ -8489,9 +7631,7 @@
 /obj/structure/bed/roller,
 /obj/machinery/light/small/directional/north,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "Uv" = (
 /obj/machinery/computer/nonfunctional{
@@ -8507,10 +7647,7 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/west,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Uy" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -8540,14 +7677,10 @@
 /area/awaymission/caves)
 "UE" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_5";
 	dir = 4
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "UF" = (
 /obj/effect/decal/cleanable/ash,
@@ -8568,10 +7701,10 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "UK" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -8598,10 +7731,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo15"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "UM" = (
 /obj/effect/spawner/random/dirt/often,
@@ -8626,15 +7756,17 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo4"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "UP" = (
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "necro3"
 	},
+/area/awaymission/caves)
+"UR" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/caves,
+/turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "US" = (
 /obj/effect/spawner/random/blood/often,
@@ -8666,12 +7798,10 @@
 	id = "1cavedown";
 	id_target = "2caveup"
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Vc" = (
-/obj/structure/closet/walllocker/emerglocker/south,
+/obj/structure/closet/walllocker/emerglocker/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
@@ -8695,34 +7825,25 @@
 /area/awaymission/caves)
 "Vk" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
 	dir = 4
 	},
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Vm" = (
-/obj/machinery/shower{
-	dir = 8
-	},
+/obj/machinery/shower/directional/east,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/south,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/obj/machinery/light_construct/small/directional/south,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Vn" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Vq" = (
 /obj/effect/decal/cleanable/generic,
@@ -8731,9 +7852,7 @@
 /area/awaymission/caves)
 "Vs" = (
 /obj/structure/spider/stickyweb,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Vt" = (
 /obj/effect/gibspawner/human,
@@ -8746,16 +7865,16 @@
 	},
 /obj/structure/computerframe,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Vx" = (
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "cave4_solgov"
 	},
 /obj/structure/fans/tiny/invisible,
+/obj/machinery/door/poddoor{
+	id_tag = "cave4_solgovdoor"
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "VB" = (
@@ -8772,11 +7891,11 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "VG" = (
-/obj/item/gun/energy/kinetic_accelerator,
 /obj/structure/closet,
 /obj/item/tank/internals/emergency_oxygen,
 /obj/item/clothing/mask/breath,
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "VK" = (
@@ -8784,12 +7903,6 @@
 /obj/structure/flora/rock,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
-"VL" = (
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "VM" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/turf_decal/arrows{
@@ -8798,14 +7911,12 @@
 /obj/structure/sign/xeno_warning_mining{
 	pixel_y = 32
 	},
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "VP" = (
 /obj/item/clothing/glasses/night,
 /obj/structure/closet,
-/obj/random/tool,
+/obj/effect/spawner/random/engineering/tools,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
@@ -8815,18 +7926,18 @@
 	},
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "VS" = (
 /obj/effect/decal/cleanable/dust,
-/obj/structure/mineral_door/iron,
+/obj/structure/mineral_door,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "VT" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel/lavaland_air,
@@ -8847,9 +7958,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "VZ" = (
 /obj/structure/bookcase/random,
@@ -8860,9 +7969,8 @@
 "Wb" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Wd" = (
 /obj/structure/table/glass,
@@ -8874,10 +7982,7 @@
 	},
 /obj/effect/spawner/random/dirt/often,
 /obj/item/dnascrambler,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "We" = (
 /obj/structure/table/glass,
@@ -8947,9 +8052,8 @@
 	},
 /mob/living/simple_animal/hostile/abomination/altform1,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredaltstrip"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ww" = (
 /obj/structure/sign/securearea{
@@ -8957,10 +8061,10 @@
 	},
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Wz" = (
 /obj/structure/janitorialcart,
@@ -8968,7 +8072,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "WA" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small/directional/south,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "WD" = (
@@ -8977,27 +8081,20 @@
 	pixel_x = 8
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "WF" = (
 /obj/structure/closet/coffin/sarcophagus{
 	opened = 1
 	},
 /obj/structure/stone_tile/slab,
-/obj/item/salvage/ruin/tablet,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "WG" = (
 /obj/structure/table,
-/obj/item/reagent_containers/applicator/brute,
-/obj/item/reagent_containers/applicator/burn,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "white"
-	},
+/obj/item/storage/firstaid/machine,
+/turf/simulated/floor/plasteel/white/lavaland_air,
 /area/awaymission/caves/build)
 "WI" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -9014,7 +8111,7 @@
 /obj/structure/stone_tile/slab/cracked{
 	icon_state = "cracked_tile19"
 	},
-/mob/living/simple_animal/hostile/skeleton,
+/mob/living/basic/skeleton,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "WN" = (
@@ -9039,9 +8136,8 @@
 /area/awaymission/caves)
 "WS" = (
 /obj/structure/rack/skeletal_bar/right,
-/obj/item/clothing/suit/hooded/cultrobes,
 /obj/effect/spawner/random/blood/often,
-/obj/item/salvage/ruin/tablet,
+/obj/effect/spawner/random/pool/gatewayloot/cult,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "WV" = (
@@ -9062,9 +8158,8 @@
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/extinguisher_cabinet/directional/south,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Xa" = (
 /obj/structure/door_assembly/door_assembly_med,
@@ -9095,7 +8190,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "Xe" = (
-/mob/living/simple_animal/hostile/hellhound,
+/mob/living/basic/hellhound/caves,
 /obj/effect/spawner/random/blood/often,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air,
@@ -9134,7 +8229,7 @@
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Xv" = (
-/obj/structure/bonfire,
+/obj/structure/lightable/bonfire,
 /obj/structure{
 	icon = 'icons/obj/decorations.dmi';
 	icon_state = "paper_cauldron";
@@ -9180,30 +8275,23 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/ash,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "XF" = (
 /obj/structure/closet/body_bag{
 	opened = 1
 	},
 /obj/effect/mob_spawn/human/corpse/skeleton,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "XG" = (
-/obj/item/wisp_lantern,
+/obj/effect/spawner/random/pool/gatewayloot/wisp,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "XH" = (
 /obj/effect/turf_decal/miscellaneous/goldensiding/corner,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "XJ" = (
 /obj/structure/disposalpipe/broken{
@@ -9236,10 +8324,7 @@
 "XN" = (
 /obj/machinery/optable,
 /obj/item/fix_o_vein/alien,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "XO" = (
 /obj/item/stack/sheet/metal,
@@ -9293,11 +8378,10 @@
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
 "Yb" = (
-/obj/item/kirbyplants,
+/obj/item/kirbyplants/large,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
+/obj/effect/turf_decal/tiles/department/security/side,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Yd" = (
 /obj/structure/cult/pylon,
@@ -9332,9 +8416,7 @@
 	dir = 9
 	},
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves/build)
 "Yk" = (
 /obj/structure/stone_tile/block/cracked{
@@ -9350,38 +8432,29 @@
 /obj/structure/table,
 /obj/machinery/recharger,
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/east,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/obj/machinery/light_construct/small/directional/east,
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Yq" = (
 /obj/effect/spawner/random/blood/often,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredaltstrip"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Ys" = (
 /obj/machinery/door/airlock/survival_pod,
 /obj/effect/mapping_helpers/machinery/damaged,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Yu" = (
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small/directional/west,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Yw" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
-	},
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
@@ -9394,10 +8467,7 @@
 /obj/effect/decal/solgov_logo{
 	icon_state = "sol_logo8"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "YH" = (
 /obj/effect/turf_decal/siding/wood/neutral{
@@ -9414,10 +8484,7 @@
 /obj/item/clothing/suit/apron/surgical,
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/south,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "YL" = (
 /obj/structure/dresser,
@@ -9437,10 +8504,10 @@
 /obj/structure/gunrack,
 /obj/item/gun/energy/disabler,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "YZ" = (
 /obj/structure/stone_tile/block/cracked{
@@ -9453,9 +8520,7 @@
 "Za" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/lavaland_air{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/lavaland_air,
 /area/awaymission/caves)
 "Ze" = (
 /obj/effect/decal/cleanable/shreds,
@@ -9475,14 +8540,6 @@
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
-"Zm" = (
-/obj/effect/spawner/random/blood/often,
-/obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredcornersalt";
-	dir = 8
-	},
-/area/awaymission/caves/build/reqpower_build)
 "Zn" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/mapping_helpers/turfs/damage,
@@ -9491,24 +8548,19 @@
 /area/awaymission/caves/build/reqpower_build)
 "Zq" = (
 /obj/structure/flora/rock/pile,
-/mob/living/simple_animal/hostile/asteroid/basilisk{
-	wander = 0
-	},
+/mob/living/basic/mining/basilisk,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Zr" = (
 /obj/structure/closet/crate/freezer{
 	opened = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "Zu" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/mapping_helpers/turfs/burn,
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small/directional/east,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Zv" = (
@@ -9564,10 +8616,10 @@
 /obj/machinery/optable,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/spawner/random/dirt/often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredalt"
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/awaymission/caves/build/reqpower_build)
 "ZG" = (
 /obj/effect/mapping_helpers/turfs/damage,
@@ -9605,6 +8657,12 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
+"ZV" = (
+/obj/machinery/light_construct/small/directional/south,
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/hostile_fauna/spider/caves,
+/turf/simulated/floor/wood/lavaland_air,
+/area/awaymission/caves)
 "ZZ" = (
 /obj/effect/decal/cleanable/shreds,
 /obj/effect/spawner/random/dirt/often,
@@ -11749,7 +10807,7 @@ En
 En
 gl
 UH
-zA
+Ko
 UH
 Bn
 En
@@ -11979,7 +11037,7 @@ UH
 zA
 bB
 zA
-zA
+Ko
 UH
 Sr
 XS
@@ -12448,7 +11506,7 @@ ry
 En
 En
 En
-UH
+UR
 zA
 mI
 zl
@@ -12525,7 +11583,7 @@ dX
 Te
 TK
 dX
-PF
+hQ
 sr
 dX
 sr
@@ -12535,7 +11593,7 @@ dX
 TK
 TK
 TK
-PF
+hQ
 sr
 sr
 sr
@@ -12841,7 +11899,7 @@ TK
 TK
 TK
 TK
-cO
+CZ
 dX
 dX
 dX
@@ -13924,7 +12982,7 @@ dX
 sr
 sr
 dX
-PF
+hQ
 sr
 sr
 sr
@@ -14603,13 +13661,13 @@ TK
 dX
 dX
 dX
-iH
+Iy
 dX
 va
 dX
 sr
 sr
-PF
+hQ
 sr
 sr
 sr
@@ -15078,7 +14136,7 @@ sr
 sr
 sr
 sr
-PF
+hQ
 dX
 dX
 sr
@@ -16307,7 +15365,7 @@ se
 kG
 Lr
 kD
-VD
+aq
 dX
 Pb
 mc
@@ -16487,7 +15545,7 @@ TK
 Te
 dX
 TK
-PF
+hQ
 TK
 sr
 TK
@@ -16705,7 +15763,7 @@ sr
 dX
 TK
 dX
-dX
+Iy
 TK
 TK
 TK
@@ -17158,7 +16216,7 @@ TK
 TK
 sr
 sr
-PF
+hQ
 sr
 TK
 TK
@@ -17242,7 +16300,7 @@ va
 dX
 kG
 gq
-Od
+tW
 ts
 gq
 gq
@@ -17380,7 +16438,7 @@ sr
 sr
 sr
 sr
-PF
+hQ
 sr
 sr
 sr
@@ -17390,7 +16448,7 @@ TK
 TK
 TK
 sr
-PF
+hQ
 sr
 TK
 TK
@@ -17398,16 +16456,16 @@ sr
 sr
 sr
 sr
-TK
-TK
-dX
-TK
-TK
 TK
 TK
 dX
+TK
+TK
+TK
+TK
 dX
 dX
+Iy
 TK
 TK
 TK
@@ -17486,7 +16544,7 @@ TK
 TK
 dX
 dX
-dX
+Iy
 dX
 TK
 TK
@@ -17632,7 +16690,7 @@ fp
 sr
 TK
 TK
-ap
+Iy
 dX
 TK
 TK
@@ -17645,7 +16703,7 @@ TK
 TK
 TK
 TK
-PF
+hQ
 sr
 dX
 sr
@@ -17707,9 +16765,9 @@ Aq
 kG
 PJ
 tW
-ts
+sW
 tW
-Od
+tW
 kG
 mc
 dX
@@ -17851,7 +16909,7 @@ TK
 TK
 TK
 dX
-iH
+Iy
 TK
 dX
 dX
@@ -17930,7 +16988,7 @@ kD
 kD
 kD
 kD
-kD
+Ta
 kD
 kD
 kD
@@ -18092,7 +17150,7 @@ sr
 TK
 sr
 sr
-PF
+hQ
 sr
 TK
 sr
@@ -18306,7 +17364,7 @@ TK
 TK
 TK
 aT
-PF
+hQ
 dX
 sr
 nx
@@ -18647,7 +17705,7 @@ dX
 dX
 dX
 dX
-cO
+CZ
 TK
 TK
 TK
@@ -18776,7 +17834,7 @@ TK
 TK
 TK
 dX
-dX
+Iy
 TK
 dX
 TK
@@ -18858,7 +17916,7 @@ mC
 FJ
 NS
 nR
-gB
+sd
 qx
 HM
 rp
@@ -19087,7 +18145,7 @@ bO
 dX
 bO
 kG
-jA
+FJ
 mx
 hw
 ew
@@ -19257,7 +18315,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 dX
 dX
 dX
@@ -19268,7 +18326,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 TK
 TK
 TK
@@ -19319,7 +18377,7 @@ bO
 bO
 bO
 kG
-sM
+FJ
 ZN
 ZN
 CU
@@ -19478,7 +18536,7 @@ dX
 dX
 TK
 dX
-dX
+Iy
 dX
 TK
 TK
@@ -19506,7 +18564,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 TK
 LU
 LU
@@ -19570,7 +18628,7 @@ gc
 dX
 dX
 dX
-dX
+Iy
 dX
 dX
 dX
@@ -20423,7 +19481,7 @@ dX
 nx
 dX
 dX
-iH
+Iy
 dX
 va
 dX
@@ -20632,7 +19690,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 dX
 dX
 sr
@@ -20858,7 +19916,7 @@ TK
 TK
 TK
 dX
-ap
+Iy
 dX
 TK
 TK
@@ -20894,7 +19952,7 @@ sr
 TK
 TK
 dX
-PF
+hQ
 sr
 TK
 dX
@@ -21081,7 +20139,7 @@ TK
 TK
 TK
 dX
-PF
+hQ
 dX
 dX
 Aq
@@ -21121,7 +20179,7 @@ TK
 TK
 TK
 sr
-PF
+hQ
 sr
 sr
 sr
@@ -21186,9 +20244,9 @@ kD
 dX
 nu
 XZ
-Pj
-Pj
-Pj
+RY
+RY
+RY
 bt
 nu
 dX
@@ -21339,7 +20397,7 @@ dX
 dX
 TK
 TK
-ap
+Iy
 dX
 dX
 Aq
@@ -21418,9 +20476,9 @@ kD
 dX
 nu
 XZ
-Pj
-Pj
-Pj
+RY
+RY
+RY
 XZ
 nu
 dX
@@ -21650,9 +20708,9 @@ NY
 dX
 nu
 nu
-Pj
-Pj
-Pj
+RY
+RY
+RY
 nu
 nu
 TK
@@ -21882,9 +20940,9 @@ gc
 dX
 nu
 mc
-Pj
-Pj
-Pj
+RY
+RY
+RY
 XZ
 nu
 TK
@@ -22474,7 +21532,7 @@ TK
 dX
 dX
 dX
-PF
+hQ
 sr
 dX
 dX
@@ -22503,7 +21561,7 @@ dX
 TK
 TK
 TK
-dX
+Iy
 dX
 TK
 TK
@@ -22725,7 +21783,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 sr
 sr
 dX
@@ -22948,7 +22006,7 @@ TK
 TK
 TK
 dX
-dX
+Iy
 TK
 TK
 TK
@@ -23016,7 +22074,7 @@ zA
 Rq
 CM
 UH
-sO
+yw
 Ur
 UH
 Ih
@@ -23417,7 +22475,7 @@ dX
 dX
 dX
 dX
-ap
+Iy
 dX
 dX
 Aq
@@ -23480,7 +22538,7 @@ gc
 gc
 gc
 zT
-ow
+ZV
 gc
 EI
 tP
@@ -23659,11 +22717,11 @@ TK
 TK
 TK
 dX
-dX
+Iy
 TK
 TK
 TK
-dX
+Iy
 dX
 TK
 TK
@@ -24328,7 +23386,7 @@ LU
 TK
 TK
 TK
-dX
+Iy
 dX
 TK
 TK
@@ -24572,7 +23630,7 @@ TK
 TK
 TK
 dX
-PF
+hQ
 dX
 TK
 dX
@@ -24796,7 +23854,7 @@ TK
 TK
 TK
 TK
-dX
+Iy
 TK
 TK
 TK
@@ -25335,7 +24393,7 @@ qi
 EI
 gc
 gc
-ps
+zA
 zA
 qi
 qi
@@ -25505,7 +24563,7 @@ sr
 dX
 sr
 dX
-PF
+hQ
 sr
 sr
 dX
@@ -29928,7 +28986,7 @@ as
 Ri
 Ry
 Ri
-Rg
+IE
 as
 LU
 as
@@ -30389,7 +29447,7 @@ LU
 LU
 LU
 as
-Rg
+IE
 xE
 nb
 Ri
@@ -30862,7 +29920,7 @@ LU
 as
 Uj
 vg
-dP
+nV
 as
 yb
 zf
@@ -31085,7 +30143,7 @@ as
 Tl
 Tl
 Rn
-oz
+TB
 xS
 aa
 or
@@ -31784,7 +30842,7 @@ as
 as
 as
 as
-ot
+aU
 as
 as
 LU
@@ -31792,7 +30850,7 @@ as
 as
 ON
 GD
-sF
+nl
 gL
 bU
 Ol
@@ -32256,7 +31314,7 @@ as
 as
 We
 eB
-VL
+vy
 Rn
 iQ
 as
@@ -32712,7 +31770,7 @@ as
 as
 as
 Ol
-Ys
+ot
 as
 as
 as
@@ -32938,7 +31996,7 @@ JN
 qI
 Bq
 lo
-Hi
+jP
 Tp
 pi
 uu
@@ -33172,8 +32230,8 @@ tQ
 aH
 wy
 FA
-bh
-bh
+OZ
+OZ
 bG
 Ln
 hb
@@ -33188,11 +32246,11 @@ hI
 oU
 nZ
 bo
-jQ
+Vn
 bi
 OM
 ZP
-Zm
+Vn
 RK
 as
 LU
@@ -33422,9 +32480,9 @@ iZ
 aw
 eK
 gN
-bh
+OZ
 zc
-nN
+nl
 Qc
 as
 LU
@@ -34814,7 +33872,7 @@ Rn
 as
 as
 Zn
-Rk
+dZ
 GH
 gj
 as
@@ -36888,7 +35946,7 @@ tQ
 eo
 as
 je
-Hk
+Rk
 iW
 as
 as
@@ -37585,7 +36643,7 @@ YS
 as
 Nn
 dP
-VL
+vy
 as
 as
 as
@@ -37699,7 +36757,7 @@ BH
 BH
 BH
 mz
-AD
+cj
 GF
 GF
 bg
@@ -37931,13 +36989,13 @@ BH
 BH
 BH
 mz
-cj
+DG
 GF
 GF
 Vt
-aX
+GF
 Gh
-aX
+GF
 GF
 GF
 FF
@@ -38042,7 +37100,7 @@ xf
 as
 as
 as
-oz
+TB
 Rk
 ih
 BF
@@ -38051,8 +37109,8 @@ IF
 dP
 Pv
 if
-Jf
-VL
+TB
+vy
 bq
 BH
 BH
@@ -38274,7 +37332,7 @@ xf
 AL
 tw
 Rn
-oz
+TB
 Rk
 xS
 vy
@@ -38284,7 +37342,7 @@ Rk
 Kd
 Rk
 dk
-VL
+vy
 bq
 BH
 BH
@@ -38399,9 +37457,9 @@ iw
 GF
 GF
 GF
-aX
+GF
 Fl
-aX
+GF
 GF
 GF
 GF
@@ -38507,16 +37565,16 @@ Cg
 yR
 Pf
 TB
-pw
-cv
-fX
+vy
+ls
+GA
 Cn
 JW
-cv
-cv
+ls
+ls
 Jn
 xg
-JD
+vr
 bq
 BH
 BH
@@ -38971,7 +38029,7 @@ AL
 yR
 JY
 GG
-sF
+nl
 as
 Hg
 Kz
@@ -39110,7 +38168,7 @@ dX
 mz
 dX
 dX
-dd
+dX
 dX
 mz
 dX
@@ -40508,7 +39566,7 @@ XK
 kf
 kf
 UP
-Df
+kf
 Bg
 GF
 GF
@@ -41140,7 +40198,7 @@ bO
 bO
 gc
 Jg
-hp
+UM
 Hf
 EI
 Uy
@@ -41443,9 +40501,9 @@ GF
 dX
 nx
 mz
-Hx
+ja
 be
-Hx
+ja
 mz
 BH
 BH
@@ -42372,7 +41430,7 @@ OK
 ja
 ja
 EG
-EG
+Fw
 EG
 mz
 dX
@@ -42496,7 +41554,7 @@ TK
 TK
 TK
 dX
-oq
+CZ
 TK
 TK
 TK
@@ -42807,7 +41865,7 @@ BH
 mz
 aW
 mz
-yf
+Qy
 Qy
 Xe
 tD
@@ -43814,7 +42872,7 @@ LU
 LU
 mz
 mz
-pY
+ET
 mz
 dX
 ET
@@ -44747,7 +43805,7 @@ wC
 IK
 wC
 HX
-gm
+qa
 mz
 mz
 TK
@@ -45389,7 +44447,7 @@ BH
 BH
 dX
 Xq
-oN
+vI
 Xq
 dX
 mz
@@ -46906,7 +45964,7 @@ TK
 TK
 aT
 dX
-iH
+Iy
 sr
 TK
 TK
@@ -47603,7 +46661,7 @@ dX
 dX
 dX
 dX
-dX
+Iy
 dX
 dX
 sr
@@ -51382,7 +50440,7 @@ LU
 BH
 BH
 BH
-wT
+dX
 LU
 LU
 LU

@@ -25,7 +25,7 @@
 
 /obj/machinery/vox_shop/proc/generate_pack_items()
 	var/list/shop_items = list()
-	var/obj/machinery/vox_trader/trader = locate() in GLOB.machines
+	var/obj/machinery/vox_trader/trader = locate() in SSmachines.get_by_type(/obj/machinery/vox_trader)
 	for(var/path in subtypesof(/datum/vox_pack))
 		var/datum/vox_pack/pack = new path
 		if(pack.cost < 0)
@@ -74,22 +74,22 @@
 	if(issilicon(user))
 		return
 	if(!isvox(user))
-		to_chat(user, span_notice("Вы осматриваете [src] и не понимаете как оно работает и куда сувать свои пальцы..."))
+		to_chat(user, SPAN_NOTICE("Вы осматриваете [src] и не понимаете как оно работает и куда сувать свои пальцы..."))
 		return
 	return TRUE
 
 /obj/machinery/vox_shop/attack_ai(mob/user)
 	return FALSE
 
-/obj/machinery/vox_shop/attackby__legacy__attackchain(obj/item/O, mob/user, params)
-	if(isvoxcash(O))
+/obj/machinery/vox_shop/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(isvoxcash(used))
 		user.do_attack_animation(src)
-		insert_cash(O, user)
-		return TRUE
-	. = ..()
+		insert_cash(used, user)
+		return ITEM_INTERACT_COMPLETE
+	return ..()
 
 /obj/machinery/vox_shop/proc/insert_cash(obj/item/stack/vox_cash, mob/user)
-	visible_message("<span class='info'>[user] загрузил [vox_cash] в [src].</span>")
+	visible_message(SPAN_INFO("[user] загрузил [vox_cash] в [src]."))
 	cash_stored += vox_cash.amount
 	vox_cash.use(vox_cash.amount)
 	return TRUE
@@ -183,7 +183,7 @@
 				return
 			var/cart_cash = calculate_cart_cash()
 			if(cart_cash > cash_stored)
-				to_chat(ui.user, "<span class='warning'>[src] недостаточно кикиридитов! Неси больше!</span>")
+				to_chat(ui.user, SPAN_WARNING("[src] недостаточно кикиридитов! Неси больше!"))
 				return
 
 			var/list/bought_typepath_objects = list()
@@ -194,7 +194,7 @@
 					continue
 				var/list/purchase_list = mass_purchase(pack, pack ? pack.reference : "", amount)
 				if(!length(purchase_list))
-					to_chat(ui.user, span_warning("[pack.name] - превысил допустимое возможное количество для покупки."))
+					to_chat(ui.user, SPAN_WARNING("[pack.name] - превысил допустимое возможное количество для покупки."))
 					return
 				bought_typepath_objects += purchase_list
 
@@ -271,10 +271,10 @@
 	if(LAZYIN(cart_list, item))
 		amount += cart_list[item]
 	if(!pack.check_possible_buy(amount))
-		to_chat(user, span_warning("[pack.name] больше невозможно купить!"))
+		to_chat(user, SPAN_WARNING("[pack.name] больше невозможно купить!"))
 		return
 	if(!pack.check_time_available())
-		to_chat(user, span_warning("[pack.name] будет доступен к покупке в [pack.get_time_available()], осталось [pack.get_time_left()]"))
+		to_chat(user, SPAN_WARNING("[pack.name] будет доступен к покупке в [pack.get_time_available()], осталось [pack.get_time_left()]"))
 		return
 	LAZYSET(cart_list, item, max(amount, 1))
 	generate_tgui_cart(TRUE)

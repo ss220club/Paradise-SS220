@@ -5,7 +5,6 @@
 	desc = "A device that automatically inserts an implant or organ into the user without the hassle of extensive surgery. It has a screwdriver slot for removing accidentally added items."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "autoimplanter"
-	item_state = ""
 	w_class = WEIGHT_CLASS_SMALL
 	var/uses = INFINITE
 
@@ -31,13 +30,14 @@
 
 /obj/item/autosurgeon/organ/attack_self__legacy__attackchain(mob/user) //when the object it used...
 	if(!uses)
-		to_chat(user, "<span class='alert'>[src] has already been used. The tools are dull and won't reactivate.</span>")
+		to_chat(user, SPAN_ALERT("[src] has already been used. The tools are dull and won't reactivate."))
 		return
 	else if(!storedorgan)
-		to_chat(user, "<span class='alert'>[src] currently has no implant stored.</span>")
+		to_chat(user, SPAN_ALERT("[src] currently has no implant stored."))
 		return
+	SSblackbox.record_feedback("tally", "o_implant_auto", 1, "[storedorgan.type]")
 	storedorgan.insert(user) //insert stored organ into the user
-	user.visible_message("<span class='notice'>[user] presses a button on [src], and you hear a short mechanical noise.</span>", "<span class='notice'>You feel a sharp sting as [src] plunges into your body.</span>")
+	user.visible_message(SPAN_NOTICE("[user] presses a button on [src], and you hear a short mechanical noise."), SPAN_NOTICE("You feel a sharp sting as [src] plunges into your body."))
 	playsound(get_turf(user), 'sound/weapons/circsawhit.ogg', 50, TRUE)
 	storedorgan = null
 	name = initial(name)
@@ -49,16 +49,16 @@
 /obj/item/autosurgeon/organ/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(istype(I, organ_type))
 		if(storedorgan)
-			to_chat(user, "<span class='alert'>[src] already has an implant stored.</span>")
+			to_chat(user, SPAN_ALERT("[src] already has an implant stored."))
 			return
 		else if(!uses)
-			to_chat(user, "<span class='alert'>[src] has already been used up.</span>")
+			to_chat(user, SPAN_ALERT("[src] has already been used up."))
 			return
 		if(!user.drop_item())
 			return
 		I.forceMove(src)
 		storedorgan = I
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
 	else
 		return ..()
 
@@ -66,11 +66,11 @@
 	if(..())
 		return TRUE
 	if(!storedorgan)
-		to_chat(user, "<span class='warning'>There's no implant in [src] for you to remove!</span>")
+		to_chat(user, SPAN_WARNING("There's no implant in [src] for you to remove!"))
 	else
 		storedorgan.forceMove(user.drop_location())
 
-		to_chat(user, "<span class='notice'>You remove [storedorgan] from [src].</span>")
+		to_chat(user, SPAN_NOTICE("You remove [storedorgan] from [src]."))
 		I.play_tool_sound(src)
 		storedorgan = null
 		if(uses != INFINITE)
@@ -79,9 +79,41 @@
 			desc = "[initial(desc)] Looks like it's been used up."
 	return TRUE
 
+/obj/item/autosurgeon/organ/one_use
+	uses = 1
+
+/obj/item/autosurgeon/organ/one_use/skill_hud
+	desc = "A single use autosurgeon that contains a skill heads up display. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/eyes/hud/skill
+
+/obj/item/autosurgeon/organ/one_use/sec_hud
+	desc = "A single use autosurgeon that contains a security heads up display. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/eyes/hud/security
+
+/obj/item/autosurgeon/organ/one_use/med_hud
+	desc = "A single use autosurgeon that contains a medical heads up display. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/eyes/hud/medical
+
+/obj/item/autosurgeon/organ/one_use/diagnostic_hud
+	desc = "A single use autosurgeon that contains a diagnostic heads up display. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/eyes/hud/diagnostic
+
+/obj/item/autosurgeon/organ/one_use/wire_interface
+	desc = "A single use autosurgeon that contains a wire interface. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/cyberimp/brain/wire_interface
+
+/obj/item/autosurgeon/organ/one_use/meson_eyes
+	desc = "A single use autosurgeon that contains a set of meson eyes. A screwdriver can be used to remove it, but implants can't be placed back in."
+	starting_organ = /obj/item/organ/internal/eyes/cybernetic/meson
+
 /obj/item/autosurgeon/organ/syndicate
 	name = "suspicious implant autosurgeon"
 	icon_state = "syndicate_autoimplanter"
+
+/obj/item/autosurgeon/organ/syndicate/attack_self__legacy__attackchain(mob/user)
+	if(storedorgan && uses && storedorgan.is_robotic()) // Helps keep the syndicate ones hidden. One can peel them off if they want them to be visable.
+		storedorgan.self_augmented_skin_level = 3
+	return ..()
 
 /obj/item/autosurgeon/organ/syndicate/oneuse
 	uses = 1
@@ -126,7 +158,7 @@
 
 /obj/item/autosurgeon/organ/syndicate/oneuse/sensory_enhancer/examine(mob/user)
 	. = ..()
-	. += "<span class='userdanger'>Epilepsy Warning: Drug has vibrant visual effects!</span>"
+	. += SPAN_USERDANGER("Epilepsy Warning: Drug has vibrant visual effects!")
 
 /obj/item/autosurgeon/organ/syndicate/oneuse/sensory_enhancer/examine_more(mob/user)
 	. = ..()
@@ -151,5 +183,11 @@
 
 /obj/item/autosurgeon/organ/syndicate/oneuse/hardened_heart
 	starting_organ = /obj/item/organ/internal/heart/cybernetic/upgraded/hardened
+
+/obj/item/autosurgeon/organ/syndicate/oneuse/syndie_mantis
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/syndie_mantis
+
+/obj/item/autosurgeon/organ/syndicate/oneuse/syndie_mantis/l
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/syndie_mantis/l
 
 #undef INFINITE

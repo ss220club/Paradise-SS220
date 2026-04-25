@@ -65,6 +65,19 @@
 		"задерживает дыхание!")
 
 /datum/species/diona
+	scream_verb = "трещит"
+	male_scream_sound = 'modular_ss220/emotes/audio/diona/diona_scream.ogg'
+	female_scream_sound = 'modular_ss220/emotes/audio/diona/diona_scream.ogg'
+	male_giggle_sound = list(
+		'modular_ss220/emotes/audio/diona/diona_giggle1.ogg',
+		'modular_ss220/emotes/audio/diona/diona_giggle2.ogg',
+		'modular_ss220/emotes/audio/diona/diona_giggle3.ogg')
+	female_giggle_sound = list(
+		'modular_ss220/emotes/audio/diona/diona_giggle1.ogg',
+		'modular_ss220/emotes/audio/diona/diona_giggle2.ogg',
+		'modular_ss220/emotes/audio/diona/diona_giggle3.ogg')
+	male_laugh_sound = 'modular_ss220/emotes/audio/diona/diona_laugh.ogg'
+	female_laugh_sound = 'modular_ss220/emotes/audio/diona/diona_laugh.ogg'
 	suicide_messages = list(
 		"теряет ветви!",
 		"вытаскивает из тайника бутыль с гербицидом и делает большой глоток!",
@@ -290,6 +303,10 @@
 	female_scream_sound = 'modular_ss220/emotes/audio/unathi/scream_female.ogg'
 	male_sneeze_sound = 'modular_ss220/emotes/audio/unathi/sneeze_male.ogg'
 	female_sneeze_sound = 'modular_ss220/emotes/audio/unathi/sneeze_female.ogg'
+	male_giggle_sound = 'modular_ss220/emotes/audio/unathi/unathi_giggle.ogg'
+	female_giggle_sound = 'modular_ss220/emotes/audio/unathi/unathi_giggle.ogg'
+	male_laugh_sound = 'modular_ss220/emotes/audio/unathi/unathi_laugh.ogg'
+	female_laugh_sound = 'modular_ss220/emotes/audio/unathi/unathi_laugh.ogg'
 	death_sounds = 'modular_ss220/emotes/audio/unathi/deathsound_unathi.ogg'
 	suicide_messages = list(
 		"пытается откусить себе язык!",

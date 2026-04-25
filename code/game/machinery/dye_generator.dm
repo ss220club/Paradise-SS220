@@ -50,17 +50,17 @@
 	dye_color = temp
 	set_light(2, l_color = temp)
 
-/obj/machinery/dye_generator/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/machinery/dye_generator/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(default_unfasten_wrench(user, used, time = 60))
+		return ITEM_INTERACT_COMPLETE
 
-	if(default_unfasten_wrench(user, I, time = 60))
-		return
-
-	if(istype(I, /obj/item/hair_dye_bottle))
-		var/obj/item/hair_dye_bottle/HD = I
-		user.visible_message("<span class='notice'>[user] fills [HD] up with some dye.</span>","<span class='notice'>You fill [HD] up with some hair dye.</span>")
+	if(istype(used, /obj/item/hair_dye_bottle))
+		var/obj/item/hair_dye_bottle/HD = used
+		user.visible_message(SPAN_NOTICE("[user] fills [HD] up with some dye."),SPAN_NOTICE("You fill [HD] up with some hair dye."))
 		HD.dye_color = dye_color
 		HD.update_icon()
-		return
+		return ITEM_INTERACT_COMPLETE
+
 	return ..()
 
 /obj/machinery/dye_generator/obj_break(damage_flag)
@@ -73,12 +73,8 @@
 /obj/item/hair_dye_bottle
 	name = "hair dye bottle"
 	desc = "A refillable bottle used for holding hair dyes of all sorts of colors."
-	icon = 'icons/obj/items.dmi'
 	icon_state = "hairdyebottle"
-	throwforce = 0
 	throw_speed = 4
-	throw_range = 7
-	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	var/dye_color = "#FFFFFF"
 
@@ -114,7 +110,7 @@
 		if(!user.Adjacent(M))
 			to_chat(user, "You are too far away!")
 			return
-		user.visible_message("<span class='notice'>[user] starts dying [M]'s [what_to_dye]!</span>", "<span class='notice'>You start dying [M]'s [what_to_dye]!</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts dying [M]'s [what_to_dye]!"), SPAN_NOTICE("You start dying [M]'s [what_to_dye]!"))
 		if(do_after(user, 50, target = H))
 			switch(what_to_dye)
 				if("hair")
@@ -128,4 +124,4 @@
 				if("body")
 					H.change_skin_color(dye_color)
 			H.update_dna()
-		user.visible_message("<span class='notice'>[user] finishes dying [M]'s [what_to_dye]!</span>", "<span class='notice'>You finish dying [M]'s [what_to_dye]!</span>")
+		user.visible_message(SPAN_NOTICE("[user] finishes dying [M]'s [what_to_dye]!"), SPAN_NOTICE("You finish dying [M]'s [what_to_dye]!"))

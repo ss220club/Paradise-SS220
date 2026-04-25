@@ -2,7 +2,11 @@
 	name = "\improper .357 magnum revolver"
 	desc = "A powerful revolver commonly used by the Syndicate. Uses .357 magnum ammo."
 	materials = list()
+	icon = 'icons/tgmc/objects/guns.dmi'
 	icon_state = "revolver"
+	inhand_icon_state = "revolver"
+	lefthand_file = 'icons/tgmc/mob/inhands/guns_lefthand.dmi'
+	righthand_file = 'icons/tgmc/mob/inhands/guns_righthand.dmi'
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
 	origin_tech = "combat=3;materials=2"
 	fire_sound = 'sound/weapons/gunshots/gunshot_strong.ogg'
@@ -12,7 +16,7 @@
 /obj/item/gun/projectile/revolver/examine(mob/user)
 	. = ..()
 	. += "[get_ammo(0, 0)] of those are live rounds."
-	. += "<span class='notice'>You can <b>Alt-Click</b> [src] to spin it's barrel.</span>"
+	. += SPAN_NOTICE("You can <b>Alt-Click</b> [src] to spin it's barrel.")
 
 /obj/item/gun/projectile/revolver/chamber_round(spin = 1)
 	if(spin)
@@ -36,7 +40,7 @@
 		return
 	var/num_loaded = magazine.attackby__legacy__attackchain(A, user, params, 1)
 	if(num_loaded)
-		to_chat(user, "<span class='notice'>You load [num_loaded] shell\s into \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You load [num_loaded] shell\s into \the [src]."))
 		A.update_icon()
 		update_icon()
 		chamber_round(0)
@@ -54,9 +58,9 @@
 			playsound(get_turf(CB), "casingdrop", 60, 1)
 			num_unloaded++
 	if(num_unloaded)
-		to_chat(user, "<span class='notice'>You unload [num_unloaded] shell\s from [src].</span>")
+		to_chat(user, SPAN_NOTICE("You unload [num_unloaded] shell\s from [src]."))
 	else
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, SPAN_WARNING("[src] is empty!"))
 
 /obj/item/gun/projectile/revolver/AltClick(mob/user)
 	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !Adjacent(user))
@@ -68,7 +72,7 @@
 	C.spin()
 	chamber_round(0)
 	playsound(get_turf(user), 'sound/weapons/revolver_spin.ogg', 50, TRUE)
-	user.visible_message("<span class='warning'>[user] spins [src]'s chamber.</span>", "<span class='notice'>You spin [src]'s chamber.</span>")
+	user.visible_message(SPAN_WARNING("[user] spins [src]'s chamber."), SPAN_NOTICE("You spin [src]'s chamber."))
 
 /obj/item/gun/projectile/revolver/can_shoot()
 	return get_ammo(0,0)
@@ -86,7 +90,7 @@
 /obj/item/gun/projectile/revolver/fake/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_CLUMSY))
-		. += "<span class='sans'>Its mechanism seems to shoot backwards.</span>"
+		. += SPAN_SANS("Its mechanism seems to shoot backwards.")
 
 /obj/item/gun/projectile/revolver/fake/process_fire(atom/target, mob/living/carbon/human/user, message, params, zone_override, bonus_spread)
 	var/zone = "chest"
@@ -102,8 +106,8 @@
 	process_chamber()
 	update_icon()
 	playsound(src, 'sound/weapons/gunshots/gunshot_strong.ogg', 50, TRUE)
-	user.visible_message("<span class='danger'>[src] goes off!</span>")
-	to_chat(user, "<span class='danger'>[src] did look pretty dodgey!</span>")
+	user.visible_message(SPAN_DANGER("[src] goes off!"))
+	to_chat(user, SPAN_DANGER("[src] did look pretty dodgey!"))
 	SEND_SOUND(user, sound('sound/misc/sadtrombone.ogg')) //HONK
 	user.apply_damage(300, BRUTE, zone, sharp = TRUE, used_weapon = "Self-inflicted gunshot wound to the [zone].")
 	user.bleed(BLOOD_VOLUME_NORMAL)
@@ -113,7 +117,10 @@
 /obj/item/gun/projectile/revolver/fingergun
 	name = "finger gun"
 	desc = "Bang bang bang!"
+	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "fingergun"
+	lefthand_file = 'icons/mob/inhands/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/guns_righthand.dmi'
 	force = 0
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38/invisible
 	origin_tech = ""
@@ -148,13 +155,13 @@
 	return
 
 /obj/item/gun/projectile/revolver/fingergun/shoot_with_empty_chamber(/*mob/living/user as mob|obj*/)
-	to_chat(usr, "<span class='warning'>You are out of ammo! You holster your fingers.</span>")
+	to_chat(usr, SPAN_WARNING("You are out of ammo! You holster your fingers."))
 	qdel(src)
 	return
 
 /obj/item/gun/projectile/revolver/fingergun/afterattack__legacy__attackchain(atom/target, mob/living/user, flag, params)
 	if(!user.mind.miming)
-		to_chat(usr, "<span class='warning'>You must dedicate yourself to silence first. Use your fingers if you wish to holster them.</span>")
+		to_chat(usr, SPAN_WARNING("You must dedicate yourself to silence first. Use your fingers if you wish to holster them."))
 		return
 	..()
 
@@ -162,7 +169,7 @@
 	return
 
 /obj/item/gun/projectile/revolver/fingergun/attack_self__legacy__attackchain(mob/living/user)
-	to_chat(usr, "<span class='notice'>You holster your fingers. Another time.</span>")
+	to_chat(usr, SPAN_NOTICE("You holster your fingers. Another time."))
 	qdel(src)
 	return
 
@@ -170,11 +177,14 @@
 	name = "\improper Unica 6 auto-revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of several unrelated militaries. Uses .357 ammo."	//>10mm hole >.357
 	icon_state = "mateba"
+	inhand_icon_state = "mateba"
 
 /obj/item/gun/projectile/revolver/golden
 	name = "\improper Golden revolver"
 	desc = "This ain't no game, ain't never been no show, And I'll gladly gun down the oldest lady you know. Uses .357 ammo."
+	icon = 'icons/tgmc/objects/guns64.dmi'
 	icon_state = "goldrevolver"
+	inhand_icon_state = "goldrevolver"
 	fire_sound = 'sound/weapons/resonator_blast.ogg'
 	recoil = 8
 
@@ -182,125 +192,27 @@
 	name = "\improper Nagant revolver"
 	desc = "An old model of revolver that originated in Russia, now used by the USSP. Able to be suppressed. Uses 7.62x38mmR ammo."
 	icon_state = "nagant"
+	inhand_icon_state = "nagant"
 	origin_tech = "combat=3"
 	can_suppress = TRUE
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev762
 
+/obj/item/gun/projectile/revolver/nagant/update_overlays()
+	. = list()
+	if(suppressed)
+		. += image(icon = 'icons/obj/guns/attachments.dmi', icon_state = "suppressor_attached", pixel_x = 15, pixel_y = 6)
+
 /obj/item/gun/projectile/revolver/overgrown
 	name = "overgrown revolver"
 	desc = "A bulky revolver that seems to be made out of a plant."
+	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "pea_shooter"
-	item_state = "peashooter"
+	inhand_icon_state = "peashooter"
 	lefthand_file = 'icons/mob/inhands/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/guns_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = "combat=3;biotech=5"
 	mag_type = /obj/item/ammo_box/magazine/internal/overgrown
-
-// A gun to play Russian Roulette!
-// You can spin the chamber to randomize the position of the bullet.
-
-/obj/item/gun/projectile/revolver/russian
-	name = "\improper Russian Revolver"
-	desc = "A Russian-made revolver for drinking games. Uses .357 ammo, and has a mechanism that spins the chamber before each trigger pull."
-	icon_state = "russian_revolver"
-	origin_tech = "combat=2;materials=2"
-	mag_type = /obj/item/ammo_box/magazine/internal/rus357
-	var/spun = 0
-
-
-/obj/item/gun/projectile/revolver/russian/Initialize(mapload)
-	. = ..()
-	Spin()
-	update_icon()
-
-/obj/item/gun/projectile/revolver/russian/proc/Spin()
-	chambered = null
-	var/random = rand(1, magazine.max_ammo)
-	if(random <= get_ammo(0,0))
-		chamber_round()
-	spun = 1
-
-/obj/item/gun/projectile/revolver/russian/attackby__legacy__attackchain(obj/item/A, mob/user, params)
-	var/num_loaded = ..()
-	if(num_loaded)
-		user.visible_message("[user] loads a single bullet into the revolver and spins the chamber.", "<span class='notice'>You load a single bullet into the chamber and spin it.</span>")
-	else
-		user.visible_message("[user] spins the chamber of the revolver.", "<span class='notice'>You spin the revolver's chamber.</span>")
-	if(get_ammo() > 0)
-		Spin()
-	update_icon()
-	A.update_icon()
-	return
-
-/obj/item/gun/projectile/revolver/russian/attack_self__legacy__attackchain(mob/user)
-	if(!spun && can_shoot())
-		user.visible_message("[user] spins the chamber of the revolver.", "<span class='notice'>You spin the revolver's chamber.</span>")
-		Spin()
-	else
-		var/num_unloaded = 0
-		while(get_ammo() > 0)
-			var/obj/item/ammo_casing/CB
-			CB = magazine.get_round()
-			chambered = null
-			CB.loc = get_turf(loc)
-			CB.update_icon()
-			playsound(get_turf(CB), "casingdrop", 60, 1)
-			num_unloaded++
-		if(num_unloaded)
-			to_chat(user, "<span class='notice'>You unload [num_unloaded] shell\s from [src].</span>")
-		else
-			to_chat(user, "<span class='notice'>[src] is empty.</span>")
-
-/obj/item/gun/projectile/revolver/russian/afterattack__legacy__attackchain(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
-	if(flag)
-		if(!(target in user.contents) && ismob(target))
-			if(user.a_intent == INTENT_HARM) // Flogging action
-				return
-
-	if(isliving(user))
-		if(!can_trigger_gun(user))
-			return
-	if(target != user)
-		if(ismob(target))
-			to_chat(user, "<span class='warning'>A mechanism prevents you from shooting anyone but yourself!</span>")
-		return
-
-	if(ishuman(user))
-		if(!spun)
-			to_chat(user, "<span class='warning'>You need to spin the revolver's chamber first!</span>")
-			return
-
-		spun = 0
-
-		if(chambered)
-			var/obj/item/ammo_casing/AC = chambered
-			if(AC.fire(user, user, firer_source_atom = src))
-				playsound(user, fire_sound, 50, 1)
-				var/zone = check_zone(user.zone_selected)
-				if(zone == "head" || zone == "eyes" || zone == "mouth")
-					shoot_self(user, zone)
-				else
-					user.visible_message("<span class='danger'>[user.name] cowardly fires [src] at [user.p_their()] [zone]!</span>", "<span class='userdanger'>You cowardly fire [src] at your [zone]!</span>", "<span class='italics'>You hear a gunshot!</span>")
-				return
-
-		user.visible_message("<span class='danger'>*click*</span>")
-		playsound(user, 'sound/weapons/empty.ogg', 100, 1)
-
-/obj/item/gun/projectile/revolver/russian/proc/shoot_self(mob/living/carbon/human/user, affecting = "head")
-	user.apply_damage(300, BRUTE, affecting)
-	user.visible_message("<span class='danger'>[user.name] fires [src] at [user.p_their()] head!</span>", "<span class='userdanger'>You fire [src] at your head!</span>", "<span class='italics'>You hear a gunshot!</span>")
-
-/obj/item/gun/projectile/revolver/russian/soul
-	name = "cursed Russian revolver"
-	desc = "To play with this revolver requires wagering your very soul."
-
-/obj/item/gun/projectile/revolver/russian/soul/shoot_self(mob/living/user)
-	..()
-	var/obj/item/soulstone/anybody/SS = new /obj/item/soulstone/anybody(get_turf(src))
-	SS.transfer_soul("FORCE", user)
-	user.death(FALSE)
-	user.visible_message("<span class='danger'>[user.name]'s soul is captured by \the [src]!</span>", "<span class='userdanger'>You've lost the gamble! Your soul is forfeit!</span>")
 
 /obj/item/gun/projectile/revolver/capgun
 	name = "cap gun"
@@ -312,7 +224,7 @@
 	name = "\improper .357 revolver"
 
 /obj/item/gun/projectile/revolver/capgun/chaosprank/shoot_with_empty_chamber(mob/living/user)
-	to_chat(user, "<span class='chaosbad'>[src] vanishes in a puff of smoke!</span>")
+	to_chat(user, SPAN_CHAOSBAD("[src] vanishes in a puff of smoke!"))
 	playsound(src, 'sound/items/bikehorn.ogg')
 	qdel(src)
 
@@ -323,8 +235,10 @@
 /obj/item/gun/projectile/revolver/doublebarrel
 	name = "\improper CM150 double-barreled shotgun"
 	desc = "A true classic, by Starstrike Arms."
+	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "dbshotgun"
-	item_state = null
+	worn_icon_state = null
+	inhand_icon_state = null
 	lefthand_file = 'icons/mob/inhands/64x64_guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_guns_righthand.dmi'
 	inhand_x_dimension = 64
@@ -332,7 +246,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	force = 10
-	flags = CONDUCT
 	slot_flags = ITEM_SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/dual
 	fire_sound = 'sound/weapons/gunshots/gunshot_shotgun.ogg'
@@ -359,10 +272,8 @@
 		var/obj/item/melee/energy/W = A
 		if(HAS_TRAIT(W, TRAIT_ITEM_ACTIVE))
 			sawoff(user)
-			item_state = icon_state
 	if(istype(A, /obj/item/circular_saw) || istype(A, /obj/item/gun/energy/plasmacutter))
 		sawoff(user)
-		item_state = icon_state
 	else
 		return ..()
 
@@ -387,9 +298,9 @@
 		return
 
 	if(num_unloaded)
-		to_chat(user, "<span class='notice'>You break open [src] and unload [num_unloaded] shell\s.</span>")
+		to_chat(user, SPAN_NOTICE("You break open [src] and unload [num_unloaded] shell\s."))
 	else
-		to_chat(user, "<span class='notice'>[src] is empty.</span>")
+		to_chat(user, SPAN_NOTICE("[src] is empty."))
 
 /obj/item/gun/projectile/revolver/doublebarrel/proc/sleight_of_handling(mob/living/carbon/human/user)
 	if(!istype(get_area(user), /area/station/service/bar))
@@ -412,7 +323,7 @@
 		loaded_shells++
 
 	if(loaded_shells)
-		to_chat(user, "<span class='notice'>You quickly load [loaded_shells] shell\s from your bandolier into [src].</span>")
+		to_chat(user, SPAN_NOTICE("You quickly load [loaded_shells] shell\s from your bandolier into [src]."))
 	return TRUE
 
 // IMPROVISED SHOTGUN //
@@ -421,16 +332,8 @@
 	name = "improvised shotgun"
 	desc = "Essentially a tube that aims shotgun shells."
 	icon_state = "ishotgun"
-	item_state = "ishotgun"
-	lefthand_file = 'icons/mob/inhands/64x64_guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/64x64_guns_righthand.dmi'
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	w_class = WEIGHT_CLASS_BULKY
-	force = 10
 	slot_flags = null
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/improvised
-	fire_sound = 'sound/weapons/gunshots/gunshot_shotgun.ogg'
 	sawn_desc = "I'm just here for the gasoline."
 	unique_reskin = FALSE
 	var/sling = FALSE
@@ -440,18 +343,17 @@
 	if(istype(A, /obj/item/stack/cable_coil) && !sawn_state)
 		var/obj/item/stack/cable_coil/C = A
 		if(sling)
-			to_chat(user, "<span class='warning'>The shotgun already has a sling!</span>")
+			to_chat(user, SPAN_WARNING("The shotgun already has a sling!"))
 		else if(C.use(10))
 			slot_flags = ITEM_SLOT_BACK
-			to_chat(user, "<span class='notice'>You tie the lengths of cable to the shotgun, making a sling.</span>")
+			to_chat(user, SPAN_NOTICE("You tie the lengths of cable to the shotgun, making a sling."))
 			sling = TRUE
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>You need at least ten lengths of cable if you want to make a sling!</span>")
+			to_chat(user, SPAN_WARNING("You need at least ten lengths of cable if you want to make a sling!"))
 
 /obj/item/gun/projectile/revolver/doublebarrel/improvised/update_icon_state()
 	icon_state = "ishotgun[sling ? "_sling" : sawn_state == SAWN_OFF ? "_sawn" : ""]"
-	item_state = "ishotgun[sling ? "_sling" : sawn_state == SAWN_OFF ? "_sawn" : ""]"
 
 /obj/item/gun/projectile/revolver/doublebarrel/improvised/sawoff(mob/user)
 	. = ..()
@@ -466,17 +368,16 @@
 	name = "cane"
 	desc = "A cane used by a true gentleman. Or a clown."
 	icon = 'icons/obj/items.dmi'
+	icon_state = "cane"
+	worn_icon_state = null
+	inhand_icon_state = "stick"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
-	icon_state = "cane"
-	item_state = "stick"
 	sawn_state = SAWN_OFF
 	w_class = WEIGHT_CLASS_SMALL
-	force = 10
 	can_unsuppress = FALSE
-	slot_flags = null
 	origin_tech = "" // NO GIVAWAYS
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/improvised/cane
 	sawn_desc = "I'm sorry, but why did you saw your cane in the first place?"
@@ -490,9 +391,6 @@
 
 /obj/item/gun/projectile/revolver/doublebarrel/improvised/cane/update_icon_state()
 	return
-
-/obj/item/gun/projectile/revolver/doublebarrel/improvised/cane/update_overlays()
-	return list()
 
 /obj/item/gun/projectile/revolver/doublebarrel/improvised/cane/attackby__legacy__attackchain(obj/item/A, mob/user, params)
 	if(istype(A, /obj/item/stack/cable_coil))

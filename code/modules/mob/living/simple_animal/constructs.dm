@@ -72,16 +72,16 @@
 			adjustBruteLoss(-5)
 			if(src != M)
 				Beam(M,icon_state="sendbeam",time=4)
-				M.visible_message("<span class='danger'>[M] repairs some of \the <b>[src]'s</b> dents.</span>", \
-						"<span class='cult'>You repair some of <b>[src]'s</b> dents, leaving <b>[src]</b> at <b>[health]/[maxHealth]</b> health.</span>")
+				M.visible_message(SPAN_DANGER("[M] repairs some of \the <b>[src]'s</b> dents."), \
+						SPAN_CULT("You repair some of <b>[src]'s</b> dents, leaving <b>[src]</b> at <b>[health]/[maxHealth]</b> health."))
 			else
-				M.visible_message("<span class='danger'>[M] repairs some of its own dents.</span>", \
-						"<span class='cult'>You repair some of your own dents, leaving you at <b>[M.health]/[M.maxHealth]</b> health.</span>")
+				M.visible_message(SPAN_DANGER("[M] repairs some of its own dents."), \
+						SPAN_CULT("You repair some of your own dents, leaving you at <b>[M.health]/[M.maxHealth]</b> health."))
 		else
 			if(src != M)
-				to_chat(M, "<span class='cult'>You cannot repair <b>[src]'s</b> dents, as it has none!</span>")
+				to_chat(M, SPAN_CULT("You cannot repair <b>[src]'s</b> dents, as it has none!"))
 			else
-				to_chat(M, "<span class='cult'>You cannot repair your own dents, as you have none!</span>")
+				to_chat(M, SPAN_CULT("You cannot repair your own dents, as you have none!"))
 	else if(src != M)
 		return ..()
 
@@ -94,8 +94,8 @@
 /mob/living/simple_animal/hostile/construct/Life(seconds, times_fired)
 	if(holy_check(src))
 		throw_alert("holy_fire", /atom/movable/screen/alert/holy_fire, override = TRUE)
-		visible_message("<span class='danger'>[src] slowly crumbles to dust in this holy place!</span>", \
-			"<span class='danger'>Your shell burns as you crumble to dust in this holy place!</span>")
+		visible_message(SPAN_DANGER("[src] slowly crumbles to dust in this holy place!"), \
+			SPAN_DANGER("Your shell burns as you crumble to dust in this holy place!"))
 		playsound(loc, 'sound/items/welder.ogg', 150, TRUE)
 		adjustBruteLoss(maxHealth/8)
 	else
@@ -138,10 +138,10 @@
 	AIStatus = AI_ON
 	environment_smash = 1 //only token destruction, don't smash the cult wall NO STOP
 
-/mob/living/simple_animal/hostile/construct/armoured/bullet_act(obj/item/projectile/P)
+/mob/living/simple_animal/hostile/construct/armoured/bullet_act(obj/projectile/P)
 	if(P.is_reflectable(REFLECTABILITY_ENERGY))
 		if(P.damage_type == BRUTE || P.damage_type == BURN)
-			adjustBruteLoss(P.damage * 0.6) // 21 hit with security laser gun
+			adjustBruteLoss(P.damage * 0.8) // 16 hit with security laser gun
 			P.on_hit(src)
 			return FALSE
 	return ..()
@@ -305,9 +305,9 @@
 	health = 40
 	melee_damage_lower = 20
 	melee_damage_upper = 25
-	attacktext = "prods"
+	attacktext = "rends"
 	environment_smash = ENVIRONMENT_SMASH_RWALLS
-	attack_sound = 'sound/weapons/tap.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	construct_type = "harvester"
 	construct_spells = list(/datum/spell/night_vision,
 							/datum/spell/aoe/conjure/build/wall,
@@ -318,7 +318,7 @@
 						Bring those who still cling to this world of illusion back to the master so they may know Truth.</B>"
 
 
-/mob/living/simple_animal/hostile/construct/harvester/Process_Spacemove(movement_dir = 0)
+/mob/living/simple_animal/hostile/construct/harvester/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	return TRUE
 
 
@@ -327,6 +327,30 @@
 	AIStatus = AI_ON
 	environment_smash = 1 //only token destruction, don't smash the cult wall NO STOP
 
+/mob/living/simple_animal/hostile/construct/proteon
+	name = "Proteon"
+	real_name = "Proteon"
+	desc = "A weaker construct meant to scour ruins for objects of Nar'Sie's affection. Those barbed claws are no joke."
+	icon_state = "proteon"
+	icon_living = "proteon"
+	maxHealth = 35
+	health = 35
+	melee_damage_lower = 8
+	melee_damage_upper = 10
+	obj_damage = 20 // Bit better at breaking stuff than cult ghosts, but only *barely*
+	retreat_distance = 4 // AI proteons will rapidly move in and out of combat to avoid conflict, but will still target and follow you.
+	attacktext = "pinches"
+	attack_sound = 'sound/weapons/punch2.ogg'
+	playstyle_string = "<b>You are a Proteon. Your abilities in combat are outmatched by most combat constructs, but you are still fast and nimble. Run metal and supplies, and cooperate with your fellow cultists.</b>"
+	construct_type = "proteon"
+
+/mob/living/simple_animal/hostile/construct/proteon/Initialize(mapload)
+	. = ..()
+	add_overlay("glow_proteon_cult")
+
+// This is the type you will run into, spawned by the proteon spawner
+/mob/living/simple_animal/hostile/construct/proteon/hostile
+	AIStatus = AI_ON
 
 /mob/living/simple_animal/hostile/construct/proc/make_holy()
 	if(holy) // Already holy-fied

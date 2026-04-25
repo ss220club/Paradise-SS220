@@ -153,8 +153,8 @@
 		/obj/item/melee/energy/sword/saber/red, // 40TC
 		/obj/item/bio_chip_implanter/shock, // 50TC
 		/obj/item/dnainjector/telemut/darkbundle, // 0TC
-		/obj/item/clothing/suit/hooded/chaplain_hoodie, // 0TC
-		/obj/item/clothing/glasses/meson/engine/tray, // 0TC
+		/obj/item/clothing/suit/hooded/chaplain_cassock, // 0TC
+		/obj/item/clothing/glasses/meson/engine/atmos, // 0TC
 		/obj/item/clothing/mask/chameleon/voice_change, // 10TC
 		/obj/item/card/id/syndicate, // 10TC
 		/obj/item/clothing/shoes/chameleon/noslip, // 10TC
@@ -195,7 +195,7 @@
 /// 80TC + modules + laser gun
 /obj/item/storage/box/syndie_kit/bundle/metroid
 	name = "Modsuit Bundle"
-	desc = "Don the equipment of an intergalactic bounty hunter and blast your way through the station!"
+	desc = "Don the equipment of an interstellar bounty hunter and blast your way through the station!"
 	items = list(
 		/obj/item/mod/control/pre_equipped/traitor_elite, // 45TC
 		/obj/item/mod/module/visor/thermal, // 15TC
@@ -222,7 +222,7 @@
 		/obj/item/encryptionkey/syndicate, // 10TC
 		/obj/item/clothing/under/syndicate/combat, //0TC
 		/obj/item/clothing/accessory/holster, // 0TC
-		/obj/item/clothing/accessory/scarf/red, //0TC
+		/obj/item/clothing/neck/scarf/red, //0TC
 		/obj/item/clothing/head/beret, // 0TC
 		/obj/item/clothing/gloves/combat, // 0TC
 		/obj/item/clothing/shoes/combat) // 0TC
@@ -295,6 +295,14 @@
 /obj/item/storage/box/syndie_kit/bundle/populate_contents()
 	for(var/obj/item/item as anything in items)
 		new item(src)
+
+/obj/item/storage/box/syndie_kit/pet_assassination_kit
+	desc = "It's just an ordinary box."
+	icon_state = "box"
+
+/obj/item/storage/box/syndie_kit/pet_assassination_kit/populate_contents()
+	new /obj/item/grenade/plastic/c4(src)
+	new /obj/item/grenade/plastic/c4(src)
 
 /obj/item/storage/box/syndie_kit/space
 	name = "Boxed Space Suit and Helmet"
@@ -432,13 +440,12 @@
 
 /obj/item/storage/box/syndie_kit/missionary_set/populate_contents()
 	new /obj/item/nullrod/missionary_staff(src)
-	new /obj/item/clothing/suit/hooded/chaplain_hoodie/missionary_robe(src)
+	new /obj/item/clothing/suit/hooded/chaplain_cassock/missionary_robe(src)
 	var/obj/item/storage/bible/B = new /obj/item/storage/bible(src)
 	if(prob(25))	//an omen of success to come?
 		B.deity_name = "Success"
 		B.icon_state = "greentext"
-		B.item_state = "greentext"
-
+		B.inhand_icon_state = "greentext"
 
 /obj/item/storage/box/syndie_kit/cutouts
 	name = "Fortified Artistic Box"
@@ -455,7 +462,7 @@
 /obj/item/storage/box/syndie_kit/safecracking/populate_contents()
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/clothing/mask/balaclava(src)
-	new /obj/item/clothing/accessory/stethoscope(src)
+	new /obj/item/clothing/neck/stethoscope(src)
 	new /obj/item/book/manual/wiki/hacking(src)
 
 /obj/item/storage/box/syndie_kit/chameleon
@@ -472,6 +479,7 @@
 	new /obj/item/radio/headset/chameleon(src)
 	new /obj/item/pda/chameleon(src)
 	new /obj/item/clothing/mask/chameleon(src)
+	new /obj/item/clothing/neck/chameleon(src)
 
 /obj/item/storage/box/syndie_kit/chameleon/nuke
 	name = "operative's chameleon kit"
@@ -488,6 +496,7 @@
 	new /obj/item/pda/chameleon(src)
 	new /obj/item/stamp/chameleon(src)
 	new /obj/item/clothing/mask/chameleon/voice_change(src)
+	new /obj/item/clothing/neck/chameleon(src)
 
 /obj/item/storage/box/syndie_kit/dart_gun
 	name = "dart gun kit"
@@ -499,7 +508,6 @@
 	new /obj/item/reagent_containers/syringe/pancuronium(src)
 
 /obj/item/storage/box/syndie_kit/nuke
-	name = "box"  //Bit of stealth, since you spawn with it
 	desc = "It's just an ordinary box."
 	icon_state = "box"
 
@@ -509,7 +517,6 @@
 	new /obj/item/paper/guides/antag/nuke_instructions(src)
 
 /obj/item/storage/box/syndie_kit/supermatter
-	name = "box"
 	desc = "It's just an ordinary box."
 	icon_state = "box"
 
@@ -518,6 +525,16 @@
 	new /obj/item/retractor/supermatter(src)
 	new /obj/item/nuke_core_container/supermatter(src)
 	new /obj/item/paper/guides/antag/supermatter_sliver(src)
+
+/obj/item/storage/box/syndie_kit/anomalous_particulate
+
+	desc = "It's just an ordinary box."
+	icon_state = "box"
+
+/obj/item/storage/box/syndie_kit/anomalous_particulate/populate_contents()
+	new /obj/item/ppp_processor(src)
+	new /obj/item/clothing/glasses/hud/anomalous(src)
+	new /obj/item/paper/guides/antag/anomalous_particulate(src)
 
 /obj/item/storage/box/syndie_kit/revolver
 	name = "\improper .357 revolver kit"
@@ -528,7 +545,7 @@
 
 /obj/item/storage/box/syndie_kit/stechkin
 	name = "\improper FK-69 Stechkin kit"
-	desc = "A box marked with Neo-Russkiyan characters. It appears to contain a 10mm pistol and two magazines." // SS220 EDIT - Zvezhan -> Neo-Russkiya
+	desc = "A box marked with Neo-Russkiyan characters. It appears to contain a 10mm pistol and two magazines." // SS220 EDIT - Cygni -> Neo-Russkiya
 
 /obj/item/storage/box/syndie_kit/stechkin/populate_contents()
 	new /obj/item/gun/projectile/automatic/pistol(src)
@@ -577,3 +594,12 @@
 /obj/item/storage/box/syndie_kit/forgers_kit/populate_contents()
 	new /obj/item/stamp/chameleon(src)
 	new /obj/item/pen/chameleon(src)
+
+/obj/item/storage/box/syndie_kit/syndie_mantis
+	name = "\improper Mantis Blades kit"
+	desc = "A sleek box marked with a Cybersun logo. The label says it contains a pair of CX-12 'Naginata' mantis blades and accompanying autosurgeons."
+
+/obj/item/storage/box/syndie_kit/syndie_mantis/populate_contents()
+	new /obj/item/autosurgeon/organ/syndicate/oneuse/syndie_mantis(src)
+	new /obj/item/autosurgeon/organ/syndicate/oneuse/syndie_mantis/l(src)
+

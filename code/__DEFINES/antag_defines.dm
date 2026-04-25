@@ -103,8 +103,8 @@ GLOBAL_LIST(contractors)
 
 #define ORG_PROB_HUNTER 10
 #define ORG_PROB_MILD 20
-#define ORG_PROB_AVERAGE 60
-#define ORG_PROB_HIJACK 2 // SS220 EDIT - reduced from 10 to 2
+#define ORG_PROB_AVERAGE 65
+#define ORG_PROB_HIJACK 2 // SS220 EDIT - reduced from 5 to 2
 
 // Chance that a traitor will receive a 'You are being targeted by another syndicate agent' notification regardless of being an actual target
 #define ORG_PROB_PARANOIA 5
@@ -113,3 +113,8 @@ GLOBAL_LIST(contractors)
 #define BIOHAZARD_POP_INTERVAL 5 MINUTES
 /// The string version of the interval for use in blackbox key names.
 #define BIOHAZARD_POP_INTERVAL_STR "5min"
+
+// Chance that any one traitor gets an extra exchange objective, will automatically pair with another tot
+#define EXCHANGE_PROBABILITY 5
+#define EXCHANGE_TEAM_RED "red"
+#define EXCHANGE_TEAM_BLUE "blue"

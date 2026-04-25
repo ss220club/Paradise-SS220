@@ -2,7 +2,7 @@
 	name = "HEADER"
 	containertype = /obj/structure/closet/crate/medical
 	group = SUPPLY_MEDICAL
-	announce_beacons = list("Medbay" = list("Medbay", "Chief Medical Officer's Desk"))
+	announce_beacons = list("Медицинский Отдел" = list("Медицинский Отдел", "Chief Medical Officer's Desk"))
 	department_restrictions = list(DEPARTMENT_MEDICAL)
 
 
@@ -26,7 +26,6 @@
 					/obj/item/storage/box/iv_bags,
 					/obj/item/vending_refill/medical)
 	cost = 400
-	containertype = /obj/structure/closet/crate/medical
 	containername = "medical supplies crate"
 
 /datum/supply_packs/medical/firstaid
@@ -108,7 +107,7 @@
 	containertype = /obj/structure/closet/crate/secure/plasma
 	containername = "virus crate"
 	access = ACCESS_CMO
-	announce_beacons = list("Medbay" = list("Virology", "Chief Medical Officer's Desk"))
+	announce_beacons = list("Медицинский Отдел" = list("Virology", "Chief Medical Officer's Desk"))
 
 /datum/supply_packs/medical/vending
 	name = "Medical Vending Crate"
@@ -119,7 +118,6 @@
 
 /datum/supply_packs/medical/vending/clothingvendor
 	name = "Medical Clothing Vendors Crate"
-	cost = 100
 	contains = list(/obj/item/vending_refill/medidrobe,
 					/obj/item/vending_refill/chemdrobe,
 					/obj/item/vending_refill/virodrobe)
@@ -175,3 +173,32 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/reagent/omnizine)
 	cost = 300
 	containername = "omnizine shipment crate"
+
+/datum/supply_packs/medical/biosuits
+	name = "Biosuit 4-pack"
+	contains = list(
+		/obj/item/clothing/suit/bio_suit,
+		/obj/item/clothing/suit/bio_suit,
+		/obj/item/clothing/suit/bio_suit,
+		/obj/item/clothing/suit/bio_suit,
+		/obj/item/clothing/head/bio_hood,
+		/obj/item/clothing/head/bio_hood,
+		/obj/item/clothing/head/bio_hood,
+		/obj/item/clothing/head/bio_hood,
+	)
+	cost = 400
+	containername = "biosuit shipment crate"
+
+/datum/supply_packs/medical/surgical_masks
+	name = "Sterile Mask And Goggles 4-pack"
+	contains = list(/obj/item/clothing/mask/surgical,
+					/obj/item/clothing/mask/surgical,
+					/obj/item/clothing/mask/surgical,
+					/obj/item/clothing/mask/surgical,
+					/obj/item/clothing/glasses/goggles,
+					/obj/item/clothing/glasses/goggles,
+					/obj/item/clothing/glasses/goggles,
+					/obj/item/clothing/glasses/goggles,
+				)
+	cost = 200
+	containername = "sterile mask shipment crate"

@@ -2,11 +2,8 @@
 	name = "vox backpack"
 	desc = "Рюкзак воксов из плотно переплетенного синтетического волокна. Хорошо защищает спину носителя при побегах и вмещает достаточно добра."
 	icon_state = "backpack_vox"
-	item_color = "backpack_vox"
-	item_state = "backpack_vox"
-	//var/list/species_restricted = list("Vox")
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_storage.dmi'
-	icon_override = 'modular_ss220/antagonists/icons/clothing/mob/back.dmi'
+	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/back.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/back.dmi'
 		)
@@ -21,10 +18,8 @@
 	name = "vox satchel"
 	desc = "Ранец воксов из синтетического волокна. Компактный, из-за чего его можно отлично прятать."
 	icon_state = "satchel_vox"
-	item_color = "satchel_vox"
-	item_state = "satchel_vox"
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_storage.dmi'
-	icon_override = 'modular_ss220/antagonists/icons/clothing/mob/back.dmi'
+	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/back.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/back.dmi'
 		)
@@ -38,10 +33,8 @@
 	name = "vox duffelbag"
 	desc = "Сумка воксов из синтетического волокна. Емкий, вмещает много добра."
 	icon_state = "duffel_vox"
-	item_color = "duffel_vox"
-	item_state = "duffel_vox"
 	icon = 'modular_ss220/antagonists/icons/clothing/obj_storage.dmi'
-	icon_override = 'modular_ss220/antagonists/icons/clothing/mob/back.dmi'
+	worn_icon = 'modular_ss220/antagonists/icons/clothing/mob/back.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/antagonists/icons/clothing/mob/vox/back.dmi'
 		)
@@ -60,8 +53,7 @@
 /obj/item/storage/belt/vox
 	name = "vox belt"
 	desc = "Удобный пояс с петельками для ношения всячины."
-	icon_state = "securitybelt"
-	item_state = "security"
+	icon_state = "security"
 	origin_tech = "syndicate=1"
 	max_w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
@@ -91,8 +83,7 @@
 /obj/item/storage/belt/vox/bio
 	name = "bio-vox belt"
 	desc = "Удобный пояс с плетенными кармашками для ношения ядер, взрывчатки и шприцов."
-	icon_state = "assaultbelt"
-	item_state = "assault"
+	icon_state = "assault"
 	storage_slots = 21
 	max_combined_w_class = 45
 	can_hold = list(

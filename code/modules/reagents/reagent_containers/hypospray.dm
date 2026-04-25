@@ -5,11 +5,9 @@
 	name = "hypospray"
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
 	icon = 'icons/obj/hypo.dmi'
-	item_state = "hypo"
 	icon_state = "hypo"
+	inhand_icon_state = "hypo"
 	belt_icon = "hypospray"
-	amount_per_transfer_from_this = 5
-	volume = 30
 	possible_transfer_amounts = list(1,2,3,4,5,10,15,20,25,30)
 	resistance_flags = ACID_PROOF
 	container_type = OPENCONTAINER
@@ -32,7 +30,7 @@
 
 /obj/item/reagent_containers/hypospray/proc/apply(mob/living/M, mob/user)
 	if(!reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, SPAN_WARNING("[src] is empty!"))
 		return
 
 	if(!iscarbon(M))
@@ -42,12 +40,12 @@
 	if(H.wear_suit)
 		// This check is here entirely to stop goobers injecting Nukies, the SST, and the Deathsquad with meme chems.
 		if(HAS_TRAIT(H.wear_suit, TRAIT_HYPOSPRAY_IMMUNE) && !ignore_hypospray_immunity)
-			to_chat(user, "<span class='warning'>[src] is unable to penetrate the armour of [M] or interface with any injection ports.</span>")
+			to_chat(user, SPAN_WARNING("[src] is unable to penetrate the armour of [M] or interface with any injection ports."))
 			return
 
 	if(reagents.total_volume && M.can_inject(user, TRUE, user.zone_selected, penetrate_thick, penetrate_everything))
-		to_chat(M, "<span class='warning'>You feel a tiny prick!</span>")
-		to_chat(user, "<span class='notice'>You inject [M] with [src].</span>")
+		to_chat(M, SPAN_WARNING("You feel a tiny prick!"))
+		to_chat(user, SPAN_NOTICE("You inject [M] with [src]."))
 
 		if(M.reagents)
 			var/list/injected = list()
@@ -58,10 +56,10 @@
 			var/trans = reagents.trans_to(M, amount_per_transfer_from_this)
 
 			if(safety_hypo)
-				visible_message("<span class='warning'>[user] injects [M] with [trans] units of [primary_reagent_name].</span>")
+				visible_message(SPAN_WARNING("[user] injects [M] with [trans] units of [primary_reagent_name]."))
 				playsound(loc, 'sound/goonstation/items/hypo.ogg', 80, 0)
 
-			to_chat(user, "<span class='notice'>[trans] unit\s injected.  [reagents.total_volume] unit\s remaining in [src].</span>")
+			to_chat(user, SPAN_NOTICE("[trans] unit\s injected.  [reagents.total_volume] unit\s remaining in [src]."))
 
 			var/contained = english_list(injected)
 
@@ -69,23 +67,27 @@
 			reagents.reaction(M, REAGENT_INGEST, 0.1)
 		return TRUE
 
-/obj/item/reagent_containers/hypospray/attack__legacy__attackchain(mob/living/M, mob/user)
-	return apply(M, user)
+/obj/item/reagent_containers/hypospray/mob_act(mob/target, mob/living/user)
+	apply(target, user)
+	return TRUE
 
-/obj/item/reagent_containers/hypospray/attack_self__legacy__attackchain(mob/user)
-	return apply(user, user)
+/obj/item/reagent_containers/hypospray/activate_self(mob/user)
+	if(..())
+		return FINISH_ATTACK
 
-/obj/item/reagent_containers/hypospray/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+	apply(user, user)
+
+/obj/item/reagent_containers/hypospray/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(is_pen(I))
 		rename_interactive(user, I, use_prefix = TRUE, prompt = "Give [src] a title.")
-		return TRUE
+		return ITEM_INTERACT_COMPLETE
 
 	return ..()
 
 /obj/item/reagent_containers/hypospray/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
-		. += "<span class='notice'>You can use a pen to add a label to [src].</span>"
+		. += SPAN_NOTICE("You can use a pen to add a label to [src].")
 
 /obj/item/reagent_containers/hypospray/on_reagent_change()
 	if(safety_hypo && !emagged)
@@ -96,16 +98,16 @@
 				found_forbidden_reagent = TRUE
 		if(found_forbidden_reagent)
 			if(ismob(loc))
-				to_chat(loc, "<span class='warning'>[src] identifies and removes a harmful substance.</span>")
+				to_chat(loc, SPAN_WARNING("[src] identifies and removes a harmful substance."))
 			else
-				visible_message("<span class='warning'>[src] identifies and removes a harmful substance.</span>")
+				visible_message(SPAN_WARNING("[src] identifies and removes a harmful substance."))
 
 /obj/item/reagent_containers/hypospray/emag_act(mob/user)
 	if(safety_hypo && !emagged)
 		emagged = TRUE
 		penetrate_thick = TRUE
 		penetrate_everything = TRUE
-		to_chat(user, "<span class='warning'>You short out the safeties on [src].</span>")
+		to_chat(user, SPAN_WARNING("You short out the safeties on [src]."))
 		return TRUE
 
 //////////////////////////////
@@ -159,7 +161,7 @@
 
 /obj/item/reagent_containers/hypospray/cmo/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_PARENT_QDELETING, PROC_REF(alert_admins_on_destroy))
+	AddElement(/datum/element/high_value_item)
 
 /obj/item/reagent_containers/hypospray/cmo/examine_more(mob/user)
 	. = ..()
@@ -178,7 +180,7 @@
 	name = "empty autoinjector"
 	desc = "A rapid and safe way to inject chemicals into humanoids. This one is empty."
 	icon_state = "autoinjector"
-	item_state = "autoinjector"
+	inhand_icon_state = "autoinjector"
 	belt_icon = "autoinjector"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = null
@@ -187,20 +189,9 @@
 	ignore_hypospray_immunity = TRUE
 	penetrate_everything = TRUE // Autoinjectors bypass everything.
 	container_type = DRAWABLE
-	flags = null
 
-/obj/item/reagent_containers/hypospray/autoinjector/attack__legacy__attackchain(mob/M, mob/user)
-	if(!reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
-		return
-	..()
+/obj/item/reagent_containers/hypospray/autoinjector/on_reagent_change()
 	update_icon(UPDATE_ICON_STATE)
-	return TRUE
-
-/obj/item/reagent_containers/hypospray/autoinjector/attack_self__legacy__attackchain(mob/user)
-	..()
-	update_icon(UPDATE_ICON_STATE)
-	return TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/update_icon_state()
 	if(reagents.total_volume > 0)
@@ -210,10 +201,10 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/examine()
 	. = ..()
-	if(reagents && length(reagents.reagent_list))
-		. += "<span class='notice'>It is currently loaded.</span>"
+	if(length(reagents?.reagent_list))
+		. += SPAN_NOTICE("It is currently loaded.")
 	else
-		. += "<span class='notice'>It is spent.</span>"
+		. += SPAN_NOTICE("It is spent.")
 
 /obj/item/reagent_containers/hypospray/autoinjector/epinephrine
 	name = "emergency autoinjector"
@@ -268,9 +259,9 @@
 	volume = 40
 	list_reagents = list("nanocalcium" = 30, "epinephrine" = 10)
 
-/obj/item/reagent_containers/hypospray/autoinjector/nanocalcium/attack__legacy__attackchain(mob/living/M, mob/user)
+/obj/item/reagent_containers/hypospray/autoinjector/nanocalcium/apply(mob/living/M, mob/user)
 	if(..())
-		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 20, 1)
+		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 20, TRUE)
 
 /obj/item/reagent_containers/hypospray/autoinjector/zombiecure
 	name = "\improper Anti-Plague Sequence Alpha autoinjector"
@@ -278,10 +269,10 @@
 	icon_state = "zombiepen"
 	amount_per_transfer_from_this = 15
 	volume = 15
-	container_type = null //No sucking out the reagent
+	container_type = NONE // No sucking out the reagent
 	list_reagents = list("zombiecure1" = 15)
 
-/obj/item/reagent_containers/hypospray/autoinjector/zombiecure/attack__legacy__attackchain(mob/living/M, mob/user)
+/obj/item/reagent_containers/hypospray/autoinjector/zombiecure/apply(mob/living/M, mob/user)
 	if(..())
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 20, TRUE) //Sucker for sounds, also gets zombies attention.
 

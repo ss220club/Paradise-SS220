@@ -19,7 +19,7 @@
 /obj/structure/tribune/screwdriver_act(mob/user, obj/item/tool)
 	. = TRUE
 	if(flags & NODECONSTRUCT)
-		to_chat(user, span_warning("Try as you might, you can't figure out how to deconstruct [src]."))
+		to_chat(user, SPAN_WARNING("Try as you might, you can't figure out how to deconstruct [src]."))
 		return
 	if(!tool.use_tool(src, user, 30, volume = tool.tool_volume))
 		return
@@ -37,6 +37,11 @@
 /obj/structure/tribune/Initialize(mapload) //Only for mappers
 	..()
 	handle_layer()
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = PROC_REF(on_atom_exit),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/tribune/setDir(newdir)
 	..()
@@ -56,24 +61,24 @@
 	if(!Adjacent(user))
 		return
 	if(anchored)
-		to_chat(user, span_warning("It is fastened to the floor!"))
+		to_chat(user, SPAN_WARNING("It is fastened to the floor!"))
 		return
 	setDir(turn(dir, 90))
 	after_rotation(user)
 
-/obj/structure/tribune/CanPass(atom/movable/mover, turf/target, height=0)
+/obj/structure/tribune/CanPass(atom/movable/mover, border_dir)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return TRUE
-	if(get_dir(loc, target) == dir)
+	if(border_dir == dir)
 		return !density
 	return TRUE
 
-/obj/structure/tribune/CheckExit(atom/movable/object, target)
-	if(istype(object) && object.checkpass(PASSGLASS))
-		return TRUE
-	if(get_dir(object.loc, target) == dir)
-		return FALSE
-	return TRUE
+/obj/structure/tribune/proc/on_atom_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+	if(istype(leaving) && leaving.checkpass(PASSGLASS))
+		return
+	if(direction == dir)
+		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/tribune/centcom
 	name = "CentCom tribune"

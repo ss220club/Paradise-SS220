@@ -1,13 +1,6 @@
-/client/proc/economy_manager()
-	set name = "Economy Panel"
-	set category = "Event"
-	set desc = "Perform Various Event Modification to the Economy"
-
-	if(!check_rights(R_EVENT))
-		return
-
+USER_VERB(economy_panel, R_EVENT, "Economy Panel", "Open the economy panel.", VERB_CATEGORY_EVENT)
 	var/datum/ui_module/economy_manager/E = new()
-	E.ui_interact(usr)
+	E.ui_interact(client.mob)
 
 /datum/ui_module/economy_manager
 	name = "Economy Manager"
@@ -36,7 +29,7 @@
 	switch(action)
 		if("payroll_modification")
 			var/list/accounts_to_modify = list()
-			var/num_input = tgui_input_number(ui.user, "Enter an amount. If for more than 4 people, keep around +/-$100 for the love of god!", "Input Amount")
+			var/num_input = tgui_input_number(ui.user, "Enter an amount. If for more than 4 people, keep around +/-$100 for the love of god!", "Input Amount", min_value = -10000)
 			if(!num_input)
 				return
 

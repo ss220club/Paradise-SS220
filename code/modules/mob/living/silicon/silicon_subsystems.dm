@@ -13,8 +13,8 @@
 *	Atmos Control	*
 ********************/
 /mob/living/silicon/proc/subsystem_atmos_control()
-	set category = "Subsystems"
-	set name = "Atmospherics Control"
+	set category = "Подсистемы"
+	set name = "Менеджер атмосферы"
 
 	atmos_control.ui_interact(usr)
 
@@ -22,16 +22,16 @@
 *	Crew Monitor	*
 ********************/
 /mob/living/silicon/proc/subsystem_crew_monitor()
-	set category = "Subsystems"
-	set name = "Crew Monitor"
+	set category = "Подсистемы"
+	set name = "Монитор экипажа"
 	crew_monitor.ui_interact(usr)
 
 /****************
 *	Law Manager	*
 ****************/
 /mob/living/silicon/proc/subsystem_law_manager()
-	set name = "Law Manager"
-	set category = "Subsystems"
+	set name = "Менеджер законов"
+	set category = "Подсистемы"
 
 	law_manager.ui_interact(usr)
 
@@ -39,8 +39,8 @@
 *	Power Monitor	*
 ********************/
 /mob/living/silicon/proc/subsystem_power_monitor()
-	set category = "Subsystems"
-	set name = "Power Monitor"
+	set category = "Подсистемы"
+	set name = "Монитор питания"
 
 	power_monitor.ui_interact(usr)
 
@@ -49,7 +49,7 @@
 	set name = "Self Diagnosis"
 
 	if(!is_component_functioning("diagnosis unit"))
-		to_chat(src, "<span class='warning'>Your self-diagnosis component isn't functioning.</span>")
+		to_chat(src, SPAN_WARNING("Your self-diagnosis component isn't functioning."))
 		return
 
 	self_diagnosis.ui_interact(src)

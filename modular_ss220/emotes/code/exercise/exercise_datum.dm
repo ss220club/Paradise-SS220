@@ -108,7 +108,7 @@
 		if(exercises_in_a_row >= brute_border)
 			L.adjustBruteLoss(min(1, exercise_value))
 		if(currentloss >= borderloss)
-			to_chat(user, span_warning("[message_end], [verb_case] [exercises_in_a_row] [verb_times]..."))
+			to_chat(user, SPAN_WARNING("[message_end], [verb_case] [exercises_in_a_row] [verb_times]..."))
 			return
 
 /datum/exercise/proc/get_sound()
@@ -195,8 +195,8 @@
 
 /datum/exercise/proc/exercise_stopped()
 	user.visible_message(
-		span_boldnotice("[user] [message_force_stop], [verb_case] [exercises_in_a_row] [verb_times]."),
-		span_boldnotice("[message_self_force_stop], [verb_case] [exercises_in_a_row] [verb_times]."),
+		SPAN_BOLDNOTICE("[user] [message_force_stop], [verb_case] [exercises_in_a_row] [verb_times]."),
+		SPAN_BOLDNOTICE("[message_self_force_stop], [verb_case] [exercises_in_a_row] [verb_times]."),
 		blind_message)
 
 /datum/exercise/proc/exercise_count()
@@ -213,8 +213,8 @@
 	var/temp_message = "[user] [message_do][exercise_text]!"
 	var/temp_self_message = "[message_self_do][exercise_text]!"
 	user.visible_message(
-		is_bold_message ? span_boldnotice(temp_message) : span_notice(temp_message),
-		is_bold_message ? span_boldnotice(temp_self_message) : span_notice(temp_self_message),
+		is_bold_message ? SPAN_BOLDNOTICE(temp_message) : SPAN_NOTICE(temp_message),
+		is_bold_message ? SPAN_BOLDNOTICE(temp_self_message) : SPAN_NOTICE(temp_self_message),
 		blind_message)
 
 /datum/exercise/proc/get_exercise_message_addition()

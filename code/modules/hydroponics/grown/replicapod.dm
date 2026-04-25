@@ -38,12 +38,12 @@
 					blood_type = bloodSample.data["blood_type"]
 					factions = bloodSample.data["factions"]
 					W.reagents.clear_reagents()
-					to_chat(user, "<span class='notice'>You inject the contents of the syringe into the seeds.</span>")
+					to_chat(user, SPAN_NOTICE("You inject the contents of the syringe into the seeds."))
 					contains_sample = 1
 				else
-					to_chat(user, "<span class='warning'>The seeds reject the sample!</span>")
+					to_chat(user, SPAN_WARNING("The seeds reject the sample!"))
 		else
-			to_chat(user, "<span class='warning'>The seeds already contain a genetic sample!</span>")
+			to_chat(user, SPAN_WARNING("The seeds already contain a genetic sample!"))
 	else
 		return ..()
 
@@ -54,7 +54,7 @@
 	return text
 
 
-/obj/item/seeds/replicapod/harvest(mob/user = usr) //now that one is fun -- Urist
+/obj/item/seeds/replicapod/harvest(mob/user, obj/item/storage/bag/plants/bag)
 	var/obj/machinery/hydroponics/parent = loc
 	var/make_podman = 0
 	var/ckey_holder = null
@@ -62,8 +62,8 @@
 		if(ckey)
 			for(var/mob/M in GLOB.player_list)
 				if(isobserver(M))
-					var/mob/dead/observer/O = M
-					if(O.ckey == ckey && O.can_reenter_corpse)
+					var/mob/dead/observer/ghost = M
+					if(ghost.ckey == ckey && ghost.ghost_flags & GHOST_CAN_REENTER)
 						make_podman = 1
 						break
 				else
@@ -74,8 +74,8 @@
 			for(var/mob/M in GLOB.player_list)
 				if(mind && M.mind && ckey(M.mind.key) == ckey(mind.key) && M.ckey && M.client && M.stat == DEAD && !M.suiciding)
 					if(isobserver(M))
-						var/mob/dead/observer/O = M
-						if(!O.can_reenter_corpse)
+						var/mob/dead/observer/ghost = M
+						if(!(ghost.ghost_flags & GHOST_CAN_REENTER))
 							break
 					make_podman = 1
 					ckey_holder = M.ckey
@@ -102,5 +102,7 @@
 		for(var/i=0,i<seed_count,i++)
 			var/obj/item/seeds/replicapod/harvestseeds = src.Copy()
 			harvestseeds.forceMove(output_loc)
+			if(bag && bag.can_be_inserted(harvestseeds))
+				bag.handle_item_insertion(harvestseeds, user, TRUE)
 
 	parent.update_tray(user, 1)

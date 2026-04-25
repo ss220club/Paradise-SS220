@@ -58,7 +58,7 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/gateway/centerstation/LateInitialize()
-	awaygate = locate(/obj/machinery/gateway/centeraway) in GLOB.machines
+	awaygate = locate(/obj/machinery/gateway/centeraway) in SSmachines.get_by_type(/obj/machinery/gateway)
 
 /obj/machinery/gateway/centerstation/update_density_from_dir()
 	return
@@ -109,13 +109,13 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 	if(!has_power())
 		return
 	if(!awaygate)
-		awaygate = locate(/obj/machinery/gateway/centeraway) in GLOB.machines
+		awaygate = locate(/obj/machinery/gateway/centeraway) in SSmachines.get_by_type(/obj/machinery/gateway)
 		if(!awaygate)
-			to_chat(user, span_notice("Error: No destination found."))
+			to_chat(user, SPAN_NOTICE("Error: No destination found."))
 			return
 	var/wait = GLOB.configuration.gateway.away_mission_delay + SSticker.round_start_time
 	if(wait > world.time)
-		to_chat(user, span_notice("Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes."))
+		to_chat(user, SPAN_NOTICE("Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -165,10 +165,10 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 		return
 
 
-/obj/machinery/gateway/centerstation/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
-	if(istype(W,/obj/item/multitool))
+/obj/machinery/gateway/centerstation/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/multitool))
 		to_chat(user, "The gate is already calibrated, there is no work for you to do here.")
-		return
+		return ITEM_INTERACT_COMPLETE
 	return ..()
 
 /////////////////////////////////////Away////////////////////////
@@ -188,7 +188,7 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 /obj/machinery/gateway/centeraway/Initialize(mapload)
 	..()
 	update_icon(UPDATE_ICON_STATE)
-	stationgate = locate(/obj/machinery/gateway/centerstation) in GLOB.machines
+	stationgate = locate(/obj/machinery/gateway/centerstation) in SSmachines.get_by_type(/obj/machinery/gateway)
 
 
 /obj/machinery/gateway/centeraway/update_density_from_dir()
@@ -224,9 +224,9 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 	if(length(linked) != 8)
 		return
 	if(!stationgate)
-		stationgate = locate(/obj/machinery/gateway/centerstation) in GLOB.machines
+		stationgate = locate(/obj/machinery/gateway/centerstation) in SSmachines.get_by_type(/obj/machinery/gateway)
 		if(!stationgate)
-			to_chat(user, span_notice("Error: No destination found."))
+			to_chat(user, SPAN_NOTICE("Error: No destination found."))
 			return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -284,17 +284,16 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 /obj/machinery/gateway/centeraway/proc/exilecheck(mob/living/carbon/M)
 	for(var/obj/item/bio_chip/exile/E in M) // Checking that there is an exile bio-chip in the contents
 		if(E.imp_in == M) // Checking that it's actually implanted vs just in their pocket
-			to_chat(M, span_notice("The station gate has detected your exile bio-chip and is blocking your entry."))
+			to_chat(M, SPAN_NOTICE("The station gate has detected your exile bio-chip and is blocking your entry."))
 			return TRUE
 	return FALSE
 
-/obj/machinery/gateway/centeraway/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
-	if(istype(W,/obj/item/multitool))
+/obj/machinery/gateway/centeraway/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/multitool))
 		if(calibrated)
-			to_chat(user, span_notice("The gate is already calibrated, there is no work for you to do here."))
-			return
+			to_chat(user, SPAN_NOTICE("The gate is already calibrated, there is no work for you to do here."))
 		else
-			to_chat(user, span_boldannounce("Recalibration successful!") + span_notice(": This gate's systems have been fine tuned.  Travel to this gate will now be on target."))
+			to_chat(user, SPAN_BOLDANNOUNCE("Recalibration successful!") + SPAN_NOTICE(": This gate's systems have been fine tuned.  Travel to this gate will now be on target."))
 			calibrated = TRUE
-		return
+		return ITEM_INTERACT_COMPLETE
 	return ..()

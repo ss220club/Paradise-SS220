@@ -38,6 +38,7 @@
 	var/list/datum/mind/xenos = list()
 	var/list/datum/mind/eventmiscs = list()
 	var/list/blob_overminds = list()
+	var/list/incursion_portals = list()
 
 	var/list/datum/station_goal/station_goals = list() // A list of all station goals for this game mode
 	var/list/secondary_goal_grab_bags = null // Once initialized, contains an associative list of department_name -> list(secondary_goal_type). When a goal is requested, a type will be pulled out of the department's grab bag. When the bag is empty, it will be refilled from the list of all goals in that department, with the amount of each set to the type's weight, max 10.
@@ -81,6 +82,8 @@
 	var/list/datum/mind/abductors = list()
 	/// A list which contains the minds of all abductees
 	var/list/datum/mind/abductees = list()
+	/// A list which contains the all the abductor teams
+	var/list/datum/team/abductor/actual_abductor_teams = list()
 
 	/// A list of all the nuclear operatives' minds
 	var/list/datum/mind/syndicates = list()
@@ -247,7 +250,8 @@
 	for(var/tech_id in SSeconomy.tech_levels)
 		SSblackbox.record_feedback("tally", "cargo max tech level sold", SSeconomy.tech_levels[tech_id], tech_id)
 
-	GLOB.discord_manager.send2discord_simple(DISCORD_WEBHOOK_PRIMARY, "A round of [name] has ended - [surviving_total] survivors, [ghosts] ghosts. <@&[GLOB.configuration.discord.new_round_waiting_role]>") // SS220 Addition
+	var/round_text = GLOB.round_id ? "Round [GLOB.round_id]" : "Unknown Round"
+	GLOB.discord_manager.send2discord_simple(DISCORD_WEBHOOK_PRIMARY, "[round_text] of [get_webhook_name()] has ended - [surviving_total] survivors, [ghosts] ghosts. <@&[GLOB.configuration.discord.new_round_waiting_role]>") // SS220 Addition
 	if(SSredis.connected)
 		// Send our presence to required channels
 		var/list/presence_data = list()
@@ -274,21 +278,19 @@
 	if(rev_team)
 		rev_team.check_all_victory()
 
-/datum/game_mode/proc/get_players_for_role(role, override_jobbans = FALSE, species_exclusive = null)
+/datum/game_mode/proc/get_players_for_role(role, override_jobbans = FALSE, species_exclusive = null, list/species_exclude = null)
 	var/list/players = list()
 	var/list/candidates = list()
-
-	var/roletext = get_roletext(role)
 
 	// Assemble a list of active players without jobbans.
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(player.client && player.ready)
-			if(!jobban_isbanned(player, ROLE_SYNDICATE) && !jobban_isbanned(player, roletext))
+			if(!jobban_isbanned(player, ROLE_SYNDICATE) && !jobban_isbanned(player, role))
 				if(player_old_enough_antag(player.client,role))
 					players += player
 
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
-		if(jobban_isbanned(player, ROLE_SYNDICATE) || jobban_isbanned(player, roletext))
+		if(jobban_isbanned(player, ROLE_SYNDICATE) || jobban_isbanned(player, role))
 			continue
 		if(player_old_enough_antag(player.client, role))
 			players += player
@@ -297,11 +299,15 @@
 	players = shuffle(players)
 	// Get a list of all the people who want to be the antagonist for this round
 	for(var/mob/eligible_player in players)
-		if(!eligible_player.client.skip_antag)
+		if(!eligible_player.client.persistent.skip_antag)
 			if(species_exclusive && (eligible_player.client.prefs.active_character.species != species_exclusive))
 				continue
+			// SS220 ADDITION START - SERPENTIDS
+			if(species_exclude && (eligible_player.client.prefs.active_character.species in species_exclude))
+				continue
+			// SS220 ADDITION END - SERPENTIDS
 			if(role in eligible_player.client.prefs.be_special)
-				player_draft_log += "[eligible_player.key] had [roletext] enabled, so we are drafting them."
+				player_draft_log += "[eligible_player.key] had [role] enabled, so we are drafting them."
 				candidates += eligible_player.mind
 				players -= eligible_player
 
@@ -317,18 +323,19 @@
 							//			Less if there are not enough valid players in the game entirely to make recommended_enemies.
 
 // Just the above proc but for alive players
-/// Gets all alive players for a specific role. Disables offstation roles by default
+/**
+ * DEPRECATED!
+ * Gets all alive players for a specific role. Disables offstation roles by default
+ */
 /datum/game_mode/proc/get_alive_players_for_role(role, override_jobbans = FALSE, allow_offstation_roles = FALSE)
 	var/list/players = list()
 	var/list/candidates = list()
-
-	var/roletext = get_roletext(role)
 
 	// Assemble a list of active players without jobbans.
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
 		if(!player.client || (locate(player) in SSafk.afk_players))
 			continue
-		if(!jobban_isbanned(player, ROLE_SYNDICATE) && !jobban_isbanned(player, roletext))
+		if(!jobban_isbanned(player, ROLE_SYNDICATE) && !jobban_isbanned(player, role))
 			players += player
 
 	// Shuffle the players list so that it becomes ping-independent.
@@ -336,13 +343,13 @@
 
 	// Get a list of all the people who want to be the antagonist for this round, except those with incompatible species, and those who are already antagonists
 	for(var/mob/living/carbon/human/player in players)
-		if(player.client.skip_antag || !(allow_offstation_roles || !player.mind?.offstation_role) || player.mind?.special_role)
+		if(player.client.persistent.skip_antag || !(allow_offstation_roles || !player.mind?.offstation_role) || player.mind?.special_role)
 			continue
 
 		if(!(role in player.client.prefs.be_special) || (player.client.prefs.active_character.species in species_to_mindflayer))
 			continue
 
-		player_draft_log += "[player.key] had [roletext] enabled, so we are drafting them."
+		player_draft_log += "[player.key] had [role] enabled, so we are drafting them."
 		candidates += player.mind
 		players -= player
 
@@ -420,7 +427,7 @@
 //Reports player logouts//
 //////////////////////////
 /proc/display_roundstart_logout_report()
-	var/msg = "<span class='notice'>Roundstart logout report</span>\n\n"
+	var/msg = "[SPAN_NOTICE("Roundstart logout report")]\n\n"
 	for(var/mob/living/L in GLOB.mob_list)
 
 		if(L.ckey)
@@ -451,7 +458,7 @@
 					continue //Dead
 
 			continue //Happy connected client
-		for(var/mob/dead/observer/D in GLOB.mob_list)
+		for(var/mob/dead/observer/D in GLOB.dead_mob_list)
 			if(D.mind && (D.mind.is_original_mob(L) || D.mind.current == L))
 				if(L.stat == DEAD)
 					if(L.suiciding)	//Suicider
@@ -461,7 +468,7 @@
 						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
 						continue //Dead mob, ghost abandoned
 				else
-					if(D.can_reenter_corpse)
+					if(D.ghost_flags & GHOST_CAN_REENTER)
 						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>This shouldn't appear.</b></font>)\n"
 						continue //Lolwhat
 					else
@@ -486,9 +493,6 @@
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to antagonists.</b>")
 
-/proc/get_roletext(role)
-	return role
-
 /proc/get_nuke_code()
 	var/nukecode = "ERROR"
 	for(var/obj/machinery/nuclearbomb/bomb in GLOB.nuke_list)
@@ -510,57 +514,56 @@
 	var/mob/dead/observer/theghost = null
 	if(length(candidates))
 		theghost = pick(candidates)
-		to_chat(M, "<span class='userdanger'>Your mob has been taken over by a ghost! Appeal your job ban if you want to avoid this in the future!</span>")
+		to_chat(M, SPAN_USERDANGER("Your mob has been taken over by a ghost! Appeal your job ban if you want to avoid this in the future!"))
 		message_admins("[key_name_admin(theghost)] has taken control of ([key_name_admin(M)]) to replace a jobbanned player.")
 		M.ghostize()
 		M.key = theghost.key
 		dust_if_respawnable(theghost)
 	else
 		message_admins("[M] ([M.key]) has been converted into [role_type] with an active antagonist jobban for said role since no ghost has volunteered to take [M.p_their()] place.")
-		to_chat(M, "<span class='biggerdanger'>You have been converted into [role_type] with an active jobban. Your body was offered up but there were no ghosts to take over. You will be allowed to continue as [role_type], but any further violations of the rules on your part are likely to result in a permanent ban.</span>")
+		to_chat(M, SPAN_BIGGERDANGER("You have been converted into [role_type] with an active jobban. Your body was offered up but there were no ghosts to take over. You will be allowed to continue as [role_type], but any further violations of the rules on your part are likely to result in a permanent ban."))
 
 /proc/printplayer(datum/mind/ply, fleecheck)
 	var/jobtext = ""
 	if(ply.assigned_role)
 		jobtext = " the <b>[ply.assigned_role]</b>"
-	var/text = "<b>[ply.get_display_key()]</b> was <b>[ply.name]</b>[jobtext] and"
+	var/text = "<br><b>[ply.get_display_key()]</b> was <b>[ply.name]</b>[jobtext] and "
 	if(ply.current)
 		if(ply.current.stat == DEAD)
-			text += " <span class='redtext'>died</span>"
+			text += SPAN_BOLD("died!")
 		else
-			text += " <span class='greentext'>survived</span>"
+			text += SPAN_BOLD("survived")
 		if(fleecheck)
 			var/turf/T = get_turf(ply.current)
 			if(!T || !is_station_level(T.z))
-				text += " while <span class='redtext'>fleeing the station</span>"
+				text += " while [SPAN_BOLD("fleeing the station")]"
 		if(ply.current.real_name != ply.name)
-			text += " as <b>[ply.current.real_name]</b>"
+			text += " as <b>[ply.current.real_name]!</b>"
+		else
+			text += "!"
 	else
-		text += " <span class='redtext'>had [ply.p_their()] body destroyed</span>"
+		text += SPAN_BOLD("had [ply.p_their()] body destroyed!")
 	return text
 
 /proc/printeventplayer(datum/mind/ply)
 	var/text = "<b>[ply.get_display_key()]</b> was <b>[ply.name]</b>"
 	if(ply.special_role != SPECIAL_ROLE_EVENTMISC)
 		text += " the [ply.special_role]"
-	text += " and"
+	text += " and "
 	if(ply.current)
 		if(ply.current.stat == DEAD)
-			text += " <b>died</b>"
+			text += SPAN_BOLD("died!")
 		else
-			text += " <b>survived</b>"
+			text += SPAN_BOLD("survived!")
 	else
-		text += " <b>had [ply.p_their()] body destroyed</b>"
+		text += SPAN_BOLD("had [ply.p_their()] body destroyed!")
 	return text
 
 /proc/printobjectives(datum/mind/ply)
 	var/list/objective_parts = list()
 	var/count = 1
 	for(var/datum/objective/objective in ply.get_all_objectives(include_team = FALSE))
-		if(objective.check_completion())
-			objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='greentext'>Success!</span>"
-		else
-			objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+		objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text]"
 		count++
 	return objective_parts.Join("<br>")
 
@@ -610,9 +613,9 @@
 	for(var/department in departments)
 		if(departments[department])
 			any = TRUE
-			to_chat(world, "<b>[department]</b>: <span class='greenannounce'>[departments[department]] completed!</span>")
+			to_chat(world, "<b>[department]</b>: [SPAN_GREENANNOUNCE("[departments[department]] completed!")]")
 	if(!any)
-		to_chat(world, "<span class='boldannounceic'>None completed!</span>")
+		to_chat(world, SPAN_BOLDANNOUNCEIC("None completed!"))
 
 /datum/game_mode/proc/generate_station_trait_report()
 	var/something_to_print = FALSE
@@ -624,17 +627,6 @@
 		something_to_print = TRUE
 	if(something_to_print)
 		print_command_report(trait_list_desc.Join("<br>"), "NAS Trurl Detected Divergencies", FALSE)
-
-
-/datum/game_mode/proc/update_eventmisc_icons_added(datum/mind/mob_mind)
-	var/datum/atom_hud/antag/antaghud = GLOB.huds[ANTAG_HUD_EVENTMISC]
-	antaghud.join_hud(mob_mind.current)
-	set_antag_hud(mob_mind.current, "hudevent")
-
-/datum/game_mode/proc/update_eventmisc_icons_removed(datum/mind/mob_mind)
-	var/datum/atom_hud/antag/antaghud = GLOB.huds[ANTAG_HUD_EVENTMISC]
-	antaghud.leave_hud(mob_mind.current)
-	set_antag_hud(mob_mind.current, null)
 
 /// Gets the value of all end of round stats through auto_declare and returns them
 /datum/game_mode/proc/get_end_of_round_antagonist_statistics()
@@ -654,6 +646,9 @@
 /datum/game_mode/proc/traitors_to_add()
 	return 0
 
+/**
+ * DEPRECATED!
+ */
 /datum/game_mode/proc/fill_antag_slots()
 	var/traitors_to_add = 0
 
@@ -662,7 +657,7 @@
 	if(length(traitors) < traitors_to_add())
 		traitors_to_add += (traitors_to_add() - length(traitors))
 
-	if(!traitors_to_add)
+	if(traitors_to_add <= 0)
 		return
 
 	var/list/potential_recruits = get_alive_players_for_role(ROLE_TRAITOR)
@@ -680,3 +675,9 @@
 		traitor.special_role = SPECIAL_ROLE_TRAITOR
 		traitor.restricted_roles = restricted_jobs
 		traitor.add_antag_datum(/datum/antagonist/traitor) // They immediately get a new objective
+
+/datum/game_mode/proc/get_webhook_name()
+	return name
+
+/datum/game_mode/proc/on_mob_cryo(mob/sleepy_mob, obj/machinery/cryopod/cryopod)
+	return

@@ -51,7 +51,7 @@ if(!result || result.ckey != __ckey){\
 				log_records.Add(logs.Copy(start_index, end_index + 1))
 
 	if(length(invalid_mobs))
-		to_chat(user, "<span class='warning'>The search criteria contained invalid mobs. They have been removed from the criteria.</span>")
+		to_chat(user, SPAN_WARNING("The search criteria contained invalid mobs. They have been removed from the criteria."))
 		for(var/i in invalid_mobs)
 			selected_mobs -= i // Cleanup
 
@@ -133,8 +133,8 @@ if(!result || result.ckey != __ckey){\
 	var/list/dat = list()
 	dat += "<head><meta http-equiv='X-UA-Compatible' content='IE=edge'><style>.adminticket{border:2px solid} td{border:1px solid grey;} th{border:1px solid grey;} span{float:left;width:150px;}</style></head>"
 	dat += "<div style='min-height:100px'>"
-	dat += "<span>Time Search Range:</span> <a href='byond://?src=[UID()];start_time=1'>[gameTimestamp(wtime = time_from)]</a>"
-	dat += " To: <a href='byond://?src=[UID()];end_time=1'>[gameTimestamp(wtime = time_to)]</a>"
+	dat += "<span>Time Search Range:</span> <a href='byond://?src=[UID()];start_time=1'>[deciseconds_to_time_stamp(time_from)]</a>" // SS220 EDIT: timestamp fix
+	dat += " To: <a href='byond://?src=[UID()];end_time=1'>[deciseconds_to_time_stamp(time_to)]</a>" // SS220 EDIT: timestamp fix
 	dat += "<BR>"
 
 	dat += "<span>Mobs being used:</span>"
@@ -183,10 +183,10 @@ if(!result || result.ckey != __ckey){\
 	dat += "<tr style='[trStyleTop]'><th style='[tdStyleTime]'>When</th><th style='[tdStyleType]'>Type</th><th style='[tdStyleWho]'>Who</th><th>What</th><th>Target</th><th style='[tdStyleWhere]'>Where</th></tr>"
 	for(var/i in log_records)
 		var/datum/log_record/L = i
-		var/time = gameTimestamp(wtime = L.raw_time - 9.99) // The time rounds up for some reason. Will result in weird filtering results
+		var/time = deciseconds_to_time_stamp(L.raw_time) // SS220 EDIT: timestamp fix
 
 		dat +="<tr style='[trStyle]'><td style='[tdStyleTime]'>[time]</td><td style='[tdStyleType]background: [get_logtype_color(L.log_type)]'>[L.log_type]</td>\
-		<td style='[tdStyleWho]'>[L.who]</td><td style='background: [get_logtype_color(L.log_type)];'>[L.what]</td>\
+		<td style='[tdStyleWho]'>[L.who][L.who_usr]</td><td style='background: [get_logtype_color(L.log_type)];'>[L.what]</td>\
 		<td style='[tdStyleWho]'>[L.target]</td><td style='[tdStyleWhere]'>[L.where]</td></tr>"
 	dat += "</table>"
 	dat += "</div>"
@@ -202,7 +202,7 @@ if(!result || result.ckey != __ckey){\
 			return
 		var/res = timeStampToNum(input)
 		if(res < 0)
-			to_chat(usr, "<span class='warning'>'[input]' is an invalid input value.</span>")
+			to_chat(usr, SPAN_WARNING("'[input]' is an invalid input value."))
 			return
 		time_from = res
 		show_ui(usr)
@@ -213,7 +213,7 @@ if(!result || result.ckey != __ckey){\
 			return
 		var/res = timeStampToNum(input)
 		if(res < 0)
-			to_chat(usr, "<span class='warning'>'[input]' is an invalid input value.</span>")
+			to_chat(usr, SPAN_WARNING("'[input]' is an invalid input value."))
 			return
 		time_to = res
 
@@ -224,7 +224,7 @@ if(!result || result.ckey != __ckey){\
 		var/records_len = length(log_records)
 		if(records_len > RECORD_WARN_LIMIT)
 			var/datum/log_record/last_record = log_records[RECORD_WARN_LIMIT]
-			var/last_time = gameTimestamp(wtime = last_record.raw_time - 9.99)
+			var/last_time = deciseconds_to_time_stamp(last_record.raw_time) // SS220 EDIT: timestamp fix
 			var/answer = alert(usr, "More than [RECORD_WARN_LIMIT] records were found. continuing will take a long time. This won't cause much lag for the server. Time at the [RECORD_WARN_LIMIT]th record '[last_time]'", "Warning", "Continue", "Limit to [RECORD_WARN_LIMIT]", "Cancel")
 			if(answer == "Limit to [RECORD_WARN_LIMIT]")
 				log_records.Cut(RECORD_WARN_LIMIT)
@@ -232,7 +232,7 @@ if(!result || result.ckey != __ckey){\
 				log_records.Cut()
 			else
 				if(records_len > RECORD_HARD_LIMIT)
-					to_chat(usr, "<span class='warning'>Record limit reached. Limiting to [RECORD_HARD_LIMIT].</span>")
+					to_chat(usr, SPAN_WARNING("Record limit reached. Limiting to [RECORD_HARD_LIMIT]."))
 					log_records.Cut(RECORD_HARD_LIMIT)
 		show_ui(usr)
 		return

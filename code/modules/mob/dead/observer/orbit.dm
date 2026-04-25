@@ -30,7 +30,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 				. = TRUE
 				return
 			var/mob/dead/observer/ghost = ui.user
-			ghost.ManualFollow(poi)
+			ghost.manual_follow(poi)
 			. = TRUE
 		if("refresh")
 			update_static_data(ui.user, ui)
@@ -107,6 +107,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 					- vampire
 					- changelings
 					- revolutionaries/headrevs
+					- event
 					*/
 					for(var/_A in mind.antag_datums)
 						var/datum/antagonist/A = _A
@@ -120,9 +121,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 					if(SSticker && SSticker.mode)
 						other_antags += list(
 							"Blob" = (mind.special_role == SPECIAL_ROLE_BLOB),
-							"Nuclear Operative" = (mind in SSticker.mode.syndicates),
-							"Abductor" = (mind in SSticker.mode.abductors),
-							"Event Roles" = (mind.special_role == SPECIAL_ROLE_EVENTMISC)
+							"Nuclear Operative" = (mind in SSticker.mode.syndicates)
 						)
 
 					for(var/antag_name in other_antags)
@@ -146,7 +145,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 					var/list/antag_serialized = serialized.Copy()
 					antag_serialized["antag"] = "Terror Spider"
 					antagonists += list(antag_serialized)
-				else if(istype(M, /mob/living/simple_animal/revenant))
+				else if(istype(M, /mob/living/basic/revenant))
 					var/list/antag_serialized = serialized.Copy()
 					antag_serialized["antag"] = "Revenant"
 					antagonists += list(antag_serialized)

@@ -47,6 +47,9 @@
 	return FALSE
 
 /mob/living/carbon/human/GetVoice()
+	if(HAS_TRAIT(src, TRAIT_UNKNOWN))
+		return "Unknown"
+
 	var/has_changer = HasVoiceChanger()
 
 	if(has_changer)
@@ -223,6 +226,8 @@ GLOBAL_LIST_INIT(soapy_words, list(
 				R.talk_into(src, message_pieces, null, verb)
 
 		if("whisper")
+			if(HAS_TRAIT(src, TRAIT_NO_WHISPERING))
+				return FALSE
 			whisper_say(message_pieces)
 			return 1
 		else

@@ -8,30 +8,24 @@
 	/// How fast does the key open an airlock.
 	var/hack_speed = 1 SECONDS
 
-/obj/item/door_remote/key/attack_self__legacy__attackchain(mob/user)
-	return
+/obj/item/door_remote/key/activate_self(mob/user)
+	..()
 
-/obj/item/door_remote/key/afterattack__legacy__attackchain(obj/machinery/door/airlock/attacked_airlock, mob/user, proximity)
-	if(!proximity)
-		return
-
+/obj/item/door_remote/key/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	var/obj/machinery/door/airlock/attacked_airlock = target
 	if(!istype(attacked_airlock))
 		return
 
 	if(HAS_TRAIT(attacked_airlock, TRAIT_CMAGGED))
-		to_chat(user, span_danger("[src] не вставляется в панель доступа [attacked_airlock], тут повсюду слизь!"))
-		return
-
-	if(attacked_airlock.is_special)
-		to_chat(user, span_danger("[src] не помещается в панель доступа [attacked_airlock]!"))
+		to_chat(user, SPAN_DANGER("[src] не вставляется в панель доступа [attacked_airlock], тут повсюду слизь!"))
 		return
 
 	if(!attacked_airlock.arePowerSystemsOn())
-		to_chat(user, span_danger("[attacked_airlock] без питания!"))
+		to_chat(user, SPAN_DANGER("[attacked_airlock] без питания!"))
 		return
 
 	if(busy)
-		to_chat(user, span_warning("Ты уже используешь [src] на панели доступа [attacked_airlock]!"))
+		to_chat(user, SPAN_WARNING("Ты уже используешь [src] на панели доступа [attacked_airlock]!"))
 		return
 
 	playsound(src, 'sound/items/keyring_unlock.ogg', 50)
@@ -44,7 +38,7 @@
 	busy = FALSE
 
 	if(!attacked_airlock.check_access(ID))
-		to_chat(user, span_danger("[src] похоже не подходит к панели доступа [attacked_airlock]!"))
+		to_chat(user, SPAN_DANGER("[src] похоже не подходит к панели доступа [attacked_airlock]!"))
 		return
 
 	if(!attacked_airlock.density)
@@ -52,10 +46,13 @@
 		return
 	attacked_airlock.open()
 
+/obj/item/door_remote/key/ranged_interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	return ITEM_INTERACT_COMPLETE
+
 /obj/item/door_remote/key/engineer
 	name = "\proper ключ от инженерного отдела"
 	icon_state = "eng"
-	additional_access = list(ACCESS_ENGINE,ACCESS_CONSTRUCTION)
+	additional_access = list(ACCESS_ENGINE, ACCESS_ENGINEERING_GENERAL)
 
 /obj/item/door_remote/key/medical
 	name = "\proper ключ от медицинского отдела"

@@ -63,6 +63,8 @@
 	if(no_trim)
 		return copytext(html_encode(name), 1, max_length)
 	else
+		if(isnull(name))
+			return null
 		return trim(html_encode(name), max_length)
 
 //Runs byond's sanitization proc along-side strip_html_simple
@@ -294,7 +296,7 @@
 		return copytext(new_message, 1, length + 1)
 	if(delta == 1)
 		return new_message + " "
-	if(delta % 2)
+	if(ISODD(delta))
 		new_message = " " + new_message
 		delta--
 	var/spaces = add_lspace("",delta/2-1)
@@ -450,7 +452,7 @@
 
 
 // Pencode
-/proc/pencode_to_html(text, mob/user, obj/item/pen/P = null, format = 1, sign = 1, fields = 1, deffont = PEN_FONT, signfont = SIGNFONT, crayonfont = CRAYON_FONT, no_font = FALSE)
+/proc/pencode_to_html(text, mob/user, obj/item/pen/P = null, format = 1, sign = 1, fields = 1, deffont = PEN_FONT, signfont = SIGNFONT, crayonfont = CRAYON_FONT, no_font = FALSE, name = TRUE)
 	text = replacetext(text, "\[b\]",		"<B>")
 	text = replacetext(text, "\[/b\]",		"</B>")
 	text = replacetext(text, "\[i\]",		"<I>")
@@ -471,6 +473,8 @@
 			text = replacetext(text, "\[sign\]",	"<font face=\"[signfont]\"><i>[chameleon_pen.forge_name ? chameleon_pen.forge_name : "No name was provided"]</i></font>")
 		else
 			text = replacetext(text, "\[sign\]",	"<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
+	if(name)
+		text = replacetext(text, "\[name\]",	"[user ? user.real_name : "Anonymous"]")
 	if(fields)
 		text = replacetext(text, "\[field\]",	"<span class=\"paper_field\"></span>")
 	if(format)
@@ -773,3 +777,9 @@
 /proc/wiki_link(article_name, link_text = null)
 	var/url = "[GLOB.configuration.url.wiki_url]/index.php?title=[article_name]"
 	return "<a href=\"[url]\">[link_text ? link_text : url]</a>"
+
+
+/proc/strip_byond_macros(text)
+	text = replacetext(text, "\proper", "")
+	text = replacetext(text, "\improper", "")
+	return text

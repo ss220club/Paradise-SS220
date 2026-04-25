@@ -14,9 +14,7 @@
 	max_integrity = 500
 
 	density = TRUE
-	anchored = TRUE
 
-	pixel_x = 0
 	pixel_y = -64
 
 	// Variables go below here
@@ -63,7 +61,7 @@
 	/// Gives our power input when multiplied with power_format_multi. The multiplier signifies the units of power, and this is how many of them we are inputting.
 	var/input_number = 0
 	/// Gives our power output when multiplied with power_format_multi_output. The multiplier signifies the units of power, and this is how many of them we are outputting.
-	var/output_number = 0
+	var/output_number = 1
 	/// Our set input pulling
 	var/input_pulling = 0
 	/// Targetable areas in lavaland
@@ -73,10 +71,8 @@
 		/area/mine/outpost,
 		/area/shuttle/mining,
 		)
-	/// Megafauna being targeted
-	var/mob/living/simple_animal/hostile/megafauna/target
-	/// Overlay that goes over the mob that gets beamed
-	var/image/orbital_strike
+	/// PTL target
+	var/atom/target
 
 /obj/machinery/power/transmission_laser/north
 	pixel_x = -64
@@ -84,7 +80,6 @@
 	dir = NORTH
 
 /obj/machinery/power/transmission_laser/east
-	pixel_x = 0
 	pixel_y = 0
 	dir = EAST
 
@@ -121,7 +116,7 @@
 
 /obj/machinery/power/transmission_laser/screwdriver_act(mob/living/user, obj/item/I)
 	if(firing)
-		to_chat(user,"<span class='info'>Turn the laser off first.</span>")
+		to_chat(user,SPAN_INFO("Turn the laser off first."))
 		return
 	if(default_deconstruction_screwdriver(user, initial(icon_state), initial(icon_state), I))
 		return TRUE
@@ -137,7 +132,7 @@
 		return
 	if(rotate())
 		return TRUE
-	to_chat(user, "<span class='info'>Target area blocked, please clear all objects and personnel.</span>")
+	to_chat(user, SPAN_INFO("Target area blocked, please clear all objects and personnel."))
 	return TRUE
 
 /// Rotates the laser if we have the space to do so.
@@ -215,9 +210,9 @@
 
 /obj/machinery/power/transmission_laser/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Laser currently has [unsent_earnings] unsent credits.</span>"
-	. += "<span class='notice'>Laser has generated [total_earnings] credits.</span>"
-	. += "<span class='notice'>Laser has sold [total_energy] Joules.</span>"
+	. += SPAN_NOTICE("Laser currently has [unsent_earnings] unsent credits.")
+	. += SPAN_NOTICE("Laser has generated [total_earnings] credits.")
+	. += SPAN_NOTICE("Laser has sold [total_energy] Joules.")
 
 /// Appearance changes are here
 /obj/machinery/power/transmission_laser/update_overlays()
@@ -279,7 +274,7 @@
 	data["accepting_power"] = turned_on
 	data["sucking_power"] = inputting
 	data["firing"] = firing
-	data["target"] = target ? target.internal_gps.gpstag : ""
+	data["target"] = target ? target.ptl_data() : ""
 
 	data["power_format"] = power_format_multi
 	data["input_number"] = input_number
@@ -312,7 +307,7 @@
 		if("set_input")
 			input_number = clamp(params["set_input"], 0, 999) //multiplies our input by if input
 		if("set_output")
-			output_number = clamp(params["set_output"], 0, 999)
+			output_number = clamp(params["set_output"], 1, 999)
 
 		if("inputW")
 			power_format_multi = 1
@@ -341,23 +336,24 @@
 		for(var/area_type in targetable_areas)
 			if(istype(boss_loc, area_type))
 				target_list[monster.internal_gps.gpstag] = monster
+	for(var/obj/machinery/power/laser_terminal/receptacle in GLOB.laser_terminals)
+		target_list["[receptacle.name]: [receptacle.id]"] = receptacle
 	// Target CC to sell power
 	target_list["Collection Terminal"] = null
 
 	var/choose = tgui_input_list(user, "Select target", "Target", target_list)
 	if(!choose)
 		return
+	untarget()
 	target = target_list[choose]
-	RegisterSignal(target, COMSIG_MOB_DEATH, PROC_REF(untarget))
-	if(firing && target)
-		orbital_strike = image(target.icon, target, "orbital_strike", FLY_LAYER, SOUTH)
-		target.add_overlay(orbital_strike)
+	if(target)
+		target.on_ptl_target(src)
 
 /// Stop targeting a mob once it dies
 /obj/machinery/power/transmission_laser/proc/untarget()
-	SIGNAL_HANDLER
-	target.cut_overlay(orbital_strike)
-	UnregisterSignal(target, COMSIG_MOB_DEATH)
+	SIGNAL_HANDLER // This can be called via various signals depending on what we register on the a target
+	if(target)
+		target.on_ptl_untarget(src)
 	target = null
 
 /obj/machinery/power/transmission_laser/process()
@@ -365,13 +361,6 @@
 	input_available = get_surplus()
 	if(stat & BROKEN)
 		return
-
-	var/last_disp = return_charge()
-	var/last_chrg = inputting
-	var/last_fire = firing
-
-	if(last_disp != return_charge() || last_chrg != inputting || last_fire != firing)
-		update_icon()
 
 	if(powernet && input_attempt && turned_on)
 		input_pulling = min(input_available, input_number * power_format_multi, capacity - charge )
@@ -392,6 +381,7 @@
 		firing = FALSE
 		output_level = 0
 		destroy_lasers()
+		update_icon()
 		return
 
 	if(!firing)
@@ -403,14 +393,8 @@
 		if(!target)
 			sell_power(output_level * WATT_TICK_TO_JOULE)
 		else
-			if(!QDELETED(target)) // Just for safety.
-				target.loot = list() // disable loot drops form the target to prevent cheese
-				if(10 * output_level * target.damage_coeff[BURN] / (1 MW) > target.health) // If we would kill the target dust it.
-					target.health = 0 // We need this so can_die() won't prevent dusting
-					visible_message("<span class='danger'>\The [src] is reduced to dust by the beam!</span>")
-					target.dust()
-				else
-					target.adjustFireLoss(10 * output_level / (1 MW))
+			if(!QDELETED(target)) // Make sure our target still exists
+				INVOKE_ASYNC(target, TYPE_PROC_REF(/atom, on_ptl_tick), src, output_level)
 			else
 				target = null
 		if(output_level > EYE_DAMAGE_THRESHOLD)
@@ -436,7 +420,7 @@
 				var/flashmod = max(cos(look_angle - angle_to_bore), 0)
 				someone.flash_eyes(min(round(output_level/ EYE_DAMAGE_THRESHOLD), 3) * flashmod, TRUE, TRUE)
 		if(output_level > RAD_THRESHOLD) // Starts causing weak, quickly dissipating radiation pulses around the bore when power is high enough
-			radiation_pulse(get_front_turf(), (output_level / RAD_THRESHOLD) * 50, RAD_DISTANCE_COEFFICIENT)
+			radiation_pulse(get_front_turf(), (output_level / RAD_THRESHOLD) * 200, GAMMA_RAD)
 
 
 	charge -= output_level
@@ -490,8 +474,7 @@
 
 /obj/machinery/power/transmission_laser/proc/setup_lasers()
 	if(target)
-		orbital_strike = image(target.icon, target, "orbital_strike", FLY_LAYER, SOUTH)
-		target.add_overlay(orbital_strike)
+		target.on_ptl_fire()
 	var/turf/last_step = get_step(get_front_turf(), dir)
 	for(var/num in 1 to range)
 		if(!(locate(/obj/effect/transmission_beam) in last_step))
@@ -504,7 +487,7 @@
 
 /obj/machinery/power/transmission_laser/proc/destroy_lasers()
 	if(target)
-		target.cut_overlay(orbital_strike)
+		target.on_ptl_stop()
 	for(var/obj/effect/transmission_beam/listed_beam as anything in laser_effects)
 		laser_effects -= listed_beam
 		qdel(listed_beam)
@@ -514,7 +497,6 @@
 	name = "Shimmering beam"
 	icon = 'icons/goonstation/effects/pt_beam.dmi'
 	icon_state = "ptl_beam"
-	anchored = TRUE
 
 	/// Used to deal with atoms stepping on us while firing
 	var/obj/machinery/power/transmission_laser/host

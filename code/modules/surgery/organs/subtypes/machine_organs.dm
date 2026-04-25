@@ -106,7 +106,6 @@
 	desc = "A small, powerful cell for use in fully prosthetic bodies."
 	icon_state = "cell"
 	organ_tag = "heart"
-	parent_organ = "chest"
 	dead_icon = "cell_bork"
 	slot = "heart"
 	vital = TRUE
@@ -157,5 +156,5 @@
 
 /obj/item/organ/internal/ears/microphone/remove(mob/living/user, special = FALSE)
 	if(!special)
-		to_chat(owner, "<span class='userdanger'>BZZZZZZZZZZZZZZT! Microphone error!</span>")
+		to_chat(owner, SPAN_USERDANGER("BZZZZZZZZZZZZZZT! Microphone error!"))
 	. = ..()

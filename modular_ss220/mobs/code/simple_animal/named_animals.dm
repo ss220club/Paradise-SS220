@@ -1,4 +1,4 @@
-/mob/living/simple_animal/pig/sanya
+/mob/living/basic/pig/sanya
 	name = "Саня"
 	desc = "Старый добрый хряк с сединой. Слегка подслеповат, но нюх и харизма по прежнему с ним. Чудом не пущен на мясо и дожил до почтенного возраста."
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
@@ -6,37 +6,29 @@
 	icon_living = "pig_old"
 	icon_dead = "pig_old_dead"
 	butcher_results = list(/obj/item/food/meat/ham/old = 10)
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 80
 	health = 80
 
-/mob/living/simple_animal/pig/sanya/npc_safe(mob/user) // depriving the chef of his animals is not cool
-	return FALSE
-
-/mob/living/simple_animal/hostile/retaliate/goat/chef
+/mob/living/basic/goat/chef
 	name = "Боря"
 	desc = "Этот козёл - парнокопытное гурме шефа, в его мрачных глазах-бусинках так и читается амибициозный нрав! Он не твой друг, ведь за каждым игривым прыжком может скрываться неожиданный выпад."
 	gold_core_spawnable = NO_SPAWN
 
-/mob/living/simple_animal/cow/betsy
+/mob/living/basic/cow/betsy
 	name = "Бетси"
 	desc = "Старая добрая старушка. Нескончаемый источник природного молока без ГМО. Ну почти без ГМО..."
 	gold_core_spawnable = NO_SPAWN
 
-/mob/living/simple_animal/chicken/wife
+/mob/living/basic/chicken/wife
 	name = "Галя"
 	desc = "Почетная наседка. Жена Коммандора, следующая за ним в коммандировки по космическим станциям."
 	icon_state = "chicken_white"
 	icon_living = "chicken_white"
 	icon_dead = "chicken_white_dead"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 20
 	health = 20
-
-/mob/living/simple_animal/chicken/wife/npc_safe(mob/user) // depriving the chef of his animals is not cool
-	return FALSE
 
 /mob/living/simple_animal/cock/clucky
 	name = "Коммандор Клакки"
@@ -50,7 +42,7 @@
 /mob/living/simple_animal/cock/clucky/npc_safe(mob/user) // depriving the chef of his animals is not cool
 	return FALSE
 
-/mob/living/simple_animal/goose/scientist
+/mob/living/basic/goose/scientist
 	name = "Гуськор"
 	desc = "Учёный Гусь. Везде учусь. Крайне умная и задиристая птица. Обожает генетику. Надеемся это не бывший пропавший генетик..."
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
@@ -58,74 +50,65 @@
 	icon_living = "goose_labcoat"
 	icon_dead = "goose_labcoat_dead"
 	icon_resting = "goose_labcoat_rest"
-	attacktext = "умно щипает"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 80
 	health = 80
 	resting = TRUE
-
-/mob/living/simple_animal/goose/scientist/npc_safe(mob/user)
-	return FALSE
 
 /mob/living/simple_animal/hostile/lizard/croco/gena
 	name = "Гена"
 	desc = "Крокодил обожающий музыкальные инструменты и плюшевые игрушки. Пожевать."
 	faction = list("neutral")
 
-/mob/living/simple_animal/mouse/brown/demon
+/mob/living/basic/mouse/brown/demon
 	name = "Мышедемон"
 	desc = "Секретная разработка синдиката. Сидит тут потому, что сам хочет"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 20
 	health = 20
 
-/mob/living/simple_animal/mouse/brown/demon/update_desc()
+/mob/living/basic/mouse/brown/demon/update_desc()
 	. = ..()
 	desc = initial(desc)
 
 // rats
-/mob/living/simple_animal/mouse/rat/ratatui
+/mob/living/basic/mouse/rat/ratatui
 	name = "Рататуй"
 	real_name = "Рататуй"
 	desc = "Личная крыса шеф повара, помогающая ему при готовке наиболее изысканных блюд. До момента пока он не пропадет и повар не начнет готовить что-то новенькое..."
 	mouse_color = "gray"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 20
 	health = 20
 
-/mob/living/simple_animal/mouse/rat/ratatui/update_desc()
+/mob/living/basic/mouse/rat/ratatui/update_desc()
 	. = ..()
 	desc = initial(desc)
 
-/mob/living/simple_animal/mouse/rat/irish/remi
+/mob/living/basic/mouse/rat/irish/remi
 	name = "Реми"
 	real_name = "Реми"
 	desc = "Близкий друг Рататуя. Не любимец повара, но пока тот не мешает на кухне, ему разрешили здесь остаться. Очень толстая крыса."
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 25
 	health = 25
 	transform = matrix(1.250, 0, 0, 0, 1, 0) // Толстячок на +2 пикселя
 
-/mob/living/simple_animal/mouse/rat/irish/remi/update_desc()
+/mob/living/basic/mouse/rat/irish/remi/update_desc()
 	. = ..()
 	desc = initial(desc)
 
-/mob/living/simple_animal/mouse/rat/white/brain
+/mob/living/basic/mouse/rat/white/brain
 	name = "Брейн"
 	real_name = "Брейн"
 	desc = "Сообразительная личная лабораторная крыса директора исследований, даже освоившая речь. Настолько часто сбегал, что его перестали помещать в клетку. Он явно хочет захватить мир. Где-то спрятался его напарник..."
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 20
 	health = 20
 	universal_speak = 1
 	resting = TRUE
 
-/mob/living/simple_animal/mouse/rat/white/brain/update_desc()
+/mob/living/basic/mouse/rat/white/brain/update_desc()
 	. = ..()
 	desc = initial(desc)
 
@@ -135,7 +118,7 @@
 	anchored = TRUE
 
 // hamster
-/mob/living/simple_animal/mouse/hamster/representative
+/mob/living/basic/mouse/hamster/representative
 	name = "представитель Алексей"
 	desc = "Представитель федерации хомяков. Проявите уважение при его виде, ведь он с позитивным исходом решил немало дипломатических вопросов между федерацией мышей, республикой крыс и корпорацией Нанотрейзен. Да и кто вообще хомяка так назвал?!"
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
@@ -143,7 +126,6 @@
 	icon_living = "hamster_rep"
 	icon_dead = "hamster_rep_dead"
 	icon_resting = "hamster_rep_rest"
-	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 	holder_type = /obj/item/holder/hamster_rep
 	maxHealth = 20

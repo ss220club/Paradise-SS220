@@ -26,6 +26,7 @@ SUBSYSTEM_DEF(garbage)
 
 	//Queue
 	var/list/queues
+	var/static/list/hard_del_enjoyers = list(/client, /obj/item/disk/nuclear) // SS220 EDIT - disable hard del (performance tweak)
 
 	#ifdef REFERENCE_TRACKING
 	var/list/reference_find_on_fail = list()
@@ -251,7 +252,14 @@ SUBSYSTEM_DEF(garbage)
 	var/type = D.type
 	var/refID = text_ref(D)
 
+	// SS220 EDIT START - disable hard del (performance tweak)
+#ifdef GAME_TESTS
 	del(D)
+#else
+	if(is_type_in_list(D, hard_del_enjoyers))
+		del(D)
+#endif
+	// SS220 EDIT END
 
 	tick = (TICK_USAGE - tick + ((world.time - ticktime) / world.tick_lag * 100))
 
@@ -383,12 +391,7 @@ SUBSYSTEM_DEF(garbage)
 
 #ifdef REFERENCE_TRACKING
 
-/datum/proc/find_refs()
-	set category = "Debug"
-	set name = "Find References"
-
-	if(!check_rights(R_DEBUG))
-		return
+USER_VERB(find_refs, R_DEBUG, "Find References", "Find references.", VERB_CATEGORY_DEBUG)
 	find_references(FALSE)
 
 /datum/proc/find_references(skip_alert)
@@ -436,7 +439,7 @@ SUBSYSTEM_DEF(garbage)
 
 	log_gc("Completed search for references to a [type].")
 	#ifdef FIND_REF_NOTIFY_ON_COMPLETE
-	rustg_create_toast("ParadiseSS13", "GC search complete for [type]")
+	rustlibs_create_toast("ParadiseSS13", "GC search complete for [type]")
 	#endif
 	if(usr && usr.client)
 		usr.client.running_find_references = null
@@ -446,23 +449,13 @@ SUBSYSTEM_DEF(garbage)
 	SSgarbage.can_fire = 1
 	SSgarbage.next_fire = world.time + world.tick_lag
 
-/datum/proc/qdel_then_find_references()
-	set category = "Debug"
-	set name = "qdel() then Find References"
-	if(!check_rights(R_DEBUG))
-		return
-
-	qdel(src, TRUE) //force a qdel
+USER_VERB(qdel_then_find_references, R_DEBUG, "qdel() then Find References", "qdel() then Find References", VERB_CATEGORY_DEBUG)
+	qdel(user, TRUE) //force a qdel
 	if(!running_find_references)
 		find_references(TRUE)
 
-/datum/proc/qdel_then_if_fail_find_references()
-	set category = "Debug"
-	set name = "qdel() then Find References if GC failure"
-	if(!check_rights(R_DEBUG))
-		return
-
-	qdel_and_find_ref_if_fail(src, TRUE)
+USER_VERB(qdel_then_if_fail_find_references, R_DEBUG, "qdel() then Find References if GC failure", "qdel() then Find References if GC failure", VERB_CATEGORY_DEBUG)
+	qdel_and_find_ref_if_fail(user, TRUE)
 
 /datum/proc/DoSearchVar(potential_container, container_name, recursive_limit = 64, search_time = world.time)
 	if((usr?.client && !usr.client.running_find_references) || SSgarbage.ref_search_stop)

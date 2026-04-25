@@ -255,7 +255,7 @@
 						M_job = "Carbon-based"
 
 				else if(issilicon(M)) //silicon
-					if(isAI(M))
+					if(is_ai(M))
 						M_job = "AI"
 					else if(ispAI(M))
 						M_job = "pAI"
@@ -264,7 +264,7 @@
 					else
 						M_job = "Silicon-based"
 
-				else if(isanimal(M)) //simple animals
+				else if(isanimal_or_basicmob(M)) //simple animals
 					if(iscorgi(M))
 						M_job = "Corgi"
 					else
@@ -298,7 +298,7 @@
 			M_key = replacetext(M_key, "\\", "")
 
 			var/M_eyeUID = ""
-			if(isAI(M))
+			if(is_ai(M))
 				var/mob/living/silicon/ai/A = M
 				if(A.client && A.eyeobj) // No point following clientless AI eyes
 					M_eyeUID = "[A.eyeobj.UID()]"
@@ -355,6 +355,9 @@
 	if(SSticker && SSticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = "<html><meta charset='utf-8'><head><title>Round Status</title></head><body><h1><b>Round Status</b></h1>"
 		dat += "Current Game Mode: <b>[SSticker.mode.name]</b><br>"
+		if(istype(SSticker.mode, /datum/game_mode/dynamic))
+			var/datum/game_mode/dynamic/dynamic = SSticker.mode
+			dat += "Rulesets: <b>[english_list(dynamic.rulesets + dynamic.implied_rulesets)]</b><br>"
 		dat += "Round Duration: <b>[round(ROUND_TIME / 36000)]:[add_zero(num2text(ROUND_TIME / 600 % 60), 2)]:[add_zero(num2text(ROUND_TIME / 10 % 60), 2)]</b><br>"
 		dat += "<b>Emergency shuttle</b><br>"
 		if(SSshuttle.emergency.mode < SHUTTLE_CALL)
@@ -501,7 +504,7 @@
 				for(var/obj/structure/spider/eggcluster/terror_eggcluster/E in GLOB.ts_egg_list)
 					if(is_station_level(E.z))
 						count_eggs += E.spiderling_number
-				for(var/obj/structure/spider/spiderling/terror_spiderling/L in GLOB.ts_spiderling_list)
+				for(var/mob/living/basic/spiderling/terror_spiderling/L in GLOB.ts_spiderling_list)
 					if(!L.stillborn && is_station_level(L.z))
 						count_spiderlings += 1
 				count_infected = length(GLOB.ts_infected_list)

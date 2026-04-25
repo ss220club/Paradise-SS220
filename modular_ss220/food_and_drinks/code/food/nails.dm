@@ -17,7 +17,7 @@
 
 /obj/item/food/nails/On_Consume(mob/living/carbon/human/user)
 	. = ..()
-	to_chat(user, span_warning("Ты чувствуешь адскую боль во рту!"))
+	to_chat(user, SPAN_WARNING("Ты чувствуешь адскую боль во рту!"))
 	playsound(user.loc, "bonebreak", 60, TRUE)
 	user.apply_damage(5, BRUTE, "head")
 
@@ -40,6 +40,11 @@
 	input = /obj/item/stack/rods
 	output = /obj/item/nails
 
-/datum/deepfryer_special/nails
-	input = /obj/item/nails
-	output = /obj/item/food/nails
+/datum/cooking/recipe/nails
+	container_type = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/nails
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/nails),
+		PCWJ_USE_DEEP_FRYER(20 SECONDS),
+	)
+	appear_in_default_catalog = FALSE

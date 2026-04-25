@@ -3,6 +3,7 @@
 	desc = "This spell needs a description!"
 	human_req = TRUE
 	clothes_req = FALSE
+	antimagic_flags = NONE
 	/// A reference to the owner mindflayer's antag datum.
 	var/datum/antagonist/mindflayer/flayer
 
@@ -59,7 +60,8 @@
 		return FALSE
 
 	if(checks_nullification && HAS_TRAIT(user, TRAIT_MINDFLAYER_NULLIFIED))
-		flayer_datum.send_swarm_message("We do not have the energy to manifest that currently...")
+		if(show_message)
+			flayer_datum.send_swarm_message("We do not have the energy to manifest that currently...")
 		return FALSE
 	return TRUE
 

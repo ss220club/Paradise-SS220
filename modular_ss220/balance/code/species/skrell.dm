@@ -19,9 +19,9 @@
 	. = ..()
 	if(!isskrell(user))
 		return
-	. += "<span class='notice'>It contains:</span>"
+	. += SPAN_NOTICE("It contains:")
 	for(var/datum/reagent/reagent_inside_food as anything in reagents.reagent_list)
-		. += "<span class='notice'>[reagent_inside_food.volume] units of [reagent_inside_food.name]</span>"
+		. += SPAN_NOTICE("[reagent_inside_food.volume] units of [reagent_inside_food.name]")
 
 // Reagent scan for solutions
 /mob/living/carbon/human/reagent_vision()

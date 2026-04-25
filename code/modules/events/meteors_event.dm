@@ -1,9 +1,16 @@
 /datum/event/meteor_wave
+	name = "Meteor Wave"
 	startWhen		= 5
-	endWhen 		= 7
+	nominal_severity = EVENT_LEVEL_MODERATE
+	// We set this when the station clears the meteor storm to keep the event ongoing for a bit so it keeps having a cost
+	noAutoEnd = TRUE
+	role_weights = list(ASSIGNMENT_ENGINEERING = 5)
+	role_requirements = list(ASSIGNMENT_ENGINEERING = 4)
 	var/next_meteor = 6
 	var/waves = 1
 	var/atom/movable/screen/alert/augury/meteor/screen_alert
+	/// The time at which we clear the storm. This is set during the event run so we initialize it to an unreachable value
+	var/clear_time = -1
 
 /datum/event/meteor_wave/setup()
 	for(var/mob/dead/observer/O in GLOB.dead_mob_list)
@@ -15,30 +22,40 @@
 
 /datum/event/meteor_wave/announce(false_alarm)
 	if(severity == EVENT_LEVEL_MAJOR || (false_alarm && prob(30)))
-		GLOB.minor_announcement.Announce("Meteors have been detected on collision course with the station.", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
+		GLOB.minor_announcement.Announce("Зафиксировано движение астероидов на встречном со станцией курсе.", "ВНИМАНИЕ: Астероиды.", new_sound = 'sound/AI/meteors.ogg')
 	else
-		GLOB.minor_announcement.Announce("The station is now in a meteor shower.", "Meteor Alert")
+		GLOB.minor_announcement.Announce("Станция проходит через скопление астероидов.", "ВНИМАНИЕ: Астероиды.")
 
 //meteor showers are lighter and more common,
 /datum/event/meteor_wave/tick()
 	// keep observers updated with the alert
-	for(var/mob/dead/observer/O in GLOB.dead_mob_list)
-		O.throw_alert("\ref[src]_augury", /atom/movable/screen/alert/augury/meteor)
+	if(screen_alert)
+		for(var/mob/dead/observer/O in GLOB.dead_mob_list)
+			O.throw_alert("\ref[src]_augury", /atom/movable/screen/alert/augury/meteor)
 	if(waves && activeFor >= next_meteor)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_meteors), get_meteor_count(), get_meteors())
 		next_meteor += rand(15, 30) / severity
 		waves--
-		endWhen = (waves ? next_meteor + 1 : activeFor + 15)
+	// When the storm is done we set a timer for the event end instead of finishing it.
+	// This is so it still incurs a cost for the event system for a while.
+	if(!waves && noAutoEnd)
+		// Set a 15 cycle(30 second) timer before we announce clearing the storm.
+		// This is to give the last meteor enough time to finish moving
+		clear_time = activeFor + 15
+		endWhen = activeFor + 700
+		noAutoEnd = FALSE
+	if(activeFor == clear_time)
+		announce_clear()
 
-/datum/event/meteor_wave/end()
+/datum/event/meteor_wave/proc/announce_clear()
 	for(var/mob/M in GLOB.dead_mob_list)
 		M.clear_alert("\ref[src]_augury")
 	QDEL_NULL(screen_alert)
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			GLOB.minor_announcement.Announce("The station has cleared the meteor storm.", "Meteor Alert")
+			GLOB.minor_announcement.Announce("Станция прошла через астероидный пояс", "ВНИМАНИЕ: Астероиды.")
 		else
-			GLOB.minor_announcement.Announce("The station has cleared the meteor shower", "Meteor Alert")
+			GLOB.minor_announcement.Announce("Станция прошла через скопление астероидов", "ВНИМАНИЕ: Астероиды.")
 
 /datum/event/meteor_wave/proc/get_meteors()
 	switch(severity)

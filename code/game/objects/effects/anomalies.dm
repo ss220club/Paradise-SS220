@@ -8,7 +8,6 @@
 	name = "anomaly"
 	desc = "A mysterious anomaly, seen commonly only in the region of space that the station orbits..."
 	icon_state = "bhole3"
-	density = FALSE
 	light_range = 3
 	var/movechance = ANOMALY_MOVECHANCE
 	var/obj/item/assembly/signaler/anomaly/aSignal = /obj/item/assembly/signaler/anomaly
@@ -19,6 +18,9 @@
 
 	var/countdown_colour
 	var/obj/effect/countdown/anomaly/countdown
+
+	/// Used by the canister grenades to modify functions.
+	var/canister_spawned = FALSE
 
 	/// Do we drop a core when we're neutralized?
 	var/drops_core = TRUE
@@ -94,26 +96,35 @@
 	// Else, anomaly core gets deleted by qdel(src).
 	qdel(src)
 
-/obj/effect/anomaly/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/analyzer))
-		to_chat(user, "<span class='notice'>Analyzing... [src]'s unstable field is fluctuating along frequency [format_frequency(aSignal.frequency)], code [aSignal.code].</span>")
+// Used by the anomalous canister grenades to make them balanced for grenade use.
+/obj/effect/anomaly/proc/anomalous_canister_setup()
+	canister_spawned = TRUE
+	return
+
+/obj/effect/anomaly/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/analyzer))
+		to_chat(user, SPAN_NOTICE("Analyzing... [src]'s unstable field is fluctuating along frequency [format_frequency(aSignal.frequency)], code [aSignal.code]."))
+		return ITEM_INTERACT_COMPLETE
 
 /obj/effect/anomaly/grav
 	name = "gravitational anomaly"
 	icon_state = "shield2"
-	density = FALSE
 	appearance_flags = PIXEL_SCALE|LONG_GLIDE
-	layer = OBJ_LAYER // Mobs will appear above this
 	var/boing = FALSE
 	var/knockdown = FALSE
 	aSignal = /obj/item/assembly/signaler/anomaly/grav
 	var/obj/effect/warp_effect/supermatter/warp
 
-/obj/effect/anomaly/grav/Initialize(mapload, new_lifespan, _drops_core = TRUE, event_spawned = TRUE)
+/obj/effect/anomaly/grav/Initialize(mapload, new_lifespan, _drops_core = TRUE)
 	. = ..()
 	warp = new(src)
 	vis_contents += warp
-	if(!event_spawned) //So an anomaly in the hallway is assured to have some risk to it, but not make sm / vetus too much pain
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+	if(!_drops_core) // So an anomaly in the hallway is assured to have some risk to it, but not make sm / vetus too much pain
 		return
 	for(var/I in 1 to 3)
 		if(prob(75))
@@ -147,9 +158,8 @@
 	animate(warp, time = 6, transform = matrix().Scale(0.5,0.5))
 	animate(time = 14, transform = matrix())
 
-/obj/effect/anomaly/grav/Crossed(atom/movable/AM)
-	. = ..()
-	gravShock(AM)
+/obj/effect/anomaly/grav/proc/on_atom_entered(datum/source, atom/movable/entered)
+	gravShock(entered)
 
 /obj/effect/anomaly/grav/Bump(atom/A)
 	gravShock(A)
@@ -195,19 +205,21 @@
 	if(explosive)
 		zap_flags = ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE | ZAP_MOB_STUN
 		power = 15000
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/effect/anomaly/flux/anomalyEffect()
 	..()
 	canshock = TRUE
 	for(var/mob/living/M in get_turf(src))
 		mobShock(M)
-	if(explosive) //Let us not fuck up the sm that much
+	if(explosive || canister_spawned) // Let us not fuck up the sm that much
 		tesla_zap(src, zap_range, power, zap_flags)
 
-
-/obj/effect/anomaly/flux/Crossed(atom/movable/AM)
-	. = ..()
-	mobShock(AM)
+/obj/effect/anomaly/flux/proc/on_atom_entered(datum/source, atom/movable/entered)
+	mobShock(entered)
 
 /obj/effect/anomaly/flux/Bump(atom/A)
 	mobShock(A)
@@ -220,17 +232,21 @@
 		canshock = FALSE //Just so you don't instakill yourself if you slam into the anomaly five times in a second.
 		M.electrocute_act(shockdamage, name, flags = SHOCK_NOGLOVES)
 		if(!knockdown)
-			M.Weaken(explosive ? 6 SECONDS : 3 SECONDS) //Back to being deadly if you touch it, rather than just being able to crawl out of it. Non explosive ones less deadly, since you can't loot them
+			M.Weaken((explosive || canister_spawned) ? 6 SECONDS : 3 SECONDS) // Back to being deadly if you touch it, rather than just being able to crawl out of it. Non explosive ones less deadly, since you can't loot them
 		else
 			M.KnockDown(3 SECONDS)
 
 /obj/effect/anomaly/flux/detonate()
-	if(explosive)
+	if(explosive && !canister_spawned)
 		explosion(src, 1, 4, 16, 18, FALSE) // Set adminlog to FALSE for custom logging
 		message_admins("\A [name] has detonated at [impact_area][ADMIN_COORDJMP(impact_area)]")
 		log_admin("\A [name] has detonated at [impact_area]")
 	else
 		new /obj/effect/particle_effect/sparks(loc)
+
+/obj/effect/anomaly/flux/anomalous_canister_setup()
+	power = 3000
+	return ..()
 
 /obj/effect/anomaly/bluespace
 	name = "bluespace anomaly"
@@ -295,7 +311,7 @@
 			var/turf/turf_to = get_turf(chosen) // the turf of origin we're travelling TO
 
 			playsound(turf_to, 'sound/effects/phasein.ogg', 100, TRUE)
-			GLOB.minor_announcement.Announce("Massive bluespace translocation detected.", "Anomaly Alert")
+			GLOB.minor_announcement.Announce("Обнаружено масштабное перемещение Блюспейс энергии.", "ВНИМАНИЕ: Обнаружена аномалия.")
 
 			var/list/flashers = list()
 			for(var/mob/living/carbon/C in viewers(turf_to, null))
@@ -332,10 +348,13 @@
 	M.client.screen -= blueeffect
 	qdel(blueeffect)
 
+/obj/effect/anomaly/bluespace/anomalous_canister_setup()
+	mass_teleporting = FALSE
+	return ..()
+
 /obj/effect/anomaly/pyro
 	name = "pyroclastic anomaly"
 	icon_state = "mustard"
-	var/ticks = 0
 	var/produces_slime = TRUE
 	aSignal = /obj/item/assembly/signaler/anomaly/pyro
 
@@ -345,16 +364,11 @@
 
 /obj/effect/anomaly/pyro/anomalyEffect()
 	..()
-	ticks++
 	for(var/mob/living/M in hearers(4, src))
 		if(prob(50))
 			M.adjust_fire_stacks(4)
 			M.IgniteMob()
 
-	if(ticks < 4)
-		return
-	else
-		ticks = 0
 	var/turf/simulated/T = get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/air = new()
@@ -364,7 +378,7 @@
 		T.blind_release_air(air)
 
 /obj/effect/anomaly/pyro/detonate()
-	if(produces_slime)
+	if(produces_slime && !canister_spawned)
 		INVOKE_ASYNC(src, PROC_REF(makepyroslime))
 	if(drops_core)
 		message_admins("\A [name] has detonated at [impact_area][ADMIN_COORDJMP(impact_area)]")
@@ -376,8 +390,8 @@
 		//Make it hot and burny for the new slime
 		var/datum/gas_mixture/air = new()
 		air.set_temperature(1000)
-		air.set_toxins(500)
-		air.set_oxygen(500)
+		air.set_toxins(125)
+		air.set_oxygen(125)
 		T.blind_release_air(air)
 	var/new_colour = pick("red", "orange")
 	var/mob/living/simple_animal/slime/S = new(T, new_colour)
@@ -418,7 +432,7 @@
 		shootAt(H)
 
 	if(prob(10))
-		var/obj/effect/nanofrost_container/A = new /obj/effect/nanofrost_container(get_turf(src))
+		var/obj/effect/nanofrost_container/A = new /obj/effect/nanofrost_container/anomaly(get_turf(src))
 		for(var/i in 1 to 5)
 			step_towards(A, pick(turf_targets))
 			sleep(2)
@@ -450,7 +464,7 @@
 	var/turf/U = get_turf(target)
 	if(!T || !U)
 		return
-	var/obj/item/projectile/temp/basilisk/O = new /obj/item/projectile/temp/basilisk(T)
+	var/obj/projectile/temp/basilisk/O = new /obj/projectile/temp/basilisk(T)
 	playsound(get_turf(src), 'sound/weapons/taser2.ogg', 75, TRUE)
 	if(drops_core)
 		O.stun = 0.5 SECONDS
@@ -473,7 +487,6 @@
 
 /obj/effect/anomaly/bhole
 	name = "vortex anomaly"
-	icon_state = "bhole3"
 	desc = "That's a nice station you have there. It'd be a shame if something happened to it."
 	aSignal = /obj/item/assembly/signaler/anomaly/vortex
 	/// The timer that will give us an extra proccall of ripping the floors up
@@ -527,12 +540,14 @@
 				step_towards(O, src)
 		for(var/mob/living/M in T.contents)
 			step_towards(M, src)
-			if(drops_core)
+			if(drops_core || canister_spawned)
 				M.Weaken(3.5 SECONDS) //You ran into a black hole, you ride the pain train.
 			M.KnockDown(7 SECONDS)
 
 	//Damaging the turf
 	if(T && prob(turf_removal_chance))
+		if(isfloorturf(T) && canister_spawned)
+			return
 		T.ex_act(ex_act_force)
 
 #undef ANOMALY_MOVECHANCE

@@ -105,25 +105,77 @@
 	else if(!vision || vision.is_broken())   // Vision organs cut out or broken? Permablind.
 		EyeBlind(4 SECONDS)
 
+	if(getBrainLoss() >= 60 && stat != DEAD)
+		if(prob(3))
+			var/list/crazysay = list("Я [pick("ПОНИ","ЯЩЕР","ТАЯРА","КОТЁНОК","ВУЛЬП","ДРАСК","ПТИЧКА","ВОКСИК","МАШИНА","БОЕВОЙ МЕХ","РАКЕТА")] [pick("НЬЕЕЕЕЕЕЕЕЕЕ","СКРЭЭЭЭЭЭЭЭЭ","МЯУ","НЯ~","РАВР","ГАВ-ГАВ","ХИССССС","ВРУУУМ-ВРУУУУМ","ПИУ-ПИУ","ЧУ-ЧУ")]!",
+							"без кислорода блоб не распространяется?",
+							"КАПИТАН - ГАНДОН!",
+							"[pick("", "Этот чёртов маньяк,")] [pick("Жордж","Джордж","Горж","Грудж")] [pick("Меленс","Мэлонс","Мвырлнс")] убивает меня ПАМА;ГИТЕ!!!",
+							"Можишь пж дать [pick("теликенез","халга","эпелепсию")]?",
+							"ООООО МОЯ ОБОРОНА",
+							"Би - ЛУЧШЕЕ С ДВУХ СТОРОН!",
+							"Я ХОЧУ ПОГЛАДИТЬ ЭТХ БИБЗЯН!",
+							"не бей пж!!!!",
+							"ПЕРКРАТИ!",
+							"ПАМАГИТЕ ЩЕТКУРИТИ",
+							"ВОКсЫ нЕ мОГут ЛюБИТь",
+							"Мой папа владеет этой станцией",
+							"Повар добавил [pick("ПРОТЕИН", "туолетную воду", "муравьёв", "энзимы","акулу","виТамины","РеАктивный МутАген","ТеСлиум","сКрэКтониум")] в [pick("мой суп","мою шОверму","мой рЭйнбургер","мой зеЛёный Сольент","мои СушИ","мой борш")]!",
+							"У ОБЕЗЬЯН ТАЗЕРЫ!",
+							"кМ потраТел мои поенты на [pick("бОевые дробавики","ризИновые перЧатке","кУчу херни!")]",
+							"EI'NATH!",
+							"ПРОСНИТЕСЬ, БАРАНЫ!",
+							"эта [pick("был мой младшей брат!!","была мая невеста","был мой осТавшЕйся друк","был Мой деДдом","былА мая люБов","была моя жена","был мой муж","маИ малЕнькие ДеТи","МаЯ разУмнАя коШка")]",
+							"ФУС РО ДА",
+							"ёбаные мандарины!!!",
+							"Праверь меня",
+							"Моё лицо!",
+							"СПОКОЙНО БЛЯТЬ!",
+							"ВАААААААААГХ!!!",
+							"Папробуй догани!",
+							"ЗА ИМПЕРАТОРА!",
+							"ДАЧНОГО ДНЯ!!!!",
+							"это всё дварфы, чел, всё дварфы",
+							"СПЕЙС МАРИНЫ",
+							"Мввыы ссдееллалии этво вво имя хаосса",
+							"Фотареалистичные тикстуры",
+							"Любоф цвятёт",
+							"ПАКЕТЫ!!!",
+							"[pick("ГДЕ МОЙ","МХНЕ НУЖЕН","ДАЙ МНЕ МОЙ","ОКУНИ МЕНЯ В")] [pick("ДЕРМАЛИН","АЛКИЗИН","ДИЛОВИН","ИНАПРОВАЛИН","БИКАРДИН","ГИПЕРЗИН","КЕЛОТАН","ЛЕПОРАЗИН","СОЛЬ","МАННИТОЛ","КРИОКСАДОН","СПЕЙС ЛУБ","КАППУЛЕТИУМ","ЛСД")]!",
+							"БжеХрнИКрлеВу",
+							"У меНя еСтЬ Лююди на Цк!!!",
+							";П-п-помогите т-т-техи",
+							"Ани идут, ани ИДУТ! АНИ ИДУТ!!!",
+							"КОНЕЦ БЛИЗОК!",
+							"Я ГОТОВ УМЕРЕТЬ ВО ИМЯ [pick("РИТУАЛА","СВОБОДЫ","ЗАРПЛАТЫ","ОЧКОВ","ТЕХНОЛОГИЙ","СОБАКИ","СИРОПА","ПУШИСТЫХ ДРУЗЕЙ","ЛУТА ИЗ ГЕЙТА","ТУЛБОКСОВ","ВУЛЬП","ПОНЧИКОВ","КЛОУНА")]",
+							"УБиЙ ИХ, [pick("ПЕТУХ","КИРА-КЛОЙН","КЛУВНИ","МИМАНЬЯК","БОМБЯЩИЯ ТАЯРА","ОФЕЦЕР","МОРФЛЕНГ","НАС-РИ")]!" ,
+							"Я МаГу ТиБЯ ЗаСТАвИТЬ СКаЗАТЬ ВсЁ ЧТО УГоДНО!!?!?!")
+			if(prob(66))
+				say(pick(crazysay))
+			else
+				emote("drool")
+
 /mob/living/carbon/human/handle_mutations_and_radiation()
 	for(var/mutation_type in active_mutations)
 		var/datum/mutation/mutation = GLOB.dna_mutations[mutation_type]
 		mutation.on_life(src)
-
-	if(!ignore_gene_stability && gene_stability < GENETIC_DAMAGE_STAGE_1)
+	var/gene_bonus
+	if(mind && HAS_TRAIT(mind, TRAIT_GENETIC_BUDGET))
+		gene_bonus = 5
+	if(!ignore_gene_stability && gene_stability < GENETIC_DAMAGE_STAGE_1 - gene_bonus)
 		var/instability = DEFAULT_GENE_STABILITY - gene_stability
 		if(prob(instability * 0.1))
 			adjustFireLoss(min(10, instability * 0.67))
-			to_chat(src, "<span class='danger'>You feel like your skin is burning and bubbling off!</span>")
-		if(gene_stability < GENETIC_DAMAGE_STAGE_2)
+			to_chat(src, SPAN_DANGER("You feel like your skin is burning and bubbling off!"))
+		if(gene_stability < GENETIC_DAMAGE_STAGE_2  - gene_bonus)
 			if(prob(instability * 0.83))
 				adjustCloneLoss(min(8, instability * 0.05))
-				to_chat(src, "<span class='danger'>You feel as if your body is warping.</span>")
+				to_chat(src, SPAN_DANGER("You feel as if your body is warping."))
 			if(prob(instability * 0.1))
 				adjustToxLoss(min(10, instability * 0.67))
-				to_chat(src, "<span class='danger'>You feel weak and nauseous.</span>")
-			if(gene_stability < GENETIC_DAMAGE_STAGE_3 && prob(1))
-				to_chat(src, "<span class='biggerdanger'>You feel incredibly sick... Something isn't right!</span>")
+				to_chat(src, SPAN_DANGER("You feel weak and nauseous."))
+			if(gene_stability < (GENETIC_DAMAGE_STAGE_3  - gene_bonus) && prob(1))
+				to_chat(src, SPAN_BIGGERDANGER("You feel incredibly sick... Something isn't right!"))
 				spawn(300)
 					if(gene_stability < GENETIC_DAMAGE_STAGE_3)
 						gib()
@@ -207,7 +259,7 @@
 			//Place is colder than we are
 			var/thermal_protection = get_cold_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
 			if(thermal_protection < 1)
-				bodytemperature += min((1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_COLD_DIVISOR), BODYTEMP_COOLING_MAX)
+				bodytemperature += max((1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_COLD_DIVISOR), BODYTEMP_COOLING_MAX)
 		else
 			//Place is hotter than we are
 			var/thermal_protection = get_heat_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
@@ -303,7 +355,7 @@
 		if(V && !V.get_ability(/datum/vampire_passive/full) && stat != DEAD)
 			V.bloodusable = max(V.bloodusable - 5, 0)
 
-/mob/living/carbon/human/proc/get_thermal_protection()
+/mob/living/carbon/human/get_thermal_protection()
 	if(HAS_TRAIT(src, TRAIT_RESISTHEAT))
 		return FIRE_IMMUNITY_MAX_TEMP_PROTECT
 
@@ -590,15 +642,15 @@
 			metabolism_efficiency = 1
 		else if(nutrition > NUTRITION_LEVEL_FED && satiety > 80)
 			if(metabolism_efficiency != 1.25)
-				to_chat(src, "<span class='notice'>You feel vigorous.</span>")
+				to_chat(src, SPAN_NOTICE("You feel vigorous."))
 				metabolism_efficiency = 1.25
 		else if(nutrition < NUTRITION_LEVEL_STARVING + 50)
 			if(metabolism_efficiency != 0.8)
-				to_chat(src, "<span class='notice'>You feel sluggish.</span>")
+				to_chat(src, SPAN_NOTICE("You feel sluggish."))
 			metabolism_efficiency = 0.8
 		else
 			if(metabolism_efficiency == 1.25)
-				to_chat(src, "<span class='notice'>You no longer feel vigorous.</span>")
+				to_chat(src, SPAN_NOTICE("You no longer feel vigorous."))
 			metabolism_efficiency = 1
 
 
@@ -625,7 +677,7 @@
 	var/guaranteed_death_threshold = health + (getOxyLoss() * 0.5) - (getFireLoss() * 0.67) - (getBruteLoss() * 0.67)
 
 	var/obj/item/organ/internal/brain = get_int_organ(/obj/item/organ/internal/brain)
-	if(brain?.damage >= brain.max_damage || (guaranteed_death_threshold) <= -500)
+	if(brain?.damage >= brain?.max_damage || guaranteed_death_threshold <= -500)
 		death()
 		return
 
@@ -663,7 +715,7 @@
 				if(-99 to -80)
 					adjustOxyLoss(1)
 					if(prob(4))
-						to_chat(src, "<span class='userdanger'>Your chest hurts...</span>")
+						to_chat(src, SPAN_USERDANGER("Your chest hurts..."))
 						Paralyse(4 SECONDS)
 						var/datum/disease/D = new /datum/disease/critical/heart_failure
 						ForceContractDisease(D)
@@ -676,7 +728,7 @@
 						var/datum/disease/D = new /datum/disease/critical/heart_failure
 						ForceContractDisease(D)
 					if(prob(6))
-						to_chat(src, "<span class='userdanger'>You feel [pick("horrible pain", "awful", "like shit", "absolutely awful", "like death", "like you are dying", "nothing", "warm", "sweaty", "tingly", "really, really bad", "horrible")]!</span>")
+						to_chat(src, SPAN_USERDANGER("You feel [pick("horrible pain", "awful", "like shit", "absolutely awful", "like death", "like you are dying", "nothing", "warm", "sweaty", "tingly", "really, really bad", "horrible")]!"))
 						Weaken(6 SECONDS)
 					if(prob(3))
 						Paralyse(4 SECONDS)
@@ -686,63 +738,88 @@
 						var/datum/disease/D = new /datum/disease/critical/shock
 						ForceContractDisease(D)
 					if(prob(5))
-						to_chat(src, "<span class='userdanger'>You feel [pick("terrible", "awful", "like shit", "sick", "numb", "cold", "sweaty", "tingly", "horrible")]!</span>")
+						to_chat(src, SPAN_USERDANGER("You feel [pick("terrible", "awful", "like shit", "sick", "numb", "cold", "sweaty", "tingly", "horrible")]!"))
 						Weaken(6 SECONDS)
+
+/mob/living/carbon/human/proc/can_metabolize(datum/reagent/reagent)
+	var/datum/species/species = dna.species
+	if(!species || !species.reagent_tag)
+		return FALSE
+
+	// SYNTHETIC-oriented reagents require PROCESS_SYN
+	if((reagent.process_flags & SYNTHETIC) && (species.reagent_tag & PROCESS_SYN))
+		return TRUE
+
+	// ORGANIC-oriented reagents require PROCESS_ORG
+	if((reagent.process_flags & ORGANIC) && (species.reagent_tag & PROCESS_ORG))
+		return TRUE
+
+	// Species with PROCESS_DUO are only affected by reagents that affect both organics and synthetics, like acid and hellwater
+	if((reagent.process_flags & ORGANIC) && (reagent.process_flags & SYNTHETIC) && (species.reagent_tag & PROCESS_DUO))
+		return TRUE
+	return FALSE
+
+/mob/living/carbon/human/shock_reduction(allow_true_health_reagents = TRUE)
+	var/shock_reduction = 0
+	if(reagents)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			if(allow_true_health_reagents && R.view_true_health) // Checks if the call is for movement speed and if the reagent shouldn't muddy up the player's health HUD
+				continue
+			if(R.shock_reduction && can_metabolize(R))
+				shock_reduction += R.shock_reduction
+	return shock_reduction
 
 #define BODYPART_PAIN_REDUCTION 5
 
 /mob/living/carbon/human/update_health_hud()
 	if(!client)
 		return
-	if(dna.species.update_health_hud())
-		return
-	else
-		var/shock_reduction = shock_reduction()
-		if(healths)
-			var/health_amount = get_perceived_trauma(shock_reduction)
-			if(..(health_amount)) //not dead
-				switch(health_hud_override)
-					if(HEALTH_HUD_OVERRIDE_CRIT)
-						healths.icon_state = "health6"
-					if(HEALTH_HUD_OVERRIDE_DEAD)
-						healths.icon_state = "health7"
-					if(HEALTH_HUD_OVERRIDE_HEALTHY)
-						healths.icon_state = "health0"
+	var/shock_reduction = shock_reduction()
+	if(healths)
+		var/health_amount = get_perceived_trauma(shock_reduction)
+		if(..(health_amount)) //not dead
+			switch(health_hud_override)
+				if(HEALTH_HUD_OVERRIDE_CRIT)
+					healths.icon_state = "health6"
+				if(HEALTH_HUD_OVERRIDE_DEAD)
+					healths.icon_state = "health7"
+				if(HEALTH_HUD_OVERRIDE_HEALTHY)
+					healths.icon_state = "health0"
 
-		if(healthdoll)
-			if(stat == DEAD)
-				healthdoll.icon_state = "healthdoll_DEAD"
-				if(length(healthdoll.overlays))
-					healthdoll.overlays.Cut()
-			else
-				var/list/new_overlays = list()
-				var/list/cached_overlays = healthdoll.cached_healthdoll_overlays
-				// Use the dead health doll as the base, since we have proper "healthy" overlays now
-				healthdoll.icon_state = "healthdoll_DEAD"
-				for(var/obj/item/organ/external/O in bodyparts)
-					var/damage = O.get_damage()
-					damage -= shock_reduction / BODYPART_PAIN_REDUCTION
-					var/comparison = (O.max_damage/5)
-					var/icon_num = 0
-					if(damage > 0)
-						icon_num = 1
-					if(damage > (comparison))
-						icon_num = 2
-					if(damage > (comparison*2))
-						icon_num = 3
-					if(damage > (comparison*3))
-						icon_num = 4
-					if(damage > (comparison*4))
-						icon_num = 5
-					new_overlays += "[O.limb_name][icon_num]"
-				healthdoll.overlays += (new_overlays - cached_overlays)
-				healthdoll.overlays -= (cached_overlays - new_overlays)
-				healthdoll.cached_healthdoll_overlays = new_overlays
-
-		if(health <= HEALTH_THRESHOLD_SUCCUMB)
-			throw_alert("succumb", /atom/movable/screen/alert/succumb)
+	if(healthdoll)
+		if(stat == DEAD)
+			healthdoll.icon_state = "healthdoll_DEAD"
+			if(length(healthdoll.overlays))
+				healthdoll.overlays.Cut()
 		else
-			clear_alert("succumb")
+			var/list/new_overlays = list()
+			var/list/cached_overlays = healthdoll.cached_healthdoll_overlays
+			// Use the dead health doll as the base, since we have proper "healthy" overlays now
+			healthdoll.icon_state = "healthdoll_DEAD"
+			for(var/obj/item/organ/external/O in bodyparts)
+				var/damage = O.get_damage()
+				damage -= shock_reduction / BODYPART_PAIN_REDUCTION
+				var/comparison = (O.max_damage/5)
+				var/icon_num = 0
+				if(damage > 0)
+					icon_num = 1
+				if(damage > (comparison))
+					icon_num = 2
+				if(damage > (comparison*2))
+					icon_num = 3
+				if(damage > (comparison*3))
+					icon_num = 4
+				if(damage > (comparison*4))
+					icon_num = 5
+				new_overlays += "[O.limb_name][icon_num]"
+			healthdoll.overlays += (new_overlays - cached_overlays)
+			healthdoll.overlays -= (cached_overlays - new_overlays)
+			healthdoll.cached_healthdoll_overlays = new_overlays
+
+	if(health <= HEALTH_THRESHOLD_SUCCUMB)
+		throw_alert("succumb", /atom/movable/screen/alert/succumb)
+	else
+		clear_alert("succumb")
 
 #undef BODYPART_PAIN_REDUCTION
 
@@ -783,13 +860,13 @@
 		for(var/obj/item/I in BP.embedded_objects)
 			if(prob(I.embedded_pain_chance))
 				BP.receive_damage(I.w_class*I.embedded_pain_multiplier)
-				to_chat(src, "<span class='userdanger'>[I] embedded in your [BP.name] hurts!</span>")
+				to_chat(src, SPAN_USERDANGER("[I] embedded in your [BP.name] hurts!"))
 
 			if(prob(I.embedded_fall_chance))
 				BP.receive_damage(I.w_class*I.embedded_fall_pain_multiplier)
 				BP.remove_embedded_object(I)
 				I.forceMove(get_turf(src))
-				visible_message("<span class='danger'>[I] falls out of [name]'s [BP.name]!</span>","<span class='userdanger'>[I] falls out of your [BP.name]!</span>")
+				visible_message(SPAN_DANGER("[I] falls out of [name]'s [BP.name]!"),SPAN_USERDANGER("[I] falls out of your [BP.name]!"))
 				if(!has_embedded_objects())
 					clear_alert("embeddedobject")
 
@@ -870,9 +947,10 @@
 			if(HAS_TRAIT(H, TRAIT_NOBREATH))
 				continue //no puking if you can't smell!
 			// Humans can lack a mind datum, y'know
-			if(H.mind && (H.mind.assigned_role == "Detective" || H.mind.assigned_role == "Coroner"))
-				continue //too cool for puke
-			to_chat(H, "<span class='warning'>You smell something foul...</span>")
+			if(H.mind && HAS_TRAIT(H.mind, TRAIT_CORPSE_RESIST))
+				to_chat(H, SPAN_WARNING("You smell something rotting nearby."))
+				continue
+			to_chat(H, SPAN_WARNING("You smell something foul..."))
 			H.fakevomit()
 
 /mob/living/carbon/human/proc/handle_heartbeat()

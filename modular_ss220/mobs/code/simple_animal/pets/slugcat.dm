@@ -20,7 +20,6 @@
 	mob_size = MOB_SIZE_SMALL
 	pass_flags = PASSTABLE
 	ventcrawler = VENTCRAWLER_ALWAYS
-	can_collar = 1
 	butcher_results = list(/obj/item/food/meat = 5)
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -43,6 +42,10 @@
 
 	var/is_pacifist = FALSE
 	var/is_reduce_damage = TRUE
+
+/mob/living/simple_animal/pet/slugcat/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/wears_collar)
 
 /mob/living/simple_animal/pet/slugcat/monk
 	name = "слизнекот-монах"
@@ -88,16 +91,16 @@
 	regenerate_icons()
 
 
-/mob/living/simple_animal/pet/slugcat/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/mob/living/simple_animal/pet/slugcat/attack_by(obj/item/attacking, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
 	if(stat != DEAD)
-		if(istype(W, /obj/item/clothing/head) && user.a_intent == INTENT_HELP)
+		if(istype(attacking, /obj/item/clothing/head) && user.a_intent == INTENT_HELP)
 			place_on_head(user.get_active_hand(), user)
-			return
-		if(istype(W, /obj/item/spear) && user.a_intent != INTENT_HARM)
+			return FINISH_ATTACK
+		if(istype(attacking, /obj/item/spear) && user.a_intent != INTENT_HARM)
 			place_to_hand(user.get_active_hand(), user)
-			return
-
-	. = ..()
+			return FINISH_ATTACK
 
 /mob/living/simple_animal/pet/slugcat/death(gibbed)
 	drop_hat()
@@ -172,29 +175,29 @@
 /mob/living/simple_animal/pet/slugcat/proc/place_on_head(obj/item/item_to_add, mob/user)
 	if(!item_to_add)
 		user.visible_message(
-			span_notice("[user] похлопывает по голове [src.name]."),
-			span_notice("Вы положили руку на голову [src.name]."))
+			SPAN_NOTICE("[user] похлопывает по голове [src.name]."),
+			SPAN_NOTICE("Вы положили руку на голову [src.name]."))
 		if(flags_2 & HOLOGRAM_2)
 			return 0
 		return 0
 
 	if(!istype(item_to_add, /obj/item/clothing/head))
-		to_chat(user, span_warning("[item_to_add.name] нельзя надеть на голову [src.name]!"))
+		to_chat(user, SPAN_WARNING("[item_to_add.name] нельзя надеть на голову [src.name]!"))
 		return 0
 
 	if(inventory_head)
 		if(user)
-			to_chat(user, span_warning("Нельзя надеть больше одного головного убора на голову [src.name]!"))
+			to_chat(user, SPAN_WARNING("Нельзя надеть больше одного головного убора на голову [src.name]!"))
 		return 0
 
-	if(user && !user.unEquip(item_to_add))
-		to_chat(user, span_warning("[item_to_add.name] застрял в ваших руках, вы не можете его надеть на голову [src.name]!"))
+	if(user && !user.unequip(item_to_add))
+		to_chat(user, SPAN_WARNING("[item_to_add.name] застрял в ваших руках, вы не можете его надеть на голову [src.name]!"))
 		return 0
 
 	user.visible_message(
-		span_notice("[user] надевает [item_to_add].name на голову [real_name]."),
-		span_notice("Вы надеваете [item_to_add.name] на голову [real_name]."),
-		span_italics("Вы слышите как что-то нацепили."))
+		SPAN_NOTICE("[user] надевает [item_to_add].name на голову [real_name]."),
+		SPAN_NOTICE("Вы надеваете [item_to_add.name] на голову [real_name]."),
+		SPAN_ITALICS("Вы слышите как что-то нацепили."))
 	item_to_add.forceMove(src)
 	inventory_head = item_to_add
 	regenerate_icons()
@@ -204,10 +207,10 @@
 /mob/living/simple_animal/pet/slugcat/proc/remove_from_head(mob/user)
 	if(inventory_head)
 		if(inventory_head.flags & NODROP)
-			to_chat(user, span_warning("[inventory_head.name] застрял на голове [src.name]! Его невозможно снять!"))
+			to_chat(user, SPAN_WARNING("[inventory_head.name] застрял на голове [src.name]! Его невозможно снять!"))
 			return TRUE
 
-		to_chat(user, span_warning("Вы сняли [inventory_head.name] с головы [src.name]."))
+		to_chat(user, SPAN_WARNING("Вы сняли [inventory_head.name] с головы [src.name]."))
 		drop_item(inventory_head)
 		user.put_in_hands(inventory_head)
 
@@ -215,7 +218,7 @@
 
 		regenerate_icons()
 	else
-		to_chat(user, span_warning("На голове [src.name] нет головного убора!"))
+		to_chat(user, SPAN_WARNING("На голове [src.name] нет головного убора!"))
 		return FALSE
 
 	return TRUE
@@ -235,37 +238,37 @@
 /mob/living/simple_animal/pet/slugcat/proc/place_to_hand(obj/item/item_to_add, mob/user)
 	if(!item_to_add)
 		user.visible_message(
-			span_notice("[user] пощупал лапки [src]."),
-			span_notice("Вы пощупали лапки [src]."))
+			SPAN_NOTICE("[user] пощупал лапки [src]."),
+			SPAN_NOTICE("Вы пощупали лапки [src]."))
 		if(flags_2 & HOLOGRAM_2)
 			return 0
 		return 0
 
 	if(resting)
-		to_chat(user, span_warning("[src.name] спит и не принимает [item_to_add.name]!"))
+		to_chat(user, SPAN_WARNING("[src.name] спит и не принимает [item_to_add.name]!"))
 		return 0
 
 	if(!istype(item_to_add, /obj/item/spear))
-		to_chat(user, span_warning("[src.name] не принимает [item_to_add.name]!"))
+		to_chat(user, SPAN_WARNING("[src.name] не принимает [item_to_add.name]!"))
 		return 0
 
 	if(inventory_hand)
 		if(user)
-			to_chat(user, span_warning("Лапки [src.name] заняты [inventory_hand.name]!"))
+			to_chat(user, SPAN_WARNING("Лапки [src.name] заняты [inventory_hand.name]!"))
 		return 0
 
 	if(user && !user.drop_item(item_to_add))
-		to_chat(user, span_warning("[item_to_add.name] застрял в ваших руках, вы не можете его дать [src.name]!"))
+		to_chat(user, SPAN_WARNING("[item_to_add.name] застрял в ваших руках, вы не можете его дать [src.name]!"))
 		return 0
 
 	if(is_pacifist)
-		to_chat(user, span_warning("[src.name] пацифист и не пользуется [item_to_add.name]!"))
+		to_chat(user, SPAN_WARNING("[src.name] пацифист и не пользуется [item_to_add.name]!"))
 		return 0
 
 	user.visible_message(
-		span_notice("[real_name] выхватывает [item_to_add] с рук [user]."),
-		span_notice("[real_name] выхватывает [item_to_add] с ваших рук."),
-		span_italics("Вы видите довольные глаза."))
+		SPAN_NOTICE("[real_name] выхватывает [item_to_add] с рук [user]."),
+		SPAN_NOTICE("[real_name] выхватывает [item_to_add] с ваших рук."),
+		SPAN_ITALICS("Вы видите довольные глаза."))
 	move_item_to_hand(item_to_add)
 
 	return 1
@@ -278,10 +281,10 @@
 /mob/living/simple_animal/pet/slugcat/proc/remove_from_hand(mob/user)
 	if(inventory_hand)
 		if(inventory_hand.flags & NODROP)
-			to_chat(user, span_warning("[inventory_hand.name] застрял в лапах [src]! Его невозможно отнять!"))
+			to_chat(user, SPAN_WARNING("[inventory_hand.name] застрял в лапах [src]! Его невозможно отнять!"))
 			return TRUE
 
-		to_chat(user, span_warning("Вы забрали [inventory_hand.name] с лап [src]."))
+		to_chat(user, SPAN_WARNING("Вы забрали [inventory_hand.name] с лап [src]."))
 		drop_item(inventory_hand)
 		user.put_in_hands(inventory_hand)
 
@@ -289,7 +292,7 @@
 
 		regenerate_icons()
 	else
-		to_chat(user, span_warning("В лапах [src] нечего отбирать!"))
+		to_chat(user, SPAN_WARNING("В лапах [src] нечего отбирать!"))
 		return FALSE
 
 	return TRUE

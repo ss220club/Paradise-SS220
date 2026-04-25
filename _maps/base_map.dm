@@ -7,12 +7,11 @@
 
 #ifndef ENABLE_TEST_CC
 #include "map_files220\generic\centcomm.dmm"
-#include "map_files220\generic\Admin_Zone.dmm"
 #else
 #include "map_files220\generic\centcomm_test.dmm"
 #endif
 // SS220 EDIT - END
-#define CC_TRANSITION_CONFIG DECLARE_LEVEL(CENTCOMM, SELFLOOPING, list(ADMIN_LEVEL, BLOCK_TELEPORT, IMPEDES_MAGIC))
+#define CC_TRANSITION_CONFIG DECLARE_LEVEL(CENTCOMM, UNAFFECTED, list(ADMIN_LEVEL, BLOCK_TELEPORT, IMPEDES_MAGIC))
 #ifdef CIMAP
 #include "ci_map_testing.dm"
 #endif

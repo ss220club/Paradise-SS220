@@ -49,7 +49,10 @@
 	. = ..()
 	. += "<span class='notice'>The power light is [(stat & NOPOWER) ? "<b>off</b>" : "<b>on</b>"]."
 	. += "The operation light is [emergency_mode ? "<b>off</b>. [src] has detected a forbidden object with its sensors, and has shut down temporarily." : "<b>on</b>. [src] is active."]"
-	. += "The safety sensor light is [emagged ? "<b>off</b>!" : "<b>on</b>."]</span>"
+	if(HAS_TRAIT(src, TRAIT_CMAGGED))
+		. += "The safety sensor light is <font color=red>R</font><font color=green>G</font><font color=blue>B</font>.</span>"
+	else
+		. += "The safety sensor light is [emagged ? "<b>off</b>!" : "<b>on</b>."]</span>"
 	. += "The recycler current accepts items from [dir2text(eat_dir)]."
 
 /obj/machinery/recycler/power_change()
@@ -77,16 +80,30 @@
 	if(default_unfasten_wrench(user, I, time = 6 SECONDS))
 		return TRUE
 
-
+/obj/machinery/recycler/cmag_act(mob/user)
+	if(emagged)
+		to_chat(user, SPAN_WARNING("The board is completely fried."))
+		return FALSE
+	if(!HAS_TRAIT(src, TRAIT_CMAGGED))
+		ADD_TRAIT(src, TRAIT_CMAGGED, CLOWN_EMAG)
+		if(emergency_mode)
+			emergency_mode = FALSE
+			update_icon(UPDATE_ICON_STATE)
+		playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		to_chat(user, SPAN_NOTICE("You use the jestographic sequencer on [src]."))
+		return TRUE
 
 /obj/machinery/recycler/emag_act(mob/user)
+	if(HAS_TRAIT(src, TRAIT_CMAGGED))
+		to_chat(user, SPAN_WARNING("The access panel is coated in yellow ooze..."))
+		return FALSE
 	if(!emagged)
 		emagged = TRUE
 		if(emergency_mode)
 			emergency_mode = FALSE
 			update_icon(UPDATE_ICON_STATE)
 		playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-		to_chat(user, "<span class='notice'>You use the cryptographic sequencer on [src].</span>")
+		to_chat(user, SPAN_NOTICE("You use the cryptographic sequencer on [src]."))
 		return TRUE
 
 /obj/machinery/recycler/update_icon_state()
@@ -127,6 +144,8 @@
 		else if(isliving(AM))
 			if(emagged)
 				crush_living(AM)
+			else if(HAS_TRAIT(src, TRAIT_CMAGGED))
+				bananafication(AM)
 			else
 				emergency_stop(AM)
 		else if(isitem(AM))
@@ -165,6 +184,15 @@
 	emergency_mode = FALSE
 	update_icon(UPDATE_ICON_STATE)
 
+/obj/machinery/recycler/proc/bananafication(mob/living/L)
+	L.loc = loc
+	if(!iscarbon(L))
+		playsound(loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
+		return
+	var/mob/living/carbon/human/victim = L
+	playsound(src, 'sound/items/AirHorn.ogg', 100, TRUE, -1)
+	victim.bananatouched_harmless()
+
 /obj/machinery/recycler/proc/crush_living(mob/living/L)
 
 	L.loc = loc
@@ -189,7 +217,7 @@
 	// Remove and recycle the equipped items
 	if(eat_victim_items)
 		for(var/obj/item/I in L.get_equipped_items(TRUE))
-			if(L.unEquip(I))
+			if(L.drop_item_to_ground(I))
 				eat(I, sound = 0)
 
 	// Instantly lie down, also go unconscious from the pain, before you die.
@@ -206,7 +234,7 @@
 		return
 
 	eat_dir = turn(eat_dir, 90)
-	to_chat(user, "<span class='notice'>[src] will now accept items from [dir2text(eat_dir)].</span>")
+	to_chat(user, SPAN_NOTICE("[src] will now accept items from [dir2text(eat_dir)]."))
 
 /obj/machinery/recycler/deathtrap
 	name = "dangerous old crusher"

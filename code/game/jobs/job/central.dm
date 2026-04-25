@@ -6,7 +6,7 @@
 	department_flag = JOB_CENTCOM // This gets its job as its own flag because admin jobs dont have flags
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the admins"
+	supervisors = "админами"
 	selection_color = "#ffdddd"
 	access = list()
 	admin_only = TRUE
@@ -52,7 +52,7 @@
 	department_flag = JOB_CENTCOM // This gets its job as its own flag because admin jobs dont have flags
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the admins"
+	supervisors = "админами"
 	selection_color = "#ffdddd"
 	access = list()
 	admin_only = TRUE
@@ -115,7 +115,7 @@
 		return
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
-		apply_to_card(I, H, get_centcom_access(name), name, "lifetimeid")
+		apply_to_card(I, H, get_centcom_access(name), name, "tsf")
 	H.sec_hud_set_ID()
 
 /datum/outfit/job/ntspecops/solgovspecops/on_mind_initialize(mob/living/carbon/human/H)

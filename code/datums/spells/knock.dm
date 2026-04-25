@@ -2,8 +2,6 @@
 	name = "Knock"
 	desc = "This spell opens nearby doors and does not require wizard garb."
 
-	school = "transmutation"
-	base_cooldown = 100
 	clothes_req = FALSE
 	invocation = "AULIE OXIN FIERA"
 	invocation_type = "whisper"
@@ -58,9 +56,9 @@
 				A.req_access = list()
 				A.req_one_access = list()
 		GLOB.major_announcement.Announce(
-			message = "We have removed all access requirements on your station's airlocks. You can thank us later!",
-			new_title = "Space Wizard Federation Message",
-			new_subtitle = "Greetings!",
+			message = "Мы сняли все ограничения на доступ к шлюзам вашей станции. Вы сможете поблагодарить нас позже!",
+			new_title = "Послание Федерации Космических Волшебников",
+			new_subtitle = "Приветствуем вас!",
 			new_sound = 'sound/misc/notice2.ogg'
 		)
 	else

@@ -23,7 +23,7 @@
 /obj/item/gun/projectile/automatic/pneumaticgun/update_icon_state()
 	var/obj/item/ammo_box/magazine/pneuma/M = magazine
 	icon_state = "pneumagun[M ? "[M.col]" : ""]"
-	item_state = icon_state
+	inhand_icon_state = icon_state
 
 // Базовые боеприпасы для пневморужья
 /obj/item/ammo_box/magazine/pneuma
@@ -44,23 +44,23 @@
 	icon_state = "pneumaball_g"
 	caliber = "pneumatic"
 	casing_drop_sound = null
-	projectile_type = /obj/item/projectile/bullet/pneumaball
+	projectile_type = /obj/projectile/bullet/pneumaball
 	muzzle_flash_strength = null
 	harmful = FALSE
 
-/obj/item/projectile/bullet/pneumaball
+/obj/projectile/bullet/pneumaball
 	name = "pneumatic ball"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "pneumaball_g"
 	stamina = 7
 	damage = 1
 
-/obj/item/projectile/bullet/pneumaball/New()
+/obj/projectile/bullet/pneumaball/New()
 	..()
 	create_reagents(15)
 	reagents.set_reacting(FALSE)
 
-/obj/item/projectile/bullet/pneumaball/on_hit(atom/target, blocked = 0)
+/obj/projectile/bullet/pneumaball/on_hit(atom/target, blocked = 0)
 	..(target, blocked)
 	if(!iscarbon(target))
 		return
@@ -77,13 +77,13 @@
 
 /obj/item/ammo_casing/pneuma/pepper
 	desc = "Шарик с капсаицином. Эффективно подходит для задержания преступников, не носящих очки."
-	projectile_type = /obj/item/projectile/bullet/pneumaball/pepper
+	projectile_type = /obj/projectile/bullet/pneumaball/pepper
 	icon_state = "pneumaball_r"
 
-/obj/item/projectile/bullet/pneumaball/pepper
+/obj/projectile/bullet/pneumaball/pepper
 	icon_state = "pneumaball_r"
 
-/obj/item/projectile/bullet/pneumaball/pepper/New()
+/obj/projectile/bullet/pneumaball/pepper/New()
 	..()
 	reagents.add_reagent("condensedcapsaicin", 15)
 

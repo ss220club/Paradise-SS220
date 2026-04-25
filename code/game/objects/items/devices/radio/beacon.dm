@@ -3,11 +3,10 @@
 	desc = "A beacon used by a teleporter."
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "beacon"
-	item_state = "signaler"
+	inhand_icon_state = "signaler"
 	origin_tech = "bluespace=1"
 	flags = CONDUCT
 	slot_flags = ITEM_SLOT_BELT
-	throw_speed = 2
 	throw_range = 9
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -16,6 +15,7 @@
 	var/area_bypass = FALSE
 	var/cc_beacon = FALSE //set if allowed to teleport to even if on zlevel2
 	var/wormhole_weaver = FALSE // special beacons for wormwhole weaver
+	var/broadcast_to_teleport_hubs = TRUE
 
 /obj/item/beacon/Initialize(mapload)
 	. = ..()
@@ -29,7 +29,7 @@
 	if(!emagged)
 		emagged = TRUE
 		syndicate = TRUE
-		to_chat(user, "<span class='notice'>The This beacon now only be locked on to by emagged teleporters!</span>")
+		to_chat(user, SPAN_NOTICE("The This beacon now only be locked on to by emagged teleporters!"))
 		return TRUE
 
 
@@ -58,14 +58,13 @@
 
 /obj/item/beacon/syndicate/attack_self__legacy__attackchain(mob/user)
 	if(user)
-		to_chat(user, "<span class='notice'>Locked In</span>")
+		to_chat(user, SPAN_NOTICE("Locked In"))
 		new /obj/machinery/power/singularity_beacon/syndicate( user.loc )
 		playsound(src, 'sound/effects/pop.ogg', 100, TRUE, 1)
 		user.drop_item()
 		qdel(src)
 
 /obj/item/beacon/syndicate/bundle
-	name = "suspicious beacon"
 	desc = "A label on it reads: <i>Activate to select a bundle</i>."
 	var/list/static/bundles = list(
 		"Spy" = /obj/item/storage/box/syndie_kit/bundle/spy,
@@ -105,33 +104,31 @@
 		bundle_name = pick(unselected)
 	var/bundle = bundles[bundle_name]
 	bundle = new bundle(user.loc)
-	to_chat(user, "<span class='notice'>Welcome to [station_name()], [bundle_name]!</span>")
+	to_chat(user, SPAN_NOTICE("Welcome to [station_name()], [bundle_name]!"))
 	user.drop_item()
 	SSblackbox.record_feedback("tally", "syndicate_bundle_pick", 1, "[bundle]")
 	qdel(src)
 	user.put_in_hands(bundle)
 
 /obj/item/beacon/syndicate/power_sink
-	name = "suspicious beacon"
 	desc = "A label on it reads: <i>Warning: Activating this device will send a power sink to your location</i>."
 
 /obj/item/beacon/syndicate/power_sink/attack_self__legacy__attackchain(mob/user)
 	if(user)
-		to_chat(user, "<span class='notice'>Locked In</span>")
+		to_chat(user, SPAN_NOTICE("Locked In"))
 		new /obj/item/powersink(user.loc)
 		playsound(src, 'sound/effects/pop.ogg', 100, TRUE, 1)
 		user.drop_item()
 		qdel(src)
 
 /obj/item/beacon/syndicate/bomb
-	name = "suspicious beacon"
 	desc = "A label on it reads: <i>Warning: Activating this device will send a high-ordinance explosive to your location</i>."
 	origin_tech = "bluespace=5;syndicate=5"
 	var/bomb = /obj/machinery/syndicatebomb
 
 /obj/item/beacon/syndicate/bomb/attack_self__legacy__attackchain(mob/user)
 	if(user)
-		to_chat(user, "<span class='notice'>Locked In</span>")
+		to_chat(user, SPAN_NOTICE("Locked In"))
 		new bomb(user.loc)
 		playsound(src, 'sound/effects/pop.ogg', 100, TRUE, 1)
 		user.drop_item()

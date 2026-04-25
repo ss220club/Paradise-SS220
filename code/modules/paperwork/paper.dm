@@ -8,8 +8,7 @@
 	gender = PLURAL
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
-	item_state = "paper"
-	throwforce = 0
+	inhand_icon_state = "paper"
 	w_class = WEIGHT_CLASS_TINY
 	throw_range = 1
 	throw_speed = 1
@@ -50,13 +49,17 @@
 	var/const/crayonfont = "Comic Sans MS"
 	var/regex/blacklist = new("(<iframe|<embed|<script|<canvas|<video|<audio|onload)", "g") // Blacklist of naughties
 
+	scatter_distance = 8
+
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
-/obj/item/paper/New()
-	..()
-	spawn(2)
-		update_icon()
-		updateinfolinks()
+/obj/item/paper/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(update_paper)), 1 DECISECONDS)
+
+/obj/item/paper/proc/update_paper()
+	update_icon()
+	updateinfolinks()
 
 /obj/item/paper/update_icon_state()
 	if(info)
@@ -66,14 +69,14 @@
 
 /obj/item/paper/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'><b>Alt-Click</b> [src] with a pen in hand to rename it.</span>"
+	. += SPAN_NOTICE("<b>Alt-Click</b> [src] with a pen in hand to rename it.")
 	if(user.is_literate())
 		if(in_range(user, src) || isobserver(user))
 			show_content(user)
 		else
-			. += "<span class='notice'>You have to go closer if you want to read it.</span>"
+			. += SPAN_NOTICE("You have to go closer if you want to read it.")
 	else
-		. += "<span class='notice'>You don't know how to read.</span>"
+		. += SPAN_NOTICE("You don't know how to read.")
 
 /obj/item/paper/proc/show_content(mob/user, forceshow = 0, forcestars = 0, infolinks = 0, view = 1)
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/paper)
@@ -113,10 +116,10 @@
 
 /obj/item/paper/proc/rename(mob/user)
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		to_chat(user, "<span class='warning'>You cut yourself on the paper.</span>")
+		to_chat(user, SPAN_WARNING("You cut yourself on the paper."))
 		return
 	if(!user.is_literate())
-		to_chat(user, "<span class='notice'>You don't know how to read.</span>")
+		to_chat(user, SPAN_NOTICE("You don't know how to read."))
 		return
 	var/n_name = rename_interactive(usr)
 	if(isnull(n_name))
@@ -154,20 +157,20 @@
 		return ..()
 	var/mob/living/carbon/human/H = M
 	if(user.zone_selected == "eyes")
-		user.visible_message("<span class='notice'>[user] holds up a paper and shows it to [H].</span>",
-			"<span class='notice'>You show the paper to [H].</span>")
-		H.examinate(src)
+		user.visible_message(SPAN_NOTICE("[user] holds up a paper and shows it to [H]."),
+			SPAN_NOTICE("You show the paper to [H]."))
+		to_chat(H, "<a href='byond://?src=[UID()];show_content=1'>Read \the [src]</a>")
 
 	else if(user.zone_selected == "mouth")
 		if(H == user)
-			to_chat(user, "<span class='notice'>You wipe off your face with [src].</span>")
+			to_chat(user, SPAN_NOTICE("You wipe off your face with [src]."))
 		else
-			user.visible_message("<span class='warning'>[user] begins to wipe [H]'s face clean with \the [src].</span>",
-								"<span class='notice'>You begin to wipe off [H]'s face.</span>")
+			user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face clean with \the [src]."),
+								SPAN_NOTICE("You begin to wipe off [H]'s face."))
 			if(!do_after(user, 1 SECONDS, target = H) || !do_after(H, 1 SECONDS, FALSE)) // user needs to keep their active hand, H does not.
 				return
-			user.visible_message("<span class='notice'>[user] wipes [H]'s face clean with \the [src].</span>",
-				"<span class='notice'>You wipe off [H]'s face.</span>")
+			user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face clean with \the [src]."),
+				SPAN_NOTICE("You wipe off [H]'s face."))
 
 		H.lip_style = null
 		H.lip_color = null
@@ -181,18 +184,18 @@
 	var/mob/living/simple_animal/pet/dog/D = M
 	D.changeNext_move(CLICK_CD_MELEE)
 	if(world.time < D.last_eaten + 30 SECONDS)
-		to_chat(D, "<span class='warning'>You are too full to try eating [src] now.</span>")
+		to_chat(D, SPAN_WARNING("You are too full to try eating [src] now."))
 		return
 
-	D.visible_message("<span class='warning'>[D] starts chewing the corner of [src]!</span>",
-		"<span class='notice'>You start chewing the corner of [src].</span>",
-		"<span class='warning'>You hear a quiet gnawing, and the sound of paper rustling.</span>")
+	D.visible_message(SPAN_WARNING("[D] starts chewing the corner of [src]!"),
+		SPAN_NOTICE("You start chewing the corner of [src]."),
+		SPAN_WARNING("You hear a quiet gnawing, and the sound of paper rustling."))
 	playsound(src, 'sound/effects/pageturn2.ogg', 100, TRUE)
 	if(!do_after(D, 10 SECONDS, FALSE, src))
 		return
 
 	if(world.time < D.last_eaten + 30 SECONDS) // Check again to prevent eating multiple papers at once.
-		to_chat(D, "<span class='warning'>You are too full to try eating [src] now.</span>")
+		to_chat(D, SPAN_WARNING("You are too full to try eating [src] now."))
 		return
 	D.last_eaten = world.time
 
@@ -209,13 +212,13 @@
 		P.update_icon()
 		qdel(src)
 
-		D.visible_message("<span class='warning'>[D] finishes eating [src][message_ending]</span>",
-			"<span class='notice'>You finish eating [src][message_ending]</span>")
+		D.visible_message(SPAN_WARNING("[D] finishes eating [src][message_ending]"),
+			SPAN_NOTICE("You finish eating [src][message_ending]"))
 		D.emote("bark")
 
 	// 10% chance of the paper just being eaten entirely.
 	else
-		D.visible_message("<span class='warning'>[D] swallows [src] whole!</span>", "<span class='notice'>You swallow [src] whole. Tasty!</span>")
+		D.visible_message(SPAN_WARNING("[D] swallows [src] whole!"), SPAN_NOTICE("You swallow [src] whole. Tasty!"))
 		playsound(D, 'sound/items/eatfood.ogg', 50, TRUE)
 		qdel(src)
 
@@ -306,6 +309,7 @@
 		\[u\] - \[/u\] : Makes the text <u>underlined</u>.<br>
 		\[large\] - \[/large\] : Increases the <font size = \"4\">size</font> of the text.<br>
 		\[sign\] : Inserts a signature of your name in a foolproof way.<br>
+		\[name\] : Inserts your regular name, not like your signature.<br>
 		\[field\] : Inserts an invisible field which lets you start type from there. Useful for forms.<br>
 		<br>
 		<b><center>Pen exclusive commands</center></b><br>
@@ -318,7 +322,7 @@
 
 /obj/item/paper/vv_edit_var(var_name, var_value)
 	if((var_name == "info") && blacklist.Find(var_value)) //uh oh, they tried to be naughty
-		message_admins("<span class='danger'>EXPLOIT WARNING: ADMIN</span> [usr.ckey] attempted to write paper containing JS abusable tags!")
+		message_admins("[SPAN_DANGER("EXPLOIT WARNING: ADMIN")] [usr.ckey] attempted to write paper containing JS abusable tags!")
 		log_admin("EXPLOIT WARNING: ADMIN [usr.ckey] attempted to write paper containing JS abusable tags")
 		return FALSE
 	return ..()
@@ -331,7 +335,7 @@
 	if(loc != usr && !Adjacent(usr) && !((istype(loc, /obj/item/clipboard) || istype(loc, /obj/item/folder)) && ((usr in get_turf(src)) || loc.Adjacent(usr))))
 		return // If paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
 	if(blacklist.Find(input_element)) //uh oh, they tried to be naughty
-		message_admins("<span class='danger'>EXPLOIT WARNING: </span> [usr.ckey] attempted to write paper containing JS abusable tags!")
+		message_admins("[SPAN_DANGER("EXPLOIT WARNING: ")] [usr.ckey] attempted to write paper containing JS abusable tags!")
 		log_admin("EXPLOIT WARNING: [usr.ckey] attempted to write paper containing JS abusable tags")
 		return FALSE
 	input_element = parsepencode(input_element, item_write, usr) // Encode everything from pencode to html
@@ -390,6 +394,12 @@
 		var/id = href_list["write"]
 		var/input_element = input("Enter what you want to write:", "Write") as message
 		topic_href_write(id, input_element)
+	if(href_list["show_content"])
+		var/dist = get_dist(src, usr)
+		if(dist < 2)
+			show_content(usr)
+		else
+			to_chat(usr, SPAN_NOTICE("I'm too far away from \the [src] to read it."))
 
 /obj/item/paper/attackby__legacy__attackchain(obj/item/P, mob/living/user, params)
 	..()
@@ -405,46 +415,46 @@
 		if(istype(P, /obj/item/paper/carbon))
 			var/obj/item/paper/carbon/C = P
 			if(!C.iscopy && !C.copied)
-				to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
+				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return
-		var/obj/item/paper_bundle/B = new(src.loc, default_papers = FALSE)
+		var/obj/item/paper_bundle/B = new(src.loc, FALSE)
 		if(name != "paper")
 			B.name = name
 		else if(P.name != "paper" && P.name != "photo")
 			B.name = P.name
-		user.unEquip(P)
+		user.drop_item_to_ground(P)
 		if(ishuman(user))
 			var/mob/living/carbon/human/h_user = user
 			if(h_user.r_hand == src)
-				h_user.unEquip(src)
+				h_user.unequip(src)
 				h_user.put_in_r_hand(B)
 			else if(h_user.l_hand == src)
-				h_user.unEquip(src)
+				h_user.unequip(src)
 				h_user.put_in_l_hand(B)
 			else if(h_user.l_store == src)
-				h_user.unEquip(src)
+				h_user.unequip(src)
 				B.loc = h_user
 				B.layer = ABOVE_HUD_LAYER
 				B.plane = ABOVE_HUD_PLANE
 				h_user.l_store = B
 				h_user.update_inv_pockets()
 			else if(h_user.r_store == src)
-				h_user.unEquip(src)
+				h_user.unequip(src)
 				B.loc = h_user
 				B.layer = ABOVE_HUD_LAYER
 				B.plane = ABOVE_HUD_PLANE
 				h_user.r_store = B
 				h_user.update_inv_pockets()
 			else if(h_user.head == src)
-				h_user.unEquip(src)
+				h_user.unequip(src)
 				h_user.put_in_hands(B)
 			else if(!isturf(src.loc))
 				src.loc = get_turf(h_user)
 				if(h_user.client)	h_user.client.screen -= src
 				h_user.put_in_hands(B)
-		to_chat(user, "<span class='notice'>You clip [P] to [(src.name == "paper") ? "the paper" : src.name].</span>")
-		src.loc = B
+		to_chat(user, SPAN_NOTICE("You clip [P] to [(src.name == "paper") ? "the paper" : src.name]."))
+		forceMove(B)
 		P.loc = B
 		B.amount++
 		B.update_icon()
@@ -459,7 +469,7 @@
 			//openhelp(user)
 			return
 		else
-			to_chat(user, "<span class='warning'>You don't know how to write!</span>")
+			to_chat(user, SPAN_WARNING("You don't know how to write!"))
 
 	else if(istype(P, /obj/item/stamp))
 		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard)) && loc.loc != user && user.get_active_hand() != P))
@@ -467,19 +477,19 @@
 
 		if(istype(P, /obj/item/stamp/clown))
 			if(!clown)
-				to_chat(user, "<span class='notice'>You are totally unable to use the stamp. HONK!</span>")
+				to_chat(user, SPAN_NOTICE("You are totally unable to use the stamp. HONK!"))
 				return
 
 		stamp(P)
 
-		to_chat(user, "<span class='notice'>You stamp the paper with your rubber stamp.</span>")
+		to_chat(user, SPAN_NOTICE("You stamp the paper with your rubber stamp."))
 		playsound(user, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 
 	if(P.get_heat())
 		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(10))
-			user.visible_message("<span class='warning'>[user] accidentally ignites [user.p_themselves()]!</span>", \
-								"<span class='userdanger'>You miss the paper and accidentally light yourself on fire!</span>")
-			user.unEquip(P)
+			user.visible_message(SPAN_WARNING("[user] accidentally ignites [user.p_themselves()]!"), \
+								SPAN_USERDANGER("You miss the paper and accidentally light yourself on fire!"))
+			user.drop_item_to_ground(P)
 			user.adjust_fire_stacks(1)
 			user.IgniteMob()
 			return
@@ -487,8 +497,8 @@
 		if(!Adjacent(user)) //to prevent issues as a result of telepathically lighting a paper
 			return
 
-		user.unEquip(src)
-		user.visible_message("<span class='danger'>[user] lights [src] ablaze with [P]!</span>", "<span class='danger'>You light [src] on fire!</span>")
+		user.drop_item_to_ground(src)
+		user.visible_message(SPAN_DANGER("[user] lights [src] ablaze with [P]!"), SPAN_DANGER("You light [src] on fire!"))
 		fire_act()
 
 	add_fingerprint(user)
@@ -554,7 +564,6 @@
 /obj/item/paper/photograph
 	name = "photo"
 	icon_state = "photo"
-	item_state = "paper"
 
 /obj/item/paper/sop
 	name = "paper- 'Standard Operating Procedure'"
@@ -597,7 +606,6 @@
 
 /obj/item/paper/crumpled/bloody/hacker
 	name = "burned paper scrap"
-	icon_state = "scrap_bloodied"
 	info = "<p style='text-align:center;font-family;font-size:120%;font-weight:bold;'>FINALLY, I DECIPHERED NTS' FAXING NETWO-</p>"
 
 /obj/item/paper/fortune
@@ -606,8 +614,8 @@
 	paper_width = 400
 	paper_height = 150
 
-/obj/item/paper/fortune/New()
-	..()
+/obj/item/paper/fortune/Initialize(mapload)
+	. = ..()
 	var/fortunemessage = pick(GLOB.fortune_cookie_messages)
 	info = "<p style='text-align:center;font-family:[deffont];font-size:120%;font-weight:bold;'>[fortunemessage]</p>"
 	info += "<p style='text-align:center;'><strong>Lucky numbers</strong>: [rand(1,49)], [rand(1,49)], [rand(1,49)], [rand(1,49)], [rand(1,49)]</p>"
@@ -622,10 +630,6 @@
 /obj/item/paper/hydroponics
 	name = "Greetings from Billy Bob"
 	info = "<B>Hey fellow botanist!</B><BR>\n<BR>\nI didn't trust the station folk so I left<BR>\na couple of weeks ago. But here's some<BR>\ninstructions on how to operate things here.<BR>\nYou can grow plants and each iteration they become<BR>\nstronger, more potent and have better yield, if you<BR>\nknow which ones to pick. Use your botanist's analyzer<BR>\nfor that. You can turn harvested plants into seeds<BR>\nat the seed extractor, and replant them for better stuff!<BR>\nSometimes if the weed level gets high in the tray<BR>\nmutations into different mushroom or weed species have<BR>\nbeen witnessed. On the rare occassion even weeds mutate!<BR>\n<BR>\nEither way, have fun!<BR>\n<BR>\nBest regards,<BR>\nBilly Bob Johnson.<BR>\n<BR>\nPS.<BR>\nHere's a few tips:<BR>\nIn nettles, potency = damage<BR>\nIn amanitas, potency = deadliness + side effect<BR>\nIn Liberty caps, potency = drug power + effect<BR>\nIn chilis, potency = heat<BR>\n<B>Nutrients keep mushrooms alive!</B><BR>\n<B>Water keeps weeds such as nettles alive!</B><BR>\n<B>All other plants need both.</B>"
-
-/obj/item/paper/chef
-	name = "Cooking advice from Morgan Ramslay"
-	info = "Right, so you're wanting to learn how to feed the teeming masses of the station yeah?<BR>\n<BR>\nWell I was asked to write these tips to help you not burn all of your meals and prevent food poisonings.<BR>\n<BR>\nOkay first things first, making a humble ball of dough.<BR>\n<BR>\nCheck the lockers for a bag or two of flour and then find a glass cup or a beaker, something that can hold liquids. Next pour 15 units of flour into the container and then pour 10 units of water in as well. Hey presto! You've made a ball of dough, which can lead to many possibilities.<BR>\n<BR>\nAlso, before I forget, KEEP YOUR FOOD OFF THE DAMN FLOOR! Space ants love getting onto any food not on a table or kept away in a closed locker. You wouldn't believe how many injuries have resulted from space ants...<BR>\n<BR>\nOkay back on topic, let's make some cheese, just follow along with me here.<BR>\n<BR>\nLook in the lockers again for some milk cartons and grab another glass to mix with. Next look around for a bottle named 'Universal Enzyme' unless they changed the look of it, it should be a green bottle with a red label. Now pour 5 units of enzyme into a glass and 40 units of milk into the glass as well. In a matter of moments you'll have a whole wheel of cheese at your disposal.<BR>\n<BR>\nOkay now that you've got the ingredients, let's make a classic crewman food, cheese bread.<BR>\n<BR>\nMake another ball of dough, and cut up your cheese wheel with a knife or something else sharp such as a pair of wire cutters. Okay now look around for an oven in the kitchen and put 2 balls of dough and 2 cheese wedges into the oven and turn it on. After a few seconds a fresh and hot loaf of cheese bread will pop out. Lastly cut it into slices with a knife and serve.<BR>\n<BR>\nCongratulations on making it this far. If you haven't created a burnt mess of slop after following these directions you might just be on your way to becoming a master chef someday.<BR>\n<BR>\nBe sure to look up other recipes and bug the Head of Personnel if Botany isn't providing you with crops, wheat is your friend and lifeblood.<BR>\n<BR>\nGood luck in the kitchen, and try not to burn down the place.<BR>\n<BR>\n-Morgan Ramslay"
 
 /obj/item/paper/djstation
 	name = "Mission Briefing"
@@ -695,7 +699,6 @@
 	info = "<b>Objective #1</b>: Destroy the station with a nuclear device."
 
 /obj/item/paper/syndicate
-	name = "paper"
 	header = "<p><img style='display: block; margin-left: auto; margin-right: auto;' src='syndielogo.png' width='220' height='135' /></p><hr />"
 	info = ""
 
@@ -776,7 +779,6 @@
 	* <b>CAUTION:</b> Nanotrasen exploration teams growing in size and are scouring much larger areas than before. They are now operating dangerously close to this installation, requesting additional security."}
 
 /obj/item/paper/nanotrasen
-	name = "paper"
 	header = "<p><img style='display: block; margin-left: auto; margin-right: auto;' src='ntlogo.png' width='220' height='135' /></p><hr />"
 	info =  ""
 
@@ -835,7 +837,6 @@
 	7. DRAG the nuclear device to the closest opening to SPACE, and PUSH it away from the station."
 
 /obj/item/paper/central_command
-	name = "paper"
 	header ="<p><img style='display: block; margin-left: auto; margin-right: auto;' src='ntlogo.png' alt='' width='220' height='135' /></p><hr /><h3 style='text-align: center;font-family: Verdana;'><b> Nanotrasen Central Command</h3><p style='text-align: center;font-family:Verdana;'>Official Expedited Memorandum</p></b><hr />"
 	info = ""
 	footer = "<hr /><p style='font-family:Verdana;'><em>Failure to adhere appropriately to orders that may be contained herein is in violation of Space Law, and punishments may be administered appropriately upon return to Central Command.</em><br /><em>The recipient(s) of this memorandum acknowledge by reading it that they are liable for any and all damages to crew or station that may arise from ignoring suggestions or advice given herein.</em></p>"
@@ -864,6 +865,13 @@
 	header ="<p><img style='display: block; margin-left: auto; margin-right: auto;' src='ntlogo.png' alt='' width='220' height='135' /></p><hr /><h3 style='text-align: center;font-family: Verdana;'><b> Nanotrasen Central Command</h3><p style='text-align: center;font-family:Verdana;'>Official Expedited Memorandum</p></b><hr />"
 	name = "Lava Field Observations"
 	info = "<center>Asteroid Core Observation Log 306</center><hr><br><i>We took some additional samples of the deep layers of the molten core of the asteroid. Undetermined trace elements were able to be identified in the solution. Its possible this is how the plasma remains so stable at these temperatures. None of our current filter methods have been able to properly extract it as of yet, but we're certain a breakthrough is on the horizon. We did it before, we can do it again.</i>"
+
+/obj/item/paper/clockwork_cult_message
+	name = "Old handwritten note"
+	info = "<center>To any brothers and sisters that journey here from beyond the system:</center><br><br>\
+	The Nar'Sien dogs have failed, and we have gleaned the method by which we can awake His divine mechanism. The spark shall be turned into lightning and the gears shall once again turn.<br><br>\
+	We go now to purge the dogs from the hole we know they hide within, and then The Eminance shall then call us back to Reebe so that we may begin preperations for His awakening.<br><br>\
+	The guardians shall protect the monastery in our stead. Make use of its supplies and prepare for our return, together we shall all finalize His vison."
 
 /obj/item/paper/zombie_cure
 	name = "paper - 'Research on Zombies'"
@@ -930,15 +938,14 @@
 			evilpaper_selfdestruct()
 	else
 		if(mytarget)
-			to_chat(user,"<span class='notice'>This page appears to be covered in some sort of bizzare code. The only bit you recognize is the name of [mytarget]. Perhaps [mytarget] can make sense of it?</span>")
+			to_chat(user,SPAN_NOTICE("This page appears to be covered in some sort of bizzare code. The only bit you recognize is the name of [mytarget]. Perhaps [mytarget] can make sense of it?"))
 		else
 			evilpaper_selfdestruct()
 
 
-/obj/item/paper/evilfax/New()
-	..()
+/obj/item/paper/evilfax/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-
 
 /obj/item/paper/evilfax/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -967,41 +974,41 @@
 		if(iscarbon(target))
 			var/obj/machinery/photocopier/faxmachine/fax = locateUID(faxmachineid)
 			if(myeffect == "Borgification")
-				to_chat(target,"<span class='userdanger'>You seem to comprehend the AI a little better. Why are your muscles so stiff?</span>")
+				to_chat(target,SPAN_USERDANGER("You seem to comprehend the AI a little better. Why are your muscles so stiff?"))
 				target.ForceContractDisease(new /datum/disease/transformation/robot(0))
 			else if(myeffect == "Corgification")
-				to_chat(target,"<span class='userdanger'>You hear distant howling as the world seems to grow bigger around you. Boy, that itch sure is getting worse!</span>")
+				to_chat(target,SPAN_USERDANGER("You hear distant howling as the world seems to grow bigger around you. Boy, that itch sure is getting worse!"))
 				target.ForceContractDisease(new /datum/disease/transformation/corgi(0))
 			else if(myeffect == "Death By Fire")
-				to_chat(target,"<span class='userdanger'>You feel hotter than usual. Maybe you should lowe-wait, is that your hand melting?</span>")
+				to_chat(target,SPAN_USERDANGER("You feel hotter than usual. Maybe you should lowe-wait, is that your hand melting?"))
 				var/turf/simulated/T = get_turf(target)
 				var/obj/effect/hotspot/hotspot = new /obj/effect/hotspot/fake(T)
 				hotspot.temperature = 1000
 				hotspot.recolor()
 				target.adjustFireLoss(150) // hard crit, the burning takes care of the rest.
 			else if(myeffect == "Total Brain Death")
-				to_chat(target,"<span class='userdanger'>You see a message appear in front of you in bright red letters: <b>YHWH-3 ACTIVATED. TERMINATION IN 3 SECONDS</b></span>")
+				to_chat(target,SPAN_USERDANGER("You see a message appear in front of you in bright red letters: <b>YHWH-3 ACTIVATED. TERMINATION IN 3 SECONDS</b>"))
 				ADD_TRAIT(target, TRAIT_BADDNA, "evil_fax")
 				target.adjustBrainLoss(125)
 			else if(myeffect == "Honk Tumor")
 				if(!target.get_int_organ(/obj/item/organ/internal/honktumor))
 					var/obj/item/organ/internal/organ = new /obj/item/organ/internal/honktumor
-					to_chat(target,"<span class='userdanger'>Life seems funnier, somehow.</span>")
+					to_chat(target,SPAN_USERDANGER("Life seems funnier, somehow."))
 					organ.insert(target)
 			else if(myeffect == "Cluwne")
 				if(ishuman(target))
 					var/mob/living/carbon/human/H = target
-					to_chat(H, "<span class='userdanger'>You feel surrounded by sadness. Sadness... and HONKS!</span>")
+					to_chat(H, SPAN_USERDANGER("You feel surrounded by sadness. Sadness... and HONKS!"))
 					H.makeCluwne()
 			else if(myeffect == "Demote")
-				GLOB.major_announcement.Announce("[target.real_name] is hereby demoted to the rank of Assistant. Process this demotion immediately. Failure to comply with these orders is grounds for termination.","CC Demotion Order")
+				GLOB.major_announcement.Announce("[target.real_name] понижается в должности до ассистента. Немедленно оформите это понижение. Невыполнение этих приказов является основанием для расторжения контракта.", "Приказ Центрального Командования.", force_translation = TRUE)
 				for(var/datum/data/record/R in sortRecord(GLOB.data_core.security))
 					if(R.fields["name"] == target.real_name)
 						R.fields["criminal"] = SEC_RECORD_STATUS_DEMOTE
 						R.fields["comments"] += "Central Command Demotion Order, given on [GLOB.current_date_string] [station_time_timestamp()]<BR> Process this demotion immediately. Failure to comply with these orders is grounds for termination."
 				update_all_mob_security_hud()
 			else if(myeffect == "Demote with Bot")
-				GLOB.major_announcement.Announce("[target.real_name] is hereby demoted to the rank of Assistant. Process this demotion immediately. Failure to comply with these orders is grounds for termination.","CC Demotion Order")
+				GLOB.major_announcement.Announce("[target.real_name] понижается в должности до ассистента. Немедленно оформите это понижение. Невыполнение этих приказов является основанием для расторжения контракта.", "Приказ Центрального Командования.")
 				for(var/datum/data/record/R in sortRecord(GLOB.data_core.security))
 					if(R.fields["name"] == target.real_name)
 						R.fields["criminal"] = SEC_RECORD_STATUS_ARREST
@@ -1024,7 +1031,7 @@
 		evilpaper_selfdestruct()
 
 /obj/item/paper/evilfax/proc/evilpaper_selfdestruct()
-	visible_message("<span class='danger'>[src] spontaneously catches fire, and burns up!</span>")
+	visible_message(SPAN_DANGER("[src] spontaneously catches fire, and burns up!"))
 	qdel(src)
 
 /obj/item/paper/pickup(user)
@@ -1058,3 +1065,10 @@
 /obj/item/paper/instruction/pacman_generator
 	name = "Instructions for P.A.C.M.A.N. Generator series"
 	info = "P.A.C.M.A.N. are commonly used as 'Emergency' power generators, with its upgraded version being capable of utilizing uranium and plasma sheets to function. Simply anchor on the power cable node, insert the plasma sheet, select the level and turn it ON to generate power, just make sure to not overheat it or it will explode."
+
+/obj/item/paper/rocky_motel
+	name = "strange note"
+	info = "Nancy, dear, could you <i>please</i> stop hiding my beer in the safe? I'm telling you, it's alcohol-free and safe to drink. Just quit making me mad, for fuck's sake!"
+
+/obj/item/paper/rocky_motel/syndie
+	info = "Don't forget to grab the gold from safe tomorrow, I'm not going to stay there for another year, this place sucks."

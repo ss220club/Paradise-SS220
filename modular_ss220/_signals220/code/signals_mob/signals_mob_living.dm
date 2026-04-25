@@ -1,7 +1,7 @@
 // Signals for /mob/living
 
-/mob/living/CanPass(atom/movable/mover, turf/target, height)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_CAN_PASS, mover, target, height) & COMPONENT_LIVING_PASSABLE)
+/mob/living/CanPass(atom/movable/mover, border_dir)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_CAN_PASS, mover, border_dir) & COMPONENT_LIVING_PASSABLE)
 		return TRUE
 	return ..()
 
@@ -22,11 +22,11 @@
 	. = ..()
 
 // Да, костыльно, но модульно по другому не вижу как - PIXEL_SHIFT
-/mob/living/Process_Spacemove(movement_dir)
+/mob/living/Process_Spacemove(movement_dir, continuous_move = FALSE)
 	if(SEND_SIGNAL(src, COMSIG_LIVING_PROCESS_SPACEMOVE, movement_dir) & COMPONENT_BLOCK_SPACEMOVE)
 		return FALSE
 	. = ..()
 
-/mob/living/say(message, verb, sanitize, ignore_speech_problems, ignore_atmospherics, ignore_languages)
+/mob/living/say(message, verb, sanitize, ignore_speech_problems, ignore_atmospherics, ignore_languages, automatic)
 	SEND_SIGNAL(src, COMSIG_MOB_SAY, args)
 	. = ..()

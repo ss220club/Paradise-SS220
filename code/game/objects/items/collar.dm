@@ -2,8 +2,9 @@
 	name = "pet collar"
 	desc = "The latest fashion accessory for your favorite pets!"
 	icon_state = "petcollar"
-	item_color = "petcollar"
 	var/tagname = null
+	var/original_name
+	var/original_real_name
 	var/obj/item/card/id/access_id
 
 /obj/item/petcollar/Destroy()
@@ -25,9 +26,9 @@
 				name = "[initial(name)] - [tagname]"
 		if("Remove ID")
 			if(access_id)
-				user.visible_message("<span class='warning'>[user] starts unclipping [access_id] from [src].</span>")
+				user.visible_message(SPAN_WARNING("[user] starts unclipping [access_id] from [src]."))
 				if(do_after(user, 5 SECONDS, target = user) && access_id && !QDELETED(src) && Adjacent(user))
-					user.visible_message("<span class='warning'>[user] unclips [access_id] from [src].</span>")
+					user.visible_message(SPAN_WARNING("[user] unclips [access_id] from [src]."))
 					access_id.forceMove(get_turf(user))
 					user.put_in_hands(access_id)
 					access_id = null
@@ -36,12 +37,12 @@
 	if(!istype(W))
 		return ..()
 	if(access_id)
-		to_chat(user, "<span class='warning'>There is already \a [access_id] clipped onto [src].</span>")
+		to_chat(user, SPAN_WARNING("There is already \a [access_id] clipped onto [src]."))
 		return ..()
 	user.drop_item()
 	W.forceMove(src)
 	access_id = W
-	to_chat(user, "<span class='notice'>[W] clips onto [src] snugly.</span>")
+	to_chat(user, SPAN_NOTICE("[W] clips onto [src] snugly."))
 
 /obj/item/petcollar/GetAccess()
 	return access_id ? access_id.GetAccess() : ..()
@@ -62,7 +63,7 @@
 /obj/item/petcollar/process()
 	var/mob/living/simple_animal/M = loc
 	// if it wasn't intentionally unequipped but isn't being worn, possibly gibbed
-	if(istype(M) && src == M.pcollar && M.stat != DEAD)
+	if(istype(M) && M.stat != DEAD)
 		return
 
 	var/area/pet_death_area = get_area(M)
@@ -70,8 +71,8 @@
 	pet_death_announcer.follow_target = src
 	if(istype(pet_death_area, /area/syndicate_mothership) || istype(pet_death_area, /area/shuttle/syndicate_elite))
 		//give the syndicats a bit of stealth
-		pet_death_announcer.autosay("[M] has been vandalized in Space!", "[M]'s Death Alarm")
+		pet_death_announcer.autosay("[M] подвергся акту вандализма в космосе!", "Датчик Смерти [M]")
 	else
-		pet_death_announcer.autosay("[M] has been vandalized in [pet_death_area.name]!", "[M]'s Death Alarm")
+		pet_death_announcer.autosay("[M] подвергся акту вандализма в [pet_death_area.name]!", "Датчик Смерти [M]")
 	qdel(pet_death_announcer)
 	STOP_PROCESSING(SSobj, src)

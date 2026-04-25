@@ -130,47 +130,47 @@
 	if(panel_open)
 		. += "dnamod-open"
 
-/obj/machinery/plantgenes/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "dnamod", "dnamod", I))
+/obj/machinery/plantgenes/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(default_deconstruction_screwdriver(user, "dnamod", "dnamod", used))
 		update_icon(UPDATE_OVERLAYS)
-		return
+		return ITEM_INTERACT_COMPLETE
 
-	if(default_deconstruction_crowbar(user, I))
-		return
+	if(default_deconstruction_crowbar(user, used))
+		return ITEM_INTERACT_COMPLETE
 
-	if(istype(I, /obj/item/unsorted_seeds))
-		to_chat(user, "<span class='warning'>You need to sort [I] first!</span>")
-		return
+	if(istype(used, /obj/item/unsorted_seeds))
+		to_chat(user, SPAN_WARNING("You need to sort [used] first!"))
+		return ITEM_INTERACT_COMPLETE
 
-	if(istype(I, /obj/item/seeds))
-		add_seed(I, user)
-		return
+	if(istype(used, /obj/item/seeds))
+		add_seed(used, user)
+		return ITEM_INTERACT_COMPLETE
 
-	if(istype(I, /obj/item/disk/plantgene) || istype(I, /obj/item/storage/box))
-		add_disk(I, user)
-		return
+	if(istype(used, /obj/item/disk/plantgene) || istype(used, /obj/item/storage/box))
+		add_disk(used, user)
+		return ITEM_INTERACT_COMPLETE
 
 	return ..()
 
 /obj/machinery/plantgenes/proc/add_seed(obj/item/seeds/new_seed, mob/user)
 	if(seed)
-		to_chat(user, "<span class='warning'>A sample is already loaded into the machine!</span>")
+		to_chat(user, SPAN_WARNING("A sample is already loaded into the machine!"))
 		return
 	if(!user.drop_item())
 		return
 	insert_seed(new_seed)
-	to_chat(user, "<span class='notice'>You add [new_seed] to the machine.</span>")
+	to_chat(user, SPAN_NOTICE("You add [new_seed] to the machine."))
 	ui_interact(user)
 
 /obj/machinery/plantgenes/proc/add_disk(obj/item/disk/plantgene/new_disk, mob/user)
 	if(length(contents) - (seed ? 1 : 0) >= disk_capacity)
-		to_chat(user, "<span class='warning'>[src] cannot hold any more disks!</span>")
+		to_chat(user, SPAN_WARNING("[src] cannot hold any more disks!"))
 		return
 	if(istype(new_disk, /obj/item/storage/box))
 		var/has_disks = FALSE
 		for(var/obj/item/disk/plantgene/D in new_disk.contents)
 			if(length(contents)- (seed ? 1 : 0) >= disk_capacity)
-				to_chat(user, "<span class='notice'>You fill [src] with disks.</span>")
+				to_chat(user, SPAN_NOTICE("You fill [src] with disks."))
 				break
 			has_disks = TRUE
 			D.forceMove(src)
@@ -178,9 +178,9 @@
 				disk = D
 		if(has_disks)
 			playsound(loc, 'sound/items/handling/cardboardbox_drop.ogg', 50)
-			to_chat(user, "<span class='notice'>You load [src] from [new_disk].</span>")
+			to_chat(user, SPAN_NOTICE("You load [src] from [new_disk]."))
 		else
-			to_chat(user, "<span class='notice'>[new_disk] contains no disks.</span>")
+			to_chat(user, SPAN_NOTICE("[new_disk] contains no disks."))
 		SStgui.update_uis(src)
 		return
 	if(!user.drop_item())
@@ -188,7 +188,7 @@
 	if(!disk)
 		disk = new_disk
 	new_disk.forceMove(src)
-	to_chat(user, "<span class='notice'>You add [new_disk] to the machine.</span>")
+	to_chat(user, SPAN_NOTICE("You add [new_disk] to the machine."))
 	ui_interact(user)
 
 /obj/machinery/plantgenes/attack_hand(mob/user)
@@ -338,7 +338,8 @@
 		if("eject_seed")
 			if(seed)
 				seed.forceMove(loc)
-				user.put_in_hands(seed)
+				if(Adjacent(user) && !issilicon(user))
+					user.put_in_hands(seed)
 				seed = null
 				update_genes()
 				update_icon(UPDATE_OVERLAYS)
@@ -351,7 +352,8 @@
 			var/obj/item/disk/plantgene/D = contents[text2num(params["index"])]
 			if(D)
 				D.forceMove(loc)
-				user.put_in_hands(D)
+				if(Adjacent(user) && !issilicon(user))
+					user.put_in_hands(D)
 				disk = null
 				update_genes()
 			else
@@ -420,10 +422,11 @@
 			for(var/obj/item/disk/plantgene/D in contents)
 				if(!D.gene && !D.is_bulk_core)
 					D.forceMove(loc)
-					user.put_in_hands(D)
+					if(Adjacent(user) && !issilicon(user))
+						user.put_in_hands(D)
 					update_genes()
 					return
-			to_chat(user, "<span class='warning'>No Empty Disks to Eject!</span>")
+			to_chat(user, SPAN_WARNING("No Empty Disks to Eject!"))
 		if("set_read_only")
 			var/obj/item/disk/plantgene/D = contents[text2num(params["index"])]
 			D.read_only = !D.read_only
@@ -581,9 +584,9 @@
 	var/seeds_scanned = 0
 	var/seeds_needed = 5
 
-/obj/item/disk/plantgene/New()
-	..()
-	update_icon(UPDATE_OVERLAYS)
+/obj/item/disk/plantgene/Initialize(mapload)
+	. = ..()
+	update_icon(UPDATE_ICON_STATE)
 
 /obj/item/disk/plantgene/Destroy()
 	QDEL_NULL(gene)
@@ -650,25 +653,20 @@
 
 	icon_state = "datadisk_hydro"
 
-/obj/item/disk/plantgene/update_overlays()
-	. = ..()
-	if(HAS_TRAIT(src, TRAIT_CMAGGED))
-		return
-
-	. += "datadisk_gene"
-
 /obj/item/disk/plantgene/attack_self__legacy__attackchain(mob/user)
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
 		return
 	read_only = !read_only
-	to_chat(user, "<span class='notice'>You flip the write-protect tab to [read_only ? "protected" : "unprotected"].</span>")
+	to_chat(user, SPAN_NOTICE("You flip the write-protect tab to [read_only ? "protected" : "unprotected"]."))
 
 /obj/item/disk/plantgene/cmag_act(mob/user)
 	if(!HAS_TRAIT(src, TRAIT_CMAGGED))
-		to_chat(user, "<span class='warning'>The bananium ooze flips a couple bits on the plant disk's display, making it look just like the..!</span>")
+		to_chat(user, SPAN_WARNING("The bananium ooze flips a couple bits on the plant disk's display, making it look just like the..!"))
 		ADD_TRAIT(src, TRAIT_CMAGGED, CLOWN_EMAG)
 		update_appearance(UPDATE_NAME|UPDATE_DESC|UPDATE_ICON)
 		playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		return TRUE
+	return FALSE
 
 /obj/item/disk/plantgene/uncmag()
 	update_appearance(UPDATE_NAME|UPDATE_DESC|UPDATE_ICON)
@@ -679,9 +677,9 @@
 		. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
 		return
 	if((user.mind.assigned_role == "Captain" || user.mind.special_role == SPECIAL_ROLE_NUKEOPS) && (user.Adjacent(src)))
-		. += "<span class='warning'>... Wait. This isn't the nuclear authentication disk! It's a clever forgery!</span>"
+		. += SPAN_WARNING("... Wait. This isn't the nuclear authentication disk! It's a clever forgery!")
 	else
-		. += "<span class='warning'>You should keep this safe...</span>"
+		. += SPAN_WARNING("You should keep this safe...")
 
 /obj/item/disk/plantgene/examine_more(mob/user)
 	. = ..()
@@ -689,8 +687,8 @@
 		return
 
 	if((user.mind.assigned_role == "Captain" || user.mind.special_role == SPECIAL_ROLE_NUKEOPS) && user.Adjacent(src))
-		. += "<span class='danger'>Yes, even closer examination confirms it's not a trick of the light, it really is just a regular plant disk.</span>"
-		. += "<span class='userdanger'>Now stop staring at this worthless fake and FIND THE REAL ONE!</span>"
+		. += SPAN_DANGER("Yes, even closer examination confirms it's not a trick of the light, it really is just a regular plant disk.")
+		. += SPAN_USERDANGER("Now stop staring at this worthless fake and FIND THE REAL ONE!")
 		return
 
 	. += "Nuclear fission explosives are stored on all Nanotrasen stations in the system so that they may be rapidly destroyed should the need arise."

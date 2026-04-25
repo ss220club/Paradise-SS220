@@ -3,7 +3,7 @@
 /obj/structure/light_fake
 	name = "light fixture"
 	desc = "A lighting fixture."
-	icon = 'modular_ss220/aesthetics/lights/icons/lights.dmi'
+	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube1"
 	anchored = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
@@ -15,8 +15,14 @@
 /obj/structure/light_fake/small
 	name = "light fixture"
 	desc = "A small lighting fixture."
-	icon = 'icons/obj/lighting.dmi'
 	icon_state = "bulb1"
+	light_color = "#a0a080"
+	light_range = 4
+
+/obj/structure/light_fake/floor
+	name = "floor light"
+	desc = "A small lighting fixture."
+	icon_state = "floor1"
 	light_color = "#a0a080"
 	light_range = 4
 
@@ -142,12 +148,22 @@
 
 // Mecha equipment
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/syndi
-	name = "\improper AC 2 \"Special\""
-	desc = "C-20r inside!"
-	equip_cooldown = 8
-	projectile = /obj/item/projectile/bullet/midbullet2
-	fire_sound = 'sound/weapons/gunshots/gunshot_smg.ogg'
+	name = "\improper SA-9 \"Tacit\""
+	equip_cooldown = 0.75 SECONDS
+	projectile = /obj/projectile/bullet/midbullet
+	projectiles_per_shot = 2
+	projectile_delay = 1.2
 	projectile_energy_cost = 14
+	suppressed = TRUE
+	fire_sound = 'sound/weapons/gunshots/gunshot_silenced.ogg'
+
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion/syndie
+	name = "SA ISR \"Interitus\""
+	equip_cooldown = 8 SECONDS // greater cooldown for high damage
+	energy_drain = 500 // 2000 total
+	projectile = /obj/projectile/ion
+	projectiles_per_shot = 4
+	variance = 20 // kinda accurate
 
 /* Caves awaymission */
 /obj/item/clothing/gloves/ring/immortality_ring
@@ -167,20 +183,20 @@
 
 /obj/item/clothing/gloves/ring/immortality_ring/proc/ring_ability(mob/user)
 	if(cooldown > world.time)
-		to_chat(user, span_warning("[name] еще перезаряжается!"))
+		to_chat(user, SPAN_WARNING("[name] еще перезаряжается!"))
 		return
 	cooldown = world.time + ability_delay
 	user.status_flags |= GODMODE
 	user.invisibility = invisibility_add
-	visible_message(span_danger("[user] исчезает из реальности!"))
-	to_chat(user, span_cultitalic("Ты чувствуешь чье-то ужасающее присутствие..."))
+	visible_message(SPAN_DANGER("[user] исчезает из реальности!"))
+	to_chat(user, SPAN_CULTITALIC("Ты чувствуешь чье-то ужасающее присутствие..."))
 	SEND_SOUND (user, sound('sound/hallucinations/i_see_you2.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(ring_ability_end), user), 8 SECONDS)
 
 /obj/item/clothing/gloves/ring/immortality_ring/proc/ring_ability_end(mob/user)
 	user.status_flags &= ~GODMODE
 	user.invisibility = invisibility_rmv
-	visible_message(span_danger("[user] возвращается в реальность!"))
+	visible_message(SPAN_DANGER("[user] возвращается в реальность!"))
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
@@ -200,7 +216,7 @@
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && slot == ITEM_SLOT_GLOVES)
 		flags = NODROP
-		to_chat(user, span_danger("[name] туго обвивается вокруг твоего пальца!"))
+		to_chat(user, SPAN_DANGER("[name] туго обвивается вокруг твоего пальца!"))
 		SEND_SOUND (user, sound('modular_ss220/aesthetics_sounds/sound/creepy/demon2.ogg'))
 
 /obj/item/emerald_stone
@@ -208,7 +224,8 @@
 	desc = "Маленькая серебряная побрякушка, инкрустированная ярким изумрудом бриллиантовой огранки. На верхушечной площадке камня выгравирован череп."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "necrostone"
-	item_state = "electronic"
+	worn_icon_state = "electronic"
+	inhand_icon_state = "electronic"
 	origin_tech = "bluespace=4;materials=4"
 	w_class = WEIGHT_CLASS_TINY
 	var/list/skeletons = list()
@@ -223,28 +240,28 @@
 		return
 
 	if(undead.stat != DEAD)
-		to_chat(user, span_warning("Этот артефакт подействует лишь на мертвеца!"))
+		to_chat(user, SPAN_WARNING("Этот артефакт подействует лишь на мертвеца!"))
 		return
 
 	if((!undead.mind || !undead.client) && !undead.grab_ghost())
-		to_chat(user, span_warning("Это тело никогда не было обременено душой..."))
+		to_chat(user, SPAN_WARNING("Это тело никогда не было обременено душой..."))
 		return
 
 	check_skeletons() // clean out/refresh the list
 
 	if(length(skeletons) >= number)
-		to_chat(user, span_warning("Этот артефакт может поддерживать только одного мертвеца!</span>"))
+		to_chat(user, SPAN_WARNING("Этот артефакт может поддерживать только одного мертвеца!</span>"))
 		return
 
 	else
 		undead.set_species(/datum/species/skeleton) // OP skellybones
-		undead.visible_message(span_warning("[undead] отторгает бренную оболочку и предстает в виде скелета!"))
+		undead.visible_message(SPAN_WARNING("[undead] отторгает бренную оболочку и предстает в виде скелета!"))
 		undead.grab_ghost() // yoinks the ghost if its not in the body
 		undead.revive()
 		equip_undead(undead)
 	skeletons |= undead
-	to_chat(undead, span_danger("Вас возродил </span><B>[user.real_name]!</B>"))
-	to_chat(undead, span_danger("[user.p_theyre(TRUE)] теперь ваш хозяин, служите ему, чего бы это вам не стоило!</span>"))
+	to_chat(undead, SPAN_DANGER("Вас возродил </span><B>[user.real_name]!</B>"))
+	to_chat(undead, SPAN_DANGER("[user.p_theyre(TRUE)] теперь ваш хозяин, служите ему, чего бы это вам не стоило!</span>"))
 
 /obj/item/emerald_stone/proc/check_skeletons()
 	for(var/count in skeletons)
@@ -259,7 +276,7 @@
 
 /obj/item/emerald_stone/proc/equip_undead(mob/living/carbon/human/raised)
 	for(var/obj/item/I in raised)
-		raised.unEquip(I)
+		raised.drop_item_to_ground(I)
 	var/randomUndead = "roman" // defualt
 	randomUndead = pick("roman","pirate","clown")
 
@@ -416,16 +433,16 @@
 /obj/structure/xen_crystal/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(harvested)
-		to_chat(user, span_warning("[src] has already been harvested!"))
+		to_chat(user, SPAN_WARNING("[src] has already been harvested!"))
 		return
-	to_chat(user, span_notice("You start harvesting [src]!"))
+	to_chat(user, SPAN_NOTICE("You start harvesting [src]!"))
 	if(do_after(user, 5 SECONDS, src))
 		harvest(user)
 
 /obj/structure/xen_crystal/proc/harvest(mob/living/user)
 	if(harvested)
 		return
-	to_chat(user, span_notice("You harvest [src]!"))
+	to_chat(user, SPAN_NOTICE("You harvest [src]!"))
 	var/obj/item/grenade/xen_crystal/nade = new (get_turf(src))
 	nade.color = color
 	harvested = TRUE
@@ -460,7 +477,7 @@
 		if(is_type_in_list(mob_to_neutralize, blacklisted_mobs))
 			return
 		mob_to_neutralize.faction |= factions
-		mob_to_neutralize.visible_message(span_green("[mob_to_neutralize] is overcome by a wave of peace and tranquility!"))
+		mob_to_neutralize.visible_message(SPAN_GREEN("[mob_to_neutralize] is overcome by a wave of peace and tranquility!"))
 		new /obj/effect/particle_effect/sparks(get_turf(mob_to_neutralize))
 		playsound(src, 'sound/magic/charge.ogg', 100, TRUE)
 	qdel(src)
@@ -614,8 +631,8 @@
 	faction = "xen"
 	lethal = TRUE
 	max_integrity = 70
-	projectile = /obj/item/projectile/beam/emitter
-	eprojectile = /obj/item/projectile/beam/emitter
+	projectile = /obj/projectile/beam/emitter
+	eprojectile = /obj/projectile/beam/emitter
 	shot_sound = 'sound/weapons/laser.ogg'
 	eshot_sound = 'sound/weapons/laser.ogg'
 
@@ -628,8 +645,8 @@
 /obj/machinery/porta_turret/syndicate/black_mesa/heavy
 	name = "Heavy Defence Turret"
 	max_integrity = 120
-	projectile = /obj/item/projectile/beam/laser/heavylaser
-	eprojectile = /obj/item/projectile/beam/laser/heavylaser
+	projectile = /obj/projectile/beam/laser/heavylaser
+	eprojectile = /obj/projectile/beam/laser/heavylaser
 	shot_sound = 'sound/weapons/lasercannonfire.ogg'
 	eshot_sound = 'sound/weapons/lasercannonfire.ogg'
 

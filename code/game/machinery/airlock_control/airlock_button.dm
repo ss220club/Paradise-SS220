@@ -5,10 +5,9 @@ GLOBAL_LIST_EMPTY(all_airlock_access_buttons)
 	icon_state = "access_button_standby"
 	name = "airlock access button"
 	desc = "Controls an airlock controller, requesting the doors open on this side."
-	layer = ABOVE_WINDOW_LAYER
+	layer = ON_EDGED_TURF_LAYER
 	anchored = TRUE
 	power_channel = PW_CHANNEL_ENVIRONMENT
-	power_state = IDLE_POWER_USE
 	/// Id to be used by the controller to grab us on spawn
 	var/autolink_id
 	/// UID of the airlock controller that owns us
@@ -32,11 +31,12 @@ GLOBAL_LIST_EMPTY(all_airlock_access_buttons)
 	else
 		icon_state = "access_button_off"
 
-/obj/machinery/access_button/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	//Swiping ID on the access button
-	if(istype(I, /obj/item/card/id) || istype(I, /obj/item/pda))
+/obj/machinery/access_button/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	// Swiping ID on the access button
+	if(istype(used, /obj/item/card/id) || istype(used, /obj/item/pda))
 		attack_hand(user)
-		return
+		return ITEM_INTERACT_COMPLETE
+
 	return ..()
 
 /obj/machinery/access_button/attack_ghost(mob/user)
@@ -48,15 +48,15 @@ GLOBAL_LIST_EMPTY(all_airlock_access_buttons)
 
 	var/obj/machinery/airlock_controller/C = locateUID(controller_uid)
 	if(!C)
-		to_chat(user, "<span class='warning'>Could not communicate with controller.</span>")
+		to_chat(user, SPAN_WARNING("Could not communicate with controller."))
 		return
 
 	if(!C.has_power(C.power_channel))
-		to_chat(user, "<span class='warning'>No response from controller, possibly offline.</span>")
+		to_chat(user, SPAN_WARNING("No response from controller, possibly offline."))
 		return
 
 	if(!allowed(user) && !user.can_advanced_admin_interact())
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
 	C.handle_button(assigned_command)
@@ -66,3 +66,4 @@ GLOBAL_LIST_EMPTY(all_airlock_access_buttons)
 	controller_uid = C.UID()
 	assigned_command = mode
 
+BUTTON_HELPERS(/obj/machinery/access_button, 25, 7)

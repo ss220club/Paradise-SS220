@@ -22,7 +22,7 @@
 	return localMotionTargets
 
 /obj/machinery/camera/proc/newTarget(mob/target)
-	if(isAI(target))
+	if(is_ai(target))
 		return FALSE
 	if(isbot(target)) //No armsky, you don't get to set off the motion alarm constantly
 		return FALSE
@@ -53,7 +53,7 @@
 	if(status)
 		var/area/A = get_area(src)
 		GLOB.alarm_manager.trigger_alarm("Motion", A, A.cameras, src)
-		visible_message("<span class='warning'>A red light flashes on [src]!</span>")
+		visible_message(SPAN_WARNING("A red light flashes on [src]!"))
 	detectTime = -1
 	return TRUE
 

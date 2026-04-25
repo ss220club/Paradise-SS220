@@ -27,18 +27,19 @@
 	eyes = "moth_eyes_s"
 	butt_sprite = "nian"
 	siemens_coeff = 1.5
-	blurb = "Nians are large bipedal invertebrates that come from an unknown homeworld. \
-	Known for spendthrift behavior, the Nian civilization has been pressed to the fore of developed space in an effort to resolve material shortages in homeworld sectors.<br/><br/> \
-	Unlike most species in the galactic fold, Nian do not recognize the authority of the Trans-Solar Federation: \
-	having instead established close diplomatic relationships with their splinter faction, the USSP."
+	blurb = "Нианы - вид насекомоподобных двуногих, родом с неизвестной планеты. \
+	Известная своей расточительностью, цивилизация Ниан была вытеснена на передний план развитого космоса в попытке решить проблему нехватки материалов в секторах родного мира.<br/><br/> \
+	В отличие от большинства видов в галактике, Нианы не признают власть Транс-Солнечной Федерации, \
+	установив вместо этого тесные дипломатические отношения с Союзом Советских Социалистических Планет."
 
-	icon_skin_tones = list(
+	icon_skin_tones = alist(
 		1 = "Default Biege",
 		2 = "Lighter",
 		3 = "Darker",
 		4 = "Purple"
 	)
 
+	meat_type = /obj/item/food/meat/human
 	has_organ = list(
 		"heart" =    /obj/item/organ/internal/heart/nian,
 		"lungs" =    /obj/item/organ/internal/lungs/nian,
@@ -59,6 +60,9 @@
 		"is ripping their wings off!",
 		"is holding their breath!"
 	)
+
+	plushie_type = /obj/item/toy/plushie/nianplushie
+
 /datum/species/moth/updatespeciescolor(mob/living/carbon/human/H, owner_sensitive = 1) //Handling species-specific skin-tones for the nian race.
 	if(H.dna.species.bodyflags & HAS_ICON_SKIN_TONE)
 		var/new_icobase = 'icons/mob/human_races/nian/r_moth.dmi' //Default nian.
@@ -133,7 +137,7 @@
 /datum/species/moth/proc/check_burn_wings(mob/living/carbon/human/H) //do not go into the extremely hot light. you will not survive
 	SIGNAL_HANDLER
 	if(H.on_fire && !H.has_status_effect(STATUS_EFFECT_BURNT_WINGS) && H.bodytemperature >= 400 && H.fire_stacks > 0)
-		to_chat(H, "<span class='warning'>Your precious wings burn to a crisp!</span>")
+		to_chat(H, SPAN_WARNING("Your precious wings burn to a crisp!"))
 		H.apply_status_effect(STATUS_EFFECT_BURNT_WINGS)
 
 /datum/species/moth/proc/on_aheal(mob/living/carbon/human/H)
@@ -154,20 +158,20 @@
 	name = "Cocoon"
 	desc = "Restore your wings and antennae, and heal some damage. If your cocoon is broken externally you will take heavy damage!"
 	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUNNED|AB_CHECK_CONSCIOUS|AB_CHECK_TURF
-	button_overlay_icon = 'icons/effects/effects.dmi'
-	button_overlay_icon_state = "cocoon1"
+	button_icon = 'icons/effects/effects.dmi'
+	button_icon_state = "cocoon1"
 
 /datum/action/innate/cocoon/Activate()
 	var/mob/living/carbon/human/moth/H = owner
 	if(H.nutrition < COCOON_NUTRITION_AMOUNT)
-		to_chat(H, "<span class='warning'>You are too hungry to cocoon!</span>")
+		to_chat(H, SPAN_WARNING("You are too hungry to cocoon!"))
 		return
-	H.visible_message("<span class='notice'>[H] begins to hold still and concentrate on weaving a cocoon...</span>", "<span class='notice'>You begin to focus on weaving a cocoon... (This will take [COCOON_WEAVE_DELAY / 10] seconds, and you must hold still.)</span>")
+	H.visible_message(SPAN_NOTICE("[H] begins to hold still and concentrate on weaving a cocoon..."), SPAN_NOTICE("You begin to focus on weaving a cocoon... (This will take [COCOON_WEAVE_DELAY / 10] seconds, and you must hold still.)"))
 	if(do_after(H, COCOON_WEAVE_DELAY, FALSE, H))
 		if(H.incapacitated())
-			to_chat(H, "<span class='warning'>You cannot weave a cocoon in your current state.</span>")
+			to_chat(H, SPAN_WARNING("You cannot weave a cocoon in your current state."))
 			return
-		H.visible_message("<span class='notice'>[H] finishes weaving a cocoon!</span>", "<span class='notice'>You finish weaving your cocoon.</span>")
+		H.visible_message(SPAN_NOTICE("[H] finishes weaving a cocoon!"), SPAN_NOTICE("You finish weaving your cocoon."))
 		var/obj/structure/moth_cocoon/C = new(get_turf(H))
 		H.forceMove(C)
 		C.preparing_to_emerge = TRUE
@@ -176,7 +180,7 @@
 		H.create_log(MISC_LOG, "has woven a cocoon")
 		addtimer(CALLBACK(src, PROC_REF(emerge), C), COCOON_EMERGE_DELAY, TIMER_UNIQUE)
 	else
-		to_chat(H, "<span class='warning'>You need to hold still in order to weave a cocoon!</span>")
+		to_chat(H, SPAN_WARNING("You need to hold still in order to weave a cocoon!"))
 
 /**
  * Removes moth from cocoon, restores burnt wings
@@ -203,9 +207,9 @@
 
 /obj/structure/moth_cocoon/Destroy()
 	if(!preparing_to_emerge)
-		visible_message("<span class='danger'>[src] splits open from within!</span>")
+		visible_message(SPAN_DANGER("[src] splits open from within!"))
 	else
-		visible_message("<span class='danger'>[src] is smashed open, harming the Nian within!</span>")
+		visible_message(SPAN_DANGER("[src] is smashed open, harming the Nian within!"))
 		for(var/mob/living/carbon/human/H in contents)
 			H.adjustBruteLoss(COCOON_HARM_AMOUNT)
 			H.adjustFireLoss(COCOON_HARM_AMOUNT)

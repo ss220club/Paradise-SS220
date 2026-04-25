@@ -6,7 +6,7 @@
 /datum/game_mode/cult
 	name = "cult"
 	config_tag = "cult"
-	restricted_jobs = list("Chaplain", "AI", "Cyborg", "Internal Affairs Agent", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Blueshield", "Nanotrasen Representative", "Magistrate", "Nanotrasen Navy Officer", "Special Operations Officer", "Syndicate Officer", "Trans-Solar Federation General")
+	restricted_jobs = list("Chaplain", "AI", "Cyborg", "Internal Affairs Agent", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Blueshield", "Nanotrasen Representative", "Magistrate", "Nanotrasen Career Trainer", "Nanotrasen Navy Officer", "Special Operations Officer", "Syndicate Officer", "Trans-Solar Federation General", "Research Director", "Chief Medical Officer", "Chief Engineer", "Quartermaster")
 	protected_jobs = list()
 	required_players = 30
 	required_enemies = 3
@@ -25,7 +25,7 @@
 	if(GLOB.configuration.gamemode.prevent_mindshield_antags)
 		restricted_jobs += protected_jobs
 
-	var/list/cultists_possible = get_players_for_role(ROLE_CULTIST)
+	var/list/cultists_possible = get_players_for_role(ROLE_CULTIST, species_exclude = list("Serpentids")) // SS220 EDIT - SERPENTIDS
 	for(var/cultists_number = 1 to max_cultists_to_start)
 		if(!length(cultists_possible))
 			break
@@ -43,12 +43,12 @@
 /datum/game_mode/cult/declare_completion()
 	if(cult_team.cult_status == NARSIE_HAS_RISEN)
 		SSticker.mode_result = "cult win - cult win"
-		to_chat(world, "<span class='danger'><FONT size=3>The cult wins! It has succeeded in summoning [GET_CULT_DATA(entity_name, "their god")]!</FONT></span>")
+		to_chat(world, SPAN_DANGER("<FONT size=3>The cult wins! It has succeeded in summoning [GET_CULT_DATA(entity_name, "their god")]!</FONT>"))
 	else if(cult_team.cult_status == NARSIE_HAS_FALLEN)
 		SSticker.mode_result = "cult draw - narsie died, nobody wins"
-		to_chat(world, "<span class='danger'><FONT size = 3>Nobody wins! [GET_CULT_DATA(entity_name, "the cult god")] was summoned, but banished!</FONT></span>")
+		to_chat(world, SPAN_DANGER("<FONT size = 3>Nobody wins! [GET_CULT_DATA(entity_name, "the cult god")] was summoned, but banished!</FONT>"))
 	else
 		SSticker.mode_result = "cult loss - staff stopped the cult"
-		to_chat(world, "<span class='warning'><FONT size = 3>The staff managed to stop the cult!</FONT></span>")
+		to_chat(world, SPAN_WARNING("<FONT size = 3>The staff managed to stop the cult!</FONT>"))
 
 	..()

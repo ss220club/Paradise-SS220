@@ -16,7 +16,7 @@
 					if(tgui_alert(user, "Would you like to open the Job selection info in your browser?", "Open Job Selection", list("Yes", "No")) == "Yes")
 						user << link("[GLOB.configuration.url.wiki_url]/index.php/Job_Selection_and_Assignment")
 				else
-					to_chat(user, "<span class='danger'>The Wiki URL is not set in the server configuration.</span>")
+					to_chat(user, SPAN_DANGER("The Wiki URL is not set in the server configuration."))
 			if("random")
 				if(active_character.alternate_option == GET_RANDOM_JOB || active_character.alternate_option == BE_ASSISTANT)
 					active_character.alternate_option += 1
@@ -151,8 +151,10 @@
 				if("eyes")
 					active_character.e_colour = rand_hex_color()
 				if("s_tone")
-					if(S.bodyflags & (HAS_SKIN_TONE|HAS_ICON_SKIN_TONE))
-						active_character.s_tone = random_skin_tone()
+					if(S.bodyflags & HAS_SKIN_TONE)
+						active_character.s_tone = 35 - random_skin_tone(active_character.species)
+					else if(S.bodyflags & HAS_ICON_SKIN_TONE)
+						active_character.s_tone = random_skin_tone(active_character.species)
 				if("s_color")
 					if(S.bodyflags & HAS_SKIN_COLOR)
 						active_character.s_colour = rand_hex_color()
@@ -194,9 +196,10 @@
 					var/datum/species/NS = GLOB.all_species[active_character.species]
 					if(!istype(NS)) //The species was invalid. Notify the user and fail out.
 						active_character.species = prev_species
-						to_chat(user, "<span class='warning'>Invalid species, please pick something else.</span>")
+						to_chat(user, SPAN_WARNING("Invalid species, please pick something else."))
 						return
 					if(prev_species != active_character.species)
+						active_character.quirks = list() //Reset their quirks
 						active_character.age = clamp(active_character.age, NS.min_age, NS.max_age)
 						var/datum/robolimb/robohead
 						if(NS.bodyflags & ALL_RPARTS)
@@ -246,10 +249,12 @@
 							active_character.socks = random_socks(active_character.body_type, active_character.species)
 
 						//reset skin tone and colour
-						if(NS.bodyflags & (HAS_SKIN_TONE|HAS_ICON_SKIN_TONE))
-							random_skin_tone(active_character.species)
+						if(NS.bodyflags & HAS_SKIN_TONE)
+							active_character.s_tone = 35 - random_skin_tone(active_character.species)
+						else if(NS.bodyflags & HAS_ICON_SKIN_TONE)
+							active_character.s_tone = random_skin_tone(active_character.species)
 						else
-							active_character.s_tone = 0
+							active_character.s_tone = 1
 
 						if(!(NS.bodyflags & HAS_SKIN_COLOR))
 							active_character.s_colour = "#000000"
@@ -609,6 +614,9 @@
 						if(active_character.body_type == FEMALE && SA.body_type == MALE)
 							continue
 						valid_undershirts[undershirt] = GLOB.undershirt_list[undershirt]
+					for(var/config in GLOB.configuration.custom_sprites.fluff_undershirts)
+						if(user.ckey in config["ckeys"])
+							valid_undershirts[config["name"]] = GLOB.undershirt_full_list[config["name"]]
 					sortTim(valid_undershirts, GLOBAL_PROC_REF(cmp_text_asc))
 					var/new_undershirt = tgui_input_list(user, "Choose your character's undershirt", "Character Preference", valid_undershirts)
 					ShowChoices(user)
@@ -639,18 +647,18 @@
 					active_character.e_colour = new_eyes
 
 				if("s_tone")
+					var/new_s_tone
 					if(S.bodyflags & HAS_SKIN_TONE)
-						var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
+						new_s_tone = tgui_input_number(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference", -active_character.s_tone + 35, 220, 1)
 						if(isnull(new_s_tone))
 							return
-						active_character.s_tone = 35 - max(min(round(new_s_tone), 220), 1)
+						active_character.s_tone = 35 - new_s_tone
 					else if(S.bodyflags & HAS_ICON_SKIN_TONE)
-						var/const/MAX_LINE_ENTRIES = 4
 						var/prompt = "Choose your character's skin tone: 1-[length(S.icon_skin_tones)]\n(Light to Dark)"
-						var/skin_c = tgui_input_number(user, prompt, "Character Preference", active_character.s_tone, length(S.icon_skin_tones), 1)
-						if(isnull(skin_c))
+						new_s_tone = tgui_input_number(user, prompt, "Character Preference", active_character.s_tone, length(S.icon_skin_tones), 1)
+						if(isnull(new_s_tone))
 							return
-						active_character.s_tone = skin_c
+						active_character.s_tone = new_s_tone
 
 				if("skin")
 					if((S.bodyflags & HAS_SKIN_COLOR) || GLOB.body_accessory_by_species[active_character.species] || check_rights(R_ADMIN, 0, user))
@@ -673,6 +681,11 @@
 				if("loadout")
 					var/datum/ui_module/loadout/loadout = new()
 					loadout.ui_interact(user)
+					return FALSE
+
+				if("quirks")
+					var/datum/ui_module/quirk/quirk = new()
+					quirk.ui_interact(user)
 					return FALSE
 
 				if("nt_relation")
@@ -871,16 +884,16 @@
 						return
 					active_character.pda_ringtone = ringtone
 				if("clientfps")
-					var/version_message
-					if(user.client && user.client.byond_version < 511)
-						version_message = "\nYou need to be using byond version 511 or later to take advantage of this feature, your version of [user.client.byond_version] is too low"
-					if(world.byond_version < 511)
-						version_message += "\nThis server does not currently support client side fps. You can set now for when it does."
-					var/desiredfps = tgui_input_number(user, "Choose your desired fps.[version_message]\n(Min = synced with server tick rate)", "Character Preference", clientfps, 120, world.fps)
+					var/desiredfps = tgui_input_list(user, "Choose your desired fps. Listed variants work better than custom", "Character Preference", list("\[CUSTOM\]") + GLOB.client_fps_options, clientfps)
 					if(!isnull(desiredfps))
+						if(desiredfps == "\[CUSTOM\]")
+							desiredfps = tgui_input_number(user, "Set your desired fps. Remember that this value will be converted to one that server can actually work with!", "Character Preference", parent.fps, 1000, world.fps)
+							if(isnull(desiredfps)) // we closed the window
+								return
+							if(round(1000 / floor(1000 / desiredfps), 1) != desiredfps) // don't ask
+								desiredfps = floor(1000 / round(1000 / desiredfps, 1))
 						clientfps = desiredfps
-						if(world.byond_version >= 511 && user.client && user.client.byond_version >= 511)
-							parent.fps = clientfps
+						parent.fps = clientfps
 
 		else
 			switch(href_list["preference"])
@@ -921,7 +934,7 @@
 				if("hear_adminhelps")
 					sound ^= SOUND_ADMINHELP
 				if("ui")
-					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Vaporwave", "Detective", "Trasenknox", "Clockwork")) // SS220 EDIT "Vaporwave, Detective, Trasenknox, Clockwork"
+					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Clockwork", "Vaporwave", "Detective", "Trasenknox", "Clockwork")) // SS220 EDIT "Vaporwave, Detective, Trasenknox, Clockwork"
 					if(!new_UI_style)
 						return
 					switch(new_UI_style)
@@ -937,6 +950,8 @@
 							UI_style = "Operative"
 						if("White")
 							UI_style = "White"
+						if("Clockwork")
+							UI_style = "Clockwork"
 						// SS220 ADDITION - START
 						if("Vaporwave")
 							UI_style = "Vaporwave"
@@ -1027,6 +1042,7 @@
 						var/list/actualview = getviewsize(parent.view)
 						parent.void.UpdateGreed(actualview[1],actualview[2])
 
+					parent.fit_viewport()
 					parent.debug_text_overlay?.update_view(parent)
 
 				if("afk_watch")
@@ -1034,7 +1050,7 @@
 						to_chat(user, "<span class='notice'>You will now get put into cryo dorms after [GLOB.configuration.afk.auto_cryo_minutes] minutes. \
 								Then after [GLOB.configuration.afk.auto_despawn_minutes] minutes you will be fully despawned. You will receive a visual and auditory warning before you will be put into cryodorms.</span>")
 					else
-						to_chat(user, "<span class='notice'>Automatic cryoing turned off.</span>")
+						to_chat(user, SPAN_NOTICE("Automatic cryoing turned off."))
 					toggles2 ^= PREFTOGGLE_2_AFKWATCH
 
 				if("UIcolor")
@@ -1062,6 +1078,18 @@
 					if(length(parent?.screen))
 						var/atom/movable/screen/plane_master/point/PM = locate(/atom/movable/screen/plane_master/point) in parent.screen
 						PM.backdrop(parent.mob)
+
+				if("cogbar")
+					toggles3 ^= PREFTOGGLE_3_COGBAR_ANIMATIONS
+					if(length(parent?.screen))
+						var/atom/movable/screen/plane_master/cogbar/PM = locate(/atom/movable/screen/plane_master/cogbar) in parent.screen
+						PM.backdrop(parent.mob)
+
+				if("dark_flash")
+					toggles3 ^= PREFTOGGLE_3_DARK_FLASH
+
+				if("toggle_post_credits")
+					toggles3 ^= PREFTOGGLE_3_POSTCREDS
 
 				if("be_special")
 					var/r = href_list["role"]

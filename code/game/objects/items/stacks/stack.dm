@@ -37,8 +37,8 @@
 	var/parent_stack = FALSE
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
-	if(dynamic_icon_state) //If we have a dynamic icon state, we don't want item states to follow the same pattern.
-		item_state = initial(icon_state)
+	if(dynamic_icon_state && isnull(inhand_icon_state)) //If we have a dynamic icon state, we don't want inhand icon states to follow the same pattern.
+		inhand_icon_state = initial(icon_state)
 
 	if(new_amount != null)
 		amount = new_amount
@@ -61,6 +61,10 @@
 				if(is_zero_amount(FALSE))
 					return INITIALIZE_HINT_QDEL
 
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 	update_icon(UPDATE_ICON_STATE)
 
 /obj/item/stack/update_icon_state()
@@ -75,17 +79,18 @@
 
 	icon_state = "[initial(icon_state)]_[state]"
 
-/obj/item/stack/Crossed(obj/O, oldloc)
-	if(O == src)
+/obj/item/stack/proc/on_atom_entered(datum/source, atom/movable/entered)
+	SIGNAL_HANDLER // COMSIG_ATOM_ENTERED
+
+	// Edge case. This signal will also be sent when src has entered the turf. Don't want to merge with ourselves.
+	if(entered == src)
 		return
 
 	if(amount >= max_amount || ismob(loc)) // Prevents unnecessary call. Also prevents merging stack automatically in a mob's inventory
 		return
 
-	if(!O.throwing && can_merge(O))
-		INVOKE_ASYNC(src, PROC_REF(merge), O)
-
-	..()
+	if(!entered.throwing && can_merge(entered))
+		INVOKE_ASYNC(src, PROC_REF(merge), entered)
 
 /obj/item/stack/hitby(atom/movable/hitting, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(can_merge(hitting, inhand = TRUE))
@@ -108,7 +113,7 @@
 		. += "There are [amount] [singular_name]\s in the stack."
 	else
 		. += "There are [amount] [name]\s in the stack."
-	. +="<span class='notice'>Alt-click to take a custom amount.</span>"
+	. +=SPAN_NOTICE("Alt-click to take a custom amount.")
 
 /obj/item/stack/proc/add(newamount)
 	if(is_cyborg)
@@ -170,7 +175,7 @@
 
 	var/obj/item/stack/material = thing
 	if(merge(material))
-		to_chat(user, "<span class='notice'>Your [material.name] stack now contains [material.get_amount()] [material.singular_name]\s.</span>")
+		to_chat(user, SPAN_NOTICE("Your [material.name] stack now contains [material.get_amount()] [material.singular_name]\s."))
 
 /obj/item/stack/use(used, check = TRUE)
 	if(check && is_zero_amount(TRUE))
@@ -191,7 +196,7 @@
 
 /obj/item/stack/AltClick(mob/living/user)
 	if(!istype(user) || user.incapacitated())
-		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		to_chat(user, SPAN_WARNING("You can't do that right now!"))
 		return
 
 	if(!in_range(src, user) || !ishuman(usr) || amount < 1 || is_cyborg)
@@ -208,7 +213,7 @@
 		return
 
 	change_stack(user,stackmaterial)
-	to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack.</span>")
+	to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack."))
 
 /obj/item/stack/ui_state(mob/user)
 	return GLOB.hands_state
@@ -302,7 +307,7 @@
 	return to_transfer
 
 /obj/item/stack/proc/split(mob/user, amount)
-	var/obj/item/stack/material = new type(loc, amount)
+	var/obj/item/stack/material = new type(loc, amount, FALSE)
 	material.copy_evidences(src)
 	if(isliving(user))
 		add_fingerprint(user)

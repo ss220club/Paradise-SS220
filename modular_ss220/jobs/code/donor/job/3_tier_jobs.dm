@@ -18,6 +18,7 @@
 	А если всё замечательно, значит устройте новое развлечение или событие для экипажа. Довольный экипаж - работоспособный экипаж. \
 	\nВы не являетесь заменой главы персонала и подчиняетесь ему напрямую. Вы не являетесь главой сервисного отдела. \
 	Вы помощник, ассистент, консультант, наблюдатель, организатор."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/donor/administrator
 	name = "Administrator"
@@ -58,6 +59,7 @@
 	\nВы ТУРИСТ ТСФ. Вы прибыли сюда для отдыха и возможно для подработок. На вас по прежнему действует КЗ НТ, не смотря на то \
 	что вы являетесь гражданином ТСФ. ТСФ и СССП недоброжелательно относятся друг к другу, но это по прежнему не дает нарушать правила сервера.	\
 	"
+	standard_paycheck = CREW_PAY_ASSISTANT
 
 /datum/outfit/job/donor/tourist_tsf
 	name = "Tourist TSF"
@@ -97,6 +99,7 @@
 	\nВы ТУРИСТ СССП. Вы прибыли сюда для отдыха и возможно для подработок. На вас по прежнему действует КЗ НТ, не смотря на то \
 	что вы являетесь гражданином СССП. ТСФ и СССП недоброжелательно относятся друг к другу, но это по прежнему не дает нарушать правила сервера. \
 	"
+	standard_paycheck = CREW_PAY_ASSISTANT
 
 
 /datum/outfit/job/donor/tourist_ussp
@@ -133,7 +136,7 @@
 	alt_titles = list("Менеджер по Клинингу", "Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда",
 		"Подмастерье", "Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
 	relate_job = "Janitor"
-	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
+	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -141,6 +144,7 @@
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы Менеджер по Клинингу. Вы уборщик этой станции и должны следить за чистотой на ней. Вы давно на этой работе и снабжены лучшим снаряжением для идеальной работы. \
 	Вы тот кто отделяет станцию от хаоса и обеспечивает порядок. Вы - настоящая действующая сила на этой станции."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/donor/cleaning_manager
 	name = "Cleaning Manager"
@@ -197,7 +201,7 @@
 	ru_title = "Подмастерье"
 	alt_titles = list("Подмастерье", "Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
 	relate_job = "Assistant"
-	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -247,6 +251,7 @@
 	\nВы ОХРАННИК. Данная роль нацелена на обеспечение порядка в баре и на кухне. Вы то что отдаляет кухню от хаоса и пьяных ассистентов. \
 	Вы уполномочены вышвыривать из бара каждого, кто нарушает порядок. \
 	\nВы НЕ являетесь службой безопасности, данная роль не дает вам полномочия охотиться за антагонистами."
+	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/donor/guard
 	name = "Guard"
@@ -282,6 +287,7 @@
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы МИГРАНТ. Сами вы прибыли на эту станцию или так вынудили обстоятельства, но вы теперь тут. \
 	Присмотритесь к этой корпорации. Возможно здесь вы захотите жить и работать?"
+	standard_paycheck = CREW_PAY_ASSISTANT
 
 /datum/outfit/job/donor/migrant
 	name = "Migrant"
@@ -311,7 +317,7 @@
 	flag = JOB_UNCERTAIN
 	ru_title = "Безработный"
 	alt_titles = list("Безработный", "Безработный Ассистент", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
-	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -320,13 +326,14 @@
 	\nВы БЕЗРАБОТНЫЙ. Данная роль нацелена на бездумное брождение по техническим тоннелям. Вас когда-то оставили без работы, \
 	возможно эвакуационный шаттл улетел без вас, возможно технологии заменили вашу работу, причины могут быть разные. \
 	Но суть всего этого одна - вы были брошены и занимаетесь собственным выживанием."
+	standard_paycheck = CREW_PAY_ASSISTANT
 
 /datum/outfit/job/donor/uncertain
 	name = "Uncertain"
 	jobtype = /datum/job/donor/uncertain
 
 	uniform = /obj/item/clothing/under/costume/kilt
-	suit = /obj/item/clothing/suit/unathi/mantle
+	suit = /obj/item/clothing/neck/cloak/unathi
 	shoes = /obj/item/clothing/shoes/footwraps
 	head = /obj/item/clothing/head/beanie/yellow
 	glasses = /obj/item/clothing/glasses/eyepatch
@@ -339,15 +346,15 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_random = 2,
 		/obj/item/food/fancy/doshik = 3,
 		/obj/item/food/fancy/doshik_spicy = 3,
-		/obj/item/clothing/suit/mantle/old = 1,
+		/obj/item/clothing/neck/cloak/old = 1,
 		/obj/item/clothing/head/flatcap = 1,
 		/obj/item/clothing/suit/browntrenchcoat = 1,
-		/obj/item/clothing/accessory/horrible = 1,
+		/obj/item/clothing/neck/tie/horrible = 1,
 		/obj/item/clothing/under/costume/pirate_rags = 1,
 		/obj/item/clothing/head/cowboyhat = 1,
 		/obj/item/clothing/shoes/sandal = 1,
 		)
 
 	backpack = /obj/item/storage/backpack/explorer
-	satchel = /obj/item/storage/backpack/satchel/explorer
+	satchel = /obj/item/storage/backpack/satchel_explorer
 	dufflebag = /obj/item/storage/backpack/duffel

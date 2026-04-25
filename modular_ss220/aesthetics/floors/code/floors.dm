@@ -1,26 +1,18 @@
-// MARK: Floor painter
-/datum/painter/floor
-	floor_icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
-
-/datum/painter/floor/New()
-	. = ..()
-	allowed_states |= list("darkneutralcorner", "darkneutral", "darkneutralfull", "navybluecorners", "navyblue", "navybluefull",
-		"navybluealt", "navybluealtstrip", "navybluecornersalt", "darkbluealt", "darkbluealtstrip", "darkbluecornersalt",
-		"darkredalt", "darkredaltstrip", "darkredcornersalt", "darkyellowalt", "darkyellowaltstrip", "darkyellowcornersalt",
-		"whitebrowncorner", "whitebrown"
-		)
-
-/turf/simulated/floor
-	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
-
-/turf/simulated/floor/plasteel/dark
-	icon_state = "dark"
 
 /turf/simulated/floor/mech_bay_recharge_floor
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 
+//MARK: BLACK MESA
 /turf/simulated/floor/plasteel/smooth
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	icon_state = "smooth"
+
+/turf/simulated/floor/plasteel/smooth/elevator
+	icon_state = "elevatorshaft"
+
+/turf/simulated/floor/vault/alien
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+	icon_state = "alienvault"
 
 // MARK: LIGHT FLOORS
 /turf/simulated/floor/light/red

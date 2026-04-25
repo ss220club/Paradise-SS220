@@ -5,7 +5,7 @@
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon_state = "sslr"
-	item_state = "sslr"
+	inhand_icon_state = "sslr"
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	origin_tech = "combat=1;materials=1"
@@ -18,8 +18,8 @@
 	actions_types = list()
 
 /obj/item/gun/projectile/automatic/sslr/update_icon_state()
-	icon_state = "sslr[magazine ? "-[CEILING(get_ammo(0) / 4, 1) * 4]" : ""]"
-	item_state = "sslr[magazine ? "" : "_empty"]"
+	icon_state = "sslr[magazine ? "-[CEILING(get_ammo(FALSE) / 4, 1) * 4]" : ""]"
+	inhand_icon_state = "sslr[magazine ? "" : "_empty"]"
 
 /obj/item/ammo_box/magazine/sslr
 	name = "SSLR magazine"

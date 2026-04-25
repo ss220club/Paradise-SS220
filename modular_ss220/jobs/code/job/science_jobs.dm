@@ -8,6 +8,7 @@
 	exp_map = list(EXP_TYPE_CREW = NOVICE_JOB_MINUTES)
 	outfit = /datum/outfit/job/scientist/student
 	important_information = "Ваша должность ограничена во всех взаимодействиях с рабочим имуществом отдела и экипажем станции, при отсутствии приставленного к нему квалифицированного сотрудника или полученного разрешения от вышестоящего начальства."
+	standard_paycheck = CREW_PAY_LOW
 
 /datum/outfit/job/scientist/student
 	name = "Student Scientist"
@@ -23,6 +24,10 @@
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel_tox
 	dufflebag = /obj/item/storage/backpack/duffel/science
+
+/datum/outfit/job/scientist/student/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	REMOVE_TRAIT(H.mind, TRAIT_CRAFTY, JOB_TRAIT)
 
 /datum/outfit/job/scientist/student/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()

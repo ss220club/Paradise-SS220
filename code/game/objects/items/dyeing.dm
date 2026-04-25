@@ -26,9 +26,10 @@
 	// update icons
 	icon = initial(target_obj.icon)
 	icon_state = initial(target_obj.icon_state)
-	item_state = initial(target_obj.item_state)
+	worn_icon = initial(target_obj.worn_icon)
+	worn_icon_state = initial(target_obj.worn_icon_state)
+	inhand_icon_state = initial(target_obj.inhand_icon_state)
 	sprite_sheets = target_obj.sprite_sheets
-	item_color = target_obj.item_color
 	desc = target_obj.desc
 	base_icon_state = target_obj.base_icon_state
 
@@ -47,6 +48,12 @@
 
 /// Beanies use the color var for their appearance, we don't normally copy this over but we have to for beanies
 /obj/item/clothing/head/beanie/dye_item(dye_color, dye_key_override)
+	. = ..()
+	if(.)
+		var/obj/item/target_type = .
+		color = initial(target_type.color)
+
+/obj/item/clothing/mask/bandana/dye_item(dye_color, dye_key_override)
 	. = ..()
 	if(.)
 		var/obj/item/target_type = .

@@ -18,14 +18,11 @@ field_generator energy level display
 #define FG_CHARGING 1
 #define FG_ONLINE 2
 
-GLOBAL_LIST_EMPTY(field_generator_fields)
-
 /obj/machinery/field/generator
 	name = "Field Generator"
 	desc = "A large thermal battery that projects a high amount of energy when powered."
 	icon = 'icons/obj/machines/field_generator.dmi'
 	icon_state = "Field_Gen"
-	anchored = FALSE
 	density = TRUE
 	power_state = NO_POWER_USE
 	max_integrity = 500
@@ -60,27 +57,71 @@ GLOBAL_LIST_EMPTY(field_generator_fields)
 	if(active == FG_ONLINE)
 		calc_energy()
 
+/**
+ * Gets a list of generators that form a field that is enclosing a given singularity, if such a field exists.
+ *
+ * Arguments:
+ * * _dir - The direction in which we are currently going
+ * * singulo - The singularity we are looking to contain
+ * * containment_gens - A list of generators which is the portion of the potential result we have so far.
+ */
+/obj/machinery/field/generator/proc/find_containment_gens(_dir, obj/singularity/singulo, list/containment_gens = list())
+	// We can't go in a direction that doesn't exist
+	if(!dir)
+		return list()
+
+	containment_gens |= src
+	// This is used to evaluate a path before returning it. We don't want to stop after the first dead end.
+	var/list/temp_gens = list()
+
+	for(var/obj/machinery/field/generator/gen in connected_gens)
+		// We don't ever want to do anything with the generator behind us so this check comes first
+		if(get_dir(src, gen) == turn(_dir, 180))
+			continue
+		// If we completed a full circle and it contains the singularity return it. Otherwise continue
+		if(gen in containment_gens)
+			if(singulo.in_containment(containment_gens))
+				return containment_gens
+			continue
+
+		// Go right if we can, forward if we can't go right, and left if we can't go forward
+		if(get_dir(src, gen) == turn(_dir, -90))
+			temp_gens = gen.find_containment_gens(turn(_dir, -90), singulo, containment_gens)
+			if(length(temp_gens))
+				return temp_gens
+		if(get_dir(src, gen) == _dir)
+			temp_gens = gen.find_containment_gens(_dir, singulo, containment_gens)
+			if(length(temp_gens))
+				return temp_gens
+		if(get_dir(src, gen) == turn(_dir, 90))
+			temp_gens = gen.find_containment_gens(turn(_dir, 90), singulo, containment_gens)
+			if(length(temp_gens))
+				return temp_gens
+
+	// We got to a dead end, temp_gens should be empty here.
+	return temp_gens
+
 /obj/machinery/field/generator/attack_hand(mob/user)
 	if(state == FG_WELDED)
 		if(get_dist(src, user) <= 1)//Need to actually touch the thing to turn it on
 			if(active >= FG_CHARGING)
-				to_chat(user, "<span class='warning'>You are unable to turn off [src] once it is online!</span>")
+				to_chat(user, SPAN_WARNING("You are unable to turn off [src] once it is online!"))
 				return 1
 			else
 				user.visible_message("[user] turns on [src].", \
-					"<span class='notice'>You turn on [src].</span>", \
-					"<span class='italics'>You hear heavy droning.</span>")
+					SPAN_NOTICE("You turn on [src]."), \
+					SPAN_ITALICS("You hear heavy droning."))
 				turn_on()
-				investigate_log("<font color='green'>activated</font> by [user.key].","singulo")
+				investigate_log("<font color='green'>activated</font> by [user.key].", INVESTIGATE_SINGULO)
 
 				add_fingerprint(user)
 	else
-		to_chat(user, "<span class='warning'>[src] needs to be firmly secured to the floor first!</span>")
+		to_chat(user, SPAN_WARNING("[src] needs to be firmly secured to the floor first!"))
 
 /obj/machinery/field/generator/wrench_act(mob/living/user, obj/item/W)
 	. = TRUE
 	if(active)
-		to_chat(user, "<span class='warning'>[src] needs to be off!</span>")
+		to_chat(user, SPAN_WARNING("[src] needs to be off!"))
 		return
 	switch(state)
 		if(FG_UNSECURED)
@@ -88,23 +129,23 @@ GLOBAL_LIST_EMPTY(field_generator_fields)
 			state = FG_SECURED
 			W.play_tool_sound(W, 75)
 			user.visible_message("[user.name] secures [name] to the floor.", \
-				"<span class='notice'>You secure the external reinforcing bolts to the floor.</span>", \
-				"<span class='italics'>You hear ratchet.</span>")
+				SPAN_NOTICE("You secure the external reinforcing bolts to the floor."), \
+				SPAN_ITALICS("You hear ratchet."))
 			anchored = TRUE
 		if(FG_SECURED)
 			state = FG_UNSECURED
 			W.play_tool_sound(W, 75)
 			user.visible_message("[user.name] unsecures [name] reinforcing bolts from the floor.", \
-				"<span class='notice'>You undo the external reinforcing bolts.</span>", \
-				"<span class='italics'>You hear ratchet.</span>")
+				SPAN_NOTICE("You undo the external reinforcing bolts."), \
+				SPAN_ITALICS("You hear ratchet."))
 			anchored = FALSE
 		if(FG_WELDED)
-			to_chat(user, "<span class='warning'>[src] needs to be unwelded from the floor!</span>")
+			to_chat(user, SPAN_WARNING("[src] needs to be unwelded from the floor!"))
 
 /obj/machinery/field/generator/welder_act(mob/user, obj/item/I)
 	. = TRUE
 	if(state == FG_UNSECURED)
-		to_chat(user, "<span class='warning'>[src] needs to be wrenched to the floor!</span>")
+		to_chat(user, SPAN_WARNING("[src] needs to be wrenched to the floor!"))
 		return
 	if(!I.tool_use_check(user, 0))
 		return
@@ -127,7 +168,7 @@ GLOBAL_LIST_EMPTY(field_generator_fields)
 	if(M.environment_smash & ENVIRONMENT_SMASH_RWALLS && active == FG_OFFLINE && state != FG_UNSECURED)
 		state = FG_UNSECURED
 		anchored = FALSE
-		M.visible_message("<span class='warning'>[M] rips [src] free from its moorings!</span>")
+		M.visible_message(SPAN_WARNING("[M] rips [src] free from its moorings!"))
 	else
 		..()
 	if(!anchored)
@@ -139,7 +180,7 @@ GLOBAL_LIST_EMPTY(field_generator_fields)
 	else
 		..()
 
-/obj/machinery/field/generator/bullet_act(obj/item/projectile/Proj)
+/obj/machinery/field/generator/bullet_act(obj/projectile/Proj)
 	if(Proj.flag != BULLET && !Proj.nodamage)
 		energy = min(energy + Proj.damage, FIELD_GENERATOR_MAX_ENERGY)
 		check_energy_level()
@@ -185,9 +226,9 @@ GLOBAL_LIST_EMPTY(field_generator_fields)
 		check_energy_level()
 		return TRUE
 	else
-		visible_message("<span class='danger'>[src] shuts down!</span>", "<span class='italics'>You hear something shutting down.</span>")
+		visible_message(SPAN_DANGER("[src] shuts down!"), SPAN_ITALICS("You hear something shutting down."))
 		turn_off()
-		investigate_log("ran out of energy and <font color='red'>deactivated</font>","singulo")
+		investigate_log("ran out of energy and <font color='red'>deactivated</font>",INVESTIGATE_SINGULO)
 		energy = 0
 		check_energy_level()
 		return FALSE
@@ -283,16 +324,15 @@ GLOBAL_LIST_EMPTY(field_generator_fields)
 
 	T = loc
 	for(var/dist in 0 to steps) // creates each field tile
-		var/field_dir = get_dir(T,get_step(G.loc, NSEW))
+		var/field_dir = get_dir(T, get_step(G.loc, NSEW))
 		T = get_step(T, NSEW)
 		if(!locate(/obj/machinery/field/containment) in T)
 			var/obj/machinery/field/containment/CF = new/obj/machinery/field/containment()
-			CF.set_master(src,G)
+			CF.set_master(src, G)
 			CF.loc = T
 			CF.dir = field_dir
 			fields += CF
 			G.fields += CF
-			GLOB.field_generator_fields += CF
 			for(var/mob/living/L in T)
 				CF.Crossed(L, null)
 
@@ -305,7 +345,6 @@ GLOBAL_LIST_EMPTY(field_generator_fields)
 	clean_up = TRUE
 	for(var/F in fields)
 		qdel(F)
-		GLOB.field_generator_fields -= F
 
 	for(var/CG in connected_gens)
 		var/obj/machinery/field/generator/FG = CG
@@ -336,7 +375,7 @@ GLOBAL_LIST_EMPTY(field_generator_fields)
 				// [src ? "[get_location_name(src, TRUE)] [COORD(src)]" : "nonexistent location"] [ADMIN_JMP(src)] works much better and actually works at all
 				// Oh and yes, this exact comment was pasted from the exact same thing I did to tcomms code. Dont at me.
 				message_admins("A singularity exists and a containment field has failed on the same Z-Level. Singulo location: [O ? "[get_location_name(O, TRUE)] [COORD(O)]" : "nonexistent location"] [ADMIN_JMP(O)] | Field generator location: [src ? "[get_location_name(src, TRUE)] [COORD(src)]" : "nonexistent location"] [ADMIN_JMP(src)]")
-				investigate_log("has <font color='red'>failed</font> whilst a singulo exists.","singulo")
+				investigate_log("has <font color='red'>failed</font> whilst a singulo exists.", INVESTIGATE_SINGULO)
 		O.last_warning = world.time
 
 /obj/machinery/field/generator/shock_field(mob/living/user)

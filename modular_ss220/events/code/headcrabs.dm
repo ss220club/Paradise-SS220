@@ -6,8 +6,13 @@
 #define HEADCRAB_SPAWNER 5
 
 /datum/event/headcrabs
+	name = "Headcrabs"
 	announceWhen = 10
 	endWhen = 11
+	noAutoEnd = TRUE
+	nominal_severity = EVENT_LEVEL_MODERATE
+	role_weights = list(ASSIGNMENT_SECURITY =  5)
+	role_requirements = list(ASSIGNMENT_SECURITY = 3)
 	var/locstring
 	var/headcrab_type
 
@@ -18,7 +23,7 @@
 	var/area/randomarea = pick(availableareas)
 	var/list/turf/simulated/floor/turfs = list()
 	for(var/turf/simulated/floor/F in randomarea)
-		if(turf_clear(F))
+		if(!F.is_blocked_turf())
 			turfs += F
 	var/list/spawn_types = list()
 	var/max_number
@@ -58,7 +63,7 @@
 		new /obj/structure/spawner/headcrab(T)
 
 /datum/event/headcrabs/announce()
-	GLOB.major_announcement.Announce("Биосканеры фиксируют размножение хедкрабов на борту станции. Избавьтесь от них, прежде чем это начнет влиять на продуктивность станции", "ВНИМАНИЕ: НЕОПОЗНАННЫЕ ФОРМЫ ЖИЗНИ.")
+	GLOB.major_announcement.Announce("Биосканеры фиксируют размножение хедкрабов на борту станции. Избавьтесь от них, прежде чем это начнет влиять на продуктивность станции", "ВНИМАНИЕ: Неопознанные формы жизни.")
 
 /datum/event_container/mundane/New()
 	. = ..()

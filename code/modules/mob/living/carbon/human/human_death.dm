@@ -18,8 +18,7 @@
 					thing.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1, 3), 5)
 
 	for(var/obj/item/I in get_equipped_items(include_pockets = TRUE))
-		unEquip(I, TRUE)
-		I.forceMove(get_turf(src))
+		drop_item_to_ground(I, force = TRUE)
 		if(!QDELETED(I)) // This is in case moving to the turf deletes the atom.
 			I.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1, 3), 5)
 
@@ -34,7 +33,7 @@
 	for(var/mob/M in src)
 		LAZYREMOVE(stomach_contents, M)
 		M.forceMove(drop_location())
-		visible_message("<span class='danger'>[M] bursts out of [src]!</span>")
+		visible_message(SPAN_DANGER("[M] bursts out of [src]!"))
 
 	if(!ismachineperson(src) && !is_species(src, /datum/species/nucleation)) // SS220 EDIT - SPECIES
 		hgibs(loc, dna)

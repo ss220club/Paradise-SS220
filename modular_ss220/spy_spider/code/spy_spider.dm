@@ -16,14 +16,14 @@
 
 /obj/item/radio/spy_spider/examine(mob/user)
 	. = ..()
-	. += span_info("Сейчас он [broadcasting ? "включён" : "выключен"].")
+	. += SPAN_INFO("Сейчас он [broadcasting ? "включён" : "выключен"].")
 
 /obj/item/radio/spy_spider/attack_self__legacy__attackchain(mob/user)
 	broadcasting = !broadcasting
 	if(broadcasting)
-		to_chat(user, span_info("Ты включаешь жучок."))
+		to_chat(user, SPAN_INFO("Ты включаешь жучок."))
 	else
-		to_chat(user, span_info("Ты выключил жучок."))
+		to_chat(user, SPAN_INFO("Ты выключил жучок."))
 	return TRUE
 
 /obj/item/encryptionkey/spy_spider
@@ -64,71 +64,81 @@
 	. = ..()
 	spy_spider_attached?.hear_talk(M, message_pieces)
 
-/obj/item/clothing/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(!istype(I, /obj/item/radio/spy_spider))
-		return ..()
-	if(spy_spider_attached || !((slot_flags & ITEM_SLOT_OUTER_SUIT) || (slot_flags & ITEM_SLOT_JUMPSUIT)))
-		to_chat(user, span_warning("Ты не находишь места для жучка!"))
-		return TRUE
-	var/obj/item/radio/spy_spider/spy_spider = I
+// TODO: migrate to the new attack chain when /obj/item/clothing get migrated
+// /obj/item/clothing/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+// 	if(!istype(I, /obj/item/radio/spy_spider))
+// 		return ..()
+// 	if(spy_spider_attached || !((slot_flags & ITEM_SLOT_OUTER_SUIT) || (slot_flags & ITEM_SLOT_JUMPSUIT)))
+// 		to_chat(user, SPAN_WARNING("Ты не находишь места для жучка!"))
+// 		return TRUE
+// 	var/obj/item/radio/spy_spider/spy_spider = I
 
-	if(!spy_spider.broadcasting)
-		to_chat(user, span_warning("Жучок выключен!"))
-		return TRUE
+// 	if(!spy_spider.broadcasting)
+// 		to_chat(user, SPAN_WARNING("Жучок выключен!"))
+// 		return TRUE
 
-	user.unEquip(spy_spider)
-	spy_spider.forceMove(src)
-	spy_spider_attached = spy_spider
-	to_chat(user, span_info("Ты незаметно прикрепляешь жучок к [src]."))
-	return TRUE
+// 	user.unequip(spy_spider)
+// 	spy_spider.forceMove(src)
+// 	spy_spider_attached = spy_spider
+// 	to_chat(user, SPAN_INFO("Ты незаметно прикрепляешь жучок к [src]."))
+// 	return TRUE
 
-/obj/item/clothing/proc/remove_spy_spider()
-	set name = "Снять жучок"
-	set category = "Object"
-	set src in range(1, usr)
-
-	if(!ishuman(usr))
+/obj/item/clothing/proc/remove_spy_spider(cloth_uid, spider_uid)
+	if(!in_range(src, usr))
+		to_chat(usr, SPAN_INFO("Тебе нужно подойти ближе, чтобы снять жучок с [src.declent_ru(GENITIVE)]."))
 		return
-	var/mob/living/carbon/human/user = usr
+	if(usr.stat || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED) || usr.restrained())
+		to_chat(usr, SPAN_INFO("Тебе нужны свободные руки для этого"))
+		return
+	if(isnull(src.spy_spider_attached))
+		to_chat(usr, SPAN_INFO("На [src.declent_ru(PREPOSITIONAL)] нет жучка."))
+		return
 
-	if(spy_spider_attached)
-		if(!user.put_in_any_hand_if_possible(spy_spider_attached, del_on_fail = FALSE))
-			var/turf/user_loc = get_turf(user)
-			spy_spider_attached.forceMove(user_loc)
+	var/obj/item/I = locate(spider_uid)
+	if(do_after(usr, 3 SECONDS, needhand = TRUE, target = src))
+		if(usr.put_in_any_hand_if_possible(I))
+			usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] что-то снимает с [src.declent_ru(GENITIVE)] !", SPAN_NOTICE("Вы успешно снимаете жучок с [src.declent_ru(ACCUSATIVE)]."))
+		else
+			I.forceMove(get_turf(src))
+			usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] роняет шпионский жучок на пол.", SPAN_NOTICE("Вы роняете жучок на пол."))
 		spy_spider_attached = null
 
-	verbs -= /obj/item/clothing/proc/remove_spy_spider
+/obj/item/clothing/Topic(href, href_list)
+	. = ..()
+	remove_spy_spider(href_list["src"], href_list["remove_spy_spider"])
 
 /**
  * HUMAN PART
  */
-/mob/living/carbon/human/attackby__legacy__attackchain(obj/item/I, mob/living/user, def_zone)
-	if(!istype(I, /obj/item/radio/spy_spider))
-		return ..()
+/mob/living/carbon/human/attack_by(obj/item/attacking, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
+
+	if(!istype(attacking, /obj/item/radio/spy_spider))
+		return
 
 	if(!(w_uniform || wear_suit))
-		to_chat(user, span_warning("У тебя нет желания лезть к [src] в трусы. Жучок надо крепить на одежду!"))
-		return TRUE
+		to_chat(user, SPAN_WARNING("У тебя нет желания лезть к [src.declent_ru(GENITIVE)] в трусы. Жучок надо крепить на одежду!"))
+		return FINISH_ATTACK
 
-	var/obj/item/radio/spy_spider/spy_spider = I
+	var/obj/item/radio/spy_spider/spy_spider = attacking
 	var/obj/item/clothing/clothing_for_attach = wear_suit || w_uniform
 	if(clothing_for_attach.spy_spider_attached)
-		to_chat(user, span_warning("Ты не находишь места для жучка!"))
-		return TRUE
+		to_chat(user, SPAN_WARNING("Ты не находишь места для жучка!"))
+		return FINISH_ATTACK
 
 	if(!spy_spider.broadcasting)
-		to_chat(user, span_warning("Жучок выключен!"))
-		return TRUE
+		to_chat(user, SPAN_WARNING("Жучок выключен!"))
+		return FINISH_ATTACK
 
-	var/attempt_cancel_message = span_warning("Ты не успеваешь установить жучок.")
+	var/attempt_cancel_message = SPAN_WARNING("Ты не успеваешь установить жучок.")
 	if(!do_after_once(user, 3 SECONDS, TRUE, src, TRUE, attempt_cancel_message))
-		return TRUE
+		return FINISH_ATTACK
 
-	user.unEquip(spy_spider)
-	spy_spider.forceMove(clothing_for_attach)
+	user.unequip_to(spy_spider, clothing_for_attach)
 	clothing_for_attach.spy_spider_attached = spy_spider
-	to_chat(user, span_info("Ты незаметно прикрепляешь жучок к одежде [src]."))
-	return TRUE
+	to_chat(user, SPAN_INFO("Ты незаметно прикрепляешь жучок к одежде [src.declent_ru(ACCUSATIVE)]."))
+	return FINISH_ATTACK
 
 /obj/item/clothing/suit/storage/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
 	if(istype(W, /obj/item/radio/spy_spider))
@@ -138,19 +148,17 @@
 // Spy spider detection
 /obj/item/detective_scanner/scan(atom/A, mob/user)
 	. = ..()
-	var/found_spy_device = FALSE
+
 	if(!scanning)
 		scanning = TRUE
 
-		if(istype(A, /obj/item/clothing))
-			var/obj/item/clothing/scanned_clothing = A
-			if(scanned_clothing.spy_spider_attached)
-				found_spy_device = TRUE
+	if(istype(A, /obj/item/clothing))
+		var/obj/item/clothing/scanned_clothing = A
+		usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] сканирует одежду на наличие шпиоского устройства.")
 
-		if(found_spy_device)
-			sleep(1 SECONDS)
-			add_log(span_info("<B>Найдено шпионское устройство!</B>"))
-			if(!(/obj/item/clothing/proc/remove_spy_spider in A.verbs))
-				add_verb(A, /obj/item/clothing/proc/remove_spy_spider)
-
-		scanning = FALSE
+		if(scanned_clothing.spy_spider_attached)
+			// Triger /obj/item/clothing/Topic
+			add_log(SPAN_INFO("<a href='byond://?src=[scanned_clothing.UID()];remove_spy_spider=[scanned_clothing.spy_spider_attached.UID()];' class='warning'><b>Найдено шпионское устройство!</b></a>"))
+		else
+			usr.visible_message("Но ничего не находит")
+	scanning = FALSE

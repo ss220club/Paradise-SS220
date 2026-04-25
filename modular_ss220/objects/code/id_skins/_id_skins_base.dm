@@ -14,40 +14,39 @@
 /obj/item/card/id/thunderdome
 	skinable = FALSE
 
-/obj/item/card/id/attackby__legacy__attackchain(obj/item/item, mob/user, params)
+/obj/item/card/id/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	. = ..()
-	if(!istype(item, /obj/item/id_skin))
-		return .
-
-	return apply_skin(item, user)
+	if(istype(used, /obj/item/id_skin))
+		apply_skin(used, user)
+		return ITEM_INTERACT_COMPLETE
 
 /obj/item/card/id/examine(mob/user)
 	. = ..()
 	if(skin_applied)
-		. += span_notice("Нажмите <b>Alt-Click</b> на карту, чтобы снять наклейку.")
+		. += SPAN_NOTICE("Нажмите <b>Ctrl-Shift-Click</b> на карту, чтобы снять наклейку.")
 
-/obj/item/card/id/AltClick(mob/living/carbon/user)
+/obj/item/card/id/CtrlShiftClick(mob/living/carbon/user)
 	if(!iscarbon(user))
 		return
 
 	if(!Adjacent(user) || user.incapacitated())
-		to_chat(user, span_warning("У вас нет возможности снять наклейку!"))
+		to_chat(user, SPAN_WARNING("У вас нет возможности снять наклейку!"))
 		return
 
 	if(!skin_applied)
-		to_chat(user, span_warning("На карте нет наклейки!"))
+		to_chat(user, SPAN_WARNING("На карте нет наклейки!"))
 		return
 
 	if(user.a_intent == INTENT_HARM)
-		to_chat(user, span_warning("Вы срываете наклейку с карты!"))
+		to_chat(user, SPAN_WARNING("Вы срываете наклейку с карты!"))
 		playsound(user.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
 		remove_skin(delete = TRUE)
 	else
-		to_chat(user, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
+		to_chat(user, SPAN_NOTICE("Вы начинаете аккуратно снимать наклейку с карты."))
 		if(!do_after(user, 5 SECONDS, target = src, progress = TRUE))
 			return FALSE
 
-		to_chat(user, span_notice("Вы сняли наклейку с карты."))
+		to_chat(user, SPAN_NOTICE("Вы сняли наклейку с карты."))
 
 		if(!user.get_active_hand() && Adjacent(user))
 			user.put_in_hands(skin_applied)
@@ -57,20 +56,20 @@
 
 /obj/item/card/id/proc/apply_skin(obj/item/id_skin/skin, mob/user)
 	if(skin_applied)
-		to_chat(usr, span_warning("На карте уже есть наклейка, сначала соскребите её!"))
+		to_chat(usr, SPAN_WARNING("На карте уже есть наклейка, сначала соскребите её!"))
 		return FALSE
 
 	if(!skinable)
-		to_chat(usr, span_warning("Наклейка не подходит для [src]!"))
+		to_chat(usr, SPAN_WARNING("Наклейка не подходит для [src]!"))
 		return FALSE
 
-	to_chat(user, span_notice("Вы начинаете наносить наклейку на карту."))
+	to_chat(user, SPAN_NOTICE("Вы начинаете наносить наклейку на карту."))
 	if(!do_after(user, 2 SECONDS, target = src, progress = TRUE, allow_moving = TRUE))
 		return FALSE
 
 	var/mutable_appearance/card_skin = mutable_appearance(skin.icon, skin.icon_state)
 	card_skin.color = skin.color
-	to_chat(user, span_notice("Вы наклеили [skin.pronoun_name] на [src]."))
+	to_chat(user, SPAN_NOTICE("Вы наклеили [skin.pronoun_name] на [src]."))
 	desc += "<br>[skin.info]"
 	user.drop_item()
 	skin.forceMove(src)

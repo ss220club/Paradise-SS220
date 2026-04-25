@@ -8,7 +8,7 @@
 #define FREQ_UPPER 40 //The upper limit for the randomly selected frequency.
 #define FREQ_LOWER 25 //The lower of the above.
 
-/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, ignorecap = 0, flame_range = 0, silent = 0, smoke = 1, cause = null, breach = TRUE)
+/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, ignorecap = 0, flame_range = 0, silent = 0, smoke = 1, cause = "Unknown Cause!", breach = TRUE)
 	epicenter = get_turf(epicenter)
 	if(!epicenter)
 		return
@@ -16,7 +16,7 @@
 	// If we are in end round, make explosions gib the user
 	// Why? Its funny
 	if(GLOB.disable_explosions && usr && istype(usr, /mob/living/carbon/human))
-		to_chat(usr, "<span class='userdanger'>Your explosive backfires!</span>")
+		to_chat(usr, SPAN_USERDANGER("Your explosive backfires!"))
 		var/mob/living/carbon/human/H = usr
 		H.gib() // lol
 		return
@@ -49,8 +49,8 @@
 		var/list/cached_exp_block = list()
 
 		if(adminlog)
-			message_admins("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in area [epicenter.loc.name] [cause ? "(Cause: [cause])" : ""] [ADMIN_COORDJMP(epicenter)] ")
-			log_game("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in area [epicenter.loc.name] [cause ? "(Cause: [cause])" : ""] [COORD(epicenter)] ")
+			message_admins("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in area [epicenter.loc.name] (Cause: [cause]) [ADMIN_COORDJMP(epicenter)] ")
+			log_game("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range], [flame_range]) in area [epicenter.loc.name] (Cause: [cause]) [COORD(epicenter)] ")
 
 		var/x0 = epicenter.x
 		var/y0 = epicenter.y
@@ -85,7 +85,7 @@
 				var/turf/M_turf = get_turf(M)
 				if(M_turf && M_turf.z == z0)
 					var/dist = get_dist(M_turf, epicenter)
-					if(isliving(M) && dist <= flash_range)
+					if(isliving(M) && dist <= flash_range && !HAS_TRAIT(M, TRAIT_EXPLOSION_PROOF))
 						var/mob/living/to_flash = M
 						var/is_very_close_to_the_explosion = flash_range > (dist * 2)
 						to_flash.flash_eyes(is_very_close_to_the_explosion * 2, is_very_close_to_the_explosion, is_very_close_to_the_explosion) // Gets past sunglasses
@@ -212,12 +212,9 @@
 	for(var/turf/tile in spiral_range_turfs(range, epicenter))
 		tile.ex_act(EXPLODE_HEAVY)
 
-/client/proc/check_bomb_impacts()
-	set name = "Check Bomb Impact"
-	set category = "Debug"
-
-	var/newmode = alert("Use reactionary explosions?","Check Bomb Impact", "Yes", "No")
-	var/turf/epicenter = get_turf(mob)
+USER_VERB(check_bomb_impact, R_DEBUG, "Check Bomb Impact", "Test bomb impact ranges.", VERB_CATEGORY_DEBUG)
+	var/newmode = alert(client, "Use reactionary explosions?","Check Bomb Impact", "Yes", "No")
+	var/turf/epicenter = get_turf(client.mob)
 	if(!epicenter)
 		return
 
@@ -225,7 +222,7 @@
 	var/heavy = 0
 	var/light = 0
 	var/list/choices = list("Small Bomb","Medium Bomb","Big Bomb","Custom Bomb")
-	var/choice = input("Bomb Size?") in choices
+	var/choice = input(client, "Bomb Size?") in choices
 	switch(choice)
 		if(null)
 			return 0
@@ -242,9 +239,9 @@
 			heavy = 5
 			light = 7
 		if("Custom Bomb")
-			dev = input("Devastation range (Tiles):") as num
-			heavy = input("Heavy impact range (Tiles):") as num
-			light = input("Light impact range (Tiles):") as num
+			dev = input(client, "Devastation range (Tiles):") as num
+			heavy = input(client, "Heavy impact range (Tiles):") as num
+			light = input(client, "Light impact range (Tiles):") as num
 
 	var/max_range = max(dev, heavy, light)
 	var/x0 = epicenter.x
@@ -286,10 +283,10 @@
  * Creates an explosion of shrapnel at a turf.
  * - /turf/epicenter - where the explosion occurs
  * - shrapnel_number - the amount of shrapnel to create
- * - /obj/item/projectile/shrapnel_type - the type of shrapnel bullets to shoot
+ * - /obj/projectile/shrapnel_type - the type of shrapnel bullets to shoot
  * - chance_to_hit_same_turf - the probability to hit someone on the same turf, doubled for someone lying down
  */
-/proc/create_shrapnel(turf/epicenter, shrapnel_number = 10, obj/item/projectile/shrapnel_type = /obj/item/projectile/bullet/shrapnel, chance_to_hit_same_turf = 50)
+/proc/create_shrapnel(turf/epicenter, shrapnel_number = 10, obj/projectile/shrapnel_type = /obj/projectile/bullet/shrapnel, chance_to_hit_same_turf = 50)
 	epicenter = get_turf(epicenter)
 	if(!epicenter || !shrapnel_number || !shrapnel_type)
 		return
@@ -306,7 +303,7 @@
 			mob_lying_on_turf = M
 
 	for(var/i in 1 to shrapnel_number)
-		var/obj/item/projectile/Shrapnel = new shrapnel_type(epicenter)
+		var/obj/projectile/Shrapnel = new shrapnel_type(epicenter)
 
 		// You can't just stand over a shrapnel explosion to avoid it
 		if(mob_standing_on_turf && prob(chance_to_hit_same_turf))

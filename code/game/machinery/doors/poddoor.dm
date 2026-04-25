@@ -39,7 +39,7 @@
 	return
 
 /obj/machinery/door/poddoor/impassable/emag_act(mob/user)
-	to_chat(user, "<span class='notice'>The electronic systems in this door are far too advanced for your primitive hacking peripherals.</span>")
+	to_chat(user, SPAN_NOTICE("The electronic systems in this door are far too advanced for your primitive hacking peripherals."))
 	return
 
 /obj/machinery/door/poddoor/Bumped(atom/AM)
@@ -76,51 +76,30 @@
 	if(!density)
 		return
 	if(!hasPower() && !(resistance_flags & INDESTRUCTIBLE))
-		to_chat(user, "<span class='notice'>You start forcing [src] open...</span>")
+		to_chat(user, SPAN_NOTICE("You start forcing [src] open..."))
 		if(do_after(user, 50 * I.toolspeed, target = src))
 			if(!hasPower())
 				open()
 			else
-				to_chat(user, "<span class='warning'>[src] resists your efforts to force it!</span>")
+				to_chat(user, SPAN_WARNING("[src] resists your efforts to force it!"))
 	else
-		to_chat(user, "<span class='warning'>[src] resists your efforts to force it!</span>")
+		to_chat(user, SPAN_WARNING("[src] resists your efforts to force it!"))
 
  // Whoever wrote the old code for multi-tile spesspod doors needs to burn in hell. - Unknown
  // Wise words. - Bxil
 /obj/machinery/door/poddoor/multi_tile
 	name = "large pod door"
-	layer = CLOSED_DOOR_LAYER
-	closingLayer = CLOSED_DOOR_LAYER
-
-/obj/machinery/door/poddoor/multi_tile/four_tile_ver
-	icon = 'icons/obj/doors/1x4blast_vert.dmi'
-	width = 4
-	dir = NORTH
-
-/obj/machinery/door/poddoor/multi_tile/three_tile_ver
-	icon = 'icons/obj/doors/1x3blast_vert.dmi'
-	width = 3
-	dir = NORTH
-
-/obj/machinery/door/poddoor/multi_tile/two_tile_ver
-	icon = 'icons/obj/doors/1x2blast_vert.dmi'
+	icon = 'icons/obj/doors/blastdoor_1x2.dmi'
+	layer = CLOSED_BLASTDOOR_LAYER
 	width = 2
-	dir = NORTH
 
-/obj/machinery/door/poddoor/multi_tile/four_tile_hor
-	icon = 'icons/obj/doors/1x4blast_hor.dmi'
-	width = 4
-	dir = EAST
-
-/obj/machinery/door/poddoor/multi_tile/three_tile_hor
-	icon = 'icons/obj/doors/1x3blast_hor.dmi'
+/obj/machinery/door/poddoor/multi_tile/triple
+	icon = 'icons/obj/doors/blastdoor_1x3.dmi'
 	width = 3
-	dir = EAST
 
-/obj/machinery/door/poddoor/multi_tile/two_tile_hor
-	icon = 'icons/obj/doors/1x2blast_hor.dmi'
-	width = 2
-	dir = EAST
+/obj/machinery/door/poddoor/multi_tile/quad
+	icon = 'icons/obj/doors/blastdoor_1x4.dmi'
+	width = 4
 
 /obj/machinery/door/poddoor/multi_tile/impassable
 	desc = "A heavy duty blast door that opens mechanically. Looks even tougher than usual."
@@ -134,35 +113,13 @@
 	return
 
 /obj/machinery/door/poddoor/multi_tile/impassable/emag_act(mob/user)
-	to_chat(user, "<span class='notice'>The electronic systems in this door are far too advanced for your primitive hacking peripherals.</span>")
+	to_chat(user, SPAN_NOTICE("The electronic systems in this door are far too advanced for your primitive hacking peripherals."))
 	return
 
-/obj/machinery/door/poddoor/multi_tile/impassable/four_tile_ver
-	icon = 'icons/obj/doors/1x4blast_vert.dmi'
-	width = 4
-	dir = NORTH
-
-/obj/machinery/door/poddoor/multi_tile/impassable/three_tile_ver
-	icon = 'icons/obj/doors/1x3blast_vert.dmi'
+/obj/machinery/door/poddoor/multi_tile/impassable/triple
+	icon = 'icons/obj/doors/blastdoor_1x3.dmi'
 	width = 3
-	dir = NORTH
 
-/obj/machinery/door/poddoor/multi_tile/impassable/two_tile_ver
-	icon = 'icons/obj/doors/1x2blast_vert.dmi'
-	width = 2
-	dir = NORTH
-
-/obj/machinery/door/poddoor/multi_tile/impassable/four_tile_hor
-	icon = 'icons/obj/doors/1x4blast_hor.dmi'
+/obj/machinery/door/poddoor/multi_tile/impassable/quad
+	icon = 'icons/obj/doors/blastdoor_1x4.dmi'
 	width = 4
-	dir = EAST
-
-/obj/machinery/door/poddoor/multi_tile/impassable/three_tile_hor
-	icon = 'icons/obj/doors/1x3blast_hor.dmi'
-	width = 3
-	dir = EAST
-
-/obj/machinery/door/poddoor/multi_tile/impassable/two_tile_hor
-	icon = 'icons/obj/doors/1x2blast_hor.dmi'
-	width = 2
-	dir = EAST

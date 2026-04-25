@@ -5,7 +5,7 @@
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = null
 	density = TRUE
-	anchored = FALSE
+	appearance_flags = LONG_GLIDE
 	can_buckle = TRUE
 	buckle_lying = FALSE
 	max_integrity = 300
@@ -24,6 +24,9 @@
 	var/generic_pixel_y = 0 //All dirs shwo this pixel_y for the driver
 	var/spaceworthy = FALSE
 
+	/// Did we install a vtec?
+	var/installed_vtec = FALSE
+
 	new_attack_chain = TRUE
 
 
@@ -36,7 +39,7 @@
 	return ..()
 
 // So that beepsky can't push the janicart
-/obj/vehicle/CanPass(atom/movable/mover, turf/target)
+/obj/vehicle/CanPass(atom/movable/mover, border_dir)
 	if(istype(mover) && mover.checkpass(PASSMOB))
 		return TRUE
 	else
@@ -46,11 +49,11 @@
 	. = ..()
 	if(key_type)
 		if(!inserted_key)
-			. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
+			. += SPAN_NOTICE("Put a key inside it by clicking it with the key.")
 		else
-			. += "<span class='notice'>Alt-click [src] to remove the key.</span>"
+			. += SPAN_NOTICE("Alt-click [src] to remove the key.")
 	if(resistance_flags & ON_FIRE)
-		. += "<span class='warning'>It's on fire!</span>"
+		. += SPAN_WARNING("It's on fire!")
 	var/healthpercent = obj_integrity/max_integrity * 100
 	switch(healthpercent)
 		if(50 to 99)
@@ -58,37 +61,42 @@
 		if(25 to 50)
 			. += "It appears heavily damaged."
 		if(0 to 25)
-			. += "<span class='warning'>It's falling apart!</span>"
+			. += SPAN_WARNING("It's falling apart!")
 
 /obj/vehicle/proc/install_vtec(obj/item/borg/upgrade/vtec/vtec, mob/user)
-	if(vehicle_move_delay > 1)
-		vehicle_move_delay = 1
-		qdel(vtec)
-		to_chat(user, "<span class='notice'>You upgrade [src] with [vtec].</span>")
+	if(installed_vtec)
+		return FALSE
+	if(vehicle_move_delay <= 1)
+		to_chat(user, SPAN_WARNING("[src] is too fast for [vtec] to have any effect."))
+		return FALSE
 
-		return TRUE
+	installed_vtec = TRUE
+	vehicle_move_delay = max(1, vehicle_move_delay - 1)
+	qdel(vtec)
+	to_chat(user, SPAN_NOTICE("You upgrade [src] with [vtec]."))
+	return TRUE
 
 /obj/vehicle/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(key_type && !is_key(inserted_key) && is_key(used))
 		if(user.drop_item())
 			used.forceMove(src)
-			to_chat(user, "<span class='notice'>You insert [used] into [src].</span>")
+			to_chat(user, SPAN_NOTICE("You insert [used] into [src]."))
 			if(inserted_key)	//just in case there's an invalid key
 				inserted_key.forceMove(drop_location())
 			inserted_key = used
 		else
-			to_chat(user, "<span class='warning'>[used] seems to be stuck to your hand!</span>")
-		return ITEM_INTERACT_ANY_BLOCKER
+			to_chat(user, SPAN_WARNING("[used] seems to be stuck to your hand!"))
+		return ITEM_INTERACT_COMPLETE
 
 	if(istype(used, /obj/item/borg/upgrade/vtec) && install_vtec(used, user))
-		return ITEM_INTERACT_ANY_BLOCKER
+		return ITEM_INTERACT_COMPLETE
 
 /obj/vehicle/AltClick(mob/user)
 	if(inserted_key && user.Adjacent(user))
 		if(!(user in buckled_mobs))
-			to_chat(user, "<span class='warning'>You must be riding [src] to remove [src]'s key!</span>")
+			to_chat(user, SPAN_WARNING("You must be riding [src] to remove [src]'s key!"))
 			return
-		to_chat(user, "<span class='notice'>You remove [inserted_key] from [src].</span>")
+		to_chat(user, SPAN_NOTICE("You remove [inserted_key] from [src]."))
 		inserted_key.forceMove(drop_location())
 		user.put_in_hands(inserted_key)
 		inserted_key = null
@@ -155,7 +163,7 @@
 	..()
 	handle_vehicle_offsets()
 
-/obj/vehicle/bullet_act(obj/item/projectile/Proj)
+/obj/vehicle/bullet_act(obj/projectile/Proj)
 	if(!has_buckled_mobs())
 		return ..()
 	for(var/m in buckled_mobs)
@@ -165,7 +173,7 @@
 //MOVEMENT
 /obj/vehicle/relaymove(mob/user, direction)
 	if(key_type && !is_key(inserted_key))
-		to_chat(user, "<span class='warning'>[src] has no key inserted!</span>")
+		to_chat(user, SPAN_WARNING("[src] has no key inserted!"))
 		return
 
 	if(user.incapacitated())
@@ -181,11 +189,13 @@
 		var/turf/next = get_step(src, direction)
 		if(!Process_Spacemove(direction) || !isturf(loc))
 			return
-		Move(get_step(src, direction), direction, delay)
+		Move(get_step(src, direction), direction)
 
 		if((direction & (direction - 1)) && (loc == next))		//moved diagonally
+			set_glide_size(MOVEMENT_ADJUSTED_GLIDE_SIZE(vehicle_move_delay + GLOB.configuration.movement.human_delay, 1) * 0.5)
 			last_move_diagonal = TRUE
 		else
+			set_glide_size(MOVEMENT_ADJUSTED_GLIDE_SIZE(vehicle_move_delay + GLOB.configuration.movement.human_delay, 1))
 			last_move_diagonal = FALSE
 
 		if(has_buckled_mobs())
@@ -202,7 +212,7 @@
 		handle_vehicle_layer()
 		handle_vehicle_offsets()
 	else
-		to_chat(user, "<span class='warning'>You'll need the keys in one of your hands to drive [src].</span>")
+		to_chat(user, SPAN_WARNING("You'll need the keys in one of your hands to drive [src]."))
 
 
 /obj/vehicle/Move(NewLoc, Dir = 0, movetime)
@@ -224,7 +234,7 @@
 	return		//write specifics for different vehicles
 
 
-/obj/vehicle/Process_Spacemove(direction)
+/obj/vehicle/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	if(has_gravity(src))
 		return TRUE
 
@@ -240,7 +250,7 @@
 	pressure_resistance = INFINITY
 	spaceworthy = TRUE
 
-/obj/vehicle/space/Process_Spacemove(direction)
+/obj/vehicle/space/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	return TRUE
 
 /obj/vehicle/zap_act(power, zap_flags)

@@ -157,13 +157,13 @@
 	if(issilicon(user))
 		return
 	if(!isvox(user))
-		to_chat(user, span_notice("Вы осматриваете [src] и не понимаете как оно работает и куда сувать свои пальцы..."))
+		to_chat(user, SPAN_NOTICE("Вы осматриваете [src] и не понимаете как оно работает и куда сувать свои пальцы..."))
 		return
 	if(is_trading_now)
-		to_chat(user, span_warning("[src] обрабатываем и пересчитывает ценности. Ожидайте."))
+		to_chat(user, SPAN_WARNING("[src] обрабатываем и пересчитывает ценности. Ожидайте."))
 		return
 	if(length(blacklist_users) && (user in blacklist_users))
-		to_chat(user, span_warning("Вы пытаетесь связаться с [src], но никто не отзывается."))
+		to_chat(user, SPAN_WARNING("Вы пытаетесь связаться с [src], но никто не отзывается."))
 		return
 	return TRUE
 
@@ -194,33 +194,33 @@
 			angry_count++
 			switch(angry_count)
 				if(3)
-					atom_say(span_warning("Вами очень недовольны. Где товар?!"))
+					atom_say(SPAN_WARNING("Вами очень недовольны. Где товар?!"))
 				if(4)
-					atom_say(span_warning("Вами ОЧЕНЬ недовольны... Нам нужен реальный товар!"))
+					atom_say(SPAN_WARNING("Вами ОЧЕНЬ недовольны... Нам нужен реальный товар!"))
 				if(5)
-					atom_say(span_warning("Отправляй товар!"))
+					atom_say(SPAN_WARNING("Отправляй товар!"))
 				if(6)
-					atom_say(span_warning("Что ты щелкаешь как дятел?!"))
+					atom_say(SPAN_WARNING("Что ты щелкаешь как дятел?!"))
 				if(7)
-					atom_say(span_warning("Или ты будешь отправлять товар или не будешь больше отправлять ничего!"))
+					atom_say(SPAN_WARNING("Или ты будешь отправлять товар или не будешь больше отправлять ничего!"))
 				if(8)
-					atom_say(span_warning("Я не буду с тобой торговать пока ты не дашь товар!"))
+					atom_say(SPAN_WARNING("Я не буду с тобой торговать пока ты не дашь товар!"))
 				if(9)
-					atom_say(span_warning("Ты шутки шутишь? Товар. Последнее предупреждение."))
+					atom_say(SPAN_WARNING("Ты шутки шутишь? Товар. Последнее предупреждение."))
 				if(10)
-					atom_say(span_warning("[user.name], [src] больше не будет с вами торговать!"))
+					atom_say(SPAN_WARNING("[user.name], [src] больше не будет с вами торговать!"))
 					blacklist_users.Add(user)	// Докикикировался.
 				else
-					atom_say(span_warning("Вами недовольны. Где товар?"))
+					atom_say(SPAN_WARNING("Вами недовольны. Где товар?"))
 		else
-			atom_say(span_notice("Расчет окончен. Средства отправлены на транспортные погашения."))
+			atom_say(SPAN_NOTICE("Расчет окончен. Средства отправлены на транспортные погашения."))
 		trade_cancel()
 		return
 	if(values_sum > 100)
 		all_values_sum += values_sum
-		atom_say(span_greenannounce("Расчет окончен. [values_sum > 2000 ? "Крайне ценно!" : "Ценно!"] Ваша доля [values_sum]"))
+		atom_say(SPAN_GREENANNOUNCE("Расчет окончен. [values_sum > 2000 ? "Крайне ценно!" : "Ценно!"] Ваша доля [values_sum]"))
 	else
-		atom_say(span_notice("Расчет окончен. Вы бы еще консервных банок насобирали! Ваша доля [values_sum]"))
+		atom_say(SPAN_NOTICE("Расчет окончен. Вы бы еще консервных банок насобирали! Ваша доля [values_sum]"))
 
 	angry_count = 0
 	trade_cancel()
@@ -402,35 +402,35 @@
 			var/obj/O = I
 			if(ismob(O.loc))	// Cyborg Parts, wearing clothes, but not contents
 				var/mob/M = O
-				M.unEquip(I)
+				M.unequip(I)
 			qdel(I)
 
 	var/addition_text = ""
 	if(length(accepted_access))
 		if(!is_visuale_only) // Заносим наши принятые доступы
 			collected_access_list += accepted_access
-		addition_text += span_boldnotice("\nОценка имеющихся доступов: \n")
+		addition_text += SPAN_BOLDNOTICE("\nОценка имеющихся доступов: \n")
 		for(var/access in accepted_access)
 			var/access_desc = get_access_desc(access)
 			if(!access_desc)
 				continue
-			addition_text += span_notice("[access_desc]; ")
+			addition_text += SPAN_NOTICE("[access_desc]; ")
 		if(is_access_unique)
-			addition_text += span_good("\nИмеются ценные доступы. Очень ценно!")
+			addition_text += SPAN_GOOD("\nИмеются ценные доступы. Очень ценно!")
 	if(is_weight)
-		addition_text += span_notice("\nТяжесть - значит надежность.")
+		addition_text += SPAN_NOTICE("\nТяжесть - значит надежность.")
 	if(is_equip)
-		addition_text += span_notice("\nХорошее снаряжение. Ценно.")
+		addition_text += SPAN_NOTICE("\nХорошее снаряжение. Ценно.")
 	if(is_tech)
-		addition_text += span_notice("\nТехнологии - ценно!")
+		addition_text += SPAN_NOTICE("\nТехнологии - ценно!")
 	if(is_tech_unique)
-		addition_text += span_notice("\nНовые технологии! Очень ценно! Необходимо!")
+		addition_text += SPAN_NOTICE("\nНовые технологии! Очень ценно! Необходимо!")
 	if(is_tech_valuable)
-		addition_text += span_notice("\nЦенные технологии! Крайне ценно!")
+		addition_text += SPAN_NOTICE("\nЦенные технологии! Крайне ценно!")
 
 	if(!is_visuale_only && is_tech_unique)
 		update_shops()
-		addition_text += span_notice("\nЦены на некоторые товары снижены!")
+		addition_text += SPAN_NOTICE("\nЦены на некоторые товары снижены!")
 
 	if(user && addition_text != "")
 		to_chat(user, chat_box_notice(addition_text))
@@ -470,7 +470,7 @@
 			precious_data["value"] = max(precious_data["value"], object_value)
 
 /obj/machinery/vox_trader/proc/synchronize_traders_stats()
-	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
+	for(var/obj/machinery/vox_trader/trader in SSmachines.get_by_type(/obj/machinery/vox_trader))
 		if(trader == src)
 			continue
 
@@ -530,7 +530,7 @@
 		var/mob/living/carbon/C = M
 		C.Silence(6 SECONDS)
 		C.clear_restraints()
-		to_chat(C, span_warning("Вы ощущаете как ваши мозги были промыты. \
+		to_chat(C, SPAN_WARNING("Вы ощущаете как ваши мозги были промыты. \
 		Вы всё еще не можете прийти в себя и отрывками вспоминаете что неизвестные похители вас. \
 		Неизвестно сколько они продержали вас у себя и что с вами делали... \
 		Но вы чувствуете себя будто обновленным."))
@@ -551,14 +551,14 @@
 	return TRUE
 
 /obj/machinery/vox_trader/proc/update_shops()
-	for(var/obj/machinery/vox_shop/shop in GLOB.machines)
+	for(var/obj/machinery/vox_shop/shop in SSmachines.get_by_type(/obj/machinery/vox_shop))
 		shop.generate_pack_items()
 		shop.generate_pack_lists()
 
 /obj/machinery/vox_trader/proc/try_update_blacklist()
 	if(length(blacklist_objects))
 		return
-	var/obj/machinery/vox_shop/shop = locate() in GLOB.machines
+	var/obj/machinery/vox_shop/shop = locate() in SSmachines.get_by_type(/obj/machinery/vox_shop)
 	if(!shop)
 		return
 

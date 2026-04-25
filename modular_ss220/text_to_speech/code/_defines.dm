@@ -9,8 +9,6 @@
 #define TTS_TRAIT_RATE_FASTER (1<<2)
 #define TTS_TRAIT_RATE_MEDIUM (1<<3)
 
-#define TTS_TRAIT_ROBOTIZE "tts_trait_robotize"
-
 #define TTS_CATEGORY_OTHER "Другое"
 #define TTS_CATEGORY_WARCRAFT3 "WarCraft 3"
 #define TTS_CATEGORY_HALFLIFE2 "Half-Life 2"
@@ -58,7 +56,7 @@
 #define TTS_CATEGORY_TLOU "The Last of Us"
 #define TTS_CATEGORY_DEEP_ROCK_GALACTIC "Deep Rock Galactic"
 #define TTS_CATEGORY_SUNBOY "Пророк Санбой"
-#define TTS_CATEGORY_WH40k "Warhammer 40k"
+#define TTS_CATEGORY_WH40K "Warhammer 40k"
 
 
 #define TTS_GENDER_ANY "Любой"

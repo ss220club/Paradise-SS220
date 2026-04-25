@@ -1,6 +1,5 @@
 GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	/datum/strippable_item/parrot_headset,
-	/datum/strippable_item/pet_collar
 )))
 
 /datum/strippable_item/parrot_headset
@@ -16,7 +15,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		return FALSE
 
 	if(!istype(equipping, /obj/item/radio/headset))
-		to_chat(user, "<span class='warning'>[equipping] won't fit!</span>")
+		to_chat(user, SPAN_WARNING("[equipping] won't fit!"))
 		return FALSE
 
 	return TRUE
@@ -35,7 +34,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	parrot_source.update_available_channels()
 	parrot_source.update_speak()
 
-	to_chat(user, "<span class='notice'>You fit [radio] onto [source].</span>")
+	to_chat(user, SPAN_NOTICE("You fit [radio] onto [source]."))
 
 /datum/strippable_item/parrot_headset/start_unequip(atom/source, mob/user)
 	. = ..()
@@ -47,7 +46,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		return
 
 	if(parrot_source.stat == CONSCIOUS) // DEAD PARROTS TELL NO TALES (Finally moved this out of topic, thank god)
-		parrot_source.say("[length(parrot_source.available_channels) ? "[pick(parrot_source.available_channels)] " : null]BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+		parrot_source.say("[length(parrot_source.available_channels) ? "[pick(parrot_source.available_channels)] " : null]ОСТАВЬ ГАРНИТУРУ! НЕТ!!!")
 
 	return TRUE
 

@@ -32,7 +32,6 @@
 		// Command (Solo command, not department heads)
 		"Blueshield" = "comradio",
 		"Captain" = "comradio",
-		"Head of Personnel" = "comradio",
 		"Nanotrasen Representative" = "comradio",
 		// Engineeering
 		"Atmospheric Technician" = "engradio",
@@ -97,11 +96,14 @@
 		"Scientist" = "sciradio",
 		"Xenoarcheologist" = "sciradio",
 		"Xenobiologist" = "sciradio",
+		"Slime Cultivator" = "sciradio",
+		"Slime Rancher" = "sciradio",
 		// Security
 		"Detective" = "secradio",
 		"Forensic Technician" = "secradio",
 		"Head of Security" = "secradio",
 		"Human Resources Agent" = "secradio",
+		"Inspector" = "secradio",
 		"Internal Affairs Agent" = "secradio",
 		"Magistrate" = "secradio",
 		"Security Officer" = "secradio",
@@ -109,12 +111,16 @@
 		// Supply
 		"Quartermaster" = "supradio",
 		"Cargo Technician" = "supradio",
+		"Smith" = "supradio",
+		"Metalworker" = "supradio",
+		"Tinkerer" = "supradio",
 		"Shaft Miner" = "supradio",
 		"Spelunker" = "supradio",
 		"Explorer" = "supradio",
 		"Salvage Technician" = "supradio",
 		"Scavenger" = "supradio",
 		// Service
+		"Head of Personnel" = "srvradio",
 		"Bartender" = "srvradio",
 		"Beautician" = "srvradio",
 		"Botanical Researcher" = "srvradio",
@@ -132,6 +138,8 @@
 		"Journalist" = "srvradio",
 		"Librarian" = "srvradio",
 		"Mime" = "srvradio",
+		// Procedure
+		"Nanotrasen Career Trainer" = "proradio",
 	)
 	/// List of Command jobs
 	var/list/heads = list("Captain", "Head of Personnel", "Nanotrasen Representative", "Blueshield", "Chief Engineer", "Chief Medical Officer", "Research Director", "Head of Security", "Magistrate", "Quartermaster", "AI")
@@ -212,7 +220,7 @@
 // Fucking broken as shit, someone help me fix this.
 /datum/nttc_configuration/proc/nttc_deserialize(text, ckey)
 	if(word_blacklist.Find(text)) //uh oh, they tried to be naughty
-		message_admins("<span class='danger'>EXPLOIT WARNING: </span> [ckey] attempted to upload an NTTC configuration containing JS abusable tags!")
+		message_admins("[SPAN_DANGER("EXPLOIT WARNING: ")] [ckey] attempted to upload an NTTC configuration containing JS abusable tags!")
 		log_admin("EXPLOIT WARNING: [ckey] attempted to upload an NTTC configuration containing JS abusable tags")
 		return FALSE
 	var/list/var_list = json_decode(text)

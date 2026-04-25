@@ -30,7 +30,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/Destroy()//missiles detonating, teleporter creating singularity?
 	if(chassis)
-		chassis.occupant_message("<span class='danger'>[src] is destroyed!</span>")
+		chassis.occupant_message(SPAN_DANGER("[src] is destroyed!"))
 		chassis.log_append_to_last("[src] is destroyed.",1)
 		SEND_SOUND(chassis.occupant, sound(get_destroy_sound(), volume = 50))
 		detach(chassis)
@@ -71,6 +71,13 @@
 	return TRUE
 
 /obj/item/mecha_parts/mecha_equipment/proc/action(atom/target)
+	return
+
+/obj/item/mecha_parts/mecha_equipment/proc/on_unequip()
+	chassis.selected = null
+	return
+
+/obj/item/mecha_parts/mecha_equipment/proc/on_equip(atom/target)
 	return
 
 /obj/item/mecha_parts/mecha_equipment/proc/start_cooldown()

@@ -201,7 +201,7 @@
 	desc = "Капитан всех уточек на этой станции. Крайне важная и престижная уточка. Выпущены в ограниченном тираже и только для капитанов. Ценная находка для коллекционеров."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 	icon_state = "captain_rubberducky"
-	item_state = "captain_rubberducky"
+	inhand_icon_state = "captain_rubberducky"
 
 // =========== toilets ===========
 /obj/structure/toilet
@@ -213,17 +213,19 @@
 	desc = "Особенный унитаз для особенных особ."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 
-/obj/structure/toilet/attackby__legacy__attackchain(obj/item/I, mob/living/user, params)
-	. = ..()
-	if(try_construct(I, user))
-		return TRUE
+/obj/structure/toilet/attack_by(obj/item/attacking, mob/user, params)
+	if(..())
+		return FINISH_ATTACK
+
+	if(try_construct(attacking, user))
+		return FINISH_ATTACK
 
 /obj/structure/toilet/proc/try_construct(obj/item/I, mob/living/user)
 	if(!istype(I, /obj/item/stack))
 		return FALSE
 
 	if(is_final)
-		to_chat(user, span_warning("Этот унитаз достиг пика великолепия и безвкусия. Нельзя больше улучшить."))
+		to_chat(user, SPAN_WARNING("Этот унитаз достиг пика великолепия и безвкусия. Нельзя больше улучшить."))
 		return FALSE
 
 	var/obj/item/stack/M = I
@@ -240,13 +242,13 @@
 			break
 
 	if(!is_correct)
-		to_chat(user, span_warning("Неподходящий материал для улучшения."))
+		to_chat(user, SPAN_WARNING("Неподходящий материал для улучшения."))
 		return FALSE
 
 	var/is_rare = istype(M, /obj/item/stack/ore/bluespace_crystal/refined)
 	var/need_amount = is_rare ? 2 : 5
 	if(M.get_amount() < need_amount)
-		to_chat(user, span_warning("Недостаточно материала, нужно хотя бы [need_amount] шт."))
+		to_chat(user, SPAN_WARNING("Недостаточно материала, нужно хотя бы [need_amount] шт."))
 		return FALSE
 
 	switch(type)
@@ -274,7 +276,7 @@
 			if(M.type == /obj/item/stack/ore/bluespace_crystal/refined)
 				construct(M, user, /obj/structure/toilet/material/bluespace/nt, need_amount)
 		else
-			to_chat(user, span_warning("Неподходящая цель для гравировки."))
+			to_chat(user, SPAN_WARNING("Неподходящая цель для гравировки."))
 	return TRUE
 
 /obj/structure/toilet/proc/construct(obj/item/stack/M, mob/living/user, build_type, amount)
@@ -348,14 +350,14 @@
 
 /obj/structure/toilet/material/bluespace/emag_act(mob/user)
 	if(!emagged)
-		to_chat(user, span_notice("Блюспейс начал переливаться красными вкраплениями."))
+		to_chat(user, SPAN_NOTICE("Блюспейс начал переливаться красными вкраплениями."))
 		if(do_after(user, 2 SECONDS, target = src))
 			emagged = TRUE
 			tp_range = initial(tp_range) * 3
 			singulo_layer = "bluespace_toilet_singularity-emagged"
 			update_icon(UPDATE_ICON_STATE)
 			playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-			visible_message(span_warning("Блюспейс начал переливаться словно редспейс."))
+			visible_message(SPAN_WARNING("Блюспейс начал переливаться словно редспейс."))
 
 /obj/structure/toilet/material/bluespace/update_icon_state()
 	. = ..()

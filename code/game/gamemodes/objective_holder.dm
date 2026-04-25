@@ -56,11 +56,19 @@
 	return objectives
 
 /**
+ * Get all of our targets
+ */
+/datum/objective_holder/proc/get_targets()
+	return assigned_targets
+
+/**
  * Replace old_objective with new_objective
  */
 /datum/objective_holder/proc/replace_objective(datum/objective/old_objective, datum/objective/new_objective, datum/original_target_department, list/original_steal_list)
-	new_objective.target_department = original_target_department
-	new_objective.steal_list = original_steal_list
+	if(!isnull(original_target_department))
+		new_objective.target_department = original_target_department
+	if(!isnull(original_steal_list))
+		new_objective.steal_list = original_steal_list
 	new_objective = add_objective(new_objective, add_to_list = FALSE)
 	// Replace where the old objective was, with the new one
 	objectives.Insert(objectives.Find(old_objective), new_objective)
@@ -123,3 +131,10 @@
 	on_remove_callback?.Invoke(objective_owner, Objective)
 	if(!QDELETED(Objective))
 		qdel(Objective)
+
+/**
+ * Returns `objective_owner`
+ */
+/datum/objective_holder/proc/get_holder_owner()
+	RETURN_TYPE(/datum)
+	return objective_owner

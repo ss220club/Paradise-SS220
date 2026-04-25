@@ -3,8 +3,6 @@
 	desc = "Gambling for the antisocial."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "slots-off"
-	anchored = TRUE
-	density = TRUE
 
 	var/plays = 0
 	var/working = FALSE
@@ -85,33 +83,33 @@
 /obj/machinery/economy/slot_machine/proc/spin_slots(userName)
 	switch(rand(1, 5000))
 		if(1)
-			atom_say("JACKPOT! [userName] has won two thousand credits!")
-			GLOB.minor_announcement.Announce("Congratulations to [userName] on winning the Jackpot of TWO THOUSAND CREDITS!", "Jackpot Winner")
-			result = "JACKPOT! You win two thousand credits!"
+			atom_say("ДЖЕКПОТ! [userName] выиграл ДВЕ ТЫСЯЧИ КРЕДИТОВ!")
+			GLOB.minor_announcement.Announce("Поздравляем [userName] с выигрышем джекпота в ДВЕ ТЫСЯЧИ КРЕДИТОВ!", "Обладатель джекпота!")
+			result = "ДЖЕКПОТ! Вы выиграли ДВЕ ТЫСЯЧИ КРЕДИТОВ!"
 			resultlvl = "teal"
 			win_money(2000, 'sound/goonstation/misc/airraid_loop.ogg')
 		if(2 to 20)
-			atom_say("Big Winner! [userName] has won two hundred credits!")
-			result = "You win a two hundred credits!"
+			atom_say("Большой Победитель! [userName] выиграл двести кредитов!")
+			result = "Вы выиграли двести кредитов!"
 			resultlvl = "green"
 			win_money(200, 'sound/goonstation/misc/klaxon.ogg')
 		if(21 to 100)
-			atom_say("Winner! [userName] has won a hundred credits!")
-			result = "You win a hundred credits!"
+			atom_say("Победитель! [userName] выиграл сто кредитов!")
+			result = "Вы выиграли сто кредитов!"
 			resultlvl = "green"
 			win_money(100, 'sound/goonstation/misc/bell.ogg')
 		if(101 to 500)
-			atom_say("Winner! [userName] has won forty credits!")
-			result = "You win forty credits!"
+			atom_say("Победитель! [userName] выиграл сорок кредитов!")
+			result = "Вы выиграли сорок кредитов!"
 			resultlvl = "green"
 			win_money(40)
 		if(501 to 1000)
-			atom_say("Winner! [userName] has won ten credits!")
-			result = "You win ten credits!"
+			atom_say("Победитель! [userName] выиграл десять кредитов!")
+			result = "Вы выиграли десять кредитов!"
 			resultlvl = "green"
 			win_money(10)
 		else
-			result = "No luck!"
+			result = "Не повезло!"
 			resultlvl = "orange"
 	working = FALSE
 	icon_state = "slots-off"
@@ -140,17 +138,17 @@
 */
 /obj/machinery/economy/slot_machine/emag_act(user)
 	if(emagged)
-		to_chat(user, "<span class='notice'>[src] is unresponsive. It is probably already modified.</span>")
+		to_chat(user, SPAN_NOTICE("[src] is unresponsive. It is probably already modified."))
 		return
 	playsound(loc, 'sound/effects/sparks4.ogg', 75, 1)
 	emagged = TRUE
-	to_chat(user, "<span class='notice'>You engage the reverse-gripping mechanism on the machine's handle.</span>")
+	to_chat(user, SPAN_NOTICE("You engage the reverse-gripping mechanism on the machine's handle."))
 	log_game("[key_name(user)] emagged [src]")
 	return TRUE
 
 /// The spinning and throwing away is handled here, with a possible call to winning
 /obj/machinery/economy/slot_machine/proc/emagged_spinning(mob/living/user)
-	to_chat(user, "<span class='danger'>As you grip the handle of the machine, it grips back at you, and starts to wildly spin you around!</span>")
+	to_chat(user, SPAN_DANGER("As you grip the handle of the machine, it grips back at you, and starts to wildly spin you around!"))
 	user.SpinAnimation(speed = 2, loops = 6)
 	emagged_game_in_progress = TRUE
 
@@ -174,7 +172,7 @@
 		return
 
 	// Find the right direction and throw the user away from the machine
-	to_chat(user, "<span class='userdanger'>The handle suddenly lets you go!</span>")
+	to_chat(user, SPAN_USERDANGER("The handle suddenly lets you go!"))
 	user.anchored = FALSE
 	var/user_direction = get_dir(src, user)
 	var/turf/throw_direction = get_edge_target_turf(user, user_direction)

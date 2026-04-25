@@ -1,20 +1,22 @@
 /obj/item/clothing/accessory
-	name = "tie"
-	desc = "A neosilk clip-on tie."
-	icon = 'icons/obj/clothing/ties.dmi'
-	icon_state = "bluetie"
-	item_state = ""	//no inhands
-	item_color = "bluetie"
+	name = "accessory"
+	desc = "If you see this contact a developer."
+	icon = 'icons/obj/clothing/accessories.dmi'
+	icon_state = ""
 	slot_flags = ITEM_SLOT_ACCESSORY
-	w_class = WEIGHT_CLASS_SMALL
 	var/slot = ACCESSORY_SLOT_DECOR
-	var/obj/item/clothing/under/has_suit = null		//the suit the tie may be attached to
-	var/image/inv_overlay = null	//overlay used when attached to clothing.
-	var/allow_duplicates = TRUE // Allow accessories of the same type.
+	/// the suit the accessory may be attached to
+	var/obj/item/clothing/under/has_suit = null
+	/// overlay used when attached to clothing.
+	var/mutable_appearance/inv_overlay
+	/// Allow accessories of the same type.
+	var/allow_duplicates = TRUE
+	/// Icon state when attached to clothing, if null the `icon_state` value will be used
+	var/attached_icon_state
 
 /obj/item/clothing/accessory/Initialize(mapload)
 	. = ..()
-	inv_overlay = image("icon" = 'icons/obj/clothing/ties_overlay.dmi', "icon_state" = "[item_color? "[item_color]" : "[icon_state]"]")
+	inv_overlay = mutable_appearance('icons/obj/clothing/accessories_overlay.dmi', attached_icon_state || icon_state)
 
 /obj/item/clothing/accessory/Moved(atom/OldLoc, Dir, Forced)
 	. = ..()
@@ -50,7 +52,7 @@
 	has_suit.armor = has_suit.armor.attachArmor(armor)
 
 	if(user)
-		to_chat(user, "<span class='notice'>You attach [src] to [has_suit].</span>")
+		to_chat(user, SPAN_NOTICE("You attach [src] to [has_suit]."))
 	src.add_fingerprint(user)
 
 /obj/item/clothing/accessory/proc/on_removed(mob/user)
@@ -83,10 +85,10 @@
 			if(user == H)
 				U.attach_accessory(src, user, TRUE)
 				return
-			user.visible_message("<span class='notice'>[user] is putting a [src.name] on [H]'s [U.name]!</span>", "<span class='notice'>You begin to put a [src.name] on [H]'s [U.name]...</span>")
+			user.visible_message(SPAN_NOTICE("[user] is putting a [src.name] on [H]'s [U.name]!"), SPAN_NOTICE("You begin to put a [src.name] on [H]'s [U.name]..."))
 			if(do_after(user, 4 SECONDS, target = H) && H.w_uniform == U)
 				if(U.attach_accessory(src, user, TRUE))
-					user.visible_message("<span class='notice'>[user] puts a [src.name] on [H]'s [U.name]!</span>", "<span class='notice'>You finish putting a [src.name] on [H]'s [U.name].</span>")
+					user.visible_message(SPAN_NOTICE("[user] puts a [src.name] on [H]'s [U.name]!"), SPAN_NOTICE("You finish putting a [src.name] on [H]'s [U.name]."))
 					after_successful_nonself_attach(H, user)
 		else
 			to_chat(user, "[H] is not wearing anything to attach \the [src] to.")
@@ -112,102 +114,18 @@
 /obj/item/clothing/accessory/proc/attached_equip(mob/user) // If we need to do something special when clothing is removed from the user
 	return
 
-/obj/item/clothing/accessory/blue
-	name = "blue tie"
-	icon_state = "bluetie"
-	item_color = "bluetie"
-
-/obj/item/clothing/accessory/red
-	name = "red tie"
-	icon_state = "redtie"
-	item_color = "redtie"
-
-/obj/item/clothing/accessory/black
-	name = "black tie"
-	icon_state = "blacktie"
-	item_color = "blacktie"
-
-/obj/item/clothing/accessory/horrible
-	name = "horrible tie"
-	desc = "A neosilk clip-on tie. This one is disgusting."
-	icon_state = "horribletie"
-	item_color = "horribletie"
-
 /// No overlay
 /obj/item/clothing/accessory/waistcoat
 	name = "waistcoat"
 	desc = "For some classy, murderous fun."
 	icon_state = "waistcoat"
-	item_state = "waistcoat"
-	item_color = "waistcoat"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
-
-/obj/item/clothing/accessory/stethoscope
-	name = "stethoscope"
-	desc = "An outdated medical apparatus, used to get a rough idea of the condition of the heart and lungs. It also makes you look like you know what you're doing."
-	icon_state = "stethoscope"
-	item_color = "stethoscope"
-
-/obj/item/clothing/accessory/stethoscope/attack__legacy__attackchain(mob/living/carbon/human/M, mob/living/user)
-	if(!ishuman(M) || !isliving(user))
-		return ..(M, user)
-
-	if(user == M)
-		user.visible_message("[user] places [src] against [user.p_their()] chest and listens attentively.", "You place [src] against your chest...")
-	else
-		user.visible_message("[user] places [src] against [M]'s chest and listens attentively.", "You place [src] against [M]'s chest...")
-	var/datum/organ/heart/heart_datum = M.get_int_organ_datum(ORGAN_DATUM_HEART)
-	var/datum/organ/lungs/lung_datum = M.get_int_organ_datum(ORGAN_DATUM_LUNGS)
-	if(!lung_datum || !heart_datum)
-		to_chat(user, "<span class='warning'>You don't hear anything.</span>")
-		return
-
-	var/obj/item/organ/internal/H = heart_datum.linked_organ
-	var/obj/item/organ/internal/L = lung_datum.linked_organ
-	if(!M.pulse || (!H || !(L && !HAS_TRAIT(M, TRAIT_NOBREATH))))
-		to_chat(user, "<span class='warning'>You don't hear anything.</span>")
-		return
-
-	var/color = "notice"
-	if(H)
-		var/heart_sound
-		switch(H.damage)
-			if(0 to 1)
-				heart_sound = "healthy"
-			if(1 to 25)
-				heart_sound = "offbeat"
-			if(25 to 50)
-				heart_sound = "uneven"
-				color = "warning"
-			if(50 to INFINITY)
-				heart_sound = "weak, unhealthy"
-				color = "warning"
-		to_chat(user, "<span class='[color]'>You hear \an [heart_sound] pulse.</span>")
-
-	if(L)
-		var/lung_sound
-		switch(L.damage)
-			if(0 to 1)
-				lung_sound = "healthy respiration"
-			if(1 to 25)
-				lung_sound = "labored respiration"
-			if(25 to 50)
-				lung_sound = "pained respiration"
-				color = "warning"
-			if(50 to INFINITY)
-				lung_sound = "gurgling"
-				color = "warning"
-		to_chat(user, "<span class='[color]'>You hear [lung_sound].</span>")
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 //Medals
 /obj/item/clothing/accessory/medal
 	name = "bronze medal"
 	desc = "A bronze medal."
 	icon_state = "bronze"
-	item_color = "bronze"
 	materials = list(MAT_METAL=1000)
 	resistance_flags = FIRE_PROOF
 	/// The channel we will announce on when we are rewarded to someone
@@ -218,20 +136,20 @@
 /obj/item/clothing/accessory/medal/examine(mob/user)
 	. = ..()
 	if(channel)
-		. += "<span class='notice'>The tiny radio inside seems to be [try_announce ? "active" : "inactive"].</span>"
+		. += SPAN_NOTICE("The tiny radio inside seems to be [try_announce ? "active" : "inactive"].")
 
 /obj/item/clothing/accessory/medal/attack_self__legacy__attackchain(mob/user)
 	. = ..()
 	if(channel)
 		try_announce = !try_announce
-		to_chat(user, "<span class='notice'>You silently [try_announce ? "enable" : "disable"] the radio in [src].</span>")
+		to_chat(user, SPAN_NOTICE("You silently [try_announce ? "enable" : "disable"] the radio in [src]."))
 
 /obj/item/clothing/accessory/medal/after_successful_nonself_attach(mob/living/carbon/human/H, mob/living/user)
 	if(!channel || !try_announce)
 		return
 	if(!is_station_level(user.z))
 		return
-	GLOB.global_announcer.autosay("[H] has been rewarded [src] by [user]!", "Medal Announcer", channel, src)
+	GLOB.global_announcer.autosay("[user] награждает [H] [src]!", "Оповещение О Награждении", channel, src)
 	channel = null
 
 // GOLD (awarded by centcom)
@@ -239,7 +157,6 @@
 	name = "gold medal"
 	desc = "A prestigious golden medal."
 	icon_state = "gold"
-	item_color = "gold"
 	materials = list(MAT_GOLD=1000)
 	channel = "Common"
 
@@ -251,7 +168,7 @@
 
 /obj/item/clothing/accessory/medal/gold/captain/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_PARENT_QDELETING, PROC_REF(alert_admins_on_destroy))
+	AddElement(/datum/element/high_value_item)
 
 /obj/item/clothing/accessory/medal/gold/heroism
 	name = "medal of exceptional heroism"
@@ -264,7 +181,6 @@
 	name = "silver medal"
 	desc = "A silver medal."
 	icon_state = "silver"
-	item_color = "silver"
 	materials = list(MAT_SILVER=1000)
 	channel = "Command"
 
@@ -322,15 +238,10 @@
 	name = "nanotrasen recruiter medal"
 	desc = "A prize for those who completed the company's most difficult training, use it to earn the respect of everyone in human resources."
 
-/obj/item/clothing/accessory/medal/recruiter // Prize for the NT Recruiter emagged arcade
-	name = "nanotrasen recruiter medal"
-	desc = "A prize for those who completed the company's most difficult training, use it to earn the respect of everyone in human resources."
-
 /obj/item/clothing/accessory/medal/heart
 	name = "bronze heart medal"
 	desc = "A rarely-awarded medal for those who sacrifice themselves in the line of duty to save their fellow crew."
 	icon_state = "bronze_heart"
-	item_color = "bronze_heart"
 	channel = "Common"
 
 // Plasma, from NT research departments. For now, used by the HRD-MDE project for the moderate 2 fauna, drake and hierophant.
@@ -339,12 +250,12 @@
 	name = "plasma medal"
 	desc = "An eccentric medal made of plasma."
 	icon_state = "plasma"
-	item_color = "plasma"
 	materials = list(MAT_PLASMA = 1000)
+	cares_about_temperature = TRUE
 
-/obj/item/clothing/accessory/medal/plasma/temperature_expose(datum/gas_mixture/air, temperature, volume)
+/obj/item/clothing/accessory/medal/plasma/temperature_expose(exposed_temperature, exposed_volume)
 	..()
-	if(temperature > T0C + 200)
+	if(exposed_temperature > T0C + 200)
 		burn_up()
 
 /obj/item/clothing/accessory/medal/plasma/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, global_overlay)
@@ -355,7 +266,7 @@
 	var/turf/simulated/T = get_turf(src)
 	if(istype(T))
 		T.atmos_spawn_air(LINDA_SPAWN_HEAT | LINDA_SPAWN_TOXINS | LINDA_SPAWN_OXYGEN, 10) //Technically twice as much plasma as it should spawn but a little more never hurt anyone.
-	visible_message("<span class='warning'>[src] bursts into flame!</span>")
+	visible_message(SPAN_WARNING("[src] bursts into flame!"))
 	qdel(src)
 
 // Alloy, for the vetus speculator, or abductors I guess.
@@ -364,7 +275,6 @@
 	name = "alloy medal"
 	desc = "An eccentric medal made of some strange alloy."
 	icon_state = "alloy"
-	item_color = "alloy"
 	materials = list(MAT_METAL = 500, MAT_PLASMA = 500)
 
 // Mostly mining medals past here
@@ -416,22 +326,26 @@
 	name = "holobadge"
 	desc = "This glowing blue badge marks the holder as THE LAW."
 	icon_state = "holobadge"
-	item_color = "holobadge"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_ACCESSORY
 
 	var/stored_name = null
 
 /obj/item/clothing/accessory/holobadge/cord
 	icon_state = "holobadge-cord"
-	item_color = "holobadge-cord"
+
+	sprite_sheets = list(
+		"Vox" = 'icons/mob/clothing/species/vox/neck.dmi',
+		"Grey" = 'icons/mob/clothing/species/grey/neck.dmi',
+		"Kidan" = 'icons/mob/clothing/species/kidan/neck.dmi',
+	)
 
 /obj/item/clothing/accessory/holobadge/attack_self__legacy__attackchain(mob/user)
 	if(!stored_name)
 		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
 		return
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] displays [user.p_their()] Nanotrasen Internal Security Legal Authorization Badge.\nIt reads: [stored_name], NT Security.</span>",
-		"<span class='warning'>You display your Nanotrasen Internal Security Legal Authorization Badge.\nIt reads: [stored_name], NT Security.</span>")
+		user.visible_message(SPAN_WARNING("[user] displays [user.p_their()] Nanotrasen Internal Security Legal Authorization Badge.\nIt reads: [stored_name], NT Security."),
+		SPAN_WARNING("You display your Nanotrasen Internal Security Legal Authorization Badge.\nIt reads: [stored_name], NT Security."))
 
 /obj/item/clothing/accessory/holobadge/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/card/id) || istype(I, /obj/item/pda))
@@ -445,27 +359,27 @@
 			id_card = pda.id
 
 		if((ACCESS_SEC_DOORS in id_card.access) || emagged)
-			to_chat(user, "<span class='notice'>You imprint your ID details onto the badge.</span>")
+			to_chat(user, SPAN_NOTICE("You imprint your ID details onto the badge."))
 			stored_name = id_card.registered_name
 			name = "holobadge ([stored_name])"
 			desc = "This glowing blue badge marks [stored_name] as THE LAW."
 		else
-			to_chat(user, "<span class='warning'>[src] rejects your insufficient access rights.</span>")
+			to_chat(user, SPAN_WARNING("[src] rejects your insufficient access rights."))
 		return
 	..()
 
 /obj/item/clothing/accessory/holobadge/emag_act(mob/user)
 	if(emagged)
-		to_chat(user, "<span class='warning'>[src] is already cracked.</span>")
+		to_chat(user, SPAN_WARNING("[src] is already cracked."))
 	else
 		emagged = TRUE
-		to_chat(user, "<span class='warning'>You swipe the card and crack the holobadge security checks.</span>")
+		to_chat(user, SPAN_WARNING("You swipe the card and crack the holobadge security checks."))
 		return TRUE
 
 /obj/item/clothing/accessory/holobadge/attack__legacy__attackchain(mob/living/carbon/human/H, mob/living/user)
 	if(H != user)
-		user.visible_message("<span class='warning'>[user] invades [H]'s personal space, thrusting [src] into [H.p_their()] face insistently.</span>",
-		"<span class='warning'>You invade [H]'s personal space, thrusting [src] into [H.p_their()] face insistently. You are THE LAW!</span>")
+		user.visible_message(SPAN_WARNING("[user] invades [H]'s personal space, thrusting [src] into [H.p_their()] face insistently."),
+		SPAN_WARNING("You invade [H]'s personal space, thrusting [src] into [H.p_their()] face insistently. You are THE LAW!"))
 		return
 	..()
 
@@ -477,20 +391,18 @@
 	name = "magistrate's badge"
 	desc = "Fills you with the conviction of JUSTICE. Display your mastery of Space Law to the world."
 	icon_state = "legal_badge"
-	item_state = "legal_badge"
-	item_color = "legal_badge"
 	var/cached_bubble_icon = null
 	var/what_you_are = "THE LAW"
 
 /obj/item/clothing/accessory/legal_badge/attack_self__legacy__attackchain(mob/user)
 	if(prob(1))
 		user.say("The testimony contradicts the evidence!")
-	user.visible_message("<span class='notice'>[user] shows [user.p_their()] [name].</span>", "<span class='notice'>You show your [name].</span>")
+	user.visible_message(SPAN_NOTICE("[user] shows [user.p_their()] [name]."), SPAN_NOTICE("You show your [name]."))
 
 /obj/item/clothing/accessory/legal_badge/attack__legacy__attackchain(mob/living/carbon/human/H, mob/living/user)
 	if(H != user)
-		user.visible_message("<span class='warning'>[user] invades [H]'s personal space, thrusting [src] into [H.p_their()] face insistently.</span>",
-		"<span class='warning'>You invade [H]'s personal space, thrusting [src] into [H.p_their()] face insistently. You are [what_you_are]!</span>")
+		user.visible_message(SPAN_WARNING("[user] invades [H]'s personal space, thrusting [src] into [H.p_their()] face insistently."),
+		SPAN_WARNING("You invade [H]'s personal space, thrusting [src] into [H.p_their()] face insistently. You are [what_you_are]!"))
 		return
 	..()
 
@@ -512,341 +424,111 @@
 	desc = "Marks you as an expert of Standard Operating Procedure, and as a soul-crushing paper pusher."
 	what_you_are = "HUMAN RESOURCES"
 
-///////////
-//SCARVES//
-///////////
-
-/// No overlay
-/obj/item/clothing/accessory/scarf
-	name = "scarf"
-	desc = "A stylish scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks."
-	dog_fashion = /datum/dog_fashion/head
-
-/obj/item/clothing/accessory/scarf/red
-	name = "red scarf"
-	icon_state = "redscarf"
-	item_color = "redscarf"
-
-/obj/item/clothing/accessory/scarf/green
-	name = "green scarf"
-	icon_state = "greenscarf"
-	item_color = "greenscarf"
-
-/obj/item/clothing/accessory/scarf/darkblue
-	name = "dark blue scarf"
-	icon_state = "darkbluescarf"
-	item_color = "darkbluescarf"
-
-/obj/item/clothing/accessory/scarf/purple
-	name = "purple scarf"
-	icon_state = "purplescarf"
-	item_color = "purplescarf"
-
-/obj/item/clothing/accessory/scarf/yellow
-	name = "yellow scarf"
-	icon_state = "yellowscarf"
-	item_color = "yellowscarf"
-
-/obj/item/clothing/accessory/scarf/orange
-	name = "orange scarf"
-	icon_state = "orangescarf"
-	item_color = "orangescarf"
-
-/obj/item/clothing/accessory/scarf/lightblue
-	name = "light blue scarf"
-	icon_state = "lightbluescarf"
-	item_color = "lightbluescarf"
-
-/obj/item/clothing/accessory/scarf/white
-	name = "white scarf"
-	icon_state = "whitescarf"
-	item_color = "whitescarf"
-
-/obj/item/clothing/accessory/scarf/black
-	name = "black scarf"
-	icon_state = "blackscarf"
-	item_color = "blackscarf"
-
-/obj/item/clothing/accessory/scarf/zebra
-	name = "zebra scarf"
-	icon_state = "zebrascarf"
-	item_color = "zebrascarf"
-
-/obj/item/clothing/accessory/scarf/christmas
-	name = "christmas scarf"
-	icon_state = "christmasscarf"
-	item_color = "christmasscarf"
-
-//The three following scarves don't have the scarf subtype
-//This is because Ian can equip anything from that subtype
-//However, these 3 don't have corgi versions of their sprites
-/obj/item/clothing/accessory/stripedredscarf
-	name = "striped red scarf"
-	desc = "A stylish scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks."
-	icon_state = "stripedredscarf"
-	item_color = "stripedredscarf"
-
-/obj/item/clothing/accessory/stripedgreenscarf
-	name = "striped green scarf"
-	desc = "A stylish scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks."
-	icon_state = "stripedgreenscarf"
-	item_color = "stripedgreenscarf"
-
-/obj/item/clothing/accessory/stripedbluescarf
-	name = "striped blue scarf"
-	desc = "A stylish scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks."
-	icon_state = "stripedbluescarf"
-	item_color = "stripedbluescarf"
-
-//Necklaces
-/obj/item/clothing/accessory/necklace
-	name = "necklace"
-	desc = "A simple necklace."
-	icon_state = "necklace"
-	item_state = "necklace"
-	item_color = "necklace"
-	slot_flags = ITEM_SLOT_ACCESSORY
-
-/obj/item/clothing/accessory/necklace/long
-	name = "large necklace"
-	desc = "A large necklace."
-	icon_state = "necklacelong"
-	item_state = "necklacelong"
-	item_color = "necklacelong"
-
-
-/obj/item/clothing/accessory/necklace/dope
-	name = "gold necklace"
-	desc = "Damn, it feels good to be a gangster."
-	icon_state = "bling"
-	item_state = "bling"
-	item_color = "bling"
-
-/obj/item/clothing/accessory/necklace/skullcodpiece
+/obj/item/clothing/accessory/skullcodpiece
 	name = "skull codpiece"
 	desc = "A skull shaped ornament, intended to protect the important things in life."
 	icon_state = "skull"
-	item_state = "skull"
-	item_color = "skull"
 	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 10, RAD = 5, FIRE = 0, ACID = 15)
 	allow_duplicates = FALSE
 
-/obj/item/clothing/accessory/necklace/talisman
+/obj/item/clothing/accessory/talisman
 	name = "bone talisman"
 	desc = "A hunter's talisman, some say the old gods smile on those who wear it."
 	icon_state = "talisman"
-	item_state = "talisman"
-	item_color = "talisman"
 	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 10, RAD = 5, FIRE = 0, ACID = 15)
 	allow_duplicates = FALSE
-
-/obj/item/clothing/accessory/necklace/locket
-	name = "gold locket"
-	desc = "A gold locket that seems to have space for a photo within."
-	icon_state = "locketgold"
-	item_state = "locketgold"
-	item_color = "locketgold"
-	slot_flags = ITEM_SLOT_ACCESSORY
-	var/base_icon
-	var/open
-	var/obj/item/held //Item inside locket.
-
-/obj/item/clothing/accessory/necklace/locket/Destroy()
-	QDEL_NULL(held)
-	return ..()
-
-
-/obj/item/clothing/accessory/necklace/locket/attack_self__legacy__attackchain(mob/user as mob)
-	if(!base_icon)
-		base_icon = icon_state
-
-	if(!("[base_icon]_open" in icon_states(icon)))
-		to_chat(user, "[src] doesn't seem to open.")
-		return
-
-	open = !open
-	to_chat(user, "You flip [src] [open?"open":"closed"].")
-	if(open)
-		icon_state = "[base_icon]_open"
-		if(held)
-			to_chat(user, "[held] falls out!")
-			held.forceMove(get_turf(user))
-			held = null
-	else
-		icon_state = "[base_icon]"
-
-/obj/item/clothing/accessory/necklace/locket/attackby__legacy__attackchain(obj/item/O as obj, mob/user as mob)
-	if(!open)
-		to_chat(user, "You have to open it first.")
-		return
-
-	if(istype(O,/obj/item/paper) || istype(O, /obj/item/photo))
-		if(held)
-			to_chat(usr, "[src] already has something inside it.")
-		else
-			to_chat(usr, "You slip [O] into [src].")
-			user.drop_item()
-			O.forceMove(src)
-			held = O
-	else
-		return ..()
-
-/obj/item/clothing/accessory/necklace/locket/silver
-	name = "silver locket"
-	desc = "A silver locket that seems to have space for a photo within."
-	icon_state = "locketsilver"
-	item_state = "locketsilver"
-	item_color = "locketsilver"
 
 //Cowboy Shirts
 /obj/item/clothing/accessory/cowboyshirt
 	name = "black cowboy shirt"
 	desc = "For a real western look. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt"
-	item_state = "cowboyshirt"
-	item_color = "cowboyshirt"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/short_sleeved
 	name = "shortsleeved black cowboy shirt"
 	desc = "For when it's a hot day in the west. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_s"
-	item_state = "cowboyshirt_s"
-	item_color = "cowboyshirt_s"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/white
 	name = "white cowboy shirt"
 	desc = "For the rancher in us all. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_white"
-	item_state = "cowboyshirt_white"
-	item_color = "cowboyshirt_white"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/white/short_sleeved
 	name = "short sleeved white cowboy shirt"
 	desc = "Best for midday cattle tending. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_whites"
-	item_state = "cowboyshirt_whites"
-	item_color = "cowboyshirt_whites"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/pink
 	name = "pink cowboy shirt"
 	desc = "For only the manliest of men, or girliest of girls. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_pink"
-	item_state = "cowboyshirt_pink"
-	item_color = "cowboyshirt_pink"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/pink/short_sleeved
 	name = "short sleeved pink cowboy shirt"
 	desc = "For a real buckle bunny. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_pinks"
-	item_state = "cowboyshirt_pinks"
-	item_color = "cowboyshirt_pinks"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/navy
 	name = "navy cowboy shirt"
 	desc = "Now yer a real cowboy. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_navy"
-	item_state = "cowboyshirt_navy"
-	item_color = "cowboyshirt_navy"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/navy/short_sleeved
 	name = "short sleeved navy cowboy shirt"
 	desc = "Sometimes ya need to roll up your sleeves. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_navys"
-	item_state = "cowboyshirt_navys"
-	item_color = "cowboyshirt_navys"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/red
 	name = "red cowboy shirt"
 	desc = "It's high noon. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_red"
-	item_state = "cowboyshirt_red"
-	item_color = "cowboyshirt_red"
-
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
-		)
+	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/accessory/cowboyshirt/red/short_sleeved
 	name = "short sleeved red cowboy shirt"
 	desc = "Life on the open range is quite dangeorus, you never know what to expect. Looks like it can clip on to a uniform."
 	icon_state = "cowboyshirt_reds"
-	item_state = "cowboyshirt_reds"
-	item_color = "cowboyshirt_reds"
-
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/suit.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/suit.dmi'
-		)
+	)
 
 /obj/item/clothing/accessory/corset
 	name = "black corset"
 	desc = "A black corset for those fancy nights out."
 	icon_state = "corset"
-	item_state = "corset"
-	item_color = "corset"
-
+	inhand_icon_state = "corset"
 
 /obj/item/clothing/accessory/corset/red
 	name = "red corset"
 	desc = "A red corset those fancy nights out."
 	icon_state = "corset_red"
-	item_state = "corset_red"
-	item_color = "corset_red"
 
 /obj/item/clothing/accessory/corset/blue
 	name = "blue corset"
 	desc = "A blue corset for those fancy nights out."
 	icon_state = "corset_blue"
-	item_state = "corset_blue"
-	item_color = "corset_blue"
 
 //Pins
 /obj/item/clothing/accessory/pin
 	name = "nanotrasen pin"
 	desc = "It's a standard pin to wear so you can show your loyalty to Nanotrasen!"
 	icon_state = "nt_pin"
-	item_state = "nt_pin"
-	item_color = "nt_pin"
 
 /obj/item/clothing/accessory/pin/pride
 	name = "pride pin"
 	desc = "It's a standard pin, wear it with pride. You can change which flag is used from a button on the back."
 	icon_state = "pride_pin"
-	item_state = "pride_pin"
-	item_color = "pride_pin"
 
 	///List of all pride flags to icon state
 	var/static/list/flag_types = list(
@@ -873,15 +555,13 @@
 	. = ..()
 	var/chosen_pin = show_radial_menu(user, src, flag_icons, require_near = TRUE)
 	if(!chosen_pin)
-		to_chat(user, "<span class='notice'>You decide not to change [src].</span>")
+		to_chat(user, SPAN_NOTICE("You decide not to change [src]."))
 		return
 	var/pin_icon_state = flag_types[chosen_pin]
-	to_chat(user, "<span class='notice'>You change [src] to show [chosen_pin].</span>")
+	to_chat(user, SPAN_NOTICE("You change [src] to show [chosen_pin]."))
 
 	icon_state = pin_icon_state
-	item_state = pin_icon_state
-	item_color = pin_icon_state
-	inv_overlay = image("icon" = 'icons/obj/clothing/ties_overlay.dmi', "icon_state" = "[item_color? "[item_color]" : "[icon_state]"]")
+	inv_overlay = mutable_appearance('icons/obj/clothing/accessories_overlay.dmi', icon_state)
 
 /proc/english_accessory_list(obj/item/clothing/under/U)
 	if(!istype(U) || !length(U.accessories))

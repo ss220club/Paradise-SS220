@@ -20,6 +20,7 @@ GLOBAL_LIST_EMPTY(underwear_f)	//stores only underwear name
 GLOBAL_LIST_EMPTY(undershirt_list) 	//stores /datum/sprite_accessory/undershirt indexed by name
 GLOBAL_LIST_EMPTY(undershirt_m)	 //stores only undershirt name
 GLOBAL_LIST_EMPTY(undershirt_f)	 //stores only undershirt name
+GLOBAL_LIST_EMPTY(undershirt_full_list)
 	//Socks
 GLOBAL_LIST_EMPTY(socks_list)		//stores /datum/sprite_accessory/socks indexed by name
 GLOBAL_LIST_EMPTY(socks_m)	 //stores only socks name
@@ -39,7 +40,7 @@ GLOBAL_LIST_INIT(TAGGERLOCATIONS, list("Disposals",
 	"Atmospherics", "HoS Office", "Security", "Medbay",
 	"CMO Office", "Chemistry", "Research", "RD Office",
 	"Robotics", "HoP Office", "Library", "Chapel", "Captain's Office",
-	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics", "Detective", "Morgue"))
+	"Bar", "Kitchen", "Hydroponics", "Janitor Closet", "Genetics", "Detective", "Morgue"))
 
 GLOBAL_LIST_INIT(greek_letters, list("Alpha", "Beta", "Gamma", "Delta",
 	"Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu",
@@ -73,7 +74,7 @@ GLOBAL_PROTECT(borg_brain_choices)
 //Due to database reasons, the name should be 16 characters long maximum
 GLOBAL_LIST_INIT(pda_ringtone_choices, list("beep" = 'sound/machines/twobeep.ogg',
 								"boop" = 'sound/machines/boop.ogg',
-								"electronic" = 'sound/machines/notif1.ogg',
+								"blup" = 'sound/misc/blup.ogg',
 								"chime" = 'sound/machines/notif2.ogg',
 								"slip" = 'sound/misc/slip.ogg',
 								"honk" = 'sound/items/bikehorn.ogg',

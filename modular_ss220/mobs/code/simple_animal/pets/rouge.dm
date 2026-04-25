@@ -5,7 +5,6 @@
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	mob_size = MOB_SIZE_SMALL
 	blood_volume = BLOOD_VOLUME_NORMAL
-	can_collar = TRUE
 	gender = FEMALE
 	icon_state = "rouge"
 	icon_living = "rouge"
@@ -30,6 +29,10 @@
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE
 	can_hide = 1
+
+/mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/wears_collar)
 
 /mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/verb/chasetail()
 	set name = "Chase your tail"
@@ -64,9 +67,6 @@
 	if(icon_resting && stat != DEAD)
 		icon_state = icon_resting
 		rest = TRUE
-		if(collar_type)
-			collar_type = "[initial(collar_type)]_rest"
-			regenerate_icons()
 		if(inventory_head)
 			regenerate_icons()
 
@@ -75,9 +75,6 @@
 	if(icon_resting && stat != DEAD)
 		icon_state = icon_living
 		rest = FALSE
-		if(collar_type)
-			collar_type = "[initial(collar_type)]"
-			regenerate_icons()
 		if(inventory_head)
 			regenerate_icons()
 
@@ -112,8 +109,8 @@
 	..(gibbed)
 	regenerate_icons()
 
-/mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/getarmor(def_zone, type)
-	var/armorval = inventory_head?.armor.getRating(type)
+/mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/getarmor(def_zone, armor_type)
+	var/armorval = inventory_head?.armor.getRating(armor_type)
 	if(!def_zone)
 		armorval *= 0.5
 	else if(def_zone != "head")
@@ -128,18 +125,18 @@
 
 	if(inventory_head)
 		if(user)
-			to_chat(user, span_warning("You can't put more than one hat on [src]!"))
+			to_chat(user, SPAN_WARNING("You can't put more than one hat on [src]!"))
 		return
 	if(!item_to_add)
 		user.visible_message(
-			span_notice("[user] pets [src]."),
-			span_notice("You rest your hand on [src]'s head for a moment."))
+			SPAN_NOTICE("[user] pets [src]."),
+			SPAN_NOTICE("You rest your hand on [src]'s head for a moment."))
 		if(flags_2 & HOLOGRAM_2)
 			return
 		return
 
-	if(user && !user.unEquip(item_to_add))
-		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
+	if(user && !user.unequip(item_to_add))
+		to_chat(user, SPAN_WARNING("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
 		return 0
 
 	var/valid = FALSE
@@ -148,18 +145,18 @@
 
 	if(valid)
 		if(health <= 0)
-			to_chat(user, span_notice("Безжизненный взгляд в глазах [real_name] никак не меняется, когда вы надеваете [item_to_add] на неё."))
+			to_chat(user, SPAN_NOTICE("Безжизненный взгляд в глазах [real_name] никак не меняется, когда вы надеваете [item_to_add] на неё."))
 		else if(user)
 			user.visible_message(
-				span_notice("[user] надевает [item_to_add] на центральную голову [real_name]. [src] смотрит на [user] и довольно шипит."),
-				span_notice("Вы надеваете [item_to_add] на голову [real_name]. [src] озадачено смотрит на вас, пока другие головы смотрят на центральную с завистью."),
-				span_italics("Вы слышите дружелюбное шипение."))
+				SPAN_NOTICE("[user] надевает [item_to_add] на центральную голову [real_name]. [src] смотрит на [user] и довольно шипит."),
+				SPAN_NOTICE("Вы надеваете [item_to_add] на голову [real_name]. [src] озадачено смотрит на вас, пока другие головы смотрят на центральную с завистью."),
+				SPAN_ITALICS("Вы слышите дружелюбное шипение."))
 		item_to_add.forceMove(src)
 		inventory_head = item_to_add
 		update_snek_fluff()
 		regenerate_icons()
 	else
-		to_chat(user, span_warning("Вы надеваете [item_to_add] на голову [src], но она скидывает [item_to_add] с себя!"))
+		to_chat(user, SPAN_WARNING("Вы надеваете [item_to_add] на голову [src], но она скидывает [item_to_add] с себя!"))
 		item_to_add.forceMove(drop_location())
 		if(prob(25))
 			step_rand(item_to_add)

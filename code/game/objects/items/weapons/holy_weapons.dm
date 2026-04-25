@@ -3,7 +3,10 @@
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of dark magic."
 	icon = 'icons/obj/weapons/magical_weapons.dmi'
 	icon_state = "nullrod"
-	item_state = "tele_baton"
+	worn_icon_state = "tele_baton"
+	inhand_icon_state = "tele_baton"
+	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
 	force = 15
 	throw_speed = 3
 	throw_range = 4
@@ -21,9 +24,12 @@
 	var/list/fluff_transformations = list()
 	/// Extra 'Holy' burn damage for ERT null rods
 	var/sanctify_force = 0
+	/// The antimagic type the nullrod has.
+	var/antimagic_type = MAGIC_RESISTANCE_HOLY
 
 /obj/item/nullrod/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/anti_magic, antimagic_type)
 	if(!length(variant_names))
 		for(var/I in typesof(/obj/item/nullrod))
 			var/obj/item/nullrod/rod = I
@@ -32,16 +38,11 @@
 				variant_icons += list(initial(rod.name) = image(icon = initial(rod.icon), icon_state = initial(rod.icon_state)))
 
 /obj/item/nullrod/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is killing [user.p_themselves()] with \the [src.name]! It looks like [user.p_theyre()] trying to get closer to god!</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is killing [user.p_themselves()] with \the [src.name]! It looks like [user.p_theyre()] trying to get closer to god!"))
 	return BRUTELOSS|FIRELOSS
 
 /obj/item/nullrod/attack__legacy__attackchain(mob/M, mob/living/carbon/user)
 	..()
-	var/datum/antagonist/vampire/V = M.mind?.has_antag_datum(/datum/antagonist/vampire)
-	if(ishuman(M) && V && HAS_MIND_TRAIT(M, TRAIT_HOLY))
-		if(!V.get_ability(/datum/vampire_passive/full))
-			to_chat(M, "<span class='warning'>The nullrod's power interferes with your own!</span>")
-			V.adjust_nullification(30 + sanctify_force, 15 + sanctify_force)
 	if(!sanctify_force)
 		return
 	if(isliving(M))
@@ -55,9 +56,9 @@
 			user.adjustBruteLoss(force)
 			user.adjustFireLoss(sanctify_force)
 			user.Weaken(10 SECONDS)
-			user.unEquip(src, 1)
-			user.visible_message("<span class='warning'>[src] slips out of the grip of [user] as they try to pick it up, bouncing upwards and smacking [user.p_them()] in the face!</span>", \
-			"<span class='warning'>[src] slips out of your grip as you pick it up, bouncing upwards and smacking you in the face!</span>")
+			user.drop_item_to_ground(src, force = TRUE)
+			user.visible_message(SPAN_WARNING("[src] slips out of the grip of [user] as they try to pick it up, bouncing upwards and smacking [user.p_them()] in the face!"), \
+			SPAN_WARNING("[src] slips out of your grip as you pick it up, bouncing upwards and smacking you in the face!"))
 			playsound(get_turf(user), 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
 			throw_at(get_edge_target_turf(user, pick(GLOB.alldirs)), rand(1, 3), 5)
 
@@ -69,7 +70,7 @@
 /obj/item/nullrod/examine(mob/living/user)
 	. = ..()
 	if(sanctify_force)
-		. += "<span class='notice'>It bears the inscription: 'Sanctified weapon of the inquisitors. Only the worthy may wield. Nobody shall expect us.'</span>"
+		. += SPAN_NOTICE("It bears the inscription: 'Sanctified weapon of the inquisitors. Only the worthy may wield. Nobody shall expect us.'")
 
 /obj/item/nullrod/proc/reskin_holy_weapon(mob/user)
 	if(!ishuman(user))
@@ -113,25 +114,28 @@
 
 /obj/item/nullrod/godhand
 	name = "god hand"
-	icon_state = "disintegrate"
-	item_state = "disintegrate"
 	desc = "This hand of yours glows with an awesome power!"
-	flags = ABSTRACT | NODROP| DROPDEL
+	icon_state = "disintegrate"
+	inhand_icon_state = "disintegrate"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+	flags = ABSTRACT | NODROP | DROPDEL
 	w_class = WEIGHT_CLASS_HUGE
 	hitsound = 'sound/weapons/sear.ogg'
 	damtype = BURN
 	attack_verb = list("punched", "cross countered", "pummeled")
 
 /obj/item/nullrod/godhand/customised_abstract_text(mob/living/carbon/owner)
-	return "<span class='warning'>[owner.p_their(TRUE)] [owner.l_hand == src ? "left hand" : "right hand"] is burning in holy fire.</span>"
+	return SPAN_WARNING("[owner.p_their(TRUE)] [owner.l_hand == src ? "left hand" : "right hand"] is burning in holy fire.")
 
 /obj/item/nullrod/staff
 	name = "red holy staff"
 	desc = "It has a mysterious, protective aura."
 	icon_state = "godstaff-red"
+	worn_icon_state = null
+	inhand_icon_state = null
 	lefthand_file = 'icons/mob/inhands/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/staves_righthand.dmi'
-	item_state = "godstaff-red"
 	w_class = WEIGHT_CLASS_HUGE
 	force = 5
 	slot_flags = ITEM_SLOT_BACK
@@ -143,16 +147,14 @@
 /obj/item/nullrod/staff/blue
 	name = "blue holy staff"
 	icon_state = "godstaff-blue"
-	item_state = "godstaff-blue"
 
 /obj/item/nullrod/claymore
 	name = "holy claymore"
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
+	desc = "A weapon fit for a crusade!"
 	icon = 'icons/obj/weapons/melee.dmi'
 	icon_state = "claymore"
-	item_state = "claymore"
-	desc = "A weapon fit for a crusade!"
+	worn_icon_state = null
+	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT
 	sharp = TRUE
@@ -170,44 +172,38 @@
 
 /obj/item/nullrod/claymore/darkblade
 	name = "dark blade"
-	icon = 'icons/obj/weapons/magical_weapons.dmi'
-	icon_state = "cultblade"
-	item_state = "darkbalde"
 	desc = "Spread the glory of the dark gods!"
+	icon = 'icons/obj/weapons/magical_weapons.dmi'
+	icon_state = "darkblade"
 	slot_flags = ITEM_SLOT_BELT
 	hitsound = 'sound/hallucinations/growl1.ogg'
 
 /obj/item/nullrod/claymore/chainsaw_sword
 	name = "sacred chainsaw sword"
+	desc = "Suffer not a heretic to live."
 	icon = 'icons/obj/weapons/magical_weapons.dmi'
 	icon_state = "chainswordon"
-	item_state = "chainswordon"
-	desc = "Suffer not a heretic to live."
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
 	hitsound = 'sound/weapons/chainsaw.ogg'
 
 /obj/item/nullrod/claymore/glowing
 	name = "force blade"
+	desc = "The blade glows with the power of faith. Or possibly a battery."
 	icon = 'icons/obj/weapons/magical_weapons.dmi'
 	icon_state = "swordon"
-	item_state = "swordon"
-	desc = "The blade glows with the power of faith. Or possibly a battery."
 	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/nullrod/claymore/katana
 	name = "hanzo steel"
 	desc = "Capable of cutting clean through a holy claymore."
 	icon_state = "katana"
-	item_state = "katana"
-	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 
 /obj/item/nullrod/claymore/multiverse
 	name = "extradimensional blade"
 	desc = "Once the harbringer of a interdimensional war, now a dormant souvenir. Still sharp though."
 	icon = 'icons/obj/weapons/magical_weapons.dmi'
 	icon_state = "multiverse"
-	item_state = "multiverse"
 	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/nullrod/claymore/saber
@@ -215,29 +211,23 @@
 	hitsound = 'sound/weapons/blade1.ogg'
 	icon = 'icons/obj/weapons/energy_melee.dmi'
 	icon_state = "swordblue"
-	item_state = "swordblue"
 	desc = "If you strike me down, I shall become more robust than you can possibly imagine."
 	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/nullrod/claymore/saber/red
 	name = "dark energy blade"
 	icon_state = "swordred"
-	item_state = "swordred"
 	desc = "Woefully ineffective when used on steep terrain."
 
 /obj/item/nullrod/claymore/saber/pirate
 	name = "nautical energy cutlass"
 	icon_state = "cutlass1"
-	item_state = "cutlass1"
 	desc = "Convincing HR that your religion involved piracy was no mean feat."
 
 /obj/item/nullrod/sord
 	name = "\improper UNREAL SORD"
 	desc = "This thing is so unspeakably HOLY you are having a hard time even holding it."
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
 	icon_state = "sord"
-	item_state = "sord"
 	slot_flags = ITEM_SLOT_BELT
 	force = 4.13
 	throwforce = 1
@@ -246,12 +236,13 @@
 
 /obj/item/nullrod/scythe
 	name = "reaper scythe"
-	icon = 'icons/obj/weapons/melee.dmi'
-	icon_state = "scythe0"
-	item_state = "scythe0"
 	desc = "Ask not for whom the bell tolls..."
+	icon = 'icons/obj/weapons/melee.dmi'
+	icon_state = "scythe"
+	worn_icon_state = null
+	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_BULKY
-	armour_penetration_flat = 30
+	armor_penetration_flat = 30
 	slot_flags = ITEM_SLOT_BACK
 	sharp = TRUE
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
@@ -259,34 +250,23 @@
 
 /obj/item/nullrod/scythe/vibro
 	name = "high frequency blade"
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
+	desc = "Bad references are the DNA of the soul."
 	icon = 'icons/obj/weapons/magical_weapons.dmi'
 	icon_state = "hfrequency1"
-	item_state = "hfrequency1"
-	desc = "Bad references are the DNA of the soul."
 	attack_verb = list("chopped", "sliced", "cut", "zandatsu'd")
 
 /obj/item/nullrod/scythe/spellblade
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
-	icon_state = "spellblade"
-	item_state = "spellblade"
-	icon = 'icons/obj/guns/magic.dmi'
 	name = "dormant spellblade"
 	desc = "The blade grants the wielder nearly limitless power...if they can figure out how to turn it on, that is."
-	hitsound = 'sound/weapons/rapierhit.ogg'
+	icon = 'icons/obj/guns/magic.dmi'
+	icon_state = "spellblade"
 
 /obj/item/nullrod/scythe/talking
 	name = "possessed blade"
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
+	desc = "When the station falls into chaos, it's nice to have a friend by your side."
 	icon = 'icons/obj/weapons/magical_weapons.dmi'
 	icon_state = "talking_sword"
-	item_state = "talking_sword"
-	desc = "When the station falls into chaos, it's nice to have a friend by your side."
 	attack_verb = list("chopped", "sliced", "cut")
-	hitsound = 'sound/weapons/rapierhit.ogg'
 	force = 12
 	can_be_hit = TRUE // be a shit and you can get your ass beat
 	max_integrity = 100
@@ -333,9 +313,9 @@
 	if(!istype(I, /obj/item/soulstone) || !possessed)
 		return ..()
 	if(obj_integrity >= max_integrity)
-		to_chat(user, "<span class='notice'>You have no reason to replace a perfectly good soulstone with a new one.</span>")
+		to_chat(user, SPAN_NOTICE("You have no reason to replace a perfectly good soulstone with a new one."))
 		return
-	to_chat(user, "<span class='notice'>You load a new soulstone into the possessed blade.</span>")
+	to_chat(user, SPAN_NOTICE("You load a new soulstone into the possessed blade."))
 	playsound(user, 'sound/weapons/gun_interactions/shotgunpump.ogg', 60, TRUE)
 	obj_integrity = max_integrity
 	for(var/mob/living/simple_animal/shade/sword/sword_shade in contents)
@@ -385,11 +365,10 @@
 
 /obj/item/nullrod/hammmer
 	name = "relic war hammer"
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
+	desc = "This war hammer cost the chaplain fourty thousand credits."
 	icon_state = "hammeron"
-	item_state = "hammeron"
-	desc = "This war hammer cost the chaplain fourty thousand space dollars."
+	worn_icon_state = null
+	inhand_icon_state = null
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_HUGE
 	attack_verb = list("smashed", "bashed", "hammered", "crunched")
@@ -397,11 +376,9 @@
 /obj/item/nullrod/chainsaw
 	name = "chainsaw hand"
 	desc = "Good? Bad? You're the guy with the chainsaw hand."
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
 	icon = 'icons/obj/weapons/melee.dmi'
-	icon_state = "chainsaw1"
-	item_state = "mounted_chainsaw"
+	icon_state = "chainsaw_on"
+	inhand_icon_state = "mounted_chainsaw"
 	w_class = WEIGHT_CLASS_HUGE
 	flags = NODROP | ABSTRACT
 	sharp = TRUE
@@ -410,21 +387,24 @@
 
 /obj/item/nullrod/clown
 	name = "clown dagger"
+	desc = "Used for absolutely hilarious sacrifices."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "clownrender"
-	item_state = "gold_horn"
-	desc = "Used for absolutely hilarious sacrifices."
+	worn_icon_state = null
+	inhand_icon_state = "gold_horn"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	hitsound = 'sound/items/bikehorn.ogg'
 	sharp = TRUE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "honked")
-
 
 /obj/item/nullrod/fedora
 	name = "binary fedora"
 	desc = "The brim of the hat is as sharp as the division between 0 and 1. It makes a mighty throwing weapon."
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "fedora"
-	item_state = "fedora"
+	worn_icon_state = null
+	inhand_icon_state = null
 	slot_flags = ITEM_SLOT_HEAD
 	force = 0
 	throw_speed = 4
@@ -435,20 +415,22 @@
 		"Grey" = 'icons/mob/clothing/species/grey/head.dmi'
 	)
 
+/obj/item/nullrod/fedora/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing_adjustment/monitor_headgear, 0, 1)
+
 /obj/item/nullrod/armblade
 	name = "dark blessing"
 	desc = "Particularly twisted deities grant gifts of dubious value."
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
 	icon = 'icons/obj/weapons/melee.dmi'
 	icon_state = "arm_blade"
-	item_state = "arm_blade"
+	inhand_icon_state = null
 	flags = ABSTRACT | NODROP
 	w_class = WEIGHT_CLASS_HUGE
 	sharp = TRUE
 
 /obj/item/nullrod/armblade/customised_abstract_text(mob/living/carbon/owner)
-	return "<span class='warning'>[owner.p_their(TRUE)] [owner.l_hand == src ? "left arm" : "right arm"] has been turned into a grotesque meat-blade.</span>"
+	return SPAN_WARNING("[owner.p_their(TRUE)] [owner.l_hand == src ? "left arm" : "right arm"] has been turned into a grotesque meat-blade.")
 
 /obj/item/nullrod/armblade/mining
 	flags = NODROP
@@ -467,7 +449,8 @@
 	desc = "An adorable stuffed toy that resembles the god of all carp. The teeth look pretty sharp. Activate it to receive the blessing of Carp-Sie."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "carpplushie"
-	item_state = "carp_plushie"
+	worn_icon_state = null
+	inhand_icon_state = null
 	force = 13
 	attack_verb = list("bitten", "eaten", "fin slapped")
 	hitsound = 'sound/weapons/bite.ogg'
@@ -486,12 +469,9 @@
 /obj/item/nullrod/claymore/bostaff
 	name = "monk's staff"
 	desc = "A long, tall staff made of polished wood. Traditionally used in ancient old-Earth martial arts, now used to harass the clown."
-	icon = 'icons/obj/weapons/melee.dmi'
 	icon_state = "bostaff0"
 	lefthand_file = 'icons/mob/inhands/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/staves_righthand.dmi'
-	item_state = "bostaff0"
-	w_class = WEIGHT_CLASS_BULKY
 	force = 13
 	slot_flags = ITEM_SLOT_BACK
 	sharp = FALSE
@@ -504,10 +484,10 @@
 
 /obj/item/nullrod/tribal_knife
 	name = "arrhythmic knife"
-	icon_state = "crysknife"
-	item_state = "crysknife"
-	w_class = WEIGHT_CLASS_HUGE
 	desc = "They say fear is the true mind killer, but stabbing them in the head works too. Honour compels you to not sheathe it once drawn."
+	icon_state = "crysknife"
+	inhand_icon_state = null // no icon state
+	w_class = WEIGHT_CLASS_HUGE
 	sharp = TRUE
 	slot_flags = null
 	flags = HANDSLOW
@@ -527,21 +507,21 @@
 
 /obj/item/nullrod/pitchfork
 	name = "unholy pitchfork"
-	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
-	icon_state = "pitchfork0"
-	item_state = "pitchfork0"
-	w_class = WEIGHT_CLASS_NORMAL
 	desc = "Holding this makes you look absolutely devilish."
+	icon_state = "pitchfork0"
+	worn_icon_state = null
+	inhand_icon_state = null
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("poked", "impaled", "pierced", "jabbed")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharp = TRUE
 
 /obj/item/nullrod/rosary
 	name = "prayer beads"
-	icon_state = "rosary"
-	item_state = null
 	desc = "A set of prayer beads used by many of the more traditional religions in space.<br>Vampires and other unholy abominations have learned to fear these."
+	icon_state = "rosary"
+	worn_icon_state = null
+	inhand_icon_state = null
 	force = 0
 	throwforce = 0
 	var/praying = FALSE
@@ -551,15 +531,15 @@
 		return ..()
 
 	if(!user.mind || !HAS_MIND_TRAIT(user, TRAIT_HOLY))
-		to_chat(user, "<span class='notice'>You are not close enough with [SSticker.Bible_deity_name] to use [src].</span>")
+		to_chat(user, SPAN_NOTICE("You are not close enough with [SSticker.Bible_deity_name] to use [src]."))
 		return
 
 	if(praying)
-		to_chat(user, "<span class='notice'>You are already using [src].</span>")
+		to_chat(user, SPAN_NOTICE("You are already using [src]."))
 		return
 
-	user.visible_message("<span class='notice'>[user] kneels[M == user ? null : " next to [M]"] and begins to utter a prayer to [SSticker.Bible_deity_name].</span>",
-		"<span class='notice'>You kneel[M == user ? null : " next to [M]"] and begin a prayer to [SSticker.Bible_deity_name].</span>")
+	user.visible_message(SPAN_NOTICE("[user] kneels[M == user ? null : " next to [M]"] and begins to utter a prayer to [SSticker.Bible_deity_name]."),
+		SPAN_NOTICE("You kneel[M == user ? null : " next to [M]"] and begin a prayer to [SSticker.Bible_deity_name]."))
 
 	praying = TRUE
 	if(do_after(user, 15 SECONDS, target = M))
@@ -576,12 +556,12 @@
 				var/datum/antagonist/vampire/V = M.mind?.has_antag_datum(/datum/antagonist/vampire)
 				if(V?.get_ability(/datum/vampire_passive/full)) // Getting a full prayer off on a vampire will interrupt their powers for a large duration.
 					V.adjust_nullification(120, 50)
-					to_chat(target, "<span class='userdanger'>[user]'s prayer to [SSticker.Bible_deity_name] has interfered with your power!</span>")
+					to_chat(target, SPAN_USERDANGER("[user]'s prayer to [SSticker.Bible_deity_name] has interfered with your power!"))
 					praying = FALSE
 					return
 
 			if(prob(25))
-				to_chat(target, "<span class='notice'>[user]'s prayer to [SSticker.Bible_deity_name] has eased your pain!</span>")
+				to_chat(target, SPAN_NOTICE("[user]'s prayer to [SSticker.Bible_deity_name] has eased your pain!"))
 				target.adjustToxLoss(-5)
 				target.adjustOxyLoss(-5)
 				target.adjustBruteLoss(-5)
@@ -590,40 +570,51 @@
 			praying = FALSE
 
 	else
-		to_chat(user, "<span class='notice'>Your prayer to [SSticker.Bible_deity_name] was interrupted.</span>")
+		to_chat(user, SPAN_NOTICE("Your prayer to [SSticker.Bible_deity_name] was interrupted."))
 		praying = FALSE
+
+/obj/item/nullrod/nazar
+	name = "nazar"
+	desc = "A set of glass beads and amulet, which has been forged to provide powerful magic protection to the wielder."
+	icon_state = "nazar"
+	worn_icon_state = null
+	inhand_icon_state = null
+	force = 0
+	throwforce = 0
+	antimagic_type = ALL
 
 /obj/item/nullrod/salt
 	name = "Holy Salt"
+	desc = "While commonly used to repel some ghosts, it appears others are downright attracted to it."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "saltshakersmall"
-	desc = "While commonly used to repel some ghosts, it appears others are downright attracted to it."
+	worn_icon_state = null
+	inhand_icon_state = null
 	force = 0
 	throwforce = 0
 	var/ghostcall_CD = 0
 
-
 /obj/item/nullrod/salt/attack_self__legacy__attackchain(mob/user)
 
 	if(!user.mind || !HAS_MIND_TRAIT(user, TRAIT_HOLY))
-		to_chat(user, "<span class='notice'>You are not close enough with [SSticker.Bible_deity_name] to use [src].</span>")
+		to_chat(user, SPAN_NOTICE("You are not close enough with [SSticker.Bible_deity_name] to use [src]."))
 		return
 
 	if(!(ghostcall_CD > world.time))
 		ghostcall_CD = world.time + 5 MINUTES
-		user.visible_message("<span class='notice'>[user] kneels and begins to utter a prayer to [SSticker.Bible_deity_name] while drawing a circle with salt!</span>",
-		"<span class='notice'>You kneel and begin a prayer to [SSticker.Bible_deity_name] while drawing a circle!</span>")
+		user.visible_message(SPAN_NOTICE("[user] kneels and begins to utter a prayer to [SSticker.Bible_deity_name] while drawing a circle with salt!"),
+		SPAN_NOTICE("You kneel and begin a prayer to [SSticker.Bible_deity_name] while drawing a circle!"))
 		notify_ghosts("The Chaplain is calling ghosts to [get_area(src)] with [name]!", source = src)
 	else
-		to_chat(user, "<span class='notice'>You need to wait before using [src] again.</span>")
-		return
-
+		to_chat(user, SPAN_NOTICE("You need to wait before using [src] again."))
 
 /obj/item/nullrod/rosary/bread
 	name = "prayer bread"
+	desc = "a staple of worshipers of the Silentfather, this holy mime artifact has an odd effect on clowns."
 	icon = 'icons/obj/food/bakedgoods.dmi'
 	icon_state = "baguette"
-	desc = "a staple of worshipers of the Silentfather, this holy mime artifact has an odd effect on clowns."
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	var/list/smited_clowns
 
 /obj/item/nullrod/rosary/bread/equipped(mob/user, slot, initial = FALSE)
@@ -645,8 +636,10 @@
 
 /obj/item/nullrod/rosary/bread/process()
 	var/mob/living/carbon/human/holder = loc
-	//would like to make the holder mime if they have it in on thier person in general
+	// would like to make the holder mime if they have it in on their person in general
 	for(var/mob/living/carbon/human/H in range(5, loc))
+		if(!H.mind)
+			continue
 		if(H.mind.assigned_role == "Clown" && !LAZYACCESS(smited_clowns, H))
 			LAZYSET(smited_clowns, H, TRUE)
 			H.Silence(20 SECONDS)
@@ -655,7 +648,7 @@
 			addtimer(CALLBACK(src, PROC_REF(unsmite_clown), H), 20 SECONDS)
 
 			if(prob(10))
-				to_chat(H, "<span class='userdanger'>Being in the presence of [holder]'s [src] is interfering with your honk!</span>")
+				to_chat(H, SPAN_USERDANGER("Being in the presence of [holder]'s [src] is interfering with your honk!"))
 
 /obj/item/nullrod/rosary/bread/proc/unsmite_clown(mob/living/carbon/human/hell_spawn)
 	animate_fade_colored(hell_spawn, 2 SECONDS)
@@ -664,18 +657,18 @@
 /obj/item/nullrod/missionary_staff
 	name = "holy staff"
 	desc = "It has a mysterious, protective aura."
-	reskinned = TRUE
-	reskin_selectable = FALSE
 	icon_state = "godstaff-red"
+	worn_icon_state = null
+	inhand_icon_state = null
 	lefthand_file = 'icons/mob/inhands/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/staves_righthand.dmi'
-	item_state = "godstaff-red"
 	w_class = WEIGHT_CLASS_HUGE
 	force = 5
 	slot_flags = ITEM_SLOT_BACK
-
+	reskinned = TRUE
+	reskin_selectable = FALSE
 	var/team_color = "red"
-	var/obj/item/clothing/suit/hooded/chaplain_hoodie/missionary_robe/robes = null		//the robes linked with this staff
+	var/obj/item/clothing/suit/hooded/chaplain_cassock/missionary_robe/robes = null		//the robes linked with this staff
 	var/faith = 99	//a conversion requires 100 faith to attempt. faith recharges over time while you are wearing missionary robes that have been linked to the staff.
 
 /obj/item/nullrod/missionary_staff/examine(mob/living/user)
@@ -684,12 +677,10 @@
 		. += "<span class='warning'>This seemingly standard holy staff is actually a disguised neurotransmitter capable of inducing blind zealotry in its victims. It must be allowed to recharge in the presence of a linked set of missionary robes. \
 			<b>Use the staff in hand</b> while wearing robes to link them both, then aim the staff at your victim to try and convert them.</span>"
 
-
 /obj/item/nullrod/missionary_staff/New()
 	..()
 	team_color = pick("red", "blue")
 	icon_state = "godstaff-[team_color]"
-	item_state = "godstaff-[team_color]"
 	name = "[team_color] holy staff"
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = ALL_ATTACK_TYPES)
 
@@ -705,18 +696,18 @@
 	if(!ishuman(user))		//prevents the horror (runtimes) of missionary xenos and other non-human mobs that might be able to activate the item
 		return FALSE
 	var/mob/living/carbon/human/missionary = user
-	if(missionary.wear_suit && istype(missionary.wear_suit, /obj/item/clothing/suit/hooded/chaplain_hoodie/missionary_robe))
-		var/obj/item/clothing/suit/hooded/chaplain_hoodie/missionary_robe/robe_to_link = missionary.wear_suit
+	if(missionary.wear_suit && istype(missionary.wear_suit, /obj/item/clothing/suit/hooded/chaplain_cassock/missionary_robe))
+		var/obj/item/clothing/suit/hooded/chaplain_cassock/missionary_robe/robe_to_link = missionary.wear_suit
 		if(robe_to_link.linked_staff)
-			to_chat(missionary, "<span class='warning'>These robes are already linked with a staff and cannot support another. Connection refused.</span>")
+			to_chat(missionary, SPAN_WARNING("These robes are already linked with a staff and cannot support another. Connection refused."))
 			return FALSE
 		robes = robe_to_link
 		robes.linked_staff = src
-		to_chat(missionary, "<span class='notice'>Link established. Faith generators initialized. Go spread the word.</span>")
+		to_chat(missionary, SPAN_NOTICE("Link established. Faith generators initialized. Go spread the word."))
 		faith = 100		//full charge when a fresh link is made (can't be delinked without destroying the robes so this shouldn't be an exploitable thing)
 		return TRUE
 	else
-		to_chat(missionary, "<span class='warning'>You must be wearing the missionary robes you wish to link with this staff.</span>")
+		to_chat(missionary, SPAN_WARNING("You must be wearing the missionary robes you wish to link with this staff."))
 		return FALSE
 
 /obj/item/nullrod/missionary_staff/afterattack__legacy__attackchain(mob/living/carbon/human/target, mob/living/carbon/human/missionary, flag, params)
@@ -725,29 +716,29 @@
 	if(target == missionary)	//you can't convert yourself, that would raise too many questions about your own dedication to the cause
 		return
 	if(!robes)		//staff must be linked to convert
-		to_chat(missionary, "<span class='warning'>You must link your staff to a set of missionary robes before attempting conversions.</span>")
+		to_chat(missionary, SPAN_WARNING("You must link your staff to a set of missionary robes before attempting conversions."))
 		return
 	if(!missionary.wear_suit || missionary.wear_suit != robes)	//must be wearing the robes to convert
 		return
 	if(faith < 100)
-		to_chat(missionary, "<span class='warning'>You don't have enough faith to attempt a conversion right now.</span>")
+		to_chat(missionary, SPAN_WARNING("You don't have enough faith to attempt a conversion right now."))
 		return
-	to_chat(missionary, "<span class='notice'>You concentrate on [target] and begin the conversion ritual...</span>")
+	to_chat(missionary, SPAN_NOTICE("You concentrate on [target] and begin the conversion ritual..."))
 	if(!target.mind)	//no mind means no conversion, but also means no faith lost.
-		to_chat(missionary, "<span class='warning'>You halt the conversion as you realize [target] is mindless! Best to save your faith for someone more worthwhile.</span>")
+		to_chat(missionary, SPAN_WARNING("You halt the conversion as you realize [target] is mindless! Best to save your faith for someone more worthwhile."))
 		return
-	to_chat(target, "<span class='userdanger'>Your mind seems foggy. For a moment, all you can think about is serving the greater good... the greater good...</span>")
+	to_chat(target, SPAN_USERDANGER("Your mind seems foggy. For a moment, all you can think about is serving the greater good... the greater good..."))
 	if(do_after(missionary, 80))	//8 seconds to temporarily convert, roughly 3 seconds slower than a vamp's enthrall, but its a ranged thing
 		if(faith < 100)		//to stop people from trying to exploit the do_after system to multi-convert, we check again if you have enough faith when it completes
-			to_chat(missionary, "<span class='warning'>You don't have enough faith to complete the conversion on [target]!</span>")
+			to_chat(missionary, SPAN_WARNING("You don't have enough faith to complete the conversion on [target]!"))
 			return
 		if(missionary in viewers(target))	//missionary must maintain line of sight to target, but the target doesn't necessary need to be able to see the missionary
 			do_convert(target, missionary)
 		else
-			to_chat(missionary, "<span class='warning'>You lost sight of the target before [target.p_they()] could be converted!</span>")
+			to_chat(missionary, SPAN_WARNING("You lost sight of the target before [target.p_they()] could be converted!"))
 			faith -= 25		//they escaped, so you only lost a little faith (to prevent spamming)
 	else	//the do_after failed, probably because you moved or dropped the staff
-		to_chat(missionary, "<span class='warning'>Your concentration was broken!</span>")
+		to_chat(missionary, SPAN_WARNING("Your concentration was broken!"))
 
 /obj/item/nullrod/missionary_staff/proc/do_convert(mob/living/carbon/human/target, mob/living/carbon/human/missionary)
 	var/convert_duration = 10 MINUTES
@@ -755,30 +746,30 @@
 	if(!target || !ishuman(target) || !missionary || !ishuman(missionary))
 		return
 	if(IS_MINDSLAVE(target) || target.mind.zealot_master)	//mindslaves and zealots override the staff because the staff is just a temporary mindslave
-		to_chat(missionary, "<span class='warning'>Your faith is strong, but [target.p_their()] mind is already slaved to someone else's ideals. Perhaps an inquisition would reveal more...</span>")
+		to_chat(missionary, SPAN_WARNING("Your faith is strong, but [target.p_their()] mind is already slaved to someone else's ideals. Perhaps an inquisition would reveal more..."))
 		faith -= 25		//same faith cost as losing sight of them mid-conversion, but did you just find someone who can lead you to a fellow traitor?
 		return
 	if(ismindshielded(target))
 		faith -= 75
-		to_chat(missionary, "<span class='warning'>Your faith is strong, but [target.p_their()] mind remains closed to your ideals. Your resolve helps you retain a bit of faith though.</span>")
+		to_chat(missionary, SPAN_WARNING("Your faith is strong, but [target.p_their()] mind remains closed to your ideals. Your resolve helps you retain a bit of faith though."))
 		return
 	else if(target.mind.assigned_role == "Psychiatrist" || target.mind.assigned_role == "Librarian")		//fancy book lernin helps counter religion (day 0 job love, what madness!)
 		if(prob(35))	//35% chance to fail
-			to_chat(missionary, "<span class='warning'>This one is well trained in matters of the mind... They will not be swayed as easily as you thought...</span>")
+			to_chat(missionary, SPAN_WARNING("This one is well trained in matters of the mind... They will not be swayed as easily as you thought..."))
 			faith -=50		//lose half your faith to the book-readers
 			return
 		else
-			to_chat(missionary, "<span class='notice'>You successfully convert [target] to your cause. The following grows because of your faith!</span>")
+			to_chat(missionary, SPAN_NOTICE("You successfully convert [target] to your cause. The following grows because of your faith!"))
 			faith -= 100
 	else if(target.mind.assigned_role == "Assistant")
 		if(prob(55))	//55% chance to take LESS faith than normal, because assistants are stupid and easily manipulated
-			to_chat(missionary, "<span class='notice'>Your message seems to resound well with [target]; converting [target.p_them()] was much easier than expected.</span>")
+			to_chat(missionary, SPAN_NOTICE("Your message seems to resound well with [target]; converting [target.p_them()] was much easier than expected."))
 			faith -= 50
 		else		//45% chance to take the normal 100 faith cost
-			to_chat(missionary, "<span class='notice'>You successfully convert [target] to your cause. The following grows because of your faith!</span>")
+			to_chat(missionary, SPAN_NOTICE("You successfully convert [target] to your cause. The following grows because of your faith!"))
 			faith -= 100
 	else		//everyone else takes 100 faith cost because they are normal
-		to_chat(missionary, "<span class='notice'>You successfully convert [target] to your cause. The following grows because of your faith!</span>")
+		to_chat(missionary, SPAN_NOTICE("You successfully convert [target] to your cause. The following grows because of your faith!"))
 		faith -= 100
 	//if you made it this far: congratulations! you are now a religious zealot!
 	target.mind.make_zealot(missionary, convert_duration, team_color)

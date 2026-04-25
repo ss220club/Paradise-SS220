@@ -5,6 +5,7 @@
 	icon_state = "ntflag"
 	lefthand_file = 'icons/mob/inhands/flags_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/flags_righthand.dmi'
+	layer = ABOVE_MOB_LAYER
 	w_class = WEIGHT_CLASS_BULKY
 	max_integrity = 40
 	resistance_flags = FLAMMABLE
@@ -14,12 +15,12 @@
 /obj/item/flag/attackby__legacy__attackchain(obj/item/W, mob/user, params)
 	. = ..()
 	if(W.get_heat() && !(resistance_flags & ON_FIRE))
-		user.visible_message("<span class='notice'>[user] lights [src] with [W].</span>", "<span class='notice'>You light [src] with [W].</span>", "<span class='warning'>You hear a low whoosh.</span>")
+		user.visible_message(SPAN_NOTICE("[user] lights [src] with [W]."), SPAN_NOTICE("You light [src] with [W]."), SPAN_WARNING("You hear a low whoosh."))
 		fire_act()
 
 /obj/item/flag/attack_self__legacy__attackchain(mob/user)
 	rolled = !rolled
-	user.visible_message("<span class='notice'>[user] [rolled ? "rolls up" : "unfurls"] [src].</span>", "<span class='notice'>You [rolled ? "roll up" : "unfurl"] [src].</span>", "<span class='warning'>You hear fabric rustling.</span>")
+	user.visible_message(SPAN_NOTICE("[user] [rolled ? "rolls up" : "unfurls"] [src]."), SPAN_NOTICE("You [rolled ? "roll up" : "unfurl"] [src]."), SPAN_WARNING("You hear fabric rustling."))
 	update_icon()
 
 /obj/item/flag/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, global_overlay = FALSE)
@@ -31,27 +32,20 @@
 	update_icon()
 
 /obj/item/flag/update_icon_state()
-	updateFlagIcon()
-	item_state = icon_state
-	if(rolled)
-		icon_state = "[icon_state]_rolled"
-		custom_fire_overlay = "fire_rolled"
-	else
-		custom_fire_overlay = initial(custom_fire_overlay)
-	if(resistance_flags & ON_FIRE)
-		item_state = "[item_state]_fire"
+	icon_state = "[get_flag_icon()][rolled ? "_rolled" : ""]"
+	inhand_icon_state = "[get_flag_icon()][resistance_flags & ON_FIRE ? "_fire" : ""]"
+	custom_fire_overlay = "[initial(custom_fire_overlay)][rolled ? "_rolled" : ""]"
 	if(ismob(loc))
-		var/mob/M = loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+		var/mob/mob = loc
+		mob.update_inv_r_hand()
+		mob.update_inv_l_hand()
 
-/obj/item/flag/proc/updateFlagIcon()
-	icon_state = initial(icon_state)
+/obj/item/flag/proc/get_flag_icon()
+	return initial(icon_state)
 
 /obj/item/flag/nt
 	name = "\improper Nanotrasen flag"
 	desc = "A flag proudly boasting the logo of NT."
-	icon_state = "ntflag"
 
 /obj/item/flag/clown
 	name = "\improper Clown Unity flag"
@@ -171,7 +165,6 @@
 /obj/item/flag/command
 	name = "\improper Command flag"
 	desc = "The flag of the independent, sovereign nation of Command. Apparently the budget was all spent on this flag, rather than a creative name."
-	icon_state = "ntflag"
 
 //Antags
 
@@ -210,7 +203,6 @@
 /obj/item/flag/chameleon
 	name = "chameleon flag"
 	desc = "A poor recreation of the official NT flag. It seems to shimmer a little."
-	icon_state = "ntflag"
 	origin_tech = "syndicate=1;magnets=4"
 	var/updated_icon_state = null
 	var/used = FALSE
@@ -254,7 +246,7 @@
 			boobytrap = I
 			trapper = user
 			I.forceMove(src)
-			to_chat(user, "<span class='notice'>You hide [I] in [src]. It will detonate some time after the flag is lit on fire.</span>")
+			to_chat(user, SPAN_NOTICE("You hide [I] in [src]. It will detonate some time after the flag is lit on fire."))
 			var/turf/bombturf = get_turf(src)
 			var/area/A = get_area(bombturf)
 			log_game("[key_name(user)] has hidden [I] in [src] ready for detonation at [A.name] ([bombturf.x],[bombturf.y],[bombturf.z]).")
@@ -276,7 +268,7 @@
 	. = TRUE
 	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
 		return
-	to_chat(user, "<span class='notice'>You remove [boobytrap] from [src].</span>")
+	to_chat(user, SPAN_NOTICE("You remove [boobytrap] from [src]."))
 	boobytrap.forceMove(get_turf(src))
 	boobytrap = null
 	trapper = null
@@ -294,8 +286,8 @@
 	boobytrap = null
 	burn()
 
-/obj/item/flag/chameleon/updateFlagIcon()
-	icon_state = updated_icon_state
+/obj/item/flag/chameleon/get_flag_icon()
+	return updated_icon_state
 
 /obj/item/flag/chameleon/depot/New()
 	..()

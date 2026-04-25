@@ -20,9 +20,9 @@
 
 /obj/structure/chair/plastic/proc/snap_check(mob/living/carbon/M)
 	if(M.nutrition >= NUTRITION_LEVEL_FAT)
-		to_chat(M, span_warning("Стул начинает хрустеть и трещать, ты слишком тяжёлый!"))
+		to_chat(M, SPAN_WARNING("Стул начинает хрустеть и трещать, ты слишком тяжёлый!"))
 		if(do_after(M, 6 SECONDS, progress = FALSE))
-			M.visible_message(span_notice("\improper [M] садится на пластиковый стул, и проламывает его своим весом!"))
+			M.visible_message(SPAN_NOTICE("\improper [M] садится на пластиковый стул, и проламывает его своим весом!"))
 			new /obj/effect/decal/cleanable/plastic(loc)
 			M.Weaken(5 SECONDS)
 			M.emote("scream")
@@ -34,7 +34,7 @@
 	desc = "Почему-то, всегда можно найти под рингом."
 	icon = 'modular_ss220/objects/icons/plastic.dmi'
 	icon_state = "folded_chair"
-	item_state = "folded_chair"
+	inhand_icon_state = "folded_chair"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/chairs_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/chairs_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL

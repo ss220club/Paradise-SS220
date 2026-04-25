@@ -3,7 +3,6 @@
 	desc = "Мягкая и приятная на ощупь игрушка важного рыжего лиса в пальто."
 	icon = 'modular_ss220/objects/icons/plushies.dmi'
 	icon_state = "macvulpix"
-	item_state = "macvulpix"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/plushies_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/plushies_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
@@ -18,21 +17,18 @@
 	return ..()
 
 /obj/item/toy/plushie/macvulpix/update_icon_state()
-	if(glasses)
-		icon_state = "[initial(icon_state)]_glasses"
-		item_state = "[initial(item_state)]_glasses"
-	else
-		icon_state = "[initial(icon_state)]"
-		item_state = "[initial(item_state)]"
-
+	icon_state = "[initial(icon_state)][glasses ? "_glasses" : ""]"
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
 
-/obj/item/toy/plushie/macvulpix/attackby__legacy__attackchain(obj/item/clothing/glasses/sunglasses, mob/living/user, params)
+/obj/item/toy/plushie/macvulpix/attack_by(obj/item/attacking, mob/user, params)
 	. = ..()
-	if(is_type_in_list(sunglasses, allowed_glasses))
+	if(.)
+		return
+	if(is_type_in_list(attacking, allowed_glasses))
+		var/obj/item/clothing/glasses/sunglasses = attacking
 		user.drop_item()
 		sunglasses.forceMove(src)
 		glasses = sunglasses
@@ -45,7 +41,7 @@
 		return
 
 	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
-		to_chat(user, span_warning("У вас нет возможности снять очки с [src]!"))
+		to_chat(user, SPAN_WARNING("У вас нет возможности снять очки с [src]!"))
 		return
 
 	if(!user.get_active_hand() && Adjacent(user))
@@ -60,6 +56,6 @@
 /obj/item/toy/plushie/macvulpix/examine(mob/user)
 	. = ..()
 	if(glasses)
-		. += span_notice("Нажмите <b>Alt-Click</b> на игрушку, чтобы снять очки.")
+		. += SPAN_NOTICE("Нажмите <b>Alt-Click</b> на игрушку, чтобы снять очки.")
 	else
-		. += span_notice("На эту игрушку можно надеть солнцезащитные очки.")
+		. += SPAN_NOTICE("На эту игрушку можно надеть солнцезащитные очки.")

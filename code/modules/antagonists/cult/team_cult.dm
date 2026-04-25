@@ -34,10 +34,6 @@ RESTRICT_TYPE(/datum/team/cult)
 	/// Timer until we do a recount of cultist members
 	var/recount_timer
 
-/datum/team/cult/New(list/starting_members)
-	. = ..()
-	recount_timer = addtimer(CALLBACK(src, PROC_REF(cult_threshold_check)), 5 MINUTES, TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
-
 /datum/team/cult/Destroy(force, ...)
 	deltimer(recount_timer)
 	return ..()
@@ -51,6 +47,7 @@ RESTRICT_TYPE(/datum/team/cult)
 	cult_status = NARSIE_DEMANDS_SACRIFICE
 
 	create_next_sacrifice()
+	recount_timer = addtimer(CALLBACK(src, PROC_REF(cult_threshold_check)), 5 MINUTES, TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
 
 	for(var/datum/mind/M as anything in starting_members)
 		var/datum/antagonist/cultist/cultist = M.has_antag_datum(/datum/antagonist/cultist)
@@ -168,7 +165,7 @@ RESTRICT_TYPE(/datum/team/cult)
 
 	if(cult_ascendant)
 		// The cult only falls if below 1/2 of the rising, usually pretty low. e.g. 5% on highpop, 10% on lowpop
-		if(cult_players < (rise_number / 2))
+		if(cult_players <= ceil(rise_number / 2))
 			cult_fall()
 		return
 
@@ -185,7 +182,7 @@ RESTRICT_TYPE(/datum/team/cult)
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/i_see_you2.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>The veil weakens as your cult grows, your eyes begin to glow...</span>")
+		to_chat(M.current, SPAN_CULTLARGE("The veil weakens as your cult grows, your eyes begin to glow..."))
 
 	addtimer(CALLBACK(src, PROC_REF(all_members_timer), TYPE_PROC_REF(/datum/antagonist/cultist, rise), VARSET_CALLBACK(src, cult_risen, TRUE)), 20 SECONDS)
 
@@ -195,11 +192,18 @@ RESTRICT_TYPE(/datum/team/cult)
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/im_here1.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>Your cult is ascendant and the red harvest approaches - you cannot hide your true nature for much longer!</span>")
+		to_chat(M.current, SPAN_CULTLARGE("Your cult is ascendant and the red harvest approaches - you cannot hide your true nature for much longer!"))
 
 	addtimer(CALLBACK(src, PROC_REF(all_members_timer), TYPE_PROC_REF(/datum/antagonist/cultist, ascend), VARSET_CALLBACK(src, cult_ascendant, TRUE)), 20 SECONDS)
 	if(!no_announcements)
-		GLOB.major_announcement.Announce("Picking up extradimensional activity related to the Cult of [GET_CULT_DATA(entity_name, "Nar'Sie")] from your station. Data suggests that about [ascend_percent * 100]% of the station has been converted. Security staff are authorized to use lethal force freely against cultists. Non-security staff should be prepared to defend themselves and their work areas from hostile cultists. Self defense permits non-security staff to use lethal force as a last resort, but non-security staff should be defending their work areas, not hunting down cultists. Dead crewmembers must be revived and deconverted once the situation is under control.", "Central Command Higher Dimensional Affairs", 'sound/AI/commandreport.ogg')
+		GLOB.major_announcement.Announce(
+			"Мы фиксируем активность из другого измерения, связаную с культом [GET_CULT_DATA(entity_name, "Nar'Sie")] на вашей станции. \
+			Согласно нашей информации, [ascend_percent * 100]% экипажа станции были порабощены культом. \
+			Сотрудники службы безопасности и экипаж наделены правом беспрепятственно применять летальную силу против культистов. \
+			Погибшие члены экипажа должны быть реанимированы и деконвертированы, как только ситуация будет взята под контроль.",
+			"Отдел по делам Высших Измерений",
+			'sound/AI/commandreport.ogg'
+			)
 
 /datum/team/cult/proc/cult_fall()
 	is_in_transition = TRUE
@@ -207,18 +211,18 @@ RESTRICT_TYPE(/datum/team/cult)
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/wail.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>The veil repairs itself, your power grows weaker...</span>")
+		to_chat(M.current, SPAN_CULTLARGE("The veil repairs itself, your power grows weaker..."))
 
 	addtimer(CALLBACK(src, PROC_REF(all_members_timer), TYPE_PROC_REF(/datum/antagonist/cultist, descend), VARSET_CALLBACK(src, cult_ascendant, FALSE)), 20 SECONDS)
 	if(!no_announcements)
-		GLOB.major_announcement.Announce("Paranormal activity has returned to minimal levels. \
-									Security staff should minimize lethal force against cultists, using non-lethals where possible. \
-									All dead cultists should be taken to medbay or robotics for immediate revival and deconversion. \
-									Non-security staff may defend themselves, but should prioritize leaving any areas with cultists and reporting the cultists to security. \
-									Self defense permits non-security staff to use lethal force as a last resort. Hunting down cultists may make you liable for a manslaughter charge. \
-									Any access granted in response to the paranormal threat should be reset. \
-									Any and all security gear that was handed out should be returned. Finally, all weapons (including improvised) should be removed from the crew.",
-									"Central Command Higher Dimensional Affairs", 'sound/AI/commandreport.ogg')
+		GLOB.major_announcement.Announce("Уровень паранормальной активности снизился до прежнего минимального значения. \
+									Сотрудники службы безопасности должны свести к минимуму применение летальной силы против культистов, используя, по возможности, нелетальные средства. \
+									Все погибшие культисты должны быть доставлены в медбей или робототехнику для немедленной реанимации и деконвертации. \
+									Сотрудники, не относящиеся к службе безопасности, имеют право на самооборону, но в первую очередь они должны покинуть зоны, где есть культисты, и сообщить о них в службу безопасности. \
+									Самооборона позволяет сотрудникам, не относящимся к службе безопасности, применять летальную силу в случае крайней необходимости. Охота на культистов может повлечь за собой ответственность перед законом. \
+									Любые доступы, предоставленные в ответ на паранормальную угрозу, должны быть сброшены. \
+									Все выданные средства для защиты должны быть возвращены, всё оружие (включая самодельное) у экипажа должно быть изъято.",
+									"Отдел по делам Высших Измерений", 'sound/AI/commandreport.ogg')
 /**
  * This is a magic fuckin proc that takes a proc_ref, and calls it on all the human cultists.
  * Created so that we don't make 1000 timers, and I'm too lazy to make a proc for all of these.
@@ -262,7 +266,7 @@ RESTRICT_TYPE(/datum/team/cult)
 			return TRUE //can't convert it unless the owner is converted
 	if(isgolem(mind.current))
 		return FALSE
-	if(isanimal(mind.current))
+	if(isanimal_or_basicmob(mind.current))
 		return FALSE
 	return TRUE
 
@@ -363,26 +367,26 @@ RESTRICT_TYPE(/datum/team/cult)
 
 	switch(cult_status)
 		if(NARSIE_IS_ASLEEP)
-			to_chat(M, "<span class='cult'>[GET_CULT_DATA(entity_name, "The Dark One")] is asleep. This is probably a bug.</span>")
+			to_chat(M, SPAN_CULT("[GET_CULT_DATA(entity_name, "The Dark One")] is asleep. This is probably a bug."))
 		if(NARSIE_DEMANDS_SACRIFICE)
 			var/list/all_objectives = objective_holder.get_objectives()
 			if(!length(all_objectives))
-				to_chat(M, "<span class='danger'>Error: No objectives. Something went wrong, adminhelp with F1.</span>")
+				to_chat(M, SPAN_DANGER("Error: No objectives. Something went wrong, adminhelp with F1."))
 			else
 				var/datum/objective/sacrifice/current_obj = all_objectives[length(all_objectives)] //get the last obj in the list, ie the current one
-				to_chat(M, "<span class='cult'>The Veil needs to be weakened before we are able to summon [GET_CULT_DATA(entity_title1, "The Dark One")].</span>")
-				to_chat(M, "<span class='cult'>Current goal: [current_obj.explanation_text]</span>")
+				to_chat(M, SPAN_CULT("The Veil needs to be weakened before we are able to summon [GET_CULT_DATA(entity_title1, "The Dark One")]."))
+				to_chat(M, SPAN_CULT("Current goal: [current_obj.explanation_text]"))
 		if(NARSIE_NEEDS_SUMMONING)
-			to_chat(M, "<span class='cult'>The Veil is weak! We can summon [GET_CULT_DATA(entity_title3, "The Dark One")]!</span>")
-			to_chat(M, "<span class='cult'>Current goal: [obj_summon.explanation_text]</span>")
+			to_chat(M, SPAN_CULT("The Veil is weak! We can summon [GET_CULT_DATA(entity_title3, "The Dark One")]!"))
+			to_chat(M, SPAN_CULT("Current goal: [obj_summon.explanation_text]"))
 		if(NARSIE_HAS_RISEN)
-			to_chat(M, "<span class='cultlarge'>\"I am here.\"</span>")
-			to_chat(M, "<span class='cult'>Current goal:</span> <span class='cultlarge'>\"Feed me.\"</span>")
+			to_chat(M, SPAN_CULTLARGE("\"I am here.\""))
+			to_chat(M, SPAN_CULT("Current goal:</span> <span class='cultlarge'>\"Feed me.\""))
 		if(NARSIE_HAS_FALLEN)
-			to_chat(M, "<span class='cultlarge'>[GET_CULT_DATA(entity_name, "The Dark One")] has been banished!</span>")
-			to_chat(M, "<span class='cult'>Current goal: Slaughter the unbelievers!</span>")
+			to_chat(M, SPAN_CULTLARGE("[GET_CULT_DATA(entity_name, "The Dark One")] has been banished!"))
+			to_chat(M, SPAN_CULT("Current goal: Slaughter the unbelievers!"))
 		else
-			to_chat(M, "<span class='danger'>Error: Cult objective status currently unknown. Something went wrong, adminhelp with F1.</span>")
+			to_chat(M, SPAN_DANGER("Error: Cult objective status currently unknown. Something went wrong, adminhelp with F1."))
 
 	if(!display_members)
 		return
@@ -433,7 +437,7 @@ RESTRICT_TYPE(/datum/team/cult)
 		objective_holder.remove_objective(current_obj)
 		ready_to_summon()
 		return FALSE
-	speak_to_all_alive_cultists("<span class='danger'>[GET_CULT_DATA(entity_name, "Your god")]</span> murmurs, <span class='cultlarge'>Our goal is beyond your reach. Sacrifice [current_obj.target] instead...</span>")
+	speak_to_all_alive_cultists(SPAN_DANGER("[GET_CULT_DATA(entity_name, "Your god")]</span> murmurs, <span class='cultlarge'>Our goal is beyond your reach. Sacrifice [current_obj.target] instead..."))
 	return TRUE
 
 /datum/team/cult/proc/successful_sacrifice()
@@ -451,8 +455,8 @@ RESTRICT_TYPE(/datum/team/cult)
 		return
 
 	speak_to_all_alive_cultists(
-		"<span class='cult'>You and your acolytes have made progress, but there is more to do still before [GET_CULT_DATA(entity_title1, "The Dark One")] can be summoned!</span>",
-		"<span class='cult'>Current goal: [obj_sac.explanation_text]</span>"
+		SPAN_CULT("You and your acolytes have made progress, but there is more to do still before [GET_CULT_DATA(entity_title1, "The Dark One")] can be summoned!"),
+		SPAN_CULT("Current goal: [obj_sac.explanation_text]")
 	)
 
 /datum/team/cult/proc/ready_to_summon()
@@ -461,8 +465,8 @@ RESTRICT_TYPE(/datum/team/cult)
 
 	cult_status = NARSIE_NEEDS_SUMMONING
 	speak_to_all_alive_cultists(
-		"<span class='cult'>You and your acolytes have succeeded in preparing the station for the ultimate ritual!</span>",
-		"<span class='cult'>Current goal: [obj_summon.explanation_text]</span>"
+		SPAN_CULT("You and your acolytes have succeeded in preparing the station for the ultimate ritual!"),
+		SPAN_CULT("Current goal: [obj_summon.explanation_text]")
 	)
 
 /datum/team/cult/proc/successful_summon()
@@ -473,8 +477,8 @@ RESTRICT_TYPE(/datum/team/cult)
 	cult_status = NARSIE_HAS_FALLEN
 	obj_summon.killed = TRUE
 	speak_to_all_alive_cultists(
-		"<span class='cultlarge'>RETRIBUTION!</span>",
-		"<span class='cult'>Current goal: Slaughter the heretics!</span>"
+		SPAN_CULTLARGE("RETRIBUTION!"),
+		SPAN_CULT("Current goal: Slaughter the heretics!")
 	)
 
 /datum/team/cult/proc/get_cult_status_as_string()
@@ -501,10 +505,10 @@ RESTRICT_TYPE(/datum/team/cult)
 	if(!input)
 		return
 
-	speak_to_all_alive_cultists("<span class='cult'>[GET_CULT_DATA(entity_name, "Your god")] murmurs,</span> <span class='cultlarge'>\"[input]\"</span>")
+	speak_to_all_alive_cultists(SPAN_CULT("[GET_CULT_DATA(entity_name, "Your god")] murmurs,</span> <span class='cultlarge'>\"[input]\""))
 
 	for(var/mob/dead/observer/O in GLOB.player_list)
-		to_chat(O, "<span class='cult'>[GET_CULT_DATA(entity_name, "Your god")] murmurs,</span> <span class='cultlarge'>\"[input]\"</span>")
+		to_chat(O, SPAN_CULT("[GET_CULT_DATA(entity_name, "Your god")] murmurs,</span> <span class='cultlarge'>\"[input]\""))
 
 	message_admins("Admin [key_name_admin(admin_caller)] has talked with the Voice of [GET_CULT_DATA(entity_name, "Cult God")].")
 	log_admin("[key_name(admin_caller)] Voice of [GET_CULT_DATA(entity_name, "Cult God")]: [input]")
@@ -554,7 +558,7 @@ RESTRICT_TYPE(/datum/team/cult)
 
 		if("cult_newsummonlocations")
 			if(!obj_summon)
-				to_chat(usr, "<span class='danger'>The cult has NO summon objective yet.</span>")
+				to_chat(usr, SPAN_DANGER("The cult has NO summon objective yet."))
 				return
 			if(alert(usr, "Reroll the cult's summoning locations?", "Cult Debug", "Yes", "No") != "Yes")
 				return
@@ -562,8 +566,8 @@ RESTRICT_TYPE(/datum/team/cult)
 			obj_summon.find_summon_locations(TRUE)
 			if(cult_status == NARSIE_NEEDS_SUMMONING) //Only update cultists if they are already have the summon goal since they arent aware of summon spots till then
 				speak_to_all_alive_cultists(
-					"<span class='cult'>The veil has shifted! Our summoning will need to take place elsewhere.</span>",
-					"<span class='cult'>Current goal: [obj_summon.explanation_text]</span>"
+					SPAN_CULT("The veil has shifted! Our summoning will need to take place elsewhere."),
+					SPAN_CULT("Current goal: [obj_summon.explanation_text]")
 				)
 
 			message_admins("Admin [key_name_admin(usr)] has rerolled the Cult's sacrifice target.")

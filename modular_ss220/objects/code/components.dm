@@ -22,8 +22,8 @@
 	if(check_role_and_ckey(user))
 		return
 	user.Weaken(10 SECONDS)
-	user.unEquip(I, force, silent = FALSE)
-	to_chat(user, span_userdanger(refusal_text))
+	user.drop_item_to_ground(I, force = TRUE, silent = FALSE)
+	to_chat(user, SPAN_USERDANGER(refusal_text))
 	if(ishuman(user))
 		user.apply_damage(rand(pickup_damage, pickup_damage * 2), BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
 
