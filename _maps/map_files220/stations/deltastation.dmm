@@ -30147,21 +30147,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/medical/virology/test_room)
-"cyE" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/beakers{
-	pixel_y = 2;
-	pixel_x = -4
-	},
-/obj/item/storage/box/syringes{
-	pixel_x = 14;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/glass/bottle/reagent/formaldehyde{
-	pixel_x = 6
-	},
-/turf/simulated/floor/plasteel/white,
-/area/station/science/xenobiology)
 "cyH" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -33368,7 +33353,6 @@
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 5
 	},
-/obj/structure/closet/secure_closet/xenobiologist,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "cNn" = (
@@ -33727,6 +33711,14 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/box/monkeycubes{
 	pixel_y = -11
+	},
+/obj/item/reagent_containers/glass/bottle/reagent/formaldehyde{
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_x = -6;
+	pixel_y = 10
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/xenobiology)
@@ -41549,10 +41541,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "dBX" = (
-/obj/machinery/power/apc/directional/north,
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/reinforced/directional/north,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "dBY" = (
@@ -45440,8 +45432,11 @@
 /obj/structure/table/reinforced,
 /obj/item/folder/white,
 /obj/item/pen,
-/obj/item/reagent_containers/dropper,
 /obj/machinery/light/directional/west,
+/obj/item/storage/box/beakers{
+	pixel_y = 5;
+	pixel_x = 14
+	},
 /turf/simulated/floor/plasteel,
 /area/station/science/xenobiology)
 "dWw" = (
@@ -51692,6 +51687,8 @@
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 9
 	},
+/obj/structure/closet/bombcloset,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/misc_lab)
 "fMZ" = (
@@ -72114,10 +72111,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "mqr" = (
-/obj/machinery/power/apc/directional/south,
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/reinforced/directional/south,
 /turf/simulated/floor/plating,
 /area/station/maintenance/virology_maint)
 "mqx" = (
@@ -93605,6 +93602,10 @@
 /obj/item/storage/box/monkeycubes,
 /obj/machinery/power/apc/directional/south,
 /obj/structure/cable,
+/obj/item/storage/box/syringes{
+	pixel_x = 116;
+	pixel_y = 237
+	},
 /turf/simulated/floor/plasteel,
 /area/station/science/xenobiology)
 "tam" = (
@@ -94537,11 +94538,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/old_kitchen)
 "tpc" = (
-/obj/machinery/power/apc/directional/south,
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-8"
 	},
 /obj/effect/turf_decal/tiles/department/virology/side,
+/obj/machinery/power/apc/reinforced/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/abandoned_garden)
 "tpg" = (
@@ -102939,7 +102940,6 @@
 /area/station/maintenance/virology_maint)
 "wfX" = (
 /obj/effect/spawner/random/blood/maybe,
-/obj/machinery/power/apc/directional/north,
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-2"
 	},
@@ -102947,6 +102947,7 @@
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 4
 	},
+/obj/machinery/power/apc/reinforced/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/starboard2)
 "wgg" = (
@@ -138374,7 +138375,7 @@ cWD
 cNl
 cWA
 hfh
-cyE
+tZe
 iMO
 cVf
 rKq

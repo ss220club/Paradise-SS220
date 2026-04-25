@@ -124,7 +124,7 @@
 
 /obj/mecha/working/ripley/emagged/Initialize(mapload)
 	. = ..()
-	desc += "</br>[span_danger("Оборудование меха опасно искрится!")]"
+	desc += "</br>[SPAN_DANGER("Оборудование меха опасно искрится!")]"
 
 #undef ERT_TYPE_AMBER
 #undef ERT_TYPE_RED

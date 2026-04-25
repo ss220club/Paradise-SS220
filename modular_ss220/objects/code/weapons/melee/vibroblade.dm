@@ -59,28 +59,28 @@
 
 /obj/item/melee/vibroblade/examine(mob/user)
 	. = ..()
-	. += span_notice("Используйте [src] в руке, чтобы повысить уровень заряда.")
+	. += SPAN_NOTICE("Используйте [src] в руке, чтобы повысить уровень заряда.")
 	if(charge_level == CHARGE_LEVEL_NONE)
-		. += span_notice("[src] не заряжен.")
+		. += SPAN_NOTICE("[src] не заряжен.")
 		return
 
-	. += span_notice("[src] заряжен на [(charge_level / max_charge_level)*100]%.")
+	. += SPAN_NOTICE("[src] заряжен на [(charge_level / max_charge_level)*100]%.")
 	. += charge_level == max_charge_level \
-		? span_danger("Следующий удар будет крайне травмирующим!") \
-		: span_warning("Следующий удар будет усиленным!")
+		? SPAN_DANGER("Следующий удар будет крайне травмирующим!") \
+		: SPAN_WARNING("Следующий удар будет усиленным!")
 
 /obj/item/melee/vibroblade/attack_self__legacy__attackchain(mob/living/user)
 	. = ..()
 	if(charge_level >= max_charge_level)
 		user.visible_message(
-			span_notice("[user.name] пытается зарядить [src], но кнопка на рукояти не поддается!"),
-			span_notice("Вы пытаетесь нажать на кнопку зарядки [src], но она заблокирована.")
+			SPAN_NOTICE("[user.name] пытается зарядить [src], но кнопка на рукояти не поддается!"),
+			SPAN_NOTICE("Вы пытаетесь нажать на кнопку зарядки [src], но она заблокирована.")
 		)
 		return FALSE
 
 	user.visible_message(
-		span_notice("[user.name] нажимает на кнопку зарядки [src]..."),
-		span_notice("Вы нажимаете на кнопку зарядки [src], заряжая микрогенератор...")
+		SPAN_NOTICE("[user.name] нажимает на кнопку зарядки [src]..."),
+		SPAN_NOTICE("Вы нажимаете на кнопку зарядки [src], заряжая микрогенератор...")
 	)
 
 	if(!do_after_once(user, charge_time, allow_moving = TRUE, must_be_held = TRUE, target = src))
@@ -108,15 +108,15 @@
 		if(after_attack_bodypart == selected_bodypart)
 			after_attack_bodypart.droplimb(TRUE, DROPLIMB_SHARP)
 		user.visible_message(
-			span_danger("[user] изящно и непринужденно отсекает [selected_bodypart] [target]!"),
-			span_biggerdanger("Вы искусно отсекаете [selected_bodypart] [target]!")
+			SPAN_DANGER("[user] изящно и непринужденно отсекает [selected_bodypart] [target]!"),
+			SPAN_BIGGERDANGER("Вы искусно отсекаете [selected_bodypart] [target]!")
 		)
 
 	set_charge_level(CHARGE_LEVEL_NONE)
 
 /obj/item/melee/vibroblade/suicide_act(mob/living/carbon/human/user)
 	var/obj/item/organ/external/head = user.get_organ(BODY_ZONE_HEAD)
-	user.visible_message(span_suicide("[user] прижимает лезвие [src] к своей шее и нажимает на кнопку зарядки микрогенератора. \
+	user.visible_message(SPAN_SUICIDE("[user] прижимает лезвие [src] к своей шее и нажимает на кнопку зарядки микрогенератора. \
 		Кажется, это попытка самоубийства!"))
 	user.atom_say("Слава Вечной Империи!")
 	head.droplimb(TRUE, DROPLIMB_SHARP, FALSE, TRUE)

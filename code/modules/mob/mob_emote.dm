@@ -22,7 +22,7 @@
 
 	if(!length(key_emotes))
 		if(intentional && !force_silence)
-			to_chat(src, "<span class='notice'>Эмоции '[emote_key]' не существует. Введите *help для их списка.</span>")
+			to_chat(src, SPAN_NOTICE("Эмоции '[emote_key]' не существует. Введите *help для их списка."))
 		else if(!intentional)
 			CRASH("Emote with key [emote_key] was attempted to be called, though doesn't exist!")
 		return FALSE
@@ -38,7 +38,7 @@
 		if(P.try_run_emote(src, param, type_override, intentional))
 			return TRUE
 	if(intentional && !silenced && !force_silence)
-		to_chat(src, "<span class='notice'>Эмоция '[emote_key]' недоступна. Введите *help для их списка.</span>")
+		to_chat(src, SPAN_NOTICE("Эмоция '[emote_key]' недоступна. Введите *help для их списка."))
 	return FALSE
 
 /**
@@ -145,7 +145,8 @@
 			var/obj/item/grab/G = H.get_active_hand()
 			if(G && G.affecting)
 				if(H.buckled || G.affecting.buckled)
-					to_chat(user, "<span class='warning'>[G.affecting] пристёгнут(а), кувырок сделать не получится!</span>")
+					var/who_is = H.buckled ? "You are" : "[G.affecting] is"
+					to_chat(user, SPAN_WARNING("[who_is] пристёгнут(а), кувырок сделать не получится! [G.affecting.p_them()]!"))
 					return TRUE
 				var/turf/oldloc = user.loc
 				var/turf/newloc = G.affecting.loc
@@ -158,12 +159,6 @@
 					return ..()
 
 	user.SpinAnimation(5, 1)
-
-	if(isrobot(user))
-		var/mob/living/silicon/robot/borg = user
-		if(borg.drop_hat())
-			borg.visible_message("<span class='warning'><span class='name'>[user]</span> drops their hat!</span>",
-							"<span class='warning'>As you flip your hat falls off!</span>")
 
 	if(prob(5) && ishuman(user) && !HAS_TRAIT(user, TRAIT_COOL))
 		var/turf = get_turf(L)
@@ -194,7 +189,7 @@
 		return TRUE
 
 	user.spin(32, 1)
-	to_chat(user, "<span class='warning'>Вы слишком долго вращаетесь!</span>")
+	to_chat(user, SPAN_WARNING("Вы слишком долго вращаетесь!"))
 	var/mob/living/L = user
 	if(istype(L))
 		L.Dizzy(24 SECONDS)

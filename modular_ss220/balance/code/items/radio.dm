@@ -6,7 +6,7 @@
 	var/datum/radio_frequency/channel = ..()
 	if(!istype(channel))
 		return channel // this will be handled
-	
+
 	// Check if the radio can send to common.
 	var/sec_level_grants_common = SSsecurity_level.current_security_level.grants_common_channel_access()
 	if(channel.frequency == PUB_FREQ && !sec_level_grants_common && has_limited_common_channel_access())
@@ -17,13 +17,13 @@
 /obj/item/radio/emag_act(mob/user)
 	..()
 	if(emagged)
-		to_chat(user, span_notice("[declent_ru(NOMINATIVE)] не реагирует. Видимо, модификация уже производилась."))
+		to_chat(user, SPAN_NOTICE("[declent_ru(NOMINATIVE)] не реагирует. Видимо, модификация уже производилась."))
 		return FALSE
 
 	respects_common_channel_limitations = FALSE
 	emagged = TRUE
 	playsound(loc, 'sound/effects/sparks4.ogg', vol = 75, vary = TRUE)
-	to_chat(user, span_notice("Вы отключаете ограничения на общий канал у [declent_ru(GENITIVE)]."))
+	to_chat(user, SPAN_NOTICE("Вы отключаете ограничения на общий канал у [declent_ru(GENITIVE)]."))
 	log_game("[key_name(user)] emagged [src]")
 	return TRUE
 

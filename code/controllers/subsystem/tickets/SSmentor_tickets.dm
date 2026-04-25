@@ -23,7 +23,7 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 /datum/controller/subsystem/tickets/mentor_tickets/Initialize()
 	..()
 	close_messages = list("<font color='red' size='3'><b>- [ticket_name] Закрыт -</b></font>",
-				"<span class='boldmessage'>Пожалуйста, старайтесь как можно более подробно описывать информацию в ментор-хелпе. Менторы не знают всю ситуацию, в которой вы находитесь, и им необходимо больше информации для предоставления вам помощи.</span>",
+				SPAN_BOLDMESSAGE("Пожалуйста, старайтесь как можно более подробно описывать информацию в ментор-хелпе. Менторы не знают всю ситуацию, в которой вы находитесь, и им необходимо больше информации для предоставления вам помощи."),
 				"<span class='[span_class]'>Ваш [ticket_name] был закрыт.</span>")
 
 	response_phrases = list("Известный баг" = "К сожалению, это известный баг. Надеемся, он скоро будет исправлен.",
@@ -85,12 +85,12 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 		for(var/mob/living/carbon/human/nct as anything in nct_active)
 			if(!locate(/obj/item/radio/headset) in list(nct.l_ear, nct.r_ear)) // If the NCT doesn't have a headset, ignore it.
 				continue
-			to_chat(nct, "<span class='notice'>Incoming priority transmission from Nanotrasen Training Center. Request information as follows: </span><span class='specialnotice'>Career Trainer, we've received a request from an employee. [trainee.p_their(TRUE)] name is [trainee.real_name], [trainee.p_theyre()] a [trainee.mind.assigned_role]. See if [trainee.p_they()] need [trainee.p_s()] any help.</span>")
+			to_chat(nct, SPAN_NOTICE("Incoming priority transmission from Nanotrasen Training Center. Request information as follows: </span><span class='specialnotice'>Career Trainer, we've received a request from an employee. [trainee.p_their(TRUE)] name is [trainee.real_name], [trainee.p_theyre()] a [trainee.mind.assigned_role]. See if [trainee.p_they()] need [trainee.p_s()] any help."))
 			SEND_SOUND(nct, 'sound/effects/headset_message.ogg')
 
 	SEND_SOUND(returnClient(N), sound('sound/effects/adminhelp.ogg'))
-	to_chat_safe(returnClient(N), "<span class='[span_class]'>[key_name_hidden(C)] использует автоответ:</span> <span class='adminticketalt'>[response_phrases[message_key]]</span>") //for this we want the full value of whatever key this is to tell the player so we do response_phrases[message_key]
-	message_staff("[C] ипользовал автоответ в ментор-тикете [ticket_owner]:<span class='adminticketalt'> [message_key]</span>") //we want to use the short named keys for this instead of the full sentence which is why we just do message_key
+	to_chat_safe(returnClient(N), "<span class='[span_class]'>[key_name_hidden(C)] использует автоответ:</span> [SPAN_ADMINTICKETALT("[response_phrases[message_key]]")]") //for this we want the full value of whatever key this is to tell the player so we do response_phrases[message_key]
+	message_staff("[C] ипользовал автоответ в ментор-тикете [ticket_owner]:[SPAN_ADMINTICKETALT(" [message_key]")]") //we want to use the short named keys for this instead of the full sentence which is why we just do message_key
 	T.lastStaffResponse = "Автоответ: [message_key]"
 	resolveTicket(N)
 	log_game("[C] ипользовал автоответ в ментор-тикете [ticket_owner]: [response_phrases[message_key]]")

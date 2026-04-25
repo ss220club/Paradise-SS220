@@ -35,15 +35,15 @@
 	if(action == "move")
 		if(world.time < next_request)
 			var/wait_time = round((next_request - world.time) / 10, 1)
-			to_chat(user, span_warning("Подождите ещё [wait_time] [wait_time == 1 ? "секунду" : "секунд"] перед использованием!"))
+			to_chat(user, SPAN_WARNING("Подождите ещё [wait_time] [wait_time == 1 ? "секунду" : "секунд"] перед использованием!"))
 			return
 		// 20 seconds cooldown before use
 		next_request = world.time + 20 SECONDS
 		if(z != level_name_to_num(CENTCOMM))
-			to_chat(user, span_warning("Дроп Под может лететь только в одну сторону!"))
+			to_chat(user, SPAN_WARNING("Дроп Под может лететь только в одну сторону!"))
 			return FALSE
 		if(!allow_force_sent && SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_EPSILON)
-			to_chat(user, span_warning("Дроп Под доступен при коде не ниже «Epsilon»!"))
+			to_chat(user, SPAN_WARNING("Дроп Под доступен при коде не ниже «Epsilon»!"))
 			return FALSE
 	return ..()
 

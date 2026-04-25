@@ -478,13 +478,13 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			break
 	var/obj/machinery/computer/rnd_network_controller/RNC = locateUID(network_manager_uid)
 	if(!RNC) // Could not find the RND server. It probably blew up.
-		to_chat(src, "<span class='warning'>No research server found!</span>")
+		to_chat(src, SPAN_WARNING("No research server found!"))
 		return
 
 	var/upgraded = FALSE
 	var/datum/research/files = RNC.research_files
 	if(!files)
-		to_chat(src, "<span class='warning'>No research server found!</span>")
+		to_chat(src, SPAN_WARNING("No research server found!"))
 		return
 	var/list/possible_tech = list()
 	for(var/datum/tech/T in files.possible_tech)
@@ -493,7 +493,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		var/datum/tech/tech_to_upgrade = pick_n_take(possible_tech)
 		// If there are no possible techs to upgrade, stop the program
 		if(!tech_to_upgrade)
-			to_chat(src, "<span class='notice'>Current research cannot be discovered any further.</span>")
+			to_chat(src, SPAN_NOTICE("Current research cannot be discovered any further."))
 			research_subsystem = FALSE
 			return
 		// No illegals until level 10
@@ -703,7 +703,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 
 	if(world.time < next_text_announcement)
-		to_chat(src, "<span class='warning'>Please allow one minute to pass between announcements.</span>")
+		to_chat(src, SPAN_WARNING("Please allow one minute to pass between announcements."))
 		return
 
 	var/input = tgui_input_text(usr, "Напишите сообщение для экипажа.", "Оповещение ИИ", multiline = TRUE, encode = FALSE)
@@ -757,7 +757,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	set name = "Переключить прикручивание к полу"
 
 	if(stat == DEAD)
-		to_chat(src, "<span class='warning'>You are dead!</span>")
+		to_chat(src, SPAN_WARNING("You are dead!"))
 		return
 
 	if(!isturf(loc)) // if their location isn't a turf
@@ -843,7 +843,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			if(H)
 				H.attack_ai(src) //may as well recycle
 			else
-				to_chat(src, "<span class='notice'>Невозможно обнаружить голопад.</span>")
+				to_chat(src, SPAN_NOTICE("Невозможно обнаружить голопад."))
 
 	if(href_list["say_word"])
 		play_vox_word(href_list["say_word"], null, src)
@@ -854,7 +854,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		if(istype(target) && target.can_track())
 			ai_actual_track(target)
 		else
-			to_chat(src, "<span class='warning'>Цель находится вне зоны камер.</span>")
+			to_chat(src, SPAN_WARNING("Цель находится вне зоны камер."))
 		return
 
 	if(href_list["trackbot"])
@@ -862,7 +862,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		if(istype(target))
 			ai_actual_track(target)
 		else
-			to_chat(src, "<span class='warning'>Цель находится вне зоны камер.</span>")
+			to_chat(src, SPAN_WARNING("Цель находится вне зоны камер."))
 		return
 
 	if(href_list["ai_take_control"]) //Mech domination
@@ -882,19 +882,19 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			return
 
 		if(controlled_mech)
-			to_chat(src, "<span class='warning'>Вы уже загружены в портативный компьютер!</span>")
+			to_chat(src, SPAN_WARNING("Вы уже загружены в портативный компьютер!"))
 			return
 		if(!GLOB.cameranet.check_camera_vis(M))
-			to_chat(src, "<span class='warning'>Экзокостюм больше не в зоне камер.</span>")
+			to_chat(src, SPAN_WARNING("Экзокостюм больше не в зоне камер."))
 			return
 		if(lacks_power())
-			to_chat(src, "<span class='warning'>Вы разряжены!</span>")
+			to_chat(src, SPAN_WARNING("Вы разряжены!"))
 			return
 		if(!isturf(loc))
-			to_chat(src, "<span class='warning'>Вы не в ядре!</span>")
+			to_chat(src, SPAN_WARNING("Вы не в ядре!"))
 			return
 		if(M.occupant && !can_dominate_mechs)
-			to_chat(src, "<span class='warning'>This exosuit has a pilot and cannot be controlled.</span>")
+			to_chat(src, SPAN_WARNING("This exosuit has a pilot and cannot be controlled."))
 			return
 		if(M)
 			M.transfer_ai(AI_MECH_HACK, src, usr) //Called om the mech itself.
@@ -926,7 +926,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	set name = "Управление роботами"
 	set desc = "Удалённый контроль роботов."
 	if(stat == DEAD)
-		to_chat(src, "<span class='danger'>Критическая ошибка. Система не работает.</span>")
+		to_chat(src, SPAN_DANGER("Критическая ошибка. Система не работает."))
 		return
 
 	if(check_unable(AI_CHECK_WIRELESS | AI_CHECK_RADIO))
@@ -944,7 +944,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	else if(GLOB.cameranet && GLOB.cameranet.check_turf_vis(turf_check))
 		call_bot(turf_check)
 	else
-		to_chat(src, "<span class='danger'>Выбранное место нельзя увидеть.</span>")
+		to_chat(src, SPAN_DANGER("Выбранное место нельзя увидеть."))
 
 /mob/living/silicon/ai/proc/call_bot(turf/waypoint)
 
@@ -952,7 +952,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 
 	if(Bot.calling_ai && Bot.calling_ai != src) //Prevents an override if another AI is controlling this bot.
-		to_chat(src, "<span class='danger'>Ошибка интерфейса. Бот уже используется.</span>")
+		to_chat(src, SPAN_DANGER("Ошибка интерфейса. Бот уже используется."))
 		return
 
 	Bot.call_bot(src, waypoint)
@@ -1056,7 +1056,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			if(network in C.network)
 				U.eyeobj.set_loc(get_turf(C))
 				break
-	to_chat(src, "<span class='notice'>Переключились на сеть камер [network].</span>")
+	to_chat(src, SPAN_NOTICE("Переключились на сеть камер [network]."))
 //End of code by Mord_Sith
 
 /mob/living/silicon/ai/proc/ai_statuschange()
@@ -1395,18 +1395,18 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 /mob/living/silicon/ai/wrench_act(mob/living/user, obj/item/I)
 	. = TRUE
 	if(anchored)
-		user.visible_message("<span class='notice'>[user] начинает откручивать [src] от пола...</span>")
+		user.visible_message(SPAN_NOTICE("[user] начинает откручивать [src] от пола..."))
 		if(!I.use_tool(src, user, 4 SECONDS, 0, 50))
-			user.visible_message("<span class='notice'>[user] решает не откручивать [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] решает не откручивать [src]."))
 			return
-		user.visible_message("<span class='notice'>[user] закончил открутку [src]!</span>")
+		user.visible_message(SPAN_NOTICE("[user] закончил открутку [src]!"))
 		anchored = FALSE
 		return
-	user.visible_message("<span class='notice'>[user] начинает прикручивать [src] к полу...</span>")
+	user.visible_message(SPAN_NOTICE("[user] начинает прикручивать [src] к полу..."))
 	if(!I.use_tool(src, user, 4 SECONDS, 0, 50))
-		user.visible_message("<span class='notice'>[user] решает не закручивать [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] решает не закручивать [src]."))
 		return FALSE
-	user.visible_message("<span class='notice'>[user] закончил закручивать [src]!</span>")
+	user.visible_message(SPAN_NOTICE("[user] закончил закручивать [src]!"))
 	anchored = TRUE
 
 /mob/living/silicon/ai/welder_act()
@@ -1427,18 +1427,18 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 /mob/living/silicon/ai/proc/check_unable(flags = 0)
 	if(stat == DEAD)
-		to_chat(src, "<span class='warning'>Вы мертвы!</span>")
+		to_chat(src, SPAN_WARNING("Вы мертвы!"))
 		return TRUE
 
 	if(lacks_power())
-		to_chat(src, "<span class='warning'>Отказ систем питания!</span>")
+		to_chat(src, SPAN_WARNING("Отказ систем питания!"))
 		return TRUE
 
 	if((flags & AI_CHECK_WIRELESS) && control_disabled)
-		to_chat(src, "<span class='warning'>Удалённое управление отключено!</span>")
+		to_chat(src, SPAN_WARNING("Удалённое управление отключено!"))
 		return TRUE
 	if((flags & AI_CHECK_RADIO) && aiRadio.disabledAi)
-		to_chat(src, "<span class='warning'>Системная ошибка: Передатчик отключён!</span>")
+		to_chat(src, SPAN_WARNING("Системная ошибка: Передатчик отключён!"))
 		return TRUE
 	return FALSE
 
@@ -1450,14 +1450,14 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 	if(interaction == AI_TRANS_TO_CARD)//The only possible interaction. Upload AI mob to a card.
 		if(!mind)
-			to_chat(user, "<span class='warning'>Искусственный интеллект не обнаружен.</span>")//No more magical carding of empty cores, AI RETURN TO BODY!!!11
+			to_chat(user, SPAN_WARNING("Искусственный интеллект не обнаружен."))//No more magical carding of empty cores, AI RETURN TO BODY!!!11
 			return
 
 		if(stat != DEAD)
-			to_chat(user, "<span class='notice'>Начинается загрузка активного разума: пожалуйста, ожидайте.</span>")
+			to_chat(user, SPAN_NOTICE("Начинается загрузка активного разума: пожалуйста, ожидайте."))
 
 			if(!do_after_once(user, 5 SECONDS, target = src) || !Adjacent(user))
-				to_chat(user, "<span class='warning'>Перенос сознания отменён.</span>")
+				to_chat(user, SPAN_WARNING("Перенос сознания отменён."))
 				return
 
 		new /obj/structure/ai_core/deactivated(loc)//Spawns a deactivated terminal at AI location.
@@ -1470,7 +1470,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			program_picker.reset_programs()
 		forceMove(card) //Throw AI into the card.
 		to_chat(src, "Вас загрузили на портативное устройство. Удалённое соединение с устройствами разорвано.")
-		to_chat(user, "<span class='boldnotice'>Загрузка успешна</span>: [name] ([rand(1000,9999)].exe) удалён из терминала и перенесён в память устройства.")
+		to_chat(user, "[SPAN_BOLDNOTICE("Загрузка успешна")]: [name] ([rand(1000,9999)].exe) удалён из терминала и перенесён в память устройства.")
 
 /mob/living/silicon/ai/can_buckle()
 	return FALSE
@@ -1490,7 +1490,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	var/message = combine_message(message_pieces, verb, M)
 	var/name_used = M.GetVoice()
 	//This communication is imperfect because the holopad "filters" voices and is only designed to connect to the master only.
-	var/rendered = "<i><span class='game say'>Переданная речь: <span class='name'>[name_used]</span> [message]</span></i>"
+	var/rendered = "<i><span class='game say'>Переданная речь: [SPAN_NAME("[name_used]")] [message]</span></i>"
 	if(client?.prefs.toggles2 & PREFTOGGLE_2_RUNECHAT)
 		var/message_clean = combine_message(message_pieces, null, M)
 		create_chat_message(locateUID(M.runechat_msg_location), message_clean)
@@ -1500,7 +1500,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(!program_picker)
 		return
 	program_picker.reset_programs()
-	to_chat(src, "<span class='notice'>Your programs have been reset to factory settings!</span>")
+	to_chat(src, SPAN_NOTICE("Your programs have been reset to factory settings!"))
 	src.throw_alert("programsreset", /atom/movable/screen/alert/programs_reset)
 
 /mob/living/silicon/ai/proc/add_program_picker()
@@ -1515,10 +1515,10 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	clear_alert("hackingapc")
 
 	if(!istype(apc) || QDELETED(apc) || apc.stat & BROKEN)
-		to_chat(src, "<span class='danger'>Взлом отменён. Указанный ЛКП больше не отмечен в энергосети станции.</span>")
+		to_chat(src, SPAN_DANGER("Взлом отменён. Указанный ЛКП больше не отмечен в энергосети станции."))
 		SEND_SOUND(src, sound('sound/machines/buzz-two.ogg'))
 	else if(apc.aidisabled)
-		to_chat(src, "<span class='danger'>Взлом отменён. [apc] больше не отвечает нашим системам.</span>")
+		to_chat(src, SPAN_DANGER("Взлом отменён. [apc] больше не отвечает нашим системам."))
 		SEND_SOUND(src, sound('sound/machines/buzz-sigh.ogg'))
 	else
 		malf_picker.processing_time += 15
@@ -1578,16 +1578,16 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			switch(tgui_alert(src, "Вы хотите открыть \ [A] для [target]?", "Doorknob_v2a.exe", list("Да", "Нет")))
 				if("Да")
 					if(!A.density)
-						to_chat(src, "<span class='notice'>Шлюз в [A] уже был открыт .</span>")
+						to_chat(src, SPAN_NOTICE("Шлюз в [A] уже был открыт ."))
 					else if(A.open_close(src))
-						to_chat(src, "<span class='notice'>Вы открываете \ [A] для [target].</span>")
+						to_chat(src, SPAN_NOTICE("Вы открываете \ [A] для [target]."))
 				else
-					to_chat(src, "<span class='warning'>вы отклоняете запрос</span>")
+					to_chat(src, SPAN_WARNING("вы отклоняете запрос"))
 		else
-			to_chat(src, "<span class='warning'>Невозможно найти шлюз рядом [target].</span>")
+			to_chat(src, SPAN_WARNING("Невозможно найти шлюз рядом [target]."))
 
 	else
-		to_chat(src, "<span class='warning'>Target is not on or near any active cameras on the station.</span>")
+		to_chat(src, SPAN_WARNING("Target is not on or near any active cameras on the station."))
 
 // Return to the Core.
 /mob/living/silicon/ai/proc/core()
@@ -1682,16 +1682,16 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	var/datum/component/ducttape/ducttapecomponent = card.GetComponent(/datum/component/ducttape)
 	if(!ducttapecomponent)
 		return
-	to_chat(src, "<span class='notice'>The tiny fan that could begins to work against the tape to remove it.</span>") //Пока требуется пояснение, чё это такое. Карта с ИИ?
+	to_chat(src, SPAN_NOTICE("The tiny fan that could begins to work against the tape to remove it.")) //Пока требуется пояснение, чё это такое. Карта с ИИ?
 	if(!do_after(src, 2 MINUTES, target = card))
 		return
-	to_chat(src, "<span class='notice'>The tiny in built fan finally removes the tape!</span>") //
+	to_chat(src, SPAN_NOTICE("The tiny in built fan finally removes the tape!")) //
 	ducttapecomponent.remove_tape(card, src)
 
 //Stores the location of the AI to the value of stored_locations associated with location_number.
 /mob/living/silicon/ai/proc/store_location(location_number)
 	if(!isturf(eyeobj.loc)) //i.e., inside a mech or other shenanigans
-		to_chat(src, "<span class='warning'>Вы не можете сохранить тут камеру!</span>")
+		to_chat(src, SPAN_WARNING("Вы не можете сохранить тут камеру!"))
 		return FALSE
 
 	stored_locations[location_number] = eyeobj.loc

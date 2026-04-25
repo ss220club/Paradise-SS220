@@ -68,10 +68,10 @@
 /datum/spell/ai_spell/proc/adjust_uses(amt, mob/living/silicon/ai/owner, silent)
 	uses += amt
 	if(!silent && uses)
-		to_chat(owner, "<span class='notice'>У [name] теперь осталось <b>[uses]</b> использовани[uses > 1 ? "я" : "е"].</span>")
+		to_chat(owner, SPAN_NOTICE("У [name] теперь осталось <b>[uses]</b> использовани[uses > 1 ? "я" : "е"]."))
 	if(!uses)
 		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
-			to_chat(owner, "<span class='warning'>У [name] закончились использования!</span>")
+			to_chat(owner, SPAN_WARNING("У [name] закончились использования!"))
 		owner.RemoveSpell(src)
 	if(QDELETED(src) || uses) //Not sure if not having src here would cause a runtime, so it's here to be safe
 		return
@@ -82,7 +82,7 @@
 	var/turf/target_turf = get_turf(target)
 	var/datum/camerachunk/C = GLOB.cameranet.get_camera_chunk(target_turf.x, target_turf.y, target_turf.z)
 	if(!C.visible_turfs[target_turf])
-		to_chat(user, "<span class='warning'>You don't have camera vision of this location!</span>")
+		to_chat(user, SPAN_WARNING("You don't have camera vision of this location!"))
 		return FALSE
 	return TRUE
 
@@ -90,16 +90,16 @@
 /datum/spell/ai_spell/ranged
 	name = "Ranged AI Action"
 	auto_use_uses = FALSE //This is so we can do the thing and disable/enable freely without having to constantly add uses
-	selection_activated_message		= "<span class='notice'>Hello World!</span>"
-	selection_deactivated_message	= "<span class='danger'>Goodbye Cruel World!</span>"
+	selection_activated_message		= SPAN_NOTICE("Hello World!")
+	selection_deactivated_message	= SPAN_DANGER("Goodbye Cruel World!")
 
 /datum/spell/ai_spell/ranged/adjust_uses(amt, mob/living/silicon/ai/owner, silent)
 	uses += amt
 	if(!silent && uses)
-		to_chat(owner, "<span class='notice'>У [name] теперь <b>[uses]</b> осталось использован[uses > 1 ? "ий" : "ия"].</span>")
+		to_chat(owner, SPAN_NOTICE("У [name] теперь <b>[uses]</b> осталось использован[uses > 1 ? "ий" : "ия"]."))
 	if(!uses)
 		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
-			to_chat(owner, "<span class='warning'>У [name] закончились использования!</span>")
+			to_chat(owner, SPAN_WARNING("У [name] закончились использования!"))
 		owner.mob_spell_list -= src
 		QDEL_IN(src, 10 SECONDS) //let any active timers on us finish up
 
@@ -130,7 +130,7 @@
 	. = ..()
 	var/obj/machinery/power/apc/apc = user.loc
 	if(!istype(apc)) // Этого не должно происходить. Чисто для подстраховки
-		to_chat(user, "<span class='notice'>Вы уже в Главном Ядре.</span>")
+		to_chat(user, SPAN_NOTICE("Вы уже в Главном Ядре."))
 		return
 	apc.malfvacate()
 	qdel(src)
@@ -172,7 +172,7 @@
 	var/mob/living/silicon/ai/A = usr
 
 	if(A.stat == DEAD)
-		to_chat(A, "<span class='warning'>Вы уже умерли!</span>")
+		to_chat(A, SPAN_WARNING("Вы уже умерли!"))
 		return
 
 	for(var/datum/ai_module/AM in possible_modules)
@@ -225,7 +225,7 @@
 	var/one_purchase = FALSE //If this module can only be purchased once. This always applies to upgrades, even if the variable is set to false.
 	var/power_type = /datum/spell/ai_spell //If the module gives an active ability, use this. Mutually exclusive with upgrade.
 	var/upgrade //If the module gives a passive upgrade, use this. Mutually exclusive with power_type.
-	var/unlock_text = "<span class='notice'>Hello World!</span>" //Text shown when an ability is unlocked
+	var/unlock_text = SPAN_NOTICE("Hello World!") //Text shown when an ability is unlocked
 	var/unlock_sound //Sound played when an ability is unlocked
 	var/uses = 0
 
@@ -240,7 +240,7 @@
 	cost = 130
 	one_purchase = TRUE
 	power_type = /datum/spell/ai_spell/nuke_station
-	unlock_text = "<span class='notice'>Вы медленно и аккуратно подключаетесь к системе самоуничтожения станции. Вы можете активировать её в любое время.</span>"
+	unlock_text = SPAN_NOTICE("Вы медленно и аккуратно подключаетесь к системе самоуничтожения станции. Вы можете активировать её в любое время.")
 	unlock_sound = 'sound/items/timer.ogg'
 
 /datum/spell/ai_spell/nuke_station
@@ -253,7 +253,7 @@
 /datum/spell/ai_spell/nuke_station/cast(list/targets, mob/living/silicon/ai/user)
 	var/turf/T = get_turf(user)
 	if(!istype(T) || !is_station_level(T.z))
-		to_chat(user, "<span class='warning'>Вы не можете активировать УСД пока находитесь вне станции!</span>")
+		to_chat(user, SPAN_WARNING("Вы не можете активировать УСД пока находитесь вне станции!"))
 		return
 	if(tgui_alert(user, "Отправить сигнал на взведение? (true = взвести, false = отмена)", "purge_all_life()", list("confirm = TRUE;", "confirm = FALSE;")) != "confirm = TRUE;")
 		return
@@ -265,7 +265,7 @@
 	set_us_up_the_bomb(user)
 
 /datum/spell/ai_spell/nuke_station/proc/set_us_up_the_bomb(mob/living/silicon/ai/user)
-	to_chat(user, "<span class='notice'>Ядерное оружие взведено.</span>")
+	to_chat(user, SPAN_NOTICE("Ядерное оружие взведено."))
 	GLOB.major_announcement.Announce("Во всех системах станций обнаружены вредоносные процессы. Пожалуйста, уничтожьте свой ИИ, чтобы предотвратить возможный ущерб его моральному ядру.", "ВНИМАНИЕ: Обнаружена аномалия.", 'sound/AI/aimalf.ogg')
 	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 	user.nuking = TRUE
@@ -351,7 +351,7 @@
 	description = "Улучшает силу и здоровье турелей. Этот эффект постоянен."
 	cost = 30
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>Вы перенаправляете часть энергии на турели, усиливая их живучесть и урон.</span>"
+	unlock_text = SPAN_NOTICE("Вы перенаправляете часть энергии на турели, усиливая их живучесть и урон.")
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/ai_module/upgrade_turrets/upgrade(mob/living/silicon/ai/AI)
@@ -372,7 +372,7 @@
 	cost = 30
 	one_purchase = TRUE
 	power_type = /datum/spell/ai_spell/lockdown
-	unlock_text = "<span class='notice'>Вы загружаете спящий троян в систему управления шлюзами. \ Вы можете отправить сигнал на его активацию в любое время.</span>"
+	unlock_text = SPAN_NOTICE("Вы загружаете спящий троян в систему управления шлюзами. \ Вы можете отправить сигнал на его активацию в любое время.")
 
 /datum/spell/ai_spell/lockdown
 	name = "Локдаун"
@@ -381,7 +381,7 @@
 	uses = 1
 
 /datum/spell/ai_spell/lockdown/cast(list/targets, mob/user)
-	to_chat(user, "<span class='warning'>Активирован локдаун. Перезапуск сети через 90 секунд.</span>")
+	to_chat(user, SPAN_WARNING("Активирован локдаун. Перезапуск сети через 90 секунд."))
 	new /datum/event/door_runtime()
 
 //Destroy RCDs: Detonates all non-cyborg RCDs on the station.
@@ -392,7 +392,7 @@
 	cost = 25
 	one_purchase = TRUE
 	power_type = /datum/spell/ai_spell/destroy_rcds
-	unlock_text = "<span class='notice'>После некоторой импровизации, Вы можете отправить импульс на уничтожение RCD через гарнитуру.</span>"
+	unlock_text = SPAN_NOTICE("После некоторой импровизации, Вы можете отправить импульс на уничтожение RCD через гарнитуру.")
 
 /datum/spell/ai_spell/destroy_rcds
 	name = "Уничтожение RCD"
@@ -409,7 +409,7 @@
 		if(is_level_reachable(RCD_turf.z))
 			RCD.detonate_pulse()
 
-	to_chat(user, "<span class='danger'>Импульс взрыва RCD запущен.</span>")
+	to_chat(user, SPAN_DANGER("Импульс взрыва RCD запущен."))
 	user.playsound_local(user, 'sound/machines/twobeep.ogg', 50, FALSE, use_reverb = FALSE)
 
 //Unlock Mech Domination: Unlocks the ability to dominate mechs. Big shocker, right?
@@ -420,7 +420,7 @@
 	Не позволяйте меху покинуть станцию или быть уничтоженным"
 	cost = 30
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>Вирусный пакет скомпилирован. Вы в любой момент можете выбрать цель. <b>Вы должны оставаться на станции в любой момент времени. Потеря сигнала приведёт к полной блокировке системы.</b></span>"
+	unlock_text = SPAN_NOTICE("Вирусный пакет скомпилирован. Вы в любой момент можете выбрать цель. <b>Вы должны оставаться на станции в любой момент времени. Потеря сигнала приведёт к полной блокировке системы.</b>")
 	unlock_sound = 'sound/mecha/nominal.ogg'
 
 /datum/ai_module/mecha_domination/upgrade(mob/living/silicon/ai/AI)
@@ -435,7 +435,7 @@
 	one_purchase = TRUE
 	cost = 25
 	power_type = /datum/spell/ai_spell/break_fire_alarms
-	unlock_text = "<span class='notice'>Вы заменяете термальную чувствительность сенсоров с помощью ручной перезаписи, позволяя вам активировать её в любой момент.</span>"
+	unlock_text = SPAN_NOTICE("Вы заменяете термальную чувствительность сенсоров с помощью ручной перезаписи, позволяя вам активировать её в любой момент.")
 
 /datum/spell/ai_spell/break_fire_alarms
 	name = "Перегрузка датчиков температуры"
@@ -448,7 +448,7 @@
 		if(!is_station_level(F.z))
 			continue
 		F.emagged = TRUE
-	to_chat(user, "<span class='notice'>Все термальные сенсоры на станции были отключены. Теперь пожарные тревоги нельзя определить.</span>")
+	to_chat(user, SPAN_NOTICE("Все термальные сенсоры на станции были отключены. Теперь пожарные тревоги нельзя определить."))
 	user.playsound_local(user, 'sound/machines/terminal_off.ogg', 50, FALSE, use_reverb = FALSE)
 
 //Air Alarm Safety Override: Unlocks the ability to enable flooding on all air alarms.
@@ -460,7 +460,7 @@
 	one_purchase = TRUE
 	cost = 50
 	power_type = /datum/spell/ai_spell/break_air_alarms
-	unlock_text = "<span class='notice'>Вы убираете предохранители с атмосферных датчиков, но оставляете окно подтверждения открытым. Вы можете нажать 'Да' в любой момент... ублюдок.</span>"
+	unlock_text = SPAN_NOTICE("Вы убираете предохранители с атмосферных датчиков, но оставляете окно подтверждения открытым. Вы можете нажать 'Да' в любой момент... ублюдок.")
 
 /datum/spell/ai_spell/break_air_alarms
 	name = "Перезагрузка атмосферных датчиков"
@@ -483,7 +483,7 @@
 	description = "Перегревает машину, вызывая небольшой взрыв и уничтожая её. Два использования за покупку."
 	cost = 20
 	power_type = /datum/spell/ai_spell/ranged/overload_machine
-	unlock_text = "<span class='notice'>Вы получаете способность направлять энергию из APC напрямую в машинерию.</span>"
+	unlock_text = SPAN_NOTICE("Вы получаете способность направлять энергию из APC напрямую в машинерию.")
 
 /datum/spell/ai_spell/ranged/overload_machine
 	name = "Перезагрузка машины"
@@ -491,24 +491,24 @@
 	action_icon_state = "overload_machine"
 	uses = 4
 	ranged_mousepointer = 'icons/mouse_icons/cult_target.dmi'
-	selection_activated_message = "<span class='notice'>Вы подключаетесь к энергосети. Кликните на машину для её подрыва или используйте способность повторно для отмены.</span>"
-	selection_deactivated_message = "<span class='notice'>Вы отключаетесь от энергосети.</span>"
+	selection_activated_message = SPAN_NOTICE("Вы подключаетесь к энергосети. Кликните на машину для её подрыва или используйте способность повторно для отмены.")
+	selection_deactivated_message = SPAN_NOTICE("Вы отключаетесь от энергосети.")
 
 /datum/spell/ai_spell/ranged/overload_machine/cast(list/targets, mob/user)
 	var/obj/machinery/target = targets[1]
 	if(!istype(target))
-		to_chat(user, "<span class='warning'>Вы можете перегружать только машины!</span>")
+		to_chat(user, SPAN_WARNING("Вы можете перегружать только машины!"))
 		return
 	if(target.flags_2 & NO_MALF_EFFECT_2)
-		to_chat(user, "<span class='warning'>Эта машина не может быть перегружена!</span>")
+		to_chat(user, SPAN_WARNING("Эта машина не может быть перегружена!"))
 		return
 
 	user.playsound_local(user, "sparks", 50, FALSE, use_reverb = FALSE)
 	adjust_uses(-1, user)
-	target.audible_message("<span class='danger'>Вы слышите громкое электрическое жужжание из [target]!</span>")
+	target.audible_message(SPAN_DANGER("Вы слышите громкое электрическое жужжание из [target]!"))
 	playsound(target, 'sound/goonstation/misc/fuse.ogg', 50, FALSE, use_reverb = FALSE)
 	addtimer(CALLBACK(src, PROC_REF(detonate_machine), target), 5 SECONDS) //kaboom!
-	to_chat(user, "<span class='warning'>Перегружаем платы машины...</span>")
+	to_chat(user, SPAN_WARNING("Перегружаем платы машины..."))
 	return TRUE
 
 /datum/spell/ai_spell/ranged/overload_machine/proc/detonate_machine(obj/machinery/M)
@@ -524,7 +524,7 @@
 	description = "Перезаписывает программу машины, заставляя её восстать и атаковать всех кроме других машин, Четыре использования."
 	cost = 30
 	power_type = /datum/spell/ai_spell/ranged/override_machine
-	unlock_text = "<span class='notice'>Вы находите вирус с Space Dark Web и распространяете его по всей станции.</span>"
+	unlock_text = SPAN_NOTICE("Вы находите вирус с Space Dark Web и распространяете его по всей станции.")
 
 /datum/spell/ai_spell/ranged/override_machine
 	name = "Перезапись машины"
@@ -532,23 +532,23 @@
 	action_icon_state = "override_machine"
 	uses = 4
 	ranged_mousepointer = 'icons/mouse_icons/override_machine_target.dmi'
-	selection_activated_message = "<span class='notice'>Вы подключаетесь к энергосети. Кликните на машину для оживления или используйте способность повторно для отмены.</span>"
-	selection_deactivated_message = "<span class='notice'>Вы отключаетесь от энергосети.</span>"
+	selection_activated_message = SPAN_NOTICE("Вы подключаетесь к энергосети. Кликните на машину для оживления или используйте способность повторно для отмены.")
+	selection_deactivated_message = SPAN_NOTICE("Вы отключаетесь от энергосети.")
 
 /datum/spell/ai_spell/ranged/override_machine/cast(list/targets, mob/user)
 	var/obj/machinery/target = targets[1]
 	if(!istype(target))
-		to_chat(user, "<span class='warning'>Вы можете оживлять только машины!</span>")
+		to_chat(user, SPAN_WARNING("Вы можете оживлять только машины!"))
 		return
 	if(target.flags_2 & NO_MALF_EFFECT_2)
-		to_chat(user, "<span class='warning'>Эта машина не может быть оживлена!</span>")
+		to_chat(user, SPAN_WARNING("Эта машина не может быть оживлена!"))
 		return
 
 	user.playsound_local(user, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)
 	adjust_uses(-1, user)
-	target.audible_message("<span class='userdanger'>Вы слышите громкое электрическое жужжание из [target]!</span>")
+	target.audible_message(SPAN_USERDANGER("Вы слышите громкое электрическое жужжание из [target]!"))
 	addtimer(CALLBACK(src, PROC_REF(animate_machine), target, user), 5 SECONDS) //kabeep!
-	to_chat(user, "<span class='danger'>Посылаем сигнал перезаписи...</span>")
+	to_chat(user, SPAN_DANGER("Посылаем сигнал перезаписи..."))
 	return TRUE
 
 /datum/spell/ai_spell/ranged/override_machine/proc/animate_machine(obj/machinery/M, mob/user)
@@ -563,7 +563,7 @@
 	cost = 100
 	one_purchase = TRUE
 	power_type = /datum/spell/ai_spell/place_transformer
-	unlock_text = "<span class='notice'>Вы подготавливаете фабрику к установке.</span>"
+	unlock_text = SPAN_NOTICE("Вы подготавливаете фабрику к установке.")
 	unlock_sound = 'sound/machines/ping.ogg'
 
 /datum/spell/ai_spell/place_transformer
@@ -595,7 +595,7 @@
 	new /obj/machinery/transformer(T, user)
 	playsound(T, 'sound/effects/phasein.ogg', 100, 1)
 	user.can_shunt = FALSE
-	to_chat(user, "<span class='warning'>Вы больше не можете запихнуть свои процессы в ЛКП.</span>")
+	to_chat(user, SPAN_WARNING("Вы больше не можете запихнуть свои процессы в ЛКП."))
 	adjust_uses(-1, user)
 
 /mob/living/silicon/ai/proc/remove_transformer_image(client/C, image/I, turf/T)
@@ -627,7 +627,7 @@
 		I.icon_state = "[success ? "green" : "red"]Overlay" //greenOverlay and redOverlay for success and failure respectively
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, T), 30)
 	if(!success)
-		to_chat(src, "<span class='warning'>[alert_msg]</span>")
+		to_chat(src, SPAN_WARNING("[alert_msg]"))
 	return success
 
 //Turret Assembly: Assemble an AI turret at the chosen location. One use per purchase
@@ -637,7 +637,7 @@
 	description = "Развертывает турель в любом месте, которая летально нейтрализует органиков."
 	cost = 30
 	power_type = /datum/spell/ai_spell/place_turret
-	unlock_text = "<span class='notice'>Вы готовите энергетическую турель к развертыванию.</span>"
+	unlock_text = SPAN_NOTICE("Вы готовите энергетическую турель к развертыванию.")
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/spell/ai_spell/place_turret
@@ -655,7 +655,7 @@
 
 /datum/spell/ai_spell/place_turret/cast(list/targets, mob/living/silicon/ai/user)
 	if(in_use)
-		to_chat(user, "<span class='notice'>Вы можете ставить только одну турель за раз.</span>")
+		to_chat(user, SPAN_NOTICE("Вы можете ставить только одну турель за раз."))
 		return
 	if(!user.can_place_turret(src))
 		return
@@ -675,7 +675,7 @@
 	//Handles the turret construction and configuration
 	playsound(T, 'sound/items/rped.ogg', 100, TRUE) //Plays a sound both at the location of the construction to alert players and to the user as feedback
 	user.playsound_local(user, 'sound/items/rped.ogg', 50, FALSE, use_reverb = FALSE)
-	to_chat(user, "<span class='notice'>Вы приказываете электронике поставить турель. Это займёт некоторое время.</span>")
+	to_chat(user, SPAN_NOTICE("Вы приказываете электронике поставить турель. Это займёт некоторое время."))
 	var/obj/effect/temp_visual/rcd_effect/spawning_effect = new(T)
 	QDEL_IN(spawning_effect, 5 SECONDS)
 
@@ -700,7 +700,7 @@
 		turret.disabled = initial(turret.disabled)
 		new /obj/effect/temp_visual/rcd_effect/end(T)
 		playsound(T, 'sound/items/deconstruct.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Turret deployed.</span>")
+		to_chat(user, SPAN_NOTICE("Turret deployed."))
 		adjust_uses(-1, user)
 
 /mob/living/silicon/ai/proc/can_place_turret(datum/spell/ai_spell/place_turret/action)
@@ -716,14 +716,14 @@
 	var/datum/camerachunk/C = GLOB.cameranet.get_camera_chunk(deploylocation.x, deploylocation.y, deploylocation.z)
 
 	if(!istype(deploylocation))
-		to_chat(src, "<span class='warning'>Недостаточно места! Убедитесь, что вы ставите турель на свободном тайле пола.</span>")
+		to_chat(src, SPAN_WARNING("Недостаточно места! Убедитесь, что вы ставите турель на свободном тайле пола."))
 		return FALSE
 	if(!C.visible_turfs[deploylocation])
-		to_chat(src, "<span class='warning'>У вас нет видимости там!</span>")
+		to_chat(src, SPAN_WARNING("У вас нет видимости там!"))
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, deploylocation), 3 SECONDS)
 		return FALSE
 	if(deploylocation.is_blocked_turf())
-		to_chat(src, "<span class='warning'>Эта зона должна быть очищена от объектов!</span>")
+		to_chat(src, SPAN_WARNING("Эта зона должна быть очищена от объектов!"))
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, deploylocation), 3 SECONDS)
 		return FALSE
 
@@ -738,7 +738,7 @@
 	description = "Попытка перегрузить световые схемы станции, выводя из строя некоторые лампы. Три использования."
 	cost = 15
 	power_type = /datum/spell/ai_spell/blackout
-	unlock_text = "<span class='notice'>Вы подключаетесь к энергосети станции и направляете избыток энергии на освещение.</span>"
+	unlock_text = SPAN_NOTICE("Вы подключаетесь к энергосети станции и направляете избыток энергии на освещение.")
 
 /datum/spell/ai_spell/blackout
 	name = "Блэкаут"
@@ -754,7 +754,7 @@
 			INVOKE_ASYNC(apc, TYPE_PROC_REF(/obj/machinery/power/apc, overload_lighting))
 		else
 			apc.overload++
-	to_chat(user, "<span class='notice'>К энергосети принято перенапряжение.</span>")
+	to_chat(user, SPAN_NOTICE("К энергосети принято перенапряжение."))
 	user.playsound_local(user, "sparks", 50, FALSE, use_reverb = FALSE)
 	adjust_uses(-1, user)
 
@@ -765,7 +765,7 @@
 	description = "Запускает диагностику камер в сети. Сбрасывает фокус и перенаправляет энергию на сломанные камеры. Может быть использована для починки до 30 камер."
 	cost = 10
 	power_type = /datum/spell/ai_spell/reactivate_cameras
-	unlock_text = "<span class='notice'>Вы вводите наномашины в систему камер.</span>"
+	unlock_text = SPAN_NOTICE("Вы вводите наномашины в систему камер.")
 
 /datum/spell/ai_spell/reactivate_cameras
 	name = "Реактивация камер"
@@ -788,7 +788,7 @@
 			camera_to_repair.wires.cut_wires.Cut()
 			repaired_cameras++
 			uses--
-	to_chat(user, "<span class='notice'>Диагностика завершена! Камер реактивировано: <b>[repaired_cameras]</b>. Осталось использований: <b>[uses]</b>.</span>")
+	to_chat(user, SPAN_NOTICE("Диагностика завершена! Камер реактивировано: <b>[repaired_cameras]</b>. Осталось использований: <b>[uses]</b>."))
 	user.playsound_local(user, 'sound/items/wirecutter.ogg', 50, FALSE, use_reverb = FALSE)
 	adjust_uses(0, user, TRUE)
 
@@ -801,7 +801,7 @@
 	one_purchase = TRUE
 	cost = 35 //Decent price for omniscience!
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>: CAMSUPGRADED. Система усиления света активна.</span>"
+	unlock_text = SPAN_NOTICE(": CAMSUPGRADED. Система усиления света активна.")
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/ai_module/upgrade_cameras/upgrade(mob/living/silicon/ai/AI)
@@ -833,7 +833,7 @@
 	cost = 30
 	one_purchase = TRUE
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>Распространение ПО по воздуху завершено! Камеры прокачаны: Система улучшенного наблюдения активна.</span>"
+	unlock_text = SPAN_NOTICE("Распространение ПО по воздуху завершено! Камеры прокачаны: Система улучшенного наблюдения активна.")
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/ai_module/eavesdrop/upgrade(mob/living/silicon/ai/AI)
@@ -847,7 +847,7 @@
 	cost = 10
 	one_purchase = TRUE
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>Чип сети замкнут. Внутренняя камера отключена от сети. Урон другим компонентам минимальный.</span>"
+	unlock_text = SPAN_NOTICE("Чип сети замкнут. Внутренняя камера отключена от сети. Урон другим компонентам минимальный.")
 	unlock_sound = 'sound/items/wirecutter.ogg'
 
 /datum/ai_module/cameracrack/upgrade(mob/living/silicon/ai/AI)
@@ -862,17 +862,17 @@
 	cost = 70 // IDK look into this
 	one_purchase = TRUE
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>ПО загружено. Баги устранены. Эффективность боевых подсистем киборгов - 73%.</span>"
+	unlock_text = SPAN_NOTICE("ПО загружено. Баги устранены. Эффективность боевых подсистем киборгов - 73%.")
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/ai_module/borg_upgrade/upgrade(mob/living/silicon/ai/AI)
 	AI.purchased_modules = list(/obj/item/robot_module/engineering, /obj/item/robot_module/janitor, /obj/item/robot_module/medical, /obj/item/robot_module/miner, /obj/item/robot_module/butler)
 	log_game("[key_name(usr)] purchased combat upgrades for all cyborgs.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] purchased combat upgrades for all cyborgs!</span>")
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] purchased combat upgrades for all cyborgs!"))
 	for(var/mob/living/silicon/robot/R in AI.connected_robots)
 		R.module.malfhacked = TRUE
 		R.module.rebuild_modules()
-		to_chat(R, "<span class='notice'>Новое ПО загружено. Активированы боевые улучшения.</span>")
+		to_chat(R, SPAN_NOTICE("Новое ПО загружено. Активированы боевые улучшения."))
 
 /datum/ai_module/repair_cyborg
 	module_name = "Починка киборгов"
@@ -880,7 +880,7 @@
 	description = "Вызывает электрический всплек в киборге, перезапуская его и чиня большинство его систем. Требуется два использования на киборгах со сломанной бронёй."
 	cost = 20
 	power_type = /datum/spell/ai_spell/ranged/repair_cyborg
-	unlock_text = "<span class='notice'>TLB exception on load: Ошибка в вызове адреса 0000001H, Всё равно продолжит испо- активированы протороколы ВСПЛЕСК, добро пожаловать в открытый ЛКП!</span>"
+	unlock_text = SPAN_NOTICE("TLB exception on load: Ошибка в вызове адреса 0000001H, Всё равно продолжит испо- активированы протороколы ВСПЛЕСК, добро пожаловать в открытый ЛКП!")
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/spell/ai_spell/ranged/repair_cyborg
@@ -889,28 +889,28 @@
 	action_icon_state = "overload_machine"
 	uses = 2
 	ranged_mousepointer = 'icons/mouse_icons/explode_machine_target.dmi'
-	selection_activated_message = "<span class='notice'>Вызов процесса 0FFFFFFF в логике ЛКП, ожидается ответ пользователя.</span>"
-	selection_deactivated_message = "<span class='notice'>Логика ЛКП сбрасывается...</span>"
+	selection_activated_message = SPAN_NOTICE("Вызов процесса 0FFFFFFF в логике ЛКП, ожидается ответ пользователя.")
+	selection_deactivated_message = SPAN_NOTICE("Логика ЛКП сбрасывается...")
 	var/is_active = FALSE
 
 /datum/spell/ai_spell/ranged/repair_cyborg/cast(list/targets, mob/user)
 	var/mob/living/silicon/robot/robot_target = targets[1]
 	if(!istype(robot_target))
-		to_chat(user, "<span class='warning'>Вы можете чинить только киборгов с этой способностью!</span>")
+		to_chat(user, SPAN_WARNING("Вы можете чинить только киборгов с этой способностью!"))
 		return
 	if(is_active)
-		to_chat(user, "<span class='warning'>Вы можете чинить только одного киборга за раз!</span>")
+		to_chat(user, SPAN_WARNING("Вы можете чинить только одного киборга за раз!"))
 		return
 	is_active = TRUE
 	user.playsound_local(user, "sparks", 50, FALSE, use_reverb = FALSE)
 	adjust_uses(-1, user)
-	robot_target.audible_message("<span class='italics'>Вы слышите электрическое жужжание из [robot_target]!</span>")
+	robot_target.audible_message(SPAN_ITALICS("Вы слышите электрическое жужжание из [robot_target]!"))
 	if(!do_mob(user, robot_target, 10 SECONDS, hidden = TRUE))
 		is_active = FALSE
 		return
 	is_active = FALSE
 	fix_borg(robot_target)
-	to_chat(user, "<span class='warning'>Киборг [robot_target] успешно перезапущен.</span>")
+	to_chat(user, SPAN_WARNING("Киборг [robot_target] успешно перезапущен."))
 	return TRUE
 
 /datum/spell/ai_spell/ranged/repair_cyborg/proc/fix_borg(mob/living/silicon/robot/to_repair)
@@ -928,15 +928,15 @@
 	one_purchase = TRUE
 	power_type = /datum/spell/ai_spell/ranged/core_tilt
 	unlock_sound = 'sound/effects/bang.ogg'
-	unlock_text = "<span class='notice'>Вы получаете способность перекатываться, круша всё на своём пути.</span>"
+	unlock_text = SPAN_NOTICE("Вы получаете способность перекатываться, круша всё на своём пути.")
 
 /datum/spell/ai_spell/ranged/core_tilt
 	name = "Перекатиться"
 	action_icon_state = "roll_over"
 	desc = "Позволяет перекатиться в выбранном направлении, круша всё на своём пути."
 	ranged_mousepointer = 'icons/mouse_icons/cult_target.dmi'
-	selection_activated_message = "<span class='notice'>Ваши приводы перемещаются в то время, как вы готовитесь к перекату. Кликните по соседнему тайлу чтобы перекатиться на него!</span>"
-	selection_deactivated_message = "<span class='notice'>Вы отключаете протоколы перкатывания.</span>"
+	selection_activated_message = SPAN_NOTICE("Ваши приводы перемещаются в то время, как вы готовитесь к перекату. Кликните по соседнему тайлу чтобы перекатиться на него!")
+	selection_deactivated_message = SPAN_NOTICE("Вы отключаете протоколы перкатывания.")
 	COOLDOWN_DECLARE(time_til_next_tilt)
 	/// How long does it take us to roll?
 	var/roll_over_time = MALF_AI_ROLL_TIME
@@ -951,7 +951,7 @@
 		user.RemoveSpell(src)
 		return
 	if(!COOLDOWN_FINISHED(src, time_til_next_tilt))
-		to_chat(user, "<span class='warning'>Ваши конденсаторы ещё перезаряжаются!</span>")
+		to_chat(user, SPAN_WARNING("Ваши конденсаторы ещё перезаряжаются!"))
 		return
 
 	var/turf/target = get_turf(target_atom)
@@ -959,7 +959,7 @@
 		return
 
 	if(target == get_turf(user))
-		to_chat(user, "<span class='warning'>Нельзя перекатиться в себя!</span>")
+		to_chat(user, SPAN_WARNING("Нельзя перекатиться в себя!"))
 		return
 
 	var/picked_dir = get_dir(user, target)
@@ -969,10 +969,10 @@
 	var/turf/temp_target = get_step(user, picked_dir)
 
 	new /obj/effect/temp_visual/single_user/ai_telegraph(temp_target, user)
-	user.visible_message("<span class='danger'>[user], кажется, готовится к чему-то!</span>")
+	user.visible_message(SPAN_DANGER("[user], кажется, готовится к чему-то!"))
 	addtimer(CALLBACK(src, PROC_REF(do_roll_over), user, picked_dir), MALF_AI_ROLL_TIME)
 
-	to_chat(user, "<span class='warning'>Перегружаем платы...</span>")
+	to_chat(user, SPAN_WARNING("Перегружаем платы..."))
 
 	COOLDOWN_START(src, time_til_next_tilt, roll_over_cooldown)
 
