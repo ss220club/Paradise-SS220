@@ -36,7 +36,7 @@
 
 	if(!length(sbh.species_bans))
 		if(!from_client_connection)
-			to_chat(src, chat_box_red(span_warning("You have no active species bans!")))
+			to_chat(src, chat_box_red(SPAN_WARNING("You have no active species bans!")))
 		return
 
 	var/list/messages = list()
@@ -48,17 +48,17 @@
 			continue
 		switch(ban.bantype)
 			if("SPECIES_PERMABAN")
-				messages.Add(span_warning("[ban.bantype]: [ban.species] - REASON: [ban.reason], by [ban.a_ckey]; [ban.bantime]"))
+				messages.Add(SPAN_WARNING("[ban.bantype]: [ban.species] - REASON: [ban.reason], by [ban.a_ckey]; [ban.bantime]"))
 			if("SPECIES_TEMPBAN")
-				messages.Add(span_warning("[ban.bantype]: [ban.species] - REASON: [ban.reason], by [ban.a_ckey]; [ban.bantime]; [ban.duration]; expires [ban.expiration_time]"))
+				messages.Add(SPAN_WARNING("[ban.bantype]: [ban.species] - REASON: [ban.reason], by [ban.a_ckey]; [ban.bantime]; [ban.duration]; expires [ban.expiration_time]"))
 
 	if(!length(messages))
 		if(!from_client_connection)
-			to_chat(src, chat_box_red(span_warning("You have no active species bans!")))
+			to_chat(src, chat_box_red(SPAN_WARNING("You have no active species bans!")))
 		return
 
 	if(GLOB.configuration.url.banappeals_url)
-		messages.Add(span_warning("You can appeal the bans at: [GLOB.configuration.url.banappeals_url]"))
+		messages.Add(SPAN_WARNING("You can appeal the bans at: [GLOB.configuration.url.banappeals_url]"))
 
 	to_chat(src, chat_box_red(messages.Join("<br>")))
 

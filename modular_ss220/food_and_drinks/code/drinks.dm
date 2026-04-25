@@ -206,7 +206,7 @@
 	if(iscarbon(M))
 		if(method == REAGENT_TOUCH)
 			M.adjustFireLoss(-volume * 0.7)
-			to_chat(M, span_notice("The diluted silver sulfadiazine soothes your burns."))
+			to_chat(M, SPAN_NOTICE("The diluted silver sulfadiazine soothes your burns."))
 	return STATUS_UPDATE_NONE
 
 /datum/chemical_reaction/alcomender
@@ -387,7 +387,7 @@
 	. = ..()
 	if(volume > 20)
 		if(prob(50)) //no spam here :p
-			M.visible_message(span_warning("Глаза [M] ослепительно вспыхивают!"))
+			M.visible_message(SPAN_WARNING("Глаза [M] ослепительно вспыхивают!"))
 
 /datum/chemical_reaction/vampiro
 	name = "Vampiro"
@@ -560,7 +560,7 @@
 			if(prob(10))
 				M.emote(pick("twitch","giggle"))
 			if(prob(5))
-				to_chat(M, span_notice("Rebooting.."))
+				to_chat(M, SPAN_NOTICE("Rebooting.."))
 		if(14)
 			playsound(get_turf(M),'modular_ss220/food_and_drinks/sound/restart-shutdown.ogg', 200, 1)
 		if(15 to 23)
@@ -662,10 +662,10 @@
 /obj/structure/fermenting_barrel/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(istype(I, /obj/item/food/sliceable/bread))
 		if(!user.drop_item())
-			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
+			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 			return ITEM_INTERACT_COMPLETE
 		I.forceMove(src)
-		to_chat(user, "<span class='notice'>You place [I] into [src] to start the fermentation process.</span>")
+		to_chat(user, SPAN_NOTICE("You place [I] into [src] to start the fermentation process."))
 		addtimer(CALLBACK(src, PROC_REF(make_drink), I, "alco_kvass", 35), rand(80, 120) * speed_multiplier)
 		return ITEM_INTERACT_COMPLETE
 	return ..()

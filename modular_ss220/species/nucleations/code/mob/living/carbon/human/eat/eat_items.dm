@@ -100,10 +100,10 @@
 	if(target != user)
 		if(!forceFed(target, user, FALSE))
 			return FALSE
-		to_chat(target, "<span class='notice'>[chat_message_to_target]</span>")
+		to_chat(target, SPAN_NOTICE("[chat_message_to_target]"))
 		add_attack_logs(user, src, "Force Fed [target], item [src]")
 
-	to_chat(user, "<span class='notice'>[chat_message_to_user]</span>")
+	to_chat(user, SPAN_NOTICE("[chat_message_to_user]"))
 
 	playsound(user.loc, 'sound/items/eatfood.ogg', 50, 0)
 	target.adjust_nutrition(nutritional_value)
@@ -119,12 +119,12 @@
 	colour_change()
 	obj_integrity = max(obj_integrity - integrity_bite, 0)
 	if(current_bites >= bites_limit)
-		to_chat(user, "<span class='notice'>[target == user ? "Вы доели" : "[target] доел"] [src.name].</span>")
+		to_chat(user, SPAN_NOTICE("[target == user ? "Вы доели" : "[target] доел"] [src.name]."))
 		qdel(src)
 
 /obj/item/proc/forceFed(mob/living/carbon/target, mob/user, instant_application = FALSE)
 	if(!instant_application)
-		visible_message("<span class='warning'>[user] пытается накормить [target], запихивая в рот [src.name].</span>")
+		visible_message(SPAN_WARNING("[user] пытается накормить [target], запихивая в рот [src.name]."))
 
 	if(!instant_application)
 		if(!do_mob(user, target, 2 SECONDS))

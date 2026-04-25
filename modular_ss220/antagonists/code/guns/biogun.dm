@@ -18,12 +18,12 @@
 	. = ..()
 	if(!is_vox_private)
 		is_vox_private = TRUE
-		to_chat(user, span_notice("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
+		to_chat(user, SPAN_NOTICE("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
 
 /obj/item/gun/throw/biogun/afterattack__legacy__attackchain(atom/target, mob/living/user, flag, params)
 	if(is_vox_private && !isvox(user))
 		if(prob(20))
-			to_chat(user, span_notice("Оружие отказывается с вами работать и не активируется."))
+			to_chat(user, SPAN_NOTICE("Оружие отказывается с вами работать и не активируется."))
 		return FALSE
 	. = ..()
 
@@ -52,8 +52,8 @@
 	update_icon()
 	var/amount = get_ammocount()
 	if(get_ammocount() >= 1)
-		return span_notice("[src] заряжен [amount]/[max_capacity].")
-	return span_notice("[src] разряжен.")
+		return SPAN_NOTICE("[src] заряжен [amount]/[max_capacity].")
+	return SPAN_NOTICE("[src] разряжен.")
 
 
 // ============== Существа ==============

@@ -23,7 +23,7 @@
 		return
 	if(is_any_part_deployed() && !theme.is_species_allowed(new_species))
 		// Deactivate MODsuit to respect the species allowed.
-		to_chat(wearer, span_warning("Ошибка видовой принадлежности! Деактивация."))
+		to_chat(wearer, SPAN_WARNING("Ошибка видовой принадлежности! Деактивация."))
 		if(active)
 			var/old_activation_step_time = activation_step_time
 			activation_step_time = 0.1 SECONDS // gotta go fast
@@ -33,7 +33,7 @@
 
 /obj/item/mod/control/quick_deploy(mob/user)
 	if(!is_any_part_deployed() && !theme.is_species_allowed(user.dna.species))
-		to_chat(user, span_warning("Ошибка видовой принадлежности! Развертывание недоступно."))
+		to_chat(user, SPAN_WARNING("Ошибка видовой принадлежности! Развертывание недоступно."))
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	return ..()
@@ -41,7 +41,7 @@
 /obj/item/mod/control/deploy(mob/user, obj/item/part, mass)
 	if(part.loc == src)
 		if(user && !theme.is_species_allowed(user.dna.species))
-			to_chat(user, span_warning("Ошибка видовой принадлежности! Развертывание недоступно."))
+			to_chat(user, SPAN_WARNING("Ошибка видовой принадлежности! Развертывание недоступно."))
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE
 	return ..()

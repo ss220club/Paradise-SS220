@@ -25,7 +25,7 @@
 	if(!reclined)
 		return ..()
 
-	to_chat(user, span_danger("*click*"))
+	to_chat(user, SPAN_DANGER("*click*"))
 	playsound(user, dry_fire_sound, 100, 1)
 
 // Colt Anaconda .44

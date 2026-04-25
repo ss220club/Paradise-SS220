@@ -34,7 +34,7 @@
 	. = ..()
 	name = "\proper гроб  [user.mind.name]"
 	desc += "<br>Владелец этого гроба, возможно, никому не был дорог или даже ещё не умер.<br>\
-		<span class='warning'>Кажется, оно неуязвимо для всего, кроме лазеров и огня! Особенно для огня!</span>"
+		[SPAN_WARNING("Кажется, оно неуязвимо для всего, кроме лазеров и огня! Особенно для огня!")]"
 	vampire = user
 
 /obj/structure/closet/coffin/vampire/welder_act(mob/user, obj/item/I)
@@ -43,8 +43,8 @@
 	if(!I.tool_use_check(user, 30))	// it's a cursed coffin, you will need something better than a maintenance welder to ignite it
 		return ITEM_INTERACT_COMPLETE
 	igniting = TRUE
-	to_chat(user, "<span class='notice'>Вы пытаетесь поджечь [src] с помощью [I].</span>")
-	to_chat(vampire, "<span class='warning'>На ваше логово напали!</span>")
+	to_chat(user, SPAN_NOTICE("Вы пытаетесь поджечь [src] с помощью [I]."))
+	to_chat(vampire, SPAN_WARNING("На ваше логово напали!"))
 	if(do_after(user, 15 SECONDS, target = src))
 		fire_act()
 	igniting = FALSE
@@ -60,19 +60,19 @@
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, fire_act_cooldown))
 		return
-	to_chat(vampire, "<span class='warning'>На ваше логово напали!</span>")
+	to_chat(vampire, SPAN_WARNING("На ваше логово напали!"))
 	switch(rand(1, 4))
 		if(1)
-			visible_message("<span class='danger'>Древесина воет, а огонь вспыхивает, казалось бы, из ниоткуда!</span>")
+			visible_message(SPAN_DANGER("Древесина воет, а огонь вспыхивает, казалось бы, из ниоткуда!"))
 			playsound(src, "sound/goonstation/voice/howl.ogg", 30)
 		if(2 to 3)
-			visible_message("<span class='danger'>Древесина шипит, и огонь вспыхивает, казалось бы, из ниоткуда!</span>")
+			visible_message(SPAN_DANGER("Древесина шипит, и огонь вспыхивает, казалось бы, из ниоткуда!"))
 			if(prob(50))
 				playsound(src, "sound/effects/unathihiss.ogg", 30)
 			else
 				playsound(src, "sound/effects/tajaranhiss.ogg", 30)
 		if(4)
-			visible_message("<span class='danger'>Древесина рычит, когда огонь вырывается из ниоткуда!</span>")
+			visible_message(SPAN_DANGER("Древесина рычит, когда огонь вырывается из ниоткуда!"))
 			playsound(src, 'sound/goonstation/voice/growl3.ogg', 30)
 	var/turf/new_fire = pick(oview(2, src))
 	new /obj/effect/fire(get_turf(new_fire), T20C, 30 SECONDS, 1)
@@ -81,7 +81,7 @@
 
 /obj/structure/closet/coffin/vampire/burn()
 	playsound(src, 'sound/hallucinations/wail.ogg', 20, extrarange = SOUND_RANGE_SET(5))
-	visible_message("<span class='danger'>Огонь вырывается из [name], когда он разрушается!</span>")
+	visible_message(SPAN_DANGER("Огонь вырывается из [name], когда он разрушается!"))
 	for(var/turf/T in range(1, src))
 		new /obj/effect/fire(T, T20C, 30 SECONDS, 1)
 	..()
