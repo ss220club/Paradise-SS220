@@ -70,7 +70,7 @@
 	..()
 
 /datum/spell/charge_up/proc/Discharge(mob/user)
-	to_chat(user, SPAN_DANGER("You lose control over the spell!"))
+	to_chat(user, SPAN_DANGER("Вы теряете контроль над заклинанием!"))
 	Reset(user)
 	spend_spell_cost(user)
 	cooldown_handler.start_recharge()
