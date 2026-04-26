@@ -11,7 +11,7 @@
 	sound = sound('modular_ss220/event/sound/bell_1.ogg')
 	tts_seed = /datum/tts_seed/silero/deckard
 
-/datum/announcement_configuration/cenral_comand
+/datum/announcement_configuration/central_command
 	default_title = "Внимание, ИСН «Кибериада»."
 	global_announcement = TRUE
 	sound = sound('sound/misc/notice2.ogg')
@@ -19,7 +19,7 @@
 
 GLOBAL_DATUM_INIT(begemot, /datum/announcer, new(config_type = /datum/announcement_configuration/begemot))
 GLOBAL_DATUM_INIT(herald, /datum/announcer, new(config_type = /datum/announcement_configuration/herald))
-GLOBAL_DATUM_INIT(cenral_comand, /datum/announcer, new(config_type = /datum/announcement_configuration/cenral_comand))
+GLOBAL_DATUM_INIT(central_command, /datum/announcer, new(config_type = /datum/announcement_configuration/central_command))
 
 
 // Event begemot anounces
@@ -30,19 +30,19 @@ GLOBAL_DATUM_INIT(cenral_comand, /datum/announcer, new(config_type = /datum/anno
 
 // CC event anounces
 
-/proc/cc_atantion()
+/proc/cc_attention()
 	var/title = "Внимание, ИСН «Кибериада»."
 	var/message = "Зафиксированы сообщения об аномальном блюспейс-объекте в вашем секторе. \
 	В ваш район направлен разведывательный шаттл ОБР для проведения разведки и последующего устранения аномалии. \
 	Ожидайте дальнейших указаний. Слава Нанотрейзен."
-	GLOB.cenral_comand.Announce(message, title)
+	GLOB.central_command.Announce(message, title)
 
 /proc/cc_ert_lost()
 	var/title = "Внимание, ИСН «Кибериада»."
 	var/message = "Разведывательный шаттл ОБР уничтожен. Повторяю: разведывательный шаттл ОБР уничтожен. \
 	АКН «Трурль» запрашивает поддержку флотилии для подавления угрозы уровня «Дельта». Прибытие флотилии ожидается в течение 4 часов. \
 	Всему персоналу станции предписывается сдерживать угрозу до её прибытия."
-	GLOB.cenral_comand.Announce(message, title)
+	GLOB.central_command.Announce(message, title)
 
 // Herald anounces
 /proc/herald_hello()

@@ -78,7 +78,11 @@ GLOBAL_VAR_INIT(candidates_left, 0)
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob, dust)), 1 SECONDS)
 
 
-/obj/item/organ/internal/cyberimp/arm/katana/remove(mob/living/carbon/M, special)
+/obj/item/organ/internal/cyberimp/arm/katana/dark_mark/remove(mob/living/carbon/M, special)
+	GLOB.candidates_left -= 1
+	var/text = "Кандидат [M.real_name] Трусливо сбегает из гонки! Кандидатов осталось [GLOB.candidates_left]."
+	GLOB.begemot.Announce(text, "Ещё один кандидат выбыл из гонки", 'modular_ss220/event/sound/begemore_rar.ogg', msg_sanitized = TRUE)
+
 	UnregisterSignal(M, COMSIG_MOB_DEATH)
 	. = ..()
 
