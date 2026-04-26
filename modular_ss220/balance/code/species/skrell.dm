@@ -1,14 +1,33 @@
 // Dealing toxins when drinking alcohol
-/obj/item/organ/internal/kidneys/skrell/on_life()
-	. = ..()
-	var/datum/reagent/consumable/ethanol/ethanol_reagent = locate(/datum/reagent/consumable/ethanol) in owner.reagents.reagent_list
-	if(!ethanol_reagent)
-		return
-	if(is_broken())
-		owner.adjustToxLoss(1.5 * max(ethanol_reagent.alcohol_perc, 1) * PROCESS_ACCURACY)
-	else
-		owner.adjustToxLoss(0.5 * max(ethanol_reagent.alcohol_perc, 1) * PROCESS_ACCURACY)
-		receive_damage(0.1 * PROCESS_ACCURACY)
+/mob/living/carbon/human/skrell/handle_kidneys()
+	var/obj/item/organ/kidneys = get_int_organ(/obj/item/organ/internal/kidneys)
+
+	var/damage_percentage = 0
+	if(kidneys && !(kidneys.status & ORGAN_DEAD)) // No kidneys = full damage
+		damage_percentage = ((kidneys.max_damage - kidneys.damage) / kidneys.max_damage) * 100
+		if(damage_percentage >= 75) // Above 75% HP, no damage
+			return
+
+	var/total_damage = 0
+	for(var/datum/reagent/chem as anything in reagents.reagent_list)
+		if(istype(chem, /datum/reagent/consumable/ethanol))
+			total_damage += chem.max_kidney_damage
+		else
+			total_damage += chem.max_kidney_damage
+
+	if(!total_damage)
+		return // No damage
+
+	switch(damage_percentage)
+		// No 0 since that's full damage
+		if(1 to 25)
+			total_damage *= 0.5
+		if(25 to 50)
+			total_damage *= 0.2
+		if(50 to 75)
+			total_damage *= 0.05
+
+	adjustToxLoss(total_damage)
 
 // Weak night vision
 /obj/item/organ/internal/eyes/skrell
