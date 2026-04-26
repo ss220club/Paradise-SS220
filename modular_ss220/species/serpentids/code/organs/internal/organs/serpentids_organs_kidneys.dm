@@ -17,17 +17,20 @@
 	AddComponent(/datum/component/hunger_organ)
 	AddComponent(/datum/component/organ_action, radial_action_state, radial_action_icon)
 
-/obj/item/organ/internal/kidneys/serpentid/on_life()
-	. = .. ()
-	if((owner.m_intent != MOVE_INTENT_RUN || owner.body_position == LYING_DOWN || (world.time - owner.last_movement) >= 5) && (!owner.stat && (owner.mobility_flags & MOBILITY_STAND) && !owner.restrained() && cloak_engaged))
-		if(owner.invisibility != INVISIBILITY_LEVEL_TWO)
-			owner.alpha -= 51
+/mob/living/carbon/human/serpentid/handle_kidneys()
+	. = ..()
+
+	var/obj/item/organ/internal/kidneys/serpentid/kidneys = get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
+
+	if((src.m_intent != MOVE_INTENT_RUN || src.body_position == LYING_DOWN || (world.time - src.last_movement) >= 5) && (!src.stat && (src.mobility_flags & MOBILITY_STAND) && !src.restrained() && kidneys.cloak_engaged))
+		if(src.invisibility != INVISIBILITY_LEVEL_TWO)
+			src.alpha -= 51
 	else
-		if(owner.invisibility != INVISIBILITY_OBSERVER)
-			owner.reset_visibility()
-			owner.alpha = 255
-	if(owner.alpha == 0)
-		owner.make_invisible()
+		if(src.invisibility != INVISIBILITY_OBSERVER)
+			src.reset_visibility()
+			src.alpha = 255
+	if(src.alpha == 0)
+		src.make_invisible()
 
 /obj/item/organ/internal/kidneys/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
