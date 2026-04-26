@@ -3,7 +3,7 @@
 # The file names and locations are VERY important here
 # DO NOT EDIT THIS UNLESS YOU KNOW WHAT YOU ARE DOING
 # -aa
-name: 'Render Nanomaps'
+name: 'Render Nanomaps New Test'
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -34,7 +34,7 @@ jobs:
           git reset --hard origin/master
 
       - name: 'Generate Maps'
-        run: './tools/github-actions/nanomap-renderer-invoker_new_test.sh'
+        run: 'bash ./tools/github-actions/nanomap-renderer-invoker_new_test.sh'
 
       - name: 'Commit Maps and open PR'
         run: |
