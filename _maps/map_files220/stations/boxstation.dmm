@@ -11649,20 +11649,26 @@
 /turf/simulated/wall,
 /area/station/hallway/secondary/garden)
 "aTv" = (
-/obj/machinery/gateway{
-	dir = 9
+/obj/structure{
+	icon = 'icons/obj/machines/gateway.dmi';
+	icon_state = "toff";
+	name = "gateway";
+	density = 1;
+	anchored = 1;
+	dir = 9;
+	desc = "A mysterious gateway built by unknown hands, it allows for faster than light travel to far-flung locations."
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/expedition/gate)
 "aTx" = (
-/obj/machinery/gateway{
+/obj/structure{
+	icon = 'icons/obj/machines/gateway.dmi';
+	icon_state = "toff";
+	name = "gateway";
+	desc = "A mysterious gateway built by unknown hands, it allows for faster than light travel to far-flung locations.";
+	density = 1;
+	anchored = 1;
 	dir = 8
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/supply/expedition/gate)
-"aTy" = (
-/obj/machinery/gateway{
-	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/expedition/gate)
@@ -12059,10 +12065,6 @@
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
 /turf/simulated/floor/plasteel,
 /area/station/service/clown)
-"aUH" = (
-/obj/machinery/gateway/centerstation,
-/turf/simulated/floor/plasteel/dark,
-/area/station/supply/expedition/gate)
 "aUI" = (
 /obj/effect/landmark/start/clown,
 /obj/machinery/hologram/holopad,
@@ -12325,9 +12327,14 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "aVr" = (
-/obj/machinery/gateway,
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/white/line,
+/obj/structure{
+	icon = 'icons/obj/machines/gateway.dmi';
+	icon_state = "toff";
+	name = "gateway";
+	density = 1;
+	anchored = 1;
+	desc = "A mysterious gateway built by unknown hands, it allows for faster than light travel to far-flung locations."
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/expedition/gate)
 "aVs" = (
@@ -15699,21 +15706,28 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/port)
 "bgK" = (
-/obj/machinery/light/directional/west,
-/obj/machinery/gateway{
+/obj/structure{
+	icon = 'icons/obj/machines/gateway.dmi';
+	icon_state = "toff";
+	name = "gateway";
+	desc = "Technological communication device";
+	density = 1;
+	anchored = 1;
 	dir = 10
 	},
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/white/line,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/expedition/gate)
 "bgL" = (
-/obj/machinery/light/directional/east,
-/obj/machinery/gateway{
+/obj/structure{
+	icon = 'icons/obj/machines/gateway.dmi';
+	icon_state = "toff";
+	name = "gateway";
+	desc = "A mysterious gateway built by unknown hands, it allows for faster than light travel to far-flung locations.";
+	density = 1;
+	anchored = 1;
 	dir = 6
 	},
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/white/line,
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/expedition/gate)
 "bgM" = (
@@ -15935,6 +15949,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/expedition/gate)
 "bhI" = (
+/obj/structure/holosign/barrier/engineering,
 /turf/simulated/floor/plasteel/stairs/right{
 	color = "gray"
 	},
@@ -21692,15 +21707,6 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/lobby)
-"bGM" = (
-/obj/structure/flora/grass/green,
-/obj/item/clothing/glasses/sunglasses/yeah,
-/turf/simulated/floor/beach/sand,
-/area/station/hallway/secondary/exit)
-"bGN" = (
-/obj/structure/sink/puddle,
-/turf/simulated/floor/beach/sand,
-/area/station/hallway/secondary/exit)
 "bGQ" = (
 /obj/structure/table/flipped{
 	dir = 1
@@ -37768,17 +37774,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/assembly_line)
-"cWE" = (
-/obj/structure/flora/tree/palm{
-	pixel_x = 0
-	},
-/obj/effect/overlay/coconut{
-	pixel_y = -6
-	},
-/obj/machinery/light/small/directional/north,
-/obj/structure/flora/grass/jungle,
-/turf/simulated/floor/grass,
-/area/station/hallway/secondary/exit)
 "cWI" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -40281,21 +40276,6 @@
 /obj/effect/landmark/spawner/nukedisc_respawn,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
-"dgz" = (
-/obj/structure/table/holotable/wood,
-/obj/item/reagent_containers/drinks/bottle/rum{
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/drinks/drinkingglass/shotglass{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/reagent_containers/drinks/drinkingglass/shotglass{
-	pixel_x = 10
-	},
-/obj/machinery/light/small/directional/south,
-/turf/simulated/floor/beach/sand,
-/area/station/hallway/secondary/exit)
 "dgC" = (
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 8
@@ -45322,6 +45302,7 @@
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/apmaint)
 "efl" = (
+/obj/structure/holosign/barrier/engineering,
 /turf/simulated/floor/plasteel/stairs/medium{
 	color = "gray"
 	},
@@ -47792,10 +47773,8 @@
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
 "eWC" = (
-/obj/structure/chair/stool/bar{
-	dir = 4
-	},
-/turf/simulated/floor/beach/sand,
+/obj/structure/flora/junglebush/large,
+/turf/simulated/floor/grass,
 /area/station/hallway/secondary/exit)
 "eWH" = (
 /obj/effect/turf_decal/tiles/dark/side{
@@ -49702,12 +49681,6 @@
 /obj/effect/turf_decal/tiles/white/side,
 /turf/simulated/floor/plasteel,
 /area/station/service/kitchen)
-"fEO" = (
-/obj/structure/chair/stool/bar{
-	dir = 8
-	},
-/turf/simulated/floor/beach/sand,
-/area/station/hallway/secondary/exit)
 "fEP" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
@@ -54049,12 +54022,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/nw)
-"gZc" = (
-/obj/machinery/gateway{
-	dir = 5
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/supply/expedition/gate)
 "gZg" = (
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
@@ -61040,6 +61007,13 @@
 /obj/structure/girder,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint2)
+"jvC" = (
+/obj/structure/flora/junglebush/large{
+	pixel_x = -15;
+	pixel_y = -7
+	},
+/turf/simulated/floor/grass,
+/area/station/hallway/secondary/exit)
 "jvX" = (
 /obj/effect/turf_decal/siding/wood/cherry{
 	dir = 4
@@ -66971,9 +66945,16 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "lwg" = (
-/obj/machinery/gateway{
+/obj/structure{
+	icon = 'icons/obj/machines/gateway.dmi';
+	icon_state = "toff";
+	name = "gateway";
+	desc = "A mysterious gateway built by unknown hands, it allows for faster than light travel to far-flung locations.";
+	density = 1;
+	anchored = 1;
 	dir = 4
 	},
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/expedition/gate)
 "lwj" = (
@@ -76105,6 +76086,10 @@
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
+"ouq" = (
+/obj/effect/mapping_helpers/turfs/damage,
+/turf/simulated/floor/plasteel/dark,
+/area/station/supply/expedition/gate)
 "ouw" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tiles/department/medical/side{
@@ -80851,11 +80836,6 @@
 /obj/effect/turf_decal/tiles/department/medical/checker,
 /turf/simulated/floor/plasteel/white,
 /area/station/maintenance/aft)
-"pXs" = (
-/obj/structure/flora/grass/jungle,
-/obj/item/clothing/under/misc/swimsuit/black,
-/turf/simulated/floor/grass,
-/area/station/hallway/secondary/exit)
 "pXY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -84746,6 +84726,16 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos/control)
+"rht" = (
+/obj/docking_port/stationary{
+	dwidth = 29;
+	height = 23;
+	id = "emergency_home";
+	name = "emergency evac bay";
+	width = 52
+	},
+/turf/space,
+/area/space)
 "rhG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -90741,11 +90731,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/purple,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos/control)
-"tnJ" = (
-/obj/structure/flora/rock/jungle,
-/obj/item/clothing/head/soft/rainbow,
-/turf/simulated/floor/grass,
-/area/station/hallway/secondary/exit)
 "tnL" = (
 /obj/machinery/door_control/shutter/south{
 	id = "disvent";
@@ -91085,17 +91070,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/security/restroom)
-"ttR" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 16;
-	height = 21;
-	id = "emergency_home";
-	name = "emergency evac bay";
-	width = 41
-	},
-/turf/space,
-/area/space)
 "ttY" = (
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/effect/turf_decal/tiles/department/science/corner,
@@ -97201,6 +97175,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "vtO" = (
+/obj/structure/holosign/barrier/engineering,
+/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plasteel/stairs/left{
 	color = "gray"
 	},
@@ -104269,6 +104245,9 @@
 /obj/effect/turf_decal/caution,
 /obj/effect/turf_decal/tiles/department/command/side{
 	dir = 1
+	},
+/obj/item/paper{
+	info = "Ну короче... Пришёл гутхитс и взорвал вам гейт, зачем он это сделал? Сам не знаю, но востанавливать я его вам не буду. Идите к чёрту, я и так заебался на других объектах всё чинить. САМИ СПРАВЛЯЙТЕСЬ!"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/supply/expedition/gate)
@@ -130101,7 +130080,7 @@ eUA
 aMA
 aSA
 aSA
-rBx
+ouq
 aSA
 bhH
 blf
@@ -130614,8 +130593,8 @@ lQx
 kpO
 aQl
 aSA
-aTy
-aUH
+ouq
+rBx
 aVr
 efl
 xKc
@@ -130871,7 +130850,7 @@ aEl
 wle
 aPi
 aSA
-gZc
+rBx
 lwg
 bgL
 bhI
@@ -161217,9 +161196,9 @@ kdK
 bMr
 boI
 bjR
-bjR
-bjR
-bjR
+bxz
+jvC
+ylC
 bjR
 boI
 bjR
@@ -161474,8 +161453,8 @@ bol
 eyx
 omR
 bjR
-tnJ
-pXs
+eWC
+ylC
 eWC
 bjR
 omR
@@ -161731,9 +161710,9 @@ wSB
 ihY
 bAN
 bqn
-cWE
-bGN
-dgz
+bjR
+bjR
+bjR
 bqn
 brL
 bjR
@@ -161988,9 +161967,9 @@ qwP
 lPh
 ehj
 bjR
-ylC
-bGM
-fEO
+aaa
+aaa
+aaa
 bjR
 ehj
 bjR
@@ -162245,9 +162224,9 @@ lgb
 kWu
 xir
 bjR
-bjR
-bjR
-bjR
+aaa
+aaa
+aaa
 bjR
 xir
 bjR
@@ -162500,7 +162479,7 @@ aaa
 aaa
 aaa
 aaa
-ttR
+aaa
 aaa
 aaa
 aaa
@@ -162770,7 +162749,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+rht
 aaa
 aaa
 aaa
