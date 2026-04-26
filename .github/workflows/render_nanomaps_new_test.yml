@@ -33,6 +33,10 @@ jobs:
           git checkout nanomap-render
           git reset --hard origin/master
 
+      - name: 'Install Dependencies'
+        run: |
+          pip install -r requirements.txt
+
       - name: 'Generate Maps'
         run: 'bash ./tools/github-actions/nanomap-renderer-invoker_new_test.sh'
 
