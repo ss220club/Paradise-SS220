@@ -1,4 +1,4 @@
-var/candidate_left = 0
+GLOBAL_VAR_INIT(candidates_left, 0)
 
 /datum/spell/touch/dark_mark
 	name = "Наделить чёрной меткой"
@@ -50,7 +50,7 @@ var/candidate_left = 0
 	string_list += "3. Приготовитесь отстоять своё первенство среди остальных кандидатов.\n"
 	to_chat(src, SPAN_BIGGERDANGER(string_list.Join()))
 
-	candidate_left += 1
+	GLOB.candidates_left += 1
 
 	var/obj/item/organ/internal/cyberimp/arm/katana/dark_mark/mark = new()
 	mark.give_mark(src)
@@ -67,8 +67,8 @@ var/candidate_left = 0
 /obj/item/organ/internal/cyberimp/arm/katana/dark_mark/user_death_async(mob/user)
 	Retract()
 
-	candidate_left -= 1
-	var/text = "Кандидат [user.real_name] погибает. Кандидатов осталось [candidate_left]."
+	GLOB.candidates_left -= 1
+	var/text = "Кандидат [user.real_name] погибает. Кандидатов осталось [GLOB.candidates_left]."
 	GLOB.begemot.Announce(text, "Ещё один кандидат выбыл из гонки", pick(sound_names), msg_sanitized = TRUE)
 
 	user.visible_message(SPAN_WARNING("[user] рассыпается в пыль!"),
