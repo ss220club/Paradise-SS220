@@ -528,7 +528,8 @@ USER_CONTEXT_MENU(select_equipment, R_EVENT, "\[Admin\] Select equipment", mob/l
 	var/list/special_outfits = list(
 		"Naked",
 		"As Job...",
-		"As Admin Job...", // SS220 EDIT - Добавил "As Admin Job..."
+		"As Admin Job...",// SS220 EDIT - Добавил "As Admin Job..."
+		"Event...", // SS220 EDIT - Добавил "Event..."
 		"Custom..."
 	)
 	if(length(potential_minds))
@@ -574,6 +575,20 @@ USER_CONTEXT_MENU(select_equipment, R_EVENT, "\[Admin\] Select equipment", mob/l
 
 		dresscode = input("Select equipment", "Сhoose your fighter") as null|anything in admin_job_outfits
 		dresscode = admin_job_outfits[dresscode]
+		if(isnull(dresscode))
+			return
+	// SS220 EDIT START - собственно сама менюшка
+	if(dresscode == "Event...")
+		var/list/event_paths = subtypesof(/datum/outfit/event)
+		var/list/event_outfits = list()
+		for(var/path in event_paths)
+			var/datum/outfit/O = path
+			if(initial(O.can_be_admin_equipped))
+				event_outfits[initial(O.name)] = path
+		event_outfits = sortTim(event_outfits, GLOBAL_PROC_REF(cmp_text_asc))
+
+		dresscode = input("Select equipment", "Сhoose your fighter") as null|anything in event_outfits
+		dresscode = event_outfits[dresscode]
 		if(isnull(dresscode))
 			return
 	// SS220 EDIT END

@@ -1,3 +1,5 @@
+var/candidate_left = 0
+
 /datum/spell/touch/dark_mark
 	name = "Наделить чёрной меткой"
 	desc = "Наделяет цель заклинания чёрной меткой и кандидатам в капитаны"
@@ -14,7 +16,7 @@
 	icon_state = "fleshtostone"
 
 	catchphrase = "Чёрная метка!"
-	on_use_sound = 'sound/misc/sadtrombone.ogg'
+	on_use_sound = null;
 	attached_spell = /datum/spell/touch/dark_mark
 
 /obj/item/melee/touch_attack/dark_mark/customised_abstract_text(mob/living/carbon/owner)
@@ -35,11 +37,6 @@
 			to_chat(user, SPAN_WARNING("ДЕБИЛ, ТЫ УЖЕ ВЫДАЛ ЕМУ МЕТКУ!!!"))
 			return
 
-	var/datum/effect_system/smoke_spread/s = new
-	s.set_up(5, FALSE, target)
-	s.start()
-
-
 	H.give_dark_mark()
 	handle_delete(user)
 
@@ -51,7 +48,9 @@
 	string_list += "1. Вам была оказана великая честь - стать \"ЕЁ\" капитаном.\n"
 	string_list += "2. Соберите вокруг себя верную команду, продемонстрируйте лидерские навыки.\n"
 	string_list += "3. Приготовитесь отстоять своё первенство среди остальных кандидатов.\n"
-	to_chat(src, SPAN_BIG(string_list.Join()))
+	to_chat(src, SPAN_BIGGERDANGER(string_list.Join()))
+
+	candidate_left += 1
 
 	var/obj/item/organ/internal/cyberimp/arm/katana/dark_mark/mark = new()
 	mark.give_mark(src)
@@ -62,13 +61,14 @@
 
 /obj/item/organ/internal/cyberimp/arm/katana/dark_mark/proc/give_mark(mob/user)
 	RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(user_death))
-	playsound(user, 'sound/misc/demon_consume.ogg', 50, TRUE)
+	playsound(user, 'modular_ss220/event/sound/begemore_rar.ogg', 50, TRUE)
 	insert(user)
 
 /obj/item/organ/internal/cyberimp/arm/katana/dark_mark/user_death_async(mob/user)
 	Retract()
 
-	var/text = "Кандидат [user.real_name] погибает"
+	candidate_left -= 1
+	var/text = "Кандидат [user.real_name] погибает. Кандидатов осталось [candidate_left]."
 	GLOB.begemot.Announce(text, "Ещё один кандидат выбыл из гонки", pick(sound_names), msg_sanitized = TRUE)
 
 	user.visible_message(SPAN_WARNING("[user] рассыпается в пыль!"),
