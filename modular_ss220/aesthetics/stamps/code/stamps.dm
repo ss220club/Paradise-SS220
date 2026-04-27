@@ -1,3 +1,17 @@
+//A temporary solution until they change it at upstream
+/datum/asset/simple/paper/New()
+	assets += list(
+		"large_stamp-ward.png"     	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ward.png',
+		"large_stamp-ploho.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ploho.png',
+		"large_stamp-BIGdeny.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-BIGdeny.png',
+		"large_stamp-navcom.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-navcom.png',
+		"large_stamp-mime.png"     	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-mime.png',
+		"large_stamp-ussp.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ussp.png',
+		"large_stamp-nct.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-nct.png',
+		"large_stamp-navytsf.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-navytsf.png'
+	)
+	..()
+
 // It's just works :skull:
 /obj/item/paper/stamp(obj/item/stamp/stamp)
 	if(stamp.stampoverlay_custom_icon)
@@ -68,4 +82,28 @@
 	name = "Nanotrasen Career Trainer's rubber stamp"
 	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
 	icon_state = "stamp-nct"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/navytsf
+	name = "Trans Solar Federation Navy Command rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-navytsf"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/reptsf
+	name = "Trans Solar Federation Representative's rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-reptsf"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/repussp
+	name = "USSP Representative's rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-ussprep"
+	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+
+/obj/item/stamp/comussp
+	name = "USSP Command rubber stamp"
+	icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
+	icon_state = "stamp-usspcom"
 	stampoverlay_custom_icon = 'modular_ss220/aesthetics/stamps/icons/stamps.dmi'
