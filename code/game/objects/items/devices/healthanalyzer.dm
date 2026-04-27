@@ -239,9 +239,9 @@
 		burn_wound = burn_wound || (e.status & ORGAN_BURNT)
 		internal_bleed = internal_bleed || (e.status & ORGAN_INT_BLEEDING)
 	if(broken_bone)
-		msgs += SPAN_WARNING("Обнаружены переломы костей. Продвинутый сканер покажет местоположение.")
+		msgs += SPAN_WARNING("Обнаружены переломы костей. Сканер тела покажет местоположение.")
 	if(internal_bleed)
-		msgs += SPAN_WARNING("Обнаружено внутреннее кровотечение. Продвинутый сканер покажет местоположение.")
+		msgs += SPAN_WARNING("Обнаружено внутреннее кровотечение. Сканер тела покажет местоположение.")
 	if(burn_wound)
 		msgs += SPAN_WARNING("Обнаружен серьёзный ожог. Осмотрите пациента для установления местоположения.")
 
