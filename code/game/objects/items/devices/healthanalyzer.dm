@@ -301,7 +301,7 @@
 		msgs += SPAN_WARNING("Незначительные признаки нестабильности в генах субъекта.")
 
 	if(HAS_TRAIT(H, TRAIT_HUSK))
-		msgs += SPAN_DANGER("Субъект стал хаском. Рекомендуется примененить синтплоть.")
+		msgs += SPAN_DANGER("Субъект стал хаском. Рекомендуется применить синтплоть.")
 
 	if(H.radiation > RAD_MOB_SAFE)
 		msgs += SPAN_DANGER("Субъект облучён.")
