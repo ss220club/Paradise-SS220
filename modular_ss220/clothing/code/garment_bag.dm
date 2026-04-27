@@ -1,4 +1,4 @@
-/obj/item/storage/bag/garment/captain/populate_contents()
+/obj/structure/dresser/wardrobe/captain/Initialize(mapload)
 	. = ..()
 	new /obj/item/clothing/head/caphat/beret_black(src)
 	new /obj/item/clothing/neck/cloak/captain_mantle/black(src)
