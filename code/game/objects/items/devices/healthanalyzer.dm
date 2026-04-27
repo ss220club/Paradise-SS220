@@ -21,14 +21,14 @@
 					continue
 				if(!overdosing)
 					overdosing = prob(10)
-			msgs += SPAN_NOTICE("[volume]ю. [R.name][overdosing ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : "."]")
+			msgs += "<span class='notice'>[volume]ю of [R.name][overdosing ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
 		if(!length(H.reagents.reagent_list))
 			msgs += SPAN_BOLDNOTICE("В субъекте обнаружены следующие реагенты:")
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += SPAN_NOTICE("[rand(5, 100)]ю. [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? " - ПЕРЕДОЗИРОВКА" : "."]")
+				msgs += "<span class='notice'>[rand(5, 100)]ю [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
 	if(!has_real_or_fake_reagents)
 		msgs += SPAN_NOTICE("Субъект не содержит реагентов.")
 	if(length(H.reagents.addiction_list))
@@ -123,8 +123,8 @@
 		msgs += "Основные: [SPAN_HEALTHSCAN_OXY("Удушье")]/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>"
 		msgs += "Детализация повреждений: [SPAN_HEALTHSCAN_OXY("?")] - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
 		msgs += SPAN_NOTICE("Температура тела: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)")
-		msgs += SPAN_WARNING("<b>Предупреждение: уровень крови ОШИБКА: --% --cl.</b></span><span class='notice'>Тип: ОШИБКА")
-		msgs += SPAN_NOTICE("Пульс субъекта: <font color='red'>-- bpm.</font>")
+		msgs += SPAN_WARNING("<b>Предупреждение: уровень крови ОШИБКА: --% --сл.</b></span><span class='notice'>Тип: ОШИБКА")
+		msgs += SPAN_NOTICE("Пульс субъекта: <font color='red'>-- уд/мин.</font>")
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 		return
 
@@ -282,7 +282,7 @@
 			msgs += SPAN_NOTICE("Уровень крови [blood_percent] %, [blood_volume] сл, тип: [blood_type]")
 
 	msgs += SPAN_NOTICE("Температура тела: [round(H.bodytemperature-T0C, 0.01)]&deg;C ([round(H.bodytemperature*1.8-459.67, 0.01)]&deg;F)")
-	msgs += SPAN_NOTICE("Пульс субъекта: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse()] bpm.</font>")
+	msgs += SPAN_NOTICE("Пульс субъекта: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse()] уд/мин.</font>")
 
 	var/implant_detect
 	for(var/obj/item/organ/internal/O in H.internal_organs)
@@ -345,7 +345,6 @@
 	icon_state = "healthupgrade"
 	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "magnets=2;biotech=2"
-	materials = list(MAT_METAL = 200, MAT_GLASS = 200)
 	usesound = 'sound/items/deconstruct.ogg'
 #undef SIMPLE_HEALTH_SCAN
 #undef DETAILED_HEALTH_SCAN

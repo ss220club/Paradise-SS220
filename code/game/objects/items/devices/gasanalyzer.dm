@@ -164,7 +164,7 @@
 					message += "  [SPAN_WATER_VAPOR("Водяной пар: [round(air.water_vapor(), 0.01)] молей ([round(air.water_vapor() / total_moles * 100, 0.01)] %)")]"
 				message += SPAN_NOTICE("Температура: [round(air.temperature()-T0C)] &deg;C ([round(air.temperature())] K)")
 				message += SPAN_NOTICE("Объём: [round(volume)] литров")
-				message += SPAN_NOTICE("Давление: [round(pressure, 0.1)] kPa")
+				message += SPAN_NOTICE("Давление: [round(pressure, 0.1)] кПа")
 				message += SPAN_NOTICE("Теплоёмкость: [DisplayJoules(heat_capacity)] / K")
 				message += SPAN_NOTICE("Тепловая энергия: [DisplayJoules(thermal_energy)]")
 			else
@@ -186,34 +186,36 @@
 			agent_b += air.agent_b()
 			hydrogen += air.hydrogen()
 			water_vapor += air.water_vapor()
-			var/temperature = heat_capacity ? thermal_energy / heat_capacity : 0
-			pressure = volume ? total_moles * R_IDEAL_GAS_EQUATION * temperature / volume : 0
-			if(total_moles)
-				message += SPAN_NOTICE("Суммарно: [round(total_moles, 0.01)] молей")
-				if(oxygen && (milla_turf_details || oxygen / total_moles > 0.01))
-					message += "  [SPAN_OXYGEN("Кислород: [round(oxygen, 0.01)] молей ([round(oxygen / total_moles * 100, 0.01)] %)")]"
-				if(nitrogen && (milla_turf_details || nitrogen / total_moles > 0.01))
-					message += "  [SPAN_NITROGEN("Азот: [round(nitrogen, 0.01)] молей ([round(nitrogen / total_moles * 100, 0.01)] %)")]"
-				if(carbon_dioxide && (milla_turf_details || carbon_dioxide / total_moles > 0.01))
-					message += "  [SPAN_CARBON_DIOXIDE("Углекислый газ: [round(carbon_dioxide, 0.01)] молей ([round(carbon_dioxide / total_moles * 100, 0.01)] %)")]"
-				if(toxins && (milla_turf_details || toxins / total_moles > 0.01))
-					message += "  [SPAN_PLASMA("Плазма: [round(toxins, 0.01)] молей ([round(toxins / total_moles * 100, 0.01)] %)")]"
-				if(sleeping_agent && (milla_turf_details || sleeping_agent / total_moles > 0.01))
-					message += "  [SPAN_SLEEPING_AGENT("Оксид азота: [round(sleeping_agent, 0.01)] молей ([round(sleeping_agent / total_moles * 100, 0.01)] %)")]"
-				if(agent_b && (milla_turf_details || agent_b / total_moles > 0.01))
-					message += "  [SPAN_AGENT_B("Agent B: [round(agent_b, 0.01)] молей ([round(agent_b / total_moles * 100, 0.01)] %)")]"
-				if(hydrogen && (milla_turf_details || hydrogen / total_moles > 0.01))
-					message += "  [SPAN_HYDROGEN("Водород: [round(hydrogen, 0.01)] молей ([round(hydrogen / total_moles * 100, 0.01)] %)")]"
-				if(water_vapor && (milla_turf_details || (water_vapor / total_moles > 0.01)))
-					message += "  [SPAN_WATER_VAPOR("Водяной пар: [round(water_vapor, 0.01)] молей ([round(water_vapor / total_moles * 100, 0.01)] %)")]"
-				message += SPAN_NOTICE("Температура: [round(temperature-T0C)] &deg;C ([round(temperature)] K)")
-				message += SPAN_NOTICE("Объём: [round(volume)] литров")
-				message += SPAN_NOTICE("Давление: [round(pressure, 0.1)] kPa")
-				message += SPAN_NOTICE("Теплоёмкость: [DisplayJoules(heat_capacity)] / K")
-				message += SPAN_NOTICE("Тепловая энергия: [DisplayJoules(thermal_energy)]")
-			else
-				message += SPAN_NOTICE("[target] без газа!")
-				message += SPAN_NOTICE("Объём: [round(volume)] литров") // don't want to change the order volume appears in, suck it
+
+		var/temperature = heat_capacity ? thermal_energy / heat_capacity : 0
+		pressure = volume ? total_moles * R_IDEAL_GAS_EQUATION * temperature / volume : 0
+
+		if(total_moles)
+			message += SPAN_NOTICE("Суммарно: [round(total_moles, 0.01)] молей")
+			if(oxygen && (milla_turf_details || oxygen / total_moles > 0.01))
+				message += "  [SPAN_OXYGEN("Кислород: [round(oxygen, 0.01)] молей ([round(oxygen / total_moles * 100, 0.01)] %)")]"
+			if(nitrogen && (milla_turf_details || nitrogen / total_moles > 0.01))
+				message += "  [SPAN_NITROGEN("Азот: [round(nitrogen, 0.01)] молей ([round(nitrogen / total_moles * 100, 0.01)] %)")]"
+			if(carbon_dioxide && (milla_turf_details || carbon_dioxide / total_moles > 0.01))
+				message += "  [SPAN_CARBON_DIOXIDE("Углекислый газ: [round(carbon_dioxide, 0.01)] молей ([round(carbon_dioxide / total_moles * 100, 0.01)] %)")]"
+			if(toxins && (milla_turf_details || toxins / total_moles > 0.01))
+				message += "  [SPAN_PLASMA("Плазма: [round(toxins, 0.01)] молей ([round(toxins / total_moles * 100, 0.01)] %)")]"
+			if(sleeping_agent && (milla_turf_details || sleeping_agent / total_moles > 0.01))
+				message += "  [SPAN_SLEEPING_AGENT("Оксид азота: [round(sleeping_agent, 0.01)] молей ([round(sleeping_agent / total_moles * 100, 0.01)] %)")]"
+			if(agent_b && (milla_turf_details || agent_b / total_moles > 0.01))
+				message += "  [SPAN_AGENT_B("Agent B: [round(agent_b, 0.01)] молей ([round(agent_b / total_moles * 100, 0.01)] %)")]"
+			if(hydrogen && (milla_turf_details || hydrogen / total_moles > 0.01))
+				message += "  [SPAN_HYDROGEN("Водород: [round(hydrogen, 0.01)] молей ([round(hydrogen / total_moles * 100, 0.01)] %)")]"
+			if(water_vapor && (milla_turf_details || (water_vapor / total_moles > 0.01)))
+				message += "  [SPAN_WATER_VAPOR("Водяной пар: [round(water_vapor, 0.01)] молей ([round(water_vapor / total_moles * 100, 0.01)] %)")]"
+			message += SPAN_NOTICE("Температура: [round(temperature-T0C)] &deg;C ([round(temperature)] K)")
+			message += SPAN_NOTICE("Объём: [round(volume)] литров")
+			message += SPAN_NOTICE("Давление: [round(pressure, 0.1)] кПа")
+			message += SPAN_NOTICE("Теплоёмкость: [DisplayJoules(heat_capacity)] / K")
+			message += SPAN_NOTICE("Тепловая энергия: [DisplayJoules(thermal_energy)]")
+		else
+			message += SPAN_NOTICE("[target] без газа!")
+			message += SPAN_NOTICE("Объём: [round(volume)] литров") // don't want to change the order volume appears in, suck it
 	if(milla)
 		// Values from milla/src/lib.rs, +1 due to array indexing difference.
 		message += SPAN_NOTICE("Airtight N/E/S/W: [(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_NORTH) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_EAST) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_SOUTH) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_WEST) ? "да" : "нет"]")

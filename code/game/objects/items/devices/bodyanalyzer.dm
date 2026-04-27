@@ -73,19 +73,19 @@
 	if(cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, "<span class='notice'>Сканер издаёт раздражённый звуковой сигнал! Он разряжен!</span>")
+		to_chat(user, SPAN_NOTICE("Сканер издаёт раздражённый звуковой сигнал! Он разряжен!"))
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 
 /obj/item/bodyanalyzer/borg/attack__legacy__attackchain(mob/living/M, mob/living/silicon/robot/user)
 	if(user.incapacitated() || !user.Adjacent(M))
 		return
 	if(!ready)
-		to_chat(user, "<span class='notice'>[capitalize(src.declent_ru(NOMINATIVE))] перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
+		to_chat(user, SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд."))
 		return
 	if(user.cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, "<span class='notice'>Вам необходимо подзарядиться, прежде чем использовать [src.declent_ru(ACCUSATIVE)]</span>")
+		to_chat(user, SPAN_NOTICE("Вам необходимо подзарядиться, прежде чем использовать [src.declent_ru(ACCUSATIVE)]"))
 
 /obj/item/bodyanalyzer/proc/mobScan(mob/living/M, mob/user)
 	if(ishuman(M))
