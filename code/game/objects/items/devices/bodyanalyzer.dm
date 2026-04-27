@@ -1,6 +1,9 @@
+////////////////////////////////////////
+// MARK:	Body analyzers
+////////////////////////////////////////
 /obj/item/bodyanalyzer
 	name = "handheld body analyzer"
-	desc = "A handheld scanner capable of deep-scanning an entire body."
+	desc = "Портативный сканер, способный полностью сканировать все тело аналогично стационарной версии."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "bodyanalyzer_0"
 	worn_icon_state = "healthanalyzer"
@@ -27,7 +30,7 @@
 
 /obj/item/bodyanalyzer/borg
 	name = "cyborg body analyzer"
-	desc = "Scan an entire body to prepare for field surgery. Consumes power for each scan."
+	desc = "Сканируйте всё тело, чтобы подготовиться к полевой операции. При каждом сканировании расходуется энергия аккумулятора."
 
 /obj/item/bodyanalyzer/borg/syndicate
 	scan_cd = 20 SECONDS
@@ -63,39 +66,35 @@
 /obj/item/bodyanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/carbon/human/user)
 	if(user.incapacitated() || !user.Adjacent(M))
 		return
-
 	if(!ready)
-		to_chat(user, SPAN_NOTICE("The scanner beeps angrily at you! It's currently recharging - [round((time_to_use - world.time) * 0.1)] seconds remaining."))
+		to_chat(user, "<span class='notice'>Сканер издаёт раздражённый звуковой сигнал! Он перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
-
 	if(cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, SPAN_NOTICE("The scanner beeps angrily at you! It's out of charge!"))
+		to_chat(user, "<span class='notice'>Сканер издаёт раздражённый звуковой сигнал! Он разряжен!</span>")
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 
 /obj/item/bodyanalyzer/borg/attack__legacy__attackchain(mob/living/M, mob/living/silicon/robot/user)
 	if(user.incapacitated() || !user.Adjacent(M))
 		return
-
 	if(!ready)
-		to_chat(user, SPAN_NOTICE("[src] is currently recharging - [round((time_to_use - world.time) * 0.1)] seconds remaining."))
+		to_chat(user, "<span class='notice'>[capitalize(src.declent_ru(NOMINATIVE))] перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
 		return
-
 	if(user.cell.charge >= usecharge)
 		mobScan(M, user)
 	else
-		to_chat(user, SPAN_NOTICE("You need to recharge before you can use [src]"))
+		to_chat(user, "<span class='notice'>Вам необходимо подзарядиться, прежде чем использовать [src.declent_ru(ACCUSATIVE)]</span>")
 
 /obj/item/bodyanalyzer/proc/mobScan(mob/living/M, mob/user)
 	if(ishuman(M))
 		var/report = generate_printing_text(M, user)
-		user.visible_message("[user] begins scanning [M] with [src].", "You begin scanning [M].")
+		user.visible_message("[user] начинает сканирование [M.declent_ru(GENITIVE)] [src.declent_ru(INSTRUMENTAL)].", "Вы начинаете сканирование [M.declent_ru(GENITIVE)].")
 		if(do_after(user, scan_time, target = M))
 			var/obj/item/paper/printout = new
 			printout.info = report
-			printout.name = "Scan report - [M.name]"
+			printout.name = "Отчёт о сканировании - [M.declent_ru(NOMINATIVE)]"
 			playsound(user.loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
 			user.put_in_hands(printout)
 			time_to_use = world.time + scan_cd
@@ -111,31 +110,29 @@
 			addtimer(VARSET_CALLBACK(src, printing, FALSE), 1.4 SECONDS)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), UPDATE_OVERLAYS), 1.5 SECONDS)
 	else if(iscorgi(M) && M.stat == DEAD)
-		to_chat(user, SPAN_NOTICE("You wonder if [M.p_they()] was a good dog. <b>[src] tells you they were the best...</b>")) // :'(
+		to_chat(user, "<span class='notice'>Вас не покидает вопрос, был ли [M.ru_p_they()] хорошим корги. <b>[capitalize(src.declent_ru(NOMINATIVE))] говорит, что он был лучш[genderize_ru(M.gender, "им", "ей", "им", "ими")]...</b></span>") // :'(
 		playsound(loc, 'sound/machines/ping.ogg', 50, 0)
 		ready = FALSE
 		update_icon(UPDATE_ICON_STATE)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/bodyanalyzer, setReady)), scan_cd)
 		time_to_use = world.time + scan_cd
 	else
-		to_chat(user, SPAN_NOTICE("Scanning error detected. Invalid specimen."))
+		to_chat(user, "<span class='notice'>Ошибка сканирования. Недопустимый образец.</span>")
 
 //Unashamedly ripped from adv_med.dm
 /obj/item/bodyanalyzer/proc/generate_printing_text(mob/living/M, mob/user)
 	var/dat = ""
 	var/mob/living/carbon/human/target = M
-
-	dat = "<font color='blue'><b>Target Statistics:</b></font><br>"
+	dat = "<font color='blue'><b>Статистика объекта:</b></font><br>"
 	var/t1
 	switch(target.stat) // obvious, see what their status is
 		if(CONSCIOUS)
-			t1 = "Conscious"
+			t1 = "В сознании"
 		if(UNCONSCIOUS)
-			t1 = "Unconscious"
+			t1 = "Без сознания"
 		else
-			t1 = "*dead*"
-	dat += "[target.health > 50 ? "<font color='blue'>" : "<font color='red'>"]\tHealth %: [target.health], ([t1])</font><br>"
-
+			t1 = "*мёртв*"
+	dat += "[target.health > 50 ? "<font color='blue'>" : "<font color='red'>"]\tСостояние %: [target.health], ([t1])</font><br>"
 	var/found_disease = FALSE
 	for(var/thing in target.viruses)
 		var/datum/disease/D = thing
@@ -144,62 +141,45 @@
 		found_disease = TRUE
 		break
 	if(found_disease)
-		dat += "<font color='red'>Disease detected in target.</font><BR>"
-
+		dat += "<font color='red'>У субъекта обнаружено заболевание.</font><BR>"
 	var/extra_font = null
 	extra_font = (target.getBruteLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Brute Damage %: [target.getBruteLoss()]</font><br>"
-
+	dat += "[extra_font]\t-Тяжесть ушибов %: [target.getBruteLoss()]</font><br>"
 	extra_font = (target.getOxyLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Respiratory Damage %: [target.getOxyLoss()]</font><br>"
-
+	dat += "[extra_font]\t-Степень удушья %: [target.getOxyLoss()]</font><br>"
 	extra_font = (target.getToxLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Toxin Content %: [target.getToxLoss()]</font><br>"
-
+	dat += "[extra_font]\t-Уровень токсинов %: [target.getToxLoss()]</font><br>"
 	extra_font = (target.getFireLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\t-Burn Severity %: [target.getFireLoss()]</font><br>"
-
+	dat += "[extra_font]\t-Тяжесть ожогов %: [target.getFireLoss()]</font><br>"
 	extra_font = (target.radiation < 10 ?"<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tRadiation Level %: [target.radiation]</font><br>"
-
+	dat += "[extra_font]\tУровень радиационного облучения %: [target.radiation]</font><br>"
 	extra_font = (target.getCloneLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tGenetic Tissue Damage %: [target.getCloneLoss()]<br>"
-
+	dat += "[extra_font]\tГенетическое повреждение тканей %: [target.getCloneLoss()]<br>"
 	extra_font = (target.getBrainLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tApprox. Brain Damage %: [target.getBrainLoss()]<br>"
-
-	dat += "Paralysis Summary %: [target.IsParalyzed()] ([round(target.AmountParalyzed() / 10)] seconds left!)<br>"
-	dat += "Body Temperature: [target.bodytemperature-T0C]&deg;C ([target.bodytemperature*1.8-459.67]&deg;F)<br>"
-
+	dat += "[extra_font]\tПриблизительное повреждение мозга %: [target.getBrainLoss()]<br>"
+	dat += "Описание паралича %: [target.IsParalyzed()] (осталось [round(target.AmountParalyzed() / 10)] секунд!)<br>"
+	dat += "Температура тела: [target.bodytemperature-T0C]&deg;C ([target.bodytemperature*1.8-459.67]&deg;F)<br>"
 	dat += "<hr>"
-
 	var/blood_percent =  round((target.blood_volume / BLOOD_VOLUME_NORMAL))
 	blood_percent *= 100
-
 	extra_font = (target.blood_volume > 448 ? "<font color='blue'>" : "<font color='red'>")
-	dat += "[extra_font]\tBlood Level %: [blood_percent] ([target.blood_volume] units)</font><br>"
-
+	dat += "[extra_font]\tУровень крови %: [blood_percent] ([target.blood_volume] юнитов)</font><br>"
 	if(target.reagents)
-		dat += "Epinephrine units: [target.reagents.get_reagent_amount("Epinephrine")] units<BR>"
-		dat += "Ether: [target.reagents.get_reagent_amount("ether")] units<BR>"
-
+		dat += "Эпинефрин: [target.reagents.get_reagent_amount("Epinephrine")] юнитов<BR>"
+		dat += "Эфир: [target.reagents.get_reagent_amount("ether")] юнитов<BR>"
 		extra_font = (target.reagents.get_reagent_amount("silver_sulfadiazine") < 30 ? "<font color='black'>" : "<font color='red'>")
-		dat += "[extra_font]\tSilver Sulfadiazine: [target.reagents.get_reagent_amount("silver_sulfadiazine")]</font><br>"
-
+		dat += "[extra_font]\tСульфадиазин серебра: [target.reagents.get_reagent_amount("silver_sulfadiazine")] юнитов</font><br>"
 		extra_font = (target.reagents.get_reagent_amount("styptic_powder") < 30 ? "<font color='black'>" : "<font color='red'>")
-		dat += "[extra_font]\tStyptic Powder: [target.reagents.get_reagent_amount("styptic_powder")] units<BR>"
-
+		dat += "[extra_font]\tКровоостанавливающая пудра: [target.reagents.get_reagent_amount("styptic_powder")] юнитов<BR>"
 		extra_font = (target.reagents.get_reagent_amount("salbutamol") < 30 ? "<font color='black'>" : "<font color='red'>")
-		dat += "[extra_font]\tSalbutamol: [target.reagents.get_reagent_amount("salbutamol")] units<BR>"
-
+		dat += "[extra_font]\tСальбутамол: [target.reagents.get_reagent_amount("salbutamol")] юнитов<BR>"
 	dat += "<hr><table border='1'>"
 	dat += "<tr>"
-	dat += "<th>Organ</th>"
-	dat += "<th>Burn Damage</th>"
-	dat += "<th>Brute Damage</th>"
-	dat += "<th>Other Wounds</th>"
+	dat += "<th>Части тела / Органы</th>"
+	dat += "<th>Термические повреждения</th>"
+	dat += "<th>Повреждения от травм</th>"
+	dat += "<th>Другие раны</th>"
 	dat += "</tr>"
-
 	for(var/obj/item/organ/external/e in target.bodyparts)
 		dat += "<tr>"
 		var/AN = ""
@@ -212,72 +192,68 @@
 		var/internal_bleeding = ""
 		var/lung_ruptured = ""
 		if(e.status & ORGAN_INT_BLEEDING)
-			internal_bleeding = "<br>Internal bleeding"
+			internal_bleeding = "<br>Внутреннее кровотечение"
 		if(istype(e, /obj/item/organ/external/chest) && target.is_lung_ruptured())
-			lung_ruptured = "Lung ruptured:"
+			lung_ruptured = "Разрыв лёгкого:"
 		if(e.status & ORGAN_SPLINTED)
-			splint = "Splinted:"
+			splint = "Наложена шина:"
 		if(e.status & ORGAN_BROKEN)
 			var/datum/wound/fracture = e.get_wound(/datum/wound/fracture)
 			AN = "[fracture.name]:"
 		if(e.is_robotic())
-			robot = "Robotic:"
+			robot = "Роботизированный:"
 		if(e.open)
-			open = "Open:"
+			open = "Открыт:"
 		switch(e.germ_level)
 			if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-				infected = "Mild Infection:"
+				infected = "Легкая инфекция:"
 			if(INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infected = "Mild Infection+:"
+				infected = "Легкая инфекция+:"
 			if(INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infected = "Mild Infection++:"
+				infected = "Легкая инфекция++:"
 			if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-				infected = "Acute Infection:"
+				infected = "Острая инфекция:"
 			if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-				infected = "Acute Infection+:"
+				infected = "Острая инфекция+:"
 			if(INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_TWO + 400)
-				infected = "Acute Infection++:"
+				infected = "Острая инфекция++:"
 			if(INFECTION_LEVEL_THREE to INFINITY)
-				infected = "Septic:"
-
+				infected = "Заражённый:"
 		var/unknown_body = 0
 		for(var/I in e.embedded_objects)
 			unknown_body++
-
 		if(unknown_body || e.hidden)
-			imp += "Unknown body present:"
+			imp += "Обнаружено инородное тело:"
 		if(!AN && !open && !infected && !imp)
-			AN = "None:"
+			AN = "Отсутствует:"
 		dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured]</td>"
 		dat += "</tr>"
 	for(var/obj/item/organ/internal/i in target.internal_organs)
 		var/mech = i.desc
-		var/infection = "None"
+		var/infection = "Отсутствует"
 		switch(i.germ_level)
 			if(1 to INFECTION_LEVEL_ONE + 200)
-				infection = "Mild Infection:"
+				infection = "Легкая инфекция:"
 			if(INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infection = "Mild Infection+:"
+				infection = "Легкая инфекция+:"
 			if(INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infection = "Mild Infection++:"
+				infection = "Легкая инфекция++:"
 			if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
-				infection = "Acute Infection:"
+				infection = "Острая инфекция:"
 			if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-				infection = "Acute Infection+:"
+				infection = "Острая инфекция+:"
 			if(INFECTION_LEVEL_TWO + 300 to INFINITY)
-				infection = "Acute Infection++:"
-
+				infection = "Острая инфекция++:"
 		dat += "<tr>"
 		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech]</td><td></td>"
 		dat += "</tr>"
 	dat += "</table>"
 	if(HAS_TRAIT(target, TRAIT_BLIND))
-		dat += "<font color='red'>Cataracts detected.</font><BR>"
+		dat += "<font color='red'>Обнаружена катаракта.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_COLORBLIND))
-		dat += "<font color='red'>Photoreceptor abnormalities detected.</font><BR>"
+		dat += "<font color='red'>Обнаружены нарушения в работе фоторецепторов.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_NEARSIGHT))
-		dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
+		dat += "<font color='red'>Обнаружено смещение сетчатки.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_PARAPLEGIC))
-		dat += "<font color='red'>Lumbar nerves damaged.</font><BR>"
-
+		dat += "<font color='red'>Повреждены поясничные нервы.</font><BR>"
 	return dat
