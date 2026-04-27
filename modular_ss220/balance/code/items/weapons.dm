@@ -20,6 +20,7 @@
 // MARK: Laser
 /obj/item/gun/energy/laser
 	w_class = WEIGHT_CLASS_BULKY
+	ammo_type = list(/obj/item/ammo_casing/energy/lasergun_hs)
 
 /obj/item/gun/energy/xray
 	w_class = WEIGHT_CLASS_BULKY
@@ -35,3 +36,54 @@
 
 /obj/item/gun/energy/laser/awaymission_aeg/rnd
 	w_class = WEIGHT_CLASS_NORMAL
+
+//laserhun change
+/obj/item/ammo_casing/energy/lasergun_hs
+	name = "LG-5 laser cell"
+	desc = "A special energy cell designed specifically for the LG-5 laser carbine. Fires a precise, hitscan laser beam."
+	icon_state = "laser"
+	caliber = "energy"
+	fire_sound = 'modular_ss220/balance/code/items/sound/laser.ogg'
+	projectile_type = /obj/projectile/beam/player_laser
+	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
+	muzzle_flash_range = 2
+	delay = 1.2 SECONDS
+
+//recoil
+/obj/item/gun/projectile/shotgun
+	recoil = 1.4
+
+/obj/item/gun/projectile/shotgun/pump(mob/M)
+	if(QDELETED(M))
+		return
+	playsound(M, 'modular_ss220/balance/code/items/sound/shotgunpump.ogg', 60, TRUE)
+	pump_unload()
+	pump_reload()
+
+/obj/item/gun/projectile/shotgun/automatic/combat
+	recoil = 1.1
+
+/obj/item/gun/projectile/automatic/wt550
+	recoil = 0.8
+
+/obj/item/gun/projectile/automatic/pistol/beretta
+	recoil = 0.5
+
+//changed sounds
+/obj/item/ammo_casing/energy/laser
+	fire_sound = 'modular_ss220/balance/code/items/sound/energy.ogg'
+
+/obj/item/ammo_casing/energy/disabler
+	fire_sound = 'modular_ss220/balance/code/items/sound/taser2.ogg'
+
+/obj/item/gun/projectile/automatic/wt550
+	magin_sound = 'modular_ss220/balance/code/items/sound/batrifle_magin.ogg'
+	magout_sound = 'modular_ss220/balance/code/items/sound/batrifle_magout.ogg'
+
+/obj/item/gun/projectile/shotgun
+	fire_sound = 'modular_ss220/balance/code/items/sound/gunshot_shotgun.ogg'
+
+/obj/item/gun/projectile/automatic/pistol/beretta
+	fire_sound = 'modular_ss220/balance/code/items/sound/beretta_shot.ogg'
+	magin_sound = 'modular_ss220/balance/code/items/sound/pistol_magin.ogg'
+	magout_sound = 'modular_ss220/balance/code/items/sound/pistol_magout.ogg'

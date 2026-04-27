@@ -79,6 +79,28 @@ emp_act
 		return -1
 
 	var/obj/item/organ/external/organ = get_organ(check_zone(def_zone))
+	// SS220 ADDTION START
+	if(!QDELETED(src) && health > -100)
+		var/original_x = src.pixel_x
+		var/original_y = src.pixel_y
+		var/original_transform = src.transform
+		var/original_stat = src.stat
+
+		// Number of jerks and shaking force
+		var/shakes = 5
+		var/intensity_x = 2
+		var/intensity_y = 1
+
+		// do the shaking in a separate thread so as not to block the code
+		spawn()
+			for(var/i in 1 to shakes)
+				if(QDELETED(src)) break
+				animate(src, pixel_x = rand(-intensity_x, intensity_x), pixel_y = rand(-intensity_y, intensity_y), time = 0.1 SECONDS)
+				sleep(0.1 SECONDS)
+			// Return to the original position if the mob has not changed (not died, not fallen, etc.)
+			if(!QDELETED(src) && src.stat == original_stat && src.transform == original_transform)
+				animate(src, pixel_x = original_x, pixel_y = original_y, time = 0.1 SECONDS, easing = LINEAR_EASING)
+	// SS220 ADDITION END
 	if(isnull(organ))
 		return bullet_act(P, "chest") //act on chest instead
 
