@@ -121,7 +121,7 @@
 	var/list/message = list()
 	if(!silent && isliving(user))
 		user.visible_message(SPAN_NOTICE("[user] анализирует [target.declent_ru(NOMINATIVE)]."), SPAN_NOTICE("Вы используете газоанализатор на [target.declent_ru(PREPOSITIONAL)]."))
-	message += SPAN_BOLDNOTICE("Результаты анализа [bicon(target.declent_ru(GENITIVE))] [target.declent_ru(GENITIVE)].")
+	message += SPAN_BOLDNOTICE("Результаты анализа [bicon(target)] [target.declent_ru(GENITIVE)].")
 	if(!print)
 		return TRUE
 	var/total_moles = 0

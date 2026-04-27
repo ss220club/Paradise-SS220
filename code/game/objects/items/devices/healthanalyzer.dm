@@ -21,7 +21,7 @@
 					continue
 				if(!overdosing)
 					overdosing = prob(10)
-			msgs += SPAN_NOTICE("[volume]ю. [R.name][overdosing ? " - ПЕРЕДОЗИРОВКА" : "."]")
+			msgs += SPAN_NOTICE("[volume]ю. [R.name][overdosing ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : "."]")
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
 		if(!length(H.reagents.reagent_list))
@@ -61,7 +61,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
-	materials = list(MAT_METAL = 500, MAT_GLASS = 50)
+	materials = list(MAT_METAL = 200)
 	origin_tech = "magnets=1;biotech=1"
 	/// Can be SIMPLE_HEALTH_SCAN (damage is only shown as a single % value), or DETAILED_HEALTH_SCAN (shows the % value and also damage for every specific limb).
 	var/mode = DETAILED_HEALTH_SCAN
@@ -123,7 +123,7 @@
 		msgs += "Основные: [SPAN_HEALTHSCAN_OXY("Удушье")]/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>"
 		msgs += "Детализация повреждений: [SPAN_HEALTHSCAN_OXY("?")] - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
 		msgs += SPAN_NOTICE("Температура тела: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)")
-		msgs += SPAN_WARNING("<b>Предупреждение: уровень крови ОШИБКА: --% --cl.</span><span class='notice'>Тип: ОШИБКА")
+		msgs += SPAN_WARNING("<b>Предупреждение: уровень крови ОШИБКА: --% --cl.</b></span><span class='notice'>Тип: ОШИБКА")
 		msgs += SPAN_NOTICE("Пульс субъекта: <font color='red'>-- bpm.</font>")
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 		return
@@ -349,12 +349,3 @@
 	usesound = 'sound/items/deconstruct.ogg'
 #undef SIMPLE_HEALTH_SCAN
 #undef DETAILED_HEALTH_SCAN
-// BEGIN_INTERNALS
-// END_INTERNALS
-// BEGIN_FILE_DIR
-#define FILE_DIR .
-// END_FILE_DIR
-// BEGIN_PREFERENCES
-// END_PREFERENCES
-// BEGIN_INCLUDE
-// END_INCLUDE

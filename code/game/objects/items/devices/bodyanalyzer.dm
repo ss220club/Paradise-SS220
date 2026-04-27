@@ -67,7 +67,7 @@
 	if(user.incapacitated() || !user.Adjacent(M))
 		return
 	if(!ready)
-		to_chat(user, "<span class='notice'>Сканер издаёт раздражённый звуковой сигнал! Он перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд.</span>")
+		to_chat(user, SPAN_NOTICE("Сканер издаёт раздражённый звуковой сигнал! Он перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд."))
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 	if(cell.charge >= usecharge)
