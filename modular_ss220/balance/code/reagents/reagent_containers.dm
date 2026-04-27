@@ -52,3 +52,28 @@
 
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT
+
+/obj/item/reagent_containers/glass/bottle/dermalin
+	name = "Бутылка дермалина"
+	desc = "Маленькая бутылка с дермалином."
+	list_reagents = list("dermalin" = 30)
+
+/obj/item/reagent_containers/glass/bottle/bruzin
+	name = "Бутылка брузина"
+	desc = "Маленькая бутылка с брузином."
+	list_reagents = list("bruzin" = 30)
+
+/obj/item/reagent_containers/glass/bottle/dermalin_plus
+	name = "Бутылка дермалина плюс"
+	desc = "Маленькая бутылка с дермалином плюс."
+	list_reagents = list("dermalin_plus" = 30)
+
+/obj/item/reagent_containers/glass/bottle/bruzin_plus
+	name = "Бутылка брузина плюс"
+	desc = "Маленькая бутылка с брузином плюс."
+	list_reagents = list("bruzin_plus" = 30)
+
+/obj/item/reagent_containers/glass/bottle/adv_lava_extract
+	name = "Бутылка модифицированного экстракта лазиса."
+	desc = "Маленькая бутылка с модифицированным экстрактом лазиса."
+	list_reagents = list("adv_lava_extract" = 30)

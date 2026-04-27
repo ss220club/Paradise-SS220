@@ -66,3 +66,137 @@
 
 	if(user.client)
 		user.stop_sound_channel(CHANNEL_HEARTBEAT)
+
+/datum/reagent/medicine/dermalin
+	name = "Дермалин"
+	id = "dermalin"
+	description = "Препарат восстанавливает обожженные ткани, оказывая механическое воздействие на организм; передозировка вызывает сильное воспаление кожи."
+	reagent_state = LIQUID
+	color = "#eeff00"
+	metabolization_rate = 0.4
+	overdose_threshold = 15
+	harmless = FALSE
+	var/static/list/drug_list = list("crank", "methamphetamine", "space_drugs", "synaptizine", "psilocybin", "ephedrine", "epinephrine", "stimulants", "stimulative_agent", "bath_salts", "lsd", "thc", "mephedrone", "pump_up")
+	taste_description = "Сладковато кислый"
+	goal_department = "Chemistry"
+	goal_difficulty = REAGENT_GOAL_HARD
+
+/datum/reagent/medicine/dermalin/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	for(var/I in M.reagents.reagent_list)
+		var/datum/reagent/R = I
+		if(drug_list.Find(R.id))
+			M.reagents.remove_reagent(R.id, 5)
+	update_flags |= M.adjustFireLoss(-5, FALSE)
+	update_flags |= M.adjustStaminaLoss(15, FALSE)
+	if(prob(30))
+		M.Confused(10 SECONDS)
+	if(prob(5))
+		M.SetWeakened(6 SECONDS, FALSE)
+	return ..() | update_flags
+
+/datum/reagent/medicine/dermalin/overdose_process(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustFireLoss(10, FALSE)
+	update_flags |= M.adjustStaminaLoss(20, FALSE)
+	return ..() | update_flags
+
+/datum/reagent/medicine/bruzin
+	name = "Брузин"
+	id = "bruzin"
+	description = "Препарат восстанавливает серьезные порезы, оказывая нагрузку на организм; передозировка вызывает разрыв тканей."
+	reagent_state = LIQUID
+	color = "#dd0303"
+	metabolization_rate = 0.4
+	overdose_threshold = 15
+	harmless = FALSE
+	var/static/list/drug_list = list("crank", "methamphetamine", "space_drugs", "synaptizine", "psilocybin", "ephedrine", "epinephrine", "stimulants", "stimulative_agent", "bath_salts", "lsd", "thc", "mephedrone", "pump_up")
+	taste_description = "Сладковато мясной"
+	goal_department = "Chemistry"
+	goal_difficulty = REAGENT_GOAL_HARD
+
+/datum/reagent/medicine/bruzin/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	for(var/I in M.reagents.reagent_list)
+		var/datum/reagent/R = I
+		if(drug_list.Find(R.id))
+			M.reagents.remove_reagent(R.id, 5)
+	update_flags |= M.adjustBruteLoss(-5, FALSE)
+	update_flags |= M.adjustStaminaLoss(15, FALSE)
+	if(prob(30))
+		M.Confused(10 SECONDS)
+	if(prob(5))
+		M.SetWeakened(6 SECONDS, FALSE)
+	return ..() | update_flags
+
+/datum/reagent/medicine/bruzin/overdose_process(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustBruteLoss(10, FALSE)
+	update_flags |= M.adjustStaminaLoss(20, FALSE)
+	return ..() | update_flags
+
+/datum/chemical_reaction/dermalin
+	name = "Дермалин"
+	id = "dermalin"
+	result = "dermalin"
+	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "kelotane" = 2, "mitocholide" = 1, "haloperidol" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/bruzin
+	name = "Брузин"
+	id = "bruzin"
+	result = "bruzin"
+	required_reagents = list("salglu_solution" = 1, "synthflesh" = 1, "bicaridine" = 2, "mitocholide" = 1, "haloperidol" = 1)
+	result_amount = 1
+
+/datum/reagent/medicine/bruzin_plus
+	name = "Брузин плюс"
+	id = "bruzin_plus"
+	description = "Продвинутая версия Брузина, лишённая стандартных побочных эффектов ценой ужасающих эффектов при передозе. Экслюзивная разработка синдиката."
+	reagent_state = LIQUID
+	color = "#dd0303"
+	metabolization_rate = 0.4
+	overdose_threshold = 30
+	harmless = FALSE
+	taste_description = "Сладковато мясной"
+
+/datum/reagent/medicine/bruzin_plus/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustBruteLoss(-5, FALSE)
+	return ..() | update_flags
+
+/datum/reagent/medicine/bruzin_plus/overdose_process(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustBruteLoss(15, FALSE)
+	update_flags |= M.adjustStaminaLoss(40, FALSE)
+	if(prob(70))
+		M.Confused(15 SECONDS)
+	if(prob(50))
+		M.SetWeakened(5 SECONDS, FALSE)
+	return ..() | update_flags
+
+/datum/reagent/medicine/dermalin_plus
+	name = "Дермалин Плюс"
+	id = "dermalin_plus"
+	description = "Продвинутая версия Дермалина, лишённая стандартных побочных эффектов ценой ужасающих эффектов при передозе. Экслюзивная разработка синдиката."
+	reagent_state = LIQUID
+	color = "#eeff00"
+	metabolization_rate = 0.4
+	overdose_threshold = 30
+	harmless = FALSE
+	taste_description = "Сладковато кислый"
+
+/datum/reagent/medicine/dermalin_plus/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustFireLoss(-5, FALSE)
+	return ..() | update_flags
+
+/datum/reagent/medicine/dermalin_plus/overdose_process(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustFireLoss(15, FALSE)
+	update_flags |= M.adjustStaminaLoss(40, FALSE)
+	if(prob(70))
+		M.Confused(15 SECONDS)
+	if(prob(50))
+		M.SetWeakened(5 SECONDS, FALSE)
+	return ..() | update_flags

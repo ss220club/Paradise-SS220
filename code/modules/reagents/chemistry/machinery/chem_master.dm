@@ -69,6 +69,10 @@
 		production_modes[new_mode.mode_id] = new_mode
 		new_mode = new /datum/chemical_production_mode/bottles()
 		production_modes[new_mode.mode_id] = new_mode
+// SS220 EDIT START -  Нужно для добавления медипена
+		new_mode = new /datum/chemical_production_mode/autoinjectors()
+		production_modes[new_mode.mode_id] = new_mode
+// S220 EDIT END
 	if(isnull(production_mode))
 		for(var/key in production_modes)
 			production_mode = key
