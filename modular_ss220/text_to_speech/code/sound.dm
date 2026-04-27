@@ -16,7 +16,6 @@
 	var/err_file = ""
 	var/static/list/interpreters = list("[MS_WINDOWS]" = "cmd /c", "[UNIX]" = "sh -c")
 	var/interpreter = interpreters["[world.system_type]"]
-	log_debug("shelleo() received command: [command]")
 	if(interpreter)
 		for(var/seo_id in shelleo_ids)
 			if(!shelleo_ids[seo_id])
@@ -30,19 +29,14 @@
 		out_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_OUT]"
 		err_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_ERR]"
 		if(world.system_type == UNIX)
-			log_debug("shelleo() shell_command: [interpreter] \"[replacetext(command, "\"", "\"")]\" > [out_file] 2> [err_file]")
-			errorcode = shell("[interpreter] \"[replacetext(command, "\"", "\"")]\" > [out_file] 2> [err_file]")
+			errorcode = shell("[interpreter] \"[replacetext(command, "\"", "\\\"")]\" > [out_file] 2> [err_file]")
 		else
-			log_debug("shelleo() shell_command: [interpreter] \"[command]\" > [out_file] 2> [err_file]")
 			errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
-		log_debug("shelleo() errorcode: [errorcode]")
 		if(fexists(out_file))
 			stdout = file2text(out_file)
-			log_debug("shelleo() stdout: [stdout]")
 			fdel(out_file)
 		if(fexists(err_file))
 			stderr = file2text(err_file)
-			log_debug("shelleo() stderr: [stderr]")
 			fdel(err_file)
 		shelleo_ids[shelleo_id] = FALSE
 	else
@@ -71,8 +65,6 @@
 	if(!effect)
 		CRASH("Invalid sound effect chosen.")
 
-	log_debug("apply_sound_effect() called: effect=[effect], input=[filename_input], output=[filename_output]")
-
 	var/taskset
 	if(GLOB.configuration.tts.ffmpeg_cpuaffinity)
 		taskset = "taskset -ac [GLOB.configuration.tts.ffmpeg_cpuaffinity]"
@@ -81,19 +73,14 @@
 	switch(effect)
 		if(SOUND_EFFECT_RADIO)
 			output = world.shelleo({"[taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a "highpass=f=1000, lowpass=f=3000, acrusher=1:1:50:0:log" [filename_output]"})
-			log_debug(" RADIO - [taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a [filename_output]")
 		if(SOUND_EFFECT_ROBOT)
 			output = world.shelleo({"[taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a "afftfilt=real='hypot(re,im)*sin(0)':imag='hypot(re,im)*cos(0)':win_size=1024:overlap=0.5, deesser=i=0.4, volume=volume=1.5" [filename_output]"})
-			log_debug(" ROBOT - [taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a [filename_output]")
 		if(SOUND_EFFECT_RADIO_ROBOT)
 			output = world.shelleo({"[taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a "afftfilt=real='hypot(re,im)*sin(0)':imag='hypot(re,im)*cos(0)':win_size=1024:overlap=0.5, deesser=i=0.4, volume=volume=1.5, highpass=f=1000, lowpass=f=3000, acrusher=1:1:50:0:log" [filename_output]"})
-			log_debug(" RADIO_ROBOT - [taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a [filename_output]")
 		if(SOUND_EFFECT_MEGAPHONE)
 			output = world.shelleo({"[taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a "highpass=f=500, lowpass=f=4000, volume=volume=10, acrusher=1:1:45:0:log" [filename_output]"})
-			log_debug(" MEGAPHONE - [taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a [filename_output]")
 		if(SOUND_EFFECT_MEGAPHONE_ROBOT)
 			output = world.shelleo({"[taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a "afftfilt=real='hypot(re,im)*sin(0)':imag='hypot(re,im)*cos(0)':win_size=1024:overlap=0.5, deesser=i=0.4, highpass=f=500, lowpass=f=4000, volume=volume=10, acrusher=1:1:45:0:log" [filename_output]"})
-			log_debug(" MEGAPHONE_ROBOT - [taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] -filter:a [filename_output]")
 		else
 			CRASH("Invalid sound effect chosen.")
 	var/errorlevel = output[SHELLEO_ERRORLEVEL]
