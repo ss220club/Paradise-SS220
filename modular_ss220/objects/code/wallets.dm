@@ -2,7 +2,6 @@
 	var/photo_overlay = "photo"
 
 	icon = 'modular_ss220/objects/icons/wallets.dmi'
-	photo_overlay = "photo_overlay"
 
 /obj/item/storage/wallet/wallet_NT
 	name = "leather wallet NT"
@@ -39,4 +38,4 @@
 	И сверх модный. И сверх дорогой. И сшит по принципу WYCI."
 	icon = 'modular_ss220/objects/icons/wallets.dmi'
 	icon_state = "wallet_wyci"
-	photo_overlay = "photo_wyci_overlay"
+	photo_overlay = "photo_wyci"
