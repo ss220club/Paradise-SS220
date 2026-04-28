@@ -11,6 +11,10 @@
 	if(amount)
 		nutrition = min(NUTRITION_LEVEL_FAT, nutrition + round(amount / 10))
 
+// Почек нет умирать от того, что их нет не надо
+/mob/living/carbon/human/nucleation/handle_kidneys()
+	return
+
 /mob/living/carbon/human/serpentid/Initialize(mapload)
 	. = ..(mapload, /datum/species/serpentid)
 
