@@ -76,7 +76,7 @@
 			else
 				if(LAZYLEN(damaged))
 					for(var/datum/robot_component/org in damaged)
-						msgs += text("<span class='notice'>	 []: [][] - [] - [] - []</span>",	\
+						msgs += text("<span class='notice'>\t []: [][] - [] - [] - []</span>",	\
 						capitalize(org.name),					\
 						(org.is_destroyed())	?	"<font color='red'><b>УНИЧТОЖЕН</b></font> "							:"",\
 						(org.electronics_damage > 0)	?	"<font color='#FFA500'>[org.electronics_damage]</font>"	:0,	\
@@ -85,9 +85,9 @@
 						(org.powered)	?	"Питание ВКЛ"		:	"<font color='red'>Питание ВЫКЛ</font>")
 				if(LAZYLEN(missing))
 					for(var/datum/robot_component/org in missing)
-						msgs += SPAN_WARNING("	 [capitalize(org.name)]: ПОТЕРЯН")
+						msgs += SPAN_WARNING("\t [capitalize(org.name)]: ПОТЕРЯН")
 				if(H.emagged && prob(5))
-					msgs += SPAN_WARNING("	 ОШИБКА: ВНУТРЕННИЕ СИСТЕМЫ СКОМПРОМЕТИРОВАНЫ")
+					msgs += SPAN_WARNING("\t ОШИБКА: ВНУТРЕННИЕ СИСТЕМЫ СКОМПРОМЕТИРОВАНЫ")
 		if("prosthetics")
 			var/mob/living/carbon/human/H = M
 			var/is_ipc = ismachineperson(H)
