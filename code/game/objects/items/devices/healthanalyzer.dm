@@ -123,7 +123,7 @@
 		msgs += "Основные: [SPAN_HEALTHSCAN_OXY("Удушье")]/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>"
 		msgs += "Детализация повреждений: [SPAN_HEALTHSCAN_OXY("?")] - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
 		msgs += SPAN_NOTICE("Температура тела: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)")
-		msgs += SPAN_WARNING("<b>Предупреждение: уровень крови ОШИБКА: --% --сл.</b></span><span class='notice'>Тип: ОШИБКА")
+		msgs += SPAN_WARNING("<b>Предупреждение: уровень крови ОШИБКА: --% --сл.</span><span class='notice'>Тип: ОШИБКА")
 		msgs += SPAN_NOTICE("Пульс субъекта: <font color='red'>-- уд/мин.</font>")
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 		return

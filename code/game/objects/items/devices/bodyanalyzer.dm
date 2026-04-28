@@ -117,7 +117,7 @@
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/bodyanalyzer, setReady)), scan_cd)
 		time_to_use = world.time + scan_cd
 	else
-		to_chat(user, "<span class='notice'>Ошибка сканирования. Недопустимый образец.</span>")
+		to_chat(user, SPAN_NOTICE("Ошибка сканирования. Недопустимый образец."))
 
 //Unashamedly ripped from adv_med.dm
 /obj/item/bodyanalyzer/proc/generate_printing_text(mob/living/M, mob/user)

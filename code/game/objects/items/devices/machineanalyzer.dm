@@ -63,8 +63,8 @@
 			var/burn = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
 			var/brute = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
 			msgs += SPAN_NOTICE("Результат анализа для [M.declent_ru(GENITIVE)]: \n\t Общее состояние: [M.stat == DEAD ? "полностью отключён" : "Работоспособность [M.health]%"]")
-			msgs += "	 Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
-			msgs += "	 Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
+			msgs += SPAN_NOTICE("\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>")
+			msgs += SPAN_NOTICE("\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>")
 			if(M.timeofdeath && M.stat == DEAD)
 				msgs += SPAN_NOTICE("Время отключения: [station_time_timestamp("hh:mm:ss", M.timeofdeath)]")
 			var/mob/living/silicon/robot/H = M
@@ -72,7 +72,7 @@
 			var/list/missing = H.get_missing_components()
 			msgs += SPAN_NOTICE("Локальные повреждения:")
 			if(!LAZYLEN(damaged) && !LAZYLEN(missing))
-				msgs += SPAN_NOTICE("	 Состояние компонентов - OK.")
+				msgs += SPAN_NOTICE("\t Состояние компонентов - OK.")
 			else
 				if(LAZYLEN(damaged))
 					for(var/datum/robot_component/org in damaged)
@@ -92,7 +92,7 @@
 			var/mob/living/carbon/human/H = M
 			var/is_ipc = ismachineperson(H)
 			msgs += "<span class='notice'>Анализ результатов для [M.declent_ru(GENITIVE)]: [is_ipc ? "\n\t Общее состояние: [H.stat == DEAD ? "полностью отключён" : "Работоспособность [H.health]%"]</span><hr>" : "<hr>"]" //for the record im sorry
-			msgs += "	 Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
+			msgs += SPAN_NOTICE("\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>")
 			msgs += SPAN_NOTICE("Внешние протезы:")
 			var/organ_found
 			if(LAZYLEN(H.internal_organs))
@@ -135,6 +135,6 @@
 			var/burn = A.getFireLoss() > 50 	? 	"<b>[A.getFireLoss()]</b>" 		: A.getFireLoss()
 			var/brute = A.getBruteLoss() > 50 	? 	"<b>[A.getBruteLoss()]</b>" 	: A.getBruteLoss()
 			msgs += SPAN_NOTICE("Анализ результатов для [M.declent_ru(GENITIVE)]: \n\t Общее состояние: [A.stat == DEAD ? "полностью отключён" : "Работоспособность [A.health]%"]")
-			msgs += "	 Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
-			msgs += "	 Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
+			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
+			msgs += "\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
