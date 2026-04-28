@@ -157,7 +157,7 @@
 	dat += "[extra_font]\tГенетическое повреждение тканей %: [target.getCloneLoss()]<br>"
 	extra_font = (target.getBrainLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\tПриблизительное повреждение мозга %: [target.getBrainLoss()]<br>"
-	dat += "Информация о параличе %: [target.IsParalyzed()] (до восстановления осталось [round(target.AmountParalyzed() / 10)] секунд!)<br>"
+	dat += "Информация о параличе: [target.IsParalyzed()] (до восстановления осталось [round(target.AmountParalyzed() / 10)] секунд!)<br>"
 	dat += "Температура тела: [target.bodytemperature-T0C]&deg;C ([target.bodytemperature*1.8-459.67]&deg;F)<br>"
 	dat += "<hr>"
 	var/blood_percent =  round((target.blood_volume / BLOOD_VOLUME_NORMAL))
