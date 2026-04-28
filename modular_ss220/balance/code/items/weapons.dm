@@ -37,7 +37,7 @@
 /obj/item/gun/energy/laser/awaymission_aeg/rnd
 	w_class = WEIGHT_CLASS_NORMAL
 
-//laserhun change
+//lasergun change
 /obj/item/ammo_casing/energy/lasergun_hs
 	name = "LG-5 laser cell"
 	desc = "A special energy cell designed specifically for the LG-5 laser carbine. Fires a precise, hitscan laser beam."

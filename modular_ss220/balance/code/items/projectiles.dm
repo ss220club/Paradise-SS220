@@ -1,6 +1,7 @@
 /obj/projectile
 	///If TRUE, hit mobs even if they're on the floor and not our target
 	var/hit_prone_targets = TRUE
+	speed = 0.70
 
 /atom/handle_ricochet(obj/projectile/ricocheting_projectile)
 	. = ..()
