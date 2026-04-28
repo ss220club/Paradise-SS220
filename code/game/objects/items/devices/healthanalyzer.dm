@@ -70,7 +70,7 @@
 
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("Используйте [src.declent_ru(NOMINATIVE)] в руке чтобы включить детализацию повреждений.")
+	. += SPAN_NOTICE("Используйте [src.declent_ru(ACCUSATIVE)] в руке чтобы включить детализацию повреждений.")
 
 /obj/item/healthanalyzer/attack_self__legacy__attackchain(mob/user)
 	mode = !mode

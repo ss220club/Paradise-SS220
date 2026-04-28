@@ -192,16 +192,16 @@
 		var/internal_bleeding = ""
 		var/lung_ruptured = ""
 		if(e.status & ORGAN_INT_BLEEDING)
-			internal_bleeding = "<br>Внутреннее кровотечение, "
+			internal_bleeding = "<br>Внутреннее кровотечение; "
 		if(istype(e, /obj/item/organ/external/chest) && target.is_lung_ruptured())
-			lung_ruptured = "Разрыв лёгкого, "
+			lung_ruptured = "Разрыв лёгкого; "
 		if(e.status & ORGAN_SPLINTED)
-			splint = "Наложена шина, "
+			splint = "Наложена шина; "
 		if(e.status & ORGAN_BROKEN)
 			var/datum/wound/fracture = e.get_wound(/datum/wound/fracture)
-			AN = "[fracture.name]:"
+			AN = "[fracture.name]; "
 		if(e.is_robotic())
-			robot = "Роботизированный"
+			robot = "Роботизированный; "
 		if(e.open)
 			open = "Открыт:"
 		switch(e.germ_level)
@@ -223,9 +223,9 @@
 		for(var/I in e.embedded_objects)
 			unknown_body++
 		if(unknown_body || e.hidden)
-			imp += "Обнаружено инородное тело:"
+			imp += "Обнаружено инородное тело; "
 		if(!AN && !open && !infected && !imp)
-			AN = "Повреждения отсутствуют"
+			AN = "Повреждения отсутствуют; "
 		dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured]</td>"
 		dat += "</tr>"
 	for(var/obj/item/organ/internal/i in target.internal_organs)

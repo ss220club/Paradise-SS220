@@ -120,7 +120,7 @@
 		airs = list(airs)
 	var/list/message = list()
 	if(!silent && isliving(user))
-		user.visible_message(SPAN_NOTICE("[user] анализирует [target.declent_ru(NOMINATIVE)]."), SPAN_NOTICE("Вы используете газоанализатор на [target.declent_ru(PREPOSITIONAL)]."))
+		user.visible_message(SPAN_NOTICE("[user] анализирует [target.declent_ru(ACCUSATIVE)]."), SPAN_NOTICE("Вы используете газоанализатор на [target.declent_ru(PREPOSITIONAL)]."))
 	message += SPAN_BOLDNOTICE("Результаты анализа [bicon(target)] [target.declent_ru(GENITIVE)].")
 	if(!print)
 		return TRUE
@@ -157,7 +157,7 @@
 				if(air.sleeping_agent() && (milla_turf_details || air.sleeping_agent() / total_moles > 0.01))
 					message += "  [SPAN_SLEEPING_AGENT("Оксид азота: [round(air.sleeping_agent(), 0.01)] молей ([round(air.sleeping_agent() / total_moles * 100, 0.01)] %)")]"
 				if(air.agent_b() && (milla_turf_details || air.agent_b() / total_moles > 0.01))
-					message += "  [SPAN_AGENT_B("Agent B: [round(air.agent_b(), 0.01)] молей ([round(air.agent_b() / total_moles * 100, 0.01)] %)")]"
+					message += "  [SPAN_AGENT_B("Агент Б: [round(air.agent_b(), 0.01)] молей ([round(air.agent_b() / total_moles * 100, 0.01)] %)")]"
 				if(air.hydrogen() && (milla_turf_details || air.hydrogen() / total_moles > 0.01))
 					message += "  [SPAN_HYDROGEN("Водород: [round(air.hydrogen(), 0.01)] молей ([round(air.hydrogen() / total_moles * 100, 0.01)] %)")]"
 				if(air.water_vapor() && (milla_turf_details || air.water_vapor() / total_moles > 0.01))
