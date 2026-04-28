@@ -111,7 +111,7 @@
 					if(!O.is_robotic() || istype(O, /obj/item/organ/internal/cyberimp) || O.stealth_level > 1)
 						continue
 					organ_found = TRUE
-					msgs += "[capitalize(O.name)]: <font color='red'>[O.status & ORGAN_DEAD ? "КРИТИЧЕСКИЙ СБОЙ" : O.damage]</font>"
+					msgs += "[capitalize(O.name)]: <font color='red'>[O.status & ORGAN_DEAD ? "КРИТИЧЕСКАЯ НЕИСПРАВНОСТЬ" : O.damage]</font>"
 			if(!organ_found)
 				msgs += SPAN_WARNING("Протезы не обнаружены.")
 			msgs += "<hr>"

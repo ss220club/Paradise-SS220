@@ -110,7 +110,7 @@
 			addtimer(VARSET_CALLBACK(src, printing, FALSE), 1.4 SECONDS)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), UPDATE_OVERLAYS), 1.5 SECONDS)
 	else if(iscorgi(M) && M.stat == DEAD)
-		to_chat(user, "<span class='notice'>Вас не покидает вопрос, был ли [M.ru_p_they()] хорошим корги. <b>[capitalize(src.declent_ru(NOMINATIVE))] говорит, что он был лучш[genderize_ru(M.gender, "им", "ей", "им", "ими")]...</b></span>") // :'(
+		to_chat(user, SPAN_NOTICE("Вас не покидает вопрос, был ли [M.ru_p_they()] хорошим корги. <b>[capitalize(src.declent_ru(NOMINATIVE))] говорит, что он был лучш[genderize_ru(M.gender, "им", "ей", "им", "ими")]...</b>")) // :'(
 		playsound(loc, 'sound/machines/ping.ogg', 50, 0)
 		ready = FALSE
 		update_icon(UPDATE_ICON_STATE)
@@ -245,7 +245,7 @@
 			if(INFECTION_LEVEL_TWO + 300 to INFINITY)
 				infection = "Острая инфекция++:"
 		dat += "<tr>"
-		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech]</td><td></td>"
+		dat += "<td>[i.name]</td><td>Н/Д</td><td>[i.damage]</td><td>[infection]:[mech]</td><td></td>"
 		dat += "</tr>"
 	dat += "</table>"
 	if(HAS_TRAIT(target, TRAIT_BLIND))
