@@ -203,7 +203,7 @@
 			if(sleeping_agent && (milla_turf_details || sleeping_agent / total_moles > 0.01))
 				message += "  [SPAN_SLEEPING_AGENT("Оксид азота: [round(sleeping_agent, 0.01)] молей ([round(sleeping_agent / total_moles * 100, 0.01)] %)")]"
 			if(agent_b && (milla_turf_details || agent_b / total_moles > 0.01))
-				message += "  [SPAN_AGENT_B("Agent B: [round(agent_b, 0.01)] молей ([round(agent_b / total_moles * 100, 0.01)] %)")]"
+				message += "  [SPAN_AGENT_B("Агент Б: [round(agent_b, 0.01)] молей ([round(agent_b / total_moles * 100, 0.01)] %)")]"
 			if(hydrogen && (milla_turf_details || hydrogen / total_moles > 0.01))
 				message += "  [SPAN_HYDROGEN("Водород: [round(hydrogen, 0.01)] молей ([round(hydrogen / total_moles * 100, 0.01)] %)")]"
 			if(water_vapor && (milla_turf_details || (water_vapor / total_moles > 0.01)))

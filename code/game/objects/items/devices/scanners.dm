@@ -156,7 +156,7 @@ SLIME SCANNER
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
 	to_chat(user, "========================")
 	to_chat(user, "<b>Результаты сканирования слайма:</b>")
-	to_chat(user, SPAN_NOTICE("[T.colour] [T.is_adult ? "взрослый" : "маленький"] слайм"))
+	to_chat(user, SPAN_NOTICE("[T.colour] [T.is_adult ? "взрослый" : "малыш"] слайм"))
 	to_chat(user, "Сытость: [T.nutrition]/[T.get_max_nutrition()]")
 	if(T.nutrition < T.get_starve_nutrition())
 		to_chat(user, SPAN_WARNING("Внимание: слайм голодает!"))

@@ -21,14 +21,14 @@
 					continue
 				if(!overdosing)
 					overdosing = prob(10)
-			msgs += "<span class='notice'>[volume]ю of [R.name][overdosing ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
+			msgs += "<span class='notice'>[volume] ю. [R.name][overdosing ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
 		if(!length(H.reagents.reagent_list))
 			msgs += SPAN_BOLDNOTICE("В субъекте обнаружены следующие реагенты:")
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += "<span class='notice'>[rand(5, 100)]ю [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
+				msgs += "<span class='notice'>[rand(5, 100)] ю. [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
 	if(!has_real_or_fake_reagents)
 		msgs += SPAN_NOTICE("Субъект не содержит реагентов.")
 	if(length(H.reagents.addiction_list))

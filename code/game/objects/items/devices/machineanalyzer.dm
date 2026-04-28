@@ -15,7 +15,7 @@
 	var/list/msgs = list()
 	user.visible_message(SPAN_WARNING("[user] анализирует компоненты пола!"), SPAN_WARNING("Вы по-глупому пытаетесь проанализировать компоненты пола!"))
 	msgs += SPAN_NOTICE("Анализ результатов для пола: \n\t Общее состояние: Неизвестно")
-	msgs += SPAN_NOTICE("	 Детализация повреждений: <font color='#FFA500'>[0]</font>/<font color='red'>[0]</font>")
+	msgs += SPAN_NOTICE("\t Детализация повреждений: <font color='#FFA500'>[0]</font>/<font color='red'>[0]</font>")
 	msgs += SPAN_NOTICE("Основные: <font color='#FFA500'>Ожоги</font><font color ='red'>/Ушибы</font>")
 	msgs += SPAN_NOTICE("Температура шасси: ???")
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))

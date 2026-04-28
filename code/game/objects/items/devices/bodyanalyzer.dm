@@ -157,7 +157,7 @@
 	dat += "[extra_font]\tГенетическое повреждение тканей %: [target.getCloneLoss()]<br>"
 	extra_font = (target.getBrainLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\tПриблизительное повреждение мозга %: [target.getBrainLoss()]<br>"
-	dat += "Описание паралича %: [target.IsParalyzed()] (осталось [round(target.AmountParalyzed() / 10)] секунд!)<br>"
+	dat += "Информация о параличе %: [target.IsParalyzed()] (до восстановления осталось [round(target.AmountParalyzed() / 10)] секунд!)<br>"
 	dat += "Температура тела: [target.bodytemperature-T0C]&deg;C ([target.bodytemperature*1.8-459.67]&deg;F)<br>"
 	dat += "<hr>"
 	var/blood_percent =  round((target.blood_volume / BLOOD_VOLUME_NORMAL))
@@ -201,9 +201,9 @@
 			var/datum/wound/fracture = e.get_wound(/datum/wound/fracture)
 			AN = "[fracture.name]; "
 		if(e.is_robotic())
-			robot = "Роботизированный; "
+			robot = "Роботизированная конечность; "
 		if(e.open)
-			open = "Открыт:"
+			open = "Открыто:"
 		switch(e.germ_level)
 			if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
 				infected = "Легкая инфекция:"
