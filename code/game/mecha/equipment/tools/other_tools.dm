@@ -49,7 +49,7 @@
 	if(!action_checks(target))
 		return
 	if(cooldown_timer > world.time)
-		occupant_message("<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] всё еще заряжается.</span>")
+		occupant_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] всё еще заряжается."))
 		return
 	switch(mode)
 		if(MECH_GRAVCAT_MODE_GRAVSLING)
@@ -411,7 +411,7 @@
 		return fuel_added
 
 	else
-		occupant_message("<span class='warning'>[capitalize(fuel_name)] на минимуме! [capitalize(I.declent_ru(NOMINATIVE))] не может использоваться в качестве топлива.</span>")
+		occupant_message(SPAN_WARNING("[capitalize(fuel_name)] на минимуме! [capitalize(I.declent_ru(NOMINATIVE))] не может использоваться в качестве топлива."))
 		return 0
 
 /obj/item/mecha_parts/mecha_equipment/generator/attackby__legacy__attackchain(weapon,mob/user, params)

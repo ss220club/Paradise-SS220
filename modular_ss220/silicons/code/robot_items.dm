@@ -62,6 +62,6 @@
 			else if(linked_account)
 				transaction_locked = TRUE
 			else
-				to_chat(user, span_warning("[bicon(src)]No account connected to send transactions to.<"))
+				to_chat(user, SPAN_WARNING("[bicon(src)]No account connected to send transactions to.<"))
 			return TRUE
 	. = ..()

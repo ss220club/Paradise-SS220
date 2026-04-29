@@ -39,17 +39,17 @@
 		if(istype(target, /obj/machinery/atmospherics/supermatter_crystal)) //No, you can't pick up the SM with this you moron, did you think you were clever?
 			var/obj/mecha/working/ripley/R = chassis
 			QDEL_LIST_CONTENTS(R.cargo) //We don't want to drop cargo that just spam hits the SM, let's delete it
-			occupant_message("<span class='userdanger'>Вы с ужасом осознаёте, что вы сделали, когда [chassis.declent_ru(NOMINATIVE)] начинает искривляться вокруг вас!</span>")
+			occupant_message(SPAN_USERDANGER("Вы с ужасом осознаёте, что вы сделали, когда [chassis.declent_ru(NOMINATIVE)] начинает искривляться вокруг вас!"))
 			chassis.occupant.dust()
 			target.Bumped(chassis)
 			return
 		if(O.anchored)
-			occupant_message("<span class='warning'>[capitalize(target.declent_ru(NOMINATIVE))] надёжно фиксируется!</span>")
+			occupant_message(SPAN_WARNING("[capitalize(target.declent_ru(NOMINATIVE))] надёжно фиксируется!"))
 			return
 		if(length(cargo_holder.cargo) >= cargo_holder.cargo_capacity)
-			occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
+			occupant_message(SPAN_WARNING("Недостаточно места в грузовом отсеке!"))
 			return
-		chassis.visible_message("<span class='notice'>[capitalize(chassis.declent_ru(NOMINATIVE))] поднимает [target.declent_ru(ACCUSATIVE)] и начинает помещать в грузовой отсек.</span>")
+		chassis.visible_message(SPAN_NOTICE("[capitalize(chassis.declent_ru(NOMINATIVE))] поднимает [target.declent_ru(ACCUSATIVE)] и начинает помещать в грузовой отсек."))
 		var/anchor_state_before_load = O.anchored
 		O.anchored = TRUE
 		if(!do_after_cooldown(target))
@@ -58,7 +58,7 @@
 		cargo_holder.cargo += O
 		O.forceMove(chassis)
 		O.anchored = FALSE
-		occupant_message("<span class='notice'>[capitalize(target.declent_ru(NOMINATIVE))] успешно загружается.</span>")
+		occupant_message(SPAN_NOTICE("[capitalize(target.declent_ru(NOMINATIVE))] успешно загружается."))
 		log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 		return
 
@@ -71,15 +71,15 @@
 			if(!M)
 				return
 			M.adjustOxyLoss(round(dam_force/2))
-			target.visible_message("<span class='danger'>[capitalize(chassis.declent_ru(NOMINATIVE))] сжимает [target.declent_ru(ACCUSATIVE)].</span>", \
-								"<span class='userdanger'>[capitalize(chassis.declent_ru(NOMINATIVE))] сжимает [target.declent_ru(ACCUSATIVE)].</span>",\
-								"<span class='italics'>Вы слышите, как что-то хрустит.</span>")
+			target.visible_message(SPAN_DANGER("[capitalize(chassis.declent_ru(NOMINATIVE))] сжимает [target.declent_ru(ACCUSATIVE)]."), \
+								SPAN_USERDANGER("[capitalize(chassis.declent_ru(NOMINATIVE))] сжимает [target.declent_ru(ACCUSATIVE)]."),\
+								SPAN_ITALICS("Вы слышите, как что-то хрустит."))
 			add_attack_logs(chassis.occupant, M, "Squeezed with [src] ([uppertext(chassis.occupant.a_intent)]) ([uppertext(damtype)])")
 			start_cooldown()
 			return
 		step_away(M, chassis)
-		occupant_message("<span class='notice'>Вы толкаете [target.declent_ru(ACCUSATIVE)] с дороги.</span>")
-		chassis.visible_message("<span class='notice'>[capitalize(chassis.declent_ru(NOMINATIVE))] толкает [target.declent_ru(ACCUSATIVE)] с дороги.</span>")
+		occupant_message(SPAN_NOTICE("Вы толкаете [target.declent_ru(ACCUSATIVE)] с дороги."))
+		chassis.visible_message(SPAN_NOTICE("[capitalize(chassis.declent_ru(NOMINATIVE))] толкает [target.declent_ru(ACCUSATIVE)] с дороги."))
 
 
 //This is pretty much just for the death-ripley
@@ -101,25 +101,25 @@
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
-					occupant_message("<span class='notice'>[capitalize(target.declent_ru(NOMINATIVE))] успешно загружается.</span>")
+					occupant_message(SPAN_NOTICE("[capitalize(target.declent_ru(NOMINATIVE))] успешно загружается."))
 					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 				else
 					O.anchored = initial(O.anchored)
 			else
-				occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
+				occupant_message(SPAN_WARNING("Недостаточно места в грузовом отсеке!"))
 		else
-			occupant_message("<span class='warning'>[capitalize(target.declent_ru(NOMINATIVE))] надёжно фиксируется!</span>")
+			occupant_message(SPAN_WARNING("[capitalize(target.declent_ru(NOMINATIVE))] надёжно фиксируется!"))
 
 	else if(isliving(target))
 		var/mob/living/M = target
 		if(M.stat == DEAD) return
 		if(chassis.occupant.a_intent == INTENT_HARM)
-			target.visible_message("<span class='danger'>[capitalize(chassis.declent_ru(NOMINATIVE))] уничтожает [target.declent_ru(ACCUSATIVE)] в нечестивой ярости.</span>",
-								"<span class='userdanger'>[capitalize(chassis.declent_ru(NOMINATIVE))] уничтожает [target.declent_ru(ACCUSATIVE)] в нечестивой ярости.</span>")
+			target.visible_message(SPAN_DANGER("[capitalize(chassis.declent_ru(NOMINATIVE))] уничтожает [target.declent_ru(ACCUSATIVE)] в нечестивой ярости."),
+								SPAN_USERDANGER("[capitalize(chassis.declent_ru(NOMINATIVE))] уничтожает [target.declent_ru(ACCUSATIVE)] в нечестивой ярости."))
 			M.gib()
 		/*if(chassis.occupant.a_intent == INTENT_DISARM)
-			target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>",
-								"<span class='userdanger'>[chassis] rips [target]'s arms off.</span>")*/
+			target.visible_message(SPAN_DANGER("[chassis] rips [target]'s arms off."),
+								SPAN_USERDANGER("[chassis] rips [target]'s arms off."))*/
 		else
 			step_away(M,chassis)
 			target.visible_message("[capitalize(chassis.declent_ru(NOMINATIVE))] бросает [target.declent_ru(ACCUSATIVE)], словно комок бумаги.")
@@ -145,7 +145,7 @@
 	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(chassis,target) <= 1)
 		var/obj/structure/reagent_dispensers/watertank/WT = target
 		WT.reagents.trans_to(src, 1000)
-		occupant_message("<span class='notice'>Extinguisher refilled.</span>")
+		occupant_message(SPAN_NOTICE("Extinguisher refilled."))
 		playsound(chassis, 'sound/effects/refill.ogg', 50, TRUE, -6)
 	else
 		if(reagents.total_volume > 0)
@@ -365,12 +365,12 @@
 				cable.amount = 0
 			cable.amount += to_load
 			target.use(to_load)
-			occupant_message("<span class='notice'>[to_load] метр[declension_ru(to_load, "", "а", "ов")] кабеля успешно загружено.</span>")
+			occupant_message(SPAN_NOTICE("[to_load] метр[declension_ru(to_load, "", "а", "ов")] кабеля успешно загружено."))
 			send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
 		else
-			occupant_message("<span class='warning'>Катушка полностью заполнена.</span>")
+			occupant_message(SPAN_WARNING("Катушка полностью заполнена."))
 	else
-		occupant_message("<span class='warning'>Невозможно загрузить [target.declent_ru(ACCUSATIVE)] - кабель не найден.</span>")
+		occupant_message(SPAN_WARNING("Невозможно загрузить [target.declent_ru(ACCUSATIVE)] - кабель не найден."))
 
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer/Topic(href,href_list)

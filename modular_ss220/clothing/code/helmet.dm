@@ -27,7 +27,8 @@
 	desc = "An armored bandana commonly used by special operations officers."
 	icon = 'icons/obj/clothing/masks.dmi'
 	worn_icon = null
-	icon_state = "bandred_up"
+	icon_state = "bandana" // Default white bandana
+	color = "#c43638" // Red
 	sprite_sheets = list(
 			"Vox" = 'icons/mob/clothing/species/vox/mask.dmi',
 			"Unathi" = 'icons/mob/clothing/species/unathi/mask.dmi',
@@ -114,7 +115,7 @@
 
 	update_icon(UPDATE_ICON_STATE)
 	user.update_inv_head()
-	to_chat(user, span_notice("[msg]"))
+	to_chat(user, SPAN_NOTICE("[msg]"))
 
 /obj/item/clothing/head/helmet/ert/security/paranormal
 	icon_state = "knight_templar"
@@ -193,7 +194,7 @@
 		on = FALSE
 		turn_off()
 		update_icon(UPDATE_ICON_STATE)
-		visible_message(span_danger("[src]'s light fades and turns off."))
+		visible_message(SPAN_DANGER("[src]'s light fades and turns off."))
 
 /obj/item/clothing/head/helmet/cop/v2
 	icon_state = "cop1"

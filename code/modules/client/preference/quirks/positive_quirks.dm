@@ -30,7 +30,7 @@
 
 /datum/quirk/glutton
 	name = "Glutton"
-	desc = "Вы можете есть быстрее и не страдать от последствий избыточного веса. Несовместим с рассой КПБ."
+	desc = "Вы можете есть быстрее и не страдать от последствий избыточного веса. Несовместимо с расой КПБ."
 	cost = 2
 	trait_to_apply = TRAIT_GLUTTON
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
@@ -50,7 +50,7 @@
 		/obj/item/food/meatkebab,
 		/obj/item/food/salmonsteak, // If anyone microwaves their leftover fish in the workplace it should be on sight
 		/obj/item/food/shrimp_skewer,
-		/obj/item/food/omelette
+		/obj/item/food/omelette,
 	)
 	var/list/snack_options = list(
 		/obj/item/food/chips,
@@ -62,8 +62,7 @@
 		/obj/item/food/candy/chocolate_orange,
 		/obj/item/food/sliced/mothmallow,
 		/obj/item/food/sliced/apple_cake,
-		/obj/item/food/sliced/banarnarbread
-
+		/obj/item/food/sliced/banarnarbread,
 	)
 	var/list/drink_options = list(
 		/obj/item/reagent_containers/drinks/h_chocolate,
@@ -74,7 +73,19 @@
 		/obj/item/reagent_containers/drinks/cans/space_up,
 		/obj/item/reagent_containers/drinks/cans/iced_tea,
 		/obj/item/reagent_containers/drinks/cans/starkist,
-		/obj/item/reagent_containers/drinks/bottle/beer // Don't tell your boss
+		/obj/item/reagent_containers/drinks/bottle/beer, // Don't tell your boss
+		/obj/item/reagent_containers/drinks/carton/apple,
+		/obj/item/reagent_containers/drinks/carton/banana,
+		/obj/item/reagent_containers/drinks/carton/berry,
+		/obj/item/reagent_containers/drinks/carton/carrot,
+		/obj/item/reagent_containers/drinks/carton/grape,
+		/obj/item/reagent_containers/drinks/carton/lemonade,
+		/obj/item/reagent_containers/drinks/carton/orange,
+		/obj/item/reagent_containers/drinks/carton/pineapple,
+		/obj/item/reagent_containers/drinks/carton/plum,
+		/obj/item/reagent_containers/drinks/carton/tomato,
+		/obj/item/reagent_containers/drinks/carton/vegetable,
+		/obj/item/reagent_containers/drinks/carton/watermelon,
 	)
 
 /obj/item/storage/box/papersack/prepped_meal/populate_contents()
@@ -129,13 +140,13 @@
 
 /datum/quirk/cool
 	name = "Cool"
-	desc = "Ты можешь сделать сальто с любого трамплина. Ты такой крутой!"
+	desc = "Вы можете сделать сальто с любого трамплина. Вы такой крутой!"
 	cost = 1
 	trait_to_apply = TRAIT_COOL
 
 /datum/quirk/breathing_tube
 	name = "Breathing Tube"
-	desc  = "You have been outfitted with a breathing tube."
+	desc  = "Вам вживили дыхательную трубку."
 	cost = 2
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube

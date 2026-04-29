@@ -7,7 +7,7 @@
 
 /obj/structure/closet/secure_closet/togglelock(mob/user)
 	if(!istype(user) || user.incapacitated())
-		to_chat(user, span_warning("You can't do that right now!"))
+		to_chat(user, SPAN_WARNING("You can't do that right now!"))
 		return
 	. = ..()
 	if(!opened && !broken && !(user.loc == src) && allowed(user))
@@ -15,7 +15,7 @@
 
 /obj/structure/closet/crate/secure/togglelock(mob/user)
 	if(!istype(user) || user.incapacitated())
-		to_chat(user, span_warning("You can't do that right now!"))
+		to_chat(user, SPAN_WARNING("You can't do that right now!"))
 		return
 	. = ..()
 	if(!opened && !broken && !(user.loc == src) && allowed(user))

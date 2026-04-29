@@ -12,7 +12,7 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/lux/apply(mob/living/M, mob/user)
 	if(!reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, SPAN_WARNING("[src] is empty!"))
 		return
 
 	var/turf/T = get_turf(user)
@@ -29,11 +29,11 @@
 		delay = 0
 
 	if(delay)
-		user.visible_message("<span class='notice'>[user] begins injecting [M] with [src]...</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins injecting [M] with [src]..."))
 		if(!do_after(user, delay, 1, M, TRUE))
 			return
 	else
-		user.visible_message("<span class='notice'>[user] instantly injects [M] with [src]!</span>")
+		user.visible_message(SPAN_NOTICE("[user] instantly injects [M] with [src]!"))
 
 	return ..()
 

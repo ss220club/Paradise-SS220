@@ -23,7 +23,7 @@
 	SIGNAL_HANDLER
 	if(!should_give_access(source.access))
 		return
-	examine_list += span_notice("Мигает красная лампочка с надписью \"Расширенный доступ\".")
+	examine_list += SPAN_NOTICE("Мигает красная лампочка с надписью \"Расширенный доступ\".")
 
 /datum/element/red_alert_access/proc/should_give_access(list/access)
 	if(SSsecurity_level.current_security_level.number_level <= SEC_LEVEL_BLUE)
