@@ -4,11 +4,11 @@
 /obj/item/reagent_containers/hypospray/autoinjector/custom/apply(mob/living/carbon/C, mob/user)
 	if(user != C)
 		if(!instant_application)
-			C.visible_message(span_warning("[user] пытается вколоть [src] в [C]."))
+			C.visible_message("<span class='warning'>[user] пытается вколоть [src] в [C].</span>")
 			if(!do_after(user, 3 SECONDS, needhand = TRUE, target = C, progress = TRUE))
 				return
 
-		C.visible_message(span_warning("[user] вкалывает [src] в [C]."))
+		C.visible_message("<span class='warning'>[user] вкалывает [src] в [C].</span>")
 	return ..()
 
 // MARK: Кастом медипены
