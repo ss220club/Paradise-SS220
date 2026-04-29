@@ -33,7 +33,7 @@
 	if(!(user.mind.offstation_role))
 		user.Weaken(10 SECONDS)
 		user.drop_item_to_ground(src, force = TRUE, silent = FALSE)
-		to_chat(user, span_userdanger("Это - оружие истинного правосудия. Тебе не дано обуздать его мощь."))
+		to_chat(user, SPAN_USERDANGER("Это - оружие истинного правосудия. Тебе не дано обуздать его мощь."))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(rand(force/2, force), BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
@@ -46,13 +46,13 @@
 	on = !on
 
 	if(on)
-		to_chat(user, span_userdanger("Вы активировали [name] - время для правосудия!"))
+		to_chat(user, SPAN_USERDANGER("Вы активировали [name] - время для правосудия!"))
 		icon_state = icon_state_on
 		w_class = WEIGHT_CLASS_HUGE
 		force = force_on
 		attack_verb = attack_verb_on
 	else
-		to_chat(user, span_notice("Вы деактивировали [name]."))
+		to_chat(user, SPAN_NOTICE("Вы деактивировали [name]."))
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		force = initial(force)

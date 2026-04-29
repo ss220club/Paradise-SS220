@@ -19,10 +19,10 @@
 
 /obj/item/food/fancy/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(!opened)
-		to_chat(user, span_warning("[src] сначала нужно открыть!"))
+		to_chat(user, SPAN_WARNING("[src] сначала нужно открыть!"))
 		return ITEM_INTERACT_COMPLETE
 	if(opened && need_takeout)
-		to_chat(user, span_warning("Сначала вытащите еду из упаковки!"))
+		to_chat(user, SPAN_WARNING("Сначала вытащите еду из упаковки!"))
 		return ITEM_INTERACT_COMPLETE
 	return ..()
 
@@ -34,16 +34,16 @@
 /obj/item/food/fancy/examine(mob/user)
 	. = ..()
 	if(!opened)
-		. += span_notice("Нажмите <b>Alt-Click</b>, чтобы открыть.")
+		. += SPAN_NOTICE("Нажмите <b>Alt-Click</b>, чтобы открыть.")
 	if(opened && need_takeout)
-		. += span_notice("Нажмите <b>Alt-Click</b>, чтобы достать еду из упаковки.")
+		. += SPAN_NOTICE("Нажмите <b>Alt-Click</b>, чтобы достать еду из упаковки.")
 
 /obj/item/food/fancy/AltClick(mob/user)
 	if(!try_open(user))
 		return
 
 	if(opened && !opened_act(user))
-		to_chat(user, span_warning("[src] уже открыт!"))
+		to_chat(user, SPAN_WARNING("[src] уже открыт!"))
 		return
 
 	open(user)
@@ -55,7 +55,7 @@
  */
 /obj/item/food/fancy/proc/try_open(mob/user)
 	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
-		to_chat(user, span_warning("У вас нет возможности открыть [src]!"))
+		to_chat(user, SPAN_WARNING("У вас нет возможности открыть [src]!"))
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, try_open))

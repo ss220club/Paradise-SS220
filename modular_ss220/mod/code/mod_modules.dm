@@ -41,12 +41,12 @@
 		return ..()
 	var/obj/item/gun/holding = mod.wearer.get_active_hand()
 	if(!holding)
-		to_chat(mod.wearer, span_warning("Nothing to holster!"))
+		to_chat(mod.wearer, SPAN_WARNING("Nothing to holster!"))
 		return
 	for(var/type in overridebulky)
 		if(holding.type == type)
 			holstered = holding
-			mod.wearer.visible_message(span_warning("[mod.wearer] holsters [holstered]"), span_notice("You holster [holstered]"))
+			mod.wearer.visible_message(SPAN_WARNING("[mod.wearer] holsters [holstered]"), SPAN_NOTICE("You holster [holstered]"))
 			mod.wearer.unequip(mod.wearer.get_active_hand())
 			holstered.forceMove(src)
 			return

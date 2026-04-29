@@ -64,11 +64,11 @@
 			var/obj/structure/cable/C = locate() in F
 			if(C && prob(15))
 				if(C.get_available_power() && !HAS_TRAIT(src, TRAIT_SHOCKIMMUNE))
-					visible_message(span_warning("[src] chews through [C]. It's toast!"))
+					visible_message(SPAN_WARNING("[src] chews through [C]. It's toast!"))
 					playsound(src, 'sound/effects/sparks2.ogg', 100, 1)
 					toast() // mmmm toasty.
 				else
-					visible_message(span_warning("[src] chews through [C]."))
+					visible_message(SPAN_WARNING("[src] chews through [C]."))
 				investigate_log("was chewed through by a mouse at [COORD(F)]", "wires")
 				C.deconstruct()
 
@@ -98,7 +98,7 @@
 		return
 	if(stat)
 		return
-	to_chat(source, span_notice("[bicon(src)] Squeek!"))
+	to_chat(source, SPAN_NOTICE("[bicon(src)] Squeek!"))
 
 /mob/living/simple_animal/hostile/retaliate/syndirat/emote(emote_key, type_override = 1, message, intentional, force_silence)
 	if(stat != CONSCIOUS)

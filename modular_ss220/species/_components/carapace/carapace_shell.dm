@@ -72,7 +72,7 @@
 		if(3)
 			level = "критические"
 	if(level)
-		msg += "<span class='danger'>Обнаружены [level] повреждения целостности панциря.</span>"
+		msg += SPAN_DANGER("Обнаружены [level] повреждения целостности панциря.")
 
 /datum/component/carapace_shell/proc/stage_1_break()
 	H.dna.species.brute_mod = CARAPACE_SHELL_BROKEN_BRUTE
@@ -234,8 +234,8 @@
 /datum/surgery_step/finish_carapace/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message(
-		span_notice("[user] has mended the damaged carapace in [target]'s [affected.name] with \the [tool]."),
-		span_notice("You have mended the damaged carapace in [target]'s [affected.name] with \the [tool]."),
+		SPAN_NOTICE("[user] has mended the damaged carapace in [target]'s [affected.name] with \the [tool]."),
+		SPAN_NOTICE("You have mended the damaged carapace in [target]'s [affected.name] with \the [tool]."),
 		chat_message_type = MESSAGE_TYPE_COMBAT
 	)
 	SEND_SIGNAL(target, COMSIG_SURGERY_REPAIR)
@@ -244,8 +244,8 @@
 /datum/surgery_step/finish_carapace/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message(
-		span_notice("[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!"),
-		span_notice("Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!"),
+		SPAN_NOTICE("[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!"),
+		SPAN_NOTICE("Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!"),
 		chat_message_type = MESSAGE_TYPE_COMBAT
 	)
 	return SURGERY_STEP_RETRY

@@ -46,7 +46,7 @@
 /datum/species/nucleation/handle_death(gibbed, mob/living/carbon/human/H)
 	var/turf/T = get_turf(H)
 	var/datum/mind/mind = H.mind
-	H.visible_message(span_danger("Тело [H] взрывается, оставляя после себя кучу микроскопических кристаллов!"))
+	H.visible_message(SPAN_DANGER("Тело [H] взрывается, оставляя после себя кучу микроскопических кристаллов!"))
 	H.gib()
 	var/nutrition_mod = H.nutrition / NUTRITION_LEVEL_FAT
 	var/light_impact_range = round(max_light_impact_range * nutrition_mod)

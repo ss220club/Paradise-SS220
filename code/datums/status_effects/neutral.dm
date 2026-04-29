@@ -79,7 +79,7 @@
 	return
 
 /datum/status_effect/high_five/proc/regular_effect(mob/living/carbon/user, mob/living/carbon/highfived)
-	user.visible_message("<span class='notice'><b>[user.name]</b> and <b>[highfived.name]</b> [success]</span>")
+	user.visible_message(SPAN_NOTICE("<b>[user.name]</b> and <b>[highfived.name]</b> [success]"))
 
 /datum/status_effect/high_five/on_apply()
 	if(!iscarbon(owner))
@@ -93,7 +93,7 @@
 		if(!C.has_status_effect(type) || C == user)
 			continue
 		if(is_wiz && iswizard(C))
-			user.visible_message("<span class='biggerdanger'><b>[user.name]</b> и <b>[C.name]</b> [critical_success]</span>")
+			user.visible_message(SPAN_BIGGERDANGER("<b>[user.name]</b> и <b>[C.name]</b> [critical_success]"))
 			wiz_effect(user, C)
 			both_wiz = TRUE
 		user.do_attack_animation(C, no_effect = TRUE)
@@ -158,7 +158,7 @@
 /datum/status_effect/high_five/offering_eftpos/proc/on_ranged_attack(mob/living/me, mob/living/carbon/human/attacker)
 	SIGNAL_HANDLER  // COMSIG_ATOM_RANGED_ATTACKED
 	if(get_dist(me, attacker) <= 2)
-		to_chat(attacker, "<span class='warning'>You need to have your ID in hand to scan it!</span>")
+		to_chat(attacker, SPAN_WARNING("You need to have your ID in hand to scan it!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/status_effect/high_five/handshake
@@ -227,14 +227,14 @@
 			outcome_msg = "[highfived] побеждает!"
 
 	user.visible_message(
-		"<span class='notice'>[user] разыгрывает <b>[move]</b>, [highfived] в свою очередь разыгрывает <b>[their_status_effect.move]</b>.</span>",
-		"<span class='notice'>[highfived] разыгрывает <b>[their_status_effect.move]</b>.</span>",
-		"<span class='notice'>Похоже на «камень-ножницы-бумага».</span>"
+		SPAN_NOTICE("[user] разыгрывает <b>[move]</b>, [highfived] в свою очередь разыгрывает <b>[their_status_effect.move]</b>."),
+		SPAN_NOTICE("[highfived] разыгрывает <b>[their_status_effect.move]</b>."),
+		SPAN_NOTICE("Похоже на «камень-ножницы-бумага».")
 	)
 
 	user.visible_message(
-		"<span class='warning'>[outcome_msg]</span>",
-		blind_message = "<span class='notice'>Похоже что [pick(user, highfived)] победил!</span>"  // you're blind how are you supposed to know
+		SPAN_WARNING("[outcome_msg]"),
+		blind_message = SPAN_NOTICE("Похоже что [pick(user, highfived)] победил!")  // you're blind how are you supposed to know
 	)
 
 /datum/status_effect/high_five/rps/on_creation(mob/living/new_owner, made_move)
@@ -248,14 +248,14 @@
 
 /datum/status_effect/high_five/rps/on_apply()
 	if(!isnull(move))
-		to_chat(owner, "<span class='notice'>Вы готовитесь разыграть <b>[move]</b>.</span>")
+		to_chat(owner, SPAN_NOTICE("Вы готовитесь разыграть <b>[move]</b>."))
 		return ..()  // we already have the move, probably from the emote passing it in
 
 	move = get_rock_paper_scissors_move(owner)
 	if(move == null)
 		return FALSE  // make it auto-remove itself
 
-	to_chat(owner, "<span class='notice'>Вы готовитесь разыграть <b>[move]</b>.</span>")
+	to_chat(owner, SPAN_NOTICE("Вы готовитесь разыграть <b>[move]</b>."))
 	return ..()
 
 

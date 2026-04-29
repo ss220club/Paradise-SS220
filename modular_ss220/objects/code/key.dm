@@ -17,15 +17,15 @@
 		return
 
 	if(HAS_TRAIT(attacked_airlock, TRAIT_CMAGGED))
-		to_chat(user, span_danger("[src] не вставляется в панель доступа [attacked_airlock], тут повсюду слизь!"))
+		to_chat(user, SPAN_DANGER("[src] не вставляется в панель доступа [attacked_airlock], тут повсюду слизь!"))
 		return
 
 	if(!attacked_airlock.arePowerSystemsOn())
-		to_chat(user, span_danger("[attacked_airlock] без питания!"))
+		to_chat(user, SPAN_DANGER("[attacked_airlock] без питания!"))
 		return
 
 	if(busy)
-		to_chat(user, span_warning("Ты уже используешь [src] на панели доступа [attacked_airlock]!"))
+		to_chat(user, SPAN_WARNING("Ты уже используешь [src] на панели доступа [attacked_airlock]!"))
 		return
 
 	playsound(src, 'sound/items/keyring_unlock.ogg', 50)
@@ -38,7 +38,7 @@
 	busy = FALSE
 
 	if(!attacked_airlock.check_access(ID))
-		to_chat(user, span_danger("[src] похоже не подходит к панели доступа [attacked_airlock]!"))
+		to_chat(user, SPAN_DANGER("[src] похоже не подходит к панели доступа [attacked_airlock]!"))
 		return
 
 	if(!attacked_airlock.density)

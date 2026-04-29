@@ -7,7 +7,7 @@
 	if(..())
 		return TRUE
 	if(!allowed(user) && !user.can_advanced_admin_interact())
-		to_chat(user, span_warning("Access Denied."))
+		to_chat(user, SPAN_WARNING("Access Denied."))
 		flick("polarizer-denied",src)
 		playsound(src, pick('modular_ss220/aesthetics/windowtint/sound/button.ogg', 'modular_ss220/aesthetics/windowtint/sound/button_alternate.ogg', 'modular_ss220/aesthetics/windowtint/sound/button_meloboom.ogg'), 20)
 		return TRUE

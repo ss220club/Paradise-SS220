@@ -2,7 +2,7 @@
 	if(!istype(W, /obj/item/paintkit))
 		return ..()
 	if(occupant)
-		to_chat(user, span_warning("Вы не можете кастомизировать экзокостюм, пока кто-то его пилотирует - это небезопасно!"))
+		to_chat(user, SPAN_WARNING("Вы не можете кастомизировать экзокостюм, пока кто-то его пилотирует - это небезопасно!"))
 		return
 
 	var/obj/item/paintkit/P = W
@@ -14,14 +14,14 @@
 			break
 
 	if(!found)
-		to_chat(user, span_warning("Этот комплект не предназначен для использования на экзокостюме данного класса."))
+		to_chat(user, SPAN_WARNING("Этот комплект не предназначен для использования на экзокостюме данного класса."))
 		return
 
 	user.visible_message(
-		span_notice("[user] открывает [P] и проводит некоторое время за кастомизацией [src]."),
-		span_notice("Вы открываете [P] и начинаете кастомизировать [src]."))
+		SPAN_NOTICE("[user] открывает [P] и проводит некоторое время за кастомизацией [src]."),
+		SPAN_NOTICE("Вы открываете [P] и начинаете кастомизировать [src]."))
 	if(!do_after_once(user, 3 SECONDS, target = src))
-		to_chat(user, span_warning("Вы должны стоять смирно при настройке экзокостюма!"))
+		to_chat(user, SPAN_WARNING("Вы должны стоять смирно при настройке экзокостюма!"))
 		return
 	name = P.new_name
 	desc = P.new_desc

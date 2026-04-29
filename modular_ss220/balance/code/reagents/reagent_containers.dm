@@ -48,7 +48,7 @@
 	. = ..()
 	for(var/reagent in reagents_limit)
 		var/datum/reagent/reagent_name = GLOB.chemical_reagents_list[reagent]
-		. += span_notice("It has produced <b>[reagents_produced[reagent]]</b> / <b>[reagents_limit[reagent]]</b> units of <b>[reagent_name]</b>!")
+		. += SPAN_NOTICE("It has produced <b>[reagents_produced[reagent]]</b> / <b>[reagents_limit[reagent]]</b> units of <b>[reagent_name]</b>!")
 
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT

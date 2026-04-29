@@ -132,11 +132,11 @@
 		return
 	var/datum/data/pda/app/alarm/program = find_program(/datum/data/pda/app/alarm)
 	if(!program)
-		to_chat(usr, span_warning("Подпрограмма \"Тревожная кнопка\" не найдена!"))
+		to_chat(usr, SPAN_WARNING("Подпрограмма \"Тревожная кнопка\" не найдена!"))
 		return
 
 	program.handle_alarm_button()
-	to_chat(usr, span_notice(program.last_response_text))
+	to_chat(usr, SPAN_NOTICE(program.last_response_text))
 
 /obj/item/pda/silicon/ai/verb/cmd_call_security()
 	set category = "AI IM"
