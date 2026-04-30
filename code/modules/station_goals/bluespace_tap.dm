@@ -378,6 +378,7 @@
 	P.linked_source_object = src
 	// 1 Extra mob for each 20 MW of mining power above 15MW.
 	P.max_mobs = 5 + max((mining_power - 15 MW) / (20 MW), 0)
+	P.max_mobs =  min(P.max_mobs, 20) // SS220 EDIT Ограничение харвестера по тварям, вылезающим из него при перегрузке
 	update_icon()
 	if(amount)
 		addtimer(CALLBACK(src, PROC_REF(start_nether_portaling), amount), rand(3, 5) SECONDS)
