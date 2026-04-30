@@ -181,6 +181,6 @@ SLIME SCANNER
 		to_chat(user, "Обнаружено несколько ядер")
 		to_chat(user, "Прогресс роста: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
 	if(T.effectmod)
-		to_chat(user, SPAN_NOTICE("Ядро мутации в процессе: [T.effectmod]"))
-		to_chat(user, SPAN_NOTICE("Прогресс в ядре мутации: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]"))
+		to_chat(user, SPAN_NOTICE("Мутация ядра в процессе: [T.effectmod]"))
+		to_chat(user, SPAN_NOTICE("Прогресс мутации ядра: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]"))
 	to_chat(user, "========================")
