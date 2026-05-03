@@ -4,11 +4,11 @@
 /obj/item/reagent_containers/hypospray/autoinjector/custom/apply(mob/living/carbon/C, mob/user)
 	if(user != C)
 		if(!instant_application)
-			C.visible_message("<span class='warning'>[user] пытается вколоть [src] в [C].</span>")
+			C.visible_message(SPAN_WARNING("[user] пытается вколоть [src] в [C]."))
 			if(!do_after(user, 3 SECONDS, needhand = TRUE, target = C, progress = TRUE))
 				return
 
-		C.visible_message("<span class='warning'>[user] вкалывает [src] в [C].</span>")
+		C.visible_message(SPAN_WARNING("[user] вкалывает [src] в [C]."))
 	return ..()
 
 // MARK: Кастом медипены
@@ -60,20 +60,6 @@
 	list_reagents = list("charcoal" = 20)
 	instant_application = FALSE
 
-/obj/item/reagent_containers/hypospray/autoinjector/custom/elite/brute
-	name = "Элитный медипен"
-	icon_state = "medipen_red"
-	desc = "Специальный медипен содержащий высококачественную медицину способную лечить раны и справляться с колоссальными физическими повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
-	list_reagents = list("bruzin_plus" = 10)
-	instant_application = FALSE
-
-/obj/item/reagent_containers/hypospray/autoinjector/custom/elite/burn
-	name = "Элитный медипен"
-	icon_state = "medipen_org"
-	desc = "Специальный медипен содержащий высококачественную медицину способную лечить раны и справляться с колоссальными ожоговыми повреждениями даже через скафандры не рекомендуется вкалывать больше трех за раз."
-	list_reagents = list("dermalin_plus" = 10)
-	instant_application = FALSE
-
 // MARK: Космическая аптечка
 /obj/item/storage/firstaid/spacer
 	name = "Космическая аптечка"
@@ -118,7 +104,7 @@
 	use_sound = 'modular_ss220/aesthetics_sounds/sound/handling/plasticbox_open.ogg'
 	can_hold = list(/obj/item/reagent_containers/hypospray/autoinjector)
 	storage_slots = 10
-	max_combined_w_class = 5
+	max_combined_w_class = 10
 	display_contents_with_number = FALSE
 	wrapper_state = "medipen_case_wrap"
 
@@ -152,6 +138,10 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
 
+/obj/structure/closet/radiation/populate_contents()
+	. = ..()
+	new /obj/item/storage/pill_bottle/medipen_case/radiation(src)
+
 /obj/machinery/smartfridge/medbay/Initialize(mapload)
 	. = ..()
 	accepted_items_typecache |= typecacheof(list(
@@ -159,7 +149,13 @@
 	))
 
 /obj/machinery/economy/vending/medical/Initialize(mapload)
-	products += list(/obj/item/storage/pill_bottle/medipen_case = 1,)
+	products += list(/obj/item/storage/pill_bottle/medipen_case = 2,)
+	return ..()
+
+/obj/machinery/economy/vending/nta/medical/Initialize(mapload)
+	products += list(/obj/item/storage/pill_bottle/medipen_case = 5,
+	/obj/item/reagent_containers/hypospray/autoinjector/custom/brute = 10,
+	/obj/item/reagent_containers/hypospray/autoinjector/custom/burn = 10,)
 	return ..()
 
 /datum/chemical_production_mode/autoinjectors
@@ -176,9 +172,6 @@
 									"spaceacillin", "salglu_solution", "sal_acid", "cryoxadone", "synthflesh",
 									"hydrocodone", "mitocholide", "rezadone", "menthol", "diphenhydramine", "ephedrine",
 									"iron", "sanguine_reagent", "kelotane", "bicaridine", "pen_acid")
-
-/datum/chemical_production_mode/autoinjectors/get_base_placeholder_name(datum/reagents/reagents)
-	return reagents.get_master_reagent_name()
 
 /datum/chemical_production_mode/autoinjectors/proc/safety_check(datum/reagents/R)
 	for(var/datum/reagent/A in R.reagent_list)
