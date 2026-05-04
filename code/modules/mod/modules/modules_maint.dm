@@ -51,6 +51,8 @@
 
 ///Signal fired when wearer is exposed to reagents
 /obj/item/mod/module/springlock/proc/on_wearer_exposed(atom/source, list/reagents, datum/reagents/source_reagents, methods, volume_modifier, show_message)
+	if (nineteen_eighty_seven_edition && !dont_let_you_come_back)
+		return
 	SIGNAL_HANDLER
 	remove_retraction_block() //No double signals
 	to_chat(mod.wearer, SPAN_DANGER("[src] makes an ominous click sound..."))
