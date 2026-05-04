@@ -4,6 +4,7 @@ T-RAY SCANNER
 REAGENT SCANNERS
 SLIME SCANNER
 */
+
 ////////////////////////////////////////
 // MARK:	T-ray scanner
 ////////////////////////////////////////
@@ -19,10 +20,12 @@ SLIME SCANNER
 	materials = list(MAT_METAL = 300)
 	origin_tech = "magnets=1;engineering=1"
 	var/on = FALSE
+
 /obj/item/t_scanner/Destroy()
 	if(on)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
+
 /obj/item/t_scanner/proc/toggle_on()
 	on = !on
 	icon_state = copytext_char(icon_state, 1, -1) + "[on]"
@@ -72,7 +75,7 @@ SLIME SCANNER
 	slot_flags = ITEM_SLOT_BELT
 	throw_speed = 4
 	throw_range = 20
-	materials = list(MAT_METAL = 300, MAT_GLASS = 200)
+	materials = list(MAT_METAL=300, MAT_GLASS=200)
 	origin_tech = "magnets=2;biotech=1;plasmatech=2"
 	var/details = FALSE
 	var/datatoprint = ""
@@ -179,7 +182,7 @@ SLIME SCANNER
 			to_chat(user, "Генетическая нестабильность: [T.mutation_chance] % вероятность мутации при расщеплении")
 	if(T.cores > 1)
 		to_chat(user, "Обнаружено несколько ядер")
-		to_chat(user, "Прогресс роста: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
+	to_chat(user, "Прогресс роста: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
 	if(T.effectmod)
 		to_chat(user, SPAN_NOTICE("Мутация ядра в процессе: [T.effectmod]"))
 		to_chat(user, SPAN_NOTICE("Прогресс мутации ядра: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]"))

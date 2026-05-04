@@ -75,8 +75,8 @@
 	if(isliving(loc))
 		var/mob/living/L = loc
 		to_chat(L, SPAN_NOTICE("Функция барометра [src.declent_ru(GENITIVE)] полностью готова!"))
-		playsound(src, 'sound/machines/click.ogg', 100)
-		cooldown = FALSE
+	playsound(src, 'sound/machines/click.ogg', 100)
+	cooldown = FALSE
 
 /obj/item/analyzer/proc/butchertime(amount)
 	if(!amount)
