@@ -21,9 +21,7 @@
 	return !density
 
 /obj/projectile/beam/player_laser
-	name = "laser"
 	damage = 24
-	damage_type = BURN
 	hitscan = TRUE
 	muzzle_type = /obj/effect/projectile/muzzle/laser
 	tracer_type = /obj/effect/projectile/tracer/laser

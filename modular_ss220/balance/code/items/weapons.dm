@@ -39,9 +39,6 @@
 
 //lasergun change
 /obj/item/ammo_casing/energy/lasergun_hs
-	name = "LG-5 laser cell"
-	desc = "A special energy cell designed specifically for the LG-5 laser carbine. Fires a precise, hitscan laser beam."
-	icon_state = "laser"
 	caliber = "energy"
 	fire_sound = 'modular_ss220/balance/code/items/sound/laser.ogg'
 	projectile_type = /obj/projectile/beam/player_laser
