@@ -39,7 +39,6 @@
 
 //lasergun change
 /obj/item/ammo_casing/energy/lasergun_hs
-	caliber = "energy"
 	fire_sound = 'modular_ss220/balance/code/items/sound/laser.ogg'
 	projectile_type = /obj/projectile/beam/player_laser
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
