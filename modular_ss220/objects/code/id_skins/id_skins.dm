@@ -84,7 +84,7 @@
 	name = "\improper наклейка Paradise на карту"
 	desc = "Вива ля Paradise."
 	icon_state = "paradise"
-	pronoun_name = "пляжную наклейку"
+	pronoun_name = "наклейку Paradise"
 	info = "Глядя на неё, вам становится теплее и уютнее... как дома."
 
 /obj/item/id_skin/rainbow
