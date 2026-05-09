@@ -252,6 +252,7 @@
 	backpack_contents += list(
 		/obj/item/stamp/navytsf = 1
 	)
+
 // MARK: SRT
 /datum/outfit/admin/srt
 	name = "Special Response Team Member"
