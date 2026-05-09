@@ -82,6 +82,7 @@
 
 	name = initial(selected.name)
 	desc = initial(selected.desc)
+	icon = initial(selected.icon) // SS220 EDIT - перенос icon с модуля
 	icon_state = initial(selected.icon_state)
 	poster_item_name = initial(selected.poster_item_name)
 	poster_item_desc = initial(selected.poster_item_desc)
