@@ -167,11 +167,7 @@
 	max_items_amount = 20
 	max_units_per_item = 30
 	name_suffix = " medipen"
-	var/static/list/safe_chem_list = list("antihol", "charcoal", "epinephrine", "insulin", "teporone", "salbutamol", "omnizine",
-									"weak_omnizine", "stimulants", "synaptizine", "potass_iodide", "oculine", "mannitol",
-									"spaceacillin", "salglu_solution", "sal_acid", "cryoxadone", "synthflesh",
-									"hydrocodone", "mitocholide", "rezadone", "menthol", "diphenhydramine", "ephedrine",
-									"iron", "sanguine_reagent", "kelotane", "bicaridine", "pen_acid")
+	var/static/list/safe_chem_list = /datum/chemical_production_mode/patches::safe_chem_list
 
 /datum/chemical_production_mode/autoinjectors/proc/safety_check(datum/reagents/R)
 	for(var/datum/reagent/A in R.reagent_list)
