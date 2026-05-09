@@ -14,7 +14,7 @@
 	lefthand_file = 'modular_ss220/objects/icons/inhands/flags_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/flags_righthand.dmi'
 
-/obj/item/flag/ussp_new
+/obj/item/flag/ussp
 	name = "флаг Союза Советских Социалистических Планет"
 	desc = "Флаг народной освободительной и могучей, краснознамённой, научной и прорывной страны Коммунизма."
 	icon = 'modular_ss220/objects/icons/flag.dmi'
