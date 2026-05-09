@@ -143,3 +143,8 @@
 	status_display_data = "deltaalert"
 	elevating_to_announcement_title = "ВНИМАНИЕ! КОД ДЕЛЬТА!"
 	elevating_to_announcement_text = "Механизм самоуничтожения станции задействован. Все члены экипажа обязаны подчиняться всем указаниям, данными Главами отделов. Любые нарушения этих приказов наказуемы уничтожением на месте. Это не учебная тревога."
+
+/datum/security_level/delta/overload
+	number_level = SEC_LEVEL_DELTA_REACTOR
+	elevating_to_announcement_title = "Attention! Delta-AZ5 security level reached!"
+	elevating_to_announcement_text = "Central Command has disabled all nuclear fission reactor failsafes. Crew are instructed to ensure detonation of the station fission reactor at all costs."

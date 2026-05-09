@@ -11,6 +11,7 @@
 	desc = "Модуль для экзокостюма, который позволяет телепортироваться в любую видимую позицию."
 	icon_state = "mecha_teleport"
 	origin_tech = "bluespace=7"
+	materials = list(MAT_METAL = 10000, MAT_DIAMOND = 10000)
 	equip_cooldown = 150
 	energy_drain = 8000
 	range = MECHA_RANGED
@@ -108,6 +109,7 @@
 	desc = "Увеличивает броню экзокостюма против ближних атак. Для работы требуется энергия."
 	icon_state = "mecha_abooster_ccw"
 	origin_tech = "materials=4;combat=4"
+	materials = list(MAT_METAL = 20000, MAT_SILVER = 5000)
 	equip_cooldown = 10
 	energy_drain = 50
 	range = 0
@@ -126,6 +128,7 @@
 	desc = "Увеличивает броню экзокостюма против дальних атак. Для работы требуется энергия."
 	icon_state = "mecha_abooster_proj"
 	origin_tech = "materials=4;combat=3;engineering=3"
+	materials = list(MAT_METAL = 20000, MAT_GOLD = 5000)
 	equip_cooldown = 10
 	energy_drain = 50
 	range = 0
@@ -143,6 +146,7 @@
 	desc = "A shield module that covers the exosuit in an energy barrier that absorbs damage. Requires energy to operate."
 	icon_state = "mecha_pulse_shield"
 	origin_tech = "materials=4;combat=4"
+	materials = list(MAT_METAL = 20000, MAT_GOLD = 5000, MAT_BLUESPACE = 5000)
 	equip_cooldown = 10
 	energy_drain = 50
 	range = 0
@@ -166,6 +170,7 @@
 	desc = "Автоматизированный ремонтный дроид. Сканирует экзокостюм на наличие повреждений и выполняет ремонт. Способен исправить почти все виды внешних и внутренних повреждений."
 	icon_state = "repair_droid_item"
 	origin_tech ="magnets=3;programming=3;engineering=4"
+	materials = list(MAT_METAL = 10000, MAT_GLASS = 5000, MAT_GOLD = 1000, MAT_SILVER = 2000)
 	equip_cooldown = 20
 	energy_drain = 50
 	range = 0
@@ -252,6 +257,7 @@
 	desc = "Модуль для экзокостюма, который беспроводным образом извлекает энергию из любых доступных источников питания в области. КПД едва компенсирует затраты на движение."
 	icon_state = "tesla"
 	origin_tech = "magnets=4;powerstorage=4;engineering=4"
+	materials = list(MAT_METAL = 10000, MAT_GLASS = 2000, MAT_GOLD = 2000, MAT_SILVER = 3000)
 	range = 0
 	var/coeff = 100
 	var/list/use_channels = list(PW_CHANNEL_EQUIPMENT, PW_CHANNEL_ENVIRONMENT, PW_CHANNEL_LIGHTING)
@@ -335,6 +341,7 @@
 	desc = "Модуль для экзокостюма, который генерирует энергию, используя твёрдую плазму в качестве топлива. Загрязняет окружающую среду плазмой при повреждении."
 	icon_state = "tesla"
 	origin_tech = "plasmatech=2;powerstorage=2;engineering=2"
+	materials = list(MAT_METAL = 10000, MAT_GLASS = 1000, MAT_SILVER = 2000, MAT_PLASMA = 5000)
 	var/coeff = 100
 	var/fuel_type = MAT_PLASMA
 	var/max_fuel = 150000 // 45k energy for 75 plasma/ 375 cr.
@@ -451,6 +458,7 @@
 	max_fuel = 50000 // around 83k energy for 25 uranium/ 0 cr.
 	fuel_per_cycle_active = 150
 	power_per_cycle = 250
+	materials = list(MAT_METAL = 10000, MAT_GLASS = 1000, MAT_SILVER = 500)
 	var/rad_per_cycle = 120
 
 /obj/item/mecha_parts/mecha_equipment/generator/nuclear/process()
@@ -462,6 +470,7 @@
 	desc = "Ионные ускорители, предназначенные для установки на экзокостюм. Потребляют энергию даже в состоянии покоя."
 	icon_state = "tesla"
 	origin_tech = "powerstorage=4;engineering=4"
+	materials = list(MAT_METAL = 15000, MAT_PLASMA = 3000)
 	range = 0
 	energy_drain = 20
 	selectable = FALSE
