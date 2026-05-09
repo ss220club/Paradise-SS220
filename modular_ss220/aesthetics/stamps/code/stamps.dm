@@ -8,7 +8,10 @@
 		"large_stamp-mime.png"     	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-mime.png',
 		"large_stamp-ussp.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ussp.png',
 		"large_stamp-nct.png"		= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-nct.png',
-		"large_stamp-navytsf.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-navytsf.png'
+		"large_stamp-navytsf.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-navytsf.png',
+		"large_stamp-reptsf.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-reptsf.png',
+		"large_stamp-usspcom.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-usspcom.png',
+		"large_stamp-ussprep.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ussprep.png'
 	)
 	..()
 
