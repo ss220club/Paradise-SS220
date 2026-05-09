@@ -8,7 +8,7 @@
 		/obj/item/stamp/comussp
 	)
 	bio_chips = list(
-		/obj/item/bio_chip/mindshield/syndicate
+		/obj/item/bio_chip/mindshield/ussp
 	)
 
 /datum/outfit/admin/soviet/marine/captain
