@@ -204,6 +204,7 @@
 					/obj/item/seeds/glowshroom = 3,
 					/obj/item/seeds/grape = 3,
 					/obj/item/seeds/grass = 3,
+					/obj/item/seeds/harebell = 3,
 					/obj/item/seeds/lemon = 3,
 					/obj/item/seeds/lettuce = 3,
 					/obj/item/seeds/lime = 3,
@@ -415,6 +416,8 @@
 					/obj/item/smithing_cast/component/trim = 3,
 					/obj/item/smithing_cast/component/knife_blade = 3,
 					/obj/item/smithing_cast/component/knife_handle = 3,
+					/obj/item/smithing_cast/component/rod_core = 3,
+					/obj/item/smithing_cast/component/rod_housing = 3,
 					/obj/item/smithing_cast/misc/egun_parts = 3,
 					/obj/item/storage/bag/smith = 2,
 					/obj/item/storage/box/crewvend = 1)

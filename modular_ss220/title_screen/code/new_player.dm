@@ -30,9 +30,6 @@
 	else if(href_list["leave_notice"])
 		SSuser_verbs.invoke_verb(client, /datum/user_verb/change_title_screen_notice)
 
-	else if(href_list["swap_server"])
-		SSuser_verbs.invoke_verb(client, /datum/user_verb/swap_server)
-
 	else if(href_list["wiki"])
 		if(tgui_alert(usr, "Хотите открыть нашу вики?", "Вики", list("Да", "Нет")) != "Да")
 			return
@@ -50,7 +47,9 @@
 		winset(client, "paramapwindow.map", "focus=true")
 		return
 
-USER_VERB(swap_server, R_SERVER, "Swap Server", "Поменять сервер", VERB_CATEGORY_OOC)
+/client/verb/swap_server()
+	set category = "OOC"
+	set name = "Swap Server"
 	var/list/servers =  GLOB.configuration.ss220_misc.cross_server_list
 	if(length(servers) == 0)
 		return
@@ -58,7 +57,7 @@ USER_VERB(swap_server, R_SERVER, "Swap Server", "Поменять сервер",
 	var/server_name
 	var/server_ip
 	if(length(servers) > 1)
-		server_name = tgui_input_list(client, "Пожалуйста, выберите сервер куда собираетесь отправиться...", "Смена сервера!", servers)
+		server_name = tgui_input_list(src, "Пожалуйста, выберите сервер куда собираетесь отправиться...", "Смена сервера!", servers)
 		if(!server_name)
 			return
 		server_ip = servers[server_name]
@@ -67,12 +66,12 @@ USER_VERB(swap_server, R_SERVER, "Swap Server", "Поменять сервер",
 		server_name = servers[1]
 		server_ip = servers[server_name]
 
-	var/confirm = tgui_alert(client, "Вы уверены что хотите перейти на [server_name] ([server_ip])?", "Смена сервера!", list("Поехали", "Побуду тут..."))
+	var/confirm = tgui_alert(usr, "Вы уверены что хотите перейти на [server_name] ([server_ip])?", "Смена сервера!", list("Поехали", "Побуду тут..."))
 	if(confirm != "Поехали")
 		return
 
-	to_chat_immediate(client, "Удачной охоты, сталкер.")
-	client << link(server_ip)
+	to_chat_immediate(usr, "Удачной охоты, сталкер.")
+	src << link(server_ip)
 
 /datum/preferences/process_link(mob/user, list/href_list)
 	. = ..()
