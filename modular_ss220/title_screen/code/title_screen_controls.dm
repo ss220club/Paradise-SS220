@@ -32,11 +32,18 @@ USER_VERB(change_title_screen_notice, R_EVENT, "Title Screen: Set Notice", "Sets
 		SEND_SOUND(new_player,  sound('sound/items/bikehorn.ogg'))
 
 
-USER_VERB(fix_title_screen, R_NONE, "Fix Lobby Screen", "Lobbyscreen broke? Press this.", VERB_CATEGORY_SPECIAL)
-	if(istype(client, /mob/new_player))
-		SStitle.show_title_screen_to(client)
+/**
+ * Reloads the titlescreen if it is bugged for someone.
+ */
+/client/verb/fix_title_screen()
+	set name = "Fix Lobby Screen"
+	set desc = "Lobbyscreen broke? Press this."
+	set category = "Special Verbs"
+
+	if(istype(mob, /mob/new_player))
+		SStitle.show_title_screen_to(src)
 	else
-		SStitle.hide_title_screen_from(client)
+		SStitle.hide_title_screen_from(src)
 
 
 USER_VERB(change_title_screen_htm, R_DEBUG, "Title Screen: Set HTML", "Debug command that enables you to change the HTML on the go", VERB_CATEGORY_EVENT)

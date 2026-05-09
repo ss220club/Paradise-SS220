@@ -205,6 +205,7 @@
 	head = /obj/item/clothing/head/beret/solgov
 	belt = /obj/item/storage/belt/fannypack/black
 	glasses = /obj/item/clothing/glasses/sunglasses
+	l_ear = /obj/item/radio/headset/headset_com
 	gloves = /obj/item/clothing/gloves/color/white
 	shoes = /obj/item/clothing/shoes/centcom
 	l_pocket = /obj/item/melee/classic_baton/telescopic
@@ -215,6 +216,7 @@
 		/obj/item/lighter/zippo/blue = 1,
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 		/obj/item/clothing/under/pants/shorts/blue  = 1,
+		/obj/item/stamp/reptsf = 1,
 	)
 
 	bio_chips = list(/obj/item/bio_chip/mindshield,
@@ -263,6 +265,7 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/sunglasses
+	l_ear = /obj/item/radio/headset/headset_com
 	l_pocket = /obj/item/melee/classic_baton/telescopic
 	id = /obj/item/card/id/representative_ussp
 	box = /obj/item/storage/box/survival_mining
@@ -272,7 +275,7 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 		/obj/item/clothing/under/pants/shorts/red = 1,
 		/obj/item/clothing/head/ushanka = 1,
-		/obj/item/stamp/ussp = 1,
+		/obj/item/stamp/repussp = 1,
 	)
 
 	bio_chips = list(/obj/item/bio_chip/mindshield,
