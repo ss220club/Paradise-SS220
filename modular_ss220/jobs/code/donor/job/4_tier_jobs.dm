@@ -205,6 +205,7 @@
 	head = /obj/item/clothing/head/beret/solgov
 	belt = /obj/item/storage/belt/fannypack/black
 	glasses = /obj/item/clothing/glasses/sunglasses
+	r_ear = /obj/item/radio/headset/headset_com
 	gloves = /obj/item/clothing/gloves/color/white
 	shoes = /obj/item/clothing/shoes/centcom
 	l_pocket = /obj/item/melee/classic_baton/telescopic
@@ -264,6 +265,7 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/sunglasses
+	r_ear = /obj/item/radio/headset/headset_com
 	l_pocket = /obj/item/melee/classic_baton/telescopic
 	id = /obj/item/card/id/representative_ussp
 	box = /obj/item/storage/box/survival_mining
