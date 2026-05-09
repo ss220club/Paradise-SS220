@@ -8,21 +8,18 @@
 	company = "Etamin Industry Elite Series"
 	icon = 'modular_ss220/robolimbs/icons/etaminindustry_alt1.dmi'
 	parts = list("head")
-	selectable = 0
 	has_subtypes = null
 
 /datum/robolimb/etaminindustry/etaminindustry_alt2
 	company = "Etamin Industry SharpShooter Series"
 	icon = 'modular_ss220/robolimbs/icons/etaminindustry_alt2.dmi'
 	parts = list("head")
-	selectable = 0
 	has_subtypes = null
 
 /datum/robolimb/etaminindustry/etaminindustry_alt3
 	company = "Etamin Industry King Series"
 	icon = 'modular_ss220/robolimbs/icons/etaminindustry_alt3.dmi'
 	parts = list("head")
-	selectable = 0
 	has_subtypes = null
 
 /datum/sprite_accessory/body_markings/head/optics/etamin

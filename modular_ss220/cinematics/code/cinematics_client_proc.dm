@@ -5,5 +5,12 @@ USER_VERB(cinematic_new, R_MAINTAINER, "Cinematic (NEW)", "Shows a cinematic.", 
 
 	play_cinematic(choice, world)
 
-USER_VERB(cinematic_leave, R_NONE, "Прекратить смотреть синематик", "Отключить проигрывание синематика.", VERB_CATEGORY_OOC)
-	SEND_SIGNAL(client, COMSIG_CINEMATIC_WATCHER_LEAVES)
+/client/verb/cinematic_leave()
+	set name = "Прекратить смотреть синематик"
+	set category = "OOC"
+	set desc = "Отключить проигрывание синематика."
+
+	if(!mob.screens["cinematic"])
+		return
+
+	SEND_SIGNAL(src, COMSIG_CINEMATIC_WATCHER_LEAVES)

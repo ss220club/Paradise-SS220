@@ -51,3 +51,8 @@
 			holstered.forceMove(src)
 			return
 	return ..()
+
+/obj/item/mod/module/springlock/on_wearer_exposed(atom/source, list/reagents, datum/reagents/source_reagents, methods, volume_modifier, show_message)
+	if(nineteen_eighty_seven_edition && !dont_let_you_come_back)
+		return
+	return ..()

@@ -251,7 +251,7 @@
 	var/loc_temp = get_temperature(readonly_environment)
 
 	//Body temperature is adjusted in two steps. Firstly your body tries to stabilize itself a bit.
-	if(stat != DEAD)
+	if(stat != DEAD || !HAS_TRAIT(src, TRAIT_HYPOTHERMIC))
 		stabilize_temperature_from_calories()
 
 	//After then, it reacts to the surrounding atmosphere based on your thermal protection
@@ -261,7 +261,7 @@
 			var/thermal_protection = get_cold_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
 			if(thermal_protection < 1)
 				bodytemperature += max((1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_COLD_DIVISOR), BODYTEMP_COOLING_MAX)
-		else
+		else if(!HAS_TRAIT(src, TRAIT_HYPOTHERMIC))
 			//Place is hotter than we are
 			var/thermal_protection = get_heat_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
 			if(thermal_protection < 1)
@@ -1033,9 +1033,15 @@
 	adjustOxyLoss(20)
 
 /mob/living/carbon/human/proc/handle_kidneys()
+	if(NO_BLOOD in dna.species.species_traits)
+		return
+
 	var/obj/item/organ/kidneys = get_int_organ(/obj/item/organ/internal/kidneys)
 	if(isslimeperson(src))
 		kidneys = get_int_organ(/obj/item/organ/internal/brain)
+	if(isdrask(src))
+		// Drask have their liver fulfill the same function as kidneys
+		kidneys = get_int_organ(/obj/item/organ/internal/liver)
 
 	var/damage_percentage = 0
 	if(kidneys && !(kidneys.status & ORGAN_DEAD)) // No kidneys = full damage
