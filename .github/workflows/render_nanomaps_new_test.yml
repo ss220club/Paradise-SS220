@@ -43,14 +43,17 @@ jobs:
           rustup target add x86_64-unknown-linux-musl
           tmp_dir="$(mktemp -d)"
           trap 'rm -rf "$tmp_dir"' EXIT
-          cargo install \
-            --locked \
-            --root "$tmp_dir/dmm-tools-root" \
-            --target x86_64-unknown-linux-musl \
-            --git https://github.com/SpaceManiac/SpacemanDMM \
-            --rev 6c5a751516ae0e8add4b2aa4388a1e84e96e7082 \
-            dmm-tools
-          install -m 0755 "$tmp_dir/dmm-tools-root/bin/dmm-tools" tools/github-actions/dmm-tools-para
+          git clone https://github.com/SpaceManiac/SpacemanDMM "$tmp_dir/SpacemanDMM"
+          cd "$tmp_dir/SpacemanDMM"
+          git checkout 6c5a751516ae0e8add4b2aa4388a1e84e96e7082
+          cargo build --release --locked --target x86_64-unknown-linux-musl
+          binary_path="$(find target/x86_64-unknown-linux-musl/release -maxdepth 1 -type f \( -name 'dmm-tools' -o -name 'dmm_tools' -o -name '*dmm*tools*' \) | head -n 1)"
+          if [ -z "$binary_path" ]; then
+            echo "Could not find built dmm-tools binary" >&2
+            find target/x86_64-unknown-linux-musl/release -maxdepth 1 -type f -printf '%f\n'
+            exit 1
+          fi
+          install -m 0755 "$binary_path" "$GITHUB_WORKSPACE/tools/github-actions/dmm-tools-para"
 
       - name: 'Commit binary and open PR'
         run: |
