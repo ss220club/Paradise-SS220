@@ -109,6 +109,7 @@
 	desc = "A large-bore energy shotgun, configured to fire a large blast of disabling pellets."
 	icon_state = "mecha_disabler_shotgun"
 	origin_tech = "materials=4;combat=5;"
+	materials = list(MAT_METAL = 10000, MAT_SILVER = 6000)
 	energy_drain = 30 // This is per shot + 1x cost, so 300 per shot
 	projectile = /obj/projectile/beam/disabler/pellet
 	projectiles_per_shot = 9
@@ -121,6 +122,7 @@
 	desc = "A large-bore energy shotgun, configured to fire a large blast of lethal laser pellets."
 	icon_state = "mecha_laser_shotgun"
 	origin_tech = "materials=4;combat=5;"
+	materials = list(MAT_METAL = 10000, MAT_GOLD = 6000)
 	energy_drain = 35 // This is per shot + 1x cost, so 560 per shot
 	projectile = /obj/projectile/beam/scatter/eshotgun
 	projectiles_per_shot = 15
@@ -133,6 +135,7 @@
 	desc = "Ионный дробовик для боевых экзокостюмов. При выстреле предоставляет меху секунду ЭМИ-защиты с избыточной энергией от разряда."
 	icon_state = "mecha_ion"
 	origin_tech = "materials=4;combat=5;magnets=4"
+	materials = list(MAT_METAL = 20000, MAT_SILVER = 6000, MAT_URANIUM = 2000)
 	energy_drain = 215 // This is per shot + 1x cost, so ~1500 per shotgun shot
 	projectile = /obj/projectile/ion/weak
 	projectiles_per_shot = 6
@@ -150,6 +153,7 @@
 	desc = "Орудие для боевых экзокостюмов. Стреляет энергетическими шарами, по принципу экспериментального тесла-двигателя."
 	icon_state = "mecha_teslacannon"
 	origin_tech = "materials=4;engineering=4;combat=6;magnets=6"
+	materials = list(MAT_METAL = 20000, MAT_SILVER = 8000)
 	energy_drain = 500
 	projectile = /obj/projectile/energy/tesla_bolt
 	fire_sound = 'sound/magic/lightningbolt.ogg'
@@ -177,6 +181,7 @@
 	desc = "Орудие для боевых экзокостюмов. Стреляет высокотемпературными лучами, поджигающими цель."
 	icon_state = "mecha_immolator"
 	origin_tech = "materials=4;engineering=4;combat=6;magnets=6"
+	materials = list(MAT_METAL = 10000, MAT_SILVER = 8000, MAT_PLASMA = 8000)
 	energy_drain = 80
 	projectile = /obj/projectile/beam/immolator
 	fire_sound = 'sound/weapons/laser3.ogg'
@@ -228,6 +233,7 @@
 	icon_state = "mecha_honker"
 	energy_drain = 200
 	range = MECHA_MELEE | MECHA_RANGED
+	materials = list(MAT_METAL = 20000, MAT_BANANIUM = 10000)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/honker/can_attach(obj/mecha/combat/honker/M as obj)
 	if(..())
@@ -323,6 +329,7 @@
 	projectile = /obj/projectile/bullet/mime/nonlethal
 	projectiles = 20
 	projectile_energy_cost = 50
+	materials = list(MAT_METAL = 20000, MAT_TRANQUILLITE = 10000)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine/silenced/can_attach(obj/mecha/combat/reticence/M as obj)
 	if(..())
@@ -371,6 +378,7 @@
 	name = "\improper SRM-8 Light Missile Rack"
 	icon_state = "mecha_missilerack_six"
 	origin_tech = "combat=5;materials=4;engineering=4"
+	materials = list(MAT_METAL = 22000, MAT_GOLD = 6000,MAT_SILVER = 8000)
 	projectile = /obj/projectile/missile/light
 	fire_sound = 'sound/effects/bang.ogg'
 	projectiles = 6
@@ -413,6 +421,7 @@
 	name = "\improper SOB-3 Clusterbang Launcher"
 	desc = "Оружие для боевых экзокостюмов. Запускает заранее подготовленные кластерные бомбы. Ты монстр."
 	origin_tech = "combat=4;materials=4"
+	materials = list(MAT_METAL = 20000, MAT_GOLD = 10000, MAT_URANIUM = 10000)
 	projectiles = 3
 	projectile = /obj/item/grenade/clusterbuster
 	projectile_energy_cost = 1600 //getting off cheap seeing as this is 3 times the flashbangs held in the grenade launcher.
@@ -428,6 +437,7 @@
 	desc = "Инструмент для массовой уборки. Запускает заранее подготовленные гранаты с очистительной пеной. Высокая опасность поскользнуться!"
 	icon_state = "mecha_grenadelnchr"
 	origin_tech = "combat=4;engineering=4"
+	materials = list(MAT_METAL = 5000, MAT_GLASS = 3000, MAT_SILVER = 4000, MAT_GOLD = 6000)
 	projectile = /obj/item/grenade/chem_grenade/cleaner
 	missile_speed = 1.5
 	size = 1
@@ -460,12 +470,14 @@
 	missile_speed = 1.5
 	projectile_energy_cost = 100
 	harmful = FALSE
+	materials = list(MAT_METAL = 20000, MAT_BANANIUM = 5000)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/dropwall
 	name = "\improper DWDL-04 Dropwall Launcher"
 	desc = "A large, semi-automatic launcher designed by Shellguard Munitions to fire dropwall shield generators."
 	icon_state = "mecha_grenadelnchr"
 	origin_tech = "combat=4;engineering=4"
+	materials = list(MAT_METAL = 8000, MAT_GLASS = 8000, MAT_SILVER = 4000, MAT_TITANIUM = 4000, MAT_PLASMA = 4000)
 	projectile = /obj/item/grenade/barrier/dropwall
 	missile_speed = 1.5
 	projectile_energy_cost = 750
@@ -513,6 +525,7 @@
 	missile_speed = 1.5
 	projectile_energy_cost = 100
 	harmful = FALSE
+	materials = list(MAT_METAL = 20000, MAT_BANANIUM = 5000)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/mousetrap_mortar/can_attach(obj/mecha/combat/honker/M as obj)
 	if(..())
@@ -570,6 +583,7 @@
 	righthand_file = 'icons/mob/inhands/guns_righthand.dmi'
 	energy_drain = 30
 	origin_tech = "materials=3;plasmatech=4;engineering=3"
+	materials = list(MAT_METAL = 10000, MAT_GLASS = 2000, MAT_PLASMA = 6000)
 	projectile = /obj/projectile/plasma/adv/mech
 	fire_sound = 'sound/weapons/laser.ogg'
 	harmful = TRUE

@@ -261,9 +261,9 @@
 	muzzle_flash_color = null
 	var/obj/item/gun/magic/tentacle/gun //the item that shot it
 
-/obj/item/ammo_casing/magic/tentacle/New(obj/item/gun/magic/tentacle/tentacle_gun)
+/obj/item/ammo_casing/magic/tentacle/Initialize(mapload, obj/item/gun/magic/tentacle/tentacle_gun)
+	. = ..() // SS220 EDIT - fix for unit test
 	gun = tentacle_gun
-	..()
 
 /obj/item/ammo_casing/magic/tentacle/Destroy()
 	gun = null
