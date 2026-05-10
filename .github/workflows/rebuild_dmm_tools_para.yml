@@ -7,6 +7,8 @@ jobs:
   rebuild_binary:
     name: 'Rebuild Renderer Binary'
     runs-on: ubuntu-22.04
+    env:
+      BASE_BRANCH: ${{ github.ref_name }}
     steps:
       - id: create_token
         uses: actions/create-github-app-token@v2
@@ -23,7 +25,9 @@ jobs:
 
       - name: 'Prepare Branch'
         run: |
-          git checkout -B rebuild-dmm-tools-para origin/master
+          REBUILD_BRANCH="rebuild-dmm-tools-para-${BASE_BRANCH//\//-}"
+          echo "REBUILD_BRANCH=$REBUILD_BRANCH" >> "$GITHUB_ENV"
+          git checkout -B "$REBUILD_BRANCH" "origin/$BASE_BRANCH"
 
       - name: 'Install Rust'
         uses: dtolnay/rust-toolchain@stable
@@ -53,9 +57,9 @@ jobs:
           git config --local user.name "dmm-tools Rebuild"
           git add tools/github-actions/dmm-tools-para
           git commit -m "Rebuild dmm-tools-para (`date`)" || true
-          git push -f -u origin rebuild-dmm-tools-para
-          result=$(gh pr create -t "Rebuild dmm-tools-para" -b "This pull request updates the committed dmm-tools renderer binary for GitHub Actions compatibility." -l "CI" -H "rebuild-dmm-tools-para" -B "master" 2>&1) || true
+          git push -f -u origin "$REBUILD_BRANCH"
+          result=$(gh pr create -t "Rebuild dmm-tools-para" -b "This pull request updates the committed dmm-tools renderer binary for GitHub Actions compatibility." -l "CI" -H "$REBUILD_BRANCH" -B "$BASE_BRANCH" 2>&1) || true
           echo "$result"
-          if echo "$result" | grep -q "No commits between master and rebuild-dmm-tools-para"; then
+          if echo "$result" | grep -q "No commits between $BASE_BRANCH and $REBUILD_BRANCH"; then
             echo "Binary did not change, skipping."
           fi
