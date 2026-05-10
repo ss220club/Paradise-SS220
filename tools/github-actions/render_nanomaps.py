@@ -33,8 +33,8 @@ if __name__ == "__main__":
         dmm = DMM.from_file(map_path)
         width = dmm.size.x * SCALE
         height = dmm.size.y * SCALE
-        commands.append([str(RENDERER), "minimap", "--enable", "nanomaps", "-w", str(width), "-h", str(height), str(map_path)])
-        commands.append(["mv", f"data/minimaps/{dmm.filepath.stem}{suffix_220}_nanomap_z1.png", f"icons/_nanomaps/stations/{technical_name}{suffix_220}_nanomap_z1.png"])
+        commands.append([str(RENDERER), "minimap", "--enable", "minimaps", "-w", str(width), "-h", str(height), str(map_path)])
+        commands.append(["mv", f"data/minimaps/{dmm.filepath.stem}-1.png", f"icons/_minimaps/{technical_name}_minimap_z1.png"])
 
     print("inspecting ruins...")
     for pth in dme.subtypesof("/datum/map_template/ruin"):
@@ -53,8 +53,8 @@ if __name__ == "__main__":
         dmm = DMM.from_file(map_path)
         width = dmm.size.x * SCALE
         height = dmm.size.y * SCALE
-        commands.append([str(RENDERER), "minimap", "--enable", "nanomaps", "-w", str(width), "-h", str(height), str(map_path)])
-        commands.append(["mv", f"data/minimaps/{dmm.filepath.stem}{suffix_220}_nanomap_z1.png", f"icons/_nanomaps/ruins/{ruin_id}{suffix_220}_nanomap_z1.png"])
+        commands.append([str(RENDERER), "minimap", "--enable", "minimaps", "-w", str(width), "-h", str(height), str(map_path)])
+        commands.append(["mv", f"data/minimaps/{dmm.filepath.stem}-1.png", f"icons/_minimaps/ruins/{ruin_id}{suffix_220}_minimap_z1.png"])
 
     print("executing...")
     for command in commands:
