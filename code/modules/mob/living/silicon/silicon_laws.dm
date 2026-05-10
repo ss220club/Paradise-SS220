@@ -83,12 +83,12 @@
 
 /mob/living/silicon/proc/dostatelaws(method, prefix, datum/ai_laws/laws)
 	if(stating_laws[prefix])
-		to_chat(src, SPAN_NOTICE("[method]: Already stating laws using this communication method."))
+		to_chat(src, SPAN_NOTICE("[method]: Законы уже объявляются в данный канал."))
 		return
 
 	stating_laws[prefix] = 1
 
-	var/can_state = statelaw("[prefix]Current Active Laws:")
+	var/can_state = statelaw("[prefix]Текущие активные законы:")
 
 	for(var/datum/ai_law/law in laws.laws_to_state())
 		can_state = statelaw("[prefix][law.get_index()]. [law.law]")
@@ -96,7 +96,7 @@
 			break
 
 	if(!can_state)
-		to_chat(src, SPAN_DANGER("[method]: Unable to state laws. Communication method unavailable."))
+		to_chat(src, SPAN_DANGER("[method]: Невозможно объявить законы. Способ к коммуникации недоступен."))
 	stating_laws[prefix] = 0
 
 /mob/living/silicon/proc/statelaw(law)

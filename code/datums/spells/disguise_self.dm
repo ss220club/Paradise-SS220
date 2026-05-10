@@ -1,8 +1,6 @@
 /datum/spell/disguise_self
 	name = "Disguise Self"
-	desc = "Disguise yourself as a crewmember, based on your current location. Also changes your voice. Takes two seconds to cast, must stand still. \
-		The illusion isn't strong enough for more thorough examinations, but will fool people at a glance. \
-		You will lose control over the illusion if you're attacked, shoved, or a object is thrown at you, no matter how soft."
+	desc = "Позволяет замаскироваться под члена экипажа в зависимости от вашего местоположения, а также изменяет ваш голос. Требует две секунды на применение в неподвижном состоянии. Иллюзия не сработает при детальном осмотре, но может обмануть при беглом взгляде. Маскировка спадёт, если вас атакуют, толкнут или бросят в вас предмет."
 
 	base_cooldown = 3 SECONDS
 	clothes_req = FALSE
@@ -19,13 +17,13 @@
 	var/mob/living/carbon/human/H = user
 
 	H.emote("spin")
-	to_chat(H, SPAN_NOTICE("You start spinning in place and casting [src]..."))
+	to_chat(H, SPAN_NOTICE("Вы начинаете крутиться на месте и применять [src.name]..."))
 	if(do_after(H, 2 SECONDS, FALSE, H))
 		finish_disguise(H)
 		return TRUE
 	else
 		H.slip("your own foot", 1 SECONDS, 0, 0, 1, "trip")
-		to_chat(H, SPAN_DANGER("You must stand still to cast [src]!"))
+		to_chat(H, SPAN_DANGER("Вы должны стоять неподвижно, чтобы применить [src.name]!"))
 		return FALSE
 
 /datum/spell/disguise_self/proc/finish_disguise(mob/living/carbon/human/H)

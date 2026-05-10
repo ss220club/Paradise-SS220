@@ -1,0 +1,36 @@
+/obj/item/clothing/under/rank/medical/doctor/intern
+	name = "intern jumpsuit"
+	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
+	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
+	icon_state = "intern_s"
+	sprite_sheets = null
+
+/obj/item/clothing/under/rank/medical/doctor/intern/skirt
+	name = "intern jumpskirt"
+	icon_state = "internf_s"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+
+/obj/item/clothing/under/rank/medical/doctor/intern/assistant
+	name = "medical assistant jumpsuit"
+	icon_state = "med_ass_s"
+
+/obj/item/clothing/under/rank/medical/doctor/intern/assistant/skirt
+	name = "medical assistant jumpskirt"
+	icon_state = "med_ass_f_s"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+
+/obj/item/clothing/under/rank/medical/scrubs/green/light
+	name = "light green medical scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in light green."
+	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
+	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
+	icon_state = "scrubsgreen"
+	sprite_sheets = null
+
+/obj/item/clothing/head/surgery/green/light
+	name = "light green surgical cap"
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is light green."
+	icon = 'modular_ss220/jobs/icons/clothing/hats.dmi'
+	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/head.dmi'
+	icon_state = "surgcap_green"
+	sprite_sheets = null

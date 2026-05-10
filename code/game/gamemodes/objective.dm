@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/proc/on_target_cryo()
 	var/list/owners = get_owners()
 	for(var/datum/mind/M in owners)
-		to_chat(M.current, "<BR>[SPAN_USERDANGER("You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!")]")
+		to_chat(M.current, "<BR>[SPAN_USERDANGER("Вы чувствуете, что Ваша цель вне досягаемости. Время для плана [pick("A","B","C","D","X","Y","Z")]. Задачи обновлены!")]")
 		SEND_SOUND(M.current, sound('sound/ambience/alarm4.ogg'))
 	target = null
 	INVOKE_ASYNC(src, PROC_REF(post_target_cryo), owners)
@@ -292,10 +292,10 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/assassinate/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Assassinate [target.current.real_name], the [target.assigned_role]."
+		explanation_text = "Убейте [target.current.real_name], [target.assigned_role]."
 		var/list/protect_objectives = find_protect_objectives_for_target()
 		if(length(protect_objectives) > 0)
-			explanation_text += " Be warned, it seems they have a guardian angel."
+			explanation_text += " Будьте осторожны, у вашей цели есть ангел-хранитель."
 	else
 		explanation_text = "Free Objective"
 
@@ -359,10 +359,10 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/assassinateonce/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Teach [target.current.real_name], the [target.assigned_role], a lesson they will not forget. The target only needs to die once for success."
+		explanation_text = "Преподайте [target.current.real_name], [target.assigned_role] незабываемый урок. Жертва должна умереть лишь единожды для выполнения цели."
 		var/list/protect_objectives = find_protect_objectives_for_target()
 		if(length(protect_objectives) > 0)
-			explanation_text += " Be warned, it seems they have a guardian angel."
+			explanation_text += " Будьте осторожны, у вашей цели есть ангел-хранитель."
 		establish_death_signal()
 	else
 		explanation_text = "Free Objective"
@@ -419,8 +419,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return ..()
 
 /datum/objective/infiltrate_sec
-	name = "Infiltrate Security"
-	explanation_text = "Infiltrate the ranks of the Security department undetected, either by being lawfully hired into it or by replacing one of its members."
+	name = "Проникнуть в службу безопасности"
+	explanation_text = "Ваша задача — незаметно проникнуть в ряды отдела безопасности, будь то путем законного трудоустройства или путем замены одного из его сотрудников."
 	delayed_objective_text = "Your objective is unknown. You will receive further information in a few minutes"
 	needs_target = FALSE
 	completed = TRUE
@@ -434,7 +434,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/mutiny/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Assassinate or exile [target.current.real_name], the [target.assigned_role]."
+		explanation_text = "Убейте или изгоните [target.current.real_name], [target.assigned_role]."
 	else
 		explanation_text = "Free Objective"
 
@@ -471,7 +471,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/maroon/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Prevent [target.current.real_name], the [target.assigned_role] from escaping alive."
+		explanation_text = "Предотвратите побег [target.current.real_name], [target.assigned_role]."
 	else
 		explanation_text = "Free Objective"
 
@@ -517,7 +517,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/debrain/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Steal the brain of [target.current.real_name], the [target.assigned_role]."
+		explanation_text = "Украдите мозг [target.current.real_name], [target.assigned_role]."
 	else
 		explanation_text = "Free Objective"
 
@@ -540,7 +540,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/protect
 	name = "Protect"
 	martyr_compatible = TRUE
-	delayed_objective_text = "Your objective is to protect another crewmember. You will receive further information in a few minutes."
+	delayed_objective_text = "Ваша задача — защитить другого члена экипажа. Дополнительную информацию вы получите через несколько минут."
 	/// Timer for fallback target assignment (randomized between 5-10 minutes)
 	var/fallback_timer_id
 
@@ -552,7 +552,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/protect/update_explanation_text()
 	if(target?.current)
-		explanation_text = "[target.current.real_name], the [target.assigned_role], is in grave danger. Ensure that they remain alive for the duration of the shift."
+		explanation_text = "Защищайте [target.current.real_name], [target.assigned_role], находящегося в смертельной опасности. Убедитесь, что он останется живым до конца смены."
 	else
 		// We're waiting for a target to be chosen. Don't want Free Objective to show here.
 		explanation_text = delayed_objective_text
@@ -711,16 +711,16 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	if(owner?.current)
 		SEND_SOUND(owner.current, sound('sound/ambience/alarm4.ogg'))
 		owner.remove_antag_datum(/datum/antagonist/mindslave)
-		to_chat(owner.current, "<BR>[SPAN_USERDANGER("You notice that your master has entered cryogenic storage, and revert to your normal self.")]")
+		to_chat(owner.current, "<BR>[SPAN_USERDANGER("Вы замечаете, что ваш мастер ушел в криогенное хранилище, и вы возвращаетесь к прежнему я.")]")
 		log_admin("[key_name(owner.current)]'s mindslave master has cryo'd, and is no longer a mindslave.")
 		message_admins("[key_name_admin(owner.current)]'s mindslave master has cryo'd, and is no longer a mindslave.") //Since they were on antag hud earlier, this feels important to log
 		qdel(src)
 
 /datum/objective/hijack
 	name = "Hijack"
-	explanation_text = "Hijack the shuttle by escaping on it with no loyalist Nanotrasen crew on board and free. \
-	Syndicate agents, other enemies of Nanotrasen, cyborgs, pets, and cuffed/restrained hostages may be allowed on the shuttle alive. \
-	Alternatively, hack the shuttle console multiple times (by alt clicking on it) until the shuttle directions are corrupted."
+	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
+	Агенты Синдиката, другие враги корпорации, киборги, питомцы, а также закованные в наручники заложники могут быть допущены на шаттл живыми. \
+	Альтернативно, взломайте консоль управления шаттлом несколько раз (при помощи альт-клика по консоли) до тех пор, пока курс полёта шаттла не будет нарушен."
 	needs_target = FALSE
 
 /datum/objective/hijack/check_completion()
@@ -736,7 +736,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/hijackclone
 	name = "Hijack (with clones)"
-	explanation_text = "Hijack the shuttle by ensuring only you (or your copies) escape."
+	explanation_text = "Угоните шаттл, где только Вы (или Ваши клоны) будут допущены на борт."
 	needs_target = FALSE
 
 // This objective should only be given to a single owner, because the "copies" can only copy one person.
@@ -767,9 +767,9 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/nuke
-	name = "Detonate the Station"
-	explanation_text = "Detonate the station's nuclear device. You will need to secure the station's Nuclear Authentication Disk in order to arm the warhead. \
-	The Nuclear Authentication Disk can be found in the Captain's Office, or carried by the Captain."
+	name = "Взорвать станцию"
+	explanation_text = "Подорвите ядерное устройство станции. Для активации боеголовки вам потребуется получить доступ к диску ядерной аутентификации станции. \
+	Диск ядерного подтверждения можно найти в кабинете капитана или же капитан может носить его с собой."
 	martyr_compatible = TRUE
 	needs_target = FALSE
 
@@ -787,9 +787,9 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/block
 	name = "Silicon hijack"
-	explanation_text = "Hijack the shuttle by alt-clicking on the shuttle console. Do not let the crew wipe you off of it! \
-	Crew and agents can be on the shuttle when you do this, and may try to wipe you! \
-	Using the doomsday device successfully is also an option."
+	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
+	Агенты Синдиката, другие враги корпорации, киборги, питомцы/ограниченные заложники, разрешены живыми на шаттле. \
+	Успешное использование устройства судного дня - тоже вариант."
 	needs_target = FALSE
 
 /datum/objective/block/check_completion()
@@ -808,7 +808,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/escape
 	name = "Escape"
-	explanation_text = "Escape on the shuttle or an escape pod alive and free."
+	explanation_text = "Сбегите живым со станции на шаттле или эвакуационном поде."
 	needs_target = FALSE
 
 /datum/objective/escape/check_completion(exfilling = FALSE)
@@ -857,7 +857,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 		return
 	target = assassinate.target
 	target_real_name = assassinate.target.current.real_name
-	explanation_text = "Escape on the shuttle or an escape pod with the identity of [target_real_name], the [target.assigned_role] while wearing [target.p_their()] identification card."
+	explanation_text = "Сбегите живым со станции на шаттле, или эвакуационном поде под личностью [target_real_name], [target.assigned_role], нося [target.ru_p_them()] ID-карту."
 	has_assassinate_objective = TRUE
 	RegisterSignal(assassinate, COMSIG_OBJECTIVE_TARGET_FOUND, PROC_REF(assassinate_found_target))
 	RegisterSignal(assassinate, COMSIG_OBJECTIVE_CHECK_VALID_TARGET, PROC_REF(assassinate_checking_target))
@@ -865,13 +865,17 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/escape/escape_with_identity/is_invalid_target(datum/mind/possible_target)
 	if(..() || !possible_target.current.client)
 		return TRUE
+	// SS220 EDIT START - GAS FIXES AND REBALANCE
+	if(is_species(possible_target, /datum/species/serpentid))
+		return TRUE
+	// SS220 EDIT END - GAS FIXES AND REBALANCE
 	// If the target is geneless, then it's an invalid target.
 	return HAS_TRAIT(possible_target.current, TRAIT_GENELESS)
 
 /datum/objective/escape/escape_with_identity/update_explanation_text()
 	if(target?.current)
 		target_real_name = target.current.real_name
-		explanation_text = "Escape on the shuttle or an escape pod with the identity of [target_real_name], the [target.assigned_role] while wearing [target.p_their()] identification card."
+		explanation_text = "Сбегите на шаттле или эвакуационном поде под личностью [target_real_name], [target.assigned_role], нося [target.ru_p_them()] ID-карту."
 	else
 		explanation_text = "Free Objective"
 
@@ -919,8 +923,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/survive
-	name = "Survive"
-	explanation_text = "Stay alive until the end."
+	name = "Выживание"
+	explanation_text = "Оставайтесь в живых до самого конца."
 	needs_target = FALSE
 
 /datum/objective/survive/check_completion()
@@ -935,7 +939,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/nuclear
 	name = "Nuke station"
-	explanation_text = "Destroy the station with a nuclear device."
+	explanation_text = "Уничтожьте станцию с помощью ядерной боеголовки."
 	martyr_compatible = TRUE
 	needs_target = FALSE
 
@@ -948,12 +952,12 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/incriminate
 	name = "Incriminate"
 	martyr_compatible = TRUE
-	delayed_objective_text = "Your objective is to incriminate a crew member for a major-level crime without revealing yourself. You will receive further information in a few minutes."
+	delayed_objective_text = "Ваша цель — обвинить члена экипажа в серьёзном преступлении, не раскрывая своей личности. Дополнительную информацию вы получите через несколько минут."
 	completed = TRUE
 
 /datum/objective/incriminate/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Incriminate [target.current.real_name], the [target.assigned_role], for a major-level crime. Ensure you are not revealed as the perpetrator."
+		explanation_text = "Обманите станцию. Обвините [target.current.real_name], [target.assigned_role] в серьёзном преступлении и убедитесь, что вы не раскрыты как преступник."
 	else
 		explanation_text = "Free Objective"
 
@@ -1038,9 +1042,9 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 		explanation_text += steal_target.extra_information
 		return
 
-	explanation_text = "Steal [steal_target.name]. One was last seen in [get_location()]. "
+	explanation_text = "Украдите [steal_target.name]. В последний раз этот предмет видели в [get_location()]. "
 	if(length(steal_target.protected_jobs) && steal_target.job_possession)
-		explanation_text += "It may also be in the possession of the [english_list(steal_target.protected_jobs, and_text = " or ")]. "
+		explanation_text += "Также этот предмет может быть в распоряжении [english_list(steal_target.protected_jobs, and_text = " или ")]. "
 	explanation_text += steal_target.extra_information
 
 /datum/objective/steal/check_completion()
@@ -1127,7 +1131,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return target_amount
 
 /datum/objective/absorb/update_explanation_text()
-	explanation_text = "Acquire [target_amount] compatible genomes. The 'Extract DNA Sting' can be used to stealthily get genomes without killing somebody."
+	explanation_text = "Собeрите [target_amount] совместимых геномов. Способность 'Extract DNA Sting' может быть использована для скрытного получения геномов без нужды убивать кого-либо."
 
 /datum/objective/absorb/check_completion()
 	if(..())
@@ -1152,7 +1156,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/destroy/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Destroy [target.current.real_name], the AI."
+		explanation_text = "Уничтожьте [target.current.real_name], ИИ станции."
 	else
 		explanation_text = "Free Objective"
 
@@ -1195,12 +1199,12 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/steal_five_of_type/summon_guns
 	name = "Steal Five Guns"
-	explanation_text = "Steal at least five guns!"
+	explanation_text = "Украдите как минимум пять стволов!"
 	wanted_items = list(/obj/item/gun)
 
 /datum/objective/steal_five_of_type/summon_magic
 	name = "Steal Five Artefacts"
-	explanation_text = "Steal at least five magical artefacts!"
+	explanation_text = "Украдите как минимум пять магических артефактов!"
 	wanted_items = list()
 
 /datum/objective/steal_five_of_type/summon_magic/New()
@@ -1272,7 +1276,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return target_amount
 
 /datum/objective/blood/update_explanation_text()
-	explanation_text = "Accumulate at least [target_amount] total units of blood."
+	explanation_text = "Наберите в общей сложности не менее [target_amount] единиц крови."
 
 /datum/objective/blood/check_completion()
 	if(..())
@@ -1285,8 +1289,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 			return FALSE
 
 /datum/objective/specialization
-	name = "Vampire subclass objective"
-	explanation_text = "Accumulate at least 150 units of blood and pick a specialization to receive further instructions."
+	name = "Цель подкласса вампира"
+	explanation_text = "Накопите не менее 150 единиц крови и выберите специализацию, чтобы получить дальнейшие инструкции."
 	needs_target = FALSE
 
 /datum/objective/specialization/update_explanation_text()
@@ -1353,7 +1357,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 	var/list/owners = get_owners()
 	for(var/datum/mind/M in owners)
-		to_chat(M.current, "<BR>[SPAN_USERDANGER("We sense the target console has been compromised. New vulnerability located.")]")
+		to_chat(M.current, "<BR>[SPAN_USERDANGER("Мы предполагаем, что целевая консоль скомпрометирована. Обнаружена новая уязвимость.")]")
 		SEND_SOUND(M.current, sound('sound/ambience/alarm4.ogg'))
 
 	target_console = null
@@ -1409,7 +1413,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 				continue
 			var/area/comp_area = get_area(comp)
 			possible_computers += comp
-			computer_areas[comp] = comp_area ? comp_area.name : "(Unknown Location - Please create an issue on GitHub!)"
+			computer_areas[comp] = comp_area ? comp_area.name : "(Местоположение неизвестно — пожалуйста, создайте issue в GitHub!)"
 
 	if(length(possible_computers))
 		target_console = pick(possible_computers)
@@ -1418,7 +1422,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	else
 		// Fallback if no computers found
 		target_console = null
-		target_console_room = "(Unknown Location - Please create an issue on GitHub!)"
+		target_console_room = "(Местоположение неизвестно — пожалуйста, создайте issue в GitHub!)"
 
 /datum/objective/download/found_target()
 	return target_console
@@ -1427,7 +1431,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 // E.g. "the Communications Console"
 /datum/objective/download/proc/get_formatted_console_name()
 	if(!target_console)
-		return "an unknown console"
+		return "неизвестная консоль"
 
 	var/console_name = target_console.name
 
@@ -1450,7 +1454,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return "the " + formatted_name
 
 /datum/objective/download/update_explanation_text()
-	explanation_text = "Use your charging implant on [get_formatted_console_name()] in the [target_console_room] to download your next objective."
+	explanation_text = "Используйте свой зарядный имплант на [get_formatted_console_name()] в [target_console_room] чтобы загрузить следующую цель."
 
 // We already check that the player is an IPC when assigning this objective,
 // but this protects us from cases like cybernetic revolution where the implant could be lost.
@@ -1489,7 +1493,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 // This is called from computer.dm when the do_after of downloading is completed
 /datum/objective/download/proc/complete_objective()
 	for(var/datum/mind/M in get_owners())
-		to_chat(M.current, "<BR>[SPAN_WARNING("*gzzt* Authentication success! Welcome, [M.current.name]. Thank you for- for- for-...")]")
+		to_chat(M.current, "<BR>[SPAN_WARNING("*gzzt* Аутентификация прошла успешно! Добро пожаловать, [M.current.name]. Спасибо за- за- за-...")]")
 
 		var/datum/antagonist/mindflayer/flayer_datum = M.has_antag_datum(/datum/antagonist/mindflayer)
 
@@ -1504,7 +1508,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/lair
 	name = "Build a lair"
-	explanation_text = "Build a lair by placing a coffin in the middle of an unoccupied 3x3 area. This requires at least 150 total units of blood."
+	explanation_text = "Для постройки логова необходимо разместить гроб посреди незанятой области размером 3x3. Для этого потребуется не менее 150 единиц крови."
 	needs_target = FALSE
 
 /datum/objective/lair/check_completion()
@@ -1629,9 +1633,9 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/steal/exchange/update_explanation_text()
 	if(!opponent)
-		explanation_text = "The person you were supposed to trade with didn't show up."
+		explanation_text = "Человек, с которым вы должны были обменяться предметами, не явился."
 	if(!betrayal)
-		explanation_text = "Exchange your secret documents for [steal_target.name]. Arrange a meeting with [opponent] and make the trade."
+		explanation_text = "Обменяйте свои секретные документы на [steal_target.name]. Договоритесь о встрече с [opponent] и совершите обмен."
 		return
-	explanation_text = "[opponent] thinks you're going to exchange your secret documents for [steal_target.name]. Steal their documents, and keep your own."
+	explanation_text = "[opponent] думает, что вы собираетесь обменять свои секретные документы на [steal_target.name]. Украдите их документы, а свои оставьте себе."
 

@@ -14,7 +14,7 @@
 	var/area_name
 
 	if(!randomise_selection)
-		area_name = tgui_input_list(user, "Area to teleport to", "Teleport", SSmapping.teleportlocs)
+		area_name = tgui_input_list(user, "Места для телепортации", "Телепортация", SSmapping.teleportlocs)
 	else
 		area_name = pick(SSmapping.teleportlocs)
 
@@ -25,7 +25,7 @@
 	var/area/thearea = SSmapping.teleportlocs[area_name]
 
 	if(thearea.tele_proof && !istype(thearea, /area/wizard_station))
-		to_chat(user, "A mysterious force disrupts your arcane spell matrix, and you remain where you are.")
+		to_chat(user, "Таинственная сила разрушает мистическую матрицу вашего заклинания. Вы остаетесь там, где находитесь.")
 		return
 
 	selected_area = thearea
@@ -50,7 +50,7 @@
 					L+=T
 
 		if(!length(L))
-			to_chat(usr, "The spell matrix was unable to locate a suitable teleport destination for an unknown reason. Sorry.")
+			to_chat(usr, "Матрица заклинания по неизвестной причине не смогла найти подходящее место для телепортации.")
 			return
 
 		if(target && target.buckled)

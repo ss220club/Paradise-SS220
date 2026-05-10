@@ -234,12 +234,12 @@ USER_CONTEXT_MENU(update_mob_sprite, R_ADMIN, "\[Admin\] Update Mob Sprite", mob
 		SSshuttle.moveShuttle("gamma_armory", "gamma_home", TRUE, usr)
 		for(var/obj/machinery/door/poddoor/impassable/gamma/H in GLOB.airlocks)
 			H.open()
-		GLOB.major_announcement.Announce("Central Command has deployed the Gamma Armory shuttle.", new_sound = 'sound/AI/gamma_deploy.ogg')
+		GLOB.major_announcement.Announce("Центральное Командование направило оружейный Гамма шаттл.", new_sound = 'sound/AI/gamma_deploy.ogg')
 	else
 		SSshuttle.moveShuttle("gamma_armory", "gamma_away", TRUE, usr)
 		for(var/obj/machinery/door/poddoor/impassable/gamma/H in GLOB.airlocks)
 			H.close() //DOOR STUCK
-		GLOB.major_announcement.Announce("Central Command has recalled the Gamma Armory shuttle.", new_sound = 'sound/AI/gamma_recall.ogg')
+		GLOB.major_announcement.Announce("Центральное Командование отозвало оружейный Гамма шаттл.", new_sound = 'sound/AI/gamma_recall.ogg')
 
 /proc/formatJumpTo(location, where="")
 	var/turf/loc
@@ -376,9 +376,11 @@ USER_CONTEXT_MENU(update_mob_sprite, R_ADMIN, "\[Admin\] Update Mob Sprite", mob
 		if(rank_mask && !check_rights_client(rank_mask, FALSE, X))
 			result[2]++
 			continue
-		if(X.holder.fakekey)
-			result[2]++
-			continue
+		// SS220 EDIT START - ignore stealth mode when counting active staff
+		// if(X.holder.fakekey)
+		// 	result[2]++
+		// 	continue
+		// SS220 EDIT END
 		if(X.is_afk())
 			result[3]++
 			continue

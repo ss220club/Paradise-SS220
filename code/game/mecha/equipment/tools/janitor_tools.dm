@@ -12,7 +12,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_mop
 	name = "\improper WLLY mega mop"
-	desc = "An upsized advanced mop, designed for use in exosuits."
+	desc = "Увеличенная усовершенствованная швабра, предназначенная для экзокостюмов."
 	icon_state = "mecha_mop"
 	equip_cooldown = 1.5 SECONDS
 	energy_drain = 1
@@ -44,7 +44,7 @@
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_mop/emag_act(mob/user)
 	. = ..()
 	emagged = TRUE
-	to_chat(user, SPAN_WARNING("You short out the automatic watering system on [src]."))
+	to_chat(user, SPAN_WARNING("Вы выводите из строя автоматическую систему полива на [declent_ru(PREPOSITIONAL)]."))
 	reagents.clear_reagents()
 	refill_reagent = "lube"
 	refill_cost = 50
@@ -55,7 +55,7 @@
 	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(chassis,target) <= 1)
 		var/obj/structure/reagent_dispensers/watertank/WT = target
 		WT.reagents.trans_to(src, 1000)
-		occupant_message(SPAN_NOTICE("Mop refilled."))
+		occupant_message(SPAN_NOTICE("Бак с водой для мега-швабры пополнен."))
 		playsound(chassis, 'sound/effects/refill.ogg', 50, TRUE, -6)
 		return
 	if(reagents.total_volume > 0)
@@ -66,11 +66,11 @@
 		var/turf/target_turf = get_turf(target)
 		if(!istype(target_turf) || iswallturf(target_turf))
 			return
-		chassis.occupant.visible_message(SPAN_WARNING("[chassis] begins to mop \the [target_turf] with \the [src]."), SPAN_WARNING("You begin to mop \the [target_turf] with \the [src]."))
+		chassis.occupant.visible_message(SPAN_WARNING("[capitalize(chassis.declent_ru(NOMINATIVE))] начинает мыть [target_turf.declent_ru(ACCUSATIVE)] с помощью [declent_ru(GENITIVE)]."), SPAN_WARNING("Вы начинаете мыть [target_turf.declent_ru(ACCUSATIVE)] с помощью [declent_ru(GENITIVE)]."))
 		if(do_after(chassis.occupant, mop_speed, target = target, allow_moving = 0))
 			for(var/turf/current_target_turf in view(1, target))
 				current_target_turf.cleaning_act(chassis.occupant, src, mop_speed, "mop", ".", skip_do_after = TRUE)
-			chassis.occupant_message("You mop \the [target].")
+			chassis.occupant_message("Вы моете [target.declent_ru(ACCUSATIVE)].")
 			if(holosign_enabled)
 				holosign_controller.afterattack__legacy__attackchain(target_turf, chassis.occupant, TRUE)
 
@@ -119,7 +119,7 @@
 // Light Replacer
 /obj/item/mecha_parts/mecha_equipment/janitor/light_replacer
 	name = "\improper NT-12 illuminator"
-	desc = "A modified light replacer fit for an exosuit that zaps lights into place."
+	desc = "Модифицированный лампозаменитель для экзокостюмов, который мгновенно устанавливает лампы на место."
 	icon_state = "mecha_light_replacer"
 	equip_cooldown = 1.5 SECONDS
 	energy_drain = 100
@@ -129,7 +129,7 @@
 /obj/item/mecha_parts/mecha_equipment/janitor/light_replacer/emag_act(mob/user)
 	. = ..()
 	emagged = TRUE
-	to_chat(user, SPAN_NOTICE("You short out the safeties on [src]."))
+	to_chat(user, SPAN_NOTICE("Вы выводите из строя предохранители на [declent_ru(PREPOSITIONAL)]."))
 
 /obj/item/mecha_parts/mecha_equipment/janitor/light_replacer/action(atom/target)
 	if(istype(target, /obj/machinery/light))
@@ -141,7 +141,7 @@
 // Mecha spray
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_spray
 	name = "\improper JS-33 super spray"
-	desc = "A spray bottle, upscaled for an exosuit. Capable of mass sanitation."
+	desc = "Увеличенный пульверизатор для экзокостюмов. Идеально подходит для массовой санитарной обработки."
 	icon_state = "mecha_spray"
 	equip_cooldown = 1.5 SECONDS
 	energy_drain = 200
@@ -173,7 +173,7 @@
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_spray/emag_act(mob/user)
 	. = ..()
 	emagged = TRUE
-	to_chat(user, SPAN_WARNING("You short out the automatic watering system on [src]."))
+	to_chat(user, SPAN_WARNING("Вы выводите из строя автоматическую систему полива на [declent_ru(PREPOSITIONAL)]."))
 	spray_controller.reagents.clear_reagents()
 	refill_reagent = "lube"
 	refill_cost = 50
@@ -223,8 +223,8 @@
 // Garbage Magnet
 /obj/item/mecha_parts/mecha_equipment/janitor/garbage_magnet
 	name = "\improper WA1E Garbage Magnet"
-	desc = "An industrial vaccuum cleaner integrated with an oversized garbage bag and heavy duty magnets allows this device to pick up all manner of litter. \
-	The device's safety systems prevent users from directly looking inside the bag."
+	desc = "Промышленный пылесос, интегрированный с увеличенным мусорным мешком и мощными магнитами, позволяющими этому устройству подбирать любой мусор. \
+	Защитная система устройства предотвращает возможность заглянуть внутрь мешка."
 	icon_state = "mecha_trash_magnet"
 	equip_cooldown = 1.5 SECONDS
 	energy_drain = 5
@@ -282,14 +282,14 @@
 
 	for(var/turf/tested_turf in get_line(chassis, target)) // Check if the path is blocked
 		if(iswallturf(tested_turf) || locate(/obj/structure/window) in tested_turf || locate(/obj/machinery/door) in tested_turf) // walls, windows, and doors
-			chassis.occupant_message(SPAN_WARNING("The target is out of reach of the magnet!"))
+			chassis.occupant_message(SPAN_WARNING("Цель вне досягаемости магнита!"))
 			return
 
 	if(istype(target, /obj/machinery/disposal)) // Emptying stuff into disposals
 		chassis.occupant.visible_message(
-			SPAN_NOTICE("[chassis.occupant] empties [src] into the disposal unit."),
-			SPAN_NOTICE("You empty [src] into disposal unit."),
-			SPAN_NOTICE("You hear someone emptying something into a disposal unit.")
+			SPAN_NOTICE("[capitalize(chassis.occupant.declent_ru(NOMINATIVE))] опустошает [declent_ru(ACCUSATIVE)] в мусорку."),
+			SPAN_NOTICE("Вы опустошаете [declent_ru(ACCUSATIVE)] в мусорку."),
+			SPAN_NOTICE("Вы слышите, как кто-то выбрасывает что-то в мусорку.")
 		)
 		chassis.Beam(target, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
 		playsound(src, 'sound/items/pshoom.ogg', 40, 1)
@@ -313,10 +313,10 @@
 			for(var/obj/item/I in target_turf.contents)
 				if(storage_controller.can_be_inserted(I))
 					storage_controller.handle_item_insertion(I, null, TRUE)
-		chassis.occupant_message("You pick up all the items with [src]. Remaining cargo compartment capacity: [storage_controller.max_combined_w_class - length(storage_controller.contents)]")
+		chassis.occupant_message("Вы подбираете все предметы с помощью [declent_ru(GENITIVE)]. Оставшаяся вместимость грузового отсека: [storage_controller.max_combined_w_class - length(storage_controller.contents)]")
 
 	else // Dumping
 		for(var/obj/item/I in storage_controller.contents)
 			storage_controller.remove_from_storage(I, target_turf)
-		chassis.occupant_message("<span class='notice'>You dump everything out of [src].")
+		chassis.occupant_message("<span class='notice'>Вы высыпаете всё из [declent_ru(GENITIVE)] в [declent_ru(ACCUSATIVE)].")
 	update_equip_info()

@@ -65,7 +65,7 @@ export const BugReportForm = (props) => {
           <Flex direction="column" height="100%">
             <Flex.Item className="text-center">
               <a
-                href="https://github.com/ParadiseSS13/Paradise/issues"
+                href="https://github.com/ss220club/Paradise-SS220/issues"
                 target="_blank"
                 rel="noreferrer"
                 className="link"
@@ -74,15 +74,17 @@ export const BugReportForm = (props) => {
               </a>
             </Flex.Item>
             <Flex.Item>
-              <h2 className="tip">{'TIP: please be as descriptive as possible, it really does help tremendously'}</h2>
+              <h2 className="tip">
+                {'TIP: Пожалуйста, опишите проблему как можно более подробно, это действительно сильно помогает'}
+              </h2>
             </Flex.Item>
             <Flex.Item>
-              <InputTitle required>{'Title'}</InputTitle>
+              <InputTitle required>{'Название отчета'}</InputTitle>
               <input width="100%" className="textarea" value={title} onChange={(e) => setTitle(e.target.value)} />
             </Flex.Item>
             <Flex.Item my={2}>
-              <InputTitle required>{'What did you expect to happen?'}</InputTitle>
-              {'Give a description of what you expected to happen'}
+              <InputTitle required>{'Что должно было случиться?'}</InputTitle>
+              {'Опишите, что по вашему мнению должно было произойти'}
               <textarea
                 rows={3}
                 className="textarea"
@@ -96,8 +98,8 @@ export const BugReportForm = (props) => {
               />
             </Flex.Item>
             <Flex.Item my={2}>
-              <InputTitle required>{'What happened instead?'}</InputTitle>
-              {'Give a description of the bug: '}
+              <InputTitle required>{'Что произошло на самом деле?'}</InputTitle>
+              {'Опишите проблему'}
               <textarea
                 rows={3}
                 className="textarea"
@@ -111,8 +113,8 @@ export const BugReportForm = (props) => {
               />
             </Flex.Item>
             <Flex.Item my={2}>
-              <InputTitle required>{'Why is this bad/What are the consequences?'}</InputTitle>
-              {'Issues caused by the bug:'}
+              <InputTitle required>{'Почему это плохо/Каковы последствия?'}</InputTitle>
+              {'Проблема из-за бага:'}
               <textarea
                 rows={3}
                 className="textarea"
@@ -126,8 +128,8 @@ export const BugReportForm = (props) => {
               />
             </Flex.Item>
             <Flex.Item my={2}>
-              <InputTitle required>{'How do we reproduce this bug?'}</InputTitle>
-              {'Give a list of steps to reproduce this issue, the more details the better'}
+              <InputTitle required>{'Как мы можем воспроизвести этот баг?'}</InputTitle>
+              {'Дайте список шагов для воспроизведения этой проблемы, чем больше деталей, тем лучше'}
               <textarea
                 rows={4}
                 className="textarea"
@@ -143,8 +145,8 @@ export const BugReportForm = (props) => {
             </Flex.Item>
             {!!awaiting_approval && (
               <Flex.Item my={2}>
-                <InputTitle>{'Additional Note'}</InputTitle>
-                {"Any additional notes to submit with the author's bug report "}
+                <InputTitle>{'Дополнительные заметки'}</InputTitle>
+                {'Любые дополнительные заметки для отправки вместе с отчетом об ошибке автора '}
                 <textarea
                   rows={4}
                   className="textarea"
@@ -160,7 +162,7 @@ export const BugReportForm = (props) => {
             )}
             <Flex.Item my={2}>
               <InputTitle>{'Logs'}</InputTitle>
-              {'Please paste any relevant logs here'}
+              {'Пожалуйста, прикрипите любые походящие логи здесь'}
               <textarea
                 rows={4}
                 className="textarea"

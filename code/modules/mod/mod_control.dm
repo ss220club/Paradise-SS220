@@ -132,14 +132,14 @@
 	if(length(req_access))
 		locked = TRUE
 	new_core?.install(src)
-	helmet = new /obj/item/clothing/head/mod(src)
+	helmet = build_head() // SS220 EDIT - original: new /obj/item/clothing/head/mod(src)
 	mod_parts += helmet
 	part_data[helmet] = list(
 		PART_FLAGS = HELMET_FLAGS,
 		SPRITE_SHEETS_OVERRIDE = HELMET_SPRITE_SHEETS,
 		SPRITE_SHEETS_DEFAULT = /obj/item/clothing/head/mod::sprite_sheets,
 	)
-	chestplate = new /obj/item/clothing/suit/mod(src)
+	chestplate = build_suit() // SS220 EDIT - original: new /obj/item/clothing/suit/mod(src)
 	chestplate.allowed += theme.allowed_suit_storage
 	mod_parts += chestplate
 	part_data[chestplate] = list(
@@ -147,14 +147,14 @@
 		SPRITE_SHEETS_OVERRIDE = CHESTPLATE_SPRITE_SHEETS,
 		SPRITE_SHEETS_DEFAULT = /obj/item/clothing/suit/mod::sprite_sheets,
 	)
-	gauntlets = new /obj/item/clothing/gloves/mod(src)
+	gauntlets = build_gloves() // SS220 EDIT - original: new /obj/item/clothing/gloves/mod(src)
 	mod_parts += gauntlets
 	part_data[gauntlets] = list(
 		PART_FLAGS = GAUNTLETS_FLAGS,
 		SPRITE_SHEETS_OVERRIDE = GAUNTLETS_SPRITE_SHEETS,
 		SPRITE_SHEETS_DEFAULT = /obj/item/clothing/gloves/mod::sprite_sheets,
 	)
-	boots = new /obj/item/clothing/shoes/mod(src)
+	boots = build_shoes() // SS220 EDIT - original: new /obj/item/clothing/shoes/mod(src)
 	mod_parts += boots
 	part_data[boots] = list(
 		PART_FLAGS = BOOTS_FLAGS,

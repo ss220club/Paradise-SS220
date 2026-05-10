@@ -1,5 +1,5 @@
 /datum/spell/genetic
-	desc = "This spell inflicts a set of mutations and disabilities upon the target."
+	desc = "Вызывает у жертвы ряд мутаций и приводит к инвалидности."
 
 	var/list/active_on = list()
 	var/list/traits = list() // traits

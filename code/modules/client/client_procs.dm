@@ -8,8 +8,8 @@
 #define UPLOAD_LIMIT		10485760	//Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
 #define MIN_CLIENT_VERSION	513		// Minimum byond major version required to play.
 									//I would just like the code ready should it ever need to be used.
-#define SUGGESTED_CLIENT_VERSION	514		// only integers (e.g: 513, 514) are useful here. This is the part BEFORE the ".", IE 513 out of 513.1542
-#define SUGGESTED_CLIENT_BUILD	1566		// only integers (e.g: 1542, 1543) are useful here. This is the part AFTER the ".", IE 1542 out of 513.1542
+#define SUGGESTED_CLIENT_VERSION	516		// only integers (e.g: 513, 514) are useful here. This is the part BEFORE the ".", IE 513 out of 513.1542
+#define SUGGESTED_CLIENT_BUILD	1660		// only integers (e.g: 1542, 1543) are useful here. This is the part AFTER the ".", IE 1542 out of 513.1542
 
 #define SSD_WARNING_TIMER 30 // cycles, not seconds, so 30=60s
 
@@ -458,7 +458,13 @@
 	// Tell client about their connection
 	to_chat(src, SPAN_NOTICE("You are currently connected [prefs.server_region ? "via the <b>[prefs.server_region]</b> relay" : "directly"] to Paradise."))
 	to_chat(src, SPAN_NOTICE("You can change this using the <code>Change Region</code> verb in the OOC tab, as selecting a region closer to you may reduce latency."))
+
+	// SS220 EDIT START - Species bans
+	jbh.reload_jobbans(src)
+	sbh.reload_species_bans(src)
 	display_job_bans(TRUE)
+	display_species_bans(TRUE)
+	// SS220 EDIT END
 
 /client/proc/is_connecting_from_localhost()
 	var/static/list/localhost_addresses = list("127.0.0.1", "::1")
@@ -633,6 +639,10 @@
 		// This is their first connection instance, so TRUE here to notify admins
 		// This needs to happen here to ensure they actually have a row to update
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/client, get_byond_account_date), TRUE) // Async to avoid other procs in the client chain being delayed by a web request
+		// SS220 EDIT START - Species bans
+		// Apply default species bans for new players
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(apply_default_species_bans), ckey)
+		// SS220 EDIT END
 
 	// Log player connections to DB
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(log_connection), ckey, address, computer_id, CONNECTION_TYPE_ESTABLISHED)

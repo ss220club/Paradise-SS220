@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(bug_report_time)
 
 /datum/tgui_bug_report_form/proc/external_link_prompt(client/user)
 	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
-	var/url = "https://github.com/ParadiseSS13/Paradise"
+	var/url = "https://github.com/ss220club/Paradise-SS220" // SS220 EDIT REPO LINK
 
 	if(tgui_alert(user, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) == "Yes")
 		user << link(url)
@@ -102,16 +102,16 @@ GLOBAL_LIST_EMPTY(bug_report_time)
 // returns the body payload
 /datum/tgui_bug_report_form/proc/create_form()
 	var/desc = {"
-## What did you expect to happen?
+## Что должно было случиться?
 [bug_report_data["expected_behavior"]]
 
-## What happened instead?
+## Что произошло на самом деле?
 [bug_report_data["description"]]
 
-## Why is this bad/What are the consequences?
+## Почему это плохо/Каковы последствия?
 [bug_report_data["consequences"]]
 
-## Steps to reproduce the issue:
+## Шаги для воспроизведения проблемы:
 [bug_report_data["steps"]]
 
 ## Attached logs
@@ -119,15 +119,15 @@ GLOBAL_LIST_EMPTY(bug_report_time)
 [bug_report_data["log"] ? bug_report_data["log"] : "N/A"]
 ```
 
-## Additional details
-- Author: [initial_key]
-- Approved By: [approving_user]
+## Дополнительная информация
+- Ckey Автора: [initial_key]
+- Одобренно: [approving_user]
 - Round ID: [bug_report_data["round_id"] ? bug_report_data["round_id"] : "N/A"]
 - Client BYOND Version: [bug_report_data["user_byond_version"]]
 - Server BYOND Version: [bug_report_data["server_byond_version"]]
 - Server commit: [bug_report_data["local_commit"]]
 - Active Test Merges: [bug_report_data["test_merges"] ? "\n[bug_report_data["test_merges"]]" : "None"]
-- Note: [bug_report_data["approver_note"] ? bug_report_data["approver_note"] : "None"]
+- Примечание: [bug_report_data["approver_note"] ? bug_report_data["approver_note"] : "None"]
 	"}
 
 	return desc
@@ -135,8 +135,8 @@ GLOBAL_LIST_EMPTY(bug_report_time)
 // the real deal, we are sending the request through the api.
 /datum/tgui_bug_report_form/proc/send_request(payload_body, client/user)
 	// for any future changes see https://docs.github.com/en/rest/issues/issues
-	var/repo_name = "Paradise"
-	var/org = "ParadiseSS13"
+	var/repo_name = "Paradise-SS220" // SS220 EDIT REPO NAME
+	var/org = "ss220club" // SS220 EDIT REPO ORG
 	var/token = GLOB.configuration.system.github_api_token
 
 	if(token == null)

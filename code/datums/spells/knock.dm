@@ -1,6 +1,6 @@
 /datum/spell/aoe/knock
 	name = "Knock"
-	desc = "This spell opens nearby doors and does not require wizard garb."
+	desc = "Открывает ближайшие шлюзы и не требует робы волшебника."
 
 	clothes_req = FALSE
 	invocation = "AULIE OXIN FIERA"
@@ -37,7 +37,7 @@
 
 /datum/spell/aoe/knock/greater
 	name = "Greater Knock"
-	desc = "On first cast, will remove access restrictions on all airlocks on the station, and announce this spell's use to the station. On any further cast, will open all doors in sight. Cannot be refunded once bought!"
+	desc = "При первом использовании снимет ограничения доступа на всех шлюзах на станции и объявит об использовании экипажу. При любом последующем использовании откроет все шлюзы в поле зрения. Нельзя оформить возврат средств!"
 
 	base_cooldown = 200
 	invocation = "MAIOR OXIN FIERA"
@@ -56,9 +56,9 @@
 				A.req_access = list()
 				A.req_one_access = list()
 		GLOB.major_announcement.Announce(
-			message = "We have removed all access requirements on your station's airlocks. You can thank us later!",
-			new_title = "Space Wizard Federation Message",
-			new_subtitle = "Greetings!",
+			message = "Мы сняли все ограничения на доступ к шлюзам вашей станции. Вы сможете поблагодарить нас за это позже!",
+			new_title = "Послание Федерации Космических Волшебников",
+			new_subtitle = "Приветствуем вас!",
 			new_sound = 'sound/misc/notice2.ogg'
 		)
 	else
