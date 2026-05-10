@@ -40,8 +40,8 @@ jobs:
           rustup target add x86_64-unknown-linux-musl
           tmp_dir="$(mktemp -d)"
           trap 'rm -rf "$tmp_dir"' EXIT
-          git clone https://github.com/ss220club/BandaStationSDMM "$tmp_dir/BandaStationSDMM"
-          cd "$tmp_dir/BandaStationSDMM"
+          git clone https://github.com/AffectedArc07/ParaSpacemanDMM "$tmp_dir/ParaSpacemanDMM"
+          cd "$tmp_dir/ParaSpacemanDMM"
           cargo build --release --locked --target x86_64-unknown-linux-musl
           binary_path="$(find target/x86_64-unknown-linux-musl/release -maxdepth 1 -type f \( -name 'dmm-tools-para' -o -name 'dmm-tools' -o -name 'dmm_tools' \) | head -n 1)"
           if [ -z "$binary_path" ]; then
