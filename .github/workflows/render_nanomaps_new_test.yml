@@ -26,9 +26,7 @@ jobs:
 
       - name: 'Prepare Branch'
         run: |
-          REBUILD_BRANCH="rebuild-dmm-tools-para-${BASE_BRANCH//\//-}"
-          echo "REBUILD_BRANCH=$REBUILD_BRANCH" >> "$GITHUB_ENV"
-          git checkout -B "$REBUILD_BRANCH" "origin/$BASE_BRANCH"
+          git checkout -B "$BASE_BRANCH" "origin/$BASE_BRANCH"
 
       - name: 'Install Rust'
         uses: dtolnay/rust-toolchain@stable
@@ -55,15 +53,10 @@ jobs:
           fi
           install -m 0755 "$binary_path" "$GITHUB_WORKSPACE/tools/github-actions/dmm-tools-para"
 
-      - name: 'Commit binary and open PR'
+      - name: 'Commit binary'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "dmm-tools Rebuild"
           git add tools/github-actions/dmm-tools-para
           git commit -m "Rebuild dmm-tools-para (`date`)" || true
-          git push -f -u origin "$REBUILD_BRANCH"
-          result=$(gh pr create -t "Rebuild dmm-tools-para" -b "This pull request updates the committed dmm-tools renderer binary for GitHub Actions compatibility." -l "CI" -H "$REBUILD_BRANCH" -B "$BASE_BRANCH" 2>&1) || true
-          echo "$result"
-          if echo "$result" | grep -q "No commits between $BASE_BRANCH and $REBUILD_BRANCH"; then
-            echo "Binary did not change, skipping."
-          fi
+          git push origin "HEAD:$BASE_BRANCH"
