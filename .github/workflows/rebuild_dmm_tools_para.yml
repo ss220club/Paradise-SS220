@@ -1,0 +1,61 @@
+# Rebuild the committed dmm-tools renderer binary and open a PR with the result.
+name: 'Rebuild dmm-tools-para'
+on:
+  workflow_dispatch:
+
+jobs:
+  rebuild_binary:
+    name: 'Rebuild Renderer Binary'
+    runs-on: ubuntu-22.04
+    steps:
+      - id: create_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - run: echo "GH_TOKEN=${{ steps.create_token.outputs.token }}" >> "$GITHUB_ENV"
+
+      - name: 'Checkout'
+        uses: actions/checkout@v6
+        with:
+          token: ${{ steps.create_token.outputs.token }}
+
+      - name: 'Prepare Branch'
+        run: |
+          git checkout -B rebuild-dmm-tools-para origin/master
+
+      - name: 'Install Rust'
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: 'Install musl tools'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y musl-tools
+
+      - name: 'Rebuild binary'
+        run: |
+          rustup target add x86_64-unknown-linux-musl
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+          cargo install \
+            --locked \
+            --root "$tmp_dir/dmm-tools-root" \
+            --target x86_64-unknown-linux-musl \
+            --git https://github.com/SpaceManiac/SpacemanDMM \
+            --rev 6c5a751516ae0e8add4b2aa4388a1e84e96e7082 \
+            dmm-tools
+          install -m 0755 "$tmp_dir/dmm-tools-root/bin/dmm-tools" tools/github-actions/dmm-tools-para
+
+      - name: 'Commit binary and open PR'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "dmm-tools Rebuild"
+          git add tools/github-actions/dmm-tools-para
+          git commit -m "Rebuild dmm-tools-para (`date`)" || true
+          git push -f -u origin rebuild-dmm-tools-para
+          result=$(gh pr create -t "Rebuild dmm-tools-para" -b "This pull request updates the committed dmm-tools renderer binary for GitHub Actions compatibility." -l "CI" -H "rebuild-dmm-tools-para" -B "master" 2>&1) || true
+          echo "$result"
+          if echo "$result" | grep -q "No commits between master and rebuild-dmm-tools-para"; then
+            echo "Binary did not change, skipping."
+          fi
