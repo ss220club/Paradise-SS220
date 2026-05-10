@@ -43,6 +43,7 @@ jobs:
           trap 'rm -rf "$tmp_dir"' EXIT
           git clone https://github.com/AffectedArc07/ParaSpacemanDMM "$tmp_dir/ParaSpacemanDMM"
           cd "$tmp_dir/ParaSpacemanDMM"
+          cargo update -p guard --precise 0.5.2
           cargo build --release --locked --target x86_64-unknown-linux-musl
           binary_path="$(find target/x86_64-unknown-linux-musl/release -maxdepth 1 -type f \( -name 'dmm-tools-para' -o -name 'dmm-tools' -o -name 'dmm_tools' \) | head -n 1)"
           if [ -z "$binary_path" ]; then
