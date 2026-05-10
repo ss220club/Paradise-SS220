@@ -14,7 +14,7 @@ jobs:
     name: 'Generate NanoMaps'
     runs-on: ubuntu-22.04
     env:
-      BASE_BRANCH: ${{ github.ref_name }}
+      RENDER_BRANCH: dmm-tools-para
     steps:
       - id: create_token
         uses: actions/create-github-app-token@v2
@@ -28,25 +28,15 @@ jobs:
         uses: actions/checkout@v6
         with:
           token: ${{ steps.create_token.outputs.token }}
-
-      - name: Branch
-        run: |
-          RENDER_BRANCH="nanomap-render-${BASE_BRANCH//\//-}"
-          echo "RENDER_BRANCH=$RENDER_BRANCH" >> "$GITHUB_ENV"
-          git checkout -B "$RENDER_BRANCH" "origin/$BASE_BRANCH"
+          ref: ${{ env.RENDER_BRANCH }}
 
       - name: 'Generate Maps'
         run: './tools/github-actions/nanomap-renderer-invoker.sh'
 
-      - name: 'Commit Maps and open PR'
+      - name: 'Commit Maps'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "NanoMap Generation"
-          git pull origin "$BASE_BRANCH"
+          git pull origin "$RENDER_BRANCH"
           git commit -m "NanoMap Auto-Update (`date`)" -a || true
-          git push -f -u origin "$RENDER_BRANCH"
-          result=$(gh pr create -t "Automatic NanoMap Update" -b "This pull request updates the server NanoMaps. Please review the diff images before merging." -l "NanoMaps,:scroll: CL РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ" -H "$RENDER_BRANCH" -B "$BASE_BRANCH" 2>&1) || true
-          echo "$result"
-          if echo "$result" | grep -q "No commits between $BASE_BRANCH and $RENDER_BRANCH"; then
-            echo "No NanoMaps update required, skipping."
-          fi
+          git push origin "HEAD:$RENDER_BRANCH"
