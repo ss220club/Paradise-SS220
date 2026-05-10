@@ -38203,8 +38203,7 @@
 "cYQ" = (
 /obj/machinery/door/airlock/engineering/glass{
 	autoclose = 0;
-	id_tag = "engsm_door_int";
-	locked = 1
+	id_tag = "engsm_door_int"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/engine,
 /obj/machinery/access_button{
@@ -38226,6 +38225,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine/reactor)
 "cYT" = (
@@ -54391,7 +54391,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/reactor_pool,
 /area/station/engineering/engine/reactor)
 "heW" = (
@@ -54827,7 +54827,7 @@
 	pixel_y = 3;
 	pixel_x = 3
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/reactor_pool,
 /area/station/engineering/engine/reactor)
 "hme" = (
@@ -74613,7 +74613,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "nSB" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -87285,8 +87285,7 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/engine,
 /obj/machinery/door/airlock/engineering/glass{
 	autoclose = 0;
-	id_tag = "engsm_mon_door_int";
-	locked = 1
+	id_tag = "engsm_mon_door_int"
 	},
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
@@ -87295,6 +87294,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine)
 "rXa" = (
@@ -89893,10 +89893,10 @@
 /obj/machinery/door/airlock/engineering/glass{
 	autoclose = 0;
 	id_tag = "engsm_door_ext";
-	locked = 1;
 	name = "Reactor Exterior Access"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/engine,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/engine)
 "sPb" = (
@@ -102496,9 +102496,7 @@
 	},
 /obj/structure/closet/toolcloset,
 /obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/transmission_laser)
 "wQK" = (
