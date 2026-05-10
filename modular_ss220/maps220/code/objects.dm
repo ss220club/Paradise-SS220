@@ -525,6 +525,11 @@
 	desc = "'Stars and Stripes', the flag of the United States of America. Its red color represents endurance and valor; blue one shows diligence, vigilance and justice, and the white one signs at pureness. Its thirteen red-and-white stripes show the initial thirteen founding colonies, and fifty stars designate the current fifty states."
 	icon_state = "flag_usa"
 
+/obj/structure/sign/flag/ussp
+	name = "Флаг Союза Советских Социалистических Планет"
+	desc = "Флаг народной освободительной и могучей, краснознамённой, научной и прорывной страны Коммунизма."
+	icon_state = "flag_ussp"
+
 //Shiel pylon
 /mob/living/simple_animal/hostile/blackmesa/xen
 	/// Can we be shielded by pylons?

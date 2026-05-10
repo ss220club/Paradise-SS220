@@ -1,8 +1,6 @@
 /obj/item/storage/wallet
 	var/photo_overlay = "photo"
 
-	icon = 'modular_ss220/objects/icons/wallets.dmi'
-
 /obj/item/storage/wallet/wallet_NT
 	name = "leather wallet NT"
 	desc = "Ваш кошелек настолько шикарен, что с ним вы выглядите просто потрясающе."
