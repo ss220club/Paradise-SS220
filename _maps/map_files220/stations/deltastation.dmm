@@ -26273,10 +26273,10 @@
 /turf/simulated/floor/bluegrid,
 /area/station/telecomms/chamber)
 "cgB" = (
-/obj/effect/spawner/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
 	},
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/station/engineering/engine)
 "cgC" = (
@@ -28190,10 +28190,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "cpq" = (
-/obj/effect/spawner/window/reinforced/plasma,
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/station/engineering/engine)
 "cpt" = (
@@ -64191,10 +64191,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
-"jJg" = (
-/obj/effect/spawner/window/reinforced/plasma,
-/turf/simulated/floor/plating,
-/area/station/engineering/engine)
 "jJh" = (
 /obj/structure/railing/cap/normal{
 	dir = 4
@@ -99282,18 +99278,9 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/engine,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/engineering/glass{
-	autoclose = 0;
-	id_tag = "engsm_mon_door_int";
-	name = "Reactor Interior Access"
+	autoclose = 0
 	},
-/obj/machinery/access_button{
-	autolink_id = "engsm_mon_door_int";
-	name = "Reactor Access Button";
-	pixel_y = 1;
-	req_access = list(10);
-	pixel_x = 25
-	},
-/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine)
 "uBY" = (
@@ -99525,19 +99512,10 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
-/obj/machinery/access_button{
-	autolink_id = "engsm_mon_door_ext";
-	name = "Reactor Access Button";
-	pixel_y = 1;
-	req_access = list(10);
-	pixel_x = 25
-	},
 /obj/machinery/door/airlock/engineering/glass{
-	autoclose = 0;
-	id_tag = "engsm_mon_door_ext";
-	name = "Reactor Interior Access"
+	autoclose = 0
 	},
-/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine)
 "uGY" = (
@@ -100561,9 +100539,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plasteel{
-	icon_state = "redbluefull"
-	},
+/turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "uUt" = (
 /obj/structure/table,
@@ -131751,7 +131727,7 @@ tBI
 tBI
 cgB
 pTm
-jJg
+hqh
 tBI
 tBI
 tBI
@@ -132011,13 +131987,13 @@ cdc
 vum
 nOc
 vCm
-jJg
+hqh
 gll
 qaB
 cpj
 rKH
 cpt
-jJg
+hqh
 cda
 cJe
 nxS
@@ -132525,13 +132501,13 @@ ceU
 upb
 hMq
 hMq
-jJg
+hqh
 cmR
 cod
 cpl
 cqR
 csq
-jJg
+hqh
 ffV
 omx
 cib
@@ -132777,9 +132753,9 @@ bGz
 tBI
 tBI
 tBI
-jJg
+hqh
 ceV
-jJg
+hqh
 tBI
 tBI
 tBI
@@ -133039,13 +133015,13 @@ ceW
 bWK
 bWK
 cjQ
-jJg
+hqh
 cmT
 cog
 cpn
 cog
 cDG
-jJg
+hqh
 sMF
 bWK
 bWK
@@ -133296,13 +133272,13 @@ ceX
 wyG
 cCm
 cuS
-jJg
+hqh
 cmU
 cqU
 cpo
 ePd
 csu
-jJg
+hqh
 cuS
 tuq
 nmg
@@ -133553,13 +133529,13 @@ ceY
 cig
 cbn
 cjS
-jJg
+hqh
 sWZ
 cog
 cpn
 cog
 csv
-jJg
+hqh
 huY
 cbn
 hfn
@@ -133812,9 +133788,9 @@ cbn
 cjT
 tBI
 tBI
-jJg
+hqh
 cpq
-jJg
+hqh
 tBI
 tBI
 cjT
