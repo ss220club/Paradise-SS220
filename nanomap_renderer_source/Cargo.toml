@@ -1,0 +1,16 @@
+[workspace]
+members = [
+    "crates/builtins-proc-macro",
+    "crates/dmm-tools",
+    "crates/dmm-tools-cli",
+    "crates/dreammaker",
+    "crates/interval-tree",
+]
+resolver = "2"
+
+[profile.dev]
+opt-level = 2
+
+[profile.release]
+lto = true
+codegen-units = 1

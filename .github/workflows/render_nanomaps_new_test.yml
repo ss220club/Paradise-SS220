@@ -33,20 +33,14 @@ jobs:
 
       - name: 'Rebuild binary'
         run: |
-          tmp_dir="$(mktemp -d)"
-          trap 'rm -rf "$tmp_dir"' EXIT
-          git clone https://github.com/AffectedArc07/ParaSpacemanDMM "$tmp_dir/ParaSpacemanDMM"
-          cd "$tmp_dir/ParaSpacemanDMM"
-          cargo update -p guard --precise 0.5.2
-          sed -i 's/std::mem::discriminant(&self).hash(state);/std::mem::discriminant(self).hash(state);/' src/dreammaker/constants.rs
-          RUSTFLAGS="-A warnings" cargo build --release --locked -p cli --bin dmm-tools
-          binary_path="$(find target/release -maxdepth 1 -type f \( -name 'dmm-tools-para' -o -name 'dmm-tools' -o -name 'dmm_tools' \) | head -n 1)"
+          RUSTFLAGS="-A warnings" cargo build --release --locked --manifest-path nanomap_renderer_source/Cargo.toml -p dmm-tools-cli --bin dmm-tools
+          binary_path="$(find nanomap_renderer_source/target/release -maxdepth 1 -type f \( -name 'dmm-tools-para' -o -name 'dmm-tools' -o -name 'dmm_tools' \) | head -n 1)"
           if [ -z "$binary_path" ]; then
-            binary_path="$(find target/release -maxdepth 1 -type f -executable ! -name '*.rlib' ! -name '*.d' ! -name '*.o' ! -name '*.so' ! -name '*.a' | head -n 1)"
+            binary_path="$(find nanomap_renderer_source/target/release -maxdepth 1 -type f -executable ! -name '*.rlib' ! -name '*.d' ! -name '*.o' ! -name '*.so' ! -name '*.a' | head -n 1)"
           fi
           if [ -z "$binary_path" ]; then
             echo "Could not find built dmm-tools executable" >&2
-            find target/release -maxdepth 1 -type f -printf '%f\n'
+            find nanomap_renderer_source/target/release -maxdepth 1 -type f -printf '%f\n'
             exit 1
           fi
           install -m 0755 "$binary_path" "$GITHUB_WORKSPACE/tools/github-actions/dmm-tools-para"
