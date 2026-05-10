@@ -13,6 +13,7 @@
 		for(var/datum/reagent/R in H.reagents.reagent_list)
 			var/volume = R.volume
 			var/overdosing = R.overdosed
+
 			if(hallucinating)
 				if(prob(20))
 					// make reagents look like they may exist in really crazy amounts, but also disappear
@@ -21,7 +22,9 @@
 					continue
 				if(!overdosing)
 					overdosing = prob(10)
+
 			msgs += "<span class='notice'>[volume] ю. [R.name][overdosing ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
+
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
 		if(!length(H.reagents.reagent_list))
@@ -29,12 +32,15 @@
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
 				msgs += "<span class='notice'>[rand(5, 100)] ю. [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
+
 	if(!has_real_or_fake_reagents)
 		msgs += SPAN_NOTICE("Субъект не содержит реагентов.")
+
 	if(length(H.reagents.addiction_list))
 		msgs += SPAN_DANGER("Субъект зависим от следующих реагентов:")
 		for(var/datum/reagent/R in H.reagents.addiction_list)
 			msgs += SPAN_DANGER("[R.name] Стадия: [R.addiction_stage]/5")
+
 	if(hallucinating && prob(10))
 		if(!length(H.reagents.addiction_list))
 			msgs += SPAN_DANGER("Субъект зависим от следующих реагентов:")
@@ -42,6 +48,7 @@
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
 				msgs += SPAN_DANGER("[GLOB.chemical_reagents_list[reagent_name]] Стадия: [rand(1, 5)]/5")
+
 	return msgs
 
 /proc/chemscan(mob/living/user, mob/living/M)
@@ -90,6 +97,7 @@
 		msgs += SPAN_NOTICE("Температура тела: ???")
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 		return
+
 	user.visible_message(
 		SPAN_NOTICE("[user] анализирует жизненные показатели [M.declent_ru(GENITIVE)]."),
 		SPAN_NOTICE("Вы анализируете жизненные показатели [M.declent_ru(GENITIVE)].")
@@ -100,13 +108,18 @@
 // Used by the PDA medical scanner too.
 /proc/healthscan(mob/user, mob/living/M, mode = DETAILED_HEALTH_SCAN, advanced = FALSE)
 	var/list/msgs = list()
+
 	var/scanned_name = "[M.declent_ru(GENITIVE)]"
+
 	var/probably_dead = (M.stat == DEAD)
+
 	// show your own health, evil
 	if(HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5))
 		M = user
+
 	if(HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(10) && IS_HORIZONTAL(M))
 		probably_dead = TRUE
+
 	if(isanimal_or_basicmob(M))
 		// No box here, keep it simple.
 		if(probably_dead)
@@ -163,6 +176,7 @@
 	msgs += "<span class='notice'>Анализ результатов для [scanned_name]:\nОбщее состояние: [status]"
 	msgs += "Основные: [SPAN_HEALTHSCAN_OXY("Удушье")]/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>"
 	msgs += "Детализация повреждений: [SPAN_HEALTHSCAN_OXY("[OX]")] - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
+
 	if(H.timeofdeath && (H.stat == DEAD || (HAS_TRAIT(H, TRAIT_FAKEDEATH)) || probably_dead))
 
 		var/tod = probably_dead && (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(10)) ? world.time - rand(10, 5000) : H.timeofdeath  // Sure let's blow it out
@@ -172,14 +186,17 @@
 			msgs += SPAN_DANGER("Субъект умер [DisplayTimeText(tdelta)] назад. Дефибрилляция ещё возможна!")
 		else
 			msgs += "<font color='red'>Субъект умер [DisplayTimeText(tdelta)] назад. <b>Дефибрилляция более невозможна!</b></font>"
+
 	if(mode == DETAILED_HEALTH_SCAN)
 		var/list/damaged = H.get_damaged_organs(1,1)
 		if(length(damaged))
 			msgs += SPAN_NOTICE("Локальные повреждения. Ушибы/ожоги:")
 			for(var/obj/item/organ/external/org in damaged)
 				msgs += "<span class='notice'>[capitalize(org.name)]: [(org.brute_dam > 0) ? "<font color='red'>[org.brute_dam]</font></span>" : "<font color='red'>0</font>"]-[(org.burn_dam > 0) ? "<font color='#FF8000'>[org.burn_dam]</font>" : "<font color='#FF8000'>0</font>"]"
+
 	if(advanced)
 		msgs.Add(get_chemscan_results(user, H))
+
 	for(var/thing in H.viruses)
 		var/datum/disease/D = thing
 		// If the disease is incubating, or if it's stealthy and hasn't been put into a pandemic yet the scanner won't see it
@@ -197,6 +214,7 @@
 				msgs += SPAN_NOTICE("<font color='red'><b>Предупреждение: Обнаружен [A.form]</b>\nНазвание: [A.name].\nШтамм:[A.strain]\nТип: [A.spread_text].\nСтадия: [A.stage]/[A.max_stages].\nМетод лечения: [A.cure_text]\nНеобходимо лечений: [A.cures_required]</font>")
 			continue
 		msgs += SPAN_NOTICE("<font color='red'><b>Предупреждение: Обнаружен [D.form]</b>\nНазвание: [D.name].\nТип: [D.spread_text].\nСтадия: [D.stage]/[D.max_stages].\nМетод лечения: [D.cure_text]</font>")
+
 	if(H.undergoing_cardiac_arrest())
 		var/datum/organ/heart/heart = H.get_int_organ_datum(ORGAN_DATUM_HEART)
 		if(heart && !(heart.linked_organ.status & ORGAN_DEAD))
@@ -205,10 +223,13 @@
 			msgs += "<span class='notice'><font color='red'><b>Зафиксирован некроз сердца субъекта.</b></font>"
 		else if(!heart)
 			msgs += "<span class='notice'><font color='red'><b>Субъект не имеет сердца.</b></font>"
+
 	if(H.getStaminaLoss() || HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5))
 		msgs += SPAN_NOTICE("Субъект страдает от переутомления.")
+
 	if(H.getCloneLoss() || (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5)))
 		msgs += SPAN_WARNING("Субъект имеет [H.getCloneLoss() > 30 ? "серьёзное" : "незначительное"] клеточное повреждение.")
+
 	// Brain.
 	var/obj/item/organ/internal/brain = H.get_int_organ(/obj/item/organ/internal/brain)
 	if(brain)
@@ -318,12 +339,15 @@
 /obj/item/healthanalyzer/attackby__legacy__attackchain(obj/item/I, mob/user, params)
 	if(!istype(I, /obj/item/healthupgrade))
 		return ..()
+
 	if(advanced)
 		to_chat(user, SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] уже улучшен."))
 		return
+
 	if(!user.unequip(I))
 		to_chat(user, SPAN_WARNING("[src.declent_ru(NOMINATIVE)] застрял в вашей руке!"))
 		return
+
 	to_chat(user, SPAN_NOTICE("Вы установили улучшение на [src.declent_ru(ACCUSATIVE)]."))
 	add_overlay("advanced")
 	playsound(loc, I.usesound, 50, TRUE)
@@ -338,6 +362,7 @@
 	. = ..()
 	add_overlay("advanced")
 
+
 /obj/item/healthupgrade
 	name = "Health Analyzer Upgrade"
 	desc = "Модуль улучшения, который может быть установлен на анализатор здоровья для расширения возможностей."
@@ -347,5 +372,6 @@
 	origin_tech = "magnets=2;biotech=2"
 	materials = list(MAT_METAL = 200, MAT_GLASS = 200)
 	usesound = 'sound/items/deconstruct.ogg'
+
 #undef SIMPLE_HEALTH_SCAN
 #undef DETAILED_HEALTH_SCAN

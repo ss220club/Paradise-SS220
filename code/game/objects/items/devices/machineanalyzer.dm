@@ -59,6 +59,7 @@
 	else
 		to_chat(user, SPAN_WARNING("Вы не можете анализировать нероботизированные объекты!"))
 		return
+
 	switch(scan_type)
 		if("robot")
 			var/burn = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
@@ -87,8 +88,10 @@
 				if(LAZYLEN(missing))
 					for(var/datum/robot_component/org in missing)
 						msgs += SPAN_WARNING("\t [capitalize(org.name)]: ПОТЕРЯН")
+
 				if(H.emagged && prob(5))
 					msgs += SPAN_WARNING("\t ОШИБКА: ВНУТРЕННИЕ СИСТЕМЫ СКОМПРОМЕТИРОВАНЫ")
+
 		if("prosthetics")
 			var/mob/living/carbon/human/H = M
 			var/is_ipc = ismachineperson(H)
@@ -124,7 +127,6 @@
 						continue
 					organ_found = TRUE
 					msgs += "[capitalize(I.name)]: <font color='red'>[(I.crit_fail || I.status & ORGAN_DEAD) ? "КРИТИЧЕСКАЯ НЕИСПРАВНОСТЬ" : I.damage]</font>"
-
 			if(!organ_found)
 				msgs += SPAN_WARNING("Импланты не обнаружены.")
 			msgs += "<hr>"
@@ -138,4 +140,5 @@
 			msgs += SPAN_NOTICE("Анализ результатов для [M.declent_ru(GENITIVE)]: \n\t Общее состояние: [A.stat == DEAD ? "полностью отключён" : "Работоспособность [A.health]%"]")
 			msgs += "\t Основные: <font color='#FFA500'>Электроника</font>/<font color='red'>Механика</font>"
 			msgs += "\t Детализация повреждений: <font color='#FFA500'>[burn]</font> - <font color='red'>[brute]</font>"
+
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))

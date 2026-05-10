@@ -1,6 +1,3 @@
-////////////////////////////////////////
-// MARK:	Body analyzers
-////////////////////////////////////////
 /obj/item/bodyanalyzer
 	name = "handheld body analyzer"
 	desc = "Портативный анализатор, способный полностью сканировать все тело аналогично стационарной версии."
@@ -66,10 +63,12 @@
 /obj/item/bodyanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/carbon/human/user)
 	if(user.incapacitated() || !user.Adjacent(M))
 		return
+
 	if(!ready)
 		to_chat(user, SPAN_NOTICE("Сканер издаёт раздражённый звуковой сигнал! Он перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд."))
 		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
+
 	if(cell.charge >= usecharge)
 		mobScan(M, user)
 	else
@@ -79,9 +78,11 @@
 /obj/item/bodyanalyzer/borg/attack__legacy__attackchain(mob/living/M, mob/living/silicon/robot/user)
 	if(user.incapacitated() || !user.Adjacent(M))
 		return
+
 	if(!ready)
 		to_chat(user, SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] перезаряжается - осталось [round((time_to_use - world.time) * 0.1)] секунд."))
 		return
+
 	if(user.cell.charge >= usecharge)
 		mobScan(M, user)
 	else
@@ -123,6 +124,7 @@
 /obj/item/bodyanalyzer/proc/generate_printing_text(mob/living/M, mob/user)
 	var/dat = ""
 	var/mob/living/carbon/human/target = M
+
 	dat = "<font color='blue'><b>Статистика объекта:</b></font><br>"
 	var/t1
 	switch(target.stat) // obvious, see what their status is
@@ -133,6 +135,7 @@
 		else
 			t1 = "*мёртв*"
 	dat += "[target.health > 50 ? "<font color='blue'>" : "<font color='red'>"]\tСостояние %: [target.health], ([t1])</font><br>"
+
 	var/found_disease = FALSE
 	for(var/thing in target.viruses)
 		var/datum/disease/D = thing
@@ -142,37 +145,53 @@
 		break
 	if(found_disease)
 		dat += "<font color='red'>У субъекта обнаружено заболевание.</font><BR>"
+
 	var/extra_font = null
 	extra_font = (target.getBruteLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\t-Тяжесть ушибов %: [target.getBruteLoss()]</font><br>"
+
 	extra_font = (target.getOxyLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\t-Степень удушья %: [target.getOxyLoss()]</font><br>"
+
 	extra_font = (target.getToxLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\t-Уровень токсинов %: [target.getToxLoss()]</font><br>"
+
 	extra_font = (target.getFireLoss() < 60 ? "<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\t-Тяжесть ожогов %: [target.getFireLoss()]</font><br>"
+
 	extra_font = (target.radiation < 10 ?"<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\tУровень радиационного облучения %: [target.radiation]</font><br>"
+
 	extra_font = (target.getCloneLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\tГенетическое повреждение тканей %: [target.getCloneLoss()]<br>"
+
 	extra_font = (target.getBrainLoss() < 1 ?"<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\tПриблизительное повреждение мозга %: [target.getBrainLoss()]<br>"
+
 	dat += "Информация о параличе: [target.IsParalyzed()] (до восстановления осталось [round(target.AmountParalyzed() / 10)] секунд!)<br>"
 	dat += "Температура тела: [target.bodytemperature-T0C]&deg;C ([target.bodytemperature*1.8-459.67]&deg;F)<br>"
+
 	dat += "<hr>"
+
 	var/blood_percent =  round((target.blood_volume / BLOOD_VOLUME_NORMAL))
 	blood_percent *= 100
+
 	extra_font = (target.blood_volume > 448 ? "<font color='blue'>" : "<font color='red'>")
 	dat += "[extra_font]\tУровень крови %: [blood_percent] ([target.blood_volume] юнитов)</font><br>"
+
 	if(target.reagents)
 		dat += "Эпинефрин: [target.reagents.get_reagent_amount("Epinephrine")] юнитов<BR>"
 		dat += "Эфир: [target.reagents.get_reagent_amount("ether")] юнитов<BR>"
+
 		extra_font = (target.reagents.get_reagent_amount("silver_sulfadiazine") < 30 ? "<font color='black'>" : "<font color='red'>")
 		dat += "[extra_font]\tСульфадиазин серебра: [target.reagents.get_reagent_amount("silver_sulfadiazine")] юнитов</font><br>"
+
 		extra_font = (target.reagents.get_reagent_amount("styptic_powder") < 30 ? "<font color='black'>" : "<font color='red'>")
 		dat += "[extra_font]\tКровоостанавливающая пудра: [target.reagents.get_reagent_amount("styptic_powder")] юнитов<BR>"
+
 		extra_font = (target.reagents.get_reagent_amount("salbutamol") < 30 ? "<font color='black'>" : "<font color='red'>")
 		dat += "[extra_font]\tСальбутамол: [target.reagents.get_reagent_amount("salbutamol")] юнитов<BR>"
+
 	dat += "<hr><table border='1'>"
 	dat += "<tr>"
 	dat += "<th>Части тела / Органы</th>"
@@ -180,6 +199,7 @@
 	dat += "<th>Повреждения от травм</th>"
 	dat += "<th>Другие раны</th>"
 	dat += "</tr>"
+
 	for(var/obj/item/organ/external/e in target.bodyparts)
 		dat += "<tr>"
 		var/AN = ""
@@ -219,9 +239,11 @@
 				infected = "Острая инфекция++:"
 			if(INFECTION_LEVEL_THREE to INFINITY)
 				infected = "Заражённый:"
+
 		var/unknown_body = 0
 		for(var/I in e.embedded_objects)
 			unknown_body++
+
 		if(unknown_body || e.hidden)
 			imp += "Обнаружено инородное тело; "
 		if(!AN && !open && !infected && !imp)
@@ -244,6 +266,7 @@
 				infection = "Острая инфекция+:"
 			if(INFECTION_LEVEL_TWO + 300 to INFINITY)
 				infection = "Острая инфекция++:"
+
 		dat += "<tr>"
 		dat += "<td>[i.name]</td><td>Н/Д</td><td>[i.damage]</td><td>[infection]:[mech]</td><td></td>"
 		dat += "</tr>"
@@ -256,4 +279,5 @@
 		dat += "<font color='red'>Обнаружено смещение сетчатки.</font><BR>"
 	if(HAS_TRAIT(target, TRAIT_PARAPLEGIC))
 		dat += "<font color='red'>Повреждены поясничные нервы.</font><BR>"
+
 	return dat

@@ -22,11 +22,14 @@
 	. += SPAN_NOTICE("Alt-Shift-ЛКМ по [src.declent_ru(DATIVE)] для включения или выключения подробных отчетов.")
 
 /obj/item/analyzer/attack_self__legacy__attackchain(mob/user as mob)
+
 	if(user.stat)
 		return
+
 	var/turf/location = user.loc
 	if(!isturf(location))
 		return
+
 	atmos_scan(user = user, target = location, detailed = show_detailed)
 	add_fingerprint(user)
 
@@ -36,28 +39,36 @@
 
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
+
 	if(!user.incapacitated() && Adjacent(user))
+
 		if(cooldown)
 			to_chat(user, SPAN_WARNING("Функция барометра [src.declent_ru(GENITIVE)] подготавливается."))
 			return
+
 		var/turf/T = get_turf(user)
 		if(!T)
 			return
+
 		playsound(src, 'sound/effects/pop.ogg', 100)
 		var/area/user_area = T.loc
 		var/datum/weather/ongoing_weather = null
+
 		if(!user_area.outdoors)
 			to_chat(user, SPAN_WARNING("Функция барометра [src.declent_ru(GENITIVE)] не будет работать в помещении!"))
 			return
+
 		for(var/V in SSweather.processing)
 			var/datum/weather/W = V
 			if(W.barometer_predictable && (T.z in W.impacted_z_levels) && is_type_in_list(user_area, W.area_types) && !(W.stage == WEATHER_END_STAGE))
 				ongoing_weather = W
 				break
+
 		if(ongoing_weather)
 			if((ongoing_weather.stage == WEATHER_MAIN_STAGE) || (ongoing_weather.stage == WEATHER_WIND_DOWN_STAGE))
 				to_chat(user, SPAN_WARNING("Функция барометра [src.declent_ru(GENITIVE)] не может ничего отследить во время шторма. [ongoing_weather.stage == WEATHER_MAIN_STAGE ? "Шторм уже здесь!" : "Шторм прекращается."]."))
 				return
+
 			to_chat(user, SPAN_NOTICE("Следующий [ongoing_weather] появится в [butchertime(ongoing_weather.next_hit_time - world.time)]."))
 			if(ongoing_weather.aesthetic)
 				to_chat(user, SPAN_WARNING("Функция барометра [src.declent_ru(GENITIVE)] говорит о том, что следующий шторм пройдёт мимо."))
@@ -109,6 +120,7 @@
 		// This is one of the few times when it's OK to call MILLA directly, as we need more information than we normally keep, aren't trying to modify it, and don't need it to be synchronized with anything.
 		milla = new/list(MILLA_TILE_SIZE)
 		get_tile_atmos(target, milla)
+
 		var/datum/gas_mixture/air = new()
 		air.copy_from_milla(milla)
 		airs = list(air)
@@ -118,10 +130,12 @@
 		return FALSE
 	if(!islist(airs))
 		airs = list(airs)
+
 	var/list/message = list()
 	if(!silent && isliving(user))
 		user.visible_message(SPAN_NOTICE("[user] анализирует [target.declent_ru(ACCUSATIVE)]."), SPAN_NOTICE("Вы используете газоанализатор на [target.declent_ru(PREPOSITIONAL)]."))
 	message += SPAN_BOLDNOTICE("Результаты анализа [bicon(target)] [target.declent_ru(GENITIVE)].")
+
 	if(!print)
 		return TRUE
 	var/total_moles = 0
@@ -137,6 +151,7 @@
 	var/agent_b = 0
 	var/hydrogen = 0
 	var/water_vapor = 0
+
 	if(detailed)// Present all mixtures one by one
 		for(var/datum/gas_mixture/air as anything in airs)
 			total_moles = air.total_moles()
@@ -170,6 +185,7 @@
 			else
 				message += SPAN_NOTICE("[target] без газа!")
 				message += SPAN_NOTICE("Объём: [round(volume)] литров") // don't want to change the order volume appears in, suck it
+
 	else// Sum mixtures then present
 		for(var/datum/gas_mixture/air as anything in airs)
 			if(isnull(air))
@@ -216,6 +232,7 @@
 		else
 			message += SPAN_NOTICE("[target] без газа!")
 			message += SPAN_NOTICE("Объём: [round(volume)] литров") // don't want to change the order volume appears in, suck it
+
 	if(milla)
 		// Values from milla/src/lib.rs, +1 due to array indexing difference.
 		message += SPAN_NOTICE("Герметичность С/В/Ю/З: [(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_NORTH) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_EAST) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_SOUTH) ? "да" : "нет"]/[(milla[MILLA_INDEX_AIRTIGHT_DIRECTIONS] & MILLA_WEST) ? "да" : "нет"]")
@@ -234,5 +251,6 @@
 		message += SPAN_NOTICE("Горячая точка: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] литров ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)")
 		message += SPAN_NOTICE("Ветер: ([round(milla[MILLA_INDEX_WIND_X], 0.001)], [round(milla[MILLA_INDEX_WIND_Y], 0.001)])")
 		message += SPAN_NOTICE("Топлива сожжено в последний тик: [milla[MILLA_INDEX_FUEL_BURNT]] молей")
+
 	to_chat(user, chat_box_examine(message.Join("<br>")))
 	return TRUE

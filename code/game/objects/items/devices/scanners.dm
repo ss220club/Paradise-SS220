@@ -149,6 +149,7 @@ SLIME SCANNER
 	flags = CONDUCT
 	throw_speed = 3
 	materials = list(MAT_METAL=30, MAT_GLASS=20)
+
 /obj/item/slime_scanner/attack__legacy__attackchain(mob/living/M, mob/living/user)
 	if(user.incapacitated() || user.AmountBlinded())
 		return
@@ -156,6 +157,7 @@ SLIME SCANNER
 		to_chat(user, SPAN_WARNING("Устройство может сканировать только слаймов!"))
 		return
 	slime_scan(M, user)
+
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
 	to_chat(user, "========================")
 	to_chat(user, "<b>Результаты сканирования слайма:</b>")
