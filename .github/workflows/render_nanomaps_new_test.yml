@@ -33,7 +33,7 @@ jobs:
 
       - name: 'Rebuild binary'
         run: |
-          RUSTFLAGS="-A warnings" cargo build --release --locked --manifest-path nanomap_renderer_source/Cargo.toml -p dmm-tools-cli --bin dmm-tools
+          RUSTFLAGS="-A warnings" cargo build --release --manifest-path nanomap_renderer_source/Cargo.toml -p dmm-tools-cli --bin dmm-tools
           binary_path="$(find nanomap_renderer_source/target/release -maxdepth 1 -type f \( -name 'dmm-tools-para' -o -name 'dmm-tools' -o -name 'dmm_tools' \) | head -n 1)"
           if [ -z "$binary_path" ]; then
             binary_path="$(find nanomap_renderer_source/target/release -maxdepth 1 -type f -executable ! -name '*.rlib' ! -name '*.d' ! -name '*.o' ! -name '*.so' ! -name '*.a' | head -n 1)"
