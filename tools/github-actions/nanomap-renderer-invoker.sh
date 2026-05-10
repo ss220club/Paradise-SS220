@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 # Generate maps
-tools/github-actions/dmm-tools-para minimap --enable nanomaps --width 2040 --height 2040 "./_maps/map_files220/stations/boxstation.dmm"
-tools/github-actions/dmm-tools-para minimap --enable nanomaps --width 2040 --height 2040 "./_maps/map_files220/stations/deltastation.dmm"
-tools/github-actions/dmm-tools-para minimap --enable nanomaps --width 2040 --height 2040 "./_maps/map_files220/stations/metastation.dmm"
-# tools/github-actions/dmm-tools-para minimap --enable nanomaps --width 2040 --height 2040 "./_maps/map_files/stations/cerestation.dmm"
-# tools/github-actions/dmm-tools-para minimap --enable nanomaps --width 2040 --height 2040 "./_maps/map_files/stations/emeraldstation.dmm"
+tools/github-actions/dmm-tools-para minimap --enable nanomaps -w 2040 -h 2040 "./_maps/map_files220/stations/boxstation.dmm"
+tools/github-actions/dmm-tools-para minimap --enable nanomaps -w 2040 -h 2040 "./_maps/map_files220/stations/deltastation.dmm"
+tools/github-actions/dmm-tools-para minimap --enable nanomaps -w 2040 -h 2040 "./_maps/map_files220/stations/metastation.dmm"
+# tools/github-actions/dmm-tools-para minimap --enable nanomaps -w 2040 -h 2040 "./_maps/map_files/stations/cerestation.dmm"
+# tools/github-actions/dmm-tools-para minimap --enable nanomaps -w 2040 -h 2040 "./_maps/map_files/stations/emeraldstation.dmm"
 # Move and rename files so the game understands them
 cd "data/nanomaps"
 mv "data/minimaps/boxstation-1.png" "icons/_nanomaps/BoxStation_nanomap_z1.png"

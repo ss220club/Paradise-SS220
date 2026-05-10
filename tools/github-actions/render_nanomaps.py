@@ -33,7 +33,7 @@ if __name__ == "__main__":
         dmm = DMM.from_file(map_path)
         width = dmm.size.x * SCALE
         height = dmm.size.y * SCALE
-        commands.append([str(RENDERER), "minimap", "--enable", "nanomaps", "--width", str(width), "--height", str(height), str(map_path)])
+        commands.append([str(RENDERER), "minimap", "--enable", "nanomaps", "-w", str(width), "-h", str(height), str(map_path)])
         commands.append(["mv", f"data/minimaps/{dmm.filepath.stem}{suffix_220}_nanomap_z1.png", f"icons/_nanomaps/stations/{technical_name}{suffix_220}_nanomap_z1.png"])
 
     print("inspecting ruins...")
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         dmm = DMM.from_file(map_path)
         width = dmm.size.x * SCALE
         height = dmm.size.y * SCALE
-        commands.append([str(RENDERER), "minimap", "--enable", "nanomaps", "--width", str(width), "--height", str(height), str(map_path)])
+        commands.append([str(RENDERER), "minimap", "--enable", "nanomaps", "-w", str(width), "-h", str(height), str(map_path)])
         commands.append(["mv", f"data/minimaps/{dmm.filepath.stem}{suffix_220}_nanomap_z1.png", f"icons/_nanomaps/ruins/{ruin_id}{suffix_220}_nanomap_z1.png"])
 
     print("executing...")
