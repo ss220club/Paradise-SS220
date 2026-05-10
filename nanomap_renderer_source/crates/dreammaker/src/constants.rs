@@ -785,6 +785,8 @@ impl<'a> ConstantFolder<'a> {
             Term::NewMiniExpr { .. } => return Err(self.error("non-constant new expression")),
             Term::List(vec) => Constant::List(self.arguments(vec)?),
             Term::Call(ident, args) => match &*ident {
+                // SS220 helpers that only wrap BYOND list construction.
+                "alist" | "string_assoc_list" => Constant::List(self.arguments(args)?),
                 // constructors which remain as they are
                 "matrix" => Constant::Call(ConstFn::Matrix, self.arguments(args)?),
                 "newlist" => Constant::Call(ConstFn::Newlist, self.arguments(args)?),
