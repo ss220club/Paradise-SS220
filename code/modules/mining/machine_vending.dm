@@ -398,7 +398,7 @@
 		EQUIPMENT("Fulton Pack", /obj/item/extraction_pack, 1000),
 		EQUIPMENT("Fulton Beacon", /obj/item/fulton_core, 400),
 		EQUIPMENT("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),
-		EQUIPMENT("Firstaid Spacer", /obj/item/storage/firstaid/spacer, 600), // SS220 EDIT - Взамен люкса для гейтеров
+		EQUIPMENT("Firstaid Spacer", /obj/item/storage/firstaid/spacer, 600), // SS220 EDIT - аптечка с медипенами для применения с модулями.
 		EQUIPMENT("Survival Medipen", /obj/item/reagent_containers/hypospray/autoinjector/survival, 500),
 	)
 

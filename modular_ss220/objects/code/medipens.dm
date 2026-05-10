@@ -30,35 +30,35 @@
 	icon_state = "medipen_red"
 	desc = "Быстрый и безопасный способ лечить раны и справляться с незначительной болью даже через скафандры. Содержит бикаридин и салициловую кислоту."
 	list_reagents = list("bicaridine" = 10, "sal_acid" = 3)
-	instant_application = FALSE
+	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/burn
 	name = "Медипен против ожогов"
 	icon_state = "medipen_org"
 	desc = "Быстрый и безопасный способ лечить ожоги и регулировать температуру тела даже через скафандры. Содержит келотан и ментол."
 	list_reagents = list("kelotane" = 10, "menthol" = 3)
-	instant_application = FALSE
+	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/critical
 	name = "Стабилизирующий медипен"
 	icon_state = "medipen_blu"
 	desc = "Быстрый и безопасный способ стабилизировать пациента и предотвратить потерю сознания даже через скафандры. Содержит эпинефрин и сальбутамол."
 	list_reagents = list("epinephrine" = 10, "salbutamol" = 5)
-	instant_application = FALSE
+	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation
 	name = "Противорадиационный медипен"
 	icon_state = "medipen_rad"
 	desc = "Быстрый и безопасный способ противодействовать эффектам облучения даже через скафандры. Содержит йодид калия."
 	list_reagents = list("potass_iodide" = 15)
-	instant_application = FALSE
+	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin
 	name = "Противотоксинный медипен"
 	icon_state = "medipen_grn"
 	desc = "Быстрый и безопасный способ противодействовать эффектам отравления даже через скафандры. Содержит уголь."
 	list_reagents = list("charcoal" = 20)
-	instant_application = FALSE
+	instant_application = TRUE
 
 // MARK: Космическая аптечка
 /obj/item/storage/firstaid/spacer

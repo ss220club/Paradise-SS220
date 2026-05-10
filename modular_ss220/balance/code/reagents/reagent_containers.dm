@@ -53,7 +53,3 @@
 #undef BORGHYPO_REFILL_VALUE
 #undef SYNDICATE_NANITES_LIMIT
 
-/obj/item/reagent_containers/glass/bottle/adv_lava_extract
-	name = "Бутылка модифицированного экстракта лазиса."
-	desc = "Маленькая бутылка с модифицированным экстрактом лазиса."
-	list_reagents = list("adv_lava_extract" = 30)
