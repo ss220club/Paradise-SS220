@@ -169,7 +169,7 @@ impl RenderPass for HideSpace {
         output: &mut Vec<Atom<'a>>,
     ) -> bool {
         if atom.istype("/turf/template_noop/") {
-            output.push(Atom::from(objtree.expect("/turf/open/space")));
+            output.push(Atom::from(objtree.expect("/turf/space")));
             false
         } else {
             true
@@ -177,7 +177,7 @@ impl RenderPass for HideSpace {
     }
 
     fn late_filter(&self, atom: &Atom, _: &ObjectTree) -> bool {
-        !atom.istype("/turf/open/space/")
+        !atom.istype("/turf/space/")
     }
 
     fn sprite_filter(&self, sprite: &Sprite) -> bool {
@@ -505,7 +505,7 @@ impl FancyLayers {
             }
         }
 
-        if subpath(p, "/turf/open/floor/plating/") || subpath(p, "/turf/open/space/") {
+        if subpath(p, "/turf/open/floor/plating/") || subpath(p, "/turf/space/") {
             Some(Layer::from(-10))  // under everything
         } else if subpath(p, "/turf/closed/mineral/") {
             Some(Layer::from(-3))   // above hidden stuff and plating but below walls

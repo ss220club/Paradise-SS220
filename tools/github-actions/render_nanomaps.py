@@ -7,6 +7,10 @@ RENDERER = Path("tools/github-actions/dmm-tools-para")
 SCALE = 8
 
 MAP_FOLDER_220 = Path("_maps/map_files220")
+STATION_MAP_FOLDERS = {
+    Path("_maps/map_files/stations"),
+    Path("_maps/map_files220/stations"),
+}
 NANOMAPS_DIR = Path("icons/_nanomaps")
 RUIN_NANOMAPS_DIR = NANOMAPS_DIR / "ruins"
 
@@ -40,6 +44,9 @@ if __name__ == "__main__":
     for pth in dme.subtypesof("/datum/map"):
         td = dme.types[pth]
         map_path = Path(td.var_decl("map_path").const_val)
+        if map_path.parent not in STATION_MAP_FOLDERS:
+            print(f"skipping non-station map: {map_path}")
+            continue
 
         technical_name = td.var_decl("technical_name").const_val
         commands.append(render_command(map_path))

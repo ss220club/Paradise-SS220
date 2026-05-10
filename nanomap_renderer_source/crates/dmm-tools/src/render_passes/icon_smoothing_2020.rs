@@ -152,7 +152,7 @@ fn diagonal_underlay<'a>(output: &mut Vec<Sprite<'a>>, objtree: &'a ObjectTree, 
         .index(&Constant::string("space"))
         .is_some()
     {
-        output.push(Sprite::from_vars(objtree, &objtree.expect("/turf/open/space/basic")));
+        output.push(Sprite::from_vars(objtree, &objtree.expect("/turf/space")));
     } else if let Some(dir) = reverse_ndir(adjacencies) {
         let dir = dir.flip();
         let mut needs_plating = true;
