@@ -504,6 +504,10 @@
 		text = replacetext(text, "\[cell\]", 	"")
 		text = replacetext(text, "\[logo\]", 	"")
 		text = replacetext(text, "\[syndielogo\]", 	"")
+		// SS220 EDIT START -- Добавление лого ТСФ и СССП
+		text = replacetext(text, "\[tsflogo\]", 	"")
+		text = replacetext(text, "\[ussplogo\]", 	"")
+		// SS220 EDIT END
 
 	if(istype(P, /obj/item/toy/crayon))
 		text = "<font face=\"[crayonfont]\" color=[P ? P.color : "black"]><b>[text]</b></font>"
