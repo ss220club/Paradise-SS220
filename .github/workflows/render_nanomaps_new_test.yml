@@ -1,15 +1,18 @@
-# GitHub action used as a manually-runnable test workflow for rebuilding the
-# committed dmm-tools renderer binary and opening a PR with the result.
+# GitHub action to autorender nanomaps outside the game
+# This kills off the awful verb we have that takes a full 50 seconds and hangs the whole server
+# The file names and locations are VERY important here
+# DO NOT EDIT THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+# -aa
 name: 'Render Nanomaps New Test'
 on:
+  schedule:
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
-  rebuild_binary:
-    name: 'Rebuild Renderer Binary'
+  generate_maps:
+    name: 'Generate NanoMaps'
     runs-on: ubuntu-22.04
-    env:
-      BASE_BRANCH: ${{ github.ref_name }}
     steps:
       - id: create_token
         uses: actions/create-github-app-token@v2
@@ -19,36 +22,33 @@ jobs:
 
       - run: echo "GH_TOKEN=${{ steps.create_token.outputs.token }}" >> "$GITHUB_ENV"
 
-      - name: 'Checkout'
+      - name: 'Update Branch'
         uses: actions/checkout@v6
         with:
           token: ${{ steps.create_token.outputs.token }}
 
-      - name: 'Prepare Branch'
+      - name: Branch
         run: |
-          git checkout -B "$BASE_BRANCH" "origin/$BASE_BRANCH"
+          git branch -f nanomap-render
+          git checkout nanomap-render
+          git reset --hard origin/master
 
-      - name: 'Install Rust'
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: 'Rebuild binary'
+      - name: 'Install Dependencies'
         run: |
-          RUSTFLAGS="-A warnings" cargo build --release --manifest-path nanomap_renderer_source/Cargo.toml -p dmm-tools-cli --bin dmm-tools
-          binary_path="$(find nanomap_renderer_source/target/release -maxdepth 1 -type f \( -name 'dmm-tools-para' -o -name 'dmm-tools' -o -name 'dmm_tools' \) | head -n 1)"
-          if [ -z "$binary_path" ]; then
-            binary_path="$(find nanomap_renderer_source/target/release -maxdepth 1 -type f -executable ! -name '*.rlib' ! -name '*.d' ! -name '*.o' ! -name '*.so' ! -name '*.a' | head -n 1)"
-          fi
-          if [ -z "$binary_path" ]; then
-            echo "Could not find built dmm-tools executable" >&2
-            find nanomap_renderer_source/target/release -maxdepth 1 -type f -printf '%f\n'
-            exit 1
-          fi
-          install -m 0755 "$binary_path" "$GITHUB_WORKSPACE/tools/github-actions/dmm-tools-para"
+          pip install -r tools/requirements.txt
 
-      - name: 'Commit binary'
+      - name: 'Generate Maps'
+        run: 'bash ./tools/github-actions/nanomap-renderer-invoker_new_test.sh'
+
+      - name: 'Commit Maps and open PR'
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "dmm-tools Rebuild"
-          git add tools/github-actions/dmm-tools-para
-          git commit -m "Rebuild dmm-tools-para (`date`)" || true
-          git push origin "HEAD:$BASE_BRANCH"
+          git config --local user.name "NanoMap Generation"
+          git pull origin master
+          git commit -m "NanoMap Auto-Update (`date`)" -a || true
+          git push -f -u origin nanomap-render
+          result=$(gh pr create -t "Automatic NanoMap Update" -b "This pull request updates the server NanoMaps. Please review the diff images before merging." -l "NanoMaps,:scroll: CL не требуется" -H "nanomap-render" -B "master" 2>&1) || true
+          echo "$result"
+          if echo "$result" | grep -q "No commits between master and nanomap-render"; then
+            echo "No NanoMaps update required, skipping."
+          fi

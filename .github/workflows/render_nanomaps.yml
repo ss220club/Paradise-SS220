@@ -13,8 +13,6 @@ jobs:
   generate_maps:
     name: 'Generate NanoMaps'
     runs-on: ubuntu-22.04
-    env:
-      RENDER_BRANCH: dmm-tools-para
     steps:
       - id: create_token
         uses: actions/create-github-app-token@v2
@@ -36,7 +34,7 @@ jobs:
       - name: 'Generate Maps'
         run: './tools/github-actions/nanomap-renderer-invoker.sh'
 
-      - name: 'Commit Maps'
+      - name: 'Commit Maps and open PR'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "NanoMap Generation"
@@ -44,3 +42,8 @@ jobs:
           git add icons/_nanomaps
           git commit -m "NanoMap Auto-Update (`date`)" || true
           git push origin "HEAD:$RENDER_BRANCH"
+          result=$(gh pr create -t "Automatic NanoMap Update" -b "This pull request updates the server NanoMaps. Please review the diff images before merging." -l "NanoMaps,:scroll: CL не требуется" -H "nanomap-render" -B "master" 2>&1) || true
+          echo "$result"
+          if echo "$result" | grep -q "No commits between master and nanomap-render"; then
+            echo "No NanoMaps update required, skipping."
+          fi
