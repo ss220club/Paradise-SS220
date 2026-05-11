@@ -329,7 +329,7 @@ impl RenderPass for Overlays {
                         .. atom.sprite
                     })
                 }
-            } else {
+            } else if has_airlock_fill_overlay(atom.sprite.icon) {
                 add_to(overlays, atom, "fill_closed");
             }
         } else if atom.istype("/obj/machinery/power/apc/") {
@@ -346,6 +346,20 @@ impl RenderPass for Overlays {
             underlays.push(terminal);
         }
     }
+}
+
+fn has_airlock_fill_overlay(icon: &str) -> bool {
+    !matches!(
+        icon,
+        "icons/obj/doors/airlocks/vault/vault.dmi"
+            | "icons/obj/doors/airlocks/abductor/abductor_airlock.dmi"
+            | "modular_ss220/aesthetics/airlocks/icons/station/bathroom.dmi"
+            | "modular_ss220/aesthetics/airlocks/icons/station/freezer.dmi"
+            | "modular_ss220/aesthetics/airlocks/icons/centcom/centcom.dmi"
+            | "modular_ss220/aesthetics/airlocks/icons/hatch/centcom.dmi"
+            | "modular_ss220/aesthetics/airlocks/icons/hatch/maintenance.dmi"
+            | "modular_ss220/aesthetics/airlocks/icons/highsec/highsec.dmi"
+    )
 }
 
 #[derive(Default)]
