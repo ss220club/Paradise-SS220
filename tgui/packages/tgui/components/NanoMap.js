@@ -108,7 +108,7 @@ export class NanoMap extends Component {
     const { dragging, offsetX, offsetY, zoom = 1 } = this.state;
     const { children } = this.props;
 
-    const mapUrl = config.map + '_minimap_z1.png';
+    const mapUrl = config.map + '_nanomap_z1.png';
     const mapSize = MAP_SIZE * zoom + 'px';
     const newStyle = {
       width: mapSize,
