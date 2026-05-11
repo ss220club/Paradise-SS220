@@ -1,11 +1,13 @@
 from pathlib import Path
 import subprocess
 
-from avulto import DME, DMM
+from avulto import DMM, DME
 
 RENDERER = Path("tools/github-actions/dmm-tools-para")
 SCALE = 8
 
+
+# Папка, для которой нужно добавлять суффикс 220
 MAP_FOLDER_220 = Path("_maps/map_files220")
 STATION_MAP_FOLDERS = {
     Path("_maps/map_files/stations"),
