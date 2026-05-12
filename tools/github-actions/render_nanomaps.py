@@ -36,8 +36,6 @@ def render_command(map_path: Path) -> list[str]:
 
 if __name__ == "__main__":
     commands = []
-    NANOMAPS_DIR.mkdir(parents=True, exist_ok=True)
-    RUIN_NANOMAPS_DIR.mkdir(parents=True, exist_ok=True)
 
     print("parsing DME...")
     dme = DME.from_file("paradise.dme")
