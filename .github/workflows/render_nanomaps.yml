@@ -38,12 +38,30 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "NanoMap Generation"
-          git pull origin "$RENDER_BRANCH"
-          git add --all
-          git commit -m "NanoMap Auto-Update (`date`)" || true
-          git push -f -u origin nanomap-render
-          result=$(gh pr create -t "Automatic NanoMap Update" -b "This pull request updates the server NanoMaps. Please review the diff images before merging." -l "NanoMaps,:scroll: CL не требуется" -H "nanomap-render" -B "$RENDER_BRANCH" 2>&1) || true
-          echo "$result"
-          if echo "$result" | grep -q "No commits between master and nanomap-render"; then
-            echo "No NanoMaps update required, skipping."
+
+          CURRENT_BRANCH=$GITHUB_REF_NAME
+
+          if git fetch origin nanomap-render; then
+            git checkout nanomap-render
+            git merge "origin/$CURRENT_BRANCH" --strategy-option theirs -m "Merge branch '$CURRENT_BRANCH' into nanomap-render"
+          else
+            git checkout -b nanomap-render
           fi
+
+          git add --all
+
+          if git diff-index --quiet HEAD; then
+            echo "No changes detected."
+            exit 0
+          fi
+
+          git commit -m "NanoMap Auto-Update (`date`)"
+          git push -u origin nanomap-render
+
+          result=$(gh pr create \
+            -t "Automatic NanoMap Update" \
+            -b "This pull request updates the server NanoMaps. Please review the diff images before merging." \
+            -l "NanoMaps,:scroll: CL не требуется" \
+            -H "nanomap-render" \
+            -B "$CURRENT_BRANCH" 2>&1) || true
+          echo "$result"
