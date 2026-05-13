@@ -49,8 +49,8 @@
 /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation
 	name = "Противорадиационный медипен"
 	icon_state = "medipen_rad"
-	desc = "Быстрый и безопасный способ противодействовать эффектам облучения даже через скафандры. Содержит йодид калия."
-	list_reagents = list("potass_iodide" = 15)
+	desc = "Быстрый и безопасный способ противодействовать эффектам облучения даже через скафандры. Содержит йодид калия и уголь."
+	list_reagents = list("potass_iodide" = 15, "charcoal" =5 )
 	instant_application = TRUE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin
@@ -127,16 +127,35 @@
 		var/obj/item/storage/pill_bottle/P = new /obj/item/storage/pill_bottle/medipen_case(src)
 		P.apply_wrapper_color(I)
 
+/obj/item/storage/pill_bottle/medipen_case/blueshield
+	name = "Специальный кейс для Синего щита"
+	wrapper_color = COLOR_CYAN_BLUE
+
+/obj/item/storage/pill_bottle/medipen_case/blueshield/populate_contents()
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/critical(src)
+
 /obj/item/storage/pill_bottle/medipen_case/radiation
 	name = "Кейс содержащий противорадиационные и токсинные автоинжекторы"
 	wrapper_color = COLOR_ORANGE
 
 /obj/item/storage/pill_bottle/medipen_case/radiation/populate_contents()
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/radiation(src)
+
+/obj/structure/closet/secure_closet/blueshield/populate_contents()
+	. = ..()
+	new /obj/item/storage/pill_bottle/medipen_case/blueshield(src)
 
 /obj/structure/closet/radiation/populate_contents()
 	. = ..()
