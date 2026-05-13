@@ -43,7 +43,7 @@ jobs:
 
           if git fetch origin nanomap-render; then
             git checkout nanomap-render
-            git merge "origin/$CURRENT_BRANCH" --strategy-option theirs -m "Merge branch '$CURRENT_BRANCH' into nanomap-render"
+            git merge "origin/$CURRENT_BRANCH" --strategy-option theirs --allow-unrelated-histories -m "Merge branch '$CURRENT_BRANCH' into nanomap-render"
           else
             git checkout -b nanomap-render
           fi
