@@ -215,3 +215,8 @@
 	component_parts += new /obj/item/stock_parts/micro_laser/quadultra(null)
 	component_parts += new /obj/item/stock_parts/capacitor/quadratic(null)
 	RefreshParts()
+
+/obj/item/bio_chip/mindshield/ussp
+	name = "soviet mindshield bio-chip"
+	desc = "Prevents enemies from taking over your mind."
+	hud_icon_state = "hud_imp_syndiloyal"
