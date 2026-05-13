@@ -1,6 +1,7 @@
 /obj/item/gun/energy/laser/awaymission_aeg
 	name = "Wireless Energy Gun"
 	desc = "An energy gun that recharges wirelessly during away missions. Does not work outside the gate."
+	ammo_type = list(/obj/item/ammo_casing/energy/laser)
 	icon = 'modular_ss220/awaymission_gun/icons/items/energy.dmi'
 	lefthand_file = 'modular_ss220/awaymission_gun/icons/inhands/lefthand.dmi'
 	righthand_file = 'modular_ss220/awaymission_gun/icons/inhands/righthand.dmi'
