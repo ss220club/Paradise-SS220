@@ -213,14 +213,14 @@ const BodyScannerMainDamage = (props) => {
         {mapTwoByTwo(damages, (d1, d2, i) => (
           <>
             <Table.Row color="label">
-              <Table.Cell>{d1[0]}:</Table.Cell>
-              <Table.Cell>{!!d2 && d2[0] + ':'}</Table.Cell>
+              <Table.Cell width="50%">{d1[0]}:</Table.Cell>
+              <Table.Cell width="50%">{!!d2 && d2[0] + ':'}</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>
+              <Table.Cell width="50%">
                 <BodyScannerMainDamageBar value={occupant[d1[1]]} marginBottom={i < damages.length - 2} />
               </Table.Cell>
-              <Table.Cell>{!!d2 && <BodyScannerMainDamageBar value={occupant[d2[1]]} />}</Table.Cell>
+              <Table.Cell width="50%">{!!d2 && <BodyScannerMainDamageBar value={occupant[d2[1]]} />}</Table.Cell>
             </Table.Row>
           </>
         ))}
