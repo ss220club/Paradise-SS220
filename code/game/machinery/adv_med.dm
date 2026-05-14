@@ -410,7 +410,7 @@
 		if("ejectify")
 			eject()
 		if("print_p")
-			visible_message(SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] щелкает и распечатывает лист бумаги."))
+			visible_message(SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] щёлкает и распечатывает лист бумаги."))
 			var/obj/item/paper/P = new /obj/item/paper(loc)
 			playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 			var/name = occupant ? occupant.name : "Unknown"
@@ -506,7 +506,7 @@
 			if(e == occupant.get_organ(lung_organ?.parent_organ) && occupant.is_lung_ruptured())
 				ailments |= "Разрыв лёгкого"
 			if(e.status & ORGAN_SPLINTED)
-				ailments |= "Перевязан"
+				ailments |= "Наложена шина"
 			if(e.status & ORGAN_BROKEN)
 				var/datum/wound/fracture = e.get_wound(/datum/wound/fracture)
 				ailments |= "[fracture.name]"
@@ -522,11 +522,11 @@
 				ailments |= "Открыт"
 			switch(e.germ_level)
 				if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-					ailments |= "Легкая инфекция"
+					ailments |= "Лёгкая инфекция"
 				if(INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-					ailments |= "Легкая инфекция+"
+					ailments |= "Лёгкая инфекция+"
 				if(INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-					ailments |= "Легкая инфекция++"
+					ailments |= "Лёгкая инфекция++"
 				if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
 					ailments |= "Острая инфекция"
 				if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
