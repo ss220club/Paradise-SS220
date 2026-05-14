@@ -144,7 +144,7 @@
 		to_chat(user, SPAN_NOTICE("Субъект не должен ничего держать в руках."))
 		return TRUE
 	if(H.has_buckled_mobs()) //mob attached to us
-		to_chat(user, SPAN_WARNING("[H] не поместится в [src.declent_ru(NOMINATIVE)] из-за грёбаного слайма, прилипшего к [H.ru_p_them()] голове."))
+		to_chat(user, SPAN_WARNING("[H] не поместится в [src.declent_ru(ACCUSATIVE)] из-за грёбаного слайма, прилипшего к [H.ru_p_them()] голове."))
 		return TRUE
 	if(H == user)
 		visible_message("[user] забирается в [src].")

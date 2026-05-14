@@ -247,7 +247,7 @@
 			else
 				message += SPAN_NOTICE("Режим Атмосферы: неизвестен ([milla[MILLA_INDEX_ATMOS_MODE]]), наберите кодеру.")
 		message += SPAN_NOTICE("Сверхпроводимость С/В/Ю/З: [milla[MILLA_INDEX_SUPERCONDUCTIVITY_NORTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_EAST]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_SOUTH]]/[milla[MILLA_INDEX_SUPERCONDUCTIVITY_WEST]]")
-		message += SPAN_NOTICE("Внутренняя теплоемкость на полу: [milla[MILLA_INDEX_INNATE_HEAT_CAPACITY]]")
+		message += SPAN_NOTICE("Внутренняя теплоёмкость на полу: [milla[MILLA_INDEX_INNATE_HEAT_CAPACITY]]")
 		message += SPAN_NOTICE("Горячая точка: [floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE]-T0C)] &deg;C ([floor(milla[MILLA_INDEX_HOTSPOT_TEMPERATURE])] K), [round(milla[MILLA_INDEX_HOTSPOT_VOLUME] * CELL_VOLUME, 1)] литров ([milla[MILLA_INDEX_HOTSPOT_VOLUME]]x)")
 		message += SPAN_NOTICE("Ветер: ([round(milla[MILLA_INDEX_WIND_X], 0.001)], [round(milla[MILLA_INDEX_WIND_Y], 0.001)])")
 		message += SPAN_NOTICE("Топлива сожжено в последний тик: [milla[MILLA_INDEX_FUEL_BURNT]] молей")

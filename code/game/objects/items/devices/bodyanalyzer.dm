@@ -226,11 +226,11 @@
 			open = "Открыто:"
 		switch(e.germ_level)
 			if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-				infected = "Легкая инфекция:"
+				infected = "Лёгкая инфекция:"
 			if(INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infected = "Легкая инфекция+:"
+				infected = "Лёгкая инфекция+:"
 			if(INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infected = "Легкая инфекция++:"
+				infected = "Лёгкая инфекция++:"
 			if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
 				infected = "Острая инфекция:"
 			if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)

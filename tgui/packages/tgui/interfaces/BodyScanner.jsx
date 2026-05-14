@@ -70,13 +70,13 @@ const reduceOrganStatus = (A) => {
 const germStatus = (i) => {
   if (i > 100) {
     if (i < 300) {
-      return 'легкая инфекция';
+      return 'лёгкая инфекция';
     }
     if (i < 400) {
-      return 'легкая инфекция+';
+      return 'лёгкая инфекция+';
     }
     if (i < 500) {
-      return 'легкая инфекция++';
+      return 'лёгкая инфекция++';
     }
     if (i < 700) {
       return 'острая инфекция';
