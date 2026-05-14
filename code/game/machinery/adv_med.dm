@@ -511,7 +511,7 @@
 				var/datum/wound/fracture = e.get_wound(/datum/wound/fracture)
 				ailments |= "[fracture.name]"
 			if(e.status & ORGAN_SALVED)
-				ailments |= "Salved"
+				ailments |= "Обработан мазью"
 			if(e.status & ORGAN_BURNT)
 				ailments |= "Критический ожог"
 			if(e.status & ORGAN_DEAD)
