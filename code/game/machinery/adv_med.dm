@@ -1,6 +1,6 @@
 /obj/machinery/bodyscanner
 	name = "body scanner"
-	desc = "Очень сложное устройство, которое обнаруживает большинство внутренних и внешних повреждений, а так же сообщает о наличие сторонних модификаций организма."
+	desc = "Очень сложное устройство, которое обнаруживает большинство внутренних и внешних повреждений, а также сообщает о наличии сторонних модификаций организма."
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "bodyscanner-open"
 	density = TRUE
@@ -20,11 +20,11 @@
 	. = ..()
 	if(occupant)
 		if(occupant.stat == DEAD)
-			. += SPAN_WARNING("Внутри вы видите [occupant.name]. [occupant.ru_p_they(TRUE)] мёртв!")
+			. += SPAN_WARNING("Внутри вы видите [occupant.name]. [occupant.ru_p_they(TRUE)] [genderize_ru(occupant.gender, "мёртв", "мертва", "мёртво", "мертвы")]!")
 		else
 			. += SPAN_NOTICE("Внутри вы видите [occupant.name].")
 	if(Adjacent(user))
-		. += SPAN_NOTICE("Нажмите <b>Alt-Клик</b> по сканеру чтобы достать субъекта. <b>Кликните и перетащите</b> модельку субъекта на сканер, чтобы положить его внутрь.")
+		. += SPAN_NOTICE("Нажмите <b>Alt-Клик</b> по сканеру чтобы достать субъекта. <b>Кликните и перетащите</b> субъекта на сканер, чтобы положить его внутрь.")
 
 
 /obj/machinery/bodyscanner/Destroy()
@@ -81,7 +81,7 @@
 			return ITEM_INTERACT_COMPLETE
 
 		if(TYPECAST_YOUR_SHIT.affecting.has_buckled_mobs()) //mob attached to us
-			to_chat(user, SPAN_WARNING("[TYPECAST_YOUR_SHIT.affecting] не поместится в [src.declent_ru(NOMINATIVE)] из-за грёбаного слайма, прилипшего к [TYPECAST_YOUR_SHIT.affecting.ru_p_them()] голове."))
+			to_chat(user, SPAN_WARNING("[TYPECAST_YOUR_SHIT.affecting] не поместится в [src.declent_ru(ACCUSATIVE)] из-за грёбаного слайма, прилипшего к [TYPECAST_YOUR_SHIT.affecting.ru_p_them()] голове."))
 			return ITEM_INTERACT_COMPLETE
 
 		var/mob/living/carbon/human/M = TYPECAST_YOUR_SHIT.affecting
@@ -430,7 +430,7 @@
 		var/t1
 		switch(occupant.stat) // obvious, see what their status is
 			if(0)
-				t1 = "В сознание"
+				t1 = "В сознании"
 			if(1)
 				t1 = "Без сознания"
 			else
@@ -476,7 +476,7 @@
 			found_disease = TRUE
 			break
 		if(found_disease)
-			dat += "<font color='red'>Обнаруженно заболевание.</font><br>"
+			dat += "<font color='red'>Обнаружено заболевание.</font><br>"
 
 		if(HAS_TRAIT(occupant, TRAIT_BLIND))
 			dat += "<font color='red'>Обнаружена катаракта.</font><br>"
@@ -501,7 +501,7 @@
 			var/list/ailments = list()
 
 			if(e.status & ORGAN_INT_BLEEDING)
-				ailments |= "Внутренне кровотечение"
+				ailments |= "Внутреннее кровотечение"
 			var/obj/item/organ/internal/lung_organ = occupant.get_int_organ_by_datum(ORGAN_DATUM_LUNGS)
 			if(e == occupant.get_organ(lung_organ?.parent_organ) && occupant.is_lung_ruptured())
 				ailments |= "Разрыв лёгкого"
@@ -579,7 +579,7 @@
 				if(INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_TWO + 399)
 					ailments |= "Острая инфекция++"
 				if(INFECTION_LEVEL_TWO + 400 to INFINITY)
-					ailments |= "Заражён"
+					ailments |= "Заражение"
 			dat += "<tr>"
 			dat += "<td>[I.name]</td>"
 			dat += "<td>[I.damage]</td>"

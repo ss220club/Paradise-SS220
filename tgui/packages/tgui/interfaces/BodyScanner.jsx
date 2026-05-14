@@ -247,7 +247,7 @@ const BodyScannerMainDamageBar = (props) => {
 const BodyScannerMainOrgansExternal = (props) => {
   if (props.organs.length === 0) {
     return (
-      <Section title="В">
+      <Section title="Внешние части тела">
         <Box color="label">N/A</Box>
       </Section>
     );
