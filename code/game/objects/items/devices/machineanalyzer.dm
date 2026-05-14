@@ -89,8 +89,8 @@
 					for(var/datum/robot_component/org in missing)
 						msgs += SPAN_WARNING("\t [capitalize(org.name)]: ПОТЕРЯН")
 
-				if(H.emagged && prob(5))
-					msgs += SPAN_WARNING("\t ОШИБКА: ВНУТРЕННИЕ СИСТЕМЫ СКОМПРОМЕТИРОВАНЫ")
+			if(H.emagged && prob(5))
+				msgs += SPAN_WARNING("\t ОШИБКА: ВНУТРЕННИЕ СИСТЕМЫ СКОМПРОМЕТИРОВАНЫ")
 
 		if("prosthetics")
 			var/mob/living/carbon/human/H = M

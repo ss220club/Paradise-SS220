@@ -1,10 +1,13 @@
 #define SIMPLE_HEALTH_SCAN 0
 #define DETAILED_HEALTH_SCAN 1
+
 /proc/get_chemscan_results(mob/living/user, mob/living/M)
 	var/msgs = list()
 	if(!ishuman(M))
 		return
+
 	var/hallucinating = HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING)
+
 	var/mob/living/carbon/human/H = M
 	var/has_real_or_fake_reagents = FALSE
 	if(length(H.reagents.reagent_list))
@@ -44,7 +47,7 @@
 	if(hallucinating && prob(10))
 		if(!length(H.reagents.addiction_list))
 			msgs += SPAN_DANGER("Субъект зависим от следующих реагентов:")
-			// try to add two random chems
+		// try to add two random chems
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
 				msgs += SPAN_DANGER("[GLOB.chemical_reagents_list[reagent_name]] Стадия: [rand(1, 5)]/5")
@@ -178,7 +181,6 @@
 	msgs += "Детализация повреждений: [SPAN_HEALTHSCAN_OXY("[OX]")] - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
 
 	if(H.timeofdeath && (H.stat == DEAD || (HAS_TRAIT(H, TRAIT_FAKEDEATH)) || probably_dead))
-
 		var/tod = probably_dead && (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(10)) ? world.time - rand(10, 5000) : H.timeofdeath  // Sure let's blow it out
 		msgs += SPAN_NOTICE("Время смерти: [station_time_timestamp("hh:mm:ss", tod)]")
 		var/tdelta = round(world.time - tod)

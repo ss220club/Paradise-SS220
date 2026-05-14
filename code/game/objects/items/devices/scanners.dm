@@ -33,15 +33,19 @@ SLIME SCANNER
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj, src)
+
 /obj/item/t_scanner/attack_self__legacy__attackchain(mob/user)
 	toggle_on()
+
 /obj/item/t_scanner/process()
 	if(!on)
 		STOP_PROCESSING(SSobj, src)
 		return null
 	scan()
+
 /obj/item/t_scanner/proc/scan()
 	t_ray_scan(loc)
+
 /proc/t_ray_scan(mob/viewer, flick_time = 8, distance = 3)
 	if(!ismob(viewer) || !viewer.client)
 		return
@@ -49,6 +53,7 @@ SLIME SCANNER
 	for(var/obj/O in orange(distance, viewer))
 		if(O.level != 1)
 			continue
+
 		if(O.invisibility == INVISIBILITY_MAXIMUM)
 			var/image/I = new(loc = get_turf(O))
 			var/mutable_appearance/MA = new(O)
@@ -61,6 +66,7 @@ SLIME SCANNER
 			t_ray_images += I
 	if(length(t_ray_images))
 		flick_overlay(t_ray_images, list(viewer.client), flick_time)
+
 ////////////////////////////////////////
 // MARK:	Reagent scanners
 ////////////////////////////////////////
@@ -82,26 +88,33 @@ SLIME SCANNER
 	var/scanning = TRUE
 	actions_types = list(/datum/action/item_action/print_report)
 	new_attack_chain = TRUE
+
 /obj/item/reagent_scanner/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	. = ..()
 	do_scan(target, user)
+
 /obj/item/reagent_scanner/ranged_interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	. = ..()
 	do_scan(target, user)
+
 /obj/item/reagent_scanner/proc/do_scan(atom/target, mob/living/user)
 	if(user.stat != CONSCIOUS)
 		return
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_WARNING("Вам не хватит ловкости, чтобы сделать это!"))
 		return
+
 	if(!target.reagents)
 		to_chat(user, SPAN_NOTICE("В [target.declent_ru(PREPOSITIONAL)] не обнаружено важных химических веществ."))
 		return
+
 	if(!length(target.reagents.reagent_list))
 		to_chat(user, SPAN_NOTICE("В [target.declent_ru(PREPOSITIONAL)] не обнаружено активных химических веществ."))
 		return
+
 	var/dat
 	var/blood_type = ""
+
 	var/one_percent = target.reagents.total_volume / 100
 	for(var/datum/reagent/R in target.reagents.reagent_list)
 		if(R.id != "blood")
@@ -109,32 +122,41 @@ SLIME SCANNER
 		else
 			blood_type = R.data["blood_type"]
 			dat += "<br>[TAB][SPAN_NOTICE("[blood_type ? "[blood_type]" : ""] [R.data["species"]] [R.name] [details ? ":([R.volume / one_percent]%)" : ""]")]"
+
 	to_chat(user, SPAN_NOTICE("Реагенты найдены: [dat]"))
 	datatoprint = dat
 	scanning = FALSE
+
 /obj/item/reagent_scanner/adv
 	name = "advanced reagent scanner"
 	icon_state = "adv_spectrometer"
 	details = TRUE
 	origin_tech = "magnets=4;biotech=3;plasmatech=3"
+
 /obj/item/reagent_scanner/proc/print_report(mob/user)
 	if(!istype(user))
 		return
+
 	if(scanning)
 		to_chat(user, SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] не содержит логов или уже используется."))
 		return
+
 	user.visible_message(SPAN_WARNING("[capitalize(src.declent_ru(NOMINATIVE))] скрипит и распечатывает лист бумаги."))
 	playsound(loc, 'sound/goonstation/machines/printer_thermal.ogg', 50, TRUE)
 	sleep(5 SECONDS)
+
 	var/obj/item/paper/P = new(get_turf(src))
 	P.name = "Отчёт от [src.declent_ru(GENITIVE)]: [station_time_timestamp()]"
 	P.info = "<center><b>[capitalize(src.declent_ru(NOMINATIVE))]</b></center><br><center>Анализ данных:</center><br><hr><br><b>Обнаруженные химические вещества:</b><br> [datatoprint]<br><hr>"
+
 	user.put_in_hands(P)
 	to_chat(user, SPAN_NOTICE("Отчёт распечатан. Логи удалены."))
 	datatoprint = ""
 	scanning = TRUE
+
 /obj/item/reagent_scanner/ui_action_click(mob/owner)
 	print_report(owner)
+
 ////////////////////////////////////////
 // MARK:	Slime scanner
 ////////////////////////////////////////

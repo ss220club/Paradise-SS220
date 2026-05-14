@@ -1,6 +1,6 @@
 /obj/machinery/bodyscanner
 	name = "body scanner"
-	desc = "Очень сложное устройство, которое обнаруживает большинство внутренних и внешних повреждений, а так сообщает же о наличие сторонних модификаций организма."
+	desc = "Очень сложное устройство, которое обнаруживает большинство внутренних и внешних повреждений, а так же сообщает о наличие сторонних модификаций организма."
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "bodyscanner-open"
 	density = TRUE
@@ -410,7 +410,7 @@
 		if("ejectify")
 			eject()
 		if("print_p")
-			visible_message(SPAN_NOTICE("[src.declent_ru(NOMINATIVE)] щелкает и распечатывает лист бумаги."))
+			visible_message(SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] щелкает и распечатывает лист бумаги."))
 			var/obj/item/paper/P = new /obj/item/paper(loc)
 			playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 			var/name = occupant ? occupant.name : "Unknown"
@@ -442,7 +442,7 @@
 		var/blood_percent =  round((occupant.blood_volume / BLOOD_VOLUME_NORMAL) * 100, 1)
 
 		extra_font = (occupant.blood_volume > 448 ? "<font color='blue'>" : "<font color='red'>")
-		dat += "[extra_font]\tУровень крови: [blood_percent]% ([occupant.blood_volume] units)</font><br>"
+		dat += "[extra_font]\tУровень крови: [blood_percent]% ([occupant.blood_volume] юнитов)</font><br>"
 
 		extra_font = (occupant.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT && occupant.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT ? "<font color='blue'>" : "<font color='red'>")
 		dat += "[extra_font]\tТемпература тела: [occupant.bodytemperature-T0C]&deg;C ([occupant.bodytemperature*1.8-459.67]&deg;F)</font><br>"
@@ -460,7 +460,7 @@
 		dat += "[extra_font]\tОжоги: [occupant.getFireLoss()]</font><br>"
 
 		extra_font = (occupant.radiation < 10 ? "<font color='blue'>" : "<font color='red'>")
-		dat += "[extra_font]\tУровень облучения: [occupant.radiation] rads</font><br>"
+		dat += "[extra_font]\tУровень облучения: [occupant.radiation] рад.</font><br>"
 
 		extra_font = (occupant.getCloneLoss() < 1 ? "<font color='blue'>" : "<font color='red'>")
 		dat += "[extra_font]\tУровень генетических повреждений: [occupant.getCloneLoss()]</font><br>"
@@ -493,7 +493,7 @@
 		dat += "<th style='width:30%'>Части тела</th>"
 		dat += "<th style='width:10%'>Ожоги</th>"
 		dat += "<th style='width:10%'>Ушибы</th>"
-		dat += "<th>Injuries</th>"
+		dat += "<th>Повреждения</th>"
 		dat += "</tr>"
 
 		for(var/obj/item/organ/external/e in occupant.bodyparts)
@@ -534,7 +534,7 @@
 				if(INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_TWO + 399)
 					ailments |= "Острая инфекция++"
 				if(INFECTION_LEVEL_TWO + 400 to INFINITY)
-					ailments |= "Заражён"
+					ailments |= "Заражение"
 
 			var/unknown_body = 0
 			for(var/I in e.embedded_objects)
@@ -554,8 +554,8 @@
 		dat += "<table border='1' style='width:100%'>"
 		dat += "<tr>"
 		dat += "<th style='width:30%'>Орган</th>"
-		dat += "<th style='width:10%'>Повреждения</th>"
-		dat += "<th>Травмы</th>"
+		dat += "<th style='width:10%'>Целостность</th>"
+		dat += "<th>Повреждения</th>"
 		dat += "</tr>"
 
 		for(var/obj/item/organ/internal/I in occupant.internal_organs)

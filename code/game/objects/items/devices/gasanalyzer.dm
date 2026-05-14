@@ -126,10 +126,10 @@
 		airs = list(air)
 	else
 		airs = target.return_analyzable_air()
-	if(!airs)
-		return FALSE
-	if(!islist(airs))
-		airs = list(airs)
+		if(!airs)
+			return FALSE
+		if(!islist(airs))
+			airs = list(airs)
 
 	var/list/message = list()
 	if(!silent && isliving(user))
