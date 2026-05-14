@@ -48,9 +48,9 @@
 		if(!length(H.reagents.addiction_list))
 			msgs += SPAN_DANGER("Субъект зависим от следующих реагентов:")
 		// try to add two random chems
-			for(var/i in 1 to rand(1, 2))
-				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += SPAN_DANGER("[GLOB.chemical_reagents_list[reagent_name]] Стадия: [rand(1, 5)]/5")
+		for(var/i in 1 to rand(1, 2))
+			var/reagent_name = pick(GLOB.chemical_reagents_list)
+			msgs += SPAN_DANGER("[GLOB.chemical_reagents_list[reagent_name]] Стадия: [rand(1, 5)]/5")
 
 	return msgs
 
