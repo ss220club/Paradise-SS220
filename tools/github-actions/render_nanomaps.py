@@ -1,5 +1,3 @@
-# this is only ran locally, not part of github actions
-
 from pathlib import Path
 import subprocess
 
@@ -11,6 +9,29 @@ SCALE = 8
 
 # Папка, для которой нужно добавлять суффикс 220
 MAP_FOLDER_220 = Path("_maps/map_files220")
+STATION_MAP_FOLDERS = {
+    Path("_maps/map_files/stations"),
+    Path("_maps/map_files220/stations"),
+}
+NANOMAPS_DIR = Path("icons/_nanomaps")
+RUIN_NANOMAPS_DIR = NANOMAPS_DIR / "ruins"
+
+
+def render_command(map_path: Path) -> list[str]:
+    dmm = DMM.from_file(map_path)
+    width = dmm.size.x * SCALE
+    height = dmm.size.y * SCALE
+    return [
+        str(RENDERER),
+        "minimap",
+        "--enable",
+        "nanomaps",
+        "-w",
+        str(width),
+        "-h",
+        str(height),
+        str(map_path),
+    ]
 
 
 if __name__ == "__main__":
@@ -18,23 +39,22 @@ if __name__ == "__main__":
 
     print("parsing DME...")
     dme = DME.from_file("paradise.dme")
-    # dmm_files = [str(x) for x in Path("_maps/map_files").glob("**/*.dmm")]
-    dmm_files = [str(x) for x in Path("_maps/map_files220").glob("**/*.dmm")]
 
     print("inspecting station maps...")
     for pth in dme.subtypesof("/datum/map"):
         td = dme.types[pth]
-        map_path = td.var_decl("map_path").const_val
-
-        # Проверяем, лежит ли файл в папке _maps/map_files220
-        suffix_220 = "220" if Path(map_path).parent == MAP_FOLDER_220 else ""
+        map_path = Path(td.var_decl("map_path").const_val)
+        if map_path.parent not in STATION_MAP_FOLDERS:
+            print(f"skipping non-station map: {map_path}")
+            continue
 
         technical_name = td.var_decl("technical_name").const_val
-        dmm = DMM.from_file(map_path)
-        width = dmm.size.x * SCALE
-        height = dmm.size.y * SCALE
-        commands.append([str(RENDERER), "minimap", "--enable", "nanomaps", "--width", str(width), "--height", str(height), str(map_path)])
-        commands.append(["mv", f"data/minimaps/{dmm.filepath.stem}{suffix_220}_nanomap_z1.png", f"icons/_nanomaps/stations/{technical_name}{suffix_220}_nanomap_z1.png"])
+        commands.append(render_command(map_path))
+        commands.append([
+            "mv",
+            f"data/nanomaps/{map_path.stem}_nanomap_z1.png",
+            f"icons/_nanomaps/{technical_name}_nanomap_z1.png",
+        ])
 
     print("inspecting ruins...")
     for pth in dme.subtypesof("/datum/map_template/ruin"):
@@ -45,16 +65,21 @@ if __name__ == "__main__":
 
         prefix = td.var_decl("prefix").const_val
         suffix = td.var_decl("suffix").const_val
+        if not prefix or not suffix:
+            continue
+
         map_path = Path(prefix) / suffix
+        if not map_path.exists():
+            print(f"skipping missing ruin map: {map_path}")
+            continue
 
-        # Проверяем, лежит ли файл в папке _maps/map_files220
-        suffix_220 = "220" if Path(map_path).parent == MAP_FOLDER_220 else ""
-
-        dmm = DMM.from_file(map_path)
-        width = dmm.size.x * SCALE
-        height = dmm.size.y * SCALE
-        commands.append([str(RENDERER), "minimap", "--enable", "nanomaps", "--width", str(width), "--height", str(height), str(map_path)])
-        commands.append(["mv", f"data/minimaps/{dmm.filepath.stem}{suffix_220}_nanomap_z1.png", f"icons/_nanomaps/ruins/{ruin_id}{suffix_220}_nanomap_z1.png"])
+        suffix_220 = "220" if MAP_FOLDER_220 in map_path.parents else ""
+        commands.append(render_command(map_path))
+        commands.append([
+            "mv",
+            f"data/nanomaps/{map_path.stem}_nanomap_z1.png",
+            f"icons/_nanomaps/ruins/{ruin_id}{suffix_220}_nanomap_z1.png",
+        ])
 
     print("executing...")
     for command in commands:

@@ -504,6 +504,10 @@
 		text = replacetext(text, "\[cell\]", 	"")
 		text = replacetext(text, "\[logo\]", 	"")
 		text = replacetext(text, "\[syndielogo\]", 	"")
+		// SS220 EDIT START -- Добавление лого ТСФ и СССП
+		text = replacetext(text, "\[tsflogo\]", 	"")
+		text = replacetext(text, "\[ussplogo\]", 	"")
+		// SS220 EDIT END
 
 	if(istype(P, /obj/item/toy/crayon))
 		text = "<font face=\"[crayonfont]\" color=[P ? P.color : "black"]><b>[text]</b></font>"
@@ -522,6 +526,10 @@
 		text = replacetext(text, "\[cell\]",	"<td>")
 		text = replacetext(text, "\[logo\]",	"&ZeroWidthSpace;<img src='ntlogo.png'>")
 		text = replacetext(text, "\[syndielogo\]", 	"&ZeroWidthSpace;<img src='syndielogo.png'>")
+		// SS220 EDIT START -- Добавление лого ТСФ и СССП
+		text = replacetext(text, "\[tsflogo\]",	"&ZeroWidthSpace;<img src='tsflogo.png'>")
+		text = replacetext(text, "\[ussplogo\]", "&ZeroWidthSpace;<img src='ussplogo.png'>")
+		// SS220 EDIT END
 		text = replacetext(text, "\[time\]",	"[station_time_timestamp()]") // TO DO
 		text = replacetext(text, "\[date\]",	"[GLOB.current_date_string]")
 		text = replacetext(text, "\[station\]", "[SSmapping.map_datum.fluff_name]")
@@ -605,6 +613,10 @@
 	text = replacetext(text, "<td>",					"\[cell\]")
 	text = replacetext(text, "<img src='ntlogo.png'>",	"\[logo\]")
 	text = replacetext(text, "<img src='syndielogo.png'>",	"\[syndielogo\]")
+	// SS220 EDIT START -- Добавление лого ТСФ и СССП
+	text = replacetext(text, "<img src='tsflogo.png'>",	"\[tsflogo\]")
+	text = replacetext(text, "<img src='ussplogo.png'>",	"\[ussplogo\]")
+	// SS220 EDIT END
 	return text
 
 /datum/html_split_holder

@@ -45,6 +45,10 @@
 	muzzle_flash_range = 2
 	delay = 1.2 SECONDS
 
+/obj/item/ammo_casing/energy/laser/practice
+	projectile_type = /obj/projectile/beam/training_laser
+	delay = 1.2 SECONDS
+
 //recoil
 /obj/item/gun/projectile/shotgun
 	recoil = 1.4
