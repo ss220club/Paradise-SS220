@@ -9,3 +9,550 @@
 
 /datum/uplink_item/dangerous/chainsaw
 	excludefrom = list()
+
+//SS220 Uplink cost changes
+
+/datum/uplink_item/dangerous/revolver
+	name = "Syndicate .357 Revolver"
+	reference = "SR"
+	desc = "A brutally simple syndicate revolver that fires .357 Magnum cartridges and has 7 chambers. Comes with a spare speed loader."
+	item = /obj/item/storage/box/syndie_kit/revolver
+	cost = 70
+	surplus = 50
+
+/datum/uplink_item/dangerous/sword
+	name = "Energy Sword"
+	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be pocketed when inactive. Activating it produces a loud, distinctive noise."
+	reference = "ES"
+	item = /obj/item/melee/energy/sword/saber
+	cost = 45
+
+/datum/uplink_item/dangerous/dsword
+	name = "Double Energy Sword"
+	desc = "A double-bladed energy sword. More damaging than a standard energy sword, and automatically parries incoming energy weapons fire. Bulk discount applied."
+	reference = "DSRD"
+	item = /obj/item/dualsaber
+	cost = 70
+
+/datum/uplink_item/dangerous/powerfist
+	name = "Power Fist"
+	desc = "The Power Fist is a metal gauntlet with a built-in piston-ram powered by an external gas supply. \
+		Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
+		Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
+		deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
+	reference = "PF"
+	item = /obj/item/melee/powerfist
+	cost = 60
+
+/datum/uplink_item/dangerous/chainsaw
+	name = "Chainsaw"
+	desc = "A high powered chainsaw for cutting up ...you know...."
+	reference = "CH"
+	item = /obj/item/chainsaw/syndie
+	cost = 70
+	surplus = 0 // This has caused major problems with un-needed chainsaw massacres. Bwoink bait.
+	excludefrom = list(UPLINK_TYPE_NUCLEAR)
+	can_discount = FALSE // Too gamer.
+
+/datum/uplink_item/dangerous/universal_gun_kit
+	name = "Universal Self Assembling Gun Kit"
+	desc = "A universal gun kit, that can be combined with any weapon kit to make a functioning RND gun of your own. Uses built-in hex keys to self assemble, just combine the kits by hitting them together."
+	reference = "IKEA"
+	item = /obj/item/weaponcrafting/gunkit/universal_gun_kit
+	cost = 10
+
+/datum/uplink_item/dangerous/porta_turret
+	name = "Portable Turret"
+	desc = "A pop-up Syndicate turret that will shoot anyone who didn't prime the grenade. The turret cannot be moved after it's deployed."
+	reference = "MIS"
+	item = /obj/item/grenade/turret
+	cost = 10
+
+////////////////////////////////////////
+// MARK: AMMUNITION
+////////////////////////////////////////
+
+/datum/uplink_item/ammo
+	category = "Ammunition"
+	surplus = 0 // Getting these in a discount or surplus is not a good time.
+	can_discount = FALSE
+
+/datum/uplink_item/ammo/pistol
+	name = "Stechkin - 10mm Magazine"
+	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are cheap but around half as effective as .357"
+	reference = "10MM"
+	item = /obj/item/ammo_box/magazine/m10mm
+	cost = 2
+
+/datum/uplink_item/ammo/pistolap
+	name = "Stechkin - 10mm Armour Piercing Magazine"
+	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are less effective at injuring the target but penetrate protective gear."
+	reference = "10MMAP"
+	item = /obj/item/ammo_box/magazine/m10mm/ap
+	cost = 5
+
+/datum/uplink_item/ammo/pistolfire
+	name = "Stechkin - 10mm Incendiary Magazine"
+	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with incendiary rounds which ignite the target."
+	reference = "10MMFIRE"
+	item = /obj/item/ammo_box/magazine/m10mm/fire
+	cost = 10
+
+/datum/uplink_item/ammo/pistolhp
+	name = "Stechkin - 10mm Hollow Point Magazine"
+	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds which are more damaging but ineffective against armor."
+	reference = "10MMHP"
+	item = /obj/item/ammo_box/magazine/m10mm/hp
+	cost = 5
+
+////////////////////////////////////////
+// MARK: STEALTHY WEAPONS
+////////////////////////////////////////
+
+/datum/uplink_item/stealthy_weapons
+	category = "Stealthy and Inconspicuous Weapons"
+
+/datum/uplink_item/stealthy_weapons/garrote
+	name = "Fiber Wire Garrote"
+	desc = "A length of fiber wire between two wooden handles, perfect for the discrete assassin. This weapon, when used on a target from behind \
+			will instantly put them in your grasp and silence them, as well as causing rapid suffocation. Does not work on those who do not need to breathe."
+	item = /obj/item/garrote
+	reference = "GAR"
+	cost = 15
+
+/datum/uplink_item/stealthy_weapons/throwingweapons
+	name = "Box of Throwing Weapons"
+	desc = "A box of shurikens and reinforced bolas from ancient Earth martial arts. They are highly effective \
+			throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
+	reference = "STK"
+	item = /obj/item/storage/box/syndie_kit/throwing_weapons
+	cost = 15
+
+/datum/uplink_item/stealthy_weapons/foampistol
+	name = "Toy Gun (with Stun Darts)"
+	desc = "An innocent looking toy pistol designed to fire foam darts. Comes loaded with riot grade darts, to incapacitate a target."
+	reference = "FSPI"
+	item = /obj/item/gun/projectile/automatic/toy/pistol/riot
+	cost = 10
+	surplus = 5
+
+/datum/uplink_item/stealthy_weapons/false_briefcase
+	name = "False Bottomed Briefcase"
+	desc = "A modified briefcase capable of storing and firing a gun under a false bottom. Use a screwdriver to pry away the false bottom and make modifications. Distinguishable upon close examination due to the added weight."
+	reference = "FBBC"
+	item = /obj/item/storage/briefcase/false_bottomed
+	cost = 5
+
+/datum/uplink_item/stealthy_weapons/rsg
+	name = "Rapid Syringe Gun"
+	desc = "A Syndicate rapid syringe gun able to fill and fire syringes automatically from an internal reagent reservoir. Comes pre-loaded with 7 empty syringes, and has a maximum capacity of 14 syringes and 300u of reagents."
+	reference = "RSG"
+	item = /obj/item/gun/syringe/rapidsyringe/preloaded/half
+	cost = 50
+
+/datum/uplink_item/stealthy_weapons/dehy_carp
+	name = "Dehydrated Space Carp"
+	desc = "Just add water to make your very own hostile to everything space carp. It looks just like a plushie. The first person to squeeze it will be registered as its owner, who it will not attack. If no owner is registered, it'll just attack everyone."
+	reference = "DSC"
+	item = /obj/item/toy/plushie/carpplushie/dehy_carp
+	cost = 2
+
+/datum/uplink_item/stealthy_weapons/knuckleduster
+	name = "Syndicate Knuckleduster"
+	desc = "A straightforward and fairly concealable melee weapon for bludgeoning someone to death in brutal fashion. This one is designed specifically to cause severe organ damage to the victim."
+	reference = "SKD"
+	item = /obj/item/melee/knuckleduster/syndie
+	cost = 5
+
+////////////////////////////////////////
+// MARK: GRENADES AND EXPLOSIVES
+////////////////////////////////////////
+
+/datum/uplink_item/explosives/syndicate_minibomb
+	name = "Syndicate Minibomb"
+	desc = "The minibomb is a grenade with a five-second fuse."
+	reference = "SMB"
+	item = /obj/item/grenade/syndieminibomb
+	cost = 20
+
+/datum/uplink_item/explosives/pizza_bomb
+	name = "Pizza Bomb"
+	desc = "A pizza box with a bomb taped inside of it. The timer needs to be set by opening the box; afterwards, opening the box again will trigger the detonation."
+	reference = "PB"
+	item = /obj/item/pizzabox/pizza_bomb
+	cost = 15
+	surplus = 80
+
+/datum/uplink_item/explosives/emp
+	name = "EMP Grenades and bio-chip implanter Kit"
+	desc = "A box that contains two EMP grenades and an EMP implant with 2 uses. Useful to disrupt communication, \
+			security's energy weapons, and silicon lifeforms when you're in a tight spot."
+	reference = "EMPK"
+	item = /obj/item/storage/box/syndie_kit/emp
+	cost = 15
+
+/datum/uplink_item/explosives/emp/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		cost *= 3
+
+/datum/uplink_item/explosives/targrenade
+	name = "Sticky Tar Grenade"
+	desc = "A grenade filled with aerosols and sticky tar. \
+			Will release a plume of smoke that applies tar to a wide area, severely slowing down movement. Makes for the ultimate getaway!"
+	reference = "TARG"
+	item = /obj/item/grenade/chem_grenade/tar
+	cost = 5
+
+////////////////////////////////////////
+// MARK: STEALTHY TOOLS
+////////////////////////////////////////
+
+/datum/uplink_item/stealthy_tools/chamsechud
+	name = "Chameleon Security HUD"
+	desc = "A stolen Nanotrasen Security HUD with Syndicate chameleon technology implemented into it. Similarly to a chameleon jumpsuit, the HUD can be morphed into various other eyewear, while retaining the HUD qualities when worn."
+	reference = "CHHUD"
+	item = /obj/item/clothing/glasses/hud/security/chameleon
+	cost = 5
+
+/datum/uplink_item/stealthy_tools/agent_card
+	name = "Agent ID Card"
+	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and can copy access from other identification cards. The access is cumulative, so scanning one card does not erase the access gained from another."
+	reference = "AIDC"
+	item = /obj/item/card/id/syndicate
+	cost = 5
+
+/datum/uplink_item/stealthy_tools/chameleon_proj
+	name = "Chameleon-Projector"
+	desc = "Projects an image across a user, disguising them as an object scanned with it, as long as they don't move the projector from their hand. The disguised user cannot run and projectiles pass over them."
+	reference = "CP"
+	item = /obj/item/chameleon
+	cost = 15
+
+/datum/uplink_item/stealthy_tools/camera_bug
+	name = "Camera Bug"
+	desc = "Enables you to view all cameras on the network to track a target. Also has 5 sticky hidden cameras, allowing you remote view of any object you can stick a camera on."
+	reference = "CB"
+	item = /obj/item/storage/box/syndie_kit/camera_bug
+	cost = 5
+	surplus = 90
+
+/datum/uplink_item/stealthy_tools/dnascrambler
+	name = "DNA Scrambler"
+	desc = "A syringe with one injection that randomizes appearance and name upon use. A cheaper but less versatile alternative to an agent card and voice changer."
+	reference = "DNAS"
+	item = /obj/item/dnascrambler
+	cost = 5
+
+/datum/uplink_item/stealthy_tools/emplight
+	name = "EMP Flashlight"
+	desc = "A small, self-charging, short-ranged EMP device disguised as a flashlight. \
+		Useful for disrupting headsets, cameras, and borgs during stealth operations."
+	reference = "EMPL"
+	item = /obj/item/flashlight/emp
+	cost = 10
+	surplus = 30
+
+/datum/uplink_item/stealthy_tools/emplight/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		cost *= 2.5
+
+/datum/uplink_item/stealthy_tools/cutouts
+	name = "Adaptive Cardboard Cutouts"
+	desc = "These cardboard cutouts are coated with a thin material that prevents discoloration and makes the images on them appear more lifelike. This pack contains three as well as a \
+	spraycan for changing their appearances."
+	reference = "ADCC"
+	item = /obj/item/storage/box/syndie_kit/cutouts
+	cost = 1
+	surplus = 20
+
+////////////////////////////////////////
+// MARK: DEVICES AND TOOLS
+////////////////////////////////////////
+
+/datum/uplink_item/device_tools
+	category = "Devices and Tools"
+	abstract = 1
+
+/datum/uplink_item/device_tools/emag
+	name = "Cryptographic Sequencer"
+	desc = "The cryptographic sequencer, also known as an emag, is a small card that unlocks hidden functions in electronic devices, subverts intended functions and characteristically breaks security mechanisms."
+	reference = "EMAG"
+	item = /obj/item/card/emag
+	cost = 30
+
+/datum/uplink_item/device_tools/access_tuner
+	name = "Access Tuner"
+	desc = "The access tuner is a small device that can interface with airlocks from range. It takes a few seconds to connect and can change the bolt state, open the door, or toggle emergency access."
+	reference = "HACK"
+	item = /obj/item/door_remote/omni/access_tuner
+	cost = 20
+
+/datum/uplink_item/device_tools/surgerybag
+	name = "Syndicate Surgery Duffel Bag"
+	desc = "The Syndicate surgery duffel bag comes with a full set of surgery tools, a straightjacket and a muzzle. The bag itself is also made of very light materials and won't slow you down while it is equipped."
+	reference = "SSDB"
+	item = /obj/item/storage/backpack/duffel/syndie/med/surgery
+	cost = 5
+
+/datum/uplink_item/device_tools/bonerepair
+	name = "Prototype Nanite Autoinjector"
+	desc = "Stolen prototype full body repair nanites. On injection it will shut down body systems as it revitilizes limbs and organs. Heals organics organs, cybernetic organs, and limbs to fully operational conditions."
+	reference = "NCAI"
+	item = /obj/item/reagent_containers/hypospray/autoinjector/nanocalcium
+	cost = 5
+
+/datum/uplink_item/device_tools/syndicate_teleporter
+	name = "Experimental Syndicate Teleporter"
+	desc = "The Syndicate teleporter is a handheld device that teleports the user 4-8 meters forward. \
+			Beware, teleporting into a wall will make the teleporter do a parallel emergency teleport, \
+			but if that emergency teleport fails, it will kill you. \
+			Has 4 charges, recharges, warranty voided if exposed to EMP. \
+			Comes with free chameleon mesons, to help you stay stylish while seeing through walls."
+	reference = "TELE"
+	item = /obj/item/storage/box/syndie_kit/teleporter
+	cost = 50
+
+/datum/uplink_item/device_tools/organ_extractor
+	name = "Organ Extractor"
+	desc = "A device that can remove organs or cybernetic implants from a target, and stores them inside. \
+	Stored organs can be implanted into the user, or into other targets. Synthesizes chemicals to keep the organs fresh."
+	reference = "OREX"
+	item = /obj/item/organ_extractor
+	cost = 10
+
+/datum/uplink_item/device_tools/c_foam_launcher
+	name = "C-Foam Launcher"
+	desc = "A gun that shoots blobs of foam. Will block airlocks, and slow down humanoids. Not rated for xenomorph usage."
+	reference = "CFOAM"
+	item = /obj/item/gun/projectile/c_foam_launcher
+	cost = 15
+
+/datum/uplink_item/device_tools/tar_spray
+	name = "Sticky Tar Applicator"
+	desc = "A spray bottle containing an extremely viscous fluid that will leave behind tar whenever it is sprayed, greatly slowing down anyone who tries to walk over it. \
+	Comes with 10 uses worth of fluid and cannot be refilled."
+	reference = "TAR"
+	item = /obj/item/reagent_containers/spray/sticky_tar
+	cost = 10
+
+/datum/uplink_item/device_tools/binary
+	name = "Binary Translator Key"
+	desc = "A key, that when inserted into a radio headset, allows you to listen to and talk with artificial intelligences and cybernetic organisms in binary. To talk on the binary channel, type :+ before your radio message."
+	reference = "BITK"
+	item = /obj/item/encryptionkey/binary
+	cost = 10
+	surplus = 75
+
+/datum/uplink_item/device_tools/cipherkey
+	name = "Syndicate Encryption Key"
+	desc = "A key, that when inserted into a radio headset, allows you to listen to all station department channels as well as talk on an encrypted Syndicate channel."
+	reference = "SEK"
+	item = /obj/item/encryptionkey/syndicate
+	cost = 5 //Nowhere near as useful as the Binary Key!
+	surplus = 75
+
+/datum/uplink_item/device_tools/singularity_beacon
+	name = "Power Beacon"
+	desc = "When screwed to wiring attached to an electric grid and activated, this large device pulls any \
+			active gravitational singularities. This will not work when the engine is still \
+			in containment. Because of its size, it cannot be carried. Ordering this \
+			sends you a small beacon that will teleport the larger beacon to your location upon activation."
+	reference = "SNGB"
+	item = /obj/item/beacon/syndicate
+	cost = 10
+	surplus = 0
+	hijack_only = TRUE //This is an item only useful for a hijack traitor, as such, it should only be available in those scenarios.
+
+/datum/uplink_item/device_tools/jammer
+	name = "Radio Jammer"
+	desc = "When turned on this device will scramble any outgoing radio communications near you, making them hard to understand."
+	reference = "RJ"
+	item = /obj/item/jammer
+	cost = 15
+
+/datum/uplink_item/device_tools/decoy_nade
+	name = "Decoy Grenade Kit"
+	desc = "A box of five grenades that can be configured to reproduce many suspicious sounds at varying rates."
+	reference = "DCY"
+	item = /obj/item/storage/box/syndie_kit/decoy
+	cost = 5
+
+////////////////////////////////////////
+// MARK: SPACE SUITS AND HARDSUITS
+////////////////////////////////////////
+
+/datum/uplink_item/suits/modsuit_elite
+	name = "Syndicate Elite MODsuit"
+	desc = "An advanced MODsuit with superior armor to the standard Syndicate MODsuit. \
+	Nanotrasen crew who spot these suits are known to *really* panic."
+	reference = "MSE"
+	item = /obj/item/mod/control/pre_equipped/traitor_elite
+	cost = 60 //45 to start, no holopara / ebow.
+	surplus = 60
+	excludefrom = list(UPLINK_TYPE_NUCLEAR)
+
+/datum/uplink_item/suits/space_suit
+	name = "Syndicate Space Suit"
+	desc = "This armoured red and black Syndicate space suit is less encumbering than Nanotrasen variants, \
+			fits inside bags, and has a weapon slot. Comes packaged with internals. Nanotrasen crewmembers are trained to report red space suit \
+			sightings, however. "
+	reference = "SS"
+	item = /obj/item/storage/box/syndie_kit/space
+	cost = 15
+
+/datum/uplink_item/suits/thermal
+	name = "MODsuit Thermal Visor Module"
+	desc = "A visor for a MODsuit. Lets you see living beings through walls. Also provides night vision."
+	reference = "MSTV"
+	item = /obj/item/mod/module/visor/thermal
+	cost = 10 // Don't forget, you need to get a modsuit to go with this
+
+/datum/uplink_item/suits/plate_compression
+	name = "MODsuit Plate Compression Module"
+	desc = "A MODsuit module that lets the suit compress into a smaller size. Not compatible with storage modules, \
+	you will have to take that module out first."
+	reference = "MSPC"
+	item = /obj/item/mod/module/plate_compression
+	cost = 5
+
+/datum/uplink_item/suits/chameleon_module
+	name = "MODsuit Chameleon Module"
+	desc = "A module using chameleon technology to disguise an undeployed MODsuit as another object. Note: the disguise will not work once the MODsuit is deployed, but can be toggled again when retracted."
+	reference = "MSCM"
+	item = /obj/item/mod/module/chameleon
+	cost = 5
+
+/datum/uplink_item/suits/smoke_grenade
+	name = "Smoke Grenade Module"
+	desc = "A module that dispenses primed smoke grenades to disperse crowds."
+	reference = "SGM"
+	item = /obj/item/mod/module/dispenser/smoke
+	cost = 5
+
+////////////////////////////////////////
+// MARK: IMPLANTS
+////////////////////////////////////////
+
+/datum/uplink_item/bio_chips/freedom
+	name = "Freedom Bio-chip"
+	desc = "A bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can be activated up to 4 times."
+	reference = "FI"
+	item = /obj/item/bio_chip_implanter/freedom
+	cost = 20
+
+/datum/uplink_item/bio_chips/protofreedom
+	name = "Prototype Freedom Bio-chip"
+	desc = "A prototype bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can only be activated a singular time."
+	reference = "PFI"
+	item = /obj/item/bio_chip_implanter/freedom/prototype
+	cost = 5
+
+/datum/uplink_item/bio_chips/storage
+	name = "Storage Bio-chip"
+	desc = "A bio-chip injected into the body, and later activated at the user's will. It will open a small subspace pocket capable of storing two items."
+	reference = "ESI"
+	item = /obj/item/bio_chip_implanter/storage
+	cost = 30
+
+/datum/uplink_item/bio_chips/mindslave
+	name = "Mindslave Bio-chip"
+	desc = "A box containing a bio-chip implanter filled with a mindslave bio-chip that when injected into another person makes them loyal to you and your cause, unless of course they're already implanted by someone else. Loyalty ends if the implant is no longer in their system."
+	reference = "MI"
+	item = /obj/item/bio_chip_implanter/traitor
+	cost = 40
+
+/datum/uplink_item/bio_chips/basic_adrenal
+	name = "Basic-Adrenal Bio-chip"
+	desc = "A single-use bio-chip injected into the body and later activated manually to inject a chemical cocktail. This one has a worse healing effect than regular adrenaline. It can be activated once for 3/4 of the effect of the original."
+	reference = "BAI"
+	item = /obj/item/bio_chip_implanter/basic_adrenalin
+	cost = 15
+	can_discount = FALSE
+
+/datum/uplink_item/bio_chips/proto_adrenal
+	name = "Proto-Adrenal Bio-chip"
+	desc = "A old prototype of the Adrenalin implant, that grants the user 4 seconds of antistun, getting them back on their feet instantly once, but nothing more. Speed and healing sold separately."
+	reference = "PAI"
+	item = /obj/item/bio_chip_implanter/proto_adrenalin
+	cost = 5
+
+////////////////////////////////////////
+// MARK: CYBERNETICS
+////////////////////////////////////////
+
+/datum/uplink_item/cyber_implants/hackerman_deck
+	name = "Binyat Wireless Hacking System Autoimplanter"
+	desc = "This implant will allow you to wirelessly emag from a distance. However, it will slightly burn you \
+	on use, and will be quite visual as you are emaging the object. \
+	Will not show on unupgraded body scanners. Incompatible with the Qani-Laaca Sensory Computer."
+	reference = "HKR"
+	item = /obj/item/autosurgeon/organ/syndicate/oneuse/hackerman_deck
+	cost = 15 // Probably slightly less useful than an emag with heat / cooldown, but I am not going to make it cheaper or everyone picks it over emag
+
+/datum/uplink_item/cyber_implants/razorwire
+	name = "Razorwire Spool Arm Implant Autoimplanter"
+	desc = "A long length of monomolecular filament, built into the back of your hand. \
+		Impossibly thin and flawlessly sharp, it should slice through organic materials with no trouble; \
+		even from a few steps away. However, results against anything more durable will heavily vary."
+	reference = "RZR"
+	item = /obj/item/autosurgeon/organ/syndicate/oneuse/razorwire
+	cost = 15
+
+/datum/uplink_item/cyber_implants/mantis_kit
+	name = "'Naginata' Mantis Blades Kit"
+	desc = "A pair of devastating 'Naginata' concealable mantis blades, which retract into the arms of the user. \
+	Their monomolecular edges will easily tear through flesh and armor alike, and can even pry open airlocks when used together. \
+	When both blades are equipped, they enable the user to perform double attacks. \
+	Can be used to parry incoming melee attacks."
+	reference = "MBK"
+	item = /obj/item/storage/box/syndie_kit/syndie_mantis
+	cost = 35
+	surplus = 0
+	can_discount = FALSE
+	excludefrom = list(UPLINK_TYPE_NUCLEAR)
+
+////////////////////////////////////////
+// MARK: BUNDLES AND TELECRYSTALS
+////////////////////////////////////////
+
+/datum/uplink_item/bundles_tc
+	category = "Bundles and Telecrystals"
+	surplus = 0
+	can_discount = FALSE
+
+/datum/uplink_item/bundles_tc/telecrystal
+	name = "Raw Telecrystal"
+	desc = "Telecrystal in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	reference = "RTC"
+	item = /obj/item/stack/telecrystal
+	cost = 1
+
+/datum/uplink_item/bundles_tc/telecrystal/five
+	name = "5 Raw Telecrystals"
+	desc = "Five telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	reference = "RTCF"
+	item = /obj/item/stack/telecrystal/five
+	cost = 5
+
+/datum/uplink_item/bundles_tc/telecrystal/twenty
+	name = "20 Raw Telecrystals"
+	desc = "Twenty telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	reference = "RTCT"
+	item = /obj/item/stack/telecrystal/twenty
+	cost = 20
+
+/datum/uplink_item/bundles_tc/telecrystal/fifty
+	name = "50 Raw Telecrystals"
+	desc = "Fifty telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	reference = "RTCB"
+	item = /obj/item/stack/telecrystal/fifty
+	cost = 50
+
+/datum/uplink_item/bundles_tc/telecrystal/hundred
+	name = "100 Raw Telecrystals"
+	desc = "One-hundred telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	reference = "RTCH"
+	item = /obj/item/stack/telecrystal/hundred
+	cost = 100
