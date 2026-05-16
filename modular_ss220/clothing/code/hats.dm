@@ -48,7 +48,7 @@
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/hats.dmi',
 	)
 
-/obj/item/clothing/head/towel/activate_self(obj/item/S, mob/user, params)
+/obj/item/clothing/head/towel/item_interaction(obj/item/S, mob/user, params)
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S

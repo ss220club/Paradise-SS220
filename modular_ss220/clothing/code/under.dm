@@ -46,7 +46,7 @@
 		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
 	)
 
-/obj/item/clothing/under/towel/activate_self(obj/item/S, mob/user, params)
+/obj/item/clothing/under/towel/item_interaction(obj/item/S, mob/user, params)
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S
