@@ -36,6 +36,7 @@
 
 /obj/item/gun/energy/laser/awaymission_aeg/rnd
 	w_class = WEIGHT_CLASS_NORMAL
+	ammo_type = list(/obj/item/ammo_casing/energy/laser) //correсt projectile type
 
 //lasergun change
 /obj/item/ammo_casing/energy/lasergun_hs
