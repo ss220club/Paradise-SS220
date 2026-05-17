@@ -11,7 +11,9 @@
 		"large_stamp-navytsf.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-navytsf.png',
 		"large_stamp-reptsf.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-reptsf.png',
 		"large_stamp-usspcom.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-usspcom.png',
-		"large_stamp-ussprep.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ussprep.png'
+		"large_stamp-ussprep.png"	= 'modular_ss220/aesthetics/stamps/icons/paper_icons/large_stamp-ussprep.png',
+		"tsflogo.png" = 'modular_ss220/aesthetics/stamps/icons/paper_icons/tsflogo.png',
+		"ussplogo.png" = 'modular_ss220/aesthetics/stamps/icons/paper_icons/ussplogo.png'
 	)
 	..()
 

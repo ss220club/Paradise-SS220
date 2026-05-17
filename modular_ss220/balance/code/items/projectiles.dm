@@ -37,6 +37,10 @@
 	impact_light_color_override = LIGHT_COLOR_FIRE
 	forcedodge = 0
 
+/obj/projectile/beam/training_laser
+	parent_type = /obj/projectile/beam/player_laser
+	damage = 0
+
 /obj/projectile/beam/disabler
 	damage = 20
 	icon_state = "ice_2"

@@ -2,21 +2,21 @@
 	name = "intern jumpsuit"
 	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
 	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
-	icon_state = "intern_s"
+	icon_state = "intern"
 	sprite_sheets = null
 
 /obj/item/clothing/under/rank/medical/doctor/intern/skirt
 	name = "intern jumpskirt"
-	icon_state = "internf_s"
+	icon_state = "internf"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/medical/doctor/intern/assistant
 	name = "medical assistant jumpsuit"
-	icon_state = "med_ass_s"
+	icon_state = "med_ass"
 
 /obj/item/clothing/under/rank/medical/doctor/intern/assistant/skirt
 	name = "medical assistant jumpskirt"
-	icon_state = "med_ass_f_s"
+	icon_state = "med_ass_f"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/medical/scrubs/green/light
