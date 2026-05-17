@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 //Discounts (dynamically filled above)
 /datum/uplink_item/discounts
-	category = "Discounted Gear"
+	category = "Снаряжение со скидкой"
 
 ////////////////////////////////////////
 // MARK: DANGEROUS WEAPONS
