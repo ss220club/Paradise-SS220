@@ -269,41 +269,41 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/ammo
-	category = "Ammunition"
+	category = "Боеприпасы"
 	surplus = 0 // Getting these in a discount or surplus is not a good time.
 	can_discount = FALSE
 
 /datum/uplink_item/ammo/pistol
-	name = "Stechkin - 10mm Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are cheap but around half as effective as .357"
+	name = "Пистолетный магазин (10мм)"
+	desc = "Дополнительный магазин на 8 патронов калибра 10 мм для пистолета Стечкина ФК-69 10мм, заряженный дешевыми патронами."
 	reference = "10MM"
 	item = /obj/item/ammo_box/magazine/m10mm
 	cost = 2 // SS220 EDIT PRICE UP/DOWN 3 -> 2
 
 /datum/uplink_item/ammo/pistolap
-	name = "Stechkin - 10mm Armour Piercing Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are less effective at injuring the target but penetrate protective gear."
+	name = "Пистолетный магазин (Бронебойные 10мм)"
+	desc = "Дополнительный магазин на 8 патронов калибра 10 мм для пистолета Стечкина ФК-69 10мм, заряженный менее эффективными для ранения цели патронами, но более пробивающими защитную экипировку."
 	reference = "10MMAP"
 	item = /obj/item/ammo_box/magazine/m10mm/ap
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 6 -> 5
 
 /datum/uplink_item/ammo/pistolfire
-	name = "Stechkin - 10mm Incendiary Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with incendiary rounds which ignite the target."
+	name = "Пистолетный магазин (Зажигательные 10мм)"
+	desc = "Дополнительный магазин на 8 патронов калибра 10 мм для пистолета Стечкина ФК-69 10мм, заряженный зажигательными патронами, которые поджигают цель."
 	reference = "10MMFIRE"
 	item = /obj/item/ammo_box/magazine/m10mm/fire
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 9 -> 10
 
 /datum/uplink_item/ammo/pistolhp
-	name = "Stechkin - 10mm Hollow Point Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds which are more damaging but ineffective against armor."
+	name = "Пистолетный магазин (10мм с полым наконечником)"
+	desc = "Дополнительный магазин на 8 патронов калибра 10 мм для пистолета Стечкина ФК-69 10мм, заряженный патронами, которые наносят больший урон, но неэффективны против брони."
 	reference = "10MMHP"
 	item = /obj/item/ammo_box/magazine/m10mm/hp
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 7 -> 5
 
 /datum/uplink_item/ammo/revolver
-	name = ".357 Revolver - Speedloader"
-	desc = "A speed loader that contains seven additional .357 Magnum rounds for the syndicate revolver. For when you really need a lot of things dead."
+	name = "Револьверный спидлоадер (.357)"
+	desc = "Спидлоадер, содержащий семь дополнительных патронов калибра .357 Magnum для револьвера Синдиката. На тот случай, когда нужно больше, чем одна смерть..."
 	reference = "357"
 	item = /obj/item/ammo_box/a357
 	cost = 15
