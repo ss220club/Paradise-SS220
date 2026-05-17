@@ -21,6 +21,7 @@
 	var/instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/update_icon_state()
+	. = ..()
 	icon_state = replacetext(icon_state, regex(@"\d+$"), "")
 	if(reagents.total_volume <= 0)
 		icon_state = "[icon_state]0"
@@ -108,7 +109,7 @@
 	display_contents_with_number = FALSE
 	wrapper_state = "medipen_case_wrap"
 
-/datum/design/medipencase
+/datum/design/pill_bottle/medipencase
 	name = "Кейс для автоинжекторов"
 	id = "medipencase"
 	build_type = AUTOLATHE
