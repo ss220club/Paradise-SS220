@@ -180,7 +180,7 @@ const ItemsPage = (_properties) => {
                   checked={showDesc}
                   onClick={() => setShowDesc(!showDesc)}
                 />
-                <Button content="Случайная вещь" icon="question" onClick={() => act('buyRandom')} />
+                <Button content="Случайный предмет" icon="question" onClick={() => act('buyRandom')} />
                 <Button content="Вернуть предмет в руке" icon="undo" onClick={() => act('refund')} />
               </>
             }
