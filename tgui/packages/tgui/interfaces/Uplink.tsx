@@ -72,7 +72,7 @@ const PickTab = (index: number) => {
     case 2:
       return <ExploitableInfoPage />;
     default:
-      return 'АПЛИНК СВУЛЬПЯЧИЛСЯ, ПИШИ АХЕЛП';
+      return 'АПЛИНК СВУЛЬПЯЧИЛСЯ, ПИШИ РЕПОРТ';
   }
 };
 
