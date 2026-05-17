@@ -72,7 +72,7 @@ const PickTab = (index: number) => {
     case 2:
       return <ExploitableInfoPage />;
     default:
-      return 'SOMETHING WENT VERY WRONG PLEASE AHELP';
+      return 'АПЛИНК СВУЛЬПЯЧИЛСЯ, ПИШИ РЕПОРТ';
   }
 };
 
@@ -97,7 +97,7 @@ export const Uplink = (props) => {
                 }}
                 icon="store"
               >
-                View Market
+                Рынок
               </Tabs.Tab>
               <Tabs.Tab
                 key="Cart"
@@ -107,7 +107,7 @@ export const Uplink = (props) => {
                 }}
                 icon="shopping-cart"
               >
-                View Shopping Cart {cart && cart.length ? '(' + cart.length + ')' : ''}
+                Корзина {cart && cart.length ? '(' + cart.length + ')' : ''}
               </Tabs.Tab>
               <Tabs.Tab
                 key="ExploitableInfo"
@@ -117,7 +117,7 @@ export const Uplink = (props) => {
                 }}
                 icon="user"
               >
-                Exploitable Information
+                Сводка по экипажу
               </Tabs.Tab>
               <Tabs.Tab
                 key="LockUplink"
@@ -125,7 +125,7 @@ export const Uplink = (props) => {
                 onClick={() => act('lock')}
                 icon="lock"
               >
-                Lock Uplink
+                Заблокировать Аплинк
               </Tabs.Tab>
             </Tabs>
           </Stack.Item>
@@ -172,22 +172,22 @@ const ItemsPage = (_properties) => {
       <Stack vertical>
         <Stack.Item>
           <Section
-            title={'Current Balance: ' + crystals + 'TC'}
+            title={'Баланс: ' + crystals + 'TC'}
             buttons={
               <>
                 <Button.Checkbox
-                  content="Show Descriptions"
+                  content="Показать описания"
                   checked={showDesc}
                   onClick={() => setShowDesc(!showDesc)}
                 />
-                <Button content="Random Item" icon="question" onClick={() => act('buyRandom')} />
-                <Button content="Refund Currently Held Item" icon="undo" onClick={() => act('refund')} />
+                <Button content="Случайный предмет" icon="question" onClick={() => act('buyRandom')} />
+                <Button content="Вернуть предмет в руке" icon="undo" onClick={() => act('refund')} />
               </>
             }
           >
             <Input
               fluid
-              placeholder="Search Equipment"
+              placeholder="Поиск экипировки"
               value={searchText}
               onChange={(value) => {
                 handleSearch(value);
@@ -246,10 +246,10 @@ const CartPage = (_properties) => {
           title={'Current Balance: ' + crystals + 'TC'}
           buttons={
             <>
-              <Button.Checkbox content="Show Descriptions" checked={showDesc} onClick={() => setShowDesc(!showDesc)} />
-              <Button content="Empty Cart" icon="trash" onClick={() => act('empty_cart')} disabled={!cart} />
+              <Button.Checkbox content="Показать описания" checked={showDesc} onClick={() => setShowDesc(!showDesc)} />
+              <Button content="Очистить выбор" icon="trash" onClick={() => act('empty_cart')} disabled={!cart} />
               <Button
-                content={'Purchase Cart (' + cart_price + 'TC)'}
+                content={'Купить выбранное (' + cart_price + 'TC)'}
                 icon="shopping-cart"
                 onClick={() => act('purchase_cart')}
                 disabled={!cart || cart_price > crystals}
@@ -265,7 +265,7 @@ const CartPage = (_properties) => {
                 </Stack.Item>
               ))
             ) : (
-              <Box italic>Your Shopping Cart is empty!</Box>
+              <Box italic>Корзина пуста!</Box>
             )}
           </Stack>
         </Section>
@@ -283,8 +283,8 @@ const Advert = (_properties) => {
       <Section
         fill
         scrollable
-        title="Suggested Purchases"
-        buttons={<Button icon="dice" content="See more suggestions" onClick={() => act('shuffle_lucky_numbers')} />}
+        title="Рекомендуемое"
+        buttons={<Button icon="dice" content="Ещё варианты" onClick={() => act('shuffle_lucky_numbers')} />}
       >
         <Stack wrap>
           {lucky_numbers
@@ -326,7 +326,7 @@ const UplinkItemButtons = (props) => {
       <Button
         icon="shopping-cart"
         color={i.hijack_only === 1 && 'red'}
-        tooltip="Add to cart."
+        tooltip="Добавить в корзину."
         tooltipPosition="left"
         onClick={() =>
           act('add_to_cart', {
@@ -336,10 +336,10 @@ const UplinkItemButtons = (props) => {
         disabled={i.cost > crystals}
       />
       <Button
-        content={'Buy (' + i.cost + 'TC)' + (i.refundable ? ' [Refundable]' : '')}
+        content={'Купить (' + i.cost + 'TC)' + (i.refundable ? ' [Можно вернуть]' : '')}
         color={i.hijack_only === 1 && 'red'}
         // Yes I care this much about both of these being able to render at the same time
-        tooltip={i.hijack_only === 1 && 'Hijack Agents Only!'}
+        tooltip={i.hijack_only === 1 && 'Только для Хиджакеров!'}
         tooltipPosition="left"
         onClick={() =>
           act('buyItem', {
@@ -366,7 +366,7 @@ const CartButtons = (props: CartButtonProps) => {
       <Button
         icon="times"
         content={'(' + i.cost * i.amount + 'TC)'}
-        tooltip="Remove from cart."
+        tooltip="Убрать из корзины."
         tooltipPosition="left"
         onClick={() =>
           act('remove_from_cart', {
@@ -376,7 +376,7 @@ const CartButtons = (props: CartButtonProps) => {
       />
       <Button
         icon="minus"
-        tooltip={i.limit === 0 && 'Discount already redeemed!'}
+        tooltip={i.limit === 0 && 'Скидка уже получена!'}
         ml="5px"
         onClick={() =>
           act('set_cart_item_quantity', {
@@ -390,7 +390,7 @@ const CartButtons = (props: CartButtonProps) => {
         value={`${i.amount}`}
         width="45px"
         tooltipPosition="bottom-end"
-        tooltip={i.limit === 0 && 'Discount already redeemed!'}
+        tooltip={i.limit === 0 && 'Скидка уже получена!'}
         onCommit={(value) =>
           act('set_cart_item_quantity', {
             item: i.obj_path,
@@ -403,7 +403,7 @@ const CartButtons = (props: CartButtonProps) => {
         mb={0.3}
         icon="plus"
         tooltipPosition="bottom-start"
-        tooltip={i.limit === 0 && 'Discount already redeemed!'}
+        tooltip={i.limit === 0 && 'Скидка уже получена!'}
         onClick={() =>
           act('set_cart_item_quantity', {
             item: i.obj_path,
@@ -437,8 +437,8 @@ const ExploitableInfoPage = (_properties) => {
   return (
     <Stack fill>
       <Stack.Item width="30%">
-        <Section fill scrollable title="Exploitable Records">
-          <Input fluid mb={1} placeholder="Search Crew" onChange={(value) => setSearchText(value)} />
+        <Section fill scrollable title="Доступные сводки">
+          <Input fluid mb={1} placeholder="Поиск члена экипажа" onChange={(value) => setSearchText(value)} />
           <Tabs vertical>
             {crew &&
               crew.map((r: Exploitable) => (
@@ -458,12 +458,12 @@ const ExploitableInfoPage = (_properties) => {
           <Stack>
             <Stack.Item>
               <LabeledList>
-                <LabeledList.Item label="Age">{selected_record.age}</LabeledList.Item>
-                <LabeledList.Item label="Fingerprint">{selected_record.fingerprint}</LabeledList.Item>
-                <LabeledList.Item label="Rank">{selected_record.rank}</LabeledList.Item>
-                <LabeledList.Item label="Sex">{selected_record.sex}</LabeledList.Item>
-                <LabeledList.Item label="Species">{selected_record.species}</LabeledList.Item>
-                <LabeledList.Item label="NT Relation">{selected_record.nt_relation}</LabeledList.Item>
+                <LabeledList.Item label="Возраст">{selected_record.age}</LabeledList.Item>
+                <LabeledList.Item label="Отпечатки пальцев">{selected_record.fingerprint}</LabeledList.Item>
+                <LabeledList.Item label="Должность">{selected_record.rank}</LabeledList.Item>
+                <LabeledList.Item label="Пол">{selected_record.sex}</LabeledList.Item>
+                <LabeledList.Item label="Раса">{selected_record.species}</LabeledList.Item>
+                <LabeledList.Item label="Отношение к NT">{selected_record.nt_relation}</LabeledList.Item>
               </LabeledList>
             </Stack.Item>
             {!!selected_record.has_photos &&
@@ -479,7 +479,7 @@ const ExploitableInfoPage = (_properties) => {
                     }}
                   />
                   <br />
-                  Photo #{i + 1}
+                  Фото #{i + 1}
                 </Stack.Item>
               ))}
           </Stack>
