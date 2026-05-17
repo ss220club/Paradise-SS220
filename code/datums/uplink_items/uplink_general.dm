@@ -313,96 +313,92 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/stealthy_weapons
-	category = "Stealthy and Inconspicuous Weapons"
+	category = "Скрытое и незаметное вооружение"
 
 /datum/uplink_item/stealthy_weapons/garrote
-	name = "Fiber Wire Garrote"
-	desc = "A length of fiber wire between two wooden handles, perfect for the discrete assassin. This weapon, when used on a target from behind \
-			will instantly put them in your grasp and silence them, as well as causing rapid suffocation. Does not work on those who do not need to breathe."
+	name = "Волоконная удавка"
+	desc = "Отрезок волокнистой проволоки, зажатый между двумя деревянными рукоятками - идеальное оружие в руках осторожного убийцы. При использовании со спины, мгновенно захватывает цель и заставляет замолчать, а также вызывает быстрое удушение. Не работает на тех, кому не нужно дышать."
 	item = /obj/item/garrote
 	reference = "GAR"
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15
 
 /datum/uplink_item/stealthy_weapons/cameraflash
-	name = "Camera Flash"
-	desc = "A flash disguised as a camera with a self-charging safety system preventing the flash from burning out. \
-			Due to its design, this flash cannot be overcharged like regular flashes can. \
-			Useful for stunning borgs and individuals without eye protection or blinding a crowd for a get away."
+	name = "Фотовспышка"
+	desc = "Вспышка, замаскированная под фотоаппарат, с системой предотвращения перегорания. Имеет автоперезарядку до 5 активных зарядов. Вспышка полезна для того, чтобы ослепить и ошеломить окружающих или отдельных людей, не имеющих средств защиты глаз."
 	reference = "CF"
 	item = /obj/item/flash/cameraflash
 	cost = 5
 
 /datum/uplink_item/stealthy_weapons/throwingweapons
-	name = "Box of Throwing Weapons"
-	desc = "A box of shurikens and reinforced bolas from ancient Earth martial arts. They are highly effective \
-			throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
+	name = "Коробка метательного оружия"
+	desc = "Коробка с сюрикенами и усиленными болами. Очень эффективное метательное оружие: болы могут запутывать ноги жертвы, а сюрикены вонзаются в конечности."
 	reference = "STK"
 	item = /obj/item/storage/box/syndie_kit/throwing_weapons
 	cost = 15
 
 /datum/uplink_item/stealthy_weapons/edagger
-	name = "Energy Dagger"
-	desc = "A dagger made of energy that looks and functions as a pen when off."
+	name = "Световой кинжал"
+	desc = "Энергетический кинжал, который в выключенном состоянии выглядит и функционирует как ручка."
 	reference = "EDP"
 	item = /obj/item/pen/edagger
 	cost = 10
 
 /datum/uplink_item/stealthy_weapons/foampistol
-	name = "Toy Gun (with Stun Darts)"
-	desc = "An innocent looking toy pistol designed to fire foam darts. Comes loaded with riot grade darts, to incapacitate a target."
+	name = "Игрушечный пистолет (с оглушающими дротиками)"
+	desc = "Безобидный на вид игрушечный пистолет, предназначенный для стрельбы пенопластовыми дротиками. Поставляется с дротиками класса Riot, которые истощают выносливость цели."
 	reference = "FSPI"
 	item = /obj/item/gun/projectile/automatic/toy/pistol/riot
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 15 -> 10
 	surplus = 10
 
 /datum/uplink_item/stealthy_weapons/false_briefcase
-	name = "False Bottomed Briefcase"
-	desc = "A modified briefcase capable of storing and firing a gun under a false bottom. Use a screwdriver to pry away the false bottom and make modifications. Distinguishable upon close examination due to the added weight."
+	name = "Портфель с фальшивым дном"
+	desc = "Портфель со скрытым дном позволяющий хранить вещи среднего размера или меньше. Внутрь можно спрятать любое оружие, что позволит стрелять прямо из портфеля, не вытаскивая оружие. Открутите дно отверткой, вставьте оружие, и закрутите отверткой снова."
 	reference = "FBBC"
 	item = /obj/item/storage/briefcase/false_bottomed
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/stealthy_weapons/soap
-	name = "Syndicate Soap"
-	desc = "A sinister-looking surfactant used to clean blood stains to hide murders and prevent DNA analysis. You can also drop it underfoot to slip people."
+	name = "Мыло Синдиката"
+	desc = "Кусок мыла подозрительного вида который очищает буквально всё за секунду. Окровавленное место убийства или отпечатки на оружие с этим мылом больше не страшны!"
 	reference = "SOAP"
 	item = /obj/item/soap/syndie
 	cost = 5
 	surplus = 50
 
 /datum/uplink_item/stealthy_weapons/rsg
-	name = "Rapid Syringe Gun"
-	desc = "A Syndicate rapid syringe gun able to fill and fire syringes automatically from an internal reagent reservoir. Comes pre-loaded with 7 empty syringes, and has a maximum capacity of 14 syringes and 300u of reagents."
+	name = "Скорострельный шприцемёт"
+	desc = "Скорострельный шприцемёт Синдиката, способный автоматически наполнять шприцы из внутреннего резервуара для реагентов и выстреливать ими. В комплекте идут 7 пустых шприцев, максимальная вместимость оружия - 14 шприцев и 300 юнитов реагентов."
 	reference = "RSG"
 	item = /obj/item/gun/syringe/rapidsyringe/preloaded/half
 	cost = 50 // SS220 EDIT PRICE UP/DOWN 60 -> 50
 
 /datum/uplink_item/stealthy_weapons/poisonbottle
-	name = "Poison Bottle"
-	desc = "The Syndicate will ship a bottle containing 40 units of a randomly selected poison. The poison can range from highly irritating to incredibly lethal."
+	name = "Бутылка с ядом"
+	desc = "Синдикат поставит вам флакон с 40 юнитами случайно выбранного яда. Яд может быть как очень раздражительным для жертвы, так и невероятно смертельным."
 	reference = "TPB"
 	item = /obj/item/reagent_containers/glass/bottle/traitor
 	cost = 10
 	surplus = 0 // Requires another item to function.
 
 /datum/uplink_item/stealthy_weapons/silencer
-	name = "Universal Suppressor"
-	desc = "Fitted for use on any small caliber weapon with a threaded barrel, this suppressor will silence the shots of the weapon for increased stealth and superior ambushing capability."
+	name = "Универсальный глушитель"
+	desc = "Глушитель для использования с любым малокалиберным оружием с нарезным стволом. Заглушает выстрелы, обеспечивая повышенную скрытность и превосходные возможности для засады. Слегка увеличивает размер оружия."
 	reference = "US"
 	item = /obj/item/suppressor
 	cost = 5
 	surplus = 10
 
 /datum/uplink_item/stealthy_weapons/dehy_carp
-	name = "Dehydrated Space Carp"
-	desc = "Just add water to make your very own hostile to everything space carp. It looks just like a plushie. The first person to squeeze it will be registered as its owner, who it will not attack. If no owner is registered, it'll just attack everyone."
+	name = "Обезвоженный космический карп"
+	desc = "Просто добавьте воды, и у вас получится свой собственный космический карп, враждебный ко всему на свете. Он выглядит как плюшевая игрушка. Первый, кто его сожмет, будет его папой, на которого он не нападет."
 	reference = "DSC"
 	item = /obj/item/toy/plushie/carpplushie/dehy_carp
 	cost = 2 // SS220 EDIT PRICE UP/DOWN 4 -> 2
 
 /datum/uplink_item/stealthy_weapons/knuckleduster
-	name = "Syndicate Knuckleduster"
-	desc = "A straightforward and fairly concealable melee weapon for bludgeoning someone to death in brutal fashion. This one is designed specifically to cause severe organ damage to the victim."
+	name = "Синдикастет"
+	desc = "Простое в использование и хорошо скрываемое оружие ближнего боя, предназначенное для забивания цели до смерти жестоким способом. Это оружие разработано специально для нанесения жертве серьезных повреждений органов."
 	reference = "SKD"
 	item = /obj/item/melee/knuckleduster/syndie
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
