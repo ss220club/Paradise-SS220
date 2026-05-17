@@ -181,64 +181,61 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/dangerous
-	category = "Highly Visible and Dangerous Weapons"
+	category = "Крайне заметное и мощное вооружение"
 
 /datum/uplink_item/dangerous/pistol
-	name = "FK-69 Stechkin Pistol"
+	name = "Пистолет Стечкина ФК-69 10мм"
 	reference = "SPI"
-	desc = "A small, easily concealable handgun that uses 10mm auto rounds in 8-round magazines and is compatible with suppressors."
+	desc = "Небольшой, легко скрываемый пистолет, использующий патроны калибра 10мм в магазинах на 8 патронов. Имеет насечку на стволе для глушителя."
 	item = /obj/item/gun/projectile/automatic/pistol
 	cost = 20
 
 /datum/uplink_item/dangerous/revolver
-	name = "Syndicate .357 Revolver"
+	name = "Револьвер синдиката .357"
 	reference = "SR"
-	desc = "A brutally simple syndicate revolver that fires .357 Magnum cartridges and has 7 chambers. Comes with a spare speed loader."
+	desc = "Предельно простой в использование револьвер Синдиката, стреляющий патронами калибра .357 Magnum и имеющий барабан на 7 патрон. Поставляется с одним спидлоадером."
 	item = /obj/item/storage/box/syndie_kit/revolver
 	cost = 70 // SS220 EDIT PRICE UP/DOWN 65 -> 70
 	surplus = 50
 
 /datum/uplink_item/dangerous/rapid
-	name = "Gloves of the North Star"
-	desc = "These gloves let the user help, shove, grab, and punch people very fast. Does not improve weapon attack speed. Can be combined with martial arts for a deadly weapon."
+	name = "Перчатки Полярной звезды"
+	desc = "Перчатки позволяют с невероятной скоростью совершать обычные действия вроде толкания и избивания жертвы, но так же работают и на поглаживания. Работают только на безоружные атаки. Могут использоваться в сочетании с боевыми искусствами для непобедимой комбинации."
 	reference = "RPGD"
 	item = /obj/item/clothing/gloves/fingerless/rapid
 	cost = 40
 
 /datum/uplink_item/dangerous/sword
-	name = "Energy Sword"
-	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be pocketed when inactive. Activating it produces a loud, distinctive noise."
+	name = "Световой меч"
+	desc = "Холодное оружие с большим уроном и лезвием из чистой энергии. Меч настолько мал, поэтому его можно положить в карман в неактивном состояние. При активации издается громкий и характерный звук. С большой вероятностью отражает лазерные снаряды."
 	reference = "ES"
 	item = /obj/item/melee/energy/sword/saber
 	cost = 45 // SS220 EDIT PRICE UP/DOWN 40 -> 45
 
 /datum/uplink_item/dangerous/dsword
-	name = "Double Energy Sword"
-	desc = "A double-bladed energy sword. More damaging than a standard energy sword, and automatically parries incoming energy weapons fire. Bulk discount applied."
+	name = "Двухклинковый световой меч"
+	desc = "Световой меч с двойным лезвием, что может быть ещё лучше? Наносит чуть больший урон, чем обычный энергетический меч. Автоматически отражает все виды лазерных снарядов. Ударяет нападавшего в ответ при ударе пользователя в режиме парирования."
 	reference = "DSRD"
 	item = /obj/item/dualsaber
 	cost = 70 // SS220 EDIT PRICE UP/DOWN 15 -> 20
 
 /datum/uplink_item/dangerous/snakefang
-	name = "Snakesfang"
-	desc = "The Snakesfang is a fork-tipped scimitar with a sharp edge and sharper bite. This sword cannot fit in your bag, but it does come with a scabbard you can attach to your belt."
+	name = "Змеиный Клык"
+	desc = "Скимитар с раздвоенным вилкообразным наконечником. Меч не поместится в вашу сумку, но к нему прилагаются ножны, которые можно прикрепить на пояс."
 	reference = "SF"
 	item = /obj/item/storage/belt/sheath/snakesfang
 	cost = 25
 
 /datum/uplink_item/dangerous/powerfist
-	name = "Power Fist"
-	desc = "The Power Fist is a metal gauntlet with a built-in piston-ram powered by an external gas supply. \
-		Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
-		Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
-		deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
+	name = "Силовой Кулак"
+	desc = "Силовой кулак представляет собой металлическую перчатку со встроенным ударным поршнем, работающим от внешнего источника газа. При попадании в цель поршень выдвигается вперед и наносит серьезный урон, отталкивая цель. С помощью гаечного ключа вы сможете регулировать количество газа, расходуемого на удар, повышая наносимый урон и отталкивая цели с большей силой. С помощью отвертки можно снять баллон."
 	reference = "PF"
 	item = /obj/item/melee/powerfist
 	cost = 60 // SS220 EDIT PRICE UP/DOWN 50 -> 60
 
 /datum/uplink_item/dangerous/chainsaw
-	name = "Chainsaw"
-	desc = "A high powered chainsaw for cutting up ...you know...."
+	name = "Бензопила"
+	desc = "Чрезвычайно смертоносное и громкое оружие. Она не может храниться в рюкзаке и издает очень громкий шум, когда включена. Разрывает трупы на куски мяса, не оставляя ничего для клонирования. Заведя пилу, её более никто не сможет отнять у вас из-за очень удобной рукояти."
 	reference = "CH"
 	item = /obj/item/chainsaw/syndie
 	cost = 70 // SS220 EDIT PRICE UP/DOWN 60 -> 70
@@ -247,22 +244,22 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	can_discount = FALSE // Too gamer.
 
 /datum/uplink_item/dangerous/universal_gun_kit
-	name = "Universal Self Assembling Gun Kit"
-	desc = "A universal gun kit, that can be combined with any weapon kit to make a functioning RND gun of your own. Uses built-in hex keys to self assemble, just combine the kits by hitting them together."
+	name = "Универсальный комплект для самостоятельной сборки винтовки"
+	desc = "Универсальный набор сборки оружия, который можно комбинировать с любым набором для создания оружия. Для самостоятельной сборки используются встроенные шестигранные ключи, просто соедините наборы, нажав одним по другому."
 	reference = "IKEA"
 	item = /obj/item/weaponcrafting/gunkit/universal_gun_kit
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
 
 /datum/uplink_item/dangerous/batterer
-	name = "Mind Batterer"
-	desc = "A dangerous Syndicate device focused on crowd control and escapes. Causes brain damage, confusion, and other nasty effects to those surrounding the user. Has 5 charges."
+	name ="Подавитель разума"
+	desc = "Опасное устройство Синдиката, предназначенное для контроля толпы или организации беспорядков. Вызывает повреждение мозга, замешательство и другие неприятные эффекты у окружающих пользователя. Имеет 5 зарядов, перезарядка одной активации занимает 20 секунд."
 	reference = "BTR"
 	item = /obj/item/batterer
 	cost = 25
 
 /datum/uplink_item/dangerous/porta_turret
-	name = "Portable Turret"
-	desc = "A pop-up Syndicate turret that will shoot anyone who didn't prime the grenade. The turret cannot be moved after it's deployed."
+	name = "Портативная турель"
+	desc = "Быстроразвёртывемая турель Синдиката, которая расстреляет любого кроме установившего её. После установки турель нельзя передвинуть."
 	reference = "MIS"
 	item = /obj/item/grenade/turret
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
