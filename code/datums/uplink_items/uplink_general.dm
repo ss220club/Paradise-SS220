@@ -408,62 +408,61 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/explosives
-	category = "Grenades and Explosives"
+	category = "Гранаты и взрывчатка"
 
 /datum/uplink_item/explosives/plastic_explosives
-	name = "Composition C-4"
-	desc = "C-4 is plastic explosive of the common variety Composition C. Reliably destroys the object it's placed on, assuming it isn't bomb resistant. Remarkably good for disposing bodies, or tired crewmates. Will only destroy station floors if placed directly on it. It has a modifiable timer with a minimum setting of 10 seconds."
+	name = "Композитная взрывчатка"
+	desc = "Одна из самых распространнёных пластичных композитных взрывчаток. Гарантированно уничтожает объект, на котором размещенна, в том числе и пол. Имеет настраиваемый таймер с минимальной задержкой до взрыва в 10 секунд. Отлично подходит для избавления от трупов..."
 	reference = "C4"
 	item = /obj/item/grenade/plastic/c4
 	cost = 5
 
 /datum/uplink_item/explosives/plastic_explosives_pack
-	name = "Pack of 5 C-4 Explosives"
-	desc = "A package containing 5 C-4 Explosives at a discounted price. For when you need that little bit extra for your sabotaging needs."
+	name = "Набор взрывчатки С4"
+	desc = "Набор из 5 взрывчаток типа C-4 по более низкой цене. Самое то для саботажа."
 	reference = "C4P"
 	item = /obj/item/storage/box/syndie_kit/c4
 	cost = 20
 
 /datum/uplink_item/explosives/syndicate_minibomb
-	name = "Syndicate Minibomb"
-	desc = "The minibomb is a grenade with a five-second fuse."
+	name = "Минибомба Синдиката"
+	desc = "Граната с пятисекундной задержкой перед взрывом. Кратно мощнее композитной взрывчатки."
 	reference = "SMB"
 	item = /obj/item/grenade/syndieminibomb
 	cost = 20 // SS220 EDIT PRICE UP/DOWN 30 -> 20
 
 /datum/uplink_item/explosives/frag_grenade
-	name = "Fragmentation Grenade"
-	desc = "A frag grenade. Upon detonation, releases shrapnel that can embed in nearby victims."
+	name = "Осколочная граната"
+	desc = "При взрыве разлетается бесчисленное множество осколков, которые поражают всех вокруг."
 	reference = "FG"
 	item = /obj/item/grenade/frag
 	cost = 10
 
 /datum/uplink_item/explosives/frag_grenade_pack
-	name = "Pack of 5 Fragmentation Grenades"
-	desc = "A box of 5 frag grenades. Upon detonation, releases shrapnel that can embed in nearby victims. And it seems you'll have a LOT of victims."
+	name = "Набор осколочных гранат"
+	desc = "Коробка с пятью осколочными гранатами. При взрыве разлетаются осколки, которые могут застрять в телах ближайших жертв. А жертв будет больше, чем МНОГО."
 	reference = "FGP"
 	item = /obj/item/storage/box/syndie_kit/frag_grenades
 	cost = 40
 
 /datum/uplink_item/explosives/pizza_bomb
-	name = "Pizza Bomb"
-	desc = "A pizza box with a bomb taped inside of it. The timer needs to be set by opening the box; afterwards, opening the box again will trigger the detonation."
+	name = "Пицца-бомба"
+	desc = "Коробка из-под пиццы, в которую вклеена бомба. Чтобы установить таймер, нужно открыть коробку. Если открыть ее еще раз, произойдет взрыв."
 	reference = "PB"
 	item = /obj/item/pizzabox/pizza_bomb
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15
 	surplus = 80
 
 /datum/uplink_item/explosives/atmosn2ogrenades
-	name = "Knockout Gas Grenades"
-	desc = "A box of two (2) grenades that spread knockout gas over a large area. Equip internals before using one of these."
+	name = "Усыпляющие газовые гранаты"
+	desc = "Коробка с двумя гранатами, которые распыляют сонный газ на большой площади."
 	reference = "ANG"
 	item = /obj/item/storage/box/syndie_kit/atmosn2ogrenades
 	cost = 40
 
 /datum/uplink_item/explosives/emp
-	name = "EMP Grenades and bio-chip implanter Kit"
-	desc = "A box that contains two EMP grenades and an EMP implant with 2 uses. Useful to disrupt communication, \
-			security's energy weapons, and silicon lifeforms when you're in a tight spot."
+	name = "Набор Эми гранат с ЭМИ-имплантом"
+	desc = "Коробка с двумя ЭМИ-гранатами и ЭМИ-имплантом на два применения. Пригодится, чтобы нарушить связь, вывести из строя энергетическое оружие и перегрузить боргов."
 	reference = "EMPK"
 	item = /obj/item/storage/box/syndie_kit/emp
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 10 -> 15
@@ -474,9 +473,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		cost *= 3
 
 /datum/uplink_item/explosives/targrenade
-	name = "Sticky Tar Grenade"
-	desc = "A grenade filled with aerosols and sticky tar. \
-			Will release a plume of smoke that applies tar to a wide area, severely slowing down movement. Makes for the ultimate getaway!"
+	name = "Граната с липкой смолой"
+	desc = "Граната, наполненная липкой смолой. При взрыве образуется облако дыма, которое покрывает смолой большую площадь, сильно замедляя движение преследователей. Идеальный вариант для побега."
 	reference = "TARG"
 	item = /obj/item/grenade/chem_grenade/tar
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 7 -> 5
