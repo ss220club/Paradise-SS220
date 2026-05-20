@@ -69,11 +69,17 @@
 /obj/item/gun/projectile/automatic
 	recoil = 0.7
 
+/obj/item/gun/projectile/automatic/lasercarbine
+	recoil = 0
+
 /obj/item/gun/projectile/automatic/c20r/toy
 	recoil = 0.2
 
 /obj/item/gun/projectile/automatic/l6_saw/toy
 	recoil = 0.3
+
+/obj/item/gun/projectile/revolver/capgun
+	recoil = 0.1
 
 /obj/item/gun/projectile/automatic/l6_saw/toy/riot
 	recoil = 0.4
