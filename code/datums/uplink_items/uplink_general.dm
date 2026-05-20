@@ -302,8 +302,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 7 -> 5
 
 /datum/uplink_item/ammo/revolver
-	name = "Револьверный спидлоадер (.357)"
-	desc = "Спидлоадер, содержащий семь дополнительных патронов калибра .357 Magnum для револьвера Синдиката. На тот случай, когда нужно больше, чем одна смерть..."
+	name = "Револьверный быстрозарядник (.357)"
+	desc = "быстрозарядник, содержащий семь дополнительных патронов калибра .357 Magnum для револьвера Синдиката. На тот случай, когда нужно больше, чем одна смерть..."
 	reference = "357"
 	item = /obj/item/ammo_box/a357
 	cost = 15
@@ -484,86 +484,84 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/stealthy_tools
-	category = "Stealth and Camouflage Items"
+	category = "Предметы для скрытности и маскировки"
 
 /datum/uplink_item/stealthy_tools/forgers_kit
-	name = "Forger's Kit"
-	desc = "A set consisting of a stamp and a special pen. The stamp can be activated to imitate an official Nanotrasen Stamp, \
-		allowing you to forge false documents for access or equipment, and can also be used in a washing machine to create counterfeit clothing. \
-			The included pen lets you create fake signatures, further enhancing your forgery capabilities."
+	name = "Набор фальсификатора"
+	desc = "Набор, состоящий из штампа и специальной ручки. Штамп может имитировать любую печать, в том числе и официальный штамп Nanotrasen, с помощью которого можно подделывать документы, а также использовать его в стиральной машине для создания радужной одежды. Входящая в набор ручка позволяет создавать поддельные подписи, что еще больше расширяет возможности."
 	reference = "FGK"
 	item = /obj/item/storage/box/syndie_kit/forgers_kit
 	cost = 10
 	surplus = 35
 
 /datum/uplink_item/stealthy_tools/chameleonflag
-	name = "Chameleon Flag"
-	desc = "A flag that can be disguised as any other known flag. There is a hidden spot in the pole to booby trap the flag with a grenade or minibomb, which will detonate some time after the flag is set on fire."
+	name = "Маскировочный флаг"
+	desc = "Флаг, который можно замаскировать под любой другой. В древке есть потайное место, куда можно спрятать гранату или мини-бомбу, которая взорвется через некоторое время после поджёга флага."
 	reference = "CHFLAG"
 	item = /obj/item/flag/chameleon
 	cost = 1
 	surplus = 35
 
 /datum/uplink_item/stealthy_tools/chamsechud
-	name = "Chameleon Security HUD"
-	desc = "A stolen Nanotrasen Security HUD with Syndicate chameleon technology implemented into it. Similarly to a chameleon jumpsuit, the HUD can be morphed into various other eyewear, while retaining the HUD qualities when worn."
+	name = "Маскировочный ИЛС СБ"
+	desc = "Украденный ИЛС СБ с внедренной в него технологией маскировки «хамелеон» Синдиката. Подобно маскировочному комбинезону, ИЛС может превращаться в различные очки, сохраняя при этом свои функции."
 	reference = "CHHUD"
 	item = /obj/item/clothing/glasses/hud/security/chameleon
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/stealthy_tools/thermal
-	name = "Thermal Chameleon Glasses"
-	desc = "These glasses are thermals with Syndicate chameleon technology built into them. They allow you to see organisms through walls by capturing the upper portion of the infra-red light spectrum, emitted as heat and light by objects. Hotter objects, such as warm bodies, cybernetic organisms and artificial intelligence cores emit more of this light than cooler objects like walls and airlocks."
+	name = "Маскировочные термо-очки"
+	desc = "Очки-тепловизоры со встроенной технологией «хамелеон» Синдиката. Они позволяют видеть организмы сквозь стены, улавливая верхнюю часть инфракрасного спектра, которую объекты излучают в виде тепла и света."
 	reference = "THIG"
 	item = /obj/item/clothing/glasses/chameleon/thermal
 	cost = 15
 
 /datum/uplink_item/stealthy_tools/night
-	name = "Nightvision Chameleon Glasses"
-	desc = "These glasses are nightvision with Syndicate chameleon technology built into them. Lets you see clearer in the dark."
+	name = "Маскировочный ПНВ"
+	desc = "Эти очки оснащены функцией ночного видения и технологией «хамелеон» Синдиката. Позволяют кратно лучше видеть в темноте."
 	reference = "TNIG"
 	item = /obj/item/clothing/glasses/chameleon/night
 	cost = 5
 
 /datum/uplink_item/stealthy_tools/agent_card
-	name = "Agent ID Card"
-	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and can copy access from other identification cards. The access is cumulative, so scanning one card does not erase the access gained from another."
+	name = "Идентификационная карта агента"
+	desc = "Карта агента могжет копировать доступ с других идентификационных карт, суммируя его с уже полученными. По умолчанию, карта блокирует отслеживание носителя Искусстевенным интелектом через камеры, но не скрывает его."
 	reference = "AIDC"
 	item = /obj/item/card/id/syndicate
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/stealthy_tools/chameleon_proj
-	name = "Chameleon-Projector"
-	desc = "Projects an image across a user, disguising them as an object scanned with it, as long as they don't move the projector from their hand. The disguised user cannot run and projectiles pass over them."
+	name = "Маскировочный проектор"
+	desc = "Проецирует изображение на пользователя, маскируя его под отсканированный объект, пока он не выпустит проектор из рук или маскировки не коснуться. Пользователь в маскировке не может бежать, а снаряды пролетают сквозь него."
 	reference = "CP"
 	item = /obj/item/chameleon
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 25 -> 15
 
 /datum/uplink_item/stealthy_tools/chameleon_counter
-	name = "Chameleon Counterfeiter"
-	desc = "This device disguises itself as any object scanned by it. The disguise is not a perfect replica and can be noticed when examined by an observer."
+	name = "Маскировочный подделыватель"
+	desc = "Это устройство маскируется под любой объект, который оно сканирует. Маскировка не идеальна, и наблюдатель может ее заметить."
 	reference = "CC"
 	item = /obj/item/chameleon_counterfeiter
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/stealthy_tools/camera_bug
-	name = "Camera Bug"
-	desc = "Enables you to view all cameras on the network to track a target. Also has 5 sticky hidden cameras, allowing you remote view of any object you can stick a camera on."
+	name = "Камерный жучок"
+	desc = "Позволяет просматривать изображение со всех камер в сети. Также в комплект входят 5 скрытых камер, которые можно закрепить на любом объекте и использовать для удаленного наблюдения."
 	reference = "CB"
 	item = /obj/item/storage/box/syndie_kit/camera_bug
 	cost = 5
 	surplus = 90
 
 /datum/uplink_item/stealthy_tools/dnascrambler
-	name = "DNA Scrambler"
-	desc = "A syringe with one injection that randomizes appearance and name upon use. A cheaper but less versatile alternative to an agent card and voice changer."
+	name = "Шифратор ДНК"
+	desc = "Шприц с одной инъекцией, которая при использовании случайным образом полностью меняет внешний вид и имя."
 	reference = "DNAS"
 	item = /obj/item/dnascrambler
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 7 -> 5
 
 /datum/uplink_item/stealthy_tools/smugglersatchel
-	name = "Smuggler's Satchel"
-	desc = "This satchel is thin enough to be hidden in the gap between plating and tiling, great for stashing your stolen goods. Comes with a crowbar and a floor tile inside."
+	name = "Сумка контрабандиста"
+	desc = "Эта сумка достаточно тонкая, чтобы ее можно было спрятать между полом и плиткой. В ней удобно прятать награбленное. В комплекте лом и напольная плитка."
 	reference = "SMSA"
 	item = /obj/item/storage/backpack/satchel_flat
 	cost = 10
@@ -571,8 +569,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/emplight
 	name = "EMP Flashlight"
-	desc = "A small, self-charging, short-ranged EMP device disguised as a flashlight. \
-		Useful for disrupting headsets, cameras, and borgs during stealth operations."
+	desc = "Небольшой самозаряжающийся генератор ЭМИ излучения ближнего действия, замаскированный под фонарик. Пригодится для выведения из строя гарнитур, камер, КПБ и боргов во время скрытных операций."
 	reference = "EMPL"
 	item = /obj/item/flashlight/emp
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
@@ -584,25 +581,24 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		cost *= 2.5
 
 /datum/uplink_item/stealthy_tools/cutouts
-	name = "Adaptive Cardboard Cutouts"
-	desc = "These cardboard cutouts are coated with a thin material that prevents discoloration and makes the images on them appear more lifelike. This pack contains three as well as a \
-	spraycan for changing their appearances."
+	name = "Адаптивные картонные фигуры"
+	desc = "Эти адаптивные фигурки покрыты тонким слоем материала, который предотвращает выцветание и делает изображения более реалистичными. В наборе три таких фигурки и баллончик краски для изменения их внешнего вида."
 	reference = "ADCC"
 	item = /obj/item/storage/box/syndie_kit/cutouts
 	cost = 1
 	surplus = 20
 
 /datum/uplink_item/stealthy_tools/safecracking
-	name = "Safe-cracking Kit"
-	desc = "Everything you need to quietly open a mechanical combination safe."
+	name = "Набор для вскрытия сейфа"
+	desc = "Все, что нужно, чтобы незаметно открыть механический сейф с кодовым замком."
 	reference = "SCK"
 	item = /obj/item/storage/box/syndie_kit/safecracking
 	cost = 5
 	surplus = 0 // Far too objective specific.
 
 /datum/uplink_item/stealthy_tools/handheld_mirror
-	name = "Hand Held Mirror"
-	desc = "A pocket sized mirror. Allows you to change all your hair and facial features, from color to style, instantly while in your hand."
+	name = "Ручное зеркало"
+	desc = "Зеркало карманного размера. Позволяет мгновенно изменить цвет волос и черты лица, а также прическу."
 	reference = "HM"
 	item = /obj/item/handheld_mirror
 	cost = 5
