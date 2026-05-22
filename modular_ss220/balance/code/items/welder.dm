@@ -1,2 +1,5 @@
-/obj/item/weldingtool/proc/toggle_welder
-	force = 10
+/obj/item/weldingtool/toggle_welder()
+	. = ..()
+
+	if(tool_enabled)
+		force = 10
