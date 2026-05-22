@@ -608,114 +608,105 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/device_tools
-	category = "Devices and Tools"
+	category = "Устройства и инструменты"
 	abstract = 1
 
 /datum/uplink_item/device_tools/emag
-	name = "Cryptographic Sequencer"
-	desc = "The cryptographic sequencer, also known as an emag, is a small card that unlocks hidden functions in electronic devices, subverts intended functions and characteristically breaks security mechanisms."
+	name = "Криптографический секвенсор"
+	desc = "Криптографический секвенсор, также известный как Emag, представляет собой небольшую карту, которая открывает доступ к скрытым функциям устройств, позволяет обойти предустановленные ограничения функций и взломать механизмы защиты."
 	reference = "EMAG"
 	item = /obj/item/card/emag
 	cost = 30
 
 /datum/uplink_item/device_tools/access_tuner
-	name = "Access Tuner"
-	desc = "The access tuner is a small device that can interface with airlocks from range. It takes a few seconds to connect and can change the bolt state, open the door, or toggle emergency access."
+	name = "Настройщик доступа"
+	desc = "Настройщик доступа — это небольшое устройство, которое может взаимодействовать с воздушными шлюзами на расстоянии. Подключение занимает несколько секунд. С его помощью можно изменить состояние блокировки, открыть шлюз или включить аварийный доступ."
 	reference = "HACK"
 	item = /obj/item/door_remote/omni/access_tuner
 	cost = 20 // SS220 EDIT PRICE UP/DOWN 30 -> 20
 
 /datum/uplink_item/device_tools/toolbox
-	name = "Fully Loaded Toolbox"
-	desc = "The syndicate toolbox is a suspicious black and red. Aside from tools, it comes with insulated gloves and a multitool."
+	name = "Подозрительный ящик для инструментов"
+	desc = "Набор инструментов Синдиката черно-красного цвета. Помимо инструментов, в него входят стильные изоляционные перчатки и мультитул."
 	reference = "FLTB"
 	item = /obj/item/storage/toolbox/syndicate
 	cost = 5
 
 /datum/uplink_item/device_tools/surgerybag
-	name = "Syndicate Surgery Duffel Bag"
-	desc = "The Syndicate surgery duffel bag comes with a full set of surgery tools, a straightjacket and a muzzle. The bag itself is also made of very light materials and won't slow you down while it is equipped."
+	name = "Синди-мешок хирургических инструментов"
+	desc = "В сумке находится полный набор хирургических инструментов, смирительная рубашка и намордник. Сама сумка также изготовлена из очень легких материалов и не будет мешать вам передвигаться, пока вы носите её на спине."
 	reference = "SSDB"
 	item = /obj/item/storage/backpack/duffel/syndie/med/surgery
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/device_tools/bonerepair
-	name = "Prototype Nanite Autoinjector"
-	desc = "Stolen prototype full body repair nanites. On injection it will shut down body systems as it revitilizes limbs and organs. Heals organics organs, cybernetic organs, and limbs to fully operational conditions."
+	name = "Экспериментальный набор починки костей"
+	desc = "Украденный прототип нанитов для полного восстановления организма. При введении отключает системы организма, восстанавливая конечности и органы. Восстанавливает органические и кибернетические органы и конечности до состояния полной работоспособности."
 	reference = "NCAI"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/nanocalcium
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/device_tools/syndicate_teleporter
-	name = "Experimental Syndicate Teleporter"
-	desc = "The Syndicate teleporter is a handheld device that teleports the user 4-8 meters forward. \
-			Beware, teleporting into a wall will make the teleporter do a parallel emergency teleport, \
-			but if that emergency teleport fails, it will kill you. \
-			Has 4 charges, recharges, warranty voided if exposed to EMP. \
-			Comes with free chameleon mesons, to help you stay stylish while seeing through walls."
+	name = "Экспериментальный телепортер Синдиката"
+	desc = "Телепортер Синдиката - это портативное устройство, которое переносит пользователя на 4-8 метров вперед. Будьте осторожны, телепортация в стену заставит телепортер выполнить экстренную телепортацию в сторону, но если эта экстренная телепортация не поможет, это разорвёт вас на куски. Имеет 4 заряда, самозарядный. Синдикат аннулирует гарантию при воздействии электромагнитного излучения! В комплект входят бесплатные мезонные очки с технологией «хамелеон» Синдиката, которые помогут вам оставаться стильным, видя сквозь стены."
 	reference = "TELE"
 	item = /obj/item/storage/box/syndie_kit/teleporter
 	cost = 50 // SS220 EDIT PRICE UP/DOWN 40 -> 50
 
 /datum/uplink_item/device_tools/organ_extractor
-	name = "Organ Extractor"
-	desc = "A device that can remove organs or cybernetic implants from a target, and stores them inside. \
-	Stored organs can be implanted into the user, or into other targets. Synthesizes chemicals to keep the organs fresh."
+	name = "Система извлечения органов"
+	desc = "Устройство, которое может извлекать органы или имплантаты из тела жертвы и хранить их внутри неограниченно долго, предотвращая гниение. Сохраненные органы могут быть имплантированы пользователю или другим жертвам."
 	reference = "OREX"
 	item = /obj/item/organ_extractor
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
 
 /datum/uplink_item/device_tools/c_foam_launcher
 	name = "C-Foam Launcher"
-	desc = "A gun that shoots blobs of foam. Will block airlocks, and slow down humanoids. Not rated for xenomorph usage."
+	desc = "Оружие, стреляющий пеной. Блокирует воздушные шлюзы и замедляет врагов при попадание."
 	reference = "CFOAM"
 	item = /obj/item/gun/projectile/c_foam_launcher
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 25 -> 15
 
 /datum/uplink_item/device_tools/tar_spray
-	name = "Sticky Tar Applicator"
-	desc = "A spray bottle containing an extremely viscous fluid that will leave behind tar whenever it is sprayed, greatly slowing down anyone who tries to walk over it. \
-	Comes with 10 uses worth of fluid and cannot be refilled."
+	name = "Баллончик с липкой смолой"
+	desc = "Флакон, который распыляет чрезвычайно вязкую смолу, что значительно замедляет движение любого проходящего по ней. Жидкости хватает на 10 распылений, и ее нельзя доливать повторно."
 	reference = "TAR"
 	item = /obj/item/reagent_containers/spray/sticky_tar
 	cost = 10
 
 /datum/uplink_item/device_tools/binary
-	name = "Binary Translator Key"
-	desc = "A key, that when inserted into a radio headset, allows you to listen to and talk with artificial intelligences and cybernetic organisms in binary. To talk on the binary channel, type :+ before your radio message."
+	name = "Ключ бинарного перевода"
+	desc = "Ключ шифрования для подключения к гарнитуре. Позволяет вам получить доступ к частоте передачи данных синтетическими формами жизни в двоичном формате. Чтобы разговаривать по двоичному каналу, введите :+ перед сообщением или хоткей И(B)."
 	reference = "BITK"
 	item = /obj/item/encryptionkey/binary
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 25 -> 10
 	surplus = 75
 
 /datum/uplink_item/device_tools/cipherkey
-	name = "Syndicate Encryption Key"
-	desc = "A key, that when inserted into a radio headset, allows you to listen to all station department channels as well as talk on an encrypted Syndicate channel."
+	name = "Ключ-Шифратор Синдиката"
+	desc = "Ключ шифрования для подключения к гарнитуре. Позволяет вам прослушивать все каналов отделов станции, а также разговаривать по зашифрованному каналу Синдиката."
 	reference = "SEK"
 	item = /obj/item/encryptionkey/syndicate
 	cost = 5 //Nowhere near as useful as the Binary Key! // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	surplus = 75
 
 /datum/uplink_item/device_tools/hacked_module
-	name = "Hacked AI Upload Module"
-	desc = "When used with an upload console, this module allows you to upload priority laws to an artificial intelligence. Be careful with their wording, as artificial intelligences may look for loopholes to exploit."
+	name = "Взломанный Модуль загрузки для ИИ"
+	desc = "При использовании с консолью аплоуда этот модуль позволяет загружить рукописный закон наивысшего приоритета ИИ станции. Будьте осторожны с его содержанием, поскольку ИИ может искать лазейки в формулировке."
 	reference = "HAI"
 	item = /obj/item/ai_module/syndicate
 	cost = 15
 
 /datum/uplink_item/device_tools/powersink
-	name = "Power Sink"
-	desc = "When screwed to wiring attached to an electric grid, then activated, this large device places excessive load on the grid, causing a stationwide blackout. The sink cannot be carried because of its excessive size. Ordering this sends you a small beacon that will teleport the power sink to your location on activation."
+	name = "Силовой Поглотитель"
+	desc = "При подключении к электросети и последующем включении это огромное устройство создает чрезмерную нагрузку на сеть, что приводит к отключению электроэнергии по всей станции. Силовой Поглотитель невозможно переносить из-за его больших размеров. После оплаты, вы получите небольшой маячок, который при активации телепортирует Силовой Поглотитель в ваше местоположение."
 	reference = "PS"
 	item = /obj/item/beacon/syndicate/power_sink
 	cost = 50
 
 /datum/uplink_item/device_tools/singularity_beacon
-	name = "Power Beacon"
-	desc = "When screwed to wiring attached to an electric grid and activated, this large device pulls any \
-			active gravitational singularities. This will not work when the engine is still \
-			in containment. Because of its size, it cannot be carried. Ordering this \
-			sends you a small beacon that will teleport the larger beacon to your location upon activation."
+	name = "Силовой Маяк"
+	desc = "Будучи прикрученным к проводам с питанием от электросети и приведенным в действие, это большое устройство притягивает все действующие сингулярности к себе. Силовой Маяк не сможет притянуть сингулярность, если её удерживает защитный барьер . Из-за своих размеров его нельзя переносить. После оплаты, вы получите небольшой маячок, который при активации телепортирует Силовой Маяк в ваше местоположение."
 	reference = "SNGB"
 	item = /obj/item/beacon/syndicate
 	cost = 10
@@ -723,30 +714,30 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	hijack_only = TRUE //This is an item only useful for a hijack traitor, as such, it should only be available in those scenarios.
 
 /datum/uplink_item/device_tools/advpinpointer
-	name = "Advanced Pinpointer"
-	desc = "A pinpointer that tracks any specified coordinates, DNA string, high value item or the nuclear authentication disk."
+	name = "Продвинутый Целеуказатель"
+	desc = "Пинпоинтер, который отслеживает любые заданные координаты, ДНК след, особо ценный предмет или диск ядерной аутентификации."
 	reference = "ADVP"
 	item = /obj/item/pinpointer/advpinpointer
 	cost = 10
 	can_discount = FALSE
 
 /datum/uplink_item/device_tools/ai_detector
-	name = "Artificial Intelligence Detector" // changed name in case newfriends thought it detected disguised ai's
-	desc = "A functional multitool that turns red when it detects an artificial intelligence watching it or its holder. Knowing when an artificial intelligence is watching you is useful for knowing when to maintain cover."
+	name = "Детектор Искусственного Интеллекта" // changed name in case newfriends thought it detected disguised ai's
+	desc = "Функциональный мультитул, который загорается красным при обнаружении наблюдения за владельцем со стороны ИИ станции."
 	reference = "AID"
 	item = /obj/item/multitool/ai_detect
 	cost = 5
 
 /datum/uplink_item/device_tools/jammer
-	name = "Radio Jammer"
-	desc = "When turned on this device will scramble any outgoing radio communications near you, making them hard to understand."
+	name = "Источник радиопомех"
+	desc = "При включении будет блокировать все исходящие радиосообщения поблизости от вас, что затруднит их понимание."
 	reference = "RJ"
 	item = /obj/item/jammer
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 
 /datum/uplink_item/device_tools/decoy_nade
-	name = "Decoy Grenade Kit"
-	desc = "A box of five grenades that can be configured to reproduce many suspicious sounds at varying rates."
+	name = "Набор ложных гранат"
+	desc = "Коробка из пяти гранат, каждая из которых может воспроизводить множество подозрительных звуков."
 	reference = "DCY"
 	item = /obj/item/storage/box/syndie_kit/decoy
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 20 -> 5
