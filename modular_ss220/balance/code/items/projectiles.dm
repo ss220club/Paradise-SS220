@@ -47,3 +47,9 @@
 
 /obj/projectile/beam/laser
 	icon_state = "laser_alt"
+
+/obj/projectile/beam/immolator
+	icon_state = "temp_8"
+
+/obj/projectile/beam/xray
+	icon_state = "temp_4"
