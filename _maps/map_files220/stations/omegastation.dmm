@@ -5997,14 +5997,17 @@
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
-"ary" = (
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
+"ary" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
+	},
+/obj/effect/turf_decal/tiles/department/engineering/side{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
@@ -7205,6 +7208,7 @@
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 8
 	},
+/obj/machinery/economy/vending/wallmed/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/east)
 "avu" = (
@@ -13782,17 +13786,9 @@
 	dir = 8
 	},
 /obj/item/clothing/accessory/holster,
-/obj/item/gun/projectile/revolver/mateba,
 /obj/item/storage/belt/fannypack/black,
 /obj/item/storage/backpack/satcheldeluxe{
 	pixel_y = 9
-	},
-/obj/item/ammo_box/a357,
-/obj/item/ammo_box/a357,
-/obj/item/ammo_box/a357,
-/obj/item/paper/central_command{
-	name = "Разрешение на ношения оружия";
-	info = "<grid><row><cell><logo><cell><small>Форма NanoTrasen NT-CC-RES</b></small><center><br><b>Центр Управление Безопасности НТ</b></grid><br><br><i><large><b> Разрешение на ношение оружия.</b></i></center><br>Данному члену экипажа, в должности Nanotrasen Career Trainer, было выдано разрешение на оружие. Соглашается с условиями его использования, хранения и применения. Данное оружие обязуюсь применять только в целях самообороны, защиты своих личных вещей, и рабочего места, а так же для защиты своих коллег.<br>При попытке применения оружия, против остальных членов экипажа не предоставляющих угрозу, или при запугивании данным оружием, я лишаюсь лицензии на оружие, а так же понесу наказания, при нарушении закона.<br>Оружие: <b>Unica 6 auto-revolver</b>"
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/procedure/trainer_office)
@@ -22968,6 +22964,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/economy/vending/wallmed/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "bUe" = (
@@ -24363,6 +24360,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/turf_decal/tiles/white/corner,
+/obj/machinery/economy/vending/wallmed/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/public/locker)
 "cYy" = (
@@ -26598,13 +26596,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
-"eVm" = (
-/obj/effect/turf_decal/tiles/neutral/corner{
-	dir = 8
-	},
-/obj/machinery/economy/vending/wallmed/directional/west,
-/turf/simulated/floor/plasteel,
-/area/station/hallway/primary/central/east)
 "eVu" = (
 /obj/structure/chair/wood,
 /obj/item/radio/intercom/directional/west,
@@ -31633,6 +31624,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/structure/curtain,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -32913,6 +32905,7 @@
 /area/station/security/permabrig)
 "kfV" = (
 /obj/structure/toilet/directional/east,
+/obj/structure/curtain,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -44299,7 +44292,6 @@
 "tbI" = (
 /obj/machinery/economy/vending/autodrobe,
 /obj/effect/turf_decal/tiles/white/corner,
-/obj/machinery/economy/vending/wallmed/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/public/locker)
 "tbN" = (
@@ -44993,12 +44985,6 @@
 "tNU" = (
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/fpmaint)
-"tOv" = (
-/obj/effect/turf_decal/tiles/department/engineering/side{
-	dir = 5
-	},
-/turf/simulated/wall/r_wall,
-/area/station/engineering/atmos)
 "tOS" = (
 /turf/simulated/wall,
 /area/station/science/robotics)
@@ -45744,11 +45730,11 @@
 	id_tag = "RnDChem";
 	name = "Biohazard Shutter"
 	},
-/obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/heavy,
 /turf/simulated/floor/engine,
 /area/station/science/test_chamber)
 "umO" = (
@@ -49802,7 +49788,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tiles/department/engineering/side{
-	dir = 1
+	dir = 5
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -74522,7 +74508,7 @@ rEx
 rEx
 rEx
 rEx
-tOv
+rEx
 ary
 iqT
 sss
@@ -88144,7 +88130,7 @@ eIn
 ayU
 eIn
 ari
-eVm
+aQa
 buO
 auo
 avt
