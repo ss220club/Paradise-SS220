@@ -21,7 +21,6 @@
 	var/instant_application = FALSE
 
 /obj/item/reagent_containers/hypospray/autoinjector/custom/update_icon_state()
-	. = ..()
 	icon_state = replacetext(icon_state, regex(@"\d+$"), "")
 	if(reagents.total_volume <= 0)
 		icon_state = "[icon_state]0"
@@ -145,7 +144,7 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/custom/critical(src)
 
 /obj/item/storage/pill_bottle/medipen_case/radiation
-	name = "Кейс содержащий противорадиационные и токсинные автоинжекторы"
+	name = "Кейс содержащий противорадиационные автоинжекторы"
 	wrapper_color = COLOR_ORANGE
 
 /obj/item/storage/pill_bottle/medipen_case/radiation/populate_contents()
