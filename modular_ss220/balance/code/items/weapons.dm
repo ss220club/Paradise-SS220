@@ -37,11 +37,11 @@
 /obj/item/gun/energy/laser/awaymission_aeg/rnd
 	w_class = WEIGHT_CLASS_NORMAL
 
-//ion carabine delay change
+//ion carbine delay change
 /obj/item/gun/energy/ionrifle/carbine
-	ammo_type = list(/obj/item/ammo_casing/energy/ion/carabine)
+	ammo_type = list(/obj/item/ammo_casing/energy/ion/carbine)
 
-/obj/item/ammo_casing/energy/ion/carabine
+/obj/item/ammo_casing/energy/ion/carbine
 	delay = 0.9 SECONDS
 
 //lasergun change
