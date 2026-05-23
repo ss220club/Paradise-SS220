@@ -31,7 +31,7 @@
 	tool_behaviour = TOOL_CROWBAR
 	toolspeed = 1
 	attack_verb = list(
-		"разбивает",
+		"ломает",
 		"крушит",
 		"прорывает"
 	)
