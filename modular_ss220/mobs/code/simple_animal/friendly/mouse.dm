@@ -115,25 +115,25 @@
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
 			if(hunger_status != STATUS_FAT)
 				hunger_status = STATUS_FAT
-				to_chat(src, span_userdanger("Ты чувствуешь, что в тебя больше не влезет и кусочка"))
+				to_chat(src, SPAN_USERDANGER("Ты чувствуешь, что в тебя больше не влезет и кусочка"))
 		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			if(hunger_status != STATUS_FULL)
 				hunger_status = STATUS_FULL
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
 			if(hunger_status != STATUS_WELL_FED)
 				hunger_status = STATUS_WELL_FED
-				to_chat(src, span_notice("Ты чувствуешь себя превосходно!"))
+				to_chat(src, SPAN_NOTICE("Ты чувствуешь себя превосходно!"))
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
 			if(hunger_status != STATUS_FED)
 				hunger_status = STATUS_FED
 		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
 			if(hunger_status != STATUS_HUNGRY)
 				hunger_status = STATUS_HUNGRY
-				to_chat(src, span_warning("Твой живот угрюмо урчит, лучше найти что-то поесть"))
+				to_chat(src, SPAN_WARNING("Твой живот угрюмо урчит, лучше найти что-то поесть"))
 		else
 			if(hunger_status != STATUS_STARVING)
 				hunger_status = STATUS_STARVING
-				to_chat(src, span_userdanger("Ты смертельно голоден!"))
+				to_chat(src, SPAN_USERDANGER("Ты смертельно голоден!"))
 			adjustHealth(nutrition > NUTRITION_LEVEL_HYPOGLYCEMIA ? 0.02 : 0.05)
 
 	handle_nutrition_alerts()
@@ -174,15 +174,15 @@
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/basic/mouse/proc/consume(obj/item/food/F)
 	if(busy)
-		to_chat(src, span_warning("Сначала доешь то, что уже жуёшь."))
+		to_chat(src, SPAN_WARNING("Сначала доешь то, что уже жуёшь."))
 		return
 
 	busy = TRUE
 	// linear scale from (MIN_FEADING_TIME, to MAX_FEADING_TIME)
 	var/eat_time = MIN_FEADING_TIME + (MAX_FEADING_TIME - MIN_FEADING_TIME) * (nutrition / GIB_FEED_LEVEL)
-	to_chat(src, span_notice("Ты начинаешь употреблять [F]."))
+	to_chat(src, SPAN_NOTICE("Ты начинаешь употреблять [F]."))
 	if(!do_after_once(src, eat_time, target = F, needhand = FALSE))
-		to_chat(src, span_notice("Не доедая, ты перестаёшь жевать [F]!"))
+		to_chat(src, SPAN_NOTICE("Не доедая, ты перестаёшь жевать [F]!"))
 		busy = FALSE
 		return
 

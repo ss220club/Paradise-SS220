@@ -31,6 +31,7 @@
 		ACCESS_EXPEDITION,
 		ACCESS_SMITH
 	)
+	skeleton_access = list(ACCESS_CAPTAIN)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
 	outfit = /datum/outfit/job/qm
 	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Снабжения), базовых должностных обязанностей и профессиональных действий."
@@ -77,6 +78,11 @@
 		ACCESS_MINERAL_STOREROOM,
 		ACCESS_SUPPLY_SHUTTLE,
 	)
+	skeleton_access = list(
+		ACCESS_MINING,
+		ACCESS_MINING_STATION,
+		ACCESS_SMITH,
+	)
 	alt_titles = list("Mail Carrier", "Courier")
 	outfit = /datum/outfit/job/cargo_tech
 	standard_paycheck = CREW_PAY_LOW
@@ -114,7 +120,11 @@
 		ACCESS_MINERAL_STOREROOM,
 		ACCESS_MINING,
 		ACCESS_MINING_STATION,
-		ACCESS_SMITH
+		ACCESS_SMITH,
+	)
+	skeleton_access = list(
+		ACCESS_MAILSORTING,
+		ACCESS_SUPPLY_SHUTTLE,
 	)
 	alt_titles = list("Metalworker", "Tinkerer")
 	outfit = /datum/outfit/job/smith
@@ -152,6 +162,13 @@
 		ACCESS_MINERAL_STOREROOM,
 		ACCESS_MINING_STATION,
 		ACCESS_MINING,
+	)
+	skeleton_access = list(
+		ACCESS_MAILSORTING,
+		ACCESS_CARGO,
+		ACCESS_CARGO_BAY,
+		ACCESS_SUPPLY_SHUTTLE,
+		ACCESS_SMITH,
 	)
 	alt_titles = list("Spelunker")
 	outfit = /datum/outfit/job/mining
@@ -239,10 +256,15 @@
 		ACCESS_EXTERNAL_AIRLOCKS,
 		ACCESS_TELEPORTER,
 		ACCESS_CARGO,
-		ACCESS_CARGO_BAY,
 		ACCESS_MINERAL_STOREROOM,
+	)
+	skeleton_access = list(
+		ACCESS_CARGO_BAY,
 		ACCESS_SUPPLY_SHUTTLE,
-		ACCESS_MINING_STATION
+		ACCESS_MAILSORTING,
+		ACCESS_MINING_STATION,
+		ACCESS_MINING,
+		ACCESS_SMITH,
 	)
 	alt_titles = list("Salvage Technician", "Scavenger")
 	outfit = /datum/outfit/job/explorer
@@ -281,6 +303,11 @@
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
 	access = list(ACCESS_BAR, ACCESS_MAINT_TUNNELS, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM)
+	skeleton_access = list(
+		ACCESS_KITCHEN,
+		ACCESS_HYDROPONICS,
+		ACCESS_MORGUE,
+	)
 	outfit = /datum/outfit/job/bartender
 	standard_paycheck = CREW_PAY_LOW
 
@@ -328,6 +355,12 @@
 		ACCESS_KITCHEN,
 		ACCESS_MAINT_TUNNELS
 	)
+	skeleton_access = list(
+		ACCESS_BAR,
+		ACCESS_MORGUE,
+		ACCESS_HYDROPONICS,
+		ACCESS_MINERAL_STOREROOM,
+	)
 	alt_titles = list("Cook","Culinary Artist","Butcher")
 	outfit = /datum/outfit/job/chef
 	standard_paycheck = CREW_PAY_LOW
@@ -369,6 +402,11 @@
 		ACCESS_HYDROPONICS,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MORGUE
+	)
+	skeleton_access = list(
+		ACCESS_KITCHEN,
+		ACCESS_BAR,
+		ACCESS_MINERAL_STOREROOM,
 	)
 	alt_titles = list("Hydroponicist", "Botanical Researcher")
 	outfit = /datum/outfit/job/hydro
@@ -482,7 +520,7 @@
 	active = TRUE
 	background_icon_state = "bg_spell"
 	build_all_button_icons()
-	to_chat(H, "<span class='notice'>Вы начинаете вести себя неуклюже, чтобы отвести от себя подозрения. Снова сосредоточьтесь, прежде чем использовать оружие.</span>")
+	to_chat(H, SPAN_NOTICE("Вы начинаете вести себя неуклюже, чтобы отвести от себя подозрения. Снова сосредоточьтесь, прежде чем использовать оружие."))
 
 /datum/action/innate/toggle_clumsy/Deactivate()
 	var/mob/living/carbon/human/H = owner
@@ -491,7 +529,7 @@
 	active = FALSE
 	background_icon_state = "bg_default"
 	build_all_button_icons()
-	to_chat(H, "<span class='notice'>Вы сосредоточились и теперь можете эффективно пользоваться оружием.</span>")
+	to_chat(H, SPAN_NOTICE("Вы сосредоточились и теперь можете эффективно пользоваться оружием."))
 
 /datum/job/mime
 	title = "Mime"

@@ -3,15 +3,15 @@
 	name = "пол это лава"
 	desc = "Пол превращается в необычно холодную лаву, которая слегка повреждает все, что в неё попадёт."
 
-	telegraph_message = "<span class='warning'>Вы чувствуете, как земля под вами становится всё горячее. Волны жара создают миражи в воздухе.</span>"
+	telegraph_message = SPAN_WARNING("Вы чувствуете, как земля под вами становится всё горячее. Волны жара создают миражи в воздухе.")
 	telegraph_duration = 150
 
-	weather_message = "<span class='userdanger'>Пол это лава! Взбирайтесь на что-нибудь!</span>"
+	weather_message = SPAN_USERDANGER("Пол это лава! Взбирайтесь на что-нибудь!")
 	weather_duration_lower = 300
 	weather_duration_upper = 600
 	weather_overlay = "lava"
 
-	end_message = "<span class='danger'>Пол остывает и возвращается в свое обыкновенное состояние.</span>"
+	end_message = SPAN_DANGER("Пол остывает и возвращается в свое обыкновенное состояние.")
 	end_duration = 0
 
 	area_types = list(/area)

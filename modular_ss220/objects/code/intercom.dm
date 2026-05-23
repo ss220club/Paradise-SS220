@@ -74,7 +74,7 @@
 	name = "prison intercom"
 	desc = /obj/item/radio/intercom::desc
 
-/obj/item/radio/intercom/locked/prison/New()
-	..()
+/obj/item/radio/intercom/locked/prison/Initialize(mapload, direction, building)
+	. = ..()
 	wires.cut(WIRE_RADIO_TRANSMIT) // this mends the wire actually
 	disable_mic()

@@ -21,7 +21,7 @@
 	//While piracy is a heinious deed, we don't want people uploading programmatic books into the player book DB for obvious reasons
 	copyright = TRUE
 	name = "Book Manual"
-	desc = "Please make a report on the github if you somehow get ahold of one of these in-game."
+	desc = ABSTRACT_TYPE_DESC
 	summary = "This is a manual procured by Nanotrasen, it contains important information!"
 	//Pages has to be a list of strings, it will break the book otherwise
 	pages = list({"How did we get here? Anyway, if you are reading this please make a report on the Github as you should not
@@ -133,9 +133,11 @@
 			D-3: About 250 moles of CO2 are released by the crystal</br></br></br>
 
 			C Class: Events with mild effects to standard setups. Operator intervention MAY be required. Engineering will be alerted on telecomms.</br></br>
-			C-1: 250 moles of oxygen are released by the crystal</br>
-			C-2: 250 moles of plasma are released by the crystal</br>
-			C-3: The temperature at which the engine starts to lose integrity is lowered for a few minutes.</br></br></br>
+			C-1: 2000 moles of oxygen are released by the crystal</br>
+			C-2: 2000 moles of plasma are released by the crystal</br>
+			C-3: The temperature at which the engine starts to lose integrity is lowered for a few minutes.
+			C-4: 2000 moles of hydrogen are released by the crystal.
+			C-5: 2000 moles of water vapor are released by the crystal.</br></br></br>
 
 			B Class: Events with significant effects to standard setups. Action may need to be taken to prevent a delamination event.</br></br>
 			B-1: The amount of plasma and O2 released by the engine is doubled for a few minutes.</br>

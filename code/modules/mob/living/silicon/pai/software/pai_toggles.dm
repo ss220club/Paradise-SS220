@@ -78,6 +78,7 @@
 		user.add_language("Clownish")
 		user.add_language("Neo-Russkiya") // SS220 EDIT - Cygni -> Neo-Russkiya
 		user.add_language("Tkachi")
+		user.add_language("Skkula-Runespeak")
 	else
 		user.remove_language("Sinta'unathi")
 		user.remove_language("Siik'tajr")
@@ -91,6 +92,7 @@
 		user.remove_language("Clownish")
 		user.remove_language("Neo-Russkiya") // SS220 EDIT - Cygni -> Neo-Russkiya
 		user.remove_language("Tkachi")
+		user.remove_language("Skkula-Runespeak")
 
 /datum/pai_software/translator/is_active(mob/living/silicon/pai/user)
 	return user.translator_on

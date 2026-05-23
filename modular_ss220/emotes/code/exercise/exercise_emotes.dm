@@ -35,12 +35,12 @@
 		return
 	var/mob/living/L = user
 	if(L.getStaminaLoss() > 0)
-		to_chat(user, span_warning(message_tired))
+		to_chat(user, SPAN_WARNING(message_tired))
 		return
 	if(!can_do_exercise(user))
 		return
 
-	user.visible_message(span_notice("[user] [message_prepare]"), span_notice(message_self_prepare), span_notice(message_blind_prepare))
+	user.visible_message(SPAN_NOTICE("[user] [message_prepare]"), SPAN_NOTICE(message_self_prepare), SPAN_NOTICE(message_blind_prepare))
 
 	var/list/choice_dict = list()
 	var/list/exercise_list = subtypesof(subtypes_types)
@@ -55,8 +55,8 @@
 	if(choice)
 		var/exercise_type = choice_dict[choice]
 		var/datum/exercise/exercise = new exercise_type(src, user)
-		var/temp_message = exercise.is_bold_message ? span_boldnotice("[exercise.message]") : span_notice("[exercise.message]")
-		var/temp_self_message = exercise.is_bold_message ? span_boldnotice("[exercise.self_message]") : span_notice("[exercise.self_message]")
+		var/temp_message = exercise.is_bold_message ? SPAN_BOLDNOTICE("[exercise.message]") : SPAN_NOTICE("[exercise.message]")
+		var/temp_self_message = exercise.is_bold_message ? SPAN_BOLDNOTICE("[exercise.self_message]") : SPAN_NOTICE("[exercise.self_message]")
 		var/temp_blind_message = "[exercise.blind_message]"
 		user.visible_message(temp_message, temp_self_message, temp_blind_message)
 		exercise.volume = get_volume(user)
@@ -74,26 +74,26 @@
 	var/mob/living/L = user
 
 	if(L.incapacitated())
-		to_chat(user, span_warning("Вы не в форме!"))
+		to_chat(user, SPAN_WARNING("Вы не в форме!"))
 		return FALSE
 	if(is_need_lying && (!L.resting || L.buckled))
-		to_chat(user, span_warning("Вы в неправильном положении! Ложитесь!"))
+		to_chat(user, SPAN_WARNING("Вы в неправильном положении! Ложитесь!"))
 		return FALSE
 
 	var/turf/user_turf = get_turf(user)
 	if(!user_turf)
-		to_chat(user, span_warning("Не на что опереться!"))
+		to_chat(user, SPAN_WARNING("Не на что опереться!"))
 		return FALSE
 	if(length(user_turf.contents) >= 10)
-		to_chat(user, span_warning("Пол захламлен, неудобно!"))
+		to_chat(user, SPAN_WARNING("Пол захламлен, неудобно!"))
 		return FALSE
 	for(var/atom/A in user_turf.contents)
 		if(isliving(A) && A != user) // antierp
 			var/mob/living/target = A
 			if(is_need_lying && target.body_position == LYING_DOWN)
-				to_chat(user, span_warning("Кто-то подо мной мне мешает!"))
+				to_chat(user, SPAN_WARNING("Кто-то подо мной мне мешает!"))
 			else
-				to_chat(user, span_warning("Кто-то мне мешает!"))
+				to_chat(user, SPAN_WARNING("Кто-то мне мешает!"))
 			return FALSE
 
 	if(ishuman(user))
@@ -112,11 +112,11 @@
 			)
 		for(var/zone in extremities_legs)
 			if(!H.get_limb_by_name(zone))
-				to_chat(user, span_warning("У вас проблемы с ногами! [message_warning]"))
+				to_chat(user, SPAN_WARNING("У вас проблемы с ногами! [message_warning]"))
 				return FALSE
 		for(var/zone in extremities_arms)
 			if(!H.get_limb_by_name(zone))
-				to_chat(user, span_warning("У вас проблемы с руками! [message_warning]"))
+				to_chat(user, SPAN_WARNING("У вас проблемы с руками! [message_warning]"))
 				return FALSE
 
 	return TRUE

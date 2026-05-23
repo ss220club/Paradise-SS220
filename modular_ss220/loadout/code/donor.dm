@@ -224,7 +224,7 @@
 	cost = 2
 
 /datum/gear/donor/id_decal_silver_colored
-	display_name = "Серебрянная наклейка на карту (Голографическая)"
+	display_name = "Глянцевая наклейка на карту (Голографическая)"
 	path = /obj/item/id_skin/colored/silver
 	donator_tier = 3
 	cost = 2
@@ -320,7 +320,7 @@
 	cost = 4
 
 /datum/gear/donor/id_decal_snake
-	display_name = "Бегущая наклейка на карту"
+	display_name = "Бегущая наклейка на карту (Голографическая)"
 	path = /obj/item/id_skin/colored/snake
 	donator_tier = 4
 	cost = 4
@@ -332,7 +332,7 @@
 	cost = 4
 
 /datum/gear/donor/id_decal_terminal
-	display_name = "Наклейка на карту в виде терминала"
+	display_name = "Кибернетическая наклейка на карту"
 	path = /obj/item/id_skin/terminal
 	donator_tier = 4
 	cost = 4

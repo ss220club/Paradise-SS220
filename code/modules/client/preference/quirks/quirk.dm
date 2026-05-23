@@ -104,16 +104,16 @@ GLOBAL_LIST_EMPTY(quirk_paths)
 	if(!active_character)
 		return FALSE
 	if((to_add.species_flags & QUIRK_MACHINE_INCOMPATIBLE) && (active_character.species == "Machine"))
-		to_chat(src.client, "<span class='warning'>Такой квирк нельзя приписать КПБ.</span>")
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать КПБ."))
 		return FALSE
 	if((to_add.species_flags & QUIRK_ORGANIC_INCOMPATIBLE) && (active_character.species != "Machine"))
-		to_chat(src.client, "<span class='warning'>Такой квирк нельзя приписать Органику.</span>")
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать Органику."))
 		return FALSE
 	if((to_add.species_flags & QUIRK_SLIME_INCOMPATIBLE) && (active_character.species == "Slime People")) //Since they don't have eyes
-		to_chat(src.client, "<span class='warning'>Такой квирк нельзя приписать Слаймомену, у него же нет глаз!</span>")
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать Слаймомену, у него же нет глаз!"))
 		return FALSE
 	if((to_add.species_flags & QUIRK_PLASMAMAN_INCOMPATIBLE) && (active_character.species == "Plasmaman")) //If someone can figure out how to only let plasmaman with a secondary language take this feel free to do that
-		to_chat(src.client, "<span class='warning'>Такой квирк нельзя приписать Плазмамену, у него нет второго языка!</span>")
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать Плазмамену, у него нет второго языка!"))
 		return FALSE
 	active_character.quirks += to_add
 	return TRUE

@@ -15,7 +15,7 @@
 
 /obj/structure/musician/drumskit/examine()
 	. = ..()
-	. += "<span class='notice'>Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.</span>"
+	. += SPAN_NOTICE("Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.")
 
 /obj/structure/musician/drumskit/Initialize(mapload)
 	. = ..()
@@ -40,12 +40,12 @@
 		return
 
 	if(!anchored && !isinspace())
-		to_chat(user, span_notice("You secure [src] to the floor."))
+		to_chat(user, SPAN_NOTICE("You secure [src] to the floor."))
 		anchored = TRUE
 		can_buckle = TRUE
 		layer = 5
 	else if(anchored)
-		to_chat(user, span_notice("You unsecure and disconnect [src]."))
+		to_chat(user, SPAN_NOTICE("You unsecure and disconnect [src]."))
 		anchored = FALSE
 		can_buckle = FALSE
 		layer = 2.5

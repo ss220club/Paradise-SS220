@@ -1168,7 +1168,7 @@
 
 /obj/item/food/fathersoup/On_Consume(mob/M, mob/user)
 	. = ..()
-	user.visible_message(span_notice("У [M] на лбу аж пот выступает."))
+	user.visible_message(SPAN_NOTICE("У [M] на лбу аж пот выступает."))
 	if(prob(33))
 		var/soup_talk = "Ух бля..."
 		M.say(soup_talk)
@@ -1216,7 +1216,7 @@
 /obj/item/pizzabox/infinite/examine(mob/user)
 	. = ..()
 	if(isobserver(user))
-		. += span_deadsay("Эта коробка для пиццы является аномальной и будет производить бесконечное количество пиццы.")
+		. += SPAN_DEADSAY("Эта коробка для пиццы является аномальной и будет производить бесконечное количество пиццы.")
 
 /obj/item/pizzabox/infinite/attack_self__legacy__attackchain(mob/living/user)
 	QDEL_NULL(pizza)

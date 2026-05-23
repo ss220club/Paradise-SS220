@@ -9,8 +9,8 @@
 
 /obj/item/borg/upgrade/storageincreaser/do_install(mob/living/silicon/robot/R)
 	for(var/obj/item/borg/upgrade/storageincreaser/U in R.contents)
-		to_chat(R, span_notice("A [name] unit is already installed!"))
-		to_chat(usr, span_notice("There's no room for another [name] unit!"))
+		to_chat(R, SPAN_NOTICE("A [name] unit is already installed!"))
+		to_chat(usr, SPAN_NOTICE("There's no room for another [name] unit!"))
 		return FALSE
 
 	for(var/datum/robot_storage/energy/ES in R.module.storages)
@@ -65,7 +65,7 @@
 /obj/item/holosign_creator/atmos/robot/proc/clean_signs(mob/living/silicon/robot/R)
 	if(length(signs) > 0)
 		QDEL_LIST_CONTENTS(signs)
-		to_chat(R, span_notice("Все активные голограммы были отключены."))
+		to_chat(R, SPAN_NOTICE("Все активные голограммы были отключены."))
 
 /obj/item/borg/upgrade/atmos_holofan/do_install(mob/living/silicon/robot/R)
 	var/obj/item/holosign_creator/atmos/robot/T = locate() in R.module.modules
@@ -99,7 +99,7 @@
 			missing_upgrades += required_upgrade::name
 
 	if(length(missing_upgrades) > 0)
-		to_chat(user, span_notice("Ошибка: отсутствуют необходимые улучшения: [missing_upgrades.Join(", ")]."))
+		to_chat(user, SPAN_NOTICE("Ошибка: отсутствуют необходимые улучшения: [missing_upgrades.Join(", ")]."))
 		return FALSE
 
 	return TRUE

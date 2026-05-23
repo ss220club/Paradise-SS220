@@ -1,23 +1,3 @@
-
-/client/proc/forceEvent(type in SSevents.allEvents)
-	set name = "Trigger Event"
-	set category = "Event"
-
-	if(!check_rights(R_EVENT))
-		return
-
-	if(ispath(type))
-		new type(new /datum/event_meta(EVENT_LEVEL_MAJOR))
-		message_admins("[key_name_admin(usr)] has triggered an event. ([type])", 1)
-
-/client/proc/event_manager_panel()
-	set name = "Event Manager Panel"
-	set category = "Event"
-	if(SSevents)
-		SSevents.Interact(usr)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Event Manager") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	return
-
 /proc/findEventArea() //Here's a nice proc to use to find an area for your event to land in!
 	var/list/safe_areas = typecacheof(list(
 		/area/station/turret_protected/ai,

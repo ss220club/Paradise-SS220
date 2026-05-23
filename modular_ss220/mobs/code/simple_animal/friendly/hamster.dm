@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(hamster_count, 0)
 
 /mob/living/basic/mouse/hamster/baby/start_pulling(atom/movable/AM, state, force = pull_force, show_message = FALSE)
 	if(show_message)
-		to_chat(src, span_warning("Вы слишком малы чтобы что-то тащить."))
+		to_chat(src, SPAN_WARNING("Вы слишком малы чтобы что-то тащить."))
 	return
 
 /mob/living/basic/mouse/hamster/baby/Life(seconds, times_fired)
@@ -80,6 +80,6 @@ GLOBAL_VAR_INIT(hamster_count, 0)
 /mob/living/basic/mouse/hamster/baby/on_atom_entered(datum/source, atom/movable/entered)
 	if(!ishuman(source) || stat)
 		return ..()
-	to_chat(source, span_notice("[bicon(src)] раздавлен!"))
+	to_chat(source, SPAN_NOTICE("[bicon(src)] раздавлен!"))
 	death()
 	splat(user = source)

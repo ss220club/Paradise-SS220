@@ -17,7 +17,7 @@
 
 /obj/item/food/nails/On_Consume(mob/living/carbon/human/user)
 	. = ..()
-	to_chat(user, span_warning("Ты чувствуешь адскую боль во рту!"))
+	to_chat(user, SPAN_WARNING("Ты чувствуешь адскую боль во рту!"))
 	playsound(user.loc, "bonebreak", 60, TRUE)
 	user.apply_damage(5, BRUTE, "head")
 

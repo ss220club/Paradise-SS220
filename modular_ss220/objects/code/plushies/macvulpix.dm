@@ -41,7 +41,7 @@
 		return
 
 	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
-		to_chat(user, span_warning("У вас нет возможности снять очки с [src]!"))
+		to_chat(user, SPAN_WARNING("У вас нет возможности снять очки с [src]!"))
 		return
 
 	if(!user.get_active_hand() && Adjacent(user))
@@ -56,6 +56,6 @@
 /obj/item/toy/plushie/macvulpix/examine(mob/user)
 	. = ..()
 	if(glasses)
-		. += span_notice("Нажмите <b>Alt-Click</b> на игрушку, чтобы снять очки.")
+		. += SPAN_NOTICE("Нажмите <b>Alt-Click</b> на игрушку, чтобы снять очки.")
 	else
-		. += span_notice("На эту игрушку можно надеть солнцезащитные очки.")
+		. += SPAN_NOTICE("На эту игрушку можно надеть солнцезащитные очки.")

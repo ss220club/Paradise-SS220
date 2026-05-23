@@ -33,6 +33,7 @@
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "sleeper"
 	origin_tech = "engineering=3;biotech=3;plasmatech=2"
+	materials = list(MAT_METAL = 5000, MAT_GLASS = 10000)
 	energy_drain = 20
 	equip_cooldown = 20
 	var/mob/living/carbon/patient = null
@@ -57,8 +58,8 @@
 		return
 	if(!patient_insertion_check(target))
 		return
-	occupant_message("<span class='notice'>Вы начинаете помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]...</span>")
-	chassis.visible_message("<span class='warning'>[capitalize(chassis.declent_ru(NOMINATIVE))] начинает помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
+	occupant_message(SPAN_NOTICE("Вы начинаете помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]..."))
+	chassis.visible_message(SPAN_WARNING("[capitalize(chassis.declent_ru(NOMINATIVE))] начинает помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 	if(do_after_cooldown(target))
 		if(!patient_insertion_check(target))
 			return
@@ -66,19 +67,19 @@
 		patient = target
 		START_PROCESSING(SSobj, src)
 		update_equip_info()
-		occupant_message("<span class='notice'>Пациент [target.declent_ru(NOMINATIVE)] успешно помещён в [declent_ru(ACCUSATIVE)]. Функции жизнеобеспечения включены.</span>")
-		chassis.visible_message("<span class='warning'>[capitalize(chassis.declent_ru(NOMINATIVE))] помещает [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
+		occupant_message(SPAN_NOTICE("Пациент [target.declent_ru(NOMINATIVE)] успешно помещён в [declent_ru(ACCUSATIVE)]. Функции жизнеобеспечения включены."))
+		chassis.visible_message(SPAN_WARNING("[capitalize(chassis.declent_ru(NOMINATIVE))] помещает [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]."))
 		log_message("[target] loaded. Life support functions engaged.")
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/proc/patient_insertion_check(mob/living/carbon/target)
 	if(target.buckled)
-		occupant_message("<span class='warning'>Пациент [target.declent_ru(NOMINATIVE)] не может быть помещён в слипер, потому что пристегнут к [target.buckled.declent_ru(GENITIVE)]!</span>")
+		occupant_message(SPAN_WARNING("Пациент [target.declent_ru(NOMINATIVE)] не может быть помещён в слипер, потому что пристегнут к [target.buckled.declent_ru(GENITIVE)]!"))
 		return FALSE
 	if(target.has_buckled_mobs())
-		occupant_message("<span class='warning'>Пациент [target.declent_ru(NOMINATIVE)] не может быть помещён в слипер из-за существ, прикреплённых к нему!</span>")
+		occupant_message(SPAN_WARNING("Пациент [target.declent_ru(NOMINATIVE)] не может быть помещён в слипер из-за существ, прикреплённых к нему!"))
 		return FALSE
 	if(patient)
-		occupant_message("<span class='warning'>В слипере уже есть пациент!</span>")
+		occupant_message(SPAN_WARNING("В слипере уже есть пациент!"))
 		return FALSE
 	return TRUE
 
@@ -94,7 +95,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/detach()
 	if(patient)
-		occupant_message("<span class='warning'>Невозможно отсоединить [declent_ru(ACCUSATIVE)] — оборудование занято!</span>")
+		occupant_message(SPAN_WARNING("Невозможно отсоединить [declent_ru(ACCUSATIVE)] — оборудование занято!"))
 		return
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -252,6 +253,7 @@
 	range = MECHA_MELEE | MECHA_RANGED
 	equip_cooldown = 10
 	origin_tech = "materials=3;biotech=4;magnets=4"
+	materials = list(MAT_METAL = 3000, MAT_GLASS = 2000)
 
 /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun/Initialize(mapload)
 	. = ..()
@@ -292,10 +294,10 @@
 	if(mode)
 		return analyze_reagents(target)
 	if(!length(syringes))
-		occupant_message("<span class='alert'>Шприцы не загружены.</span>")
+		occupant_message(SPAN_ALERT("Шприцы не загружены."))
 		return
 	if(reagents.total_volume<=0)
-		occupant_message("<span class='alert'>Нет доступных реагентов для заполнения шприца.</span>")
+		occupant_message(SPAN_ALERT("Нет доступных реагентов для заполнения шприца."))
 		return
 	var/turf/trg = get_turf(target)
 	var/obj/item/reagent_containers/syringe/mechsyringe = syringes[1]
@@ -324,7 +326,7 @@
 			var/mob/living/carbon/M = safepick(mobs)
 			if(M)
 				var/R
-				mechsyringe.visible_message("<span class='attack'> Шприц попадает по [M.declent_ru(DATIVE)]!</span>")
+				mechsyringe.visible_message(SPAN_ATTACK(" Шприц попадает по [M.declent_ru(DATIVE)]!"))
 				if(M.can_inject(originaloccupant, TRUE, original_target_zone))
 					if(mechsyringe.reagents)
 						for(var/datum/reagent/A in mechsyringe.reagents.reagent_list)
@@ -471,7 +473,7 @@
 		occupant_message("Объект слишком далеко.")
 		return FALSE
 	if(!A.reagents || ismob(A))
-		occupant_message("<span class='alert'>Информация о реагентах [A.declent_ru(GENITIVE)] не получена.</span>")
+		occupant_message(SPAN_ALERT("Информация о реагентах [A.declent_ru(GENITIVE)] не получена."))
 		return FALSE
 	occupant_message("Анализ реагентов...")
 	for(var/datum/reagent/R as anything in A.reagents.reagent_list)
@@ -520,6 +522,7 @@
 	icon_state = "mecha_clamp"	//can work, might use a blue resprite later but I think it works for now
 	equip_cooldown = 15
 	energy_drain = 10
+	materials = list(MAT_METAL = 5000, MAT_SILVER = 2000, MAT_TITANIUM = 1500)
 	var/dam_force = 20
 
 
@@ -534,12 +537,12 @@
 	if(isliving(target))	//interact with living beings
 		var/mob/living/M = target
 		if(chassis.occupant.a_intent == INTENT_HARM)//the patented, medical rescue claw is incapable of doing harm. Worry not.
-			target.visible_message("<span class='notice'>[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>", \
+			target.visible_message(SPAN_NOTICE("[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар."), \
 								"<span class='notice'[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>")
 		else
 			push_aside(chassis, M)//out of the way, I have people to save!
-			occupant_message("<span class='notice'>Вы аккуратно отодвигаете [target.declent_ru(ACCUSATIVE)] с дороги.</span>")
-			chassis.visible_message("<span class='notice'>[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно отодвигает [target.declent_ru(ACCUSATIVE)] с дороги.</span>")
+			occupant_message(SPAN_NOTICE("Вы аккуратно отодвигаете [target.declent_ru(ACCUSATIVE)] с дороги."))
+			chassis.visible_message(SPAN_NOTICE("[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно отодвигает [target.declent_ru(ACCUSATIVE)] с дороги."))
 
 /obj/item/mecha_parts/mecha_equipment/medical/rescue_jaw/proc/push_aside(obj/mecha/M, mob/living/L)
 	switch(get_dir(M, L))

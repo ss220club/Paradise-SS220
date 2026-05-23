@@ -59,7 +59,7 @@
 		active_secretion = TRUE
 		chemical_consuption = initial(chemical_consuption)
 		last_safe_zone_check = world.time
-		owner.visible_message(span_warning("Рот [owner] замирает, переставая выдыхать воздух!"))
+		owner.visible_message(SPAN_WARNING("Рот [owner] замирает, переставая выдыхать воздух!"))
 		SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 	else
 		switch_mode_off()
@@ -67,7 +67,7 @@
 /obj/item/organ/internal/lungs/serpentid/proc/switch_mode_off()
 	active_secretion = FALSE
 	chemical_consuption = 0
-	owner.visible_message(span_notice("Из рта [owner] снова начинает исходить воздух."))
+	owner.visible_message(SPAN_NOTICE("Из рта [owner] снова начинает исходить воздух."))
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 
 /obj/item/organ/internal/lungs/serpentid/switch_mode(force_off = FALSE)

@@ -16,7 +16,7 @@
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
 	icon_state = "welding"
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	materials = list(MAT_METAL=1750, MAT_GLASS=400)
+	materials = list(MAT_METAL = 1750, MAT_GLASS = 400)
 	flash_protect = FLASH_PROTECTION_WELDER
 	tint = FLASH_PROTECTION_WELDER
 	can_toggle = TRUE
@@ -63,6 +63,10 @@
 	var/onfire = FALSE
 	var/status = 0
 	var/fire_resist = T0C+1300	//this is the max temp it can stand before you start to cook. although it might not burn away, you take damage
+
+/obj/item/clothing/head/cakehat/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing_adjustment/monitor_headgear, 0, 3)
 
 /obj/item/clothing/head/cakehat/process()
 	if(!onfire)
@@ -126,11 +130,13 @@
 	name = "\improper Soviet officer hat"
 	desc = "A military officer hat designed to stand out so the conscripts know who is in charge."
 	icon_state = "sovietofficerhat"
+	icon_monitor = 'icons/mob/clothing/species/machine/monitor/hat.dmi'
 
 /obj/item/clothing/head/sovietadmiralhat
 	name = "\improper Soviet admiral hat"
 	desc = "This hat clearly belongs to someone very important."
 	icon_state = "sovietadmiralhat"
+	icon_monitor = 'icons/mob/clothing/species/machine/monitor/hat.dmi'
 
 /*
  * Pumpkin head
@@ -200,6 +206,7 @@
 	name = "mouse ears"
 	desc = "A pair of mouse ears. Squeak!"
 	icon_state = "mousey"
+	icon_monitor = null
 
 /*
  * Head Mirror
@@ -208,6 +215,7 @@
 	name = "head mirror"
 	desc = "A band of rubber with a very reflective looking mirror attached to the front of it. One of the early signs of medical budget cuts."
 	icon_state = "head_mirror"
+	icon_monitor = 'icons/mob/clothing/species/machine/monitor/hat.dmi'
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/head.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/head.dmi',
