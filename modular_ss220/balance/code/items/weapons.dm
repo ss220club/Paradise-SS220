@@ -63,11 +63,44 @@
 /obj/item/gun/projectile/shotgun/automatic/combat
 	recoil = 1.1
 
+/obj/item/gun/projectile/automatic/shotgun/bulldog
+	recoil = 1
+
+/obj/item/gun/projectile/automatic
+	recoil = 0.7
+
+/obj/item/gun/projectile/automatic/lasercarbine
+	recoil = 0
+
+/obj/item/gun/projectile/automatic/c20r/toy
+	recoil = 0.2
+
+/obj/item/gun/projectile/automatic/l6_saw/toy
+	recoil = 0.3
+
+/obj/item/gun/projectile/revolver/capgun
+	recoil = 0.1
+
+/obj/item/gun/projectile/automatic/l6_saw/toy/riot
+	recoil = 0.4
+
 /obj/item/gun/projectile/automatic/wt550
 	recoil = 0.8
 
-/obj/item/gun/projectile/automatic/pistol/beretta
+/obj/item/gun/projectile/automatic/tommygun
+	recoil = 0.6
+
+/obj/item/gun/projectile/automatic/l6_saw
+	recoil = 0.9
+
+/obj/item/gun/projectile/automatic/pistol
 	recoil = 0.5
+
+/obj/item/gun/projectile/revolver
+	recoil = 0.6
+
+/obj/item/gun/projectile/automatic/pistol/deagle
+	recoil = 0.7
 
 //changed sounds
 /obj/item/ammo_casing/energy/laser
