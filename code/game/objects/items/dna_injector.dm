@@ -157,7 +157,7 @@
 	inject(M, user)
 	used = TRUE
 	icon_state = "dnainjector0"
-	desc += " This one is used up."
+	desc += " Он уже был использован."
 
 /obj/item/dnainjector/hulkmut
 	name = "DNA-Injector (Hulk)"
