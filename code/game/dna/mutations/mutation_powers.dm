@@ -110,7 +110,7 @@
 /datum/mutation/hulk
 	name = "Халк"
 	activation_messages = list("У вас болят мышцы.")
-	deactivation_messages = list("Ваша сокращаются.")
+	deactivation_messages = list("Ваши мышцы сокращаются.")
 	instability = GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_HULK, TRAIT_CHUNKYFINGERS)
 
@@ -138,7 +138,7 @@
 		M.update_mutations()		//update our mutation overlays
 		M.update_body()
 		M.status_flags |= CANSTUN | CANWEAKEN | CANPARALYSE | CANPUSH //temporary fix until the problem can be solved.
-		to_chat(M, SPAN_DANGER("You suddenly feel very weak."))
+		to_chat(M, SPAN_DANGER("Внезапно вы ощущаете сильную слабость."))
 
 /datum/mutation/tk
 	name = "Телекинез"
@@ -413,7 +413,7 @@
 			return TRUE
 
 	if(show_message)
-		to_chat(C, SPAN_WARNING("Ваш рот закрыт, мешая вашему поеданию!"))
+		to_chat(C, SPAN_WARNING("Ваш рот чем-то закрыт, препятствуя вашему чревоугодию!"))
 	return FALSE
 
 /datum/spell/eat/proc/doHeal(mob/user)
@@ -450,24 +450,24 @@
 			return FALSE
 		if(istype(limb,/obj/item/organ/external/head))
 			// Bullshit, but prevents being unable to clone someone.
-			to_chat(user, SPAN_WARNING("Вы попытались проглотить \the [limb], но [the_item.p_their()] уши защекотали ваше горло!"))
+			to_chat(user, SPAN_WARNING("Вы попытались проглотить голову [the_item], но [the_item.ru_p_them()] уши защекотали ваше горло!"))
 			revert_cast()
 			return FALSE
 		if(istype(limb,/obj/item/organ/external/chest))
 			// Bullshit, but prevents being able to instagib someone.
-			to_chat(user, SPAN_WARNING("Вы попытались проглотить [the_item.p_their()] [limb], но это оказалось слишком большим для вашего рта!"))
+			to_chat(user, SPAN_WARNING("Вы попытались проглотить [the_item.ru_p_them()] грудную клетку, но это оказалось перебором для вашего рта!"))
 			revert_cast()
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] начинает заглатывать [limb.name] [the_item] в [user.p_their()] широко раскрытую пасть!"))
+		user.visible_message(SPAN_DANGER("[user] начинает заглатывать [limb.declent_ru(ACCUSATIVE)] [the_item] в свою широко раскрытую пасть!"))
 		if(!do_mob(user, H, EAT_MOB_DELAY))
-			to_chat(user, SPAN_DANGER("Вас потревожили прежде чем вы смогли съесть [the_item]!"))
+			to_chat(user, SPAN_DANGER("Вас потревожили прежде чем вы смогли съесть [limb.declent_ru(ACCUSATIVE)] [the_item]!"))
 		else
 			if(!limb || !H)
 				return
 			if(!user.Adjacent(the_item))
 				to_chat(user, SPAN_DANGER("Вам нужно быть рядом с [the_item] для этого!"))
 				return FALSE
-			user.visible_message(SPAN_DANGER("[user] [pick("отгрызает","откусывает")] [limb] [the_item]!"))
+			user.visible_message(SPAN_DANGER("[user] [pick("отгрызает","откусывает")] [limb.declent_ru(ACCUSATIVE)] [the_item]!"))
 			playsound(user.loc, 'sound/items/eatfood.ogg', 50, 0)
 
 			// Most limbs will drop here. Groin won't, but this
@@ -596,10 +596,10 @@
 
 	if(isobj(user.loc))
 		var/obj/container = user.loc
-		to_chat(user, SPAN_WARNING("Вы прыгнули и ударились головой внутри [container]! Ай!"))
+		to_chat(user, SPAN_WARNING("Вы прыгнули и ударились головой внутри [container.declent_ru(GENITIVE)]! Ай!"))
 		user.AdjustParalysis(6 SECONDS)
 		user.AdjustWeakened(10 SECONDS)
-		container.visible_message(SPAN_DANGER("[user.loc]</b> издаёт резкий грохот и дребезжит."))
+		container.visible_message(SPAN_DANGER("<b>[capitalize(container.declent_ru(NOMINATIVE))]</b> издаёт резкий грохот и дребезжит."))
 		playsound(user.loc, 'sound/effects/bang.ogg', 50, 1)
 		var/wiggle = 6
 		while(wiggle > 0)
@@ -737,13 +737,13 @@
 		var/pain_condition = M.health / M.maxHealth
 		// lower health means more pain
 		var/list/randomthoughts = list("чем бы перекусить","дальнейшее будущее","своё прошлое","денежный достаток",
-		"свой стиль причёски","чем бы заняться","своё рабочее положение","необъятность космоса","нечто прекрасно","и грустит о чём-то",
+		"свой стиль причёски","чем бы заняться","своё рабочее положение","необъятность космоса","нечто прекрасное","и грустит о чём-то",
 		"тяготы своей жизни","и радуется простым вещам","какую-то бессмыслицу","свои неудачи")
-		var/thoughts = "обдумывает [pick(randomthoughts)]."
+		var/thoughts = "обдумывает [pick(randomthoughts)]"
 
 		if(M.fire_stacks)
 			pain_condition -= 0.5
-			thoughts = "озабочен собственным возгоранием!"
+			thoughts = "озабочен собственным возгоранием"
 
 		if(M.radiation)
 			pain_condition -= 0.25
@@ -759,7 +759,7 @@
 				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] страдает от серьёзной боли."))
 			else
 				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] мучается и едва держит себя в руках."))
-				thoughts = "Пришло осознание [M.ru_p_they()] бессилия пред собственной смертностью."
+				thoughts = "К [M.name] пришло осознание [M.ru_p_them()] бессилия пред собственной смертностью."
 
 		switch(M.a_intent)
 			if(INTENT_HELP)
@@ -780,13 +780,27 @@
 
 		if(ishuman(M))
 			var/numbers[0]
+			var/text_numbers = ""
+
 			var/mob/living/carbon/human/H = M
 			if(H.mind && H.mind.initial_account)
 				numbers += H.mind.initial_account.account_number
 				numbers += H.mind.initial_account.account_pin
-			if(length(numbers)>0)
-				to_chat(user, SPAN_NOTICE("<b>Цифры</b>: Кажется номер [length(numbers)>1?"s":""] [english_list(numbers)] [length(numbers)>1?"are":"is"] важен для [M.name]."))
-		to_chat(user, SPAN_NOTICE("<b>Мысли</b>: [M.name] в данный момент [thoughts]."))
+			if(length(numbers))
+				if(length(numbers) == 1)
+					text_numbers = "[numbers[1]]"
+				else
+					var/i
+					for(i = 1 to length(numbers))
+						if(i == 1)
+							text_numbers += "[numbers[i]]"
+						else if(i == length(numbers))
+							text_numbers += " и [numbers[i]]"
+						else
+							text_numbers += ", [numbers[i]]"
+
+				to_chat(user, SPAN_NOTICE("<b>Цифры</b>: Кажется номер[length(numbers)>1?"а":""] [text_numbers] [length(numbers)>1?"важны":"важен"] для [M.name]."))
+		to_chat(user, SPAN_NOTICE("<b>Мысли</b>: [M.name] сейчас [thoughts]."))
 
 		if(M.dna?.GetSEState(GLOB.empathblock))
 			to_chat(M, SPAN_WARNING("Вы ощущаете как [user.name] читает ваши мысли."))
@@ -1027,7 +1041,7 @@
 			target.show_message("<i>[SPAN_ABDUCTOR("Вы слышите голос [user.real_name]: [say]")]</i>")
 		else
 			target.show_message("<i>[SPAN_ABDUCTOR("Вы слышите голос, раздающийся эхом в вашей голове: [say]")]</i>")
-		user.show_message("<i>[SPAN_ABDUCTOR("Вы проецируете свои мысли для [(target in user.get_visible_mobs()) ? target.name : "the unknown entity"]: [say]")]</i>")
+		user.show_message("<i>[SPAN_ABDUCTOR("Вы проецируете свои мысли для [(target in user.get_visible_mobs()) ? target.name : "неизвестного существа"]: [say]")]</i>")
 		for(var/mob/dead/observer/G in GLOB.player_list)
 			G.show_message("<i>Телепатическое сообщение от <b>[user]</b> ([ghost_follow_link(user, ghost=G)]) к <b>[target]</b> ([ghost_follow_link(target, ghost=G)]): [say]</i>")
 
@@ -1050,7 +1064,7 @@
 		var/message = "Ваш разум на мгновение расширяется... (Нажмите, чтобы отправить сообщение.)"
 		if(target.dna?.GetSEState(GLOB.remotetalkblock))
 			message = "Вы ощущаете как [user.real_name] спрашивает у вас ответа... (Нажмите, чтобы позволить телепатическое общение.)"
-		user.show_message("<i>[SPAN_ABDUCTOR("Вы открыли свой разум для [(target in user.get_visible_mobs()) ? target.name : "неизвестного вам существа"].")]</i>")
+		user.show_message("<i>[SPAN_ABDUCTOR("Вы открыли свой разум для [(target in user.get_visible_mobs()) ? target.name : "неизвестного существа"].")]</i>")
 		target.show_message("<i>[SPAN_ABDUCTOR("<a href='byond://?src=[UID()];from=[target.UID()];to=[user.UID()]'>[message]</a>")]</i>")
 		expanded_minds += target
 		addtimer(CALLBACK(src, PROC_REF(removeAvailability), target), 10 SECONDS)
