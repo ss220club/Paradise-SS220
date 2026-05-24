@@ -12814,8 +12814,6 @@
 	pixel_y = 3
 	},
 /obj/item/stack/cable_coil/white,
-/obj/item/rcl/pre_loaded,
-/obj/item/rcl/pre_loaded,
 /obj/effect/turf_decal/tiles/department/engineering,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
@@ -21774,8 +21772,9 @@
 "blI" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor{
+	id_tag = "chapelgun";
 	name = "Chapel Launcher Door";
-	id_tag = "chapelgun"
+	protected = 0
 	},
 /turf/simulated/floor/plating,
 /area/station/service/chapel)
@@ -33098,7 +33097,6 @@
 "koI" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/item/radio/intercom/directional/west,
-/obj/item/rcl/pre_loaded,
 /obj/item/clothing/glasses/meson/gar,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/item/megaphone,
@@ -46184,6 +46182,7 @@
 /obj/effect/turf_decal/tiles/department/security/corner{
 	dir = 1
 	},
+/obj/machinery/economy/vending/wallmed/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/north)
 "uFw" = (
