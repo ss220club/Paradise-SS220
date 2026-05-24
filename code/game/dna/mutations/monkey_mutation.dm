@@ -1,5 +1,5 @@
 /datum/mutation/monkey
-	name = "Monkey"
+	name = "Обезьяна"
 
 /datum/mutation/monkey/New()
 	..()
@@ -93,5 +93,5 @@
 	H.real_name = H.dna.real_name
 	H.name = H.real_name
 
-	to_chat(H, "<B>You are now a [H.dna.species.name].</B>")
+	to_chat(H, "<B>Теперь вы [H.dna.species.name].</B>")
 

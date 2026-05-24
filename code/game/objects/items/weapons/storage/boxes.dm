@@ -772,8 +772,8 @@
 /* Monkey Boxes */
 //////////////////
 /obj/item/storage/box/monkeycubes
-	name = "monkey cube box"
-	desc = "Drymate brand monkey cubes. Just add water!"
+	name = "Коробка с кубами обезьян"
+	desc = "Компактно-органические кубы обезьян. Добавь воды и получи низшую форму Человека!"
 	icon_state = "monkey_box"
 	can_hold = list(/obj/item/food/monkeycube)
 	var/monkey_cube_type = /obj/item/food/monkeycube
@@ -792,12 +792,12 @@
 	. = ..()
 
 /obj/item/storage/box/monkeycubes/syndicate
-	desc = "Waffle Co. brand monkey cubes. Just add water and a dash of subterfuge!"
+	desc = "Кубы обезьян от бренда Waffle Co. Просто добавь воды и немножечко хитрости!"
 	monkey_cube_type = /obj/item/food/monkeycube/syndicate
 
 /obj/item/storage/box/monkeycubes/farwacubes
-	name = "farwa cube box"
-	desc = "Drymate brand farwa cubes. Just add water!"
+	name = "Коробка с кубами фарвы"
+	desc = "Компактно-органические кубы фарв. Добавь воды и получи низшую форму Таярана!"
 	icon_state = "farwa_box"
 	monkey_cube_type = /obj/item/food/monkeycube/farwacube
 
@@ -805,8 +805,8 @@
 	return
 
 /obj/item/storage/box/monkeycubes/stokcubes
-	name = "stok cube box"
-	desc = "Drymate brand stok cubes. Just add water!"
+	name = "Коробка с кубами стока"
+	desc = "Компактно-органические кубы стоков. Добавь воды и получи низшую форму Унати!"
 	icon_state = "stok_box"
 	monkey_cube_type = /obj/item/food/monkeycube/stokcube
 
@@ -814,8 +814,8 @@
 	return
 
 /obj/item/storage/box/monkeycubes/neaeracubes
-	name = "neaera cube box"
-	desc = "Drymate brand neaera cubes. Just add water!"
+	name = "Коробка с кубами неар"
+	desc = "Компактно-органические кубы неар. Добавь воды и получи низшую форму Скрелла!"
 	icon_state = "neaera_box"
 	monkey_cube_type = /obj/item/food/monkeycube/neaeracube
 
@@ -823,8 +823,8 @@
 	return
 
 /obj/item/storage/box/monkeycubes/wolpincubes
-	name = "wolpin cube box"
-	desc = "Drymate brand wolpin cubes. Just add water!"
+	name = "Коробка с кубами вольпинов"
+	desc = "Компактно-органические кубы вольпинов. Добавь воды и получи низшую форму Вульпканина!"
 	icon_state = "wolpin_box"
 	monkey_cube_type = /obj/item/food/monkeycube/wolpincube
 
@@ -832,8 +832,8 @@
 	return
 
 /obj/item/storage/box/monkeycubes/nian_worme_cubes
-	name = "nian worme cube box"
-	desc = "Nian Trade Guild brand worme cubes. Just add water!"
+	name = "Коробка с кубами нимф Ниан"
+	desc = "Компактно-органические кубы от Торговой Гильдии Ниан. Добавь воды и получи низшую форму Ниан!"
 	icon_state = "nian_worme_box"
 	monkey_cube_type = /obj/item/food/monkeycube/nian_wormecube
 

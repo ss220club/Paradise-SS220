@@ -587,7 +587,7 @@
 		user.pixel_y = 0 // In case leap was varedited to be longer or shorter
 
 		if(HAS_TRAIT(user, TRAIT_FAT) && prob(66))
-			user.visible_message(SPAN_DANGER("<b>[user.name]</b> с грохотом падает из-за [ru_p_them()] тяжелого веса!"))
+			user.visible_message(SPAN_DANGER("<b>[user.name]</b> с грохотом падает из-за [user.ru_p_them()] тяжелого веса!"))
 			//playsound(user.loc, 'zhit.wav', 50, 1)
 			user.AdjustWeakened(20 SECONDS)
 			user.AdjustStunned(10 SECONDS)
@@ -701,7 +701,7 @@
 
 /datum/spell/empath
 	name = "Чтение мыслей"
-	desc = "Читайте мысли разумных существ для сбора информации."
+	desc = "Читайте мысли разумных существ для сбора информации о них."
 	base_cooldown = 18 SECONDS
 	clothes_req = FALSE
 	human_req = TRUE
@@ -718,65 +718,65 @@
 /datum/spell/empath/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/M in targets)
 		if(!iscarbon(M))
-			to_chat(user, SPAN_WARNING("Вы можете применить данные силы только к другим ."))
+			to_chat(user, SPAN_WARNING("Вы можете применить данные силы только к другим гуманоидам."))
 			return
 
 		if(M.dna?.GetSEState(GLOB.psyresistblock))
-			to_chat(user, SPAN_WARNING("You can't see into [M.name]'s mind at all!"))
+			to_chat(user, SPAN_WARNING("Вы никак не можете проникнуть в разум [M.name]!"))
 			return
 
 		if(M.stat == DEAD)
-			to_chat(user, SPAN_WARNING("[M.name] is dead and cannot have [M.p_their()] mind read."))
+			to_chat(user, SPAN_WARNING("[M.name] мёртв и в [M.ru_p_them()] разум невозможно проникнуть."))
 			return
 		if(M.health < 0)
-			to_chat(user, SPAN_WARNING("[M.name] is dying, and [M.p_their()] thoughts are too scrambled to read."))
+			to_chat(user, SPAN_WARNING("[M.name] на грани смерти и [M.ru_p_them()] мысли слишком запутаны для считывания."))
 			return
 
-		to_chat(user, SPAN_NOTICE("Mind Reading of <b>[M.name]:</b>"))
+		to_chat(user, SPAN_NOTICE("Чтение мыслей <b>[M.name]:</b>"))
 
 		var/pain_condition = M.health / M.maxHealth
 		// lower health means more pain
-		var/list/randomthoughts = list("what to have for lunch","the future","the past","money",
-		"[M.p_their()] hair","what to do next","[M.p_their()] job","space","amusing things","sad things",
-		"annoying things","happy things","something incoherent","something [M.p_they()] did wrong")
-		var/thoughts = "thinking about [pick(randomthoughts)]"
+		var/list/randomthoughts = list("чем бы перекусить","дальнейшее будущее","своё прошлое","денежный достаток",
+		"свой стиль причёски","чем бы заняться","своё рабочее положение","необъятность космоса","нечто прекрасно","и грустит о чём-то",
+		"тяготы своей жизни","и радуется простым вещам","какую-то бессмыслицу","свои неудачи")
+		var/thoughts = "обдумывает [pick(randomthoughts)]."
 
 		if(M.fire_stacks)
 			pain_condition -= 0.5
-			thoughts = "preoccupied with the fire"
+			thoughts = "озабочен собственным возгоранием!"
 
 		if(M.radiation)
 			pain_condition -= 0.25
 
 		switch(pain_condition)
 			if(0.81 to INFINITY)
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] feels good."))
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] в порядке."))
 			if(0.61 to 0.8)
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] is suffering mild pain."))
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] испытывает лёгкую боль."))
 			if(0.41 to 0.6)
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] is suffering significant pain."))
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] испытывает сильную боль."))
 			if(0.21 to 0.4)
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] is suffering severe pain."))
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] страдает от серьёзной боли."))
 			else
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] is suffering excruciating pain."))
-				thoughts = "haunted by [M.p_their()] own mortality"
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] мучается и едва держит себя в руках."))
+				thoughts = "Пришло осознание [M.ru_p_they()] бессилия пред собственной смертностью."
 
 		switch(M.a_intent)
 			if(INTENT_HELP)
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: [M.name] доброжелательно оценивает обстановку."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] доброжелательно оценивает обстановку."))
 			if(INTENT_DISARM)
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: [M.name] проявляет осторожность и вдумчивость."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] проявляет осторожность и вдумчивость."))
 			if(INTENT_GRAB)
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: [M.name] концентрируется на окружении и захвате."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] концентрируется на окружении и захвате."))
 			if(INTENT_HARM)
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: [M.name] испытывает напряжение и настраивается на бой."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] испытывает напряжение и настраивается на бой."))
 				for(var/mob/living/L in view(7,M))
 					if(L == M)
 						continue
 					thoughts = "думает ударить [L.name]"
 					break
 			else
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: [M.name] мыслит странно и непредсказуемо."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] мыслит странно и непредсказуемо."))
 
 		if(ishuman(M))
 			var/numbers[0]
@@ -785,8 +785,8 @@
 				numbers += H.mind.initial_account.account_number
 				numbers += H.mind.initial_account.account_pin
 			if(length(numbers)>0)
-				to_chat(user, SPAN_NOTICE("<b>Numbers</b>: Кажется номер [length(numbers)>1?"s":""] [english_list(numbers)] [length(numbers)>1?"are":"is"] важен для [M.name]."))
-		to_chat(user, SPAN_NOTICE("<b>Thoughts</b>: [M.name] в данный момент [thoughts]."))
+				to_chat(user, SPAN_NOTICE("<b>Цифры</b>: Кажется номер [length(numbers)>1?"s":""] [english_list(numbers)] [length(numbers)>1?"are":"is"] важен для [M.name]."))
+		to_chat(user, SPAN_NOTICE("<b>Мысли</b>: [M.name] в данный момент [thoughts]."))
 
 		if(M.dna?.GetSEState(GLOB.empathblock))
 			to_chat(M, SPAN_WARNING("Вы ощущаете как [user.name] читает ваши мысли."))
@@ -972,7 +972,7 @@
 
 	M.update_dna()
 
-	M.visible_message(SPAN_NOTICE("[M] видоизменяется и преображает [ru_p_them()] внешность!"), SPAN_NOTICE("Вы изменяете свою внешность!"), SPAN_WARNING("Боже! Что это было? Звучало так, будто плоть с костями пропустили через мясорубку и собрали по другому!"))
+	M.visible_message(SPAN_NOTICE("[M] видоизменяется и преображает [M.ru_p_them()] внешность!"), SPAN_NOTICE("Вы изменяете свою внешность!"), SPAN_WARNING("Боже! Что это было? Звучало так, будто плоть с костями пропустили через мясорубку и собрали по другому!"))
 
 /datum/mutation/grant_spell/remotetalk
 	name = "Телепатия"
