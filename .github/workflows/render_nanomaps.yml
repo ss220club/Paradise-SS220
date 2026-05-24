@@ -26,12 +26,10 @@ jobs:
         uses: actions/checkout@v6
         with:
           token: ${{ steps.create_token.outputs.token }}
+          ref: ${{ env.RENDER_BRANCH }}
 
-      - name: Branch
-        run: |
-          git branch -f nanomap-render
-          git checkout nanomap-render
-          git reset --hard origin/master
+      - name: 'Install Python dependencies'
+        run: python3 -m pip install avulto==0.1.22
 
       - name: 'Generate Maps'
         run: './tools/github-actions/nanomap-renderer-invoker.sh'
@@ -40,11 +38,22 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "NanoMap Generation"
-          git pull origin master
-          git commit -m "NanoMap Auto-Update (`date`)" -a || true
-          git push -f -u origin nanomap-render
-          result=$(gh pr create -t "Automatic NanoMap Update" -b "This pull request updates the server NanoMaps. Please review the diff images before merging." -l "NanoMaps" -H "nanomap-render" -B "master" 2>&1) || true
-          echo "$result"
-          if echo "$result" | grep -q "No commits between master and nanomap-render"; then
+
+          git checkout -B nanomap-render
+          git add icons/_nanomaps/
+
+          if git diff-index --quiet HEAD -- icons/_nanomaps/; then
             echo "No NanoMaps update required, skipping."
+            exit 0
           fi
+
+          git commit -m "NanoMap Auto-Update (`date`)"
+          git push -f origin nanomap-render
+
+          result=$(gh pr create \
+            -t "Automatic NanoMap Update" \
+            -b "This pull request updates the server NanoMaps. Please review the diff images before merging." \
+            -l "NanoMaps,:scroll: CL не требуется" \
+            -H "nanomap-render" \
+            -B "$GITHUB_REF_NAME" 2>&1) || true
+          echo "$result"

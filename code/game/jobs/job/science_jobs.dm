@@ -5,7 +5,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_SCIENCE
-	supervisors = "the captain"
+	supervisors = "капитаном"
 	department_head = list("Captain")
 	selection_color = "#ffddff"
 	req_admin_notify = 1
@@ -45,11 +45,8 @@
 	)
 
 	outfit = /datum/outfit/job/rd
-	important_information = "This role requires you to coordinate a department. You are required to be familiar with Standard Operating Procedure (Science), basic job duties, and act professionally (roleplay)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Научных), базовых должностных обязанностей и профессиональных действий."
 	standard_paycheck = CREW_PAY_HIGH
-	difficulty = MEDIUM_DIFFICULTY
-	description = "The Research Director has the responsibility of overseeing the Science department.\n\n\
-					Difficulties: Standard Operating Procedure (General, Science), R&D, xenobiology, toxins, chemistry, robotics, genetics, AI modules, anomalies"
 
 /datum/outfit/job/rd
 	name = "Research Director"
@@ -82,7 +79,7 @@
 	total_positions = 6
 	spawn_positions = 6
 	job_department_flags = DEP_FLAG_SCIENCE
-	supervisors = "the research director"
+	supervisors = "директором исследований"
 	department_head = list("Research Director")
 	selection_color = "#ffeeff"
 	access = list(
@@ -111,9 +108,6 @@
 
 	outfit = /datum/outfit/job/scientist
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Scientists have the responsibility of increasing the station's research levels.\n\n\
-					Difficulties: R&D, toxins, chemistry, anomalies, menu navigation"
 
 /datum/outfit/job/scientist
 	name = "Scientist"
@@ -173,9 +167,6 @@
 
 	outfit = /datum/outfit/job/xenobiologist
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Xenobiologists have the responsibility of researching slimes and the organs of fauna.\n\n\
-					Difficulties: Xenobiology, surgery"
 
 /datum/outfit/job/xenobiologist
 	name = "Xenobiologist"
@@ -201,6 +192,8 @@
 		/obj/item/clipboard = 1,
 	)
 
+/datum/job/scientist/student	// SS220 ADDITION - new jobs
+
 /datum/job/roboticist
 	title = "Roboticist"
 	flag = JOB_ROBOTICIST
@@ -208,7 +201,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	job_department_flags = DEP_FLAG_SCIENCE
-	supervisors = "the research director"
+	supervisors = "директором исследований"
 	department_head = list("Research Director")
 	selection_color = "#ffeeff"
 	access = list(
@@ -238,9 +231,6 @@
 
 	outfit = /datum/outfit/job/roboticist
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Roboticists have the responsibility of building exosuits, cyborgs, and implants.\n\n\
-					Difficulties: Cyborg/exosuit/IPC construction/maintenance, AI modules, paperwork, MODsuits, surgery"
 
 /datum/outfit/job/roboticist
 	name = "Roboticist"
@@ -292,9 +282,6 @@
 	exp_map = list(EXP_TYPE_CREW = 180)
 	outfit = /datum/outfit/job/geneticist
 	standard_paycheck = CREW_PAY_MEDIUM
-	difficulty = MEDIUM_DIFFICULTY
-	description = "Geneticists have the responsibility of researching and providing genetic powers.\n\n\
-					Difficulties: Genetics, menu navigation"
 
 /datum/outfit/job/geneticist
 	name = "Geneticist"
