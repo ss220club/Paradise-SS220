@@ -185,22 +185,17 @@
 	. = ..()
 	mod_link?.end_call()
 
-/obj/item/clothing/neck/link_scryer/activate_self(mob/user)
-	if(..())
-		return ITEM_INTERACT_COMPLETE
-
+/obj/item/clothing/neck/link_scryer/attack_self__legacy__attackchain(mob/user)
 	var/new_label = reject_bad_text(tgui_input_text(user, "Change the visible name", "Set Name", label, MAX_NAME_LEN))
 	if(!user.is_holding(src))
-		return ITEM_INTERACT_COMPLETE
-
+		return
 	if(!new_label)
 		to_chat(user, SPAN_WARNING("That name is invalid!"))
-		return ITEM_INTERACT_COMPLETE
-
+		return
 	label = new_label
 	to_chat(user, SPAN_NOTICE("You set the name as [label]."))
 	update_appearance(UPDATE_NAME)
-	return ITEM_INTERACT_COMPLETE
+
 
 /obj/item/clothing/neck/link_scryer/multitool_act(mob/user, obj/item/I)
 	. = TRUE
@@ -252,22 +247,16 @@
 		return
 	cell.use(50)
 
-/obj/item/clothing/neck/link_scryer/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	if(!istype(used, /obj/item/stock_parts/cell))
-		return ..()
-	
-	if(cell)
-		to_chat(user, SPAN_WARNING("[src] already has a cell!"))
-		return ITEM_INTERACT_COMPLETE
-
+/obj/item/clothing/neck/link_scryer/attackby__legacy__attackchain(obj/item/O, mob/user, params)
+	. = ..()
+	if(cell || !istype(O, /obj/item/stock_parts/cell))
+		return
 	if(!user.drop_item())
-		to_chat(user, SPAN_WARNING("[used] is stuck to your hand!"))
-		return ITEM_INTERACT_COMPLETE
-
-	used.forceMove(src)
-	cell = used
-	to_chat(user, SPAN_NOTICE("You load [used] into [src]."))
-	return ITEM_INTERACT_COMPLETE
+		to_chat(user, SPAN_WARNING("[O] is stuck to your hand!"))
+		return
+	O.forceMove(src)
+	cell = O
+	to_chat(user, SPAN_NOTICE("You load [O] into [src]."))
 
 /obj/item/clothing/neck/link_scryer/update_name(updates)
 	. = ..()

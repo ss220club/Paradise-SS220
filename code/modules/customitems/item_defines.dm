@@ -708,7 +708,7 @@
 	var/state = "Soldier Up"
 	icon_monitor = null
 
-/obj/item/clothing/head/helmet/fluff/merchant_sallet/activate_self(mob/user)
+/obj/item/clothing/head/helmet/fluff/merchant_sallet/attack_self__legacy__attackchain(mob/user)
 	if(!user.incapacitated() && (world.time > cooldown + toggle_cooldown) && Adjacent(user))
 		var/list/options = list()
 		options["Soldier Up"] = list(
@@ -741,9 +741,7 @@
 			to_chat(user, "You adjust the helmet.")
 			playsound(src.loc, "[toggle_sound]", 100, FALSE, 4)
 			user.update_inv_head()
-		return ITEM_INTERACT_COMPLETE
-
-	return ..()
+			return 1
 
 /// V-Force_Bomber: E.L.O.
 /obj/item/clothing/head/fluff/elo
@@ -780,10 +778,7 @@
 	actions_types = list(/datum/action/item_action/openclose)
 	adjust_flavour = "unbutton"
 
-/obj/item/clothing/suit/jacket/miljacket/patch/activate_self(mob/user)
-	if(..())
-		return ITEM_INTERACT_COMPLETE
-
+/obj/item/clothing/suit/jacket/miljacket/patch/attack_self__legacy__attackchain(mob/user)
 	var/list/options = list()
 	options["purple"] = "shazjacket_purple"
 	options["purple light"] = "shazjacket_purple_light"
@@ -816,7 +811,9 @@
 		to_chat(user, "You turn your coat inside out and now it's [choice]!")
 		name = "custom [choice] military jacket"
 		user.update_inv_wear_suit()
-	return ITEM_INTERACT_COMPLETE
+		return 1
+
+	. = ..()
 
 /// ComputerlessCitizen: Screech
 /obj/item/clothing/suit/fluff/dusty_jacket
@@ -1431,10 +1428,7 @@
 	icon_monitor = null
 	icon_state = "classic_witch"
 
-/obj/item/clothing/head/wizard/fake/fluff/dreamy/activate_self(mob/user)
-	if(..())
-		return ITEM_INTERACT_COMPLETE
-
+/obj/item/clothing/head/wizard/fake/fluff/dreamy/attack_self__legacy__attackchain(mob/user)
 	var/list/options = list()
 	options["Classic"] = "classic_witch"
 	options["Good"] = "good_witch"
@@ -1454,7 +1448,8 @@
 	if(choice && !user.stat && in_range(user, src))
 		icon_state = options[choice]
 		to_chat(user, "Your strange witch hat has now shapeshifted into it's [choice] form!")
-	return ITEM_INTERACT_COMPLETE
+		return 1
+	..()
 
 /// phantasmicdream : Zeke Varloss
 /obj/item/fluff/zekemirror
@@ -1673,8 +1668,8 @@
 /obj/item/clothing/gloves/ring/fluff/update_icon_state()
 	return
 
-/obj/item/clothing/gloves/ring/fluff/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	return NONE
+/obj/item/clothing/gloves/ring/fluff/attackby__legacy__attackchain(obj/item/I as obj, mob/user as mob, params)
+	return
 
 /// Benjaminfallout: Pretzel Brassheart
 /obj/item/clothing/gloves/ring/fluff/benjaminfallout

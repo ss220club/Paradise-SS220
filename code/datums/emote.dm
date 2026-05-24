@@ -531,7 +531,7 @@
 			return FALSE
 		if(HAS_TRAIT(user, TRAIT_FAKEDEATH))
 			if(istype(user, /mob/living))
-				var/mob/living/L = user
+				var/mob/living/L
 				if(!L.has_status_effect(/datum/status_effect/ghoul))
 					return FALSE
 			else

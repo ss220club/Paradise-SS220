@@ -148,28 +148,20 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "missile"
 	damage = 50
-	/// Devastation from the missile
-	var/devastation = 1
-	/// Heavy damage from the missile
-	var/heavy_damage = 2
-	/// Light damage from the missile
-	var/light_damage = 3
+	///If the missile will have a heavy, or light explosion.
+	var/heavy = TRUE
 
 /obj/projectile/missile/on_hit(atom/target, blocked, hit_zone)
 	..()
-	explosion(target, devastation, heavy_damage, light_damage, cause = "[type] fired by [key_name(firer)]")
+	if(heavy)
+		explosion(target, 1, 2, 3, cause = "[type] fired by [key_name(firer)]")
+	else
+		explosion(target, -1, 0, 2, cause = "[type] fired by [key_name(firer)]")
 	return TRUE
 
 /obj/projectile/missile/light
 	damage = 15
-	devastation = -1
-	heavy_damage = 0
-	light_damage = 2
-
-/obj/projectile/missile/medium
-	damage = 30
-	devastation = -1
-	heavy_damage = 1
+	heavy = FALSE
 
 /obj/projectile/energy/floramut
 	name = "alpha somatoray"

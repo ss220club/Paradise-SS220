@@ -27,12 +27,8 @@
 /obj/item/clothing/head/soft/update_icon_state()
 	icon_state = "[initial(icon_state)][flipped ? "_flipped" : ""]"
 
-/obj/item/clothing/head/soft/activate_self(mob/user)
-	if(..())
-		return ITEM_INTERACT_COMPLETE
-
+/obj/item/clothing/head/soft/attack_self__legacy__attackchain(mob/user)
 	flip(user)
-	return ITEM_INTERACT_COMPLETE
 
 /obj/item/clothing/head/soft/proc/flip(mob/user)
 	flipped = !flipped

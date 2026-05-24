@@ -70,10 +70,6 @@
 	name = "Фабрика Шахтерских Ботов"
 	icon_state = "red"
 
-/area/ruin/unpowered/basalt_lab
-	name = "Basalt Lab"
-	icon_state = "red"
-
 // This area exists so that lavaland ruins dont overwrite the baseturfs on regular space ruins
 /area/ruin/unpowered/misc_lavaruin
 

@@ -48,7 +48,7 @@
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/hats.dmi',
 	)
 
-/obj/item/clothing/head/towel/item_interaction(obj/item/S, mob/user, params)
+/obj/item/clothing/head/towel/attackby__legacy__attackchain(obj/item/S, mob/user, params)
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S
@@ -58,7 +58,7 @@
 		var/new_color = "#[num2hex(rgb[1], 2)][num2hex(rgb[2], 2)][num2hex(rgb[3], 2)]"
 		color = new_color
 		to_chat(user, SPAN_NOTICE("Вы перекрашиваете [src.name]."))
-		return ITEM_INTERACT_COMPLETE
+		return
 
 /obj/item/clothing/head/towel/red
 	name = "красная шапочка из полотенца"

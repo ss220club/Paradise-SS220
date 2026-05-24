@@ -1762,7 +1762,6 @@
 			return A
 		else if(A.type == datum_type)
 			return A
-	return null
 
 /datum/mind/proc/prepare_announce_objectives(title = TRUE)
 	if(!current)

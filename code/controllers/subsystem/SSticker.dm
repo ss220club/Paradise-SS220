@@ -180,7 +180,6 @@ SUBSYSTEM_DEF(ticker)
 		hide_mode = TRUE
 
 	var/list/datum/game_mode/runnable_modes
-	var/is_admin_forced = FALSE
 
 	if(GLOB.master_mode == "random" || GLOB.master_mode == "secret")
 		runnable_modes = GLOB.configuration.gamemode.get_runnable_modes()
@@ -191,9 +190,9 @@ SUBSYSTEM_DEF(ticker)
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			return FALSE
 		if(GLOB.secret_force_mode != "secret")
-			mode = GLOB.configuration.gamemode.pick_mode(GLOB.secret_force_mode)
-			is_admin_forced = TRUE
-
+			var/datum/game_mode/M = GLOB.configuration.gamemode.pick_mode(GLOB.secret_force_mode)
+			if(M.can_start())
+				mode = GLOB.configuration.gamemode.pick_mode(GLOB.secret_force_mode)
 		SSjobs.ResetOccupations()
 		if(!mode)
 			mode = pickweight(runnable_modes)
@@ -203,7 +202,7 @@ SUBSYSTEM_DEF(ticker)
 	else
 		mode = GLOB.configuration.gamemode.pick_mode(GLOB.master_mode)
 
-	if(!mode.can_start() && !is_admin_forced)
+	if(!mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
 		mode = null
 		current_state = GAME_STATE_PREGAME

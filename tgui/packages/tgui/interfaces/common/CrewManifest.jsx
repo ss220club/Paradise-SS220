@@ -8,29 +8,12 @@ const deptCols = COLORS.department;
 
 const HeadRoles = [
   'Captain',
-  'Station Commander',
-  'Head of Command',
-  'Commanding Officer',
-  'Head of Personnel',
-  'Head of Service',
-  'Crew Relations Officer',
   'Head of Security',
-  'Security Director',
-  'Sheriff',
   'Chief Engineer',
-  'Engineering Director',
-  'Engine Foreman',
-  'Senior Engineer',
-  'Research Director',
-  'Senior Researcher',
-  'Chief Research Officer',
   'Chief Medical Officer',
-  'Senior Physician',
-  'Medical Director',
+  'Research Director',
+  'Head of Personnel',
   'Quartermaster',
-  'Chief Logistics Officer',
-  'Supply Director',
-  'Requisitions Foreman',
 ];
 
 // Head colour check. Abbreviated to save on 80 char

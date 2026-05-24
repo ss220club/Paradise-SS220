@@ -577,9 +577,6 @@ GLOBAL_LIST_INIT(aalarm_modes, list(
 
 	update_icon(UPDATE_ICON_STATE)
 
-/obj/machinery/alarm/get_internal_wires()
-	return wires
-
 ///////////////
 //END HACKING//
 ///////////////

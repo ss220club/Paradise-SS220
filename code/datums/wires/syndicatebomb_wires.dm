@@ -10,7 +10,7 @@
 
 /datum/wires/syndicatebomb/interactable(mob/user)
 	var/obj/machinery/syndicatebomb/P = holder
-	if(P.panel_open)
+	if(P.open_panel)
 		return TRUE
 	return FALSE
 

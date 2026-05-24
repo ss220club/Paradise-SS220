@@ -39,37 +39,30 @@
 	icon_state = "stethoscope"
 	materials = list(MAT_METAL = 500)
 
-/obj/item/clothing/neck/stethoscope/interact_with_atom(atom/target, mob/living/user, list/modifiers)
-	if(!ishuman(target) || !isliving(user))
-		return ..()
+/obj/item/clothing/neck/stethoscope/attack__legacy__attackchain(mob/living/carbon/human/M, mob/living/user)
+	if(!ishuman(M) || !isliving(user))
+		return ..(M, user)
 
-	if(user == target)
-		user.visible_message(
-			SPAN_NOTICE("[user] places [src] against [user.p_their()] chest and listens attentively."),
-			SPAN_NOTICE("You place [src] against your chest...")
-		)
+	if(user == M)
+		user.visible_message("[user] places [src] against [user.p_their()] chest and listens attentively.", "You place [src] against your chest...")
 	else
-		user.visible_message(
-			SPAN_NOTICE("[user] places [src] against [target]'s chest and listens attentively."),
-			SPAN_NOTICE("You place [src] against [target]'s chest...")
-		)
-	var/mob/living/carbon/human/H = target
-	var/datum/organ/heart/heart_datum = H.get_int_organ_datum(ORGAN_DATUM_HEART)
-	var/datum/organ/lungs/lung_datum = H.get_int_organ_datum(ORGAN_DATUM_LUNGS)
+		user.visible_message("[user] places [src] against [M]'s chest and listens attentively.", "You place [src] against [M]'s chest...")
+	var/datum/organ/heart/heart_datum = M.get_int_organ_datum(ORGAN_DATUM_HEART)
+	var/datum/organ/lungs/lung_datum = M.get_int_organ_datum(ORGAN_DATUM_LUNGS)
 	if(!lung_datum || !heart_datum)
 		to_chat(user, SPAN_WARNING("You don't hear anything."))
-		return ITEM_INTERACT_COMPLETE
+		return
 
-	var/obj/item/organ/internal/heart = heart_datum.linked_organ
-	var/obj/item/organ/internal/lungs = lung_datum.linked_organ
-	if(!H.pulse || (!heart || !(lungs && !HAS_TRAIT(H, TRAIT_NOBREATH))))
+	var/obj/item/organ/internal/H = heart_datum.linked_organ
+	var/obj/item/organ/internal/L = lung_datum.linked_organ
+	if(!M.pulse || (!H || !(L && !HAS_TRAIT(M, TRAIT_NOBREATH))))
 		to_chat(user, SPAN_WARNING("You don't hear anything."))
-		return ITEM_INTERACT_COMPLETE
+		return
 
 	var/color = "notice"
-	if(heart)
+	if(H)
 		var/heart_sound
-		switch(heart.damage)
+		switch(H.damage)
 			if(0 to 1)
 				heart_sound = "healthy"
 			if(1 to 25)
@@ -82,9 +75,9 @@
 				color = "warning"
 		to_chat(user, "<span class='[color]'>You hear \an [heart_sound] pulse.</span>")
 
-	if(lungs)
+	if(L)
 		var/lung_sound
-		switch(lungs.damage)
+		switch(L.damage)
 			if(0 to 1)
 				lung_sound = "healthy respiration"
 			if(1 to 25)
@@ -96,7 +89,6 @@
 				lung_sound = "gurgling"
 				color = "warning"
 		to_chat(user, "<span class='[color]'>You hear [lung_sound].</span>")
-	return ITEM_INTERACT_COMPLETE
 
 /obj/item/clothing/neck/neckerchief
 	name = "white neckerchief"

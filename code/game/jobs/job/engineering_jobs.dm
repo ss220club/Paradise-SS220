@@ -32,7 +32,6 @@
 		ACCESS_WEAPONS
 	)
 	skeleton_access = list(ACCESS_CAPTAIN)
-	alt_titles = list("Engineering Director", "Senior Engineer", "Engine Foreman")
 	minimal_player_age = 21
 	exp_map = list(EXP_TYPE_ENGINEERING = 1200)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP, DISABILITY_FLAG_PARAPLEGIC)
@@ -90,7 +89,7 @@
 		ACCESS_TECH_STORAGE
 	)
 	skeleton_access = list(ACCESS_ATMOSPHERICS)
-	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Mechanic", "Repairman")
+	alt_titles = list("Maintenance Technician","Engine Technician","Electrician")
 	minimal_player_age = 7
 	exp_map = list(EXP_TYPE_CREW = 300)
 	outfit = /datum/outfit/job/engineer
@@ -145,7 +144,7 @@
 		ACCESS_STATION_ENGINEER,
 		ACCESS_ENGINE_EQUIP,
 	)
-	alt_titles = list("Atmospheric Technician", "Firefighter")
+	alt_titles = list("Atmospheric Technician")
 	minimal_player_age = 7
 	exp_map = list(EXP_TYPE_CREW = 300)
 	outfit = /datum/outfit/job/atmos

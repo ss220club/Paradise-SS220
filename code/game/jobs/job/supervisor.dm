@@ -11,7 +11,6 @@
 	job_department_flags = DEP_FLAG_COMMAND
 	department_account_access = TRUE
 	access = list() 	//See get_access()
-	alt_titles = list("Station Commander", "Head of Command", "Commanding Officer")
 	minimal_player_age = 30
 	exp_map = list(EXP_TYPE_COMMAND = 1200)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
@@ -109,7 +108,6 @@
 		ACCESS_WEAPONS
 	)
 	skeleton_access = list(ACCESS_CAPTAIN)
-	alt_titles = list("Head of Service", "Crew Relations Officer")
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY , DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/hop
 	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Сервис), базовых должностных обязанностей и профессиональных действий."
@@ -247,7 +245,6 @@
 		ACCESS_SEC_DOORS,
 		ACCESS_WEAPONS
 	)
-	alt_titles = list("Blueshield Officer", "Bodyguard", "Command Escort")
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/blueshield
@@ -302,7 +299,6 @@
 		ACCESS_WEAPONS,
 		ACCESS_TRAINER
 	)
-	alt_titles = list("Judge")
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/judge
 	important_information = "Эта роль требует от вас курировать юридические вопросы и принимать важные решения о вынесении приговоров. От вас требуется обладать обширными знаниями в области Космического Закона и охранного СРП, действовать только в рамках закона, а не за его пределами."

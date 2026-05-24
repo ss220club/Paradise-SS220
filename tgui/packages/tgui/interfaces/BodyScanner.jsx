@@ -269,7 +269,6 @@ const BodyScannerMainOrgansExternal = (props) => {
                 ((!!o.internalBleeding ||
                   !!o.burnWound ||
                   !!o.lungRuptured ||
-                  !!o.liverCirrhosis ||
                   !!o.status.broken ||
                   !!o.open ||
                   o.germ_level > 100) &&
@@ -321,7 +320,6 @@ const BodyScannerMainOrgansExternal = (props) => {
                   !!o.internalBleeding && 'Internal bleeding',
                   !!o.burnWound && 'Critical tissue burns',
                   !!o.lungRuptured && 'Ruptured lung',
-                  !!o.liverCirrhosis && 'Liver cirrhosis',
                   !!o.status.broken && o.status.broken,
                   germStatus(o.germ_level),
                   !!o.open && 'Open incision',

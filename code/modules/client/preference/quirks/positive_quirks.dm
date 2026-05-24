@@ -116,7 +116,7 @@
 /datum/quirk/culinary_implant
 	name = "IPC Culinary Implant"
 	desc = "То ли вы, то ли ваш создатель хотели, чтобы вы выглядели более естественно, и установили вам искусственный рот и живот."
-	cost = 1
+	cost = 2
 	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/chest/ipc_food
 
@@ -147,6 +147,6 @@
 /datum/quirk/breathing_tube
 	name = "Breathing Tube"
 	desc  = "Вам вживили дыхательную трубку."
-	cost = 1
+	cost = 2
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube

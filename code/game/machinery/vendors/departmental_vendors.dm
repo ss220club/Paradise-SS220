@@ -128,9 +128,6 @@
 
 	refill_canister = /obj/item/vending_refill/dinnerware
 
-/obj/machinery/economy/vending/dinnerware/free
-	prices = list()
-
 /obj/machinery/economy/vending/hydronutrients
 	name = "\improper NutriMax"
 	desc = "A plant nutrients vendor."

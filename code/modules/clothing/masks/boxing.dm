@@ -16,12 +16,8 @@
 		"Drask" = 'icons/mob/clothing/species/drask/mask.dmi'
 		)
 
-/obj/item/clothing/mask/balaclava/activate_self(mob/user)
-	if(..())
-		return ITEM_INTERACT_COMPLETE
-
+/obj/item/clothing/mask/balaclava/attack_self__legacy__attackchain(mob/user)
 	adjustmask(user)
-	return ITEM_INTERACT_COMPLETE
 
 /obj/item/clothing/mask/luchador
 	name = "luchador mask"

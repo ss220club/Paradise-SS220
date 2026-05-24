@@ -50,13 +50,9 @@
 		"Grey" = 'icons/mob/clothing/species/grey/mask.dmi'
 		)
 
-/obj/item/clothing/mask/whistle/activate_self(mob/user)
-	if(..())
-		return ITEM_INTERACT_COMPLETE
-
+/obj/item/clothing/mask/whistle/attack_self__legacy__attackchain(mob/user)
 	if(!COOLDOWN_FINISHED(src, whistle_cooldown))
-		return ITEM_INTERACT_COMPLETE
+		return
 
 	playsound(src, pick('sound/items/whistle1.ogg', 'sound/items/whistle2.ogg', 'sound/items/whistle3.ogg'), 25)
 	COOLDOWN_START(src, whistle_cooldown, 4 SECONDS)
-	return ITEM_INTERACT_COMPLETE

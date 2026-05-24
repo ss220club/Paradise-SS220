@@ -21,9 +21,8 @@
 
 /obj/item/smithing_cast/examine(mob/user)
 	. = ..()
-	if(length(possible_products) > 1)
-		. += "It is currently configured to make [amount_to_make == 1 ? "a" : "[amount_to_make]"] [selected_product.name][amount_to_make == 1 ? "" : "s"]."
-		. += SPAN_NOTICE("You can select the desired product by using [src] in your hand.")
+	. += "It is currently configured to make [amount_to_make == 1 ? "a" : "[amount_to_make]"] [selected_product.name][amount_to_make == 1 ? "" : "s"]."
+	. += SPAN_NOTICE("You can select the desired product by using [src] in your hand.")
 
 /obj/item/smithing_cast/activate_self(mob/user)
 	. = ..()

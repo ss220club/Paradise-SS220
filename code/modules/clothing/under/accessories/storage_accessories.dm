@@ -32,11 +32,8 @@
 	if(hold.handle_mousedrop(usr, over_object))
 		..(over_object)
 
-/obj/item/clothing/accessory/storage/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	if(!hold.item_interaction(user, used, modifiers))
-		return hold.attackby__legacy__attackchain(used, user, modifiers)
-
-	return ITEM_INTERACT_COMPLETE
+/obj/item/clothing/accessory/storage/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
+	return hold.attackby__legacy__attackchain(W, user, params)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
 	..()
@@ -64,10 +61,7 @@
 			L += G.gift:return_inv()
 	return L
 
-/obj/item/clothing/accessory/storage/activate_self(mob/user)
-	if(..())
-		return ITEM_INTERACT_COMPLETE
-
+/obj/item/clothing/accessory/storage/attack_self__legacy__attackchain(mob/user as mob)
 	if(has_suit)	//if we are part of a suit
 		hold.open(user)
 	else
@@ -77,7 +71,6 @@
 		for(var/obj/item/I in hold.contents)
 			hold.remove_from_storage(I, T)
 		src.add_fingerprint(user)
-	return ITEM_INTERACT_COMPLETE
 
 /obj/item/clothing/accessory/storage/webbing
 	name = "webbing"

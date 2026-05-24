@@ -91,5 +91,3 @@
 #define MAX_STACK_SIZE 50
 /// maximum amount of cable in a coil
 #define MAXCOIL 30
-/// maximum amount of cable in a RCL spool
-#define RCL_MAX_SPOOL_SIZE 90

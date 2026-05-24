@@ -95,8 +95,7 @@
 		/obj/item/robotanalyzer,
 		/obj/item/rpd/bluespace,
 		/obj/item/hammer,
-		/obj/item/rcl,
-		/obj/item/melee/sickly_blade/lock,
+		/obj/item/melee/sickly_blade/lock
 	)
 
 /obj/item/storage/belt/utility/full/populate_contents()
@@ -135,7 +134,6 @@
 	name = "advanced toolbelt"
 	desc = "Holds tools, looks snazzy, and fits nicely into a bag."
 	icon_state = "utility_ce"
-	max_combined_w_class = 20
 	storable = TRUE
 
 /obj/item/storage/belt/utility/chief/full/populate_contents()
@@ -143,7 +141,7 @@
 	new /obj/item/crowbar/power(src)
 	new /obj/item/weldingtool/experimental(src)//This can be changed if this is too much
 	new /obj/item/multitool(src)
-	new /obj/item/rcl(src)
+	new /obj/item/stack/cable_coil/random(src, 30)
 	new /obj/item/extinguisher/mini(src)
 	new /obj/item/analyzer(src)
 	update_icon()
@@ -714,8 +712,6 @@
 	desc = "A dorky fannypack for keeping small items in."
 	icon_state = "fannypack_leather"
 	storage_slots = 3
-	dyeable = TRUE
-	dyeing_key = DYE_REGISTRY_FANNYPACK
 
 /obj/item/storage/belt/fannypack/black
 	name = "black fannypack"
