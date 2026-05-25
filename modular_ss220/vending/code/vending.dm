@@ -86,6 +86,7 @@
 		/obj/item/grenade/frag = 5,
 		/obj/item/suppressor = 5,
 		/obj/item/gun/energy/ionrifle = 5,
+		/obj/item/tactical_sledgehammer = 1,
 	)
 
 /obj/machinery/economy/vending/nta/green
