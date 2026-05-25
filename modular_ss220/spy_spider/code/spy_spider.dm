@@ -140,7 +140,7 @@
 	to_chat(user, SPAN_INFO("Ты незаметно прикрепляешь жучок к одежде [src.declent_ru(ACCUSATIVE)]."))
 	return FINISH_ATTACK
 
-/obj/item/clothing/suit/storage/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
+/obj/item/clothing/suit/storage/activate_self(obj/item/W as obj, mob/user as mob, params)
 	if(istype(W, /obj/item/radio/spy_spider))
 		return
 	. = ..()
