@@ -3335,6 +3335,9 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/tiles/department/virology,
+/obj/structure/sign/medical/virology{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/virology/lab)
 "ajr" = (
@@ -3963,28 +3966,6 @@
 /obj/effect/turf_decal/tiles/neutral/corner,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/fore)
-"alw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/power/apc/directional/north,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/effect/turf_decal/tiles/department/virology/corner{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel,
-/area/station/hallway/primary/central/sw)
 "alx" = (
 /obj/machinery/door/poddoor/shutters{
 	name = "E.V.A. Storage Shutters";
@@ -13767,6 +13748,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "aNG" = (
@@ -15345,7 +15328,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/tcoms,
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
-/turf/simulated/floor/carpet/grimey,
+/turf/simulated/floor/plasteel/dark,
 /area/station/telecomms/chamber)
 "aRF" = (
 /obj/item/radio/intercom/directional/west,
@@ -16056,7 +16039,6 @@
 "aTR" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "aTT" = (
@@ -18433,6 +18415,7 @@
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 8
 	},
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/medbay)
 "bbq" = (
@@ -24140,7 +24123,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable,
-/obj/structure/sign/security/law,
 /turf/simulated/floor/plating,
 /area/station/legal/lawoffice)
 "cPb" = (
@@ -24422,6 +24404,10 @@
 /obj/effect/turf_decal/tiles/department/virology/corner{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/sw)
 "cYA" = (
@@ -28432,6 +28418,14 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/medical/morgue)
+"gsv" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/structure/sign/command/head,
+/turf/simulated/floor/plating,
+/area/station/command/office/hop)
 "gsP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -29218,7 +29212,6 @@
 	name = "Cargo Desk Shutters";
 	dir = 8
 	},
-/obj/structure/sign/cargo,
 /turf/simulated/floor/plating,
 /area/station/supply/office)
 "gZb" = (
@@ -30896,6 +30889,7 @@
 	},
 /obj/effect/spawner/wire_splicing/thirty,
 /obj/structure/grille/broken,
+/obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "iqP" = (
@@ -34363,7 +34357,7 @@
 /turf/simulated/floor/plating,
 /area/station/science/xenobiology)
 "lkp" = (
-/obj/structure/sign/nanotrasen,
+/obj/structure/sign/security/law,
 /turf/simulated/wall,
 /area/station/legal/lawoffice)
 "lkx" = (
@@ -39352,6 +39346,11 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
+"pxk" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/sign/cargo,
+/turf/simulated/floor/plating,
+/area/station/supply/storage)
 "pxq" = (
 /obj/structure/railing{
 	dir = 4
@@ -39881,7 +39880,6 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/structure/sign/security/law,
 /turf/simulated/floor/plating,
 /area/station/legal/lawoffice)
 "pTH" = (
@@ -40775,11 +40773,6 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/public/dorms)
-"qCE" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/sign/cargo,
-/turf/simulated/floor/plating,
-/area/station/supply/office)
 "qCQ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -40881,11 +40874,6 @@
 /obj/effect/turf_decal/tiles/department/science/side,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/south)
-"qHn" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/sign/cargo/materials,
-/turf/simulated/floor/plating,
-/area/station/supply/miningdock)
 "qHA" = (
 /obj/structure/table/wood,
 /obj/item/paicard{
@@ -44827,6 +44815,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/grille/broken,
+/obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "tib" = (
@@ -45000,7 +44989,6 @@
 /area/station/public/mrchangs)
 "tty" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/sign/cargo/mail,
 /turf/simulated/floor/plating,
 /area/station/supply/office)
 "ttA" = (
@@ -50720,7 +50708,6 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/structure/sign/command/head,
 /turf/simulated/floor/plating,
 /area/station/command/office/hop)
 "xGD" = (
@@ -81088,8 +81075,8 @@ oSA
 bxT
 rLe
 buB
-yiZ
-alw
+tib
+aUf
 tFI
 aGf
 aHX
@@ -87995,7 +87982,7 @@ afy
 agr
 ahg
 lFQ
-iTK
+gsv
 bhL
 bfi
 alx
@@ -90307,7 +90294,7 @@ gcW
 aQK
 rku
 fUq
-icm
+pxk
 ykK
 aoc
 isd
@@ -91084,7 +91071,7 @@ xrX
 aMz
 mYf
 hdd
-qCE
+tty
 uTJ
 kEE
 beC
@@ -92886,7 +92873,7 @@ xLK
 anq
 aom
 xpp
-qHn
+qlV
 akP
 elq
 qXu
