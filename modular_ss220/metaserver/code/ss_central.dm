@@ -32,7 +32,8 @@ SUBSYSTEM_DEF(central)
 	init_order = INIT_ORDER_DBCORE
 
 /datum/controller/subsystem/central/Initialize()
-	if(!(GLOB.configuration.central.api_url && GLOB.configuration.central.api_token))
+	// If this is not a real server, we dont want to load the whitelist and get a rintime error because of the missing api_url
+	if(!(GLOB.configuration.central.api_url == "https://central.ss220.club/v1"))
 		return
 	load_whitelist()
 	// TODO: Preload links
