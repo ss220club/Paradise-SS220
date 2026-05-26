@@ -9,9 +9,12 @@
 	var/server_type = ""
 	var/force_discord_verification = FALSE
 
+/datum/server_configuration/load_configuration()
+	central = new()
+	. = ..()
+
 /datum/server_configuration/load_all_sections()
 	. = ..()
-	central = new()
 	safe_load(central, "central_configuration")
 
 /datum/configuration_section/central/load_data(list/data)
