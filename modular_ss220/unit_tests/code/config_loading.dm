@@ -4,9 +4,6 @@
 	/// Contains all the misc configuration values
 	var/datum/configuration_section/ss220_unit_test/test
 
-/datum/configuration_section/ss220_unit_test
-	var/secret_number = -1
-
 /datum/server_configuration/load_all_sections()
 	. = ..()
 	safe_load(test, "ss220_unit_test")
@@ -14,6 +11,9 @@
 /datum/server_configuration/load_configuration()
 	test = new()
 	. = ..()
+
+/datum/configuration_section/ss220_unit_test
+	var/secret_number = -1
 
 /datum/configuration_section/ss220_unit_test/load_data(list/data)
 	CONFIG_LOAD_NUM(secret_number, data["secret_number"])
