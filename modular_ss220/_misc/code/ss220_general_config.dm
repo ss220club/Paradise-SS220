@@ -16,5 +16,6 @@
 	safe_load(ss220_misc, "ss220_misc_configuration")
 
 /datum/configuration_section/ss220_misc_configuration/New()
-	GLOB.blocked_chems += list("serpadrone")
+	GLOB.blocked_chems |= list("serpadrone")
 	GLOB.wall_items |= typecacheof(list(/obj/structure/closet/walllocker))
+	..()
