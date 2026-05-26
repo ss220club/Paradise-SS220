@@ -4,7 +4,6 @@
 	/// Contains all the misc configuration values
 	var/datum/configuration_section/ss220_unit_test/test
 
-
 /datum/configuration_section/ss220_unit_test
 	var/secret_number = -1
 
@@ -12,7 +11,7 @@
 	. = ..()
 	safe_load(test, "ss220_unit_test")
 
-/datum/server_configuration/ss220_unit_test/load_configuration()
+/datum/server_configuration/load_configuration()
 	test = new()
 	. = ..()
 
@@ -27,7 +26,6 @@
 	validate()
 
 /datum/game_test/config_loading/proc/validate()
-
 	var/secret_number = GLOB.configuration.test.secret_number
 	if(secret_number != 42)
 		Fail("Looks like we don't know the answer to the Ultimate Question of Life, The Universe, and Everything. Expected [42], got [secret_number], check if the config loading is working properly.")
