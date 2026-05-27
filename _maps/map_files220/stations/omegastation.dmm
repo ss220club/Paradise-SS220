@@ -2577,6 +2577,9 @@
 	icon_state = "1-2"
 	},
 /obj/effect/turf_decal/tiles/department/command/side,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/gravitygenerator)
 "ahk" = (
@@ -7507,6 +7510,7 @@
 	},
 /obj/effect/turf_decal/tiles/department/engineering/corner,
 /obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/storage/belt/utility,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "awo" = (
@@ -8100,12 +8104,19 @@
 /area/station/engineering/atmos)
 "ayr" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/belt/utility,
-/obj/item/t_scanner,
+/obj/item/t_scanner{
+	pixel_y = 15
+	},
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 4
 	},
 /obj/effect/turf_decal/tiles/dark/corner,
+/obj/item/storage/belt/utility{
+	pixel_y = -6
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = -3
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "ayw" = (
@@ -12700,10 +12711,12 @@
 "aKK" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/cable_coil/white{
-	pixel_x = 3;
+	pixel_x = 10;
 	pixel_y = 3
 	},
-/obj/item/stack/cable_coil/white,
+/obj/item/stack/cable_coil/white{
+	pixel_x = 7
+	},
 /obj/effect/turf_decal/tiles/department/engineering,
 /obj/item/stack/cable_coil/extra_insulated{
 	pixel_x = -7;
@@ -12716,7 +12729,17 @@
 /area/station/engineering/break_room)
 "aKL" = (
 /obj/structure/table/reinforced,
-/obj/item/lightreplacer,
+/obj/item/lightreplacer{
+	pixel_x = 10;
+	pixel_y = 16
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = -6
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = -3
+	},
+/obj/item/storage/belt/utility,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "aKM" = (
@@ -13776,6 +13799,10 @@
 	pixel_y = 6
 	},
 /obj/item/toner,
+/obj/machinery/camera{
+	c_tag = "Career Trainer's Office";
+	dir = 8
+	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/procedure/trainer_office)
 "aNL" = (
@@ -14078,6 +14105,11 @@
 "aOv" = (
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/drone_fabricator,
+/obj/machinery/camera{
+	c_tag = "Engineering Drone Fabricator Room";
+	dir = 4;
+	network = list("SS13","Engineering")
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/telecomms/computer)
 "aOw" = (
@@ -23113,6 +23145,13 @@
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 8
 	},
+/obj/item/stack/cable_coil/extra_insulated{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/obj/item/stack/cable_coil/extra_insulated{
+	pixel_y = 12
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "cbb" = (
@@ -23852,6 +23891,25 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
+"cDZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/extra_insulated{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tiles/department/engineering/corner{
+	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Engineering Hallway West";
+	dir = 10
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/control)
 "cEQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27128,6 +27186,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/command/office/ntrep)
+"fge" = (
+/obj/machinery/atmospherics/portable/canister/toxins,
+/obj/machinery/camera{
+	c_tag = "Research Toxins Storage Room";
+	dir = 6;
+	network = list("Research","SS13")
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/storage)
 "fgB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/turf_decal/tiles/department/medical/side{
@@ -29174,10 +29241,16 @@
 /area/station/service/bar/atrium)
 "gCK" = (
 /obj/structure/table/reinforced,
+/obj/effect/turf_decal/tiles/department/engineering,
+/obj/item/storage/belt/utility{
+	pixel_y = -6
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = -3
+	},
 /obj/item/wrench{
 	pixel_y = 4
 	},
-/obj/effect/turf_decal/tiles/department/engineering,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "gCV" = (
@@ -34057,6 +34130,16 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
+"klV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Secure Gamma Armory";
+	dir = 5
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/armory/secure)
 "kms" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/spawner/nukedisc_respawn,
@@ -34775,6 +34858,11 @@
 /obj/machinery/chem_master,
 /obj/item/radio/intercom/directional/west,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/camera{
+	c_tag = "Research Test Lab";
+	network = list("Research","SS13");
+	dir = 4
+	},
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
 "kSQ" = (
@@ -38712,6 +38800,10 @@
 	},
 /obj/effect/turf_decal/tiles/department/cargo/side,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera{
+	c_tag = "Cargo Bay Disposal";
+	dir = 10
+	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/sorting)
 "oap" = (
@@ -53353,9 +53445,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/storage)
 "xZd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
@@ -53364,6 +53453,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/gravitygenerator)
@@ -72157,7 +72249,7 @@ bzc
 bzc
 gyN
 iIV
-aQV
+cDZ
 alz
 aAp
 aAp
@@ -83402,7 +83494,7 @@ hhM
 aAm
 uPA
 mEn
-ngL
+klV
 ngL
 uyx
 omN
@@ -97091,7 +97183,7 @@ hhM
 aAp
 aXs
 ucd
-aXB
+fge
 aXB
 rzj
 rHQ
