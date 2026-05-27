@@ -18,8 +18,6 @@
 /datum/configuration_section/ss220_unit_test/load_data(list/data)
 	CONFIG_LOAD_NUM(secret_number, data["secret_number"])
 
-#endif
-
 /datum/game_test/config_loading
 
 /datum/game_test/config_loading/Run()
@@ -30,3 +28,4 @@
 	if(secret_number != 42)
 		Fail("Looks like we don't know the answer to the Ultimate Question of Life, The Universe, and Everything. Expected [42], got [secret_number], check if the config loading is working properly.")
 
+#endif
