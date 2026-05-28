@@ -66,3 +66,10 @@
 
 /datum/job/hos
 	exp_map = list(EXP_TYPE_SECURITY = (1200 + NOVICE_CADET_JOB_MINUTES))
+
+/datum/outfit/job/blueshield/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+
+	var/datum/martial_art/cqc/cqc_style = new
+	cqc_style.teach(H)
+
