@@ -102,7 +102,11 @@
 	if(!ismob(loc))
 		return FALSE
 	var/mob/user = loc
-
+//SS220 EDIT START
+	var/mob/living/L = loc
+	if(!ishuman(L) || L.get_item_by_slot(ITEM_SLOT_BACK) != src)
+		return FALSE
+//SS220 EDIT END
 	if((num < 0.005 || air_contents.total_moles() < num))
 		turn_off(user)
 		return FALSE
