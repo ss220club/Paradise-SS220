@@ -921,7 +921,7 @@ to destroy them and players will be able to make replacements.
 							/obj/item/stack/cable_coil = 2,)
 
 /obj/item/circuitboard/dna_scanner
-	board_name = "DNA Modifier"
+	board_name = "ДНК-Модификатор"
 	icon_state = "medical"
 	build_path = /obj/machinery/dna_scannernew
 	board_type = "machine"

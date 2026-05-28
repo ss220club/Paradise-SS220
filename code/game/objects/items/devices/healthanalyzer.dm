@@ -236,7 +236,7 @@
 	var/obj/item/organ/internal/brain = H.get_int_organ(/obj/item/organ/internal/brain)
 	if(brain)
 		if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_CRITICAL)) // 100
-			msgs += SPAN_WARNING("Мозг субъекта мёртв.")
+			msgs += SPAN_WARNING("Мозг субъекта отмирает.")
 		else if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_MODERATE)) // 60
 			msgs += SPAN_WARNING("Обнаружено серьезное повреждение мозга. Возможно, у пациента слабоумие.")
 		else if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_MINOR)) // 10
@@ -255,10 +255,10 @@
 		var/limb = e.name
 		if(e.status & ORGAN_BROKEN)
 			if((e.limb_name in list("l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "l_foot", "r_foot")) && !(e.status & ORGAN_SPLINTED))
-				msgs += SPAN_WARNING("Обнаружен незафиксированный перелом в [limb]. Рекомендуется наложение шин при транспортировке.")
+				msgs += SPAN_WARNING("Обнаружен незафиксированный перелом в [e.declent_ru(PREPOSITIONAL)]. Рекомендуется наложение шин при транспортировке.")
 			broken_bone = TRUE
 		if(e.has_infected_wound())
-			msgs += SPAN_WARNING("Обнаружена инфицированная рана в [limb]. Рекомендуется дезинфекция.")
+			msgs += SPAN_WARNING("Обнаружена инфицированная рана в [e.declent_ru(PREPOSITIONAL)]. Рекомендуется дезинфекция.")
 		burn_wound = burn_wound || (e.status & ORGAN_BURNT)
 		internal_bleed = internal_bleed || (e.status & ORGAN_INT_BLEEDING)
 	if(broken_bone)
@@ -270,13 +270,13 @@
 
 	if(HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5))
 		var/list/spooky_conditions = list(
-			SPAN_DEAD("Patient appears to be infested."),
-			SPAN_DEAD("Patient's bones are hollow."),
-			SPAN_DEAD("Patient has limited attachment to this physical plane."),
-			SPAN_USERDANGER("Patient is aggressive. Immediate sedation recommended."),
-			SPAN_WARNING("Patient's vitamin D levels are dangerously low."),
-			SPAN_WARNING("Patient's spider levels are dangerously low."),
-			SPAN_DEAD("Subject is ready for experimentation."),
+			SPAN_DEAD("Пациент выглядит заражённым."),
+			SPAN_DEAD("Кости пациента полые!"),
+			SPAN_DEAD("Пациент слабо привязан к физическому миру."),
+			SPAN_USERDANGER("Пациент агрессивен. Рекомендована срочная седация."),
+			SPAN_WARNING("Уровень витамина D у пациента опасно низок."),
+			SPAN_WARNING("Уровень пауков в организме пациента опасно низок."),
+			SPAN_DEAD("Объект готов к экспериментам."),
 		)
 		msgs += pick(spooky_conditions)
 

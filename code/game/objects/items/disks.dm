@@ -8,7 +8,7 @@
 	materials = list(MAT_METAL = 300, MAT_GLASS = 100)
 
 /obj/item/disk/data
-	name = "Cloning Data Disk"
+	name = "Диск с данными ДНК"
 	var/datum/dna2_record/buf = null
 	var/read_only = FALSE //Well,it's still a floppy disk
 
@@ -21,7 +21,7 @@
 	return ..()
 
 /obj/item/disk/data/demo
-	name = "data disk - 'God Emperor of Mankind'"
+	name = "Диск с данными - 'Бог Император Человечества'"
 	read_only = TRUE
 
 /obj/item/disk/data/demo/Initialize(mapload)
@@ -38,7 +38,7 @@
 	buf.dna.UpdateUI()
 
 /obj/item/disk/data/monkey
-	name = "data disk - 'Mr. Muggles'"
+	name = "Диск с данными - 'Мистер Магглс'"
 	read_only = 1
 
 /obj/item/disk/data/monkey/Initialize(mapload)
@@ -59,14 +59,15 @@
 
 /obj/item/disk/data/attack_self__legacy__attackchain(mob/user)
 	read_only = !read_only
-	to_chat(user, "You flip the write-protect tab to [read_only ? "protected" : "unprotected"].")
+	to_chat(user, "Вы переключаете статус защиты дискеты на - [read_only ? "Включена" : "Отключена"].")
 
 /obj/item/disk/data/examine(mob/user)
 	. = ..()
-	. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
+	. += "Диск для сбора данных о ДНК.<br>"
+	. += "Защита от перезаписи данных - [read_only ? "Включена" : "Отключена"]."
 
 /obj/item/storage/box/disks
-	name = "Diskette Box"
+	name = "Коробка с дискетами"
 	icon_state = "disk_box"
 
 /obj/item/storage/box/disks/populate_contents()
