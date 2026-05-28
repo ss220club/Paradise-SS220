@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/cooking/board/advanced
 	icon = 'modular_ss220/objects/icons/cooking_adv.dmi'
 	name = "Улучшенная разделочная доска"
-	desc = "Усиленная разделочная доска."
+	desc = "Усиленная разделочная доска для готовки большего объема пищи."
 	icon_state = "cutting_board_adv"
 
 	product_multiplier = 2
@@ -17,7 +17,7 @@
 /obj/item/reagent_containers/cooking/bowl/advanced
 	icon = 'modular_ss220/objects/icons/cooking_adv.dmi'
 	name = "Улучшенная миска"
-	desc = "Усиленная миска для готовки большего обьема пищи."
+	desc = "Усиленная миска для готовки большего объема пищи."
 	icon_state = "bowl_adv"
 
 	product_multiplier = 2
@@ -52,7 +52,7 @@
 
 /datum/design/bowl/advanced
 	name = "Улучшенная миска"
-	desc = "Усиленная миска для смешивания салатов, с высокой эффективностью позволяющей готовить больше пищи."
+	desc = "Усиленная миска для смешивания салатов, повышающая эффективность приготовления и увеличивающая объём готовой пищи."
 	id = "bowl/advanced"
 	req_tech = list("materials" = 5, "bluespace" = 5)
 	build_type = PROTOLATHE
@@ -62,7 +62,7 @@
 
 /datum/design/bowl/bluespace
 	name = "Блюспейс миска"
-	desc = "Миска, усиленная блюспейс технологиями, способная дублировать готовые блюда."
+	desc = "Миска, усиленная блюспейс-технологиями, способная дублировать готовые блюда."
 	id = "bowl/bluespace"
 	req_tech = list("materials" = 7, "bluespace" = 7, "powerstorage" = 6)
 	build_type = PROTOLATHE
