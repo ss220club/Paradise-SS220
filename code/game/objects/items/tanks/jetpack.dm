@@ -102,12 +102,10 @@
 	if(!ismob(loc))
 		return FALSE
 	var/mob/user = loc
-//SS220 EDIT START
-	if(ishuman(loc))
-		var/mob/living/carbon/human/L = loc
-		if(L.get_item_by_slot(ITEM_SLOT_BACK) != src)
-			return FALSE
-//SS220 EDIT END
+	//SS220 EDIT START - Фиксим баг с джетпаком
+	if(ishuman(loc) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
+		return FALSE
+	//SS220 EDIT END
 	if((num < 0.005 || air_contents.total_moles() < num))
 		turn_off(user)
 		return FALSE
