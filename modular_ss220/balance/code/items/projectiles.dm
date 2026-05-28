@@ -1,8 +1,9 @@
-/obj/item/projectile
+/obj/projectile
 	///If TRUE, hit mobs even if they're on the floor and not our target
 	var/hit_prone_targets = TRUE
+	speed = 0.70
 
-/atom/handle_ricochet(obj/item/projectile/ricocheting_projectile)
+/atom/handle_ricochet(obj/projectile/ricocheting_projectile)
 	. = ..()
 	if(.)
 		// here is confirmed ricochet - force projectile to hit targets
@@ -14,7 +15,41 @@
 		return
 	BB.hit_prone_targets = user.a_intent != INTENT_HELP
 
-/mob/living/carbon/human/projectile_hit_check(obj/item/projectile/P)
+/mob/living/carbon/human/projectile_hit_check(obj/projectile/P)
 	if(stat == CONSCIOUS)
 		return !P.hit_prone_targets && !density
 	return !density
+
+/obj/projectile/beam/player_laser
+	damage = 24
+	hitscan = TRUE
+	muzzle_type = /obj/effect/projectile/muzzle/laser
+	tracer_type = /obj/effect/projectile/tracer/laser
+	impact_type = /obj/effect/projectile/impact/laser
+	impact_effect_type = null
+	hitscan_light_intensity = 4
+	hitscan_light_color_override = LIGHT_COLOR_FIRE
+	muzzle_flash_intensity = 5
+	muzzle_flash_range = 2
+	muzzle_flash_color_override = LIGHT_COLOR_FIRE
+	impact_light_intensity = 7
+	impact_light_range = 2.5
+	impact_light_color_override = LIGHT_COLOR_FIRE
+	forcedodge = 0
+
+/obj/projectile/beam/training_laser
+	parent_type = /obj/projectile/beam/player_laser
+	damage = 0
+
+/obj/projectile/beam/disabler
+	damage = 20
+	icon_state = "ice_2"
+
+/obj/projectile/beam/laser
+	icon_state = "laser_alt"
+
+/obj/projectile/beam/immolator
+	icon_state = "temp_8"
+
+/obj/projectile/beam/xray
+	icon_state = "temp_4"

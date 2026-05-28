@@ -57,16 +57,16 @@
 
 /obj/item/pet_carrier/proc/put_in_carrier(mob/living/target, mob/living/user)
 	if(!opened)
-		to_chat(user, span_warning("Ваша переноска закрыта!"))
+		to_chat(user, SPAN_WARNING("Ваша переноска закрыта!"))
 		return FALSE
 	if(contains_pet)
-		to_chat(user, span_warning("Ваша переноска заполнена!"))
+		to_chat(user, SPAN_WARNING("Ваша переноска заполнена!"))
 		return FALSE
 	if(target.mob_size > mob_size)
-		to_chat(user, span_warning("Ваша переноска слишком мала!"))
+		to_chat(user, SPAN_WARNING("Ваша переноска слишком мала!"))
 		return FALSE
 	if(!istype(target, /mob/living/simple_animal/pet))
-		to_chat(user, span_warning("Это существо не очень похоже на ручное животное."))
+		to_chat(user, SPAN_WARNING("Это существо не очень похоже на ручное животное."))
 		return FALSE
 
 	target.forceMove(src)
@@ -76,15 +76,15 @@
 		desc += target.desc
 	contains_pet = TRUE
 
-	to_chat(user, span_notice("Вы поместили [target.name] в [src.name]."))
-	to_chat(target, span_notice("[user.name] поместил [user.gender == FEMALE ? "" : "а"] вас в [src.name]."))
+	to_chat(user, SPAN_NOTICE("Вы поместили [target.name] в [src.name]."))
+	to_chat(target, SPAN_NOTICE("[user.name] поместил [user.gender == FEMALE ? "" : "а"] вас в [src.name]."))
 	update_icon()
 	return TRUE
 
 /obj/item/pet_carrier/proc/try_free_content(atom/new_location, mob/user)
 	if(!opened)
 		if(user)
-			to_chat(user, span_warning("Ваша переноска закрыта! Содержимое невозможно выгрузить!"))
+			to_chat(user, SPAN_WARNING("Ваша переноска закрыта! Содержимое невозможно выгрузить!"))
 		return FALSE
 	free_content(new_location)
 
@@ -140,45 +140,45 @@
 	var/breakout_time_open = 5 SECONDS //for escape
 
 	if(do_after(L,(breakout_time_open/2), target = src))
-		to_chat(L, span_warning("ТЕСТ 1 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
+		to_chat(L, SPAN_WARNING("ТЕСТ 1 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
 
 	if(do_after(L,(breakout_time_open/2)))
-		to_chat(L, span_warning("ТЕСТ 2 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
+		to_chat(L, SPAN_WARNING("ТЕСТ 2 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
 
 	if(do_after(L,(breakout_time_open/2), target = loc))
-		to_chat(L, span_warning("ТЕСТ 3 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
+		to_chat(L, SPAN_WARNING("ТЕСТ 3 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
 
 	if(do_after(L,(breakout_time_open/2), target = src.loc))
-		to_chat(L, span_warning("ТЕСТ 4 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
+		to_chat(L, SPAN_WARNING("ТЕСТ 4 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
 
 	if(do_after(L,(breakout_time_open/2), target = L))
-		to_chat(L, span_warning("ТЕСТ 5 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
+		to_chat(L, SPAN_WARNING("ТЕСТ 5 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
 
 	if(do_after(L,(breakout_time_open/2), target = L.loc))
-		to_chat(L, span_warning("ТЕСТ 6 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
+		to_chat(L, SPAN_WARNING("ТЕСТ 6 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
 
 
 
 	if(opened && L.loc == src)
-		to_chat(L, span_warning("Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
+		to_chat(L, SPAN_WARNING("Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)"))
 		spawn(0)
 			if(do_after(L,(breakout_time_open), target = src))
 				if(!src || !L || L.stat != CONSCIOUS || L.loc != src || !opened)
-					to_chat(L, span_warning("Побег прерван!"))
+					to_chat(L, SPAN_WARNING("Побег прерван!"))
 					return
 
 				free_content()
-				visible_message(span_warning("[L.name] вылез из переноски."))
+				visible_message(SPAN_WARNING("[L.name] вылез из переноски."))
 		return
 
-	to_chat(L, span_warning("Вы начали ломиться в закрытую дверцу переноски и пытаетесь её выбить или открыть. (это займет [breakout_time] секунд, не двигайтесь)"))
+	to_chat(L, SPAN_WARNING("Вы начали ломиться в закрытую дверцу переноски и пытаетесь её выбить или открыть. (это займет [breakout_time] секунд, не двигайтесь)"))
 	for(var/mob/O in viewers(usr.loc))
-		O.show_message(span_danger("[src.name] начинает трястись!"), 1)
+		O.show_message(SPAN_DANGER("[src.name] начинает трястись!"), 1)
 
 	spawn(0)
 		if(do_after(L,(breakout_time), target = src))
 			if(!src || !L || L.stat != CONSCIOUS || L.loc != src || opened) //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
-				to_chat(L, span_warning("Побег прерван!"))
+				to_chat(L, SPAN_WARNING("Побег прерван!"))
 				return
 
 			var/mob/M = src.loc
@@ -195,8 +195,8 @@
 
 /obj/item/pet_carrier/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Alt-Click</b> to unload.")
-	. += span_notice("<b>Alt-Shift-Click</b> to toggle lock.")
+	. += SPAN_NOTICE("<b>Alt-Click</b> to unload.")
+	. += SPAN_NOTICE("<b>Alt-Shift-Click</b> to toggle lock.")
 
 /obj/item/pet_carrier/AltClick(mob/user)
 	unload_content(user)
@@ -240,8 +240,8 @@
 
 			usr.face_atom(over_object)
 			usr.visible_message(
-				span_notice("[usr] вытащил питомца из [src.name] на [over_object.name]."),
-				span_notice("Вы вытащили питомца из [src.name] на [over_object.name]."))
+				SPAN_NOTICE("[usr] вытащил питомца из [src.name] на [over_object.name]."),
+				SPAN_NOTICE("Вы вытащили питомца из [src.name] на [over_object.name]."))
 
 			try_free_content(T, usr)
 			return TRUE

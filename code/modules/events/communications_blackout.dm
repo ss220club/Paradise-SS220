@@ -1,3 +1,7 @@
+/datum/event/communications_blackout
+	name = "Communication Blackout"
+	nominal_severity = EVENT_LEVEL_MODERATE
+
 /datum/event/communications_blackout/announce(false_alarm)
 	var/alert = pick(	"Обнаружены ионосферные аномалии. Неизбежен временный сбой связи. Пожалуйста, свяжитесь с вашим*%fj 00)`5 vc-БЗЗЗ", \
 						"Обнаружены ионосферные аномалии. Неизбежен временный сбо*3mga;b4;'1v?-БЗЗЗЗ", \
@@ -8,7 +12,7 @@
 
 	for(var/mob/living/silicon/ai/A in GLOB.ai_list)	//AIs are always aware of communication blackouts.
 		to_chat(A, "<br>")
-		to_chat(A, "<span class='warning'><b>[alert]</b></span>")
+		to_chat(A, SPAN_WARNING("<b>[alert]</b>"))
 		to_chat(A, "<br>")
 
 	if(prob(30) || false_alarm)	//most of the time, we don't want an announcement, so as to allow AIs to fake blackouts.

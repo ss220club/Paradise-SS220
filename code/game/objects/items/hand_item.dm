@@ -12,7 +12,7 @@
 /obj/item/slapper/attack__legacy__attackchain(mob/M, mob/living/carbon/human/user)
 	user.do_attack_animation(M)
 	playsound(M, hitsound, 50, TRUE, -1)
-	user.visible_message("<span class='danger'>[user] даёт пощёчину [M]!</span>", "<span class='notice'>Вы даёте пощёчину [M]!</span>", "<span class='hear'>Вы слышите шлепок.</span>")
+	user.visible_message(SPAN_DANGER("[user] даёт пощёчину [M]!"), SPAN_NOTICE("Вы даёте пощёчину [M]!"), SPAN_HEAR("Вы слышите шлепок."))
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.IsSleeping())
@@ -44,12 +44,12 @@
 			if(istype(human_user.shoes, /obj/item/clothing/shoes/cowboy))
 				human_user.say(pick("Hot damn!", "Hoo-wee!", "Got-dang!"))
 		playsound(get_turf(the_table), 'sound/effects/tableslam.ogg', 110, TRUE)
-		user.visible_message("<b><span class='danger'>[user] бьёт кулаком по [the_table]!</span></b>", "<b><span class='danger'>Вы бьёте кулаком по [the_table]!</span></b>")
+		user.visible_message("<b>[SPAN_DANGER("[user] бьёт кулаком по [the_table]!")]</b>", "<b>[SPAN_DANGER("Вы бьёте кулаком по [the_table]!")]</b>")
 		qdel(src)
 	else
 		user.do_attack_animation(the_table)
 		playsound(get_turf(the_table), 'sound/effects/tableslam.ogg', 40, TRUE)
-		user.visible_message("<span class='notice'>[user] бьёт [user.p_their()] ладонью по [the_table].</span>", "<span class='notice'>Вы бьёте ладонью по [the_table].</span>")
+		user.visible_message(SPAN_NOTICE("[user] бьёт [user.p_their()] ладонью по [the_table]."), SPAN_NOTICE("Вы бьёте ладонью по [the_table]."))
 		table_smacks_left--
 		if(table_smacks_left <= 0)
 			qdel(src)

@@ -1,4 +1,7 @@
 /datum/event/door_runtime
+	name = "Door Runtime"
+	role_weights = list(ASSIGNMENT_CREW = 0.2)
+	role_requirements = list(ASSIGNMENT_CREW = 0)
 
 /datum/event/door_runtime/announce()
 	GLOB.minor_announcement.Announce("Вредоносное программное обеспечение обнаружено в системе контроля шлюзов. Задействованы протоколы изоляции. Пожалуйста, сохраняйте спокойствие.", "ВНИМАНИЕ: Уязвимость сети.", 'sound/AI/door_runtimes.ogg')

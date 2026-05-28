@@ -13,17 +13,17 @@
 		return
 	var/mob/living/carbon/receiver = A
 	if(receiver.stat != CONSCIOUS)
-		to_chat(user, span_warning("[receiver] can't accept any items because they're not conscious!"))
+		to_chat(user, SPAN_WARNING("[receiver] can't accept any items because they're not conscious!"))
 		return
 	if(!user.Adjacent(receiver))
-		to_chat(user, span_warning("You need to be closer to [receiver] to offer them lollipop."))
+		to_chat(user, SPAN_WARNING("You need to be closer to [receiver] to offer them lollipop."))
 		return
 	if(!receiver.client)
-		to_chat(user, span_warning("You offer lollipop to [receiver], but they don't seem to respond..."))
+		to_chat(user, SPAN_WARNING("You offer lollipop to [receiver], but they don't seem to respond..."))
 		return
 	var/obj/item/I = new /obj/item/food/candy/sucker/lollipop
 	receiver.throw_alert("take item [I.UID()]", /atom/movable/screen/alert/take_item/RLF, alert_args = list(user, receiver, I))
-	to_chat(user, span_info("You offer lollipop to [receiver]."))
+	to_chat(user, SPAN_INFO("You offer lollipop to [receiver]."))
 
 /atom/movable/screen/alert/take_item/RLF/Click(location, control, params)
 	var/mob/living/receiver = locateUID(receiver_UID)
@@ -31,13 +31,13 @@
 		return
 	var/obj/item/food/candy/sucker/I = locateUID(item_UID)
 	if(receiver.r_hand && receiver.l_hand)
-		to_chat(receiver, span_warning("You need to have your hands free to accept [I]!"))
+		to_chat(receiver, SPAN_WARNING("You need to have your hands free to accept [I]!"))
 		return
 	var/mob/living/giver = locateUID(giver_UID)
 	if(!isrobot(giver))
 		return
 	if(!giver.Adjacent(receiver))
-		to_chat(receiver, span_warning("You need to stay in reaching distance of [giver] to take [I]!"))
+		to_chat(receiver, SPAN_WARNING("You need to stay in reaching distance of [giver] to take [I]!"))
 		return
 	UnregisterSignal(I, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED))
 	var/mob/living/silicon/robot/borg = giver
@@ -46,7 +46,7 @@
 	receiver.put_in_hands(I)
 	I.add_fingerprint(receiver)
 	I.on_give(giver, receiver)
-	receiver.visible_message(span_notice("[giver] handed [I] to [receiver]."))
+	receiver.visible_message(SPAN_NOTICE("[giver] handed [I] to [receiver]."))
 	receiver.clear_alert("take item [item_UID]")
 
 /obj/item/food/candy/sucker/lollipop

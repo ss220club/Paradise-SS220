@@ -74,7 +74,7 @@ GLOBAL_PROTECT(revision_info) // Dont mess with this
 /datum/code_revision/proc/get_testmerge_chatmessage(header = FALSE)
 	var/list/msg = list()
 	if(header)
-		msg += "<span class='notice'>Следующие ПРы на данный момент тестируются:</span>"
+		msg += SPAN_NOTICE("Следующие ПРы на данный момент тестируются:")
 
 	for(var/pr in GLOB.revision_info.testmerges)
 		var/datum/tgs_revision_information/test_merge/tm = pr
@@ -88,7 +88,7 @@ GLOBAL_PROTECT(revision_info) // Dont mess with this
 	set desc = "Получить техническую информацию о сервере"
 
 	var/list/msg = list()
-	msg += "<span class='notice'><b>Информация о сервере</b></span>"
+	msg += SPAN_NOTICE("<b>Информация о сервере</b>")
 	// Round ID first
 	msg += "<b>Номер раунда:</b> [GLOB.round_id ? GLOB.round_id : "NULL"]"
 	#ifdef PARADISE_PRODUCTION_HARDWARE

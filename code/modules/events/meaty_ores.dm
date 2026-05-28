@@ -1,3 +1,9 @@
+/datum/event/dust/meaty
+	name = "Meaty Ores"
+	nominal_severity = EVENT_LEVEL_MODERATE
+	role_weights = list(ASSIGNMENT_ENGINEERING = 4)
+	role_requirements = list(ASSIGNMENT_ENGINEERING = 4)
+
 /datum/event/dust/meaty/announce()
 	if(prob(16))
 		GLOB.minor_announcement.Announce("Неизвестные биологические объекты были обнаружены рядом с [station_name()], пожалуйста, будьте наготове.", "ВНИМАНИЕ: Неопознанные формы жизни.")
@@ -6,6 +12,7 @@
 
 /datum/event/dust/meaty/setup()
 	qnty = rand(45,125)
+	endWhen = 600 // Make it take up engineering staffing for 20 minutes
 
 /datum/event/dust/meaty/start()
 	INVOKE_ASYNC(src, PROC_REF(spawn_meaty_ores))

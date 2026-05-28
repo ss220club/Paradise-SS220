@@ -17,11 +17,11 @@
 		var/mob/user = loc
 		attack_self__legacy__attackchain(user)
 		var/message = pick("How strange!", "Interesting.", "Or that was me?", "Pffft..")
-		to_chat(user, span_notice("[src]'s chain stops moving all of a sudden. [message]"))
+		to_chat(user, SPAN_NOTICE("[src]'s chain stops moving all of a sudden. [message]"))
 	RemoveElement(/datum/element/butchers_humans)
 	available = FALSE
 
 /obj/item/butcher_chainsaw/gateway/attack_self__legacy__attackchain(mob/user)
 	if(available)
 		return ..()
-	to_chat(user, span_warning("[src]'s cord handle is tough to pull..."))
+	to_chat(user, SPAN_WARNING("[src]'s cord handle is tough to pull..."))

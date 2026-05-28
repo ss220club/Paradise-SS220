@@ -55,7 +55,7 @@
 
 /obj/item/dualsaber/legendary_saber/on_wield(obj/item/source, mob/living/carbon/user)
 	if(user && HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, "<span class='warning'>You lack the grace to wield this!</span>")
+		to_chat(user, SPAN_WARNING("You lack the grace to wield this!"))
 		return COMPONENT_TWOHANDED_BLOCK_WIELD
 
 	hitsound = hit_wield

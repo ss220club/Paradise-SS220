@@ -35,7 +35,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minimum_survivable_temperature = 0
 	maximum_survivable_temperature = 1500
-	faction = list("carp", "mining")
+	faction = list("carp", "heretic")
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -68,6 +68,12 @@
 	. = ..()
 	carp_randomify(rarechance)
 	AddComponent(/datum/component/aggro_emote, emote_list = list("gnashes"))
+	AddComponent(/datum/component/event_tracker, EVENT_CARP)
+
+/mob/living/basic/carp/event_cost()
+	. = list()
+	if(is_station_level((get_turf(src)).z) && stat != DEAD)
+		return list(ASSIGNMENT_CREW = 0.1)
 
 /mob/living/basic/carp/proc/carp_randomify(rarechance)
 	if(random_color)

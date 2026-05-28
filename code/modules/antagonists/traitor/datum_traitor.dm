@@ -21,6 +21,8 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 
 	/// Have we / are we sending a backstab message at this time. If we are, do not send another.
 	var/sending_backstab = FALSE
+	/// Whether this traitor was assigned during round start
+	var/is_roundstart = FALSE
 
 /datum/antagonist/traitor/on_gain()
 	// Create this in case the traitor wants to mindslaves someone.
@@ -90,11 +92,25 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 /datum/antagonist/traitor/select_organization()
 	if(is_ai(owner.current))
 		return
-	var/chaos = pickweight(list(ORG_CHAOS_HUNTER = ORG_PROB_HUNTER, ORG_CHAOS_MILD = ORG_PROB_MILD, ORG_CHAOS_AVERAGE = ORG_PROB_AVERAGE, ORG_CHAOS_HIJACK = ORG_PROB_HIJACK))
+	var/list/chaos_weights = list(
+		ORG_CHAOS_HUNTER = ORG_PROB_HUNTER,
+		ORG_CHAOS_MILD = ORG_PROB_MILD,
+		ORG_CHAOS_AVERAGE = ORG_PROB_AVERAGE
+	)
+	if(can_assign_hijack_objective())
+		chaos_weights[ORG_CHAOS_HIJACK] = ORG_PROB_HIJACK
+	var/chaos = pickweight(chaos_weights)
 	for(var/org_type in shuffle(subtypesof(/datum/antag_org/syndicate)))
 		var/datum/antag_org/org = org_type
 		if(initial(org.chaos_level) == chaos)
 			organization = new org_type(src)
+			if(istype(organization, /datum/antag_org/syndicate/gorlex))
+				if(prob(50))
+					organization.intro_desc += "Залезть, устроить беспредел, вылететь на новом шикарном шаттле. Вы знаете, как это делается."
+					organization.forced_objectives = list(/datum/objective/hijack)
+				else
+					organization.intro_desc += "Залезть внутрь, устроить настоящий беспредел, похоронить станцию ​​с оглушительным грохотом. Вы знаете, как это делается."
+					organization.forced_objectives = list(/datum/objective/nuke)
 			return
 
 /datum/antagonist/traitor/add_owner_to_gamemode()
@@ -107,6 +123,8 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	var/is_contractor = LAZYACCESS(GLOB.contractors, owner)
 	if(locate(/datum/objective/hijack) in owner.get_all_objectives())
 		antag_hud_name = is_contractor ? "hudhijackcontractor" : "hudhijack"
+	else if(locate(/datum/objective/nuke) in owner.get_all_objectives())
+		antag_hud_name = is_contractor ? "hudnukecontractor" : "hudnuke"
 	else
 		antag_hud_name = is_contractor ? "hudcontractor" : "hudsyndicate"
 	return ..()
@@ -142,15 +160,19 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	var/can_succeed_if_dead = TRUE
 	// If our org has forced objectives, give them to us guaranteed.
 	if(organization && length(organization.forced_objectives))
+		var/list/instant_known_objs = list(/datum/objective/hijack, /datum/objective/nuke)
 		for(var/forced_objectives in organization.forced_objectives)
 			var/datum/objective/forced_obj = forced_objectives
-			if(!ispath(forced_obj, /datum/objective/hijack) && delayed_objectives) // Hijackers know their objective immediately
+			if(!is_path_in_list(forced_obj, instant_known_objs) && delayed_objectives) // Some objectives are known instantly
 				forced_obj = new /datum/objective/delayed(forced_obj)
 			add_antag_objective(forced_obj)
 			iteration++
 
 	if(locate(/datum/objective/hijack) in owner.get_all_objectives())
 		return //Hijackers only get hijack.
+
+	if(locate(/datum/objective/nuke) in owner.get_all_objectives())
+		return // If you're gonna nuke the place, you don't need any other objectives.
 
 	// Will give objectives from our org or random objectives.
 	for(var/i in iteration to GLOB.configuration.gamemode.traitor_objectives_amount)
@@ -207,11 +229,11 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 	var/list/messages = list()
 	messages.Add("<u><b>Синдикат предоставил вам следующие формулировки для идентификации агентов:</b></u>")
-	messages.Add("<span class='bold body'>Кодовые фразы: <span class='codephrases'>[phrases]</span></span>")
-	messages.Add("<span class='bold body'>Кодовые ответы: <span class='coderesponses'>[responses]</span></span>")
+	messages.Add("<span class='bold body'>Кодовые фразы: [SPAN_CODEPHRASES("[phrases]")]</span>")
+	messages.Add("<span class='bold body'>Кодовые ответы: [SPAN_CODERESPONSES("[responses]")]</span>")
 
-	antag_memory += "<b>Кодовые фразы</b>: <span class='red'>[phrases]</span><br>"
-	antag_memory += "<b>Кодовые ответы</b>: <span class='red'>[responses]</span><br>"
+	antag_memory += "<b>Кодовые фразы</b>: [SPAN_RED("[phrases]")]<br>"
+	antag_memory += "<b>Кодовые ответы</b>: [SPAN_RED("[responses]")]<br>"
 
 	messages.Add("Используйте эти слова для идентификации других агентов. Действуйте аккуратно, поскольку каждый человек - потенциальный враг.")
 	messages.Add("<b><font color=red>Вы запоминаете кодовые формулировки, определяя их в речи.</font></b>")
@@ -247,7 +269,7 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		R = locate(/obj/item/radio) in traitor_mob.contents
 
 	if(!R)
-		to_chat(traitor_mob, "<span class='warning'>К сожалению, Синдикат не смог предоставить вам аплинк.</span>")
+		to_chat(traitor_mob, SPAN_WARNING("К сожалению, Синдикат не смог предоставить вам аплинк."))
 		return FALSE // They had no PDA or radio for whatever reason.
 
 	if(isradio(R))
@@ -267,7 +289,7 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		target_radio.hidden_uplink = T
 		T.uplink_owner = "[traitor_mob.key]"
 		target_radio.traitor_frequency = freq
-		to_chat(traitor_mob, "<span class='notice'>Синдикат хитро замаскировал ваш алпинк в виде [R.name]. Просто наберите частоту [format_frequency(freq)] для разблокировки скрытых функций.</span>")
+		to_chat(traitor_mob, SPAN_NOTICE("Синдикат хитро замаскировал ваш алпинк в виде [R.name]. Просто наберите частоту [format_frequency(freq)] для разблокировки скрытых функций."))
 		antag_memory += "<B>Радиочастота:</B> [format_frequency(freq)] ([R.name])."
 		return TRUE
 
@@ -281,7 +303,7 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		var/obj/item/pda/P = R
 		P.lock_code = pda_pass
 
-		to_chat(traitor_mob, "<span class='notice'>Синдикат хитро замаскировал ваш алпинк в виде [R.name]. Просто введите код \"[pda_pass]\" в выбор рингтона для разблокировки скрытых функций.</span>")
+		to_chat(traitor_mob, SPAN_NOTICE("Синдикат хитро замаскировал ваш алпинк в виде [R.name]. Просто введите код \"[pda_pass]\" в выбор рингтона для разблокировки скрытых функций."))
 		antag_memory += "<B>Пароль для аплинка:</B> [pda_pass] ([R.name]."
 		return TRUE
 	return FALSE
@@ -291,8 +313,8 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
-	var/message = "<br><b>Кодовыми фразами были:</b> <span class='bluetext'>[phrases]</span><br>\
-					<b>Кодовыми ответами были:</b> <span class='redtext'>[responses]</span><br>"
+	var/message = "<br><b>Кодовыми фразами были:</b> [SPAN_BLUETEXT("[phrases]")]<br>\
+					<b>Кодовыми ответами были:</b> [SPAN_REDTEXT("[responses]")]<br>"
 
 	return message
 
@@ -331,3 +353,21 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	var/list/messages = owner.prepare_announce_objectives()
 	to_chat(owner.current, chat_box_red(messages.Join("<br>")))
 	SEND_SOUND(owner.current, sound('sound/ambience/alarm4.ogg'))
+
+/// Helper functions for hijack pop checks
+
+/datum/antagonist/traitor/can_assign_hijack_objective()
+	var/total_players
+	if(is_roundstart)
+		total_players = GLOB.roundstart_ready_players
+		if(total_players < GLOB.configuration.gamemode.min_players_hijack_roundstart)
+			return FALSE
+		return TRUE
+	total_players = get_living_players_count()
+	if(total_players < GLOB.configuration.gamemode.min_players_hijack_midround)
+		return FALSE
+	var/security_count = get_living_security_players_count()
+	if(security_count < GLOB.configuration.gamemode.min_security_hijack_midround)
+		return FALSE
+	return TRUE
+

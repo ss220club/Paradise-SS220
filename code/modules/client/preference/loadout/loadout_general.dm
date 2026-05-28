@@ -57,6 +57,10 @@
 	display_name = "Camera"
 	path = /obj/item/camera
 
+/datum/gear/taperecorder
+	display_name = "Universal recorder"
+	path = /obj/item/taperecorder
+
 /datum/gear/redfoxplushie
 	display_name = "Red fox plushie"
 	path = /obj/item/toy/plushie/red_fox
@@ -129,6 +133,10 @@
 	display_name = "Walking cane"
 	path = /obj/item/cane
 
+/datum/gear/blindcane
+	display_name = "Blind cane"
+	path = /obj/item/blindcane
+
 /datum/gear/cards
 	display_name = "Deck of standard cards"
 	path = /obj/item/deck/cards
@@ -152,6 +160,10 @@
 /datum/gear/fannypack
 	display_name = "Fannypack"
 	path = /obj/item/storage/belt/fannypack
+
+/datum/gear/whitebandana
+	display_name = "Bandana, white"
+	path = /obj/item/clothing/mask/bandana
 
 /datum/gear/blackbandana
 	display_name = "Bandana, black"
@@ -185,6 +197,10 @@
 	display_name = "Bandana, skull"
 	path = /obj/item/clothing/mask/bandana/skull
 
+/datum/gear/fake_beard
+	display_name = "Fake beard"
+	path = /obj/item/clothing/mask/fake_beard
+
 /datum/gear/pai
 	display_name = "Personal Artificial Intelligence"
 	path = /obj/item/paicard
@@ -193,6 +209,10 @@
 /datum/gear/wizard_staff
 	display_name = "Wizard's staff"
 	path = /obj/item/staff
+
+/datum/gear/photo_album
+	display_name = "Photo album"
+	path = /obj/item/storage/photo_album
 
 //////////////////////
 //		Mugs		//
@@ -235,7 +255,7 @@
 /datum/gear/mug/department/sci
 	display_name = "Coffee mug, science"
 	description = "A scientist's coffee mug, emblazoned in the colors of the Science department."
-	allowed_roles = list("Research Director", "Scientist", "Roboticist")
+	allowed_roles = list("Research Director", "Scientist", "Roboticist", "Xenobiologist")
 	path = /obj/item/reagent_containers/drinks/mug/sci
 
 /datum/gear/mug/department/sec

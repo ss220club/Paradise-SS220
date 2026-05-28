@@ -1,4 +1,9 @@
 name: Build Rust library
+
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
   issue_comment:
     types: created
@@ -8,10 +13,10 @@ jobs:
     if: |
       github.event.issue.pull_request &&
       (github.event.comment.body == '!build_rust') &&
-      ((github.event.sender.id == github.event.issue.user.id) ||
-      (github.event.comment.author_association == 'COLLABORATOR') ||
-      (github.event.comment.author_association == 'MEMBER') ||
-      (github.event.comment.author_association == 'OWNER'))
+      (
+        (github.event.comment.author_association == 'OWNER') ||
+        (github.event.comment.user.login == 'Drsmail')
+      )
 
     runs-on: ubuntu-24.04
     steps:
@@ -47,7 +52,7 @@ jobs:
           echo "PR_BRANCH=`jq -r '.head.ref' <<<$pr_json`" >> $GITHUB_ENV
           echo "PR_HEAD_LABEL=`jq -r '.head.label' <<<$pr_json`" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           repository: ${{ env.PR_REPO }}
           ref: ${{ env.PR_BRANCH }}

@@ -6,7 +6,7 @@
 
 /datum/vote/crew_transfer/calculate_result()
 	if(!length(voted))
-		to_chat(world, span_interface("Нет ни одного голоса. Вы все ненавидите демократию?!"))
+		to_chat(world, SPAN_INTERFACE("Нет ни одного голоса. Вы все ненавидите демократию?!"))
 		return null
 
 	var/list/results = list()
@@ -33,20 +33,20 @@
 		if(abs(results[res] - max_score) < RESULT_PRECISION)
 			winning_options |= res
 
-	to_chat(world, span_interface("Результаты голосования:"))
+	to_chat(world, SPAN_INTERFACE("Результаты голосования:"))
 	for(var/res in results)
 		var/display_score = round(results[res], RESULT_PRECISION)
 		var/span_class = (res in winning_options) ? "bold" : "normal"
-		to_chat(world, span_interface("<span class='[span_class]'><code>[res]</code> - [display_score] очков</span>"))
+		to_chat(world, SPAN_INTERFACE("<span class='[span_class]'><code>[res]</code> - [display_score] очков</span>"))
 		SSblackbox.record_feedback("nested tally", "votes", results[res], list(vote_type_text, res), ignore_seal = TRUE)
 
 	if(length(winning_options) > 1)
 		var/random_dictator = pick(winning_options)
-		to_chat(world, span_interface("Ничья между [english_list(winning_options)]. Случайный выбор: <code>[random_dictator]</code>."))
+		to_chat(world, SPAN_INTERFACE("Ничья между [english_list(winning_options)]. Случайный выбор: <code>[random_dictator]</code>."))
 		return random_dictator
 
 	var/res = winning_options[1]
-	to_chat(world, span_interface("<b><code>[res]</code> выигрывает голосование.</b>"))
+	to_chat(world, SPAN_INTERFACE("<b><code>[res]</code> выигрывает голосование.</b>"))
 	return res
 
 /datum/vote/crew_transfer/proc/get_vote_weight_for_client(client/client, online_players as num) as num

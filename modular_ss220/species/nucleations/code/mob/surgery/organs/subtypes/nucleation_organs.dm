@@ -39,12 +39,12 @@
 	if(istype(I, /obj/item/retractor/supermatter))
 		var/obj/item/retractor/supermatter/tongs = I
 		if(tongs.sliver)
-			to_chat(user, "<span class='warning'>[tongs] уже что-то удерживает!</span>")
+			to_chat(user, SPAN_WARNING("[tongs] уже что-то удерживает!"))
 			return FALSE
 		forceMove(tongs)
 		tongs.sliver = src
 		tongs.icon_state = "supermatter_tongs_loaded"
-		to_chat(user, "<span class='notice'>You carefully pick up [src] with [tongs].</span>")
+		to_chat(user, SPAN_NOTICE("You carefully pick up [src] with [tongs]."))
 	else if(istype(I, /obj/item/scalpel/supermatter) || istype(I, /obj/item/nuke_core_container/supermatter) || HAS_TRAIT(I, TRAIT_SUPERMATTER_IMMUNE)) // we don't want it to dust
 		return
 	else
@@ -87,7 +87,7 @@
 	if(affected_item && !HAS_TRAIT(affected_item, TRAIT_SUPERMATTER_IMMUNE))
 		obj_integrity -= integrity_item_dust
 		if(affected_item.obj_integrity <= integrity_item_dust)
-			to_chat(affected_user, span_danger("[affected_item] испепелился!"))
+			to_chat(affected_user, SPAN_DANGER("[affected_item] испепелился!"))
 			qdel(affected_item)
 			. = TRUE
 
@@ -103,7 +103,7 @@
 		var/mob/living/carbon/human/H = affected_user
 
 		if(H.handcuffed)
-			to_chat(H, span_danger("[src] сжег надетые на вас [H.handcuffed]!"))
+			to_chat(H, SPAN_DANGER("[src] сжег надетые на вас [H.handcuffed]!"))
 			QDEL_NULL(H.handcuffed)
 			H.update_handcuffed()
 			return TRUE
@@ -116,10 +116,10 @@
 		if(organ)
 			H.adjustFireLossByPart(amount_fire_loss, def_zone)
 			if(organ.burn_dam >= max_damage-5)
-				to_chat(H, span_danger("Испарил вашу конечность - [organ.name]!"))
+				to_chat(H, SPAN_DANGER("Испарил вашу конечность - [organ.name]!"))
 				QDEL_NULL(organ)
 				return TRUE
-			to_chat(H, span_danger("Вы обожглись о [src]!"))
+			to_chat(H, SPAN_DANGER("Вы обожглись о [src]!"))
 			return TRUE
 
 	return .
