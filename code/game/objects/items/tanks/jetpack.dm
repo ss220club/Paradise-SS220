@@ -102,7 +102,7 @@
 	if(!ismob(loc))
 		return FALSE
 	var/mob/user = loc
-	//SS220 EDIT START - Фиксим баг с джетпаком
+	//SS220 EDIT START - Фиксим недочет оффов с джетпаком
 	if(ishuman(loc) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
 		return FALSE
 	//SS220 EDIT END
