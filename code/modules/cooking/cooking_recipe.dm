@@ -59,6 +59,11 @@ GLOBAL_LIST_EMPTY(pcwj_cookbook_lookup)
 
 	var/list/applied_steps = tracker.recipes_all_applied_steps[src]
 	var/output_count = 1
+	//SS220 EDIT START - нужно для бс посуды
+	if(istype(container, /obj/item/reagent_containers/cooking))
+		var/obj/item/reagent_containers/cooking/C = container
+		output_count *= C.product_multiplier
+	//SS220 EDIT END
 	// Remember this is not necessarily a consecutive list of step indexes
 	// Optional steps may have been skipped
 	for(var/i in 1 to length(applied_steps))
