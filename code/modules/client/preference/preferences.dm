@@ -1,5 +1,7 @@
 /// Minimum age (in days) for accounts to play these roles.
 GLOBAL_LIST_INIT(special_role_times, list(
+	ROLE_ROBOT_BRAIN = 0,
+	ROLE_GOLEM = 0,
 	ROLE_PAI = 0,
 	ROLE_GUARDIAN = 0,
 	ROLE_TRAITOR = 7,
@@ -156,7 +158,7 @@ GLOBAL_LIST_INIT(special_role_times, list(
 
 		successful_load = load_preferences(Q)
 		if(!successful_load)
-			to_chat(C, "<span class='narsie'>Your preferences failed to load. Please inform the server host immediately.</span>")
+			to_chat(C, SPAN_NARSIE("Your preferences failed to load. Please inform the server host immediately."))
 
 /datum/preferences/proc/color_square(colour)
 	return "<span style='font-face: fixedsys; background-color: [colour]; color: [colour]'>___</span>"
@@ -187,7 +189,7 @@ GLOBAL_LIST_INIT(special_role_times, list(
 				active_character.species = initial(active_character.species)
 				S = GLOB.all_species[active_character.species]
 				active_character.randomise()
-
+			active_character.rebuild_quirks()
 			dat += "<div class='statusDisplay' style='max-width: 128px; position: absolute; left: 150px; top: 150px'><img src=previewicon.png class='charPreview'><img src=previewicon2.png class='charPreview'></div>"
 			dat += "<table width='100%'><tr><td width='405px' height='25px' valign='top'>"
 			dat += "<b>Имя: </b>"
@@ -200,7 +202,7 @@ GLOBAL_LIST_INIT(special_role_times, list(
 			dat += "<a href=\"byond://?_src_=prefs;preference=open_load_dialog\">Загрузить</a> - "
 			dat += "<a href=\"byond://?_src_=prefs;preference=save\">Сохранить</a>"
 			if(active_character.from_db)
-				dat += "- <a href=\"byond://?_src_=prefs;preference=clear\"><span class='bad'>Удалить</span></a>"
+				dat += "- <a href=\"byond://?_src_=prefs;preference=clear\">[SPAN_BAD("Удалить")]</a>"
 			dat += "</center>"
 			dat += "</td></tr></table>"
 			dat += "<table width='100%'><tr><td width='405px' height='200px' valign='top'>"
@@ -218,9 +220,9 @@ GLOBAL_LIST_INIT(special_role_times, list(
 			if(active_character.species == "Plasmaman")
 				dat += "<b>Баллон с плазмой:</b> <a href='byond://?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? "Large Plasma Tank" : "Specialized Plasma Tank"]</a><br>"
 			if(active_character.species == "Grey")
-				dat += "<b>Инопланетная речь:</b> Устанавливается в увечьях<br>"
-				dat += "<b>Голосовой переводчик:</b> <a href='byond://?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? "Yes" : "No"]</a><br>"
-			dat += "<b>Второй язык:</b> <a href='byond://?_src_=prefs;preference=language;task=input'>[active_character.language]</a><br>"
+				dat += "<b>Wingdings:</b> Set in disabilities<br>"
+				dat += "<b>Voice Translator:</b> <a href='byond://?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? "Yes" : "No"]</a><br>"
+			dat += "<b>Secondary Language:</b> <a href='byond://?_src_=prefs;preference=language;task=input'>[active_character.language]</a><br>"
 			if(S.autohiss_basic_map)
 				dat += "<b>Автоматический акцент:</b> <a href='byond://?_src_=prefs;preference=autohiss_mode;task=input'>[active_character.autohiss_mode == AUTOHISS_FULL ? "Full" : (active_character.autohiss_mode == AUTOHISS_BASIC ? "Basic" : "Off")]</a><br>"
 			if(NO_BLOOD in S.species_traits) // unique blood type for species with no_blood/unique_blood
@@ -404,7 +406,8 @@ GLOBAL_LIST_INIT(special_role_times, list(
 			if(S.clothing_flags & HAS_SOCKS)
 				dat += "<b>Носки:</b> <a href='byond://?_src_=prefs;preference=socks;task=input'>[active_character.socks]</a><BR>"
 			dat += "<b>Рюкзак:</b> <a href='byond://?_src_=prefs;preference=bag;task=input'>[active_character.backbag]</a><br><br>"
-			dat += "<a style='font-size: 1.5em;' href='byond://?_src_=prefs;preference=loadout;task=input'>Стартовые предметы</a><br>"
+			dat += "<a style='font-size: 1.5em;' href='byond://?_src_=prefs;preference=loadout;task=input'>Стартовые предметы</a><br><br>"
+			dat += "<a style='font-size: 1.5em;' href='byond://?_src_=prefs;preference=quirks;task=input'>Квирки</a><br>"
 
 			var/datum/species/myspecies = GLOB.all_species[active_character.species]
 			if(!isnull(myspecies))
@@ -494,33 +497,19 @@ GLOBAL_LIST_INIT(special_role_times, list(
 			dat += "<b> - TGUI Input - Large Buttons:</b> <a href='byond://?_src_=prefs;preference=tgui_input_large'>[(toggles2 & PREFTOGGLE_2_LARGE_INPUT_BUTTONS) ? "Yes" : "No"]</a><br>"
 			dat += "<b> - TGUI Input - Swap Buttons:</b> <a href='byond://?_src_=prefs;preference=tgui_input_swap'>[(toggles2 & PREFTOGGLE_2_SWAP_INPUT_BUTTONS) ? "Yes" : "No"]</a><br>"
 			dat += "<b> - TGUI Say Theme:</b> <a href='byond://?_src_=prefs;preference=tgui_say_light_mode'>[(toggles2 & PREFTOGGLE_2_ENABLE_TGUI_SAY_LIGHT_MODE) ? "Light" : "Dark"]</a><br>"
+			dat += "<b>Dark flash:</b> <a href='byond://?_src_=prefs;preference=dark_flash'>[(toggles3 & PREFTOGGLE_3_DARK_FLASH) ? "Yes" : "No"]</a><br>"
 			dat += "</td></tr></table>"
 
 		if(TAB_ANTAG) // Antagonist's Preferences (and maps)
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
-			dat += "<h2>Special Role Settings</h2>"
-			if(jobban_isbanned(user, ROLE_SYNDICATE))
-				dat += "<b>You are banned from special roles.</b>"
-				be_special = list()
-			else
-				for(var/i in GLOB.special_roles)
-					if(jobban_isbanned(user, i))
-						dat += "<b>Be [capitalize(i)]:</b> <font color=red><b> \[BANNED]</b></font><br>"
-					else if(!player_old_enough_antag(user.client, i))
-						var/available_in_days_antag = available_in_days_antag(user.client, i)
-						var/role_available_in_playtime = get_exp_format(role_available_in_playtime(user.client, i))
-						if(available_in_days_antag)
-							dat += "<b>Be [capitalize(i)]:</b> <font color=red><b> \[IN [(available_in_days_antag)] DAYS]</b></font><br>"
-						else if(role_available_in_playtime)
-							dat += "<b>Be [capitalize(i)]:</b> <font color=red><b> \[IN [(role_available_in_playtime)]]</b></font><br>"
-						else
-							dat += "<b>Be [capitalize(i)]:</b> <font color=red><b> \[ERROR]</b></font><br>"
-					else
-						var/is_special = (i in src.be_special)
-						dat += "<b>Be [capitalize(i)]:</b><a class=[is_special ? "green" : "red"] href='byond://?_src_=prefs;preference=be_special;role=[i]'><b>[(is_special) ? "Yes" : "No"]</b></a><br>"
+			dat += "<h2>Antagonist Role Settings</h2>"
+			dat += get_role_settings(user, GLOB.special_roles_antags)
+			dat += "<h2>Neutral Role Settings</h2>"
+			dat += get_role_settings(user, GLOB.special_roles_neutral)
+
 			dat += "<h2>Total Playtime:</h2>"
 			if(!GLOB.configuration.jobs.enable_exp_tracking)
-				dat += "<span class='warning'>Playtime tracking is not enabled.</span>"
+				dat += SPAN_WARNING("Playtime tracking is not enabled.")
 			else
 				dat += "<b>Your [EXP_TYPE_CREW] playtime is [user.client.get_exp_type(EXP_TYPE_CREW)]</b><br>"
 			dat += "</td><td width='405px' height='300px' valign='top'>"
@@ -565,7 +554,7 @@ GLOBAL_LIST_INIT(special_role_times, list(
 						keys_buttons += "<a href='byond://?_src_=prefs;preference=keybindings;set=[kb_uid];old=[url_encode(key)];'>[disp_key]</a>&nbsp;"
 					dat += "<tr>"
 					dat += "<td style='width: 25%'>[KB.name]</td>"
-					dat += "<td style='width: 45%'>[keys_buttons][(length(keys) < 5) ? "<a href='byond://?_src_=prefs;preference=keybindings;set=[kb_uid];'><span class='good'>+</span></a></td>" : "</td>"]"
+					dat += "<td style='width: 45%'>[keys_buttons][(length(keys) < 5) ? "<a href='byond://?_src_=prefs;preference=keybindings;set=[kb_uid];'>[SPAN_GOOD("+")]</a></td>" : "</td>"]"
 					dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=keybindings;reset=[kb_uid]'>Reset to Default</a> <a href='byond://?_src_=prefs;preference=keybindings;clear=[kb_uid]'>Clear</a></td>"
 					if(KB.category == KB_CATEGORY_EMOTE_CUSTOM)
 						var/datum/keybinding/custom/custom_emote_keybind = kb
@@ -619,17 +608,20 @@ GLOBAL_LIST_INIT(special_role_times, list(
 						if(PREFTOGGLE_SPECIAL)
 							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>Adjust</a></td>"
 						if(PREFTOGGLE_TOGGLE1)
-							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(toggles & toggle.preftoggle_bitflag) ? "<span class='good'>Enabled</span>" : "<span class='bad'>Disabled</span>"]</a></td>"
+							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(toggles & toggle.preftoggle_bitflag) ? SPAN_GOOD("Enabled") : SPAN_BAD("Disabled")]</a></td>"
 						if(PREFTOGGLE_TOGGLE2)
-							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(toggles2 & toggle.preftoggle_bitflag) ? "<span class='good'>Enabled</span>" : "<span class='bad'>Disabled</span>"]</a></td>"
+							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(toggles2 & toggle.preftoggle_bitflag) ? SPAN_GOOD("Enabled") : SPAN_BAD("Disabled")]</a></td>"
+						if(PREFTOGGLE_TOGGLE3)
+							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(toggles3 & toggle.preftoggle_bitflag) ? SPAN_GOOD("Enabled") : SPAN_BAD("Disabled")]</a></td>"
+
 						// SS220 ADDITION - START
 						if(PREFTOGGLE_TOGGLE220)
-							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(toggles220 & toggle.preftoggle_bitflag) ? "<span class='good'>Enabled</span>" : "<span class='bad'>Disabled</span>"]</a></td>"
+							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(toggles220 & toggle.preftoggle_bitflag) ? SPAN_GOOD("Enabled") : SPAN_BAD("Disabled")]</a></td>"
 						// SS220 ADDITION - END
 						if(PREFTOGGLE_SOUND)
-							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(sound & toggle.preftoggle_bitflag) ? "<span class='good'>Enabled</span>" : "<span class='bad'>Disabled</span>"]</a></td>"
+							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(sound & toggle.preftoggle_bitflag) ? SPAN_GOOD("Enabled") : SPAN_BAD("Disabled")]</a></td>"
 						if(PREFTOGGLE_LIGHT)
-							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(light & toggle.preftoggle_bitflag) ? "<span class='good'>Enabled</span>" : "<span class='bad'>Disabled</span>"]</a></td>"
+							dat += "<td style='width: 20%'><a href='byond://?_src_=prefs;preference=preference_toggles;toggle=[toggle.UID()];'>[(light & toggle.preftoggle_bitflag) ? SPAN_GOOD("Enabled") : SPAN_BAD("Disabled")]</a></td>"
 					dat += "</tr>"
 				dat += "<tr><td colspan=4><br></td></tr>"
 
@@ -645,6 +637,30 @@ GLOBAL_LIST_INIT(special_role_times, list(
 	var/datum/browser/popup = new(user, "preferences", "<div align='center'>Настройка персонажа</div>", 820, 810)
 	popup.set_content(dat.Join(""))
 	popup.open(FALSE)
+
+/datum/preferences/proc/get_role_settings(mob/user, list/global_role_list)
+	var/html
+	if(jobban_isbanned(user, ROLE_SYNDICATE))
+		html += "<b>You are banned from special roles.</b>"
+		be_special = list()
+		return html
+
+	for(var/role in global_role_list)
+		if(jobban_isbanned(user, role))
+			html += "<b>Be [capitalize(role)]:</b> <font color='red'><b> \[BANNED]</b></font><br>"
+		else if(!player_old_enough_antag(user.client, role))
+			var/available_in_days_antag = available_in_days_antag(user.client, role)
+			var/role_available_in_playtime = get_exp_format(role_available_in_playtime(user.client, role))
+			if(available_in_days_antag)
+				html += "<b>Be [capitalize(role)]:</b> <font color='red'><b> \[IN [(available_in_days_antag)] DAYS]</b></font><br>"
+			else if(role_available_in_playtime)
+				html += "<b>Be [capitalize(role)]:</b> <font color='red'><b> \[IN [(role_available_in_playtime)]]</b></font><br>"
+			else
+				html += "<b>Be [capitalize(role)]:</b> <font color='red'><b> \[ERROR]</b></font><br>"
+		else
+			var/is_special = (role in src.be_special)
+			html += "<b>Be [capitalize(role)]:</b><a class='[is_special ? "green" : "red"]' href='byond://?_src_=prefs;preference=be_special;role=[role]'><b>[(is_special) ? "Yes" : "No"]</b></a><br>"
+	return html
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"
@@ -683,7 +699,7 @@ GLOBAL_LIST_INIT(special_role_times, list(
 		return
 
 	if(!isnum(desiredLvl))
-		to_chat(user, "<span class='warning'>UpdateJobPreference - desired level was not a number. Please notify coders!</span>")
+		to_chat(user, SPAN_WARNING("UpdateJobPreference - desired level was not a number. Please notify coders!"))
 		ShowChoices(user)
 		return
 

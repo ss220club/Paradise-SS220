@@ -118,7 +118,10 @@
 		/obj/structure/computerframe,
 		/obj/structure/displaycase,
 		/obj/structure/rack,
-		/obj/structure/closet/crate
+		/obj/structure/closet/crate,
+		/obj/machinery/atmospherics/fission_reactor,
+		/obj/machinery/atmospherics/fission_reactor/roundstart,
+		/obj/machinery/atmospherics/reactor_chamber
 	)) - typecacheof(list(
 		/obj/machinery/computer/security/telescreen,
 		/obj/machinery/computer/cryopod,
@@ -181,7 +184,7 @@
 	if(..())
 		return FINISH_ATTACK
 
-	if(O.force)
+	if(O.force && stat == CONSCIOUS)
 		if(parrot_state == PARROT_PERCH)
 			parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
 
@@ -192,7 +195,7 @@
 		drop_held_item(FALSE)
 
 //Bullets
-/mob/living/simple_animal/parrot/bullet_act(obj/item/projectile/P)
+/mob/living/simple_animal/parrot/bullet_act(obj/projectile/P)
 	..()
 	if(stat == CONSCIOUS && !client)
 		if(parrot_state == PARROT_PERCH)
@@ -372,7 +375,7 @@
 			else //This should ensure that we only grab the item we want, and make sure it's not already collected on our perch
 				if(!parrot_perch || parrot_interest.loc != parrot_perch.loc)
 					try_grab_item(parrot_interest)
-					visible_message("<span class='notice'>[src] grabs [held_item]!</span>", "<span class='notice'>You grab [held_item]!</span>", "You hear the sounds of wings flapping furiously.")
+					visible_message(SPAN_NOTICE("[src] grabs [held_item]!"), SPAN_NOTICE("You grab [held_item]!"), "You hear the sounds of wings flapping furiously.")
 
 			parrot_interest = null
 			parrot_state = PARROT_SWOOP|PARROT_RETURN
@@ -532,15 +535,15 @@
 		return FALSE
 
 	if(length(grabbed_by))
-		to_chat(src, "<span class='warning'>You are being grabbed!</span>")
+		to_chat(src, SPAN_WARNING("You are being grabbed!"))
 		return FALSE
 
 	if(held_item)
-		to_chat(src, "<span class='warning'>You are already holding [held_item]</span>")
+		to_chat(src, SPAN_WARNING("You are already holding [held_item]"))
 		return TRUE
 
 	if(istype(loc, /obj/machinery/disposal) || istype(loc, /obj/structure/disposalholder))
-		to_chat(src, "<span class='warning'>You are inside a disposal chute!</span>")
+		to_chat(src, SPAN_WARNING("You are inside a disposal chute!"))
 		return TRUE
 
 	for(var/obj/item/I in view(1, src))
@@ -551,7 +554,7 @@
 				continue
 
 			try_grab_item(I)
-			visible_message("<span class='notice'>[src] grabs [held_item]!</span>", "<span class='notice'>You grab [held_item]!</span>", "You hear the sounds of wings flapping furiously.")
+			visible_message(SPAN_NOTICE("[src] grabs [held_item]!"), SPAN_NOTICE("You grab [held_item]!"), "You hear the sounds of wings flapping furiously.")
 			return held_item
 
 	to_chat(src, "<span class = 'warning'>There is nothing of interest to take.</span>")
@@ -566,11 +569,11 @@
 		return FALSE
 
 	if(length(grabbed_by))
-		to_chat(src, "<span class='warning'>You are being grabbed!</span>")
+		to_chat(src, SPAN_WARNING("You are being grabbed!"))
 		return FALSE
 
 	if(held_item)
-		to_chat(src, "<span class='warning'>You are already holding [held_item]</span>")
+		to_chat(src, SPAN_WARNING("You are already holding [held_item]"))
 		return TRUE
 
 	var/obj/item/stolen_item = null
@@ -584,10 +587,10 @@
 
 		if(stolen_item && C.drop_item_to_ground(stolen_item))
 			try_grab_item(stolen_item)
-			visible_message("<span class='notice'>[src] grabs [held_item] out of [C]'s hand!</span>", "<span class='notice'>You snag [held_item] out of [C]'s hand!</span>", "You hear the sounds of wings flapping furiously.")
+			visible_message(SPAN_NOTICE("[src] grabs [held_item] out of [C]'s hand!"), SPAN_NOTICE("You snag [held_item] out of [C]'s hand!"), "You hear the sounds of wings flapping furiously.")
 			return held_item
 
-	to_chat(src, "<span class='warning'>There is nothing of interest to take.</span>")
+	to_chat(src, SPAN_WARNING("There is nothing of interest to take."))
 	return FALSE
 
 /mob/living/simple_animal/parrot/verb/drop_held_item_player()
@@ -610,7 +613,7 @@
 		return FALSE
 
 	if(!held_item)
-		to_chat(src, "<span class='warning'>You have nothing to drop!</span>")
+		to_chat(src, SPAN_WARNING("You have nothing to drop!"))
 		return FALSE
 
 	if(!drop_gently)
@@ -645,7 +648,7 @@
 				icon_state = "parrot_sit"
 				REMOVE_TRAIT(src, TRAIT_FLYING, INNATE_TRAIT)
 				return
-	to_chat(src, "<span class='warning'>There is no perch nearby to sit on.</span>")
+	to_chat(src, SPAN_WARNING("There is no perch nearby to sit on."))
 	return
 
 /**
@@ -735,6 +738,25 @@
 		"В камере точно должно быть столько плазмы??",
 		"Почему так много боргов?",
 		"А че у вас глаза красные и светятся?",
+		"Открытие вентиля реактора — это ведь то, как он получает газ, да?",
+		"Давайте заполним реактор стержнями из суперматерии!",
+		"Как думаете, можно превратить выбрасываемые охлаждающие стержни в оружие?",
+		"КТО ПОСТОЯННО ОСТАВЛЯЕТ ТОПЛИВНЫЕ СТЕРЖНИ СНАРУЖИ",
+		"Зачем нам охлаждающие стержни, если мы используем газ?",
+		"Стоп, а почему целостность реактора не растёт?",
+		"С каких пор у инженеров есть бассейн!?",
+		"Кому-нибудь ещё чувствуется вкус меди?",
+		"10 зивертов — это же не опасная доза радиации, да?",
+		"ПОМОГИТЕ! ШЕФ ЖАРИТ МЕНЯ НА NGCR!",
+		"Замените отработанные топливные стержни, ленивые засранцы!",
+		"На реакторе гнездится ксеноморф!",
+		"Почему там Рипли вытаскивает охлаждающие стержни?",
+		"Атмосферные техники лучше всех контролируют NGCR",
+		"Кто пустил клоуна трогать управляющие стержни?",
+		"Кто из вас, идиотов, притащил топливный стержень в медбей?",
+		"Охлаждающий стержень только что влетел в капитана!",
+		"Реактор уходит в сверхкритическое состояние!",
+		"Опасность! В камере активной зоны реактора идёт расплавление! Целостность: 79.47%",
 
 		// SS220 Exclusive
 		"СМ наполовину целый!",
@@ -754,6 +776,7 @@
 
 /mob/living/simple_animal/parrot/poly/Initialize(mapload)
 	. = ..()
+	GLOB.station_pets += src
 
 	ears = new /obj/item/radio/headset/headset_eng(src)
 	clean_speak += "Опасность! Нарушение целостности гиперструктуры кристалла! Целостность: [rand(75, 99)]%" // Has to be here cause of the `rand()`.

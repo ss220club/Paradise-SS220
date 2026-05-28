@@ -319,7 +319,7 @@ SUBSYSTEM_DEF(tts220)
 /datum/controller/subsystem/tts220/proc/queue_request(text, datum/tts_seed/seed, datum/callback/proc_callback)
 	if(LAZYLEN(tts_requests_queue) > tts_requests_queue_limit)
 		is_enabled = FALSE
-		to_chat(world, span_announcement("SERVER: очередь запросов превысила лимит, подсистема SStts220 принудительно отключена!"))
+		to_chat(world, SPAN_ANNOUNCEMENT("SERVER: очередь запросов превысила лимит, подсистема SStts220 принудительно отключена!"))
 		return FALSE
 
 	if(tts_rps_counter < tts_rps_limit)
@@ -395,14 +395,14 @@ SUBSYSTEM_DEF(tts220)
 	// Bail if it errored
 	if(response.errored)
 		provider.timed_out_requests++
-		log_game(span_warning("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
-		message_admins(span_warning("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
+		log_game(SPAN_WARNING("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
+		message_admins(SPAN_WARNING("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
 		return
 
 	if(response.status_code != 200)
 		provider.failed_requests++
-		log_game(span_warning("Error performing [provider.name] TTS API request (Code: [response.status_code])"))
-		message_admins(span_warning("Error performing [provider.name] TTS API request (Code: [response.status_code])"))
+		log_game(SPAN_WARNING("Error performing [provider.name] TTS API request (Code: [response.status_code])"))
+		message_admins(SPAN_WARNING("Error performing [provider.name] TTS API request (Code: [response.status_code])"))
 		tts_request_failed++
 		if(response.status_code)
 			if(tts_errors["[response.status_code]"])

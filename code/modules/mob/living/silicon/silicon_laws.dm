@@ -83,7 +83,7 @@
 
 /mob/living/silicon/proc/dostatelaws(method, prefix, datum/ai_laws/laws)
 	if(stating_laws[prefix])
-		to_chat(src, "<span class='notice'>[method]: Законы уже объявляются в данный канал.</span>")
+		to_chat(src, SPAN_NOTICE("[method]: Законы уже объявляются в данный канал."))
 		return
 
 	stating_laws[prefix] = 1
@@ -96,7 +96,7 @@
 			break
 
 	if(!can_state)
-		to_chat(src, "<span class='danger'>[method]: Невозможно объявить законы. Способ к коммуникации недоступен.</span>")
+		to_chat(src, SPAN_DANGER("[method]: Невозможно объявить законы. Способ к коммуникации недоступен."))
 	stating_laws[prefix] = 0
 
 /mob/living/silicon/proc/statelaw(law)

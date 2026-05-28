@@ -16,14 +16,14 @@
 	set desc = "Привязка аккаунта Discord к BYOND"
 
 	if(!SScentral.initialized)
-		to_chat(src, span_warning("Привязка Discord сейчас недоступна."))
+		to_chat(src, SPAN_WARNING("Привязка Discord сейчас недоступна."))
 		return
 
 	if(SScentral.is_player_discord_linked(src))
-		to_chat(src, span_warning("Вы уже привязали свою учетную запись Discord."))
+		to_chat(src, SPAN_WARNING("Вы уже привязали свою учетную запись Discord."))
 		return
 
-	to_chat(src, span_notice("Пытаемся получить токен для входа в Discord..."))
+	to_chat(src, SPAN_NOTICE("Пытаемся получить токен для входа в Discord..."))
 	SScentral.verify_in_discord(src)
 
 /datum/controller/subsystem/central/proc/verify_in_discord(client/player)

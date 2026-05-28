@@ -38,6 +38,6 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "310-casing"
 	caliber = "s310"
-	projectile_type = /obj/item/projectile/bullet/midbullet3/hp
+	projectile_type = /obj/projectile/bullet/midbullet3/hp
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_STRONG
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_STRONG

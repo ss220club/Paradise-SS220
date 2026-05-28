@@ -1,6 +1,7 @@
 /obj/item/gun/energy/laser/awaymission_aeg
 	name = "Wireless Energy Gun"
 	desc = "An energy gun that recharges wirelessly during away missions. Does not work outside the gate."
+	ammo_type = list(/obj/item/ammo_casing/energy/laser)
 	icon = 'modular_ss220/awaymission_gun/icons/items/energy.dmi'
 	lefthand_file = 'modular_ss220/awaymission_gun/icons/inhands/lefthand.dmi'
 	righthand_file = 'modular_ss220/awaymission_gun/icons/inhands/righthand.dmi'
@@ -20,11 +21,11 @@
 	. = ..()
 	if(is_away_level(new_turf.z))
 		if(ismob(loc))
-			to_chat(loc, span_notice("Ваш [src] активируется, начиная аккумулировать энергию из материи сущего."))
+			to_chat(loc, SPAN_NOTICE("Ваш [src] активируется, начиная аккумулировать энергию из материи сущего."))
 		selfcharge = TRUE
 		return
 	if(ismob(loc) && selfcharge)
-		to_chat(loc, span_danger("Ваш [src] деактивируется, так как он подавляется системами станции.</span>"))
+		to_chat(loc, SPAN_DANGER("Ваш [src] деактивируется, так как он подавляется системами станции.</span>"))
 	cell.charge = 0
 	selfcharge = FALSE
 	update_icon()
@@ -46,10 +47,10 @@
 	origin_tech = "combat=3;magnets=2;powerstorage=2;programming=3;"
 
 /obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2/attack_self__legacy__attackchain(mob/living/user)
-	var/msg_for_all = span_warning("[user.name] усердно давит на рычаг зарядки [src], но он не поддается!")
-	var/msg_for_user = span_notice("Вы пытаетесь надавить на рычаг зарядки [src], но он заблокирован.")
-	var/msg_recharge_all = span_notice("[user.name] усердно давит на рычаг зарядки [src]...")
-	var/msg_recharge_user = span_notice("Вы со всей силы давите на рычаг зарядки [src], пытаясь зарядить её...")
+	var/msg_for_all = SPAN_WARNING("[user.name] усердно давит на рычаг зарядки [src], но он не поддается!")
+	var/msg_for_user = SPAN_NOTICE("Вы пытаетесь надавить на рычаг зарядки [src], но он заблокирован.")
+	var/msg_recharge_all = SPAN_NOTICE("[user.name] усердно давит на рычаг зарядки [src]...")
+	var/msg_recharge_user = SPAN_NOTICE("Вы со всей силы давите на рычаг зарядки [src], пытаясь зарядить её...")
 
 	if(!is_away_level(loc.z))
 		user.visible_message(msg_for_all, msg_for_user)
@@ -61,8 +62,8 @@
 
 	if(user.nutrition <= NUTRITION_LEVEL_STARVING)
 		user.visible_message(
-			span_warning("[user.name] слабо давит на [src], но бесполезно: слишком мало сил!"),
-			span_notice("Вы пытаетесь надавить на рычаг зарядки [src], но не можете из-за голода и усталости!"))
+			SPAN_WARNING("[user.name] слабо давит на [src], но бесполезно: слишком мало сил!"),
+			SPAN_NOTICE("Вы пытаетесь надавить на рычаг зарядки [src], но не можете из-за голода и усталости!"))
 		return FALSE
 
 	user.visible_message(msg_recharge_all, msg_recharge_user)

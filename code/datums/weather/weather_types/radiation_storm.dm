@@ -13,16 +13,16 @@
 	desc = "Станция проходит через радиационный пояс высокой интенсивности, облучающее всех, кому не повезло оказаться без защиты."
 
 	telegraph_duration = 400
-	telegraph_message = "<span class='danger'>Вам кажется, что воздух вокруг становится теплее.</span>"
+	telegraph_message = SPAN_DANGER("Вам кажется, что воздух вокруг становится теплее.")
 
-	weather_message = "<span class='userdanger'><i>Вы чувствуете, как вас окутывают волны жара! Срочно найдите укрытие!</i></span>"
+	weather_message = SPAN_USERDANGER("<i>Вы чувствуете, как вас окутывают волны жара! Срочно найдите укрытие!</i>")
 	weather_overlay = "ash_storm"
 	weather_duration_lower = 600
 	weather_color = "green"
 	weather_sound = 'sound/misc/bloblarm.ogg'
 
 	end_duration = 100
-	end_message = "<span class='notice'>Воздух, кажется, остывает обратно...</span>"
+	end_message = SPAN_NOTICE("Воздух, кажется, остывает обратно...")
 	var/pre_maint_all_access
 	area_types = list(/area)
 	protected_areas = list(

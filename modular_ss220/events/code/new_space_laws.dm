@@ -1,5 +1,8 @@
 /datum/event/new_space_law
+	name = "New Space Law"
 	announceWhen = 1
+	noAutoEnd = FALSE
+	nominal_severity = EVENT_LEVEL_MUNDANE
 
 /datum/event/new_space_law/announce()
 	var/list/new_space_laws = file2list("strings/new_space_laws.txt")

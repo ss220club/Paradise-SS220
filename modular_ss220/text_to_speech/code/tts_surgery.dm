@@ -29,18 +29,18 @@
 	var/target_vocal = "vocal cords"
 
 /datum/surgery_step/tune_vocal_cords/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	user.visible_message("[user] begins to tune [target]'s vocals.", span_notice("You begin to tune [target]'s vocals..."))
+	user.visible_message("[user] begins to tune [target]'s vocals.", SPAN_NOTICE("You begin to tune [target]'s vocals..."))
 	..()
 
 /datum/surgery_step/tune_vocal_cords/end_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	target.change_tts_seed(user, FALSE, TRUE)
-	user.visible_message("[user] tunes [target]'s vocals completely!", span_notice("You tune [target]'s vocals completely."))
+	user.visible_message("[user] tunes [target]'s vocals completely!", SPAN_NOTICE("You tune [target]'s vocals completely."))
 	return TRUE
 
 /datum/surgery_step/tune_vocal_cords/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/external/head/head = target.get_organ(target_zone)
-	user.visible_message(span_warning("[user]'s hand slips, tearing [target_vocal] in [target]'s throat with [tool]!"), \
-						span_warning("Your hand slips, tearing [target_vocal] in [target]'s throat with [tool]!"))
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, tearing [target_vocal] in [target]'s throat with [tool]!"), \
+						SPAN_WARNING("Your hand slips, tearing [target_vocal] in [target]'s throat with [tool]!"))
 	target.AddComponent(/datum/component/tts_component, SStts220.get_random_seed(target))
 	target.apply_damage(10, BRUTE, head, sharp = TRUE)
 	return FALSE

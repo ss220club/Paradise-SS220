@@ -3,6 +3,7 @@
 	worn_icon = 'icons/mob/clothing/under/costumes.dmi'
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/under/costumes.dmi',
+		"Skkulakin" = 'icons/mob/clothing/species/skkulakin/under/costumes.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/under/costumes.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/under/costumes.dmi'
 	)
@@ -113,6 +114,7 @@
 	//it is what it is
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/under/costumes.dmi',
+		"Skkulakin" = 'icons/mob/clothing/species/skkulakin/under/costumes.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/under/costumes.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/under/costumes.dmi'
 	)
@@ -160,3 +162,45 @@
 	desc = "Includes shoes and plaid."
 	icon_state = "kilt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
+
+/obj/item/clothing/under/costume/kasaya
+	desc = "Saffron cloth to wrap a Buddhist monk."
+	name = "kasaya"
+	icon_state = "chaporange"
+	icon = 'icons/obj/clothing/under/civilian.dmi'
+	worn_icon = 'icons/mob/clothing/under/civilian.dmi'
+	sprite_sheets = list(
+		"Vox" = 'icons/mob/clothing/species/vox/under/civilian.dmi',
+		"Skkulakin" = 'icons/mob/clothing/species/skkulakin/under/civilian.dmi',
+		"Drask" = 'icons/mob/clothing/species/drask/under/civilian.dmi',
+		"Grey" = 'icons/mob/clothing/species/grey/under/civilian.dmi',
+		"Kidan" = 'icons/mob/clothing/species/kidan/under/civilian.dmi'
+	)
+
+/obj/item/clothing/under/costume/modestgreen
+	desc = "A green modest dress."
+	name = "modest dress"
+	icon_state = "chapgreen"
+	icon = 'icons/obj/clothing/under/civilian.dmi'
+	worn_icon = 'icons/mob/clothing/under/civilian.dmi'
+	sprite_sheets = list(
+		"Vox" = 'icons/mob/clothing/species/vox/under/civilian.dmi',
+		"Skkulakin" = 'icons/mob/clothing/species/skkulakin/under/civilian.dmi',
+		"Drask" = 'icons/mob/clothing/species/drask/under/civilian.dmi',
+		"Grey" = 'icons/mob/clothing/species/grey/under/civilian.dmi',
+		"Kidan" = 'icons/mob/clothing/species/kidan/under/civilian.dmi'
+	)
+
+/obj/item/clothing/under/costume/thobe
+	desc = "A modest and dignified robe."
+	name = "thobe"
+	icon_state = "chapthobe"
+	icon = 'icons/obj/clothing/under/civilian.dmi'
+	worn_icon = 'icons/mob/clothing/under/civilian.dmi'
+	sprite_sheets = list(
+		"Vox" = 'icons/mob/clothing/species/vox/under/civilian.dmi',
+		"Skkulakin" = 'icons/mob/clothing/species/skkulakin/under/civilian.dmi',
+		"Drask" = 'icons/mob/clothing/species/drask/under/civilian.dmi',
+		"Grey" = 'icons/mob/clothing/species/grey/under/civilian.dmi',
+		"Kidan" = 'icons/mob/clothing/species/kidan/under/civilian.dmi'
+	)

@@ -9,7 +9,7 @@
 	relate_job = "Internal Affairs Agent"
 	supervisors = "главой персонала и капитаном"
 	department_head = list("Head of Personnel", "Captain")
-	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING, ACCESS_KITCHEN, ACCESS_BAR, ACCESS_JANITOR)
+	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_ENGINEERING_GENERAL, ACCESS_MAILSORTING, ACCESS_KITCHEN, ACCESS_BAR, ACCESS_JANITOR)
 	selection_color = "#717097"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 4
@@ -205,6 +205,7 @@
 	head = /obj/item/clothing/head/beret/solgov
 	belt = /obj/item/storage/belt/fannypack/black
 	glasses = /obj/item/clothing/glasses/sunglasses
+	l_ear = /obj/item/radio/headset/headset_com
 	gloves = /obj/item/clothing/gloves/color/white
 	shoes = /obj/item/clothing/shoes/centcom
 	l_pocket = /obj/item/melee/classic_baton/telescopic
@@ -215,6 +216,7 @@
 		/obj/item/lighter/zippo/blue = 1,
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 		/obj/item/clothing/under/pants/shorts/blue  = 1,
+		/obj/item/stamp/reptsf = 1,
 	)
 
 	bio_chips = list(/obj/item/bio_chip/mindshield,
@@ -263,6 +265,7 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/sunglasses
+	l_ear = /obj/item/radio/headset/headset_com
 	l_pocket = /obj/item/melee/classic_baton/telescopic
 	id = /obj/item/card/id/representative_ussp
 	box = /obj/item/storage/box/survival_mining
@@ -272,7 +275,7 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 		/obj/item/clothing/under/pants/shorts/red = 1,
 		/obj/item/clothing/head/ushanka = 1,
-		/obj/item/stamp/ussp = 1,
+		/obj/item/stamp/repussp = 1,
 	)
 
 	bio_chips = list(/obj/item/bio_chip/mindshield,
@@ -297,7 +300,7 @@
 	spawn_positions = 2
 	ru_title = "Торговец"
 	alt_titles = list("Торговец", "Независимый Торговец", "Сдельщик", "Барахольщик", "Меценат", "Коммерсант")
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#717097"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 4
