@@ -12,7 +12,7 @@
 	desc = "Разделочная доска с блюспейс дублирующим эффектом."
 	icon_state = "cutting_board_bs"
 
-	product_multiplier = 4
+	product_multiplier = 3
 
 /obj/item/reagent_containers/cooking/bowl/advanced
 	icon = 'modular_ss220/objects/icons/cooking_adv.dmi'
@@ -28,7 +28,7 @@
 	desc = "Миска с блюспейс дублирующим эффектом."
 	icon_state = "bowl_bs"
 
-	product_multiplier = 4
+	product_multiplier = 3
 
 /datum/design/board/advanced
 	name = "Улучшенная разделочная доска"
