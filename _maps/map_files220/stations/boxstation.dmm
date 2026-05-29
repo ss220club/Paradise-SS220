@@ -5450,6 +5450,9 @@
 	},
 /obj/machinery/light/small/directional/south,
 /obj/effect/turf_decal/tiles/department/security/side,
+/obj/structure/sign/security/brig{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/prison/cell_block/a)
 "axI" = (
@@ -14790,9 +14793,6 @@
 	name = "Bridge Blast Doors"
 	},
 /obj/effect/turf_decal/delivery,
-/obj/structure/sign/command{
-	pixel_x = 32
-	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
 "bdj" = (
@@ -15021,9 +15021,6 @@
 	name = "Bridge Blast Doors"
 	},
 /obj/effect/turf_decal/delivery,
-/obj/structure/sign/command{
-	pixel_x = -32
-	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
 "bdQ" = (
@@ -16673,17 +16670,6 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
-"bkR" = (
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "bridge blast west";
-	name = "Bridge Blast Doors"
-	},
-/obj/structure/sign/securearea{
-	pixel_x = 32
-	},
-/obj/effect/turf_decal/delivery,
-/turf/simulated/floor/plasteel/dark,
-/area/station/command/bridge)
 "bkT" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -17924,11 +17910,11 @@
 /obj/effect/turf_decal/tiles/department/command/side{
 	dir = 8
 	},
-/obj/machinery/keycard_auth,
 /obj/item/book/manual/wiki/sop_command{
 	pixel_x = 11;
 	pixel_y = 7
 	},
+/obj/machinery/keycard_auth/directional,
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
 "bpw" = (
@@ -18590,6 +18576,9 @@
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 5
 	},
+/obj/structure/sign/command{
+	pixel_x = 32
+	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/nw)
 "bsq" = (
@@ -18743,6 +18732,9 @@
 /obj/item/kirbyplants/medium,
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 9
+	},
+/obj/structure/sign/command{
+	pixel_x = -32
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/ne)
@@ -19425,6 +19417,9 @@
 /obj/item/kirbyplants/medium,
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 10
+	},
+/obj/structure/sign/securearea{
+	pixel_x = -32
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/ne)
@@ -20284,6 +20279,9 @@
 /obj/item/kirbyplants/medium,
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 6
+	},
+/obj/structure/sign/securearea{
+	pixel_x = 32
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/nw)
@@ -44413,16 +44411,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "dLF" = (
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "bridge blast east";
-	name = "Bridge Blast Doors"
+/obj/effect/turf_decal/tiles/department/engineering/corner{
+	dir = 8
 	},
-/obj/structure/sign/securearea{
-	pixel_x = -32
+/obj/structure/sign/engineering{
+	pixel_y = -32
 	},
-/obj/effect/turf_decal/delivery,
-/turf/simulated/floor/plasteel/dark,
-/area/station/command/bridge)
+/turf/simulated/floor/plasteel,
+/area/station/hallway/primary/aft)
 "dLJ" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 1;
@@ -132869,7 +132865,7 @@ aaa
 bmc
 bdi
 hhk
-bkR
+bdi
 gaY
 nOD
 ulC
@@ -134963,7 +134959,7 @@ wgV
 uTE
 wgV
 czA
-czA
+dLF
 lXh
 tqg
 nxG
@@ -138009,7 +138005,7 @@ aaa
 bmc
 bdP
 xWT
-dLF
+bdP
 rys
 qsl
 etL
