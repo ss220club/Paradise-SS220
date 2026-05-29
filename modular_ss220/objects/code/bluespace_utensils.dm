@@ -1,29 +1,35 @@
-/obj/item/reagent_containers/cooking/board/advanced
-	icon = 'modular_ss220/objects/icons/cooking_adv.dmi'
+/obj/item/reagent_containers/cooking/board/ss220
+	var/product_multiplier = 1
+
+/obj/item/reagent_containers/cooking/board/ss220/advanced
+	icon = 'modular_ss220/objects/icons/bluespace_utensils.dmi'
 	name = "Улучшенная разделочная доска"
 	desc = "Усиленная разделочная доска для готовки большего объема пищи."
 	icon_state = "cutting_board_adv"
 
 	product_multiplier = 2
 
-/obj/item/reagent_containers/cooking/board/bluespace
-	icon = 'modular_ss220/objects/icons/cooking_adv.dmi'
+/obj/item/reagent_containers/cooking/board/ss220/bluespace
+	icon = 'modular_ss220/objects/icons/bluespace_utensils.dmi'
 	name = "Блюспейс разделочная доска"
 	desc = "Разделочная доска с блюспейс дублирующим эффектом."
 	icon_state = "cutting_board_bs"
 
 	product_multiplier = 3
 
-/obj/item/reagent_containers/cooking/bowl/advanced
-	icon = 'modular_ss220/objects/icons/cooking_adv.dmi'
+/obj/item/reagent_containers/cooking/bowl/ss220
+	var/product_multiplier = 1
+
+/obj/item/reagent_containers/cooking/bowl/ss220/advanced
+	icon = 'modular_ss220/objects/icons/bluespace_utensils.dmi'
 	name = "Улучшенная миска"
 	desc = "Усиленная миска для готовки большего объема пищи."
 	icon_state = "bowl_adv"
 
 	product_multiplier = 2
 
-/obj/item/reagent_containers/cooking/bowl/bluespace
-	icon = 'modular_ss220/objects/icons/cooking_adv.dmi'
+/obj/item/reagent_containers/cooking/bowl/ss220/bluespace
+	icon = 'modular_ss220/objects/icons/bluespace_utensils.dmi'
 	name = "Блюспейс миска"
 	desc = "Миска с блюспейс дублирующим эффектом."
 	icon_state = "bowl_bs"
@@ -37,7 +43,7 @@
 	req_tech = list("materials" = 5, "bluespace" = 5)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 300, MAT_GLASS = 100, MAT_TITANIUM = 100)
-	build_path = /obj/item/reagent_containers/cooking/board/advanced
+	build_path = /obj/item/reagent_containers/cooking/board/ss220/advanced
 	category = list("Miscellaneous")
 
 /datum/design/board/bluespace
@@ -47,7 +53,7 @@
 	req_tech = list("materials" = 7, "bluespace" = 7, "powerstorage" = 6)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 300, MAT_GLASS = 100, MAT_TITANIUM = 100, MAT_DIAMOND = 100, MAT_BLUESPACE = 100)
-	build_path = /obj/item/reagent_containers/cooking/board/bluespace
+	build_path = /obj/item/reagent_containers/cooking/board/ss220/bluespace
 	category = list("Miscellaneous")
 
 /datum/design/bowl/advanced
@@ -57,7 +63,7 @@
 	req_tech = list("materials" = 5, "bluespace" = 5)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 300, MAT_GLASS = 100, MAT_TITANIUM = 100)
-	build_path = /obj/item/reagent_containers/cooking/bowl/advanced
+	build_path = /obj/item/reagent_containers/cooking/bowl/ss220/advanced
 	category = list("Miscellaneous")
 
 /datum/design/bowl/bluespace
@@ -67,5 +73,5 @@
 	req_tech = list("materials" = 7, "bluespace" = 7, "powerstorage" = 6)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 300, MAT_GLASS = 100, MAT_TITANIUM = 100, MAT_DIAMOND = 100, MAT_BLUESPACE = 100)
-	build_path = /obj/item/reagent_containers/cooking/bowl/bluespace
+	build_path = /obj/item/reagent_containers/cooking/bowl/ss220/bluespace
 	category = list("Miscellaneous")

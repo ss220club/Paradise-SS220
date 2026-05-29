@@ -24,9 +24,6 @@
 	container_type = OPENCONTAINER
 	visible_transfer_rate = null
 	possible_transfer_amounts = null
-	//SS220 EDIT - нужно для бс посуды
-	var/product_multiplier = 1
-	//SS220 END
 
 	/// The [/datum/cooking/recipe_tracker] of the current food preparation.
 	var/datum/cooking/recipe_tracker/tracker = null
@@ -106,7 +103,7 @@
 		return PCWJ_NO_STEPS
 
 	if(!tracker)
-	//SS220 EDIT START - чтобы работала продвинутая посуда
+	//SS220 EDIT START - поддержка подтипов кухонной кастомной посуды
 		var/lookup_type = type
 
 		while(lookup_type && !(lookup_type in GLOB.pcwj_recipe_dictionary))

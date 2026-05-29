@@ -71,10 +71,11 @@ GLOBAL_LIST_EMPTY(pcwj_cookbook_lookup)
 
 		if("rating" in applied_step_data)
 			output_count = max(output_count, min(3, applied_step_data["rating"]))
-	//SS220 EDIT START - нужно для бс посуды
-	if(istype(container, /obj/item/reagent_containers/cooking))
-		var/obj/item/reagent_containers/cooking/C = container
-		output_count *= C.product_multiplier
+	//SS220 EDIT START - применяем множитель выхода для модульной посуды
+	var/product_multiplier = container.vars["product_multiplier"]
+	if(isnull(product_multiplier))
+		product_multiplier = 1
+	output_count *= product_multiplier
 	//SS220 EDIT END
 	if(product_type) // Make a regular item
 		. = make_product_item(container, slurry, applied_steps, output_count)
