@@ -11,7 +11,7 @@
 		C.visible_message(SPAN_WARNING("[user] вкалывает [src] в [C]."))
 	return ..()
 
-// MARK: Кастом медипены
+// MARK: Custom Medipen
 /obj/item/reagent_containers/hypospray/autoinjector/custom
 	icon = 'modular_ss220/objects/icons/medipens.dmi'
 	icon_state = "medipen"
@@ -59,41 +59,7 @@
 	list_reagents = list("charcoal" = 20)
 	instant_application = TRUE
 
-// MARK: Космическая аптечка
-/obj/item/storage/firstaid/spacer
-	name = "Космическая аптечка"
-	desc = "Медицинский набор, предназначенный для использования в вакууме при ношении EVA и MOD скафандров. Содержит медипены для лечения физического урона и ожогов. Также включает медипены стабилизации с противотоксинным для экстренных случаев и анализатор здоровья."
-	icon_state = "firstaid_spacer"
-	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
-	lefthand_file = 'modular_ss220/aesthetics/boxes/icons/boxes_lefthand.dmi'
-	righthand_file = 'modular_ss220/aesthetics/boxes/icons/boxes_righthand.dmi'
-
-/obj/item/storage/firstaid/spacer/populate_contents()
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/critical(src)
-	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
-	new /obj/item/healthanalyzer(src)
-
-/datum/supply_packs/medical/spacerkits
-	name = "Ящик космических аптечек"
-	contains = list(/obj/item/storage/firstaid/spacer,
-					/obj/item/storage/firstaid/spacer,
-					/obj/item/storage/firstaid/spacer,
-					/obj/item/storage/firstaid/spacer
-					)
-	cost = 400
-	containername = "Ящик космических аптечек"
-
-/obj/machinery/suit_storage_unit/expedition
-	storage_type = /obj/item/storage/firstaid/spacer
-
-/obj/machinery/suit_storage_unit/security
-	storage_type = /obj/item/storage/firstaid/spacer
-
-// MARK: Медипен кейсы
+// MARK: Medipen Case
 /obj/item/storage/pill_bottle/medipen_case
 	name = "Кейс для автоинжекторов"
 	desc = "Это контейнер для хранения медицинских автоинжекторов."
@@ -125,6 +91,18 @@
 	for(var/I in 1 to 7)
 		var/obj/item/storage/pill_bottle/P = new /obj/item/storage/pill_bottle/medipen_case(src)
 		P.apply_wrapper_color(I)
+
+/obj/item/storage/pill_bottle/medipen_case/spacer
+	name = "Космический кейс для автоинжекторов"
+	wrapper_color = COLOR_BROWN_ORANGE
+
+/obj/item/storage/pill_bottle/medipen_case/spacer/populate_contents()
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/brute(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/burn(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/toxin(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/custom/critical(src)
 
 /obj/item/storage/pill_bottle/medipen_case/blueshield
 	name = "Специальный кейс для Синего щита"
@@ -175,6 +153,22 @@
 	/obj/item/reagent_containers/hypospray/autoinjector/custom/brute = 10,
 	/obj/item/reagent_containers/hypospray/autoinjector/custom/burn = 10,)
 	return ..()
+
+/datum/supply_packs/medical/spacerkits
+	name = "Ящик космических кейсов"
+	contains = list(,/obj/item/storage/pill_bottle/medipen_case/spacer,
+					/obj/item/storage/pill_bottle/medipen_case/spacer,
+					/obj/item/storage/pill_bottle/medipen_case/spacer,
+					/obj/item/storage/pill_bottle/medipen_case/spacer
+					)
+	cost = 400
+	containername = "Ящик космических кейсов"
+
+/obj/machinery/suit_storage_unit/expedition
+	storage_type = /obj/item/storage/pill_bottle/medipen_case/spacer
+
+/obj/machinery/suit_storage_unit/security
+	storage_type = /obj/item/storage/pill_bottle/medipen_case/spacer
 
 /datum/chemical_production_mode/autoinjectors
 	mode_id = "medipens"
