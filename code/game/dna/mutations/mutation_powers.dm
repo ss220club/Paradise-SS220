@@ -34,7 +34,7 @@
 	H.adjustFireLoss(-1)
 
 /datum/mutation/heat_resist
-	name = "Жароустойчивость"
+	name = "Термостойкость"
 	activation_messages = list("Ваше тело кажется ледяным на ощупь.")
 	deactivation_messages = list("Ваше тело больше не кажется ледяным на ощупь.")
 	instability = GENE_INSTABILITY_MODERATE
@@ -48,7 +48,7 @@
 	return "cold_s"
 
 /datum/mutation/cold_resist
-	name = "Хладоустойчивость"
+	name = "Хладостойкость"
 	activation_messages = list("Ваше тело наполнено теплом.")
 	deactivation_messages = list("Ваше тело более не наполнено теплом.")
 	instability = GENE_INSTABILITY_MODERATE
@@ -439,7 +439,7 @@
 
 	var/atom/movable/the_item = targets[1]
 	if(!user.Adjacent(the_item))
-		to_chat(user, SPAN_DANGER("Вам нужно быть рядом с [the_item] для этого!"))
+		to_chat(user, SPAN_DANGER("Вам нужно быть рядом с [the_item.declent_ru(INSTRUMENTAL)] для этого!"))
 		return FALSE
 	if(ishuman(the_item))
 		var/mob/living/carbon/human/H = the_item
@@ -465,7 +465,7 @@
 			if(!limb || !H)
 				return
 			if(!user.Adjacent(the_item))
-				to_chat(user, SPAN_DANGER("Вам нужно быть рядом с [the_item] для этого!"))
+				to_chat(user, SPAN_DANGER("Вам нужно быть рядом с [the_item.declent_ru(INSTRUMENTAL)] для этого!"))
 				return FALSE
 			user.visible_message(SPAN_DANGER("[user] [pick("отгрызает","откусывает")] [limb.declent_ru(ACCUSATIVE)] [the_item]!"))
 			playsound(user.loc, 'sound/items/eatfood.ogg', 50, 0)
