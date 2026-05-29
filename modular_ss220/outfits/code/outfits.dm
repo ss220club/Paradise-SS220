@@ -4,7 +4,11 @@
 
 	backpack_contents = list(
 		/obj/item/storage/box/soviet = 1,
-		/obj/item/ammo_box/speed_loader_mm127 = 3
+		/obj/item/ammo_box/speed_loader_mm127 = 3,
+		/obj/item/stamp/comussp
+	)
+	bio_chips = list(
+		/obj/item/bio_chip/mindshield/ussp
 	)
 
 /datum/outfit/admin/soviet/marine/captain
@@ -242,6 +246,12 @@
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/field
 	icon_state = "beret_centcom_officer"
+
+//MARK: TSF
+/datum/outfit/job/ntspecops/solgovspecops/New()
+	backpack_contents += list(
+		/obj/item/stamp/navytsf = 1
+	)
 
 // MARK: SRT
 /datum/outfit/admin/srt

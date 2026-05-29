@@ -43,7 +43,8 @@
 		"Vox" = 'icons/mob/clothing/species/vox/suits/utility.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/suits/utility.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/suits/utility.dmi',
-		"Kidan" = 'icons/mob/clothing/species/kidan/suits/utility.dmi'
+		"Kidan" = 'icons/mob/clothing/species/kidan/suits/utility.dmi',
+		"Skkulakin" = 'icons/mob/clothing/species/skkulakin/suits/utility.dmi'
 	)
 
 /obj/item/clothing/suit/fire/firefighter/atmos
@@ -51,6 +52,8 @@
 	desc = "An expensive firesuit that protects against even the most deadly of station fires. Designed to protect even if the wearer is set aflame."
 	icon_state = "firefighter_atmos"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	w_class = WEIGHT_CLASS_NORMAL
+	slowdown = 0.75
 
 /*
  * Bomb protection
@@ -71,6 +74,7 @@
 	strip_delay = 70
 	put_on_delay = 70
 	resistance_flags = NONE
+	icon_monitor = 'icons/mob/clothing/species/machine/monitor/helmet.dmi'
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/helmet.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/head.dmi'
@@ -95,7 +99,10 @@
 	strip_delay = 70
 	put_on_delay = 70
 	resistance_flags = NONE
-	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
+	sprite_sheets = list(
+		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi',
+		"Skkulakin" = 'icons/mob/clothing/species/skkulakin/suit.dmi'
+		)
 
 /obj/item/clothing/head/bomb_hood/security
 	icon_state = "bombsuitsec"
@@ -121,6 +128,7 @@
 	put_on_delay = 60
 	resistance_flags = NONE
 	flags_2 = RAD_PROTECT_CONTENTS_2
+	icon_monitor = 'icons/mob/clothing/species/machine/monitor/helmet.dmi'
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/head/utility.dmi',
 		"Unathi" = 'icons/mob/clothing/species/unathi/head/utility.dmi',
@@ -160,7 +168,8 @@
 		"Vox" = 'icons/mob/clothing/species/vox/suits/utility.dmi',
 		"Grey" = 'icons/mob/clothing/species/grey/suits/utility.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/suits/utility.dmi',
-		"Kidan" = 'icons/mob/clothing/species/kidan/suits/utility.dmi'
+		"Kidan" = 'icons/mob/clothing/species/kidan/suits/utility.dmi',
+		"Skkulakin" = 'icons/mob/clothing/species/skkulakin/suits/utility.dmi'
 	)
 	rad_insulation_alpha = RAD_FULL_INSULATION
 	rad_insulation_beta = RAD_FULL_INSULATION

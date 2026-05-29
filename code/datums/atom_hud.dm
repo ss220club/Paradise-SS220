@@ -2,7 +2,7 @@
 GLOBAL_LIST_EMPTY(all_huds)
 
 ///GLOBAL HUD LIST
-GLOBAL_LIST_INIT(huds, list(
+GLOBAL_LIST_INIT(huds, alist(
 	DATA_HUD_SECURITY_BASIC = new/datum/atom_hud/data/human/security/basic(),
 	DATA_HUD_SECURITY_ADVANCED = new/datum/atom_hud/data/human/security/advanced(),
 	DATA_HUD_MEDICAL_BASIC = new/datum/atom_hud/data/human/medical/basic(),
@@ -28,7 +28,10 @@ GLOBAL_LIST_INIT(huds, list(
 	ANTAG_HUD_EVENTMISC = new/datum/atom_hud/antag/hidden(),
 	ANTAG_HUD_BLOB = new/datum/atom_hud/antag/hidden(),
 	ANTAG_HUD_ZOMBIE = new/datum/atom_hud/antag(),
-	ANTAG_HUD_MIND_FLAYER = new/datum/atom_hud/antag/hidden()
+	ANTAG_HUD_MIND_FLAYER = new/datum/atom_hud/antag/hidden(),
+	DATA_HUD_HERETIC = new/datum/atom_hud/data/heretic(),
+	ANTAG_HUD_HERETIC = new/datum/atom_hud/antag/hidden(),
+	ANTAG_HUD_HERETIC_BEAST = new/datum/atom_hud/antag/hidden(),
 	))
 
 /datum/atom_hud

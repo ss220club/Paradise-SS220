@@ -249,8 +249,8 @@
 		s.set_up(5, 1, unlucky_mob.loc)
 		s.start()
 		unlucky_mob.visible_message(
-			span_danger("[unlucky_mob.name] is shocked by [src]!"),
-			span_userdanger("You feel a powerful shock course through your body!"))
+			SPAN_DANGER("[unlucky_mob.name] is shocked by [src]!"),
+			SPAN_USERDANGER("You feel a powerful shock course through your body!"))
 		playsound(unlucky_mob, 'sound/effects/sparks4.ogg', 100, TRUE)
 
 /turf/simulated/floor/beach/away/blackmesa/remove_plating(mob/user)

@@ -94,6 +94,10 @@
 	var/tail
 	/// Same as tail but wing
 	var/wing
+	/// Same as wing but with back spines
+	var/spines
+
+	var/tail_wagging = FALSE
 
 	var/list/splinted_limbs = list() //limbs we know are splinted
 	var/original_eye_color = "#000000"
@@ -108,6 +112,10 @@
 
 	/// Lazylist of sources to track what our alpha should be, alpha is set to the minimum. Use the `set_alpha_tracking` and `get_alpha` helpers.
 	var/list/alpha_sources
+	/// List of quirk datums attached to the mob
+	var/list/quirks = list()
+	/// The cooldown for jumping into a closet or crate
+	COOLDOWN_DECLARE(skittish_cooldown)
 
 /mob/living/carbon/human/fake
 	flags = ABSTRACT

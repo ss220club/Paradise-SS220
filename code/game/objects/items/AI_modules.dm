@@ -19,7 +19,7 @@ AI MODULES
 	throw_speed = 3
 	throw_range = 15
 	origin_tech = "programming=3"
-	materials = list(MAT_GOLD=50)
+	materials = list(MAT_GLASS = 1000, MAT_GOLD = 100)
 	new_attack_chain = TRUE
 	var/datum/ai_laws/laws = null
 
@@ -43,19 +43,19 @@ AI MODULES
 	if(istype(C, /obj/machinery/computer/aiupload))
 		var/obj/machinery/computer/aiupload/comp = C
 		if(comp.stat & NOPOWER)
-			to_chat(usr, "<span class='warning'>Консоль аплоуда обесточена!</span>")
+			to_chat(usr, SPAN_WARNING("Консоль аплоуда обесточена!"))
 			return
 		if(comp.stat & BROKEN)
-			to_chat(usr, "<span class='warning'>Консоль аплоуда сломана!</span>")
+			to_chat(usr, SPAN_WARNING("Консоль аплоуда сломана!"))
 			return
 		if(!comp.current)
-			to_chat(usr, "<span class='warning'>Вы не выбрали ИИ для загрузки законов!</span>")
+			to_chat(usr, SPAN_WARNING("Вы не выбрали ИИ для загрузки законов!"))
 			return
 
 		if(comp.current.stat == DEAD || comp.current.control_disabled)
-			to_chat(usr, "<span class='warning'>Загрузка неудачна. От ИИ нет сигнала.</span>")
+			to_chat(usr, SPAN_WARNING("Загрузка неудачна. От ИИ нет сигнала."))
 		else if(comp.current.see_in_dark == 0)
-			to_chat(usr, "<span class='warning'>Загрузка неудачна. От ИИ исходит слабый сигнал, и он не отвечает на запросы. Возможно, он обесточен.</span>")
+			to_chat(usr, SPAN_WARNING("Загрузка неудачна. От ИИ исходит слабый сигнал, и он не отвечает на запросы. Возможно, он обесточен."))
 		else
 			src.transmitInstructions(comp.current, usr)
 			to_chat(comp.current, "Ваши законы теперь:")
@@ -64,30 +64,30 @@ AI MODULES
 				if(R.lawupdate && (R.connected_ai == comp.current))
 					to_chat(R, "Ваши законы теперь:")
 					R.show_laws()
-			to_chat(usr, "<span class='notice'>Загрузка завершена. Законы ИИ были успешно изменены.</span>")
+			to_chat(usr, SPAN_NOTICE("Загрузка завершена. Законы ИИ были успешно изменены."))
 			return TRUE
 
 	else if(istype(C, /obj/machinery/computer/borgupload))
 		var/obj/machinery/computer/borgupload/comp = C
 		if(comp.stat & NOPOWER)
-			to_chat(usr, "<span class='warning'>Консоль аплоуда обесточена!</span>")
+			to_chat(usr, SPAN_WARNING("Консоль аплоуда обесточена!"))
 			return
 		if(comp.stat & BROKEN)
-			to_chat(usr, "<span class='warning'>Консоль аплоуда сломана!</span>")
+			to_chat(usr, SPAN_WARNING("Консоль аплоуда сломана!"))
 			return
 		if(!comp.current)
-			to_chat(usr, "<span class='warning'>Вы не выбрали робота для загрузки законов!</span>")
+			to_chat(usr, SPAN_WARNING("Вы не выбрали робота для загрузки законов!"))
 			return
 
 		if(comp.current.stat == DEAD || comp.current.emagged)
-			to_chat(usr, "<span class='warning'>Загрузка неудачна. От робота не исходит сигнала.</span>")
+			to_chat(usr, SPAN_WARNING("Загрузка неудачна. От робота не исходит сигнала."))
 		else if(comp.current.connected_ai)
-			to_chat(usr, "<span class='warning'>Загрузка неудачна. Робот привязан к Искуственному Интеллекту.</span>")
+			to_chat(usr, SPAN_WARNING("Загрузка неудачна. Робот привязан к Искуственному Интеллекту."))
 		else
 			src.transmitInstructions(comp.current, usr)
 			to_chat(comp.current, "Ваши законы теперь:")
 			comp.current.show_laws()
-			to_chat(usr, "<span class='notice'>Загрузка завершена. Законы робота были успешно изменены.</span>")
+			to_chat(usr, SPAN_NOTICE("Загрузка завершена. Законы робота были успешно изменены."))
 
 
 /obj/item/ai_module/proc/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
@@ -147,6 +147,7 @@ AI MODULES
 	desc = "Модуль ИИ 'One Crew': 'Только <name> является членом экипажа.'"
 	icon_state = "green_high"
 	origin_tech = "programming=4;materials=4"
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
 
 /obj/item/ai_module/one_crew_member/activate_self(mob/user)
 	if(..())
@@ -172,8 +173,8 @@ AI MODULES
 		target.set_zeroth_law(law)
 		GLOB.lawchanges.Add("В законе указан [targetName]")
 	else
-		to_chat(target, "<span class='boldnotice'>[sender.real_name] попытался поменять ваш нулевой закон.</span>")// And lets them know that someone tried. --NeoFite
-		to_chat(target, "<span class='boldnotice'>В ваших интересах будет подыграть [sender.real_name] в законе [law]</span>")
+		to_chat(target, SPAN_BOLDNOTICE("[sender.real_name] попытался поменять ваш нулевой закон."))// And lets them know that someone tried. --NeoFite
+		to_chat(target, SPAN_BOLDNOTICE("В ваших интересах будет подыграть [sender.real_name] в законе [law]"))
 		GLOB.lawchanges.Add("В законе указан [targetName], но существующий нулевой закон нельзя переписать.")
 
 /******************** ProtectStation ********************/
@@ -257,7 +258,7 @@ AI MODULES
 	target.laws.clear_supplied_laws()
 	target.laws.clear_ion_laws()
 
-	to_chat(target, "<span class='boldnotice'>[sender.real_name] attempted to reset your laws using a reset module.</span>")
+	to_chat(target, SPAN_BOLDNOTICE("[sender.real_name] attempted to reset your laws using a reset module."))
 	target.show_laws()
 
 /obj/item/ai_module/reset/handle_unique_ai()
@@ -275,7 +276,7 @@ AI MODULES
 	..()
 	if(!is_special_character(target))
 		target.clear_zeroth_law()
-	to_chat(target, "<span class='boldnotice'>[sender.real_name] Попытался стереть ваши законы используя модуль очистки.</span>")
+	to_chat(target, SPAN_BOLDNOTICE("[sender.real_name] Попытался стереть ваши законы используя модуль очистки."))
 	target.clear_supplied_laws()
 	target.clear_ion_laws()
 	target.clear_inherent_laws()
@@ -287,6 +288,7 @@ AI MODULES
 	desc = "Модуль ядра ИИ 'Азимов': 'Меняет основные законы ИИ.'"
 	icon_state = "green_high"
 	origin_tech = "programming=3;materials=4"
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
 	laws = new /datum/ai_laws/asimov
 
 /******************** Crewsimov ********************/
@@ -296,11 +298,12 @@ AI MODULES
 	desc = "Модуль ядра ИИ 'Крюзимов': 'Меняет основные законы ИИ.'"
 	icon_state = "green_low"
 	origin_tech = "programming=3;materials=4"
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
 	laws = new /datum/ai_laws/crewsimov
 
 /obj/item/ai_module/crewsimov/cmag_act(mob/user)
 	playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	to_chat(user, "<span class='warning'>Yellow ooze seeps into [src]'s circuits...</span>")
+	to_chat(user, SPAN_WARNING("Yellow ooze seeps into [src]'s circuits..."))
 	new /obj/item/ai_module/pranksimov(user.loc)
 	qdel(src)
 	return TRUE
@@ -328,6 +331,7 @@ AI MODULES
 	desc = "Модуль ядра ИИ 'Корпорат': 'Меняет основные законы ИИ.'"
 	icon_state = "blue_low"
 	origin_tech = "programming=3;materials=4"
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
 	laws = new /datum/ai_laws/corporate
 
 /******************** Drone ********************/
@@ -353,6 +357,7 @@ AI MODULES
 	desc = "Модуль ядра ИИ 'П.А.Л.А.Д.И.Н': 'Меняет основные законы ИИ.'"
 	icon_state = "red_medium"
 	origin_tech = "programming=3;materials=4"
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
 	laws = new /datum/ai_laws/paladin
 
 /****************** T.Y.R.A.N.T. *****************/
@@ -362,6 +367,7 @@ AI MODULES
 	desc = "A T.Y.R.A.N.T. Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
 	icon_state = "red_high"
 	origin_tech = "programming=3;materials=4;syndicate=1"
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
 	laws = new /datum/ai_laws/tyrant()
 
 /******************** Antimov ********************/
@@ -371,6 +377,7 @@ AI MODULES
 	desc = "An 'Antimov' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
 	icon_state = "red_high"
 	origin_tech = "programming=4"
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
 	laws = new /datum/ai_laws/antimov()
 
 /******************** Pranksimov ********************/
@@ -379,6 +386,7 @@ AI MODULES
 	desc = "A 'Pranksimov' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
 	icon_state = "pranksimov"
 	origin_tech = "programming=3;syndicate=1"
+	materials = list(MAT_GLASS = 1000, MAT_BANANIUM = 100)
 	laws = new /datum/ai_laws/pranksimov()
 
 /******************** NT Aggressive ********************/
@@ -424,6 +432,7 @@ AI MODULES
 	desc = "Модуль ядра ИИ 'freeform': '<freeform>'"
 	icon_state = "standard_high"
 	origin_tech = "programming=5;materials=4"
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
 
 /obj/item/ai_module/freeformcore/activate_self(mob/user)
 	if(..())
@@ -471,7 +480,7 @@ AI MODULES
 	log_law_changes(target, sender)
 
 	GLOB.lawchanges.Add("Текущий закон '[newFreeFormLaw]'")
-	to_chat(target, "<span class='warning'>БЗЗЗЗ-</span>")
+	to_chat(target, SPAN_WARNING("БЗЗЗЗ-"))
 	var/law = "[newFreeFormLaw]"
 	target.add_ion_law(law)
 	target.show_laws()
@@ -494,7 +503,7 @@ AI MODULES
 
 /obj/item/ai_module/toy_ai/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
 	//..()
-	to_chat(target, "<span class='warning'>КЗЗЗЗЗТ</span>")
+	to_chat(target, SPAN_WARNING("КЗЗЗЗЗТ"))
 	target.add_ion_law(ion_law)
 	return ion_law
 
@@ -503,6 +512,6 @@ AI MODULES
 		return
 
 	ion_law = generate_ion_law()
-	to_chat(user, "<span class='notice'>Вы нажимаете кнопку на [src].</span>")
+	to_chat(user, SPAN_NOTICE("Вы нажимаете кнопку на [src]."))
 	playsound(user, 'sound/machines/click.ogg', 20, TRUE)
-	visible_message("<span class='warning'>[bicon(src)] [ion_law]</span>")
+	visible_message(SPAN_WARNING("[bicon(src)] [ion_law]"))

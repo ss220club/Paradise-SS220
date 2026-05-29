@@ -14,6 +14,7 @@
 	brute_mod = 0.8
 	hunger_drain = 0.15
 	tox_mod = 1.7
+	primitive_form = /datum/species/monkey/kidan_nymph // SS220 EDIT - (Низшая форма для киданов)
 
 	species_traits = list(NO_HAIR)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_BUG
@@ -27,6 +28,9 @@
 	//Default styles for created mobs.
 	default_headacc = "Normal Antennae"
 	butt_sprite = "kidan"
+
+	male_scream_sound = 'sound/voice/scream_kidan.ogg'
+	female_scream_sound = 'sound/voice/scream_kidan.ogg'
 
 	meat_type = /obj/item/food/meat/human
 	has_organ = list(

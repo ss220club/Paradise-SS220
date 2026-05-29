@@ -81,7 +81,7 @@
 	if(!cargo_to_unload || !(cargo_to_unload in cargo))
 		return
 
-	occupant_message(span_notice("You unload [cargo_to_unload]."))
+	occupant_message(SPAN_NOTICE("You unload [cargo_to_unload]."))
 	cargo_to_unload.forceMove(get_turf(src))
 	cargo -= cargo_to_unload
 	log_message("Unloaded [cargo_to_unload]. Cargo compartment capacity: [cargo_capacity - length(cargo)]")
@@ -106,7 +106,7 @@
 /obj/mecha/lockermech/emag_act(mob/user)
 	if(!emagged)
 		emagged = TRUE
-		desc += span_danger("</br>The mech's equipment slots spark dangerously!")
+		desc += SPAN_DANGER("</br>The mech's equipment slots spark dangerously!")
 	return ..()
 
 // Crafting

@@ -46,8 +46,33 @@
 	name = "Asteroid 5"
 	description = "Oh my god, another giant rock!"
 
-/datum/map_template/ruin/space/asteroidmining1
-	id = "asteroidmining1"
+/datum/map_template/ruin/space/asteroid6
+	id = "asteroid6"
+	suffix = "asteroid6.dmm"
+	name = "Asteroid 6"
+	description = "A small collection of ore rich asteroids."
+
+/datum/map_template/ruin/space/asteroid7
+	id = "asteroid7"
+	suffix = "asteroid7.dmm"
+	name = "Asteroid 7"
+	description = "A medium-sized asteroid surrounded by carp that have made it their home."
+
+/datum/map_template/ruin/space/asteroid8
+	id = "asteroid8"
+	suffix = "asteroid8.dmm"
+	name = "Asteroid 8"
+	description = "An engineer's hubris about their engine escape pod seemed to not have navigation systems active."
+	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/asteroid9
+	id = "asteroid9"
+	suffix = "asteroid9.dmm"
+	name = "Asteroid 9"
+	description = "A hollow asteroid inhabited by a group of goliaths."
+
+/datum/map_template/ruin/space/asteroidmining9
+	id = "asteroidmining9"
 	suffix = "asteroidmining1.dmm"
 	name = "Mining Asteroid 1"
 	description = "A giant rock rich in ores!"
@@ -63,6 +88,35 @@
 	suffix = "asteroidmining3.dmm"
 	name = "Mining Asteroid 3"
 	description = "They dug too greedily, and too deeply..."
+
+/datum/map_template/ruin/space/asteroidmine_pirates
+	id = "asteroidmine_pirates"
+	suffix = "asteroidmine_pirates.dmm"
+	name = "Pirate Mining Outpost"
+	description = "A small gang of pirates plunders valuables from a space rock."
+	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/asteroidmine_drakehounds
+	id = "asteroidmine_drakehounds"
+	suffix = "asteroidmine_drakehounds.dmm"
+	name = "Raided Corporate Mining Outpost"
+	description = "A small-time mining company set up a mining outpost between two large mineral-rich asteroids. \
+		The riches only served to attract a gang of drakehound raiders to steal the loot for themselves."
+	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/asteroidmine_vox
+	id = "asteroidmine_vox"
+	suffix = "asteroidmine_vox.dmm"
+	name = "Vox Mining Expedition"
+	description = "A small group of vox miners excavate a valuable asteroid."
+	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/asteroidmine_skullakin
+	id = "asteroidmine_skullakin"
+	suffix = "asteroidmine_skullakin.dmm"
+	name = "Skullakin Outpost"
+	description = "A small skullakin outpost found riches in the rocks it was built on. They also found goliaths."
+	allow_duplicates = FALSE
 
 /datum/map_template/ruin/space/deep_storage
 	id = "deep-storage"

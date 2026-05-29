@@ -45,6 +45,6 @@
 		owner.reagents.add_reagent("mannitol", 2)
 		owner.reagents.add_reagent("epinephrine", 2)
 		SSblackbox.record_feedback("tally", "players_revived", 1, "self_revived")
-		owner.visible_message(span_warning("Тело [owner] содрагают судороги!"))
+		owner.visible_message(SPAN_WARNING("Тело [owner] содрагают судороги!"))
 
 #undef AUTO_DEFIBRILATION_THRESHOLD

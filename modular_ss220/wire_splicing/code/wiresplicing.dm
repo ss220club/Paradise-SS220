@@ -102,7 +102,7 @@
 
 /obj/structure/wire_splicing/examine(mob/user)
 	. = ..()
-	. += span_warning("It has [messiness] wire[messiness > 1 ? "s" : ""] dangling around.")
+	. += SPAN_WARNING("It has [messiness] wire[messiness > 1 ? "s" : ""] dangling around.")
 
 /obj/structure/wire_splicing/proc/on_atom_entered(datum/source, atom/movable/entered)
 	SIGNAL_HANDLER
@@ -143,8 +143,8 @@
 	if(shock(user, 50))
 		return
 	user.visible_message(
-		span_notice("[user] cuts the splicing."),
-		span_notice("You cut the splicing."))
+		SPAN_NOTICE("[user] cuts the splicing."),
+		SPAN_NOTICE("You cut the splicing."))
 	investigate_log("was cut by [key_name(usr)] in [AREACOORD(src)]", "wires")
 	qdel(src)
 
@@ -157,7 +157,7 @@
 
 /obj/structure/wire_splicing/proc/reinforce(mob/user, obj/item/stack/cable_coil/coil)
 	if(messiness >= MAX_MESSINESS)
-		to_chat(user, span_warning("You can't seem to jam more cable into the splicing!"))
+		to_chat(user, SPAN_WARNING("You can't seem to jam more cable into the splicing!"))
 		return
 	if(!do_after(user, 2 SECONDS, target = src, progress = TRUE))
 		return

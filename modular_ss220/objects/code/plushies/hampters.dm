@@ -21,8 +21,8 @@
 		var/obj/item/I = AM
 		if(I.flags & ABSTRACT)
 			return
-		else if(istype(AM, /obj/item/projectile))
-			var/obj/item/projectile/P = AM
+		else if(istype(AM, /obj/projectile))
+			var/obj/projectile/P = AM
 			if(P.original != parent)
 				return
 	if(ismob(AM))
@@ -82,8 +82,8 @@
 				// Прописываю это здесь ибо иначе хомяки будут отмечаться кровавыми в игре
 				blood_DNA = "Plush hampter's paint"
 				human.visible_message(
-					span_warning("[human] раздавил хамптера в своей руке!"),
-					span_warning("Вы раздавили хамптера в своей руке!"))
+					SPAN_WARNING("[human] раздавил хамптера в своей руке!"),
+					SPAN_WARNING("Вы раздавили хамптера в своей руке!"))
 				playsound(get_turf(src), "bonebreak", 50, TRUE, -10)
 				human.hand_blood_color = blood_color
 				human.transfer_blood_dna(blood_DNA)
