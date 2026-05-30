@@ -189,6 +189,14 @@
 	max_units_per_item = 30
 	name_suffix = " medipen"
 	var/static/list/safe_chem_list = /datum/chemical_production_mode/patches::safe_chem_list
+	var/static/list/medipen_colors = list(
+		"red" = COLOR_RED,
+		"orange" = COLOR_ORANGE,
+		"blue" = COLOR_BLUE,
+		"green" = COLOR_GREEN,
+		"purple" = COLOR_PURPLE,
+		"black" = COLOR_BLACK,
+	)
 
 /datum/chemical_production_mode/autoinjectors/proc/safety_check(datum/reagents/R)
 	for(var/datum/reagent/A in R.reagent_list)
@@ -209,19 +217,10 @@
 	if(chemicals_is_safe)
 		P.instant_application = TRUE
 
-	switch(P.icon_state)
-		if("medipen_red")
-			P.tag_color = COLOR_RED
-		if("medipen_orange")
-			P.tag_color = COLOR_ORANGE
-		if("medipen_blue")
-			P.tag_color = COLOR_BLUE
-		if("medipen_green")
-			P.tag_color = COLOR_GREEN
-		if("medipen_purple")
-			P.tag_color = COLOR_PURPLE
-		if("medipen_black")
-			P.tag_color = COLOR_BLACK
+	for(var/color_name in medipen_colors)
+		if(P.icon_state == "medipen_[color_name]")
+			P.tag_color = medipen_colors[color_name]
+			break
 
 	P.apply_wrap()
 
