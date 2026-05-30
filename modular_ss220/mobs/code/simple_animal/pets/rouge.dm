@@ -125,18 +125,18 @@
 
 	if(inventory_head)
 		if(user)
-			to_chat(user, span_warning("You can't put more than one hat on [src]!"))
+			to_chat(user, SPAN_WARNING("You can't put more than one hat on [src]!"))
 		return
 	if(!item_to_add)
 		user.visible_message(
-			span_notice("[user] pets [src]."),
-			span_notice("You rest your hand on [src]'s head for a moment."))
+			SPAN_NOTICE("[user] pets [src]."),
+			SPAN_NOTICE("You rest your hand on [src]'s head for a moment."))
 		if(flags_2 & HOLOGRAM_2)
 			return
 		return
 
 	if(user && !user.unequip(item_to_add))
-		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
+		to_chat(user, SPAN_WARNING("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
 		return 0
 
 	var/valid = FALSE
@@ -145,18 +145,18 @@
 
 	if(valid)
 		if(health <= 0)
-			to_chat(user, span_notice("Безжизненный взгляд в глазах [real_name] никак не меняется, когда вы надеваете [item_to_add] на неё."))
+			to_chat(user, SPAN_NOTICE("Безжизненный взгляд в глазах [real_name] никак не меняется, когда вы надеваете [item_to_add] на неё."))
 		else if(user)
 			user.visible_message(
-				span_notice("[user] надевает [item_to_add] на центральную голову [real_name]. [src] смотрит на [user] и довольно шипит."),
-				span_notice("Вы надеваете [item_to_add] на голову [real_name]. [src] озадачено смотрит на вас, пока другие головы смотрят на центральную с завистью."),
-				span_italics("Вы слышите дружелюбное шипение."))
+				SPAN_NOTICE("[user] надевает [item_to_add] на центральную голову [real_name]. [src] смотрит на [user] и довольно шипит."),
+				SPAN_NOTICE("Вы надеваете [item_to_add] на голову [real_name]. [src] озадачено смотрит на вас, пока другие головы смотрят на центральную с завистью."),
+				SPAN_ITALICS("Вы слышите дружелюбное шипение."))
 		item_to_add.forceMove(src)
 		inventory_head = item_to_add
 		update_snek_fluff()
 		regenerate_icons()
 	else
-		to_chat(user, span_warning("Вы надеваете [item_to_add] на голову [src], но она скидывает [item_to_add] с себя!"))
+		to_chat(user, SPAN_WARNING("Вы надеваете [item_to_add] на голову [src], но она скидывает [item_to_add] с себя!"))
 		item_to_add.forceMove(drop_location())
 		if(prob(25))
 			step_rand(item_to_add)

@@ -40,10 +40,6 @@
 	volume = 60
 
 /* Service */
-/obj/item/rsf/attack_self__legacy__attackchain(mob/user)
-	if(..() && power_mode >= 3000)
-		power_mode /= 2
-
 /obj/item/eftpos/cyborg
 	name = "Silicon EFTPOS"
 	desc = "Проведите ID картой для оплаты налогов."
@@ -66,6 +62,6 @@
 			else if(linked_account)
 				transaction_locked = TRUE
 			else
-				to_chat(user, span_warning("[bicon(src)]No account connected to send transactions to.<"))
+				to_chat(user, SPAN_WARNING("[bicon(src)]No account connected to send transactions to.<"))
 			return TRUE
 	. = ..()

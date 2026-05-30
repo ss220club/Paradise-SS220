@@ -13,7 +13,8 @@
 	access = list(
 		ACCESS_ATMOSPHERICS,
 		ACCESS_CE,
-		ACCESS_CONSTRUCTION,
+		ACCESS_ENGINEERING_GENERAL,
+		ACCESS_STATION_ENGINEER,
 		ACCESS_ENGINE_EQUIP,
 		ACCESS_ENGINE,
 		ACCESS_EVA,
@@ -30,6 +31,8 @@
 		ACCESS_TELEPORTER,
 		ACCESS_WEAPONS
 	)
+	skeleton_access = list(ACCESS_CAPTAIN)
+	alt_titles = list("Engineering Director", "Senior Engineer", "Engine Foreman")
 	minimal_player_age = 21
 	exp_map = list(EXP_TYPE_ENGINEERING = 1200)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP, DISABILITY_FLAG_PARAPLEGIC)
@@ -76,7 +79,8 @@
 	department_head = list("Chief Engineer")
 	selection_color = "#fff5cc"
 	access = list(
-		ACCESS_CONSTRUCTION,
+		ACCESS_ENGINEERING_GENERAL,
+		ACCESS_STATION_ENGINEER,
 		ACCESS_ENGINE_EQUIP,
 		ACCESS_ENGINE,
 		ACCESS_EVA,
@@ -85,7 +89,8 @@
 		ACCESS_MINERAL_STOREROOM,
 		ACCESS_TECH_STORAGE
 	)
-	alt_titles = list("Maintenance Technician","Engine Technician","Electrician")
+	skeleton_access = list(ACCESS_ATMOSPHERICS)
+	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Mechanic", "Repairman")
 	minimal_player_age = 7
 	exp_map = list(EXP_TYPE_CREW = 300)
 	outfit = /datum/outfit/job/engineer
@@ -128,14 +133,19 @@
 	selection_color = "#fff5cc"
 	access = list(
 		ACCESS_ATMOSPHERICS,
-		ACCESS_CONSTRUCTION,
+		ACCESS_ENGINEERING_GENERAL,
+		ACCESS_ENGINE,
 		ACCESS_EVA,
 		ACCESS_EXTERNAL_AIRLOCKS,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MINERAL_STOREROOM,
 		ACCESS_TECH_STORAGE
 	)
-	alt_titles = list("Atmospheric Technician")
+	skeleton_access = list(
+		ACCESS_STATION_ENGINEER,
+		ACCESS_ENGINE_EQUIP,
+	)
+	alt_titles = list("Atmospheric Technician", "Firefighter")
 	minimal_player_age = 7
 	exp_map = list(EXP_TYPE_CREW = 300)
 	outfit = /datum/outfit/job/atmos

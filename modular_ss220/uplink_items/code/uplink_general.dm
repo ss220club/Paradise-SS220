@@ -5,7 +5,7 @@
 			Практически не работает на ярком свету "
 	reference = "SHAD"
 	item = /obj/item/flashlight/shadowlight
-	cost = 20
+	cost = 5
 
 /datum/uplink_item/dangerous/chainsaw
 	excludefrom = list()

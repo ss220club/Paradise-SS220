@@ -106,7 +106,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 		return
 
 	if(GLOB.announcing_vox > world.time)
-		to_chat(src, "<span class='warning'>Пожалуйста подождите [round((GLOB.announcing_vox - world.time) / 10)] [declension_ru(round((GLOB.announcing_vox - world.time) / 10), "секунду", "секунды", "секунд")].</span>")
+		to_chat(src, SPAN_WARNING("Пожалуйста подождите [round((GLOB.announcing_vox - world.time) / 10)] [declension_ru(round((GLOB.announcing_vox - world.time) / 10), "секунду", "секунды", "секунд")]."))
 		return
 
 	var/message = tgui_input_text(src, "Внимание: Неправильное использование этой системы может привести к джоббану. Для справки обращайтесь к 'Справочнику оповещений'", "Оповещение", last_announcement)
@@ -134,7 +134,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 			incorrect_words += word
 
 	if(length(incorrect_words))
-		to_chat(src, "<span class='warning'>Эти слова недоступны в системе оповещений: [english_list(incorrect_words)].</span>")
+		to_chat(src, SPAN_WARNING("Эти слова недоступны в системе оповещений: [english_list(incorrect_words)]."))
 		return
 
 	GLOB.announcing_vox = world.time + VOX_DELAY

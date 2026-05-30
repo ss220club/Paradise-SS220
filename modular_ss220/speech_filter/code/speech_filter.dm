@@ -48,7 +48,7 @@
 
 	speech_args[SPEECH_MESSAGE] = message
 	addtimer(CALLBACK(talker, TYPE_PROC_REF(/mob, emote), "drool"), 0.3 SECONDS)
-	to_chat(talker, span_sinister(pick(brainrot_notifications)))
+	to_chat(talker, SPAN_SINISTER(pick(brainrot_notifications)))
 	log_and_message_admins("[key_name(talker)] has attempted to say forbidden word. His message was: [original_message]")
 
 /datum/element/speech_filter/proc/get_brainrot_filter_regex()

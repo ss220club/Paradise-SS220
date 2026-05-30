@@ -10,6 +10,7 @@
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	resistance_flags = FIRE_PROOF
 	dog_fashion = /datum/dog_fashion/head/hardhat
+	icon_monitor = 'icons/mob/clothing/species/machine/monitor/helmet.dmi'
 	sprite_sheets = list(
 		"Grey" = 'icons/mob/clothing/species/grey/head.dmi',
 		"Vox" = 'icons/mob/clothing/species/vox/head.dmi'
@@ -17,8 +18,12 @@
 	/// Determines used sprites: hardhat[on]_[hat_color]
 	var/hat_color = "yellow"
 
-/obj/item/clothing/head/hardhat/attack_self__legacy__attackchain(mob/living/user)
+/obj/item/clothing/head/hardhat/activate_self(mob/user)
+	if(..())
+		return ITEM_INTERACT_COMPLETE
+
 	toggle_helmet_light(user)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/clothing/head/hardhat/proc/toggle_helmet_light(mob/living/user)
 	on = !on
@@ -46,7 +51,7 @@
 		on = FALSE
 		turn_off()
 		update_icon(UPDATE_ICON_STATE)
-		visible_message("<span class='danger'>[src]'s light fades and turns off.</span>")
+		visible_message(SPAN_DANGER("[src]'s light fades and turns off."))
 
 /obj/item/clothing/head/hardhat/orange
 	name = "orange hard hat"
@@ -94,6 +99,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	dog_fashion = null
+	icon_monitor = null
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/head/utility.dmi',
 		"Unathi" = 'icons/mob/clothing/species/unathi/head/utility.dmi',
@@ -103,6 +109,10 @@
 		"Drask" = 'icons/mob/clothing/species/drask/head/utility.dmi',
 		"Kidan" = 'icons/mob/clothing/species/kidan/head/utility.dmi'
 	)
+
+/obj/item/clothing/head/hardhat/atmos/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing_adjustment/monitor_headgear, 0, 1)
 
 /obj/item/clothing/head/hardhat/durathread
 	name = "durathread hard hat"

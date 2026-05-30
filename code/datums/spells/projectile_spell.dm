@@ -1,5 +1,5 @@
 /datum/spell/projectile
-	desc = "This spell summons projectiles which try to hit the targets."
+	desc = "Вызывает снаряды, которые пытаются поразить цели."
 
 	var/proj_icon = 'icons/obj/projectiles.dmi'
 	var/proj_icon_state = "spell"
@@ -25,7 +25,7 @@
 
 	for(var/mob/living/target in targets)
 		spawn(0)
-			var/obj/item/projectile/projectile = new proj_type(get_turf(user))
+			var/obj/projectile/projectile = new proj_type(get_turf(user))
 			projectile.icon = proj_icon
 			projectile.icon_state = proj_icon_state
 			projectile.dir = get_dir(target, projectile)

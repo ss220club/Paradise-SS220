@@ -25,7 +25,7 @@
 	T.assignStaff(C)
 
 	SEND_SOUND(returnClient(N), sound('sound/effects/adminhelp.ogg'))
-	message_staff("[C] has auto responded to [ticket_owner]\'s adminhelp with:<span class='adminticketalt'> AI </span>")
+	message_staff("[C] has auto responded to [ticket_owner]\'s adminhelp with:[SPAN_ADMINTICKETALT(" AI ")]")
 	log_game("[C] has auto responded to [ticket_owner]\'s adminhelp with AI")
 	sendFollowupToDiscord(T, C, "*Autoresponded with AI*")
 
@@ -42,7 +42,7 @@
 	var/ai_response = response["choices"][1]["message"]["content"]
 	var/datum/ticket/T = allTickets[N]
 
-	to_chat_safe(returnClient(N), "<span class='[span_class]'>AI is autoresponding with:<span/><span class='adminticketalt'> [ai_response] </span>")
+	to_chat_safe(returnClient(N), "<span class='[span_class]'>AI is autoresponding with:<span/>[SPAN_ADMINTICKETALT(" [ai_response] ")]")
 	message_staff("AI autoresponded with: [ai_response]")
 	T.lastStaffResponse = "AI Autoresponse: [ai_response]"
 

@@ -106,13 +106,13 @@
 	name = "9x19mm bluespace bullet casing"
 	desc = "A 9x19mm bluespace bullet casing."
 	caliber = "919bmm"
-	projectile_type = /obj/item/projectile/bullet/mmbsp919
+	projectile_type = /obj/projectile/bullet/mmbsp919
 
 /obj/item/ammo_casing/beretta/mmap919
 	name = "9x19mm armor-piercing bullet casing"
 	desc = "A 9x19 armor-piercing bullet casing."
 	caliber = "919mm"
-	projectile_type = /obj/item/projectile/bullet/mmap919
+	projectile_type = /obj/projectile/bullet/mmap919
 
 /obj/item/ammo_casing/beretta/mmrub919
 	name = "9x19mm rubber bullet casing"
@@ -120,7 +120,7 @@
 	caliber = "919mm"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casingmm919"
-	projectile_type = /obj/item/projectile/bullet/weakbullet4
+	projectile_type = /obj/projectile/bullet/weakbullet4
 
 /obj/item/ammo_casing/beretta/mm919
 	name = "9x19mm lethal bullet casing"
@@ -128,16 +128,16 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casingmm919"
 	caliber = "919mm"
-	projectile_type = /obj/item/projectile/bullet/weakbullet3
+	projectile_type = /obj/projectile/bullet/weakbullet3
 
 // Beretta Projectiles
-/obj/item/projectile/bullet/mmap919
+/obj/projectile/bullet/mmap919
 	name = "9x19mm armor-piercing bullet"
 	damage = 18
 	armor_penetration_percentage = 35
 	armor_penetration_flat = 15
 
-/obj/item/projectile/bullet/mmbsp919
+/obj/projectile/bullet/mmbsp919
 	name = "9x19 bluespace bullet"
 	damage = 18
 	speed = 0.2

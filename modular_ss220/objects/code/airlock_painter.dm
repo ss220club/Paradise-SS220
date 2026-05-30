@@ -21,22 +21,22 @@
 		return ..()
 
 	if(!paint_setting)
-		to_chat(user, span_warning("Сперва вам нужно выбрать стиль покраски."))
+		to_chat(user, SPAN_WARNING("Сперва вам нужно выбрать стиль покраски."))
 		return
 
 	var/obj/machinery/door/airlock/A = target
 	if(!A.paintable)
-		to_chat(user, span_warning("Этот тип шлюза не может быть покрашен."))
+		to_chat(user, SPAN_WARNING("Этот тип шлюза не может быть покрашен."))
 		return
 
 	var/obj/machinery/door/airlock/airlock = multi_paint_jobs["[paint_setting]"]
 	if(isnull(airlock))
-		to_chat(user, span_warning("У выбранного стиля шлюзов нету двойной версии."))
+		to_chat(user, SPAN_WARNING("У выбранного стиля шлюзов нету двойной версии."))
 		return
 
 	var/obj/structure/door_assembly/assembly = initial(airlock.assemblytype)
 	if(A.assemblytype == assembly)
-		to_chat(user, span_notice("Этот шлюз уже покрашен в цветовую схему \"[paint_setting]\"!"))
+		to_chat(user, SPAN_NOTICE("Этот шлюз уже покрашен в цветовую схему \"[paint_setting]\"!"))
 		return
 
 	if(do_after_once(user, 2 SECONDS, FALSE, A))

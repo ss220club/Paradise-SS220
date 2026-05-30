@@ -2,19 +2,19 @@
 	name = "engineer trainee jumpsuit"
 	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
 	worn_icon = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
-	icon_state = "trainee_s"
+	icon_state = "trainee"
 	sprite_sheets = null
 
 /obj/item/clothing/under/rank/engineering/engineer/trainee/skirt
 	name = "engineer trainee jumpskirt"
-	icon_state = "traineef_s"
+	icon_state = "traineef"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/engineering/engineer/trainee/assistant
 	name = "engineer assistant jumpsuit"
-	icon_state = "eng_ass_s"
+	icon_state = "eng_ass"
 
 /obj/item/clothing/under/rank/engineering/engineer/trainee/assistant/skirt
 	name = "engineer assistant jumpskirt"
-	icon_state = "eng_ass_f_s"
+	icon_state = "eng_ass_f"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS

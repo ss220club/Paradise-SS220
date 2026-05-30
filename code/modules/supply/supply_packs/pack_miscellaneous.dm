@@ -24,6 +24,15 @@
 	containertype = /obj/structure/largecrate
 	containername = "high-capacity water tank crate"
 
+/datum/supply_packs/misc/paintball_gun
+	name = "Paintball Crate"
+	contains = list(/obj/item/gun/projectile/automatic/paintball_gun,
+		/obj/item/gun/projectile/automatic/paintball_gun,
+		/obj/item/ammo_box/magazine/paintball,
+		/obj/item/ammo_box/magazine/paintball)
+	cost = 300
+	containername = "paintball crate"
+
 /datum/supply_packs/misc/lasertag
 	name = "Laser Tag Crate"
 	contains = list(/obj/item/beach_ball/dodgeball,
@@ -539,73 +548,6 @@
 	cost = 999 // Price of cool. Also under 1000 so it's not grand theft if stolen, lmao
 	containername = "hoverboard crate"
 
-///////////// Station Goals
-
-/datum/supply_packs/misc/station_goal
-	name = "Empty Station Goal Crate"
-	cost = 10
-	special = TRUE
-	containername = "empty station goal crate"
-	containertype = /obj/structure/closet/crate/nanotrasen
-
-/datum/supply_packs/misc/station_goal/bsa
-	name = "Bluespace Artillery Parts"
-	cost = 1500
-	contains = list(/obj/item/circuitboard/machine/bsa/front,
-					/obj/item/circuitboard/machine/bsa/middle,
-					/obj/item/circuitboard/machine/bsa/back,
-					/obj/item/circuitboard/computer/bsa_control
-					)
-	containername = "bluespace artillery parts crate"
-
-
-/datum/supply_packs/misc/station_goal/bluespace_tap
-	name = "Bluespace Harvester Parts"
-	cost = 1000
-	contains = list(
-					/obj/item/circuitboard/machine/bluespace_tap,
-					/obj/item/paper/bluespace_tap
-					)
-	containername = "bluespace harvester parts crate"
-
-/datum/supply_packs/misc/station_goal/dna_vault
-	name = "DNA Vault Parts"
-	cost = 1000
-	contains = list(
-					/obj/item/circuitboard/machine/dna_vault
-					)
-	containername = "dna vault parts crate"
-
-/datum/supply_packs/misc/station_goal/dna_probes
-	name = "DNA Vault Samplers"
-	cost = 250
-	contains = list(/obj/item/dna_probe,
-					/obj/item/dna_probe,
-					/obj/item/dna_probe,
-					/obj/item/dna_probe,
-					/obj/item/dna_probe
-					)
-	containername = "dna samplers crate"
-
-/datum/supply_packs/misc/station_goal/shield_sat
-	name = "Shield Generator Satellites"
-	cost = 100
-	contains = list(
-					/obj/machinery/satellite/meteor_shield,
-					/obj/machinery/satellite/meteor_shield,
-					/obj/machinery/satellite/meteor_shield,
-					/obj/machinery/satellite/meteor_shield
-					)
-	containername = "shield sat crate"
-
-/datum/supply_packs/misc/station_goal/shield_sat_control
-	name = "Shield System Control Board"
-	cost = 750
-	contains = list(
-					/obj/item/circuitboard/computer/sat_control
-					)
-	containername = "shield control board crate"
-
 /datum/supply_packs/misc/toilet
 	name = "Lavatory Crate"
 	cost = 100
@@ -691,7 +633,7 @@
 	cost = 100
 	containername = "engineering coffee mugs crate"
 	containertype = /obj/structure/closet/crate/secure
-	access = ACCESS_CONSTRUCTION
+	access = ACCESS_ENGINEERING_GENERAL
 
 /datum/supply_packs/misc/mugs_med
 	name = "Medical Coffee Mugs Crate"
@@ -827,7 +769,7 @@
 	cost = 250
 	containertype = /obj/structure/closet/crate/secure
 	containername = "atmospherics flag crate"
-	access = ACCESS_CONSTRUCTION
+	access = ACCESS_ENGINEERING_GENERAL
 
 /datum/supply_packs/misc/flag_com
 	name = "Command Flag Crate"

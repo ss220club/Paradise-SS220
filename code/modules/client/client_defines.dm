@@ -118,6 +118,9 @@
 	/// Is the client watchlisted
 	var/watchlisted = FALSE
 
+	/// list of all credit object bound to this client
+	// var/list/credits = list() SS220 EDIT - Turn off upstream end of round credits
+
 	/// Client's pAI save
 	var/datum/pai_save/pai_save
 

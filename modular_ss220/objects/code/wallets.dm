@@ -36,4 +36,4 @@
 	И сверх модный. И сверх дорогой. И сшит по принципу WYCI."
 	icon = 'modular_ss220/objects/icons/wallets.dmi'
 	icon_state = "wallet_wyci"
-	photo_overlay = "photo_wyci_overlay"
+	photo_overlay = "photo_wyci"

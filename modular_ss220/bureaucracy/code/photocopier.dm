@@ -95,7 +95,7 @@
 
 /obj/machinery/photocopier/proc/print_form(datum/bureaucratic_form/form)
 	if(copying)
-		visible_message(span_notice("[src] работает, проявите терпение."))
+		visible_message(SPAN_NOTICE("[src] работает, проявите терпение."))
 		return FALSE
 
 	toner--

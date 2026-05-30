@@ -20,7 +20,7 @@
 	switch(preftoggle_toggle)
 		if(PREFTOGGLE_TOGGLE220)
 			our_prefs.toggles220 ^= preftoggle_bitflag
-			to_chat(user, "<span class='notice'>[(our_prefs.toggles220 & preftoggle_bitflag) ? enable_message : disable_message]</span>")
+			to_chat(user, SPAN_NOTICE("[(our_prefs.toggles220 & preftoggle_bitflag) ? enable_message : disable_message]"))
 	. = ..()
 
 /datum/preferences/proc/load_custom_preferences()
