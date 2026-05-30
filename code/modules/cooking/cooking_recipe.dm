@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(pcwj_cookbook_lookup)
 	var/product_multiplier = container.vars["product_multiplier"]
 	if(isnull(product_multiplier))
 		product_multiplier = 1
-	output_count *= product_multiplier
+	output_count *= container.product_multiplier // SS220 EDIT применяем множитель выхода для модульной посуды
 	//SS220 EDIT END
 	if(product_type) // Make a regular item
 		. = make_product_item(container, slurry, applied_steps, output_count)
