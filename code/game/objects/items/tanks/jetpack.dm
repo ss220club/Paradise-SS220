@@ -76,7 +76,7 @@
 	if(!on)
 	// SS220 EDIT START - джетпак теперь оповещает о том что его нельзя использовать в руке
 		if(ishuman(user) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
-			to_chat(user, "<span class='warning'>You need to wear the jetpack on your back.</span>")
+			to_chat(user, SPAN_WARNING("You need to wear the jetpack on your back."))
 			return
 	// SS220 EDIT END
 		turn_on(user)
