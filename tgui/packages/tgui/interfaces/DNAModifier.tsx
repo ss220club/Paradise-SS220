@@ -352,7 +352,7 @@ const DNAModifierMainRadiationEmitter = () => {
             onChange={(e, val) => act('radiationIntensity', { value: val })}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Длительность">
+        <LabeledList.Item label="Перезарядка">
           <Knob
             minValue={1}
             maxValue={20}
@@ -367,7 +367,7 @@ const DNAModifierMainRadiationEmitter = () => {
       </LabeledList>
       <Button
         icon="radiation"
-        content="Импульсное излучение"
+        content="Пульс-излучение"
         tooltip="Мутирует случайную ячейку уникальной внешности или нестандартной мутации."
         tooltipPosition="top-start"
         mt="0.5rem"
@@ -523,6 +523,8 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
                   icon={isInjectorReady ? 'syringe' : 'spinner'}
                   iconSpin={!isInjectorReady}
                   content="Полный геном"
+                  tooltip="Полностью выделяет генетический код внешности или набора мутаций в один инъектор."
+                  tooltipPosition="bottom-start"
                   mb="0"
                   onClick={() =>
                     act('bufferOption', {
@@ -536,6 +538,8 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
                   icon={isInjectorReady ? 'syringe' : 'spinner'}
                   iconSpin={!isInjectorReady}
                   content="Один блок"
+                  tooltip="Выборочно отделяет один выбранный блок с геномом для выдачи конкретной мутации или части внешности."
+                  tooltipPosition="bottom-start"
                   mb="0"
                   onClick={() =>
                     act('bufferOption', {
@@ -671,8 +675,10 @@ const DNAModifierMainRejuvenators = () => {
               <Icon name="slash" size={5} color="red" />
             </Icon.Stack>
           </Stack.Item>
-          <Stack.Item bold color="label" mb="2rem">
-            <h3>Стабилизаторы не загружены</h3>
+          <Stack.Item color="label" mb="2rem">
+  <Box bold>
+    Стабилизаторы не загружены
+  </Box>
           </Stack.Item>
         </Stack>
       )}
@@ -691,16 +697,16 @@ const DNAModifierIrradiating = (props: DNAModifierIrradiatingProps) => {
       <Icon name="spinner" size={5} spin />
       <br />
       <Box color="average">
-        <h1>
-          <Icon name="radiation" />
-          &nbsp;Облучаем испытуемого&nbsp;
-          <Icon name="radiation" />
-        </h1>
+        <Box fontSize="1.5rem" bold>
+  <Icon name="radiation" />
+  &nbsp;Облучаем испытуемого&nbsp;
+  <Icon name="radiation" />
+        </Box>
       </Box>
       <Box color="label">
-        <h3>
-          В течение {duration} сек.
-        </h3>
+        <Box bold>
+        В течение {duration} сек.
+        </Box>
       </Box>
     </Dimmer>
   );

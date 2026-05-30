@@ -458,7 +458,7 @@
 			to_chat(user, SPAN_WARNING("Вы попытались проглотить [the_item.ru_p_them()] грудную клетку, но это оказалось перебором для вашего рта!"))
 			revert_cast()
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] начинает заглатывать [limb.declent_ru(ACCUSATIVE)] [the_item] в свою широко раскрытую пасть!"))
+		user.visible_message(SPAN_DANGER("[user.declent_ru(NOMINATIVE)] начинает заглатывать [limb.declent_ru(ACCUSATIVE)] [the_item.declent_ru(GENITIVE)] в свою широко раскрытую пасть!"))
 		if(!do_mob(user, H, EAT_MOB_DELAY))
 			to_chat(user, SPAN_DANGER("Вас потревожили прежде чем вы смогли съесть [limb.declent_ru(ACCUSATIVE)] [the_item]!"))
 		else
@@ -904,11 +904,11 @@
 		//Head accessory.
 		if(head_organ.dna.species.bodyflags & HAS_HEAD_ACCESSORY)
 			var/list/valid_head_accessories = M.generate_valid_head_accessories()
-			var/new_head_accessory = tgui_input_list(user, "Выберите головной аксессуар", "Настройка персонажа", valid_head_accessories)
+			var/new_head_accessory = tgui_input_list(user, "Выберите атрибуты вашей головы", "Настройка персонажа", valid_head_accessories)
 			if(!isnull(new_head_accessory))
 				M.change_head_accessory(new_head_accessory)
 
-			var/new_head_accessory_colour = tgui_input_color(user, "Выберите цвет головного аксессуара.", "Настройка персонажа", head_organ.headacc_colour)
+			var/new_head_accessory_colour = tgui_input_color(user, "Выберите цвет атрибутов вашей головы.", "Настройка персонажа", head_organ.headacc_colour)
 			if(!isnull(new_head_accessory_colour))
 				M.change_head_accessory_color(new_head_accessory_colour)
 
@@ -925,38 +925,38 @@
 		//Head markings.
 		if(M.dna.species.bodyflags & HAS_HEAD_MARKINGS)
 			var/list/valid_head_markings = M.generate_valid_markings("head")
-			var/new_marking = tgui_input_list(user, "Выберите стиль маркировки головы", "Настройка персонажа", valid_head_markings)
+			var/new_marking = tgui_input_list(user, "Выберите стиль рисунка на голове", "Настройка персонажа", valid_head_markings)
 			if(!isnull(new_marking))
 				M.change_markings(new_marking, "head")
 
-			var/new_marking_colour = tgui_input_color(user, "Выберите цвет маркировки головы", "Настройка персонажа", M.m_colours["head"])
+			var/new_marking_colour = tgui_input_color(user, "Выберите цвет рисунка на голове", "Настройка персонажа", M.m_colours["head"])
 			if(!isnull(new_marking_colour))
 				M.change_marking_color(new_marking_colour, "head")
 
 	//Body markings.
 	if(M.dna.species.bodyflags & HAS_BODY_MARKINGS)
 		var/list/valid_body_markings = M.generate_valid_markings("body")
-		var/new_marking = tgui_input_list(user, "Выберите стиль маркировки тела", "Настройка персонажа", valid_body_markings)
+		var/new_marking = tgui_input_list(user, "Выберите стиль рисунка на теле", "Настройка персонажа", valid_body_markings)
 		if(!isnull(new_marking))
 			M.change_markings(new_marking, "body")
 
-		var/new_marking_colour = tgui_input_color(user, "Выберите цвет маркировки тела", "Настройка персонажа", M.m_colours["body"])
+		var/new_marking_colour = tgui_input_color(user, "Выберите цвет рисунка на тела", "Настройка персонажа", M.m_colours["body"])
 		if(!isnull(new_marking_colour))
 			M.change_marking_color(new_marking_colour, "body")
 	//Tail markings.
 	if(M.dna.species.bodyflags & HAS_TAIL_MARKINGS)
 		var/list/valid_tail_markings = M.generate_valid_markings("tail")
-		var/new_marking = tgui_input_list("Выберите стиль маркировки хвоста", "Настройка персонажа", valid_tail_markings)
+		var/new_marking = tgui_input_list("Выберите стиль подкраски хвоста", "Настройка персонажа", valid_tail_markings)
 		if(!isnull(new_marking))
 			M.change_markings(new_marking, "tail")
 
-		var/new_marking_colour = tgui_input_color(user, "Выберите цвет маркировки хвоста", "Настройка персонажа", M.m_colours["tail"])
+		var/new_marking_colour = tgui_input_color(user, "Выберите цвет подкраски хвоста", "Настройка персонажа", M.m_colours["tail"])
 		if(!isnull(new_marking_colour))
 			M.change_marking_color(new_marking_colour, "tail")
 
 	//Skin tone.
 	if(M.dna.species.bodyflags & HAS_SKIN_TONE)
-		var/new_tone = input("Выберите цвет кожи: 1-220 (1 = Альбинос , 35 = Светлый, 150 = Чёрный, 220 = Крайне чёрный)", "Настройка персонажа", M.s_tone) as null|text
+		var/new_tone = input("Выберите цвет кожи: 1-220 (1 = Альбинос , 35 = Светлый, 150 = Тёмный, 220 = Чёрный)", "Настройка персонажа", M.s_tone) as null|text
 		if(!new_tone)
 			new_tone = 35
 		else
