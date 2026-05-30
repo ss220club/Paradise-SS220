@@ -190,13 +190,6 @@
 	name_suffix = " medipen"
 	var/static/list/safe_chem_list = /datum/chemical_production_mode/patches::safe_chem_list
 
-/datum/chemical_production_mode/autoinjectors/configure_item(data, datum/reagents/R, obj/item/reagent_containers/hypospray/autoinjector/custom/P)
-	. = ..()
-	// But we don't have a color in our data :(
-	P.color = data["color"]
-	P.apply_wrap()
-
-
 /datum/chemical_production_mode/autoinjectors/proc/safety_check(datum/reagents/R)
 	for(var/datum/reagent/A in R.reagent_list)
 		if(!safe_chem_list.Find(A.id))
@@ -215,6 +208,22 @@
 
 	if(chemicals_is_safe)
 		P.instant_application = TRUE
+
+	switch(P.icon_state)
+		if("medipen_red")
+			P.tag_color = COLOR_RED
+		if("medipen_orange")
+			P.tag_color = COLOR_ORANGE
+		if("medipen_blue")
+			P.tag_color = COLOR_BLUE
+		if("medipen_green")
+			P.tag_color = COLOR_GREEN
+		if("medipen_purple")
+			P.tag_color = COLOR_PURPLE
+		if("medipen_black")
+			P.tag_color = COLOR_BLACK
+
+	P.apply_wrap()
 
 #undef SAFE_MIN_TEMPERATURE
 #undef SAFE_MAX_TEMPERATURE
