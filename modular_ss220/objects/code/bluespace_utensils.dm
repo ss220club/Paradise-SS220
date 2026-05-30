@@ -2,8 +2,8 @@
 
 /obj/item/reagent_containers/cooking
 
-    // mutliplies the amount of product produced by a recipe when using this container
-    var/product_multiplier = 1
+	// mutliplies the amount of product produced by a recipe when using this container
+	var/product_multiplier = 1
 
 /obj/item/reagent_containers/cooking/board/advanced
 	icon = BLUESPACE_UTENSIL_ICON
