@@ -30,6 +30,7 @@
 	throw_range = 3
 	tool_behaviour = TOOL_CROWBAR
 	toolspeed = 1
+
 	attack_verb = list(
 		"ломает",
 		"крушит",
@@ -38,8 +39,8 @@
 
 	var/force_unwielded = 10
 	var/force_wielded = 25
-	/// Cooldown between breaching attacks
-	var/next_attack_time = 0
+	/// Prevents multiple wall breach actions running simultaneously
+	var/is_breaching = FALSE
 
 
 /obj/item/tactical_sledgehammer/Initialize(mapload)
@@ -61,16 +62,34 @@
 	if(!proximity)
 		return
 
-	if(world.time < next_attack_time)
-		return
-
-	next_attack_time = world.time + 2 SECONDS
-
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
 		return
 
+	// WALLS
 	if(istype(target, /turf/simulated/wall))
 		var/turf/simulated/wall/wall = target
+
+		if(is_breaching)
+			return
+
+		is_breaching = TRUE
+
+		user.visible_message(
+			SPAN_WARNING("[user] заносит [src] для удара по [wall]!"),
+			SPAN_WARNING("Вы готовитесь нанести мощный удар по [wall].")
+		)
+
+		if(!do_after(
+			user,
+			2 SECONDS,
+			needhand = TRUE,
+			target = wall,
+			progress = TRUE
+		))
+			is_breaching = FALSE
+			return
+
+		is_breaching = FALSE
 
 		user.do_attack_animation(wall)
 
@@ -83,6 +102,7 @@
 
 		wall.take_damage(20, BRUTE)
 
+	// WINDOWS
 	else if(istype(target, /obj/structure/window))
 		var/obj/structure/window/window = target
 
@@ -97,6 +117,7 @@
 
 		window.take_damage(50, BRUTE)
 
+	// AIRLOCKS
 	else if(istype(target, /obj/machinery/door/airlock))
 		var/obj/machinery/door/airlock/door = target
 
