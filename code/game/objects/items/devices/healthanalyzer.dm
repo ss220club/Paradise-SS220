@@ -12,7 +12,7 @@
 	var/has_real_or_fake_reagents = FALSE
 	if(length(H.reagents.reagent_list))
 		has_real_or_fake_reagents = TRUE
-		msgs += SPAN_BOLDNOTICE("В субъекте обнаружены следующие реагенты:")
+		msgs += SPAN_BOLDNOTICE("В крови субъекта обнаружены следующие химикаты:")
 		for(var/datum/reagent/R in H.reagents.reagent_list)
 			var/volume = R.volume
 			var/overdosing = R.overdosed
@@ -26,18 +26,18 @@
 				if(!overdosing)
 					overdosing = prob(10)
 
-			msgs += "<span class='notice'>[volume] ю. [R.name][overdosing ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
+			msgs += "<span class='notice'>[volume]u [R.name][overdosing ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
 
 	if(hallucinating && prob(10))
 		has_real_or_fake_reagents = TRUE
 		if(!length(H.reagents.reagent_list))
-			msgs += SPAN_BOLDNOTICE("В субъекте обнаружены следующие реагенты:")
+			msgs += SPAN_BOLDNOTICE("В крови субъекта обнаружены следующие химикаты:")
 			for(var/i in 1 to rand(1, 2))
 				var/reagent_name = pick(GLOB.chemical_reagents_list)
-				msgs += "<span class='notice'>[rand(5, 100)] ю. [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
+				msgs += "<span class='notice'>[rand(5, 100)]u [GLOB.chemical_reagents_list[reagent_name]][prob(30) ? "</span> - [SPAN_BOLDANNOUNCEIC("ПЕРЕДОЗИРОВКА")]" : ".</span>"]"
 
 	if(!has_real_or_fake_reagents)
-		msgs += SPAN_NOTICE("Субъект не содержит реагентов.")
+		msgs += SPAN_NOTICE("В крови субъекта не обнаружены химикаты.")
 
 	if(length(H.reagents.addiction_list))
 		msgs += SPAN_DANGER("Субъект зависим от следующих реагентов:")
@@ -46,7 +46,7 @@
 
 	if(hallucinating && prob(10))
 		if(!length(H.reagents.addiction_list))
-			msgs += SPAN_DANGER("Субъект зависим от следующих реагентов:")
+			msgs += SPAN_DANGER("Субъект зависим от химикатов:")
 		// try to add two random chems
 		for(var/i in 1 to rand(1, 2))
 			var/reagent_name = pick(GLOB.chemical_reagents_list)
