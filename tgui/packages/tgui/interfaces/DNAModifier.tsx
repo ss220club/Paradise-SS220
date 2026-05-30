@@ -512,7 +512,9 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
           </LabeledList.Item>
           {!!buffer.data && (
             <>
-              <LabeledList.Item label="Субъект">{buffer.owner || <Box color="average">Неизвестно</Box>}</LabeledList.Item>
+              <LabeledList.Item label="Субъект">
+                {buffer.owner || <Box color="average">Неизвестно</Box>}
+              </LabeledList.Item>
               <LabeledList.Item label="Тип данных">
                 {buffer.type === 'ui' ? 'Уникальная внешность' : 'Нестандартные мутации'}
                 {!!buffer.ue && ' и Копирование личности'}
@@ -627,7 +629,9 @@ const DNAModifierMainRejuvenators = () => {
     <Section
       fill
       title="Сосуды для стабилизации"
-      buttons={<Button disabled={!isBeakerLoaded} icon="eject" content="Извлечь сосуд" onClick={() => act('ejectBeaker')} />}
+      buttons={
+        <Button disabled={!isBeakerLoaded} icon="eject" content="Извлечь сосуд" onClick={() => act('ejectBeaker')} />
+      }
     >
       {isBeakerLoaded ? (
         <LabeledList>
@@ -676,9 +680,7 @@ const DNAModifierMainRejuvenators = () => {
             </Icon.Stack>
           </Stack.Item>
           <Stack.Item color="label" mb="2rem">
-  <Box bold>
-    Стабилизаторы не загружены
-  </Box>
+            <Box bold>Стабилизаторы не загружены</Box>
           </Stack.Item>
         </Stack>
       )}
@@ -698,15 +700,13 @@ const DNAModifierIrradiating = (props: DNAModifierIrradiatingProps) => {
       <br />
       <Box color="average">
         <Box fontSize="1.5rem" bold>
-  <Icon name="radiation" />
-  &nbsp;Облучаем испытуемого&nbsp;
-  <Icon name="radiation" />
+          <Icon name="radiation" />
+          &nbsp;Облучаем испытуемого&nbsp;
+          <Icon name="radiation" />
         </Box>
       </Box>
       <Box color="label">
-        <Box bold>
-        В течение {duration} сек.
-        </Box>
+        <Box bold>В течение {duration} сек.</Box>
       </Box>
     </Dimmer>
   );
