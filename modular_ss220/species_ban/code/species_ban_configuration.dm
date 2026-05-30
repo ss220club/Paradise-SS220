@@ -2,9 +2,12 @@
 	/// Holder for the gateway configuration datum
 	var/datum/configuration_section/species_ban_configuration/species_ban
 
+/datum/server_configuration/load_configuration()
+	species_ban = new()
+	. = ..()
+
 /datum/server_configuration/load_all_sections()
 	. = ..()
-	species_ban = new()
 	safe_load(species_ban, "species_ban_configuration")
 
 /datum/configuration_section/species_ban_configuration
