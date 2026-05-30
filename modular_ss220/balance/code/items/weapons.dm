@@ -37,6 +37,13 @@
 /obj/item/gun/energy/laser/awaymission_aeg/rnd
 	w_class = WEIGHT_CLASS_NORMAL
 
+//ion carbine delay change
+/obj/item/gun/energy/ionrifle/carbine
+	ammo_type = list(/obj/item/ammo_casing/energy/ion/carbine)
+
+/obj/item/ammo_casing/energy/ion/carbine
+	delay = 0.9 SECONDS
+
 //lasergun change
 /obj/item/ammo_casing/energy/lasergun_hs
 	fire_sound = 'modular_ss220/balance/code/items/sound/laser.ogg'
