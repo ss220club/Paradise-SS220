@@ -679,3 +679,20 @@
 	name = "HEV suit storage unit"
 	helmet_type = /obj/item/clothing/head/helmet/hev_helmet
 	suit_type = /obj/item/clothing/suit/space/hev
+
+// order crate
+/obj/structure/closet/crate/engineering/collector
+	name = "Collector Crate"
+	contents = list(/obj/machinery/power/rad_collector,
+					/obj/machinery/power/rad_collector,
+					/obj/machinery/power/rad_collector)
+
+/obj/structure/closet/crate/engineering/particle_accelerator
+	name = "Particle Accelerator Crate"
+	contents = list(/obj/structure/particle_accelerator/fuel_chamber,
+					/obj/machinery/particle_accelerator/control_box,
+					/obj/structure/particle_accelerator/particle_emitter/center,
+					/obj/structure/particle_accelerator/particle_emitter/left,
+					/obj/structure/particle_accelerator/particle_emitter/right,
+					/obj/structure/particle_accelerator/power_box,
+					/obj/structure/particle_accelerator/end_cap)
