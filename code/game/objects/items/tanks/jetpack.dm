@@ -69,13 +69,33 @@
 		configure_jetpack(!stabilize)
 		to_chat(user, SPAN_NOTICE("You turn [src]'s stabilization [stabilize ? "on" : "off"]."))
 
+	//SS220 EDIT START - Прок для джетпака чтобы не копировать 220 один и тот же код и просто более читабельный
+/obj/item/tank/jetpack/proc/is_worn_on_back(mob/user)
+	if(ishuman(user) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
+		return TRUE
+
+/obj/item/tank/jetpack/equipped(mob/user, slot, initial) //SS220 EDIT - Необходимо для того чтобы регистрировало что сняли
+	. = ..()
+	if(slot & ITEM_SLOT_BACK)
+		RegisterSignal(user, COMSIG_MOB_UNEQUIPPED_ITEM, PROC_REF(on_unequipped))
+
+/obj/item/tank/jetpack/proc/on_unequipped(atom/movable/source, obj/item/item) //SS220 EDIT - Отдельный прок на показ сообщения что джет не работает если снять во время работы
+	SIGNAL_HANDLER
+
+	if(item != src)
+		return
+	if(on)
+		turn_off(source)
+		to_chat(source, SPAN_WARNING("Реактивный ранец отключается, потому что он больше не находится на спине."))
+	//SS220 EDIT END
+
 /obj/item/tank/jetpack/proc/cycle(mob/user)
 	if(user.incapacitated())
 		return
 
 	if(!on)
 	// SS220 EDIT START - джетпак теперь оповещает о том что его нельзя использовать в руке
-		if(ishuman(user) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
+		if(is_worn_on_back(user))
 			to_chat(user, SPAN_WARNING("Реактивный ранец нужно носить на спине."))
 			return
 	// SS220 EDIT END
@@ -100,6 +120,9 @@
 
 /obj/item/tank/jetpack/dropped(mob/user, silent)
 	. = ..()
+	//SS220 EDIT START - Нужно чтобы сигналы не накапливались до бесконечности
+	UnregisterSignal(user, COMSIG_MOB_UNEQUIPPED_ITEM)
+	//SS220 ETID END
 	if(on)
 		turn_off(user)
 
@@ -108,7 +131,7 @@
 		return FALSE
 	var/mob/user = loc
 	//SS220 EDIT START - Джетпак работает только в слоте рюкзака.
-	if(ishuman(loc) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
+	if(is_worn_on_back(user))
 		return FALSE
 	//SS220 EDIT END
 	if((num < 0.005 || air_contents.total_moles() < num))
