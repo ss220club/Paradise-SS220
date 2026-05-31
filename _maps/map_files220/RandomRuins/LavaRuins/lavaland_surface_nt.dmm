@@ -1,4 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/turf_decal/tiles/department/cargo/corner{
+	dir = 8
+	},
+/obj/structure/sign/cargo/smith{
+	pixel_x = -32
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/mine/outpost/hallway/west)
 "ac" = (
 /obj/machinery/door/airlock/multi_tile/supply/glass{
 	dir = 4
@@ -1432,6 +1441,7 @@
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 1
 	},
+/obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "jq" = (
@@ -1865,6 +1875,15 @@
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/catwalk,
 /area/mine/outpost/maintenance/south)
+"mj" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id_tag = "mining_forge_inner"
+	},
+/obj/structure/sign/cargo/smith,
+/turf/simulated/floor/plating,
+/area/mine/outpost/smith_workshop)
 "mk" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -1904,9 +1923,11 @@
 /area/lavaland/surface/outdoors/outpost/no_boulder)
 "mt" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 4
+	},
+/obj/structure/sign/engineering{
+	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
@@ -1934,10 +1955,10 @@
 /area/shuttle/mining)
 "my" = (
 /obj/effect/mapping_helpers/no_lava,
-/obj/structure/sign/securearea{
+/obj/structure/flora/ash/leaf_shroom,
+/obj/structure/sign/engineering/comms{
 	pixel_y = 32
 	},
-/obj/structure/flora/ash/leaf_shroom,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/targetable)
 "mA" = (
@@ -2107,6 +2128,7 @@
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 4
 	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "nD" = (
@@ -2138,6 +2160,12 @@
 /obj/structure/lattice/catwalk/mining,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/targetable)
+"nW" = (
+/obj/machinery/door/firedoor,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/structure/sign/cargo/xenos,
+/turf/simulated/floor/plating,
+/area/mine/outpost/storage)
 "nX" = (
 /obj/effect/spawner/random/dirt/maybe,
 /obj/effect/turf_decal/tiles/dark/side{
@@ -2511,6 +2539,9 @@
 	},
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
+/obj/structure/sign/cargo/xenos{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/airlock)
 "ql" = (
@@ -3063,6 +3094,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
+"tW" = (
+/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/structure/sign/cargo/mining,
+/turf/simulated/floor/plating,
+/area/mine/outpost/hallway/west)
 "tY" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/effect/turf_decal/tiles/department/cargo/side{
@@ -3121,6 +3157,9 @@
 /area/mine/outpost/hallway/west)
 "uC" = (
 /obj/effect/turf_decal/tiles/department/cargo/corner,
+/obj/structure/sign/medical{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway)
 "uG" = (
@@ -3915,6 +3954,13 @@
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/mining)
+"zN" = (
+/obj/effect/turf_decal/tiles/department/cargo/corner,
+/obj/structure/sign/service/custodian{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/mine/outpost/hallway/west)
 "zO" = (
 /obj/machinery/power/apc/directional/south,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4236,6 +4282,10 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/storage)
+"Cg" = (
+/obj/machinery/firealarm/directional/east,
+/turf/simulated/floor/catwalk,
+/area/mine/outpost/smith_workshop)
 "Ch" = (
 /obj/structure/sign/lifestar{
 	pixel_y = -32
@@ -4611,8 +4661,10 @@
 /turf/simulated/wall/r_wall,
 /area/mine/laborcamp)
 "EI" = (
-/obj/machinery/alarm/directional/south,
 /obj/effect/turf_decal/tiles/department/science/corner,
+/obj/structure/sign/science/robotics{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway)
 "EM" = (
@@ -4648,6 +4700,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tiles/department/cargo/corner,
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway)
 "ER" = (
@@ -5258,6 +5311,14 @@
 /obj/effect/baseturf_helper/lava_land,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
+"Jj" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id_tag = "mining_forge_inner"
+	},
+/obj/structure/sign/cargo/materials,
+/turf/simulated/floor/plating,
+/area/mine/outpost/smith_workshop)
 "Jl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/west,
@@ -5320,6 +5381,11 @@
 	},
 /turf/simulated/floor/lava/mapping_lava,
 /area/lavaland/surface/outdoors/outpost/no_boulder)
+"JD" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/sign/service/kitchen,
+/turf/simulated/floor/plating,
+/area/mine/outpost/cafeteria)
 "JF" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -5522,7 +5588,6 @@
 	network = list("Mining Outpost");
 	dir = 8
 	},
-/obj/machinery/firealarm/directional/east,
 /turf/simulated/floor/catwalk,
 /area/mine/outpost/smith_workshop)
 "KT" = (
@@ -6736,7 +6801,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "SD" = (
-/obj/machinery/firealarm/directional/north,
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 4
 	},
@@ -7866,6 +7930,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/structure/sign/command/head,
 /turf/simulated/floor/plating,
 /area/mine/outpost/quartermaster)
 "Zz" = (
@@ -12937,7 +13002,7 @@ xG
 dq
 ms
 xh
-mZ
+tW
 vq
 mZ
 Fb
@@ -14398,7 +14463,7 @@ em
 nB
 Sn
 Lp
-hl
+mj
 xp
 Rk
 Wb
@@ -14891,7 +14956,7 @@ hE
 xX
 yN
 KS
-bx
+Cg
 it
 zJ
 LO
@@ -15047,7 +15112,7 @@ IQ
 Sn
 Sk
 Vf
-gO
+Jj
 YT
 gO
 zJ
@@ -15214,7 +15279,7 @@ Sg
 HS
 NV
 qu
-Sk
+aa
 XK
 lk
 Us
@@ -15533,7 +15598,7 @@ EZ
 FU
 eT
 eT
-eT
+zN
 Yq
 wH
 eT
@@ -16662,7 +16727,7 @@ rU
 qU
 Ld
 hQ
-nY
+JD
 wj
 qc
 PM
@@ -18923,7 +18988,7 @@ wY
 OQ
 OQ
 ls
-pA
+nW
 ut
 Qs
 MS
