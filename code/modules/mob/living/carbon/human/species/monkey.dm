@@ -1,6 +1,6 @@
 /datum/species/monkey
-	name = "Обезьяна"
-	name_plural = "Обезьяны"
+	name = "Monkey"
+	name_plural = "Monkeys"
 	blurb = "У-у-у!"
 
 	icobase = 'icons/mob/human_races/monkeys/r_monkey.dmi'
@@ -69,8 +69,8 @@
 		singlemutcheck(H, GLOB.monkeyblock, MUTCHK_FORCED)
 
 /datum/species/monkey/tajaran
-	name = "Фарва"
-	name_plural = "Фарвы"
+	name = "Farwa"
+	name_plural = "Farwas"
 
 	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 
@@ -91,8 +91,8 @@
 
 
 /datum/species/monkey/vulpkanin
-	name = "Вольпин"
-	name_plural = "Вольпины"
+	name = "Wolpin"
+	name_plural = "Wolpins"
 
 	icobase = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
 
@@ -113,8 +113,8 @@
 
 
 /datum/species/monkey/skrell
-	name = "Неара"
-	name_plural = "Неары"
+	name = "Neara"
+	name_plural = "Nearas"
 
 	icobase = 'icons/mob/human_races/monkeys/r_neara.dmi'
 
@@ -137,8 +137,8 @@
 		)
 
 /datum/species/monkey/unathi
-	name = "Сток"
-	name_plural = "Стоки"
+	name = "Stok"
+	name_plural = "Stoks"
 
 	icobase = 'icons/mob/human_races/monkeys/r_stok.dmi'
 
@@ -160,8 +160,8 @@
 		)
 
 /datum/species/monkey/nian_worme
-	name = "Нимфа ниан"
-	name_plural = "Нимфы ниан"
+	name = "Nian worme"
+	name_plural = "Nian wormes"
 	icobase = 'icons/mob/human_races/monkeys/r_worme.dmi'
 	tail = ""
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_BUG

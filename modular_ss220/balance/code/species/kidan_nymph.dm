@@ -1,6 +1,6 @@
 /datum/species/monkey/kidan_nymph
-	name = "Нимфа кидана"
-	name_plural = "Нимфы кидан"
+	name = "kidan nymph"
+	name_plural = "kidan nymphs"
 	icobase = 'modular_ss220/objects/kidan_nymph.dmi'
 	tail = ""
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_BUG
@@ -31,11 +31,11 @@
 	allowed_consumed_mobs = list(/mob/living/basic/diona_nymph)
 
 /obj/item/food/monkeycube/kidan_nymphcube
-	name = "Кубик нимфы кидан"
+	name = "kidan nymph cube"
 	monkey_type = /datum/species/monkey/kidan_nymph
 
 /datum/design/kidan_nymphcube
-	name = "Кубик нимфы кидан"
+	name = "kidan nymph cube"
 	id = "kncube"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 250)
@@ -43,7 +43,7 @@
 	category = list("initial", "Food")
 
 /obj/item/storage/box/monkeycubes/kidan_nymph_cubes
-	name = "Коробка с кубами нимф кидан"
+	name = "kidan nymph cube box"
 	desc = "Компактно-органические кубы прямиком из Транс-Солнечной Федерации. Добавь воды и получи низшую форму Кидана!"
 	icon_state = "kidan_nymph_box"
 	monkey_cube_type = /obj/item/food/monkeycube/kidan_nymphcube

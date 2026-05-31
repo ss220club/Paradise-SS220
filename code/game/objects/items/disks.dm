@@ -8,7 +8,7 @@
 	materials = list(MAT_METAL = 300, MAT_GLASS = 100)
 
 /obj/item/disk/data
-	name = "Диск с данными ДНК"
+	name = "Cloning Data Disk"
 	var/datum/dna2_record/buf = null
 	var/read_only = FALSE //Well,it's still a floppy disk
 
@@ -38,7 +38,7 @@
 	buf.dna.UpdateUI()
 
 /obj/item/disk/data/monkey
-	name = "Диск с данными - 'Мистер Магглс'"
+	name = "data disk - 'Mr. Muggles'"
 	read_only = 1
 
 /obj/item/disk/data/monkey/Initialize(mapload)
@@ -67,7 +67,7 @@
 	. += "Защита от перезаписи данных - [read_only ? "Включена" : "Отключена"]."
 
 /obj/item/storage/box/disks
-	name = "Коробка с дискетами"
+	name = "Diskette Box"
 	icon_state = "disk_box"
 
 /obj/item/storage/box/disks/populate_contents()

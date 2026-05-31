@@ -138,7 +138,7 @@
 	origin_tech = "programming=2;biotech=2"
 
 /obj/item/circuitboard/scan_consolenew
-	board_name = "Консоль ДНК-Модификатора"
+	board_name = "DNA Machine"
 	icon_state = "medical"
 	build_path = /obj/machinery/computer/scan_consolenew
 	origin_tech = "programming=2;biotech=2"

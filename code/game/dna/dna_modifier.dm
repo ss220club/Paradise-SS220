@@ -169,7 +169,7 @@
 	if(!isturf(user.loc) || !isturf(O.loc)) // are you in a container/closet/pod/etc?
 		return
 	if(occupant)
-		to_chat(user, SPAN_BOLDNOTICE("[src] уже занят!"))
+		to_chat(user, SPAN_BOLDNOTICE("ДНК-Модификатор уже занят!"))
 		return TRUE
 	var/mob/living/L = O
 	if(!istype(L) || L.buckled)

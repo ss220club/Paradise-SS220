@@ -772,7 +772,7 @@
 /* Monkey Boxes */
 //////////////////
 /obj/item/storage/box/monkeycubes
-	name = "Коробка с кубами обезьян"
+	name = "monkey cube box"
 	desc = "Компактно-органические кубы обезьян. Добавь воды и получи низшую форму Человека!"
 	icon_state = "monkey_box"
 	can_hold = list(/obj/item/food/monkeycube)
@@ -796,7 +796,7 @@
 	monkey_cube_type = /obj/item/food/monkeycube/syndicate
 
 /obj/item/storage/box/monkeycubes/farwacubes
-	name = "Коробка с кубами фарвы"
+	name = "farwa cube box"
 	desc = "Компактно-органические кубы фарв. Добавь воды и получи низшую форму Таярана!"
 	icon_state = "farwa_box"
 	monkey_cube_type = /obj/item/food/monkeycube/farwacube
@@ -805,7 +805,7 @@
 	return
 
 /obj/item/storage/box/monkeycubes/stokcubes
-	name = "Коробка с кубами стока"
+	name = "stok cube box"
 	desc = "Компактно-органические кубы стоков. Добавь воды и получи низшую форму Унати!"
 	icon_state = "stok_box"
 	monkey_cube_type = /obj/item/food/monkeycube/stokcube
@@ -814,7 +814,7 @@
 	return
 
 /obj/item/storage/box/monkeycubes/neaeracubes
-	name = "Коробка с кубами неар"
+	name = "neara cube box"
 	desc = "Компактно-органические кубы неар. Добавь воды и получи низшую форму Скрелла!"
 	icon_state = "neaera_box"
 	monkey_cube_type = /obj/item/food/monkeycube/neaeracube
@@ -823,7 +823,7 @@
 	return
 
 /obj/item/storage/box/monkeycubes/wolpincubes
-	name = "Коробка с кубами вольпинов"
+	name = "wolpin cube box"
 	desc = "Компактно-органические кубы вольпинов. Добавь воды и получи низшую форму Вульпканина!"
 	icon_state = "wolpin_box"
 	monkey_cube_type = /obj/item/food/monkeycube/wolpincube
@@ -832,7 +832,7 @@
 	return
 
 /obj/item/storage/box/monkeycubes/nian_worme_cubes
-	name = "Коробка с кубами нимф Ниан"
+	name = "nian worme cube box"
 	desc = "Компактно-органические кубы от Торговой Гильдии Ниан. Добавь воды и получи низшую форму Ниан!"
 	icon_state = "nian_worme_box"
 	monkey_cube_type = /obj/item/food/monkeycube/nian_wormecube
