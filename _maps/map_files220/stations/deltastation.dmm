@@ -70581,6 +70581,20 @@
 	},
 /turf/simulated/floor/carpet,
 /area/station/service/bar/atrium)
+"lJq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 4
+	},
+/obj/structure/sign/science/robotics{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plasteel/white,
+/area/station/science/research)
 "lJu" = (
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/soda{
@@ -72720,18 +72734,14 @@
 /turf/simulated/wall/r_wall,
 /area/station/security/range)
 "muY" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "HoS"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/sign/command/head{
+	pixel_x = 32
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/sign/command/head,
-/turf/simulated/floor/plating,
-/area/station/command/office/hos)
+/turf/simulated/floor/plasteel/white,
+/area/station/medical/medbay)
 "muZ" = (
 /obj/machinery/camera{
 	c_tag = "Central Ring Hallway West";
@@ -84102,11 +84112,6 @@
 /obj/effect/turf_decal/tiles/neutral,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
-"pUX" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/sign/cargo/dock,
-/turf/simulated/floor/plating,
-/area/station/supply/storage)
 "pVw" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 8;
@@ -89612,6 +89617,11 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/public/pool)
+"rJb" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/sign/cargo/dock,
+/turf/simulated/floor/plating,
+/area/station/supply/storage)
 "rJd" = (
 /obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
@@ -104382,7 +104392,6 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/structure/sign/command/head,
 /turf/simulated/floor/plating,
 /area/station/command/office/cmo)
 "wzA" = (
@@ -106316,12 +106325,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/starboard2)
 "xbe" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "Cloning Room"
+/obj/structure/sign/command/head{
+	pixel_x = 32
 	},
-/obj/structure/sign/medical/cloning,
-/turf/simulated/floor/plating,
-/area/station/medical/cloning)
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/main)
 "xbC" = (
 /obj/structure/closet/wardrobe/virology_white,
 /obj/effect/turf_decal/tiles/department/virology/corner{
@@ -107435,12 +107443,14 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "xtY" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled{
-	id = "robotics"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 10
 	},
-/obj/structure/sign/science/robotics,
-/turf/simulated/floor/plating,
-/area/station/science/robotics)
+/obj/structure/sign/medical/cloning{
+	pixel_y = -32
+	},
+/turf/simulated/floor/plasteel/white,
+/area/station/medical/sleeper)
 "xtZ" = (
 /obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
@@ -144016,7 +144026,7 @@ rod
 dIi
 dsu
 dgv
-dgv
+lJq
 cKA
 hnH
 dhE
@@ -144273,7 +144283,7 @@ dqp
 dqn
 dqp
 nBZ
-xtY
+nBZ
 dku
 dqp
 dqp
@@ -149917,8 +149927,8 @@ qdm
 jSX
 dcm
 gzd
-rtF
-xbe
+xtY
+dgK
 bvO
 dBB
 aSR
@@ -150352,7 +150362,7 @@ bfL
 hWP
 aKE
 ayD
-pUX
+rJb
 aFR
 bbe
 bbe
@@ -155058,7 +155068,7 @@ tTe
 stu
 eUH
 vYR
-dmr
+muY
 lKM
 dmr
 dmr
@@ -165287,7 +165297,7 @@ nSd
 duD
 cHF
 mkI
-nKj
+xbe
 xYE
 nKj
 ido
@@ -165544,7 +165554,7 @@ nSd
 pQa
 wAU
 wAU
-muY
+wAU
 kFG
 wHy
 nSd
