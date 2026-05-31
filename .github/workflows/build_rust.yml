@@ -13,7 +13,10 @@ jobs:
     if: |
       github.event.issue.pull_request &&
       (github.event.comment.body == '!build_rust') &&
-      (github.event.comment.author_association == 'OWNER')
+      (
+        (github.event.comment.author_association == 'OWNER') ||
+        (github.event.comment.user.login == 'Drsmail')
+      )
 
     runs-on: ubuntu-24.04
     steps:
