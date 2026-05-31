@@ -684,7 +684,7 @@
 /obj/structure/closet/crate/engineering/collector
 	name = "Collector Crate"
 
-/obj/structure/closet/crate/engineering/collectorpopulate_contents()
+/obj/structure/closet/crate/engineering/collector/populate_contents()
 	new /obj/machinery/power/rad_collector(src)
 	new /obj/machinery/power/rad_collector(src)
 	new /obj/machinery/power/rad_collector(src)
@@ -692,7 +692,7 @@
 /obj/structure/closet/crate/engineering/particle_accelerator
 	name = "Particle Accelerator Crate"
 
-/obj/structure/closet/crate/engineering/particle_acceleratorpopulate_contents()
+/obj/structure/closet/crate/engineering/particle_accelerator/populate_contents()
 	new /obj/structure/particle_accelerator/fuel_chamber(src)
 	new /obj/machinery/particle_accelerator/control_box(src)
 	new /obj/structure/particle_accelerator/particle_emitter/center(src)
