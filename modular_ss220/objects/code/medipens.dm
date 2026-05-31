@@ -151,12 +151,6 @@
 	. = ..()
 	new /obj/item/storage/pill_bottle/medipen_case/radiation(src)
 
-/obj/item/storage/belt/medical/Initialize(mapload)
-	. = ..()
-	can_hold |= list(
-		/obj/item/reagent_containers/hypospray/autoinjector,
-	)
-
 /obj/machinery/smartfridge/medbay/Initialize(mapload)
 	. = ..()
 	accepted_items_typecache |= typecacheof(list(
