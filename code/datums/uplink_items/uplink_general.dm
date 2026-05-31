@@ -747,79 +747,77 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/suits
-	category = "Space Suits and MODsuits"
+	category = "Космические и модульные скафандры"
 	surplus = 10 //I am setting this to 10 as there are a bunch of modsuit parts in here that should be weighted to 10. Suits and modsuits adjusted below.
 
 /datum/uplink_item/suits/space_suit
-	name = "Syndicate Space Suit"
-	desc = "This armoured red and black Syndicate space suit is less encumbering than Nanotrasen variants, \
-			fits inside bags, and has a weapon slot. Comes packaged with internals. Nanotrasen crewmembers are trained to report red space suit \
-			sightings, however. "
+	name = "Черно-красный космический скафандр"
+	desc = "Бронированный черно-красный космический скафандр, менее громоздок, чем варианты от Нанотразен, \
+			 помещается в сумку и имеет крепление на спине для оружия. Поставляется в комплекте с стильной дыхательной \
+			  маской и самым объёмным из линейки компактных кислородным балоном. Однако члены экипажа, использующие Нанотразен, обучены сообщать о появлении красных скафандров."
 	reference = "SS"
 	item = /obj/item/storage/box/syndie_kit/space
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 
 /datum/uplink_item/suits/thermal
-	name = "MODsuit Thermal Visor Module"
-	desc = "A visor for a MODsuit. Lets you see living beings through walls. Also provides night vision."
+	name = "Термальный визор"
+	desc = "Модицикация визора МОДсьюта. Позволяет видеть существ сквозь стены. Также усиляет свечение объектов."
 	reference = "MSTV"
 	item = /obj/item/mod/module/visor/thermal
 	cost = 10 // Don't forget, you need to get a modsuit to go with this // SS220 EDIT PRICE UP/DOWN 15 -> 10
 
 /datum/uplink_item/suits/night
-	name = "MODsuit Night Visor Module"
-	desc = "A visor for a MODsuit. Lets you see clearer in the dark."
+	name = "Прибор ночного видения"
+	desc = "Модицикация визора МОДсьюта. Предоставляет тусклое ночное зрение."
 	reference = "MSNV"
 	item = /obj/item/mod/module/visor/night
 	cost = 5 // It's night vision, rnd pumps out those goggles for anyone man.
 
 /datum/uplink_item/suits/plate_compression
-	name = "MODsuit Plate Compression Module"
-	desc = "A MODsuit module that lets the suit compress into a smaller size. Not compatible with storage modules, \
-	you will have to take that module out first."
+	name = "Компрессор костюма"
+	desc = "Модицикация механизма МОДсьюта. Позволяет костюму сжиматься до меньшего размера, \
+			 но не совместим с модулями для хранения, поэтому сначала вам придется извлечь этот модуль."
 	reference = "MSPC"
 	item = /obj/item/mod/module/plate_compression
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/suits/chameleon_module
-	name = "MODsuit Chameleon Module"
-	desc = "A module using chameleon technology to disguise an undeployed MODsuit as another object. Note: the disguise will not work once the MODsuit is deployed, but can be toggled again when retracted."
+	name = "Модуль маскировки неразвёрнутого костюма"
+	desc = "Модуль, использующий технологию «хамелеон» Синдиката для маскировки не развернутого МОДсьюта под различные сумки. \
+			 Примечание: маскировка не сработает после развертывания модкостюма, для этого он должен быть свёрнут."
 	reference = "MSCM"
 	item = /obj/item/mod/module/chameleon
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/suits/noslip
-	name = "MODsuit Anti-Slip Module"
-	desc = "A MODsuit module preventing the user from slipping on water. Already installed in the uplink MODsuits."
+	name = "Противоскользящие подошвы"
+	desc = "Модицикация механизма МОДсьюта. Предоставляет антискольжение для носителя МОДсьюта."
 	reference = "MSNS"
 	item = /obj/item/mod/module/noslip
 	cost = 5
 
 /datum/uplink_item/suits/springlock_module
-	name = "Heavily Modified Springlock MODsuit Module"
-	desc = "A module that spans the entire size of the MOD unit, sitting under the outer shell. \
-		This mechanical exoskeleton pushes out of the way when the user enters and it helps in booting \
-		up. While springlocks in older models were prone to \"snapping\" due to environmental humidity, \
-		this version reacts solely to specific chemical triggers, such as smoke from grenades. \
-		You know what it's like to have an entire exoskeleton enter you? \
-		This version of the module has been modified to allow for near instant activation of the MODsuit. \
-		Useful for quickly getting your MODsuit on/off, or for taking care of a target via a tragic accident. \
-		It is hidden as a DNA lock module. It will block retraction for 10 seconds by default to allow you to follow \
-		up with smoke, but you can multitool the module to disable that."
+	name = "Глубоко модифицированный пружинный модуль"
+	desc = "Модицикация механизма МОДсьюта. Модуль, который занимает всю площадь под внешней оболочкой. \
+			 Этот механический экзоскелет отодвигается в сторону, когда пользователь входит, и помогает при раскрытие. \
+			 В старых прототипах была критическая неисправность, которую в новых моделях удалось сделать контролируемой. \
+			 Вы знаете, каково это, быть пронизаным экзоскелетом? Эта версия модуля была изменена таким образом, чтобы обеспечить \
+			 практически мгновенную активацию МОДсьюта. Он скрыт под модулем блокировки ДНК. По умолчанию он блокирует сворачивание на 10 секунд \
+			 и почти моментально схлопыватеся при контакте с дымом. Вы можете перенастроить модуль мультитулом, отключив блокировку и уязвимость к дыму."
 	reference = "FNAF"
 	item = /obj/item/mod/module/springlock/bite_of_87
 	cost = 5
 
 /datum/uplink_item/suits/hidden_holster
-	name = "Hidden Holster Module"
-	desc = "A holster module disguised to look like a tether module. Requires a MODsuit to put it in of course. Gun not included."
+	name = "Потайная кобура"
+	desc = "Модицикация механизма МОДсьюта. Потайная кобура, замаскированная под лебедку. Пистолет в комплект не входит."
 	reference = "HHM"
 	item = /obj/item/mod/module/holster/hidden
 	cost = 5
 
 /datum/uplink_item/suits/smoke_grenade
-	name = "Smoke Grenade Module"
-	desc = "A module that dispenses primed smoke grenades to disperse crowds."
+	name = "Модуль дымовых гранат"
+	desc = "Модицикация механизма МОДсьюта. Модуль, который выдаёт дымовые гранаты."
 	reference = "SGM"
 	item = /obj/item/mod/module/dispenser/smoke
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
