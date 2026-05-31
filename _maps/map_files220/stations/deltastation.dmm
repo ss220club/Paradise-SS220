@@ -27673,10 +27673,6 @@
 /obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/equipmentstorage)
-"cnb" = (
-/obj/effect/turf_decal/delivery/hollow,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/equipmentstorage)
 "cnc" = (
 /obj/machinery/shieldwallgen,
 /turf/simulated/floor/plating,
@@ -58729,11 +58725,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/storage/tools)
 "icn" = (
-/obj/structure/closet/crate{
-	name = "solar pack crate"
-	},
 /obj/effect/turf_decal/delivery/hollow,
-/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/structure/closet/crate/engineering/collector,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/equipmentstorage)
 "ics" = (
@@ -63590,8 +63583,11 @@
 /obj/structure/sign/fire{
 	pixel_x = 32
 	},
-/obj/structure/closet/firecloset,
 /obj/effect/turf_decal/tiles/neutral,
+/obj/structure/closet/crate{
+	name = "solar pack crate"
+	},
+/obj/item/tank/internals/emergency_oxygen/engi,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/equipmentstorage)
 "jzK" = (
@@ -84742,6 +84738,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/closet/crate/engineering/particle_accelerator,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/equipmentstorage)
 "qbp" = (
@@ -137190,7 +137187,7 @@ nNM
 npj
 cou
 cpB
-cnb
+icn
 cuT
 nNM
 vLS
