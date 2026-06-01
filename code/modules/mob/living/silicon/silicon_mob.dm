@@ -167,19 +167,19 @@
 			msg += "TRACKING: [alarm_types_show["Tracking"]] alarms detected. - "
 
 		if(alarm_types_show["Burglar"])
-			msg += "BURGLAR: [alarm_types_show["Burglar"]] alarms detected. - "
+			msg += "ПРОНИКНОВЕНИЕ: Обнаржуено [alarm_types_show["Burglar"]] тревог. - "
 
 		if(alarm_types_show["Motion"])
-			msg += "MOTION: [alarm_types_show["Motion"]] alarms detected. - "
+			msg += "ДВИЖЕНИЕ: Обнаружено [alarm_types_show["Motion"]] тревог. - "
 
 		if(alarm_types_show["Fire"])
-			msg += "FIRE: [alarm_types_show["Fire"]] alarms detected. - "
+			msg += "ПОЖАР: Обнаружено [alarm_types_show["Fire"]] тревог. - "
 
 		if(alarm_types_show["Atmosphere"])
-			msg += "ATMOSPHERE: [alarm_types_show["Atmosphere"]] alarms detected. - "
+			msg += "АТМОСФЕРА: Обнаружено [alarm_types_show["Atmosphere"]] тревог. - "
 
 		if(alarm_types_show["Power"])
-			msg += "POWER: [alarm_types_show["Power"]] alarms detected. - "
+			msg += "ПИТАНИЕ: Обнаружено [alarm_types_show["Power"]] тревог. - "
 
 		msg += "<A href=byond://?src=[UID()];showalerts=1'>\[Show Alerts\]</a>"
 		var/msg_text = msg.Join("")
@@ -193,16 +193,16 @@
 		var/list/msg = list("--- ")
 
 		if(alarm_types_clear["Motion"])
-			msg += "MOTION: [alarm_types_clear["Motion"]] alarms cleared. - "
+			msg += "ДВИЖЕНИЕ: Нейтрализовано [alarm_types_clear["Motion"]] тревог. - "
 
 		if(alarm_types_clear["Fire"])
-			msg += "FIRE: [alarm_types_clear["Fire"]] alarms cleared. - "
+			msg += "ПОЖАР: Нейтрализовано [alarm_types_clear["Fire"]] тревог. - "
 
 		if(alarm_types_clear["Atmosphere"])
-			msg += "ATMOSPHERE: [alarm_types_clear["Atmosphere"]] alarms cleared. - "
+			msg += "АТМОСФЕРА: Нейтрализовано [alarm_types_clear["Atmosphere"]] тревог. - "
 
 		if(alarm_types_clear["Power"])
-			msg += "POWER: [alarm_types_clear["Power"]] alarms cleared. - "
+			msg += "ПИТАНИЕ: Нейтрализовано [alarm_types_clear["Power"]] тревог. - "
 
 		msg += "<A href=byond://?src=[UID()];showalerts=1'>\[Show Alerts\]</a>"
 
@@ -252,7 +252,7 @@
 			take_organ_damage(10)
 	flash_eyes(affect_silicon = 1)
 	to_chat(src, SPAN_DANGER("*BZZZT*"))
-	to_chat(src, SPAN_WARNING("Warning: Electromagnetic pulse detected."))
+	to_chat(src, SPAN_WARNING("Внимание: Обнаружен электромагнитный импульс."))
 
 
 /mob/living/silicon/proc/damage_mob(brute = 0, fire = 0, tox = 0)
@@ -273,16 +273,16 @@
 		return
 	. = TRUE
 	if(!getBruteLoss())
-		to_chat(user, SPAN_NOTICE("Nothing to fix!"))
+		to_chat(user, SPAN_NOTICE("Нечего чинить!"))
 		return
 	else if(!getBruteLoss(TRUE))
-		to_chat(user, SPAN_WARNING("The damaged components are beyond saving!"))
+		to_chat(user, SPAN_WARNING("Повреждённые компоненты не починить!"))
 		return
 	if(!I.use_tool(src, user, volume = I.tool_volume))
 		return
 	adjustBruteLoss(-30)
 	add_fingerprint(user)
-	user.visible_message(SPAN_ALERT("[user] patches some dents on [src] with [I]."))
+	user.visible_message(SPAN_ALERT("[user] латает некоторые вмятины на [src] с помощью [I]."))
 
 
 /mob/living/silicon/bullet_act(obj/projectile/Proj)
@@ -339,7 +339,7 @@
 
 // this function shows the health of the pAI in the Status panel
 /mob/living/silicon/proc/show_system_integrity()
-	return list("System integrity:", stat ? "Nonfunctional" : "[round((health / maxHealth) * 100)]%")
+	return list("Целостность систем:", stat ? "Системы не функциональны" : "[round((health / maxHealth) * 100)]%")
 
 
 // This adds the basic clock, shuttle recall timer, and malf_ai info to all silicon lifeforms
@@ -435,31 +435,31 @@
 	janisensor.add_hud_to(src)
 
 /mob/living/silicon/proc/toggle_sensor_mode()
-	to_chat(src, SPAN_NOTICE("Please select sensor type."))
-	var/static/list/sensor_choices = list("Security" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
-							"Medical" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
-							"Diagnostic" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
-							"Janitor" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "janihud"),
-							"None" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
+	to_chat(src, SPAN_NOTICE("Выберите тип сенсора."))
+	var/static/list/sensor_choices = list("Служба Безопасности" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
+							"Медицинский" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
+							"Диагностика" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
+							"Уборщик" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "janihud"),
+							"Нет" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
 	var/sensor_type = show_radial_menu(src, src, sensor_choices)
 	if(!sensor_type)
 		return
 	remove_med_sec_hud()
 	switch(sensor_type)
-		if("Security")
+		if("Служба Безопасности")
 			add_sec_hud()
-			to_chat(src, SPAN_NOTICE("Security records overlay enabled."))
-		if("Medical")
+			to_chat(src, SPAN_NOTICE("Включён оверлей Службы Безопасности."))
+		if("Медицинский")
 			add_med_hud()
-			to_chat(src, SPAN_NOTICE("Life signs monitor overlay enabled."))
-		if("Diagnostic")
+			to_chat(src, SPAN_NOTICE("Включен оверлей жизненных показателей."))
+		if("Диагностика")
 			add_diag_hud()
-			to_chat(src, SPAN_NOTICE("Robotics diagnostic overlay enabled."))
-		if("Janitor")
+			to_chat(src, SPAN_NOTICE("Включён диагностический оверлей."))
+		if("Уборщик")
 			add_jani_hud()
-			to_chat(src, SPAN_NOTICE("Janitorial filth overlay enabled."))
-		if("None")
-			to_chat(src, "Sensor augmentations disabled.")
+			to_chat(src, SPAN_NOTICE("Включён оверлей грязи для уборки."))
+		if("Нет")
+			to_chat(src, "Аугментация сенсоров отключена.")
 
 /mob/living/silicon/adjustToxLoss(amount, updating_health = TRUE)
 	return STATUS_UPDATE_NONE

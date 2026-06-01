@@ -12,7 +12,7 @@
 /obj/item/slapper/attack__legacy__attackchain(mob/M, mob/living/carbon/human/user)
 	user.do_attack_animation(M)
 	playsound(M, hitsound, 50, TRUE, -1)
-	user.visible_message(SPAN_DANGER("[user] slaps [M]!"), SPAN_NOTICE("You slap [M]!"), SPAN_HEAR("You hear a slap."))
+	user.visible_message(SPAN_DANGER("[user] даёт пощёчину [M]!"), SPAN_NOTICE("Вы даёте пощёчину [M]!"), SPAN_HEAR("Вы слышите шлепок."))
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.IsSleeping())
@@ -44,12 +44,12 @@
 			if(istype(human_user.shoes, /obj/item/clothing/shoes/cowboy))
 				human_user.say(pick("Hot damn!", "Hoo-wee!", "Got-dang!"))
 		playsound(get_turf(the_table), 'sound/effects/tableslam.ogg', 110, TRUE)
-		user.visible_message("<b>[SPAN_DANGER("[user] slams [user.p_their()] fist down on [the_table]!")]</b>", "<b>[SPAN_DANGER("You slam your fist down on [the_table]!")]</b>")
+		user.visible_message("<b>[SPAN_DANGER("[user] бьёт кулаком по [the_table]!")]</b>", "<b>[SPAN_DANGER("Вы бьёте кулаком по [the_table]!")]</b>")
 		qdel(src)
 	else
 		user.do_attack_animation(the_table)
 		playsound(get_turf(the_table), 'sound/effects/tableslam.ogg', 40, TRUE)
-		user.visible_message(SPAN_NOTICE("[user] slaps [user.p_their()] hand on [the_table]."), SPAN_NOTICE("You slap your hand on [the_table]."))
+		user.visible_message(SPAN_NOTICE("[user] бьёт [user.p_their()] ладонью по [the_table]."), SPAN_NOTICE("Вы бьёте ладонью по [the_table]."))
 		table_smacks_left--
 		if(table_smacks_left <= 0)
 			qdel(src)
@@ -58,10 +58,10 @@
 	return 0
 
 /obj/item/slapper/parry
-	desc = "This is how real men win fights."
+	desc = "Именно так настоящие мужчины побеждают в боях."
 	force = 5
 	flags = DROPDEL | ABSTRACT | NODROP
-	attack_verb = list("slapped", "backhanded", "smacked", "discombobulated")
+	attack_verb = list("даёт пощёчину", "бьёт тыльной стороной ладони", "шлепает", "дезориентирует")
 	table_smacks_left = 10 //Much more smackitude
 
 /obj/item/slapper/parry/Initialize(mapload)

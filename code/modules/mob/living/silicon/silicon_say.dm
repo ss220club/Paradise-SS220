@@ -9,7 +9,7 @@
 	if(message_mode)
 		used_radios += radio
 		if(!is_component_functioning("radio"))
-			to_chat(src, SPAN_WARNING("Your radio isn't functional at this time."))
+			to_chat(src, SPAN_WARNING("Ваше радио не работает сейчас."))
 			return 0
 		if(message_mode == "general")
 			message_mode = null
@@ -24,7 +24,7 @@
 	else if(message_mode)
 		used_radios += aiRadio
 		if(aiRadio.disabledAi || aiRestorePowerRoutine || stat)
-			to_chat(src, SPAN_DANGER("System Error - Transceiver Disabled."))
+			to_chat(src, SPAN_DANGER("Системная ошибка - Передатчик отключен."))
 			return 0
 		if(message_mode == "general")
 			message_mode = null
@@ -81,9 +81,9 @@
 			create_chat_message(H, message)
 		for(var/mob/M in hearers(T.loc))//The location is the object, default distance.
 			M.hear_holopad_talk(message_pieces, verb, src, H)
-		to_chat(src, "<i><span class='game say'>Holopad transmitted, [SPAN_NAME("[real_name]")] [combine_message(message_pieces, verb, src)]</span></i>")
+		to_chat(src, "<i><span class='game say'>Переданная речь, [SPAN_NAME("[real_name]")] [combine_message(message_pieces, verb, src)]</span></i>")
 	else
-		to_chat(src, "No holopad connected.")
+		to_chat(src, "Нет подключённого голопада.")
 		return
 	return 1
 
@@ -96,14 +96,14 @@
 	var/obj/machinery/hologram/holopad/T = current
 	if(istype(T) && T.masters[src])
 		var/rendered = "<span class='game say'>[SPAN_NAME("[name]")] [SPAN_MESSAGE("[message]")]</span>"
-		to_chat(src, "<i><span class='game say'>Holopad action relayed, [SPAN_NAME("[real_name]")] [SPAN_MESSAGE("[message]")]</span></i>")
+		to_chat(src, "<i><span class='game say'>Переданное действие, [SPAN_NAME("[real_name]")] [SPAN_MESSAGE("[message]")]</span></i>")
 
 		for(var/mob/M in viewers(T.loc))
 			M.show_message(rendered, EMOTE_VISIBLE, chat_message_type = MESSAGE_TYPE_LOCALCHAT)
 
 		log_emote("(HPAD) [message]", src)
 	else //This shouldn't occur, but better safe then sorry.
-		to_chat(src, "No holopad connected.")
+		to_chat(src, "Нет подключённого голопада.")
 		return
 	return 1
 

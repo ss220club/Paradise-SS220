@@ -56,6 +56,13 @@
 /turf/simulated/floor/plasteel/fakestairs
 	icon_state = "stairs"
 
+// SS20 EDIT START: Added airless variant of plasteel fakestairs
+/turf/simulated/floor/plasteel/fakestairs/airless
+	oxygen = 0
+	nitrogen = 0
+	temperature = TCMB
+// SS20 EDIT END
+
 /turf/simulated/floor/plasteel/fakestairs/left
 	icon_state = "stairs-l"
 

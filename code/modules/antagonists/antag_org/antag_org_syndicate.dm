@@ -82,7 +82,7 @@
 	chaos_level = ORG_CHAOS_HUNTER
 
 /datum/antag_org/syndicate/gorlex // Hijack only
-	name = "Gorlex Marauders"
-	intro_desc = "You are an operative of the infamous Gorlex Marauders, a brutal and merciless gang of pirates and cutthroats."
+	name = "Горлекс Мародёры"
+	intro_desc = "Вы — агент печально известной банды «Горлекс Мародёры», жестокой и безжалостной группировки пиратов и головорезов."
 	forced_objectives = list(/datum/objective/hijack)
 	chaos_level = ORG_CHAOS_HIJACK

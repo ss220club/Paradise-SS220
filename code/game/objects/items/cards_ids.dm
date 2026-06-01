@@ -800,7 +800,7 @@
 /obj/item/card/id/lifetime
 	name = "Lifetime ID Card"
 	desc = "A modified ID card given only to those people who have devoted their lives to the better interests of Nanotrasen. It sparkles blue."
-	icon_state = "lifetimeid"
+	icon_state = "tsf"
 
 /obj/item/card/id/ert
 	name = "ERT ID"

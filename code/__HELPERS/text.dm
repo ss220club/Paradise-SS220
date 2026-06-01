@@ -282,6 +282,7 @@
 
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(t as text)
+	t = format_text(t) // SS220 EDIT
 	return uppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2)
 
 //Centers text by adding spaces to either side of the string.
@@ -379,7 +380,7 @@
 
 //alternative copytext() for encoded text, doesn't break html entities (&#34; and other)
 /proc/copytext_preserve_html(text, first, last)
-	return html_encode(copytext(html_decode(text), first, last))
+	return html_encode(copytext_char(html_decode(text), first, last)) // SS220 EDIT - ORIGINAL: copytext
 
 //Run sanitize(), but remove <, >, " first to prevent displaying them as &gt; &lt; &34; in some places, after html_encode().
 //Best used for sanitize object names, window titles.
@@ -503,6 +504,10 @@
 		text = replacetext(text, "\[cell\]", 	"")
 		text = replacetext(text, "\[logo\]", 	"")
 		text = replacetext(text, "\[syndielogo\]", 	"")
+		// SS220 EDIT START -- Добавление лого ТСФ и СССП
+		text = replacetext(text, "\[tsflogo\]", 	"")
+		text = replacetext(text, "\[ussplogo\]", 	"")
+		// SS220 EDIT END
 
 	if(istype(P, /obj/item/toy/crayon))
 		text = "<font face=\"[crayonfont]\" color=[P ? P.color : "black"]><b>[text]</b></font>"
@@ -521,6 +526,10 @@
 		text = replacetext(text, "\[cell\]",	"<td>")
 		text = replacetext(text, "\[logo\]",	"&ZeroWidthSpace;<img src='ntlogo.png'>")
 		text = replacetext(text, "\[syndielogo\]", 	"&ZeroWidthSpace;<img src='syndielogo.png'>")
+		// SS220 EDIT START -- Добавление лого ТСФ и СССП
+		text = replacetext(text, "\[tsflogo\]",	"&ZeroWidthSpace;<img src='tsflogo.png'>")
+		text = replacetext(text, "\[ussplogo\]", "&ZeroWidthSpace;<img src='ussplogo.png'>")
+		// SS220 EDIT END
 		text = replacetext(text, "\[time\]",	"[station_time_timestamp()]") // TO DO
 		text = replacetext(text, "\[date\]",	"[GLOB.current_date_string]")
 		text = replacetext(text, "\[station\]", "[SSmapping.map_datum.fluff_name]")
@@ -604,6 +613,10 @@
 	text = replacetext(text, "<td>",					"\[cell\]")
 	text = replacetext(text, "<img src='ntlogo.png'>",	"\[logo\]")
 	text = replacetext(text, "<img src='syndielogo.png'>",	"\[syndielogo\]")
+	// SS220 EDIT START -- Добавление лого ТСФ и СССП
+	text = replacetext(text, "<img src='tsflogo.png'>",	"\[tsflogo\]")
+	text = replacetext(text, "<img src='ussplogo.png'>",	"\[ussplogo\]")
+	// SS220 EDIT END
 	return text
 
 /datum/html_split_holder
