@@ -1,7 +1,7 @@
 /// Pill sprites for UIs
 /datum/asset/spritesheet/chem_master
 	name = "chem_master"
-	// SS220 EDIT START - Добавляем Вар для удобного перемещения спрайтов
+	// SS220 EDIT START - We set what color of medipens will be available for crafting with the possibility of expansion
 	var/static/list/medipen_colors = list(
 		"red" = COLOR_RED,
 		"orange" = COLOR_ORANGE,
@@ -19,7 +19,7 @@
 		Insert("bandaid[bandaid_type]", 'icons/obj/chemical.dmi', "bandaid[bandaid_type]")
 	for(var/bottle_type in list("bottle", "reagent_bottle"))
 		Insert(bottle_type, 'icons/obj/chemical.dmi', bottle_type)
-		// SS220 EDIT START Adding medipen sprites to the chem master for use in the autoinjector production mode
+	// SS220 EDIT START Adding medipen sprites to the chem master for use in the autoinjector production mode
 	for(var/color_name in medipen_colors)
 		var/color = medipen_colors[color_name]
 		var/icon/medipen_icon = icon('modular_ss220/objects/icons/medipens.dmi', "base")
