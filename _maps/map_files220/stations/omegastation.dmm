@@ -8138,10 +8138,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/station/service/theatre)
-"ayH" = (
-/obj/machinery/atmospherics/portable/canister/carbon_dioxide,
-/turf/simulated/floor/plasteel/dark,
-/area/station/science/storage)
 "ayI" = (
 /obj/machinery/door/window/brigdoor{
 	dir = 4;
@@ -30907,22 +30903,13 @@
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
 "hRA" = (
-/obj/machinery/power/apc/directional/south,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/storage)
 "hRK" = (
@@ -31984,7 +31971,6 @@
 	pixel_x = -8;
 	pixel_y = 11
 	},
-/obj/structure/cable,
 /obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/carpet/purple,
 /area/station/command/office/rd)
@@ -33347,6 +33333,22 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
+"jCp" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/space,
+/area/station/engineering/solar/fore_starboard)
 "jCJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -42901,7 +42903,6 @@
 	},
 /obj/effect/turf_decal/tiles/neutral,
 /obj/effect/landmark/spawner/nukedisc_respawn,
-/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/storage)
 "qOl" = (
@@ -43582,6 +43583,24 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
+"rrr" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tiles/neutral,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/power/apc/directional/south,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/storage)
 "rsp" = (
 /obj/item/stack/sheet/metal/fifty,
 /turf/space,
@@ -47133,6 +47152,9 @@
 /obj/machinery/flasher{
 	id = "AI";
 	pixel_y = 24
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -95417,7 +95439,7 @@ acu
 acu
 acu
 acu
-sfS
+hSD
 aho
 aho
 aho
@@ -96188,9 +96210,9 @@ fQg
 fQg
 ftP
 weD
-fQg
-fQg
-fQg
+jCp
+aUz
+jXr
 aLL
 aLL
 aLL
@@ -97795,12 +97817,12 @@ rAX
 rAX
 bQX
 vyq
-aiK
+upN
 upN
 gfr
 upN
 upN
-upN
+aiK
 upN
 vml
 efN
@@ -98051,7 +98073,7 @@ ucd
 fge
 aXB
 rzj
-vyq
+rrr
 upN
 asx
 gLD
@@ -98564,7 +98586,7 @@ aXs
 ucd
 uHg
 nGG
-ayH
+uHg
 qNR
 upN
 uXf
