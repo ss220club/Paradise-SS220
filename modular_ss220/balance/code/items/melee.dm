@@ -28,8 +28,7 @@
 	throwforce = 10
 	w_class = WEIGHT_CLASS_BULKY
 	throw_range = 3
-	tool_behaviour = TOOL_CROWBAR
-	toolspeed = 1
+	new_attack_chain = TRUE
 
 	attack_verb = list(
 		"ломает",
@@ -37,8 +36,7 @@
 		"прорывает"
 	)
 
-	var/force_unwielded = 10
-	var/force_wielded = 25
+	var/const/force_wielded = 25
 	/// Prevents multiple wall breach actions running simultaneously
 	var/is_breaching = FALSE
 
@@ -48,7 +46,7 @@
 
 	AddComponent(/datum/component/two_handed, \
 		force_wielded = force_wielded, \
-		force_unwielded = force_unwielded, \
+		force_unwielded = force, \
 		icon_wielded = "[base_icon_state]1")
 
 
@@ -56,78 +54,86 @@
 	icon_state = "[base_icon_state]0"
 
 
-/obj/item/tactical_sledgehammer/afterattack__legacy__attackchain(atom/target, mob/user, proximity)
-	. = ..()
-
-	if(!proximity)
-		return
+/obj/item/tactical_sledgehammer/pre_attack(atom/target, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
 
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
 		return
 
-	// WALLS
+	if(!user.Adjacent(target))
+		return
+
+	if(is_breaching)
+		return FINISH_ATTACK
+
 	if(istype(target, /turf/simulated/wall))
 		var/turf/simulated/wall/wall = target
+		return breach_wall(wall, user)
 
-		if(is_breaching)
-			return
-
-		is_breaching = TRUE
-
-		user.visible_message(
-			SPAN_WARNING("[user] заносит [src] для удара по [wall]!"),
-			SPAN_WARNING("Вы готовитесь нанести мощный удар по [wall].")
-		)
-
-		if(!do_after(
-			user,
-			2 SECONDS,
-			needhand = TRUE,
-			target = wall,
-			progress = TRUE
-		))
-			is_breaching = FALSE
-			return
-
-		is_breaching = FALSE
-
-		user.do_attack_animation(wall)
-
-		user.visible_message(
-			SPAN_DANGER("[user] с силой бьёт [wall] [src]!"),
-			SPAN_DANGER("Вы наносите мощный удар по [wall]!")
-		)
-
-		playsound(src.loc, 'sound/effects/bang.ogg', 75, TRUE)
-
-		wall.take_damage(20, BRUTE)
-
-	// WINDOWS
-	else if(istype(target, /obj/structure/window))
+	if(istype(target, /obj/structure/window))
 		var/obj/structure/window/window = target
+		return breach_window(window, user)
 
-		user.do_attack_animation(window)
-
-		user.visible_message(
-			SPAN_DANGER("[user] с треском бьёт по [window] [src]!"),
-			SPAN_DANGER("Вы наносите сокрушительный удар по стеклу!")
-		)
-
-		playsound(src.loc, 'sound/effects/glasshit.ogg', 75, TRUE)
-
-		window.take_damage(50, BRUTE)
-
-	// AIRLOCKS
-	else if(istype(target, /obj/machinery/door/airlock))
+	if(istype(target, /obj/machinery/door/airlock))
 		var/obj/machinery/door/airlock/door = target
+		return breach_airlock(door, user)
 
-		user.do_attack_animation(door)
 
+/obj/item/tactical_sledgehammer/proc/breach_wall(turf/simulated/wall/wall, mob/living/user)
+	is_breaching = TRUE
+
+	user.visible_message(
+		SPAN_WARNING("[user] заносит [src] для удара по [wall]!"),
+		SPAN_WARNING("Вы готовитесь нанести мощный удар по [wall].")
+	)
+
+	if(!do_after(user, 2 SECONDS, needhand = TRUE, target = wall, progress = TRUE))
 		user.visible_message(
-			SPAN_DANGER("[user] с размаху бьёт по [door] кувалдой!"),
-			SPAN_DANGER("Вы наносите мощный удар по двери!")
+			SPAN_WARNING("[user] бросает затею ломать [wall]."),
+			SPAN_WARNING("Вы бросаете затею ломать [wall].")
 		)
+		is_breaching = FALSE
+		return FINISH_ATTACK
 
-		playsound(src.loc, 'sound/effects/bang.ogg', 75, TRUE)
+	is_breaching = FALSE
 
-		door.take_damage(100, BRUTE)
+	if(QDELETED(src) || QDELETED(wall))
+		return FINISH_ATTACK
+
+	user.do_attack_animation(wall)
+
+	user.visible_message(
+		SPAN_DANGER("[user] с силой бьёт [wall] [src]!"),
+		SPAN_DANGER("Вы наносите мощный удар по [wall]!")
+	)
+
+	playsound(src.loc, 'sound/effects/bang.ogg', 75, TRUE)
+	wall.take_damage(20)
+	return FINISH_ATTACK
+
+
+/obj/item/tactical_sledgehammer/proc/breach_window(obj/structure/window/window, mob/living/user)
+	user.do_attack_animation(window)
+
+	user.visible_message(
+		SPAN_DANGER("[user] с треском бьёт по [window] [src]!"),
+		SPAN_DANGER("Вы наносите сокрушительный удар по стеклу!")
+	)
+
+	playsound(src.loc, 'sound/effects/glasshit.ogg', 75, TRUE)
+	window.take_damage(50, BRUTE)
+	return FINISH_ATTACK | MELEE_COOLDOWN_PREATTACK
+
+
+/obj/item/tactical_sledgehammer/proc/breach_airlock(obj/machinery/door/airlock/door, mob/living/user)
+	user.do_attack_animation(door)
+
+	user.visible_message(
+		SPAN_DANGER("[user] с размаху бьёт по [door] кувалдой!"),
+		SPAN_DANGER("Вы наносите мощный удар по двери!")
+	)
+
+	playsound(src.loc, 'sound/effects/bang.ogg', 75, TRUE)
+	door.take_damage(100, BRUTE)
+	return FINISH_ATTACK | MELEE_COOLDOWN_PREATTACK
