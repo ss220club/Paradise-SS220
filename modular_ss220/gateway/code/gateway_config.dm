@@ -2,9 +2,12 @@
 	/// Holder for the gateway configuration datum
 	var/datum/configuration_section/gateway_configuration/gateway
 
+/datum/server_configuration/load_configuration()
+	gateway = new()
+	. = ..()
+
 /datum/server_configuration/load_all_sections()
 	. = ..()
-	gateway = new()
 	safe_load(gateway, "gateway_configuration")
 
 /datum/configuration_section/gateway_configuration

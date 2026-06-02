@@ -83,8 +83,10 @@
 	if(GLOB.join_tos)
 		output += "<p><a href='byond://?src=[UID()];tos=1'>Условия использования</A></p>"
 
+	#ifdef SERVERREGIONS
 	if(length(GLOB.configuration.system.region_map))
 		output += "<p><a href='byond://?src=[UID()];setregion=1'>Set region (reduces ping)</A></p>"
+	#endif
 
 	output += "</center>"
 
@@ -220,9 +222,11 @@
 		privacy_consent()
 		return FALSE
 
+	#ifdef SERVERREGIONS
 	if(href_list["setregion"])
 		usr.client.change_region()
 		return FALSE
+	#endif
 
 	if(href_list["late_join"])
 		if(!client.tos_consent)
