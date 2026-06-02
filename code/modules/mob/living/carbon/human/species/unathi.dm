@@ -85,37 +85,114 @@
 		fire.Remove(H)
 
 /datum/action/innate/unathi_ignite
-	name = "Ignite"
-	desc = "A fire forms in your mouth, fierce enough to... light a cigarette. Requires you to drink welding fuel beforehand."
+	name = "Пламя души"
+	desc = "Ваша раса настолько сильна духом, что способна выдыхать маленькое пламя, достаточное для зажигания сигарет."
 	button_icon = 'icons/obj/cigarettes.dmi'
 	button_icon_state = "match_unathi"
 	var/cooldown = 0
-	var/cooldown_duration = 20 SECONDS
-	var/welding_fuel_used = 3 //one sip, with less strict timing
+	var/cooldown_duration = 3 SECONDS
 	check_flags = AB_CHECK_HANDS_BLOCKED
 
 /datum/action/innate/unathi_ignite/Activate()
 	var/mob/living/carbon/human/user = owner
+
 	if(world.time <= cooldown)
-		to_chat(user, SPAN_WARNING("Your throat hurts too much to do it right now. Wait [round((cooldown - world.time) / 10)] seconds and try again."))
+		to_chat(user, SPAN_WARNING("Пламя души мерцает. Дайте ему разгореться."))
 		return
-	if(!welding_fuel_used || user.reagents.has_reagent("fuel", welding_fuel_used))
-		if(ismask(user.wear_mask))
-			var/obj/item/clothing/mask/worn_mask = user.wear_mask
-			if((user.head?.flags_cover & HEADCOVERSMOUTH) || (worn_mask.flags_cover & MASKCOVERSMOUTH) && !worn_mask.up)
-				to_chat(user, SPAN_WARNING("Your mouth is covered."))
-				return
-		var/obj/item/match/unathi/fire = new(user.loc, src)
-		if(user.put_in_hands(fire))
-			to_chat(user, SPAN_NOTICE("You ignite a small flame in your mouth."))
-			user.reagents.remove_reagent("fuel", 50) //slightly high, but I'd rather avoid it being TOO spammable.
+
+	var/obj/item/clothing/mask/cigarette/cig = user.wear_mask
+
+	// 1. Обычная маска блокирует способность.
+	if(ismask(user.wear_mask) && !istype(user.wear_mask, /obj/item/clothing/mask/cigarette))
+		var/obj/item/clothing/mask/worn_mask = user.wear_mask
+
+		if((worn_mask.flags_cover & MASKCOVERSMOUTH) && !worn_mask.up)
+			to_chat(user, SPAN_WARNING("Ваша пасть чем-то прикрыта."))
+			return
+
+	// 2. Шлем закрывает рот и сигареты нет.
+	if((user.head?.flags_cover & HEADCOVERSMOUTH) && !istype(cig))
+		to_chat(user, SPAN_WARNING("Ваша пасть чем-то прикрыта."))
+		return
+
+	// 3. Шлем + сигарета = сразу поджигаем сигарету.
+	if((user.head?.flags_cover & HEADCOVERSMOUTH) && istype(cig))
+		if(!cig.lit)
+			user.visible_message(
+				"<span class='rose'>[user] выпускает из пасти пламя души, зажигая [cig.declent_ru(ACCUSATIVE)].</span>",
+				"<span class='rose'>Вы выдыхаете пламя своей души — [cig.declent_ru(NOMINATIVE)] оживает ярким огнём.</span>",
+				"<span class='warning'>Тишину разрывает резкий щелчок пламени!</span>"
+			)
+
+			cig.light(user, user)
+			playsound(user.loc, 'sound/effects/unathiignite.ogg', 40, FALSE)
+
+			cooldown = world.time + cooldown_duration
+
+		return
+
+	// 4. Есть свободная рука — создаём искру.
+	var/obj/item/match/unathi/fire = new(user.loc, src)
+
+	if(user.put_in_hands(fire))
+		to_chat(user, SPAN_NOTICE("Вы зажигаете маленькое пламя души у себя в пасти."))
+		cooldown = world.time + cooldown_duration
+		return
+
+	qdel(fire)
+
+	// 5. Руки заняты, но есть сигарета.
+	if(istype(cig) && !cig.lit)
+		user.visible_message(
+			"<span class='rose'>[user] выпускает из пасти пламя души, зажигая [cig.declent_ru(ACCUSATIVE)].</span>",
+			"<span class='rose'>Вы выдыхаете пламя своей души — [cig.declent_ru(NOMINATIVE)] оживает ярким огнём.</span>",
+			"<span class='warning'>Тишину разрывает резкий щелчок пламени!</span>"
+		)
+
+		cig.light(user, user)
+		playsound(user.loc, 'sound/effects/unathiignite.ogg', 40, FALSE)
+
+		cooldown = world.time + cooldown_duration
+		return
+
+	// 6. Всё занято и сигареты нет.
+	to_chat(user, SPAN_WARNING("Вашы лапы чем-то заняты!"))
+/*
+/datum/action/innate/unathi_ignite/Activate()
+	var/mob/living/carbon/human/user = owner
+	if(world.time <= cooldown)
+		to_chat(user, SPAN_WARNING("Пламя души мерцает. Дайте ему разгореться.")) //[round((cooldown - world.time) / 10)]
+		return
+	if(ismask(user.wear_mask))
+		var/obj/item/clothing/mask/worn_mask = user.wear_mask
+		if((user.head?.flags_cover & HEADCOVERSMOUTH) || (worn_mask.flags_cover & MASKCOVERSMOUTH) && !worn_mask.up)
+			to_chat(user, SPAN_WARNING("Ваша пасть чем-то прикрыта."))
+			return
+	var/obj/item/match/unathi/fire = new(user.loc, src)
+	if(user.put_in_hands(fire))
+		to_chat(user, SPAN_NOTICE("Вы зажигаете маленькое пламя души у себя в пасти."))
+		cooldown = world.time + cooldown_duration
+	else
+		qdel(fire)
+
+		var/obj/item/clothing/mask/cigarette/cig = user.wear_mask
+
+		if(istype(cig) && !cig.lit)
+			user.visible_message(
+				"<span class='rose'>[user] выпускает из пасти пламя души, зажигая [cig.declent_ru(ACCUSATIVE)].</span>",
+				"<span class='rose'>Вы выдыхаете пламя своей души — [cig.declent_ru(NOMINATIVE)] оживает ярким огнём.</span>",
+				"<span class='warning'>Тишину разрывает резкий щелчок пламени!</span>"
+			)
+
+			cig.light(user, user)
+
+			playsound(user.loc, 'sound/effects/unathiignite.ogg', 40, FALSE)
+
 			cooldown = world.time + cooldown_duration
 		else
-			qdel(fire)
-			to_chat(user, SPAN_WARNING("You don't have any free hands."))
-	else
-		to_chat(user, SPAN_WARNING("You need to drink welding fuel first."))
+			to_chat(user, SPAN_WARNING("Вашы лапы чем-то заняты!"))
 
+*/
 /datum/species/unathi/handle_death(gibbed, mob/living/carbon/human/H)
 	H.stop_tail_wagging()
 
@@ -166,6 +243,5 @@
 		. -= speed_mod
 
 /datum/action/innate/unathi_ignite/ash_walker
-	desc = "You form a fire in your mouth, fierce enough to... light a cigarette."
-	cooldown_duration = 3 MINUTES
-	welding_fuel_used = 0 // Ash walkers dont need welding fuel to use ignite
+	desc = "Годы подражания величественным рептилиям лавовой планеты научили вас выдыхать маленькое пламя, достаточное для... прикуривания сигарет?"
+	cooldown_duration = 3 SECONDS
