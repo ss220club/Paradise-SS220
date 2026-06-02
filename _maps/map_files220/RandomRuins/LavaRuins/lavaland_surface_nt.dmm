@@ -368,6 +368,9 @@
 /area/mine/laborcamp)
 "cv" = (
 /obj/structure/closet/secure_closet/brig/gulag,
+/obj/structure/sign/security/labor_camp{
+	pixel_x = 32
+	},
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
 "cz" = (
@@ -596,6 +599,9 @@
 "dM" = (
 /obj/effect/spawner/random/dirt/maybe,
 /obj/effect/turf_decal/tiles/department/cargo/corner,
+/obj/structure/sign/public/tools{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "dN" = (
@@ -1932,9 +1938,7 @@
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 4
 	},
-/obj/structure/sign/engineering{
-	pixel_y = 32
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "mu" = (
@@ -2016,6 +2020,9 @@
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tiles/department/cargo/side{
 	dir = 4
+	},
+/obj/structure/sign/cargo/materials{
+	pixel_x = 32
 	},
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
@@ -2134,7 +2141,7 @@
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/newscaster/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "nD" = (
@@ -2722,6 +2729,9 @@
 	},
 /obj/effect/turf_decal/tiles/department/cargo/side{
 	dir = 9
+	},
+/obj/structure/sign/public/restroom{
+	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
@@ -3838,6 +3848,14 @@
 /obj/effect/mapping_helpers/no_lava,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/gulag_rock)
+"zc" = (
+/obj/effect/spawner/random/dirt/maybe,
+/obj/effect/turf_decal/tiles/department/cargo/corner{
+	dir = 1
+	},
+/obj/machinery/newscaster/directional/north,
+/turf/simulated/floor/plasteel/dark,
+/area/mine/outpost/hallway/west)
 "zh" = (
 /obj/structure/lattice/catwalk/mining,
 /obj/item/lighter/zippo/engraved,
@@ -4405,6 +4423,9 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/structure/sign/engineering{
+	pixel_x = 32
+	},
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
 "CU" = (
@@ -4677,6 +4698,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tiles/department/cargo/side,
+/obj/structure/sign/medical{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
 "EQ" = (
@@ -4705,6 +4729,9 @@
 /obj/item/clothing/suit/storage/hazardvest,
 /obj/effect/turf_decal/tiles/department/cargo/side{
 	dir = 8
+	},
+/obj/structure/sign/service/kitchen{
+	pixel_x = -32
 	},
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
@@ -5252,11 +5279,11 @@
 /turf/simulated/wall/r_wall,
 /area/mine/laborcamp/security)
 "IQ" = (
-/obj/structure/sign/electricshock{
-	pixel_y = 32
-	},
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 1
+	},
+/obj/structure/sign/engineering{
+	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
@@ -5623,9 +5650,6 @@
 /obj/effect/spawner/random/dirt/maybe,
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 8
-	},
-/obj/structure/sign/cargo/smith{
-	pixel_y = -32
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
@@ -7074,9 +7098,11 @@
 	},
 /obj/item/kirbyplants/medium,
 /obj/effect/spawner/random/dirt/maybe,
-/obj/machinery/newscaster/directional/south,
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 8
+	},
+/obj/structure/sign/cargo/smith{
+	pixel_y = -32
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
@@ -11017,7 +11043,7 @@ ni
 sc
 CI
 qx
-ZK
+QQ
 rn
 ER
 cm
@@ -11999,7 +12025,7 @@ ZK
 Te
 ZK
 QQ
-ZK
+QQ
 Th
 Oj
 zY
@@ -14450,7 +14476,7 @@ em
 nB
 Sn
 Lp
-zJ
+hl
 xp
 Rk
 Wb
@@ -15581,7 +15607,7 @@ yF
 WH
 WH
 WH
-EZ
+zc
 FU
 eT
 eT

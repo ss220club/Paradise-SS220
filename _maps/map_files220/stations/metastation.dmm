@@ -8376,6 +8376,9 @@
 /area/station/public/locker)
 "baf" = (
 /obj/structure/closet/wardrobe/grey,
+/obj/structure/sign/public/restroom{
+	pixel_x = 32
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/locker)
 "bag" = (
@@ -9730,6 +9733,9 @@
 "bgb" = (
 /obj/machinery/washing_machine,
 /obj/effect/turf_decal/tiles/department/medical/checker,
+/obj/structure/sign/public/laundry{
+	pixel_y = 32
+	},
 /turf/simulated/floor/plasteel/white,
 /area/station/public/dorms)
 "bgd" = (
@@ -20864,6 +20870,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tiles/department/engineering/side,
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos/control)
 "cik" = (
@@ -30185,6 +30192,13 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/station_engineering,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
+"dgJ" = (
+/obj/effect/turf_decal/tiles/department/security/corner,
+/obj/structure/sign/public/salon{
+	pixel_y = -32
+	},
+/turf/simulated/floor/plasteel,
+/area/station/hallway/primary/starboard/north)
 "dgO" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -48721,9 +48735,6 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 8
 	},
-/obj/structure/sign/engineering/cans{
-	pixel_x = -32
-	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos/control)
 "kbw" = (
@@ -61299,7 +61310,6 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/public/sleep)
 "oMT" = (
-/obj/item/radio/intercom/directional/south,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -61308,6 +61318,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tiles/department/engineering/side,
+/obj/structure/sign/engineering/cans{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos/control)
 "oNa" = (
@@ -64713,6 +64726,13 @@
 /obj/effect/turf_decal/tiles/department/cargo/side,
 /turf/simulated/floor/plasteel,
 /area/station/supply/smith_office)
+"qaI" = (
+/obj/effect/turf_decal/tiles/neutral/corner,
+/obj/structure/sign/public/tools{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plasteel,
+/area/station/hallway/primary/fore/west)
 "qaW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -72172,15 +72192,14 @@
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "sVD" = (
-/obj/structure/mirror{
-	pixel_y = -34
+/obj/effect/turf_decal/tiles/department/engineering/corner{
+	dir = 4
 	},
-/obj/structure/sink/kitchen/old/directional/south,
-/obj/structure/sign/poster/official/random/directional/west,
-/turf/simulated/floor/plasteel{
-	icon_state = "freezerfloor"
+/obj/structure/sign/public/tools{
+	pixel_y = 32
 	},
-/area/station/public/toilet/lockerroom)
+/turf/simulated/floor/plasteel,
+/area/station/hallway/primary/starboard)
 "sVE" = (
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 8
@@ -79270,6 +79289,9 @@
 /obj/effect/turf_decal/tiles/dark/side{
 	dir = 1
 	},
+/obj/structure/sign/command/head{
+	pixel_x = 32
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
 "vMk" = (
@@ -81481,7 +81503,6 @@
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "HoS"
 	},
-/obj/structure/sign/command/head,
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
 "wHy" = (
@@ -101456,7 +101477,7 @@ xqq
 rXi
 cze
 kOC
-xqq
+qaI
 wrX
 xqq
 roV
@@ -118942,7 +118963,7 @@ bgf
 bhB
 bjq
 bkk
-bnr
+sVD
 hfi
 bqA
 bsp
@@ -122015,7 +122036,7 @@ bNY
 pxM
 aBI
 aTF
-sVD
+aQd
 aLl
 cZi
 smw
@@ -122028,7 +122049,7 @@ bjv
 beC
 veb
 cCu
-rve
+dgJ
 blC
 xam
 bbE

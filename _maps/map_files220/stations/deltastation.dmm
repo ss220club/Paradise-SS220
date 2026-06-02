@@ -15838,6 +15838,21 @@
 /obj/structure/marker_beacon/dock_marker/collision,
 /turf/space,
 /area/space/nearstation)
+"bud" = (
+/obj/structure/cable/extra_insulated{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/sign/engineering/power{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/aft)
 "buo" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -17666,6 +17681,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
 "bCq" = (
@@ -18737,8 +18753,6 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/folder/blue,
-/obj/item/pen,
 /turf/simulated/floor/carpet,
 /area/station/command/bridge)
 "bFL" = (
@@ -19267,19 +19281,7 @@
 /turf/simulated/floor/carpet,
 /area/station/command/bridge)
 "bHt" = (
-/obj/machinery/door_control/shutter/south{
-	id = "stationawaygate";
-	name = "Expedition Shutters Access Control";
-	pixel_x = 7;
-	req_access = list(62)
-	},
-/obj/machinery/door_control/shutter/south{
-	id = "eva-shutters";
-	name = "Auxilary E.V.A. Storage";
-	pixel_x = -7;
-	req_access = list(18)
-	},
-/obj/machinery/keycard_auth/directional/south{
+/obj/structure/sign/command/ai_upload{
 	pixel_y = -32
 	},
 /turf/simulated/floor/carpet,
@@ -19297,8 +19299,9 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/structure/sign/command/ai_upload{
-	pixel_y = -32
+/obj/item/folder/blue{
+	pixel_x = -6;
+	pixel_y = 2
 	},
 /turf/simulated/floor/carpet,
 /area/station/command/bridge)
@@ -55610,7 +55613,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/mechanic)
 "gXL" = (
-/obj/structure/sign/engineering/comms,
+/obj/structure/sign/engineering/comms{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/turret_protected/aisat)
 "gXY" = (
@@ -68849,11 +68854,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/dormitory_maintenance)
 "ljC" = (
-/obj/machinery/light/directional/south,
-/obj/effect/turf_decal/tiles/department/command/side,
-/obj/structure/extinguisher_cabinet/directional/south,
-/turf/simulated/floor/plasteel/dark,
-/area/station/command/bridge)
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/sign/engineering/materials{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/control)
 "ljM" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -91995,6 +92003,24 @@
 "sve" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/machinery/door_control/shutter/east{
+	id = "stationawaygate";
+	name = "Expedition Shutters Access Control";
+	req_access = list(62);
+	pixel_x = 25;
+	pixel_y = -2
+	},
+/obj/machinery/door_control/shutter/east{
+	pixel_x = 25;
+	pixel_y = 8;
+	id = "eva-shutters";
+	name = "Auxilary E.V.A. Storage";
+	req_access = list(18)
+	},
+/obj/machinery/keycard_auth/directional/east{
+	pixel_x = 34;
+	pixel_y = 2
 	},
 /turf/simulated/floor/carpet,
 /area/station/command/bridge)
@@ -133972,7 +133998,7 @@ cuV
 boA
 boA
 dWa
-cAB
+ljC
 cAB
 cDJ
 bXU
@@ -144223,7 +144249,7 @@ bwf
 sHI
 gSh
 byU
-ljC
+bOe
 bHk
 bJc
 bKK
@@ -144725,7 +144751,7 @@ bgy
 bdQ
 ldC
 oZd
-dkx
+sKr
 emt
 xMg
 kKB
@@ -146522,7 +146548,7 @@ dkx
 kDv
 yed
 kDv
-dkx
+sKr
 yed
 bna
 xfy
@@ -152517,7 +152543,7 @@ cKY
 kjb
 upf
 eYb
-mAz
+bud
 fgB
 dEo
 abj
