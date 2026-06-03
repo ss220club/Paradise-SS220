@@ -428,20 +428,32 @@
 
 	if(src.blood_DNA)
 		if(blood_color != "#030303")
-			var/bloody_word = (
-				decl_gender == "female" ? "окровавленная" :
-				decl_gender == "male" ? "окровавленный" :
-				decl_gender == "neuter" ? "окровавленное" :
-				"окровавленные"
-			)
+			var/bloody_word
+
+			switch(decl_gender)
+				if("female")
+					bloody_word = "окровавленная"
+				if("male")
+					bloody_word = "окровавленный"
+				if("neuter")
+					bloody_word = "окровавленное"
+				else
+					bloody_word = "окровавленные"
+
 			f_name = "[SPAN_DANGER(bloody_word)] [base_name]"
 		else
-			var/oilstain_word = (
-				decl_gender == "female" ? "измазанная маслом" :
-				decl_gender == "male" ? "измазанный маслом" :
-				decl_gender == "neuter" ? "измазанное маслом" :
-				"измазанные маслом"
-			)
+			var/oilstain_word
+
+			switch(decl_gender)
+				if("female")
+					oilstain_word = "измазанная маслом"
+				if("male")
+					oilstain_word = "измазанный маслом"
+				if("neuter")
+					oilstain_word = "измазанное маслом"
+				else
+					oilstain_word = "измазанные маслом"
+
 			f_name = "[SPAN_DANGER(oilstain_word)] [base_name]"
 
 	. = list("[bicon(src)] Это [f_name] [suffix]")
