@@ -628,7 +628,7 @@ const DNAModifierMainRejuvenators = () => {
   return (
     <Section
       fill
-      title="Сосуды для стабилизации"
+      title="Камера хранения стабилизаторов"
       buttons={
         <Button disabled={!isBeakerLoaded} icon="eject" content="Извлечь сосуд" onClick={() => act('ejectBeaker')} />
       }
