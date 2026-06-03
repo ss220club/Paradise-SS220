@@ -660,7 +660,7 @@ const DNAModifierMainRejuvenators = () => {
               }
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Примечание">
+          <LabeledList.Item label="Сосуд">
             <Box mb="0.5rem">{beakerLabel ? beakerLabel : 'Отсутствует'}</Box>
             {beakerVolume ? (
               <Box color="good">
