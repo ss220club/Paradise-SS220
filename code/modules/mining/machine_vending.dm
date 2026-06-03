@@ -398,6 +398,7 @@
 		EQUIPMENT("Fulton Pack", /obj/item/extraction_pack, 1000),
 		EQUIPMENT("Fulton Beacon", /obj/item/fulton_core, 400),
 		EQUIPMENT("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),
+		EQUIPMENT("Space Case", /obj/item/storage/pill_bottle/medipen_case/spacer, 600), // SS220 EDIT - кейс с медипенами для применения с модулями.
 		EQUIPMENT("Survival Medipen", /obj/item/reagent_containers/hypospray/autoinjector/survival, 500),
 	)
 
