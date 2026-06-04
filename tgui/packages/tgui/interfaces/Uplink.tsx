@@ -72,7 +72,7 @@ const PickTab = (index: number) => {
     case 2:
       return <ExploitableInfoPage />;
     default:
-      return 'АПЛИНК СВУЛЬПЯЧИЛСЯ, ПИШИ РЕПОРТ';
+      return 'АПЛИНК СДЖОКЕРИЛСЯ: КТО ПРОЧИТАЛ - ТОТ ВУЛЬПА! ДЛЯ ОТМЕНЫ ПРОКЛЯТИЯ СРОЧНО ПИШИТЕ АХЕЛП';
   }
 };
 
@@ -247,9 +247,9 @@ const CartPage = (_properties) => {
           buttons={
             <>
               <Button.Checkbox content="Показать описания" checked={showDesc} onClick={() => setShowDesc(!showDesc)} />
-              <Button content="Очистить выбор" icon="trash" onClick={() => act('empty_cart')} disabled={!cart} />
+              <Button content="Очистить корзину" icon="trash" onClick={() => act('empty_cart')} disabled={!cart} />
               <Button
-                content={'Купить выбранное (' + cart_price + 'TC)'}
+                content={'Оформить заказ (' + cart_price + 'TC)'}
                 icon="shopping-cart"
                 onClick={() => act('purchase_cart')}
                 disabled={!cart || cart_price > crystals}
