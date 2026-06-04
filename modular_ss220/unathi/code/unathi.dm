@@ -61,7 +61,7 @@
 		cooldown = world.time + cooldown_duration
 		return
 
-	to_chat(user, SPAN_WARNING("Вашы лапы чем-то заняты!"))
+	to_chat(user, SPAN_WARNING("Ваши лапы чем-то заняты!"))
 
 	/datum/action/innate/unathi_ignite/ash_walker
 	desc = "Годы подражания величественным рептилиям лавовой планеты научили вас выдыхать маленькое пламя, достаточное для... прикуривания сигарет?"

@@ -401,21 +401,11 @@
 			SPAN_WARNING("Воздух рассекает короткий, благородный треск пламени!")
 		)
 	else
-		if(prob(50))
-			user.visible_message(
-				SPAN_ROSE("[user] дарует дыхание воли [target], зажигая [cig.declent_ru(ACCUSATIVE)] в [target.ru_p_them()] пасти, едва не коснувшись пламенем лица [target]!"),
-				SPAN_ROSE("Вы даруете дыхание воли [target] — [cig.declent_ru(NOMINATIVE)] послушно вспыхивает в пасти, едва не опалив [target.ru_p_them()] лик!"),
-				SPAN_WARNING("Воздух рассекает короткий, благородный треск пламени!")
-			)
-		else
-			user.visible_message(
-				SPAN_ROSE("[user] направляет дыхание воли к [target], но пламя вырывается непослушным потоком, опаляя [target.ru_p_them()] лицо, и всё же зажигая [cig.declent_ru(ACCUSATIVE)]!"),
-				SPAN_ROSE("Вы направляете дыхание воли к [target], но пламя вырывается слишком бурно, опаляя [target.ru_p_them()] лик, и [cig.declent_ru(NOMINATIVE)] всё же оживает святым огнём!"),
-				SPAN_WARNING("Воздух рассекает короткий, гневный треск пламени!")
-			)
-			var/obj/item/organ/external/head/affecting = target.get_organ("head")
-			affecting.receive_damage(0, 5)
-			target.UpdateDamageIcon()
+		user.visible_message(
+			SPAN_ROSE("[user] дарует дыхание воли [target], зажигая [cig.declent_ru(ACCUSATIVE)] в [target.ru_p_them()] пасти, едва не коснувшись пламенем лица [target]!"),
+			SPAN_ROSE("Вы даруете дыхание воли [target] — [cig.declent_ru(NOMINATIVE)] послушно вспыхивает в пасти, едва не опалив [target.ru_p_them()] лик!"),
+			SPAN_WARNING("Воздух рассекает короткий, благородный треск пламени!")
+		)
 	cig.light(user, target)
 	playsound(user.loc, 'sound/effects/unathiignite.ogg', 40, FALSE)
 	matchburnout()
