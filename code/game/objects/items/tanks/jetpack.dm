@@ -124,7 +124,7 @@
 	// SS220 EDIT START
 	is_safe_to_turn_on = FALSE
 	UnregisterSignal(user, COMSIG_MOB_UNEQUIPPED_ITEM)
-	// SS220 ETID END
+	// SS220 EDIT END
 	if(on)
 		turn_off(user)
 
