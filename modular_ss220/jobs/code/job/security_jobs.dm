@@ -70,6 +70,6 @@
 /datum/outfit/job/blueshield/on_mind_initialize(mob/living/carbon/human/H)
 	. = ..()
 
-	var/datum/martial_art/cqc/cqc_style = new
-	cqc_style.teach(H)
+	var/datum/martial_art/judo/judo_style = new
+	judo_style.teach(H, TRUE)
 
