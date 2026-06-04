@@ -901,7 +901,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/smoke_grenade
 	name = "Модуль дымовых гранат"
-	desc = "Модицикация механизма МОДсьюта. Модуль, который выдаёт дымовые гранаты."
+	desc = "Модификация механизма модульного скафандра, оснащающая костюм дымовыми гранатами."
 	reference = "SGM"
 	item = /obj/item/mod/module/dispenser/smoke
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
