@@ -376,7 +376,7 @@
 
 /obj/item/match/unathi
 	name = "small blaze"
-	desc = "A little flame of your own, currently located dangerously in your mouth."
+	desc = "Твоё маленькое, но сильное пламя, которое вот-вот вырвется наружу!"
 	icon_state = "match_unathi"
 	attack_verb = null
 	flags = DROPDEL | ABSTRACT
@@ -391,27 +391,27 @@
 		return !isnull(cig)
 
 	if(!lit)
-		to_chat(user, SPAN_USERDANGER("If you can see this message, please make an issue report to GitHub, something bad has happened."))
+		to_chat(user, SPAN_USERDANGER("Всё сломалось, кодер вульпа. Пиши трекер."))
 		return TRUE
 
 	if(target == user)
 		user.visible_message(
-			SPAN_ROSE("[user] spits fire at [user.p_their()] [cig.name], igniting it."),
-			SPAN_ROSE("You spit fire at [cig], igniting it."),
-			SPAN_WARNING("You hear a brief burst of flame!")
+			SPAN_ROSE("[user] направляет дыхание воли к [cig.declent_ru(DATIVE)], и та послушно вспыхивает."),
+			SPAN_ROSE("Вы направляете дыхание воли на [cig.declent_ru(ACCUSATIVE)] и [cig.ru_p_they()] оживает слабым огоньком."),
+			SPAN_WARNING("Воздух рассекает короткий, благородный треск пламени!")
 		)
 	else
 		if(prob(50))
 			user.visible_message(
-				SPAN_ROSE("[user] spits fire at [target], lighting [cig] in [target.p_their()] mouth and nearly burning [target.p_their()] face!"),
-				SPAN_ROSE("You spit fire at [target], lighting [cig] in [target.p_their()] mouth and nearly burning [target.p_their()] face!"),
-				SPAN_WARNING("You hear a brief burst of flame!")
+				SPAN_ROSE("[user] дарует дыхание воли [target], зажигая [cig.declent_ru(ACCUSATIVE)] в [target.ru_p_them()] пасти, едва не коснувшись пламенем лица [target]!"),
+				SPAN_ROSE("Вы даруете дыхание воли [target] — [cig.declent_ru(NOMINATIVE)] послушно вспыхивает в пасти, едва не опалив [target.ru_p_them()] лик!"),
+				SPAN_WARNING("Воздух рассекает короткий, благородный треск пламени!")
 			)
 		else
 			user.visible_message(
-				SPAN_ROSE("[user] spits fire at [target], burning [target.p_their()] face and lighting [cig] in the process!"),
-				SPAN_ROSE("You spit fire at [target], burning [target.p_their()] face and lighting [cig] in the process!"),
-				SPAN_WARNING("You hear a brief burst of flame!")
+				SPAN_ROSE("[user] направляет дыхание воли к [target], но пламя вырывается непослушным потоком, опаляя [target.ru_p_them()] лицо, и всё же зажигая [cig.declent_ru(ACCUSATIVE)]!"),
+				SPAN_ROSE("Вы направляете дыхание воли к [target], но пламя вырывается слишком бурно, опаляя [target.ru_p_them()] лик, и [cig.declent_ru(NOMINATIVE)] всё же оживает святым огнём!"),
+				SPAN_WARNING("Воздух рассекает короткий, гневный треск пламени!")
 			)
 			var/obj/item/organ/external/head/affecting = target.get_organ("head")
 			affecting.receive_damage(0, 5)
