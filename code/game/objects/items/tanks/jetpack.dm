@@ -123,7 +123,7 @@
 	. = ..()
 	// SS220 EDIT START
 	is_safe_to_turn_on = FALSE
-	UnregisterSignal(user, COMSIG_MOB_UNEQUIPPED_ITEM) // SS220 EDIT - It is necessary that signals do not accumulate indefinitely.
+	UnregisterSignal(user, COMSIG_MOB_UNEQUIPPED_ITEM)
 	// SS220 ETID END
 	if(on)
 		turn_off(user)
