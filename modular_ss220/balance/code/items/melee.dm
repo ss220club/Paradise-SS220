@@ -12,7 +12,6 @@
 /obj/item/melee/classic_baton/on_non_silicon_stun(mob/living/target, mob/living/user)
 	target.apply_damage(stamina_damage, STAMINA, blocked = target.run_armor_check(armor_type = ENERGY))
 
-//Код для кувалды
 /obj/item/tactical_sledgehammer
 	name = "D-4 tactical breaching hammer"
 	desc = "Металлопластиковый композитный молот для создания брешей в стенах или уничтожения различных структур."
@@ -29,6 +28,9 @@
 	w_class = WEIGHT_CLASS_BULKY
 	throw_range = 3
 	new_attack_chain = TRUE
+	var/wall_damage = 25
+	var/window_damage = 50
+	var/airlock_damage = 100
 
 	attack_verb = list(
 		"ломает",
@@ -109,7 +111,7 @@
 	)
 
 	playsound(src.loc, 'sound/effects/bang.ogg', 75, TRUE)
-	wall.take_damage(20)
+	wall.take_damage(wall_damage)
 	return FINISH_ATTACK
 
 
@@ -122,7 +124,7 @@
 	)
 
 	playsound(src.loc, 'sound/effects/glasshit.ogg', 75, TRUE)
-	window.take_damage(50, BRUTE)
+	window.take_damage(window_damage, BRUTE)
 	return FINISH_ATTACK | MELEE_COOLDOWN_PREATTACK
 
 
@@ -135,22 +137,21 @@
 	)
 
 	playsound(src.loc, 'sound/effects/bang.ogg', 75, TRUE)
-	door.take_damage(100, BRUTE)
+	door.take_damage(airlock_damage, BRUTE)
 	return FINISH_ATTACK | MELEE_COOLDOWN_PREATTACK
 
-//Синди кувалда
+
 /obj/item/tactical_sledgehammer/syndicate
 	name = "D-4S syndicate breaching hammer"
 	desc = "Усиленная версия тактической кувалды для диверсионных операций."
-	icon = 'modular_ss220/balance/code/items/icons/sledgehammer.dmi'
 	icon_state = "sledgehammer_syndie0"
 	base_icon_state = "sledgehammer_syndie"
-	worn_icon = 'modular_ss220/balance/code/items/icons/melee_back.dmi'
 	worn_icon_state = "sledgehammer_syndie"
-	lefthand_file = 'modular_ss220/balance/code/items/icons/inhands/lefthand.dmi'
-	righthand_file = 'modular_ss220/balance/code/items/icons/inhands/righthand.dmi'
 	force = 20
 	throwforce = 20
+	wall_damage = 100
+	window_damage = 150
+	airlock_damage = 150
 
 
 /obj/item/tactical_sledgehammer/syndicate/Initialize(mapload)
@@ -162,65 +163,3 @@
 		_parryable_attack_types = ALL_ATTACK_TYPES, \
 		_parry_cooldown = 0.9 SECONDS, \
 		_requires_two_hands = TRUE)
-
-
-/obj/item/tactical_sledgehammer/syndicate/breach_wall(turf/simulated/wall/wall, mob/living/user)
-	is_breaching = TRUE
-
-	user.visible_message(
-		SPAN_WARNING("[user] заносит [src] для удара по [wall]!"),
-		SPAN_WARNING("Вы готовитесь нанести мощный удар по [wall].")
-	)
-
-	if(!do_after(user, 2 SECONDS, needhand = TRUE, target = wall, progress = TRUE))
-		user.visible_message(
-			SPAN_WARNING("[user] бросает затею ломать [wall]."),
-			SPAN_WARNING("Вы бросаете затею ломать [wall].")
-		)
-		is_breaching = FALSE
-		return FINISH_ATTACK
-
-	is_breaching = FALSE
-
-	if(QDELETED(src) || QDELETED(wall))
-		return FINISH_ATTACK
-
-	user.do_attack_animation(wall)
-
-	user.visible_message(
-		SPAN_DANGER("[user] с силой бьёт [wall] [src]!"),
-		SPAN_DANGER("Вы наносите сокрушительный удар по [wall]!")
-	)
-
-	playsound(src.loc, 'sound/effects/bang.ogg', 75, TRUE)
-	wall.take_damage(100)
-
-	return FINISH_ATTACK
-
-
-/obj/item/tactical_sledgehammer/syndicate/breach_window(obj/structure/window/window, mob/living/user)
-	user.do_attack_animation(window)
-
-	user.visible_message(
-		SPAN_DANGER("[user] с треском бьёт по [window] [src]!"),
-		SPAN_DANGER("Вы наносите сокрушительный удар по стеклу!")
-	)
-
-	playsound(src.loc, 'sound/effects/glasshit.ogg', 75, TRUE)
-	window.take_damage(150, BRUTE)
-
-	return FINISH_ATTACK | MELEE_COOLDOWN_PREATTACK
-
-
-/obj/item/tactical_sledgehammer/syndicate/breach_airlock(obj/machinery/door/airlock/door, mob/living/user)
-	user.do_attack_animation(door)
-
-	user.visible_message(
-		SPAN_DANGER("[user] с размаху бьёт по [door] [src]!"),
-		SPAN_DANGER("Вы наносите сокрушительный удар по двери!")
-	)
-
-	playsound(src.loc, 'sound/effects/bang.ogg', 75, TRUE)
-	door.take_damage(150, BRUTE)
-
-	return FINISH_ATTACK | MELEE_COOLDOWN_PREATTACK
