@@ -66,3 +66,5 @@
 	/datum/action/innate/unathi_ignite/ash_walker
 	desc = "Годы подражания величественным рептилиям лавовой планеты научили вас выдыхать маленькое пламя, достаточное для... прикуривания сигарет?"
 	cooldown_duration = 3 SECONDS
+
+

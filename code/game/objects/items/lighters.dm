@@ -394,6 +394,21 @@
 		to_chat(user, SPAN_USERDANGER("Всё сломалось, кодер вульпа. Пиши трекер."))
 		return TRUE
 
+// чёт пытаемся
+	if(user.a_intent == INTENT_HARM && target != user)
+		user.visible_message(
+			SPAN_DANGER("[user] резко выдыхает пламя души прямо в [cig.declent_ru(ACCUSATIVE)] [target], обращая её в пепел за считанные мгновения!"),
+			SPAN_DANGER("Вы направляете пламя души прямо на [cig.declent_ru(ACCUSATIVE)] [target], мгновенно сжигая её до окурка."),
+			SPAN_WARNING("Раздаётся резкий треск вспыхнувшего табака!")
+		)
+
+		playsound(user.loc, 'sound/effects/unathiignite.ogg', 50, FALSE)
+
+		cig.die()
+
+		matchburnout()
+		return TRUE
+
 	if(target == user)
 		user.visible_message(
 			SPAN_ROSE("[user] направляет дыхание воли к [cig.declent_ru(DATIVE)], и та послушно вспыхивает."),
