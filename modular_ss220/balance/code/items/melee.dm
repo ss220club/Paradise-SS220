@@ -38,7 +38,7 @@
 		"прорывает"
 	)
 
-	var/const/force_wielded = 25
+	var/force_wielded = 25
 	/// Prevents multiple wall breach actions running simultaneously
 	var/is_breaching = FALSE
 
@@ -148,10 +148,12 @@
 	base_icon_state = "sledgehammer_syndie"
 	worn_icon_state = "sledgehammer_syndie"
 	force = 20
+	force_wielded = 30
 	throwforce = 20
 	wall_damage = 100
 	window_damage = 150
 	airlock_damage = 150
+	force_wielded = 35
 
 
 /obj/item/tactical_sledgehammer/syndicate/Initialize(mapload)
