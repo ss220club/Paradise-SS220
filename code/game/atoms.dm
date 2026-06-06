@@ -420,17 +420,44 @@
 
 /atom/proc/build_base_description(infix = "", suffix = "")
 	//This reformat names to get a/an properly working on item descriptions when they are bloody
-	var/f_name = "\a [src][infix]."
+
+	var/decl_gender = src.declent_ru("gender")
+	var/base_name = "[src.declent_ru(NOMINATIVE)][infix]."
+
+	var/f_name = base_name
+
 	if(src.blood_DNA)
-		if(gender == PLURAL)
-			f_name = "some "
-		else
-			f_name = "a "
 		if(blood_color != "#030303")
-			f_name += "[SPAN_DANGER("blood-stained")] [name][infix]!"
+			var/bloody_word
+
+			switch(decl_gender)
+				if("female")
+					bloody_word = "окровавленная"
+				if("male")
+					bloody_word = "окровавленный"
+				if("neuter")
+					bloody_word = "окровавленное"
+				else
+					bloody_word = "окровавленные"
+
+			f_name = "[SPAN_DANGER(bloody_word)] [base_name]"
 		else
-			f_name += "oil-stained [name][infix]."
-	. = list("[bicon(src)] That's [f_name] [suffix]")
+			var/oilstain_word
+
+			switch(decl_gender)
+				if("female")
+					oilstain_word = "замасленная"
+				if("male")
+					oilstain_word = "замасленный"
+				if("neuter")
+					oilstain_word = "замасленное"
+				else
+					oilstain_word = "замасленные"
+
+			f_name = "[SPAN_DANGER(oilstain_word)] [base_name]"
+
+	. = list("[bicon(src)] Это [f_name] [suffix]")
+
 	if(desc)
 		. += desc
 

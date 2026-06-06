@@ -142,6 +142,7 @@
 	icon_palette_key = DYE_ORANGE
 
 /obj/item/clothing/under/color/orange/prison
+	name = "prison jumpsuit"
 	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
 	icon_state = "prisoner"
 	icon_palette_key = null
@@ -150,6 +151,7 @@
 	sensor_mode = SENSOR_COORDS
 
 /obj/item/clothing/under/color/jumpskirt/orange/prison
+	name = "prison jumpskirt"
 	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
 	icon_state = "prisonerskirt"
 	icon_palette_key = null
