@@ -148,12 +148,11 @@
 	base_icon_state = "sledgehammer_syndie"
 	worn_icon_state = "sledgehammer_syndie"
 	force = 20
-	force_wielded = 30
+	force_wielded = 35
 	throwforce = 20
 	wall_damage = 100
 	window_damage = 150
 	airlock_damage = 150
-	force_wielded = 35
 
 
 /obj/item/tactical_sledgehammer/syndicate/Initialize(mapload)
