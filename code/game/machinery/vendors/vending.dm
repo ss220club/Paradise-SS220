@@ -47,7 +47,7 @@
 	return initial(product_path.icon_state)
 
 /datum/data/vending_product/from_path/get_name()
-	return initial(product_path.name)
+	return declent_ru_initial(initial(product_path.name), NOMINATIVE, initial(product_path.name))
 
 /datum/data/vending_product/from_path/vend(turf/where)
 	if(amount > 0)
