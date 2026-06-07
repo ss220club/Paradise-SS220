@@ -1,21 +1,21 @@
 /mob/living/carbon/human/examine_visible_clothing(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	var/list/message_parts = list(
-		list("[p_are()] holding", l_hand, "in", "left hand"),
-		list("[p_are()] holding", r_hand, "in", "right hand"),
-		list("[p_are()] wearing", head, "on", "head"),
-		list("[p_are()] wearing", neck, "around", "neck"),
-		list("[p_are()] wearing", !skip_jumpsuit && w_uniform, null, null, length(w_uniform?.accessories) && "[english_accessory_list(w_uniform)]"),
-		list("[p_are()] wearing", wear_suit, null, null),
-		list("[p_are()] carrying", !skip_suit_storage && s_store, "on", wear_suit && wear_suit.name),
-		list("[p_have()]", back, "on", "back"),
-		list("[p_have()]", !skip_gloves && gloves, "on", "hands"),
-		list("[p_have()]", belt, "about", "waist"),
-		list("[p_are()] wearing", !skip_shoes && shoes, "on", "feet"),
-		list("[p_have()]", !skip_mask && wear_mask, "on", "face"),
-		list("[p_have()]", glasses, "covering", "eyes"),
-		list("[p_have()]", !skip_ears && l_ear, "on", "left ear"),
-		list("[p_have()]", !skip_ears && r_ear, "on", "right ear"),
-		list("[p_are()] wearing", wear_id, null, null),
+		list("[ru_p_hold()]", l_hand, "в", "левой руке"),
+		list("[ru_p_hold()]", r_hand, "в", "правой руке"),
+		list("[ru_p_wear()]", head, "на", "голове"),
+		list("[ru_p_wear()]", neck, "на", "шее"),
+		list("[ru_p_wear()]", !skip_jumpsuit && w_uniform, null, null, length(w_uniform?.accessories) && "[english_accessory_list(w_uniform)]"),
+		list("[ru_p_wear()]", wear_suit, null, null),
+		list("[ru_p_wear()] поверх", !skip_suit_storage && s_store, "на", wear_suit && wear_suit.name),
+		list("[ru_p_carry()]", back, "на", "своей спине"),
+		list("[ru_p_wear()]", !skip_gloves && gloves, "на", "руках"),
+		list("[ru_p_wear()]", belt, "на", "пояснице"),
+		list("[ru_p_wear()]", !skip_shoes && shoes, "на", "ногах"),
+		list("[ru_p_wear()]", !skip_mask && wear_mask, "на", "лице"),
+		list("[ru_p_wear()]", glasses, "прикрывающие", "[ru_p_them()] глаза"),
+		list("[ru_p_equip()]", !skip_ears && l_ear, "на", "левом ухе"),
+		list("[ru_p_equip()]", !skip_ears && r_ear, "на", "правом ухе"),
+		list("[ru_p_equip()]", wear_id, "на", "своей груди"),
 	)
 
 	return message_parts
@@ -29,11 +29,11 @@
 	switch(limb_name)
 		if("hands")
 			if(blood_DNA)
-				return "[SPAN_WARNING("[p_they(TRUE)] [p_have()] [hand_blood_color != "#030303" ? "blood-stained":"oil-stained"] hands!")]\n"
+				return "[SPAN_WARNING("capitalize([ru_p_them()]) руки [hand_blood_color != "#030303" ? "покрыты чьей-то кровью!":"испачканы маслом."]")]\n"
 		if("eyes")
 			if(HAS_TRAIT(src, SCRYING))
 				if(IS_CULTIST(src) && HAS_TRAIT(src, CULT_EYES))
-					return "[SPAN_BOLDWARNING("[p_their(TRUE)] glowing red eyes are glazed over!")]\n"
+					return "[SPAN_BOLDWARNING("capitalize([ru_p_them()]) glowing red eyes are glazed over!")]\n"
 				return "[SPAN_BOLDWARNING("[p_their(TRUE)] eyes are glazed over.")]\n"
 			if(IS_CULTIST(src) && HAS_TRAIT(src, CULT_EYES))
 				return "[SPAN_BOLDWARNING("[p_their(TRUE)] eyes are glowing an unnatural red!")]\n"
@@ -65,7 +65,7 @@
 		var/species_name =  lowertext(displayed_species)
 		if(displayed_species == "Slime People") //snowflakey because Slime People are defined as a plural
 			species_name = "slime person"
-		msg += ", \a [height]<b><font color='[examine_color]'> [species_name]</font></b> with \a [physique] physique!"
+		msg += ", [height]<b><font color='[examine_color]'> [species_name]</font></b> c [physique] телосложением!"
 	return msg
 
 /mob/living/carbon/human/examine_start_damage_block(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
@@ -283,9 +283,25 @@
 
 /mob/living/carbon/human/examine_get_brute_message()
 	if(!ismachineperson(src) || calculate_ipc_masquerade_status())
-		return "bruising"
+		return get_ru_brute_word(src, "травмирован", "травмирована", "травмировано", "травмированы")
 
-	return "denting"
+	return get_ru_brute_word(src, "повреждён", "повреждена", "повреждено", "повреждены")
+
+/proc/get_ru_brute_word(mob/H, male, female, neuter, plural)
+	if(!H)
+		return male
+	if(istype(H, /mob/living/carbon/human/slime))
+		return plural
+
+	switch(H.gender)
+		if(MALE)
+			return male
+		if(FEMALE)
+			return female
+		if(NEUTER)
+			return neuter
+		else
+			return male
 
 /// Checks if a body part is covered by clothing
 /mob/living/carbon/human/proc/is_bodypart_covered_by_clothing(part_name)
