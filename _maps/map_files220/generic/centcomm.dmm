@@ -21209,7 +21209,9 @@
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "jsR" = (
-/obj/machinery/computer/mech_bay_power_console,
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
 "jsW" = (
@@ -47749,6 +47751,18 @@
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
+"vxh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/tactical_sledgehammer/syndicate{
+	pixel_x = -4
+	},
+/obj/item/tactical_sledgehammer/syndicate{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/syndicate_mothership)
 "vxs" = (
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 1;
@@ -70902,7 +70916,7 @@ qCH
 viA
 fnU
 jsR
-hXC
+vxh
 hXC
 hXC
 hXC
