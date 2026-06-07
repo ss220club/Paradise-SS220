@@ -66,3 +66,13 @@
 
 /datum/job/hos
 	exp_map = list(EXP_TYPE_SECURITY = (1200 + NOVICE_CADET_JOB_MINUTES))
+
+/datum/martial_art/judo/blueshield
+	no_baton = FALSE
+
+/datum/outfit/job/blueshield/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+
+	var/datum/martial_art/judo/blueshield/judo_style = new
+	judo_style.teach(H)
+
