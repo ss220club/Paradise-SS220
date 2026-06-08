@@ -63,7 +63,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/atmospherics/supermatter_cr
 GLOBAL_DATUM(main_fission_reactor, /obj/machinery/atmospherics/fission_reactor)
 
 ///Global list for descriptors
-GLOBAL_LIST_INIT(character_physiques, list("костлявым", "хрупким", "худощавым", "сухим", "долговязым", "потрёпанным", "обычным", "стройным", "подтянутым", "крепким", "мускулистым", "атлетичным", "рельефным", "пухлым", "избыточного веса"))
+GLOBAL_LIST_INIT(character_physiques, list("костлявым", "хрупким", "худощавым", "сухим", "долговязым", "потрёпанным", "обычным", "стройным", "подтянутым", "крепким", "мускулистым", "атлетичным", "рельефным", "пухлым", "разжиревшим"))
 
 GLOBAL_LIST_INIT(character_heights, list("карликового", "крайне низкого", "низкого", "обычного", "высокого", "очень высокого", "гигантского"))
 

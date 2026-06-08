@@ -215,11 +215,11 @@
 		if(istype(handcuffed, /obj/item/restraints/handcuffs/cable/zipties))
 			msg += "[SPAN_WARNING("[ru_p_them(TRUE)] руки [bicon(handcuffed)] скручены стяжками!")]\n"
 		else if(istype(handcuffed, /obj/item/restraints/handcuffs/twimsts))
-			msg += "[SPAN_WARNING("[ru_p_them()] руки [bicon(handcuffed)] скручены сладостными стяжками!")]\n"
+			msg += "[SPAN_WARNING("[ru_p_them(TRUE)] руки [bicon(handcuffed)] скручены сладостными стяжками!")]\n"
 		else if(istype(handcuffed, /obj/item/restraints/handcuffs/cable))
-			msg += "[SPAN_WARNING("[ru_p_them()] руки [bicon(handcuffed)] стянуты проводами!")]\n"
+			msg += "[SPAN_WARNING("[ru_p_them(TRUE)] руки [bicon(handcuffed)] стянуты проводами!")]\n"
 		else
-			msg += "[SPAN_WARNING("[ru_p_them()] руки [bicon(handcuffed)] закованы в наручники!")]\n"
+			msg += "[SPAN_WARNING("[ru_p_them(TRUE)] руки [bicon(handcuffed)] закованы в наручники!")]\n"
 
 	//legcuffed?
 	if(legcuffed)
@@ -237,11 +237,11 @@
 	for(var/obj/item/grab/grab in grab_items)
 		switch(grab.state)
 			if(GRAB_AGGRESSIVE)
-				msg += "[SPAN_BOLDWARNING("[ru_p_they(TRUE)] [ru_p_hold()] [grab.affecting] за руки!")]\n"
+				msg += "[SPAN_BOLDWARNING("[ru_p_they(TRUE)] [ru_p_hold()] [grab.affecting.declent_ru(ACCUSATIVE)] за руки!")]\n"
 			if(GRAB_NECK)
-				msg += "[SPAN_BOLDWARNING("[ru_p_they(TRUE)] [ru_p_hold()] шею [grab.affecting] в захвате!")]\n"
+				msg += "[SPAN_BOLDWARNING("[ru_p_they(TRUE)] [ru_p_hold()] шею [grab.affecting.declent_ru(GENITIVE)] в захвате!")]\n"
 			if(GRAB_KILL)
-				msg += "[SPAN_BOLDWARNING("[ru_p_they(TRUE)] [ru_p_hold()] [grab.affecting], пытаясь задушить!")]\n"
+				msg += "[SPAN_BOLDWARNING("[ru_p_they(TRUE)] [ru_p_hold()] [grab.affecting.declent_ru(ACCUSATIVE)], пытаясь задушить!")]\n"
 
 	//Jitters
 	switch(AmountJitter())

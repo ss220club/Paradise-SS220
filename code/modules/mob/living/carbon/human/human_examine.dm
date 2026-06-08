@@ -12,7 +12,7 @@
 		list("[ru_p_wear()]", belt, "на", "пояснице"),
 		list("[ru_p_wear()]", !skip_shoes && shoes, "на", "ногах"),
 		list("[ru_p_wear()]", !skip_mask && wear_mask, "на", "лице"),
-		list("[ru_p_equip()]", glasses, "прикрывающие [ru_p_them()]", "глаза"),
+		list("[ru_p_equip()]", glasses, ", прикрывающие [ru_p_them()]", "глаза"),
 		list("[ru_p_equip()]", !skip_ears && l_ear, "на", "левом ухе"),
 		list("[ru_p_equip()]", !skip_ears && r_ear, "на", "правом ухе"),
 		list("[ru_p_wear()]", wear_id, "на", "своей груди"),
@@ -86,7 +86,7 @@
 		if(!E)
 			if(bodypart_clothing_bitflag & skip_bodyparts)
 				continue
-			wound_flavor_text["[organ_tag]"] = "<b>У [ru_p_theirs()] отсутствует [declent_ru_initial(organ_data["descriptor"], GENITIVE, organ_data["descriptor"])].</b>\n"
+			wound_flavor_text["[organ_tag]"] = "<b>У [ru_p_theirs()] отсутствует [declent_ru_initial(organ_data["descriptor"], NOMINATIVE, organ_data["descriptor"])].</b>\n"
 			if(bodypart_clothing_bitflag & ARM_LEFT)
 				skip_bodyparts |= HAND_LEFT
 				wound_flavor_text["l_hand"] = null
@@ -171,7 +171,7 @@
 /mob/living/carbon/human/examine_extra_damage_flavor()
 	var/msg = ""
 	if(bleedsuppress)
-		msg += "[ru_p_they()] перебинтован чем-то.\n"
+		msg += "[ru_p_them(TRUE)] тело чем-то перебинтовано.\n"
 	else if(bleed_rate)
 		msg += "<b>У [ru_p_theirs()] открытое кровотечение!</b>\n"
 

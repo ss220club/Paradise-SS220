@@ -191,7 +191,7 @@
 	return NONE
 
 /obj/item/card/id/proc/UpdateName()
-	name = "ID-карта [registered_name] ([assignment])"
+	name = "ID - [registered_name] ([assignment])"
 
 /obj/item/card/id/proc/SetOwnerInfo(mob/living/carbon/human/H)
 	if(!H || !H.dna)
@@ -274,10 +274,10 @@
 
 /obj/item/card/id/proc/update_label(newname, newjob)
 	if(newname || newjob)
-		name = "[(!newname)	? "identification card"	: "ID-карта [newname]"][(!newjob) ? "" : " ([newjob])"]"
+		name = "[(!newname)	? "identification card"	: "ID - [newname]"][(!newjob) ? "" : " ([newjob])"]"
 		return
 
-	name = "[(!registered_name)	? "identification card"	: "ID-карта [registered_name]"][(!assignment) ? "" : " ([assignment])"]"
+	name = "[(!registered_name)	? "identification card"	: "ID - [registered_name]"][(!assignment) ? "" : " ([assignment])"]"
 
 /obj/item/card/id/proc/get_departments()
 	return get_departments_from_job(rank)
