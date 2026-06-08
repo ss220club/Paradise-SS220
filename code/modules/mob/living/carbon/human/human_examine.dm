@@ -131,7 +131,7 @@
 
 		if(!ismachineperson(src))
 			if(E.is_robotic() && !E.has_synthetic_skin)
-				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] роботизированная [E.declent_ru(NOMINATIVE)]!\n"
+				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] киберконечность - [E.declent_ru(NOMINATIVE)]!\n"
 
 			else if(E.status & ORGAN_SPLINTED)
 				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] наложен гипс на [E.declent_ru(ACCUSATIVE)]!\n"
