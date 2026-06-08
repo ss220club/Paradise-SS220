@@ -158,13 +158,13 @@
 
 					if(item.blood_color != "#030303")
 						switch(decl_gender)
-							if("female") word = "окровавленная"
+							if("female") word = "окровавленную"
 							if("male") word = "окровавленный"
 							if("neuter") word = "окровавленное"
 							else word = "окровавленные"
 					else
 						switch(decl_gender)
-							if("female") word = "замасленная"
+							if("female") word = "замасленную"
 							if("male") word = "замасленный"
 							if("neuter") word = "замасленное"
 							else word = "замасленные"
