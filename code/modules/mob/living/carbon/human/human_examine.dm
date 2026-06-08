@@ -6,16 +6,16 @@
 		list("[ru_p_wear()]", neck, "на", "шее"),
 		list("[ru_p_wear()]", !skip_jumpsuit && w_uniform, null, null, length(w_uniform?.accessories) && "[english_accessory_list(w_uniform)]"),
 		list("[ru_p_wear()]", wear_suit, null, null),
-		list("[ru_p_wear()] поверх", !skip_suit_storage && s_store, "на", wear_suit && wear_suit.name),
+		list("[ru_p_equip()]", !skip_suit_storage && s_store, "на", wear_suit && wear_suit.name),
 		list("[ru_p_carry()]", back, "на", "своей спине"),
 		list("[ru_p_wear()]", !skip_gloves && gloves, "на", "руках"),
 		list("[ru_p_wear()]", belt, "на", "пояснице"),
 		list("[ru_p_wear()]", !skip_shoes && shoes, "на", "ногах"),
 		list("[ru_p_wear()]", !skip_mask && wear_mask, "на", "лице"),
-		list("[ru_p_wear()]", glasses, "прикрывающие", "[ru_p_them()] глаза"),
+		list("[ru_p_equip()]", glasses, "прикрывающие [ru_p_them()]", "глаза"),
 		list("[ru_p_equip()]", !skip_ears && l_ear, "на", "левом ухе"),
 		list("[ru_p_equip()]", !skip_ears && r_ear, "на", "правом ухе"),
-		list("[ru_p_equip()]", wear_id, "на", "своей груди"),
+		list("[ru_p_wear()]", wear_id, "на", "своей груди"),
 	)
 
 	return message_parts
@@ -26,16 +26,20 @@
 
 /mob/living/carbon/human/examine_handle_individual_limb(limb_name)
 	var/msg = ""
+
 	switch(limb_name)
-		if("hands")
+		if("руках")
 			if(blood_DNA)
-				return "[SPAN_WARNING("capitalize([ru_p_them()]) руки [hand_blood_color != "#030303" ? "покрыты чьей-то кровью!":"испачканы маслом."]")]\n"
+				msg += "[SPAN_WARNING("[ru_p_them(TRUE)] руки [hand_blood_color != "#030303" ? "покрыты чьей-то кровью!" : "испачканы маслом."]")]\n"
+
+		if("глаза")
 			if(HAS_TRAIT(src, SCRYING))
 				if(IS_CULTIST(src) && HAS_TRAIT(src, CULT_EYES))
-					return "[SPAN_BOLDWARNING("capitalize([ru_p_them()]) glowing red eyes are glazed over!")]\n"
-				return "[SPAN_BOLDWARNING("[p_their(TRUE)] eyes are glazed over.")]\n"
-			if(IS_CULTIST(src) && HAS_TRAIT(src, CULT_EYES))
-				return "[SPAN_BOLDWARNING("[p_their(TRUE)] eyes are glowing an unnatural red!")]\n"
+					msg += "[SPAN_BOLDWARNING("[ru_p_them(TRUE)] светящиеся красные глаза будто затуманены!")]\n"
+				else
+					msg += "[SPAN_BOLDWARNING("[ru_p_them(TRUE)] глаза затуманены.")]\n"
+			else if(IS_CULTIST(src) && HAS_TRAIT(src, CULT_EYES))
+				msg += "[SPAN_BOLDWARNING("[ru_p_them(TRUE)] глаза сияют неестественным красным светом!")]\n"
 
 	return msg
 
@@ -75,7 +79,6 @@
 	for(var/organ_tag in dna.species.has_limbs)
 
 		var/list/organ_data = dna.species.has_limbs[organ_tag]
-		var/organ_descriptor = organ_data["descriptor"]
 		is_destroyed["[organ_data["descriptor"]]"] = 1
 
 		var/obj/item/organ/external/E = bodyparts_by_name[organ_tag]
@@ -83,7 +86,7 @@
 		if(!E)
 			if(bodypart_clothing_bitflag & skip_bodyparts)
 				continue
-			wound_flavor_text["[organ_tag]"] = "<b>[p_they(TRUE)] [p_are()] missing [p_their()] [organ_descriptor].</b>\n"
+			wound_flavor_text["[organ_tag]"] = "<b>У [ru_p_theirs()] отсутствует [declent_ru_initial(organ_data["descriptor"], GENITIVE, organ_data["descriptor"])].</b>\n"
 			if(bodypart_clothing_bitflag & ARM_LEFT)
 				skip_bodyparts |= HAND_LEFT
 				wound_flavor_text["l_hand"] = null
@@ -128,26 +131,26 @@
 
 		if(!ismachineperson(src))
 			if(E.is_robotic() && !E.has_synthetic_skin)
-				wound_flavor_text["[E.limb_name]"] = "[p_they(TRUE)] [p_have()] a robotic [E.name]!\n"
+				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] роботизированная [E.declent_ru(NOMINATIVE)]!\n"
 
 			else if(E.status & ORGAN_SPLINTED)
-				wound_flavor_text["[E.limb_name]"] = "[p_they(TRUE)] [p_have()] a splint on [p_their()] [E.name]!\n"
+				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] наложен гипс на [E.declent_ru(ACCUSATIVE)]!\n"
 
 			else if(!E.properly_attached)
-				wound_flavor_text["[E.limb_name]"] = "[p_their(TRUE)] [E.name] is barely attached!\n"
+				wound_flavor_text["[E.limb_name]"] = "[ru_p_them(TRUE)] [E.declent_ru(ACCUSATIVE)] едва закреплена!\n"
 
 			else if(E.status & ORGAN_BURNT)
-				wound_flavor_text["[E.limb_name]"] = "[p_their(TRUE)] [E.name] is badly burnt" + (E.status & ORGAN_SALVED ? ", but salved" : "") + "!\n"
+				wound_flavor_text["[E.limb_name]"] = "[ru_p_them(TRUE)] [E.declent_ru(NOMINATIVE)] сильно обгорела" + (E.status & ORGAN_SALVED ? ", но была обработана" : "") + "!\n"
 
 		if(E.open)
 			if(E.is_robotic())
-				msg += "<b>The maintenance hatch on [p_their()] [ignore_limb_branding(E.limb_name)] is open!</b>\n"
+				msg += "<b>Панель техобслуживания на [ru_p_them()] [ignore_limb_branding(E.declent_ru(PREPOSITIONAL))] открыта!</b>\n"
 			else
-				msg += "<b>[p_their(TRUE)] [ignore_limb_branding(E.limb_name)] [E.open != ORGAN_ORGANIC_VIOLENT_OPEN ? "has an open incision" : "has been violently split open"]!</b>\n"
+				msg += "<b>У [ru_p_theirs()] на [ignore_limb_branding(E.declent_ru(PREPOSITIONAL))] [E.open != ORGAN_ORGANIC_VIOLENT_OPEN ? "открытая операционная рана" : "насильственный разрыв тканей"]!</b>\n"
 
 		for(var/obj/item/I in E.embedded_objects)
 			// we cant just use \a here, as we want it to appear before the bicon
-			msg += "<b>[p_they(TRUE)] [p_have()] [I.p_a()] [bicon(I)] [I.name] embedded in [p_their()] [E.name]!</b>\n"
+			msg += "<b>В [ru_p_them()] [E.declent_ru(PREPOSITIONAL)] застряло что-то похожее на [bicon(I)] [I.declent_ru(NOMINATIVE)]!</b>\n"
 
 	//Handles the text strings being added to the actual description.
 	//If they have something that covers the limb, and it is not missing, put flavortext.  If it is covered but bleeding, add other flavortext.
@@ -178,13 +181,13 @@
 	var/msg = ""
 	switch(decaylevel)
 		if(1)
-			msg += "[p_they(TRUE)] [p_are()] starting to smell.\n"
+			msg += "[ru_p_them(TRUE)] тело начинает едко пахнуть.\n"
 		if(2)
-			msg += "[p_they(TRUE)] [p_are()] bloated and smells disgusting.\n"
+			msg += "[ru_p_them(TRUE)] тело раздулось и пахнет крайне отвратно.\n"
 		if(3)
-			msg += "[p_they(TRUE)] [p_are()] rotting and blackened, the skin sloughing off. The smell is indescribably foul.\n"
+			msg += "[ru_p_them(TRUE)] тело заметно гниёт и темнеет, кожа начинает отслаиваться. Запах неописуемо отвратительный.\n"
 		if(4)
-			msg += "[p_they(TRUE)] [p_are()] mostly desiccated now, with only [isslimeperson(src) ? "congealed slime" : "bones"] remaining of what used to be a person.\n"
+			msg += "[ru_p_them(TRUE)] тело по большей части разложилось, оставляя за собой лишь [isslimeperson(src) ? "массу застывшей слизи" : "груду костей"], что когда-то была полна жизнью.\n"
 
 	// only humans get employment records
 	if(hasHUD(user, EXAMINE_HUD_SKILLS))
@@ -205,8 +208,8 @@
 
 	if(hasHUD(user, EXAMINE_HUD_MEDICAL_READ))
 		var/perpname = get_visible_name(TRUE)
-		var/medical = "None"
-		var/mental = "None"
+		var/medical = "Отсутствует"
+		var/mental = "Отсутствует"
 
 		for(var/datum/data/record/E in GLOB.data_core.general)
 			if(E.fields["name"] == perpname)
@@ -219,12 +222,12 @@
 		var/mental_status = hasHUD(user, EXAMINE_HUD_MEDICAL_WRITE) ? "<a href='byond://?src=[UID()];mental=1'>\[[mental]\]</a>" : "\[[mental]\]"
 		msg += "[SPAN_DEPTRADIO("Физическое состояние: ")][medical_status]\n"
 		msg += "[SPAN_DEPTRADIO("Психическое состояние: ")][mental_status]\n"
-		msg += "[SPAN_DEPTRADIO("Медицинские сведения:")] <a href='byond://?src=[UID()];medrecord=`'>\[View\]</a> <a href='byond://?src=[UID()];medrecordComment=`'>\[View comment log\]</a> <a href='byond://?src=[UID()];medrecordadd=`'>\[Add comment\]</a>\n"
+		msg += "[SPAN_DEPTRADIO("Медицинские сведения:")] <a href='byond://?src=[UID()];medrecord=`'>\[Просмотреть\]</a> <a href='byond://?src=[UID()];medrecordComment=`'>\[Недавние заметки\]</a> <a href='byond://?src=[UID()];medrecordadd=`'>\[Добавить коммент\]</a>\n"
 
 	if(hasHUD(user, EXAMINE_HUD_SECURITY_READ))
 		var/perpname = get_visible_name(TRUE)
-		var/criminal = "None"
-		var/commentLatest = "ERROR: Unable to locate a data core entry for this person." //If there is no datacore present, give this
+		var/criminal = "Отсутствует"
+		var/commentLatest = "ОШИБКА: Не удалось найти запись в базе данных для этой персоны." //If there is no datacore present, give this
 
 		if(perpname)
 			for(var/datum/data/record/E in GLOB.data_core.general)
@@ -242,12 +245,12 @@
 
 			var/criminal_status = hasHUD(user, EXAMINE_HUD_SECURITY_WRITE) ? "<a href='byond://?src=[UID()];criminal=1'>\[[criminal]\]</a>" : "\[[criminal]\]"
 			msg += "[SPAN_DEPTRADIO("Криминальный статус:")] [criminal_status]\n"
-			msg += "[SPAN_DEPTRADIO("Заметки охраны:")] <a href='byond://?src=[UID()];secrecord=`'>\[View\]</a> <a href='byond://?src=[UID()];secrecordComment=`'>\[View comment log\]</a> <a href='byond://?src=[UID()];secrecordadd=`'>\[Add comment\]</a>\n"
+			msg += "[SPAN_DEPTRADIO("Заметки охраны:")] <a href='byond://?src=[UID()];secrecord=`'>\[Просмотреть\]</a> <a href='byond://?src=[UID()];secrecordComment=`'>\[Недавние заметки\]</a> <a href='byond://?src=[UID()];secrecordadd=`'>\[Добавить коммент\]</a>\n"
 			msg += "[SPAN_DEPTRADIO("Недавние правки:")] [commentLatest]\n"
 
 	if(hasHUD(user, EXAMINE_HUD_MALF_READ))
 		var/perpname = get_visible_name(TRUE)
-		var/malf = "None"
+		var/malf = "Отсутствует"
 
 		if(perpname)
 			for(var/datum/data/record/E in GLOB.data_core.general)
@@ -257,7 +260,7 @@
 							malf = E.fields["ai_target"]
 
 			var/malf_status = hasHUD(user, EXAMINE_HUD_MALF_WRITE) ? "<a href='byond://?src=[UID()];ai=`'>\[[malf]\]</a>" : "\[[malf]\]"
-			msg += "[SPAN_DEPTRADIO("Target Status:")] [malf_status]\n"
+			msg += "[SPAN_DEPTRADIO("Статус цели:")] [malf_status]\n"
 
 	return msg
 

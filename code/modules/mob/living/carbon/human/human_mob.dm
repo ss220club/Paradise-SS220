@@ -804,7 +804,7 @@
 				if(E.fields["name"] == perpname)
 					for(var/datum/data/record/R in GLOB.data_core.general)
 						if(R.fields["id"] == E.fields["id"])
-							var/setmental = input(usr, "Specify a new mental status for this person.", "Medical HUD", R.fields["m_stat"]) in list("*Insane*", "*Unstable*", "*Watch*", "Stable", "Cancel")
+							var/setmental = input(usr, "Укажите новый психический статус для этого человека.", "Медицинский интерфейс", R.fields["m_stat"]) in list("*Невменяемое*", "*Нестабильное*", "*Под наздором*", "Стабильное", "Отмена")
 
 							if(hasHUD(usr, EXAMINE_HUD_MEDICAL_WRITE))
 								if(setmental != "Cancel")

@@ -10,11 +10,11 @@
  */
 /mob/living/carbon/proc/examine_visible_clothing(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	return list(
-		list("[p_are()] holding", l_hand, "in", "left hand"),
-		list("[p_are()] holding", r_hand, "in", "right hand"),
-		list("[p_are()] wearing", head, "on", "head"),
-		list("[p_are()] wearing", wear_suit, null, null),
-		list("[p_have()]", back, "on", "back"),
+		list("[ru_p_hold()]", l_hand, "в", "левой руке"),
+		list("[ru_p_hold()]", r_hand, "в", "правой руке"),
+		list("[ru_p_wear()]", head, "на", "голове"),
+		list("[ru_p_wear()]", wear_suit, null, null),
+		list("[ru_p_carry()]", back, "на", "своей спине"),
 	)
 
 /**
