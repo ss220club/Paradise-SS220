@@ -117,11 +117,9 @@
 /datum/proc/ru_p_carry(temp_gender)
 	. = "таскает"
 
-/// Применяет одно из "'экипировали'", "экипировал", "экипировало", или "экипировала" в зависимости от пола. Установите TRUE для заглавной буквы.
+/// Применяет одно из "'закрепил'", "закрепила", "закрепило", или "закрепили" в зависимости от пола. Установите TRUE для заглавной буквы.
 /datum/proc/ru_p_equip(capitalized, temp_gender)
-	. = "экипировал"
-
-
+	. = "закрепил"
 
 //////////////////////////////
 // MARK: Client pronouns
@@ -408,6 +406,10 @@
 	return ..()
 
 /mob/living/carbon/human/ru_p_carry(temp_gender)
+	temp_gender = get_visible_gender()
+	return ..()
+
+/mob/living/carbon/human/ru_p_equip(capitalized, temp_gender)
 	temp_gender = get_visible_gender()
 	return ..()
 

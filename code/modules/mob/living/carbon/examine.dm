@@ -118,7 +118,7 @@
 		skipface |= wear_mask.flags_inv & HIDEFACE
 		skipeyes |= wear_mask.flags_inv & HIDEEYES
 
-	var/msg = "<span class='notice'>Это - "
+	var/msg = "<span class='notice'>Это "
 	if(HAS_TRAIT(src, TRAIT_I_WANT_BRAINS))
 		msg = "[SPAN_NOTICE("Это <span class='warning'>ковыляющий труп")] "
 

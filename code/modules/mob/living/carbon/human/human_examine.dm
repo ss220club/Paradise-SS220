@@ -30,7 +30,6 @@
 		if("hands")
 			if(blood_DNA)
 				return "[SPAN_WARNING("capitalize([ru_p_them()]) руки [hand_blood_color != "#030303" ? "покрыты чьей-то кровью!":"испачканы маслом."]")]\n"
-		if("eyes")
 			if(HAS_TRAIT(src, SCRYING))
 				if(IS_CULTIST(src) && HAS_TRAIT(src, CULT_EYES))
 					return "[SPAN_BOLDWARNING("capitalize([ru_p_them()]) glowing red eyes are glazed over!")]\n"
@@ -56,16 +55,16 @@
 
 	// If an IPC's covered in synthetic skin, they can appear human.
 	if(calculate_ipc_masquerade_status())
-		displayed_species = "Human"
+		displayed_species = "human"
 		examine_color = "#d1aa2e"
 
 	if(skip_jumpsuit && skip_face || HAS_TRAIT(src, TRAIT_NOEXAMINE)) //either obscured or on the nospecies list
 		msg += "!"    //omit the species when examining
 	else
-		var/species_name =  lowertext(displayed_species)
-		if(displayed_species == "Slime People") //snowflakey because Slime People are defined as a plural
-			species_name = "slime person"
-		msg += ", [height]<b><font color='[examine_color]'> [species_name]</font></b> c [physique] телосложением!"
+		var/species_key = lowertext(displayed_species)
+		var/species_name = declent_ru_initial(species_key, NOMINATIVE, lowertext(displayed_species))
+
+		msg += " - <b><font color='[examine_color]'>[species_name]</font></b> [height] роста с [physique] телосложением!"
 	return msg
 
 /mob/living/carbon/human/examine_start_damage_block(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
@@ -169,9 +168,9 @@
 /mob/living/carbon/human/examine_extra_damage_flavor()
 	var/msg = ""
 	if(bleedsuppress)
-		msg += "[p_they(TRUE)] [p_are()] bandaged with something.\n"
+		msg += "[ru_p_they()] перебинтован чем-то.\n"
 	else if(bleed_rate)
-		msg += "<b>[p_they(TRUE)] [p_are()] bleeding!</b>\n"
+		msg += "<b>У [ru_p_theirs()] открытое кровотечение!</b>\n"
 
 	return msg
 
@@ -199,9 +198,9 @@
 			if(skills)
 				var/char_limit = 40
 				if(length(skills) <= char_limit)
-					msg += "[SPAN_DEPTRADIO("Employment records:")] [skills]\n"
+					msg += "[SPAN_DEPTRADIO("Сведения о работе:")] [skills]\n"
 				else
-					msg += "[SPAN_DEPTRADIO("Employment records: [copytext_preserve_html(skills, 1, char_limit-3)]...")]<a href='byond://?src=[UID()];employment_more=1'>More...</a>\n"
+					msg += "[SPAN_DEPTRADIO("Сведения о работе: [copytext_preserve_html(skills, 1, char_limit-3)]...")]<a href='byond://?src=[UID()];employment_more=1'>More...</a>\n"
 
 
 	if(hasHUD(user, EXAMINE_HUD_MEDICAL_READ))
@@ -218,9 +217,9 @@
 
 		var/medical_status = hasHUD(user, EXAMINE_HUD_MEDICAL_WRITE) ? "<a href='byond://?src=[UID()];medical=1'>\[[medical]\]</a>" : "\[[medical]\]"
 		var/mental_status = hasHUD(user, EXAMINE_HUD_MEDICAL_WRITE) ? "<a href='byond://?src=[UID()];mental=1'>\[[mental]\]</a>" : "\[[mental]\]"
-		msg += "[SPAN_DEPTRADIO("Physical status: ")][medical_status]\n"
-		msg += "[SPAN_DEPTRADIO("Mental Status: ")][mental_status]\n"
-		msg += "[SPAN_DEPTRADIO("Medical records:")] <a href='byond://?src=[UID()];medrecord=`'>\[View\]</a> <a href='byond://?src=[UID()];medrecordComment=`'>\[View comment log\]</a> <a href='byond://?src=[UID()];medrecordadd=`'>\[Add comment\]</a>\n"
+		msg += "[SPAN_DEPTRADIO("Физическое состояние: ")][medical_status]\n"
+		msg += "[SPAN_DEPTRADIO("Психическое состояние: ")][mental_status]\n"
+		msg += "[SPAN_DEPTRADIO("Медицинские сведения:")] <a href='byond://?src=[UID()];medrecord=`'>\[View\]</a> <a href='byond://?src=[UID()];medrecordComment=`'>\[View comment log\]</a> <a href='byond://?src=[UID()];medrecordadd=`'>\[Add comment\]</a>\n"
 
 	if(hasHUD(user, EXAMINE_HUD_SECURITY_READ))
 		var/perpname = get_visible_name(TRUE)
@@ -242,9 +241,9 @@
 								commentLatest = "No entries." //If present but without entries (=target is recognized crew)
 
 			var/criminal_status = hasHUD(user, EXAMINE_HUD_SECURITY_WRITE) ? "<a href='byond://?src=[UID()];criminal=1'>\[[criminal]\]</a>" : "\[[criminal]\]"
-			msg += "[SPAN_DEPTRADIO("Criminal status:")] [criminal_status]\n"
-			msg += "[SPAN_DEPTRADIO("Security records:")] <a href='byond://?src=[UID()];secrecord=`'>\[View\]</a> <a href='byond://?src=[UID()];secrecordComment=`'>\[View comment log\]</a> <a href='byond://?src=[UID()];secrecordadd=`'>\[Add comment\]</a>\n"
-			msg += "[SPAN_DEPTRADIO("Latest entry:")] [commentLatest]\n"
+			msg += "[SPAN_DEPTRADIO("Криминальный статус:")] [criminal_status]\n"
+			msg += "[SPAN_DEPTRADIO("Заметки охраны:")] <a href='byond://?src=[UID()];secrecord=`'>\[View\]</a> <a href='byond://?src=[UID()];secrecordComment=`'>\[View comment log\]</a> <a href='byond://?src=[UID()];secrecordadd=`'>\[Add comment\]</a>\n"
+			msg += "[SPAN_DEPTRADIO("Недавние правки:")] [commentLatest]\n"
 
 	if(hasHUD(user, EXAMINE_HUD_MALF_READ))
 		var/perpname = get_visible_name(TRUE)

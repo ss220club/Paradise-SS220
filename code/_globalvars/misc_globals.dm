@@ -65,7 +65,7 @@ GLOBAL_DATUM(main_fission_reactor, /obj/machinery/atmospherics/fission_reactor)
 ///Global list for descriptors
 GLOBAL_LIST_INIT(character_physiques, list("костлявым", "хрупким", "худощавым", "сухим", "долговязым", "потрёпанным", "обычным", "стройным", "подтянутым", "крепким", "мускулистым", "атлетичным", "рельефным", "пухлым", "избыточного веса"))
 
-GLOBAL_LIST_INIT(character_heights, list("карликовый", "очень низенький", "низкорослый", "обычного роста", "высокий", "очень высокий", "гигантский"))
+GLOBAL_LIST_INIT(character_heights, list("карликового", "крайне низкого", "низкого", "обычного", "высокого", "очень высокого", "гигантского"))
 
 #define GLOBAL_SPARK_LIMIT 500
 /// Counter for the current amount of sparks
