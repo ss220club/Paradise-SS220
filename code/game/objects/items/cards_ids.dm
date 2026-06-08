@@ -161,7 +161,7 @@
 	popup.open()
 
 /obj/item/card/id/proc/regenerate_name()
-	name = "ID-карта [registered_name] ([assignment])"
+	name = "ID - [registered_name] ([assignment])"
 
 /obj/item/card/id/activate_self(mob/user)
 	if(..())
@@ -191,7 +191,7 @@
 	return NONE
 
 /obj/item/card/id/proc/UpdateName()
-	name = "ID-карта [registered_name] ([assignment])"
+	name = "ID - [registered_name] ([assignment])"
 
 /obj/item/card/id/proc/SetOwnerInfo(mob/living/carbon/human/H)
 	if(!H || !H.dna)

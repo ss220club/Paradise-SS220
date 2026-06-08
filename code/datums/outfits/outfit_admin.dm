@@ -23,7 +23,7 @@
 	I.assignment = rank
 	I.sex = capitalize(H.gender)
 	I.age = H.age
-	I.name = "ID-карта [I.registered_name] ([I.assignment])"
+	I.name = "ID - [I.registered_name] ([I.assignment])"
 	I.photo = get_id_photo(H)
 
 	if(special_icon)
