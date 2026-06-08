@@ -153,7 +153,23 @@
 			else
 				var/item_words = item.declent_ru(ACCUSATIVE)
 				if(item.blood_DNA)
-					item_words = "[item.blood_color != "#030303" ? "bloody_word" : "oilstain_word"] [item_words]"
+					var/word
+					var/decl_gender = item.declent_ru("gender")
+
+					if(item.blood_color != "#030303")
+						switch(decl_gender)
+							if("female") word = "окровавленная"
+							if("male") word = "окровавленный"
+							if("neuter") word = "окровавленное"
+							else word = "окровавленные"
+					else
+						switch(decl_gender)
+							if("female") word = "замасленная"
+							if("male") word = "замасленный"
+							if("neuter") word = "замасленное"
+							else word = "замасленные"
+
+					item_words = "[word] [item_words]"
 				var/submsg = "[ru_p_they(TRUE)] [action] [bicon(item)] [item_words]"
 				if(accessories)
 					submsg += " с [accessories]"
