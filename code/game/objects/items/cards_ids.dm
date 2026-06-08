@@ -191,7 +191,7 @@
 	return NONE
 
 /obj/item/card/id/proc/UpdateName()
-	name = "ID - [registered_name] ([assignment])"
+	name = "ID-карта [registered_name] ([assignment])"
 
 /obj/item/card/id/proc/SetOwnerInfo(mob/living/carbon/human/H)
 	if(!H || !H.dna)

@@ -29,7 +29,7 @@
 	else
 		I.forceMove(src)
 	prescription = TRUE
-	name = "[initial(name)] (Корригирующие)"
+	name = "prescription [initial(name)]"
 
 /obj/item/clothing/glasses/proc/remove_prescription(mob/living/user)
 	var/obj/item/clothing/glasses/regular/prescription_glasses = locate() in src
