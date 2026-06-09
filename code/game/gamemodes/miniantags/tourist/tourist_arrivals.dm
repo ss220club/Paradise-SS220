@@ -97,6 +97,11 @@
 		var/raffle_name = pick("Галактическое приключение", "Космо-Джекпот", "Нэбула Нонсенс", "Дар Грейтайда", "Сокровища Тулбокса")
 		GLOB.minor_announcement.Announce("Счастливые победители лотереи Нанотрейзен, '[raffle_name]', в скором времени прибудут на [station_name()]. Пожалуйста, встретьте их с теплом и гостеприимством, они останутся на станции до конца вашей смены!")
 
+/datum/event/tourist_arrivals/fake_announce()
+	var/raffle_name = pick("Galactic Getaway Raffle", "Cosmic Jackpot Raffle", "Nebula Nonsense Raffle", "Greytide Giveaway Raffle", "Toolbox Treasure Raffle")
+	GLOB.minor_announcement.Announce("The lucky winners of the Nanotrasen raffle, 'Nanotrasen [raffle_name],' are arriving at [station_name()] shortly. Please welcome them warmly, they'll be staying with you until the end of your shift!")
+	return TRUE
+
 // Greets the player, announces objectives!
 /datum/event/tourist_arrivals/proc/greeting(mob/living/carbon/human/M)
 	var/list/greeting = list()
