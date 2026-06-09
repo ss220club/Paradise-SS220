@@ -50546,12 +50546,12 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "fsr" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/public/pods{
-	pixel_x = -32
+/obj/effect/turf_decal/tiles/neutral/side,
+/obj/structure/sign/public/restroom{
+	pixel_y = -32
 	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/port)
+/turf/simulated/floor/plasteel,
+/area/station/public/locker)
 "fsO" = (
 /obj/structure/toilet/directional/south,
 /obj/machinery/door_control/bolt_control/south{
@@ -64806,6 +64806,13 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
+"jQa" = (
+/obj/effect/turf_decal/tiles/department/security/side,
+/obj/structure/sign/security/armory{
+	pixel_y = -32
+	},
+/turf/simulated/floor/plasteel,
+/area/station/security/brig)
 "jQg" = (
 /obj/structure/statue/delta/sw,
 /obj/effect/turf_decal/siding/yellow/end{
@@ -85858,6 +85865,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
+"qnO" = (
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 4
+	},
+/obj/structure/sign/medical/surgery{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plasteel/white,
+/area/station/medical/medbay)
 "qnP" = (
 /obj/machinery/status_display/directional/west,
 /obj/effect/turf_decal/tiles/neutral/corner{
@@ -106612,9 +106628,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
 "wSy" = (
-/obj/structure/sign/nosmoking,
-/turf/simulated/wall,
-/area/station/medical/surgery/secondary)
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 8
+	},
+/obj/structure/sign/medical/surgery{
+	pixel_x = -32
+	},
+/turf/simulated/floor/plasteel/white,
+/area/station/medical/medbay)
 "wSA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -108035,6 +108056,12 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/medbay2)
+"xnp" = (
+/obj/structure/sign/public/evac{
+	pixel_x = -32
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/apmaint)
 "xnu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 6
@@ -109319,6 +109346,15 @@
 	icon_state = "cult"
 	},
 /area/station/service/chapel/funeral)
+"xHG" = (
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 8
+	},
+/obj/structure/sign/medical/morgue{
+	pixel_x = -32
+	},
+/turf/simulated/floor/plasteel/white,
+/area/station/medical/medbay)
 "xHN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/oil/maybe,
@@ -145697,7 +145733,7 @@ wLe
 ddv
 ddv
 dbp
-tuf
+xnp
 dIH
 sgA
 cFe
@@ -152614,7 +152650,7 @@ hap
 dpB
 ioK
 tAa
-yaB
+xHG
 hap
 dpB
 dpB
@@ -153132,7 +153168,7 @@ dmr
 dmr
 iPy
 dmr
-mrs
+qnO
 vYR
 cKV
 lKM
@@ -159276,7 +159312,7 @@ lNj
 ucQ
 qvt
 bjK
-eCV
+fsr
 cxn
 bSW
 min
@@ -163345,7 +163381,7 @@ nsd
 nsd
 nNj
 lEP
-vho
+jQa
 ulm
 mtc
 vnV
