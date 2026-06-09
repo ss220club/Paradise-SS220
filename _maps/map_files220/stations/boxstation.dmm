@@ -1447,6 +1447,10 @@
 "aiq" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/hooded/ablative,
+/obj/item/tactical_sledgehammer{
+	pixel_y = -5;
+	pixel_x = 5
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "air" = (
@@ -2023,9 +2027,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "alf" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -3303,6 +3304,10 @@
 /obj/structure/lattice/catwalk,
 /turf/space,
 /area/station/engineering/solar/fore_starboard)
+"apo" = (
+/obj/structure/grille/broken,
+/turf/space,
+/area/space/nearstation)
 "app" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -3787,6 +3792,11 @@
 /obj/structure/table/wood,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
+"arb" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/space,
+/area/station/engineering/solar/fore_port)
 "arj" = (
 /obj/structure/chair{
 	dir = 8
@@ -3972,6 +3982,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
+"arU" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/structure/lattice/catwalk,
+/turf/space,
+/area/station/engineering/solar/fore_port)
 "arX" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -3982,6 +3999,10 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
+/area/station/engineering/solar/fore_port)
+"asb" = (
+/obj/structure/lattice/catwalk,
+/turf/space,
 /area/station/engineering/solar/fore_port)
 "asc" = (
 /obj/structure/cable{
@@ -6710,6 +6731,10 @@
 /obj/item/trash/candle,
 /turf/simulated/floor/plating,
 /area/station/maintenance/abandonedbar)
+"aBm" = (
+/obj/item/stack/rods,
+/turf/space,
+/area/space)
 "aBn" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -6799,11 +6824,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
-"aBJ" = (
-/obj/structure/cable,
-/obj/structure/lattice/catwalk,
-/turf/space,
-/area/station/engineering/solar/fore_port)
 "aBK" = (
 /obj/machinery/hydroponics/constructable{
 	desc = "These are connected with an irrigation tube. You see a little pipe connecting the trays.";
@@ -35209,6 +35229,13 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/station/maintenance/assembly_line)
+"cNM" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/space,
+/area/station/engineering/solar/aft_port)
 "cNO" = (
 /obj/machinery/alarm/directional/east,
 /obj/effect/turf_decal/tiles/department/engineering/side{
@@ -37077,7 +37104,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/ce)
 "cTW" = (
-/obj/structure/cable,
 /obj/structure/lattice/catwalk,
 /turf/space,
 /area/station/engineering/solar/aft_starboard)
@@ -38051,13 +38077,6 @@
 /obj/structure/chair/stool,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
-"cYk" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/lattice/catwalk,
-/turf/space,
-/area/station/engineering/solar/aft_starboard)
 "cYn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -39325,6 +39344,11 @@
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
+"ddN" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/space,
+/area/station/engineering/solar/aft_starboard)
 "ddP" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -39344,6 +39368,20 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/structure/lattice/catwalk,
+/turf/space,
+/area/station/engineering/solar/aft_starboard)
+"ddR" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/structure/lattice/catwalk,
+/turf/space,
+/area/station/engineering/solar/aft_starboard)
+"ddT" = (
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /obj/structure/lattice/catwalk,
 /turf/space,
@@ -39399,6 +39437,13 @@
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
+"ded" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/structure/lattice/catwalk,
+/turf/space,
+/area/station/engineering/solar/aft_starboard)
 "dee" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -43094,10 +43139,6 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/engine,
 /area/station/maintenance/fsmaint)
-"dxm" = (
-/obj/structure/lattice/catwalk,
-/turf/space,
-/area/station/engineering/solar/fore_port)
 "dxq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/trash,
@@ -48337,13 +48378,6 @@
 /obj/effect/turf_decal/tiles/neutral,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/se)
-"fkR" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/space,
-/area/station/engineering/solar/aft_port)
 "fkT" = (
 /obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/bluegrid,
@@ -51910,13 +51944,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/assembly_line)
-"gtG" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/lattice/catwalk,
-/turf/space,
-/area/station/engineering/solar/aft_starboard)
 "gtV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -55871,10 +55898,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server/coldroom)
-"hEH" = (
-/obj/structure/lattice/catwalk,
-/turf/space,
-/area/station/engineering/solar/aft_starboard)
 "hEW" = (
 /obj/machinery/suit_storage_unit/industrial/ce/secure,
 /obj/effect/turf_decal/delivery,
@@ -56920,10 +56943,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
-"hWW" = (
-/obj/item/stack/rods,
-/turf/space,
-/area/space)
 "hXp" = (
 /obj/effect/turf_decal/siding/wood/cherry,
 /obj/machinery/light/directional/south,
@@ -57966,13 +57985,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/ai)
-"iri" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/space,
-/area/station/engineering/solar/aft_port)
 "irE" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical,
@@ -58384,13 +58396,6 @@
 /obj/structure/chair/comfy/black,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/bar)
-"izy" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/structure/lattice/catwalk,
-/turf/space,
-/area/station/engineering/solar/aft_starboard)
 "izJ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -79579,6 +79584,13 @@
 /obj/structure/chair,
 /turf/simulated/floor/plasteel/airless,
 /area/station/science/toxins/test)
+"puy" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/space,
+/area/station/engineering/solar/aft_port)
 "puD" = (
 /turf/simulated/wall,
 /area/station/security/restroom)
@@ -90960,13 +90972,6 @@
 	color = "gray"
 	},
 /area/station/security/brig)
-"tkd" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/structure/lattice/catwalk,
-/turf/space,
-/area/station/engineering/solar/fore_port)
 "tkf" = (
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 8
@@ -99300,10 +99305,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
-"vRr" = (
-/obj/structure/grille/broken,
-/turf/space,
-/area/space/nearstation)
 "vRL" = (
 /obj/item/roller{
 	pixel_y = 6
@@ -118794,7 +118795,7 @@ alv
 alv
 alv
 alv
-vRr
+apo
 alv
 alv
 alv
@@ -119056,7 +119057,7 @@ axn
 aaa
 aab
 aaa
-hWW
+aBm
 aaa
 alv
 aaa
@@ -119914,7 +119915,7 @@ aaa
 alv
 alv
 aab
-iri
+puy
 aab
 alv
 alv
@@ -120845,17 +120846,17 @@ aab
 amU
 anG
 anG
-aBJ
-dxm
-dxm
-dxm
-dxm
-dxm
-dxm
-dxm
-dxm
-dxm
-dxm
+arb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
+asb
 laU
 sOr
 rMP
@@ -121103,15 +121104,15 @@ aab
 aaa
 aaa
 aaa
-tkd
+arU
 aaa
 aaa
 aaa
-tkd
+arU
 aaa
 aaa
 aaa
-tkd
+arU
 aaa
 aaa
 aAd
@@ -122741,7 +122742,7 @@ aaa
 aQU
 aaa
 aab
-iri
+puy
 aab
 aab
 aab
@@ -123262,17 +123263,17 @@ aaa
 aaa
 aaa
 aab
-iri
+puy
 aab
 aaa
 aaa
 aab
-iri
+puy
 aab
 aaa
 aaa
 aab
-iri
+puy
 aab
 aab
 alv
@@ -125308,7 +125309,7 @@ bCf
 aaa
 aab
 aaa
-fkR
+cNM
 aaa
 aab
 aab
@@ -157211,11 +157212,11 @@ aaa
 aab
 aaa
 aab
-gtG
+ddR
 aaa
 aaa
 aab
-gtG
+ddR
 aaa
 aaa
 aab
@@ -157466,15 +157467,15 @@ lCG
 ddE
 ddE
 ddE
+ddN
 cTW
-hEH
-hEH
-hEH
-hEH
-hEH
-hEH
-hEH
-cYk
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+ded
 ddE
 def
 ddE
@@ -157725,11 +157726,11 @@ aaa
 aab
 aaa
 aab
-izy
+ddT
 aaa
 aaa
 aab
-izy
+ddT
 aab
 aaa
 aab
