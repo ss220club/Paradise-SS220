@@ -7,8 +7,19 @@
 /datum/event/tear/honk/spawn_tear(location)
 	HE = new /obj/effect/tear/honk(location)
 
-/datum/event/tear/honk/announce()
-	GLOB.minor_announcement.Announce("На борту станции зафиксирована Хонканомалия. Предполагаемая локация: [impact_area.name].", "ВНИМАНИЕ: Обнаружена ХОНКАНОМАЛИЯ.", 'sound/items/airhorn.ogg')
+/datum/event/tear/honk/announce(false_alarm)
+	var/area/target_area = impact_area
+	if(!target_area)
+		if(false_alarm)
+			target_area = findEventArea()
+			if(isnull(target_area))
+				log_debug("Tried to announce a false-alarm honk tear without a valid area!")
+				kill()
+		else
+			log_debug("Tried to announce a honk tear without a valid area!")
+			kill()
+			return
+	GLOB.minor_announcement.Announce("На борту станции зафиксирована Хонканомалия. Предполагаемая локация: [target_area.name].", "ВНИМАНИЕ: Обнаружена ХОНКАНОМАЛИЯ.", 'sound/items/airhorn.ogg')
 
 /datum/event/tear/honk/end()
 	if(HE)
