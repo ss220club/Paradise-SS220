@@ -122,7 +122,7 @@
 /datum/spell/ai_spell/return_to_core
 	name = "Вернуться в Главное Ядро"
 	desc = "Покинуть APC, в который вы себя всунули и вернуться к Главному Ядру."
-	action_icon = 'icons/obj/power.dmi'
+	action_icon = 'icons/obj/wallbumps/apc.dmi'
 	action_icon_state = "apcemag"
 	auto_use_uses = FALSE // Here just to prevent the "You have X uses remaining" from popping up.
 
