@@ -1,3 +1,4 @@
+// SS220 EDIT START - FULL RU TRANSLATE TO MOB EXAMINE (ПОЛНЫЙ ПЕРЕВОД ОСМОТРА СУЩЕСТВ)
 /mob/living/carbon/human/examine_visible_clothing(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	var/list/message_parts = list(
 		list("[ru_p_hold()]", l_hand, "в", "левой руке"),
@@ -26,7 +27,7 @@
 
 /mob/living/carbon/human/examine_handle_individual_limb(limb_name)
 	var/msg = ""
-
+	// SS220 EDIT START - Translated to RU
 	switch(limb_name)
 		if("руках")
 			if(blood_DNA)
@@ -42,6 +43,7 @@
 				msg += "[SPAN_BOLDWARNING("[ru_p_them(TRUE)] глаза сияют неестественным красным светом!")]\n"
 
 	return msg
+	// SS220 EDIT END
 
 /mob/living/carbon/human/examine_what_am_i(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	if(!dna)
@@ -59,7 +61,9 @@
 
 	// If an IPC's covered in synthetic skin, they can appear human.
 	if(calculate_ipc_masquerade_status())
+	// SS220 EDIT START - Lowercased "human" for translation
 		displayed_species = "human"
+	// SS220 EDIT END
 		examine_color = "#d1aa2e"
 
 	if(skip_jumpsuit && skip_face || HAS_TRAIT(src, TRAIT_NOEXAMINE)) //either obscured or on the nospecies list
@@ -79,6 +83,7 @@
 	for(var/organ_tag in dna.species.has_limbs)
 
 		var/list/organ_data = dna.species.has_limbs[organ_tag]
+		var/organ_descriptor = organ_data["descriptor"]
 		is_destroyed["[organ_data["descriptor"]]"] = 1
 
 		var/obj/item/organ/external/E = bodyparts_by_name[organ_tag]
@@ -131,7 +136,7 @@
 
 		if(!ismachineperson(src))
 			if(E.is_robotic() && !E.has_synthetic_skin)
-				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] киберконечность - [E.declent_ru(NOMINATIVE)]!\n"
+				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] протез [E.declent_ru(GENITIVE)]!\n"
 
 			else if(E.status & ORGAN_SPLINTED)
 				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] наложен гипс на [E.declent_ru(ACCUSATIVE)]!\n"
@@ -288,6 +293,7 @@
 		return get_ru_brute_word(src, "травмирован", "травмирована", "травмировано", "травмированы")
 
 	return get_ru_brute_word(src, "повреждён", "повреждена", "повреждено", "повреждены")
+// SS220 EDIT END
 
 /proc/get_ru_brute_word(mob/H, male, female, neuter, plural)
 	if(!H)

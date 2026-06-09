@@ -8,6 +8,8 @@
  *
  * Arguments represent whether to skip a certain slot when handling the message.
  */
+
+//SS220 EDIT START - FULL RU TRANSLATE TO MOB EXAMINE (ПОЛНЫЙ ПЕРЕВОД ОСМОТРА СУЩЕСТВ)
 /mob/living/carbon/proc/examine_visible_clothing(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	return list(
 		list("[ru_p_hold()]", l_hand, "в", "левой руке"),
@@ -188,23 +190,23 @@
 	if(hallucinating && prob(50))
 		// List of hallucination messages
 		var/list/hallucination_texts = list(
-			"You blink, and for a moment, [p_their()] body shimmers like a mirage, [p_their()] gaze unsettlingly intense.",
-			"[p_they(TRUE)] appear[p_s()] to be surrounded by a swarm of tiny, glowing butterflies.",
-			"[p_they(TRUE)] [p_are()] wearing a crown made of spaghetti. Wait, no... it's gone now.",
-			"[p_they(TRUE)] look[p_s()] suspicious, as if plotting a jelly heist.",
-			"[p_they(TRUE)] begin[p_s()] to hum a tune, but the sound seems to echo from all directions at once.",
-			"[p_they(TRUE)] smile [p_s()], and for a second, [p_their()] face twists into a thousand tiny reflections.",
-			"[p_they(TRUE)] seem[p_s()] to float slightly above the ground, [p_their()] feet just brushing against the floor.",
-			"[p_their(TRUE)] hands flicker like holograms, shifting between different gestures before returning to normal.",
-			"[p_they(TRUE)] seems to be cloaked in a faint, swirling fog that disappears the moment you focus on it.",
-			"You glance at [p_them()], and for an instant, [p_their()] shadow stretches unnaturally long, as if reaching for something just out of view. Did that shadow have a face?",
-			"You glance at [p_them()], and for a moment, [p_their()] eyes seem to flash with a strange, metallic gleam. You could have sworn it was gold... or was it red?",
-			"[p_they(TRUE)] seem[p_s()] to be walking straight towards you, [p_their()] silhouette stretching longer than it should. Were [p_their()] footsteps too quiet? Or is it just you? There's something off about the way [p_they()] move[p_s()].",
-			"For a moment, [p_they()] snap[p_s()] to an odd position, [p_their()] head and legs stiff and unwavering. [p_their(TRUE)] arms are outstretched to [p_their()] sides, and you see black where [p_their()] eyes should be.",
-			"[p_they(TRUE)] [p_have()] no face. There's an impossibly dark layer of nothingness where it should be. [p_their(TRUE)] sclerae are the only indication [p_they()] still [p_have()] eyes.",
-			"You swear you just saw [p_them()] sobbing and begging!",
-			"[p_they(TRUE)] [p_are()] bleeding profusely! [p_their(TRUE)] blood is crawling its way back in!",
-			"[p_their(TRUE)] head violently jerks to meet your gaze."
+			"Вы моргаете, и на мгновение, [ru_p_them()] тело мерцает словно мираж, а [ru_p_them()] взгляд пробирает вас до муражек.",
+			"[ru_p_they(TRUE)] будто бы в окружении целого роя маленьких светящихся бабочек.",
+			"[ru_p_they(TRUE)] [ru_p_wear()] корону, сделанную из спагетти. Хотя, постойте... её уже нет.",
+			"[ru_p_they(TRUE)] [ru_p_do()] что-то странное, словно замышляя ограбление века.",
+			"[ru_p_them(TRUE)] напевание тихой мелодии, отдаётся пронзительным и звонким эхо в вашей голове.",
+			"[ru_p_them(TRUE)] тёплая улыбка, которую вы только что лицезрели, вдруг разбилась на тысячу маленьких осколков.",
+			"[ru_p_them(TRUE)] тело словно парит над поверхностью, едва ли касаясь пола.",
+			"[ru_p_them(TRUE)] руки мерцают как голограмма, быстро жестикулируя ими, прежде чем вернуться к норме.",
+			"[ru_p_they(TRUE)] окутывает слабый клубящийся туман, что тут же исчезает, лишь только вы попытались сфокусироваться на нём.",
+			"Вы мельком глядите на [ru_p_theirs()], и на мгновение, [ru_p_them()] тень бросается столь далеко, будто пытается убежать от вашего взгляда. Вам показалось, или она смотрела на вас в ответ?",
+			"Вы мельком глядите на [ru_p_theirs()], и на мгновение, [ru_p_them()] глаза вспыхивают странным металлическим блеском. Вы готовы поклясться что он был золотым... либо багровым?",
+			"[ru_p_them(TRUE)] ход в вашем направлении вдруг пробирает до муражек, глядя на то как [ru_p_them(TRUE)] силуэт тянется слишком сильно. [ru_p_them(TRUE)] шаги затихают, или вам это просто чудится? В [ru_p_them()] движении определённо что-то не так?",
+			"На мгновение, застывая в неестественной позе, пока [ru_p_them()] голова и ноги неподвижны и невозмутимы. [ru_p_them(TRUE)] руки вытягиваются в стороны, а на месте [ru_p_them()] глаз виднеется лишь чёрная пустота.",
+			"[ru_p_they(TRUE)] не [ru_p_have()] лица. На его месте виднеется лишь невообразимо темный слой пустоты. [ru_p_them(TRUE)] склеры единственный ориентир того, что у [ru_p_theirs()] ещё есть глаза.",
+			"Вы клянётесь, будто только что лицезрели [ru_p_them()] рыдание и отчаянные мольбы о помощи!",
+			"У [ru_p_theirs()] обильное кровотечение! Впрочем, [ru_p_them()] пролитая кровь сама возвращается обратно!",
+			"[ru_p_them(TRUE)] голова резко дергается, чтобы встретиться с вашим взглядом."
 	)
 		// Pick a random hallucination description
 		var/random_text = pick(hallucination_texts)
@@ -340,7 +342,7 @@
 
 		if(get_int_organ(/obj/item/organ/internal/brain))
 			msg += examine_show_ssd()
-
+//SS220 EDIT END
 	// add anything else in here before huds
 	msg += examine_extra_general_flavor(user)
 
