@@ -108,6 +108,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/warden
+	important_information = "Space Law is the law, not a suggestion."
 	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/warden
@@ -167,7 +168,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_PARAPLEGIC)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/detective
-	important_information = "Расследуйте, исследуйте и выглядите при этом круто."
+	important_information = "Расследуйте, исследуйте и выглядите при этом круто. Космическое право — это не рекомендация."
 	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/detective
