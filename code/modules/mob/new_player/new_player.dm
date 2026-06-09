@@ -60,9 +60,9 @@
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		if(!ready)
-			output += "<p><a href='byond://?src=[UID()];ready=1'>Нажмите, если готовы</A></p>"
+			output += "<p><a href='byond://?src=[UID()];ready=1'><font color='lime'><b>Нажмите, если готовы</b></font></a></p>"
 		else
-			output += "<p><b>Вы готовы</b> (<a href='byond://?src=[UID()];ready=2'>Отмена</A>)</p>"
+			output += "<p><b>Вы готовы</b> (<a href='byond://?src=[UID()];ready=2'><font color='orange'><b>Отмена</b></font></a>)</p>"
 	else
 		output += "<p><a href='byond://?src=[UID()];manifest=1'>Просмотр списка экипажа</A></p>"
 		output += "<p><a href='byond://?src=[UID()];late_join=1'>Присоединиться к игре!</A></p>"
@@ -83,8 +83,10 @@
 	if(GLOB.join_tos)
 		output += "<p><a href='byond://?src=[UID()];tos=1'>Условия использования</A></p>"
 
+	#ifdef SERVERREGIONS
 	if(length(GLOB.configuration.system.region_map))
 		output += "<p><a href='byond://?src=[UID()];setregion=1'>Set region (reduces ping)</A></p>"
+	#endif
 
 	output += "</center>"
 
@@ -220,9 +222,11 @@
 		privacy_consent()
 		return FALSE
 
+	#ifdef SERVERREGIONS
 	if(href_list["setregion"])
 		usr.client.change_region()
 		return FALSE
+	#endif
 
 	if(href_list["late_join"])
 		if(!client.tos_consent)

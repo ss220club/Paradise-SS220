@@ -69,6 +69,10 @@
 		production_modes[new_mode.mode_id] = new_mode
 		new_mode = new /datum/chemical_production_mode/bottles()
 		production_modes[new_mode.mode_id] = new_mode
+	// SS220 EDIT START -  Нужно для добавления медипена
+		new_mode = new /datum/chemical_production_mode/autoinjectors()
+		production_modes[new_mode.mode_id] = new_mode
+	// S220 EDIT END
 	if(isnull(production_mode))
 		for(var/key in production_modes)
 			production_mode = key
@@ -142,6 +146,9 @@
 	update_icon()
 
 /obj/machinery/chem_master/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/kitchen/utensil/fork))
+		return NONE
+
 	if(istype(used, /obj/item/storage/part_replacer))
 		return ..()
 

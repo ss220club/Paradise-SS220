@@ -2,6 +2,7 @@
 	name = "breath mask"
 	desc = "A close-fitting mask that can be connected to an air supply."
 	icon_state = "breath"
+	icon_monitor = 'icons/mob/clothing/species/machine/monitor/mask.dmi'
 	flags = AIRTIGHT
 	flags_cover = MASKCOVERSMOUTH
 	can_toggle = TRUE
@@ -20,8 +21,12 @@
 		"Plasmaman" = 'icons/mob/clothing/species/plasmaman/mask.dmi'
 		)
 
-/obj/item/clothing/mask/breath/attack_self__legacy__attackchain(mob/user)
+/obj/item/clothing/mask/breath/activate_self(mob/user)
+	if(..())
+		return ITEM_INTERACT_COMPLETE
+
 	adjustmask(user)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/clothing/mask/breath/AltClick(mob/user)
 	..()
@@ -40,6 +45,7 @@
 	name = "vox breath mask"
 	desc = "A weirdly-shaped breath mask."
 	icon_state = "voxmask"
+	icon_monitor = null
 	permeability_coefficient = 0.01
 	species_restricted = list("Vox")
 	actions_types = list()
@@ -49,8 +55,9 @@
 	desc = "A weirdly-shaped breath mask, this one seems to designed for a vox beak."
 	icon_state = "voxmask2"
 
-/obj/item/clothing/mask/breath/vox/attack_self__legacy__attackchain(mob/user)
-	return
+/obj/item/clothing/mask/breath/vox/activate_self(mob/user)
+	. = ..()
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/clothing/mask/breath/vox/AltClick(mob/user)
 	return

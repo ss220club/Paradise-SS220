@@ -2083,6 +2083,9 @@
 "ath" = (
 /obj/effect/landmark/spawner/xeno,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/tesla_coil{
+	anchored = 1
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "ati" = (
@@ -2603,10 +2606,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/gravitygenerator)
 "awe" = (
-/obj/structure/cable/extra_insulated{
+/obj/effect/mapping_helpers/turfs/damage,
+/obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_port)
 "awn" = (
@@ -3398,11 +3401,11 @@
 /area/station/security/permabrig)
 "aBx" = (
 /obj/structure/reagent_dispensers/peppertank/directional/west,
-/obj/item/gun/energy/ionrifle,
 /obj/structure/gunrack,
 /obj/effect/turf_decal/tiles/department/security/side{
 	dir = 4
 	},
+/obj/item/gun/energy/ionrifle/carbine,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "aBy" = (
@@ -6818,6 +6821,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/closet/crate/engineering/particle_accelerator,
 /turf/simulated/floor/plating,
 /area/station/engineering/secure_storage)
 "aSj" = (
@@ -11528,6 +11532,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/structure/closet/crate/engineering/particle_accelerator,
 /turf/simulated/floor/plating,
 /area/station/engineering/secure_storage)
 "bnU" = (
@@ -16860,17 +16865,17 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/bridge)
 "bOL" = (
-/obj/structure/cable/extra_insulated{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/extra_insulated{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_port)
@@ -17791,12 +17796,12 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable/extra_insulated,
 /obj/structure/chair/stool{
 	dir = 8
 	},
 /obj/machinery/light/small/directional/south,
 /obj/item/radio/intercom/directional/south,
+/obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_port)
 "bTl" = (
@@ -20985,27 +20990,8 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "ciM" = (
-/obj/structure/closet/crate,
-/obj/item/stack/rods{
-	amount = 50
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/gps,
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 30
-	},
-/obj/item/stock_parts/cell/high{
-	charge = 100;
-	maxcharge = 15000
-	},
-/obj/item/airlock_electronics,
-/obj/item/airlock_electronics,
 /obj/machinery/light/small/directional/south,
+/obj/structure/closet/crate/engineering/particle_accelerator,
 /turf/simulated/floor/plating,
 /area/station/engineering/secure_storage)
 "ciP" = (
@@ -22243,11 +22229,11 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/exam_room)
 "cpd" = (
-/obj/structure/cable/extra_insulated{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_port)
@@ -27095,10 +27081,10 @@
 	dir = 4;
 	name = "Aft Port Solar Control"
 	},
-/obj/structure/cable/extra_insulated,
 /obj/structure/sign/vacuum/external{
 	pixel_y = -32
 	},
+/obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_port)
 "cMG" = (
@@ -39138,6 +39124,9 @@
 /area/station/hallway/supply)
 "gtW" = (
 /obj/machinery/light/small/directional/west,
+/obj/machinery/power/tesla_coil{
+	anchored = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "guZ" = (
@@ -40284,6 +40273,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/effect/spawner/random/maintenance,
+/obj/machinery/power/tesla_coil,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "gRW" = (
@@ -40642,6 +40633,13 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/fore/east)
+"gXM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/tesla_coil{
+	anchored = 1
+	},
+/turf/simulated/floor/plasteel,
+/area/station/maintenance/fsmaint)
 "gXN" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -41035,10 +41033,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
 "hgU" = (
-/obj/machinery/power/tesla_coil{
-	anchored = 1
-	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/the_singularitygen/tesla,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "hht" = (
@@ -41295,13 +41291,11 @@
 /turf/simulated/floor/engine/co2,
 /area/station/engineering/atmos)
 "hnq" = (
-/obj/machinery/power/tesla_coil{
-	anchored = 1
-	},
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/machinery/the_singularitygen,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "hns" = (
@@ -43100,6 +43094,26 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/construction)
 "hYh" = (
+/obj/structure/closet/crate,
+/obj/item/stack/rods{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/gps,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 30
+	},
+/obj/item/stock_parts/cell/high{
+	charge = 100;
+	maxcharge = 15000
+	},
+/obj/item/airlock_electronics,
+/obj/item/airlock_electronics,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -44575,7 +44589,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/mecha_part_fabricator/station{
+/obj/machinery/mecha_part_fabricator/loaded/station{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -50596,6 +50610,10 @@
 /obj/effect/turf_decal/tiles/department/command/side{
 	dir = 9
 	},
+/obj/item/tactical_sledgehammer{
+	pixel_y = -5;
+	pixel_x = 5
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory)
 "kNu" = (
@@ -52202,10 +52220,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fore2)
 "loX" = (
-/obj/structure/cable/extra_insulated{
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_port)
 "lpb" = (
@@ -56503,6 +56521,12 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
+"mVM" = (
+/obj/machinery/power/tesla_coil{
+	anchored = 1
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/fsmaint)
 "mVN" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -60875,7 +60899,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/mecha_part_fabricator/station{
+/obj/machinery/mecha_part_fabricator/loaded/station{
 	dir = 4
 	},
 /obj/machinery/requests_console/directional/west,
@@ -70425,6 +70449,7 @@
 "skd" = (
 /obj/effect/spawner/random/blood/often,
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/power/tesla_coil,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "skq" = (
@@ -71391,7 +71416,7 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
 "sFP" = (
-/obj/structure/cable/extra_insulated{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
@@ -124074,7 +124099,7 @@ air
 air
 aBZ
 iAS
-cxr
+gXM
 skd
 ugX
 xef
@@ -124331,7 +124356,7 @@ air
 air
 aBZ
 iAS
-oyN
+mVM
 gRS
 hnq
 aLl

@@ -11,9 +11,12 @@
 	/// Assoc list of antag scenario config tag -> list of parameters of this scenarios
 	var/list/params_by_scenario = list()
 
+/datum/server_configuration/load_configuration()
+	antag_mix_gamemode = new()
+	. = ..()
+
 /datum/server_configuration/load_all_sections()
 	. = ..()
-	antag_mix_gamemode = new()
 	safe_load(antag_mix_gamemode, "antag_mix_gamemode_configuration")
 
 /datum/configuration_section/antag_mix_gamemode_configuration/load_data(list/data)

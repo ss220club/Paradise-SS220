@@ -21,7 +21,7 @@
 	. = ..()
 	allowed_roles |= GLOB.medical_positions_ss220
 
-/datum/gear/hat/beret_job/med/New()
+/datum/gear/hat/beret_job/md/New()
 	. = ..()
 	allowed_roles |= GLOB.medical_positions_ss220
 

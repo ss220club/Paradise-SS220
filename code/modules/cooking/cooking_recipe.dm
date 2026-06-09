@@ -59,24 +59,24 @@ GLOBAL_LIST_EMPTY(pcwj_cookbook_lookup)
 
 	var/list/applied_steps = tracker.recipes_all_applied_steps[src]
 	var/output_count = 1
-	// Remember this is not necessarily a consecutive list of step indexes
-	// Optional steps may have been skipped
-	for(var/i in 1 to length(applied_steps))
-		var/current_index = applied_steps[i]
-		var/datum/cooking/recipe_step/recipe_step = steps[current_index]
+	for(var/i in 1 to length(tracker.recipes_applied_step_data))
 		var/list/applied_step_data = tracker.recipes_applied_step_data[i]
 
-		// Filter out reagents based on settings
-		var/datum/cooking/recipe_step/add_reagent/add_reagent_step = recipe_step
-		if(istype(add_reagent_step))
-			var/amount_to_remove = add_reagent_step.amount * (1 - add_reagent_step.remain_percent)
+		if("reagent_id" in applied_step_data)
+			var/amount_to_remove = applied_step_data["amount"] * (1 - applied_step_data["reagent_remain_percent"])
 			if(!amount_to_remove)
 				continue
-			container.reagents.remove_reagent(add_reagent_step.reagent_id, amount_to_remove, safety = TRUE)
+			container.reagents.remove_reagent(
+				applied_step_data["reagent_id"], amount_to_remove, safety = TRUE)
 
 		if("rating" in applied_step_data)
 			output_count = max(output_count, min(3, applied_step_data["rating"]))
-
+	//SS220 EDIT START - применяем множитель выхода для модульной посуды
+	var/product_multiplier = container.vars["product_multiplier"]
+	if(isnull(product_multiplier))
+		product_multiplier = 1
+	output_count *= container.product_multiplier // SS220 EDIT применяем множитель выхода для модульной посуды
+	//SS220 EDIT END
 	if(product_type) // Make a regular item
 		. = make_product_item(container, slurry, applied_steps, output_count)
 	else
