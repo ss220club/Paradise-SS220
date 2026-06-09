@@ -374,6 +374,8 @@
 	. = ..()
 	matchignite()
 
+// SS220 EDIT START
+
 /obj/item/match/unathi
 	name = "small blaze"
 	desc = "Твоё маленькое, но сильное пламя, которое вот-вот вырвется наружу!"
@@ -435,6 +437,7 @@
 	matchburnout()
 	return TRUE
 
+// SS220 EDIT END
 
 /obj/item/match/unathi/Initialize(mapload)
 	. = ..()
