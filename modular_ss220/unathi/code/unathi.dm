@@ -28,7 +28,7 @@
 		if(!cig.lit)
 			user.visible_message(
 				SPAN_ROSE("[user] выпускает из пасти пламя души, зажигая [cig.declent_ru(ACCUSATIVE)]"),
-				SPAN_ROSE("Вы выдыхаете пламя своей души — [cig.declent_ru(NOMINATIVE)] оживает ярким огнём."),
+				SPAN_ROSE("Вы выдыхаете пламя души — [cig.declent_ru(NOMINATIVE)] оживает ярким огнём."),
 				SPAN_WARNING("Тишину разрывает резкий щелчок пламени!")
 			)
 
@@ -36,7 +36,8 @@
 			playsound(user.loc, 'sound/effects/unathiignite.ogg', 40, FALSE)
 
 			cooldown = world.time + cooldown_duration
-
+			return
+		to_chat(user, SPAN_WARNING("Ваша сигарета уже зажженна!"))
 		return
 
 	var/obj/item/match/unathi/fire = new(user.loc, src)

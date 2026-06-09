@@ -385,16 +385,21 @@
 	w_class = WEIGHT_CLASS_BULKY //to prevent it going to pockets
 	is_unathi_fire = TRUE
 
-/obj/item/match/unathi/cigarette_lighter_act(mob/living/target, mob/living/user, obj/item/direct_attackby_item)
-	var/obj/item/clothing/mask/cigarette/cig = ..()
-	if(!cig)
-		return !isnull(cig)
+/obj/item/match/unathi/cigarette_lighter_act(mob/living/user, mob/living/target,  obj/item/direct_attackby_item)
+	var/obj/item/clothing/mask/cigarette/cig = direct_attackby_item ? direct_attackby_item : target.wear_mask
+
+	if(!cig || !istype(cig, /obj/item/clothing/mask/cigarette))
+		if(user.a_intent == INTENT_HARM)
+			to_chat(user, SPAN_WARNING("Тут нечего сжигать."))
+			return TRUE
+		to_chat(user, SPAN_WARNING("Тут нечего зажигать."))
+		return TRUE
 
 	if(!lit)
 		to_chat(user, SPAN_USERDANGER("Всё сломалось, кодер вульпа. Пиши трекер."))
 		return TRUE
 
-// чёт пытаемся
+
 	if(user.a_intent == INTENT_HARM && target != user)
 		user.visible_message(
 			SPAN_DANGER("[user] резко выдыхает пламя души прямо в [cig.declent_ru(ACCUSATIVE)] [target], обращая её в пепел за считанные мгновения!"),
@@ -409,22 +414,27 @@
 		matchburnout()
 		return TRUE
 
+	if(cig.lit)
+		to_chat(user, SPAN_WARNING("Тут нечего зажигать."))
+		return TRUE
+
 	if(target == user)
 		user.visible_message(
 			SPAN_ROSE("[user] направляет дыхание воли к [cig.declent_ru(DATIVE)], и та послушно вспыхивает."),
-			SPAN_ROSE("Вы направляете дыхание воли на [cig.declent_ru(ACCUSATIVE)] и [cig.ru_p_they()] оживает слабым огоньком."),
+			SPAN_ROSE("Вы направляете дыхание воли на [cig.declent_ru(ACCUSATIVE)] и она оживает слабым огоньком."),
 			SPAN_WARNING("Воздух рассекает короткий, благородный треск пламени!")
 		)
 	else
 		user.visible_message(
-			SPAN_ROSE("[user] дарует дыхание воли [target], зажигая [cig.declent_ru(ACCUSATIVE)] в [target.ru_p_them()] пасти, едва не коснувшись пламенем лица [target]!"),
-			SPAN_ROSE("Вы даруете дыхание воли [target] — [cig.declent_ru(NOMINATIVE)] послушно вспыхивает в пасти, едва не опалив [target.ru_p_them()] лик!"),
-			SPAN_WARNING("Воздух рассекает короткий, благородный треск пламени!")
+			SPAN_ROSE("[user] дарует дыхание воли [target], зажигая [cig.declent_ru(ACCUSATIVE)] в [target.ru_p_them()] пасти."),
+			SPAN_ROSE("Вы даруете дыхание воли [target] — [cig.declent_ru(NOMINATIVE)] послушно вспыхивает в пасти."),
+			SPAN_WARNING("Воздух рассекает короткий и благородный треск пламени!")
 		)
 	cig.light(user, target)
 	playsound(user.loc, 'sound/effects/unathiignite.ogg', 40, FALSE)
 	matchburnout()
 	return TRUE
+
 
 /obj/item/match/unathi/Initialize(mapload)
 	. = ..()
