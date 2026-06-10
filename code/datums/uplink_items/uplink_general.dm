@@ -975,41 +975,38 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/cyber_implants
-	category = "Cybernetic Implants"
+	category = "Кибернетические импланты"
 
 /datum/uplink_item/cyber_implants/hackerman_deck
-	name = "Binyat Wireless Hacking System Autoimplanter"
-	desc = "This implant will allow you to wirelessly emag from a distance. However, it will slightly burn you \
-	on use, and will be quite visual as you are emaging the object. \
-	Will not show on unupgraded body scanners. Incompatible with the Qani-Laaca Sensory Computer."
+	name = "Беспроводная хакерская система Binyat"
+	desc = "Автоимплантер, содержащий хакерскую систему Binyat. Позволяет выполнять в злом как «Emag», но на расстояние. \
+			При взломе, Система сильно греется, незначительно обжигая ваш мозг. Несовместим с любыми модификациями мозга."
 	reference = "HKR"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/hackerman_deck
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15 // Probably slightly less useful than an emag with heat / cooldown, but I am not going to make it cheaper or everyone picks it over emag
 
 /datum/uplink_item/cyber_implants/razorwire
-	name = "Razorwire Spool Arm Implant Autoimplanter"
-	desc = "A long length of monomolecular filament, built into the back of your hand. \
-		Impossibly thin and flawlessly sharp, it should slice through organic materials with no trouble; \
-		even from a few steps away. However, results against anything more durable will heavily vary."
+	name = "Катушка с моноструной"
+	desc = "Автоимплантер, содержащий катушку с моноструной. Двухметровая моноструна, вживляемая в тыльную сторону ладони. \
+			Тонкая, острая и очень длинная, что позволяет ей резать цели на расстояние. С прорезанием прочной брони будут \
+			серьёзные проблемы."
 	reference = "RZR"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/razorwire
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 
 /datum/uplink_item/cyber_implants/scope_eyes
-	name = "Hardened Kaleido Optics Eyes Autoimplanter"
-	desc = "These cybernetic eye implants will let you zoom in on far away objects. \
-	Many users find it disorienting, and find it hard to interact with things near them when active. \
-	This pair has been hardened for special operations personnel."
+	name = "Экранированные глаза Kaleido Optics"
+	desc = "Автоимплантер, содержащий экранированные глаза Kaleido Optics. Позволяют приближать дальние объекты. \
+			Использование их для рассмотрения ближайших объектов может вызывать дезориентацию"
 	reference = "KOE"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/scope_eyes
 	cost = 10
 
 /datum/uplink_item/cyber_implants/mantis_kit
-	name = "'Naginata' Mantis Blades Kit"
-	desc = "A pair of devastating 'Naginata' concealable mantis blades, which retract into the arms of the user. \
-	Their monomolecular edges will easily tear through flesh and armor alike, and can even pry open airlocks when used together. \
-	When both blades are equipped, they enable the user to perform double attacks. \
-	Can be used to parry incoming melee attacks."
+	name = "Набор клинков Богомола Naginata"
+	desc = "Два автоимплантера, содержащие клинки Богомола Naginata. Их тонкие лезвия легко пробивают плоть и броню, \
+			а при использовании одновременно обоих лезвий могут даже раздвигать шлюзы или выполнять двойные удары. \
+			Позволяют парировать атаки в ближнем бою."
 	reference = "MBK"
 	item = /obj/item/storage/box/syndie_kit/syndie_mantis
 	cost = 35 // SS220 EDIT PRICE UP/DOWN 50 -> 35
