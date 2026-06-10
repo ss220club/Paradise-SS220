@@ -539,8 +539,8 @@ GLOBAL_LIST_INIT(cardboard_recipes, list (
 	if(!istype(used, /obj/item/stamp/clown) || isstorage(loc))
 		return ..()
 
+	var/atom/droploc = drop_location()
 	if(use(1))
-		var/atom/droploc = drop_location()
 		to_chat(user, SPAN_NOTICE("You stamp the cardboard! It's a clown box! Honk!"))
 		playsound(used, 'sound/items/bikehorn.ogg', 50, TRUE, -1)
 		new/obj/item/storage/box/clown(droploc)
@@ -554,6 +554,7 @@ GLOBAL_LIST_INIT(cardboard_recipes, list (
 	icon_state = "sheet-card"
 	singular_name = "cardboard sheet"
 	resistance_flags = FLAMMABLE
+	materials = list(MAT_CARDBOARD = MINERAL_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/sheet/cardboard
 
 /obj/item/stack/sheet/cardboard/Initialize(mapload, new_amount, merge)
