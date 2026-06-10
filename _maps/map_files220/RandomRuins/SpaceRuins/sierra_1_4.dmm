@@ -106,7 +106,9 @@
 /area/ruin/space/sierra/rnd)
 "bg" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 8
 	},
@@ -307,14 +309,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/trimline/dark,
-/turf/simulated/floor/plasteel/dark,
-/area/ruin/space/sierra/med)
-"cU" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/closed,
-/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/med)
 "cW" = (
@@ -688,7 +682,9 @@
 /turf/simulated/floor/plasteel/airless,
 /area/ruin/space/sierra/rnd)
 "fS" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /turf/simulated/floor/engine,
 /area/ruin/space/sierra/maint)
 "fX" = (
@@ -723,7 +719,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/rnd)
 "go" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/maint)
 "gp" = (
@@ -778,7 +776,9 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
 "gG" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel/dark,
@@ -808,7 +808,9 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
 "gP" = (
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/med)
 "gQ" = (
@@ -2044,7 +2046,9 @@
 /area/ruin/space/sierra/hall)
 "rJ" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
@@ -2120,7 +2124,9 @@
 /area/ruin/space/sierra/med)
 "sr" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 4
 	},
@@ -2155,7 +2161,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/med)
 "sA" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark/full,
 /area/ruin/space/sierra/maint)
 "sB" = (
@@ -2411,7 +2419,9 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/hall)
 "uM" = (
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/white,
 /area/ruin/space/sierra/med)
 "uO" = (
@@ -2435,7 +2445,9 @@
 /turf/simulated/floor/plasteel/dark/airless,
 /area/ruin/space/sierra/med)
 "va" = (
-/obj/machinery/door/airlock/research,
+/obj/machinery/door/airlock/research{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
@@ -2561,7 +2573,9 @@
 /turf/simulated/floor/plasteel/airless,
 /area/ruin/space/sierra/rnd)
 "vI" = (
-/obj/machinery/door/airlock/security,
+/obj/machinery/door/airlock/security{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel/dark,
@@ -2594,6 +2608,16 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/shelter)
+"vX" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/maint)
 "wa" = (
 /obj/structure/chair/office/dark{
 	dir = 1
@@ -3107,11 +3131,26 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "Bb" = (
-/obj/machinery/door/airlock/research,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/airlock/research{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/rnd)
+"Bg" = (
+/obj/machinery/door/airlock/vault{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/access/all/command/general,
+/turf/simulated/floor/plasteel/dark/full,
+/area/ruin/space/sierra/shelter)
 "Bj" = (
 /obj/effect/turf_decal/tiles/department/command/side{
 	dir = 8
@@ -3263,6 +3302,12 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/hall)
+"CI" = (
+/obj/machinery/door/airlock/external{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark/full,
+/area/ruin/space/sierra/maint)
 "CJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random/trash,
@@ -3358,6 +3403,12 @@
 	},
 /turf/simulated/floor/plasteel/airless,
 /area/ruin/space/sierra/rnd)
+"DE" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "DF" = (
 /obj/structure/railing{
 	dir = 4;
@@ -3519,7 +3570,9 @@
 "EF" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "EG" = (
@@ -3530,7 +3583,9 @@
 /turf/simulated/floor/plasteel/white,
 /area/ruin/space/sierra/med)
 "EH" = (
-/obj/machinery/door/airlock/medical,
+/obj/machinery/door/airlock/medical{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/effect/turf_decal/tiles/department/medical,
 /turf/simulated/floor/plasteel/white,
@@ -3582,6 +3637,16 @@
 	icon_state = "1-8"
 	},
 /obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
+/area/ruin/space/sierra/med)
+"Ff" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/med)
 "Fk" = (
@@ -3849,8 +3914,12 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/med)
 "HJ" = (
-/obj/machinery/door/airlock/vault,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/airlock/vault{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/structure/cable/green{
@@ -4003,6 +4072,18 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/rnd)
+"JA" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel/white,
+/area/ruin/space/sierra/med)
 "JB" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel,
@@ -4066,7 +4147,9 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "Ka" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "Kc" = (
@@ -4159,8 +4242,12 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/engineering,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark/full,
 /area/ruin/space/sierra/maint)
 "KX" = (
@@ -4174,16 +4261,6 @@
 "Ld" = (
 /turf/simulated/floor/plasteel/airless,
 /area/space/nearstation)
-"Lg" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/closed,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plasteel/white,
-/area/ruin/space/sierra/med)
 "Lh" = (
 /obj/effect/turf_decal/tiles/department/medical/corner{
 	dir = 8
@@ -4206,7 +4283,9 @@
 /turf/simulated/floor/plasteel/airless,
 /area/space/nearstation)
 "Lq" = (
-/obj/machinery/door/airlock/medical/glass,
+/obj/machinery/door/airlock/medical/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/simulated/floor/plasteel/white,
 /area/ruin/space/sierra/med)
@@ -4239,7 +4318,9 @@
 "LC" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -4455,9 +4536,13 @@
 /turf/simulated/floor/plasteel/white,
 /area/ruin/space/sierra/med)
 "NA" = (
-/obj/machinery/door/airlock/medical,
+/obj/machinery/door/airlock/medical{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -4562,7 +4647,9 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "Op" = (
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/maint)
 "Or" = (
@@ -4763,7 +4850,9 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "Qv" = (
-/obj/machinery/door/airlock/research,
+/obj/machinery/door/airlock/research{
+	dir = 4
+	},
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
@@ -4934,8 +5023,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/engineering,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark/full,
 /area/ruin/space/sierra/maint)
 "Rz" = (
@@ -5026,7 +5119,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/shelter)
 "Sd" = (
-/obj/machinery/door/airlock/medical/glass,
+/obj/machinery/door/airlock/medical/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/med)
@@ -5060,8 +5155,12 @@
 /turf/simulated/floor/plasteel/airless,
 /area/ruin/space/sierra/rnd)
 "So" = (
-/obj/machinery/door/airlock/research,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/airlock/research{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
@@ -5089,8 +5188,12 @@
 /turf/simulated/floor/plasteel/white,
 /area/ruin/space/sierra/med)
 "SJ" = (
-/obj/machinery/door/airlock/research,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
@@ -8806,7 +8909,7 @@ qT
 ty
 uz
 Op
-sA
+CI
 Kw
 fg
 Tb
@@ -8916,7 +9019,7 @@ yH
 iG
 Px
 Kw
-fd
+Bg
 kZ
 kZ
 Il
@@ -10031,7 +10134,7 @@ QX
 zq
 yH
 zq
-wh
+DE
 yH
 Px
 MU
@@ -10140,7 +10243,7 @@ zq
 zq
 zq
 yH
-os
+vX
 oZ
 oZ
 IM
@@ -11971,7 +12074,7 @@ mI
 An
 Zi
 QR
-cU
+Ff
 he
 he
 he
@@ -12800,7 +12903,7 @@ Fw
 dI
 AX
 To
-Lg
+JA
 lM
 vt
 EE

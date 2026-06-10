@@ -240,7 +240,8 @@
 "aic" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Блокпост";
-	req_one_access = list(101)
+	req_one_access = list(101);
+	dir = 4
 	},
 /obj/effect/turf_decal/delivery/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -338,7 +339,8 @@
 "alh" = (
 /obj/machinery/door/airlock/hatch/syndicate{
 	name = "Oneway Syndicate Hatch";
-	auto_close_time = 16
+	auto_close_time = 16;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/unres,
 /obj/structure/fans/tiny/invisible,
@@ -481,7 +483,8 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/airlock/wood{
-	name = "Storage"
+	name = "Storage";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/dark,
@@ -1016,7 +1019,9 @@
 /turf/simulated/floor/cobblestone/dungeon,
 /area/ghost_bar/indoor/cave)
 "aBd" = (
-/obj/machinery/door/airlock/wood,
+/obj/machinery/door/airlock/wood{
+	dir = 4
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "aBm" = (
@@ -1408,7 +1413,8 @@
 "aKT" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Бар"
+	name = "Бар";
+	dir = 4
 	},
 /turf/simulated/floor/pod/light,
 /area/centcom/ss220/supply)
@@ -1588,7 +1594,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark/nitrogen,
 /area/vox_base)
@@ -2429,7 +2436,8 @@
 /area/centcom/ss220/admin1)
 "bis" = (
 /obj/machinery/door/airlock{
-	name = "Приватная комната"
+	name = "Приватная комната";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/fakestairs{
 	color = "gray"
@@ -2671,7 +2679,8 @@
 "bnn" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Офисы";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/effect/turf_decal/delivery/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -3617,7 +3626,8 @@
 "bLF" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Дроп Под";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	name = "Дроп Под";
@@ -3965,6 +3975,14 @@
 	pixel_y = 5
 	},
 /turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
+"bSk" = (
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
+/obj/machinery/door/airlock/centcom{
+	name = "Рабочая Зона";
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
 /area/centcom/ss220/supply)
 "bSm" = (
 /obj/structure/chair/sofa/corner{
@@ -5329,7 +5347,8 @@
 /obj/machinery/door/airlock/hatch{
 	id_tag = "voxwest_door_ext";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor/shutters{
@@ -5794,7 +5813,8 @@
 /obj/structure/fans/tiny/invisible,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/airlock/security{
-	name = "Detainment"
+	name = "Detainment";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
@@ -6242,6 +6262,14 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
+"cUL" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Блокпост";
+	req_access = list(114);
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "cUU" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -7593,7 +7621,8 @@
 "dzV" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
-	name = "Покои ОСО"
+	name = "Покои ОСО";
+	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral/full{
 	color = "#000000";
@@ -7692,7 +7721,8 @@
 /obj/machinery/door/airlock/centcom{
 	id_tag = "CC_Interior_1";
 	name = "Зона ЦК";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
@@ -7858,7 +7888,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor/shutters{
@@ -7994,7 +8025,8 @@
 "dHB" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Комната углубленного допроса";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_SOD_8";
@@ -8424,7 +8456,8 @@
 "dPI" = (
 /obj/machinery/door/airlock/centcom{
 	req_access = list(106);
-	id_tag = "CC_Cargo_Office_Exterior_1"
+	id_tag = "CC_Cargo_Office_Exterior_1";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/dark,
@@ -8594,7 +8627,8 @@
 /area/centcom/ss220/bar)
 "dTC" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Крио"
+	name = "Крио";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
@@ -8777,7 +8811,8 @@
 "dYV" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Пилот"
+	name = "Пилот";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
@@ -9559,7 +9594,8 @@
 	id_tag = "voxwest_door_int";
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/decal/cleanable/dirt,
@@ -9956,7 +9992,8 @@
 /obj/structure/fans/tiny/invisible,
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "ghostcafebeachfreezer";
-	name = "Beach Freezer"
+	name = "Beach Freezer";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/freezer,
 /area/ghost_bar/indoor)
@@ -10067,7 +10104,8 @@
 /area/centcom/ss220/court)
 "eEg" = (
 /obj/machinery/door/airlock/medical/glass{
-	name = "Стационар"
+	name = "Стационар";
+	dir = 4
 	},
 /obj/effect/turf_decal/tiles/department/medical,
 /turf/simulated/floor/plasteel/white,
@@ -10174,6 +10212,16 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
+"eFR" = (
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/specops,
+/obj/machinery/door/airlock/external{
+	name = "Assault Pod";
+	id_tag = "nt_drop_pod";
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/centcom/ss220/admin3)
 "eGe" = (
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 4
@@ -10606,7 +10654,8 @@
 /area/centcom/ss220/general)
 "eOv" = (
 /turf/simulated/wall/indestructible/fakedoor{
-	name = "Spider Clan Jail Cell"
+	name = "Spider Clan Jail Cell";
+	dir = 4
 	},
 /area/ninja/holding)
 "eOA" = (
@@ -10652,7 +10701,8 @@
 "ePh" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "ghostcaferesortbathroom1";
-	name = "Resort Bathroom"
+	name = "Resort Bathroom";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/white/grid,
@@ -11816,7 +11866,8 @@
 /obj/machinery/door/airlock/hatch{
 	id_tag = "voxeast_door_int";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/decal/cleanable/dirt,
@@ -14833,7 +14884,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
@@ -15403,6 +15455,16 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/syndicate)
+"gVJ" = (
+/obj/effect/turf_decal/box,
+/obj/effect/turf_decal/caution/stand_clear,
+/obj/machinery/door/airlock/wood/glass{
+	name = "Lounge";
+	dir = 4
+	},
+/obj/structure/fans/tiny/invisible,
+/turf/simulated/floor/plasteel/dark,
+/area/ghost_bar/indoor)
 "gVP" = (
 /turf/simulated/floor/holofloor{
 	dir = 4;
@@ -15486,7 +15548,8 @@
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/specops,
 /obj/machinery/door/airlock/hatch{
 	aiControlDisabled = 1;
-	name = "Assault Pod"
+	name = "Assault Pod";
+	dir = 4
 	},
 /obj/docking_port/mobile/assault_pod/nanotrasen,
 /turf/simulated/floor/mineral/plastitanium,
@@ -15615,7 +15678,8 @@
 "gYI" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Туалеты"
+	name = "Туалеты";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/centcom/ss220/supply)
@@ -16125,7 +16189,8 @@
 "hka" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Конференц Зал";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/effect/turf_decal/siding/wood/cherry{
 	dir = 5
@@ -16145,7 +16210,8 @@
 "hkd" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Рабочая Зона"
+	name = "Рабочая Зона";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -16273,7 +16339,8 @@
 "hoK" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Оружейная";
-	req_access = list(114)
+	req_access = list(114);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "СС_Office_Armory";
@@ -16766,6 +16833,12 @@
 /obj/machinery/sleeper/upgraded,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"hAp" = (
+/obj/machinery/door/airlock/freezer{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/evac)
 "hAq" = (
 /obj/structure/table/holotable/wood{
 	color = "#996633"
@@ -17658,7 +17731,8 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/airlock/wood{
-	name = "Kitchen"
+	name = "Kitchen";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/dark,
@@ -17698,7 +17772,8 @@
 "hRX" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Блокпост";
-	req_access = list(104)
+	req_access = list(104);
+	dir = 4
 	},
 /obj/effect/turf_decal/delivery/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -19768,7 +19843,8 @@
 /area/centcom/ss220/medbay)
 "iMy" = (
 /obj/machinery/door/airlock{
-	name = "Приватная комната"
+	name = "Приватная комната";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/fakestairs{
 	color = "gray";
@@ -21053,7 +21129,8 @@
 "jrQ" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "ghostcaferesortbathroom2";
-	name = "Resort Bathroom"
+	name = "Resort Bathroom";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/white/grid,
@@ -22050,7 +22127,8 @@
 "jPF" = (
 /obj/machinery/door/airlock/wood{
 	glass = 1;
-	name = "Surgery"
+	name = "Surgery";
+	dir = 4
 	},
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/structure/fans/tiny/invisible,
@@ -22218,7 +22296,8 @@
 /area/centcom/ss220/admin2)
 "jWb" = (
 /obj/machinery/door/airlock/public/glass{
-	name = "Столовая"
+	name = "Столовая";
+	dir = 4
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin1)
@@ -23821,7 +23900,8 @@
 "kFm" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Конференц Зал";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_SOD_3";
@@ -25309,7 +25389,8 @@
 "lpN" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Хранилище";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3;
@@ -25706,7 +25787,8 @@
 "lvS" = (
 /obj/machinery/door/airlock/centcom{
 	req_access = list(106);
-	id_tag = "CC_Cargo_Office_Interior_1"
+	id_tag = "CC_Cargo_Office_Interior_1";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/dark,
@@ -26008,7 +26090,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/machinery/door/poddoor/shutters{
 	density = 0;
@@ -27618,7 +27701,8 @@
 "mot" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Телепортерная";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
@@ -29167,7 +29251,8 @@
 "nbq" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Навигатор Дроп Пода";
-	req_access = list(110)
+	req_access = list(110);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
@@ -31191,7 +31276,8 @@
 "nXF" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Морг"
+	name = "Морг";
+	dir = 4
 	},
 /obj/effect/turf_decal/tiles/department/command,
 /turf/simulated/floor/plasteel/dark,
@@ -33061,7 +33147,9 @@
 /turf/simulated/wall/mineral/plastitanium,
 /area/vox_base)
 "oSF" = (
-/obj/machinery/door/airlock/bathroom,
+/obj/machinery/door/airlock/bathroom{
+	dir = 4
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "oSJ" = (
@@ -33563,14 +33651,15 @@
 "pcy" = (
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/all/shuttles/vox,
-/obj/machinery/door/airlock/hatch{
-	name = "vox hatch";
-	aiControlDisabled = 1;
-	hackProof = 1
-	},
 /obj/machinery/access_button/directional/east{
 	autolink_id = "voxwest_btn_ext";
 	req_access = list(152)
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "vox hatch";
+	aiControlDisabled = 1;
+	hackProof = 1;
+	dir = 4
 	},
 /turf/simulated/floor/plating/nitrogen,
 /area/vox_base)
@@ -33702,7 +33791,8 @@
 "peR" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Блокпост";
-	req_access = list(106)
+	req_access = list(106);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/general)
@@ -33841,6 +33931,15 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/centcom/ss220/medbay)
+"pko" = (
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/specops,
+/obj/machinery/door/airlock/hatch{
+	aiControlDisabled = 1;
+	name = "Assault Pod";
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/shuttle/assault_pod/nanotrasen)
 "pkq" = (
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 8
@@ -34164,6 +34263,15 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
+"psT" = (
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
+/obj/machinery/door/airlock/centcom{
+	name = "Лазарет";
+	dir = 4
+	},
+/obj/effect/turf_decal/tiles/department/medical,
+/turf/simulated/floor/plasteel/white,
+/area/centcom/ss220/medbay)
 "psX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -35382,7 +35490,8 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Hatch";
-	aiControlDisabled = 1
+	aiControlDisabled = 1;
+	dir = 4
 	},
 /obj/docking_port/mobile/specops,
 /obj/structure/fans/tiny,
@@ -35504,7 +35613,8 @@
 "qbw" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Зона ЦК";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
@@ -36097,7 +36207,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "qqL" = (
-/obj/machinery/door/airlock/command/glass,
+/obj/machinery/door/airlock/command/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/court)
@@ -36155,7 +36267,8 @@
 "qsh" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
-	name = "Кабинет ОСО"
+	name = "Кабинет ОСО";
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.2;
@@ -36492,7 +36605,9 @@
 /turf/simulated/floor/beach/away/sand_alternative,
 /area/ghost_bar/outdoor/beach)
 "qBC" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /obj/docking_port/stationary{
 	dir = 2;
@@ -37220,7 +37335,8 @@
 "qUe" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
-	name = "Кабинет ОСО"
+	name = "Кабинет ОСО";
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.2;
@@ -37501,7 +37617,8 @@
 "qZh" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Зона Отдыха"
+	name = "Зона Отдыха";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -39938,7 +40055,8 @@
 /obj/structure/fans/tiny/invisible,
 /obj/machinery/door/airlock/wood/glass{
 	desc = "A strange small bar. It's actually remarkably close to Space Station 13.";
-	name = "The Snoozy Floofer"
+	name = "The Snoozy Floofer";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/stairs,
 /area/ghost_bar/indoor)
@@ -40146,7 +40264,8 @@
 "san" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Конференц Зал Верховного Командования";
-	req_access = list(114)
+	req_access = list(114);
+	dir = 4
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
@@ -40978,7 +41097,8 @@
 "srs" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Кабинет ОЦК"
+	name = "Кабинет ОЦК";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
@@ -41062,7 +41182,8 @@
 "stR" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Конференц Зал";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/effect/turf_decal/siding/wood/cherry{
 	dir = 10
@@ -41170,7 +41291,8 @@
 "syn" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
-	name = "Кабинет ОСО"
+	name = "Кабинет ОСО";
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.2;
@@ -41685,7 +41807,8 @@
 /obj/machinery/door/airlock/centcom{
 	id_tag = "CC_Exterior_2";
 	name = "Зона ЦК";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "СС_BD_Exterior_2";
@@ -42111,7 +42234,8 @@
 /obj/machinery/door/airlock/centcom{
 	id_tag = "CC_Exterior_1";
 	name = "Зона ЦК Карго";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
@@ -42233,7 +42357,8 @@
 /area/centcom/ss220/admin3)
 "sWK" = (
 /obj/machinery/door/airlock/bathroom{
-	name = "Уборная"
+	name = "Уборная";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
@@ -42606,7 +42731,8 @@
 "tfv" = (
 /obj/machinery/door/airlock/centcom{
 	name = "ОБР";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
@@ -42822,7 +42948,8 @@
 /area/centcom/ss220/admin2)
 "too" = (
 /obj/machinery/door/airlock/hatch{
-	name = "тебе сюда нельзя"
+	name = "тебе сюда нельзя";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plating/airless,
@@ -43317,7 +43444,8 @@
 "tAi" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
-	name = "Кабинет ОСО"
+	name = "Кабинет ОСО";
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.2;
@@ -43899,7 +44027,8 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/airlock/wood{
-	name = "Janitorial"
+	name = "Janitorial";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/dark,
@@ -44560,7 +44689,9 @@
 "ued" = (
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "uef" = (
@@ -45517,6 +45648,16 @@
 /obj/structure/holowindow,
 /turf/simulated/floor/holofloor,
 /area/holodeck/source_knightarena)
+"uET" = (
+/obj/effect/mapping_helpers/airlock/access/all/shuttles/vox,
+/obj/machinery/door/airlock/hatch{
+	name = "vox hatch";
+	aiControlDisabled = 1;
+	hackProof = 1;
+	dir = 4
+	},
+/turf/simulated/floor/plating/nitrogen,
+/area/vox_base)
 "uFW" = (
 /obj/structure/table/reinforced{
 	color = "#404040"
@@ -46837,7 +46978,8 @@
 /area/vox_base)
 "vkS" = (
 /obj/machinery/door/airlock/highsecurity{
-	req_access = list(114)
+	req_access = list(114);
+	dir = 4
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -47113,7 +47255,8 @@
 "vqS" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Зал Верховного Суда";
-	req_access = list(106,109,110)
+	req_access = list(106,109,110);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/court)
@@ -47343,6 +47486,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/ebonite,
 /area/syndicate_mothership)
+"vuO" = (
+/turf/simulated/wall/indestructible/fakedoor{
+	name = "Spider Clan Jail Cell";
+	dir = 8
+	},
+/area/ninja/holding)
 "vuV" = (
 /obj/structure/table/glass,
 /obj/item/paper{
@@ -48072,7 +48221,8 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "specops_away";
 	name = "Шаттл ОБР";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/stripes/line{
@@ -48786,7 +48936,8 @@
 /area/holodeck/source_thunderdomecourt)
 "wct" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Коморка уборщика"
+	name = "Коморка уборщика";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/general)
@@ -49367,7 +49518,8 @@
 "wos" = (
 /obj/machinery/door/airlock/wood/glass{
 	desc = "A strange small bar. It's actually remarkably close to Space Station 13.";
-	name = "Library"
+	name = "Library";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/wood/oak,
@@ -49831,7 +49983,8 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	name = "Arrival Airlock"
+	name = "Arrival Airlock";
+	dir = 4
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
@@ -49979,7 +50132,8 @@
 /obj/machinery/door/airlock/centcom{
 	id_tag = "СС_Interior_2";
 	name = "Зона ЦК";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/machinery/door_control/no_emag/west{
 	id = "СС_BD_Interior_2";
@@ -50591,7 +50745,8 @@
 /area/syndicate_mothership/infteam)
 "wOH" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Комната Грязи"
+	name = "Комната Грязи";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
@@ -50829,7 +50984,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "wVR" = (
-/obj/machinery/door/airlock/centcom/glass,
+/obj/machinery/door/airlock/centcom/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
@@ -51272,7 +51429,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor/shutters{
@@ -51584,7 +51742,8 @@
 "xlO" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Бар"
+	name = "Бар";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
@@ -52818,7 +52977,8 @@
 /obj/machinery/door/airlock/hatch{
 	id_tag = "voxeast_door_ext";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/fans/tiny,
@@ -58541,7 +58701,7 @@ adJ
 cEM
 xzR
 hwP
-eOv
+vuO
 wJz
 wJz
 wJz
@@ -62803,7 +62963,7 @@ ofW
 ppK
 ofW
 ppK
-ase
+cUL
 oVq
 oVq
 jvf
@@ -63049,7 +63209,7 @@ adJ
 rzI
 ifc
 mLN
-syo
+bSk
 aVm
 uxt
 uxt
@@ -70844,7 +71004,7 @@ uMr
 fZv
 qLq
 eVA
-kdh
+psT
 hCE
 vWn
 iMo
@@ -76194,11 +76354,11 @@ quL
 vxs
 fUq
 odn
-mTZ
+hAp
 qln
 kEk
 qln
-mTZ
+hAp
 vxs
 fUq
 gJO
@@ -80886,8 +81046,8 @@ rsz
 sIV
 xWN
 bLF
-pjg
-deM
+eFR
+pko
 fOJ
 qIF
 daz
@@ -101840,11 +102000,11 @@ hKI
 hKI
 cOM
 gXH
-cXF
+uET
 tWD
 viS
 efW
-cXF
+uET
 viS
 viS
 oSC
@@ -102097,7 +102257,7 @@ hKI
 hKI
 hKI
 fbB
-cXF
+uET
 bKc
 viS
 ops
@@ -102416,7 +102576,7 @@ gDZ
 gDZ
 foY
 eEN
-gnv
+gVJ
 uwE
 cQl
 eOb
@@ -103701,7 +103861,7 @@ dss
 vKl
 eva
 eEN
-gnv
+gVJ
 uwE
 cQl
 iYh
