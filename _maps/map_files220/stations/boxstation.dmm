@@ -1161,7 +1161,9 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/door/airlock/multi_tile/security/glass,
+/obj/machinery/door/airlock/multi_tile/security/glass{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/department/security,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/prisonershuttle)
@@ -2098,7 +2100,8 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/machinery/door/airlock/multi_tile/security/glass{
-	id_tag = "BrigLeft"
+	id_tag = "BrigLeft";
+	dir = 4
 	},
 /obj/effect/turf_decal/tiles/department/security,
 /turf/simulated/floor/plasteel/dark,
@@ -5258,8 +5261,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/machinery/door/airlock/multi_tile/security/glass{
-	id_tag = "BrigEast";
-	dir = 4
+	id_tag = "BrigEast"
 	},
 /obj/effect/turf_decal/tiles/department/security,
 /turf/simulated/floor/plasteel/dark,
@@ -5463,8 +5465,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/machinery/door/airlock/multi_tile/security/glass{
-	id_tag = "BrigEast";
-	dir = 4
+	id_tag = "BrigEast"
 	},
 /obj/effect/turf_decal/tiles/department/security,
 /turf/simulated/floor/plasteel/dark,
@@ -5543,9 +5544,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
-/obj/machinery/door/airlock/multi_tile/security/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/security/glass,
 /obj/effect/turf_decal/tiles/department/security,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/processing)
@@ -10394,9 +10393,7 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/multi_tile/engineering/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/engineering/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/tiles/department/engineering/side,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
@@ -16341,6 +16338,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/storage/fancy/cigars{
+	pixel_x = 5;
+	pixel_y = -8
+	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
 "bjg" = (
@@ -16383,7 +16384,9 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/service/chapel/office)
 "bjs" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -19206,9 +19209,7 @@
 "bva" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "librarywindows"
 	},
@@ -19413,7 +19414,9 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
-/obj/machinery/door/airlock/multi_tile/command,
+/obj/machinery/door/airlock/multi_tile/command{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/department/command/side{
 	dir = 8
 	},
@@ -34294,7 +34297,8 @@
 "cJo" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/engineering/glass{
-	id_tag = "englobby"
+	id_tag = "englobby";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/poddoor{
@@ -39051,9 +39055,7 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/multi_tile/engineering/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/engineering/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/station_engineering,
 /turf/simulated/floor/plasteel/dark,
@@ -40219,9 +40221,7 @@
 /area/station/engineering/control)
 "dgP" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/atmospheric/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/atmospheric/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id_tag = "engsm2";
@@ -50599,7 +50599,9 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/command,
+/obj/machinery/door/airlock/multi_tile/command{
+	dir = 4
+	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
@@ -52469,7 +52471,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/atmospheric/glass,
+/obj/machinery/door/airlock/multi_tile/atmospheric/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
@@ -53398,7 +53402,9 @@
 /area/station/aisat/service)
 "gQs" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/engineering/glass,
+/obj/machinery/door/airlock/multi_tile/engineering/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
@@ -55636,8 +55642,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/siding/wood/cherry,
 /obj/machinery/door/airlock/multi_tile/command{
-	id_tag = "captainofficedoor";
-	dir = 4
+	id_tag = "captainofficedoor"
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
@@ -55962,8 +55967,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
 /obj/machinery/door/airlock/multi_tile/command/glass{
-	id_tag = "conference_bolt";
-	dir = 4
+	id_tag = "conference_bolt"
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
@@ -55978,7 +55982,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "hGo" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/tiles/neutral/side{
@@ -56186,7 +56192,9 @@
 /area/station/engineering/atmos)
 "hJQ" = (
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
@@ -60316,7 +60324,8 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/multi_tile/security/glass{
-	id_tag = "BrigRight"
+	id_tag = "BrigRight";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/tiles/department/security,
@@ -72670,7 +72679,9 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/atmospheric/glass,
+/obj/machinery/door/airlock/multi_tile/atmospheric/glass{
+	dir = 4
+	},
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "open";
@@ -73311,7 +73322,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/multi_tile/security/glass,
+/obj/machinery/door/airlock/multi_tile/security/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/polarized{
@@ -74235,7 +74248,9 @@
 /area/station/supply/miningdock)
 "nNq" = (
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/department/virology,
 /turf/simulated/floor/plasteel/white,
 /area/station/public/sleep)
@@ -74656,9 +74671,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/multi_tile/supply/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/supply/glass,
 /obj/effect/mapping_helpers/airlock/access/any/supply/cargo_bay,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/tiles/department/cargo,
@@ -77136,7 +77149,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "scene"
 	},
@@ -78478,15 +78493,15 @@
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/access_button/directional/west{
 	autolink_id = "turbine_btn_int";
 	name = "Gas Turbine Airlock Control";
 	req_access = list(24)
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/structure/cable/extra_insulated{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "pcF" = (
@@ -79119,7 +79134,9 @@
 "pnB" = (
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/engineering/glass,
+/obj/machinery/door/airlock/multi_tile/engineering/glass{
+	dir = 4
+	},
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
@@ -80264,9 +80281,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -86492,9 +86507,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
-/obj/machinery/door/airlock/multi_tile/medical/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/medical/glass,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/medbay)
 "rKV" = (
@@ -96966,9 +96979,7 @@
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "briefing"
 	},
-/obj/machinery/door/airlock/multi_tile/security/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/security/glass,
 /obj/effect/turf_decal/tiles/department/security,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/main)
@@ -100485,7 +100496,9 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/engine)
 "wny" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/siding/wood/cherry{
 	dir = 8
@@ -103798,9 +103811,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "xpV" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/public/glass{
 	autoclose = 0;
 	heat_proof = 1;
@@ -103825,6 +103835,9 @@
 	req_access = list(24)
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/structure/cable/extra_insulated{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/turbine)
 "xqa" = (
@@ -136779,7 +136792,7 @@ amI
 hRY
 anJ
 aiX
-qwf
+mcD
 wyJ
 uAG
 atg
@@ -137805,7 +137818,7 @@ apS
 apS
 apS
 opa
-mcD
+qwf
 apS
 apS
 dej
