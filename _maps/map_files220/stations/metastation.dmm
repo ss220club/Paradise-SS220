@@ -16731,7 +16731,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/multi_tile/command/glass,
+/obj/machinery/door/airlock/multi_tile/command/glass{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/ai_monitored/storage/eva)
 "bNP" = (
@@ -30387,7 +30389,6 @@
 /area/station/service/chapel/funeral)
 "djx" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/sign/medical/examroom,
 /turf/simulated/floor/plating,
 /area/station/medical/exam_room)
 "djP" = (
@@ -49746,6 +49747,11 @@
 /obj/machinery/message_server,
 /turf/simulated/floor/bluegrid,
 /area/station/telecomms/chamber)
+"kwW" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/sign/medical/examroom,
+/turf/simulated/floor/plating,
+/area/station/medical/exam_room)
 "kxf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -58216,10 +58222,6 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/engine,
 /area/station/science/testrange)
-"nzp" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/simulated/floor/plating,
-/area/station/medical/exam_room)
 "nzv" = (
 /obj/machinery/door_control{
 	id = "kitchen_service";
@@ -107975,10 +107977,10 @@ chM
 chM
 cmX
 cmX
-djx
+kwW
 xbY
 dio
-nzp
+djx
 cmX
 cmX
 cmv
