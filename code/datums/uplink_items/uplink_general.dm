@@ -911,62 +911,61 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/bio_chips
-	category = "Bio-chips"
+	category = "Био-чип"
 
 /datum/uplink_item/bio_chips/freedom
-	name = "Freedom Bio-chip"
-	desc = "A bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can be activated up to 4 times."
+	name = "Био-чип свободы"
+	desc = "Био-чип, вводимый инъекцией под кожу. Освобождает от любых оков и захватов при срабатывании. Имеет 4 заряда."
 	reference = "FI"
 	item = /obj/item/bio_chip_implanter/freedom
 	cost = 20 // SS220 EDIT PRICE UP/DOWN 25 -> 20
 
 /datum/uplink_item/bio_chips/protofreedom
-	name = "Prototype Freedom Bio-chip"
-	desc = "A prototype bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can only be activated a singular time."
+	name = "Прототип био-чипа свободы"
+	desc = "Прототип био-чипа, вводимый инъекцией под кожу. Освобождает от любых оков и захватов при срабатывании. Имеет лишь один заряд - потратьте его с умом."
 	reference = "PFI"
 	item = /obj/item/bio_chip_implanter/freedom/prototype
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/bio_chips/storage
-	name = "Storage Bio-chip"
-	desc = "A bio-chip injected into the body, and later activated at the user's will. It will open a small subspace pocket capable of storing two items."
+	name = "Биочип хранилища"
+	desc = "Био-чип, вводимый инъекцией под кожу. При активации откроет карманное хранилище, сжатое с помощью технологии Редспейса до размеров био-чипа. Может хранить только два предмета."
 	reference = "ESI"
 	item = /obj/item/bio_chip_implanter/storage
 	cost = 30 // SS220 EDIT PRICE UP/DOWN 40 -> 30
 
 /datum/uplink_item/bio_chips/mindslave
-	name = "Mindslave Bio-chip"
-	desc = "A box containing a bio-chip implanter filled with a mindslave bio-chip that when injected into another person makes them loyal to you and your cause, unless of course they're already implanted by someone else. Loyalty ends if the implant is no longer in their system."
+	name = "Био-чип подчинения"
+	desc = "Био-чип, вводимый инъекцией под кожу. При успешном введение, воля цели будет подавленна, а разум будет подчиняться только вашим приказам, выполняя даже самые жестокие поручения."
 	reference = "MI"
 	item = /obj/item/bio_chip_implanter/traitor
 	cost = 40 // SS220 EDIT PRICE UP/DOWN 50 -> 40
 
 /datum/uplink_item/bio_chips/adrenal
-	name = "Adrenal Bio-chip"
-	desc = "A bio-chip injected into the body, and later activated manually to inject a chemical cocktail, which has a mild healing effect along with removing and reducing the time of all stuns and increasing movement speed. Can be activated up to 3 times."
+	name = "Адреналиновый био-чип"
+	desc = "Био-чип, вводимый инъекцией под кожу. Вводит смесь химических веществ, которые заживляют слабые раны, избавляют организм от переутопления и оглушения, а так же увеличивают скорость передвижения. Доступно 3 стимуляции организма."
 	reference = "AI"
 	item = /obj/item/bio_chip_implanter/adrenalin
 	cost = 40
 
 /datum/uplink_item/bio_chips/basic_adrenal
-	name = "Basic-Adrenal Bio-chip"
-	desc = "A single-use bio-chip injected into the body and later activated manually to inject a chemical cocktail. This one has a worse healing effect than regular adrenaline. It can be activated once for 3/4 of the effect of the original."
+	name = "Стандартный адреналиновый био-чип"
+	desc = "Био-чип, вводимый инъекцией под кожу. Устаревшая вариация адреналинового био-чипа, вводящая лишь 3/4 стимулирующей смеси и лишь 1 раз."
 	reference = "BAI"
 	item = /obj/item/bio_chip_implanter/basic_adrenalin
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 	can_discount = FALSE
 
 /datum/uplink_item/bio_chips/proto_adrenal
-	name = "Proto-Adrenal Bio-chip"
-	desc = "A old prototype of the Adrenalin implant, that grants the user 4 seconds of antistun, getting them back on their feet instantly once, but nothing more. Speed and healing sold separately."
+	name = "Прототип адреналинового био-чипа"
+	desc = "Прототип био-чипа, вводимый инъекцией под кожу. Является самой слабой версией из доступной линейки адреналиновых биочипов. Вещество внутри действует крайне ограниченное время и способно лишь облегчить страдания от переутомления на 1 раз."
 	reference = "PAI"
 	item = /obj/item/bio_chip_implanter/proto_adrenalin
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/bio_chips/stealthimplant
-	name = "Stealth Bio-chip"
-	desc = "This one-of-a-kind implant will make you almost invisible if you play your cards right. \
-			On activation, it will conceal you inside a chameleon cardboard box that is only revealed once someone bumps into it."
+	name = "Био-чип скрытности"
+	desc = "Био-чип, вводимый инъекцией под кожу. Единственный в своём роде био-чип, который способен укрыть пользователя в невидимой, но осязаемой и очень хрупкой картонной коробке."
 	reference = "SI"
 	item = /obj/item/bio_chip_implanter/stealth
 	cost = 45
