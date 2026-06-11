@@ -3,21 +3,23 @@
 // JOB SPECIFIC GEAR
 
 /datum/uplink_item/jobspecific
-	category = "Job Specific Tools"
+	category = "Профессиональные инструменты"
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specific category appearing for nukies
 
 //Clown
 /datum/uplink_item/jobspecific/clowngrenade
-	name = "Banana Grenade"
-	desc = "A grenade that explodes into HONK! brand banana peels that are genetically modified to be extra slippery and extrude caustic acid when stepped on."
+	name = "Банановая граната"
+	desc = "Граната, которая при взрыве разбрасывает банановую кожуру, генетически модифицированную для придания \
+			ей сильной скользкости, если на нее наступить."
 	reference = "BG"
 	item = /obj/item/grenade/clown_grenade
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 15 -> 10
 	job = list("Clown")
 
 /datum/uplink_item/jobspecific/clownslippers
-	name = "Clown Acrobatic Shoes"
-	desc = "A pair of modified clown shoes fitted with a built-in propulsion system that allows the user to perform a short slip below anyone. Turning on the waddle dampeners removes the slowdown on the shoes."
+	name = "Клоунские ботинки акробата"
+	desc = "Особенные клоунские туфли со встроенной системой ускорения. Позволяют эффектно проскользнуть прямо под ногами \
+			окружающих. При включении компенсаторов походки избавляют от фирменной клоунской неуклюжести."
 	reference = "CAS"
 	item = /obj/item/clothing/shoes/clown_shoes/slippers
 	cost = 15
@@ -25,8 +27,9 @@
 	job = list("Clown")
 
 /datum/uplink_item/jobspecific/cmag
-	name = "Jestographic Sequencer"
-	desc = "The jestographic sequencer, also known as a cmag, is a small card that inverts the access on any door it's used on. Perfect for locking command out of their own departments. Honk!"
+	name = "Шуточный секвенсор"
+	desc = "Также известен как «Cmag». Небольшая карта, которая инвертирует доступы на любом шлюзе. \
+			Идеально подходит для того, чтобы оставить вульп запертыми в дормах. Хонк!"
 	reference = "CMG"
 	item = /obj/item/card/cmag
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
@@ -34,8 +37,9 @@
 	job = list("Clown")
 
 /datum/uplink_item/jobspecific/trick_revolver
-	name = "Trick Revolver"
-	desc = "A revolver that will fire backwards and kill whoever attempts to use it. Perfect for those pesky vigilantes or just a good laugh."
+	name = "Револьвер для приколов"
+	desc = "Револьвер, который стреляет не в цель, а в своего владельца. Отличный подарок для чрезмерно бдительных героев или \
+			просто ценителей очень чёрного юмора."
 	reference = "CTR"
 	item = /obj/item/storage/box/syndie_kit/fake_revolver
 	cost = 5
