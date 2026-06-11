@@ -70,7 +70,7 @@
 		configure_jetpack(!stabilize)
 		to_chat(user, SPAN_NOTICE("You turn [src]'s stabilization [stabilize ? "on" : "off"]."))
 
-	// SS220 EDIT START
+// SS220 EDIT START
 /obj/item/tank/jetpack/proc/is_worn_on_back(mob/user) // SS220 EDIT - A jetpack proc so you don't have to copy 220 of the same code and it's just more readable
 	if(ishuman(user) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
 		return TRUE
