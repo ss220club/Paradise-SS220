@@ -152,7 +152,7 @@
 
 	user.visible_message(
 		SPAN_DANGER("[user] с размаху бьёт по [firedoor] кувалдой!"),
-		SPAN_DANGER("Вы наносите мощный удар по аварийному шлюзу!")
+		SPAN_DANGER("Вы наносите мощный удар по пожарному шлюзу!")
 	)
 
 	playsound(src.loc, 'sound/effects/bang.ogg', 50, TRUE)
