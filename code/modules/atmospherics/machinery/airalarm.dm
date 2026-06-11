@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(aalarm_modes, list(
 /obj/machinery/alarm
 	name = "air alarm"
 	desc = "A wall-mounted device used to control atmospheric equipment. It looks a little cheaply made..."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/wallbumps/alarm.dmi'
 	icon_state = "alarm0"
 	anchored = TRUE
 	idle_power_consumption = 4
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(aalarm_modes, list(
 
 		buildstage = AIR_ALARM_FRAME
 		wiresexposed = TRUE
-		set_pixel_offsets_from_dir(24, -24, 24, -24)
+		set_pixel_offsets_from_dir(32, -32, 32, -32)
 
 	GLOB.air_alarms += src
 	alarm_area.air_alarms += src
@@ -706,6 +706,9 @@ GLOBAL_LIST_INIT(aalarm_modes, list(
 	data["alarmActivated"] = alarmActivated || danger_level == ATMOS_ALARM_DANGER
 	data["thresholds"] = generate_thresholds_menu()
 
+	var/area/area_loc = get_area(src)
+	data["fireAlarmActivated"] = area_loc.fire
+
 	// Locked when:
 	//   Not sent from atmos console AND
 	//   Not silicon AND locked.
@@ -891,6 +894,12 @@ GLOBAL_LIST_INIT(aalarm_modes, list(
 				if(RCON_YES)
 					rcon_setting = RCON_YES
 
+		if("set_fire_alarm")
+			var/area/area_loc = get_area(src)
+			if(area_loc.fire)
+				area_loc.firereset(src)
+			else
+				area_loc.firealert(src)
 
 		if("command")
 			if(!is_authenticated(usr, active_ui))
@@ -1221,12 +1230,12 @@ GLOBAL_LIST_INIT(aalarm_modes, list(
 	req_access = null
 	req_one_access = null
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm, 24, 24)
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/all_access, 24, 24)
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/engine, 24, 24)
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/monitor, 24, 24)
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/server, 24, 24)
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/syndicate, 24, 24)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm, 32, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/all_access, 32, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/engine, 32, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/monitor, 32, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/server, 32, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/alarm/syndicate, 32, 32)
 
 /*
 AIR ALARM CIRCUIT

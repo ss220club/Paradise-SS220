@@ -76,7 +76,7 @@
 		return
 
 	for(var/param in params)
-		if(!(param in vars))
+		if(!can_configure_param(param))
 			error("Invalid antag scenario configuration param '[param]' in [type]")
 			continue
 
@@ -84,6 +84,19 @@
 
 	if(GLOB.configuration.gamemode.prevent_mindshield_antags)
 		restricted_roles |= protected_roles + GLOB.restricted_jobs_ss220
+
+
+/datum/antag_scenario/proc/can_configure_param(param)
+	SHOULD_CALL_PARENT(TRUE)
+	switch(param)
+		if("required_players", "cost", "weight", "antag_cap", "candidates_required", "execution_once")
+			return TRUE
+		if("restricted_roles", "protected_roles", "restricted_species")
+			return TRUE
+		if("is_crew_antag", "landmark_type", "possible_species", "recommended_species_active_pref", "recommended_species_mod")
+			return TRUE
+
+	return FALSE
 
 
 /**
