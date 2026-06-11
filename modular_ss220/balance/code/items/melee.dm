@@ -31,6 +31,7 @@
 	var/wall_damage = 25
 	var/window_damage = 50
 	var/airlock_damage = 100
+	var/firedoor_damage = 200
 
 	attack_verb = list(
 		"ломает",
@@ -81,6 +82,10 @@
 		var/obj/machinery/door/airlock/door = target
 		return breach_airlock(door, user)
 
+	if(istype(target, /obj/machinery/door/firedoor))
+		var/obj/machinery/door/firedoor/firedoor = target
+		return breach_firedoor(firedoor, user)
+
 
 /obj/item/tactical_sledgehammer/proc/breach_wall(turf/simulated/wall/wall, mob/living/user)
 	is_breaching = TRUE
@@ -95,6 +100,7 @@
 			SPAN_WARNING("[user] бросает затею ломать [wall]."),
 			SPAN_WARNING("Вы бросаете затею ломать [wall].")
 		)
+
 		is_breaching = FALSE
 		return FINISH_ATTACK
 
@@ -141,6 +147,18 @@
 	return FINISH_ATTACK | MELEE_COOLDOWN_PREATTACK
 
 
+/obj/item/tactical_sledgehammer/proc/breach_firedoor(obj/machinery/door/firedoor/firedoor, mob/living/user)
+	user.do_attack_animation(firedoor)
+
+	user.visible_message(
+		SPAN_DANGER("[user] с размаху бьёт по [firedoor] кувалдой!"),
+		SPAN_DANGER("Вы наносите мощный удар по аварийному шлюзу!")
+	)
+
+	playsound(src.loc, 'sound/effects/bang.ogg', 50, TRUE)
+	firedoor.take_damage(firedoor_damage, BRUTE)
+	return FINISH_ATTACK | MELEE_COOLDOWN_PREATTACK
+
 /obj/item/tactical_sledgehammer/syndicate
 	name = "D-4S syndicate breaching hammer"
 	desc = "Усиленная версия тактической кувалды для диверсионных операций."
@@ -153,6 +171,7 @@
 	wall_damage = 100
 	window_damage = 150
 	airlock_damage = 150
+	firedoor_damage = 400
 
 
 /obj/item/tactical_sledgehammer/syndicate/Initialize(mapload)
