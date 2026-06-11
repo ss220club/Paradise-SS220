@@ -4628,7 +4628,9 @@
 /area/awaymission/wildwest/wildwest_mines)
 "Wk" = (
 /obj/effect/mapping_helpers/airlock/access/all/syndicate,
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/awaymission/wildwest/wildwest_refine)
@@ -4914,6 +4916,15 @@
 	},
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
+"ZE" = (
+/obj/machinery/door/airlock/vault{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/simulated/floor{
+	icon_state = "cult"
+	},
+/area/awaymission/wildwest/wildwest_vaultdoors)
 "ZG" = (
 /obj/structure/table/holotable/wood,
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass,
@@ -20775,7 +20786,7 @@ pb
 In
 pb
 pb
-CE
+ZE
 pb
 nV
 nV
@@ -20917,7 +20928,7 @@ pb
 pb
 pb
 pb
-CE
+ZE
 SO
 nV
 nV
@@ -21059,7 +21070,7 @@ pb
 lw
 pb
 pb
-CE
+ZE
 pb
 nV
 nV

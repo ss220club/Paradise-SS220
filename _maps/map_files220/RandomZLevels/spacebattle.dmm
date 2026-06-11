@@ -875,7 +875,8 @@
 /area/awaymission/space_battle/hallway10)
 "cU" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
 	id = "RightBridge"
@@ -1141,7 +1142,8 @@
 /area/awaymission/space_battle/syndicate/syndicate4)
 "dU" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
@@ -2434,7 +2436,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/cruiser)
 "hZ" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor{
 	id_tag = "1ShipLock";
@@ -2564,11 +2568,6 @@
 /obj/item/honey_frame,
 /turf/simulated/floor/wood/cherry,
 /area/awaymission/space_battle)
-"is" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-9-d"
-	},
-/area/awaymission/space_battle/syndicate/syndicate2)
 "it" = (
 /obj/machinery/bsa/full/east{
 	resistance_flags = 64
@@ -2589,7 +2588,8 @@
 /area/awaymission/space_battle/kitchen)
 "ix" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -3208,9 +3208,6 @@
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/sec_storage)
-"kv" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/awaymission/space_battle/syndicate)
 "kx" = (
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -3506,9 +3503,6 @@
 "lt" = (
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate5)
-"lu" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/awaymission/space_battle/syndicate/syndicate2)
 "lx" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -4630,7 +4624,7 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/turret4)
 "pu" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/syndicate/syndicate6)
 "pw" = (
 /obj/structure/cable{
@@ -4653,10 +4647,13 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
 "pA" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-9-d"
+/obj/machinery/door/airlock/hatch{
+	color = "grey";
+	dir = 4
 	},
-/area/awaymission/space_battle/syndicate/syndicate6)
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate1)
 "pB" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
@@ -5557,7 +5554,8 @@
 /area/awaymission/space_battle/sec_storage)
 "sN" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
 	id = "LeftBridge"
@@ -7058,7 +7056,9 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "xW" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate6)
@@ -7167,11 +7167,6 @@
 /obj/effect/spawner/random/pool/gatewayloot/syndicate/mob/modsuit,
 /turf/space,
 /area/space)
-"ys" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-9-d"
-	},
-/area/awaymission/space_battle/syndicate)
 "yt" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -7774,7 +7769,8 @@
 /area/awaymission/space_battle/hallway1)
 "AC" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/mineral/plastitanium/red{
@@ -8886,7 +8882,9 @@
 /area/awaymission/space_battle/engineering)
 "Ed" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.1;
 	id_tag = "Spacebattle_exit";
@@ -9151,11 +9149,6 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
-"EV" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-10-d"
-	},
-/area/awaymission/space_battle/syndicate/syndicate6)
 "EW" = (
 /obj/machinery/mass_driver_frame{
 	dir = 8;
@@ -11922,11 +11915,6 @@
 /obj/effect/turf_decal/tiles/department/medical/side,
 /turf/simulated/floor/plasteel/white,
 /area/awaymission/space_battle/medbay)
-"NU" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-5-d"
-	},
-/area/awaymission/space_battle/syndicate)
 "NW" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/crate/plastic,
@@ -12556,7 +12544,9 @@
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/awaymission/space_battle/syndicate)
 "Qe" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Qf" = (
@@ -13661,11 +13651,6 @@
 /obj/effect/turf_decal/tiles/neutral/side,
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/hallway11)
-"TS" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-5-d"
-	},
-/area/awaymission/space_battle/syndicate/syndicate2)
 "TU" = (
 /obj/structure/closet{
 	opened = 1
@@ -13855,7 +13840,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway2)
 "UF" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -33570,15 +33557,15 @@ yG
 yG
 uF
 uF
-xG
+uF
 Jn
-xG
+uF
 uF
 yG
 yG
 yG
 ps
-xG
+uF
 uF
 me
 wN
@@ -33830,10 +33817,10 @@ uF
 gv
 gF
 cL
-xG
+uF
 ti
 ti
-xG
+uF
 uF
 uF
 uF
@@ -33908,7 +33895,7 @@ Wu
 KX
 yG
 Lr
-EV
+YM
 VC
 nC
 oX
@@ -33920,7 +33907,7 @@ oX
 oX
 lk
 VC
-pA
+YM
 yG
 yG
 yG
@@ -34097,11 +34084,11 @@ Ro
 PB
 PB
 PB
-xG
+uF
 lT
 xr
 SI
-xG
+uF
 uF
 uF
 uF
@@ -34344,10 +34331,10 @@ uF
 gv
 gF
 cL
-xG
+uF
 Mb
 Mb
-xG
+uF
 dv
 PB
 Vb
@@ -34601,17 +34588,17 @@ uF
 gv
 fb
 cL
-xG
+uF
 gF
 gF
-xG
+uF
 Vd
-xG
+uF
 QT
 Vl
 YP
 Xp
-xG
+uF
 GD
 gF
 gF
@@ -34858,7 +34845,7 @@ uF
 gv
 kx
 gF
-kZ
+pA
 gF
 gF
 gF
@@ -34875,7 +34862,7 @@ gF
 gF
 gF
 gF
-xG
+uF
 uF
 eb
 eb
@@ -35115,7 +35102,7 @@ uF
 uF
 uF
 uF
-xG
+uF
 fg
 ee
 oY
@@ -35372,12 +35359,12 @@ uF
 jo
 gF
 gF
-xG
+uF
 gF
 le
 fA
 ck
-xG
+uF
 uF
 SR
 uI
@@ -35389,7 +35376,7 @@ gF
 PG
 PG
 ck
-xG
+uF
 eb
 mI
 mI
@@ -36143,12 +36130,12 @@ uF
 BZ
 Tc
 BZ
-xG
+uF
 gF
 ee
 oY
 ck
-xG
+uF
 uF
 XT
 dM
@@ -36160,7 +36147,7 @@ gF
 PG
 PG
 ck
-xG
+uF
 eb
 mI
 mI
@@ -36400,7 +36387,7 @@ uF
 uF
 uF
 uF
-xG
+uF
 fg
 LQ
 OF
@@ -36657,7 +36644,7 @@ uF
 gv
 Rl
 gF
-kZ
+pA
 gF
 gF
 gF
@@ -36674,7 +36661,7 @@ gF
 gF
 gF
 gF
-xG
+uF
 uF
 eb
 eb
@@ -36914,17 +36901,17 @@ uF
 gv
 fb
 cL
-xG
+uF
 gF
 gF
-xG
+uF
 kZ
-xG
+uF
 ph
 ph
 ph
 ph
-xG
+uF
 GD
 gF
 gF
@@ -37171,10 +37158,10 @@ uF
 gv
 gF
 cL
-xG
+uF
 Mb
 Mb
-xG
+uF
 gF
 gF
 gF
@@ -37438,11 +37425,11 @@ uP
 US
 kj
 yc
-xG
+uF
 Na
 xr
 nJ
-xG
+uF
 uF
 uF
 uF
@@ -37685,10 +37672,10 @@ uF
 gv
 gF
 cL
-xG
+uF
 ti
 ti
-xG
+uF
 uF
 uF
 uF
@@ -37939,15 +37926,15 @@ yG
 yG
 uF
 uF
-xG
+uF
 AP
-xG
+uF
 uF
 yG
 yG
 zf
 ps
-xG
+uF
 uF
 US
 iB
@@ -38464,7 +38451,7 @@ yG
 yG
 go
 VW
-xG
+uF
 uF
 uF
 yG
@@ -44863,7 +44850,7 @@ yG
 QL
 QL
 QL
-kv
+QL
 KP
 Mm
 lR
@@ -45126,7 +45113,7 @@ Mm
 Op
 KP
 QL
-kv
+QL
 Zs
 Zs
 Xm
@@ -45135,7 +45122,7 @@ QL
 QL
 QL
 QL
-kv
+QL
 yG
 yG
 yG
@@ -45650,7 +45637,7 @@ QL
 QL
 QL
 QL
-NU
+QL
 yG
 yG
 yG
@@ -45888,16 +45875,16 @@ QL
 QL
 QL
 QL
-kv
+QL
 ei
-kv
+QL
 QL
 QL
 qA
 qA
 QL
 QL
-kv
+QL
 Zl
 aS
 DU
@@ -45907,8 +45894,8 @@ Ta
 DU
 LM
 RE
-kv
-NU
+QL
+QL
 yG
 yG
 yG
@@ -46398,7 +46385,7 @@ yG
 yG
 QL
 QL
-kv
+QL
 LM
 LM
 LM
@@ -46668,7 +46655,7 @@ LM
 LM
 LM
 QL
-kv
+QL
 Zl
 ip
 pP
@@ -46678,8 +46665,8 @@ Mx
 pP
 LM
 LM
-kv
-ys
+QL
+QL
 yG
 yG
 yG
@@ -46935,7 +46922,7 @@ QL
 QL
 QL
 QL
-ys
+QL
 yG
 yG
 yG
@@ -47168,8 +47155,8 @@ yG
 yG
 yG
 QL
-kv
-kv
+QL
+QL
 MR
 MR
 jp
@@ -48195,8 +48182,8 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 LM
 LM
@@ -48452,16 +48439,16 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 pN
 pN
 QL
-kv
+QL
 jp
 jp
-kv
+QL
 QL
 LM
 LM
@@ -48726,7 +48713,7 @@ QL
 Ig
 FT
 kV
-kv
+QL
 Aj
 wF
 qL
@@ -48979,14 +48966,14 @@ LM
 QL
 pY
 LM
-kv
-kv
 QL
-kv
-kv
+QL
+QL
+QL
+QL
 yL
-kv
-kv
+QL
+QL
 QL
 LM
 bL
@@ -49237,13 +49224,13 @@ QL
 LM
 LM
 MI
-kv
+QL
 xA
 Ah
 ah
 km
 Bk
-kv
+QL
 MI
 LM
 LM
@@ -49480,8 +49467,8 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 bL
 Zg
@@ -49737,8 +49724,8 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 fi
 rk
@@ -50008,13 +49995,13 @@ QL
 LM
 LM
 MI
-kv
+QL
 ne
 KR
 gg
 xe
 JN
-kv
+QL
 MI
 LM
 LM
@@ -50264,14 +50251,14 @@ LM
 QL
 LM
 pY
-kv
-kv
 QL
-kv
-kv
+QL
+QL
+QL
+QL
 ds
-kv
-kv
+QL
+QL
 QL
 LM
 fi
@@ -50525,7 +50512,7 @@ QL
 Xz
 oa
 Qz
-kv
+QL
 hI
 ov
 ov
@@ -50765,16 +50752,16 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 pN
 pN
 QL
-kv
+QL
 jp
 jp
-kv
+QL
 QL
 LM
 LM
@@ -51022,8 +51009,8 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 LM
 LM
@@ -52051,8 +52038,8 @@ yG
 yG
 yG
 QL
-kv
-kv
+QL
+QL
 Qb
 Qb
 jp
@@ -52332,7 +52319,7 @@ QL
 QL
 QL
 QL
-NU
+QL
 yG
 yG
 yG
@@ -52579,7 +52566,7 @@ LM
 LM
 LM
 QL
-kv
+QL
 Zl
 aS
 DU
@@ -52589,8 +52576,8 @@ pW
 qJ
 LM
 RE
-kv
-NU
+QL
+QL
 yG
 yG
 yG
@@ -52823,7 +52810,7 @@ yG
 yG
 QL
 QL
-kv
+QL
 LM
 LK
 LM
@@ -53341,16 +53328,16 @@ QL
 QL
 QL
 QL
-kv
+QL
 ef
-kv
+QL
 QL
 QL
 qA
 qA
 QL
 QL
-kv
+QL
 Zl
 ip
 pP
@@ -53360,8 +53347,8 @@ py
 pP
 LM
 LM
-kv
-ys
+QL
+QL
 yG
 yG
 yG
@@ -53617,7 +53604,7 @@ QL
 QL
 QL
 QL
-ys
+QL
 yG
 yG
 yG
@@ -54130,7 +54117,7 @@ QL
 QL
 QL
 QL
-kv
+QL
 yG
 yG
 yG
@@ -60039,7 +60026,7 @@ yG
 yG
 yG
 Ks
-lu
+Ks
 Jc
 Jc
 Ks
@@ -61060,10 +61047,10 @@ yG
 yG
 Ks
 Ks
-lu
+Ks
 DF
 DF
-lu
+Ks
 BN
 BN
 BN
@@ -61328,7 +61315,7 @@ Ks
 kr
 kr
 Ks
-lu
+Ks
 yG
 yG
 yG
@@ -61409,7 +61396,7 @@ yG
 yG
 yG
 yG
-rF
+VC
 fp
 Dg
 nl
@@ -62084,7 +62071,7 @@ yG
 yG
 yG
 yG
-lu
+Ks
 Ks
 BN
 Ts
@@ -62345,7 +62332,7 @@ pQ
 gK
 BN
 BN
-lu
+Ks
 BN
 lA
 OG
@@ -62363,11 +62350,11 @@ yG
 yG
 yG
 Ks
-lu
+Ks
 YA
 YA
 AS
-lu
+Ks
 Ks
 yG
 yG
@@ -62620,86 +62607,86 @@ yG
 yG
 Ks
 Ks
-lu
+Ks
 GX
 GX
 GX
-lu
-Ks
-Ks
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
 Ks
 Ks
 Ks
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
 Ks
-TS
+Ks
+Ks
+Ks
+Ks
 yG
 yG
 yG
@@ -62859,7 +62846,7 @@ fx
 gK
 BN
 BN
-lu
+Ks
 Jd
 BN
 BN
@@ -62956,8 +62943,8 @@ Kq
 Cg
 mp
 rt
-lu
-TS
+Ks
+Ks
 yG
 yG
 yG
@@ -63112,19 +63099,19 @@ yG
 yG
 yG
 yG
-lu
+Ks
 Ks
 Cs
 Cs
-lu
-lu
+Ks
+Ks
 EO
 EO
-lu
 Ks
 Ks
 Ks
-lu
+Ks
+Ks
 XS
 yG
 yG
@@ -63373,7 +63360,7 @@ Ks
 Ks
 Ks
 Ks
-lu
+Ks
 Tv
 zn
 jC
@@ -63382,7 +63369,7 @@ vH
 AF
 lp
 Ks
-lu
+Ks
 XS
 yG
 yG
@@ -63628,8 +63615,8 @@ yG
 yG
 yG
 Ks
-lu
-lu
+Ks
+Ks
 Kv
 Mt
 zn
@@ -63640,7 +63627,7 @@ SG
 yN
 Sf
 Ks
-lu
+Ks
 wA
 wA
 Ks
@@ -63727,8 +63714,8 @@ KX
 uV
 UC
 tJ
-lu
-is
+Ks
+Ks
 yG
 yG
 yG
@@ -63886,7 +63873,7 @@ yG
 Pv
 Pv
 pQ
-lu
+Ks
 Yj
 li
 zn
@@ -63984,7 +63971,7 @@ yG
 Yt
 Ks
 Ks
-is
+Ks
 yG
 yG
 yG
@@ -64154,7 +64141,7 @@ Od
 xg
 Od
 xg
-lu
+Ks
 BN
 BN
 BN
@@ -64168,7 +64155,7 @@ Uc
 BN
 BN
 Va
-lu
+Ks
 YA
 RA
 RA
@@ -64925,7 +64912,7 @@ xg
 Od
 xg
 Od
-lu
+Ks
 BN
 BN
 BN
@@ -64939,7 +64926,7 @@ Uc
 BN
 BN
 Va
-lu
+Ks
 YA
 RA
 RA
@@ -65171,7 +65158,7 @@ yG
 Pv
 Pv
 fx
-lu
+Ks
 lE
 Mt
 zn
@@ -65427,8 +65414,8 @@ yG
 yG
 yG
 Ks
-lu
-lu
+Ks
+Ks
 GU
 li
 zn
@@ -65439,7 +65426,7 @@ Kc
 uW
 Kc
 Ks
-lu
+Ks
 wA
 wA
 Ks
@@ -65686,7 +65673,7 @@ Ks
 Ks
 Ks
 Ks
-lu
+Ks
 in
 zn
 jC
@@ -65695,7 +65682,7 @@ va
 EH
 hR
 Ks
-lu
+Ks
 XS
 yG
 yG
@@ -65939,19 +65926,19 @@ yG
 yG
 yG
 yG
-lu
+Ks
 Ks
 nz
 nz
-lu
-lu
+Ks
+Ks
 EO
 EO
-lu
 Ks
 Ks
 Ks
-lu
+Ks
+Ks
 XS
 yG
 yG
@@ -66200,7 +66187,7 @@ pQ
 gK
 BN
 BN
-lu
+Ks
 Jd
 BN
 BN
@@ -66475,11 +66462,11 @@ yG
 yG
 Ks
 Ks
-lu
+Ks
 GX
 GX
 GX
-lu
+Ks
 Ks
 Ks
 yG
@@ -66714,7 +66701,7 @@ fx
 gK
 BN
 BN
-lu
+Ks
 BN
 Tw
 Sx
@@ -66732,11 +66719,11 @@ yG
 yG
 yG
 Ks
-lu
+Ks
 YA
 YA
 AS
-lu
+Ks
 Ks
 yG
 yG
@@ -66967,7 +66954,7 @@ yG
 yG
 yG
 yG
-lu
+Ks
 Ks
 BN
 Ts
@@ -67753,7 +67740,7 @@ Ks
 if
 if
 Ks
-lu
+Ks
 yG
 yG
 yG
@@ -67999,10 +67986,10 @@ yG
 yG
 Ks
 Ks
-lu
+Ks
 DF
 DF
-lu
+Ks
 BN
 BN
 BN
@@ -69034,7 +69021,7 @@ yG
 yG
 yG
 Ks
-lu
+Ks
 Jc
 Jc
 Ks
@@ -74262,13 +74249,13 @@ yG
 yG
 yG
 Nu
-mD
+Nu
 Qp
 Mu
 ub
 Qp
 Mu
-mD
+Nu
 Nu
 yG
 yG
@@ -75031,17 +75018,17 @@ yG
 yG
 yG
 yG
-mD
-Nu
-Nu
-rj
 Nu
 Nu
 Nu
 rj
 Nu
 Nu
-mD
+Nu
+rj
+Nu
+Nu
+Nu
 yG
 yG
 yG
@@ -76577,9 +76564,9 @@ yG
 Nu
 iW
 iW
-mD
+Nu
 DH
-mD
+Nu
 iW
 iW
 Nu
