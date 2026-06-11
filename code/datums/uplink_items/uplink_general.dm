@@ -192,7 +192,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 20
 
 /datum/uplink_item/dangerous/revolver
-	name = "Револьвер синдиката .357"
+	name = "Револьвер Синдиката .357"
 	reference = "SR"
 	desc = "Предельно простой в использование револьвер Синдиката, стреляющий патронами калибра .357 Magnum и имеющий \
 			барабан на 7 патрон. Поставляется с одним спидлоадером."
