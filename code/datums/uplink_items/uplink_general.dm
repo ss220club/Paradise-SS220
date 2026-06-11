@@ -1026,56 +1026,56 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/badass
-	category = "(Pointless) Badassery"
+	category = "(Бесполезные) Крутые вещи"
 	surplus = 0
 
 /datum/uplink_item/badass/pen
-	name = "Syndicate Fountain Pen"
-	desc = "A slick Syndicate-branded pen, to show everyone at the meeting that you mean business."
+	name = "Авторучка Синдиката"
+	desc = "Изящная ручка с логотипом Синдиката. Показатель статуса."
 	reference = "PEN"
 	item = /obj/item/pen/multi/syndicate
 	cost = 1
 
 /datum/uplink_item/badass/syndiecigs
-	name = "Syndicate Smokes"
-	desc = "Strong flavor, dense smoke, infused with omnizine."
+	name = "Сигареты Синдиката"
+	desc = "Пафосные чёрно-красные сигареты с привкусом Омнизина."
 	reference = "SYSM"
 	item = /obj/item/storage/fancy/cigarettes/cigpack_syndicate
 	cost = 7
 
 /datum/uplink_item/badass/syndiecash
-	name = "Syndicate Briefcase Full of Cash"
-	desc = "A secure briefcase containing 600 space credits. Useful for bribing personnel, or purchasing goods and services at lucrative prices. \
-	The briefcase also feels a little heavier to hold; it has been manufactured to pack a little bit more of a punch if your client needs some convincing."
+	name = "Чемодан полный налички"
+	desc = "Надёжный и модный кейс, в котором есть 600 кредитов для подкупа разного рода персонала. \
+			Кейс довольно увесистый, поэтому подходит и для альтернативного аргумента кредитам."
 	reference = "CASH"
 	item = /obj/item/storage/secure/briefcase/syndie
 	cost = 5
 
 /datum/uplink_item/badass/balloon
-	name = "For showing that you are The Boss"
-	desc = "A useless red balloon with the syndicate logo on it, which can blow the deepest of covers."
+	name = "Показать, кто здесь Папочка"
+	desc = "Не самый полезный красный воздушный шарик с логотипом Синдиката"
 	reference = "BABA"
 	item = /obj/item/toy/syndicateballoon
 	cost = 100
 	can_discount = FALSE
 
 /datum/uplink_item/badass/bomber
-	name = "Syndicate Bomber Jacket"
-	desc = "An awesome jacket to help you style on Nanotrasen with. The lining is made of a thin polymer to provide a small amount of armor. Does not provide any extra storage space."
+	name = "Куртка Синдиката"
+	desc = "Стильная куртка с прокладкой из полимера, защищающая от небольших повреждений."
 	reference = "JCKT"
 	item = /obj/item/clothing/suit/jacket/bomber/syndicate
 	cost = 3
 
 /datum/uplink_item/badass/tpsuit
-	name = "Syndicate Two-Piece Suit"
-	desc = "A snappy two-piece suit that any self-respecting Syndicate agent should wear. Perfect for professionals trying to go undetected, but moderately armored with experimental nanoweave in case things do get loud. Comes with two cashmere-lined pockets for maximum style and comfort."
+	name = "Костюм-двойка Синдиката"
+	desc = "Не менее стильный костюм, который обязателен к ношению всеми агентами Синдиката. В него вшиты два кармана для малых вещей."
 	reference = "SUIT"
 	item = /obj/item/clothing/suit/storage/iaa/blackjacket/armored
 	cost = 3
 
 /datum/uplink_item/badass/syndie_garments
-	name = "Syndicate Garment Bag"
-	desc = "A customised garment bag filled with all kinds of Syndicate attire, for the fashionable agent's needs. Proclaim your allegiance with style!"
+	name = "Чехол для одежды"
+	desc = "Продемонстрируйте свою приверженность стилю с помощью этого комплекта всевозможной одежды Синдиката!"
 	reference = "GRMT"
 	item = /obj/item/storage/bag/garment/syndie
 	cost = 5
