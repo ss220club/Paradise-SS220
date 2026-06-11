@@ -1085,41 +1085,41 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/bundles_tc
-	category = "Bundles and Telecrystals"
+	category = "Комплекты и телекристаллы"
 	surplus = 0
 	can_discount = FALSE
 
 /datum/uplink_item/bundles_tc/telecrystal
-	name = "Raw Telecrystal"
-	desc = "Telecrystal in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	name = "Очищенный телекристалл"
+	desc = "Телекристалл в его чистом виде."
 	reference = "RTC"
 	item = /obj/item/stack/telecrystal
 	cost = 1
 
 /datum/uplink_item/bundles_tc/telecrystal/five
-	name = "5 Raw Telecrystals"
-	desc = "Five telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	name = "5 очищенных телекристаллов"
+	desc = "Пять чистых телекристаллов."
 	reference = "RTCF"
 	item = /obj/item/stack/telecrystal/five
 	cost = 5
 
 /datum/uplink_item/bundles_tc/telecrystal/twenty
-	name = "20 Raw Telecrystals"
-	desc = "Twenty telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	name = "20 очищенных телекристаллов"
+	desc = "Двадцать чистых телекристаллов."
 	reference = "RTCT"
 	item = /obj/item/stack/telecrystal/twenty
 	cost = 20
 
 /datum/uplink_item/bundles_tc/telecrystal/fifty
-	name = "50 Raw Telecrystals"
-	desc = "Fifty telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	name = "50 очищенных телекристаллов"
+	desc = "Пятьдесят чистых телекристаллов."
 	reference = "RTCB"
 	item = /obj/item/stack/telecrystal/fifty
 	cost = 50
 
 /datum/uplink_item/bundles_tc/telecrystal/hundred
-	name = "100 Raw Telecrystals"
-	desc = "One-hundred telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	name = "100 очищенных телекристаллов"
+	desc = "Сто чистых телекристаллов."
 	reference = "RTCH"
 	item = /obj/item/stack/telecrystal/hundred
 	cost = 100
