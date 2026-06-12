@@ -1,4 +1,3 @@
-// SS220 EDIT START - FULL RU TRANSLATE TO MOB EXAMINE (ПОЛНЫЙ ПЕРЕВОД ОСМОТРА СУЩЕСТВ)
 /mob/living/carbon/human/examine_visible_clothing(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	var/list/message_parts = list(
 // SS220 EDIT START - FULL RU TRANSLATE TO MOB EXAMINE (ПОЛНЫЙ ПЕРЕВОД ОСМОТРА СУЩЕСТВ)
@@ -62,10 +61,8 @@
 				break
 
 	// If an IPC's covered in synthetic skin, they can appear human.
-	// SS220 EDIT START - Lowercased "human" for translation
 	if(calculate_ipc_masquerade_status())
-		displayed_species = "human"
-	// SS220 EDIT END
+		displayed_species = "human" // SS220 EDIT - Lowercased "human" for translation
 		examine_color = "#d1aa2e"
 
 	if(skip_jumpsuit && skip_face || HAS_TRAIT(src, TRAIT_NOEXAMINE)) //either obscured or on the nospecies list
