@@ -289,7 +289,7 @@
 	return all_visible_parts_have_skin
 
 /mob/living/carbon/human/examine_get_brute_message()
-	return get_ru_brute_word(src)
+	return get_ru_brute_word(src) // SS220 EDIT - Translated to RU
 
 /// Checks if a body part is covered by clothing
 /mob/living/carbon/human/proc/is_bodypart_covered_by_clothing(part_name)
