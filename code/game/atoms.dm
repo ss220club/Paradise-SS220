@@ -419,45 +419,18 @@
 	return found
 
 /atom/proc/build_base_description(infix = "", suffix = "")
-	//This reformat names to get a/an properly working on item descriptions when they are bloody
-
-	var/decl_gender = src.declent_ru("gender")
-	var/base_name = "[src.declent_ru(NOMINATIVE)][infix]."
-
-	var/f_name = base_name
-
+//This reformat names to get a/an properly working on item descriptions when they are bloody
+	var/f_name = "[src.declent_ru(NOMINATIVE)][infix]."
 	if(src.blood_DNA)
-		if(blood_color != "#030303")
-			var/bloody_word
-
-			switch(decl_gender)
-				if("female")
-					bloody_word = "окровавленная"
-				if("male")
-					bloody_word = "окровавленный"
-				if("neuter")
-					bloody_word = "окровавленное"
-				else
-					bloody_word = "окровавленные"
-
-			f_name = "[SPAN_DANGER(bloody_word)] [base_name]"
+		if(gender == PLURAL)
+			f_name = ""
 		else
-			var/oilstain_word
-
-			switch(decl_gender)
-				if("female")
-					oilstain_word = "замасленная"
-				if("male")
-					oilstain_word = "замасленный"
-				if("neuter")
-					oilstain_word = "замасленное"
-				else
-					oilstain_word = "замасленные"
-
-			f_name = "[SPAN_DANGER(oilstain_word)] [base_name]"
-
+			f_name = ""
+		if(blood_color != "#030303")
+			f_name += "[SPAN_DANGER("[ru_blood_stained()]")] [declent_ru(NOMINATIVE)][infix]!"
+		else
+			f_name += "[ru_oil_stained()] [declent_ru(NOMINATIVE)][infix]."
 	. = list("[bicon(src)] Это [f_name] [suffix]")
-
 	if(desc)
 		. += desc
 

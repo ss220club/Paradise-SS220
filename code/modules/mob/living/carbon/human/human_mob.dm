@@ -791,7 +791,7 @@
 										GLOB.PDA_Manifest.Cut()
 
 			if(!modified)
-				to_chat(usr, SPAN_WARNING("Не удалось найти запись в базе данных для этого человека.."))
+				to_chat(usr, SPAN_WARNING("Не удалось найти запись в базе данных для этого человека."))
 
 	if(href_list["mental"])
 		if(hasHUD(usr, EXAMINE_HUD_MEDICAL_WRITE))

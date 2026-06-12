@@ -1,6 +1,7 @@
 // SS220 EDIT START - FULL RU TRANSLATE TO MOB EXAMINE (ПОЛНЫЙ ПЕРЕВОД ОСМОТРА СУЩЕСТВ)
 /mob/living/carbon/human/examine_visible_clothing(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	var/list/message_parts = list(
+// SS220 EDIT START - FULL RU TRANSLATE TO MOB EXAMINE (ПОЛНЫЙ ПЕРЕВОД ОСМОТРА СУЩЕСТВ)
 		list("[ru_p_hold()]", l_hand, "в", "левой руке"),
 		list("[ru_p_hold()]", r_hand, "в", "правой руке"),
 		list("[ru_p_wear()]", head, "на", "голове"),
@@ -17,6 +18,7 @@
 		list("[ru_p_equip()]", !skip_ears && l_ear, "на", "левом ухе"),
 		list("[ru_p_equip()]", !skip_ears && r_ear, "на", "правом ухе"),
 		list("[ru_p_wear()]", wear_id, "на", "своей груди"),
+	// SS220 EDIT END
 	)
 
 	return message_parts
@@ -60,8 +62,8 @@
 				break
 
 	// If an IPC's covered in synthetic skin, they can appear human.
-	if(calculate_ipc_masquerade_status())
 	// SS220 EDIT START - Lowercased "human" for translation
+	if(calculate_ipc_masquerade_status())
 		displayed_species = "human"
 	// SS220 EDIT END
 		examine_color = "#d1aa2e"
@@ -69,9 +71,10 @@
 	if(skip_jumpsuit && skip_face || HAS_TRAIT(src, TRAIT_NOEXAMINE)) //either obscured or on the nospecies list
 		msg += "!"    //omit the species when examining
 	else
+	// SS220 EDIT START - Перевод названия расы в осмотре персонажа
 		var/species_key = lowertext(displayed_species)
 		var/species_name = declent_ru_initial(species_key, NOMINATIVE, lowertext(displayed_species))
-
+ 	// SS220 EDIT END
 		msg += " - <b><font color='[examine_color]'>[species_name]</font></b> [height] роста с [physique] телосложением!"
 	return msg
 
@@ -289,27 +292,7 @@
 	return all_visible_parts_have_skin
 
 /mob/living/carbon/human/examine_get_brute_message()
-	if(!ismachineperson(src) || calculate_ipc_masquerade_status())
-		return get_ru_brute_word(src, "травмирован", "травмирована", "травмировано", "травмированы")
-
-	return get_ru_brute_word(src, "повреждён", "повреждена", "повреждено", "повреждены")
-// SS220 EDIT END
-
-/proc/get_ru_brute_word(mob/H, male, female, neuter, plural)
-	if(!H)
-		return male
-	if(istype(H, /mob/living/carbon/human/slime))
-		return plural
-
-	switch(H.gender)
-		if(MALE)
-			return male
-		if(FEMALE)
-			return female
-		if(NEUTER)
-			return neuter
-		else
-			return male
+	return get_ru_brute_word(src)
 
 /// Checks if a body part is covered by clothing
 /mob/living/carbon/human/proc/is_bodypart_covered_by_clothing(part_name)

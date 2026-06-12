@@ -8,8 +8,6 @@
  *
  * Arguments represent whether to skip a certain slot when handling the message.
  */
-
-//SS220 EDIT START - FULL RU TRANSLATE TO MOB EXAMINE (ПОЛНЫЙ ПЕРЕВОД ОСМОТРА СУЩЕСТВ)
 /mob/living/carbon/proc/examine_visible_clothing(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	return list(
 		list("[ru_p_hold()]", l_hand, "в", "левой руке"),
@@ -155,23 +153,7 @@
 			else
 				var/item_words = item.declent_ru(ACCUSATIVE)
 				if(item.blood_DNA)
-					var/word
-					var/decl_gender = item.declent_ru("gender")
-
-					if(item.blood_color != "#030303")
-						switch(decl_gender)
-							if("female") word = "окровавленную"
-							if("male") word = "окровавленный"
-							if("neuter") word = "окровавленное"
-							else word = "окровавленные"
-					else
-						switch(decl_gender)
-							if("female") word = "замасленную"
-							if("male") word = "замасленный"
-							if("neuter") word = "замасленное"
-							else word = "замасленные"
-
-					item_words = "[word] [item_words]"
+					item_words = "[item.blood_color != "#030303" ? item.ru_blood_stain() : item.ru_oil_stain()] [item.declent_ru(ACCUSATIVE)]"
 				var/submsg = "[ru_p_they(TRUE)] [action] [bicon(item)] [item_words]"
 				if(accessories)
 					submsg += " с [accessories]"
@@ -342,7 +324,6 @@
 
 		if(get_int_organ(/obj/item/organ/internal/brain))
 			msg += examine_show_ssd()
-//SS220 EDIT END
 	// add anything else in here before huds
 	msg += examine_extra_general_flavor(user)
 

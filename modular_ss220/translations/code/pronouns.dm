@@ -207,28 +207,28 @@
 	if(temp_gender == PLURAL)
 		. = "делают"
 
-/mob/ru_p_hold(temp_gender)
+/client/ru_p_hold(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
 	. = "держит"
 	if(temp_gender == PLURAL)
 		. = "держат"
 
-/mob/ru_p_wear(temp_gender)
+/client/ru_p_wear(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
 	. = "носит"
 	if(temp_gender == PLURAL)
 		. = "носят"
 
-/mob/ru_p_carry(temp_gender)
+/client/ru_p_carry(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
 	. = "таскает"
 	if(temp_gender == PLURAL)
 		. = "таскают"
 
-/mob/ru_p_equip(capitalized, temp_gender)
+/client/ru_p_equip(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
 	switch(temp_gender)
