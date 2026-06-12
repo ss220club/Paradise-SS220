@@ -240,9 +240,6 @@
 /obj/effect/turf_decal/tiles/department/security/checker,
 /turf/simulated/floor/plasteel/white,
 /area/ruin/space/powered/requires_power_space)
-"hc" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/space/powered/requires_power_space)
 "hn" = (
 /obj/machinery/light_construct/directional/north,
 /obj/effect/turf_decal/stripes/white/line{
@@ -504,7 +501,9 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "mS" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/door_assembly_ext{
+	dir = 4
+	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered/requires_power_space)
 "mW" = (
@@ -1001,7 +1000,9 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "BA" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/requires_power_space)
@@ -1032,7 +1033,8 @@
 /area/ruin/space/powered/requires_power_space)
 "Ej" = (
 /obj/structure/door_assembly/door_assembly_ext{
-	anchored = 1
+	anchored = 1;
+	dir = 4
 	},
 /obj/structure/barricade/security,
 /turf/simulated/floor/plating/airless,
@@ -1260,7 +1262,9 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "LW" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/door_assembly_ext{
+	dir = 4
+	},
 /turf/template_noop,
 /area/template_noop)
 "Mu" = (
@@ -1461,7 +1465,9 @@
 /area/ruin/space/powered/requires_power_space)
 "UK" = (
 /obj/effect/mapping_helpers/airlock/access/all/syndicate,
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -1747,7 +1753,7 @@ Xx
 IX
 NP
 jb
-hc
+jb
 sj
 jb
 iB
@@ -1888,12 +1894,12 @@ iB
 iB
 HH
 Cg
-hc
+jb
 jb
 jb
 kg
-hc
-hc
+jb
+jb
 aF
 FH
 jw
@@ -1955,7 +1961,7 @@ SA
 HV
 pv
 LP
-hc
+jb
 LA
 ff
 jr
@@ -1973,11 +1979,11 @@ In
 jb
 xD
 eR
-hc
+jb
 jb
 Se
-hc
-hc
+jb
+jb
 lj
 pO
 jb
@@ -2086,7 +2092,7 @@ jb
 xe
 jb
 jb
-hc
+jb
 iB
 "}
 (22,1,1) = {"
@@ -2099,11 +2105,11 @@ iB
 sy
 xD
 PV
-hc
+jb
 jb
 gD
 jb
-hc
+jb
 bJ
 jb
 jb
@@ -2162,11 +2168,11 @@ iB
 jw
 Yw
 hw
-hc
 jb
 jb
 jb
-hc
+jb
+jb
 zI
 Yw
 jw
@@ -2288,11 +2294,11 @@ iB
 iB
 jb
 aH
-hc
+jb
 jb
 km
 jb
-hc
+jb
 ne
 jb
 iB
@@ -2351,11 +2357,11 @@ iB
 iB
 jw
 eq
-hc
+jb
 jb
 HY
 jb
-hc
+jb
 IR
 jw
 iB

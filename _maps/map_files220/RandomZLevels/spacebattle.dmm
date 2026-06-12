@@ -17,7 +17,9 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "ad" = (
-/obj/machinery/door/airlock/public,
+/obj/machinery/door/airlock/public{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/kitchen)
@@ -363,7 +365,7 @@
 	dir = 4;
 	pixel_y = -9
 	},
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/cruiser)
 "bh" = (
 /obj/effect/decal/cleanable/blood,
@@ -617,14 +619,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway5)
-"ce" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nosmooth{
-	icon_state = "plastinum_wall-137-d"
-	},
-/area/awaymission/space_battle/cruiser)
-"cf" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/space_battle/cruiser)
 "cg" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -683,7 +677,7 @@
 	dir = 1;
 	pixel_y = -9
 	},
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/cruiser)
 "co" = (
 /obj/machinery/economy/vending/cigarette/free,
@@ -715,12 +709,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/prhallway2)
-"cs" = (
-/obj/structure/window/plasmareinforced{
-	dir = 1
-	},
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/space_battle/cruiser)
 "ct" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -757,7 +745,8 @@
 /area/awaymission/space_battle/medbay)
 "cA" = (
 /obj/machinery/door/airlock{
-	id_tag = "t2"
+	id_tag = "t2";
+	dir = 4
 	},
 /obj/item/soap/nanotrasen,
 /turf/simulated/floor/plasteel,
@@ -875,7 +864,8 @@
 /area/awaymission/space_battle/hallway10)
 "cU" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
 	id = "RightBridge"
@@ -1141,7 +1131,8 @@
 /area/awaymission/space_battle/syndicate/syndicate4)
 "dU" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
@@ -1250,7 +1241,8 @@
 "ep" = (
 /obj/machinery/door/airlock/hatch{
 	color = "grey";
-	id_tag = "cryo2"
+	id_tag = "cryo2";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
@@ -1267,7 +1259,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
 "er" = (
-/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/airlock/engineering{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -1300,7 +1294,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret7)
 "ey" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway10)
@@ -1736,7 +1732,8 @@
 /area/space)
 "fR" = (
 /obj/machinery/door/airlock/security{
-	name = "Turret Room"
+	name = "Turret Room";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -2267,7 +2264,8 @@
 /area/awaymission/space_battle/syndicate/syndicate1)
 "hw" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
 	id = "CenterBridge"
@@ -2434,7 +2432,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/cruiser)
 "hZ" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor{
 	id_tag = "1ShipLock";
@@ -2564,11 +2564,6 @@
 /obj/item/honey_frame,
 /turf/simulated/floor/wood/cherry,
 /area/awaymission/space_battle)
-"is" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-9-d"
-	},
-/area/awaymission/space_battle/syndicate/syndicate2)
 "it" = (
 /obj/machinery/bsa/full/east{
 	resistance_flags = 64
@@ -2589,7 +2584,8 @@
 /area/awaymission/space_battle/kitchen)
 "ix" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -2738,7 +2734,8 @@
 /area/awaymission/space_battle/syndicate)
 "iT" = (
 /obj/machinery/door/airlock{
-	id_tag = "t3"
+	id_tag = "t3";
+	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 1
@@ -3208,9 +3205,6 @@
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/sec_storage)
-"kv" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/awaymission/space_battle/syndicate)
 "kx" = (
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -3506,9 +3500,6 @@
 "lt" = (
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate5)
-"lu" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/awaymission/space_battle/syndicate/syndicate2)
 "lx" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -3756,11 +3747,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret3)
-"mo" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nosmooth{
-	icon_state = "plastinum_wall-9-d"
-	},
-/area/awaymission/space_battle/cruiser)
 "mp" = (
 /obj/effect/mapping_helpers/turfs/burn,
 /turf/simulated/floor/mineral/plastitanium/red/airless,
@@ -3961,7 +3947,8 @@
 "nf" = (
 /obj/machinery/door/airlock/hatch{
 	color = "grey";
-	id_tag = "cryo1"
+	id_tag = "cryo1";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
@@ -4165,7 +4152,8 @@
 /area/awaymission/space_battle/hallway10)
 "nR" = (
 /obj/machinery/door/airlock/security{
-	name = "Turret Room"
+	name = "Turret Room";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4524,7 +4512,8 @@
 /area/awaymission/space_battle/medbay)
 "pb" = (
 /obj/machinery/door/airlock{
-	id_tag = "t1"
+	id_tag = "t1";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway3)
@@ -4630,7 +4619,7 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/turret4)
 "pu" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/syndicate/syndicate6)
 "pw" = (
 /obj/structure/cable{
@@ -4653,10 +4642,13 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
 "pA" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-9-d"
+/obj/machinery/door/airlock/hatch{
+	color = "grey";
+	dir = 4
 	},
-/area/awaymission/space_battle/syndicate/syndicate6)
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate1)
 "pB" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
@@ -4821,7 +4813,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway1)
 "qj" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -5002,7 +4996,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/prhallway3)
 "qR" = (
-/obj/machinery/door/airlock/mining,
+/obj/machinery/door/airlock/mining{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "qS" = (
@@ -5212,14 +5208,17 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "rF" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nosmooth{
-	icon_state = "plastinum_wall-10-d"
+/obj/machinery/door/airlock{
+	dir = 4
 	},
-/area/awaymission/space_battle/cruiser)
+/obj/machinery/door/firedoor/closed{
+	layer = 3.3;
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/awaymission/space_battle/prhallway3)
 "rG" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-5-d"
-	},
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "rH" = (
 /obj/machinery/power/grounding_rod{
@@ -5300,7 +5299,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "rQ" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway1)
 "rU" = (
@@ -5472,7 +5473,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway2)
 "sA" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/prhallway2)
@@ -5557,7 +5560,8 @@
 /area/awaymission/space_battle/sec_storage)
 "sN" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
 	id = "LeftBridge"
@@ -5968,7 +5972,8 @@
 /area/awaymission/space_battle/hallway8)
 "ug" = (
 /obj/machinery/door/airlock/security{
-	name = "Turret Room"
+	name = "Turret Room";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -6570,7 +6575,8 @@
 /area/space)
 "wr" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "SD2"
+	id_tag = "SD2";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/plating,
@@ -6899,10 +6905,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway7)
-"xt" = (
-/obj/structure/window/plasmareinforced,
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/space_battle/cruiser)
 "xu" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -6951,8 +6953,11 @@
 /turf/simulated/floor/plating/airless,
 /area/space)
 "xG" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/awaymission/space_battle/syndicate/syndicate1)
+/obj/machinery/door/airlock{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/awaymission/space_battle/prhallway2)
 "xH" = (
 /obj/effect/turf_decal/delivery/white/hollow,
 /obj/effect/decal/cleanable/generic,
@@ -7058,7 +7063,9 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "xW" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate6)
@@ -7167,11 +7174,6 @@
 /obj/effect/spawner/random/pool/gatewayloot/syndicate/mob/modsuit,
 /turf/space,
 /area/space)
-"ys" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-9-d"
-	},
-/area/awaymission/space_battle/syndicate)
 "yt" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -7239,7 +7241,9 @@
 /turf/simulated/floor/plasteel/full,
 /area/awaymission/space_battle/cruiser)
 "yD" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -7310,15 +7314,17 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "yO" = (
-/obj/effect/mapping_helpers/turfs/burn,
 /obj/effect/turf_decal/tiles/neutral/side,
+/obj/effect/mapping_helpers/turfs/burn,
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/hallway11)
 "yQ" = (
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret2)
 "yR" = (
-/obj/machinery/door/airlock/command,
+/obj/machinery/door/airlock/command{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -7774,7 +7780,8 @@
 /area/awaymission/space_battle/hallway1)
 "AC" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/mineral/plastitanium/red{
@@ -8292,7 +8299,8 @@
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Ch" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "SD1"
+	id_tag = "SD1";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plating,
@@ -8522,7 +8530,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway1)
 "CW" = (
-/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/airlock/engineering{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -8577,7 +8587,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "Dd" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -8704,7 +8716,9 @@
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/hallway11)
 "DB" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -8712,7 +8726,8 @@
 /area/awaymission/space_battle/hallway11)
 "DD" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "SD2"
+	id_tag = "SD2";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway2)
@@ -8757,9 +8772,12 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret5)
 "DL" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /obj/machinery/door/firedoor/closed{
-	layer = 3.3
+	layer = 3.3;
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -8886,7 +8904,9 @@
 /area/awaymission/space_battle/engineering)
 "Ed" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.1;
 	id_tag = "Spacebattle_exit";
@@ -9151,11 +9171,6 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
-"EV" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-10-d"
-	},
-/area/awaymission/space_battle/syndicate/syndicate6)
 "EW" = (
 /obj/machinery/mass_driver_frame{
 	dir = 8;
@@ -9242,7 +9257,8 @@
 "Fk" = (
 /obj/machinery/door/airlock,
 /obj/machinery/door/firedoor/closed{
-	layer = 3.3
+	layer = 3.3;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway1)
@@ -9376,7 +9392,9 @@
 /area/awaymission/space_battle/hallway1)
 "FE" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
 "FF" = (
@@ -9514,7 +9532,9 @@
 	},
 /area/awaymission/space_battle/syndicate/syndicate5)
 "Ge" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/awaymission/space_battle/hallway1)
@@ -9634,9 +9654,6 @@
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
-/area/awaymission/space_battle/sec_storage)
-"GA" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
 /area/awaymission/space_battle/sec_storage)
 "GB" = (
 /obj/structure/cable{
@@ -9799,7 +9816,9 @@
 /area/awaymission/space_battle/syndicate/syndicate2)
 "GY" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "GZ" = (
@@ -9850,7 +9869,8 @@
 /area/space)
 "He" = (
 /obj/machinery/door/airlock/security{
-	name = "Turret Room"
+	name = "Turret Room";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/structure/cable{
@@ -9883,7 +9903,8 @@
 "Hk" = (
 /obj/machinery/door/airlock/security{
 	name = "Armory";
-	req_access = list(301)
+	req_access = list(301);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway8)
@@ -10071,7 +10092,8 @@
 /area/awaymission/space_battle/sec_storage)
 "HV" = (
 /obj/machinery/door/firedoor/closed{
-	layer = 3.3
+	layer = 3.3;
+	dir = 4
 	},
 /obj/structure/sign/cargo{
 	pixel_x = -32
@@ -10782,7 +10804,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway6)
 "Ko" = (
-/obj/machinery/door/airlock/highsecurity,
+/obj/machinery/door/airlock/highsecurity{
+	dir = 4
+	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.1;
 	id_tag = "Spacebattle_exit";
@@ -10964,7 +10988,8 @@
 /area/awaymission/space_battle/prhallway2)
 "KZ" = (
 /obj/machinery/door/airlock/security{
-	name = "Turret Room"
+	name = "Turret Room";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -11286,7 +11311,8 @@
 /area/awaymission/space_battle/syndicate/syndicate5)
 "LW" = (
 /obj/machinery/door/firedoor/closed{
-	layer = 3.3
+	layer = 3.3;
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -11470,7 +11496,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway4)
 "MA" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -11616,7 +11644,9 @@
 /turf/space,
 /area/space)
 "MV" = (
-/obj/machinery/door/airlock/freezer,
+/obj/machinery/door/airlock/freezer{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/freezer,
 /area/awaymission/space_battle/kitchen)
 "MW" = (
@@ -11829,7 +11859,8 @@
 /area/awaymission/space_battle/prhallway3)
 "NF" = (
 /obj/machinery/door/airlock/security{
-	name = "Turret Room"
+	name = "Turret Room";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -11858,7 +11889,7 @@
 	dir = 1;
 	pixel_y = -9
 	},
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/cruiser)
 "NJ" = (
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/drone{
@@ -11891,7 +11922,8 @@
 /area/awaymission/space_battle/syndicate/syndicate1)
 "NQ" = (
 /obj/machinery/door/airlock/security{
-	name = "Turret Room"
+	name = "Turret Room";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -11922,11 +11954,6 @@
 /obj/effect/turf_decal/tiles/department/medical/side,
 /turf/simulated/floor/plasteel/white,
 /area/awaymission/space_battle/medbay)
-"NU" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-5-d"
-	},
-/area/awaymission/space_battle/syndicate)
 "NW" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/crate/plastic,
@@ -12556,7 +12583,9 @@
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/awaymission/space_battle/syndicate)
 "Qe" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Qf" = (
@@ -12836,7 +12865,8 @@
 /area/awaymission/space_battle/turret2)
 "Rd" = (
 /obj/machinery/door/airlock/hatch{
-	color = "grey"
+	color = "grey";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red{
 	icon_state = "titanium_white"
@@ -13084,7 +13114,8 @@
 /area/awaymission/space_battle/syndicate/syndicate5)
 "RV" = (
 /obj/machinery/door/firedoor/closed{
-	layer = 3.3
+	layer = 3.3;
+	dir = 4
 	},
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 4
@@ -13199,10 +13230,12 @@
 	},
 /area/awaymission/space_battle/syndicate)
 "Sn" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-9-d"
+/obj/machinery/door/airlock/hatch{
+	color = "grey";
+	dir = 4
 	},
-/area/awaymission/space_battle/syndicate/syndicate1)
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate)
 "Sp" = (
 /obj/structure/chair{
 	dir = 8
@@ -13322,9 +13355,12 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway1)
 "SL" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /obj/machinery/door/firedoor/closed{
-	layer = 3.3
+	layer = 3.3;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/hallway11)
@@ -13548,10 +13584,14 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/prhallway2)
 "Ty" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nosmooth{
-	icon_state = "plastinum_wall-21-d"
+/obj/machinery/door/airlock{
+	dir = 4
 	},
-/area/awaymission/space_battle/cruiser)
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel,
+/area/awaymission/space_battle/prhallway2)
 "Tz" = (
 /obj/machinery/computer/nonfunctional{
 	icon_state = "broken";
@@ -13661,11 +13701,6 @@
 /obj/effect/turf_decal/tiles/neutral/side,
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/hallway11)
-"TS" = (
-/turf/simulated/wall/indestructible/syndishuttle/nosmooth{
-	icon_state = "plastitanium_wall-5-d"
-	},
-/area/awaymission/space_battle/syndicate/syndicate2)
 "TU" = (
 /obj/structure/closet{
 	opened = 1
@@ -13797,12 +13832,16 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway7)
 "Uu" = (
-/obj/structure/door_assembly/door_assembly_public,
+/obj/structure/door_assembly/door_assembly_public{
+	dir = 4
+	},
 /obj/machinery/economy/vending/cola/red,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/kitchen)
 "Uv" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/spawner/random/pool/gatewayloot/syndicate/mob,
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 8
@@ -13855,7 +13894,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway2)
 "UF" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -13973,7 +14014,9 @@
 /turf/simulated/floor/engine,
 /area/awaymission/space_battle/engine)
 "UW" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
@@ -14185,7 +14228,8 @@
 /area/awaymission/space_battle/cruiser)
 "VF" = (
 /obj/machinery/door/airlock/security{
-	name = "Turret Room"
+	name = "Turret Room";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -14523,7 +14567,9 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate3)
 "WL" = (
-/obj/machinery/door/airlock/public,
+/obj/machinery/door/airlock/public{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/kitchen)
 "WM" = (
@@ -14869,7 +14915,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/sec_storage)
 "XQ" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway3)
@@ -14987,7 +15035,7 @@
 /obj/structure/window/plasmareinforced{
 	dir = 8
 	},
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/cruiser)
 "Ym" = (
 /obj/effect/turf_decal/tiles/department/security/side,
@@ -15499,7 +15547,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway9)
 "ZS" = (
-/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/airlock/engineering{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/prhallway3)
 "ZT" = (
@@ -33570,15 +33620,15 @@ yG
 yG
 uF
 uF
-xG
+uF
 Jn
-xG
+uF
 uF
 yG
 yG
 yG
 ps
-xG
+uF
 uF
 me
 wN
@@ -33830,10 +33880,10 @@ uF
 gv
 gF
 cL
-xG
+uF
 ti
 ti
-xG
+uF
 uF
 uF
 uF
@@ -33908,7 +33958,7 @@ Wu
 KX
 yG
 Lr
-EV
+YM
 VC
 nC
 oX
@@ -33920,7 +33970,7 @@ oX
 oX
 lk
 VC
-pA
+YM
 yG
 yG
 yG
@@ -34097,11 +34147,11 @@ Ro
 PB
 PB
 PB
-xG
+uF
 lT
 xr
 SI
-xG
+uF
 uF
 uF
 uF
@@ -34344,10 +34394,10 @@ uF
 gv
 gF
 cL
-xG
+uF
 Mb
 Mb
-xG
+uF
 dv
 PB
 Vb
@@ -34601,17 +34651,17 @@ uF
 gv
 fb
 cL
-xG
+uF
 gF
 gF
-xG
+uF
 Vd
-xG
+uF
 QT
 Vl
 YP
 Xp
-xG
+uF
 GD
 gF
 gF
@@ -34858,7 +34908,7 @@ uF
 gv
 kx
 gF
-kZ
+pA
 gF
 gF
 gF
@@ -34875,7 +34925,7 @@ gF
 gF
 gF
 gF
-xG
+uF
 uF
 eb
 eb
@@ -35115,7 +35165,7 @@ uF
 uF
 uF
 uF
-xG
+uF
 fg
 ee
 oY
@@ -35177,7 +35227,7 @@ ph
 JQ
 gF
 Vx
-xG
+rG
 rG
 Kb
 fR
@@ -35372,12 +35422,12 @@ uF
 jo
 gF
 gF
-xG
+uF
 gF
 le
 fA
 ck
-xG
+uF
 uF
 SR
 uI
@@ -35389,7 +35439,7 @@ gF
 PG
 PG
 ck
-xG
+uF
 eb
 mI
 mI
@@ -35948,8 +35998,8 @@ NP
 tN
 gF
 AZ
-xG
-Sn
+rG
+rG
 UD
 VC
 Ih
@@ -36143,12 +36193,12 @@ uF
 BZ
 Tc
 BZ
-xG
+uF
 gF
 ee
 oY
 ck
-xG
+uF
 uF
 XT
 dM
@@ -36160,7 +36210,7 @@ gF
 PG
 PG
 ck
-xG
+uF
 eb
 mI
 mI
@@ -36205,7 +36255,7 @@ uF
 uF
 uF
 uF
-Sn
+rG
 VC
 VC
 VC
@@ -36400,7 +36450,7 @@ uF
 uF
 uF
 uF
-xG
+uF
 fg
 LQ
 OF
@@ -36462,7 +36512,7 @@ yG
 yG
 yG
 yG
-cf
+VC
 VC
 Fi
 Ok
@@ -36657,7 +36707,7 @@ uF
 gv
 Rl
 gF
-kZ
+pA
 gF
 gF
 gF
@@ -36674,7 +36724,7 @@ gF
 gF
 gF
 gF
-xG
+uF
 uF
 eb
 eb
@@ -36750,7 +36800,7 @@ kP
 pU
 AB
 AB
-Ty
+VC
 yG
 yG
 yG
@@ -36914,17 +36964,17 @@ uF
 gv
 fb
 cL
-xG
+uF
 gF
 gF
-xG
+uF
 kZ
-xG
+uF
 ph
 ph
 ph
 ph
-xG
+uF
 GD
 gF
 gF
@@ -37171,10 +37221,10 @@ uF
 gv
 gF
 cL
-xG
+uF
 Mb
 Mb
-xG
+uF
 gF
 gF
 gF
@@ -37264,7 +37314,7 @@ PR
 pU
 AB
 AB
-ce
+VC
 yG
 yG
 yG
@@ -37438,17 +37488,17 @@ uP
 US
 kj
 yc
-xG
+uF
 Na
 xr
 nJ
-xG
 uF
 uF
 uF
 uF
 uF
 uF
+uF
 yG
 yG
 yG
@@ -37490,7 +37540,7 @@ yG
 yG
 yG
 yG
-cf
+VC
 VC
 VC
 VC
@@ -37685,10 +37735,10 @@ uF
 gv
 gF
 cL
-xG
+uF
 ti
 ti
-xG
+uF
 uF
 uF
 uF
@@ -37939,15 +37989,15 @@ yG
 yG
 uF
 uF
-xG
+uF
 AP
-xG
+uF
 uF
 yG
 yG
 zf
 ps
-xG
+uF
 uF
 US
 iB
@@ -38005,8 +38055,8 @@ VC
 VC
 VC
 VC
-cf
-cf
+VC
+VC
 yu
 Uo
 Uo
@@ -38464,7 +38514,7 @@ yG
 yG
 go
 VW
-xG
+uF
 uF
 uF
 yG
@@ -38515,7 +38565,7 @@ yG
 Ti
 yG
 VC
-cf
+VC
 Bt
 YC
 rV
@@ -38552,7 +38602,7 @@ CK
 hi
 Tt
 Xb
-cf
+VC
 VC
 yG
 yG
@@ -40057,7 +40107,7 @@ yG
 yG
 yG
 VC
-cf
+VC
 Bt
 jf
 jd
@@ -40070,7 +40120,7 @@ VC
 VC
 VC
 VC
-cf
+VC
 ql
 WM
 Eo
@@ -40094,7 +40144,7 @@ VC
 ym
 Bc
 FS
-cf
+VC
 VC
 yG
 yG
@@ -41355,7 +41405,7 @@ VC
 VC
 zr
 zr
-GA
+zr
 Jo
 Zy
 HU
@@ -41623,7 +41673,7 @@ zr
 zr
 zr
 zr
-GA
+zr
 fM
 rP
 ku
@@ -42370,11 +42420,11 @@ yG
 yG
 EX
 Kz
-cf
+VC
 IE
 aM
 Jg
-cf
+VC
 qW
 De
 HT
@@ -42634,7 +42684,6 @@ ob
 VC
 jS
 CJ
-cf
 VC
 VC
 VC
@@ -42643,12 +42692,13 @@ VC
 VC
 VC
 VC
-cf
+VC
+VC
 RG
 kB
 HW
 MO
-cf
+VC
 VC
 VC
 VC
@@ -42891,7 +42941,7 @@ Eu
 VC
 lg
 CR
-Qv
+xG
 fd
 Tb
 Ex
@@ -43148,7 +43198,7 @@ dm
 VC
 CB
 jZ
-sv
+Ty
 tK
 iP
 iP
@@ -43415,10 +43465,10 @@ VC
 VC
 VC
 VC
-cf
+VC
 Lv
 Lv
-cf
+VC
 VC
 VC
 VC
@@ -43655,7 +43705,7 @@ yG
 yG
 yG
 VC
-cf
+VC
 FB
 fC
 Eu
@@ -43692,7 +43742,7 @@ VC
 np
 WR
 AU
-cf
+VC
 VC
 yG
 yG
@@ -44863,7 +44913,7 @@ yG
 QL
 QL
 QL
-kv
+QL
 KP
 Mm
 lR
@@ -45126,7 +45176,7 @@ Mm
 Op
 KP
 QL
-kv
+QL
 Zs
 Zs
 Xm
@@ -45135,7 +45185,7 @@ QL
 QL
 QL
 QL
-kv
+QL
 yG
 yG
 yG
@@ -45234,7 +45284,7 @@ VC
 np
 WR
 AU
-cf
+VC
 VC
 yG
 yG
@@ -45650,7 +45700,7 @@ QL
 QL
 QL
 QL
-NU
+QL
 yG
 yG
 yG
@@ -45715,10 +45765,10 @@ yG
 yG
 rv
 TB
-cf
+VC
 CB
 Pc
-cf
+VC
 dY
 dY
 Bz
@@ -45728,7 +45778,7 @@ dY
 Zu
 pK
 Fs
-cf
+VC
 Qv
 Yu
 NH
@@ -45741,15 +45791,15 @@ VC
 VC
 VC
 VC
-cf
+VC
 GG
 nD
 VC
 Ke
 sy
-cf
 VC
-cf
+VC
+VC
 px
 yG
 yG
@@ -45888,16 +45938,16 @@ QL
 QL
 QL
 QL
-kv
+QL
 ei
-kv
+QL
 QL
 QL
 qA
 qA
 QL
 QL
-kv
+QL
 Zl
 aS
 DU
@@ -45907,8 +45957,8 @@ Ta
 DU
 LM
 RE
-kv
-NU
+QL
+QL
 yG
 yG
 yG
@@ -45998,10 +46048,10 @@ Tb
 vK
 Tb
 IU
-Qv
+xG
 GG
 nD
-qN
+rF
 np
 WR
 DD
@@ -46258,7 +46308,7 @@ hd
 sA
 GG
 Zm
-qN
+rF
 np
 VU
 wr
@@ -46398,7 +46448,7 @@ yG
 yG
 QL
 QL
-kv
+QL
 LM
 LM
 LM
@@ -46486,10 +46536,10 @@ yG
 Dg
 LU
 dm
-cf
+VC
 CB
 wG
-cf
+VC
 oh
 UZ
 gf
@@ -46499,10 +46549,10 @@ qB
 Bz
 dY
 zw
-cf
+VC
 JE
 Zc
-cf
+VC
 VC
 VC
 VC
@@ -46518,7 +46568,7 @@ Fj
 VC
 np
 Bj
-cf
+VC
 VC
 VC
 ss
@@ -46655,7 +46705,7 @@ yG
 yG
 QL
 KN
-jp
+Sn
 LM
 LM
 QL
@@ -46668,7 +46718,7 @@ LM
 LM
 LM
 QL
-kv
+QL
 Zl
 ip
 pP
@@ -46678,8 +46728,8 @@ Mx
 pP
 LM
 LM
-kv
-ys
+QL
+QL
 yG
 yG
 yG
@@ -46912,7 +46962,7 @@ yG
 yG
 QL
 KN
-jp
+Sn
 LM
 LK
 QL
@@ -46935,7 +46985,7 @@ QL
 QL
 QL
 QL
-ys
+QL
 yG
 yG
 yG
@@ -47016,7 +47066,7 @@ KO
 VC
 Se
 GJ
-cf
+VC
 uT
 iy
 BK
@@ -47026,7 +47076,7 @@ Ab
 VC
 qQ
 CS
-cf
+VC
 GG
 nD
 VC
@@ -47168,11 +47218,11 @@ yG
 yG
 yG
 QL
-kv
-kv
+QL
+QL
 MR
 MR
-jp
+Sn
 LM
 LM
 LM
@@ -47530,7 +47580,7 @@ tH
 VC
 UR
 GJ
-cf
+VC
 Nl
 Vm
 zV
@@ -47540,7 +47590,7 @@ Rb
 VC
 qQ
 CS
-cf
+VC
 GG
 nD
 VC
@@ -48036,7 +48086,7 @@ VC
 VC
 VC
 YV
-cf
+VC
 VC
 VC
 VC
@@ -48054,13 +48104,13 @@ VC
 VC
 VC
 VC
-cf
+VC
 CL
 gw
-cf
-cf
+VC
+VC
 yk
-cf
+VC
 VC
 yG
 yG
@@ -48195,8 +48245,8 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 LM
 LM
@@ -48208,7 +48258,7 @@ hU
 LM
 LM
 LM
-jp
+Sn
 LM
 LK
 LM
@@ -48452,16 +48502,16 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 pN
 pN
 QL
-kv
+QL
 jp
 jp
-kv
+QL
 QL
 LM
 LM
@@ -48567,7 +48617,7 @@ VC
 VC
 Xo
 Ij
-cf
+VC
 YQ
 tC
 Qi
@@ -48726,7 +48776,7 @@ QL
 Ig
 FT
 kV
-kv
+QL
 Aj
 wF
 qL
@@ -48979,14 +49029,14 @@ LM
 QL
 pY
 LM
-kv
-kv
 QL
-kv
-kv
+QL
+QL
+QL
+QL
 yL
-kv
-kv
+QL
+QL
 QL
 LM
 bL
@@ -49081,11 +49131,11 @@ VC
 VC
 mX
 MM
-cf
+VC
 YQ
 tC
 Qi
-cf
+VC
 RN
 KF
 VE
@@ -49237,13 +49287,13 @@ QL
 LM
 LM
 MI
-kv
+QL
 xA
 Ah
 ah
 km
 Bk
-kv
+QL
 MI
 LM
 LM
@@ -49480,8 +49530,8 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 bL
 Zg
@@ -49494,7 +49544,7 @@ QL
 LM
 LM
 LM
-jp
+Sn
 Jv
 ws
 Fu
@@ -49567,14 +49617,14 @@ yG
 yG
 yG
 VC
-cf
+VC
 oA
 uf
 VC
 tX
 aH
 Ey
-cf
+VC
 VC
 VC
 VC
@@ -49595,14 +49645,14 @@ VC
 VC
 VC
 VC
-cf
+VC
 LJ
 HZ
 Yq
-cf
+VC
 es
 oJ
-cf
+VC
 VC
 yG
 yG
@@ -49737,8 +49787,8 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 fi
 rk
@@ -49751,7 +49801,7 @@ QL
 LM
 LM
 LM
-jp
+Sn
 kY
 pn
 la
@@ -49825,14 +49875,14 @@ yG
 yG
 yG
 VC
-xt
+VB
 bR
 jb
 Cy
 ow
 MD
 Es
-cf
+VC
 pg
 IB
 Ki
@@ -49851,14 +49901,14 @@ VC
 xp
 KQ
 ZB
-cf
+VC
 RZ
 Xo
 tC
 Qi
 VB
 vP
-cs
+jb
 VC
 yG
 yG
@@ -50008,13 +50058,13 @@ QL
 LM
 LM
 MI
-kv
+QL
 ne
 KR
 gg
 xe
 JN
-kv
+QL
 MI
 LM
 LM
@@ -50264,14 +50314,14 @@ LM
 QL
 LM
 pY
-kv
-kv
 QL
-kv
-kv
+QL
+QL
+QL
+QL
 ds
-kv
-kv
+QL
+QL
 QL
 LM
 fi
@@ -50346,7 +50396,7 @@ xn
 ow
 vc
 mk
-cf
+VC
 dr
 Lp
 yC
@@ -50365,12 +50415,12 @@ VC
 Ji
 Lp
 IN
-cf
+VC
 Cz
 vm
 tC
 Qi
-cf
+VC
 VC
 yG
 yG
@@ -50525,7 +50575,7 @@ QL
 Xz
 oa
 Qz
-kv
+QL
 hI
 ov
 ov
@@ -50619,9 +50669,9 @@ rM
 JM
 JM
 VC
-cf
+VC
 Da
-cf
+VC
 VC
 VC
 Xk
@@ -50765,16 +50815,16 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 pN
 pN
 QL
-kv
+QL
 jp
 jp
-kv
+QL
 QL
 LM
 LM
@@ -51022,8 +51072,8 @@ yG
 yG
 yG
 yG
-kv
-kv
+QL
+QL
 QL
 LM
 LM
@@ -52051,11 +52101,11 @@ yG
 yG
 yG
 QL
-kv
-kv
+QL
+QL
 Qb
 Qb
-jp
+Sn
 LM
 LM
 LM
@@ -52144,7 +52194,7 @@ VC
 Cy
 ow
 Hr
-cf
+VC
 VC
 VC
 Ui
@@ -52309,7 +52359,7 @@ yG
 yG
 QL
 KN
-jp
+Sn
 LM
 LM
 QL
@@ -52332,7 +52382,7 @@ QL
 QL
 QL
 QL
-NU
+QL
 yG
 yG
 yG
@@ -52566,7 +52616,7 @@ yG
 yG
 QL
 LG
-jp
+Sn
 LM
 LM
 QL
@@ -52579,7 +52629,7 @@ LM
 LM
 LM
 QL
-kv
+QL
 Zl
 aS
 DU
@@ -52589,8 +52639,8 @@ pW
 qJ
 LM
 RE
-kv
-NU
+QL
+QL
 yG
 yG
 yG
@@ -52658,7 +52708,7 @@ VC
 gT
 tZ
 Xy
-cf
+VC
 QH
 eU
 VC
@@ -52823,7 +52873,7 @@ yG
 yG
 QL
 QL
-kv
+QL
 LM
 LK
 LM
@@ -52915,8 +52965,8 @@ VC
 OE
 mw
 mw
-cf
-cf
+VC
+VC
 QH
 eU
 VC
@@ -52935,8 +52985,8 @@ VC
 VC
 cb
 uY
-cf
-cf
+VC
+VC
 Ad
 Ad
 Ad
@@ -53174,16 +53224,16 @@ PM
 PM
 ZL
 VC
-cf
+VC
 QH
 ZK
 VC
 Mn
 jN
 Mn
-cf
+VC
 VE
-cf
+VC
 Mn
 bH
 Mn
@@ -53191,7 +53241,7 @@ VC
 VC
 cb
 uY
-cf
+VC
 VC
 LA
 vi
@@ -53341,16 +53391,16 @@ QL
 QL
 QL
 QL
-kv
+QL
 ef
-kv
+QL
 QL
 QL
 qA
 qA
 QL
 QL
-kv
+QL
 Zl
 ip
 pP
@@ -53360,8 +53410,8 @@ py
 pP
 LM
 LM
-kv
-ys
+QL
+QL
 yG
 yG
 yG
@@ -53432,7 +53482,7 @@ PM
 PM
 Ca
 VC
-cf
+VC
 LE
 VC
 cm
@@ -53447,7 +53497,7 @@ VE
 VC
 YI
 uY
-cf
+VC
 VC
 UX
 mu
@@ -53617,7 +53667,7 @@ QL
 QL
 QL
 QL
-ys
+QL
 yG
 yG
 yG
@@ -53703,7 +53753,7 @@ VE
 VE
 VC
 za
-cf
+VC
 VC
 UX
 Xw
@@ -54130,7 +54180,7 @@ QL
 QL
 QL
 QL
-kv
+QL
 yG
 yG
 yG
@@ -54225,7 +54275,7 @@ Hy
 aG
 LT
 fW
-cf
+VC
 VC
 yG
 yG
@@ -54729,7 +54779,7 @@ Dg
 Dg
 VC
 VC
-cf
+VC
 nK
 Vn
 nI
@@ -55252,7 +55302,7 @@ rN
 lx
 vN
 iQ
-cf
+VC
 VC
 yG
 yG
@@ -56020,7 +56070,7 @@ sp
 aG
 LT
 fW
-cf
+VC
 VC
 yG
 yG
@@ -57047,7 +57097,7 @@ bz
 Zv
 ME
 Qy
-cf
+VC
 VC
 yG
 yG
@@ -57545,9 +57595,9 @@ yG
 VC
 VC
 VC
-cf
+VC
 wC
-cf
+VC
 VC
 Dg
 WB
@@ -58058,7 +58108,7 @@ yG
 yG
 Mn
 KK
-cf
+VC
 Oj
 kH
 po
@@ -58572,7 +58622,7 @@ yG
 yG
 Mn
 Sd
-cf
+VC
 IZ
 kH
 po
@@ -59087,9 +59137,9 @@ yG
 Mn
 KK
 VC
-cf
+VC
 ZO
-cf
+VC
 VC
 Dg
 Dg
@@ -60039,7 +60089,7 @@ yG
 yG
 yG
 Ks
-lu
+Ks
 Jc
 Jc
 Ks
@@ -60886,9 +60936,9 @@ yG
 yG
 yG
 VC
-cf
+VC
 tb
-cf
+VC
 VC
 Dg
 Dg
@@ -61060,10 +61110,10 @@ yG
 yG
 Ks
 Ks
-lu
+Ks
 DF
 DF
-lu
+Ks
 BN
 BN
 BN
@@ -61328,7 +61378,7 @@ Ks
 kr
 kr
 Ks
-lu
+Ks
 yG
 yG
 yG
@@ -61400,16 +61450,16 @@ yG
 yG
 yG
 yG
-rF
+VC
 XW
 XW
-mo
+VC
 yG
 yG
 yG
 yG
 yG
-rF
+VC
 fp
 Dg
 nl
@@ -62084,7 +62134,7 @@ yG
 yG
 yG
 yG
-lu
+Ks
 Ks
 BN
 Ts
@@ -62345,7 +62395,7 @@ pQ
 gK
 BN
 BN
-lu
+Ks
 BN
 lA
 OG
@@ -62363,11 +62413,11 @@ yG
 yG
 yG
 Ks
-lu
+Ks
 YA
 YA
 AS
-lu
+Ks
 Ks
 yG
 yG
@@ -62620,86 +62670,86 @@ yG
 yG
 Ks
 Ks
-lu
+Ks
 GX
 GX
 GX
-lu
-Ks
-Ks
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
-yG
 Ks
 Ks
 Ks
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
+yG
 Ks
-TS
+Ks
+Ks
+Ks
+Ks
 yG
 yG
 yG
@@ -62859,7 +62909,7 @@ fx
 gK
 BN
 BN
-lu
+Ks
 Jd
 BN
 BN
@@ -62956,8 +63006,8 @@ Kq
 Cg
 mp
 rt
-lu
-TS
+Ks
+Ks
 yG
 yG
 yG
@@ -63112,19 +63162,19 @@ yG
 yG
 yG
 yG
-lu
+Ks
 Ks
 Cs
 Cs
-lu
-lu
+Ks
+Ks
 EO
 EO
-lu
 Ks
 Ks
 Ks
-lu
+Ks
+Ks
 XS
 yG
 yG
@@ -63373,7 +63423,7 @@ Ks
 Ks
 Ks
 Ks
-lu
+Ks
 Tv
 zn
 jC
@@ -63382,7 +63432,7 @@ vH
 AF
 lp
 Ks
-lu
+Ks
 XS
 yG
 yG
@@ -63628,8 +63678,8 @@ yG
 yG
 yG
 Ks
-lu
-lu
+Ks
+Ks
 Kv
 Mt
 zn
@@ -63640,7 +63690,7 @@ SG
 yN
 Sf
 Ks
-lu
+Ks
 wA
 wA
 Ks
@@ -63727,8 +63777,8 @@ KX
 uV
 UC
 tJ
-lu
-is
+Ks
+Ks
 yG
 yG
 yG
@@ -63886,7 +63936,7 @@ yG
 Pv
 Pv
 pQ
-lu
+Ks
 Yj
 li
 zn
@@ -63984,7 +64034,7 @@ yG
 Yt
 Ks
 Ks
-is
+Ks
 yG
 yG
 yG
@@ -64154,7 +64204,7 @@ Od
 xg
 Od
 xg
-lu
+Ks
 BN
 BN
 BN
@@ -64168,7 +64218,7 @@ Uc
 BN
 BN
 Va
-lu
+Ks
 YA
 RA
 RA
@@ -64925,7 +64975,7 @@ xg
 Od
 xg
 Od
-lu
+Ks
 BN
 BN
 BN
@@ -64939,7 +64989,7 @@ Uc
 BN
 BN
 Va
-lu
+Ks
 YA
 RA
 RA
@@ -65171,7 +65221,7 @@ yG
 Pv
 Pv
 fx
-lu
+Ks
 lE
 Mt
 zn
@@ -65427,8 +65477,8 @@ yG
 yG
 yG
 Ks
-lu
-lu
+Ks
+Ks
 GU
 li
 zn
@@ -65439,7 +65489,7 @@ Kc
 uW
 Kc
 Ks
-lu
+Ks
 wA
 wA
 Ks
@@ -65686,7 +65736,7 @@ Ks
 Ks
 Ks
 Ks
-lu
+Ks
 in
 zn
 jC
@@ -65695,7 +65745,7 @@ va
 EH
 hR
 Ks
-lu
+Ks
 XS
 yG
 yG
@@ -65939,19 +65989,19 @@ yG
 yG
 yG
 yG
-lu
+Ks
 Ks
 nz
 nz
-lu
-lu
+Ks
+Ks
 EO
 EO
-lu
 Ks
 Ks
 Ks
-lu
+Ks
+Ks
 XS
 yG
 yG
@@ -66200,7 +66250,7 @@ pQ
 gK
 BN
 BN
-lu
+Ks
 Jd
 BN
 BN
@@ -66475,11 +66525,11 @@ yG
 yG
 Ks
 Ks
-lu
+Ks
 GX
 GX
 GX
-lu
+Ks
 Ks
 Ks
 yG
@@ -66714,7 +66764,7 @@ fx
 gK
 BN
 BN
-lu
+Ks
 BN
 Tw
 Sx
@@ -66732,11 +66782,11 @@ yG
 yG
 yG
 Ks
-lu
+Ks
 YA
 YA
 AS
-lu
+Ks
 Ks
 yG
 yG
@@ -66967,7 +67017,7 @@ yG
 yG
 yG
 yG
-lu
+Ks
 Ks
 BN
 Ts
@@ -67753,7 +67803,7 @@ Ks
 if
 if
 Ks
-lu
+Ks
 yG
 yG
 yG
@@ -67999,10 +68049,10 @@ yG
 yG
 Ks
 Ks
-lu
+Ks
 DF
 DF
-lu
+Ks
 BN
 BN
 BN
@@ -69034,7 +69084,7 @@ yG
 yG
 yG
 Ks
-lu
+Ks
 Jc
 Jc
 Ks
@@ -74262,13 +74312,13 @@ yG
 yG
 yG
 Nu
-mD
+Nu
 Qp
 Mu
 ub
 Qp
 Mu
-mD
+Nu
 Nu
 yG
 yG
@@ -75031,17 +75081,17 @@ yG
 yG
 yG
 yG
-mD
-Nu
-Nu
-rj
 Nu
 Nu
 Nu
 rj
 Nu
 Nu
-mD
+Nu
+rj
+Nu
+Nu
+Nu
 yG
 yG
 yG
@@ -76577,9 +76627,9 @@ yG
 Nu
 iW
 iW
-mD
+Nu
 DH
-mD
+Nu
 iW
 iW
 Nu
