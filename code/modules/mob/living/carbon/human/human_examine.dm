@@ -71,10 +71,10 @@
 	if(skip_jumpsuit && skip_face || HAS_TRAIT(src, TRAIT_NOEXAMINE)) //either obscured or on the nospecies list
 		msg += "!"    //omit the species when examining
 	else
-	// SS220 EDIT START - Перевод названия расы в осмотре персонажа
+// SS220 EDIT START - Перевод названия расы в осмотре персонажа
 		var/species_key = lowertext(displayed_species)
 		var/species_name = declent_ru_initial(species_key, NOMINATIVE, lowertext(displayed_species))
- 	// SS220 EDIT END
+// SS220 EDIT END
 		msg += " - <b><font color='[examine_color]'>[species_name]</font></b> [height] роста с [physique] телосложением!"
 	return msg
 
