@@ -4,7 +4,7 @@
 //	leave empty containers when used up and can be filled/re-filled with other items. Formatting for first section is identical
 //	to mixed-drinks code. If you want an object that starts pre-loaded, you need to make it in addition to the other code.
 
-//Food items that aren't eaten normally and leave an empty container behind.
+// Food items that aren't eaten normally and leave an empty container behind.
 /obj/item/reagent_containers/condiment
 	name = "condiment container"
 	desc = "Just your average condiment container."
@@ -13,7 +13,7 @@
 	container_type = OPENCONTAINER
 	possible_transfer_amounts = list(1, 5, 10, 15, 20, 25, 30, 50)
 	volume = 50
-	//Possible_states has the reagent id as key and a list of, in order, the icon_state, the name and the desc as values. Used in the on_reagent_change() to change names, descs and sprites.
+	// Possible_states has the reagent id as key and a list of, in order, the icon_state, the name and the desc as values. Used in the on_reagent_change() to change names, descs and sprites.
 	var/list/possible_states = list(
 	"bbqsauce" = list("bbqsauce", "BBQ sauce bottle", "Сладкий и пикантный для добавок всюду. Идеален для гриля."),
 	"ketchup" = list("ketchup", "ketchup bottle", "Кровь томатов!"),
@@ -35,7 +35,10 @@
 	"honey" = list("honey", "honey jar", "Сладкое вещество, производимое пчёлами."),
 	"sugar" = list("sugar", "sugar sack", "Большой мешок сахара. Отлично подходит для сладостей!"),
 	"flour" = list("flour", "flour sack", "Большой мешок муки. Отлично подходит для выпечки!"),
-	"rice" = list("rice", "rice sack", "Большой мешок риса. Отлично подходит для готовки!"))
+	"rice" = list("rice", "rice sack", "Большой мешок риса. Отлично подходит для готовки!"),
+	"butter" = list("butter", "butter tub", "Вкусный молочный жир."),
+	"cream_cheese" = list("cream_cheese", "cream cheese tub", "Густой жидкий сыр."),
+	"guacamole" = list("guacamole", "guacamole tub", "Creamy, tangy, avocado paste."))
 	var/originalname = "condiment" //Can't use initial(name) for this. This stores the name set by condimasters.
 
 /obj/item/reagent_containers/condiment/mob_act(mob/target, mob/living/user)
@@ -297,7 +300,30 @@
 	list_reagents = list("ketchup" = 50)
 	possible_states = list()
 
-//Food packs. To easily apply deadly toxi... delicious sauces to your food!
+// Butter adapted from Hispania!
+/obj/item/reagent_containers/condiment/butter
+	name = "butter"
+	desc = "Delicious milk fat."
+	icon_state = "butter"
+	list_reagents = list("butter" = 50)
+	possible_states = list()
+
+// Cream cheese adapted from Hispania!
+/obj/item/reagent_containers/condiment/cream_cheese
+	name = "cream cheese"
+	desc = "Thick liquid cheese."
+	icon_state = "cream_cheese"
+	list_reagents = list("cream_cheese" = 50)
+	possible_states = list()
+
+/obj/item/reagent_containers/condiment/guacamole
+	name = "guacamole"
+	desc = "Creamy, tangy avocado paste."
+	icon_state = "guacamole"
+	list_reagents = list("guacamole" = 50)
+	possible_states = list()
+
+// Food packs. To easily apply deadly toxi- delicious sauces to your food!
 
 /obj/item/reagent_containers/condiment/pack
 	name = "condiment pack"
@@ -315,7 +341,8 @@
 	"blackpepper" = list("condi_pepper", "Pepper Mill", "Часто используется для придания вкуса блюдам или чтобы заставить кого-то чихнуть."),
 	"cornoil" = list("condi_cornoil", "Corn Oil", "Вкусное масло, используемое в кулинарии. Сделано из кукурузы."),
 	"sugar" = list("condi_sugar", "Sugar", "Небольшой пакетик с сахаром."),
-	"vinegar" =list("condi_mixed", "vinegar", "Уксус прекрасно подходит для дезинфекции, консервации, удаления накипи, устранения запахов, полоскания рта, убирания ржавчины, удаление пятна с одежды, обработку зуда после укусов, а также для заправки салатов, соусов и блюд."))
+	"vinegar" = list("condi_mixed", "vinegar", "Уксус прекрасно подходит для дезинфекции, консервации, удаления накипи, устранения запахов, полоскания рта, убирания ржавчины, удаление пятна с одежды, обработку зуда после укусов, а также для заправки салатов, соусов и блюд."),
+	"discount_sauce" = list("discount_sauce", "Discount Dan's Special Sauce", "Discount Dan brings you his very own special blend of delicious ingredients in one discount sauce!"))
 
 /obj/item/reagent_containers/condiment/pack/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	//You can tear the bag open above food to put the condiments on it, obviously.
@@ -362,3 +389,10 @@
 	name = "hotsauce pack"
 	originalname = "hotsauce"
 	list_reagents = list("capsaicin" = 10)
+
+// Discount sauce from Hispania!
+/obj/item/reagent_containers/condiment/pack/discount_sauce
+	name = "Discount Dan's Special Sauce"
+	desc = "Discount Dan brings you his very own special blend of delicious ingredients in one discount sauce!"
+	list_reagents = list("discount_sauce" = 10)
+	icon_state = "discount_sauce"

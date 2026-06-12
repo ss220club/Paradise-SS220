@@ -565,10 +565,13 @@
 /obj/machinery/door/airlock/mining{
 	name = "main Hangar";
 	req_access = list(301);
-	id_tag = "commanddoor"
+	id_tag = "commanddoor";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Main in";
@@ -604,7 +607,8 @@
 /area/awaymission/jungle_planet/outside/abandoned)
 "aVq" = (
 /obj/structure/door_assembly/door_assembly_hatch{
-	anchored = 1
+	anchored = 1;
+	dir = 4
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/mineral/plastitanium,
@@ -901,10 +905,13 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/jungle_planet/outside/abandoned)
 "bql" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/machinery/door/airlock{
 	name = "dorm";
-	req_access = list(271)
+	req_access = list(271);
+	dir = 4
 	},
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
@@ -1844,8 +1851,12 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/river)
 "cyh" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
@@ -1950,10 +1961,13 @@
 /turf/simulated/floor/plasteel/white,
 /area/awaymission/jungle_planet/inside/complex)
 "cDY" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/machinery/door/airlock{
 	name = "dorm";
-	req_access = list(271)
+	req_access = list(271);
+	dir = 4
 	},
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
@@ -2104,14 +2118,17 @@
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/jungle_planet/inside/complex)
 "cLm" = (
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/item/stack/cable_coil{
 	pixel_y = -11;
 	amount = 2
 	},
 /obj/machinery/door/airlock/engineering{
 	name = "engineering";
-	req_access = list(301)
+	req_access = list(301);
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
@@ -2989,7 +3006,9 @@
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/small)
 "eaA" = (
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "ebS" = (
@@ -3645,7 +3664,9 @@
 /area/awaymission/jungle_planet/outside)
 "eRg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside)
 "eRi" = (
@@ -3799,8 +3820,11 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "ffL" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/awaymission/jungle_planet/outside/abandoned)
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/awaymission/jungle_planet/inside/complex)
 "ffP" = (
 /obj/structure/flora/rock/jungle,
 /turf/simulated/floor/beach/away/sand,
@@ -3888,9 +3912,12 @@
 "flq" = (
 /obj/machinery/door/airlock{
 	name = "dorm";
-	req_access = list(271)
+	req_access = list(271);
+	dir = 4
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
 "flw" = (
@@ -4106,17 +4133,23 @@
 /area/awaymission/jungle_planet/outside)
 "fBw" = (
 /obj/structure/door_assembly/door_assembly_sec{
-	anchored = 1
+	anchored = 1;
+	dir = 4
 	},
 /obj/item/airlock_electronics,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "fBI" = (
 /obj/machinery/door/airlock{
-	name = "restrooms"
+	name = "restrooms";
+	dir = 4
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "fCe" = (
@@ -4577,6 +4610,19 @@
 /obj/effect/turf_decal/caution/stand_clear,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside)
+"giM" = (
+/obj/machinery/door/airlock/engineering{
+	name = "engineering";
+	req_access = list(271);
+	dir = 4
+	},
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
+/turf/simulated/floor/indestructible{
+	icon_state = "plating"
+	},
+/area/awaymission/jungle_planet/inside/complex)
 "gjF" = (
 /obj/effect/landmark/awaymissions/gate_lizard/mine_spawner{
 	id = "lake5"
@@ -4679,7 +4725,8 @@
 /area/awaymission/jungle_planet/outside/river)
 "grz" = (
 /obj/machinery/door/airlock/external{
-	interact_offline = 1
+	interact_offline = 1;
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/jungle_planet/outside/abandoned)
@@ -4734,7 +4781,9 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "gxN" = (
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
@@ -6380,9 +6429,12 @@
 "iAq" = (
 /obj/machinery/door/airlock/medical{
 	name = "medbay";
-	req_access = list(301)
+	req_access = list(301);
+	dir = 4
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "iAY" = (
@@ -6698,7 +6750,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "iUc" = (
-/obj/machinery/door/airlock/titanium/glass,
+/obj/machinery/door/airlock/titanium/glass{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/awaymission/jungle_planet/outside/abandoned)
 "iUT" = (
@@ -7399,7 +7453,9 @@
 /area/awaymission/jungle_planet/outside)
 "jKq" = (
 /obj/item/stack/sheet/metal,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "jKX" = (
@@ -7716,6 +7772,13 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
+"kiB" = (
+/obj/effect/turf_decal/tiles/dark/checker{
+	dir = 5
+	},
+/obj/effect/spawner/random/dirt/maybe,
+/turf/simulated/floor/plasteel/white,
+/area/awaymission/jungle_planet/inside/complex)
 "kiO" = (
 /obj/item/stack/rods,
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -7792,8 +7855,12 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "kmg" = (
-/obj/machinery/door/airlock/glass,
-/obj/structure/firelock_frame,
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
+/obj/structure/firelock_frame{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
@@ -7848,7 +7915,9 @@
 /turf/simulated/wall/r_wall,
 /area/awaymission/jungle_planet/inside/complex)
 "kpa" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/outside/abandoned)
 "kqa" = (
@@ -8672,10 +8741,13 @@
 /area/awaymission/jungle_planet/inside/complex)
 "lmK" = (
 /obj/machinery/door/airlock/research{
-	name = "robotech"
+	name = "robotech";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/department/science,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -9356,10 +9428,13 @@
 "mkI" = (
 /obj/machinery/door/airlock/security{
 	name = "security";
-	req_access = list(301)
+	req_access = list(301);
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "mkW" = (
@@ -10768,7 +10843,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside)
 "obM" = (
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -11074,13 +11151,16 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/outside/abandoned)
 "oyb" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
-	req_access = list(301)
+	req_access = list(301);
+	dir = 4
 	},
 /obj/effect/turf_decal/tiles/neutral{
 	dir = 4
@@ -11513,10 +11593,13 @@
 "oZK" = (
 /obj/machinery/door/airlock/command{
 	name = "command";
-	req_access = list(301)
+	req_access = list(301);
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "pbA" = (
@@ -12740,10 +12823,13 @@
 /turf/simulated/floor/beach/away/sand,
 /area/awaymission/jungle_planet/outside)
 "qJj" = (
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/machinery/door/airlock/engineering{
 	name = "engineering";
-	req_access = list(301)
+	req_access = list(301);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -13037,8 +13123,13 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/river)
 "rcF" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/jungle_planet/outside/abandoned)
+/obj/machinery/door/airlock/engineering{
+	name = "engineering";
+	req_access = list(271);
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/inside/complex)
 "rcL" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/effect/turf_decal/tiles/department/cargo/corner{
@@ -13786,7 +13877,8 @@
 /area/awaymission/jungle_planet/inside/complex)
 "rUV" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Shuttle Maintenance"
+	name = "Shuttle Maintenance";
+	dir = 4
 	},
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
@@ -14525,7 +14617,9 @@
 /turf/simulated/floor/beach/away/sand,
 /area/awaymission/jungle_planet/outside/waterfall)
 "sTS" = (
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Arm in";
 	dir = 2;
@@ -14796,6 +14890,12 @@
 	},
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
+"tld" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/inside/complex)
 "tlv" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/effect/turf_decal/tiles/department/cargo/corner{
@@ -15188,7 +15288,8 @@
 /area/awaymission/jungle_planet/inside)
 "tLH" = (
 /obj/structure/door_assembly/door_assembly_ext{
-	anchored = 1
+	anchored = 1;
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/outside/abandoned)
@@ -15532,7 +15633,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "ugL" = (
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
 "ugR" = (
@@ -16139,9 +16242,12 @@
 /area/awaymission/jungle_planet/inside/complex)
 "uRJ" = (
 /obj/machinery/door/airlock{
-	name = "restrooms"
+	name = "restrooms";
+	dir = 4
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -16243,8 +16349,12 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "vbD" = (
-/obj/machinery/door/airlock/freezer,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/freezer{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -17804,10 +17914,10 @@
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 4
 	},
-/obj/effect/spawner/random/dirt/often,
 /obj/effect/turf_decal/tiles/department/security/corner{
 	dir = 8
 	},
+/obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/jungle_planet/inside/complex)
 "wYy" = (
@@ -17901,7 +18011,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "xbW" = (
-/obj/machinery/door/firedoor/closed,
+/obj/machinery/door/firedoor/closed{
+	dir = 4
+	},
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Arm in";
 	dir = 2;
@@ -17909,7 +18021,8 @@
 	},
 /obj/machinery/door/airlock/security{
 	name = "security";
-	req_access = list(301)
+	req_access = list(301);
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel/dark,
@@ -20433,7 +20546,7 @@ bqM
 wyt
 eJy
 wOP
-rcF
+wOP
 qfJ
 xfP
 eZk
@@ -20994,7 +21107,7 @@ fhn
 cuS
 jQg
 wOP
-rcF
+wOP
 fhz
 qfJ
 jcp
@@ -21157,7 +21270,7 @@ woa
 pHo
 kuK
 vgF
-aud
+tld
 pHo
 omz
 miM
@@ -22864,7 +22977,7 @@ cXx
 jZg
 lZs
 wOP
-rcF
+wOP
 wZQ
 tTV
 qfJ
@@ -23425,7 +23538,7 @@ mTE
 wEU
 wEU
 wOP
-rcF
+wOP
 mLM
 qfJ
 kRf
@@ -25643,7 +25756,7 @@ qOs
 xOa
 ilA
 dla
-xOa
+kiB
 vbD
 haC
 adt
@@ -32030,7 +32143,7 @@ fFg
 vot
 oqo
 eXT
-mBd
+rcF
 dGT
 nbc
 jrP
@@ -32384,7 +32497,7 @@ cPv
 cku
 dGT
 dGT
-aPs
+ffL
 lIv
 lIv
 euW
@@ -33144,7 +33257,7 @@ fQG
 tqZ
 oBa
 tCk
-beN
+giM
 kZu
 hhU
 fYa
@@ -34159,9 +34272,9 @@ oBh
 oBh
 oBh
 oBh
-ffL
+kfu
 dbn
-ffL
+kfu
 oeO
 fQG
 llI
@@ -34908,7 +35021,7 @@ jhS
 kfu
 aIU
 kfu
-ffL
+kfu
 oBh
 hYQ
 hYQ
@@ -35282,7 +35395,7 @@ jhS
 kfu
 lRG
 kfu
-ffL
+kfu
 isG
 hYQ
 lJw
@@ -36028,7 +36141,7 @@ jhS
 kfu
 aIU
 kfu
-ffL
+kfu
 oBh
 oBh
 neX
@@ -36402,7 +36515,7 @@ jhS
 kfu
 lRG
 kfu
-ffL
+kfu
 oBh
 oBh
 wne
@@ -54280,13 +54393,13 @@ miM
 miM
 miM
 miM
-ffL
+kfu
 kfu
 qph
 rHn
 etJ
 kfu
-ffL
+kfu
 hux
 fKU
 eZk
@@ -54468,11 +54581,11 @@ miM
 miM
 aHl
 dsp
-ffL
-ffL
+kfu
+kfu
 dxA
-ffL
-ffL
+kfu
+kfu
 dsp
 hux
 lWL

@@ -240,7 +240,8 @@
 "aic" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Блокпост";
-	req_one_access = list(101)
+	req_one_access = list(101);
+	dir = 4
 	},
 /obj/effect/turf_decal/delivery/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -338,7 +339,8 @@
 "alh" = (
 /obj/machinery/door/airlock/hatch/syndicate{
 	name = "Oneway Syndicate Hatch";
-	auto_close_time = 16
+	auto_close_time = 16;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/unres,
 /obj/structure/fans/tiny/invisible,
@@ -481,7 +483,8 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/airlock/wood{
-	name = "Storage"
+	name = "Storage";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/dark,
@@ -1016,7 +1019,9 @@
 /turf/simulated/floor/cobblestone/dungeon,
 /area/ghost_bar/indoor/cave)
 "aBd" = (
-/obj/machinery/door/airlock/wood,
+/obj/machinery/door/airlock/wood{
+	dir = 4
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "aBm" = (
@@ -1158,16 +1163,6 @@
 /turf/simulated/floor/wood/cherry,
 /area/ghost_bar/indoor)
 "aEb" = (
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно спит на посту!";
-	dir = 8;
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Боба";
-	obj_integrity = 9999
-	},
 /obj/effect/turf_decal/trimline/organization/syndicate/filled/line{
 	dir = 9
 	},
@@ -1213,16 +1208,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "aFH" = (
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно спит на посту!";
-	dir = 4;
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Боба";
-	obj_integrity = 9999
-	},
 /obj/structure/light_fake/small{
 	dir = 8
 	},
@@ -1260,9 +1245,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
-"aFY" = (
-/turf/simulated/wall/indestructible/opsglass,
-/area/vox_base)
 "aGc" = (
 /obj/machinery/door/airlock/hatch/syndicate/command{
 	name = "Тюрьма"
@@ -1431,7 +1413,8 @@
 "aKT" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Бар"
+	name = "Бар";
+	dir = 4
 	},
 /turf/simulated/floor/pod/light,
 /area/centcom/ss220/supply)
@@ -1611,7 +1594,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark/nitrogen,
 /area/vox_base)
@@ -2040,7 +2024,7 @@
 /area/admin)
 "aZj" = (
 /obj/structure/table,
-/obj/machinery/cooking/grill/upgraded,
+/obj/machinery/cooking/grill/loaded/upgraded,
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/turf_decal/tiles/department/command,
 /turf/simulated/floor/plasteel/dark,
@@ -2339,8 +2323,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/court)
 "bgX" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/assault_pod/nanotrasen)
+/obj/effect/spawner/window/plastitanium,
+/turf/simulated/floor/plating,
+/area/ghost_bar/indoor)
 "bha" = (
 /obj/effect/light_emitter/colored{
 	light_color = "#FFFFFF"
@@ -2451,7 +2436,8 @@
 /area/centcom/ss220/admin1)
 "bis" = (
 /obj/machinery/door/airlock{
-	name = "Приватная комната"
+	name = "Приватная комната";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/fakestairs{
 	color = "gray"
@@ -2693,7 +2679,8 @@
 "bnn" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Офисы";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/effect/turf_decal/delivery/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -3067,22 +3054,6 @@
 /obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
-"bvE" = (
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно не спит на посту!";
-	dir = 8;
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Биба";
-	obj_integrity = 9999
-	},
-/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
-	dir = 5
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/syndicate_mothership/control)
 "bvQ" = (
 /obj/structure/fans/tiny/invisible,
 /obj/structure/railing/corner{
@@ -3384,9 +3355,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "bFA" = (
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
+/turf/simulated/wall/indestructible/syndicate,
 /area/syndicate_mothership/outside)
 "bFB" = (
 /obj/item/radio{
@@ -3545,9 +3514,6 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/wood/ebonite,
 /area/syndicate_mothership/elite_squad)
-"bIF" = (
-/turf/simulated/wall/indestructible/opsglass,
-/area/ghost_bar/indoor)
 "bIG" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo3"
@@ -3660,7 +3626,8 @@
 "bLF" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Дроп Под";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	name = "Дроп Под";
@@ -3874,20 +3841,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
-"bRw" = (
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно спит на посту";
-	dir = 1;
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Боба";
-	obj_integrity = 9999
-	},
-/obj/effect/turf_decal/trimline/department/supply/filled/line,
-/turf/simulated/floor/plasteel/dark,
-/area/syndicate_mothership/jail)
 "bRy" = (
 /obj/machinery/door_control/no_emag/west{
 	id = "QMLoaddoor2";
@@ -4022,6 +3975,14 @@
 	pixel_y = 5
 	},
 /turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
+"bSk" = (
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
+/obj/machinery/door/airlock/centcom{
+	name = "Рабочая Зона";
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
 /area/centcom/ss220/supply)
 "bSm" = (
 /obj/structure/chair/sofa/corner{
@@ -4779,16 +4740,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
 "chG" = (
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно не спит на посту!";
-	dir = 4;
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Биба";
-	obj_integrity = 9999
-	},
 /obj/structure/light_fake/small{
 	dir = 8
 	},
@@ -5183,11 +5134,6 @@
 	color = "#deba57";
 	dir = 4
 	},
-/obj/item/rcl,
-/obj/item/rcl,
-/obj/item/rcl,
-/obj/item/rcl,
-/obj/item/rcl,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "cqV" = (
@@ -5401,7 +5347,8 @@
 /obj/machinery/door/airlock/hatch{
 	id_tag = "voxwest_door_ext";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor/shutters{
@@ -5698,7 +5645,8 @@
 "cFJ" = (
 /obj/machinery/status_display/directional/west,
 /obj/machinery/door/airlock/multi_tile/command/glass{
-	name = "Escape Shuttle Cockpit"
+	name = "Escape Shuttle Cockpit";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
 /turf/simulated/floor/plasteel/dark,
@@ -5865,7 +5813,8 @@
 /obj/structure/fans/tiny/invisible,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/airlock/security{
-	name = "Detainment"
+	name = "Detainment";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
@@ -6142,7 +6091,7 @@
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/centcom/ss220/admin1)
 "cPQ" = (
-/obj/machinery/cooking/ice_cream_mixer/upgraded,
+/obj/machinery/cooking/ice_cream_mixer/loaded/upgraded,
 /obj/effect/turf_decal/tiles/department/security,
 /turf/simulated/floor/plasteel,
 /area/centcom/ss220/evac)
@@ -6313,6 +6262,14 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
+"cUL" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Блокпост";
+	req_access = list(114);
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "cUU" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -6906,7 +6863,7 @@
 /area/ghost_bar/indoor)
 "dgI" = (
 /obj/structure/table,
-/obj/machinery/cooking/grill/upgraded,
+/obj/machinery/cooking/grill/loaded/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	nitrogen = 103.984
@@ -7123,9 +7080,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/elite_squad)
-"dmM" = (
-/turf/simulated/wall/indestructible/syndishuttle,
-/area/ghost_bar/indoor)
 "dmN" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
@@ -7667,7 +7621,8 @@
 "dzV" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
-	name = "Покои ОСО"
+	name = "Покои ОСО";
+	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral/full{
 	color = "#000000";
@@ -7766,7 +7721,8 @@
 /obj/machinery/door/airlock/centcom{
 	id_tag = "CC_Interior_1";
 	name = "Зона ЦК";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
@@ -7932,7 +7888,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor/shutters{
@@ -8068,7 +8025,8 @@
 "dHB" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Комната углубленного допроса";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_SOD_8";
@@ -8498,7 +8456,8 @@
 "dPI" = (
 /obj/machinery/door/airlock/centcom{
 	req_access = list(106);
-	id_tag = "CC_Cargo_Office_Exterior_1"
+	id_tag = "CC_Cargo_Office_Exterior_1";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/dark,
@@ -8668,7 +8627,8 @@
 /area/centcom/ss220/bar)
 "dTC" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Крио"
+	name = "Крио";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
@@ -8851,7 +8811,8 @@
 "dYV" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Пилот"
+	name = "Пилот";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
@@ -8864,7 +8825,8 @@
 /area/centcom/ss220/supply)
 "dZw" = (
 /obj/machinery/door/airlock/multi_tile/command/glass{
-	name = "Escape Shuttle Cockpit"
+	name = "Escape Shuttle Cockpit";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/effect/turf_decal/tiles/neutral,
@@ -9438,7 +9400,8 @@
 /area/syndicate_mothership/jail)
 "eoV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Парк"
+	name = "Парк";
+	dir = 4
 	},
 /turf/simulated/floor/wood/oak,
 /area/centcom/ss220/park)
@@ -9631,7 +9594,8 @@
 	id_tag = "voxwest_door_int";
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/decal/cleanable/dirt,
@@ -10028,7 +9992,8 @@
 /obj/structure/fans/tiny/invisible,
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "ghostcafebeachfreezer";
-	name = "Beach Freezer"
+	name = "Beach Freezer";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/freezer,
 /area/ghost_bar/indoor)
@@ -10090,9 +10055,6 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/centcom/ss220/medbay)
-"eCs" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/administration)
 "eCA" = (
 /obj/machinery/computer/account_database{
 	name = "Admin Accounts Database";
@@ -10142,7 +10104,8 @@
 /area/centcom/ss220/court)
 "eEg" = (
 /obj/machinery/door/airlock/medical/glass{
-	name = "Стационар"
+	name = "Стационар";
+	dir = 4
 	},
 /obj/effect/turf_decal/tiles/department/medical,
 /turf/simulated/floor/plasteel/white,
@@ -10249,6 +10212,16 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
+"eFR" = (
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/specops,
+/obj/machinery/door/airlock/external{
+	name = "Assault Pod";
+	id_tag = "nt_drop_pod";
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/centcom/ss220/admin3)
 "eGe" = (
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 4
@@ -10578,8 +10551,7 @@
 "eMo" = (
 /obj/effect/turf_decal/siding/wood/oak,
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "UNKNOWN";
-	dir = 4
+	name = "UNKNOWN"
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/admin1)
@@ -10682,7 +10654,8 @@
 /area/centcom/ss220/general)
 "eOv" = (
 /turf/simulated/wall/indestructible/fakedoor{
-	name = "Spider Clan Jail Cell"
+	name = "Spider Clan Jail Cell";
+	dir = 4
 	},
 /area/ninja/holding)
 "eOA" = (
@@ -10707,9 +10680,7 @@
 /turf/simulated/floor/wood/ebonite,
 /area/syndicate_mothership/elite_squad)
 "eOW" = (
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
+/turf/simulated/wall/indestructible/syndicate,
 /area/syndicate_mothership/jail)
 "ePb" = (
 /obj/structure/bed{
@@ -10730,7 +10701,8 @@
 "ePh" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "ghostcaferesortbathroom1";
-	name = "Resort Bathroom"
+	name = "Resort Bathroom";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/white/grid,
@@ -11894,7 +11866,8 @@
 /obj/machinery/door/airlock/hatch{
 	id_tag = "voxeast_door_int";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/decal/cleanable/dirt,
@@ -11946,9 +11919,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership/elite_squad)
 "fnU" = (
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
+/turf/simulated/wall/indestructible/syndicate,
 /area/syndicate_mothership)
 "fog" = (
 /obj/structure/rack,
@@ -12418,9 +12389,7 @@
 /turf/simulated/floor/wood,
 /area/ghost_bar/indoor)
 "fxM" = (
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
+/turf/simulated/wall/indestructible/syndicate,
 /area/syndicate_mothership/control)
 "fxT" = (
 /obj/structure/light_fake{
@@ -12630,7 +12599,7 @@
 /area/centcom/ss220/admin3)
 "fBZ" = (
 /obj/structure/table,
-/obj/machinery/cooking/grill/upgraded,
+/obj/machinery/cooking/grill/loaded/upgraded,
 /turf/simulated/floor/wood/ebonite,
 /area/syndicate_mothership/elite_squad)
 "fCs" = (
@@ -13030,9 +12999,6 @@
 /obj/item/gun/energy/gun/advtaser/mounted,
 /turf/simulated/floor/wood/oak,
 /area/admin)
-"fLS" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/shuttle/assault_pod)
 "fMh" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
@@ -13565,9 +13531,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/bar)
-"fZl" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/shuttle/assault_pod/nanotrasen)
 "fZr" = (
 /obj/structure/platform/corner{
 	dir = 4;
@@ -14921,7 +14884,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
@@ -15030,7 +14994,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "gKF" = (
-/turf/simulated/wall/indestructible/opsglass,
+/turf/simulated/wall/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
 "gLq" = (
 /obj/structure/flora/grass/jungle,
@@ -15099,9 +15063,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/wizard_station)
-"gMp" = (
-/turf/simulated/wall/indestructible/syndishuttle/nodiagonal,
-/area/ghost_bar/indoor)
 "gMt" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark,
@@ -15319,7 +15280,8 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "gRN" = (
-/turf/simulated/wall/indestructible/opsglass,
+/obj/effect/spawner/window/plastitanium,
+/turf/simulated/floor/plating,
 /area/syndicate_mothership/infteam)
 "gRY" = (
 /obj/machinery/computer/atmoscontrol,
@@ -15493,6 +15455,16 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/syndicate)
+"gVJ" = (
+/obj/effect/turf_decal/box,
+/obj/effect/turf_decal/caution/stand_clear,
+/obj/machinery/door/airlock/wood/glass{
+	name = "Lounge";
+	dir = 4
+	},
+/obj/structure/fans/tiny/invisible,
+/turf/simulated/floor/plasteel/dark,
+/area/ghost_bar/indoor)
 "gVP" = (
 /turf/simulated/floor/holofloor{
 	dir = 4;
@@ -15576,7 +15548,8 @@
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/specops,
 /obj/machinery/door/airlock/hatch{
 	aiControlDisabled = 1;
-	name = "Assault Pod"
+	name = "Assault Pod";
+	dir = 4
 	},
 /obj/docking_port/mobile/assault_pod/nanotrasen,
 /turf/simulated/floor/mineral/plastitanium,
@@ -15705,7 +15678,8 @@
 "gYI" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Туалеты"
+	name = "Туалеты";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/centcom/ss220/supply)
@@ -16118,9 +16092,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "hhJ" = (
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
+/turf/simulated/wall/indestructible/syndicate,
 /area/vox_base)
 "hhX" = (
 /obj/machinery/chem_master,
@@ -16217,7 +16189,8 @@
 "hka" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Конференц Зал";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/effect/turf_decal/siding/wood/cherry{
 	dir = 5
@@ -16237,7 +16210,8 @@
 "hkd" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Рабочая Зона"
+	name = "Рабочая Зона";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -16365,7 +16339,8 @@
 "hoK" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Оружейная";
-	req_access = list(114)
+	req_access = list(114);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "СС_Office_Armory";
@@ -16710,7 +16685,8 @@
 "hvB" = (
 /obj/machinery/door/airlock/multi_tile/command/glass{
 	name = "Командный Центр";
-	req_access = list(114)
+	req_access = list(114);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/stairs/left{
 	color = "gray"
@@ -16857,6 +16833,12 @@
 /obj/machinery/sleeper/upgraded,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"hAp" = (
+/obj/machinery/door/airlock/freezer{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/evac)
 "hAq" = (
 /obj/structure/table/holotable/wood{
 	color = "#996633"
@@ -16963,11 +16945,6 @@
 /obj/item/gun/energy/laser/tag/red,
 /turf/simulated/floor/carpet/arcade,
 /area/admin)
-"hDr" = (
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
-/area/ghost_bar/indoor)
 "hDG" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 4
@@ -17302,7 +17279,7 @@
 /turf/simulated/floor/carpet/red,
 /area/syndicate_mothership/control)
 "hJB" = (
-/obj/machinery/cooking/oven/upgraded,
+/obj/machinery/cooking/oven/loaded/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	nitrogen = 103.984
@@ -17455,19 +17432,6 @@
 	},
 /turf/simulated/floor/holofloor,
 /area/holodeck/source_basketball)
-"hMm" = (
-/obj/structure/barricade{
-	icon = 'icons/turf/shuttle.dmi';
-	icon_state = "diagonalWall3";
-	name = "diagonal shields";
-	proj_pass_rate = 0;
-	max_integrity = 200;
-	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
-	stacktype = null;
-	dir = 8
-	},
-/turf/simulated/floor/indestructible/transparent_floor,
-/area/shuttle/syndicate_sit)
 "hMQ" = (
 /obj/structure/light_fake/small,
 /obj/structure/curtain/black{
@@ -17767,7 +17731,8 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/airlock/wood{
-	name = "Kitchen"
+	name = "Kitchen";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/dark,
@@ -17807,7 +17772,8 @@
 "hRX" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Блокпост";
-	req_access = list(104)
+	req_access = list(104);
+	dir = 4
 	},
 /obj/effect/turf_decal/delivery/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -17997,9 +17963,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "hXt" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "hXu" = (
@@ -18016,7 +17980,6 @@
 	pixel_y = 12
 	},
 /obj/item/clothing/gloves/space_ninja{
-	pixel_x = 0;
 	pixel_y = -5
 	},
 /turf/simulated/floor/plasteel/dark,
@@ -18373,7 +18336,7 @@
 	dir = 2;
 	id_tag = "ghostcafesec"
 	},
-/turf/simulated/wall/indestructible/opsglass,
+/turf/simulated/wall/indestructible/fakeglass,
 /area/ghost_bar/indoor)
 "igj" = (
 /obj/machinery/door_control/no_emag{
@@ -18562,9 +18525,7 @@
 /turf/simulated/floor/wood/oak,
 /area/ghost_bar/indoor)
 "ikt" = (
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
+/turf/simulated/wall/indestructible/syndicate,
 /area/syndicate_mothership/elite_squad)
 "ikL" = (
 /obj/structure/chair/office/dark{
@@ -19022,8 +18983,7 @@
 "itk" = (
 /obj/effect/turf_decal/siding/wood/oak,
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Хранилище Канцелярии";
-	dir = 4
+	name = "Хранилище Канцелярии"
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/admin1)
@@ -19883,7 +19843,8 @@
 /area/centcom/ss220/medbay)
 "iMy" = (
 /obj/machinery/door/airlock{
-	name = "Приватная комната"
+	name = "Приватная комната";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/fakestairs{
 	color = "gray";
@@ -20670,8 +20631,7 @@
 /area/shuttle/escape)
 "jgz" = (
 /obj/machinery/door/airlock/multi_tile/medical/glass{
-	name = "Escape Shuttle Infirmary";
-	dir = 4
+	name = "Escape Shuttle Infirmary"
 	},
 /obj/effect/turf_decal/tiles/neutral,
 /turf/simulated/floor/plasteel,
@@ -21169,7 +21129,8 @@
 "jrQ" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "ghostcaferesortbathroom2";
-	name = "Resort Bathroom"
+	name = "Resort Bathroom";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/white/grid,
@@ -22166,7 +22127,8 @@
 "jPF" = (
 /obj/machinery/door/airlock/wood{
 	glass = 1;
-	name = "Surgery"
+	name = "Surgery";
+	dir = 4
 	},
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/structure/fans/tiny/invisible,
@@ -22334,7 +22296,8 @@
 /area/centcom/ss220/admin2)
 "jWb" = (
 /obj/machinery/door/airlock/public/glass{
-	name = "Столовая"
+	name = "Столовая";
+	dir = 4
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin1)
@@ -22621,8 +22584,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
 "kcY" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/vox)
+/turf/simulated/floor/plating,
+/area/vox_base)
 "kdg" = (
 /obj/structure/table/abductor,
 /obj/effect/spawner/random/ccfood/dessert,
@@ -22640,7 +22603,7 @@
 /turf/simulated/floor/plasteel/white,
 /area/centcom/ss220/medbay)
 "kdG" = (
-/obj/machinery/cooking/ice_cream_mixer/upgraded,
+/obj/machinery/cooking/ice_cream_mixer/loaded/upgraded,
 /turf/simulated/floor/wood/ebonite,
 /area/syndicate_mothership/elite_squad)
 "kdP" = (
@@ -23053,8 +23016,8 @@
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "kns" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/assault_pod)
+/turf/simulated/wall/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "knO" = (
 /obj/machinery/economy/vending/medical/syndicate_access,
 /turf/simulated/floor/plasteel/dark,
@@ -23336,7 +23299,8 @@
 /area/shuttle/administration)
 "kuA" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Парк"
+	name = "Парк";
+	dir = 4
 	},
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8;
@@ -23631,7 +23595,8 @@
 /turf/simulated/floor/plasteel,
 /area/centcom/ss220/park)
 "kAS" = (
-/turf/simulated/wall/indestructible/opsglass,
+/obj/effect/spawner/window/plastitanium,
+/turf/simulated/floor/plating,
 /area/syndicate_mothership/jail)
 "kBw" = (
 /obj/structure/table/glass,
@@ -23935,7 +23900,8 @@
 "kFm" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Конференц Зал";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_SOD_3";
@@ -24725,12 +24691,6 @@
 /obj/structure/chair/stool/bamboo,
 /turf/simulated/floor/beach/away/sand_alternative,
 /area/ghost_bar/outdoor/beach)
-"kXL" = (
-/obj/machinery/porta_turret/syndicate{
-	layer = 3.1
-	},
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/syndicate)
 "kXO" = (
 /obj/effect/turf_decal/siding/wood/oak/corner,
 /turf/simulated/floor/wood/fancy/oak,
@@ -25050,7 +25010,6 @@
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "syndFB_teleport"
 	},
-/turf/simulated/wall/indestructible/opsglass,
 /area/syndicate_mothership/control)
 "lfO" = (
 /obj/structure/table/wood,
@@ -25430,7 +25389,8 @@
 "lpN" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Хранилище";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3;
@@ -25827,7 +25787,8 @@
 "lvS" = (
 /obj/machinery/door/airlock/centcom{
 	req_access = list(106);
-	id_tag = "CC_Cargo_Office_Interior_1"
+	id_tag = "CC_Cargo_Office_Interior_1";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/dark,
@@ -26060,7 +26021,8 @@
 /area/ghost_bar/indoor)
 "lAc" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Библиотека"
+	name = "Библиотека";
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/bar)
@@ -26128,7 +26090,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/machinery/door/poddoor/shutters{
 	density = 0;
@@ -26669,9 +26632,6 @@
 /obj/machinery/computer/secure_data,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
-"lPt" = (
-/turf/simulated/wall/indestructible/opsglass,
-/area/syndicate_mothership/control)
 "lPA" = (
 /obj/structure/table/wood,
 /obj/item/candle/eternal/wizard{
@@ -27741,7 +27701,8 @@
 "mot" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Телепортерная";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
@@ -27873,16 +27834,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
 "mrL" = (
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно не спит на посту!";
-	dir = 8;
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Биба";
-	obj_integrity = 9999
-	},
 /obj/effect/turf_decal/trimline/organization/syndicate/filled/line{
 	dir = 10
 	},
@@ -28111,7 +28062,8 @@
 /area/syndicate_mothership/control)
 "mwu" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Библиотека"
+	name = "Библиотека";
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/park)
@@ -28212,7 +28164,8 @@
 	},
 /area/syndicate_mothership/control)
 "mzr" = (
-/turf/simulated/wall/indestructible/opsglass/limited_smooth,
+/obj/effect/spawner/window/plastitanium,
+/turf/simulated/floor/plating,
 /area/vox_base)
 "mzs" = (
 /obj/machinery/door/window/brigdoor{
@@ -29298,7 +29251,8 @@
 "nbq" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Навигатор Дроп Пода";
-	req_access = list(110)
+	req_access = list(110);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
@@ -30839,13 +30793,8 @@
 /turf/simulated/floor/cobblestone/dungeon,
 /area/ghost_bar/indoor/cave)
 "nML" = (
-/obj/machinery/door/poddoor/impassable{
-	density = 0;
-	icon_state = "open";
-	id_tag = "syndFB_lockdown";
-	opacity = 0
-	},
-/turf/simulated/wall/indestructible/opsglass,
+/obj/effect/spawner/window/plastitanium,
+/turf/simulated/floor/plating,
 /area/syndicate_mothership/control)
 "nMU" = (
 /obj/item/flag/nt,
@@ -31047,7 +30996,7 @@
 /turf/simulated/floor/plasteel,
 /area/ghost_bar/indoor)
 "nRk" = (
-/obj/machinery/cooking/oven/upgraded,
+/obj/machinery/cooking/oven/loaded/upgraded,
 /turf/simulated/floor/wood/amaranth,
 /area/syndicate_mothership/elite_squad)
 "nRn" = (
@@ -31327,7 +31276,8 @@
 "nXF" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Морг"
+	name = "Морг";
+	dir = 4
 	},
 /obj/effect/turf_decal/tiles/department/command,
 /turf/simulated/floor/plasteel/dark,
@@ -31824,12 +31774,6 @@
 /obj/effect/turf_decal/tiles/neutral,
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
-"omn" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
-	icon_state = "plastitanium_wall-0";
-	icon = 'icons/turf/walls/plastitanium_wall.dmi'
-	},
-/area/vox_base)
 "omq" = (
 /obj/structure/light_fake/small{
 	dir = 1
@@ -33107,7 +33051,7 @@
 /area/admin)
 "oQT" = (
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/cooking/oven/upgraded,
+/obj/machinery/cooking/oven/loaded/upgraded,
 /obj/effect/turf_decal/tiles/department/command,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
@@ -33203,24 +33147,15 @@
 /turf/simulated/wall/mineral/plastitanium,
 /area/vox_base)
 "oSF" = (
-/obj/machinery/door/airlock/bathroom,
+/obj/machinery/door/airlock/bathroom{
+	dir = 4
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "oSJ" = (
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно не спит на посту";
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Биба";
-	obj_integrity = 9999
-	},
-/obj/effect/turf_decal/trimline/department/supply/filled/line{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/syndicate_mothership/jail)
+/obj/effect/spawner/window/plastitanium,
+/turf/simulated/floor/plating,
+/area/syndicate_mothership/elite_squad)
 "oSM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -33716,14 +33651,15 @@
 "pcy" = (
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/all/shuttles/vox,
-/obj/machinery/door/airlock/hatch{
-	name = "vox hatch";
-	aiControlDisabled = 1;
-	hackProof = 1
-	},
 /obj/machinery/access_button/directional/east{
 	autolink_id = "voxwest_btn_ext";
 	req_access = list(152)
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "vox hatch";
+	aiControlDisabled = 1;
+	hackProof = 1;
+	dir = 4
 	},
 /turf/simulated/floor/plating/nitrogen,
 /area/vox_base)
@@ -33855,7 +33791,8 @@
 "peR" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Блокпост";
-	req_access = list(106)
+	req_access = list(106);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/general)
@@ -33994,6 +33931,15 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/centcom/ss220/medbay)
+"pko" = (
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/specops,
+/obj/machinery/door/airlock/hatch{
+	aiControlDisabled = 1;
+	name = "Assault Pod";
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/shuttle/assault_pod/nanotrasen)
 "pkq" = (
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 8
@@ -34317,6 +34263,15 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
+"psT" = (
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
+/obj/machinery/door/airlock/centcom{
+	name = "Лазарет";
+	dir = 4
+	},
+/obj/effect/turf_decal/tiles/department/medical,
+/turf/simulated/floor/plasteel/white,
+/area/centcom/ss220/medbay)
 "psX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -35426,7 +35381,8 @@
 /turf/simulated/floor/grass/jungle/no_creep,
 /area/centcom/ss220/park)
 "pUk" = (
-/turf/simulated/wall/indestructible/opsglass,
+/obj/effect/spawner/window/plastitanium,
+/turf/simulated/floor/plating,
 /area/syndicate_mothership)
 "pUp" = (
 /obj/structure/window/reinforced/polarized{
@@ -35534,7 +35490,8 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Hatch";
-	aiControlDisabled = 1
+	aiControlDisabled = 1;
+	dir = 4
 	},
 /obj/docking_port/mobile/specops,
 /obj/structure/fans/tiny,
@@ -35656,7 +35613,8 @@
 "qbw" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Зона ЦК";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
@@ -36249,7 +36207,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "qqL" = (
-/obj/machinery/door/airlock/command/glass,
+/obj/machinery/door/airlock/command/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/court)
@@ -36307,7 +36267,8 @@
 "qsh" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
-	name = "Кабинет ОСО"
+	name = "Кабинет ОСО";
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.2;
@@ -36364,8 +36325,7 @@
 /area/centcom/ss220/admin3)
 "qtB" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Столовая ОБР";
-	dir = 4
+	name = "Столовая ОБР"
 	},
 /obj/effect/turf_decal/delivery/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -36645,7 +36605,9 @@
 /turf/simulated/floor/beach/away/sand_alternative,
 /area/ghost_bar/outdoor/beach)
 "qBC" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /obj/docking_port/stationary{
 	dir = 2;
@@ -37256,7 +37218,8 @@
 /area/centcom/ss220/supply)
 "qRj" = (
 /obj/machinery/door/airlock/multi_tile/medical/glass{
-	name = "Escape Shuttle Infirmary"
+	name = "Escape Shuttle Infirmary";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
@@ -37370,9 +37333,13 @@
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership/elite_squad)
 "qUe" = (
-/obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
 	name = "Кабинет ОСО"
+	},
+/obj/machinery/door_control/no_emag/south{
+	id = "СС_COO_Room";
+	name = "Blast Door Open";
+	req_access = list(114)
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.2;
@@ -37380,11 +37347,7 @@
 	id_tag = "СС_COO_Room";
 	name = "Тебе скорее всего сюда нельзя, увы."
 	},
-/obj/machinery/door_control/no_emag/south{
-	id = "СС_COO_Room";
-	name = "Blast Door Open";
-	req_access = list(114)
-	},
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /turf/simulated/floor/plasteel/dark/grid,
 /area/centcom/ss220/admin2)
 "qUf" = (
@@ -37653,7 +37616,8 @@
 "qZh" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Зона Отдыха"
+	name = "Зона Отдыха";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -37813,7 +37777,6 @@
 /area/centcom/ss220/park)
 "rbJ" = (
 /obj/machinery/door/airlock/multi_tile/command/glass{
-	dir = 4;
 	name = "Зона ЦК"
 	},
 /turf/simulated/floor/plasteel/dark,
@@ -39634,7 +39597,7 @@
 /turf/simulated/floor/plasteel/white,
 /area/centcom/ss220/medbay)
 "rOv" = (
-/obj/machinery/cooking/deepfryer/upgraded,
+/obj/machinery/cooking/deepfryer/loaded/upgraded,
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/turf_decal/tiles/department/command,
 /turf/simulated/floor/plasteel/dark,
@@ -40091,7 +40054,8 @@
 /obj/structure/fans/tiny/invisible,
 /obj/machinery/door/airlock/wood/glass{
 	desc = "A strange small bar. It's actually remarkably close to Space Station 13.";
-	name = "The Snoozy Floofer"
+	name = "The Snoozy Floofer";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/stairs,
 /area/ghost_bar/indoor)
@@ -40299,7 +40263,8 @@
 "san" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Конференц Зал Верховного Командования";
-	req_access = list(114)
+	req_access = list(114);
+	dir = 4
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
@@ -40455,19 +40420,6 @@
 	},
 /turf/simulated/floor/wood/ebonite,
 /area/syndicate_mothership/infteam)
-"scX" = (
-/obj/structure/barricade{
-	icon = 'icons/turf/shuttle.dmi';
-	icon_state = "diagonalWall3";
-	name = "diagonal shields";
-	proj_pass_rate = 0;
-	max_integrity = 200;
-	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
-	stacktype = null;
-	dir = 1
-	},
-/turf/simulated/floor/indestructible/transparent_floor,
-/area/shuttle/syndicate_sit)
 "sdf" = (
 /obj/structure/closet/crate/freezer{
 	desc = "A crate.";
@@ -41076,9 +41028,6 @@
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
-"spP" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/syndicate)
 "sqk" = (
 /obj/structure/flora/rock/jungle,
 /obj/item/flashlight/lantern{
@@ -41147,7 +41096,8 @@
 "srs" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Кабинет ОЦК"
+	name = "Кабинет ОЦК";
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
@@ -41231,7 +41181,8 @@
 "stR" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Конференц Зал";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/effect/turf_decal/siding/wood/cherry{
 	dir = 10
@@ -41337,9 +41288,13 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/ghost_bar/indoor)
 "syn" = (
-/obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
 	name = "Кабинет ОСО"
+	},
+/obj/machinery/door_control/no_emag/south{
+	id = "СС_COO_Room";
+	name = "Blast Door Open";
+	req_access = list(114)
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.2;
@@ -41347,11 +41302,7 @@
 	id_tag = "СС_COO_Room";
 	name = "Тебе скорее всего сюда нельзя, увы."
 	},
-/obj/machinery/door_control/no_emag/south{
-	id = "СС_COO_Room";
-	name = "Blast Door Open";
-	req_access = list(114)
-	},
+/obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
 "syo" = (
@@ -41691,7 +41642,7 @@
 /turf/simulated/floor/wood/parquet/tile,
 /area/centcom/ss220/admin1)
 "sIe" = (
-/obj/machinery/cooking/deepfryer/upgraded,
+/obj/machinery/cooking/deepfryer/loaded/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/official/fruit_bowl/directional/north,
 /turf/simulated/floor/plasteel/dark/nitrogen{
@@ -41854,7 +41805,8 @@
 /obj/machinery/door/airlock/centcom{
 	id_tag = "CC_Exterior_2";
 	name = "Зона ЦК";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "СС_BD_Exterior_2";
@@ -42280,7 +42232,8 @@
 /obj/machinery/door/airlock/centcom{
 	id_tag = "CC_Exterior_1";
 	name = "Зона ЦК Карго";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
@@ -42402,7 +42355,8 @@
 /area/centcom/ss220/admin3)
 "sWK" = (
 /obj/machinery/door/airlock/bathroom{
-	name = "Уборная"
+	name = "Уборная";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
@@ -42438,19 +42392,6 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/centcom/ss220/park)
-"sXy" = (
-/obj/structure/barricade{
-	icon = 'icons/turf/shuttle.dmi';
-	icon_state = "diagonalWall3";
-	name = "diagonal shields";
-	proj_pass_rate = 0;
-	max_integrity = 200;
-	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
-	stacktype = null;
-	dir = 1
-	},
-/turf/simulated/floor/indestructible/transparent_floor,
-/area/shuttle/syndicate_elite)
 "sXM" = (
 /obj/structure/closet/secure_closet/syndicate/medbay,
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -42609,16 +42550,6 @@
 /obj/item/radio/intercom/syndicate{
 	pixel_y = -28;
 	dir = 2
-	},
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно спит на посту";
-	dir = 1;
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Боба";
-	obj_integrity = 9999
 	},
 /obj/effect/turf_decal/trimline/department/supply/filled/line,
 /turf/simulated/floor/plasteel/dark,
@@ -42798,7 +42729,8 @@
 "tfv" = (
 /obj/machinery/door/airlock/centcom{
 	name = "ОБР";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
@@ -43014,7 +42946,8 @@
 /area/centcom/ss220/admin2)
 "too" = (
 /obj/machinery/door/airlock/hatch{
-	name = "тебе сюда нельзя"
+	name = "тебе сюда нельзя";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plating/airless,
@@ -43509,7 +43442,8 @@
 "tAi" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/commander,
 /obj/machinery/door/airlock/centcom{
-	name = "Кабинет ОСО"
+	name = "Кабинет ОСО";
+	dir = 4
 	},
 /obj/machinery/door/poddoor/impassable{
 	layer = 3.2;
@@ -44091,7 +44025,8 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/airlock/wood{
-	name = "Janitorial"
+	name = "Janitorial";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel/dark,
@@ -44402,15 +44337,6 @@
 	dir = 1
 	},
 /obj/structure/sign/poster/contraband/random/directional/north,
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно не спит на посту";
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Биба";
-	obj_integrity = 9999
-	},
 /obj/effect/turf_decal/trimline/department/supply/filled/line{
 	dir = 1
 	},
@@ -44761,7 +44687,9 @@
 "ued" = (
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "uef" = (
@@ -45718,6 +45646,16 @@
 /obj/structure/holowindow,
 /turf/simulated/floor/holofloor,
 /area/holodeck/source_knightarena)
+"uET" = (
+/obj/effect/mapping_helpers/airlock/access/all/shuttles/vox,
+/obj/machinery/door/airlock/hatch{
+	name = "vox hatch";
+	aiControlDisabled = 1;
+	hackProof = 1;
+	dir = 4
+	},
+/turf/simulated/floor/plating/nitrogen,
+/area/vox_base)
 "uFW" = (
 /obj/structure/table/reinforced{
 	color = "#404040"
@@ -46332,7 +46270,6 @@
 /area/vox_base)
 "uUb" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
 	name = "Emergency Airlock Access"
 	},
 /turf/simulated/floor/plasteel,
@@ -46836,9 +46773,7 @@
 /turf/simulated/floor/beach/away/sand_alternative,
 /area/ghost_bar/outdoor/beach)
 "vfU" = (
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
+/turf/simulated/wall/indestructible/syndicate,
 /area/syndicate_mothership/infteam)
 "vgs" = (
 /obj/machinery/cryopod/offstation/right,
@@ -47041,7 +46976,8 @@
 /area/vox_base)
 "vkS" = (
 /obj/machinery/door/airlock/highsecurity{
-	req_access = list(114)
+	req_access = list(114);
+	dir = 4
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
@@ -47317,7 +47253,8 @@
 "vqS" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Зал Верховного Суда";
-	req_access = list(106,109,110)
+	req_access = list(106,109,110);
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/court)
@@ -47547,6 +47484,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/ebonite,
 /area/syndicate_mothership)
+"vuO" = (
+/turf/simulated/wall/indestructible/fakedoor{
+	name = "Spider Clan Jail Cell";
+	dir = 8
+	},
+/area/ninja/holding)
 "vuV" = (
 /obj/structure/table/glass,
 /obj/item/paper{
@@ -47932,7 +47875,6 @@
 /area/vox_base)
 "vBp" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
 	name = "Shuttle Cargo Hatch"
 	},
 /turf/simulated/floor/plasteel,
@@ -48277,7 +48219,8 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "specops_away";
 	name = "Шаттл ОБР";
-	req_access = list(109)
+	req_access = list(109);
+	dir = 4
 	},
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/stripes/line{
@@ -48707,7 +48650,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/medbay)
 "vTp" = (
-/obj/machinery/atmospherics/unary/cryo_cell/upgraded,
+/obj/machinery/atmospherics/unary/cryo_cell/loaded/upgraded,
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 1
 	},
@@ -48781,9 +48724,6 @@
 /obj/effect/spawner/window,
 /turf/simulated/floor/grass/no_creep,
 /area/trader_station/sol)
-"vVk" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/syndicate_mothership/cargo)
 "vVI" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -48994,7 +48934,8 @@
 /area/holodeck/source_thunderdomecourt)
 "wct" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Коморка уборщика"
+	name = "Коморка уборщика";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/general)
@@ -49337,7 +49278,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
 "wjE" = (
-/turf/simulated/wall/indestructible/syndicate/no_diagonal,
+/turf/simulated/wall/mineral/plastitanium,
 /area/ghost_bar/indoor)
 "wjI" = (
 /obj/structure/flora/junglebush,
@@ -49575,7 +49516,8 @@
 "wos" = (
 /obj/machinery/door/airlock/wood/glass{
 	desc = "A strange small bar. It's actually remarkably close to Space Station 13.";
-	name = "Library"
+	name = "Library";
+	dir = 4
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/wood/oak,
@@ -49958,7 +49900,7 @@
 /turf/simulated/floor/plating/airless,
 /area/shuttle/syndicate)
 "wxD" = (
-/obj/machinery/cooking/ice_cream_mixer/upgraded,
+/obj/machinery/cooking/ice_cream_mixer/loaded/upgraded,
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/turf_decal/tiles/department/command,
 /turf/simulated/floor/plasteel/dark,
@@ -50039,7 +49981,8 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	name = "Arrival Airlock"
+	name = "Arrival Airlock";
+	dir = 4
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
@@ -50187,7 +50130,8 @@
 /obj/machinery/door/airlock/centcom{
 	id_tag = "СС_Interior_2";
 	name = "Зона ЦК";
-	req_access = list(101)
+	req_access = list(101);
+	dir = 4
 	},
 /obj/machinery/door_control/no_emag/west{
 	id = "СС_BD_Interior_2";
@@ -50422,19 +50366,6 @@
 /obj/structure/sign/poster/contraband/soulless_figures/directional/north,
 /turf/simulated/floor/bamboo/tatami/black,
 /area/ninja/holding)
-"wGX" = (
-/obj/structure/barricade{
-	icon = 'icons/turf/shuttle.dmi';
-	icon_state = "diagonalWall3";
-	name = "diagonal shields";
-	proj_pass_rate = 0;
-	max_integrity = 200;
-	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
-	stacktype = null;
-	dir = 8
-	},
-/turf/simulated/floor/indestructible/transparent_floor,
-/area/shuttle/syndicate_elite)
 "wHr" = (
 /obj/structure/platform{
 	dir = 8;
@@ -50812,7 +50743,8 @@
 /area/syndicate_mothership/infteam)
 "wOH" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Комната Грязи"
+	name = "Комната Грязи";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
@@ -51050,7 +50982,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "wVR" = (
-/obj/machinery/door/airlock/centcom/glass,
+/obj/machinery/door/airlock/centcom/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
@@ -51493,7 +51427,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "vox hatch";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor/shutters{
@@ -51805,7 +51740,8 @@
 "xlO" = (
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/general,
 /obj/machinery/door/airlock/centcom{
-	name = "Бар"
+	name = "Бар";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
@@ -52130,22 +52066,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/infteam)
-"xtU" = (
-/obj/structure/statue/sandstone/assistant{
-	anchored = 1;
-	desc = "Он точно не спит на посту!";
-	dir = 4;
-	icon = 'icons/mob/simple_human.dmi';
-	icon_state = "syndicate_smg";
-	max_integrity = 9999;
-	name = "Биба";
-	obj_integrity = 9999
-	},
-/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
-	dir = 9
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/syndicate_mothership/control)
 "xtW" = (
 /obj/structure/table/glass,
 /obj/item/food/boiledpelmeni,
@@ -53055,7 +52975,8 @@
 /obj/machinery/door/airlock/hatch{
 	id_tag = "voxeast_door_ext";
 	aiControlDisabled = 1;
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/fans/tiny,
@@ -53325,9 +53246,6 @@
 /obj/effect/spawner/window,
 /turf/simulated/floor/grass/jungle/no_creep,
 /area/centcom/ss220/admin1)
-"xYd" = (
-/turf/simulated/wall/indestructible/syndicate/no_diagonal,
-/area/ninja/holding)
 "xYf" = (
 /obj/structure/barricade{
 	icon = 'icons/turf/shuttle.dmi';
@@ -55002,17 +54920,17 @@ lAC
 rQg
 rQg
 rQg
-vVk
+rQg
 jak
-vVk
 rQg
 rQg
 rQg
 rQg
-vVk
+rQg
+rQg
 slN
 lPf
-vVk
+rQg
 rQg
 rQg
 lAC
@@ -55256,7 +55174,7 @@ lAC
 rQg
 rQg
 rQg
-vVk
+rQg
 bCs
 rQg
 brK
@@ -55507,10 +55425,10 @@ rQg
 bVF
 bVF
 bVF
-vVk
 rQg
 rQg
-vVk
+rQg
+rQg
 bWX
 bWX
 piG
@@ -55772,10 +55690,10 @@ otU
 otU
 piG
 aSX
-vVk
-vVk
+rQg
+rQg
 hlh
-vVk
+rQg
 jKB
 dxV
 rQg
@@ -56021,7 +55939,7 @@ rQg
 bVX
 bVX
 bVX
-vVk
+rQg
 iTG
 agt
 rQg
@@ -56284,20 +56202,20 @@ agt
 rQg
 rQg
 rQg
-vVk
+rQg
 xvt
 slN
 slN
 ihY
-vVk
 rQg
 rQg
 rQg
 rQg
-vVk
+rQg
+rQg
 dMr
 dMr
-vVk
+rQg
 rQg
 rQg
 rQg
@@ -56535,7 +56453,7 @@ lAC
 rQg
 bVF
 bVF
-vVk
+rQg
 nbj
 agt
 rQg
@@ -56789,16 +56707,16 @@ tJz
 lAC
 lAC
 rQg
-vVk
+rQg
 oGJ
 oGJ
-vVk
+rQg
 eeQ
-vVk
 rQg
 rQg
 rQg
-vVk
+rQg
+rQg
 xvt
 slN
 slN
@@ -57071,7 +56989,7 @@ mna
 keY
 bhB
 fmj
-vVk
+rQg
 rQg
 lAC
 lAC
@@ -57236,17 +57154,17 @@ adJ
 adJ
 adJ
 adJ
-xYd
 cEM
 cEM
-xYd
+cEM
+cEM
 cNw
 wJz
 cNw
-xYd
 cEM
 cEM
-xYd
+cEM
+cEM
 adJ
 adJ
 "}
@@ -57306,7 +57224,7 @@ vgV
 slN
 slN
 oYr
-vVk
+rQg
 cex
 slN
 slN
@@ -57419,7 +57337,7 @@ adJ
 adJ
 frK
 frK
-eCs
+frK
 uRG
 sej
 bRc
@@ -57820,7 +57738,7 @@ wdR
 slN
 slN
 upU
-vVk
+rQg
 keY
 slN
 slN
@@ -57944,7 +57862,7 @@ vgA
 try
 kGT
 eLW
-eCs
+frK
 frK
 frK
 adJ
@@ -58099,7 +58017,7 @@ rqt
 cex
 bhB
 lsx
-vVk
+rQg
 rQg
 lAC
 lAC
@@ -58331,16 +58249,16 @@ tJz
 tJz
 tJz
 rQg
-vVk
+rQg
 jxO
 jxO
-vVk
+rQg
 ihY
-vVk
 rQg
 rQg
 rQg
-vVk
+rQg
+rQg
 xvt
 slN
 slN
@@ -58591,7 +58509,7 @@ tJz
 rQg
 bVX
 bVX
-vVk
+rQg
 nbj
 eDK
 rQg
@@ -58781,7 +58699,7 @@ adJ
 cEM
 xzR
 hwP
-eOv
+vuO
 wJz
 wJz
 wJz
@@ -58854,20 +58772,20 @@ eDK
 rQg
 rQg
 rQg
-vVk
+rQg
 xvt
 slN
 slN
 eeQ
-vVk
 rQg
 rQg
 rQg
 rQg
-vVk
+rQg
+rQg
 dMr
 dMr
-vVk
+rQg
 rQg
 rQg
 rQg
@@ -59105,7 +59023,7 @@ rQg
 bVF
 bVF
 bVF
-vVk
+rQg
 iTG
 eDK
 rQg
@@ -59222,7 +59140,7 @@ frK
 frK
 amV
 frK
-eCs
+frK
 wRe
 oPO
 frK
@@ -59292,7 +59210,7 @@ adJ
 adJ
 adJ
 adJ
-xYd
+cEM
 cEM
 cEM
 cEM
@@ -59370,10 +59288,10 @@ xSw
 xSw
 xzF
 aSX
-vVk
-vVk
+rQg
+rQg
 hlh
-vVk
+rQg
 lKt
 dxV
 rQg
@@ -59486,7 +59404,7 @@ frK
 oPO
 uNx
 uNx
-eCs
+frK
 frK
 frK
 adJ
@@ -59619,10 +59537,10 @@ rQg
 bVX
 bVX
 bVX
-vVk
 rQg
 rQg
-vVk
+rQg
+rQg
 eDK
 xSw
 xzF
@@ -59882,7 +59800,7 @@ tJz
 rQg
 rQg
 rQg
-vVk
+rQg
 vkl
 rQg
 sRe
@@ -59989,7 +59907,7 @@ adJ
 adJ
 frK
 frK
-eCs
+frK
 lFa
 oPO
 hyf
@@ -60142,17 +60060,17 @@ tJz
 rQg
 rQg
 rQg
-vVk
+rQg
 jak
 rQg
 rQg
 rQg
 rQg
 rQg
-vVk
+rQg
 slN
 qnQ
-vVk
+rQg
 rQg
 rQg
 lAC
@@ -60327,10 +60245,10 @@ dGE
 cNw
 wJz
 cNw
-xYd
 cEM
 cEM
-xYd
+cEM
+cEM
 adJ
 adJ
 "}
@@ -61685,7 +61603,7 @@ fti
 tJz
 tJz
 tJz
-lPt
+nML
 fxM
 fxM
 fxM
@@ -61941,8 +61859,8 @@ mlS
 tJz
 tJz
 tJz
-lPt
-lPt
+nML
+nML
 hjZ
 edS
 pEW
@@ -62197,8 +62115,8 @@ mlS
 tJz
 tJz
 tJz
-lPt
-lPt
+nML
+nML
 rQA
 hCi
 gty
@@ -62453,14 +62371,14 @@ tJz
 tJz
 tJz
 tJz
-lPt
-lPt
+nML
+nML
 lys
 hCi
 gty
 gty
 qah
-lPt
+nML
 hLH
 nGz
 fxM
@@ -62709,15 +62627,15 @@ mlS
 tJz
 chQ
 tJz
-lPt
-lPt
+nML
+nML
 siY
 hCi
 gty
 mNX
 kfk
 qah
-lPt
+nML
 hLH
 lqw
 fxM
@@ -62974,7 +62892,7 @@ gty
 pwc
 sdJ
 qah
-lPt
+nML
 hLH
 nGz
 fxM
@@ -63043,7 +62961,7 @@ ofW
 ppK
 ofW
 ppK
-ase
+cUL
 oVq
 oVq
 jvf
@@ -63289,7 +63207,7 @@ adJ
 rzI
 ifc
 mLN
-syo
+bSk
 aVm
 uxt
 uxt
@@ -63479,8 +63397,8 @@ fnU
 tJz
 tJz
 tJz
-lPt
-lPt
+nML
+nML
 dcD
 gty
 gty
@@ -63735,8 +63653,8 @@ bnr
 fnU
 tJz
 tJz
-lPt
-lPt
+nML
+nML
 gpi
 hCi
 gty
@@ -63950,17 +63868,17 @@ lAC
 lAC
 vfU
 vfU
-gRN
-gRN
-gRN
-gRN
-gRN
-gRN
-gRN
-gRN
-gRN
-gRN
-gRN
+kns
+kns
+kns
+kns
+kns
+kns
+kns
+kns
+kns
+kns
+kns
 vfU
 fnU
 gOQ
@@ -63992,7 +63910,7 @@ ujq
 fnU
 tJz
 tJz
-lPt
+nML
 vDq
 hCi
 gty
@@ -64263,7 +64181,7 @@ wjw
 wjw
 qlp
 wjw
-bvE
+pCf
 gty
 gty
 fxM
@@ -65796,7 +65714,7 @@ lfl
 iCF
 fyD
 mhk
-lPt
+nML
 bQR
 gty
 nGz
@@ -66053,7 +65971,7 @@ lfl
 iCF
 cuu
 mhk
-lPt
+nML
 hLH
 gty
 nGz
@@ -66302,7 +66220,7 @@ maY
 fnU
 tJz
 fti
-lPt
+nML
 hdC
 qwC
 ata
@@ -66310,7 +66228,7 @@ lfl
 iCF
 fKd
 mhk
-lPt
+nML
 hLH
 gZH
 ggq
@@ -66559,7 +66477,7 @@ oTB
 fnU
 iyK
 tJz
-lPt
+nML
 hNH
 hIe
 lTL
@@ -67073,7 +66991,7 @@ wXx
 pUk
 tJz
 tJz
-lPt
+nML
 kvk
 gty
 kfE
@@ -67330,7 +67248,7 @@ oRl
 pUk
 tJz
 tJz
-lPt
+nML
 kvk
 gty
 kfE
@@ -67844,7 +67762,7 @@ pOV
 fnU
 tJz
 iyK
-lPt
+nML
 hNH
 bvR
 jyq
@@ -68101,7 +68019,7 @@ hMQ
 pUk
 tJz
 fti
-lPt
+nML
 oHW
 qwC
 ata
@@ -68109,7 +68027,7 @@ lfl
 iCF
 rrO
 mhk
-lPt
+nML
 hLH
 vEJ
 bLl
@@ -68366,7 +68284,7 @@ lfl
 iCF
 xRf
 mhk
-lPt
+nML
 hLH
 gty
 nGz
@@ -68623,7 +68541,7 @@ lfl
 iCF
 fyD
 mhk
-lPt
+nML
 bQR
 gty
 nGz
@@ -70174,7 +70092,7 @@ gFH
 gFH
 fah
 gFH
-xtU
+tjz
 gty
 gty
 fxM
@@ -70417,7 +70335,7 @@ ujq
 fnU
 tJz
 tJz
-lPt
+nML
 qNi
 wBu
 wrt
@@ -70651,9 +70569,9 @@ fnU
 viA
 viA
 qCH
-fLS
+sOo
 uRN
-kns
+sOo
 qCH
 viA
 viA
@@ -70674,8 +70592,8 @@ bnr
 fnU
 tJz
 chQ
-lPt
-lPt
+nML
+nML
 dbJ
 wBu
 wrt
@@ -70932,8 +70850,8 @@ fnU
 tJz
 tJz
 tJz
-lPt
-lPt
+nML
+nML
 wZv
 gty
 gty
@@ -71084,7 +71002,7 @@ uMr
 fZv
 qLq
 eVA
-kdh
+psT
 hCE
 vWn
 iMo
@@ -71163,13 +71081,13 @@ wqZ
 wqZ
 fnU
 fnU
-kns
+sOo
 kfn
 vCS
 gEl
 vCS
 tPC
-kns
+sOo
 fnU
 fnU
 fnU
@@ -71455,7 +71373,7 @@ gty
 wrt
 gty
 qbU
-lPt
+nML
 hLH
 nGz
 fxM
@@ -71677,13 +71595,13 @@ wqZ
 wqZ
 fnU
 fnU
-kns
+sOo
 kfn
 vCS
 gof
 vCS
 tPC
-kns
+sOo
 fnU
 fnU
 fnU
@@ -71704,15 +71622,15 @@ tJz
 tJz
 tJz
 tJz
-lPt
-lPt
+nML
+nML
 lNa
 wBu
 wrt
 wrt
 wrt
 lOr
-lPt
+nML
 hLH
 vAq
 fxM
@@ -71962,14 +71880,14 @@ mlS
 tJz
 tJz
 tJz
-lPt
-lPt
+nML
+nML
 sdf
 wBu
 wrt
 gty
 bSN
-lPt
+nML
 hLH
 nGz
 fxM
@@ -72193,9 +72111,9 @@ fnU
 viA
 viA
 qCH
-kns
+sOo
 uRN
-kns
+sOo
 qCH
 viA
 viA
@@ -72220,8 +72138,8 @@ tJz
 mlS
 chQ
 tJz
-lPt
-lPt
+nML
+nML
 jMu
 wBu
 gty
@@ -72478,8 +72396,8 @@ mlS
 mlS
 fti
 tJz
-lPt
-lPt
+nML
+nML
 lXe
 mws
 qeR
@@ -72736,7 +72654,7 @@ tJz
 tJz
 tJz
 tJz
-lPt
+nML
 fxM
 fxM
 fxM
@@ -72950,23 +72868,23 @@ tJz
 atZ
 tJz
 iyK
-gKF
+oSJ
 wqZ
 cDe
 wqZ
-gKF
+oSJ
 tJz
 tJz
-gKF
+oSJ
 wqZ
 wqZ
-gKF
+oSJ
 tJz
 tJz
 iyK
-gKF
+oSJ
 wqZ
-gKF
+oSJ
 tJz
 tJz
 tJz
@@ -73211,19 +73129,19 @@ ikt
 ktJ
 cDe
 cDe
-gKF
+oSJ
 tJz
 tJz
-gKF
+oSJ
 wqZ
 wqZ
-gKF
+oSJ
 tJz
 tJz
 tJz
-gKF
+oSJ
 wqZ
-gKF
+oSJ
 tJz
 tJz
 iyK
@@ -73468,19 +73386,19 @@ ikt
 pNy
 wqZ
 cDe
-gKF
+oSJ
 tJz
 fti
-gKF
+oSJ
 wqZ
 wqZ
-gKF
+oSJ
 tJz
 fti
 tJz
-gKF
+oSJ
 wqZ
-gKF
+oSJ
 tJz
 tJz
 tJz
@@ -73721,23 +73639,23 @@ tJz
 atZ
 tJz
 tJz
-gKF
+oSJ
 wqZ
 cDe
 wqZ
-gKF
+oSJ
 tJz
 tJz
-gKF
+oSJ
 wqZ
 wqZ
-gKF
+oSJ
 tJz
 iyK
 tJz
-gKF
+oSJ
 wqZ
-gKF
+oSJ
 tJz
 tJz
 tJz
@@ -74489,7 +74407,7 @@ mlS
 tJz
 tJz
 tJz
-gKF
+oSJ
 ptP
 vxK
 mhw
@@ -74746,7 +74664,7 @@ mlS
 tJz
 tJz
 tJz
-gKF
+oSJ
 cyD
 cYU
 dHM
@@ -74779,7 +74697,7 @@ eOW
 tVQ
 bda
 bda
-bRw
+bxz
 kAS
 rwr
 nUM
@@ -75003,7 +74921,7 @@ tJz
 tJz
 tJz
 tJz
-gKF
+oSJ
 ptP
 aDO
 klt
@@ -75253,9 +75171,9 @@ tJz
 tJz
 tJz
 ikt
-gKF
-gKF
-gKF
+oSJ
+oSJ
+oSJ
 ikt
 ikt
 ikt
@@ -75399,7 +75317,7 @@ osb
 osb
 osb
 dYg
-quL
+nQh
 osb
 osb
 osb
@@ -75509,7 +75427,7 @@ tJz
 tJz
 tJz
 tIs
-gKF
+oSJ
 pKm
 ogD
 ogD
@@ -75766,7 +75684,7 @@ chQ
 tJz
 fti
 tJz
-gKF
+oSJ
 qIv
 pNx
 iwf
@@ -76023,7 +75941,7 @@ tJz
 tJz
 gHo
 tJz
-gKF
+oSJ
 vsk
 dzI
 fCJ
@@ -76318,7 +76236,7 @@ kHk
 mvf
 tJz
 eOW
-oSJ
+hYp
 bda
 bda
 tbP
@@ -76430,15 +76348,15 @@ sZk
 sZk
 sZk
 sZk
-nQh
+quL
 vxs
 fUq
 odn
-mTZ
+hAp
 qln
 kEk
 qln
-mTZ
+hAp
 vxs
 fUq
 gJO
@@ -76794,7 +76712,7 @@ tJz
 tJz
 tJz
 sIG
-gKF
+oSJ
 wqp
 oyn
 oyn
@@ -77051,7 +76969,7 @@ tJz
 tJz
 tJz
 tJz
-gKF
+oSJ
 tiB
 xFs
 lre
@@ -77308,7 +77226,7 @@ tJz
 tJz
 tJz
 tJz
-gKF
+oSJ
 wqp
 xFs
 xeN
@@ -77565,7 +77483,7 @@ tJz
 gJu
 fti
 tJz
-gKF
+oSJ
 wqp
 dAm
 rzY
@@ -77822,7 +77740,7 @@ tJz
 chQ
 tJz
 tJz
-gKF
+oSJ
 wqp
 xFs
 nrh
@@ -78079,7 +77997,7 @@ tJz
 tJz
 gJu
 tJz
-gKF
+oSJ
 tiB
 xFs
 tIy
@@ -78117,10 +78035,10 @@ mvf
 mvf
 tJz
 eOW
-oSJ
+hYp
 bda
 bda
-bRw
+bxz
 eOW
 emB
 nUM
@@ -78336,7 +78254,7 @@ chQ
 tJz
 tJz
 tJz
-gKF
+oSJ
 wqp
 oyn
 nzh
@@ -79107,7 +79025,7 @@ tJz
 tJz
 chQ
 tJz
-gKF
+oSJ
 rkR
 qeu
 bqK
@@ -79364,7 +79282,7 @@ mvf
 tJz
 fti
 tJz
-gKF
+oSJ
 wBT
 bqK
 qeu
@@ -79621,7 +79539,7 @@ mvf
 tJz
 gHo
 tJz
-gKF
+oSJ
 flk
 gKj
 sSn
@@ -79879,9 +79797,9 @@ tJz
 tJz
 tJz
 ikt
-gKF
-gKF
-gKF
+oSJ
+oSJ
+oSJ
 ikt
 wSu
 bqK
@@ -80139,7 +80057,7 @@ tJz
 mlS
 tJz
 tJz
-gKF
+oSJ
 wMW
 qeu
 bqK
@@ -80358,9 +80276,9 @@ nPO
 nPO
 nPO
 iRQ
-fZl
+iRQ
 deM
-bgX
+iRQ
 iRQ
 nPO
 nPO
@@ -80396,7 +80314,7 @@ tJz
 mlS
 avt
 tJz
-gKF
+oSJ
 bxe
 bqK
 qeu
@@ -80653,7 +80571,7 @@ tJz
 mlS
 mlS
 tJz
-gKF
+oSJ
 cAh
 fPg
 kUd
@@ -80870,13 +80788,13 @@ sIV
 hSE
 nPO
 qDW
-bgX
+iRQ
 lTv
 laG
 lcZ
 laG
 hnB
-bgX
+iRQ
 nPO
 adJ
 adJ
@@ -81126,8 +81044,8 @@ rsz
 sIV
 xWN
 bLF
-pjg
-deM
+eFR
+pko
 fOJ
 qIF
 daz
@@ -81384,13 +81302,13 @@ sIV
 hSE
 nPO
 nPO
-bgX
+iRQ
 lTv
 laG
 eGU
 laG
 hnB
-bgX
+iRQ
 nPO
 adJ
 adJ
@@ -81900,9 +81818,9 @@ nPO
 nPO
 nPO
 iRQ
-bgX
+iRQ
 deM
-bgX
+iRQ
 iRQ
 nPO
 nPO
@@ -84499,7 +84417,7 @@ lgH
 lgH
 lgH
 lgH
-hMm
+vxy
 vxy
 vxy
 vxy
@@ -85053,7 +84971,7 @@ xYf
 viN
 kKO
 viN
-spP
+orn
 orn
 orn
 orn
@@ -85310,7 +85228,7 @@ orn
 orn
 orn
 orn
-spP
+orn
 pYs
 iQW
 iSp
@@ -85527,7 +85445,7 @@ lgH
 lgH
 lgH
 lgH
-scX
+vxy
 vxy
 vxy
 vxy
@@ -86087,7 +86005,7 @@ uVK
 vSv
 mFZ
 fuU
-spP
+orn
 orn
 orn
 lgH
@@ -86298,7 +86216,7 @@ lgH
 lgH
 lgH
 lgH
-wGX
+jMU
 jMU
 jMU
 jMU
@@ -86331,11 +86249,11 @@ ayH
 uVK
 uVK
 uVK
-spP
-spP
+orn
+orn
 dMZ
 yjM
-spP
+orn
 orn
 uVK
 uVK
@@ -86343,7 +86261,7 @@ uVK
 uVK
 oxt
 vTO
-spP
+orn
 orn
 orn
 orn
@@ -86603,8 +86521,8 @@ vSv
 orn
 irK
 orK
-spP
-kXL
+orn
+voU
 lgH
 lgH
 lgH
@@ -87326,7 +87244,7 @@ lgH
 lgH
 lgH
 lgH
-sXy
+jMU
 jMU
 jMU
 jMU
@@ -87374,8 +87292,8 @@ vSv
 jWg
 uXa
 hRt
-spP
-kXL
+orn
+voU
 lgH
 lgH
 lgH
@@ -87616,8 +87534,8 @@ hFw
 uVK
 uVK
 uVK
-spP
-spP
+orn
+orn
 dMZ
 dMZ
 orn
@@ -87628,7 +87546,7 @@ uVK
 uVK
 oHm
 hrJ
-spP
+orn
 orn
 orn
 orn
@@ -87886,7 +87804,7 @@ uVK
 vSv
 lcm
 fFL
-spP
+orn
 orn
 orn
 lgH
@@ -88651,7 +88569,7 @@ orn
 orn
 orn
 orn
-spP
+orn
 mVr
 iwe
 xaZ
@@ -88908,7 +88826,7 @@ bgJ
 viN
 udu
 viN
-spP
+orn
 orn
 orn
 orn
@@ -97715,10 +97633,10 @@ hhJ
 kAx
 kAx
 kAx
-aFY
+mzr
 bUG
 hOB
-aFY
+mzr
 qXR
 pFy
 mCE
@@ -98486,7 +98404,7 @@ hhJ
 cNC
 cNC
 cNC
-aFY
+mzr
 iud
 bUG
 gJh
@@ -98840,8 +98758,8 @@ sfK
 dTk
 sfK
 qQO
-bIF
-bIF
+wjE
+wjE
 wjE
 tXi
 tXi
@@ -99000,7 +98918,7 @@ hhJ
 oEj
 dSU
 gfz
-aFY
+mzr
 bUG
 bUG
 hhJ
@@ -99253,14 +99171,14 @@ ooa
 adJ
 adJ
 wmO
-aFY
+mzr
 tnt
 bwl
 iud
 gJh
 bUG
 cqP
-aFY
+mzr
 wov
 qXR
 iYL
@@ -99514,7 +99432,7 @@ hhJ
 mOf
 dBu
 iud
-aFY
+mzr
 bUG
 cqP
 hhJ
@@ -99773,10 +99691,10 @@ hhJ
 hhJ
 hhJ
 xVo
-aFY
+mzr
 hhJ
 hhJ
-aFY
+mzr
 hhJ
 hhJ
 eRV
@@ -100528,8 +100446,8 @@ vxN
 vxN
 hhJ
 hhJ
-aFY
-aFY
+mzr
+mzr
 hhJ
 hhJ
 vxN
@@ -100542,10 +100460,10 @@ adJ
 adJ
 adJ
 jFl
-aFY
+mzr
 hKI
 hKI
-aFY
+mzr
 jFl
 adJ
 adJ
@@ -100799,10 +100717,10 @@ ooa
 adJ
 ooa
 jFl
-aFY
+mzr
 gXH
 cOM
-aFY
+mzr
 adJ
 adJ
 adJ
@@ -101048,18 +100966,18 @@ ygM
 hhJ
 hhJ
 hhJ
-aFY
-aFY
+mzr
+mzr
 hhJ
 hhJ
 hhJ
 ooa
 xzf
 ssm
-aFY
+mzr
 fbB
 cOM
-aFY
+mzr
 adJ
 rDP
 mcg
@@ -101828,13 +101746,13 @@ uTv
 etI
 iUa
 oSC
-aFY
+oSC
 rZD
-omn
+oSC
 mcg
 mcg
 mcg
-kcY
+mcg
 fyO
 age
 bmn
@@ -102080,14 +101998,14 @@ hKI
 hKI
 cOM
 gXH
-cXF
+uET
 tWD
 viS
 efW
-cXF
+uET
 viS
 viS
-mzr
+oSC
 mcg
 iHn
 fyO
@@ -102337,11 +102255,11 @@ hKI
 hKI
 hKI
 fbB
-cXF
+uET
 bKc
 viS
 ops
-aFY
+oSC
 bKc
 viS
 pcy
@@ -102361,7 +102279,7 @@ lIg
 bsR
 oAB
 sNV
-kcY
+mcg
 mcg
 adJ
 adJ
@@ -102601,7 +102519,7 @@ uTv
 oSC
 viS
 iAC
-omn
+oSC
 mcg
 mcg
 mcg
@@ -102656,7 +102574,7 @@ gDZ
 gDZ
 foY
 eEN
-gnv
+gVJ
 uwE
 cQl
 eOb
@@ -102858,7 +102776,7 @@ uTv
 oSC
 cXF
 oSC
-omn
+oSC
 mcg
 gwe
 tVd
@@ -103365,7 +103283,7 @@ cOM
 cOM
 hKI
 vbR
-aFY
+mzr
 jFl
 xzf
 adJ
@@ -103622,7 +103540,7 @@ fbB
 gXH
 diA
 rzx
-aFY
+mzr
 jFl
 ooa
 adJ
@@ -103869,8 +103787,8 @@ vxN
 vxN
 hhJ
 hhJ
-aFY
-aFY
+mzr
+mzr
 hhJ
 hhJ
 ntk
@@ -103896,7 +103814,7 @@ mcg
 mcg
 mbu
 mcg
-kcY
+mcg
 viy
 ttV
 ttV
@@ -103941,7 +103859,7 @@ dss
 vKl
 eva
 eEN
-gnv
+gVJ
 uwE
 cQl
 iYh
@@ -104411,7 +104329,7 @@ apZ
 mcg
 mcg
 mcg
-kcY
+mcg
 qKV
 qjy
 qjy
@@ -104897,8 +104815,8 @@ xzf
 eRV
 hhJ
 hhJ
-aFY
-aFY
+kcY
+kcY
 hhJ
 oCR
 enh
@@ -104910,11 +104828,11 @@ enh
 gNU
 hQP
 eRV
-aFY
+mzr
 qEg
 xGA
 gFV
-aFY
+mzr
 adJ
 adJ
 adJ
@@ -105188,7 +105106,7 @@ bOA
 rQe
 mcg
 bXg
-kcY
+mcg
 mcg
 adJ
 adJ
@@ -105409,7 +105327,7 @@ adJ
 ooa
 ooa
 jFl
-aFY
+mzr
 vkP
 akD
 akD
@@ -105666,7 +105584,7 @@ adJ
 vxN
 eRV
 jFl
-aFY
+mzr
 hJB
 akD
 xdt
@@ -105678,7 +105596,7 @@ qIU
 phT
 fWK
 rAb
-aFY
+mzr
 jFl
 ooa
 hhJ
@@ -105923,7 +105841,7 @@ vxN
 vxN
 vxN
 ssm
-aFY
+mzr
 dgI
 qOr
 xdt
@@ -105935,14 +105853,14 @@ fSh
 uVg
 fWK
 rAb
-aFY
+mzr
 jFl
 ooa
-aFY
+mzr
 qEg
 xGA
 gtm
-aFY
+mzr
 jFl
 ooa
 ooa
@@ -105982,9 +105900,9 @@ mVo
 mVo
 mVo
 mVo
-bIF
-bIF
-bIF
+bgX
+bgX
+bgX
 mVo
 mVo
 mVo
@@ -106239,9 +106157,9 @@ mVo
 mVo
 mVo
 mVo
-bIF
+bgX
 uxk
-bIF
+bgX
 mVo
 mVo
 mVo
@@ -106456,7 +106374,7 @@ hGh
 xGA
 xGA
 hYd
-aFY
+mzr
 hQP
 jFl
 adJ
@@ -106496,9 +106414,9 @@ mVo
 mVo
 mVo
 gSE
-dmM
+xJb
 dUj
-dmM
+xJb
 gSE
 mVo
 mVo
@@ -106696,8 +106614,8 @@ vxN
 vxN
 hhJ
 hhJ
-aFY
-aFY
+mzr
+mzr
 hhJ
 euG
 dMR
@@ -106752,11 +106670,11 @@ fZY
 mVo
 mVo
 mVo
-gMp
-dmM
+xJb
+xJb
 tZk
-dmM
-gMp
+xJb
+xJb
 mVo
 mVo
 mVo
@@ -106959,17 +106877,17 @@ hhJ
 hhJ
 hhJ
 hhJ
-aFY
-aFY
+mzr
+mzr
 hhJ
 hhJ
 hhJ
 jFl
 ooa
 hhJ
-aFY
+mzr
 hhJ
-aFY
+mzr
 hhJ
 hQP
 eRV
@@ -107009,7 +106927,7 @@ gRZ
 mVo
 mVo
 mVo
-dmM
+xJb
 wMa
 wMa
 wMa
@@ -107265,13 +107183,13 @@ wAo
 fZY
 mVo
 pGK
-gMp
-dmM
+xJb
+xJb
 tUP
 wMa
 xjy
-dmM
-gMp
+xJb
+xJb
 kqf
 mVo
 hcZ
@@ -107521,15 +107439,15 @@ alK
 oyV
 fZY
 mVo
-dmM
-dmM
-dmM
+xJb
+xJb
+xJb
 uMn
 wMa
 rCL
-dmM
-dmM
-dmM
+xJb
+xJb
+xJb
 mVo
 mwz
 wAo
@@ -107780,11 +107698,11 @@ rBT
 mVo
 rey
 tHu
-dmM
+xJb
 bCv
 wMa
 xjy
-dmM
+xJb
 rey
 tHu
 mVo
@@ -108037,11 +107955,11 @@ ahC
 mVo
 ppF
 ppF
-dmM
+xJb
 wMa
 wMa
 wMa
-dmM
+xJb
 ppF
 ppF
 mVo
@@ -108294,11 +108212,11 @@ fZY
 mVo
 hNf
 mVo
-dmM
+xJb
 ewd
 lwT
 vzz
-dmM
+xJb
 hNf
 mVo
 mVo
@@ -108551,11 +108469,11 @@ fZY
 mVo
 mVo
 mVo
-gMp
-dmM
-dmM
-dmM
-gMp
+xJb
+xJb
+xJb
+xJb
+xJb
 mVo
 mVo
 mVo
@@ -108809,9 +108727,9 @@ mVo
 mVo
 mVo
 rKQ
-dmM
-dmM
-dmM
+xJb
+xJb
+xJb
 rKQ
 mVo
 mVo
@@ -109066,9 +108984,9 @@ mVo
 mVo
 mVo
 mVo
-dmM
-dmM
-dmM
+xJb
+xJb
+xJb
 mVo
 mVo
 mVo
@@ -109331,11 +109249,11 @@ mVo
 aNF
 mVo
 hcZ
-hDr
 xJb
 xJb
 xJb
-hDr
+xJb
+xJb
 wAo
 aNf
 wAo
@@ -110873,11 +110791,11 @@ sJO
 snG
 ahO
 wAo
-hDr
 xJb
 xJb
 xJb
-hDr
+xJb
+xJb
 aNf
 aNf
 sAt
