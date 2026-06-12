@@ -346,7 +346,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/bmp_ship/gate)
 "bt" = (
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -355,7 +357,8 @@
 	},
 /obj/machinery/door/firedoor/closed{
 	opacity = 0;
-	layer = 2.8
+	layer = 2.8;
+	dir = 4
 	},
 /turf/simulated/floor/engine,
 /area/awaymission/bmp_ship/buffer)
@@ -611,7 +614,9 @@
 /turf/simulated/floor/engine,
 /area/awaymission/bmp_ship/armory)
 "cg" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/poddoor{
 	layer = 2.8;
@@ -1204,13 +1209,16 @@
 /turf/simulated/floor/engine,
 /area/awaymission/bmp_ship/containment)
 "dO" = (
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/closed{
 	opacity = 0;
-	layer = 2.8
+	layer = 2.8;
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/bmp_ship/buffer)
@@ -1641,9 +1649,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/bmp_ship/buffer)
-"ff" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/bmp_ship/buffer)
 "fg" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -1808,7 +1813,9 @@
 	id_tag = "packerCargo";
 	closingLayer = 3.11
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plating,
 /area/awaymission/bmp_ship/gate)
@@ -2023,7 +2030,9 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/bmp_ship/fore)
 "gh" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/alien/weeds,
 /turf/simulated/floor/plating,
@@ -2032,7 +2041,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/alien/weeds,
 /turf/simulated/floor/plating,
@@ -2051,7 +2062,8 @@
 /area/awaymission/bmp_ship/engines)
 "gl" = (
 /obj/machinery/door/airlock/titanium{
-	id = "packerToilet"
+	id = "packerToilet";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/fans/tiny,
@@ -2323,7 +2335,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/silver/glass,
+/obj/machinery/door/airlock/silver/glass{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/department/medical/checker,
 /turf/simulated/floor/plasteel/white,
 /area/awaymission/bmp_ship/dormitories)
@@ -2451,7 +2465,9 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/bmp_ship/mining)
 "hK" = (
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	dir = 4
+	},
 /turf/simulated/floor/carpet,
 /area/awaymission/bmp_ship/dormitories)
 "hL" = (
@@ -2535,14 +2551,14 @@
 /area/awaymission/bmp_ship/gate)
 "hW" = (
 /obj/machinery/door/airlock/titanium,
-/turf/simulated,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/bmp_ship/fore)
 "hX" = (
 /turf/simulated/floor/plating/airless,
 /area/awaymission/bmp_ship/fore)
 "hY" = (
 /obj/effect/gibspawner/robot,
-/turf/simulated/floor/plating/airless,
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/bmp_ship/buffer)
 "hZ" = (
 /obj/structure/window/reinforced{
@@ -2995,13 +3011,16 @@
 /turf/simulated/floor/plating/asteroid/airless,
 /area/awaymission/bmp_ship/mining)
 "kb" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/closed{
 	opacity = 0;
-	layer = 3.3
+	layer = 3.3;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/bmp_ship/bath)
@@ -3068,10 +3087,13 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/bmp_ship/containment)
 "kI" = (
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	dir = 4
+	},
 /obj/machinery/door/firedoor/closed{
 	opacity = 0;
-	layer = 2.8
+	layer = 2.8;
+	dir = 4
 	},
 /turf/simulated/floor/engine,
 /area/awaymission/bmp_ship/buffer)
@@ -3483,9 +3505,6 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating,
 /area/awaymission/bmp_ship/armory)
-"ov" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/bmp_ship/dormitories)
 "oy" = (
 /obj/item/shard{
 	icon_state = "medium"
@@ -3616,9 +3635,6 @@
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/bmp_ship/containment)
-"pr" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/bmp_ship/common)
 "pt" = (
 /obj/machinery/light_construct/small/directional/south,
 /mob/living/basic/cockroach,
@@ -3781,10 +3797,13 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/bmp_ship/dormitories)
 "qJ" = (
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	dir = 4
+	},
 /obj/machinery/door/firedoor/closed{
 	opacity = 0;
-	layer = 2.8
+	layer = 2.8;
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/bmp_ship/buffer)
@@ -4119,7 +4138,9 @@
 /turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/bmp_ship/buffer)
 "ur" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
 /area/awaymission/bmp_ship/bath)
@@ -4226,7 +4247,8 @@
 "vi" = (
 /obj/machinery/door/airlock/vault{
 	req_access = list(111);
-	hackProof = 1
+	hackProof = 1;
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mine/stun{
@@ -4565,9 +4587,6 @@
 /obj/item/storage/pill_bottle/random_drug_bottle,
 /turf/simulated/floor/plating,
 /area/awaymission/bmp_ship/chem_lab)
-"yh" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/bmp_ship/fore)
 "yu" = (
 /obj/item/food/meat,
 /obj/effect/decal/cleanable/dirt,
@@ -4848,14 +4867,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/awaymission/bmp_ship/gate)
-"Bw" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_animal/hostile/alien{
-	health = 180;
-	maxHealth = 180
-	},
-/turf/simulated/floor/plating/airless,
-/area/awaymission/bmp_ship/fore)
 "Bx" = (
 /obj/machinery/door/airlock/silver,
 /obj/effect/mapping_helpers/airlock/locked,
@@ -4937,14 +4948,17 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/bmp_ship/containment)
 "BZ" = (
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/closed{
 	opacity = 0;
-	layer = 3.3
+	layer = 3.3;
+	dir = 4
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/bmp_ship/gate)
@@ -5141,9 +5155,6 @@
 /obj/effect/turf_decal/tiles/dark/checker,
 /turf/simulated/floor/plasteel/white,
 /area/awaymission/bmp_ship/common)
-"Eh" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/bmp_ship/gate)
 "Ej" = (
 /obj/structure/table,
 /obj/item/clothing/head/papersack,
@@ -5229,9 +5240,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/bmp_ship/mining)
-"EL" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/bmp_ship/kitchen)
 "EO" = (
 /obj/item/food/meat,
 /obj/effect/decal/cleanable/dirt,
@@ -5726,17 +5734,17 @@
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/engine,
 /area/awaymission/bmp_ship/buffer)
-"JS" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/bmp_ship/bath)
 "Kd" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/airlock/titanium{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/closed{
 	opacity = 0;
-	layer = 2.8
+	layer = 2.8;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/bmp_ship/engines)
@@ -5802,9 +5810,6 @@
 /obj/item/storage/secure/briefcase/syndie,
 /turf/simulated/floor/mineral/plastitanium/red/airless,
 /area/awaymission/bmp_ship/trader_shuttle)
-"Ld" = (
-/turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
-/area/awaymission/bmp_ship/engines)
 "Le" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 16;
@@ -13329,7 +13334,7 @@ Vn
 bl
 oC
 bR
-yh
+ir
 wg
 dR
 Md
@@ -13589,14 +13594,14 @@ em
 Jj
 Gn
 Rm
-yh
+ir
 cC
 CI
 Qj
 dL
 dL
 dL
-Bw
+dL
 Vb
 wi
 fZ
@@ -13855,21 +13860,21 @@ ir
 ir
 ir
 ir
-yh
+ir
 hy
 Bx
-yh
 ir
 ir
 ir
 ir
 ir
-yh
+ir
+ir
 hX
 YX
 YX
 ir
-yh
+ir
 hj
 hj
 hj
@@ -13979,7 +13984,7 @@ QY
 uC
 YA
 CA
-ff
+zX
 eE
 ci
 PF
@@ -14239,7 +14244,7 @@ uu
 ar
 ar
 zP
-ff
+zX
 eE
 JL
 eE
@@ -14373,14 +14378,14 @@ zX
 zX
 zX
 zX
-ff
+zX
 Tj
 GM
 jI
 jw
 GM
 Tj
-ff
+zX
 zX
 zX
 zX
@@ -17233,14 +17238,14 @@ ve
 ve
 ve
 XQ
-pr
+XQ
 qQ
 GM
 jw
 jw
 GM
 qQ
-pr
+XQ
 xG
 xG
 xG
@@ -17374,10 +17379,10 @@ gW
 xG
 gU
 gX
-ov
+xG
 qF
 Vi
-ov
+xG
 GI
 AL
 xG
@@ -17634,10 +17639,10 @@ fB
 xG
 xy
 xj
-ov
+xG
 EA
 im
-ov
+xG
 gG
 hx
 xG
@@ -17885,19 +17890,19 @@ FZ
 XQ
 XQ
 XQ
-pr
+XQ
 Sd
 Sd
-pr
+XQ
 XQ
 XQ
 xG
 sq
 GI
-ov
+xG
 Af
 im
-ov
+xG
 GI
 co
 xG
@@ -18154,10 +18159,10 @@ GG
 xG
 ie
 hf
-ov
+xG
 Af
 im
-ov
+xG
 gG
 qI
 xG
@@ -18414,10 +18419,10 @@ dK
 xG
 dg
 lu
-ov
+xG
 Af
 im
-ov
+xG
 GI
 YO
 xG
@@ -18663,10 +18668,10 @@ Ak
 Ak
 tA
 tA
-EL
+tA
 cy
-EL
-EL
+tA
+tA
 UF
 zo
 de
@@ -18674,10 +18679,10 @@ eO
 xG
 bO
 Aw
-ov
+xG
 Af
 im
-ov
+xG
 FK
 dM
 xG
@@ -18934,10 +18939,10 @@ gv
 xG
 dc
 GI
-ov
+xG
 Af
 im
-ov
+xG
 GI
 pC
 xG
@@ -19181,12 +19186,12 @@ cs
 TU
 aN
 aQ
-EL
+tA
 hw
-EL
+tA
 tA
 kK
-EL
+tA
 Hr
 fT
 Ez
@@ -19194,10 +19199,10 @@ fs
 xG
 Dn
 hf
-ov
+xG
 Af
 im
-ov
+xG
 gG
 hu
 xG
@@ -19321,16 +19326,16 @@ Hr
 Vw
 Hr
 Hr
-ov
 xG
 xG
-ov
+xG
+xG
 sg
 nQ
-ov
 xG
 xG
-ov
+xG
+xG
 Gv
 KK
 KK
@@ -19453,7 +19458,7 @@ fq
 UF
 vy
 js
-JS
+LR
 rL
 sj
 Cn
@@ -19590,7 +19595,7 @@ SV
 SV
 SV
 SV
-JS
+LR
 dh
 HV
 HV
@@ -19713,11 +19718,11 @@ ec
 Ri
 eJ
 cm
-JS
+LR
 PY
 SV
 dm
-JS
+LR
 LR
 ep
 LR
@@ -20350,7 +20355,7 @@ aQ
 aQ
 aQ
 eU
-Eh
+aQ
 jg
 OI
 DT
@@ -20363,7 +20368,7 @@ gx
 gx
 Lk
 jg
-JS
+LR
 uS
 LR
 LR
@@ -20607,7 +20612,7 @@ aa
 aa
 aa
 aQ
-Eh
+aQ
 FL
 FL
 FL
@@ -20626,7 +20631,7 @@ jg
 WC
 WC
 WC
-JS
+LR
 LR
 aa
 aa
@@ -21136,8 +21141,8 @@ jg
 SF
 SF
 SF
-Ld
-Ld
+jg
+jg
 SF
 SF
 SF

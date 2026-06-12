@@ -1,8 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
-/obj/machinery/door/airlock/multi_tile/supply/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/supply/glass,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /turf/simulated/floor/plating,
@@ -274,7 +272,6 @@
 "bO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/spawner/random/dirt/maybe,
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
@@ -282,6 +279,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/turf_decal/tiles/department/cargo/side,
+/obj/effect/spawner/random/dirt/maybe,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/storage)
 "bR" = (
@@ -510,7 +508,9 @@
 /area/lavaland/surface/gulag_rock)
 "dp" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/maintenance/external/glass,
+/obj/machinery/door/airlock/maintenance/external/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/spawner/random/dirt/maybe,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
@@ -928,7 +928,8 @@
 /area/mine/outpost/maintenance/north)
 "fD" = (
 /obj/machinery/door/airlock/titanium{
-	name = "Labor Shuttle Airlock"
+	name = "Labor Shuttle Airlock";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -1051,7 +1052,9 @@
 /turf/simulated/floor/plasteel,
 /area/mine/outpost/maintenance/south)
 "gy" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/airlock)
@@ -1538,9 +1541,13 @@
 /turf/simulated/floor/plasteel/dark,
 /area/mine/laborcamp)
 "jM" = (
-/obj/machinery/door/airlock/command/qm/glass,
+/obj/machinery/door/airlock/command/qm/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "mining qm"
 	},
@@ -1577,9 +1584,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/random/dirt/maybe,
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tiles/department/cargo/side,
+/obj/effect/spawner/random/dirt/maybe,
 /turf/simulated/floor/plasteel,
 /area/mine/outpost/cafeteria)
 "ku" = (
@@ -1607,7 +1614,9 @@
 /turf/simulated/floor/catwalk,
 /area/mine/outpost/smith_workshop)
 "kI" = (
-/obj/machinery/door/airlock/maintenance/external,
+/obj/machinery/door/airlock/maintenance/external{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
@@ -2037,7 +2046,9 @@
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/siberia)
 "ni" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/white,
 /area/mine/laborcamp)
@@ -2243,6 +2254,16 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/mine/laborcamp/security)
+"ow" = (
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/wood/oak,
+/area/mine/laborcamp)
 "ox" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/disposalpipe/segment,
@@ -2402,7 +2423,9 @@
 /turf/simulated/floor/plasteel,
 /area/mine/outpost/production)
 "pA" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/storage)
@@ -2454,8 +2477,12 @@
 "pJ" = (
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical/glass,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/medical/glass{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -2540,17 +2567,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/mine/laborcamp/security)
-"qj" = (
-/obj/machinery/door/airlock/multi_tile/supply/glass{
-	dir = 4
-	},
-/obj/structure/fans/tiny,
-/obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
-/obj/structure/sign/cargo/xenos{
-	pixel_y = -32
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/mine/outpost/airlock)
 "ql" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -2573,7 +2589,9 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/targetable)
 "qp" = (
-/obj/machinery/door/airlock/security/glass,
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /turf/simulated/floor/plasteel,
@@ -2609,20 +2627,26 @@
 /turf/simulated/floor/plasteel/white,
 /area/mine/laborcamp)
 "qA" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/mining/glass,
+/obj/machinery/door/airlock/mining/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /obj/effect/turf_decal/tiles/department/cargo,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "qE" = (
-/obj/machinery/door/airlock/glass,
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2770,6 +2794,13 @@
 	temperature = 500
 	},
 /area/lavaland/surface/gulag_rock)
+"rF" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/effect/spawner/window/reinforced/plasma/grilled,
+/turf/simulated/floor/plating,
+/area/mine/outpost/storage)
 "rG" = (
 /obj/effect/mapping_helpers/no_lava,
 /obj/structure/lattice/catwalk/mining,
@@ -2786,8 +2817,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/spawner/random/dirt/frequent,
 /obj/effect/turf_decal/tiles/department/command/side,
+/obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/comms)
 "rJ" = (
@@ -2819,7 +2850,9 @@
 /area/mine/laborcamp)
 "rO" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/mine/outpost/production)
 "rP" = (
@@ -3033,7 +3066,9 @@
 /turf/simulated/floor/catwalk,
 /area/mine/outpost/maintenance/north)
 "tB" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/cafeteria)
@@ -3133,6 +3168,14 @@
 /obj/effect/turf_decal/tiles/department/medical/checker,
 /turf/simulated/floor/plasteel/white,
 /area/mine/laborcamp)
+"um" = (
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/structure/sign/cargo/xenos,
+/turf/simulated/floor/plating,
+/area/mine/outpost/storage)
 "uq" = (
 /obj/effect/turf_decal/siding/wood/oak,
 /turf/simulated/floor/wood/fancy/oak,
@@ -3156,7 +3199,9 @@
 "uy" = (
 /obj/structure/fans/tiny,
 /obj/effect/spawner/random/dirt/maybe,
-/obj/machinery/door/airlock/maintenance/external/glass,
+/obj/machinery/door/airlock/maintenance/external/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /obj/effect/spawner/random/dirt/frequent,
@@ -3188,7 +3233,9 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/gulag_rock)
 "uL" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
@@ -3258,15 +3305,19 @@
 "vj" = (
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/mining/glass,
+/obj/machinery/door/airlock/mining/glass{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/random/dirt/maybe,
 /obj/effect/turf_decal/tiles/department/cargo,
+/obj/effect/spawner/random/dirt/maybe,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/storage)
 "vl" = (
@@ -3437,7 +3488,9 @@
 /turf/simulated/wall,
 /area/mine/laborcamp)
 "wz" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3932,7 +3985,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway)
 "zF" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4035,7 +4090,9 @@
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
 "Ab" = (
-/obj/machinery/door/airlock/maintenance/external,
+/obj/machinery/door/airlock/maintenance/external{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
@@ -4046,7 +4103,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/mine/outpost/production)
 "Ae" = (
@@ -4444,7 +4503,9 @@
 "CW" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /obj/effect/mapping_helpers/damaged_window,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/mine/outpost/production)
 "CX" = (
@@ -4908,7 +4969,9 @@
 /turf/simulated/floor/plating,
 /area/mine/outpost/maintenance/south)
 "Gs" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /obj/structure/cable{
@@ -5162,12 +5225,6 @@
 	},
 /turf/simulated/floor/catwalk,
 /area/mine/outpost/smith_workshop)
-"HW" = (
-/obj/machinery/door/firedoor,
-/obj/effect/spawner/window/reinforced/plasma/grilled,
-/obj/structure/sign/cargo/xenos,
-/turf/simulated/floor/plating,
-/area/mine/outpost/storage)
 "Ic" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/stripes/line,
@@ -5218,7 +5275,9 @@
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
 "Iq" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/lockers)
@@ -5361,6 +5420,15 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/mine/outpost/medbay)
+"Ju" = (
+/obj/machinery/door/airlock/multi_tile/supply/glass,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
+/obj/structure/fans/tiny,
+/obj/structure/sign/cargo/xenos{
+	pixel_y = -32
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/mine/outpost/airlock)
 "Jy" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
@@ -5507,9 +5575,13 @@
 "Ks" = (
 /obj/structure/fans/tiny,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/highsecurity,
+/obj/machinery/door/airlock/highsecurity{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/tcoms,
 /obj/effect/mapping_helpers/airlock/access/any/supply/qm,
 /obj/structure/cable{
@@ -5584,8 +5656,8 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
-/obj/effect/spawner/random/dirt/frequent,
 /obj/effect/turf_decal/tiles/department/cargo,
+/obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "KS" = (
@@ -5652,7 +5724,9 @@
 /area/mine/outpost/hallway/west)
 "Lr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /turf/simulated/floor/plasteel/dark,
@@ -5707,7 +5781,9 @@
 "LH" = (
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -5801,7 +5877,9 @@
 "Mj" = (
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -6594,7 +6672,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/hallway/west)
 "Rx" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 8
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7267,7 +7347,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/mine/laborcamp/security)
 "Vx" = (
-/obj/machinery/door/airlock/maintenance/external,
+/obj/machinery/door/airlock/maintenance/external{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
@@ -7276,7 +7358,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/spawner/random/dirt/frequent,
+/obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/mine/outpost/maintenance/north)
 "Vy" = (
@@ -7383,8 +7465,12 @@
 "Wg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical/glass,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/medical/glass{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/laborcamp)
@@ -7497,16 +7583,20 @@
 "WP" = (
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/mining/glass,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/mining/glass{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/random/dirt/maybe,
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tiles/department/cargo,
+/obj/effect/spawner/random/dirt/maybe,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/cafeteria)
 "WU" = (
@@ -7589,17 +7679,21 @@
 	},
 /area/lavaland/surface/gulag_rock)
 "Xr" = (
-/obj/machinery/door/airlock/atmos,
+/obj/machinery/door/airlock/atmos{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/random/dirt/often,
 /obj/effect/turf_decal/tiles/department/engineering,
+/obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/outpost/engineering)
 "Xs" = (
@@ -7661,8 +7755,12 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
-/obj/machinery/door/airlock/maintenance/external/glass,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance/external/glass{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/mine/outpost/storage)
 "XW" = (
@@ -7835,7 +7933,9 @@
 /area/shuttle/mining)
 "YS" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "YT" = (
@@ -12180,7 +12280,7 @@ zj
 QQ
 Vq
 Hp
-qE
+ow
 Aq
 qE
 rh
@@ -18998,7 +19098,7 @@ wY
 OQ
 OQ
 ls
-HW
+um
 ut
 Qs
 MS
@@ -19160,7 +19260,7 @@ Yr
 Yr
 DI
 Yr
-pA
+rF
 cV
 fP
 Wi
@@ -19331,7 +19431,7 @@ pW
 pW
 pW
 vb
-qj
+Ju
 dk
 dk
 oO
