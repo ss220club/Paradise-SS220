@@ -175,7 +175,7 @@
 		if(!points)
 			to_chat(usr, SPAN_WARNING("There are no points to claim."));
 			return ITEM_INTERACT_COMPLETE
-		if(anyone_claim || (req_access_claim in ID.access))
+		if(anyone_claim || (req_access_claim in ID.GetAccess()))
 			ID.mining_points += points
 			ID.total_mining_points += points
 			to_chat(usr, SPAN_NOTICE("<b>[points] Mining Points</b> claimed. You have earned a total of <b>[ID.total_mining_points] Mining Points</b> this Shift!"))
