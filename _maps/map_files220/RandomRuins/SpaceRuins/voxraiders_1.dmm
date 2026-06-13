@@ -24,7 +24,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
+/turf/simulated/wall/mineral/plastitanium,
 /area/ruin/space/powered)
 "dj" = (
 /obj/structure/closet/crate/engineering/electrical,
@@ -208,7 +208,9 @@
 /area/ruin/space/unpowered/unpowered_structures)
 "vp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/command,
+/obj/machinery/door/airlock/command{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel/dark/airless,
 /area/ruin/space/unpowered/unpowered_structures)
@@ -230,9 +232,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/ruin/space/powered)
-"xa" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/space/powered)
 "xu" = (
 /turf/template_noop,
 /area/ruin/space/unpowered/unpowered_structures)
@@ -246,13 +245,12 @@
 /area/ruin/space/powered)
 "Ao" = (
 /obj/effect/mapping_helpers/airlock/access/all/shuttles/vox,
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating/nitrogen,
 /area/ruin/space/powered)
-"AK" = (
-/turf/simulated/wall/mineral/titanium/nodiagonal,
-/area/ruin/space/unpowered/unpowered_structures)
 "BJ" = (
 /obj/structure/door_assembly/door_assembly_ext,
 /obj/item/airlock_electronics/destroyed,
@@ -571,9 +569,9 @@ ye
 ye
 ye
 ye
-AK
 vl
-AK
+vl
+vl
 vl
 vl
 vl
@@ -589,9 +587,9 @@ ye
 ye
 ye
 CQ
-AK
+vl
 id
-AK
+vl
 lr
 Fi
 wn
@@ -609,7 +607,7 @@ EK
 IC
 QX
 ZK
-AK
+vl
 bg
 dj
 bg
@@ -627,7 +625,7 @@ CQ
 OC
 CI
 il
-AK
+vl
 Fi
 oL
 Mq
@@ -661,9 +659,9 @@ ye
 ye
 ye
 jM
-AK
+vl
 nz
-AK
+vl
 Tm
 bu
 bg
@@ -679,9 +677,9 @@ ye
 ye
 ye
 ye
-AK
+vl
 HC
-AK
+vl
 jP
 ot
 vl
@@ -753,7 +751,7 @@ ye
 ye
 ye
 Zp
-xa
+Rb
 Rb
 ye
 ye
@@ -772,7 +770,7 @@ ye
 ye
 ye
 Wi
-xa
+Rb
 Rb
 Rb
 qT
@@ -807,7 +805,7 @@ ye
 ye
 ye
 Lq
-xa
+Rb
 iD
 Rb
 MB
@@ -824,7 +822,7 @@ ye
 ye
 ye
 Lq
-xa
+Rb
 Yg
 iG
 Rb
@@ -833,7 +831,7 @@ Rb
 Rb
 Rb
 Rb
-xa
+Rb
 Sp
 ye
 "}
@@ -845,7 +843,7 @@ Ao
 dQ
 dQ
 Mk
-xa
+Rb
 EM
 ca
 wJ
@@ -860,7 +858,7 @@ ye
 ye
 ye
 Lq
-xa
+Rb
 UM
 iG
 Rb
@@ -869,7 +867,7 @@ Xz
 Xz
 Va
 Rb
-xa
+Rb
 Sp
 ye
 "}
@@ -879,7 +877,7 @@ ye
 ye
 ye
 Lq
-xa
+Rb
 yO
 Rb
 dQ
@@ -916,7 +914,7 @@ ye
 ye
 ye
 Wi
-xa
+Rb
 Rb
 Rb
 uc
@@ -933,7 +931,7 @@ ye
 ye
 ye
 iO
-xa
+Rb
 Rb
 ye
 ye

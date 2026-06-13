@@ -7,6 +7,10 @@
 	var/list/picked_teams = list()
 
 
+/datum/antag_scenario/team/can_configure_param(param)
+	return ..() || param == "team_size"
+
+
 /datum/antag_scenario/team/pre_execute(population)
 	if(!ispath(antag_team))
 		error("'antag_team' in '[type]' team antag scenario is '[antag_team]' which is invalid.")
