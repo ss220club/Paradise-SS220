@@ -87,7 +87,7 @@
 	melee_damage_type = STAMINA
 	melee_damage_lower = 5
 	melee_damage_upper = 20
-	response_harm_simple = "утомляет"
+	attack_verb_continuous = "утомляет"
 
 /mob/living/basic/viscerator/vox/stamina/death(gibbed)
 	if(prob(30))
@@ -105,7 +105,7 @@
 	melee_damage_type = BURN
 	melee_damage_lower = 10
 	melee_damage_upper = 30
-	response_harm_simple = "выжигает"
+	attack_verb_continuous = "выжигает"
 	mob_size = MOB_SIZE_SMALL
 
 /mob/living/basic/viscerator/vox/acid/death(gibbed)
@@ -123,7 +123,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	armor_penetration_flat = 30
-	response_harm_simple = "кусает"
+	attack_verb_continuous = "кусает"
 
 /mob/living/basic/viscerator/vox/kusaka/death(gibbed)
 	if(prob(20))
@@ -142,7 +142,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	armor_penetration_flat = 20
-	response_harm_simple = "таранит"
+	attack_verb_continuous = "таранит"
 	mob_size = MOB_SIZE_HUMAN
 
 /mob/living/basic/viscerator/vox/taran/death(gibbed)
@@ -159,7 +159,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 15
 	armor_penetration_flat = 80
-	response_harm_simple = "вонзается"
+	attack_verb_continuous = "вонзается"
 
 /mob/living/basic/viscerator/vox/tox/death(gibbed)
 	xgibs(loc)
