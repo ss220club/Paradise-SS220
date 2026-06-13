@@ -83,7 +83,7 @@
 	for(var/organ_tag in dna.species.has_limbs)
 
 		var/list/organ_data = dna.species.has_limbs[organ_tag]
-		//var/organ_descriptor = organ_data["descriptor"]
+		//var/organ_descriptor = organ_data["descriptor"] // SS220 EDIT - Отключено из-за ненадобности в процессе перевода
 		is_destroyed["[organ_data["descriptor"]]"] = 1
 
 		var/obj/item/organ/external/E = bodyparts_by_name[organ_tag]
