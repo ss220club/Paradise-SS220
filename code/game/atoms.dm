@@ -427,9 +427,9 @@
 		else
 			f_name = ""
 		if(blood_color != "#030303")
-			f_name += "[SPAN_DANGER("[ru_blood_stained()]")] [declent_ru(NOMINATIVE)][infix]!"
+			f_name += SPAN_DANGER(ru_blood_stained(src)) + " " + src.declent_ru(NOMINATIVE) + infix + "!"
 		else
-			f_name += "[ru_oil_stained()] [declent_ru(NOMINATIVE)][infix]."
+			f_name += ru_oil_stained(src) + " " + src.declent_ru(NOMINATIVE) + infix + "."
 	. = list("[bicon(src)] Это [f_name] [suffix]")
 	if(desc)
 		. += desc

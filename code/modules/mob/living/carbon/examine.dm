@@ -153,7 +153,7 @@
 			else
 				var/item_words = item.declent_ru(ACCUSATIVE)
 				if(item.blood_DNA)
-					item_words = "[item.blood_color != "#030303" ? item.ru_blood_stain() : item.ru_oil_stain()] [item.declent_ru(ACCUSATIVE)]"
+					item_words = "[item.blood_color != "#030303" ? ru_blood_stained(item) : ru_oil_stained(item)] [item.declent_ru(ACCUSATIVE)]"
 				var/submsg = "[ru_p_they(TRUE)] [action] [bicon(item)] [item_words]"
 				if(accessories)
 					submsg += " с [accessories]"
