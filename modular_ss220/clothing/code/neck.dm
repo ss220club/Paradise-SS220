@@ -37,12 +37,15 @@
 	var/cloak_active = FALSE
 	var/next_use = 0
 
-	var/cloak_duration = 20 SECONDS
+	var/cloak_duration = 18 SECONDS
 	var/cloak_cooldown = 10 SECONDS
 	var/stealth_alpha = 10
 
 
 /obj/item/clothing/neck/cloak/chameleon/activate_self(mob/user)
+	if(..())
+		return ITEM_INTERACT_COMPLETE
+
 	if(cloak_active)
 		return ITEM_INTERACT_COMPLETE
 
@@ -57,9 +60,7 @@
 	if(!ishuman(user))
 		return ITEM_INTERACT_COMPLETE
 
-	var/mob/living/carbon/human/H = user
-
-	activate_cloak(H)
+	activate_cloak(user)
 
 	return ITEM_INTERACT_COMPLETE
 
@@ -90,18 +91,16 @@
 	addtimer(CALLBACK(src, PROC_REF(disable_cloak), user), cloak_duration)
 
 
-/obj/item/clothing/neck/cloak/chameleon/proc/break_cloak(datum/source)
+/obj/item/clothing/neck/cloak/chameleon/proc/break_cloak(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 
 	if(!cloak_active)
 		return
 
-	var/mob/living/carbon/human/H = loc
-
-	if(!istype(H))
+	if(!istype(user))
 		return
 
-	disable_cloak(H)
+	disable_cloak(user)
 
 
 /obj/item/clothing/neck/cloak/chameleon/proc/disable_cloak(mob/living/carbon/human/user)
@@ -133,5 +132,4 @@
 	. = ..()
 
 	if(cloak_active && ishuman(user))
-		var/mob/living/carbon/human/H = user
-		disable_cloak(H)
+		disable_cloak(user)
