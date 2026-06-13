@@ -21,7 +21,7 @@
 	return ..()
 
 /obj/item/disk/data/demo
-	name = "Диск с данными - 'Бог Император Человечества'"
+	name = "data disk - 'God Emperor of Mankind'"
 	read_only = TRUE
 
 /obj/item/disk/data/demo/Initialize(mapload)

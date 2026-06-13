@@ -628,7 +628,7 @@ const DNAModifierMainRejuvenators = () => {
   return (
     <Section
       fill
-      title="Камера стабилизаторов"
+      title="Камера реагентов"
       buttons={
         <Button disabled={!isBeakerLoaded} icon="eject" content="Извлечь сосуд" onClick={() => act('ejectBeaker')} />
       }
@@ -664,7 +664,7 @@ const DNAModifierMainRejuvenators = () => {
             <Box mb="0.5rem">{beakerLabel ? beakerLabel : 'Отсутствует'}</Box>
             {beakerVolume ? (
               <Box color="good">
-                Остаётся {beakerVolume} сантилитр{beakerVolume === 1 ? '' : 'ов'}
+                Осталось {beakerVolume} юнит{beakerVolume === 1 ? '' : 'ов'}
               </Box>
             ) : (
               <Box color="bad">Пусто</Box>
@@ -680,7 +680,7 @@ const DNAModifierMainRejuvenators = () => {
             </Icon.Stack>
           </Stack.Item>
           <Stack.Item color="label" mb="2rem">
-            <Box bold>Стабилизаторы не загружены</Box>
+            <Box bold>Реагенты не обнаружены</Box>
           </Stack.Item>
         </Stack>
       )}

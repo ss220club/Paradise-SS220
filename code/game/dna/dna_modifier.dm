@@ -50,7 +50,7 @@
 
 /////////////////////////// DNA MACHINES
 /obj/machinery/dna_scannernew
-	name = "\improper ДНК-Модификатор"
+	name = "\improper DNA modifier"
 	desc = "Сканирует структуру ДНК и видоизменяет её."
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "scanner_open"
@@ -169,7 +169,7 @@
 	if(!isturf(user.loc) || !isturf(O.loc)) // are you in a container/closet/pod/etc?
 		return
 	if(occupant)
-		to_chat(user, SPAN_BOLDNOTICE("ДНК-Модификатор уже занят!"))
+		to_chat(user, SPAN_BOLDNOTICE("[src.declent_ru(NOMINATIVE)] уже занят!"))
 		return TRUE
 	var/mob/living/L = O
 	if(!istype(L) || L.buckled)
@@ -178,12 +178,12 @@
 		to_chat(user, SPAN_DANGER("Субъект не должен держать что-либо в руках."))
 		return TRUE
 	if(L.has_buckled_mobs()) //mob attached to us
-		to_chat(user, SPAN_WARNING("[L] не залезает в ДНК-модификатор из-за слайма на [L.ru_p_them()] голове."))
+		to_chat(user, SPAN_WARNING("[L] не залезает в [src.declent_ru(NOMINATIVE)] из-за слайма на [L.ru_p_them()] голове."))
 		return TRUE
 	if(L == user)
-		visible_message(SPAN_NOTICE("[user] залезает в ДНК-модификатор."))
+		visible_message(SPAN_NOTICE("[user] залезает в [src.declent_ru(NOMINATIVE)]."))
 	else
-		visible_message(SPAN_NOTICE("[user] помещает [L.name] в ДНК-модификатор."))
+		visible_message(SPAN_NOTICE("[user] помещает [L.declent_ru(GENITIVE)] в [src.declent_ru(NOMINATIVE)]."))
 	put_in(L)
 	if(user.pulling == L)
 		user.stop_pulling()
@@ -224,7 +224,7 @@
 			return ITEM_INTERACT_COMPLETE
 
 		if(panel_open)
-			to_chat(usr, SPAN_BOLDNOTICE("Закройте панель техобслуживания ДНК-модификатора."))
+			to_chat(usr, SPAN_BOLDNOTICE("Закройте панель техобслуживания [src.declent_ru(GENITIVE)]."))
 			return ITEM_INTERACT_COMPLETE
 
 		put_in(G.affecting)
@@ -299,7 +299,7 @@
 	return occupant.run_armor_check(armor_type = RAD) > NEGATE_MUTATION_THRESHOLD
 
 /obj/machinery/computer/scan_consolenew
-	name = "\improper Консоль доступа ДНК-Модификатора"
+	name = "\improper DNA Modifier access console"
 	desc = "Позволяет сканировать испытуемого в сканере и модифицировать его ДНК."
 	icon_screen = "dna"
 	icon_keyboard = "med_key"
