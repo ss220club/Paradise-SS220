@@ -6,6 +6,7 @@
 		"BoxStation220_nanomap_z1.png"		= 'icons/_nanomaps/BoxStation220_nanomap_z1.png',
 		"DeltaStation220_nanomap_z1.png"	= 'icons/_nanomaps/DeltaStation220_nanomap_z1.png',
 		"MetaStation220_nanomap_z1.png"		= 'icons/_nanomaps/MetaStation220_nanomap_z1.png',
+		"OmegaStation220_nanomap_z1.png"	= 'icons/_nanomaps/OmegaStation220_nanomap_z1.png',
 		// SS220 EDIT END  - OUR MAPS
 		"CereStation_nanomap_z1.png"	= 'icons/_nanomaps/CereStation_nanomap_z1.png',
 		"EmeraldStation_nanomap_z1.png"	= 'icons/_nanomaps/EmeraldStation_nanomap_z1.png',
