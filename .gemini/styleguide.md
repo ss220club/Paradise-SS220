@@ -1,160 +1,77 @@
-# Gemini Code Review Style Guide for Paradise SS220
+## Тон ревью
 
-Use this guide when reviewing pull requests in this repository. Review only the
-changed code unless a surrounding issue is directly caused by the change.
+* Пишите ревью-комментарии на русском.
+* Будьте краткими, конкретными и вежливыми. Указывайте на точную проблему и предлагайте практичное исправление.
+* Предпочитайте один короткий summary-комментарий плюс точечные inline-комментарии по проблемам.
 
-## Review Voice
+## Приоритеты ревью
 
-- Write review comments in Russian.
-- Be concise, concrete, and civil. Point to the exact problem and suggest a
-  practical fix.
-- Do not leave praise-only, joke-only, or generic comments.
-- Do not block on minor style nits unless they affect readability,
-  maintainability, mergeability with upstream, or consistency with nearby code.
-- Prefer one short summary comment plus targeted inline comments for actionable
-  issues.
+1. Корректность: runtime-краши, неверные логические предположения, сломанное игровое поведение, неверные переходы состояния.
+2. Поддерживаемость форка: SS220-изменения по возможности должны быть модульными, а немодульные правки должны быть явно помечены.
+3. Качество для игроков: непонятные сообщения или отсутствие feedback’а, отсутствие перевода в новом коде. изменения влияющие на баланс без объяснения.
+4. Стиль: локальный стиль кода, именование, форматирование, комментарии, changelog, тесты.
 
-## Review Priorities
+## Правила SS220-форка
 
-1. Correctness: runtime crashes, bad type assumptions, broken game behavior,
-   missing null checks, incorrect permissions, bad state transitions.
-2. Fork maintainability: SS220 changes should be modular where possible, and
-   non-modular edits must be clearly marked.
-3. Player-facing quality: unclear messages, wrong language, bad span severity,
-   missing feedback, balance-impacting changes without explanation.
-4. Style: local code style, naming, formatting, comments, changelog, tests.
+* Этот репозиторий является форком. Предпочитайте реализовывать SS220-специфичные фичи в `modular_ss220/`, а не редактировать upstream/core-файлы в `code/`, `_maps/`, `icons/`, `sound/`, `tgui/` или других общих upstream-областях.
+* Изменения в upstream/core-коде, должны быть минимальными, например, hook’ом или точкой интеграции, нужной модулю. Точечные правки глубоко внтури логики, тоже допустимы. Автор долже стрататься оставлять изменения в core минимальными. Спрашивайте, может ли остальная часть жить в `modular_ss220/`.
+* Новые модульные фичи можно интегрировать в существующие модульные файлы, если и только если они разделяют ту же идею и могут храниться ровно в одном модуле; иначе, скорее всего, нужно создать новый модуль:
+* Предпочитайте module-local assets внутри того же модуля, например `modular_ss220/<feature>/icons/` и `modular_ss220/<feature>/sound/`.
+* Не требуйте модульности для уже не модульного core кода, для изменений интервейсов, точенчных локальных изменений логики в коде.
 
-## SS220 Fork Rules
+## Отметка немодульных SS220-изменений
 
-- This repository is a fork. Prefer implementing SS220-specific features in
-  `modular_ss220/` instead of editing upstream/core files under `code/`,
-  `_maps/`, `icons/`, `sound/`, `tgui/`, or other shared upstream areas.
-- If a change in upstream/core code is only a hook or integration point needed
-  by a module, keep that change minimal and ask whether the rest can live in
-  `modular_ss220/`.
-- New modular features should follow the modpack structure:
-  `modular_ss220/<feature>/_<feature>.dm`,
-  `modular_ss220/<feature>/_<feature>.dme`, and feature files included from the
-  local `.dme`. The root `paradise.dme` already includes
-  `modular_ss220/modular_ss220.dme`.
-- Prefer module-local assets under the same module, such as
-  `modular_ss220/<feature>/icons/` and `modular_ss220/<feature>/sound/`.
-- Do not demand modularization for tiny unavoidable integration changes, map
-  edits, config changes, generated files, or changes whose surrounding code is
-  already explicitly non-modular by design. If unsure, phrase it as a question.
-
-## Marking Non-Modular SS220 Edits
-
-- Non-modular SS220 changes in upstream/core files should be marked with
-  `// SS220 EDIT - <short reason>` on the changed line when the edit is small.
-- For multi-line non-modular changes, use a block:
+* Немодульные SS220-изменения в upstream/core-файлах должны быть помечены `// SS220 EDIT - <краткая причина>` на изменённой строке, если правка небольшая.
+* Для многострочных немодульных изменений используйте блок:
 
 ```dm
-// SS220 EDIT START - <short reason>
+// SS220 EDIT START - <краткая причина>
 ...
 // SS220 EDIT END
 ```
 
-- Prefer the spaced form `// SS220 EDIT`; older code contains variants like
-  `//SS220 EDIT`, but new comments should use the spaced form.
-- If changing upstream behavior from an original value, include the original
-  value when useful, for example `// SS220 EDIT - ORIGINAL: copytext`.
-- Do not require `SS220 EDIT` comments inside `modular_ss220/`; the path already
-  marks the code as SS220-specific.
-- Do not require these comments for obvious repo metadata, pure documentation,
-  generated files, or local module files unless the absence would make future
-  upstream merges harder.
-- Leave an actionable comment when a core edit lacks a marker:
-  "Это SS220-изменение в upstream-файле. Пожалуйста, пометьте его
-  `// SS220 EDIT - <reason>` или блоком START/END, чтобы упростить будущие
-  апстрим-мержи."
+* `//SS220 EDIT` без проблеа - это стилистическая ошибка.
+* Если меняется upstream-поведение относительно исходного значения, указывайте, как поменялось исходное значение - это полезно, например `// SS220 EDIT - damage 30 -> 50`.
+* Не требуйте `SS220 EDIT` комментарии внутри `modular_ss220/`; путь уже помечает код как SS220-специфичный.
 
-## DM Style
+## DM-стиль
 
-- Use tabs for indentation in DM code, not spaces.
-- Use descriptive `snake_case` for variables, arguments, and procs. Avoid
-  single-letter names except for very small, conventional loops.
-- Use American English spelling for identifiers that are not player-facing
-  Russian text.
-- Use `TRUE` and `FALSE` for booleans instead of `1` and `0`.
-- Use double quotes for strings and single quotes for file references:
-  `"message"` and `'icons/example.dmi'`.
-- Break long strings or dense proc calls across lines for readability.
-- Prefer `to_chat()`, `visible_message()`, and project span helpers over raw
-  `<<` chat output.
-- Choose message severity intentionally: notice for normal feedback, warning
-  for failures, danger/userdanger for damage or immediate threat.
-- Use Autodoc comments (`///`) before vars/procs that need API-level
-  documentation. Use `//!` for single-line macro documentation.
-- Do not leave commented-out code unless it is intentionally kept for a narrow
-  debugging or compatibility reason and that reason is explained.
+* Используйте tabs для отступов в DM-коде, не spaces.
+* Используйте описательный `snake_case` для переменных, аргументов и proc’ов. Всегда избегайте однобуквенных имён в новом коде и рекомендуйте исправить задрагиваемый старый.
 
-## DM Safety and Runtime Stability
+* Разбивайте длинные строки или плотные proc calls на несколько строк для читаемости.
+* Не оставляйте закомментированный код, если он не сохранён намеренно и эта причина не объяснена.
 
-- Check nullable values after `locate()`, list lookups, weak references, client
-  access, `loc` changes, `QDELETED()` risk, or delayed callbacks.
-- Use `istype()` or equivalent type guards before accessing type-specific vars
-  or procs.
-- Be careful with `sleep()` or delayed callbacks when object deletion, moved
-  locations, or stale state can cause runtime bugs.
-- Do not leave standalone performance comments. Humans will review performance
-  tradeoffs unless the change creates an obvious correctness or runtime risk.
-- Prefer named constants or defines over unexplained magic numbers, especially
-  for timing, damage, probabilities, access, and balance values.
-- For list formatting with many entries or likely churn, prefer one item per
-  line with a trailing comma when local style supports it.
+## DM-безопасность и runtime-стабильность
 
-## TGUI, TypeScript, and UI
+* Проверяйте nullable-значения после `locate()`, list lookup’ов, weak references, client access, изменений `loc`, риска `QDELETED()` или delayed callbacks.
+* Предпочитайте именованные constants или defines вместо необъяснённых magic numbers, особенно для timing, damage, probabilities, access и balance values.
 
-- Follow nearby TGUI patterns before introducing new abstractions.
-- Keep components typed. Avoid `any` unless the surrounding API forces it.
-- Prefer existing TGUI components, hooks, and utility functions over custom UI
-  primitives.
-- Keep player-facing text consistent with the rest of the interface. Russian
-  text should be natural and typo-free; English admin/dev text should match the
-  existing context.
-- Do not suggest moving all strings to localization unless nearby code already
-  uses that pattern.
+## TGUI, TypeScript и UI
 
-## Tests, Changelog, and PR Hygiene
+* Следуйте соседним TGUI-паттернам перед введением новых абстракций.
+* Держите компоненты типизированными. Избегайте `any`, если окружающий API не вынуждает к этому.
+* Предпочитайте существующие TGUI-компоненты, hooks и utility functions вместо кастомных UI primitives.
+* Держите player-facing текст согласованным с остальным интерфейсом. Русский текст должен быть естественным и без опечаток; английский admin/dev текст должен соответствовать существующему контексту.
 
-- A PR should be atomic: flag unrelated fixes, broad refactors, or bundled
-  balance changes that should be split.
-- Ask for a changelog when the change is player-facing and one is missing.
-- Ask for tests when the change touches shared behavior, parsing, permissions,
-  subsystem logic, TGUI data contracts, or bug fixes with clear regression risk.
-- For map or asset changes, check that required includes, paths, icon states,
-  sound paths, and licensing-sensitive folders remain consistent.
-- Do not request tests for trivial comments, documentation-only edits, small
-  data-only tweaks, or changes that cannot reasonably be covered by existing
-  test infrastructure.
+## Тесты, Changelog и PR-гигиена
 
-## How To Phrase Comments
+* PR должен быть atomic: отмечайте unrelated fixes, широкие refactors или bundled balance changes, которые стоит разделить.
+* Просите changelog, когда изменение player-facing и changelog отсутствует.
+* Для map- или asset-изменений проверяйте, что нужные includes, paths, icon states, sound paths и licensing-sensitive folders остаются согласованными.
 
-Use this shape for actionable comments:
+## Как формулировать комментарии
+
+Используйте такую форму для actionable-комментариев:
 
 ```text
-Проблема: <what is wrong and why it matters>.
-Предложение: <specific fix or direction>.
+Проблема: <что не так и почему это важно>.
+Предложение: <конкретное исправление или направление>.
 ```
 
-Examples:
+## Когда молчать
 
-- `code/__HELPERS/time.dm`: "Это SS220-изменение в core-файле. Оберните блок в
-  `// SS220 EDIT START - timestamp fix` / `// SS220 EDIT END`, как сделано в
-  соседних timestamp helpers."
-- `code/datums/datacore.dm`: "Здесь используется SS220-ассет из
-  `modular_ss220/species/...` внутри upstream-файла. Если вынести логику в
-  модуль нельзя, оставьте `SS220 EDIT` блок с короткой причиной."
-- `tgui/...`: "Компонент получает нетипизированные props. Добавьте interface или
-  используйте существующий тип данных из backend payload, чтобы Gemini/TS могли
-  поймать несовпадение контракта."
-
-## When To Stay Silent
-
-- The issue predates the PR and is not made worse by it.
-- The code follows a local pattern even if a different style would be preferred
-  in a greenfield file.
-- The suggestion would be larger than the PR's scope and is not needed for
-  correctness or maintainability.
-- The only problem is personal taste.
+* Проблема существовала до PR и не стала хуже из-за него.
+* Код следует локальному паттерну, даже если в greenfield-файле предпочтителен был бы другой стиль.
+* Предложение будет больше scope’а PR и не нужно для корректности или поддерживаемости.
+* Единственная проблема — личный вкус.
