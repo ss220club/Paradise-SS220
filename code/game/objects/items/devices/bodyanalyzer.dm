@@ -218,7 +218,7 @@
 		if(istype(e, /obj/item/organ/external/chest) && target.is_lung_ruptured())
 			lung_ruptured = "Разрыв лёгкого; "
 		if(istype(e, /obj/item/organ/external/groin) && target.has_liver_cirrhosis())
-			liver_cirrhosis = "Liver cirrhosis:"
+			liver_cirrhosis = "Цирроз печени; "
 		if(e.status & ORGAN_SPLINTED)
 			splint = "Наложена шина; "
 		if(e.status & ORGAN_BROKEN)

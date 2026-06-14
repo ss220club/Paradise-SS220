@@ -202,7 +202,7 @@
 	category = list("Medical Machinery")
 
 /datum/design/dna_scanner
-	name = "Machine Board (DNA Modifier)"
+	name = "Machine Board (ДНК-Модификатор)"
 	desc = "Allows for the construction of circuit boards used to build a DNA Modifier."
 	id = "dna_scanner"
 	req_tech = list("programming" = 4, "biotech" = 3)

@@ -1,5 +1,5 @@
 /datum/mutation/monkey
-	name = "Monkey"
+	name = "Обезьяна"
 
 /datum/mutation/monkey/New()
 	..()
@@ -47,7 +47,7 @@
 		H.gib()
 		return
 	REMOVE_TRAITS_IN(H, TRANSFORMING_TRAIT)
-	to_chat(H, "<B>You are now a [H.dna.species.name].</B>")
+	to_chat(H, "<B>Теперь вы [H.dna.species.name].</B>")
 
 /datum/mutation/monkey/deactivate(mob/living/carbon/human/H)
 	..()
@@ -93,5 +93,5 @@
 	H.real_name = H.dna.real_name
 	H.name = H.real_name
 
-	to_chat(H, "<B>You are now a [H.dna.species.name].</B>")
+	to_chat(H, "<B>Теперь вы [H.dna.species.name].</B>")
 

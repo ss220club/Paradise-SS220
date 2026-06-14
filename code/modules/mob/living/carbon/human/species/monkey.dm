@@ -69,7 +69,7 @@
 
 /datum/species/monkey/tajaran
 	name = "Farwa"
-	name_plural = "Farwa"
+	name_plural = "Farwas"
 
 	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 
@@ -91,7 +91,7 @@
 
 /datum/species/monkey/vulpkanin
 	name = "Wolpin"
-	name_plural = "Wolpin"
+	name_plural = "Wolpins"
 
 	icobase = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
 
@@ -113,7 +113,7 @@
 
 /datum/species/monkey/skrell
 	name = "Neara"
-	name_plural = "Neara"
+	name_plural = "Nearas"
 
 	icobase = 'icons/mob/human_races/monkeys/r_neara.dmi'
 
@@ -137,7 +137,7 @@
 
 /datum/species/monkey/unathi
 	name = "Stok"
-	name_plural = "Stok"
+	name_plural = "Stoks"
 
 	icobase = 'icons/mob/human_races/monkeys/r_stok.dmi'
 
@@ -159,8 +159,8 @@
 		)
 
 /datum/species/monkey/nian_worme
-	name = "nian worme"
-	name_plural = "nian worme"
+	name = "Nian worme"
+	name_plural = "Nian wormes"
 	icobase = 'icons/mob/human_races/monkeys/r_worme.dmi'
 	tail = ""
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_BUG

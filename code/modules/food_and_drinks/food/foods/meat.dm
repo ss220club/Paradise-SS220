@@ -426,8 +426,8 @@
 //////////////////////
 
 /obj/item/food/monkeycube
-	name = "monkey cube"
-	desc = "Just add water!"
+	name = "Кубик обезьяны"
+	desc = "Просто добавь воды!"
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"
@@ -470,23 +470,23 @@
 	faction = list("neutral", "syndicate")
 
 /obj/item/food/monkeycube/farwacube
-	name = "farwa cube"
+	name = "Кубик фарвы"
 	monkey_type = /datum/species/monkey/tajaran
 
 /obj/item/food/monkeycube/wolpincube
-	name = "wolpin cube"
+	name = "Кубик вольпина"
 	monkey_type = /datum/species/monkey/vulpkanin
 
 /obj/item/food/monkeycube/nian_wormecube
-	name = "nian worme cube"
+	name = "Кубик нимфы Ниан"
 	monkey_type = /datum/species/monkey/nian_worme
 
 /obj/item/food/monkeycube/stokcube
-	name = "stok cube"
+	name = "Кубик стока"
 	monkey_type = /datum/species/monkey/unathi
 
 /obj/item/food/monkeycube/neaeracube
-	name = "neaera cube"
+	name = "Кубик неары"
 	monkey_type = /datum/species/monkey/skrell
 
 

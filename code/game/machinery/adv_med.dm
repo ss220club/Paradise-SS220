@@ -523,7 +523,7 @@
 
 			var/obj/item/organ/internal/liver = occupant.get_int_organ(/obj/item/organ/internal/liver)
 			if(e == occupant.get_organ(liver?.parent_organ) && occupant.has_liver_cirrhosis())
-				ailments |= "Liver cirrhosis"
+				ailments |= "Цирроз печени"
 
 			if(e.status & ORGAN_SPLINTED)
 				ailments |= "Наложена шина"

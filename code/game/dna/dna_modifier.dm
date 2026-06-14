@@ -51,7 +51,7 @@
 /////////////////////////// DNA MACHINES
 /obj/machinery/dna_scannernew
 	name = "\improper DNA modifier"
-	desc = "It scans DNA structures."
+	desc = "Сканирует структуру ДНК и видоизменяет её."
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "scanner_open"
 	density = TRUE
@@ -69,8 +69,8 @@
 
 /obj/machinery/dna_scannernew/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("You can <b>Alt-Click</b> [src] to eject its occupant.")
-	. += SPAN_NOTICE("You can <b>Click-drag</b> someone to [src] to put them in.")
+	. += SPAN_NOTICE("Нажмите ALT+ЛКМ чтобы вытащить испытуемого.")
+	. += SPAN_NOTICE("Перетащите курсором вашего испытуемого на ДНК-Модификатор, чтобы начать с ним работать.")
 
 /obj/machinery/dna_scannernew/Initialize(mapload)
 	. = ..()
@@ -169,21 +169,21 @@
 	if(!isturf(user.loc) || !isturf(O.loc)) // are you in a container/closet/pod/etc?
 		return
 	if(occupant)
-		to_chat(user, SPAN_BOLDNOTICE("[src] is already occupied!"))
+		to_chat(user, SPAN_BOLDNOTICE("[src.declent_ru(NOMINATIVE)] уже занят!"))
 		return TRUE
 	var/mob/living/L = O
 	if(!istype(L) || L.buckled)
 		return
 	if(L.abiotic())
-		to_chat(user, SPAN_DANGER("Subject may not hold anything in their hands."))
+		to_chat(user, SPAN_DANGER("Субъект не должен держать что-либо в руках."))
 		return TRUE
 	if(L.has_buckled_mobs()) //mob attached to us
-		to_chat(user, SPAN_WARNING("[L] will not fit into [src] because [L.p_they()] [L.p_have()] a slime latched onto [L.p_their()] head."))
+		to_chat(user, SPAN_WARNING("[L] не залезает в [src.declent_ru(NOMINATIVE)] из-за слайма на [L.ru_p_them()] голове."))
 		return TRUE
 	if(L == user)
-		visible_message(SPAN_NOTICE("[user] climbs into [src]."))
+		visible_message(SPAN_NOTICE("[user] залезает в [src.declent_ru(NOMINATIVE)]."))
 	else
-		visible_message(SPAN_NOTICE("[user] puts [L.name] into [src]."))
+		visible_message(SPAN_NOTICE("[user] помещает [L.declent_ru(GENITIVE)] в [src.declent_ru(NOMINATIVE)]."))
 	put_in(L)
 	if(user.pulling == L)
 		user.stop_pulling()
@@ -193,7 +193,7 @@
 /obj/machinery/dna_scannernew/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
+			to_chat(user, SPAN_WARNING("Сосуд для стабилизатора уже помещен в машину."))
 			return ITEM_INTERACT_COMPLETE
 
 		if(!user.drop_item())
@@ -212,19 +212,19 @@
 			return ITEM_INTERACT_COMPLETE
 
 		if(occupant)
-			to_chat(user, SPAN_BOLDNOTICE("The scanner is already occupied!"))
+			to_chat(user, SPAN_BOLDNOTICE("Камера сканера уже занята!"))
 			return ITEM_INTERACT_COMPLETE
 
 		if(G.affecting.abiotic())
-			to_chat(user, SPAN_BOLDNOTICE("Subject may not hold anything in their hands."))
+			to_chat(user, SPAN_BOLDNOTICE("Субъект не должен держать что-либо в руках."))
 			return ITEM_INTERACT_COMPLETE
 
 		if(G.affecting.has_buckled_mobs()) //mob attached to us
-			to_chat(user, SPAN_WARNING("[G] will not fit into [src] because [G.affecting.p_they()] [G.affecting.p_have()] a slime latched onto [G.affecting.p_their()] head."))
+			to_chat(user, SPAN_WARNING("[G] не поместится в ДНК-модификатор из-за слайма на [G.affecting.ru_p_them()] голове."))
 			return ITEM_INTERACT_COMPLETE
 
 		if(panel_open)
-			to_chat(usr, SPAN_BOLDNOTICE("Close the maintenance panel first."))
+			to_chat(usr, SPAN_BOLDNOTICE("Закройте панель техобслуживания [src.declent_ru(GENITIVE)]."))
 			return ITEM_INTERACT_COMPLETE
 
 		put_in(G.affecting)
@@ -248,7 +248,7 @@
 
 /obj/machinery/dna_scannernew/screwdriver_act(mob/user, obj/item/I)
 	if(occupant)
-		to_chat(user, SPAN_NOTICE("The maintenance panel is locked."))
+		to_chat(user, SPAN_NOTICE("Панель техобслуживания заблокирована."))
 		return TRUE
 	if(default_deconstruction_screwdriver(user, "[icon_state]_maintenance", "[initial(icon_state)]", I))
 		return TRUE
@@ -262,11 +262,11 @@
 /obj/machinery/dna_scannernew/proc/go_out(mob/user, force)
 	if(!occupant)
 		if(user)
-			to_chat(user, SPAN_WARNING("The scanner is empty!"))
+			to_chat(user, SPAN_WARNING("Сканер пустой!"))
 		return
 	if(locked && !force)
 		if(user)
-			to_chat(user, SPAN_WARNING("The scanner is locked!"))
+			to_chat(user, SPAN_WARNING("Сканер заблокирован!"))
 		return
 	occupant.forceMove(loc)
 	occupant = null
@@ -300,7 +300,7 @@
 
 /obj/machinery/computer/scan_consolenew
 	name = "\improper DNA Modifier access console"
-	desc = "Allows you to scan and modify DNA."
+	desc = "Позволяет сканировать испытуемого в сканере и модифицировать его ДНК."
 	icon_screen = "dna"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/scan_consolenew
@@ -327,7 +327,7 @@
 			user.drop_item()
 			used.forceMove(src)
 			disk = used
-			to_chat(user, "You insert [used].")
+			to_chat(user, "Вы вставили [used].")
 			SStgui.update_uis(src)
 
 		return ITEM_INTERACT_COMPLETE
@@ -677,7 +677,7 @@
 						databuf.dna = connected.occupant.dna.Clone()
 						if(ishuman(connected.occupant))
 							databuf.dna.real_name=connected.occupant.name
-						databuf.name = "Unique Identifier"
+						databuf.name = "Копия внешности"
 						buffers[bufferId] = databuf
 				if("saveUIAndUE")
 					if(connected.occupant && connected.occupant.dna)
@@ -686,7 +686,7 @@
 						databuf.dna = connected.occupant.dna.Clone()
 						if(ishuman(connected.occupant))
 							databuf.dna.real_name=connected.occupant.dna.real_name
-						databuf.name = "Unique Identifier + Unique Enzymes"
+						databuf.name = "Копия внешности и личности"
 						buffers[bufferId] = databuf
 				if("saveSE")
 					if(connected.occupant && connected.occupant.dna)
@@ -695,12 +695,12 @@
 						databuf.dna = connected.occupant.dna.Clone()
 						if(ishuman(connected.occupant))
 							databuf.dna.real_name = connected.occupant.dna.real_name
-						databuf.name = "Structural Enzymes"
+						databuf.name = "Неизвестная мутация"
 						buffers[bufferId] = databuf
 				if("clear")
 					buffers[bufferId] = new /datum/dna2_record()
 				if("changeLabel")
-					ui_modal_input(src, "changeBufferLabel", "Please enter the new buffer label:", null, list("id" = bufferId), buffer.name, UI_MODAL_INPUT_MAX_LENGTH_NAME)
+					ui_modal_input(src, "changeBufferLabel", "Пожалуйста, введите новую метку для буффера:", null, list("id" = bufferId), buffer.name, UI_MODAL_INPUT_MAX_LENGTH_NAME)
 				if("transfer")
 					if(!connected.occupant || (HAS_TRAIT(connected.occupant, TRAIT_BADDNA) && connected.scan_level < 3) || !connected.occupant.dna)
 						return
@@ -737,7 +737,7 @@
 						return
 					if(text2num(params["block"]) > 0)
 						var/list/choices = all_dna_blocks((buffer.types & DNA2_BUF_SE) ? buffer.dna.SE : buffer.dna.UI)
-						ui_modal_choice(src, "createInjectorBlock", "Please select the block to create an injector from:", null, list("id" = bufferId), null, choices)
+						ui_modal_choice(src, "createInjectorBlock", "Выберите блок для выделения в инъектор:", null, list("id" = bufferId), null, choices)
 					else
 						create_injector(bufferId, TRUE)
 				if("loadDisk")
