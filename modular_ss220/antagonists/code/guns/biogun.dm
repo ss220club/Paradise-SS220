@@ -58,7 +58,7 @@
 
 // ============== Существа ==============
 
-/mob/living/simple_animal/hostile/viscerator/vox
+/mob/living/basic/viscerator/vox
 	name = "vox viscerator"
 	icon = 'modular_ss220/antagonists/icons/objects/critter.dmi'
 	faction = list("Vox")
@@ -73,10 +73,10 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 
-/mob/living/simple_animal/hostile/viscerator/vox/Process_Spacemove(movement_dir, continuous_move = FALSE)
+/mob/living/basic/viscerator/vox/Process_Spacemove(movement_dir, continuous_move = FALSE)
 	return TRUE
 
-/mob/living/simple_animal/hostile/viscerator/vox/stamina
+/mob/living/basic/viscerator/vox/stamina
 	name = "stakikamka"
 	desc = "Небольшое биомеханическое проворное существо на высоких ножках, мешающее и изматывающее тех, кому оно не понравилось."
 	icon_state = "stamina"
@@ -87,14 +87,14 @@
 	melee_damage_type = STAMINA
 	melee_damage_lower = 5
 	melee_damage_upper = 20
-	attacktext = "утомляет"
+	attack_verb_continuous = "утомляет"
 
-/mob/living/simple_animal/hostile/viscerator/vox/stamina/death(gibbed)
+/mob/living/basic/viscerator/vox/stamina/death(gibbed)
 	if(prob(30))
 		xgibs(loc)
 	. = ..()
 
-/mob/living/simple_animal/hostile/viscerator/vox/acid
+/mob/living/basic/viscerator/vox/acid
 	name = "acikikid"
 	desc = "Небольшое биомеханическое крабоподобное существо из пасти которого стекает кислота, которую тот наматывает на свои маленькие острые клешни."
 	icon_state = "acid"
@@ -105,14 +105,14 @@
 	melee_damage_type = BURN
 	melee_damage_lower = 10
 	melee_damage_upper = 30
-	attacktext = "выжигает"
+	attack_verb_continuous = "выжигает"
 	mob_size = MOB_SIZE_SMALL
 
-/mob/living/simple_animal/hostile/viscerator/vox/acid/death(gibbed)
+/mob/living/basic/viscerator/vox/acid/death(gibbed)
 	xgibs(loc)
 	. = ..()
 
-/mob/living/simple_animal/hostile/viscerator/vox/kusaka
+/mob/living/basic/viscerator/vox/kusaka
 	name = "kusakika"
 	desc = "Маленькое биомеханическое существо с острыми клыкам с половину его тела."
 	icon_state = "kusaka"
@@ -123,14 +123,14 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	armor_penetration_flat = 30
-	attacktext = "кусает"
+	attack_verb_continuous = "кусает"
 
-/mob/living/simple_animal/hostile/viscerator/vox/kusaka/death(gibbed)
+/mob/living/basic/viscerator/vox/kusaka/death(gibbed)
 	if(prob(20))
 		robogibs(loc)
 	. = ..()
 
-/mob/living/simple_animal/hostile/viscerator/vox/taran
+/mob/living/basic/viscerator/vox/taran
 	name = "tarakikan"
 	desc = "Весомое пластинчатое биомеханическое существо."
 	icon_state = "taran"
@@ -142,14 +142,14 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	armor_penetration_flat = 20
-	attacktext = "таранит"
+	attack_verb_continuous = "таранит"
 	mob_size = MOB_SIZE_HUMAN
 
-/mob/living/simple_animal/hostile/viscerator/vox/taran/death(gibbed)
+/mob/living/basic/viscerator/vox/taran/death(gibbed)
 	robogibs(loc)
 	. = ..()
 
-/mob/living/simple_animal/hostile/viscerator/vox/tox
+/mob/living/basic/viscerator/vox/tox
 	name = "toxikikic"
 	desc = "Маленькое биомеханическое иглоподобное существо."
 	icon_state = "tox"
@@ -159,8 +159,8 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 15
 	armor_penetration_flat = 80
-	attacktext = "вонзается"
+	attack_verb_continuous = "вонзается"
 
-/mob/living/simple_animal/hostile/viscerator/vox/tox/death(gibbed)
+/mob/living/basic/viscerator/vox/tox/death(gibbed)
 	xgibs(loc)
 	. = ..()
