@@ -684,7 +684,7 @@
 				var/obj/item/card/id/ID = A
 				if(ID.registered_name == oldname)
 					ID.registered_name = newname
-					ID.name = "[newname]'s ID Card ([ID.assignment])"
+					ID.name = "ID - [newname] ([ID.assignment])"
 					ID.RebuildHTML()
 					if(!search_pda)
 						break

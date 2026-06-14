@@ -185,7 +185,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.gen_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			G.fields["notes"] = H.gen_record
 		else
-			G.fields["notes"] = "No notes found."
+			G.fields["notes"] = "Заметки не найдены."
 		G.fields["nt_relation"] = H?.client?.prefs?.active_character?.nanotrasen_relation || "Unknown relation."
 		general += G
 
@@ -206,7 +206,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.med_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			M.fields["notes"] = H.med_record
 		else
-			M.fields["notes"] = "No notes found."
+			M.fields["notes"] = "Заметки не найдены."
 		medical += M
 
 		//Security Record
@@ -222,7 +222,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.sec_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			S.fields["notes"] = H.sec_record
 		else
-			S.fields["notes"] = "No notes found."
+			S.fields["notes"] = "Заметки не найдены."
 		LAZYINITLIST(S.fields["comments"])
 		security += S
 

@@ -105,6 +105,22 @@
 /datum/proc/ru_p_do(temp_gender)
 	. = "делает"
 
+/// Применяет "держит" для единственного числа и "держат" для множественного ("она держит" / "они держат").
+/datum/proc/ru_p_hold(temp_gender)
+	. = "держит"
+
+/// Применяет "носит" для единственного числа и "носят" для множественного ("она носит" / "они носят").
+/datum/proc/ru_p_wear(temp_gender)
+	. = "носит"
+
+/// Применяет "таскает" для единственного числа и "таскают" для множественного ("она таскает" / "они таскают").
+/datum/proc/ru_p_carry(temp_gender)
+	. = "таскает"
+
+/// Применяет одно из "'закрепил'", "закрепила", "закрепило", или "закрепили" в зависимости от пола. Установите TRUE для заглавной буквы.
+/datum/proc/ru_p_equip(capitalized, temp_gender)
+	. = "закрепил"
+
 //////////////////////////////
 // MARK: Client pronouns
 //////////////////////////////
@@ -157,7 +173,7 @@
 		if(MALE)
 			. = "него"
 		if(FEMALE)
-			. = "нее"
+			. = "неё"
 		if(NEUTER)
 			. = "него"
 		if(PLURAL)
@@ -190,6 +206,42 @@
 	. = "делает"
 	if(temp_gender == PLURAL)
 		. = "делают"
+
+/client/ru_p_hold(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "держит"
+	if(temp_gender == PLURAL)
+		. = "держат"
+
+/client/ru_p_wear(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "носит"
+	if(temp_gender == PLURAL)
+		. = "носят"
+
+/client/ru_p_carry(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "таскает"
+	if(temp_gender == PLURAL)
+		. = "таскают"
+
+/client/ru_p_equip(capitalized, temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	switch(temp_gender)
+		if(MALE)
+			. = "закрепил"
+		if(FEMALE)
+			. = "закрепила"
+		if(NEUTER)
+			. = "закрепило"
+		if(PLURAL)
+			. = "закрепили"
+	if(capitalized)
+		. = capitalize(.)
 
 //////////////////////////////
 // MARK: Mob pronouns
@@ -277,6 +329,42 @@
 	if(temp_gender == PLURAL)
 		. = "делают"
 
+/mob/ru_p_hold(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "держит"
+	if(temp_gender == PLURAL)
+		. = "держат"
+
+/mob/ru_p_wear(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "носит"
+	if(temp_gender == PLURAL)
+		. = "носят"
+
+/mob/ru_p_carry(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "таскает"
+	if(temp_gender == PLURAL)
+		. = "таскают"
+
+/mob/ru_p_equip(capitalized, temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	switch(temp_gender)
+		if(MALE)
+			. = "закрепил"
+		if(FEMALE)
+			. = "закрепила"
+		if(NEUTER)
+			. = "закрепило"
+		if(PLURAL)
+			. = "закрепили"
+	if(capitalized)
+		. = capitalize(.)
+
 //////////////////////////////
 // MARK: Human pronouns
 //////////////////////////////
@@ -306,6 +394,22 @@
 	return ..()
 
 /mob/living/carbon/human/ru_p_do(temp_gender)
+	temp_gender = get_visible_gender()
+	return ..()
+
+/mob/living/carbon/human/ru_p_hold(temp_gender)
+	temp_gender = get_visible_gender()
+	return ..()
+
+/mob/living/carbon/human/ru_p_wear(temp_gender)
+	temp_gender = get_visible_gender()
+	return ..()
+
+/mob/living/carbon/human/ru_p_carry(temp_gender)
+	temp_gender = get_visible_gender()
+	return ..()
+
+/mob/living/carbon/human/ru_p_equip(capitalized, temp_gender)
 	temp_gender = get_visible_gender()
 	return ..()
 

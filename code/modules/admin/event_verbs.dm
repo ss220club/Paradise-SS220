@@ -585,7 +585,7 @@ USER_VERB(grant_full_access, R_EVENT, "Grant Full Access", "Gives mob all-access
 			id:access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 			id.registered_name = H.real_name
 			id.assignment = "Captain"
-			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
+			id.name = "ID - [id.registered_name] ([id.assignment])"
 			H.equip_to_slot_or_del(id, ITEM_SLOT_ID)
 			H.update_inv_wear_id()
 	else

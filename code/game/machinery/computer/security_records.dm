@@ -366,7 +366,7 @@
 					if(!length(answer) || !record_security || !length(state.name))
 						return
 					record_security.fields["comments"] += list(list(
-						header = "Made by [state.name] ([state.rank]) on [GLOB.current_date_string] [station_time_timestamp()]",
+						header = "Добавлены заметки от [state.name] ([state.rank]), время правки - [GLOB.current_date_string] [station_time_timestamp()]",
 						text = answer
 					))
 				if("print_cell_log")
