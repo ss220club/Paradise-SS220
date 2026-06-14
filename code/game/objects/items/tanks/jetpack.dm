@@ -13,6 +13,7 @@
 	var/volume_rate = 500              //Needed for borg jetpack transfer
 	var/stabilize = FALSE
 	var/thrust_callback
+	var/is_safe_to_turn_on = FALSE // SS220 EDIT
 
 /obj/item/tank/jetpack/Initialize(mapload)
 	. = ..()
@@ -69,11 +70,36 @@
 		configure_jetpack(!stabilize)
 		to_chat(user, SPAN_NOTICE("You turn [src]'s stabilization [stabilize ? "on" : "off"]."))
 
+// SS220 EDIT START
+/obj/item/tank/jetpack/proc/is_worn_on_back(mob/user) // SS220 EDIT - A jetpack proc so you don't have to copy 220 of the same code and it's just more readable
+	if(ishuman(user) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
+		return TRUE
+
+/obj/item/tank/jetpack/equipped(mob/user, slot, initial) // SS220 EDIT - It is necessary in order to register what was removed.
+	. = ..()
+	if(slot & ITEM_SLOT_BACK)
+		is_safe_to_turn_on = TRUE
+		RegisterSignal(user, COMSIG_MOB_UNEQUIPPED_ITEM, PROC_REF(on_unequipped))
+
+/obj/item/tank/jetpack/proc/on_unequipped(atom/movable/source, obj/item/item) // SS220 EDIT - A separate feature for displaying a message that the jet is not working if removed during operation.
+	SIGNAL_HANDLER
+
+	is_safe_to_turn_on = FALSE
+	if(on)
+		turn_off(source)
+		to_chat(source, SPAN_WARNING("Реактивный ранец отключается, потому что он больше не находится на спине."))
+	// SS220 EDIT END
+
 /obj/item/tank/jetpack/proc/cycle(mob/user)
 	if(user.incapacitated())
 		return
 
 	if(!on)
+	// SS220 EDIT START - The jetpack now notifies you that it cannot be used in your hand.
+		if(!is_safe_to_turn_on)
+			to_chat(user, SPAN_WARNING("Реактивный ранец нужно носить на спине."))
+			return
+	// SS220 EDIT END
 		turn_on(user)
 		to_chat(user, SPAN_NOTICE("You turn the jetpack on."))
 	else
@@ -95,6 +121,10 @@
 
 /obj/item/tank/jetpack/dropped(mob/user, silent)
 	. = ..()
+	// SS220 EDIT START
+	is_safe_to_turn_on = FALSE
+	UnregisterSignal(user, COMSIG_MOB_UNEQUIPPED_ITEM)
+	// SS220 EDIT END
 	if(on)
 		turn_off(user)
 
@@ -102,10 +132,6 @@
 	if(!ismob(loc))
 		return FALSE
 	var/mob/user = loc
-	//SS220 EDIT START - Джетпак работает только в слоте рюкзака.
-	if(ishuman(loc) && user.get_item_by_slot(ITEM_SLOT_BACK) != src)
-		return FALSE
-	//SS220 EDIT END
 	if((num < 0.005 || air_contents.total_moles() < num))
 		turn_off(user)
 		return FALSE
