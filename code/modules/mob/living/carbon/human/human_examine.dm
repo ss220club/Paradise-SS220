@@ -13,7 +13,7 @@
 		list("[ru_p_wear()]", belt, "на", "поясе"),
 		list("[ru_p_wear()]", !skip_shoes && shoes, "на", "ногах"),
 		list("[ru_p_wear()]", !skip_mask && wear_mask, "на", "лице"),
-		list("[ru_p_equip()]", glasses, ", прикрывающие [ru_p_them()]", "глаза"),
+		list("[ru_p_wear()]", glasses,", скрывая свои", "глаза"),
 		list("[ru_p_equip()]", !skip_ears && l_ear, "на", "левом ухе"),
 		list("[ru_p_equip()]", !skip_ears && r_ear, "на", "правом ухе"),
 		list("[ru_p_wear()]", wear_id, "на", "своей груди"),
@@ -246,7 +246,7 @@
 								if(islist(commentLatest))
 									commentLatest = "[commentLatest["header"]]: [commentLatest["text"]]"
 							else
-								commentLatest = "No entries." //If present but without entries (=target is recognized crew)
+								commentLatest = "Нет записей." //If present but without entries (=target is recognized crew)
 
 			var/criminal_status = hasHUD(user, EXAMINE_HUD_SECURITY_WRITE) ? "<a href='byond://?src=[UID()];criminal=1'>\[[criminal]\]</a>" : "\[[criminal]\]"
 			msg += "[SPAN_DEPTRADIO("Криминальный статус:")] [criminal_status]\n"

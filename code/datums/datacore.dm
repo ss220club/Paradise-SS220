@@ -164,11 +164,11 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		G.fields["rank"]		= assignment
 		G.fields["age"]			= H.age
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
-		G.fields["p_stat"]		= "Active"
-		G.fields["m_stat"]		= "Stable"
+		G.fields["p_stat"]		= "Активен"
+		G.fields["m_stat"]		= "Стабильное"
 		G.fields["sex"]			= capitalize(H.gender)
 		G.fields["species"]		= H.dna.species.name
-		G.fields["ai_target"]	= "None" // for malf hud
+		G.fields["ai_target"]	= "Отсутствует" // for malf hud
 		G.fields["b_dna"]		= H.dna.unique_enzymes
 
 		// Do some ID card checking stuff here to save on resources
@@ -213,7 +213,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		var/datum/data/record/S = new()
 		S.fields["id"]			= id
 		S.fields["name"]		= H.real_name
-		S.fields["criminal"]	= "None"
+		S.fields["criminal"]	= "Отсутствует"
 		S.fields["mi_crim"]		= "None"
 		S.fields["mi_crim_d"]	= "No minor crime convictions."
 		S.fields["ma_crim"]		= "None"
