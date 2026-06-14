@@ -10,7 +10,7 @@
 		list("[ru_p_equip()]", !skip_suit_storage && s_store, "на", wear_suit && wear_suit.name),
 		list("[ru_p_carry()]", back, "на", "своей спине"),
 		list("[ru_p_wear()]", !skip_gloves && gloves, "на", "руках"),
-		list("[ru_p_wear()]", belt, "на", "пояснице"),
+		list("[ru_p_wear()]", belt, "на", "поясе"),
 		list("[ru_p_wear()]", !skip_shoes && shoes, "на", "ногах"),
 		list("[ru_p_wear()]", !skip_mask && wear_mask, "на", "лице"),
 		list("[ru_p_equip()]", glasses, ", прикрывающие [ru_p_them()]", "глаза"),
@@ -142,7 +142,7 @@
 				wound_flavor_text["[E.limb_name]"] = "У [ru_p_theirs()] наложен гипс на [E.declent_ru(ACCUSATIVE)]!\n"
 
 			else if(!E.properly_attached)
-				wound_flavor_text["[E.limb_name]"] = "[ru_p_them(TRUE)] [E.declent_ru(ACCUSATIVE)] едва закреплена!\n"
+				wound_flavor_text["[E.limb_name]"] = "[ru_p_them(TRUE)] [E.declent_ru(NOMINATIVE)] едва закреплена!\n"
 
 			else if(E.status & ORGAN_BURNT)
 				wound_flavor_text["[E.limb_name]"] = "[ru_p_them(TRUE)] [E.declent_ru(NOMINATIVE)] сильно обгорела" + (E.status & ORGAN_SALVED ? ", но была обработана" : "") + "!\n"
@@ -250,7 +250,7 @@
 
 			var/criminal_status = hasHUD(user, EXAMINE_HUD_SECURITY_WRITE) ? "<a href='byond://?src=[UID()];criminal=1'>\[[criminal]\]</a>" : "\[[criminal]\]"
 			msg += "[SPAN_DEPTRADIO("Криминальный статус:")] [criminal_status]\n"
-			msg += "[SPAN_DEPTRADIO("Заметки охраны:")] <a href='byond://?src=[UID()];secrecord=`'>\[Просмотреть\]</a> <a href='byond://?src=[UID()];secrecordComment=`'>\[Недавние заметки\]</a> <a href='byond://?src=[UID()];secrecordadd=`'>\[Добавить коммент\]</a>\n"
+			msg += "[SPAN_DEPTRADIO("Досье СБ:")] <a href='byond://?src=[UID()];secrecord=`'>\[Просмотреть\]</a> <a href='byond://?src=[UID()];secrecordComment=`'>\[Недавние заметки\]</a> <a href='byond://?src=[UID()];secrecordadd=`'>\[Добавить коммент\]</a>\n"
 			msg += "[SPAN_DEPTRADIO("Недавние правки:")] [commentLatest]\n"
 
 	if(hasHUD(user, EXAMINE_HUD_MALF_READ))

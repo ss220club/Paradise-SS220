@@ -75,7 +75,7 @@
 
 /obj/item/id_skin/ouija
 	name = "\improper Ouija ID sticker"
-	desc = "Ходят легенты, что тот кто наклеит это на карту, может общаться с духами..."
+	desc = "Ходят легенды, что тот, кто наклеит это на карту, сможет общаться с духами..."
 	icon_state = "ouija"
 	pronoun_name = "наклейку в виде доски Уиджи"
 	info = "Умеет ли он общаться с призраками?"
@@ -139,7 +139,7 @@
 	desc = "HACKERMAN."
 	icon_state = "terminal"
 	pronoun_name = "кибернетическую наклейку"
-	info = "Эта карта отдаленно напоминает терминал."
+	info = "Эта карта отдалённо напоминает терминал."
 
 /obj/item/id_skin/jokerge
 	name = "\improper jokerge ID sticker"
@@ -150,7 +150,7 @@
 
 /obj/item/id_skin/boykisser
 	name = "\improper boykisser ID sticker"
-	desc = "Наклеив её на карту, у вас с почти 100% вероятностью, появится желание целовать мальчиков."
+	desc = "Наклеив её на карту, у вас почти со 100% вероятностью появится желание целовать мальчиков."
 	icon_state = "boykisser"
 	pronoun_name = "наклейку в виде бойкиссера"
 	info = "Он любит целовать мальчиков."

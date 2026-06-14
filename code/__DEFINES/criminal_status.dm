@@ -8,5 +8,5 @@
 #define SEC_RECORD_STATUS_PAROLLED "Условно-досрочное освобождение"
 #define SEC_RECORD_STATUS_DEMOTE "Понижение"
 #define SEC_RECORD_STATUS_SEARCH "Обыск"
-#define SEC_RECORD_STATUS_MONITOR "Монитор"
+#define SEC_RECORD_STATUS_MONITOR "Наблюдение"
 // SS220 EDIT END
