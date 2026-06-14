@@ -18,7 +18,7 @@ function ExtractVersion {
 	param([string] $Path, [string] $Key)
 	foreach ($Line in Get-Content $Path) {
 		if ($Line.StartsWith("export $Key=")) {
-			return $Line.Substring("export $Key=".Length)
+			return $Line.Substring("export $Key=".Length).Trim("'`"")
 		}
 	}
 	throw "Couldn't find value for $Key in $Path"

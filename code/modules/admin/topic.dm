@@ -112,6 +112,9 @@
 		var/banduration = text2num(href_list["dbbaddduration"])
 		var/banjob = href_list["dbbanaddjob"]
 		var/banreason = href_list["dbbanreason"]
+		// SS220 EDIT START - Species bans
+		var/banspecies = href_list["dbbanaddspecies"]
+		// SS220 EDIT END
 
 		var/job_ban = FALSE
 		var/multi_job = FALSE
@@ -153,6 +156,19 @@
 					to_chat(usr, SPAN_WARNING("Not enough parameters (Requires ckey, reason and duration)"))
 					return
 				banjob = null
+			// SS220 EDIT START - Species bans
+			if(BANTYPE_SPECIES_PERMA)
+				if(!banckey || !banreason || !banspecies)
+					to_chat(usr, "<span class='warning'>Not enough parameters (Requires ckey, reason and species)</span>")
+					return
+				banduration = null
+				banjob = banspecies
+			if(BANTYPE_SPECIES_TEMP)
+				if(!banckey || !banreason || !banspecies || !banduration)
+					to_chat(usr, "<span class='warning'>Not enough parameters (Requires ckey, reason, species and duration)</span>")
+					return
+				banjob = banspecies
+			// SS220 EDIT END
 
 		var/mob/playermob
 
@@ -454,7 +470,7 @@
 		var/timer = input("Enter new shuttle duration (minutes):","Edit Shuttle Timeleft", SSshuttle.emergency.timeLeft(600)) as num
 		SSshuttle.emergency.setTimer(timer MINUTES)
 		log_admin("[key_name(usr)] edited the Emergency Shuttle's timeleft to [timer] minutes")
-		GLOB.minor_announcement.Announce("The emergency shuttle will reach its destination in [round(SSshuttle.emergency.timeLeft(600))] minutes.")
+		GLOB.minor_announcement.Announce("Эвакуационный шаттл достигнет места назначения через [round(SSshuttle.emergency.timeLeft(600))] [declension_ru(round(SSshuttle.emergency.timeLeft(600)), "минуту", "минуты", "минут")].")
 		message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] edited the Emergency Shuttle's timeleft to [timer] minutes"))
 		href_list["secrets"] = "check_antagonist"
 
@@ -907,6 +923,158 @@
 				if("Cancel")
 					return
 
+	// SS220 EDIT START - Species bans
+	else if(href_list["speciesban"])
+		if(!check_rights(R_BAN))
+			return
+
+		if(!SSdbcore.IsConnected())
+			alert(usr, "Species bans require the database to be setup.", "Error", "Ok")
+			return
+
+		var/mob/M = locateUID(href_list["speciesban"])
+		if(!ismob(M))
+			to_chat(usr, "<span class='warning'>This can only be used on instances of type /mob</span>")
+			return
+
+		if(!M.last_known_ckey)
+			to_chat(usr, "<span class='warning'>This mob has no ckey</span>")
+			return
+
+		var/dat = ""
+		var/header = "<head><title>Species-Ban Panel: [M.name]</title></head>"
+		var/body = ""
+		var/species_html = ""
+
+		species_html += "<table cellpadding='1' cellspacing='0' width='100%'>"
+		species_html += "<tr bgcolor='ccffcc'><th colspan='8'>Species</th></tr><tr align='center'>"
+
+		var/counter = 0
+		for(var/species_name in GLOB.all_species)
+			var/datum/species/S = GLOB.all_species[species_name]
+			if(!S || (NOT_SELECTABLE in S.species_traits))
+				continue
+
+			if(is_species_banned_ckey(M.last_known_ckey, species_name))
+				species_html += "<td width='12.5%'><a href='byond://?src=[UID()];speciesban_toggle=[species_name];speciesban_mob=[M.UID()];dbbanaddckey=[M.last_known_ckey]'><font color=red>[replacetext(species_name, " ", "&nbsp")]</font></a></td>"
+			else
+				species_html += "<td width='12.5%'><a href='byond://?src=[UID()];speciesban_toggle=[species_name];speciesban_mob=[M.UID()];dbbanaddckey=[M.last_known_ckey]'>[replacetext(species_name, " ", "&nbsp")]</a></td>"
+			counter++
+
+			if(counter >= 8)
+				species_html += "</tr><tr align='center'>"
+				counter = 0
+
+		species_html += "</tr></table>"
+
+		body = "<body>[species_html]</body>"
+		dat = "<!DOCTYPE html><tt>[header][body]</tt>"
+		usr << browse(dat, "window=speciesban;size=600x300")
+		return
+
+	// SPECIES BAN TOGGLE
+	else if(href_list["speciesban_toggle"])
+		if(!check_rights(R_BAN))
+			return
+
+		if(!SSdbcore.IsConnected())
+			alert(usr, "Species bans require the database to be setup.", "Error", "Ok")
+			return
+
+		var/mob/M = locateUID(href_list["speciesban_mob"])
+		if(!ismob(M))
+			to_chat(usr, "<span class='warning'>This can only be used on instances of type /mob</span>")
+			return
+
+		if(!M.last_known_ckey)
+			to_chat(usr, "<span class='warning'>This mob has no ckey</span>")
+			return
+
+		if(M != usr)
+			if(M.client && M.client.holder && (M.client.holder.rights & R_BAN))
+				alert("You cannot perform this action. You must be of a higher administrative rank!")
+				return
+
+		var/ban_ckey_param = href_list["dbbanaddckey"]
+		var/species_name = href_list["speciesban_toggle"]
+
+		if(is_species_banned_ckey(M.last_known_ckey, species_name))
+			// Unban
+			var/datum/db_query/query = SSdbcore.NewQuery({"
+				UPDATE ban SET unbanned = 1, unbanned_datetime = Now(), unbanned_ckey = :admin_ckey
+				WHERE ckey = :ckey AND job = :species
+				AND (bantype = 'SPECIES_PERMABAN' OR bantype = 'SPECIES_TEMPBAN')
+				AND (unbanned IS NULL OR unbanned = 0)
+			"}, list("admin_ckey" = usr.ckey, "ckey" = M.last_known_ckey, "species" = species_name))
+
+			if(!query.warn_execute())
+				qdel(query)
+				return
+
+			qdel(query)
+			log_admin("[key_name(usr)] unbanned [key_name(M)] for species [species_name]")
+			message_admins("<span class='notice'>[key_name_admin(usr)] unbanned [key_name_admin(M)] for species [species_name]</span>", 1)
+			add_note(M.last_known_ckey, "Unbanned for species [species_name]", null, usr.ckey, 0, public = TRUE)
+
+			if(M.client)
+				M.client.sbh.reload_species_bans(M.client)
+				to_chat(M, "<span class='notice'>You have been unbanned for species [species_name] by [usr.client.ckey].</span>")
+		else
+			// Ban
+			switch(alert("Temporary Ban of [M.last_known_ckey]?", null, "Yes", "No", "Cancel"))
+				if("Yes")
+					var/mins = input(usr, "How long (in minutes)?", "Ban time", 1440) as num|null
+					if(!mins)
+						return
+					var/reason = input(usr, "Please state the reason", "Reason", "") as message|null
+					if(!reason)
+						return
+
+					M = admin_ban_mobsearch(M, ban_ckey_param, usr)
+					if(!M || !M.last_known_ckey)
+						to_chat(usr, "<span class='warning'>Unable to locate target player</span>")
+						return
+
+					log_admin("[key_name(usr)] temp-banned [key_name(M)] for species [species_name] for [mins] minutes")
+					DB_ban_record(BANTYPE_SPECIES_TEMP, M, mins, reason, species_name)
+					add_note(M.last_known_ckey, "Banned for species [species_name] - [reason]", null, usr.ckey, 0, public = TRUE)
+					message_admins("<span class='notice'>[key_name_admin(usr)] banned [key_name_admin(M)] for species [species_name] for [mins] minutes</span>", 1)
+
+					if(M.client)
+						M.client.sbh.reload_species_bans(M.client)
+						to_chat(M, "<span class='warning'><big><b>You have been banned for species [species_name] by [usr.client.ckey].</b></big></span>")
+						to_chat(M, "<span class='danger'>The reason is: [reason]</span>")
+						to_chat(M, "<span class='warning'>This ban will be lifted in [mins] minutes.</span>")
+					href_list["speciesban"] = 1
+					return 1
+				if("No")
+					var/reason = input(usr, "Please state the reason", "Reason", "") as message|null
+					if(!reason)
+						return
+
+					M = admin_ban_mobsearch(M, ban_ckey_param, usr)
+					if(!M || !M.last_known_ckey)
+						to_chat(usr, "<span class='warning'>Unable to locate target player</span>")
+						return
+
+					log_admin("[key_name(usr)] perma-banned [key_name(M)] for species [species_name]")
+					DB_ban_record(BANTYPE_SPECIES_PERMA, M, -1, reason, species_name)
+					add_note(M.last_known_ckey, "Banned for species [species_name] - [reason]", null, usr.ckey, 0, public = TRUE)
+					message_admins("<span class='notice'>[key_name_admin(usr)] banned [key_name_admin(M)] for species [species_name]</span>", 1)
+
+					if(M.client)
+						M.client.sbh.reload_species_bans(M.client)
+						to_chat(M, "<span class='warning'><big><b>You have been banned for species [species_name] by [usr.client.ckey].</b></big></span>")
+						to_chat(M, "<span class='danger'>The reason is: [reason]</span>")
+						to_chat(M, "<span class='warning'>Species ban can be lifted only upon request.</span>")
+					href_list["speciesban"] = 1
+					return 1
+				if("Cancel")
+					return
+
+		href_list["speciesban"] = 1
+		return 1
+	// SS220 EDIT END
 	else if(href_list["boot2"])
 		if(!check_rights(R_ADMIN|R_MOD))
 			return
@@ -2527,7 +2695,7 @@
 			log_admin("[owner] denied [key_name(H)]'s ERT request with the message [reason]. Announced to [announce_to_crew ? "the entire crew." : "only the sender"].")
 
 			if(announce_to_crew)
-				GLOB.major_announcement.Announce("[station_name()], we are unfortunately unable to send you an Emergency Response Team at this time. Your ERT request has been denied for the following reasons:\n[reason]", "ERT Unavailable")
+				GLOB.major_announcement.Announce("[station_name()], к сожалению, в данный момент мы не можем направить вам отряд быстрого реагирования. Ваш запрос был отклонен по следующим причинам:\n[reason]", "ВНИМАНИЕ: ОБР недоступен.")
 				return
 
 			if(H.stat != CONSCIOUS)
@@ -2602,7 +2770,10 @@
 		var/use_letterheard = alert("Use letterhead? If so, do not add your own header or a footer. Type and format only your actual message.", null,"Nanotrasen","Syndicate", "No")
 		switch(use_letterheard)
 			if("Nanotrasen")
-				P = new /obj/item/paper/central_command(null)
+				// SS220 EDIT START Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
+				var/sign_name = tgui_input_text(usr, "Введите, от чьего лица отправить факс. Оставьте пустым, чтобы использовать стандартное имя.", "Выбор имени отправителя факса", max_length = MAX_NAME_LEN)
+				P = new /obj/item/paper/central_command(sign_name || null)
+				// SS220 EDIT END
 			if("Syndicate")
 				P = new /obj/item/paper/syndicate(null)
 			if("No")
@@ -3042,11 +3213,11 @@
 				if(GLOB.gravity_is_on)
 					log_admin("[key_name(usr)] toggled gravity on.", 1)
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity on."), 1)
-					GLOB.minor_announcement.Announce("Gravity generators are again functioning within normal parameters. Sorry for any inconvenience.")
+					GLOB.minor_announcement.Announce("Генератор гравитации снова работает в штатном режиме. Приносим извинения за неудобства.")
 				else
 					log_admin("[key_name(usr)] toggled gravity off.", 1)
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity off."), 1)
-					GLOB.minor_announcement.Announce("Feedback surge detected in mass-distributions systems. Artificial gravity has been disabled whilst the system reinitializes. Further failures may result in a gravitational collapse and formation of blackholes. Have a nice day.")
+					GLOB.minor_announcement.Announce("Обнаружен всплеск обратной энергии в системах распределения масс. Искусственная гравитация отключена на время повторной инициализации системы. Дальнейшие сбои могут привести к гравитационному коллапсу и образованию черных дыр. Желаем вам хорошего дня.")
 
 			if("power")
 				switch(alert("What Would You Like to Do?", "Make All Areas Powered", "Power all APCs", "Repair all APCs", "Repair and Power APCs")) //Alert notification in this code for standarization purposes
@@ -3260,7 +3431,7 @@
 					if(is_station_level(W.z) && !istype(get_area(W), /area/station/command/bridge) && !istype(get_area(W), /area/station/public) && !istype(get_area(W), /area/station/security/prison))
 						W.req_access = list()
 				message_admins("[key_name_admin(usr)] activated Egalitarian Station mode")
-				GLOB.minor_announcement.Announce("Centcomm airlock control override activated. Please take this time to get acquainted with your coworkers.", new_sound = 'sound/AI/commandreport.ogg')
+				GLOB.minor_announcement.Announce("Активирована система управления шлюзами Центральным Командованием. Пожалуйста, воспользуйтесь этим временем, чтобы познакомиться со своими коллегами.", new_sound = 'sound/AI/commandreport.ogg')
 			if("onlyone")
 				if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 					return

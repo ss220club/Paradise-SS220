@@ -103,10 +103,17 @@
 		return PCWJ_NO_STEPS
 
 	if(!tracker)
-		if(!(type in GLOB.pcwj_recipe_dictionary))
+	//SS220 EDIT START - поддержка подтипов кухонной кастомной посуды
+		var/lookup_type = type
+
+		while(lookup_type && !(lookup_type in GLOB.pcwj_recipe_dictionary))
+			lookup_type = type2parent(lookup_type)
+
+		if(!lookup_type)
 			return PCWJ_NO_STEPS
 
-		var/list/container_recipes = GLOB.pcwj_recipe_dictionary[type]
+		var/list/container_recipes = GLOB.pcwj_recipe_dictionary[lookup_type]
+	//SS220 EDIT END
 		if(!length(container_recipes))
 			return PCWJ_NO_STEPS
 

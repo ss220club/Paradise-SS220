@@ -32,7 +32,7 @@
 /obj/structure/cult/functional
 	max_integrity = 100
 	var/cooldowntime = 0
-	var/death_message = SPAN_DANGER("The structure falls apart.") //The message shown when the structure is destroyed
+	var/death_message = SPAN_DANGER("Конструкция разваливается на части.") //The message shown when the structure is destroyed
 	var/death_sound = 'sound/items/bikehorn.ogg'
 	var/heathen_message = "You're a huge nerd, go away. Also, a coder forgot to put a message here."
 	var/selection_title = "Oops"
@@ -149,7 +149,7 @@
 	desc = "A sacrifical altar, covered in fresh blood. The runes covering its sides glow with barely-restrained power."
 	icon_state = "altar"
 	max_integrity = 150 //Sturdy
-	death_message = SPAN_DANGER("The altar breaks into splinters, releasing a cascade of spirits into the air!")
+	death_message = SPAN_DANGER("Алтарь разлетается на осколки, выпуская в воздух каскад духов!")
 	death_sound = 'sound/effects/altar_break.ogg'
 	heathen_message = SPAN_WARNING("There is a foreboding aura to the altar and you want nothing to do with it.")
 	selection_prompt = "You study the rituals on the altar..."
@@ -179,7 +179,7 @@
 	light_range = 2
 	light_color = LIGHT_COLOR_LAVA
 	max_integrity = 300 //Made of metal
-	death_message = SPAN_DANGER("The forge falls apart, its lava cooling and winking away!")
+	death_message = SPAN_DANGER("Кузница разваливается на части, ее лава остывает и угасает!")
 	death_sound = 'sound/effects/forge_destroy.ogg'
 	heathen_message = SPAN_WARNING("Your hand feels like it's melting off as you try to touch the forge.")
 	selection_prompt = "You study the schematics etched on the forge..."
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(blacklisted_pylon_turfs, typecacheof(list(
 	light_range = 1.5
 	light_color = LIGHT_COLOR_RED
 	max_integrity = 50 //Very fragile
-	death_message = SPAN_DANGER("The pylon's crystal vibrates and glows fiercely before violently shattering!")
+	death_message = SPAN_DANGER("Кристалл пилона вибрирует и яростно светится, прежде чем разлететься на куски!")
 	death_sound = 'sound/effects/pylon_shatter.ogg'
 	mansus_conversion_path = /obj/item/clothing/neck/heretic_focus //I guess the crystal turns into a necklace. Look this shouldnt be a subtype, auugh
 
@@ -347,7 +347,7 @@ GLOBAL_LIST_INIT(blacklisted_pylon_turfs, typecacheof(list(
 	light_range = 1.5
 	light_color = LIGHT_COLOR_FIRE
 	max_integrity = 125 //Slightly sturdy
-	death_message = SPAN_DANGER("The desk breaks apart, its books falling to the floor.")
+	death_message = SPAN_DANGER("Стол разваливается на части, книги падают на пол.")
 	death_sound = 'sound/effects/wood_break.ogg'
 	heathen_message = SPAN_CULTLARGE("What do you hope to seek?")
 	selection_prompt = "You flip through the black pages of the archives..."
