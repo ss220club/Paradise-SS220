@@ -112,12 +112,6 @@
 	if(!ismob(loc))
 		return FALSE
 	var/mob/user = loc
-	if(!ismob(user) && istype(loc, /obj/item))
-		var/obj/item/item_loc = loc
-		if(ismob(item_loc.loc))
-			user = item_loc.loc
-	if(!ismob(user))
-		return FALSE
 	// SS220 EDIT START - The jetpack only works in a slot.
 	if(!is_worn_on_back(user))
 		return FALSE
