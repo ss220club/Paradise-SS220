@@ -71,7 +71,7 @@
 
 // SS220 EDIT START - helper proc to check if jetpack is worn on back
 /obj/item/tank/jetpack/proc/is_worn_on_back(mob/user)
-	return user && (!ishuman(user) || user.get_item_by_slot(ITEM_SLOT_BACK) == src)
+	return user && (istype(src, /obj/item/tank/jetpack/suit) || !ishuman(user) || user.get_item_by_slot(ITEM_SLOT_BACK) == src)
 // SS220 EDIT END
 
 /obj/item/tank/jetpack/proc/cycle(mob/user)
