@@ -59,29 +59,29 @@
 /obj/item/biocore/viscerator
 	name = "biocore (viscerator)"
 	spawn_amount = 3
-	mob_spawner_type = /mob/living/simple_animal/hostile/viscerator/vox
+	mob_spawner_type = /mob/living/basic/viscerator/vox
 
 /obj/item/biocore/stamina
 	name = "biocore (stakikamka)"
 	spawn_amount = 3
-	mob_spawner_type = /mob/living/simple_animal/hostile/viscerator/vox/stamina
+	mob_spawner_type = /mob/living/basic/viscerator/vox/stamina
 
 /obj/item/biocore/acid
 	name = "biocore (acikikid)"
 	spawn_amount = 1
-	mob_spawner_type = /mob/living/simple_animal/hostile/viscerator/vox/acid
+	mob_spawner_type = /mob/living/basic/viscerator/vox/acid
 
 /obj/item/biocore/kusaka
 	name = "biocore (kusakika)"
 	spawn_amount = 4
-	mob_spawner_type = /mob/living/simple_animal/hostile/viscerator/vox/kusaka
+	mob_spawner_type = /mob/living/basic/viscerator/vox/kusaka
 
 /obj/item/biocore/taran
 	name = "biocore (tarakikan)"
 	spawn_amount = 1
-	mob_spawner_type = /mob/living/simple_animal/hostile/viscerator/vox/taran
+	mob_spawner_type = /mob/living/basic/viscerator/vox/taran
 
 /obj/item/biocore/tox
 	name = "biocore (toxikikic)"
 	spawn_amount = 3
-	mob_spawner_type = /mob/living/simple_animal/hostile/viscerator/vox/tox
+	mob_spawner_type = /mob/living/basic/viscerator/vox/tox

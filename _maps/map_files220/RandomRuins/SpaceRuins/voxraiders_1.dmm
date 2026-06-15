@@ -208,7 +208,9 @@
 /area/ruin/space/unpowered/unpowered_structures)
 "vp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/command,
+/obj/machinery/door/airlock/command{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel/dark/airless,
 /area/ruin/space/unpowered/unpowered_structures)
@@ -243,7 +245,9 @@
 /area/ruin/space/powered)
 "Ao" = (
 /obj/effect/mapping_helpers/airlock/access/all/shuttles/vox,
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating/nitrogen,
 /area/ruin/space/powered)
