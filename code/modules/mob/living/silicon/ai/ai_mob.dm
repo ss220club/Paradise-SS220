@@ -1757,4 +1757,34 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	location_blurb.fade_animation_duration = 0.5 SECONDS
 	location_blurb.show_to(client)
 
+/mob/living/silicon/ai/proc/update_cartridge_for_antag()
+	if(!aiPDA || !mind)
+		return
+
+	// Проверяем, есть ли у ИИ вообще какие-либо антагонистические роли (предатель, малф и т.д.)
+	var/has_any_antag = LAZYLEN(mind.antag_datums) > 0
+
+	// Определяем, какой тип картриджа должен быть установлен
+	var/target_cart_type = has_any_antag ? /obj/item/cartridge/ai_malf : /obj/item/cartridge/ai
+
+	// Если картридж уже правильный, выходим, чтобы не создавать лишний мусor
+	if(aiPDA.cartridge && istype(aiPDA.cartridge, target_cart_type))
+		return
+
+	// Безопасно удаляем старый картридж
+	if(aiPDA.cartridge)
+		qdel(aiPDA.cartridge)
+
+	// Создаем и вставляем новый картридж
+	aiPDA.cartridge = new target_cart_type(aiPDA)
+	aiPDA.cartridge.update_programs(aiPDA)
+	aiPDA.update_shortcuts()
+
+	// Принудительно возвращаем ПДА в главное меню, чтобы интерфейс перестроился корректно
+	aiPDA.start_program(aiPDA.find_program(/datum/data/pda/app/main_menu))
+
+	// Обновляем TGUI окно у ИИ, чтобы он сразу увидел изменения
+	SStgui.update_uis(aiPDA)
+
+
 #undef TEXT_ANNOUNCEMENT_COOLDOWN

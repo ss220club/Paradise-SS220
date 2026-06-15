@@ -467,3 +467,317 @@
 	JaniData["janicarts"] = length(JaniCartData) ? JaniCartData : null
 	data["janitor"] = JaniData
 
+// ==========================================
+// 1. СТАНДАРТНОЕ ПРИЛОЖЕНИЕ ДЛЯ ОБЫЧНОГО ИИ
+// ==========================================
+/datum/data/pda/app/ai_comm
+	name = "Station Comm Uplink"
+	icon = "broadcast-tower"
+	template = "pda_ai_comm" // Отдельный шаблон TGUI
+	category = "AI Core"
+	has_back = FALSE
+
+/datum/data/pda/app/ai_comm/update_ui(mob/user as mob, list/data)
+	var/mob/living/silicon/ai/A = user
+	data["ai_name"] = A.name
+	data["current_alert"] = SSsecurity_level.get_current_level_as_number()
+
+	// Вычисляем имя и цвет ТЕКУЩЕГО уровня (даже если он выше Красного)
+	var/current_level_name = "Unknown"
+	var/current_level_color = "red"
+
+	switch(data["current_alert"])
+		if(SEC_LEVEL_GREEN)
+			current_level_name = "Green"; current_level_color = "green"
+		if(SEC_LEVEL_BLUE)
+			current_level_name = "Blue"; current_level_color = "blue"
+		if(SEC_LEVEL_RED)
+			current_level_name = "Red"; current_level_color = "red"
+		if(SEC_LEVEL_GAMMA)
+			current_level_name = "Gamma"; current_level_color = "gold"
+		if(SEC_LEVEL_EPSILON)
+			current_level_name = "Epsilon"; current_level_color = "silver"
+		if(SEC_LEVEL_DELTA)
+			current_level_name = "Delta"; current_level_color = "purple"
+
+	data["current_level_name"] = current_level_name
+	data["current_level_color"] = current_level_color
+
+	// Кнопки ТОЛЬКО для ЗК, СК и КК
+	data["alert_levels"] = list(
+		list("id" = SEC_LEVEL_GREEN, "name" = "Green", "icon" = "dove", "color" = "green"),
+		list("id" = SEC_LEVEL_BLUE,  "name" = "Blue", "icon" = "eye", "color" = "blue"),
+		list("id" = SEC_LEVEL_RED, "name" = "Red", "icon" = "exclamation", "color" = "red"),
+	)
+
+	// Данные для шаттла
+	var/secondsToRefuel = SSshuttle.secondsToRefuel()
+	data["esc_callable"] = (SSshuttle.emergency.mode == SHUTTLE_IDLE && !secondsToRefuel)
+	data["esc_recallable"] = (SSshuttle.emergency.mode == SHUTTLE_CALL)
+	data["esc_status"] = ""
+	if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
+		var/timeleft = SSshuttle.emergency.timeLeft()
+		data["esc_status"] = (SSshuttle.emergency.mode == SHUTTLE_CALL) ? "ETA:" : "RECALLING:"
+		data["esc_status"] += " [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]"
+	else if(secondsToRefuel)
+		data["esc_status"] = "Refueling: [secondsToRefuel / 60 % 60]:[add_zero(num2text(secondsToRefuel % 60), 2)]"
+
+/datum/data/pda/app/ai_comm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return
+	. = TRUE
+
+	var/mob/living/silicon/ai/A = pda.loc
+	if(!istype(A))
+		return
+
+	switch(action)
+		if("Home", "Back")
+			if(pda.current_app)
+				pda.current_app.stop()
+				pda.current_app = null
+			SStgui.update_user_uis(A, pda)
+			return
+
+		if("newalertlevel")
+			var/new_level = text2num(params["level"])
+			SSsecurity_level.set_level(new_level)
+			log_game("[key_name(A)] has changed the security level to [SSsecurity_level.get_current_level_as_text()] via Station Comm.")
+			return
+
+		if("callshuttle")
+			var/input = tgui_input_text(A, "Please enter the reason for calling the shuttle.", "Shuttle Call Reason")
+			if(input)
+				call_shuttle_proc(A, input)
+				to_chat(A, SPAN_NOTICE("Shuttle called."))
+			return
+
+		if("cancelshuttle")
+			var/response = tgui_alert(A, "Are you sure you wish to recall the shuttle?", "Confirm", list("Yes", "No"))
+			if(response == "Yes")
+				cancel_call_proc(A)
+				if(SSshuttle.emergency.timer)
+					post_status(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)
+			return
+
+		if("MessageCentcomm")
+			var/input = tgui_input_text(A, "Choose a message to transmit to Centcomm.", "CentComm Message")
+			if(input && length(input) >= 6)
+				Centcomm_announce(input, A)
+				to_chat(A, "Message transmitted.")
+				log_game("[key_name(A)] has made a Centcomm announcement: [input]")
+			return
+
+		if("ai_announce")
+			// Открываем стандартное окно ввода (multiline = TRUE разрешает переносы строк)
+			var/input = tgui_input_text(A, "Напишите сообщение для экипажа.", "Оповещение ИИ", multiline = TRUE, encode = FALSE)
+			if(!input || length(input) < 3)
+				return
+
+			// МАГИЯ: Мы просто вызываем личный анонсер ИИ.
+			// Он сам подставит правильный заголовок, красный шрифт и подпись " - Имя ИИ"
+			// Никаких ручных \n и GLOB.major_announcement больше не нужно!
+			A.announcer.Announce(input)
+
+			log_game("[key_name(A)] made a station announcement via PDA Comm Uplink: [input]")
+			return
+
+
+// ==========================================
+// 2. ПОЛНОЦЕННОЕ ПРИЛОЖЕНИЕ ДЛЯ МАЛФА (НЕКСУС)
+// ==========================================
+// (Вставляем сюда тот самый проверенный код, который мы отлаживали ранее)
+/datum/data/pda/app/malf_comm
+	name = "Nexus Command Uplink"
+	icon = "broadcast-tower"
+	template = "pda_malf_comm"
+	category = "AI Core"
+	has_back = FALSE
+
+	var/stat_msg1
+	var/stat_msg2
+	var/current_display_type = STATUS_DISPLAY_TIME
+	var/current_display_icon = "default"
+
+/datum/data/pda/app/malf_comm/update_ui(mob/user as mob, list/data)
+	var/mob/living/silicon/ai/A = user
+	data["ai_name"] = A.name
+	data["current_alert"] = SSsecurity_level.get_current_level_as_number()
+
+	data["alert_levels"] = list(
+		list("id" = SEC_LEVEL_GREEN, "name" = "Green", "icon" = "dove", "color" = "green"),
+		list("id" = SEC_LEVEL_BLUE,  "name" = "Blue", "icon" = "eye", "color" = "blue"),
+		list("id" = SEC_LEVEL_RED, "name" = "Red", "icon" = "exclamation", "color" = "red"),
+		list("id" = SEC_LEVEL_GAMMA,  "name" = "Gamma", "icon" = "biohazard", "color" = "gold"),
+		list("id" = SEC_LEVEL_EPSILON, "name" = "Epsilon", "icon" = "skull", "tooltip" = "Epsilon Alert will only activate after 15 or so seconds.", "color" = "silver"),
+		list("id" = SEC_LEVEL_DELTA,  "name" = "Delta", "icon" = "bomb", "color" = "purple"),
+	)
+
+	var/secondsToRefuel = SSshuttle.secondsToRefuel()
+	var/esc_callable = (SSshuttle.emergency.mode == SHUTTLE_IDLE && !secondsToRefuel)
+	var/esc_status = ""
+
+	if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
+		var/timeleft = SSshuttle.emergency.timeLeft()
+		esc_status = (SSshuttle.emergency.mode == SHUTTLE_CALL) ? "ETA:" : "RECALLING:"
+		esc_status += " [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]"
+	else if(secondsToRefuel)
+		esc_status = "Refueling: [secondsToRefuel / 60 % 60]:[add_zero(num2text(secondsToRefuel % 60), 2)]"
+
+	data["esc_callable"] = esc_callable
+	data["esc_recallable"] = (SSshuttle.emergency.mode == SHUTTLE_CALL)
+	data["esc_status"] = esc_status
+	data["lastCallLoc"] = SSshuttle.emergencyLastCallLoc ? format_text(SSshuttle.emergencyLastCallLoc.name) : null
+
+	var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg')
+	var/list/sound_keys = list()
+	for(var/sound_name in sounds)
+		sound_keys += sound_name
+	data["possible_cc_sounds"] = sound_keys
+
+	data["stat_display"] = list(
+		"type"   = current_display_type,
+		"icon"   = current_display_icon,
+		"line_1" = (stat_msg1 ? stat_msg1 : "-----"),
+		"line_2" = (stat_msg2 ? stat_msg2 : "-----"),
+		"presets" = list(
+			list("name" = STATUS_DISPLAY_BLANK, "label" = "Clear", "desc" = "Blank slate"),
+			list("name" = STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME, "label" = "Shuttle ETA", "desc" = "Display how much time is left."),
+			list("name" = STATUS_DISPLAY_MESSAGE, "label" = "Message", "desc" = "A custom message.")
+		),
+		"alerts" = list(
+			list("alert" = "default", "label" = "Nanotrasen", "desc" = "Oh god."),
+			list("alert" = "redalert", "label" = "Red Alert", "desc" = "Nothing to do with communists."),
+			list("alert" = "lockdown", "label" = "Lockdown", "desc" = "Let everyone know they're on lockdown."),
+			list("alert" = "biohazard", "label" = "Biohazard", "desc" = "Great for virus outbreaks and parties.")
+		)
+	)
+
+/datum/data/pda/app/malf_comm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return
+	. = TRUE
+
+	var/mob/living/silicon/ai/A = pda.loc
+	if(!istype(A))
+		return
+
+	switch(action)
+		if("newalertlevel")
+			var/new_level = text2num(params["level"])
+			SSsecurity_level.set_level(new_level)
+			log_game("[key_name(A)] has changed the security level to [SSsecurity_level.get_current_level_as_text()] via Nexus Uplink.")
+			message_admins("[key_name_admin(A)] has changed the security level to [SSsecurity_level.get_current_level_as_text()] via Nexus Uplink.")
+			return
+
+		if("callshuttle")
+			var/input = tgui_input_text(A, "Please enter the reason for calling the shuttle.", "Shuttle Call Reason")
+			if(input)
+				call_shuttle_proc(A, input)
+				to_chat(A, SPAN_NOTICE("Shuttle called."))
+			return
+
+		if("cancelshuttle")
+			var/response = tgui_alert(A, "Are you sure you wish to recall the shuttle?", "Confirm", list("Yes", "No"))
+			if(response == "Yes")
+				cancel_call_proc(A)
+				if(SSshuttle.emergency.timer)
+					post_status(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)
+			return
+
+		if("MessageCentcomm")
+			var/input = tgui_input_text(A, "Choose a message to transmit to Centcomm.", "CentComm Message")
+			if(input && length(input) >= 6)
+				Centcomm_announce(input, A)
+				to_chat(A, "Message transmitted.")
+				log_game("[key_name(A)] has made a Centcomm announcement: [input]")
+			return
+
+		if("nukerequest")
+			var/silent_mode = (params["silent"] == "1" || params["silent"] == "true")
+			var/input = tgui_input_text(A, "Enter the reason for requesting the nuclear self-destruct codes.", "Self Destruct Code Request")
+			if(input && length(input) >= 6)
+				Nuke_request(input, A)
+				to_chat(A, SPAN_NOTICE("Request sent."))
+				log_game("[key_name(A)] has requested the nuclear codes from Centcomm")
+				if(!silent_mode)
+					GLOB.major_announcement.Announce("[A.name] запросил коды для запуска механизма ядерного самоуничтожения станции. В ближайшее время будет отправлено уведомление о подтверждении или отклонении данного запроса.", "ВНИМАНИЕ: Запрос кода самоуничтожения станции.", 'sound/AI/nuke_codes.ogg')
+			return
+
+		if("test_sound")
+			var/sound_name = params["sound"]
+			var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg')
+			if(sounds[sound_name])
+				playsound(A, sounds[sound_name], 50, FALSE)
+			return
+
+		if("make_cc_announcement")
+			var/subtitle = params["subtitle"] || "Отчёт от Системы"
+			var/title = params["title"] || "Nexus Broadcast"
+			var/text = params["text"]
+			var/sound_name = params["beepsound"] || "Beep"
+			var/classified = (params["classified"] == "1")
+			if(!text || length(text) < 6)
+				to_chat(A, SPAN_WARNING("Message is too short (minimum 6 characters)."))
+				return
+			var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg')
+			var/sound_to_play = sounds[sound_name] || 'sound/AI/commandreport.ogg'
+			if(!classified)
+				GLOB.major_announcement.Announce(text, new_title = subtitle, new_subtitle = title, new_sound = sound_to_play)
+			else
+				GLOB.command_announcer.autosay("На всех коммуникационных консолях было распечатано конфиденциальное сообщение от [A.name].")
+				for(var/obj/machinery/computer/communications/C in GLOB.shuttle_caller_list)
+					if(!(C.stat & (BROKEN|NOPOWER)))
+						var/obj/item/paper/P = new /obj/item/paper(C.loc)
+						P.name = "paper- '[subtitle] - [title]'"
+						P.info = text
+			log_game("[key_name(A)] made a Nexus announcement: [text]")
+			return
+
+		if("setstat")
+			var/new_type = text2num(params["statdisp"])
+			var/new_alert = params["alert"]
+			current_display_type = new_type
+			if(new_type == STATUS_DISPLAY_ALERT)
+				current_display_icon = new_alert
+			else
+				current_display_icon = "default"
+			for(var/obj/machinery/computer/communications/C in GLOB.shuttle_caller_list)
+				if(!QDELETED(C) && !(C.stat & (BROKEN|NOPOWER)))
+					C.display_type = new_type
+					if(new_type == STATUS_DISPLAY_ALERT)
+						C.display_icon = new_alert
+					else
+						C.display_icon = null
+			switch(new_type)
+				if(STATUS_DISPLAY_MESSAGE)
+					post_status(STATUS_DISPLAY_MESSAGE, stat_msg1, stat_msg2)
+				if(STATUS_DISPLAY_ALERT)
+					post_status(STATUS_DISPLAY_ALERT, new_alert)
+				else
+					post_status(new_type)
+			return
+
+		if("setmsg1")
+			stat_msg1 = tgui_input_text(A, "Line 1", "Enter Message Text", stat_msg1, encode = FALSE)
+			if(!isnull(stat_msg1))
+				current_display_type = STATUS_DISPLAY_MESSAGE
+				current_display_icon = "default"
+				post_status(STATUS_DISPLAY_MESSAGE, stat_msg1, stat_msg2)
+				for(var/obj/machinery/computer/communications/C in GLOB.shuttle_caller_list)
+					if(!QDELETED(C) && !(C.stat & (BROKEN|NOPOWER)))
+						C.display_type = STATUS_DISPLAY_MESSAGE
+						C.display_icon = null
+			return
+
+		if("setmsg2")
+			stat_msg2 = tgui_input_text(A, "Line 2", "Enter Message Text", stat_msg2, encode = FALSE)
+			if(!isnull(stat_msg2))
+				current_display_type = STATUS_DISPLAY_MESSAGE
+				current_display_icon = "default"
+				post_status(STATUS_DISPLAY_MESSAGE, stat_msg1, stat_msg2)
+				for(var/obj/machinery/computer/communications/C in GLOB.shuttle_caller_list)
+					if(!QDELETED(C) && !(C.stat & (BROKEN|NOPOWER)))
+						C.display_type = STATUS_DISPLAY_MESSAGE
+						C.display_icon = null
+			return
