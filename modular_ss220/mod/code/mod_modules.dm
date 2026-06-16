@@ -56,3 +56,12 @@
 	if(nineteen_eighty_seven_edition && !dont_let_you_come_back)
 		return
 	return ..()
+
+/obj/item/mod/module/storage/nanotrasen
+	name = "MOD блюспейс модуль хранилища Нанотрейзен"
+	desc = "Система хранения, разработанная и усовершенствованная компанией Nanotrasen, использует миниатюрные синие карманы \
+		для обеспечения максимальной эффективности хранения независимо от веса помещенных внутрь предметов."
+	icon = 'modular_ss220/mod/icons/object/mod_modules.dmi'
+	icon_state = "storage_case_nt"
+	max_combined_w_class = 30
+	max_items = 21

@@ -76,7 +76,7 @@
 /datum/security_level/red
 	name = "red"
 	number_level = SEC_LEVEL_RED
-	elevating_to_sound = 'sound/misc/notice1.ogg'
+	elevating_to_sound = 'sound/misc/notice3.ogg'
 	ai_announcement_sound = 'sound/AI/red.ogg'
 	color = "red"
 	status_display_mode = STATUS_DISPLAY_ALERT
@@ -144,7 +144,12 @@
 	elevating_to_announcement_title = "ВНИМАНИЕ! КОД ДЕЛЬТА!"
 	elevating_to_announcement_text = "Механизм самоуничтожения станции задействован. Все члены экипажа обязаны подчиняться всем указаниям, данными Главами отделов. Любые нарушения этих приказов наказуемы уничтожением на месте. Это не учебная тревога."
 
-/datum/security_level/delta/overload
+/datum/security_level/delta_overload
 	number_level = SEC_LEVEL_DELTA_REACTOR
+	elevating_to_sound = 'sound/effects/delta_klaxon.ogg'
+	ai_announcement_sound = 'sound/AI/delta.ogg'
+	color = "orangered"
+	status_display_mode = STATUS_DISPLAY_ALERT
+	status_display_data = "deltaalert"
 	elevating_to_announcement_title = "Attention! Delta-AZ5 security level reached!"
 	elevating_to_announcement_text = "Central Command has disabled all nuclear fission reactor failsafes. Crew are instructed to ensure detonation of the station fission reactor at all costs."

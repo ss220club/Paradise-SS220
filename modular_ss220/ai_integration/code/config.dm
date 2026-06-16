@@ -1,9 +1,12 @@
 /datum/server_configuration
 	var/datum/configuration_section/gpt_configuration/gpt
 
+/datum/server_configuration/load_configuration()
+	gpt = new()
+	. = ..()
+
 /datum/server_configuration/load_all_sections()
 	. = ..()
-	gpt = new()
 	safe_load(gpt, "gpt_configuration")
 
 /datum/configuration_section/gpt_configuration

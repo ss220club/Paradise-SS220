@@ -28,7 +28,10 @@
 		return TRUE
 	CRASH("Race [race_name] mentioned in config of job_configuration_restriction for job [job_name] not found in global var of all species GLOB.all_species")
 
+/datum/server_configuration/load_configuration()
+	jobs_restrict = new()
+	. = ..()
+
 /datum/server_configuration/load_all_sections()
 	. = ..()
-	jobs_restrict = new()
 	safe_load(jobs_restrict, "job_configuration_restriction")

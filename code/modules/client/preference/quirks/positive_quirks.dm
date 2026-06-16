@@ -35,6 +35,50 @@
 	trait_to_apply = TRAIT_GLUTTON
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 
+/datum/quirk/lifelike
+	name = "Lifelike"
+	desc = "Ваши протезы конечностей покрыты синтетическим кожей, что придает им естественный \
+			вид. В случае КПБ покрытие распространяется на все части тела, придавая им естественный и органический вид \
+			(за исключением головы в форме монитора). "
+	cost = 4
+
+/datum/quirk/lifelike/apply_quirk_effects(mob/living/carbon/human/target, character)
+	. = ..(target, character)
+	// Apply synthetic skin after robotic limbs are applied or the quirk doesn't work very well
+	RegisterSignal(target, COMSIG_HUMAN_ROBOTIC_LIMBS_APPLIED, PROC_REF(apply_synthetic_skin_on_signal))
+
+/datum/quirk/lifelike/proc/apply_synthetic_skin_on_signal(mob/living/carbon/human/target)
+	SIGNAL_HANDLER // COMSIG_HUMAN_ROBOTIC_LIMBS_APPLIED
+
+	for(var/obj/item/organ/external/limb as anything in target.bodyparts)
+		if(!limb)
+			continue
+
+		// Skip monitor heads
+		if(limb.limb_name == "head" && limb.model)
+			var/datum/robolimb/R = GLOB.all_robolimbs[limb.model]
+			if(R && R.is_monitor)
+				continue
+
+		if(ismachineperson(target) || limb.is_robotic())
+			limb.has_synthetic_skin = TRUE
+			// Apply owner's skin color to synthetic skin
+			limb.synthetic_skin_colour = target.skin_colour
+			// Set real identity for head
+			if(limb.limb_name == "head")
+				limb.synthetic_skin_identity = target.dna.real_name
+			// Clear cached limb icon because otherwise it's sticky
+			limb.force_icon = null
+			// Force mob icon regeneration
+			limb.mob_icon = null
+			limb.compile_icon()
+
+	// Now rebuild appearance
+	target.update_body(rebuild_base = TRUE)
+
+	// Unregister the signal since we're done with it
+	UnregisterSignal(target, COMSIG_HUMAN_ROBOTIC_LIMBS_APPLIED)
+
 /obj/item/storage/box/papersack/prepped_meal
 	name = "packed meal"
 	var/list/entree_options = list(
@@ -98,7 +142,7 @@
 
 /datum/quirk/upgraded_lungs
 	name = "Upgraded Cybernetic Lungs"
-	desc  = "Ваши легкие заменены на продвинутые кибернетические."
+	desc  = "Ваши легкие заменены на продвинутые кибернетические. Несовместимо с расой КПБ."
 	cost = 3
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/lungs/cybernetic/upgraded
@@ -115,14 +159,16 @@
 
 /datum/quirk/culinary_implant
 	name = "IPC Culinary Implant"
-	desc = "То ли вы, то ли ваш создатель хотели, чтобы вы выглядели более естественно, и установили вам искусственный рот и живот."
+	desc = "То ли вы, то ли ваш создатель хотели, чтобы вы выглядели более естественно, и установили вам искусственный \
+			рот и живот. Совместимо только с расой КПБ"
 	cost = 1
 	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/chest/ipc_food
 
 /datum/quirk/home_cook
 	name = "Home Cook"
-	desc = "У вас есть опыт работы на кухне, и вы можете проверить кухонную технику, чтобы убедиться, что из продуктов внутри получится полноценное блюдо. Шеф-повара уже умеют это делать."
+	desc = "У вас есть опыт работы на кухне, и вы можете проверить кухонную технику, чтобы убедиться, что из \
+			продуктов внутри получится полноценное блюдо. Шеф-повара уже умеют это делать."
 	cost = 1
 	trait_to_apply = TRAIT_KNOWS_COOKING_RECIPES
 
@@ -146,7 +192,7 @@
 
 /datum/quirk/breathing_tube
 	name = "Breathing Tube"
-	desc  = "Вам вживили дыхательную трубку."
+	desc  = "Вам вживили дыхательную трубку. Несовместимо с расой КПБ."
 	cost = 1
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube

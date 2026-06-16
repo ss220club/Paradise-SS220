@@ -18,7 +18,9 @@
 /turf/simulated/floor/carpet/arcade,
 /area/ruin/space/spacehotelv1/guestroom2)
 "at" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 1
 	},
@@ -225,7 +227,9 @@
 /turf/simulated/wall/indestructible,
 /area/ruin/space/spacehotelv1/centralhallway)
 "bL" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/guestroom3)
 "bM" = (
@@ -299,7 +303,8 @@
 	},
 /obj/machinery/door/airlock{
 	id_tag = "gstroom6";
-	name = "Appartment 6"
+	name = "Appartment 6";
+	dir = 4
 	},
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/guestroom6)
@@ -535,7 +540,9 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forestarboardmaints)
 "ez" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/turf_decal/siding/wood/neutral/end{
 	dir = 8
 	},
@@ -648,7 +655,9 @@
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 1
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/centralhallway)
 "fr" = (
@@ -678,7 +687,9 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi2)
 "fF" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/spacehotelv1/entryhallway)
@@ -841,7 +852,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/spacehotelv1/centralhallway)
 "hn" = (
@@ -894,11 +907,15 @@
 	},
 /area/space/nearstation)
 "hG" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/spacehotelv1/centralhallway)
 "hH" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/spacehotelv1/kitchen)
 "hI" = (
@@ -1140,7 +1157,8 @@
 /area/ruin/space/spacehotelv1/forestarboardmaints)
 "jJ" = (
 /obj/machinery/door/airlock/bathroom{
-	id_tag = "restoom1"
+	id_tag = "restoom1";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
@@ -1181,7 +1199,9 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi2)
 "jZ" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -1247,7 +1267,9 @@
 /turf/simulated/floor/carpet/black,
 /area/ruin/space/spacehotelv1/reception)
 "kC" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -1457,7 +1479,8 @@
 "lU" = (
 /obj/machinery/door/airlock{
 	id_tag = "gstroom3";
-	name = "Appartment 3"
+	name = "Appartment 3";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1513,7 +1536,9 @@
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 8
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/structure/curtain/black,
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/restoraunt3)
@@ -1570,14 +1595,15 @@
 /area/ruin/space/spacehotelv1/forehallway)
 "mR" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "ext_eva_door2"
+	id_tag = "ext_eva_door2";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/random/dirt/often,
 /obj/structure/fans/tiny,
+/obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi1)
 "mT" = (
@@ -1699,7 +1725,9 @@
 /turf/simulated/floor/carpet,
 /area/ruin/space/spacehotelv1/restoraunt1)
 "nP" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -1800,7 +1828,8 @@
 "os" = (
 /obj/machinery/door/airlock{
 	id_tag = "gstroom1";
-	name = "Appartment 1"
+	name = "Appartment 1";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1969,7 +1998,9 @@
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/forehallway)
 "pJ" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forestarboardmaints)
@@ -2323,7 +2354,8 @@
 /area/ruin/space/spacehotelv1/reception)
 "tc" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "ext_shuttle_door"
+	id_tag = "ext_shuttle_door";
+	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/fans/tiny,
@@ -2378,11 +2410,13 @@
 /turf/simulated/floor/carpet,
 /area/ruin/space/spacehotelv1/restoraunt1)
 "to" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/effect/spawner/random/dirt/often,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi1)
 "tq" = (
@@ -2545,6 +2579,12 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/restoraunt1)
+"uy" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/spacehotelv1/forestarboardmaints)
 "uA" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/bag/tray{
@@ -2934,13 +2974,11 @@
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/guestroom3)
 "xl" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/effect/turf_decal/siding/wood/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood/neutral,
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 8
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
 	},
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/centralhallway)
@@ -3041,7 +3079,9 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forestarboardmaints)
 "xO" = (
-/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/airlock/engineering{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -3439,7 +3479,8 @@
 "AZ" = (
 /obj/machinery/door/airlock{
 	name = "Appartment 4";
-	id_tag = "gstroom4"
+	id_tag = "gstroom4";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3461,19 +3502,6 @@
 	icon_state = "solarpanel"
 	},
 /area/space/nearstation)
-"Bf" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/turf_decal/siding/wood/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood/neutral,
-/obj/effect/turf_decal/siding/wood/neutral{
-	dir = 4
-	},
-/turf/simulated/floor/wood/oak,
-/area/ruin/space/spacehotelv1/centralhallway)
 "Bi" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3510,6 +3538,15 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/forehallway)
+"Bu" = (
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/ruin/space/spacehotelv1/centralhallway)
 "By" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable{
@@ -3567,8 +3604,12 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/space/spacehotelv1/kitchen)
 "Ch" = (
-/obj/machinery/door/airlock/public/glass,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/turf_decal/tiles/department/medical/checker,
 /turf/simulated/floor/plasteel/white,
 /area/ruin/space/spacehotelv1/barber)
@@ -3618,7 +3659,9 @@
 	},
 /area/ruin/space/spacehotelv1/guestroom1)
 "Cv" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -3669,8 +3712,12 @@
 	},
 /area/ruin/space/spacehotelv1/entryhallway)
 "Dh" = (
-/obj/machinery/door/airlock,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -3935,7 +3982,9 @@
 /turf/simulated/floor/carpet/red,
 /area/ruin/space/spacehotelv1/guestroom1)
 "Fk" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi1)
 "Fl" = (
@@ -3969,7 +4018,9 @@
 /turf/simulated/floor/carpet,
 /area/ruin/space/spacehotelv1/restoraunt1)
 "Fv" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -4087,7 +4138,9 @@
 /turf/simulated/floor/plasteel/white,
 /area/ruin/space/spacehotelv1/barber)
 "Gh" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/turf_decal/siding/wood/neutral,
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 1
@@ -4138,17 +4191,6 @@
 /obj/structure/sign/poster/random/directional/north,
 /turf/simulated/floor/carpet/grimey,
 /area/ruin/space/spacehotelv1/forehallway)
-"Gy" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/effect/turf_decal/siding/wood/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/neutral{
-	dir = 1
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/wood/oak,
-/area/ruin/space/spacehotelv1/centralhallway)
 "Gz" = (
 /obj/structure/table/wood/fancy,
 /obj/item/paicard,
@@ -4219,7 +4261,9 @@
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/reception)
 "Hb" = (
-/obj/machinery/door/airlock/freezer,
+/obj/machinery/door/airlock/freezer{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/spacehotelv1/kitchen)
 "Hd" = (
@@ -4282,11 +4326,6 @@
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forestarboardmaints)
-"HP" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plasteel/dark,
-/area/ruin/space/spacehotelv1/centralhallway)
 "HU" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/plasteel,
@@ -4485,18 +4524,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/guestroom1)
-"JO" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/siding/wood/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/neutral,
-/obj/effect/turf_decal/siding/wood/neutral{
-	dir = 1
-	},
-/turf/simulated/floor/wood/oak,
-/area/ruin/space/spacehotelv1/bar)
 "JR" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4574,11 +4601,13 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor,
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/wood/neutral,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 1
 	},
@@ -4626,7 +4655,9 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/restoraunt3)
 "KJ" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/guestroom2)
 "KQ" = (
@@ -4646,7 +4677,9 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forestarboardmaints)
 "KU" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -4775,8 +4808,10 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
 /obj/effect/spawner/random/dirt/often,
-/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi2)
 "LP" = (
@@ -5038,7 +5073,9 @@
 	},
 /area/ruin/space/spacehotelv1/entryhallway)
 "NU" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/turf_decal/siding/wood/neutral/end{
 	dir = 4
 	},
@@ -5500,6 +5537,12 @@
 	icon_state = "showroomfloor"
 	},
 /area/ruin/space/spacehotelv1/guestroom3)
+"RT" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/space/spacehotelv1/centralhallway)
 "RW" = (
 /turf/simulated/floor/plasteel,
 /area/ruin/space/spacehotelv1/kitchen)
@@ -5605,12 +5648,14 @@
 /turf/simulated/wall,
 /area/ruin/space/spacehotelv1/restoraunt1)
 "Tf" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/random/dirt/often,
 /obj/structure/fans/tiny,
+/obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi1)
 "Tl" = (
@@ -5771,7 +5816,8 @@
 "UH" = (
 /obj/machinery/door/airlock{
 	id_tag = "gstroom5";
-	name = "Appartment 5"
+	name = "Appartment 5";
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -5994,6 +6040,22 @@
 	},
 /turf/template_noop,
 /area/space/nearstation)
+"VZ" = (
+/obj/effect/turf_decal/siding/wood/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/neutral,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/neutral{
+	dir = 1
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/turf/simulated/floor/wood/oak,
+/area/ruin/space/spacehotelv1/bar)
 "Wa" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
@@ -6080,6 +6142,27 @@
 /obj/effect/spawner/random/dirt/often,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forestarboardmaints)
+"WL" = (
+/obj/effect/turf_decal/siding/wood/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/neutral{
+	dir = 1
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/turf/simulated/floor/wood/oak,
+/area/ruin/space/spacehotelv1/centralhallway)
 "WM" = (
 /obj/structure/table/wood/poker,
 /obj/item/ashtray/bronze,
@@ -6161,7 +6244,9 @@
 	},
 /area/space/nearstation)
 "XC" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -6201,9 +6286,6 @@
 /turf/simulated/floor/carpet/arcade,
 /area/ruin/space/spacehotelv1/guestroom2)
 "XV" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
 /obj/effect/turf_decal/siding/wood/neutral,
 /obj/effect/turf_decal/siding/wood/neutral{
 	dir = 4
@@ -6212,6 +6294,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/restoraunt1)
 "XX" = (
@@ -6338,9 +6421,7 @@
 /turf/simulated/floor/wood/oak,
 /area/ruin/space/spacehotelv1/bar)
 "Zf" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -9341,7 +9422,7 @@ UO
 pv
 DY
 tO
-ob
+RT
 QA
 QA
 Ak
@@ -9554,12 +9635,12 @@ AN
 GA
 ZU
 do
-HP
+Bu
 QA
 QA
 QA
 QA
-Gy
+WL
 Kh
 Fx
 oF
@@ -9584,7 +9665,7 @@ Kh
 tq
 Kh
 Kh
-JO
+VZ
 UW
 SB
 SB
@@ -9654,7 +9735,7 @@ tC
 fr
 xJ
 hk
-Bf
+IE
 IE
 QX
 QX
@@ -10660,7 +10741,7 @@ eF
 fk
 tD
 iq
-jE
+uy
 DE
 DE
 DE

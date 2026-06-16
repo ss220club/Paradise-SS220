@@ -455,9 +455,12 @@
 
 	if(holder && holder.restricted_by_2fa)
 		to_chat(src,SPAN_BOLDANNOUNCEOOC("<big>You do not have 2FA enabled. Admin verbs will be unavailable until you have enabled 2FA.\nTo setup 2FA, head to the following menu: <a href='byond://?_src_=prefs;preference=tab;tab=[TAB_GAME]'>Game Preferences</a>"))  // Very fucking obvious
+
+	#ifdef SERVERREGIONS
 	// Tell client about their connection
 	to_chat(src, SPAN_NOTICE("You are currently connected [prefs.server_region ? "via the <b>[prefs.server_region]</b> relay" : "directly"] to Paradise."))
 	to_chat(src, SPAN_NOTICE("You can change this using the <code>Change Region</code> verb in the OOC tab, as selecting a region closer to you may reduce latency."))
+	#endif
 
 	// SS220 EDIT START - Species bans
 	jbh.reload_jobbans(src)
@@ -1160,6 +1163,7 @@
 	popup.set_content(output)
 	popup.open(FALSE)
 
+#ifdef SERVERREGIONS
 /client/verb/change_region()
 	set category = "OOC"
 	set name = "Change Region"
@@ -1188,6 +1192,7 @@
 		src << link("byond://[GLOB.configuration.url.server_url]")
 	else
 		src << link(GLOB.configuration.system.region_map[choice])
+#endif
 
 /client/proc/set_eye(new_eye)
 	if(new_eye == eye)
