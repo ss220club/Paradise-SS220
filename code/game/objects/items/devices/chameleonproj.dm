@@ -215,10 +215,10 @@
 
 /obj/item/borg_chameleon/proc/toggle(mob/living/silicon/robot/syndicate/saboteur/user)
 	if(active)
-		to_chat(user, SPAN_NOTICE("You reconfigure [src]."))
+		to_chat(user, SPAN_NOTICE("Вы перенастроили [src.declent_ru(NOMINATIVE)]."))
 		activate(user)
 		return
-	to_chat(user, SPAN_NOTICE("You activate [src]."))
+	to_chat(user, SPAN_NOTICE("Вы активировали [src.declent_ru(NOMINATIVE)]."))
 	apply_wibbly_filters(user)
 	if(do_after(user, 5 SECONDS, target = user) && user.cell.use(activation_cost))
 		activate(user)
@@ -248,15 +248,15 @@
 	var/examine_text = "you shouldn't see this"
 	switch(selected_module)
 		if("Mining")
-			examine_text = "miner robot module"
+			examine_text = "шахтёрский модуль киборга"
 		if("Service")
-			examine_text = "service robot module"
+			examine_text = "сервисный модуль киборга"
 		if("Medical")
-			examine_text = "medical robot module"
+			examine_text = "медицинский модуль киборга"
 		if("Janitor")
-			examine_text = "janitorial robot module"
+			examine_text = "уборочный модуль киборга"
 		if("Engineering")
-			examine_text = "engineering robot module"
+			examine_text = "инженерный модуль киборга"
 		if("Cancel Cloaking")
 			deactivate(user)
 			return

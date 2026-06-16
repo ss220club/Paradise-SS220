@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(occupants_by_key)
 	card.registered_name = human.real_name
 	card.sex = capitalize(human.gender)
 	card.age = human.age
-	card.name = "[card.registered_name]'s ID Card ([card.assignment])"
+	card.name = "ID - [card.registered_name] ([card.assignment])"
 	card.photo = get_id_photo(human)
 	card.owner_uid = human.UID()
 	card.owner_ckey = human.ckey
