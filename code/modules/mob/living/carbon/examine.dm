@@ -156,9 +156,9 @@
 					item_words = "[item.blood_color != "#030303" ? ru_blood_stained(item) : ru_oil_stained(item)] [item.declent_ru(ACCUSATIVE)]"
 				var/submsg = "[ru_p_they(TRUE)] [action] [bicon(item)] [item_words]"
 				if(accessories)
-					submsg += " с [accessories]"
+					submsg += ", закрепляя поверх [accessories]"
 				if(limb_name)
-					submsg += " [preposition] [limb_name]"
+					submsg += "[preposition] [limb_name]"
 				if(item.blood_DNA)
 					submsg = "[SPAN_WARNING("[submsg]!")]\n"
 				else

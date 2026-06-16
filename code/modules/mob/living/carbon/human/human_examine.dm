@@ -1,22 +1,22 @@
 /mob/living/carbon/human/examine_visible_clothing(skip_gloves = FALSE, skip_suit_storage = FALSE, skip_jumpsuit = FALSE, skip_shoes = FALSE, skip_mask = FALSE, skip_ears = FALSE, skip_eyes = FALSE, skip_face = FALSE)
 	var/list/message_parts = list(
 // SS220 EDIT START - FULL RU TRANSLATE TO MOB EXAMINE (ПОЛНЫЙ ПЕРЕВОД ОСМОТРА СУЩЕСТВ)
-		list("[ru_p_hold()]", l_hand, "в", "левой руке"),
-		list("[ru_p_hold()]", r_hand, "в", "правой руке"),
-		list("[ru_p_wear()]", head, "на", "голове"),
-		list("[ru_p_wear()]", neck, "на", "шее"),
-		list("[ru_p_wear()]", !skip_jumpsuit && w_uniform, null, null, length(w_uniform?.accessories) && "[english_accessory_list(w_uniform)]"),
+		list("[ru_p_hold()]", l_hand, " в", "левой руке"),
+		list("[ru_p_hold()]", r_hand, " в", "правой руке"),
+		list("[ru_p_wear()]", head, " на", "голове"),
+		list("[ru_p_wear()]", neck, " на", "шее"),
+		list("[ru_p_wear()]", !skip_jumpsuit && w_uniform, null, null, length(w_uniform?.accessories) && "[russian_accessory_list(w_uniform)]"),
 		list("[ru_p_wear()]", wear_suit, null, null),
-		list("[ru_p_equip()]", !skip_suit_storage && s_store, "на", wear_suit && wear_suit.name),
-		list("[ru_p_carry()]", back, "на", "своей спине"),
-		list("[ru_p_wear()]", !skip_gloves && gloves, "на", "руках"),
-		list("[ru_p_wear()]", belt, "на", "поясе"),
-		list("[ru_p_wear()]", !skip_shoes && shoes, "на", "ногах"),
-		list("[ru_p_wear()]", !skip_mask && wear_mask, "на", "лице"),
+		list("[ru_p_equip()]", !skip_suit_storage && s_store, " на", wear_suit && wear_suit.name),
+		list("[ru_p_carry()]", back, " на", "своей спине"),
+		list("[ru_p_wear()]", !skip_gloves && gloves, " на", "руках"),
+		list("[ru_p_wear()]", belt, " на", "поясе"),
+		list("[ru_p_wear()]", !skip_shoes && shoes, " на", "ногах"),
+		list("[ru_p_wear()]", !skip_mask && wear_mask, " на", "лице"),
 		list("[ru_p_wear()]", glasses,", скрывая свои", "глаза"),
-		list("[ru_p_equip()]", !skip_ears && l_ear, "на", "левом ухе"),
-		list("[ru_p_equip()]", !skip_ears && r_ear, "на", "правом ухе"),
-		list("[ru_p_wear()]", wear_id, "на", "своей груди"),
+		list("[ru_p_equip()]", !skip_ears && l_ear, " на", "левом ухе"),
+		list("[ru_p_equip()]", !skip_ears && r_ear, " на", "правом ухе"),
+		list("[ru_p_wear()]", wear_id, "", ""),
 	// SS220 EDIT END
 	)
 
@@ -227,7 +227,7 @@
 		var/mental_status = hasHUD(user, EXAMINE_HUD_MEDICAL_WRITE) ? "<a href='byond://?src=[UID()];mental=1'>\[[mental]\]</a>" : "\[[mental]\]"
 		msg += "[SPAN_DEPTRADIO("Физическое состояние: ")][medical_status]\n"
 		msg += "[SPAN_DEPTRADIO("Психическое состояние: ")][mental_status]\n"
-		msg += "[SPAN_DEPTRADIO("Медицинские сведения:")] <a href='byond://?src=[UID()];medrecord=`'>\[Просмотреть\]</a> <a href='byond://?src=[UID()];medrecordComment=`'>\[Недавние заметки\]</a> <a href='byond://?src=[UID()];medrecordadd=`'>\[Добавить коммент\]</a>\n"
+		msg += "[SPAN_DEPTRADIO("Медицинские сведения:")] <a href='byond://?src=[UID()];medrecord=`'>\[Просмотреть\]</a> <a href='byond://?src=[UID()];medrecordComment=`'>\[Недавние заметки\]</a> <a href='byond://?src=[UID()];medrecordadd=`'>\[Добавить\]</a>\n"
 
 	if(hasHUD(user, EXAMINE_HUD_SECURITY_READ))
 		var/perpname = get_visible_name(TRUE)
@@ -250,7 +250,7 @@
 
 			var/criminal_status = hasHUD(user, EXAMINE_HUD_SECURITY_WRITE) ? "<a href='byond://?src=[UID()];criminal=1'>\[[criminal]\]</a>" : "\[[criminal]\]"
 			msg += "[SPAN_DEPTRADIO("Криминальный статус:")] [criminal_status]\n"
-			msg += "[SPAN_DEPTRADIO("Досье СБ:")] <a href='byond://?src=[UID()];secrecord=`'>\[Просмотреть\]</a> <a href='byond://?src=[UID()];secrecordComment=`'>\[Недавние заметки\]</a> <a href='byond://?src=[UID()];secrecordadd=`'>\[Добавить коммент\]</a>\n"
+			msg += "[SPAN_DEPTRADIO("Досье СБ:")] <a href='byond://?src=[UID()];secrecord=`'>\[Просмотреть\]</a> <a href='byond://?src=[UID()];secrecordComment=`'>\[Недавние заметки\]</a> <a href='byond://?src=[UID()];secrecordadd=`'>\[Добавить\]</a>\n"
 			msg += "[SPAN_DEPTRADIO("Недавние правки:")] [commentLatest]\n"
 
 	if(hasHUD(user, EXAMINE_HUD_MALF_READ))

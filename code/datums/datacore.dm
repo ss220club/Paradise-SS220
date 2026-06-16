@@ -165,7 +165,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		G.fields["age"]			= H.age
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
 		G.fields["p_stat"]		= "Активен"
-		G.fields["m_stat"]		= "Стабильное"
+		G.fields["m_stat"]		= "Стабилен"
 		G.fields["sex"]			= capitalize(H.gender)
 		G.fields["species"]		= H.dna.species.name
 		G.fields["ai_target"]	= "Отсутствует" // for malf hud
