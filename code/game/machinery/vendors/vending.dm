@@ -47,7 +47,10 @@
 	return initial(product_path.icon_state)
 
 /datum/data/vending_product/from_path/get_name()
-	return initial(product_path.name)
+// SS220 EDIT START - Product list translated to RU and capitalized
+	var/name = declent_ru_initial(initial(product_path.name), NOMINATIVE, initial(product_path.name))
+	return capitalize(name)
+// SS220 EDIT END
 
 /datum/data/vending_product/from_path/vend(turf/where)
 	if(amount > 0)

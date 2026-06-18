@@ -22,7 +22,7 @@
 	our_id.registered_name = H.real_name
 	our_id.sex = capitalize(H.gender)
 	our_id.age = H.age
-	our_id.name = "[our_id.registered_name]'s ID Card ([our_id.assignment])"
+	our_id.name = "ID - [our_id.registered_name] ([our_id.assignment])"
 	our_id.photo = get_id_photo(H)
 	our_id.owner_uid = H.UID()
 	our_id.owner_ckey = H.ckey

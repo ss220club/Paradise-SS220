@@ -37,9 +37,9 @@
 
 /datum/quirk/lifelike
 	name = "Lifelike"
-	desc = "Your prosthetic limbs have been fitted with a synthetic epidermis, making them appear natural. \
-			For IPCs, this covers all body parts, making them look human (except monitor-shaped heads). \
-			For all others, it covers prosthetic limbs."
+	desc = "Ваши протезы конечностей покрыты синтетическим кожей, что придает им естественный \
+			вид. В случае КПБ покрытие распространяется на все части тела, придавая им естественный и органический вид \
+			(за исключением головы в форме монитора). "
 	cost = 4
 
 /datum/quirk/lifelike/apply_quirk_effects(mob/living/carbon/human/target, character)
@@ -142,7 +142,7 @@
 
 /datum/quirk/upgraded_lungs
 	name = "Upgraded Cybernetic Lungs"
-	desc  = "Ваши легкие заменены на продвинутые кибернетические."
+	desc  = "Ваши легкие заменены на продвинутые кибернетические. Несовместимо с расой КПБ."
 	cost = 3
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/lungs/cybernetic/upgraded
@@ -159,14 +159,16 @@
 
 /datum/quirk/culinary_implant
 	name = "IPC Culinary Implant"
-	desc = "То ли вы, то ли ваш создатель хотели, чтобы вы выглядели более естественно, и установили вам искусственный рот и живот."
+	desc = "То ли вы, то ли ваш создатель хотели, чтобы вы выглядели более естественно, и установили вам искусственный \
+			рот и живот. Совместимо только с расой КПБ"
 	cost = 1
 	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/chest/ipc_food
 
 /datum/quirk/home_cook
 	name = "Home Cook"
-	desc = "У вас есть опыт работы на кухне, и вы можете проверить кухонную технику, чтобы убедиться, что из продуктов внутри получится полноценное блюдо. Шеф-повара уже умеют это делать."
+	desc = "У вас есть опыт работы на кухне, и вы можете проверить кухонную технику, чтобы убедиться, что из \
+			продуктов внутри получится полноценное блюдо. Шеф-повара уже умеют это делать."
 	cost = 1
 	trait_to_apply = TRAIT_KNOWS_COOKING_RECIPES
 
@@ -190,7 +192,7 @@
 
 /datum/quirk/breathing_tube
 	name = "Breathing Tube"
-	desc  = "Вам вживили дыхательную трубку."
+	desc  = "Вам вживили дыхательную трубку. Несовместимо с расой КПБ."
 	cost = 1
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube
