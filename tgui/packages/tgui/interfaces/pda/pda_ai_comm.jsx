@@ -44,7 +44,6 @@ export const pda_ai_comm = (props) => {
                 {data.current_level_name || "Unknown"}
               </Box>
             </LabeledList.Item>
-
             <LabeledList.Item label="Change Security Level">
               <Box>
                 {alert_levels && alert_levels.map((slevel) => (

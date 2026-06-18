@@ -177,16 +177,9 @@ export const pda_malf_comm = (props) => {
         <Section title="Nexus Command">
           <LabeledList>
             <LabeledList.Item label="Current Security Level">
-              {alert_levels.map((level) => {
-                if (level.id === current_alert) {
-                  return (
-                    <Box key={level.id} color={level.color || "average"}>
-                      {level.name}
-                    </Box>
-                  );
-                }
-                return null;
-              })}
+              <Box color={data.current_level_color || "red"}>
+                {data.current_level_name || "Unknown"}
+              </Box>
             </LabeledList.Item>
             <LabeledList.Item label="Override Security Level">
               <Box>
@@ -197,7 +190,6 @@ export const pda_malf_comm = (props) => {
                     content={slevel.name}
                     selected={slevel.id === current_alert}
                     disabled={slevel.id === current_alert}
-                    tooltip={slevel.tooltip}
                     onClick={() => act('newalertlevel', { level: slevel.id })}
                   />
                 ))}

@@ -601,33 +601,49 @@
 
 /datum/data/pda/app/malf_comm/update_ui(mob/user as mob, list/data)
 	var/mob/living/silicon/ai/A = user
+
 	data["ai_name"] = A.name
 	data["current_alert"] = SSsecurity_level.get_current_level_as_number()
 
+	// Вычисляем имя и цвет ТЕКУЩЕГО уровня (даже если он выше Красного)
+	var/current_level_name = "Unknown"
+	var/current_level_color = "red"
+
+	switch(data["current_alert"])
+		if(SEC_LEVEL_GREEN)
+			current_level_name = "Green"; current_level_color = "green"
+		if(SEC_LEVEL_BLUE)
+			current_level_name = "Blue"; current_level_color = "blue"
+		if(SEC_LEVEL_RED)
+			current_level_name = "Red"; current_level_color = "red"
+		if(SEC_LEVEL_GAMMA)
+			current_level_name = "Gamma"; current_level_color = "gold"
+		if(SEC_LEVEL_EPSILON)
+			current_level_name = "Epsilon"; current_level_color = "silver"
+		if(SEC_LEVEL_DELTA)
+			current_level_name = "Delta"; current_level_color = "purple"
+
+	data["current_level_name"] = current_level_name
+	data["current_level_color"] = current_level_color
+
+	// Кнопки ТОЛЬКО для ЗК, СК и КК (как у обычного ИИ)
 	data["alert_levels"] = list(
 		list("id" = SEC_LEVEL_GREEN, "name" = "Green", "icon" = "dove", "color" = "green"),
 		list("id" = SEC_LEVEL_BLUE,  "name" = "Blue", "icon" = "eye", "color" = "blue"),
 		list("id" = SEC_LEVEL_RED, "name" = "Red", "icon" = "exclamation", "color" = "red"),
-		list("id" = SEC_LEVEL_GAMMA,  "name" = "Gamma", "icon" = "biohazard", "color" = "gold"),
-		list("id" = SEC_LEVEL_EPSILON, "name" = "Epsilon", "icon" = "skull", "tooltip" = "Epsilon Alert will only activate after 15 or so seconds.", "color" = "silver"),
-		list("id" = SEC_LEVEL_DELTA,  "name" = "Delta", "icon" = "bomb", "color" = "purple"),
 	)
 
+	// Данные для шаттла и звуков
 	var/secondsToRefuel = SSshuttle.secondsToRefuel()
-	var/esc_callable = (SSshuttle.emergency.mode == SHUTTLE_IDLE && !secondsToRefuel)
-	var/esc_status = ""
-
+	data["esc_callable"] = (SSshuttle.emergency.mode == SHUTTLE_IDLE && !secondsToRefuel)
+	data["esc_recallable"] = (SSshuttle.emergency.mode == SHUTTLE_CALL)
+	data["esc_status"] = ""
 	if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 		var/timeleft = SSshuttle.emergency.timeLeft()
-		esc_status = (SSshuttle.emergency.mode == SHUTTLE_CALL) ? "ETA:" : "RECALLING:"
-		esc_status += " [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]"
+		data["esc_status"] = (SSshuttle.emergency.mode == SHUTTLE_CALL) ? "ETA:" : "RECALLING:"
+		data["esc_status"] += " [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 	else if(secondsToRefuel)
-		esc_status = "Refueling: [secondsToRefuel / 60 % 60]:[add_zero(num2text(secondsToRefuel % 60), 2)]"
-
-	data["esc_callable"] = esc_callable
-	data["esc_recallable"] = (SSshuttle.emergency.mode == SHUTTLE_CALL)
-	data["esc_status"] = esc_status
-	data["lastCallLoc"] = SSshuttle.emergencyLastCallLoc ? format_text(SSshuttle.emergencyLastCallLoc.name) : null
+		data["esc_status"] = "Refueling: [secondsToRefuel / 60 % 60]:[add_zero(num2text(secondsToRefuel % 60), 2)]"
 
 	var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg')
 	var/list/sound_keys = list()
@@ -635,6 +651,7 @@
 		sound_keys += sound_name
 	data["possible_cc_sounds"] = sound_keys
 
+	// Данные для Статус-дисплеев
 	data["stat_display"] = list(
 		"type"   = current_display_type,
 		"icon"   = current_display_icon,
