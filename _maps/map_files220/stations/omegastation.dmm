@@ -18630,11 +18630,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/catwalk,
 /area/station/maintenance/solar_maintenance/fore_starboard)
 "bcU" = (
@@ -21561,6 +21561,7 @@
 /obj/structure/curtain,
 /obj/item/soap/deluxe,
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/item/bikehorn/rubberducky/captain,
 /turf/simulated/floor/plasteel/white,
 /area/station/command/office/captain/bedroom)
 "bmV" = (
@@ -47625,6 +47626,16 @@
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 6
 	},
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/surgicaldrill{
+	pixel_x = 1;
+	pixel_y = 3
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics)
 "tjE" = (
@@ -54543,6 +54554,13 @@
 /obj/item/cautery,
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 5
+	},
+/obj/item/bonegel{
+	pixel_y = 6
+	},
+/obj/item/fix_o_vein{
+	pixel_x = 9;
+	pixel_y = 7
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics)
