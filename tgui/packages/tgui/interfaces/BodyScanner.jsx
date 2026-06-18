@@ -318,13 +318,13 @@ const BodyScannerMainOrgansExternal = (props) => {
             <Table.Cell textAlign="right" verticalAlign="top" width="33%" pt={i > 0 && 'calc(0.5rem + 2px)'}>
               <Box color="average" inline>
                 {reduceOrganStatus([
-                  !!o.internalBleeding && 'Internal bleeding',
-                  !!o.burnWound && 'Critical tissue burns',
-                  !!o.lungRuptured && 'Ruptured lung',
-                  !!o.liverCirrhosis && 'Liver cirrhosis',
+                  !!o.internalBleeding && 'Внутреннее кровотечение',
+                  !!o.burnWound && 'Критические ожоги тканей',
+                  !!o.lungRuptured && 'Разрыв лёгкого',
+                  !!o.liverCirrhosis && 'Цирроз печени',
                   !!o.status.broken && o.status.broken,
                   germStatus(o.germ_level),
-                  !!o.open && 'Open incision',
+                  !!o.open && 'Открытый разрез',
                 ])}
               </Box>
               <Box inline>
@@ -337,7 +337,7 @@ const BodyScannerMainOrgansExternal = (props) => {
                     </Box>
                   ),
                 ])}
-                {reduceOrganStatus(o.shrapnel.map((s) => (s.known ? s.name : 'Unknown object')))}
+                {reduceOrganStatus(o.shrapnel.map((s) => (s.known ? s.name : 'Неизвестный объект')))}
               </Box>
             </Table.Cell>
           </Table.Row>

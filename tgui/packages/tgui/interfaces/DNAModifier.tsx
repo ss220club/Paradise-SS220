@@ -117,13 +117,13 @@ const DNAModifierOccupant = (props: DNAModifierOccupantProps) => {
       buttons={
         <>
           <Box color="label" inline mr="0.5rem">
-            Дверной замок:
+            Блокировка:
           </Box>
           <Button
             disabled={!hasOccupant}
             selected={locked}
             icon={locked ? 'toggle-on' : 'toggle-off'}
-            content={locked ? 'Включен' : 'Выключен'}
+            content={locked ? 'Включена' : 'Выключена'}
             onClick={() => act('toggleLock')}
           />
           <Button
@@ -463,7 +463,7 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
         }
       >
         <LabeledList>
-          <LabeledList.Item label="Тип">
+          <LabeledList.Item label="Запись">
             <Button
               icon="arrow-circle-down"
               content="Только внешность"
@@ -680,7 +680,7 @@ const DNAModifierMainRejuvenators = () => {
             </Icon.Stack>
           </Stack.Item>
           <Stack.Item color="label" mb="2rem">
-            <Box bold>Реагенты не обнаружены</Box>
+            <Box bold>Ёмкость не установлена</Box>
           </Stack.Item>
         </Stack>
       )}
