@@ -303,7 +303,7 @@
 	clothes_req = FALSE
 	antimagic_flags = NONE
 
-	selection_activated_message		= SPAN_NOTICE("Ваш разум охлаждается. нажмите на вашу цель для применения способности!")
+	selection_activated_message		= SPAN_NOTICE("Ваш разум охлаждается. Нажмите на вашу цель для применения способности!")
 	selection_deactivated_message	= SPAN_NOTICE("Ваш разум возвращается к норме.")
 	var/list/compatible_mobs = list(/mob/living/carbon/human)
 
