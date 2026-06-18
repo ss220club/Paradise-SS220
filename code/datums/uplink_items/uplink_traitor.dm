@@ -3,8 +3,8 @@
 // JOB SPECIFIC GEAR
 
 /datum/uplink_item/jobspecific
-category = "Профессиональные инструменты"
-excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specific category appearing for nukies
+	category = "Профессиональные инструменты"
+	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specific category appearing for nukies
 
 //Clown
 /datum/uplink_item/jobspecific/clowngrenade
@@ -306,7 +306,10 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 /datum/uplink_item/jobspecific/powergloves
 	name = "Биочип силы"
 	// name = "Power Bio-Chip"
-	desc = "Биочип, который может использовать энергию станции, чтобы нанести короткий электрический разряд по цели. Должен стоять на подключённом кабеле для использования. Активируется alt-кликом или нажатием средней кнопки мыши. Намерение помощи/захвата нанесёт урон выносливости и вызовет дрожание, в то время как намерение вреда/захвата нанесёт урон в зависимости от мощности кабеля, на котором вы стоите. Можно включать/выключать через кнопку действия."
+	desc = "Биочип, который может использовать энергию станции, чтобы нанести короткий электрический разряд по цели. \
+	Владелец должен стоять на подключённом кабеле для использования. Намерение помощи/обезоруживания повысит усталость \
+	жертвы и вызовет дрожь, в то время как намерение вреда/захвата нанесёт урон в зависимости от мощности сети, \
+	на кабеле которой вы стоите. Можно изменять состояние использования по желанию."
 	// desc = "A Bio-Chip that can utilize the power of the station to deliver a short arc of electricity at a target. Must be standing on a powered cable to use. Activated by alt-clicking, or pressing the middle mouse button. Help/disarm intent will deal stamina damage and cause jittering, while harm/grab intent will deal damage based on the power of the cable you're standing on. Can be toggled on / off via the action button."
 	reference = "PG"
 	item = /obj/item/bio_chip_implanter/shock
@@ -316,7 +319,7 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 /datum/uplink_item/jobspecific/meltdown_rod
 	name = "Стержень ядерного расплава"
 	// name = "Nuclear Meltdown Rod"
-	desc = "Специально разработанный ядерный стержень, гарантированно вызывающий расплав любого реактора, в который он помещён. Для тех, кому поручено detonate the station's nuclear warhead, это не поможет достичь этой цели."
+	desc = "Специально разработанный ядерный стержень, гарантированно вызывающий расплавление любого реактора, в который помещён."
 	// desc = "A specially designed nuclear rod, guaranteed to cause the meltdown of any reactor it's placed into. For those tasked with detonating the station's nuclear warhead, this will not achieve that end."
 	reference = "SMDR"
 	item = /obj/item/nuclear_rod/fuel/meltdown
@@ -330,7 +333,9 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 /datum/uplink_item/jobspecific/telegun
 	name = "Телеган"
 	// name = "Telegun"
-	desc = "Чрезвычайно высокотехнологичное энергетическое оружие, использующее самодельную технологию блупространства для телепортации живых целей. Выберите маяк цели на самом телегане; снаряды отправят цели к锁定ному маяку. Может отправлять цели только к маякам в секторе, если они не эммагнуты!"
+	desc = "Чрезвычайно высокотехнологичное энергетическое оружие, использующее технологию Блюспейса для телепортации живых целей. \
+	Выберите целевой маяк и сверы чистого Блюспейса отправят цель к указаному месту. Может отправлять цели только к маякам \
+	в секторе, если они не эммагнуты!"
 	// desc = "An extremely high-tech energy gun that utilizes jury-rigged bluespace technology to teleport away living targets. Select the target beacon on the telegun itself; projectiles will send targets to the beacon locked onto. Can only send targets to beacons in-sector unless they are emagged!"
 	reference = "TG"
 	item = /obj/item/gun/energy/telegun
@@ -344,7 +349,10 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 /datum/uplink_item/jobspecific/syndiemmi
 	name = "Синдикатский MMI"
 	// name = "Syndicate MMI"
-	desc = "Разработанный синдикатом интерфейс человек-машина, который поработит разум любого мозга, вставленного в него, пока он находится внутри. Киборги, созданные с этим MMI, будут permanently slaved to you, но будут казаться имеющими normal set of laws и синхронизированными с ИИ станции, если таковой имеется. Обеспечивает иммунитет к дистанционному детонированию и позволяет преодолевать блокировки, если киборг не также эммагнут. Его также можно вставить в мех, но он не поместится в ядро ИИ."
+	desc = "Разработанный Синдикатом ММИ, который поработит разум любого мозга, вставленного в него, пока он находится внутри. \
+	Киборги, созданные с этим ММИ, получат свод законов Синдиката, но будут казаться имеющими обычный свод законов и \
+	синхронизацию с ИИ станции. Обеспечивает иммунитет к дистанционному детонированию и блокированию шасси, если киборг не \
+	еммагнут. Его также можно вставить в мех, но ММИ не поместится в ядро ИИ."
 	// desc = "A syndicate developed man-machine-interface which will mindslave any brain inserted into it, for as long as it's inside. Cyborgs made with this MMI will be permanently slaved to you, but will appear to have a normal set of laws and be synchronized to the station AI, if present. Provides immunity to remote detonation and allows overriding lockdowns if the cyborg is not also emagged. It can also be inserted into a mech, but will not fit inside an AI core."
 	reference = "SMMI"
 	item = /obj/item/mmi/syndie
@@ -357,7 +365,8 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 /datum/uplink_item/jobspecific/etwenty
 	name = "E20"
 	// name = "The E20"
-	desc = "Кажущийся безобидным кубик, те, кто не боится бросать его для атаки, обнаружат, что его эффекты quite explosive. Имеет четырёхсекундный таймер."
+	desc = "Кажущийся безобидным кубик, но те, кто не боятся бросать его для атаки, почувствуют истиный эффект! \
+	Имеет четырёхсекундный таймер и градацию силы взрыва пропорционально выпавшему числу."
 	// desc = "A seemingly innocent die, those who are not afraid to roll for attack will find its effects quite explosive. Has a four second timer."
 	reference = "ETW"
 	item = /obj/item/dice/d20/e20
@@ -370,7 +379,8 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 /datum/uplink_item/jobspecific/ambrosiacruciatus
 	name = "Семена амброзии Круциатус"
 	// name = "Ambrosia Cruciatus Seeds"
-	desc = "Часть печально известного семейства амброзий, этот вид практически неотличим от амброзии вульгарис, но его ветви содержат отвратительный токсин. Восьми единиц достаточно, чтобы свести жертв с ума."
+	desc = "Часть печально известного семейства амброзий, этот вид практически неотличим от амброзии вульгарис\
+	, но его ветви содержат отвратительный токсин. Восьми юнитов достаточно, чтобы свести жертву с ума!"
 	// desc = "Part of the notorious Ambrosia family, this species is nearly indistinguishable from Ambrosia Vulgaris- but its' branches contain a revolting toxin. Eight units are enough to drive victims insane."
 	reference = "BRO"
 	item = /obj/item/seeds/ambrosia/cruciatus
@@ -381,9 +391,11 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 //Atmos Tech
 
 /datum/uplink_item/jobspecific/contortionist
-	name = "Комбинезон конторциониста"
+	name = "Комбинезон акробата"
 	// name = "Contortionist's Jumpsuit"
-	desc = "Высокоэластичный комбинезон, который поможет вам navigate the ventilation loops of the station internally. Имеет карманы и слот для ID, но не может быть использован без снятия большей части снаряжения, включая рюкзак, пояс, шлем и экзоскелет. Также необходимы свободные руки, чтобы ползать внутри."
+	desc = "Высокоэластичный комбинезон, который поможет вам ползать по станционной вентеляции. Имеет карманы \
+	и слот для ID, но не может быть использован без ношения большей части снаряжения, включая рюкзак, пояс, шлем и МОД. \
+	Также необходимы свободные руки, чтобы ползать внутри."
 	// desc = "A highly flexible jumpsuit that will help you navigate the ventilation loops of the station internally. Comes with pockets and ID slot, but can't be used without stripping off most gear, including backpack, belt, helmet, and exosuit. Free hands are also necessary to crawl around inside."
 	reference = "AIRJ"
 	item = /obj/item/clothing/under/rank/engineering/atmospheric_technician/contortionist
@@ -391,9 +403,11 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 	job = list("Life Support Specialist")
 
 /datum/uplink_item/jobspecific/contortionist_plasmaman
-	name = "Плазменный костюм конторциониста"
+	name = "Комбинезон акробата для плазмаменов"
 	// name = "Contortionist's Plasma Envirosuit"
-	desc = "Высокоэластичный защитный костюм, который поможет вам navigate the ventilation loops of the station internally, специализированный для плазмаменов. Имеет карманы и слот для ID, но не может быть использован без снятия большей части снаряжения, включая рюкзак, пояс и экзоскелет. Также необходимы свободные руки, чтобы ползать внутри."
+	desc = "Высокоэластичный комбинезон, который поможет вам ползать по станционной вентеляции, но только Плазмаменам. Имеет карманы \
+	и слот для ID, но не может быть использован без ношения большей части снаряжения, включая рюкзак, пояс, шлем и МОД. \
+	Также необходимы свободные руки, чтобы ползать внутри."
 	// desc = "A highly flexible envirosuit that will help you navigate the ventilation loops of the station internally, specialized for Plasmamen. Comes with pockets and ID slot, but can't be used without stripping off most gear, including backpack, belt, and exosuit. Free hands are also necessary to crawl around inside."
 	reference = "AIRJP"
 	item = /obj/item/clothing/under/plasmaman/atmospherics/contortionist
@@ -404,7 +418,9 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 /datum/uplink_item/jobspecific/energizedfireaxe
 	name = "Энергетический пожарный топор"
 	// name = "Energized Fire Axe"
-	desc = "Пожарный топор с massive energy charge, встроенной в него. При ударе по кому-то во время заряда он отбросит их назад, одновременно briefly stunning их, но потребуется некоторое время для повторной зарядки. Он также намного острее обычного топора и может пробивать лёгкую броню."
+	desc = "Пожарный топор с крайне мощным регенератором энергии, встроенным в него. При ударе по кому-то во время \
+	полного заряда он отбросит их назад, одновременно ошеломляя их, но потребуется некоторое время для повторной зарядки. \
+	Он также намного острее обычного топора и может прорезать лёгкую броню."
 	// desc = "A fire axe with a massive energy charge built into it. Upon striking someone while charged it will throw them backwards while stunning them briefly, but will take some time to charge up again. It is also much sharper than a regular axe and can pierce light armor."
 	reference = "EFA"
 	item = /obj/item/fireaxe/energized
@@ -449,7 +465,6 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 	job = list("Head of Personnel", "Quartermaster", "Cargo Technician", "Librarian", "Coroner", "Psychiatrist", "Virologist")
 
 // Tarot card generator, librarian and Chaplain
-.
 /datum/uplink_item/jobspecific/tarot_generator
 	name = "Зачарованная колода карт Таро"
 	// name = "Enchanted Tarot Card Deck"
@@ -550,8 +565,8 @@ excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specif
 /datum/uplink_item/species_restricted/cryoregenerative_enhancer
 	name = "Усилитель криорегенерации"
 	// name = "Cryoregenerative Enhancer"
-	desc = "Специально разработанные наномашин
-	desc = "Specially designed nanomachines that enhance the low-temperature regenerative capabilities of drask. Requires supercooled air in the environment or internals to function."
+	desc = "Специально разработанные наномашин"
+	// desc = "Specially designed nanomachines that enhance the low-temperature regenerative capabilities of drask. Requires supercooled air in the environment or internals to function."
 	reference = "CRE"
 	item = /obj/item/cryoregenerative_enhancer
 	cost = 25
