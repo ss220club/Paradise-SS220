@@ -610,7 +610,8 @@
 /datum/uplink_item/dangerous/crossbow
 	name = "Энергетический арбалет"
 	// name = "Energy Crossbow"
-	desc = "Миниатюрный энергетический арбалет, достаточно маленький, чтобы поместиться в карман и незаметно скользнуть в рюкзак. Стреляет болтами с токсином — ядовитым веществом, производимым живым организмом. Сбивает врагов с ног на короткое время. Перезаряжается автоматически."
+	desc = "Миниатюрный энергетический арбалет. Достаточно маленький, чтобы поместиться в карман. Стреляет болтами \
+	отравлеными болтами, которые сбивают цель с ног и сильно истощают её. Перезаряжается автоматически."
 	// desc = "A miniature energy crossbow that is small enough both to fit into a pocket and to slip into a backpack unnoticed by observers. Fires bolts tipped with toxin, a poisonous substance that is the product of a living organism. Knocks enemies down for a short period of time. Recharges automatically."
 	reference = "EC"
 	item = /obj/item/gun/energy/kinetic_accelerator/crossbow
@@ -619,9 +620,10 @@
 	surplus = 50
 
 /datum/uplink_item/dangerous/bulldog_traitor
-	name = "Дробовик «Бульдог»"
+	name = "Дробовик Бульдог"
 	// name = "Bulldog Shotgun"
-	desc = "Компактный и смертоносный: оптимизирован для тех, кто хочет сражаться в ближнем бою. Заряжен резиновой дробью. Дополнительные боеприпасы продаются отдельно."
+	desc = "Компактный и смертоносный: спроектирован для тех, кто хочет сражаться в ближнем бою. \
+	Заряжен резиновой дробью. Дополнительные боеприпасы продаются отдельно."
 	// desc = "Lean and mean: Optimized for people that want to get up close and personal. Comes loaded with rubbershot. Extra Ammo sold separately."
 	reference = "BLSG"
 	item = /obj/item/gun/projectile/automatic/shotgun/bulldog/traitor
@@ -639,11 +641,12 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/dangerous/guardian
-	name = "Голопаразиты"
+	name = "Голопаразит"
 	// name = "Holoparasites"
 	reference = "HPA"
-	desc = "Способные к почти волшебным подвигам благодаря использованию голограмм жёсткого света и наномашин, они требуют органического хозяина в качестве базы и источника топлива. \
-	Голопаразиты не могут интегрироваться с агентами-хамелеонами и вампирами."
+	desc = "Способные к почти невообразимым подвигам благодаря использованию голограмм жёсткого света и наномашин, \
+	они требуют органического хозяина в качестве базы и источника топлива. Из-за особенностей организма цели, \
+	инъекцию нельзя сделать Генокрадам и Вампирами."
 	// desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an organic host as a home base and source of fuel. \
 	// The holoparasites are unable to incoporate themselves to changeling and vampire agents."
 	item = /obj/item/storage/box/syndie_kit/guardian/uplink
