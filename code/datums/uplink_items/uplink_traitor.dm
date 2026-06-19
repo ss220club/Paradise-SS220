@@ -526,7 +526,7 @@
 /datum/uplink_item/species_restricted/supercharge_implant
 	name = "Синтетический био-чип сверхзаряда"
 	// name = "Synthetic Supercharge Bio-chip"
-	desc = "Био-чип, вводимый инъекцией под кожу. При активации вводит химический коктель из реагентов, которые \
+	desc = "Био-чип, устанавливаемый под внешнюю часть корпуса. При активации вводит химический коктель из реагентов, которые \
 	снимают перегруженность внутренних механизмов, устраняют ошибочные данные о направлении передвижения и уменьшают трение \
 	для вывода механизмов на более высокую скорость работы. Имеет 3 капсулы со смесью."
 	// desc = "A bio-chip injected into the body, and later activated manually to inject a chemical cocktail, which has the effect of removing and reducing the time of all stuns and increasing movement speed. Can be activated up to 3 times."
