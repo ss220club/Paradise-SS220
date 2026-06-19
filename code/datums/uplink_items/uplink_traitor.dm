@@ -863,9 +863,10 @@
 
 /// Nukies get Nuclear Uplink Bio-chip instead
 /datum/uplink_item/bio_chips/uplink
-	name = "Биочип аплинка"
+	name = "Биочип Аплинка"
 	// name = "Uplink Bio-chip"
-	desc = "Биочип, вводимый в тело и позже активируемый вручную для открытия аплинка с 50 телекристаллами. Возможность агента открыть аплинк после того, как у него отобрали всё имущество, делает этот имплант превосходным для побега из заточения."
+	desc = "Био-чип, вводимый инъекцией под кожу. По желанию пользователя, открывает виртуальный Аплинк с \
+	50 телекристаллами. Понадобиться, чтобы удивить сокамерников магически материализовавшимся планом побега."
 	// desc = "A bio-chip injected into the body, and later activated manually to open an uplink with 50 telecrystals. The ability for an agent to open an uplink after their possessions have been stripped from them makes this implant excellent for escaping confinement."
 	reference = "UI"
 	item = /obj/item/bio_chip_implanter/uplink
