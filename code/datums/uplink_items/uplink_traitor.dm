@@ -692,9 +692,10 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/stealthy_tools/traitor_belt
-	name = "Пояс предателя"
+	name = "Пояс агента"
 	// name = "Traitor's Toolbelt"
-	desc = "Прочный семислотовый пояс, созданный для ношения широкого ассортимента оружия, боеприпасов и взрывчатки. Он смоделирован по образцу стандартного пояса инструментов NT, чтобы не вызывать подозрений при ношении."
+	desc = "Прочный семикарманный пояс, созданный для ношения широкого ассортимента оружия, боеприпасов и взрывчатки. \
+	Он смоделирован по образцу стандартного пояса инструментов, чтобы не вызывать подозрений при ношении."
 	// desc = "A robust seven-slot belt made for carrying a broad variety of weapons, ammunition and explosives. It's modeled after the standard NT toolbelt so as to avoid suspicion while wearing it."
 	reference = "SBM"
 	item = /obj/item/storage/belt/military/traitor
@@ -702,12 +703,11 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/stealthy_tools/frame
-	name = "Картридж PDA «F.R.A.M.E.»"
+	name = "Картридж П.О.Д.С.Т.А.В.А."
 	// name = "F.R.A.M.E. PDA Cartridge"
-	desc = "При вставке в персональный цифровой помощник этот картридж даёт вам пять PDA-вирусов, которые \
-	при использовании превращают целевой PDA в новый аплинк с нулём ТК и немедленно разблокируют его. \
-	Вы получите код разблокировки при активации вируса, и новый аплинк может быть заряжен \
-	телекристаллами как обычно."
+	desc = "При установке в КПК этот картридж даёт вам пять активаций PDA-вируса, который при превращают целевой PDA \
+	в новый разблокированный Аплинк. Вы получите код от нового Аплинка, и новый КПК может быть заряжен телекристаллами \
+	как обычно."
 	// desc = "When inserted into a personal digital assistant, this cartridge gives you five PDA viruses which \
 	// when used cause the targeted PDA to become a new uplink with zero TCs, and immediately become unlocked.  \
 	// You will receive the unlock code upon activating the virus, and the new uplink may be charged with \
@@ -718,9 +718,9 @@
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 
 /datum/uplink_item/stealthy_tools/voice_modulator
-	name = "Маскировочная маска с модулятором голоса"
+	name = "Маскировочная маска с функцией подавления голоса"
 	// name = "Chameleon Voice Modulator Mask"
-	desc = "Тактическая маска Синдиката, оснащённая технологией хамелеона и модулятором звука для маскировки вашего голоса. \
+	desc = "Тактическая маска Синдиката, оснащённая технологией 'Хамелеон' и модулем шумов для маскировки вашего голоса. \
 	Пока маска активна, ваш голос будет неузнаваем для других."
 	// desc = "A syndicate tactical mask equipped with chameleon technology and a sound modulator for disguising your voice. \
 	// While the mask is active, your voice will sound unrecognizable to others."
@@ -732,7 +732,7 @@
 /datum/uplink_item/stealthy_tools/voice_changer
 	name = "Маскировочная маска с изменителем голоса"
 	// name = "Chameleon Voice Changer Mask"
-	desc = "Противогаз Синдиката, оснащённый технологией хамелеона и изменителем голоса для маскировки вашего голоса. \
+	desc = "Тактическая маска Синдиката, оснащённая технологией 'Хамелеон' и изменителем голоса для маскировки вашего голоса. \
 	Используйте его, чтобы имитировать или скрывать свою личность при разговоре, и никто не догадается!"
 	// desc = "A syndicate gas mask equipped with chameleon technology and a voice changer for disguising your voice. \
 	// Use it to impersonate or obfuscate your identity when talking and make nobody the wiser!"
@@ -744,9 +744,11 @@
 /datum/uplink_item/stealthy_tools/silicon_cham_suit
 	name = "Маскировочный костюм «Большой Брат»"
 	// name = "\"Big Brother\" Obfuscation Suit"
-	desc = "Тактический костюм Синдиката, оснащённый новейшей анти-кремниевой технологией и, как утверждается, биологической технологией, заимствованной у коллективного разума Хамелеонов. \
-	Пока этот костюм надет, вы не сможете быть отслежены или замечены станционным ИИ."
-	// desc = "A syndicate tactical suit equipped with the latest in anti-silicon technology and, allegedly, biological technology learned from the Changeling Hivemind. \
+	desc = "Тактический костюм Синдиката, оснащённый новейшей анти-кремниевой технологией и, как утверждается, \
+	биологической технологией, заимствованной у разума Улья Генокрадов. \
+	Пока этот костюм надет, вы будете ускользать от взора станционного ИИ."
+	// desc = "A syndicate tactical suit equipped with the latest in anti-silicon technology and, allegedly,
+	//biological technology learned from the Changeling Hivemind.
 	// While this suit is worn, you will be unable to be tracked or seen by on-Station AI."
 	reference = "BBOS"
 	item = /obj/item/clothing/under/syndicate/silicon_cham
@@ -1030,10 +1032,11 @@
 	hijack_only = TRUE
 
 /datum/uplink_item/stealthy_tools/chameleon
-	name = "Набор хамелеона"
+	name = "Маскировочный набор"
 	// name = "Chameleon Kit"
-	desc = "Набор предметов, содержащих технологию хамелеона, позволяющую маскироваться практически под что угодно на станции и даже больше! \
-	Из-за сокращения бюджета обувь не обеспечивает защиты от скольжения."
+	desc = "Набор предметов одежды, использующих технологию 'Хамелеон', позволяющую маскироваться практически под \
+	кого угодно на станции и даже больше! Средства, выделенные научному отделу для разработки противоскользящей обуви\
+	, были переданны в фонд изучения розовых вульпкан."
 	// desc = "A set of items that contain chameleon technology allowing you to disguise as pretty much anything on the station, and more! \
 	// Due to budget cuts, the shoes don't provide protection against slipping."
 	reference = "CHAM"
@@ -1042,10 +1045,10 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/stealthy_tools/syndigaloshes
-	name = "Нескользящая обувь хамелеона"
+	name = "Маскировочные ботинки с защитой от скольжения"
 	// name = "No-Slip Chameleon Shoes"
-	desc = "Эта обувь позволит владельцу бегать по мокрым полам и скользким предметам без падений. \
-	Она не работает на сильно смазанных поверхностях."
+	desc = "Эта обувь позволит владельцу бегать по мокрым поверхностям и скользким предметам без падений. \
+	Подошва не поможет на сильно смазанных поверхностях."
 	// desc = "These shoes will allow the wearer to run on wet floors and slippery objects without falling down. \
 	// They do not work on heavily lubricated surfaces."
 	reference = "NSSS"
