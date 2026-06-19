@@ -831,13 +831,12 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/suits/modsuit
-	name = "MOD-костюм Синдиката"
+	name = "MOD-сьют Синдиката"
 	// name = "Syndicate MODsuit"
-	desc = "Страшный MOD-костюм ядерного агента Синдиката. Оснащён бронёй и режимом EVA \
-	для более быстрого передвижения по станции. Переключение костюма в и из \
-	боевого режима даст вам всю мобильность свободной униформы без потери бронирования. \
-	Поставляется с внутренними системами. \
-	Экипаж Nanotrasen, видящий эти костюмы, как известно, паникует."
+	desc = "Устрашающий кроваво красный MOD-сьют ядерного оперативника Синдиката. Оснащён бронепластинами боевого класса и \
+	режимом EVA. Боевой режим выставляет на первое место бронепластины для повышения устоячивости владельца к ранениям и \
+	повышению удобства при передвижении, режим EVA возвращает бронепластины на исходные позиции, что позволяет сделать \
+	МОД-сьют полностью герметичным. Экипаж, обычно, паникует при виде Красных, если только это не СССП."
 	// desc = "The feared MODsuit of a syndicate nuclear agent. Features armor and an EVA mode \
 	// for faster movement on station. Toggling the suit in and out of \
 	// combat mode will allow you all the mobility of a loose fitting uniform without sacrificing armoring. \
@@ -850,10 +849,10 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/suits/modsuit_elite
-	name = "Элитный MOD-костюм Синдиката"
+	name = "Элитный MOD-сьют Синдиката"
 	// name = "Syndicate Elite MODsuit"
-	desc = "Продвинутый MOD-костюм с превосходной бронёй по сравнению со стандартным MOD-костюмом Синдиката. \
-	Экипаж Nanotrasen, видящий эти костюмы, как известно, *действительно* паникует."
+	desc = "Продвинутый MOD-сьют с лучшими бронепластинами, во многом превосходит своего предшественника. \
+	Экипаж, обычно, падает замертво при виде Чёрных."
 	// desc = "An advanced MODsuit with superior armor to the standard Syndicate MODsuit. \
 	// Nanotrasen crew who spot these suits are known to *really* panic."
 	reference = "MSE"
