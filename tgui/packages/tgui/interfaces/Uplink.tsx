@@ -243,7 +243,7 @@ const CartPage = (_properties) => {
         <Section
           fill
           scrollable
-          title={'Current Balance: ' + crystals + 'TC'}
+          title={'Баланс: ' + crystals + 'ТК'}
           buttons={
             <>
               <Button.Checkbox content="Показать описания" checked={showDesc} onClick={() => setShowDesc(!showDesc)} />
