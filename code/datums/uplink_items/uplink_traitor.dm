@@ -795,7 +795,9 @@
 /datum/uplink_item/device_tools/extraction_beacon
 	name = "Сигнальный маяк эвакуации"
 	// name = "Extraction Flare"
-	desc = "Специальная сигнальная ракета для вызова портала эвакуации. Порталу требуется время для генерации, и он будет работать только в определённых комнатах, для которых он предварительно откалиброван. Синдикат оставляет за собой право отказать в портале агентам с определёнными целями."
+	desc = "Специальная сигнальная ракета для вызова портала эвакуации. Порталу требуется время для раскрытия, \
+	и он будет работать только в определённых местах, откалиброваных заранее нашей командой под прикрытием. \
+	Синдикат оставляет за собой право отказать в портале агентам с определёнными целями и в определённое время."
 	// desc = "A special flare used to call in an extraction portal. The portal takes time to generate, and will only work in certain rooms that it is pre-calibrated for. The Syndicate withholds the right to deny a portal to agents with certain objectives."
 	reference = "EXTF"
 	item = /obj/item/wormhole_jaunter/extraction
@@ -805,7 +807,9 @@
 /datum/uplink_item/device_tools/hyper_medipen
 	name = "Гиперрегенеративный медипен"
 	// name = "Hyper-regenerative Medipen"
-	desc = "Автоинжектор, наполненный различными медицинскими химикатами. Он быстро лечит обычные травмы и генетические повреждения, но так же быстро теряет эффективность. Может иметь побочные эффекты при многократном использовании подряд."
+	desc = "Автоинжектор, наполненный различными медицинскими химикатами. Он быстро заживляет обычные травмы \
+	и восстанавливает генетические повреждения, но так же быстро теряет эффективность. Может иметь побочные эффекты \
+	при частом использовании."
 	// desc = "An autoinjector filled with a variety of medical chemicals. It rapidly heals conventional injuries and genetic damage, but loses potency just as quickly. May have side effects if multiple are used in quick succession."
 	reference = "HMP"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/hyper_medipen
@@ -814,9 +818,11 @@
 
 /// Nukies get Diamond Tipped Thermal Safe Drill instead
 /datum/uplink_item/device_tools/thermal_drill
-	name = "Усиливающий термобезопасный бур"
+	name = "Термальная дрель для сейфов"
 	// name = "Amplifying Thermal Safe Drill"
-	desc = "Термобур из карбида вольфрама с магнитными зажимами для сверления закалённых объектов. Оснащён встроенной системой обнаружения безопасности и нанитной системой, чтобы держать вас начеку, если безопасность постучится."
+	desc = "Термобур из карбида вольфрама с магнитными зажимами для сверления закалённых сейфов. \
+	Оснащён встроенной системой обнаружения службы безопасности, чтобы держать вас начеку, \
+	если служба безопасность будет уже на пороге."
 	// desc = "A tungsten carbide thermal drill with magnetic clamps for the purpose of drilling hardened objects. Comes with built in security detection and nanite system, to keep you up if security comes a-knocking."
 	reference = "DRL"
 	item = /obj/item/thermal_drill/syndicate
