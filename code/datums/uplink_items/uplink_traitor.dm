@@ -665,9 +665,9 @@
 /datum/uplink_item/stealthy_weapons/martialarts
 	name = "Свиток боевых искусств"
 	// name = "Martial Arts Scroll"
-	desc = "Этот свиток содержит секреты древней техники боевых искусств. Вы овладеете рукопашным боем, \
-	отражая выстрелы из дальнего оружия в защитной стойке (режим броска). Изучение этого искусства также означает, что вы откажетесь от использования бесчестного дальнобойного оружия. \
-	Не может быть понято агентами-вампирами и хамелеонами."
+	desc = "Этот свиток содержит секреты древней техники боевого искусства. Вы овладеете сильным рукопашным боем, \
+	научитесь отражать выстрелы из дальнобойного оружия в защитной стойке, но примите клятву честного боя, отказавшись \
+	от всего дальнобойного оружия. Записи слишком сложны для понимания их Генокрадами и Вампирами."
 	// desc = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat, \
 	// deflecting ranged weapon fire when you are in a defensive stance (throw mode). Learning this art means you will also refuse to use dishonorable ranged weaponry. \
 	// Unable to be understood by vampire and changeling agents."
@@ -680,9 +680,9 @@
 /datum/uplink_item/stealthy_weapons/bearserk
 	name = "Шкура берсерка"
 	// name = "Bearserker Pelt"
-	desc = "Медвежья шкура, наполняющая носителя духом медведя и знанием оккультного боевого искусства, известного как Ярость Космического Медведя. \
-	Сама шкура также бронирована, обеспечивая владельцу большую выносливость. \
-	Создана с любовью, множеством духов и множеством других духов культом Синдиката, известным как Дети Большой Медведицы."
+	desc = "Медвежья шкура, наполняющая носителя духом медведя и знанием оккультного боевого искусства, известного как \
+	Ярость Космического Медведя. Сама шкура также бронирована, обеспечивая владельцу большую выносливость. \
+	Создана с любовью множеством духов культа Синдиката, известным как Дети Большой Медведицы."
 	// desc = "A bear pelt that infuses the wearer with bear spirits and knowledge of an occultic martial art known as Rage of the Space Bear. \
 	// The pelt itself is also armored, providing the wearer great longevity. \
 	// Made with love, lots of spirits and lots of the other kind of spirits by the Syndicate-affiliated cult, Children of Ursa Major."
@@ -756,8 +756,8 @@
 /datum/uplink_item/stealthy_weapons/sleepy_pen
 	name = "Усыпляющая ручка"
 	// name = "Sleepy Pen"
-	desc = "Шприц, замаскированный под функциональную ручку. Он наполнен мощным анестетиком. \
-	Ручка содержит две дозы смеси. Ручку можно пополнять."
+	desc = "Гипоспрей, замаскированный под функциональную ручку, наполненый мощным снотворным. Ручка содержит две дозы смеси. \
+	Ручку можно пополнять."
 	// desc = "A syringe disguised as a functional pen. It's filled with a potent anesthetic. \
 	// The pen holds two doses of the mixture. The pen can be refilled."
 	reference = "SP"
@@ -766,9 +766,10 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/stealthy_weapons/dart_pistol
-	name = "Набор дротикового пистолета"
+	name = "Набор Дротикомёта"
 	// name = "Dart Pistol Kit"
-	desc = "Миниатюрная версия обычного шприцемёта. Очень тихий при выстреле и может поместиться в любое пространство, куда помещается маленький предмет. Поставляется с 3 шприцами: нокаутирующий яд, нейтрализующий агент и смертельный нейротоксин."
+	desc = "Миниатюрная версия обычного шприцемёта. Очень тихий при выстреле и может поместиться в любой карман. \
+	Поставляется с 3 шприцами: нокаутирующий яд, агент подавления голоса и смертельный нейротоксин."
 	// desc = "A miniaturized version of a normal syringe gun. It is very quiet when fired and can fit into any space a small item can. Comes with 3 syringes: a knockout poison, a silencing agent and a deadly neurotoxin."
 	reference = "DART"
 	item = /obj/item/storage/box/syndie_kit/dart_gun
@@ -780,7 +781,9 @@
 /datum/uplink_item/stealthy_weapons/combat_minus
 	name = "Экспериментальные перчатки Крав Мага"
 	// name = "Experimental Krav Gloves"
-	desc = "Экспериментальные перчатки с установленными наночипами, которые обучают вас Крав Мага при ношении, отличны как дешёвое резервное оружие. Предупреждение: наночипы перезапишут любые другие боевые стили, такие как CQC. Не выглядят так же круто, как у Надзирателя."
+	desc = "Экспериментальные перчатки с установленными наночипами, которые обучают вас искусству Крав Мага при ношении. \
+	Отличны если рассматривать как дешёвое резервное оружие. Предупреждение: наночипы перезапишут любые другие боевые стили, \
+	такие как CQC. Не выглядят так же круто, как у Смотрителя."
 	// desc = "Experimental gloves with installed nanochips that teach you Krav Maga when worn, great as a cheap backup weapon. Warning, the nanochips will override any other fighting styles such as CQC. Do not look as fly as the Warden's"
 	reference = "CGM"
 	item = /obj/item/clothing/gloves/color/black/krav_maga
@@ -970,9 +973,9 @@
 /datum/uplink_item/stealthy_weapons/cqc
 	name = "Руководство по CQC"
 	// name = "CQC Manual"
-	desc = "Руководство, которое обучает одного пользователя тактическому ближнему бою перед самоуничтожением. \
-	Изменяет ваш безоружный урон на нелетальный урон выносливости. \
-	Не ограничивает использование оружия и может использоваться вместе с Перчатками Северной Звезды."
+	desc = "Руководство, которое обучает читателя тактическому ближнему бою. Изменяет ваш стиль боя на максимизацию \
+	изматывания жертвы, а не летальные последствия. Не ограничивает использование оружия и может использоваться вместе \
+	с Перчатками Северной Звезды."
 	// desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing. \
 	// Changes your unarmed damage to deal non-lethal stamina damage. \
 	// Does not restrict weapon usage, and can be used alongside Gloves of the North Star."
