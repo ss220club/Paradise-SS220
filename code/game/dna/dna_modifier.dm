@@ -677,7 +677,7 @@
 						databuf.dna = connected.occupant.dna.Clone()
 						if(ishuman(connected.occupant))
 							databuf.dna.real_name=connected.occupant.name
-						databuf.name = "Уникальное ID"
+						databuf.name = "Уникальный ID"
 						buffers[bufferId] = databuf
 				if("saveUIAndUE")
 					if(connected.occupant && connected.occupant.dna)
@@ -686,7 +686,7 @@
 						databuf.dna = connected.occupant.dna.Clone()
 						if(ishuman(connected.occupant))
 							databuf.dna.real_name=connected.occupant.dna.real_name
-						databuf.name = "Уникальное ID + Ферменты"
+						databuf.name = "Уникальный ID + Ферменты"
 						buffers[bufferId] = databuf
 				if("saveSE")
 					if(connected.occupant && connected.occupant.dna)
