@@ -897,8 +897,9 @@
 /datum/uplink_item/badass/syndiecards
 	name = "Игральные карты Синдиката"
 	// name = "Syndicate Playing Cards"
-	desc = "Специальная колода космических игральных карт с мономолекулярной кромкой и металлическим усилением, что делает их смертельным оружием как при использовании в качестве клинка, так и при бросании. \
-	Вы также можете играть в карточные игры с ними."
+	desc = "Специальная колода игральных карт с заострённой мономолекулярной кромкой и металлическим усилением, \
+	что делает их смертельным оружием как при использовании в качестве клинка, так и при метании в цель. \
+	Вы также можете играть в карточные игры ими!"
 	// desc = "A special deck of space-grade playing cards with a mono-molecular edge and metal reinforcement, making them lethal weapons both when wielded as a blade and when thrown. \
 	// You can also play card games with them."
 	reference = "SPC"
@@ -910,7 +911,7 @@
 /datum/uplink_item/badass/plasticbag
 	name = "Пластиковый пакет"
 	// name = "Plastic Bag"
-	desc = "Простой пластиковый пакет. Хранить в недоступном для маленьких детей месте, не надевать на голову."
+	desc = "Ничем не примечательный пластиковый пакет. Хранить в доступном для детей месте, надевать на голову, носить пиво."
 	// desc = "A simple, plastic bag. Keep out of reach of small children, do not apply to head."
 	reference = "PBAG"
 	item = /obj/item/storage/bag/plasticbag
