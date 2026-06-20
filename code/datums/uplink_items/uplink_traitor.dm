@@ -718,10 +718,10 @@
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 
 /datum/uplink_item/stealthy_tools/voice_modulator
-	name = "Маскировочная маска с функцией подавления голоса"
+	name = "Маскировочная маска с функцией искажения голоса"
 	// name = "Chameleon Voice Modulator Mask"
 	desc = "Тактическая маска Синдиката, оснащённая технологией 'Хамелеон' и модулем шумов для маскировки вашего голоса. \
-	Пока маска активна, ваш голос будет неузнаваем для других."
+	Пока модуль искажения активен, ваш голос будет неузнаваем для других."
 	// desc = "A syndicate tactical mask equipped with chameleon technology and a sound modulator for disguising your voice. \
 	// While the mask is active, your voice will sound unrecognizable to others."
 	reference = "CVMM"
