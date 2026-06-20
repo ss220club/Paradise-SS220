@@ -758,7 +758,7 @@
 /datum/uplink_item/stealthy_weapons/sleepy_pen
 	name = "Усыпляющая ручка"
 	// name = "Sleepy Pen"
-	desc = "Гипоспрей, замаскированный под функциональную ручку, наполненый мощным снотворным. Ручка содержит две дозы смеси. \
+	desc = "Шприц, замаскированный под функциональную ручку, наполненый мощным снотворным. Ручка содержит две дозы смеси. \
 	Ручку можно пополнять."
 	// desc = "A syringe disguised as a functional pen. It's filled with a potent anesthetic. \
 	// The pen holds two doses of the mixture. The pen can be refilled."
