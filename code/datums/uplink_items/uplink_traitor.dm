@@ -852,7 +852,7 @@
 	name = "Элитный MOD-сьют Синдиката"
 	// name = "Syndicate Elite MODsuit"
 	desc = "Продвинутый MOD-сьют с лучшими бронепластинами, во многом превосходит своего предшественника. \
-	Экипаж, обычно, падает замертво при виде Чёрных."
+	Корпораты НТ при виде такой красоты частенько убегают, сверкая пятками."
 	// desc = "An advanced MODsuit with superior armor to the standard Syndicate MODsuit. \
 	// Nanotrasen crew who spot these suits are known to *really* panic."
 	reference = "MSE"
