@@ -919,9 +919,10 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/bundles_tc/contractor
-	name = "Набор подрядчика Синдиката"
+	name = "Набор Контрактора Синдиката"
 	// name = "Syndicate Contractor Kit"
-	desc = "Набор, дающий вам привилегию выполнять контракты на похищение за кредиты и выплаты ТК, которые могут превышать начальную стоимость."
+	desc = "Набор, дающий вам разрешение на выполнение особых поручений на похищение, в обмен на кредиты и дополнительнве телекристаллы.\
+	Подходит только для бывалых агентов."
 	// desc = "A bundle granting you the privilege of taking on kidnapping contracts for credit and TC payouts that can add up to more than its initial cost."
 	reference = "SCOK"
 	cost = 100
@@ -951,9 +952,11 @@
 	return I
 
 /datum/uplink_item/bundles_tc/badass
-	name = "Набор Синдиката"
+	name = "Комплект экипировки и оборудования Синдиката"
 	// name = "Syndicate Bundle"
-	desc = "Наборы Синдиката — это специализированные группы предметов, прибывающих в обычной коробке. Эти предметы в совокупности стоят более 100 телекристаллов. Вы можете выбрать одну из трёх специализаций после покупки."
+	desc = "Специально подобраный набор предметов для выполнения определённой задачи. Эти предметы в совокупности стоят \
+	более 100 телекристаллов. Вы можете выбрать одну из трёх специализаций после покупки или доверится нашему \
+	Отделу принятия сложных решений."
 	// desc = "Syndicate Bundles are specialized groups of items that arrive in a plain box. These items are collectively worth more than 100 telecrystals. You can select one out of three specializations after purchase."
 	reference = "SYB"
 	item = /obj/item/beacon/syndicate/bundle
@@ -961,9 +964,9 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/bundles_tc/surplus_crate
-	name = "Ящик с излишками Синдиката"
+	name = "Ящик профицитной экипировки Синдиката"
 	// name = "Syndicate Surplus Crate"
-	desc = "Ящик, содержащий случайные остатки Синдиката на сумму 250 телекристаллов."
+	desc = "Контейнер, в котором содержатся случайные остатки со склада Синдиката на сумму не менее 250 телекристаллов."
 	// desc = "A crate containing 250 telecrystals worth of random syndicate leftovers."
 	reference = "SYSC"
 	cost = 100
