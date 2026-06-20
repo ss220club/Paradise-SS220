@@ -986,9 +986,9 @@
 /datum/uplink_item/stealthy_weapons/cqc
 	name = "Руководство по CQC"
 	// name = "CQC Manual"
-	desc = "Руководство, которое обучает читателя тактическому ближнему бою. Изменяет ваш стиль боя на максимизацию \
+	desc = "Руководство, которое обучает тактическому ближнему бою. Изменяет ваш стиль боя на максимизацию \
 	изматывания жертвы, а не летальные последствия. Не ограничивает использование оружия и может использоваться вместе \
-	с Перчатками Северной Звезды."
+	с Перчатками Северной Звезды для создания превосходного комбо."
 	// desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing. \
 	// Changes your unarmed damage to deal non-lethal stamina damage. \
 	// Does not restrict weapon usage, and can be used alongside Gloves of the North Star."
