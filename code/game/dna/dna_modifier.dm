@@ -50,7 +50,7 @@
 
 /////////////////////////// DNA MACHINES
 /obj/machinery/dna_scannernew
-	name = "\improper DNA modifier"
+	name = "DNA modifier"
 	desc = "Сканирует структуру ДНК и видоизменяет её."
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "scanner_open"
@@ -69,8 +69,8 @@
 
 /obj/machinery/dna_scannernew/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("Нажмите ALT+ЛКМ чтобы вытащить испытуемого.")
-	. += SPAN_NOTICE("Перетащите курсором вашего испытуемого на ДНК-Модификатор, чтобы начать с ним работать.")
+	. += SPAN_NOTICE("Нажмите ALT+ЛКМ чтобы вытащить испытуемого из [src.declent_ru(GENITIVE)].")
+	. += SPAN_NOTICE("Перетащите курсором вашего испытуемого на [src.declent_ru(ACCUSATIVE)], чтобы начать с ним работать.")
 
 /obj/machinery/dna_scannernew/Initialize(mapload)
 	. = ..()
@@ -178,12 +178,12 @@
 		to_chat(user, SPAN_DANGER("Субъект не должен держать что-либо в руках."))
 		return TRUE
 	if(L.has_buckled_mobs()) //mob attached to us
-		to_chat(user, SPAN_WARNING("[L] не залезает в [src.declent_ru(NOMINATIVE)] из-за слайма на [L.ru_p_them()] голове."))
+		to_chat(user, SPAN_WARNING("[L.declent_ru(NOMINATIVE)] не залезает в [src.declent_ru(NOMINATIVE)] из-за слайма на [L.ru_p_them()] голове."))
 		return TRUE
 	if(L == user)
-		visible_message(SPAN_NOTICE("[user] залезает в [src.declent_ru(NOMINATIVE)]."))
+		visible_message(SPAN_NOTICE("[user.declent_ru(NOMINATIVE)] залезает в [src.declent_ru(ACCUSATIVE)]."))
 	else
-		visible_message(SPAN_NOTICE("[user] помещает [L.declent_ru(GENITIVE)] в [src.declent_ru(NOMINATIVE)]."))
+		visible_message(SPAN_NOTICE("[user.declent_ru(NOMINATIVE)] помещает [L.declent_ru(GENITIVE)] в [src.declent_ru(ACCUSATIVE)]."))
 	put_in(L)
 	if(user.pulling == L)
 		user.stop_pulling()
@@ -193,17 +193,17 @@
 /obj/machinery/dna_scannernew/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, SPAN_WARNING("Сосуд для стабилизатора уже помещен в машину."))
+			to_chat(user, SPAN_WARNING("Ёмкость уже помещена в машину."))
 			return ITEM_INTERACT_COMPLETE
 
 		if(!user.drop_item())
-			to_chat(user, SPAN_WARNING("\The [used] is stuck to you!"))
+			to_chat(user, SPAN_WARNING("Этот предмет слишком привязан к вам!"))
 			return ITEM_INTERACT_COMPLETE
 
 		beaker = used
 		SStgui.update_uis(src)
 		used.forceMove(src)
-		user.visible_message("[user] adds \a [used] to \the [src]!", "You add \a [used] to \the [src]!")
+		user.visible_message("[user.declent_ru(NOMINATIVE)] [ru_p_equip()] [used.declent_ru(ACCUSATIVE)] в [src.declent_ru(NOMINATIVE)]!", "Вы закрепили [used.declent_ru(ACCUSATIVE)] в [src.declent_ru(NOMINATIVE)]!")
 		return ITEM_INTERACT_COMPLETE
 
 	if(istype(used, /obj/item/grab))
@@ -220,11 +220,11 @@
 			return ITEM_INTERACT_COMPLETE
 
 		if(G.affecting.has_buckled_mobs()) //mob attached to us
-			to_chat(user, SPAN_WARNING("[G] не поместится в ДНК-модификатор из-за слайма на [G.affecting.ru_p_them()] голове."))
+			to_chat(user, SPAN_WARNING("[G.declent_ru(NOMINATIVE)] не помещается в [src.declent_ru(ACCUSATIVE)] из-за слайма на [G.affecting.ru_p_them()] голове."))
 			return ITEM_INTERACT_COMPLETE
 
 		if(panel_open)
-			to_chat(usr, SPAN_BOLDNOTICE("Закройте панель техобслуживания [src.declent_ru(GENITIVE)]."))
+			to_chat(usr, SPAN_BOLDNOTICE("Сначала закройте панель техобслуживания [src.declent_ru(GENITIVE)]."))
 			return ITEM_INTERACT_COMPLETE
 
 		put_in(G.affecting)
@@ -299,7 +299,7 @@
 	return occupant.run_armor_check(armor_type = RAD) > NEGATE_MUTATION_THRESHOLD
 
 /obj/machinery/computer/scan_consolenew
-	name = "\improper DNA Modifier access console"
+	name = "DNA Modifier access console"
 	desc = "Позволяет сканировать испытуемого в сканере и модифицировать его ДНК."
 	icon_screen = "dna"
 	icon_keyboard = "med_key"
@@ -327,7 +327,7 @@
 			user.drop_item()
 			used.forceMove(src)
 			disk = used
-			to_chat(user, "Вы вставили [used].")
+			to_chat(user, "Вы вставили [used.declent_ru(ACCUSATIVE)].")
 			SStgui.update_uis(src)
 
 		return ITEM_INTERACT_COMPLETE
@@ -677,7 +677,7 @@
 						databuf.dna = connected.occupant.dna.Clone()
 						if(ishuman(connected.occupant))
 							databuf.dna.real_name=connected.occupant.name
-						databuf.name = "Копия внешности"
+						databuf.name = "Уникальное ID"
 						buffers[bufferId] = databuf
 				if("saveUIAndUE")
 					if(connected.occupant && connected.occupant.dna)
@@ -686,7 +686,7 @@
 						databuf.dna = connected.occupant.dna.Clone()
 						if(ishuman(connected.occupant))
 							databuf.dna.real_name=connected.occupant.dna.real_name
-						databuf.name = "Копия внешности и личности"
+						databuf.name = "Уникальное ID + Ферменты"
 						buffers[bufferId] = databuf
 				if("saveSE")
 					if(connected.occupant && connected.occupant.dna)

@@ -630,7 +630,7 @@ const DNAModifierMainRejuvenators = () => {
       fill
       title="Камера реагентов"
       buttons={
-        <Button disabled={!isBeakerLoaded} icon="eject" content="Извлечь сосуд" onClick={() => act('ejectBeaker')} />
+        <Button disabled={!isBeakerLoaded} icon="eject" content="Извлечь ёмкость" onClick={() => act('ejectBeaker')} />
       }
     >
       {isBeakerLoaded ? (
@@ -660,7 +660,7 @@ const DNAModifierMainRejuvenators = () => {
               }
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Сосуд">
+          <LabeledList.Item label="Название">
             <Box mb="0.5rem">{beakerLabel ? beakerLabel : 'Отсутствует'}</Box>
             {beakerVolume ? (
               <Box color="good">
