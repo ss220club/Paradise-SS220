@@ -695,7 +695,7 @@
 						databuf.dna = connected.occupant.dna.Clone()
 						if(ishuman(connected.occupant))
 							databuf.dna.real_name = connected.occupant.dna.real_name
-						databuf.name = "Неизвестная мутация"
+						databuf.name = "Структурные ферменты"
 						buffers[bufferId] = databuf
 				if("clear")
 					buffers[bufferId] = new /datum/dna2_record()
