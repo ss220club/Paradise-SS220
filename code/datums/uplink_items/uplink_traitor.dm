@@ -1000,8 +1000,9 @@
 /datum/uplink_item/explosives/syndicate_bomb
 	name = "Бомба Синдиката"
 	// name = "Syndicate Bomb"
-	desc = "Бомба Синдиката имеет регулируемый таймер с минимальной настройкой 90 секунд. Заказ бомбы отправляет вам маленький маяк, который телепортирует взрывчатку в ваше местоположение при активации. \
-	Вы можете прикрутить бомбу, чтобы предотвратить её перемещение. Экипаж может попытаться обезвредить бомбу."
+	desc = "Заряд имеет регулируемый таймер с минимальной настройкой в 90 секунд. Заказ бомбы отправляет \
+	вам маленький маяк, который телепортирует взрывчатку в ваше местоположение при активации. \
+	Вы можете опустить захваты, чтобы бомбу нельзя было переместить."
 	// desc = "The Syndicate Bomb has an adjustable timer with a minimum setting of 90 seconds. Ordering the bomb sends you a small beacon, which will teleport the explosive to your location when you activate it. \
 	// You can wrench the bomb down to prevent removal. The crew may attempt to defuse the bomb."
 	reference = "SB"
@@ -1014,8 +1015,9 @@
 /datum/uplink_item/explosives/emp_bomb
 	name = "ЭМИ-бомба"
 	// name = "EMP bomb"
-	desc = "ЭМИ имеет регулируемый таймер с минимальной настройкой 90 секунд. Заказ бомбы отправляет вам маленький маяк, который телепортирует взрывчатку в ваше местоположение при активации. \
-	Вы можете прикрутить бомбу, чтобы предотвратить её перемещение. Экипаж может попытаться обезвредить бомбу. Создает 3 импульса."
+	desc = "ЭМИ-бомба имеет регулируемый таймер с минимальной настройкой в 90 секунд. Заказ бомбы отправляет \
+	вам маленький маяк, который телепортирует взрывчатку в ваше местоположение при активации. \
+	Вы можете опустить захваты, чтобы бомбу нельзя было переместить. Создает мощных 3 импульса."
 	// desc = "The EMP has an adjustable timer with a minimum setting of 90 seconds. Ordering the bomb sends you a small beacon, which will teleport the explosive to your location when you activate it. \
 	// You can wrench the bomb down to prevent removal. The crew may attempt to defuse the bomb. Will pulse 3 times."
 	reference = "SBEMP"
@@ -1033,7 +1035,8 @@
 /datum/uplink_item/explosives/atmosfiregrenades
 	name = "Гранаты плазменного огня"
 	// name = "Plasma Fire Grenades"
-	desc = "Коробка с двумя (2) гранатами, вызывающими большие плазменные пожары. Может использоваться для блокировки доступа к большой области. Наиболее полезна, если у вас есть атмосферный защитный костюм."
+	desc = "Коробка с двумя кластерными гранатами начинёнными до отказа плазмой. Прекрасно справляются с \
+	аннигилированием больших областей. Полезность повышается, если у вас есть костюм защищённый от огня и перепадов давления."
 	// desc = "A box of two (2) grenades that cause large plasma fires. Can be used to deny access to a large area. Most useful if you have an atmospherics hardsuit."
 	reference = "APG"
 	item = /obj/item/storage/box/syndie_kit/atmosfiregrenades
@@ -1068,9 +1071,10 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/explosives/detomatix
-	name = "Картридж PDA «Детоматикс»"
+	name = "Подрывной картридж 'Детоматикс'"
 	// name = "Detomatix PDA Cartridge"
-	desc = "При вставке в персональный цифровой помощник этот картридж даёт вам пять возможностей взорвать PDA членов экипажа, у которых включена функция сообщений. Ударная волна от взрыва собьёт получателя с ног на короткое время и оглушит их на более длительный срок."
+	desc = "При установке в КПК этот картридж даст вам пять копий крайне опасного цифрового вируса, споосбного через месенжер \
+	подрывать чужие КПК. Ударная волна от взрыва собьёт получателя с ног на короткое время и оглушит их на более длительный срок."
 	// desc = "When inserted into a personal digital assistant, this cartridge gives you five opportunities to detonate PDAs of crew members who have their message feature enabled. The concussive effect from the explosion will knock the recipient down for a short period, and deafen them for longer."
 	reference = "DEPC"
 	item = /obj/item/cartridge/syndicate
