@@ -665,8 +665,10 @@
 /mob/living/silicon/examine(mob/user)
 	. = ..()
 	if(silicon_hat)
-		. += "<span class='notice'>[p_they(TRUE)] [p_are()] wearing a [bicon(silicon_hat)] [silicon_hat.name].<span>"
-		. += "<span class='notice'>Use an empty hand on [src] on grab mode to remove [silicon_hat].<span>"
+//SS220 EDIT START - Небольшой переводик надетой шляпы на борга с перестановкой
+		. += "<span class='notice'>[ru_p_they(TRUE)] [ru_p_wear()] [bicon(silicon_hat)] [silicon_hat.declent_ru(ACCUSATIVE)].<span>"
+		. += "<span class='notice'>Для снятия [silicon_hat.declent_ru(GENITIVE)] с [src.declent_ru(GENITIVE)] попробуй [ru_p_them()] коснуться в режиме захвата пустой рукой.<span>"
+//SS220 EDIT END
 
 /mob/living/silicon/plushify(plushie_override, curse_time)
 	. = ..(/obj/item/toy/plushie/borgplushie, curse_time)

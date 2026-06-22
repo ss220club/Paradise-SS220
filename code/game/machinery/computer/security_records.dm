@@ -366,7 +366,7 @@
 					if(!length(answer) || !record_security || !length(state.name))
 						return
 					record_security.fields["comments"] += list(list(
-						header = "Made by [state.name] ([state.rank]) on [GLOB.current_date_string] [station_time_timestamp()]",
+						header = "Добавлены заметки от [state.name] ([state.rank]), время правки - [GLOB.current_date_string] [station_time_timestamp()]",
 						text = answer
 					))
 				if("print_cell_log")
@@ -457,9 +457,9 @@
 				if(4)
 					R.fields["criminal"] = pick(SEC_RECORD_STATUS_NONE, SEC_RECORD_STATUS_ARREST, SEC_RECORD_STATUS_SEARCH, SEC_RECORD_STATUS_MONITOR, SEC_RECORD_STATUS_DEMOTE, SEC_RECORD_STATUS_INCARCERATED, SEC_RECORD_STATUS_PAROLLED, SEC_RECORD_STATUS_RELEASED)
 				if(5)
-					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("*Unconscious*", "Активен", "Физически непригоден")
 				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					R.fields["m_stat"] = pick("*Безумен*", "*Нестабилен*", "*Под надзором*", "Стабилен")
 			continue
 
 		else if(prob(1))

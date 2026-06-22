@@ -90,7 +90,7 @@
 /obj/item/storage/wallet/update_name(updates)
 	. = ..()
 	if(front_id)
-		name = "wallet displaying [front_id]"
+		name = "кошелёк, демонстрирующий [front_id]"
 	else
 		name = initial(name)
 

@@ -164,11 +164,11 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		G.fields["rank"]		= assignment
 		G.fields["age"]			= H.age
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
-		G.fields["p_stat"]		= "Active"
-		G.fields["m_stat"]		= "Stable"
+		G.fields["p_stat"]		= "Активен"
+		G.fields["m_stat"]		= "Стабилен"
 		G.fields["sex"]			= capitalize(H.gender)
 		G.fields["species"]		= H.dna.species.name
-		G.fields["ai_target"]	= "None" // for malf hud
+		G.fields["ai_target"]	= "Отсутствует" // for malf hud
 		G.fields["b_dna"]		= H.dna.unique_enzymes
 
 		// Do some ID card checking stuff here to save on resources
@@ -185,7 +185,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.gen_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			G.fields["notes"] = H.gen_record
 		else
-			G.fields["notes"] = "No notes found."
+			G.fields["notes"] = "Заметки не найдены."
 		G.fields["nt_relation"] = H?.client?.prefs?.active_character?.nanotrasen_relation || "Unknown relation."
 		general += G
 
@@ -206,14 +206,14 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.med_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			M.fields["notes"] = H.med_record
 		else
-			M.fields["notes"] = "No notes found."
+			M.fields["notes"] = "Заметки не найдены."
 		medical += M
 
 		//Security Record
 		var/datum/data/record/S = new()
 		S.fields["id"]			= id
 		S.fields["name"]		= H.real_name
-		S.fields["criminal"]	= "None"
+		S.fields["criminal"]	= "Отсутствует"
 		S.fields["mi_crim"]		= "None"
 		S.fields["mi_crim_d"]	= "No minor crime convictions."
 		S.fields["ma_crim"]		= "None"
@@ -222,7 +222,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.sec_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			S.fields["notes"] = H.sec_record
 		else
-			S.fields["notes"] = "No notes found."
+			S.fields["notes"] = "Заметки не найдены."
 		LAZYINITLIST(S.fields["comments"])
 		security += S
 
