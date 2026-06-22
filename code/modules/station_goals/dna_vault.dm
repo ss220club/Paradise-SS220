@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(non_simple_animals, typecacheof(list(/mob/living/carbon/human/m
 			to_chat(user, "<span clas='warning'>Растение должно быть готовым к сбору урожая для его сканирования.</span>") //Because space dna is actually magic
 			return
 		if(plants[H.myseed.type])
-			to_chat(user, SPAN_NOTICE("Дата об этом растении уже присутствует в хранилище."))
+			to_chat(user, SPAN_NOTICE("Данные об этом растении уже присутствуют в хранилище."))
 			return
 		plants[H.myseed.type] = 1
 		to_chat(user, SPAN_NOTICE("ДНК растений были обновлены в хранилище."))
@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(non_simple_animals, typecacheof(list(/mob/living/carbon/human/m
 				to_chat(user, SPAN_WARNING("Совместимой ДНК не обнаружено."))
 				return
 		if(animals[target.type])
-			to_chat(user, SPAN_NOTICE("Дата о данном животном уже присутствует в хранилище."))
+			to_chat(user, SPAN_NOTICE("Данные об этом животном уже присутствуют в хранилище."))
 			return
 		animals[target.type] = 1
 		to_chat(user, SPAN_NOTICE("ДНК животных были обновлены в хранилище."))
@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(non_simple_animals, typecacheof(list(/mob/living/carbon/human/m
 			to_chat(user, SPAN_NOTICE("У этого гуманоида отсутствует ДНК."))
 			return
 		if(dna[H.dna.uni_identity])
-			to_chat(user, SPAN_NOTICE("Дата о данном гуманоиде уже присутствует в хранилище."))
+			to_chat(user, SPAN_NOTICE("Данные об этом гуманоиде уже присутствуют в хранилище."))
 			return
 		dna[H.dna.uni_identity] = 1
 		to_chat(user, SPAN_NOTICE("ДНК гуманоидов были обновлены в хранилище."))
