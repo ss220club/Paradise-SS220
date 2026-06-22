@@ -1,7 +1,9 @@
-// СНАРЯЖЕНИЕ ТОЛЬКО ДЛЯ ЯДЕРНЫХ АГЕНТОВ
+// NUCLEAR AGENT ONLY GEAR
+
 ////////////////////////////////////////
-// MARK: ОПАСНОЕ ОРУЖИЕ
+// MARK: DANGEROUS WEAPONS
 ////////////////////////////////////////
+
 /datum/uplink_item/dangerous/aps
 	name = "Пистолет-пулемёт Type 230"
 	// name = "Type 230 Machine Pistol"
@@ -119,8 +121,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 ////////////////////////////////////////
-// MARK: ПОДДЕРЖКА И МЕХИ
+// MARK: SUPPORT AND MECHAS
 ////////////////////////////////////////
+
 /datum/uplink_item/support
 	category = "Поддержка и механизированные экзокостюмы"
 	// category = "Support and Mechanized Exosuits"
@@ -197,7 +200,7 @@
 	cost = 125
 
 ////////////////////////////////////////
-// MARK: БОЕПРИПАСЫ
+// MARK: AMMUNITION
 ////////////////////////////////////////
 /datum/uplink_item/ammo/aps
 	name = "Type 230 - магазин 10mm"
@@ -442,8 +445,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 ////////////////////////////////////////
-// MARK: ВЗРЫВЧАТКА
+// MARK: EXPLOSIVES
 ////////////////////////////////////////
+
 /datum/uplink_item/explosives/c4bag
 	name = "Сумка с взрывчаткой C-4"
 	// name = "Bag of C-4 explosives"
@@ -503,12 +507,15 @@
 	surplus = 35
 
 ////////////////////////////////////////
-// MARK: СКРЫТНОЕ ОРУЖИЕ
+// MARK: STEALTHY WEAPONS
 ////////////////////////////////////////
-// Сейчас нет оружия только для ядерных агентов, но если вы хотите добавить одно, поместите его сюда.
+
+// There's no nukie only stealthy weapons right now, but if you want to add one, put it here.
+
 ////////////////////////////////////////
-// MARK: СКРЫТНЫЕ ИНСТРУМЕНТЫ
+// MARK: STEALTHY TOOLS
 ////////////////////////////////////////
+
 /datum/uplink_item/stealthy_tools/clownkit
 	name = "Инфильтрационный набор Honk Brand"
 	// name = "Honk Brand Infiltration Kit"
@@ -521,8 +528,9 @@
 	surplus = 0
 
 ////////////////////////////////////////
-// MARK: УСТРОЙСТВА И ИНСТРУМЕНТЫ
+// MARK: DEVICES AND TOOLS
 ////////////////////////////////////////
+
 /datum/uplink_item/device_tools/diamond_drill
 	name = "Усиливающий термобезопасный бур с алмазным наконечником"
 	// name = "Amplifying Diamond Tipped Thermal Safe Drill"
@@ -633,8 +641,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 ////////////////////////////////////////
-// MARK: КОСМИЧЕСКИЕ КОСТЮМЫ
+// MARK: SPACE SUITS
 ////////////////////////////////////////
+
 /datum/uplink_item/suits/elite_nukie
 	name = "Элитный MOD-костюм Синдиката"
 	// name = "Elite Syndicate MODsuit"
@@ -664,8 +673,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 ////////////////////////////////////////
-// MARK: ИМПЛАНТЫ
+// MARK: IMPLANTS
 ////////////////////////////////////////
+
 /datum/uplink_item/bio_chips/krav_implant
 	name = "Имплант Крав Мага"
 	// name = "Krav Maga Implant"
@@ -706,7 +716,9 @@
 	cost = 50
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
+
 // CYBERNETICS
+
 /datum/uplink_item/cyber_implants/thermals
 	name = "Имплант теплового зрения"
 	// name = "Thermal Vision Implant"
@@ -752,8 +764,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 ////////////////////////////////////////
-// MARK: НАБОРЫ
+// MARK: BUNDLES
 ////////////////////////////////////////
+
 /datum/uplink_item/bundles_tc/c20r
 	name = "Набор C-20r"
 	// name = "C-20r Bundle"
@@ -801,8 +814,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 ////////////////////////////////////////
-// MARK: ИЗМЕНЕНИЕ ЦЕН ДЛЯ ПРЕДАТЕЛЬСКИХ ПРЕДМЕТОВ
+// MARK: PRICES OVERRIDE FOR TRAITOR ITEMS
 ////////////////////////////////////////
+
 /datum/uplink_item/stealthy_weapons/cqc/nuke
 	reference = "NCQC"
 	cost = 40
@@ -844,8 +858,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 ////////////////////////////////////////
-// MARK: ТОЛЬКО ДЛЯ ЯДЕРНЫХ АГЕНТОВ — БЕСПОЛЕЗНАЯ КРУТОСТЬ
+// MARK: NUKIE ONLY POINTLESS BADASSERY
 ////////////////////////////////////////
+
 /datum/uplink_item/badass/confettidrum
 	name = "Бульдог - праздничный магазин 12g"
 	// name = "Bulldog - 12g party Magazine"
