@@ -7,7 +7,8 @@
 /datum/uplink_item/dangerous/aps
 	name = "Пистолет-пулемёт Type 230"
 	// name = "Type 230 Machine Pistol"
-	desc = "Компактный пистолет-пулемёт под патрон 10mm Auto со съёмным магазином на 20 патронов. Идеален для парного использования или как запасное оружие."
+	desc = "Компактный пистолет-пулемёт калибра 10mm Auto со съёмным магазином на 20 патронов. \
+	Идеален для парного использования или как запасное оружие."
 	// desc = "A compact machine pistol, chambered in 10mm Auto with a detachable 20-round box magazine. Perfect for dual wielding or as backup."
 	reference = "APS"
 	item = /obj/item/gun/projectile/automatic/pistol/type_230
