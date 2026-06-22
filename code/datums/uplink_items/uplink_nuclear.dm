@@ -135,7 +135,7 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/support
-	category = "Поддержка и механизированные экзокостюмы"
+	category = "Поддержка и экзокостюмы"
 	// category = "Support and Mechanized Exosuits"
 	surplus = 0
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
@@ -143,7 +143,8 @@
 /datum/uplink_item/support/gygax
 	name = "Экзокостюм Gygax"
 	// name = "Gygax Exosuit"
-	desc = "Лёгкий экзокостюм, окрашенный в тёмные тона. Его скорость и подбор оборудования делают его отличным для атак в стиле «ударил-убежал»."
+	desc = "Лёгкий, окрашенный в тёмные тона и просто модный экзокостюм. Его скорость и подбор модулей \
+	делают его отличным для атак в стиле «ударил-убежал»."
 	// desc = "A lightweight exosuit, painted in a dark scheme. Its speed and equipment selection make it excellent for hit-and-run style attacks."
 	reference = "GE"
 	item = /obj/mecha/combat/gygax/dark/loaded
@@ -152,7 +153,8 @@
 /datum/uplink_item/support/mauler
 	name = "Экзокостюм Mauler"
 	// name = "Mauler Exosuit"
-	desc = "Массивный и невероятно смертоносный экзокостюм Синдиката. Оснащён прицеливанием на дальние дистанции, векторизацией тяги и развёртываемым дымом."
+	desc = "Массивный и невероятно смертоносный экзокостюм Синдиката. Дполнительно оснащён прицеливанием на \
+	дальние дистанции, модулем векторизацией тяги и пятью касетными шашками с густым дымом."
 	// desc = "A massive and incredibly deadly Syndicate exosuit. Features long-range targeting, thrust vectoring, and deployable smoke."
 	reference = "ME"
 	item = /obj/mecha/combat/marauder/mauler/loaded
@@ -161,7 +163,8 @@
 /datum/uplink_item/support/reinforcement
 	name = "Подкрепление"
 	// name = "Reinforcement"
-	desc = "Вызовите дополнительного члена команды. Они не придут ни с каким снаряжением, поэтому вам придётся сохранить немного телекристаллов, чтобы вооружить их тоже."
+	desc = "Отправьте запрос Командованию на пополнение рядов ударного отряда. Новобранец будет снаряжён лишь \
+	стандартной экипировкой, поэтому вам придётся сохранить немного телекристаллов, чтобы вооружить его."
 	// desc = "Call in an additional team member. They won't come with any gear, so you'll have to save some telecrystals \
 	// to arm them as well."
 	reference = "REINF"
@@ -174,8 +177,9 @@
 /datum/uplink_item/support/reinforcement/assault_borg
 	name = "Штурмовой киборг Синдиката"
 	// name = "Syndicate Assault Cyborg"
-	desc = "Киборг, разработанный и запрограммированный для систематического уничтожения не-синдикатского персонала. \
-	Оснащён самовосполняющимся LMG, гранатомётом, энергетическим мечом, эммагом, пинпоинтером, флешем и монтировкой."
+	desc = "Киборг, разработанный и запрограммированный для систематического уничтожения отродья НаноТрейзен. \
+	Оснащён самовосполняющимся LMG, гранатомётом, энергетическим мечом, криптографическим секвенсором, \
+	пинпоинтером, фотонным проектором и монтировкой."
 	// desc = "A cyborg designed and programmed for systematic extermination of non-Syndicate personnel. \
 	// Comes equipped with a self-resupplying LMG, a grenade launcher, energy sword, emag, pinpointer, flash, and crowbar."
 	reference = "SAC"
@@ -186,9 +190,10 @@
 /datum/uplink_item/support/reinforcement/medical_borg
 	name = "Медицинский киборг Синдиката"
 	// name = "Syndicate Medical Cyborg"
-	desc = "Боевой медицинский киборг. Имеет ограниченный наступательный потенциал, но более чем компенсирует это своими возможностями поддержки. \
-	Он оснащён нанитным гипоспреем, медицинским лучемётом, боевым дефибриллятором, полным хирургическим набором, включая энергетическую пилу, эммагом, пинпоинтером и флешем. \
-	Благодаря своей сумке для хранения органов, он может проводить операции так же хорошо, как любой гуманоид."
+	desc = "Боевой медицинский киборг. Имеет ограниченный наступательный потенциал, но более чем компенсирует это своими \
+	возможностями поддержки. Он оснащён нанитным гипоспреем, медицинским лучемётом, продвинутым дефибриллятором, \
+	полным хирургическим набором, включая энергетическую пилу, криптографическим секвенсором, пинпоинтером и фотонным проектором. \
+	Благодаря своей сумке для хранения органов, он может проводить операции так же хорошо, как и любой гуманоид."
 	// desc = "A combat medical cyborg. Has limited offensive potential, but makes more than up for it with its support capabilities. \
 	// It comes equipped with a nanite hypospray, a medical beamgun, combat defibrillator, full surgical kit including an energy saw, an emag, pinpointer, and flash. \
 	// Thanks to its organ storage bag, it can perform surgery as well as any humanoid."
@@ -198,10 +203,11 @@
 	cost = 175
 
 /datum/uplink_item/support/reinforcement/saboteur_borg
-	name = "Киборг-диверсант Синдиката"
+	name = "Киборг-внедрения Синдиката"
 	// name = "Syndicate Saboteur Cyborg"
-	desc = "Стримлайненный инженерный киборг, оснащённый скрытными модулями и инженерным оборудованием. Также неспособен оставить сварочный аппарат в шаттле. \
-	Его хамелеон-проектор позволяет ему маскироваться под киборга Nanotrasen, в дополнение к этому у него есть тепловизор и пинпоинтер."
+	desc = "Инженерный киборг, оснащённый скрытными модулями и инженерным оборудованием. В киборга встроен модуль \
+	голографического проектора, который позволяет ему маскироваться под киборга Nanotrasen. В дополнение к \
+	этому у него есть тепловизор и пинпоинтер."
 	// desc = "A streamlined engineering cyborg, equipped with covert modules and engineering equipment. Also incapable of leaving the welder in the shuttle. \
 	// Its chameleon projector lets it disguise itself as a Nanotrasen cyborg, on top it has thermal vision and a pinpointer."
 	reference = "SSC"
