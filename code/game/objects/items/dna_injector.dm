@@ -1,5 +1,5 @@
 /obj/item/dnainjector
-	name = "Инъектор-ДНК"
+	name = "DNA-Injector"
 	desc = "Инъекция модифицирующая ДНК испытуемого."
 	icon = 'icons/obj/medical.dmi'
 	icon_state = "dnainjector"
@@ -86,7 +86,7 @@
 		H = M
 
 	if(!buf)
-		stack_trace("Применение [src] персонажем [user] на [M] не было правильно исполнено.")
+		stack_trace("Применение [src.declent_ru(GENITIVE)] персонажем [user.declent_ru(NOMINATIVE)] на [M.declent_ru(PREPOSITIONAL)] не было правильно исполнено.")
 		return
 
 	spawn(0) //Some mutations have sleeps in them, like monkey
@@ -144,13 +144,13 @@
 
 
 	if(M != user)
-		M.visible_message(SPAN_DANGER("[user] пытается инъецировать [M] используя [src]!"), SPAN_USERDANGER("[user] is trying to inject [M] with [src]!"))
+		M.visible_message(SPAN_DANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [M.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"), SPAN_USERDANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [M.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"))
 		if(!do_mob(user, M))
 			return
-		M.visible_message("<span class='danger'>[user] провёл инъекцию [M] используя [src]!", \
-						"<span class='userdanger'>[user] провёл инъекцию [M] используя [src]!")
+		M.visible_message("<span class='danger'>[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!", \
+						"<span class='userdanger'>[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!")
 	else
-		to_chat(user, SPAN_NOTICE("Вы инъецировали себя используя [src]."))
+		to_chat(user, SPAN_NOTICE("Вы инъецировали себя используя [src.declent_ru(ACCUSATIVE)]."))
 
 	add_attack_logs(user, M, attack_log, ATKLOG_ALL)
 
@@ -160,7 +160,7 @@
 	desc += " Он уже был использован."
 
 /obj/item/dnainjector/hulkmut
-	name = "Инъектор-ДНК (Халк)"
+	name = "DNA-Injector (Hulk)"
 	desc = "Это сделает вас крепче и сильнее, ценой паршивого состояния кожи."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -170,7 +170,7 @@
 	return GLOB.hulkblock
 
 /obj/item/dnainjector/antihulk
-	name = "Инъектор-ДНК (Анти-Халк)"
+	name = "DNA-Injector (Anti-Hulk)"
 	desc = "Исправляет зеленый загар и делает из вас сосунка как раньше."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -180,7 +180,7 @@
 	return GLOB.hulkblock
 
 /obj/item/dnainjector/firemut
-	name = "Инъектор-ДНК (Хладостойкость)"
+	name = "DNA-Injector (Fire)"
 	desc = "Согревает вас на генетическом уровне от любых морозов."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -190,7 +190,7 @@
 	return GLOB.fireblock
 
 /obj/item/dnainjector/antifire
-	name = "Инъектор-ДНК (Анти-Хладостойкость)"
+	name = "DNA-Injector (Anti-Fire)"
 	desc = "Отбирает у вас лишнее тепло, делая уязвимым к холодам."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -200,7 +200,7 @@
 	return GLOB.fireblock
 
 /obj/item/dnainjector/telemut
-	name = "Инъектор-ДНК (Телекинез)"
+	name = "DNA-Injector (Tele.)"
 	desc = "Профессор Х! Коляска в комплект не входит, в отличие от силы трогать предметы на расстоянии."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -210,11 +210,11 @@
 	return GLOB.teleblock
 
 /obj/item/dnainjector/telemut/darkbundle
-	name = "Инъектор-ДНК (Тёмный телекинез)"
+	name = "DNA injector"
 	desc = "Прекрасно. Позволь ненависти течь в твоих жилах и встань на тёмную сторону силы."
 
 /obj/item/dnainjector/antitele
-	name = "Инъектор-ДНК (Анти-Телекинез)"
+	name = "DNA-Injector (Anti-Tele.)"
 	desc = "Отведёт от вас прочь способность перемещать вещи силой мысли."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -224,7 +224,7 @@
 	return GLOB.teleblock
 
 /obj/item/dnainjector/nobreath
-	name = "Инъектор-ДНК (Недышащий)"
+	name = "DNA-Injector (Breathless)"
 	desc = "Задержи дыхание и считай до бесконечности."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -234,7 +234,7 @@
 	return GLOB.breathlessblock
 
 /obj/item/dnainjector/antinobreath
-	name = "Инъектор-ДНК (Дышащий)"
+	name = "DNA-Injector (Anti-Breathless)"
 	desc = "Задержи дыхание и считай до ста."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -244,7 +244,7 @@
 	return GLOB.breathlessblock
 
 /obj/item/dnainjector/remoteview
-	name = "Инъектор-ДНК (Удаленный просмотр)"
+	name = "DNA-Injector (Remote View)"
 	desc = "Смотрите в стенку на любом расстоянии за теми, кто обзавелся этой силой вместе с вами."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -254,7 +254,7 @@
 	return GLOB.remoteviewblock
 
 /obj/item/dnainjector/antiremoteview
-	name = "Инъектор-ДНК (Анти-Удалённый просмотр)"
+	name = "DNA-Injector (Anti-Remote View)"
 	desc = "Заставляет вас пройтись, чтобы найти свой объект слежки."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -264,7 +264,7 @@
 	return GLOB.remoteviewblock
 
 /obj/item/dnainjector/regenerate
-	name = "Инъектор-ДНК (Регенерация)"
+	name = "DNA-Injector (Regeneration)"
 	desc = "Оплаченная медицинская страховка. Самолечение!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -274,7 +274,7 @@
 	return GLOB.regenerateblock
 
 /obj/item/dnainjector/antiregenerate
-	name = "Инъектор-ДНК (Анти-Регенерация)"
+	name = "DNA-Injector (Anti-Regeneration)"
 	desc = "У вас нет денег на медпомощь? Теперь и страховки не будет."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -284,7 +284,7 @@
 	return GLOB.regenerateblock
 
 /obj/item/dnainjector/morph
-	name = "Инъектор-ДНК (Морфизм)"
+	name = "DNA-Injector (Morph)"
 	desc = "Полное преображение и без дурацкого зеркала."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -294,7 +294,7 @@
 	return GLOB.morphblock
 
 /obj/item/dnainjector/antimorph
-	name = "Инъектор-ДНК (Анти-Морфизм)"
+	name = "DNA-Injector (Anti-Morph)"
 	desc = "Лечит раздвоение, растроение... много личностей в одной шкуре."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -304,7 +304,7 @@
 	return GLOB.morphblock
 
 /obj/item/dnainjector/noprints
-	name = "Инъектор-ДНК (Размытые отпечатки)"
+	name = "DNA-Injector (No Prints)"
 	desc = "Лучше чем пара окрашенных изоляционных перчаток. А главное - большая анонимность!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -314,7 +314,7 @@
 	return GLOB.noprintsblock
 
 /obj/item/dnainjector/antinoprints
-	name = "Инъектор-ДНК (Разборчивые отпечатки)"
+	name = "DNA-Injector (Anti-No Prints)"
 	desc = "Теперь нарушать закон придётся только в нормальных перчатках."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -324,7 +324,7 @@
 	return GLOB.noprintsblock
 
 /obj/item/dnainjector/insulation
-	name = "Инъектор-ДНК (Шоковый иммунитет)"
+	name = "DNA-Injector (Shock Immunity)"
 	desc = "220 Вольт - это пустяк. Полная защита от электричества!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -334,7 +334,7 @@
 	return GLOB.shockimmunityblock
 
 /obj/item/dnainjector/antiinsulation
-	name = "Инъектор-ДНК (Анти-шоковый иммунитет)"
+	name = "DNA-Injector (Anti-Shock Immunity)"
 	desc = "Лучше обзавестись изоляционными перчатками..."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -344,7 +344,7 @@
 	return GLOB.shockimmunityblock
 
 /obj/item/dnainjector/small_size
-	name = "Инъектор-ДНК (Дварф)"
+	name = "DNA-Injector (Small Size)"
 	desc = "Делает из вас дварфа, гнома, ребёнка или бегающий гвоздь. Как повезёт."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -354,7 +354,7 @@
 	return GLOB.smallsizeblock
 
 /obj/item/dnainjector/anti_small_size
-	name = "Инъектор-ДНК (Анти-Дварф)"
+	name = "DNA-Injector (Anti-Small Size)"
 	desc = "Возвращает ваш рост к норме, чтобы никто не спрашивал паспорт."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -364,7 +364,7 @@
 	return GLOB.smallsizeblock
 
 /obj/item/dnainjector/eatmut
-	name = "Инъектор-ДНК (Пожиратель материи)"
+	name = "DNA-Injector (Matter Eater)"
 	desc = "С этим вы можете и корову съесть. Буквально."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -374,7 +374,7 @@
 	return GLOB.eatblock
 
 /obj/item/dnainjector/antieat
-	name = "Инъектор-ДНК (Анти-пожиратель материи)"
+	name = "DNA-Injector (Anti-Matter Eater)"
 	desc = "Возвращает вашу скучную диету трёх омлетов за день."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -385,7 +385,7 @@
 
 /////////////////////////////////////
 /obj/item/dnainjector/antiglasses
-	name = "Инъектор-ДНК (Анти-близорукость)"
+	name = "DNA-Injector (Anti-Glasses)"
 	desc = "Выбрось к черту эти очки!"
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -395,7 +395,7 @@
 	return GLOB.glassesblock
 
 /obj/item/dnainjector/glassesmut
-	name = "Инъектор-ДНК (Близорукость)"
+	name = "DNA-Injector (Glasses)"
 	desc = "А говорили тебе за консолью долго не сидеть. Ищи очки для зрения."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -405,7 +405,7 @@
 	return GLOB.glassesblock
 
 /obj/item/dnainjector/epimut
-	name = "Инъектор-ДНК (Эпилепсия)"
+	name = "DNA-Injector (Epi.)"
 	desc = "Лучше не щелкать переключатель света несколько раз..."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -415,7 +415,7 @@
 	return GLOB.epilepsyblock
 
 /obj/item/dnainjector/antiepi
-	name = "Инъектор-ДНК (Анти-Эпилепсия)"
+	name = "DNA-Injector (Anti-Epi.)"
 	desc = "Поможет вам избавиться от ощущения, что комната трясется."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -425,7 +425,7 @@
 	return GLOB.epilepsyblock
 
 /obj/item/dnainjector/anticough
-	name = "Инъектор-ДНК (Анти-Кашель)"
+	name = "DNA-Injector (Anti-Cough)"
 	desc = "Избавит вас от боли в горле."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -435,7 +435,7 @@
 	return GLOB.coughblock
 
 /obj/item/dnainjector/coughmut
-	name = "Инъектор-ДНК (Кашель)"
+	name = "DNA-Injector (Cough)"
 	desc = "Нашлёт длительные кошмары на ваше горло."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -445,7 +445,7 @@
 	return GLOB.coughblock
 
 /obj/item/dnainjector/clumsymut
-	name = "Инъектор-ДНК (Неуклюжесть)"
+	name = "DNA-Injector (Clumsy)"
 	desc = "Создает нелепые ситуации и делает обладателя этой мутации рассеяным."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -455,7 +455,7 @@
 	return GLOB.clumsyblock
 
 /obj/item/dnainjector/anticlumsy
-	name = "Инъектор-ДНК (Анти-Неуклюжесть)"
+	name = "DNA-Injector (Anti-Clumy)"
 	desc = "Убирает путаницу в вашей жизни."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -465,7 +465,7 @@
 	return GLOB.clumsyblock
 
 /obj/item/dnainjector/stuttmut
-	name = "Инъектор-ДНК (Заикание)"
+	name = "DNA-Injector (Stutt.)"
 	desc = "Вызывает у в-в-вас н-нер-в-вный тик."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -476,7 +476,7 @@
 
 
 /obj/item/dnainjector/antistutt
-	name = "Инъектор-ДНК (Анти-Заикание)"
+	name = "DNA-Injector (Anti-Stutt.)"
 	desc = "Исправляет нарушение речи и делает вас собраннее."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -486,7 +486,7 @@
 	return GLOB.nervousblock
 
 /obj/item/dnainjector/blindmut
-	name = "Инъектор-ДНК (Слепота)"
+	name = "DNA-Injector (Blind)"
 	desc = "Ослепляет вас. Поразительно, правда?"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -496,7 +496,7 @@
 	return GLOB.blindblock
 
 /obj/item/dnainjector/antiblind
-	name = "Инъектор-ДНК (Анти-Слепота)"
+	name = "DNA-Injector (Anti-Blind)"
 	desc = "Если вы это читаете, то он вам и не нужен."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -506,7 +506,7 @@
 	return GLOB.blindblock
 
 /obj/item/dnainjector/paraplegicmut
-	name = "Инъектор-ДНК (Паралич)"
+	name = "DNA-Injector (Paraplegic)"
 	desc = "Напомнит вам о вашей любви к поцелуям с поверхностью под ногами."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -516,7 +516,7 @@
 	return GLOB.paraplegicblock
 
 /obj/item/dnainjector/antiparaplegic
-	name = "Инъектор-ДНК (Анти-Паралич)"
+	name = "DNA-Injector (Anti-Paraplegic)"
 	desc = "Возвращает ваши ноги на рабочую смену."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -526,7 +526,7 @@
 	return GLOB.paraplegicblock
 
 /obj/item/dnainjector/deafmut
-	name = "Инъектор-ДНК (Глухота)"
+	name = "DNA-Injector (Deaf)"
 	desc = "Вызывает генетическую утрату слуха."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -536,7 +536,7 @@
 	return GLOB.deafblock
 
 /obj/item/dnainjector/antideaf
-	name = "Инъектор-ДНК (Анти-Глухота)"
+	name = "DNA-Injector (Anti-Deaf)"
 	desc = "Устраняет проблемы со слухом, вызванные генетикой."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -546,7 +546,7 @@
 	return GLOB.deafblock
 
 /obj/item/dnainjector/hallucination
-	name = "Инъектор-ДНК (Галлюцинации)"
+	name = "DNA-Injector (Halluctination)"
 	desc = "То что вы видите, не всегда является реальностью."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -556,7 +556,7 @@
 	return GLOB.hallucinationblock
 
 /obj/item/dnainjector/antihallucination
-	name = "Инъектор-ДНК (Анти-Галлюцинации)"
+	name = "DNA-Injector (Anti-Hallucination)"
 	desc = "Больше никаких призраков! Только реальные угрозы вашей жизни."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -566,7 +566,7 @@
 	return GLOB.hallucinationblock
 
 /obj/item/dnainjector/h2m
-	name = "Инъектор-ДНК (Низшая форма)"
+	name = "DNA-Injector (Human > Monkey)"
 	desc = "Откатывает вас на ступень эволюции назад, если вы еще не там."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -576,7 +576,7 @@
 	return GLOB.monkeyblock
 
 /obj/item/dnainjector/m2h
-	name = "Инъектор-ДНК (Высшая форма)"
+	name = "DNA-Injector (Monkey > Human)"
 	desc = "Делает вас больше и умнее, но это не точно."
 	datatype = DNA2_BUF_SE
 	value = 0x001
@@ -587,7 +587,7 @@
 
 
 /obj/item/dnainjector/comic
-	name = "Инъектор-ДНК (Комик)"
+	name = "DNA-Injector (Comic)"
 	desc = "Хонк!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
@@ -597,7 +597,7 @@
 	return GLOB.comicblock
 
 /obj/item/dnainjector/anticomic
-	name = "Инъектор-ДНК (Анти-Комик)"
+	name = "DNA-Injector (Ant-Comic)"
 	desc = "Хонк...?"
 	datatype = DNA2_BUF_SE
 	value = 0x001

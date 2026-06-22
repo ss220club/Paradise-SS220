@@ -292,23 +292,6 @@
 	block = GLOB.fatblock
 
 // WAS: /datum/bioEffect/chav
-// ------------------------------
-// HELPERS
-// ------------------------------
-
-/proc/sortTextByLength(list/L)
-	L = L.Copy()
-	sortTim(L, /proc/cmp_text_len_desc)
-	return L
-
-
-/proc/cmp_text_len_desc(a, b)
-	return length(b) - length(a)
-
-
-// ------------------------------
-// CHAV SPEECH MUTATION
-// ------------------------------
 /datum/mutation/disability/speech/chav
 	name = "Вульгарщина"
 	desc = "Заставляет языковой центр мозга испытуемого строить предложения более примитивным образом."
@@ -432,53 +415,20 @@
 		"сигареты" = "курево",
 		"сигары" = "сигарчухи"
 	)
-
 /datum/mutation/disability/speech/chav/New()
 	..()
 	block = GLOB.chavblock
 
-
-// ------------------------------
-// MAIN PROCESSOR (SAFE WORD-BASED)
-// ------------------------------
+/* SS220 EDIT START - Отключен для работоспособности переведенного гена в модуле
 /datum/mutation/disability/speech/chav/on_say(mob/M, message)
-	var/list/keys = chavlinks.Copy()
-
-	// длинные фразы сначала (важно для multi-word)
-	keys = sortTextByLength(keys)
-
-	for(var/k in keys)
-		message = replace_word_safe(message, k, chavlinks[k])
-
+	var/static/regex/R = regex("\\b([chavlinks.Join("|")])\\b", "g")
+	message = R.Replace(message, /datum/mutation/disability/speech/chav/proc/replace_speech)
 	return message
 
-
-// ------------------------------
-// SAFE REPLACER (FIXES "психованный" BUG)
-// ------------------------------
-/datum/mutation/disability/speech/chav/proc/replace_word_safe(text, key, replacement)
-	var/list/words = splittext(text, " ")
-	var/i
-
-	for(i = 1 to words.len)
-		if(lowertext(words[i]) == lowertext(key))
-			words[i] = apply_case(words[i], replacement)
-
-	return jointext(words, " ")
-
-
-
-// ------------------------------
-// CASE HANDLING
-// ------------------------------
-/datum/mutation/disability/speech/chav/proc/apply_case(original, replacement)
-	if(original == uppertext(original))
-		return uppertext(replacement)
-
-	if(original == capitalize(original))
-		return capitalize(replacement)
-
-	return replacement
+/datum/mutation/disability/speech/chav/proc/replace_speech(matched)
+	REGEX_REPLACE_HANDLER
+	return chavlinks[matched]
+SS220 EDIT END */
 
 // WAS: /datum/bioEffect/swedish
 /datum/mutation/disability/speech/swedish

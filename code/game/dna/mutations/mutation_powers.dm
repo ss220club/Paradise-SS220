@@ -84,7 +84,7 @@
 	block = GLOB.shockimmunityblock
 
 /datum/mutation/dwarf
-	name = "Дварф"
+	name = "Карлик"
 	activation_messages = list("Всё вокруг вдруг стало больше...")
 	deactivation_messages = list("Вокруг вас будто бы всё уменьшилось...")
 	instability = GENE_INSTABILITY_MODERATE
@@ -780,6 +780,7 @@
 
 		if(ishuman(M))
 			var/numbers[0]
+//SS220 EDIT START - Небольшая редакция для перевода гена
 			var/text_numbers = ""
 
 			var/mob/living/carbon/human/H = M
@@ -798,7 +799,7 @@
 							text_numbers += " и [numbers[i]]"
 						else
 							text_numbers += ", [numbers[i]]"
-
+//SS220 EDIT END
 				to_chat(user, SPAN_NOTICE("<b>Цифры</b>: Кажется номер[length(numbers)>1?"а":""] [text_numbers] [length(numbers)>1?"важны":"важен"] для [M.name]."))
 		to_chat(user, SPAN_NOTICE("<b>Мысли</b>: [M.name] сейчас [thoughts]."))
 

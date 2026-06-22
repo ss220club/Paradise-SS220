@@ -1,6 +1,6 @@
 /datum/species/monkey/kidan_nymph
-	name = "kidan nymph"
-	name_plural = "kidan nymphs"
+	name = "Kidan nymph"
+	name_plural = "Kidan nymphs"
 	icobase = 'modular_ss220/objects/kidan_nymph.dmi'
 	tail = ""
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_BUG
