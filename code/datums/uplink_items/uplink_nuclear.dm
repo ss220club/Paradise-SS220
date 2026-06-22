@@ -5,9 +5,9 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/dangerous/aps
-	name = "Пистолет-пулемёт Type 230"
+	name = "Автоматичекский пистолет Type 230"
 	// name = "Type 230 Machine Pistol"
-	desc = "Компактный пистолет-пулемёт калибра 10mm Auto со съёмным магазином на 20 патронов. \
+	desc = "Компактный скорострельный пистолет калибра 10mm Auto со съёмным магазином на 20 патронов. \
 	Идеален для парного использования или как запасное оружие."
 	// desc = "A compact machine pistol, chambered in 10mm Auto with a detachable 20-round box magazine. Perfect for dual wielding or as backup."
 	reference = "APS"
@@ -18,7 +18,8 @@
 /datum/uplink_item/dangerous/smg
 	name = "Пистолет-пулемёт C-20r"
 	// name = "C-20r Submachine Gun"
-	desc = "Полностью укомплектованный буллпап-пистолет-пулемёт Scarborough Arms, стреляющий патронами .45 с магазином на 20 патронов и совместимый с глушителями."
+	desc = "Полностью укомплектованный буллпап-пистолет-пулемёт Scarborough Arms, стреляющий патронами .45 с \
+	магазином на 20 патронов и имеет насечку на стволе под глушитель."
 	// desc = "A fully-loaded Scarborough Arms bullpup submachine gun that fires .45 rounds with a 20-round magazine and is compatible with suppressors."
 	reference = "SMG"
 	item = /obj/item/gun/projectile/automatic/c20r
@@ -29,7 +30,8 @@
 /datum/uplink_item/dangerous/carbine
 	name = "Карабин M-90gl"
 	// name = "M-90gl Carbine"
-	desc = "Полностью укомплектованный карабин с очередями по три патрона, использующий магазины на 30 патронов 5.56mm, с переключаемым подствольным гранатомётом 40mm."
+	desc = "Полностью укомплектованный карабин с очередями по три патрона, использующий магазины на 30 патронов \
+	калибра 5.56mm. Имеет подствольный 40mm гранатомёт."
 	// desc = "A fully-loaded three-round burst carbine that uses 30-round 5.56mm magazines with a togglable underslung 40mm grenade launcher."
 	reference = "AR"
 	item = /obj/item/gun/projectile/automatic/m90
@@ -40,7 +42,8 @@
 /datum/uplink_item/dangerous/machinegun
 	name = "Ручной пулемёт L6 SAW"
 	// name = "L6 Squad Automatic Weapon"
-	desc = "Полностью укомплектованный ленточный пулемёт Aussec Armory. Это смертоносное оружие имеет огромный магазин на 50 патронов разрушительных боеприпасов 7.62x51mm."
+	desc = "Полностью укомплектованный ленточный пулемёт Aussec Armory. Смертоносное оружие с огромным магазином \
+	на 50 патронов разрушительных 7.62x51mm."
 	// desc = "A fully-loaded Aussec Armory belt-fed machine gun. This deadly weapon has a massive 50-round magazine of devastating 7.62x51mm ammunition."
 	reference = "LMG"
 	item = /obj/item/gun/projectile/automatic/l6_saw
@@ -51,7 +54,7 @@
 /datum/uplink_item/dangerous/sniper
 	name = "Снайперская винтовка"
 	// name = "Sniper Rifle"
-	desc = "Дальняя ярость в стиле Синдиката. Гарантированно вызовет шок и трепет или вернём ваши ТК обратно!"
+	desc = "Дальняя ярость в стиле Синдиката. Гарантированно повергнет в шок и трепет или вернём ТК обратно!"
 	// desc = "Ranged fury, Syndicate style. guaranteed to cause shock and awe or your TC back!"
 	reference = "SSR"
 	item = /obj/item/gun/projectile/automatic/sniper_rifle/syndicate
@@ -60,9 +63,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/dangerous/rocket_launcher
-	name = "Гранатомёт"
+	name = "РПГ"
 	// name = "Rocket Launcher"
-	desc = "Немногое может выжить после прямого попадания из этого. (Боеприпасы продаются отдельно, хранить в недоступном для детей месте.)"
+	desc = "Никто не доживёт до завтра, ведь с нами непревзойдённый и неимеющий в разрушениях равных - РПГ! \
+	(Боеприпасы продаются отдельно, хранить в недоступном для клоунов месте.)"
 	// desc = "Not many things can survive a direct hit from this. (Ammunition sold separately, keep away from children.)"
 	reference = "RL"
 	item = /obj/item/gun/rocketlauncher
@@ -72,7 +76,8 @@
 /datum/uplink_item/dangerous/flamethrower
 	name = "Огнемёт"
 	// name = "Flamethrower"
-	desc = "Химический огнемёт, работающий на летучей смеси топлива и напалма. Поставляется с двумя заранее заправленными баллонами. Использовать без осторожности."
+	desc = "Химический огнемёт, работающий на летучей смеси топлива и напалма. Поставляется с двумя заранее заправленными \
+	баллонами. Использовать без осторожности и с удовольствием."
 	// desc = "A chemical flamethrower, fueled by a volatile mix of fuel and napalm. Comes prefilled with two canisters. Do not use with caution."
 	reference = "CHEM_THROWER"
 	item = /obj/item/chemical_flamethrower/extended/nuclear
@@ -82,7 +87,8 @@
 /datum/uplink_item/dangerous/combat_defib
 	name = "Боевой модуль дефибриллятора"
 	// name = "Combat Defibrillator Module"
-	desc = "Спасательное устройство, превращённое в опасное оружие. Кликните по кому-либо лопатками с намерением вреда, чтобы мгновенно остановить их сердце. Может использоваться как обычный дефибриллятор. Устанавливается в MOD-костюм."
+	desc = "Деффиблиатор, превращённй в опасное оружие. Ударьте кого-либо лопатками с сильным желанием причинить вред, \
+	чтобы мгновенно остановить их сердце. Может  так же использоваться как обычный дефибриллятор. Устанавливается в MOD-костюм."
 	// desc = "A lifesaving device turned dangerous weapon. Click on someone with the paddles on harm intent to instantly stop their heart. Can be used as a regular defib as well. Installs in a MODsuit."
 	reference = "CD"
 	item = /obj/item/mod/module/defibrillator/combat
@@ -92,7 +98,8 @@
 /datum/uplink_item/dangerous/foamsmg
 	name = "Игрушечный пистолет-пулемёт"
 	// name = "Toy Submachine Gun"
-	desc = "Полностью укомплектованный буллпап-пистолет-пулемёт Donksoft, стреляющий патронами для подавления беспорядков с магазином на 20 патронов."
+	desc = "Полностью укомплектованный буллпап-пистолет-пулемёт Donksoft с магазином на 20 патронов, стреляющий \
+	пенными дротиками."
 	// desc = "A fully-loaded Donksoft bullpup submachine gun that fires riot grade rounds with a 20-round magazine."
 	reference = "FSMG"
 	item = /obj/item/gun/projectile/automatic/c20r/toy
@@ -103,7 +110,8 @@
 /datum/uplink_item/dangerous/foammachinegun
 	name = "Игрушечный пулемёт"
 	// name = "Toy Machine Gun"
-	desc = "Полностью укомплектованный ленточный пулемёт Donksoft. Это оружие имеет огромный магазин на 50 патронов разрушительных пенных дротиков для подавления беспорядков, которые могут briefly incapacitate кого-то всего за одну очередь."
+	desc = "Полностью укомплектованный ленточный пулемёт Donksoft. Оружие имеет огромный магазин на 50 пенных дротиков, \
+	которые могут обессилить жертву кого-то всего за одну очередь."
 	// desc = "A fully-loaded Donksoft belt-fed machine gun. This weapon has a massive 50-round magazine of devastating riot grade darts, that can briefly incapacitate someone in just one volley."
 	reference = "FLMG"
 	item = /obj/item/gun/projectile/automatic/l6_saw/toy
@@ -112,9 +120,10 @@
 	surplus = 0
 
 /datum/uplink_item/dangerous/bulldog
-	name = "Дробовик «Бульдог»"
+	name = "Дробовик 'Бульдог'"
 	// name = "Bulldog Shotgun"
-	desc = "Компактный и смертоносный: оптимизирован для тех, кто хочет сражаться в ближнем бою. Дополнительные боеприпасы продаются отдельно."
+	desc = "Компактный и смертоносный: оптимизирован для тех, кто хочет сражаться в ближнем бою. Дополнительные \
+	боеприпасы продаются отдельно."
 	// desc = "Lean and mean: Optimized for people that want to get up close and personal. Extra Ammo sold separately."
 	reference = "BULD"
 	item = /obj/item/gun/projectile/automatic/shotgun/bulldog
