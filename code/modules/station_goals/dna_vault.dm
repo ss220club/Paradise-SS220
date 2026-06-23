@@ -3,7 +3,7 @@
 // DNA vault requires x animals ,y plants, z human dna
 // DNA vaults require high tier stock parts and cold
 // After completion each crewmember can receive single upgrade chosen out of 2 for the mob.
-#define VAULT_TOXIN "Токсическая адаптация"
+#define VAULT_TOXIN "Адаптация к токсинам"
 #define VAULT_NOBREATH "Обогащение работы лёгких"
 #define VAULT_FIREPROOF "Продвинутая терморегуляция"
 #define VAULT_STUNTIME "Перестройка нейронных путей"

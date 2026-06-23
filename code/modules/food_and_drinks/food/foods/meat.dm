@@ -486,7 +486,7 @@
 	monkey_type = /datum/species/monkey/unathi
 
 /obj/item/food/monkeycube/neaeracube
-	name = "neara cube"
+	name = "neaera cube"
 	monkey_type = /datum/species/monkey/skrell
 
 

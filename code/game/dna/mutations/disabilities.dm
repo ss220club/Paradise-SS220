@@ -298,7 +298,7 @@
 	activation_messages = list("Чё-то ты внатуре тупишь, не?")
 	deactivation_messages = list("Вы унимаете свою дерзость и грубое отношение к окружающим.")
 	traits_to_add = list(TRAIT_CHAV)
-
+	//List of swappable words. Normal word first, chav word second.
 	var/static/list/chavlinks = list(
 		"арест" = "на нары",
 		"арестован" = "за решеткой",
@@ -415,6 +415,7 @@
 		"сигареты" = "курево",
 		"сигары" = "сигарчухи"
 	)
+
 /datum/mutation/disability/speech/chav/New()
 	..()
 	block = GLOB.chavblock

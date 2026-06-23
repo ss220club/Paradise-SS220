@@ -816,7 +816,7 @@
 	return
 
 /obj/item/storage/box/monkeycubes/neaeracubes
-	name = "neara cube box"
+	name = "neaera cube box"
 	desc = "Компактно-органические кубы неар. Добавь воды и получи низшую форму Скрелла!"
 	icon_state = "neaera_box"
 	monkey_cube_type = /obj/item/food/monkeycube/neaeracube
