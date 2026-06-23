@@ -313,7 +313,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 10 // SS220 EDIT PRICE UP/DOWN 9 -> 10
 
 /datum/uplink_item/ammo/pistolhp
-	name = "Пистолетный магазин (10мм с полым наконечником)"
+	name = "Пистолетный магазин (Экспансивные 10мм)"
 	desc = "Дополнительный магазин на 8 патронов калибра 10 мм для пистолета Стечкина FK-69 10мм, заряженный патронами, \
 			 которые наносят больший урон, но неэффективны против брони."
 	reference = "10MMHP"

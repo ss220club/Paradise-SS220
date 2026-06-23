@@ -219,9 +219,10 @@
 // MARK: AMMUNITION
 ////////////////////////////////////////
 /datum/uplink_item/ammo/aps
-	name = "Type 230 - магазин 10mm"
+	name = "Магазин для Type 230 (10мм)"
 	// name = "Type 230 - 10mm Magazine"
-	desc = "Дополнительный магазин на 20 патронов 10mm для использования в пистолете-пулемёте Type 230, заряженный патронами, которые дёшевы, но примерно вдвое менее эффективны, чем .357."
+	desc = "Дополнительный магазин на 20 патронов калибра 10мм для использования в скорострельном пистолете Type 230, \
+	заряженный стандартными патронами."
 	// desc = "An additional 20-round 10mm magazine for use in the Type 230 machine pistol, loaded with rounds that are cheap but around half as effective as .357"
 	reference = "10MMAPS"
 	item = /obj/item/ammo_box/magazine/apsm10mm
@@ -229,9 +230,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/apsap
-	name = "Type 230 - бронебойный магазин 10mm"
+	name = "Магазин для Type 230 (Бронебойные 10мм)"
 	// name = "Type 230 - 10mm Armour Piercing Magazine"
-	desc = "Дополнительный магазин на 20 патронов 10mm для использования в пистолете-пулемёте Type 230, заряженный патронами, которые менее эффективны для нанесения ран, но пробивают защитную экипировку."
+	desc = "Дополнительный магазин на 20 патронов калибра 10мм для использования в скорострельном пистолете Type 230, \
+	заряженный патронами, которые менее эффективны для нанесения ран, но лучше пробивают защитную экипировку."
 	// desc = "An additional 20-round 10mm magazine for use in the Type 230 machine pistol, loaded with rounds that are less effective at injuring the target but penetrate protective gear."
 	reference = "10MMAPSAP"
 	item = /obj/item/ammo_box/magazine/apsm10mm/ap
@@ -239,9 +241,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/apsfire
-	name = "Type 230 - зажигательный магазин 10mm"
+	name = "Магазин для Type 230 (Зажигательные 10мм)"
 	// name = "Type 230 - 10mm Incendiary Magazine"
-	desc = "Дополнительный магазин на 20 патронов 10mm для использования в пистолете-пулемёте Type 230, заряженный зажигательными патронами, которые поджигают цель."
+	desc = "Дополнительный магазин на 20 патронов калибра 10мм для использования в скорострельном пистолете Type 230, \
+	заряженный зажигательными патронами, которые поджигают цель."
 	// desc = "An additional 20-round 10mm magazine for use in the Type 230 machine pistol, loaded with incendiary rounds which ignite the target."
 	reference = "10MMAPSFIRE"
 	item = /obj/item/ammo_box/magazine/apsm10mm/fire
@@ -249,9 +252,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/apshp
-	name = "Type 230 - экспансивный магазин 10mm"
+	name = "Магазин для Type 230 (Экспансивные 10мм)"
 	// name = "Type 230 - 10mm Hollow Point Magazine"
-	desc = "Дополнительный магазин на 20 патронов 10mm для использования в пистолете-пулемёте Type 230, заряженный патронами, которые более уронны, но неэффективны против брони."
+	desc = "Дополнительный магазин на 20 патронов калибра 10мм для использования в скорострельном пистолете Type 230, \
+	заряженный патронами, которые наносят больше повреждений цели, но неэффективны против брони."
 	// desc = "An additional 20-round 10mm magazine for use in the Type 230 machine pistol, loaded with rounds which are more damaging but ineffective against armour."
 	reference = "10MMAPSHP"
 	item = /obj/item/ammo_box/magazine/apsm10mm/hp
@@ -259,9 +263,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullslug
-	name = "Бульдог - магазин 12g с пулями"
+	name = "Бульдог магазин 12г(Слаги)"
 	// name = "Bulldog - 12g Slug Magazine"
-	desc = "Дополнительный магазин на 8 пуль для использования в дробовике «Бульдог». Теперь в 8 раз менее вероятно подстрелить своих товарищей."
+	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Заряжены крупнокалиберными пулями."
 	// desc = "An additional 8-round slug magazine for use in the Bulldog shotgun. Now 8 times less likely to shoot your pals."
 	reference = "12BSG"
 	item = /obj/item/ammo_box/magazine/m12g
@@ -269,9 +273,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullbuck
-	name = "Бульдог - магазин 12g с картечью"
+	name = "Бульдог магазин 12г(Картечь)"
 	// name = "Bulldog - 12g Buckshot Magazine"
-	desc = "Дополнительный магазин с картечью на 8 патронов для использования в дробовике «Бульдог». Остриём к врагу."
+	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. В каждом патроне заложено по пять пуль картечи."
 	// desc = "An additional 8-round buckshot magazine for use in the Bulldog shotgun. Front towards enemy."
 	reference = "12BS"
 	item = /obj/item/ammo_box/magazine/m12g/buckshot
@@ -279,9 +283,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullmeteor
-	name = "Магазин 12g с метеоропулями"
+	name = "Бульдог магазин 12г(Метеоритные пули)"
 	// name = "12g Meteorslug Shells"
-	desc = "Альтернативный магазин с метеоропулями на 8 патронов для использования в дробовике «Бульдог». Отлично подходит для выбивания шлюзов из рам и сбивания врагов с ног."
+	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Содержат частичку метеорита, которая при \
+	попадании отбрасывает и сильно ранит жертв."
 	// desc = "An alternative 8-round meteorslug magazine for use in the Bulldog shotgun. Great for blasting airlocks off their frames and knocking down enemies."
 	reference = "12MS"
 	item = /obj/item/ammo_box/magazine/m12g/meteor
@@ -289,9 +294,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bulldragon
-	name = "Бульдог - магазин 12g «Дыхание дракона»"
+	name = "Бульдог магазин 12г(«Дыхание дракона»)"
 	// name = "Bulldog - 12g Dragon's Breath Magazine"
-	desc = "Альтернативный магазин «Дыхание дракона» на 8 патронов для использования в дробовике «Бульдог». I'm a fire starter, twisted fire starter!"
+	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Крайне слабы даже по небронированным целям, \
+	но способны выжигать большие области вместе с экипажем за счёт особенного состава."
 	// desc = "An alternative 8-round dragon's breath magazine for use in the Bulldog shotgun. I'm a fire starter, twisted fire starter!"
 	reference = "12DB"
 	item = /obj/item/ammo_box/magazine/m12g/dragon
@@ -299,9 +305,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bulldog_ammobag
-	name = "Бульдог - сумка с боеприпасами 12g"
+	name = "Сумка с магазинами Бульдог"
 	// name = "Bulldog - 12g Ammo Duffel Bag"
-	desc = "Сумка, заполненная девятью барабанными магазинами на 8 патронов. (6 с пулями, 2 с картечью, 1 «Дыхание дракона»)."
+	desc = "Сумка, заполненная девятью магазинами на 8 патронов. Содержит 6 магазинов с слагами, 2 с картечью \
+	и 1 «Дыхание дракона»."
 	// desc = "A duffel bag filled with nine 8-round drum magazines. (6 Slug, 2 Buckshot, 1 Dragon's Breath)"
 	reference = "12ADB"
 	item = /obj/item/storage/backpack/duffel/syndie/shotgun
@@ -309,9 +316,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bulldog_xl_magsbag
-	name = "Бульдог - сумка с XL магазинами 12g"
+	name = "Сумка с XL магазинами Бульдог"
 	// name = "Bulldog - 12g Extra-Large Magazine Duffel Bag"
-	desc = "Сумка, содержащая пять XL барабанных магазинов на 16 патронов. (3 с пулями, 1 с картечью, 1 «Дыхание дракона»)."
+	desc = "Сумка, заполненная девятью XL магазинами на 16 патронов. Содержит 3 магазина с слагами, 1 с картечью \
+	и 1 «Дыхание дракона»."
 	// desc = "A duffel bag containing five XL 16-round drum magazines. (3 Slug, 1 Buckshot, 1 Dragon's Breath)."
 	reference = "12XLDB"
 	item = /obj/item/storage/backpack/duffel/syndie/shotgun_xl_mags
@@ -320,9 +328,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/smg
-	name = "C-20r - магазин .45"
+	name = "Магазин для ПП C-20r (.45)"
 	// name = "C-20r - .45 Magazine"
-	desc = "Дополнительный магазин на 20 патронов .45 для использования в пистолете-пулемёте C-20r. Эти пули обладают большой останавливающей силой, которая может сбить большинство целей с ног, но наносят ограниченный общий урон."
+	desc = "Дополнительный магазин на 20 патронов калибра .45 для использования в пистолете-пулемёте C-20r. \
+	Пули быстро изматывают цель, но не так сильны для нанесения повреждений."
 	// desc = "An additional 20-round .45 magazine for use in the C-20r submachine gun. These bullets pack a lot of punch that can knock most targets down, but do limited overall damage."
 	reference = "45"
 	item = /obj/item/ammo_box/magazine/smgm45
@@ -330,9 +339,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/smg_ammobag
-	name = "C-20r - сумка с боеприпасами .45"
+	name = "Сумка с магазинами C-20r"
 	// name = "C-20r - .45 Ammo Duffel Bag"
-	desc = "Сумка, заполненная достаточным количеством боеприпасов .45 для снабжения всей команды, по сниженной цене."
+	desc = "Сумка, заполненная десятью магазинами для C-20r. Вполне достаточно для снабжения всей команды, по сниженной цене!"
 	// desc = "A duffel bag filled with enough .45 ammo to supply an entire team, at a discounted price."
 	reference = "45ADB"
 	item = /obj/item/storage/backpack/duffel/syndie/smg
@@ -340,9 +349,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/carbine
-	name = "Карабин - магазин 5.56 Toploader"
+	name = "Магазин для Карабина M-90gl(5.56)"
 	// name = "Carbine - 5.56 Toploader Magazine"
-	desc = "Дополнительный магазин на 30 патронов 5.56 для использования в карабине M-90gl. Эти пули не обладают силой, чтобы сбить большинство целей с ног, но наносят больший общий урон."
+	desc = "Дополнительный магазин на 30 патронов калибра 5.56 для использования в Карабине M-90gl. Эти пули \
+	не обладают силой, чтобы сбить большинство целей, но наносят внушительные повреждения."
 	// desc = "An additional 30-round 5.56 magazine for use in the M-90gl carbine. These bullets don't have the punch to knock most targets down, but dish out higher overall damage."
 	reference = "556"
 	item = /obj/item/ammo_box/magazine/m556
@@ -350,9 +360,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/a40mm
-	name = "Карабин - коробка с 40mm гранатами"
+	name = "Коробка 40мм гранат"
 	// name = "Carbine - 40mm Grenade Ammo Box"
-	desc = "Коробка с 4 дополнительными 40mm фугасными гранатами для использования в подствольном гранатомёте C-90gl. Ваши товарищи по команде поблагодарят вас, если вы не будете стрелять ими по узким коридорам."
+	desc = "Коробка с 4 дополнительными 40мм фугасными гранатами для использования в подствольном гранатомёте Карабина M-90gl. \
+	Товарищи по команде не очень обрадуются гранате в лицо."
 	// desc = "A box of 4 additional 40mm HE grenades for use the C-90gl's underbarrel grenade launcher. Your teammates will thank you to not shoot these down small hallways."
 	reference = "40MM"
 	item = /obj/item/ammo_box/a40mm
@@ -360,9 +371,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/rocket
-	name = "Снаряд для гранатомёта"
+	name = "Снаряд для РПГ"
 	// name = "Rocket Launcher Shell"
-	desc = "Дополнительный снаряд для вашего РПГ. Убедитесь, что ваш лучший друг не стоит перед вами."
+	desc = "Дополнительный снаряд для РПГ. Убедитесь, что ваш лучший друг не стоит перед вами."
 	// desc = "An extra shell for your RPG. Make sure your bestie isn't standing in front of you."
 	reference = "HE"
 	item = /obj/item/ammo_casing/rocket
@@ -370,9 +381,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/chemical_canister
-	name = "Коробка с баллонами для химического огнемёта"
+	name = "Баллоны для химического огнемёта"
 	// name = "Box of chemical flamethrower canisters"
-	desc = "Коробка, заполненная 2 баллонами с топливом для огнемёта, ровно достаточно, чтобы полностью заправить ваш огнемёт один раз!"
+	desc = "Коробка с 2 баллонами, заполненными топливом для огнемёта. Достаточно, чтобы полностью заправить ваш огнемёт один раз!"
 	// desc = "A box filled with 2 canisters of flamethrower fuel, exactly enough to fully refill your flamethrower once!"
 	reference = "CHEM_CAN"
 	item = /obj/item/storage/box/syndie_kit/chemical_canister
@@ -380,9 +391,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/machinegun
-	name = "L6 SAW - коробчатый магазин 7.62x51mm"
+	name = "Пулемётная лента для L6 SAW(7.62x51мм)"
 	// name = "L6 SAW - 7.62x51mm Box Magazine"
-	desc = "Магазин на 50 патронов 7.62x51mm для использования в пулемёте L6 SAW. К тому времени, когда вам понадобится использовать это, вы уже будете стоять на куче трупов."
+	desc = "Магазин на 50 патронов калибра 7.62x51mm для использования в пулемёте L6 SAW. К тому времени, когда вам \
+	понадобится использовать это, вы уже будете стоять на куче трупов, вопрос только чьих."
 	// desc = "A 50-round magazine of 7.62x51mm ammunition for use in the L6 SAW machine gun. By the time you need to use this, you'll already be on a pile of corpses."
 	reference = "762"
 	item = /obj/item/ammo_box/magazine/mm762x51
@@ -394,18 +406,19 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/sniper/basic
-	name = "Снайпер - магазин .50"
+	name = "Магазин для снайперской винтовки(.50)"
 	// name = "Sniper - .50 Magazine"
-	desc = "Дополнительный стандартный магазин на 6 патронов для использования со снайперскими винтовками .50."
+	desc = "Дополнительный магазин на 6 патронов калибра .50 для использования в снайперскиой винтовке."
 	// desc = "An additional standard 6-round magazine for use with .50 sniper rifles."
 	reference = "50M"
 	item = /obj/item/ammo_box/magazine/sniper_rounds
 
 /datum/uplink_item/ammo/sniper/antimatter
-	name = "Снайпер - антиматериальный магазин .50"
+	name = "Магазин для снайперской винтовки(Антиматериальные .50)"
 	// name = "Sniper - .50 Antimatter Magazine"
-	desc = "Магазин на 6 патронов с антиматериальными боеприпасами для использования со снайперскими винтовками .50. \
-	Способен сильно повреждать объекты и отрубать конечности людям. Требует увеличения для точного прицеливания."
+	desc = "Дополнительный магазин на 6 патронов калибра .50 для использования в снайперскиой винтовке. \
+	Содержит патроны, которые просто созданы для разрушений всего и вся. \
+	Способны сильно повреждать объекты и отрубать конечности живым существам. Требует увеличения для точного прицеливания."
 	// desc = "A 6-round magazine of antimatter ammo for use with .50 sniper rifles. \
 	// Able to heavily damage objects, and delimb people. Requires zooming in for accurate aiming."
 	reference = "50A"

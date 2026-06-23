@@ -631,7 +631,7 @@
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bull_rubbershot
-	name = "Бульдо магазин 12г( резиновые патроны )"
+	name = "Бульдог магазин 12г(Резиновые патроны)"
 	// name = "Bulldog - 12g Rubbershot Magazine"
 	desc = "Дополнительный 8-зарядный магазин с резиновой дробью для дробовика Бульдог."
 	// desc = "An additional 8-round rubbershot magazine for use in the Bulldog shotgun."
