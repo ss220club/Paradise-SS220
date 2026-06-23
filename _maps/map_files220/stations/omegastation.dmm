@@ -9555,9 +9555,6 @@
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/any/engineering/atmos,
 /obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
 	icon_state = "1-4"
 	},
 /obj/effect/turf_decal/tiles/department/engineering,
@@ -42324,15 +42321,9 @@
 	name = "Atmospherics Lockdown Blast door";
 	id_tag = "atmoslock"
 	},
-/obj/machinery/door/airlock/atmos/glass{
-	dir = 4
-	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
@@ -42341,6 +42332,15 @@
 	},
 /obj/effect/turf_decal/tiles/department/engineering,
 /obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/machinery/door/airlock/atmos/glass{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -53271,17 +53271,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/ce)
 "wSD" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "atmoslock";
-	name = "Atmospherics Lockdown Blast door";
-	id_tag = "atmoslock"
-	},
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
 /obj/structure/sign/engineering/atmos,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/r_wall,
 /area/station/engineering/controlroom)
 "wSM" = (
 /obj/machinery/requests_console/directional/north,
@@ -54649,9 +54640,7 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/item/radio/intercom{
-	dir = 8;
-	pixel_x = -7;
-	pixel_y = 3
+	pixel_y = -2
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/checkpoint/south)
