@@ -568,9 +568,10 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/device_tools/diamond_drill
-	name = "Усиливающий термобезопасный бур с алмазным наконечником"
+	name = "Усиленный бур с алмазным наконечником"
 	// name = "Amplifying Diamond Tipped Thermal Safe Drill"
-	desc = "Термобур с алмазным наконечником с магнитными зажимами для быстрого сверления закалённых объектов. Оснащён встроенной системой обнаружения безопасности и нанитной системой, чтобы держать вас начеку, если безопасность постучится."
+	desc = "Термобур с алмазным наконечником и магнитными зажимами для быстрого сверления закалённых сейфов. \
+	Оснащён встроенной системой обнаружения службы безопасности, чтобы держать вас начеку, если к вам постучится незванные гости."
 	// desc = "A diamond tipped thermal drill with magnetic clamps for the purpose of quickly drilling hardened objects. Comes with built in security detection and nanite system, to keep you up if security comes a-knocking."
 	reference = "DDRL"
 	item = /obj/item/thermal_drill/diamond_drill/syndicate
@@ -578,10 +579,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/device_tools/medkit
-	name = "Боевой медицинский набор Синдиката"
+	name = "Продвинутый набор медика"
 	// name = "Syndicate Combat Medic Kit"
-	desc = "Медицинский набор Синдиката подозрительно чёрно-красного цвета. Включён боевой стимулянтный инжектор для быстрого исцеления, медицинский HUD для быстрой идентификации раненых товарищей, \
-	и другие медицинские принадлежности, полезные для медицинского полевого оперативника."
+	desc = "Подозрительная аптечка чёрно-красного цвета. Содержит иньектор боевого стимулятора для быстрого заживления ран, \
+	медицинский HUD, и другие медицинские принадлежности, полезные для оказания медпомощи полевому оперативнику."
 	// desc = "The Syndicate medkit is a suspicious black and red. Included is a combat stimulant injector for rapid healing, a medical HUD for quick identification of injured comrades, \
 	// and other medical supplies helpful for a medical field operative."
 	reference = "SCMK"
@@ -592,7 +593,7 @@
 /datum/uplink_item/device_tools/vtec
 	name = "Модуль улучшения киборга Синдиката (VTEC)"
 	// name = "Syndicate Cyborg Upgrade Module (VTEC)"
-	desc = "Увеличивает скорость передвижения киборга. Установите в любого борга, синдикатского или подчинённого."
+	desc = "Ускоряет работу приводов, повышая скорость передвижения киборга. Установливается в любого борга."
 	// desc = "Increases the movement speed of a Cyborg. Install into any Borg, Syndicate or subverted"
 	reference = "VTEC"
 	item = /obj/item/borg/upgrade/vtec
@@ -602,8 +603,9 @@
 /datum/uplink_item/device_tools/magboots
 	name = "Кроваво-красные магнитные ботинки"
 	// name = "Blood-Red Magboots"
-	desc = "Пара магнитных ботинок с покраской Синдиката, которые помогают свободнее передвигаться в космосе или на станции во время сбоев генератора гравитации. \
-	Эти реверс-инжиниренные копии «Продвинутых магнитных ботинок» Nanotrasen замедляют вас в средах с симулированной гравитацией так же, как и стандартные varieties."
+	desc = "Пара магнитных ботинок с покраской Синдиката, которые помогают свободнее передвигаться в космосе или на станции во \
+	время сбоев генератора гравитации. Разработаны по технологии реверс-инжинеринга из 'Продвинутых магнитных ботинок' Nanotrasen, \
+	поэтому замедляют вас в средах с симулированной гравитацией так же, как и стандартные."
 	// desc = "A pair of magnetic boots with a Syndicate paintjob that assist with freer movement in space or on-station during gravitational generator failures. \
 	// These reverse-engineered knockoffs of Nanotrasen's 'Advanced Magboots' slow you down in simulated-gravity environments much like the standard issue variety."
 	reference = "BRMB"
@@ -614,8 +616,9 @@
 /datum/uplink_item/device_tools/syndicate_detonator
 	name = "Детонатор Синдиката"
 	// name = "Syndicate Detonator"
-	desc = "Детонатор Синдиката — это companion device для бомбы Синдиката. Просто нажмите включённую кнопку, и зашифрованная радиочастота даст инструкцию всем живым бомбам Синдиката взорваться. \
-	Полезно, когда важна скорость или вы хотите синхронизировать несколько взрывов бомб. Обязательно отойдите от радиуса взрыва перед использованием детонатора."
+	desc = "Детонатор Синдиката — это дополнение для бомб Синдиката. Просто нажмите кнопку, и по зашифрованной радиочастоте \
+	передастся инструкция всем активным бомбам Синдиката взорваться. Полезно, когда важна скорость или вы хотите \
+	синхронизировать несколько взрывов бомб. Обязательно отойдите от радиуса взрыва перед использованием детонатора."
 	// desc = "The Syndicate Detonator is a companion device to the Syndicate Bomb. Simply press the included button and an encrypted radio frequency will instruct all live Syndicate bombs to detonate. \
 	// Useful for when speed matters or you wish to synchronize multiple bomb blasts. Be sure to stand clear of the blast radius before using the detonator."
 	reference = "SD"
@@ -624,9 +627,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/device_tools/teleporter
-	name = "Плата телепортера"
+	name = "Печатная плата телепортера"
 	// name = "Teleporter Circuit Board"
-	desc = "Печатная плата, которая завершает телепортер на борту материнского корабля. Советуем вам test fire телепортер перед входом в него, так как могут произойти сбои."
+	desc = "Печатная плата, которая завершает телепортер на борту шаттла ядерных оперативников."
 	// desc = "A printed circuit board that completes the teleporter onboard the mothership. Advise you test fire the teleporter before entering it, as malfunctions can occur."
 	item = /obj/item/circuitboard/teleporter
 	reference = "TP"
@@ -635,9 +638,9 @@
 	surplus = 0
 
 /datum/uplink_item/device_tools/assault_pod
-	name = "Устройство наведения штурмового десантного модуля"
+	name = "Устройство наведения штурмовой капсулы"
 	// name = "Assault Pod Targetting Device"
-	desc = "Используйте для выбора зоны посадки вашего штурмового десантного модуля."
+	desc = "Используйте для выбора зоны посадки вашего десантного модуля."
 	// desc = "Use to select the landing zone of your assault pod."
 	item = /obj/item/assault_pod
 	reference = "APT"
@@ -648,7 +651,8 @@
 /datum/uplink_item/device_tools/shield
 	name = "Энергетический щит"
 	// name = "Energy Shield"
-	desc = "Невероятно полезный персональный проектор щита, способный отражать энергетические снаряды, но он не может блокировать другие атаки. Скомбинируйте с энергетическим мечом для killer combination."
+	desc = "Невероятно полезный персональный проектор щита, способный отражать энергетические снаряды, но он не может \
+	блокировать другие атаки. Используйте так же с энергетическим мечом для убийственной комбинации!"
 	// desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles, but it cannot block other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
 	reference = "ESD"
@@ -657,9 +661,10 @@
 	surplus = 20
 
 /datum/uplink_item/device_tools/dropwall
-	name = "Коробка генераторов dropwall"
+	name = "Коробка проекторов стены"
 	// name = "Dropwall generator box"
-	desc = "Коробка из 5 генераторов щитов dropwall, которые можно использовать для создания временных directional shields, которые блокируют снаряды, брошенные объекты и уменьшают взрывы. Настройте направление перед броском."
+	desc = "Коробка из 5 генераторов щитов, которые можно использовать для создания временных направленных щитов, \
+	которые блокируют снаряды, брошенные объекты и уменьшают повреждения от взрывов. Настройте направление перед броском."
 	// desc = "A box of 5 dropwall shield generators, which can be used to make temporary directional shields that block projectiles, thrown objects, and reduce explosions. Configure the direction before throwing."
 	item = /obj/item/storage/box/syndie_kit/dropwall
 	reference = "DWG"
@@ -667,9 +672,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/device_tools/medgun
-	name = "Медицинский лучемёт"
+	name = "Медицинский заживляющий лучемёт"
 	// name = "Medbeam Gun"
-	desc = "Медицинский лучемёт, полезен в затяжных перестрелках. НЕ ПЕРЕСЕКАЙТЕ ЛУЧИ. Пересечение лучей с другим медлучемётом или прикрепление двух лучей к одной цели будет иметь взрывные последствия."
+	desc = "Медицинский лучемёт, полезен в затяжных перестрелках. НЕ ПЕРЕСЕКАЙТЕ ЛУЧИ. Пересечение лучей с другим медлучемётом \
+	или направление двух лучей к одной цели будет иметь неприятные последствия."
 	// desc = "Medical Beam Gun, useful in prolonged firefights. DO NOT CROSS THE BEAMS. Crossing beams with another medbeam or attaching two beams to one target will have explosive consequences."
 	item = /obj/item/gun/medbeam
 	reference = "MBG"
