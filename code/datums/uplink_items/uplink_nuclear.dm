@@ -718,6 +718,7 @@
 // MARK: IMPLANTS
 ////////////////////////////////////////
 
+
 /datum/uplink_item/bio_chips/krav_implant
 	name = "Имплант искусства Крав Мага"
 	// name = "Krav Maga Implant"
@@ -760,8 +761,9 @@
 	cost = 50
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
-
+////////////////////////////////////////
 // CYBERNETICS
+////////////////////////////////////////
 
 /datum/uplink_item/cyber_implants/thermals
 	name = "Имплант теплового зрения"
