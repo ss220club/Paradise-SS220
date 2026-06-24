@@ -15,11 +15,6 @@
 	var/material_string = item_string_material(user)
 	. = ..(user, "", material_string)
 
-/obj/item/attack__legacy__attackchain(mob/living/target, mob/living/user, def_zone)
-	if(check_item_eat(target, user))
-		try_item_eat(target, user)
-		return TRUE
-	. = ..()
 /obj/item/melee_attack_chain(mob/user, atom/target, params)
 	if(iscarbon(target))
 		var/mob/living/carbon/L = target
