@@ -416,9 +416,9 @@
 /datum/uplink_item/ammo/sniper/antimatter
 	name = "Магазин для снайперской винтовки(Антиматериальные .50)"
 	// name = "Sniper - .50 Antimatter Magazine"
-	desc = "Дополнительный магазин на 6 патронов калибра .50 для использования в снайперскиой винтовке. \
-	Содержит патроны, которые просто созданы для разрушений всего и вся. \
-	Способны сильно повреждать объекты и отрубать конечности живым существам. Требует увеличения для точного прицеливания."
+	desc = "Дополнительный магазин на 6 Антиматериальных патронов калибра .50 для использования в снайперскиой винтовке. \
+	Содержит патроны, которые просто созданы для разрушений всего и вся. Способны сильно повреждать объекты и отрубать \
+	конечности живым существам. Имеют повышенную отдачу, стрельба с упором обязательна!"
 	// desc = "A 6-round magazine of antimatter ammo for use with .50 sniper rifles. \
 	// Able to heavily damage objects, and delimb people. Requires zooming in for accurate aiming."
 	reference = "50A"
@@ -426,27 +426,29 @@
 	cost = 30
 
 /datum/uplink_item/ammo/sniper/soporific
-	name = "Снайпер - снотворный магазин .50"
+	name = "Магазин для снайперской винтовки(Усыпляющие .50)"
 	// name = "Sniper - .50 Soporific Magazine"
-	desc = "Магазин на 3 патрона с снотворными боеприпасами, предназначенный для использования со снайперскими винтовками .50. Усыпите своих врагов сегодня!"
+	desc = "Дополнительный магазин на 3 Усыпляющих патронов калибра .50 для использования в снайперскиой винтовке. \
+	Усыпите своих врагов сегодня!"
 	// desc = "A 3-round magazine of soporific ammo designed for use with .50 sniper rifles. Put your enemies to sleep today!"
 	reference = "50S"
 	item = /obj/item/ammo_box/magazine/sniper_rounds/soporific
 
 /datum/uplink_item/ammo/sniper/haemorrhage
-	name = "Снайпер - кровоостанавливающий магазин .50"
+	name = "Магазин для снайперской винтовки(Режущие .50)"
 	// name = "Sniper - .50 Hemorrhage Magazine"
-	desc = "Магазин на 5 патронов с кровоостанавливающими боеприпасами, предназначенный для использования со снайперскими винтовками .50; вызывает сильное кровотечение у цели."
+	desc = "Дополнительный магазин на 5 Режущих патронов калибра .50 для использования в снайперскиой винтовке. Вызывают \
+	обильное кровотечение у цели."
 	// desc = "A 5-round magazine of hemorrhage ammo designed for use with .50 sniper rifles; causes heavy bleeding \
 	// in the target."
 	reference = "50B"
 	item = /obj/item/ammo_box/magazine/sniper_rounds/haemorrhage
 
 /datum/uplink_item/ammo/sniper/penetrator
-	name = "Снайпер - бронебойный магазин .50"
+	name = "Магазин для снайперской винтовки(Бронебойные .50)"
 	// name = "Sniper - .50 Penetrator Magazine"
-	desc = "Магазин на 5 патронов с бронебойными боеприпасами, предназначенный для использования со снайперскими винтовками .50. \
-	Может пробивать стены и нескольких врагов."
+	desc = "Дополнительный магазин на 5 Бронебойных патронов калибра .50 для использования в снайперскиой винтовке. \
+	Немного слабее обычных .50, но имеют неверроятную пробивную способность."
 	// desc = "A 5-round magazine of penetrator ammo designed for use with .50 sniper rifles. \
 	// Can pierce walls and multiple enemies."
 	reference = "50P"
@@ -454,9 +456,10 @@
 	cost = 20
 
 /datum/uplink_item/ammo/bioterror
-	name = "Коробка с шприцами биотеррора"
+	name = "Коробка шприцей с смесью Биотеррор"
 	// name = "Box of Bioterror Syringes"
-	desc = "Коробка, полная предварительно заряженных шприцев, содержащих различные химикаты, которые парализуют моторную систему и систему Брока жертвы, делая невозможным для них двигаться или говорить, пока они находятся в их системе."
+	desc = "Коробка, полная предварительно заряженных шприцев, содержащих различные химикаты, которые парализуют моторную \
+	систему и речевой аппарат жертвы, делая временно невозможным движение или общение."
 	// desc = "A box full of preloaded syringes, containing various chemicals that seize up the victim's motor and broca system , making it impossible for them to move or speak while in their system."
 	reference = "BTS"
 	item = /obj/item/storage/box/syndie_kit/bioterror
@@ -480,7 +483,7 @@
 /datum/uplink_item/explosives/c4bag
 	name = "Сумка с взрывчаткой C-4"
 	// name = "Bag of C-4 explosives"
-	desc = "Потому что иногда количество — это качество. Содержит 10 пластиковых взрывчаток C-4."
+	desc = "Потому что иногда количество — это качество. Содержит 10 композитных взрывчаток C-4."
 	// desc = "Because sometimes quantity is quality. Contains 10 C-4 plastic explosives."
 	reference = "C4B"
 	item = /obj/item/storage/backpack/duffel/syndie/c4
@@ -489,9 +492,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/explosives/breaching_charge
-	name = "Composition X-4"
+	name = "Композит X-4"
 	// name = "Composition X-4"
-	desc = "X-4 — это кумулятивный заряд, предназначенный для безопасности пользователя при нанесении максимального урона occupants комнаты, подвергаемой взлому. Имеет модифицируемый таймер с минимальной настройкой 10 секунд."
+	desc = "X-4 — чтобы быть безопасным для пользователя и при этом наносить максимальный ущерб \
+	находящимся в помещении. Имеет модифицируемый таймер с минимальной настройкой 10 секунд."
 	// desc = "X-4 is a shaped charge designed to be safe to the user while causing maximum damage to the occupants of the room beach breached. It has a modifiable timer with a minimum setting of 10 seconds."
 	reference = "X4"
 	item = /obj/item/grenade/plastic/c4/x4
@@ -501,8 +505,9 @@
 /datum/uplink_item/explosives/x4bag
 	name = "Сумка со взрывчаткой X-4"
 	// name = "Bag of X-4 explosives"
-	desc = "Содержит 3 кумулятивных пластиковых взрывчатки X-4. Похож на C4, но с более сильным взрывом, который направлен, а не круговой. \
-	X-4 можно разместить на твёрдой поверхности, такой как стена или окно, и он взорвётся сквозь стену, травмируя всё на противоположной стороне, будучи безопаснее для пользователя. \
+	desc = "Содержит 3 кумулятивных композита X-4. Похож на C4, но с более сильным взрывом направленным взрывом. \
+	X-4 можно разместить на твёрдой поверхности, такой как стена или окно, и он взорвётся сквозь стену, разрушая \
+	и травмируя всё и всех на противоположной стороне, будучи безопасным для пользователя. \
 	Для тех случаев, когда вам нужен контролируемый взрыв, оставляющий более широкую и глубокую дыру."
 	// desc = "Contains 3 X-4 shaped plastic explosives. Similar to C4, but with a stronger blast that is directional instead of circular. \
 	// X-4 can be placed on a solid surface, such as a wall or window, and it will blast through the wall, injuring anything on the opposite side, while being safer to the user. \
@@ -525,9 +530,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/explosives/manhacks
-	name = "Граната доставки висцераторов"
+	name = "Граната доставки Висцераторов"
 	// name = "Viscerator Delivery Grenade"
-	desc = "Уникальная граната, которая развёртывает рой висцераторов при активации, которые будут преследовать и разрывать любых не-оперативников в области."
+	desc = "Уникальная граната, которая отправляет рой Висцераторов при активации, которые будут преследовать и разрывать \
+	любых не-оперативников в области."
 	// desc = "A unique grenade that deploys a swarm of viscerators upon activation, which will chase down and shred any non-operatives in the area."
 	reference = "VDG"
 	item = /obj/item/grenade/spawnergrenade/manhacks
