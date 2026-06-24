@@ -762,7 +762,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 ////////////////////////////////////////
-// CYBERNETICS
+// MARK: CYBERNETICS
 ////////////////////////////////////////
 
 /datum/uplink_item/cyber_implants/thermals
