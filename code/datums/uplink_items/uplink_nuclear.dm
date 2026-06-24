@@ -63,9 +63,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/dangerous/rocket_launcher
-	name = "РПГ"
+	name = "Ракетная установка"
 	// name = "Rocket Launcher"
-	desc = "Никто не доживёт до завтра, ведь с нами непревзойдённый и неимеющий в разрушениях равных - РПГ! \
+	desc = "Никто не доживёт до завтра, ведь с нами непревзойдённая и неимеющая в разрушениях равных - Ракетная установка! \
 	(Боеприпасы продаются отдельно, хранить в недоступном для клоунов месте.)"
 	// desc = "Not many things can survive a direct hit from this. (Ammunition sold separately, keep away from children.)"
 	reference = "RL"
