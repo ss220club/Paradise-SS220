@@ -20,7 +20,13 @@
 		try_item_eat(target, user)
 		return TRUE
 	. = ..()
-
+/obj/item/melee_attack_chain(mob/user, atom/target, params)
+	if(iscarbon(target))
+		var/mob/living/carbon/L = target
+		if(check_item_eat(L, user))
+			try_item_eat(L, user)
+			return TRUE
+	. = ..()
 /obj/item/proc/check_item_eat(mob/target, mob/user)
 	switch(material_type)
 		if(MATERIAL_CLASS_NONE)
