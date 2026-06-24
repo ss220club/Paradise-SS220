@@ -719,9 +719,10 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/bio_chips/krav_implant
-	name = "Имплант Крав Мага"
+	name = "Имплант искусства Крав Мага"
 	// name = "Krav Maga Implant"
-	desc = "Биочип, который обучает вас Крав Мага при имплантации, отлично как дешёвое запасное оружие. Предупреждение: биочип перезапишет любые другие боевые стили, такие как CQC, пока активен."
+	desc = "Био-чип, который обучает вас боевому искусству Крав Мага при имплантации, отлично как дешёвое запасное оружие. \
+	Предупреждение: биочип переобучит вас использованию именно стилю Крав Мага пока активен."
 	// desc = "A biochip that teaches you Krav Maga when implanted, great as a cheap backup weapon. Warning: the biochip will override any other fighting styles such as CQC while active."
 	reference = "KMI"
 	item = /obj/item/bio_chip_implanter/krav_maga
@@ -729,7 +730,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/bio_chips/uplink/nuclear
-	name = "Биочип аплинка ядерного агента"
+	name = "Био-чип аплинка ядерного оперативника"
 	// name = "Nuclear Uplink Bio-chip"
 	reference = "UIN"
 	item = /obj/item/bio_chip_implanter/nuclear
@@ -737,10 +738,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/bio_chips/microbomb
-	name = "Биочип микробомбы"
+	name = "Био-чип микробомбы"
 	// name = "Microbomb Bio-chip"
-	desc = "Биочип, вводимый в тело и позже активируемый вручную или автоматически upon death. Чем больше имплантов внутри вас, тем выше взрывная мощность. \
-	Это permanently уничтожит ваше тело, однако."
+	desc = "Био-чип, вводимый инъекцией под кожу. Активируется вручную или автоматически после биологической смерти опперативника. \
+	Чем больше имплантов внутри вас, тем выше взрывная мощность. Как ни старнно, но био-чип уничтожит ваше тело."
 	// desc = "A bio-chip injected into the body, and later activated either manually or automatically upon death. The more implants inside of you, the higher the explosive power. \
 	// This will permanently destroy your body, however."
 	reference = "MBI"
@@ -751,7 +752,8 @@
 /datum/uplink_item/bio_chips/macrobomb
 	name = "Биочип макробомбы"
 	// name = "Macrobomb Bio-chip"
-	desc = "Биочип, вводимый в тело и позже активируемый вручную или автоматически upon death. Upon death, releases a massive explosion, которая wipe out всё nearby."
+	desc = "Био-чип, вводимый инъекцией под кожу. Активируется вручную или автоматически после биологической смерти опперативника. \
+	Производит мощный взрыв, который уничтожает всех и вся поблизости."
 	// desc = "A bio-chip injected into the body, and later activated either manually or automatically upon death. Upon death, releases a massive explosion that will wipe out everything nearby."
 	reference = "HAB"
 	item = /obj/item/bio_chip_implanter/explosive_macro
