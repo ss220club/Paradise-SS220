@@ -687,9 +687,9 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/suits/elite_nukie
-	name = "Элитный MOD-костюм Синдиката"
+	name = "Элитный MOD-сьют Синдиката"
 	// name = "Elite Syndicate MODsuit"
-	desc = "Продвинутый MOD-костюм с превосходной бронёй и мобильностью по сравнению со стандартным MOD-костюмом Синдиката."
+	desc = "Продвинутый MOD-сьют с лучшими бронепластинами, во многом превосходит своего предшественника."
 	// desc = "An advanced MODsuit with superior armor and mobility to the standard Syndicate MODsuit."
 	item = /obj/item/mod/control/pre_equipped/elite
 	cost = 60 // SS220 EDIT PRICE UP/DOWN 40 -> 60
@@ -700,10 +700,10 @@
 /datum/uplink_item/suits/shielded
 	name = "Модуль энергетического щита"
 	// name = "Energy Shield Module"
-	desc = "Персональное защитное силовое поле, обычно seen в военных применениях. \
-	Этот продвинутый deflective shield — это, по сути, уменьшенная версия тех, что seen на звёздных кораблях, \
-	и стоимость энергии может быть лёгким индикатором этого. Однако он способен блокировать почти любую входящую атаку, \
-	хотя с его низким количеством отдельных зарядов, пользователь остаётся смертным."
+	desc = "Персональное защитное силовое поле, обычно заметное в боевых противостояниях. \
+	Энергощит — это, по сути, уменьшенная версия тех продвинутых поглощающих экранов, что заметны на военных шаттлах. \
+	Однако он способен блокировать почти любую входящую атаку, однако из-за сокращения системы подачи энергии сильно \
+	упала и прочность энерго матриц."
 	// desc = "A personal, protective force field typically seen in military applications. \
 	// This advanced deflector shield is essentially a scaled down version of those seen on starships, \
 	// and the power cost can be an easy indicator of this. However, it is capable of blocking nearly any incoming attack, \
