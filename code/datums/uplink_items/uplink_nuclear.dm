@@ -552,9 +552,10 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/stealthy_tools/clownkit
-	name = "Инфильтрационный набор Honk Brand"
+	name = "Набор внедрения Honk Brand"
 	// name = "Honk Brand Infiltration Kit"
-	desc = "Все инструменты, которые вам нужны, чтобы сыграть лучшую шутку, которую когда-либо видела Nanotrasen. Включает маску-изменитель голоса, магнитные клоунские ботинки и стандартный клоунский наряд, инструменты и рюкзак."
+	desc = "Все инструменты, которые вам нужны, чтобы сыграть лучшую шутку, которую когда-либо видела Nanotrasen. \
+	Включает маску-изменитель голоса, магнитные клоунские ботинки и стандартный клоунский наряд, инструменты и рюкзак."
 	// desc = "All the tools you need to play the best prank Nanotrasen has ever seen. Includes a voice changer mask, magnetic clown shoes, and standard clown outfit, tools, and backpack."
 	reference = "HBIK"
 	item = /obj/item/storage/backpack/clown/syndie
