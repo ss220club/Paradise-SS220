@@ -750,6 +750,7 @@
 					var/datum/dna2_record/buf = buffers[bufferId]
 					disk.buf = buf.copy()
 					disk.name = "data disk - '[buf.name]'"
+					disk.rebuild_ru_names("data disk", suffix = " - '[buf.name]'") //SS220 EDIT - Перевод диска с настраиваемым названием
 		if("wipeDisk")
 			if(isnull(disk) || disk.read_only)
 				return
@@ -780,6 +781,7 @@
 	var/obj/item/dnainjector/I = new()
 	I.forceMove(loc)
 	I.name += " ([buf.name])"
+	I.rebuild_ru_names("DNA-Injector", suffix = " ([buf.name])") //SS220 EDIT - Перевод инъектора с настраиваемым названием
 	if(copy_buffer)
 		I.buf = buf.copy()
 	if(connected)
