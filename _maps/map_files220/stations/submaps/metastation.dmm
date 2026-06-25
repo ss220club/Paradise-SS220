@@ -78,6 +78,9 @@
 "aH" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/atmospherics/meter,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
 "aK" = (
@@ -467,13 +470,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/smes)
-"cU" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/break_room)
 "cW" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/noslip,
@@ -2176,6 +2172,9 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
@@ -4147,6 +4146,9 @@
 	dir = 6
 	},
 /obj/machinery/light/directional/west,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/engine/reactor)
 "Gm" = (
@@ -4592,6 +4594,9 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/critical/directional/south,
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
 "KZ" = (
@@ -4995,6 +5000,9 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "NQ" = (
@@ -5119,6 +5127,9 @@
 	name = "east bump";
 	pixel_x = 28
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/engine/reactor)
 "OJ" = (
@@ -5173,6 +5184,9 @@
 	int_button_link_id = "atmossm_btn_int";
 	req_one_access = list(10,24);
 	pixel_x = 6
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/engine/reactor)
@@ -5978,6 +5992,9 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "UO" = (
@@ -6698,6 +6715,15 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
+"ZS" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/engine,
+/area/station/engineering/engine/reactor)
 "ZX" = (
 /obj/structure/cable/extra_insulated,
 /obj/machinery/computer/monitor{
@@ -8739,12 +8765,12 @@ pR
 qc
 cp
 ao
-bf
+ZS
 PQ
 bB
 Gd
 ZN
-cU
+yT
 NM
 UH
 rp
