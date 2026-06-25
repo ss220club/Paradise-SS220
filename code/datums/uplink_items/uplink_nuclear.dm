@@ -823,7 +823,7 @@
 /datum/uplink_item/bundles_tc/c20r
 	name = "Набор C-20r"
 	// name = "C-20r Bundle"
-	desc = "Старая добрая классика: классический C-20r, bundled с тремя магазинами и (излишним) глушителем по сниженной цене."
+	desc = "Старая добрая классика: ПП C-20r с тремя магазинами и глушителем по сниженной цене."
 	// desc = "Old Faithful: The classic C-20r, bundled with three magazines and a (surplus) suppressor at discount price."
 	reference = "C20B"
 	item = /obj/item/storage/backpack/duffel/syndie/c20rbundle
@@ -833,7 +833,7 @@
 /datum/uplink_item/bundles_tc/cyber_implants
 	name = "Набор кибернетических имплантов"
 	// name = "Cybernetic Implants Bundle"
-	desc = "Случайный selection кибернетических имплантов. Гарантированно 5 high quality имплантов. Поставляется с автохирургом."
+	desc = "Набор из случаных кибернетических имплантов. Гарантированно 5 высококачественных имплантов с личными автохирургами!."
 	// desc = "A random selection of cybernetic implants. Guaranteed 5 high quality implants. Comes with an autosurgeon."
 	reference = "CIB"
 	item = /obj/item/storage/box/cyber_implants
@@ -843,7 +843,7 @@
 /datum/uplink_item/bundles_tc/medical
 	name = "Медицинский набор"
 	// name = "Medical Bundle"
-	desc = "Специалист поддержки: помогите своим товарищам-оперативникам с этим медицинским набором. Содержит тактический медицинский набор, \
+	desc = "Специалист поддержки: помогите оперативникам с этим медицинским набором. Содержит тактический медицинский набор, \
 	медицинский лучемёт и пару магнитных ботинок Синдиката."
 	// desc = "The support specialist: Aid your fellow operatives with this medical bundle. Contains a tactical medkit, \
 	// a medical beam gun and a pair of Syndicate magboots."
@@ -855,9 +855,8 @@
 /datum/uplink_item/bundles_tc/sniper
 	name = "Снайперский набор"
 	// name = "Sniper bundle"
-	desc = "Элегантный и refined: содержит сложенную снайперскую винтовку в дорогом carrying case, \
-	два снотворных knockout магазина, бесплатный surplus глушитель и sharp-looking tactical turtleneck suit. \
-	Мы бросим бесплатный красный галстук, если вы закажете СЕЙЧАС."
+	desc = "Элегантный и благородный: содержит сложенную снайперскую винтовку в дорогом и изящном чехле, \
+	два магазина снотворных патрон, глушитель и стильный тактический костюм-водолазка."
 	// desc = "Elegant and refined: Contains a collapsed sniper rifle in an expensive carrying case, \
 	// two soporific knockout magazines, a free surplus suppressor, and a sharp-looking tactical turtleneck suit. \
 	// We'll throw in a free red tie if you order NOW."
