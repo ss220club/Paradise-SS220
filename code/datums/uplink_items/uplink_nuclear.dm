@@ -768,7 +768,8 @@
 /datum/uplink_item/cyber_implants/thermals
 	name = "Имплант теплового зрения"
 	// name = "Thermal Vision Implant"
-	desc = "Эти кибернетические глаза дадут вам тепловое зрение. Поставляется с автохирургом."
+	desc = "Автоимплантер, содержащий имплант теплового зрения. Кибернетические глаза использующие продвинутую технологию \
+	тепловизора, позволяя пользователю обнаруживать биологических сущностей даже через стены."
 	// desc = "These cybernetic eyes will give you thermal vision. Comes with an autosurgeon."
 	reference = "CIT"
 	item = /obj/item/autosurgeon/organ/syndicate/thermal_eyes
@@ -779,7 +780,9 @@
 /datum/uplink_item/cyber_implants/xray
 	name = "Имплант рентгеновского зрения"
 	// name = "X-Ray Vision Implant"
-	desc = "Эти кибернетические глаза дадут вам рентгеновское зрение. Поставляется с автохирургом."
+	desc = "Автоимплантер, содержащий имплант рентгеновского зрения. Более продвинутая версия технологии тепловизионного зрения, \
+	объединившая в себе мезонный и материальный спектр излучения. В отличие от своего предшественника, позволит пользователю \
+	видеть полное окружение и любые биологические организмы вне зависимости от преград."
 	// desc = "These cybernetic eyes will give you X-ray vision. Comes with an autosurgeon."
 	reference = "CIX"
 	item = /obj/item/autosurgeon/organ/syndicate/xray_eyes
@@ -788,9 +791,10 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/cyber_implants/antistun
-	name = "Укреплённый имплант перезагрузки ЦНС"
+	name = "Экранированный имплант перезагрузки ЦНС"
 	// name = "Hardened CNS Rebooter Implant"
-	desc = "Этот имплант поможет вам быстрее встать на ноги после being fatigued. Он immune к EMP атакам. Поставляется с автохирургом."
+	desc = "Автоимплантер, содержащий экранированный имплант перезагрузки Центральной Нервной Системы. Этот имплант \
+	поможет вам быстрее встать на ноги после сильного утомления. Имплант защищён от негативного влияния электромагнитного излучения."
 	// desc = "This implant will help you get back up on your feet faster after being fatigued. It is immune to EMP attacks. Comes with an autosurgeon."
 	reference = "CIAS"
 	item = /obj/item/autosurgeon/organ/syndicate/anti_stam
@@ -799,9 +803,12 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/cyber_implants/reviver
-	name = "Укреплённый имплант возрождения"
+	name = "Экранированный имплант возрождения"
 	// name = "Hardened Reviver Implant"
-	desc = "Этот имплант попытается возродить и исцелить вас, если вы потеряете сознание. Он immune к EMP атакам. Поставляется с автохирургом."
+	desc = "Автоимплантер, содержащий экранированный имплант возрождения. Имплант будет ускорять заживление организмом \
+	несложных ран если сработает датчик критического состояния организма. В случае утраты организмом биологической активности \
+	продолжит в автоматическом формате восстанавливать его и при остатке лишь слабых ран - попытается запустить сердце субъекта. \
+	Имплант защищён от негативного влияния электромагнитного излучения."
 	// desc = "This implant will attempt to revive and heal you if you lose consciousness. It is immune to EMP attacks. Comes with an autosurgeon."
 	reference = "CIR"
 	item = /obj/item/autosurgeon/organ/syndicate/reviver
