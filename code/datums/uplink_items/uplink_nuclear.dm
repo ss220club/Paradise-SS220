@@ -920,15 +920,19 @@
 	// name = "Bulldog - 12g party Magazine"
 	desc = "Альтернативный праздничный магазин с конфетти на 12 патронов для использования в дробовике «Бульдог». Зачем? Потому что мы можем — Honkco Industries"
 	// desc = "An alternative 12-round confetti magazine for use in the Bulldog shotgun. Why? Because we can - Honkco Industries"
+	name = "Бульдог магазин 12г(Конфети пули)"
+	// name = "12g Meteorslug Shells"
+	desc = "Дополнительный магазин в дробовик «Бульдог» на 12 праздничных патронов. Содержат пресованое конфетти. \
+	Зачем? Потому что мы можем — Honkco Industries"
 	item = /obj/item/ammo_box/magazine/m12g/confetti
 	reference = "12CS"
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 	cost = 5
 
 /datum/uplink_item/badass/confetti_party_pack
-	name = "Ядерная вечеринка pack"
+	name = "Набор Ядерная вечеринка"
 	// name = "Nuclear party pack"
-	desc = "Сумка, заполненная hilarious equipment! Поставляется с бесплатными гранатами с конфетти и кап-ганом!"
+	desc = "Сумка, заполненная увеселительными приколами! Поставляется с бесплатными конфетти гранатами и игрушечным револьвером!"
 	// desc = "A duffel bag filled with hilarious equipment! Comes with free confetti grenades and a cap gun!"
 	item = /obj/item/storage/backpack/duffel/syndie/party
 	reference = "SPP"
