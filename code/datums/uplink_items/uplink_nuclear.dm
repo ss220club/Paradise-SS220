@@ -902,7 +902,9 @@
 	excludefrom = list(UPLINK_TYPE_TRAITOR, UPLINK_TYPE_SIT)
 
 /datum/uplink_item/explosives/detomatix/nuclear
-	desc = "При вставке в персональный цифровой помощник этот картридж даёт вам пять возможностей взорвать PDA членов экипажа, у которых включена функция сообщений. Ударная волна от взрыва собьёт получателя с ног на короткое время и оглушит их на более длительный срок. Имеет шанс взорвать ваш PDA. Эта версия поставляется с программой для дистанционного переключения blast doors вашего ядерного шаттла."
+	desc = "При установке в КПК этот картридж даст вам пять копий крайне опасного цифрового вируса, способного через месенжер \
+	подрывать чужие КПК. Ударная волна от взрыва оглушит и собьёт с ног получателя на короткое время. Имеется большая вероятность \
+	отрыва конечностей. Эта версия картриджа поставляется с программой для дистанционного управления гермозатворами вашего шаттла."
 	// desc = "When inserted into a personal digital assistant, this cartridge gives you five opportunities to detonate PDAs of crew members who have their message feature enabled. The concussive effect from the explosion will knock the recipient out for a short period, and deafen them for longer. It has a chance to detonate your PDA. This version comes with a program to toggle your nuclear shuttle blast doors remotely."
 	item = /obj/item/cartridge/syndicate/nuclear
 	reference = "DEPCN"
