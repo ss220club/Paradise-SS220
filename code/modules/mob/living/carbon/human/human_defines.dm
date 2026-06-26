@@ -30,9 +30,9 @@
 
 	var/age = 30		//Player's age (pure fluff)
 	/// Players' height (more fluff)
-	var/height = "average height"
+	var/height = "обычного"
 	/// Players physique (even MORE fluff)
-	var/physique = "average"
+	var/physique = "обычным"
 	/// The body type associated with the body
 	var/body_type = MALE
 
