@@ -45585,7 +45585,6 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/machinery/light/directional/north,
 /obj/machinery/newscaster/directional/north,
 /obj/item/eftpos{
 	pixel_x = 9;
@@ -48514,6 +48513,7 @@
 	dir = 4
 	},
 /obj/machinery/light_switch/south,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/bar)
 "fdg" = (
@@ -70238,12 +70238,6 @@
 /obj/item/lighter/zippo{
 	pixel_x = 8;
 	pixel_y = 4
-	},
-/obj/structure/sign/securearea{
-	desc = "Under the painting a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'";
-	icon_state = "monkey_painting";
-	name = "Mr. Deempisi portrait";
-	pixel_y = 32
 	},
 /obj/machinery/door_control/bolt_control/west{
 	id = "vipbar_bolt";
@@ -100007,9 +100001,14 @@
 "vHT" = (
 /obj/machinery/disposal,
 /obj/machinery/firealarm/directional/east,
-/obj/structure/sign/poster/official/high_class_martini/directional/north,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/structure/sign/securearea{
+	desc = "Under the painting a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'";
+	icon_state = "monkey_painting";
+	name = "Mr. Deempisi portrait";
+	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/bar)
