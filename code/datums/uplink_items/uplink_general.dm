@@ -430,7 +430,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/knuckleduster
 	name = "Синдикастет"
-	desc = "Простое в использованиb и хорошо скрываемое оружие ближнего боя, предназначенное для забивания цели до \
+	desc = "Простое в использовании и хорошо скрываемое оружие ближнего боя, предназначенное для забивания цели до \
 			 смерти жестоким способом. Это оружие разработано специально для нанесения жертве серьезных повреждений органов."
 	reference = "SKD"
 	item = /obj/item/melee/knuckleduster/syndie
