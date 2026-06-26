@@ -172,7 +172,7 @@ const ItemsPage = (_properties) => {
       <Stack vertical>
         <Stack.Item>
           <Section
-            title={'Баланс: ' + crystals + 'TC'}
+            title={'Баланс: ' + crystals + 'ТК'}
             buttons={
               <>
                 <Button.Checkbox
@@ -249,7 +249,7 @@ const CartPage = (_properties) => {
               <Button.Checkbox content="Показать описания" checked={showDesc} onClick={() => setShowDesc(!showDesc)} />
               <Button content="Очистить корзину" icon="trash" onClick={() => act('empty_cart')} disabled={!cart} />
               <Button
-                content={'Оформить заказ (' + cart_price + 'TC)'}
+                content={'Оформить заказ (' + cart_price + 'ТК)'}
                 icon="shopping-cart"
                 onClick={() => act('purchase_cart')}
                 disabled={!cart || cart_price > crystals}
@@ -336,7 +336,7 @@ const UplinkItemButtons = (props) => {
         disabled={i.cost > crystals}
       />
       <Button
-        content={'Купить (' + i.cost + 'TC)' + (i.refundable ? ' [Можно вернуть]' : '')}
+        content={'Купить (' + i.cost + 'ТК)' + (i.refundable ? ' [Можно вернуть]' : '')}
         color={i.hijack_only === 1 && 'red'}
         // Yes I care this much about both of these being able to render at the same time
         tooltip={i.hijack_only === 1 && 'Только для Хиджакеров!'}
@@ -365,7 +365,7 @@ const CartButtons = (props: CartButtonProps) => {
     <Stack>
       <Button
         icon="times"
-        content={'(' + i.cost * i.amount + 'TC)'}
+        content={'(' + i.cost * i.amount + 'ТК)'}
         tooltip="Убрать из корзины."
         tooltipPosition="left"
         onClick={() =>
