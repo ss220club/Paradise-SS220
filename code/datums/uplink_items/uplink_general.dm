@@ -404,7 +404,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/poisonbottle
 	name = "Бутылка с ядом"
-	desc = "Синдикат поставит вам флакон с 40 юнитами случайно выбранного яда. Яд может быть как очень раздражительным для \
+	desc = "Синдикат поставит вам флакон с 40 юнитами случайно выбранного яда. Яд может быть как очень раздражающим для \
 			 жертвы, так и невероятно смертельным."
 	reference = "TPB"
 	item = /obj/item/reagent_containers/glass/bottle/traitor
