@@ -571,7 +571,7 @@
 	name = "Усиленный бур с алмазным наконечником"
 	// name = "Amplifying Diamond Tipped Thermal Safe Drill"
 	desc = "Термобур с алмазным наконечником и магнитными зажимами для быстрого сверления закалённых сейфов. \
-	Оснащён встроенной системой обнаружения службы безопасности, чтобы держать вас начеку, если к вам постучится незванные гости."
+	Оснащён встроенной системой обнаружения службы безопасности, чтобы держать вас начеку, если к вам постучатся незваные гости."
 	// desc = "A diamond tipped thermal drill with magnetic clamps for the purpose of quickly drilling hardened objects. Comes with built in security detection and nanite system, to keep you up if security comes a-knocking."
 	reference = "DDRL"
 	item = /obj/item/thermal_drill/diamond_drill/syndicate
@@ -581,7 +581,7 @@
 /datum/uplink_item/device_tools/medkit
 	name = "Продвинутый набор медика"
 	// name = "Syndicate Combat Medic Kit"
-	desc = "Подозрительная аптечка чёрно-красного цвета. Содержит иньектор боевого стимулятора для быстрого заживления ран, \
+	desc = "Подозрительная аптечка чёрно-красного цвета. Содержит инъектор боевого стимулятора для быстрого заживления ран, \
 	медицинский HUD, и другие медицинские принадлежности, полезные для оказания медпомощи полевому оперативнику."
 	// desc = "The Syndicate medkit is a suspicious black and red. Included is a combat stimulant injector for rapid healing, a medical HUD for quick identification of injured comrades, \
 	// and other medical supplies helpful for a medical field operative."
