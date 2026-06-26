@@ -505,7 +505,7 @@
 /datum/uplink_item/explosives/x4bag
 	name = "Сумка со взрывчаткой X-4"
 	// name = "Bag of X-4 explosives"
-	desc = "Содержит 3 кумулятивных композита X-4. Похож на C4, но с более сильным взрывом направленным взрывом. \
+	desc = "Содержит 3 кумулятивных композита X-4. Похож на C4, но с более сильным и направленным взрывом. \
 	X-4 можно разместить на твёрдой поверхности, такой как стена или окно, и он взорвётся сквозь стену, разрушая \
 	и травмируя всё и всех на противоположной стороне, будучи безопасным для пользователя. \
 	Для тех случаев, когда вам нужен контролируемый взрыв, оставляющий более широкую и глубокую дыру."
@@ -902,7 +902,7 @@
 	excludefrom = list(UPLINK_TYPE_TRAITOR, UPLINK_TYPE_SIT)
 
 /datum/uplink_item/explosives/detomatix/nuclear
-	desc = "При установке в КПК этот картридж даст вам пять копий крайне опасного цифрового вируса, способного через месенжер \
+	desc = "При установке в КПК этот картридж даст вам пять копий крайне опасного цифрового вируса, способного через мессенджер \
 	подрывать чужие КПК. Ударная волна от взрыва оглушит и собьёт с ног получателя на короткое время. Имеется большая вероятность \
 	отрыва конечностей. Эта версия картриджа поставляется с программой для дистанционного управления гермозатворами вашего шаттла."
 	// desc = "When inserted into a personal digital assistant, this cartridge gives you five opportunities to detonate PDAs of crew members who have their message feature enabled. The concussive effect from the explosion will knock the recipient out for a short period, and deafen them for longer. It has a chance to detonate your PDA. This version comes with a program to toggle your nuclear shuttle blast doors remotely."
