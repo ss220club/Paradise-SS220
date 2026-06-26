@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		if(A.cost >= 100)
 			discount *= 0.5 // If the item costs 100TC or more, it's only 25% off.
 		A.cost = max(round(A.cost * (1 - discount)), 1)
-		A.category = "Снаряжение по скидке"
+		A.category = "Снаряжение со скидкой"
 		A.name += " (Скидка [round(((initial(A.cost) - A.cost) / initial(A.cost)) * 100)]%!)"
 		A.reference = "DIS[newreference]"
 		A.desc += " Ограничение на покупку в одни руки - [A.limited_stock]. Стандартная цена [initial(A.cost)] ТК."
