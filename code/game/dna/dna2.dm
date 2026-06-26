@@ -198,8 +198,9 @@ GLOBAL_LIST_EMPTY(bad_blocks)
 			value = GLOB.character_physiques.Find("обычным")
 		else if(block == DNA_UI_HEIGHT)
 			value = GLOB.character_heights.Find("обычного")
-		else
-			value = 1
+
+	if(value == 0)
+		value = 1
 	ASSERT(maxvalue <= 4095)
 	var/range = (4095 / maxvalue)
 	if(value)
