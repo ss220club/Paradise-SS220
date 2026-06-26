@@ -373,7 +373,7 @@
 /datum/uplink_item/ammo/rocket
 	name = "Снаряд для Ракетной установки"
 	// name = "Rocket Launcher Shell"
-	desc = "Дополнительный снаряд для Ракетнаой установки. Убедитесь, что ваш лучший друг не стоит перед вами."
+	desc = "Дополнительный снаряд для Ракетной установки. Убедитесь, что ваш лучший друг не стоит перед вами."
 	// desc = "An extra shell for your RPG. Make sure your bestie isn't standing in front of you."
 	reference = "HE"
 	item = /obj/item/ammo_casing/rocket
@@ -428,7 +428,7 @@
 /datum/uplink_item/ammo/sniper/soporific
 	name = "Магазин для снайперской винтовки(Усыпляющие .50)"
 	// name = "Sniper - .50 Soporific Magazine"
-	desc = "Дополнительный магазин на 3 Усыпляющих патронов калибра .50 для использования в снайперской винтовке. \
+	desc = "Дополнительный магазин на 3 Усыпляющих патрона калибра .50 для использования в снайперской винтовке. \
 	Усыпите своих врагов сегодня!"
 	// desc = "A 3-round magazine of soporific ammo designed for use with .50 sniper rifles. Put your enemies to sleep today!"
 	reference = "50S"
@@ -456,7 +456,7 @@
 	cost = 20
 
 /datum/uplink_item/ammo/bioterror
-	name = "Коробка шприцей с смесью Биотеррор"
+	name = "Коробка шприцев со смесью Биотеррор"
 	// name = "Box of Bioterror Syringes"
 	desc = "Коробка, полная предварительно заряженных шприцев, содержащих различные химикаты, которые парализуют моторную \
 	систему и речевой аппарат жертвы, делая временно невозможным движение или общение."
