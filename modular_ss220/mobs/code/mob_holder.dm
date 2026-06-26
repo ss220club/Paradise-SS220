@@ -8,7 +8,7 @@
 
 /obj/item/holder/attack__legacy__attackchain(mob/living/target, mob/living/user, def_zone)
 	ASSERT(length(contents) > 0)
-	var/mob/living/simple_animal/animal = contents[1]
+	var/mob/living/animal = contents[1]
 	var/mob/living/carbon/devourer = target
 	if(!istype(animal) || !istype(devourer))
 		return ..()
