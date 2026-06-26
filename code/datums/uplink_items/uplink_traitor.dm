@@ -954,8 +954,8 @@
 /datum/uplink_item/bundles_tc/badass
 	name = "Комплект экипировки и оборудования Синдиката"
 	// name = "Syndicate Bundle"
-	desc = "Специально подобраный набор предметов для выполнения определённой задачи. Эти предметы в совокупности стоят \
-	более 100 телекристаллов. Вы можете выбрать одну из трёх специализаций после покупки или доверится нашему \
+	desc = "Специально подобранный набор предметов для выполнения определённой задачи. Эти предметы в совокупности стоят \
+	более 100 телекристаллов. Вы можете выбрать одну из трёх специализаций после покупки или довериться нашему \
 	Отделу принятия сложных решений."
 	// desc = "Syndicate Bundles are specialized groups of items that arrive in a plain box. These items are collectively worth more than 100 telecrystals. You can select one out of three specializations after purchase."
 	reference = "SYB"

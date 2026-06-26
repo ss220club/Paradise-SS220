@@ -916,14 +916,11 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/badass/confettidrum
-	name = "Бульдог - праздничный магазин 12g"
-	// name = "Bulldog - 12g party Magazine"
-	desc = "Альтернативный праздничный магазин с конфетти на 12 патронов для использования в дробовике «Бульдог». Зачем? Потому что мы можем — Honkco Industries"
-	// desc = "An alternative 12-round confetti magazine for use in the Bulldog shotgun. Why? Because we can - Honkco Industries"
 	name = "Бульдог магазин 12г(Конфети пули)"
-	// name = "12g Meteorslug Shells"
+	// name = "Bulldog - 12g party Magazine"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 12 праздничных патронов. Содержат пресованое конфетти. \
 	Зачем? Потому что мы можем — Honkco Industries"
+	// desc = "An alternative 12-round confetti magazine for use in the Bulldog shotgun. Why? Because we can - Honkco Industries"
 	item = /obj/item/ammo_box/magazine/m12g/confetti
 	reference = "12CS"
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
