@@ -263,7 +263,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullslug
-	name = "Бульдог магазин 12г(Слаги)"
+	name = "Бульдог магазин (Слаги 12 калибра)"
 	// name = "Bulldog - 12g Slug Magazine"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Заряжены крупнокалиберными пулями."
 	// desc = "An additional 8-round slug magazine for use in the Bulldog shotgun. Now 8 times less likely to shoot your pals."
@@ -273,7 +273,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullbuck
-	name = "Бульдог магазин 12г(Картечь)"
+	name = "Бульдог магазин (Картечь 12 калибра)"
 	// name = "Bulldog - 12g Buckshot Magazine"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. В каждом патроне заложено по пять пуль картечи."
 	// desc = "An additional 8-round buckshot magazine for use in the Bulldog shotgun. Front towards enemy."
@@ -283,7 +283,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullmeteor
-	name = "Бульдог магазин 12г(Метеоритные пули)"
+	name = "Бульдог магазин (Метеоритные пули 12 калибра)"
 	// name = "12g Meteorslug Shells"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Содержат частичку метеорита, которая при \
 	попадании отбрасывает и сильно ранит жертв."
@@ -294,7 +294,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bulldragon
-	name = "Бульдог магазин 12г(«Дыхание дракона»)"
+	name = "Бульдог магазин («Дыхание дракона» 12 калибра)"
 	// name = "Bulldog - 12g Dragon's Breath Magazine"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Патроны крайне слабы даже по небронированным целям, \
 	но способны выжигать большие области вместе с экипажем за счёт фосфорного состава."
