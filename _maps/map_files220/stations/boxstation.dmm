@@ -8511,13 +8511,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/button/windowtint/west{
-	id = "holodeck";
-	range = 9
-	},
 /obj/machinery/hologram/holopad{
 	pixel_y = 16
 	},
+/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "aGP" = (
@@ -11217,7 +11215,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "aQJ" = (
-/obj/machinery/light/small/directional/east,
 /obj/item/radio/intercom/directional/east,
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -11647,6 +11644,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light_switch/north,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/service/clown)
 "aSM" = (
@@ -14342,7 +14340,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "bbv" = (
-/obj/machinery/light/directional/north,
 /obj/machinery/alarm/directional/north,
 /obj/effect/turf_decal/tiles/dark/corner{
 	dir = 1
@@ -51594,6 +51591,7 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/fitness)
 "ggr" = (
@@ -53043,7 +53041,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/light/directional/north,
 /obj/item/radio/intercom/directional/north,
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 1
@@ -53280,6 +53277,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tiles/dark/corner,
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel,
 /area/station/public/fitness)
 "gGd" = (
@@ -60039,7 +60037,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fpmaint)
 "iRT" = (
-/obj/machinery/light/small/directional/west,
 /obj/item/radio/intercom/directional/west,
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -61150,7 +61147,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "jmB" = (
@@ -73774,7 +73770,15 @@
 /obj/item/paper{
 	desc = "";
 	info = "Brusies sustained in the holodeck can be healed simply by sleeping.";
-	name = "Holodeck Disclaimer"
+	name = "Holodeck Disclaimer";
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/machinery/button/windowtint{
+	id = "holodeck";
+	range = 9;
+	pixel_x = -6;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
@@ -76191,6 +76195,7 @@
 /obj/effect/turf_decal/tiles/department/virology/side{
 	dir = 8
 	},
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel/white,
 /area/station/public/sleep)
 "ofw" = (
@@ -85534,6 +85539,7 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light_switch/north,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/mineral/tranquillite,
 /area/station/service/mime)
 "qXp" = (
@@ -90947,7 +90953,6 @@
 /obj/machinery/computer/cryopod{
 	pixel_y = 32
 	},
-/obj/machinery/light/directional/north,
 /obj/machinery/hologram/holopad,
 /obj/effect/turf_decal/tiles/department/virology,
 /turf/simulated/floor/plasteel/white,
@@ -97142,6 +97147,13 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/hallway)
+"uMk" = (
+/obj/effect/turf_decal/tiles/neutral/corner{
+	dir = 8
+	},
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel,
+/area/station/public/dorms)
 "uMl" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
@@ -146920,7 +146932,7 @@ tDg
 fho
 iyI
 kiu
-bsx
+uMk
 aUQ
 vNh
 vca
