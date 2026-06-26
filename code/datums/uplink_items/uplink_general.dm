@@ -537,7 +537,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 35
 
 /datum/uplink_item/stealthy_tools/chameleonflag
-	name = "Флаг-хамелион"
+	name = "Флаг-хамелеон"
 	desc = "Флаг, который можно замаскировать под любой другой. В древке есть потайное место, куда можно спрятать гранату \
 			 или мини-бомбу, которая взорвется через некоторое время, если поджечь флаг."
 	reference = "CHFLAG"
