@@ -34,3 +34,14 @@
 		"замасленная",
 		"замасленное",
 		"замасленные")
+
+// ДЛЯ РУСИФИКАЦИИ СОСТАВНЫХ ЧАСТЕЙ
+/atom/proc/rebuild_ru_names(source_name, prefix = "", suffix = "")
+	ru_names_rename(
+		ru_names_toml(
+			source_name,
+			prefix,
+			suffix,
+			name
+		)
+	)

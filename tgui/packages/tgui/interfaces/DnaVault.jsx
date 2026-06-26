@@ -1,7 +1,7 @@
 import { Box, Button, LabeledList, ProgressBar, Section, Stack } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
-import { Grid } from '../components';
+// import { Grid } from '../components'; - SS220 EDIT Отключено из-за смены положения кнопок
 import { Window } from '../layouts';
 
 export const DnaVault = (props) => {
@@ -26,9 +26,9 @@ const DnaVaultDataBase = (props) => {
   const bad_progress = 0.33;
   return (
     <Stack.Item grow>
-      <Section fill title="DNA Vault Database">
+      <Section fill title="База данных ДНК-Хранилища">
         <LabeledList>
-          <LabeledList.Item label="Human DNA">
+          <LabeledList.Item label="ДНК Гуманоидов">
             <ProgressBar
               value={dna / dna_max}
               ranges={{
@@ -37,10 +37,10 @@ const DnaVaultDataBase = (props) => {
                 bad: [-Infinity, bad_progress],
               }}
             >
-              {dna + ' / ' + dna_max + ' Samples'}
+              {dna + ' / ' + dna_max + ' Образцов'}
             </ProgressBar>
           </LabeledList.Item>
-          <LabeledList.Item label="Plant DNA">
+          <LabeledList.Item label="ДНК Растений">
             <ProgressBar
               value={plants / plants_max}
               ranges={{
@@ -49,10 +49,10 @@ const DnaVaultDataBase = (props) => {
                 bad: [-Infinity, bad_progress],
               }}
             >
-              {plants + ' / ' + plants_max + ' Samples'}
+              {plants + ' / ' + plants_max + ' Образцов'}
             </ProgressBar>
           </LabeledList.Item>
-          <LabeledList.Item label="Animal DNA">
+          <LabeledList.Item label="ДНК Животных">
             <ProgressBar
               value={animals / animals_max}
               ranges={{
@@ -61,7 +61,7 @@ const DnaVaultDataBase = (props) => {
                 bad: [-Infinity, bad_progress],
               }}
             >
-              {animals + ' / ' + animals_max + ' Samples'}
+              {animals + ' / ' + animals_max + ' Образцов'}
             </ProgressBar>
           </LabeledList.Item>
         </LabeledList>
@@ -75,42 +75,35 @@ const GeneTherapySelection = (props) => {
   const { choiceA, choiceB, used } = data;
   return (
     <Stack.Item>
-      <Section fill title="Personal Gene Therapy">
+      <Section fill title="Персональная генная терапия">
         <Box bold textAlign="center" mb={1}>
-          Applicable Gene Therapy Treatments
+          Доступные выборы генной модификации
         </Box>
-        {(!used && (
-          <Grid>
-            <Grid.Column>
+        {!used ? (
+          <Stack vertical>
+            <Stack.Item>
               <Button
                 fluid
                 bold
                 content={choiceA}
                 textAlign="center"
-                onClick={() =>
-                  act('gene', {
-                    choice: choiceA,
-                  })
-                }
+                onClick={() => act('gene', { choice: choiceA })}
               />
-            </Grid.Column>
-            <Grid.Column>
+            </Stack.Item>
+
+            <Stack.Item>
               <Button
                 fluid
                 bold
                 content={choiceB}
                 textAlign="center"
-                onClick={() =>
-                  act('gene', {
-                    choice: choiceB,
-                  })
-                }
+                onClick={() => act('gene', { choice: choiceB })}
               />
-            </Grid.Column>
-          </Grid>
-        )) || (
+            </Stack.Item>
+          </Stack>
+        ) : (
           <Box bold textAlign="center" mb={1}>
-            Users DNA deemed unstable. Unable to provide more upgrades.
+            ДНК пользователя признана нестабильной. Дальнейшая терапия невозможна.
           </Box>
         )}
       </Section>
