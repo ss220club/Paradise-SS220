@@ -153,8 +153,8 @@
 /datum/uplink_item/support/mauler
 	name = "Экзокостюм Mauler"
 	// name = "Mauler Exosuit"
-	desc = "Массивный и невероятно смертоносный экзокостюм Синдиката. Дполнительно оснащён прицеливанием на \
-	дальние дистанции, модулем векторизацией тяги и пятью касетными шашками с густым дымом."
+	desc = "Массивный и невероятно смертоносный экзокостюм Синдиката. Дополнительно оснащён прицеливанием на \
+	дальние дистанции, модулем векторизациии тяги и пятью кассетными шашками с густым дымом."
 	// desc = "A massive and incredibly deadly Syndicate exosuit. Features long-range targeting, thrust vectoring, and deployable smoke."
 	reference = "ME"
 	item = /obj/mecha/combat/marauder/mauler/loaded
