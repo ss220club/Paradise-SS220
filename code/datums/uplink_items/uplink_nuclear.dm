@@ -5,7 +5,7 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/dangerous/aps
-	name = "Автоматичекский пистолет Type 230"
+	name = "Автоматический пистолет Type 230"
 	// name = "Type 230 Machine Pistol"
 	desc = "Компактный скорострельный пистолет калибра 10mm Auto со съёмным магазином на 20 патронов. \
 	Идеален для парного использования или как запасное оружие."
@@ -87,7 +87,7 @@
 /datum/uplink_item/dangerous/combat_defib
 	name = "Боевой модуль дефибриллятора"
 	// name = "Combat Defibrillator Module"
-	desc = "Деффиблиатор, превращённй в опасное оружие. Ударьте кого-либо лопатками с сильным желанием причинить вред, \
+	desc = "Дефибриллятор, превращённый в опасное оружие. Ударьте кого-либо лопатками с сильным желанием причинить вред, \
 	чтобы мгновенно остановить их сердце. Может  так же использоваться как обычный дефибриллятор. Устанавливается в MOD-костюм."
 	// desc = "A lifesaving device turned dangerous weapon. Click on someone with the paddles on harm intent to instantly stop their heart. Can be used as a regular defib as well. Installs in a MODsuit."
 	reference = "CD"
@@ -111,7 +111,7 @@
 	name = "Игрушечный пулемёт"
 	// name = "Toy Machine Gun"
 	desc = "Полностью укомплектованный ленточный пулемёт Donksoft. Оружие имеет огромный магазин на 50 пенных дротиков, \
-	которые могут обессилить жертву кого-то всего за одну очередь."
+	которые могут обессилить жертву всего за одну очередь."
 	// desc = "A fully-loaded Donksoft belt-fed machine gun. This weapon has a massive 50-round magazine of devastating riot grade darts, that can briefly incapacitate someone in just one volley."
 	reference = "FLMG"
 	item = /obj/item/gun/projectile/automatic/l6_saw/toy
