@@ -57,7 +57,7 @@
 	name = "Липкая граната "
 	// name = "Trick Grenade"
 	desc = "Синдикатовская мини-бомба, которая при активации приклеит её к рукам владельца. Вы же знаете, каково это, \
-	быть взорваным собственной гранатой...?"
+	быть взорванным собственной гранатой...?"
 	// desc = "Syndicate Minibomb with glue ejectors that will stick it to the user's hands on activation."
 	reference = "CGN"
 	item = /obj/item/storage/box/syndie_kit/fake_minibomb
@@ -252,7 +252,7 @@
 /datum/uplink_item/jobspecific/cat_grenade
 	name = "Граната доставки диких кошек"
 	// name = "Feral Cat Delivery Grenade"
-	desc = "Капсуль содержит 5 одичавших и сверепых кошек, которые только и ждут открытия клетки, \
+	desc = "Капсула содержит 5 одичавших и свирепых кошек, которые только и ждут открытия клетки, \
 	чтобы расцарапать морды всем на своём пути."
 	// desc = "The feral cat delivery grenade contains 5 dehydrated feral cats in a similar manner to dehydrated monkeys, which, upon detonation, will be re-hydrated by a small reservoir of water contained within the grenade. These cats will then attack anything in sight."
 	item = /obj/item/grenade/spawnergrenade/feral_cats
@@ -459,7 +459,7 @@
 /datum/uplink_item/jobspecific/poison_pen
 	name = "Ручка с ядом"
 	// name = "Poison Pen"
-	desc = "При создание этой ручки использовались самые передовые технологии в области смертоносных письменных принадлежностей! \
+	desc = "При создании этой ручки использовались самые передовые технологии в области смертоносных письменных принадлежностей! \
 	Каждый вид чернил, находящийся в этой ручке, был изготовлен на основе одного из четырёх ядов. Чёрные чернила — обычные чернила\
 	, красные чернила крайне ядовиты, зелёные чернила сильно облучают, синие чернила периодически шокируют жертву изнутри, а \
 	жёлтые - парализуют через непродолжительное время. Перчатки из поставки защитят вас от последствий прикосновений к чернилам."
@@ -476,7 +476,7 @@
 	// name = "Enchanted Tarot Card Deck"
 	desc = "Магическая колода карт, «одолженная» у Федерации Магов. Способна материализовывать все из 22 старших аркан и их \
 	перевёрнутые версии. Каждая карта имеет особый эффект. Бросьте карту в кого-то, чтобы раскрыть её потенциал на них, или \
-	испытайте судьбу на себе. Колода никогда не истощится, но ей нужно 25 секундн на накопление энергии для материализации новой \
+	испытайте судьбу на себе. Колода никогда не истощится, но ей нужно 25 секунд на накопление энергии для материализации новой \
 	карты. Одновременно может поддерживать существование только трёх карт в мире."
 	// desc = "A magic tarot card deck \"borrowed\" from a Wizard federation storage unit. Capable of producing magic tarot cards of the 22 major arcana, and their reversed versions. Each card has a different effect. Throw the card at someone to use it on them, or use it in hand to apply it to yourself. Unlimited uses, 25 second cooldown, can have up to 3 cards in the world."
 	reference = "tarot"
