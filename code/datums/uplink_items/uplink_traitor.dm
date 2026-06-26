@@ -460,8 +460,8 @@
 	name = "Ручка с ядом"
 	// name = "Poison Pen"
 	desc = "При создании этой ручки использовались самые передовые технологии в области смертоносных письменных принадлежностей! \
-	Каждый вид чернил, находящийся в этой ручке, был изготовлен на основе одного из четырёх ядов. Чёрные чернила — обычные чернила\
-	, красные чернила крайне ядовиты, зелёные чернила сильно облучают, синие чернила периодически шокируют жертву изнутри, а \
+	Каждый вид чернил, находящийся в этой ручке, был изготовлен на основе одного из четырёх ядов. Чёрные чернила — обычные чернила,\
+	красные чернила крайне ядовиты, зелёные чернила сильно облучают, синие чернила периодически шокируют жертву изнутри, а \
 	жёлтые - парализуют через непродолжительное время. Перчатки из поставки защитят вас от последствий прикосновений к чернилам."
 	// desc = "Cutting edge of deadly writing implements technology, this gadget will infuse any piece of paper with various delayed poisons based on the selected color. Black ink is normal ink, red ink is a highly lethal poison, green ink causes radiation, blue ink will periodically shock the victim, and yellow ink will paralyze. The included gloves will protect you from your own poisons."
 	reference = "PP"
