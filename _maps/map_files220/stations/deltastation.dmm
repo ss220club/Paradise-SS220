@@ -14896,7 +14896,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/status_display/directional/east,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel/white,
 /area/station/public/toilet)
 "boW" = (
@@ -28319,7 +28318,6 @@
 /area/station/public/vacant_store)
 "coU" = (
 /obj/machinery/light/directional/north,
-/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/locker)
 "coW" = (
@@ -28929,9 +28927,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/locker)
 "crK" = (
-/obj/structure/sign/service/kitchen,
-/turf/simulated/wall,
-/area/station/service/kitchen)
+/obj/machinery/hydroponics/soil,
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/simulated/floor/grass,
+/area/station/service/hydroponics)
 "crO" = (
 /obj/machinery/camera{
 	c_tag = "Central Ring Hallway Center";
@@ -30850,6 +30849,7 @@
 "cAv" = (
 /obj/machinery/washing_machine,
 /obj/effect/turf_decal/tiles/department/medical/checker,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel/white,
 /area/station/public/pool)
 "cAy" = (
@@ -33138,7 +33138,6 @@
 "cLB" = (
 /obj/structure/table,
 /obj/structure/bedsheetbin,
-/obj/machinery/light/directional/north,
 /obj/machinery/firealarm/directional/north,
 /obj/effect/turf_decal/tiles/department/medical/checker,
 /turf/simulated/floor/plasteel/white,
@@ -34752,6 +34751,7 @@
 /obj/effect/turf_decal/siding/blue{
 	dir = 4
 	},
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/carpet/arcade,
 /area/station/public/arcade)
 "cTf" = (
@@ -35141,13 +35141,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/dormitory_maintenance)
 "cUI" = (
-/obj/structure/sign/poster/official/walk/directional/west,
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 4
 	},
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/public/pool)
 "cUO" = (
@@ -47405,6 +47405,7 @@
 	pixel_y = 16
 	},
 /obj/structure/flora/grass/jungle,
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/grass/no_creep,
 /area/station/public/pool)
 "epX" = (
@@ -51292,6 +51293,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/directional/west,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel/white,
 /area/station/public/toilet)
 "fxX" = (
@@ -51901,6 +51903,12 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/bridge)
+"fIM" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/delivery/green/hollow,
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/simulated/floor/plasteel/dark,
+/area/station/service/hydroponics)
 "fIO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -65362,7 +65370,6 @@
 "jRP" = (
 /obj/structure/flora/grass/brown,
 /obj/machinery/status_display/directional/east,
-/obj/machinery/light/directional/east,
 /turf/simulated/floor/grass/no_creep,
 /area/station/public/pool)
 "jRY" = (
@@ -84879,7 +84886,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/dormitory_maintenance)
 "pNl" = (
-/obj/machinery/light/directional/north,
 /obj/structure/sign/poster/official/random/directional/north,
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 1
@@ -86175,7 +86181,6 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
-/obj/machinery/light/directional/west,
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 4
 	},
@@ -89477,7 +89482,6 @@
 /obj/structure/disposalpipe/segment/corner{
 	dir = 8
 	},
-/obj/machinery/light/directional/south,
 /turf/simulated/floor/carpet/arcade,
 /area/station/public/arcade)
 "rfT" = (
@@ -93395,11 +93399,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/fitness)
 "suI" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/delivery/green/hollow,
-/obj/structure/extinguisher_cabinet/directional/west,
-/turf/simulated/floor/plasteel/dark,
-/area/station/service/hydroponics)
+/obj/structure/sign/service/kitchen,
+/turf/simulated/wall,
+/area/station/service/kitchen)
 "suO" = (
 /obj/structure/closet/secure_closet/security,
 /obj/machinery/recharger/wallcharger{
@@ -101605,6 +101607,7 @@
 /obj/structure/chair/comfy/brown{
 	dir = 4
 	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/locker)
 "uVz" = (
@@ -111668,10 +111671,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/starboard)
 "ydv" = (
-/obj/machinery/hydroponics/soil,
-/obj/structure/sign/poster/official/random/directional/north,
-/turf/simulated/floor/grass,
-/area/station/service/hydroponics)
+/obj/effect/turf_decal/tiles/neutral/side,
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel,
+/area/station/public/locker)
 "ydA" = (
 /obj/structure/table/wood,
 /obj/item/storage/briefcase,
@@ -141374,7 +141377,7 @@ gSs
 mTQ
 aor
 baF
-ydv
+crK
 xwU
 nLp
 aYQ
@@ -142160,7 +142163,7 @@ kgr
 tOP
 xyD
 rim
-suI
+fIM
 jUS
 buQ
 baF
@@ -146012,7 +146015,7 @@ rZF
 jEw
 rZF
 blj
-crK
+suI
 bop
 inB
 gFt
@@ -163023,7 +163026,7 @@ kQm
 ibt
 nQT
 cLr
-cAu
+ydv
 oNd
 lSa
 ilj
