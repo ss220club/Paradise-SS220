@@ -741,8 +741,8 @@
 /datum/uplink_item/bio_chips/microbomb
 	name = "Био-чип микробомбы"
 	// name = "Microbomb Bio-chip"
-	desc = "Био-чип, вводимый инъекцией под кожу. Активируется вручную или автоматически после биологической смерти опперативника. \
-	Чем больше имплантов внутри вас, тем выше взрывная мощность. Как ни старнно, но био-чип уничтожит ваше тело."
+	desc = "Био-чип, вводимый инъекцией под кожу. Активируется вручную или автоматически после биологической смерти оперативника. \
+	Чем больше имплантов внутри вас, тем выше взрывная мощность. Как ни странно, но био-чип уничтожит ваше тело."
 	// desc = "A bio-chip injected into the body, and later activated either manually or automatically upon death. The more implants inside of you, the higher the explosive power. \
 	// This will permanently destroy your body, however."
 	reference = "MBI"
