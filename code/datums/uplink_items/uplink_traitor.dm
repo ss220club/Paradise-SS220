@@ -705,7 +705,7 @@
 /datum/uplink_item/stealthy_tools/frame
 	name = "Картридж П.О.Д.С.Т.А.В.А."
 	// name = "F.R.A.M.E. PDA Cartridge"
-	desc = "При установке в КПК этот картридж даёт вам пять активаций PDA-вируса, который при превращают целевой PDA \
+	desc = "При установке в КПК этот картридж даёт вам пять активаций PDA-вируса, которые превращают целевой PDA \
 	в новый разблокированный Аплинк. Вы получите код от нового Аплинка, и новый КПК может быть заряжен телекристаллами \
 	как обычно."
 	// desc = "When inserted into a personal digital assistant, this cartridge gives you five PDA viruses which \
