@@ -296,8 +296,8 @@
 /datum/uplink_item/ammo/bulldragon
 	name = "Бульдог магазин 12г(«Дыхание дракона»)"
 	// name = "Bulldog - 12g Dragon's Breath Magazine"
-	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Крайне слабы даже по небронированным целям, \
-	но способны выжигать большие области вместе с экипажем за счёт особенного состава."
+	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Патроны крайне слабы даже по небронированным целям, \
+	но способны выжигать большие области вместе с экипажем за счёт фосфорного состава."
 	// desc = "An alternative 8-round dragon's breath magazine for use in the Bulldog shotgun. I'm a fire starter, twisted fire starter!"
 	reference = "12DB"
 	item = /obj/item/ammo_box/magazine/m12g/dragon
@@ -408,7 +408,7 @@
 /datum/uplink_item/ammo/sniper/basic
 	name = "Магазин для снайперской винтовки(.50)"
 	// name = "Sniper - .50 Magazine"
-	desc = "Дополнительный магазин на 6 патронов калибра .50 для использования в снайперскиой винтовке."
+	desc = "Дополнительный магазин на 6 патронов калибра .50 для использования в снайперской винтовке."
 	// desc = "An additional standard 6-round magazine for use with .50 sniper rifles."
 	reference = "50M"
 	item = /obj/item/ammo_box/magazine/sniper_rounds
@@ -416,7 +416,7 @@
 /datum/uplink_item/ammo/sniper/antimatter
 	name = "Магазин для снайперской винтовки(Антиматериальные .50)"
 	// name = "Sniper - .50 Antimatter Magazine"
-	desc = "Дополнительный магазин на 6 Антиматериальных патронов калибра .50 для использования в снайперскиой винтовке. \
+	desc = "Дополнительный магазин на 6 Антиматериальных патронов калибра .50 для использования в снайперской винтовке. \
 	Содержит патроны, которые просто созданы для разрушений всего и вся. Способны сильно повреждать объекты и отрубать \
 	конечности живым существам. Имеют повышенную отдачу, стрельба с упором обязательна!"
 	// desc = "A 6-round magazine of antimatter ammo for use with .50 sniper rifles. \
@@ -428,7 +428,7 @@
 /datum/uplink_item/ammo/sniper/soporific
 	name = "Магазин для снайперской винтовки(Усыпляющие .50)"
 	// name = "Sniper - .50 Soporific Magazine"
-	desc = "Дополнительный магазин на 3 Усыпляющих патронов калибра .50 для использования в снайперскиой винтовке. \
+	desc = "Дополнительный магазин на 3 Усыпляющих патронов калибра .50 для использования в снайперской винтовке. \
 	Усыпите своих врагов сегодня!"
 	// desc = "A 3-round magazine of soporific ammo designed for use with .50 sniper rifles. Put your enemies to sleep today!"
 	reference = "50S"
@@ -437,7 +437,7 @@
 /datum/uplink_item/ammo/sniper/haemorrhage
 	name = "Магазин для снайперской винтовки(Режущие .50)"
 	// name = "Sniper - .50 Hemorrhage Magazine"
-	desc = "Дополнительный магазин на 5 Режущих патронов калибра .50 для использования в снайперскиой винтовке. Вызывают \
+	desc = "Дополнительный магазин на 5 Режущих патронов калибра .50 для использования в снайперской винтовке. Вызывают \
 	обильное кровотечение у цели."
 	// desc = "A 5-round magazine of hemorrhage ammo designed for use with .50 sniper rifles; causes heavy bleeding \
 	// in the target."
@@ -447,8 +447,8 @@
 /datum/uplink_item/ammo/sniper/penetrator
 	name = "Магазин для снайперской винтовки(Бронебойные .50)"
 	// name = "Sniper - .50 Penetrator Magazine"
-	desc = "Дополнительный магазин на 5 Бронебойных патронов калибра .50 для использования в снайперскиой винтовке. \
-	Немного слабее обычных .50, но имеют неверроятную пробивную способность."
+	desc = "Дополнительный магазин на 5 Бронебойных патронов калибра .50 для использования в снайперской винтовке. \
+	Немного слабее обычных .50, но имеют невероятную пробивную способность."
 	// desc = "A 5-round magazine of penetrator ammo designed for use with .50 sniper rifles. \
 	// Can pierce walls and multiple enemies."
 	reference = "50P"
