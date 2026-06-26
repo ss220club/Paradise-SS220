@@ -610,8 +610,8 @@
 /datum/uplink_item/dangerous/crossbow
 	name = "Энергетический арбалет"
 	// name = "Energy Crossbow"
-	desc = "Миниатюрный энергетический арбалет. Достаточно маленький, чтобы поместиться в карман. Стреляет болтами \
-	отравлеными болтами, которые сбивают цель с ног и сильно истощают её. Перезаряжается автоматически."
+	desc = "Миниатюрный энергетический арбалет. Достаточно маленький, чтобы поместиться в карман. Стреляет \
+	отравленными болтами, которые сбивают цель с ног и сильно истощают её. Перезаряжается автоматически."
 	// desc = "A miniature energy crossbow that is small enough both to fit into a pocket and to slip into a backpack unnoticed by observers. Fires bolts tipped with toxin, a poisonous substance that is the product of a living organism. Knocks enemies down for a short period of time. Recharges automatically."
 	reference = "EC"
 	item = /obj/item/gun/energy/kinetic_accelerator/crossbow
