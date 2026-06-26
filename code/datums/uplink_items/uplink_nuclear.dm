@@ -532,7 +532,7 @@
 /datum/uplink_item/explosives/manhacks
 	name = "Граната доставки Висцераторов"
 	// name = "Viscerator Delivery Grenade"
-	desc = "Уникальная граната, которая отправляет рой Висцераторов при активации, которые будут преследовать и разрывать \
+	desc = "Уникальная граната, которая отправляет рой Висцераторов при активации, который будет преследовать и нападать на \
 	любых не-оперативников в области."
 	// desc = "A unique grenade that deploys a swarm of viscerators upon activation, which will chase down and shred any non-operatives in the area."
 	reference = "VDG"
