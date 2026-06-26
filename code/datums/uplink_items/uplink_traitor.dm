@@ -56,7 +56,7 @@
 /datum/uplink_item/jobspecific/trick_grenade
 	name = "Липкая граната "
 	// name = "Trick Grenade"
-	desc = "Синдикатовская мини-бомба, который при активации приклеит её к рукам владельца. Вы же знаете, каково это, \
+	desc = "Синдикатовская мини-бомба, которая при активации приклеит её к рукам владельца. Вы же знаете, каково это, \
 	быть взорваным собственной гранатой...?"
 	// desc = "Syndicate Minibomb with glue ejectors that will stick it to the user's hands on activation."
 	reference = "CGN"
