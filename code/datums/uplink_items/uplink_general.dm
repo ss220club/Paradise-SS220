@@ -986,8 +986,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/cyber_implants/hackerman_deck
 	name = "Беспроводная хакерская система Binyat"
-	desc = "Автоимплантер, содержащий хакерскую систему Binyat. Позволяет выполнять в злом как «Emag», но на расстояние. \
-			При взломе, Система сильно греется, незначительно обжигая ваш мозг. Несовместим с любыми модификациями мозга."
+	desc = "Автоимплантер, содержащий хакерскую систему Binyat. Позволяет выполнять взлом как «Emag», но на расстоянии. \
+			При взломе система сильно греется, незначительно обжигая ваш мозг. Несовместим с любыми модификациями мозга."
 	reference = "HKR"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/hackerman_deck
 	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15 // Probably slightly less useful than an emag with heat / cooldown, but I am not going to make it cheaper or everyone picks it over emag
@@ -995,7 +995,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/cyber_implants/razorwire
 	name = "Катушка с моноструной"
 	desc = "Автоимплантер, содержащий катушку с моноструной. Двухметровая моноструна, вживляемая в тыльную сторону ладони. \
-			Тонкая, острая и очень длинная, что позволяет ей резать цели на расстояние. С прорезанием прочной брони будут \
+			Тонкая, острая и очень длинная, что позволяет ей резать цели на расстоянии. С прорезанием прочной брони будут \
 			серьёзные проблемы."
 	reference = "RZR"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/razorwire
