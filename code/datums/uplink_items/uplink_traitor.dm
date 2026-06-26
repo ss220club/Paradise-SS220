@@ -511,8 +511,8 @@
 /datum/uplink_item/species_restricted/spikethrower
 	name = "Шипомёт Скипджека"
 	// name = "Skipjack Spikethrower"
-	desc = "Энергетическое оружие, запускающее щипы из твердотельной плазмы, рассекающие атмосферу на большой скорости. \
-	Эти шипы имеют достаточную энерцию, чтобы сбить цель с ног и оставить неприятную рану на теле."
+	desc = "Энергетическое оружие, запускающее шипы из твердотельной плазмы, рассекающие атмосферу на большой скорости. \
+	Эти шипы имеют достаточную инерцию, чтобы сбить цель с ног и оставить неприятную рану на теле."
 	// desc = "An energy based weapon that launches high velocity plasma spikes. These spikes hit with enough force to knock the target down and leave a nasty wound."
 	reference = "STG"
 	item = /obj/item/gun/energy/spikethrower
