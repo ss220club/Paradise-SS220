@@ -593,7 +593,7 @@
 /datum/uplink_item/device_tools/vtec
 	name = "Модуль улучшения киборга Синдиката (VTEC)"
 	// name = "Syndicate Cyborg Upgrade Module (VTEC)"
-	desc = "Ускоряет работу приводов, повышая скорость передвижения киборга. Установливается в любого борга."
+	desc = "Ускоряет работу приводов, повышая скорость передвижения киборга. Устанавливается в любого борга."
 	// desc = "Increases the movement speed of a Cyborg. Install into any Borg, Syndicate or subverted"
 	reference = "VTEC"
 	item = /obj/item/borg/upgrade/vtec
