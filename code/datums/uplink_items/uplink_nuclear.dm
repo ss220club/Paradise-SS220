@@ -856,7 +856,7 @@
 	name = "Снайперский набор"
 	// name = "Sniper bundle"
 	desc = "Элегантный и благородный: содержит сложенную снайперскую винтовку в дорогом и изящном чехле, \
-	два магазина снотворных патрон, глушитель и стильный тактический костюм-водолазка."
+	два магазина снотворных патронов, глушитель и стильный тактический костюм-водолазка."
 	// desc = "Elegant and refined: Contains a collapsed sniper rifle in an expensive carrying case, \
 	// two soporific knockout magazines, a free surplus suppressor, and a sharp-looking tactical turtleneck suit. \
 	// We'll throw in a free red tie if you order NOW."
