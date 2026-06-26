@@ -6896,7 +6896,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/structure/closet/crate/engineering/particle_accelerator,
+/obj/structure/closet/crate/engineering/collector,
 /turf/simulated/floor/plating,
 /area/station/engineering/secure_storage)
 "aSj" = (
@@ -21229,7 +21229,7 @@
 /area/station/command/office/ntrep)
 "ciM" = (
 /obj/machinery/light/small/directional/south,
-/obj/structure/closet/crate/engineering/particle_accelerator,
+/obj/structure/closet/crate/engineering/collector,
 /turf/simulated/floor/plating,
 /area/station/engineering/secure_storage)
 "ciP" = (
@@ -55497,7 +55497,7 @@
 /obj/structure/cable/extra_insulated,
 /obj/machinery/computer/monitor{
 	dir = 1;
-	name = "SM Power Monitoring Console"
+	name = "Engine Power Monitoring Console"
 	},
 /obj/item/radio/intercom/directional/west,
 /obj/effect/turf_decal/tiles/department/engineering/side{
@@ -66593,6 +66593,10 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/wood,
 /area/station/service/library)
+"qwq" = (
+/obj/effect/map_effect/marker/mapmanip/submap/insert/station/metastation/engine,
+/turf/simulated/wall,
+/area/station/engineering/break_room)
 "qww" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -75457,15 +75461,6 @@
 	},
 /turf/simulated/floor/greengrid,
 /area/station/science/robotics/chargebay)
-"tXt" = (
-/obj/machinery/access_button{
-	autolink_id = "enginesm_btn_ext";
-	name = "Supermatter Access Button";
-	pixel_x = 24;
-	req_access = list(24)
-	},
-/turf/simulated/floor/engine,
-/area/station/engineering/control)
 "tXN" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
@@ -128131,7 +128126,7 @@ tMS
 tMS
 qpO
 qpO
-bjN
+qwq
 hRS
 wEx
 sQg
@@ -129400,8 +129395,8 @@ rsT
 vUb
 mdF
 vUb
-tXt
-tXt
+vUb
+vUb
 irX
 uYE
 vUb
