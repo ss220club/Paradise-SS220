@@ -702,8 +702,8 @@
 	// name = "Energy Shield Module"
 	desc = "Персональное защитное силовое поле, обычно заметное в боевых противостояниях. \
 	Энергощит — это, по сути, уменьшенная версия тех продвинутых поглощающих экранов, что заметны на военных шаттлах. \
-	Однако он способен блокировать почти любую входящую атаку, однако из-за сокращения системы подачи энергии сильно \
-	упала и прочность энерго матриц."
+	Он способен блокировать почти любую входящую атаку, однако из-за сокращения системы подачи энергии сильно \
+	упала и прочность энергоматриц."
 	// desc = "A personal, protective force field typically seen in military applications. \
 	// This advanced deflector shield is essentially a scaled down version of those seen on starships, \
 	// and the power cost can be an easy indicator of this. However, it is capable of blocking nearly any incoming attack, \
