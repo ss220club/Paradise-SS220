@@ -36138,7 +36138,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/obj/machinery/status_display/directional/north,
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
@@ -38928,6 +38927,7 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "daa" = (
@@ -48191,11 +48191,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "eXg" = (
-/obj/structure/closet/radiation,
-/obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/light/directional/north,
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/atmos)
+/obj/machinery/light/floor,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/controlroom)
 "eXr" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -51340,6 +51338,11 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/aft)
+"gay" = (
+/obj/effect/turf_decal/tiles/department/engineering/side,
+/obj/machinery/light/floor,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "gaS" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/extra_insulated{
@@ -55779,6 +55782,7 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/machinery/status_display/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "hrm" = (
@@ -65592,6 +65596,22 @@
 /obj/structure/sign/service/bar,
 /turf/simulated/floor/plating,
 /area/station/service/bar/atrium)
+"kIK" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/turf_decal/tiles/department/engineering/corner{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/hallway)
 "kIR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -66626,7 +66646,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/status_display/directional/north,
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
@@ -94519,6 +94538,12 @@
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
+"tWE" = (
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/atmos)
 "tWI" = (
 /obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/disposalpipe/segment,
@@ -100091,22 +100116,6 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/sleeper)
-"vIJ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/turf_decal/tiles/department/engineering/corner{
-	dir = 4
-	},
-/obj/machinery/light/directional/north,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/hallway)
 "vIO" = (
 /obj/machinery/r_n_d/server/station,
 /obj/effect/turf_decal/delivery/white/hollow,
@@ -103178,11 +103187,6 @@
 "wIO" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel/dark,
-/area/station/engineering/atmos)
-"wIQ" = (
-/obj/effect/turf_decal/tiles/department/engineering/side,
-/obj/machinery/light/floor,
-/turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "wIU" = (
 /obj/structure/cable{
@@ -107812,10 +107816,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/hallway)
-"yfy" = (
-/obj/machinery/light/floor,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/controlroom)
 "yfB" = (
 /obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/cable{
@@ -136299,7 +136299,7 @@ qpq
 dfF
 ctJ
 csE
-wIQ
+gay
 dij
 aab
 dkr
@@ -137287,11 +137287,11 @@ xWN
 oja
 gdy
 cIS
-yfy
+eXg
 kwL
 cNT
 cxe
-yfy
+eXg
 cvB
 cUw
 dgs
@@ -138355,7 +138355,7 @@ wQr
 dfF
 ctJ
 dfH
-wIQ
+gay
 dij
 aab
 dkr
@@ -140411,7 +140411,7 @@ qpq
 dkA
 ctJ
 dhH
-wIQ
+gay
 dij
 aab
 dkr
@@ -142445,7 +142445,7 @@ vaH
 dlU
 cOI
 cZS
-eXg
+tWE
 uUy
 kfu
 edf
@@ -142956,7 +142956,7 @@ dDZ
 daV
 cZY
 vaH
-vIJ
+kIK
 dtv
 dmz
 cJH
@@ -143734,7 +143734,7 @@ dfN
 dgj
 tYm
 dhJ
-oYb
+rKe
 omz
 eew
 khK
@@ -143991,7 +143991,7 @@ hua
 dgj
 dgW
 dhI
-rKe
+oYb
 sKE
 gHg
 erU
@@ -145533,7 +145533,7 @@ cVF
 cXX
 dms
 cRj
-ddx
+drg
 lVr
 vWF
 erU
@@ -145790,7 +145790,7 @@ nSv
 cXX
 dms
 cRj
-drg
+ddx
 omz
 dmQ
 dmQ
