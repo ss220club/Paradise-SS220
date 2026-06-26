@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Пистолет Стечкина FK-69 10мм"
 	reference = "SPI"
 	desc = "Небольшой, легко скрываемый пистолет, использующий патроны калибра 10мм в магазинах на 8 патронов. Имеет \
-			 резьбу на стволе для глушителя."
+			резьбу на стволе для глушителя."
 	item = /obj/item/gun/projectile/automatic/pistol
 	cost = 20
 
@@ -430,7 +430,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/knuckleduster
 	name = "Синдикастет"
-	desc = "Простое в использование и хорошо скрываемое оружие ближнего боя, предназначенное для забивания цели до \
+	desc = "Простое в использованиb и хорошо скрываемое оружие ближнего боя, предназначенное для забивания цели до \
 			 смерти жестоким способом. Это оружие разработано специально для нанесения жертве серьезных повреждений органов."
 	reference = "SKD"
 	item = /obj/item/melee/knuckleduster/syndie
