@@ -227,7 +227,7 @@
 	name = "Титановая метла"
 	// name = "Titanium Push Broom"
 	desc = "Метла с укреплённой ручкой для удобной хватки и металлической щёткой, а вы что ожидали? \
-	Она просто создана для того, чтобы дать себе больше работы, избивая клоунов или розовых вульп. \
+	Она просто создана для того, чтобы дать себе больше работы, избивая клоунов или ассистентов. \
 	В момент драки, удары по целям будут иметь различные свойства в зависимости от ваших намерений."
 	// desc = "A push broom with a reinforced handle and a metal wire brush, perfect for giving yourself more work by beating up assistants. When wielded, hitting people will have different effects based on your intent."
 	reference = "TPBR"
