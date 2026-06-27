@@ -252,7 +252,7 @@
 		var/obj/item/organ/external/e = H.bodyparts_by_name[name]
 		if(!e)
 			continue
-		var/limb = e.name
+		//var/limb = e.name SS220 EDIT - После перевода переменная не требуется
 		if(e.status & ORGAN_BROKEN)
 			if((e.limb_name in list("l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "l_foot", "r_foot")) && !(e.status & ORGAN_SPLINTED))
 				msgs += SPAN_WARNING("Обнаружен незафиксированный перелом в [e.declent_ru(PREPOSITIONAL)]. Рекомендуется наложение шин при транспортировке.")

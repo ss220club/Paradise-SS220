@@ -243,7 +243,7 @@ dependencies = [
  "bitflags 2.9.1",
  "cexpr",
  "clang-sys",
- "itertools 0.13.0",
+ "itertools",
  "log",
  "prettyplease",
  "proc-macro2",
@@ -331,7 +331,7 @@ checksum = "46c5e41b57b8bba42a04676d81cb89e9ee8e859a1a66f80a5a72e1cb76b34d43"
 [[package]]
 name = "byondapi"
 version = "0.6.14"
-source = "git+https://github.com/spacestation13/byondapi-rs.git#6726e9a71be954059c438adbf3505f866c10b835"
+source = "git+https://github.com/spacestation13/byondapi-rs.git#721dd4690b60954687e41d8691d0040f398d91a6"
 dependencies = [
  "byondapi-macros",
  "byondapi-sys",
@@ -343,7 +343,7 @@ dependencies = [
 [[package]]
 name = "byondapi-macros"
 version = "0.3.3"
-source = "git+https://github.com/spacestation13/byondapi-rs.git#6726e9a71be954059c438adbf3505f866c10b835"
+source = "git+https://github.com/spacestation13/byondapi-rs.git#721dd4690b60954687e41d8691d0040f398d91a6"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -353,7 +353,7 @@ dependencies = [
 [[package]]
 name = "byondapi-sys"
 version = "0.12.3"
-source = "git+https://github.com/spacestation13/byondapi-rs.git#6726e9a71be954059c438adbf3505f866c10b835"
+source = "git+https://github.com/spacestation13/byondapi-rs.git#721dd4690b60954687e41d8691d0040f398d91a6"
 dependencies = [
  "bindgen",
  "doxygen-rs",
@@ -1241,15 +1241,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "itertools"
-version = "0.13.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "413ee7dfc52ee1a4949ceeb7dbc8a33f2d6c088194d9f922fb8318faf1f01186"
-dependencies = [
- "either",
-]
-
-[[package]]
 name = "itoa"
 version = "1.0.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1315,7 +1306,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "07033963ba89ebaf1584d767badaa2e8fcec21aedea6b8c0346d487d49c28667"
 dependencies = [
  "cfg-if",
- "windows-targets 0.53.2",
+ "windows-targets 0.52.6",
 ]
 
 [[package]]
@@ -2199,7 +2190,7 @@ dependencies = [
  "flume",
  "fxhash",
  "git2",
- "itertools 0.10.5",
+ "itertools",
  "mysql",
  "notify-rust",
  "once_cell",

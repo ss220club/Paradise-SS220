@@ -10,7 +10,8 @@ jobs:
       (github.event.comment.body == '!build_rust') &&
       (
         (github.event.comment.author_association == 'OWNER') ||
-        (github.event.comment.user.login == 'Drsmail')
+        (github.event.comment.user.login == 'Drsmail') ||
+        (github.event.comment.user.login == 'Mirka-l')
       )
 
     runs-on: ubuntu-24.04
