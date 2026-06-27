@@ -753,7 +753,7 @@
 /datum/uplink_item/bio_chips/macrobomb
 	name = "Биочип макробомбы"
 	// name = "Macrobomb Bio-chip"
-	desc = "Био-чип, вводимый инъекцией под кожу. Активируется вручную или автоматически после биологической смерти опперативника. \
+	desc = "Био-чип, вводимый инъекцией под кожу. Активируется вручную или автоматически после биологической смерти оперативника. \
 	Производит мощный взрыв, который уничтожает всех и вся поблизости."
 	// desc = "A bio-chip injected into the body, and later activated either manually or automatically upon death. Upon death, releases a massive explosion that will wipe out everything nearby."
 	reference = "HAB"
