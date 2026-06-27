@@ -322,9 +322,6 @@
 /obj/projectile/kinetic/pod
 	range = 4
 
-/obj/projectile/kinetic/turret
-	damage = 30
-
 /obj/projectile/kinetic/pod/regular
 	damage = 50
 	pressure_decrease = 0.5

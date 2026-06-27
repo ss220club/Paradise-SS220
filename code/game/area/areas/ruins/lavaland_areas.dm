@@ -17,10 +17,6 @@
 /area/ruin/powered/gluttony
 	icon_state = "yellow"
 
-/area/ruin/powered/providence
-	icon_state = "yellow"
-	tele_proof = TRUE
-
 /area/ruin/powered/golem_ship
 	name = "Корабль Свободных Големов"
 	icon_state = "yellow"
