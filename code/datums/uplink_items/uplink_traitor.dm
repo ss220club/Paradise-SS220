@@ -921,7 +921,7 @@
 /datum/uplink_item/bundles_tc/contractor
 	name = "Набор Контрактора Синдиката"
 	// name = "Syndicate Contractor Kit"
-	desc = "Набор, дающий вам разрешение на выполнение особых поручений на похищение, в обмен на кредиты и дополнительнве телекристаллы.\
+	desc = "Набор, дающий вам разрешение на выполнение особых поручений на похищение, в обмен на кредиты и дополнительные телекристаллы.\
 	Подходит только для бывалых агентов."
 	// desc = "A bundle granting you the privilege of taking on kidnapping contracts for credit and TC payouts that can add up to more than its initial cost."
 	reference = "SCOK"
