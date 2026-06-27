@@ -54,7 +54,7 @@
 	job = list("Clown")
 
 /datum/uplink_item/jobspecific/trick_grenade
-	name = "Липкая граната "
+	name = "Липкая граната"
 	// name = "Trick Grenade"
 	desc = "Синдикатовская мини-бомба, которая при активации приклеит её к рукам владельца. Вы же знаете, каково это, \
 	быть взорванным собственной гранатой...?"
@@ -170,9 +170,9 @@
 	job = list("Chef")
 
 /datum/uplink_item/jobspecific/syndidonk
-	name = "Беляши Синдиката"
+	name = "Донк-покеты Синдиката"
 	// name = "Syndicate Donk Pockets"
-	desc = "Коробка высококачественных беляшей с смесью восстанавливающих и стимулирующих химических веществ внутри."
+	desc = "Коробка высококачественных донк-покетов со смесью восстанавливающих и стимулирующих химических веществ внутри."
 	// desc = "A box of highly specialized Donk pockets with a number of regenerative and stimulating chemicals inside of them; the box comes equipped with a self-heating mechanism."
 	reference = "SDP"
 	item = /obj/item/storage/box/syndidonkpockets
@@ -432,7 +432,7 @@
 /datum/uplink_item/jobspecific/stims
 	name = "Стимуляторы"
 	// name = "Stimulants"
-	desc = "Одно из самых запрещённых соединение, содержащиеся в компактном инъекторе. При введение делает \
+	desc = "Одно из самых запрещённых соединений, содержащееся в компактном инъекторе. При введении делает \
 	пользователя чрезвычайно устойчивым к истощению сил и невероятно повышает способность организма к самовосстановлению."
 	// desc = "A highly illegal compound contained within a compact auto-injector; when injected it makes the user extremely resistant to incapacitation and greatly enhances the body's ability to repair itself."
 	reference = "ST"
@@ -474,7 +474,7 @@
 /datum/uplink_item/jobspecific/tarot_generator
 	name = "Зачарованная колода карт Таро"
 	// name = "Enchanted Tarot Card Deck"
-	desc = "Магическая колода карт, «одолженная» у Федерации Магов. Способна материализовывать все из 22 старших аркан и их \
+	desc = "Магическая колода карт, «одолженная» у Федерации Магов. Способна материализовывать все 22 старших аркана и их \
 	перевёрнутые версии. Каждая карта имеет особый эффект. Бросьте карту в кого-то, чтобы раскрыть её потенциал на них, или \
 	испытайте судьбу на себе. Колода никогда не истощится, но ей нужно 25 секунд на накопление энергии для материализации новой \
 	карты. Одновременно может поддерживать существование только трёх карт в мире."
