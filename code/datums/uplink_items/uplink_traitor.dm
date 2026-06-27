@@ -1050,7 +1050,7 @@
 	// name = "Chameleon Kit"
 	desc = "Набор предметов одежды, использующих технологию 'Хамелеон', позволяющую маскироваться практически под \
 	кого угодно на станции и даже больше! Средства, выделенные научному отделу для разработки противоскользящей обуви\
-	, были переданны в фонд изучения розовых вульпкан."
+	, были переданы в фонд изучения розовых вульпкан."
 	// desc = "A set of items that contain chameleon technology allowing you to disguise as pretty much anything on the station, and more! \
 	// Due to budget cuts, the shoes don't provide protection against slipping."
 	reference = "CHAM"
