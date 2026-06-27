@@ -833,7 +833,7 @@
 /datum/uplink_item/bundles_tc/cyber_implants
 	name = "Набор кибернетических имплантов"
 	// name = "Cybernetic Implants Bundle"
-	desc = "Набор из случаных кибернетических имплантов. Гарантированно 5 высококачественных имплантов с личными автохирургами!."
+	desc = "Набор из случайных кибернетических имплантов. Гарантированно 5 высококачественных имплантов с личными автохирургами!"
 	// desc = "A random selection of cybernetic implants. Guaranteed 5 high quality implants. Comes with an autosurgeon."
 	reference = "CIB"
 	item = /obj/item/storage/box/cyber_implants
