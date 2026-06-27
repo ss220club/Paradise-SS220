@@ -285,7 +285,7 @@
 /datum/uplink_item/ammo/bullmeteor
 	name = "Магазин для «Бульдога» (Метеоритные пули 12 калибра)"
 	// name = "12g Meteorslug Shells"
-	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Содержат частичку метеорита, которая при \
+	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Содержит частичку метеорита, которая при \
 	попадании отбрасывает и сильно ранит жертв."
 	// desc = "An alternative 8-round meteorslug magazine for use in the Bulldog shotgun. Great for blasting airlocks off their frames and knocking down enemies."
 	reference = "12MS"
@@ -428,7 +428,7 @@
 /datum/uplink_item/ammo/sniper/soporific
 	name = "Магазин для снайперской винтовки(Усыпляющие .50)"
 	// name = "Sniper - .50 Soporific Magazine"
-	desc = "Дополнительный магазин на 3 патронов калибра .50 для снайперской винтовки \
+	desc = "Дополнительный магазин на 3 патрона калибра .50 для снайперской винтовки. \
 	Усыпите своих врагов сегодня!"
 	// desc = "A 3-round magazine of soporific ammo designed for use with .50 sniper rifles. Put your enemies to sleep today!"
 	reference = "50S"
@@ -437,7 +437,7 @@
 /datum/uplink_item/ammo/sniper/haemorrhage
 	name = "Магазин для снайперской винтовки(Режущие .50)"
 	// name = "Sniper - .50 Hemorrhage Magazine"
-	desc = "Дополнительный магазин на 5 патронов калибра .50 для снайперской винтовки. Вызывают \
+	desc = "Дополнительный магазин на 5 патронов калибра .50 для снайперской винтовки. Патроны вызывают \
 	обильное кровотечение у цели."
 	// desc = "A 5-round magazine of hemorrhage ammo designed for use with .50 sniper rifles; causes heavy bleeding \
 	// in the target."
@@ -447,8 +447,8 @@
 /datum/uplink_item/ammo/sniper/penetrator
 	name = "Магазин для снайперской винтовки(Бронебойные .50)"
 	// name = "Sniper - .50 Penetrator Magazine"
-	desc = "Дополнительный магазин на 5 патронов калибра .50 для снайперской винтовки \
-	Немного слабее обычных .50, но имеют невероятную пробивную способность."
+	desc = "Дополнительный магазин на 5 патронов калибра .50 для снайперской винтовки. \
+	Патроны немного слабее обычных .50, но имеют невероятную пробивную способность."
 	// desc = "A 5-round magazine of penetrator ammo designed for use with .50 sniper rifles. \
 	// Can pierce walls and multiple enemies."
 	reference = "50P"
