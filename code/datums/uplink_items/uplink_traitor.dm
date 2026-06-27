@@ -1073,7 +1073,7 @@
 /datum/uplink_item/explosives/detomatix
 	name = "Подрывной картридж 'Детоматикс'"
 	// name = "Detomatix PDA Cartridge"
-	desc = "При установке в КПК этот картридж даст вам пять копий крайне опасного цифрового вируса, способного через месенжер \
+	desc = "При установке в КПК этот картридж даст вам пять копий крайне опасного цифрового вируса, способного через мессенджер \
 	подрывать чужие КПК. Ударная волна от взрыва оглушит и собьёт с ног получателя на короткое время. Имеется большая вероятность отрыва конечностей."
 	// desc = "When inserted into a personal digital assistant, this cartridge gives you five opportunities to detonate PDAs of crew members who have their message feature enabled. The concussive effect from the explosion will knock the recipient down for a short period, and deafen them for longer."
 	reference = "DEPC"
