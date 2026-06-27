@@ -263,7 +263,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullslug
-	name = "Бульдог магазин (Слаги 12 калибра)"
+	name = "Магазин для «Бульдога» (Слаги 12 калибра)"
 	// name = "Bulldog - 12g Slug Magazine"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Заряжены крупнокалиберными пулями."
 	// desc = "An additional 8-round slug magazine for use in the Bulldog shotgun. Now 8 times less likely to shoot your pals."
@@ -273,7 +273,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullbuck
-	name = "Бульдог магазин (Картечь 12 калибра)"
+	name = "Магазин для «Бульдога» (Картечь 12 калибра)"
 	// name = "Bulldog - 12g Buckshot Magazine"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. В каждом патроне заложено по пять пуль картечи."
 	// desc = "An additional 8-round buckshot magazine for use in the Bulldog shotgun. Front towards enemy."
@@ -283,7 +283,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bullmeteor
-	name = "Бульдог магазин (Метеоритные пули 12 калибра)"
+	name = "Магазин для «Бульдога» (Метеоритные пули 12 калибра)"
 	// name = "12g Meteorslug Shells"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Содержат частичку метеорита, которая при \
 	попадании отбрасывает и сильно ранит жертв."
@@ -294,7 +294,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bulldragon
-	name = "Бульдог магазин («Дыхание дракона» 12 калибра)"
+	name = "Магазин для «Бульдога» («Дыхание дракона» 12 калибра)"
 	// name = "Bulldog - 12g Dragon's Breath Magazine"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 8 патронов. Патроны крайне слабы даже по небронированным целям, \
 	но способны выжигать большие области вместе с экипажем за счёт фосфорного состава."
@@ -305,7 +305,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bulldog_ammobag
-	name = "Сумка с магазинами Бульдог"
+	name = "Сумка с магазинами «Бульдог»"
 	// name = "Bulldog - 12g Ammo Duffel Bag"
 	desc = "Сумка, заполненная девятью магазинами на 8 патронов. Содержит 6 магазинов с слагами, 2 с картечью \
 	и 1 «Дыхание дракона»."
@@ -316,9 +316,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/bulldog_xl_magsbag
-	name = "Сумка с XL магазинами Бульдог"
+	name = "Сумка с XL магазинами «Бульдог»"
 	// name = "Bulldog - 12g Extra-Large Magazine Duffel Bag"
-	desc = "Сумка, заполненная девятью XL магазинами на 16 патронов. Содержит 3 магазина с слагами, 1 с картечью \
+	desc = "Сумка, заполненная пятью XL магазинами на 16 патронов. Содержит 3 магазина с слагами, 1 с картечью \
 	и 1 «Дыхание дракона»."
 	// desc = "A duffel bag containing five XL 16-round drum magazines. (3 Slug, 1 Buckshot, 1 Dragon's Breath)."
 	reference = "12XLDB"
@@ -408,7 +408,7 @@
 /datum/uplink_item/ammo/sniper/basic
 	name = "Магазин для снайперской винтовки(.50)"
 	// name = "Sniper - .50 Magazine"
-	desc = "Дополнительный магазин на 6 патронов калибра .50 для использования в снайперской винтовке."
+	desc = "Дополнительный магазин на 6 патронов калибра .50 для снайперской винтовки."
 	// desc = "An additional standard 6-round magazine for use with .50 sniper rifles."
 	reference = "50M"
 	item = /obj/item/ammo_box/magazine/sniper_rounds
@@ -416,7 +416,7 @@
 /datum/uplink_item/ammo/sniper/antimatter
 	name = "Магазин для снайперской винтовки(Антиматериальные .50)"
 	// name = "Sniper - .50 Antimatter Magazine"
-	desc = "Дополнительный магазин на 6 Антиматериальных патронов калибра .50 для использования в снайперской винтовке. \
+	desc = "Дополнительный магазин на 6 патронов калибра .50 для снайперской винтовки. \
 	Содержит патроны, которые просто созданы для разрушений всего и вся. Способны сильно повреждать объекты и отрубать \
 	конечности живым существам. Имеют повышенную отдачу, стрельба с упором обязательна!"
 	// desc = "A 6-round magazine of antimatter ammo for use with .50 sniper rifles. \
@@ -428,7 +428,7 @@
 /datum/uplink_item/ammo/sniper/soporific
 	name = "Магазин для снайперской винтовки(Усыпляющие .50)"
 	// name = "Sniper - .50 Soporific Magazine"
-	desc = "Дополнительный магазин на 3 Усыпляющих патрона калибра .50 для использования в снайперской винтовке. \
+	desc = "Дополнительный магазин на 3 патронов калибра .50 для снайперской винтовки \
 	Усыпите своих врагов сегодня!"
 	// desc = "A 3-round magazine of soporific ammo designed for use with .50 sniper rifles. Put your enemies to sleep today!"
 	reference = "50S"
@@ -437,7 +437,7 @@
 /datum/uplink_item/ammo/sniper/haemorrhage
 	name = "Магазин для снайперской винтовки(Режущие .50)"
 	// name = "Sniper - .50 Hemorrhage Magazine"
-	desc = "Дополнительный магазин на 5 Режущих патронов калибра .50 для использования в снайперской винтовке. Вызывают \
+	desc = "Дополнительный магазин на 5 патронов калибра .50 для снайперской винтовки. Вызывают \
 	обильное кровотечение у цели."
 	// desc = "A 5-round magazine of hemorrhage ammo designed for use with .50 sniper rifles; causes heavy bleeding \
 	// in the target."
@@ -447,7 +447,7 @@
 /datum/uplink_item/ammo/sniper/penetrator
 	name = "Магазин для снайперской винтовки(Бронебойные .50)"
 	// name = "Sniper - .50 Penetrator Magazine"
-	desc = "Дополнительный магазин на 5 Бронебойных патронов калибра .50 для использования в снайперской винтовке. \
+	desc = "Дополнительный магазин на 5 патронов калибра .50 для снайперской винтовки \
 	Немного слабее обычных .50, но имеют невероятную пробивную способность."
 	// desc = "A 5-round magazine of penetrator ammo designed for use with .50 sniper rifles. \
 	// Can pierce walls and multiple enemies."
@@ -916,7 +916,7 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/badass/confettidrum
-	name = "Бульдог магазин (Конфети пули 12 калибра)"
+	name = "Магазин «Бульдога» (Конфети пули 12 калибра)"
 	// name = "Bulldog - 12g party Magazine"
 	desc = "Дополнительный магазин в дробовик «Бульдог» на 12 праздничных патронов. Содержат пресованое конфетти. \
 	Зачем? Потому что мы можем — Honkco Industries"
