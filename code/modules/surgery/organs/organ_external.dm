@@ -718,7 +718,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!clean)
 				var/gore_sound = "[is_robotic() ? "tortured metal" : "ripping tendons and flesh"]"
 				owner.visible_message(
-					SPAN_DANGER("\The [owner]'s [name] flies off in an arc!"),\
+					SPAN_DANGER("[capitalize(declent_ru(NOMINATIVE))] [owner] отлетает прочь!"),\
 					SPAN_MODERATE("<b>Your [name] goes flying off!</b>"),\
 					SPAN_DANGER("You hear a terrible sound of [gore_sound]."))
 		if(DROPLIMB_BURN)

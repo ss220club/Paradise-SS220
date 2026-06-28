@@ -63,16 +63,16 @@ interface DNAModifierData {
 }
 
 const stats: [string, string][] = [
-  ['good', 'Alive'],
-  ['average', 'Critical'],
-  ['bad', 'DEAD'],
+  ['good', 'Жив'],
+  ['average', 'Критический'],
+  ['bad', 'МЁРТВ'],
 ];
 
 const operations: [string, string, string][] = [
-  ['ui', 'Modify U.I.', 'dna'],
-  ['se', 'Modify S.E.', 'dna'],
-  ['buffer', 'Transfer Buffers', 'syringe'],
-  ['rejuvenators', 'Rejuvenators', 'flask'],
+  ['ui', 'Изменение внешности', 'dna'],
+  ['se', 'Развитие мутаций', 'dna'],
+  ['buffer', 'База данных', 'syringe'],
+  ['rejuvenators', 'Стабилизаторы', 'flask'],
 ];
 
 const rejuvenatorsDoses: number[] = [5, 10, 20, 30, 50];
@@ -113,23 +113,23 @@ const DNAModifierOccupant = (props: DNAModifierOccupantProps) => {
   const { isDNAInvalid } = props;
   return (
     <Section
-      title="Occupant"
+      title="Испытуемый"
       buttons={
         <>
           <Box color="label" inline mr="0.5rem">
-            Door Lock:
+            Блокировка:
           </Box>
           <Button
             disabled={!hasOccupant}
             selected={locked}
             icon={locked ? 'toggle-on' : 'toggle-off'}
-            content={locked ? 'Engaged' : 'Disengaged'}
+            content={locked ? 'Включена' : 'Выключена'}
             onClick={() => act('toggleLock')}
           />
           <Button
             disabled={!hasOccupant || locked}
             icon="user-slash"
-            content="Eject"
+            content="Выпустить"
             onClick={() => act('ejectOccupant')}
           />
         </>
@@ -139,8 +139,8 @@ const DNAModifierOccupant = (props: DNAModifierOccupantProps) => {
         <>
           <Box>
             <LabeledList>
-              <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
-              <LabeledList.Item label="Health">
+              <LabeledList.Item label="Имя">{occupant.name}</LabeledList.Item>
+              <LabeledList.Item label="Здоровье">
                 <ProgressBar
                   minValue={occupant.minHealth}
                   maxValue={occupant.maxHealth}
@@ -152,7 +152,7 @@ const DNAModifierOccupant = (props: DNAModifierOccupantProps) => {
                   }}
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Status" color={stats[occupant.stat][0]}>
+              <LabeledList.Item label="Статус" color={stats[occupant.stat][0]}>
                 {stats[occupant.stat][1]}
               </LabeledList.Item>
               <LabeledList.Divider />
@@ -161,21 +161,20 @@ const DNAModifierOccupant = (props: DNAModifierOccupantProps) => {
           {isDNAInvalid ? (
             <Box color="bad">
               <Icon name="exclamation-circle" />
-              &nbsp; The occupant&apos;s DNA structure is ruined beyond recognition, please insert a subject with an
-              intact DNA structure.
+              &nbsp; Структура ДНК субъекта критически повреждена.
             </Box>
           ) : (
             <LabeledList>
-              <LabeledList.Item label="Radiation">
+              <LabeledList.Item label="Уровень облучения">
                 <ProgressBar minValue={0} maxValue={100} value={occupant.radiationLevel / 100} color="average" />
               </LabeledList.Item>
-              <LabeledList.Item label="Unique Enzymes">
+              <LabeledList.Item label="Уникальный геном">
                 {data.occupant.uniqueEnzymes ? (
                   data.occupant.uniqueEnzymes
                 ) : (
                   <Box color="bad">
                     <Icon name="exclamation-circle" />
-                    &nbsp; Unknown
+                    &nbsp; Неизвестно
                   </Box>
                 )}
               </LabeledList.Item>
@@ -183,7 +182,7 @@ const DNAModifierOccupant = (props: DNAModifierOccupantProps) => {
           )}
         </>
       ) : (
-        <Box color="label">Cell unoccupied.</Box>
+        <Box color="label">Камера пуста.</Box>
       )}
     </Section>
   );
@@ -206,7 +205,7 @@ const DNAModifierMain = (props: DNAModifierMainProps) => {
           <Stack.Item grow align="center" textAlign="center" color="label">
             <Icon name="user-slash" mb="0.5rem" size={5} />
             <br />
-            No occupant in DNA modifier.
+            Испытуемый отсутствует.
           </Stack.Item>
         </Stack>
       </Section>
@@ -218,7 +217,7 @@ const DNAModifierMain = (props: DNAModifierMainProps) => {
           <Stack.Item grow align="center" textAlign="center" color="label">
             <Icon name="user-slash" mb="0.5rem" size={5} />
             <br />
-            No operation possible on this subject.
+            Операции над данным субъектом невозможны.
           </Stack.Item>
         </Stack>
       </Section>
@@ -272,7 +271,7 @@ const DNAModifierMainUI = (props: DNAModifierMainUIProps) => {
   const { selectedUIBlock, selectedUISubBlock, selectedUITarget, occupant } = data;
   const { dnaBlockSize } = props;
   return (
-    <Section title="Modify Unique Identifier">
+    <Section title="Модифицировать - Уникальную внешность">
       <Stack vertical>
         <Stack.Item grow>
           <Section>
@@ -287,7 +286,7 @@ const DNAModifierMainUI = (props: DNAModifierMainUIProps) => {
         </Stack.Item>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="Target">
+            <LabeledList.Item label="Целевое">
               <Knob
                 minValue={1}
                 maxValue={15}
@@ -299,7 +298,7 @@ const DNAModifierMainUI = (props: DNAModifierMainUIProps) => {
               />
             </LabeledList.Item>
           </LabeledList>
-          <Button icon="radiation" content="Irradiate Block" mt="0.5rem" onClick={() => act('pulseUIRadiation')} />
+          <Button icon="radiation" content="Облучить ячейку" mt="0.5rem" onClick={() => act('pulseUIRadiation')} />
         </Stack.Item>
       </Stack>
     </Section>
@@ -315,7 +314,7 @@ const DNAModifierMainSE = (props: DNAModifierMainSEProps) => {
   const { selectedSEBlock, selectedSESubBlock, occupant } = data;
   const { dnaBlockSize } = props;
   return (
-    <Section title="Modify Structural Enzymes">
+    <Section title="Модифицировать - Нестандартные мутации">
       <Stack vertical>
         <Stack.Item grow>
           <Section>
@@ -329,7 +328,7 @@ const DNAModifierMainSE = (props: DNAModifierMainSEProps) => {
           </Section>
         </Stack.Item>
         <Stack.Item>
-          <Button icon="radiation" content="Irradiate Block" onClick={() => act('pulseSERadiation')} />
+          <Button icon="radiation" content="Облучить ячейку" onClick={() => act('pulseSERadiation')} />
         </Stack.Item>
       </Stack>
     </Section>
@@ -340,9 +339,9 @@ const DNAModifierMainRadiationEmitter = () => {
   const { act, data } = useBackend<DNAModifierData>();
   const { radiationIntensity, radiationDuration } = data;
   return (
-    <Section title="Radiation Emitter">
+    <Section title="Излучатель радиации">
       <LabeledList>
-        <LabeledList.Item label="Intensity">
+        <LabeledList.Item label="Интенсивность">
           <Knob
             minValue={1}
             maxValue={10}
@@ -353,12 +352,12 @@ const DNAModifierMainRadiationEmitter = () => {
             onChange={(e, val) => act('radiationIntensity', { value: val })}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Duration">
+        <LabeledList.Item label="Перезарядка">
           <Knob
             minValue={1}
             maxValue={20}
             stepPixelSize={10}
-            unit="s"
+            unit="с"
             value={radiationDuration}
             popupPosition="right"
             ml="0"
@@ -368,8 +367,8 @@ const DNAModifierMainRadiationEmitter = () => {
       </LabeledList>
       <Button
         icon="radiation"
-        content="Pulse Radiation"
-        tooltip="Mutates a random block of either the occupant's UI or SE."
+        content="Пульс-излучение"
+        tooltip="Мутирует случайную ячейку уникальной внешности или нестандартной мутации."
         tooltipPosition="top-start"
         mt="0.5rem"
         onClick={() => act('pulseRadiation')}
@@ -382,12 +381,12 @@ const DNAModifierMainBuffers = () => {
   const { data } = useBackend<DNAModifierData>();
   const { buffers } = data;
   let bufferElements = buffers.map((buffer, i) => (
-    <DNAModifierMainBuffersElement key={i} id={i + 1} name={'Buffer ' + (i + 1)} buffer={buffer} />
+    <DNAModifierMainBuffersElement key={i} id={i + 1} name={'Буфер ' + (i + 1)} buffer={buffer} />
   ));
   return (
     <Stack fill vertical>
       <Stack.Item height="75%" mt={1}>
-        <Section fill scrollable title="Buffers">
+        <Section fill scrollable title="Буферы данных о ДНК">
           {bufferElements}
         </Section>
       </Stack.Item>
@@ -428,7 +427,7 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
             <Button.Confirm
               disabled={!buffer.data}
               icon="trash"
-              content="Clear"
+              content="Очистить"
               onClick={() =>
                 act('bufferOption', {
                   option: 'clear',
@@ -439,7 +438,7 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
             <Button
               disabled={!buffer.data}
               icon="pen"
-              content="Rename"
+              content="Переименовать"
               onClick={() =>
                 act('bufferOption', {
                   option: 'changeLabel',
@@ -450,8 +449,8 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
             <Button
               disabled={!buffer.data || !data.hasDisk}
               icon="save"
-              content="Export"
-              tooltip="Exports this buffer to the currently loaded data disk."
+              content="Экспорт"
+              tooltip="Копирует данные буфера на диск установленный в консоль."
               tooltipPosition="bottom-start"
               onClick={() =>
                 act('bufferOption', {
@@ -464,10 +463,10 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
         }
       >
         <LabeledList>
-          <LabeledList.Item label="Write">
+          <LabeledList.Item label="Запись">
             <Button
               icon="arrow-circle-down"
-              content="Subject U.I"
+              content="Только внешность"
               mb="0"
               onClick={() =>
                 act('bufferOption', {
@@ -478,7 +477,7 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
             />
             <Button
               icon="arrow-circle-down"
-              content="Subject U.I and U.E."
+              content="Полный геном"
               mb="0"
               onClick={() =>
                 act('bufferOption', {
@@ -489,7 +488,7 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
             />
             <Button
               icon="arrow-circle-down"
-              content="Subject S.E."
+              content="Только мутации"
               mb="0"
               onClick={() =>
                 act('bufferOption', {
@@ -501,7 +500,7 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
             <Button
               disabled={!data.hasDisk || !data.disk.data}
               icon="arrow-circle-down"
-              content="From Disk"
+              content="Запись диска"
               mb="0"
               onClick={() =>
                 act('bufferOption', {
@@ -513,17 +512,21 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
           </LabeledList.Item>
           {!!buffer.data && (
             <>
-              <LabeledList.Item label="Subject">{buffer.owner || <Box color="average">Unknown</Box>}</LabeledList.Item>
-              <LabeledList.Item label="Data Type">
-                {buffer.type === 'ui' ? 'Unique Identifiers' : 'Structural Enzymes'}
-                {!!buffer.ue && ' and Unique Enzymes'}
+              <LabeledList.Item label="Субъект">
+                {buffer.owner || <Box color="average">Неизвестно</Box>}
               </LabeledList.Item>
-              <LabeledList.Item label="Transfer to">
+              <LabeledList.Item label="Тип данных">
+                {buffer.type === 'ui' ? 'Уникальная внешность' : 'Нестандартные мутации'}
+                {!!buffer.ue && ' и Копирование личности'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Тип инъектора">
                 <Button
                   disabled={!isInjectorReady}
                   icon={isInjectorReady ? 'syringe' : 'spinner'}
                   iconSpin={!isInjectorReady}
-                  content="Injector"
+                  content="Полный геном"
+                  tooltip="Полностью выделяет генетический код внешности или набора мутаций в один инъектор."
+                  tooltipPosition="bottom-start"
                   mb="0"
                   onClick={() =>
                     act('bufferOption', {
@@ -536,7 +539,9 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
                   disabled={!isInjectorReady}
                   icon={isInjectorReady ? 'syringe' : 'spinner'}
                   iconSpin={!isInjectorReady}
-                  content="Block Injector"
+                  content="Один блок"
+                  tooltip="Выборочно отделяет один выбранный блок с геномом для выдачи конкретной мутации или части внешности."
+                  tooltipPosition="bottom-start"
                   mb="0"
                   onClick={() =>
                     act('bufferOption', {
@@ -548,7 +553,9 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
                 />
                 <Button
                   icon="user"
-                  content="Subject"
+                  content="Копирование генома"
+                  tooltip="Существенно облучает пациента, меняя его клеточную структуру под данные в буфере."
+                  tooltipPosition="bottom-start"
                   mb="0"
                   onClick={() =>
                     act('bufferOption', {
@@ -563,7 +570,7 @@ const DNAModifierMainBuffersElement = (props: DNAModifierMainBuffersElementProps
         </LabeledList>
         {!buffer.data && (
           <Box color="label" mt="0.5rem">
-            This buffer is empty.
+            Этот буфер пустой.
           </Box>
         )}
       </Section>
@@ -576,39 +583,39 @@ const DNAModifierMainBuffersDisk = () => {
   const { hasDisk, disk } = data;
   return (
     <Section
-      title="Data Disk"
+      title="Диск с данными"
       buttons={
         <>
           <Button.Confirm
             disabled={!hasDisk || !disk.data}
             icon="trash"
-            content="Wipe"
+            content="Стереть"
             onClick={() => act('wipeDisk')}
           />
-          <Button disabled={!hasDisk} icon="eject" content="Eject" onClick={() => act('ejectDisk')} />
+          <Button disabled={!hasDisk} icon="eject" content="Извлечь" onClick={() => act('ejectDisk')} />
         </>
       }
     >
       {hasDisk ? (
         disk.data ? (
           <LabeledList>
-            <LabeledList.Item label="Label">{disk.label ? disk.label : 'No label'}</LabeledList.Item>
-            <LabeledList.Item label="Subject">
-              {disk.owner ? disk.owner : <Box color="average">Unknown</Box>}
+            <LabeledList.Item label="Метка">{disk.label ? disk.label : 'Нет метки'}</LabeledList.Item>
+            <LabeledList.Item label="Субъект">
+              {disk.owner ? disk.owner : <Box color="average">Неизвестно</Box>}
             </LabeledList.Item>
-            <LabeledList.Item label="Data Type">
-              {disk.type === 'ui' ? 'Unique Identifiers' : 'Structural Enzymes'}
-              {!!disk.ue && ' and Unique Enzymes'}
+            <LabeledList.Item label="Тип данных">
+              {disk.type === 'ui' ? 'Уникальная внешность' : 'Нестандартные мутации'}
+              {!!disk.ue && ' и Копирование личности'}
             </LabeledList.Item>
           </LabeledList>
         ) : (
-          <Box color="label">Disk is blank.</Box>
+          <Box color="label">Диск не имеет данных.</Box>
         )
       ) : (
         <Box color="label" textAlign="center" my="1rem">
           <Icon name="save-o" size={4} />
           <br />
-          No disk inserted.
+          Диск с данными не вставлен.
         </Box>
       )}
     </Section>
@@ -621,12 +628,14 @@ const DNAModifierMainRejuvenators = () => {
   return (
     <Section
       fill
-      title="Rejuvenators and Beaker"
-      buttons={<Button disabled={!isBeakerLoaded} icon="eject" content="Eject" onClick={() => act('ejectBeaker')} />}
+      title="Камера реагентов"
+      buttons={
+        <Button disabled={!isBeakerLoaded} icon="eject" content="Извлечь ёмкость" onClick={() => act('ejectBeaker')} />
+      }
     >
       {isBeakerLoaded ? (
         <LabeledList>
-          <LabeledList.Item label="Inject">
+          <LabeledList.Item label="Ввести">
             {rejuvenatorsDoses.map((a, i) => (
               <Button
                 key={i}
@@ -643,7 +652,7 @@ const DNAModifierMainRejuvenators = () => {
             <Button
               disabled={beakerVolume <= 0}
               icon="syringe"
-              content="All"
+              content="Всё"
               onClick={() =>
                 act('injectRejuvenators', {
                   amount: beakerVolume,
@@ -651,14 +660,14 @@ const DNAModifierMainRejuvenators = () => {
               }
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Beaker">
-            <Box mb="0.5rem">{beakerLabel ? beakerLabel : 'No label'}</Box>
+          <LabeledList.Item label="Название">
+            <Box mb="0.5rem">{beakerLabel ? beakerLabel : 'Отсутствует'}</Box>
             {beakerVolume ? (
               <Box color="good">
-                {beakerVolume} unit{beakerVolume === 1 ? '' : 's'} remaining
+                Осталось {beakerVolume} юнит{beakerVolume === 1 ? '' : 'ов'}
               </Box>
             ) : (
-              <Box color="bad">Empty</Box>
+              <Box color="bad">Пусто</Box>
             )}
           </LabeledList.Item>
         </LabeledList>
@@ -670,8 +679,8 @@ const DNAModifierMainRejuvenators = () => {
               <Icon name="slash" size={5} color="red" />
             </Icon.Stack>
           </Stack.Item>
-          <Stack.Item bold color="label" mb="2rem">
-            <h3>No Beaker Loaded</h3>
+          <Stack.Item color="label" mb="2rem">
+            <Box bold>Ёмкость не установлена</Box>
           </Stack.Item>
         </Stack>
       )}
@@ -690,16 +699,14 @@ const DNAModifierIrradiating = (props: DNAModifierIrradiatingProps) => {
       <Icon name="spinner" size={5} spin />
       <br />
       <Box color="average">
-        <h1>
+        <Box fontSize="1.5rem" bold>
           <Icon name="radiation" />
-          &nbsp;Irradiating occupant&nbsp;
+          &nbsp;Облучаем испытуемого&nbsp;
           <Icon name="radiation" />
-        </h1>
+        </Box>
       </Box>
       <Box color="label">
-        <h3>
-          For {duration} second{duration === 1 ? '' : 's'}
-        </h3>
+        <Box bold>В течение {duration} сек.</Box>
       </Box>
     </Dimmer>
   );

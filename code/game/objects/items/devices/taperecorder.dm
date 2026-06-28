@@ -282,8 +282,10 @@
 	var/max_capacity = 600
 	var/used_capacity = 0
 	var/remaining_capacity = 600
-	var/list/storedinfo = list()
-	var/list/timestamp = list()
+	// SS220 EDIT START - Migrate to 516.1682
+	var/alist/storedinfo = alist()
+	var/alist/timestamp = alist()
+	// SS220 EDIT END
 	var/ruined = FALSE
 	new_attack_chain = TRUE
 
