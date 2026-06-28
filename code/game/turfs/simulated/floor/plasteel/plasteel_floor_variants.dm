@@ -15,6 +15,9 @@
 /turf/simulated/floor/plasteel/grid
 	icon_state = "tile_grid"
 
+/turf/simulated/floor/plasteel/paved
+	icon_state = "tile_paved"
+
 /turf/simulated/floor/plasteel/dark
 	icon_state = "tile_dark_standard"
 
@@ -47,6 +50,9 @@
 /turf/simulated/floor/plasteel/dark/grid
 	icon_state = "tile_dark_grid"
 
+/turf/simulated/floor/plasteel/dark/paved
+	icon_state = "tile_dark_paved"
+
 /turf/simulated/floor/plasteel/white
 	icon_state = "tile_white_standard"
 
@@ -78,3 +84,6 @@
 
 /turf/simulated/floor/plasteel/white/grid
 	icon_state = "tile_white_grid"
+
+/turf/simulated/floor/plasteel/white/paved
+	icon_state = "tile_white_paved"
