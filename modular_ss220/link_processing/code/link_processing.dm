@@ -238,5 +238,6 @@
 									else
 										active_character.rlimb_data[second_limb] = choice
 										active_character.organ_data[second_limb] = "cyborg"
+					ShowChoices(user)
 					return
 	. = ..()
