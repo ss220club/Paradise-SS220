@@ -1,7 +1,9 @@
 /datum/preferences/process_link(mob/user, list/href_list)
-	if(!user)
+	if(!user || !active_character)
 		return
 	var/datum/species/S = GLOB.all_species[active_character.species]
+	if(!S)
+		return
 	switch(href_list["task"])
 		if("input")
 			switch(href_list["preference"])
