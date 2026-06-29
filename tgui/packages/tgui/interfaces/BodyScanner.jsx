@@ -173,16 +173,14 @@ const BodyScannerMainOccupant = (props) => {
 
 const BodyScannerMainAbnormalities = (props) => {
   const { occupant } = props;
-  if (
-    !(
-      occupant.hasBorer ||
-      occupant.blind ||
-      occupant.colourblind ||
-      occupant.nearsighted ||
-      occupant.hasVirus ||
-      occupant.paraplegic
-    )
-  ) {
+  if (!(
+    occupant.hasBorer ||
+    occupant.blind ||
+    occupant.colourblind ||
+    occupant.nearsighted ||
+    occupant.hasVirus ||
+    occupant.paraplegic
+  )) {
     return (
       <Section title="Отклонения">
         <Box color="label">Отклонения не обнаружены.</Box>
