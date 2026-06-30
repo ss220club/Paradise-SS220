@@ -481,7 +481,7 @@
 ////////////////////////////////////////
 
 /datum/uplink_item/explosives/c4bag
-	name = "Сумка с взрывчаткой C-4"
+	name = "Сумка со взрывчаткой C-4"
 	// name = "Bag of C-4 explosives"
 	desc = "Потому что иногда количество — это качество. Содержит 10 композитных взрывчаток C-4."
 	// desc = "Because sometimes quantity is quality. Contains 10 C-4 plastic explosives."
@@ -530,9 +530,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/explosives/manhacks
-	name = "Граната доставки Висцераторов"
+	name = "Граната доставки висцераторов"
 	// name = "Viscerator Delivery Grenade"
-	desc = "Уникальная граната, которая выпускает рой Висцераторов при активации, который будет преследовать и нападать на \
+	desc = "Уникальная граната, которая выпускает рой висцераторов при активации, который будет преследовать и нападать на \
 	любых не-оперативников в области."
 	// desc = "A unique grenade that deploys a swarm of viscerators upon activation, which will chase down and shred any non-operatives in the area."
 	reference = "VDG"
