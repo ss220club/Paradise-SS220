@@ -918,7 +918,7 @@
 /datum/uplink_item/badass/confettidrum
 	name = "Магазин для «Бульдога» (Конфетти пули 12 калибра)"
 	// name = "Bulldog - 12g party Magazine"
-	desc = "Дополнительный магазин в дробовик «Бульдог» на 12 праздничных патронов. Содержат прессованное конфетти. \
+	desc = "Дополнительный магазин в дробовик «Бульдог» на 12 праздничных патронов. Содержит прессованное конфетти. \
 	Зачем? Потому что мы можем — Honkco Industries"
 	// desc = "An alternative 12-round confetti magazine for use in the Bulldog shotgun. Why? Because we can - Honkco Industries"
 	item = /obj/item/ammo_box/magazine/m12g/confetti
