@@ -928,7 +928,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/bio_chips/storage
-	name = "Биочип хранилища"
+	name = "Био-чип хранилища"
 	desc = "Био-чип, вводимый инъекцией под кожу. При активации откроет карманное хранилище, сжатое с помощью технологии \
 			Редспейса до размеров био-чипа. Может хранить только два предмета."
 	reference = "ESI"
@@ -963,7 +963,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/bio_chips/proto_adrenal
 	name = "Прототип адреналинового био-чипа"
 	desc = "Прототип био-чипа, вводимый инъекцией под кожу. Является самой слабой версией из доступной линейки \
-			адреналиновых биочипов. Вещество внутри действует крайне ограниченное время и способно лишь облегчить страдания от переутомления на 1 раз."
+			адреналиновых био-чипов. Вещество внутри действует крайне ограниченное время и способно лишь облегчить страдания от переутомления на 1 раз."
 	reference = "PAI"
 	item = /obj/item/bio_chip_implanter/proto_adrenalin
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5

@@ -722,8 +722,8 @@
 /datum/uplink_item/bio_chips/krav_implant
 	name = "Имплант искусства Крав Мага"
 	// name = "Krav Maga Implant"
-	desc = "Био-чип, который обучает вас боевому искусству Крав Мага при имплантации, отлично как дешёвое запасное оружие. \
-	Предупреждение: биочип переобучит вас использованию именно стилю Крав Мага пока активен."
+	desc = "Био-чип, который обучает вас боевому искусству Крав Мага при имплантации, отлично подходит в качестве дешёвого \
+	запасного оружия. Предупреждение: био-чип переобучит вас использованию именно стиля Крав Мага, пока активен."
 	// desc = "A biochip that teaches you Krav Maga when implanted, great as a cheap backup weapon. Warning: the biochip will override any other fighting styles such as CQC while active."
 	reference = "KMI"
 	item = /obj/item/bio_chip_implanter/krav_maga
@@ -751,7 +751,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/bio_chips/macrobomb
-	name = "Биочип макробомбы"
+	name = "Био-чип макробомбы"
 	// name = "Macrobomb Bio-chip"
 	desc = "Био-чип, вводимый инъекцией под кожу. Активируется вручную или автоматически после биологической смерти оперативника. \
 	Производит мощный взрыв, который уничтожает всех и вся поблизости."
