@@ -552,9 +552,9 @@
 //Human
 
 /datum/uplink_item/species_restricted/holo_cigar
-	name = "Голо-Сигара"
+	name = "Голо-сигара"
 	// name = "Holo-Cigar"
-	desc = "Голо-Сигара, импортированая из Солнечной системы. При работе повышает концентрацию пользователя, позволяя \
+	desc = "Голо-сигара, импортированая из Солнечной системы. При работе повышает концентрацию пользователя, позволяя \
 	стрелять с двух рук или использовать двуручное оружие с одной, прямо как настоящий Спец агент элитных сил Синдиката!"
 	// desc = "A holo-cigar imported from the Sol system. The full effects of looking so badass aren't understood yet, but users show an increase in precision while dual-wielding firearms."
 	reference = "SHC"
@@ -581,7 +581,7 @@
 /datum/uplink_item/species_restricted/cryoregenerative_enhancer
 	name = "Криорегенеративный усилитель"
 	// name = "Cryoregenerative Enhancer"
-	desc = "Специально разработанные наномашины, усиливающие низкотемпературные регенеративные способности расы Драсков\
+	desc = "Специально разработанные наномашины, усиливающие низкотемпературные регенеративные способности расы драсков\
 	. Для работы требуется лишь переохлаждённый воздух в окружающей среде или системе дыхания."
 	// desc = "Specially designed nanomachines that enhance the low-temperature regenerative capabilities of drask. Requires supercooled air in the environment or internals to function."
 	reference = "CRE"
