@@ -278,7 +278,7 @@
 /datum/uplink_item/jobspecific/drunkbullets
 	name = "Опьяняющие патроны"
 	// name = "Boozey Shotgun Shells"
-	desc = "Коробка, содержащая 6 патронов для дробовика, которые имитируют эффект тяжёлго запоя на цели, \
+	desc = "Коробка, содержащая 6 патронов для дробовика, которые имитируют эффект тяжёлого запоя на цели, \
 	становясь тем эффективнее, чем менее 'сухая' жертва."
 	// desc = "A box containing 6 shotgun shells that simulate the effects of extreme drunkenness on the target, more effective for each type of alcohol in the target's system."
 	reference = "BSS"
@@ -334,7 +334,7 @@
 	name = "Телеган"
 	// name = "Telegun"
 	desc = "Чрезвычайно высокотехнологичное энергетическое оружие, использующее технологию Блюспейса для телепортации живых целей. \
-	Выберите целевой маяк и сверы чистого Блюспейса отправят цель к указаному месту. Может отправлять цели только к маякам \
+	Выберите целевой маяк и сферы чистого Блюспейса отправят цель к указанному месту. Может отправлять цели только к маякам \
 	в секторе, если они не эммагнуты!"
 	// desc = "An extremely high-tech energy gun that utilizes jury-rigged bluespace technology to teleport away living targets. Select the target beacon on the telegun itself; projectiles will send targets to the beacon locked onto. Can only send targets to beacons in-sector unless they are emagged!"
 	reference = "TG"
@@ -365,7 +365,7 @@
 /datum/uplink_item/jobspecific/etwenty
 	name = "E20"
 	// name = "The E20"
-	desc = "Кажущийся безобидным кубик, но те, кто не боятся бросать его для атаки, почувствуют истиный эффект! \
+	desc = "Кажущийся безобидным кубик, но те, кто не боятся бросать его для атаки, почувствуют истинный эффект! \
 	Имеет четырёхсекундный таймер и градацию силы взрыва пропорционально выпавшему числу."
 	// desc = "A seemingly innocent die, those who are not afraid to roll for attack will find its effects quite explosive. Has a four second timer."
 	reference = "ETW"
