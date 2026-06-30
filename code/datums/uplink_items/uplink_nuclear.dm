@@ -219,9 +219,9 @@
 // MARK: AMMUNITION
 ////////////////////////////////////////
 /datum/uplink_item/ammo/aps
-	name = "Магазин для Type 230 (10мм)"
+	name = "Магазин для Type 230 (10-мм)"
 	// name = "Type 230 - 10mm Magazine"
-	desc = "Дополнительный магазин на 20 патронов калибра 10мм для использования в скорострельном пистолете Type 230, \
+	desc = "Дополнительный магазин на 20 патронов калибра 10-мм для использования в скорострельном пистолете Type 230, \
 	заряженный стандартными патронами."
 	// desc = "An additional 20-round 10mm magazine for use in the Type 230 machine pistol, loaded with rounds that are cheap but around half as effective as .357"
 	reference = "10MMAPS"
@@ -230,9 +230,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/apsap
-	name = "Магазин для Type 230 (Бронебойные 10мм)"
+	name = "Магазин для Type 230 (Бронебойные 10-мм)"
 	// name = "Type 230 - 10mm Armour Piercing Magazine"
-	desc = "Дополнительный магазин на 20 патронов калибра 10мм для использования в скорострельном пистолете Type 230, \
+	desc = "Дополнительный магазин на 20 патронов калибра 10-мм для использования в скорострельном пистолете Type 230, \
 	заряженный патронами, которые менее эффективны для нанесения ран, но лучше пробивают защитную экипировку."
 	// desc = "An additional 20-round 10mm magazine for use in the Type 230 machine pistol, loaded with rounds that are less effective at injuring the target but penetrate protective gear."
 	reference = "10MMAPSAP"
@@ -241,9 +241,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/apsfire
-	name = "Магазин для Type 230 (Зажигательные 10мм)"
+	name = "Магазин для Type 230 (Зажигательные 10-мм)"
 	// name = "Type 230 - 10mm Incendiary Magazine"
-	desc = "Дополнительный магазин на 20 патронов калибра 10мм для использования в скорострельном пистолете Type 230, \
+	desc = "Дополнительный магазин на 20 патронов калибра 10-мм для использования в скорострельном пистолете Type 230, \
 	заряженный зажигательными патронами, которые поджигают цель."
 	// desc = "An additional 20-round 10mm magazine for use in the Type 230 machine pistol, loaded with incendiary rounds which ignite the target."
 	reference = "10MMAPSFIRE"
@@ -252,9 +252,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/apshp
-	name = "Магазин для Type 230 (Экспансивные 10мм)"
+	name = "Магазин для Type 230 (Экспансивные 10-мм)"
 	// name = "Type 230 - 10mm Hollow Point Magazine"
-	desc = "Дополнительный магазин на 20 патронов калибра 10мм для использования в скорострельном пистолете Type 230, \
+	desc = "Дополнительный магазин на 20 патронов калибра 10-мм для использования в скорострельном пистолете Type 230, \
 	заряженный патронами, которые наносят больше повреждений цели, но неэффективны против брони."
 	// desc = "An additional 20-round 10mm magazine for use in the Type 230 machine pistol, loaded with rounds which are more damaging but ineffective against armour."
 	reference = "10MMAPSHP"
@@ -331,7 +331,7 @@
 	name = "Магазин для ПП C-20r (.45)"
 	// name = "C-20r - .45 Magazine"
 	desc = "Дополнительный магазин на 20 патронов калибра .45 для использования в пистолете-пулемёте C-20r. \
-	Пули быстро изматывают цель, но не так сильны для нанесения повреждений."
+	Пули быстро выматывают цель, но наносят меньше повреждений."
 	// desc = "An additional 20-round .45 magazine for use in the C-20r submachine gun. These bullets pack a lot of punch that can knock most targets down, but do limited overall damage."
 	reference = "45"
 	item = /obj/item/ammo_box/magazine/smgm45
@@ -349,7 +349,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/carbine
-	name = "Магазин для Карабина M-90gl(5.56)"
+	name = "Магазин для Карабина M-90gl (5.56)"
 	// name = "Carbine - 5.56 Toploader Magazine"
 	desc = "Дополнительный магазин на 30 патронов калибра 5.56 для использования в Карабине M-90gl. Эти пули \
 	не обладают силой, чтобы сбить большинство целей, но наносят внушительные повреждения."
@@ -360,9 +360,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/a40mm
-	name = "Коробка 40мм гранат"
+	name = "Коробка 40-мм гранат"
 	// name = "Carbine - 40mm Grenade Ammo Box"
-	desc = "Коробка с 4 дополнительными 40мм фугасными гранатами для использования в подствольном гранатомёте Карабина M-90gl. \
+	desc = "Коробка с 4 дополнительными 40-мм фугасными гранатами для использования в подствольном гранатомёте Карабина M-90gl. \
 	Товарищи по команде не очень обрадуются гранате в лицо."
 	// desc = "A box of 4 additional 40mm HE grenades for use the C-90gl's underbarrel grenade launcher. Your teammates will thank you to not shoot these down small hallways."
 	reference = "40MM"
@@ -391,7 +391,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/machinegun
-	name = "Пулемётная лента для L6 SAW(7.62x51мм)"
+	name = "Пулемётная лента для L6 SAW (7.62x51-мм)"
 	// name = "L6 SAW - 7.62x51mm Box Magazine"
 	desc = "Магазин на 50 патронов калибра 7.62x51mm для использования в пулемёте L6 SAW. К тому времени, когда вам \
 	понадобится использовать это, вы уже будете стоять на куче трупов, вопрос только чьих."
@@ -406,7 +406,7 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/ammo/sniper/basic
-	name = "Магазин для снайперской винтовки(.50)"
+	name = "Магазин для снайперской винтовки (.50)"
 	// name = "Sniper - .50 Magazine"
 	desc = "Дополнительный магазин на 6 патронов калибра .50 для снайперской винтовки."
 	// desc = "An additional standard 6-round magazine for use with .50 sniper rifles."
@@ -414,7 +414,7 @@
 	item = /obj/item/ammo_box/magazine/sniper_rounds
 
 /datum/uplink_item/ammo/sniper/antimatter
-	name = "Магазин для снайперской винтовки(Антиматериальные .50)"
+	name = "Магазин для снайперской винтовки (Антиматериальные .50)"
 	// name = "Sniper - .50 Antimatter Magazine"
 	desc = "Дополнительный магазин на 6 патронов калибра .50 для снайперской винтовки. \
 	Содержит патроны, которые просто созданы для разрушений всего и вся. Способны сильно повреждать объекты и отрубать \
@@ -426,7 +426,7 @@
 	cost = 30
 
 /datum/uplink_item/ammo/sniper/soporific
-	name = "Магазин для снайперской винтовки(Усыпляющие .50)"
+	name = "Магазин для снайперской винтовки (Усыпляющие .50)"
 	// name = "Sniper - .50 Soporific Magazine"
 	desc = "Дополнительный магазин на 3 патрона калибра .50 для снайперской винтовки. \
 	Усыпите своих врагов сегодня!"
@@ -435,7 +435,7 @@
 	item = /obj/item/ammo_box/magazine/sniper_rounds/soporific
 
 /datum/uplink_item/ammo/sniper/haemorrhage
-	name = "Магазин для снайперской винтовки(Режущие .50)"
+	name = "Магазин для снайперской винтовки (Кровопускающие .50)"
 	// name = "Sniper - .50 Hemorrhage Magazine"
 	desc = "Дополнительный магазин на 5 патронов калибра .50 для снайперской винтовки. Патроны вызывают \
 	обильное кровотечение у цели."
@@ -445,7 +445,7 @@
 	item = /obj/item/ammo_box/magazine/sniper_rounds/haemorrhage
 
 /datum/uplink_item/ammo/sniper/penetrator
-	name = "Магазин для снайперской винтовки(Бронебойные .50)"
+	name = "Магазин для снайперской винтовки (Бронебойные .50)"
 	// name = "Sniper - .50 Penetrator Magazine"
 	desc = "Дополнительный магазин на 5 патронов калибра .50 для снайперской винтовки. \
 	Патроны немного слабее обычных .50, но имеют невероятную пробивную способность."
