@@ -661,7 +661,7 @@
 	surplus = 20
 
 /datum/uplink_item/device_tools/dropwall
-	name = "Коробка проекторов стены"
+	name = "Коробка генераторов направленных щитов"
 	// name = "Dropwall generator box"
 	desc = "Коробка из 5 генераторов щитов, которые можно использовать для создания временных направленных щитов, \
 	которые блокируют снаряды, брошенные объекты и уменьшают повреждения от взрывов. Настройте направление перед броском."
@@ -675,7 +675,7 @@
 	name = "Медицинский заживляющий лучемёт"
 	// name = "Medbeam Gun"
 	desc = "Медицинский лучемёт, полезен в затяжных перестрелках. НЕ ПЕРЕСЕКАЙТЕ ЛУЧИ. Пересечение лучей с другим медлучемётом \
-	или направление двух лучей к одной цели будет иметь неприятные последствия."
+	или направление двух лучей к одной цели будет иметь фатальные последствия."
 	// desc = "Medical Beam Gun, useful in prolonged firefights. DO NOT CROSS THE BEAMS. Crossing beams with another medbeam or attaching two beams to one target will have explosive consequences."
 	item = /obj/item/gun/medbeam
 	reference = "MBG"
