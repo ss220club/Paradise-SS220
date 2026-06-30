@@ -497,7 +497,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 40
 
 /datum/uplink_item/explosives/emp
-	name = "Набор Эми гранат с ЭМИ-имплантом"
+	name = "Набор ЭМИ гранат с ЭМИ-имплантом"
 	desc = "Коробка с двумя ЭМИ-гранатами и ЭМИ-имплантом на два применения. Пригодится, чтобы нарушить связь, вывести из строя \
 			 энергетическое оружие и перегрузить боргов."
 	reference = "EMPK"

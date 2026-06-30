@@ -494,7 +494,7 @@
 /datum/uplink_item/explosives/breaching_charge
 	name = "Композит X-4"
 	// name = "Composition X-4"
-	desc = "X-4 — чтобы быть безопасным для пользователя и при этом наносить максимальный ущерб \
+	desc = "X-4 разработан так, чтобы быть безопасным для пользователя и при этом наносить максимальный ущерб \
 	находящимся в помещении. Имеет модифицируемый таймер с минимальной настройкой 10 секунд."
 	// desc = "X-4 is a shaped charge designed to be safe to the user while causing maximum damage to the occupants of the room beach breached. It has a modifiable timer with a minimum setting of 10 seconds."
 	reference = "X4"
@@ -532,7 +532,7 @@
 /datum/uplink_item/explosives/manhacks
 	name = "Граната доставки Висцераторов"
 	// name = "Viscerator Delivery Grenade"
-	desc = "Уникальная граната, которая отправляет рой Висцераторов при активации, который будет преследовать и нападать на \
+	desc = "Уникальная граната, которая выпускает рой Висцераторов при активации, который будет преследовать и нападать на \
 	любых не-оперативников в области."
 	// desc = "A unique grenade that deploys a swarm of viscerators upon activation, which will chase down and shred any non-operatives in the area."
 	reference = "VDG"
