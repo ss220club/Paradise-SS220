@@ -255,7 +255,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	can_discount = FALSE // Too gamer.
 
 /datum/uplink_item/dangerous/universal_gun_kit
-	name = "Универсальный комплект для сборки винтовки"
+	name = "Универсальный комплект для сборки оружия"
 	desc = "Универсальный комплект, который можно комбинировать \
 			с любым другим комплектом оружия из РНД для его создания. \
 			Для самостоятельной сборки просто соедините комплекты друг с другом."
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/dangerous/porta_turret
 	name = "Портативная турель"
-	desc = "Быстроразвёртывемая турель Синдиката, которая расстреляет любого кроме установившего её. После установки турель \
+	desc = "Быстроразвёртываемая турель Синдиката, которая расстреляет любого кроме установившего её. После установки турель \
 			 нельзя передвинуть."
 	reference = "MIS"
 	item = /obj/item/grenade/turret

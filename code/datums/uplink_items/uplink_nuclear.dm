@@ -88,7 +88,7 @@
 	name = "Боевой модуль дефибриллятора"
 	// name = "Combat Defibrillator Module"
 	desc = "Дефибриллятор, превращённый в опасное оружие. Ударьте кого-либо лопатками с сильным желанием причинить вред, \
-	чтобы мгновенно остановить их сердце. Может  так же использоваться как обычный дефибриллятор. Устанавливается в MOD-костюм."
+	чтобы мгновенно остановить их сердце. Может также использоваться как обычный дефибриллятор. Устанавливается в MOD-костюм."
 	// desc = "A lifesaving device turned dangerous weapon. Click on someone with the paddles on harm intent to instantly stop their heart. Can be used as a regular defib as well. Installs in a MODsuit."
 	reference = "CD"
 	item = /obj/item/mod/module/defibrillator/combat
