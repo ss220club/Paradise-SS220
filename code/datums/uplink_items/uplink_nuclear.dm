@@ -19,7 +19,7 @@
 	name = "Пистолет-пулемёт C-20r"
 	// name = "C-20r Submachine Gun"
 	desc = "Полностью укомплектованный буллпап-пистолет-пулемёт Scarborough Arms, стреляющий патронами .45 с \
-	магазином на 20 патронов и имеет насечку на стволе под глушитель."
+	магазином на 20 патронов и имеет резьбу на стволе для установки глушителя."
 	// desc = "A fully-loaded Scarborough Arms bullpup submachine gun that fires .45 rounds with a 20-round magazine and is compatible with suppressors."
 	reference = "SMG"
 	item = /obj/item/gun/projectile/automatic/c20r
@@ -87,7 +87,7 @@
 /datum/uplink_item/dangerous/combat_defib
 	name = "Боевой модуль дефибриллятора"
 	// name = "Combat Defibrillator Module"
-	desc = "Дефибриллятор, превращённый в опасное оружие. Ударьте кого-либо лопатками с сильным желанием причинить вред, \
+	desc = "Дефибриллятор, превращённый в опасное оружие. Ударьте кого-либо лопатками с сильным намерением причинить вред, \
 	чтобы мгновенно остановить их сердце. Может также использоваться как обычный дефибриллятор. Устанавливается в MOD-костюм."
 	// desc = "A lifesaving device turned dangerous weapon. Click on someone with the paddles on harm intent to instantly stop their heart. Can be used as a regular defib as well. Installs in a MODsuit."
 	reference = "CD"

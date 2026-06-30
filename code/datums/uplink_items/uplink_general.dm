@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/dangerous/porta_turret
 	name = "Портативная турель"
-	desc = "Быстроразвёртываемая турель Синдиката, которая расстреляет любого кроме установившего её. После установки турель \
+	desc = "Быстроразвёртываемая турель Синдиката, которая расстреляет любого, кроме установившего её. После установки турель \
 			 нельзя передвинуть."
 	reference = "MIS"
 	item = /obj/item/grenade/turret
