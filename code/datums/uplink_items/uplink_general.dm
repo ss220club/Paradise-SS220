@@ -386,7 +386,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/soap
 	name = "Мыло Синдиката"
-	desc = "Кусок мыла подозрительного вида который очищает буквально всё за секунду. Окровавленное место убийства или \
+	desc = "Кусок мыла подозрительного вида, который очищает буквально всё за секунду. Окровавленное место убийства или \
 			 отпечатки на оружии с этим мылом больше не страшны!"
 	reference = "SOAP"
 	item = /obj/item/soap/syndie

@@ -784,7 +784,7 @@
 	name = "Экспериментальные перчатки Крав Мага"
 	// name = "Experimental Krav Gloves"
 	desc = "Экспериментальные перчатки с установленными наночипами, которые обучают вас искусству Крав Мага при ношении. \
-	Отличны если рассматривать как дешёвое резервное оружие. Предупреждение: наночипы перезапишут любые другие боевые стили, \
+	Отличный выбор в качестве дешёвого запасного оружия. Предупреждение: наночипы перезапишут любые другие боевые стили, \
 	такие как CQC. Не выглядят так же круто, как у Смотрителя."
 	// desc = "Experimental gloves with installed nanochips that teach you Krav Maga when worn, great as a cheap backup weapon. Warning, the nanochips will override any other fighting styles such as CQC. Do not look as fly as the Warden's"
 	reference = "CGM"
