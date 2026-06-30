@@ -930,7 +930,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/bio_chips/storage
 	name = "Био-чип хранилища"
 	desc = "Био-чип, вводимый инъекцией под кожу. При активации откроет карманное хранилище, сжатое с помощью технологии \
-			Редспейса до размеров био-чипа. Может хранить только два предмета."
+			Блюспейса до размеров био-чипа. Может хранить только два предмета."
 	reference = "ESI"
 	item = /obj/item/bio_chip_implanter/storage
 	cost = 30 // SS220 EDIT PRICE UP/DOWN 40 -> 30
