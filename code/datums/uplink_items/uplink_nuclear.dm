@@ -18,7 +18,7 @@
 /datum/uplink_item/dangerous/smg
 	name = "Пистолет-пулемёт C-20r"
 	// name = "C-20r Submachine Gun"
-	desc = "Полностью укомплектованный бул-лпап пистолет-пулемёт Scarborough Arms, стреляющий патронами .45 с \
+	desc = "Полностью укомплектованный булл-пап пистолет-пулемёт Scarborough Arms, стреляющий патронами .45 с \
 	магазином на 20 патронов и имеет резьбу на стволе для установки глушителя."
 	// desc = "A fully-loaded Scarborough Arms bullpup submachine gun that fires .45 rounds with a 20-round magazine and is compatible with suppressors."
 	reference = "SMG"
@@ -98,7 +98,7 @@
 /datum/uplink_item/dangerous/foamsmg
 	name = "Игрушечный пистолет-пулемёт"
 	// name = "Toy Submachine Gun"
-	desc = "Полностью укомплектованный бул-лпап пистолет-пулемёт Donksoft с магазином на 20 патронов, стреляющий \
+	desc = "Полностью укомплектованный булл-пап пистолет-пулемёт Donksoft с магазином на 20 патронов, стреляющий \
 	пенными дротиками."
 	// desc = "A fully-loaded Donksoft bullpup submachine gun that fires riot grade rounds with a 20-round magazine."
 	reference = "FSMG"
