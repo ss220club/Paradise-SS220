@@ -393,7 +393,7 @@
 /datum/uplink_item/jobspecific/contortionist
 	name = "Комбинезон акробата"
 	// name = "Contortionist's Jumpsuit"
-	desc = "Высокоэластичный комбинезон, который поможет вам ползать по станционной вентеляции. Имеет карманы \
+	desc = "Высокоэластичный комбинезон, который поможет вам ползать по станционной вентиляции. Имеет карманы \
 	и слот для ID, но не может быть использован без ношения большей части снаряжения, включая рюкзак, пояс, шлем и МОД. \
 	Также необходимы свободные руки, чтобы ползать внутри."
 	// desc = "A highly flexible jumpsuit that will help you navigate the ventilation loops of the station internally. Comes with pockets and ID slot, but can't be used without stripping off most gear, including backpack, belt, helmet, and exosuit. Free hands are also necessary to crawl around inside."
