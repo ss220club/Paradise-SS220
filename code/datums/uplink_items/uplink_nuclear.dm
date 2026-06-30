@@ -768,8 +768,8 @@
 /datum/uplink_item/cyber_implants/thermals
 	name = "Имплант теплового зрения"
 	// name = "Thermal Vision Implant"
-	desc = "Автоимплантер, содержащий имплант теплового зрения. Кибернетические глаза использующие продвинутую технологию \
-	тепловизора, позволяя пользователю обнаруживать биологических сущностей даже через стены."
+	desc = "Автоимплантер, содержащий имплант теплового зрения. Кибернетические глаза, использующие продвинутую технологию \
+	тепловизора, позволяющие пользователю обнаруживать биологических сущностей даже через стены."
 	// desc = "These cybernetic eyes will give you thermal vision. Comes with an autosurgeon."
 	reference = "CIT"
 	item = /obj/item/autosurgeon/organ/syndicate/thermal_eyes
@@ -793,7 +793,7 @@
 /datum/uplink_item/cyber_implants/antistun
 	name = "Экранированный имплант перезагрузки ЦНС"
 	// name = "Hardened CNS Rebooter Implant"
-	desc = "Автоимплантер, содержащий экранированный имплант перезагрузки Центральной Нервной Системы. Этот имплант \
+	desc = "Автоимплантер, содержащий экранированный имплант перезагрузки центральной нервной системы. Этот имплант \
 	поможет вам быстрее встать на ноги после сильного утомления. Имплант защищён от негативного влияния электромагнитного излучения."
 	// desc = "This implant will help you get back up on your feet faster after being fatigued. It is immune to EMP attacks. Comes with an autosurgeon."
 	reference = "CIAS"
