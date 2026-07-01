@@ -21,3 +21,11 @@
 
 /datum/map/emeraldstation
 	voteable = FALSE
+
+/datum/map/buildstation
+	fluff_name = "Новая станция"
+	technical_name = "Buidstation"
+	map_path = "_maps/map_files220/stations/buildstation.dmm"
+	// webmap_url POHUI
+	// welcome_sound - POHUI
+	voteable = TRUE
