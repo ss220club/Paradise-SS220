@@ -26,6 +26,6 @@
 	fluff_name = "Новая станция"
 	technical_name = "Buildstation"
 	map_path = "_maps/map_files220/stations/buildstation.dmm"
-	// webmap_url POHUI
-	// welcome_sound - POHUI
+	// webmap_url ... туду?
+	// welcome_sound - туду?
 	voteable = TRUE
