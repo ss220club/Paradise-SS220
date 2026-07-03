@@ -11318,6 +11318,9 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/engineering/general{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "aHB" = (
@@ -22183,6 +22186,11 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/port)
+"bFb" = (
+/obj/structure/lattice,
+/obj/effect/map_effect/marker/mapmanip/submap/insert/station/omegastation/engine,
+/turf/space,
+/area/space/nearstation)
 "bFc" = (
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -34521,7 +34529,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/spawner/window/reinforced/plasma/grilled,
-/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plating,
 /area/station/engineering/gravitygenerator)
 "kcw" = (
@@ -45189,10 +45196,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/station/public/mrchangs)
-"rTW" = (
-/obj/effect/map_effect/marker/mapmanip/submap/insert/station/omegastation/engine,
-/turf/space,
-/area/space)
 "rUw" = (
 /obj/structure/grille/broken,
 /obj/machinery/shieldgen,
@@ -45455,7 +45458,7 @@
 "sfd" = (
 /obj/item/dest_tagger{
 	pixel_x = -10;
-	pixel_y = 2
+	pixel_y = 9
 	},
 /obj/structure/table,
 /obj/item/stamp/denied{
@@ -45471,6 +45474,10 @@
 /obj/machinery/status_display/supply_display/directional/north,
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 4
+	},
+/obj/item/rcs{
+	pixel_x = -8;
+	pixel_y = -2
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/storage)
@@ -65856,7 +65863,7 @@ aLL
 aLL
 aLL
 aLL
-aLL
+bFb
 hhM
 hhM
 hhM
@@ -75371,7 +75378,7 @@ fzT
 tMf
 sDn
 nPM
-rTW
+hhM
 hhM
 hhM
 pZU
