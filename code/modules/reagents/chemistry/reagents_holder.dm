@@ -516,12 +516,12 @@
 					if(C.result)
 						SSblackbox.record_feedback("tally", "chemical_reaction", C.result_amount * multiplier, C.result)
 						multiplier = max(multiplier, 1) //this shouldnt happen ...
-						add_reagent(C.result, C.result_amount*multiplier)
+						add_reagent(C.result, C.result_amount*multiplier, reagtemp = chem_temp) // SS220 EDIT - Add dynamic temperature
 						set_data(C.result, preserved_data)
 
 						//add secondary products
 						for(var/S in C.secondary_results)
-							add_reagent(S, C.result_amount * C.secondary_results[S] * multiplier)
+							add_reagent(S, C.result_amount * C.secondary_results[S] * multiplier, reagtemp = chem_temp) // SS220 EDIT - Add dynamic temperature
 
 					var/list/seen = viewers(4, get_turf(my_atom))
 					for(var/mob/living/M in seen)
@@ -700,9 +700,18 @@
  *
  * You won't use this much. Mostly in new procs for pre-filled objects.
  */
-/datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = T20C, no_react = FALSE)
+ // SS220 EDIT START - Add dynamic temperature for reagent
+/datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = null, no_react = FALSE)
 	if(!isnum(amount))
 		return TRUE
+	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
+	if(!D)
+		warning("[my_atom] attempted to add a reagent called '[reagent]' which doesn't exist. ([usr])")
+		handle_reactions()
+		return TRUE
+	if(isnull(reagtemp))
+		reagtemp = initial(D.reagent_temperature)
+// SS220 EDIT END
 	update_total()
 	if(total_volume + amount > maximum_volume) amount = (maximum_volume - total_volume) //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
 	if(amount <= 0)
@@ -726,7 +735,7 @@
 				handle_reactions()
 			return FALSE
 
-	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
+	// var/datum/reagent/D = GLOB.chemical_reagents_list[reagent] SS220 EDIT - for dynamic temperature
 	if(D)
 		var/datum/reagent/R = new D.type()
 		cached_reagents += R
@@ -755,9 +764,10 @@
 			temperature_react()
 			handle_reactions()
 		return FALSE
+	/* SS220 EDIT START - for dynamic temperature
 	else
 		warning("[my_atom] attempted to add a reagent called '[reagent]' which doesn't exist. ([usr])")
-
+	SS220 EDIT END */
 	handle_reactions()
 	return TRUE
 
