@@ -29,13 +29,14 @@
 	var/lip_color = "white"
 
 	var/age = 30		//Player's age (pure fluff)
+	// SS220 EDIT START
 	/// Players' height (more fluff)
 	var/height = HEIGHT_AVERAGE
 	/// Players physique (even MORE fluff)
 	var/physique = PHYSIQUE_AVERAGE
 	/// The body type associated with the body
 	var/body_type = MALE
-
+	// SS220 EDIT END
 	var/underwear = "Nude"	//Which underwear the player wants
 	var/undershirt = "Nude"	//Which undershirt the player wants
 	var/socks = "Nude" //Which socks the player wants
