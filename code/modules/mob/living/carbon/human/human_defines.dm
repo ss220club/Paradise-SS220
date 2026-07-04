@@ -37,7 +37,7 @@
 	// SS220 EDIT END
 	/// The body type associated with the body
 	var/body_type = MALE
-	
+
 	var/underwear = "Nude"	//Which underwear the player wants
 	var/undershirt = "Nude"	//Which undershirt the player wants
 	var/socks = "Nude" //Which socks the player wants
