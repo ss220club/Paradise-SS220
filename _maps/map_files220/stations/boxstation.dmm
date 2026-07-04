@@ -8511,13 +8511,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/button/windowtint/west{
-	id = "holodeck";
-	range = 9
-	},
 /obj/machinery/hologram/holopad{
 	pixel_y = 16
 	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "aGP" = (
@@ -11217,7 +11214,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "aQJ" = (
-/obj/machinery/light/small/directional/east,
 /obj/item/radio/intercom/directional/east,
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -11647,6 +11643,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light_switch/north,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/service/clown)
 "aSM" = (
@@ -14248,7 +14245,6 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/machinery/light/directional/north,
 /obj/effect/turf_decal/siding/yellow{
 	dir = 9
 	},
@@ -14343,7 +14339,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "bbv" = (
-/obj/machinery/light/directional/north,
 /obj/machinery/alarm/directional/north,
 /obj/effect/turf_decal/tiles/dark/corner{
 	dir = 1
@@ -43311,6 +43306,7 @@
 /obj/structure/railing/cap{
 	dir = 10
 	},
+/obj/machinery/light/floor,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/theatre)
 "dtk" = (
@@ -45585,7 +45581,6 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/machinery/light/directional/north,
 /obj/machinery/newscaster/directional/north,
 /obj/item/eftpos{
 	pixel_x = 9;
@@ -46555,6 +46550,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/hydroponics)
 "etL" = (
@@ -48514,6 +48510,7 @@
 	dir = 4
 	},
 /obj/machinery/light_switch/south,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/bar)
 "fdg" = (
@@ -51593,6 +51590,7 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/fitness)
 "ggr" = (
@@ -53042,7 +53040,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/light/directional/north,
 /obj/item/radio/intercom/directional/north,
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 1
@@ -53279,6 +53276,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tiles/dark/corner,
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel,
 /area/station/public/fitness)
 "gGd" = (
@@ -60038,7 +60036,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fpmaint)
 "iRT" = (
-/obj/machinery/light/small/directional/west,
 /obj/item/radio/intercom/directional/west,
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -60196,13 +60193,13 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 10
 	},
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/landmark/start/dealer,
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/purple,
 /area/station/service/bar)
 "iUf" = (
@@ -61152,7 +61149,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "jmB" = (
@@ -61762,7 +61758,6 @@
 	c_tag = "Bar East";
 	dir = 8
 	},
-/obj/machinery/light/directional/east,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/bar/atrium)
 "jwb" = (
@@ -65353,7 +65348,6 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/light/directional/north,
 /obj/effect/turf_decal/siding/yellow{
 	dir = 5
 	},
@@ -70243,12 +70237,6 @@
 	pixel_x = 8;
 	pixel_y = 4
 	},
-/obj/structure/sign/securearea{
-	desc = "Under the painting a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'";
-	icon_state = "monkey_painting";
-	name = "Mr. Deempisi portrait";
-	pixel_y = 32
-	},
 /obj/machinery/door_control/bolt_control/west{
 	id = "vipbar_bolt";
 	pixel_y = -5
@@ -70732,6 +70720,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint2)
+"mnJ" = (
+/obj/effect/turf_decal/tiles/neutral/corner{
+	dir = 8
+	},
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel,
+/area/station/public/dorms)
 "mol" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/turf_decal/tiles/department/engineering/corner{
@@ -73784,7 +73779,15 @@
 /obj/item/paper{
 	desc = "";
 	info = "Brusies sustained in the holodeck can be healed simply by sleeping.";
-	name = "Holodeck Disclaimer"
+	name = "Holodeck Disclaimer";
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/machinery/button/windowtint{
+	id = "holodeck";
+	range = 9;
+	pixel_x = -6;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
@@ -76201,6 +76204,7 @@
 /obj/effect/turf_decal/tiles/department/virology/side{
 	dir = 8
 	},
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel/white,
 /area/station/public/sleep)
 "ofw" = (
@@ -78409,8 +78413,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/arcade)
 "oPu" = (
-/obj/machinery/requests_console/directional/north,
 /obj/effect/turf_decal/tiles/white/corner,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/service/kitchen)
 "oPL" = (
@@ -79507,6 +79511,7 @@
 "phd" = (
 /obj/effect/turf_decal/siding/yellow/corner,
 /obj/structure/railing/cap,
+/obj/machinery/light/floor,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/theatre)
 "phl" = (
@@ -85543,6 +85548,7 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light_switch/north,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/mineral/tranquillite,
 /area/station/service/mime)
 "qXp" = (
@@ -87086,7 +87092,6 @@
 	dir = 4
 	},
 /obj/machinery/status_display/directional/north,
-/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/hydroponics)
 "rCJ" = (
@@ -90749,6 +90754,7 @@
 	pixel_x = 8
 	},
 /obj/effect/turf_decal/delivery,
+/obj/machinery/requests_console/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/service/kitchen)
 "sOK" = (
@@ -90956,7 +90962,6 @@
 /obj/machinery/computer/cryopod{
 	pixel_y = 32
 	},
-/obj/machinery/light/directional/north,
 /obj/machinery/hologram/holopad,
 /obj/effect/turf_decal/tiles/department/virology,
 /turf/simulated/floor/plasteel/white,
@@ -100007,9 +100012,14 @@
 "vHT" = (
 /obj/machinery/disposal,
 /obj/machinery/firealarm/directional/east,
-/obj/structure/sign/poster/official/high_class_martini/directional/north,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/structure/sign/securearea{
+	desc = "Under the painting a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'";
+	icon_state = "monkey_painting";
+	name = "Mr. Deempisi portrait";
+	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/bar)
@@ -146924,7 +146934,7 @@ tDg
 fho
 iyI
 kiu
-bsx
+mnJ
 aUQ
 vNh
 vca

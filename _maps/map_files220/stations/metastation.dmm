@@ -675,6 +675,7 @@
 /area/station/public/arcade)
 "ail" = (
 /obj/structure/closet/athletic_mixed,
+/obj/machinery/alarm/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/fitness)
 "aim" = (
@@ -771,9 +772,6 @@
 /turf/simulated/floor/plating,
 /area/station/security/armory)
 "ajn" = (
-/obj/structure/sign/public/pods{
-	pixel_y = 32
-	},
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 4
@@ -1710,9 +1708,6 @@
 /obj/item/flag/mime,
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 1
-	},
-/obj/structure/sign/service/drama{
-	pixel_x = -32
 	},
 /turf/simulated/floor/plasteel,
 /area/station/public/fitness)
@@ -6398,6 +6393,11 @@
 /obj/item/radio/intercom/directional/west,
 /turf/simulated/floor/wood,
 /area/station/public/vacant_office)
+"aPD" = (
+/obj/effect/spawner/window/reinforced/tinted/grilled,
+/obj/structure/sign/service/drama,
+/turf/simulated/floor/plating,
+/area/station/public/dorms)
 "aPH" = (
 /obj/structure/table/wood,
 /obj/machinery/firealarm/directional/east,
@@ -6482,6 +6482,7 @@
 "aQz" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/clothing/under/misc/assistantformal,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/locker)
 "aQA" = (
@@ -6492,7 +6493,6 @@
 	icon_state = "map-left-MS";
 	pixel_y = 32
 	},
-/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/locker)
 "aQB" = (
@@ -6846,9 +6846,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/locker)
 "aSc" = (
-/obj/structure/sign/nosmoking/alt{
-	pixel_x = 32
-	},
 /obj/machinery/light/small/directional/east,
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -7754,7 +7751,6 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/obj/machinery/light/small/directional/west,
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -11317,6 +11313,7 @@
 	},
 /obj/machinery/status_display/directional/north,
 /obj/effect/turf_decal/delivery,
+/obj/effect/map_effect/marker/mapmanip/submap/insert/station/metastation/engine,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/break_room)
 "bmv" = (
@@ -29141,10 +29138,10 @@
 /obj/machinery/camera{
 	c_tag = "Fitness Room - Fore"
 	},
-/obj/machinery/alarm/directional/north,
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 1
 	},
+/obj/machinery/economy/vending/wallmed/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/public/fitness)
 "cXr" = (
@@ -30089,7 +30086,6 @@
 "ded" = (
 /obj/machinery/economy/vending/cigarette,
 /obj/effect/turf_decal/woodsiding,
-/obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
 /turf/simulated/floor/plasteel,
 /area/station/service/bar)
@@ -36802,6 +36798,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
+"fvT" = (
+/obj/structure/chair/stool{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/simulated/floor/wood,
+/area/station/service/bar)
 "fvU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -38470,6 +38473,13 @@
 /obj/machinery/light_construct/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
+"gaB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/public/pods{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/fore)
 "gaZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
@@ -50141,6 +50151,9 @@
 /area/station/maintenance/fpmaint)
 "ktZ" = (
 /obj/item/radio/intercom/directional/south,
+/obj/structure/sign/nosmoking/alt{
+	pixel_x = 32
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -62461,9 +62474,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "oUI" = (
-/obj/machinery/economy/vending/wallmed/directional/north,
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 1
+	},
+/obj/structure/sign/public/pods{
+	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel,
 /area/station/public/fitness)
@@ -66593,10 +66608,6 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/wood,
 /area/station/service/library)
-"qwq" = (
-/obj/effect/map_effect/marker/mapmanip/submap/insert/station/metastation/engine,
-/turf/simulated/wall,
-/area/station/engineering/break_room)
 "qww" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -69499,12 +69510,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/service/bar)
 "rDe" = (
-/obj/structure/sign/public/pods{
-	pixel_y = 32
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/light/floor,
+/turf/simulated/floor/wood,
+/area/station/service/bar)
 "rDg" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
@@ -119909,10 +119917,10 @@ bqA
 bsp
 bun
 bEv
-bAv
+fvT
 bEv
 bAv
-bEv
+rDe
 bAv
 aPp
 bHO
@@ -121708,10 +121716,10 @@ bqA
 bsp
 bxe
 ewt
-bEv
+rDe
 omK
 omK
-bEv
+rDe
 bEv
 udl
 biW
@@ -122685,7 +122693,7 @@ afH
 khO
 aiL
 ajg
-akT
+gaB
 khy
 alW
 ajg
@@ -122956,7 +122964,7 @@ apW
 cYx
 cYz
 cYG
-aCm
+aPD
 awS
 ayd
 aBN
@@ -123199,7 +123207,7 @@ afH
 khO
 ajj
 ajg
-rDe
+akT
 khy
 aQM
 ajg
@@ -128126,7 +128134,7 @@ tMS
 tMS
 qpO
 qpO
-qwq
+bjN
 hRS
 wEx
 sQg

@@ -7,15 +7,15 @@
 /////////////////////
 
 /datum/mutation/disability
-	name = "DISABILITY"
+	name = "ИНВАЛИДНОСТЬ"
 
 /datum/mutation/disability/can_activate(mob/M, flags)
 	return TRUE // Always set!
 
 /datum/mutation/disability/hallucinate
-	name = "Hallucinate"
-	activation_messages = list("Your mind says 'Hello'.")
-	deactivation_messages = list("Sanity returns. Or does it?")
+	name = "Галлюцинации"
+	activation_messages = list("Ваш разум здоровается с вами!")
+	deactivation_messages = list("Здравый смысл вернулся. Правда ведь?")
 	instability = -GENE_INSTABILITY_MAJOR
 
 /datum/mutation/disability/hallucinate/New()
@@ -27,9 +27,9 @@
 		H.AdjustHallucinate(45 SECONDS)
 
 /datum/mutation/disability/epilepsy
-	name = "Epilepsy"
-	activation_messages = list("You get a headache.")
-	deactivation_messages = list("Your headache is gone, at last.")
+	name = "Эпилепсия"
+	activation_messages = list("Вы ощущаете стойкую головную боль.")
+	deactivation_messages = list("Головная боль наконец прошла.")
 	instability = -GENE_INSTABILITY_MODERATE
 
 /datum/mutation/disability/epilepsy/New()
@@ -38,14 +38,14 @@
 
 /datum/mutation/disability/epilepsy/on_life(mob/living/carbon/human/H)
 	if((prob(1) && !H.IsParalyzed()))
-		H.visible_message(SPAN_DANGER("[H] starts having a seizure!"),SPAN_ALERT("You have a seizure!"))
+		H.visible_message(SPAN_DANGER("Кажется у [H] начался припадок!"),SPAN_ALERT("У вас припадок!"))
 		H.Paralyse(20 SECONDS)
 		H.Jitter(2000 SECONDS)
 
 /datum/mutation/disability/cough
-	name = "Coughing"
-	activation_messages = list("You start coughing.")
-	deactivation_messages = list("Your throat stops aching.")
+	name = "Кашель"
+	activation_messages = list("Вам захотелось прокашляться.")
+	deactivation_messages = list("В горле перестало першить.")
 	instability = -GENE_INSTABILITY_MINOR
 
 /datum/mutation/disability/cough/New()
@@ -58,9 +58,9 @@
 		H.emote("cough")
 
 /datum/mutation/disability/clumsy
-	name = "Clumsiness"
-	activation_messages = list("You feel lightheaded.")
-	deactivation_messages = list("You regain some control of your movements")
+	name = "Неуклюжесть"
+	activation_messages = list("У вас всё валится из рук...")
+	deactivation_messages = list("Вы вернули контроль над своими движениями.")
 	instability = -GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_CLUMSY)
 
@@ -69,9 +69,9 @@
 	block = GLOB.clumsyblock
 
 /datum/mutation/disability/nervousness
-	name = "Nervousness"
-	activation_messages = list("You feel nervous.")
-	deactivation_messages = list("You feel much calmer.")
+	name = "Нервозность"
+	activation_messages = list("Вы нервничаете.")
+	deactivation_messages = list("Вы чувствуете себя намного спокойнее.")
 
 /datum/mutation/disability/nervousness/New()
 	..()
@@ -82,9 +82,9 @@
 		H.Stuttering(20 SECONDS)
 
 /datum/mutation/disability/blindness
-	name = "Blindness"
-	activation_messages = list("You can't seem to see anything.")
-	deactivation_messages = list("You can see now, in case you didn't notice...")
+	name = "Слепота"
+	activation_messages = list("Вы совсем ничего не видите!")
+	deactivation_messages = list("К вам вернулось зрение, если вы не заметили...")
 	instability = -GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_BLIND)
 
@@ -101,9 +101,9 @@
 	M.update_blind_effects()
 
 /datum/mutation/disability/colourblindness
-	name = "Colourblindness"
-	activation_messages = list("You feel a peculiar prickling in your eyes while your perception of colour changes.")
-	deactivation_messages = list("Your eyes tingle unsettlingly, though everything seems to become a lot more colourful.")
+	name = "Дальтонизм"
+	activation_messages = list("Вы ощущаете лёгкое покалывание в глазах, а ваше цветовое восприятие вдруг меняется.")
+	deactivation_messages = list("Ваши глаза неприятно покалывают, впрочем, всё вокруг становится намного красочнее.")
 	instability = -GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_COLORBLIND)
 
@@ -126,9 +126,9 @@
 		H.update_misc_effects()
 
 /datum/mutation/disability/deaf
-	name = "Deafness"
-	activation_messages = list("It's kinda quiet.")
-	deactivation_messages = list("You can hear again!")
+	name = "Глухота"
+	activation_messages = list("Стало как-то тихо.")
+	deactivation_messages = list("Вы вновь можете слышать!")
 	instability = -GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_DEAF)
 
@@ -137,9 +137,9 @@
 	block = GLOB.deafblock
 
 /datum/mutation/disability/nearsighted
-	name = "Nearsightedness"
-	activation_messages = list("Your eyes feel weird...")
-	deactivation_messages = list("You can see clearly now")
+	name = "Близорукость"
+	activation_messages = list("Ваши глаза ощущают себя странно...")
+	deactivation_messages = list("Вы вновь можете чётко видеть.")
 	instability = -GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_NEARSIGHT)
 
@@ -156,23 +156,28 @@
 	M.update_nearsighted_effects()
 
 /datum/mutation/disability/lisp
-	name = "Lisp"
-	desc = "I wonder wath thith doeth."
-	activation_messages = list("Thomething doethn't feel right.")
-	deactivation_messages = list("You now feel able to pronounce consonants.")
+	name = "Шепелявость"
+	desc = "Интерещно, що оно делает?"
+	activation_messages = list("Щто-то тощно не так...")
+	deactivation_messages = list("Вы вновь способны чётко выговаривать слова.")
 
 /datum/mutation/disability/lisp/New()
 	..()
 	block = GLOB.lispblock
 
 /datum/mutation/disability/lisp/on_say(mob/M, message)
-	return replacetext(message,"s","th")
+	message = replacetext(message, "s", "th")
+	message = replacetext(message, "z", "th")
+	message = replacetext(message, "с", "ш")
+	message = replacetext(message, "з", "ж")
+	message = replacetext(message, "ч", "щ")
+	return message
 
 /datum/mutation/disability/comic
-	name = "Comic"
-	desc = "This will only bring death and destruction."
-	activation_messages = list(SPAN_SANS("Uh oh!"))
-	deactivation_messages = list("Well thank god that's over with.")
+	name = "Комик"
+	desc = "Это приведёт лишь к смертям и разрушению."
+	activation_messages = list(SPAN_SANS("Ой ой!"))
+	deactivation_messages = list("Слава богу это закончилось.")
 	traits_to_add = list(TRAIT_COMIC_SANS)
 
 /datum/mutation/disability/comic/New()
@@ -180,10 +185,10 @@
 	block = GLOB.comicblock
 
 /datum/mutation/disability/wingdings
-	name = "Alien Voice"
-	desc = "Garbles the subject's voice into an incomprehensible speech."
-	activation_messages = list("<span class='wingdings'>Your vocal cords feel alien.</span>")
-	deactivation_messages = list("Your vocal cords no longer feel alien.")
+	name = "Чужеродная речь"
+	desc = "Искажает голос собеседника, превращая его в непонятную речь."
+	activation_messages = list("<span class='wingdings'>Ваши голосовые связки кажутся чужеродными.</span>")
+	deactivation_messages = list("Ваши голосовые связки утратили возможность говорить чужеродно.")
 	instability = -GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_WINGDINGS)
 
@@ -213,10 +218,10 @@
 
 // WAS: /datum/bioEffect/mute
 /datum/mutation/disability/mute
-	name = "Mute"
-	desc = "Completely shuts down the speech center of the subject's brain."
-	activation_messages = list("You feel unable to express yourself at all.")
-	deactivation_messages = list("You feel able to speak freely again.")
+	name = "Немота"
+	desc = "Полностью отключает речевой центр в мозге испытуемого."
+	activation_messages = list("Вы совершенно не способны выразить свои мысли словами.")
+	deactivation_messages = list("Вы вновь в состоянии говорить свободно.")
 	instability = -GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_MUTE)
 
@@ -228,10 +233,10 @@
 	return ""
 
 /datum/mutation/disability/paraplegic
-	name = "Paraplegic"
-	desc = "Your legs don't work, even with prosthetics."
-	activation_messages = list("MY LEG!")
-	deactivation_messages = list("You can feel your legs again.")
+	name = "Паралич"
+	desc = "Ваши ноги отказываются работать, даже протезы."
+	activation_messages = list("МОИ НОГИ!")
+	deactivation_messages = list("Вы вновь можете чувствовать свои ноги.")
 	instability = -GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_PARAPLEGIC)
 
@@ -244,10 +249,10 @@
 ////////////////////////////////////////
 
 /datum/mutation/disability/radioactive
-	name = "Radioactive"
-	desc = "The subject suffers from constant radiation sickness and causes the same on nearby organics."
-	activation_messages = list("You feel a strange sickness permeate your whole body.")
-	deactivation_messages = list("You no longer feel awful and sick all over.")
+	name = "Радиоактивность"
+	desc = "Обследуемый страдает от постоянной лучевой болезни и заражает находящуюся рядом органику."
+	activation_messages = list("Вы ощущаете странное болезненное ощущение, что пронизывает ваше тело.")
+	deactivation_messages = list("Вы более не чувствуете себя так отвратно и болезненно как раньше.")
 	instability = -GENE_INSTABILITY_MAJOR
 
 /datum/mutation/disability/radioactive/New()
@@ -276,10 +281,10 @@
 
 // WAS: /datum/bioEffect/fat
 /datum/mutation/disability/fat
-	name = "Obesity"
-	desc = "Greatly slows the subject's metabolism, enabling greater buildup of lipid tissue."
-	activation_messages = list("You feel blubbery and lethargic!")
-	deactivation_messages = list("You feel fit!")
+	name = "Ожирение"
+	desc = "Значительно замедляет метаболизм, что приводит к большему накоплению жиров в теле."
+	activation_messages = list("Вы чувствуете себя упитанным и вялым!")
+	deactivation_messages = list("Вы пришли в форму!")
 	traits_to_add = list(TRAIT_SLOWDIGESTION)
 
 /datum/mutation/disability/fat/New()
@@ -288,80 +293,134 @@
 
 // WAS: /datum/bioEffect/chav
 /datum/mutation/disability/speech/chav
-	name = "Chav"
-	desc = "Forces the language center of the subject's brain to construct sentences in a more rudimentary manner."
-	activation_messages = list("Ye feel like a rite prat like, innit?")
-	deactivation_messages = list("You no longer feel like being rude and sassy.")
+	name = "Вульгарщина"
+	desc = "Заставляет языковой центр мозга испытуемого строить предложения более примитивным образом."
+	activation_messages = list("Чё-то ты внатуре тупишь, не?")
+	deactivation_messages = list("Вы унимаете свою дерзость и грубое отношение к окружающим.")
 	traits_to_add = list(TRAIT_CHAV)
 	//List of swappable words. Normal word first, chav word second.
 	var/static/list/chavlinks = list(
-	"arrest" = "nick",
-	"arrested" = "nicked",
-	"ass" = "arse",
-	"bad" = "pants",
-	"bar" = "spoons",
-	"brain" = "noggin",
-	"break" = "smash",
-	"broke" = "smashed",
-	"broken" = "gone kaput",
-	"comdom" = "knob'ed",
-	"cool" = "ace",
-	"crazy" = "well mad",
-	"cup of tea" = "cuppa",
-	"destroyed" = "rekt",
-	"dick" = "prat",
-	"disappointed" = "gutted",
-	"disgusting" = "minging",
-	"disposals" = "bins",
-	"drink" = "bevvy",
-	"engineer" = "sparky",
-	"excited" = "jacked",
-	"fight" = "scuffle",
-	"food" = "nosh",
-	"friend" = "blud",
-	"fuck" = "fook",
-	"get" = "giz",
-	"girl" = "bird",
-	"go away" = "jog on",
-	"good" = "mint",
-	"great" = "bangin'",
-	"happy" = "chuffed",
-	"hello" = "orite",
-	"hi" = "sup",
-	"idiot" = "twit",
-	"isn't it" = "innit",
-	"kill" = "bang",
-	"killed" = "banged",
-	"man" = "bloke",
-	"mess" = "shambles",
-	"mistake" = "cock-up",
-	"murder" = "hench",
-	"murdered" = "henched",
-	"no" = "naw",
-	"really" = "propa",
-	"robust" = "'ard",
-	"run" = "leg it",
-	"sec" = "cops",
-	"security" = "coppers",
-	"silly" = "daft",
-	"steal" = "nick",
-	"stole" = "nicked",
-	"surprised" = "gobsmacked",
-	"suspicious" = "dodgy",
-	"tired" = "knackered",
-	"wet" = "moist",
-	"what" = "wot",
-	"window" = "windy",
-	"windows" = "windies",
-	"yes" = "ye",
-	"yikes" = "blimey",
-	"your" = "yur"
+		"арест" = "на нары",
+		"арестован" = "за решеткой",
+		"жопа" = "срака",
+		"плохой" = "фиговый",
+		"бар" = "кабак",
+		"мозг" = "котелок",
+		"сломать" = "въебать",
+		"сломан" = "въёбан",
+		"сломанный" = "въёбанный",
+		"врач" = "док",
+		"класс" = "огонь",
+		"классный" = "огонь",
+		"псих" = "шизанутый",
+		"пиво" = "пивас",
+		"уничтожен" = "крякнут",
+		"придурок" = "мудила",
+		"разочарован" = "убит",
+		"мерзкий" = "блевотный",
+		"мерзко" = "блевотно",
+		"мусорка" = "свалка",
+		"выпить" = "бухнуть",
+		"инженер" = "технарь",
+		"инженера" = "технаря",
+		"инженеры" = "технари",
+		"инженеров" = "технарей",
+		"взволнован" = "на взводе",
+		"драка" = "махач",
+		"слабый" = "соплячок",
+		"слабак" = "сопляк",
+		"еда" = "жратва",
+		"кушать" = "жрать",
+		"супер" = "отпад",
+		"друг" = "кореш",
+		"враг" = "чмырь",
+		"лицо" = "морда",
+		"эй" = "слыш",
+		"человек" = "чувак",
+		"люди" = "чуваки",
+		"таяра" = "котяра",
+		"вульпканин" = "дворняга",
+		"вульпа" = "псина",
+		"скрелл" = "жаба",
+		"унатх" = "крокодил",
+		"слайм" = "жидкий",
+		"вокс" = "курица",
+		"драск" = "кальмар",
+		"серый" = "яйцеголовый",
+		"дионея" = "бревно",
+		"диона" = "куст",
+		"кпб" = "консерва",
+		"робот" = "микроволновка",
+		"борг" = "рухлядь",
+		"кидан" = "жучара",
+		"ниан" = "слепень",
+		"нуклеация" = "свечка",
+		"гбс" = "гадюка",
+		"скулакин" = "паукан",
+		"сккулакин" = "паучара",
+		"отдай" = "гони",
+		"девушка" = "крошка",
+		"выйди" = "свали",
+		"хорошо" = "нормас",
+		"отлично" = "четко",
+		"радуется" = "лыбится",
+		"счастлив" = "на кайфе",
+		"грустный" = "в тоске",
+		"испуган" = "на измене",
+		"привет" = "йоу",
+		"деньги" = "бабки",
+		"дом" = "хата",
+		"офицер" = "ментура",
+		"кадет" =  "щенок",
+		"варден" = "вертухай",
+		"гсб" = "начальник",
+		"хос" = "управитель",
+		"идиот" = "тупица",
+		"убить" = "замочить",
+		"убил" = "замочил",
+		"убила" = "замочила",
+		"убили" = "замочили",
+		"убит" = "грохнут",
+		"ударить" = "втащить",
+		"ударю" = "втащу",
+		"ударил" = "втащил",
+		"убежать" = "свалить",
+		"парень" = "мужик",
+		"беспорядок" = "срач",
+		"ошибка" = "косяк",
+		"нет" = "неа",
+		"реально" = "внатуре",
+		"крутой" = "ровный",
+		"бежать" = "драпать",
+		"сб" = "менты",
+		"служба" = "прислуга",
+		"глупый" = "отсталый",
+		"воровать" = "тырить",
+		"украл" = "стырил",
+		"удивлен" = "обалдел",
+		"подозрительный" = "мутный",
+		"устал" = "заманался",
+		"влажный" = "сырой",
+		"что" = "че",
+		"преступник" = "фраер",
+		"преступление" = "мокруха",
+		"да" = "дэ",
+		"емае" = "епта",
+		"обыск" = "шмон",
+		"обыскивал" = "шмонал",
+		"обыскивала" = "шмонала",
+		"обыскивали" = "шмонали",
+		"обыскивать" = "шмонать",
+		"пока" = "бывай",
+		"сигареты" = "курево",
+		"сигары" = "сигарчухи"
 	)
 
 /datum/mutation/disability/speech/chav/New()
 	..()
 	block = GLOB.chavblock
 
+/* SS220 EDIT START - Отключен для работоспособности переведенного гена в модуле
 /datum/mutation/disability/speech/chav/on_say(mob/M, message)
 	var/static/regex/R = regex("\\b([chavlinks.Join("|")])\\b", "g")
 	message = R.Replace(message, /datum/mutation/disability/speech/chav/proc/replace_speech)
@@ -370,13 +429,14 @@
 /datum/mutation/disability/speech/chav/proc/replace_speech(matched)
 	REGEX_REPLACE_HANDLER
 	return chavlinks[matched]
+SS220 EDIT END */
 
 // WAS: /datum/bioEffect/swedish
 /datum/mutation/disability/speech/swedish
-	name = "Swedish"
-	desc = "Forces the language center of the subject's brain to construct sentences in a vaguely norse manner."
-	activation_messages = list("You feel Swedish, however that works.")
-	deactivation_messages = list("The feeling of Swedishness passes.")
+	name = "Горный акцент"
+	desc = "Заставляет языковой центр мозга испытуемого строить предложения в манере, отдаленно напоминающий горное наречие."
+	activation_messages = list("В вашем наречии стало преобладать нечто горное, что бы это ни значило.")
+	deactivation_messages = list("Ваша разгоряченность горным акцентом начала спадать.")
 
 /datum/mutation/disability/speech/swedish/New()
 	..()
@@ -384,27 +444,31 @@
 
 /datum/mutation/disability/speech/swedish/on_say(mob/living/M, message)
 	// svedish
-	message = replacetextEx(message,"W","V")
-	message = replacetextEx(message,"w","v")
-	message = replacetextEx(message,"J","Y")
-	message = replacetextEx(message,"j","y")
-	message = replacetextEx(message,"A",pick("Å","Ä","Æ","A"))
-	message = replacetextEx(message,"a",pick("å","ä","æ","a"))
-	message = replacetextEx(message,"BO","BJO")
-	message = replacetextEx(message,"Bo","Bjo")
-	message = replacetextEx(message,"bo","bjo")
-	message = replacetextEx(message,"O",pick("Ö","Ø","O"))
-	message = replacetextEx(message,"o",pick("ö","ø","o"))
+	message = replacetextEx(message,"Ц","Тс")
+	message = replacetextEx(message,"ц","тс")
+	message = replacetextEx(message,"Е","Э")
+	message = replacetextEx(message,"е","э")
+	message = replacetextEx(message,"Эй","Лее")
+	message = replacetextEx(message,"ь","и")
+	message = replacetextEx(message,"ъ","ы")
+	message = replacetextEx(message,"Ч","Тщ")
+	message = replacetextEx(message,"ч","тщ")
+	message = replacetextEx(message,"ё","йо")
+	message = replacetextEx(message,"Ё","Йо")
+	message = replacetextEx(message,"Ш","Щ")
+	message = replacetextEx(message,"ш","щ")
+	message = replacetextEx(message,"сь","с")
+	message = replacetextEx(message,"и","ы")
 	if(prob(30) && !M.is_muzzled() && !M.is_facehugged())
-		message += " Bork[pick("",", bork",", bork, bork")]!"
+		message += " Дап[pick("", ", дап", ", дап, дап")]!"
 	return message
 
 // WAS: /datum/bioEffect/unintelligable
 /datum/mutation/disability/unintelligable
-	name = "Unintelligable"
-	desc = "Heavily corrupts the part of the brain responsible for forming spoken sentences."
-	activation_messages = list("You can't seem to form any coherent thoughts!")
-	deactivation_messages = list("Your mind feels more clear.")
+	name = "Неразборчивость"
+	desc = "Серьезно повреждает ту часть мозга, которая отвечает за формирование устных предложений."
+	activation_messages = list("Вы, кажется, и двух слов нормально связать не можете!")
+	deactivation_messages = list("Вы вновь можете внятно доносить свою мысль.")
 	instability = -GENE_INSTABILITY_MINOR
 
 /datum/mutation/disability/unintelligable/New()
@@ -441,10 +505,10 @@
 // WAS: /datum/bioEffect/strong
 /datum/mutation/disability/strong
 	// pretty sure this doesn't do jack shit, putting it here until it does
-	name = "Strong"
-	desc = "Enhances the subject's ability to build and retain heavy muscles."
-	activation_messages = list("You feel buff!")
-	deactivation_messages = list("You feel wimpy and weak.")
+	name = "Нарциссизм"
+	desc = "Заставляет носителя думать, что ему всё по плечу, когда на деле является лишь эффектом плацебо."
+	activation_messages = list("Вы ощущаете прилив сил! Наверное...")
+	deactivation_messages = list("Вы чувствуете себя слабым и хилым, впрочем как и раньше.")
 
 /datum/mutation/disability/strong/New()
 	..()
@@ -452,10 +516,10 @@
 
 // WAS: /datum/bioEffect/horns
 /datum/mutation/disability/horns
-	name = "Horns"
-	desc = "Enables the growth of a compacted keratin formation on the subject's head."
-	activation_messages = list("A pair of horns erupt from your head.")
-	deactivation_messages = list("Your horns crumble away into nothing.")
+	name = "Рога"
+	desc = "Способствует росту плотного кератинового образования на голове пациента."
+	activation_messages = list("На вашей голове вдруг выросла пара рогов.")
+	deactivation_messages = list("Ваши рога отваливаются и рассыпаются в пыль.")
 
 /datum/mutation/disability/horns/New()
 	..()
@@ -465,10 +529,10 @@
 	return "horns_s"
 
 /datum/mutation/grant_spell/immolate
-	name = "Incendiary Mitochondria"
-	desc = "The subject becomes able to convert excess cellular energy into thermal energy."
-	activation_messages = list("You suddenly feel rather hot.")
-	deactivation_messages = list("You no longer feel uncomfortably hot.")
+	name = "Зажигательные митохондрии"
+	desc = "У носителя появляется способность преобразовывать избыточную клеточную энергию в тепловую."
+	activation_messages = list("Внезапно вам стало довольно жарко.")
+	deactivation_messages = list("Вы больше не чувствуете несвойственную жару.")
 	spelltype = /datum/spell/immolate
 
 /datum/mutation/grant_spell/immolate/New()
@@ -476,8 +540,8 @@
 	block = GLOB.immolateblock
 
 /datum/spell/immolate
-	name = "Incendiary Mitochondria"
-	desc = "The subject becomes able to convert excess cellular energy into thermal energy."
+	name = "Самовоспламенение"
+	desc = "Поджигает ваше тело. Удобно, чтобы поджечь, помимо себя, сигарету или неприятеля."
 
 	base_cooldown = 600
 
@@ -492,15 +556,15 @@
 /datum/spell/immolate/cast(list/targets, mob/living/user = usr)
 	var/mob/living/carbon/L = user
 	L.adjust_fire_stacks(0.5)
-	L.visible_message(SPAN_DANGER("[L.name]</b> suddenly bursts into flames!"))
+	L.visible_message(SPAN_DANGER("[L.declent_ru(NOMINATIVE)]</b> внезапно вспыхивает ярким пламенем!"))
 	L.IgniteMob()
 	playsound(L.loc, 'sound/effects/bamf.ogg', 50, 0)
 
 /datum/mutation/disability/speech/loud
-	name = "Loud"
-	desc = "Forces the speaking centre of the subjects brain to yell every sentence."
-	activation_messages = list("YOU FEEL LIKE YELLING!")
-	deactivation_messages = list("You feel like being quiet..")
+	name = "Крикун"
+	desc = "Заставляет центр речи в мозге испытуемого выкрикивать каждое предложение."
+	activation_messages = list("ВАМ ХОЧЕТСЯ КРИЧАТЬ!")
+	deactivation_messages = list("Вам хочется побыть в тишине...")
 
 /datum/mutation/disability/speech/loud/New()
 	..()
@@ -515,10 +579,10 @@
 	return uppertext(message)
 
 /datum/mutation/disability/dizzy
-	name = "Dizzy"
-	desc = "Causes the cerebellum to shut down in some places."
-	activation_messages = list("You feel very dizzy...")
-	deactivation_messages = list("You regain your balance.")
+	name = "Головокружение"
+	desc = "Вызывает в некоторых местах отключение мозжечка."
+	activation_messages = list("Вы чувствуете сильное головокружение...")
+	deactivation_messages = list("Вы восстанавливаете равновесие.")
 	instability = -GENE_INSTABILITY_MODERATE
 
 /datum/mutation/disability/dizzy/New()

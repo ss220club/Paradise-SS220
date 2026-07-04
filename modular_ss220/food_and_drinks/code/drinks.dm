@@ -678,7 +678,7 @@
 	list_reagents = list("kvass" = 50)
 
 /obj/machinery/chem_dispenser/soda/Initialize(mapload)
-	dispensable_reagents += "kvass"
+	dispensable_reagents += list("kvass", "caramel")
 	return ..()
 
 /obj/item/handheld_chem_dispenser/soda/Initialize(mapload)
@@ -1038,3 +1038,183 @@
 /obj/machinery/economy/vending/boozeomat/Initialize(mapload)
 	products += list(/obj/item/reagent_containers/drinks/bottle/carrotjuice = 2)
 	return ..()
+
+/datum/reagent/consumable/drink/bumble
+	name = "Bumble"
+	id = "bumble"
+	description = "Эспрессо с апельсином, карамелью и льдом."
+	color = "#d39340"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "bumble"
+	drink_name = "Bumble"
+	drink_desc = "Это сок или кофе? или сок с кофе.."
+	harmless = FALSE
+	taste_description = "карамель, апельсин.. кофе?"
+
+/datum/chemical_reaction/bumble
+	name = "Bumble"
+	id = "bumble"
+	result = "bumble"
+	required_reagents = list("caramel" = 1, "ice" = 2, "orangejuice" = 5, "coffee" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/chemical_reaction/bumble/cooling_reaction_bumble_through_temp
+	id = "cold_bumble_through_temp"
+	required_reagents = list("hot_bumble" = 1)
+	result_amount = 1
+	max_temp = T20C
+
+/datum/reagent/consumable/drink/bumble/hot
+	name = "Hot bumble"
+	id = "hot_bumble"
+	description = "Горячий эспрессо с апельсином и карамелью."
+	color = "#b9702c"
+	drink_icon = "hot_bumble"
+	drink_name = "Hot bumble"
+	drink_desc = "Похоже на торт с апельсином, но почему там кофе?.."
+	taste_description = "апельсин"
+
+/datum/chemical_reaction/bumble/hot
+	name = "Hot bumble"
+	id = "hot_bumble"
+	result = "hot_bumble"
+	required_reagents = list("bumble" = 5)
+	min_temp = T0C + 100
+
+/datum/reagent/consumable/drink/espresso_tonic
+	name = "Espresso tonic"
+	id = "espresso_tonic"
+	description = "Эспрессо с лаймом и льдом."
+	color = "#a03c1e"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "espresso_tonic"
+	drink_name = "Espresso tonic"
+	drink_desc = "Что-то горькое, но так освежает"
+	harmless = FALSE
+	taste_description = "газировка, лайм и кофе"
+
+/datum/chemical_reaction/espresso_tonic
+	name = "Espresso tonic"
+	id = "espresso_tonic"
+	result = "espresso_tonic"
+	required_reagents = list("ice" = 1, "limejuice" = 1, "coffee" = 1, "tonic" = 5)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/drink/grape_tonic
+	name = "Grape tonic"
+	id = "grape_tonic"
+	description = "Тоник с грейпфрутом, кофе и льдом."
+	color = "#dd89d9"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "grape_tonic"
+	drink_name = "Grape tonic"
+	drink_desc = "Газировка, виноград и кофе"
+	harmless = FALSE
+	taste_description = "на вкус как бодрящая виноградная жвачка"
+
+/datum/chemical_reaction/grape_tonic
+	name = "Grape tonic"
+	id = "grape_tonic"
+	result = "grape_tonic"
+	required_reagents = list("ice" = 1, "grapejuice" = 1, "coffee" = 1, "tonic" = 2)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/drink/raf
+	name = "Raf"
+	id = "raf"
+	description = "Эспрессо со сливками."
+	color = "#d1a95e"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "raf"
+	drink_name = "Raf"
+	drink_desc = "Сливки и кофе"
+	harmless = FALSE
+	taste_description = "мягкий кофейный напиток"
+
+/datum/chemical_reaction/raf
+	name = "Raf"
+	id = "raf"
+	result = "raf"
+	required_reagents = list("coffee" = 1, "cream" = 2)
+	result_amount = 3
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/drink/raf/cold
+	name = "Cold raf"
+	id = "cold_raf"
+	description = "Mороженое и кофе."
+	color = "#d1a95e"
+	drink_icon = "cold_raf"
+	drink_name = "Cold raf"
+	drink_desc = "Сливки и кофе"
+	taste_description = "самое то в такую жаркую обстановку"
+
+/datum/chemical_reaction/raf/cooling_reaction_raf_through_temp
+	name = "Cold raf"
+	id = "cold_raf"
+	result = "cold_raf"
+	required_reagents = list("raf" = 1)
+	max_temp = T0C + 14
+
+/datum/chemical_reaction/raf/heating_reaction_raf_through_temp
+	name = "Heat raf"
+	id = "heat_raf"
+	required_reagents = list("cold_raf" = 1)
+	min_temp = T0C + 15
+
+/datum/reagent/consumable/drink/lemonade_fusion
+	name = "Lemonade fusion"
+	id = "lemonade_fusion"
+	description = "Освежающий фруктовый лимонад."
+	color = "#f0e8a3"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "lemonade_fusion"
+	drink_name = "Lemonade fusion"
+	drink_desc = "Ягоды, апельсин, газировка"
+	taste_description = "вкусно, но не понимаю, может мне не хватает здесь алкоголя?"
+
+/datum/chemical_reaction/lemonade_fusion
+	name = "Lemonade fusion"
+	id = "lemonade_fusion"
+	result = "lemonade_fusion"
+	required_reagents = list("ice" = 1, "tonic" = 1, "orangejuice" = 1, "berryjuice" = 1)
+	result_amount = 4
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/drink/pineapple_cream
+	name = "Pineapple cream"
+	id = "pineapple_cream"
+	description = "Ананас под сливками."
+	color = "#f5e0a8"
+	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
+	drink_icon = "pineapple_cream"
+	drink_name = "Pineapple cream"
+	drink_desc = "Cливки и ананас"
+	taste_description = "и где мой кокос?"
+
+/datum/chemical_reaction/pineapple_cream
+	name = "Pineapple cream"
+	id = "pineapple_cream"
+	result = "pineapple_cream"
+	required_reagents = list("ice" = 1, "cream" = 2, "pineapplejuice" = 2)
+	result_amount = 4
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/caramel
+	name = "Caramel"
+	id = "caramel"
+	reagent_state = LIQUID
+	color = "#965c26"
+	taste_description = "карамель"
+	taste_flag = ORGANIC
+	process_flags = ORGANIC
+	taste_mult = 1.5
+
+/datum/reagent/consumable/drink/ice
+	reagent_temperature = T0C - 15
+
+/datum/chemical_reaction/water
+	min_temp = T0C + 1
