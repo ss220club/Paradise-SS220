@@ -64,7 +64,6 @@ GLOBAL_DATUM(main_fission_reactor, /obj/machinery/atmospherics/fission_reactor)
 
 ///Global list for descriptors
 // SS220 EDIT START - Translated to RU
-// Поменял  данные в массиве с "костлявым", "хрупким", "худощавым", "сухим", "долговязым", "потрёпанным", "обычным", "стройным", "подтянутым", "крепким", "мускулистым", "атлетичным", "рельефным", "пухлым", "разжиревшим" на PHYSIQUE_SKINNY, PHYSIQUE_FRAGILE, PHYSIQUE_SLIM, PHYSIQUE_DRY, PHYSIQUE_LANKY, PHYSIQUE_WORN, PHYSIQUE_AVERAGE, PHYSIQUE_LEAN, PHYSIQUE_FIT, PHYSIQUE_STOCKY, PHYSIQUE_MUSCULAR, PHYSIQUE_ATHLETIC, PHYSIQUE_RIPPED, PHYSIQUE_PLUMP, PHYSIQUE_FAT и "карликового", "крайне низкого", "низкого", "обычного", "высокого", "очень высокого", "гигантского" на HEIGHT_DWARF, HEIGHT_VERY_SHORT, HEIGHT_SHORT, HEIGHT_AVERAGE, HEIGHT_TALL, HEIGHT_VERY_TALL, HEIGHT_GIANT соответственное
 /// Physique defines
 #define PHYSIQUE_SKINNY        "костлявым"
 #define PHYSIQUE_FRAGILE       "хрупким"
