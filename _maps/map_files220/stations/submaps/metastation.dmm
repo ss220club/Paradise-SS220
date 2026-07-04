@@ -182,11 +182,6 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
-"br" = (
-/obj/structure/closet/radiation,
-/obj/machinery/light/directional/south,
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "bu" = (
 /obj/structure/sign/poster/official/random/directional/south,
 /turf/simulated/floor/plasteel/reactor_pool,
@@ -469,6 +464,10 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
+"fz" = (
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
 "fI" = (
 /obj/structure/table/reinforced,
 /obj/machinery/kitchen_machine/microwave{
@@ -704,6 +703,7 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/machinery/economy/vending/wallmed/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
 "hQ" = (
@@ -1430,7 +1430,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
 "pK" = (
-/obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
@@ -2804,11 +2803,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
-"DH" = (
-/obj/structure/closet/radiation,
-/obj/machinery/light/directional/south,
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/engine/reactor)
 "DI" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3245,10 +3239,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/engine/reactor)
 "IO" = (
-/obj/machinery/economy/vending/wallmed/directional/north,
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine_foyer)
 "IP" = (
@@ -3702,6 +3696,10 @@
 	dir = 9
 	},
 /turf/simulated/floor/engine,
+/area/station/engineering/engine/reactor)
+"Ov" = (
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel/dark,
 /area/station/engineering/engine/reactor)
 "Ow" = (
 /obj/structure/cable{
@@ -5464,7 +5462,7 @@ Lm
 Lm
 SL
 SL
-DH
+SL
 PQ
 fY
 Rt
@@ -5564,7 +5562,7 @@ yM
 sr
 na
 Lm
-Lm
+Ov
 Lm
 Lm
 PQ
@@ -9340,7 +9338,7 @@ KI
 lH
 Ya
 Ya
-br
+Ya
 AZ
 fY
 Rt
@@ -9440,7 +9438,7 @@ Qr
 EP
 Bl
 Cq
-Cq
+fz
 Cq
 Cq
 AZ
