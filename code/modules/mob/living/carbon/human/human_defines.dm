@@ -34,9 +34,10 @@
 	var/height = HEIGHT_AVERAGE
 	/// Players physique (even MORE fluff)
 	var/physique = PHYSIQUE_AVERAGE
+	// SS220 EDIT END
 	/// The body type associated with the body
 	var/body_type = MALE
-	// SS220 EDIT END
+	
 	var/underwear = "Nude"	//Which underwear the player wants
 	var/undershirt = "Nude"	//Which undershirt the player wants
 	var/socks = "Nude" //Which socks the player wants
