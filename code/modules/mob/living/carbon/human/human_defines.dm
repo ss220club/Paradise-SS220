@@ -29,7 +29,7 @@
 	var/lip_color = "white"
 
 	var/age = 30		//Player's age (pure fluff)
-	// SS220 EDIT START
+	// SS220 EDIT START поменял "обычного" и "обычным" на дефайны HEIGHT_AVERAGE и PHYSIQUE_AVERAGE соответственное
 	/// Players' height (more fluff)
 	var/height = HEIGHT_AVERAGE
 	/// Players physique (even MORE fluff)

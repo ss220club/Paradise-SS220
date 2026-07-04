@@ -81,12 +81,12 @@
 
 	var/nanotrasen_relation = "Neutral"
 
-	// SS220 EDIT START
+	// SS220 EDIT START поменял "обычного" и "обычным" на дефайны HEIGHT_AVERAGE и PHYSIQUE_AVERAGE соответственное
 	var/physique = PHYSIQUE_AVERAGE
 
 	var/height = HEIGHT_AVERAGE
 	// SS220 EDIT END
-	
+
 	// OOC Metadata:
 	var/metadata = ""
 
