@@ -80,10 +80,13 @@
 	var/disabilities = 0
 
 	var/nanotrasen_relation = "Neutral"
+
 	// SS220 EDIT START
 	var/physique = PHYSIQUE_AVERAGE
+
 	var/height = HEIGHT_AVERAGE
 	// SS220 EDIT END
+	
 	// OOC Metadata:
 	var/metadata = ""
 
