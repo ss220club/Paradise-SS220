@@ -1116,7 +1116,9 @@
 /area/station/engineering/control)
 "mm" = (
 /obj/effect/map_effect/dynamic_airlock,
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small/directional/east{
+	dir = 2
+	},
 /turf/simulated/floor/plating,
 /area/station/engineering/engine/reactor)
 "mq" = (
@@ -1695,7 +1697,9 @@
 /obj/structure/sign/vacuum/external{
 	pixel_x = -32
 	},
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small/directional/west{
+	dir = 2
+	},
 /turf/simulated/floor/plating,
 /area/station/engineering/engine/reactor)
 "rS" = (
@@ -2514,6 +2518,11 @@
 /obj/structure/sign/fire,
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/turbine)
+"zy" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/closet/crate/engineering/particle_accelerator,
+/turf/simulated/floor/plating,
+/area/station/engineering/control)
 "zN" = (
 /obj/effect/turf_decal/trimline/misc/toxins/line{
 	dir = 8
@@ -3076,6 +3085,11 @@
 "Fd" = (
 /obj/effect/turf_decal/tiles/department/engineering/side,
 /turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
+"Fe" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/closet/crate/engineering/collector,
+/turf/simulated/floor/plating,
 /area/station/engineering/control)
 "FD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -6190,7 +6204,7 @@ Ij
 pI
 uN
 uN
-me
+Fe
 EO
 EO
 cD
@@ -8040,7 +8054,7 @@ Ij
 pI
 uN
 uN
-me
+zy
 EO
 EO
 cD
@@ -8077,8 +8091,8 @@ QZ
 pI
 uN
 Ps
-me
-me
+Fe
+Fe
 me
 me
 me

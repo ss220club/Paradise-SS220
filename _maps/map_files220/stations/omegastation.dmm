@@ -23604,6 +23604,11 @@
 /obj/item/ai_module/crewsimov,
 /turf/simulated/floor/plasteel/dark,
 /area/station/turret_protected/ai_upload)
+"czR" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/closet/crate/engineering/collector,
+/turf/simulated/floor/plating,
+/area/station/engineering/control)
 "cBS" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -24366,6 +24371,9 @@
 /obj/machinery/navbeacon{
 	codes_txt = "delivery";
 	location = "Atmosferic"
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/mule_bot{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -35883,7 +35891,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/directional/south,
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
@@ -45332,6 +45339,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/item/radio/intercom/directional/south,
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
 "sbm" = (
@@ -73044,7 +73052,7 @@ cRN
 nWm
 tCw
 tCw
-asi
+czR
 wai
 wai
 esZ
