@@ -28,7 +28,12 @@ export const pda_ai_comm = (props) => {
               {esc_recallable ? (
                 <Button icon="times" content="Recall Shuttle" onClick={() => act('cancelshuttle')} />
               ) : (
-                <Button icon="rocket" content="Call Shuttle" disabled={!esc_callable} onClick={() => act('callshuttle')} />
+                <Button
+                  icon="rocket"
+                  content="Call Shuttle"
+                  disabled={!esc_callable}
+                  onClick={() => act('callshuttle')}
+                />
               )}
             </LabeledList.Item>
           </LabeledList>
@@ -40,37 +45,28 @@ export const pda_ai_comm = (props) => {
         <Section title="Command Actions">
           <LabeledList>
             <LabeledList.Item label="Current Security Level">
-              <Box color={data.current_level_color || "red"}>
-                {data.current_level_name || "Unknown"}
-              </Box>
+              <Box color={data.current_level_color || 'red'}>{data.current_level_name || 'Unknown'}</Box>
             </LabeledList.Item>
             <LabeledList.Item label="Change Security Level">
               <Box>
-                {alert_levels && alert_levels.map((slevel) => (
-                  <Button
-                    key={slevel.id}
-                    icon={slevel.icon}
-                    content={slevel.name}
-                    selected={slevel.id === current_alert}
-                    disabled={slevel.id === current_alert}
-                    onClick={() => act('newalertlevel', { level: slevel.id })}
-                  />
-                ))}
+                {alert_levels &&
+                  alert_levels.map((slevel) => (
+                    <Button
+                      key={slevel.id}
+                      icon={slevel.icon}
+                      content={slevel.name}
+                      selected={slevel.id === current_alert}
+                      disabled={slevel.id === current_alert}
+                      onClick={() => act('newalertlevel', { level: slevel.id })}
+                    />
+                  ))}
               </Box>
             </LabeledList.Item>
             <LabeledList.Item label="Announcement">
-              <Button
-                icon="bullhorn"
-                content="Make Station Announcement"
-                onClick={() => act('ai_announce')}
-              />
+              <Button icon="bullhorn" content="Make Station Announcement" onClick={() => act('ai_announce')} />
             </LabeledList.Item>
             <LabeledList.Item label="Transmit">
-              <Button
-                icon="broadcast-tower"
-                content="Message CentComm"
-                onClick={() => act('MessageCentcomm')}
-              />
+              <Button icon="broadcast-tower" content="Message CentComm" onClick={() => act('MessageCentcomm')} />
             </LabeledList.Item>
           </LabeledList>
         </Section>

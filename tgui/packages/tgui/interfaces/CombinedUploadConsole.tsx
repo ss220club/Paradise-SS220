@@ -32,15 +32,7 @@ type CombinedUploadData = {
 
 export const CombinedUploadConsole = () => {
   const { data, act } = useBackend<CombinedUploadData>();
-  const {
-    upload_mode,
-    emagged,
-    current_uid,
-    current_name,
-    current_alive,
-    ai_list,
-    borg_list,
-  } = data;
+  const { upload_mode, emagged, current_uid, current_name, current_alive, ai_list, borg_list } = data;
 
   return (
     <Window title="Консоль аплоуда силиконов" width={440} height={520}>
@@ -64,11 +56,7 @@ export const CombinedUploadConsole = () => {
           {/* Текущая цель */}
           {upload_mode !== MODE_NONE && (
             <Stack.Item>
-              <TargetDisplay
-                current_name={current_name}
-                current_alive={current_alive}
-                act={act}
-              />
+              <TargetDisplay current_name={current_name} current_alive={current_alive} act={act} />
             </Stack.Item>
           )}
 
@@ -88,12 +76,7 @@ export const CombinedUploadConsole = () => {
           {/* Пустое состояние */}
           {upload_mode === MODE_NONE && (
             <Stack.Item grow>
-              <Box
-                height="100%"
-                textAlign="center"
-                color="label"
-                mt={8}
-              >
+              <Box height="100%" textAlign="center" color="label" mt={8}>
                 <Icon name="satellite-dish" size={3} mb={2} />
                 <br />
                 Выберите режим работы консоли
@@ -150,38 +133,23 @@ type TargetDisplayProps = {
   act: Function;
 };
 
-const TargetDisplay = ({
-  current_name,
-  current_alive,
-  act,
-}: TargetDisplayProps) => (
+const TargetDisplay = ({ current_name, current_alive, act }: TargetDisplayProps) => (
   <Section title="Выбранная цель">
     {current_name ? (
       <Stack align="center">
         <Stack.Item grow>
           <LabeledList>
             <LabeledList.Item label="Цель">
-              <Icon
-                name={current_alive ? 'circle' : 'times-circle'}
-                color={current_alive ? 'good' : 'bad'}
-                mr={1}
-              />
+              <Icon name={current_alive ? 'circle' : 'times-circle'} color={current_alive ? 'good' : 'bad'} mr={1} />
               {current_name}
             </LabeledList.Item>
             <LabeledList.Item label="Статус">
-              <Box color={current_alive ? 'good' : 'bad'}>
-                {current_alive ? 'В сети' : 'Не в сети / недоступен'}
-              </Box>
+              <Box color={current_alive ? 'good' : 'bad'}>{current_alive ? 'В сети' : 'Не в сети / недоступен'}</Box>
             </LabeledList.Item>
           </LabeledList>
         </Stack.Item>
         <Stack.Item>
-          <Button
-            icon="times"
-            color="red"
-            tooltip="Сбросить выбор"
-            onClick={() => act('clear_target')}
-          />
+          <Button icon="times" color="red" tooltip="Сбросить выбор" onClick={() => act('clear_target')} />
         </Stack.Item>
       </Stack>
     ) : (
@@ -203,13 +171,7 @@ type TargetListProps = {
   act: Function;
 };
 
-const TargetList = ({
-  upload_mode,
-  ai_list,
-  borg_list,
-  current_uid,
-  act,
-}: TargetListProps) => {
+const TargetList = ({ upload_mode, ai_list, borg_list, current_uid, act }: TargetListProps) => {
   const list = upload_mode === MODE_AI ? ai_list : borg_list;
   const label = upload_mode === MODE_AI ? 'Доступные ИИ' : 'Доступные киборги';
   const icon = upload_mode === MODE_AI ? 'brain' : 'robot';
@@ -220,9 +182,7 @@ const TargetList = ({
       {list.length === 0 ? (
         <Box color="label" italic textAlign="center" mt={2}>
           <Icon name={icon} mr={1} />
-          {upload_mode === MODE_AI
-            ? 'Нет доступных ИИ на этом уровне'
-            : 'Нет доступных боргов на этом уровне'}
+          {upload_mode === MODE_AI ? 'Нет доступных ИИ на этом уровне' : 'Нет доступных боргов на этом уровне'}
         </Box>
       ) : (
         <Stack vertical>
@@ -231,13 +191,7 @@ const TargetList = ({
               <Button
                 fluid
                 icon={target.alive ? icon : 'times-circle'}
-                color={
-                  current_uid === target.uid
-                    ? accentColor
-                    : target.alive
-                      ? 'default'
-                      : 'bad'
-                }
+                color={current_uid === target.uid ? accentColor : target.alive ? 'default' : 'bad'}
                 selected={current_uid === target.uid}
                 disabled={!target.alive}
                 tooltip={
@@ -247,18 +201,12 @@ const TargetList = ({
                       ? 'Выбрано'
                       : 'Выбрать цель'
                 }
-                onClick={() =>
-                  target.alive && act('select_target', { uid: target.uid })
-                }
+                onClick={() => target.alive && act('select_target', { uid: target.uid })}
               >
                 <Stack align="center">
                   <Stack.Item grow>{target.name}</Stack.Item>
                   <Stack.Item>
-                    <Box
-                      as="span"
-                      fontSize="0.8em"
-                      color={target.alive ? 'good' : 'bad'}
-                    >
+                    <Box as="span" fontSize="0.8em" color={target.alive ? 'good' : 'bad'}>
                       {target.alive ? '● в сети' : '✕ офлайн'}
                     </Box>
                   </Stack.Item>
