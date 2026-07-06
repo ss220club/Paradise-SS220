@@ -144,7 +144,7 @@
 /obj/machinery/computer/combined_upload/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new /datum/tgui(user, src, "CombinedUploadConsole") //, name)
+		ui = new /datum/tgui(user, src, "CombinedUploadConsole")
 		ui.open()
 
 /obj/machinery/computer/combined_upload/ui_data(mob/user)
