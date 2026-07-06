@@ -1652,6 +1652,10 @@
 	var/list/tastes = list("bad coding" = 1) //List of tastes. See above.
 
 /datum/reagent/consumable/ethanol/fruit_wine/on_new(list/data)
+	// SS220 EDIT START - Использование стандартных значений
+	if(!data)
+		return
+	// SS220 EDIT END
 	names = data["names"]
 	tastes = data["tastes"]
 	alcohol_perc = data["alcohol_perc"]
