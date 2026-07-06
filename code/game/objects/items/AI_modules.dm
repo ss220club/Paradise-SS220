@@ -40,13 +40,11 @@ AI MODULES
 	return TRUE // If this returns true, it will be deleted on roundstart
 
 /obj/item/ai_module/proc/install(obj/machinery/computer/C)
-	// Объединённая консоль: маршрутизируем по upload_mode, а не по типу C,
-	// иначе ИИ-ветка ниже перехватит борг-режим тоже (оба матчат istype(C, combined_upload)).
 	if(istype(C, /obj/machinery/computer/combined_upload))
 		var/obj/machinery/computer/combined_upload/combo = C
-		if(combo.upload_mode == 2) // UPLOAD_MODE_BORG
+		if(combo.upload_mode == 2)
 			return install_borg(combo, combo.current)
-		else // UPLOAD_MODE_AI (или ещё не выбран — пусть упадёт в "ИИ не выбран" по умолчанию)
+		else
 			return install_ai(combo, combo.current)
 
 	if(istype(C, /obj/machinery/computer/aiupload))
@@ -57,7 +55,6 @@ AI MODULES
 		var/obj/machinery/computer/borgupload/comp = C
 		return install_borg(comp, comp.current)
 
-/// Общая логика установки законов ИИ — используется и старой aiupload-консолью, и новой combined_upload.
 /obj/item/ai_module/proc/install_ai(obj/machinery/computer/comp, mob/living/silicon/ai/target)
 	if(comp.stat & NOPOWER)
 		to_chat(usr, SPAN_WARNING("Консоль аплоуда обесточена!"))

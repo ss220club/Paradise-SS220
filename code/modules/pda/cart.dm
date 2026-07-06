@@ -275,7 +275,7 @@
 		new /datum/data/pda/app/secbot_control,
 		new /datum/data/pda/app/janitor,
 		new /datum/data/pda/app/supply,
-		new /datum/data/pda/app/ai_comm, // <-- УПРОЩЕННОЕ NT-ПРИЛОЖЕНИЕ
+		new /datum/data/pda/app/ai_comm,
 	)
 
 /obj/item/cartridge/ai_malf
@@ -288,7 +288,7 @@
 		new /datum/data/pda/app/secbot_control,
 		new /datum/data/pda/app/janitor,
 		new /datum/data/pda/app/supply,
-		new /datum/data/pda/app/malf_comm, // <-- ПОЛНОЦЕННЫЙ НЕКСУС
+		new /datum/data/pda/app/malf_comm,
 	)
 
 /obj/item/cartridge/robot

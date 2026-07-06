@@ -1785,6 +1785,4 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 	// Обновляем TGUI окно у ИИ, чтобы он сразу увидел изменения
 	SStgui.update_uis(aiPDA)
-
-
 #undef TEXT_ANNOUNCEMENT_COOLDOWN

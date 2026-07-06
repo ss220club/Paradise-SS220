@@ -616,7 +616,6 @@
 			var/pt = A.malf_picker.processing_time
 			// Формируем ссылку, при клике на которую сработает common=malf_pt
 			. = "Processing time: <a href='byond://?src=[UID()];common=malf_pt'>[pt]</a> u."
-
 /datum/mind/proc/edit_memory()
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		alert("Not before round-start!", "Alert")
@@ -1492,8 +1491,6 @@
 				log_admin("[key_name(usr)] has automatically forged objectives for [key_name(current)]")
 				message_admins("[key_name_admin(usr)] has automatically forged objectives for [key_name_admin(current)]")
 
-
-
 	else if(href_list["contractor"])
 		var/datum/contractor_hub/H = LAZYACCESS(GLOB.contractors, src)
 		switch(href_list["contractor"])
@@ -1817,13 +1814,9 @@
 		antag_team.add_member(src)
 	ASSERT(antag_datum.owner && antag_datum.owner.current)
 	antag_datum.on_gain()
-
-	// <-- ДОБАВИТЬ ЭТОТ БЛОК -->
 	if(is_ai(current))
 		var/mob/living/silicon/ai/A = current
 		A.update_cartridge_for_antag()
-	// <-- КОНЕЦ БЛОКА -->
-
 	return antag_datum
 
 /**
@@ -1838,12 +1831,9 @@
 		A.silent |= silent_removal
 		qdel(A)
 
-		// <-- ДОБАВИТЬ ЭТОТ БЛОК -->
 		if(is_ai(current))
 			var/mob/living/silicon/ai/AI_mob = current
 			AI_mob.update_cartridge_for_antag()
-		// <-- КОНЕЦ БЛОКА -->
-
 /**
  * Removes all antag datums from the src mind.
  *
