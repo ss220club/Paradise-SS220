@@ -263,7 +263,7 @@
 			status = SEC_RECORD_STATUS_RELEASED
 	target_records.fields["criminal"] = status
 	log_admin("[key_name_admin(user)] set secstatus of [their_rank] [their_name] to [status], comment: [comment]")
-	target_records.fields["comments"] += "Set to [status] by [user_name || user.name] ([user_rank]) on [GLOB.current_date_string] [station_time_timestamp()], comment: [comment]"
+	target_records.fields["comments"] += "Статус - [status] установлен пользователем [user_name || user.name] ([user_rank]), время правки - [GLOB.current_date_string] [station_time_timestamp()]. Комментарий: [comment]"
 	update_all_mob_security_hud()
 	return 1
 

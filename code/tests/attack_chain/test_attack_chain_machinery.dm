@@ -28,7 +28,7 @@
 	var/area/admin_area = get_area(player.puppet)
 	player.spawn_obj_in_hand(/obj/item/reagent_containers/glass/beaker)
 	player.click_on(scanner)
-	TEST_ASSERT_LAST_CHATLOG(player, "You add a beaker")
+	TEST_ASSERT_LAST_CHATLOG(player, "Вы закрепили")
 	var/obj/screwdriver = player.spawn_obj_in_hand(/obj/item/screwdriver)
 	player.click_on(scanner)
 	TEST_ASSERT_LAST_CHATLOG(player, "You open the maintenance hatch")

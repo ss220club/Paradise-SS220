@@ -3,48 +3,48 @@
 
 	var/msg = "<span class='notice'>"
 	if(module)
-		msg += "It has loaded a [module.name].\n"
+		msg += "У [ru_p_theirs()] загружен [module.declent_ru(NOMINATIVE)].\n"
 	var/obj/act_module = get_active_hand()
 	if(act_module)
-		msg += "It is holding [bicon(act_module)] \a [act_module].\n"
+		msg += "[ru_p_they(TRUE)] [ru_p_hold()] [bicon(act_module)] [act_module].\n"
 	msg += "<span class='warning'>"
 	if(getBruteLoss())
 		if(getBruteLoss() < maxHealth*0.5)
-			msg += "It looks slightly dented.\n"
+			msg += "[ru_p_them(TRUE)] корпус немного повреждён.\n"
 		else
-			msg += "<B>It looks severely dented!</B>\n"
+			msg += "<b>[ru_p_them(TRUE)] корпус серьёзно повреждён!</b>\n"
 	if(getFireLoss())
 		if(getFireLoss() < maxHealth*0.5)
-			msg += "It looks slightly charred.\n"
+			msg += "[ru_p_them(TRUE)] проводка немного обгорела.\n"
 		else
-			msg += "<B>It looks severely burnt and heat-warped!</B>\n"
+			msg += "<b>[ru_p_them(TRUE)] проводка сильно обгорела и деформировалась!</b>\n"
 	if(health < -maxHealth*0.5)
-		msg += "It looks barely operational.\n"
+		msg += "[ru_p_they(TRUE)] на грани отключения.\n"
 	if(fire_stacks < 0)
-		msg += "It's covered in water.\n"
+		msg += "[ru_p_them(TRUE)] корпус выглядит промокшим.\n"
 	else if(fire_stacks > 0)
-		msg += "It's coated in something flammable.\n"
+		msg += "[ru_p_them(TRUE)] корпус покрыт чем-то горючим.\n"
 	msg += "</span>"
 
 	if(opened)
-		msg += "[SPAN_WARNING("Its cover is open and the power cell is [cell ? "installed" : "missing"].")]\n"
+		msg += "[SPAN_WARNING("[ru_p_them(TRUE)] панель техобслуживания открыта. Внутри [cell ? "установлена" : "отсутствует"] батарея.")]\n"
 	else
-		msg += "Its cover is closed[locked ? "" : ", and looks unlocked"].\n"
+		msg += "[ru_p_them(TRUE)] панель техобслуживания закрыта[locked ? "" : ", однако доступ к ней был снят"].\n"
 
 	if(cell && cell.charge <= 0)
-		msg += "[SPAN_WARNING("Its battery indicator is blinking red!")]\n"
+		msg += "[SPAN_WARNING("[ru_p_them(TRUE)] индикатор батареи мигает красным!")]\n"
 
 	switch(stat)
 		if(CONSCIOUS)
 			if(!client)
-				msg += "It appears to be in stand-by mode.\n" //afk
+				msg += "Похоже что [ru_p_they()] в режиме ожидания.\n" //afk
 		if(UNCONSCIOUS)
-			msg += "[SPAN_WARNING("It doesn't seem to be responding.")]\n"
+			msg += "[SPAN_WARNING("[ru_p_them(TRUE)] система переведена в спящий режим.")]\n"
 		if(DEAD)
 			if(!suiciding)
-				msg += "[SPAN_DEADSAY("It looks like its internal subsystems are beyond repair and require replacing.")]\n"
+				msg += "[SPAN_DEADSAY("Похоже что [ru_p_them()] внутренние системы нуждаются в углубленном ремонте по замене компонентов.")]\n"
 			else
-				msg += "[SPAN_WARNING("It looks like its system is corrupted beyond repair. There is no hope of recovery.")]\n"
+				msg += "[SPAN_WARNING("Похоже что [ru_p_them()] система критически повреждена. Надежды на восстановление работоспособности нет.")]\n"
 	msg += "</span>"
 
 	if(print_flavor_text())
@@ -53,7 +53,7 @@
 	if(pose)
 		if(findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0)
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
-		msg += "\nIt [pose]"
+		msg += "\n[ru_p_they(TRUE)] [pose]"
 
 	. += msg
 	user.showLaws(src)

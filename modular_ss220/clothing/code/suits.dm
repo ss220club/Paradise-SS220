@@ -385,3 +385,9 @@
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/suits.dmi',
 	)
+
+/obj/item/clothing/under/color/orange/prison
+	name = "prison jumpsuit"
+
+/obj/item/clothing/under/color/jumpskirt/orange/prison
+	name = "prison jumpskirt"
