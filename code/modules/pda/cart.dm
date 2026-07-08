@@ -275,6 +275,20 @@
 		new /datum/data/pda/app/secbot_control,
 		new /datum/data/pda/app/janitor,
 		new /datum/data/pda/app/supply,
+		new /datum/data/pda/app/ai_comm,
+	)
+
+/obj/item/cartridge/ai_malf
+	name = "Nexus Override Cartridge"
+	desc = "A heavily modified data cartridge. Smells faintly of ozone and treason."
+	programs = list(
+		new /datum/data/pda/app/power,
+		new /datum/data/pda/app/crew_records/medical,
+		new /datum/data/pda/app/crew_records/security,
+		new /datum/data/pda/app/secbot_control,
+		new /datum/data/pda/app/janitor,
+		new /datum/data/pda/app/supply,
+		new /datum/data/pda/app/malf_comm,
 	)
 
 /obj/item/cartridge/robot

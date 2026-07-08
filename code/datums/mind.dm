@@ -608,6 +608,14 @@
 		. += "." //hiel grammar
 		//         ^ whoever left this comment is literally a grammar nazi. stalin better. in russia grammar correct you.
 
+/datum/mind/proc/memory_edit_malf_uplink()
+	. = ""
+	if(is_ai(current))
+		var/mob/living/silicon/ai/A = current
+		if(A.malf_picker)
+			var/pt = A.malf_picker.processing_time
+			// Формируем ссылку, при клике на которую сработает common=malf_pt
+			. = "Processing time: <a href='byond://?src=[UID()];common=malf_pt'>[pt]</a> u."
 /datum/mind/proc/edit_memory()
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		alert("Not before round-start!", "Alert")
@@ -704,6 +712,7 @@
 		if(D.organization)
 			out.Add("[D.organization.name]")
 	out.Add(memory_edit_uplink())
+	out.Add(memory_edit_malf_uplink())
 	out.Add("<b>Memory:</b>")
 	out.Add(memory)
 	out.Add("<a href='byond://?src=[UID()];memory_edit=1'>Edit memory</a><br>")
@@ -1754,6 +1763,21 @@
 				log_admin("[key_name(usr)] has given [key_name(current)] an uplink")
 				message_admins("[key_name_admin(usr)] has given [key_name_admin(current)] an uplink")
 
+			if("malf_pt")
+				if(usr.client.holder.rights & (R_SERVER|R_EVENT))
+					if(!is_ai(current))
+						return
+					var/mob/living/silicon/ai/A = current
+					if(!A.malf_picker)
+						to_chat(usr, SPAN_WARNING("У этого ИИ нет модулей (не малф?)."))
+						return
+
+					var/new_pt = input("Amount of processing time for [key]","Malf AI", A.malf_picker.processing_time) as null|num
+					if(!isnull(new_pt))
+						A.malf_picker.processing_time = new_pt
+						log_admin("[key_name(usr)] has set [key_name(current)]'s processing time to [new_pt]")
+						message_admins("[key_name_admin(usr)] has set [key_name_admin(current)]'s processing time to [new_pt]")
+
 	else if(href_list["obj_announce"])
 		var/list/messages = prepare_announce_objectives()
 		to_chat(current, chat_box_red(messages.Join("<br>")))
@@ -1790,6 +1814,9 @@
 		antag_team.add_member(src)
 	ASSERT(antag_datum.owner && antag_datum.owner.current)
 	antag_datum.on_gain()
+	if(is_ai(current))
+		var/mob/living/silicon/ai/A = current
+		A.update_cartridge_for_antag()
 	return antag_datum
 
 /**
@@ -1804,6 +1831,9 @@
 		A.silent |= silent_removal
 		qdel(A)
 
+		if(is_ai(current))
+			var/mob/living/silicon/ai/AI_mob = current
+			AI_mob.update_cartridge_for_antag()
 /**
  * Removes all antag datums from the src mind.
  *

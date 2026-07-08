@@ -40,54 +40,69 @@ AI MODULES
 	return TRUE // If this returns true, it will be deleted on roundstart
 
 /obj/item/ai_module/proc/install(obj/machinery/computer/C)
+	if(istype(C, /obj/machinery/computer/combined_upload))
+		var/obj/machinery/computer/combined_upload/combo = C
+		if(combo.upload_mode == 2)
+			return install_borg(combo, combo.current)
+		else
+			return install_ai(combo, combo.current)
+
 	if(istype(C, /obj/machinery/computer/aiupload))
 		var/obj/machinery/computer/aiupload/comp = C
-		if(comp.stat & NOPOWER)
-			to_chat(usr, SPAN_WARNING("Консоль аплоуда обесточена!"))
-			return
-		if(comp.stat & BROKEN)
-			to_chat(usr, SPAN_WARNING("Консоль аплоуда сломана!"))
-			return
-		if(!comp.current)
-			to_chat(usr, SPAN_WARNING("Вы не выбрали ИИ для загрузки законов!"))
-			return
-
-		if(comp.current.stat == DEAD || comp.current.control_disabled)
-			to_chat(usr, SPAN_WARNING("Загрузка неудачна. От ИИ нет сигнала."))
-		else if(comp.current.see_in_dark == 0)
-			to_chat(usr, SPAN_WARNING("Загрузка неудачна. От ИИ исходит слабый сигнал, и он не отвечает на запросы. Возможно, он обесточен."))
-		else
-			src.transmitInstructions(comp.current, usr)
-			to_chat(comp.current, "Ваши законы теперь:")
-			comp.current.show_laws()
-			for(var/mob/living/silicon/robot/R in GLOB.mob_list)
-				if(R.lawupdate && (R.connected_ai == comp.current))
-					to_chat(R, "Ваши законы теперь:")
-					R.show_laws()
-			to_chat(usr, SPAN_NOTICE("Загрузка завершена. Законы ИИ были успешно изменены."))
-			return TRUE
+		return install_ai(comp, comp.current)
 
 	else if(istype(C, /obj/machinery/computer/borgupload))
 		var/obj/machinery/computer/borgupload/comp = C
-		if(comp.stat & NOPOWER)
-			to_chat(usr, SPAN_WARNING("Консоль аплоуда обесточена!"))
-			return
-		if(comp.stat & BROKEN)
-			to_chat(usr, SPAN_WARNING("Консоль аплоуда сломана!"))
-			return
-		if(!comp.current)
-			to_chat(usr, SPAN_WARNING("Вы не выбрали робота для загрузки законов!"))
-			return
+		return install_borg(comp, comp.current)
 
-		if(comp.current.stat == DEAD || comp.current.emagged)
-			to_chat(usr, SPAN_WARNING("Загрузка неудачна. От робота не исходит сигнала."))
-		else if(comp.current.connected_ai)
-			to_chat(usr, SPAN_WARNING("Загрузка неудачна. Робот привязан к Искуственному Интеллекту."))
-		else
-			src.transmitInstructions(comp.current, usr)
-			to_chat(comp.current, "Ваши законы теперь:")
-			comp.current.show_laws()
-			to_chat(usr, SPAN_NOTICE("Загрузка завершена. Законы робота были успешно изменены."))
+/obj/item/ai_module/proc/install_ai(obj/machinery/computer/comp, mob/living/silicon/ai/target)
+	if(comp.stat & NOPOWER)
+		to_chat(usr, SPAN_WARNING("Консоль аплоуда обесточена!"))
+		return
+	if(comp.stat & BROKEN)
+		to_chat(usr, SPAN_WARNING("Консоль аплоуда сломана!"))
+		return
+	if(!target)
+		to_chat(usr, SPAN_WARNING("Вы не выбрали ИИ для загрузки законов!"))
+		return
+
+	if(target.stat == DEAD || target.control_disabled)
+		to_chat(usr, SPAN_WARNING("Загрузка неудачна. От ИИ нет сигнала."))
+	else if(target.see_in_dark == 0)
+		to_chat(usr, SPAN_WARNING("Загрузка неудачна. От ИИ исходит слабый сигнал, и он не отвечает на запросы. Возможно, он обесточен."))
+	else
+		src.transmitInstructions(target, usr)
+		to_chat(target, "Ваши законы теперь:")
+		target.show_laws()
+		for(var/mob/living/silicon/robot/R in GLOB.mob_list)
+			if(R.lawupdate && (R.connected_ai == target))
+				to_chat(R, "Ваши законы теперь:")
+				R.show_laws()
+		to_chat(usr, SPAN_NOTICE("Загрузка завершена. Законы ИИ были успешно изменены."))
+		return TRUE
+
+/// Общая логика установки законов борга — используется и старой borgupload-консолью, и новой combined_upload.
+/obj/item/ai_module/proc/install_borg(obj/machinery/computer/comp, mob/living/silicon/robot/target)
+	if(comp.stat & NOPOWER)
+		to_chat(usr, SPAN_WARNING("Консоль аплоуда обесточена!"))
+		return
+	if(comp.stat & BROKEN)
+		to_chat(usr, SPAN_WARNING("Консоль аплоуда сломана!"))
+		return
+	if(!target)
+		to_chat(usr, SPAN_WARNING("Вы не выбрали робота для загрузки законов!"))
+		return
+
+	if(target.stat == DEAD || target.emagged)
+		to_chat(usr, SPAN_WARNING("Загрузка неудачна. От робота не исходит сигнала."))
+	else if(target.connected_ai)
+		to_chat(usr, SPAN_WARNING("Загрузка неудачна. Робот привязан к Искуственному Интеллекту."))
+	else
+		src.transmitInstructions(target, usr)
+		to_chat(target, "Ваши законы теперь:")
+		target.show_laws()
+		to_chat(usr, SPAN_NOTICE("Загрузка завершена. Законы робота были успешно изменены."))
+		return TRUE
 
 
 /obj/item/ai_module/proc/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
