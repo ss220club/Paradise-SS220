@@ -325,12 +325,13 @@
 // ─────────────────────────────────────────
 
 /obj/item/circuitboard/combined_upload
-	board_name = "Объединённая консоль аплоуда"
-	desc = SPAN_WARNING("The board is charred and smells of burnt plastic. It has been rendered useless.")
-	icon_state = "command_broken"
+	board_name = "Консоль Аплоуда"
+	icon_state = "command"
+	build_path = /obj/machinery/computer/combined_upload
+	origin_tech = "programming=5;engineering=5"
 
 /obj/item/circuitboard/combined_upload_broken
-	board_name = "Объединённая консоль аплоуда"
+	board_name = "Консоль Аплоуда"
 	desc = SPAN_WARNING("The board is charred and smells of burnt plastic. It has been rendered useless.")
 	icon_state = "command_broken"
 

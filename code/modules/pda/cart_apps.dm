@@ -645,7 +645,7 @@
 	else if(secondsToRefuel)
 		data["esc_status"] = "Refueling: [secondsToRefuel / 60 % 60]:[add_zero(num2text(secondsToRefuel % 60), 2)]"
 
-	var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg')
+	var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg', "alert" = 'sound/AI/alert.ogg', "attention" = 'sound/AI/attention.ogg', "announce" = 'sound/misc/announce.ogg', "announce_dig" = 'sound/misc/announce_dig.ogg', "notice1" = 'sound/misc/notice1.ogg', "notice3" = 'sound/misc/notice3.ogg')
 	var/list/sound_keys = list()
 	for(var/sound_name in sounds)
 		sound_keys += sound_name
@@ -723,7 +723,7 @@
 
 		if("test_sound")
 			var/sound_name = params["sound"]
-			var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg')
+			var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg', "alert" = 'sound/AI/alert.ogg', "attention" = 'sound/AI/attention.ogg', "announce" = 'sound/misc/announce.ogg', "announce_dig" = 'sound/misc/announce_dig.ogg', "notice1" = 'sound/misc/notice1.ogg', "notice3" = 'sound/misc/notice3.ogg')
 			if(sounds[sound_name])
 				playsound(A, sounds[sound_name], 50, FALSE)
 			return
@@ -737,7 +737,7 @@
 			if(!text || length(text) < 6)
 				to_chat(A, SPAN_WARNING("Message is too short (minimum 6 characters)."))
 				return
-			var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg')
+			var/list/sounds = list("Beep" = 'sound/misc/notice2.ogg', "Enemy Communications Intercepted" = 'sound/AI/intercept.ogg', "New Command Report Created" = 'sound/AI/commandreport.ogg', "alert" = 'sound/AI/alert.ogg', "attention" = 'sound/AI/attention.ogg', "announce" = 'sound/misc/announce.ogg', "announce_dig" = 'sound/misc/announce_dig.ogg', "notice1" = 'sound/misc/notice1.ogg', "notice3" = 'sound/misc/notice3.ogg')
 			var/sound_to_play = sounds[sound_name] || 'sound/AI/commandreport.ogg'
 			if(!classified)
 				GLOB.major_announcement.Announce(text, new_title = subtitle, new_subtitle = title, new_sound = sound_to_play)
