@@ -405,7 +405,7 @@
 /datum/uplink_item/jobspecific/contortionist_plasmaman
 	name = "Комбинезон акробата для плазмаменов"
 	// name = "Contortionist's Plasma Envirosuit"
-	desc = "Высокоэластичный комбинезон, который поможет вам ползать по станционной вентеляции, но только Плазмаменам. Имеет карманы \
+	desc = "Высокоэластичный комбинезон, который поможет вам ползать по станционной вентиляции, но только Плазмаменам. Имеет карманы \
 	и слот для ID, но не может быть использован без ношения большей части снаряжения, включая рюкзак, пояс, шлем и МОД. \
 	Также необходимы свободные руки, чтобы ползать внутри."
 	// desc = "A highly flexible envirosuit that will help you navigate the ventilation loops of the station internally, specialized for Plasmamen. Comes with pockets and ID slot, but can't be used without stripping off most gear, including backpack, belt, and exosuit. Free hands are also necessary to crawl around inside."
