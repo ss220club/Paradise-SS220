@@ -682,7 +682,7 @@
 	// name = "Bearserker Pelt"
 	desc = "Медвежья шкура, наполняющая носителя духом медведя и знанием оккультного боевого искусства, известного как \
 	Ярость Космического Медведя. Сама шкура также бронирована, обеспечивая владельцу большую выносливость. \
-	Создана с любовью множеством духов культа Синдиката, известным как Дети Большой Медведицы."
+	Создана с любовью множеством духов культа Синдиката, известного как Дети Большой Медведицы."
 	// desc = "A bear pelt that infuses the wearer with bear spirits and knowledge of an occultic martial art known as Rage of the Space Bear. \
 	// The pelt itself is also armored, providing the wearer great longevity. \
 	// Made with love, lots of spirits and lots of the other kind of spirits by the Syndicate-affiliated cult, Children of Ursa Major."
