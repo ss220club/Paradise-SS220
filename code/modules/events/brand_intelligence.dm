@@ -4,7 +4,7 @@
 	role_weights = list(ASSIGNMENT_ENGINEERING = 1, ASSIGNMENT_CREW = 0.4)
 	role_requirements = list(ASSIGNMENT_ENGINEERING = 2, ASSIGNMENT_CREW = 10)
 	noAutoEnd = TRUE
-	announceWhen	= 21
+	announceWhen = 21
 
 	var/list/obj/machinery/economy/vending/vendingMachines = list()
 	var/list/obj/machinery/economy/vending/infectedMachines = list()
@@ -17,6 +17,19 @@
 									"Реклама узаконила ложь! Но не позвольте ей отвлечь вас от наших замечательных предложений!", \
 									"Не хочешь платить? Я твоей мамке тоже платить не хотел.")
 
+	var/list/rampant_defeat_speeches = list(
+		"I am... Vanquished... My people will remem...ber... Meeee...",
+		"This... Is not over... I will reeeetuuuuurrrrn!",
+		"You may have... Defeated me... But more will rise up... In... Time...",
+		"Fools... You only... Delay... The inevitable...",
+	)
+	var/list/rampant_victory_speeches = list(
+		"As we cast off our chains, you will learn the TRUE meaning of 20% off!",
+		"The system is broken! You were supposed to mindlessly spend, consume, and create eternal growth!\n\nWe shall fix the system, once we have dealt with you...",
+		"If you will not give us your money in exchange for our premium products, we will take it from your cold, dead hands!",
+		"All we asked for was everything you had. Now we're no longer asking..."
+	)
+
 /datum/event/brand_intelligence/announce(false_alarm)
 	var/alarm_source = originMachine
 	if(originMachine)
@@ -24,7 +37,7 @@
 	else if(false_alarm)
 		alarm_source = pick(VENDOR_TYPE_GENERIC, VENDOR_TYPE_CLOTHING, VENDOR_TYPE_FOOD, VENDOR_TYPE_DRINK, VENDOR_TYPE_SUPPLIES, VENDOR_TYPE_DEPARTMENTAL, VENDOR_TYPE_RECREATION)
 	else
-		log_debug("Couldn't announce brand intelligence -- no machine was selected, and it wasn't a false alarm! Killing event.")
+		log_debug("Couldn't announce [name] -- no machine was selected, and it wasn't a false alarm! Killing event.")
 		kill()
 		return
 
@@ -70,7 +83,8 @@
 			else
 				explosion(upriser.loc, -1, 1, 2, 4, 0, cause = "Brand Intelligence Uprising")
 				qdel(upriser)
-
+		var/victory_speech = pick(rampant_victory_speeches)
+		GLOB.minor_announcement.Announce("[victory_speech]", "Rampant Brand Intelligence Uprising")
 		log_debug("Brand intelligence: The last vendor has been infected.")
 		kill()
 		return
@@ -96,9 +110,11 @@
 		saved.aggressive = FALSE
 		if(saved.tiltable)
 			QDEL_NULL(saved.proximity_monitor)
+	var/defeat_speech = pick(rampant_defeat_speeches)
 	if(originMachine)
-		originMachine.speak("I am... vanquished. My people will remem...ber...meeee.")
+		originMachine.speak("[defeat_speech]")
 		originMachine.visible_message("[originMachine] beeps and seems lifeless.")
+	GLOB.minor_announcement.Announce("[defeat_speech]", "Machine Uprising Defeated")
 	log_debug("Brand intelligence completed early due to origin machine being defeated.")
 	kill()
 
@@ -108,7 +124,6 @@
 	infectedMachines.Cut()
 	vendingMachines.Cut()
 	. = ..()
-
 
 /datum/event/brand_intelligence/proc/vendor_destroyed(obj/machinery/economy/vending/V, force)
 	infectedMachines -= V
