@@ -2,8 +2,8 @@
 
 
 /datum/client_login_processor/donator_check/proc/CheckAutoDonatorLevel(client/C)
-	var/static/list/ultimate_worker = list("Банда", "Братюня", "Сестрюня", "Главный Администратор", "Старший Администратор", "Зам Старшего Администратора")
-	var/static/list/big_worker = list("Администратор", "Старший Разработчик", "Разработчик", "Бригадир Мапперов", "Маппер", "Ведущий Редактор Вики", "Маленький Работяга", "Администратор СС14")
+	var/static/list/ultimate_worker = list("Банда", "Братюня", "Сестрюня", "Старший Администратор", "Зам Старшего Администратора")
+	var/static/list/big_worker = list("Администратор", "Мейнтейнер", "Разработчик", "Маппер", "Ведущий Редактор Вики", "Маленький Работяга", "Администратор СС14")
 
 	var/datum/admins/admin_holder = GLOB.admin_datums[C.ckey]
 	if(admin_holder)
