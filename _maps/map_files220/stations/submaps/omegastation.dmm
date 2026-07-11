@@ -1,24 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ae" = (
-/obj/machinery/camera{
-	c_tag = "Engineering Singularity South Airlock";
-	dir = 8;
-	network = list("SS13","Singularity","Engineering")
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	autolink_id = "eng_s_tesla_vent";
-	dir = 1
-	},
-/obj/machinery/light/small/directional/south,
-/obj/effect/turf_decal/delivery/blue/partial{
-	dir = 1
-	},
-/obj/structure/closet/walllocker/emerglocker/directional/south,
-/obj/effect/turf_decal/tiles/neutral/side{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "ak" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/radio/intercom{
@@ -294,6 +274,10 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
+"cN" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "cR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -317,6 +301,26 @@
 	},
 /turf/simulated/floor/catwalk,
 /area/station/maintenance/storage)
+"dt" = (
+/obj/machinery/camera{
+	c_tag = "Engineering Singularity South Airlock";
+	dir = 8;
+	network = list("SS13","Singularity","Engineering")
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	autolink_id = "eng_s_tesla_vent";
+	dir = 1
+	},
+/obj/effect/turf_decal/delivery/blue/partial{
+	dir = 1
+	},
+/obj/structure/closet/walllocker/emerglocker/directional/south,
+/obj/effect/turf_decal/tiles/neutral/side{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
 "dx" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -510,6 +514,7 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/machinery/ai_status_display/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "fz" = (
@@ -732,15 +737,19 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "ir" = (
-/obj/machinery/light/small/directional/north,
-/obj/machinery/atmospherics/pipe/manifold/visible{
+/obj/structure/sign/vacuum/external{
+	pixel_x = -32
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	autolink_id = "eng_s_tesla_vent";
 	dir = 1
 	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
+/obj/effect/turf_decal/delivery/red/partial{
+	dir = 1
 	},
+/obj/structure/closet/walllocker/firelocker/directional/south,
 /obj/effect/turf_decal/tiles/neutral/side{
-	dir = 5
+	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
@@ -791,24 +800,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
-"iL" = (
-/obj/structure/sign/vacuum/external{
-	pixel_x = -32
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	autolink_id = "eng_s_tesla_vent";
-	dir = 1
-	},
-/obj/machinery/light/small/directional/south,
-/obj/effect/turf_decal/delivery/red/partial{
-	dir = 1
-	},
-/obj/structure/closet/walllocker/firelocker/directional/south,
-/obj/effect/turf_decal/tiles/neutral/side{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "iP" = (
 /obj/machinery/atmospherics/trinary/filter/flipped{
 	dir = 4;
@@ -823,6 +814,15 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
+"iR" = (
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "jb" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -905,6 +905,18 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/space/nearstation)
+"kh" = (
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tiles/neutral/side{
+	dir = 5
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
 "ks" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4
@@ -938,9 +950,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
@@ -1005,16 +1014,6 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
-"lc" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/obj/machinery/status_display/directional/north,
-/obj/effect/turf_decal/tiles/department/engineering/side{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "ll" = (
 /obj/machinery/power/emitter{
 	anchored = 1;
@@ -1268,6 +1267,13 @@
 /obj/item/extinguisher,
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
+"oa" = (
+/obj/structure/cable/white{
+	icon_state = "1-4"
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "oc" = (
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 8
@@ -1636,6 +1642,17 @@
 /obj/machinery/particle_accelerator/control_box,
 /obj/structure/cable/extra_insulated,
 /turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
+"rq" = (
+/obj/machinery/camera{
+	c_tag = "Engineering Singularity South-East";
+	dir = 9;
+	network = list("SS13","Singularity","Engineering")
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating/airless,
 /area/station/engineering/control)
 "rr" = (
 /obj/structure/disposalpipe/segment,
@@ -2619,9 +2636,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/cable/white{
-	icon_state = "1-8"
-	},
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 4
 	},
@@ -3255,11 +3269,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "Im" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 10
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
+/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
@@ -3288,6 +3300,15 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "IA" = (
@@ -3296,6 +3317,12 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
+"ID" = (
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "IL" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3767,11 +3794,6 @@
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
 "MI" = (
-/obj/machinery/camera{
-	c_tag = "Engineering Singularity South-East";
-	dir = 8;
-	network = list("SS13","Singularity","Engineering")
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -3814,6 +3836,15 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
+"Nj" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating/airless,
 /area/station/engineering/control)
 "Nk" = (
 /obj/effect/turf_decal/trimline/misc/toxins/filled/shrink_cw{
@@ -3916,6 +3947,13 @@
 "Oh" = (
 /turf/simulated/mineral/ancient,
 /area/station/engineering/atmos/asteroid)
+"Oj" = (
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "Ok" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/shieldgen,
@@ -4249,6 +4287,15 @@
 /obj/structure/railing/corner/pool_corner,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
+"QO" = (
+/obj/effect/turf_decal/tiles/department/engineering/side{
+	dir = 4
+	},
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
 "QP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -4803,18 +4850,6 @@
 /obj/effect/turf_decal/loading_area/white,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine)
-"Wx" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "Wy" = (
 /obj/effect/mapping_helpers/airlock/access/all/engineering/engine,
 /obj/machinery/door/airlock/engineering/glass{
@@ -4862,6 +4897,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
@@ -5581,7 +5619,7 @@ NZ
 EP
 WD
 BT
-Hz
+xb
 Hz
 NU
 Gq
@@ -5645,7 +5683,7 @@ qp
 sq
 Zg
 iH
-xb
+Oj
 vK
 vK
 vK
@@ -5653,11 +5691,11 @@ VA
 vK
 vK
 vK
-xb
-Hz
-Hz
-xb
-NU
+iR
+Kd
+rq
+sq
+Bd
 EU
 BT
 BT
@@ -5682,7 +5720,7 @@ qC
 qC
 qC
 GL
-Hz
+cN
 vK
 od
 Sm
@@ -5691,10 +5729,10 @@ Sm
 Pu
 vK
 MI
-Kd
-sq
-sq
-Bd
+GL
+qC
+qC
+qC
 BT
 BT
 BT
@@ -5719,19 +5757,19 @@ Gq
 Gq
 qC
 ua
-iH
-vK
+oa
+gM
 XY
 VJ
 sL
 my
 zj
-vK
+gM
+Nj
+ID
 qC
-no
-qC
-qC
-Mn
+BT
+BT
 BT
 BT
 BT
@@ -5757,17 +5795,17 @@ Gq
 qC
 qC
 JZ
-gM
+qC
 Nf
 qm
 Az
 cb
 yp
-gM
 qC
-OZ
-iL
+no
 qC
+qC
+BT
 BT
 BT
 HD
@@ -5801,10 +5839,10 @@ SJ
 cb
 zj
 qC
-RV
+OZ
 ir
-ae
 qC
+BT
 BT
 BT
 BT
@@ -5837,11 +5875,11 @@ cb
 SU
 cb
 LQ
+RV
+kh
+dt
 qC
-qC
-hj
-qC
-qC
+BT
 BT
 BT
 BT
@@ -5875,8 +5913,8 @@ uk
 Ze
 Ts
 qC
-lc
-Wx
+hj
+qC
 qC
 qC
 BT
@@ -5986,7 +6024,7 @@ pO
 ui
 qz
 QE
-qz
+QO
 AK
 Fd
 qC

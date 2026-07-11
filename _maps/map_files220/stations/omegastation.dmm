@@ -21735,6 +21735,10 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
+"bup" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "bux" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -23092,9 +23096,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
@@ -24479,6 +24480,15 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
+"daY" = (
+/obj/effect/turf_decal/tiles/department/engineering/side{
+	dir = 4
+	},
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
 "dba" = (
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
@@ -25392,6 +25402,15 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "dIu" = (
@@ -25852,15 +25871,19 @@
 /turf/simulated/floor/plasteel/side,
 /area/station/hallway/primary/central/north)
 "eci" = (
-/obj/machinery/light/small/directional/north,
-/obj/machinery/atmospherics/pipe/manifold/visible{
+/obj/structure/sign/vacuum/external{
+	pixel_x = -32
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	autolink_id = "eng_s_tesla_vent";
 	dir = 1
 	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
+/obj/effect/turf_decal/delivery/red/partial{
+	dir = 1
 	},
+/obj/structure/closet/walllocker/firelocker/directional/south,
 /obj/effect/turf_decal/tiles/neutral/side{
-	dir = 5
+	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
@@ -33384,6 +33407,17 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
+"jhm" = (
+/obj/machinery/camera{
+	c_tag = "Engineering Singularity South-East";
+	dir = 9;
+	network = list("SS13","Singularity","Engineering")
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "jhw" = (
 /obj/machinery/ai_node/processing_node,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
@@ -34291,26 +34325,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
-"jUz" = (
-/obj/machinery/camera{
-	c_tag = "Engineering Singularity South Airlock";
-	dir = 8;
-	network = list("SS13","Singularity","Engineering")
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	autolink_id = "eng_s_tesla_vent";
-	dir = 1
-	},
-/obj/machinery/light/small/directional/south,
-/obj/effect/turf_decal/delivery/blue/partial{
-	dir = 1
-	},
-/obj/structure/closet/walllocker/emerglocker/directional/south,
-/obj/effect/turf_decal/tiles/neutral/side{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "jVs" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -34976,6 +34990,15 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
+"krX" = (
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "ksz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -37772,6 +37795,18 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
+"myo" = (
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tiles/neutral/side{
+	dir = 5
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
 "myr" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -38377,16 +38412,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
-"mVi" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/obj/machinery/status_display/directional/north,
-/obj/effect/turf_decal/tiles/department/engineering/side{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "mWa" = (
 /obj/machinery/atmospherics/trinary/mixer/flipped{
 	name = "Mix to Turbine"
@@ -39816,6 +39841,12 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
+"ocI" = (
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "odb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -40387,18 +40418,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
-"oCi" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "oCy" = (
 /obj/machinery/atmospherics/air_sensor{
 	autolink_id = "n2o_sensor"
@@ -41257,11 +41276,9 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/science/hallway)
 "pgf" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 10
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
+/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
@@ -42410,9 +42427,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/cable/white{
-	icon_state = "1-8"
-	},
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 4
 	},
@@ -43204,6 +43218,13 @@
 	},
 /turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
+"qqT" = (
+/obj/structure/cable/white{
+	icon_state = "1-4"
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "qrP" = (
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 1
@@ -43302,11 +43323,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/se)
 "qvt" = (
-/obj/machinery/camera{
-	c_tag = "Engineering Singularity South-East";
-	dir = 8;
-	network = list("SS13","Singularity","Engineering")
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -50476,6 +50492,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/ai_monitored/storage/eva)
+"uUr" = (
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "uVu" = (
 /obj/machinery/door/poddoor/preopen{
 	name = "Bridge View Blast door";
@@ -53296,6 +53319,15 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/ce)
+"wSq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "wSD" = (
 /obj/structure/sign/engineering/atmos,
 /turf/simulated/wall/r_wall,
@@ -53421,6 +53453,26 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/medbay)
+"wWJ" = (
+/obj/machinery/camera{
+	c_tag = "Engineering Singularity South Airlock";
+	dir = 8;
+	network = list("SS13","Singularity","Engineering")
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	autolink_id = "eng_s_tesla_vent";
+	dir = 1
+	},
+/obj/effect/turf_decal/delivery/blue/partial{
+	dir = 1
+	},
+/obj/structure/closet/walllocker/emerglocker/directional/south,
+/obj/effect/turf_decal/tiles/neutral/side{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/control)
 "wWT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -53645,6 +53697,7 @@
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/machinery/ai_status_display/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "xeu" = (
@@ -53791,24 +53844,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/wall/r_wall,
 /area/station/engineering/engine/supermatter)
-"xjE" = (
-/obj/structure/sign/vacuum/external{
-	pixel_x = -32
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	autolink_id = "eng_s_tesla_vent";
-	dir = 1
-	},
-/obj/machinery/light/small/directional/south,
-/obj/effect/turf_decal/delivery/red/partial{
-	dir = 1
-	},
-/obj/structure/closet/walllocker/firelocker/directional/south,
-/obj/effect/turf_decal/tiles/neutral/side{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/control)
 "xki" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -55562,6 +55597,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
@@ -68693,7 +68731,7 @@ dcv
 ciN
 uHl
 hhM
-xqy
+ktD
 xqy
 xXc
 aLL
@@ -69197,7 +69235,7 @@ eDB
 neM
 hJO
 ixE
-ktD
+uUr
 mLs
 mLs
 mLs
@@ -69205,11 +69243,11 @@ dMd
 mLs
 mLs
 mLs
-ktD
-xqy
-xqy
-ktD
-xXc
+krX
+hya
+jhm
+neM
+mKC
 pZU
 hhM
 hhM
@@ -69454,7 +69492,7 @@ alz
 alz
 alz
 aZt
-xqy
+bup
 mLs
 brQ
 vEI
@@ -69463,10 +69501,10 @@ vEI
 kPx
 mLs
 qvt
-hya
-neM
-neM
-mKC
+aZt
+alz
+alz
+alz
 hhM
 hhM
 hhM
@@ -69711,19 +69749,19 @@ aLL
 aLL
 alz
 cKT
-ixE
-mLs
+qqT
+vlC
 xiB
 oqO
 geG
 exn
 ehZ
-mLs
+vlC
+wSq
+ocI
 alz
-bNp
-alz
-alz
-nKm
+hhM
+hhM
 hhM
 hhM
 hhM
@@ -69969,17 +70007,17 @@ aLL
 alz
 alz
 tDl
-vlC
+alz
 ubE
 vdC
 hIJ
 ivl
 faw
-vlC
 alz
-uLx
-xjE
+bNp
 alz
+alz
+hhM
 hhM
 hhM
 aag
@@ -70233,10 +70271,10 @@ hqo
 ivl
 ehZ
 alz
-hke
+uLx
 eci
-jUz
 alz
+hhM
 hhM
 hhM
 hhM
@@ -70489,11 +70527,11 @@ ivl
 bdi
 ivl
 mhR
+hke
+myo
+wWJ
 alz
-alz
-puQ
-alz
-alz
+hhM
 hhM
 hhM
 hhM
@@ -70747,8 +70785,8 @@ azI
 ruu
 oDf
 alz
-mVi
-oCi
+puQ
+alz
 alz
 alz
 hhM
@@ -71518,7 +71556,7 @@ dRg
 iZd
 hNP
 oVh
-hNP
+daY
 pQg
 kMk
 alz
