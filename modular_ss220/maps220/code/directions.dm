@@ -181,7 +181,6 @@ MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/nightshifted)
 
 MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/small/nightshifted)
 
-MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/small/nightshifted)
 MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light)
 MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/spot)
 MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/built)
