@@ -146,31 +146,48 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 24, 24)
 	dir = 8
 
 /* Light Fixtures */
+
+#define MAPPING_DIRECTIONAL_LIGHT_HELPERS(path) \
+##path/directional/north {\
+	dir = NORTH; \
+	pixel_x = 0; \
+	pixel_y = 20; \
+} \
+##path/directional/south {\
+	dir = SOUTH; \
+	pixel_x = 0; \
+	pixel_y = 0; \
+} \
+##path/directional/east {\
+	dir = EAST; \
+	pixel_x = 8; \
+	pixel_y = 4; \
+} \
+##path/directional/west {\
+	dir = WEST; \
+	pixel_x = -8; \
+	pixel_y = 4; \
+}
+
 /obj/machinery/light/nightshifted
 	nightshift_allowed = FALSE
 	nightshift_enabled = TRUE
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light/nightshifted, 0, 0)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/nightshifted)
 
 /obj/machinery/light/small/nightshifted
 	nightshift_allowed = FALSE
 	nightshift_enabled = TRUE
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light/small/nightshifted, 0, 0)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/small/nightshifted)
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light, 0, 0)
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light/spot, 0, 0)
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light/built, 0, 0)
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light/small, 0, 0)
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light/small/built, 0, 0)
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_construct, 0, 0)
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_construct/small, 0, 0)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/spot)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/built)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/small)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light/small/built)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light_construct)
+MAPPING_DIRECTIONAL_LIGHT_HELPERS(/obj/machinery/light_construct/small)
 
 /* Extinguisher */
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 32, 32)
