@@ -182,7 +182,7 @@ const GASES = [
     'color': 'pink',
   },
   {
-    'id': 'h2o', // SS220 TEMP FIX: water_vapor -> h2o
+    'id': 'h2o', // SS220 TEMP FIX: 'water_vapor' -> 'h2o'
     'name': 'Water Vapor',
     'label': 'H₂O',
     'color': 'grey',
