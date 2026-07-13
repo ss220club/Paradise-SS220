@@ -677,7 +677,7 @@ GLOBAL_LIST_EMPTY(gas_sensors)
 					scrubber.scrub_O2 = !scrubber.scrub_O2
 				if("scrub_h2")
 					scrubber.scrub_H2 = !scrubber.scrub_H2
-				if("scrub_h2o")
+				if("scrub_h2o") // SS220 TEMP FIX: "h2o_scrub" -> "scrub_h2o"
 					scrubber.scrub_H2O = !scrubber.scrub_H2O
 				if("widenet")
 					scrubber.widenet = !scrubber.widenet
