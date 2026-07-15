@@ -28,6 +28,15 @@
 					var/part_name
 					var/has_all
 
+					// Temporary storage for changes
+					var/list/temp_organ_data = list()
+					var/list/temp_rlimb_data = list()
+					var/temp_ha_style
+					var/temp_alt_head
+					var/temp_h_style
+					var/temp_f_style
+					var/list/temp_m_styles = list()
+
 					if(S.bodyflags & ALL_RPARTS)
 						valid_limbs = list("All Parts", "Torso", "Lower Body", "Head", "Left Leg", "Right Leg", "Left Arm", "Right Arm", "Left Foot", "Right Foot", "Left Hand", "Right Hand")
 
@@ -85,46 +94,46 @@
 								all_parts = list("chest", "groin", "head", "l_arm", "r_arm", "l_leg", "r_leg", "l_hand", "r_hand", "l_foot", "r_foot")
 								for(var/part in all_parts)
 									if(part == "head")
-										active_character.m_styles["head"] = "None"
-										active_character.h_style = GLOB.hair_styles_public_list["Bald"]
-										active_character.f_style = GLOB.facial_hair_styles_list["Shaved"]
-									active_character.organ_data[part] = null
-									active_character.rlimb_data[part] = null
+										temp_m_styles["head"] = "None"
+										temp_h_style = GLOB.hair_styles_public_list["Bald"]
+										temp_f_style = GLOB.facial_hair_styles_list["Shaved"]
+									temp_organ_data[part] = null
+									temp_rlimb_data[part] = null
 							else
 								if(limb == "head")
-									active_character.m_styles["head"] = "None"
-									active_character.h_style = GLOB.hair_styles_public_list["Bald"]
-									active_character.f_style = GLOB.facial_hair_styles_list["Shaved"]
-								active_character.organ_data[limb] = null
-								active_character.rlimb_data[limb] = null
+									temp_m_styles["head"] = "None"
+									temp_h_style = GLOB.hair_styles_public_list["Bald"]
+									temp_f_style = GLOB.facial_hair_styles_list["Shaved"]
+								temp_organ_data[limb] = null
+								temp_rlimb_data[limb] = null
 								if(third_limb)
-									active_character.organ_data[third_limb] = null
-									active_character.rlimb_data[third_limb] = null
+									temp_organ_data[third_limb] = null
+									temp_rlimb_data[third_limb] = null
 						if("Amputated")
 							if(!no_amputate)
 								if(limb == "all")
 									amputate_parts = list("l_arm", "r_arm", "l_leg", "r_leg")
 									for(var/part in amputate_parts)
-										active_character.organ_data[part] = "amputated"
-										active_character.rlimb_data[part] = null
+										temp_organ_data[part] = "amputated"
+										temp_rlimb_data[part] = null
 										if(part == "l_arm")
-											active_character.organ_data["l_hand"] = "amputated"
-											active_character.rlimb_data["l_hand"] = null
+											temp_organ_data["l_hand"] = "amputated"
+											temp_rlimb_data["l_hand"] = null
 										else if(part == "r_arm")
-											active_character.organ_data["r_hand"] = "amputated"
-											active_character.rlimb_data["r_hand"] = null
+											temp_organ_data["r_hand"] = "amputated"
+											temp_rlimb_data["r_hand"] = null
 										else if(part == "l_leg")
-											active_character.organ_data["l_foot"] = "amputated"
-											active_character.rlimb_data["l_foot"] = null
+											temp_organ_data["l_foot"] = "amputated"
+											temp_rlimb_data["l_foot"] = null
 										else if(part == "r_leg")
-											active_character.organ_data["r_foot"] = "amputated"
-											active_character.rlimb_data["r_foot"] = null
+											temp_organ_data["r_foot"] = "amputated"
+											temp_rlimb_data["r_foot"] = null
 								else
-									active_character.organ_data[limb] = "amputated"
-									active_character.rlimb_data[limb] = null
+									temp_organ_data[limb] = "amputated"
+									temp_rlimb_data[limb] = null
 									if(second_limb)
-										active_character.organ_data[second_limb] = "amputated"
-										active_character.rlimb_data[second_limb] = null
+										temp_organ_data[second_limb] = "amputated"
+										temp_rlimb_data[second_limb] = null
 						if("Prosthesis")
 							R = new()
 
@@ -174,30 +183,32 @@
 											else if(part == "l_leg") part_name = "Left Leg"
 											else if(part == "r_leg") part_name = "Right Leg"
 											subchoice = tgui_input_list(user, "Which model of [choice] [part_name] do you wish to use?", "All Parts - Prosthesis - [part_name]", robolimb_models)
+											if(!subchoice)
+												return
 										if(subchoice)
 											choice = subchoice
 
 									if(part == "head")
-										active_character.ha_style = "None"
-										active_character.alt_head = null
-										active_character.h_style = GLOB.hair_styles_public_list["Bald"]
-										active_character.f_style = GLOB.facial_hair_styles_list["Shaved"]
-										active_character.m_styles["head"] = "None"
-									active_character.rlimb_data[part] = choice
-									active_character.organ_data[part] = "cyborg"
+										temp_ha_style = "None"
+										temp_alt_head = null
+										temp_h_style = GLOB.hair_styles_public_list["Bald"]
+										temp_f_style = GLOB.facial_hair_styles_list["Shaved"]
+										temp_m_styles["head"] = "None"
+									temp_rlimb_data[part] = choice
+									temp_organ_data[part] = "cyborg"
 
 									if(part == "l_arm")
-										active_character.rlimb_data["l_hand"] = choice
-										active_character.organ_data["l_hand"] = "cyborg"
+										temp_rlimb_data["l_hand"] = choice
+										temp_organ_data["l_hand"] = "cyborg"
 									else if(part == "r_arm")
-										active_character.rlimb_data["r_hand"] = choice
-										active_character.organ_data["r_hand"] = "cyborg"
+										temp_rlimb_data["r_hand"] = choice
+										temp_organ_data["r_hand"] = "cyborg"
 									else if(part == "l_leg")
-										active_character.rlimb_data["l_foot"] = choice
-										active_character.organ_data["l_foot"] = "cyborg"
+										temp_rlimb_data["l_foot"] = choice
+										temp_organ_data["l_foot"] = "cyborg"
 									else if(part == "r_leg")
-										active_character.rlimb_data["r_foot"] = choice
-										active_character.organ_data["r_foot"] = "cyborg"
+										temp_rlimb_data["r_foot"] = choice
+										temp_organ_data["r_foot"] = "cyborg"
 							else
 								for(var/limb_type in typesof(/datum/robolimb))
 									R = new limb_type()
@@ -222,27 +233,55 @@
 												in_model = 1
 									if(length(robolimb_models) > 1)
 										subchoice = tgui_input_list(user, "Which model of [choice] [limb_name] do you wish to use?", "[limb_name] - Prosthesis - Model", robolimb_models)
+										if(!subchoice)
+											return
 									if(subchoice)
 										choice = subchoice
 								if(limb in list("head", "chest", "groin"))
 									if(!(S.bodyflags & ALL_RPARTS))
 										return
 									if(limb == "head")
-										active_character.ha_style = "None"
-										active_character.alt_head = null
-										active_character.h_style = GLOB.hair_styles_public_list["Bald"]
-										active_character.f_style = GLOB.facial_hair_styles_list["Shaved"]
-										active_character.m_styles["head"] = "None"
-								active_character.rlimb_data[limb] = choice
-								active_character.organ_data[limb] = "cyborg"
+										temp_ha_style = "None"
+										temp_alt_head = null
+										temp_h_style = GLOB.hair_styles_public_list["Bald"]
+										temp_f_style = GLOB.facial_hair_styles_list["Shaved"]
+										temp_m_styles["head"] = "None"
+								temp_rlimb_data[limb] = choice
+								temp_organ_data[limb] = "cyborg"
 								if(second_limb)
 									if(subchoice)
 										if(in_model)
-											active_character.rlimb_data[second_limb] = choice
-											active_character.organ_data[second_limb] = "cyborg"
+											temp_rlimb_data[second_limb] = choice
+											temp_organ_data[second_limb] = "cyborg"
 									else
-										active_character.rlimb_data[second_limb] = choice
-										active_character.organ_data[second_limb] = "cyborg"
+										temp_rlimb_data[second_limb] = choice
+										temp_organ_data[second_limb] = "cyborg"
+
+					// Confirmation dialog
+					var/confirm = tgui_alert(user, "Apply these changes?", "Confirm Changes", list("Yes", "No"))
+					if(confirm != "Yes")
+						return
+
+					// Apply all changes
+					if(length(temp_m_styles))
+						for(var/style_key in temp_m_styles)
+							active_character.m_styles[style_key] = temp_m_styles[style_key]
+					if(temp_h_style)
+						active_character.h_style = temp_h_style
+					if(temp_f_style)
+						active_character.f_style = temp_f_style
+					if(temp_ha_style)
+						active_character.ha_style = temp_ha_style
+					if(temp_alt_head)
+						active_character.alt_head = temp_alt_head
+					else if(temp_ha_style)
+						active_character.alt_head = null
+
+					for(var/part in temp_organ_data)
+						active_character.organ_data[part] = temp_organ_data[part]
+					for(var/part in temp_rlimb_data)
+						active_character.rlimb_data[part] = temp_rlimb_data[part]
+
 					ShowChoices(user)
 					return
 	. = ..()
