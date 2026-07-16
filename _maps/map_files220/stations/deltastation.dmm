@@ -16604,7 +16604,6 @@
 /area/station/medical/break_room)
 "bxe" = (
 /obj/machinery/washing_machine,
-/obj/machinery/computer/security/telescreen/entertainment/directional/north,
 /obj/machinery/light/directional/north,
 /obj/machinery/camera{
 	c_tag = "Medbay Staff Room";
@@ -37610,6 +37609,7 @@
 /area/station/medical/paramedic)
 "dgE" = (
 /obj/effect/turf_decal/tiles/department/medical/corner,
+/obj/machinery/light/floor,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/storage/secondary)
 "dgF" = (
@@ -40320,6 +40320,7 @@
 	dir = 4;
 	name = "Glass Door"
 	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel/dark,
 /area/station/medical/cloning)
 "dsV" = (
@@ -40343,7 +40344,6 @@
 /area/station/supply/expedition)
 "dtf" = (
 /obj/machinery/iv_drip,
-/obj/machinery/firealarm/directional/north,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -53424,6 +53424,7 @@
 	pixel_y = 2
 	},
 /obj/effect/turf_decal/tiles/department/medical/checker,
+/obj/machinery/computer/security/telescreen/entertainment/directional/north,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/break_room)
 "gjF" = (
@@ -74251,6 +74252,7 @@
 /obj/item/storage/box/bodybags{
 	pixel_y = 2
 	},
+/obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/medical/virology/test_room)
 "mHF" = (
@@ -80700,6 +80702,7 @@
 /obj/effect/turf_decal/tiles/department/chemistry/side{
 	dir = 4
 	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/chemistry)
 "oyR" = (
@@ -82989,7 +82992,6 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/light/small/directional/east,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 5
@@ -88985,10 +88987,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
 "qYm" = (
-/obj/machinery/light/small/directional/west,
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 8
 	},
+/obj/machinery/light/floor,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/storage/secondary)
 "qYJ" = (
@@ -92044,6 +92046,7 @@
 	},
 /obj/machinery/newscaster/directional/south,
 /obj/effect/turf_decal/tiles/department/medical/side,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/medbay)
 "rYP" = (
@@ -103049,6 +103052,13 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
+"vwg" = (
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/plasteel/white,
+/area/station/medical/medbay)
 "vwk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -104048,7 +104058,6 @@
 	dir = 4
 	},
 /obj/machinery/clonepod,
-/obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/delivery/blue/hollow,
 /turf/simulated/floor/plasteel/dark,
 /area/station/medical/cloning)
@@ -157198,7 +157207,7 @@ dmr
 vYR
 dmr
 qTY
-dmr
+vwg
 ntt
 cKY
 diz
