@@ -154,3 +154,10 @@
 	health = 20
 	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
+
+/mob/living/basic/nian_caterpillar/senior
+	name = "Сеньор"
+	desc = "Мотылёк. Обожает светочи. Знает всю атмосферику, но из-за своего скверного характера не расскажет, даже если бы мог говорить."
+
+/mob/living/basic/nian_caterpillar/senior/valid_respawn_target_for(mob/user)
+	return TRUE
