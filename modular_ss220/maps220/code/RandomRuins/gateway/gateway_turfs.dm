@@ -42,6 +42,9 @@
 /turf/simulated/floor/indestructible/grass/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
 	return
 
+/turf/simulated/floor/indestructible/grass/update_icon_state()
+	return
+
 // Shuttle
 /turf/simulated/floor/indestructible/transparent_floor
 	icon = 'modular_ss220/maps220/icons/shuttle.dmi'
