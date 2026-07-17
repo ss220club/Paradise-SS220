@@ -111,7 +111,7 @@
 /obj/item/holosign_creator/atmos
 	name = "ATMOS holofan projector"
 	desc = "A holographic projector that creates holographic barriers that prevent changes in atmosphere conditions."
-	icon_state = "signmaker_atmos"
+	icon_state = "signmaker_engi"
 	belt_icon = null
 	holosign_type = /obj/structure/holosign/barrier/atmos
 	max_signs = 3
