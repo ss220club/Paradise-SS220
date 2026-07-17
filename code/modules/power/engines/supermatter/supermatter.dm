@@ -116,7 +116,7 @@
 	///Tracks the bolt color we are using
 	var/zap_icon = DEFAULT_ZAP_ICON_STATE
 	///The portion of the gasmix we're on that we should remove
-	var/gasefficency = 0.30 // SS220 EDIT - 0.35 -> 0.30 (reason: make "max moles per tile" limiter 4285 -> 5000 for both types of SM engine)
+	var/gasefficency = 0.30 // SS220 EDIT - TEMP FIX: 0.35 -> 0.30 (reason: make "max moles per tile" limiter 4285 -> 5000 for both types of SM engine)
 
 	///Are we exploding?
 	var/final_countdown = FALSE
