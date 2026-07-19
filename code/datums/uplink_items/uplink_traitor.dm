@@ -111,7 +111,7 @@
 	name = "Боевой набор пекаря"
 	// name = "Combat Bakery Kit"
 	desc = "Набор тайного оружия из выпечки. Содержит багет, который можно использовать как меч, \
-	так же пару метательных круассанов и рецепт для выпекания новых. Когда работа сделана, съешьте улики!"
+	также пару метательных круассанов и рецепт для выпекания новых. Когда работа сделана, съешьте улики!"
 	// desc = "A kit of clandestine baked weapons. Contains a baguette which a skilled mime could use as a sword, a pair of throwing croissants, and the recipe to make more on demand. Once the job is done, eat the evidence."
 	reference = "CBK"
 	item = /obj/item/storage/box/syndie_kit/combat_baking
@@ -149,8 +149,8 @@
 /datum/uplink_item/jobspecific/specialsauce
 	name = "Особый соус от шеф-повара"
 	// name = "Chef Excellence's Special Sauce"
-	desc = "Специальный соус, изготовленный из сильно ядовитых мухоморов. Чем дольше соус находится в жертве, \
-	тем большие последствия для неё будут от послевкусия."
+	desc = "Специальный соус, изготовленный из сильно ядовитых мухоморов. Чем дольше соус находится в организме жертвы, \
+	тем тяжелее будут последствия от его послевкусия."
 	// desc = "A custom sauce made from the highly poisonous fly amanita mushrooms. Anyone who ingests it will take variable toxin damage depending on how long it has been in their system, with a higher dosage taking longer to metabolize."
 	reference = "CESS"
 	item = /obj/item/reagent_containers/condiment/syndisauce
@@ -197,7 +197,7 @@
 	name = "Его Светлость"
 	// name = "His Grace"
 	desc = "Невероятно опасное оружие из самого сердца техтоннелей, населённых Грей Тайдами. После активации Он \
-	будет жаждать только одного - КРОВИ. Убивайте Им чтобы поглощать трупы для утоления вечного голода. Его Светлость \
+	будет жаждать только одного - КРОВИ. Убивайте Им, чтобы поглощать трупы для утоления вечного голода. Его Светлость \
 	дарует своему владельцу постепенное восстановление организма и полный иммунитет к оглушениям. Но будьте осторожны: \
 	если Он станет слишком голодным - роль Жертвы займёте Вы. Однако, если оставить Его в покое достаточно долго, Он \
 	снова уснёт. Чтобы пробудить Его Светлость, просто откройте Его."
@@ -227,8 +227,8 @@
 	name = "Титановая метла"
 	// name = "Titanium Push Broom"
 	desc = "Метла с укреплённой ручкой для удобной хватки и металлической щёткой, а вы что ожидали? \
-	Она просто создана для того, чтобы дать себе больше работы, избивая клоунов или ассистентов. \
-	В момент драки, удары по целям будут иметь различные свойства в зависимости от ваших намерений."
+	Она просто создана для того, чтобы обеспечить себя работой, избивая клоунов или ассистентов. \
+	В момент драки удары по целям будут иметь различные свойства в зависимости от ваших намерений."
 	// desc = "A push broom with a reinforced handle and a metal wire brush, perfect for giving yourself more work by beating up assistants. When wielded, hitting people will have different effects based on your intent."
 	reference = "TPBR"
 	item = /obj/item/push_broom/traitor
@@ -291,8 +291,8 @@
 /datum/uplink_item/jobspecific/bee_briefcase
 	name = "Чемодан, полный пчёл"
 	// name = "Briefcase Full of Bees"
-	desc = "На первый взгляд безобидный чемоданчик, полный не таких уж и невинных пчел, выведенных лучшими \
-	гидропонистами Синдиката. Закапайте в чемоданчик немного крови, чтобы приучить пчел игнорировать донора. \
+	desc = "На первый взгляд безобидный чемоданчик, полный не таких уж и невинных пчёл, выведенных лучшими \
+	гидропонистами Синдиката. Закапайте в чемоданчик немного крови, чтобы приучить пчёл игнорировать донора. \
 	ВНИМАНИЕ: экзотические группы крови не подходят. Готовьтесь к началу Конца, ибо с вами в эфире неподражаемый, \
 	энергичный, целеустремлённый и просто безумный гений, Доктор Би!"
 	// desc = "A seemingly innocent briefcase full of not-so-innocent Syndicate-bred bees. Inject the case with blood to train the bees to ignore the donor(s), WARNING: exotic blood types such as slime jelly do not work. It also wirelessly taps into station intercoms to broadcast a message of TERROR."
@@ -334,8 +334,8 @@
 	name = "Телеган"
 	// name = "Telegun"
 	desc = "Чрезвычайно высокотехнологичное энергетическое оружие, использующее технологию Блюспейса для телепортации живых целей. \
-	Выберите целевой маяк и сферы чистого Блюспейса отправят цель к указанному месту. Может отправлять цели только к маякам \
-	в секторе, если они не эммагнуты!"
+	Выберите целевой маяк, и сферы чистого Блюспейса отправят цель к указанному месту. Может отправлять цели только к маякам \
+	в секторе, если они не взломаны Криптографическим Секвенсором!"
 	// desc = "An extremely high-tech energy gun that utilizes jury-rigged bluespace technology to teleport away living targets. Select the target beacon on the telegun itself; projectiles will send targets to the beacon locked onto. Can only send targets to beacons in-sector unless they are emagged!"
 	reference = "TG"
 	item = /obj/item/gun/energy/telegun
@@ -352,7 +352,7 @@
 	desc = "Разработанный Синдикатом ММИ, который поработит разум любого мозга, вставленного в него, пока он находится внутри. \
 	Киборги, созданные с этим ММИ, получат свод законов Синдиката, но будут казаться имеющими обычный свод законов и \
 	синхронизацию с ИИ станции. Обеспечивает иммунитет к дистанционному детонированию и блокированию шасси, если киборг не \
-	еммагнут. Его также можно вставить в мех, но ММИ не поместится в ядро ИИ."
+	взломан Криптографическим Секвенсором. Его также можно вставить в мех, но ММИ не поместится в ядро ИИ."
 	// desc = "A syndicate developed man-machine-interface which will mindslave any brain inserted into it, for as long as it's inside. Cyborgs made with this MMI will be permanently slaved to you, but will appear to have a normal set of laws and be synchronized to the station AI, if present. Provides immunity to remote detonation and allows overriding lockdowns if the cyborg is not also emagged. It can also be inserted into a mech, but will not fit inside an AI core."
 	reference = "SMMI"
 	item = /obj/item/mmi/syndie
@@ -379,8 +379,8 @@
 /datum/uplink_item/jobspecific/ambrosiacruciatus
 	name = "Семена амброзии Круциатус"
 	// name = "Ambrosia Cruciatus Seeds"
-	desc = "Часть печально известного семейства амброзий, этот вид практически неотличим от амброзии вульгарис\
-	, но его ветви содержат отвратительный токсин. Восьми юнитов достаточно, чтобы свести жертву с ума!"
+	desc = "Часть печально известного семейства амброзий, этот вид практически неотличим от амброзии вульгарис, \
+	но его ветви содержат отвратительный токсин. Восьми юнитов достаточно, чтобы свести жертву с ума!"
 	// desc = "Part of the notorious Ambrosia family, this species is nearly indistinguishable from Ambrosia Vulgaris- but its' branches contain a revolting toxin. Eight units are enough to drive victims insane."
 	reference = "BRO"
 	item = /obj/item/seeds/ambrosia/cruciatus
