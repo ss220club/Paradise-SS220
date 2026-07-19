@@ -855,7 +855,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/suits/plate_compression
 	name = "Компрессор костюма"
 	desc = "Модификация механизма модульного скафандра, позволяющая ему сжиматься до меньшего размера, \
-			 несовместимо с модулями для хранения, поэтому сначала вам придется извлечь этот модуль."
+			 несовместима с модулями для хранения, поэтому сначала вам придется извлечь этот модуль."
 	reference = "MSPC"
 	item = /obj/item/mod/module/plate_compression
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
@@ -871,7 +871,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/noslip
 	name = "Противоскользящие подошвы"
-	desc = "Модификация механизма модульного скафандра, дающее лучшее сцепление подошв на мокрых поверхностях. \
+	desc = "Модификация механизма модульного скафандра, дающая лучшее сцепление подошв на мокрых поверхностях. \
 			По умолчанию установлены в мод-скафандры из аплинка."
 	reference = "MSNS"
 	item = /obj/item/mod/module/noslip
