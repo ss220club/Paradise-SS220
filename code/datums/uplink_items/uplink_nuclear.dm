@@ -604,7 +604,7 @@
 	name = "Кроваво-красные магнитные ботинки"
 	// name = "Blood-Red Magboots"
 	desc = "Пара магнитных ботинок с покраской Синдиката, которые помогают свободнее передвигаться в космосе или на станции во \
-	время сбоев генератора гравитации. Разработаны по технологии реверс-инжиниринга из 'Продвинутых магнитных ботинок' Nanotrasen, \
+	время сбоев генератора гравитации. Разработаны по технологии реверс-инжиниринга из «Продвинутых магнитных ботинок» Nanotrasen, \
 	поэтому замедляют вас в средах с симулированной гравитацией так же, как и стандартные."
 	// desc = "A pair of magnetic boots with a Syndicate paintjob that assist with freer movement in space or on-station during gravitational generator failures. \
 	// These reverse-engineered knockoffs of Nanotrasen's 'Advanced Magboots' slow you down in simulated-gravity environments much like the standard issue variety."
