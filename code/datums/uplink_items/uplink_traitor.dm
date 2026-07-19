@@ -720,7 +720,7 @@
 /datum/uplink_item/stealthy_tools/voice_modulator
 	name = "Маскировочная маска с функцией искажения голоса"
 	// name = "Chameleon Voice Modulator Mask"
-	desc = "Тактическая маска Синдиката, оснащённая технологией 'Хамелеон' и модулем шумов для маскировки вашего голоса. \
+	desc = "Тактическая маска Синдиката, оснащённая технологией «Хамелеон» и модулем шумов для маскировки вашего голоса. \
 	Пока модуль искажения активен, ваш голос будет неузнаваем для других."
 	// desc = "A syndicate tactical mask equipped with chameleon technology and a sound modulator for disguising your voice. \
 	// While the mask is active, your voice will sound unrecognizable to others."
@@ -732,7 +732,7 @@
 /datum/uplink_item/stealthy_tools/voice_changer
 	name = "Маскировочная маска с изменителем голоса"
 	// name = "Chameleon Voice Changer Mask"
-	desc = "Тактическая маска Синдиката, оснащённая технологией 'Хамелеон' и изменителем голоса для маскировки вашего голоса. \
+	desc = "Тактическая маска Синдиката, оснащённая технологией «Хамелеон» и изменителем голоса для маскировки вашего голоса. \
 	Используйте его, чтобы имитировать или скрывать свою личность при разговоре, и никто не догадается!"
 	// desc = "A syndicate gas mask equipped with chameleon technology and a voice changer for disguising your voice. \
 	// Use it to impersonate or obfuscate your identity when talking and make nobody the wiser!"
@@ -1048,7 +1048,7 @@
 /datum/uplink_item/stealthy_tools/chameleon
 	name = "Маскировочный набор"
 	// name = "Chameleon Kit"
-	desc = "Набор предметов одежды, использующих технологию 'Хамелеон', позволяющую маскироваться практически под \
+	desc = "Набор предметов одежды, использующих технологию «Хамелеон», позволяющую маскироваться практически под \
 	кого угодно на станции и даже больше! Средства, выделенные научному отделу для разработки противоскользящей обуви\
 	, были переданы в фонд изучения розовых вульпкан."
 	// desc = "A set of items that contain chameleon technology allowing you to disguise as pretty much anything on the station, and more! \
