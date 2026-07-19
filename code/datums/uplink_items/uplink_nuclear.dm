@@ -652,7 +652,7 @@
 	name = "Энергетический щит"
 	// name = "Energy Shield"
 	desc = "Невероятно полезный персональный проектор щита, способный отражать энергетические снаряды, но он не может \
-	блокировать другие атаки. Используйте так же с энергетическим мечом для убийственной комбинации!"
+	блокировать другие атаки. Используйте также с энергетическим мечом для убийственной комбинации!"
 	// desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles, but it cannot block other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
 	reference = "ESD"
