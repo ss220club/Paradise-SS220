@@ -121,7 +121,7 @@
 // Shaft miner
 
 /datum/uplink_item/jobspecific/pressure_mod
-	name = "Модкит 'Давления' для кинетического акселератора"
+	name = "Модкит «Давления» для кинетического акселератора"
 	// name = "Kinetic Accelerator Pressure Mod"
 	desc = "Модкит, позволяющий кинетическим акселераторам наносить значительно больше повреждений в помещениях с нормальной \
 	атмосферой. Занимает 35% выделенного объёма акселератора."
@@ -279,7 +279,7 @@
 	name = "Опьяняющие патроны"
 	// name = "Boozey Shotgun Shells"
 	desc = "Коробка, содержащая 6 патронов для дробовика, которые имитируют эффект тяжёлого запоя на цели, \
-	становясь тем эффективнее, чем менее 'сухая' жертва."
+	становясь тем эффективнее, чем менее «сухая» жертва."
 	// desc = "A box containing 6 shotgun shells that simulate the effects of extreme drunkenness on the target, more effective for each type of alcohol in the target's system."
 	reference = "BSS"
 	item = /obj/item/storage/box/syndie_kit/boolets
