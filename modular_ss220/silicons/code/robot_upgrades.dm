@@ -69,7 +69,8 @@
 
 /obj/item/borg/upgrade/atmos_holofan/cyborg/do_install(mob/living/silicon/robot/R)
 	var/obj/item/holosign_creator/atmos/cyborg/T = locate() in R.module.modules
-	T.clean_signs(R)
+	if (T)
+		T.clean_signs(R)
 
 	return TRUE
 

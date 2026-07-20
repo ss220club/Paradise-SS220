@@ -30,15 +30,14 @@
 	max_signs = 5
 
 /* Medical */
-/obj/item/reagent_containers/borghypo/Initialize(mapload)
+/obj/item/reagent_containers/borghypo
 	name = "hypospray"
 	desc = "Простейший гипоспрей для киборгов, позволяющий оказывать медицинскую помощь в чрезвычайных ситуациях."
 	reagent_ids = list("salglu_solution", "epinephrine", "charcoal", "sal_acid", "salbutamol")
 	volume = 30
-	return ..()
 
-/obj/item/reagent_containers/borghypo/upgraded/Initialize(mapload)
-	. = ..()
+
+/obj/item/reagent_containers/borghypo/upgraded
 	name = "upgraded hypospray"
 	desc = "Усовершенствованный гипоспрей для киборгов, позволяющий оказывать качественную медицинскую помощь."
 	reagent_ids = list("salglu_solution", "epinephrine", "charcoal", "sal_acid", "salbutamol", "spaceacillin", "hydrocodone", "mannitol")
