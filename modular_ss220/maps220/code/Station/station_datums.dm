@@ -21,3 +21,11 @@
 
 /datum/map/emeraldstation
 	voteable = FALSE
+
+/datum/map/buildstation
+	fluff_name = "Новая станция"
+	technical_name = "Buildstation"
+	map_path = "_maps/map_files220/stations/buildstation.dmm"
+	// webmap_url ... туду?
+	// welcome_sound - туду?
+	voteable = TRUE
