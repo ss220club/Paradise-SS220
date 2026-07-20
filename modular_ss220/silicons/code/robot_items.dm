@@ -9,6 +9,8 @@
 	name = "ATMOS holofan projector"
 	desc = "Стандартный модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами. Создаваемые голопроекции полностью блокируют перемещение газов.\
 		<br>Количество создаваемых голопроекций снижено до одной относительно немодульного аналога в целях снижения энергопотребления."
+	icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
+	icon_state = "atmos_holofan"
 	max_signs = 1
 
 /obj/item/holosign_creator/atmos/cyborg/better
