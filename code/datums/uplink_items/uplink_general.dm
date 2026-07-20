@@ -1053,7 +1053,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/badass/balloon
 	name = "Показать, кто здесь Папочка"
-	desc = "Не самый полезный красный воздушный шарик с логотипом Синдиката"
+	desc = "Не самый полезный красный воздушный шарик с логотипом Синдиката."
 	reference = "BABA"
 	item = /obj/item/toy/syndicateballoon
 	cost = 100
