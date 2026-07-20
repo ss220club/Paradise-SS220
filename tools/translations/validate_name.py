@@ -54,7 +54,7 @@ def find_code_names(code_dirs):
     return names
 
 def main():
-    toml_dir = Path("modular_ss220/translations/code/translation_data/ru_names")
+    toml_dir = Path("modular_ss220/translations/public/ru_names")
     code_dirs = ["code", "modular_ss220"]
 
     if not toml_dir.exists():
