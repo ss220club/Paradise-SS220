@@ -937,8 +937,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bio_chips/mindslave
 	name = "Био-чип подчинения"
-	desc = "Био-чип, вводимый инъекцией под кожу. При успешном введении воля цели будет подавлена, а разум будет \
-			подчиняться только вашим приказам, выполняя даже самые жестокие поручения."
+	desc = "Био-чип, вводимый инъекцией под кожу. При успешном введении воля цели будет подавлена, \
+	заставляя выполнять даже самые жестокие поручения."
 	reference = "MI"
 	item = /obj/item/bio_chip_implanter/traitor
 	cost = 40 // SS220 EDIT PRICE UP/DOWN 50 -> 40
