@@ -99,6 +99,15 @@ You can double-click these batch files to achieve the same thing:
 - `bin\tgui.bat` - Build the project in production mode.
 - `bin\tgui-dev-server.bat` - Launch a development server.
 
+### Running the server without VS Code on Windows
+
+VS Code runs `tgui --ensure` automatically before its DreamMaker build task.
+If you launch `DreamMaker.exe paradise.dme` directly, run
+`bin\tgui-ensure.bat` from the `tgui` directory after cloning or switching
+branches. It downloads and unpacks the published bundle matching the current
+TGUI sources. If there is no matching published bundle, it builds TGUI locally,
+which requires Node.js.
+
 > TGUI build files are generated locally and are not committed to Git.
 > Changes to TGUI must pass the production build in CI before merging.
 
