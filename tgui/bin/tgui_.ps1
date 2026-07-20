@@ -71,7 +71,7 @@ function task-test {
 }
 
 function task-prettier {
-  npx prettier --check packages @Args
+  yarn exec prettier --check packages @Args
 }
 
 ## Mr. Proper
@@ -259,7 +259,7 @@ if ($Args.Length -gt 0) {
   ## Run prettier
   if ($Args[0] -eq "--prettier") {
     $Rest = $Args | Select-Object -Skip 1
-    npx prettier @Rest
+    yarn exec prettier @Rest
     exit 0
   }
 

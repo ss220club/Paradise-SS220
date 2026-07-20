@@ -73,7 +73,7 @@ task-test() {
 
 task-prettier() {
   cd "${base_dir}"
-  npx prettier --check packages "${@}"
+  yarn exec prettier --check packages "${@}"
 }
 
 ## Mr. Proper
@@ -267,7 +267,7 @@ fi
 ## Run prettier
 if [[ ${1} == '--prettier' ]]; then
   shift 1
-  npx prettier "${@}"
+  yarn exec prettier "${@}"
   exit 0
 fi
 

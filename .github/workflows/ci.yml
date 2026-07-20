@@ -108,7 +108,7 @@ jobs:
         run: tgui/bin/tgui --ci
 
       - name: Upload TGUI bundle
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: tgui-public
           path: tgui/public
@@ -125,7 +125,7 @@ jobs:
       - uses: actions/checkout@v7.0.0
 
       - name: Download TGUI bundle
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: tgui-public
           path: tgui/public
@@ -162,7 +162,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - name: Download TGUI bundle
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: tgui-public
           path: tgui/public
@@ -188,7 +188,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - name: Download TGUI bundle
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: tgui-public
           path: tgui/public
@@ -277,7 +277,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - name: Download TGUI bundle
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: tgui-public
           path: tgui/public
@@ -305,7 +305,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - name: Download TGUI bundle
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: tgui-public
           path: tgui/public
