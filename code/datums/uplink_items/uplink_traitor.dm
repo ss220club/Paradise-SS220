@@ -666,7 +666,7 @@
 	// name = "Martial Arts Scroll"
 	desc = "Этот свиток содержит секреты древней техники боевого искусства. Вы овладеете смертоносным искусством рукопашного боя, \
 	научитесь отражать выстрелы из дальнобойного оружия в защитной стойке, но примите клятву честного боя, отказавшись \
-	от всего дальнобойного оружия. Записи слишком сложны для понимания их Генокрадами и Вампирами."
+	от всего дальнобойного оружия. Записи слишком сложны для понимания Генокрадами и Вампирами."
 	// desc = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat, \
 	// deflecting ranged weapon fire when you are in a defensive stance (throw mode). Learning this art means you will also refuse to use dishonorable ranged weaponry. \
 	// Unable to be understood by vampire and changeling agents."

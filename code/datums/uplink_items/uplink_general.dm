@@ -422,7 +422,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/stealthy_weapons/dehy_carp
 	name = "Обезвоженный космический карп"
 	desc = "Просто добавьте воды, и у вас получится свой собственный космический карп, враждебный ко всему на свете. Он \
-			 выглядит как плюшевая игрушка. Первый, кто его сожмет, будет его папой, на которого он не нападет."
+			 выглядит как плюшевая игрушка. Первый, кто сожмёт карпа, станет его «папой», на которого он не нападёт."
 	reference = "DSC"
 	item = /obj/item/toy/plushie/carpplushie/dehy_carp
 	cost = 2 // SS220 EDIT PRICE UP/DOWN 4 -> 2
