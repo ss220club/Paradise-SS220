@@ -547,7 +547,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/stealthy_tools/chamsechud
 	name = "HUD-хамелеон Службы Безопасности"
 	desc = "Похищенная у Нанотрейзен и модернизированная Синдикатом технология системы головного интерфейса Службы Безопасности. \
-			Как и комбинезон-хамелеон, может изменить свой внешний вид под любую пару очков, но при этом сохраняя свои функции."
+			Как и комбинезон-хамелеон, может изменить свой внешний вид под любую пару очков, но при этом сохраняет свои функции."
 	reference = "CHHUD"
 	item = /obj/item/clothing/glasses/hud/security/chameleon
 	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
