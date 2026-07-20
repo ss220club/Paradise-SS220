@@ -97,22 +97,95 @@ function task-clean {
   Write-Output "tgui: All artifacts cleaned"
 }
 
-## Validates current build against the build stored in git
-function task-validate-build {
-  $diff = git diff --text public/*
-  if ($diff) {
-    Write-Output "::error file=tgui/public/tgui.bundle.js,title=Rebuild tgui bundle::Our build differs from the build committed into git."
-    exit 1
+function Test-TguiDirty {
+  $gitRoot = Join-Path $basedir ".."
+
+  & git -C $gitRoot diff --quiet -- tgui
+  if ($LASTEXITCODE -ne 0) {
+    return $true
   }
-  Write-Output "tgui: build is ok"
+  & git -C $gitRoot diff --cached --quiet -- tgui
+  if ($LASTEXITCODE -ne 0) {
+    return $true
+  }
+  $untracked = & git -C $gitRoot ls-files --others --exclude-standard -- tgui
+  return [bool]$untracked
 }
 
-## Installs merge drivers and git hooks
-function task-install-git-hooks () {
-  Write-Output "tgui: WARNING: tgui bundle merge drivers are deprecated. Please modify .gitattributes to continue using them"
-  Set-Location $global:basedir
-  git config --replace-all merge.tgui-merge-bundle.driver "tgui/bin/tgui --merge=bundle %P %A"
-  Write-Output "tgui: Merge drivers have been successfully installed!"
+function Get-TguiTreeHash {
+  $gitRoot = Join-Path $basedir ".."
+  $tguiTreeHash = (& git -C $gitRoot rev-parse HEAD:tgui).Trim()
+  Throw-On-Native-Failure
+  return $tguiTreeHash
+}
+
+function Get-TguiBundleTreeHash {
+  $marker = "public\.tgui-bundle.json"
+  if (!(Test-Path $marker)) {
+    return $null
+  }
+  try {
+    return (Get-Content -Raw $marker | ConvertFrom-Json).tguiTreeHash
+  } catch {
+    return $null
+  }
+}
+
+function Write-TguiBundleMarker {
+  if (Test-TguiDirty) {
+    Remove-Quiet -Force "public\.tgui-bundle.json"
+    return
+  }
+  @{ tguiTreeHash = Get-TguiTreeHash } | ConvertTo-Json | Set-Content -Encoding utf8 "public\.tgui-bundle.json"
+}
+
+function task-build-production {
+  task-install
+  task-lint --fix
+  task-setup
+  task-rspack --mode=production
+  Write-TguiBundleMarker
+}
+
+function task-ensure-bundle {
+  $releaseUrl = "https://github.com/ss220club/Paradise-SS220/releases/download/tgui-bundles"
+
+  if (Test-TguiDirty) {
+    Write-Output "tgui: source changes detected; building TGUI locally"
+    task-build-production
+    return
+  }
+
+  $tguiTreeHash = Get-TguiTreeHash
+  if ((Get-TguiBundleTreeHash) -eq $tguiTreeHash -and (Test-Path "public\tgui.bundle.js")) {
+    Write-Output "tgui: using local bundle"
+    return
+  }
+
+  $temporaryDirectory = "public\.tmp"
+  $manifestPath = Join-Path $temporaryDirectory "tgui-manifest.json"
+  $archivePath = Join-Path $temporaryDirectory "tgui-public.zip"
+  New-Item -ItemType Directory -Force $temporaryDirectory | Out-Null
+  try {
+    Invoke-WebRequest -Uri "$releaseUrl/tgui-manifest.json" -OutFile $manifestPath
+    $manifest = Get-Content -Raw $manifestPath | ConvertFrom-Json
+    if ($manifest.tguiTreeHash -eq $tguiTreeHash -and $manifest.archiveName -eq "tgui-public.zip") {
+      Invoke-WebRequest -Uri "$releaseUrl/$($manifest.archiveName)" -OutFile $archivePath
+      $actualHash = (Get-FileHash $archivePath -Algorithm SHA256).Hash.ToLowerInvariant()
+      if ($actualHash -eq $manifest.archiveSha256.ToLowerInvariant()) {
+        Expand-Archive -Path $archivePath -DestinationPath $basedir -Force
+        if ((Get-TguiBundleTreeHash) -eq $tguiTreeHash) {
+          Write-Output "tgui: downloaded bundle"
+          return
+        }
+      }
+    }
+  } catch {
+    Write-Output "tgui: published bundle is unavailable or invalid"
+  }
+
+  Write-Output "tgui: no compatible published bundle; building TGUI locally"
+  task-build-production
 }
 
 function task-editor-sdk () {
@@ -123,13 +196,13 @@ function task-editor-sdk () {
 ## --------------------------------------------------------
 
 if ($Args.Length -gt 0) {
-  if ($Args[0] -eq "--clean") {
-    task-clean
+  if ($Args[0] -eq "--ensure") {
+    task-ensure-bundle
     exit 0
   }
 
-  if ($Args[0] -eq "--install-git-hooks") {
-    task-install-git-hooks
+  if ($Args[0] -eq "--clean") {
+    task-clean
     exit 0
   }
 
@@ -179,14 +252,14 @@ if ($Args.Length -gt 0) {
     task-lint
     task-setup
     task-rspack --mode=production
-    task-validate-build
+    Write-TguiBundleMarker
     exit 0
   }
 
-  ## ## Run prettier
+  ## Run prettier
   if ($Args[0] -eq "--prettier") {
     $Rest = $Args | Select-Object -Skip 1
-    task-prettier --write
+    npx prettier @Rest
     exit 0
   }
 
@@ -198,10 +271,7 @@ if ($Args.Length -gt 0) {
 
 ## Make a production rspack build
 if ($Args.Length -eq 0) {
-  task-install
-  task-lint --fix
-  task-setup
-  task-rspack --mode=production
+  task-build-production
   exit 0
 }
 

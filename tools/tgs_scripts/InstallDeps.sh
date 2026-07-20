@@ -8,6 +8,7 @@ has_cargo="$(command -v ~/.cargo/bin/cargo)"
 has_sudo="$(command -v sudo)"
 has_pip3="$(command -v pip3)"
 has_ffmpeg="$(command -v ffmpeg)"
+has_node="$(command -v node)"
 set -e
 set -x
 
@@ -39,4 +40,15 @@ if ! ( [ -x "$has_ffmpeg" ] ); then
 	echo "Installing ffmpeg..."
 	apt-get update
 	apt-get install -y ffmpeg
+fi
+
+if ! [ -x "$has_node" ]; then
+	echo "Installing Node.js for TGUI..."
+	if [ -x "$has_sudo" ]; then
+		curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+		sudo apt-get install -y nodejs
+	else
+		curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+		apt-get install -y nodejs
+	fi
 fi

@@ -4,6 +4,8 @@
 		{
 			"type": "dreammaker",
 			"dme": "paradise.dme",
+			"dependsOn": "tgui: ensure",
+			"dependsOrder": "sequence",
 			"problemMatcher": [
 				"$dreammaker"
 			],
@@ -25,6 +27,17 @@
 		},
 		{
 			"type": "shell",
+			"command": ".\\tgui\\bin\\tgui.bat",
+			"args": ["--ensure"],
+			"linux": {
+				"command": "tgui/bin/tgui",
+				"args": ["--ensure"]
+			},
+			"problemMatcher": [],
+			"label": "tgui: ensure"
+		},
+		{
+			"type": "shell",
 			"command": ".\\tgui\\bin\\tgui-dev-server.bat",
 			"linux":{
 				"command": "tgui/bin/tgui",
@@ -36,6 +49,28 @@
 			],
 			"group": "build",
 			"label": "tgui: run dev server"
+		},
+		{
+			"type": "shell",
+			"command": ".\\tgui\\bin\\tgui.bat",
+			"args": ["--prettier", "--check", "${file}"],
+			"linux": {
+				"command": "tgui/bin/tgui",
+				"args": ["--prettier", "--check", "${file}"]
+			},
+			"problemMatcher": [],
+			"label": "tgui: Prettier check current file"
+		},
+		{
+			"type": "shell",
+			"command": ".\\tgui\\bin\\tgui.bat",
+			"args": ["--prettier", "--write", "${file}"],
+			"linux": {
+				"command": "tgui/bin/tgui",
+				"args": ["--prettier", "--write", "${file}"]
+			},
+			"problemMatcher": [],
+			"label": "tgui: Prettier write current file"
 		},
 		{
 			"type": "shell",

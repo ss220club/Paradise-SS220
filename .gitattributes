@@ -1,11 +1,3 @@
 ## Merge hooks, run tools/hooks/install.bat or install.sh to set up
 *.dmm text eol=lf merge=dmm
 *.dmi binary merge=dmi
-
-## TGUI bundles
-*.bundle.* binary
-*.chunk.* binary
-## WARNING: DEPRECATED
-## To activate the merge drivers, comment the above lines and uncomment the below lines
-# *.bundle.* binary merge=tgui-merge-bundle
-# *.chunk.* binary merge=tgui-merge-bundle

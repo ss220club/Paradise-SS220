@@ -99,68 +99,107 @@ task-clean() {
   echo "tgui: All artifacts cleaned"
 }
 
-## Validates current build against the build stored in git
-task-validate-build() {
-  cd "${base_dir}"
-  local diff
-  diff="$(git diff --text public/*)"
-  if [[ -n ${diff} ]]; then
-    echo "Error: our build differs from the build committed into git."
-    echo "Please rebuild tgui."
-    exit 1
-  fi
-  echo "tgui: build is ok"
-}
-
-## Installs merge drivers and git hooks
-task-install-git-hooks() {
-  echo "tgui: WARNING: tgui bundle merge drivers are deprecated. Please modify .gitattributes to continue using them"
-  cd "${base_dir}"
+## Returns success when TGUI sources differ from HEAD or include new files.
+task-tgui-is-dirty() {
   local git_root
-  local git_base_dir
-  git_root="$(git rev-parse --show-toplevel)"
-  git_base_dir="${base_dir/${git_root}/.}"
-  git config --replace-all merge.tgui-merge-bundle.driver \
-    "${git_base_dir}/bin/tgui --merge=bundle %P %A"
-  echo "tgui: Merge drivers have been successfully installed!"
+  git_root="$(git -C "${base_dir}/.." rev-parse --show-toplevel)"
+  ! git -C "${git_root}" diff --quiet -- tgui ||
+    ! git -C "${git_root}" diff --cached --quiet -- tgui ||
+    [[ -n $(git -C "${git_root}" ls-files --others --exclude-standard -- tgui) ]]
 }
 
-## Bundle merge driver
-task-merge-bundle() {
-  local file_path="${1}"
-  local file_current="${2}"
-  echo "----------------------"
-  echo "tgui: prepping to replace a conflicted bundle"
-  cat $file_path > $file_current
-  task-rebuild-conflicted-bundle &
-  exit 0
+task-tgui-tree-hash() {
+  git -C "${base_dir}/.." rev-parse HEAD:tgui
 }
 
-task-rebuild-conflicted-bundle() {
-  echo "----------------------"
-  echo "tgui: rebuilding a conflicted tgui bundle, ${file_path}"
+task-write-bundle-marker() {
+  local tgui_tree_hash
+  if task-tgui-is-dirty; then
+    rm -f "${base_dir}/public/.tgui-bundle.json"
+    return
+  fi
+  tgui_tree_hash="$(task-tgui-tree-hash)"
+  printf '{\n  "tguiTreeHash": "%s"\n}\n' "${tgui_tree_hash}" > "${base_dir}/public/.tgui-bundle.json"
+}
+
+task-build-production() {
   task-install
+  task-lint --fix
+  # These files are not included in the Rspack configuration, but are required
+  # by tgui.html at runtime.
+  yarn run build:helpers
+  # The stylesheet has a CSS entrypoint, which Rspack does not build directly.
+  yarn run build:style
   task-rspack --mode=production
-  echo "tgui: committing new bundle"
-	git commit -am "TGUI Bundle Rebuild"
-  exit 0
+  task-write-bundle-marker
+}
+
+task-json-value() {
+  local key="${1}"
+  local file="${2}"
+  sed -nE "s/.*\"${key}\"[[:space:]]*:[[:space:]]*\"([^\"]+)\".*/\1/p" "${file}" | head -n 1
+}
+
+task-archive-sha256() {
+  if hash sha256sum 2>/dev/null; then
+    sha256sum "${1}" | awk '{print $1}'
+  elif hash shasum 2>/dev/null; then
+    shasum -a 256 "${1}" | awk '{print $1}'
+  else
+    return 1
+  fi
+}
+
+task-ensure-bundle() {
+  local release_url="https://github.com/ss220club/Paradise-SS220/releases/download/tgui-bundles"
+  local tgui_tree_hash
+  local marker
+  local manifest
+  local archive
+  local manifest_tgui_tree_hash
+  local archive_name
+  local archive_sha256
+
+  if task-tgui-is-dirty; then
+    echo "tgui: source changes detected; building TGUI locally"
+    task-build-production
+    return
+  fi
+
+  tgui_tree_hash="$(task-tgui-tree-hash)"
+  marker="${base_dir}/public/.tgui-bundle.json"
+  if [[ -f "${marker}" ]] && [[ "$(task-json-value tguiTreeHash "${marker}")" == "${tgui_tree_hash}" ]] && [[ -f "${base_dir}/public/tgui.bundle.js" ]]; then
+    echo "tgui: using local bundle"
+    return
+  fi
+
+  manifest="${base_dir}/public/.tmp/tgui-manifest.json"
+  archive="${base_dir}/public/.tmp/tgui-public.zip"
+  mkdir -p "${base_dir}/public/.tmp"
+  if hash curl 2>/dev/null && curl -fsSL "${release_url}/tgui-manifest.json" -o "${manifest}"; then
+    manifest_tgui_tree_hash="$(task-json-value tguiTreeHash "${manifest}")"
+    archive_name="$(task-json-value archiveName "${manifest}")"
+    archive_sha256="$(task-json-value archiveSha256 "${manifest}")"
+    if [[ "${manifest_tgui_tree_hash}" == "${tgui_tree_hash}" ]] && [[ "${archive_name}" == "tgui-public.zip" ]] && \
+      curl -fsSL "${release_url}/${archive_name}" -o "${archive}" && \
+      [[ "$(task-archive-sha256 "${archive}")" == "${archive_sha256}" ]] && hash unzip 2>/dev/null; then
+      unzip -oq "${archive}" -d "${base_dir}"
+      if [[ -f "${marker}" ]] && [[ "$(task-json-value tguiTreeHash "${marker}")" == "${tgui_tree_hash}" ]]; then
+        echo "tgui: downloaded bundle"
+        return
+      fi
+    fi
+  fi
+
+  echo "tgui: no compatible published bundle; building TGUI locally"
+  task-build-production
 }
 
 ## Main
 ## --------------------------------------------------------
 
-if [[ ${1} == "--merge"* ]]; then
-  if [[ ${1} == "--merge=bundle" ]]; then
-    shift 1
-    task-merge-bundle "${@}"
-  fi
-  echo "Unknown merge strategy: ${1}"
-  exit 1
-fi
-
-if [[ ${1} == "--install-git-hooks" ]]; then
-  shift 1
-  task-install-git-hooks
+if [[ ${1} == "--ensure" ]]; then
+  task-ensure-bundle
   exit 0
 fi
 
@@ -221,22 +260,20 @@ if [[ ${1} == "--ci" ]]; then
   # The following script can't be trivially included into the rspack configuration,
   # because its entrypoint is a CSS file, which is not supported by webpack and subsequently rspack.
   yarn run build:style
-  task-validate-build
+  task-write-bundle-marker
   exit 0
 fi
 
 ## Run prettier
 if [[ ${1} == '--prettier' ]]; then
   shift 1
-  task-prettier --write "${@}"
+  npx prettier "${@}"
   exit 0
 fi
 
 ## Make a production rspack build
 if [[ -z ${1} ]]; then
-  task-install
-  task-lint --fix
-  task-rspack --mode=production
+  task-build-production
   exit 0
 fi
 

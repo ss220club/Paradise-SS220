@@ -42,15 +42,15 @@ You will need these programs to start developing in tgui:
 - [Git Bash](https://git-scm.com/downloads)
   or [MSys2](https://www.msys2.org/) (optional)
 
+Node.js is not required merely to run a clean clone of the game. On first
+server launch, the project downloads a matching prebuilt TGUI bundle. Node.js
+is required when changing TGUI itself, or when no matching bundle is available.
+
 ## Usage
 
 **For Git Bash, MSys2, WSL, Linux or macOS users:**
 
 Change your directory to `tgui`.
-
-Run `bin/tgui --install-git-hooks` to install merge drivers which will
-assist you in conflict resolution when rebasing your branches. Only has
-to be done once.
 
 Run `bin/tgui` with any of the options listed below.
 
@@ -69,6 +69,7 @@ Run `.\bin\tgui.bat` with any of the options listed below.
 **Available commands:**
 
 - `bin/tgui` - Build the project in production mode.
+- `bin/tgui --ensure` - Download a matching bundle when available, otherwise build it locally.
 - `bin/tgui --dev` - Launch a development server.
   - tgui development server provides you with incremental compilation,
   hot module replacement and logging facilities in all running instances
@@ -88,7 +89,6 @@ doing development on IE8).
 - `bin/tgui --test` - Run tests.
 - `bin/tgui --analyze` - Run a bundle analyzer.
 - `bin/tgui --clean` - Clean up project repo.
-- `bin/tgui --tgui-polyfill` - Build polyfills. You need to run it when updating any of the static (numbered) polyfills.
 - `bin/tgui [webpack options]` - Build the project with custom webpack
 options.
 
@@ -99,10 +99,8 @@ You can double-click these batch files to achieve the same thing:
 - `bin\tgui.bat` - Build the project in production mode.
 - `bin\tgui-dev-server.bat` - Launch a development server.
 
-> Remember to always run a full build before submitting a PR. It creates
-> a compressed javascript bundle which is then referenced from DM code.
-> We prefer to keep it version controlled, so that people could build the
-> game just by using Dream Maker.
+> TGUI build files are generated locally and are not committed to Git.
+> Changes to TGUI must pass the production build in CI before merging.
 
 ## Troubleshooting
 
