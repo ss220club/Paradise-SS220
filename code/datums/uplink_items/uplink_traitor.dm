@@ -11,7 +11,7 @@
 	name = "Банановая граната"
 	// name = "Banana Grenade"
 	desc = "Граната, которая при взрыве разбрасывает банановую кожуру, генетически модифицированную для придания \
-ей сильной скользкости."
+для придания ей исключительной скользкости."
 	// desc = "A grenade that scatters banana peels upon detonation, genetically modified to be extremely slippery when stepped on."
 	reference = "BG"
 	item = /obj/item/grenade/clown_grenade
@@ -67,7 +67,7 @@
 /datum/uplink_item/jobspecific/clown_car
 	name = "Хонк мобиль"
 	// name = "Clown Car"
-	desc = "Непревзойдённый транспорт для поистине достойного мастера клоунад! Просто вставьте личный гудок в замок зажигания, \
+	desc = "Непревзойдённый транспорт для поистине достойного мастера клоунады! Просто вставьте личный гудок в замок зажигания, \
 	садитесь за руль и готовьтесь к самой забавной поездке в вашей жизни! Вы можете таранить любых членов экипажа, \
 	которых встретите, и заталкивать их в свою машину, похищая и запирая внутри, пока кто-то не спасёт их или они не выберутся \
 	сами. Только не врежьтесь в стены или торговые автоматы — весь бюджет был потрачен Синдикатом на дизайн этого шедевра, \
@@ -87,8 +87,7 @@
 	name = "Трость-дробовик с крайне летальными патронами"
 	// name = "Cane Shotgun and Assassination Shells"
 	desc = "Специальный однозарядный дробовик со встроенным устройством маскировки под трость. Дробовик способен \
-	скрывать своё содержимое, а также имеет резьбу для установки глушителя. В комплекте 6 картечных патронов, покрытых \
-	токсином глушения против голосовых связок жертвы, и 1 уже заряжен в ствол."
+	скрывать своё содержимое, а также имеет резьбу для установки глушителя. В комплекте 6 картечных патронов, покрытых токсином, парализующим голосовые связки жертвы, и 1 уже заряжен в ствол."
 	// desc = "A specialized, one shell shotgun with a built-in cloaking device to mimic a cane. The shotgun is capable of hiding its contents and the pin alongside being suppressed. Comes boxed with 6 specialized shrapnel rounds laced with a silencing toxin, and 1 preloaded in the shotgun's chamber."
 	reference = "MCS"
 	item = /obj/item/storage/box/syndie_kit/caneshotgun
@@ -161,8 +160,8 @@
 /datum/uplink_item/jobspecific/meatcleaver
 	name = "Мясницкий тесак"
 	// name = "Meat Cleaver"
-	desc = "Зловещий мясницкий тесак, наносящий повреждения, сравнимые с Энергетическим мечом, но с дополнительным \
-	преимуществом: после смерти жертвы им удобно рубить её на куски мяса!"
+	desc = "Зловещий мясницкий тесак, наносящий повреждения, сравнимые с теми, что наносит Энергетический меч, \
+	но с дополнительным преимуществом: после смерти жертвы им удобно рубить её на куски мяса!"
 	// desc = "A mean looking meat cleaver that does damage comparable to an Energy Sword, but with the added benefit of chopping your victim into hunks of meat after they've died."
 	reference = "MC"
 	item = /obj/item/kitchen/knife/butcher/meatcleaver
@@ -183,7 +182,7 @@
 /datum/uplink_item/jobspecific/missionary_kit
 	name = "Стартовый набор миссионера"
 	// name = "Missionary Starter Kit"
-	desc = "Коробка, содержащая посох миссионера, робу миссионера и библию. Одежды и посох можно объединить силой \
+	desc = "Коробка, содержащая посох миссионера, робу миссионера и библию. Робу и посох можно объединить силой \
 	веры, чтобы на короткое время обращать жертв на свою сторону с расстояния и заставлять их выполнять ваши приказы. \
 	Библия — для библейских дел."
 	// desc = "A box containing a missionary staff, missionary robes, and bible. The robes and staff can be linked to allow you to convert victims at range for a short time to do your bidding. The bible is for bible stuff."
@@ -215,7 +214,7 @@
 	name = "Противопехотная мина"
 	// name = "Proximity Mine"
 	desc = "Противопехотная мина с датчиком приближения, искусно замаскированная под знак «Осторожно, \
-	мокрый пол», которая активируется при пробегании мимо неё. Разложите её, чтобы запустить 15-секундный \
+	мокрый пол», которая активируется, если пробежать мимо неё. Разложите её, чтобы запустить 15-секундный \
 	таймер для отбегания, или сложите обратно, чтобы обезвредить."
 	// desc = "An Anti-Personnel proximity mine cleverly disguised as a wet floor caution sign that is triggered by running past it. Activate it to start the 15 second timer and activate again to disarm."
 	reference = "PM"
@@ -306,7 +305,7 @@
 /datum/uplink_item/jobspecific/powergloves
 	name = "Био-чип силы"
 	// name = "Power Bio-Chip"
-	desc = "Био-чип, который может использовать энергию станции, чтобы нанести короткий электрический разряд по цели. \
+	desc = "Био-чип, который может использовать энергию станции, чтобы пропустить короткий электрический разряд по цели. \
 	Владелец должен стоять на подключённом кабеле для использования. Намерение помощи/обезоруживания повысит усталость \
 	жертвы и вызовет дрожь, в то время как намерение вреда/захвата нанесёт урон в зависимости от мощности сети, \
 	на кабеле которой вы стоите. Можно изменять состояние использования по желанию."
@@ -350,7 +349,7 @@
 	name = "Синдикатский MMI"
 	// name = "Syndicate MMI"
 	desc = "Разработанный Синдикатом ММИ, который поработит разум любого мозга, вставленного в него, пока он находится внутри. \
-	Киборги, созданные с этим ММИ, получат свод законов Синдиката, но будут казаться имеющими обычный свод законов и \
+	Киборги, созданные с этим ММИ, получат свод законов Синдиката, но будет казаться, что они имеют обычный свод законов и \
 	синхронизацию с ИИ станции. Обеспечивает иммунитет к дистанционному детонированию и блокированию шасси, если киборг не \
 	взломан Криптографическим Секвенсором. Его также можно вставить в мех, но ММИ не поместится в ядро ИИ."
 	// desc = "A syndicate developed man-machine-interface which will mindslave any brain inserted into it, for as long as it's inside. Cyborgs made with this MMI will be permanently slaved to you, but will appear to have a normal set of laws and be synchronized to the station AI, if present. Provides immunity to remote detonation and allows overriding lockdowns if the cyborg is not also emagged. It can also be inserted into a mech, but will not fit inside an AI core."
@@ -419,7 +418,7 @@
 	name = "Энергетический пожарный топор"
 	// name = "Energized Fire Axe"
 	desc = "Пожарный топор с крайне мощным регенератором энергии, встроенным в него. При ударе по кому-то во время \
-	полного заряда он отбросит их назад, одновременно ошеломляя их, но потребуется некоторое время для повторной зарядки. \
+	полного заряда он отбросит цель назад, одновременно ошеломляя её, но потребуется некоторое время для повторной зарядки. \
 	Он также намного острее обычного топора и может прорезать лёгкую броню."
 	// desc = "A fire axe with a massive energy charge built into it. Upon striking someone while charged it will throw them backwards while stunning them briefly, but will take some time to charge up again. It is also much sharper than a regular axe and can pierce light armor."
 	reference = "EFA"
