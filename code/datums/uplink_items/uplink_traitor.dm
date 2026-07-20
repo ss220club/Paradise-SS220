@@ -554,7 +554,7 @@
 	name = "Голо-сигара"
 	// name = "Holo-Cigar"
 	desc = "Голо-сигара, импортированая из Солнечной системы. При работе повышает концентрацию пользователя, позволяя \
-	стрелять с двух рук или использовать двуручное оружие с одной, прямо как настоящий Спец агент элитных сил Синдиката!"
+	стрелять с двух рук или использовать двуручное оружие с одной, прямо как настоящий спец-агент элитных сил Синдиката!"
 	// desc = "A holo-cigar imported from the Sol system. The full effects of looking so badass aren't understood yet, but users show an increase in precision while dual-wielding firearms."
 	reference = "SHC"
 	item = /obj/item/clothing/mask/holo_cigar
