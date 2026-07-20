@@ -31,17 +31,10 @@ jobs:
           python-version: '3.13'
           cache: 'pip'
 
-      - uses: actions/setup-node@v6.4.0
-        with:
-          node-version: 22
-          cache: 'yarn'
-          cache-dependency-path: ./tgui/yarn.lock
-
       - run: pip install -r tools/requirements.txt
       - name: Run Linters
         run: |
           tools/ci/check_json.sh
-          tgui/bin/tgui --ci
           python tools/ci/check_grep2.py
           python tools/ci/check_line_endings.py
           python tools/ci/check_file_names.py
@@ -64,13 +57,13 @@ jobs:
         shell: bash
         run: ~/dreamchecker 2>&1 | bash tools/ci/annotate_dm.sh
 
-  publish_tgui_bundle:
-    name: Publish TGUI Bundle
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    needs: run_linters
+  prepare_tgui:
+    name: Prepare TGUI
     runs-on: ubuntu-22.04
     permissions:
-      contents: write
+      contents: read
+    outputs:
+      should_build: ${{ steps.bundle.outputs.should_build }}
     steps:
       - uses: actions/checkout@v7.0.0
 
@@ -86,28 +79,61 @@ jobs:
           if gh release download tgui-bundles --pattern tgui-manifest.json --dir .tgui-bundle --clobber 2>/dev/null; then
             published_tgui_tree_hash="$(jq -r '.tguiTreeHash // empty' .tgui-bundle/tgui-manifest.json)"
             if [[ "$published_tgui_tree_hash" == "$tgui_tree_hash" ]]; then
-              echo "should_publish=false" >> "$GITHUB_OUTPUT"
-              echo "TGUI source tree is already published."
+              echo "should_build=false" >> "$GITHUB_OUTPUT"
               exit 0
             fi
           fi
-          echo "should_publish=true" >> "$GITHUB_OUTPUT"
+          echo "should_build=true" >> "$GITHUB_OUTPUT"
+
+      - name: Download published bundle
+        if: steps.bundle.outputs.should_build == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release download tgui-bundles --pattern tgui-public.zip --dir .tgui-bundle --clobber
+          archive_sha256="$(jq -r '.archiveSha256' .tgui-bundle/tgui-manifest.json)"
+          echo "$archive_sha256  .tgui-bundle/tgui-public.zip" | sha256sum --check --status
+          unzip -oq .tgui-bundle/tgui-public.zip
 
       - uses: actions/setup-node@v6.4.0
-        if: steps.bundle.outputs.should_publish == 'true'
+        if: steps.bundle.outputs.should_build == 'true'
         with:
           node-version: 22
+          cache: 'yarn'
+          cache-dependency-path: ./tgui/yarn.lock
 
-      - name: Build TGUI bundle
-        if: steps.bundle.outputs.should_publish == 'true'
+      - name: Build TGUI
+        if: steps.bundle.outputs.should_build == 'true'
         run: tgui/bin/tgui --ci
 
+      - name: Upload TGUI bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: tgui-public
+          path: tgui/public
+          if-no-files-found: error
+
+  publish_tgui_bundle:
+    name: Publish TGUI Bundle
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && needs.prepare_tgui.outputs.should_build == 'true'
+    needs: prepare_tgui
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7.0.0
+
+      - name: Download TGUI bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: tgui-public
+          path: tgui/public
+
       - name: Create bundle archive and manifest
-        if: steps.bundle.outputs.should_publish == 'true'
         shell: bash
         run: |
           tgui_tree_hash="$(git rev-parse HEAD:tgui)"
-          printf '{\n  "tguiTreeHash": "%s"\n}\n' "$tgui_tree_hash" > tgui/public/.tgui-bundle.json
           zip -qr tgui-public.zip tgui/public
           archive_sha256="$(sha256sum tgui-public.zip | awk '{print $1}')"
           jq -n \
@@ -120,7 +146,6 @@ jobs:
             }' > tgui-manifest.json
 
       - name: Publish bundle release
-        if: steps.bundle.outputs.should_publish == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -133,8 +158,14 @@ jobs:
   odlint:
     name: Lint with OpenDream
     runs-on: ubuntu-22.04
+    needs: prepare_tgui
     steps:
       - uses: actions/checkout@v7.0.0
+      - name: Download TGUI bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: tgui-public
+          path: tgui/public
       - name: Setup OD
         run: |
           bash tools/ci/setup_od.sh
@@ -149,12 +180,18 @@ jobs:
   compile_all_maps:
     name: Compile All Maps
     runs-on: ubuntu-22.04
+    needs: prepare_tgui
     strategy:
       fail-fast: false
       matrix:
         byondtype: ['STABLE']
     steps:
       - uses: actions/checkout@v7.0.0
+      - name: Download TGUI bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: tgui-public
+          path: tgui/public
       - name: Restore BYOND from Cache
         uses: ./.github/actions/restore_or_install_byond
         with:
@@ -231,6 +268,7 @@ jobs:
   station_mapload_tests:
     name: Station Tests
     runs-on: ubuntu-22.04
+    needs: prepare_tgui
     strategy:
       fail-fast: false # Let all map tests run to completion
       matrix:
@@ -238,6 +276,11 @@ jobs:
         byondtype: ['STABLE']
     steps:
       - uses: actions/checkout@v7.0.0
+      - name: Download TGUI bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: tgui-public
+          path: tgui/public
       - name: Restore BYOND from Cache
         uses: ./.github/actions/restore_or_install_byond
         with:
@@ -254,12 +297,18 @@ jobs:
   unit_tests_and_sql:
     name: Unit Tests + SQL Validation
     runs-on: ubuntu-22.04
+    needs: prepare_tgui
     strategy:
       fail-fast: false
       matrix:
         byondtype: ['STABLE']
     steps:
       - uses: actions/checkout@v7.0.0
+      - name: Download TGUI bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: tgui-public
+          path: tgui/public
       - name: Restore BYOND from Cache
         uses: ./.github/actions/restore_or_install_byond
         with:
