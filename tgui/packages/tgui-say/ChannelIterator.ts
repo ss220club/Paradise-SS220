@@ -1,5 +1,15 @@
 export type Channel =
-  'Say' | 'Radio' | 'Whisper' | 'Me' | 'OOC' | 'LOOC' | 'Mentor' | 'Admin' | 'Dsay' | 'Dev' | 'Staff';
+  | 'Say'
+  | 'Radio'
+  | 'Whisper'
+  | 'Me'
+  | 'OOC'
+  | 'LOOC'
+  | 'Mentor'
+  | 'Admin'
+  | 'Dsay'
+  | 'Dev'
+  | 'Staff';
 
 /**
  * ### ChannelIterator
