@@ -1,1 +1,1 @@
-#define PATH_TO_TRANSLATE_DATA "modular_ss220/translations/code/translation/public"
+#define PATH_TO_TRANSLATE_DATA "modular_ss220/translations/public"
