@@ -1,16 +1,8 @@
 /obj/item/gripper/engineering/Initialize(mapload)
-	. = ..()
 	can_hold |= list(
-		/obj/item/mounted/frame/light_fixture,
-		/obj/item/mounted/frame/apc_frame,
-		/obj/item/mounted/frame/alarm_frame,
-		/obj/item/mounted/frame/firealarm,
-		/obj/item/mounted/frame/display/newscaster_frame,
-		/obj/item/mounted/frame/intercom,
-		/obj/item/mounted/frame/extinguisher,
-		/obj/item/mounted/frame/light_switch,
 		/obj/item/flash,
 	)
+	return ..()
 
 /obj/item/gripper/medical
 	actions_types = list(/datum/action/item_action/drop_gripped_item)
@@ -28,7 +20,6 @@
 	)
 
 /obj/item/gripper/service/Initialize(mapload)
-	. = ..()
 	can_hold |= list(
 		/obj/item/card,
 		/obj/item/camera_film,
@@ -36,6 +27,7 @@
 		/obj/item/disk/design_disk,
 		/obj/item/disk/plantgene,
 	)
+	return ..()
 
 /obj/structure/morgue/attack_ai(mob/user)
 	add_hiddenprint(user)
