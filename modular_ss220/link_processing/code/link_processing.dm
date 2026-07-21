@@ -2,6 +2,15 @@
 /datum/preferences/proc/process_all_parts_limb(mob/user, new_state)
 	var/list/all_parts = list("chest", "groin", "head", "l_arm", "r_arm", "l_leg", "r_leg", "l_hand", "r_hand", "l_foot", "r_foot")
 
+	var/list/temp_organ_data = list()
+	var/list/temp_rlimb_data = list()
+	var/apply_head_changes = FALSE
+	var/temp_ha_style
+	var/temp_alt_head
+	var/temp_h_style
+	var/temp_f_style
+	var/list/temp_m_styles = list()
+
 	if(new_state == "Normal")
 		for(var/part in all_parts)
 			if(part == "head")
@@ -79,22 +88,42 @@
 					return
 				model = selected_model
 
-		if(part == "head")
-			active_character.ha_style = "None"
-			active_character.alt_head = null
-			active_character.h_style = GLOB.hair_styles_public_list["Bald"]
-			active_character.f_style = GLOB.facial_hair_styles_list["Shaved"]
-			active_character.m_styles["head"] = "None"
-		active_character.rlimb_data[part] = model
-		active_character.organ_data[part] = "cyborg"
+			if(part == "head")
+				apply_head_changes = TRUE
+				temp_ha_style = "None"
+				temp_alt_head = null
+				temp_h_style = GLOB.hair_styles_public_list["Bald"]
+				temp_f_style = GLOB.facial_hair_styles_list["Shaved"]
+				temp_m_styles["head"] = "None"
 
-		var/child_part
-		switch(part)
-			if("l_arm") child_part = "l_hand"
-			if("r_arm") child_part = "r_hand"
-			if("l_leg") child_part = "l_foot"
-			if("r_leg") child_part = "r_foot"
-		if(child_part)
-			active_character.rlimb_data[child_part] = model
-			active_character.organ_data[child_part] = "cyborg"
+			temp_rlimb_data[part] = model
+			temp_organ_data[part] = "cyborg"
+
+			var/child_part
+			switch(part)
+				if("l_arm") child_part = "l_hand"
+				if("r_arm") child_part = "r_hand"
+				if("l_leg") child_part = "l_foot"
+				if("r_leg") child_part = "r_foot"
+			if(child_part)
+				temp_rlimb_data[child_part] = model
+				temp_organ_data[child_part] = "cyborg"
+
+	var/confirm = tgui_alert(user, "Apply these changes to all parts?", "Confirm Changes", list("Yes", "No"))
+	if(confirm != "Yes")
+		return
+
+
+	if(apply_head_changes)
+		active_character.ha_style = temp_ha_style
+		active_character.alt_head = temp_alt_head
+		active_character.h_style = temp_h_style
+		active_character.f_style = temp_f_style
+		for(var/k in temp_m_styles)
+			active_character.m_styles[k] = temp_m_styles[k]
+
+	for(var/part in temp_organ_data)
+		active_character.organ_data[part] = temp_organ_data[part]
+	for(var/part in temp_rlimb_data)
+		active_character.rlimb_data[part] = temp_rlimb_data[part]
 // SS220 EDIT END
