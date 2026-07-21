@@ -32,6 +32,13 @@ cd ../../
 
 echo "Deploying Rustlibs..."
 cd $1/rust
-env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --features all --target=i686-unknown-linux-gnu
+env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --all-features --target=i686-unknown-linux-gnu
 mv target/i686-unknown-linux-gnu/release/librustlibs.so "$1/librustlibs.so"
 cd ..
+
+echo "Assembling ru_names.toml..."
+cd "$1"
+
+tools/bootstrap/python tools/translations/merge_ru_names.py tools/translations/ru_names_header.toml modular_ss220/translations/public/ru_names modular_ss220/translations/public/ru_names.toml
+tools/bootstrap/python tools/translations/validate_ru_names.py modular_ss220/translations/public/ru_names.toml
+cd "$original_dir"

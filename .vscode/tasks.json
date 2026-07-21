@@ -2,13 +2,43 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"type": "shell",
+			"command": "tools/bootstrap/python",
+			"args": [
+				"tools/translations/merge_ru_names.py",
+				"tools/translations/ru_names_header.toml",
+				"modular_ss220/translations/public/ru_names",
+				"modular_ss220/translations/public/ru_names.toml"
+			],
+			"windows": {
+				"command": ".\\tools\\bootstrap\\python.bat"
+			},
+			"problemMatcher": [],
+			"label": "ru_names: compile translation"
+		},
+		{
+			"type": "shell",
+			"command": "tools/bootstrap/python",
+			"args": [
+				"tools/translations/split_ru_names.py",
+			],
+			"windows": {
+				"command": ".\\tools\\bootstrap\\python.bat"
+			},
+			"problemMatcher": [],
+			"label": "ru_names: split translation"
+		},
+		{
 			"type": "dreammaker",
-			"dme": "paradise.dme",
+			"dme": "${command:CurrentDME}",
 			"problemMatcher": [
 				"$dreammaker"
 			],
-			"group": "build",
-			"label": "dm: build - paradise.dme"
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "dm: build - ${command:CurrentDME}"
 		},
 		{
 			"type": "shell",
@@ -36,21 +66,6 @@
 			],
 			"group": "build",
 			"label": "tgui: run dev server"
-		},
-		{
-			"type": "shell",
-			"command": ".\\tools\\translations\\new_ru_name_fragment.cmd",
-			"args": ["${selectedText}"],
-			"presentation": {
-				"reveal": "always",
-				"panel": "dedicated",
-				"focus": false,
-				"showReuseMessage": false,
-				"clear": false,
-				"close": false
-			},
-			"problemMatcher": [],
-			"label": "ru_names: new fragment from selection",
 		}
 	]
 }
