@@ -33709,6 +33709,7 @@
 	name = "Creature Cell #7"
 	},
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/sign/electricshock,
 /turf/simulated/floor/plating,
 /area/station/science/xenobiology)
 "cOJ" = (
@@ -33725,6 +33726,7 @@
 	name = "Creature Cell #8"
 	},
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/sign/electricshock,
 /turf/simulated/floor/plating,
 /area/station/science/xenobiology)
 "cOO" = (
@@ -34902,6 +34904,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tiles/department/science/side,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "cTC" = (
@@ -34994,7 +34997,7 @@
 /obj/machinery/access_button{
 	autolink_id = "xeno_btn_int";
 	name = "Xenobiology Access Button";
-	pixel_y = 24;
+	pixel_y = 30;
 	req_access = list(55)
 	},
 /obj/effect/turf_decal/tiles/department/science,
@@ -35409,6 +35412,7 @@
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 1
 	},
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "cVI" = (
@@ -35851,10 +35855,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/storage)
-"cXb" = (
-/obj/item/radio/intercom/directional/south,
-/turf/simulated/wall,
-/area/station/science/research)
 "cXc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -37915,13 +37915,6 @@
 /obj/item/megaphone,
 /turf/simulated/floor/carpet/purple,
 /area/station/command/office/rd)
-"dih" = (
-/obj/machinery/light/directional/east,
-/obj/effect/turf_decal/tiles/department/science/side{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel/white,
-/area/station/science/research)
 "dij" = (
 /obj/structure/grille,
 /turf/space,
@@ -38603,7 +38596,6 @@
 	dir = 5
 	},
 /obj/effect/turf_decal/tiles/department/science,
-/obj/machinery/light/floor,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "dlb" = (
@@ -40021,16 +40013,6 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/port)
-"drL" = (
-/obj/structure/sign/science{
-	pixel_x = -32;
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/tiles/department/science/corner{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel,
-/area/station/hallway/primary/aft)
 "drM" = (
 /obj/machinery/disposal,
 /obj/machinery/light_switch/south,
@@ -46198,6 +46180,9 @@
 	},
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 1
+	},
+/obj/item/radio/intercom/directional/north{
+	pixel_y = 36
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
@@ -52583,6 +52568,18 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/service/bar/atrium)
+"fTm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel/white,
+/area/station/science/research)
 "fTn" = (
 /turf/simulated/floor/wood/cherry,
 /area/station/service/chapel/office)
@@ -71087,6 +71084,7 @@
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 4
 	},
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
 "lGu" = (
@@ -79261,7 +79259,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tiles/department/science,
-/obj/machinery/light/floor,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "occ" = (
@@ -84161,7 +84158,6 @@
 "pCm" = (
 /obj/structure/displaycase/labcage,
 /obj/effect/turf_decal/delivery,
-/obj/structure/sign/poster/contraband/lamarr/directional/west,
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/command/office/rd)
@@ -90574,10 +90570,10 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/poster/official/random/directional/west,
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 10
 	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "rxZ" = (
@@ -105329,6 +105325,17 @@
 /obj/effect/turf_decal/tiles/department/medical,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/reception)
+"wgT" = (
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/tiles/department/science/corner{
+	dir = 8
+	},
+/obj/structure/sign/science{
+	pixel_x = -32;
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel,
+/area/station/hallway/primary/aft)
 "wgV" = (
 /obj/machinery/camera{
 	c_tag = "Fore Hallway South";
@@ -108503,6 +108510,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/structure/sign/poster/official/random/directional/west,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "xeO" = (
@@ -135834,7 +135842,7 @@ cIL
 cIL
 cIL
 cIL
-cOT
+cIL
 cVG
 dla
 ybB
@@ -140989,7 +140997,7 @@ cSt
 hnH
 hnH
 lGl
-dih
+hnH
 lSc
 dYG
 cRd
@@ -145348,7 +145356,7 @@ cSm
 cZt
 cZt
 cZt
-cXb
+cZt
 cZt
 dZb
 oNc
@@ -146124,7 +146132,7 @@ oVj
 wXn
 nDH
 sgX
-dgv
+fTm
 xuW
 dgv
 dgv
@@ -148958,8 +148966,8 @@ dnC
 doS
 dHT
 doY
-dqk
-drL
+wgT
+cVA
 cVA
 cVA
 cVA
