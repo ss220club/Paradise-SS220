@@ -14,7 +14,7 @@
 	desc = "Заменяет и добавляет продвинутые реагенты в гипоспрей."
 	id = "borg_upgrade_hypospray"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/hypospray/upgraded
+	build_path = /obj/item/borg/upgrade/hypospray
 	req_tech = list("biotech" = 7, "materials" = 7)
 	materials = list(MAT_METAL=15000, MAT_URANIUM=2000, MAT_DIAMOND=5000, MAT_SILVER=10000)
 	construction_time = 12 SECONDS
@@ -26,7 +26,7 @@
 	desc = "Увеличивает количество создаваемых голопроекций до трёх."
 	id = "borg_upgrade_atmos_holofan_better"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/atmos_holofan/cyborg/better
+	build_path = /obj/item/borg/upgrade/atmos_holofan_better
 	req_tech = list("materials" = 5, "engineering" = 5, "magnets" = 5)
 	materials = list(MAT_METAL=5000, MAT_SILVER=2500, MAT_GOLD=2500, MAT_GLASS=2500)
 	construction_time = 12 SECONDS
@@ -37,7 +37,7 @@
 	desc = "Увеличивает количество создаваемых голопроекций до пяти."
 	id = "borg_upgrade_atmos_holofan_best"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/atmos_holofan/cyborg/best
+	build_path = /obj/item/borg/upgrade/atmos_holofan_best
 	req_tech = list("materials" = 7, "engineering" = 7, "magnets" = 7, "programming" = 7)
 	materials = list(MAT_TITANIUM=5000, MAT_SILVER=5000, MAT_GOLD = 5000, MAT_GLASS=2500, MAT_DIAMOND=1500)
 	construction_time = 12 SECONDS

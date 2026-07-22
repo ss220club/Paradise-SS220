@@ -26,7 +26,7 @@
 
 	return TRUE
 
-/obj/item/borg/upgrade/hypospray/upgraded
+/obj/item/borg/upgrade/hypospray
 	name = "Upgraded Hypospray"
 	desc = "Добавляет и заменяет некоторые реагенты гипоспрея на более продвинутые."
 	icon_state = "cyborg_upgrade2"
@@ -38,7 +38,7 @@
 	)
 
 // Улучшения голопроектора //
-/obj/item/borg/upgrade/atmos_holofan/cyborg/better
+/obj/item/borg/upgrade/atmos_holofan_better
 	name = "Upgraded ATMOS holofan projector"
 	desc = "Повышает энергоэффективность проектора, позволяя создавать до 3 голопроекций."
 	icon_state = "cyborg_upgrade2"
@@ -49,7 +49,7 @@
 		/obj/item/holosign_creator/atmos/cyborg = /obj/item/holosign_creator/atmos/cyborg/better
 	)
 
-/obj/item/borg/upgrade/atmos_holofan/cyborg/best
+/obj/item/borg/upgrade/atmos_holofan_best
 	name = "Advanced ATMOS holofan projector"
 	desc = "Оптимизирует энергоэффективность проектора и заменяет микросхемы на продвинутые, позволяя создавать до 5 голопроекций."
 	icon_state = "cyborg_upgrade5"
