@@ -12,7 +12,7 @@
 		/obj/item/gps/cyborg,
 		/obj/item/holosign_creator/atmos/cyborg,
 	)
-	special_rechargables = list(
+	special_rechargables |= list(
 		/obj/item/lightreplacer/cyborg,
 	)
 	return ..()
