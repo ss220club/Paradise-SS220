@@ -56,7 +56,7 @@
 	origin_tech = "materials=6;engineering=6;magnets=6;programming=6"
 	require_module = TRUE
 	module_type = /obj/item/robot_module/engineering
-	required_upgrades = list(/obj/item/borg/upgrade/atmos_holofan/cyborg/better)
+	required_upgrades = list(/obj/item/borg/upgrade/atmos_holofan_better)
 	items_to_replace = list(
 		/obj/item/holosign_creator/atmos/cyborg/better = /obj/item/holosign_creator/atmos/cyborg/best
 	)
