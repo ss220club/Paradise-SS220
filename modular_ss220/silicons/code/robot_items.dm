@@ -5,7 +5,7 @@
 	opacity = FALSE
 
 // Голопроектор и улучшенные варианты //
-/obj/item/holosign_creator/atmos/cyborg
+/obj/item/holosign_creator/atmos/basic
 	name = "ATMOS holofan projector"
 	desc = "Стандартный модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами. Создаваемые голопроекции полностью блокируют перемещение газов.\
 		<br>Количество создаваемых голопроекций снижено до одной относительно немодульного аналога в целях снижения энергопотребления."
@@ -13,7 +13,7 @@
 	icon_state = "atmos_holofan"
 	max_signs = 1
 
-/obj/item/holosign_creator/atmos/cyborg/better
+/obj/item/holosign_creator/atmos/better
 	name = "upgraded ATMOS holofan projector"
 	desc = "Улучшенный модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами.\
 		<br>Количество создаваемых голопроекций увеличено до 3 за счёт применения улучшенных материалов."
@@ -21,7 +21,7 @@
 	icon_state = "atmos_holofan_better"
 	max_signs = 3
 
-/obj/item/holosign_creator/atmos/cyborg/best
+/obj/item/holosign_creator/atmos/best
 	name = "advanced ATMOS holofan projector"
 	desc = "Продвинутый модуль ATMOS голопроектора, предназначенный для использования инженерными киборгами.\
 		<br>Количество создаваемых голопроекций увеличено до 5 за счёт точечной оптимизации микросхем и применения редких материалов."

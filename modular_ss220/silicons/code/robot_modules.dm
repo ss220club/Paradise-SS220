@@ -1,7 +1,7 @@
 // Drone
 /obj/item/robot_module/drone/Initialize(mapload)
 	basic_modules |= list(
-		/obj/item/holosign_creator/atmos/cyborg,
+		/obj/item/holosign_creator/atmos/basic,
 	)
 	return ..()
 
@@ -10,7 +10,7 @@
 	basic_modules |= list(
 		/obj/item/lightreplacer/cyborg,
 		/obj/item/gps/cyborg,
-		/obj/item/holosign_creator/atmos/cyborg,
+		/obj/item/holosign_creator/atmos/basic,
 	)
 	special_rechargables |= list(
 		/obj/item/lightreplacer/cyborg,
@@ -54,7 +54,7 @@
 /obj/item/robot_module/syndicate_saboteur/Initialize(mapload)
 	basic_modules |= list(
 		/obj/item/gripper/engineering,
-		/obj/item/holosign_creator/atmos/cyborg/better,
+		/obj/item/holosign_creator/atmos/better,
 	)
 	return ..()
 
