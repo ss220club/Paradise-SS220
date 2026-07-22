@@ -1,5 +1,5 @@
 /obj/item/borg/upgrade/storageincreaser
-	name = "Storage Increaser"
+	name = "storage increaser"
 	desc = "Расширяет внутреннее хранилище киборга внедрением блюспейс технологий."
 	icon_state = "cyborg_upgrade2"
 	origin_tech = "bluespace=4;materials=5;engineering=3"
@@ -27,7 +27,7 @@
 	return TRUE
 
 /obj/item/borg/upgrade/hypospray
-	name = "Upgraded Hypospray"
+	name = "upgraded hypospray"
 	desc = "Добавляет и заменяет некоторые реагенты гипоспрея на более продвинутые."
 	icon_state = "cyborg_upgrade2"
 	origin_tech = "biotech=6;materials=5"
@@ -39,7 +39,7 @@
 
 // Улучшения голопроектора //
 /obj/item/borg/upgrade/atmos_holofan_better
-	name = "Upgraded ATMOS holofan projector"
+	name = "upgraded ATMOS holofan projector"
 	desc = "Повышает энергоэффективность проектора, позволяя создавать до 3 голопроекций."
 	icon_state = "cyborg_upgrade2"
 	origin_tech = "materials=4;engineering=4;magnets=4"
@@ -50,7 +50,7 @@
 	)
 
 /obj/item/borg/upgrade/atmos_holofan_best
-	name = "Advanced ATMOS holofan projector"
+	name = "advanced ATMOS holofan projector"
 	desc = "Оптимизирует энергоэффективность проектора и заменяет микросхемы на продвинутые, позволяя создавать до 5 голопроекций."
 	icon_state = "cyborg_upgrade5"
 	origin_tech = "materials=6;engineering=6;magnets=6;programming=6"
