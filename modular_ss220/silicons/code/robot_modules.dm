@@ -20,7 +20,7 @@
 /obj/item/robot_module/medical/Initialize(mapload)
 	basic_modules |= list(
 		/obj/item/gps/cyborg,
-		// TODO: Вернуть "/obj/item/rlf,", когда будет исправлена его инициализация
+		/obj/item/rlf,
 	)
 	return ..()
 
@@ -47,7 +47,7 @@
 /obj/item/robot_module/syndicate_medical/Initialize(mapload)
 	basic_modules |= list(
 		/obj/item/gps/cyborg,
-		// TODO: Вернуть "/obj/item/rlf,", когда будет исправлена его инициализация
+		/obj/item/rlf,
 	)
 	return ..()
 
