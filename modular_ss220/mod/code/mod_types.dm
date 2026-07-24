@@ -102,7 +102,7 @@
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/status_readout,
 		/obj/item/mod/module/flashlight,
-		/obj/item/mod/module/magboot,
+		/obj/item/mod/module/magboot/advanced,
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/ert_camera,
 	)
