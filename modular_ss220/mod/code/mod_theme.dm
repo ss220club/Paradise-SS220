@@ -282,6 +282,66 @@ NS-83, в виду специфики своего применения, дел�
 /obj/item/mod/armor/mod_theme_responsory/red
 	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 15, BOMB = 40, RAD = 25, FIRE = INFINITY, ACID = 150)
 
+// Helldiver
+/datum/mod_theme/responsory/helldiver
+	name = "\improper 'Helldiver' responsory"
+	desc = "Высокотехнологичный боевой MODsuit 'Хеллдайвер', разработанный и произведенный Нанотрейзен. Хорошо бронированный, герметичный приспособленный под путешествия в областях с агрессиной фауной. \
+		Лучшее корпоративное оборудование для обеспечения безопасности на другой планете."
+	extended_desc = "Костюм быстрого реагирования EX-5 'Хеллдайвер' - один из самых лучших в категории 'мобильность и качество' из всех боевых костюмов на рынке. \
+		Внутри EX-5 установлена система NTOS-11, что позволяет использовать несравненные возможности настройки в сочетании с \
+		необычайно щедрыми техническими характеристиками 'Хеллдайвера'. EX-5 можно встретить только в отряде быстрого реагирования Нанотрейзен."
+	default_skin = "helldiver"
+	armor_type_1 = /obj/item/mod/armor/mod_theme_responsory/helldiver
+	resistance_flags = FIRE_PROOF | LAVA_PROOF
+	flag_2_flags = RAD_PROTECT_CONTENTS_2
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	siemens_coefficient = 0
+	slowdown_inactive = 0.75
+	slowdown_active = -0.2
+	complexity_max = DEFAULT_MAX_COMPLEXITY + 5
+	allowed_suit_storage = list(
+		/obj/item/resonator,
+		/obj/item/mining_scanner,
+		/obj/item/t_scanner/adv_mining_scanner,
+		/obj/item/pickaxe,
+		/obj/item/kinetic_crusher,
+		/obj/item/stack/ore/plasma,
+		/obj/item/storage/bag/ore,
+		/obj/item/gun/energy/kinetic_accelerator,
+	)
+	species_allowed = list("Human")
+	skins = list(
+		"helldiver" = list(
+			MOD_ICON_OVERRIDE = 'modular_ss220/mod/icons/object/mod_clothing.dmi',
+			HELMET_FLAGS = list(
+				UNSEALED_LAYER = COLLAR_LAYER,
+
+				SEALED_CLOTHING = THICKMATERIAL | STOPSPRESSUREDMAGE | BLOCK_GAS_SMOKE_EFFECT | BLOCKHAIR,
+				UNSEALED_INVISIBILITY = HIDEFACE,
+				SEALED_INVISIBILITY = HIDEMASK | HIDEEYES | HIDEEARS | HIDEFACE,
+				SEALED_COVER = HEADCOVERSMOUTH | HEADCOVERSEYES,
+			),
+			CHESTPLATE_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT | HIDETAIL,
+			),
+			GAUNTLETS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+			BOOTS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+		),
+	)
+
+/obj/item/mod/armor/mod_theme_responsory/helldiver
+	armor = list(MELEE = 100, BULLET = 45, LASER = 45, ENERGY = 35, BOMB = 140, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
+
 // MARK: Misc modsuits
 /datum/mod_theme/prototype/spacebattle
 	inbuilt_modules = list()

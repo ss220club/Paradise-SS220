@@ -93,6 +93,20 @@
 /obj/item/mod/control/pre_equipped/responsory/red/inquisitory
 	applied_skin = "inquisitory"
 
+// Helldiver
+/obj/item/mod/control/pre_equipped/responsory/helldiver
+	theme = /datum/mod_theme/responsory/helldiver
+	applied_modules = list(
+		/obj/item/mod/module/storage/nanotrasen,
+		/obj/item/mod/module/welding,
+		/obj/item/mod/module/emp_shield,
+		/obj/item/mod/module/status_readout,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/magboot,
+		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/ert_camera,
+	)
+
 // MARK: Misc modsuits
 /obj/item/mod/control/pre_equipped/prototype/spacebattle
 	theme = /datum/mod_theme/prototype/spacebattle
