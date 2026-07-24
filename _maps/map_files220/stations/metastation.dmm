@@ -19438,6 +19438,7 @@
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 8
 	},
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/robotics)
 "cbc" = (
@@ -35125,6 +35126,9 @@
 "eRc" = (
 /obj/machinery/economy/vending/coffee,
 /obj/effect/turf_decal/tiles/dark/checker,
+/obj/structure/sign/nosmoking/alt{
+	pixel_x = 30
+	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/break_room)
 "eRh" = (
@@ -36233,6 +36237,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tiles/dark/checker,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/break_room)
 "fjy" = (
@@ -39016,10 +39021,8 @@
 "giv" = (
 /obj/structure/chair/sofa/corp/right,
 /obj/effect/landmark/start/scientist,
-/obj/structure/sign/nosmoking/alt{
-	pixel_y = 30
-	},
 /obj/effect/turf_decal/tiles/dark/checker,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/break_room)
 "giA" = (
@@ -42959,7 +42962,6 @@
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 9
 	},
-/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/robotics)
 "hLX" = (
@@ -46646,15 +46648,15 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/science/xenobio,
-/obj/machinery/access_button{
-	autolink_id = "xeno_btn_int";
-	name = "Xenobiology Access Button";
-	pixel_x = -3;
-	pixel_y = 26;
-	req_access = list(55)
-	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/turf_decal/tiles/department/science,
+/obj/machinery/access_button{
+	autolink_id = "xeno_btn_ext";
+	name = "Xenobiology Access Button";
+	pixel_y = -24;
+	req_access = list(55);
+	pixel_x = -5
+	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/xenobiology)
 "jeA" = (
@@ -49834,12 +49836,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "kls" = (
-/obj/machinery/light_switch{
-	dir = 4;
-	name = "custom placement";
-	pixel_x = -24;
-	pixel_y = -6
-	},
 /obj/machinery/camera{
 	c_tag = "Xenobiology Lab - Fore";
 	dir = 4;
@@ -53128,6 +53124,15 @@
 /obj/effect/turf_decal/tiles/department/security/corner,
 /turf/simulated/floor/plasteel,
 /area/station/security/main)
+"lvm" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/machinery/light/directional/west,
+/turf/simulated/floor/grass/no_creep,
+/area/station/science/research)
 "lvY" = (
 /obj/structure/closet/emcloset,
 /obj/effect/spawner/random/maintenance,
@@ -53547,7 +53552,6 @@
 /turf/space,
 /area/space/nearstation)
 "lFH" = (
-/obj/machinery/light/directional/south,
 /obj/item/storage/box/donkpockets{
 	pixel_x = 3;
 	pixel_y = 3
@@ -78022,15 +78026,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel/dark,
 /area/station/turret_protected/ai)
-"uVl" = (
-/obj/machinery/light/directional/north,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass/no_creep,
-/area/station/science/research)
 "uVm" = (
 /obj/machinery/camera{
 	c_tag = "Science Toxins Mixing - Aft Starboard";
@@ -116484,8 +116479,8 @@ cJp
 cJp
 wez
 cJp
-uVl
 taW
+lvm
 taW
 taW
 cBJ
