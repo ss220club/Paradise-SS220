@@ -639,6 +639,7 @@
 					var/valid_limbs = list("Left Leg", "Right Leg", "Left Arm", "Right Arm", "Left Foot", "Right Foot", "Left Hand", "Right Hand")
 					if(S.bodyflags & ALL_RPARTS)
 						valid_limbs = list("Torso", "Lower Body", "Head", "Left Leg", "Right Leg", "Left Arm", "Right Arm", "Left Foot", "Right Foot", "Left Hand", "Right Hand")
+						valid_limbs |= "All Parts" // SS220 EDIT - IPCs can apply one state/manufacturer to all robotic body parts.
 					var/limb_name = tgui_input_list(user, "Which limb do you want to change?", "Limbs and Parts", valid_limbs)
 					if(!limb_name) return
 
@@ -690,6 +691,14 @@
 
 					var/new_state = tgui_input_list(user, "What state do you wish the limb to be in?", "[limb_name]", valid_limb_states)
 					if(!new_state) return
+
+					// SS220 EDIT START - IPCs can apply one state/manufacturer to all robotic body parts.
+					if(limb_name == "All Parts")
+						process_all_parts_limb(user, new_state)
+						ShowChoices(user)
+						return
+
+					// SS220 EDIT END
 
 					switch(new_state)
 						if("Normal")
