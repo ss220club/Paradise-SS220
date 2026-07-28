@@ -19955,7 +19955,6 @@
 /area/station/service/chapel)
 "bgM" = (
 /obj/structure/table/wood,
-/obj/structure/extinguisher_cabinet/directional/east,
 /obj/item/storage/fancy/candle_box/eternal{
 	pixel_x = -5;
 	pixel_y = 5
@@ -20181,17 +20180,17 @@
 /area/station/hallway/primary/aft)
 "bhz" = (
 /obj/machinery/alarm/directional/north,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 9
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
@@ -20370,9 +20369,6 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
@@ -20473,13 +20469,21 @@
 	pixel_y = 3
 	},
 /obj/item/storage/fancy/candle_box/full,
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel)
 "bip" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
@@ -32493,19 +32497,9 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/chemistry)
 "itd" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/door/airlock/service/glass,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plasteel,
+/obj/structure/sign/service/chapel,
+/obj/effect/spawner/window/reinforced/grilled,
+/turf/simulated/floor/plating,
 /area/station/service/chapel)
 "itm" = (
 /obj/structure/table/wood,
@@ -37889,8 +37883,18 @@
 /turf/simulated/floor/carpet/grimey,
 /area/station/command/office/ntrep)
 "mrY" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/sign/service/chapel,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/service/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/station/service/chapel)
 "msb" = (
