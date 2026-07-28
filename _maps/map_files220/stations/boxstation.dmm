@@ -82260,6 +82260,12 @@
 /obj/effect/turf_decal/tiles/department/cargo/side{
 	dir = 5
 	},
+/obj/machinery/door_control{
+	id = "smithdesk";
+	name = "Smith's Desk Shutters Control";
+	pixel_y = 24;
+	req_access = list(49)
+	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/smith_office)
 "qat" = (
@@ -92578,13 +92584,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "trR" = (
-/obj/machinery/door_control{
-	id = "smithdesk";
-	name = "Smith's Desk Shutters Control";
-	pixel_x = 24;
-	pixel_y = 23;
-	req_access = list(49)
-	},
 /obj/structure/chair/office/dark{
 	dir = 4
 	},
