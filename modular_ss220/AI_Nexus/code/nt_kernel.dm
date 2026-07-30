@@ -1,9 +1,36 @@
+/**
+ * NT Operating System Kernel — консоль управления системами станции (КУД).
+ *
+ * Перфокарта (/obj/item/perfocard) определена отдельно в perfocards.dm.
+ *
+ * Этап 1: только каркас — вставка/извлечение карты, авторизация с задержкой,
+ * заглушка главного меню. Логика "Модулей ИИ" и "Красной кнопки" — следующий этап.
+ */
+
+// ══════════════════════════════════════════════════════════════════════════
+// ПЛАТА КОНСОЛИ
+// ══════════════════════════════════════════════════════════════════════════
+
+/obj/item/circuitboard/computer/nt_kernel
+	name = "плата (NT Operating System Kernel)"
+	build_path = /obj/machinery/computer/nt_kernel
+	origin_tech = "programming=4;engineering=4"
+
+// ══════════════════════════════════════════════════════════════════════════
+// КОНСОЛЬ КУД
+// ══════════════════════════════════════════════════════════════════════════
+
+/// Время авторизации по умолчанию (для перфокарты 1 уровня)
+#define NT_KERNEL_AUTH_TIME_TIER1 (10 SECONDS)
+/// Время авторизации для перфокарты 2 уровня (Т2)
+#define NT_KERNEL_AUTH_TIME_TIER2 (15 SECONDS)
+
 /obj/machinery/computer/nt_kernel
 	name = "консоль NT Operating System Kernel"
 	desc = "Терминал глубинного доступа к системам управления станцией. Требует физический ключ доступа."
 	icon_keyboard = "id_key"
 	icon_screen = "id"
-	circuit = /obj/item/circuitboard/nt_kernel // заведёшь плату отдельно
+	circuit = /obj/item/circuitboard/computer/nt_kernel
 
 	/// Вставленная перфокарта
 	var/obj/item/perfocard/inserted_card
@@ -11,11 +38,14 @@
 	var/authorizing = FALSE
 	/// TRUE после успешной проверки — доступно главное меню
 	var/authorized = FALSE
+	/// Таймер текущей авторизации (чтобы можно было отменить при выдёргивании карты)
+	var/authorize_timer_id
 
 /obj/machinery/computer/nt_kernel/Destroy()
 	if(inserted_card)
 		qdel(inserted_card)
 		inserted_card = null
+	deltimer(authorize_timer_id)
 	return ..()
 
 /obj/machinery/computer/nt_kernel/item_interaction(mob/living/user, obj/item/used, list/modifiers)
@@ -23,6 +53,7 @@
 		if(inserted_card)
 			to_chat(user, SPAN_WARNING("В консоли уже установлена перфокарта."))
 			return ITEM_INTERACT_COMPLETE
+		user.drop_item()
 		used.forceMove(src)
 		inserted_card = used
 		to_chat(user, SPAN_NOTICE("Вы вставляете перфокарту в считыватель."))
@@ -35,10 +66,27 @@
 		return
 	authorized = FALSE
 	authorizing = FALSE
+	deltimer(authorize_timer_id)
+	authorize_timer_id = null
 	inserted_card.forceMove(get_turf(src))
-	if(user && Adjacent(user))
+	if(user && ishuman(user) && Adjacent(user) && !user.get_active_hand())
 		user.put_in_hands(inserted_card)
 	inserted_card = null
+
+/obj/machinery/computer/nt_kernel/attack_hand(mob/user)
+	if(..())
+		return
+	if(stat & NOPOWER)
+		to_chat(user, SPAN_WARNING("Консоль обесточена!"))
+		return
+	if(stat & BROKEN)
+		to_chat(user, SPAN_WARNING("Консоль сломана!"))
+		return
+	add_fingerprint(user)
+	ui_interact(user)
+
+/obj/machinery/computer/nt_kernel/attack_ghost(mob/user)
+	return ui_interact(user)
 
 /obj/machinery/computer/nt_kernel/ui_state(mob/user)
 	return GLOB.default_state
@@ -69,7 +117,8 @@
 			if(!inserted_card || authorizing || authorized)
 				return
 			authorizing = TRUE
-			addtimer(CALLBACK(src, PROC_REF(finish_authorize)), 10 SECONDS)
+			var/auth_time = (inserted_card.access_tier >= 2) ? NT_KERNEL_AUTH_TIME_TIER2 : NT_KERNEL_AUTH_TIME_TIER1
+			authorize_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_authorize)), auth_time, TIMER_STOPPABLE)
 			return
 		if("logout")
 			authorized = FALSE
@@ -77,21 +126,10 @@
 
 /obj/machinery/computer/nt_kernel/proc/finish_authorize()
 	authorizing = FALSE
+	authorize_timer_id = null
 	if(!inserted_card) // карту могли выдернуть во время загрузки
 		return
 	authorized = TRUE
 
-// ─────────────────────────────────────────
-// CIRCUIT BOARDS
-// ─────────────────────────────────────────
-
-/obj/item/circuitboard/nt_kernel
-	board_name = "консоль NT Operating System Kernel"
-	icon_state = "command"
-	build_path = /obj/machinery/computer/nt_kernel
-	origin_tech = "programming=5;engineering=5"
-
-/obj/item/circuitboard/nt_kernel_broken
-	board_name = "консоль NT Operating System Kernel"
-	desc = SPAN_WARNING("The board is charred and smells of burnt plastic. It has been rendered useless.")
-	icon_state = "command_broken"
+#undef NT_KERNEL_AUTH_TIME_TIER1
+#undef NT_KERNEL_AUTH_TIME_TIER2

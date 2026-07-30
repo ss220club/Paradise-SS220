@@ -1,0 +1,31 @@
+@use '../colors.scss';
+
+.NTKernel__matrixBg {
+  background-color: #000;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 65, 0.08) 0px,
+    rgba(0, 255, 65, 0.08) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  background-size: 100% 40px;
+  animation: ntkernel-scroll 6s linear infinite;
+}
+
+.NTKernel__glow {
+  font-family: monospace;
+  letter-spacing: 0.15em;
+  text-shadow:
+    0 0 6px #00ff41,
+    0 0 12px #00ff41;
+}
+
+@keyframes ntkernel-scroll {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 40px;
+  }
+}
