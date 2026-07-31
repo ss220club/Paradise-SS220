@@ -16849,6 +16849,13 @@
 "hAr" = (
 /turf/simulated/floor/carpet/red,
 /area/wizard_station)
+"hAy" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Escape Shuttle Cell"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/security/doors,
+/turf/simulated/floor/mineral/plastitanium/red/brig,
+/area/shuttle/escape)
 "hAD" = (
 /obj/structure/light_fake/small{
 	dir = 4
@@ -22110,8 +22117,9 @@
 "jPy" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Escape Shuttle Cell";
-	req_access = list(63)
+	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /turf/simulated/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "jPE" = (
@@ -46280,7 +46288,8 @@
 /turf/simulated/wall/indestructible/rock,
 /area/vox_base)
 "uUb" = (
-/obj/machinery/door/airlock/external/glass{
+/obj/effect/mapping_helpers/airlock/access/any/security/doors,
+/obj/machinery/door/airlock/titanium/glass{
 	name = "Emergency Airlock Access"
 	},
 /turf/simulated/floor/plasteel,
@@ -47885,8 +47894,8 @@
 	},
 /area/vox_base)
 "vBp" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Escape Shuttle Cargo"
+/obj/machinery/door/airlock/titanium/glass{
+	name = "Shuttle Cargo Hatch"
 	},
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
@@ -82270,7 +82279,7 @@ jnR
 snC
 snC
 eRG
-jPy
+hAy
 snC
 snC
 iuG
