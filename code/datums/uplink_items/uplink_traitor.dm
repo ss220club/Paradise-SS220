@@ -795,7 +795,7 @@
 	name = "Сигнальный маяк эвакуации"
 	// name = "Extraction Flare"
 	desc = "Специальная сигнальная ракета для вызова портала эвакуации. Порталу требуется время для раскрытия, \
-	и он будет работать только в определённых местах, откалиброваных заранее нашей командой под прикрытием. \
+	и он будет работать только в определённых местах, откалиброванных заранее нашей командой под прикрытием. \
 	Синдикат оставляет за собой право отказать в портале агентам с определёнными целями и в определённое время."
 	// desc = "A special flare used to call in an extraction portal. The portal takes time to generate, and will only work in certain rooms that it is pre-calibrated for. The Syndicate withholds the right to deny a portal to agents with certain objectives."
 	reference = "EXTF"
@@ -821,7 +821,7 @@
 	// name = "Amplifying Thermal Safe Drill"
 	desc = "Термобур из карбида вольфрама с магнитными зажимами для сверления закалённых сейфов. \
 	Оснащён встроенной системой обнаружения службы безопасности, чтобы держать вас начеку, \
-	если служба безопасность будет уже на пороге."
+	если служба безопасности будет уже на пороге."
 	// desc = "A tungsten carbide thermal drill with magnetic clamps for the purpose of drilling hardened objects. Comes with built in security detection and nanite system, to keep you up if security comes a-knocking."
 	reference = "DRL"
 	item = /obj/item/thermal_drill/syndicate
