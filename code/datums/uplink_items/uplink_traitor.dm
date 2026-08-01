@@ -71,7 +71,7 @@
 	садитесь за руль и готовьтесь к самой забавной поездке в вашей жизни! Вы можете таранить любых членов экипажа, \
 	которых встретите, и заталкивать их в свою машину, похищая и запирая внутри, пока кто-то не спасёт их или они не выберутся \
 	сами. Только не врежьтесь в стены или торговые автоматы — весь бюджет Синдикат потратил на дизайн этого шедевра, \
-	поэтому на пружинных сиденьях пришлось сэкономить! Теперь и с встроенной системой разлития смазки, которая защитит вас \
+	поэтому на пружинных сиденьях пришлось сэкономить! Теперь и со встроенной системой разлития смазки, которая защитит вас \
 	от разъяренных фанатов, желающих вашего автографа! Премиум-функции доступны только для владельцев криптографического \
 	секвенсора."
 	// desc = "The Clown Car is the ultimate transportation method for any worthy clown! Simply insert your bikehorn and get in, and get ready to have the funniest ride of your life! You can ram any crew you come across and stuff them into your car, kidnapping them and locking them inside until someone saves them or they manage to crawl out. Be sure not to ram into any walls or vending machines, as the springloaded seats are very sensitive. Now with our included lube defense mechanism which will protect you against any angry shitcurity! Premium features can be unlocked with a cryptographic sequencer!"
@@ -97,7 +97,7 @@
 /datum/uplink_item/jobspecific/mimery
 	name = "Руководство по улучшенным пантомимам"
 	// name = "Guide to Advanced Mimery Series"
-	desc = "Содержит два руководства для обучения по улучшенным пантомимам. Вы сможете стрелять смертельными \
+	desc = "Содержит два руководства для обучения улучшенным пантомимам. Вы сможете стрелять смертельными \
 	беззвучными пулями прямо из пальцев и создавать широкие воображаемые стены, способные заблокировать целый коридор!"
 	// desc = "Contains two manuals to teach you advanced Mime skills. You will be able to shoot lethal bullets that silence out of your fingers, and create large walls that can block an entire hallway!"
 	reference = "AM"
@@ -120,7 +120,7 @@
 // Shaft miner
 
 /datum/uplink_item/jobspecific/pressure_mod
-	name = "Модкит «Давления» для кинетического акселератора"
+	name = "Модкит «Давление» для кинетического акселератора"
 	// name = "Kinetic Accelerator Pressure Mod"
 	desc = "Модкит, позволяющий кинетическим акселераторам наносить значительно больше повреждений в помещениях с нормальной \
 	атмосферой. Занимает 35% выделенного объёма акселератора."
