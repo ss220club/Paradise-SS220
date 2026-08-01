@@ -1034,8 +1034,8 @@
 /datum/uplink_item/explosives/atmosfiregrenades
 	name = "Гранаты плазменного огня"
 	// name = "Plasma Fire Grenades"
-	desc = "Коробка с двумя кластерными гранатами начинёнными до отказа плазмой. Прекрасно справляются с \
-	аннигилированием больших областей. Полезность повышается, если у вас есть костюм защищённый от огня и перепадов давления."
+	desc = "Коробка с двумя кластерными гранатами, начинёнными до отказа плазмой. Прекрасно справляются с \
+	аннигилированием больших областей. Полезность повышается, если у вас есть костюм, защищённый от огня и перепадов давления."
 	// desc = "A box of two (2) grenades that cause large plasma fires. Can be used to deny access to a large area. Most useful if you have an atmospherics hardsuit."
 	reference = "APG"
 	item = /obj/item/storage/box/syndie_kit/atmosfiregrenades
