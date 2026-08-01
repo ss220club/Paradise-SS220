@@ -644,7 +644,7 @@
 	// name = "Holoparasites"
 	reference = "HPA"
 	desc = "Способные к почти невообразимым подвигам благодаря использованию голограмм жёсткого света и наномашин, \
-	они требуют органического хозяина в качестве базы и источника топлива. Из-за особенностей организма цели, \
+	они требуют органического хозяина в качестве базы и источника топлива. Из-за особенностей организма цели \
 	инъекцию нельзя сделать Генокрадам и Вампирам."
 	// desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an organic host as a home base and source of fuel. \
 	// The holoparasites are unable to incoporate themselves to changeling and vampire agents."
