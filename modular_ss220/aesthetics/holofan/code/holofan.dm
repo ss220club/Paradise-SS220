@@ -5,7 +5,6 @@
 
 /obj/item/holosign_creator/atmos/improved
 	name = "Improved ATMOS holofan projector"
-	desc = "A bluespace-improved holographic projector that creates holographic barriers that prevent changes in atmosphere conditions."
 	desc = "Улучшенный ATMOS голопроектор. Создаваемые голопроекции полностью блокируют перемещение газов.\
 		<br>Количество создаваемых голопроекций увеличено до 5 за счёт точечной оптимизации микросхем и применения редких материалов."
 	icon_state = "signmaker_atmos_improved"
