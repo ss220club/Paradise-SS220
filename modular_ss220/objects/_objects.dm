@@ -29,6 +29,6 @@
 	)
 
 	GLOB.reinforced_glass_recipes += list(
-		new /datum/stack_recipe/window("directional tinted window", /obj/structure/window/reinforced/tinted, 2, time = 1 SECONDS, on_floor = TRUE, window_checks = TRUE),
-		new /datum/stack_recipe/window("fulltile tinted window", /obj/structure/window/full/reinforced/tinted, 4, time = 2 SECONDS, on_floor = TRUE, window_checks = TRUE),
+		new /datum/stack_recipe/window("directional tinted window", /obj/structure/window/reinforced/tinted, 1, time = 1 SECONDS, on_floor = TRUE, window_checks = TRUE),
+		new /datum/stack_recipe/window("fulltile tinted window", /obj/structure/window/full/reinforced/tinted, 2, time = 2 SECONDS, on_floor = TRUE, window_checks = TRUE),
 	)
