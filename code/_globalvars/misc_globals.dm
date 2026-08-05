@@ -64,9 +64,36 @@ GLOBAL_DATUM(main_fission_reactor, /obj/machinery/atmospherics/fission_reactor)
 
 ///Global list for descriptors
 // SS220 EDIT START - Translated to RU
-GLOBAL_LIST_INIT(character_physiques, list("костлявым", "хрупким", "худощавым", "сухим", "долговязым", "потрёпанным", "обычным", "стройным", "подтянутым", "крепким", "мускулистым", "атлетичным", "рельефным", "пухлым", "разжиревшим"))
+/// Physique defines
+#define PHYSIQUE_SKINNY        "костлявым"
+#define PHYSIQUE_FRAGILE       "хрупким"
+#define PHYSIQUE_SLIM          "худощавым"
+#define PHYSIQUE_DRY           "сухим"
+#define PHYSIQUE_LANKY         "долговязым"
+#define PHYSIQUE_WORN          "потрёпанным"
+#define PHYSIQUE_AVERAGE       "обычным"
+#define PHYSIQUE_LEAN          "стройным"
+#define PHYSIQUE_FIT           "подтянутым"
+#define PHYSIQUE_STOCKY        "крепким"
+#define PHYSIQUE_MUSCULAR      "мускулистым"
+#define PHYSIQUE_ATHLETIC      "атлетичным"
+#define PHYSIQUE_RIPPED        "рельефным"
+#define PHYSIQUE_PLUMP         "пухлым"
+#define PHYSIQUE_FAT           "разжиревшим"
 
-GLOBAL_LIST_INIT(character_heights, list("карликового", "крайне низкого", "низкого", "обычного", "высокого", "очень высокого", "гигантского"))
+/// Height defines
+#define HEIGHT_DWARF           "карликового"
+#define HEIGHT_VERY_SHORT      "крайне низкого"
+#define HEIGHT_SHORT           "низкого"
+#define HEIGHT_AVERAGE         "обычного"
+#define HEIGHT_TALL            "высокого"
+#define HEIGHT_VERY_TALL       "очень высокого"
+#define HEIGHT_GIANT           "гигантского"
+
+GLOBAL_LIST_INIT(character_physiques, list(PHYSIQUE_SKINNY, PHYSIQUE_FRAGILE, PHYSIQUE_SLIM, PHYSIQUE_DRY, PHYSIQUE_LANKY, PHYSIQUE_WORN, PHYSIQUE_AVERAGE, PHYSIQUE_LEAN, PHYSIQUE_FIT, PHYSIQUE_STOCKY, PHYSIQUE_MUSCULAR, PHYSIQUE_ATHLETIC, PHYSIQUE_RIPPED, PHYSIQUE_PLUMP, PHYSIQUE_FAT))
+
+GLOBAL_LIST_INIT(character_heights, list(HEIGHT_DWARF, HEIGHT_VERY_SHORT, HEIGHT_SHORT, HEIGHT_AVERAGE, HEIGHT_TALL, HEIGHT_VERY_TALL, HEIGHT_GIANT))
+
 // SS220 EDIT END
 
 #define GLOBAL_SPARK_LIMIT 500
