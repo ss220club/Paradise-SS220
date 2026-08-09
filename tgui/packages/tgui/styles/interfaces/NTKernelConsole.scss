@@ -87,6 +87,138 @@
     0 0 14px #ff0000;
 }
 
+.NTKernel__rebootGlow {
+  font-family: monospace;
+  letter-spacing: 0.1em;
+  color: #4ea8ff;
+  text-shadow:
+    0 0 8px #4ea8ff,
+    0 0 18px #4ea8ff;
+}
+
+.NTKernel__pulse {
+  color: #ff2b2b;
+  animation: ntkernel-pulse 0.9s ease-in-out infinite;
+}
+
+/// "Камень в воду" — короткое искажение картинки в момент запуска протокола перезагрузки
+.NTKernel__glitch {
+  animation: ntkernel-glitch 0.6s ease-in-out;
+}
+
+// ─── CMD-экран — фаза executing, "система отображения тоже перезагружается" ──
+
+.NTKernel__cmdBg {
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.NTKernel__cmdScreen {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.NTKernel__cmdTitlebar {
+  flex: 0 0 auto;
+  margin: 10px 40px 14px 10px; // справа отступ побольше — как будто место под свернуть/раскрыть/закрыть
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(0, 255, 65, 0.35);
+  box-shadow: 0 0 4px rgba(0, 255, 65, 0.4);
+}
+
+.NTKernel__cmdBody {
+  flex: 1 1 auto;
+  padding: 4px 12px;
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #00ff41;
+  overflow: hidden;
+}
+
+.NTKernel__cmdLine {
+  white-space: pre-wrap;
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.5);
+}
+
+.NTKernel__cmdLineSmall {
+  font-size: 9px;
+  opacity: 0.85;
+}
+
+// Три смысловых цвета терминала: зелёный — твой собственный ввод (эхо команды),
+// белый — прямой результат/вывод команды, серый — вспомогательный текст (описания, подсказки)
+.NTKernel__cmdText--input {
+  color: #00ff41;
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.5);
+}
+
+.NTKernel__cmdText--output {
+  color: #e8ffe8;
+  text-shadow: 0 0 3px rgba(232, 255, 232, 0.35);
+}
+
+.NTKernel__cmdText--desc {
+  color: #7a8a7a;
+  text-shadow: none;
+}
+
+.NTKernel__cmdText--root {
+  color: #ff4444;
+  text-shadow: 0 0 4px rgba(255, 68, 68, 0.6);
+}
+
+.NTKernel__cmdText--input_root {
+  color: #ff4444;
+  text-shadow: 0 0 4px rgba(255, 68, 68, 0.6);
+}
+
+.NTKernel__cmdBodyScrollable {
+  overflow-y: auto;
+}
+
+.NTKernel__cmdInput {
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  color: #00ff41;
+  font-family: monospace;
+  font-size: 11px;
+  line-height: inherit;
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.5);
+  caret-color: transparent; // свой блочный курсор рядом заменяет нативный тонкий
+}
+
+.NTKernel__cmdPromptLine {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.NTKernel__cmdPromptCaret {
+  font-family: monospace;
+  white-space: pre;
+  padding-right: 2px; // явный зазор перед первым введённым символом
+}
+
+.NTKernel__cmdCursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #00ff41;
+  box-shadow: 0 0 4px rgba(0, 255, 65, 0.8);
+  animation: ntkernel-cursor-blink 1s steps(1) infinite;
+}
+
 @keyframes ntkernel-rain-fall {
   0% {
     transform: translateY(-20%);
@@ -110,5 +242,67 @@
   }
   to {
     filter: brightness(1.25);
+  }
+}
+
+@keyframes ntkernel-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 6px #ff0000,
+      0 0 14px #ff0000;
+  }
+  50% {
+    opacity: 0.55;
+    text-shadow:
+      0 0 2px #ff0000,
+      0 0 4px #ff0000;
+  }
+}
+
+@keyframes ntkernel-cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ntkernel-glitch {
+  0% {
+    filter: none;
+    transform: none;
+  }
+  8% {
+    filter: hue-rotate(25deg) blur(0.5px);
+    transform: skewX(2deg) translateX(3px);
+  }
+  16% {
+    filter: hue-rotate(-20deg);
+    transform: skewX(-2deg) translateX(-3px);
+  }
+  26% {
+    filter: none;
+    transform: translateX(2px);
+  }
+  38% {
+    filter: hue-rotate(15deg) blur(0.5px);
+    transform: skewX(1.5deg);
+  }
+  55% {
+    filter: none;
+    transform: translateX(-1px);
+  }
+  75% {
+    filter: hue-rotate(-8deg);
+    transform: translateX(1px);
+  }
+  100% {
+    filter: none;
+    transform: none;
   }
 }

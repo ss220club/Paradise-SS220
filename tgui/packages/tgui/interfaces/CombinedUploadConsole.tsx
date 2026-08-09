@@ -39,7 +39,7 @@ export const CombinedUploadConsole = () => {
       <Window.Content>
         <Stack vertical fill>
           {/* Шапка с предупреждением о emag */}
-          {emagged && (
+          {!!emagged && (
             <Stack.Item>
               <NoticeBox danger>
                 <Icon name="skull" mr={1} />
