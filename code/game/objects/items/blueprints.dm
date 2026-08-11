@@ -244,8 +244,10 @@
 /obj/item/areaeditor/proc/check_tile_is_border(turf/T2, dir)
 	if(isspaceturf(T2))
 		return BORDER_SPACE //omg hull breach we all going to die here
-	if(get_area_type(T2.loc)!=AREA_SPACE)
-		return BORDER_BETWEEN
+	// SS220 EDIT START - Исправление кривой разметки, убрана проверка на зоны
+	//if(get_area_type(T2.loc)!=AREA_SPACE)
+	//return BORDER_BETWEEN
+	// SS220 EDIT END
 	if(iswallturf(T2))
 		return BORDER_2NDTILE
 	if(ismineralturf(T2))
