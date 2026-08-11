@@ -188,6 +188,7 @@
 	A.powernet.lighting_powered = FALSE
 	A.powernet.environment_powered = FALSE
 	A.always_unpowered = FALSE
+	// SS220 EDIT - FIX: Прок изменения динамического освещения перенесён ниже. Удалено: A.set_dynamic_lighting()
 
 	for(var/i in 1 to length(turfs))
 		var/turf/thing = turfs[i]
@@ -205,8 +206,12 @@
 	message_admins("A new room was made by [key_name_admin(usr)] at [ADMIN_VERBOSEJMP(usr)] with the name [str]")
 	log_game("A new room was made by [key_name(usr)] at [AREACOORD(usr)] with the name [str]")
 	area_created = TRUE
+
+	// SS220 EDIT START - FIX: Прок сброса и установки динамического освещения новой зоны для избежания конфликта освещения между территориями.
 	A.set_dynamic_lighting(DYNAMIC_LIGHTING_DISABLED)
 	A.set_dynamic_lighting(DYNAMIC_LIGHTING_ENABLED)
+	//SS220 EDIT END
+
 	return area_created
 
 /obj/item/areaeditor/proc/edit_area()
