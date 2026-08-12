@@ -16,6 +16,10 @@
 	layer = TURF_LAYER
 	desc = "Death to Nanotrasen."
 
+// Turf decals for Omegastation
+/obj/effect/decal/sign_omegastation
+	icon = 'modular_ss220/maps220/icons/omega_station_floor.dmi'
+
 // Turf decals
 /obj/effect/turf_decal/miscellaneous
 	icon_state = null
