@@ -86,7 +86,7 @@
 
 /obj/item/clothing/mask/gas/swat/sso
 	name = "Противогаз ССО"
-	desc = "Протигаз, специально созданный для сил специальных операций."
+	desc = "Противогаз, специально созданный для сил специальных операций."
 	icon = 'modular_ss220/SSO/icons/suit/sso_icon.dmi'
 	icon_state = "mask"
 	worn_icon = 'modular_ss220/SSO/icons/suit/sso_worn.dmi'

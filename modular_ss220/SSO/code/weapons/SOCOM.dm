@@ -205,7 +205,6 @@
 	fire_delay = 20
 	burst_size = 1
 	slot_flags = ITEM_SLOT_BACK
-	slot_flags = ITEM_SLOT_BACK
 
 /obj/item/gun/projectile/automatic/sniper_rifle/sso/update_icon_state()
 	icon_state = "[initial(icon_state)][magazine ? "-[magazine.max_ammo]" : ""][chambered ? "" : "-e"][suppressed ? "-suppressed" : ""]"
@@ -244,7 +243,6 @@
 	worn_icon = 'modular_ss220/SSO/icons/inhands/guns_worn.dmi'
 	worn_icon_state = "KORD"
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = 0
 	mag_type = /obj/item/ammo_box/magazine/mg_kord
 	weapon_weight = WEAPON_HEAVY
 	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/autocannon_fire.ogg' // подтырено с маринов
@@ -259,10 +257,6 @@
 	slot_flags = ITEM_SLOT_BACK
 	var/cover_open = FALSE
 	var/zoomable = TRUE
-
-/obj/item/gun/projectile/automatic/mg/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
 
 /obj/item/gun/projectile/automatic/mg/attack_self__legacy__attackchain(mob/user)
 	cover_open = !cover_open
@@ -314,6 +308,7 @@
 
 /obj/item/gun/projectile/automatic/mg/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
 	if(zoomable)
 		AddComponent(/datum/component/scope, range_modifier = 2, flags = SCOPE_TURF_ONLY | SCOPE_NEED_ACTIVE_HAND)
 
