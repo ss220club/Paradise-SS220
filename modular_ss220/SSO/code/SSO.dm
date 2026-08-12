@@ -14,7 +14,7 @@
 	ignore_suitadjust = 0
 	suit_adjusted = 1
 	actions_types = list(/datum/action/item_action/openclose)
-	adjust_flavour = "unbutton"
+	adjust_flavour = "unzipped"
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/ricardo
 	name = "Пальто Р.Милошевича"
