@@ -992,6 +992,15 @@
 
 /obj/item/ammo_casing/mm762x51/ap
 	icon_state = "casing762mmAP"
+
+/obj/item/ammo_casing/mm762x51/bleeding
+	icon_state = "casing762mm"
+
+/obj/item/ammo_casing/mm762x51/hollow
+	icon_state = "casing762mm"
+
+/obj/item/ammo_casing/mm762x51/incen
+	icon_state = "casing762mm"
 ///////
 /obj/item/ammo_casing/mm762x51/soporific
 	name = "7,62x51 Сонный патрон"
