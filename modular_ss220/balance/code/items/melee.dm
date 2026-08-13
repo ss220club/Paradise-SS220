@@ -233,13 +233,11 @@
 
 /obj/item/push_broom/traitor/wield(obj/item/source, mob/living/carbon/user)
 	set_nodrop(TRUE, user)
-	to_chat(user, SPAN_NOTICE("Вы прочно взяли [src] в обе руки."))
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(sweep))
+	. = ..()
 
 /obj/item/push_broom/traitor/unwield(obj/item/source, mob/living/carbon/user)
 	set_nodrop(FALSE, user)
-	to_chat(user, SPAN_NOTICE("Вы расслабили хватку на [src]."))
-	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+	. = ..()
 
 
 
