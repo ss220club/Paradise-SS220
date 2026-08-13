@@ -247,11 +247,11 @@
 	restricted_species = list(/datum/species/unathi)
 	restriction_message = "Мышцы пронзает сильный холод и выбросаете попытку взять Тесак Прорыва в обе руки. Только истинный Воин \
 	достоин иметь столь сильный клинок!"
-/*
+
 /obj/item/melee/breach_cleaver/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_try_wield))
-*/
+
 /obj/item/melee/breach_cleaver/proc/on_try_wield(datum/source, mob/living/user)
 	SIGNAL_HANDLER
 	if(can_use(user))
@@ -282,6 +282,7 @@
 			Воинов Могеса. Вы не рассчитываете свои силы, роняете [src] на пол и падаете вместе с ним."))
 		user.KnockDown(3 SECONDS)
 		user.Confused(4 SECONDS)
+		user.drop_item_to_ground(src, force = TRUE)
 		return FINISH_ATTACK
 
 /obj/item/melee/breach_cleaver/throw_at(atom/target, range, speed, mob/living/thrower, spin = 1, diagonals_first = 0, datum/callback/callback, force, dodgeable)
