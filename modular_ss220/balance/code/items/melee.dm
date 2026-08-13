@@ -25,9 +25,6 @@
 	return FALSE
 
 
-
-
-
 /obj/item/melee/energy
 	var/sharpening_allowed = FALSE
 
@@ -121,14 +118,14 @@
 	is_breaching = TRUE
 
 	user.visible_message(
-		SPAN_DANGER("[user] заносит [src] для удара по [wall]!"),
-		SPAN_DANGER("Вы готовитесь нанести мощный удар по [wall].")
+		SPAN_WARNING("[user] заносит [src] для удара по [wall]!"),
+		SPAN_WARNING("Вы готовитесь нанести мощный удар по [wall].")
 	)
 
 	if(!do_after(user, 2 SECONDS, needhand = TRUE, target = wall, progress = TRUE))
 		user.visible_message(
-			SPAN_DANGER("[user] бросает затею ломать [wall]."),
-			SPAN_DANGER("Вы бросаете затею ломать [wall].")
+			SPAN_WARNING("[user] бросает затею ломать [wall]."),
+			SPAN_WARNING("Вы бросаете затею ломать [wall].")
 		)
 
 		is_breaching = FALSE
@@ -248,13 +245,13 @@
 
 /obj/item/melee/breach_cleaver
 	restricted_species = list(/datum/species/unathi)
-	restriction_message = "Мышцы пронзает сильный холод и выбросаете попытку взять [src] в обе руки. Только истинный Воин \
+	restriction_message = "Мышцы пронзает сильный холод и выбросаете попытку взять Тесак Прорыва в обе руки. Только истинный Воин \
 	достоин иметь столь сильный клинок!"
-
+/*
 /obj/item/melee/breach_cleaver/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_try_wield))
-
+*/
 /obj/item/melee/breach_cleaver/proc/on_try_wield(datum/source, mob/living/user)
 	SIGNAL_HANDLER
 	if(can_use(user))
@@ -287,11 +284,11 @@
 		user.Confused(4 SECONDS)
 		return FINISH_ATTACK
 
-/obj/item/melee/breach_cleaver/throw_at(atom/target, range, speed, mob/living/user, spin = 1, diagonals_first = 0, datum/callback/callback, force, dodgeable)
-	if(user && !can_use(user))
-		to_chat(user, SPAN_DANGER("Клинок слишком тяжёлый, чтобы его можно было так просто кинуть! Вы не рассчитываете \
+/obj/item/melee/breach_cleaver/throw_at(atom/target, range, speed, mob/living/thrower, spin = 1, diagonals_first = 0, datum/callback/callback, force, dodgeable)
+	if(thrower && !can_use(thrower))
+		to_chat(thrower, SPAN_DANGER("Клинок слишком тяжёлый, чтобы его можно было так просто кинуть! Вы не рассчитываете \
 		свои силы и в момент броска с треском падаете."))
-		user.KnockDown(1 SECONDS)
+		thrower.KnockDown(1 SECONDS)
 		range = min(range, 2)
 	return ..()
 
