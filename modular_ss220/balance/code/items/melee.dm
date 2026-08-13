@@ -256,7 +256,7 @@
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_try_wield))
 
 /obj/item/melee/breach_cleaver/proc/on_try_wield(datum/source, mob/living/user)
-	SIGNAL_HANDLER  // COMSIG_TWOHANDED_WIELD
+	SIGNAL_HANDLER
 	if(can_use(user))
 		return NONE
 	to_chat(user, SPAN_DANGER("[get_restriction_message(user)]"))
