@@ -1,6 +1,6 @@
 /obj/item/melee
 	var/list/restricted_species = null
-	var/restriction_message = "This weapon does not recognise your biology and refuses to be wielded!"
+	var/restriction_message = "Непонятная сила мешает вам овладеть оружием!"
 
 /obj/item/melee/proc/can_use(mob/living/user)
 	if(!restricted_species || !length(restricted_species))
@@ -8,18 +8,6 @@
 	if(!user.dna?.species)
 		return FALSE
 	return is_type_in_list(user.dna.species, restricted_species)
-
-/*
-/obj/item/melee/proc/can_use(mob/living/user)
-	if(!restricted_species)
-		return TRUE
-	if(!ishuman(user))
-		return FALSE
-	var/mob/living/carbon/human/human_user = user
-	if(is_type_in_list(human_user.dna.species, restricted_species))
-		return TRUE
-	return FALSE
-*/
 
 /obj/item/melee/proc/get_restriction_message(mob/living/user)
 	return restriction_message
@@ -35,6 +23,10 @@
 		return TRUE
 	to_chat(user, SPAN_DANGER(get_restriction_message(user)))
 	return FALSE
+
+
+
+
 
 /obj/item/melee/energy
 	var/sharpening_allowed = FALSE
@@ -249,21 +241,20 @@
 
 /obj/item/push_broom/traitor/unwield(obj/item/source, mob/living/carbon/user)
 	set_nodrop(FALSE, user)
-	to_chat(user, SPAN_NOTICE("Вы расслабили хватку [src]."))
+	to_chat(user, SPAN_NOTICE("Вы расслабили хватку на [src]."))
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 
 
 /obj/item/melee/breach_cleaver
 	restricted_species = list(/datum/species/unathi)
-	restriction_message = "Мышцы пронзает сильный холод и вы с ужасом бросаете клинок на землю. Только истинный Воин\
-	 достоин иметь столь сильный клинок!"
+	restriction_message = "Мышцы пронзает сильный холод и выбросаете попытку взять [src] в обе руки. Только истинный Воин \
+	достоин иметь столь сильный клинок!"
 
 /obj/item/melee/breach_cleaver/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_try_wield))
 
-/// Блокирует сам вилд компонента до того как он выставит wielded/оффхенд — сюда не долетают не-унатхи в принципе
 /obj/item/melee/breach_cleaver/proc/on_try_wield(datum/source, mob/living/user)
 	SIGNAL_HANDLER  // COMSIG_TWOHANDED_WIELD
 	if(can_use(user))
@@ -275,7 +266,7 @@
 	to_chat(user, SPAN_NOTICE("Прочно взяв [src] в обе лапы, вы чувствуете, как от когтей и до хвоста, по всему телу начинает \
 	расходится поток странного тепла, который переполняет мысли и чувства. Вас больше не остановят преграды, а враги \
 	навсегда запомнят вас как Вершителя судеб. Теперь вы поистине сильны и готовы. Никто не остановит вас от \
-	великого КХАААААРА во имя Хасали Могеса!"))
+	великого КХАААААРА во славу Хасали Могеса!"))
 	set_nodrop(TRUE, user)
 	user.apply_status_effect(STATUS_EFFECT_BREACH_AND_CLEAVE)
 	update_icon(UPDATE_ICON_STATE)
@@ -285,7 +276,6 @@
 	user.remove_status_effect(STATUS_EFFECT_BREACH_AND_CLEAVE)
 	update_icon(UPDATE_ICON_STATE)
 
-/// Ловит ЛЮБОЙ одноручный удар не-унатха — по мобу, по стене, по двери, по чему угодно
 /obj/item/melee/breach_cleaver/pre_attack(atom/target, mob/living/user, params)
 	if(..())
 		return FINISH_ATTACK
@@ -295,13 +285,12 @@
 			Воинов Могеса. Вы не рассчитываете свои силы, роняете [src] на пол и падаете вместе с ним."))
 		user.KnockDown(3 SECONDS)
 		user.Confused(4 SECONDS)
-		user.drop_item_to_ground(src, force = TRUE) // safety-net, нокдаун и так роняет не-антидропное
 		return FINISH_ATTACK
 
-/// Не-унатх не может нормально размахнуться и кинуть — клинок улетает не дальше 2 тайлов, а бросающего валит с ног
 /obj/item/melee/breach_cleaver/throw_at(atom/target, range, speed, mob/living/user, spin = 1, diagonals_first = 0, datum/callback/callback, force, dodgeable)
 	if(user && !can_use(user))
-		to_chat(user, SPAN_DANGER("Клинок слишком тяжёлый, чтобы его можно было так просто кинуть! Вы не рассчитываете свои силы и в момент броска с треском падаете."))
+		to_chat(user, SPAN_DANGER("Клинок слишком тяжёлый, чтобы его можно было так просто кинуть! Вы не рассчитываете \
+		свои силы и в момент броска с треском падаете."))
 		user.KnockDown(1 SECONDS)
 		range = min(range, 2)
 	return ..()
