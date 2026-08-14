@@ -179,7 +179,7 @@
 	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_socom_1.ogg' //подтырено с маринов
 	magin_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_srs99_cocked.ogg' //подтырено с маринов
 	magout_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_srs99_unload.ogg' //подтырено с маринов
-	fire_delay = 20
+	fire_delay = 15
 	//origin_tech = "combat=7"
 	slot_flags = ITEM_SLOT_BACK
 	actions_types = list()
@@ -599,6 +599,27 @@
 	toggle_gunlight()
 
 //////////////////////////////
+// MARK: M39A3 Kris Vektor
+//////////////////////////////
+/obj/item/gun/projectile/automatic/proto_sso
+	name = "M39A3 Kris Vektor"
+	desc = "Пистолет Пулемёт M39A3 Kris Vektor. Говорят у него нет отдачи... НЕ ВЕРЬТЕ! . Использует патроны .45"
+	icon = 'modular_ss220/SSO/icons/SOCOM_VECTOR.dmi'
+	icon_state = "vektor"
+	lefthand_file = 'modular_ss220/SSO/icons/inhands/guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/SSO/icons/inhands/guns_righthand.dmi'
+	inhand_icon_state = "vektor"
+	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_m4a3_1.ogg' // подтырено с маринов
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/vektor
+	can_suppress = TRUE
+	can_flashlight = FALSE
+	actions_types = list(/datum/action/item_action/toggle_firemode)
+	recoil = 0.4
+	burst_size = 4
+	fire_delay = 1
+
+//////////////////////////////
 // MARK: Magazines
 //////////////////////////////
 
@@ -881,6 +902,23 @@
 	icon_state = "pkpAP"
 	multi_sprite_step = AMMO_BOX_MULTI_SPRITE_STEP_ON_OFF
 	ammo_type = /obj/item/ammo_casing/a762/ap
+
+/obj/item/ammo_box/magazine/vektor
+	name = "магазин M39A3"
+	desc = "Магазин для ПП Kris Vektor"
+	icon = 'modular_ss220/SSO/icons/ammo.dmi'
+	icon_state = "vektor"
+	multi_sprite_step = 2
+	ammo_type = /obj/item/ammo_casing/c45
+	multi_sprite_step = AMMO_BOX_MULTI_SPRITE_STEP_ON_OFF
+	multiload = 0
+	max_ammo = 20
+	caliber = ".45"
+
+/obj/item/ammo_box/magazine/vektor/big
+	icon_state = "vektor_50"
+	max_ammo = 50
+
 //////////////////////////////
 // MARK: Ammo BOX
 //////////////////////////////

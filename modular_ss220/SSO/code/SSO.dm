@@ -30,18 +30,22 @@
 	name = "Комплект брони СCО"
 	desc = "Модульная броня Сил Специальных Операций."
 	icon_state = "armor_1"
+	inhand_icon_state = "swat_suit"
 	actions_types = list()
+
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/armor_2
 	name = "Комплект брони СCО"
 	desc = "Модульная броня Сил Специальных Операций. Боевой модуль"
 	icon_state = "armor_2"
+	inhand_icon_state = "swat_suit"
 	actions_types = list()
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/armor_3
 	name = "Комплект брони СCО"
 	desc = "Модульная броня Сил Специальных Операций. Боевой модуль"
 	icon_state = "armor_3"
+	inhand_icon_state = "swat_suit"
 	actions_types = list()
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/coat
