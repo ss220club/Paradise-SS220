@@ -333,6 +333,7 @@
 	inhand_icon_state = "pkp"
 	worn_icon_state = "pkp"
 	slot_flags = 0
+	spread = 5
 	mag_type = /obj/item/ammo_box/magazine/mg_pkp
 	weapon_weight = WEAPON_HEAVY
 	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/shot_heavy.ogg' //заменить на мариновские МОЩНЫЕ
@@ -365,6 +366,7 @@
 	worn_icon_state = "MMG338"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = 0
+	spread = 6
 	mag_type = /obj/item/ammo_box/magazine/mg_sso
 	weapon_weight = WEAPON_HEAVY
 	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_m56d_auto.ogg' //заменить на мариновские МОЩНЫЕ
@@ -601,7 +603,7 @@
 //////////////////////////////
 // MARK: M39A3 Kris Vektor
 //////////////////////////////
-/obj/item/gun/projectile/automatic/proto_sso
+/obj/item/gun/projectile/automatic/proto/sso
 	name = "M39A3 Kris Vektor"
 	desc = "Пистолет Пулемёт M39A3 Kris Vektor. Говорят у него нет отдачи... НЕ ВЕРЬТЕ! . Использует патроны .45"
 	icon = 'modular_ss220/SSO/icons/SOCOM_VECTOR.dmi'
@@ -1042,6 +1044,9 @@
 	projectile_type = /obj/projectile/bullet/sniper/soporific
 	harmful = FALSE
 
+/obj/item/ammo_casing/a762
+	projectile_type = /obj/projectile/bullet
+
 /obj/item/ammo_casing/a762/ap
 	name = "7,62 БП"
 	desc = "Бронебойный патрон 7,62."
@@ -1165,7 +1170,6 @@
 
 /obj/projectile/bullet/mm127x108/ap
 	name = "12.7 AP bullet"
-	weaken = 10 SECONDS
 	forcedodge = -1
 	pass_flags = PASSTABLE
 

@@ -77,12 +77,12 @@
 /obj/item/clothing/head/helmet/space/deathsquad/beret/sso/helmet/equipped(mob/user, slot, initial)
 	. = ..()
 	if(nvg_enabled && slot == ITEM_SLOT_HEAD)
-		ADD_TRAIT(user, TRAIT_NIGHT_VISION, "helmet[UID()]")
+		ADD_TRAIT(user, TRAIT_XRAY_VISION  , "helmet[UID()]")
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/sso/helmet/dropped(mob/user)
 	. = ..()
 	if(user)
-		REMOVE_TRAIT(user, TRAIT_NIGHT_VISION, "helmet[UID()]")
+		REMOVE_TRAIT(user, TRAIT_XRAY_VISION  , "helmet[UID()]")
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/sso/helmet/update_icon_state()
 	. = ..()
@@ -90,12 +90,12 @@
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/sso/helmet/proc/toggle_nvg(mob/user)
 	var/msg
-	if(!HAS_TRAIT_FROM(user, TRAIT_NIGHT_VISION, "helmet[UID()]"))
-		ADD_TRAIT(user, TRAIT_NIGHT_VISION, "helmet[UID()]")
+	if(!HAS_TRAIT_FROM(user, TRAIT_XRAY_VISION  , "helmet[UID()]"))
+		ADD_TRAIT(user, TRAIT_XRAY_VISION  , "helmet[UID()]")
 		msg = "You lowered your night-vision goggles over your eyes."
 		nvg_enabled = TRUE
 	else
-		REMOVE_TRAIT(user, TRAIT_NIGHT_VISION, "helmet[UID()]")
+		REMOVE_TRAIT(user, TRAIT_XRAY_VISION  , "helmet[UID()]")
 		msg = "You raised your night-vision goggles."
 		nvg_enabled = FALSE
 
@@ -107,6 +107,7 @@
 	update_icon(UPDATE_ICON_STATE)
 	user.update_inv_head()
 	to_chat(user, SPAN_NOTICE("[msg]"))
+	playsound(src, 'modular_ss220/SSO/sound/nightvision.ogg', 50, 1)
 
 /// END
 
@@ -172,6 +173,11 @@
 	icon_state = "under_sso"
 	worn_icon = 'modular_ss220/SSO/icons/suit/sso_worn.dmi'
 
+/obj/item/clothing/under/rank/centcom/captain/sso/ric
+	name = "Special Operation Officer R. Miloshevich"
+	desc = "Обычный ничем не примечательная, почти чёрная, униформа офицера ССО или ОСО... для кого как..."
+	icon_state = "under_ric"
+
 /obj/item/storage/backpack/ert/sso
 	name = "Special Operation Force rucksack"
 	desc = "Штурмовой рюкзак ССО, вмещает достаточно"
@@ -187,6 +193,7 @@
 	worn_icon = 'modular_ss220/SSO/icons/suit/sso_worn.dmi'
 	max_combined_w_class = 60
 	zip_time = 1
+	max_w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FIRE_PROOF
 	silent = TRUE
 
@@ -200,7 +207,7 @@
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/rep/alt1
 	allow_backbag_choice = FALSE
 	back = /obj/item/storage/backpack/satcheldeluxe
-	belt = /obj/item/gun/energy/pulse/pistol
+	belt = /obj/item/gun/energy/pulse/pistol/m1911
 	gloves = /obj/item/clothing/gloves/color/white
 	shoes = /obj/item/clothing/shoes/centcom
 	head = /obj/item/clothing/head/beret/centcom/captain
@@ -298,7 +305,7 @@
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
-		apply_to_card(I, H, get_all_centcom_access(), name, "deathsquad")
+		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), name, "deathsquad")
 	I.rank = "Special Operations Force"
 	I.assignment = "Deathsquad"
 	H.sec_hud_set_ID()
