@@ -111,13 +111,16 @@
 
 /datum/outfit/job/admin/ntspecops/alt
 	name = "Specops alt. RSH-12, saber, bandana"
+	uniform = /obj/item/clothing/under/rank/centcom/captain/sso/ric
+	suit = /obj/item/clothing/suit/space/deathsquad/officer/sso/ricardo
 	belt = /obj/item/storage/belt/sheath/saber
 	backpack_contents = list(
 		/obj/item/gun/projectile/revolver/reclinable/rsh12,
 		/obj/item/ammo_box/speed_loader_mm127,
 		/obj/item/ammo_box/speed_loader_mm127,
 		/obj/item/ammo_box/speed_loader_mm127,
-		/obj/item/clothing/mask/bandana/red
+		/obj/item/clothing/head/helmet/space/deathsquad/beret/bandana,
+		/obj/item/clothing/accessory/holster
 	)
 	suit_store = /obj/item/ammo_box/box_mm127
 
