@@ -197,6 +197,11 @@
 	resistance_flags = FIRE_PROOF
 	silent = TRUE
 
+/obj/item/card/id/ert/deathsquad/sso
+	name = "Special Operation Force"
+	desc = "ID карта Офицера Сил Специальных операций."
+	icon = 'modular_ss220/SSO/icons/suit/card.dmi'
+
 //////////////////////////////
 // MARK: Outfit
 //////////////////////////////
@@ -229,7 +234,7 @@
 		/obj/item/organ/internal/cyberimp/arm/combat/centcom
 	)
 
-/datum/outfit/job/admin/ntnavyofficer/vkr/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/admin/nt_navy_captain/vkr/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
 		return
@@ -258,6 +263,7 @@
 		/obj/item/ammo_box/speed_loader_mm127,
 		/obj/item/ammo_box/speed_loader_mm127
 	)
+
 /datum/outfit/job/admin/ntspecops/sso
 	name = "Special Operations Force (SSO)"
 
@@ -272,7 +278,7 @@
 	head = /obj/item/clothing/head/helmet/space/deathsquad/beret/sso
 	l_ear = /obj/item/radio/headset/centcom
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/fluff/eyepro
-	id = /obj/item/card/id/ert/deathsquad
+	id = /obj/item/card/id/ert/deathsquad/sso
 	pda = /obj/item/pda/centcom
 	r_pocket = /obj/item/flashlight/seclite
 	l_pocket = /obj/item/pinpointer/advpinpointer
@@ -305,7 +311,9 @@
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
-		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), name, "deathsquad")
-	I.rank = "Special Operations Force"
-	I.assignment = "Deathsquad"
+		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"),"Special Operation Force", "deathsquad")
+	I.rank = "Deathsquad"
+	I.assignment = "Special Operation Force"
 	H.sec_hud_set_ID()
+
+var/id_icon = "deathsquad"
