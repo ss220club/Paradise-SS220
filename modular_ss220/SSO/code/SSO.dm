@@ -315,5 +315,3 @@
 	I.rank = "Deathsquad"
 	I.assignment = "Special Operation Force"
 	H.sec_hud_set_ID()
-
-var/id_icon = "deathsquad"
