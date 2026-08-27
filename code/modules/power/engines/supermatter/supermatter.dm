@@ -618,52 +618,7 @@
 	//After this point power is lowered
 	//This wraps around to the begining of the function
 	//Handle high power zaps/anomaly generation
-	if((power * gas_coefficient) > POWER_PENALTY_THRESHOLD || damage > damage_penalty_point) //If the power is above 5000, if the damage is above 550, or mole crushing
-		var/range = 4
-		zap_cutoff = 1500
-		if(removed && removed.return_pressure() > 0 && removed.temperature() > 0)
-			//You may be able to freeze the zapstate of the engine with good planning, we'll see
-			zap_cutoff = clamp(3000 - (power * (removed.total_moles()) / 10) / removed.temperature(), 350, 3000)//If the core is cold, it's easier to jump, ditto if there are a lot of mols
-			//We should always be able to zap our way out of the default enclosure
-			//See supermatter_zap() for more details
-			range = clamp(power / removed.return_pressure() * 10, 2, 7)
-		var/flags = ZAP_SUPERMATTER_FLAGS
-		var/zap_count = 0
-		//Deal with power zaps
-		switch(power)
-			if(POWER_PENALTY_THRESHOLD to SEVERE_POWER_PENALTY_THRESHOLD)
-				zap_icon = DEFAULT_ZAP_ICON_STATE
-				zap_count = 2
-			if(SEVERE_POWER_PENALTY_THRESHOLD to CRITICAL_POWER_PENALTY_THRESHOLD)
-				zap_icon = SLIGHTLY_CHARGED_ZAP_ICON_STATE
-				//Uncaps the zap damage, it's maxed by the input power
-				//Objects take damage now
-				flags |= (ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE)
-				zap_count = 3
-			if(CRITICAL_POWER_PENALTY_THRESHOLD to INFINITY)
-				zap_icon = OVER_9000_ZAP_ICON_STATE
-				//It'll stun more now, and damage will hit harder, gloves are no garentee.
-				//Machines go boom
-				flags |= (ZAP_MOB_STUN | ZAP_MACHINE_EXPLOSIVE | ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE)
-				zap_count = 4
 		//Now we deal with damage shit
-		if(damage > damage_penalty_point && prob(20))
-			zap_count += 1
-
-		if(zap_count >= 1)
-			playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, TRUE, extrarange = 10, channel = CHANNEL_ENGINE)
-			for(var/i in 1 to zap_count)
-				supermatter_zap(src, range, clamp(power*2, 4000, 20000), flags)
-
-		if(prob(5))
-			supermatter_anomaly_gen(src, FLUX_ANOMALY, rand(5, 10))
-		if((power * gas_coefficient) > SEVERE_POWER_PENALTY_THRESHOLD && prob(5) || prob(1))
-			supermatter_anomaly_gen(src, GRAVITATIONAL_ANOMALY, rand(5, 10))
-		if(((power * gas_coefficient) > SEVERE_POWER_PENALTY_THRESHOLD && prob(2)) || (prob(0.3) && (power * gas_coefficient) > POWER_PENALTY_THRESHOLD))
-			supermatter_anomaly_gen(src, BLUESPACE_ANOMALY, rand(5, 10))
-
-	if(prob(15))
-		supermatter_pull(loc, min(power / 850, 3)) //850, 1700, 2550
 	lights()
 	sm_filters()
 
