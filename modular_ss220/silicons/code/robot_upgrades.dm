@@ -1,6 +1,6 @@
 /obj/item/borg/upgrade/storageincreaser
 	name = "storage increaser"
-	desc = "Improves cyborg storage with bluespace technology to store more medicines"
+	desc = "Расширяет внутреннее хранилище киборга внедрением блюспейс технологий."
 	icon_state = "cyborg_upgrade2"
 	origin_tech = "bluespace=4;materials=5;engineering=3"
 	require_module = TRUE
@@ -27,30 +27,30 @@
 	return TRUE
 
 /obj/item/borg/upgrade/hypospray
-	name = "cyborg hypospray upgrade"
-	desc = "Adds and replaces some reagents with better ones"
+	name = "upgraded hypospray"
+	desc = "Добавляет и заменяет некоторые реагенты гипоспрея на более продвинутые."
 	icon_state = "cyborg_upgrade2"
 	origin_tech = "biotech=6;materials=5"
 	require_module = TRUE
 	module_type = /obj/item/robot_module/medical
 	items_to_replace = list(
-		/obj/item/reagent_containers/borghypo/basic = /obj/item/reagent_containers/borghypo
+		/obj/item/reagent_containers/borghypo = /obj/item/reagent_containers/borghypo/upgraded
 	)
 
 // Улучшения голопроектора //
 /obj/item/borg/upgrade/atmos_holofan/better
-	name = "Улучшение модульного ATMOS голопроектора"
+	name = "upgraded ATMOS holofan projector"
 	desc = "Повышает энергоэффективность проектора, позволяя создавать до 3 голопроекций."
 	icon_state = "cyborg_upgrade2"
 	origin_tech = "materials=4;engineering=4;magnets=4"
 	require_module = TRUE
 	module_type = /obj/item/robot_module/engineering
 	items_to_replace = list(
-		/obj/item/holosign_creator/atmos/robot = /obj/item/holosign_creator/atmos/robot/better
+		/obj/item/holosign_creator/atmos/basic = /obj/item/holosign_creator/atmos/better
 	)
 
 /obj/item/borg/upgrade/atmos_holofan/best
-	name = "Оптимизация модульного ATMOS голопроектора"
+	name = "advanced ATMOS holofan projector"
 	desc = "Оптимизирует энергоэффективность проектора и заменяет микросхемы на продвинутые, позволяя создавать до 5 голопроекций."
 	icon_state = "cyborg_upgrade5"
 	origin_tech = "materials=6;engineering=6;magnets=6;programming=6"
@@ -58,18 +58,19 @@
 	module_type = /obj/item/robot_module/engineering
 	required_upgrades = list(/obj/item/borg/upgrade/atmos_holofan/better)
 	items_to_replace = list(
-		/obj/item/holosign_creator/atmos/robot/better = /obj/item/holosign_creator/atmos/robot/best
+		/obj/item/holosign_creator/atmos/better = /obj/item/holosign_creator/atmos/best
 	)
 
 // Очистка проекций при установке улучшений //
-/obj/item/holosign_creator/atmos/robot/proc/clean_signs(mob/living/silicon/robot/R)
+/obj/item/holosign_creator/atmos/proc/clean_signs(mob/living/silicon/robot/R)
 	if(length(signs) > 0)
 		QDEL_LIST_CONTENTS(signs)
 		to_chat(R, SPAN_NOTICE("Все активные голограммы были отключены."))
 
 /obj/item/borg/upgrade/atmos_holofan/do_install(mob/living/silicon/robot/R)
-	var/obj/item/holosign_creator/atmos/robot/T = locate() in R.module.modules
-	T.clean_signs(R)
+	var/obj/item/holosign_creator/atmos/T = locate() in R.module.modules
+	if(T)
+		T.clean_signs(R)
 
 	return TRUE
 

@@ -236,7 +236,7 @@
 	var/obj/item/organ/internal/brain = H.get_int_organ(/obj/item/organ/internal/brain)
 	if(brain)
 		if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_CRITICAL)) // 100
-			msgs += SPAN_WARNING("Мозг субъекта отмирает.")
+			msgs += SPAN_WARNING("Мозг субъекта мёртв.")
 		else if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_MODERATE)) // 60
 			msgs += SPAN_WARNING("Обнаружено серьезное повреждение мозга. Возможно, у пациента слабоумие.")
 		else if(H.check_brain_threshold(BRAIN_DAMAGE_RATIO_MINOR)) // 10

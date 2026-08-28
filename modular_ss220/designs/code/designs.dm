@@ -9,6 +9,17 @@
 	construction_time = 10 SECONDS
 	category = list("Equipment")
 
+/datum/design/holosign_atmos_improved
+	name = "Improved ATMOS holofan projector"
+	desc = "A bluespace-improved holographic projector that creates holographic barriers that prevent changes in atmosphere conditions."
+	id = "atmos_holofan_improved"
+	req_tech = list("programming" = 5, "bluespace" = 6, "engineering" = 6)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 2000, MAT_GLASS = 3000, MAT_PLASMA = 3000, MAT_DIAMOND = 500, MAT_BLUESPACE = 300)
+	build_path = /obj/item/holosign_creator/atmos/improved
+	construction_time = 10 SECONDS
+	category = list("Equipment")
+
 /datum/design/electrolyzer
 	name = "Machine Board (Gas electrolyzer)"
 	desc = "The circuit board for a Gas electrolyzer."

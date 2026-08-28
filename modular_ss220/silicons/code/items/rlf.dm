@@ -1,29 +1,29 @@
 /obj/item/rlf
-	name = "Rapid Lollipop Fabricator"
+	name = "rapid lollipop fabricator"
 	desc = "A device used to rapidly deploy lollipop."
 	icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
 	icon_state = "rlf"
+	new_attack_chain = TRUE
 
-/obj/item/rlf/afterattack__legacy__attackchain(atom/A, mob/user as mob, proximity)
-	if(!proximity)
-		return
-	if(!isrobot(user))
-		return
-	if(!iscarbon(A))
-		return
-	var/mob/living/carbon/receiver = A
+/obj/item/rlf/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(!isrobot(user) || !iscarbon(target))
+		return NONE
+
+	user.changeNext_move(CLICK_CD_MELEE)
+	var/mob/living/carbon/receiver = target
 	if(receiver.stat != CONSCIOUS)
 		to_chat(user, SPAN_WARNING("[receiver] can't accept any items because they're not conscious!"))
-		return
+		return ITEM_INTERACT_COMPLETE
 	if(!user.Adjacent(receiver))
 		to_chat(user, SPAN_WARNING("You need to be closer to [receiver] to offer them lollipop."))
-		return
+		return ITEM_INTERACT_COMPLETE
 	if(!receiver.client)
 		to_chat(user, SPAN_WARNING("You offer lollipop to [receiver], but they don't seem to respond..."))
-		return
+		return ITEM_INTERACT_COMPLETE
 	var/obj/item/I = new /obj/item/food/candy/sucker/lollipop
 	receiver.throw_alert("take item [I.UID()]", /atom/movable/screen/alert/take_item/RLF, alert_args = list(user, receiver, I))
 	to_chat(user, SPAN_INFO("You offer lollipop to [receiver]."))
+	return ITEM_INTERACT_COMPLETE
 
 /atom/movable/screen/alert/take_item/RLF/Click(location, control, params)
 	var/mob/living/receiver = locateUID(receiver_UID)
