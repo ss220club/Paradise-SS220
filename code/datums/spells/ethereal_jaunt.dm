@@ -1,6 +1,6 @@
 /datum/spell/ethereal_jaunt
 	name = "Ethereal Jaunt"
-	desc = "This spell creates your ethereal form, temporarily making you invisible and able to pass through walls."
+	desc = "Вы принимаете эфирную форму, временно становясь невидимым и способным проходить сквозь стены."
 
 	base_cooldown = 300
 	invocation = "none"
@@ -28,7 +28,7 @@
 		if(SEND_SIGNAL(target, COMSIG_MOB_PRE_JAUNT, target) & COMPONENT_BLOCK_JAUNT)
 			continue
 		if(!target.can_safely_leave_loc()) // No more brainmobs hopping out of their brains
-			to_chat(target, SPAN_WARNING("You are somehow too bound to your current location to abandon it."))
+			to_chat(target, SPAN_WARNING("Вы каким-то образом слишком привязаны к своему текущему месту, чтобы покинуть его."))
 			continue
 		INVOKE_ASYNC(src, PROC_REF(do_jaunt), target)
 
@@ -108,7 +108,7 @@
 		forceMove(newLoc)
 		return
 	if(!IS_DIR_DIAGONAL(direction))
-		to_chat(user, SPAN_WARNING("Something is blocking the way!"))
+		to_chat(user, SPAN_WARNING("Что-то преграждает путь!"))
 		return
 	var/turf/possible_1 = get_step(src, turn(direction, 45))
 	var/turf/possible_2 = get_step(src, turn(direction, -45))
@@ -118,7 +118,7 @@
 	if(can_move(possible_2))
 		forceMove(possible_2)
 		return
-	to_chat(user, SPAN_WARNING("Something is blocking the way!"))
+	to_chat(user, SPAN_WARNING("Что-то преграждает путь!"))
 
 /obj/effect/dummy/spell_jaunt/proc/can_move(turf/T)
 	return TRUE
@@ -131,7 +131,7 @@
 
 /obj/effect/dummy/spell_jaunt/blood_pool
 	name = "sanguine pool"
-	desc = "a pool of living blood."
+	desc = "Лужа живой крови."
 	movespeed = 1.5
 
 /obj/effect/dummy/spell_jaunt/blood_pool/relaymove(mob/user, direction)

@@ -1,8 +1,6 @@
 /datum/spell/touch/mime_malaise
 	name = "Mime Malaise"
-	desc = "A spell popular with theater nerd wizards and contrarian pranksters. This spell will put on a mime costume on the target, \
-		stun them so that they may contemplate Art, and silence them. \
-		Warning : Effects are permanent on non-wizards."
+	desc = "Заклинание, популярное среди волшебников театра и просто проказников. Надевает на цель костюм мима, заставляет замолчать и оглушает, чтобы он мог созерцать искусство."
 	hand_path = /obj/item/melee/touch_attack/mime_malaise
 
 	base_cooldown = 300

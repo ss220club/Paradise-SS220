@@ -1,5 +1,6 @@
 /mob/living/carbon/human/Initialize(mapload, datum/species/new_species = /datum/species/human)
-	icon = null // This is now handled by overlays -- we just keep an icon for the sake of the map editor.
+	if(new_species != /datum/species/human_doll) //SS220 EDIT - EVENT DOLL
+		icon = null // This is now handled by overlays -- we just keep an icon for the sake of the map editor.
 	create_dna()
 
 	. = ..()
@@ -780,7 +781,7 @@
 				if(E.fields["name"] == perpname)
 					for(var/datum/data/record/R in GLOB.data_core.general)
 						if(R.fields["id"] == E.fields["id"])
-							var/setmedical = input(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"]) in list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled", "Cancel")
+							var/setmedical = input(usr, "Укажите новый медицинский статус для этого человека.", "Медицинский интерфейс", R.fields["p_stat"]) in list("*SSD*", "*Мёртв*", "Физически непригоден", "Активен", "Нетрудоспособен", "Отмена")
 
 							if(hasHUD(usr, EXAMINE_HUD_MEDICAL_WRITE))
 								if(setmedical != "Cancel")
@@ -790,7 +791,7 @@
 										GLOB.PDA_Manifest.Cut()
 
 			if(!modified)
-				to_chat(usr, SPAN_WARNING("Unable to locate a data core entry for this person."))
+				to_chat(usr, SPAN_WARNING("Не удалось найти запись в базе данных для этого человека."))
 
 	if(href_list["mental"])
 		if(hasHUD(usr, EXAMINE_HUD_MEDICAL_WRITE))
@@ -803,7 +804,7 @@
 				if(E.fields["name"] == perpname)
 					for(var/datum/data/record/R in GLOB.data_core.general)
 						if(R.fields["id"] == E.fields["id"])
-							var/setmental = input(usr, "Specify a new mental status for this person.", "Medical HUD", R.fields["m_stat"]) in list("*Insane*", "*Unstable*", "*Watch*", "Stable", "Cancel")
+							var/setmental = input(usr, "Укажите новый психический статус для этого человека.", "Медицинский интерфейс", R.fields["m_stat"]) in list("*Безумен*", "*Нестабилен*", "*Под надзором*", "Стабилен", "Отмена")
 
 							if(hasHUD(usr, EXAMINE_HUD_MEDICAL_WRITE))
 								if(setmental != "Cancel")
@@ -914,7 +915,7 @@
 		return
 
 	if(found_record.fields["criminal"] == SEC_RECORD_STATUS_EXECUTE)
-		to_chat(user, SPAN_WARNING("Unable to modify the criminal status of a person with an active Execution order. Use a security computer instead."))
+		to_chat(user, SPAN_WARNING("Изменить криминальный статус лица, на которого назначена казнь, невозможно. Вместо этого используйте консоль службы безопасности."))
 		return
 
 	var/static/list/possible_status = list(
@@ -928,18 +929,18 @@
 		SEC_RECORD_STATUS_RELEASED,
 	)
 
-	var/new_status = tgui_input_list(user, "Set the new criminal status for [perpname]", "Security HUD", possible_status)
+	var/new_status = tgui_input_list(user, "Установить новый криминальный статус для [perpname]", "Интерфейс безопасности", possible_status)
 	if(!new_status)
 		return
 
-	var/reason = copytext(trim(sanitize(input(user, "Enter reason:", "Security HUD") as text)), 1, MAX_MESSAGE_LEN)
+	var/reason = copytext(trim(sanitize(input(user, "Опишите причину:", "Интерфейс безопасности") as text)), 1, MAX_MESSAGE_LEN)
 	if(!reason)
-		reason = "(none)"
+		reason = "(Отсутствует)"
 
 	if(!hasHUD(user, EXAMINE_HUD_SECURITY_WRITE))
 		return
 	if(found_record.fields["criminal"] == SEC_RECORD_STATUS_EXECUTE)
-		to_chat(user, SPAN_WARNING("Unable to modify the criminal status of a person with an active Execution order. Use a security computer instead."))
+		to_chat(user, SPAN_WARNING("Изменить криминальный статус лица, на которого назначена казнь, невозможно. Вместо этого используйте консоль службы безопасности."))
 		return
 	var/rank
 	if(ishuman(user))
@@ -960,7 +961,7 @@
 
 	var/targetname = get_visible_name(TRUE)
 	if(targetname == "Unknown")
-		to_chat(user, SPAN_WARNING("Unable to set a status for unknown persons."))
+		to_chat(user, SPAN_WARNING("Статус невозможно установить неизвестной личности."))
 		return
 
 	var/datum/data/record/found_record
@@ -973,7 +974,7 @@
 						break outer
 
 	if(!found_record)
-		to_chat(user, SPAN_WARNING("Unable to locate a record for this person."))
+		to_chat(user, SPAN_WARNING("Не удалось найти запись об этом человеке."))
 		return
 
 	var/static/list/possible_status = list(
@@ -1652,7 +1653,7 @@
 		if(eyes)
 			eyes_icon = eyes.generate_icon()
 		else //Error 404: Eyes not found!
-			eyes_icon = new('icons/mob/human_face.dmi', dna.species.eyes)
+			eyes_icon = new(dna.species.eyes_icon, dna.species.eyes) // SS220 EDIT
 			eyes_icon.Blend("#800000", ICON_ADD)
 
 		return eyes_icon

@@ -11,14 +11,14 @@ import SortableTableContext from './common/SortableTableContext';
 import { TemporaryNotice } from './common/TemporaryNotice';
 
 const statusStyles = {
-  '*Execute*': 'execute',
-  '*Arrest*': 'arrest',
-  'Incarcerated': 'incarcerated',
-  'Parolled': 'parolled',
-  'Released': 'released',
-  'Demote': 'demote',
-  'Search': 'search',
-  'Monitor': 'monitor',
+  '*Казнь*': 'execute',
+  '*Арест*': 'arrest',
+  'Заключённый': 'incarcerated',
+  'Условно-досрочно освобождён': 'parolled',
+  'Отпущен': 'released',
+  'Понижение': 'demote',
+  'Обыск': 'search',
+  'Наблюдение': 'monitor',
 };
 
 const doEdit = (field) => {

@@ -1,6 +1,6 @@
 /datum/spell/conjure_item
 	name = "Summon weapon"
-	desc = "A generic spell that should not exist. This summons an instance of a specific type of item, or if one already exists, un-summons it."
+	desc = "Базовое заклинание, которое не должно существовать. Призывает экземпляр предмета определенного типа, или, если он уже существует, отзывает его в пустоту."
 	clothes_req = FALSE
 	var/obj/item/item
 	var/item_type = /obj/item/banhammer

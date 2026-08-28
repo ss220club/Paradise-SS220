@@ -52,8 +52,8 @@
 	field_edit_choices = list(
 		// General
 		"sex" = list("Male", "Female"),
-		"p_stat" = list("*Deceased*", "*SSD*", "Active", "Physically Unfit", "Disabled"),
-		"m_stat" = list("*Insane*", "*Unstable*", "*Watch*", "Stable"),
+		"p_stat" = list("*Мёртв*", "*SSD*", "Активен", "Физически непригоден", "Нетрудоспособен"),
+		"m_stat" = list("*Безумен*", "*Нестабилен*", "*Под надзором*", "Стабилен"),
 		// Medical
 		"blood_type" = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Slime Jelly", "None"),
 	)
@@ -373,7 +373,7 @@
 					if(!length(answer) || !istype(active2) || !length(state.name))
 						return
 					active2.fields["comments"] += list(list(
-						header = "Made by [state.name] ([state.rank]) on [GLOB.current_date_string] [station_time_timestamp()]",
+						header = "Добавлены заметки от [state.name] ([state.rank]), время правки - [GLOB.current_date_string] [station_time_timestamp()]",
 						text = answer
 					))
 				else
@@ -449,9 +449,9 @@
 				if(4)
 					R.fields["blood_type"] = pick("A-", "B-", "AB-", "O-", "A+", "B+", "AB+", "O+")
 				if(5)
-					R.fields["p_stat"] = pick("*SSD*", "Active", "Physically Unfit", "Disabled")
+					R.fields["p_stat"] = pick("*SSD*", "Активен", "Физически непригоден", "Нетрудоспособен")
 				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					R.fields["m_stat"] = pick("*Безумен*", "*Нестабилен*", "*Под надзором*", "Стабилен")
 			continue
 
 		else if(prob(1))

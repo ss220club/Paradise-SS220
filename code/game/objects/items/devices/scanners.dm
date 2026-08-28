@@ -10,7 +10,7 @@ SLIME SCANNER
 ////////////////////////////////////////
 /obj/item/t_scanner
 	name = "\improper T-ray scanner"
-	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
+	desc = "Излучатель и сканер терагерцового излучения, используемый для обнаружения скрытых инженерных коммуникаций под полом, таких как трубы и провода."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "t-ray0"
 	worn_icon_state = "electronic"
@@ -72,7 +72,7 @@ SLIME SCANNER
 ////////////////////////////////////////
 /obj/item/reagent_scanner
 	name = "reagent scanner"
-	desc = "A hand-held reagent scanner which identifies chemical agents and blood types."
+	desc = "Ручной сканер реагентов, который идентифицирует химические вещества и группы крови."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "spectrometer"
 	inhand_icon_state = "analyzer"
@@ -101,15 +101,15 @@ SLIME SCANNER
 	if(user.stat != CONSCIOUS)
 		return
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+		to_chat(user, SPAN_WARNING("Вам не хватит ловкости, чтобы сделать это!"))
 		return
 
 	if(!target.reagents)
-		to_chat(user, SPAN_NOTICE("No significant chemical agents found in [target]."))
+		to_chat(user, SPAN_NOTICE("В [target.declent_ru(PREPOSITIONAL)] не обнаружено важных химических веществ."))
 		return
 
 	if(!length(target.reagents.reagent_list))
-		to_chat(user, SPAN_NOTICE("No active chemical agents found in [target]."))
+		to_chat(user, SPAN_NOTICE("В [target.declent_ru(PREPOSITIONAL)] не обнаружено активных химических веществ."))
 		return
 
 	var/dat
@@ -123,7 +123,7 @@ SLIME SCANNER
 			blood_type = R.data["blood_type"]
 			dat += "<br>[TAB][SPAN_NOTICE("[blood_type ? "[blood_type]" : ""] [R.data["species"]] [R.name] [details ? ":([R.volume / one_percent]%)" : ""]")]"
 
-	to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
+	to_chat(user, SPAN_NOTICE("Реагенты найдены: [dat]"))
 	datatoprint = dat
 	scanning = FALSE
 
@@ -138,19 +138,19 @@ SLIME SCANNER
 		return
 
 	if(scanning)
-		to_chat(user, SPAN_NOTICE("[src] has no logs or is already in use."))
+		to_chat(user, SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] не содержит логов или уже используется."))
 		return
 
-	user.visible_message(SPAN_WARNING("[src] rattles and prints out a sheet of paper."))
+	user.visible_message(SPAN_WARNING("[capitalize(src.declent_ru(NOMINATIVE))] скрипит и распечатывает лист бумаги."))
 	playsound(loc, 'sound/goonstation/machines/printer_thermal.ogg', 50, TRUE)
 	sleep(5 SECONDS)
 
 	var/obj/item/paper/P = new(get_turf(src))
-	P.name = "Reagent Scanner Report: [station_time_timestamp()]"
-	P.info = "<center><b>Reagent Scanner</b></center><br><center>Data Analysis:</center><br><hr><br><b>Chemical agents detected:</b><br> [datatoprint]<br><hr>"
+	P.name = "Отчёт от [src.declent_ru(GENITIVE)]: [station_time_timestamp()]"
+	P.info = "<center><b>[capitalize(src.declent_ru(NOMINATIVE))]</b></center><br><center>Анализ данных:</center><br><hr><br><b>Обнаруженные химические вещества:</b><br> [datatoprint]<br><hr>"
 
 	user.put_in_hands(P)
-	to_chat(user, SPAN_NOTICE("Report printed. Log cleared."))
+	to_chat(user, SPAN_NOTICE("Отчёт распечатан. Логи удалены."))
 	datatoprint = ""
 	scanning = TRUE
 
@@ -176,38 +176,38 @@ SLIME SCANNER
 	if(user.incapacitated() || user.AmountBlinded())
 		return
 	if(!isslime(M))
-		to_chat(user, SPAN_WARNING("This device can only scan slimes!"))
+		to_chat(user, SPAN_WARNING("Устройство может сканировать только слаймов!"))
 		return
 	slime_scan(M, user)
 
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
 	to_chat(user, "========================")
-	to_chat(user, "<b>Slime scan results:</b>")
-	to_chat(user, SPAN_NOTICE("[T.colour] [T.is_adult ? "adult" : "baby"] slime"))
-	to_chat(user, "Nutrition: [T.nutrition]/[T.get_max_nutrition()]")
+	to_chat(user, "<b>Результаты сканирования слайма:</b>")
+	to_chat(user, SPAN_NOTICE("[T.colour] [T.is_adult ? "взрослый" : "малыш"] слайм"))
+	to_chat(user, "Сытость: [T.nutrition]/[T.get_max_nutrition()]")
 	if(T.nutrition < T.get_starve_nutrition())
-		to_chat(user, SPAN_WARNING("Warning: slime is starving!"))
+		to_chat(user, SPAN_WARNING("Внимание: слайм голодает!"))
 	else if(T.nutrition < T.get_hunger_nutrition())
-		to_chat(user, SPAN_WARNING("Warning: slime is hungry"))
-	to_chat(user, "Electric change strength: [T.powerlevel]")
-	to_chat(user, "Health: [round(T.health/T.maxHealth,0.01)*100]%")
+		to_chat(user, SPAN_WARNING("Внимание: слайм голоден."))
+	to_chat(user, "Сила электрического заряда: [T.powerlevel]")
+	to_chat(user, "Состояние: [round(T.health/T.maxHealth,0.01)*100]%")
 	if(T.slime_mutation[4] == T.colour)
-		to_chat(user, "This slime does not evolve any further.")
+		to_chat(user, "Слайм больше не эволюционирует.")
 	else
 		if(T.slime_mutation[3] == T.slime_mutation[4])
 			if(T.slime_mutation[2] == T.slime_mutation[1])
-				to_chat(user, "Possible mutation: [T.slime_mutation[3]]")
-				to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+				to_chat(user, "Возможные мутации: [T.slime_mutation[3]]")
+				to_chat(user, "Генетическая нестабильность: [T.mutation_chance] % вероятность мутации при расщеплении")
 			else
-				to_chat(user, "Possible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]] (x2)")
-				to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+				to_chat(user, "Возможные мутации: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]] (x2)")
+				to_chat(user, "Генетическая нестабильность: [T.mutation_chance] % вероятность мутации при расщеплении")
 		else
-			to_chat(user, "Possible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]], [T.slime_mutation[4]]")
-			to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+			to_chat(user, "Возможные мутации: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]], [T.slime_mutation[4]]")
+			to_chat(user, "Генетическая нестабильность: [T.mutation_chance] % вероятность мутации при расщеплении")
 	if(T.cores > 1)
-		to_chat(user, "Multiple cores detected")
-	to_chat(user, "Growth progress: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
+		to_chat(user, "Обнаружено несколько ядер")
+	to_chat(user, "Прогресс роста: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
 	if(T.effectmod)
-		to_chat(user, SPAN_NOTICE("Core mutation in progress: [T.effectmod]"))
-		to_chat(user, SPAN_NOTICE("Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]"))
+		to_chat(user, SPAN_NOTICE("Мутация ядра в процессе: [T.effectmod]"))
+		to_chat(user, SPAN_NOTICE("Прогресс мутации ядра: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]"))
 	to_chat(user, "========================")

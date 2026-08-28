@@ -419,18 +419,18 @@
 	return found
 
 /atom/proc/build_base_description(infix = "", suffix = "")
-	//This reformat names to get a/an properly working on item descriptions when they are bloody
-	var/f_name = "\a [src][infix]."
+//This reformat names to get a/an properly working on item descriptions when they are bloody
+	var/f_name = "[src.declent_ru(NOMINATIVE)][infix]."
 	if(src.blood_DNA)
 		if(gender == PLURAL)
-			f_name = "some "
+			f_name = ""
 		else
-			f_name = "a "
+			f_name = ""
 		if(blood_color != "#030303")
-			f_name += "[SPAN_DANGER("blood-stained")] [name][infix]!"
+			f_name += SPAN_DANGER(ru_blood_stained(src)) + " " + src.declent_ru(NOMINATIVE) + infix + "!"
 		else
-			f_name += "oil-stained [name][infix]."
-	. = list("[bicon(src)] That's [f_name] [suffix]")
+			f_name += ru_oil_stained(src) + " " + src.declent_ru(NOMINATIVE) + infix + "."
+	. = list("[bicon(src)] Это [f_name] [suffix]")
 	if(desc)
 		. += desc
 

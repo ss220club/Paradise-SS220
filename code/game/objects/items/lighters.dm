@@ -374,9 +374,11 @@
 	. = ..()
 	matchignite()
 
+// SS220 EDIT START
+
 /obj/item/match/unathi
 	name = "small blaze"
-	desc = "A little flame of your own, currently located dangerously in your mouth."
+	desc = "Твоё маленькое, но сильное пламя, которое вот-вот вырвется наружу!"
 	icon_state = "match_unathi"
 	attack_verb = null
 	flags = DROPDEL | ABSTRACT
@@ -385,41 +387,57 @@
 	w_class = WEIGHT_CLASS_BULKY //to prevent it going to pockets
 	is_unathi_fire = TRUE
 
-/obj/item/match/unathi/cigarette_lighter_act(mob/living/target, mob/living/user, obj/item/direct_attackby_item)
-	var/obj/item/clothing/mask/cigarette/cig = ..()
-	if(!cig)
-		return !isnull(cig)
+/obj/item/match/unathi/cigarette_lighter_act(mob/living/user, mob/living/target,  obj/item/direct_attackby_item)
+	var/obj/item/clothing/mask/cigarette/cig = direct_attackby_item ? direct_attackby_item : target.wear_mask
+
+	if(!cig || !istype(cig, /obj/item/clothing/mask/cigarette))
+		if(user.a_intent == INTENT_HARM)
+			to_chat(user, SPAN_WARNING("Тут нечего сжигать."))
+			return TRUE
+		to_chat(user, SPAN_WARNING("Тут нечего зажигать."))
+		return TRUE
 
 	if(!lit)
-		to_chat(user, SPAN_USERDANGER("If you can see this message, please make an issue report to GitHub, something bad has happened."))
+		to_chat(user, SPAN_USERDANGER("Всё сломалось, кодер вульпа. Пиши трекер."))
+		return TRUE
+
+
+	if(user.a_intent == INTENT_HARM && target != user)
+		user.visible_message(
+			SPAN_DANGER("[user] резко выдыхает пламя души прямо в [cig.declent_ru(ACCUSATIVE)] [target], обращая её в пепел за считанные мгновения!"),
+			SPAN_DANGER("Вы направляете пламя души прямо на [cig.declent_ru(ACCUSATIVE)] [target], мгновенно сжигая её до окурка."),
+			SPAN_WARNING("Раздаётся резкий треск вспыхнувшего табака!")
+		)
+
+		playsound(user.loc, 'sound/effects/unathiignite.ogg', 50, FALSE)
+
+		cig.die()
+
+		matchburnout()
+		return TRUE
+
+	if(cig.lit)
+		to_chat(user, SPAN_WARNING("Тут нечего зажигать."))
 		return TRUE
 
 	if(target == user)
 		user.visible_message(
-			SPAN_ROSE("[user] spits fire at [user.p_their()] [cig.name], igniting it."),
-			SPAN_ROSE("You spit fire at [cig], igniting it."),
-			SPAN_WARNING("You hear a brief burst of flame!")
+			SPAN_ROSE("[user] направляет дыхание воли к [cig.declent_ru(DATIVE)], и та послушно вспыхивает."),
+			SPAN_ROSE("Вы направляете дыхание воли на [cig.declent_ru(ACCUSATIVE)] и она оживает слабым огоньком."),
+			SPAN_WARNING("Воздух рассекает короткий, благородный треск пламени!")
 		)
 	else
-		if(prob(50))
-			user.visible_message(
-				SPAN_ROSE("[user] spits fire at [target], lighting [cig] in [target.p_their()] mouth and nearly burning [target.p_their()] face!"),
-				SPAN_ROSE("You spit fire at [target], lighting [cig] in [target.p_their()] mouth and nearly burning [target.p_their()] face!"),
-				SPAN_WARNING("You hear a brief burst of flame!")
-			)
-		else
-			user.visible_message(
-				SPAN_ROSE("[user] spits fire at [target], burning [target.p_their()] face and lighting [cig] in the process!"),
-				SPAN_ROSE("You spit fire at [target], burning [target.p_their()] face and lighting [cig] in the process!"),
-				SPAN_WARNING("You hear a brief burst of flame!")
-			)
-			var/obj/item/organ/external/head/affecting = target.get_organ("head")
-			affecting.receive_damage(0, 5)
-			target.UpdateDamageIcon()
+		user.visible_message(
+			SPAN_ROSE("[user] дарует дыхание воли [target], зажигая [cig.declent_ru(ACCUSATIVE)] в [target.ru_p_them()] пасти."),
+			SPAN_ROSE("Вы даруете дыхание воли [target] — [cig.declent_ru(NOMINATIVE)] послушно вспыхивает в пасти."),
+			SPAN_WARNING("Воздух рассекает короткий и благородный треск пламени!")
+		)
 	cig.light(user, target)
 	playsound(user.loc, 'sound/effects/unathiignite.ogg', 40, FALSE)
 	matchburnout()
 	return TRUE
+
+// SS220 EDIT END
 
 /obj/item/match/unathi/Initialize(mapload)
 	. = ..()

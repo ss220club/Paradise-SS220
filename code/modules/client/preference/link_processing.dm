@@ -625,10 +625,21 @@
 						return
 					active_character.flavor_text = msg
 
+				// SS220 ADDITION START - TTS220
+				if("tts_seed")
+					var/datum/ui_module/tts_seeds_explorer/explorer = explorer_users[user]
+					if(!explorer)
+						explorer = new()
+						explorer_users[user] = explorer
+					explorer.ui_interact(user)
+					return
+				// SS220 ADDITION END
+
 				if("limbs")
 					var/valid_limbs = list("Left Leg", "Right Leg", "Left Arm", "Right Arm", "Left Foot", "Right Foot", "Left Hand", "Right Hand")
 					if(S.bodyflags & ALL_RPARTS)
 						valid_limbs = list("Torso", "Lower Body", "Head", "Left Leg", "Right Leg", "Left Arm", "Right Arm", "Left Foot", "Right Foot", "Left Hand", "Right Hand")
+						valid_limbs |= "All Parts" // SS220 EDIT - IPCs can apply one state/manufacturer to all robotic body parts.
 					var/limb_name = tgui_input_list(user, "Which limb do you want to change?", "Limbs and Parts", valid_limbs)
 					if(!limb_name) return
 
@@ -680,6 +691,14 @@
 
 					var/new_state = tgui_input_list(user, "What state do you wish the limb to be in?", "[limb_name]", valid_limb_states)
 					if(!new_state) return
+
+					// SS220 EDIT START - IPCs can apply one state/manufacturer to all robotic body parts.
+					if(limb_name == "All Parts")
+						process_all_parts_limb(user, new_state)
+						ShowChoices(user)
+						return
+
+					// SS220 EDIT END
 
 					switch(new_state)
 						if("Normal")
@@ -840,7 +859,7 @@
 				if("hear_adminhelps")
 					sound ^= SOUND_ADMINHELP
 				if("ui")
-					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Clockwork", "Mindflayer"))
+					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Clockwork", "Vaporwave", "Detective", "Trasenknox", "Clockwork")) // SS220 EDIT "Vaporwave, Detective, Trasenknox, Clockwork"
 					if(!new_UI_style)
 						return
 					switch(new_UI_style)
@@ -858,8 +877,16 @@
 							UI_style = "White"
 						if("Clockwork")
 							UI_style = "Clockwork"
-						if("Mindflayer")
-							UI_style = "Mindflayer"
+						// SS220 ADDITION - START
+						if("Vaporwave")
+							UI_style = "Vaporwave"
+						if("Detective")
+							UI_style = "Detective"
+						if("Trasenknox")
+							UI_style = "Trasenknox"
+						if("Clockwork")
+							UI_style = "Clockwork"
+						// SS220 ADDITION - END
 
 					if(ishuman(usr)) //mid-round preference changes, for aesthetics
 						var/mob/living/carbon/human/H = usr
@@ -1158,7 +1185,7 @@
 									"CLEAR" = "Center"
 								)
 
-								new_key = key_map[new_key] || new_key
+								new_key = convert_ru_key_to_en_key(key_map[new_key] || new_key) // SS220 EDIT
 
 								var/full_key
 								switch(new_key)

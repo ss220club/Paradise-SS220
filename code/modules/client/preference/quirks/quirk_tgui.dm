@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(quirk_tgui_info)
 
 /datum/ui_module/quirk
-	name = "Quirks"
+	name = "Квирки"
 
 /datum/ui_module/quirk/ui_state(mob/user)
 	return GLOB.always_state

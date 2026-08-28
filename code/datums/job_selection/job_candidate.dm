@@ -155,6 +155,8 @@ RESTRICT_TYPE(/datum/job_candidate)
 		return FALSE
 	if(is_barred_by_quirk(job))
 		return FALSE
+	if(!is_donor_allowed(job)) // SS220 EDIT - donor jobs
+		return FALSE
 
 	return TRUE
 

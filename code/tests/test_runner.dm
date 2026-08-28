@@ -9,6 +9,11 @@
 #define MAX_MAP_TEST_FAILURE_COUNT 20
 #endif
 
+// SS220 EDIT START ICONS FOR TEST RESULTS
+#define FAIL_ICON "❌"
+#define PASS_ICON "✅"
+// SS220 EDIT END
+
 /datum/test_runner
 	var/datum/game_test/current_test
 	var/failed_any_test = FALSE
@@ -122,13 +127,13 @@
 	result += "RUN  [time2text(time, "YYYY-MM-DD")]T[time2text(time, "hh:mm:ss")]"
 
 	for(var/reason in fail_reasons)
-		result += "FAIL [reason]"
+		result += "[FAIL_ICON] FAIL [reason]" // SS220 EDIT ICON FOR TEST RESULT
 
 	for(var/test in test_logs)
 		if(length(test_logs[test]) == 0)
-			result += "PASS [test] [durations[test] / 10]s"
+			result += "[PASS_ICON] PASS [test] [durations[test] / 10]s" // SS220 EDIT ICON FOR TEST RESULT
 		else
-			result += "FAIL [test] [durations[test] / 10]s"
+			result += "[FAIL_ICON] FAIL [test] [durations[test] / 10]s" // SS220 EDIT ICON FOR TEST RESULT
 			result += "\t" + test_logs[test].Join("\n\t")
 
 	for(var/entry in result)
@@ -142,3 +147,5 @@
 	del(world)	//shut it down
 
 #undef MAX_MAP_TEST_FAILURE_COUNT
+#undef FAIL_ICON // SS220 EDIT ICON FOR TEST RESULT
+#undef PASS_ICON // SS220 EDIT ICON FOR TEST RESULT

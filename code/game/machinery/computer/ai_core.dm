@@ -1,6 +1,6 @@
 /obj/structure/ai_core
 	density = TRUE
-	name = "AI core"
+	name = "Ядро ИИ"
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "0"
 	max_integrity = 500
@@ -22,7 +22,7 @@
 				if(!user.drop_item())
 					return ITEM_INTERACT_COMPLETE
 				playsound(loc, P.usesound, 50, 1)
-				to_chat(user, SPAN_NOTICE("You place the circuit board inside the frame."))
+				to_chat(user, SPAN_NOTICE("Вы вставляете плату в раму."))
 				update_icon(UPDATE_ICON_STATE)
 				state = CIRCUIT_CORE
 				P.forceMove(src)
@@ -34,83 +34,83 @@
 				var/obj/item/stack/cable_coil/C = P
 				if(C.get_amount() >= 5)
 					playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
-					to_chat(user, SPAN_NOTICE("You start to add cables to the frame..."))
+					to_chat(user, SPAN_NOTICE("Вы добавляете кабелей к раме..."))
 					if(do_after(user, 20, target = src) && state == SCREWED_CORE && C.use(5))
-						to_chat(user, SPAN_NOTICE("You add cables to the frame."))
+						to_chat(user, SPAN_NOTICE("Вы добавили кабелей к раме."))
 						state = CABLED_CORE
 						update_icon(UPDATE_ICON_STATE)
 				else
-					to_chat(user, SPAN_WARNING("You need five lengths of cable to wire the AI core!"))
+					to_chat(user, SPAN_WARNING("Вам нужно 5 кабелей для вставки проводки в ядро ИИ!"))
 				return ITEM_INTERACT_COMPLETE
 		if(CABLED_CORE)
 			if(istype(P, /obj/item/stack/sheet/rglass))
 				var/obj/item/stack/sheet/rglass/G = P
 				if(G.get_amount() >= 2)
 					playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
-					to_chat(user, SPAN_NOTICE("You start to put in the glass panel..."))
+					to_chat(user, SPAN_NOTICE("Вы ставите стеклянную панель..."))
 					if(do_after(user, 20, target = src) && state == CABLED_CORE && G.use(2))
-						to_chat(user, SPAN_NOTICE("You put in the glass panel."))
+						to_chat(user, SPAN_NOTICE("Вы вставили стеклянную панель."))
 						state = GLASS_CORE
 						update_icon(UPDATE_ICON_STATE)
 				else
-					to_chat(user, SPAN_WARNING("You need two sheets of reinforced glass to insert them into the AI core!"))
+					to_chat(user, SPAN_WARNING("Вам нужно два листа укрепленного стекла для вставки в ядро ИИ!"))
 				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/ai_module/purge))
 				laws.clear_inherent_laws()
-				to_chat(usr, SPAN_NOTICE("Law module applied."))
+				to_chat(usr, SPAN_NOTICE("Применён модуль Purge."))
 				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/ai_module/freeform))
 				var/obj/item/ai_module/freeform/M = P
 				if(!M.newFreeFormLaw)
-					to_chat(usr, "No law detected on module, please create one.")
+					to_chat(usr, "На модуле не обнаружено законов. Пожалуйста, сформулируйте хотя бы один.")
 					return ITEM_INTERACT_COMPLETE
 				laws.add_supplied_law(M.lawpos, M.newFreeFormLaw)
-				to_chat(usr, SPAN_NOTICE("Added a freeform law."))
+				to_chat(usr, SPAN_NOTICE("Добавлен закон Freeform."))
 				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/ai_module/syndicate))
 				var/obj/item/ai_module/syndicate/M = P
 				if(!M.newFreeFormLaw)
-					to_chat(usr, "No law detected on module, please create one.")
+					to_chat(usr, "На модуле не обнаружено законов. Пожалуйста, сформулируйте хотя бы один.")
 					return ITEM_INTERACT_COMPLETE
 				laws.add_ion_law(M.newFreeFormLaw)
-				to_chat(usr, SPAN_NOTICE("Added a hacked law."))
+				to_chat(usr, SPAN_NOTICE("Добавлен взломанный закон."))
 				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/ai_module))
 				var/obj/item/ai_module/M = P
 				if(!M.laws)
-					to_chat(usr, SPAN_WARNING("This AI module can not be applied directly to AI cores."))
+					to_chat(usr, SPAN_WARNING("Этот модуль ИИ нельзя применить напрямую к ядру."))
 					return ITEM_INTERACT_COMPLETE
 				laws = M.laws
-				to_chat(usr, SPAN_NOTICE("Added [M.laws.name] laws."))
+				to_chat(usr, SPAN_NOTICE("Добавлены законы [M.laws.name]."))
 				return ITEM_INTERACT_COMPLETE
 
 			if(istype(P, /obj/item/mmi) && !brain)
 				var/obj/item/mmi/M = P
 				if(!M.brainmob)
-					to_chat(user, SPAN_WARNING("Sticking an empty [P] into the frame would sort of defeat the purpose."))
+					to_chat(user, SPAN_WARNING("Вставка пустого [P] в раму своего рода противоречит цели."))
 					return ITEM_INTERACT_COMPLETE
 				if(M.brainmob.stat == DEAD)
-					to_chat(user, SPAN_WARNING("Sticking a dead [P] into the frame would sort of defeat the purpose."))
+					to_chat(user, SPAN_WARNING("Вставка мёртвого [P] в раму своего рода противоречит цели."))
 					return ITEM_INTERACT_COMPLETE
 
 				if(!M.brainmob.client)
-					to_chat(user, SPAN_WARNING("Sticking an inactive [M.name] into the frame would sort of defeat the purpose."))
+					to_chat(user, SPAN_WARNING("Вставка неактивного [M.name] в раму своего рода противоречит цели."))
 					return ITEM_INTERACT_COMPLETE
 
 				if(jobban_isbanned(M.brainmob, "AI") || jobban_isbanned(M.brainmob, "nonhumandept"))
-					to_chat(user, SPAN_WARNING("This [P] does not seem to fit."))
+					to_chat(user, SPAN_WARNING("Видимо, [P] не подходит."))
 					return ITEM_INTERACT_COMPLETE
 
 				if(!M.brainmob.mind)
-					to_chat(user, SPAN_WARNING("This [M.name] is mindless!"))
+					to_chat(user, SPAN_WARNING("[M.name] сейчас без разума!"))
 					return ITEM_INTERACT_COMPLETE
 
 				if(istype(P, /obj/item/mmi/syndie))
-					to_chat(user, SPAN_WARNING("This MMI does not seem to fit!"))
+					to_chat(user, SPAN_WARNING("Этот MMI, видимо, не подходит!"))
 					return ITEM_INTERACT_COMPLETE
 
 				if(!user.drop_item())
@@ -118,7 +118,7 @@
 
 				M.forceMove(src)
 				brain = M
-				to_chat(user, SPAN_NOTICE("You add [M.name] to the frame."))
+				to_chat(user, SPAN_NOTICE("Вы вставляете [M.name] в раму."))
 				update_icon(UPDATE_ICON_STATE)
 				return ITEM_INTERACT_COMPLETE
 
@@ -132,21 +132,21 @@
 		return
 	switch(state)
 		if(CIRCUIT_CORE)
-			to_chat(user, SPAN_NOTICE("You remove the circuit board."))
+			to_chat(user, SPAN_NOTICE("Вы вытаскиваете плату."))
 			state = EMPTY_CORE
 			circuit.forceMove(loc)
 			circuit = null
 			update_icon(UPDATE_ICON_STATE)
 			return
 		if(GLASS_CORE)
-			to_chat(user, SPAN_NOTICE("You remove the glass panel."))
+			to_chat(user, SPAN_NOTICE("Вы убираете стеклянную панель."))
 			state = CABLED_CORE
 			new /obj/item/stack/sheet/rglass(loc, 2)
 			update_icon(UPDATE_ICON_STATE)
 			return
 		if(CABLED_CORE)
 			if(brain)
-				to_chat(user, SPAN_NOTICE("You remove the brain."))
+				to_chat(user, SPAN_NOTICE("Вы удаляете мозг."))
 				brain.forceMove(loc)
 				brain = null
 	update_icon(UPDATE_ICON_STATE)
@@ -159,18 +159,18 @@
 		return
 	switch(state)
 		if(SCREWED_CORE)
-			to_chat(user, SPAN_NOTICE("You unfasten the circuit board."))
+			to_chat(user, SPAN_NOTICE("Вы откручиваете плату."))
 			state = CIRCUIT_CORE
 		if(CIRCUIT_CORE)
-			to_chat(user, SPAN_NOTICE("You screw the circuit board into place."))
+			to_chat(user, SPAN_NOTICE("Вы закручиваете плату в слот."))
 			state = SCREWED_CORE
 		if(GLASS_CORE)
 			var/area/R = get_area(src)
 			message_admins("[key_name_admin(usr)] has completed an AI core in [R]: [ADMIN_COORDJMP(loc)].")
 			log_game("[key_name(usr)] has completed an AI core in [R]: [COORD(loc)].")
-			to_chat(user, SPAN_NOTICE("You connect the monitor."))
+			to_chat(user, SPAN_NOTICE("Вы подключаете монитор."))
 			if(!brain)
-				var/open_for_latejoin = tgui_alert(user, "Would you like this core to be open for latejoining AIs?", "Latejoin", list("Yes", "No")) == "Yes"
+				var/open_for_latejoin = tgui_alert(user, "Вы хотите, чтобы это ядро было доступно из лобби игры?", "Latejoin", list("Да", "Нет")) == "Да"
 				var/obj/structure/ai_core/deactivated/D = new(loc)
 				if(open_for_latejoin)
 					GLOB.empty_playable_ai_cores += D
@@ -183,11 +183,11 @@
 				// Stop holding onto the laws so we don't qdel them and make the AI randomly lose its laws when GC gives up and hard deletes them.
 				laws = null
 				if(A) //if there's no brain, the mob is deleted and a structure/AIcore is created
-					A.rename_self("AI", 1)
+					A.rename_self("ИИ", 1)
 			SSblackbox.record_feedback("amount", "ais_created", 1)
 			qdel(src)
 		if(AI_READY_CORE)
-			to_chat(user, SPAN_NOTICE("You disconnect the monitor."))
+			to_chat(user, SPAN_NOTICE("Вы отключаете монитор."))
 			state = GLASS_CORE
 	update_icon(UPDATE_ICON_STATE)
 
@@ -199,9 +199,9 @@
 	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
 		return
 	if(brain)
-		to_chat(user, SPAN_WARNING("Get that [brain.name] out of there first!"))
+		to_chat(user, SPAN_WARNING(" Сначала вытащите [brain.name] !"))
 	else
-		to_chat(user, SPAN_NOTICE("You remove the cables."))
+		to_chat(user, SPAN_NOTICE("Вы убираете проводку."))
 		state = SCREWED_CORE
 		update_icon(UPDATE_ICON_STATE)
 		var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( loc )
@@ -248,12 +248,12 @@
 		return
 	WELDER_ATTEMPT_WELD_MESSAGE
 	if(I.use_tool(src, user, 20, volume = I.tool_volume))
-		to_chat(user, SPAN_NOTICE("You deconstruct the frame."))
+		to_chat(user, SPAN_NOTICE("Вы разбираете раму."))
 		new /obj/item/stack/sheet/plasteel(drop_location(), 4)
 		qdel(src)
 
 /obj/structure/ai_core/deactivated
-	name = "inactive AI"
+	name = "неактивный ИИ"
 	icon_state = "ai-empty"
 	anchored = TRUE
 	state = AI_READY_CORE

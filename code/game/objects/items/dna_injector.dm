@@ -1,6 +1,6 @@
 /obj/item/dnainjector
 	name = "DNA-Injector"
-	desc = "This injects the person with DNA."
+	desc = "Инъекция модифицирующая ДНК испытуемого."
 	icon = 'icons/obj/medical.dmi'
 	icon_state = "dnainjector"
 	inhand_icon_state = "dnainjector"
@@ -86,7 +86,7 @@
 		H = M
 
 	if(!buf)
-		stack_trace("[src] used by [user] on [M] failed to initialize properly.")
+		stack_trace("Применение [src.declent_ru(GENITIVE)] персонажем [user.declent_ru(NOMINATIVE)] на [M.declent_ru(PREPOSITIONAL)] не было правильно исполнено.")
 		return
 
 	spawn(0) //Some mutations have sleeps in them, like monkey
@@ -120,48 +120,48 @@
 
 /obj/item/dnainjector/attack__legacy__attackchain(mob/M, mob/user)
 	if(used)
-		to_chat(user, SPAN_WARNING("This injector is used up!"))
+		to_chat(user, SPAN_WARNING("Этот инъектор уже использован!"))
 		return
 	if(!M.dna || HAS_TRAIT(M, TRAIT_GENELESS) || HAS_TRAIT(M, TRAIT_BADDNA)) //You know what would be nice? If the mob you're injecting has DNA, and so doesn't cause runtimes.
 		return FALSE
 
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+		to_chat(user, SPAN_WARNING("Вам не удаётся понять что с этим делать!"))
 		return FALSE
 
-	var/attack_log = "injected with the Isolated [name]"
+	var/attack_log = "ввел изолированный [name]"
 
 	if(buf && buf.types & DNA2_BUF_SE)
 		if(block)
 			if(GetState() && block == GLOB.monkeyblock && ishuman(M))
-				attack_log = "injected with the Isolated [name] (MONKEY)"
-				message_admins("[key_name_admin(user)] injected [key_name_admin(M)] with the Isolated [name] [SPAN_WARNING("(MONKEY)")]")
+				attack_log = "ввёл изолированный [name] (MONKEY)"
+				message_admins("[key_name_admin(user)] ввёл [key_name_admin(M)] изолированный [name] [SPAN_WARNING("(MONKEY)")]")
 
 		else
 			if(GetState(GLOB.monkeyblock) && ishuman(M))
-				attack_log = "injected with the Isolated [name] (MONKEY)"
-				message_admins("[key_name_admin(user)] injected [key_name_admin(M)] with the Isolated [name] [SPAN_WARNING("(MONKEY)")]")
+				attack_log = "ввёл изолированный [name] (MONKEY)"
+				message_admins("[key_name_admin(user)] ввёл [key_name_admin(M)] изолированный [name] [SPAN_WARNING("(MONKEY)")]")
 
 
 	if(M != user)
-		M.visible_message(SPAN_DANGER("[user] is trying to inject [M] with [src]!"), SPAN_USERDANGER("[user] is trying to inject [M] with [src]!"))
+		M.visible_message(SPAN_DANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [M.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"), SPAN_USERDANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [M.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"))
 		if(!do_mob(user, M))
 			return
-		M.visible_message("<span class='danger'>[user] injects [M] with the syringe with [src]!", \
-						"<span class='userdanger'>[user] injects [M] with the syringe with [src]!")
+		M.visible_message("<span class='danger'>[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!", \
+						"<span class='userdanger'>[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!")
 	else
-		to_chat(user, SPAN_NOTICE("You inject yourself with [src]."))
+		to_chat(user, SPAN_NOTICE("Вы инъецировали себя используя [src.declent_ru(ACCUSATIVE)]."))
 
 	add_attack_logs(user, M, attack_log, ATKLOG_ALL)
 
 	inject(M, user)
 	used = TRUE
 	icon_state = "dnainjector0"
-	desc += " This one is used up."
+	desc += " Он уже был использован."
 
 /obj/item/dnainjector/hulkmut
 	name = "DNA-Injector (Hulk)"
-	desc = "This will make you big and strong, but give you a bad skin condition."
+	desc = "Это сделает вас крепче и сильнее, ценой паршивого состояния кожи."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -171,7 +171,7 @@
 
 /obj/item/dnainjector/antihulk
 	name = "DNA-Injector (Anti-Hulk)"
-	desc = "Cures green skin."
+	desc = "Исправляет зеленый загар и делает из вас сосунка как раньше."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -181,7 +181,7 @@
 
 /obj/item/dnainjector/firemut
 	name = "DNA-Injector (Fire)"
-	desc = "Gives you fire."
+	desc = "Согревает вас на генетическом уровне от любых морозов."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -191,7 +191,7 @@
 
 /obj/item/dnainjector/antifire
 	name = "DNA-Injector (Anti-Fire)"
-	desc = "Cures fire."
+	desc = "Отбирает у вас лишнее тепло, делая уязвимым к холодам."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -201,7 +201,7 @@
 
 /obj/item/dnainjector/telemut
 	name = "DNA-Injector (Tele.)"
-	desc = "Super brain man!"
+	desc = "Профессор Х! Коляска в комплект не входит, в отличие от силы трогать предметы на расстоянии."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -211,11 +211,11 @@
 
 /obj/item/dnainjector/telemut/darkbundle
 	name = "DNA injector"
-	desc = "Good. Let the hate flow through you."
+	desc = "Прекрасно. Позволь ненависти течь в твоих жилах и встань на тёмную сторону силы."
 
 /obj/item/dnainjector/antitele
 	name = "DNA-Injector (Anti-Tele.)"
-	desc = "Will make you not able to control your mind."
+	desc = "Отведёт от вас прочь способность перемещать вещи силой мысли."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -225,7 +225,7 @@
 
 /obj/item/dnainjector/nobreath
 	name = "DNA-Injector (Breathless)"
-	desc = "Hold your breath and count to infinity."
+	desc = "Задержи дыхание и считай до бесконечности."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -235,7 +235,7 @@
 
 /obj/item/dnainjector/antinobreath
 	name = "DNA-Injector (Anti-Breathless)"
-	desc = "Hold your breath and count to 100."
+	desc = "Задержи дыхание и считай до ста."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -245,7 +245,7 @@
 
 /obj/item/dnainjector/remoteview
 	name = "DNA-Injector (Remote View)"
-	desc = "Stare into the distance for a reason."
+	desc = "Смотрите в стенку на любом расстоянии за теми, кто обзавелся этой силой вместе с вами."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -255,7 +255,7 @@
 
 /obj/item/dnainjector/antiremoteview
 	name = "DNA-Injector (Anti-Remote View)"
-	desc = "Cures green skin."
+	desc = "Заставляет вас пройтись, чтобы найти свой объект слежки."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -265,7 +265,7 @@
 
 /obj/item/dnainjector/regenerate
 	name = "DNA-Injector (Regeneration)"
-	desc = "Healthy but hungry."
+	desc = "Оплаченная медицинская страховка. Самолечение!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -275,7 +275,7 @@
 
 /obj/item/dnainjector/antiregenerate
 	name = "DNA-Injector (Anti-Regeneration)"
-	desc = "Sickly but sated."
+	desc = "У вас нет денег на медпомощь? Теперь и страховки не будет."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -285,7 +285,7 @@
 
 /obj/item/dnainjector/morph
 	name = "DNA-Injector (Morph)"
-	desc = "A total makeover."
+	desc = "Полное преображение и без дурацкого зеркала."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -295,7 +295,7 @@
 
 /obj/item/dnainjector/antimorph
 	name = "DNA-Injector (Anti-Morph)"
-	desc = "Cures identity crisis."
+	desc = "Лечит раздвоение, растроение... много личностей в одной шкуре."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -305,7 +305,7 @@
 
 /obj/item/dnainjector/noprints
 	name = "DNA-Injector (No Prints)"
-	desc = "Better than a pair of budget insulated gloves."
+	desc = "Лучше чем пара окрашенных изоляционных перчаток. А главное - большая анонимность!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -315,7 +315,7 @@
 
 /obj/item/dnainjector/antinoprints
 	name = "DNA-Injector (Anti-No Prints)"
-	desc = "Not quite as good as a pair of budget insulated gloves."
+	desc = "Теперь нарушать закон придётся только в нормальных перчатках."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -325,7 +325,7 @@
 
 /obj/item/dnainjector/insulation
 	name = "DNA-Injector (Shock Immunity)"
-	desc = "Better than a pair of real insulated gloves."
+	desc = "220 Вольт - это пустяк. Полная защита от электричества!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -335,7 +335,7 @@
 
 /obj/item/dnainjector/antiinsulation
 	name = "DNA-Injector (Anti-Shock Immunity)"
-	desc = "Not quite as good as a pair of real insulated gloves."
+	desc = "Лучше обзавестись изоляционными перчатками..."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -345,7 +345,7 @@
 
 /obj/item/dnainjector/small_size
 	name = "DNA-Injector (Small Size)"
-	desc = "Makes you shrink."
+	desc = "Делает из вас дварфа, гнома, ребёнка или бегающий гвоздь. Как повезёт."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -355,7 +355,7 @@
 
 /obj/item/dnainjector/anti_small_size
 	name = "DNA-Injector (Anti-Small Size)"
-	desc = "Makes you grow. But not too much."
+	desc = "Возвращает ваш рост к норме, чтобы никто не спрашивал паспорт."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -365,7 +365,7 @@
 
 /obj/item/dnainjector/eatmut
 	name = "DNA-Injector (Matter Eater)"
-	desc = "Gives you an appetite for anything."
+	desc = "С этим вы можете и корову съесть. Буквально."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -375,7 +375,7 @@
 
 /obj/item/dnainjector/antieat
 	name = "DNA-Injector (Anti-Matter Eater)"
-	desc = "Makes you regain your normal appetite."
+	desc = "Возвращает вашу скучную диету трёх омлетов за день."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -386,7 +386,7 @@
 /////////////////////////////////////
 /obj/item/dnainjector/antiglasses
 	name = "DNA-Injector (Anti-Glasses)"
-	desc = "Toss away those glasses!"
+	desc = "Выбрось к черту эти очки!"
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -396,7 +396,7 @@
 
 /obj/item/dnainjector/glassesmut
 	name = "DNA-Injector (Glasses)"
-	desc = "Will make you need dorkish glasses."
+	desc = "А говорили тебе за консолью долго не сидеть. Ищи очки для зрения."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -406,7 +406,7 @@
 
 /obj/item/dnainjector/epimut
 	name = "DNA-Injector (Epi.)"
-	desc = "Shake shake shake the room!"
+	desc = "Лучше не щелкать переключатель света несколько раз..."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -416,7 +416,7 @@
 
 /obj/item/dnainjector/antiepi
 	name = "DNA-Injector (Anti-Epi.)"
-	desc = "Will fix you up from shaking the room."
+	desc = "Поможет вам избавиться от ощущения, что комната трясется."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -426,7 +426,7 @@
 
 /obj/item/dnainjector/anticough
 	name = "DNA-Injector (Anti-Cough)"
-	desc = "Will stop that awful noise."
+	desc = "Избавит вас от боли в горле."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -436,7 +436,7 @@
 
 /obj/item/dnainjector/coughmut
 	name = "DNA-Injector (Cough)"
-	desc = "Will bring forth a sound of horror from your throat."
+	desc = "Нашлёт длительные кошмары на ваше горло."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -446,7 +446,7 @@
 
 /obj/item/dnainjector/clumsymut
 	name = "DNA-Injector (Clumsy)"
-	desc = "Makes clumsy minions."
+	desc = "Создает нелепые ситуации и делает обладателя этой мутации рассеяным."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -456,7 +456,7 @@
 
 /obj/item/dnainjector/anticlumsy
 	name = "DNA-Injector (Anti-Clumy)"
-	desc = "Cleans up confusion."
+	desc = "Убирает путаницу в вашей жизни."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -466,7 +466,7 @@
 
 /obj/item/dnainjector/stuttmut
 	name = "DNA-Injector (Stutt.)"
-	desc = "Makes you s-s-stuttterrr."
+	desc = "Вызывает у в-в-вас н-нер-в-вный тик."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -477,7 +477,7 @@
 
 /obj/item/dnainjector/antistutt
 	name = "DNA-Injector (Anti-Stutt.)"
-	desc = "Fixes that speaking impairment."
+	desc = "Исправляет нарушение речи и делает вас собраннее."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -487,7 +487,7 @@
 
 /obj/item/dnainjector/blindmut
 	name = "DNA-Injector (Blind)"
-	desc = "Makes you not see anything."
+	desc = "Ослепляет вас. Поразительно, правда?"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -497,7 +497,7 @@
 
 /obj/item/dnainjector/antiblind
 	name = "DNA-Injector (Anti-Blind)"
-	desc = "ITS A MIRACLE!!!"
+	desc = "Если вы это читаете, то он вам и не нужен."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -507,7 +507,7 @@
 
 /obj/item/dnainjector/paraplegicmut
 	name = "DNA-Injector (Paraplegic)"
-	desc = "Faceplanting, in needle form."
+	desc = "Напомнит вам о вашей любви к поцелуям с поверхностью под ногами."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -517,7 +517,7 @@
 
 /obj/item/dnainjector/antiparaplegic
 	name = "DNA-Injector (Anti-Paraplegic)"
-	desc = "Returns your legs to working order."
+	desc = "Возвращает ваши ноги на рабочую смену."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -527,7 +527,7 @@
 
 /obj/item/dnainjector/deafmut
 	name = "DNA-Injector (Deaf)"
-	desc = "Sorry, what did you say?"
+	desc = "Вызывает генетическую утрату слуха."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -537,7 +537,7 @@
 
 /obj/item/dnainjector/antideaf
 	name = "DNA-Injector (Anti-Deaf)"
-	desc = "Will make you hear once more."
+	desc = "Устраняет проблемы со слухом, вызванные генетикой."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -547,7 +547,7 @@
 
 /obj/item/dnainjector/hallucination
 	name = "DNA-Injector (Halluctination)"
-	desc = "What you see isn't always what you get."
+	desc = "То что вы видите, не всегда является реальностью."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -557,7 +557,7 @@
 
 /obj/item/dnainjector/antihallucination
 	name = "DNA-Injector (Anti-Hallucination)"
-	desc = "What you see is what you get."
+	desc = "Больше никаких призраков! Только реальные угрозы вашей жизни."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -567,7 +567,7 @@
 
 /obj/item/dnainjector/h2m
 	name = "DNA-Injector (Human > Monkey)"
-	desc = "Will make you a flea bag."
+	desc = "Откатывает вас на ступень эволюции назад, если вы еще не там."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -577,7 +577,7 @@
 
 /obj/item/dnainjector/m2h
 	name = "DNA-Injector (Monkey > Human)"
-	desc = "Will make you...less hairy."
+	desc = "Делает вас больше и умнее, но это не точно."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE
@@ -588,7 +588,7 @@
 
 /obj/item/dnainjector/comic
 	name = "DNA-Injector (Comic)"
-	desc = "Honk!"
+	desc = "Хонк!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	forcedmutation = TRUE
@@ -598,7 +598,7 @@
 
 /obj/item/dnainjector/anticomic
 	name = "DNA-Injector (Ant-Comic)"
-	desc = "Honk...?"
+	desc = "Хонк...?"
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	forcedmutation = TRUE

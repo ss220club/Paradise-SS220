@@ -12,7 +12,7 @@
 	desc = "A grenade that explodes into HONK! brand banana peels that are genetically modified to be extra slippery and extrude caustic acid when stepped on."
 	reference = "BG"
 	item = /obj/item/grenade/clown_grenade
-	cost = 15
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 15 -> 10
 	job = list("Clown")
 
 /datum/uplink_item/jobspecific/clownslippers
@@ -29,7 +29,7 @@
 	desc = "The jestographic sequencer, also known as a cmag, is a small card that inverts the access on any door it's used on. Perfect for locking command out of their own departments. Honk!"
 	reference = "CMG"
 	item = /obj/item/card/cmag
-	cost = 20
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 	surplus = 75
 	job = list("Clown")
 
@@ -70,7 +70,7 @@
 	desc = "A specialized, one shell shotgun with a built-in cloaking device to mimic a cane. The shotgun is capable of hiding its contents and the pin alongside being suppressed. Comes boxed with 6 specialized shrapnel rounds laced with a silencing toxin, and 1 preloaded in the shotgun's chamber."
 	reference = "MCS"
 	item = /obj/item/storage/box/syndie_kit/caneshotgun
-	cost = 40
+	cost = 20 // SS220 EDIT PRICE UP/DOWN 40 -> 20
 	job = list("Mime")
 
 /datum/uplink_item/jobspecific/mimery
@@ -78,7 +78,7 @@
 	desc = "Contains two manuals to teach you advanced Mime skills. You will be able to shoot lethal bullets that silence out of your fingers, and create large walls that can block an entire hallway!"
 	reference = "AM"
 	item = /obj/item/storage/box/syndie_kit/mimery
-	cost = 50
+	cost = 65 // SS220 EDIT PRICE UP/DOWN 50 -> 65
 	job = list("Mime")
 	surplus = 0 // I feel this just isn't healthy to be in these crates.
 
@@ -88,7 +88,7 @@
 		a pair of throwing croissants, and the recipe to make more on demand. Once the job is done, eat the evidence."
 	reference = "CBK"
 	item = /obj/item/storage/box/syndie_kit/combat_baking
-	cost = 25 //A chef can get a knife that sharp easily, though it won't block. While you can get endless boomerang, they are less deadly than a stech, and slower / more predictable.
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 25 -> 15 //A chef can get a knife that sharp easily, though it won't block. While you can get endless boomerang, they are less deadly than a stech, and slower / more predictable.
 	job = list("Mime", "Chef")
 
 // Shaft miner
@@ -107,7 +107,7 @@
 	Use it on a mining charge to override its safeties. Reduces explosive power of mining charges due to the modification of their internals."
 	reference = "MCH"
 	item = /obj/item/t_scanner/adv_mining_scanner/syndicate
-	cost = 25
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 25 -> 15
 	job = list("Shaft Miner")
 
 //Chef
@@ -116,7 +116,7 @@
 	desc = "A custom sauce made from the highly poisonous fly amanita mushrooms. Anyone who ingests it will take variable toxin damage depending on how long it has been in their system, with a higher dosage taking longer to metabolize."
 	reference = "CESS"
 	item = /obj/item/reagent_containers/condiment/syndisauce
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	job = list("Chef")
 	surplus = 0 // Far too specific in its use.
 
@@ -125,7 +125,7 @@
 	desc = "A mean looking meat cleaver that does damage comparable to an Energy Sword, but with the added benefit of chopping your victim into hunks of meat after they've died."
 	reference = "MC"
 	item = /obj/item/kitchen/knife/butcher/meatcleaver
-	cost = 40
+	cost = 30 // SS220 EDIT PRICE UP/DOWN 40 -> 30
 	job = list("Chef")
 
 /datum/uplink_item/jobspecific/syndidonk
@@ -167,7 +167,7 @@
 	desc = "An Anti-Personnel proximity mine cleverly disguised as a wet floor caution sign that is triggered by running past it. Activate it to start the 15 second timer and activate again to disarm."
 	reference = "PM"
 	item = /obj/item/caution/proximity_sign
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	job = list("Janitor")
 
 /datum/uplink_item/jobspecific/titaniumbroom
@@ -176,7 +176,7 @@
 			When wielded, hitting people will have different effects based on your intent. "
 	reference = "TPBR"
 	item = /obj/item/push_broom/traitor
-	cost = 60
+	cost = 45 // SS220 EDIT PRICE UP/DOWN 60 -> 45
 	job = list("Janitor")
 	surplus = 0 //no reflect memes
 
@@ -187,7 +187,7 @@
 	desc = "A modified hypospray disguised as a functional pipette. The pipette can infect victims with viruses upon injection."
 	reference = "VI"
 	item = /obj/item/reagent_containers/dropper/precision/viral_injector
-	cost = 15
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 15 -> 10
 	job = list("Virologist")
 
 /datum/uplink_item/jobspecific/cat_grenade
@@ -205,7 +205,7 @@
 	desc = "A pair of sleek gloves to aid in pickpocketing. While wearing these, you can loot your target without them knowing. Pickpocketing puts the item directly into your hand."
 	reference = "PPG"
 	item = /obj/item/clothing/gloves/color/black/thief
-	cost = 30
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15
 	job = list("Assistant")
 
 //Bartender
@@ -215,7 +215,7 @@
 	desc = "A box containing 6 shotgun shells that simulate the effects of extreme drunkenness on the target, more effective for each type of alcohol in the target's system."
 	reference = "BSS"
 	item = /obj/item/storage/box/syndie_kit/boolets
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	job = list("Bartender")
 
 //Botanist
@@ -236,7 +236,7 @@
 			Activated by alt-clicking, or pressing the middle mouse button. Help/disarm intent will deal stamina damage and cause jittering, while harm/grab intent will deal damage based on the power of the cable you're standing on. Can be toggled on / off via the action button."
 	reference = "PG"
 	item = /obj/item/bio_chip_implanter/shock
-	cost = 50
+	cost = 30 // SS220 EDIT PRICE UP/DOWN 50 -> 30
 	job = list("Station Engineer", "Chief Engineer")
 
 /datum/uplink_item/jobspecific/meltdown_rod
@@ -298,7 +298,7 @@
 	desc = "A highly flexible jumpsuit that will help you navigate the ventilation loops of the station internally. Comes with pockets and ID slot, but can't be used without stripping off most gear, including backpack, belt, helmet, and exosuit. Free hands are also necessary to crawl around inside."
 	reference = "AIRJ"
 	item = /obj/item/clothing/under/rank/engineering/atmospheric_technician/contortionist
-	cost = 30
+	cost = 20 // SS220 EDIT PRICE UP/DOWN 30 -> 20
 	job = list("Life Support Specialist")
 
 /datum/uplink_item/jobspecific/contortionist_plasmaman
@@ -306,7 +306,7 @@
 	desc = "A highly flexible envirosuit that will help you navigate the ventilation loops of the station internally, specialized for Plasmamen. Comes with pockets and ID slot, but can't be used without stripping off most gear, including backpack, belt, and exosuit. Free hands are also necessary to crawl around inside."
 	reference = "AIRJP"
 	item = /obj/item/clothing/under/plasmaman/atmospherics/contortionist
-	cost = 30
+	cost = 20 // SS220 EDIT PRICE UP/DOWN 30 -> 20
 	job = list("Life Support Specialist")
 	species = list("Plasmaman")
 
@@ -315,7 +315,7 @@
 	desc = "A fire axe with a massive energy charge built into it. Upon striking someone while charged it will throw them backwards while stunning them briefly, but will take some time to charge up again. It is also much sharper than a regular axe and can pierce light armor."
 	reference = "EFA"
 	item = /obj/item/fireaxe/energized
-	cost = 40
+	cost = 45 // SS220 EDIT PRICE UP/DOWN 40 -> 45
 	job = list("Life Support Specialist")
 
 //Stimulants
@@ -325,7 +325,7 @@
 	desc = "A highly illegal compound contained within a compact auto-injector; when injected it makes the user extremely resistant to incapacitation and greatly enhances the body's ability to repair itself."
 	reference = "ST"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/stimulants
-	cost = 40
+	cost = 35 // SS220 EDIT PRICE UP/DOWN 45 -> 35
 	job = list("Scientist", "Research Director", "Geneticist", "Chief Medical Officer", "Medical Doctor", "Psychiatrist", "Chemist", "Paramedic", "Coroner", "Virologist")
 
 // Genetics
@@ -346,7 +346,7 @@
 	desc = "Cutting edge of deadly writing implements technology, this gadget will infuse any piece of paper with various delayed poisons based on the selected color. Black ink is normal ink, red ink is a highly lethal poison, green ink causes radiation, blue ink will periodically shock the victim, and yellow ink will paralyze. The included gloves will protect you from your own poisons."
 	reference = "PP"
 	item = /obj/item/storage/box/syndie_kit/poisoner
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST, UPLINK_TYPE_NINJA)
 	job = list("Head of Personnel", "Quartermaster", "Cargo Technician", "Librarian", "Coroner", "Psychiatrist", "Virologist")
 
@@ -359,7 +359,7 @@
 	Throw the card at someone to use it on them, or use it in hand to apply it to yourself. Unlimited uses, 25 second cooldown, can have up to 3 cards in the world."
 	reference = "tarot"
 	item = /obj/item/tarot_generator
-	cost = 55 //This can do a lot of stuff, but is quite random. As such, higher price.
+	cost = 50 // SS220 EDIT PRICE UP/DOWN 55 -> 50 //This can do a lot of stuff, but is quite random. As such, higher price.
 	job = list("Chaplain", "Librarian")
 
 //--------------------------//
@@ -486,7 +486,7 @@
 			The holoparasites are unable to incoporate themselves to changeling and vampire agents."
 	item = /obj/item/storage/box/syndie_kit/guardian/uplink
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST, UPLINK_TYPE_NINJA)
-	cost = 60
+	cost = 50 // SS220 EDIT PRICE UP/DOWN 60 -> 50
 	refund_path = /obj/item/guardiancreator/tech/choose
 	refundable = TRUE
 	surplus = 0 // This being refundable makes this a big no no in my mind.
@@ -505,7 +505,7 @@
 			Unable to be understood by vampire and changeling agents."
 	reference = "SCS"
 	item = /obj/item/sleeping_carp_scroll
-	cost = 65
+	cost = 55 // SS220 EDIT PRICE UP/DOWN 65 -> 55
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST, UPLINK_TYPE_NINJA)
 	can_discount = FALSE
 
@@ -516,7 +516,7 @@
 			Made with love, lots of spirits and lots of the other kind of spirits by the Syndicate-affiliated cult, Children of Ursa Major."
 	reference = "BSP"
 	item = /obj/item/clothing/head/bearpelt/bearserk
-	cost = 60
+	cost = 30 // SS220 EDIT PRICE UP/DOWN 60 -> 30
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/stealthy_tools/traitor_belt
@@ -536,7 +536,7 @@
 	reference = "FRAME"
 	item = /obj/item/cartridge/frame
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST, UPLINK_TYPE_NINJA)
-	cost = 20
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 
 /datum/uplink_item/stealthy_tools/voice_modulator
 	name = "Chameleon Voice Modulator Mask"
@@ -562,7 +562,7 @@
 			While this suit is worn, you will be unable to be tracked or seen by on-Station AI."
 	reference = "BBOS"
 	item = /obj/item/clothing/under/syndicate/silicon_cham
-	cost = 20
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 	excludefrom = list(UPLINK_TYPE_NUCLEAR)
 
 /datum/uplink_item/stealthy_weapons/sleepy_pen
@@ -570,7 +570,7 @@
 	desc = "A syringe disguised as a functional pen. It's filled with a potent anesthetic. \ The pen holds two doses of the mixture. The pen can be refilled."
 	reference = "SP"
 	item = /obj/item/pen/sleepy
-	cost = 40
+	cost = 20 // SS220 EDIT PRICE UP/DOWN 40 -> 20
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/stealthy_weapons/dart_pistol
@@ -578,7 +578,7 @@
 	desc = "A miniaturized version of a normal syringe gun. It is very quiet when fired and can fit into any space a small item can. Comes with 3 syringes: a knockout poison, a silencing agent and a deadly neurotoxin."
 	reference = "DART"
 	item = /obj/item/storage/box/syndie_kit/dart_gun
-	cost = 20
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
 	surplus = 50
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
@@ -588,7 +588,7 @@
 	desc = "Experimental gloves with installed nanochips that teach you Krav Maga when worn, great as a cheap backup weapon. Warning, the nanochips will override any other fighting styles such as CQC. Do not look as fly as the Warden's"
 	reference = "CGM"
 	item = /obj/item/clothing/gloves/color/black/krav_maga
-	cost = 50
+	cost = 45 // SS220 EDIT PRICE UP/DOWN 50 -> 45
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST, UPLINK_TYPE_NINJA)
 
 /datum/uplink_item/device_tools/extraction_beacon
@@ -821,5 +821,5 @@
 	desc = "When inserted into a personal digital assistant, this cartridge gives you five opportunities to detonate PDAs of crew members who have their message feature enabled. The concussive effect from the explosion will knock the recipient down for a short period, and deafen them for longer."
 	reference = "DEPC"
 	item = /obj/item/cartridge/syndicate
-	cost = 30
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST, UPLINK_TYPE_NINJA)

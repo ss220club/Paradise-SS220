@@ -1,6 +1,6 @@
 /datum/spell/touch/fake_disintegrate
 	name = "Disintegrate"
-	desc = "This spell charges your hand with vile energy that can be used to violently explode victims."
+	desc = "Наполняет вашу длань зловещей силой, с её помощью вы сможете разорвать жертву на куски."
 	hand_path = "/obj/item/melee/touch_attack/fake_disintegrate"
 
 	base_cooldown = 600

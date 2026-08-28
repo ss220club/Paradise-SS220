@@ -19,7 +19,7 @@
 			log_debug("Tried to announce a honk tear without a valid area!")
 			kill()
 			return
-	GLOB.minor_announcement.Announce("A Honknomoly has opened. Expected location: [target_area.name].", "Honknomoly Alert", 'sound/items/airhorn.ogg')
+	GLOB.minor_announcement.Announce("На борту станции зафиксирована Хонканомалия. Предполагаемая локация: [target_area.name].", "ВНИМАНИЕ: Обнаружена ХОНКАНОМАЛИЯ.", 'sound/items/airhorn.ogg')
 
 /datum/event/tear/honk/end()
 	if(HE)

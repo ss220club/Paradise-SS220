@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(quirk_paths)
 	/// Name of the quirk. It's important that the basetypes don't have a name, and that any quirks you want people to see to have one.
 	var/name
 	/// The (somewhat) IC explanation of what this quirk does, to be shown in the TGUI menu.
-	var/desc = "Uh oh sisters! No description!"
+	var/desc = "Ой-ой, сестрички! Никакого описания!"
 	/// A positive or negative number, good quirks should be 1 to 4, bad quirks should be -1 to -4
 	var/cost = 0
 	/// The mob that this quirk gets applied to.
@@ -104,16 +104,16 @@ GLOBAL_LIST_EMPTY(quirk_paths)
 	if(!active_character)
 		return FALSE
 	if((to_add.species_flags & QUIRK_MACHINE_INCOMPATIBLE) && (active_character.species == "Machine"))
-		to_chat(src.client, SPAN_WARNING("You can't put that quirk on a robotic character."))
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать КПБ."))
 		return FALSE
 	if((to_add.species_flags & QUIRK_ORGANIC_INCOMPATIBLE) && (active_character.species != "Machine"))
-		to_chat(src.client, SPAN_WARNING("You can't put that quirk on an organic character."))
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать Органику."))
 		return FALSE
 	if((to_add.species_flags & QUIRK_SLIME_INCOMPATIBLE) && (active_character.species == "Slime People")) //Since they don't have eyes
-		to_chat(src.client, SPAN_WARNING("You can't put that quirk on a slime character, you have no eyes!"))
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать Слаймомену, у него же нет глаз!"))
 		return FALSE
 	if((to_add.species_flags & QUIRK_PLASMAMAN_INCOMPATIBLE) && (active_character.species == "Plasmaman")) //If someone can figure out how to only let plasmaman with a secondary language take this feel free to do that
-		to_chat(src.client, SPAN_WARNING("You can't put that quirk on a plasmaman, you have no species language!"))
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать Плазмамену, у него нет второго языка!"))
 		return FALSE
 	active_character.quirks += to_add
 	return TRUE
