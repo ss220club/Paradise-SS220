@@ -103,7 +103,15 @@
 /client/verb/adminwho()
 	set category = VERB_CATEGORY_ADMIN
 	set name = "Adminwho"
+	get_admin_counts(src) // SS220 EDIT - Теперь верб работает через прок
 
+// SS220 EDIT START - Прок для вывода количества администрации
+/proc/get_admin_counts(client/player)
+	if(!player)
+		return
+
+	var/datum/admins/holder = player.holder
+// SS220 EDIT END
 	var/list/adminmsg = list()
 	var/list/mentormsg = list()
 	var/list/devmsg = list()
@@ -166,4 +174,4 @@
 		final_message += "<br>"
 	if(!num_admins_online || !num_mentors_online)
 		final_message += SPAN_NOTICE("Even with no [!num_admins_online ? "admins" : ""][!num_admins_online && !num_mentors_online ? " or " : ""][!num_mentors_online ? "mentors" : ""] are online, make a ticket anyways. [!num_admins_online ? "Adminhelps" : ""][!num_admins_online && !num_mentors_online ? " and " : ""][!num_mentors_online ? "Mentorhelps" : ""] will be relayed to discord, and staff will still be informed.")
-	to_chat(src, final_message.Join(""))
+	to_chat(player, final_message.Join("")) // SS220 EDIT - вывод сообщения игроку
