@@ -88,20 +88,20 @@
 	icon_living = "floppa"
 	icon_dead = "floppa_dead"
 	icon_resting = "floppa_rest"
-	unique_pet = TRUE
+
 
 /mob/living/simple_animal/pet/cat/fat/iriska
 	name = "Ириска"
 	desc = "Упитана. Счастлива. Бюрократы её обожают. И похоже даже черезчур сильно."
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
-	unique_pet = TRUE
+
 	gold_core_spawnable = NO_SPAWN
 
 /mob/living/simple_animal/pet/cat/white/penny
 	name = "Копейка"
 	desc = "Любит таскать монетки и мелкие предметы. Успевайте прятать их!"
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
-	unique_pet = TRUE
+
 	gold_core_spawnable = NO_SPAWN
 	resting = TRUE
 
@@ -109,7 +109,7 @@
 	name = "Бедокур"
 	desc = "Любит крушить всё что не прикручено. Нужно вовремя прибираться."
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
-	unique_pet = TRUE
+
 	gold_core_spawnable = NO_SPAWN
 	resting = TRUE
 
