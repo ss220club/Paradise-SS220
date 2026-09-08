@@ -23,7 +23,7 @@
 	return FALSE
 
 /obj/item/organ/internal/nucleation/item_interaction(mob/living/user, obj/item, list/modifiers)
-	if(!istype(used))
+	if(!istype(user))
 		return ..()
 
 	if(istype(item, /obj/item/organ/internal/nucleation) || istype(item, /obj/item/organ/internal/ears/resonant_crystal))
@@ -52,7 +52,7 @@
 	else if(istype(item, /obj/item/scalpel/supermatter) || istype(item, /obj/item/nuke_core_container/supermatter) || HAS_TRAIT(item, TRAIT_SUPERMATTER_IMMUNE)) // we don't want it to dust
 		return ITEM_INTERACT_COMPLETE
 	else
-		try_burn_hit(I, user)
+		try_burn_hit(item, user)
 		return ITEM_INTERACT_COMPLETE
 
 /obj/item/organ/internal/nucleation/attack(mob/living/target, mob/living/carbon/user)
