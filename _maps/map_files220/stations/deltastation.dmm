@@ -10049,8 +10049,7 @@
 /area/station/maintenance/turbine)
 "aSA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6;
-	initialize_directions = 6
+	dir = 6
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
@@ -10349,12 +10348,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
-"aUh" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	dir = 8
-	},
-/turf/simulated/floor/engine,
-/area/station/engineering/engine/reactor)
 "aUi" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -10970,11 +10963,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "aXs" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6;
-	initialize_directions = 6
-	},
+/obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/effect/turf_decal/tiles/neutral,
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "aXt" = (
@@ -11103,11 +11096,10 @@
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6;
-	initialize_directions = 6
-	},
 /obj/machinery/atmospherics/meter,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/port)
 "aXY" = (
@@ -11267,8 +11259,7 @@
 	network = list("Engineering","SS13")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 10;
-	initialize_directions = 10
+	dir = 10
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
@@ -12172,8 +12163,7 @@
 "bds" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 5;
-	initialize_directions = 12
+	dir = 5
 	},
 /turf/space,
 /area/station/engineering/atmos)
@@ -12570,8 +12560,7 @@
 /area/station/engineering/atmos)
 "beR" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 10;
-	initialize_directions = 10
+	dir = 10
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
@@ -13053,8 +13042,7 @@
 "bho" = (
 /obj/effect/turf_decal/tiles/neutral,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6;
-	initialize_directions = 6
+	dir = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
@@ -13421,14 +13409,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tiles/neutral,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
-"biR" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 4
-	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "biT" = (
@@ -16725,12 +16705,11 @@
 /obj/effect/turf_decal/tiles/neutral,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6;
-	initialize_directions = 6
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/port)
@@ -48156,11 +48135,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/storage/tools)
 "eHW" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6;
-	initialize_directions = 6
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 6
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/medmaint)
 "eIa" = (
@@ -57358,13 +57336,11 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/courtroom)
 "hCa" = (
-/obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/atmospherics/unary/thermomachine/heater{
-	dir = 1
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+	dir = 8
 	},
-/obj/effect/turf_decal/delivery/hollow,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
+/turf/simulated/floor/engine,
+/area/station/engineering/engine/reactor)
 "hCj" = (
 /obj/structure/flora/grass/jungle,
 /turf/simulated/floor/grass/no_creep,
@@ -73279,6 +73255,13 @@
 /obj/item/kirbyplants/large,
 /obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel/dark,
+/area/station/engineering/atmos)
+"mwU" = (
+/obj/effect/turf_decal/tiles/neutral,
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 10
+	},
+/turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "mxd" = (
 /obj/machinery/door/poddoor/preopen{
@@ -90311,8 +90294,7 @@
 /area/station/science/misc_lab)
 "rxC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6;
-	initialize_directions = 6
+	dir = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/medmaint)
@@ -97663,12 +97645,11 @@
 /area/station/legal/magistrate)
 "tMF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 10;
-	initialize_directions = 10
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/medmaint)
 "tMG" = (
@@ -100621,9 +100602,10 @@
 /area/station/science/toxins/test)
 "uLB" = (
 /obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 10
+/obj/machinery/atmospherics/unary/thermomachine/heater{
+	dir = 1
 	},
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "uLC" = (
@@ -132060,7 +132042,7 @@ aBT
 mCo
 qla
 tfC
-aUh
+hCa
 xny
 gDT
 cZU
@@ -133825,7 +133807,7 @@ jKO
 ban
 pwZ
 wxg
-biR
+aXs
 bhj
 biP
 bkA
@@ -135111,7 +135093,7 @@ ban
 aOo
 aLf
 cdY
-hCa
+uLB
 bUj
 jtK
 rdE
@@ -136646,13 +136628,13 @@ aQT
 fRv
 bgg
 aTZ
-aXs
+bho
 dkD
 aYK
 aYK
 aYK
 ijT
-uLB
+mwU
 bbR
 bbR
 kuK
