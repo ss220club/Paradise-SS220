@@ -6,7 +6,6 @@
 #define DMM_IGNORE_MOBS 	(DMM_IGNORE_NPCS | DMM_IGNORE_PLAYERS)
 #define DMM_USE_JSON 		(1<<5)
 
-// SS220 EDIT START
 // json_encode() escapes any non-ASCII character as a \uXXXX sequence, but
 // BYOND's own json_decode() doesn't parse that escape form back - see the
 // comment where this is called in check_attributes() below for the runtime
@@ -29,9 +28,8 @@
 		result += copytext(text, i, i + 1)
 		i++
 	return result
-// SS220 EDIT END
 
-/datum/dmm_suite/proc/save_map(turf/t1, turf/t2, map_name = "", flags = 0)
+/datum/dmm_suite/proc/save_map(turf/t1, turf/t2, map_name = "", flags = 0, list/included_tiles = null)
 	// Check for illegal characters in file name... in a cheap way.
 	if(!((ckeyEx(map_name) == map_name) && ckeyEx(map_name)))
 		CRASH("Invalid text supplied to proc save_map, invalid characters or empty string.")
@@ -44,11 +42,11 @@
 	if(fexists(map_path))
 		fdel(map_path)
 	var/saved_map = wrap_file(map_path)
-	var/map_text = write_map(t1, t2, flags, saved_map)
+	var/map_text = write_map(t1, t2, flags, included_tiles)
 	saved_map << map_text
 	return saved_map
 
-/datum/dmm_suite/proc/write_map(turf/t1, turf/t2, flags = 0)
+/datum/dmm_suite/proc/write_map(turf/t1, turf/t2, flags = 0, list/included_tiles = null)
 	// Check for valid turfs.
 	if(!isturf(t1) || !isturf(t2))
 		CRASH("Invalid arguments supplied to proc write_map, arguments were not turfs.")
@@ -69,7 +67,26 @@
 		for(var/pos_y in ne.y to sw.y step -1) // We're reversing this because the map format is silly
 			for(var/pos_x in sw.x to ne.x)
 				var/turf/test_turf = locate(pos_x, pos_y, pos_z)
-				var/test_template = make_template(test_turf, flags)
+				var/test_template
+				// `included_tiles` is an optional associative set (turf =
+				// TRUE) coming from the new area/point selection in
+				// buildmode's Save mode - lets a selection have "holes"
+				// (e.g. the inside of a donut-shaped ship) without those
+				// holes' actual contents ending up in the file.
+				//
+				// The .dmm grid format is positional - every coordinate in
+				// the bounds needs SOME entry, or every following column in
+				// the row shifts. /turf/template_noop and
+				// /area/template_noop are the existing "don't touch this
+				// tile at all on load" markers the reader already
+				// recognises (see instance_atom()/parse_grid() in
+				// reader.dm) - using them for excluded tiles means Load
+				// leaves whatever's already there completely alone,
+				// instead of overwriting it with blank space.
+				if(included_tiles && !included_tiles[test_turf])
+					test_template = "/turf/template_noop,/area/template_noop"
+				else
+					test_template = make_template(test_turf, flags)
 				var/template_number = templates.Find(test_template)
 				if(!template_number)
 					templates.Add(test_template)
@@ -187,7 +204,6 @@
 			if((!issaved(A.vars[V])) || (A.vars[V] == initial(A.vars[V])))
 				continue
 
-			// SS220 EDIT START
 			// `var_to_dmm` returns "" (or null) for types it can't serialize into
 			// DM literal syntax (lists, datum refs, etc). List vars in particular
 			// will ALWAYS look "changed from initial" because list equality in DM
@@ -200,7 +216,6 @@
 			if(!entry)
 				continue
 			attributes += entry
-// SS220 EDIT END
 	else
 		var/list/to_encode = A.serialize()
 		// We'll want to write out vars that are important to the editor
@@ -210,18 +225,15 @@
 			// json-encoded maps are legible for standard editors
 			if(A.vars[T] != initial(A.vars[T]))
 				to_encode -= T
-				// SS220 EDIT START
 				var/entry = var_to_dmm(A.vars[T], T)
 				if(!entry)
 					continue
 				attributes += entry
-				// SS220 EDIT END
 
 		// Remove useless info
 		to_encode -= "type"
 		if(length(to_encode))
 			var/json_stuff = json_encode(to_encode)
-			// SS220 EDIT START
 			// json_encode() escapes any non-ASCII character (Cyrillic names,
 			// etc) as a \uXXXX sequence - but BYOND's own json_decode()
 			// doesn't actually parse \uXXXX escapes back (confirmed via
@@ -269,11 +281,12 @@
 			var/entry = var_to_dmm(decal_json, "saved_decals")
 			if(entry)
 				attributes += entry
-// SS220 EDIT END
+
 	if(length(attributes) == 0)
 		return
 
-	return "{[jointext(attributes,"; ")]}" // SS220 EDIT
+	return "{[jointext(attributes,"; ")]}"
+
 /datum/dmm_suite/proc/get_model_key(which, key_length)
 	var/list/key = list()
 	var/working_digit = which - 1

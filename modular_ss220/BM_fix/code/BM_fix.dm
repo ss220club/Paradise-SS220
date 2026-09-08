@@ -46,14 +46,3 @@
 	// this removes everything on the tile at once, matching the
 	// all-at-once semantics of RemoveElement(/datum/element/decal) above.
 	target_turf.decal_save_list = null
-
-
-// save.dm
-
-/datum/buildmode_mode/save/change_settings(mob/user)
-	use_json = (tgui_alert(user, "Would you like to use json (Default is \"Yes\")?", "Save Format", list("Yes", "No")) == "Yes")
-
-
-// storage_base.dm
-
-/obj/item/storage

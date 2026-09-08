@@ -1,3 +1,10 @@
+// Режимы выделения для /datum/buildmode_mode/save (save.dm) - лежат тут,
+// а не в самом save.dm, потому что buildmode_hud.dm компилируется раньше
+// save.dm в порядке файлов проекта, и ему тоже нужны эти константы.
+// bm_mode.dm - базовый файл режимов, компилируется раньше обоих.
+#define SAVE_SELMODE_AREA 1
+#define SAVE_SELMODE_POINT 2
+
 /datum/buildmode_mode
 	var/key = "oops"
 
