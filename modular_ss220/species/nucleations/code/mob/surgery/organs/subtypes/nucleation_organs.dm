@@ -22,22 +22,26 @@
 		return ..()
 	return FALSE
 
-/obj/item/organ/internal/nucleation/attackby__legacy__attackchain(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/organ/internal/nucleation) || istype(I, /obj/item/organ/internal/ears/resonant_crystal))
+/obj/item/organ/internal/nucleation/item_interaction(mob/living/user, obj/item, list/modifiers)
+	if(!istype(used))
+		return ..()
+
+	if(istype(item, /obj/item/organ/internal/nucleation) || istype(item, /obj/item/organ/internal/ears/resonant_crystal))
 		playsound(src, 'sound/effects/supermatter.ogg', 50, TRUE)
 		radiation_pulse(user, radiation_pulse_amount, radiation_pulse_range)
 		var/flash_range = rand(2, 7)
-		I.obj_integrity -= integrity_item_dust
-		if(I.obj_integrity <= integrity_item_dust)
+		item.obj_integrity -= integrity_item_dust
+		if(item.obj_integrity <= integrity_item_dust)
 			explosion(user, 0, 0, 1, flash_range)
-			QDEL_NULL(I)
+			QDEL_NULL(item)
 		obj_integrity -= integrity_item_dust
 		if(obj_integrity <= integrity_item_dust)
 			explosion(user, 0, 0, 1, flash_range)
 			QDEL_NULL(src)
-		return TRUE
-	if(istype(I, /obj/item/retractor/supermatter))
-		var/obj/item/retractor/supermatter/tongs = I
+		return ITEM_INTERACT_COMPLETE
+
+	if(istype(item, /obj/item/retractor/supermatter))
+		var/obj/item/retractor/supermatter/tongs = item
 		if(tongs.sliver)
 			to_chat(user, SPAN_WARNING("[tongs] уже что-то удерживает!"))
 			return FALSE
@@ -45,17 +49,18 @@
 		tongs.sliver = src
 		tongs.icon_state = "supermatter_tongs_loaded"
 		to_chat(user, SPAN_NOTICE("You carefully pick up [src] with [tongs]."))
-	else if(istype(I, /obj/item/scalpel/supermatter) || istype(I, /obj/item/nuke_core_container/supermatter) || HAS_TRAIT(I, TRAIT_SUPERMATTER_IMMUNE)) // we don't want it to dust
-		return
+	else if(istype(item, /obj/item/scalpel/supermatter) || istype(item, /obj/item/nuke_core_container/supermatter) || HAS_TRAIT(item, TRAIT_SUPERMATTER_IMMUNE)) // we don't want it to dust
+		return ITEM_INTERACT_COMPLETE
 	else
 		try_burn_hit(I, user)
+		return ITEM_INTERACT_COMPLETE
 
-/obj/item/organ/internal/nucleation/attack__legacy__attackchain(mob/living/carbon/M, mob/user)
-	if(!try_burn_hit(affected_user = user, def_zone = user.zone_selected))
+/obj/item/organ/internal/nucleation/attack(mob/living/target, mob/living/carbon/user)
+	if(!try_burn_hit(affected_user = target, def_zone = target.zone_selected))
 		return ..()
 
-/obj/item/organ/internal/nucleation/attack_self__legacy__attackchain(mob/user)
-	if(!try_burn_hit(affected_user = user, def_zone = user.zone_selected))
+/obj/item/organ/internal/nucleation/activate_self(mob/living/target)
+	if(!try_burn_hit(affected_user = target, def_zone = target.zone_selected))
 		return ..()
 
 /obj/item/organ/internal/nucleation/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
