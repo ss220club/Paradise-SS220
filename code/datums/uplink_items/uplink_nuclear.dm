@@ -523,7 +523,7 @@
 	name = "Elite Syndicate MODsuit"
 	desc = "An advanced MODsuit with superior armor and mobility to the standard Syndicate MODsuit."
 	item = /obj/item/mod/control/pre_equipped/elite
-	cost = 40
+	cost = 60 // SS220 EDIT PRICE UP/DOWN 40 -> 60
 	reference = "ESHS"
 	excludefrom = list()
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)

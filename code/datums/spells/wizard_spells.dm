@@ -1,6 +1,6 @@
 /datum/spell/projectile/magic_missile
 	name = "Magic Missile"
-	desc = "This spell fires several, slow moving, magic projectiles at nearby targets."
+	desc = "Выпускает несколько медленно движущихся магических снарядов по ближайшим целям."
 
 	base_cooldown = 200
 	invocation = "FORTI GY AMA"
@@ -36,7 +36,7 @@
 
 /datum/spell/projectile/honk_missile
 	name = "Honk Missile"
-	desc = "This spell fires several, slow moving, magic bike horns at nearby targets."
+	desc = "Запускает несколько медленно движущихся магических велосипедных гудков по ближайшим целям."
 
 	base_cooldown = 6 SECONDS
 	clothes_req = FALSE
@@ -74,7 +74,7 @@
 
 /datum/spell/noclothes
 	name = "No Clothes"
-	desc = "This always-on spell allows you to cast magic without your garments."
+	desc = "Постоянно действующее заклинание позволяет вам колдовать без робы волшебника."
 	action_icon_state = "no_clothes"
 
 /datum/spell/noclothes/create_new_targeting()
@@ -82,12 +82,12 @@
 
 /datum/spell/genetic/mutate
 	name = "Mutate"
-	desc = "This spell causes you to turn into a hulk and gain laser vision for a short while."
+	desc = "Заставляет вас превратиться в халка и на короткое время обрести лазеры из глаз!"
 
 	base_cooldown = 400
 	invocation = "BIRUZ BENNAR"
 	invocation_type = "shout"
-	message = SPAN_NOTICE("You feel strong! You feel a pressure building behind your eyes!")
+	message = SPAN_NOTICE("Вы чувствуете себя сильным! Вы чувствуете, как в глазах нарастает напряжение!")
 	centcom_cancast = FALSE
 
 	traits = list(TRAIT_LASEREYES)
@@ -106,7 +106,7 @@
 
 /datum/spell/smoke
 	name = "Smoke"
-	desc = "This spell spawns a cloud of choking smoke at your location and does not require wizard garb."
+	desc = "Создает облако плотной дымовой завесы вокруг вас. Не требует робы волшебника."
 
 	base_cooldown = 120
 	clothes_req = FALSE
@@ -123,7 +123,7 @@
 
 /datum/spell/emplosion/disable_tech
 	name = "Disable Tech"
-	desc = "This spell disables all weapons, cameras and most other technology in range."
+	desc = "Отключает всё оружие, камеры и большую часть другой техники в радиусе действия."
 	base_cooldown = 40 SECONDS
 	invocation = "NEC CANTIO"
 	invocation_type = "shout"
@@ -136,7 +136,7 @@
 
 /datum/spell/turf_teleport/blink
 	name = "Blink"
-	desc = "This spell randomly teleports you a short distance."
+	desc = "Случайным образом телепортирует вас на небольшое расстояние."
 
 	base_cooldown = 20
 	invocation = "none"
@@ -161,7 +161,7 @@
 
 /datum/spell/area_teleport/teleport
 	name = "Teleport"
-	desc = "This spell teleports you to a type of area of your selection."
+	desc = "Телепортирует вас в выбранную область."
 
 	base_cooldown = 600
 	invocation = "SCYAR NILA"
@@ -179,7 +179,7 @@
 
 /datum/spell/return_to_teacher
 	name = "Return to Teacher"
-	desc = "This spell teleports you back to your teacher."
+	desc = "Телепортирует вас обратно к вашему учителю."
 
 	base_cooldown = 30 SECONDS
 	invocation = "SCYAR TESO"
@@ -194,13 +194,13 @@
 
 /datum/spell/return_to_teacher/cast(list/targets, mob/living/user = usr)
 	if(!(teacher && teacher.current))
-		to_chat(user, SPAN_DANGER("The link to your teacher is broken!"))
+		to_chat(user, SPAN_DANGER("Связь с вашим учителем нарушена!"))
 		return
 	do_teleport(user, teacher.current, 1, sound_in = 'sound/magic/blink.ogg', sound_out = 'sound/magic/blink.ogg', safe_turf_pick = TRUE)
 
 /datum/spell/forcewall
 	name = "Force Wall"
-	desc = "This spell creates a 3 tile wide unbreakable wall that only you can pass through, and does not need wizard garb. Lasts 30 seconds."
+	desc = "Создает нерушимую стену шириной 3 метра, через которую можете пройти только вы, и для этого не требуется роба волшебника. Длится 30 секунд."
 
 	base_cooldown = 15 SECONDS
 	clothes_req = FALSE
@@ -225,7 +225,7 @@
 
 /datum/spell/aoe/conjure/timestop
 	name = "Stop Time"
-	desc = "This spell stops time for everyone except for you, allowing you to move freely while your enemies and even projectiles are frozen."
+	desc = "Останавливает время для всех, кроме вас, позволяя вам свободно передвигаться, в то время как ваши враги и даже снаряды будут остановлены."
 	base_cooldown = 50 SECONDS
 	invocation = "TOKI WO TOMARE"
 	invocation_type = "shout"
@@ -239,7 +239,7 @@
 
 /datum/spell/aoe/conjure/carp
 	name = "Summon Carp"
-	desc = "This spell conjures a simple carp."
+	desc = "Призывает карпа."
 
 	base_cooldown = 1200
 	invocation = "NOUK FHUNMM SACP RISSKA"
@@ -252,7 +252,7 @@
 
 /datum/spell/aoe/conjure/construct
 	name = "Artificer"
-	desc = "This spell conjures a construct which may be controlled by Shades."
+	desc = "Создает конструкта, которым могут управлять Тени."
 
 	base_cooldown = 600
 	clothes_req = FALSE
@@ -266,7 +266,7 @@
 
 /datum/spell/aoe/conjure/creature
 	name = "Summon Creature Swarm"
-	desc = "This spell tears the fabric of reality, allowing horrific daemons to spill forth."
+	desc = "Разрывает ткань реальности, позволяя зловещим демонам вырваться наружу."
 
 	base_cooldown = 1200
 	clothes_req = FALSE
@@ -280,12 +280,12 @@
 
 /datum/spell/blind
 	name = "Blind"
-	desc = "This spell temporarily blinds a single person and does not require wizard garb."
+	desc = "Временно ослепляет одну цель и не требует робы волшебника."
 	base_cooldown = 15 SECONDS
 	clothes_req = FALSE
 	invocation = "STI KALY"
 	invocation_type = "whisper"
-	message = SPAN_NOTICE("Your eyes cry out in pain!")
+	message = SPAN_NOTICE("Ваши глаза кричат от боли!")
 	cooldown_min = 2 SECONDS
 	sound = 'sound/magic/blind.ogg'
 
@@ -297,13 +297,13 @@
 
 /datum/spell/blind/cast(list/targets, mob/living/user)
 	if(!length(targets))
-		to_chat(user, SPAN_NOTICE("No target found in range."))
+		to_chat(user, SPAN_NOTICE("Цель вне досягаемости."))
 		return
 
 	var/mob/living/target = targets[1]
 	if(target.can_block_magic(antimagic_flags))
-		to_chat(target, SPAN_NOTICE("Your eye itches, but it passes momentarily."))
-		to_chat(user, SPAN_NOTICE("The spell had no effect!"))
+		to_chat(target, SPAN_NOTICE("Ваш глаз чешется, но это мгновенно проходит."))
+		to_chat(user, SPAN_NOTICE("Заклинание не произвело никакого эффекта!"))
 		return FALSE
 	target.EyeBlurry(40 SECONDS)
 	target.EyeBlind(30 SECONDS)
@@ -313,7 +313,7 @@
 
 /datum/spell/fireball
 	name = "Fireball"
-	desc = "This spell fires a fireball at a target and does not require wizard garb."
+	desc = "Запускает в цель огненный шар и не требует робы волшебника."
 
 	base_cooldown = 60
 	clothes_req = FALSE
@@ -321,8 +321,8 @@
 	invocation_type = "shout"
 	cooldown_min = 20 //10 deciseconds reduction per rank
 
-	selection_activated_message		= SPAN_NOTICE("You prepare to cast your fireball spell! <B>Left-click to cast at a target!</B>")
-	selection_deactivated_message	= SPAN_NOTICE("You extinguish your fireball...for now.")
+	selection_activated_message		= SPAN_NOTICE("Вы готовитесь применить огненный шар! <B>Щелкните левой кнопкой мыши, чтобы отправить его в цель!</B>")
+	selection_deactivated_message	= SPAN_NOTICE("Вы гасите свой огненный шар... на время.")
 
 	var/fireball_type = /obj/projectile/magic/fireball
 	var/what_icon_state = "fireball0"
@@ -386,25 +386,25 @@
 
 /datum/spell/fireball/toolbox
 	name = "Homing Toolbox"
-	desc = "This spell summons and throws a magical homing toolbox at your opponent."
+	desc = "Вызывает и бросает в вашего противника магический самонаводящийся тулбокс."
 	sound = 'sound/weapons/smash.ogg'
 	fireball_type = /obj/projectile/homing/magic/toolbox
 	invocation = "ROBUSTIO!"
 
-	selection_activated_message		= SPAN_NOTICE("You prepare to cast your homing toolbox! <B>Left-click to cast at a target!</B>")
-	selection_deactivated_message	= SPAN_NOTICE("You unrobust your toolbox...for now.")
+	selection_activated_message		= SPAN_NOTICE("Вы готовитесь использовать свой магический тулбокс! <B>Щелкните левой кнопкой мыши, чтобы направить тулбокс в цель!</B>")
+	selection_deactivated_message	= SPAN_NOTICE("Вы приберегаете свой тулбокс... пока что.")
 
 /datum/spell/fireball/homing
 	name = "Greater Homing Fireball"
-	desc = "This spell fires a strong homing fireball at a target."
+	desc = "Запускает в цель мощный самонаводящийся огненный шар."
 	invocation = "ZI-ONI SOMA"
 	fireball_type = /obj/projectile/homing/magic/homing_fireball
 
-	selection_activated_message = SPAN_NOTICE("You prepare to cast your greater homing fireball spell! <B>Left-click to cast at a target!</B>")
+	selection_activated_message = SPAN_NOTICE("Вы готовитесь запустить самонаводящийся огненный шар! <B>Щелкните левой кнопкой мыши, чтобы отправить огненный шар в цель!</B>")
 
 /datum/spell/aoe/repulse
 	name = "Repulse"
-	desc = "This spell throws everything around the user away."
+	desc = "Отбрасывает все, что находится вокруг мага."
 	base_cooldown = 40 SECONDS
 	invocation = "GITTAH WEIGH"
 	invocation_type = "shout"
@@ -445,19 +445,19 @@
 				var/mob/living/M = AM
 				M.Weaken(10 SECONDS)
 				M.adjustBruteLoss(5)
-				to_chat(M, SPAN_USERDANGER("You're slammed into the floor by a mystical force!"))
+				to_chat(M, SPAN_USERDANGER("Вас швыряет на пол какая-то мистическая сила!"))
 		else
 			new sparkle_path(get_turf(AM), get_dir(user, AM)) //created sparkles will disappear on their own
 			if(isliving(AM))
 				var/mob/living/M = AM
 				M.Weaken(stun_amt)
-				to_chat(M, SPAN_USERDANGER("You're thrown back by a mystical force!"))
+				to_chat(M, SPAN_USERDANGER("Вас отбрасывает назад мистическая сила!"))
 			spawn(0)
 				AM.throw_at(throwtarget, ((clamp((maxthrow - (clamp(distfromcaster - 2, 0, distfromcaster))), 3, maxthrow))), 1)//So stuff gets tossed around at the same time.
 
 /datum/spell/sacred_flame
 	name = "Sacred Flame"
-	desc = "Makes everyone around you more flammable, and lights yourself on fire."
+	desc = "Делает всех вокруг вас более зажигательными и поджигает вас самих."
 	base_cooldown = 6 SECONDS
 	clothes_req = FALSE
 	invocation = "FI'RAN DADISKO"
@@ -483,12 +483,12 @@
 
 /datum/spell/corpse_explosion
 	name = "Corpse Explosion"
-	desc = "Fills a corpse with energy, causing it to explode violently."
+	desc = "Переполняет труп энергией, заставляя его чудовищно взорваться."
 	base_cooldown = 5 SECONDS
 	invocation = "JAH ITH BER"
 	invocation_type = "whisper"
-	selection_activated_message = SPAN_NOTICE("You prepare to detonate a corpse. Click on a target to cast the spell.")
-	selection_deactivated_message = SPAN_NOTICE("You cancel the spell.")
+	selection_activated_message = SPAN_NOTICE("Вы готовитесь разорвать труп. Нажмите на цель, чтобы наполнить его энергией.")
+	selection_deactivated_message = SPAN_NOTICE("Вы отменяете заклинание.")
 	action_icon_state = "corpse_explosion"
 
 /datum/spell/corpse_explosion/create_new_targeting()
@@ -513,11 +513,11 @@
 		range = max(1, range)
 		M.apply_damage(100 / range, BRUTE)
 		if(issilicon(M))
-			to_chat(M, SPAN_USERDANGER("Your sensors are disabled, and your carapace is ripped apart by the violent dark magic!"))
+			to_chat(M, SPAN_USERDANGER("Ваши сенсоры отключены, а ваша обшивка разорвана на части яростной темной магией!"))
 			M.Weaken(6 SECONDS / range)
 			continue
 
-		to_chat(M, SPAN_USERDANGER("You are eviscerated by the violent dark magic!"))
+		to_chat(M, SPAN_USERDANGER("Жестокая тёмная магия вырывает ваши внутренности!"))
 		if(ishuman(M))
 			if(range < 4)
 				M.KnockDown(4 SECONDS / range)

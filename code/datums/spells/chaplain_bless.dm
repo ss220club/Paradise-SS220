@@ -1,7 +1,7 @@
 
 /datum/spell/chaplain_bless
 	name = "Bless"
-	desc = "Blesses a single person."
+	desc = "Благословляет выбранную цель."
 
 	base_cooldown = 6 SECONDS
 	clothes_req = FALSE

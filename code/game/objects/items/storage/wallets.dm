@@ -86,12 +86,12 @@
 	MA.pixel_x = 11
 	MA.pixel_y = 1
 	. += MA
-	. += mutable_appearance(icon, "[icon_state]_photo")
+	. += mutable_appearance(icon, "[photo_overlay]_overlay") // SS220 EDIT "[icon_state]_photo" --> "[photo_overlay]_overlay"
 
 /obj/item/storage/wallet/update_name(updates)
 	. = ..()
 	if(front_id)
-		name = "wallet displaying [front_id]"
+		name = "кошелёк, демонстрирующий [front_id]"
 	else
 		name = initial(name)
 

@@ -1,17 +1,17 @@
 /datum/weather/snow_storm
-	name = "snow storm"
-	desc = "Harsh snowstorms roam the topside of this arctic planet, burying any area unfortunate enough to be in its path."
+	name = "снежная буря"
+	desc = "Суровые снежные бури бушуют на поверхности этой арктической планеты, погребая под собой всё, что окажется на их пути."
 //	probability = 90
 
-	telegraph_message = SPAN_WARNING("Drifting particles of snow begin to dust the surrounding area..")
+	telegraph_message = SPAN_WARNING("Дрейфующие снежинки начинают выпадать на окружающую местность...")
 	telegraph_overlay = "light_snow"
 
-	weather_message = SPAN_USERDANGER("<i>Harsh winds pick up as dense snow begins to fall from the sky! Seek shelter!</i>")
+	weather_message = SPAN_USERDANGER("<i>В воздухе поднимается сильный ветер, а с неба начинает падать густой снег! Ищите укрытие!</i>")
 	weather_overlay = "snow_storm"
 	weather_duration_lower = 600
 
 	end_duration = 100
-	end_message = SPAN_BOLDANNOUNCEIC("The snowfall dies down, it should be safe to go outside again.")
+	end_message = SPAN_BOLDANNOUNCEIC("Снежная буря прекратилась, теперь снова можно безопасно выходить наружу.")
 
 //	area_type = /area/awaymission/snowdin/outside
 	target_trait = AWAY_LEVEL

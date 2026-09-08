@@ -202,7 +202,7 @@
 	category = list("Medical Machinery")
 
 /datum/design/dna_scanner
-	name = "Machine Board (DNA Modifier)"
+	name = "Machine Board (ДНК-Модификатор)"
 	desc = "Allows for the construction of circuit boards used to build a DNA Modifier."
 	id = "dna_scanner"
 	req_tech = list("programming" = 4, "biotech" = 3)
@@ -642,8 +642,8 @@
 	category = list ("Misc. Machinery")
 
 /datum/design/scientific_assembler
-	name = "Machine Design (Scientific Assembler)"
-	desc = "The circuit board for a Scientific Assembler."
+	name = "Machine Design (Weapon Assembler)" // SS220 EDIT - assembler name tweak
+	desc = "The circuit board for a Weapon Assembler." // SS220 EDIT - assembler name tweak
 	id = "scientific_assembler"
 	req_tech = list("programming" = 2, "engineering" = 4, "plasmatech" = 3)
 	build_type = IMPRINTER

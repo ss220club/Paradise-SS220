@@ -76,6 +76,15 @@ RUN tgui/bin/tgui
 
 # Render NanoMaps
 FROM ubuntu:24.04 AS nanomap-build
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    python3 \
+    python3-venv \
+    && python3 -m venv /opt/nanomaps-venv \
+    && /opt/nanomaps-venv/bin/python -m pip install --no-cache-dir avulto==0.1.22 \
+    && rm -rf /var/lib/apt/lists/*
+ENV PATH="/opt/nanomaps-venv/bin:${PATH}"
 COPY __odlint.dm __odlint.dm
 COPY __spacemandmm.dm __spacemandmm.dm
 COPY _maps _maps
