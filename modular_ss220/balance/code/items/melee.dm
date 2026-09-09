@@ -216,7 +216,7 @@
 /obj/item/kitchen/knife/butcher/meatcleaver/
 	var/gripped = FALSE
 
-/obj/item/kitchen/knife/butcher/meatcleaver/attack_self__legacy__attackchain(mob/user)
+/obj/item/kitchen/knife/butcher/meatcleaver/activate_self(mob/user)
 	if(!gripped)
 		gripped = TRUE
 		to_chat(user, SPAN_NOTICE("Вы крепко сжали рукоять [src], чтобы не выронить его."))
