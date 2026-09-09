@@ -53,13 +53,14 @@
 	if(M.stat & BROKEN) // Displays alongside above message. Machines with a "broken" state do not become broken at 0% HP - anything that reaches that point is destroyed
 		to_chat(user, SPAN_WARNING("Дополнительный анализ: Обнаружен полный отказ компонента! Требуется полная реконструкция [M.declent_ru(GENITIVE)] для ремонта."))
 
-/obj/item/robotanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/user) // Scanning borgs, IPCs/augmented crew, and AIs
+/obj/item/robotanalyzer/attack(mob/living/target, mob/living/user, params) // Scanning borgs, IPCs/augmented crew, and AIs
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
-		return
-	user.visible_message(SPAN_NOTICE("[user] анализирует компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."), SPAN_NOTICE("Вы анализируете компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."))
-	robot_healthscan(user, M)
+		return FINISH_ATTACK
+	user.visible_message(SPAN_NOTICE("[user] анализирует компоненты [target.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."), SPAN_NOTICE("Вы анализируете компоненты [target.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."))
+	robot_healthscan(user, target)
 	add_fingerprint(user)
+	return FINISH_ATTACK
 
 /proc/robot_healthscan(mob/user, mob/living/M)
 	var/scan_type

@@ -18,13 +18,13 @@
 	. = ..()
 	. += SPAN_INFO("Сейчас он [broadcasting ? "включён" : "выключен"].")
 
-/obj/item/radio/spy_spider/attack_self__legacy__attackchain(mob/user)
+/obj/item/radio/spy_spider/activate_self(mob/user)
 	broadcasting = !broadcasting
 	if(broadcasting)
 		to_chat(user, SPAN_INFO("Ты включаешь жучок."))
 	else
 		to_chat(user, SPAN_INFO("Ты выключил жучок."))
-	return TRUE
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/encryptionkey/spy_spider
 	name = "Spy Encryption Key"

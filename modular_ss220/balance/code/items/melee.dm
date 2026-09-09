@@ -221,10 +221,12 @@
 		gripped = TRUE
 		to_chat(user, SPAN_NOTICE("Вы крепко сжали рукоять [src], чтобы не выронить его."))
 		set_nodrop(TRUE, user)
+		return ITEM_INTERACT_COMPLETE
 	else
 		gripped = FALSE
 		to_chat(user, SPAN_NOTICE("Вы ослабили хватку на [src]."))
 		set_nodrop(FALSE, user)
+		return ITEM_INTERACT_COMPLETE
 
 /obj/item/kitchen/knife/butcher/meatcleaver/dropped(mob/user, silent)
 	. = ..()
