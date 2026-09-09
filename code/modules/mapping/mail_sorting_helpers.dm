@@ -9,7 +9,7 @@
 	. = ..()
 	var/obj/structure/disposalpipe/sortjunction/mail_sorter = locate(/obj/structure/disposalpipe/sortjunction) in loc
 	if(mail_sorter)
-		mail_sorter.sort_type = sort_type
+		mail_sorter.sort_type += sort_type
 		mail_sorter.update_appearance(UPDATE_NAME|UPDATE_DESC)
 	else
 		log_world("[src] failed to find a sorting junction pipe at [AREACOORD(src)]")
