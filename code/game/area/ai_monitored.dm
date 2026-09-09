@@ -31,5 +31,7 @@
 /area/station/ai_monitored/storage/eva
 	name = "Хранилище ВКД"
 	icon_state = "eva"
+	area_icon_text = "EVA"
+	area_icon_color = AREA_COLOR_COMMAND
 	ambientsounds = HIGHSEC_SOUNDS
 	request_console_name = "EVA"
