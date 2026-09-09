@@ -1219,13 +1219,10 @@
 		. += SPAN_DEADSAY("Эта коробка для пиццы является аномальной и будет производить бесконечное количество пиццы.")
 
 /obj/item/pizzabox/infinite/activate_self(mob/user)
-	if(..())
-		return ITEM_INTERACT_COMPLETE
-
 	QDEL_NULL(pizza)
 	if(ishuman(user))
 		pizza = new /obj/item/food/sliceable/pizza/meatpizza(src)
-	return ITEM_INTERACT_COMPLETE
+		return ITEM_INTERACT_COMPLETE
 
 // Disk croutons
 /obj/item/food/disk

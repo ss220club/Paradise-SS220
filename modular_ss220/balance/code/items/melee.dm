@@ -217,6 +217,9 @@
 	var/gripped = FALSE
 
 /obj/item/kitchen/knife/butcher/meatcleaver/activate_self(mob/user)
+	if(..())
+		return ITEM_INTERACT_COMPLETE
+
 	if(!gripped)
 		gripped = TRUE
 		to_chat(user, SPAN_NOTICE("Вы крепко сжали рукоять [src], чтобы не выронить его."))

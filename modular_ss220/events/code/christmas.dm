@@ -43,6 +43,9 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 	desc = "Подарок! Что же тут..."
 
 /obj/item/small_delivery/gift/anything/activate_self(mob/user)
+	if(..())
+		return ITEM_INTERACT_COMPLETE
+
 	if(!GLOB.possible_gifts.len)
 		var/list/gift_types_list = subtypesof(/obj/item)
 		for(var/thing in gift_types_list)
