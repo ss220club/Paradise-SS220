@@ -54,6 +54,7 @@
 		to_chat(user, SPAN_WARNING("Дополнительный анализ: Обнаружен полный отказ компонента! Требуется полная реконструкция [M.declent_ru(GENITIVE)] для ремонта."))
 
 /obj/item/robotanalyzer/attack(mob/living/target, mob/living/user, params) // Scanning borgs, IPCs/augmented crew, and AIs
+	..()
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
 		return FINISH_ATTACK
