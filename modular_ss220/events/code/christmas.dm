@@ -35,14 +35,14 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 /obj/item/gift
 	icon = 'modular_ss220/events/icons/xmas.dmi'
 
-/obj/item/a_gift
+/obj/item/small_delivery/gift
 	icon = 'modular_ss220/events/icons/xmas.dmi'
 
-/obj/item/a_gift/anything
+/obj/item/small_delivery/gift/anything
 	name = "\improper новогодний подарок"
 	desc = "Подарок! Что же тут..."
 
-/obj/item/a_gift/anything/attack_self__legacy__attackchain(mob/M)
+/obj/item/small_delivery/gift/anything/activate_self(mob/user)
 	if(!GLOB.possible_gifts.len)
 		var/list/gift_types_list = subtypesof(/obj/item)
 		for(var/thing in gift_types_list)
@@ -52,13 +52,13 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 			GLOB.possible_gifts = gift_types_list
 
 	var/something = pick(GLOB.possible_gifts)
-	var/obj/item/gift = new something(M)
-	M.unequip(src, TRUE)
-	M.put_in_hands(gift)
-	gift.add_fingerprint(M)
+	var/obj/item/gift = new something(user)
+	user.unequip(src, TRUE)
+	user.put_in_hands(gift)
+	add_fingerprint(user)
 	playsound(loc, 'sound/items/poster_ripped.ogg', 100, TRUE)
 	qdel(src)
-	return
+	return ITEM_INTERACT_COMPLETE
 
 // Xmas Tree
 /obj/structure/flora/tree/pine/xmas
@@ -77,12 +77,12 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 /obj/structure/flora/tree/pine/xmas/presents
 	icon_state = "xmas_tree_presents"
 	desc = "Превосходная новогодняя ёлка. Под ней подарки!"
-	var/gift_type = /obj/item/a_gift
+	var/gift_type = /obj/item/small_delivery/gift
 	var/unlimited = FALSE
 	var/static/list/took_presents // Shared between all xmas trees
 
 /obj/structure/flora/tree/pine/xmas/presents/anything
-	gift_type = /obj/item/a_gift/anything
+	gift_type = /obj/item/small_delivery/gift/anything
 
 /obj/structure/flora/tree/pine/xmas/presents/Initialize(mapload)
 	. = ..()
