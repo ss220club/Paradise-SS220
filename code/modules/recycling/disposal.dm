@@ -1182,7 +1182,7 @@
 /obj/structure/disposalpipe/sortjunction
 	name = "disposal sort junction"
 	icon_state = "pipe-j1s"
-	var/list/sort_type = list(1)
+	var/list/sort_type = list() //SS220 EDIT - удалено присвоение дефолтной сортировки disposals для корректной работы мультисорта
 	var/posdir = 0
 	var/negdir = 0
 	var/sortdir = 0
