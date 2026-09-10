@@ -48,11 +48,12 @@
 	new_intercom.update_icon()
 	qdel(src)
 
-/obj/item/radio/intercom/attackby__legacy__attackchain(obj/item/W, mob/user)
+/obj/item/radio/intercom/item_interaction(mob/user, obj/item/used, list/modifiers)
 	. = ..()
-	if(. && istype(W, /obj/item/intercom_electronics))
+	if(. && istype(used, /obj/item/intercom_electronics))
 		circuitry_installed = TRUE
 		update_icon(UPDATE_ICON)
+		return ITEM_INTERACT_COMPLETE
 
 /obj/item/radio/intercom/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	. = ..()

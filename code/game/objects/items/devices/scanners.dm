@@ -20,6 +20,7 @@ SLIME SCANNER
 	materials = list(MAT_METAL = 300)
 	origin_tech = "magnets=1;engineering=1"
 	var/on = FALSE
+	new_attack_chain = TRUE
 
 /obj/item/t_scanner/Destroy()
 	if(on)
@@ -34,8 +35,12 @@ SLIME SCANNER
 	else
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/t_scanner/attack_self__legacy__attackchain(mob/user)
+/obj/item/t_scanner/activate_self(mob/user)
+	if(..())
+		return ITEM_INTERACT_COMPLETE
 	toggle_on()
+	add_fingerprint(user)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/t_scanner/process()
 	if(!on)
@@ -91,11 +96,15 @@ SLIME SCANNER
 
 /obj/item/reagent_scanner/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	. = ..()
+	if(isstorage(target) || is_surface(target))
+		return NONE
 	do_scan(target, user)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/reagent_scanner/ranged_interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	. = ..()
 	do_scan(target, user)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/reagent_scanner/proc/do_scan(atom/target, mob/living/user)
 	if(user.stat != CONSCIOUS)
@@ -103,6 +112,8 @@ SLIME SCANNER
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_WARNING("Вам не хватит ловкости, чтобы сделать это!"))
 		return
+
+	add_fingerprint(user)
 
 	if(!target.reagents)
 		to_chat(user, SPAN_NOTICE("В [target.declent_ru(PREPOSITIONAL)] не обнаружено важных химических веществ."))
@@ -170,15 +181,21 @@ SLIME SCANNER
 	w_class = WEIGHT_CLASS_SMALL
 	flags = CONDUCT
 	throw_speed = 3
-	materials = list(MAT_METAL=30, MAT_GLASS=20)
+	materials = list(MAT_METAL = 30, MAT_GLASS = 20)
+	new_attack_chain = TRUE
 
-/obj/item/slime_scanner/attack__legacy__attackchain(mob/living/M, mob/living/user)
+/obj/item/slime_scanner/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(user.incapacitated() || user.AmountBlinded())
-		return
-	if(!isslime(M))
+		return ..()
+	if(isstorage(target) || is_surface(target))
+		return NONE
+	if(!isslime(target))
 		to_chat(user, SPAN_WARNING("Устройство может сканировать только слаймов!"))
-		return
-	slime_scan(M, user)
+		return ITEM_INTERACT_COMPLETE
+
+	slime_scan(target, user)
+	add_fingerprint(user)
+	return ITEM_INTERACT_COMPLETE
 
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
 	to_chat(user, "========================")
