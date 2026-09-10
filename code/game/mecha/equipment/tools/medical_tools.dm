@@ -507,7 +507,7 @@
 	if(..())
 		return
 	if(!length(processed_reagents) || reagents.total_volume >= reagents.maximum_volume || !chassis.has_charge(energy_drain))
-		occupant_message("<span class='alert'>Обработка реактивов остановлена.</a>")
+		occupant_message(SPAN_ALERT("Обработка реактивов остановлена."))
 		log_message("Reagent processing stopped.")
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -537,8 +537,10 @@
 	if(isliving(target))	//interact with living beings
 		var/mob/living/M = target
 		if(chassis.occupant.a_intent == INTENT_HARM)//the patented, medical rescue claw is incapable of doing harm. Worry not.
-			target.visible_message(SPAN_NOTICE("[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар."), \
-								"<span class='notice'[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>")
+			target.visible_message(
+				SPAN_NOTICE("[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар."),
+				SPAN_NOTICE("[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.")
+			)
 		else
 			push_aside(chassis, M)//out of the way, I have people to save!
 			occupant_message(SPAN_NOTICE("Вы аккуратно отодвигаете [target.declent_ru(ACCUSATIVE)] с дороги."))

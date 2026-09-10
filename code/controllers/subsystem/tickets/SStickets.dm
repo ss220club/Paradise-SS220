@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(tickets)
 	var/client/C = usr.client
 	var/client/owner = get_client_by_ckey(T.client_ckey)
 	if(!owner)
-		to_chat(C, "<span class='notice'Невозможно конвертировать тикет отключённого игрока.")
+		to_chat(C, SPAN_WARNING("Невозможно конвертировать тикет отключённого игрока."))
 		return
 	T.ticketState = TICKET_CLOSED
 	T.ticket_converted = TRUE
@@ -299,7 +299,7 @@ SUBSYSTEM_DEF(tickets)
 	var/message_key = input("Выберите автоответ. Это пометит тикет как решённый.", "Автоответ") as null|anything in sorted_responses
 	var/client/ticket_owner = get_client_by_ckey(T.client_ckey)
 	if(!ticket_owner)
-		to_chat(C, "<span class='notice'>Невозможно ответить на тикет отключённого игрока.")
+		to_chat(C, SPAN_WARNING("Невозможно ответить на тикет отключённого игрока."))
 		return
 	switch(message_key)
 		if(null) //they cancelled

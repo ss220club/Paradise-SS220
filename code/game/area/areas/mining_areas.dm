@@ -2,11 +2,14 @@
 
 /area/mine
 	icon_state = "mining"
+	area_icon_text = "MINING"
+	area_icon_color = AREA_COLOR_MINING
 	airlock_wires = ZLVL_BASED_WIRES
 
 /area/mine/unexplored
 	name = "Астероид"
 	icon_state = "unexplored"
+	area_icon_text = "MINING\nUNEXPL"
 	always_unpowered = TRUE
 	poweralm = FALSE
 	apc_starts_off = TRUE
@@ -40,6 +43,24 @@
 /area/mine/unexplored/cere/orbiting
 	name = "Околостанционные Астероиды"
 
+/area/mine/unexplored/omega/ai
+	name = "AI Asteroid"
+
+/area/mine/unexplored/omega/research
+	name = "Research Rocks"
+
+/area/mine/unexplored/omega/cargo
+	name = "Cargo Rocks"
+
+/area/mine/unexplored/omega/security
+	name = "Security Rocks"
+
+/area/mine/unexplored/omega/engineering
+	name = "Engineering Rocks"
+
+/area/mine/unexplored/omega/medical
+	name = "Medical Rocks"
+
 /**********************Outpost areas**************************/
 
 /area/mine/outpost
@@ -52,10 +73,12 @@
 /area/mine/outpost/airlock
 	name = "Шлюз Шахтерского Аванпоста"
 	icon_state = "mining_eva"
+	area_icon_text = "MINING\nEVA"
 
 /area/mine/outpost/cafeteria
 	name = "Кафетерий Шахтерского Аванпоста"
 	icon_state = "mining_living"
+	area_icon_text = "MINING\nLIVING"
 
 /// subtype of /surface so storms hit there
 /area/lavaland/surface/outdoors/outpost/catwalk
@@ -102,6 +125,7 @@
 /area/mine/outpost/smith_workshop
 	name = "Мастерская Кузнеца"
 	icon_state = "smith"
+	area_icon_text = "SMITH"
 
 /area/mine/outpost/maintenance
 	name = "Технические Тоннели Шахтерского Аванпоста"
@@ -127,6 +151,7 @@
 /area/mine/outpost/production
 	name = "Производственная Комната Шахтерского Аванпоста"
 	icon_state = "mining_production"
+	area_icon_text = "MINING\nPROD."
 
 /area/mine/outpost/quartermaster
 	name = "Кабинет Квартирмейстера Шахтерского Аванпоста"
@@ -156,6 +181,8 @@
 /area/lavaland/surface
 	name = "Лаваленд"
 	icon_state = "explored"
+	area_icon_text = "MINING\nEXPL"
+	area_icon_color = AREA_COLOR_LAVALAND
 	always_unpowered = TRUE
 	poweralm = FALSE
 	apc_starts_off = TRUE

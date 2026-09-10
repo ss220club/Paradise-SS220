@@ -73,16 +73,16 @@ enable_localhost_autoadmin = true
 # +DEV_TEAM = Access to dev team chat
 admin_ranks = [
   # Format: {name = "My Rank", rights = ["+LIST", "+OF", "+RIGHTS"]}
-  {name = "Mentor", rights = [
+  { name = "Mentor", rights = [
     "+MENTOR",
-  ]},
-  {name = "Trial Admin", rights = [
+  ] },
+  { name = "Trial Admin", rights = [
     "+ADMIN",
     "+BAN",
     "+STEALTH",
     "+REJUVINATE",
-  ]},
-  {name = "Game Admin", rights = [
+  ] },
+  { name = "Game Admin", rights = [
     "+ADMIN",
     "+BAN",
     "+STEALTH",
@@ -96,40 +96,40 @@ admin_ranks = [
     "+VAREDIT",
     "+SOUND",
     "+SPAWN",
-  ]},
-  {name = "Head of Staff", rights = [
+  ] },
+  { name = "Head of Staff", rights = [
     "+EVERYTHING",
-  ]},
-  {name = "Hosting Provider", rights = [
+  ] },
+  { name = "Hosting Provider", rights = [
     "+EVERYTHING",
-  ]},
-  {name = "Maintainers", rights = [
+  ] },
+  { name = "Maintainers", rights = [
     "+EVERYTHING",
-  ]},
-  {name = "Developer", rights = [
+  ] },
+  { name = "Developer", rights = [
     "+DEV_TEAM",
-  ]},
+  ] },
 ]
 # List of people and the admin rank they are assigned to
 admin_assignments = [
-  #{ckey = "Your Name Here", rank = "Hosting Provider"}
+  # {ckey = "Your Name Here", rank = "Hosting Provider"}
 ]
 # Allow admins to set their own OOC colour
 allow_admin_ooc_colour = true
 # Map of admin rank colours to their respective rank. Note you can use hex or colour name here.
 admin_rank_colour_map = [
-  {name = "Head of Staff", colour = "#e74c3c"},
-  {name = "Maintainer", colour = "#992d22"},
-  {name = "Server Dev", colour = "#1abc9c"},
-  {name = "Community Manager", colour = "#e91e63"},
-  {name = "Game Admin", colour = "#238afa"},
-  {name = "Trial Admin", colour = "#7fb6fc"},
-  {name = "Developer", colour = "#61b413"},
-  {name = "Mentor", colour = "#f1c40f"},
+  { name = "Head of Staff", colour = "#e74c3c" },
+  { name = "Maintainer", colour = "#992d22" },
+  { name = "Server Dev", colour = "#1abc9c" },
+  { name = "Community Manager", colour = "#e91e63" },
+  { name = "Game Admin", colour = "#238afa" },
+  { name = "Trial Admin", colour = "#7fb6fc" },
+  { name = "Developer", colour = "#61b413" },
+  { name = "Mentor", colour = "#f1c40f" },
 ]
 # Map of common CIDs that should not be banned, plus their reasons
 common_cid_map = [
-  {cid = "3923664137", reason = "Mass-Match related to Walmart branded prebuilt PCs"},
+  { cid = "3923664137", reason = "Mass-Match related to Walmart branded prebuilt PCs" },
 ]
 
 ################################################################
@@ -163,18 +163,17 @@ ai_hologram = ["ckeyhere"]
 pai_holoform = ["ckeyhere"]
 # List of dictionary entries for ckeys with a custom IPC screean
 ipc_screens = [
-  {ckey = "ckeyhere", screens = [
+  { ckey = "ckeyhere", screens = [
     "Icon State 1",
     "Icon State 2",
-  ]},
+  ] },
 ]
 fluff_undershirts = [
-	{ name = "Shirt Name Here", ckeys = [
-		"ckeyhere1",
-		"ckeyhere2",
-	] },
+  { name = "Shirt Name Here", ckeys = [
+    "ckeyhere1",
+    "ckeyhere2",
+  ] },
 ]
-
 
 ################################################################
 
@@ -185,7 +184,7 @@ fluff_undershirts = [
 # Enable/disable the database on a whole
 sql_enabled = false
 # SQL version. If this is a mismatch, round start will be delayed
-sql_version = 722209
+sql_version = 732209
 # SQL server address. Can be an IP or DNS name
 sql_address = "127.0.0.1"
 # SQL server port
@@ -226,7 +225,6 @@ mentor_role_id = ""
 # Forward all ahelps to the discord? If disabled, ahelps are only forwarded if admins are AFK/Offline
 forward_all_ahelps = true
 
-
 new_round_waiting_role_id = ""
 
 ################################################################
@@ -237,19 +235,19 @@ new_round_waiting_role_id = ""
 # Disable this to disable all random events
 allow_random_events = true
 # Map of lower bounds for event delays. In minutes.
-event_delay_lower_bounds = {mundane = 5, moderate = 7.5, major = 12, disaster = 9}
+event_delay_lower_bounds = { mundane = 5, moderate = 7.5, major = 12, disaster = 9 }
 # Map of upper bounds for event delays. In minutes.
-event_delay_upper_bounds = {mundane = 7.5, moderate = 12, major = 17, disaster = 12}
+event_delay_upper_bounds = { mundane = 7.5, moderate = 12, major = 17, disaster = 12 }
 # Expected round length in minutes. Changes event weights
 expected_round_length = 120
 # Initial delays for the first events firing off. If any of these are commented, a random value based on above thresholds is used.
 # You must specify an upper and lower bound, or the code cries a lot. The events system is so bad good god.
 # Values are in minutes
 event_initial_delays = [
-  #{severity = "mundane", lower_bound = 10, upper_bound = 15},
-  {severity = "moderate", lower_bound = 19, upper_bound = 23},
-  {severity = "major", lower_bound = 29, upper_bound = 36},
-  {severity = "disaster", lower_bound = 40, upper_bound = 50},
+  # {severity = "mundane", lower_bound = 10, upper_bound = 15},
+  { severity = "moderate", lower_bound = 19, upper_bound = 23 },
+  { severity = "major", lower_bound = 29, upper_bound = 36 },
+  { severity = "disaster", lower_bound = 40, upper_bound = 50 },
 ]
 # The population needed to allow blobs to split consciousness
 blob_highpop_trigger = 60
@@ -263,23 +261,23 @@ blob_highpop_trigger = 60
 antag_account_age_restrictions = false
 # Gamemode probabilities map for if you are using secret or random
 gamemode_probabilities = [
-	{ gamemode = "abduction", probability = 0 },
-	{ gamemode = "changeling", probability = 0 },
-	{ gamemode = "cult", probability = 0 },
-	{ gamemode = "extend-a-traitormongous", probability = 0 }, # Autotraitor
-	{ gamemode = "extended", probability = 0 },
-	{ gamemode = "nuclear", probability = 2 },
-	{ gamemode = "raginmages", probability = 1 },
-	{ gamemode = "revolution", probability = 0 },
-	{ gamemode = "traitor", probability = 0 },
-	{ gamemode = "traitorchan", probability = 0 },
-	{ gamemode = "traitorvamp", probability = 0 },
-	{ gamemode = "vampchan", probability = 0 },
-	{ gamemode = "vampire", probability = 0 },
-	{ gamemode = "wizard", probability = 1 },
-	{ gamemode = "trifecta", probability = 0 },
-	{ gamemode = "dynamic", probability = 22 },
-	{ gamemode = "antag_mix", probability = 3 },
+  { gamemode = "abduction", probability = 0 },
+  { gamemode = "changeling", probability = 0 },
+  { gamemode = "cult", probability = 0 },
+  { gamemode = "extend-a-traitormongous", probability = 0 },  # Autotraitor
+  { gamemode = "extended", probability = 0 },
+  { gamemode = "nuclear", probability = 2 },
+  { gamemode = "raginmages", probability = 1 },
+  { gamemode = "revolution", probability = 0 },
+  { gamemode = "traitor", probability = 0 },
+  { gamemode = "traitorchan", probability = 0 },
+  { gamemode = "traitorvamp", probability = 0 },
+  { gamemode = "vampchan", probability = 0 },
+  { gamemode = "vampire", probability = 0 },
+  { gamemode = "wizard", probability = 1 },
+  { gamemode = "trifecta", probability = 0 },
+  { gamemode = "dynamic", probability = 22 },
+  { gamemode = "antag_mix", probability = 3 },
 ]
 # List of gamemodes that shouldn't be played for more than 1 round in a row.
 non_repeatable_gamemodes = ["nuclear", "wizard", "raginmages"]
@@ -370,7 +368,7 @@ byond_account_age_threshold = 3
 # Maximum CIDs a client can have attached to them before they trip a warning
 max_client_cid_history = 20
 # Enable automatic profiling of rounds to profile.json
-enable_auto_profiler = false # REVERT THIS AFTER 515 BECOMES NOT BUSTED
+enable_auto_profiler = false  # REVERT THIS AFTER 515 BECOMES NOT BUSTED
 # Auto disable OOC when round starts?
 auto_disable_ooc = true
 # Enable/disable the breaking of bones
@@ -392,9 +390,9 @@ reactionary_explosions = true
 # Bomb cap for explosions (Outer devastation. Other values calculate from this)
 bomb_cap = 20
 # Amount of time (deciseconds) for a brain to keep its "spark of life". Set to -1 to disable.
-revival_brain_life = 6000 # 10 minutes
+revival_brain_life = 6000  # 10 minutes
 # Amount of time (deciseconds) the player must wait before respawning as a new character.
-respawn_delay = 6000 # 10 minutes
+respawn_delay = 6000  # 10 minutes
 # Enable random silicon lawset (If said lawset has default = TRUE in the code). Disable for always crewsimov
 random_ai_lawset = true
 # Enable weather events initialized by SSweather. New weather events can still be added during the round if this is disabled.
@@ -483,42 +481,42 @@ enable_job_amount_overrides = true
 # Job slot amount map. These are overrides. If you dont specify a value here, the code will be used as default. -1 is infinite
 job_slot_amounts = [
   # Commmand
-  {name = "Captain", lowpop = 1, highpop = 1},
-  {name = "Head of Personnel", lowpop = 1, highpop = 1},
-  {name = "Head of Security", lowpop = 1, highpop = 1},
-  {name = "Chief Engineer", lowpop = 1, highpop = 1},
-  {name = "Research Director", lowpop = 1, highpop = 1},
-  {name = "Chief Medical Officer", lowpop = 1, highpop = 1}, # Engineering
-  {name = "Life Support Specialist", lowpop = 3, highpop = 4},
-  {name = "Station Engineer", lowpop = 5, highpop = 6},
-  {name = "Trainee Engineer", lowpop = 0, highpop = 0}, # Medical
-  {name = "Chemist", lowpop = 2, highpop = 2},
-  {name = "Geneticist", lowpop = 2, highpop = 2},
-  {name = "Medical Doctor", lowpop = 5, highpop = 6},
-  {name = "Medical Intern", lowpop = 0, highpop = 0},
-  {name = "Virologist", lowpop = 1, highpop = 1}, # Science
-  {name = "Roboticist", lowpop = 2, highpop = 2},
-  {name = "Scientist", lowpop = 4, highpop = 5},
-  {name = "Xenobiologist", lowpop = 2, highpop = 2},
-  {name = "Student Scientist", lowpop = 0, highpop = 0}, # Security
-  {name = "Detective", lowpop = 1, highpop = 1},
-  {name = "Security Officer", lowpop = 8, highpop = 9},
-  {name = "Security Cadet", lowpop = 0, highpop = 0},
-  {name = "Warden", lowpop = 1, highpop = 1},
-  {name = "Internal Affairs Agent", lowpop = 2, highpop = 2}, # Service
-  {name = "Bartender", lowpop = 1, highpop = 1},
-  {name = "Botanist", lowpop = 2, highpop = 2},
-  {name = "Chaplain", lowpop = 1, highpop = 1},
-  {name = "Chef", lowpop = 1, highpop = 1},
-  {name = "Janitor", lowpop = 1, highpop = 2},
-  {name = "Librarian", lowpop = 1, highpop = 1}, # Cargo/Supply
-  {name = "Quartermaster", lowpop = 1, highpop = 1},
-  {name = "Shaft Miner", lowpop = 6, highpop = 6},
-  {name = "Smith", lowpop = 1, highpop = 1},
-  {name = "Cargo Technician", lowpop = 3, highpop = 4}, # Silicon
-  {name = "AI", lowpop = 1, highpop = 1},
-  {name = "Cyborg", lowpop = 1, highpop = 1}, # Misc
-  {name = "Assistant", lowpop = -1, highpop = -1},
+  { name = "Captain", lowpop = 1, highpop = 1 },
+  { name = "Head of Personnel", lowpop = 1, highpop = 1 },
+  { name = "Head of Security", lowpop = 1, highpop = 1 },
+  { name = "Chief Engineer", lowpop = 1, highpop = 1 },
+  { name = "Research Director", lowpop = 1, highpop = 1 },
+  { name = "Chief Medical Officer", lowpop = 1, highpop = 1 },  # Engineering
+  { name = "Life Support Specialist", lowpop = 3, highpop = 4 },
+  { name = "Station Engineer", lowpop = 5, highpop = 6 },
+  { name = "Trainee Engineer", lowpop = 0, highpop = 0 },  # Medical
+  { name = "Chemist", lowpop = 2, highpop = 2 },
+  { name = "Geneticist", lowpop = 2, highpop = 2 },
+  { name = "Medical Doctor", lowpop = 5, highpop = 6 },
+  { name = "Medical Intern", lowpop = 0, highpop = 0 },
+  { name = "Virologist", lowpop = 1, highpop = 1 },  # Science
+  { name = "Roboticist", lowpop = 2, highpop = 2 },
+  { name = "Scientist", lowpop = 4, highpop = 5 },
+  { name = "Xenobiologist", lowpop = 2, highpop = 2 },
+  { name = "Student Scientist", lowpop = 0, highpop = 0 },  # Security
+  { name = "Detective", lowpop = 1, highpop = 1 },
+  { name = "Security Officer", lowpop = 8, highpop = 9 },
+  { name = "Security Cadet", lowpop = 0, highpop = 0 },
+  { name = "Warden", lowpop = 1, highpop = 1 },
+  { name = "Internal Affairs Agent", lowpop = 2, highpop = 2 },  # Service
+  { name = "Bartender", lowpop = 1, highpop = 1 },
+  { name = "Botanist", lowpop = 2, highpop = 2 },
+  { name = "Chaplain", lowpop = 1, highpop = 1 },
+  { name = "Chef", lowpop = 1, highpop = 1 },
+  { name = "Janitor", lowpop = 1, highpop = 2 },
+  { name = "Librarian", lowpop = 1, highpop = 1 },  # Cargo/Supply
+  { name = "Quartermaster", lowpop = 1, highpop = 1 },
+  { name = "Shaft Miner", lowpop = 6, highpop = 6 },
+  { name = "Smith", lowpop = 1, highpop = 1 },
+  { name = "Cargo Technician", lowpop = 3, highpop = 4 },  # Silicon
+  { name = "AI", lowpop = 1, highpop = 1 },
+  { name = "Cyborg", lowpop = 1, highpop = 1 },  # Misc
+  { name = "Assistant", lowpop = -1, highpop = -1 },
 ]
 
 ################################################################
@@ -633,7 +631,6 @@ overflow_whitelist = ["keyhere", "anotherhere"]
 # SS220 addition
 # Slot saving  time for client reconnection (in seconds)
 reservation_time = 10
-
 
 ################################################################
 
@@ -829,13 +826,13 @@ active_lava_ruins = [
 # This contains stuff that the host should fill out, relating to backend stuff
 
 # Communications password for authorising world/Topic requests. Comment out to disable
-#communications_password = "generateSomeLongRandomStringHere"
+# communications_password = "generateSomeLongRandomStringHere"
 # Do we want to kill the world on reboot instead of restarting it?
 shutdown_on_reboot = false
 # If true to above, an optional shell command can be ran. Defaults to killing DD on windows
-#shutdown_shell_command = "taskkill /im dreamdaemon.exe /f"
+# shutdown_shell_command = "taskkill /im dreamdaemon.exe /f"
 # Github API token for in game bug reporting
-#github_api_token = "your_secret_here"
+# github_api_token = "your_secret_here"
 # List of IP addresses to be ignored by the world/Topic rate limiting. Useful if you have other services
 topic_ip_ratelimit_bypass = ["127.0.0.1"]
 # Turn this to true if you are running a production server
@@ -854,17 +851,17 @@ external_tos_handler = false
 # Path to the map datum to load, overriding the defaults and `data/next_map.txt`.
 # Do not use in production.
 # Comment out to disable.
-#override_map = "/datum/map/test_tiny"
+# override_map = "/datum/map/test_tiny"
 # Regional servers.
 # This is not for separate DD instances per region, but if you have a geo-routing setup deployed to optimise routing for players
 # I am 99.9% certain you will never need to fill this out
 regional_servers = [
-  #{name = "UK", ip = "byond://uk.paradisestation.org:6666"},
+  # {name = "UK", ip = "byond://uk.paradisestation.org:6666"},
 ]
 # Send a toast on server init completion. You probably dont need this on in production
 toast_on_init_complete = true
 # The URL for a ss13-yt-wrap server (https://github.com/Absolucy/ss13-yt-wrap) to use.
-#ytdlp_url = "http://ytdlpserverurlhere"
+# ytdlp_url = "http://ytdlpserverurlhere"
 
 ################################################################
 
@@ -875,15 +872,12 @@ toast_on_init_complete = true
 
 # Location of server resources. Used to offload sending the paradise.rsc from DD to a webserver
 # NOTE: This wants paradise.rsc inside a zip file, and it is HTTP ONLY. NO HTTPS
-#rsc_urls = ["http://www.paradisestation.org/windows/paradise.rsc.zip"]
-# Link URL to link forum accounts to ckeys. If set to an empty string, no link option will be offered
-# Token is appended right on the end, so set parameters as needed
-#forum_link_url = "https://example.com/link.php?token="
+# rsc_urls = ["http://www.paradisestation.org/windows/paradise.rsc.zip"]
 # URL for accessing player info from admin webtools
 # Ckey is appended right on the end, so set parameters as needed
-#forum_playerinfo_url = "https://example.com/info.php?ckey="
+# forum_playerinfo_url = "https://example.com/info.php?ckey="
 # Server location for world reboot. Don't include the byond://, just give the address and port.
-#reboot_url = "byond.paradisestation.org:6666"
+# reboot_url = "byond.paradisestation.org:6666"
 # Forum address
 forum_url = "https://www.paradisestation.org/forum/"
 # Wiki address
@@ -895,9 +889,7 @@ github_url = "https://github.com/ParadiseSS13/Paradise"
 # Exploit address
 exploit_url = "https://www.paradisestation.org/forum/179-exploit-reports/"
 # Discord address
-#discord_url = "http://example.org"
-# Discord address (forum-based invite)
-discord_forum_url = "https://www.paradisestation.org/forum/discord/invite/general/"
+# discord_url = "http://example.org"
 # Donations address
 donations_url = "https://www.patreon.com/ParadiseStation"
 # Ban appeals URL - usually for a forum or wherever people should go to contact your admins
@@ -905,7 +897,7 @@ ban_appeals_url = "https://www.paradisestation.org/forum/55-unban-requests/"
 # URL for the CentComm ban DB. Doesnt change much. Ckey is slapped on the end
 centcomm_ban_db_url = "https://centcom.melonmesa.com/ban/search/"
 # URL for the game stats page, if applicable. Round ID is appended right on the end. Include a trailing slash if necessary.
-#round_stats_url = "https://affectedarc07.github.io/ParaStats/#/round/"
+# round_stats_url = "https://affectedarc07.github.io/ParaStats/#/round/"
 
 ################################################################
 
@@ -936,13 +928,13 @@ non_repeating_maps = true
 # - "FPTP" = A vote that excludes the map from the current round, and last round, then uses a weighted pick on the remaining maps, from preferences.
 # If you dont enter one correctly, it will whine on startup
 map_vote_day_types = [
-  {day_number = 1, rotation_type = "Random"}, # Monday
-  {day_number = 2, rotation_type = "Random"}, # Tuesday
-  {day_number = 3, rotation_type = "Random"}, # Wednesday
-  {day_number = 4, rotation_type = "Random"}, # Thursday
-  {day_number = 5, rotation_type = "Random"}, # Friday
-  {day_number = 6, rotation_type = "Random"}, # Saturday
-  {day_number = 7, rotation_type = "Random"}, # Sunday
+  { day_number = 1, rotation_type = "Random" },  # Monday
+  { day_number = 2, rotation_type = "Random" },  # Tuesday
+  { day_number = 3, rotation_type = "Random" },  # Wednesday
+  { day_number = 4, rotation_type = "Random" },  # Thursday
+  { day_number = 5, rotation_type = "Random" },  # Friday
+  { day_number = 6, rotation_type = "Random" },  # Saturday
+  { day_number = 7, rotation_type = "Random" },  # Sunday
 ]
 
 ################################################################
@@ -971,7 +963,6 @@ asset_simple_preload = true
 
 ################################################################
 
-
 [gateway_configuration]
 # This section contains everything relating to the ingame gateway (away mission) system.
 
@@ -981,14 +972,13 @@ enable_away_mission = false
 away_mission_delay = 0
 # List of all enabled away missions. Comment out an entry to disable it.
 enabled_away_missions = [
-	"_maps/map_files220/RandomZLevels/beach.dmm",
-	"_maps/map_files220/RandomZLevels/wildwest.dmm",
-	"_maps/map_files220/RandomZLevels/blackmarketpackers.dmm",
-	"_maps/map_files220/RandomZLevels/gate_lizard.dmm",
-	"_maps/map_files220/RandomZLevels/caves.dmm",
-	"_maps/map_files220/RandomZLevels/blackmesa.dmm",
+  "_maps/map_files220/RandomZLevels/beach.dmm",
+  "_maps/map_files220/RandomZLevels/wildwest.dmm",
+  "_maps/map_files220/RandomZLevels/blackmarketpackers.dmm",
+  "_maps/map_files220/RandomZLevels/gate_lizard.dmm",
+  "_maps/map_files220/RandomZLevels/caves.dmm",
+  "_maps/map_files220/RandomZLevels/blackmesa.dmm",
 ]
-
 
 ################################################################
 
@@ -1006,12 +996,10 @@ tts_cache_enabled = false
 # What CPU threads are used for ffmpeg. Example valid values: "0-3" or "1,4-7"
 ffmpeg_cpuaffinity = ""
 
-
 ################################################################
 [ss220_unit_test]
 # Hey, do you know the secret answer to the Ultimate Question of Life, The Universe, and Everything?
 secret_number = 42
-
 
 [ss220_misc_configuration]
 # This section contains everything that should be in general_configuration
@@ -1040,7 +1028,6 @@ default_species_bans = []
 
 ################################################################
 
-
 [antag_mix_gamemode_configuration]
 # This section contains all settings related to antag_mix gamemode
 
@@ -1049,6 +1036,7 @@ default_species_bans = []
 budget_multiplier = 1
 # Max fraction of antags relative to ready players. Value between 0 and 1
 max_antag_fraction = 1
+
 # Configuration of antag scenarios
 # Must be list of objects with next params:
 # - [tag] required param which identifies the antag scenarios
@@ -1079,20 +1067,20 @@ tag = "traitor"
 "candidates_required" = 1
 "restricted_roles" = ["Cyborg"]
 "protected_roles" = [
-	"Security Cadet",
-	"Security Officer",
-	"Warden",
-	"Detective",
-	"Head of Security",
-	"Captain",
-	"Blueshield",
-	"Nanotrasen Representative",
-	"Magistrate",
-	"Internal Affairs Agent",
-	"Nanotrasen Navy Officer",
-	"Special Operations Officer",
-	"Syndicate Officer",
-	"Solar Federation General",
+  "Security Cadet",
+  "Security Officer",
+  "Warden",
+  "Detective",
+  "Head of Security",
+  "Captain",
+  "Blueshield",
+  "Nanotrasen Representative",
+  "Magistrate",
+  "Internal Affairs Agent",
+  "Nanotrasen Navy Officer",
+  "Special Operations Officer",
+  "Syndicate Officer",
+  "Solar Federation General",
 ]
 
 [[antag_mix_gamemode_configuration.antag_scenarios_configuration]]
@@ -1106,19 +1094,19 @@ tag = "changeling"
 "candidates_required" = 1
 "restricted_roles" = ["Cyborg", "AI"]
 "protected_roles" = [
-	"Security Cadet",
-	"Security Officer",
-	"Warden",
-	"Detective",
-	"Head of Security",
-	"Captain",
-	"Blueshield",
-	"Nanotrasen Representative",
-	"Magistrate",
-	"Internal Affairs Agent",
-	"Nanotrasen Navy Officer",
-	"Special Operations Officer",
-	"Solar Federation General",
+  "Security Cadet",
+  "Security Officer",
+  "Warden",
+  "Detective",
+  "Head of Security",
+  "Captain",
+  "Blueshield",
+  "Nanotrasen Representative",
+  "Magistrate",
+  "Internal Affairs Agent",
+  "Nanotrasen Navy Officer",
+  "Special Operations Officer",
+  "Solar Federation General",
 ]
 "restricted_species" = ["Machine"]
 
@@ -1133,19 +1121,19 @@ tag = "vampire"
 "candidates_required" = 1
 "restricted_roles" = ["Cyborg", "AI", "Chaplain"]
 "protected_roles" = [
-	"Security Cadet",
-	"Security Officer",
-	"Warden",
-	"Detective",
-	"Head of Security",
-	"Captain",
-	"Blueshield",
-	"Nanotrasen Representative",
-	"Magistrate",
-	"Internal Affairs Agent",
-	"Nanotrasen Navy Officer",
-	"Special Operations Officer",
-	"Solar Federation General",
+  "Security Cadet",
+  "Security Officer",
+  "Warden",
+  "Detective",
+  "Head of Security",
+  "Captain",
+  "Blueshield",
+  "Nanotrasen Representative",
+  "Magistrate",
+  "Internal Affairs Agent",
+  "Nanotrasen Navy Officer",
+  "Special Operations Officer",
+  "Solar Federation General",
 ]
 "restricted_species" = ["Machine"]
 
@@ -1161,19 +1149,19 @@ tag = "blood_brothers"
 "candidates_required" = 1
 "restricted_roles" = ["Cyborg", "AI"]
 "protected_roles" = [
-	"Security Cadet",
-	"Security Officer",
-	"Warden",
-	"Detective",
-	"Head of Security",
-	"Captain",
-	"Blueshield",
-	"Nanotrasen Representative",
-	"Magistrate",
-	"Internal Affairs Agent",
-	"Nanotrasen Navy Officer",
-	"Special Operations Officer",
-	"Solar Federation General",
+  "Security Cadet",
+  "Security Officer",
+  "Warden",
+  "Detective",
+  "Head of Security",
+  "Captain",
+  "Blueshield",
+  "Nanotrasen Representative",
+  "Magistrate",
+  "Internal Affairs Agent",
+  "Nanotrasen Navy Officer",
+  "Special Operations Officer",
+  "Solar Federation General",
 ]
 
 [[antag_mix_gamemode_configuration.antag_scenarios_configuration]]
@@ -1187,19 +1175,19 @@ tag = "mindflayer"
 "candidates_required" = 1
 "restricted_roles" = ["Cyborg", "AI"]
 "protected_roles" = [
-	"Security Cadet",
-	"Security Officer",
-	"Warden",
-	"Detective",
-	"Head of Security",
-	"Captain",
-	"Blueshield",
-	"Nanotrasen Representative",
-	"Magistrate",
-	"Internal Affairs Agent",
-	"Nanotrasen Navy Officer",
-	"Special Operations Officer",
-	"Solar Federation General",
+  "Security Cadet",
+  "Security Officer",
+  "Warden",
+  "Detective",
+  "Head of Security",
+  "Captain",
+  "Blueshield",
+  "Nanotrasen Representative",
+  "Magistrate",
+  "Internal Affairs Agent",
+  "Nanotrasen Navy Officer",
+  "Special Operations Officer",
+  "Solar Federation General",
 ]
 possible_species = ["Machine"]
 
@@ -1219,100 +1207,99 @@ tag = "vox_raiders"
 [gpt_configuration]
 gpt_enabled = false
 access_token = ""
-endpoint = "https://models.inference.ai.azure.com/chat/completions" # Allows github authorization with free tiers
+endpoint = "https://models.inference.ai.azure.com/chat/completions"  # Allows github authorization with free tiers
 model = "gpt-4o"
 
 ################################################################
 
 [job_configuration_restriction]
-
 # Should enable job ban for species
 allow_to_ban_job_for_species = false
 
 # Job blacklist marks. Add species name to ban job for a specific species. Example: { name = "Captain", species_blacklist = ["Vox"] },
 job_species_blacklist = [
-	# Cental Command
-	{ name = "Nanotrasen Navy Officer", species_blacklist = [] },
-	{ name = "Special Operations Officer", species_blacklist = [] },
-	{ name = "Trans-Solar Federation General", species_blacklist = [] },
-	{ name = "Syndicate Officer", species_blacklist = [] },
-	# Commmand
-	{ name = "Captain", species_blacklist = [] },
-	{ name = "Head of Personnel", species_blacklist = [] },
-	{ name = "Head of Security", species_blacklist = [] },
-	{ name = "Chief Engineer", species_blacklist = [] },
-	{ name = "Research Director", species_blacklist = [] },
-	{ name = "Chief Medical Officer", species_blacklist = [] },
-	{ name = "Quartermaster", species_blacklist = [] },
-	{ name = "Nanotrasen Representative", species_blacklist = [] },
-	{ name = "Blueshield", species_blacklist = [] },
-	{ name = "Magistrate", species_blacklist = [] },
-	# Engineering
-	{ name = "Life Support Specialist", species_blacklist = [] },
-	{ name = "Station Engineer", species_blacklist = [] },
-	{ name = "Trainee Engineer", species_blacklist = [] },
-	# Medical
-	{ name = "Chemist", species_blacklist = [] },
-	{ name = "Paramedic", species_blacklist = [] },
-	{ name = "Geneticist", species_blacklist = [] },
-	{ name = "Coroner", species_blacklist = [] },
-	{ name = "Psychiatrist", species_blacklist = [] },
-	{ name = "Medical Doctor", species_blacklist = [] },
-	{ name = "Medical Intern", species_blacklist = [] },
-	{ name = "Virologist", species_blacklist = [] },
-	# Science
-	{ name = "Roboticist", species_blacklist = [] },
-	{ name = "Scientist", species_blacklist = [] },
-	{ name = "Student Scientist", species_blacklist = [] },
-	# Security
-	{ name = "Detective", species_blacklist = [] },
-	{ name = "Security Officer", species_blacklist = [] },
-	{ name = "Security Cadet", species_blacklist = [] },
-	{ name = "Warden", species_blacklist = [] },
-	{ name = "Internal Affairs Agent", species_blacklist = [] },
-	# Service
-	{ name = "Bartender", species_blacklist = [] },
-	{ name = "Botanist", species_blacklist = [] },
-	{ name = "Chaplain", species_blacklist = [] },
-	{ name = "Chef", species_blacklist = [] },
-	{ name = "Janitor", species_blacklist = [] },
-	{ name = "Librarian", species_blacklist = [] },
-	{ name = "Clown", species_blacklist = [] },
-	{ name = "Mime", species_blacklist = [] },
-	# Cargo/Supply
-	{ name = "Explorer", species_blacklist = [] },
-	{ name = "Shaft Miner", species_blacklist = [] },
-	{ name = "Cargo Technician", species_blacklist = [] },
-	# Silicon
-	{ name = "AI", species_blacklist = [] },
-	{ name = "Cyborg", species_blacklist = [] },
-	# Misc
-	{ name = "Assistant", species_blacklist = [] },
-	# Donor
-	{ name = "Donor", species_blacklist = [] },
-	{ name = "Prisoner", species_blacklist = [] },
-	{ name = "Barber", species_blacklist = [] },
-	{ name = "Bath", species_blacklist = [] },
-	{ name = "Casino", species_blacklist = [] },
-	{ name = "Waiter", species_blacklist = [] },
-	{ name = "Acolyte", species_blacklist = [] },
-	{ name = "Wrestler", species_blacklist = [] },
-	{ name = "Musician", species_blacklist = [] },
-	{ name = "Actor", species_blacklist = [] },
-	{ name = "Administrator", species_blacklist = [] },
-	{ name = "Tourist TSF", species_blacklist = [] },
-	{ name = "Tourist USSP", species_blacklist = [] },
-	{ name = "Cleaning Manager", species_blacklist = [] },
-	{ name = "Guard", species_blacklist = [] },
-	{ name = "Migrant", species_blacklist = [] },
-	{ name = "Uncertain", species_blacklist = [] },
-	{ name = "Adjutant", species_blacklist = [] },
-	{ name = "Representative TSF", species_blacklist = [] },
-	{ name = "Representative USSP", species_blacklist = [] },
-	{ name = "Dealer", species_blacklist = [] },
-	{ name = "VIP Corporate Guest", species_blacklist = [] },
-	{ name = "Banker", species_blacklist = [] },
-	{ name = "Security Clown", species_blacklist = [] },
+  # Cental Command
+  { name = "Nanotrasen Navy Officer", species_blacklist = [] },
+  { name = "Special Operations Officer", species_blacklist = [] },
+  { name = "Trans-Solar Federation General", species_blacklist = [] },
+  { name = "Syndicate Officer", species_blacklist = [] },
+  # Commmand
+  { name = "Captain", species_blacklist = [] },
+  { name = "Head of Personnel", species_blacklist = [] },
+  { name = "Head of Security", species_blacklist = [] },
+  { name = "Chief Engineer", species_blacklist = [] },
+  { name = "Research Director", species_blacklist = [] },
+  { name = "Chief Medical Officer", species_blacklist = [] },
+  { name = "Quartermaster", species_blacklist = [] },
+  { name = "Nanotrasen Representative", species_blacklist = [] },
+  { name = "Blueshield", species_blacklist = [] },
+  { name = "Magistrate", species_blacklist = [] },
+  # Engineering
+  { name = "Life Support Specialist", species_blacklist = [] },
+  { name = "Station Engineer", species_blacklist = [] },
+  { name = "Trainee Engineer", species_blacklist = [] },
+  # Medical
+  { name = "Chemist", species_blacklist = [] },
+  { name = "Paramedic", species_blacklist = [] },
+  { name = "Geneticist", species_blacklist = [] },
+  { name = "Coroner", species_blacklist = [] },
+  { name = "Psychiatrist", species_blacklist = [] },
+  { name = "Medical Doctor", species_blacklist = [] },
+  { name = "Medical Intern", species_blacklist = [] },
+  { name = "Virologist", species_blacklist = [] },
+  # Science
+  { name = "Roboticist", species_blacklist = [] },
+  { name = "Scientist", species_blacklist = [] },
+  { name = "Student Scientist", species_blacklist = [] },
+  # Security
+  { name = "Detective", species_blacklist = [] },
+  { name = "Security Officer", species_blacklist = [] },
+  { name = "Security Cadet", species_blacklist = [] },
+  { name = "Warden", species_blacklist = [] },
+  { name = "Internal Affairs Agent", species_blacklist = [] },
+  # Service
+  { name = "Bartender", species_blacklist = [] },
+  { name = "Botanist", species_blacklist = [] },
+  { name = "Chaplain", species_blacklist = [] },
+  { name = "Chef", species_blacklist = [] },
+  { name = "Janitor", species_blacklist = [] },
+  { name = "Librarian", species_blacklist = [] },
+  { name = "Clown", species_blacklist = [] },
+  { name = "Mime", species_blacklist = [] },
+  # Cargo/Supply
+  { name = "Explorer", species_blacklist = [] },
+  { name = "Shaft Miner", species_blacklist = [] },
+  { name = "Cargo Technician", species_blacklist = [] },
+  # Silicon
+  { name = "AI", species_blacklist = [] },
+  { name = "Cyborg", species_blacklist = [] },
+  # Misc
+  { name = "Assistant", species_blacklist = [] },
+  # Donor
+  { name = "Donor", species_blacklist = [] },
+  { name = "Prisoner", species_blacklist = [] },
+  { name = "Barber", species_blacklist = [] },
+  { name = "Bath", species_blacklist = [] },
+  { name = "Casino", species_blacklist = [] },
+  { name = "Waiter", species_blacklist = [] },
+  { name = "Acolyte", species_blacklist = [] },
+  { name = "Wrestler", species_blacklist = [] },
+  { name = "Musician", species_blacklist = [] },
+  { name = "Actor", species_blacklist = [] },
+  { name = "Administrator", species_blacklist = [] },
+  { name = "Tourist TSF", species_blacklist = [] },
+  { name = "Tourist USSP", species_blacklist = [] },
+  { name = "Cleaning Manager", species_blacklist = [] },
+  { name = "Guard", species_blacklist = [] },
+  { name = "Migrant", species_blacklist = [] },
+  { name = "Uncertain", species_blacklist = [] },
+  { name = "Adjutant", species_blacklist = [] },
+  { name = "Representative TSF", species_blacklist = [] },
+  { name = "Representative USSP", species_blacklist = [] },
+  { name = "Dealer", species_blacklist = [] },
+  { name = "VIP Corporate Guest", species_blacklist = [] },
+  { name = "Banker", species_blacklist = [] },
+  { name = "Security Clown", species_blacklist = [] },
 ]
 
 ################################################################

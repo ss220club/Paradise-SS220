@@ -147,8 +147,10 @@
 		M.visible_message(SPAN_DANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [M.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"), SPAN_USERDANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [M.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"))
 		if(!do_mob(user, M))
 			return
-		M.visible_message("<span class='danger'>[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!", \
-						"<span class='userdanger'>[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!")
+		M.visible_message(
+			SPAN_DANGER("[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!"),
+			SPAN_USERDANGER("[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!")
+		)
 	else
 		to_chat(user, SPAN_NOTICE("Вы инъецировали себя используя [src.declent_ru(ACCUSATIVE)]."))
 

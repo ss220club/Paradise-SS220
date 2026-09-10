@@ -13,7 +13,7 @@
 	// SS220 EDIT END
 
 /datum/asset/spritesheet/chem_master/create_spritesheets()
-	for(var/pill_type in 1 to 20)
+	for(var/pill_type in 1 to 28)
 		Insert("pill[pill_type]", 'icons/obj/chemical.dmi', "pill[pill_type]")
 	for(var/bandaid_type in 1 to 21)
 		Insert("bandaid[bandaid_type]", 'icons/obj/chemical.dmi', "bandaid[bandaid_type]")
