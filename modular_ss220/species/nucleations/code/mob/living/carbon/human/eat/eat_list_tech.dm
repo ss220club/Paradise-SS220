@@ -1,6 +1,6 @@
-/obj/item/pda/afterattack__legacy__attackchain(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(try_item_eat(A, user))
-		return FALSE
+/obj/item/pda/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(try_item_eat(target, user))
+		return ITEM_INTERACT_COMPLETE
 
 //===== Vox food =====
 //Bad tech
