@@ -130,7 +130,7 @@
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/engineering/engine/reactor
-	name = "Ядерный Реактор"
+	name = "\improper Fission Reactor"
 
 //Solars
 

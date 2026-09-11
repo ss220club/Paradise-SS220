@@ -70,6 +70,9 @@
 	icon_state = "engi"
 	request_console_name = "Atmospherics"
 
+/area/station/engineering/engine/reactor
+	name = "Ядерный Реактор"
+
 /area/station/engineering/utility
 	name = "Инженерная Подсобка"
 	icon_state = "engimaint"
