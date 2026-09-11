@@ -15818,11 +15818,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump{
-	name = "Air to Distro";
-	on = 1;
-	target_pressure = 303
-	},
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/turf_decal/tiles/department/medical/corner{
 	dir = 4
@@ -15832,6 +15827,9 @@
 	},
 /obj/effect/turf_decal/tiles/white/corner{
 	dir = 1
+	},
+/obj/machinery/atmospherics/binary/pump/on{
+	target_pressure = 303
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
@@ -88425,16 +88423,12 @@
 	},
 /obj/structure/disposalpipe/sortjunction,
 /obj/effect/turf_decal/tiles/neutral,
-<<<<<<< HEAD
-/obj/machinery/atmospherics/pipe/manifold/visible/purple,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-=======
 /obj/effect/mapping_helpers/sortjunc_helper/atmospherics,
->>>>>>> main
-/turf/simulated/floor/plasteel,
+/turf/space,
 /area/station/hallway/primary/port)
 "qSM" = (
 /obj/machinery/door/airlock/multi_tile/glass{
