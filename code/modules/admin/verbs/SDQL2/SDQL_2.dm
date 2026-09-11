@@ -405,7 +405,7 @@ USER_VERB(execute_sdql2_query, R_PROCCALL, "SDQL2 Query", "Run an SDQL query", V
 		start++
 
 	else if((!long || expression[start + 1] == "." || expression[start + 1] == "\[") && (expression[start] in object.vars))
-		v = object.vars[expression[start]]
+		v = object.can_vv_get(expression[start]) ? object.vars[expression[start]] : "SECRET"
 
 	else if(long && expression[start + 1] == ":" && hascall(object, expression[start]))
 		v = expression[start]
