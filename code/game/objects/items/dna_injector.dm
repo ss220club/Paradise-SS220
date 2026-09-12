@@ -11,7 +11,7 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "biotech=1"
-
+	new_attack_chain = TRUE
 	var/damage_coeff = 1
 	var/used = FALSE
 
@@ -118,48 +118,56 @@
 			if(H)
 				H.sync_organ_dna(assimilate = 0, old_ue = prev_ue)
 
-/obj/item/dnainjector/attack__legacy__attackchain(mob/M, mob/user)
+/obj/item/dnainjector/interact_with_atom(mob/target, mob/living/user, list/modifiers)
+	if(!ismob(target))
+		return NONE
+
 	if(used)
 		to_chat(user, SPAN_WARNING("Этот инъектор уже использован!"))
-		return
-	if(!M.dna || HAS_TRAIT(M, TRAIT_GENELESS) || HAS_TRAIT(M, TRAIT_BADDNA)) //You know what would be nice? If the mob you're injecting has DNA, and so doesn't cause runtimes.
-		return FALSE
+		return ITEM_INTERACT_COMPLETE
+
+	if(!target.dna || HAS_TRAIT(target, TRAIT_GENELESS) || HAS_TRAIT(target, TRAIT_BADDNA)) // You know what would be nice? If the mob you're injecting has DNA, and so doesn't cause runtimes.
+		to_chat(user, SPAN_WARNING("[target] doesn't have the proper DNA!"))
+		return ITEM_INTERACT_COMPLETE
 
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_WARNING("Вам не удаётся понять что с этим делать!"))
-		return FALSE
+		return ITEM_INTERACT_COMPLETE
 
 	var/attack_log = "ввел изолированный [name]"
 
 	if(buf && buf.types & DNA2_BUF_SE)
 		if(block)
-			if(GetState() && block == GLOB.monkeyblock && ishuman(M))
+			if(GetState() && block == GLOB.monkeyblock && ishuman(target))
 				attack_log = "ввёл изолированный [name] (MONKEY)"
-				message_admins("[key_name_admin(user)] ввёл [key_name_admin(M)] изолированный [name] [SPAN_WARNING("(MONKEY)")]")
+				message_admins("[key_name_admin(user)] ввёл [key_name_admin(target)] изолированный [name] [SPAN_WARNING("(MONKEY)")]")
 
 		else
-			if(GetState(GLOB.monkeyblock) && ishuman(M))
+			if(GetState(GLOB.monkeyblock) && ishuman(target))
 				attack_log = "ввёл изолированный [name] (MONKEY)"
-				message_admins("[key_name_admin(user)] ввёл [key_name_admin(M)] изолированный [name] [SPAN_WARNING("(MONKEY)")]")
+				message_admins("[key_name_admin(user)] ввёл [key_name_admin(target)] изолированный [name] [SPAN_WARNING("(MONKEY)")]")
 
-
-	if(M != user)
-		M.visible_message(SPAN_DANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [M.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"), SPAN_USERDANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [M.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"))
-		if(!do_mob(user, M))
-			return
-		M.visible_message(
-			SPAN_DANGER("[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!"),
-			SPAN_USERDANGER("[user.declent_ru(NOMINATIVE)] провёл инъекцию [M.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!")
+	if(target != user)
+		target.visible_message(
+			SPAN_DANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [target.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!"),
+			SPAN_USERDANGER("[user.declent_ru(NOMINATIVE)] пытается инъецировать [target.declent_ru(GENITIVE)] используя [src.declent_ru(ACCUSATIVE)]!")
+		)
+		if(!do_mob(user, target))
+			return ITEM_INTERACT_COMPLETE
+		target.visible_message(
+			SPAN_DANGER("[user.declent_ru(NOMINATIVE)] провёл инъекцию [target.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!"),
+			SPAN_USERDANGER("[user.declent_ru(NOMINATIVE)] провёл инъекцию [target.declent_ru(DATIVE)] используя [src.declent_ru(ACCUSATIVE)]!")
 		)
 	else
 		to_chat(user, SPAN_NOTICE("Вы инъецировали себя используя [src.declent_ru(ACCUSATIVE)]."))
 
-	add_attack_logs(user, M, attack_log, ATKLOG_ALL)
+	add_attack_logs(user, target, attack_log, ATKLOG_ALL)
 
-	inject(M, user)
+	inject(target, user)
 	used = TRUE
 	icon_state = "dnainjector0"
 	desc += " Он уже был использован."
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/dnainjector/hulkmut
 	name = "DNA-Injector (Hulk)"
