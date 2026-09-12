@@ -700,3 +700,11 @@
 	new /obj/structure/particle_accelerator/particle_emitter/right(src)
 	new /obj/structure/particle_accelerator/power_box(src)
 	new /obj/structure/particle_accelerator/end_cap(src)
+
+// Добавление полупрозрачности силовому кабелю через пустую RGB маску
+/obj/structure/cable/extra_insulated/Initialize(mapload)
+	. = ..()
+	color = null
+
+/obj/structure/cable/extra_insulated
+	color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
