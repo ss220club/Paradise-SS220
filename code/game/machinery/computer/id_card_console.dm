@@ -124,7 +124,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		formatted.Add(list(list(
 			"display_name" = get_skin_desc(skin),
 			"skin" = skin,
-			"icon" = 'icons/obj/card.dmi')))
+			"icon" = 'modular_ss220/aesthetics/better_ids/icons/card.dmi'))) // SS220 EDIT - Отображения наших спрайтов в консоли доступов
 	return formatted
 
 /obj/machinery/computer/card/AltClick(mob/user)
@@ -663,7 +663,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						if(R.fields["id"] == E.fields["id"])
 							if(status_valid_for_demotion(R.fields["criminal"]))
 								set_criminal_status(usr, R, SEC_RECORD_STATUS_DEMOTE, reason, scan.assignment)
-								Radio.autosay("[scan.registered_name] ([scan.assignment]) has set [tempname] ([temprank]) to demote for: [reason]", name, "Command")
+								Radio.autosay("[scan.registered_name] ([scan.assignment]) назначил [tempname] ([temprank]) на понижение за: [reason]", name, "Command")
 								message_admins("[key_name_admin(usr)] ([scan.assignment]) has set [tempname] ([temprank]) to demote for: \"[reason]\"")
 								log_game("[key_name(usr)] ([scan.assignment]) has set \"[tempname]\" ([temprank]) to demote for: \"[reason]\".")
 								SSjobs.notify_by_name(tempname, "[scan.registered_name] ([scan.assignment]) has ordered your demotion. Report to their office, or the HOP. Reason given: \"[reason]\"")

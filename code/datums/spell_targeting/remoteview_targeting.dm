@@ -16,7 +16,7 @@
 	if(!length(remoteviewers))
 		return
 
-	var/mob/target = tgui_input_list(user, "Choose the target to spy on", "Targeting", remoteviewers)
+	var/mob/target = tgui_input_list(user, "Выберите цель для слежки", "Слежение", remoteviewers)
 
 	if(QDELETED(target))
 		return

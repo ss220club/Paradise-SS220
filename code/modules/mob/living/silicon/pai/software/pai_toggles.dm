@@ -76,7 +76,7 @@
 		user.add_language("Bubblish")
 		user.add_language("Orluum")
 		user.add_language("Clownish")
-		user.add_language("Cygni Standard")
+		user.add_language("Neo-Russkiya") // SS220 EDIT - Cygni -> Neo-Russkiya
 		user.add_language("Tkachi")
 		user.add_language("Skkula-Runespeak")
 	else
@@ -90,7 +90,7 @@
 		user.remove_language("Bubblish")
 		user.remove_language("Orluum")
 		user.remove_language("Clownish")
-		user.remove_language("Cygni Standard")
+		user.remove_language("Neo-Russkiya") // SS220 EDIT - Cygni -> Neo-Russkiya
 		user.remove_language("Tkachi")
 		user.remove_language("Skkula-Runespeak")
 

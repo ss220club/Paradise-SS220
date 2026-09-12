@@ -427,7 +427,7 @@
 
 /obj/item/food/monkeycube
 	name = "monkey cube"
-	desc = "Just add water!"
+	desc = "Просто добавь воды!"
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"

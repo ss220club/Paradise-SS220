@@ -4,15 +4,12 @@
 	department_flag = JOBCAT_SUPPORT
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "the head of personnel"
+	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
 	access = list()			//See /datum/job/assistant/get_access()
 	alt_titles = list("Off-Duty", "Retired", "Intern")
 	outfit = /datum/outfit/job/assistant
-	difficulty = NONE_DIFFICULTY
-	description = "Assistants have the responsibility to learn the game.\n\n\
-					Difficulties: Learning the controls. Radio headsets"
 
 /datum/job/assistant/get_access()
 	if(GLOB.configuration.jobs.assistant_maint_access)

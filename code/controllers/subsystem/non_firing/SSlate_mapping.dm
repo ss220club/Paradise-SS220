@@ -83,10 +83,21 @@ SUBSYSTEM_DEF(late_mapping)
 	var/floor_tiles_per_one_mice = rand(125, 200)
 	var/mice_number = ceil(length(maintenance_turfs) / floor_tiles_per_one_mice)
 
+	// SS220 EDIT START - mouse diversity
+	var/static/list/mouse_pool = list(
+		/mob/living/basic/mouse = 1,
+		/mob/living/basic/mouse/brown = 1,
+		/mob/living/basic/mouse/gray = 1,
+		/mob/living/basic/mouse/white = 1,
+		/mob/living/basic/mouse/rat = 1,
+		/mob/living/basic/mouse/rat/white = 1,
+	)
 	for(var/i in 1 to mice_number)
 		if(prob(1))
 			new /mob/living/basic/mouse/white/linter(pick_n_take(maintenance_turfs))
 		else
-			new /mob/living/basic/mouse(pick_n_take(maintenance_turfs))
+			var/mouse_type = pickweight(mouse_pool)
+			new mouse_type(pick_n_take(maintenance_turfs))
+	// SS220 EDIT END
 
 	log_debug("Spawned [mice_number] mice over in [stop_watch(watch)]s")

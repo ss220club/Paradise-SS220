@@ -1,6 +1,6 @@
 /datum/spell/charge_up/bounce/magnet
 	name = "Magnetic Pull"
-	desc = "Pulls metallic objects from enemies hands with the power of MAGNETS."
+	desc = "Вырывает металлические предметы из рук врагов с помощью МА-А-А-АГНИТОВ!"
 	action_icon_state = "magnet"
 	base_cooldown	= 30 SECONDS
 	clothes_req = FALSE
@@ -8,9 +8,9 @@
 	cooldown_min = 3 SECONDS
 	charge_sound = new /sound('sound/magic/lightning_chargeup.ogg', channel = 7)
 	max_charge_time = 10 SECONDS
-	stop_charging_text = "You stop charging the magnetism around you."
-	stop_charging_fail_text = "The magnetism around you is too strong to stop now!"
-	start_charging_text = "You start gathering magnetism around you."
+	stop_charging_text = "Вы перестаете заряжать магнетизмом ваше окружение."
+	stop_charging_fail_text = "Магнетизм вокруг вас слишком силен, чтобы его можно было остановить!"
+	start_charging_text = "Вы начинаете заряжать магнетизмом ваше окружение."
 	bounce_hit_sound = 'sound/machines/defib_zap.ogg'
 
 /datum/spell/charge_up/bounce/magnet/New()
@@ -49,7 +49,7 @@
 /datum/spell/charge_up/bounce/magnet/proc/try_throw_object(mob/user, mob/thrower, obj/item/to_throw)
 	if(!(to_throw.flags & CONDUCT) || !thrower.drop_item_to_ground(to_throw, silent = TRUE))
 		return FALSE
-	thrower.visible_message(SPAN_WARNING("[to_throw] gets thrown out of [thrower] [thrower.p_their()] hands!"),
-		SPAN_DANGER("[to_throw] suddenly gets thrown out of your hands!"))
+	thrower.visible_message(SPAN_WARNING("[to_throw.declent_ru(NOMINATIVE)] вылетает из рук [thrower.declent_ru(GENITIVE)]!"),
+		SPAN_DANGER("[to_throw.declent_ru(NOMINATIVE)] внезапно вырывается из ваших рук!"))
 	to_throw.throw_at(user, to_throw.throw_range, 4)
 	return TRUE

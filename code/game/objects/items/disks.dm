@@ -63,12 +63,13 @@
 		return ITEM_INTERACT_COMPLETE
 	read_only = !read_only
 	add_fingerprint(user)
-	to_chat(user, SPAN_NOTICE("You flip the write-protect tab to [read_only ? "protected" : "unprotected"]."))
+	to_chat(user, SPAN_NOTICE("Вы переключаете статус защиты дискеты на - [read_only ? "Включена" : "Отключена"]."))
 	return ITEM_INTERACT_COMPLETE
 
 /obj/item/disk/data/examine(mob/user)
 	. = ..()
-	. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
+	. += "Диск для сбора данных о ДНК.<br>"
+	. += "Защита от перезаписи данных - [read_only ? "Включена" : "Отключена"]."
 
 /obj/item/storage/box/disks
 	name = "Diskette Box"
