@@ -5,7 +5,19 @@
 
 /obj/item/storage/internal/Initialize(mapload, obj/item/MI)
 	. = ..()
-	master_item = MI
+	// SS220 EDIT START
+	// `MI` is passed as an extra new()/New() constructor argument (see the
+	// `new path(loc, loc)` calls that create this type). That works fine
+	// when Initialize() runs immediately from New(), but when atom init is
+	// deferred to a later SSatoms batch pass (see attempt_init() in
+	// atoms.dm), extra constructor args beyond mapload don't reliably
+	// survive the trip - `MI` can arrive null, which crashed here reading
+	// master_item.name. `loc` itself, unlike arbitrary ctor args, is set
+	// by the engine at construction time regardless of when Initialize()
+	// ends up running, and is always the same master item we were created
+	// into - so fall back to it if MI didn't make it through.
+	master_item = MI || loc
+	// SS220 EDIT END
 	loc = master_item
 	name = master_item.name
 

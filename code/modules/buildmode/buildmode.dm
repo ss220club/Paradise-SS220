@@ -100,6 +100,18 @@
 	mode.enter_mode(src)
 	modebutton.update_icon()
 
+/datum/click_intercept/buildmode/quit()
+	// The base quit() (wherever it's defined) never knew about buildmode's
+	// own per-mode exit_mode() hook - only change_mode() (switching between
+	// modes) ever called it. Quitting buildmode entirely skipped it, so any
+	// visual cleanup a mode does on exit_mode() (selection overlays, drag
+	// markers, extra HUD buttons, etc.) never ran, and stuck around until
+	// the admin re-entered buildmode. This affects every mode that has any
+	// persistent visual state, not just one specific mode.
+	if(mode)
+		mode.exit_mode(src)
+	return ..()
+
 /datum/click_intercept/buildmode/proc/change_dir(newdir)
 	build_dir = newdir
 	close_dirswitch()

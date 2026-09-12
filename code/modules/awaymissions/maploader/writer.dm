@@ -6,7 +6,30 @@
 #define DMM_IGNORE_MOBS 	(DMM_IGNORE_NPCS | DMM_IGNORE_PLAYERS)
 #define DMM_USE_JSON 		(1<<5)
 
-/datum/dmm_suite/proc/save_map(turf/t1, turf/t2, map_name = "", flags = 0)
+// json_encode() escapes any non-ASCII character as a \uXXXX sequence, but
+// BYOND's own json_decode() doesn't parse that escape form back - see the
+// comment where this is called in check_attributes() below for the runtime
+// error that confirmed it. Converts each \uXXXX back into the actual UTF-8
+// character it represents, leaving everything else untouched.
+/proc/unescape_json_unicode(text)
+	if(!findtext(text, "\\u"))
+		return text
+	var/result = ""
+	var/i = 1
+	var/len = length(text)
+	while(i <= len)
+		if(i <= len - 5 && copytext(text, i, i + 2) == "\\u")
+			var/hex = copytext(text, i + 2, i + 6)
+			var/codepoint = hex2num(hex)
+			if(!isnull(codepoint))
+				result += ascii2text(codepoint)
+				i += 6
+				continue
+		result += copytext(text, i, i + 1)
+		i++
+	return result
+
+/datum/dmm_suite/proc/save_map(turf/t1, turf/t2, map_name = "", flags = 0, list/included_tiles = null)
 	// Check for illegal characters in file name... in a cheap way.
 	if(!((ckeyEx(map_name) == map_name) && ckeyEx(map_name)))
 		CRASH("Invalid text supplied to proc save_map, invalid characters or empty string.")
@@ -19,11 +42,11 @@
 	if(fexists(map_path))
 		fdel(map_path)
 	var/saved_map = wrap_file(map_path)
-	var/map_text = write_map(t1, t2, flags, saved_map)
+	var/map_text = write_map(t1, t2, flags, included_tiles)
 	saved_map << map_text
 	return saved_map
 
-/datum/dmm_suite/proc/write_map(turf/t1, turf/t2, flags = 0)
+/datum/dmm_suite/proc/write_map(turf/t1, turf/t2, flags = 0, list/included_tiles = null)
 	// Check for valid turfs.
 	if(!isturf(t1) || !isturf(t2))
 		CRASH("Invalid arguments supplied to proc write_map, arguments were not turfs.")
@@ -44,7 +67,26 @@
 		for(var/pos_y in ne.y to sw.y step -1) // We're reversing this because the map format is silly
 			for(var/pos_x in sw.x to ne.x)
 				var/turf/test_turf = locate(pos_x, pos_y, pos_z)
-				var/test_template = make_template(test_turf, flags)
+				var/test_template
+				// `included_tiles` is an optional associative set (turf =
+				// TRUE) coming from the new area/point selection in
+				// buildmode's Save mode - lets a selection have "holes"
+				// (e.g. the inside of a donut-shaped ship) without those
+				// holes' actual contents ending up in the file.
+				//
+				// The .dmm grid format is positional - every coordinate in
+				// the bounds needs SOME entry, or every following column in
+				// the row shifts. /turf/template_noop and
+				// /area/template_noop are the existing "don't touch this
+				// tile at all on load" markers the reader already
+				// recognises (see instance_atom()/parse_grid() in
+				// reader.dm) - using them for excluded tiles means Load
+				// leaves whatever's already there completely alone,
+				// instead of overwriting it with blank space.
+				if(included_tiles && !included_tiles[test_turf])
+					test_template = "/turf/template_noop,/area/template_noop"
+				else
+					test_template = make_template(test_turf, flags)
 				var/template_number = templates.Find(test_template)
 				if(!template_number)
 					templates.Add(test_template)
@@ -155,7 +197,6 @@
 	return template
 
 /datum/dmm_suite/proc/check_attributes(atom/A, use_json = FALSE)
-	var/attributes_text = "{"
 	var/list/attributes = list()
 	if(!use_json)
 		for(var/V in A.vars)
@@ -163,7 +204,18 @@
 			if((!issaved(A.vars[V])) || (A.vars[V] == initial(A.vars[V])))
 				continue
 
-			attributes += var_to_dmm(A.vars[V], V)
+			// `var_to_dmm` returns "" (or null) for types it can't serialize into
+			// DM literal syntax (lists, datum refs, etc). List vars in particular
+			// will ALWAYS look "changed from initial" because list equality in DM
+			// is by-reference, not by-content - so this branch gets hit constantly.
+			// If we don't filter here, an empty string ends up in `attributes`,
+			// and `jointext(attributes, "; ")` turns that into a blank entry like
+			// "{; dir = 4}" - a variable with an empty name, which the reader
+			// can't parse and runtimes/crashes on load ("Undefined variable .../var/").
+			var/entry = var_to_dmm(A.vars[V], V)
+			if(!entry)
+				continue
+			attributes += entry
 	else
 		var/list/to_encode = A.serialize()
 		// We'll want to write out vars that are important to the editor
@@ -173,24 +225,67 @@
 			// json-encoded maps are legible for standard editors
 			if(A.vars[T] != initial(A.vars[T]))
 				to_encode -= T
-				attributes += var_to_dmm(A.vars[T], T)
+				var/entry = var_to_dmm(A.vars[T], T)
+				if(!entry)
+					continue
+				attributes += entry
 
 		// Remove useless info
 		to_encode -= "type"
 		if(length(to_encode))
 			var/json_stuff = json_encode(to_encode)
-			attributes += var_to_dmm(json_stuff, "map_json_data")
+			// json_encode() escapes any non-ASCII character (Cyrillic names,
+			// etc) as a \uXXXX sequence - but BYOND's own json_decode()
+			// doesn't actually parse \uXXXX escapes back (confirmed via
+			// runtime: "json_decode error: Expected comma or } at
+			// character N" landing exactly inside a \uXXXX sequence for a
+			// Cyrillic ID card owner name). The engine's own encoder and
+			// decoder don't agree with each other on this. Convert \uXXXX
+			// back to the real UTF-8 character right here - BYOND handles
+			// raw UTF-8 text in strings (and in json_decode()) just fine,
+			// it's specifically the escape-sequence FORM it can't read back.
+			json_stuff = unescape_json_unicode(json_stuff)
+			// dmm_encode() (called inside var_to_dmm below) only escapes
+			// quotes and curly braces - it does NOT touch square brackets.
+			// But an unescaped '[' inside a DM string literal starts an
+			// embedded expression (string interpolation), and json_encode()
+			// always emits raw '[' / ']' for JSON arrays. The fast Rust
+			// "spacemandmm" reader parses that literally as DM code and
+			// chokes on it ("got '?', expected one of: operator, term, ']'"
+			// as soon as it hits the next #?xxx; token). Escape brackets
+			// here with the same placeholder style dmm_encode already uses;
+			// reversed in reader.dm right after dmm_decode(), before
+			// json_decode().
+			json_stuff = replacetext(json_stuff, "\[", "#?lsb;")
+			json_stuff = replacetext(json_stuff, "\]", "#?rsb;")
+			var/entry = var_to_dmm(json_stuff, "map_json_data")
+			if(entry)
+				attributes += entry
+
+	// Turf decals (/obj/effect/turf_decal) self-delete right after
+	// Initialize() - by the time Save runs, there's nothing left in the
+	// turf's contents to capture, only the (invisible to us) element they
+	// registered. The turf remembers what was painted onto it in
+	// decal_save_list (see turf_decal.dm) - encode that here as its own
+	// JSON attribute, independent of `use_json`, since it's list-shaped
+	// data a plain var=value entry can't express either way.
+	if(isturf(A))
+		var/turf/T = A
+		if(length(T.decal_save_list))
+			var/decal_json = json_encode(T.decal_save_list)
+			// Same bracket-escaping reasoning as map_json_data above - a
+			// JSON array's raw '[' / ']' would otherwise be misread as a DM
+			// embedded expression by the strict rust map parser.
+			decal_json = replacetext(decal_json, "\[", "#?lsb;")
+			decal_json = replacetext(decal_json, "\]", "#?rsb;")
+			var/entry = var_to_dmm(decal_json, "saved_decals")
+			if(entry)
+				attributes += entry
 
 	if(length(attributes) == 0)
 		return
 
-	// Trim a trailing semicolon - `var_to_dmm` always appends a semicolon,
-	// so the last one will be trailing.
-	if(copytext(attributes_text, length(attributes_text) - 1, 0) == "; ")
-		attributes_text = copytext(attributes_text, 1, length(attributes_text) - 1)
-
-	attributes_text = "{[jointext(attributes,"; ")]}"
-	return attributes_text
+	return "{[jointext(attributes,"; ")]}"
 
 /datum/dmm_suite/proc/get_model_key(which, key_length)
 	var/list/key = list()

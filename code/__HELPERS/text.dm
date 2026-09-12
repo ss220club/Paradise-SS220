@@ -402,26 +402,44 @@
 /proc/dmm_encode(text)
 	// First, go through and nix out any of our escape sequences so we don't leave ourselves open to some escape sequence attack
 	// Some coder will probably despise me for this, years down the line
-
+	// // SS220 EDIT START
+	// Previously this (and the replacement loop below) used a hand-rolled
+	// findtext()+copytext() loop, slicing out and rebuilding the string one
+	// match at a time. That's a classic source of byte-vs-character offset
+	// drift on multi-byte UTF-8 text (Cyrillic, etc): if findtext() and
+	// copytext() don't agree on what an "index" means for text past the
+	// ASCII range, each replacement made before reaching a multi-byte
+	// character silently drifts the offset a little further, and by the
+	// time the loop reaches actual multi-byte content the slice can land
+	// mid-character and corrupt (or truncate, since DM's string handling
+	// tends to stop cold on invalid UTF-8) everything after it - which is
+	// exactly what was happening to Cyrillic ID card owner names.
+	// replacetext() is DM's built-in, UTF-8-safe string replacement and has
+	// held up all session for the '[' / ']' fix with no similar corruption
+	// reported anywhere - delegate to it instead of hand-rolling the same
+	// job again.
+	//
+	// NOTE: '#?lsb;' / '#?rsb;' (the '[' / ']' placeholders used for
+	// map_json_data / saved_decals) do NOT belong in the list below.
+	// writer.dm inserts them into the text BEFORE calling var_to_dmm() (and
+	// therefore before this proc runs), specifically relying on dmm_encode
+	// leaving them alone untouched. Adding them here as "cheese prevention"
+	// makes this proc nuke its own caller's valid escaping into '_' -
+	// exactly what broke saved_decals right after that "improvement" was
+	// made.
+	// SS220 EDIT END
 	var/list/repl_chars = list("#?qt;", "#?lbr;", "#?rbr;")
 	for(var/char in repl_chars)
-		var/index = findtext(text, char)
-		var/keylength = length(char)
-		while(index)
+		if(findtext(text, char)) // SS220 EDIT
 			stack_trace("Bad string given to dmm encoder! [text]")
 			// Replace w/ underscore to prevent "&#3&#123;4;" from cheesing the radar
 			// Should probably also use canon text replacing procs
-			text = copytext(text, 1, index) + "_" + copytext(text, index+keylength)
-			index = findtext(text, char)
+			text = replacetext(text, char, "_") // SS220 EDIT
 
 	// Then, replace characters as normal
 	var/list/repl_chars_2 = list("\"" = "#?qt;", "{" = "#?lbr;", "}" = "#?rbr;")
 	for(var/char in repl_chars_2)
-		var/index = findtext(text, char)
-		var/keylength = length(char)
-		while(index)
-			text = copytext(text, 1, index) + repl_chars_2[char] + copytext(text, index+keylength)
-			index = findtext(text, char)
+		text = replacetext(text, char, repl_chars_2[char]) // SS220 EDIT
 	return text
 
 
@@ -429,11 +447,7 @@
 	// Replace what we extracted above
 	var/list/repl_chars = list("#?qt;" = "\"", "#?lbr;" = "{", "#?rbr;" = "}")
 	for(var/char in repl_chars)
-		var/index = findtext(text, char)
-		var/keylength = length(char)
-		while(index)
-			text = copytext(text, 1, index) + repl_chars[char] + copytext(text, index+keylength)
-			index = findtext(text, char)
+		text = replacetext(text, char, repl_chars[char])// SS220 EDIT
 	return text
 
 //Checks if any of a given list of needles is in the haystack

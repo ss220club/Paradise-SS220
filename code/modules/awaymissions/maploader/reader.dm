@@ -162,10 +162,22 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 			CHECK_TICK
 	catch(var/exception/e)
 		GLOB._preloader.reset()
+		// SS220 EDIT START
+		// `dmmRegex` is `static` - shared across every load_map() call in the
+		// whole codebase (see dmm_suite.dm). Throwing out of the middle of
+		// the `while(dmmRegex.Find(...))` loop above (rather than letting a
+		// Find() call finish and advance cleanly) can leave its internal
+		// match state stuck mid-search. The very next, unrelated load_map()
+		// call then reuses that same corrupted regex object and can silently
+		// skip/mismatch model definitions - this is exactly the
+		// "Coords before model definition in DMM" failure seen on a second
+		// load attempt right after a first one that threw. Recreate it so
+		// the next call starts clean.
+		dmmRegex = new/regex({""(\[a-zA-Z]+)" = \\(((?:.|\n)*?)\\)\n(?!\t)|\\((\\d+),(\\d+),(\\d+)\\) = \\{"(\[a-zA-Z\n]*)"\\}"}, "g")
+		// SS220 EDIT END
 		throw e
 
 	GLOB._preloader.reset()
-	qdel(LM)
 	if(bounds[MAP_MINX] == 1.#INF) // Shouldn't need to check every item
 		CRASH("Bad Map bounds in [fname], Min x: [bounds[MAP_MINX]], Min y: [bounds[MAP_MINY]], Min z: [bounds[MAP_MINZ]], Max x: [bounds[MAP_MAXX]], Max y: [bounds[MAP_MAXY]], Max z: [bounds[MAP_MAXZ]]")
 	else
@@ -178,6 +190,39 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 				// we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
 				T.AfterChange(TRUE, keep_cabling = TRUE)
 				CHECK_TICK
+			// SS220 EDIT START
+			// Newly loaded/changed turfs routinely come out with no
+			// lighting_corner_NE/SE/SW/NW and lighting_object stuck in a
+			// stale state (confirmed via VV: all four corners null,
+			// lighting_corners_initialised FALSE) - always pitch dark until
+			// an admin manually edits the containing area's dynamic_lighting
+			// var via VV (which only works because /area/vv_edit_var()
+			// routes that specific edit through set_dynamic_lighting(),
+			// which rebuilds lighting for every turf in the area - but only
+			// actually does anything when the new value differs from the
+			// current one, hence needing two edits, e.g. 2->1->2). Do the
+			// same two-step toggle here in code, for every area this load
+			// touched, now that all of the map's turfs have actually been
+			// assigned to their areas (doing this earlier, e.g. right when
+			// each area gets created, would only see whichever handful of
+			// turfs happened to be assigned so far).
+			//
+			// Gated on SSlighting.initialized for the same reason as the
+			// generate_missing_corners() call above - touching lighting
+			// before SSlighting's own one-time startup scan has run risks
+			// colliding with it later.
+			if(SSlighting.initialized)
+				for(var/area_path in LM.area_list)
+					var/area/A = LM.area_list[area_path]
+					if(!A)
+						continue
+					var/original_lighting = A.dynamic_lighting
+					var/other_lighting = (original_lighting == DYNAMIC_LIGHTING_DISABLED) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
+					A.set_dynamic_lighting(other_lighting)
+					A.set_dynamic_lighting(original_lighting)
+					CHECK_TICK
+		qdel(LM)
+		// SS220 EDIT END
 		return bounds
 
 /**
@@ -330,13 +375,54 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 		if(ispath(path, /turf))
 			T.ChangeTurf(path, defer_change = TRUE, keep_icon = FALSE, copy_existing_baseturf = FALSE)
 			instance = T
+			// SS220 EDIT START
+			// Confirmed via VV on a freshly-loaded dark tile: all four
+			// lighting_corner_NE/SE/SW/NW were null and
+			// lighting_corners_initialised was FALSE. Corners are supposed to
+			// get lazily created by generate_missing_corners() whenever a
+			// light source comes into view (lighting_source.dm), but that
+			// isn't happening here for whatever reason (possibly turfs from
+			// this loader being considered opaque, or something else upstream
+			// we haven't chased down) - a real flashlight in the room never
+			// fixed it. generate_missing_corners() is idempotent (checks each
+			// corner before creating it) and is exactly the proc responsible
+			// for fixing this exact state, so just call it directly rather
+			// than relying on it happening on its own.
+			//
+			// MUST be gated on SSlighting.initialized: if some map gets
+			// loaded through us before SSlighting's own one-time startup
+			// scan (create_all_lighting_objects(), which walks every turf
+			// in the world once) has run, this call jumps the gun and
+			// creates a lighting_object early - then SSlighting's own scan
+			// hits that same turf later and finds one already there
+			// ("a lighting object was assigned to a turf that already had
+			// a lighting object!"), exactly what broke the CI test run at
+			// server boot. Skip entirely until SSlighting has done its own
+			// setup - same guard already used nearby in ChangeTurf().
+			if(SSlighting.initialized)
+				T.generate_missing_corners()
+				// SS220 EDIT END
 		else
 			// Anything that isnt an area, init!
 			if(!ispath(path, /area))
 				instance = new path(T) // first preloader pass
 
 	if(GLOB.use_preloader && instance) // second preloader pass, for those atoms that don't ..() in New()
-		GLOB._preloader.load(instance)
+		// SS220 EDIT START
+		// A single bad atom's saved data (e.g. corrupt/incompatible
+		// deserialize() data) used to be able to throw an exception all the
+		// way up through the whole load_map() loop, silently aborting the
+		// ENTIRE rest of the map load - every turf/obj/decal after the bad
+		// one in iteration order would simply never get instantiated. That's
+		// the "only half the map's decals loaded" symptom. Isolate each
+		// atom's preloader pass instead: log and move on to the next atom,
+		// don't let one bad object take the whole map down with it.
+		try // SS220 EDIT START
+			GLOB._preloader.load(instance)
+		catch(var/exception/e) // SS220 EDIT END
+			stack_trace("Failed to apply preloaded data to [instance] ([path]) at ([x],[y],[z]): [e]")
+			GLOB._preloader.reset()
+			// SS220 EDIT END
 
 	return instance
 
@@ -451,23 +537,115 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 		if("map_json_data" in the_attributes)
 			json_ready = 1
 		GLOB.use_preloader = TRUE
-		attributes = the_attributes
+		// SS220 EDIT START
+		// `the_attributes` is not a private, per-instance list - parse_grid()
+		// caches parsed model attribute lists in the `static` (server-lifetime,
+		// shared across every load, not just this one) modelCache and hands
+		// out the SAME list object to every atom that uses that model, here
+		// and in every future load that happens to reuse the same model text.
+		// load() below mutates this list in place (`attributes -= "..."`,
+		// which modifies a DM list in place rather than returning a copy) to
+		// strip out keys it's already consumed (map_json_data, saved_decals).
+		// Without copying here, the FIRST atom to use a given model
+		// permanently strips those keys from the shared cached list -
+		// corrupting every other atom (this load or a future one) that
+		// reuses the same model. Copy so mutations stay local to this atom.
+		attributes = the_attributes.Copy()
+		// SS220 EDIT END
 		target_path = path
 
 /datum/dmm_suite/preloader/proc/load(atom/A)
 	if(json_ready)
 		var/json_data = dmm_decode(attributes["map_json_data"])
+		// SS220 EDIT START
+		// Reverse the bracket-escaping done in writer.dm's check_attributes()
+		// before handing this off to json_decode() - see the comment there
+		// for why '[' / ']' need separate handling from dmm_encode/dmm_decode.
+		json_data = replacetext(json_data, "#?lsb;", "\[")
+		json_data = replacetext(json_data, "#?rsb;", "\]")
+		// SS220 EDIT END
 		attributes -= "map_json_data"
 		try
 			A.deserialize(json_decode(json_data))
 		catch(var/exception/E)
-			stack_trace("Bad json data: '[json_data]'")
+			stack_trace("Bad json data on [A] ([A.type]): '[json_data]' -- exception: [E] (file: [E.file], line: [E.line])") // SS220 EDIT
 			throw E
+	// SS220 EDIT START
+	var/decal_json
+	if("saved_decals" in attributes)
+		decal_json = dmm_decode(attributes["saved_decals"])
+		decal_json = replacetext(decal_json, "#?lsb;", "\[")
+		decal_json = replacetext(decal_json, "#?rsb;", "\]")
+		attributes -= "saved_decals"
+	// SS220 EDIT END
 	for(var/attribute in attributes)
 		var/value = attributes[attribute]
 		if(islist(value))
 			value = deepCopyList(value)
 		A.vars[attribute] = value
+	// SS220 EDIT START
+	// Turf decals aren't a real var on the turf - "saved_decals" would just
+	// get silently dumped into A.vars[] as junk (or error) by the loop
+	// above, so it's pulled out separately and handled here instead.
+	//
+	// Dir used to be passed as the SECOND constructor arg
+	// (`new decal_type(T, decal_entry["dir"])`), relying on it reaching
+	// /obj/effect/turf_decal/Initialize()'s `_dir` parameter - exactly the
+	// same fragile path that lost `master_item` for nested
+	// /obj/item/storage/internal atoms (see persistence.dm / internal.dm):
+	// under deferred/batched atom init, extra constructor args beyond
+	// `loc` don't reliably survive to Initialize(). When `_dir` arrives
+	// null, Initialize() fell back to the atom's own freshly-defaulted
+	// `dir` (SOUTH) - every decal collapsed to the same rotation regardless
+	// of what was actually saved.
+	//
+	// Setting `.dir` on the returned reference right after new() doesn't
+	// work either: if Initialize() happens to run immediately (rather than
+	// deferred), it's already read `_dir || dir` and self-deleted
+	// (INITIALIZE_HINT_QDEL) before control even returns here - too late
+	// either way.
+	//
+	// `loc` is the one thing that survives regardless of deferred timing
+	// (see the master_item fix), so queue the intended dir on the turf
+	// itself and have Initialize() consume it from there instead of from
+	// its own constructor arg - see turf_decal.dm. FIFO order matches
+	// creation order for this batch (each decal is queued immediately
+	// before its own new() call, in order).
+	if(decal_json)
+		var/turf/T = A
+		if(istype(T))
+			// Defensive reset: whatever's currently in decal_save_list (and
+			// any leftover pending_decal_dirs from an interrupted previous
+			// attempt) gets thrown away before spawning this batch fresh.
+			// Without this, stale/duplicate entries can accumulate across
+			// successive loads onto the same turf - each extra stale entry
+			// throws off the FIFO pairing between newly-queued dirs and the
+			// decals actually being (re)spawned right now, which is a
+			// plausible source of both "decals keep coming back with the
+			// wrong rotation" and "fewer and fewer decals survive each
+			// generation".
+			T.decal_save_list = null
+			// Must be list(), NOT null: `null += <number>` in DM does
+			// ARITHMETIC (null treated as 0), not list append - only
+			// `null += <list>` promotes null to a list. decal_save_list
+			// above is fine because its RHS is always a list; this one's
+			// RHS is a bare number (decal_entry["dir"]), which silently
+			// summed all the queued dirs together into a single number
+			// instead of building a list - length() on that number then
+			// read as 0, so the queue always looked empty and every decal
+			// fell through to the default SOUTH fallback. This was the
+			// actual cause of "decals reset to base rotation".
+			T.pending_decal_dirs = list()
+			try
+				var/list/decals = json_decode(decal_json)
+				for(var/list/decal_entry in decals)
+					var/decal_type = text2path(decal_entry["type"])
+					if(decal_type)
+						T.pending_decal_dirs += decal_entry["dir"]
+						new decal_type(T)
+			catch(var/exception/E)
+				stack_trace("Bad saved_decals data: '[decal_json]' ([E])")
+// SS220 EDIT END
 	GLOB.use_preloader = FALSE
 
 // If the map loader fails, make this safe
@@ -489,11 +667,14 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 		throw EXCEPTION("Wrong argument to `area_path_to_real_area`")
 
 	if(!(A in area_list))
+		var/area/newly_created // SS220 EDIT
 		if(initial(A.there_can_be_many))
-			area_list[A] = new A
+			newly_created = new A // SS220 EDIT START
+			area_list[A] = newly_created // SS220 EDIT END
 		else
 			if(!GLOB.all_unique_areas[A])
-				GLOB.all_unique_areas[A] = new A // No locate here else it will find a subtype of the one we're looking for
+				newly_created = new A // No locate here else it will find a subtype of the one we're looking for // SS220 EDIT START
+				GLOB.all_unique_areas[A] = newly_created // SS220 EDIT END
 			area_list[A] = GLOB.all_unique_areas[A]
 
 	return area_list[A]

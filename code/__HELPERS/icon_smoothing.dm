@@ -65,7 +65,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 		else { \
 			if(!isnull(neighbor.smoothing_groups)) { \
 				for(var/target in source.canSmoothWith) { \
-					if(!(source.canSmoothWith[target] & neighbor.smoothing_groups[target])) { \
+					if(!(target in neighbor.smoothing_groups) || !(source.canSmoothWith[target] & neighbor.smoothing_groups[target])) { /* SS220 EDIT */\
 						continue; \
 					}; \
 					junction |= direction_flag; \
@@ -78,7 +78,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 						continue; \
 					}; \
 					for(var/target in source.canSmoothWith) { \
-						if(!(source.canSmoothWith[target] & thing.smoothing_groups[target])) { \
+						if(!(target in thing.smoothing_groups) || !(source.canSmoothWith[target] & thing.smoothing_groups[target])) { /* SS220 EDIT */\
 							continue; \
 						}; \
 						junction |= direction_flag; \
@@ -282,7 +282,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 
 	if(!isnull(target_turf.smoothing_groups))
 		for(var/target in canSmoothWith)
-			if(!(canSmoothWith[target] & target_turf.smoothing_groups[target]))
+			if(!(target in target_turf.smoothing_groups) || !(canSmoothWith[target] & target_turf.smoothing_groups[target])) // SS220 EDIT
 				continue
 			return ADJ_FOUND
 
@@ -292,7 +292,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 			if(!thing.anchored || isnull(thing.smoothing_groups))
 				continue
 			for(var/target in canSmoothWith)
-				if(!(canSmoothWith[target] & thing.smoothing_groups[target]))
+				if(!(target in thing.smoothing_groups) || !(canSmoothWith[target] & thing.smoothing_groups[target])) // SS220 EDIT
 					continue
 				return ADJ_FOUND
 

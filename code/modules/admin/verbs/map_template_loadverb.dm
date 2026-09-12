@@ -37,8 +37,28 @@ USER_VERB(map_template_upload, R_DEBUG, "Map Template - Upload", "Map Template -
 
 	var/timer = start_watch()
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(client)] has begun uploading a map template ([map])"))
-	var/datum/map_template/M = new(map=map, rename="[map]")
-	if(M.preload_size(map))
+	// SS220 EDIT START
+	// `map` here is a transient /file handle backed by the browser's upload
+	// (rsc cache), not a real on-disk path. Reading it repeatedly (which
+	// happens every time this template gets Lazy Loaded afterwards) is
+	// unreliable - the first read can be fine, but later reads on the same
+	// round return truncated or empty content (empty containers, or a fully
+	// empty map_data string -> "Bad Map bounds" in reader.dm). Persist it to
+	// a real file on disk immediately and load everything from there instead.
+	var/upload_dir = "data/uploaded_maps/"
+	if(!fexists(upload_dir))
+		fdel(upload_dir) // clears out any stray non-directory file at that path
+	var/dest_path = "[upload_dir][time2text(world.realtime, "YYYY-MM-DD_hh-mm-ss")]_[map]"
+	fcopy(map, dest_path)
+	if(!fexists(dest_path))
+		to_chat(client, "Map template '[map]' failed to save to disk")
+		return
+
+	// New(path=...) already calls preload_size() internally and fills in
+	// width/height - a second explicit call here would just re-read the
+	// file for nothing.
+	var/datum/map_template/M = new(path=dest_path, rename="[map]")
+	if(M.width && M.height) // SS220 EDIT END
 		to_chat(client, "Map template '[map]' ready to place ([M.width]x[M.height])")
 		GLOB.map_templates[M.name] = M
 		message_admins(SPAN_ADMINNOTICE("[key_name_admin(client)] has uploaded a map template ([map]). Took [stop_watch(timer)]s."))

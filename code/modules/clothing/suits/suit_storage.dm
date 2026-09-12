@@ -4,10 +4,26 @@
 
 /obj/item/clothing/suit/storage/Initialize(mapload)
 	. = ..()
-	pockets = new pockets(src, src)
-	pockets.storage_slots = 2	//two slots
-	pockets.max_w_class = WEIGHT_CLASS_SMALL		//fit only pocket sized items
-	pockets.max_combined_w_class = 4
+	// SS220 EDIT START
+	// `deserialize()` (see below) and `Initialize()` race against each
+	// other during map load - which one runs first is not consistent
+	// between spawns (deferred vs immediate atom init). If deserialize()
+	// already ran and replaced `pockets` with a real, loaded instance, do
+	// NOT blindly recreate it here:
+	// - `new pockets(...)` would throw ("new() called with an object of
+	//   type ... instead of the type path itself"), since `pockets` is no
+	//   longer a type path at that point.
+	// - Even if it didn't throw, it would silently orphan the already-
+	//   loaded pockets (with its real, saved contents) inside src.contents,
+	//   while a second, fresh, empty pockets took over the `pockets` var -
+	//   which is exactly the "duplicated inventory" symptom (both the
+	//   orphaned and the fresh one ending up populated/visible).
+	if(!istype(pockets))
+		// SS220 EDIT END
+		pockets = new pockets(src, src)
+		pockets.storage_slots = 2	//two slots
+		pockets.max_w_class = WEIGHT_CLASS_SMALL		//fit only pocket sized items
+		pockets.max_combined_w_class = 4
 	ADD_TRAIT(src, TRAIT_ADJACENCY_TRANSPARENT, ROUNDSTART_TRAIT)
 
 /obj/item/clothing/suit/storage/Destroy()
@@ -86,5 +102,17 @@
 	return data
 
 /obj/item/clothing/suit/storage/deserialize(list/data)
-	qdel(pockets)
+	// SS220 EDIT START
+	// `pockets` starts out as a raw type-path literal (see the var
+	// declaration above) and only becomes an actual instance in
+	// Initialize(). Atom init for mapload'ed atoms is deferred (see the
+	// "freeze on initialization until the map's done loading" comment in
+	// map_template.dm) - so deserialize() runs BEFORE Initialize() has had
+	// a chance to create the real `pockets` object. qdel()'ing a bare
+	// type-path instead of a datum reference throws a runtime, which the
+	// map loader's broad try/catch around deserialize() then misreports as
+	// "Bad json data". Only qdel an actual instance.
+	if(!ispath(pockets))
+		// SS220 EDIT END
+		qdel(pockets)
 	pockets = list_to_object(data["pockets"], src)

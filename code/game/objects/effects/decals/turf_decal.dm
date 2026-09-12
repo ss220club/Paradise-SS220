@@ -10,10 +10,17 @@
 	..()
 	. = INITIALIZE_HINT_QDEL
 	var/turf/T = loc
-	if(!istype(T)) //you know this will happen somehow
+	if(!istype(T)) // SS220 EDIT
 		CRASH("Turf decal initialized in an object/nullspace")
 
-	T.AddElement(/datum/element/decal, icon, icon_state, _dir || dir, layer, alpha, color, FALSE, decal_description)
+	var/final_dir = _dir || dir // SS220 EDIT START
+	if(length(T.pending_decal_dirs))
+		final_dir = T.pending_decal_dirs[1]
+		T.pending_decal_dirs.Cut(1, 2)
+
+	T.decal_save_list += list(list("type" = "[type]", "dir" = final_dir))
+	T.AddElement(/datum/element/decal, icon, icon_state, final_dir, layer, alpha, color, FALSE, decal_description)
+	// SS220 EDIT END
 
 /obj/effect/turf_decal/trimline
 	icon = 'icons/turf/trimline.dmi'

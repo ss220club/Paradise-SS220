@@ -38,9 +38,19 @@
 	var/parent_stack = FALSE
 	/// Whether this stack can be split into multiple independent stacks.
 	var/allow_splitting = TRUE
-	/// Whether this stack deletes itself when `amount` reaches 0. 
+	/// Whether this stack deletes itself when `amount` reaches 0.
 	var/destroy_upon_empty = TRUE
 
+// SS220 EDIT START
+// The base list (color/dir/icon/icon_state/name/pixel_x/pixel_y) doesn't
+// include `amount` - in JSON save mode (the default) that meant `amount`
+// never made it into the saved data at all, and always came back as
+// whatever the type's compile-time default is (e.g. a full 30-length coil,
+// regardless of how much was actually left when saved).
+/obj/item/stack/vars_to_save()
+	. = ..()
+	. += "amount"
+// SS220 EDIT END
 /obj/item/stack/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src))

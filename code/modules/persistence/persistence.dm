@@ -82,10 +82,38 @@ in their list
 	// we need to pass loc twice for organs, otherwise
 	// they'll never attach to the mob. But if it's passed
 	// for everything, it'll break shit cause it gets passed random args.
+	//
+	// SS220 EDIT START
+	// /obj/item/storage/internal has the exact same situation:
+	// Initialize(mapload, obj/item/MI) also eats the first arg as mapload,
+	// and needs a second, non-null arg for MI (master_item) - without it,
+	// master_item stays null, `loc = master_item` sends the object to
+	// nullspace instead of its intended container, and reading
+	// master_item.name right after throws ("Cannot read null.name").
+	// SS220 EDIT END
 	var/atom/movable/thing
-	if(ispath(path, /obj/item/organ))
+	// SS220 EDIT START
+	// Nested atoms (e.g. items inside a saved storage/box's "content" list)
+	// get created HERE, recursively, from inside the OUTER atom's own
+	// still-in-progress deserialize()/load() - meaning GLOB.use_preloader
+	// can still be TRUE at this point, left over from the outer atom's own
+	// preloader pass. The maploader's preloader is explicitly documented
+	// as "not re-entrant" (see /datum/dmm_suite/preloader in reader.dm) -
+	// if this nested atom's own New()/Initialize() chain also consults
+	// GLOB.use_preloader / GLOB._preloader, it can pick up stale state
+	// meant for the outer atom, corrupting its own init (this is the
+	// suspected source of "Cannot read null.name" on nested storage/
+	// internal atoms, and possibly of duplicated contents). Suspend the
+	// flag around nested construction so it behaves like an ordinary,
+	// non-preloaded spawn; deserialize() below still applies the real
+	// saved data for this nested atom explicitly, so nothing is lost.
+	var/prev_use_preloader = GLOB.use_preloader
+	GLOB.use_preloader = FALSE
+	if(ispath(path, /obj/item/organ) || ispath(path, /obj/item/storage/internal)) // SS220 EDIT END
 		thing = new path(loc, loc)
 	else
 		thing = new path(loc)
-	thing.deserialize(data)
+	GLOB.use_preloader = prev_use_preloader // SS220 EDIT START
+	if(thing) // SS220 EDIT END
+		thing.deserialize(data)
 	return thing
