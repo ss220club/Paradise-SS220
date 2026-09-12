@@ -859,7 +859,12 @@ to destroy them and players will be able to make replacements.
 	board_name = "Soda Machine"
 	icon_state = "service"
 	build_path = /obj/machinery/chem_dispenser/soda
-
+//SS220 EVENT
+/obj/item/circuitboard/chem_dispenser/frost
+	board_name = "Frost Machine"
+	icon_state = "service"
+	build_path = /obj/machinery/chem_dispenser/frost
+//SS220 EVENT
 /obj/item/circuitboard/chem_dispenser/beer
 	board_name = "Beer Machine"
 	icon_state = "service"

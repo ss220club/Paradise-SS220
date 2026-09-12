@@ -374,6 +374,121 @@
 	//no special effects, but the explosion is pretty big (same as a supermatter shard).
 	explosion(loc, 3, 6, 12, 16, 1, cause = "Exploding [name]")
 	qdel(src)
+//SS220 EVENT
+/obj/machinery/power/port_gen/pacman/core
+	name = "T.H.E.G.E.N.E.R.A.T.O.R.C.O.R.E"
+	desc = "Ядро генератора, поглощающее плазму для генерации огромного количества тепла, способного обогревать даже самую ледяную пустошь."
+	icon_state = "portgen2_0"
+	base_icon = "portgen2"
+	sheet_path = /obj/item/stack/sheet/mineral/plasma
+	sheet_name = "Топливо"
+	var/generator_id
+	power_gen = 20000 // Генератор производит электричество по просьбе.
+	max_power_output = 6 // Уровень 6 является форсажем.
+	max_safe_output = 5 // Максимальный уровень безопасной работы.
+	time_per_sheet = 60 // Одна плазменная пластина на уровне мощности 1 работает 60 тиков.
+	max_sheets = 100 // Максимальная вместимость топлива.
+	max_temperature = 150 // Внутренняя температура генератора.
+	temperature_gain = 5
+	var/heating_power = 300000 // Количество тепла, производимого на первом уровне мощности
+	var/max_heating_temperature = 500  // Максимальная температура газа, которую способен создать генератор.
+	var/core_cooling = 8 // Более простой микроконтроль генератора
+	var/idle_temperature = 100 // Чтоб температура генератора не стала отрицательной
+
+/obj/machinery/power/port_gen/pacman/core/use_fuel()
+	var/needed_sheets = power_output / time_per_sheet  // Расход топлива.
+
+	if(needed_sheets > sheet_left)
+		sheets--
+		sheet_left = (1 + sheet_left) - needed_sheets
+	else
+		sheet_left -= needed_sheets
+
+	temperature += power_output * temperature_gain // Нагрев ядра.
+
+ // Внутреннее охлаждение.
+	if(temperature > idle_temperature)
+		temperature = max(
+		idle_temperature,
+		temperature - core_cooling
+	)
+
+	if(temperature > max_temperature)
+		overheat()
+	else if(overheating > 0)
+		overheating--
+// Для работы генератору не требуется powernet,
+// поскольку он производит тепло, а не электричество.
+/obj/machinery/power/port_gen/pacman/core/process()
+	if(anchored && active && has_fuel() && !is_broken())
+		var/datum/milla_safe/generator_core_process/milla = new()
+		milla.invoke_async(src)
+		use_fuel()
+		return
+
+	active = FALSE
+	handle_inactive()
+	update_icon()
+
+/datum/milla_safe/generator_core_process
+
+/datum/milla_safe/generator_core_process/on_run(obj/machinery/power/port_gen/pacman/core/generator)
+	if(!generator || !generator.active || generator.is_broken())
+		return
+	var/turf/simulated/L = get_turf(generator)
+	if(!istype(L))
+		return
+	var/datum/gas_mixture/env = get_turf_air(L)
+	if(!env)
+		return
+
+// Берём часть атмосферы тайла для обработки.
+	var/transfer_moles = 0.90 * env.total_moles()
+	if(transfer_moles <= 0)
+		return
+	var/datum/gas_mixture/removed = env.remove(transfer_moles)
+	if(!removed)
+		return
+	var/heat_capacity = removed.heat_capacity()
+
+	var/generated_heat = generator.heating_power
+
+	switch(generator.power_output)
+		if(1)
+			generated_heat *= 1
+		if(2)
+			generated_heat *= 3
+		if(3)
+			generated_heat *= 8
+		if(4)
+			generated_heat *= 12
+		if(5)
+			generated_heat *= 16
+		if(6)
+			generated_heat *= 24
+
+	var/new_temperature = removed.temperature() + (generated_heat / heat_capacity)
+
+	if(new_temperature > generator.max_heating_temperature)
+		new_temperature = generator.max_heating_temperature
+
+	removed.set_temperature(new_temperature)
+
+	env.merge(removed)
+
+/obj/machinery/power/port_gen/pacman/core/drop_fuel()
+// Загруженное топливо нельзя извлечь обратно.
+	return
+
+/obj/machinery/power/port_gen/pacman/core/examine(mob/user)
+	. = ..()
+
+	. += SPAN_NOTICE("The generator is configured to produce heat instead of electrical power.")
+
+	if(active)
+		. += SPAN_NOTICE("Current heating level: [power_output].")
+		. += SPAN_NOTICE("Current heat output: [heating_power * power_output].")
+//EVENT
 
 #undef SHEET_VOLUME
 #undef TEMPERATURE_DIVISOR
