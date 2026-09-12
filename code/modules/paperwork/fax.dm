@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)
 	var/list/reply_to = null
 
 /datum/fax/admin/New()
-	return
+	GLOB.adminfaxes += src
 
 USER_VERB(fax_panel, R_ADMIN, "Fax Panel", "Lets admins check all faxes sent during the round.", VERB_CATEGORY_EVENT)
 	if(client.holder)
