@@ -11923,25 +11923,13 @@
 	},
 /area/station/engineering/solar/aft_port)
 "aIM" = (
-/obj/structure/table/reinforced,
-/obj/item/ashtray/bronze{
-	pixel_x = -5;
-	pixel_y = -1
-	},
-/obj/item/storage/fancy/cigarettes/cigpack_uplift{
-	pixel_x = 9;
-	pixel_y = -2
-	},
-/obj/item/cigbutt{
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/obj/item/lighter/zippo/engraved{
-	pixel_x = -6;
-	pixel_y = 13
+/obj/machinery/power/apc/directional/south,
+/obj/structure/cable,
+/obj/structure/chair{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/engineering/gravitygenerator)
+/area/station/maintenance/storage)
 "aIN" = (
 /obj/machinery/atmospherics/unary/portables_connector{
 	dir = 8
@@ -20064,6 +20052,13 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/se)
+"bhj" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/meter,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "bho" = (
 /obj/machinery/door/airlock/silver{
 	name = "Bathroom";
@@ -21046,13 +21041,25 @@
 /turf/simulated/floor/plasteel,
 /area/station/science/robotics)
 "blj" = (
-/obj/machinery/power/apc/directional/south,
-/obj/structure/cable,
-/obj/structure/chair{
-	dir = 1
+/obj/structure/table/reinforced,
+/obj/item/ashtray/bronze{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_uplift{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/obj/item/cigbutt{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/lighter/zippo/engraved{
+	pixel_x = -6;
+	pixel_y = 13
 	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/engineering/gravitygenerator)
+/area/station/maintenance/storage)
 "blk" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -33763,11 +33770,6 @@
 "jug" = (
 /turf/simulated/wall/r_wall,
 /area/station/engineering/atmos/asteroid)
-"juj" = (
-/obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/recharge_station,
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/gravitygenerator)
 "juq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -34642,12 +34644,8 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/maintenance/aft)
 "kcu" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 4
-	},
-/obj/machinery/atmospherics/meter,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
+/turf/simulated/floor/plasteel/dark,
+/area/station/maintenance/storage)
 "kcw" = (
 /turf/simulated/wall/r_wall,
 /area/station/medical/virology/lab)
@@ -35538,6 +35536,15 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/dronefabricator)
+"kGn" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/mineral/stacking_machine{
+	input_dir = 1;
+	stack_amt = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel,
+/area/station/maintenance/disposal)
 "kGo" = (
 /obj/effect/turf_decal/tiles/department/cargo/corner{
 	dir = 1
@@ -35854,15 +35861,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/evidence)
-"kTf" = (
-/obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/mineral/stacking_machine{
-	input_dir = 1;
-	stack_amt = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
-/area/station/maintenance/disposal)
 "kTz" = (
 /obj/machinery/door/poddoor{
 	id_tag = "turbinevent";
@@ -37548,17 +37546,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
-"mgK" = (
-/obj/machinery/camera{
-	c_tag = "Gravity Generator Room";
-	network = list("SS13","Singularity","Engineering");
-	dir = 10
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/gravitygenerator)
 "mhD" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/head/welding,
@@ -48949,9 +48936,6 @@
 "tRa" = (
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
-"tRv" = (
-/turf/simulated/floor/plasteel/dark,
-/area/station/maintenance/storage)
 "tRD" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
@@ -49112,6 +49096,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/medbay)
+"tWm" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plasteel/dark,
+/area/station/maintenance/storage)
 "tWs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -54024,6 +54013,17 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
+"xhh" = (
+/obj/machinery/camera{
+	c_tag = "Gravity Generator Room";
+	network = list("SS13","Singularity","Engineering");
+	dir = 10
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/gravitygenerator)
 "xhl" = (
 /obj/structure/shelf/security,
 /obj/item/grenade/barrier{
@@ -74437,7 +74437,7 @@ aJT
 xPz
 ybk
 nWm
-jqQ
+nWm
 jqQ
 jqQ
 jqQ
@@ -74693,8 +74693,8 @@ xtL
 tgo
 msE
 imE
-tRv
-vEl
+kcu
+kcu
 kQu
 afn
 aWT
@@ -74939,7 +74939,7 @@ aCF
 oRf
 rus
 bIJ
-kcu
+bhj
 kBS
 ycy
 aKU
@@ -74951,12 +74951,12 @@ iIj
 ajX
 aHu
 meV
-juj
+tWm
 jqQ
 vEl
 vEl
 rpK
-mgK
+xhh
 jqQ
 azk
 bDd
@@ -75208,7 +75208,7 @@ vYd
 bOy
 aWM
 mzU
-blj
+aIM
 jqQ
 vEl
 aXe
@@ -75465,7 +75465,7 @@ tgo
 bzJ
 iqo
 blA
-aIM
+blj
 jqQ
 vEl
 vEl
@@ -98812,7 +98812,7 @@ aLL
 aLL
 aiC
 xTL
-kTf
+kGn
 ajv
 jBp
 aiC
