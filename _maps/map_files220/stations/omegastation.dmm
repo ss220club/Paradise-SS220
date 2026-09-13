@@ -20052,13 +20052,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/se)
-"bhj" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 4
-	},
-/obj/machinery/atmospherics/meter,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
 "bho" = (
 /obj/machinery/door/airlock/silver{
 	name = "Bathroom";
@@ -21040,26 +21033,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/robotics)
-"blj" = (
-/obj/structure/table/reinforced,
-/obj/item/ashtray/bronze{
-	pixel_x = -5;
-	pixel_y = -1
-	},
-/obj/item/storage/fancy/cigarettes/cigpack_uplift{
-	pixel_x = 9;
-	pixel_y = -2
-	},
-/obj/item/cigbutt{
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/obj/item/lighter/zippo/engraved{
-	pixel_x = -6;
-	pixel_y = 13
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/maintenance/storage)
 "blk" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -33925,6 +33898,26 @@
 /obj/effect/landmark/spawner/nukedisc_respawn,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/tech_storage)
+"jAE" = (
+/obj/structure/table/reinforced,
+/obj/item/ashtray/bronze{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_uplift{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/obj/item/cigbutt{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/lighter/zippo/engraved{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/maintenance/storage)
 "jBh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -37546,6 +37539,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
+"mgK" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/meter,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "mhD" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/head/welding,
@@ -48936,6 +48936,12 @@
 "tRa" = (
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
+"tRv" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/atmos)
 "tRD" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
@@ -49097,10 +49103,16 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/medbay)
 "tWm" = (
-/obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/recharge_station,
+/obj/machinery/camera{
+	c_tag = "Gravity Generator Room";
+	network = list("SS13","Singularity","Engineering");
+	dir = 10
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/maintenance/storage)
+/area/station/engineering/gravitygenerator)
 "tWs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -50757,7 +50769,6 @@
 	},
 /obj/machinery/light/small/directional/west,
 /obj/effect/spawner/random/trash,
-/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plating,
 /area/station/maintenance/disposal)
 "uWm" = (
@@ -54014,16 +54025,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "xhh" = (
-/obj/machinery/camera{
-	c_tag = "Gravity Generator Room";
-	network = list("SS13","Singularity","Engineering");
-	dir = 10
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
-	},
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plasteel/dark,
-/area/station/engineering/gravitygenerator)
+/area/station/maintenance/storage)
 "xhl" = (
 /obj/structure/shelf/security,
 /obj/item/grenade/barrier{
@@ -55949,12 +55954,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/xenobiology)
-"yhg" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 5
-	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
 "yhv" = (
 /obj/effect/mapping_helpers/turfs/rust/maybe,
 /turf/simulated/wall,
@@ -74682,7 +74681,7 @@ dCD
 ueG
 owo
 ttA
-yhg
+tRv
 iBs
 ujm
 bnS
@@ -74939,7 +74938,7 @@ aCF
 oRf
 rus
 bIJ
-bhj
+mgK
 kBS
 ycy
 aKU
@@ -74951,12 +74950,12 @@ iIj
 ajX
 aHu
 meV
-tWm
+xhh
 jqQ
 vEl
 vEl
 rpK
-xhh
+tWm
 jqQ
 azk
 bDd
@@ -75465,7 +75464,7 @@ tgo
 bzJ
 iqo
 blA
-blj
+jAE
 jqQ
 vEl
 vEl
