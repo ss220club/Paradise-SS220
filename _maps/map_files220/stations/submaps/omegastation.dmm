@@ -272,6 +272,7 @@
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 6
 	},
+/obj/effect/map_effect/dynamic_airlock,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "cN" = (
@@ -647,6 +648,7 @@
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 4
 	},
+/obj/effect/map_effect/dynamic_airlock,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "hj" = (
@@ -663,8 +665,6 @@
 	req_access = list(10)
 	},
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
@@ -1226,8 +1226,6 @@
 	req_access = list(10)
 	},
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
@@ -2212,22 +2210,15 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/machinery/door/airlock/external{
-	id_tag = "eng_n_tesla_door_int"
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/access_button{
-	autolink_id = "eng_n_tesla_btn_int";
-	pixel_y = -24;
-	req_access = list(10)
-	},
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/tiles/department/security,
+/obj/effect/map_effect/dynamic_airlock/door/interior,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/external,
+/obj/machinery/access_button/offset/southeast,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "wA" = (
@@ -3411,22 +3402,15 @@
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
 "JZ" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "eng_n_tesla_door_ext"
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/access_button{
-	autolink_id = "eng_n_tesla_btn_ext";
-	pixel_y = -24;
-	req_access = list(10)
-	},
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/tiles/department/security,
+/obj/effect/map_effect/dynamic_airlock/door/exterior,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/external,
+/obj/machinery/access_button/offset/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "Kd" = (
@@ -3618,15 +3602,6 @@
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/turbine)
 "LM" = (
-/obj/machinery/airlock_controller/air_cycler{
-	ext_button_link_id = "eng_n_tesla_btn_ext";
-	ext_door_link_id = "eng_n_tesla_door_ext";
-	int_button_link_id = "eng_n_tesla_btn_int";
-	int_door_link_id = "eng_n_tesla_door_int";
-	pixel_y = -25;
-	vent_link_id = "eng_n_tesla_vent";
-	req_access = list(10)
-	},
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
@@ -3636,6 +3611,9 @@
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 10
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/engine,
+/obj/effect/map_effect/dynamic_airlock,
+/obj/machinery/airlock_controller/air_cycler/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "LP" = (
@@ -4051,6 +4029,7 @@
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 9
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/engine,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "Pd" = (
@@ -4059,10 +4038,10 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/obj/effect/turf_decal/delivery/hollow,
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
+/obj/effect/turf_decal/delivery/white/hollow,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "Pk" = (
@@ -4411,6 +4390,7 @@
 /obj/effect/turf_decal/tiles/neutral/side{
 	dir = 8
 	},
+/obj/effect/map_effect/dynamic_airlock,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/control)
 "RV" = (
