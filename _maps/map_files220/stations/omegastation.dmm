@@ -11543,12 +11543,6 @@
 /turf/simulated/floor/engine/vacuum,
 /area/station/engineering/atmos)
 "aIi" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -11561,6 +11555,8 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "aIk" = (
@@ -15783,6 +15779,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "aTV" = (
@@ -36534,11 +36532,11 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/directional/north,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
 /obj/machinery/power/grounding_rod,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/secure_storage)
 "lur" = (
@@ -38653,6 +38651,9 @@
 	},
 /obj/machinery/power/grounding_rod,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/secure_storage)
 "mYf" = (
@@ -39373,10 +39374,8 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tiles/neutral,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/machinery/alarm/directional/north,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/secure_storage)
 "nBZ" = (
@@ -41431,6 +41430,8 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/secure_storage)
 "pfH" = (
@@ -45981,6 +45982,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "slf" = (
@@ -49951,8 +49954,12 @@
 	dir = 6
 	},
 /obj/effect/turf_decal/tiles/neutral,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/secure_storage)
@@ -55459,6 +55466,9 @@
 	dir = 10
 	},
 /obj/effect/turf_decal/tiles/neutral,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/secure_storage)
 "xTd" = (
