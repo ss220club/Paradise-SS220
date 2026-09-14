@@ -15225,8 +15225,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "brA" = (
-/obj/machinery/atmospherics/trinary/filter,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/trinary/filter{
+	on = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
 "brB" = (
@@ -95611,26 +95613,6 @@
 	},
 /turf/simulated/floor/wood/cherry,
 /area/station/service/hydroponics)
-"tbh" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/computer/general_air_control/large_tank_control{
-	dir = 4;
-	autolink_sensors = list("gas_mix_sensor");
-	inlet_injector_autolink_ids = list("gas_mix_in");
-	outlet_autolink_ids = list("gas_mix_outlet_scrubber");
-	name = "Gas Mix Tank Control"
-	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
 "tbo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -135401,7 +135383,7 @@ aOo
 aLf
 cdY
 uLB
-tbh
+bUj
 jtK
 rdE
 pPx
