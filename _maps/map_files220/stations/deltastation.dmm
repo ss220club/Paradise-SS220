@@ -15227,7 +15227,8 @@
 "brA" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/trinary/filter{
-	on = 1
+	on = 1;
+	filter_type = -1
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
@@ -57066,10 +57067,11 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/atmospherics/trinary/filter{
-	dir = 4
-	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/trinary/filter{
+	dir = 4;
+	filter_type = -1
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "hwF" = (
@@ -61939,7 +61941,8 @@
 "iVF" = (
 /obj/effect/turf_decal/tiles/neutral,
 /obj/machinery/atmospherics/trinary/filter{
-	dir = 4
+	dir = 4;
+	filter_type = -1
 	},
 /obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
@@ -85963,10 +85966,11 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/atmospherics/trinary/filter{
-	dir = 4
-	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/trinary/filter{
+	dir = 4;
+	filter_type = -1
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "qhx" = (
@@ -95613,6 +95617,15 @@
 	},
 /turf/simulated/floor/wood/cherry,
 /area/station/service/hydroponics)
+"tbh" = (
+/obj/effect/turf_decal/tiles/neutral,
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/trinary/filter{
+	dir = 4;
+	filter_type = -1
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/supermatter_room)
 "tbo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -137153,7 +137166,7 @@ bnK
 srk
 axl
 che
-iVF
+tbh
 axL
 ayM
 aBf
