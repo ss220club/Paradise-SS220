@@ -93,7 +93,7 @@
 	icon_state = "atmos"
 	area_icon_text = "ATMOS"
 	request_console_flags = RC_ASSIST | RC_SUPPLY
-	request_console_name = "Engineering"
+	request_console_name = "Atmospherics"
 
 /area/station/engineering/atmos/equipmentstorage
 	name = "Атмосферный Склад Снаряжения"
@@ -101,7 +101,7 @@
 	area_icon_text = "ATMOS\nLOCKER"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 	request_console_flags = RC_ASSIST | RC_SUPPLY
-	request_console_name = "Engineering"
+	request_console_name = "Atmospherics"
 
 /area/mine/outpost/smith_workshop
 	request_console_name = "Smith"
