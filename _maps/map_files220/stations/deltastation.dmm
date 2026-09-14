@@ -46689,12 +46689,15 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/virology/lab)
 "ejJ" = (
+/obj/machinery/atmospherics/binary/valve{
+	dir = 1;
+	name = "port to space"
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 10
 	},
-/obj/machinery/atmospherics/binary/valve,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
 "ekr" = (
@@ -61742,7 +61745,8 @@
 /area/station/security/processing)
 "iTn" = (
 /obj/machinery/atmospherics/binary/valve{
-	dir = 4
+	dir = 4;
+	name = "port to heat exchange"
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
@@ -62173,7 +62177,8 @@
 /area/station/engineering/atmos/control)
 "iYj" = (
 /obj/machinery/atmospherics/binary/pump{
-	dir = 1
+	dir = 1;
+	name = "heat exchange to port"
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
@@ -90176,10 +90181,12 @@
 /turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "rtn" = (
+/obj/machinery/atmospherics/binary/pump{
+	name = "heat exchange to port"
+	},
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 8
 	},
-/obj/machinery/atmospherics/binary/pump,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
 "rto" = (
@@ -102009,7 +102016,7 @@
 /obj/structure/window/plasmareinforced,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/atmospherics/meter{
-	layer = 3
+	layer = 3.3
 	},
 /turf/simulated/floor/plating,
 /area/station/science/toxins/mixing)
@@ -108929,12 +108936,13 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/reception)
 "xkJ" = (
+/obj/machinery/atmospherics/binary/pump{
+	dir = 1;
+	name = "burn chamber to port"
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 6
-	},
-/obj/machinery/atmospherics/binary/pump{
-	dir = 1
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
