@@ -102,15 +102,7 @@ SUBSYSTEM_DEF(mapping)
 	caves_theme = new caves_theme_type
 	log_startup_progress("We feel like [caves_theme.name] today...")
 	SSblackbox.record_feedback("text", "procgen_settings", 1, "[caves_theme_type]")
-	// SS220 EDIT START
-	// Wipe map templates uploaded via the admin "Map Template - Upload" verb
-	// last round - they're only ever relevant within the round they were
-	// uploaded in (GLOB.map_templates is in-memory only and gets rebuilt from
-	// scratch here), so leftover .dmm files on disk are pure clutter.
-	if(fexists("data/uploaded_maps/"))
-		for(var/leftover in flist("data/uploaded_maps/"))
-			fdel("data/uploaded_maps/[leftover]")
-	// SS220 EDIT END
+
 	// Load all Z level templates
 	preloadTemplates()
 
@@ -417,7 +409,7 @@ SUBSYSTEM_DEF(mapping)
 	return used_turfs[T]
 
 /// Requests a /datum/turf_reservation based on the given width, height.
-/datum/controller/subsystem/mapping/proc/request_turf_block_reservation(width, height, reservation_type = /datum/turf_reservation, turf_type_override)
+/datum/controller/subsystem/mapping/proc/request_turf_block_reservation(width, height, reservation_type = /datum/turf_reservation, turf_type_override, skip_cordon = FALSE)
 	UNTIL(!clearing_reserved_turfs)
 	log_debug("Reserving [width]x[height] turf reservation")
 	var/datum/turf_reservation/reserve = new reservation_type
@@ -428,11 +420,11 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/space_level/level = GLOB.space_manager.z_list[z]
 		if(!level.has_all_traits(required_traits))
 			continue
-		if(reserve.reserve(width, height, z))
+		if(reserve.reserve(width, height, z, skip_cordon))
 			return reserve
 	//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
 	var/z_level_num = add_reservation_zlevel(required_traits)
-	if(reserve.reserve(width, height, z_level_num))
+	if(reserve.reserve(width, height, z_level_num, skip_cordon))
 		return reserve
 	qdel(reserve)
 
@@ -506,7 +498,7 @@ SUBSYSTEM_DEF(mapping)
 /**
  * Lazy loads a template on a lazy-loaded z-level.
  */
-/datum/controller/subsystem/mapping/proc/lazy_load_template(datum/map_template/template)
+/datum/controller/subsystem/mapping/proc/lazy_load_template(datum/map_template/template, skip_cordon = FALSE)
 	RETURN_TYPE(/datum/turf_reservation)
 
 	UNTIL(initialized)
@@ -514,12 +506,12 @@ SUBSYSTEM_DEF(mapping)
 	UNTIL(!lazy_loading)
 
 	lazy_loading = TRUE
-	. = _lazy_load_template(template)
+	. = _lazy_load_template(template, skip_cordon)
 	lazy_loading = FALSE
 
-/datum/controller/subsystem/mapping/proc/_lazy_load_template(datum/map_template/template)
+/datum/controller/subsystem/mapping/proc/_lazy_load_template(datum/map_template/template, skip_cordon = FALSE)
 	PRIVATE_PROC(TRUE)
-	var/datum/turf_reservation/reservation = request_turf_block_reservation(template.width, template.height)
+	var/datum/turf_reservation/reservation = request_turf_block_reservation(template.width, template.height, skip_cordon = skip_cordon)
 	if(!istype(reservation))
 		return
 

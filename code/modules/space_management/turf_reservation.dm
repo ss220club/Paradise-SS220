@@ -99,7 +99,7 @@
 		SSmapping.used_turfs[cordon_turf] = src
 
 /// Internal proc which handles reserving the area for the reservation.
-/datum/turf_reservation/proc/_reserve_area(width, height, zlevel)
+/datum/turf_reservation/proc/_reserve_area(width, height, zlevel, skip_cordon = FALSE)
 	src.width = width
 	src.height = height
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
@@ -128,7 +128,11 @@
 			if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
 				passing = FALSE
 				break
-		if(passing) // found a potentially valid area, now try to calculate its cordon
+		// Без кордона (skip_cordon) не требуем лишнюю рамку в 1 тайл вокруг
+		// области - иначе шаблон, рассчитанный впритык на весь сектор,
+		// никогда не находит места и Lazy Load всегда падает, вынуждая
+		// пользоваться ручным Place.
+		if(passing && !skip_cordon) // found a potentially valid area, now try to calculate its cordon
 			passing = calculate_cordon_turfs(bottom_left, top_right)
 		if(!passing)
 			continue
@@ -146,15 +150,18 @@
 	top_right_turf = top_right
 	return TRUE
 
-/datum/turf_reservation/proc/reserve(width, height, z_reservation)
+/datum/turf_reservation/proc/reserve(width, height, z_reservation, skip_cordon = FALSE)
 
-	if(!_reserve_area(width, height, z_reservation))
+	if(!_reserve_area(width, height, z_reservation, skip_cordon))
 		log_debug("Failed turf reservation: releasing")
 		Release()
 		return FALSE
 
-	log_debug("Turf reservation successful, generating cordon")
-	generate_cordon()
+	if(!skip_cordon)
+		log_debug("Turf reservation successful, generating cordon")
+		generate_cordon()
+	else
+		log_debug("Turf reservation successful, cordon skipped by request")
 	return TRUE
 
 /datum/turf_reservation/transit

@@ -25,7 +25,7 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
  * atmos will attempt to start before it's ready, causing runtimes galore if init is
  * allowed to romp unchecked.
  */
-/datum/dmm_suite/proc/load_map(dmm_file, x_offset = 0, y_offset = 0, z_offset = 0, shouldCropMap = FALSE, measureOnly = FALSE)
+/datum/dmm_suite/proc/load_map(dmm_file, x_offset = 0, y_offset = 0, z_offset = 0, shouldCropMap = FALSE, measureOnly = FALSE, list/noop_positions_out = null)
 	var/map_data
 	var/fname = "Lambda"
 	if(isfile(dmm_file))
@@ -57,6 +57,15 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 
 	var/list/bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 	var/list/grid_models = list()
+	// Lightweight side-table: key -> TRUE if that model is a
+	// /turf/template_noop placeholder ("don't touch this tile" - see
+	// writer.dm's write_map()/included_tiles, and the Place-preview use in
+	// map_template_loadverb.dm). Populated regardless of measureOnly (it's
+	// cheap - just a flag per key, not the full model text like
+	// grid_models), but only actually USED below when noop_positions_out
+	// is provided by the caller - existing callers that don't pass it see
+	// zero extra work.
+	var/list/noop_keys = list()
 	var/key_len = 0
 
 	var/datum/dmm_suite/loaded_map/LM = new
@@ -82,6 +91,8 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 						throw EXCEPTION("Inconsistent key length in DMM")
 				if(!measureOnly)
 					grid_models[key] = dmmRegex.group[2]
+				if(noop_positions_out && findtext(dmmRegex.group[2], "/turf/template_noop"))
+					noop_keys[key] = TRUE
 
 			// (1,1,1) = {"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
 			else if(dmmRegex.group[3]) // Coords
@@ -131,8 +142,20 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 
 				var/maxx = xcrdStart
 				if(measureOnly)
-					for(var/line in gridLines)
-						maxx = max(maxx, xcrdStart + length(line) / key_len - 1)
+					if(noop_positions_out)
+						var/cur_y = ycrd
+						for(var/line in gridLines)
+							var/cur_x = xcrdStart
+							for(var/tpos = 1 to (length(line) - key_len + 1) step key_len)
+								var/model_key = copytext(line, tpos, tpos + key_len)
+								if(noop_keys[model_key])
+									noop_positions_out["[cur_x],[cur_y],[zcrd]"] = TRUE
+								maxx = max(maxx, cur_x)
+								cur_x++
+							cur_y--
+					else
+						for(var/line in gridLines)
+							maxx = max(maxx, xcrdStart + length(line) / key_len - 1)
 				else
 					for(var/line in gridLines)
 						if(ycrd <= world.maxy && ycrd >= 1)

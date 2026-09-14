@@ -139,20 +139,24 @@
 
 	QDEL_LIST_CONTENTS(border_line_objs)
 	border_line_objs = list()
-	// Две линии-границы, сходящиеся изломом на тайле под курсором - по ним
-	// видно, какой прямоугольник в итоге выделится. Поблёклее и попрозрачнее
-	// зелёной/синей точки, как и просили - подберите числа alpha/color на
-	// глаз в игре, я их не вижу отрендеренными.
+	// Четыре линии-границы, образующие полный прямоугольник между первым
+	// углом и тайлом под курсором. Поблёклее и попрозрачнее зелёной/синей
+	// точки, как и просили - подберите числа alpha/color на глаз в игре,
+	// я их не вижу отрендеренными.
 	var/turf/bend_h = locate(pending_corner.x, T.y, T.z)
 	var/turf/bend_v = locate(T.x, pending_corner.y, T.z)
 	var/obj/effect/buildmode_line/L1 = new(BM.holder, bend_h, T, "save_border_h")
 	var/obj/effect/buildmode_line/L2 = new(BM.holder, bend_v, T, "save_border_v")
-	L1.I.alpha = 90
-	L2.I.alpha = 90
-	L1.I.color = "#88AA88"
-	L2.I.color = "#88AA88"
+	var/obj/effect/buildmode_line/L3 = new(BM.holder, pending_corner, bend_h, "save_border_h2")
+	var/obj/effect/buildmode_line/L4 = new(BM.holder, pending_corner, bend_v, "save_border_v2")
+	L1.I.alpha = 170
+	L2.I.alpha = 170
+	L3.I.alpha = 170
+	L4.I.alpha = 170
 	border_line_objs += L1
 	border_line_objs += L2
+	border_line_objs += L3
+	border_line_objs += L4
 
 /datum/buildmode_mode/save/proc/stop_area_drag()
 	pending_corner = null
@@ -278,6 +282,12 @@
 // пока курсор снова окажется на голом полу.
 /proc/buildmode_save_mouse_entered(atom/hovered)
 	if(!usr?.client)
+		return
+	// Наши же линии-границы - это движимые объекты в мире, а не просто
+	// картинка. Без этой проверки наведение на только что перерисованную
+	// линию само триггерит update_hover(), которая тут же пересоздаёт эти
+	// же линии заново - и так по кругу, пока курсор с них не уберут.
+	if(istype(hovered, /obj/effect/buildmode_line))
 		return
 	var/datum/click_intercept/buildmode/BM = usr.client.click_intercept
 	if(!istype(BM))

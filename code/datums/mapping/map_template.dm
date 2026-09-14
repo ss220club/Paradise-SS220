@@ -7,6 +7,10 @@
 	var/loaded = 0 // Times loaded this round
 	/// Do we exclude this from CI checks? If so, set this to the templates pathtype itself to avoid it getting passed down
 	var/ci_exclude = null // DO NOT SET THIS IF YOU DO NOT KNOW WHAT YOU ARE DOING
+	/// Set by preload_size() - "x,y,z" (relative, local template grid) -> TRUE
+	/// for every tile that's just a /turf/template_noop placeholder. See
+	/// preload_size() and the Place-preview use in map_template_loadverb.dm.
+	var/list/noop_relative_positions
 
 /datum/map_template/New(path = null, map = null, rename = null)
 	if(path)
@@ -19,13 +23,20 @@
 		name = rename
 
 /datum/map_template/proc/preload_size(path)
-	var/bounds = GLOB.maploader.load_map(file(path), 1, 1, 1, shouldCropMap = FALSE, measureOnly = TRUE)
+	// Collected as (x,y,z) *relative to the template's own local grid*
+	// (starts at 1,1,1, same assumption as width/height below) - keyed as
+	// "x,y,z" strings for fast lookup. Used by the "Place Map Template"
+	// preview (map_template_loadverb.dm) to skip highlighting tiles that
+	// are just /turf/template_noop placeholders (holes left by a
+	// non-rectangular Save selection) instead of real content.
+	noop_relative_positions = list()
+	var/bounds = GLOB.maploader.load_map(file(path), 1, 1, 1, shouldCropMap = FALSE, measureOnly = TRUE, noop_positions_out = noop_relative_positions)
 	if(bounds)
 		width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
 		height = bounds[MAP_MAXY]
 	return bounds
 
-/datum/map_template/proc/load(turf/T, centered = 0)
+/datum/map_template/proc/load(turf/T, centered = 0, clear_existing = FALSE)
 	var/turf/placement = T
 	var/min_x = placement.x
 	var/min_y = placement.y
@@ -55,6 +66,23 @@
 	milla_freeze.invoke_async(T.z)
 	UNTIL(milla_freeze.done)
 	try
+		// Placing a template directly on top of an already-occupied area
+		// (e.g. re-saving and re-placing the SAME live location) used to
+		// just add every saved object on top of whatever's already there -
+		// harmless clutter for most things, but for atmos pipes
+		// specifically, duplicate pipes on the same tile repeatedly
+		// rejoining the same pipenet can snowball into a server hang (seen
+		// in practice: cascading "added to a pipenet while still having
+		// one" runtimes escalating across dozens of tiles). Optionally
+		// clear the target area first - mobs are deliberately skipped so
+		// this can't be used to delete a player/NPC standing on the spot.
+		if(clear_existing)
+			for(var/turf/existing in block(bot_left, top_right))
+				for(var/atom/movable/AM in existing)
+					if(ismob(AM))
+						continue
+					qdel(AM)
+
 		var/list/bounds = GLOB.maploader.load_map(get_file(), min_x, min_y, placement.z, shouldCropMap = TRUE)
 		if(!bounds)
 			return 0
