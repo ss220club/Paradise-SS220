@@ -7087,12 +7087,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aFl" = (
-/obj/effect/turf_decal/tiles/neutral/corner{
-	dir = 8
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
 	},
-/obj/machinery/alarm/directional/south,
-/turf/simulated/floor/plasteel,
-/area/station/hallway/primary/port)
+/turf/space,
+/area/space/nearstation)
 "aFo" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -15574,10 +15574,11 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/reception)
 "bsQ" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	dir = 8
+	dir = 8;
+	initialize_directions = 11
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/medmaint)
 "bta" = (
@@ -16077,15 +16078,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
 "bvJ" = (
-/obj/structure/cable/extra_insulated{
-	icon_state = "4-8"
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
 	},
-/obj/effect/turf_decal/tiles/neutral/corner{
-	dir = 8
-	},
-/obj/machinery/alarm/directional/south,
-/turf/simulated/floor/plasteel,
-/area/station/hallway/primary/port)
+/turf/space,
+/area/space/nearstation)
 "bvL" = (
 /obj/structure/table/wood,
 /obj/item/folder,
@@ -26146,6 +26144,7 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/engine)
 "cgC" = (
+/obj/machinery/alarm/directional/south,
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tiles/neutral/corner{
 	dir = 8
@@ -46688,12 +46687,15 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/virology/lab)
 "ejJ" = (
+/obj/machinery/atmospherics/binary/valve{
+	dir = 1;
+	name = "port to space"
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 10
 	},
-/obj/machinery/atmospherics/binary/valve,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
 "ekr" = (
@@ -48276,10 +48278,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/storage/tools)
 "eHW" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6
+	dir = 6;
+	initialize_directions = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/medmaint)
 "eIa" = (
@@ -53659,6 +53662,7 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-8"
 	},
+/obj/effect/mapping_helpers/turfs/damage,
 /obj/machinery/power/apc/reinforced/directional/south,
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/electrical_shop)
@@ -61740,7 +61744,8 @@
 /area/station/security/processing)
 "iTn" = (
 /obj/machinery/atmospherics/binary/valve{
-	dir = 4
+	dir = 4;
+	name = "port to heat exchange"
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
@@ -62171,7 +62176,8 @@
 /area/station/engineering/atmos/control)
 "iYj" = (
 /obj/machinery/atmospherics/binary/pump{
-	dir = 1
+	dir = 1;
+	name = "heat exchange to port"
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
@@ -90174,10 +90180,12 @@
 /turf/simulated/floor/carpet/grimey,
 /area/station/security/detective)
 "rtn" = (
+/obj/machinery/atmospherics/binary/pump{
+	name = "heat exchange to port"
+	},
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 8
 	},
-/obj/machinery/atmospherics/binary/pump,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
 "rto" = (
@@ -90545,7 +90553,8 @@
 /area/station/science/misc_lab)
 "rxC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6
+	dir = 6;
+	initialize_directions = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/medmaint)
@@ -97918,11 +97927,12 @@
 /area/station/legal/magistrate)
 "tMF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 10;
+	initialize_directions = 10
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 10
-	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/medmaint)
 "tMG" = (
@@ -102005,7 +102015,7 @@
 /obj/structure/window/plasmareinforced,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/atmospherics/meter{
-	layer = 3
+	layer = 3.3
 	},
 /turf/simulated/floor/plating,
 /area/station/science/toxins/mixing)
@@ -108925,12 +108935,13 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/reception)
 "xkJ" = (
+/obj/machinery/atmospherics/binary/pump{
+	dir = 1;
+	name = "burn chamber to port"
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tiles/department/science/side{
 	dir = 6
-	},
-/obj/machinery/atmospherics/binary/pump{
-	dir = 1
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
@@ -139246,7 +139257,7 @@ nlN
 aKa
 aNe
 awX
-abj
+bvJ
 abj
 abj
 aOg
@@ -139262,7 +139273,7 @@ bgm
 bhu
 bgm
 aOg
-abj
+bvJ
 awX
 igB
 brW
@@ -139503,7 +139514,7 @@ aCl
 dLy
 aLx
 awX
-acF
+aFl
 aaa
 abj
 aOg
@@ -139519,7 +139530,7 @@ aOg
 aOg
 aOg
 aOg
-acF
+aFl
 awX
 lfQ
 brW
@@ -139760,23 +139771,23 @@ kzN
 avZ
 asq
 awX
-acF
-acF
-abj
-acF
-abj
-acF
-abj
-acF
-abj
-acF
-abj
-acF
-abj
-acF
-abj
-acF
-acF
+aFz
+aJz
+aEp
+aJz
+aEp
+aJz
+aEp
+aJz
+aEp
+aJz
+aEp
+aJz
+aEp
+aJz
+aEp
+aJz
+bRm
 awX
 xYS
 brW
@@ -140054,7 +140065,7 @@ bOr
 bxh
 bty
 qVh
-bvJ
+euI
 cHA
 bZI
 cbE
@@ -143395,7 +143406,7 @@ bOz
 wer
 bty
 oAE
-aFl
+bWH
 bYj
 bZS
 gtO
