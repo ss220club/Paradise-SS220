@@ -15574,10 +15574,11 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/medical/reception)
 "bsQ" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	dir = 8
+	dir = 8;
+	initialize_directions = 11
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/medmaint)
 "bta" = (
@@ -48276,10 +48277,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/storage/tools)
 "eHW" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6
+	dir = 6;
+	initialize_directions = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/medmaint)
 "eIa" = (
@@ -90545,7 +90547,8 @@
 /area/station/science/misc_lab)
 "rxC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6
+	dir = 6;
+	initialize_directions = 6
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/medmaint)
@@ -97918,11 +97921,12 @@
 /area/station/legal/magistrate)
 "tMF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 10;
+	initialize_directions = 10
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 10
-	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/medmaint)
 "tMG" = (
