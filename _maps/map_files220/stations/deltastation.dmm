@@ -4531,8 +4531,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
 "awl" = (
-/obj/effect/spawner/airlock/s_to_n,
-/turf/simulated/wall,
+/obj/effect/map_effect/dynamic_airlock,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/light/small/directional/west,
+/turf/simulated/floor/plasteel,
 /area/station/engineering/gravitygenerator)
 "awm" = (
 /obj/machinery/navbeacon{
@@ -16658,8 +16660,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/turret_protected/ai)
 "byk" = (
-/obj/machinery/light/small/directional/east,
-/obj/item/radio/intercom/directional/north,
+/obj/effect/map_effect/dynamic_airlock,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/airlock_controller/air_cycler/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/gravitygenerator)
 "byl" = (
@@ -17303,7 +17307,6 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/science/genetics)
 "bBr" = (
-/obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/power/terminal{
 	dir = 1
 	},
@@ -17760,7 +17763,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/item/radio/intercom/directional/north,
 /obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/delivery/blue/hollow,
 /obj/structure/closet/emcloset,
@@ -19404,6 +19406,7 @@
 	},
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/radiation,
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/gravitygenerator)
 "bIq" = (
@@ -24657,6 +24660,7 @@
 	},
 /obj/effect/map_effect/dynamic_airlock/door/interior,
 /obj/machinery/access_button/offset/east,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
 /area/station/engineering/engine/reactor)
 "cbd" = (
@@ -25727,6 +25731,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine)
 "ceW" = (
@@ -49869,6 +49874,15 @@
 /obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/carpet,
 /area/station/legal/lawoffice)
+"fgS" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/effect/map_effect/dynamic_airlock/door/exterior,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/access_button/offset/northeast,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/gravitygenerator)
 "fgZ" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood/parquet/oak,
@@ -62197,6 +62211,13 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "iYI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/effect/map_effect/dynamic_airlock/door/interior,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/access_button/offset/east,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/gravitygenerator)
 "iYK" = (
@@ -70310,6 +70331,7 @@
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/map_effect/dynamic_airlock/door/exterior,
 /obj/machinery/access_button/offset/northwest,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
 /area/station/engineering/engine/reactor)
 "lxa" = (
@@ -85226,6 +85248,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine)
 "pTD" = (
@@ -92412,8 +92435,8 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/mechanic)
 "sdr" = (
-/obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume,
+/obj/effect/map_effect/dynamic_airlock,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/gravitygenerator)
 "sdI" = (
@@ -131813,8 +131836,8 @@ xBO
 aOg
 acF
 bwN
-iYI
 awl
+bzL
 bBt
 bDj
 bEN
@@ -132069,7 +132092,7 @@ aVR
 wWl
 aOg
 acF
-iYI
+fgS
 sdr
 iYI
 riQ
