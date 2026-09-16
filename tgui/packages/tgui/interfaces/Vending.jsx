@@ -7,13 +7,13 @@ const VendingRow = (props) => {
   const { act, data } = useBackend();
   const { product, productStock, productIcon, productIconState } = props;
   const { locked, bypass_lock, user, usermoney, inserted_cash, vend_ready, inserted_item_name } = data;
-  let buttonText = 'ERROR!';
+  let buttonText = 'ОШИБКА!';
   let rowIcon = '';
   if (locked && bypass_lock) {
-    buttonText = 'FREE (' + product.price + ')';
+    buttonText = 'БЕСПЛАТНО (' + product.price + ')';
     rowIcon = 'arrow-circle-down';
   } else if (!locked || product.price === 0) {
-    buttonText = 'FREE';
+    buttonText = 'БЕСПЛАТНО';
     rowIcon = 'arrow-circle-down';
   } else {
     buttonText = product.price;
@@ -36,7 +36,7 @@ const VendingRow = (props) => {
       <Table.Cell bold>{product.name}</Table.Cell>
       <Table.Cell collapsing textAlign="center">
         <Box color={(productStock <= 0 && 'bad') || (productStock <= product.max_amount / 2 && 'average') || 'good'}>
-          {productStock} in stock
+          {productStock} в наличии
         </Box>
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
@@ -83,7 +83,7 @@ export const Vending = (props) => {
   inventory = inventory.filter((item) => !!item);
   return (
     <Window
-      title="Vending Machine"
+      title="Торговый автомат"
       width={450}
       height={Math.min((!locked || !!bypass_lock ? 230 : 171) + inventory.length * 32, 585)}
     >
@@ -91,15 +91,15 @@ export const Vending = (props) => {
         <Stack fill vertical>
           {(!locked || !!bypass_lock) && (
             <Stack.Item>
-              <Section title="Configuration">
+              <Section title="Конфигурация">
                 <Stack>
                   <Stack.Item>
-                    <Button icon="pen-to-square" content="Rename Vendor" onClick={() => act('rename', {})} />
+                    <Button icon="pen-to-square" content="Переименовать вендомат" onClick={() => act('rename', {})} />
                   </Stack.Item>
                   <Stack.Item>
                     <Button
                       icon="pen-to-square"
-                      content="Change Vendor Appearance"
+                      content="Изменить облик вендомата"
                       onClick={() => act('change_appearance', {})}
                     />
                   </Stack.Item>
@@ -109,7 +109,7 @@ export const Vending = (props) => {
           )}
           <Stack.Item>
             <Section
-              title="User"
+              title="Информация о клиенте"
               buttons={
                 <Stack>
                   <Stack.Item>
@@ -126,8 +126,8 @@ export const Vending = (props) => {
                     <Button
                       disabled={!inserted_cash}
                       icon="money-bill-wave-alt"
-                      content={inserted_cash ? <>{<b>{inserted_cash}</b>} credits</> : 'Dispense Change'}
-                      tooltip={inserted_cash ? 'Dispense Change' : null}
+                      content={inserted_cash ? <>{<b>{inserted_cash}</b>} credits</> : 'Выдача наличных'}
+                      tooltip={inserted_cash ? 'Выдать наличные' : null}
                       textAlign="left"
                       onClick={() => act('change')}
                     />
@@ -137,9 +137,9 @@ export const Vending = (props) => {
             >
               {user && (
                 <Box>
-                  Welcome, <b>{user.name}</b>, <b>{user.job || 'Unemployed'}</b>!
+                  Приветствую, <b>{user.name}</b>, <b>{user.job || 'Безработный'}</b>!
                   <br />
-                  Your balance is <b>{usermoney} credits</b>.
+                  Ваш текущий баланс - <b>{usermoney} кредитов</b>.
                   <br />
                 </Box>
               )}
@@ -147,7 +147,7 @@ export const Vending = (props) => {
           </Stack.Item>
           {!!panel_open && (
             <Stack.Item>
-              <Section title="Maintenance">
+              <Section title="Техобслуживание">
                 <Button
                   icon={speaker ? 'check' : 'volume-mute'}
                   selected={speaker}
@@ -159,7 +159,7 @@ export const Vending = (props) => {
             </Stack.Item>
           )}
           <Stack.Item grow>
-            <Section fill scrollable title="Products">
+            <Section fill scrollable title="Ассортимент в продаже">
               <Table>
                 {inventory.map((product) => (
                   <VendingRow

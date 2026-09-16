@@ -1,13 +1,13 @@
 
 /datum/vote
 	/// Person who started the vote
-	var/initiator = "the server"
+	var/initiator = "серверу"
 	/// world.time the vote started at
 	var/started_time
 	/// The question being asked
 	var/question
 	/// Vote type text, for showing in UIs and stuff
-	var/vote_type_text = "unset"
+	var/vote_type_text = "что-то особенное"
 	/// Do we want to show the vote counts as it goes
 	var/show_counts = FALSE
 	/// Vote result type. This determines how a winner is picked
@@ -22,7 +22,7 @@
 
 /datum/vote/New(_initiator, _question, list/_choices, _is_custom = FALSE)
 	if(SSvote.active_vote)
-		CRASH("Attempted to start another vote with one already in progress!")
+		CRASH("Попытка начать голосование во время того, как идёт другое!")
 
 	if(_initiator)
 		initiator = _initiator
@@ -38,15 +38,15 @@
 		generate_choices()
 
 /datum/vote/proc/start()
-	var/text = "[capitalize(vote_type_text)] vote started by [initiator]."
+	var/text = "Голосование за [capitalize(vote_type_text)] начато благодаря [initiator]."
 	if(is_custom)
 		vote_type_text = "custom"
 		text += "\n[question]"
 		if(usr)
-			log_admin("[capitalize(vote_type_text)] ([question]) vote started by [key_name(usr)].")
+			log_admin("[capitalize(vote_type_text)] ([question]) голосование начато благодаря [key_name(usr)].")
 
 	else if(usr)
-		log_admin("[capitalize(vote_type_text)] vote started by [key_name(usr)].")
+		log_admin("Голосование за [capitalize(vote_type_text)] начато благодаря [key_name(usr)].")
 
 	log_vote(text)
 	started_time = world.time
@@ -61,7 +61,7 @@
 	switch(vote_result_type)
 		if(VOTE_RESULT_TYPE_MAJORITY)
 			if(!length(voted))
-				to_chat(world, SPAN_INTERFACE("No votes were cast. Do you all hate democracy?!")) // shame them
+				to_chat(world, SPAN_INTERFACE("Нет ни одного голоса. Вы все ненавидите демократию?!")) // shame them
 				return null
 
 			var/list/results = list()
@@ -99,18 +99,18 @@
 
 			if(length(winning_options) > 1)
 				var/random_dictator = pick(winning_options)
-				to_chat(world, SPAN_INTERFACE("<b>Its a tie between [english_list(winning_options)]. Picking <code>[random_dictator]</code> at random.</b>")) // shame them
+				to_chat(world, SPAN_INTERFACE("<b>Ничья между [english_list(winning_options)]. Случайный выбор: <code>[random_dictator]</code>.</b>")) // shame them
 				return random_dictator
 
 			// If we got here there must only be one thing in the list
 			var/res = winning_options[1]
 
 			if(res in choices)
-				to_chat(world, SPAN_INTERFACE("<b><code>[res]</code> won the vote.</b>"))
+				to_chat(world, SPAN_INTERFACE("<b><code>[res]</code> выигрывает голосование.</b>"))
 				return res
 
-			to_chat(world, SPAN_INTERFACE("The winner of the vote ([sanitize(res)]) isnt a valid choice? What the heck?"))
-			stack_trace("Vote of type [type] concluded with an invalid answer. Answer was [sanitize(res)], choices were [json_encode(choices)]")
+			to_chat(world, SPAN_INTERFACE("Победитель голосования ([sanitize(res)]) не является допустимым выбором? Какого чёрта?"))
+			stack_trace("Голосование типа [type] завершилось недопустимым ответом. Ответом был [sanitize(res)], вариантами были: [json_encode(choices)]")
 			return null
 
 
@@ -118,8 +118,8 @@
 /datum/vote/proc/announce(start_text)
 	to_chat(world, chat_box_purple(
 		"<span><font color='purple'><b>[start_text]</b></br></br>\
-		<a href='byond://?src=[SSvote.UID()];vote=open'>Click here or type <code>Vote</code> to place your vote.</a></br>\
-		You have [GLOB.configuration.vote.vote_time / 10] seconds to vote.</span>"), MESSAGE_TYPE_OOC)
+		<a href='byond://?src=[SSvote.UID()];vote=open'>Нажмите здесь или введите <code>Vote</code>, чтобы оставить голос.</a></br>\
+		У вас [GLOB.configuration.vote.vote_time / 10] секунд для выбора.</span>"), MESSAGE_TYPE_OOC)
 	SEND_SOUND(world, sound('sound/misc/server_alert.ogg'))
 
 
@@ -155,7 +155,7 @@
 /datum/vote/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "VotePanel", "Vote Panel")
+		ui = new(user, src, "VotePanel", "Панель голосования")
 		ui.open()
 
 /datum/vote/ui_data(mob/user)
@@ -198,4 +198,4 @@
 			if(params["target"] in choices)
 				voted[usr.ckey] = params["target"]
 			else
-				message_admins("[SPAN_BOLDANNOUNCEOOC("\[EXPLOIT\]")] User [key_name_admin(usr)] spoofed a vote in the vote panel!")
+				message_admins("[SPAN_BOLDANNOUNCEOOC("\[EXPLOIT\]")] Пользователь [key_name_admin(usr)] подделал голосование в панели!")

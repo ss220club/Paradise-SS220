@@ -74,3 +74,7 @@ _USER_VERB(verb_path_name, verb_permissions, verb_name, verb_desc, verb_category
 #define VERB_CATEGORY_SERVER "Server"
 #define VERB_CATEGORY_MAPPING "Mapping"
 #define VERB_CATEGORY_OOC "OOC"
+
+// SS22O EDIT START - new verb categories
+#define VERB_CATEGORY_SPECIAL "Special Verbs"
+// SS22O EDIT END

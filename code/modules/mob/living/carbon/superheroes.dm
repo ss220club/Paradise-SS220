@@ -48,7 +48,7 @@
 		W.assignment = "Supervillain"
 		W.rank = "Supervillain"
 		SSticker.mode.supervillains += H.mind
-	W.icon_state = "lifetimeid"
+	W.icon_state = "tsf"
 	W.SetOwnerInfo(H)
 	W.UpdateName()
 	W.set_nodrop(TRUE, H)
@@ -229,7 +229,7 @@
 	target.equip_to_slot_or_del(new /obj/item/storage/toolbox/mechanical/greytide(target), ITEM_SLOT_LEFT_HAND)
 	target.equip_to_slot_or_del(new /obj/item/radio/headset(target), ITEM_SLOT_LEFT_EAR)
 	var/obj/item/card/id/syndicate/W = new(target)
-	W.icon_state = "lifetimeid"
+	W.icon_state = "tsf"
 	W.access = list(ACCESS_MAINT_TUNNELS)
 	W.assignment = "Greyshirt"
 	W.rank = "Greyshirt"

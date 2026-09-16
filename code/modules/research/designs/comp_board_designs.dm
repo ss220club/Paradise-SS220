@@ -103,7 +103,7 @@
 	category = list("Computer Boards")
 
 /datum/design/scan_console
-	name = "Console Board (DNA Machine)"
+	name = "Console Board (Консоль ДНК-Модификатора)"
 	desc = "Allows for the construction of circuit boards used to build a new DNA scanning console."
 	id = "scan_console"
 	req_tech = list("programming" = 2, "biotech" = 2)

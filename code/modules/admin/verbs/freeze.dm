@@ -94,12 +94,12 @@ USER_CONTEXT_MENU(admin_freeze, R_ADMIN, "\[Admin\] Freeze", atom/movable/M)
 /obj/machinery/atmospherics/supermatter_crystal/admin_Freeze(client/admin)
 	var/obj/effect/overlay/adminoverlay/freeze_overlay = new
 	if(processes)
-		radio.autosay("Alert: Unknown intervention has frozen causality around the crystal. It is not progressing in local timespace.", name, "Engineering")
+		radio.autosay("Внимание: Неизвестное вмешательство заморозило процесс разрушения вокруг кристалла. Оно не развивается в местном временном пространстве.", name, "Engineering")
 		GLOB.frozen_atom_list += src
 		processes = FALSE
 		add_overlay(freeze_overlay)
 	else
-		radio.autosay("Alert: Unknown intervention has ceased around the crystal. It has returned to the regular flow of time.", name, "Engineering")
+		radio.autosay("Внимание: Неизвестное воздействие на кристалл прекращено. Время вокруг кристалла вернулось в привычное течение.", name, "Engineering")
 		GLOB.frozen_atom_list -= src
 		processes = TRUE
 		cut_overlay(freeze_overlay)

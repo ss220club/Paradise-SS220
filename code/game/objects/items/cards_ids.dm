@@ -161,7 +161,7 @@
 	popup.open()
 
 /obj/item/card/id/proc/regenerate_name()
-	name = "[registered_name]'s ID Card ([assignment])"
+	name = "ID - [registered_name] ([assignment])"
 
 /obj/item/card/id/activate_self(mob/user)
 	if(..())
@@ -191,7 +191,7 @@
 	return NONE
 
 /obj/item/card/id/proc/UpdateName()
-	name = "[registered_name]'s ID Card ([assignment])"
+	name = "ID - [registered_name] ([assignment])"
 
 /obj/item/card/id/proc/SetOwnerInfo(mob/living/carbon/human/H)
 	if(!H || !H.dna)
@@ -274,10 +274,10 @@
 
 /obj/item/card/id/proc/update_label(newname, newjob)
 	if(newname || newjob)
-		name = "[(!newname)	? "identification card"	: "[newname]'s ID Card"][(!newjob) ? "" : " ([newjob])"]"
+		name = "[(!newname)	? "identification card"	: "ID - [newname]"][(!newjob) ? "" : " ([newjob])"]"
 		return
 
-	name = "[(!registered_name)	? "identification card"	: "[registered_name]'s ID Card"][(!assignment) ? "" : " ([assignment])"]"
+	name = "[(!registered_name)	? "identification card"	: "ID - [registered_name]"][(!assignment) ? "" : " ([assignment])"]"
 
 /obj/item/card/id/proc/get_departments()
 	return get_departments_from_job(rank)
@@ -800,7 +800,7 @@
 /obj/item/card/id/lifetime
 	name = "Lifetime ID Card"
 	desc = "A modified ID card given only to those people who have devoted their lives to the better interests of Nanotrasen. It sparkles blue."
-	icon_state = "lifetimeid"
+	icon_state = "tsf"
 
 /obj/item/card/id/ert
 	name = "ERT ID"

@@ -8,106 +8,106 @@
 	area_icon_color = AREA_COLOR_MAINTENANCE
 
 /area/station/maintenance/engimaint
-	name = "Engineering Maintenance"
+	name = "Технические Тоннели Инженерии"
 	icon_state = "engimaint"
 	area_icon_text = "ENGI\nMAINT"
 
 /area/station/maintenance/medmaint
-	name = "Medical Maintenance"
+	name = "Технические Тоннели Медицинского Отдела"
 	icon_state = "medmaint"
 	area_icon_text = "MED\nMAINT"
 
 /area/station/maintenance/fpmaint
-	name = "Fore-Port Maintenance"
+	name = "Северо-Западные Технические Тоннели"
 	icon_state = "fpmaint"
 	area_icon_text = "FORE\nPORT\nMAINT"
 
 
 /area/station/maintenance/fpmaint2
-	name = "Fore-Port Secondary Maintenance"
+	name = "Вспомогательные Северо-Западные Технические Тоннели"
 	icon_state = "fpmaint"
 	area_icon_text = "FORE\nPORT\nMAINT"
 
 /area/station/maintenance/fsmaint
-	name = "Fore-Starboard Maintenance"
+	name = "Северо-Восточные Технические Тоннели"
 	icon_state = "fsmaint"
 	area_icon_text = "FORE\nSTBD\nMAINT"
 
 /area/station/maintenance/fsmaint2
-	name = "Fore-Starboard Secondary Maintenance"
+	name = "Вспомогательные Северо-Восточные Технические Тоннели"
 	icon_state = "fsmaint"
 	area_icon_text = "FORE\nSTBD\nMAINT"
 
 /area/station/maintenance/asmaint
-	name = "Aft-Starboard Maintenance"
+	name = "Юго-Восточные Технические Тоннели"
 	icon_state = "asmaint"
 	area_icon_text = "AFT\nSTBD\nMAINT"
 
 /area/station/maintenance/asmaint2
-	name = "Aft-Starboard Secondary Maintenance"
+	name = "Вспомогательные Юго-Восточные Технические Тоннели"
 	icon_state = "asmaint"
 	area_icon_text = "AFT\nSTBD\nMAINT"
 
 /area/station/maintenance/apmaint
-	name = "Aft-Port Maintenance"
+	name = "Юго-Западные Технические Тоннели"
 	icon_state = "apmaint"
 	area_icon_text = "AFT\nPORT\nMAINT"
 
 /area/station/maintenance/apmaint2
-	name = "Aft-Port Secondary Maintenance"
+	name = "Вспомогательные Юго-Западные Технические Тоннели"
 	icon_state = "apmaint"
 	area_icon_text = "AFT\nPORT\nMAINT"
 
 /area/station/maintenance/maintcentral
-	name = "Central Maintenance"
+	name = "Центральные Технические Тоннели"
 	icon_state = "maintcentral"
 	area_icon_text = "CENT\nMAINT"
 
 /area/station/maintenance/maintcentral2
-	name = "Central Maintenance Secondary"
+	name = "Вспомогательные Центральные Технические Тоннели"
 	icon_state = "maintcentral"
 
 /area/station/maintenance/fore
-	name = "Fore Maintenance"
+	name = "Северные Технические Тоннели"
 	icon_state = "fmaint"
 	area_icon_text = "FORE\nMAINT"
 
 /area/station/maintenance/fore2
-	name = "Fore Secondary Maintenance"
+	name = "Вспомогательные Северные Технические Тоннели"
 	icon_state = "fmaint"
 
 /area/station/maintenance/aft
-	name = "Aft Maintenance"
+	name = "Южные Технические Тоннели"
 	icon_state = "amaint"
 	area_icon_text = "AFT\nMAINT"
 
 /area/station/maintenance/aft2
-	name = "Aft Secondary Maintenance"
+	name = "Вспомогательные Южные Технические Тоннели"
 	icon_state = "amaint"
 	area_icon_text = "AFT\nMAINT"
 
 /area/station/maintenance/starboard
-	name = "Starboard Maintenance"
+	name = "Восточные Технические Тоннели"
 	icon_state = "smaint"
 	area_icon_text = "STBD\nMAINT"
 
 /area/station/maintenance/starboard2
-	name = "Starboard Secondary Maintenance"
+	name = "Вспомогательные Восточные Технические Тоннели"
 	icon_state = "smaint"
 	area_icon_text = "STBD\nMAINT"
 
 /area/station/maintenance/port
-	name = "Port Maintenance"
+	name = "Западные Технические Тоннели"
 	icon_state = "pmaint"
 	area_icon_text = "PORT\nMAINT"
 
 /area/station/maintenance/port2
-	name = "Port Secondary Maintenance"
+	name = "Вспомогательные Западные Технические Тоннели"
 	icon_state = "pmaint"
 	area_icon_text = "PORT\nMAINT"
 
 /area/station/maintenance/storage
-	name = "Atmospherics Maintenance"
+	name = "Технические Тоннели Турбины"
 	icon_state = "atmosmaint"
 	area_icon_text = "ATMOS\nMAINT"
 
@@ -174,7 +174,7 @@
 	area_icon_color = AREA_COLOR_ENGINEERING
 
 /area/station/maintenance/incinerator
-	name = "\improper Incinerator"
+	name = "Мусоросжигатель"
 	icon_state = "incin"
 	area_icon_text = "INCIN"
 	area_icon_color = AREA_COLOR_SUPPLY
@@ -204,276 +204,276 @@
 	name = "Aft Starboard Electrical Maintenance"
 
 /area/station/maintenance/abandonedbar
-	name = "\improper Maintenance Bar"
+	name = "Заброшенный Бар"
 	icon_state = "oldbar"
 	area_icon_text = "OLD\nBAR"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/abandonedservers
-	name = "Maintenance Server Room"
+	name = "Заброшенная Серверная"
 	icon_state = "oldserver"
 	area_icon_text = "OLD\nSERVER"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/spacehut
-	name = "\improper Space Hut"
+	name = "Космическая Хижина"
 	icon_state = "spacehut"
 	area_icon_text = "SPACE\nHUT"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/turbine
-	name = "\improper Turbine"
+	name = "Турбина"
 	icon_state = "turbine"
 	area_icon_text = "TURBIN"
 	area_icon_color = AREA_COLOR_ENGINEERING
 
 // MARK: Solars
 /area/station/maintenance/solar_maintenance
-	name = "\improper Solar Maintenance"
+	name = "Пункт Контроля Солнечных Панелей"
 	icon_state = "general_solar_control"
 	area_icon_text = "SOLAR\nCTRL"
 
 /area/station/maintenance/solar_maintenance/fore
-	name = "\improper Fore Solar Maintenance"
+	name = "Пункт Контроля Северных Солнечных Панелей"
 	icon_state = "fore_solar_control"
 	area_icon_text = "FORE\nSOLAR\nCTRL"
 
 /area/station/maintenance/solar_maintenance/fore_starboard
-	name = "\improper Fore-Starboard Solar Maintenance"
+	name = "Пункт Контроля Северо-Восточных Солнечных Панелей"
 	icon_state = "fore_starboard_solar_control"
 	area_icon_text = "FORE\nSTBD\nSOLAR\nCTRL"
 
 /area/station/maintenance/solar_maintenance/fore_port
-	name = "\improper Fore-Port Solar Maintenance"
+	name = "Пункт Контроля Северо-Западных Солнечных Панелей"
 	icon_state = "fore_port_solar_control"
 	area_icon_text = "FORE\nPORT\nSOLAR\nCTRL"
 
 /area/station/maintenance/solar_maintenance/aft
-	name = "\improper Aft Solar Maintenance"
+	name = "Пункт Контроля Южных Солнечных Панелей"
 	icon_state = "aft_solar_control"
 	area_icon_text = "AFT\nSOLAR\nCTRL"
 
 /area/station/maintenance/solar_maintenance/aft_starboard
-	name = "\improper Aft-Starboard Solar Maintenance"
+	name = "Пункт Контроля Юго-Восточных Солнечных Панелей"
 	icon_state = "aft_starboard_solar_control"
 	area_icon_text = "AFT\nSTBD\nSOLAR\nCTRL"
 
 /area/station/maintenance/solar_maintenance/aft_port
-	name = "\improper Aft-Port Solar Maintenance"
+	name = "Пункт Контроля Юго-Западных Солнечных Панелей"
 	icon_state = "aft_port_solar_control"
 	area_icon_text = "AFT\nPORT\nSOLAR\nCTRL"
 
 /area/station/maintenance/solar_maintenance/starboard
-	name = "\improper Starboard Solar Maintenance"
+	name = "Пункт Контроля Восточных Солнечных Панелей"
 	icon_state = "starboard_solar_control"
 	area_icon_text = "STBD\nSOLAR\nCTRL"
 
 /area/station/maintenance/solar_maintenance/port
-	name = "\improper Port Solar Maintenance"
+	name = "Пункт Контроля Западных Солнечных Панелей"
 	icon_state = "port_solar_control"
 	area_icon_text = "PORT\nSOLAR\nCTRL"
 
 // MARK: Disposals
 /area/station/maintenance/disposal
-	name = "Waste Disposal"
+	name = "Комната Утилизации"
 	icon_state = "disposals"
 	area_icon_text = "DISPOS."
 	area_icon_color = AREA_COLOR_SUPPLY
 
 /area/station/maintenance/disposal/southwest
-	name = "South Western Disposals"
+	name = "Юго-Западный Мусоропровод"
 
 /area/station/maintenance/disposal/south
-	name = "Southern Disposals"
+	name = "Южный Мусоропровод"
 
 /area/station/maintenance/disposal/east
-	name = "Eastern Disposals"
+	name = "Восточный Мусоропровод"
 
 /area/station/maintenance/disposal/northeast
-	name = "North Eastern Disposals"
+	name = "Северо-Восточный Мусоропровод"
 
 /area/station/maintenance/disposal/north
-	name = "Northern Disposals"
+	name = "Северный Мусоропровод"
 
 /area/station/maintenance/disposal/northwest
-	name = "North Western Disposals"
+	name = "Северо-Западный Мусоропровод"
 
 /area/station/maintenance/disposal/west
-	name = "Western Disposals"
+	name = "Западный Мусоропровод"
 
 /area/station/maintenance/disposal/westalt
-	name = "Western Secondary Disposals"
+	name = "Вспомогательный Западный Мусоропровод"
 
 /area/station/maintenance/disposal/external/southwest
-	name = "South-Western External Waste Belt"
+	name = "Внешний Юго-Западный Мусоропровод"
 
 /area/station/maintenance/disposal/external/southeast
-	name = "South-Eastern External Waste Belt"
+	name = "Внешний Юго-Восточный Мусоропровод"
 
 /area/station/maintenance/disposal/external/north
-	name = "Northern External Waste Belt"
+	name = "Внешний Северный Мусоропровод"
 
 // MARK: Dorms
 /area/station/maintenance/dorms
-	name = "Dorms Maintenance"
+	name = "Технические Тоннели Дормиториев"
 	icon_state = "dorms_maint"
 	area_icon_text = "DORMS\nMAINT"
 
 /area/station/maintenance/dorms/port
-	name = "Dorms Port Maintenance"
+	name = "Западные Технические Тоннели Дормиториев"
 	icon_state = "dorms_maint_port"
 	area_icon_text = "DORMS\nMAINT\nPORT"
 
 /area/station/maintenance/dorms/starboard
-	name = "Dorms Starboard Maintenance"
+	name = "Восточные Технические Тоннели Дормиториев"
 	icon_state = "dorms_maint_starboard"
 	area_icon_text = "DORMS\nMAINT\nSTAR"
 
 /area/station/maintenance/dorms/aft
-	name = "Dorms Aft Maintenance"
+	name = "Южные Технические Тоннели Дормиториев"
 	icon_state = "dorms_maint_aft"
 	area_icon_text = "DORMS\nMAINT\nAFT"
 
 /area/station/maintenance/dorms/fore
-	name = "Dorms Fore Maintenance"
+	name = "Северные Технические Тоннели Дормиториев"
 	icon_state = "dorms_maint_fore"
 	area_icon_text = "DORMS\nMAINT\nFORE"
 
 // MARK: Command
 /area/station/maintenance/command
-	name = "\improper Command Maintenance"
+	name = "Технические Тоннели Мостика"
 	icon_state = "cmd_maint"
 	area_icon_text = "CMD\nMAINT"
 
 /area/station/maintenance/command/fore
-	name = "\improper Fore Command Maintenance"
+	name = "Северные Технические Тоннели Мостика"
 	icon_state = "cmd_maint_fore"
 	area_icon_text = "CMD\nMAINT\nFORE"
 
 /area/station/maintenance/command/fore_starboard
-	name = "\improper Fore-Starboard Command Maintenance"
+	name = "Северо-Восточные Технические Тоннели Мостика"
 	icon_state = "cmd_maint_fore_starboard"
 	area_icon_text = "CMD\nMAINT\nFORE\nSTBD"
 
 /area/station/maintenance/command/fore_port
-	name = "\improper Fore-Port Command Maintenance"
+	name = "Северо-Западные Технические Тоннели Мостика"
 	icon_state = "cmd_maint_fore_port"
 	area_icon_text = "CMD\nMAINT\nFORE\nPORT"
 
 /area/station/maintenance/command/aft
-	name = "\improper Aft Command Maintenance"
+	name = "Южные Технические Тоннели Мостика"
 	icon_state = "cmd_maint_aft"
 	area_icon_text = "CMD\nMAINT\nAFT"
 
 /area/station/maintenance/command/aft_starboard
-	name = "\improper Aft-Starboard Command Maintenance"
+	name = "Юго-Восточные Технические Тоннели Мостика"
 	icon_state = "cmd_maint_aft_starboard"
 	area_icon_text = "CMD\nMAINT\nAFT\nSTBD"
 
 /area/station/maintenance/command/aft_port
-	name = "\improper Aft-Port Command Maintenance"
+	name = "Юго-Западные Технические Тоннели Мостика"
 	icon_state = "cmd_maint_aft_port"
 	area_icon_text = "CMD\nMAINT\nAFT\nPORT"
 
 /area/station/maintenance/command/starboard
-	name = "\improper Starboard Command Maintenance"
+	name = "Восточные Технические Тоннели Мостика"
 	icon_state = "cmd_maint_starboard"
 	area_icon_text = "CMD\nMAINT\nSTBD"
 
 /area/station/maintenance/command/port
-	name = "\improper Port Command Maintenance"
+	name = "Западные Технические Тоннели Мостика"
 	icon_state = "cmd_maint_port"
 	area_icon_text = "CMD\nMAINT\nPORT"
 
 // MARK: Security
 /area/station/maintenance/security
-	name = "\improper Security Maintenance"
+	name = "Технические Тоннели Брига"
 	icon_state = "sec_maint"
 	area_icon_text = "SEC\nMAINT"
 
 /area/station/maintenance/security/fore
-	name = "\improper Fore Security Maintenance"
+	name = "Северные Технические Тоннели Брига"
 	icon_state = "sec_maint_fore"
 	area_icon_text = "SEC\nMAINT\nFORE"
 
 /area/station/maintenance/security/fore_starboard
-	name = "\improper Fore-Starboard Security Maintenance"
+	name = "Северо-Восточные Технические Тоннели Брига"
 	icon_state = "sec_maint_fore_starboard"
 	area_icon_text = "SEC\nMAINT\nFORE\nSTBD"
 
 /area/station/maintenance/security/fore_port
-	name = "\improper Fore-Port Security Maintenance"
+	name = "Северо-Западные Технические Тоннели Брига"
 	icon_state = "sec_maint_fore_port"
 	area_icon_text = "SEC\nMAINT\nFORE\nPORT"
 
 /area/station/maintenance/security/aft
-	name = "\improper Aft Security Maintenance"
+	name = "Южные Технические Тоннели Брига"
 	icon_state = "sec_maint_aft"
 	area_icon_text = "SEC\nMAINT\nAFT"
 
 /area/station/maintenance/security/aft_starboard
-	name = "\improper Aft-Starboard Security Maintenance"
+	name = "Юго-Восточные Технические Тоннели Брига"
 	icon_state = "sec_maint_aft_starboard"
 	area_icon_text = "SEC\nMAINT\nAFT\nSTBD"
 
 /area/station/maintenance/security/aft_port
-	name = "\improper Aft-Port Security Maintenance"
+	name = "Юго-Западные Технические Тоннели Брига"
 	icon_state = "sec_maint_aft_port"
 	area_icon_text = "SEC\nMAINT\nAFT\nPORT"
 
 /area/station/maintenance/security/starboard
-	name = "\improper Starboard Security Maintenance"
+	name = "Восточные Технические Тоннели Брига"
 	icon_state = "sec_maint_starboard"
 	area_icon_text = "SEC\nMAINT\nSTBD"
 
 /area/station/maintenance/security/port
-	name = "\improper Port Security Maintenance"
+	name = "Западные Технические Тоннели Брига"
 	icon_state = "sec_maint_port"
 	area_icon_text = "SEC\nMAINT\nPORT"
 
 // MARK: Service
 /area/station/maintenance/service
-	name = "\improper Service Maintenance"
+	name = "Технические Тоннели Сервиса"
 	icon_state = "serv_maint"
 	area_icon_text = "SERV\nMAINT"
 
 /area/station/maintenance/service/fore
-	name = "\improper Fore Service Maintenance"
+	name = "Северные Технические Тоннели Сервиса"
 	icon_state = "serv_maint_fore"
 	area_icon_text = "SERV\nMAINT\nFORE"
 
 /area/station/maintenance/service/fore_starboard
-	name = "\improper Fore-Starboard Service Maintenance"
+	name = "Северо-Восточные Технические Тоннели Сервиса"
 	icon_state = "serv_maint_fore_starboard"
 	area_icon_text = "SERV\nMAINT\nFORE\nSTBD"
 
 /area/station/maintenance/service/fore_port
-	name = "\improper Fore-Port Service Maintenance"
+	name = "Северо-Западные Технические Тоннели Сервиса"
 	icon_state = "serv_maint_fore_port"
 	area_icon_text = "SERV\nMAINT\nFORE\nPORT"
 
 /area/station/maintenance/service/aft
-	name = "\improper Aft Service Maintenance"
+	name = "Южные Технические Тоннели Сервиса"
 	icon_state = "serv_maint_aft"
 	area_icon_text = "SERV\nMAINT\nAFT"
 
 /area/station/maintenance/service/aft_starboard
-	name = "\improper Aft-Starboard Service Maintenance"
+	name = "Юго-Восточные Технические Тоннели Сервиса"
 	icon_state = "serv_maint_aft_starboard"
 	area_icon_text = "SERV\nMAINT\nAFT\nSTBD"
 
 /area/station/maintenance/service/aft_port
-	name = "\improper Aft-Port Service Maintenance"
+	name = "Юго-Западные Технические Тоннели Сервиса"
 	icon_state = "serv_maint_aft_port"
 	area_icon_text = "SERV\nMAINT\nAFT\nPORT"
 
 /area/station/maintenance/service/starboard
-	name = "\improper Starboard Service Maintenance"
+	name = "Восточные Технические Тоннели Сервиса"
 	icon_state = "serv_maint_starboard"
 	area_icon_text = "SERV\nMAINT\nSTBD"
 
 /area/station/maintenance/service/port
-	name = "\improper Port Service Maintenance"
+	name = "Западные Технические Тоннели Сервиса"
 	icon_state = "serv_maint_port"
 	area_icon_text = "SERV\nMAINT\nPORT"
 

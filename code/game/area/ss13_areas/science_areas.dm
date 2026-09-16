@@ -1,42 +1,42 @@
 // Robotics areas
 
 /area/station/science/robotics
-	name = "\improper Robotics Lab"
+	name = "Робототехника"
 	icon_state = "robo"
 	area_icon_text = "ROBO"
 	request_console_flags = RC_SUPPLY
 	request_console_name = "Robotics"
 
 /area/station/science/robotics/chargebay
-	name = "\improper Mech Bay"
+	name = "Мех. Отсек РНД"
 	icon_state = "mechbay"
 	area_icon_text = "MECH\nBAY"
 
 /area/station/science/robotics/showroom
-	name = "\improper Robotics Showroom"
+	name = "Салон Робототехники"
 	icon_state = "showroom"
 	area_icon_text = "SHOW\nROOM"
 
 /area/station/science/research
-	name = "Research Division"
+	name = "Отдел Исследований"
 	icon_state = "sci"
 	area_icon_text = "SCI"
 
 /area/station/science/lobby
-	name = "Research Division Lobby"
+	name = "Фойе Отдела Исследований"
 	icon_state = "sci"
 
 /area/station/science/testrange
-	name = "Research Test Range"
+	name = "Отдел Исследовательских Испытаний"
 	icon_state = "sci"
 
 /area/station/science/break_room
-	name = "\improper Science Break Room"
+	name = "Комната Отдыха РНД"
 	icon_state = "scibreak"
 	area_icon_text = "SCI\nBREAK"
 
 /area/station/science/genetics
-	name = "\improper Genetics Lab"
+	name = "Лаборатория Генетики"
 	icon_state = "genetics"
 	area_icon_text = "GENES"
 	request_console_flags = RC_ASSIST
@@ -48,18 +48,18 @@
 	area_icon_color = AREA_COLOR_SCIENCE
 
 /area/station/science/rnd
-	name = "Research and Development"
+	name = "Отдел Исследований"
 	icon_state = "rnd"
 	area_icon_text = "RND"
 	request_console_flags = RC_SUPPLY
 	request_console_name = "Science"
 
 /area/station/science/hallway
-	name = "\improper Research Lab"
+	name = "Коридор РНД"
 	icon_state = "sci"
 
 /area/station/science/xenobiology
-	name = "\improper Xenobiology Lab"
+	name = "Лаборатория Ксенобиологии"
 	icon_state = "xenobio"
 	area_icon_text = "XENO\nBIO"
 	xenobiology_compatible = TRUE
@@ -67,48 +67,48 @@
 	request_console_name = "Xenobiology"
 
 /area/station/science/storage
-	name = "\improper Science Toxins Storage"
+	name = "Хранилище Токсинов РНД"
 	icon_state = "toxstorage"
 	area_icon_text = "TOXINS\nSTORE"
 
 /area/station/science/toxins/test
-	name = "\improper Toxins Test Area"
+	name = "Тестовая Комната Токиснов РНД"
 	icon_state = "toxtest"
 	area_icon_text = "TOXINS\nTEST"
 	valid_territory = FALSE
 
 /area/station/science/toxins/mixing
-	name = "\improper Toxins Mixing Room"
+	name = "Комната Смешивания Токсинов РНД"
 	icon_state = "toxmix"
 	area_icon_text = "TOXINS\nMIXING"
 	request_console_flags = RC_SUPPLY
 	request_console_name = "Science"
 
 /area/station/science/toxins/launch
-	name = "\improper Toxins Launch Room"
+	name = "Комната Запуска Токсинов РНД"
 	icon_state = "toxlaunch"
 	area_icon_text = "TOXINS\nLAUNCH"
 	request_console_flags = RC_SUPPLY
 	request_console_name = "Science"
 
 /area/station/science/misc_lab
-	name = "\improper Research Testing Lab"
+	name = "Лаборатория Химии РНД"
 	icon_state = "scichem"
 	area_icon_text = "SCI\nCHEM"
 	request_console_flags = RC_SUPPLY
 	request_console_name = "Science"
 
 /area/station/science/test_chamber
-	name = "\improper Research Testing Chamber"
+	name = "Камера Химии РНД"
 	icon_state = "scitest"
 	area_icon_text = "SCI\nTEST"
 
 /area/station/science/server
-	name = "\improper Server Room"
+	name = "Серверная Комната"
 	icon_state = "server"
 	airlock_wires = /datum/wires/airlock/command // Like every one has command doors.
 
 /area/station/science/server/coldroom
-	name = "\improper Server Coldroom"
+	name = "Холодильная Камера Серверной"
 	icon_state = "servercold"
 	area_icon_text = "SERVER\nCOLD"

@@ -7,6 +7,7 @@
 	var/reagent_state = SOLID
 	var/list/data = null
 	var/volume = 0
+	var/reagent_temperature = T20C // SS220 EDIT - for dynamic temperature
 	var/metabolization_rate = REAGENTS_METABOLISM
 	/// The color of the agent outside of containers.
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)

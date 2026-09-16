@@ -1,6 +1,6 @@
 /datum/spell/summonmob
 	name = "Summon Servant"
-	desc = "This spell can be used to call your servant, whenever you need it."
+	desc = "Призывает вашего личного слугу, готового сделать для вас всё что угодно в любое время дня и ночи!"
 	clothes_req = FALSE
 	invocation = "JE VES"
 	invocation_type = "whisper"

@@ -8,7 +8,7 @@
 
 
 /area/space
-	icon_state = "space"
+	icon_state = "Космос"
 	area_icon_text = "SPACE"
 	area_icon_color = AREA_COLOR_TRANSPARENT
 	requires_power = FALSE
@@ -58,7 +58,7 @@
 //SYNDICATES
 
 /area/syndicate_mothership
-	name = "\improper Syndicate Forward Base"
+	name = "Передовая База Синдиката"
 	icon_state = "syndie-ship"
 	area_icon_text = "SYNDI\nSHIP"
 	area_icon_color = AREA_COLOR_SECURITY
@@ -68,7 +68,7 @@
 	ambientsounds = HIGHSEC_SOUNDS
 
 /area/syndicate_mothership/jail
-	name = "\improper Syndicate Jail"
+	name = "Тюрьма Синдиката"
 
 /area/cordon
 	name = "CORDON"

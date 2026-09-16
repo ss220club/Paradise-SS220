@@ -1,11 +1,11 @@
 /datum/weather/solar_flare
-	name = "solar flare"
-	desc = "An intense blast of light and heat from the sun, affecting all space around the station."
+	name = "солнечная вспышка"
+	desc = "Интенсивный поток света и тепла от ближайшей звезды, поражающий всё пространство вокруг станции."
 
 	telegraph_duration = 40 SECONDS
 	telegraph_message = null // handled via event announcement
 
-	weather_message = SPAN_USERDANGER("<i>A solar flare has arrived! Do not conduct space walks or approach windows until the flare has passed!</i>")
+	weather_message = SPAN_USERDANGER("<i>Солнечная вспышка достигла станции! Не выходите в открытый космос и не приближайтесь к иллюминаторам, пока солнечная вспышка не пройдёт!</i>")
 	weather_overlay = "light_ash"
 	weather_duration_lower = 1 MINUTES
 	weather_duration_upper = 5 MINUTES
@@ -61,11 +61,11 @@
 	L.adjustFireLoss(adjusted_damage)
 	L.flash_eyes()
 	if(prob(25))
-		to_chat(L, SPAN_WARNING("The solar flare burns you! Seek shelter!"))
+		to_chat(L, SPAN_WARNING("Солнечная вспышка обжигает вас! Немедленно ищите убежище!"))
 
 /datum/weather/solar_flare/end()
 	if(..())
 		return
-	GLOB.minor_announcement.Announce("The solar flare has passed.", "Solar Flare Advisory")
+	GLOB.minor_announcement.Announce("Солнечная вспышка миновала.", "Предупреждение о солнечной вспышке.")
 	// Ends the temporary 40x increase that happened during the weather event
 	SSsun.solar_gen_rate = initial(SSsun.solar_gen_rate)

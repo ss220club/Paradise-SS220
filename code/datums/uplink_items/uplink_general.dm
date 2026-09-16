@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 	if(hijack_only && !(usr.mind.special_role == SPECIAL_ROLE_NUKEOPS))//nukies get items that regular traitors only get with hijack. If a hijack-only item is not for nukies, then exclude it via the gamemode list.
 		if(!(locate(/datum/objective/hijack) in usr.mind.get_all_objectives() || locate(/datum/objective/nuke) in usr.mind.get_all_objectives()) && U.uplink_type != UPLINK_TYPE_ADMIN)
-			to_chat(usr, SPAN_WARNING("The Syndicate will only issue this extremely dangerous item to agents assigned to hijack the shuttle, or detonate the station's nuclear device."))
+			to_chat(usr, SPAN_WARNING("Синдикат выдаст этот крайне опасный предмет только агентам, которым поручено захватить шаттл или взорвать ядерное устройство станции."))
 			return
 
 	U.uses -= max(cost, 0)
@@ -196,7 +196,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	reference = "SR"
 	desc = "A brutally simple syndicate revolver that fires .357 Magnum cartridges and has 7 chambers. Comes with a spare speed loader."
 	item = /obj/item/storage/box/syndie_kit/revolver
-	cost = 65
+	cost = 70 // SS220 EDIT PRICE UP/DOWN 65 -> 70
 	surplus = 50
 
 /datum/uplink_item/dangerous/rapid
@@ -211,14 +211,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be pocketed when inactive. Activating it produces a loud, distinctive noise."
 	reference = "ES"
 	item = /obj/item/melee/energy/sword/saber
-	cost = 40
+	cost = 45 // SS220 EDIT PRICE UP/DOWN 40 -> 45
 
 /datum/uplink_item/dangerous/dsword
 	name = "Double Energy Sword"
 	desc = "A double-bladed energy sword. More damaging than a standard energy sword, and automatically parries incoming energy weapons fire. Bulk discount applied."
 	reference = "DSRD"
 	item = /obj/item/dualsaber
-	cost = 60
+	cost = 70 // SS220 EDIT PRICE UP/DOWN 15 -> 20
 
 /datum/uplink_item/dangerous/snakefang
 	name = "Snakesfang"
@@ -235,14 +235,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
 	reference = "PF"
 	item = /obj/item/melee/powerfist
-	cost = 50
+	cost = 60 // SS220 EDIT PRICE UP/DOWN 50 -> 60
 
 /datum/uplink_item/dangerous/chainsaw
 	name = "Chainsaw"
 	desc = "A high powered chainsaw for cutting up ...you know...."
 	reference = "CH"
 	item = /obj/item/chainsaw/syndie
-	cost = 65
+	cost = 70 // SS220 EDIT PRICE UP/DOWN 60 -> 70
 	surplus = 0 // This has caused major problems with un-needed chainsaw massacres. Bwoink bait.
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_NINJA)
 	can_discount = FALSE // Too gamer.
@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A universal gun kit, that can be combined with any weapon kit to make a functioning RND gun of your own. Uses built-in hex keys to self assemble, just combine the kits by hitting them together."
 	reference = "IKEA"
 	item = /obj/item/weaponcrafting/gunkit/universal_gun_kit
-	cost = 20
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
 
 /datum/uplink_item/dangerous/batterer
 	name = "Mind Batterer"
@@ -266,7 +266,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A pop-up Syndicate turret that will shoot anyone who didn't prime the grenade. The turret cannot be moved after it's deployed."
 	reference = "MIS"
 	item = /obj/item/grenade/turret
-	cost = 20
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
 
 ////////////////////////////////////////
 // MARK: AMMUNITION
@@ -283,28 +283,28 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are cheap but around half as effective as .357"
 	reference = "10MM"
 	item = /obj/item/ammo_box/magazine/m10mm
-	cost = 3
+	cost = 2 // SS220 EDIT PRICE UP/DOWN 3 -> 2
 
 /datum/uplink_item/ammo/pistolap
 	name = "Stechkin - 10mm Armour Piercing Magazine"
 	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are less effective at injuring the target but penetrate protective gear."
 	reference = "10MMAP"
 	item = /obj/item/ammo_box/magazine/m10mm/ap
-	cost = 6
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 6 -> 5
 
 /datum/uplink_item/ammo/pistolfire
 	name = "Stechkin - 10mm Incendiary Magazine"
 	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with incendiary rounds which ignite the target."
 	reference = "10MMFIRE"
 	item = /obj/item/ammo_box/magazine/m10mm/fire
-	cost = 9
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 9 -> 10
 
 /datum/uplink_item/ammo/pistolhp
 	name = "Stechkin - 10mm Hollow Point Magazine"
 	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds which are more damaging but ineffective against armor."
 	reference = "10MMHP"
 	item = /obj/item/ammo_box/magazine/m10mm/hp
-	cost = 7
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 7 -> 5
 
 /datum/uplink_item/ammo/revolver
 	name = ".357 Revolver - Speedloader"
@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			will instantly put them in your grasp and silence them, as well as causing rapid suffocation. Does not work on those who do not need to breathe."
 	item = /obj/item/garrote
 	reference = "GAR"
-	cost = 30
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15
 	excludefrom = list()
 
 /datum/uplink_item/stealthy_weapons/cameraflash
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An innocent looking toy pistol designed to fire foam darts. Comes loaded with riot grade darts, to incapacitate a target."
 	reference = "FSPI"
 	item = /obj/item/gun/projectile/automatic/toy/pistol/riot
-	cost = 15
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 15 -> 10
 	surplus = 10
 
 /datum/uplink_item/stealthy_weapons/false_briefcase
@@ -369,7 +369,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A modified briefcase capable of storing and firing a gun under a false bottom. Use a screwdriver to pry away the false bottom and make modifications. Distinguishable upon close examination due to the added weight."
 	reference = "FBBC"
 	item = /obj/item/storage/briefcase/false_bottomed
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/stealthy_weapons/soap
 	name = "Syndicate Soap"
@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A Syndicate rapid syringe gun able to fill and fire syringes automatically from an internal reagent reservoir. Comes pre-loaded with 7 empty syringes, and has a maximum capacity of 14 syringes and 300u of reagents."
 	reference = "RSG"
 	item = /obj/item/gun/syringe/rapidsyringe/preloaded/half
-	cost = 60
+	cost = 50 // SS220 EDIT PRICE UP/DOWN 60 -> 50
 
 /datum/uplink_item/stealthy_weapons/poisonbottle
 	name = "Poison Bottle"
@@ -408,14 +408,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "Just add water to make your very own hostile to everything space carp. It looks just like a plushie. The first person to squeeze it will be registered as its owner, who it will not attack. If no owner is registered, it'll just attack everyone."
 	reference = "DSC"
 	item = /obj/item/toy/plushie/carpplushie/dehy_carp
-	cost = 4
+	cost = 2 // SS220 EDIT PRICE UP/DOWN 4 -> 2
 
 /datum/uplink_item/stealthy_weapons/knuckleduster
 	name = "Syndicate Knuckleduster"
 	desc = "A straightforward and fairly concealable melee weapon for bludgeoning someone to death in brutal fashion. This one is designed specifically to cause severe organ damage to the victim."
 	reference = "SKD"
 	item = /obj/item/melee/knuckleduster/syndie
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 ////////////////////////////////////////
 // MARK: GRENADES AND EXPLOSIVES
@@ -444,7 +444,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "The minibomb is a grenade with a five-second fuse."
 	reference = "SMB"
 	item = /obj/item/grenade/syndieminibomb
-	cost = 30
+	cost = 20 // SS220 EDIT PRICE UP/DOWN 30 -> 20
 
 /datum/uplink_item/explosives/frag_grenade
 	name = "Fragmentation Grenade"
@@ -465,7 +465,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A pizza box with a bomb taped inside of it. The timer needs to be set by opening the box; afterwards, opening the box again will trigger the detonation."
 	reference = "PB"
 	item = /obj/item/pizzabox/pizza_bomb
-	cost = 30
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15
 	surplus = 80
 
 /datum/uplink_item/explosives/atmosn2ogrenades
@@ -481,7 +481,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			security's energy weapons, and silicon lifeforms when you're in a tight spot."
 	reference = "EMPK"
 	item = /obj/item/storage/box/syndie_kit/emp
-	cost = 10
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 10 -> 15
 
 /datum/uplink_item/explosives/emp/New()
 	..()
@@ -494,7 +494,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Will release a plume of smoke that applies tar to a wide area, severely slowing down movement. Makes for the ultimate getaway!"
 	reference = "TARG"
 	item = /obj/item/grenade/chem_grenade/tar
-	cost = 7
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 7 -> 5
 	excludefrom = list()
 
 ////////////////////////////////////////
@@ -528,7 +528,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A stolen Nanotrasen Security HUD with Syndicate chameleon technology implemented into it. Similarly to a chameleon jumpsuit, the HUD can be morphed into various other eyewear, while retaining the HUD qualities when worn."
 	reference = "CHHUD"
 	item = /obj/item/clothing/glasses/hud/security/chameleon
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/stealthy_tools/thermal
 	name = "Thermal Chameleon Glasses"
@@ -551,14 +551,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and can copy access from other identification cards. The access is cumulative, so scanning one card does not erase the access gained from another."
 	reference = "AIDC"
 	item = /obj/item/card/id/syndicate
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/stealthy_tools/chameleon_proj
 	name = "Chameleon-Projector"
 	desc = "Projects an image across a user, disguising them as an object scanned with it, as long as they don't move the projector from their hand. The disguised user cannot run and projectiles pass over them."
 	reference = "CP"
 	item = /obj/item/chameleon
-	cost = 25
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 25 -> 15
 	excludefrom = list()
 
 /datum/uplink_item/stealthy_tools/chameleon_counter
@@ -566,7 +566,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "This device disguises itself as any object scanned by it. The disguise is not a perfect replica and can be noticed when examined by an observer."
 	reference = "CC"
 	item = /obj/item/chameleon_counterfeiter
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/stealthy_tools/camera_bug
 	name = "Camera Bug"
@@ -582,7 +582,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A syringe with one injection that randomizes appearance and name upon use. A cheaper but less versatile alternative to an agent card and voice changer."
 	reference = "DNAS"
 	item = /obj/item/dnascrambler
-	cost = 7
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 7 -> 5
 	excludefrom = list()
 
 /datum/uplink_item/stealthy_tools/smugglersatchel
@@ -599,7 +599,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		Useful for disrupting headsets, cameras, and borgs during stealth operations."
 	reference = "EMPL"
 	item = /obj/item/flashlight/emp
-	cost = 20
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
 	surplus = 30
 
 /datum/uplink_item/stealthy_tools/emplight/New()
@@ -653,7 +653,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "The access tuner is a small device that can interface with airlocks from range. It takes a few seconds to connect and can change the bolt state, open the door, or toggle emergency access."
 	reference = "HACK"
 	item = /obj/item/door_remote/omni/access_tuner
-	cost = 30
+	cost = 20 // SS220 EDIT PRICE UP/DOWN 30 -> 20
 
 /datum/uplink_item/device_tools/toolbox
 	name = "Fully Loaded Toolbox"
@@ -667,14 +667,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "The Syndicate surgery duffel bag comes with a full set of surgery tools, a straightjacket and a muzzle. The bag itself is also made of very light materials and won't slow you down while it is equipped."
 	reference = "SSDB"
 	item = /obj/item/storage/backpack/duffel/syndie/med/surgery
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/device_tools/bonerepair
 	name = "Prototype Nanite Autoinjector"
 	desc = "Stolen prototype full body repair nanites. On injection it will shut down body systems as it revitilizes limbs and organs. Heals organics organs, cybernetic organs, and limbs to fully operational conditions."
 	reference = "NCAI"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/nanocalcium
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	excludefrom = list()
 
 /datum/uplink_item/device_tools/syndicate_teleporter
@@ -686,7 +686,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Comes with free chameleon mesons, to help you stay stylish while seeing through walls."
 	reference = "TELE"
 	item = /obj/item/storage/box/syndie_kit/teleporter
-	cost = 40
+	cost = 50 // SS220 EDIT PRICE UP/DOWN 40 -> 50
 
 /datum/uplink_item/device_tools/organ_extractor
 	name = "Organ Extractor"
@@ -694,14 +694,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	Stored organs can be implanted into the user, or into other targets. Synthesizes chemicals to keep the organs fresh."
 	reference = "OREX"
 	item = /obj/item/organ_extractor
-	cost = 20
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 20 -> 10
 
 /datum/uplink_item/device_tools/c_foam_launcher
 	name = "C-Foam Launcher"
 	desc = "A gun that shoots blobs of foam. Will block airlocks, and slow down humanoids. Not rated for xenomorph usage."
 	reference = "CFOAM"
 	item = /obj/item/gun/projectile/c_foam_launcher
-	cost = 25
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 25 -> 15
 
 /datum/uplink_item/device_tools/tar_spray
 	name = "Sticky Tar Applicator"
@@ -717,7 +717,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A key, that when inserted into a radio headset, allows you to listen to and talk with artificial intelligences and cybernetic organisms in binary. To talk on the binary channel, type :+ before your radio message."
 	reference = "BITK"
 	item = /obj/item/encryptionkey/binary
-	cost = 25
+	cost = 10 // SS220 EDIT PRICE UP/DOWN 25 -> 10
 	surplus = 75
 
 /datum/uplink_item/device_tools/cipherkey
@@ -725,7 +725,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A key, that when inserted into a radio headset, allows you to listen to all station department channels as well as talk on an encrypted Syndicate channel."
 	reference = "SEK"
 	item = /obj/item/encryptionkey/syndicate
-	cost = 10 //Nowhere near as useful as the Binary Key!
+	cost = 5 //Nowhere near as useful as the Binary Key! // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	surplus = 75
 
 /datum/uplink_item/device_tools/hacked_module
@@ -776,7 +776,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "When turned on this device will scramble any outgoing radio communications near you, making them hard to understand."
 	reference = "RJ"
 	item = /obj/item/jammer
-	cost = 20
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 	excludefrom = list()
 
 /datum/uplink_item/device_tools/decoy_nade
@@ -784,7 +784,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A box of five grenades that can be configured to reproduce many suspicious sounds at varying rates."
 	reference = "DCY"
 	item = /obj/item/storage/box/syndie_kit/decoy
-	cost = 20
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 20 -> 5
 	excludefrom = list()
 
 ////////////////////////////////////////
@@ -803,14 +803,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			sightings, however. "
 	reference = "SS"
 	item = /obj/item/storage/box/syndie_kit/space
-	cost = 20
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 
 /datum/uplink_item/suits/thermal
 	name = "MODsuit Thermal Visor Module"
 	desc = "A visor for a MODsuit. Lets you see living beings through walls. Also provides night vision."
 	reference = "MSTV"
 	item = /obj/item/mod/module/visor/thermal
-	cost = 15 // Don't forget, you need to get a modsuit to go with this
+	cost = 10 // Don't forget, you need to get a modsuit to go with this // SS220 EDIT PRICE UP/DOWN 15 -> 10
 	excludefrom = list()
 
 /datum/uplink_item/suits/night
@@ -827,14 +827,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	you will have to take that module out first."
 	reference = "MSPC"
 	item = /obj/item/mod/module/plate_compression
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/suits/chameleon_module
 	name = "MODsuit Chameleon Module"
 	desc = "A module using chameleon technology to disguise an undeployed MODsuit as another object. Note: the disguise will not work once the MODsuit is deployed, but can be toggled again when retracted."
 	reference = "MSCM"
 	item = /obj/item/mod/module/chameleon
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	excludefrom = list()
 
 /datum/uplink_item/suits/noslip
@@ -873,7 +873,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A module that dispenses primed smoke grenades to disperse crowds."
 	reference = "SGM"
 	item = /obj/item/mod/module/dispenser/smoke
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 	excludefrom = list()
 
 ////////////////////////////////////////
@@ -889,21 +889,21 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can be activated up to 4 times."
 	reference = "FI"
 	item = /obj/item/bio_chip_implanter/freedom
-	cost = 25
+	cost = 20 // SS220 EDIT PRICE UP/DOWN 25 -> 20
 
 /datum/uplink_item/bio_chips/protofreedom
 	name = "Prototype Freedom Bio-chip"
 	desc = "A prototype bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can only be activated a singular time."
 	reference = "PFI"
 	item = /obj/item/bio_chip_implanter/freedom/prototype
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/bio_chips/storage
 	name = "Storage Bio-chip"
 	desc = "A bio-chip injected into the body, and later activated at the user's will. It will open a small subspace pocket capable of storing two items."
 	reference = "ESI"
 	item = /obj/item/bio_chip_implanter/storage
-	cost = 40
+	cost = 30 // SS220 EDIT PRICE UP/DOWN 40 -> 30
 	excludefrom = list()
 
 /datum/uplink_item/bio_chips/mindslave
@@ -911,7 +911,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A box containing a bio-chip implanter filled with a mindslave bio-chip that when injected into another person makes them loyal to you and your cause, unless of course they're already implanted by someone else. Loyalty ends if the implant is no longer in their system."
 	reference = "MI"
 	item = /obj/item/bio_chip_implanter/traitor
-	cost = 50
+	cost = 40 // SS220 EDIT PRICE UP/DOWN 50 -> 40
 
 /datum/uplink_item/bio_chips/adrenal
 	name = "Adrenal Bio-chip"
@@ -925,7 +925,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A single-use bio-chip injected into the body and later activated manually to inject a chemical cocktail. This one has a worse healing effect than regular adrenaline. It can be activated once for 3/4 of the effect of the original."
 	reference = "BAI"
 	item = /obj/item/bio_chip_implanter/basic_adrenalin
-	cost = 20
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 	can_discount = FALSE
 
 /datum/uplink_item/bio_chips/proto_adrenal
@@ -933,7 +933,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A old prototype of the Adrenalin implant, that grants the user 4 seconds of antistun, getting them back on their feet instantly once, but nothing more. Speed and healing sold separately."
 	reference = "PAI"
 	item = /obj/item/bio_chip_implanter/proto_adrenalin
-	cost = 10
+	cost = 5 // SS220 EDIT PRICE UP/DOWN 10 -> 5
 
 /datum/uplink_item/bio_chips/stealthimplant
 	name = "Stealth Bio-chip"
@@ -958,7 +958,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	Will not show on unupgraded body scanners. Incompatible with the Qani-Laaca Sensory Computer."
 	reference = "HKR"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/hackerman_deck
-	cost = 30 // Probably slightly less useful than an emag with heat / cooldown, but I am not going to make it cheaper or everyone picks it over emag
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 30 -> 15 // Probably slightly less useful than an emag with heat / cooldown, but I am not going to make it cheaper or everyone picks it over emag
 
 /datum/uplink_item/cyber_implants/razorwire
 	name = "Razorwire Spool Arm Implant Autoimplanter"
@@ -967,7 +967,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		even from a few steps away. However, results against anything more durable will heavily vary."
 	reference = "RZR"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/razorwire
-	cost = 20
+	cost = 15 // SS220 EDIT PRICE UP/DOWN 20 -> 15
 	excludefrom = list()
 
 /datum/uplink_item/cyber_implants/scope_eyes
@@ -988,7 +988,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	Can be used to parry incoming melee attacks."
 	reference = "MBK"
 	item = /obj/item/storage/box/syndie_kit/syndie_mantis
-	cost = 50
+	cost = 35 // SS220 EDIT PRICE UP/DOWN 50 -> 35
 	surplus = 0
 	can_discount = FALSE
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_NINJA)

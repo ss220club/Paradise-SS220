@@ -52,7 +52,7 @@
 	category = list("initial","Food")
 
 /datum/design/monkey_cube
-	name = "Monkey cube"
+	name = "Кубик обезьяны"
 	id = "mcube"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 250)
@@ -60,7 +60,7 @@
 	category = list("initial", "Food")
 
 /datum/design/farwa_cube
-	name = "Farwa cube"
+	name = "Кубик фарвы"
 	id = "fcube"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 250)
@@ -68,7 +68,7 @@
 	category = list("initial", "Food")
 
 /datum/design/wolpin_cube
-	name = "Wolpin cube"
+	name = "Кубик вольпина"
 	id = "wcube"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 250)
@@ -76,7 +76,7 @@
 	category = list("initial", "Food")
 
 /datum/design/stok_cube
-	name = "Stok cube"
+	name = "Кубик стока"
 	id = "scube"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 250)
@@ -84,7 +84,7 @@
 	category = list("initial", "Food")
 
 /datum/design/neaera_cube
-	name = "Neaera cube"
+	name = "Кубик неары"
 	id = "ncube"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 250)
@@ -92,7 +92,7 @@
 	category = list("initial", "Food")
 
 /datum/design/nian_wormecube
-	name = "Nian worme cube"
+	name = "Кубик нимфы ниан"
 	id = "nwcube"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 250)

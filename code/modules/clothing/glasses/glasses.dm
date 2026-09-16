@@ -30,6 +30,7 @@
 		I.forceMove(src)
 	prescription = TRUE
 	name = "prescription [initial(name)]"
+	rebuild_ru_names(initial(name), suffix = " с коррекционными линзами") //SS220 EDIT - Перевод соединения рецептурных очков с другими
 
 /obj/item/clothing/glasses/proc/remove_prescription(mob/living/user)
 	var/obj/item/clothing/glasses/regular/prescription_glasses = locate() in src

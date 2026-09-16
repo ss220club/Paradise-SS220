@@ -75,8 +75,8 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 		A.close()
 	var/list/ert_species_prefs = list()
 	for(var/mob/M in GLOB.response_team_members)
-		ert_species_prefs.Add(input_async(M, "Please select a species (10 seconds):", list("Human", "Tajaran", "Skrell", "Unathi", "Diona", "Vulpkanin", "Nian", "Drask", "Kidan", "Grey", "Skkulakin", "Random")))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(get_ert_role_prefs), GLOB.response_team_members, ert_gender_prefs, ert_species_prefs), 10 SECONDS)
+		ert_species_prefs.Add(input_async(M, "Please select a species (10 seconds):", list("Human"))) // SS220 EDIT - Human only ERT
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(get_ert_role_prefs), GLOB.response_team_members, ert_gender_prefs, ert_species_prefs), 0 SECONDS) // SS220 EDIT - Human only ERT
 
 /proc/get_ert_role_prefs(list/response_team_members, list/ert_gender_prefs, list/ert_species_prefs) // Why the FUCK is this variable the EXACT SAME as the global one
 	var/list/ert_role_prefs = list()
@@ -243,12 +243,12 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 	if(silent)
 		message_admins("A silent response team failed to spawn. Likely, no one signed up.")
 		return
-	GLOB.major_announcement.Announce("[station_name()], we are unfortunately unable to send you an Emergency Response Team at this time.", "ERT Unavailable")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. К сожалению, в настоящее время мы не можем направить к вам отряд быстрого реагирования.", "ОБР недоступен.")
 
 /datum/response_team/proc/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Attention, [station_name()]. We are sending a team of highly trained assistants to aid(?) you. Standby.", "ERT En-Route")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем команду высококвалифицированных ассистентов для оказания помощи(?). Ожидайте.", "ОБР в пути.")
 
 // -- AMBER TEAM --
 
@@ -263,7 +263,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 /datum/response_team/amber/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Attention, [station_name()]. We are sending a code AMBER light Emergency Response Team. Standby.", "ERT En-Route")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем стандартный отряд быстрого реагирования кода «ЭМБЕР». Ожидайте.", "ОБР в пути.")
 
 // -- RED TEAM --
 
@@ -279,7 +279,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 /datum/response_team/red/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Attention, [station_name()]. We are sending a code RED Emergency Response Team. Standby.", "ERT En-Route")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем усиленный отряд быстрого реагирования кода «РЭД». Ожидайте.", "ОБР в пути.")
 
 // -- GAMMA TEAM --
 
@@ -295,7 +295,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 /datum/response_team/gamma/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Attention, [station_name()]. We are sending a code GAMMA elite Emergency Response Team. Standby.", "ERT En-Route")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем элитный отряд быстрого реагирования кода «ГАММА». Ожидайте.", "ОБР в пути.")
 
 /datum/outfit/job/response_team
 	name = "Response team"

@@ -4,9 +4,9 @@
 ///////////////////////////////////
 
 /datum/mutation/nobreath
-	name = "No Breathing"
-	activation_messages = list("You feel no need to breathe.")
-	deactivation_messages = list("You feel the need to breathe, once more.")
+	name = "Недышащий"
+	activation_messages = list("Вам больше не нужно дышать.")
+	deactivation_messages = list("Вы вновь чувствуете потребность в дыхании.")
 	instability = GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_NOBREATH)
 
@@ -16,9 +16,9 @@
 
 
 /datum/mutation/regenerate
-	name = "Regenerate"
-	activation_messages = list("Your wounds start healing.")
-	deactivation_messages = list("Your regenerative powers feel like they've vanished.")
+	name = "Регенерация"
+	activation_messages = list("Ваши раны начинают заживать.")
+	deactivation_messages = list("Ваши регенеративные способности словно исчезли.")
 	instability = GENE_INSTABILITY_MINOR
 
 /datum/mutation/regenerate/New()
@@ -34,9 +34,9 @@
 	H.adjustFireLoss(-1)
 
 /datum/mutation/heat_resist
-	name = "Heat Resistance"
-	activation_messages = list("Your skin is icy to the touch.")
-	deactivation_messages = list("Your skin no longer feels icy to the touch.")
+	name = "Термостойкость"
+	activation_messages = list("Ваше тело кажется ледяным на ощупь.")
+	deactivation_messages = list("Ваше тело больше не кажется ледяным на ощупь.")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE)
 
@@ -48,9 +48,9 @@
 	return "cold_s"
 
 /datum/mutation/cold_resist
-	name = "Cold Resistance"
-	activation_messages = list("Your body is filled with warmth.")
-	deactivation_messages = list("Your body is no longer filled with warmth.")
+	name = "Хладостойкость"
+	activation_messages = list("Ваше тело наполнено теплом.")
+	deactivation_messages = list("Ваше тело более не наполнено теплом.")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_RESISTCOLD, TRAIT_RESISTLOWPRESSURE)
 
@@ -62,9 +62,9 @@
 	return "fire_s"
 
 /datum/mutation/noprints
-	name = "No Prints"
-	activation_messages = list("Your fingers feel numb.")
-	deactivation_messages = list("Your fingers no longer feel numb.")
+	name = "Размытые отпечатки"
+	activation_messages = list("Узор на ваших пальцах будто бы сросся.")
+	deactivation_messages = list("Рельеф кожи на ваших пальцах вновь индивидуален.")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_NOFINGERPRINTS)
 
@@ -73,9 +73,9 @@
 	block = GLOB.noprintsblock
 
 /datum/mutation/noshock
-	name = "Shock Immunity"
-	activation_messages = list("Your skin feels dry and unreactive.")
-	deactivation_messages = list("Your skin no longer feels dry and unreactive.")
+	name = "Электроустойчивость"
+	activation_messages = list("Ваша кожа ощущается сухой и резиновой.")
+	deactivation_messages = list("Ваша кожа более не ощущается сухой и резиновой.")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_SHOCKIMMUNE)
 
@@ -84,9 +84,9 @@
 	block = GLOB.shockimmunityblock
 
 /datum/mutation/dwarf
-	name = "Dwarf"
-	activation_messages = list("Everything around you seems bigger now...")
-	deactivation_messages = list("Everything around you seems to shrink...")
+	name = "Карлик"
+	activation_messages = list("Всё вокруг вдруг стало больше...")
+	deactivation_messages = list("Вокруг вас будто бы всё уменьшилось...")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_DWARF)
 
@@ -108,9 +108,9 @@
 
 // OLD HULK BEHAVIOR
 /datum/mutation/hulk
-	name = "Hulk"
-	activation_messages = list("Your muscles hurt.")
-	deactivation_messages = list("Your muscles shrink.")
+	name = "Халк"
+	activation_messages = list("У вас болят мышцы.")
+	deactivation_messages = list("Ваши мышцы сокращаются.")
 	instability = GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_HULK, TRAIT_CHUNKYFINGERS)
 
@@ -138,12 +138,12 @@
 		M.update_mutations()		//update our mutation overlays
 		M.update_body()
 		M.status_flags |= CANSTUN | CANWEAKEN | CANPARALYSE | CANPUSH //temporary fix until the problem can be solved.
-		to_chat(M, SPAN_DANGER("You suddenly feel very weak."))
+		to_chat(M, SPAN_DANGER("Внезапно вы ощущаете сильную слабость."))
 
 /datum/mutation/tk
-	name = "Telekenesis"
-	activation_messages = list("You feel smarter.")
-	deactivation_messages = list("You feel dumber.")
+	name = "Телекинез"
+	activation_messages = list("Ваш разум расширяется.")
+	deactivation_messages = list("Ваш разум сужается.")
 	instability = GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_TELEKINESIS)
 
@@ -158,9 +158,9 @@
 
 // WAS: /datum/bioEffect/alcres
 /datum/mutation/sober
-	name = "Sober"
-	activation_messages = list("You feel unusually sober.")
-	deactivation_messages = list("You feel like you could use a stiff drink.")
+	name = "Трезвость"
+	activation_messages = list("Вы чувствуете себя необычайно трезвым.")
+	deactivation_messages = list("Вам бы не помешало крепко выпить...")
 	instability = GENE_INSTABILITY_MINOR
 
 	traits_to_add = list(TRAIT_ALCOHOL_TOLERANCE)
@@ -171,10 +171,10 @@
 
 //WAS: /datum/bioEffect/psychic_resist
 /datum/mutation/psychic_resist
-	name = "Psy-Resist"
-	desc = "Boosts efficiency in sectors of the brain commonly associated with meta-mental energies."
-	activation_messages = list("Your mind feels closed.")
-	deactivation_messages = list("You feel oddly exposed.")
+	name = "Пси-Устойчивость"
+	desc = "Повышает стойкость в тех областях мозга, которые обычно связаны с мыслительными процессами."
+	activation_messages = list("Чертоги разума были закрыты.")
+	deactivation_messages = list("Секреты вашего разума вновь раскрыты.")
 	instability = GENE_INSTABILITY_MINOR
 
 /datum/mutation/psychic_resist/New()
@@ -201,10 +201,10 @@
 
 // WAS: /datum/bioEffect/darkcloak
 /datum/mutation/stealth/darkcloak
-	name = "Cloak of Darkness"
-	desc = "Enables the subject to bend low levels of light around themselves, creating a cloaking effect."
-	activation_messages = list("You begin to fade into the shadows.")
-	deactivation_messages = list("You become fully visible.")
+	name = "Плащ Тьмы"
+	desc = "Позволяет объекту преломлять слабый свет вокруг себя, создавая эффект маскировки."
+	activation_messages = list("Вы начинаете растворяться в тенях.")
+	deactivation_messages = list("Тьма более не укрывает вас.")
 
 /datum/mutation/stealth/darkcloak/New()
 	..()
@@ -236,10 +236,10 @@
 
 //WAS: /datum/bioEffect/chameleon
 /datum/mutation/stealth/chameleon
-	name = "Chameleon"
-	desc = "The subject becomes able to subtly alter light patterns to become invisible, as long as they remain still."
-	activation_messages = list("You feel one with your surroundings.")
-	deactivation_messages = list("You feel oddly visible.")
+	name = "Хамелеон"
+	desc = "Гуманоид приобретает способность незаметно изменять световые узоры, становясь невидимым, при условии, что он остается неподвижным."
+	activation_messages = list("Вы чувствуете единство с окружением.")
+	deactivation_messages = list("Вы вновь открыты и видны другим.")
 
 /datum/mutation/stealth/chameleon/New()
 	..()
@@ -283,10 +283,10 @@
 
 // WAS: /datum/bioEffect/cryokinesis
 /datum/mutation/grant_spell/cryo
-	name = "Cryokinesis"
-	desc = "Allows the subject to lower the body temperature of others."
-	activation_messages = list("You notice a strange cold tingle in your fingertips.")
-	deactivation_messages = list("Your fingers feel warmer.")
+	name = "Криокинез"
+	desc = "Позволяет вам понижать температуру тела других гуманоидов."
+	activation_messages = list("Вы ощущаете странное холодное покалывание на кончиках пальцев.")
+	deactivation_messages = list("Ваши пальцы вновь отдают теплом.")
 	instability = GENE_INSTABILITY_MODERATE
 	spelltype = /datum/spell/cryokinesis
 
@@ -295,16 +295,16 @@
 	block = GLOB.cryoblock
 
 /datum/spell/cryokinesis
-	name = "Cryokinesis"
-	desc = "Drops the bodytemperature of another person."
+	name = "Криокинез"
+	desc = "Понижает температуру другого гуманоида."
 
 	base_cooldown = 1200
 
 	clothes_req = FALSE
 	antimagic_flags = NONE
 
-	selection_activated_message		= SPAN_NOTICE("Your mind grow cold. Click on a target to cast the spell.")
-	selection_deactivated_message	= SPAN_NOTICE("Your mind returns to normal.")
+	selection_activated_message		= SPAN_NOTICE("Ваш разум охлаждается. Нажмите на вашу цель для применения способности!")
+	selection_deactivated_message	= SPAN_NOTICE("Ваш разум возвращается к норме.")
 	var/list/compatible_mobs = list(/mob/living/carbon/human)
 
 	action_icon_state = "genetic_cryo"
@@ -323,7 +323,7 @@
 	var/mob/living/carbon/C = targets[1]
 
 	if(HAS_TRAIT(C, TRAIT_RESISTCOLD))
-		C.visible_message(SPAN_WARNING("A cloud of fine ice crystals engulfs [C.name], but disappears almost instantly!"))
+		C.visible_message(SPAN_WARNING("Облако ледяных кристаллов окутывает [C.name], но пропадает почти мгновенно!"))
 		return
 	var/handle_suit = FALSE
 	if(ishuman(C))
@@ -332,11 +332,11 @@
 			if(istype(H.wear_suit, /obj/item/clothing/suit/space))
 				handle_suit = TRUE
 				if(H.internal)
-					H.visible_message(SPAN_WARNING("[user] sprays a cloud of fine ice crystals, engulfing [H]!"),
-										SPAN_NOTICE("[user] sprays a cloud of fine ice crystals over your [H.head]'s visor."))
+					H.visible_message(SPAN_WARNING("[user] распыляет облако мелких ледяных кристаллов, охватывая им [H]!"),
+										SPAN_NOTICE("[user] распыляет облако мелких ледяных кристаллов над вашим [H.head]"))
 				else
-					H.visible_message(SPAN_WARNING("[user] sprays a cloud of fine ice crystals engulfing, [H]!"),
-										SPAN_WARNING("[user] sprays a cloud of fine ice crystals cover your [H.head]'s visor and make it into your air vents!."))
+					H.visible_message(SPAN_WARNING("[user] распыляет облако мелких ледяных кристаллов, охватывая им [H]!"),
+										SPAN_WARNING("[user] распыляет облако мелких ледяных кристаллов над вашим [H.head], проникающее в вашу систему дыхания!."))
 
 					H.bodytemperature = max(0, H.bodytemperature - 100)
 				add_attack_logs(user, C, "Cryokinesis")
@@ -344,17 +344,17 @@
 		C.bodytemperature = max(0, C.bodytemperature - 200)
 		C.ExtinguishMob()
 
-		C.visible_message(SPAN_WARNING("[user] sprays a cloud of fine ice crystals, engulfing [C]!"))
+		C.visible_message(SPAN_WARNING("[user] распыляет облако мелких ледяных кристаллов, охватывая им [C]!"))
 		add_attack_logs(user, C, "Cryokinesis- NO SUIT/INTERNALS")
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 // WAS: /datum/bioEffect/mattereater
 /datum/mutation/grant_spell/mattereater
-	name = "Matter Eater"
-	desc = "Allows the subject to eat just about anything without harm."
-	activation_messages = list("You feel hungry.")
-	deactivation_messages = list("You don't feel quite so hungry anymore.")
+	name = "Пожиратель материи"
+	desc = "Позволяет субъекту поедать всё что угодно без каких-либо последствий."
+	activation_messages = list("Вас одолевает голод.")
+	deactivation_messages = list("Вы уже не так сильно и голодны.")
 	instability = GENE_INSTABILITY_MODERATE
 
 	spelltype=/datum/spell/eat
@@ -382,8 +382,8 @@
 
 
 /datum/spell/eat
-	name = "Eat"
-	desc = "Eat just about anything!"
+	name = "Поедание"
+	desc = "Съешь практически что угодно!"
 
 	base_cooldown = 300
 
@@ -413,7 +413,7 @@
 			return TRUE
 
 	if(show_message)
-		to_chat(C, SPAN_WARNING("Your mouth is covered, preventing you from eating!"))
+		to_chat(C, SPAN_WARNING("Ваш рот чем-то закрыт, препятствуя вашему чревоугодию!"))
 	return FALSE
 
 /datum/spell/eat/proc/doHeal(mob/user)
@@ -434,40 +434,40 @@
 
 /datum/spell/eat/cast(list/targets, mob/user = usr)
 	if(!length(targets))
-		to_chat(user, SPAN_NOTICE("No target found in range."))
+		to_chat(user, SPAN_NOTICE("Целей поблизости не найдено."))
 		return
 
 	var/atom/movable/the_item = targets[1]
 	if(!user.Adjacent(the_item))
-		to_chat(user, SPAN_DANGER("You need to be next to [the_item] for this!"))
+		to_chat(user, SPAN_DANGER("Вам нужно быть рядом с [the_item.declent_ru(INSTRUMENTAL)] для этого!"))
 		return FALSE
 	if(ishuman(the_item))
 		var/mob/living/carbon/human/H = the_item
 		var/obj/item/organ/external/limb = H.get_organ(user.zone_selected)
 		if(!istype(limb))
-			to_chat(user, SPAN_WARNING("You can't eat this part of them!"))
+			to_chat(user, SPAN_WARNING("Вы не можете съесть эту часть!"))
 			revert_cast()
 			return FALSE
 		if(istype(limb,/obj/item/organ/external/head))
 			// Bullshit, but prevents being unable to clone someone.
-			to_chat(user, SPAN_WARNING("You try to put \the [limb] in your mouth, but [the_item.p_their()] ears tickle your throat!"))
+			to_chat(user, SPAN_WARNING("Вы попытались проглотить голову [the_item], но [the_item.ru_p_them()] уши защекотали ваше горло!"))
 			revert_cast()
 			return FALSE
 		if(istype(limb,/obj/item/organ/external/chest))
 			// Bullshit, but prevents being able to instagib someone.
-			to_chat(user, SPAN_WARNING("You try to put [the_item.p_their()] [limb] in your mouth, but it's too big to fit!"))
+			to_chat(user, SPAN_WARNING("Вы попытались проглотить [the_item.ru_p_them()] грудную клетку, но это оказалось перебором для вашего рта!"))
 			revert_cast()
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] begins stuffing [the_item]'s [limb.name] into [user.p_their()] gaping maw!"))
+		user.visible_message(SPAN_DANGER("[user.declent_ru(NOMINATIVE)] начинает заглатывать [limb.declent_ru(ACCUSATIVE)] [the_item.declent_ru(GENITIVE)] в свою широко раскрытую пасть!"))
 		if(!do_mob(user, H, EAT_MOB_DELAY))
-			to_chat(user, SPAN_DANGER("You were interrupted before you could eat [the_item]!"))
+			to_chat(user, SPAN_DANGER("Вас потревожили прежде чем вы смогли съесть [limb.declent_ru(ACCUSATIVE)] [the_item]!"))
 		else
 			if(!limb || !H)
 				return
 			if(!user.Adjacent(the_item))
-				to_chat(user, SPAN_DANGER("You need to be next to [the_item] for this!"))
+				to_chat(user, SPAN_DANGER("Вам нужно быть рядом с [the_item.declent_ru(INSTRUMENTAL)] для этого!"))
 				return FALSE
-			user.visible_message(SPAN_DANGER("[user] [pick("chomps","bites")] off [the_item]'s [limb]!"))
+			user.visible_message(SPAN_DANGER("[user] [pick("отгрызает","откусывает")] [limb.declent_ru(ACCUSATIVE)] [the_item]!"))
 			playsound(user.loc, 'sound/items/eatfood.ogg', 50, 0)
 
 			// Most limbs will drop here. Groin won't, but this
@@ -496,9 +496,9 @@
 		var/obj/item/eaten = the_item
 		var/mob/the_owner = the_item.loc
 		if(!the_owner.drop_item_to_ground(eaten, silent = TRUE))
-			to_chat(user, SPAN_WARNING("You can't eat [the_item], it won't go down your throat!"))
+			to_chat(user, SPAN_WARNING("Вы не можете съесть [the_item], оно не пройдет через ваше горло!"))
 			return
-	user.visible_message(SPAN_DANGER("[user] eats [the_item]."))
+	user.visible_message(SPAN_DANGER("[user] съедает [the_item]."))
 	playsound(user.loc, 'sound/items/eatfood.ogg', 50, FALSE)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -515,11 +515,11 @@
 
 //WAS: /datum/bioEffect/jumpy
 /datum/mutation/grant_spell/jumpy
-	name = "Jumpy"
-	desc = "Allows the subject to leap great distances."
+	name = "Прыжок"
+	desc = "Позволяет совершать прыжок на далёкое расстояние."
 	//cooldown = 30
-	activation_messages = list("Your leg muscles feel taut and strong.")
-	deactivation_messages = list("Your leg muscles shrink back to normal.")
+	activation_messages = list("Ваши мышцы ног стали подтянутыми и сильными.")
+	deactivation_messages = list("Ваши мышцы ног вернулись к привычному для них состоянию.")
 	instability = GENE_INSTABILITY_MODERATE
 
 	spelltype =/datum/spell/leap
@@ -529,8 +529,8 @@
 	block = GLOB.jumpblock
 
 /datum/spell/leap
-	name = "Jump"
-	desc = "Leap great distances!"
+	name = "Прыжок"
+	desc = "Преодолевай дальнее расстояние!"
 	base_cooldown = 60
 
 	clothes_req = FALSE
@@ -545,7 +545,7 @@
 /datum/spell/leap/cast(list/targets, mob/living/user = usr)
 	var/failure = FALSE
 	if(ismob(user.loc) || IS_HORIZONTAL(user) || user.IsStunned() || user.buckled || user.stat)
-		to_chat(user, SPAN_WARNING("You can't jump right now!"))
+		to_chat(user, SPAN_WARNING("Вы пока что не можете прыгнуть!"))
 		return
 
 	if(isturf(user.loc))
@@ -557,13 +557,13 @@
 					else
 						M.stop_pulling()
 
-		user.visible_message(SPAN_DANGER("[user.name]</b> takes a huge leap!"))
+		user.visible_message(SPAN_DANGER("[user.name]</b> совершает большой скачок!"))
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 50, 1)
 		if(failure)
 			user.Weaken(10 SECONDS)
-			user.visible_message(SPAN_WARNING("[user] attempts to leap away but is slammed back down to the ground!"),
-								SPAN_WARNING("You attempt to leap away but are suddenly slammed back down to the ground!"),
-								SPAN_NOTICE("You hear the flexing of powerful muscles and suddenly a crash as a body hits the floor."))
+			user.visible_message(SPAN_WARNING("[user] пытается отскочить, но с грохотом теряет равновесие и падает!"),
+								SPAN_WARNING("Вы попытались совершить скачок, но с грохотом потеряли равновесие и упали!"),
+								SPAN_NOTICE("Вы слышите напряжение мускулатуры и внезапный грохот, как только чьё-то тело пикировало на пол."))
 			return FALSE
 		var/prevLayer = user.layer
 		user.layer = 9
@@ -587,7 +587,7 @@
 		user.pixel_y = 0 // In case leap was varedited to be longer or shorter
 
 		if(HAS_TRAIT(user, TRAIT_FAT) && prob(66))
-			user.visible_message(SPAN_DANGER("<b>[user.name]</b> crashes due to [user.p_their()] heavy weight!"))
+			user.visible_message(SPAN_DANGER("<b>[user.name]</b> с грохотом падает из-за [user.ru_p_them()] тяжелого веса!"))
 			//playsound(user.loc, 'zhit.wav', 50, 1)
 			user.AdjustWeakened(20 SECONDS)
 			user.AdjustStunned(10 SECONDS)
@@ -596,10 +596,10 @@
 
 	if(isobj(user.loc))
 		var/obj/container = user.loc
-		to_chat(user, SPAN_WARNING("You leap and slam your head against the inside of [container]! Ouch!"))
+		to_chat(user, SPAN_WARNING("Вы прыгнули и ударились головой внутри [container.declent_ru(GENITIVE)]! Ай!"))
 		user.AdjustParalysis(6 SECONDS)
 		user.AdjustWeakened(10 SECONDS)
-		container.visible_message(SPAN_DANGER("[user.loc]</b> emits a loud thump and rattles a bit."))
+		container.visible_message(SPAN_DANGER("<b>[capitalize(container.declent_ru(NOMINATIVE))]</b> издаёт резкий грохот и дребезжит."))
 		playsound(user.loc, 'sound/effects/bang.ogg', 50, 1)
 		var/wiggle = 6
 		while(wiggle > 0)
@@ -635,13 +635,13 @@
 // WAS: /datum/bioEffect/polymorphism
 
 /datum/mutation/grant_spell/polymorph
-	name = "Polymorphism"
-	desc = "Enables the subject to reconfigure their appearance to mimic that of others."
+	name = "Полиморфизм"
+	desc = "Позволяет изменять свою внешность, чтобы имитировать внешность других людей."
 
 	spelltype =/datum/spell/polymorph
 	//cooldown = 1800
-	activation_messages = list("You don't feel entirely like yourself somehow.")
-	deactivation_messages = list("You feel secure in your identity.")
+	activation_messages = list("Почему-то вы не ощущаете себя в своём теле.")
+	deactivation_messages = list("К вам вернулась уверенность в собственной личности.")
 	instability = GENE_INSTABILITY_MODERATE
 
 /datum/mutation/grant_spell/polymorph/New()
@@ -649,14 +649,14 @@
 	block = GLOB.polymorphblock
 
 /datum/spell/polymorph
-	name = "Polymorph"
-	desc = "Mimic the appearance of others!"
+	name = "Полиморф"
+	desc = "Подражай внешности окружающих!"
 	base_cooldown = 1800
 
 	clothes_req = FALSE
 
-	selection_activated_message		= SPAN_NOTICE("You body becomes unstable. Click on a target to cast transform into them.")
-	selection_deactivated_message	= SPAN_NOTICE("Your body calms down again.")
+	selection_activated_message		= SPAN_NOTICE("Ваше тело колеблется. Выберите вашу цель для подражания её внешности.")
+	selection_deactivated_message	= SPAN_NOTICE("Ваше тело возвращается к покою.")
 
 	antimagic_flags = NONE
 
@@ -673,7 +673,7 @@
 /datum/spell/polymorph/cast(list/targets, mob/user = usr)
 	var/mob/living/carbon/human/target = targets[1]
 
-	user.visible_message(SPAN_WARNING("[user]'s body shifts and contorts."))
+	user.visible_message(SPAN_WARNING("Тело [user] дёргается и искажается."))
 
 	spawn(10)
 		if(target && user)
@@ -687,12 +687,12 @@
 
 // WAS: /datum/bioEffect/empath
 /datum/mutation/grant_spell/empath
-	name = "Empathic Thought"
-	desc = "The subject becomes able to read the minds of others for certain information."
+	name = "Эмпатическое мышление"
+	desc = "Субъект приобретает способность читать мысли других людей и получать определенную информацию."
 
 	spelltype = /datum/spell/empath
-	activation_messages = list("You suddenly notice more about others than you did before.")
-	deactivation_messages = list("You no longer feel able to sense intentions.")
+	activation_messages = list("Внезапно, вы подмечаете больше об окружающих, чем раньше.")
+	deactivation_messages = list("Вы более не способны проникать в разум других.")
 	instability = GENE_INSTABILITY_MINOR
 
 /datum/mutation/grant_spell/empath/New()
@@ -700,8 +700,8 @@
 	block = GLOB.empathblock
 
 /datum/spell/empath
-	name = "Read Mind"
-	desc = "Read the minds of others for information."
+	name = "Чтение мыслей"
+	desc = "Читайте мысли разумных существ для сбора информации о них."
 	base_cooldown = 18 SECONDS
 	clothes_req = FALSE
 	human_req = TRUE
@@ -718,89 +718,104 @@
 /datum/spell/empath/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/M in targets)
 		if(!iscarbon(M))
-			to_chat(user, SPAN_WARNING("You may only use this on other organic beings."))
+			to_chat(user, SPAN_WARNING("Вы можете применить данные силы только к другим гуманоидам."))
 			return
 
 		if(M.dna?.GetSEState(GLOB.psyresistblock))
-			to_chat(user, SPAN_WARNING("You can't see into [M.name]'s mind at all!"))
+			to_chat(user, SPAN_WARNING("Вы никак не можете проникнуть в разум [M.name]!"))
 			return
 
 		if(M.stat == DEAD)
-			to_chat(user, SPAN_WARNING("[M.name] is dead and cannot have [M.p_their()] mind read."))
+			to_chat(user, SPAN_WARNING("[M.name] мёртв и в [M.ru_p_them()] разум невозможно проникнуть."))
 			return
 		if(M.health < 0)
-			to_chat(user, SPAN_WARNING("[M.name] is dying, and [M.p_their()] thoughts are too scrambled to read."))
+			to_chat(user, SPAN_WARNING("[M.name] на грани смерти и [M.ru_p_them()] мысли слишком запутаны для считывания."))
 			return
 
-		to_chat(user, SPAN_NOTICE("Mind Reading of <b>[M.name]:</b>"))
+		to_chat(user, SPAN_NOTICE("Чтение мыслей <b>[M.name]:</b>"))
 
 		var/pain_condition = M.health / M.maxHealth
 		// lower health means more pain
-		var/list/randomthoughts = list("what to have for lunch","the future","the past","money",
-		"[M.p_their()] hair","what to do next","[M.p_their()] job","space","amusing things","sad things",
-		"annoying things","happy things","something incoherent","something [M.p_they()] did wrong")
-		var/thoughts = "thinking about [pick(randomthoughts)]"
+		var/list/randomthoughts = list("чем бы перекусить","дальнейшее будущее","своё прошлое","денежный достаток",
+		"свой стиль причёски","чем бы заняться","своё рабочее положение","необъятность космоса","нечто прекрасное","и грустит о чём-то",
+		"тяготы своей жизни","и радуется простым вещам","какую-то бессмыслицу","свои неудачи")
+		var/thoughts = "обдумывает [pick(randomthoughts)]"
 
 		if(M.fire_stacks)
 			pain_condition -= 0.5
-			thoughts = "preoccupied with the fire"
+			thoughts = "озабочен собственным возгоранием"
 
 		if(M.radiation)
 			pain_condition -= 0.25
 
 		switch(pain_condition)
 			if(0.81 to INFINITY)
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] feels good."))
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] в порядке."))
 			if(0.61 to 0.8)
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] is suffering mild pain."))
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] испытывает лёгкую боль."))
 			if(0.41 to 0.6)
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] is suffering significant pain."))
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] испытывает сильную боль."))
 			if(0.21 to 0.4)
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] is suffering severe pain."))
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] страдает от серьёзной боли."))
 			else
-				to_chat(user, SPAN_NOTICE("<b>Condition</b>: [M.name] is suffering excruciating pain."))
-				thoughts = "haunted by [M.p_their()] own mortality"
+				to_chat(user, SPAN_NOTICE("<b>Состояние</b>: [M.name] мучается и едва держит себя в руках."))
+				thoughts = "К [M.name] пришло осознание [M.ru_p_them()] бессилия пред собственной смертностью."
 
 		switch(M.a_intent)
 			if(INTENT_HELP)
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: You sense benevolent thoughts from [M.name]."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] доброжелательно оценивает обстановку."))
 			if(INTENT_DISARM)
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: You sense cautious thoughts from [M.name]."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] проявляет осторожность и вдумчивость."))
 			if(INTENT_GRAB)
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: You sense hostile thoughts from [M.name]."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] концентрируется на окружении и захвате."))
 			if(INTENT_HARM)
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: You sense cruel thoughts from [M.name]."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] испытывает напряжение и настраивается на бой."))
 				for(var/mob/living/L in view(7,M))
 					if(L == M)
 						continue
-					thoughts = "thinking about punching [L.name]"
+					thoughts = "думает ударить [L.name]"
 					break
 			else
-				to_chat(user, SPAN_NOTICE("<b>Mood</b>: You sense strange thoughts from [M.name]."))
+				to_chat(user, SPAN_NOTICE("<b>Настрой</b>: [M.name] мыслит странно и непредсказуемо."))
 
 		if(ishuman(M))
 			var/numbers[0]
+//SS220 EDIT START - Небольшая редакция для перевода гена
+			var/text_numbers = ""
+
 			var/mob/living/carbon/human/H = M
 			if(H.mind && H.mind.initial_account)
 				numbers += H.mind.initial_account.account_number
 				numbers += H.mind.initial_account.account_pin
-			if(length(numbers)>0)
-				to_chat(user, SPAN_NOTICE("<b>Numbers</b>: You sense the number[length(numbers)>1?"s":""] [english_list(numbers)] [length(numbers)>1?"are":"is"] important to [M.name]."))
-		to_chat(user, SPAN_NOTICE("<b>Thoughts</b>: [M.name] is currently [thoughts]."))
+			if(length(numbers))
+				if(length(numbers) == 1)
+					text_numbers = "[numbers[1]]"
+				else
+					var/i
+					for(i = 1 to length(numbers))
+						if(i == 1)
+							text_numbers += "[numbers[i]]"
+						else if(i == length(numbers))
+							text_numbers += " и [numbers[i]]"
+						else
+							text_numbers += ", [numbers[i]]"
+//SS220 EDIT END
+				to_chat(user, SPAN_NOTICE("<b>Цифры</b>: Кажется номер[length(numbers)>1?"а":""] [text_numbers] [length(numbers)>1?"важны":"важен"] для [M.name]."))
+		to_chat(user, SPAN_NOTICE("<b>Мысли</b>: [M.name] сейчас [thoughts]."))
 
 		if(M.dna?.GetSEState(GLOB.empathblock))
-			to_chat(M, SPAN_WARNING("You sense [user.name] reading your mind."))
+			to_chat(M, SPAN_WARNING("Вы ощущаете как [user.name] читает ваши мысли."))
 		else if(prob(5) || M.mind?.assigned_role=="Chaplain")
-			to_chat(M, SPAN_WARNING("You sense someone intruding upon your thoughts..."))
+			to_chat(M, SPAN_WARNING("Вы чувствуете, что кто-то вторгается в ваши мысли..."))
 
 ///////////////////Vanilla Morph////////////////////////////////////
 
 /datum/mutation/grant_spell/morph
-	name = "Morphism"
-	desc = "Enables the subject to reconfigure their appearance to that of any human."
+	name = "Морфизм"
+	desc = "Позволяет обладателю самостоятельно перестраивать свою внешность без каких-либо приспособлений."
 	spelltype =/datum/spell/morph
-	activation_messages = list("Your body feels like it can alter its appearance.")
-	deactivation_messages = list("Your body doesn't feel capable of altering its appearance.")
+	activation_messages = list("Ваше тело будто бы научилось изменять внешность.")
+	deactivation_messages = list("Ваше тело более не способно к самостоятельному изменению внешности.")
 	instability = GENE_INSTABILITY_MODERATE
 
 /datum/mutation/grant_spell/morph/New()
@@ -808,8 +823,8 @@
 	block = GLOB.morphblock
 
 /datum/spell/morph
-	name = "Morph"
-	desc = "Mimic the appearance of your choice!"
+	name = "Преображение"
+	desc = "Самостоятельно определяйте свою внешность на ходу!"
 	base_cooldown = 1800
 
 	clothes_req = FALSE
@@ -825,21 +840,21 @@
 		return
 
 	if(ismob(user.loc))
-		to_chat(user, SPAN_WARNING("You can't change your appearance right now!"))
+		to_chat(user, SPAN_WARNING("Вы пока что не можете менять свою внешность!"))
 		return
 	var/mob/living/carbon/human/M = user
 	var/obj/item/organ/external/head/head_organ = M.get_organ("head")
 	var/obj/item/organ/internal/eyes/eyes_organ = M.get_int_organ(/obj/item/organ/internal/eyes)
 
-	var/new_gender = tgui_alert(user, "Please select gender.", "Character Generation", list("Male", "Female"))
+	var/new_gender = tgui_alert(user, "Выберите пол.", "Настройка персонажа", list("Мужской", "Женский"))
 	if(new_gender)
-		if(new_gender == "Male")
+		if(new_gender == "Мужской")
 			M.change_gender(MALE)
 		else
 			M.change_gender(FEMALE)
 
 	if(eyes_organ)
-		var/new_eyes = tgui_input_color(user, "Please select eye color.", "Character Generation", eyes_organ.eye_color)
+		var/new_eyes = tgui_input_color(user, "Выберите цвет глаз.", "Настройка персонажа", eyes_organ.eye_color)
 		if(isnull(new_eyes))
 			return
 		M.change_eye_color(new_eyes)
@@ -848,53 +863,53 @@
 		//Alt heads.
 		if(head_organ.dna.species.bodyflags & HAS_ALT_HEADS)
 			var/list/valid_alt_heads = M.generate_valid_alt_heads()
-			var/new_alt_head = tgui_input_list(user, "Please select alternate head", "Character Generation", valid_alt_heads)
+			var/new_alt_head = tgui_input_list(user, "Выберите альтернативный тип головы", "Настройка персонажа", valid_alt_heads)
 			if(new_alt_head)
 				M.change_alt_head(new_alt_head)
 
 		// hair
 		var/list/valid_hairstyles = M.generate_valid_hairstyles()
-		var/new_style = tgui_input_list(user, "Please select hair style", "Character Generation", valid_hairstyles)
+		var/new_style = tgui_input_list(user, "Выберите стиль причёски", "Настройка персонажа", valid_hairstyles)
 
 		// if new style selected (not cancel)
 		if(new_style)
 			M.change_hair(new_style)
 
-		var/new_hair = tgui_input_color(user, "Please select hair color.", "Character Generation", head_organ.hair_colour)
+		var/new_hair = tgui_input_color(user, "Выберите цвет причёски", "Настройка персонажа", head_organ.hair_colour)
 		if(!isnull(new_hair))
 			M.change_hair_color(new_hair)
 
 		var/datum/sprite_accessory/hair_style = GLOB.hair_styles_public_list[head_organ.h_style]
 		if(hair_style.secondary_theme && !hair_style.no_sec_colour)
-			new_hair = tgui_input_color(user, "Please select secondary hair color.", "Character Generation", head_organ.sec_hair_colour)
+			new_hair = tgui_input_color(user, "Выберите второстепенный цвет причёски", "Настройка персонажа", head_organ.sec_hair_colour)
 			if(!isnull(new_hair))
 				M.change_hair_color(new_hair, TRUE)
 
 		// facial hair
 		var/list/valid_facial_hairstyles = M.generate_valid_facial_hairstyles()
-		new_style = tgui_input_list(user, "Please select facial style", "Character Generation", valid_facial_hairstyles)
+		new_style = tgui_input_list(user, "Выберите тип лицевого покрова", "Настройка персонажа", valid_facial_hairstyles)
 
 		if(new_style)
 			M.change_facial_hair(new_style)
 
-		var/new_facial = tgui_input_color(user, "Please select facial hair color.", "Character Generation", head_organ.facial_colour)
+		var/new_facial = tgui_input_color(user, "Выберите цвет лицевого покрова.", "Настройка персонажа", head_organ.facial_colour)
 		if(!isnull(new_facial))
 			M.change_facial_hair_color(new_facial)
 
 		var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[head_organ.f_style]
 		if(facial_hair_style.secondary_theme && !facial_hair_style.no_sec_colour)
-			new_facial = tgui_input_color(user, "Please select secondary facial hair color.", "Character Generation", head_organ.sec_facial_colour)
+			new_facial = tgui_input_color(user, "Выберите второстепенный цвет лицевого покрова.", "Настройка персонажа", head_organ.sec_facial_colour)
 			if(!isnull(new_facial))
 				M.change_facial_hair_color(new_facial, TRUE)
 
 		//Head accessory.
 		if(head_organ.dna.species.bodyflags & HAS_HEAD_ACCESSORY)
 			var/list/valid_head_accessories = M.generate_valid_head_accessories()
-			var/new_head_accessory = tgui_input_list(user, "Please select head accessory style", "Character Generation", valid_head_accessories)
+			var/new_head_accessory = tgui_input_list(user, "Выберите атрибуты вашей головы", "Настройка персонажа", valid_head_accessories)
 			if(!isnull(new_head_accessory))
 				M.change_head_accessory(new_head_accessory)
 
-			var/new_head_accessory_colour = tgui_input_color(user, "Please select head accessory color.", "Character Generation", head_organ.headacc_colour)
+			var/new_head_accessory_colour = tgui_input_color(user, "Выберите цвет атрибутов вашей головы.", "Настройка персонажа", head_organ.headacc_colour)
 			if(!isnull(new_head_accessory_colour))
 				M.change_head_accessory_color(new_head_accessory_colour)
 
@@ -903,7 +918,7 @@
 	if((M.dna.species.tail && M.dna.species.bodyflags & (HAS_TAIL)) || (M.dna.species.wing && M.dna.species.bodyflags & (HAS_WING)) || (M.dna.species.spines && M.dna.species.bodyflags & (HAS_BACK_SPINES)))
 		var/list/valid_body_accessories = M.generate_valid_body_accessories()
 		if(length(valid_body_accessories) > 1) //By default valid_body_accessories will always have at the very least a 'none' entry populating the list, even if the user's species is not present in any of the list items.
-			var/new_body_accessory = tgui_input_list(user, "Please select body accessory style", "Character Generation", valid_body_accessories)
+			var/new_body_accessory = tgui_input_list(user, "Выберите тип уникальной конечности тела", "Настройка персонажа", valid_body_accessories)
 			if(!isnull(new_body_accessory))
 				M.change_body_accessory(new_body_accessory)
 
@@ -911,38 +926,38 @@
 		//Head markings.
 		if(M.dna.species.bodyflags & HAS_HEAD_MARKINGS)
 			var/list/valid_head_markings = M.generate_valid_markings("head")
-			var/new_marking = tgui_input_list(user, "Please select head marking style", "Character Generation", valid_head_markings)
+			var/new_marking = tgui_input_list(user, "Выберите стиль рисунка на голове", "Настройка персонажа", valid_head_markings)
 			if(!isnull(new_marking))
 				M.change_markings(new_marking, "head")
 
-			var/new_marking_colour = tgui_input_color(user, "Please select head marking color.", "Character Generation", M.m_colours["head"])
+			var/new_marking_colour = tgui_input_color(user, "Выберите цвет рисунка на голове", "Настройка персонажа", M.m_colours["head"])
 			if(!isnull(new_marking_colour))
 				M.change_marking_color(new_marking_colour, "head")
 
 	//Body markings.
 	if(M.dna.species.bodyflags & HAS_BODY_MARKINGS)
 		var/list/valid_body_markings = M.generate_valid_markings("body")
-		var/new_marking = tgui_input_list(user, "Please select body marking style", "Character Generation", valid_body_markings)
+		var/new_marking = tgui_input_list(user, "Выберите стиль рисунка на теле", "Настройка персонажа", valid_body_markings)
 		if(!isnull(new_marking))
 			M.change_markings(new_marking, "body")
 
-		var/new_marking_colour = tgui_input_color(user, "Please select body marking color.", "Character Generation", M.m_colours["body"])
+		var/new_marking_colour = tgui_input_color(user, "Выберите цвет рисунка на тела", "Настройка персонажа", M.m_colours["body"])
 		if(!isnull(new_marking_colour))
 			M.change_marking_color(new_marking_colour, "body")
 	//Tail markings.
 	if(M.dna.species.bodyflags & HAS_TAIL_MARKINGS)
 		var/list/valid_tail_markings = M.generate_valid_markings("tail")
-		var/new_marking = tgui_input_list("Please select tail marking style", "Character Generation", valid_tail_markings)
+		var/new_marking = tgui_input_list("Выберите стиль подкраски хвоста", "Настройка персонажа", valid_tail_markings)
 		if(!isnull(new_marking))
 			M.change_markings(new_marking, "tail")
 
-		var/new_marking_colour = tgui_input_color(user, "Please select tail marking color.", "Character Generation", M.m_colours["tail"])
+		var/new_marking_colour = tgui_input_color(user, "Выберите цвет подкраски хвоста", "Настройка персонажа", M.m_colours["tail"])
 		if(!isnull(new_marking_colour))
 			M.change_marking_color(new_marking_colour, "tail")
 
 	//Skin tone.
 	if(M.dna.species.bodyflags & HAS_SKIN_TONE)
-		var/new_tone = input("Please select skin tone level: 1-220 (1=albino, 35=caucasian, 150=black, 220='very' black)", "Character Generation", M.s_tone) as null|text
+		var/new_tone = input("Выберите цвет кожи: 1-220 (1 = Альбинос , 35 = Светлый, 150 = Тёмный, 220 = Чёрный)", "Настройка персонажа", M.s_tone) as null|text
 		if(!new_tone)
 			new_tone = 35
 		else
@@ -950,14 +965,14 @@
 			M.change_skin_tone(new_tone)
 
 	if(M.dna.species.bodyflags & HAS_ICON_SKIN_TONE)
-		var/prompt = "Please select skin tone: 1-[length(M.dna.species.icon_skin_tones)] ("
+		var/prompt = "Выберите цвет кожи: 1-[length(M.dna.species.icon_skin_tones)] ("
 		for(var/i = 1 to length(M.dna.species.icon_skin_tones))
 			prompt += "[i] = [M.dna.species.icon_skin_tones[i]]"
 			if(i != length(M.dna.species.icon_skin_tones))
 				prompt += ", "
 		prompt += ")"
 
-		var/new_tone = input(prompt, "Character Generation", M.s_tone) as null|text
+		var/new_tone = input(prompt, "Настройка персонажа", M.s_tone) as null|text
 		if(!new_tone)
 			new_tone = 0
 		else
@@ -966,18 +981,18 @@
 
 	//Skin colour.
 	if(M.dna.species.bodyflags & HAS_SKIN_COLOR)
-		var/new_body_colour = tgui_input_color(user, "Please select body color.", "Character Generation", M.skin_colour)
+		var/new_body_colour = tgui_input_color(user, "Выберите окрас вашего тела", "Настройка персонажа", M.skin_colour)
 		if(!isnull(new_body_colour))
 			M.change_skin_color(new_body_colour)
 
 	M.update_dna()
 
-	M.visible_message(SPAN_NOTICE("[M] morphs and changes [M.p_their()] appearance!"), SPAN_NOTICE("You change your appearance!"), SPAN_WARNING("Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!"))
+	M.visible_message(SPAN_NOTICE("[M] видоизменяется и преображает [M.ru_p_them()] внешность!"), SPAN_NOTICE("Вы изменяете свою внешность!"), SPAN_WARNING("Боже! Что это было? Звучало так, будто плоть с костями пропустили через мясорубку и собрали по другому!"))
 
 /datum/mutation/grant_spell/remotetalk
-	name = "Telepathy"
-	activation_messages = list("You feel you can project your thoughts.")
-	deactivation_messages = list("You no longer feel you can project your thoughts.")
+	name = "Телепатия"
+	activation_messages = list("Вы ощущаете способность к передаче своих мыслей.")
+	deactivation_messages = list("Вы более не ощущаете способности к передаче своих мыслей.")
 	instability = GENE_INSTABILITY_MINOR
 
 	spelltype =/datum/spell/remotetalk
@@ -997,8 +1012,8 @@
 			user.RemoveSpell(S)
 
 /datum/spell/remotetalk
-	name = "Project Mind"
-	desc = "Make people understand your thoughts!"
+	name = "Проекция разума"
+	desc = "Позвольте другим услышать ваши мысли!"
 	base_cooldown = 0
 
 	clothes_req = FALSE
@@ -1013,27 +1028,27 @@
 	if(!isliving(user))
 		return
 	if(user.mind?.miming) // Dont let mimes telepathically talk
-		to_chat(user,SPAN_WARNING("You can't communicate without breaking your vow of silence."))
+		to_chat(user,SPAN_WARNING("Вы не можете общаться, не нарушив при этом обет молчания."))
 		return
-	var/say = tgui_input_text(user, "What do you wish to say?", "Project Mind")
+	var/say = tgui_input_text(user, "Что хочешь сказать?", "Проекция разума")
 	if(!say || usr.stat)
 		return
 	say = pencode_to_html(say, usr, format = FALSE, fields = FALSE)
 
 	for(var/mob/living/target in targets)
 		log_say("(TPATH to [key_name(target)]) [say]", user)
-		user.create_log(SAY_LOG, "Telepathically said '[say]' using [src]", target)
+		user.create_log(SAY_LOG, "Телепатически сказал '[say]' используя [src]", target)
 		if(target.dna?.GetSEState(GLOB.remotetalkblock))
-			target.show_message("<i>[SPAN_ABDUCTOR("You hear [user.real_name]'s voice: [say]")]</i>")
+			target.show_message("<i>[SPAN_ABDUCTOR("Вы слышите голос [user.real_name]: [say]")]</i>")
 		else
-			target.show_message("<i>[SPAN_ABDUCTOR("You hear a voice that seems to echo around the room: [say]")]</i>")
-		user.show_message("<i>[SPAN_ABDUCTOR("You project your mind into [(target in user.get_visible_mobs()) ? target.name : "the unknown entity"]: [say]")]</i>")
+			target.show_message("<i>[SPAN_ABDUCTOR("Вы слышите голос, раздающийся эхом в вашей голове: [say]")]</i>")
+		user.show_message("<i>[SPAN_ABDUCTOR("Вы проецируете свои мысли для [(target in user.get_visible_mobs()) ? target.name : "неизвестного существа"]: [say]")]</i>")
 		for(var/mob/dead/observer/G in GLOB.player_list)
-			G.show_message("<i>Telepathic message from <b>[user]</b> ([ghost_follow_link(user, ghost=G)]) to <b>[target]</b> ([ghost_follow_link(target, ghost=G)]): [say]</i>")
+			G.show_message("<i>Телепатическое сообщение от <b>[user]</b> ([ghost_follow_link(user, ghost=G)]) к <b>[target]</b> ([ghost_follow_link(target, ghost=G)]): [say]</i>")
 
 /datum/spell/mindscan
-	name = "Scan Mind"
-	desc = "Offer people a chance to share their thoughts!"
+	name = "Открытие разума"
+	desc = "Предложите другим высказать свои слова вам мысленно!"
 	base_cooldown = 0
 	clothes_req = FALSE
 	antimagic_flags = MAGIC_RESISTANCE_MIND
@@ -1047,10 +1062,10 @@
 	if(!isliving(user))
 		return
 	for(var/mob/living/target in targets)
-		var/message = "You feel your mind expand briefly... (Click to send a message.)"
+		var/message = "Ваш разум на мгновение расширяется... (Нажмите, чтобы отправить сообщение.)"
 		if(target.dna?.GetSEState(GLOB.remotetalkblock))
-			message = "You feel [user.real_name] request a response from you... (Click here to project mind.)"
-		user.show_message("<i>[SPAN_ABDUCTOR("You offer your mind to [(target in user.get_visible_mobs()) ? target.name : "the unknown entity"].")]</i>")
+			message = "Вы ощущаете как [user.real_name] спрашивает у вас ответа... (Нажмите, чтобы позволить телепатическое общение.)"
+		user.show_message("<i>[SPAN_ABDUCTOR("Вы открыли свой разум для [(target in user.get_visible_mobs()) ? target.name : "неизвестного существа"].")]</i>")
 		target.show_message("<i>[SPAN_ABDUCTOR("<a href='byond://?src=[UID()];from=[target.UID()];to=[user.UID()]'>[message]</a>")]</i>")
 		expanded_minds += target
 		addtimer(CALLBACK(src, PROC_REF(removeAvailability), target), 10 SECONDS)
@@ -1059,7 +1074,7 @@
 	if(target in expanded_minds)
 		expanded_minds -= target
 		if(!(target in expanded_minds))
-			target.show_message("<i>[SPAN_ABDUCTOR("You feel the sensation fade...")]</i>")
+			target.show_message("<i>[SPAN_ABDUCTOR("Вы чувствуете как связь угасает...")]</i>")
 
 /datum/spell/mindscan/Topic(href, href_list)
 	var/mob/living/message_source
@@ -1075,32 +1090,32 @@
 	if(!message_target)
 		return
 
-	var/say = tgui_input_text(message_source, "What do you wish to say?", "Expanded Mind")
+	var/say = tgui_input_text(message_source, "Что вы хотите сказать?", "Расширенное сознание")
 	if(!say)
 		return
 	say = pencode_to_html(say, message_source, format = FALSE, fields = FALSE)
 
-	message_source.create_log(SAY_LOG, "Telepathically responded '[say]' using [src]", message_target)
+	message_source.create_log(SAY_LOG, "Телепатически ответил '[say]' используя [src]", message_target)
 	log_say("(TPATH to [key_name(message_target)]) [say]", message_source)
 
 	if(message_source.dna?.GetSEState(GLOB.remotetalkblock))
-		message_source.show_message("<i>[SPAN_ABDUCTOR("You project your mind into [message_target]: [say]")]</i>")
+		message_source.show_message("<i>[SPAN_ABDUCTOR("Вы открыли свой разум для [message_target]: [say]")]</i>")
 	else
-		message_source.show_message("<i>[SPAN_ABDUCTOR("You fill the space in your thoughts: [say]")]</i>")
+		message_source.show_message("<i>[SPAN_ABDUCTOR("Вы заполняете пространство в собственных мыслях: [say]")]</i>")
 
-	message_target.show_message("<i>[SPAN_ABDUCTOR("You hear [message_source]'s voice: [say]")]</i>")
+	message_target.show_message("<i>[SPAN_ABDUCTOR("Вы слышите голос [message_source]: [say]")]</i>")
 
 	for(var/mob/dead/observer/G in GLOB.player_list)
-		G.show_message("<i>Telepathic response from <b>[message_source]</b> ([ghost_follow_link(message_source, ghost=G)]) to <b>[message_target]</b> ([ghost_follow_link(message_target, ghost=G)]): [say]</i>")
+		G.show_message("<i>Телепатический ответ от <b>[message_source]</b> ([ghost_follow_link(message_source, ghost=G)]) к <b>[message_target]</b> ([ghost_follow_link(message_target, ghost=G)]): [say]</i>")
 
 /datum/spell/mindscan/Destroy()
 	expanded_minds.Cut()
 	return ..()
 
 /datum/mutation/grant_spell/remoteview
-	name = "Remote Viewing"
-	activation_messages = list("Your mind can see things from afar.")
-	deactivation_messages = list("Your mind can no longer can see things from afar.")
+	name = "Удалённый просмотр"
+	activation_messages = list("Ваше сознание простирает взор на далекое расстояние.")
+	deactivation_messages = list("Ваше сознание более не способно видеть окружение вдалеке.")
 	instability = GENE_INSTABILITY_MINOR
 
 	spelltype =/datum/spell/remoteview
@@ -1117,8 +1132,8 @@
 		H.reset_perspective()
 
 /datum/spell/remoteview
-	name = "Remote View"
-	desc = "Spy on people from any range!"
+	name = "Удаленный просмотр"
+	desc = "Присматривайте друг за другом на любом расстоянии!"
 
 	clothes_req = FALSE
 	antimagic_flags = MAGIC_RESISTANCE_MIND
@@ -1138,7 +1153,7 @@
 	var/mob/target
 
 	if(istype(H.l_hand, /obj/item/tk_grab) || istype(H.r_hand, /obj/item/tk_grab))
-		to_chat(H, SPAN_WARNING("Your mind is too busy with that telekinetic grab."))
+		to_chat(H, SPAN_WARNING("Ваше сознание слишком занято телекинетическими способностями."))
 		H.remoteview_target = null
 		H.reset_perspective()
 		return
@@ -1159,9 +1174,9 @@
 		H.reset_perspective()
 
 /datum/mutation/meson_vision
-	name = "Meson Vision"
-	activation_messages = list("More information seems to reach your eyes...")
-	deactivation_messages = list("The amount of information reaching your eyes fades...")
+	name = "Мезонное зрение"
+	activation_messages = list("Вашему взору предстаёт больше деталей об окружении...")
+	deactivation_messages = list("Количество информации, предстающее вашему взору, скуднеет...")
 	instability = GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_MESON_VISION)
 
@@ -1178,9 +1193,9 @@
 	M.update_sight()
 
 /datum/mutation/night_vision
-	name = "Night Vision"
-	activation_messages = list("Were the lights always that bright?")
-	deactivation_messages = list("The ambient light level returns to normal...")
+	name = "Ночное зрение"
+	activation_messages = list("Свет всегда был таким ярким?")
+	deactivation_messages = list("Уровень восприятия света возвращается к норме...")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_NIGHT_VISION)
 
@@ -1203,9 +1218,9 @@
 		H.update_misc_effects()
 
 /datum/mutation/flash_protection
-	name = "Flash Protection"
-	activation_messages = list("You stop noticing the glare from lights...")
-	deactivation_messages = list("Lights begin glaring again...")
+	name = "Защита от вспышки"
+	activation_messages = list("Вы перестаёте обращать внимание на резкие блики света...")
+	deactivation_messages = list("Освещение вновь начинает рябить в глазах...")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_FLASH_PROTECTION)
 

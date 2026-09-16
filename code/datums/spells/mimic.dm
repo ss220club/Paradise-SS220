@@ -1,10 +1,10 @@
 /datum/spell/mimic
 	name = "Mimic"
-	desc = "Learn a new form to mimic or become one of your known forms."
+	desc = "Изучите новую форму для имитации или мимикрируйте в уже известную."
 	clothes_req = FALSE
 	base_cooldown = 3 SECONDS
 	action_icon_state = "morph_mimic"
-	selection_activated_message = SPAN_SINISTER("Click on a target to remember it's form. Click on yourself to change form.")
+	selection_activated_message = SPAN_SINISTER("Нажмите на цель, чтобы запомнить ее форму. Нажмите на себя, чтобы изменить форму.")
 	create_attack_logs = FALSE
 	/// Which form is currently selected
 	var/datum/mimic_form/selected_form
@@ -59,15 +59,15 @@
 
 /datum/spell/mimic/proc/remember_form(atom/movable/A, mob/user)
 	if(A.name in available_forms)
-		to_chat(user, SPAN_WARNING("[A] is already an available form."))
+		to_chat(user, SPAN_WARNING("[A] - уже доступная форма."))
 		revert_cast(user)
 		return
 	if(length(available_forms) >= max_forms)
-		to_chat(user, SPAN_WARNING("You start to forget the form of [available_forms[next_override_index]] to learn a new one."))
+		to_chat(user, SPAN_WARNING("Вы начинаете забывать форму [available_forms[next_override_index]], чтобы выучить новую."))
 
-	to_chat(user, SPAN_SINISTER("You start remembering the form of [A]."))
+	to_chat(user, SPAN_SINISTER("Вы начинаете запоминать форму [A]."))
 	if(!do_after(user, 2 SECONDS, FALSE, user))
-		to_chat(user, SPAN_WARNING("You lose focus."))
+		to_chat(user, SPAN_WARNING("Вы потеряли концентрацию."))
 		return
 
 	// Forget the old form if needed
@@ -79,11 +79,11 @@
 			next_override_index = 1
 
 	available_forms[A.name] = new /datum/mimic_form(A, user)
-	to_chat(user, SPAN_SINISTER("You learn the form of [A]."))
+	to_chat(user, SPAN_SINISTER("Вы изучаете форму [A]."))
 
 /datum/spell/mimic/proc/pick_form(mob/user)
 	if(!length(available_forms) && !selected_form)
-		to_chat(user, SPAN_WARNING("No available forms. Learn more forms by using this spell on other objects first."))
+		to_chat(user, SPAN_WARNING("Доступных форм нет. Сначала изучите больше форм, применив это заклинание к другим объектам."))
 		revert_cast(user)
 		return
 
@@ -92,18 +92,18 @@
 		forms += "Original Form"
 
 	forms += available_forms.Copy()
-	var/what = tgui_input_list(user, "Which form do you want to become?", "Mimic", forms)
+	var/what = tgui_input_list(user, "Какой формой вы хотите стать сегодня?", "Мимикрировать", forms)
 	if(!what)
-		to_chat(user, SPAN_NOTICE("You decide against changing forms."))
+		to_chat(user, SPAN_NOTICE("Вы решаете не менять форму."))
 		revert_cast(user)
 		return
 
 	if(what == "Original Form")
 		restore_form(user)
 		return
-	to_chat(user, SPAN_SINISTER("You start becoming [what]."))
+	to_chat(user, SPAN_SINISTER("Вы начинаете превращаться в [what]."))
 	if(!do_after(user, 2 SECONDS, FALSE, user))
-		to_chat(user, SPAN_WARNING("You lose focus."))
+		to_chat(user, SPAN_WARNING("Вы потеряли концентрацию."))
 		return
 	take_form(available_forms[what], user)
 
@@ -133,9 +133,9 @@
 
 /datum/spell/mimic/proc/show_change_form_message(mob/user, old_name, new_name)
 	user.visible_message(
-		SPAN_WARNING("[old_name] contorts and slowly becomes [new_name]!"),
-		SPAN_SINISTER("You take the form of [new_name]."),
-		SPAN_WARNING("You hear loud cracking noises!")
+		SPAN_WARNING("[old_name] искажается и медленно превращается в [new_name]!"),
+		SPAN_SINISTER("Вы принимаете форму [new_name]."),
+		SPAN_WARNING("Вы слышите громкий треск!")
 	)
 
 /datum/spell/mimic/proc/restore_form(mob/user, show_message = TRUE)
@@ -163,16 +163,16 @@
 
 /datum/spell/mimic/proc/show_restore_form_message(mob/user, old_name, new_name)
 	user.visible_message(
-		SPAN_WARNING("[old_name] shakes and contorts and quickly becomes [new_name]!"),
-		SPAN_SINISTER("You return to your normal self."),
-		SPAN_WARNING("You hear loud cracking noises!")
+		SPAN_WARNING("[old_name] трясется, искажается и быстро превращается в [new_name]!"),
+		SPAN_SINISTER("Вы возвращаетесь к своей обычной форме."),
+		SPAN_WARNING("Вы слышите громкий треск!")
 	)
 
 /datum/spell/mimic/proc/examine_override(datum/source, mob/user, list/examine_list)
 	examine_list.Cut()
 	examine_list += selected_form.examine_text
 	if(!perfect_disguise && get_dist(user, source) <= 3)
-		examine_list += SPAN_WARNING("It doesn't look quite right...")
+		examine_list += SPAN_WARNING("Это выглядит не совсем правильно...")
 
 /datum/spell/mimic/proc/on_death(mob/user, gibbed)
 	if(!gibbed)
@@ -181,9 +181,9 @@
 
 /datum/spell/mimic/proc/show_death_message(mob/user)
 	user.visible_message(
-		SPAN_WARNING("[user] shakes and contorts as [user.p_they()] die[user.p_s()], returning to [user.p_their()] true form!"),
-		SPAN_DEADSAY("Your disguise fails as your life forces drain away."),
-		SPAN_WARNING("You hear loud cracking noises followed by a thud!")
+		SPAN_WARNING("[user.declent_ru(NOMINATIVE)] дрожит и корчится, когда [user.ru_p_they()] умирает, возвращаясь к своей истинной форме!"),
+		SPAN_DEADSAY("Ваша маскировка рассеивается по мере того, как ваши жизненные силы иссякают."),
+		SPAN_WARNING("Вы слышите громкий треск, за которым следует глухой удар!")
 	)
 
 
@@ -225,21 +225,21 @@
 
 /datum/spell/mimic/morph/show_change_form_message(mob/user, old_name, new_name)
 	user.visible_message(
-		SPAN_WARNING("[old_name] suddenly twists and changes shape, becoming a copy of [new_name]!"),
-		SPAN_NOTICE("You twist your body and assume the form of [new_name]."),
-		SPAN_WARNING("You hear loud cracking noises!")
+		SPAN_WARNING("[old_name] внезапно изгибается и меняет форму, становясь копией [new_name]!"),
+		SPAN_NOTICE("Вы поворачиваете свое тело и принимаете форму [new_name]."),
+		SPAN_WARNING("Вы слышите громкий треск!")
 	)
 
 /datum/spell/mimic/morph/show_restore_form_message(mob/user, old_name, new_name)
 	user.visible_message(
-		SPAN_WARNING("[old_name] suddenly collapses in on itself, dissolving into a pile of green flesh!"),
-		SPAN_NOTICE("You reform to your normal body."),
-		SPAN_WARNING("You hear loud cracking noises followed by a thud!")
+		SPAN_WARNING("[old_name] внезапно распадается, превращаясь в груду зеленой плоти!"),
+		SPAN_NOTICE("Вы возвращаетесь в свое обычное тело."),
+		SPAN_WARNING("Вы слышите громкий треск, за которым следует глухой удар!")
 	)
 
 /datum/spell/mimic/morph/show_death_message(mob/user)
 	user.visible_message(
-		SPAN_WARNING("[user] twists and dissolves into a pile of green flesh!"),
-		SPAN_USERDANGER("Your skin ruptures! Your flesh breaks apart! No disguise can ward off de--"),
-		SPAN_WARNING("You hear loud cracking noises followed by a thud!")
+		SPAN_WARNING("[user] скручивается и превращается в груду зеленой плоти!"),
+		SPAN_USERDANGER("Ваша кожа лопается! Ваша плоть распадается на части! Никакая маскировка не спасет вас от сме..."),
+		SPAN_WARNING("Вы слышите громкий треск, за которым следует глухой удар!")
 	)

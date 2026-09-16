@@ -1,6 +1,6 @@
 /datum/spell/rathens
 	name = "Rathen's Secret"
-	desc = "Summons a powerful shockwave around you that tears the appendix out of enemies, and occasionally removes their limbs."
+	desc = "Создает вокруг себя мощную ударную волну, которая силой вырывает у врагов аппендикс, а иногда и конечности."
 	base_cooldown = 50 SECONDS
 	invocation = "APPEN NATH!"
 	invocation_type = "shout"
@@ -25,15 +25,15 @@
 			A.forceMove(get_turf(H))
 			spawn()
 				A.throw_at(get_edge_target_turf(H, pick(GLOB.alldirs)), rand(1, 10), 5)
-			H.visible_message(SPAN_DANGER("[H]'s [A.name] flies out of their body in a magical explosion!"),\
-							SPAN_DANGER("Your [A.name] flies out of your body in a magical explosion!"))
+			H.visible_message(SPAN_DANGER("[capitalize(A.declent_ru(NOMINATIVE))] [H.declent_ru(GENITIVE)] вылетает из тела в результате магического взрыва!"),\
+							SPAN_DANGER("[capitalize(A.declent_ru(NOMINATIVE))] вылетает из вашего тела в магическом взрыве!"))
 			H.KnockDown(4 SECONDS)
 		else
 			var/obj/effect/decal/cleanable/blood/gibs/G = new/obj/effect/decal/cleanable/blood/gibs(get_turf(H))
 			spawn()
 				G.throw_at(get_edge_target_turf(H, pick(GLOB.alldirs)), rand(1, 10), 5)
 			H.apply_damage(10, BRUTE, "chest")
-			to_chat(H, SPAN_USERDANGER("You have no appendix, but something had to give! Holy shit, what was that?"))
+			to_chat(H, SPAN_USERDANGER("У вас больше нет аппендикса, его что-то вырвало! Черт возьми, что это было?"))
 			H.KnockDown(6 SECONDS)
 			for(var/obj/item/organ/external/E in H.bodyparts)
 				if(istype(E, /obj/item/organ/external/head))
@@ -43,5 +43,5 @@
 				if(istype(E, /obj/item/organ/external/groin))
 					continue
 				if(prob(7))
-					to_chat(H, SPAN_USERDANGER("Your [E] was severed by the explosion!"))
+					to_chat(H, SPAN_USERDANGER("Вам оторвало [E.declent_ru(ACCUSATIVE)] взрывом!"))
 					E.droplimb(1, DROPLIMB_SHARP, 0, 1)

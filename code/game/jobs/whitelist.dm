@@ -15,8 +15,16 @@
 		return FALSE
 
 	// Yes if admin
-	if(check_rights(R_ADMIN, FALSE))
-		return TRUE
+	// SS220 EDIT START - Species bans
+	// if(check_rights(R_ADMIN, FALSE))
+	// 	return TRUE
+
+	if(M.client && is_species_banned(M.client, species))
+		return FALSE
+	// SS220 EDIT END
+
+	if(!S.is_available(M))
+		return FALSE
 
 	// No if species is blacklisted
 	if(S.blacklisted)

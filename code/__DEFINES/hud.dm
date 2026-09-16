@@ -69,6 +69,10 @@
 #define ANTAG_HUD_HERETIC	 			28
 #define ANTAG_HUD_HERETIC_BEAST			29
 #define ANTAG_HUD_UPLIFTED_TEAMLESS		30
+// SS220 EDIT - START
+#define ANTAG_HUD_BLOOD_BROTHER			31
+#define ANTAG_HUD_VOX_RAIDER			32
+// SS220 EDIT - END
 
 // Notification action types
 #define NOTIFY_JUMP "jump"

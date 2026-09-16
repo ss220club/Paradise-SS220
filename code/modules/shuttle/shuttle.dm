@@ -1070,22 +1070,22 @@
 			return
 		switch(SSshuttle.moveShuttle(shuttleId, destination, TRUE, usr))
 			if(0)
-				atom_say("Shuttle departing! Please stand away from the doors.")
+				atom_say("Шаттл отправляется! Пожалуйста, отойдите от шлюзов.")
 				usr.create_log(MISC_LOG, "used [src] to call the [shuttleId] shuttle")
 				if(!moved)
 					moved = TRUE
 				add_fingerprint(usr)
 				return TRUE
 			if(1)
-				to_chat(usr, SPAN_WARNING("Invalid shuttle requested."))
+				to_chat(usr, SPAN_WARNING("Запрошен неверный шаттл."))
 			if(2)
-				to_chat(usr, SPAN_NOTICE("Unable to comply."))
+				to_chat(usr, SPAN_NOTICE("Невозможно выполнить запрос."))
 			if(3)
-				atom_say("Shuttle is refuelling at dock. Please wait...")
+				atom_say("Шаттл заправляется в доке. Пожалуйста, подождите...")
 			if(4)
-				atom_say("Shuttle is currently en-route. The shuttle cannot be rerouted at this time.")
+				atom_say("Шаттл уже в пути. Шаттл не может быть перенаправлен в данный момент.")
 			if(5)
-				atom_say("Shuttle is currently departing. Please wait...")
+				atom_say("Шаттл отправляется. Пожалуйста, подождите...")
 
 /obj/machinery/computer/shuttle/emag_act(mob/user)
 	if(!emagged)

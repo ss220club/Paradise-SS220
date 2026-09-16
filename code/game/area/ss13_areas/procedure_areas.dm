@@ -1,5 +1,5 @@
 /area/station/procedure/trainer_office
-	name = "\improper Trainer's Office"
+	name = "Офис Профессионального Тренера НТ"
 	icon_state = "procedure_nct"
 	area_icon_text = "NCT"
 	area_icon_color = AREA_COLOR_LEGAL

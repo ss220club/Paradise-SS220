@@ -1,6 +1,6 @@
 /datum/spell/infinite_guns
 	name = "Lesser Summon Guns"
-	desc = "Why reload when you have infinite guns? Summons an unending stream of bolt action rifles. Requires both hands free to use."
+	desc = "Зачем перезаряжаться, если у вас бесконечное количество пушек? Вызывает бесконечный поток винтовок с затвором. Для использования требуются свободные руки."
 
 	base_cooldown = 600
 	cooldown_min = 10 //Gun wizard
@@ -20,7 +20,7 @@
 
 /datum/spell/infinite_guns/fireball
 	name = "Rapid-fire Fireball"
-	desc = "Multiple Fireballs. Need I explain more? Requires both hands free to use."
+	desc = "Шквал огненных шаров. Нужно ли объяснять подробнее? Для использования требуется, чтобы руки были свободны."
 
 	base_cooldown = 30 SECONDS
 	clothes_req = FALSE
@@ -31,7 +31,7 @@
 
 /obj/item/gun/projectile/shotgun/boltaction/enchanted/arcane_barrage/fireball
 	name = "small ball of fire"
-	desc = "A small flame, ready to launch from your hand."
+	desc = "Маленькое пламя, готовое сорваться с вашей руки."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "match_unathi"
 	color = "#e1ff00" // red + yellow = orange

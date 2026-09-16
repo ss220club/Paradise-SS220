@@ -1,6 +1,6 @@
 /datum/spell/emplosion
 	name = "Emplosion"
-	desc = "This spell emplodes an area."
+	desc = "Излучает электромагнитный импульс."
 
 	var/emp_heavy = 2
 	var/emp_light = 3

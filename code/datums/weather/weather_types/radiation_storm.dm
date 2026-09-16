@@ -9,20 +9,20 @@
 
 //Radiation storms occur when the station passes through an irradiated area, and irradiate anyone not standing in protected areas (maintenance, emergency storage, etc.)
 /datum/weather/rad_storm
-	name = "radiation storm"
-	desc = "A cloud of intense radiation passes through the area dealing rad damage to those who are unprotected."
+	name = "радиационный шторм"
+	desc = "Станция проходит через радиационный пояс высокой интенсивности, облучающее всех, кому не повезло оказаться без защиты."
 
 	telegraph_duration = 400
-	telegraph_message = SPAN_DANGER("The air begins to grow warm.")
+	telegraph_message = SPAN_DANGER("Вам кажется, что воздух вокруг становится теплее.")
 
-	weather_message = SPAN_USERDANGER("<i>You feel waves of heat wash over you! Find shelter!</i>")
+	weather_message = SPAN_USERDANGER("<i>Вы чувствуете, как вас окутывают волны жара! Срочно найдите укрытие!</i>")
 	weather_overlay = "ash_storm"
 	weather_duration_lower = 600
 	weather_color = "green"
 	weather_sound = 'sound/misc/bloblarm.ogg'
 
 	end_duration = 100
-	end_message = SPAN_NOTICE("The air seems to be cooling off again.")
+	end_message = SPAN_NOTICE("Воздух, кажется, остывает обратно...")
 	var/pre_maint_all_access
 	area_types = list(/area)
 	protected_areas = list(
@@ -77,10 +77,10 @@
 
 	status_alarm(FALSE)
 	if(!pre_maint_all_access)
-		GLOB.minor_announcement.Announce("The radiation threat has passed. Please return to your workplaces. Door access resetting momentarily.", "Anomaly Alert")
+		GLOB.minor_announcement.Announce("Радиационная угроза миновала. Пожалуйста, вернитесь на свои рабочие места. Доступы восстановлены.", "ВНИМАНИЕ: Радиационная опасность.")
 		addtimer(CALLBACK(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping, revoke_maint_all_access)), 10 SECONDS) // Bit of time to get out / break into somewhere.
 	else
-		GLOB.minor_announcement.Announce("The radiation threat has passed. Please return to your workplaces.", "Anomaly Alert")
+		GLOB.minor_announcement.Announce("Радиационная угроза миновала. Пожалуйста, вернитесь на свои рабочие места.", "ВНИМАНИЕ: Радиационная опасность.")
 
 /datum/weather/rad_storm/proc/status_alarm(active)	//Makes the status displays show the radiation warning for those who missed the announcement.
 	if(active)

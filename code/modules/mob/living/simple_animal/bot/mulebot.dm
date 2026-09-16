@@ -625,7 +625,7 @@
 
 		if(load)		// if loaded, unload at target
 			if(report_delivery)
-				speak("Destination <b>[destination]</b> reached. Unloading [load].", radio_channel)
+				speak("Пункт назначения <b>[destination]</b> достигнут. Разгрузка [load].", radio_channel)
 			if(istype(load, /obj/structure/closet/crate))
 				var/obj/structure/closet/crate/C = load
 				C.notifyRecipient(destination)
@@ -662,7 +662,7 @@
 	// Load found item if adjacent
 	load(AM)
 	if(report_delivery)
-		speak("Now loading [load] at <b>[get_area(src)]</b>.", radio_channel)
+		speak("Начата загрузка [load] в <b>[get_area(src)]</b>.", radio_channel)
 
 /mob/living/simple_animal/bot/mulebot/Move(turf/simulated/next)
 	. = ..()

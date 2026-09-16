@@ -360,7 +360,7 @@
 	if(prob((mining_power - clamp(30 MW - mining_power, 0, 15 MW) - stabilizer_power)  / (10 MW) + (emagged * 5)))
 		var/area/our_area = get_area(src)
 		if((!spawning || !length(active_nether_portals)))
-			GLOB.major_announcement.Announce("Unexpected power spike during Bluespace Harvester Operation. Extra-dimensional intruder alert. Expected location: [our_area.name]. [emagged ? "DANGER: Emergency shutdown failed! Please proceed with manual shutdown." : auto_shutdown ? "Emergency shutdown initiated." : "Automatic shutdown disabled."]", "Bluespace Harvester Malfunction", 'sound/AI/harvester.ogg')
+			GLOB.major_announcement.Announce("Произошел непредвиденный скачок напряжения во время работы Блюспейс-сборщика. Обнаружено внепространственное вторжение! Ожидаемое местоположение: [our_area.name]. [emagged ? "ОПАСНОСТЬ: Аварийное отключение не удалось! Пожалуйста, перейдите к ручному отключению." : auto_shutdown ? "Начато аварийное отключение." : "Automatic shutdown disabled."]", "ВНИМАНИЕ: Обнаружена неисправность Блюспейс-сборщика!", 'sound/AI/harvester.ogg')
 		if(!emagged && auto_shutdown)
 			desired_mining_power = 0	//emergency shutdown unless it is disabled
 		// An extra portal for each 30MW above 15
@@ -378,6 +378,7 @@
 	P.linked_source_object = src
 	// 1 Extra mob for each 20 MW of mining power above 15MW.
 	P.max_mobs = 5 + max((mining_power - 15 MW) / (20 MW), 0)
+	P.max_mobs =  min(P.max_mobs, 20) // SS220 EDIT Ограничение харвестера по тварям, вылезающим из него при перегрузке
 	update_icon()
 	if(amount)
 		addtimer(CALLBACK(src, PROC_REF(start_nether_portaling), amount), rand(3, 5) SECONDS)

@@ -14,7 +14,7 @@
 	see_in_dark = 6
 	butcher_results = list(/obj/item/food/meat = 3)
 	response_disarm = "gently pushes aside"
-	var/collar_icon_state = "fox"
+	collar_icon_state = "fox" // SS220 EDIT - Переменная уже обьявленна в модуле
 
 /mob/living/simple_animal/pet/dog/fox/Initialize(mapload)
 	. = ..()

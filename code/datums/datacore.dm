@@ -164,11 +164,11 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		G.fields["rank"]		= assignment
 		G.fields["age"]			= H.age
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
-		G.fields["p_stat"]		= "Active"
-		G.fields["m_stat"]		= "Stable"
+		G.fields["p_stat"]		= "Активен"
+		G.fields["m_stat"]		= "Стабилен"
 		G.fields["sex"]			= capitalize(H.gender)
 		G.fields["species"]		= H.dna.species.name
-		G.fields["ai_target"]	= "None" // for malf hud
+		G.fields["ai_target"]	= "Отсутствует" // for malf hud
 		G.fields["b_dna"]		= H.dna.unique_enzymes
 
 		// Do some ID card checking stuff here to save on resources
@@ -185,7 +185,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.gen_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			G.fields["notes"] = H.gen_record
 		else
-			G.fields["notes"] = "No notes found."
+			G.fields["notes"] = "Заметки не найдены."
 		G.fields["nt_relation"] = H?.client?.prefs?.active_character?.nanotrasen_relation || "Unknown relation."
 		general += G
 
@@ -206,14 +206,14 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.med_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			M.fields["notes"] = H.med_record
 		else
-			M.fields["notes"] = "No notes found."
+			M.fields["notes"] = "Заметки не найдены."
 		medical += M
 
 		//Security Record
 		var/datum/data/record/S = new()
 		S.fields["id"]			= id
 		S.fields["name"]		= H.real_name
-		S.fields["criminal"]	= "None"
+		S.fields["criminal"]	= "Отсутствует"
 		S.fields["mi_crim"]		= "None"
 		S.fields["mi_crim_d"]	= "No minor crime convictions."
 		S.fields["ma_crim"]		= "None"
@@ -222,7 +222,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		if(H.sec_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			S.fields["notes"] = H.sec_record
 		else
-			S.fields["notes"] = "No notes found."
+			S.fields["notes"] = "Заметки не найдены."
 		LAZYINITLIST(S.fields["comments"])
 		security += S
 
@@ -263,6 +263,12 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 			head = alternate_head.icon_state
 	temp = new /icon(icobase, "[head]_[g]")
 	preview_icon.Blend(temp, ICON_OVERLAY)
+
+	// SS220 EDIT START - SERPENTIDS
+	if(is_species(H, /datum/species/serpentid))
+		temp = new/icon("icon" = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi', "icon_state" = "preview")
+		preview_icon.Blend(temp, ICON_OVERLAY)
+	// SS220 EDIT END - SERPENTIDS
 
 	//Tail
 	if(H.body_accessory && (istype(H.body_accessory, /datum/body_accessory/tail) || istype(H.body_accessory, /datum/body_accessory/wing) || istype(H.body_accessory, /datum/body_accessory/spines)))
@@ -403,6 +409,10 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		job_clothes = custom_job
 	else if(H.mind)
 		job_clothes = H.mind.assigned_role
+	//SS220 EDIT START - SERPENTIDS
+	if(is_species(H, /datum/species/serpentid))
+		job_clothes = "Naked"
+	//SS220 EDIT END - SERPENTIDS
 	switch(job_clothes)
 		if("Head of Personnel")
 			clothes_s = new /icon('icons/mob/clothing/under/civilian.dmi', "hop")
@@ -530,6 +540,25 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 			clothes_s = new /icon('icons/mob/clothing/under/rnd.dmi', "robotics")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "black"), ICON_UNDERLAY)
 			clothes_s.Blend(new /icon('icons/mob/clothing/suits/labcoat.dmi', "labcoat_robowhite_open"), ICON_OVERLAY)
+
+		// SS220 ADDITION - START
+		if("Student Scientist")
+			clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "student_s")
+			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "white"), ICON_UNDERLAY)
+			clothes_s.Blend(new /icon('icons/mob/clothing/suits/labcoat.dmi', "labcoat_science_open"), ICON_OVERLAY)
+		if("Medical Intern")
+			clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "intern_s")
+			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "white"), ICON_UNDERLAY)
+			clothes_s.Blend(new /icon('icons/mob/clothing/suits/labcoat.dmi', "labcoat_medical_open"), ICON_OVERLAY)
+		if("Security Cadet")
+			clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "cadet_s")
+			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "jackboots"), ICON_UNDERLAY)
+		if("Trainee Engineer")
+			clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "trainee_s")
+			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "orange"), ICON_UNDERLAY)
+			clothes_s.Blend(new /icon('icons/mob/clothing/belt.dmi', "utility"), ICON_OVERLAY)
+		// SS220 ADDITION - END
+
 		if("Syndicate Agent")
 			clothes_s = new /icon('icons/mob/clothing/under/syndicate.dmi', "syndicate")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "black"), ICON_UNDERLAY)

@@ -5,6 +5,11 @@
 		stack_trace("Carbon mob being instantiated in nullspace")
 
 /mob/living/carbon/Destroy()
+	// We need to delete the back slot first, for modsuits. Otherwise, we have issues.
+	if(back)
+		var/obj/I = back
+		drop_item_to_ground(I)
+		qdel(I)
 	// This clause is here due to items falling off from limb deletion
 	for(var/obj/item in get_all_slots())
 		if(QDELETED(item))
@@ -781,7 +786,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(/obj/machinery/atmospherics/unary/ven
 		return
 
 	if(!HAS_TRAIT(thrown_thing, TRAIT_NO_THROWN_MESSAGE))
-		visible_message(SPAN_DANGER("[src] has thrown [thrown_thing]."))
+		visible_message(SPAN_DANGER("[src] бросает [thrown_thing.declent_ru(ACCUSATIVE)]."))
 	newtonian_move(get_dir(target, src))
 	thrown_thing.throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, null, null, null, move_force)
 	thrown_thing.scatter_atom()

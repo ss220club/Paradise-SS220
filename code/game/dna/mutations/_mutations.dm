@@ -1,8 +1,8 @@
 /datum/mutation
 	/// Display name
-	var/name = "mutation"
+	var/name = "Мутация"
 	/// Description of the gene
-	var/desc = "A mutation."
+	var/desc = "Мутация."
 	///  What gene activates this? Set in initialize()!
 	var/block = 0
 	/// Chance of the gene to cause adverse effects when active

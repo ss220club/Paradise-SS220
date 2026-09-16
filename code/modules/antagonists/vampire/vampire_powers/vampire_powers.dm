@@ -211,7 +211,7 @@
 
 /datum/spell/vampire/lair
 	name = "Lair"
-	desc = "Pick a coffin for yourself, the centrepiece of your new lair."
+	desc = "Выберите себе гроб, который станет центральным элементом вашего нового логова."
 	gain_desc = "You can now start a lair."
 	action_icon = 'icons/obj/closet.dmi'
 	action_icon_state = "coffin"
@@ -226,19 +226,19 @@
 /datum/spell/vampire/lair/cast(list/targets, mob/user)
 	var/obj/structure/closet/coffin/C = targets[1] // this spell will basically always target a singular coffin unless you stack multiple on the same tile
 	if(!istype(C, /obj/structure/closet/coffin))
-		to_chat(user, SPAN_WARNING("This only works on coffins!"))
+		to_chat(user, SPAN_WARNING("Это работает только с гробами!"))
 		return
 	if(istype(C, /obj/structure/closet/coffin/vampire))
-		to_chat(user, SPAN_WARNING("This coffin serves another and refuses to bend to your will!"))
+		to_chat(user, SPAN_WARNING("Этот гроб принадлежит другому и отказывается подчиняться вашему воле!"))
 		return
 	if(istype(C, /obj/structure/closet/coffin/sarcophagus))
-		to_chat(user, SPAN_WARNING("Making such a lavish lair would likely upset an ancient. You should really use a wooden coffin for now."))
+		to_chat(user, SPAN_WARNING("Создание такого роскошного логова, вероятно, расстроило бы древний народ. Вам лучше пока использовать деревянный гроб."))
 		return
 	for(var/turf/T in range(1, C))
 		if(T.density)
-			to_chat(user, SPAN_WARNING("You need more space around the coffin for the ritual!"))
+			to_chat(user, SPAN_WARNING("Вам нужно больше места вокруг гроба для ритуала!"))
 			return
-	to_chat(user, SPAN_DANGER("You begin marking the coffin!"))
+	to_chat(user, SPAN_DANGER("Вы начинаете обозначать гроб!"))
 	C.Beam(user, icon_state = "drainbeam", maxdistance = 1, time = 10 SECONDS)
 	playsound(C, 'sound/misc/enter_blood.ogg', 20)
 	for(var/obj/machinery/light/L in range(5, user))

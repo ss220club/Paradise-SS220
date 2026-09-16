@@ -11,7 +11,7 @@
 	player.click_on(morph)
 
 	TEST_ASSERT_ANY_CHATLOG(player, "You try to use")
-	TEST_ASSERT_ANY_CHATLOG(player, "suddenly collapses in on itself")
+	TEST_ASSERT_ANY_CHATLOG(player, "внезапно распадается, превращаясь в груду зеленой плоти!") // SS220 Edit - Перевод атаки морфа
 	qdel(morph)
 	// Get us back up
 	player.rejuvenate()

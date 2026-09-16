@@ -35,9 +35,9 @@
 	if(!hand_handled)
 		qdel(attached_hand)
 		attached_hand = null
-		to_chat(user, SPAN_WARNING("Your hands are full!"))
+		to_chat(user, SPAN_WARNING("Ваши руки заполнены!"))
 		return 0
-	to_chat(user, SPAN_NOTICE("You channel the power of the spell to your hand."))
+	to_chat(user, SPAN_NOTICE("Вы направляете силу заклинания в свою руку."))
 	return 1
 
 /datum/spell/touch/proc/discharge_hand(atom/target, any = FALSE)
@@ -49,12 +49,12 @@
 		return
 	QDEL_NULL(attached_hand)
 	if(on_remove_message)
-		to_chat(user, SPAN_NOTICE("You draw the power out of your hand."))
+		to_chat(user, SPAN_NOTICE("Вы вытягиваете силу из своей руки."))
 
 
 /datum/spell/touch/disintegrate
 	name = "Disintegrate"
-	desc = "This spell charges your hand with vile energy that can be used to violently explode victims."
+	desc = "Заряжает вашу руку зловещей энергией, разрывающей жертв на куски при прикосновении."
 	hand_path = /obj/item/melee/touch_attack/disintegrate
 
 	base_cooldown = 600
@@ -64,7 +64,7 @@
 
 /datum/spell/touch/flesh_to_stone
 	name = "Flesh to Stone"
-	desc = "This spell charges your hand with the power to turn victims into inert statues for a long period of time."
+	desc = "Заряжает вашу руку зловещей силой, способной превращать жертв в неподвижные статуи на долгое время."
 	hand_path = /obj/item/melee/touch_attack/fleshtostone
 
 	base_cooldown = 600
@@ -74,7 +74,7 @@
 
 /datum/spell/touch/plushify
 	name = "Plushify"
-	desc = "This spell charges your hand with the power to turn your victims into marketable plushies!"
+	desc = "Заряжает вашу руку зловещей силой, способной превратить ваших жертв в игрушки!"
 	hand_path = /obj/item/melee/touch_attack/plushify
 
 	base_cooldown = 600

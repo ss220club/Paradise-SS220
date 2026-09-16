@@ -5,12 +5,12 @@
 	area_nightlight_color = LIGHT_COLOR_STATION_WORK_NIGHT
 
 /area/station/service/cafeteria
-	name = "\improper Cafe"
+	name = "Кафетерий"
 	icon_state = "cafeteria"
 	area_icon_text = "CAFE"
 
 /area/station/service/kitchen
-	name = "\improper Kitchen"
+	name = "Кухня"
 	icon_state = "kitchen"
 	area_icon_text = "KITCHEN"
 	request_console_flags = RC_SUPPLY
@@ -37,28 +37,28 @@
 	area_icon_text = "PASTURE"
 
 /area/station/service/bar
-	name = "\improper Bar"
+	name = "Бар"
 	icon_state = "bar"
 	area_icon_text = "BAR"
 	sound_environment = SOUND_AREA_WOODFLOOR
 	request_console_flags = RC_SUPPLY
 
 /area/station/service/theatre
-	name = "\improper Theatre"
+	name = "Театр"
 	icon_state = "Theatre"
 	area_icon_text = "THEATRE"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 
 /area/station/service/library
-	name = "\improper Library"
+	name = "Библиотека"
 	icon_state = "library"
 	area_icon_text = "LIBRARY"
 	sound_environment = SOUND_AREA_LARGE_SOFTFLOOR
 	request_console_flags = RC_SUPPLY
 
 /area/station/service/chapel
-	name = "\improper Chapel"
+	name = "Церковь"
 	icon_state = "chapel"
 	area_icon_text = "CHAPEL"
 	ambientsounds = HOLY_SOUNDS
@@ -68,36 +68,36 @@
 	request_console_flags = RC_SUPPLY
 
 /area/station/service/chapel/funeral
-	name = "\improper Funeral Services"
+	name = "Похоронные Службы"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 	valid_territory = TRUE
 
 /area/station/service/chapel/office
-	name = "\improper Chapel Office"
+	name = "Офис Священника"
 	icon_state = "chapeloffice"
 	area_icon_text = "CHAPEL\nOFFICE"
 	request_console_name = "Chapel"
 
 /area/station/service/clown
-	name = "\improper Clown's Office"
+	name = "Офис Клоуна"
 	icon_state = "clown_office"
 	area_icon_text = "CLOWN"
 
 /area/station/service/clown/secret
-	name = "\improper Top Secret Clown HQ"
+	name = "Сверхсекретная Штаб-Квартира Клоуна"
 
 /area/station/service/mime
-	name = "\improper Mime's Office"
+	name = "Офис Мима"
 	icon_state = "mime_office"
 	area_icon_text = "MIME"
 
 /area/station/service/barber
-	name = "\improper Barber Shop"
+	name = "Парикмахерская"
 	icon_state = "barber"
 	area_icon_text = "BARBER"
 
 /area/station/service/janitor
-	name = "\improper Custodial Closet"
+	name = "Каморка Уборщика"
 	icon_state = "janitor"
 	area_icon_text = "JANI"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
@@ -105,7 +105,7 @@
 	request_console_name = "Janitorial"
 
 /area/station/service/hydroponics
-	name = "Hydroponics"
+	name = "Гидропоника"
 	icon_state = "hydro"
 	area_icon_text = "BOTANY"
 	sound_environment = SOUND_AREA_STANDARD_STATION

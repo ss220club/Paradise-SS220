@@ -119,7 +119,7 @@
 	var/watchlisted = FALSE
 
 	/// list of all credit object bound to this client
-	var/list/credits = list()
+	// var/list/credits = list() SS220 EDIT - Turn off upstream end of round credits
 
 	/// Client's pAI save
 	var/datum/pai_save/pai_save
@@ -129,6 +129,10 @@
 
 	/// The client's job ban holder
 	var/datum/job_ban_holder/jbh = new()
+	// SS220 EDIT START - Species bans
+	/// The client's species ban holder
+	var/datum/species_ban_holder/sbh = new()
+	// SS220 EDIT END
 
 	/// Input datum, what the client is pressing.
 	var/datum/input_data/input_data = new()

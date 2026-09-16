@@ -1,6 +1,6 @@
 /datum/spell/charge_up/bounce/lightning
 	name = "Lightning Bolt"
-	desc = "Throws a lightning bolt at your enemies. Classic. When clicked will start to charge in power. Then click on a mob to send the bolt before it overloads with power."
+	desc = "Метать молнии во врагов. Классика. При нажатии начнет накапливаться энергия. Нажмите на цель, чтобы отправить заряд в цель до того, как заклятие переполнится и рассеется."
 	base_cooldown	= 30 SECONDS
 	invocation = "UN'LTD P'WAH!"
 	invocation_type = "shout"
@@ -8,9 +8,9 @@
 	action_icon_state = "lightning"
 	charge_sound = new /sound('sound/magic/lightning_chargeup.ogg', channel = 7)
 	max_charge_time = 10 SECONDS
-	stop_charging_text = "You stop charging the lightning around you."
-	stop_charging_fail_text = "The lightning around you is too strong to stop now!"
-	start_charging_text = "You start gathering lightning around you."
+	stop_charging_text = "Вы перестаёте заряжать молнии вокруг себя."
+	stop_charging_fail_text = "Молнии вокруг вас слишком сильны, чтобы их можно было остановить!"
+	start_charging_text = "Вы начинаете накапливать молнии вокруг себя."
 	bounce_hit_sound = 'sound/magic/lightningshock.ogg'
 	var/damaging = TRUE
 
@@ -39,8 +39,8 @@
 /datum/spell/charge_up/bounce/lightning/apply_bounce_effect(mob/origin, mob/living/target, energy, mob/user)
 	if(target.can_block_magic(antimagic_flags))
 		target.visible_message(
-			SPAN_WARNING("[target] absorbs the spell, remaining unharmed!"),
-			SPAN_DANGER("You absorb the spell, remaining unharmed!")
+			SPAN_WARNING("[target.declent_ru(NOMINATIVE)] поглощает молнии, не получив повреждений!"),
+			SPAN_DANGER("Вы поглощаете молнии. Вас так просто не остановить!")
 		)
 		return
 	if(damaging)

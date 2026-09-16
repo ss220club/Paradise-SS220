@@ -9,11 +9,36 @@ set -x
 #need to switch to game dir for Dockerfile weirdness
 original_dir=$PWD
 cd "$1"
-. dependencies.sh
+. _build_dependencies.sh
 cd "$original_dir"
+
+if [ ! -d "rust-utils" ]; then
+	echo "Cloning rust-utils..."
+	git clone https://github.com/ss220club/rust-utils
+	cd rust-utils
+	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
+else
+	echo "Fetching rust-utils..."
+	cd rust-utils
+	git fetch
+	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
+fi
+
+echo "Deploying rustutils..."
+RUSTFLAGS="-C target-cpu=native"
+env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --all-features --target=i686-unknown-linux-gnu
+mv target/i686-unknown-linux-gnu/release/librust_utils.so "$1/librust_utils.so"
+cd ../../
 
 echo "Deploying Rustlibs..."
 cd $1/rust
-env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --features all --target=i686-unknown-linux-gnu
+env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --all-features --target=i686-unknown-linux-gnu
 mv target/i686-unknown-linux-gnu/release/librustlibs.so "$1/librustlibs.so"
 cd ..
+
+echo "Assembling ru_names.toml..."
+cd "$1"
+
+tools/bootstrap/python tools/translations/merge_ru_names.py tools/translations/ru_names_header.toml modular_ss220/translations/public/ru_names modular_ss220/translations/public/ru_names.toml
+tools/bootstrap/python tools/translations/validate_ru_names.py modular_ss220/translations/public/ru_names.toml
+cd "$original_dir"
