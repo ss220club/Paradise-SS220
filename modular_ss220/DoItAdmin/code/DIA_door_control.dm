@@ -5,6 +5,8 @@
 /// Управляет и шлюзами, и гермозатворами
 #define DOORCONTROL_BOTH    3
 
+#define DOORCONTROL_BOTH    3
+
 /obj/machinery/door_control/Do_It_Admin
 	name = "Button"
 	desc = "Mystery buttom"
@@ -20,7 +22,7 @@
 	var/used_after = FALSE
 	power_state = NO_POWER_USE
 	interact_offline = TRUE
-	id = "TEST_BASE"
+	id = "TEST_DIA"
 	var/can_emag_act = FALSE
 	var/msg_if_emagg_act_fail = "No no no, mr. Fish."
 	var/msg_after_one_use_act_failure = "No result"
@@ -32,6 +34,12 @@
 	var/icon_if_complite = TRUE
 	var/doorcontrol_mode = DOORCONTROL_BOTH
 	var/act_if_no_poddor_bitflag = TRUE
+	max_integrity = 500
+	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 90, acid = 70)
+
+	launched = FALSE
+	glass = TRUE
+	range = 7
 
 /obj/machinery/door_control/Do_It_Admin/proc/swap_indestructible(answer=TRUE)
 	if(answer)
