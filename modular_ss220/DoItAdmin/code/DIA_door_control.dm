@@ -5,7 +5,7 @@
 /// Управляет и шлюзами, и гермозатворами
 #define DOORCONTROL_BOTH    3
 
-#define DOORCONTROL_BOTH    3
+#define DOORCONTROL_MASS_DRIVER    4
 
 /obj/machinery/door_control/Do_It_Admin
 	name = "Button"
@@ -37,9 +37,10 @@
 	max_integrity = 500
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 90, acid = 70)
 
-	launched = FALSE
-	glass = TRUE
-	range = 7
+	var/launched = FALSE
+	var/glass = TRUE
+	var/range = 7
+	var/button_double = FALSE
 
 /obj/machinery/door_control/Do_It_Admin/proc/swap_indestructible(answer=TRUE)
 	if(answer)
