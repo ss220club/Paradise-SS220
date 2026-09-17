@@ -6505,13 +6505,17 @@
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
 "aDc" = (
-/obj/structure/cable/extra_insulated{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/visible/green,
+/obj/effect/turf_decal/tiles/department/engineering,
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aDd" = (
@@ -7511,6 +7515,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/tiles/neutral,
+/obj/effect/turf_decal/stripes/corner,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aHi" = (
@@ -7557,6 +7562,9 @@
 	icon_state = "2-8"
 	},
 /obj/effect/turf_decal/tiles/neutral,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aHp" = (
@@ -7939,7 +7947,19 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aID" = (
-/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tiles/neutral,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aIE" = (
@@ -7960,15 +7980,16 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aIF" = (
-/obj/effect/turf_decal/stripes/line,
 /obj/machinery/light_switch/south,
 /obj/machinery/light_switch/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aIG" = (
@@ -8166,11 +8187,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fore2)
-"aJs" = (
-/obj/effect/turf_decal/tiles/department/engineering,
-/obj/machinery/atmospherics/binary/valve/digital,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/supermatter_room)
 "aJu" = (
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/evidence)
@@ -14899,6 +14915,16 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
+"bpI" = (
+/obj/structure/cable/extra_insulated{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/green,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/supermatter_room)
 "bpJ" = (
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 1
@@ -47734,6 +47760,11 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/warden)
+"exZ" = (
+/obj/effect/turf_decal/tiles/department/engineering,
+/obj/machinery/atmospherics/binary/valve/digital,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/supermatter_room)
 "eyg" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/structure/sign/public/pods{
@@ -48118,11 +48149,13 @@
 /turf/simulated/floor/carpet,
 /area/station/command/office/hop)
 "eEd" = (
-/obj/effect/turf_decal/stripes/line,
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
 /obj/machinery/firealarm/directional/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "eEl" = (
@@ -54958,6 +54991,15 @@
 /obj/effect/spawner/random/storage,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
+"gLW" = (
+/obj/machinery/camera{
+	c_tag = "Supermatter Chamber Entrance";
+	network = list("SS13","Engineering");
+	dir = 5
+	},
+/obj/machinery/atmospherics/binary/valve/digital,
+/turf/simulated/floor/engine,
+/area/station/engineering/engine/supermatter)
 "gLY" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -79181,7 +79223,6 @@
 /area/station/security/range)
 "oan" = (
 /obj/machinery/light/directional/south,
-/obj/effect/turf_decal/stripes/line,
 /obj/machinery/economy/vending/wallmed/directional/south,
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
@@ -79547,12 +79588,14 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room/secondary)
 "oeZ" = (
-/obj/effect/turf_decal/stripes/line,
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
@@ -88387,17 +88430,6 @@
 /obj/effect/turf_decal/tiles/neutral,
 /turf/simulated/floor/plasteel,
 /area/station/security/checkpoint/south)
-"qOQ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/atmospherics/portable/canister/nitrogen,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/supermatter_room)
 "qPc" = (
 /turf/simulated/floor/carpet/red,
 /area/station/command/office/hos)
@@ -103908,14 +103940,16 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "vHB" = (
-/obj/machinery/atmospherics/meter,
-/obj/machinery/atmospherics/binary/valve/digital,
-/obj/machinery/driver_button/sm_drop_button{
-	range = 20;
-	pixel_x = 32
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/engine,
-/area/station/engineering/engine/supermatter)
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/portable/canister/nitrogen,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/supermatter_room)
 "vHD" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/atmos/glass,
@@ -112199,12 +112233,12 @@
 /turf/simulated/floor/plasteel/airless,
 /area/station/science/toxins/test)
 "ygd" = (
-/obj/machinery/camera{
-	c_tag = "Supermatter Chamber Entrance";
-	network = list("SS13","Engineering");
-	dir = 5
-	},
+/obj/machinery/atmospherics/meter,
 /obj/machinery/atmospherics/binary/valve/digital,
+/obj/machinery/driver_button/sm_drop_button{
+	range = 20;
+	pixel_x = 32
+	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
 "ygh" = (
@@ -134773,7 +134807,7 @@ hGx
 axl
 ixi
 awI
-aJs
+exZ
 ayJ
 lKS
 fBT
@@ -135295,9 +135329,9 @@ azT
 ayM
 aCj
 aDf
-aDc
+bpI
 aHh
-aID
+aMM
 aCk
 ocA
 tzp
@@ -135553,7 +135587,7 @@ raH
 ayM
 ayM
 aFf
-aHl
+aDc
 aIE
 atd
 aLp
@@ -135807,10 +135841,10 @@ pyQ
 aik
 sqD
 ksd
-ygd
+gLW
 pcM
 wBz
-aHh
+aID
 aIF
 atd
 wgY
@@ -136835,7 +136869,7 @@ oHg
 qEB
 jhz
 nDt
-vHB
+ygd
 tbh
 oVs
 aHh
@@ -137095,7 +137129,7 @@ raH
 ayM
 ayM
 aGa
-aHl
+aDc
 oan
 atd
 atd
@@ -138377,8 +138411,8 @@ gBo
 waQ
 pSJ
 fpf
-qOQ
-qOQ
+vHB
+vHB
 aGc
 aJG
 atd
