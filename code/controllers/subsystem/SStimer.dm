@@ -54,6 +54,16 @@ SUBSYSTEM_DEF(timer)
 	/// How many times bucket was reset
 	var/bucket_reset_count = 0
 
+	// SS220 EDIT START
+	/// --- CIRCUIT BREAKER VARS ---
+	/// Сколько таймеров было создано в текущем тике
+	var/timers_created_this_tick = 0
+	/// Тик, когда мы последний раз сбрасывали счётчик
+	var/last_tick_checked = -1
+	/// Предел по таймерам за тик. 2000 - с запасом.
+	var/max_timers_per_tick = 2000
+	// SS220 EDIT END
+
 /datum/controller/subsystem/timer/PreInit()
 	bucket_list.len = BUCKET_LEN
 	head_offset = world.time
@@ -647,6 +657,26 @@ USER_VERB(debug_timers, R_DEBUG|R_VIEWRUNTIMES, "Debug Timers", "Shows currently
 /proc/addtimer(datum/callback/callback, wait = 0, flags = 0)
 	if(!callback)
 		CRASH("addtimer called without a callback")
+	// SS220 EDIT START
+	// --- НАЧАЛО CIRCUIT BREAKER ---
+	// Защита от вызова до полной инициализации подсистемы таймеров
+	if(SStimer && world.time > 0)
+		if(world.time > SStimer.last_tick_checked)
+			SStimer.last_tick_checked = world.time
+			SStimer.timers_created_this_tick = 0
+
+		SStimer.timers_created_this_tick++
+
+		if(SStimer.timers_created_this_tick > SStimer.max_timers_per_tick)
+			// Вызываем stack_trace ТОЛЬКО ОДИН РАЗ при первом превышении лимита в тике.
+			if(SStimer.timers_created_this_tick == SStimer.max_timers_per_tick + 1)
+				// Выносим сложную логику в переменную, чтобы компилятор DM не сходил с ума от кавычек внутри []
+				var/source_type = (callback.object == GLOBAL_PROC || isnull(callback.object)) ? "GLOBAL" : (QDELETED(callback.object) ? "QDELETED" : "[callback.object.type]")
+				stack_trace("TIMER CIRCUIT BREAKER TRIPPED! Dropping timer to save SStimer. Limit: [SStimer.max_timers_per_tick]. Source: [source_type], Callback: [callback.delegate]")
+
+			return null // Возвращаем null, чтобы deltimer(null) безопасно вернул FALSE
+	// --- КОНЕЦ CIRCUIT BREAKER ---
+	// SS220 EDIT END
 
 	if(wait < 0)
 		stack_trace("addtimer called with a negative wait. Converting to [world.tick_lag]")
