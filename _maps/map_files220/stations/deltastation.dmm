@@ -6504,6 +6504,18 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
+"aDc" = (
+/obj/machinery/power/rad_collector,
+/obj/structure/cable/extra_insulated{
+	icon_state = "0-8"
+	},
+/obj/machinery/camera{
+	c_tag = "Supermatter Chamber";
+	network = list("SS13","Engineering");
+	dir = 6
+	},
+/turf/simulated/floor/engine,
+/area/station/engineering/engine/supermatter)
 "aDd" = (
 /obj/machinery/atmospherics/meter,
 /obj/effect/turf_decal/tiles/neutral,
@@ -6698,10 +6710,14 @@
 /turf/space,
 /area/station/engineering/solar/fore_port)
 "aEd" = (
-/obj/effect/turf_decal/tiles/department/engineering,
+/obj/machinery/camera{
+	c_tag = "Supermatter Chamber Entrance";
+	network = list("SS13","Engineering");
+	dir = 5
+	},
 /obj/machinery/atmospherics/binary/valve/digital,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/supermatter_room)
+/turf/simulated/floor/engine,
+/area/station/engineering/engine/supermatter)
 "aEe" = (
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
@@ -6714,11 +6730,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
-"aEf" = (
-/obj/machinery/atmospherics/meter,
-/obj/machinery/atmospherics/binary/valve/digital,
-/turf/simulated/floor/engine,
-/area/station/engineering/engine/supermatter)
 "aEg" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -7060,7 +7071,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/visible/green,
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aFf" = (
@@ -7076,9 +7089,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/structure/disaster_counter/supermatter{
-	pixel_y = 32
-	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aFi" = (
@@ -7088,7 +7098,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aFj" = (
@@ -7276,9 +7288,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
-	},
-/obj/item/radio/intercom/directional/north{
-	pixel_y = 34
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
@@ -7938,18 +7947,12 @@
 	pixel_x = -6;
 	pixel_y = -4
 	},
-/obj/item/clothing/glasses/meson{
-	pixel_y = -4
-	},
 /obj/item/clothing/suit/radiation{
 	pixel_x = 6;
 	pixel_y = -4
 	},
 /obj/item/clothing/head/radiation{
 	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/clothing/glasses/meson{
 	pixel_y = 6
 	},
 /obj/item/clothing/head/radiation{
@@ -8163,22 +8166,13 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fore2)
 "aJs" = (
-/obj/machinery/door_control/shutter/north{
-	id = "engsm";
-	name = "Radiation Shutters Control";
-	req_access = list(10);
-	pixel_x = -9;
-	pixel_y = 32
-	},
 /obj/structure/cable/extra_insulated{
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/visible/green,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aJu" = (
@@ -14909,15 +14903,6 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
-"bpI" = (
-/obj/machinery/camera{
-	c_tag = "Supermatter Chamber Entrance";
-	network = list("SS13","Engineering");
-	dir = 5
-	},
-/obj/machinery/atmospherics/binary/valve/digital,
-/turf/simulated/floor/engine,
-/area/station/engineering/engine/supermatter)
 "bpJ" = (
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 1
@@ -40451,6 +40436,15 @@
 	},
 /turf/simulated/floor/carpet/grimey,
 /area/station/security/permabrig)
+"duJ" = (
+/obj/machinery/atmospherics/meter,
+/obj/machinery/atmospherics/binary/valve/digital,
+/obj/machinery/driver_button/sm_drop_button{
+	range = 20;
+	pixel_x = 32
+	},
+/turf/simulated/floor/engine,
+/area/station/engineering/engine/supermatter)
 "duP" = (
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/polarized{
@@ -54125,6 +54119,12 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
+/obj/machinery/door_control/shutter/north{
+	id = "engsm";
+	name = "Radiation Shutters Control";
+	req_access = list(10);
+	pixel_y = 26
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "gxa" = (
@@ -54971,18 +54971,6 @@
 /obj/effect/spawner/random/storage,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
-"gLW" = (
-/obj/machinery/power/rad_collector,
-/obj/structure/cable/extra_insulated{
-	icon_state = "0-8"
-	},
-/obj/machinery/camera{
-	c_tag = "Supermatter Chamber";
-	network = list("SS13","Engineering");
-	dir = 6
-	},
-/turf/simulated/floor/engine,
-/area/station/engineering/engine/supermatter)
 "gLY" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -73695,10 +73683,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/locker)
 "mxG" = (
-/obj/machinery/driver_button/sm_drop_button{
-	pixel_y = -32;
-	range = 20
-	},
 /obj/machinery/power/apc/reinforced/important/directional/north,
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-8"
@@ -79216,6 +79200,22 @@
 	},
 /obj/structure/shelf/engineering,
 /obj/effect/turf_decal/delivery,
+/obj/item/clothing/glasses/meson{
+	pixel_y = 6;
+	pixel_x = -5
+	},
+/obj/item/clothing/glasses/meson{
+	pixel_y = -4;
+	pixel_x = -5
+	},
+/obj/item/geiger_counter{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/obj/item/geiger_counter{
+	pixel_x = 8;
+	pixel_y = 6
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "oas" = (
@@ -82064,6 +82064,19 @@
 /obj/effect/turf_decal/tiles/department/science,
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
+"oVs" = (
+/obj/structure/cable/extra_insulated{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
+/obj/item/radio/intercom/directional/north{
+	pixel_y = 34
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/supermatter_room)
 "oVE" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -88387,14 +88400,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/checkpoint/south)
 "qOQ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/atmospherics/portable/canister/nitrogen,
+/obj/effect/turf_decal/tiles/department/engineering,
+/obj/machinery/atmospherics/binary/valve/digital,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "qPc" = (
@@ -103906,6 +103913,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
+"vHB" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/atmospherics/portable/canister/nitrogen,
+/turf/simulated/floor/plasteel,
+/area/station/engineering/supermatter_room)
 "vHD" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/atmos/glass,
@@ -106696,6 +106714,19 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
+"wBz" = (
+/obj/structure/cable/extra_insulated{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/green,
+/obj/structure/disaster_counter/supermatter{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/supermatter_room)
 "wBK" = (
 /turf/simulated/wall/r_wall,
 /area/station/security/prison/cell_block/a)
@@ -112175,18 +112206,6 @@
 	},
 /turf/simulated/floor/plasteel/airless,
 /area/station/science/toxins/test)
-"ygd" = (
-/obj/structure/cable/extra_insulated{
-	icon_state = "4-8"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/supermatter_room)
 "ygh" = (
 /obj/effect/turf_decal/siding/wood/cherry{
 	dir = 4
@@ -134239,13 +134258,13 @@ abj
 atd
 avx
 uQW
-ePt
+rAC
 fCZ
 xiD
 wwE
 kuJ
 xiD
-rAC
+ePt
 rAC
 gba
 aGd
@@ -134753,7 +134772,7 @@ hGx
 axl
 ixi
 awI
-aEd
+qOQ
 ayJ
 lKS
 fBT
@@ -135275,7 +135294,7 @@ azT
 ayM
 aCj
 aDf
-aFe
+aJs
 aHh
 aID
 aCk
@@ -135526,7 +135545,7 @@ avI
 hZW
 axM
 ayM
-gLW
+aDc
 mgh
 mgh
 raH
@@ -135787,9 +135806,9 @@ pyQ
 aik
 sqD
 ksd
-bpI
+aEd
 pcM
-aFe
+wBz
 aHh
 aIF
 atd
@@ -136046,7 +136065,7 @@ azZ
 ayM
 upc
 ayM
-aJs
+aFe
 aHl
 aIG
 aJV
@@ -136815,9 +136834,9 @@ oHg
 qEB
 jhz
 nDt
-aEf
+duJ
 tbh
-aFi
+oVs
 aHh
 eEd
 atd
@@ -137331,7 +137350,7 @@ aBf
 ayM
 aEj
 aEj
-ygd
+aFi
 aHm
 oeZ
 aJY
@@ -138357,8 +138376,8 @@ gBo
 waQ
 pSJ
 fpf
-qOQ
-qOQ
+vHB
+vHB
 aGc
 aJG
 atd
