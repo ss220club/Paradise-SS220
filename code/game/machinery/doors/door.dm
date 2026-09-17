@@ -675,11 +675,24 @@
 
 	var/obj/last_filler = src
 	for(var/i in 1 to width - 1)
+		var/turf/filler_turf = get_step(last_filler, turn(dir, 90))
+		// A filler saved via the maploader (it's a real, separate object
+		// sitting on the secondary tile at Save time, so it gets captured
+		// as its own map entry) would otherwise coexist with the FRESH
+		// filler this loop is about to create. The airlock's own `fillers`
+		// list only tracks fillers it created itself - a stray, loaded-
+		// from-map filler isn't in it, so QDEL_LIST_CONTENTS(fillers)
+		// above doesn't catch it. This was the "double doors duplicate on
+		// load" bug - clear any pre-existing filler on this specific spot
+		// before making a new one.
+		for(var/obj/airlock_filler_object/stray in filler_turf)
+			qdel(stray)
+
 		var/obj/airlock_filler_object/filler
 
 		filler = new(src)
 		filler.pair_airlock(src)
-		filler.loc = get_step(last_filler, turn(dir, 90))
+		filler.loc = filler_turf
 		filler.density = density
 		filler.set_opacity(opacity)
 
