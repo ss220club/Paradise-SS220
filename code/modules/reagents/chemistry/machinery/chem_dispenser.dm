@@ -632,3 +632,31 @@
 		"ammonia",
 		"ash",
 		"diethylamine")
+//SS220 EVENT
+/obj/machinery/chem_dispenser/frost
+	icon_state = "dispenser"
+	name = "Модицифированный диспенсер"
+	desc = "Богом забытый диспенсер покрытый ледяной коркой, по всей видимости он утратил свой полный функционал, возможно получится его вернуть."
+	dispensable_reagents = list("spaceacillin", "sterilizine")
+	upgrade_reagents = list("salglu_solution", "epinephrine", "teporone")
+
+/obj/machinery/chem_dispenser/frost/initialize_parts()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/chem_dispenser/frost(null)
+	component_parts += new /obj/item/stock_parts/matter_bin(null)
+	component_parts += new /obj/item/stock_parts/matter_bin(null)
+	component_parts += new /obj/item/stock_parts/manipulator(null)
+	component_parts += new /obj/item/stock_parts/capacitor(null)
+	component_parts += new /obj/item/stock_parts/cell/high(null)
+	component_parts += new /obj/item/stack/sheet/glass(null)
+
+/obj/machinery/chem_dispenser/frost/upgraded/initialize_parts()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/chem_dispenser/frost(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
+	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
+	component_parts += new /obj/item/stock_parts/capacitor/quadratic(null)
+	component_parts += new /obj/item/stock_parts/cell/bluespace(null)
+	component_parts += new /obj/item/stack/sheet/glass(null)
+//SS220 EVENT
