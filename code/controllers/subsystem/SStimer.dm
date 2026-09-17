@@ -670,10 +670,10 @@ USER_VERB(debug_timers, R_DEBUG|R_VIEWRUNTIMES, "Debug Timers", "Shows currently
 		if(SStimer.timers_created_this_tick > SStimer.max_timers_per_tick)
 			// Вызываем stack_trace ТОЛЬКО ОДИН РАЗ при первом превышении лимита в тике.
 			if(SStimer.timers_created_this_tick == SStimer.max_timers_per_tick + 1)
-				stack_trace("TIMER CIRCUIT BREAKER TRIPPED! Dropping timer to save SStimer. Limit: [SStimer.max_timers_per_tick]. Source: [istype(callback.object, /datum) ? callback.object.type : "GLOBAL"], Callback: [callback.delegate]")
+				stack_trace("TIMER CIRCUIT BREAKER TRIPPED! Dropping timer to save SStimer. Limit: [SStimer.max_timers_per_tick]. Source: [istype(callback.object, /datum) ? callback.object.type : \"GLOBAL\"], Callback: [callback.delegate]")
 
-			return TIMER_ID_NULL // Возвращаем NULL, как будто таймер не создан
-	// --- КОНЕЦ CIRCUIT BREAKER --
+			return null // <-- ИЗМЕНЕНО: возвращаем null, чтобы deltimer(null) безопасно вернул FALSE
+	// --- КОНЕЦ CIRCUIT BREAKER ---
 	// SS220 EDIT END
 
 	if(wait < 0)

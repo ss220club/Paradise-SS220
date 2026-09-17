@@ -41,6 +41,7 @@
 		if(isspaceturf(spess))
 			var/turf/space/S = spess
 			S.update_starlight()
+		CHECK_TICK // <-- ДОБАВЛЕНО: предотвращает лаг тика при обработке сотен тысяч тайлов
 		// SS220 EDIT END
 	GLOB.major_announcement.Announce("The Aurora Caelus event is now ending. Starlight conditions will slowly return to normal. When this has concluded, please return to your workplace and continue work as normal. \n\nHave a pleasant shift, [station_name()], and thank you for watching with us.",
 		"Nanotrasen Meteorology Division",
