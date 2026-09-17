@@ -426,6 +426,11 @@
 	},
 /obj/structure/cable/extra_insulated,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/camera{
+	c_tag = "Supermatter Control Room";
+	network = list("SS13","Engineering");
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/supermatter_room)
 "aet" = (
@@ -1462,7 +1467,7 @@
 /obj/item/rcd_ammo/large,
 /obj/item/rcd_ammo/large,
 /obj/item/rcd_ammo/large,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/station/command/office/ce)
 "alG" = (
 /obj/structure/sign/vacuum{
@@ -7871,7 +7876,7 @@
 /area/station/maintenance/turbine)
 "aIx" = (
 /obj/machinery/camera{
-	c_tag = "Turbine";
+	c_tag = "Turbine North";
 	network = list("SS13","Engineering")
 	},
 /obj/effect/turf_decal/delivery/hollow,
@@ -7949,6 +7954,11 @@
 "aIG" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Supermatter South";
+	network = list("SS13","Engineering");
+	dir = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
@@ -8147,10 +8157,6 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
-	},
-/obj/machinery/camera{
-	c_tag = "Supermatter South";
-	network = list("SS13","Engineering")
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
 /turf/simulated/floor/plasteel,
@@ -9449,7 +9455,7 @@
 /obj/item/stack/package_wrap{
 	pixel_y = 10
 	},
-/obj/machinery/status_display/directional/north,
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
 "aPz" = (
@@ -14309,6 +14315,11 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/camera{
+	c_tag = "Atmospherics South";
+	dir = 10;
+	network = list("Engineering","SS13")
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
 "bmG" = (
@@ -18275,6 +18286,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/stack/rods{
+	amount = 50;
 	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -20552,22 +20564,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "bMi" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin/nanotrasen{
-	pixel_x = -6;
-	pixel_y = 2
-	},
-/obj/item/folder/blue{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/pen/multi{
-	pixel_y = 2;
-	pixel_x = -6
+/obj/structure/chair/stool{
+	dir = 1
 	},
 /obj/effect/turf_decal/tiles/neutral,
 /turf/simulated/floor/plasteel,
-/area/station/command/office/ce)
+/area/station/engineering/break_room)
 "bMj" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp{
@@ -22926,7 +22928,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/station/command/office/ce)
 "bTY" = (
 /obj/machinery/door/firedoor,
@@ -23585,7 +23587,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/station/command/office/ce)
 "bWJ" = (
 /obj/machinery/firealarm/directional/south,
@@ -27818,6 +27820,10 @@
 "coh" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/table/reinforced,
+/obj/machinery/camera{
+	c_tag = "Engine Room Center";
+	network = list("Engineering","SS13")
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "coi" = (
@@ -54050,6 +54056,9 @@
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 9
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "gwF" = (
@@ -55398,6 +55407,17 @@
 "gSs" = (
 /turf/simulated/wall,
 /area/station/public/toilet/unisex)
+"gSv" = (
+/obj/effect/turf_decal/tiles/neutral,
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/closet/radiation,
+/obj/machinery/camera{
+	c_tag = "Engine Decontamination Gateway";
+	network = list("SS13","Engineering");
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/engine)
 "gSE" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4
@@ -55621,11 +55641,11 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet)
 "gVE" = (
-/obj/machinery/economy/vending/chinese,
 /obj/effect/turf_decal/tiles/department/engineering/side{
 	dir = 1
 	},
 /obj/machinery/light/small/directional/north,
+/obj/machinery/economy/vending/vulpix,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room/secondary)
 "gVF" = (
@@ -58291,6 +58311,23 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/toxins/mixing)
+"hMG" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tiles/neutral,
+/obj/item/folder/blue{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/pen/multi{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/turf/simulated/floor/plasteel,
+/area/station/command/office/ce)
 "hMM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -66860,6 +66897,11 @@
 /area/station/science/break_room)
 "kqp" = (
 /obj/machinery/light/small/directional/north,
+/obj/machinery/camera{
+	c_tag = "Supermatter North 2";
+	network = list("SS13","Engineering");
+	dir = 6
+	},
 /turf/simulated/floor/engine,
 /area/station/engineering/supermatter_room)
 "kqF" = (
@@ -68354,7 +68396,7 @@
 	pixel_x = 32
 	},
 /obj/machinery/camera{
-	c_tag = "Engineering Storage";
+	c_tag = "Engineering East";
 	dir = 8;
 	network = list("Engineering","SS13")
 	},
@@ -73561,7 +73603,11 @@
 /area/station/maintenance/old_kitchen)
 "mwK" = (
 /obj/item/kirbyplants/large,
-/obj/item/radio/intercom/directional/north,
+/obj/machinery/camera{
+	c_tag = "Atmospherics North";
+	dir = 6;
+	network = list("Engineering","SS13")
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
 "mwU" = (
@@ -74714,6 +74760,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Turbine South";
+	network = list("SS13","Engineering");
 	dir = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -85971,6 +86022,15 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
+"qfE" = (
+/obj/structure/closet/secure_closet/atmos_personal,
+/obj/machinery/camera{
+	c_tag = "Atmospherics Hardsuit Storage";
+	dir = 1;
+	network = list("SS13","Engineering")
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/atmos/hardsuitstorage)
 "qfG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tiles/neutral/side{
@@ -96169,6 +96229,11 @@
 /obj/structure/sign/vacuum/external{
 	pixel_x = -32
 	},
+/obj/machinery/camera{
+	c_tag = "Engine External Airlock";
+	dir = 4;
+	network = list("SS13","Engineering")
+	},
 /turf/simulated/floor/plating,
 /area/station/engineering/engine/reactor)
 "tiL" = (
@@ -99123,7 +99188,7 @@
 "ufU" = (
 /obj/machinery/light/small/directional/north,
 /obj/machinery/camera{
-	c_tag = "Supermatter North";
+	c_tag = "Supermatter North 1";
 	network = list("SS13","Engineering")
 	},
 /turf/simulated/floor/engine,
@@ -99685,6 +99750,11 @@
 "upc" = (
 /obj/machinery/atmospherics/binary/valve/digital,
 /obj/machinery/alarm/engine/directional/west,
+/obj/machinery/camera{
+	c_tag = "Supermatter Chamber Entrance";
+	network = list("SS13","Engineering");
+	dir = 6
+	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
 "upe" = (
@@ -100808,13 +100878,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel/funeral)
-"uIZ" = (
-/obj/structure/chair/stool{
-	dir = 1
-	},
-/obj/effect/turf_decal/tiles/neutral,
-/turf/simulated/floor/plasteel,
-/area/station/engineering/break_room)
 "uJa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -104239,6 +104302,11 @@
 "vNF" = (
 /obj/machinery/atmospherics/portable/canister/oxygen,
 /obj/effect/turf_decal/delivery,
+/obj/machinery/camera{
+	c_tag = "Engineering South";
+	dir = 1;
+	network = list("Engineering","SS13")
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/equipmentstorage)
 "vOj" = (
@@ -105548,7 +105616,7 @@
 /area/station/hallway/primary/fore)
 "wgY" = (
 /obj/machinery/camera{
-	c_tag = "Supermatter Entrance";
+	c_tag = "Supermatter Decontamination Gateway";
 	network = list("SS13","Engineering")
 	},
 /obj/structure/curtain/open/shower/engineering,
@@ -133217,10 +133285,10 @@ bEQ
 bGz
 bIs
 bKf
-bMi
+bRW
 bOb
 bUq
-bRW
+hMG
 bUi
 dYV
 tBI
@@ -133487,7 +133555,7 @@ ktA
 cdc
 vum
 nOc
-vCm
+gSv
 hqh
 gll
 qaB
@@ -135006,7 +135074,7 @@ hdR
 aOW
 btm
 buu
-fuz
+qfE
 pPx
 bnU
 aFL
@@ -135785,7 +135853,7 @@ nEp
 uCF
 bEX
 bGE
-uIZ
+bMi
 bKp
 pWA
 bGz
@@ -136042,7 +136110,7 @@ jkP
 dPA
 bIA
 dOB
-uIZ
+bMi
 dPA
 blp
 byl
