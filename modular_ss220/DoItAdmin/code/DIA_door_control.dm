@@ -7,9 +7,17 @@
 
 #define DOORCONTROL_MASS_DRIVER    4
 
+
+#define DOORCONTROL_BUTTON    1
+
+#define DOORCONTROL_GLASS_BUTTON    2
+
+
+
+
 /obj/machinery/door_control/Do_It_Admin
 	name = "Button"
-	desc = "Mystery buttom"
+	desc = "Mystery button"
 	var/ai_can_act = TRUE
 	var/humman_can_act = TRUE
 	var/base_ghost_can_act = TRUE
@@ -22,7 +30,13 @@
 	var/used_after = FALSE
 	power_state = NO_POWER_USE
 	interact_offline = TRUE
-	id = "TEST_DIA"
+	id = "TEST_DIA_ID"
+	var/id_tag = "TEST_DIA_TAG"
+
+	//icon_state = "[initial(icon_state)]_launched"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "doorctrl0"
+
 	var/can_emag_act = FALSE
 	var/msg_if_emagg_act_fail = "No no no, mr. Fish."
 	var/msg_after_one_use_act_failure = "No result"
@@ -36,11 +50,21 @@
 	var/act_if_no_poddor_bitflag = TRUE
 	max_integrity = 500
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 90, acid = 70)
+	var/active = FALSE
 
 	var/launched = FALSE
 	var/glass = TRUE
 	var/range = 7
-	var/button_double = FALSE
+
+	var/type_by_button = DOORCONTROL_BUTTON
+
+	var/msg_gbutton_glass_breaking_usr = "Вы разбиваете стекло кнопки!"
+	var/msg_gbutton_glass_breaking_vis = "Он разбивает стекло кнопки!"
+	var/sound_breaking_glass = 'sound/effects/hit_on_shattered_glass.ogg'
+	var/sound_cnock_glass = 'sound/effects/glassknock.ogg'
+	var/msg_gbutton_glass_cnocking_usr = "Вы дружески похлопываете по стеклу."
+	var/msg_gbutton_glass_cnocking_vis = "Он дружески похлопывает по стеклу."
+	var/training_msg = "Если вы пытаетесь разбить стекло, вам придется ударить по нему сильнее..."
 
 /obj/machinery/door_control/Do_It_Admin/proc/swap_indestructible(answer=TRUE)
 	if(answer)
@@ -48,39 +72,99 @@
 	else
 		resistance_flags = LAVA_PROOF | FIRE_PROOF
 
-/obj/machinery/door_control/Do_It_Admin/proc/if_one_use(mob/user)
-	if(only_one_use)
-		if(used_after)
-			to_chat(user, SPAN_WARNING(msg_after_one_use_act_failure))
-			return
-		to_chat(user, SPAN_WARNING(msg_after_one_use_act_success))
-		used_after = TRUE
-		return attack_hand(user)
-	else
-		return attack_hand(user)
+/obj/machinery/door_control/Do_It_Admin/proc/swap_button_type()
+	if(active)
+		return
+	obj_integrity = max_integrity
+	switch(type_by_button)
+		if(DOORCONTROL_BUTTON)
+			icon = 'modular_ss220/sm_space_drop/icons/sm_buttons.dmi'
+			icon_state = "button"
+			return TRUE
+		if(DOORCONTROL_GLASS_BUTTON)
+			icon = 'icons/obj/stationobjs.dmi'
+			icon_state = "doorctrl0"
+			launched = FALSE
+			glass = TRUE
+			return TRUE
+	return FALSE
+
+
+#define IS_HUMAN    1
+#define IS_AI    2
+#define IS_GHOST    3
+#define IS_AGHOST    4
+
+/obj/machinery/door_control/Do_It_Admin/proc/if_one_use(mob/user, hu = IS_HUMAN)
+	if(active)
+		return
+	switch(type_by_button)
+		if(DOORCONTROL_BUTTON)
+			if(only_one_use)
+				if(used_after)
+					to_chat(user, SPAN_WARNING(msg_after_one_use_act_failure))
+					return
+				to_chat(user, SPAN_WARNING(msg_after_one_use_act_success))
+				used_after = TRUE
+				return attack_hand(user, hu)
+			else
+				return attack_hand(user, hu)
+
+		if(DOORCONTROL_GLASS_BUTTON)
+			if(glass)
+				if(user.a_intent == INTENT_HARM)
+					if(hu==IS_HUMAN)
+						user.visible_message(SPAN_WARNING(msg_gbutton_glass_breaking_usr), SPAN_WARNING(msg_gbutton_glass_breaking_vis))
+						user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
+					glass = FALSE
+					playsound(loc, sound_breaking_glass, 100, TRUE)
+					update_icon(UPDATE_ICON_STATE)
+				else
+					if(hu==IS_HUMAN)
+						user.visible_message(SPAN_NOTICE(msg_gbutton_glass_cnocking_vis), SPAN_NOTICE(msg_gbutton_glass_cnocking_usr))
+					playsound(loc, sound_cnock_glass, 50, TRUE)
+					to_chat(user, SPAN_WARNING(training_msg))
+			else
+				if(only_one_use)
+					if(used_after)
+						to_chat(user, SPAN_WARNING(msg_after_one_use_act_failure))
+						return
+					to_chat(user, SPAN_WARNING(msg_after_one_use_act_success))
+					used_after = TRUE
+					return attack_hand(user, hu)
+				else
+					return attack_hand(user, hu)
+
 /obj/machinery/door_control/Do_It_Admin/attack_ai(mob/user)
-	return if_one_use(user)
+	return if_one_use(user, IS_AI)
 
 /obj/machinery/door_control/Do_It_Admin/attack_ghost(mob/user)
 	if(base_ghost_can_act)
 		if(base_only_in_ghost_interaction)
 			if(GLOB.configuration.general.ghost_interaction)
-				return if_one_use(user)
+				if(is_admin(user))
+					return if_one_use(user, IS_AGHOST)
+				else
+					return if_one_use(user, IS_GHOST)
 			if(a_ghost_can_act && is_admin(user))
 				if(only_in_adv_can_act)
 					if(user.can_advanced_admin_interact())
-						return if_one_use(user)
+						return if_one_use(user, IS_AGHOST)
 				else
-					return if_one_use(user)
+					return if_one_use(user, IS_AGHOST)
 			return
-		return if_one_use(user)
+		else
+			if(is_admin(user))
+				return if_one_use(user, IS_AGHOST)
+			else
+				return if_one_use(user, IS_GHOST)
 
 	if(a_ghost_can_act && is_admin(user))
 		if(only_in_adv_can_act)
 			if(user.can_advanced_admin_interact())
-				return if_one_use(user)
+				return if_one_use(user, IS_AGHOST)
 		else
-			return if_one_use(user)
+			return if_one_use(user, IS_AGHOST)
 
 
 /obj/machinery/door_control/Do_It_Admin/emag_act(mob/user)
@@ -96,20 +180,27 @@
 	to_chat(user, SPAN_WARNING(msg_if_emagg_act_fail))
 	return FALSE
 
-/obj/machinery/door_control/Do_It_Admin/attack_hand(mob/user as mob)
-	add_fingerprint(usr)
+/obj/machinery/door_control/Do_It_Admin/attack_hand(mob/user, hu = IS_HUMAN)
+	if(hu == IS_HUMAN)
+		add_fingerprint(user)
 	if(stat & (NOPOWER|BROKEN))
 		return
 
-	if(!allowed(user) && (wires & 1) && !user.can_advanced_admin_interact())
+	if(!allowed(user)&& !user.can_advanced_admin_interact())
 		to_chat(user, SPAN_WARNING(msg_if_no_access))
-		flick("doorctrl-denied", src)
+		switch(type_by_button)
+			if(DOORCONTROL_BUTTON)
+				flick("doorctrl-denied", src)
 		return
-
-	use_power(5)
+	if(active)
+		return
+	active = TRUE
 	if(icon_if_complite)
-		icon_state = "doorctrl1"
-	add_fingerprint(user)
+		switch(type_by_button)
+			if(DOORCONTROL_BUTTON)
+				icon_state = "doorctrl1"
+			if(DOORCONTROL_GLASS_BUTTON)
+				flick("button_launched", src)
 
 	switch(doorcontrol_mode)
 		if(DOORCONTROL_AIRLOCK)
@@ -119,6 +210,8 @@
 		if(DOORCONTROL_BOTH)
 			control_airlocks()
 			control_poddoors()
+		if(DOORCONTROL_MASS_DRIVER)
+			control_mass()
 		else
 			stack_trace("door_control [src] имеет некорректный doorcontrol_mode: [doorcontrol_mode]")
 
@@ -126,7 +219,12 @@
 	spawn(15)
 		if(!(stat & NOPOWER))
 			if(icon_if_complite)
-				icon_state = "doorctrl0"
+				switch(type_by_button)
+					if(DOORCONTROL_BUTTON)
+						icon_state = "doorctrl0"
+					if(DOORCONTROL_GLASS_BUTTON)
+						icon_state = "button"
+	active=FALSE
 
 /// Пробегается по всем airlock'ам с нашим id и применяет specialfunctions / desiredstate_open.
 /obj/machinery/door_control/Do_It_Admin/proc/control_airlocks()
@@ -186,7 +284,48 @@
 				M.close()
 		return
 
+/obj/machinery/door_control/Do_It_Admin/proc/control_mass()
 
+	// Time sequence
+	// OPEN DOORS
+	// Wait 2 seconds
+	// LAUNCH
+	// Wait 5 seconds
+	// CLOSE
+	// Then make not active
+	for(var/obj/machinery/door/poddoor/M in range(src, range))
+		if(M.id_tag == id_tag && !M.protected)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/machinery/door, open))
+
+	// 2 seconds after previous invocation
+
+	for(var/obj/machinery/mass_driver/M in range(src, range))
+		if(M.id_tag == id_tag)
+			addtimer(CALLBACK(M, TYPE_PROC_REF(/obj/machinery/mass_driver, drive)), 2 SECONDS)
+
+	// We want this 5 seconds after open, so the delay is 7 seconds from this proc
+
+	for(var/obj/machinery/door/poddoor/M in range(src, range))
+		if(M.id_tag == id_tag && !M.protected)
+			addtimer(CALLBACK(M, TYPE_PROC_REF(/obj/machinery/door, close)), 7 SECONDS)
+
+/*
+/obj/machinery/driver_button/sm_drop_button/update_icon_state()
+	if(launched)
+		icon_state = "[initial(icon_state)]_launched"
+	else if(!glass)
+		icon_state = "[initial(icon_state)]_open"
+	else
+		icon_state = "[initial(icon_state)]"
+	..()
+
+/obj/machinery/driver_button/sm_drop_button/examine(mob/user)
+	. = ..()
+	if(!glass)
+		. += SPAN_NOTICE("У [name] разбито защитное стекло.")
+	if(launched)
+		. += SPAN_NOTICE("Кнопка медленно мигает, сигнализируя о том, что она была нажата.")
+*/
 
 /*
 /obj/machinery/door_control/item_interaction(mob/living/user, obj/item/used, list/modifiers)

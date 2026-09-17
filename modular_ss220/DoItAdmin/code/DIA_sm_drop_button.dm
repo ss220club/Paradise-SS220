@@ -1,4 +1,4 @@
-
+/*
 #define OPERATING_MOD_DROP_SM 1
 
 #define OPERATING_MOD_ACT_NUCLEAR 2
@@ -154,3 +154,4 @@
 				playsound(loc, "modular_ss220/sm_space_drop/sound/button[rand(1, 5)].ogg", 100, TRUE)
 				to_chat(user, SPAN_WARNING("Система безопасности заблокировала попытку сброса. Кристалл не находится в состоянии расслоения!"))
 				return
+*/
