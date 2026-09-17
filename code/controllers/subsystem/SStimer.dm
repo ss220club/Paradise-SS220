@@ -659,21 +659,20 @@ USER_VERB(debug_timers, R_DEBUG|R_VIEWRUNTIMES, "Debug Timers", "Shows currently
 		CRASH("addtimer called without a callback")
 	// SS220 EDIT START
 	// --- НАЧАЛО CIRCUIT BREAKER ---
-	// Если сменился тик, сбрасываем счётчик
-	if(world.time > SStimer.last_tick_checked)
-		SStimer.last_tick_checked = world.time
-		SStimer.timers_created_this_tick = 0
+	// Защита от вызова до полной инициализации подсистемы таймеров
+	if(SStimer)
+		if(world.time > SStimer.last_tick_checked)
+			SStimer.last_tick_checked = world.time
+			SStimer.timers_created_this_tick = 0
 
-	SStimer.timers_created_this_tick++
+		SStimer.timers_created_this_tick++
 
-	// Если лимит превышен, отбрасываем таймер
-	if(SStimer.timers_created_this_tick > SStimer.max_timers_per_tick)
-		// Вызываем stack_trace ТОЛЬКО ОДИН РАЗ при первом превышении лимита в тике.
-		// Это предотвращает спам логами и лаги от тяжелой операции stack_trace.
-		if(SStimer.timers_created_this_tick == SStimer.max_timers_per_tick + 1)
-			stack_trace("TIMER CIRCUIT BREAKER TRIPPED! Dropping timer to save SStimer. Limit: [SStimer.max_timers_per_tick]. Source: [callback.object ? callback.object.type : "GLOBAL"], Callback: [callback.delegate]")
+		if(SStimer.timers_created_this_tick > SStimer.max_timers_per_tick)
+			// Вызываем stack_trace ТОЛЬКО ОДИН РАЗ при первом превышении лимита в тике.
+			if(SStimer.timers_created_this_tick == SStimer.max_timers_per_tick + 1)
+				stack_trace("TIMER CIRCUIT BREAKER TRIPPED! Dropping timer to save SStimer. Limit: [SStimer.max_timers_per_tick]. Source: [callback.object ? callback.object.type : "GLOBAL"], Callback: [callback.delegate]")
 
-		return TIMER_ID_NULL // Возвращаем NULL, как будто таймер не создан
+			return TIMER_ID_NULL // Возвращаем NULL, как будто таймер не создан
 	// --- КОНЕЦ CIRCUIT BREAKER ---
 	// SS220 EDIT END
 
