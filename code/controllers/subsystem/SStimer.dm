@@ -671,7 +671,7 @@ USER_VERB(debug_timers, R_DEBUG|R_VIEWRUNTIMES, "Debug Timers", "Shows currently
 			// Вызываем stack_trace ТОЛЬКО ОДИН РАЗ при первом превышении лимита в тике.
 			if(SStimer.timers_created_this_tick == SStimer.max_timers_per_tick + 1)
 				// Выносим сложную логику в переменную, чтобы компилятор DM не сходил с ума от кавычек внутри []
-				var/source_type = (callback.object == GLOBAL_PROC || isnull(callback.object)) ? "GLOBAL" : "[callback.object.type]"
+				var/source_type = (callback.object == GLOBAL_PROC || isnull(callback.object)) ? "GLOBAL" : (QDELETED(callback.object) ? "QDELETED" : "[callback.object.type]")
 				stack_trace("TIMER CIRCUIT BREAKER TRIPPED! Dropping timer to save SStimer. Limit: [SStimer.max_timers_per_tick]. Source: [source_type], Callback: [callback.delegate]")
 
 			return null // Возвращаем null, чтобы deltimer(null) безопасно вернул FALSE

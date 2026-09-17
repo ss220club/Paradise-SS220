@@ -47,7 +47,7 @@
 	)
 	// SS220 EDIT START
 	// Запуск цепочки безопасной очистки
-	cleanup_list = GLOB.starlight
+	cleanup_list = GLOB.starlight.Copy()
 	cleanup_index = 1
 	cleanup_timer_id = addtimer(CALLBACK(src, PROC_REF(process_cleanup_batch)), 1, TIMER_STOPPABLE)
 
