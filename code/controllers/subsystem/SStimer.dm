@@ -660,7 +660,7 @@ USER_VERB(debug_timers, R_DEBUG|R_VIEWRUNTIMES, "Debug Timers", "Shows currently
 	// SS220 EDIT START
 	// --- НАЧАЛО CIRCUIT BREAKER ---
 	// Защита от вызова до полной инициализации подсистемы таймеров
-	if(SStimer)
+	if(SStimer && world.time > 0)
 		if(world.time > SStimer.last_tick_checked)
 			SStimer.last_tick_checked = world.time
 			SStimer.timers_created_this_tick = 0
