@@ -10401,6 +10401,17 @@
 /obj/effect/turf_decal/tiles/department/engineering/corner,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
+"aUv" = (
+/obj/effect/turf_decal/tiles/neutral,
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/closet/radiation,
+/obj/machinery/camera{
+	c_tag = "Engine Decontamination Gateway";
+	network = list("SS13","Engineering");
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/station/engineering/engine)
 "aUx" = (
 /obj/structure/disposalpipe/junction/reversed{
 	dir = 8
@@ -10581,7 +10592,9 @@
 /area/station/engineering/atmos)
 "aVF" = (
 /obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/atmospherics/pipe/manifold4w/visible,
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "aVG" = (
@@ -11504,7 +11517,7 @@
 	},
 /obj/machinery/atmospherics/trinary/filter{
 	filter_type = 3;
-	name = "Gas filter (CO2 tank)";
+	name = "gas filter (CO2 tank)";
 	on = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
@@ -12177,7 +12190,7 @@
 /obj/machinery/atmospherics/trinary/filter{
 	dir = 1;
 	filter_type = 1;
-	name = "Gas filter (O2 tank)";
+	name = "gas filter (O2 tank)";
 	on = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
@@ -12757,7 +12770,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/trinary/filter{
-	name = "Gas filter (Toxins tank)";
+	name = "gas filter (Toxins tank)";
 	on = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
@@ -13466,7 +13479,7 @@
 /obj/machinery/atmospherics/trinary/filter{
 	dir = 1;
 	filter_type = 2;
-	name = "Gas filter (N2 tank)";
+	name = "gas filter (N2 tank)";
 	on = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
@@ -14193,7 +14206,7 @@
 	},
 /obj/machinery/atmospherics/trinary/filter{
 	filter_type = 4;
-	name = "Gas filter (N2O tank)";
+	name = "gas filter (N2O tank)";
 	on = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
@@ -14820,9 +14833,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
 "bpA" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 9
-	},
 /obj/effect/turf_decal/tiles/department/command/corner{
 	dir = 1
 	},
@@ -14830,6 +14840,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/meter,
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
 "bpB" = (
@@ -14837,6 +14848,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tiles/department/engineering/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -14847,6 +14861,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
@@ -14859,7 +14876,9 @@
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
 "bpE" = (
@@ -15259,7 +15278,8 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/trinary/filter{
 	on = 1;
-	filter_type = -1
+	filter_type = -1;
+	name = "gas filter (Gas Mix tank"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
@@ -20564,12 +20584,22 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "bMi" = (
-/obj/structure/chair/stool{
-	dir = 1
-	},
+/obj/structure/table/reinforced,
 /obj/effect/turf_decal/tiles/neutral,
+/obj/item/folder/blue{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/pen/multi{
+	pixel_y = 2;
+	pixel_x = -6
+	},
 /turf/simulated/floor/plasteel,
-/area/station/engineering/break_room)
+/area/station/command/office/ce)
 "bMj" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp{
@@ -37483,12 +37513,14 @@
 /turf/simulated/floor/plating,
 /area/station/command/office/cmo)
 "dhf" = (
-/obj/effect/turf_decal/tiles/neutral,
-/obj/machinery/atmospherics/binary/pump{
-	dir = 4
+/obj/structure/closet/secure_closet/atmos_personal,
+/obj/machinery/camera{
+	c_tag = "Atmospherics Hardsuit Storage";
+	dir = 1;
+	network = list("SS13","Engineering")
 	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
+/turf/simulated/floor/plasteel/dark,
+/area/station/engineering/atmos/hardsuitstorage)
 "dht" = (
 /obj/machinery/camera{
 	c_tag = "Courtroom South";
@@ -46216,12 +46248,12 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
 "ecx" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/structure/chair/stool{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold4w/visible/yellow,
+/obj/effect/turf_decal/tiles/neutral,
 /turf/simulated/floor/plasteel,
-/area/station/engineering/atmos)
+/area/station/engineering/break_room)
 "ecz" = (
 /obj/effect/turf_decal/tiles/department/medical/side{
 	dir = 4
@@ -55407,17 +55439,6 @@
 "gSs" = (
 /turf/simulated/wall,
 /area/station/public/toilet/unisex)
-"gSv" = (
-/obj/effect/turf_decal/tiles/neutral,
-/obj/effect/turf_decal/delivery/hollow,
-/obj/structure/closet/radiation,
-/obj/machinery/camera{
-	c_tag = "Engine Decontamination Gateway";
-	network = list("SS13","Engineering");
-	dir = 4
-	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/engine)
 "gSE" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4
@@ -58311,23 +58332,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/toxins/mixing)
-"hMG" = (
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/tiles/neutral,
-/obj/item/folder/blue{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/paper_bin/nanotrasen{
-	pixel_x = -6;
-	pixel_y = 2
-	},
-/obj/item/pen/multi{
-	pixel_y = 2;
-	pixel_x = -6
-	},
-/turf/simulated/floor/plasteel,
-/area/station/command/office/ce)
 "hMM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -86022,15 +86026,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
-"qfE" = (
-/obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/camera{
-	c_tag = "Atmospherics Hardsuit Storage";
-	dir = 1;
-	network = list("SS13","Engineering")
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/engineering/atmos/hardsuitstorage)
 "qfG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tiles/neutral/side{
@@ -133288,7 +133283,7 @@ bKf
 bRW
 bOb
 bUq
-hMG
+bMi
 bUi
 dYV
 tBI
@@ -133520,7 +133515,7 @@ aXi
 aYy
 aYy
 aYy
-ecx
+aXi
 aYy
 aYy
 eUk
@@ -133555,7 +133550,7 @@ ktA
 cdc
 vum
 nOc
-gSv
+aUv
 hqh
 gll
 qaB
@@ -133777,7 +133772,7 @@ ban
 ban
 ban
 ban
-dhf
+ban
 ban
 ban
 ban
@@ -135074,7 +135069,7 @@ hdR
 aOW
 btm
 buu
-qfE
+dhf
 pPx
 bnU
 aFL
@@ -135853,7 +135848,7 @@ nEp
 uCF
 bEX
 bGE
-bMi
+ecx
 bKp
 pWA
 bGz
@@ -136110,7 +136105,7 @@ jkP
 dPA
 bIA
 dOB
-bMi
+ecx
 dPA
 blp
 byl
