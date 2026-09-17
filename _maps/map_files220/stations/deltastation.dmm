@@ -2433,8 +2433,9 @@
 /obj/machinery/access_button{
 	autolink_id = "turbine_btn_int";
 	name = "Gas Turbine Access Button";
-	pixel_y = 24;
-	req_access = list(24)
+	pixel_y = 25;
+	req_access = list(24);
+	pixel_x = 7
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /obj/structure/cable/extra_insulated{
@@ -7274,7 +7275,7 @@
 	icon_state = "1-8"
 	},
 /obj/item/kirbyplants/large,
-/obj/machinery/power/apc/reinforced/directional/east,
+/obj/machinery/power/apc/reinforced/important/directional/east,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "aGd" = (
@@ -8281,7 +8282,7 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/reinforced/critical/directional/north,
+/obj/machinery/power/apc/reinforced/important/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "aJU" = (
@@ -8577,7 +8578,7 @@
 /obj/structure/sign/engineering/power{
 	pixel_x = -32
 	},
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "aLc" = (
 /obj/effect/turf_decal/stripes/line{
@@ -8874,7 +8875,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/structure/cable/extra_insulated,
 /obj/machinery/power/smes,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "aMG" = (
 /obj/item/radio/intercom/directional/south,
@@ -10401,17 +10402,6 @@
 /obj/effect/turf_decal/tiles/department/engineering/corner,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
-"aUv" = (
-/obj/effect/turf_decal/tiles/neutral,
-/obj/effect/turf_decal/delivery/hollow,
-/obj/structure/closet/radiation,
-/obj/machinery/camera{
-	c_tag = "Engine Decontamination Gateway";
-	network = list("SS13","Engineering");
-	dir = 4
-	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/engine)
 "aUx" = (
 /obj/structure/disposalpipe/junction/reversed{
 	dir = 8
@@ -20584,22 +20574,16 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/supermatter_room)
 "bMi" = (
-/obj/structure/table/reinforced,
 /obj/effect/turf_decal/tiles/neutral,
-/obj/item/folder/blue{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/paper_bin/nanotrasen{
-	pixel_x = -6;
-	pixel_y = 2
-	},
-/obj/item/pen/multi{
-	pixel_y = 2;
-	pixel_x = -6
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/closet/radiation,
+/obj/machinery/camera{
+	c_tag = "Engine Decontamination Gateway";
+	network = list("SS13","Engineering");
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
-/area/station/command/office/ce)
+/area/station/engineering/engine)
 "bMj" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp{
@@ -60408,6 +60392,23 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
+"ius" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tiles/neutral,
+/obj/item/folder/blue{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/pen/multi{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/turf/simulated/floor/plasteel,
+/area/station/command/office/ce)
 "iuA" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -73676,7 +73677,6 @@
 /area/station/public/locker)
 "mxG" = (
 /obj/machinery/atmospherics/binary/valve/digital,
-/obj/machinery/power/apc/reinforced/critical/directional/east,
 /obj/machinery/driver_button/sm_drop_button{
 	pixel_y = -32;
 	range = 20
@@ -73684,6 +73684,7 @@
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/reinforced/important/directional/east,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
 "mxL" = (
@@ -76117,6 +76118,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
 	},
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "nlB" = (
@@ -84974,10 +84976,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "pMU" = (
-/obj/machinery/power/apc/reinforced/directional/north,
 /obj/structure/cable/extra_insulated{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/reinforced/important/directional/north,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine)
 "pNk" = (
@@ -104500,8 +104502,9 @@
 /obj/machinery/access_button{
 	autolink_id = "turbine_btn_ext";
 	name = "Gas Turbine Access Button";
-	pixel_y = 24;
-	req_access = list(24)
+	pixel_y = 25;
+	req_access = list(24);
+	pixel_x = -7
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /obj/structure/cable/extra_insulated{
@@ -108849,11 +108852,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/north)
 "xfI" = (
-/obj/machinery/power/apc/reinforced/directional/east,
 /obj/structure/cable/extra_insulated{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/extra_insulated,
+/obj/machinery/power/apc/reinforced/important/directional/east,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/reactor)
 "xgf" = (
@@ -112104,7 +112107,6 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
@@ -133283,7 +133285,7 @@ bKf
 bRW
 bOb
 bUq
-bMi
+ius
 bUi
 dYV
 tBI
@@ -133550,7 +133552,7 @@ ktA
 cdc
 vum
 nOc
-aUv
+bMi
 hqh
 gll
 qaB
