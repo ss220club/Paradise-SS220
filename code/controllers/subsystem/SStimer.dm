@@ -54,6 +54,7 @@ SUBSYSTEM_DEF(timer)
 	/// How many times bucket was reset
 	var/bucket_reset_count = 0
 
+	// SS220 EDIT START
 	/// --- CIRCUIT BREAKER VARS ---
 	/// Сколько таймеров было создано в текущем тике
 	var/timers_created_this_tick = 0
@@ -61,6 +62,7 @@ SUBSYSTEM_DEF(timer)
 	var/last_tick_checked = 0
 	/// Предел по таймерам за тик. 2000 - с запасом.
 	var/max_timers_per_tick = 2000
+	// SS220 EDIT END
 
 /datum/controller/subsystem/timer/PreInit()
 	bucket_list.len = BUCKET_LEN
@@ -655,7 +657,7 @@ USER_VERB(debug_timers, R_DEBUG|R_VIEWRUNTIMES, "Debug Timers", "Shows currently
 /proc/addtimer(datum/callback/callback, wait = 0, flags = 0)
 	if(!callback)
 		CRASH("addtimer called without a callback")
-
+	// SS220 EDIT START
 	// --- НАЧАЛО CIRCUIT BREAKER ---
 	// Если сменился тик, сбрасываем счётчик
 	if(world.time > SStimer.last_tick_checked)
@@ -664,12 +666,16 @@ USER_VERB(debug_timers, R_DEBUG|R_VIEWRUNTIMES, "Debug Timers", "Shows currently
 
 	SStimer.timers_created_this_tick++
 
-	// Если лимит превышен, отбрасываем таймер и пишем в лог
+	// Если лимит превышен, отбрасываем таймер
 	if(SStimer.timers_created_this_tick > SStimer.max_timers_per_tick)
-		// Используем stack_trace, чтобы админы и кодеры увидели, кто именно срёт
-		stack_trace("TIMER CIRCUIT BREAKER TRIPPED! Dropping timer to save SStimer. Limit: [SStimer.max_timers_per_tick]. Source: [callback.object ? callback.object.type : "GLOBAL"], Callback: [callback.delegate]")
+		// Вызываем stack_trace ТОЛЬКО ОДИН РАЗ при первом превышении лимита в тике.
+		// Это предотвращает спам логами и лаги от тяжелой операции stack_trace.
+		if(SStimer.timers_created_this_tick == SStimer.max_timers_per_tick + 1)
+			stack_trace("TIMER CIRCUIT BREAKER TRIPPED! Dropping timer to save SStimer. Limit: [SStimer.max_timers_per_tick]. Source: [callback.object ? callback.object.type : "GLOBAL"], Callback: [callback.delegate]")
+
 		return TIMER_ID_NULL // Возвращаем NULL, как будто таймер не создан
 	// --- КОНЕЦ CIRCUIT BREAKER ---
+	// SS220 EDIT END
 
 	if(wait < 0)
 		stack_trace("addtimer called with a negative wait. Converting to [world.tick_lag]")
