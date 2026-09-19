@@ -174,7 +174,7 @@ SUBSYSTEM_DEF(central)
 	GLOB.configuration.overflow.overflow_whitelist -= ckey
 
 /datum/controller/subsystem/central/proc/update_player_donate_tier_async(client/player)
-	var/endpoint = "[GLOB.configuration.central.api_url]/donates?ckey=[player.ckey]&active_only=true&page=1&page_size=1"
+	var/endpoint = "[GLOB.configuration.central.api_url]/donates?ckey=[player.ckey]&active_only=true&page=1&page_size=50"
 	SShttp.create_async_request(RUSTLIBS_HTTP_METHOD_GET, endpoint, "", list(), CALLBACK(src, PROC_REF(update_player_donate_tier_callback), player))
 
 /datum/controller/subsystem/central/proc/update_player_donate_tier_callback(client/player, datum/http_response/response)
@@ -183,17 +183,17 @@ SUBSYSTEM_DEF(central)
 		return
 
 	var/list/data = json_decode(response.body)
-	player.donator_level = max(player.donator_level, get_max_donation_tier_from_response_data(data))
+	player.donator_level = get_max_donation_tier_from_response_data(data)
 
 /datum/controller/subsystem/central/proc/get_player_donate_tier_blocking(client/player)
-	var/endpoint = "[GLOB.configuration.central.api_url]/donates?ckey=[player.ckey]&active_only=true&page=1&page_size=1"
+	var/endpoint = "[GLOB.configuration.central.api_url]/donates?ckey=[player.ckey]&active_only=true&page=1&page_size=50"
 	var/datum/http_response/response = SShttp.make_sync_request(RUSTLIBS_HTTP_METHOD_GET, endpoint, "", list())
 	if(response.errored || response.status_code != 200)
 		stack_trace("Failed to get player donate tier: HTTP status code [response.status_code] - [response.error] - [response.body]")
 		return 0
 
 	var/list/data = json_decode(response.body)
-	return max(player.donator_level, get_max_donation_tier_from_response_data(data))
+	return get_max_donation_tier_from_response_data(data)
 
 /datum/controller/subsystem/central/proc/get_max_donation_tier_from_response_data(list/data)
 	if(!length(data["items"]))

@@ -56,6 +56,8 @@
 			return FALSE
 		if("var_edited")
 			return FALSE
+		if("donator_level")
+			return FALSE
 	var_edited = TRUE
 	vars[var_name] = var_value
 
