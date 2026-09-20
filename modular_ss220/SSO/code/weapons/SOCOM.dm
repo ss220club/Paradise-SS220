@@ -43,7 +43,7 @@
 // MARK: M26A3 c ГП SOCOM
 //////////////////////////////
 /obj/item/gun/projectile/automatic/ar/sso/grenade
-	name = "M26A3 c ГП SOCOM"
+	name = "M26A3 GL SOCOM"
 	desc = "Штурмовая винтовка М26, оснащённая подствольным гранотомётом М204, в модификации SOCOM специально разработанная для сил специальных операций ТСФ. На нём стоит связка из колиматорного прицела и магнифера, что позволяет стрелять и на дальние дистанции. Использует патроны калибра 5.56мм."
 	icon = 'modular_ss220/SSO/icons/SOCOM_ARG_gren.dmi'
 	lefthand_file = 'modular_ss220/SSO/icons/inhands/guns_lefthand.dmi'
@@ -51,9 +51,6 @@
 	icon_state = "arg"
 	inhand_icon_state = "arg"
 	mag_type = /obj/item/ammo_box/magazine/m556/arg
-	fire_sound = 'sound/weapons/gunshots/gunshot_mg.ogg'
-	magin_sound = 'sound/weapons/gun_interactions/batrifle_magin.ogg'
-	magout_sound = 'sound/weapons/gun_interactions/batrifle_magout.ogg'
 	fire_delay = 1
 	execution_speed = 4 SECONDS
 	can_suppress = TRUE
@@ -110,7 +107,7 @@
 			burst_size = 1
 			fire_delay = 0
 			to_chat(user, SPAN_NOTICE("You switch to semi-auto."))
-	playsound(user, 'sound/weapons/gun_interactions/selector.ogg', 100, 1)
+	playsound(user, 'modular_ss220/SSO/sound/weapons/cylinder/gun_cmb_click1.ogg', 100, 1)
 	update_icon()
 
 //////////////////////////////
@@ -140,11 +137,16 @@
 	actions_types = list()
 	execution_speed = 4 SECONDS
 
+/obj/item/gun/projectile/automatic/sniper_rifle/sso/Initialize(mapload)
+	. = ..()
+	if(zoomable)
+		AddComponent(/datum/component/scope, range_modifier = 4, flags = SCOPE_TURF_ONLY | SCOPE_NEED_ACTIVE_HAND)
+
 //////////////////////////////
 // MARK: СВД
 //////////////////////////////
 /obj/item/gun/projectile/automatic/sniper_rifle/sso/svd
-	name = "СВД"
+	name = "SVD"
 	desc = "Снайперская винтовка СВД. Старичек, почти как винтовка Мосина. От неё так и не смогли отказаться в СССП. Из-за простоты обслуживания и того, что она выполняет свои прямые задачи, она до сих пор стоит на вооружении СССП. Использует патроны 7,62х54R"
 	icon = 'modular_ss220/SSO/icons/USSP_SVD.dmi'
 	icon_state = "arg"
@@ -153,10 +155,10 @@
 	recoil = 1.5
 	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/svd
-	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_nsg23_new_1.ogg' //подтырено с маринов
+	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_m392_1.ogg' //подтырено с маринов
 	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_silenced_shot2.ogg' //подтырено с маринов
-	magin_sound = 'modular_ss220/SSO/sound/weapons/cylinder/l42_reload.ogg' //подтырено с маринов
-	magout_sound = 'modular_ss220/SSO/sound/weapons/cylinder/l42_unload.ogg' //подтырено с маринов
+	magin_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_m7_reload.ogg' //подтырено с маринов
+	magout_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_ma5c_unload.ogg' //подтырено с маринов
 	fire_delay = 1
 	//origin_tech = "combat=7"
 	slot_flags = ITEM_SLOT_BACK
@@ -167,7 +169,7 @@
 // MARK: СВДК «Взломщик»
 //////////////////////////////
 /obj/item/gun/projectile/automatic/sniper_rifle/sso/svdk
-	name = "СВДК"
+	name = "SVDK"
 	desc = "Снайперская винтовка СВДК «Взломщик». Чуть более новая версия старой доброй СВД. Она ещё и патрон использует побольше! Использует патроны 9,3х64"
 	icon = 'modular_ss220/SSO/icons/USSP_SVDK.dmi'
 	icon_state = "arg"
@@ -189,7 +191,7 @@
 // MARK: M210 "Balancer" SOCOM
 //////////////////////////////
 /obj/item/gun/projectile/automatic/sniper_rifle/sso/heavy
-	name = "M210 «Уравниватель» SOCOM"
+	name = "M210 «Balancer» SOCOM"
 	desc = "Винтовка M210 «Уравниватель», в модификации SOCOM специально разработанная для сил специальных операций ТСФ. Использует патроны .338 Lapua Magnum. Ходит слух о том, что она, после попадания, не оставляет в живых..."
 	icon = 'modular_ss220/SSO/icons/SOCOM_M210.dmi'
 	icon_state = "m210"
@@ -213,7 +215,7 @@
 // MARK: КСВ-А "Ключник"
 //////////////////////////////
 /obj/item/gun/projectile/automatic/sniper_rifle/sso/heavy/ksv
-	name = "КСВ-А 'Ключник'"
+	name = "KSV-A 'Keykeeper'"
 	desc = "Винтовка КСВ-А 'Ключник'. Крупнокалиберная Снайперская Винтовка Автоматизированая, вскроет любого из тесного пространства. Использует патроны 12,7х108 . Вообще её используют чтобы лёгкобронированную технику уничтожать... но вам видне..."
 	icon = 'modular_ss220/SSO/icons/USSP_KSV.dmi'
 	icon_state = "arg"
@@ -233,7 +235,7 @@
 // MARK: ДПК «Корд»
 //////////////////////////////
 /obj/item/gun/projectile/automatic/mg
-	name = "ДПК «Корд»"
+	name = "DPK 'KORD'"
 	desc = "Пулемёт Дегтярёв Пехотный Крупнокалиберный «Корд». Один из самых мощных пулемётов используемый СССП. Отрывает члены. Использует патроны 12,7х108мм"
 	icon = 'modular_ss220/SSO/icons/USSP_KORD.dmi'
 	icon_state = "MGclosed100"
@@ -247,8 +249,8 @@
 	weapon_weight = WEAPON_HEAVY
 	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/autocannon_fire.ogg' // подтырено с маринов
 	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_boltaction.ogg' //ZAMENIT
-	magin_sound = 'sound/weapons/gun_interactions/lmg_magin.ogg' //заменить на мариновские МОЩНЫЕ
-	magout_sound = 'sound/weapons/gun_interactions/lmg_magout.ogg' //заменить на мариновские МОЩНЫЕ
+	magin_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_sg_reload.ogg' //подтырено с маринов
+	magout_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_sg_unload.ogg' //подтырено с маринов
 	actions_types = list()
 	can_suppress = TRUE
 	burst_size = 1
@@ -261,7 +263,6 @@
 /obj/item/gun/projectile/automatic/mg/attack_self__legacy__attackchain(mob/user)
 	cover_open = !cover_open
 	to_chat(user, SPAN_NOTICE("You [cover_open ? "open" : "close"] [src]'s cover."))
-	//заменить на мариновские МОЩНЫЕ
 	playsound(src, cover_open ? 'sound/weapons/gun_interactions/sawopen.ogg' : 'sound/weapons/gun_interactions/sawclose.ogg', 50, 1)
 	update_icon()
 
@@ -269,7 +270,7 @@
 	icon_state = "MG[cover_open ? "open" : "closed"][magazine ? CEILING(get_ammo(FALSE) / 12.5, 1) * 25 : "-empty"][suppressed ? "-suppressed" : ""]"
 	inhand_icon_state = "KORD[cover_open ? "open" : "closed"][magazine ? "mag" : ""]"
 
-/obj/item/gun/projectile/automatic/mg/afterattack__legacy__attackchain(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params) //what I tried to do here is just add a check to see if the cover is open or not and add an icon_state change because I can't figure out how c-20rs do it with overlays
+/obj/item/gun/projectile/automatic/mg/afterattack__legacy__attackchain(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
 	if(cover_open)
 		to_chat(user, SPAN_NOTICE("[src]'s cover is open! Close it before firing!"))
 	else
@@ -310,7 +311,7 @@
 	. = ..()
 	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
 	if(zoomable)
-		AddComponent(/datum/component/scope, range_modifier = 2, flags = SCOPE_TURF_ONLY | SCOPE_NEED_ACTIVE_HAND)
+		AddComponent(/datum/component/scope, range_modifier = 3, flags = SCOPE_TURF_ONLY | SCOPE_NEED_ACTIVE_HAND)
 
 /obj/item/gun/projectile/automatic/mg/process_fire(atom/target, mob/living/user, message = TRUE, params, zone_override, bonus_spread = 0)
 	if(istype(chambered.BB, /obj/projectile/bullet/sniper) && !HAS_TRAIT(user, TRAIT_SCOPED))
@@ -324,7 +325,7 @@
 // MARK: ПКП «Печенег»
 //////////////////////////////
 /obj/item/gun/projectile/automatic/mg/pkp
-	name = "ПКП «Печенег»"
+	name = "PKP 'Pecheneg'"
 	desc = "Пулемёт ПКП «Печенег». Один из лучших пулемётов, сочетает надёжность, прочность и лёгкость (относительно других пулемётов). Такой же лёгкий в обращении как и автомат Калашникова! Использует патроны 7,62х54R."
 	icon = 'modular_ss220/SSO/icons/USSP_PKP.dmi'
 	icon_state = "MGclosed100"
@@ -336,10 +337,10 @@
 	spread = 5
 	mag_type = /obj/item/ammo_box/magazine/mg_pkp
 	weapon_weight = WEAPON_HEAVY
-	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/shot_heavy.ogg' //заменить на мариновские МОЩНЫЕ
+	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/shot_heavy.ogg' //подтырено с маринов
 	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_silenced_shot1.ogg' //ZAMENIT
-	magin_sound = 'modular_ss220/SSO/sound/weapons/cylinder/l42_reload.ogg' //заменить на мариновские МОЩНЫЕ
-	magout_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_br55_unload.ogg' //заменить на мариновские МОЩНЫЕ
+	magin_sound = 'modular_ss220/SSO/sound/weapons/cylinder/l42_reload.ogg' //подтырено с маринов
+	magout_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_br55_unload.ogg' //подтырено с маринов
 	actions_types = list()
 	can_suppress = TRUE
 	slot_flags = ITEM_SLOT_BACK
@@ -369,10 +370,8 @@
 	spread = 6
 	mag_type = /obj/item/ammo_box/magazine/mg_sso
 	weapon_weight = WEAPON_HEAVY
-	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_m56d_auto.ogg' //заменить на мариновские МОЩНЫЕ
-	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/shot_heavy.ogg' //ZAMENIT
-	magin_sound = 'sound/weapons/gun_interactions/lmg_magin.ogg' //заменить на мариновские МОЩНЫЕ
-	magout_sound = 'sound/weapons/gun_interactions/lmg_magout.ogg' //заменить на мариновские МОЩНЫЕ
+	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_m56d_auto.ogg' //подтырено с маринов
+	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/shot_heavy.ogg' //подтырено с маринов
 	actions_types = list()
 	can_suppress = TRUE
 	slot_flags = ITEM_SLOT_BACK
@@ -392,8 +391,7 @@
 	lefthand_file = 'modular_ss220/SSO/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/SSO/icons/inhands/guns_righthand.dmi'
 	inhand_icon_state = "pistol"
-	// fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_m56d_auto.ogg' //заменить на мариновские МОЩНЫЕ
-	// suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/shot_heavy.ogg' //ZAMENIT
+	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_socom_2.ogg' //подтырено с маринов
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/mk43
 	can_suppress = TRUE
@@ -417,15 +415,13 @@
 // MARK: АПС
 //////////////////////////////
 /obj/item/gun/projectile/automatic/pistol/sso/aps
-	name = "АПС"
+	name = "APS"
 	desc = "Автоматический Пистолет АПС. Классика на все года, ещё и автоматический! Использует стандартные патроны 10мм"
 	icon = 'modular_ss220/SSO/icons/ussp_APS.dmi'
 	icon_state = "aps"
 	lefthand_file = 'modular_ss220/SSO/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/SSO/icons/inhands/guns_righthand.dmi'
 	inhand_icon_state = "pistol"
-	// fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_m56d_auto.ogg' //заменить на мариновские МОЩНЫЕ
-	// suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/shot_heavy.ogg' //ZAMENIT
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/aps
 	can_suppress = TRUE
@@ -459,7 +455,7 @@
 // MARK: АШ-12
 //////////////////////////////
 /obj/item/gun/projectile/automatic/ar/sso/ash12
-	name = "АШ-12"
+	name = "ASh-12"
 	desc = "Автомат Штурмовой АШ-12, оснащён оптическим прицелом, что позволяет стрелять и на дальние дистанции. Использует патроны калибра 12,7х55мм. Злая вещь..."
 	icon = 'modular_ss220/SSO/icons/USSP_ASH-12.dmi'
 	lefthand_file = 'modular_ss220/SSO/icons/inhands/guns_lefthand.dmi'
@@ -469,8 +465,8 @@
 	mag_type = /obj/item/ammo_box/magazine/ash12
 	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_olympia.ogg' // подтырено с маринов
 	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_silenced_shot1.ogg'  // подтырено с маринов
-	magin_sound = 'sound/weapons/gun_interactions/batrifle_magin.ogg'
-	magout_sound = 'sound/weapons/gun_interactions/batrifle_magout.ogg'
+	magin_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_ma5c_cocked.ogg'
+	magout_sound = 'modular_ss220/SSO/sound/weapons/cylinder/gun_ma5c_unload.ogg'
 	burst_size = 2
 	fire_delay = 1
 	execution_speed = 4 SECONDS
@@ -480,7 +476,7 @@
 // MARK: АН-94 «Абакан»
 //////////////////////////////
 /obj/item/gun/projectile/automatic/ar/sso/an94
-	name = "АН-94"
+	name = "AN-94"
 	desc = "Автомат АН-94 «Абакан», оснащён оптическим прицелом, что позволяет стрелять и на дальние дистанции. Использует патроны калибра 5,45х39мм."
 	icon = 'modular_ss220/SSO/icons/USSP_AN94.dmi'
 	lefthand_file = 'modular_ss220/SSO/icons/inhands/guns_lefthand.dmi'
@@ -488,7 +484,7 @@
 	icon_state = "arg"
 	inhand_icon_state = "an94"
 	mag_type = /obj/item/ammo_box/magazine/ak814
-	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_ar10.ogg' // переделать
+	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_ar10.ogg' // подтырено с маринов
 	suppressed_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_silenced_shot1.ogg'  // подтырено с маринов
 	magin_sound = 'sound/weapons/gun_interactions/batrifle_magin.ogg'
 	magout_sound = 'sound/weapons/gun_interactions/batrifle_magout.ogg'
@@ -501,7 +497,7 @@
 // MARK: АН-94 с ГП
 //////////////////////////////
 /obj/item/gun/projectile/automatic/ar/sso/an94/grenade
-	name = "АН-94 c ГП"
+	name = "AN-94 GL"
 	desc = "Автомат АН-94 «Абакан»,оснащённая подствольным гранотомётом ГП-30, а также оптическим прицелом, что позволяет стрелять и на дальние дистанции. Использует патроны калибра 5,45х39мм."
 	icon = 'modular_ss220/SSO/icons/USSP_AN94_gren.dmi'
 	var/obj/item/gun/projectile/revolver/grenadelauncher/underbarrel
@@ -557,20 +553,20 @@
 			burst_size = 1
 			fire_delay = 0
 			to_chat(user, SPAN_NOTICE("You switch to semi-auto."))
-	playsound(user, 'sound/weapons/gun_interactions/selector.ogg', 100, 1)
+	playsound(user, 'modular_ss220/SSO/sound/weapons/cylinder/gun_cmb_click1.ogg', 100, 1)
 	update_icon()
 
 //////////////////////////////
 // MARK: ВСС «Винторез»
 //////////////////////////////
 /obj/item/gun/projectile/automatic/ar/sso/vss
-	name = "ВСС «Винторез»"
+	name = "VSS 'Vintorez'"
 	desc = "Знаменитая снайперская винтовка ВСС «Винторез», оснащена оптическим прицелом, что позволяет стрелять на средние дистанции. На дальние хер постреляешь - пуля медленная... Использует патроны калибра 9х39мм."
 	icon = 'modular_ss220/SSO/icons/USSP_VSS_VAL.dmi'
 	icon_state = "vss"
 	inhand_icon_state = "vss"
 	mag_type = /obj/item/ammo_box/magazine/vss
-	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_silenced_shot1.ogg' // переделать
+	fire_sound = 'modular_ss220/SSO/sound/weapons/gunshots/gun_silenced_shot1.ogg' // подтырено с маринов
 	burst_size = 2
 	can_suppress = FALSE
 	worn_icon_state = "shotgun"
@@ -579,7 +575,7 @@
 // MARK: AC ВАЛ
 //////////////////////////////
 /obj/item/gun/projectile/automatic/ar/sso/vss/val
-	name = "АС ВАЛ"
+	name = "AS VAL"
 	desc = "Автомат АС ВАЛ, оснащена оптическим прицелом, что позволяет стрелять на средние дистанции. На дальние хер постреляешь - пуля медленная...Использует патроны калибра 9х39мм. И помни про боезапас... он у тебя закончится быстрее, чем ты о нём подумаешь."
 	icon = 'modular_ss220/SSO/icons/USSP_VSS_VAL.dmi'
 	icon_state = "val"
@@ -626,7 +622,7 @@
 //////////////////////////////
 
 /obj/item/ammo_box/magazine/m42
-	name = "магазин M42"
+	name = "Magazine M42"
 	desc = "Магазин патронов калибра 7,62х51mm."
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "m42"
@@ -638,19 +634,19 @@
 	caliber = "mm762x51"
 
 /obj/item/ammo_box/magazine/m42/ap
-	name = "магазин M42 AP"
+	name = "Magazine M42 AP"
 	desc = "Магазин бронебойных патронов калибра 7,62х51mm."
 	icon_state = "m42AP"
 	ammo_type = /obj/item/ammo_casing/mm762x51/ap
 
 /obj/item/ammo_box/magazine/m42/sr
-	name = "магазин M42 SR"
+	name = "Magazine M42 SR"
 	desc = "Магазин сонных патронов калибра 7,62х51mm."
 	icon_state = "m42SR"
 	ammo_type = /obj/item/ammo_casing/mm762x51/soporific
 
 /obj/item/ammo_box/magazine/svd
-	name = "магазин СВД"
+	name = "Magazine SVD"
 	desc = "Магазин винтовки СВД"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "svd"
@@ -662,7 +658,7 @@
 	caliber = "a762"
 
 /obj/item/ammo_box/magazine/svd/ap
-	name = "магазин СВД БП"
+	name = "Magazine SVD AP"
 	desc = "Магазин бронебойных патронов для винтовки СВД"
 	icon_state = "svdAP"
 	ammo_type = /obj/item/ammo_casing/a762/ap
@@ -672,13 +668,13 @@
 	icon_state = "svd20"
 
 /obj/item/ammo_box/magazine/svd/big/ap
-	name = "магазин СВД БП"
+	name = "Magazine SVD AP"
 	desc = "Магазин бронебойных патронов для винтовки СВД"
 	icon_state = "svd20AP"
 	ammo_type = /obj/item/ammo_casing/a762/ap
 
 /obj/item/ammo_box/magazine/m210
-	name = "Магазин M210"
+	name = "Magazine M210"
 	desc = "Магазин патронов калибра .338 Lapua Magnum."
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "m210"
@@ -690,21 +686,21 @@
 	caliber = ".338"
 
 /obj/item/ammo_box/magazine/m210/ap
-	name = "Магазин M210 - бронебойные"
+	name = "Magazine M210 AP"
 	desc = "Магазин бронебойных патронов калибра .338 Lapua Magnum."
 	icon_state = "m210AP"
 	ammo_type = /obj/item/ammo_casing/a338/ap
 	caliber = ".338"
 
 /obj/item/ammo_box/magazine/m210/antimatter
-	name = "Магазин M210 - антиматериальные"
+	name = "Magazine M210 AM"
 	desc = "Магазин антиматериальных патронов калибра .338 Lapua Magnum."
 	icon_state = "m210AM"
 	ammo_type = /obj/item/ammo_casing/a338/antimatter
 	caliber = ".338"
 
 /obj/item/ammo_box/magazine/mg_kord
-	name = "Пулемётная лента (12,7x108mm)"
+	name = "Machine‑gun belt (12,7x108mm)"
 	desc = "Пулемётная лента для ДПК КОРД"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "KORD"
@@ -715,13 +711,13 @@
 	max_ammo = 50
 
 /obj/item/ammo_box/magazine/mg_kord/ap
-	name = "Пулемётная лента (12,7x108mm БП)"
+	name = "Machine‑gun belt (12,7x108mm AP)"
 	desc = "Бронебойная пулемётная лента для ДПК КОРД"
 	icon_state = "KORDAP"
 	ammo_type = /obj/item/ammo_casing/mm127x108/ap
 
 /obj/item/ammo_box/magazine/mg_sso
-	name = "Пулемётная лента (.338LM)"
+	name = "Machine‑gun belt (.338LM)"
 	desc = "Пулемётная лента для MMG 338"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "MMG338"
@@ -732,7 +728,7 @@
 	max_ammo = 50
 
 /obj/item/ammo_box/magazine/mg_sso/ap
-	name = "Пулемётная лента (.338LM AP)"
+	name = "Machine‑gun belt (.338LM AP)"
 	desc = "Пулемётная лента для MMG 338, заряженная бронебойными патронами"
 	icon_state = "MMG338AP"
 	ammo_type = /obj/item/ammo_casing/a338/ap
@@ -740,7 +736,7 @@
 	max_ammo = 50
 
 /obj/item/ammo_box/magazine/mg_sso/antimatter
-	name = "Пулемётная лента (.338LM AM)"
+	name = "Machine‑gun belt (.338LM AM)"
 	desc = "Пулемётная лента для MMG 338, заряженная антиматериальными патронами... если враг проснулся... то зря он это сделал..."
 	icon_state = "MMG338AM"
 	ammo_type = /obj/item/ammo_casing/a338/antimatter
@@ -748,7 +744,7 @@
 	max_ammo = 50
 
 /obj/item/ammo_box/magazine/mk43
-	name = "магазин Mk43"
+	name = "Magazine Mk43"
 	desc = "Магазин для пистолета Mk43"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "mk43"
@@ -760,7 +756,7 @@
 	caliber = ".45"
 
 /obj/item/ammo_box/magazine/aps
-	name = "Магазин АПС (10mm)"
+	name = "Magazine APS"
 	desc = "Магазин для пистолета АПС"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "aps"
@@ -770,25 +766,25 @@
 	multi_sprite_step = AMMO_BOX_MULTI_SPRITE_STEP_ON_OFF
 
 /obj/item/ammo_box/magazine/aps/fire
-	name = "Магазин АПС (10mm ПЗ)"
+	name = "Magazine APS IP"
 	desc = "Магазин для пистолета АПС, заряженный зажигательными"
 	icon_state = "aps"
 	ammo_type = /obj/item/ammo_casing/c10mm/fire
 
 /obj/item/ammo_box/magazine/aps/hp
-	name = "Магазин АПС (10mm ПЭ)"
+	name = "Magazine APS HP"
 	desc = "Магазин для пистолета АПС, заряженный экспансивными"
 	icon_state = "apsHP"
 	ammo_type = /obj/item/ammo_casing/c10mm/hp
 
 /obj/item/ammo_box/magazine/aps/ap
-	name = "Магазин АПС (10mm БП)"
+	name = "Magazine APS AP"
 	desc = "Магазин для пистолета АПС, заряженный бронебойными"
 	icon_state = "apsAP"
 	ammo_type = /obj/item/ammo_casing/c10mm/ap
 
 /obj/item/ammo_box/magazine/mp7
-	name = "Магазин MP7"
+	name = "Magazine MP7"
 	desc = "Магазин для ПП MP7A4"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "mp7"
@@ -798,7 +794,7 @@
 	multi_sprite_step = AMMO_BOX_MULTI_SPRITE_STEP_ON_OFF
 
 /obj/item/ammo_box/magazine/mp7/ap
-	name = "Магазин MP7 AP"
+	name = "Magazine MP7 AP"
 	desc = "Магазин для ПП MP7A4, заряженный бронебойными."
 	icon_state = "mp7AP"
 	ammo_type = /obj/item/ammo_casing/c46x30mm/ap
@@ -808,13 +804,13 @@
 	max_ammo = 40
 
 /obj/item/ammo_box/magazine/mp7/big/ap
-	name = "Магазин MP7 AP"
+	name = "Magazine MP7 AP"
 	desc = "Магазин для ПП MP7A4, заряженный бронебойными."
 	icon_state = "mp7-40AP"
 	ammo_type = /obj/item/ammo_casing/c46x30mm/ap
 
 /obj/item/ammo_box/magazine/ash12
-	name = "магазин АШ-12"
+	name = "Magazine ASh-12"
 	desc = "Магазин для автомата АШ-12."
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "ash12-20"
@@ -829,13 +825,12 @@
 	icon_state = "ash12-10"
 
 /obj/item/ammo_box/magazine/ak814
-	name = "Автоматный магазин АК"
 	desc = "Магазин для автоматов типа АК."
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "AK"
 
 /obj/item/ammo_box/magazine/vss
-	name = "магазин ВСС"
+	name = "Magazine VSS"
 	desc = "Магазин для ВСС"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "vss"
@@ -846,7 +841,7 @@
 	caliber = "mm9x39"
 
 /obj/item/ammo_box/magazine/vss/val
-	name = "магазин АС ВАЛ"
+	name = "Magazine AS VAL"
 	desc = "Магазин для АС ВАЛ"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "val"
@@ -854,7 +849,7 @@
 	max_ammo = 20
 
 /obj/item/ammo_box/magazine/ksv
-	name = "Магазин КСВ-А"
+	name = "Magazine KSV-A"
 	desc = "Магазин для винтовки КСВ-А"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "ksv"
@@ -865,13 +860,13 @@
 	max_ammo = 5
 
 /obj/item/ammo_box/magazine/ksv/ap
-	name = "Магазин КСВ-А БП"
+	name = "Magazine KSV-A AP"
 	desc = "Магазин бронебойных патронов для винтовки КСВ-А"
 	icon_state = "ksvAP"
 	ammo_type = /obj/item/ammo_casing/mm127x108/ap
 
 /obj/item/ammo_box/magazine/svdk
-	name = "Магазин СВДК"
+	name = "Magazine SVDK"
 	desc = "Магазин для винтовки СВДК"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "svdk"
@@ -882,13 +877,13 @@
 	max_ammo = 10
 
 /obj/item/ammo_box/magazine/svdk/ap
-	name = "Магазин БП СВДК "
+	name = "Magazine SVDK AP "
 	desc = "Магазин бронебойных патронов для винтовки СВДК"
 	icon_state = "svdkAP"
 	ammo_type = /obj/item/ammo_casing/mm93x64/ap
 
 /obj/item/ammo_box/magazine/mg_pkp
-	name = "Пулемётная лента (7.62x54mm)"
+	name = "Machine‑gun belt (7.62x54mm)"
 	desc = "Пулемётная лента для ПКП «Печенег»"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "pkp"
@@ -899,14 +894,14 @@
 	max_ammo = 100
 
 /obj/item/ammo_box/magazine/mg_pkp/ap
-	name = "Пулемётная лента (7.62x54mm БП)"
+	name = "Machine‑gun belt (7.62x54mm AP)"
 	desc = "Бронебойная пулемётная лента для ПКП «Печенег»"
 	icon_state = "pkpAP"
 	multi_sprite_step = AMMO_BOX_MULTI_SPRITE_STEP_ON_OFF
 	ammo_type = /obj/item/ammo_casing/a762/ap
 
 /obj/item/ammo_box/magazine/vektor
-	name = "магазин M39A3"
+	name = "Magazine M39A3"
 	desc = "Магазин для ПП Kris Vektor"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
 	icon_state = "vektor"
@@ -956,7 +951,7 @@
 	icon_state = "338LM-AP_box"
 
 /obj/item/ammo_box/box_a338/antimatter
-	name = "ammo box (.338LM Antimatter)"
+	name = "ammo box (.338LM AM)"
 	desc = "Contains up to 100 .338 Antimatter cartridges."
 	ammo_type = /obj/item/ammo_casing/a338/antimatter
 	icon_state = "338LM-AM_box"
@@ -970,7 +965,7 @@
 	icon_state = "127x108_box"
 
 /obj/item/ammo_box/box_mm127x108/ap
-	name = "ammo box (12,7x108mm БП)"
+	name = "ammo box (12,7x108mm AP)"
 	desc = "Contains up to 100 12,7x108mm БП cartridges."
 	ammo_type = /obj/item/ammo_casing/mm127x108/ap
 	icon_state = "127x108AP_box"
@@ -994,7 +989,7 @@
 	icon_state = "mm9.3x64_box"
 
 /obj/item/ammo_box/box_mm93x64/ap
-	name = "ammo box (9.3x64 БП)"
+	name = "ammo box (9.3x64 AP)"
 	desc = "Содержит в себе 100 БП патронов калибра 9,3x64."
 	ammo_type = /obj/item/ammo_casing/mm93x64/ap
 	icon_state = "mm9.3x64AP_box"
@@ -1009,7 +1004,7 @@
 	icon_state = "a762_box"
 
 /obj/item/ammo_box/box_a762/ap
-	name = "ammo box (7.62x54 БП)"
+	name = "ammo box (7.62x54 AP)"
 	desc = "Contains up to 100 7.62x54 БП cartridges."
 	ammo_type = /obj/item/ammo_casing/a762/ap
 	icon_state = "a762AP_box"
@@ -1038,7 +1033,7 @@
 	icon_state = "casing762mm"
 ///////
 /obj/item/ammo_casing/mm762x51/soporific
-	name = "7,62x51 Сонный патрон"
+	name = "7,62x51 soporific round"
 	desc = "Патрон 7,62х51, используемый для усыпления цели."
 	icon_state = "casing762mmSR"
 	projectile_type = /obj/projectile/bullet/sniper/soporific
@@ -1048,7 +1043,7 @@
 	projectile_type = /obj/projectile/bullet
 
 /obj/item/ammo_casing/a762/ap
-	name = "7,62 БП"
+	name = "7,62 AP round"
 	desc = "Бронебойный патрон 7,62."
 	caliber = "a762"
 	icon = 'modular_ss220/SSO/icons/ammo.dmi'
@@ -1088,7 +1083,7 @@
 	projectile_type = /obj/projectile/bullet/mm127x108
 
 /obj/item/ammo_casing/mm127x108/ap
-	name = "127x108 БП round"
+	name = "127x108 AP round"
 	desc = "Бронебойный патрон 12,7х108мм"
 	icon_state = "casing127x108AP"
 	projectile_type = /obj/projectile/bullet/mm127x108/ap
@@ -1114,7 +1109,7 @@
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_STRONG
 
 /obj/item/ammo_casing/mm93x64/ap
-	name = "9.3x64 БП round"
+	name = "9.3x64 AP round"
 	desc = "A 9.3x64 БП bullet casing."
 	icon_state = "casingmm9.3x64AP"
 	projectile_type = /obj/projectile/bullet/mm93x64/ap
@@ -1160,7 +1155,7 @@
 	name = "12.7 bullet"
 	icon_state = "bullet"
 	damage = 110
-	dismemberment = 70
+	dismemberment = 50
 	armor_penetration_flat = 100
 	weaken = 10 SECONDS
 	damage_type = BRUTE

@@ -7,7 +7,7 @@
 	color = "#999999"
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso
-	name = "Пальто ССО"
+	name = "Coat SSO"
 	desc = "Бронированное пальто офицера ССО"
 	icon = 'modular_ss220/SSO/icons/suit/sso_icon.dmi'
 	icon_state = "sso_open"
@@ -19,7 +19,7 @@
 	adjust_flavour = "unzipped"
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/ricardo
-	name = "Пальто Р.Милошевича"
+	name = "Coat of R.Miloshevich"
 	desc = "Бронированное пальто офицера ССО, полковника а также офицера специальный операций Рикардоса Милошевича."
 	icon_state = "sso_ric_open"
 	flags_inv = 0
@@ -29,7 +29,7 @@
 	adjust_flavour = "unbutton"
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/armor_1
-	name = "Комплект брони СCО"
+	name = "Armor SSO"
 	desc = "Модульная броня Сил Специальных Операций."
 	icon_state = "armor_1"
 	inhand_icon_state = "armor"
@@ -37,27 +37,27 @@
 
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/armor_2
-	name = "Комплект брони СCО"
+	name = "Armor SSO"
 	desc = "Модульная броня Сил Специальных Операций. Боевой модуль"
 	icon_state = "armor_2"
 	inhand_icon_state = "armor"
 	actions_types = list()
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/armor_3
-	name = "Комплект брони СCО"
+	name = "Armor SSO"
 	desc = "Модульная броня Сил Специальных Операций. Боевой модуль"
 	icon_state = "armor_3"
 	inhand_icon_state = "armor"
 	actions_types = list()
 
 /obj/item/clothing/suit/space/deathsquad/officer/sso/coat
-	name = "Пальто ССО"
+	name = "Coat SSO"
 	desc = "Бронированное пальто офицера ССО"
 	icon_state = "coat_1"
 	actions_types = list()
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/sso/helmet
-	name = "Каска ССО"
+	name = "Helmet SSO"
 	desc = "Шлем Офицера Сил Специальных Операций"
 	icon = 'modular_ss220/SSO/icons/suit/sso_icon.dmi'
 	icon_state = "helmet"
@@ -112,7 +112,7 @@
 /// END
 
 /obj/item/clothing/suit/space/deathsquad/officer/rep
-	name = "Пальто НТ"
+	name = "Coat of NT Officer"
 	desc = "Пальто Офицера Флота Нанотройзен"
 	icon = 'modular_ss220/SSO/icons/suit/sso_icon.dmi'
 	icon_state = "rep_1"
@@ -134,19 +134,19 @@
 	icon_state = "rep_6"
 
 /obj/item/clothing/suit/space/deathsquad/officer/rep/alvion
-	name = "Пальто Адмирала НТ"
+	name = "Coat of NT Admiral"
 	desc = "Пальто Адмирала флота Нанотрейзен."
 	icon_state = "alvion"
 
 /obj/item/clothing/mask/gas/swat/sso
-	name = "Противогаз ССО"
+	name = "Mask SSO"
 	desc = "Противогаз, специально созданный для сил специальных операций."
 	icon = 'modular_ss220/SSO/icons/suit/sso_icon.dmi'
 	icon_state = "mask"
 	worn_icon = 'modular_ss220/SSO/icons/suit/sso_worn.dmi'
 
 /obj/item/storage/belt/federation_webbing/sso
-	name = "Разгрузка ССО"
+	name = "Wedding SSO"
 	desc = "Разгрузка ТСФ, в расцветке ССО."
 	icon = 'modular_ss220/SSO/icons/suit/sso_icon.dmi'
 	icon_state = "wedding"
