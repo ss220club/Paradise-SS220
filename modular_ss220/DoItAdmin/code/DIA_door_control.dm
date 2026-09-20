@@ -104,7 +104,6 @@
 			type_by_button = DOORCONTROL_BUTTON
 			icon = 'icons/obj/stationobjs.dmi'
 			icon_state = "doorctrl0"
-			launched = FALSE
 			glass = TRUE
 			return TRUE
 	return FALSE
