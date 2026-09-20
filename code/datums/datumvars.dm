@@ -56,8 +56,10 @@
 			return FALSE
 		if("var_edited")
 			return FALSE
+		// SS220 EDIT START - блокировка изменения переменной через VV
 		if("donator_level")
 			return FALSE
+		// SS220 EDIT END
 	var_edited = TRUE
 	vars[var_name] = var_value
 
