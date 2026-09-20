@@ -424,7 +424,7 @@ GLOBAL_LIST_INIT(special_role_times, list(
 			// LEFT SIDE OF THE PAGE
 			dat += "<table><tr><td width='405px' height='300px' valign='top'>"
 			dat += "<h2>General Settings</h2>"
-			dat += "<b>2FA Setup:</b> <a href='byond://?_src_=prefs;preference=edit_2fa'>[_2fastatus_to_text()]</a><br>"
+			//dat += "<b>2FA Setup:</b> <a href='byond://?_src_=prefs;preference=edit_2fa'>[_2fastatus_to_text()]</a><br>"
 			if(user.client.holder)
 				dat += "<b>Adminhelp sound:</b> <a href='byond://?_src_=prefs;preference=hear_adminhelps'><b>[(sound & SOUND_ADMINHELP)?"On":"Off"]</b></a><br>"
 			dat += "<b>AFK Cryoing:</b> <a href='byond://?_src_=prefs;preference=afk_watch'>[(toggles2 & PREFTOGGLE_2_AFKWATCH) ? "Yes" : "No"]</a><br>"

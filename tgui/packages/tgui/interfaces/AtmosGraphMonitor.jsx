@@ -204,8 +204,8 @@ function AtmosChart(props) {
     ...rest
   } = props;
 
-  const ref = useRef < HTMLDivElement > null;
-  const [viewBox, setViewBox] = useState < [number, number] > [400, 800];
+  const ref = useRef(null);
+  const [viewBox, setViewBox] = useState([400, 800]);
   const handleResize = () => {
     const element = ref.current;
     if (!element) {
@@ -234,83 +234,81 @@ function AtmosChart(props) {
   const points = dataToPolylinePoints(normalized);
   return (
     <Box ref={ref} position="relative" {...rest}>
-      {(props) => (
-        <div ref={ref} {...props}>
-          <svg viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}>
-            {/* Горизонтальные линии сетки */}
-            {Array.from({ length: horizontalLinesCount }).map((_, index) => (
+      <div>
+        <svg viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}>
+          {/* Горизонтальные линии сетки */}
+          {Array.from({ length: horizontalLinesCount }).map((_, index) => (
+            <line
+              key={`horizontal-line-${index}`}
+              x1={0}
+              y1={(index + 1) * (viewBox[1] / (horizontalLinesCount + 1))}
+              x2={viewBox[0]}
+              y2={(index + 1) * (viewBox[1] / (horizontalLinesCount + 1))}
+              stroke={gridColor}
+              strokeWidth={gridWidth}
+            />
+          ))}
+          {/* Вертикальные линии сетки */}
+          {Array.from({ length: verticalLinesCount }).map((_, index) => (
+            <line
+              key={`vertical-line-${index}`}
+              x1={(index + 1) * (viewBox[0] / (verticalLinesCount + 1))}
+              y1={0}
+              x2={(index + 1) * (viewBox[0] / (verticalLinesCount + 1))}
+              y2={viewBox[1]}
+              stroke={gridColor}
+              strokeWidth={gridWidth}
+            />
+          ))}
+          {/* Полилиния (заливка) графика */}
+          <polyline transform={`scale(1, -1) translate(0, -${viewBox[1]})`} fill={fillColor} points={points} />
+          {/* Линия графика */}
+          {data.map((point, index) => {
+            if (index === 0) return null;
+            return (
               <line
-                key={`horizontal-line-${index}`}
-                x1={0}
-                y1={(index + 1) * (viewBox[1] / (horizontalLinesCount + 1))}
-                x2={viewBox[0]}
-                y2={(index + 1) * (viewBox[1] / (horizontalLinesCount + 1))}
-                stroke={gridColor}
-                strokeWidth={gridWidth}
-              />
-            ))}
-            {/* Вертикальные линии сетки */}
-            {Array.from({ length: verticalLinesCount }).map((_, index) => (
-              <line
-                key={`vertical-line-${index}`}
-                x1={(index + 1) * (viewBox[0] / (verticalLinesCount + 1))}
-                y1={0}
-                x2={(index + 1) * (viewBox[0] / (verticalLinesCount + 1))}
-                y2={viewBox[1]}
-                stroke={gridColor}
-                strokeWidth={gridWidth}
-              />
-            ))}
-            {/* Полилиния (заливка) графика */}
-            <polyline transform={`scale(1, -1) translate(0, -${viewBox[1]})`} fill={fillColor} points={points} />
-            {/* Линия графика */}
-            {data.map((point, index) => {
-              if (index === 0) return null;
-              return (
-                <line
-                  key={`line-${index}`}
-                  x1={normalized[index - 1][0]}
-                  y1={viewBox[1] - normalized[index - 1][1]}
-                  x2={normalized[index][0]}
-                  y2={viewBox[1] - normalized[index][1]}
-                  stroke={strokeColor}
-                  strokeWidth={strokeWidth}
-                />
-              );
-            })}
-            {/* Точки */}
-            {data.map((point, index) => (
-              <circle
-                key={`point-${index}`}
-                cx={normalized[index][0]}
-                cy={viewBox[1] - normalized[index][1]}
-                r={2}
-                fill="#ffffff"
+                key={`line-${index}`}
+                x1={normalized[index - 1][0]}
+                y1={viewBox[1] - normalized[index - 1][1]}
+                x2={normalized[index][0]}
+                y2={viewBox[1] - normalized[index][1]}
                 stroke={strokeColor}
-                strokeWidth={1}
+                strokeWidth={strokeWidth}
               />
-            ))}
-            {/* Значения точек */}
-            {data.map(
-              (point, index) =>
-                viewBox[0] > labelViewBoxSize &&
-                index % 2 === 1 && (
-                  <text
-                    key={`point-text-${index}`}
-                    x={normalized[index][0]}
-                    y={viewBox[1] - normalized[index][1]}
-                    fill={pointTextColor}
-                    fontSize={pointTextSize}
-                    dy="1em"
-                    style={{ textAnchor: 'end' }}
-                  >
-                    {point[1] !== null ? point[1].toFixed(0) : 'N/A'}
-                  </text>
-                )
-            )}
-          </svg>
-        </div>
-      )}
+            );
+          })}
+          {/* Точки */}
+          {data.map((point, index) => (
+            <circle
+              key={`point-${index}`}
+              cx={normalized[index][0]}
+              cy={viewBox[1] - normalized[index][1]}
+              r={2}
+              fill="#ffffff"
+              stroke={strokeColor}
+              strokeWidth={1}
+            />
+          ))}
+          {/* Значения точек */}
+          {data.map(
+            (point, index) =>
+              viewBox[0] > labelViewBoxSize &&
+              index % 2 === 1 && (
+                <text
+                  key={`point-text-${index}`}
+                  x={normalized[index][0]}
+                  y={viewBox[1] - normalized[index][1]}
+                  fill={pointTextColor}
+                  fontSize={pointTextSize}
+                  dy="1em"
+                  style={{ textAnchor: 'end' }}
+                >
+                  {point[1] !== null ? point[1].toFixed(0) : 'N/A'}
+                </text>
+              )
+          )}
+        </svg>
+      </div>
     </Box>
   );
 }
