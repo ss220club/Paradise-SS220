@@ -111,12 +111,14 @@ class ChatRenderer {
     /** @type {HTMLElement} */
     this.loaded = false;
     /** @type {HTMLElement} */
+    // SS220 EDIT START -  Переменные tooltip
     this.tooltipNode = null;
     /** @type {HTMLElement} */
     this.tooltipTarget = null;
     /** @type {number|null} */
     this.tooltipHideTimeout = null;
     /** @type {HTMLElement} */
+    // SS220 EDIT END
     this.rootNode = null;
     this.queue = [];
     this.messages = [];
@@ -458,7 +460,7 @@ class ChatRenderer {
             FORBID_TAGS: blacklisted_tags,
             ALLOW_UNKNOWN_PROTOCOLS: true,
           });
-          this.setupTooltips(node);
+          this.setupTooltips(node); // SS220 EDIT - указатель на tooltip-img
         } else {
           logger.error('Error: message is missing text payload', message);
         }
@@ -667,6 +669,7 @@ class ChatRenderer {
     Byond.saveBlob(blob, `ss13-paradise-chatlog-${timestamp}.html`, '.html');
   }
 
+  // SS220 EDIT START - логика tooltip
   createTooltip() {
     if (this.tooltipNode) {
       return this.tooltipNode;
@@ -803,3 +806,4 @@ if (!window.__chatRenderer__) {
 
 /** @type {ChatRenderer} */
 export const chatRenderer = window.__chatRenderer__;
+// SS220 EDIT END
