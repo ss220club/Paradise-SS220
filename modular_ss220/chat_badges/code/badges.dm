@@ -1,11 +1,14 @@
 #define CHAT_BADGES_DMI 'modular_ss220/chat_badges/icons/chatbadges.dmi'
 
+#define span_tooltip_img(tip, main_text) ("<span class=\"tooltip-img\" data-tooltip=\"" + tip + "\">" + main_text + "</span>")
+
+
 GLOBAL_LIST(badge_icons_cache)
 
 GLOBAL_LIST_INIT(donor_chat_effects, list(
-    "None" = null,
-    "Metal" = "metal",
-    "Glowing" = "glowing",
+	"None" = null,
+	"Metal" = "metal",
+	"Glowing" = "glowing",
 ))
 
 /client/proc/get_ooc_badged_name()
@@ -14,12 +17,17 @@ GLOBAL_LIST_INIT(donor_chat_effects, list(
 	for(var/badge in get_donator_badge())
 		var/icon/badge_icon = get_badge_icon(badge)
 		if(badge_icon)
-			badge_parts += bicon(badge_icon)
+			var/tooltip = badge
+
+			if(findtext(badge, "Tier-"))
+				tooltip = "Уровень подписки: [donator_level]"
+
+			badge_parts += span_tooltip_img(tooltip, bicon(badge_icon))
 
 	for(var/badge in get_worker_badge())
 		var/icon/badge_icon = get_badge_icon(badge)
 		if(badge_icon)
-			badge_parts += bicon(badge_icon)
+			badge_parts += span_tooltip_img(badge, bicon(badge_icon))
 
 	var/badge_part = jointext(badge_parts, "&nbsp;")
 
@@ -49,9 +57,6 @@ GLOBAL_LIST_INIT(donor_chat_effects, list(
 /client/proc/get_donator_badge()
 	var/list/parts = list()
 	if(donator_level && (prefs.toggles & PREFTOGGLE_DONATOR_PUBLIC))
-		if(donator_level > 3)
-			parts += "Paradise"
-
 		var/badged_type = "Tier-[donator_level]"
 		if(badged_type)
 			parts += badged_type

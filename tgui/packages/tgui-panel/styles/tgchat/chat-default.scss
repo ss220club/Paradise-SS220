@@ -810,6 +810,41 @@ span.body .coderesponses {
   text-align: left;
 }
 
+.Chat {
+  position: relative;
+}
+
+.tooltip-img {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: help;
+}
+
+.Chat__tooltip {
+  position: absolute;
+
+  padding: 5px 9px;
+
+  background: rgba(32, 34, 40, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 5px;
+
+  color: #eee;
+
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.3;
+
+  white-space: nowrap;
+  text-align: center;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+
+  z-index: 999999;
+
+  transition: opacity 0.12s ease;
+}
+
 @keyframes metalic-anim {
   0%,
   33% {
