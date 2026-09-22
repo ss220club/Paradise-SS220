@@ -796,6 +796,7 @@ class ChatRenderer {
       });
     }
   }
+  // SS220 EDIT END
 }
 
 // Make chat renderer global so that we can continue using the same
@@ -806,4 +807,3 @@ if (!window.__chatRenderer__) {
 
 /** @type {ChatRenderer} */
 export const chatRenderer = window.__chatRenderer__;
-// SS220 EDIT END
