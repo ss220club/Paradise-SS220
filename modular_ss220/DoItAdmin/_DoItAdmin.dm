@@ -16,3 +16,9 @@
 
 	#define ANNOUNCE_VIS_ALL       (ANNOUNCE_VIS_LIVING | ANNOUNCE_VIS_GHOSTS | ANNOUNCE_VIS_LOBBY | ANNOUNCE_VIS_SILICONS | ANNOUNCE_VIS_OBSERVERS)
 	#define ANNOUNCE_VIS_DEFAULT   (ANNOUNCE_VIS_LIVING | ANNOUNCE_VIS_GHOSTS)
+
+/datum/modpack/example/pre_initialize()
+	. = ..()
+
+/datum/modpack/example/post_initialize()
+	. = ..()

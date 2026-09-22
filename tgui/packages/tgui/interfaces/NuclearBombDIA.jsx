@@ -1,13 +1,10 @@
-import { classes } from 'common/react';
+import { Box, Button, Flex, Icon } from 'tgui-core/components';
+import { classes } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Grid, Icon } from '../components';
+import { Grid } from '../components';
 import { Window } from '../layouts';
 
-// This ui is so many manual overrides and !important tags
-// and hand made width sets that changing pretty much anything
-// is going to require a lot of tweaking it get it looking correct again
-// I'm sorry, but it looks bangin
 const NukeKeypad = (props) => {
   const { act } = useBackend();
   const keypadKeys = [
@@ -45,7 +42,7 @@ const NukeKeypad = (props) => {
   );
 };
 
-export const NuclearBomb = (props) => {
+export const NuclearBombDIA = (props) => {
   const { act, data } = useBackend();
   const {
     anchored,
