@@ -35,18 +35,10 @@ GLOBAL_LIST_INIT(donor_chat_effects, list(
 	if(badge_part)
 		parts += badge_part
 
-	if(donator_level && (prefs.toggles & PREFTOGGLE_DONATOR_PUBLIC))
+	if(donator_level >= 3 && (prefs.toggles & PREFTOGGLE_DONATOR_PUBLIC))
 		var/selected_pref = GLOB.donor_chat_effects[prefs.donor_chat_effect]
-		var/donor_color
-		if(!holder)
-			if(donator_level)
-				donor_color = prefs.ooccolor
-			else
-				donor_color = GLOB.normal_ooc_colour
-		else
-			donor_color = prefs.ooccolor
-
-		var/donor_shine = donator_level >= 3 && selected_pref ? "class='tier-[donator_level] [selected_pref]'" : ""
+		var/donor_color = prefs.ooccolor
+		var/donor_shine = selected_pref ? "class='tier-[donator_level] [selected_pref]'" : ""
 
 		parts += "<span [donor_shine] style='[donor_shine ? "--shine-color: [donor_color];" : "color: [donor_color];"] </span>"
 
