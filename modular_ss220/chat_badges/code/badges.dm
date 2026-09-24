@@ -15,18 +15,18 @@ GLOBAL_LIST_INIT(donor_chat_effects, list(
 	var/list/badge_parts = list()
 
 	for(var/badge in get_donator_badge())
-		var/icon/badge_icon = get_badge_icon(badge)
-		if(badge_icon)
+		var/icon/donator_badge_icon = get_badge_icon(badge)
+		if(donator_badge_icon)
 			var/tooltip = badge
 
 			if(findtext(badge, "Tier-"))
 				tooltip = "Уровень подписки: [donator_level]"
 
-			badge_parts += span_tooltip_img(tooltip, bicon(badge_icon))
+			badge_parts += span_tooltip_img(tooltip, bicon(donator_badge_icon))
 
-		var/icon/badge_icon = get_badge_icon(get_worker_badge())
-		if(badge_icon)
-			badge_parts += span_tooltip_img(badge, bicon(badge_icon))
+	var/icon/worker_badge_icon = get_badge_icon(get_worker_badge())
+	if(worker_badge_icon)
+		badge_parts += span_tooltip_img(badge, bicon(worker_badge_icon))
 
 	var/badge_part = jointext(badge_parts, "&nbsp;")
 
