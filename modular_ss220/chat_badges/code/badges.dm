@@ -23,10 +23,10 @@ GLOBAL_LIST_INIT(donor_chat_effects, list(
 				tooltip = "Уровень подписки: [donator_level]"
 
 			badge_parts += span_tooltip_img(tooltip, bicon(donator_badge_icon))
-
-	var/icon/worker_badge_icon = get_badge_icon(get_worker_badge())
+	var/worker_badge = get_worker_badge()
+	var/icon/worker_badge_icon = get_badge_icon(worker_badge)
 	if(worker_badge_icon)
-		badge_parts += span_tooltip_img(badge, bicon(worker_badge_icon))
+		badge_parts += span_tooltip_img(worker_badge, bicon(worker_badge_icon))
 
 	var/badge_part = jointext(badge_parts, "&nbsp;")
 
