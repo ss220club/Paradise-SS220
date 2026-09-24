@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(donor_chat_effects, list(
 		var/donor_color = prefs.ooccolor
 		var/donor_shine = selected_pref ? "class='tier-[donator_level] [selected_pref]'" : ""
 
-		parts += "<span [donor_shine] style='[donor_shine ? "--shine-color: [donor_color];" : "color: [donor_color];"] </span>"
+		parts += "<span [donor_shine] style='[donor_shine ? "--shine-color: [donor_color];" : "color: [donor_color];"]></span>"
 
 	parts += key
 
