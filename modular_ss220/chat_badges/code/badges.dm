@@ -24,8 +24,7 @@ GLOBAL_LIST_INIT(donor_chat_effects, list(
 
 			badge_parts += span_tooltip_img(tooltip, bicon(badge_icon))
 
-	for(var/badge in get_worker_badge())
-		var/icon/badge_icon = get_badge_icon(badge)
+		var/icon/badge_icon = get_badge_icon(get_worker_badge())
 		if(badge_icon)
 			badge_parts += span_tooltip_img(badge, bicon(badge_icon))
 
@@ -74,7 +73,7 @@ GLOBAL_LIST_INIT(donor_chat_effects, list(
 		"Старший Администратор" = "HeadAdmin",
 		"Зам Старшего Администратора" = "HeadAdmin",
 		"Администратор" = "GameAdmin",
-		"Триал Администратор" = "TrialAdmin",
+		"Младший Администратор" = "TrialAdmin",
 		"Ментор" = "Mentor"
 	)
 	return rank_badge_map[holder?.rank]
