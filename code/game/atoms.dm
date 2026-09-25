@@ -1,6 +1,8 @@
 /atom
 	layer = TURF_LAYER
 	plane = GAME_PLANE
+	/// Base plane retained while applying a z-stack rendering offset.
+	var/tmp/base_z_plane
 	var/level = 2
 	var/flags = NONE
 	var/flags_2 = NONE
@@ -183,6 +185,7 @@
 	if(initialized)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	initialized = TRUE
+	update_z_plane()
 
 	if(desc == ABSTRACT_TYPE_DESC)
 		stack_trace("[type] was initialized, but is marked as an abstract base type")
@@ -211,6 +214,19 @@
 		stack_trace("[src] expected an ai controller typepath or null for its AI controller, but was instead given [ai_controller].")
 
 	return INITIALIZE_HINT_NORMAL
+
+/// Apply this atom's z-stack plane offset while preserving its type's original plane.
+/atom/proc/update_z_plane()
+	if(!z)
+		return
+	if(isnull(base_z_plane))
+		base_z_plane = plane
+	if(base_z_plane < PLANE_SPACE || base_z_plane > ABOVE_LIGHTING_PLANE)
+		return
+	var/offset = SSmapping.z_level_plane_offsets?["[z]"]
+	if(isnull(offset))
+		offset = 0
+	plane = GET_Z_PLANE(base_z_plane, offset)
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
 /atom/proc/LateInitialize()

@@ -18,16 +18,23 @@
 	atmos_mode = ATMOS_MODE_SPACE
 
 	rad_insulation_alpha = RAD_NO_INSULATION
+	var/image/multiz_depth_overlay
+
+/// Open shaft tile for visible multi-z openings. Its icon state can be supplied with the hole sprite.
+/turf/space/open
+	icon_state = "open"
 
 /turf/space/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
-	if(!istype(src, /turf/space/transit))
+	if(!istype(src, /turf/space/transit) && !istype(src, /turf/space/open))
 		icon_state = SPACE_ICON_STATE
 	vis_contents.Cut() //removes inherited overlays
 
 	if(initialized)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	initialized = TRUE
+	update_z_plane()
+	update_multiz_render()
 
 	if(length(smoothing_groups))
 		sortTim(smoothing_groups) //In case it's not properly ordered, let's avoid duplicate entries with the same values.
@@ -40,7 +47,7 @@
 		SET_BITFLAG_LIST(canSmoothWith)
 
 	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+	if(!get_turf_below(src) && !IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
 		add_overlay(/obj/effect/fullbright)
 
 	if(light_power && light_range)
@@ -50,6 +57,53 @@
 		directional_opacity = ALL_CARDINALS
 
 	return INITIALIZE_HINT_NORMAL
+
+/turf/space/update_multiz_render()
+	if(istype(src, /turf/space/transit))
+		return
+	var/turf/below_turf = get_turf_below(src)
+	// A chain of open-space turfs between floors should behave like one shaft.
+	// Render the first actual surface below it; nested vis_contents on consecutive
+	// space turfs does not reliably composite on every client.
+	var/turf/rendered_turf = below_turf
+	while(isspaceturf(rendered_turf))
+		var/turf/next_turf = get_turf_below(rendered_turf)
+		if(!next_turf)
+			break
+		rendered_turf = next_turf
+	// Space turfs do not need to recursively render one another. If the shaft
+	// ends in space, keep this turf's own star field instead of compositing all
+	// the lower levels' parallax backgrounds into it.
+	if(isspaceturf(rendered_turf))
+		rendered_turf = null
+	var/turf/previously_rendered_turf = multiz_rendered_below
+	update_multiz_contents(rendered_turf)
+	if(previously_rendered_turf != multiz_rendered_below)
+		update_multiz_lighting_sources(src)
+	if(below_turf)
+		SSair.multiz_air_openings |= src
+	else
+		SSair.multiz_air_openings -= src
+	if(multiz_depth_overlay)
+		overlays -= multiz_depth_overlay
+		multiz_depth_overlay = null
+	if(below_turf)
+		// A subtle tint makes the opening read as a hole while keeping the
+		// lower floor and its contents visible underneath it.
+		multiz_depth_overlay = image('icons/effects/alphacolors.dmi', src, "white")
+		multiz_depth_overlay.color = "#000000"
+		multiz_depth_overlay.alpha = 60
+		multiz_depth_overlay.plane = plane
+		multiz_depth_overlay.layer = SPACE_LAYER + 0.1
+		overlays += multiz_depth_overlay
+	if(istype(src, /turf/space/open))
+		icon_state = "open"
+	else
+		icon_state = rendered_turf ? "" : SPACE_ICON_STATE
+	var/area/current_area = loc
+	cut_overlay(/obj/effect/fullbright)
+	if(!below_turf && !IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(current_area))
+		add_overlay(/obj/effect/fullbright)
 
 /turf/space/BeforeChange()
 	..()
@@ -68,6 +122,90 @@
 			GLOB.starlight += src
 			return
 		set_light(0)
+
+/datum/milla_safe/multiz_air_exchange
+
+/datum/milla_safe/multiz_air_exchange/on_run(turf/space/upper_turf)
+	if(!istype(upper_turf))
+		return
+	var/turf/lower_turf = get_turf_below(upper_turf)
+	if(!lower_turf || upper_turf.blocks_air || lower_turf.blocks_air)
+		return
+	var/datum/gas_mixture/upper_air = get_turf_air(upper_turf)
+	var/datum/gas_mixture/lower_air = get_turf_air(lower_turf)
+	for(var/gas_id in list(GAS_O2, GAS_N2, GAS_CO2, GAS_PL, GAS_N2O, GAS_A_B, GAS_H2, GAS_H20))
+		var/behavior = MULTIZ_GAS_NEUTRAL
+		if(gas_id & MULTIZ_LIGHT_GAS_FLAGS)
+			behavior = MULTIZ_GAS_LIGHT
+		else if(gas_id & MULTIZ_HEAVY_GAS_FLAGS)
+			behavior = MULTIZ_GAS_HEAVY
+		var/upper_moles = upper_air.get_multiz_gas_moles(gas_id)
+		var/lower_moles = lower_air.get_multiz_gas_moles(gas_id)
+		var/source_to_destination = 0 // Positive means upper -> lower.
+		if(behavior == MULTIZ_GAS_HEAVY)
+			if(upper_moles > lower_moles)
+				source_to_destination = 1
+		else if(behavior == MULTIZ_GAS_LIGHT)
+			if(lower_moles > upper_moles)
+				source_to_destination = -1
+		else if(upper_moles > lower_moles)
+			source_to_destination = 1
+		else if(lower_moles > upper_moles)
+			source_to_destination = -1
+		if(!source_to_destination)
+			continue
+		var/transfer_amount = abs(upper_moles - lower_moles) * 0.1
+		if(source_to_destination > 0)
+			transfer_amount = min(transfer_amount, upper_moles)
+			upper_air.set_multiz_gas_moles(gas_id, upper_moles - transfer_amount)
+			lower_air.set_multiz_gas_moles(gas_id, lower_moles + transfer_amount)
+		else
+			transfer_amount = min(transfer_amount, lower_moles)
+			lower_air.set_multiz_gas_moles(gas_id, lower_moles - transfer_amount)
+			upper_air.set_multiz_gas_moles(gas_id, upper_moles + transfer_amount)
+	if(abs(upper_air.temperature() - lower_air.temperature()) > MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
+		var/temperature_delta = (upper_air.temperature() - lower_air.temperature()) * 0.05
+		upper_air.set_temperature(upper_air.temperature() - temperature_delta)
+		lower_air.set_temperature(lower_air.temperature() + temperature_delta)
+
+/datum/gas_mixture/proc/get_multiz_gas_moles(gas_id)
+	switch(gas_id)
+		if(GAS_O2)
+			return oxygen()
+		if(GAS_N2)
+			return nitrogen()
+		if(GAS_CO2)
+			return carbon_dioxide()
+		if(GAS_PL)
+			return toxins()
+		if(GAS_N2O)
+			return sleeping_agent()
+		if(GAS_A_B)
+			return agent_b()
+		if(GAS_H2)
+			return hydrogen()
+		if(GAS_H20)
+			return water_vapor()
+	return 0
+
+/datum/gas_mixture/proc/set_multiz_gas_moles(gas_id, amount)
+	switch(gas_id)
+		if(GAS_O2)
+			set_oxygen(amount)
+		if(GAS_N2)
+			set_nitrogen(amount)
+		if(GAS_CO2)
+			set_carbon_dioxide(amount)
+		if(GAS_PL)
+			set_toxins(amount)
+		if(GAS_N2O)
+			set_sleeping_agent(amount)
+		if(GAS_A_B)
+			set_agent_b(amount)
+		if(GAS_H2)
+			set_hydrogen(amount)
+		if(GAS_H20)
+			set_water_vapor(amount)
 
 /turf/space/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/stack/rods))
@@ -118,6 +256,50 @@
 	..()
 	if((!(A) || !(src in A.locs)))
 		return
+	var/turf/old_turf = get_turf(OL)
+	// A deliberate vertical move into space is flight, not a fall back through
+	// the opening it just traversed.
+	if(old_turf && old_turf.z != z)
+		return
+	var/turf/lower_turf = get_turf_below(src)
+	if(lower_turf && !A.anchored && A.simulated && (isliving(A) || isobj(A)))
+		INVOKE_ASYNC(src, PROC_REF(drop_through_multiz), A, lower_turf)
+
+/turf/space/proc/drop_through_multiz(atom/movable/A, turf/lower_turf)
+	if(QDELETED(A) || !A || get_turf(A) != src || !lower_turf || QDELETED(lower_turf))
+		return
+	// A void below an opening should not pull things down by itself. Only let
+	// atoms fall into lower-level space when pressurized air is actually venting
+	// from the upper level through this opening.
+	if(isspaceturf(lower_turf) && !has_downward_multiz_airflow(lower_turf))
+		return
+	A.visible_message(SPAN_WARNING("[A] falls through [src]!"))
+	A.forceMove(lower_turf)
+	if(isliving(A))
+		var/mob/living/fallen_mob = A
+		fallen_mob.Weaken(1 SECONDS)
+		fallen_mob.adjustBruteLoss(10)
+	lower_turf.handle_fall()
+
+/turf/space/proc/has_downward_multiz_airflow(turf/lower_turf)
+	return get_multiz_airflow_direction(lower_turf) == DOWN
+
+/// Estimates pressure-driven airflow through this opening, positive z upwards.
+/turf/space/proc/get_multiz_airflow_direction(turf/lower_turf)
+	if(!lower_turf)
+		return NONE
+	var/upper_pressure = get_readonly_air().return_pressure()
+	for(var/turf/upper_neighbor in GetAtmosAdjacentTurfs())
+		if(upper_neighbor.z != z || upper_neighbor.blocks_air)
+			continue
+		upper_pressure = max(upper_pressure, upper_neighbor.get_readonly_air().return_pressure())
+	var/lower_pressure = lower_turf.get_readonly_air().return_pressure()
+	var/pressure_delta = upper_pressure - lower_pressure
+	if(pressure_delta >= WARNING_LOW_PRESSURE)
+		return DOWN
+	if(pressure_delta <= -WARNING_LOW_PRESSURE)
+		return UP
+	return NONE
 
 /turf/space/proc/Sandbox_Spacemove(atom/movable/A as mob|obj)
 	var/cur_x

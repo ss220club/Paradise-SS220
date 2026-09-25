@@ -6,7 +6,8 @@
 #define SSAIR_WINDY_TILES 6
 #define SSAIR_BOUND_MIXTURES 7
 #define SSAIR_PRESSURE_OVERLAY 8
-#define SSAIR_MILLA_TICK 9
+#define SSAIR_MULTIZ_AIR 9
+#define SSAIR_MILLA_TICK 10
 
 SUBSYSTEM_DEF(air)
 	name = "Atmospherics"
@@ -73,6 +74,9 @@ SUBSYSTEM_DEF(air)
 	var/list/pipenets = list()
 	/// The set of active atmos machinery. Length shown in SS Info as AM.
 	var/list/atmos_machinery = list()
+	/// Open space turfs with an atmospherically connected level below them.
+	var/list/multiz_air_openings = list()
+	var/datum/milla_safe/multiz_air_exchange/multiz_air_exchange = new()
 	/// The set of tiles that are currently on fire.
 	var/list/hotspots
 	/// The set of tiles that are still on fire after this tick.
@@ -185,6 +189,8 @@ SUBSYSTEM_DEF(air)
 	pipenets_to_build = SSair.pipenets_to_build
 	pipenets = SSair.pipenets
 	atmos_machinery = SSair.atmos_machinery
+	multiz_air_openings = SSair.multiz_air_openings
+	multiz_air_exchange = SSair.multiz_air_exchange
 	machinery_to_construct = SSair.machinery_to_construct
 	currentrun = SSair.currentrun
 	currentpart = SSair.currentpart
@@ -320,6 +326,18 @@ SUBSYSTEM_DEF(air)
 			in_milla_safe_code = FALSE
 			return
 		resumed = 0
+		currentpart = SSAIR_MULTIZ_AIR
+
+	if(currentpart == SSAIR_MULTIZ_AIR)
+		timer = TICK_USAGE_REAL
+
+		process_multiz_air(resumed)
+
+		cost_full.record_progress(TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer), FALSE)
+		if(state == SS_PAUSED || state == SS_PAUSING)
+			in_milla_safe_code = FALSE
+			return
+		resumed = 0
 		currentpart = SSAIR_MILLA_TICK
 
 	if(currentpart == SSAIR_MILLA_TICK)
@@ -340,6 +358,20 @@ SUBSYSTEM_DEF(air)
 	last_complete_tick = world.timeofday + (world.tick_lag * world.tick_usage) / 100
 	cost_full.record_progress(0, TRUE)
 	in_milla_safe_code = FALSE
+
+/datum/controller/subsystem/air/proc/process_multiz_air(resumed = FALSE)
+	if(!resumed)
+		currentrun = multiz_air_openings.Copy()
+	var/list/openings = currentrun
+	while(length(openings))
+		var/turf/space/opening = openings[length(openings)]
+		openings.len--
+		if(istype(opening) && get_turf_below(opening))
+			multiz_air_exchange.invoke_async(opening)
+		else
+			multiz_air_openings -= opening
+		if(MC_TICK_CHECK)
+			return
 
 /datum/controller/subsystem/air/proc/build_pipenets(resumed = 0)
 	if(!resumed)
@@ -926,4 +958,5 @@ SUBSYSTEM_DEF(air)
 #undef SSAIR_WINDY_TILES
 #undef SSAIR_BOUND_MIXTURES
 #undef SSAIR_PRESSURE_OVERLAY
+#undef SSAIR_MULTIZ_AIR
 #undef SSAIR_MILLA_TICK

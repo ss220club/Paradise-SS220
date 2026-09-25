@@ -150,10 +150,54 @@
 					cached_exp_block[T] = blocked
 				CHECK_TICK
 
-		for(var/turf/T as anything in affected_turfs)
-			var/dist = HYPOTENUSE(T.x, T.y, x0, y0)
+		// Open shafts and glass floors carry a weaker blast to the adjacent
+		// connected level. Measure the source-level distance to each aperture,
+		// then count distance on the other floor twice so all blast radii are
+		// effectively halved after crossing it.
+		var/list/multiz_explosion_distances = list()
+		if(max_range > 0)
+			var/secondary_search_radius = CEILING(max_range / 2, 1)
+			for(var/turf/aperture as anything in affected_turfs)
+				if(istype(aperture, /turf/space/transit))
+					continue
+				var/aperture_distance = HYPOTENUSE(aperture.x, aperture.y, x0, y0)
+				if(GLOB.configuration.general.reactionary_explosions)
+					var/turf/trajectory = aperture
+					while(trajectory != epicenter)
+						trajectory = get_step_towards(trajectory, epicenter)
+						if(!trajectory)
+							break
+						aperture_distance += cached_exp_block[trajectory]
+				if(aperture_distance >= max_range)
+					continue
+				for(var/vertical_direction in list(UP, DOWN))
+					var/turf/vertical_origin
+					if(vertical_direction == UP)
+						vertical_origin = get_turf_above(aperture)
+					else
+						vertical_origin = get_turf_below(aperture)
+					if(!vertical_origin || istype(vertical_origin, /turf/space/transit))
+						continue
+					if(!(aperture.transparent_floor || isspaceturf(aperture) || vertical_origin.transparent_floor || isspaceturf(vertical_origin)))
+						continue
+					for(var/turf/vertical_target as anything in spiral_range_turfs(secondary_search_radius, vertical_origin))
+						var/vertical_distance = HYPOTENUSE(vertical_target.x, vertical_target.y, aperture.x, aperture.y)
+						var/effective_distance = aperture_distance + (vertical_distance * 2)
+						if(effective_distance >= max_range)
+							continue
+						if(isnull(multiz_explosion_distances[vertical_target]) || effective_distance < multiz_explosion_distances[vertical_target])
+							multiz_explosion_distances[vertical_target] = effective_distance
 
-			if(GLOB.configuration.general.reactionary_explosions)
+		var/list/turfs_to_process = affected_turfs.Copy()
+		for(var/turf/multiz_turf as anything in multiz_explosion_distances)
+			turfs_to_process |= multiz_turf
+
+		for(var/turf/T as anything in turfs_to_process)
+			var/dist = HYPOTENUSE(T.x, T.y, x0, y0)
+			if(!isnull(multiz_explosion_distances[T]))
+				dist = multiz_explosion_distances[T]
+
+			else if(GLOB.configuration.general.reactionary_explosions)
 				var/turf/Trajectory = T
 				while(Trajectory != epicenter)
 					Trajectory = get_step_towards(Trajectory, epicenter)

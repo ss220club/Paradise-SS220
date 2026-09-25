@@ -19,6 +19,8 @@
 	heat_capacity = 800
 	/// Amount of SSobj ticks (Roughly 2 seconds) that a extinguished glass floor tile has been lit up
 	var/light_process = 0
+	/// Space backdrop shown only when no linked level exists below this tile.
+	var/image/multiz_underlay
 
 /turf/simulated/floor/transparent/glass/Initialize(mapload)
 	. = ..()
@@ -26,26 +28,31 @@
 
 /turf/simulated/floor/transparent/glass/LateInitialize()
 	. = ..()
-	var/image/I = null
-	if(is_mining_level(z))
-		if(SSmapping.lavaland_theme?.primary_turf_type_icon)
-			I = null
-			I = image(SSmapping.lavaland_theme.primary_turf_type_icon, src, "windowed")
-		else
-			I = image('icons/turf/space.dmi', src, SPACE_ICON_STATE)
-			I.plane = PLANE_SPACE
-	else
-		I = image('icons/turf/space.dmi', src, SPACE_ICON_STATE)
-		I.plane = PLANE_SPACE
-
-	I.layer = PLATING_LAYER
-	underlays += I
+	update_multiz_render()
 	dir = SOUTH //dirs that are not 2/south cause smoothing jank
-	icon_state = "" //Prevents default icon appearing behind the glass
+	icon_state = "" //Prevents default icon appearing behind the smooth overlays
 	if(baseturf == /turf/space)
 		GLOB.starlight += src
 	QUEUE_SMOOTH(src)
 
+/turf/simulated/floor/transparent/glass/update_multiz_render()
+	var/turf/previously_rendered_turf = multiz_rendered_below
+	update_multiz_contents(get_turf_below(src))
+	if(previously_rendered_turf != multiz_rendered_below)
+		update_multiz_lighting_sources(src)
+	if(multiz_underlay)
+		underlays -= multiz_underlay
+		multiz_underlay = null
+	// A linked lower level is visible through the glass, so only draw the space backdrop without one.
+	if(get_turf_below(src))
+		return
+	if(is_mining_level(z) && SSmapping.lavaland_theme?.primary_turf_type_icon)
+		multiz_underlay = image(SSmapping.lavaland_theme.primary_turf_type_icon, src, "windowed")
+	else
+		multiz_underlay = image('icons/turf/space.dmi', src, SPACE_ICON_STATE)
+		multiz_underlay.plane = PLANE_SPACE
+	multiz_underlay.layer = PLATING_LAYER
+	underlays += multiz_underlay
 /turf/simulated/floor/transparent/glass/welder_act(mob/user, obj/item/I)
 	if(!broken && !burnt)
 		return
