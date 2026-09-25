@@ -183,6 +183,15 @@
 		for(var/obj/O in model.contents)
 			if(QDELETED(O))
 				continue
+			// Multi-tile objects (wide doors, wide windows, etc.) are
+			// registered in the contents of EVERY turf they visually
+			// overlap, not just the one they actually live on. Without
+			// this check, each such object would be written once per
+			// overlapped turf - loading the .dmm would then spawn a
+			// separate instance from each entry, producing duplicates.
+			// Only write the object when we're processing its HOME turf.
+			if(O.loc != model)
+				continue
 
 			obj_template += "[O.type][check_attributes(O,use_json=use_json)],"
 
