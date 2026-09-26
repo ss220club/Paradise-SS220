@@ -9,6 +9,13 @@
 	/// Target light range
 	var/aurora_light_range = 4
 
+	// SS220 EDIT START
+	// --- ПЕРЕМЕННЫЕ ДЛЯ БЕЗОПАСНОЙ ПАКЕТНОЙ ОЧИСТКИ ---
+	var/list/cleanup_list
+	var/cleanup_index = 1
+	var/cleanup_timer_id
+	// SS220 EDIT END
+
 /datum/event/aurora_caelus/announce(false_alarm)
 	. = ..()
 	GLOB.major_announcement.Announce(
@@ -33,12 +40,55 @@
 
 /datum/event/aurora_caelus/end()
 	. = ..()
-	for(var/turf/spess in GLOB.starlight)
-		fade_back(spess)
+	// SS220 EDIT
 	GLOB.major_announcement.Announce("The Aurora Caelus event is now ending. Starlight conditions will slowly return to normal. When this has concluded, please return to your workplace and continue work as normal. \n\nHave a pleasant shift, [station_name()], and thank you for watching with us.",
 		"Nanotrasen Meteorology Division",
 		'sound/misc/announce.ogg'
 	)
+	// SS220 EDIT START
+	// Запуск цепочки безопасной очистки
+	cleanup_list = GLOB.starlight.Copy()
+	cleanup_index = 1
+	cleanup_timer_id = addtimer(CALLBACK(src, PROC_REF(process_cleanup_batch)), 1, TIMER_STOPPABLE)
+
+/datum/event/aurora_caelus/proc/process_cleanup_batch()
+	// Сбрасываем ID, так как таймер уже сработал и не является зацикленным.
+	// Это гарантирует, что если Destroy() вызовется во время сна (CHECK_TICK),
+	// он не попытается удалить уже выполнившийся таймер.
+	cleanup_timer_id = null
+
+	if(!cleanup_list)
+		return
+
+	var/list/local_cleanup = cleanup_list
+	var/batch_size = 2000
+	var/processed = 0
+	var/list_length = length(local_cleanup) // Кэшируем длину для микро-оптимизации
+
+	while(cleanup_index <= list_length && processed < batch_size)
+		var/turf/spess = local_cleanup[cleanup_index]
+		cleanup_index++
+
+		// ДОБАВЛЕНО: !spess на случай, если список уменьшился и по индексу вернулся null
+		if(!spess || QDELETED(spess))
+			continue
+
+		spess.set_light(initial(spess.light_range), initial(spess.light_power), initial(spess.light_color))
+		if(isspaceturf(spess))
+			var/turf/space/S = spess
+			S.update_starlight()
+
+		processed++
+		CHECK_TICK // Безопасно уступаем время серверу прямо внутри heavy-цикла
+
+	// Проверяем, не был ли ивент удален админами во время сна (CHECK_TICK)
+	if(!cleanup_list || cleanup_index > list_length)
+		cleanup_list = null
+	else
+		// Планируем следующий батч ТОЛЬКО после полного завершения текущего.
+		// Это физически исключает каскадное размножение таймеров (Race Condition).
+		cleanup_timer_id = addtimer(CALLBACK(src, PROC_REF(process_cleanup_batch)), 1, TIMER_STOPPABLE)
+// SS220 EDIT END
 
 /datum/event/aurora_caelus/proc/start_music()
 	for(var/mob/M in GLOB.player_list)
@@ -47,15 +97,11 @@
 		if(M.client.prefs.sound & SOUND_MIDI)
 			M.playsound_local(M, 'sound/ambience/aurora_caelus.ogg', 20, FALSE, pressure_affected = FALSE)
 
-/datum/event/aurora_caelus/proc/fade_back(turf/spess, target_light_range = 2, target_light_power = 2)
-	if(!isspaceturf(spess))
-		target_light_range = initial(spess.light_range)
-		target_light_power = initial(spess.light_power)
-	if(spess.light_range > target_light_range)
-		spess.set_light(spess.light_range - 0.2, target_light_power)
-		addtimer(CALLBACK(src, PROC_REF(fade_back), spess), 3 SECONDS)
-		return
-	spess.set_light(initial(spess.light_range), initial(spess.light_power), initial(spess.light_color))
-	if(isspaceturf(spess))
-		var/turf/space/spess_turf = spess
-		spess_turf.update_starlight()
+// SS220 EDIT START
+/datum/event/aurora_caelus/Destroy()
+	if(cleanup_timer_id)
+		deltimer(cleanup_timer_id)
+		cleanup_timer_id = null
+	cleanup_list = null // Это прервёт цикл в process_cleanup_batch, если он сейчас спит
+	return ..()
+// SS220 EDIT END
