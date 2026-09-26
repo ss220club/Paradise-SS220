@@ -70,6 +70,9 @@
 	icon_state = "engi"
 	request_console_name = "Atmospherics"
 
+/area/station/engineering/engine/reactor
+	name = "Ядерный Реактор"
+
 /area/station/engineering/utility
 	name = "Инженерная Подсобка"
 	icon_state = "engimaint"
@@ -84,6 +87,19 @@
 	name = "Хранилище Атмосферного Отдела"
 	icon_state = "atmos"
 	request_console_name = "Atmospherics"
+
+/area/station/engineering/atmos/hardsuitstorage
+	name = "Атмосферный Склад ВКД"
+	icon_state = "atmos"
+	area_icon_text = "ATMOS"
+	request_console_flags = RC_ASSIST | RC_SUPPLY
+
+/area/station/engineering/atmos/equipmentstorage
+	name = "Атмосферный Склад Снаряжения"
+	icon_state = "atmos"
+	area_icon_text = "ATMOS\nLOCKER"
+	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+	request_console_flags = RC_ASSIST | RC_SUPPLY
 
 /area/mine/outpost/smith_workshop
 	request_console_name = "Smith"
