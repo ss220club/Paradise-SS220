@@ -1,25 +1,18 @@
-/obj/item/reagent_containers/drinks/bottle
-	var/broken_bottle_icon = 'icons/obj/drinks.dmi'
-
 /obj/item/reagent_containers/drinks/drinkingglass
 	name = "drinking glass"
 
 /obj/item/reagent_containers/drinks/drinkingglass/on_reagent_change()
-	. = ..()
-	if(!reagents.reagent_list.len)
-		icon = initial(icon)
-		return
+	icon = initial(icon)
 	var/datum/reagent/reagent = reagents.get_master_reagent()
-	if(!istype(reagent, /datum/reagent/consumable))
-		icon = initial(icon)
-	else
+	if(istype(reagent, /datum/reagent/consumable) && reagent.drink_icon)
 		var/datum/reagent/consumable/drink = reagent
 		icon = drink.drinking_glass_icon
-	if(!reagent.drink_icon)
+	. = ..()
+	if(!reagent?.drink_icon)
 		icon_state = "glass_empty"
 
 /datum/reagent/consumable
-	var/drinking_glass_icon = 'icons/obj/drinks.dmi'
+	var/drinking_glass_icon = 'icons/obj/drinks/drinkingglass.dmi'
 
 /obj/machinery/chem_dispenser/beer/Initialize(mapload)
 	dispensable_reagents |= "sambuka"
@@ -1033,7 +1026,6 @@
 	is_glass = FALSE
 	gender = PLURAL
 	list_reagents = list("carrotjuice" = 50)
-	broken_bottle_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 
 /obj/machinery/economy/vending/boozeomat/Initialize(mapload)
 	products += list(/obj/item/reagent_containers/drinks/bottle/carrotjuice = 2)

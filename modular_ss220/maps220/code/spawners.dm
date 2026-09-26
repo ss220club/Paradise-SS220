@@ -174,7 +174,7 @@
 	icon_state = "drinks"
 
 /obj/item/reagent_containers/drinks/bottle/random_drink/Initialize(mapload)
-	icon = 'icons/obj/drinks.dmi'
+	icon = 'icons/obj/drinks/bottles.dmi'
 	. = ..()
 
 /obj/effect/spawner/random/hostile_fauna
