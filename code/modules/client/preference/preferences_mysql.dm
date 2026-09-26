@@ -23,18 +23,19 @@
 		clientfps = text2num(query.item[15])
 		atklog = text2num(query.item[16])
 		fuid = text2num(query.item[17])
-		parallax = text2num(query.item[18])
-		_2fa_status = query.item[19]
-		screentip_mode = query.item[20]
-		screentip_color = query.item[21]
-		ghost_darkness_level = query.item[22]
-		colourblind_mode = query.item[23]
-		keybindings = init_keybindings(raw = query.item[24])
-		server_region = query.item[25]
-		raw_muted_admins = query.item[26]
-		viewrange = query.item[27]
-		raw_fptp = query.item[28]
-		toggles3 = text2num(query.item[29])
+		donor_chat_effect = query.item[18] // SS220 EDIT - Градиент сикея в ООС
+		parallax = text2num(query.item[19])
+		_2fa_status = query.item[20]
+		screentip_mode = query.item[21]
+		screentip_color = query.item[22]
+		ghost_darkness_level = query.item[23]
+		colourblind_mode = query.item[24]
+		keybindings = init_keybindings(raw = query.item[25])
+		server_region = query.item[26]
+		raw_muted_admins = query.item[27]
+		viewrange = query.item[28]
+		raw_fptp = query.item[29]
+		toggles3 = text2num(query.item[30])
 
 	lastchangelog_2 = lastchangelog // Clone please
 
@@ -53,6 +54,7 @@
 	clientfps = sanitize_integer(clientfps, 0, 1000, initial(clientfps))
 	atklog = sanitize_integer(atklog, 0, 100, initial(atklog))
 	fuid = sanitize_integer(fuid, 0, 10000000, initial(fuid))
+	donor_chat_effect = sanitize_inlist(donor_chat_effect, list("None", "Metal", "Glowing"), initial(donor_chat_effect))
 	parallax = sanitize_integer(parallax, 0, 16, initial(parallax))
 	screentip_mode = sanitize_integer(screentip_mode, 0, 20, initial(screentip_mode))
 	screentip_color = sanitize_hexcolor(screentip_color, initial(screentip_color))
@@ -107,6 +109,7 @@
 		volume_mixer=:volume_mixer,
 		lastchangelog=:lastchangelog,
 		clientfps=:clientfps,
+		donor_chat_effect=:donor_chat_effect,
 		parallax=:parallax,
 		2fa_status=:_2fa_status,
 		screentip_mode=:screentip_mode,
@@ -137,6 +140,7 @@
 			"volume_mixer" = serialize_volume_mixer(volume_mixer),
 			"lastchangelog" = lastchangelog,
 			"clientfps" = clientfps,
+			"donor_chat_effect" - donor_chat_effect,
 			"parallax" = parallax,
 			"_2fa_status" = _2fa_status,
 			"screentip_mode" = screentip_mode,

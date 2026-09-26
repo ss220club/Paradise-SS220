@@ -111,6 +111,14 @@ class ChatRenderer {
     /** @type {HTMLElement} */
     this.loaded = false;
     /** @type {HTMLElement} */
+    // SS220 EDIT START -  Переменные tooltip
+    this.tooltipNode = null;
+    /** @type {HTMLElement} */
+    this.tooltipTarget = null;
+    /** @type {number|null} */
+    this.tooltipHideTimeout = null;
+    /** @type {HTMLElement} */
+    // SS220 EDIT END
     this.rootNode = null;
     this.queue = [];
     this.messages = [];
@@ -452,6 +460,7 @@ class ChatRenderer {
             FORBID_TAGS: blacklisted_tags,
             ALLOW_UNKNOWN_PROTOCOLS: true,
           });
+          this.setupTooltips(node); // SS220 EDIT - указатель на tooltip-img
         } else {
           logger.error('Error: message is missing text payload', message);
         }
@@ -659,6 +668,135 @@ class ChatRenderer {
     const timestamp = new Date().toISOString().substring(0, 19).replace(/[-:]/g, '').replace('T', '-');
     Byond.saveBlob(blob, `ss13-paradise-chatlog-${timestamp}.html`, '.html');
   }
+
+  // SS220 EDIT START - логика tooltip
+  createTooltip() {
+    if (this.tooltipNode) {
+      return this.tooltipNode;
+    }
+
+    const tooltip = document.createElement('div');
+
+    tooltip.className = 'Chat__tooltip';
+
+    tooltip.style.position = 'absolute';
+    tooltip.style.visibility = 'hidden';
+    tooltip.style.opacity = '0';
+    tooltip.style.pointerEvents = 'none';
+
+    this.rootNode.appendChild(tooltip);
+
+    this.tooltipNode = tooltip;
+
+    return tooltip;
+  }
+
+  showTooltip(target) {
+    if (!target || !this.rootNode) {
+      return;
+    }
+
+    const text = target.getAttribute('data-tooltip');
+
+    if (!text) {
+      return;
+    }
+
+    if (this.tooltipHideTimeout) {
+      clearTimeout(this.tooltipHideTimeout);
+      this.tooltipHideTimeout = null;
+    }
+
+    const tooltip = this.createTooltip();
+
+    this.tooltipTarget = target;
+
+    tooltip.textContent = text;
+
+    tooltip.style.visibility = 'hidden';
+    tooltip.style.opacity = '0';
+    tooltip.style.left = '0px';
+    tooltip.style.top = '0px';
+
+    requestAnimationFrame(() => {
+      if (this.tooltipTarget !== target) {
+        return;
+      }
+
+      const chatRect = this.rootNode.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+
+      const padding = 8;
+      const gap = 7;
+
+      let left = targetRect.left - chatRect.left + targetRect.width / 2 - tooltipRect.width / 2;
+
+      let top = targetRect.top - chatRect.top - tooltipRect.height - gap;
+
+      const minLeft = padding;
+
+      const maxLeft = chatRect.width - tooltipRect.width - padding;
+
+      if (maxLeft < minLeft) {
+        left = minLeft;
+        tooltip.style.maxWidth = `${Math.max(0, chatRect.width - padding * 2)}px`;
+      } else {
+        left = Math.max(minLeft, Math.min(left, maxLeft));
+      }
+
+      if (top < padding) {
+        top = targetRect.bottom - chatRect.top + gap;
+      }
+
+      const maxTop = chatRect.height - tooltipRect.height - padding;
+
+      if (top > maxTop) {
+        top = Math.max(padding, maxTop);
+      }
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
+    });
+  }
+
+  hideTooltip() {
+    if (!this.tooltipNode) {
+      return;
+    }
+
+    this.tooltipTarget = null;
+
+    this.tooltipNode.style.opacity = '0';
+
+    this.tooltipHideTimeout = setTimeout(() => {
+      if (this.tooltipNode) {
+        this.tooltipNode.style.visibility = 'hidden';
+      }
+    }, 120);
+  }
+
+  setupTooltips(node) {
+    if (!node) {
+      return;
+    }
+
+    const tooltipNodes = node.querySelectorAll('.tooltip-img');
+
+    for (const tooltipNode of tooltipNodes) {
+      tooltipNode.addEventListener('mouseenter', () => {
+        this.showTooltip(tooltipNode);
+      });
+
+      tooltipNode.addEventListener('mouseleave', () => {
+        this.hideTooltip();
+      });
+    }
+  }
+  // SS220 EDIT END
 }
 
 // Make chat renderer global so that we can continue using the same

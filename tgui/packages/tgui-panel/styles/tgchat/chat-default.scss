@@ -809,3 +809,113 @@ span.body .coderesponses {
 .boxed_message.left_align_text {
   text-align: left;
 }
+
+// SS220 EDIT START - Градиент сикея в ООС и tooltip
+.Chat {
+  position: relative;
+}
+
+.tooltip-img {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: help;
+}
+
+.Chat__tooltip {
+  position: absolute;
+
+  padding: 5px 9px;
+
+  background: rgba(32, 34, 40, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 5px;
+
+  color: #eee;
+
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.3;
+
+  white-space: nowrap;
+  text-align: center;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+
+  z-index: 999999;
+
+  transition: opacity 0.12s ease;
+}
+
+@keyframes metalic-anim {
+  0%,
+  33% {
+    background-position-x: var(--metal-start);
+  }
+
+  100% {
+    background-position-x: var(--metal-end);
+  }
+}
+
+@mixin metalic() {
+  --metal-start: -6.69em;
+  --metal-end: 10em;
+  color: transparent !important;
+  background: linear-gradient(
+    90deg,
+    var(--stabilized-color) 0%,
+    hsl(from var(--stabilized-color) h s calc(l + 20)) 10%,
+    var(--stabilized-color) 20%
+  );
+  background-clip: text;
+  background-size: 220% 220%;
+  animation: metalic-anim 5s infinite linear;
+}
+
+@keyframes glowing-anim {
+  0% {
+    background-position: 0;
+  }
+
+  100% {
+    background-position-x: var(--glowing);
+  }
+}
+
+@mixin glowing() {
+  --glowing: 75px;
+  position: relative;
+  color: transparent !important;
+  background: linear-gradient(
+    to right,
+    var(--stabilized-color),
+    hsl(from var(--stabilized-color) calc(h + 15) s calc(l + 20)),
+    var(--stabilized-color)
+  );
+  background-clip: text;
+  background-size: var(--glowing) auto;
+  animation: glowing-anim 3s infinite linear;
+}
+
+.tier-3,
+.tier-4,
+.tier-5 {
+  --stabilized-color: oklch(from var(--shine-color) min(max(l, 0.33), 0.8) c h);
+}
+
+.metal {
+  &.tier-3,
+  &.tier-4,
+  &.tier-5 {
+    @include metalic();
+  }
+}
+
+.glowing {
+  &.tier-3,
+  &.tier-4,
+  &.tier-5 {
+    @include glowing();
+  }
+}
+// SS220 EDIT END

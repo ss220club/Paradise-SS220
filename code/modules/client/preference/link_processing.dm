@@ -791,6 +791,21 @@
 					if(user.client.donator_level > 0)
 						toggles ^= PREFTOGGLE_DONATOR_PUBLIC
 
+				// SS220 EDIT START - Выбор типа градиента в настройках
+				if("chat_effect")
+					if(user.client.donator_level > 0)
+						var/chat_effect_type = tgui_input_list(user, "Choose your chat style", "Donator chat effect",  list("None", "Metal", "Glowing"))
+						if(!chat_effect_type)
+							return
+						switch(chat_effect_type)
+							if("None")
+								donor_chat_effect = "None"
+							if("Metal")
+								donor_chat_effect = "Metal"
+							if("Glowing")
+								donor_chat_effect = "Glowing"
+				// SS220 EDIT END
+
 				if("gender")
 					var/newgender = tgui_input_list(user, "Who are you?", "Choose Gender", list("Male", "Female", "Genderless"))
 					if(!newgender)
