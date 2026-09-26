@@ -30,6 +30,8 @@
 
 	/// List used to store how much we're affecting corners.
 	var/list/datum/lighting_corner/effect_str
+	/// Corners receiving light through a linked transparent floor or open shaft.
+	var/list/datum/lighting_corner/multiz_attenuated_corners = list()
 
 	/// Whether we have applied our light yet or not.
 	var/applied = FALSE
@@ -112,6 +114,30 @@
 /datum/light_source/proc/vis_update()
 	EFFECT_UPDATE(LIGHTING_VIS_UPDATE)
 
+/// Recalculate nearby emitters when a vertical light aperture is added or removed.
+/proc/update_multiz_lighting_sources(turf/changed_turf)
+	if(!changed_turf || !world.time)
+		return
+	var/list/centers = list(changed_turf)
+	var/turf/below_turf = get_turf_below(changed_turf)
+	var/turf/above_turf = get_turf_above(changed_turf)
+	if(below_turf)
+		centers |= below_turf
+	if(above_turf)
+		centers |= above_turf
+	var/list/datum/light_source/sources_to_update = list()
+	for(var/turf/center as anything in centers)
+		for(var/turf/nearby_turf in view(10, center))
+			if(nearby_turf.light)
+				sources_to_update |= nearby_turf.light
+			for(var/atom/movable/nearby_atom in nearby_turf)
+				if(nearby_atom.light)
+					sources_to_update |= nearby_atom.light
+				for(var/datum/light_source/light_source as anything in nearby_atom.light_sources)
+					sources_to_update |= light_source
+	for(var/datum/light_source/light_source as anything in sources_to_update)
+		light_source.force_update()
+
 // Macro that applies light to a new corner.
 // It is a macro in the interest of speed, yet not having to copy paste it.
 // If you're wondering what's with the backslashes, the backslashes cause BYOND to not automatically end the line.
@@ -122,6 +148,7 @@
 #define APPLY_CORNER(C)							\
 	. = LUM_FALLOFF(C, pixel_turf);				\
 	. *= light_power;							\
+	. *= ((C in multiz_attenuated_corners) ? 0.35 : 1);	\
 	var/OLD = effect_str[C];					\
 												\
 	C.update_lumcount							\
@@ -223,6 +250,7 @@
 
 	var/list/datum/lighting_corner/corners = list()
 	var/list/turf/turfs = list()
+	multiz_attenuated_corners.Cut()
 	if(source_turf)
 		var/oldlum = source_turf.luminosity
 		source_turf.luminosity = CEILING(light_range, 1)
@@ -234,6 +262,29 @@
 				corners[T.lighting_corner_SE] = 0
 				corners[T.lighting_corner_SW] = 0
 				corners[T.lighting_corner_NW] = 0
+			if(!IS_OPAQUE_TURF(T))
+				var/turf/vertical_aperture
+				if(T.transparent_floor || isspaceturf(T))
+					if(!istype(T, /turf/space/transit))
+						vertical_aperture = get_turf_below(T)
+				if(!vertical_aperture)
+					var/turf/upper_turf = get_turf_above(T)
+					if(upper_turf && (upper_turf.transparent_floor || isspaceturf(upper_turf)) && !istype(upper_turf, /turf/space/transit))
+						vertical_aperture = upper_turf
+				if(vertical_aperture && !IS_OPAQUE_TURF(vertical_aperture))
+					if(!vertical_aperture.lighting_corners_initialised)
+						vertical_aperture.generate_missing_corners()
+					// Include the opposite floor's corners in this light source's
+					// footprint. Merely marking these corners attenuated is not
+					// enough: APPLY_CORNER only lights corners in `corners`.
+					corners[vertical_aperture.lighting_corner_NE] = 0
+					corners[vertical_aperture.lighting_corner_SE] = 0
+					corners[vertical_aperture.lighting_corner_SW] = 0
+					corners[vertical_aperture.lighting_corner_NW] = 0
+					multiz_attenuated_corners |= vertical_aperture.lighting_corner_NE
+					multiz_attenuated_corners |= vertical_aperture.lighting_corner_SE
+					multiz_attenuated_corners |= vertical_aperture.lighting_corner_SW
+					multiz_attenuated_corners |= vertical_aperture.lighting_corner_NW
 			turfs += T
 		source_turf.luminosity = oldlum
 

@@ -10,6 +10,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	var/slowdown = 0 //negative for faster, positive for slower
 	/// used to check if pipes should be visible under the turf or not
 	var/transparent_floor = FALSE
+	/// The lower-level turf currently displayed through this turf, if any.
+	var/turf/multiz_rendered_below
 
 	/// Set if the turf should appear on a different layer while in-game and map editing, otherwise use normal layer.
 	var/real_layer = TURF_LAYER
@@ -116,6 +118,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if(initialized)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	initialized = TRUE
+	update_z_plane()
 
 	if(layer == MAP_EDITOR_TURF_LAYER)
 		layer = real_layer
@@ -150,6 +153,10 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		directional_opacity = ALL_CARDINALS
 
 	initialize_milla()
+	update_multiz_render()
+	var/turf/above_turf = get_turf_above(src)
+	if(above_turf)
+		above_turf.update_multiz_render()
 	if(is_station_level(z))
 		GLOB.station_turfs += src
 
@@ -387,8 +394,29 @@ GLOBAL_LIST_EMPTY(station_turfs)
 			space_tile.update_starlight()
 
 	obscured = old_obscured
+	W.update_multiz_render()
+	var/turf/above_turf = get_turf_above(W)
+	if(above_turf)
+		above_turf.update_multiz_render()
 
 	return W
+
+/// Refresh visuals that depend on the turf directly below this one.
+/turf/proc/update_multiz_render()
+	var/turf/below_turf = get_turf_below(src)
+	if(!transparent_floor)
+		below_turf = null
+	update_multiz_contents(below_turf)
+
+/turf/proc/update_multiz_contents(turf/below_turf)
+	if(multiz_rendered_below == below_turf)
+		return
+	if(multiz_rendered_below && !QDELETED(multiz_rendered_below))
+		vis_contents -= multiz_rendered_below
+	multiz_rendered_below = null
+	if(below_turf)
+		multiz_rendered_below = below_turf
+		vis_contents |= below_turf
 
 /turf/proc/BeforeChange()
 	SHOULD_CALL_PARENT(TRUE)

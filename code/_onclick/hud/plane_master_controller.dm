@@ -88,3 +88,19 @@
 		LIGHTING_LAMPS_PLANE,
 		LIGHTING_LAMPS_GLARE
 		)
+
+/atom/movable/plane_master_controller/proc/get_plane_master(plane, z_offset = 0)
+	if(!owner_hud)
+		return null
+
+	var/actual_plane = GET_Z_PLANE(plane, z_offset)
+	return owner_hud.plane_masters["[actual_plane]"]
+
+/atom/movable/plane_master_controller/proc/set_z_plane_offset(offset)
+	for(var/plane in controlled_planes)
+		var/atom/movable/screen/plane_master/PM = controlled_planes[plane]
+
+		if(!PM)
+			continue
+
+		PM.set_z_plane_offset(offset)

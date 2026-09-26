@@ -897,6 +897,8 @@
 
 /client/proc/apply_clickcatcher()
 	generate_clickcatcher()
+	// Shift the click catcher below every rendered z-level so it only receives clicks on empty space.
+	void.plane = GET_Z_PLANE(CLICKCATCHER_PLANE, SSmapping.max_plane_offset + 1)
 	var/list/actualview = getviewsize(view)
 	void.UpdateGreed(actualview[1],actualview[2])
 

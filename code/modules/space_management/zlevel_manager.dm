@@ -41,6 +41,25 @@ GLOBAL_DATUM_INIT(space_manager, /datum/zlev_manager, new())
 		milla_init_z(k)
 		z_list["[i]"] = new /datum/space_level(i)
 	initialized = 1
+	update_multiz_plane_offsets()
+
+/// Build rendering offsets for connected vertical stacks. Lower levels receive larger offsets.
+/datum/zlev_manager/proc/update_multiz_plane_offsets()
+	SSmapping.z_level_plane_offsets = list()
+	SSmapping.max_plane_offset = 0
+	for(var/z_level in 1 to world.maxz)
+		// Use associative z keys: the world can grow while maps/ruins are loaded,
+		// and sparse or temporarily unregistered levels must still default to 0.
+		SSmapping.z_level_plane_offsets["[z_level]"] = 0
+	for(var/z_level in world.maxz to 2 step -1)
+		var/datum/space_level/upper_level = z_list["[z_level]"]
+		var/datum/space_level/lower_level = z_list["[z_level - 1]"]
+		if(!upper_level || !lower_level)
+			continue
+		if(upper_level.connects_down() && lower_level.connects_up())
+			var/lower_offset = min(SSmapping.z_level_plane_offsets["[z_level]"] + 1, SSmapping.station_floor_count - 1)
+			SSmapping.z_level_plane_offsets["[z_level - 1]"] = lower_offset
+			SSmapping.max_plane_offset = max(SSmapping.max_plane_offset, lower_offset)
 
 
 /datum/zlev_manager/proc/get_zlev(z)
@@ -116,6 +135,11 @@ GLOBAL_DATUM_INIT(space_manager, /datum/zlev_manager, new())
 	var/datum/space_level/S = new level_type(our_z, name, transition_type = linkage, traits = traits, transition_tag_ = transition_tag)
 	levels_by_name[name] = S
 	z_list["[our_z]"] = S
+	update_multiz_plane_offsets()
+	// The new datum is put in z_list after New() because New() itself may move
+	// landmarks onto this level. Refresh its holes now that vertical lookups work.
+	for(var/turf/space/space_turf as anything in Z_TURFS(our_z))
+		space_turf.update_multiz_render()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, name, linkage, traits, transition_tag, level_type, our_z)
 	return our_z
 

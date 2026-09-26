@@ -6,6 +6,16 @@
 	var/show_alpha = 255
 	var/hide_alpha = 0
 
+		/// Original plane before applying a Z-level rendering offset.
+	var/base_plane
+
+	/// Current Z-level rendering offset.
+	var/z_plane_offset = 0
+	/// Alpha remembered while this plane is hidden because it belongs to a higher floor.
+	var/multiz_saved_alpha
+	var/multiz_hidden = FALSE
+	var/multiz_managed = FALSE
+
 /atom/movable/screen/plane_master/proc/Show(override)
 	alpha = override || show_alpha
 
@@ -207,3 +217,19 @@
 	if(enabled)
 		add_filter("add_lamps_to_glare", 1, layering_filter(render_source = target_rendering, blend_mode = BLEND_ADD))
 		add_filter("lamps_glare", 1, radial_blur_filter(size = 0.035))
+
+/atom/movable/screen/plane_master/proc/set_z_plane_offset(offset)
+	if(isnull(base_plane))
+		base_plane = initial(plane)
+
+	z_plane_offset = offset
+	plane = GET_Z_PLANE(base_plane, offset)
+
+/atom/movable/screen/plane_master/proc/reset_z_plane_offset()
+	set_z_plane_offset(0)
+
+/atom/movable/screen/plane_master/Initialize(mapload)
+	. = ..()
+
+	base_plane = initial(plane)
+	z_plane_offset = 0

@@ -15,7 +15,7 @@
 	if((direction & EAST_WEST) >= EAST_WEST)
 		direction &= ~EAST_WEST
 
-	C.Move(get_step(src, direction), direction)
+	C.Move(get_step_multiz(src, direction), direction)
 
 #undef NORTH_SOUTH
 #undef EAST_WEST

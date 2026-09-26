@@ -54,6 +54,21 @@ SUBSYSTEM_DEF(mapping)
 	/// List of lists of turfs to reserve
 	var/list/lists_to_reserve = list()
 
+	/// Rendering plane offset for every Z-level.
+	///
+	/// Key: world Z
+	/// Value: rendering offset relative to the currently viewed Z-level.
+	///
+	/// This list describes the relative position of Z-levels in a multiz stack.
+	var/list/z_level_plane_offsets = list()
+	/// Deepest connected z-stack distance used to build matching plane masters.
+	var/max_plane_offset = 0
+	/// The station map defines the maximum number of rendered world strata.
+	var/station_floor_count = 1
+
+	/// list of traits and their associated z leves
+	var/list/z_trait_levels = list()
+
 // This has to be here because world/New() uses [station_name()], which looks this datum up
 /datum/controller/subsystem/mapping/PreInit()
 	. = ..()
@@ -348,13 +363,25 @@ SUBSYSTEM_DEF(mapping)
 
 	var/watch = start_watch()
 	log_startup_progress("Loading [map_datum.fluff_name]...")
+	var/list/station_bounds = GLOB.maploader.load_map(wrap_file(map_datum.map_path), x_offset = 1, y_offset = 1, z_offset = 1, measureOnly = TRUE)
+	var/station_min_map_z = station_bounds[MAP_MINZ]
+	var/station_max_map_z = station_bounds[MAP_MAXZ]
+	station_floor_count = station_max_map_z - station_min_map_z + 1
+	var/list/station_level_traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK)
+	if(station_floor_count > 1)
+		station_level_traits += ZTRAIT_UP
 	// This should always be Z2, but you never know
 	var/map_z_level = GLOB.space_manager.add_new_zlevel(
 		MAIN_STATION,
 		linkage = CROSSLINKED,
-		traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK),
+		traits = station_level_traits,
 		transition_tag = TRANSITION_TAG_SPACE
 	)
+	for(var/floor_number in 2 to station_floor_count)
+		var/list/floor_traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK, ZTRAIT_DOWN)
+		if(floor_number < station_floor_count)
+			floor_traits += ZTRAIT_UP
+		GLOB.space_manager.add_new_zlevel("[MAIN_STATION] Floor [floor_number]", linkage = UNAFFECTED, traits = floor_traits)
 	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
 	log_startup_progress("Loaded [map_datum.fluff_name] in [stop_watch(watch)]s")
 
@@ -538,3 +565,25 @@ SUBSYSTEM_DEF(mapping)
 /// Schedules a group of turfs to be handed back to the reservation system's control
 /datum/controller/subsystem/mapping/proc/unreserve_turfs(list/turfs)
 	lists_to_reserve += list(turfs)
+
+/datum/controller/subsystem/mapping/proc/get_z_plane_offset(source_z, viewer_z)
+	if(!source_z || !viewer_z)
+		return 0
+
+	var/datum/space_level/source_level = GLOB.space_manager.get_zlev(source_z)
+	var/datum/space_level/viewer_level = GLOB.space_manager.get_zlev(viewer_z)
+	if(!source_level || !viewer_level)
+		return 0
+
+	var/source_offset = z_level_plane_offsets?["[source_level.zpos]"]
+	var/viewer_offset = z_level_plane_offsets?["[viewer_level.zpos]"]
+	if(isnull(source_offset) || isnull(viewer_offset))
+		return 0
+	return source_offset - viewer_offset
+
+/datum/controller/subsystem/mapping/proc/get_atom_plane(atom/A, base_plane, viewer_z)
+	if(!A || !A.z || !viewer_z)
+		return base_plane
+
+	var/offset = get_z_plane_offset(A.z, viewer_z)
+	return GET_Z_PLANE(base_plane, offset)
