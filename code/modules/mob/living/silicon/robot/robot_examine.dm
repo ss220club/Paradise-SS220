@@ -34,17 +34,20 @@
 	if(cell && cell.charge <= 0)
 		msg += "[SPAN_WARNING("[ru_p_them(TRUE)] индикатор батареи мигает красным!")]\n"
 
-	switch(stat)
-		if(CONSCIOUS)
-			if(!client)
-				msg += "Похоже что [ru_p_they()] в режиме ожидания.\n" //afk
-		if(UNCONSCIOUS)
-			msg += "[SPAN_WARNING("[ru_p_them(TRUE)] система переведена в спящий режим.")]\n"
-		if(DEAD)
-			if(!suiciding)
-				msg += "[SPAN_DEADSAY("Похоже что [ru_p_them()] внутренние системы нуждаются в углубленном ремонте по замене компонентов.")]\n"
-			else
-				msg += "[SPAN_WARNING("Похоже что [ru_p_them()] система критически повреждена. Надежды на восстановление работоспособности нет.")]\n"
+	if(shell)
+		msg += "It appears to be an [deployed ? "active" : "empty"] AI shell.\n"
+	else
+		switch(stat)
+			if(CONSCIOUS)
+				if(!client)
+					msg += "Похоже что [ru_p_they()] в режиме ожидания.\n" //afk
+			if(UNCONSCIOUS)
+				msg += "[SPAN_WARNING("[ru_p_them(TRUE)] система переведена в спящий режим.")]\n"
+			if(DEAD)
+				if(!suiciding)
+					msg += "[SPAN_DEADSAY("Похоже что [ru_p_them()] внутренние системы нуждаются в углубленном ремонте по замене компонентов.")]\n"
+				else
+					msg += "[SPAN_WARNING("Похоже что [ru_p_them()] система критически повреждена. Надежды на восстановление работоспособности нет.")]\n"
 	msg += "</span>"
 
 	if(print_flavor_text())

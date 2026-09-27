@@ -77,42 +77,66 @@
 	var/mode = DETAILED_HEALTH_SCAN
 	/// Is the health analyzer upgraded? Allows reagents in the body to be seen.
 	var/advanced = FALSE
+	new_attack_chain = TRUE
 
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Используйте [src.declent_ru(ACCUSATIVE)] в руке чтобы включить детализацию повреждений.")
 
-/obj/item/healthanalyzer/attack_self__legacy__attackchain(mob/user)
+/obj/item/healthanalyzer/activate_self(mob/user)
+	if(..())
+		return ITEM_INTERACT_COMPLETE
 	mode = !mode
+	add_fingerprint(user)
 	switch(mode)
 		if(DETAILED_HEALTH_SCAN)
 			to_chat(user, SPAN_NOTICE("Теперь [src.declent_ru(NOMINATIVE)] показывает повреждения каждой конечности."))
 		if(SIMPLE_HEALTH_SCAN)
 			to_chat(user, SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] больше не показывает повреждения каждой конечности."))
+	return ITEM_INTERACT_COMPLETE
 
-/obj/item/healthanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/user)
+/obj/item/healthanalyzer/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(!ismob(target))
+		return ..()
+
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		var/list/msgs = list()
-		user.visible_message(SPAN_WARNING("[user] анализирует жизненные показатели пола!"), SPAN_NOTICE("Вы по глупости пытаетесь проанализировать жизненные показатели пола!"))
+		user.visible_message(
+			SPAN_WARNING("[user] анализирует жизненные показатели пола!"),
+			SPAN_WARNING("Вы по глупости пытаетесь проанализировать жизненные показатели пола!")
+		)
 		msgs += SPAN_NOTICE("Анализ результатов для пола:\nОбщее состояние: Здоровый")
 		msgs += SPAN_NOTICE("Основные: <font color='blue'>Удушье</font>/<font color='green'>Токсины</font>/<font color='#FFA500'>Ожоги</font>/<font color='red'>Ушибы</font>")
 		msgs += SPAN_NOTICE("Детализация повреждений: <font color='blue'>0</font> - <font color='green'>0</font> - <font color='#FFA500'>0</font> - <font color='red'>0</font>")
 		msgs += SPAN_NOTICE("Температура тела: ???")
 		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
-		return
+		add_fingerprint(user)
+		return ITEM_INTERACT_COMPLETE
 
 	user.visible_message(
-		SPAN_NOTICE("[user] анализирует жизненные показатели [M.declent_ru(GENITIVE)]."),
-		SPAN_NOTICE("Вы анализируете жизненные показатели [M.declent_ru(GENITIVE)].")
+		SPAN_NOTICE("[user] анализирует жизненные показатели [target.declent_ru(GENITIVE)]."),
+		SPAN_NOTICE("Вы анализируете жизненные показатели [target.declent_ru(GENITIVE)].")
 	)
-	healthscan(user, M, mode, advanced)
+	healthscan(user, target, mode, advanced)
 	add_fingerprint(user)
+	return ITEM_INTERACT_COMPLETE
 
 // Used by the PDA medical scanner too.
 /proc/healthscan(mob/user, mob/living/M, mode = DETAILED_HEALTH_SCAN, advanced = FALSE)
 	var/list/msgs = list()
 
-	var/scanned_name = "[M.declent_ru(GENITIVE)]"
+	var/scanned_name = "[M]"
+
+	// These sensors are designed for organic life.
+	if(!ismob(M) || issilicon(M) || ismachineperson(M) || (HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5)))
+		msgs += SPAN_NOTICE("Analyzing Results for ERROR:\nOverall Status: ERROR")
+		msgs += "Key: [SPAN_HEALTHSCAN_OXY("Suffocation")]/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>"
+		msgs += "Damage Specifics: [SPAN_HEALTHSCAN_OXY("?")] - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
+		msgs += SPAN_NOTICE("Body Temperature: [ismob(M) ? M.bodytemperature-T0C : "ERROR"]&deg;C ([ismob(M) ? M.bodytemperature*1.8-459.67 : "ERROR"]&deg;F)")
+		msgs += SPAN_WARNING("<b>Warning: Blood Level ERROR: --% --cl.</span><span class='notice'>Type: ERROR")
+		msgs += SPAN_NOTICE("Subject's pulse: <font color='red'>-- bpm.</font>")
+		to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
+		return ITEM_INTERACT_COMPLETE
 
 	var/probably_dead = (M.stat == DEAD)
 
@@ -123,7 +147,7 @@
 	if(HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(10) && IS_HORIZONTAL(M))
 		probably_dead = TRUE
 
-	if(isanimal_or_basicmob(M))
+	if(!ishuman(M))
 		// No box here, keep it simple.
 		if(probably_dead)
 			to_chat(user, SPAN_NOTICE("Анализ результатов для [M.declent_ru(GENITIVE)]:\nОбщее состояние: <font color='red'>Мёртв</font>"))
@@ -220,11 +244,11 @@
 	if(H.undergoing_cardiac_arrest())
 		var/datum/organ/heart/heart = H.get_int_organ_datum(ORGAN_DATUM_HEART)
 		if(heart && !(heart.linked_organ.status & ORGAN_DEAD))
-			msgs += "<span class='notice'><font color='red'><b>Сердце пациента остановилось.</b>\nМетод лечения: Электрический шок</font>"
+			msgs += SPAN_NOTICE("<font color='red'><b>Сердце пациента остановилось.</b>\nМетод лечения: Электрический шок</font>")
 		else if(heart && (heart.linked_organ.status & ORGAN_DEAD))
-			msgs += "<span class='notice'><font color='red'><b>Зафиксирован некроз сердца субъекта.</b></font>"
+			msgs += SPAN_NOTICE("<font color='red'><b>Зафиксирован некроз сердца субъекта.</b></font>")
 		else if(!heart)
-			msgs += "<span class='notice'><font color='red'><b>Субъект не имеет сердца.</b></font>"
+			msgs += SPAN_NOTICE("<font color='red'><b>Субъект не имеет сердца.</b></font>")
 
 	if(H.getStaminaLoss() || HAS_TRAIT(user, TRAIT_MED_MACHINE_HALLUCINATING) && prob(5))
 		msgs += SPAN_NOTICE("Субъект страдает от переутомления.")
@@ -338,23 +362,25 @@
 
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 
-/obj/item/healthanalyzer/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(!istype(I, /obj/item/healthupgrade))
+/obj/item/healthanalyzer/item_interaction(mob/user, obj/item/used, list/modifiers)
+	if(!istype(used, /obj/item/healthupgrade))
 		return ..()
 
 	if(advanced)
 		to_chat(user, SPAN_NOTICE("[capitalize(src.declent_ru(NOMINATIVE))] уже улучшен."))
-		return
+		return ITEM_INTERACT_COMPLETE
 
-	if(!user.unequip(I))
+	if(!user.unequip(used))
 		to_chat(user, SPAN_WARNING("[src.declent_ru(NOMINATIVE)] застрял в вашей руке!"))
-		return
+		return ITEM_INTERACT_COMPLETE
 
 	to_chat(user, SPAN_NOTICE("Вы установили улучшение на [src.declent_ru(ACCUSATIVE)]."))
 	icon_state = "health2"
-	playsound(loc, I.usesound, 50, TRUE)
+	playsound(loc, used.usesound, 50, TRUE)
 	advanced = TRUE
-	qdel(I)
+	qdel(used)
+	add_fingerprint(user)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/healthanalyzer/advanced
 	name = "advanced health analyzer"

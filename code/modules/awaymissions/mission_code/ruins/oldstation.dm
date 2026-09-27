@@ -469,6 +469,8 @@
 /area/ruin/ancientstation/proto
 	name = "Станция Тета - Хранилище Прототипов"
 	icon_state = "scilab"
+	area_icon_text = "SCI\nLAB"
+	area_icon_color = AREA_COLOR_SCIENCE
 
 /area/ruin/ancientstation/rnd
 	name = "Станция Тета - Отдел Исследований"
@@ -476,7 +478,9 @@
 
 /area/ruin/ancientstation/hivebot
 	name = "Материнский Корабль Дронов"
-	icon_state = "teleporter"
+	icon_state = "hivebot"
+	area_icon_text = "HIVEBOT"
+	area_icon_color = AREA_COLOR_SECURITY
 	requires_power = FALSE
 
 // MARK: LORE CONSOLES

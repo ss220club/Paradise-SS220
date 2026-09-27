@@ -118,6 +118,7 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "rsh12"
+	inhand_icon_state = "rsh12"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_rsh12.ogg'
 
 /obj/item/gun/projectile/revolver/reclinable/rsh12/attackby__legacy__attackchain(obj/item/A, mob/user, params)

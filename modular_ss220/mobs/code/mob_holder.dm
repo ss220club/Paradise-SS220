@@ -6,26 +6,29 @@
 	origin_tech = "biotech=2"
 	slot_flags = ITEM_SLOT_HEAD
 
-/obj/item/holder/attack__legacy__attackchain(mob/living/target, mob/living/user, def_zone)
+/obj/item/holder/attack(mob/living/target, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
+
 	ASSERT(length(contents) > 0)
 	var/mob/living/animal = contents[1]
 	var/mob/living/carbon/devourer = target
 	if(!istype(animal) || !istype(devourer))
-		return ..()
+		return FINISH_ATTACK
 
 	if(user.a_intent != INTENT_HARM)
-		return ..()
+		return FINISH_ATTACK
 
 	if(!is_type_in_list(animal,  devourer.dna.species.allowed_consumed_mobs))
 		if(user != devourer)
 			to_chat(user, SPAN_NOTICE("Вряд ли это понравится [devourer]..."))
 		else if(ishuman(devourer))
 			to_chat(user, SPAN_NOTICE("Интересно, каков на вкус [animal]? Но проверять не будем."))
-		return
+		return FINISH_ATTACK
 
 	if(!user.canUnEquip(src, FALSE))
 		to_chat(user, SPAN_NOTICE("[src] никак не отлипает от руки!"))
-		return
+		return FINISH_ATTACK
 
 	if(user != devourer)
 		visible_message(SPAN_DANGER("[user] пытается скормить [devourer] [animal]!"))
@@ -33,7 +36,7 @@
 		visible_message(SPAN_DANGER("[user] пытается съесть [animal]!"))
 
 	if(!do_after(user, 3 SECONDS, target = devourer))
-		return
+		return FINISH_ATTACK
 
 	visible_message(SPAN_DANGER("[devourer] съедает [animal]!"))
 	if(animal.mind)
@@ -56,6 +59,7 @@
 	LAZYADD(devourer.stomach_contents, animal)
 	icon = null // workaround to hide cringy holder lying on the floor for 1 sec
 	user.drop_item()
+	return FINISH_ATTACK
 
 /mob/living/simple_animal/attack_by(obj/item/attacking, mob/living/user, params)
 	if(..())

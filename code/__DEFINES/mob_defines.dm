@@ -327,6 +327,16 @@
 #define HEALTH_HUD_OVERRIDE_CRIT 1
 #define HEALTH_HUD_OVERRIDE_DEAD 2
 #define HEALTH_HUD_OVERRIDE_HEALTHY 3
+
+// Defines icon states used in `/mob/living/carbon/human/proc/handle_nutrition_alerts` to override nutrition status.
+#define NUTRITION_HUD_OVERRIDE_NONE null
+#define NUTRITION_HUD_OVERRIDE_FAT "fat"
+#define NUTRITION_HUD_OVERRIDE_FULL "full"
+#define NUTRITION_HUD_OVERRIDE_WELL_FED "well_fed"
+#define NUTRITION_HUD_OVERRIDE_FED "fed"
+#define NUTRITION_HUD_OVERRIDE_HUNGRY "hungry"
+#define NUTRITION_HUD_OVERRIDE_STARVING "starving"
+
 // Eye protection
 #define FLASH_PROTECTION_VERYVUNERABLE -4
 #define FLASH_PROTECTION_EXTRA_SENSITIVE -2
@@ -442,3 +452,8 @@
 #define GHOST_FLAGS_NO_REENTER (GHOST_FLAGS_DEFAULT & ~GHOST_CAN_REENTER)
 #define GHOST_FLAGS_NO_RESPAWNABLE (GHOST_FLAGS_DEFAULT & ~GHOST_RESPAWNABLE)
 #define GHOST_FLAGS_OBSERVE_ONLY (GHOST_FLAGS_DEFAULT & ~(GHOST_CAN_REENTER | GHOST_RESPAWNABLE))
+
+/// Acts as a default faction for most violent creatures
+#define FACTION_HOSTILE "hostile"
+/// Acts as a default faction for most peaceful creatures
+#define FACTION_NEUTRAL "neutral"

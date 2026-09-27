@@ -17,7 +17,9 @@
 				msg += "<B>Оболочка расплавлена и искажена от тепла!</B>\n"
 		if(src.stat == UNCONSCIOUS)
 			msg += "Оно не отвечает и высвечивает текст: \"RUNTIME: Перегрузка сенсоров, стэк 26/3\".\n"
-		if(!shunted && !client)
+		if(deployed_shell)
+			msg += "The wireless networking light is blinking.\n"
+		if(!shunted && !client && !deployed_shell) // An AI deployed to a shell will always lack a client, but also have a client just in another body.
 			msg += "[src]Core.exe перестал отвечать! NTOS ищет решение проблемы...\n"
 		msg += "</span>"
 	msg += "</span>"

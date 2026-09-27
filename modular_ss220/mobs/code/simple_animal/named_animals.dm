@@ -34,7 +34,7 @@
 	name = "Коммандор Клакки"
 	desc = "Его великая армия бесчисленна. Ко-ко-ко."
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
-	unique_pet = TRUE
+
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 40 // Veteran
 	health = 40
@@ -142,7 +142,7 @@
 	icon_harm = "possum_poppy_aaa"
 	maxHealth = 50
 	health = 50
-	unique_pet = TRUE
+
 	gold_core_spawnable = NO_SPAWN
 	holder_type = /obj/item/holder/possum/poppy
 
@@ -152,7 +152,7 @@
 	desc = "Это Среда, мои чуваки!"
 	maxHealth = 20
 	health = 20
-	unique_pet = TRUE
+
 	gold_core_spawnable = NO_SPAWN
 
 /mob/living/basic/nian_caterpillar/senior

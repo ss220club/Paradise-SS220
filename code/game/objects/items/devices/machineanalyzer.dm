@@ -11,6 +11,7 @@
 	throw_range = 10
 	origin_tech = "magnets=1;biotech=1"
 	materials = list(MAT_METAL = 300, MAT_GLASS = 200)
+	new_attack_chain = TRUE
 
 /obj/item/robotanalyzer/proc/handle_clumsy(mob/living/user)
 	var/list/msgs = list()
@@ -21,15 +22,28 @@
 	msgs += SPAN_NOTICE("Температура шасси: ???")
 	to_chat(user, chat_box_healthscan(msgs.Join("<br>")))
 
-/obj/item/robotanalyzer/attack_obj__legacy__attackchain(obj/machinery/M, mob/living/user) // Scanning a machine object
-	if(!ismachinery(M))
-		return
+/obj/item/robotanalyzer/interact_with_atom(atom/target, mob/living/user, list/modifiers) // Scanning a machine object.
+	if(!ismachinery(target) && !ismob(target))
+		return ..()
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
-		return
-	user.visible_message(SPAN_NOTICE("[user] анализирует компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."), SPAN_NOTICE("Вы анализируете компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."))
-	machine_scan(user, M)
+		return ITEM_INTERACT_COMPLETE
+	if(ismachinery(target))
+		user.visible_message(
+			SPAN_NOTICE("[user] анализирует компоненты [target.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."),
+			SPAN_NOTICE("Вы анализируете компоненты [target.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)].")
+		)
+		machine_scan(user, target)
+		add_fingerprint(user)
+		return ITEM_INTERACT_COMPLETE
+
+	user.visible_message(
+		SPAN_NOTICE("[user] has analyzed [target]'s components with [src]."),
+		SPAN_NOTICE("You analyze [target]'s components with [src].")
+	)
+	robot_healthscan(user, target)
 	add_fingerprint(user)
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/robotanalyzer/proc/machine_scan(mob/user, obj/machinery/M)
 	if(M.obj_integrity == M.max_integrity)
@@ -39,13 +53,15 @@
 	if(M.stat & BROKEN) // Displays alongside above message. Machines with a "broken" state do not become broken at 0% HP - anything that reaches that point is destroyed
 		to_chat(user, SPAN_WARNING("Дополнительный анализ: Обнаружен полный отказ компонента! Требуется полная реконструкция [M.declent_ru(GENITIVE)] для ремонта."))
 
-/obj/item/robotanalyzer/attack__legacy__attackchain(mob/living/M, mob/living/user) // Scanning borgs, IPCs/augmented crew, and AIs
+/obj/item/robotanalyzer/attack(mob/living/target, mob/living/user, params) // Scanning borgs, IPCs/augmented crew, and AIs
+	..()
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || user.getBrainLoss() >= 60) && prob(50))
 		handle_clumsy(user)
-		return
-	user.visible_message(SPAN_NOTICE("[user] анализирует компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."), SPAN_NOTICE("Вы анализируете компоненты [M.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."))
-	robot_healthscan(user, M)
+		return FINISH_ATTACK
+	user.visible_message(SPAN_NOTICE("[user] анализирует компоненты [target.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."), SPAN_NOTICE("Вы анализируете компоненты [target.declent_ru(GENITIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]."))
+	robot_healthscan(user, target)
 	add_fingerprint(user)
+	return FINISH_ATTACK
 
 /proc/robot_healthscan(mob/user, mob/living/M)
 	var/scan_type

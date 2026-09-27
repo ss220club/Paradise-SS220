@@ -45,15 +45,15 @@ jobs:
       - name: Run the script
         env:
           GITHUB_TOKEN: ${{ env.GH_TOKEN }}
-          TARGET_REPO: 'ss220club/Paradise-SS220'
+          TARGET_REPO: ${{ github.repository }}
           TARGET_BRANCH: 'master'
           UPSTREAM_REPO: 'ParadiseSS13/Paradise'
           UPSTREAM_BRANCH: 'master'
           MERGE_BRANCH: 'merge-upstream'
           CHANGELOG_AUTHOR: 'ParadiseSS13'
-          TRANSLATE_CHANGES: ${{ github.event.inputs.translate }}
+          TRANSLATE_CHANGES: ${{ inputs.translate }}
           UNTIL_DATE: ${{ github.event.inputs.until_date }}
-          OPENAI_API_KEY: ${{ secrets.ORG_EMPTY_TOKEN }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LOG_LEVEL: ${{ runner.debug && 'DEBUG' || 'INFO' }}
         run: |
           git config --global user.email "action@github.com"

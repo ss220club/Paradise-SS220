@@ -473,7 +473,7 @@
 		if(!is_station_level(AA.z))
 			continue
 		AA.emagged = TRUE
-	to_chat(user, "<span class='notice'>Предохранители атмосферных датчиков отключены. Теперь у них открыт режим Flood.</span>")
+	to_chat(user, SPAN_NOTICE("Предохранители атмосферных датчиков отключены. Теперь у них открыт режим Flood."))
 	user.playsound_local(user, 'sound/machines/terminal_off.ogg', 50, FALSE, use_reverb = FALSE)
 
 //Overload Machine: Allows the AI to overload a machine, detonating it after a delay. Two uses per purchase.
@@ -870,8 +870,9 @@
 	log_game("[key_name(usr)] purchased combat upgrades for all cyborgs.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] purchased combat upgrades for all cyborgs!"))
 	for(var/mob/living/silicon/robot/R in AI.connected_robots)
-		R.module.malfhacked = TRUE
-		R.module.rebuild_modules()
+		if(R.module)
+			R.module.malfhacked = TRUE
+			R.module.rebuild_modules()
 		to_chat(R, SPAN_NOTICE("Новое ПО загружено. Активированы боевые улучшения."))
 
 /datum/ai_module/repair_cyborg

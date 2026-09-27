@@ -4,7 +4,7 @@
 	early = TRUE
 
 /datum/asset/json/icon_ref_map/generate()
-	var/list/data = list() //"icons/obj/drinks.dmi" => "[0xc000020]"
+	var/list/data = list() //"icons/obj/drinks/bottles.dmi" => "[0xc000020]"
 
 	//var/start = "0xc000000"
 	var/value = 0
