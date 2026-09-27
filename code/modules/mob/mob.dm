@@ -1359,9 +1359,14 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 
 /mob/proc/sync_lighting_plane_alpha()
 	if(hud_used)
-		var/atom/movable/screen/plane_master/lighting/L = hud_used.plane_masters["[LIGHTING_PLANE]"]
-		if(L)
-			L.alpha = lighting_alpha
+		for(var/plane_key in hud_used.plane_masters)
+			var/atom/movable/screen/plane_master/lighting/L = hud_used.plane_masters[plane_key]
+			if(!istype(L))
+				continue
+			if(L.multiz_hidden)
+				L.multiz_saved_alpha = lighting_alpha
+			else
+				L.alpha = lighting_alpha
 		var/atom/movable/screen/plane_master/smoke/S = hud_used.plane_masters["[SMOKE_PLANE]"]
 		if(S)
 			S.alpha = 255

@@ -53,6 +53,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	. = ..()
 	//we set vars in definition for mapping, now we revert it in init()
 	plane = FLOOR_PLANE	//move it down so ambient occlusion ignores it
+	base_z_plane = FLOOR_PLANE
 	alpha = 255			//make it not semi-transparent
 	layer = WIRE_LAYER	//put it on the right level
 

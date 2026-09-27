@@ -71,6 +71,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/update_overlays()
 	. = ..()
 	plane = FLOOR_PLANE
+	base_z_plane = FLOOR_PLANE
 	var/scrubber_icon = "scrubber"
 
 	var/turf/T = get_turf(src)

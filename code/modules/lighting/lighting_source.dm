@@ -30,8 +30,8 @@
 
 	/// List used to store how much we're affecting corners.
 	var/list/datum/lighting_corner/effect_str
-	/// Corners receiving light through a linked transparent floor or open shaft.
-	var/list/datum/lighting_corner/multiz_attenuated_corners = list()
+	/// Transmission multiplier for corners reached through transparent floors.
+	var/list/datum/lighting_corner/multiz_corner_transmission = list()
 
 	/// Whether we have applied our light yet or not.
 	var/applied = FALSE
@@ -119,12 +119,12 @@
 	if(!changed_turf || !world.time)
 		return
 	var/list/centers = list(changed_turf)
-	var/turf/below_turf = get_turf_below(changed_turf)
-	var/turf/above_turf = get_turf_above(changed_turf)
-	if(below_turf)
-		centers |= below_turf
-	if(above_turf)
-		centers |= above_turf
+	var/turf/vertical_turf = changed_turf
+	while((vertical_turf = get_turf_below(vertical_turf)))
+		centers |= vertical_turf
+	vertical_turf = changed_turf
+	while((vertical_turf = get_turf_above(vertical_turf)))
+		centers |= vertical_turf
 	var/list/datum/light_source/sources_to_update = list()
 	for(var/turf/center as anything in centers)
 		for(var/turf/nearby_turf in view(10, center))
@@ -138,6 +138,18 @@
 	for(var/datum/light_source/light_source as anything in sources_to_update)
 		light_source.force_update()
 
+/// Add one turf's corners to a light footprint, keeping the strongest route if shafts overlap.
+/datum/light_source/proc/add_multiz_turf_corners(turf/T, list/corners, list/transmission_by_corner, transmission)
+	if(!T || IS_OPAQUE_TURF(T))
+		return
+	if(!T.lighting_corners_initialised)
+		T.generate_missing_corners()
+	for(var/datum/lighting_corner/corner as anything in list(T.lighting_corner_NE, T.lighting_corner_SE, T.lighting_corner_SW, T.lighting_corner_NW))
+		corners[corner] = 0
+		var/current_transmission = transmission_by_corner[corner]
+		if(transmission < 1 && (isnull(current_transmission) || transmission > current_transmission))
+			transmission_by_corner[corner] = transmission
+
 // Macro that applies light to a new corner.
 // It is a macro in the interest of speed, yet not having to copy paste it.
 // If you're wondering what's with the backslashes, the backslashes cause BYOND to not automatically end the line.
@@ -148,7 +160,7 @@
 #define APPLY_CORNER(C)							\
 	. = LUM_FALLOFF(C, pixel_turf);				\
 	. *= light_power;							\
-	. *= ((C in multiz_attenuated_corners) ? 0.35 : 1);	\
+	. *= (isnull(multiz_corner_transmission[C]) ? 1 : multiz_corner_transmission[C]);\
 	var/OLD = effect_str[C];					\
 												\
 	C.update_lumcount							\
@@ -250,7 +262,7 @@
 
 	var/list/datum/lighting_corner/corners = list()
 	var/list/turf/turfs = list()
-	multiz_attenuated_corners.Cut()
+	multiz_corner_transmission.Cut()
 	if(source_turf)
 		var/oldlum = source_turf.luminosity
 		source_turf.luminosity = CEILING(light_range, 1)
@@ -263,28 +275,27 @@
 				corners[T.lighting_corner_SW] = 0
 				corners[T.lighting_corner_NW] = 0
 			if(!IS_OPAQUE_TURF(T))
-				var/turf/vertical_aperture
-				if(T.transparent_floor || isspaceturf(T))
-					if(!istype(T, /turf/space/transit))
-						vertical_aperture = get_turf_below(T)
-				if(!vertical_aperture)
-					var/turf/upper_turf = get_turf_above(T)
-					if(upper_turf && (upper_turf.transparent_floor || isspaceturf(upper_turf)) && !istype(upper_turf, /turf/space/transit))
-						vertical_aperture = upper_turf
-				if(vertical_aperture && !IS_OPAQUE_TURF(vertical_aperture))
-					if(!vertical_aperture.lighting_corners_initialised)
-						vertical_aperture.generate_missing_corners()
-					// Include the opposite floor's corners in this light source's
-					// footprint. Merely marking these corners attenuated is not
-					// enough: APPLY_CORNER only lights corners in `corners`.
-					corners[vertical_aperture.lighting_corner_NE] = 0
-					corners[vertical_aperture.lighting_corner_SE] = 0
-					corners[vertical_aperture.lighting_corner_SW] = 0
-					corners[vertical_aperture.lighting_corner_NW] = 0
-					multiz_attenuated_corners |= vertical_aperture.lighting_corner_NE
-					multiz_attenuated_corners |= vertical_aperture.lighting_corner_SE
-					multiz_attenuated_corners |= vertical_aperture.lighting_corner_SW
-					multiz_attenuated_corners |= vertical_aperture.lighting_corner_NW
+				// Open space passes light without attenuation. Transparent floors pass
+				// it in either direction at reduced strength, including multi-floor shafts.
+				var/turf/downward_aperture = T
+				var/downward_transmission = 1
+				while(downward_aperture && (isspaceturf(downward_aperture) || downward_aperture.transparent_floor) && !istype(downward_aperture, /turf/space/transit))
+					if(downward_aperture.transparent_floor)
+						downward_transmission *= 0.35
+					downward_aperture = get_turf_below(downward_aperture)
+					if(downward_aperture)
+						add_multiz_turf_corners(downward_aperture, corners, multiz_corner_transmission, downward_transmission)
+
+				var/turf/upward_aperture = T
+				if(!(isspaceturf(upward_aperture) || upward_aperture.transparent_floor) || istype(upward_aperture, /turf/space/transit))
+					upward_aperture = get_turf_above(T)
+				var/upward_transmission = 1
+				while(upward_aperture && (isspaceturf(upward_aperture) || upward_aperture.transparent_floor) && !istype(upward_aperture, /turf/space/transit))
+					if(upward_aperture.transparent_floor)
+						upward_transmission *= 0.35
+					upward_aperture = get_turf_above(upward_aperture)
+					if(upward_aperture)
+						add_multiz_turf_corners(upward_aperture, corners, multiz_corner_transmission, upward_transmission)
 			turfs += T
 		source_turf.luminosity = oldlum
 

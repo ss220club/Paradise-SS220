@@ -72,6 +72,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/update_overlays()
 	. = ..()
 	plane = FLOOR_PLANE
+	base_z_plane = FLOOR_PLANE
 	var/vent_icon = "vent"
 
 	var/turf/T = get_turf(src)

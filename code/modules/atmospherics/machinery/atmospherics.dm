@@ -102,6 +102,7 @@ Pipelines + Other Objects -> Pipe network
 		if(2)
 			plane = GAME_PLANE
 			layer = GAS_PIPE_VISIBLE_LAYER + layer_offset
+	base_z_plane = plane
 
 /obj/machinery/atmospherics/proc/update_pipe_image(overlay = src)
 	pipe_image = image(overlay, loc, layer = ABOVE_HUD_LAYER, dir = dir) //the 20 puts it above Byond's darkness (not its opacity view)

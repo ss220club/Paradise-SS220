@@ -13,6 +13,10 @@
 		return
 	. = ..()
 	current_underlay = mutable_appearance(LIGHTING_ICON, "transparent", -LIGHTING_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
+	var/z_plane_offset = SSmapping.z_level_plane_offsets?["[source.z]"]
+	if(isnull(z_plane_offset))
+		z_plane_offset = 0
+	current_underlay.plane = GET_Z_PLANE(LIGHTING_PLANE, z_plane_offset)
 
 	affected_turf = source
 	if(affected_turf.lighting_object)
@@ -40,6 +44,11 @@
 	return ..()
 
 /datum/lighting_object/proc/update()
+	var/z_plane_offset = SSmapping.z_level_plane_offsets?["[affected_turf.z]"]
+	if(isnull(z_plane_offset))
+		z_plane_offset = 0
+	current_underlay.plane = GET_Z_PLANE(LIGHTING_PLANE, z_plane_offset)
+
 	// To the future coder who sees this and thinks
 	// "Why didn't he just use a loop?"
 	// Well my man, it's because the loop performed like shit.

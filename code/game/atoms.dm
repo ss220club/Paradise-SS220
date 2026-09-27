@@ -581,6 +581,8 @@
 			else
 				managed_overlays = new_overlays
 			add_overlay(new_overlays)
+	// Reapply after subtype icon and overlay code has selected its plane.
+	update_z_plane()
 
 	SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, updates)
 
@@ -604,6 +606,7 @@
 	PROTECTED_PROC(TRUE)
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS, .)
+	update_z_plane()
 
 /atom/proc/relaymove()
 	return
