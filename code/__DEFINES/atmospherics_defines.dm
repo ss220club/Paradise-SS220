@@ -7,6 +7,13 @@
 #define GAS_H2 	(1 << 6)
 #define GAS_H20 (1 << 7)
 
+/// Vertical behavior flags for gas species moving through open multi-z shafts.
+#define MULTIZ_GAS_NEUTRAL 0
+#define MULTIZ_GAS_LIGHT (1 << 0)
+#define MULTIZ_GAS_HEAVY (1 << 1)
+#define MULTIZ_LIGHT_GAS_FLAGS (GAS_H2 | GAS_H20)
+#define MULTIZ_HEAVY_GAS_FLAGS (GAS_CO2 | GAS_PL | GAS_N2O | GAS_A_B)
+
 //ATMOS
 //stuff you should probably leave well alone!
 #define R_IDEAL_GAS_EQUATION	8.31	//kPa*L/(K*mol)

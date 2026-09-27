@@ -3,6 +3,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
 /turf
 	icon = 'icons/turf/floors.dmi'
 	level = 1
+	// Required for turf appearances to render correctly when another turf shows them through vis_contents.
+	vis_flags = VIS_INHERIT_ID
 	luminosity = 1
 
 	var/intact = TRUE
@@ -10,6 +12,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	var/slowdown = 0 //negative for faster, positive for slower
 	/// used to check if pipes should be visible under the turf or not
 	var/transparent_floor = FALSE
+	/// The lower-level turf currently displayed through this turf, if any.
+	var/turf/multiz_rendered_below
 
 	/// Set if the turf should appear on a different layer while in-game and map editing, otherwise use normal layer.
 	var/real_layer = TURF_LAYER
@@ -116,12 +120,16 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if(initialized)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	initialized = TRUE
+	update_z_plane()
 
 	if(layer == MAP_EDITOR_TURF_LAYER)
 		layer = real_layer
 
 	// by default, vis_contents is inherited from the turf that was here before
 	vis_contents.Cut()
+	// ChangeTurf can preserve turf vars while replacing the turf. The inherited
+	// vis_contents were just cleared, so the render cache must be rebuilt too.
+	multiz_rendered_below = null
 
 	levelupdate()
 	if(length(smoothing_groups))
@@ -150,6 +158,18 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		directional_opacity = ALL_CARDINALS
 
 	initialize_milla()
+	update_multiz_render()
+	var/turf/above_turf = get_turf_above(src)
+	if(above_turf)
+		if(is_multiz_space_opening(above_turf))
+			above_turf.AddElement(/datum/element/turf_z_transparency)
+		SEND_SIGNAL(above_turf, COMSIG_TURF_MULTIZ_NEW, src, DOWN)
+		above_turf.update_multiz_render()
+	var/turf/below_turf = get_turf_below(src)
+	if(below_turf)
+		SEND_SIGNAL(below_turf, COMSIG_TURF_MULTIZ_NEW, src, UP)
+	if(transparent_floor)
+		AddElement(/datum/element/turf_z_transparency)
 	if(is_station_level(z))
 		GLOB.station_turfs += src
 
@@ -159,6 +179,12 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	. = QDEL_HINT_IWILLGC
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
+	var/turf/above_turf = get_turf_above(src)
+	if(above_turf)
+		SEND_SIGNAL(above_turf, COMSIG_TURF_MULTIZ_DEL, src, DOWN)
+	var/turf/below_turf = get_turf_below(src)
+	if(below_turf)
+		SEND_SIGNAL(below_turf, COMSIG_TURF_MULTIZ_DEL, src, UP)
 	changing_turf = FALSE
 	if(force)
 		..()
@@ -325,6 +351,9 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		return
 	if(!GLOB.use_preloader && path == type) // Don't no-op if the map loader requires it to be reconstructed
 		return src
+	// When a linked lower floor exists, dismantling a floor opens a real multiz shaft.
+	if(path == /turf/space && get_turf_below(src))
+		path = /turf/space/open
 
 	set_light(0)
 	var/old_lighting_object = lighting_object
@@ -387,8 +416,33 @@ GLOBAL_LIST_EMPTY(station_turfs)
 			space_tile.update_starlight()
 
 	obscured = old_obscured
+	W.update_multiz_render()
+	var/turf/above_turf = get_turf_above(W)
+	if(above_turf)
+		above_turf.update_multiz_render()
 
 	return W
+
+/// Refresh visuals that depend on the turf directly below this one.
+/turf/proc/update_multiz_render()
+	var/turf/below_turf = get_turf_below(src)
+	if(!transparent_floor)
+		below_turf = null
+	update_multiz_contents(below_turf)
+
+/turf/proc/update_multiz_contents(turf/below_turf)
+	if(multiz_rendered_below != below_turf)
+		if(multiz_rendered_below && !QDELETED(multiz_rendered_below))
+			vis_contents -= multiz_rendered_below
+		multiz_rendered_below = below_turf
+	if(below_turf && !(below_turf in vis_contents))
+		vis_contents |= below_turf
+
+/turf/proc/multiz_turf_del(turf/T, direction)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, direction)
+
+/turf/proc/multiz_turf_new(turf/T, direction)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, direction)
 
 /turf/proc/BeforeChange()
 	SHOULD_CALL_PARENT(TRUE)

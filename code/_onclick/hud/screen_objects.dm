@@ -143,6 +143,30 @@
 		var/mob/living/L = usr
 		L.resist()
 
+/atom/movable/screen/multiz_move
+	name = "move between levels"
+	icon = 'icons/mob/screen_midnight.dmi'
+	var/move_direction
+	transform = matrix(0.65, 0, 0, 0, 0.65, 0)
+
+/atom/movable/screen/multiz_move/Click()
+	if(!isliving(usr) || usr != hud?.mymob)
+		return
+	var/mob/living/user = usr
+	user.try_multiz_hud_move(move_direction)
+
+/atom/movable/screen/multiz_move/up
+	name = "move up through the opening"
+	icon_state = "craft"
+	screen_loc = UI_MULTIZ_UP
+	move_direction = UP
+
+/atom/movable/screen/multiz_move/down
+	name = "move down through the opening"
+	icon_state = "talk_wheel"
+	screen_loc = UI_MULTIZ_DOWN
+	move_direction = DOWN
+
 /atom/movable/screen/throw_catch
 	name = "throw/catch"
 	icon = 'icons/mob/screen_midnight.dmi'

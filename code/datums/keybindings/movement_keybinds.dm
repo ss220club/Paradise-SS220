@@ -23,6 +23,16 @@
 	keys = list("A", "West")
 	move_dir = WEST
 
+/datum/keybinding/movement/up
+	name = "Move Up a Level"
+	keys = list("PageUp")
+	move_dir = UP
+
+/datum/keybinding/movement/down
+	name = "Move Down a Level"
+	keys = list("PageDown")
+	move_dir = DOWN
+
 /datum/keybinding/lock
 	name = "Movement Lock (Prevents Moving When Held)"
 	category = KB_CATEGORY_MOVEMENT

@@ -30,6 +30,12 @@
 	Note that this proc can be overridden, and is in the case of screen objects.
 */
 /atom/Click(location,control,params)
+	if(isliving(usr))
+		var/mob/living/clicking_mob = usr
+		var/turf/user_turf = get_turf(clicking_mob)
+		var/turf/target_turf = get_turf(src)
+		if(user_turf && target_turf && user_turf.z != target_turf.z)
+			return
 	usr.ClickOn(src, params)
 /atom/DblClick(location,control,params)
 	usr.DblClickOn(src,params)
@@ -49,6 +55,13 @@
 */
 /mob/proc/ClickOn(atom/A, params)
 	if(QDELETED(A))
+		return
+
+	// Multi-z rendering lets the lower floor appear through holes, but it is not
+	// within physical reach from this floor.
+	var/turf/user_turf = get_turf(src)
+	var/turf/target_turf = get_turf(A)
+	if(user_turf && target_turf && user_turf.z != target_turf.z)
 		return
 
 	if(check_click_intercept(params,A))
@@ -178,6 +191,10 @@
  * logically "in" anything adjacent to us.
  */
 /atom/movable/proc/can_reach(atom/ultimate_target, obj/item/tool, view_only = FALSE) //This might break mod storage. If it does, we hardcode mods / funny bag in here
+	var/turf/source_turf = get_turf(src)
+	var/turf/target_turf = get_turf(ultimate_target)
+	if(source_turf && target_turf && source_turf.z != target_turf.z)
+		return FALSE
 	var/list/direct_access = direct_access()
 	var/depth = 1 + (view_only ? STORAGE_VIEW_DEPTH : INVENTORY_DEPTH)
 

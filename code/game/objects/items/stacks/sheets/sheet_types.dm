@@ -143,6 +143,7 @@ GLOBAL_LIST_INIT(metal_recipes, list(
 	merge_type = /obj/item/stack/sheet/metal
 	point_value = 2
 	table_type = /obj/structure/table
+	stairs_type = /obj/structure/stairs
 
 /obj/item/stack/sheet/metal/examine(mob/user)
 	. = ..()
@@ -265,6 +266,7 @@ GLOBAL_LIST_INIT(wood_recipes, list(
 		new /datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20),
 		new /datum/stack_recipe("wooden barricade", /obj/structure/barricade/wooden, 5, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
 		new /datum/stack_recipe("wood table frame", /obj/structure/table_frame/wood, 2, time = 1 SECONDS),
+		new /datum/stack_recipe("wooden stairs frame", /obj/structure/stairs_frame/wood, 10, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
 		new /datum/stack_recipe("wooden chair", /obj/structure/chair/wood, 3, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
 		new /datum/stack_recipe("wooden stool", /obj/structure/chair/stool/wood, 2, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
 		new /datum/stack_recipe("bookcase", /obj/structure/bookcase, 5, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
@@ -303,6 +305,7 @@ GLOBAL_LIST_INIT(wood_recipes, list(
 	merge_type = /obj/item/stack/sheet/wood
 	sheettype = "wood"
 	table_type = /obj/structure/table/wood
+	stairs_type = /obj/structure/stairs/wood
 
 /obj/item/stack/sheet/wood/Initialize(mapload, new_amount, merge)
 	. = ..()

@@ -1,6 +1,7 @@
 GLOBAL_LIST_INIT(rod_recipes, list (
 	new /datum/stack_recipe("grille", /obj/structure/grille, 2, time = 1 SECONDS, one_per_turf = TRUE, on_floor_or_lattice = TRUE),
 	new /datum/stack_recipe("table frame", /obj/structure/table_frame, 2, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
+	new /datum/stack_recipe("stairs frame", /obj/structure/stairs_frame, 10, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
 	new /datum/stack_recipe("curtain rod", /obj/item/mounted/curtain/curtain_fixture, 2, 1, 20),
 	new /datum/stack_recipe("white cane", /obj/item/blindcane, 1, 1),
 	null,

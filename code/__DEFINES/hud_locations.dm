@@ -63,6 +63,8 @@
 //Lower right, persistant menu
 #define UI_DROP_THROW "EAST-1:28,SOUTH+1:7"
 #define UI_PULL_RESIST "EAST-2:26,SOUTH+1:7"
+#define UI_MULTIZ_UP "EAST-3:26,SOUTH+1:15"
+#define UI_MULTIZ_DOWN "EAST-3:26,SOUTH+1:-1"
 #define UI_ACTI "EAST-2:26,SOUTH:5"
 #define UI_MOVI "EAST-3:24,SOUTH:5"
 #define UI_ZONESEL "EAST-1:28,SOUTH:5"

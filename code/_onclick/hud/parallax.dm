@@ -5,16 +5,6 @@
 	var/client/C = screenmob.client
 	if(!apply_parallax_pref(screenmob))
 		return
-	// this is needed so it blends properly with the space plane and blackness plane.
-	var/atom/movable/screen/plane_master/space/S = plane_masters["[PLANE_SPACE]"]
-	if(C.prefs.toggles2 & PREFTOGGLE_2_PARALLAX_IN_DARKNESS)
-		S.color = rgb(0, 0, 0, 0)
-	else
-		S.color = list(1, 1, 1, 1,
-					1, 1, 1, 1,
-					1, 1, 1, 1,
-					1, 1, 1, 1,)
-	S.appearance_flags |= NO_CLIENT_COLOR
 	if(!length(C.parallax_layers_cached))
 		C.parallax_layers_cached = list()
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_1(null, C.view)
@@ -26,11 +16,31 @@
 
 	C.parallax_layers = C.parallax_layers_cached.Copy()
 
-	var/atom/movable/screen/plane_master/parallax/parallax_plane_master = plane_masters["[PLANE_SPACE_PARALLAX]"]
-	if(C.prefs.toggles2 & PREFTOGGLE_2_PARALLAX_IN_DARKNESS)
-		parallax_plane_master.blend_mode = BLEND_ADD
-	else
-		parallax_plane_master.blend_mode = BLEND_MULTIPLY
+	// Keep the parallax on the bottom stratum so every connected floor shares
+	// one background, instead of drawing a separate parallax at each z offset.
+	var/bottom_plane_offset = SSmapping.max_plane_offset
+	var/parallax_plane = GET_Z_PLANE(PLANE_SPACE_PARALLAX, bottom_plane_offset)
+	var/space_plane = GET_Z_PLANE(PLANE_SPACE, bottom_plane_offset)
+	for(var/atom/movable/screen/parallax_layer/parallax_layer as anything in C.parallax_layers_cached)
+		parallax_layer.plane = parallax_plane
+	for(var/atom/movable/screen/static_parallax_layer as anything in C.parallax_static_layers_tail)
+		if(istype(static_parallax_layer, /atom/movable/screen/parallax_pmaster))
+			static_parallax_layer.plane = parallax_plane
+		else if(istype(static_parallax_layer, /atom/movable/screen/parallax_space_whitifier))
+			static_parallax_layer.plane = space_plane
+	for(var/plane_key in plane_masters)
+		var/atom/movable/screen/plane_master/plane_master = plane_masters[plane_key]
+		if(plane_master.base_plane == PLANE_SPACE)
+			if(C.prefs.toggles2 & PREFTOGGLE_2_PARALLAX_IN_DARKNESS)
+				plane_master.color = rgb(0, 0, 0, 0)
+			else
+				plane_master.color = list(1, 1, 1, 1,
+					1, 1, 1, 1,
+					1, 1, 1, 1,
+					1, 1, 1, 1,)
+			plane_master.appearance_flags |= NO_CLIENT_COLOR
+		else if(plane_master.base_plane == PLANE_SPACE_PARALLAX)
+			plane_master.blend_mode = (C.prefs.toggles2 & PREFTOGGLE_2_PARALLAX_IN_DARKNESS) ? BLEND_ADD : BLEND_MULTIPLY
 
 	if(length(C.parallax_layers) > C.parallax_layers_max)
 		C.parallax_layers.len = C.parallax_layers_max
@@ -42,9 +52,11 @@
 	var/client/C = screenmob.client
 	C.screen -= (C.parallax_layers_cached + C.parallax_static_layers_tail)
 	C.parallax_layers = null
-	var/atom/movable/screen/plane_master/space/S = plane_masters["[PLANE_SPACE]"]
-	S.color = null
-	S.appearance_flags &= ~NO_CLIENT_COLOR
+	for(var/plane_key in plane_masters)
+		var/atom/movable/screen/plane_master/plane_master = plane_masters[plane_key]
+		if(plane_master.base_plane == PLANE_SPACE)
+			plane_master.color = null
+			plane_master.appearance_flags &= ~NO_CLIENT_COLOR
 
 /datum/hud/proc/apply_parallax_pref(mob/viewmob)
 	var/mob/screen_mob = viewmob || mymob

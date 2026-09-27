@@ -32,6 +32,8 @@
 	var/merge_type
 	/// The type of table that is made when applying this stack to a frame.
 	var/table_type
+	/// The stair structure made from this material, if any.
+	var/obj/structure/stairs/stairs_type
 	/// Whether this stack has a dynamic icon_state based on amount / max_amount.
 	var/dynamic_icon_state = FALSE
 	/// Whether this stack can't stack with subtypes.

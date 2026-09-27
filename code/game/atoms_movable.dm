@@ -432,13 +432,21 @@
 /atom/movable/proc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, movement_dir, forced, old_locs, momentum_change)
 
-	if(!inertia_moving && momentum_change)
+	if(!inertia_moving && momentum_change && !HAS_TRAIT(src, TRAIT_CURRENTLY_Z_MOVING))
 		newtonian_move(movement_dir)
 	if(length(client_mobs_in_contents))
 		update_parallax_contents()
 
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(src)
+	// Plane offsets also apply to thrown and force-moved atoms. Refresh the
+	// plane on ordinary moves too, since an atom may not have been initialized
+	// on a turf (for example, it may have been held before being thrown).
+	update_z_plane()
+	if(old_turf?.z != new_turf?.z)
+		if(ismob(src))
+			var/mob/viewer = src
+			viewer.hud_used?.update_multiz_plane_visibility()
 
 	if(old_turf?.z != new_turf?.z)
 		on_changed_z_level(old_turf, new_turf)

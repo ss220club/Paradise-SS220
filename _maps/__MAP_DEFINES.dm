@@ -1,5 +1,6 @@
 
 // Linkage flags
+	#define ZTRAIT_LINKAGE 3
 	#define CROSSLINKED 2
 	#define SELFLOOPING 1
 	#define UNAFFECTED 0
@@ -35,6 +36,10 @@
 	#define GAME_TEST_LEVEL "Game Test Level"
 	/// Tcomms relays will always extend to this level.
 	#define TCOMM_RELAY_ALWAYS "Tcomm Relay Always"
+	/// This z-level connects vertically to the level immediately above it.
+	#define ZTRAIT_UP "Connects Up"
+	/// This z-level connects vertically to the level immediately below it.
+	#define ZTRAIT_DOWN "Connects Down"
 
 // Level names
 	#define MAIN_STATION "Main Station"

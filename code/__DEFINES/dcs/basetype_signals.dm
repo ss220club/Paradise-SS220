@@ -27,6 +27,9 @@
 
 ///from base of turf/ChangeTurf(): (path, list/new_baseturfs, flags, list/transferring_comps)
 #define COMSIG_TURF_CHANGE "turf_change"
+/// from turf initialization/destruction when an adjacent linked z-level turf appears or disappears: (turf, direction)
+#define COMSIG_TURF_MULTIZ_DEL "turf_multiz_del"
+#define COMSIG_TURF_MULTIZ_NEW "turf_multiz_new"
 ///from base of turf/proc/onShuttleMove(): (turf/new_turf)
 #define COMSIG_TURF_ON_SHUTTLE_MOVE "turf_on_shuttle_move"
 ///from base of turf/proc/get_decals(): (list/datum/element/decal/decals)

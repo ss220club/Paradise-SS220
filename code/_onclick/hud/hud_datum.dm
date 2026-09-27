@@ -96,6 +96,17 @@
 		var/atom/movable/screen/plane_master/instance = new mytype()
 		plane_masters["[instance.plane]"] = instance
 		instance.backdrop(mymob)
+		// Each connected lower z-stack needs its own copy of the world plane masters.
+		// This lets lower-z atoms render beneath transparent floors and open turfs.
+		if(instance.plane < PLANE_SPACE || instance.plane > ABOVE_LIGHTING_PLANE)
+			continue
+		instance.multiz_managed = TRUE
+		for(var/plane_offset in 1 to SSmapping.max_plane_offset)
+			var/atom/movable/screen/plane_master/offset_instance = new mytype()
+			offset_instance.set_z_plane_offset(plane_offset)
+			offset_instance.multiz_managed = TRUE
+			plane_masters["[offset_instance.plane]"] = offset_instance
+			offset_instance.backdrop(mymob)
 
 	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
 		var/atom/movable/plane_master_controller/controller_instance = new mytype(src)
@@ -107,7 +118,6 @@
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
 		mymob.hud_used = null
-
 	QDEL_NULL(toggle_palette)
 	QDEL_NULL(palette_down)
 	QDEL_NULL(palette_up)
@@ -256,6 +266,30 @@
 		var/atom/movable/screen/plane_master/PM = plane_masters[thing]
 		PM.backdrop(mymob)
 		mymob.client?.screen += PM
+	update_multiz_plane_visibility()
+
+/// Hide strata above the current view while leaving this floor and connected floors below visible.
+/datum/hud/proc/update_multiz_plane_visibility()
+	var/atom/viewer = mymob
+	if(mymob?.client?.eye)
+		viewer = mymob.client.eye
+	var/turf/view_turf = get_turf(viewer)
+	var/viewer_offset = view_turf ? SSmapping.z_level_plane_offsets?["[view_turf.z]"] : 0
+	viewer_offset ||= 0
+	for(var/plane_key in plane_masters)
+		var/atom/movable/screen/plane_master/PM = plane_masters[plane_key]
+		if(!PM.multiz_managed)
+			continue
+		if(PM.z_plane_offset >= viewer_offset)
+			if(PM.multiz_hidden)
+				PM.alpha = PM.multiz_saved_alpha
+				PM.multiz_hidden = FALSE
+				PM.multiz_saved_alpha = null
+			continue
+		if(!PM.multiz_hidden)
+			PM.multiz_saved_alpha = PM.alpha
+		PM.alpha = 0
+		PM.multiz_hidden = TRUE
 
 /datum/hud/human/show_hud(version = 0, mob/viewmob)
 	. = ..()

@@ -255,6 +255,20 @@
 	using.screen_loc = UI_PULL_RESIST
 	hotkeybuttons += using
 
+	using = new /atom/movable/screen/multiz_move/up
+	using.icon = ui_style
+	using.color = ui_color
+	using.alpha = ui_alpha
+	using.hud = src
+	hotkeybuttons += using
+
+	using = new /atom/movable/screen/multiz_move/down
+	using.icon = ui_style
+	using.color = ui_color
+	using.alpha = ui_alpha
+	using.hud = src
+	hotkeybuttons += using
+
 	using = new /atom/movable/screen/human/toggle()
 	using.icon = ui_style
 	using.color = ui_color
