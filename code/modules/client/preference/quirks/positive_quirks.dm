@@ -13,13 +13,13 @@
 /datum/quirk/crafty
 	name = "Crafty"
 	desc = "Вы можете создавать предметы в два раза быстрее."
-	cost = 2
+	cost = 1
 	trait_to_apply = TRAIT_CRAFTY
 
 /datum/quirk/alcohol_tolerance/heavy_drinker
 	name = "Heavy Drinker"
 	desc = "Вы привыкли к воздействию алкоголя и пьянеете медленнее, чем другие."
-	cost = 1
+	cost = 2
 	alcohol_modifier = 0.7
 
 /datum/quirk/meal_prepper
@@ -196,3 +196,42 @@
 	cost = 1
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube
+
+/datum/quirk/regenerate
+	name = "Activated platelets"
+	desc = "Ваше тело регенерирует. Несовместимо с рассой КПБ"
+	cost = 5
+	species_flags = QUIRK_MACHINE_INCOMPATIBLE
+	processes = TRUE
+
+/datum/quirk/regenerate/process()
+	if(!..())
+		return FALSE
+	var/regeneration_ammount = 0.25
+	owner.adjustBruteLoss(-regeneration_ammount,)
+	owner.adjustFireLoss(-regeneration_ammount)
+
+/datum/quirk/nanomachine
+	name = "Activated nanomachine"
+	desc = "Ваше тело восстаналивают малые нанороботы. Совместимо только с расой КПБ"
+	cost = 5
+	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
+	processes = TRUE
+
+/datum/quirk/nanomachine/process()
+	if(!..())
+		return FALSE
+	var/nanomachine_ammount = 0.25
+	owner.adjustBruteLoss(-nanomachine_ammount, robotic = TRUE)
+	owner.adjustFireLoss(-nanomachine_ammount, robotic = TRUE)
+
+/datum/quirk/resilient_skin
+	name = "Resilient Skin"
+	desc = "Ваша кожа лучше выдерживает физические повреждения. Несовместимо с рассой кидан"
+	cost = 4
+	species_flags = QUIRK_KIDAN_INCOMPATIBLE
+	var/brute_modifier = 0.9
+
+/datum/quirk/resilient_skin/apply_quirk_effects(mob/living/carbon/human/quirky)
+	..()
+	owner.dna.species.brute_mod = brute_modifier

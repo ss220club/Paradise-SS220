@@ -66,12 +66,12 @@
 	cost = -3
 	trait_to_apply = TRAIT_FRAIL
 
-#define ASTHMA_ATTACK_THRESHOLD 50
+#define ASTHMA_ATTACK_THRESHOLD 20
 
 /datum/quirk/asthma
 	name = "Asthma"
 	desc = "Вам трудно отдышаться, а при физических нагрузках могут случаться приступы сильного кашля. Несовместимо с расой КПБ."
-	cost = -3
+	cost = -4
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	trait_to_apply = TRAIT_ASTHMATIC
 	processes = TRUE
@@ -84,7 +84,7 @@
 	if(ease_of_breathing < ASTHMA_ATTACK_THRESHOLD)
 		return
 	owner.emote("cough")
-	if(prob(ease_of_breathing / 4))
+	if(prob(min(ease_of_breathing, 50)))
 		trigger_asthma_symptom(ease_of_breathing)
 
 /* Causes an asthmatic flareup, which gets worse depending on how much oxygen and stamina damage the owner already has.
@@ -93,24 +93,26 @@
 /datum/quirk/asthma/proc/trigger_asthma_symptom(current_severity)
 	owner.visible_message(SPAN_NOTICE("[owner] violently coughs!"), SPAN_WARNING("Your asthma flares up!"))
 	switch(current_severity)
-		if(50 to 75)
+		if(20 to 30)
 			owner.adjustOxyLoss(5)
-		if(76 to 100)
-			owner.adjustOxyLoss(7)
-		if(101 to 150) // By now you're doubled over coughing
-			owner.adjustOxyLoss(5)
-			owner.AdjustLoseBreath(4 SECONDS)
-			owner.KnockDown(4 SECONDS)
-		if(151 to INFINITY)
+		if(40 to 59)
+			owner.adjustOxyLoss(8)
+		if(60 to 79)
 			owner.adjustOxyLoss(15)
-
+		if(80 to 99) // By now you're doubled over coughing
+			owner.adjustOxyLoss(20)
+			owner.AdjustLoseBreath(4 SECONDS)
+		if(100 to INFINITY)
+			owner.adjustOxyLoss(25)
+			owner.AdjustLoseBreath(8 SECONDS)
+			owner.KnockDown(6 SECONDS)
 #undef ASTHMA_ATTACK_THRESHOLD
 
 /datum/quirk/no_apc_charging
 	name = "High Internal Resistance"
 	desc = "ЛКП на станции рассчитаны на более высокое напряжение, чем может выдержать ваше шасси, поэтому заряжать \
 			его можно только на зарядных станциях. Совместимо только с расой КПБ."
-	cost = -2
+	cost = -1
 	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
 	trait_to_apply = TRAIT_NO_APC_CHARGING
 	organ_slot_to_remove = "r_arm_device" // This feels like such a dumb way to do this but I can't think of a smarter solution
@@ -139,7 +141,7 @@
 /datum/quirk/colorblind
 	name = "Monochromacy"
 	desc = "Вы не различаете цвета. Несовместимо с расой Слаймомен."
-	cost = -2
+	cost = -1
 	trait_to_apply = TRAIT_COLORBLIND
 	species_flags = QUIRK_SLIME_INCOMPATIBLE
 
@@ -155,3 +157,75 @@
 	cost = -1
 	trait_to_apply = TRAIT_NEARSIGHT
 	species_flags = QUIRK_SLIME_INCOMPATIBLE
+
+/datum/quirk/impaired_coordination
+	name = "Impaired coordination"
+	desc = "У вас нарушена координация, из-за чего вы медленно передвигаетесь."
+	cost = -1
+	trait_to_apply = TRAIT_GOTTAGOSLOW
+
+#define HALLUCINATIONS_COOLDOWN_MIN 1 MINUTES
+#define HALLUCINATIONS_COOLDOWN_MAX 2 MINUTES
+
+/datum/quirk/hallucinations
+	name = "Hallucinations"
+	desc = "Вы периодически видите и слышите то, чего не существует. Не можете занимать должности в \
+			командовании или службе безопасности."
+	cost = -3
+	blacklisted = TRUE
+	processes = TRUE
+	var/next_hallucination = 0
+
+/datum/quirk/hallucinations/apply_quirk_effects(mob/living/carbon/human/quirky)
+	next_hallucination = world.time + rand(HALLUCINATIONS_COOLDOWN_MIN, HALLUCINATIONS_COOLDOWN_MAX)
+	..()
+
+/datum/quirk/hallucinations/process()
+	if(!..())
+		return
+	if(next_hallucination > world.time)
+		return
+	next_hallucination = world.time + rand(HALLUCINATIONS_COOLDOWN_MIN, HALLUCINATIONS_COOLDOWN_MAX)
+	var/severity
+	var/chance = rand(100)
+
+	if(chance <= 65)
+		severity = HALLUCINATE_MINOR
+	else if(chance <= 95)
+		severity = HALLUCINATE_MODERATE
+	else
+		severity = HALLUCINATE_MAJOR
+
+	var/hallucination_type = pickweight(GLOB.hallucinations[severity])
+	new hallucination_type(get_turf(owner), owner)
+
+#undef HALLUCINATIONS_COOLDOWN_MIN
+#undef HALLUCINATIONS_COOLDOWN_MAX
+
+/datum/quirk/addiction
+	name = "Addiction"
+	desc = "Ваш организм постоянно требует определённый препарат. Несовместимо с расой КПБ."
+	cost = -2
+	species_flags = QUIRK_MACHINE_INCOMPATIBLE
+	var/list/addiction_reagents = list(
+	/datum/reagent/medicine/omnizine,
+	/datum/reagent/happiness,
+	/datum/reagent/space_drugs,
+	/datum/reagent/consumable/drink/coffee
+	)
+
+	var/addicted_reagent
+	var/addiction_stage = 1
+
+/datum/quirk/addiction/apply_quirk_effects(mob/living/carbon/human/quirky)
+	..()
+
+	addicted_reagent = pick(addiction_reagents)
+
+	var/datum/reagent/addiction = new addicted_reagent
+	addiction.last_addiction_dose = world.timeofday
+	addiction.addiction_stage = 1
+	addiction.minor_addiction = TRUE
+	addiction.permanent_addiction = TRUE
+
+	owner.reagents.addiction_list.Add(addiction)

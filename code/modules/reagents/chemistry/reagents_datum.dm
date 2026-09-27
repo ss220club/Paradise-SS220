@@ -41,6 +41,7 @@
 	var/yuck_description = null // message they'll get if they meet sensitivity but don't match taste flag, not required
 	/// how quickly the addiction threshold var decays
 	var/addiction_decay_rate = 0.01
+	var/permanent_addiction = FALSE // Удачи решить проблему со слиплером без этого костыля
 
 	// Which department's (if any) reagent goals this is eligible for.
 	// Must match the values used by request consoles.

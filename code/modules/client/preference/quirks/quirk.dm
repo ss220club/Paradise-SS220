@@ -115,6 +115,9 @@ GLOBAL_LIST_EMPTY(quirk_paths)
 	if((to_add.species_flags & QUIRK_PLASMAMAN_INCOMPATIBLE) && (active_character.species == "Plasmaman")) //If someone can figure out how to only let plasmaman with a secondary language take this feel free to do that
 		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать Плазмамену, у него нет второго языка!"))
 		return FALSE
+	if((to_add.species_flags & QUIRK_KIDAN_INCOMPATIBLE) && (active_character.species == "Kidan")) //Нужно чтобы люди не брали киданов и квирк на + 10% защиты
+		to_chat(src.client, SPAN_WARNING("Такой квирк нельзя приписать Кидану, у него нет кожи только хитин!"))
+		return FALSE
 	active_character.quirks += to_add
 	return TRUE
 
