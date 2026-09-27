@@ -296,6 +296,7 @@
 			in_darkness = TRUE
 			ADD_TRAIT(owner, TRAIT_GOTTAGOSLOW, "darkness_fear")
 
+	if(owner.client)
 		if(next_panic <= world.time)
 			next_panic = world.time + rand(20 SECONDS, 40 SECONDS)
 			owner.adjustStaminaLoss(5)
