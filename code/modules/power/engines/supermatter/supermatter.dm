@@ -656,11 +656,11 @@
 				supermatter_zap(src, range, clamp(power*2, 4000, 20000), flags)
 
 		if(prob(5))
-			supermatter_anomaly_gen(src, FLUX_ANOMALY, rand(5, 10))
+			supermatter_anomaly_gen(src, FLUX_ANOMALY, rand(5, 7)) // SS220 EDIT - уменьшение максимальной дальности спавна аномалий, чтоб не выходили за отсек СМа: rand(5, 10) -> rand (5, 7)
 		if((power * gas_coefficient) > SEVERE_POWER_PENALTY_THRESHOLD && prob(5) || prob(1))
-			supermatter_anomaly_gen(src, GRAVITATIONAL_ANOMALY, rand(5, 10))
+			supermatter_anomaly_gen(src, GRAVITATIONAL_ANOMALY, rand(5, 7)) // SS220 EDIT - уменьшение максимальной дальности спавна аномалий, чтоб не выходили за отсек СМа: rand(5, 10) -> rand (5, 7)
 		if(((power * gas_coefficient) > SEVERE_POWER_PENALTY_THRESHOLD && prob(2)) || (prob(0.3) && (power * gas_coefficient) > POWER_PENALTY_THRESHOLD))
-			supermatter_anomaly_gen(src, BLUESPACE_ANOMALY, rand(5, 10))
+			supermatter_anomaly_gen(src, BLUESPACE_ANOMALY, rand(5, 7)) // SS220 EDIT - уменьшение максимальной дальности спавна аномалий, чтоб не выходили за отсек СМа: rand(5, 10) -> rand (5, 7)
 
 	if(prob(15))
 		supermatter_pull(loc, min(power / 850, 3)) //850, 1700, 2550
