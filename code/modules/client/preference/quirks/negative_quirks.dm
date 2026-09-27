@@ -296,18 +296,15 @@
 			in_darkness = TRUE
 			ADD_TRAIT(owner, TRAIT_GOTTAGOSLOW, "darkness_fear")
 
-#ifndef UNIT_TESTS // Это надо чтобы тесты не ломались иза механа страха в темноте
 		if(next_panic <= world.time)
 			next_panic = world.time + rand(20 SECONDS, 40 SECONDS)
 			owner.adjustStaminaLoss(5)
 		if(prob(50))
 			owner.emote("shiver")
 		else if(prob(70))
-//			owner.emote("scream")
 		else
 			owner.emote("shiver")
-//			owner.emote("scream")
-#endif
+
 	else if(in_darkness)
 		in_darkness = FALSE
 		REMOVE_TRAIT(owner, TRAIT_GOTTAGOSLOW, "darkness_fear")
