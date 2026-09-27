@@ -232,7 +232,7 @@
 /datum/quirk/unclonable
 	name = "Unclonable"
 	desc = "You have a genetic condition that prevents you from being cloned. This does not prevent revival by other methods."
-	cost = -2
+	cost = -1
 	trait_to_apply = TRAIT_UNCLONABLE
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE | QUIRK_SLIME_INCOMPATIBLE | QUIRK_VOX_INCOMPATIBLE
 
