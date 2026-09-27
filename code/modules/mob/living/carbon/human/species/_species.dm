@@ -1091,10 +1091,10 @@ It'll return null if the organ doesn't correspond, so include null checks when u
 			SPAN_WARNING("[M] recoils from the water!"),
 			SPAN_WARNING("The water touches you and panic takes over!")
 		)
-	M.adjustStaminaLoss(min(volume * 2, 20))
-	M.KnockDown(1 SECONDS)
-	M.adjustFireLoss(5)
- //SS220 EDIT END - Aquaphobia
+		M.adjustStaminaLoss(min(volume * 2, 20))
+		M.KnockDown(1 SECONDS)
+		M.adjustFireLoss(5)
+//SS220 EDIT END - Aquaphobia
 /datum/species/proc/bullet_act(obj/projectile/P, mob/living/carbon/human/H) //return TRUE if hit, FALSE if stopped/reflected/etc
 	return TRUE
 
