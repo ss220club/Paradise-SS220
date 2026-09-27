@@ -303,10 +303,10 @@
 		if(prob(50))
 			owner.emote("shiver")
 		else if(prob(70))
-			owner.emote("scream")
+//			owner.emote("scream")
 		else
 			owner.emote("shiver")
-			owner.emote("scream")
+//			owner.emote("scream")
 #endif
 	else if(in_darkness)
 		in_darkness = FALSE
