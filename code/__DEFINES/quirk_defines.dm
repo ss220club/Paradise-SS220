@@ -4,3 +4,5 @@
 #define QUIRK_PLASMAMAN_INCOMPATIBLE (1<<4)
 #define QUIRK_VOX_INCOMPATIBLE (1<<5) // For quirks that Vox shouldn't be able to take
 #define QUIRK_KIDAN_INCOMPATIBLE (1<<6)
+#define QUIRK_GREY_INCOMPATIBLE (1<<7)
+#define QUIRK_DIONA_INCOMPATIBLE (1<<8)

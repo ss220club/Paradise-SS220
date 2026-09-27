@@ -14,6 +14,7 @@
 	desc = "Вы плохо переносите алкоголь и быстрее пьянеете."
 	cost = -1
 	alcohol_modifier = 1.5
+	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/heavy_drinker)
 
 /datum/quirk/foreigner
 	name = "Foreigner"
@@ -65,6 +66,11 @@
 	desc = "Вам значительно легче получить серьезную травму, чем большинству людей."
 	cost = -3
 	trait_to_apply = TRAIT_FRAIL
+	var/brute_modifier = 1.2
+
+/datum/quirk/frail/apply_quirk_effects(mob/living/carbon/human/quirky)
+	..()
+	owner.dna.species.brute_mod = brute_modifier
 
 #define ASTHMA_ATTACK_THRESHOLD 20
 
@@ -171,7 +177,7 @@
 	name = "Hallucinations"
 	desc = "Вы периодически видите и слышите то, чего не существует. Не можете занимать должности в \
 			командовании или службе безопасности."
-	cost = -3
+	cost = -2
 	blacklisted = TRUE
 	processes = TRUE
 	var/next_hallucination = 0
@@ -225,7 +231,6 @@
 	var/datum/reagent/addiction = new addicted_reagent
 	addiction.last_addiction_dose = world.timeofday
 	addiction.addiction_stage = 1
-	addiction.minor_addiction = TRUE
 	addiction.permanent_addiction = TRUE
 
 	owner.reagents.addiction_list.Add(addiction)
@@ -242,3 +247,66 @@
 	cost = -1
 	trait_to_apply = TRAIT_WORK_HARD_PARTY_HARDER
 	conflicting_quirks = list(/datum/quirk/temperate_partier)
+
+/datum/quirk/hevy
+	name = "Big Jon"
+	desc = "Ты больше чем некоторые персоны."
+	cost = -2
+	trait_to_apply = TRAIT_TINY
+	conflicting_quirks = list(/datum/quirk/tiny)
+
+/datum/quirk/hevy/apply_quirk_effects() // Just the pasted `activate()` proc from the dwarf mutation.
+	..() // I'M AT MY WITS END THIS IS THE ONLY WAY I KNOW TO MAKE THIS WORK.
+	owner.resize = 1.2
+	owner.update_transform()
+
+/datum/quirk/water_fear
+	name = "Aquaphobia"
+	desc = "Вы испытываете сильный страх перед водой. Даже небольшой контакт с ней вызывает панику."
+	cost = -1
+	trait_to_apply = TRAIT_WATER_FEAR
+	species_flags = QUIRK_GREY_INCOMPATIBLE | QUIRK_DIONA_INCOMPATIBLE
+
+/datum/quirk/darkness_fear
+	name = "Nyctophobia"
+	desc = "Вы испытываете сильный страх в темноте. В полной темноте вам становится трудно сохранять спокойствие."
+	cost = -2
+	processes = TRUE
+	species_flags = QUIRK_DIONA_INCOMPATIBLE
+	conflicting_quirks = list(/datum/quirk/night_creature)
+	var/in_darkness = FALSE
+	var/next_panic = 0
+
+/datum/quirk/darkness_fear/apply_quirk_effects(mob/living/carbon/human/quirky)
+	..()
+	next_panic = world.time + 30 SECONDS
+
+/datum/quirk/darkness_fear/process()
+	if(!..())
+		return
+
+	var/turf/T = get_turf(owner)
+	if(!T)
+		return
+
+	var/light_amount = T.get_lumcount()
+
+	if(light_amount < 0.2)
+		if(!in_darkness)
+			in_darkness = TRUE
+			ADD_TRAIT(owner, TRAIT_GOTTAGOSLOW, "darkness_fear")
+
+		if(next_panic <= world.time)
+			next_panic = world.time + rand(20 SECONDS, 40 SECONDS)
+			owner.adjustStaminaLoss(5)
+		if(prob(50))
+			owner.emote("shiver")
+		else if(prob(70))
+			owner.emote("scream")
+		else
+			owner.emote("shiver")
+			owner.emote("scream")
+
+	else if(in_darkness)
+		in_darkness = FALSE
+		REMOVE_TRAIT(owner, TRAIT_GOTTAGOSLOW, "darkness_fear")

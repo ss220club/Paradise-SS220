@@ -19,8 +19,9 @@
 /datum/quirk/alcohol_tolerance/heavy_drinker
 	name = "Heavy Drinker"
 	desc = "Вы привыкли к воздействию алкоголя и пьянеете медленнее, чем другие."
-	cost = 2
-	alcohol_modifier = 0.7
+	cost = 1
+	alcohol_modifier = 0.5
+	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/lightweight)
 
 /datum/quirk/meal_prepper
 	name = "Meal Prepper"
@@ -201,14 +202,14 @@
 /datum/quirk/regenerate
 	name = "Activated platelets"
 	desc = "Ваше тело регенерирует. Несовместимо с расой КПБ"
-	cost = 6
+	cost = 5
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	processes = TRUE
 
 /datum/quirk/regenerate/process()
 	if(!..())
 		return FALSE
-	var/regeneration_amount = 0.25
+	var/regeneration_amount = 0.10
 	owner.adjustBruteLoss(-regeneration_amount)
 	owner.adjustFireLoss(-regeneration_amount)
 
@@ -222,7 +223,7 @@
 /datum/quirk/nanomachine/process()
 	if(!..())
 		return FALSE
-	var/nanomachine_amount = 0.25
+	var/nanomachine_amount = 0.05
 	owner.adjustBruteLoss(-nanomachine_amount, robotic = TRUE)
 	owner.adjustFireLoss(-nanomachine_amount, robotic = TRUE)
 
@@ -231,7 +232,7 @@
 	desc = "Ваша кожа лучше выдерживает физические повреждения. Несовместимо с расой кидан"
 	cost = 4
 	species_flags = QUIRK_KIDAN_INCOMPATIBLE
-	var/brute_modifier = 0.9
+	var/brute_modifier = 0.95
 
 /datum/quirk/resilient_skin/apply_quirk_effects(mob/living/carbon/human/quirky)
 	..()
@@ -249,9 +250,83 @@
 	desc = "You are smaller than the average person."
 	cost = 4
 	trait_to_apply = TRAIT_TINY
+	conflicting_quirks = list(/datum/quirk/hevy)
 
 /datum/quirk/tiny/apply_quirk_effects() // Just the pasted `activate()` proc from the dwarf mutation.
 	..() // I'M AT MY WITS END THIS IS THE ONLY WAY I KNOW TO MAKE THIS WORK.
 	owner.resize = 0.8
 	owner.update_transform()
 
+/datum/quirk/major
+	name = "Деньги деньги деньги!"
+	desc = "Депнув в казино вы получили свои заветные деньги."
+	cost = 5
+	item_to_give = /obj/item/stack/spacecash/c10000
+
+/datum/quirk/reviver
+	name = "Неумираемый"
+	desc  = "Продали ли вы душу, ради этого или нет но теперь у вас вживлен ревайвер. Несовместимо с расой КПБ."
+	cost = 8
+	species_flags = QUIRK_MACHINE_INCOMPATIBLE
+	organ_to_give = /obj/item/organ/internal/cyberimp/chest/reviver
+
+#define NIGHT_CREATURE_DARKNESS 0.2
+#define NIGHT_CREATURE_BRIGHTNESS 0.5
+
+/datum/quirk/night_creature
+	name = "Житель темных подвалов"
+	desc = "Вы лучше видите в темноте и быстрее передвигаетесь. Яркий свет ухудшает ваше зрение и замедляет вас."
+	cost = 2
+	processes = TRUE
+	conflicting_quirks = list(/datum/quirk/darkness_fear)
+
+	var/in_darkness = FALSE
+	var/in_light = FALSE
+
+/datum/quirk/night_creature/process()
+	if(!..())
+		return
+
+	var/turf/T = get_turf(owner)
+	if(!T)
+		return
+
+	var/light_amount = T.get_lumcount()
+
+	if(light_amount < 0.2)
+		if(!in_darkness)
+			in_darkness = TRUE
+			in_light = FALSE
+
+			ADD_TRAIT(owner, TRAIT_DARKNESS_ADAPTED, "night_creature")
+			ADD_TRAIT(owner, TRAIT_GOTTAGONOTSOFAST, "night_creature")
+			REMOVE_TRAIT(owner, TRAIT_GOTTAGOSLOW, "night_creature")
+			REMOVE_TRAIT(owner, TRAIT_NEARSIGHT, "night_creature")
+
+			owner.update_sight()
+
+	else if(light_amount > 0.5)
+		if(!in_light)
+			in_darkness = FALSE
+			in_light = TRUE
+
+			REMOVE_TRAIT(owner, TRAIT_DARKNESS_ADAPTED, "night_creature")
+			REMOVE_TRAIT(owner, TRAIT_GOTTAGONOTSOFAST, "night_creature")
+			ADD_TRAIT(owner, TRAIT_GOTTAGOSLOW, "night_creature")
+			ADD_TRAIT(owner, TRAIT_NEARSIGHT, "night_creature")
+
+			owner.update_sight()
+
+	else
+		if(in_darkness || in_light)
+			in_darkness = FALSE
+			in_light = FALSE
+
+			REMOVE_TRAIT(owner, TRAIT_DARKNESS_ADAPTED, "night_creature")
+			REMOVE_TRAIT(owner, TRAIT_GOTTAGONOTSOFAST, "night_creature")
+			REMOVE_TRAIT(owner, TRAIT_GOTTAGOSLOW, "night_creature")
+			REMOVE_TRAIT(owner, TRAIT_NEARSIGHT, "night_creature")
+
+			owner.update_sight()
+#undef NIGHT_CREATURE_DARKNESS
+#undef NIGHT_CREATURE_BRIGHTNESS

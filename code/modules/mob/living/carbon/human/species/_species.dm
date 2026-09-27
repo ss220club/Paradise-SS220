@@ -1073,6 +1073,10 @@ It'll return null if the organ doesn't correspond, so include null checks when u
 		H.see_in_dark = max(H.see_in_dark, 8)
 		H.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
+	if(HAS_TRAIT(H, TRAIT_DARKNESS_ADAPTED))
+		H.see_in_dark = max(H.see_in_dark, 3)
+		H.lighting_alpha = min(H.lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+
 	if(H.has_status_effect(STATUS_EFFECT_SUMMONEDGHOST))
 		H.see_invisible = SEE_INVISIBLE_OBSERVER
 
@@ -1081,7 +1085,17 @@ It'll return null if the organ doesn't correspond, so include null checks when u
 
 /datum/species/proc/water_act(mob/living/carbon/human/M, volume, temperature, source, method = REAGENT_TOUCH)
 	M.adjust_bodytemperature(clamp((temperature + M.bodytemperature) * 0.5 - M.bodytemperature, BODYTEMP_COOLING_MAX, BODYTEMP_HEATING_MAX)) // Approximation for gradual heating or cooling.
-
+//SS220 EDIT START - Aquaphobia
+	if(HAS_TRAIT(M, TRAIT_WATER_FEAR) && method == REAGENT_TOUCH && volume >= 3)
+		M.visible_message(
+			SPAN_WARNING("[M] recoils from the water!"),
+			SPAN_WARNING("The water touches you and panic takes over!")
+		)
+	M.adjustStaminaLoss(min(volume * 2, 20))
+	M.KnockDown(1 SECONDS)
+	M.adjustFireLoss(5)
+	M.emote("scream")
+ //SS220 EDIT END - Aquaphobia
 /datum/species/proc/bullet_act(obj/projectile/P, mob/living/carbon/human/H) //return TRUE if hit, FALSE if stopped/reflected/etc
 	return TRUE
 
