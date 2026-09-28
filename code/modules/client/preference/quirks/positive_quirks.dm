@@ -199,45 +199,6 @@
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	organ_to_give = /obj/item/organ/internal/cyberimp/mouth/breathing_tube
 
-/datum/quirk/regenerate
-	name = "Activated platelets"
-	desc = "Ваше тело регенерирует. Несовместимо с расой КПБ"
-	cost = 5
-	species_flags = QUIRK_MACHINE_INCOMPATIBLE
-	processes = TRUE
-
-/datum/quirk/regenerate/process()
-	if(!..())
-		return FALSE
-	var/regeneration_amount = 0.10
-	owner.adjustBruteLoss(-regeneration_amount)
-	owner.adjustFireLoss(-regeneration_amount)
-
-/datum/quirk/nanomachine
-	name = "Activated nanomachine"
-	desc = "Ваше тело восстаналивают малые нанороботы. Совместимо только с расой КПБ"
-	cost = 5
-	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
-	processes = TRUE
-
-/datum/quirk/nanomachine/process()
-	if(!..())
-		return FALSE
-	var/nanomachine_amount = 0.05
-	owner.adjustBruteLoss(-nanomachine_amount, robotic = TRUE)
-	owner.adjustFireLoss(-nanomachine_amount, robotic = TRUE)
-
-/datum/quirk/resilient_skin
-	name = "Resilient Skin"
-	desc = "Ваша кожа лучше выдерживает физические повреждения. Несовместимо с расой кидан"
-	cost = 4
-	species_flags = QUIRK_KIDAN_INCOMPATIBLE
-	var/brute_modifier = -0.05
-
-/datum/quirk/resilient_skin/apply_quirk_effects(mob/living/carbon/human/quirky)
-	..()
-	owner.dna.species.brute_mod += brute_modifier
-
 /datum/quirk/temperate_partier
 	name = "Temperate Partier"
 	desc = "You never wake up drunk in an unrelated department. You know better than to drink like that on a work night."
@@ -262,49 +223,6 @@
 	desc = "Депнув в казино вы получили свои заветные деньги."
 	cost = 3
 	item_to_give = /obj/item/stack/spacecash/c4500
-
-/datum/quirk/unstable_reviver
-	name = "Unstable Reviver"
-	desc = "В вас установлен экспериментальный имплант, способный несколько раз вернуть вас из смерти. Однако даже слабый ЭМИ вызвает остановку сердца."
-	cost = 8
-	species_flags = QUIRK_MACHINE_INCOMPATIBLE // КПБ и так боятся ЭМИ
-	organ_to_give = /obj/item/organ/internal/cyberimp/chest/reviver/quirk
-	conflicting_quirks = list(/datum/quirk/regenerate)
-
-/obj/item/organ/internal/cyberimp/chest/reviver/quirk
-	name = "Unstable reviver implant"
-	desc = "Нестабильно эксперементальный имплант. Способный несколько раз вернуть из смерти. Однако даже слабый ЭМИ вызвает остановку сердца."
-	icon_state = "reviver_implant"
-	var/revives_left = 3
-	COOLDOWN_DECLARE(quirk_revive_cooldown)
-
-/obj/item/organ/internal/cyberimp/chest/reviver/quirk/revive_dead()
-	if(revives_left <= 0)
-		if(reviving)
-			reviving = FALSE
-		return
-	if(!COOLDOWN_FINISHED(src, quirk_revive_cooldown))
-		return
-	if(!COOLDOWN_FINISHED(src, defib_cooldown) || owner.stat != DEAD || !can_defib())
-		return
-
-	..()
-
-/obj/item/organ/internal/cyberimp/chest/reviver/quirk/zap_em()
-	if(revives_left <= 0)
-		return
-	revives_left--
-	COOLDOWN_START(src, quirk_revive_cooldown, 4 MINUTES)
-	..()
-
-/obj/item/organ/internal/cyberimp/chest/reviver/quirk/emp_act(severity)
-	if(!owner)
-		return
-
-	if(ishuman(owner))
-		var/mob/living/carbon/human/H = owner
-		if(H.stat != DEAD && H.can_heartattack())
-			H.set_heartattack(TRUE)
 
 #define NIGHT_CREATURE_DARKNESS 0.2
 #define NIGHT_CREATURE_BRIGHTNESS 0.5
