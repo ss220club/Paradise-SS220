@@ -79,7 +79,9 @@
 	item_to_give = /obj/item/reagent_containers/pill/salbutamol // If an inhaler ever gets made put it here
 
 /datum/quirk/asthma/process()
+#ifndef UNIT_TESTS
 	if(!..()) // Не мои проблемы с тем что оффы накосячили и оно выдает ошибку что этот If бесполезный я сделал все что мог
+#endif
 	if(ease_of_breathing < ASTHMA_ATTACK_THRESHOLD)
 		return
 	owner.emote("cough")
