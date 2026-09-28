@@ -248,7 +248,7 @@
 /datum/quirk/tiny
 	name = "Tiny"
 	desc = "You are smaller than the average person."
-	cost = 4
+	cost = 3
 	trait_to_apply = TRAIT_TINY
 	conflicting_quirks = list(/datum/quirk/hevy)
 
