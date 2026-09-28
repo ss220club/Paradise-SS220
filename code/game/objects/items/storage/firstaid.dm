@@ -474,7 +474,7 @@
 /obj/item/storage/pill_bottle/krokodil
 	wrapper_color = COLOR_RED_GRAY
 
-/obj/item/storage/pill_bottle/perfluorodecalin/populate_contents()
+/obj/item/storage/pill_bottle/krokodil/populate_contents()
 	for(var/I in 1 to 8)
 		new /obj/item/reagent_containers/pill/krokodil(src)
 
