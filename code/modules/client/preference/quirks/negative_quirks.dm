@@ -214,6 +214,15 @@
 	desc = "Ваш организм постоянно требует определённый препарат. Несовместимо с расой КПБ."
 	cost = -2
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
+	var/list/addiction_items = list(
+	/datum/reagent/medicine/omnizine = /obj/item/clothing/mask/cigarette/syndicate,
+	/datum/reagent/nicotine/dense = /obj/item/storage/fancy/cigarettes/cigpack_carcinoma,
+	/datum/reagent/space_drugs = /obj/item/storage/box/papersack/jellybean/wtf,
+	/datum/reagent/medicine/perfluorodecalin = /obj/item/storage/pill_bottle/perfluorodecalin,
+	/datum/reagent/krokodil = /obj/item/storage/pill_bottle/krokodil,
+	/datum/reagent/medicine/morphine = /obj/item/storage/pill_bottle/morphine
+	)
+
 	var/list/addiction_reagents = list(
 	/datum/reagent/medicine/omnizine,
 	/datum/reagent/nicotine/dense,
@@ -224,12 +233,12 @@
 	)
 
 	var/addicted_reagent
-	var/addiction_stage = 1
 
 /datum/quirk/addiction/apply_quirk_effects(mob/living/carbon/human/quirky)
-	..()
-
 	addicted_reagent = pick(addiction_reagents)
+	item_to_give = addiction_items[addicted_reagent]
+
+	..()
 
 	var/datum/reagent/addiction = new addicted_reagent
 	addiction.last_addiction_dose = world.timeofday
@@ -237,6 +246,14 @@
 	addiction.permanent_addiction = TRUE
 
 	owner.reagents.addiction_list.Add(addiction)
+
+/obj/item/storage/box/papersack/jellybean/wtf
+	name = "strange packed meal"
+
+/obj/item/storage/box/papersack/jellybean/wtf/populate_contents()
+	for(var/i in 1 to 10)
+		new /obj/item/food/candy/jellybean/wtf(src)
+
 /datum/quirk/unclonable
 	name = "Unclonable"
 	desc = "You have a genetic condition that prevents you from being cloned. This does not prevent revival by other methods."

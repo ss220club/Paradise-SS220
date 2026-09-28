@@ -424,7 +424,7 @@
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "Pill Bottle (Spaceacillin)"
 	desc = "Contains pills used to treat bactieral infections."
-	wrapper_color = COLOR_LUMINOL 
+	wrapper_color = COLOR_LUMINOL
 
 /obj/item/storage/pill_bottle/spaceacillin/populate_contents()
 	for(var/I in 1 to 8)
@@ -463,7 +463,28 @@
 	for(var/I in 1 to 5)
 		new /obj/item/reagent_containers/patch/silver_sulf/small(src)
 		new /obj/item/reagent_containers/patch/styptic/small(src)
+// SS220 EDIT
+/obj/item/storage/pill_bottle/perfluorodecalin
+	wrapper_color = COLOR_BLUE_LIGHT
 
+/obj/item/storage/pill_bottle/perfluorodecalin/populate_contents()
+	for(var/I in 1 to 8)
+		new /obj/item/reagent_containers/pill/perfluorodecalin(src)
+
+/obj/item/storage/pill_bottle/krokodil
+	wrapper_color = COLOR_RED_GRAY
+
+/obj/item/storage/pill_bottle/perfluorodecalin/populate_contents()
+	for(var/I in 1 to 8)
+		new /obj/item/reagent_containers/pill/krokodil(src)
+
+/obj/item/storage/pill_bottle/morphine
+	wrapper_color = COLOR_LIGHT_CYAN
+
+/obj/item/storage/pill_bottle/morphine/populate_contents()
+	for(var/I in 1 to 8)
+		new /obj/item/reagent_containers/pill/morphine(src)
+// SS220 EDIT END
 /*
  * Suture and Mesh Packs
  */

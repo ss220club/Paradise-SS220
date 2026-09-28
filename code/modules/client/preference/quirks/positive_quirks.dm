@@ -258,14 +258,14 @@
 	owner.update_transform()
 
 /datum/quirk/major
-	name = "Деньги деньги деньги!"
+	name = "Money money money!"
 	desc = "Депнув в казино вы получили свои заветные деньги."
 	cost = 3
 	item_to_give = /obj/item/stack/spacecash/c4500
 
 /datum/quirk/unstable_reviver
 	name = "Unstable Reviver"
-	desc = "В вас установлен экспериментальный имплант, способный несколько раз вернуть вас из смерти. Однако даже слабый ЭМИ может вызвать остановку сердца."
+	desc = "В вас установлен экспериментальный имплант, способный несколько раз вернуть вас из смерти. Однако даже слабый ЭМИ вызвает остановку сердца."
 	cost = 8
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE // КПБ и так боятся ЭМИ
 	organ_to_give = /obj/item/organ/internal/cyberimp/chest/reviver/quirk
@@ -273,7 +273,7 @@
 
 /obj/item/organ/internal/cyberimp/chest/reviver/quirk
 	name = "Unstable reviver implant"
-	desc = "Нестабильно эксперементальный имплант. Способный несколько раз вернуть из смерти. Однако даже слабый ЭМИ может вызвать остановку сердца."
+	desc = "Нестабильно эксперементальный имплант. Способный несколько раз вернуть из смерти. Однако даже слабый ЭМИ вызвает остановку сердца."
 	icon_state = "reviver_implant"
 	var/revives_left = 3
 	COOLDOWN_DECLARE(quirk_revive_cooldown)
