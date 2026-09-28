@@ -220,7 +220,7 @@
 	/datum/reagent/space_drugs = /obj/item/storage/box/papersack/jellybean/wtf,
 	/datum/reagent/medicine/perfluorodecalin = /obj/item/storage/pill_bottle/perfluorodecalin,
 	/datum/reagent/krokodil = /obj/item/storage/pill_bottle/krokodil,
-	/datum/reagent/medicine/morphine = /obj/item/storage/pill_bottle/morphine
+	/datum/reagent/medicine/morphine = /obj/item/storage/pill_bottle/morphine/quirk
 	)
 
 	var/list/addiction_reagents = list(

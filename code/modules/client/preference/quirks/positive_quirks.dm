@@ -279,8 +279,10 @@
 	COOLDOWN_DECLARE(quirk_revive_cooldown)
 
 /obj/item/organ/internal/cyberimp/chest/reviver/quirk/revive_dead()
-	if(revives_left <= 0)
-		return
+		if(revives_left <= 0)
+			if(reviving)
+				reviving = FALSE
+			return
 	if(!COOLDOWN_FINISHED(src, quirk_revive_cooldown))
 		return
 	if(!COOLDOWN_FINISHED(src, defib_cooldown) || owner.stat != DEAD || !can_defib())

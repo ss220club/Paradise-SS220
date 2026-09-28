@@ -478,12 +478,12 @@
 	for(var/I in 1 to 8)
 		new /obj/item/reagent_containers/pill/krokodil(src)
 
-/obj/item/storage/pill_bottle/morphine
+/obj/item/storage/pill_bottle/morphine/quirk
 	wrapper_color = COLOR_LIGHT_CYAN
 
-/obj/item/storage/pill_bottle/morphine/populate_contents()
+/obj/item/storage/pill_bottle/morphine/quirk/populate_contents()
 	for(var/I in 1 to 8)
-		new /obj/item/reagent_containers/pill/morphine(src)
+		new /obj/item/reagent_containers/pill/morphine/quirk(src)
 // SS220 EDIT END
 /*
  * Suture and Mesh Packs

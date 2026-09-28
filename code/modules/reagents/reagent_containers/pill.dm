@@ -231,7 +231,7 @@
 	icon_state = "pill10"
 	list_reagents = list("krokodil" = 1)
 
-/obj/item/reagent_containers/pill/morphine
+/obj/item/reagent_containers/pill/morphine/quirk
 	name = "\improper Morphine pill"
 	desc = "Видимо врачи плохо лечили тебя что у тебя такая зависимость?"
 	icon_state = "pill10"
