@@ -41,7 +41,7 @@
 	desc = "Ваши протезы конечностей покрыты синтетическим кожей, что придает им естественный \
 			вид. В случае КПБ покрытие распространяется на все части тела, придавая им естественный и органический вид \
 			(за исключением головы в форме монитора). "
-	cost = 4
+	cost = 1
 	item_to_give = /obj/item/epidermal_applicator/aftermarket
 
 /datum/quirk/lifelike/apply_quirk_effects(mob/living/carbon/human/target, character)
@@ -279,10 +279,10 @@
 	COOLDOWN_DECLARE(quirk_revive_cooldown)
 
 /obj/item/organ/internal/cyberimp/chest/reviver/quirk/revive_dead()
-		if(revives_left <= 0)
-			if(reviving)
-				reviving = FALSE
-			return
+	if(revives_left <= 0)
+		if(reviving)
+			reviving = FALSE
+		return
 	if(!COOLDOWN_FINISHED(src, quirk_revive_cooldown))
 		return
 	if(!COOLDOWN_FINISHED(src, defib_cooldown) || owner.stat != DEAD || !can_defib())
