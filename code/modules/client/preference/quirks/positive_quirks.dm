@@ -1,27 +1,27 @@
 /datum/quirk/skittish
 	name = "Skittish"
 	desc = "Вы можете спрятаться в ящике лёжа или запрыгнуть в шкаф на бегу, если столкнётесь с ним."
-	cost = 2
+	cost = 2 // SS220 EDIT Не оправдывает свою цену в 4 поинта
 	trait_to_apply = TRAIT_SKITTISH
 
 /datum/quirk/freerunner
 	name = "Freerunner"
 	desc = "Вы умеете перепрыгивать через препятствия."
-	cost = 2
+	cost = 2 // SS220 EDIT Не оправдывает свою цену в 4 поинта
 	trait_to_apply = TRAIT_FREERUNNER
 
 /datum/quirk/crafty
 	name = "Crafty"
 	desc = "Вы можете создавать предметы в два раза быстрее."
-	cost = 1
+	cost = 1 // SS220 EDIT Не оправдывает свою цену в 2 поинта
 	trait_to_apply = TRAIT_CRAFTY
 
 /datum/quirk/alcohol_tolerance/heavy_drinker
 	name = "Heavy Drinker"
 	desc = "Вы привыкли к воздействию алкоголя и пьянеете медленнее, чем другие."
 	cost = 1
-	alcohol_modifier = 0.5
-	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/lightweight)
+	alcohol_modifier = 0.5 // SS220 EDIT с 0.7 до 0.5 чтобы эффект был более существенный
+	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/lightweight) // SS220 EDIT - Квирки на пьянство должны конфликтовать почему оффы этого не сделал вопрос
 
 /datum/quirk/meal_prepper
 	name = "Meal Prepper"
@@ -41,7 +41,7 @@
 	desc = "Ваши протезы конечностей покрыты синтетическим кожей, что придает им естественный \
 			вид. В случае КПБ покрытие распространяется на все части тела, придавая им естественный и органический вид \
 			(за исключением головы в форме монитора). "
-	cost = 1
+	cost = 1 // SS220 EDIT Не оправдывает свою цену в 4 поинта за КАСТОМАЙЗ?
 	item_to_give = /obj/item/epidermal_applicator/aftermarket
 
 /datum/quirk/lifelike/apply_quirk_effects(mob/living/carbon/human/target, character)
@@ -211,7 +211,7 @@
 	desc = "You are smaller than the average person."
 	cost = 3
 	trait_to_apply = TRAIT_TINY
-	conflicting_quirks = list(/datum/quirk/hevy)
+	conflicting_quirks = list(/datum/quirk/hevy) // SS220 EDIT Добавлен кофликт с новым квирком что делает тебя больше подробности тут modular_ss220/balance/code/quirks/negative_quirks.dm
 
 /datum/quirk/tiny/apply_quirk_effects() // Just the pasted `activate()` proc from the dwarf mutation.
 	..() // I'M AT MY WITS END THIS IS THE ONLY WAY I KNOW TO MAKE THIS WORK.

@@ -14,7 +14,7 @@
 	desc = "Вы плохо переносите алкоголь и быстрее пьянеете."
 	cost = -1
 	alcohol_modifier = 1.5
-	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/heavy_drinker)
+	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/heavy_drinker) // SS220 EDIT - Квирки на пьянство должны конфликтовать почему оффы этого не сделал вопрос
 
 /datum/quirk/foreigner
 	name = "Foreigner"
@@ -61,7 +61,7 @@
 	blacklisted = TRUE
 	trait_to_apply = TRAIT_MUTE
 
-/datum/quirk/frail
+/datum/quirk/frail // SS220 EDIT Получил дополнительный деббаф тут modular_ss220/balance/code/quirks/negative_quirks.dm
 	name = "Frail"
 	desc = "Вам значительно легче получить серьезную травму, чем большинству людей."
 	cost = -3
@@ -69,17 +69,17 @@
 
 #define ASTHMA_ATTACK_THRESHOLD 50
 
-/datum/quirk/asthma
+/datum/quirk/asthma // SS220 EDIT Сам квирк изменен глобально конкретно тут modular_ss220/balance/code/quirks/negative_quirks.dm
 	name = "Asthma"
 	desc = "Вам трудно отдышаться, а при физических нагрузках могут случаться приступы сильного кашля. Несовместимо с расой КПБ."
-	cost = -3
+	cost = -3 // SS220 EDIT Повышено с -3 до -4 но при этом в модуле изменил механ, потому что раньше это халявные 3 поинта.
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	trait_to_apply = TRAIT_ASTHMATIC
 	processes = TRUE
 	item_to_give = /obj/item/reagent_containers/pill/salbutamol // If an inhaler ever gets made put it here
 
 /datum/quirk/asthma/process()
-	if(!..())
+	if(!..()) // Не мои проблемы с тем что оффы накосячили и оно выдает ошибку что этот If бесполезный я сделал все что мог
 	if(ease_of_breathing < ASTHMA_ATTACK_THRESHOLD)
 		return
 	owner.emote("cough")
@@ -109,7 +109,7 @@
 	name = "High Internal Resistance"
 	desc = "ЛКП на станции рассчитаны на более высокое напряжение, чем может выдержать ваше шасси, поэтому заряжать \
 			его можно только на зарядных станциях. Совместимо только с расой КПБ."
-	cost = -1
+	cost = -1 // SS220 EDIT Понерфлен было -2 стало -1 ведь КПБ прям крайне легко обходятся а халявные поинты зачем?
 	species_flags = QUIRK_ORGANIC_INCOMPATIBLE
 	trait_to_apply = TRAIT_NO_APC_CHARGING
 	organ_slot_to_remove = "r_arm_device" // This feels like such a dumb way to do this but I can't think of a smarter solution
@@ -138,7 +138,7 @@
 /datum/quirk/colorblind
 	name = "Monochromacy"
 	desc = "Вы не различаете цвета. Несовместимо с расой Слаймомен."
-	cost = -1
+	cost = -1 // SS220 EDIT Было -2 стало -1 это ПРЯМ ЧИСТЕЙШИЕ ХАЛЯВНЫЕ ПОИНТЫ не допускаю!
 	trait_to_apply = TRAIT_COLORBLIND
 	species_flags = QUIRK_SLIME_INCOMPATIBLE
 
@@ -158,7 +158,7 @@
 /datum/quirk/unclonable
 	name = "Unclonable"
 	desc = "You have a genetic condition that prevents you from being cloned. This does not prevent revival by other methods."
-	cost = -1
+	cost = -1 // SS220 EDIT Было -2 стало -1 если будут вопросы вспомните когда в последний раз вы КЛОНИРОВАЛИ игрока?
 	trait_to_apply = TRAIT_UNCLONABLE
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE | QUIRK_SLIME_INCOMPATIBLE | QUIRK_VOX_INCOMPATIBLE
 
