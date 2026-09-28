@@ -1,14 +1,11 @@
 // Свои дефайны стадий, потому что NUKE_* андефаются в конце nuclearbomb_220.dm
 #define DIA_NUKE_INTACT 0
-#define DIA_NUKE_COVER_OFF 1
-#define DIA_NUKE_COVER_OPEN 2
-#define DIA_NUKE_SEALANT_OPEN 3
-#define DIA_NUKE_UNWRENCHED 4
-#define DIA_NUKE_MOBILE 5
-#define DIA_NUKE_CORE_EVERYTHING_FINE 6
-#define DIA_NUKE_CORE_PANEL_EXPOSED 7
-#define DIA_NUKE_CORE_PANEL_UNWELDED 8
-#define DIA_NUKE_CORE_FULLY_EXPOSED 9
+#define DIA_NUKE_PANEL_UNSCREWED 1
+#define DIA_NUKE_PANEL_REMOVED 2
+#define DIA_NUKE_PLATE_WELDED 3
+#define DIA_NUKE_PLATE_REMOVED_STATIC 4
+#define DIA_NUKE_PLATE_REMOVED 5
+#define DIA_NUKE_CORE_REMOVED 6
 
 /obj/machinery/nuclearbomb/Do_It_Admin
 	name = "\improper Nuclear Fission Explosive"
@@ -44,34 +41,131 @@
 	underlays.Cut()
 	set_light(0)
 
+	// Свет
 	if(!wires.is_cut(WIRE_NUKE_LIGHT))
 		set_light(1, LIGHTING_MINIMUM_POWER)
-		if(!exploded)
-			if(timing)
-				. += "lights-timing"
-			// убран lights-safety
+		if(exploded)
+			// nuclearbomb_exploding уже содержит свет
+		else if(timing)
+			. += "lights-timing"
+		else
+			. += "lights-safety"
 
-	var/selected_stage = removal_stage
-	if(removal_stage < DIA_NUKE_CORE_EVERYTHING_FINE)
-		selected_stage = core_stage
-	switch(selected_stage)
+	// Стадии разборки
+	switch(removal_stage)
 		if(DIA_NUKE_INTACT)
 			// ничего
-		if(DIA_NUKE_COVER_OFF, DIA_NUKE_COVER_OPEN, DIA_NUKE_SEALANT_OPEN, DIA_NUKE_UNWRENCHED, DIA_NUKE_MOBILE)
+		if(DIA_NUKE_PANEL_UNSCREWED)
+			. += "panel-unscrewed"
+		if(DIA_NUKE_PANEL_REMOVED)
 			. += "panel-removed"
-		if(DIA_NUKE_CORE_EVERYTHING_FINE)
+		if(DIA_NUKE_PLATE_WELDED)
 			. += "plate-welded"
-		if(DIA_NUKE_CORE_PANEL_EXPOSED, DIA_NUKE_CORE_PANEL_UNWELDED)
+		if(DIA_NUKE_PLATE_REMOVED_STATIC)
 			. += "plate-removed-static"
-		if(DIA_NUKE_CORE_FULLY_EXPOSED)
-			. += core ? "plate-removed" : "core-removed"
+		if(DIA_NUKE_PLATE_REMOVED)
+			. += "plate-removed"
+		if(DIA_NUKE_CORE_REMOVED)
+			. += "core-removed"
+
+/obj/machinery/nuclearbomb/Do_It_Admin/screwdriver_act(mob/user, obj/item/I)
+	. = TRUE
+	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
+		return
+	if(removal_stage != DIA_NUKE_INTACT)
+		flick("nuclearbomb_exploding", src)
+		return
+	// Спец-отвёртка ИЛИ любая отвёртка при наличии диска
+	if(!istype(I, /obj/item/screwdriver/nuke) && !auth)
+		to_chat(user, SPAN_WARNING("[src] emits a buzzing noise, the panel staying locked in."))
+		flick("nuclearbomb_exploding", src)
+		return
+	user.visible_message(
+		SPAN_NOTICE("[user] unscrews the panel of [src]."),
+		SPAN_NOTICE("You unscrew the panel of [src].")
+	)
+	removal_stage = DIA_NUKE_PANEL_UNSCREWED
+	update_icon()
+
+/obj/machinery/nuclearbomb/Do_It_Admin/crowbar_act(mob/user, obj/item/I)
+	. = TRUE
+	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
+		return
+	if(removal_stage == DIA_NUKE_PANEL_UNSCREWED)
+		user.visible_message(
+			SPAN_NOTICE("[user] pries off the panel of [src]."),
+			SPAN_NOTICE("You pry off the panel of [src].")
+		)
+		new /obj/item/stack/sheet/metal(loc, 5)
+		removal_stage = DIA_NUKE_PANEL_REMOVED
+		update_icon()
+		return
+	if(removal_stage == DIA_NUKE_PLATE_WELDED)
+		user.visible_message(
+			SPAN_NOTICE("[user] pries off the inner plate of [src]."),
+			SPAN_NOTICE("You pry off the inner plate of [src].")
+		)
+		new /obj/item/stack/sheet/mineral/titanium(loc, 5)
+		removal_stage = DIA_NUKE_PLATE_REMOVED_STATIC
+		update_icon()
+		return
+
+/obj/machinery/nuclearbomb/Do_It_Admin/welder_act(mob/user, obj/item/I)
+	. = TRUE
+	if(!I.tool_use_check(user, 0))
+		return
+	if(removal_stage == DIA_NUKE_PANEL_REMOVED)
+		user.visible_message(
+			SPAN_NOTICE("[user] starts welding the inner plate of [src]."),
+			SPAN_NOTICE("You start welding the inner plate of [src].")
+		)
+		if(!I.use_tool(src, user, 4 SECONDS, volume = I.tool_volume))
+			return
+		user.visible_message(
+			SPAN_NOTICE("[user] finishes welding the inner plate of [src]."),
+			SPAN_NOTICE("You finish welding the inner plate of [src].")
+		)
+		removal_stage = DIA_NUKE_PLATE_WELDED
+		update_icon()
+		return
+	if(removal_stage == DIA_NUKE_PLATE_REMOVED_STATIC)
+		user.visible_message(
+			SPAN_NOTICE("[user] starts cutting the welds on [src]'s core armor."),
+			SPAN_NOTICE("You start cutting the welds on [src]'s core armor.")
+		)
+		if(!I.use_tool(src, user, 4 SECONDS, volume = I.tool_volume))
+			return
+		user.visible_message(
+			SPAN_NOTICE("[user] finishes cutting the welds on [src]'s core armor. The core's green glow starts pulsing."),
+			SPAN_NOTICE("You finish cutting the welds. The core's green glow starts pulsing.")
+		)
+		removal_stage = DIA_NUKE_PLATE_REMOVED
+		update_icon()
+		return
+
+/obj/machinery/nuclearbomb/Do_It_Admin/attack_hand(mob/user as mob)
+	if(removal_stage == DIA_NUKE_PLATE_REMOVED && core)
+		user.visible_message(
+			SPAN_NOTICE("[user] starts to pull [core] out of [src]!"),
+			SPAN_NOTICE("You start to pull [core] out of [src]!")
+		)
+		if(do_after(user, 5 SECONDS, target = src))
+			user.visible_message(
+				SPAN_NOTICE("[user] pulls [core] out of [src]!"),
+				SPAN_NOTICE("You pull [core] out of [src]! Might want to put it somewhere safe.")
+			)
+			core.forceMove(loc)
+			core = null
+			removal_stage = DIA_NUKE_CORE_REMOVED
+			update_icon()
+		return
+	..()
 
 /obj/machinery/nuclearbomb/Do_It_Admin/explode()
 	timing = FALSE
 	exploded = TRUE
 	GLOB.bomb_set = FALSE
-	update_icon_state()
-	update_icon(UPDATE_OVERLAYS)
+	update_icon()
 	if(countdown)
 		countdown.stop()
 	for(var/mob/M in GLOB.mob_list)
@@ -202,15 +296,15 @@
 					GLOB.bomb_set = TRUE
 					if(countdown)
 						countdown.start()
-					update_icon_state()
-					update_icon(UPDATE_OVERLAYS)
+					update_icon()
 					message_admins("[key_name_admin(usr)] engaged a nuclear bomb [ADMIN_JMP(src)]")
 					announce_local(
 						"Механизм самоуничтожения станции задействован. Все члены экипажа обязаны подчиняться всем \
 						указаниям, данными Главами отделов. Любые нарушения этих приказов наказуемы уничтожением на \
 						месте. Это не учебная тревога.",
 						"ВНИМАНИЕ! КОД ДЕЛЬТА!",
-						" ",
+						"ВНИМАНИЕ! КОД ДЕЛЬТА!",
+						sound = 'sound/effects/delta_klaxon.ogg',
 						vis = ANNOUNCE_VIS_LIVING | ANNOUNCE_VIS_GHOSTS | ANNOUNCE_VIS_SILICONS
 					)
 					. = TRUE
@@ -222,8 +316,7 @@
 					GLOB.bomb_set = FALSE
 					if(countdown)
 						countdown.stop()
-					update_icon_state()
-					update_icon(UPDATE_OVERLAYS)
+					update_icon()
 					. = TRUE
 			else
 				playsound(src, 'sound/machines/nuke/angry_beep.ogg', 50, FALSE)
@@ -235,16 +328,10 @@
 					to_chat(usr, SPAN_WARNING("There is nothing to anchor to!"))
 					return FALSE
 				anchored = !anchored
-				update_icon(UPDATE_OVERLAYS)
+				update_icon()
 				. = TRUE
 			else
 				playsound(src, 'sound/machines/nuke/angry_beep.ogg', 50, FALSE)
-
-/obj/machinery/nuclearbomb/Do_It_Admin/screwdriver_act(mob/user, obj/item/I)
-	. = ..()
-	if(.)
-		return
-	flick("nuclearbomb_exploding", src)
 
 /obj/effect/countdown/nuclearbomb
 	name = "nuclear bomb countdown"
@@ -258,12 +345,9 @@
 	return
 
 #undef DIA_NUKE_INTACT
-#undef DIA_NUKE_COVER_OFF
-#undef DIA_NUKE_COVER_OPEN
-#undef DIA_NUKE_SEALANT_OPEN
-#undef DIA_NUKE_UNWRENCHED
-#undef DIA_NUKE_MOBILE
-#undef DIA_NUKE_CORE_EVERYTHING_FINE
-#undef DIA_NUKE_CORE_PANEL_EXPOSED
-#undef DIA_NUKE_CORE_PANEL_UNWELDED
-#undef DIA_NUKE_CORE_FULLY_EXPOSED
+#undef DIA_NUKE_PANEL_UNSCREWED
+#undef DIA_NUKE_PANEL_REMOVED
+#undef DIA_NUKE_PLATE_WELDED
+#undef DIA_NUKE_PLATE_REMOVED_STATIC
+#undef DIA_NUKE_PLATE_REMOVED
+#undef DIA_NUKE_CORE_REMOVED
