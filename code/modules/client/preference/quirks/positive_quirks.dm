@@ -260,15 +260,49 @@
 /datum/quirk/major
 	name = "Деньги деньги деньги!"
 	desc = "Депнув в казино вы получили свои заветные деньги."
-	cost = 5
-	item_to_give = /obj/item/stack/spacecash/c10000
+	cost = 3
+	item_to_give = /obj/item/stack/spacecash/c4500
 
-/datum/quirk/reviver
-	name = "Неумираемый"
-	desc  = "Продали ли вы душу, ради этого или нет но теперь у вас вживлен ревайвер. Несовместимо с расой КПБ."
+/datum/quirk/unstable_reviver
+	name = "Unstable Reviver"
+	desc = "В вас установлен экспериментальный имплант, способный несколько раз вернуть вас из смерти. Однако даже слабый ЭМИ может вызвать остановку сердца."
 	cost = 8
-	species_flags = QUIRK_MACHINE_INCOMPATIBLE
-	organ_to_give = /obj/item/organ/internal/cyberimp/chest/reviver
+	species_flags = QUIRK_MACHINE_INCOMPATIBLE // КПБ и так боятся ЭМИ
+	organ_to_give = /obj/item/organ/internal/cyberimp/chest/reviver/quirk
+	conflicting_quirks = list(/datum/quirk/regenerate)
+
+/obj/item/organ/internal/cyberimp/chest/reviver/quirk
+	name = "Unstable reviver implant"
+	desc = "Нестабильно эксперементальный имплант. Способный несколько раз вернуть из смерти. Однако даже слабый ЭМИ может вызвать остановку сердца."
+	icon_state = "reviver_implant"
+	var/revives_left = 3
+	COOLDOWN_DECLARE(quirk_revive_cooldown)
+
+/obj/item/organ/internal/cyberimp/chest/reviver/quirk/revive_dead()
+	if(revives_left <= 0)
+		return
+	if(!COOLDOWN_FINISHED(src, quirk_revive_cooldown))
+		return
+	if(!COOLDOWN_FINISHED(src, defib_cooldown) || owner.stat != DEAD || !can_defib())
+		return
+
+	..()
+
+/obj/item/organ/internal/cyberimp/chest/reviver/quirk/zap_em()
+	if(revives_left <= 0)
+		return
+	revives_left--
+	COOLDOWN_START(src, quirk_revive_cooldown, 4 MINUTES)
+	..()
+
+/obj/item/organ/internal/cyberimp/chest/reviver/quirk/emp_act(severity)
+	if(!owner)
+		return
+
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.stat != DEAD && H.can_heartattack())
+			H.set_heartattack(TRUE)
 
 #define NIGHT_CREATURE_DARKNESS 0.2
 #define NIGHT_CREATURE_BRIGHTNESS 0.5

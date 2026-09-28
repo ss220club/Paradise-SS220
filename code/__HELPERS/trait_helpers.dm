@@ -596,7 +596,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_TINY "tiny"
 #define TRAIT_DARKNESS_ADAPTED  "darkness_adapted" // SS220 EDIT need to quirk
 #define TRAIT_WATER_FEAR "water_fear" // SS220 EDIT need to quirk
-
+#define TRAIT_HEVY "hevy" // SS220 EDIT need to quirk
 //***** TURF TRAITS *****//
 /// Removes slowdown while walking on these tiles.
 #define TRAIT_BLUESPACE_SPEED "bluespace_speed_trait"

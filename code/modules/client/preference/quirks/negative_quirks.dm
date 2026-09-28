@@ -81,7 +81,7 @@
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	trait_to_apply = TRAIT_ASTHMATIC
 	processes = TRUE
-	item_to_give = /obj/item/reagent_containers/pill/salbutamol // If an inhaler ever gets made put it here
+	item_to_give = /obj/item/storage/pill_bottle/salbutamol // If an inhaler ever gets made put it here
 
 /datum/quirk/asthma/process()
 	if(!..())
@@ -195,12 +195,13 @@
 	var/severity
 	var/chance = rand(100)
 
-	if(chance <= 65)
-		severity = HALLUCINATE_MINOR
-	else if(chance <= 95)
-		severity = HALLUCINATE_MODERATE
-	else
-		severity = HALLUCINATE_MAJOR
+	switch(chance)
+		if(1 to 65)
+			severity = HALLUCINATE_MINOR
+		if(66 to 95)
+			severity = HALLUCINATE_MODERATE
+		else
+			severity = HALLUCINATE_MAJOR
 
 	var/hallucination_type = pickweight(GLOB.hallucinations[severity])
 	new hallucination_type(get_turf(owner), owner)
@@ -215,9 +216,11 @@
 	species_flags = QUIRK_MACHINE_INCOMPATIBLE
 	var/list/addiction_reagents = list(
 	/datum/reagent/medicine/omnizine,
-	/datum/reagent/happiness,
+	/datum/reagent/nicotine/dense,
 	/datum/reagent/space_drugs,
-	/datum/reagent/consumable/drink/coffee
+	/datum/reagent/medicine/perfluorodecalin,
+	/datum/reagent/krokodil,
+	/datum/reagent/medicine/morphine
 	)
 
 	var/addicted_reagent
@@ -251,8 +254,8 @@
 /datum/quirk/hevy
 	name = "Big Jon"
 	desc = "Ты больше чем некоторые персоны."
-	cost = -2
-	trait_to_apply = TRAIT_TINY
+	cost = -1
+	trait_to_apply = TRAIT_HEVY
 	conflicting_quirks = list(/datum/quirk/tiny)
 
 /datum/quirk/hevy/apply_quirk_effects() // Just the pasted `activate()` proc from the dwarf mutation.
@@ -279,7 +282,7 @@
 
 /datum/quirk/darkness_fear/apply_quirk_effects(mob/living/carbon/human/quirky)
 	..()
-	next_panic = world.time + 30 SECONDS
+	next_panic = world.time + 15 SECONDS
 
 /datum/quirk/darkness_fear/process()
 	if(!..())
