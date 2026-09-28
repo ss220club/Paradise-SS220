@@ -1,13 +1,13 @@
 /datum/quirk/skittish
 	name = "Skittish"
 	desc = "Вы можете спрятаться в ящике лёжа или запрыгнуть в шкаф на бегу, если столкнётесь с ним."
-	cost = 4
+	cost = 2
 	trait_to_apply = TRAIT_SKITTISH
 
 /datum/quirk/freerunner
 	name = "Freerunner"
 	desc = "Вы умеете перепрыгивать через препятствия."
-	cost = 4
+	cost = 2
 	trait_to_apply = TRAIT_FREERUNNER
 
 /datum/quirk/crafty
