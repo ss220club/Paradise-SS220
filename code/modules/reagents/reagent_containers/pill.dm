@@ -225,12 +225,6 @@
 	icon_state = "pill10"
 	list_reagents = list("perfluorodecalin" = 1)
 
-/obj/item/reagent_containers/pill/krokodil
-	name = "\improper Krokodil pill"
-	desc = "Ради этих таблеток пришлось знатно потратиться!"
-	icon_state = "pill10"
-	list_reagents = list("krokodil" = 1)
-
 /obj/item/reagent_containers/pill/morphine/quirk
 	name = "\improper Morphine pill"
 	desc = "Видимо врачи плохо лечили тебя что у тебя такая зависимость?"

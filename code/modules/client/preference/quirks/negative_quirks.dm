@@ -66,11 +66,11 @@
 	desc = "Вам значительно легче получить серьезную травму, чем большинству людей."
 	cost = -3
 	trait_to_apply = TRAIT_FRAIL
-	var/brute_modifier = 1.2
+	var/brute_modifier = 0.2
 
 /datum/quirk/frail/apply_quirk_effects(mob/living/carbon/human/quirky)
 	..()
-	owner.dna.species.brute_mod = brute_modifier
+	owner.dna.species.brute_mod += brute_modifier
 
 #define ASTHMA_ATTACK_THRESHOLD 20
 
@@ -167,7 +167,7 @@
 /datum/quirk/impaired_coordination
 	name = "Impaired coordination"
 	desc = "У вас нарушена координация, из-за чего вы медленно передвигаетесь."
-	cost = -1
+	cost = -3
 	trait_to_apply = TRAIT_GOTTAGOSLOW
 
 #define HALLUCINATIONS_COOLDOWN_MIN 1 MINUTES
@@ -219,7 +219,7 @@
 	/datum/reagent/nicotine/dense = /obj/item/storage/fancy/cigarettes/cigpack_carcinoma,
 	/datum/reagent/space_drugs = /obj/item/storage/box/papersack/jellybean/wtf,
 	/datum/reagent/medicine/perfluorodecalin = /obj/item/storage/pill_bottle/perfluorodecalin,
-	/datum/reagent/krokodil = /obj/item/storage/pill_bottle/krokodil,
+	/datum/reagent/krokodil = /obj/item/storage/box/papersack/krokodil,
 	/datum/reagent/medicine/morphine = /obj/item/storage/pill_bottle/morphine/quirk
 	)
 
@@ -248,11 +248,20 @@
 	owner.reagents.addiction_list.Add(addiction)
 
 /obj/item/storage/box/papersack/jellybean/wtf
-	name = "strange packed meal"
+	name = "Strange packed meal"
+	desc = "Чем-то странным попахивает."
 
 /obj/item/storage/box/papersack/jellybean/wtf/populate_contents()
 	for(var/i in 1 to 10)
 		new /obj/item/food/candy/jellybean/wtf(src)
+
+/obj/item/storage/box/papersack/krokodil
+	name = "Strange packed meal"
+	desc = "Чем-то странным попахивает."
+
+/obj/item/storage/box/papersack/krokodil/populate_contents()
+	for(var/i in 1 to 10)
+		new /obj/item/reagent_containers/glass/beaker/drugs/krokodil(src)
 
 /datum/quirk/unclonable
 	name = "Unclonable"

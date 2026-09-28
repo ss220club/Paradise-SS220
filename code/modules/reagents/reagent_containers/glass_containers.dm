@@ -300,7 +300,10 @@
 
 /obj/item/reagent_containers/glass/beaker/drugs/meth
 	list_reagents = list("methamphetamine" = 10)
-
+// SS220 EDIT START - Quirk
+/obj/item/reagent_containers/glass/beaker/drugs/krokodil
+	list_reagents = list("krokodil" = 1)
+// SS220 EDIT END
 /obj/item/reagent_containers/glass/bucket
 	name = "bucket"
 	desc = "Полезно для переноса жидкостей, а также сойдёт в качестве шлема на случай зомби-апокалипсиса."

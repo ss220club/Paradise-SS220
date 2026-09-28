@@ -471,13 +471,6 @@
 	for(var/I in 1 to 8)
 		new /obj/item/reagent_containers/pill/perfluorodecalin(src)
 
-/obj/item/storage/pill_bottle/krokodil
-	wrapper_color = COLOR_RED_GRAY
-
-/obj/item/storage/pill_bottle/krokodil/populate_contents()
-	for(var/I in 1 to 8)
-		new /obj/item/reagent_containers/pill/krokodil(src)
-
 /obj/item/storage/pill_bottle/morphine/quirk
 	wrapper_color = COLOR_LIGHT_CYAN
 

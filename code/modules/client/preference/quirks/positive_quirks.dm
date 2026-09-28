@@ -232,11 +232,11 @@
 	desc = "Ваша кожа лучше выдерживает физические повреждения. Несовместимо с расой кидан"
 	cost = 4
 	species_flags = QUIRK_KIDAN_INCOMPATIBLE
-	var/brute_modifier = 0.95
+	var/brute_modifier = -0.05
 
 /datum/quirk/resilient_skin/apply_quirk_effects(mob/living/carbon/human/quirky)
 	..()
-	owner.dna.species.brute_mod = brute_modifier
+	owner.dna.species.brute_mod += brute_modifier
 
 /datum/quirk/temperate_partier
 	name = "Temperate Partier"
