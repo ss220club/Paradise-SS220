@@ -76,3 +76,20 @@
 			owner.update_sight()
 #undef NIGHT_CREATURE_DARKNESS
 #undef NIGHT_CREATURE_BRIGHTNESS
+
+#define SS220_POLYCYTHEMIA_BLOOD_MAX 650
+
+/datum/quirk/polycythemia
+	name = "Истинная полицитемия"
+	desc = "Ваш организм производит больше крови, чем обычно."
+	cost = 2
+	trait_to_apply = TRAIT_POLYCYTHEMIA
+	conflicting_quirks = list(/datum/quirk/erythrocytopenia)
+	processes = TRUE
+
+/datum/quirk/polycythemia/process()
+	if(!..())
+		return
+
+	if(owner.blood_volume < SS220_POLYCYTHEMIA_BLOOD_MAX)
+		owner.blood_volume += 0.8
