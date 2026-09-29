@@ -138,6 +138,11 @@
 	cost = -1
 	trait_to_apply = TRAIT_HEVY
 	conflicting_quirks = list(/datum/quirk/tiny)
+	var/brute_modifier = -0.05
+
+/datum/quirk/hevy/apply_quirk_effects(mob/living/carbon/human/quirky)
+	..()
+	owner.dna.species.brute_mod += brute_modifier
 
 /datum/quirk/hevy/apply_quirk_effects() // Just the pasted `activate()` proc from the dwarf mutation.
 	..() // I'M AT MY WITS END THIS IS THE ONLY WAY I KNOW TO MAKE THIS WORK.

@@ -3,6 +3,11 @@
 
 /datum/quirk/tiny
 	conflicting_quirks = list(/datum/quirk/hevy)
+	var/brute_modifier = 0.05
+
+/datum/quirk/tiny/apply_quirk_effects(mob/living/carbon/human/quirky)
+	..()
+	owner.dna.species.brute_mod += brute_modifier
 
 /datum/quirk/major
 	name = "Money money money!"
@@ -18,6 +23,7 @@
 	desc = "Вы лучше видите в темноте и быстрее передвигаетесь. Яркий свет ухудшает ваше зрение и замедляет вас."
 	cost = 2
 	processes = TRUE
+	species_flags = QUIRK_DIONA_INCOMPATIBLE
 	conflicting_quirks = list(/datum/quirk/darkness_fear)
 
 	var/in_darkness = FALSE
