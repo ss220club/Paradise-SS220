@@ -31,15 +31,14 @@
 	)
 
 /obj/item/toy/plushie/lizardplushie/activate_self(mob/user)
-    . = ..()
-    if(prob(10)) // 10% шанс, что плюш издаст звук
-        var/chosen_sound
-        if(icon_state == "lizard_al" && prob(5))
-            chosen_sound = 'modular_ss220/plushiki/code/chess-battle-advanced.ogg'
-        else
-            chosen_sound = pickweight(lizard_sounds) // pickweight корректно работает с весами
-
-        playsound(get_turf(src), chosen_sound, 20, TRUE, -1)
+	. = ..()
+	if(prob(10)) // 10% шанс, что плюш издаст звук
+		var/chosen_sound
+		if(icon_state == "lizard_al" && prob(5))
+			chosen_sound = 'modular_ss220/plushiki/code/chess-battle-advanced.ogg'
+		else
+			chosen_sound = pickweight(lizard_sounds) // pickweight корректно работает с весами
+		playsound(get_turf(src), chosen_sound, 20, TRUE, -1)
 
 /obj/item/toy/plushie/lizardplushie/Destroy()
 	QDEL_NULL(equipped_item)
