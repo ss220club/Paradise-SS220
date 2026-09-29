@@ -1,3 +1,9 @@
+/datum/quirk/alcohol_tolerance/heavy_drinker
+	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/lightweight)
+
+/datum/quirk/tiny
+	conflicting_quirks = list(/datum/quirk/hevy)
+
 /datum/quirk/major
 	name = "Money money money!"
 	desc = "Депнув в казино вы получили свои заветные деньги."

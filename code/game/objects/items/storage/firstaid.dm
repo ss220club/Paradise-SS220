@@ -463,21 +463,6 @@
 	for(var/I in 1 to 5)
 		new /obj/item/reagent_containers/patch/silver_sulf/small(src)
 		new /obj/item/reagent_containers/patch/styptic/small(src)
-// SS220 EDIT
-/obj/item/storage/pill_bottle/perfluorodecalin
-	wrapper_color = COLOR_BLUE_LIGHT
-
-/obj/item/storage/pill_bottle/perfluorodecalin/populate_contents()
-	for(var/I in 1 to 8)
-		new /obj/item/reagent_containers/pill/perfluorodecalin(src)
-
-/obj/item/storage/pill_bottle/morphine/quirk
-	wrapper_color = COLOR_LIGHT_CYAN
-
-/obj/item/storage/pill_bottle/morphine/quirk/populate_contents()
-	for(var/I in 1 to 8)
-		new /obj/item/reagent_containers/pill/morphine/quirk(src)
-// SS220 EDIT END
 /*
  * Suture and Mesh Packs
  */

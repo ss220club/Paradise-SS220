@@ -218,16 +218,3 @@
 	desc = "Used to rapidly repair cellular defects within a subject's cell structure."
 	icon_state = "pill10"
 	list_reagents = list("rezadone" = 1)
-// SS220 EDIT START
-/obj/item/reagent_containers/pill/perfluorodecalin
-	name = "\improper Perfluorodecalin pill"
-	desc = "Выписаные специальные таблетки для зависимых."
-	icon_state = "pill10"
-	list_reagents = list("perfluorodecalin" = 1)
-
-/obj/item/reagent_containers/pill/morphine/quirk
-	name = "\improper Morphine pill"
-	desc = "Видимо врачи плохо лечили тебя что у тебя такая зависимость?"
-	icon_state = "pill10"
-	list_reagents = list("morphine" = 1)
-// SS220 EDIT END

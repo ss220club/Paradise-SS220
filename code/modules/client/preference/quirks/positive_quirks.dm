@@ -21,7 +21,6 @@
 	desc = "Вы привыкли к воздействию алкоголя и пьянеете медленнее, чем другие."
 	cost = 1
 	alcohol_modifier = 0.5 // SS220 EDIT с 0.7 до 0.5 чтобы эффект был более существенный
-	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/lightweight) // SS220 EDIT - Квирки на пьянство должны конфликтовать почему оффы этого не сделал вопрос
 
 /datum/quirk/meal_prepper
 	name = "Meal Prepper"
@@ -211,7 +210,6 @@
 	desc = "You are smaller than the average person."
 	cost = 3
 	trait_to_apply = TRAIT_TINY
-	conflicting_quirks = list(/datum/quirk/hevy) // SS220 EDIT Добавлен кофликт с новым квирком что делает тебя больше подробности тут modular_ss220/balance/code/quirks/negative_quirks.dm
 
 /datum/quirk/tiny/apply_quirk_effects() // Just the pasted `activate()` proc from the dwarf mutation.
 	..() // I'M AT MY WITS END THIS IS THE ONLY WAY I KNOW TO MAKE THIS WORK.
