@@ -913,15 +913,15 @@
 	return src.dir // fallback на маппинг
 
 /obj/machinery/door/airlock/multi_tile/get_airlock_turfs()
-    var/list/airlock_turfs = list(get_turf(src))
-    if(width > 1)
-        var/turf/T = get_turf(src)
-        for(var/i in 1 to width - 1)
-            T = get_step(T, dir)
-            if(!T)
-                break
-            airlock_turfs += T
-    return airlock_turfs
+	var/list/airlock_turfs = list(get_turf(src))
+	if(width > 1)
+		var/turf/T = get_turf(src)
+		for(var/i in 1 to width - 1)
+			T = get_step(T, dir)
+			if(!T)
+				break
+			airlock_turfs += T
+	return airlock_turfs
 
 /obj/machinery/door/airlock/multi_tile/update_bounds()
 	if(width <= 1)
