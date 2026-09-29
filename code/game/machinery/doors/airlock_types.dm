@@ -889,6 +889,7 @@
 	if((src.dir == SOUTH) || (src.dir == null)) // Жёсткое инвертирование направления, чтобы визуально и функционально мультитайл эирлоки совпадали в редакторе карт и в игре.
 		src.dir = NORTH
 	. = ..()
+	update_bounds() // Дополнительный вызов для постобработки направлений мультитайл эирлоков
 
 /obj/machinery/door/airlock/multi_tile/get_current_direction() // Проверяем соседние тайлы от главного тайла эирлока.
 	// Prioritize walls to avoid adjacent airlock shenanigans
