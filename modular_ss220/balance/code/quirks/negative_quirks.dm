@@ -1,3 +1,6 @@
+/datum/reagent
+	var/permanent_addiction = FALSE
+
 /datum/quirk/alcohol_tolerance/lightweight
 	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/heavy_drinker)
 
@@ -100,12 +103,21 @@
 	for(var/i in 1 to 10)
 		new /obj/item/reagent_containers/glass/beaker/drugs/krokodil(src)
 
+/obj/item/reagent_containers/glass/beaker/drugs/krokodil
+	list_reagents = list("krokodil" = 1)
+
 /obj/item/storage/pill_bottle/perfluorodecalin
 	wrapper_color = COLOR_BLUE_LIGHT
 
 /obj/item/storage/pill_bottle/perfluorodecalin/populate_contents()
 	for(var/I in 1 to 8)
 		new /obj/item/reagent_containers/pill/perfluorodecalin(src)
+
+/obj/item/reagent_containers/pill/perfluorodecalin
+	name = "\improper Perfluorodecalin pill"
+	desc = "Выписаные специальные таблетки для зависимых."
+	icon_state = "pill10"
+	list_reagents = list("perfluorodecalin" = 1)
 
 /obj/item/storage/pill_bottle/morphine/quirk
 	wrapper_color = COLOR_LIGHT_CYAN
@@ -114,20 +126,11 @@
 	for(var/I in 1 to 8)
 		new /obj/item/reagent_containers/pill/morphine/quirk(src)
 
-/obj/item/reagent_containers/pill/perfluorodecalin
-	name = "\improper Perfluorodecalin pill"
-	desc = "Выписаные специальные таблетки для зависимых."
-	icon_state = "pill10"
-	list_reagents = list("perfluorodecalin" = 1)
-
 /obj/item/reagent_containers/pill/morphine/quirk
 	name = "\improper Morphine pill"
 	desc = "Видимо врачи плохо лечили тебя что у тебя такая зависимость?"
 	icon_state = "pill10"
 	list_reagents = list("morphine" = 1)
-
-/obj/item/reagent_containers/glass/beaker/drugs/krokodil
-	list_reagents = list("krokodil" = 1)
 
 /datum/quirk/hevy
 	name = "Big Jon"
