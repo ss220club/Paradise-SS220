@@ -40,18 +40,18 @@
 
 /obj/structure/door_assembly/proc/get_current_direction()
 	for(var/direction in GLOB.cardinal)
-		if(iswallturf(get_step(src, direction))) // При нахождении стены - возвращаем направление "от" неё.
+		if(iswallturf(get_step(src, direction))) // При нахождении стены - возвращаем направление "на" неё.
 			return direction
 	for(var/direction in GLOB.cardinal)
 		var/obj/effect/spawner/window/W = locate(/obj/effect/spawner/window) in get_step(src, direction)
-		if(W?.useFull) // При нахождении "спавнера" фултайл окна - возвращаем направление эирлока "от" него.
+		if(W?.useFull) // При нахождении "спавнера" фултайл окна - возвращаем направление эирлока "на" него.
 			return direction
 	for(var/direction in GLOB.cardinal)
-		if((locate(/obj/structure/window/full) in get_step(src, direction))) // При нахождении структуры фултайл окна - возвращаем направление "от" неё.
+		if((locate(/obj/structure/window/full) in get_step(src, direction))) // При нахождении структуры фултайл окна - возвращаем направление "на" неё.
 			return direction
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
-		for(var/obj/machinery/door/airlock/A in T.contents) // При нахождении другого эирлока - возвращаем направление "от" него.
+		for(var/obj/machinery/door/airlock/A in T.contents) // При нахождении другого эирлока - возвращаем направление "на" него.
 			if(A != src) // Проверка, что это не второй тайл того же эирлока.
 				return direction
 	return src.dir // fallback на маппинг
