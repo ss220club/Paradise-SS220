@@ -77,19 +77,30 @@
 #undef NIGHT_CREATURE_DARKNESS
 #undef NIGHT_CREATURE_BRIGHTNESS
 
-#define SS220_POLYCYTHEMIA_BLOOD_MAX 650
+#define SS220_POLYCYTHEMIA_BLOOD_MAX 600
 
 /datum/quirk/polycythemia
-	name = "Истинная полицитемия"
+	name = "Polycythemia vera"
 	desc = "Ваш организм производит больше крови, чем обычно."
 	cost = 2
 	trait_to_apply = TRAIT_POLYCYTHEMIA
 	conflicting_quirks = list(/datum/quirk/erythrocytopenia)
 	processes = TRUE
 
+/datum/quirk/polycythemia/apply_quirk_effects(mob/living/carbon/human/M)
+	..()
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!(NO_BLOOD in H.dna.species.species_traits))
+			H.blood_volume = SS220_POLYCYTHEMIA_BLOOD_MAX
+
 /datum/quirk/polycythemia/process()
 	if(!..())
 		return
 
-	if(owner.blood_volume < SS220_POLYCYTHEMIA_BLOOD_MAX)
-		owner.blood_volume += 0.8
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(!(NO_BLOOD in H.dna.species.species_traits))
+			if(H.blood_volume < SS220_POLYCYTHEMIA_BLOOD_MAX)
+				H.blood_volume += 0.8

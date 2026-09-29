@@ -257,15 +257,23 @@
 	..()
 	owner.dna.species.brute_mod += brute_modifier
 
-#define SS220_ERYTHROCYTOPENIA_BLOOD_MIN BLOOD_VOLUME_OKAY
+#define SS220_ERYTHROCYTOPENIA_BLOOD_MIN 450
 
 /datum/quirk/erythrocytopenia
-	name = "Эритропения"
+	name = "Erythropenia"
 	desc = "Ваш организм производит недостаточно крови."
 	cost = -2
 	trait_to_apply = TRAIT_ERYTHROCYTOPENIA
 	conflicting_quirks = list(/datum/quirk/polycythemia)
 	processes = TRUE
+
+/datum/quirk/erythrocytopenia/apply_quirk_effects(mob/living/carbon/human/M)
+	..()
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!(NO_BLOOD in H.dna.species.species_traits))
+			H.blood_volume = SS220_ERYTHROCYTOPENIA_BLOOD_MIN
 
 /datum/quirk/erythrocytopenia/process()
 	if(!..())
