@@ -957,11 +957,11 @@
 
 	var/obj/last_filler = src
 	for(var/i in 1 to width - 1)
-		var/obj/airlock_filler_object/filler
-
-		filler = new(src)
+		var/turf/target_turf = get_step(last_filler, dir)
+		if(!target_turf)
+			break
+		var/obj/airlock_filler_object/filler = new(target_turf)
 		filler.pair_airlock(src)
-		filler.loc = get_step(last_filler, dir)
 		filler.density = density
 		filler.set_opacity(opacity)
 
