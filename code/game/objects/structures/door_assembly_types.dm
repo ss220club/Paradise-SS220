@@ -154,16 +154,40 @@
 	. = ..()
 	update_bounds()
 
+// SS220 EDIT START - Переопределение proc'а для мультитайл эирлока. Фикс корректного определения автоматического направления эирлока при его размещении на карте.
+
+/obj/structure/door_assembly/multi_tile/get_current_direction()
+	for(var/direction in GLOB.cardinal)
+		if(iswallturf(get_step(src, direction))) // При нахождении стены - возвращаем направление "от" неё.
+			return turn(direction, 180)
+	for(var/direction in GLOB.cardinal)
+		var/obj/effect/spawner/window/W = locate(/obj/effect/spawner/window) in get_step(src, direction)
+		if(W?.useFull) // При нахождении "спавнера" фултайл окна - возвращаем направление эирлока "от" него.
+			return turn(direction, 180)
+	for(var/direction in GLOB.cardinal)
+		if((locate(/obj/structure/window/full) in get_step(src, direction))) // При нахождении структуры фултайл окна - возвращаем направление "от" неё.
+			return turn(direction, 180)
+	for(var/direction in GLOB.cardinal)
+		var/turf/T = get_step(src, direction)
+		for(var/obj/machinery/door/airlock/A in T.contents) // При нахождении другого эирлока - возвращаем направление "от" него.
+			if(A != src) // Проверка, что это не второй тайл того же эирлока.
+				return turn(direction, 180)
+	return src.dir // fallback на маппинг
+
+// SS220 EDIT END
+
+// SS220 EDIT START - Исправление proc'а для корректной работы с указанным направлением мультитайл эирлока.
+
 /obj/structure/door_assembly/multi_tile/proc/update_bounds()
 	if(width <= 1)
 		return
 
-	if(dir in list(SOUTH, NORTH))
+	if(dir in list(EAST, WEST))
 		bound_width = width * world.icon_size
 		bound_height = world.icon_size
 		bound_y = 0
 		pixel_y = 0
-		if(dir == NORTH)
+		if(dir == WEST)
 			bound_x = -(width - 1) * world.icon_size
 			pixel_x = -(width - 1) * world.icon_size
 		else
@@ -175,12 +199,14 @@
 		bound_height = width * world.icon_size
 		bound_x = 0
 		pixel_x = 0
-		if(dir == WEST)
+		if(dir == SOUTH)
 			bound_y = -(width - 1) * world.icon_size
 			pixel_y = -(width - 1) * world.icon_size
 		else
 			bound_y = 0
 			pixel_y = 0
+
+// SS220 EDIT END
 
 /obj/structure/door_assembly/door_assembly_cult
 	name = "cult airlock assembly"

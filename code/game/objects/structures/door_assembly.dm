@@ -36,16 +36,27 @@
 	QDEL_NULL(electronics)
 	return ..()
 
+// SS220 EDIT START - Фикс корректного определения автоматического направления эирлока при его размещении на карте.
+
 /obj/structure/door_assembly/proc/get_current_direction()
 	for(var/direction in GLOB.cardinal)
-		if(iswallturf(get_step(src, direction)))
+		if(iswallturf(get_step(src, direction))) // При нахождении стены - возвращаем направление "от" неё.
 			return direction
 	for(var/direction in GLOB.cardinal)
-		if((locate(/obj/structure/window/full) in get_step(src, direction)))
+		var/obj/effect/spawner/window/W = locate(/obj/effect/spawner/window) in get_step(src, direction)
+		if(W?.useFull) // При нахождении "спавнера" фултайл окна - возвращаем направление эирлока "от" него.
 			return direction
 	for(var/direction in GLOB.cardinal)
-		if((locate(/obj/machinery/door) in get_step(src, direction)))
+		if((locate(/obj/structure/window/full) in get_step(src, direction))) // При нахождении структуры фултайл окна - возвращаем направление "от" неё.
 			return direction
+	for(var/direction in GLOB.cardinal)
+		var/turf/T = get_step(src, direction)
+		for(var/obj/machinery/door/airlock/A in T.contents) // При нахождении другого эирлока - возвращаем направление "от" него.
+			if(A != src) // Проверка, что это не второй тайл того же эирлока.
+				return direction
+	return src.dir // fallback на маппинг
+
+// SS220 EDIT END
 
 /obj/structure/door_assembly/examine(mob/user)
 	. = ..()

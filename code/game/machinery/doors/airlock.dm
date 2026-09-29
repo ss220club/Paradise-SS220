@@ -178,6 +178,7 @@ GLOBAL_LIST_EMPTY(airlock_emissive_underlays)
 		damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
 	var/direction = get_current_direction()
 	dir = direction ? direction : NORTH
+	update_bounds() // SS220 EDIT - Дополнительный вызов для постобработки направлений мультитайл эирлоков
 	update_icon()
 	prepare_huds()
 	for(var/hud_key, hud in GLOB.huds)

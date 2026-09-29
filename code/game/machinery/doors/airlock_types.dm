@@ -883,6 +883,88 @@
 /obj/machinery/door/airlock/multi_tile/manual_rotation
 	manual_dir = TRUE
 
+// SS220 EDIT START - Переопределение proc'ов под мультитайл эирлоки для корректной работы.
+
+/obj/machinery/door/airlock/multi_tile/Initialize(mapload)
+	if((src.dir == SOUTH) || (src.dir == null)) // Жёсткое инвертирование направления, чтобы визуально и функционально мультитайл эирлоки совпадали в редакторе карт и в игре.
+		src.dir = NORTH
+	. = ..()
+
+/obj/machinery/door/airlock/multi_tile/get_current_direction() // Проверяем соседние тайлы от главного тайла эирлока.
+	// Prioritize walls to avoid adjacent airlock shenanigans
+	if(manual_dir == TRUE)
+		return
+	for(var/direction in GLOB.cardinal)
+		if(iswallturf(get_step(src, direction))) // При нахождении стены - возвращаем направление "от" неё.
+			return turn(direction, 180)
+	for(var/direction in GLOB.cardinal)
+		var/obj/effect/spawner/window/W = locate(/obj/effect/spawner/window) in get_step(src, direction)
+		if(W?.useFull) // При нахождении "спавнера" фултайл окна - возвращаем направление эирлока "от" него.
+			return turn(direction, 180)
+	for(var/direction in GLOB.cardinal)
+		if((locate(/obj/structure/window/full) in get_step(src, direction))) // При нахождении структуры фултайл окна - возвращаем направление "от" неё.
+			return turn(direction, 180)
+	for(var/direction in GLOB.cardinal)
+		var/turf/T = get_step(src, direction)
+		for(var/obj/machinery/door/airlock/A in T.contents) // При нахождении другого эирлока - возвращаем направление "от" него.
+			if(A != src) // Проверка, что это не второй тайл того же эирлока.
+				return turn(direction, 180)
+	return src.dir // fallback на маппинг
+
+/obj/machinery/door/airlock/multi_tile/get_airlock_turfs()
+	var/list/airlock_turfs = list(get_turf(src))
+	if(width > 1)
+		for(var/i in 1 to width - 1)
+			airlock_turfs |= get_step(airlock_turfs[i], dir)
+	return airlock_turfs
+
+/obj/machinery/door/airlock/multi_tile/update_bounds()
+	if(width <= 1)
+		return
+
+	QDEL_LIST_CONTENTS(fillers)
+
+	if(dir in list(EAST, WEST))
+		bound_width = width * world.icon_size
+		bound_height = world.icon_size
+		bound_y = 0
+		pixel_y = 0
+		if(dir == WEST)
+			bound_x = -(width - 1) * world.icon_size
+			pixel_x = -(width - 1) * world.icon_size
+		else
+			bound_x = 0
+			pixel_x = 0
+
+	else
+		bound_width = world.icon_size
+		bound_height = width * world.icon_size
+		bound_x = 0
+		pixel_x = 0
+		if(dir == SOUTH)
+			bound_y = -(width - 1) * world.icon_size
+			pixel_y = -(width - 1) * world.icon_size
+		else
+			bound_y = 0
+			pixel_y = 0
+
+	LAZYINITLIST(fillers)
+
+	var/obj/last_filler = src
+	for(var/i in 1 to width - 1)
+		var/obj/airlock_filler_object/filler
+
+		filler = new(src)
+		filler.pair_airlock(src)
+		filler.loc = get_step(last_filler, dir)
+		filler.density = density
+		filler.set_opacity(opacity)
+
+		fillers += filler
+		last_filler = filler
+
+// SS220 EDIT END
+
 /obj/machinery/door/airlock/multi_tile/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	update_bounds()
