@@ -463,6 +463,7 @@
 	for(var/I in 1 to 5)
 		new /obj/item/reagent_containers/patch/silver_sulf/small(src)
 		new /obj/item/reagent_containers/patch/styptic/small(src)
+
 /*
  * Suture and Mesh Packs
  */
