@@ -80,7 +80,6 @@
 /datum/quirk/asthma/process()
 	if(!..())
 		return
-
 	var/ease_of_breathing = owner.getOxyLoss() + owner.getStaminaLoss() / 2
 	if(ease_of_breathing < ASTHMA_ATTACK_THRESHOLD)
 		return
