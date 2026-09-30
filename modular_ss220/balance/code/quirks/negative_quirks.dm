@@ -284,3 +284,10 @@
 			owner.blood_volume - 0.8,
 			SS220_ERYTHROCYTOPENIA_BLOOD_MIN
 		)
+
+/datum/quirk/erythrocytopenia/remove_quirk_effects()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(!(NO_BLOOD in H.dna.species.species_traits))
+			H.blood_volume = BLOOD_VOLUME_NORMAL
+	..()

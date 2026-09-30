@@ -3,7 +3,7 @@
 
 /datum/quirk/tiny
 	conflicting_quirks = list(/datum/quirk/hevy)
-	var/brute_modifier = 0.05
+	var/brute_modifier = -0.05
 
 /datum/quirk/tiny/apply_quirk_effects(mob/living/carbon/human/quirky)
 	..()
@@ -104,3 +104,10 @@
 		if(!(NO_BLOOD in H.dna.species.species_traits))
 			if(H.blood_volume < SS220_POLYCYTHEMIA_BLOOD_MAX)
 				H.blood_volume += 0.8
+
+/datum/quirk/polycythemia/remove_quirk_effects()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(!(NO_BLOOD in H.dna.species.species_traits))
+			H.blood_volume = min(H.blood_volume, BLOOD_VOLUME_NORMAL)
+	..()
