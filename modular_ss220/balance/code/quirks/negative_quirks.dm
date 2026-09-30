@@ -279,8 +279,8 @@
 /datum/quirk/blind
 
 /datum/quirk/blind/remove_quirk_effects()
-    ..()
-    owner.update_blind_effects()
+	..()
+	owner.update_blind_effects()
 
 #define SS220_ERYTHROCYTOPENIA_BLOOD_MIN 450
 
