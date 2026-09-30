@@ -385,7 +385,9 @@
 						update_flags |= R.addiction_act_stage4(M)
 					if(5)
 						update_flags |= R.addiction_act_stage5(M)
-			if(prob(20) && (world.timeofday > (R.last_addiction_dose + ADDICTION_TIME))) //Each addiction lasts 8 minutes before it can end
+//SS220 EDIT START - Individual addiction duration
+			if(prob(20) && (world.timeofday > (R.last_addiction_dose + R.addiction_duration)))
+//SS220 EDIT END - Individual addiction duration
 				to_chat(M, SPAN_NOTICE("You no longer feel reliant on [R.name]!"))
 				addiction_list.Remove(R)
 				qdel(R)

@@ -5,9 +5,11 @@
 	conflicting_quirks = list(/datum/quirk/hevy)
 	var/brute_modifier = -0.05
 
-/datum/quirk/tiny/apply_quirk_effects(mob/living/carbon/human/quirky)
+/datum/quirk/tiny/remove_quirk_effects()
+	if(ishuman(owner))
+		owner.resize = 1.25
+		owner.update_transform()
 	..()
-	owner.dna.species.brute_mod += brute_modifier
 
 /datum/quirk/major
 	name = "Money money money!"

@@ -1,5 +1,6 @@
 /datum/reagent
 	var/permanent_addiction = FALSE
+	var/addiction_duration = 4800
 
 /datum/quirk/alcohol_tolerance/lightweight
 	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/heavy_drinker)
@@ -84,8 +85,17 @@
 	addiction.last_addiction_dose = world.timeofday
 	addiction.addiction_stage = 1
 	addiction.permanent_addiction = TRUE
+	addiction.addiction_duration = 360000
 
 	owner.reagents.addiction_list.Add(addiction)
+
+/datum/quirk/addiction/remove_quirk_effects()
+	if(owner?.reagents)
+		for(var/datum/reagent/R in owner.reagents.addiction_list)
+			if(R.permanent_addiction)
+				owner.reagents.addiction_list.Remove(R)
+				qdel(R)
+	..()
 
 /obj/item/storage/box/papersack/jellybean/wtf
 	name = "Strange packed meal"
@@ -143,11 +153,15 @@
 /datum/quirk/hevy/apply_quirk_effects(mob/living/carbon/human/quirky)
 	..()
 	owner.dna.species.brute_mod += brute_modifier
-
-/datum/quirk/hevy/apply_quirk_effects() // Just the pasted `activate()` proc from the dwarf mutation.
-	..() // I'M AT MY WITS END THIS IS THE ONLY WAY I KNOW TO MAKE THIS WORK.
 	owner.resize = 1.2
 	owner.update_transform()
+
+/datum/quirk/hevy/remove_quirk_effects()
+	if(ishuman(owner))
+		owner.dna.species.brute_mod -= brute_modifier
+		owner.resize = 0.833333
+		owner.update_transform()
+	..()
 
 /datum/quirk/water_fear
 	name = "Aquaphobia"
@@ -256,6 +270,17 @@
 /datum/quirk/frail/apply_quirk_effects(mob/living/carbon/human/quirky)
 	..()
 	owner.dna.species.brute_mod += brute_modifier
+
+/datum/quirk/frail/remove_quirk_effects()
+	if(ishuman(owner))
+		owner.dna.species.brute_mod -= brute_modifier
+	..()
+
+/datum/quirk/blind
+
+/datum/quirk/blind/remove_quirk_effects()
+    ..()
+    owner.update_blind_effects()
 
 #define SS220_ERYTHROCYTOPENIA_BLOOD_MIN 450
 
