@@ -1,9 +1,6 @@
 /obj/item/toy/plushie/lizardplushie
 	icon = 'modular_ss220/plushiki/code/Lizards.dmi'
 	icon_state = "lizard"
-	// Если у тебя есть специфичные файлы для рук, раскомментируй и укажи их:
-	// lefthand_file = 'modular_ss220/plushiki/icons/inhands/lizards_lefthand.dmi'
-	// righthand_file = 'modular_ss220/plushiki/icons/inhands/lizards_righthand.dmi'
 
 	/// Ссылка на надетый предмет
 	var/obj/item/equipped_item
@@ -23,11 +20,11 @@
 		'modular_ss220/emotes/audio/unathi/roar_unathi_1.ogg' = 5,
 		'modular_ss220/emotes/audio/unathi/roar_unathi_2.ogg' = 5,
 		'modular_ss220/emotes/audio/unathi/roar_unathi_3.ogg' = 5,
-		'modular_ss220/emotes/audio/unathi/rumble_unathi_1.ogg' = 30,
-		'modular_ss220/emotes/audio/unathi/rumble_unathi_2.ogg' = 30,
+		'modular_ss220/emotes/audio/unathi/rumble_unathi_1.ogg' = 40,
+		'modular_ss220/emotes/audio/unathi/rumble_unathi_2.ogg' = 40,
 		'modular_ss220/emotes/audio/unathi/threat_unathi_1.ogg' = 5,
 		'modular_ss220/emotes/audio/unathi/threat_unathi_2.ogg' = 5,
-		'sound/effects/unathihiss.ogg' = 30
+		'sound/effects/unathihiss.ogg' = 20
 	)
 
 /obj/item/toy/plushie/lizardplushie/activate_self(mob/user)
