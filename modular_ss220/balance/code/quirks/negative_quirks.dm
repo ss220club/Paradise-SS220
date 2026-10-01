@@ -1,6 +1,5 @@
 /datum/reagent
 	var/permanent_addiction = FALSE
-	var/addiction_duration = 4800
 
 /datum/quirk/alcohol_tolerance/lightweight
 	conflicting_quirks = list(/datum/quirk/alcohol_tolerance/heavy_drinker)
@@ -85,7 +84,6 @@
 	addiction.last_addiction_dose = world.timeofday
 	addiction.addiction_stage = 1
 	addiction.permanent_addiction = TRUE
-	addiction.addiction_duration = 360000
 
 	owner.reagents.addiction_list.Add(addiction)
 
