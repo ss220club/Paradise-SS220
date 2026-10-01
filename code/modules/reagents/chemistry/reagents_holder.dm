@@ -386,7 +386,7 @@
 					if(5)
 						update_flags |= R.addiction_act_stage5(M)
 //SS220 EDIT START - Individual addiction duration
-			if(prob(20) && (world.timeofday > (R.last_addiction_dose + R.addiction_duration)))
+			if(prob(20) && (world.timeofday > (R.last_addiction_dose + ADDICTION_TIME)) && !R.permanent_addiction)
 //SS220 EDIT END - Individual addiction duration
 				to_chat(M, SPAN_NOTICE("You no longer feel reliant on [R.name]!"))
 				addiction_list.Remove(R)
