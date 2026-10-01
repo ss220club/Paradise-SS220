@@ -176,18 +176,15 @@
 
 // SS220 EDIT END
 
-// SS220 EDIT START - Исправление proc'а для корректной работы с указанным направлением мультитайл эирлока.
-
 /obj/structure/door_assembly/multi_tile/proc/update_bounds()
 	if(width <= 1)
 		return
 
-	if(dir in list(EAST, WEST))
-		bound_width = width * world.icon_size
+	if(dir in list(EAST, WEST)) // SS220 EDIT - SOUTH,NORTH -> EAST, WEST.		bound_width = width * world.icon_size
 		bound_height = world.icon_size
 		bound_y = 0
 		pixel_y = 0
-		if(dir == WEST)
+		if(dir == WEST) // SS220 EDIT - NORTH -> WEST.
 			bound_x = -(width - 1) * world.icon_size
 			pixel_x = -(width - 1) * world.icon_size
 		else
@@ -199,14 +196,12 @@
 		bound_height = width * world.icon_size
 		bound_x = 0
 		pixel_x = 0
-		if(dir == SOUTH)
+		if(dir == SOUTH) // SS220 EDIT - WEST -> SOUTH.
 			bound_y = -(width - 1) * world.icon_size
 			pixel_y = -(width - 1) * world.icon_size
 		else
 			bound_y = 0
 			pixel_y = 0
-
-// SS220 EDIT END
 
 /obj/structure/door_assembly/door_assembly_cult
 	name = "cult airlock assembly"
