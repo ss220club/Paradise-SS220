@@ -3,10 +3,15 @@
 
 /datum/quirk/tiny
 	conflicting_quirks = list(/datum/quirk/hevy)
-	var/brute_modifier = -0.05
+	var/brute_modifier = 0.05
+
+/datum/quirk/tiny/apply_quirk_effects()
+	..()
+	owner.dna.species.brute_mod += brute_modifier
 
 /datum/quirk/tiny/remove_quirk_effects()
 	if(ishuman(owner))
+		owner.dna.species.brute_mod -= brute_modifier
 		owner.resize = 1.25
 		owner.update_transform()
 	..()
@@ -21,7 +26,7 @@
 #define NIGHT_CREATURE_BRIGHTNESS 0.5
 
 /datum/quirk/night_creature
-	name = "Житель темных подвалов"
+	name = "Dweller of dark basements"
 	desc = "Вы лучше видите в темноте и быстрее передвигаетесь. Яркий свет ухудшает ваше зрение и замедляет вас."
 	cost = 2
 	processes = TRUE
