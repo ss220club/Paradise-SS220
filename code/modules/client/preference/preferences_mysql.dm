@@ -140,7 +140,7 @@
 			"volume_mixer" = serialize_volume_mixer(volume_mixer),
 			"lastchangelog" = lastchangelog,
 			"clientfps" = clientfps,
-			"donor_chat_effect" - donor_chat_effect,
+			"donor_chat_effect" = donor_chat_effect,
 			"parallax" = parallax,
 			"_2fa_status" = _2fa_status,
 			"screentip_mode" = screentip_mode,

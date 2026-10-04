@@ -838,7 +838,7 @@
 
 				// SS220 EDIT START - Выбор типа градиента в настройках
 				if("chat_effect")
-					if(user.client.donator_level > 0)
+					if(user.client.donator_level > 3)
 						var/chat_effect_type = tgui_input_list(user, "Choose your chat style", "Donator chat effect",  list("None", "Metal", "Glowing"))
 						if(!chat_effect_type)
 							return

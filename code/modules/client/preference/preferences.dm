@@ -438,6 +438,7 @@ GLOBAL_LIST_INIT(special_role_times, list(
 			dat += "<b>Colourblind Mode:</b> <a href='byond://?_src_=prefs;preference=cbmode'>[colourblind_mode]</a><br>"
 			if(user.client.donator_level > 0)
 				dat += "<b>Donator Publicity:</b> <a href='byond://?_src_=prefs;preference=donor_public'><b>[(toggles & PREFTOGGLE_DONATOR_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
+			if(user.client.donator_level > 3) // SS220 EDIT - проверка donator_level для отображения donor_chat_effect в настройках
 				dat += "<b>Donator chat effect:</b> <a href='byond://?_src_=prefs;preference=chat_effect'><b>[donor_chat_effect]</b></a><br>" // SS220 EDIT - Выбор типа градиента в настройках
 			dat += "<b>FPS:</b>	 <a href='byond://?_src_=prefs;preference=clientfps;task=input'>[user.client.fps]</a><br>"
 			dat += "<b>Ghost Ears:</b> <a href='byond://?_src_=prefs;preference=ghost_ears'><b>[(toggles & PREFTOGGLE_CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</b></a><br>"
