@@ -897,3 +897,5 @@ ON p.species_whitelist IS NOT NULL
 DROP TEMPORARY TABLE temp_all_species;
 
 ALTER TABLE `player` DROP COLUMN `species_whitelist`;
+
+ALTER TABLE `player` ADD `donor_chat_effect` VARCHAR(7) COLLATE utf8mb4_unicode_ci DEFAULT 'None';
