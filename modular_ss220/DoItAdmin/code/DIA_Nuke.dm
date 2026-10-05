@@ -8,10 +8,11 @@
 #define DIA_NUKE_CORE_REMOVED 6
 
 /obj/machinery/nuclearbomb/Do_It_Admin
-	name = "\improper Nuclear Fission Explosive"
+	name = "\improper Ядерный терминал комплекса"
 	desc = "Last chance at redemption"
-	icon = 'modular_ss220/DoItAdmin/code/nuke_terminal.dmi'
+	icon = 'icons/obj/machines/nuke_terminal.dmi'
 	icon_state = "nuclearbomb_base"
+	var/f_name_to_anonce = "Ядерный терминал комплекса D-6"
 
 	var/obj/effect/countdown/nuclearbomb/countdown
 	var/numeric_input = ""
@@ -297,13 +298,12 @@
 					if(countdown)
 						countdown.start()
 					update_icon()
-					message_admins("[key_name_admin(usr)] engaged a nuclear bomb [ADMIN_JMP(src)]")
+					message_admins("[key_name_admin(usr)] engaged a nuclear terminal bomb [ADMIN_JMP(src)]")
 					announce_local(
-						"Механизм самоуничтожения станции задействован. Все члены экипажа обязаны подчиняться всем \
-						указаниям, данными Главами отделов. Любые нарушения этих приказов наказуемы уничтожением на \
-						месте. Это не учебная тревога.",
-						"ВНИМАНИЕ! КОД ДЕЛЬТА!",
-						"ВНИМАНИЕ! КОД ДЕЛЬТА!",
+						"Механизм самоуничтожения объекта задействован. Всем сотрудникам предписывается подчиняться \
+						указаниям, данным старшими по званию. Критическая перегрузка ядра будет достигнута через [timeleft] секунд.",
+						"[f_name_to_anonce]",
+						"ВНИМАНИЕ! ОБЪЯВЛЕН КОД ДЕЛЬТА!",
 						sound = 'sound/effects/delta_klaxon.ogg',
 						vis = ANNOUNCE_VIS_LIVING | ANNOUNCE_VIS_GHOSTS | ANNOUNCE_VIS_SILICONS
 					)
