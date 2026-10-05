@@ -22,6 +22,7 @@
 		clientfps,
 		atklog,
 		fuid,
+		donor_chat_effect,
 		parallax,
 		2fa_status,
 		screentip_mode,
