@@ -1,3 +1,7 @@
+# Paradise SS220 закрыт
+> [!WARNING]
+**Билд Paradise SS220 закрыт с 07/10/2026 и более не поддерживается.**
+
 <a href="#"><img src=".github/assets/paradise.png" alt="Paradise Station"></a>
 
 ## <p align="center">Добро пожаловать в репозиторий Paradise WyccStation SS220 по игре [Space Station 13](https://spacestation13.com/).</p>
